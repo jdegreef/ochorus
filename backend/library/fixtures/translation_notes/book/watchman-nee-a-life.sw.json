@@ -1,0 +1,4428 @@
+{
+ "kind": "book",
+ "slug": "watchman-nee-a-life",
+ "language": "sw",
+ "job_issue": 1758,
+ "references": [
+  {
+   "reference": "1 Corinthians",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "1 Corinthians 10:12",
+   "status": "mined",
+   "block_index": 88,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 10:16-17",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Corinthians 10:17",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Corinthians 10:17",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "1 Corinthians 10:17",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "1 Corinthians 11:1",
+   "status": "self_rendered",
+   "block_index": 192
+  },
+  {
+   "reference": "1 Corinthians 11:1-34",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "1 Corinthians 11:24",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 12:1-31",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "1 Corinthians 12:1-31",
+   "status": "self_rendered",
+   "block_index": 141
+  },
+  {
+   "reference": "1 Corinthians 12:13",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "1 Corinthians 12:13",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "1 Corinthians 12:13",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "1 Corinthians 12:21",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 12:21",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "1 Corinthians 12:21",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "1 Corinthians 12:22",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "1 Corinthians 12:22",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "1 Corinthians 12:26",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "1 Corinthians 12:27",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "1 Corinthians 12:27",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "1 Corinthians 12:27",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "1 Corinthians 12:27",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "1 Corinthians 13:2",
+   "status": "self_rendered",
+   "block_index": 128
+  },
+  {
+   "reference": "1 Corinthians 15:10",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "1 Corinthians 15:10",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "1 Corinthians 15:3",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "1 Corinthians 15:3-4",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "1 Corinthians 1:12",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "1 Corinthians 1:12-13",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Corinthians 1:12-13",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Corinthians 1:13",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "1 Corinthians 2:14",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "1 Corinthians 2:2",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "1 Corinthians 3:11",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "1 Corinthians 3:11",
+   "status": "self_rendered",
+   "block_index": 194
+  },
+  {
+   "reference": "1 Corinthians 3:13",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "1 Corinthians 3:16",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 3:21",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "1 Corinthians 3:21",
+   "status": "self_rendered",
+   "block_index": 176
+  },
+  {
+   "reference": "1 Corinthians 3:21-23",
+   "status": "self_rendered",
+   "block_index": 206
+  },
+  {
+   "reference": "1 Corinthians 3:5",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "1 Corinthians 5:1-13",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "1 Corinthians 8:1",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Corinthians 8:1-13",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "1 Corinthians 8:2",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "1 John",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 John 1:3",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "1 John 1:6",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "1 John 4:1",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 John 4:1",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "1 John 4:1",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "1 John 4:20",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "1 John 4:20",
+   "status": "self_rendered",
+   "block_index": 140
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "self_rendered",
+   "block_index": 136
+  },
+  {
+   "reference": "1 Kings 19:1-21",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Kings 19:1-21",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "1 Peter 2:17",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Peter 2:5",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "1 Peter 2:5",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Peter 2:5",
+   "status": "self_rendered",
+   "block_index": 92
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Peter 5:1",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Peter 5:1-4",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "1 Peter 5:2",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "1 Peter 5:2",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "1 Peter 5:3",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "1 Peter 5:3",
+   "status": "self_rendered",
+   "block_index": 174
+  },
+  {
+   "reference": "1 Peter 5:5",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "mined",
+   "block_index": 88,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "1 Peter 5:8-9",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "1 Peter 5:9",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "1 Thessalonians",
+   "status": "self_rendered",
+   "block_index": 147
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "1 Thessalonians 4:13-14",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "1 Thessalonians 4:14",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "self_rendered",
+   "block_index": 193
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "1 Thessalonians 5:8",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "1 Timothy 3:1-7",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "1 Timothy 4:7",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "1 Timothy 5:18",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "1 Timothy 5:19-20",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "2 Corinthians",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "2 Corinthians",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Corinthians",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "2 Corinthians 12:7-10",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "2 Corinthians 12:9-10",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Corinthians 13:14",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "2 Corinthians 13:5",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "2 Corinthians 1:24",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "2 Corinthians 1:8",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "status": "self_rendered",
+   "block_index": 169
+  },
+  {
+   "reference": "2 Corinthians 2:11",
+   "status": "self_rendered",
+   "block_index": 144
+  },
+  {
+   "reference": "2 Corinthians 2:14",
+   "status": "self_rendered",
+   "block_index": 133
+  },
+  {
+   "reference": "2 Corinthians 3:17",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "2 Corinthians 4:10",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "2 Corinthians 4:12",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 160
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 171
+  },
+  {
+   "reference": "2 Corinthians 4:7-12",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "2 Corinthians 5:14-15",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "2 Corinthians 9:7",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "2 Corinthians 9:7",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "2 Samuel 12:13",
+   "status": "self_rendered",
+   "block_index": 152
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Timothy 2:2",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "2 Timothy 2:2",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "2 Timothy 2:9",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "2 Timothy 2:9",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "2 Timothy 2:9",
+   "status": "self_rendered",
+   "block_index": 136
+  },
+  {
+   "reference": "2 Timothy 2:9",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "2 Timothy 2:9",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "2 Timothy 2:9",
+   "status": "self_rendered",
+   "block_index": 151
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Acts",
+   "status": "mined",
+   "block_index": 92,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Acts",
+   "status": "mined",
+   "block_index": 95,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Acts",
+   "status": "mined",
+   "block_index": 129,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 140
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 157
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 166
+  },
+  {
+   "reference": "Acts",
+   "status": "self_rendered",
+   "block_index": 178
+  },
+  {
+   "reference": "Acts 14:21-23",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Acts 14:23",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Acts 14:23",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Acts 16:1-40",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Acts 16:7",
+   "status": "self_rendered",
+   "block_index": 150
+  },
+  {
+   "reference": "Acts 17:11",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Acts 17:11",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "Acts 17:11",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "Acts 19:1-41",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Acts 19:21",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Acts 20:1-38",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Acts 20:32",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Acts 24:16",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Acts 24:16",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Acts 24:16",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Acts 24:16",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "Acts 2:36",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 2:36",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Acts 2:36",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Acts 2:42",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "women-who-moved-heaven-2.sw.json"
+  },
+  {
+   "reference": "Acts 2:42",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Acts 2:42",
+   "status": "mined",
+   "block_index": 98,
+   "source_file": "women-who-moved-heaven-2.sw.json"
+  },
+  {
+   "reference": "Acts 4:24",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Acts 4:34-35",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "self_rendered",
+   "block_index": 118
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "self_rendered",
+   "block_index": 141
+  },
+  {
+   "reference": "Acts 5:4",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Acts 7:22",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Acts 7:60",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Acts 8:4",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Acts 9:4",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Acts 9:4",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Colossians",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Colossians",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Colossians",
+   "status": "self_rendered",
+   "block_index": 164
+  },
+  {
+   "reference": "Colossians 1:18",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Colossians 1:18",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Colossians 1:18",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Colossians 1:18",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Colossians 1:18",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Colossians 1:9",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Colossians 2:15",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Colossians 2:15",
+   "status": "self_rendered",
+   "block_index": 124
+  },
+  {
+   "reference": "Colossians 2:15",
+   "status": "self_rendered",
+   "block_index": 164
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "self_rendered",
+   "block_index": 131
+  },
+  {
+   "reference": "Colossians 3:3-4",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Colossians 3:3-4",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Colossians 4:5",
+   "status": "self_rendered",
+   "block_index": 149
+  },
+  {
+   "reference": "Daniel",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Daniel",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Ecclesiastes 4:9-10",
+   "status": "self_rendered",
+   "block_index": 155
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 153
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 154
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 158
+  },
+  {
+   "reference": "Ephesians",
+   "status": "self_rendered",
+   "block_index": 165
+  },
+  {
+   "reference": "Ephesians 1:1-23",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Ephesians 1:1-23",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "Ephesians 1:1-3:21",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Ephesians 1:1-3:21",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Ephesians 1:17-18",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Ephesians 1:17-18",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Ephesians 1:17-18",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Ephesians 1:18",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ephesians 1:18",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Ephesians 1:20",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Ephesians 1:21",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Ephesians 1:22-23",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "Ephesians 1:3-23",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Ephesians 1:4-14",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 1:5",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Ephesians 1:7",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Ephesians 2:1-22",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Ephesians 2:1-22",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Ephesians 2:1-22",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Ephesians 2:1-22",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Ephesians 2:13",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Ephesians 2:14",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Ephesians 2:14",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "Ephesians 2:15",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Ephesians 2:15",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "Ephesians 2:18",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Ephesians 2:18",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Ephesians 2:21",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Ephesians 2:22",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Ephesians 2:22",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "Ephesians 2:4-5",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Ephesians 2:4-6",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "block_index": 140
+  },
+  {
+   "reference": "Ephesians 2:8-10",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Ephesians 2:8-9",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:8-9",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Ephesians 2:8-9",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Ephesians 3:1-21",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "Ephesians 3:10",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Ephesians 3:12",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Ephesians 3:12-21",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Ephesians 3:16-17",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Ephesians 3:17-18",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Ephesians 3:6",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "Ephesians 4:1",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ephesians 4:1",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Ephesians 4:1",
+   "status": "self_rendered",
+   "block_index": 154
+  },
+  {
+   "reference": "Ephesians 4:1-32",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Ephesians 4:1-32",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Ephesians 4:1-32",
+   "status": "self_rendered",
+   "block_index": 157
+  },
+  {
+   "reference": "Ephesians 4:1-6:24",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Ephesians 4:14",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Ephesians 4:15",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Ephesians 4:16",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Ephesians 4:16",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Ephesians 4:17",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Ephesians 4:2",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Ephesians 4:25",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Ephesians 4:25",
+   "status": "self_rendered",
+   "block_index": 157
+  },
+  {
+   "reference": "Ephesians 4:26",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Ephesians 4:26",
+   "status": "self_rendered",
+   "block_index": 158
+  },
+  {
+   "reference": "Ephesians 4:28",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Ephesians 4:28",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "Ephesians 4:29",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Ephesians 4:29",
+   "status": "self_rendered",
+   "block_index": 160
+  },
+  {
+   "reference": "Ephesians 4:3",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Ephesians 4:32",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Ephesians 4:4",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Ephesians 4:4",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Ephesians 4:4-16",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Ephesians 4:4-6",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Ephesians 4:7",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Ephesians 5:1-2",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "Ephesians 5:1-21",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Ephesians 5:1-33",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "Ephesians 5:11",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "status": "self_rendered",
+   "block_index": 125
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "status": "self_rendered",
+   "block_index": 210
+  },
+  {
+   "reference": "Ephesians 5:15-16",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "Ephesians 5:19-21",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Ephesians 5:21",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Ephesians 5:21",
+   "status": "mined",
+   "block_index": 103,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Ephesians 5:25",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Ephesians 5:25",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "Ephesians 5:3-4",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Ephesians 5:32",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Ephesians 5:9",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "Ephesians 6:1",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Ephesians 6:1-24",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Ephesians 6:1-24",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Ephesians 6:1-24",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Ephesians 6:1-24",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Ephesians 6:10",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "Ephesians 6:10-20",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "block_index": 165
+  },
+  {
+   "reference": "Ephesians 6:14",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ephesians 6:14",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Ephesians 6:14",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "Ephesians 6:15",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Ephesians 6:16",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Ephesians 6:19",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Ephesians 6:4",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Ephesians 6:9",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Ezekiel",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Ezekiel",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Ezekiel",
+   "status": "self_rendered",
+   "block_index": 125
+  },
+  {
+   "reference": "Ezekiel 3:17",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Galatians",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Galatians",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Galatians",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Galatians",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Galatians 3:3",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Galatians 3:3",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Galatians 5:1",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Galatians 5:1-26",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Galatians 5:16",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Galatians 5:16",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "Galatians 5:16",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Galatians 5:16-25",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "self_rendered",
+   "block_index": 179
+  },
+  {
+   "reference": "Galatians 5:25",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Galatians 6:1",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Galatians 6:1",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "Galatians 6:1",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Galatians 6:17",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Genesis",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Genesis 32:24-31",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Genesis 32:24-31",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Genesis 40:23",
+   "status": "self_rendered",
+   "block_index": 118
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "Hebrews",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Hebrews 10:25",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "Hebrews 10:36",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 10:36",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Hebrews 11:1-40",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Hebrews 11:33-39",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Hebrews 12:5-11",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "Hebrews 13:17",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Hebrews 13:17",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Hebrews 13:3",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "self_rendered",
+   "block_index": 163
+  },
+  {
+   "reference": "Hebrews 4:11",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "Hebrews 6:10",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "Isaiah",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "James",
+   "status": "self_rendered",
+   "block_index": 178
+  },
+  {
+   "reference": "James 1:14",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "James 1:4",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "James 3:17",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "James 3:17",
+   "status": "self_rendered",
+   "block_index": 178
+  },
+  {
+   "reference": "James 3:2",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "James 4:14",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "James 4:15",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "James 4:2",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "James 4:2",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "James 4:2",
+   "status": "self_rendered",
+   "block_index": 158
+  },
+  {
+   "reference": "James 4:7-8",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "James 4:7-8",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Jeremiah",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Job",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Job",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Job 42:5",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "John",
+   "status": "self_rendered",
+   "block_index": 158
+  },
+  {
+   "reference": "John 10:11",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "John 10:11",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "John 12:1-17:26",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 12:1-50",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 12:1-50",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "John 12:24-25",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "John 12:25",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "John 12:25",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "John 14:14",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "block_index": 189
+  },
+  {
+   "reference": "John 15:4-5",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "block_index": 76,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "John 16:13",
+   "status": "self_rendered",
+   "block_index": 128
+  },
+  {
+   "reference": "John 17:1",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:17",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 17:17",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "John 17:21",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "John 17:21",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "John 1:13",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 20:21",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "John 21:18",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "John 2:25",
+   "status": "self_rendered",
+   "block_index": 165
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 3:30",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "John 3:6",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 3:6",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "John 5:19",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "John 5:19",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "John 7:17",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "John 8:32",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Judges",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Judges",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Luke",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Luke 10:20",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Luke 10:21",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Luke 14:33",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Luke 19:8",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Luke 19:9",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Luke 1:46-47",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Luke 1:46-47",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "self_rendered",
+   "block_index": 128
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Mark 10:42-43",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Mark 10:42-43",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Mark 10:42-45",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Mark 10:43",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Mark 10:45",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Mark 10:45",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Mark 12:30",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Mark 12:30",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Mark 12:30",
+   "status": "self_rendered",
+   "block_index": 124
+  },
+  {
+   "reference": "Mark 13:12",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Mark 13:12",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Mark 14:1-72",
+   "status": "self_rendered",
+   "block_index": 178
+  },
+  {
+   "reference": "Mark 3:14",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Mark 3:14",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Mark 8:36",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Matthew 11:28-29",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Matthew 16:25",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "Matthew 18:18",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "self_rendered",
+   "block_index": 141
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "self_rendered",
+   "block_index": 125
+  },
+  {
+   "reference": "Matthew 26:35",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Matthew 26:38",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "mined",
+   "block_index": 139,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Matthew 28:19-20",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Matthew 3:9",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Matthew 4:1-11",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 4:10",
+   "status": "self_rendered",
+   "block_index": 111
+  },
+  {
+   "reference": "Matthew 4:10",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Matthew 4:7",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 154
+  },
+  {
+   "reference": "Matthew 6:25-34",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Matthew 6:32",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Matthew 6:32",
+   "status": "self_rendered",
+   "block_index": 133
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 6:4",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 8:9",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Nehemiah",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "Numbers",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Philippians",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Philippians",
+   "status": "self_rendered",
+   "block_index": 135
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "self_rendered",
+   "block_index": 141
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "Philippians 2:12-13",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "mined",
+   "block_index": 107,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "self_rendered",
+   "block_index": 146
+  },
+  {
+   "reference": "Philippians 3:3",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Philippians 4:6-13",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Proverbs",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Proverbs",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Proverbs",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Proverbs 11:14",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "Proverbs 13:12",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Proverbs 15:22",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Proverbs 21:31",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Proverbs 27:6",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Psalms",
+   "status": "self_rendered",
+   "block_index": 61
+  },
+  {
+   "reference": "Psalms",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Psalms",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "Psalms",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Psalms",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Psalms",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Psalms",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "Psalms",
+   "status": "self_rendered",
+   "block_index": 144
+  },
+  {
+   "reference": "Psalms 139:23-24",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Psalms 13:1",
+   "status": "self_rendered",
+   "block_index": 61
+  },
+  {
+   "reference": "Psalms 22:1-31",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "Psalms 31:15",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Psalms 31:15",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "Psalms 46:1",
+   "status": "mined",
+   "block_index": 136,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalms 46:1-11",
+   "status": "self_rendered",
+   "block_index": 136
+  },
+  {
+   "reference": "Psalms 90:1-17",
+   "status": "self_rendered",
+   "block_index": 92
+  },
+  {
+   "reference": "Psalms 90:12",
+   "status": "self_rendered",
+   "block_index": 92
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Revelation",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Revelation 12:10-11",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Revelation 13:1-18",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Revelation 13:1-18",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Revelation 2:1-3:22",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "Revelation 2:10",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Romans",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Romans",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "Romans 10:1-21",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "women-who-moved-heaven-2.sw.json"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Romans 12:1-21",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Romans 12:15",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Romans 12:17",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "Romans 12:4-5",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Romans 12:5",
+   "status": "self_rendered",
+   "block_index": 133
+  },
+  {
+   "reference": "Romans 13:1",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Romans 13:1-14",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Romans 13:1-14",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Romans 13:1-14",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Romans 13:1-14",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Romans 13:1-14",
+   "status": "self_rendered",
+   "block_index": 141
+  },
+  {
+   "reference": "Romans 13:1-7",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Romans 15:7",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Romans 15:7",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Romans 15:7",
+   "status": "self_rendered",
+   "block_index": 135
+  },
+  {
+   "reference": "Romans 1:1-5:21",
+   "status": "self_rendered",
+   "block_index": 128
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Romans 4:20-21",
+   "status": "self_rendered",
+   "block_index": 147
+  },
+  {
+   "reference": "Romans 5:1",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Romans 5:1-21",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Romans 5:1-21",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Romans 5:1-21",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Romans 5:1-21",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Romans 5:1-8:39",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 5:1-8:39",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 5:1-8:39",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Romans 5:1-8:39",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Romans 5:1-8:39",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Romans 5:1-8:39",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Romans 5:19",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 5:19",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Romans 5:8-19",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Romans 5:9",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Romans 5:9",
+   "status": "self_rendered",
+   "block_index": 128
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Romans 6:1-23",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Romans 6:2",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Romans 6:5",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 6:5-14",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Romans 6:6-13",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 6:7",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Romans 7:1-25",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Romans 7:1-25",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Romans 7:1-25",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Romans 7:1-25",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "Romans 7:19",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Romans 7:19",
+   "status": "mined",
+   "block_index": 132,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Romans 7:19-25",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "Romans 7:25",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Romans 7:25",
+   "status": "self_rendered",
+   "block_index": 133
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Romans 8:1-14",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Romans 8:1-39",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Romans 8:1-39",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Romans 8:1-39",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Romans 8:1-39",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Romans 8:1-39",
+   "status": "self_rendered",
+   "block_index": 135
+  },
+  {
+   "reference": "Romans 8:1-39",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "Romans 8:31",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Romans 8:31-39",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Romans 8:33",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Romans 8:33-34",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Romans 8:38-39",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Romans 8:38-39",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "Romans 8:6",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Romans 9:2",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Romans 9:2",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Titus",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Titus 1:5",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 92
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 124
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 125
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 133
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 141
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 149
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 152
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 164
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 167
+  },
+  {
+   "reference": "Wisdom of Solomon",
+   "status": "self_rendered",
+   "block_index": 178
+  }
+ ]
+}

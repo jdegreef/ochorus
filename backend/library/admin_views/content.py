@@ -17,6 +17,7 @@ from accounts.permissions import IsAdminEmail
 
 from ..languages import known_codes
 from ..models import (
+    Article,
     Author,
     AuthorTranslation,
     Book,
@@ -280,12 +281,14 @@ class AdminLanguageDetailView(APIView):
                 "plans": self._plans(code),
                 "bios": self._bios(code),
                 "topics": self._topics(code),
+                "articles": self._articles(code),
                 "todo": {
                     "books": self._books_todo(code),
                     "sermons": self._sermons_todo(code),
                     "plans": self._plans_todo(code),
                     "bios": self._bios_todo(code),
                     "topics": self._topics_todo(code),
+                    "articles": self._articles_todo(code),
                 },
             }
         )
@@ -360,6 +363,28 @@ class AdminLanguageDetailView(APIView):
         return [
             {"slug": t.author.slug, "name": t.author.name, "reviewed": t.reviewed}
             for t in trs
+        ]
+
+    def _articles(self, code) -> list[dict]:
+        """Articles that exist in this language. Like a sermon, an article is a
+        single body with no author; it carries ``source_type`` so the page can
+        badge an unreviewed AI translation."""
+        articles = (
+            Article.objects.filter(language=code)
+            # The list needs none of the heavy text columns — defer them so the
+            # admin query stays lean, as ArticleListView does for the shelf.
+            .defer("body_html", "description", "related")
+            .order_by("sort_order", "h1")
+        )
+        return [
+            {
+                "slug": a.slug,
+                "title": a.h1,
+                "word_count": a.word_count,
+                "source_type": a.source_type,
+                "is_published": a.is_published,
+            }
+            for a in articles
         ]
 
     # -- next to work on -------------------------------------------------------
@@ -510,12 +535,26 @@ class AdminLanguageDetailView(APIView):
             for a in qs
         ]
 
+    def _articles_todo(self, code) -> list[dict]:
+        """English articles not yet in this language, highest sort_order first —
+        the same shape as _books_todo but authorless (an article has no byline)."""
+        if code == "en":
+            return []
+        have = set(Article.objects.filter(language=code).values_list("slug", flat=True))
+        qs = (
+            Article.objects.filter(language="en", is_published=True)
+            .exclude(slug__in=have)
+            .order_by("sort_order", "h1")[:TODO_LIMIT]
+        )
+        return [{"slug": a.slug, "title": a.h1} for a in qs]
+
     def _english_counts(self) -> dict:
         return {
             "books": Book.objects.filter(language="en", is_published=True).count(),
             "sermons": Sermon.objects.filter(language="en", is_published=True).count(),
             "plans": Plan.objects.filter(language="en", is_published=True).count(),
             "bios": Author.objects.exclude(bio_html="").count(),
+            "articles": Article.objects.filter(language="en", is_published=True).count(),
         }
 
 

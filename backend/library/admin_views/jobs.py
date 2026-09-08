@@ -34,6 +34,7 @@ from ..languages import entry as language_entry
 from ..languages import known_codes
 from ..models import (
     AdminAction,
+    Article,
     Author,
     AuthorTranslation,
     Book,
@@ -50,12 +51,12 @@ IN_PROGRESS_LABEL = "in-progress"
 # Every content type the queue can enqueue. Each ships through its own delivery
 # vehicle once translated (see ``_JOB_GUIDANCE``); the worker skill picks the
 # right one from the job type.
-JOB_TYPES = ("book", "sermon", "plan", "bio", "topic")
+JOB_TYPES = ("book", "sermon", "plan", "bio", "topic", "article")
 
 # Deterministic issue title — it is the job's identity (duplicate-press guard)
 # and what the worker parses, so both ends share this exact shape.
 _TITLE_RE = re.compile(
-    r"^\[translation\] (book|sermon|plan|bio|topic):([a-z0-9-]+) -> ([a-z-]{2,10})$"
+    r"^\[translation\] (book|sermon|plan|bio|topic|article):([a-z0-9-]+) -> ([a-z-]{2,10})$"
 )
 
 # How each translated type is delivered — appended to the issue body so the
@@ -78,6 +79,12 @@ _JOB_GUIDANCE = {
         "directly); the `seed_topics` release step upserts it. Topic prose "
         "has NO English fallback — an untranslated shelf is hidden in that "
         "language rather than shown in English — so every topic must be covered."
+    ),
+    "article": (
+        "Produces an `ai_unreviewed` article translation shipped as one new file "
+        "`library/fixtures/content/articles/<slug>.<language>.json` (a single "
+        "`library.article` row, natural-key format); the `seed_articles` release "
+        "step upserts it. No author byline, no chapters."
     ),
 }
 
@@ -131,6 +138,14 @@ def _resolve_source(type_: str, slug: str, language: str):
             .exists()
         )
         return f"the {topic.title} shelf", None, exists
+    if type_ == "article":
+        # Like a plan: a per-language row on one slug, and authorless — so the
+        # byline is None. The headline lives on ``h1`` (an article has no title).
+        src = Article.objects.filter(slug=slug, language="en").first()
+        if src is None:
+            return None
+        exists = Article.objects.filter(slug=slug, language=language).exists()
+        return src.h1, None, exists
     return None
 
 

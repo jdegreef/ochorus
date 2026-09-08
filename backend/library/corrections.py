@@ -3058,3 +3058,42 @@ def settled_sermon_body(slug: str, body_html: str) -> str:
     No page-number strip — that rule reads a chapter's absorbed page marker.
     """
     return apply_body_corrections(slug, None, body_html)
+
+
+# --- PT batch 7: English source fixes (companion to PT PR #1861) ---
+# Gleanings Among the Sheaves (Spurgeon), Catholic Spirit (Wesley),
+# God Glorified in Man's Dependence (Edwards). OCR/formatting defects the PT
+# translators surfaced; the PT ships the corrected reading (fix-forward).
+BODY_CORRECTIONS.setdefault('gleanings-among-the-sheaves', {}).setdefault("replacements", []).extend([
+    # ch16 leaked Gutenberg back-matter (INDEX page-list + Transcriber's Notes)
+    # fused onto the final reading; not Spurgeon. Same strip ships in the PT
+    # fixture. Remove the whole block.
+    ("<h2>INDEX.</h2> PAGE 5 7 8 10 11 13 16 18 21 23 24 27 30 32 34 37 39 41 41 42 44 47 48 49 51 53 54 56 57 58 59 60 61 62 63 64 66 67 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 89 91 92 93 94 95 97 99 101 103 104 106 106 107 108 109 110 111 111 112 113 114 115 116 117 118 120 122 123 123 124 124 125 127 128 129 130 132 134 136 137 139 139 140 141 142 145 145 146 146 147 149 150 152 153 155 156 157 158 160 162 165 166 167 169 172 173 174 176 177 178 181 182 184 185 187 190 192 194 196 197 199 202 207 209 212 214 218 221 <hr/> <p>Transcriber's Notes: Blank pages have been eliminated. Variations in spelling and hyphenation have been left as in the original. A few typographical errors have been corrected. </p>", ""),
+    # (Three scripture quotations also lost their opening quote in OCR — Phil
+    # 4:8 ch02, Job 42:10 ch03, Ps 37:4 ch18. Those openers are repaired
+    # directly in the fixture, not here: the book is wholly straight-quoted, so
+    # the mark must be straight, and a straight-quote `new` cannot satisfy the
+    # corrections-hygiene guard, which reads the JSON-serialised fixture where a
+    # straight quote is escaped as \". Kept out of BODY_CORRECTIONS for that
+    # reason; the fixture edit is what ships them.)
+    # ch05 dropped letter; ch08 KJV spelling; ch13 2 Pet 3:11 ("what manner of
+    # persons ought ye to be", KJV) garbled to "manner or person".
+    ('take way his own power', 'take away his own power'),
+    ('per-adventure', 'peradventure'),
+    ('What manner or person ought', 'What manner of persons ought'),
+])
+BODY_CORRECTIONS.setdefault('catholic-spirit', {}).setdefault("replacements", []).extend([
+    # The fifth numbered head lost its period (every sibling reads "N.").
+    ('<p>5 I mean, Secondly', '<p>5. I mean, Secondly'),
+    # "convinced of this, act according to the law" — the comma turns the OCR'd
+    # run-on back into Wesley's imperative.
+    ('convinced of this act according', 'convinced of this, act according'),
+])
+BODY_CORRECTIONS.setdefault('god-glorified-in-mans-dependence', {}).setdefault("replacements", []).extend([
+    # Two misprinted citations: the promise of the Spirit is Acts 2:33 (2:13 is
+    # the mockers) and Eph 1:13 (Ephesians has six chapters, not thirty-three).
+    ('Acts 2:13.', 'Acts 2:33.'),
+    ('Eph. 1:33. This', 'Eph. 1:13. This'),
+    # "in making the soul" — leading "in" clipped to a bare "m".
+    ('perfection, m making the soul', 'perfection, in making the soul'),
+])

@@ -5,6 +5,7 @@ edited — on its own. Pure move: no test changed.
 """
 
 
+from django.core.cache import cache
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
@@ -12,11 +13,13 @@ from common.testing import body_of
 
 from .models import (
     AdminAction,
+    Article,
     AuditDismissal,
     Author,
     AuthorTranslation,
     Book,
     Chapter,
+    ContentRevision,
     Plan,
     PlanDay,
     Sermon,
@@ -144,6 +147,31 @@ class AdminLanguageDetailTests(TestCase):
         self.assertEqual([a["slug"] for a in res.data["todo"]["bios"]], ["am"])
 
         self.assertEqual(res.data["english_counts"]["books"], 3)
+
+    @override_settings(DEBUG=True)
+    def test_articles_present_and_todo(self):
+        # Two published English articles; one translated to Swahili (unreviewed).
+        for i, slug in enumerate(("what-is-grace", "what-is-faith")):
+            Article.objects.create(
+                slug=slug, language="en", h1=slug.replace("-", " ").title(),
+                body_html="<p>x</p>", sort_order=i, is_published=True,
+            )
+        Article.objects.create(
+            slug="what-is-grace", language="sw", h1="Neema Ni Nini?",
+            body_html="<p>x</p>", is_published=True,
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        res = self.client.get("/api/admin/languages/sw/")
+        self.assertEqual(res.status_code, 200)
+        # Present: the one translated article, carrying its review state so the
+        # admin row can badge it.
+        self.assertEqual([a["slug"] for a in res.data["articles"]], ["what-is-grace"])
+        self.assertEqual(res.data["articles"][0]["source_type"], "ai_unreviewed")
+        # Todo: the still-untranslated English article only.
+        self.assertEqual(
+            [a["slug"] for a in res.data["todo"]["articles"]], ["what-is-faith"]
+        )
+        self.assertEqual(res.data["english_counts"]["articles"], 2)
 
     @override_settings(DEBUG=True)
     def test_sermon_todo_round_robins_across_authors(self):
@@ -679,6 +707,67 @@ class AdminAuditDismissTests(TestCase):
             format="json",
         )
         self.assertIn(res.status_code, (401, 403))
+
+
+@override_settings(
+    DEBUG=True,
+    CACHES={"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}},
+)
+class AdminAuditCacheTests(TestCase):
+    """The full scan is memoised on the content revision; dismissals and the
+    language filter are applied fresh per request."""
+
+    def setUp(self):
+        cache.clear()
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        book = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
+        big = "<p>" + ("word " * 9000) + "</p>"  # two giant chapters
+        Chapter.objects.create(book=book, order=1, title="One", body_html=big)
+        Chapter.objects.create(book=book, order=2, title="Two", body_html=big)
+
+    def tearDown(self):
+        cache.clear()
+
+    def _scanned_at(self, url="/api/admin/audit/"):
+        return self.client.get(url).data["scanned_at"]
+
+    def test_response_reports_when_it_scanned(self):
+        res = self.client.get("/api/admin/audit/")
+        self.assertTrue(res.data["scanned_at"], "a scan timestamp is reported")
+
+    def test_second_request_reuses_the_cached_scan(self):
+        self.assertEqual(self._scanned_at(), self._scanned_at(), "not re-scanned")
+
+    def test_a_language_filter_reuses_the_cached_scan(self):
+        # The scan is language-independent (filtering is per request), so the
+        # cache key carries no language — switching editions must not re-scan.
+        first = self._scanned_at()
+        self.assertEqual(
+            self._scanned_at("/api/admin/audit/?language=en"), first, "filter, don't re-scan"
+        )
+
+    def test_refresh_forces_a_new_scan(self):
+        first = self._scanned_at()
+        self.assertNotEqual(first, self._scanned_at("/api/admin/audit/?refresh=1"))
+
+    def test_a_content_change_invalidates_the_cache(self):
+        first = self._scanned_at()
+        ContentRevision.bump()
+        self.assertNotEqual(first, self._scanned_at(), "a new revision re-scans")
+
+    def test_accepting_a_finding_takes_effect_without_a_rescan(self):
+        before = self.client.get("/api/admin/audit/")
+        self.assertEqual(before.data["quality"]["giant_chapters"]["total"], 2)
+        scanned = before.data["scanned_at"]
+        self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "giant_chapters", "book": "humility", "language": "en", "ref": "1"},
+            format="json",
+        )
+        after = self.client.get("/api/admin/audit/")
+        self.assertEqual(after.data["quality"]["giant_chapters"]["total"], 1, "dismissal applied")
+        self.assertEqual(after.data["scanned_at"], scanned, "and NOT by re-scanning")
 
 
 class AdminEngagementTests(TestCase):

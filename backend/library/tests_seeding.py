@@ -16,6 +16,7 @@ from django.db import connection
 from django.test import TestCase
 
 from .models import (
+    Article,
     Author,
     AuthorTranslation,
     Book,
@@ -842,3 +843,59 @@ class BackfillWordCountTests(TestCase):
         s.refresh_from_db()
         self.assertEqual(s.word_count, 3)
         self.assertIn("already have a word_count", out.getvalue())
+
+
+class SeedArticlesTests(TestCase):
+    """`seed_articles`, focused on the create-only review badge.
+
+    There are no committed article translation fixtures yet (every article is an
+    English original), so these drive the seed with a synthetic fixture row via
+    ``load_all_rows`` — the same shape ``content_fixtures`` would return — rather
+    than a checked-in ``.es.json``. The invariant under test is the one the
+    constitution stresses: ``source_type`` is create-only, so an approval is not
+    reverted on the next deploy.
+    """
+
+    @staticmethod
+    def _rows(source_type):
+        return [
+            {
+                "model": "library.article",
+                "fields": {
+                    "slug": "what-is-grace",
+                    "language": "es",
+                    "h1": "¿Qué es la gracia?",
+                    "body_html": "<p>La gracia es el favor inmerecido.</p>",
+                    "source_type": source_type,
+                },
+            }
+        ]
+
+    def test_seed_creates_the_translation_badge(self):
+        with patch(
+            "library.management.commands.seed_articles.load_all_rows",
+            return_value=self._rows("ai_unreviewed"),
+        ):
+            call_command("seed_articles", verbosity=0)
+        art = Article.objects.get(slug="what-is-grace", language="es")
+        self.assertEqual(art.source_type, Book.SourceType.AI_UNREVIEWED)
+
+    def test_seed_never_reverts_an_approved_article(self):
+        # source_type is create-only: once a native speaker approves a
+        # translation the review workflow owns it. Re-asserting the fixture's
+        # ai_unreviewed on the next deploy would silently restore the "awaiting
+        # native review" badge and make approve_article_translation useless.
+        with patch(
+            "library.management.commands.seed_articles.load_all_rows",
+            return_value=self._rows("ai_unreviewed"),
+        ):
+            call_command("seed_articles", verbosity=0)
+            call_command(
+                "approve_article_translation",
+                "what-is-grace",
+                language="es",
+                no_fixture=True,
+            )
+            call_command("seed_articles", verbosity=0)  # the next deploy
+        art = Article.objects.get(slug="what-is-grace", language="es")
+        self.assertEqual(art.source_type, Book.SourceType.AI_REVIEWED)
