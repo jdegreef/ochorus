@@ -1,0 +1,60 @@
+{
+ "kind": "sermon",
+ "slug": "aggressive-christianity",
+ "language": "fr",
+ "job_issue": 1820,
+ "references": [
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:136",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 11:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 3:7-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 26:17-18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 14:18-20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 26:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 27:42",
+   "status": "self_rendered"
+  }
+ ]
+}

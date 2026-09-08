@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-07: French sermons (batch 3) — aggressive-christianity (#1820),
+// salvation-by-faith (#1821). Rebuilds /fr/sermons so each card carries its translated title.
 // prerender refresh 2026-09-07: final two Swahili sermons — enduring-persecution-for-christ (#1731), the-new-birth (#1732). Rebuilds /sw/sermons; clears the sw sermon queue.
 // prerender refresh 2026-09-07: three more Swahili sermons — the-almost-christian (#1728),
 // fall-and-recovery-of-man (#1729), the-method-of-grace (#1730). Rebuilds /sw/sermons.
