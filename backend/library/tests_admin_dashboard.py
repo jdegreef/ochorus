@@ -13,6 +13,7 @@ from common.testing import body_of
 
 from .models import (
     AdminAction,
+    Article,
     AuditDismissal,
     Author,
     AuthorTranslation,
@@ -146,6 +147,31 @@ class AdminLanguageDetailTests(TestCase):
         self.assertEqual([a["slug"] for a in res.data["todo"]["bios"]], ["am"])
 
         self.assertEqual(res.data["english_counts"]["books"], 3)
+
+    @override_settings(DEBUG=True)
+    def test_articles_present_and_todo(self):
+        # Two published English articles; one translated to Swahili (unreviewed).
+        for i, slug in enumerate(("what-is-grace", "what-is-faith")):
+            Article.objects.create(
+                slug=slug, language="en", h1=slug.replace("-", " ").title(),
+                body_html="<p>x</p>", sort_order=i, is_published=True,
+            )
+        Article.objects.create(
+            slug="what-is-grace", language="sw", h1="Neema Ni Nini?",
+            body_html="<p>x</p>", is_published=True,
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        res = self.client.get("/api/admin/languages/sw/")
+        self.assertEqual(res.status_code, 200)
+        # Present: the one translated article, carrying its review state so the
+        # admin row can badge it.
+        self.assertEqual([a["slug"] for a in res.data["articles"]], ["what-is-grace"])
+        self.assertEqual(res.data["articles"][0]["source_type"], "ai_unreviewed")
+        # Todo: the still-untranslated English article only.
+        self.assertEqual(
+            [a["slug"] for a in res.data["todo"]["articles"]], ["what-is-faith"]
+        )
+        self.assertEqual(res.data["english_counts"]["articles"], 2)
 
     @override_settings(DEBUG=True)
     def test_sermon_todo_round_robins_across_authors(self):

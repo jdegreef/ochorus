@@ -87,6 +87,29 @@ class ArticleApiTests(TestCase):
         self.assertEqual(slugs, ["what-is-faith", "how-to-pray-so-god-answers"])
         self.assertNotIn("body_html", res.data[0])
 
+    def test_source_type_rides_on_the_list_card_and_the_detail(self):
+        # The review badge depends on source_type reaching the reader on both the
+        # index card and the article page. An AI translation must not be
+        # presented as an original (CLAUDE.md), so this pins the field's
+        # exposure: a serializer fields-list edit that dropped it would silently
+        # remove the "awaiting review" badge from every translated article.
+        Article.objects.create(
+            slug="what-is-faith", language="sw", h1="Imani Ni Nini?",
+            body_html=BODY, is_published=True,
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        card = self.client.get(reverse("article-list"), {"language": "sw"})
+        self.assertEqual([a["source_type"] for a in card.data], ["ai_unreviewed"])
+        detail = self.client.get(
+            reverse("article-detail", args=["what-is-faith"]), {"language": "sw"}
+        )
+        self.assertEqual(detail.data["source_type"], "ai_unreviewed")
+        # The English original carries the neutral value — no badge.
+        en = self.client.get(
+            reverse("article-detail", args=["what-is-faith"]), {"language": "en"}
+        )
+        self.assertEqual(en.data["source_type"], "public_domain")
+
     def test_detail_annotates_scripture_references(self):
         # The body's Bible references are wrapped as tappable spans on read (the
         # same treatment chapters/sermons get), so the reader's scripture popover
