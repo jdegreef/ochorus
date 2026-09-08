@@ -291,6 +291,13 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"es/all-things-for-good": {
+			"ground": "4266c4dd9d8a808664530a89a1d323400af3ae26e11380753c67b62a1aabd658",
+			"style": "press",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
+		},
 		"es/around-the-wicket-gate": {
 			"ground": "1c9faf7bb2996d919e4087f97d30a1dfdb584281eabde021c62b64c518bcef46",
 			"style": "revival",
@@ -338,7 +345,7 @@
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.95
 		},
 		"es/humility-2": {
 			"ground": "d6046be6ce4cb2267982a0dc9b4bd8de643b29595e2d5707d62de5e4cef767ba",
@@ -674,14 +681,14 @@
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.6
 		},
 		"how-to-succeed-in-the-christian-life": {
 			"ground": "364f5cd67e613b8d6f826481b98eb2877a7f09d10e78af0651ad6c14dab5ca59",
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.95
 		},
 		"if": {
 			"ground": "0c65bcb9120c231a9934c71eb12065665162accd56ddffed98cf593540cbb2b0",
@@ -1486,7 +1493,7 @@
 			"style": "revival",
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.95
 		},
 		"the-gospel-of-healing": {
 			"ground": "1883499ea592265954865f02edbaf0e6c92b980f512ca2405bf0817d4d15f720",
