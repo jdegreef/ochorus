@@ -335,6 +335,25 @@ CURATED: dict[str, Artwork] = {
         "A sea still heaving as the storm clears — mighty power spent and answered, "
         "which is what the twelve sermons are about.",
     ),
+    # ── Batch 7 · R. A. Torrey's plate books ───────────────────────────────
+    # Moody's man, three books on three works of the faith — winning others,
+    # walking oneself, and the ground both stand on — each to its own subject in
+    # the `revival` display face of his century.
+    "how-to-bring-men-to-christ": Artwork(
+        "met", 436012, "Gustave Courbet", "The Fishing Boat", "1865",
+        "A boat drawn up on the shore — fishers of men, which is the trade the "
+        "handbook of personal work is teaching.",
+    ),
+    "how-to-succeed-in-the-christian-life": Artwork(
+        "met", 437436, "Auguste Renoir", "A Road in Louveciennes", "ca. 1870",
+        "A road going on ahead in ordinary light — the Christian life is walked, "
+        "not seized, and the book is about keeping to the way.",
+    ),
+    "the-fundamental-doctrines-of-the-christian-faith": Artwork(
+        "met", 438106, "Canaletto", "Warwick Castle", "1748",
+        "A stronghold on its rock, drawn stone by stone — the fundamentals are "
+        "the fortress a faith is kept in, and this is one built to last.",
+    ),
 }
 
 
