@@ -1,3 +1,10 @@
+// prerender refresh 2026-09-07 (faith-in-the-fire completes in sw): the-god-of-all-comfort
+// (#1720) ships in Swahili, and it is the second of the two source books of the curated plan
+// faith-in-the-fire — he-holds-my-tomorrows.sw already shipped — so seed_plans creates the
+// (faith-in-the-fire, sw) row on this deploy from prose that already lives in
+// data/plan_translations/sw.json. Without this touch the DB would carry the new plan while
+// /sw/plans keeps serving the page it was built with. The other two books in the same PR
+// (days-of-heaven-upon-earth, watchman-nee-a-life) feed no plan.
 // prerender refresh 2026-09-05 (grace/power complete in pt): the three new pt books
 // finish two curated plans. a-call-to-the-unconverted + all-of-grace complete
 // grace-for-every-sinner (O Caminho para Deus, 35 days; the-way-to-god was already

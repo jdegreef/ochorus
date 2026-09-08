@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-07: three NEW Swahili books — the-god-of-all-comfort (#1720),
+// days-of-heaven-upon-earth (#1722), watchman-nee-a-life (#1758). 50 chapters. Rebuilds /sw/books
+// so each card carries its translated title and localized cover. the-god-of-all-comfort ALSO
+// completes the faith-in-the-fire plan in sw (he-holds-my-tomorrows.sw already shipped) — see the
+// plans/+page.ts touch; days-of-heaven and watchman-nee back no plan.
 // prerender refresh 2026-09-07: three NEW Swahili books — women-who-moved-heaven-2 (#1787),
 // gleanings-among-the-sheaves (#1719), the-gospel-of-healing (#1721). 40 chapters. Rebuilds /sw/books.
 // prerender refresh 2026-09-07: three NEW Swahili books — feasting-at-the-table (#1723),

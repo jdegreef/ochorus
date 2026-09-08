@@ -615,13 +615,22 @@ export interface AdminAudit {
 	language_names: Record<string, string>;
 	/** The edition this response is filtered to, or '' for all. */
 	language: string;
+	/** ISO timestamp of the (possibly cached) scan this result was built from —
+	 *  the "last run" the page shows. */
+	scanned_at: string;
 }
 
-/** @param language a content-language code to filter to, or '' for all editions. */
-export const getAdminAudit = (language = '') =>
-	apiFetch<AdminAudit>(
-		`/api/admin/audit/${language ? `?language=${encodeURIComponent(language)}` : ''}`
-	);
+/**
+ * @param language a content-language code to filter to, or '' for all editions.
+ * @param refresh  force a fresh server scan instead of the cached one (Re-run).
+ */
+export const getAdminAudit = (language = '', refresh = false) => {
+	const q = new URLSearchParams();
+	if (language) q.set('language', language);
+	if (refresh) q.set('refresh', '1');
+	const qs = q.toString();
+	return apiFetch<AdminAudit>(`/api/admin/audit/${qs ? `?${qs}` : ''}`);
+};
 
 /** Identifies one dismissible quality finding: the check plus the finding's
  *  natural key. `ref` is the chapter order (chapter-shaped checks) or the

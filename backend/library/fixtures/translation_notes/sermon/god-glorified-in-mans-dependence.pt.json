@@ -1,0 +1,38 @@
+{
+  "kind": "sermon",
+  "slug": "god-glorified-in-mans-dependence",
+  "language": "pt",
+  "job_issue": null,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Luke 11:21",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 4:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 7:38",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 24:49",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Acts 2:13",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Mark 10:15",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 115:1",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session translation: self_rendered verses, authoritative Bíblia Livre wording where supplied; verify during native review."
+}
