@@ -1,6 +1,6 @@
 ---
 name: write-article
-description: Write a devotional/theological SEO article for the Ochorus Articles section (footer-linked, /articles) and ship it as a content fixture. Use when asked to write an article, add to the Articles section, or produce SEO content that funnels readers into the library. Each article is 1500–2000 words, has 7+ Scriptures, carries no author/byline, and ends with a "Read next" funnel of real books/sermons/bios. This is a living playbook — append new gotchas as we find them.
+description: Write a devotional/theological SEO article for the Ochorus Articles section (footer-linked, /articles) and ship it as a content fixture. Use when asked to write an article, add to the Articles section, or produce SEO content that funnels readers into the library. Each article is 1500–2000 words, has 7+ Scriptures, is attributed to Ochorus the house (a byline + schema author, never an individual person), and ends with a "Read next" funnel of real books/sermons/bios. This is a living playbook — append new gotchas as we find them.
 ---
 
 # Writing an Ochorus article
@@ -8,10 +8,20 @@ description: Write a devotional/theological SEO article for the Ochorus Articles
 Articles are original site writing — the SEO layer that answers the questions
 people search ("how to trust God", "what does it mean to abide in Christ") and
 funnels them into the library via a **Read next** block. They live at `/articles`
-(footer, not header), carry **no author/byline**, and are per-language rows like
-books (English only for now). Model + API + frontend shipped in PRs #1395/#1396;
-the design brief is `docs/articles.pdf`. See also [[write-biography]] (the nearest
-sibling) and the `articles-section` memory.
+(footer, not header) and are per-language rows like books (English only for now).
+Model + API + frontend shipped in PRs #1395/#1396; the design brief is
+`docs/articles.pdf`. See also [[write-biography]] (the nearest sibling) and the
+`articles-section` memory.
+
+**Attribution — the house, never a person.** An article has no per-article author
+FK by design: it is original *site* writing, not a work by an individual. But the
+house name **Ochorus** is surfaced as the byline and as the JSON-LD `author`
+(Organization "Ochorus", mirroring the existing `publisher`), for reader trust and
+E-E-A-T — and the kind eyebrow reads `Article · Ochorus · <time>`, matching the
+sermon eyebrow's `KIND · … · TIME` shape (shipped `98f31dd8`, branch
+`seo/article-ochorus-author`). `datePublished`/`dateModified` are unchanged. So:
+attribute to Ochorus the organization, **never** invent or imply an individual
+author (that is also why person-lives stay out of `/articles` — see below).
 
 Everything below assumes a worktree off `origin/main` and `backend/` with
 `DJANGO_DEBUG=true uv run`.
