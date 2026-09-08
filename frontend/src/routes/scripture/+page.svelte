@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ScripturePageEntry } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { breadcrumbLd, hreflangFor } from '$lib/seo';
+	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -44,9 +44,25 @@
 		{ name: 'Scripture', href: path }
 	];
 	const crumbsLd = breadcrumbLd(crumbs);
+
+	// The same CollectionPage → ItemList every sibling hub carries (books, plans,
+	// topics, sermons, …): the books of the Bible in canonical order. There is no
+	// per-book index route, so each item points at the book's first chapter page —
+	// the shelf's roster, not an opaque grid a crawler can only guess at.
+	const collectionLd = $derived(
+		collectionPage({
+			name: 'Scripture in the Christian classics',
+			description,
+			url: canonical,
+			items: books.map((b) => ({
+				name: b.title,
+				url: `/scripture/${b.slug}/${Math.min(...b.chapters.map((c) => c.chapter))}/`
+			}))
+		})
+	);
 </script>
 
-<Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd]} />
+<Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, collectionLd]} />
 
 <div class="page-col px-5 py-10">
 	<!-- No visible breadcrumb: a top-level hub's only trail is Home > <this>
