@@ -1,0 +1,304 @@
+{
+ "kind": "sermon",
+ "slug": "salvation-by-faith",
+ "language": "fr",
+ "job_issue": 1821,
+ "references": [
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 8:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 26:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 9:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 4:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 16:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 4:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 9:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 9:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 1:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 130:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 3:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 11:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 11:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 11:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 6:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 55:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Peter 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 45:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 6:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:54",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "self_rendered"
+  }
+ ]
+}
