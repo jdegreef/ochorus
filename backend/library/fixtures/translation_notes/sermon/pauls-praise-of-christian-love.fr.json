@@ -1,0 +1,72 @@
+{
+ "kind": "sermon",
+ "slug": "pauls-praise-of-christian-love",
+ "language": "fr",
+ "job_issue": 1824,
+ "references": [
+  {
+   "reference": "Romans 12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:3-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 8:1-12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:24-31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Titus 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 15:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:70",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Samuel 3:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "self_rendered"
+  }
+ ]
+}
