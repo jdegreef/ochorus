@@ -103,6 +103,10 @@
 					{/each}
 				</section>
 
+				<p class="mb-8 -mt-4 text-micro text-muted">
+					Activated = has opened at least one book. Dormant = registered but hasn't started reading.
+				</p>
+
 				<!-- Weekly signups -->
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">New sign-ups per week</h2>
