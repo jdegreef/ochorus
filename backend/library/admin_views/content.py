@@ -523,10 +523,13 @@ class AdminCoverageView(APIView):
     """Translation-coverage matrices: every canonical work (row) × language
     (column), so gaps across the whole library are visible at a glance.
 
-    Books, sermons and plans each get their own matrix but share one column set
-    (every language present in any of them, English first). A book cell carries
-    its ``source_type``; sermon/plan cells are simply "present" (those models
-    have no source_type). A missing language is absent from the row's ``cells``.
+    Books, sermons, plans and biographies each get their own matrix but share one
+    column set (every language present in any of them, English first). A book cell
+    carries its ``source_type``; a biography's translated cells carry
+    ai_reviewed / ai_unreviewed (from ``AuthorTranslation.reviewed``) with the
+    English original shown as "present"; sermon/plan cells are simply "present"
+    (those models have no source_type). A missing language is absent from the
+    row's ``cells``.
     """
 
     permission_classes = [IsAdminEmail]
@@ -548,13 +551,19 @@ class AdminCoverageView(APIView):
                 "books": self._book_rows(),
                 "sermons": self._sermon_rows(),
                 "plans": self._plan_rows(),
+                "bios": self._bio_rows(),
             }
         )
 
     def _language_codes(self) -> list[str]:
-        codes: set[str] = set()
+        codes: set[str] = {"en"}  # bios' English source is Author.bio_html, not a row
         for model in (Book, Sermon, Plan):
             codes.update(model.objects.values_list("language", flat=True).distinct())
+        codes.update(
+            AuthorTranslation.objects.exclude(bio_html="")
+            .values_list("language", flat=True)
+            .distinct()
+        )
         return sorted(codes, key=lambda c: (c != "en", c))
 
     def _rows(self, records, cell_value, *, with_author: bool) -> list[dict]:
@@ -608,5 +617,32 @@ class AdminCoverageView(APIView):
     def _plan_rows(self) -> list[dict]:
         records = Plan.objects.values("slug", "language", "title", "sort_order")
         return self._rows(records, lambda r: "present", with_author=False)
+
+    def _bio_rows(self) -> list[dict]:
+        """Author long-form biographies (row = author) × language.
+
+        The English biography lives on ``Author.bio_html``; each translation is
+        an ``AuthorTranslation`` with its own ``bio_html`` and a ``reviewed``
+        flag, so a translated cell reads ai_reviewed / ai_unreviewed like a book
+        does and the English original shows as "present". A bio counts only when
+        its long-form body is non-empty — the same test the language pages use.
+        Doesn't go through ``_rows``: the English source and the translations
+        live in two different models, not one per-(slug, language) table.
+        """
+        rows: dict[str, dict] = {}
+        for a in Author.objects.exclude(bio_html="").values("slug", "name"):
+            rows[a["slug"]] = {"slug": a["slug"], "title": a["name"], "cells": {"en": "present"}}
+        translations = AuthorTranslation.objects.exclude(bio_html="").values(
+            "author__slug", "author__name", "language", "reviewed"
+        )
+        for t in translations:
+            slug = t["author__slug"]
+            row = rows.get(slug)
+            if row is None:
+                # A translated bio whose English original is blank — unusual, but
+                # show it rather than silently drop the work.
+                row = rows[slug] = {"slug": slug, "title": t["author__name"], "cells": {}}
+            row["cells"][t["language"]] = "ai_reviewed" if t["reviewed"] else "ai_unreviewed"
+        return sorted(rows.values(), key=lambda r: r["title"].lower())
 
 

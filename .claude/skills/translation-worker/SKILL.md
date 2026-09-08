@@ -2206,3 +2206,31 @@ archaic spelling and period punctuation are the text, not defects in it.
   whole original range, or you overwrite good work. Also: a range-agent that reports "OK"
   for all four can still have written none of the files (the check-the-file rule applies
   to the whole range at once) — true-vine ch01-04 reported OK with zero files on disk.
+- **A MODERN-TRANSLATION-sourced book (NIV/ESV, not KJV) yields a CLUSTER of
+  verse-ratchet pins — budget for it** (women-who-moved-heaven-2 sw, #1787,
+  2026-09-07; a modern Ochorus-Originals anthology). Two effects compound. Its
+  quotations don't match the KJV-tradition crib, so `suv` is null nearly
+  everywhere and every verse is self-rendered. And its self-rendered SUV then
+  diverges from how the corpus already renders those famous verses — usually in
+  EXTENT (the modern book quotes the FULL verse: Isaiah 40:31 with the eagle's
+  wings, Galatians 2:20 entire, John 12:24 with its "Amin, amin" opening) or in
+  authentic-SUV-vs-corpus-paraphrase (Romans 8:28 self-rendered as authentic SUV
+  "Nasi twajua ya kuwa katika mambo yote…" vs a shipped book's loose paraphrase).
+  Six such flags fired on one 13-chapter book. Most are NOT reconcilable to
+  containment without truncating the fuller quotation or degrading authentic SUV
+  to the corpus paraphrase, so the honest resolution is to `--update-baseline`
+  and JUSTIFY the growth (a native reviewer unifies later) — the #515/#1113
+  reconcile-first rule still applies to any that ARE the same clause+extent, but
+  a modern source tilts the mix hard toward pin. Say "deliberate loosening" in
+  the PR. A KJV-sourced book in the same corpus barely trips the ratchet at all;
+  the source translation is the predictor.
+- **A range-agent can write to a SIBLING of the batch dir — search the whole
+  scratchpad before believing a file is lost** (gleanings sw, #1719). One
+  range-agent wrote `out/gleanings/ch09-12.json` under `scratchpad/` instead of
+  `scratchpad/books2/`, having computed the path from a helper script's cwd and
+  dropped the batch subdir — while reporting "OK". The chapters looked missing at
+  the expected path; a `find <scratchpad> -path '*<slug>/chNN.json'` located them
+  one directory up, and `mv` recovered them (no re-translation). So the
+  check-the-file rule extends: when a range's outputs are absent, `find` the
+  whole scratchpad tree before re-dispatching — the work is usually there under a
+  near-miss path.

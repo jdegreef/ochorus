@@ -1,0 +1,24 @@
+{
+ "kind": "bio",
+ "slug": "george-whitefield",
+ "language": "fr",
+ "job_issue": 1807,
+ "references": [
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "self_rendered"
+  }
+ ]
+}
