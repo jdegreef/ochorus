@@ -172,6 +172,11 @@
 	<a href="/books" class="btn btn-primary inline-block">{t('books.readEnglish')}</a>
 {/snippet}
 
+<!-- Filtered the shelf down to nothing: clear the filters (Biographies' model). -->
+{#snippet clearFiltersAction()}
+	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
+{/snippet}
+
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
 	{#snippet bookCounts()}
@@ -376,7 +381,10 @@
 
 		<!-- Results -->
 		{#if sorted.length === 0}
-			<p class="py-16 text-center text-body text-muted">{t('books.noResults')}</p>
+			<!-- Books exist in this language but the filters removed them all — a
+			     filtered-to-nothing state, so offer to clear (not the bare <p> that
+			     made Books the odd shelf out; C2). -->
+			<EmptyState message={t('books.noResults')} action={clearFiltersAction} />
 		{:else if groups}
 			{#each groups as g (g.slug)}
 				<section id="author-{g.slug}" class="mb-10 scroll-mt-20">
