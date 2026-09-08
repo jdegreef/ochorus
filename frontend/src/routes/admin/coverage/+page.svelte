@@ -260,13 +260,16 @@
 				</div>
 			{/if}
 
-			<div class="overflow-x-auto rounded-card border border-border bg-surface">
+			<!-- Bounded scroll box so the header sticks on vertical scroll too: a bare
+			     overflow-x container leaves `sticky top-0` nothing to stick within.
+			     The Work column was already frozen (sticky left-0). -->
+			<div class="max-h-[75vh] overflow-auto rounded-card border border-border bg-surface">
 				<table class="w-full border-collapse text-body">
 					<thead>
 						<tr class="border-b border-border text-small text-muted">
-							<th class="sticky left-0 z-10 bg-surface px-4 py-3 text-left font-semibold">Work</th>
+							<th class="sticky left-0 top-0 z-30 bg-surface px-4 py-3 text-left font-semibold">Work</th>
 							{#each langs as l, i (l.code)}
-								<th class="px-3 py-3 text-center font-semibold align-top" title={l.name}>
+								<th class="sticky top-0 z-20 bg-surface px-3 py-3 text-center font-semibold align-top" title={l.name}>
 									<a href="/admin/languages/{l.code}" class="text-muted hover:text-accent">{l.code}</a>
 									{#if jobsConfigured !== false && l.queueable && colGaps[i] > 0}
 										<button
