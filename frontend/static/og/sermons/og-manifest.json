@@ -6,6 +6,14 @@
 			"content": "2f27e610a6786579791168ea07979e928b2fe11de630467d8eb981e329e5161d",
 			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
+		"a-full-reward": {
+			"content": "b1bbbd510083da27a80b0a0bfec3da060687bae85a5b490329814acfa7f40308",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
+		"a-ribband-of-blue": {
+			"content": "7e292b60cf125bdd256ab026b82fd847a98edb6367ae9357604baa9901db9141",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
 		"against-eutropius": {
 			"content": "487ba1c3e7c03d63f4eb65591c5a494f46e488144ced1fab73d6c29ecffc2be1",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
@@ -13,6 +21,10 @@
 		"aggressive-christianity": {
 			"content": "7d8815a036751c3892785ea0b0eb2ca895397a20eda07d5c1e4d256c8c4b8d5a",
 			"art": "763d491efd44377e13af092f384c6ba95a99dd8d00e0374d28ec4073bd34415b"
+		},
+		"all-sufficiency": {
+			"content": "c8df905fdd5a6e871a990566b751a9ecc143c42cd8b9e2a3f667deee43895260",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
 		"are-you-born-again": {
 			"content": "c1ad1e6faa3a6d54fe4a7e8415368c5aad52d638c781d869e4ab65c4553a8b47",
@@ -25,6 +37,10 @@
 		"blessed-adversity": {
 			"content": "a7f700f3b1b3c3a4c1001375e3d3f7c5cf96bd049902bbde9e1e15b81fb87fba",
 			"art": "9cd00f892ca0891ecc1333a269dd432483319497e9fc151fa1507428773014e7"
+		},
+		"blessed-prosperity": {
+			"content": "97e34c7d1ef753ee4365e081fb32a516c2a6ed7f5ab22b6be85fe84692b561bd",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
 		"catholic-spirit": {
 			"content": "6aa2c468f3b4c385cbba149f67b1c65a28f5e7820a32bd27d7aaf08b440da167",
@@ -189,6 +205,10 @@
 		"salvation-by-faith": {
 			"content": "58df1306c97777612a7876d6d46913c2a3e45911cda27effbe2e093bc3d64642",
 			"art": "a16d3a6126a69f3c1ceb30bc409cb2bf72c3b9b85865b45f4d5c3031f865ab6e"
+		},
+		"self-denial-versus-self-assertion": {
+			"content": "b0c3c3f4b51749543f1bf820ef5775dc6801671a5161a7e557bb6441c4a7e531",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
 		"sinners-bound-to-change-their-own-hearts": {
 			"content": "305446a428b2ba40dc7debcabe70482f6d1b66c00a544510ed863aafc2805e40",
