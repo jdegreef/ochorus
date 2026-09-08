@@ -21,6 +21,7 @@ from rest_framework.test import APIClient
 
 from .languages import config as language_config
 from .models import (
+    Article,
     Author,
     Book,
     Chapter,
@@ -693,6 +694,57 @@ class TopicTranslationJobTests(TestCase):
         self.topic.is_published = False
         self.topic.save()
         self.assertIsNone(_resolve_source("topic", "prayer", "sw"))
+
+
+class ArticleTranslationJobTests(TestCase):
+    """The `article` job type: queueing a devotional article for translation.
+
+    Articles are authorless per-language rows (like a plan) with the headline on
+    ``h1`` rather than ``title`` — this covers the plumbing that lets the queue
+    express them the same way it expresses books and sermons.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        self.article = Article.objects.create(
+            slug="what-is-grace",
+            language="en",
+            h1="What Is Grace?",
+            body_html="<p>Grace is unmerited favour.</p>",
+            is_published=True,
+        )
+
+    def test_article_is_an_accepted_job_type(self):
+        from library.admin_views.jobs import _TITLE_RE, JOB_TYPES
+
+        self.assertIn("article", JOB_TYPES)
+        m = _TITLE_RE.match("[translation] article:what-is-grace -> es")
+        self.assertIsNotNone(m)
+        self.assertEqual(m.groups(), ("article", "what-is-grace", "es"))
+
+    def test_resolve_source_reports_untranslated_then_translated(self):
+        from library.admin_views.jobs import _resolve_source
+
+        title, byline, exists = _resolve_source("article", "what-is-grace", "es")
+        self.assertEqual(title, "What Is Grace?")
+        # Authorless, like a plan.
+        self.assertIsNone(byline)
+        self.assertFalse(exists)
+
+        Article.objects.create(
+            slug="what-is-grace",
+            language="es",
+            h1="¿Qué es la gracia?",
+            body_html="<p>La gracia es el favor inmerecido.</p>",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        _, _, exists = _resolve_source("article", "what-is-grace", "es")
+        self.assertTrue(exists)
+
+    def test_resolve_source_is_none_for_an_unknown_slug(self):
+        from library.admin_views.jobs import _resolve_source
+
+        self.assertIsNone(_resolve_source("article", "no-such-article", "es"))
 
 
 class TranslateTopicCommandTests(TestCase):

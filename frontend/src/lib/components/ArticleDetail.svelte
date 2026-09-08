@@ -10,6 +10,7 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import SourceBadge from '$lib/components/SourceBadge.svelte';
 
 	// The reader detail for one article. Its sibling on the same route is the
 	// topic shelf (ArticleTopicShelf) — the [slug]/+page.svelte switch picks one.
@@ -115,6 +116,10 @@
 			{#if article.description}
 				<p class="standfirst">{article.description}</p>
 			{/if}
+			<!-- Nothing for an English original; on a translation it says whether a
+			     native speaker has checked it (CLAUDE.md: never present an
+			     unreviewed translation as an original). -->
+			<SourceBadge sourceType={article.source_type} class="mt-3" />
 		</header>
 
 		{#if showToc}

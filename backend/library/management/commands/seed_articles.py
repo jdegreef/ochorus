@@ -31,6 +31,7 @@ ARTICLE_FIELDS = (
     "description",
     "body_html",
     "related",
+    "source_type",
     "source_url",
     "sort_order",
     "is_published",
@@ -39,9 +40,11 @@ ARTICLE_FIELDS = (
 # Seeded on create, then owned by whoever acts on the live DB: an urgent
 # unpublish happens directly in the database, and re-asserting the fixture's
 # ``is_published`` on every deploy would silently resurrect a pulled article.
-# Same reasoning as seed_sermons.CREATE_ONLY_FIELDS (which also carries
-# source_type; articles have none yet — English originals, not translations).
-CREATE_ONLY_FIELDS = frozenset({"is_published"})
+# ``source_type`` is create-only for the same round-trip reason as
+# seed_sermons: a native reviewer flips ai_unreviewed → ai_reviewed on the live
+# row (via approve_article_translation), and re-asserting the fixture's value on
+# every deploy would re-gate an approved translation back to unreviewed.
+CREATE_ONLY_FIELDS = frozenset({"source_type", "is_published"})
 UPDATE_FIELDS = tuple(f for f in ARTICLE_FIELDS if f not in CREATE_ONLY_FIELDS)
 
 

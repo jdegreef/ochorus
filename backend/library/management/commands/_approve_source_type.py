@@ -43,6 +43,9 @@ class ApproveSourceTypeCommand(BaseCommand):
     model = None
     #: What to call it in messages: "book", "sermon".
     noun = ""
+    #: The attribute holding the work's display title. Book/Sermon use "title";
+    #: an Article has no author and names its headline "h1".
+    title_field = "title"
 
     @staticmethod
     def fixture_path(slug: str, language: str):
@@ -73,8 +76,9 @@ class ApproveSourceTypeCommand(BaseCommand):
             )
         obj.source_type = Book.SourceType.AI_REVIEWED
         obj.save(update_fields=["source_type"])
+        title = getattr(obj, self.title_field)
         self.stdout.write(
-            self.style.SUCCESS(f"✓ {obj.title} ({language}) marked reviewed")
+            self.style.SUCCESS(f"✓ {title} ({language}) marked reviewed")
         )
 
         if no_fixture:

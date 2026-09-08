@@ -576,6 +576,10 @@ export interface ArticleSummary {
 	meta_title: string;
 	/** Standfirst — shown under the H1 and used as the meta description. */
 	description: string;
+	/** Review state — an English original is `public_domain` (no badge); an AI
+	 *  translation is `ai_unreviewed` until a native speaker approves it. Shared
+	 *  vocabulary with Book/Sermon; the detail page badges it. */
+	source_type: SourceType;
 	/** Words in the body, derived server-side — feeds `readingTime()`. */
 	word_count: number;
 	sort_order: number;

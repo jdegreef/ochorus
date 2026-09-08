@@ -5,8 +5,10 @@ from __future__ import annotations
 import re
 from html import unescape
 
+from django.core.cache import cache
 from django.db import transaction
 from django.db.models import Count, Max
+from django.utils import timezone
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -22,6 +24,7 @@ from ..models import (
     AuthorTranslation,
     Book,
     Chapter,
+    ContentRevision,
     PlanDay,
     ReviewOutcome,
     Sermon,
@@ -905,36 +908,40 @@ class AdminAuditView(APIView):
 
     permission_classes = [IsAdminEmail]
 
-    def get(self, request):
-        raw, per_book = self._scan_chapters()
-        dup_raw = self._duplicate_titles(per_book["titles"])
-        # empty_chapters is a structural defect (integrity), not an advisory
-        # heuristic — capped like the rest of integrity, never dismissible.
-        integrity_raw = {
-            "empty_books": self._empty_books(),
-            "empty_chapters": raw["empty_chapters"],
-            "order_gaps": self._order_gaps(per_book["orders"]),
-            "broken_plan_days": self._broken_plan_days(),
-        }
+    #: The scan is a full pass over every chapter, so it is memoised on the
+    #: content revision (in the key, like the public ETag): it recomputes only
+    #: when content actually changes, not on every visit, language switch, or
+    #: accept/undo. The TTL is a safety net for a change that bypasses the
+    #: revision — a direct SQL-editor edit or a management command — without a
+    #: worker restart; Re-run forces a fresh scan.
+    #:
+    #: The cache is per-process (LocMemCache across several gunicorn workers), so
+    #: "Scanned …" can differ between workers and one Re-run refreshes only the
+    #: worker it lands on — acceptable jitter for an admin view, not worth a
+    #: shared cache.
+    SCAN_CACHE_SECONDS = 600
 
-        # The languages that have any finding, computed on the FULL result so the
-        # picker is the same whichever language is selected — filtering to one
-        # edition must not empty the menu you'd switch back through. Names come
-        # from the language registry (the runtime source), like the review queue,
-        # so an edition an admin added without a frontend deploy still reads as
-        # itself rather than a bare code.
-        languages = self._languages(raw, dup_raw, integrity_raw)
-        language_names = {code: language_entry(code)["name"] for code in languages}
+    def get(self, request):
+        refresh = request.query_params.get("refresh") in ("1", "true", "yes")
+        scan = self._cached_scan(refresh=refresh)
+
+        raw = scan["raw"]
+        dup_raw = scan["dup_raw"]
+        integrity_raw = scan["integrity_raw"]
 
         # Filter to one edition BEFORE capping, so a capped check (e.g. 344
         # mid-sentence splits across editions) reports its true per-language
-        # count, not whatever survived the first 100 rows.
+        # count, not whatever survived the first 100 rows. Builds new lists —
+        # the cached scan is never mutated.
         language = (request.query_params.get("language") or "").strip()
         if language:
             raw = {k: _only(v, language) for k, v in raw.items()}
             dup_raw = _only(dup_raw, language)
             integrity_raw = {k: _only(v, language) for k, v in integrity_raw.items()}
 
+        # Dismissals and the language filter are applied per request, NOT cached:
+        # accepting a finding must take effect at once, without waiting for the
+        # scan to expire, and it does not change the content.
         dismissed = self._dismissed()
         quality = {
             check: _present(check, raw[check], dismissed)
@@ -946,11 +953,48 @@ class AdminAuditView(APIView):
             {
                 "quality": quality,
                 "integrity": integrity,
-                "languages": languages,
-                "language_names": language_names,
+                "languages": scan["languages"],
+                "language_names": scan["language_names"],
                 "language": language,
+                "scanned_at": scan["scanned_at"],
             }
         )
+
+    def _cached_scan(self, *, refresh: bool) -> dict:
+        """The full library scan, memoised under the content revision. Re-run
+        (``refresh``) recomputes and overwrites this worker's entry."""
+        key = f"audit:scan:{ContentRevision.current()}"
+        if refresh:
+            scan = self._scan()
+            cache.set(key, scan, self.SCAN_CACHE_SECONDS)
+            return scan
+        return cache.get_or_set(key, self._scan, self.SCAN_CACHE_SECONDS)
+
+    def _scan(self) -> dict:
+        """One full pass over the library — the expensive part the cache holds.
+        Language names come from the registry (the runtime source), like the
+        review queue, so an edition added without a frontend deploy still reads
+        as itself rather than a bare code."""
+        raw, per_book = self._scan_chapters()
+        dup_raw = self._duplicate_titles(per_book["titles"])
+        # empty_chapters is a structural defect (integrity), not an advisory
+        # heuristic — capped like the rest of integrity, never dismissible.
+        integrity_raw = {
+            "empty_books": self._empty_books(),
+            "empty_chapters": raw["empty_chapters"],
+            "order_gaps": self._order_gaps(per_book["orders"]),
+            "broken_plan_days": self._broken_plan_days(),
+        }
+        # Computed on the FULL result so the picker is stable under a filter.
+        languages = self._languages(raw, dup_raw, integrity_raw)
+        return {
+            "scanned_at": timezone.now().isoformat(),
+            "raw": raw,
+            "dup_raw": dup_raw,
+            "integrity_raw": integrity_raw,
+            "languages": languages,
+            "language_names": {code: language_entry(code)["name"] for code in languages},
+        }
 
     @staticmethod
     def _languages(raw: dict, dup_raw: list, integrity_raw: dict) -> list[str]:

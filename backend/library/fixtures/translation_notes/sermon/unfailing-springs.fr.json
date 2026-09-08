@@ -1,0 +1,44 @@
+{
+ "kind": "sermon",
+ "slug": "unfailing-springs",
+ "language": "fr",
+ "job_issue": 1819,
+ "references": [
+  {
+   "reference": "John 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 7:37",
+   "status": "self_rendered"
+  }
+ ]
+}

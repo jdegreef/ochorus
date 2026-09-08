@@ -1,0 +1,28 @@
+{
+ "kind": "sermon",
+ "slug": "himself",
+ "language": "fr",
+ "job_issue": 1818,
+ "references": [
+  {
+   "reference": "Colossians 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 13:43",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 1:26",
+   "status": "self_rendered"
+  }
+ ]
+}
