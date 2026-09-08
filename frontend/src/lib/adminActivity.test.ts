@@ -129,6 +129,20 @@ describe('summariseDetail', () => {
 		expect(parts).not.toContainEqual(expect.objectContaining({ kind: 'diff' }));
 		expect(parts).toEqual([{ kind: 'text', text: 'direction from: ltr' }]);
 	});
+
+	it('renders a URL field as a link chip — a GitHub issue as #number', () => {
+		const parts = summariseDetail({ issue: 'https://github.com/jdegreef/ochorus/issues/1852' });
+		expect(parts).toEqual([
+			{ kind: 'link', text: '#1852', href: 'https://github.com/jdegreef/ochorus/issues/1852' }
+		]);
+	});
+
+	it('falls back to the hostname for a non-issue URL', () => {
+		const parts = summariseDetail({ source: 'https://www.gutenberg.org/ebooks/12' });
+		expect(parts).toEqual([
+			{ kind: 'link', text: 'gutenberg.org', href: 'https://www.gutenberg.org/ebooks/12' }
+		]);
+	});
 });
 
 describe('dayLabel / groupByDay', () => {
