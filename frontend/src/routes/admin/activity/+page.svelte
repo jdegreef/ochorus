@@ -344,6 +344,15 @@
 														<span>{part.label} <span class="text-text line-through opacity-70">{part.from}</span> <span class="font-semibold text-text">→ {part.to}</span></span>
 													{:else if part.kind === 'quote'}
 														<span class="italic">“{part.text}”</span>
+													{:else if part.kind === 'link'}
+														<a
+															href={part.href}
+															target="_blank"
+															rel="noopener"
+															title={part.href}
+															class="inline-flex items-center rounded-full border border-border px-2 py-0.5 text-micro font-semibold text-muted transition-colors hover:border-accent-soft-border hover:text-accent hover:no-underline"
+															>{part.text}</a
+														>
 													{:else}
 														<span>{part.text}</span>
 													{/if}
