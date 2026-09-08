@@ -68,19 +68,13 @@
 
 	onMount(async () => {
 		const lang = getLang();
-		// The quote slugs saved right now — resolved as a batch, not a catalog.
-		const quoteSlugs = favorites
-			.all()
-			.filter((e) => e.kind === 'quote')
-			.map((e) => e.slug);
-		const [a, b, p, s, tp, ar, qs] = await Promise.all([
+		const [a, b, p, s, tp, ar] = await Promise.all([
 			listAuthors(lang).catch(() => [] as AuthorBio[]),
 			listBooks(lang).catch(() => [] as BookSummary[]),
 			listPlans(lang).catch(() => [] as PlanSummary[]),
 			listSermons(lang).catch(() => [] as SermonSummary[]),
 			listTopics(lang).catch(() => [] as TopicSummary[]),
-			listArticles(lang).catch(() => [] as ArticleSummary[]),
-			resolveQuotes(quoteSlugs).catch(() => [] as SavedQuote[])
+			listArticles(lang).catch(() => [] as ArticleSummary[])
 		]);
 		authors = Object.fromEntries(a.map((x) => [x.slug, x]));
 		books = Object.fromEntries(b.map((x) => [x.slug, x]));
@@ -88,14 +82,15 @@
 		sermons = Object.fromEntries(s.map((x) => [x.slug, x]));
 		topics = Object.fromEntries(tp.map((x) => [x.slug, x]));
 		articles = Object.fromEntries(ar.map((x) => [x.slug, x]));
-		quotes = Object.fromEntries(qs.map((x) => [x.slug, x]));
 		loaded = true;
 	});
 
-	// favorites.all() is reactive (favorites.ticks), so un-hearting a work on its
-	// own page and coming back reflects immediately.
-	const entriesOf = (kind: FavoriteEntry['kind']) =>
-		favorites.all().filter((e) => e.kind === kind);
+	// favorites.all() is reactive (favorites.ticks) but re-reads and re-sorts
+	// localStorage on each call, so read it once per tick and filter that rather
+	// than once per section. Un-hearting a work on its own page and coming back
+	// still reflects immediately.
+	const allFavs = $derived(favorites.all());
+	const entriesOf = (kind: FavoriteEntry['kind']) => allFavs.filter((e) => e.kind === kind);
 
 	const authorFavs = $derived(entriesOf('author'));
 	const bookFavs = $derived(entriesOf('book'));
@@ -104,16 +99,30 @@
 	const planFavs = $derived(entriesOf('plan'));
 	const articleFavs = $derived(entriesOf('article'));
 	const quoteFavs = $derived(entriesOf('quote'));
-	const isEmpty = $derived(
-		authorFavs.length +
-			bookFavs.length +
-			sermonFavs.length +
-			topicFavs.length +
-			planFavs.length +
-			articleFavs.length +
-			quoteFavs.length ===
-			0
-	);
+	const isEmpty = $derived(allFavs.length === 0);
+
+	// Quotes have no catalog to load up front (there's no "list all quotes"), so
+	// the shelf resolves them itself: whenever quoteFavs gains a slug we haven't
+	// fetched yet — first paint, or a quote hearted on another device arriving
+	// through the account sync (which bumps favorites.ticks) — fetch just the new
+	// ones and merge them in. Without this, a synced-in quote would show neither
+	// a card nor a fallback pill (quotes have no pill) until a reload.
+	// `requestedQuotes` is a plain, non-reactive Set so a dropped/unreviewed slug
+	// isn't re-fetched every time the list changes; a failed batch is cleared so
+	// it can retry.
+	const requestedQuotes = new Set<string>();
+	$effect(() => {
+		const missing = quoteFavs.map((e) => e.slug).filter((s) => !requestedQuotes.has(s));
+		if (!missing.length) return;
+		for (const s of missing) requestedQuotes.add(s);
+		resolveQuotes(missing)
+			.then((qs) => {
+				quotes = { ...quotes, ...Object.fromEntries(qs.map((x) => [x.slug, x])) };
+			})
+			.catch(() => {
+				for (const s of missing) requestedQuotes.delete(s);
+			});
+	});
 
 	// Fallback link for a favorite whose catalog row is missing in this language.
 	// Quotes are absent on purpose — they have no slug-addressable page.
