@@ -1,32 +1,44 @@
-"""Build E. M. Bounds's *The Possibilities of Prayer* (1923).
+"""Build E. M. Bounds's *The Possibilities of Prayer* (1923) from CCEL.
 
-The missing volume of the Bounds prayer series — the other six are on CCEL and
-already shipped; this one is on neither CCEL nor Gutenberg, only as an Internet
-Archive OCR scan (`possibilitiesofp0000boun`, a Baker reprint of the 1923
-Fleming H. Revell first edition, which is public domain). The generic
-`import_archive` cannot chapter it: the sixteen chapters are headed by a *bare
-roman numeral* on its own line, not a "CHAPTER N" marker, and the numerals are
-badly mis-scanned ("Ill" for III, a stray "V." beside VI). So this command finds
-the sixteen heads structurally — a short roman-ish line immediately above an
-ALL-CAPS chapter title that is not the running book-title header — splits on them
-in document order, and applies the titles from the book's own Contents.
+A clean re-import that REPLACES the earlier Internet Archive OCR edition
+(`possibilitiesofp0000boun`). That scan was too degraded to correct piecemeal —
+page numbers leaked mid-prose ("IOI To answer prayer"), a running header injected
+into a sentence, systematic `.,,`/slash quote garble, and hundreds of
+single-letter misreads ("Prayei", "answet", "peopie"). See the english-qa /
+book-import skills: like *The Bruised Reed*, the right fix is a fresh source, not
+a thousand string pairs.
 
-Each chapter opens with an italic epigraph (usually closing "— Author"), then
-small-caps drop-cap prose ("WITHOUT the promise…", "THE ministry…"); chapter I's
-ornamental drop cap mis-scanned to "P^HE" for "The". The reflow reuses
-`import_archive`, extended (as the Foote build does) to drop the ALL-CAPS running
-headers this scan repeats on every page.
+CCEL hosts the 1923 Fleming H. Revell text (public domain — first published
+1923) as a clean human transcription, but only in its LEGACY layout: sixteen
+pages `possibility02.htm`…`possibility17.htm`, one chapter each. `import_ccel`,
+written for the modern `<work>.toc.html` / `div#theText` scheme, cannot read the
+legacy pages — which is exactly why an earlier pass reported the book "on neither
+CCEL nor Gutenberg" and fell back to the OCR scan.
 
-Fixture-driven: `seed_books` creates it on the next deploy, resolving the
-existing `e-m-bounds` author from `authors.json`. Idempotent. No `catalog.py`
-entry — a stray `import_archive` would only re-flatten it.
+Each legacy page is `<h2>{roman}. {title}</h2>`, a `<blockquote>` epigraph
+closing "-- AUTHOR", then prose in which paragraph breaks are marked by a `<br>`
+plus a five-`&nbsp;` first-line indent (there are no `<p>` tags). Scripture
+quotations set each verse as its own five-`&nbsp;` paragraph (kept, as the book
+does); hymn stanzas are bracketed by blank `<br>&nbsp;<br>` separators with a
+`<br>` per line and a heavier (or zero) indent, and are flattened to one
+paragraph per stanza. `_paragraphs` reconstructs the `<p>` structure from those
+signals: an exactly-five-`&nbsp;` indent opens a new paragraph, a blank separator
+ends one, everything else continues the current one.
+
+The sixteen chapters and their order — including the repeated "(Continued)"
+titles — match the shipped fixture exactly, so translation parity is preserved by
+construction. Fixture-driven (`seed_books` creates it on deploy, resolving the
+existing `e-m-bounds` author from `authors.json`), idempotent, no `catalog.py`
+entry — a stray `import_ccel`/`import_archive` would only mangle it.
 
     DJANGO_DEBUG=true uv run python manage.py build_possibilities
 """
 
 from __future__ import annotations
 
+import html as _html
 import re
+from time import sleep
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
@@ -35,24 +47,20 @@ from django.db.models import Max
 from library import english_audit
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
-from library.management.commands.import_archive import (
-    _BARE_NUM,
-    _HYPHEN_EOL,
-    _HYPHEN_SPACE,
-    _NON_LETTER,
-    _WS,
-    _is_header,
-    fetch_text,
-)
+from library.management.commands.import_ccel import fetch
 from library.models import Author, Book, Chapter
-from library.quote_marks import convert_work
+from library.quote_marks import assert_punctuation_only, convert
 
 SLUG = "possibilities-of-prayer"
 TITLE = "The Possibilities of Prayer"
 SUBTITLE = "How Far Believing Prayer Can Reach"
 AUTHOR_SLUG = "e-m-bounds"
-ARCHIVE_ID = "possibilitiesofp0000boun"
 COVER_COLOR = "#324a6d"  # deep prayer-blue — house-style cover ground
+
+#: CCEL legacy work. Chapter N is page N+1 (`possibility01.htm` is the title
+#: page, `.._c.htm` the contents); `possibility02.htm` = chapter I.
+PAGE_URL = "https://ccel.org/ccel/bounds/possibility/possibility{page:02d}.htm"
+SOURCE_URL = "https://ccel.org/ccel/bounds/possibility/possibility.htm"
 
 DESCRIPTION = (
     "Bounds's fullest case for what prayer can actually do. Ranging over the "
@@ -66,14 +74,13 @@ DESCRIPTION = (
 
 ATTRIBUTION = (
     "Public domain — first published 1923 by Fleming H. Revell. Text from the "
-    "Internet Archive scan possibilitiesofp0000boun; chapter titles are taken "
-    "from the book's own Contents (the scan's running-header titles are "
-    "OCR-mangled)."
+    "Christian Classics Ethereal Library transcription "
+    "(ccel.org/ccel/bounds/possibility)."
 )
 
-# The sixteen chapters, from the 1923 Contents page. Order IS the reading order.
+# The sixteen chapters, from the 1923 Contents. Order IS the reading order.
 # V/VI and XI/XII repeat "(Continued)" exactly as the book does — a faithful
-# duplicate, like Clement's repeated "Continuation".
+# duplicate. These match the shipped fixture titles verbatim.
 TITLES = [
     "The Ministry of Prayer",
     "Prayer and the Promises",
@@ -93,221 +100,158 @@ TITLES = [
     "Prayer and Divine Providence (Continued)",
 ]
 
-#: A body chapter head is a bare roman-ish token on its own line. The numerals
-#: are heavily mis-scanned, so this tolerates the misreads too — "o" for a
-#: numeral letter, "|"/"." specks, "^" — on top of the case-folded I V X L C.
-#: The ALL-CAPS-title test below is what makes it precise, and we split on
-#: document order, never the parsed number.
-_ROMANISH = re.compile(r"^[IVXLC][IVXLCo|.^]*$", re.I)
+#: The Roman numeral that heads each chapter page, checked against the order so a
+#: reshuffled CCEL TOC fails loud rather than mislabelling a chapter. The "."
+#: disambiguates the prefixes ("III." never startswith "II.").
+_ROMAN = [
+    "I", "II", "III", "IV", "V", "VI", "VII", "VIII",
+    "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI",
+]
 
-#: Lines to skip before the first chapter — the title page and Contents, whose
-#: own roman numerals and ALL-CAPS entries would otherwise false-match as heads.
-#: Any drift is caught anyway by the head-count guard in `_chapters`.
-_FRONT_MATTER_LINES = 250
+_NAV = re.compile(r"(?i)<a\b")        # the bottom nav bar ends the prose region
+_BR = re.compile(r"(?i)<br\s*/?>")
+_NBSP = re.compile(r"&nbsp;|\xa0")
 
-#: The running book-title header ("12 THE POSSIBILITIES OF PRAYER"), which sits
-#: below a stray roman-ish scrap and would otherwise read as a chapter head.
-_BOOK_TITLE = "POSSIBILITIES OF PRAYER"
-
-#: The back cover splits the title across two lines ("THE POSSIBILITIES" / "OF
-#: PRAYER"); the running header never does. It marks the end of the last chapter.
-_BACK_COVER = re.compile(r"^\s*THE\s+POSSIBILITIES\s*$")
-
-#: A leftover heading fragment between a title and its epigraph: "(Continued)"
-#: on its own line, with the OCR's brace/paren variants.
-_CONTINUED = re.compile(r"^[\s({\[]*continued[\s)}\]]*$", re.I)
-
-#: The prose opener: a small-caps drop-cap word (two or more capitals, caret
-#: tolerated for chapter I's mangled "P^HE") followed by a lowercase word.
-_OPENER = re.compile(r"^\s*([A-Z][A-Z^]+)\s+[a-z]")
-
-#: The ornamental drop caps the scanner could not read as letters.
-_OPENER_FIX = {"P^HE": "The"}
-
-#: Unambiguous OCR misreads, kept as literal PHRASES so a valid "he", "but" or
-#: "lie" elsewhere is never touched. The italic epigraphs read 'b' as 'h'
-#: ("should he" → "should be"); "socalled" lost its hyphen; and the railway term
-#: "six-foot" lost its opening quote, leaving an orphan close-quote.
-_OCR_FIXES = [
-    ("should he the breath", "should be the breath"),
-    ("which may he pleaded", "which may be pleaded"),
-    ("meditation may he ousted", "meditation may be ousted"),
-    ("nothing hut prayer", "nothing but prayer"),
-    ("wisdom, hut trembles", "wisdom, but trembles"),
-    ("socalled", "so-called"),
-    ("the six-foot” when", "the “six-foot” when"),
-    # A closing double-quote the scanner read as "/’" (or "/'"); the comma or
-    # period before it is settled by whether a new sentence follows.
-    ("Comforter/’ the", "Comforter,” the"),
-    ("promises/’ “", "promises,” “"),
-    ("utterance/' Prayer", "utterance.” Prayer"),
-    ("carefulness/’ the", "carefulness,” the"),
-    ("carefulness/’ and", "carefulness,” and"),
-    ("whatever/’ “", "whatever,” “"),
-    ("anything/’ and", "anything,” and"),
-    ("heard/' It might", "heard.” It might"),
-    # A leaked lowercase-roman page number, a stray speck, an OCR'd ellipsis,
-    # and a space-split word.
-    ("We ii need", "We need"),
-    ("to prayer.” • There", "to prayer.” There"),
-    ("nothing but prayer. • . . The", "nothing but prayer. … The"),
-    ("un fainting", "unfainting"),
-    # A leaked page number "44" where the opening quote of a Scripture citation
-    # belongs ("Ye also helping together…", 2 Cor 1:11).
-    ("44 Ye also helping", "“Ye also helping"),
-    # "4" read for the opening single-quote of a nested quotation (Wesley's hymn
-    # "…cries, 'It shall be done!'"), and "0" read for a vocative "O Lord".
-    ("cries, 4 It shall be done", "cries, ‘It shall be done"),
-    ("0 Lord send me", "O Lord send me"),
+#: Literal fixes for the CCEL transcription itself (not our reflow). The one
+#: below is a misplaced opening quote — the source sets it after "is" instead of
+#: before "In", leaving an orphan close-quote (Phil. 4:6, ch. VIII). The only
+#: such misplacement in the sixteen chapters.
+_SOURCE_FIXES = [
+    ('reading there is" In nothing be anxious,"', 'reading there is "In nothing be anxious,"'),
 ]
 
 
-def _fix_ocr(html: str) -> str:
-    for bad, good in _OCR_FIXES:
-        html = html.replace(bad, good)
-    return html
+def _text(fragment: str) -> str:
+    """Visible text of an HTML fragment: tags dropped, entities/&nbsp; resolved."""
+    plain = re.sub(r"(?s)<[^>]+>", " ", fragment)
+    plain = _html.unescape(plain).replace("\xa0", " ")
+    return re.sub(r"\s+", " ", plain).strip()
 
 
-def _is_allcaps(line: str) -> bool:
-    letters = _NON_LETTER.sub("", line)
-    return len(letters) >= 4 and letters.isupper()
+def _esc(text: str) -> str:
+    """HTML-escape body text but keep straight quotes for `convert` to curl."""
+    return _html.escape(text, quote=False)
 
 
-def _is_heading(line: str) -> bool:
-    """A chapter-title line, allowing a mixed-case trailing "( Continued )"."""
-    return _is_allcaps(re.sub(r"\([^)]*\)\s*$", "", line))
+def _normalize(text: str) -> str:
+    """Collapse the CCEL spaced ellipsis to a single glyph.
+
+    The transcription sets an elision as spaced dots — ". . ." for an ellipsis,
+    ". . . ." for a sentence period followed by one — which read as spacing
+    before punctuation. Match the ellipsis the reader (and the shipped edition)
+    expect. The four-dot form is handled first so the three-dot rule cannot eat
+    part of it.
+    """
+    text = re.sub(r"\.(?: \.){3}", ". …", text)
+    text = re.sub(r"\.(?: \.){2}", "…", text)
+    return text
 
 
-def _furniture(line: str) -> bool:
-    """Blank/letterless (page numbers, barcodes, ornaments), or an ALL-CAPS
-    running header (the repeated title)."""
-    if not line or not re.search(r"[A-Za-z]", line):
-        return True
-    return bool(_BARE_NUM.match(line)) or _is_header(line) or _is_allcaps(line)
+def _lead(seg: str) -> int:
+    """Count of leading `&nbsp;` on a `<br>`-delimited segment — its indent."""
+    m = re.match(rf"\s*((?:{_NBSP.pattern})*)", seg)
+    return len(_NBSP.findall(m.group(1)))
 
 
-def _reflow(lines: list[str]) -> str:
-    """`import_archive._reflow`, dropping this scan's ALL-CAPS running headers."""
+def _paragraphs(prose_html: str) -> list[str]:
+    """Reconstruct paragraphs from the legacy `<br>` + `&nbsp;`-indent markup.
+
+    A five-`&nbsp;` indent opens a new paragraph (a prose paragraph, or one
+    scripture verse); a blank separator ends the current one; any other line
+    (the chapter's first paragraph, or a hymn line at zero or heavy indent)
+    continues the current buffer — so a whole hymn stanza flattens to one
+    paragraph.
+    """
     paras: list[str] = []
     buf = ""
 
     def flush() -> None:
         nonlocal buf
-        text = _HYPHEN_SPACE.sub(r"\1-\2", _WS.sub(" ", buf).strip())
-        if text:
-            paras.append(text)
+        if buf.strip():
+            paras.append(buf.strip())
         buf = ""
 
-    for raw in lines:
-        line = raw.strip()
-        # This scan sets the end-of-line hyphen as ¬ (U+00AC), which the ASCII
-        # _HYPHEN_EOL join can't see — normalise a trailing one so "reason¬" /
-        # "able" rejoins to "reasonable".
-        if line.endswith("¬"):
-            line = line[:-1] + "-"
-        if _furniture(line):
-            if buf.rstrip().endswith((".", "!", "?", "”", '"', ":", ";")):
-                flush()
+    for seg in _BR.split(prose_html):
+        core = _text(seg)
+        if not core:                 # blank separator: stanza / hard break
+            flush()
             continue
-        if buf and _HYPHEN_EOL.search(buf.rstrip()):
-            buf = _HYPHEN_EOL.sub(r"\1", buf.rstrip()) + line
-        else:
-            buf = f"{buf} {line}" if buf else line
+        if _lead(seg) == 5:          # standard first-line indent: new paragraph
+            flush()
+            buf = core
+        else:                        # first paragraph, or a verse/continuation line
+            buf = f"{buf} {core}" if buf else core
     flush()
-    return "".join(f"<p>{p}</p>" for p in paras)
+    return paras
 
 
-def _title_line(lines: list[str], i: int) -> str | None:
-    """The first real (non-blank, non-punctuation) line below a roman-ish scrap."""
-    for j in range(i + 1, min(i + 6, len(lines))):
-        t = lines[j].strip()
-        if t and re.search(r"[A-Za-z]", t):
-            return t
-    return None
+def _epigraph(bq_html: str) -> str:
+    """The `<blockquote>` epigraph → an italic quote paragraph + an attribution.
+
+    Every epigraph closes "-- AUTHOR" in caps; the author is title-cased and set
+    on its own line, as the shipped edition and the sibling Bounds books do.
+    """
+    text = _text(bq_html)
+    quote, sep, author = text.rpartition(" -- ")
+    if not sep:
+        quote, sep, author = text.rpartition("--")
+    if not sep:
+        # No attribution separator: the whole line is the quote, not the author
+        # (rpartition returns the string in its third slot when the sep is absent).
+        quote, author = text, ""
+    quote = _normalize(quote.strip())
+    author = author.strip()
+    out = f"<p><i>{_esc(quote)}</i></p>"
+    if author:
+        out += f"<p><i>— {_esc(author.title())}</i></p>"
+    return out
 
 
-def _heads(lines: list[str]) -> list[int]:
-    """Indices of the sixteen bare-roman chapter heads, in document order."""
-    heads: list[int] = []
-    for i, raw in enumerate(lines):
-        if i < _FRONT_MATTER_LINES:
-            continue
-        token = _WS.sub("", raw)
-        if not (1 <= len(token) <= 5 and _ROMANISH.match(token)):
-            continue
-        title = _title_line(lines, i)
-        if not title or not _is_heading(title):
-            continue
-        norm = _WS.sub(" ", re.sub(r"[^A-Za-z ]", " ", title)).strip().upper()
-        # Reject the running book-title header (bare or with a page number).
-        if _BOOK_TITLE in norm or re.match(r"^\s*\d", title):
-            continue
-        heads.append(i)
-    return heads
+def _fix_dropcap(paras: list[str]) -> list[str]:
+    """Title-case the small-caps drop-cap opener ("THE ministry" → "The ...")."""
+    if paras:
+        paras[0] = re.sub(
+            r"^([A-Z]{2,})\b", lambda m: m.group(1).capitalize(), paras[0], count=1
+        )
+    return paras
 
 
-def _italic(html: str) -> str:
-    """Wrap each reflowed epigraph paragraph in <i>, as the sibling books do."""
-    return html.replace("<p>", "<p><i>").replace("</p>", "</i></p>")
-
-
-def _fix_dropcap(prose_html: str) -> str:
-    """Turn the small-caps drop-cap opener into a normal word."""
-    def repl(m: re.Match) -> str:
-        word = m.group(2)
-        return m.group(1) + _OPENER_FIX.get(word, word.capitalize())
-
-    return re.sub(r"^(<p>)([A-Z^]{2,})", repl, prose_html, count=1)
-
-
-def _chapter_body(block: list[str]) -> str:
-    """One chapter's block → epigraph (italic) + drop-cap-fixed prose."""
-    # The prose begins at the small-caps drop-cap line; everything above it,
-    # once the title and running headers are dropped, is the epigraph.
-    prose_at = next(
-        (
-            j
-            for j, ln in enumerate(block)
-            if (s := ln.strip()) and not _furniture(s) and _OPENER.match(s)
-        ),
-        0,
-    )
-    epi_lines = [
-        ln
-        for ln in block[:prose_at]
-        if not _is_heading(s := ln.strip()) and not _CONTINUED.match(s)
-    ]
-    epigraph = _italic(_reflow(epi_lines)) if epi_lines else ""
-    prose = _fix_dropcap(_reflow(block[prose_at:]))
-    return epigraph + prose
+def _chapter_body(page_html: str) -> str:
+    mb = re.search(r"(?is)<blockquote>(.*?)</blockquote>", page_html)
+    if not mb:
+        raise CommandError("no epigraph blockquote — the CCEL page changed.")
+    after = page_html[mb.end():]
+    nav = _NAV.search(after)
+    prose_html = after[: nav.start()] if nav else after
+    paras = _fix_dropcap(_paragraphs(prose_html))
+    # Source fixes act on the whitespace-normalised paragraph text, not the raw
+    # HTML (whose line wraps would defeat a literal match).
+    for i, p in enumerate(paras):
+        for bad, good in _SOURCE_FIXES:
+            p = p.replace(bad, good)
+        paras[i] = _normalize(p)
+    body = _epigraph(mb.group(1)) + "".join(f"<p>{_esc(p)}</p>" for p in paras)
+    return body
 
 
 def _chapters() -> list[tuple[str, str]]:
-    lines = fetch_text(ARCHIVE_ID).split("\n")
-    heads = _heads(lines)
-    if len(heads) != len(TITLES):
-        raise CommandError(
-            f"found {len(heads)} chapter heads, expected {len(TITLES)} — the scan changed."
-        )
-    # The last chapter stops at the back cover, not the end of the OCR dump.
-    # Fail loud rather than fall back to end-of-file: without this marker the
-    # last chapter would swallow the reprint's back-cover blurb (real prose the
-    # furniture filter and the word-count floor don't catch).
-    back = next(
-        (i for i in range(heads[-1] + 1, len(lines)) if _BACK_COVER.match(lines[i])),
-        None,
-    )
-    if back is None:
-        raise CommandError("back-cover marker not found — the scan changed.")
     out: list[tuple[str, str]] = []
-    for n, start in enumerate(heads):
-        end = heads[n + 1] if n + 1 < len(heads) else back
-        out.append((TITLES[n], _chapter_body(lines[start + 1 : end])))
+    for order, title in enumerate(TITLES, start=1):
+        page = fetch(PAGE_URL.format(page=order + 1))
+        mh = re.search(r"(?is)<h2>(.*?)</h2>", page)
+        head = _text(mh.group(1)) if mh else ""
+        if not head.upper().startswith(_ROMAN[order - 1] + "."):
+            raise CommandError(
+                f"ch {order}: page heading {head!r} is not {_ROMAN[order - 1]}. — "
+                "the CCEL TOC changed."
+            )
+        out.append((title, _chapter_body(page)))
+        sleep(0.5)  # be polite to CCEL
     return out
 
 
 class Command(BaseCommand):
-    help = "Build Bounds's The Possibilities of Prayer (dev DB); then serialize the fixture."
+    help = "Rebuild Bounds's The Possibilities of Prayer from CCEL (dev DB)."
 
     @transaction.atomic
     def handle(self, *args, **opts):
@@ -327,13 +271,13 @@ class Command(BaseCommand):
             "description": DESCRIPTION,
             "attribution": ATTRIBUTION,
             "cover_color": COVER_COLOR,
-            "source_url": f"https://archive.org/details/{ARCHIVE_ID}",
+            "source_url": SOURCE_URL,
         }
         next_order = (Book.objects.aggregate(m=Max("sort_order"))["m"] or 0) + 1
         book, was_created = Book.objects.update_or_create(
             slug=SLUG,
             language="en",
-            defaults=content,
+            defaults=content,  # cover_url deliberately untouched — the designed cover stays
             create_defaults={
                 **content,
                 "source_type": Book.SourceType.PUBLIC_DOMAIN,
@@ -343,16 +287,24 @@ class Command(BaseCommand):
         )
         book.chapters.all().delete()
 
-        # The OCR mixes straight and curly quotes; normalise to curly (the
-        # corpus target) with the same context-sensitive logic migration 0084
-        # uses, so QuoteStyleTests passes and a rebuild stays idempotent.
-        bodies = [
-            settled_chapter_body(SLUG, order, clean_fragment(_fix_ocr(body)))
-            for order, (_, body) in enumerate(chapters, start=1)
-        ]
-        bodies, _ = convert_work(bodies, f"{SLUG}.en.json")
+        # The CCEL transcription is uniformly straight-quoted; curl every mark
+        # to the corpus's typographic style (English quotes with “ ”, so
+        # outer_guillemets=False). `convert_work` is the wrong tool here — it
+        # deliberately no-ops on a work that does not MIX styles — so call the
+        # per-body converter directly and keep its punctuation-only guard.
+        # Baking it into the build keeps the fixture curly and the rebuild
+        # idempotent (QuoteStyleTests wants one consistent style).
+        bodies = []
+        for order, (_, body) in enumerate(chapters, start=1):
+            settled = settled_chapter_body(SLUG, order, clean_fragment(body))
+            curled, changed = convert(settled, outer_guillemets=False)
+            if changed:
+                assert_punctuation_only(settled, curled, f"{SLUG}.en[{order}]")
+            bodies.append(curled)
 
-        for order, ((title, _), body) in enumerate(zip(chapters, bodies, strict=True), start=1):
+        for order, ((title, _), body) in enumerate(
+            zip(chapters, bodies, strict=True), start=1
+        ):
             wc = word_count(body)
             if wc < 200:
                 raise CommandError(f"ch {order} ({title!r}): only {wc} words — aborted.")

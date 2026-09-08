@@ -61,6 +61,13 @@ KNOWN_CHAPTER_GAPS: set[tuple[str, str, int]] = {
     ("es", "the-unselfishness-of-god", 12),   # en 46 -> es 48
     ("es", "the-unselfishness-of-god", 22),   # en 74 -> es 84
     ("es", "the-unselfishness-of-god", 32),   # en 36 -> es 40
+    # possibilities-of-prayer: the English edition was re-imported from CCEL's
+    # clean transcription (migration 0132) to replace a badly degraded OCR scan;
+    # the Spanish was translated from that OCR text and so no longer matches the
+    # new paragraph markup. Chapter 1 happens to align; the rest await a
+    # re-translation from the clean English. Same count/order, so the reader's
+    # per-chapter URLs still resolve in both languages.
+    *(("es", "possibilities-of-prayer", n) for n in range(2, 17)),
 }
 
 _TAG = re.compile(r"<[^>]+>")
