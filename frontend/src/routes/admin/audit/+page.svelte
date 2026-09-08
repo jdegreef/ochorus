@@ -10,17 +10,38 @@
 		type AuditDismissTarget
 	} from '$lib/library-admin';
 	import { localizeHref } from '$lib/href';
+	import { relativeTime } from '$lib/relativeTime';
 	import { locales } from '$lib/paraglide/runtime';
 
 	// '' = all editions. Filtering is server-side (accurate per-language totals
 	// even when a check is capped), so a change re-fetches via the resource key.
 	let language = $state('');
+	// The scan is cached server-side; Re-run forces a fresh one. Not $state: the
+	// fetcher reads it (untracked) for the one load it covers, then clears it —
+	// nothing reactive observes it, and the resource key is `language` alone.
+	let forceRefresh = false;
 	const auditRes = adminResource(
-		() => getAdminAudit(language),
+		() => getAdminAudit(language, forceRefresh),
 		'Something went wrong running the audit.',
 		() => language
 	);
 	const audit = $derived(auditRes.data);
+
+	async function rerun() {
+		forceRefresh = true;
+		try {
+			await auditRes.load();
+		} finally {
+			forceRefresh = false;
+		}
+	}
+
+	// "Scanned 3 minutes ago". Admin is English-only (see frontend/CLAUDE.md).
+	const scannedAgo = $derived(
+		audit?.scanned_at
+			? relativeTime(new Date(audit.scanned_at).getTime(), 'en', 'just now')
+			: ''
+	);
 
 	// Names ride along with the audit (registry-sourced), so a language an admin
 	// added without a deploy reads as itself; the code is the fallback while the
@@ -157,9 +178,12 @@
 						{/each}
 					</select>
 				{/if}
-				<button class="btn btn-ghost" onclick={auditRes.load} disabled={auditRes.loading}
-					>{auditRes.loading ? 'Re-running…' : 'Re-run'}</button
-				>
+				<div class="flex flex-col items-end">
+					<button class="btn btn-ghost" onclick={rerun} disabled={auditRes.loading}
+						>{auditRes.loading ? 'Re-running…' : 'Re-run'}</button
+					>
+					{#if scannedAgo}<span class="mt-1 text-micro text-muted">Scanned {scannedAgo}</span>{/if}
+				</div>
 			</div>
 		{/if}
 	</header>
