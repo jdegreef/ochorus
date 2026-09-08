@@ -2419,6 +2419,47 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
     ("<p> 'I SPOKE of an army", "<p> I SPOKE of an army")
 )
 
+# OCR/typo slips found while translating Murray's book to Portuguese (batch 6); scattered one-word mechanical errors, each grammar- or KJV-forced.
+BODY_CORRECTIONS.setdefault('true-vine', {}).setdefault("replacements", []).extend([
+    ('what as unspeakable blessedness', 'what an unspeakable blessedness'),
+    ('pleases and edified', 'pleases and edifies'),
+    ('may posses me', 'may possess me'),
+    ('receive it from the vine sap', 'receive from the vine sap'),
+    ('shaper than any two-edged', 'sharper than any two-edged'),
+    ('much more cloth us', 'much more clothe us'),
+    ('how He ask and claims', 'how He asks and claims'),
+    ('He point us to the love', 'He points us to the love'),
+    ('he hold nothing back', 'he holds nothing back'),
+    ('tells us plainly out of how', 'tells us plainly how'),
+    ('who do so few realize it', 'why do so few realize it'),
+    ('and My Words, Abide in You', 'and My Words Abide in You'),
+    ('keep us. we thought', 'keep us. We thought'),
+])
+
+# OCR slips in Whitefield's sermon (batch 6); each grammar/sense-forced. 'not removed'->'now removed': as printed the clause is a flat contradiction (sword not removed YET free access given to the tree of life).
+BODY_CORRECTIONS.setdefault('christ-the-believers-wisdom', {}).setdefault("replacements", []).extend([
+    ('they do or ill enjoy', 'they do or will enjoy'),
+    ('is not removed, and free access', 'is now removed, and free access'),
+    ('Christ is mad to you', 'Christ is made to you'),
+    ('that Chris is their Emmanuel', 'that Christ is their Emmanuel'),
+    ('become string; so strong', 'become strong; so strong'),
+    ('esteem it o:', 'esteem it so:'),
+    ('they will the very being of sin', 'then will the very being of sin'),
+    ('but this I what we are', 'but this is what we are'),
+    ('trump of God given the general', 'trump of God give the general'),
+    ('to build you hopes of salvation', 'to build your hopes of salvation'),
+])
+
+# OCR/citation slips in Edwards's sermon (batch 6). 'divine divinity'->'divine dignity' (the phrase Edwards uses 4x elsewhere). Three misprinted refs corrected to the verse actually quoted: Matt 11:28-30 ('Come unto me'), Ps 65:7 ('stilleth the noise of the seas'), Ps 89:8 ('O Lord God of hosts').
+BODY_CORRECTIONS.setdefault('the-excellency-of-christ', {}).setdefault("replacements", []).extend([
+    ('committed himself God.', 'committed himself to God.'),
+    ('not so torment them', 'not to torment them'),
+    ('his divine divinity and glory', 'his divine dignity and glory'),
+    ('Matt. 9:28 30', 'Matt. 11:28-30'),
+    ('Psalm 115:7', 'Psalm 65:7'),
+    ('Psalm 139:8f', 'Psalm 89:8f'),
+])
+
 # OCR slip found while translating the sermon to Portuguese (batch 5): the
 # opening hymn line (Spurgeon quotes a couplet) begins with a drop-cap "OH"
 # and a closing quote after "praise?" but no opening quote — clears the
