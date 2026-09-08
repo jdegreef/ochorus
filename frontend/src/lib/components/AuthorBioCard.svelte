@@ -127,10 +127,12 @@
 	     no translation in this language is ABSENT, not English, so in a
 	     partially-translated locale many cards legitimately show works only. -->
 	{#if author.bio}
-			<!-- line-clamp-3: mini-bios run 171-640 characters, so rendering them in
-			     full gave every row a different height. The full text is one click
-			     away on the author page, which the CTA below already points at. -->
-			<p class="mt-3 line-clamp-5 text-body leading-relaxed text-muted sm:line-clamp-3">{author.bio}</p>
+			<!-- sm:line-clamp-4: mini-bios are authored to fit four lines here (~500
+			     characters), so they render in full without a trailing ellipsis;
+			     the clamp stays only as a safety net that also holds every row to
+			     the same height. The full text is one click away on the author
+			     page, which the CTA below already points at. -->
+			<p class="mt-3 line-clamp-5 text-body leading-relaxed text-muted sm:line-clamp-4">{author.bio}</p>
 	{/if}
 	<!-- The "View biography →" CTA above already serves book-less authors;
 	     add the read-more only where the CTA is a book count AND there is
