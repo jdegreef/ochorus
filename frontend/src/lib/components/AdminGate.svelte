@@ -22,6 +22,7 @@
 		resource,
 		errorTitle,
 		loadingText = 'Loading…',
+		loading,
 		panelClass = '',
 		children
 	}: {
@@ -31,6 +32,9 @@
 		errorTitle: string;
 		/** First-load copy; a few pages say something truer than "Loading…". */
 		loadingText?: string;
+		/** First-load placeholder — a page can pass a skeleton of its own layout
+		 * instead of the bare loadingText. */
+		loading?: Snippet;
 		/** Extra classes for the panels — detail pages sit below a back-link. */
 		panelClass?: string;
 		/** The page itself, rendered with the loaded payload. */
@@ -44,7 +48,11 @@
 </script>
 
 {#if resource.loading && !resource.data}
-	<p class="{panelClass} text-body text-muted">{loadingText}</p>
+	{#if loading}
+		{@render loading()}
+	{:else}
+		<p class="{panelClass} text-body text-muted">{loadingText}</p>
+	{/if}
 {:else if resource.denied}
 	<div class="{panelClass} rounded-card border border-border bg-surface p-8">
 		{#if auth.enabled && !auth.user}
