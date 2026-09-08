@@ -1,0 +1,22 @@
+{
+  "kind": "sermon",
+  "slug": "catholic-spirit",
+  "language": "pt",
+  "job_issue": null,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "John 13:34",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 3:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Kings 10:29",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session translation: self_rendered verses, authoritative Bíblia Livre wording where supplied; verify during native review."
+}
