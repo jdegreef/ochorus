@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-07: French author bios (batch 3) — a-b-simpson (#1812),
+// andrew-murray (#1813), dwight-l-moody (#1814). Author pages are prerendered PER
 // prerender refresh 2026-09-07: French author bio — charles-h-spurgeon (#1815).
 // Author pages are prerendered PER AUTHOR, so /fr/authors/charles-h-spurgeon must
 // rebuild for the translated bio and its pull-quotes and prayer callouts.
