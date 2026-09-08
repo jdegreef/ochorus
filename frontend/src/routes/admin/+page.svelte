@@ -95,7 +95,10 @@
 						href: '/admin/review'
 					},
 					{ label: 'authors without a bio', n: stats.attention.authors_without_bio, href: null },
-					{ label: 'empty chapters', n: stats.attention.empty_chapters, href: null }
+					// The audit lists the empty chapters themselves (integrity check). The
+					// other flags have no destination page yet — a Wave-3 acquisition/list
+					// view — so they stay non-links rather than pointing nowhere.
+					{ label: 'empty chapters', n: stats.attention.empty_chapters, href: '/admin/audit' }
 				].filter((f) => f.n > 0)
 			: []
 	);
