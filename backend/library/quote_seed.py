@@ -59,7 +59,8 @@ from __future__ import annotations
 #: jonathan-edwards      — approved 2026-08-30, eleven;
 #:                         and 2026-09-02, ten more (Selected Sermons).
 #: john-wesley           — approved 2026-08-30, eighteen;
-#:                         and 2026-09-02, thirteen more (Sermons on Several Occasions).
+#:                         and 2026-09-02, thirteen more (Sermons on Several Occasions) — thirty-one;
+#:                         and 2026-09-08, twenty-three more (Sermons on Several Occasions) — fifty-four.
 #: george-muller         — approved 2026-08-30, eleven;
 #:                         and 2026-09-02, four more (The Life of Trust);
 #:                         and 2026-09-02, sixteen more (The Life of Trust) — thirty-one.
@@ -2447,6 +2448,144 @@ JOHN_WESLEY = [
         "chapter": ("sermons-on-several-occasions", 6),
         "paragraph": 46,
     },
+    {
+        "slug": "john-wesley-98c3db43",
+        "text": "Outward religion may be where inward is not; but if there is none without, there can be none within.",
+        "chapter": ("sermons-on-several-occasions", 135),
+        "paragraph": 31,
+    },
+    {
+        "slug": "john-wesley-bd5633fb",
+        "text": "The world is the men that know not God, that neither love nor fear him.",
+        "chapter": ("sermons-on-several-occasions", 69),
+        "paragraph": 25,
+    },
+    {
+        "slug": "john-wesley-b6d3ae5f",
+        "text": "Religion is the love of God and our neighbour; that is, every man under heaven.",
+        "chapter": ("sermons-on-several-occasions", 85),
+        "paragraph": 47,
+    },
+    {
+        "slug": "john-wesley-2b7968c1",
+        "text": "Sin is then overcome, but it is not rooted out; it is conquered, but not destroyed.",
+        "chapter": ("sermons-on-several-occasions", 124),
+        "paragraph": 39,
+    },
+    {
+        "slug": "john-wesley-24804ca0",
+        "text": "God justifieth not the godly, but the ungodly; not those that are holy already, but the unholy.",
+        "chapter": ("sermons-on-several-occasions", 6),
+        "paragraph": 27,
+    },
+    {
+        "slug": "john-wesley-a392c43e",
+        "text": "Christ indeed cannot reign, where sin reigns; neither will he dwell where any sin is allowed.",
+        "chapter": ("sermons-on-several-occasions", 14),
+        "paragraph": 26,
+    },
+    {
+        "slug": "john-wesley-fbb70206",
+        "text": "Abhor sin far more than death or hell; abhor sin itself, far more than the punishment of it.",
+        "chapter": ("sermons-on-several-occasions", 35),
+        "paragraph": 49,
+    },
+    {
+        "slug": "john-wesley-2ea5c1d3",
+        "text": "We think of what we love; but we do not love God; therefore, we think not of him.",
+        "chapter": ("sermons-on-several-occasions", 42),
+        "paragraph": 12,
+    },
+    {
+        "slug": "john-wesley-1fed3831",
+        "text": "With regard to the Most High, man and all the concerns of men are nothing, less than nothing, before Him.",
+        "chapter": ("sermons-on-several-occasions", 68),
+        "paragraph": 63,
+    },
+    {
+        "slug": "john-wesley-df976f9c",
+        "text": "Next to the love of God, there is nothing which Satan so cordially abhors as the love of our neighbour.",
+        "chapter": ("sermons-on-several-occasions", 73),
+        "paragraph": 30,
+    },
+    {
+        "slug": "john-wesley-c49400e2",
+        "text": "You cannot deceive him; for he is infinite wisdom: You cannot fly from him; for he is every where: You cannot bribe him; for he is righteousness itself!",
+        "chapter": ("sermons-on-several-occasions", 106),
+        "paragraph": 31,
+    },
+    {
+        "slug": "john-wesley-ec09b762",
+        "text": "The righteousness of Christ is doubtless necessary for any soul that enters into glory: But so is personal holiness too, for every child of man.",
+        "chapter": ("sermons-on-several-occasions", 121),
+        "paragraph": 13,
+    },
+    {
+        "slug": "john-wesley-8fc9ccff",
+        "text": "Faith worketh by love; faith overcometh the world; faith purifieth the heart; faith, in the smallest measure, removeth mountains.",
+        "chapter": ("sermons-on-several-occasions", 130),
+        "paragraph": 61,
+    },
+    {
+        "slug": "john-wesley-96fdc970",
+        "text": "Christ is not only God above us; which may keep us in awe, but cannot save; but he is Immanuel, God with us, and in us.",
+        "chapter": ("sermons-on-several-occasions", 142),
+        "paragraph": 25,
+    },
+    {
+        "slug": "john-wesley-cd956c0e",
+        "text": "God hath given this honour to love alone: Love is the end of all the commandments of God.",
+        "chapter": ("sermons-on-several-occasions", 37),
+        "paragraph": 14,
+    },
+    {
+        "slug": "john-wesley-0c62bd4a",
+        "text": "May we not be of one heart, though we are not of one opinion?",
+        "chapter": ("sermons-on-several-occasions", 40),
+        "paragraph": 7,
+    },
+    {
+        "slug": "john-wesley-59d8d274",
+        "text": "The body dies when it is separated from the soul; the soul, when it is separated from God.",
+        "chapter": ("sermons-on-several-occasions", 46),
+        "paragraph": 7,
+    },
+    {
+        "slug": "john-wesley-c8f76836",
+        "text": "The love of the creature is changed to the love of the Creator; the love of the world into the love of God.",
+        "chapter": ("sermons-on-several-occasions", 84),
+        "paragraph": 21,
+    },
+    {
+        "slug": "john-wesley-14f9003f",
+        "text": "Whatsoever good is in man, or is done by man, God is the author and doer of it.",
+        "chapter": ("sermons-on-several-occasions", 129),
+        "paragraph": 12,
+    },
+    {
+        "slug": "john-wesley-8f518f4f",
+        "text": "Every child of man is in a thousand mistakes, and is liable to fresh mistakes every moment.",
+        "chapter": ("sermons-on-several-occasions", 58),
+        "paragraph": 16,
+    },
+    {
+        "slug": "john-wesley-4819ac9b",
+        "text": "If you move but one step towards God, you are not as other men are.",
+        "chapter": ("sermons-on-several-occasions", 32),
+        "paragraph": 27,
+    },
+    {
+        "slug": "john-wesley-168568d9",
+        "text": "No man living is entirely destitute of what is vulgarly called natural conscience.",
+        "chapter": ("sermons-on-several-occasions", 86),
+        "paragraph": 24,
+    },
+    {
+        "slug": "john-wesley-44fac614",
+        "text": "As God is love, so man, dwelling in love, dwelt in God, and God in him.",
+        "chapter": ("sermons-on-several-occasions", 6),
+        "paragraph": 11,
+    },
 ]
 
 GEORGE_MULLER = [
@@ -3439,6 +3578,7 @@ TOPIC_MEMBERS = {
         "amanda-berry-smith-a27a891a",  # In my heart was peace, but I did not know how to exercise fa
         "hudson-taylor-a0b9c9a7",  # The habit of coming in faith to Him is incompatible wit
         "hudson-taylor-6356623c",  # Every true minister of GOD, every true missionary, ever
+        "john-wesley-8fc9ccff",  # Faith worketh by love; faith overcometh the world; faith
     ],
     "grace": [  # Grace
         "charles-h-spurgeon-e83563c7",  # Jesus has nothing which He will not use for a sinner's salva
@@ -3477,6 +3617,8 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-c2f65106",  # Thou didst rescue my tongue, whence Thou hadst before r
         "hudson-taylor-8f87ae30",  # GOD'S overflow more than supplies the lack of individua
         "hudson-taylor-938e0682",  # We are not to think that our holiest service is free fr
+        "john-wesley-24804ca0",  # God justifieth not the godly, but the ungodly; not those
+        "john-wesley-14f9003f",  # Whatsoever good is in man, or is done by man, God is the
     ],
     "holy-spirit": [  # The Holy Spirit
         "charles-h-spurgeon-c1353dff",  # The Holy Ghost Himself cannot better glorify the Lord Jesus 
@@ -3558,6 +3700,12 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-d10a086f",  # O Thou Good omnipotent, who so carest for every one of
         "augustine-of-hippo-88c4ad24",  # I sought what I might love, in love with loving, and sa
         "hudson-taylor-68ec7c26",  # Our love to GOD is secured by GOD’S love to us.
+        "john-wesley-b6d3ae5f",  # Religion is the love of God and our neighbour; that is, 
+        "john-wesley-2ea5c1d3",  # We think of what we love; but we do not love God; theref
+        "john-wesley-df976f9c",  # Next to the love of God, there is nothing which Satan so
+        "john-wesley-cd956c0e",  # God hath given this honour to love alone: Love is the en
+        "john-wesley-0c62bd4a",  # May we not be of one heart, though we are not of one opi
+        "john-wesley-44fac614",  # As God is love, so man, dwelling in love, dwelt in God, 
     ],
     "humility": [  # Humility
         "charles-h-spurgeon-c3d3a367",  # Let us be humble that we may not need to be humbled, but may
@@ -3571,6 +3719,8 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-c07353e9",  # Do not think yourself better than others lest, perhaps, y
         "thomas-a-kempis-79341ddc",  # The whole world will not make him proud whom truth has su
         "thomas-a-kempis-5e7c6a28",  # Humble knowledge of self is a surer path to God than the
+        "john-wesley-1fed3831",  # With regard to the Most High, man and all the concerns o
+        "john-wesley-8f518f4f",  # Every child of man is in a thousand mistakes, and is lia
     ],
     "suffering": [  # Suffering & Trials
         "charles-h-spurgeon-116882b5",  # The Lord's mercy often rides to the door of our hearts on th
@@ -3609,6 +3759,9 @@ TOPIC_MEMBERS = {
         "hudson-taylor-a5415bca",  # We have to take our choice: we cannot enjoy both the wo
         "hudson-taylor-5ac0c4d8",  # Where that blessing is not enjoyed, there is always som
         "hudson-taylor-938e0682",  # We are not to think that our holiest service is free fr
+        "john-wesley-98c3db43",  # Outward religion may be where inward is not; but if ther
+        "john-wesley-a392c43e",  # Christ indeed cannot reign, where sin reigns; neither wi
+        "john-wesley-ec09b762",  # The righteousness of Christ is doubtless necessary for a
     ],
     "the-cross": [  # The Cross of Christ
         "charles-h-spurgeon-1fe6c2ed",  # The Lord cannot read our pardon written in the blood of His 
@@ -3651,6 +3804,7 @@ TOPIC_MEMBERS = {
         "hudson-taylor-f8d18af3",  # Oh, it is sweet to live thus directly dependent upon th
         "hudson-taylor-2dd2dd38",  # Where there is fitness for the work, the way will proba
         "hudson-taylor-d414362d",  # Dangers seen sometimes appal us, or appal those who lov
+        "john-wesley-c49400e2",  # You cannot deceive him; for he is infinite wisdom: You c
     ],
     "joy": [  # Joy
         "charles-h-spurgeon-d6d84bd3",  # Beloved, the Lord’s workers have sauce with their bread: not
@@ -3758,6 +3912,8 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-c2f65106",  # Thou didst rescue my tongue, whence Thou hadst before r
         "augustine-of-hippo-6534752e",  # Let me not be mine own life; from myself I lived ill, d
         "hudson-taylor-59c25747",  # The GOD of the Bible is a GOD who punishes sin, and can
+        "john-wesley-24804ca0",  # God justifieth not the godly, but the ungodly; not those
+        "john-wesley-96fdc970",  # Christ is not only God above us; which may keep us in aw
     ],
     "heaven": [  # Heaven & Eternity
         "charles-h-spurgeon-8b8e88db",  # We are not going to talk about law, and duty, and punishment
@@ -3809,6 +3965,8 @@ TOPIC_MEMBERS = {
         "hudson-taylor-5ac0c4d8",  # Where that blessing is not enjoyed, there is always som
         "hudson-taylor-14428932",  # Self-will is unmingled folly, and can only end in injur
         "hudson-taylor-a1d67b37",  # Self-denial surely means something far greater than som
+        "john-wesley-c8f76836",  # The love of the creature is changed to the love of the C
+        "john-wesley-4819ac9b",  # If you move but one step towards God, you are not as oth
     ],
     "sin-and-temptation": [  # Sin & Temptation
         "charles-h-spurgeon-bda51fda",  # Our Lord Jesus did not die for imaginary sins, but His heart
@@ -3841,6 +3999,10 @@ TOPIC_MEMBERS = {
         "hudson-taylor-b1a3a6a3",  # When sin is put away the Spirit again lifts up His countenan
         "amanda-berry-smith-cf826ddb",  # God showed me I was a dreadful sinner, but still I wanted to
         "thomas-a-kempis-a34c6521",  # True peace of heart, then, is found in resisting passions
+        "john-wesley-bd5633fb",  # The world is the men that know not God, that neither lov
+        "john-wesley-2b7968c1",  # Sin is then overcome, but it is not rooted out; it is co
+        "john-wesley-fbb70206",  # Abhor sin far more than death or hell; abhor sin itself,
+        "john-wesley-59d8d274",  # The body dies when it is separated from the soul; the so
     ],
     "contentment": [  # Contentment
         "thomas-a-kempis-1e51f540",  # The man who is at perfect ease is never suspicious, but the 
