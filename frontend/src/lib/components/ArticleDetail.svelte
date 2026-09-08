@@ -11,6 +11,7 @@
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 
 	// The reader detail for one article. Its sibling on the same route is the
 	// topic shelf (ArticleTopicShelf) — the [slug]/+page.svelte switch picks one.
@@ -111,7 +112,11 @@
 			<p class="eyebrow mb-1 text-muted">Article · {readingTime(article.word_count)}</p>
 			<div class="flex items-start justify-between gap-4">
 				<h1 class="text-h1">{article.h1}</h1>
-				<ReaderControls />
+				<div class="flex shrink-0 items-center gap-2">
+					<!-- Save this article to "My Library". -->
+					<FavoriteButton kind="article" slug={article.slug} />
+					<ReaderControls />
+				</div>
 			</div>
 			{#if article.description}
 				<p class="standfirst">{article.description}</p>

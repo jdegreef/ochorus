@@ -2,6 +2,7 @@
 	import type { Quote } from '$lib/library-public';
 	import { quoteHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 
 	// One quotation card: the sentence, the citation that sources it (a link to
 	// the exact paragraph), and a copy button that takes the attribution WITH it.
@@ -44,9 +45,15 @@
 		     already publish. It links to the paragraph, not just the chapter,
 		     using the reader's own `?p=` jump. -->
 		<a class="cite eyebrow" href={quoteHref(quote)}>{cite}</a>
-		<!-- Text, not a glyph: the icon set has no copy mark, and extending a
-		     curated set for a minor affordance is not worth it. -->
-		<button class="copy" onclick={copy}>{copied ? 'Copied' : 'Copy'}</button>
+		<div class="actions">
+			<!-- Save this line to "My Library". A quote is favorited by its own
+			     permanent slug, so the saved-quotes shelf can resolve it back to
+			     this same card (see resolveQuotes). -->
+			<FavoriteButton kind="quote" slug={quote.slug} />
+			<!-- Text, not a glyph: the icon set has no copy mark, and extending a
+			     curated set for a minor affordance is not worth it. -->
+			<button class="copy" onclick={copy}>{copied ? 'Copied' : 'Copy'}</button>
+		</div>
 	</div>
 </li>
 
@@ -74,6 +81,11 @@
 		justify-content: space-between;
 		gap: 1rem;
 		margin-top: 0.7rem;
+	}
+	.actions {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
 	.cite {
 		color: var(--color-muted);
