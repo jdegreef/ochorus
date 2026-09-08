@@ -1634,6 +1634,13 @@
 			"script": "latin",
 			"art": false,
 			"scrim": 1
+		},
+		"pt/true-vine": {
+			"ground": "e9b849994834089443582e21668014b6ba0848f143321f3414809166a9ccccc1",
+			"style": "devotional",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
 		}
 	}
 }
