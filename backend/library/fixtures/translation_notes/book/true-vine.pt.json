@@ -1,0 +1,74 @@
+{
+  "kind": "book",
+  "slug": "true-vine",
+  "language": "pt",
+  "job_issue": null,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "John 15:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:2",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:3",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:5",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:8",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:13",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:15",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 15:16",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session translation: self_rendered verses, authoritative Bíblia Livre wording where supplied (John 15 throughout); verify against the Portuguese Bible during native review."
+}

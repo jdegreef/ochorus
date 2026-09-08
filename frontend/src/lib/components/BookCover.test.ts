@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { mount, unmount } from 'svelte';
+import { flushSync, mount, unmount } from 'svelte';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import BookCover from './BookCover.svelte';
@@ -175,6 +175,52 @@ describe('BookCover falls back to a plate', () => {
 		const el = render({ book: book({ cover_url: '/covers/humility-2.jpg' }) });
 		expect(el.querySelector('.cover-plate')).toBeNull();
 		expect(el.querySelector('img')?.getAttribute('alt')).toContain('Waiting on God');
+	});
+
+	// A designed cover is composed at the artwork's OWN aspect, and object-cover
+	// on an off-3:4 one crops its baked-in byline off the top and its Ochorus
+	// mark off the foot — the very words this tier exists to keep. So one that
+	// isn't 3:4 is contained whole and matted; one that is fills the card as
+	// before. The measurement is the image's, so it can only be made once the
+	// file has loaded and reported its natural size.
+	const loadWith = (img: HTMLImageElement, w: number, h: number) => {
+		Object.defineProperty(img, 'naturalWidth', { value: w, configurable: true });
+		Object.defineProperty(img, 'naturalHeight', { value: h, configurable: true });
+		img.dispatchEvent(new Event('load'));
+		flushSync();
+	};
+
+	it('mats an off-3:4 designed cover so nothing is cropped, leaving a 3:4 one alone', () => {
+		const el = render({ book: book({ cover_url: '/covers/lord-teach-us-to-pray-2.jpg' }) });
+		// Before the file's size is known it fills the card exactly as it always
+		// has: one image, object-cover, no mat behind it.
+		expect(el.querySelectorAll('img')).toHaveLength(1);
+		expect(el.querySelector('img')?.className).toContain('object-cover');
+
+		// A cover narrower than 3:4 loads: it is now contained, with a second,
+		// decorative image behind it filling the remainder.
+		loadWith(el.querySelector('img')!, 443, 668);
+		const matted = el.querySelectorAll('img');
+		expect(matted).toHaveLength(2);
+		expect(matted[0].className).toContain('object-contain');
+		expect(matted[0].getAttribute('alt')).toContain('Waiting on God');
+		expect(matted[1].getAttribute('aria-hidden')).toBe('true');
+		expect(matted[1].getAttribute('alt')).toBe('');
+
+		// A cover that is already 3:4 is never matted: it fills the card, alone.
+		const threeFour = render({ book: book({ cover_url: '/covers/absolute-surrender.png' }) });
+		loadWith(threeFour.querySelector('img')!, 600, 800);
+		expect(threeFour.querySelectorAll('img')).toHaveLength(1);
+		expect(threeFour.querySelector('img')?.className).toContain('object-cover');
+	});
+
+	it('never mats a ground — a painting or plate is drawn at 3:4 to be covered', () => {
+		// The mat is the designed tier's alone; a ground with off-size art (were
+		// one ever committed) still fills, because the type is set over it here.
+		const el = render({ book: book({ cover_url: '/covers/art/waiting-on-god.jpg' }) });
+		loadWith(el.querySelector('img')!, 443, 668);
+		expect(el.querySelectorAll('img')).toHaveLength(1);
+		expect(el.querySelector('img')?.className).toContain('object-cover');
 	});
 });
 

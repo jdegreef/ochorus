@@ -1,0 +1,16 @@
+{
+ "kind": "bio",
+ "slug": "hudson-taylor",
+ "language": "fr",
+ "job_issue": 1808,
+ "references": [
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:4-5",
+   "status": "self_rendered"
+  }
+ ]
+}

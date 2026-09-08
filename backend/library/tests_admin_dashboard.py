@@ -260,6 +260,30 @@ class AdminCoverageTests(TestCase):
         self.assertTrue(queueable["es"])  # registered target
         self.assertFalse(queueable["zz"])  # content exists, but not a known code
 
+    @override_settings(DEBUG=True)
+    def test_bios_matrix(self):
+        # Row = author. English cell is the original Author.bio_html; a translated
+        # cell carries the review state; a bio counts only when its LONG-form body
+        # is present (a short-bio-only translation is not a bio in the matrix).
+        author = Author.objects.get(slug="am")
+        author.bio_html = "<p>Life of Andrew Murray.</p>"
+        author.save()
+        AuthorTranslation.objects.create(author=author, language="sw", bio_html="<p>Maisha.</p>", reviewed=True)
+        AuthorTranslation.objects.create(author=author, language="es", bio_html="<p>Vida.</p>", reviewed=False)
+        booth = Author.objects.create(slug="cb", name="Catherine Booth", bio_html="<p>Booth.</p>")
+        AuthorTranslation.objects.create(author=booth, language="sw", bio="short only", reviewed=True)
+
+        res = self.client.get("/api/admin/coverage/")
+        bios = {b["slug"]: b for b in res.data["bios"]}
+        self.assertEqual(bios["am"]["title"], "Andrew Murray")
+        self.assertEqual(bios["am"]["cells"]["en"], "present")
+        self.assertEqual(bios["am"]["cells"]["sw"], "ai_reviewed")
+        self.assertEqual(bios["am"]["cells"]["es"], "ai_unreviewed")
+        # Booth has only an English bio; the short-only sw translation isn't present.
+        self.assertEqual(bios["cb"]["cells"], {"en": "present"})
+        # Rows sorted by author name.
+        self.assertEqual([b["slug"] for b in res.data["bios"]], ["am", "cb"])
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
         res = self.client.get("/api/admin/coverage/")
