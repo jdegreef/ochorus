@@ -38,7 +38,7 @@
 		"@sveltejs/kit": "^2.70.3",
 		"@sveltejs/vite-plugin-svelte": "^7.3.0",
 		"@tailwindcss/vite": "^4.3.3",
-		"@types/node": "^25.9.3",
+		"@types/node": "^26.4.1",
 		"eslint": "^9.39.5",
 		"eslint-plugin-svelte": "^3.23.0",
 		"globals": "^17.12.0",
