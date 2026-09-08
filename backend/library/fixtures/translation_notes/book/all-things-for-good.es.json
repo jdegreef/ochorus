@@ -1,0 +1,11 @@
+{
+  "kind": "book",
+  "slug": "all-things-for-good",
+  "language": "es",
+  "job_issue": null,
+  "pull_request": null,
+  "note": [
+    "AI translation via the keyless pipeline path (engine glossary + Reina-Valera). Watson (1663) quotes Scripture densely; verses were rendered by the model in Reina-Valera wording (self_rendered) and every one should be checked by a native reviewer. This lists explicit citations present in the es text."
+  ],
+  "references": []
+}

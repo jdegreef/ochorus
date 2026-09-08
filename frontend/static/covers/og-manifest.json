@@ -291,6 +291,13 @@
    "art": true,
    "scrim": 0.7
   },
+  "es/all-things-for-good": {
+   "ground": "4266c4dd9d8a808664530a89a1d323400af3ae26e11380753c67b62a1aabd658",
+   "style": "press",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.85
+  },
   "es/around-the-wicket-gate": {
    "ground": "1c9faf7bb2996d919e4087f97d30a1dfdb584281eabde021c62b64c518bcef46",
    "style": "revival",
