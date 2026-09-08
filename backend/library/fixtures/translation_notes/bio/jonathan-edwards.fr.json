@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "jonathan-edwards",
+ "language": "fr",
+ "job_issue": 1811,
+ "references": [
+  {
+   "reference": "1 Timothy 1:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 32:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 1:14",
+   "status": "self_rendered"
+  }
+ ]
+}
