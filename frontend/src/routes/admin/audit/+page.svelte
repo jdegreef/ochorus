@@ -16,9 +16,10 @@
 	// '' = all editions. Filtering is server-side (accurate per-language totals
 	// even when a check is capped), so a change re-fetches via the resource key.
 	let language = $state('');
-	// The scan is cached server-side; Re-run forces a fresh one. The flag is read
-	// (untracked) by the fetcher for the one load it covers, then cleared.
-	let forceRefresh = $state(false);
+	// The scan is cached server-side; Re-run forces a fresh one. Not $state: the
+	// fetcher reads it (untracked) for the one load it covers, then clears it —
+	// nothing reactive observes it, and the resource key is `language` alone.
+	let forceRefresh = false;
 	const auditRes = adminResource(
 		() => getAdminAudit(language, forceRefresh),
 		'Something went wrong running the audit.',

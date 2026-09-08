@@ -909,12 +909,16 @@ class AdminAuditView(APIView):
     permission_classes = [IsAdminEmail]
 
     #: The scan is a full pass over every chapter, so it is memoised on the
-    #: content revision — it recomputes only when content actually changes, not
-    #: on every visit, language switch, or accept/undo. The TTL is a safety net
-    #: for a change that doesn't bump the revision (a direct DB edit, a
-    #: management command); an admin who suspects staleness has Re-run, which
-    #: forces a fresh scan.
-    SCAN_CACHE_KEY = "audit:scan"
+    #: content revision (in the key, like the public ETag): it recomputes only
+    #: when content actually changes, not on every visit, language switch, or
+    #: accept/undo. The TTL is a safety net for a change that bypasses the
+    #: revision — a direct SQL-editor edit or a management command — without a
+    #: worker restart; Re-run forces a fresh scan.
+    #:
+    #: The cache is per-process (LocMemCache across several gunicorn workers), so
+    #: "Scanned …" can differ between workers and one Re-run refreshes only the
+    #: worker it lands on — acceptable jitter for an admin view, not worth a
+    #: shared cache.
     SCAN_CACHE_SECONDS = 600
 
     def get(self, request):
@@ -957,17 +961,16 @@ class AdminAuditView(APIView):
         )
 
     def _cached_scan(self, *, refresh: bool) -> dict:
-        """The full library scan, memoised on the content revision. A ``refresh``
-        request (the Re-run button) always recomputes."""
-        revision = ContentRevision.current()
-        cached = None if refresh else cache.get(self.SCAN_CACHE_KEY)
-        if cached is not None and cached["revision"] == revision:
-            return cached
-        scan = self._scan(revision)
-        cache.set(self.SCAN_CACHE_KEY, scan, self.SCAN_CACHE_SECONDS)
-        return scan
+        """The full library scan, memoised under the content revision. Re-run
+        (``refresh``) recomputes and overwrites this worker's entry."""
+        key = f"audit:scan:{ContentRevision.current()}"
+        if refresh:
+            scan = self._scan()
+            cache.set(key, scan, self.SCAN_CACHE_SECONDS)
+            return scan
+        return cache.get_or_set(key, self._scan, self.SCAN_CACHE_SECONDS)
 
-    def _scan(self, revision: int) -> dict:
+    def _scan(self) -> dict:
         """One full pass over the library — the expensive part the cache holds.
         Language names come from the registry (the runtime source), like the
         review queue, so an edition added without a frontend deploy still reads
@@ -985,7 +988,6 @@ class AdminAuditView(APIView):
         # Computed on the FULL result so the picker is stable under a filter.
         languages = self._languages(raw, dup_raw, integrity_raw)
         return {
-            "revision": revision,
             "scanned_at": timezone.now().isoformat(),
             "raw": raw,
             "dup_raw": dup_raw,
