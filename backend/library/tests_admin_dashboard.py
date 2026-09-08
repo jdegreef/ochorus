@@ -713,6 +713,14 @@ class AdminAuditCacheTests(TestCase):
     def test_second_request_reuses_the_cached_scan(self):
         self.assertEqual(self._scanned_at(), self._scanned_at(), "not re-scanned")
 
+    def test_a_language_filter_reuses_the_cached_scan(self):
+        # The scan is language-independent (filtering is per request), so the
+        # cache key carries no language — switching editions must not re-scan.
+        first = self._scanned_at()
+        self.assertEqual(
+            self._scanned_at("/api/admin/audit/?language=en"), first, "filter, don't re-scan"
+        )
+
     def test_refresh_forces_a_new_scan(self):
         first = self._scanned_at()
         self.assertNotEqual(first, self._scanned_at("/api/admin/audit/?refresh=1"))
