@@ -274,7 +274,7 @@
 				{:else}
 					<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
 				{/if}
-				<FavoriteButton kind="book" slug={book.slug} />
+				<FavoriteButton kind="book" slug={book.slug} showLabel />
 				<!-- Search inside this book. Goes to the real search scoped to the
 				     book rather than a second, weaker search over cached text: the
 				     reader gets the same ranking, snippets and paging they get

@@ -125,7 +125,7 @@
 			     must not wear a button's chrome (it read as a disabled button). -->
 			<p class="text-small font-medium text-muted">✓ {t('plans.finished')}</p>
 		{/if}
-		<FavoriteButton kind="plan" slug={plan.slug} />
+		<FavoriteButton kind="plan" slug={plan.slug} showLabel />
 	</div>
 
 	{#if started && next !== null}

@@ -412,7 +412,11 @@ relevant group.
 - [ ] **D6** Related blocks use five different components; the sermon's "More
   sermons on X" is an **unbounded** text list; Plan, Topic, Quotes and Scripture
   have none. → card components, capped at 4–6 (Book).
-- [ ] **D7** Favorite: `FavoriteButton` is outside the `.btn` family (own padding,
+- [x] **D7** _(shipped 2026-09-08 — `FavoriteButton` rebuilt on the `.btn` family:
+  labelled `.btn-sm` on leaf action rows, icon-only `.btn-icon` in reader
+  toolbars; scoped CSS + literal durations deleted. All three leaf pages now pass
+  `showLabel`; the sermon page dropped its hand-rolled `btn-icon` heart for
+  `<FavoriteButton kind="sermon" …>`. Ships with J5.)_ Favorite: `FavoriteButton` is outside the `.btn` family (own padding,
   `0.15s` literals); the sermon page uses a `btn-icon btn-ghost` heart instead;
   only Author passes `showLabel`. → rebuild on `.btn.btn-sm`; one label policy.
 - [ ] **D8** Action rows: "Search in this X" is `btn-ghost` (Book), `btn-sm
@@ -589,7 +593,10 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   `.chip.active`.
 - [ ] **J4** Two accent-soft eyebrow badges, different padding: bio count px-1.5
   vs "FULL LIFE" px-2 py-0.5. → a shared `.badge-soft`.
-- [ ] **J5** The saved-heart is red (`FavoriteButton` `--danger`) in one place and
+- [x] **J5** _(shipped 2026-09-08 — one saved state everywhere: filled heart tinted
+  `--accent` via the `text-accent` active convention the reader toggles already
+  use; `--danger` is now destructive-only. Documented in STYLE_GUIDE §5. Ships
+  with D7.)_ The saved-heart is red (`FavoriteButton` `--danger`) in one place and
   indigo (`text-accent`, sermon page) in another. → one token for "saved" (cf. D7).
 
 ### K. Colour & radius
