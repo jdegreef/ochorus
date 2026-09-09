@@ -49,7 +49,7 @@
 
 {#if variant === 'row'}
 	<a
-		class="sermon-row group"
+		class="sermon-row card-tint group"
 		style="--row-hue: {hueForBirthYear(sermon.author.birth_year)}"
 		href={localizeHref(`/sermons/${sermon.slug}`)}
 	>
@@ -91,7 +91,10 @@
 		</div>
 	</a>
 {:else}
-	<a class="sermon-card" href={localizeHref(`/sermons/${sermon.slug}`)}>
+	<a
+		class="sermon-card card-tint rounded-card border border-border bg-surface"
+		href={localizeHref(`/sermons/${sermon.slug}`)}
+	>
 		<span class="emblem emblem-chip"><Emblem name={emblemForSermon(sermon.slug)} /></span>
 		<span class="min-w-0 flex-1">
 			<span class="eyebrow sermon-label">{t('sermons.label')}</span>
@@ -108,22 +111,16 @@
 {/if}
 
 <style>
+	/* Row card. Only layout + padding are scoped; the resting frame (border,
+	   radius, ground) rides on layered Tailwind utilities in the markup and the
+	   hover (border→accent, ground→surface-2, no lift) on the shared .card-tint
+	   — both unlayered/layered, so neither ties this scoped rule and the hover
+	   always wins. */
 	.sermon-card {
 		display: flex;
 		align-items: flex-start;
 		gap: 0.75rem;
 		padding: 0.85rem 1rem;
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-card);
-		background: var(--color-surface);
-		transition:
-			border-color var(--duration-fast),
-			background var(--duration-fast);
-	}
-	.sermon-card:hover {
-		border-color: var(--color-accent);
-		background: var(--color-surface-2);
-		text-decoration: none;
 	}
 	/* The sermon's emblem chip (recipe in app.css) — only size and hue here. */
 	.emblem {

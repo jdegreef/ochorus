@@ -13,9 +13,13 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
 	import { portraitPosition } from '$lib/portraits';
+	import { readingMinutes } from '$lib/reading';
+	import { lengthBucket, LENGTH_BUCKETS } from '$lib/sermonLength';
+	import type { LengthBucket } from '$lib/sermonLength';
 
 	const t = i18n.t;
 
@@ -54,9 +58,31 @@
 	// $lib/urlFilters — the same helper Books and Biographies use. Grouping and
 	// sort stay in localStorage below: they describe the reader, not the shelf.
 	const filters = urlFilters({
-		defaults: { q: '', book: '' },
+		defaults: { q: '', book: '', len: '' },
+		// `len` is an enum — an off-list value in the URL falls back to "any".
+		allowed: { len: LENGTH_BUCKETS },
 		url: () => $page.url
 	});
+
+	/** The reading-time bucket a sermon falls in — at THIS reader's pace, so it
+	 *  agrees with the "N min read" the row shows. */
+	const lengthOf = (s: SermonSummary): LengthBucket => lengthBucket(readingMinutes(s.word_count));
+
+	/** Length buckets present on the shelf, with counts, for the filter's options.
+	 *  Reactive: the reader's pace can carry a sermon across a boundary, exactly
+	 *  as it moves the printed times. */
+	const lengthFacets = $derived.by(() => {
+		const c: Record<LengthBucket, number> = { short: 0, mid: 0, long: 0 };
+		for (const s of sermons) c[lengthOf(s)]++;
+		return c;
+	});
+
+	/** Option labels per bucket — the boundaries the buckets actually use. */
+	const LENGTH_LABEL: Record<LengthBucket, string> = {
+		short: 'sermons.lengthShort',
+		mid: 'sermons.lengthMid',
+		long: 'sermons.lengthLong'
+	};
 
 	/** Canonical position of a sermon's book; undated books sink to the end. */
 	const bookOrder = (s: SermonSummary) => s.scripture_book_order ?? 999;
@@ -77,6 +103,7 @@
 		const q = filters.values.q.trim().toLowerCase();
 		return sermons.filter((s) => {
 			if (filters.values.book && s.scripture_book !== filters.values.book) return false;
+			if (filters.values.len && lengthOf(s) !== filters.values.len) return false;
 			if (!q) return true;
 			return (
 				s.title.toLowerCase().includes(q) ||
@@ -228,6 +255,18 @@
 			{/each}
 		</select>
 
+		<!-- How long it runs, in reading-time buckets (<10 / 10–30 / 30+ min) — a
+		     length you can shop for, not just sort by. A bucket with nothing in it
+		     is dropped, like the book scope above. -->
+		<select bind:value={filters.values.len} aria-label={t('sermons.allLengths')} class="filter-field">
+			<option value="">{t('sermons.allLengths')}</option>
+			{#each LENGTH_BUCKETS as b (b)}
+				{#if lengthFacets[b]}
+					<option value={b}>{t(LENGTH_LABEL[b])} ({lengthFacets[b]})</option>
+				{/if}
+			{/each}
+		</select>
+
 		<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
 			<option value="shelf">{t('common.sortShelf')}</option>
 			<option value="scripture">{t('sermons.sortScripture')}</option>
@@ -297,21 +336,13 @@
 				class="mb-10"
 				style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
 			>
-				<h2 class="mb-4 flex items-center gap-2.5 text-h3 text-muted">
-					{#if g.photo_url}
-						<img
-							src={g.photo_url}
-							alt=""
-							loading="lazy"
-							width="32"
-							height="32"
-							class="h-8 w-8 shrink-0 rounded-full border border-border object-cover"
-							style="object-position: {portraitPosition(g.slug)}"
-						/>
-					{/if}
-					<a href={localizeHref(`/authors/${g.slug}`)} class="text-text hover:underline">{g.name}</a>
-					<span class="text-small font-normal count">{g.items.length}</span>
-				</h2>
+				<GroupHeading
+					name={g.name}
+					href={localizeHref(`/authors/${g.slug}`)}
+					portraitUrl={g.photo_url}
+					portraitPosition={portraitPosition(g.slug)}
+					count={g.items.length}
+				/>
 				{@render sermonList(g.items)}
 			</section>
 		{/each}

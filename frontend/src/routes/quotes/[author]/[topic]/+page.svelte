@@ -8,6 +8,7 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import ScriptureEpigraph from '$lib/components/ScriptureEpigraph.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 
 	// English-only, and written in English literals for the same reason the
 	// author page is: these quotations are lifted from the English works.
@@ -95,13 +96,16 @@
 		</section>
 	{/each}
 
-	<!-- The two ways out of this leaf: the same author's other themes, and the
-	     same theme's other writers. This is what makes the theme grid a mesh
-	     rather than a set of dead ends. -->
+	<!-- The three ways out of this leaf: the same theme's other writers, the same
+	     author's other themes, and the life behind the quotations. This is what
+	     makes the theme grid a mesh rather than a set of dead ends. -->
 	<nav class="more">
 		<a href={`/quotes/topics/${topic.slug}/`}>More quotes on {phrase} →</a>
 		<a href={`/quotes/${page.author.slug}/`}>All {page.author.name} quotes →</a>
+		<a href={`/authors/${page.author.slug}/`}>{page.author.name}’s biography →</a>
 	</nav>
+
+	<AccountCta action={`follow ${page.author.name} and the themes you love`} />
 </div>
 
 <style>

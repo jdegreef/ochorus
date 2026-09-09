@@ -219,9 +219,26 @@
 
 	<AdminGate resource={auditRes} errorTitle="Couldn't run the audit" loadingText="Running audit…">
 		{#snippet children(a)}
-			<p class="{lastUndo || actionError ? 'mb-2' : 'mb-8'} text-body {totalFindings ? 'text-warning' : 'text-muted'}">
-				{#if totalFindings}<strong>{integrityTotal}</strong> integrity {integrityTotal === 1 ? 'issue' : 'issues'} · <strong>{qualityTotal}</strong> quality {qualityTotal === 1 ? 'flag' : 'flags'}{:else}No findings — the library looks clean. 🎉{/if}
-			</p>
+			<div class="{lastUndo || actionError ? 'mb-2' : 'mb-8'}">
+				{#if totalFindings}
+					<p class="mb-2 text-body text-muted">
+						<strong class="text-danger">{integrityTotal}</strong> integrity {integrityTotal === 1 ? 'issue' : 'issues'}
+						· <strong class="text-warning">{qualityTotal}</strong> quality {qualityTotal === 1 ? 'flag' : 'flags'}
+					</p>
+					<!-- Severity at a glance: integrity defects (fix these, danger) vs
+					     advisory quality flags (warning), sized by share of the total. -->
+					<div
+						class="flex h-2 overflow-hidden rounded-full bg-surface-2"
+						role="img"
+						aria-label="{integrityTotal} integrity issues, {qualityTotal} quality flags"
+					>
+						{#if integrityTotal}<div class="bg-danger" style="width: {(integrityTotal / totalFindings) * 100}%"></div>{/if}
+						{#if qualityTotal}<div class="bg-warning" style="width: {(qualityTotal / totalFindings) * 100}%"></div>{/if}
+					</div>
+				{:else}
+					<p class="text-body text-muted">No findings — the library looks clean. 🎉</p>
+				{/if}
+			</div>
 			{#if actionError}
 				<p class="mb-8 text-small text-warning">{actionError}</p>
 			{:else if lastUndo}
@@ -311,7 +328,7 @@
 						</span>
 						<span class="shrink-0 text-small">
 							{#if dismissed}<span class="text-muted">{dismissed} accepted · </span>{/if}<span
-								class={total ? 'text-warning' : 'text-muted'}>{total || 'clear'}</span
+								class={total ? 'text-warning' : 'text-muted'}>{#if total}{total}{:else}✓ clear{/if}</span
 							>
 						</span>
 					</summary>

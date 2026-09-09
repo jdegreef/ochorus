@@ -27,7 +27,7 @@
 
 <a
 	href={localizeHref(`/books/${book.slug}`)}
-	class="book-card group"
+	class="book-card card-lift group"
 	data-testid="book-card"
 	aria-label={showAuthor ? `${book.title} — ${book.author.name}` : book.title}
 >

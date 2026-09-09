@@ -213,3 +213,76 @@ class AuthorListQueryShapeTests(TestCase):
         Author.objects.create(slug="empty", name="Empty", bio="")
         res = APIClient().get(reverse("author-list"), {"language": "sw"})
         self.assertNotIn("empty", [r["slug"] for r in res.data])
+
+
+# The opening excerpt on a book page names one paragraph; rendering it once
+# dragged EVERY chapter's body_html out of the database, on a page the prerender
+# crawl requests once per book — the shape behind the egress overrun.
+_PROSE = (
+    "In this my relation of the merciful working of God upon my soul, it will "
+    "not be amiss, if, in the first place, I do, in a few words, give you a hint "
+    "of my pedigree, and manner of bringing up, that thereby the goodness and "
+    "bounty of God towards me may be the more advanced and magnified before you."
+)
+
+
+class BookDetailOpeningQueryShapeTests(TestCase):
+    """The book page reads body_html for only the FEW chapters an opening could
+    come from — never the whole book. Shape, not count: one bounded read is
+    fine, a whole-book scan to render one paragraph is the bug."""
+
+    @classmethod
+    def setUpTestData(cls):
+        author = Author.objects.create(slug="jb", name="John Bunyan")
+        cls.book = Book.objects.create(
+            author=author,
+            slug="grace",
+            language="en",
+            title="Grace Abounding",
+            is_published=True,
+        )
+        # Chapter 1 yields the opening. get_opening reads bodies for the first
+        # MAX_DEPTH (=3) non-apparatus chapters as candidates, so chapters past
+        # that window (4..11 here) carry big bodies that must never be fetched.
+        Chapter.objects.create(
+            book=cls.book, order=1, title="Chapter I", body_html=f"<p>{_PROSE}</p>"
+        )
+        filler = "<p>" + ("filler word " * 400) + "</p>"
+        for order in range(2, 12):
+            Chapter.objects.create(
+                book=cls.book, order=order, title=f"Chapter {order}", body_html=filler
+            )
+
+    def _detail(self):
+        with CaptureQueriesContext(connection) as captured:
+            res = APIClient().get(
+                reverse("book-detail", args=[self.book.slug]), {"language": "en"}
+            )
+        self.assertEqual(res.status_code, 200)
+        return captured.captured_queries, res.data
+
+    def test_body_html_is_never_read_for_the_whole_book(self):
+        captured, _ = self._detail()
+        body_reads = [q["sql"] for q in captured if "body_html" in q["sql"]]
+        # Only the opening reads bodies, and it names its candidate orders — so
+        # every body_html read is bounded by an `order IN (...)`, not a bare
+        # `book_id = ...` scan of all eleven chapters.
+        for sql in body_reads:
+            self.assertIn(
+                " IN (",
+                sql,
+                "a body_html read not bounded by chapter order is a whole-book "
+                "pull — the egress this fix removes",
+            )
+        self.assertLessEqual(
+            len(body_reads),
+            1,
+            "the opening should fetch its candidate bodies in a single query",
+        )
+
+    def test_the_opening_is_still_correct(self):
+        """The excerpt the reader sees must not change — same paragraph, same
+        chapter — now that its bodies come from a bounded read."""
+        _, data = self._detail()
+        self.assertEqual(data["opening"]["chapter"], "Chapter I")
+        self.assertTrue(data["opening"]["text"].startswith("In this my relation"))

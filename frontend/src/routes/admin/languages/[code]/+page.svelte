@@ -224,6 +224,41 @@
 		view === 'live' ? 'Nothing live yet.' : view === 'suggested' ? '' : 'None yet.'
 	);
 
+	// Jump bar. The page is a tall stack (readiness + settings + six content
+	// sections), so anchors let you reach Articles without scrolling past
+	// everything. Counts track the current view; order matches the DOM order of
+	// the sections below. Readiness only exists for a target language, and has no
+	// count to tally. ids match the `scroll-mt-*` sections so a jump lands clear
+	// of the sticky bar.
+	const navSections = $derived([
+		...(detail && !detail.is_source
+			? [{ id: 'sec-readiness', label: 'Readiness', count: null as number | null }]
+			: []),
+		{ id: 'sec-books', label: 'Books', count: shown.books.length },
+		{ id: 'sec-bios', label: 'Bios', count: shown.bios.length },
+		{ id: 'sec-sermons', label: 'Sermons', count: shown.sermons.length },
+		{ id: 'sec-plans', label: 'Plans', count: shown.plans.length },
+		{ id: 'sec-topics', label: 'Topics', count: shown.topics.length },
+		{ id: 'sec-articles', label: 'Articles', count: shown.articles.length }
+	]);
+
+	// A "Next to work on" list can run to dozens of rows (every missing topic
+	// shelf, every unstarted book) — on a mature language that is most of the
+	// page's height. Show the top slice, ranked as the API already returns them,
+	// and let each section expand on demand. Keyed per section so opening one
+	// doesn't open the rest.
+	const TODO_CAP = 8;
+	let todoExpanded = $state<Record<string, boolean>>({});
+	const capTodo = <T,>(key: string, rows: T[]): T[] =>
+		todoExpanded[key] ? rows : rows.slice(0, TODO_CAP);
+
+	// A translated list is the "done pile" — useful to have, but on a mature
+	// language it's most of the page, and the admin is usually here to see what's
+	// LEFT. So collapse it behind its count when it's long; short lists stay open
+	// (nothing to save by hiding a handful). The heading and count stay visible
+	// either way, so the state is legible while folded.
+	const COLLAPSE_AT = 8;
+
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
 
@@ -278,6 +313,27 @@
 					</button>
 				{/if}
 			{/snippet}
+			<!-- A translated ("done") list, folded behind its heading when long. The
+			     heading + count stay visible folded, so the section's state reads at
+			     a glance; the ▸ rotates open (same idiom as the content audit). When
+			     the list is empty, there's nothing to fold — show the heading and the
+			     empty note. -->
+			{#snippet translatedList(title: string, count: number, body: import('svelte').Snippet)}
+				{#if count}
+					<details class="group mb-3" open={count <= COLLAPSE_AT}>
+						<summary class="mb-3 flex cursor-pointer list-none items-baseline gap-2">
+							<span
+								class="inline-block text-muted transition-transform group-open:rotate-90"
+								aria-hidden="true">›</span>
+							<h2 class="text-h3">{title} <span class="text-muted">({fmt(count)})</span></h2>
+						</summary>
+						{@render body()}
+					</details>
+				{:else}
+					<h2 class="text-h3 mb-3">{title} <span class="text-muted">({fmt(count)})</span></h2>
+					{#if emptyLabel}<p class="text-body text-muted">{emptyLabel}</p>{/if}
+				{/if}
+			{/snippet}
 			<header class="mb-8 mt-3">
 				<p class="eyebrow mb-2 text-accent">Admin · Language</p>
 				<h1 class="text-display">
@@ -325,6 +381,24 @@
 				{/if}
 			</header>
 
+			<!-- Jump bar. Sticky under the app nav (same anchor the admin rail pins to)
+			     so it stays reachable down the whole page. Solid `bg-surface` like the
+			     rail, so scrolled content doesn't bleed through. -->
+			<nav
+				aria-label="Jump to section"
+				class="sticky top-[var(--appnav-h,0px)] z-30 -mx-5 mb-6 flex gap-1 overflow-x-auto border-b border-border bg-surface px-5 py-2"
+			>
+				{#each navSections as s (s.id)}
+					<a
+						href="#{s.id}"
+						class="flex shrink-0 items-baseline gap-1.5 whitespace-nowrap rounded-full px-3 py-1 text-small font-semibold text-muted hover:bg-surface-2 hover:text-text hover:no-underline"
+					>
+						{s.label}
+						{#if s.count !== null}<span class="text-muted">{fmt(s.count)}</span>{/if}
+					</a>
+				{/each}
+			</nav>
+
 			{#if !d.is_source}
 				<!-- Readiness. Read-only about the verdict, editable about the BAR: the
 				     thresholds are a judgement (a language with a big catalogue behind it
@@ -332,7 +406,10 @@
 				     whether they're met is a fact the server computes. Nothing here
 				     launches anything — the go-live action re-runs these same checks
 				     server-side rather than trusting what this page is holding. -->
-				<section class="mb-6 rounded-card border border-border bg-surface p-5">
+				<section
+					id="sec-readiness"
+					class="mb-6 scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
 					<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 						<h2 class="text-h3">Readiness</h2>
 						{#if readiness}
@@ -504,11 +581,25 @@
 				{/if}
 			{/if}
 
+			{#snippet todoMore(key: string, total: number)}
+				{#if total > TODO_CAP}
+					<button
+						class="mt-2 text-small font-semibold text-accent hover:underline"
+						aria-expanded={todoExpanded[key] ?? false}
+						onclick={() => (todoExpanded[key] = !todoExpanded[key])}
+					>
+						{todoExpanded[key] ? 'Show fewer' : `Show all ${fmt(total)}`}
+					</button>
+				{/if}
+			{/snippet}
+
 			<div class="grid gap-6 md:grid-cols-2">
 				<!-- Books -->
-				<section class="rounded-card border border-border bg-surface p-5">
-					<h2 class="text-h3 mb-3">Books <span class="text-muted">({fmt(shown.books.length)})</span></h2>
-					{#if shown.books.length}
+				<section
+					id="sec-books"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
+					{#snippet booksList()}
 						<ul class="space-y-2">
 							{#each shown.books as b (b.slug)}
 								<li class="flex items-start justify-between gap-3">
@@ -520,9 +611,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Books', shown.books.length, booksList)}
 					{#if shown.todoBooks.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">Next to work on</p>
@@ -530,7 +620,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoBooks as b (b.slug)}
+								{#each capTodo('books', shown.todoBooks) as b (b.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/books/{b.slug}" class="text-accent hover:underline">{b.title}</a>
@@ -540,14 +630,17 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('books', shown.todoBooks.length)}
 						</div>
 					{/if}
 				</section>
 
 				<!-- Long-form bios -->
-				<section class="rounded-card border border-border bg-surface p-5">
-					<h2 class="text-h3 mb-3">Long-form bios <span class="text-muted">({fmt(shown.bios.length)})</span></h2>
-					{#if shown.bios.length}
+				<section
+					id="sec-bios"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
+					{#snippet biosList()}
 						<ul class="space-y-2">
 							{#each shown.bios as a (a.slug)}
 								<li class="flex items-center justify-between gap-3">
@@ -556,9 +649,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Long-form bios', shown.bios.length, biosList)}
 					{#if shown.todoBios.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">
@@ -568,7 +660,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoBios as a (a.slug)}
+								{#each capTodo('bios', shown.todoBios) as a (a.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/authors/{a.slug}" class="text-accent hover:underline">{a.name}</a>
@@ -580,14 +672,17 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('bios', shown.todoBios.length)}
 						</div>
 					{/if}
 				</section>
 
 				<!-- Sermons -->
-				<section class="rounded-card border border-border bg-surface p-5">
-					<h2 class="text-h3 mb-3">Sermons <span class="text-muted">({fmt(shown.sermons.length)})</span></h2>
-					{#if shown.sermons.length}
+				<section
+					id="sec-sermons"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
+					{#snippet sermonsList()}
 						<ul class="space-y-2">
 							{#each shown.sermons as s (s.slug)}
 								<li class="flex items-start justify-between gap-3">
@@ -598,9 +693,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Sermons', shown.sermons.length, sermonsList)}
 					{#if shown.todoSermons.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">Next to work on</p>
@@ -608,7 +702,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoSermons as s (s.slug)}
+								{#each capTodo('sermons', shown.todoSermons) as s (s.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/sermons/{s.slug}" class="text-accent hover:underline">{s.title}</a>
@@ -618,14 +712,17 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('sermons', shown.todoSermons.length)}
 						</div>
 					{/if}
 				</section>
 
 				<!-- Plans -->
-				<section class="rounded-card border border-border bg-surface p-5">
-					<h2 class="text-h3 mb-3">Plans <span class="text-muted">({fmt(shown.plans.length)})</span></h2>
-					{#if shown.plans.length}
+				<section
+					id="sec-plans"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
+					{#snippet plansList()}
 						<ul class="space-y-2">
 							{#each shown.plans as p (p.slug)}
 								<li class="flex items-start justify-between gap-3">
@@ -636,9 +733,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Plans', shown.plans.length, plansList)}
 					{#if shown.todoPlans.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">Next to work on</p>
@@ -646,7 +742,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoPlans as p (p.slug)}
+								{#each capTodo('plans', shown.todoPlans) as p (p.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/plans/{p.slug}" class="text-accent hover:underline">{p.title}</a>
@@ -655,6 +751,7 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('plans', shown.todoPlans.length)}
 						</div>
 					{/if}
 				</section>
@@ -663,9 +760,11 @@
 				     INVISIBLE in this language rather than shown in English (topic prose
 				     has no fallback), so the todo list is every missing shelf, not a
 				     ranked top-N — a language wants all of them. -->
-				<section class="rounded-card border border-border bg-surface p-5">
-					<h2 class="text-h3 mb-3">Topics <span class="text-muted">({fmt(shown.topics.length)})</span></h2>
-					{#if shown.topics.length}
+				<section
+					id="sec-topics"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
+					{#snippet topicsList()}
 						<ul class="space-y-2">
 							{#each shown.topics as t (t.slug)}
 								<li class="flex items-start justify-between gap-3">
@@ -675,9 +774,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Topics', shown.topics.length, topicsList)}
 					{#if shown.todoTopics.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">
@@ -690,7 +788,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoTopics as t (t.slug)}
+								{#each capTodo('topics', shown.todoTopics) as t (t.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/topics/{t.slug}" class="text-accent hover:underline">{t.title}</a>
@@ -699,6 +797,7 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('topics', shown.todoTopics.length)}
 						</div>
 					{/if}
 				</section>
@@ -706,9 +805,11 @@
 				<!-- Articles. Authorless SEO/devotional pages; like sermons, a single
 				     body per language. A translated row ships ai_unreviewed until a
 				     native speaker approves it. -->
-				<section class="rounded-card border border-border bg-surface p-5">
-					<h2 class="text-h3 mb-3">Articles <span class="text-muted">({fmt(shown.articles.length)})</span></h2>
-					{#if shown.articles.length}
+				<section
+					id="sec-articles"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
+					{#snippet articlesList()}
 						<ul class="space-y-2">
 							{#each shown.articles as a (a.slug)}
 								<li class="flex items-start justify-between gap-3">
@@ -720,9 +821,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Articles', shown.articles.length, articlesList)}
 					{#if shown.todoArticles.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">Next to work on</p>
@@ -730,7 +830,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoArticles as a (a.slug)}
+								{#each capTodo('articles', shown.todoArticles) as a (a.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/articles/{a.slug}" class="text-accent hover:underline">{a.title}</a>
@@ -739,6 +839,7 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('articles', shown.todoArticles.length)}
 						</div>
 					{/if}
 				</section>

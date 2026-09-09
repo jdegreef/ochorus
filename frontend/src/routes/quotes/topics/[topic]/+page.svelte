@@ -8,6 +8,7 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import ScriptureEpigraph from '$lib/components/ScriptureEpigraph.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 
 	// English-only, like the author quote pages: the quotations are lifted from
 	// the English works and every citation names an English chapter.
@@ -122,6 +123,8 @@
 			</ol>
 		</section>
 	{/each}
+
+	<AccountCta action={`follow the writers on ${phrase}`} />
 </div>
 
 <style>

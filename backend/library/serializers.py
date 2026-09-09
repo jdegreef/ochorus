@@ -21,7 +21,7 @@ from .models import (
     Topic,
     TopicBook,
 )
-from .opening import opening_excerpt
+from .opening import opening_candidate_orders, opening_excerpt
 from .scripture import book_of
 from .scripture_graph import treated_passages
 
@@ -939,10 +939,25 @@ class BookDetailSerializer(BookListSerializer):
         return alternate_titles(obj.slug, obj.language, obj.title)
 
     def get_opening(self, obj) -> dict | None:
-        chapters = obj.chapters.order_by("order").values_list(
-            "order", "title", "body_html"
+        # Read body_html for only the few chapters an opening could come from,
+        # never the whole book. obj.chapters is prefetched TOC-only (bodies
+        # deferred) by BookDetailView, so a fresh ``values_list("body_html")``
+        # here issues a NEW query that drags EVERY chapter's HTML out of Postgres
+        # to render one paragraph — the exact per-book egress that prefetch
+        # exists to avoid, paid again on every crawl of every book URL (the
+        # 2026-08-14 OOM was this shape). Titles pick the candidates off the
+        # prefetch (no query, and already in `order` sequence via Chapter.Meta,
+        # like the TOC field beside it); bodies are fetched for those orders alone.
+        meta = [(c.order, c.title) for c in obj.chapters.all()]
+        wanted = opening_candidate_orders(meta)
+        if not wanted:
+            return None
+        rows = (
+            obj.chapters.filter(order__in=wanted)
+            .order_by("order")
+            .values_list("order", "title", "body_html")
         )
-        text, chapter = opening_excerpt(list(chapters))
+        text, chapter = opening_excerpt(list(rows))
         return {"text": text, "chapter": chapter} if text else None
 
     def get_featured_people(self, obj) -> list[dict]:
