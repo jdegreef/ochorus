@@ -179,6 +179,7 @@ lists content types, **in the same order** everywhere:
 - [ ] footer **Explore** group (same file)
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
+      _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
 - [ ] `lib/sitemap.ts` static pages (nav order) and a sitemap section — for a
       prerendered URL *family* (e.g. a topic-filtered shelf), the route's
       `entries()` and the sitemap section must advertise the **same** set, or
@@ -501,6 +502,17 @@ relevant group.
 - [ ] **F1** Articles, Scripture and Quotes are footer-only (English): absent
   from the command palette and from search (`SearchHit` has no such kinds).
   → palette `COMMANDS`; an `article` hit kind.
+  _Search half done (`claude/ochorus-dev-srch1-search-articles`): `ArticleHit`
+  added end to end — backend `search.py` entity branch + caps + per-type page,
+  `SearchHit` union, search-page facet rail, palette `hitItem()`, `type/group`
+  catalogue keys ×8. English-gated by the per-language `Article` filter (no
+  hard `en` check — a future translation ungates itself). **Product call:**
+  Articles only; Scripture and Quotes are deferred to their own treatment —
+  Scripture has no model (pages are synthesised from citations, and a reference
+  query already routes to scripture-engaging sermons/chapters), and Quotes are
+  review-gated sourced sentences aggregated into hub pages, not search entities.
+  Flip to `[x]` once the palette-`COMMANDS` half
+  (`claude/ochorus-dev-c3b9a9-reachability`) also lands on main._
 - [ ] **F2** Sitemap lists Sermons before Topics; nav, footer and palette agree
   on Topics · Plans · Sermons. → derive all four from one list.
 - [ ] **F3** Hard-coded English chrome on the English-only hubs (`Home` crumbs,

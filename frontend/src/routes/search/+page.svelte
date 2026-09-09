@@ -101,6 +101,7 @@
 		book: () => t('search.typeBook'),
 		topic: () => t('search.typeTopic'),
 		plan: () => t('search.typePlan'),
+		article: () => t('search.typeArticle'),
 		sermon: () => t('search.typeSermon'),
 		chapter: () => t('search.typeChapter')
 	};
