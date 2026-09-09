@@ -327,3 +327,36 @@ jobs:
       - name: Stop local API
         if: always()
         run: pkill -f "manage.py runserver" 2>/dev/null || true
+
+  # --- Stable required-check name -----------------------------------------
+  # Branch protection requires the context "test-and-build". Splitting the old
+  # monolith renamed that job away, so this aggregator RE-EMITS the name and
+  # goes green only when all four real jobs pass. This keeps the required check
+  # stable WITHOUT a branch-protection edit — which matters because every other
+  # session's open PR still runs the old single-job ci.yml, and switching the
+  # required contexts to the four new names would block all of them behind
+  # "expected" checks they never produce until each is rebased. `main` moves
+  # fast here with many parallel sessions; that is not an acceptable stall.
+  #
+  # `if: always()` + explicit result checks so a FAILED upstream job makes this
+  # FAIL (report red), not skip — a skipped required check blocks merge just as
+  # hard as a pending one. If you add or rename a real job above, add it both to
+  # `needs` and to the test below.
+  test-and-build:
+    name: test-and-build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: always()
+    needs: [backend-tests, backend-image, frontend-checks, integration]
+    steps:
+      - name: Every gate passed
+        run: |
+          echo "backend-tests:   ${{ needs.backend-tests.result }}"
+          echo "backend-image:   ${{ needs.backend-image.result }}"
+          echo "frontend-checks: ${{ needs.frontend-checks.result }}"
+          echo "integration:     ${{ needs.integration.result }}"
+          [ "${{ needs.backend-tests.result }}" = "success" ] \
+            && [ "${{ needs.backend-image.result }}" = "success" ] \
+            && [ "${{ needs.frontend-checks.result }}" = "success" ] \
+            && [ "${{ needs.integration.result }}" = "success" ] \
+            || { echo "::error::a required CI job did not succeed"; exit 1; }
