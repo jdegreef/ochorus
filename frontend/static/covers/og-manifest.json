@@ -522,6 +522,13 @@
    "art": true,
    "scrim": 0.8
   },
+  "evening-by-evening": {
+   "ground": "a11948e962d19f4077474d1040d7e3f26d58b21c0a11de74e4987242488e3483",
+   "style": "revival",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
   "first-epistle-of-clement": {
    "ground": "978ec2807ebaa7d1c3799ccb135d69f10c100b5303bbd47a94838204a5abf72b",
    "style": "inscriptional",
@@ -914,6 +921,13 @@
    "art": true,
    "scrim": 0.75
   },
+  "morning-by-morning": {
+   "ground": "95aada7485696386dbad2c3738f482ddc807b3fd27ad99c9f64eda721b145096",
+   "style": "revival",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
   "mortification-of-sin": {
    "ground": "81ab25ff3ce6cc4a67630451dbdaf9cbc6982f338d4aa2e22d03663043df9bbd",
    "style": "press",
@@ -945,6 +959,13 @@
   "on-the-priesthood": {
    "ground": "0cc758e0ca605f7c50c1d0ac699e6163ce1e38b8cc60a2e72cf0dd2509ee6f66",
    "style": "inscriptional",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
+  "our-daily-walk": {
+   "ground": "277630f5775c1ceede40412f8055da7ea024c8b8ceb6b6f972e51617566967ca",
+   "style": "devotional",
    "script": "latin",
    "art": false,
    "scrim": 1
@@ -1561,6 +1582,13 @@
   "things-as-they-are": {
    "ground": "deaba4c697c1f87ab7f425b816de8e34012d2517b68dc0d58ab1737331c55df7",
    "style": "devotional",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
+  "thoughts-for-the-quiet-hour": {
+   "ground": "8bcdb26672bb3c79f1fd82e587144ef849f37f77fa64e5cec03bba4e2f9db134",
+   "style": "revival",
    "script": "latin",
    "art": false,
    "scrim": 1

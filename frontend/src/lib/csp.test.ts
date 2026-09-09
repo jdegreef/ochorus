@@ -1,29 +1,47 @@
 /**
- * The CSP in render.yaml must keep up with the code.
+ * The CSP must keep up with the code.
  *
  * A Content-Security-Policy fails in the worst possible way: silently, in
  * production, only for the feature nobody re-tested. Add a `fetch` to a new host
  * and everything passes locally (no CSP on the dev server) and in CI (same),
  * then that one feature is dead on the live site.
  *
- * So the policy is asserted against the source rather than trusted: every
- * absolute URL the app can dial is checked against `connect-src`. If someone
- * adds an integration and forgets the header, this fails in CI instead.
+ * The policy now lives in `svelte.config.js` (`kit.csp`, hash mode) and ships as
+ * a <meta> on every prerendered page — NOT as a render.yaml header any more, so
+ * that `script-src` can drop `'unsafe-inline'` (a static header cannot carry the
+ * hash of SvelteKit's per-build inline bootstrap). This test asserts the policy
+ * against its source rather than trusting it:
  *
- * It also pins the directives whose whole job is to hold the line — dropping
- * `frame-ancestors` or `object-src` would be invisible until someone exploited
- * it — and asserts the one thing `script-src 'unsafe-inline'` implies: that
- * `connect-src`, not `script-src`, is what protects the localStorage token.
+ *  - every absolute URL the app can dial is checked against `connect-src`;
+ *  - the directives whose whole job is to hold the line are pinned;
+ *  - `script-src` must NOT carry `'unsafe-inline'` (the point of the change); and
+ *  - the app.html theme-boot script's hash in the config must match the actual
+ *    script, so editing app.html without updating the hash fails the build
+ *    instead of silently blocking the boot script in production.
+ *
+ * The non-CSP security headers still live in render.yaml and are checked there.
  */
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
+import { cspDirectives as CSP_DIRECTIVES } from '../../csp.config.js';
+
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 const RENDER_YAML = path.join(REPO_ROOT, 'render.yaml');
+const APP_HTML = path.resolve(__dirname, '../app.html');
+const SVELTE_CONFIG = path.resolve(__dirname, '../../svelte.config.js');
 const SRC = path.resolve(__dirname, '..');
 
-/** The web service's headers, read straight out of render.yaml. */
+/**
+ * The CSP directives, as configured. SvelteKit writes keyword sources without
+ * the CSP quotes (`self`, not `'self'`), so assertions below use that unquoted
+ * form; hash/`unsafe-hashes` sources are written verbatim.
+ */
+const csp = CSP_DIRECTIVES as Record<string, string[]>;
+
+/** The web service's non-CSP headers, read straight out of render.yaml. */
 function webHeaders(): Record<string, string> {
 	// Whole-line comments are dropped first: render.yaml explains itself at
 	// length, and a comment sitting between a folded value and the next key is
@@ -53,13 +71,16 @@ function webHeaders(): Record<string, string> {
 	return headers;
 }
 
-function directives(csp: string): Record<string, string[]> {
-	const out: Record<string, string[]> = {};
-	for (const part of csp.split(';')) {
-		const [name, ...values] = part.trim().split(/\s+/);
-		if (name) out[name] = values;
-	}
-	return out;
+/** The SHA-256 CSP source for app.html's inline theme-boot <script>. */
+function bootScriptHash(): string {
+	const html = fs.readFileSync(APP_HTML, 'utf8');
+	const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)];
+	const boot = scripts.find(
+		(m) => !/\bsrc=/.test(m[1]) && m[2].includes('localStorage') && m[2].includes('data-theme')
+	);
+	expect(boot, 'theme-boot <script> not found in app.html').toBeTruthy();
+	const digest = crypto.createHash('sha256').update(boot![2]).digest('base64');
+	return `sha256-${digest}`;
 }
 
 /** Every absolute http(s) origin the app's own code can dial. */
@@ -105,12 +126,8 @@ function covers(sources: string[], origin: string): boolean {
 	});
 }
 
-describe('render.yaml security headers', () => {
+describe('render.yaml non-CSP security headers', () => {
 	const headers = webHeaders();
-
-	it('sets a Content-Security-Policy on every path', () => {
-		expect(headers['Content-Security-Policy']).toBeTruthy();
-	});
 
 	it('ships the headers that cost nothing and are easy to lose', () => {
 		expect(headers['X-Content-Type-Options']).toBe('nosniff');
@@ -119,46 +136,90 @@ describe('render.yaml security headers', () => {
 		expect(headers['Permissions-Policy']).toBeTruthy();
 	});
 
+	it('no longer carries the CSP as a header (it moved to kit.csp)', () => {
+		// A leftover header CSP would enforce a second, stale policy alongside the
+		// meta one — most confusingly, re-introducing 'unsafe-inline'.
+		expect(headers['Content-Security-Policy']).toBeUndefined();
+	});
+});
+
+describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
+	it('is actually wired into kit.csp in hash mode', () => {
+		// This suite asserts the directives object; that only ships a CSP if
+		// svelte.config.js still feeds it to `kit.csp` in hash mode. Without this
+		// check, deleting the `csp:` line (or switching off hash mode) would drop
+		// the policy from the built pages while every other test stayed green —
+		// the exact silent-in-production failure this file exists to prevent.
+		const config = fs.readFileSync(SVELTE_CONFIG, 'utf8');
+		expect(config).toMatch(/mode:\s*['"]hash['"]/);
+		// directives come from cspDirectives, possibly wrapped to add the build's
+		// own API origin (directivesForThisBuild) — either way it must be wired in.
+		expect(config).toMatch(/directives:\s*(cspDirectives|directivesForThisBuild\(\))/);
+		expect(config).toMatch(/import\s*\{\s*cspDirectives\s*\}\s*from\s*['"]\.\/csp\.config\.js['"]/);
+	});
+
 	it('locks the directives that hold the line', () => {
-		const d = directives(headers['Content-Security-Policy']);
-		expect(d['frame-ancestors']).toEqual(["'none'"]);
-		expect(d['object-src']).toEqual(["'none'"]);
-		expect(d['base-uri']).toEqual(["'self'"]);
-		expect(d['form-action']).toEqual(["'self'"]);
-		expect(d['default-src']).toEqual(["'self'"]);
+		const d = csp;
+		expect(d['frame-ancestors']).toEqual(['none']);
+		expect(d['object-src']).toEqual(['none']);
+		expect(d['base-uri']).toEqual(['self']);
+		expect(d['form-action']).toEqual(['self']);
+		expect(d['default-src']).toEqual(['self']);
+	});
+
+	it('does NOT allow unsafe-inline scripts — the whole point of hash mode', () => {
+		const script = csp['script-src'];
+		expect(script).toBeTruthy();
+		expect(script).not.toContain('unsafe-inline');
+		// A hash source proves inline scripts are admitted by hash, not blanket.
+		expect(script.some((s) => s.startsWith('sha256-'))).toBe(true);
+	});
+
+	it('pins the app.html theme-boot hash to the actual script', () => {
+		// SvelteKit hashes the scripts IT emits, but not the template boot script;
+		// its hash is pinned by hand in the config. If app.html changes and the
+		// hash is not updated, the boot script would be blocked in production —
+		// fail here instead.
+		const script = csp['script-src'];
+		expect(
+			script,
+			`script-src is missing the app.html theme-boot hash. app.html changed — ` +
+				`update the hash in svelte.config.js to ${bootScriptHash()}`
+		).toContain(bootScriptHash());
 	});
 
 	it('never allows a wildcard or plain-http connect-src', () => {
 		// connect-src is the control that stops an injected script posting the
 		// localStorage access token off-origin, so "*" would give the whole
 		// policy away.
-		const connect = directives(headers['Content-Security-Policy'])['connect-src'];
+		const connect = csp['connect-src'];
 		expect(connect).toBeTruthy();
 		expect(connect).not.toContain('*');
 		expect(connect.some((s) => s.startsWith('http://'))).toBe(false);
-		expect(connect).toContain("'self'");
+		expect(connect).toContain('self');
 	});
 
 	it('pins the Supabase host to the exact project, not a wildcard', () => {
 		// Anyone can create a free `<ref>.supabase.co`, so `*.supabase.co` would let
 		// an injected script POST the localStorage token to an attacker-controlled
 		// Supabase project — the exact exfiltration connect-src exists to stop.
-		// (The bare-`*` check above misses this: `https://*.supabase.co` !== '*'.)
-		const connect = directives(headers['Content-Security-Policy'])['connect-src'];
+		const connect = csp['connect-src'];
 		expect(connect.some((s) => s.includes('*.supabase.co'))).toBe(false);
 		expect(connect.some((s) => /^https:\/\/[a-z0-9]+\.supabase\.co$/.test(s))).toBe(true);
 	});
 
 	it('covers every host the app actually fetches', () => {
-		const connect = directives(headers['Content-Security-Policy'])['connect-src'];
+		const connect = csp['connect-src'];
 		const used = [...originsUsedInSource()];
 		// Guard against the scan silently matching nothing and passing vacuously.
 		expect(used.length).toBeGreaterThan(0);
+		// `self` never covers an external origin, so it falls through covers()
+		// harmlessly — only the https:// hosts are matched, by host.
 		const uncovered = used.filter((o) => !covers(connect, o));
 		expect(
 			uncovered,
 			`These hosts are fetched in src/ but are not in the CSP connect-src ` +
-				`(render.yaml). They will be blocked in production:\n  ${uncovered.join('\n  ')}`
+				`(svelte.config.js). They will be blocked in production:\n  ${uncovered.join('\n  ')}`
 		).toEqual([]);
 	});
 });
