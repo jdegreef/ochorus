@@ -48,13 +48,13 @@
 	     Contact was the one page you could not contact anyone from. The address
 	     is the ministry's existing support mailbox (see DEPLOYMENT.md §5). -->
 	<div class="mt-8 rounded-card border border-border bg-surface-2 p-6">
-		<h2 class="text-h3 mb-1">{t('contact.emailLabel')}</h2>
+		<h2 class="text-h2 mb-1">{t('contact.emailLabel')}</h2>
 		<p class="mb-4 text-small text-muted">{t('contact.emailSub')}</p>
 		<a class="btn btn-primary" href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>
 	</div>
 
 	<div class="mt-4 rounded-card border border-border p-6">
-		<h2 class="text-h3 mb-1">{t('contact.title')}</h2>
+		<h2 class="text-h2 mb-1">{t('contact.title')}</h2>
 		<p class="text-small text-muted">
 			{t('contact.messageSub')}
 		</p>

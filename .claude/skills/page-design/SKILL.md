@@ -394,7 +394,17 @@ relevant group.
 
 ### D. Sections, cards, related
 
-- [x] **D1** _(shipped #1433 — `SectionHeader` → `.text-h2`; `.text-h1` is the page title only; guarded)_ An `<h2>` renders at four sizes: `.text-h1` via `<SectionHeader>` on
+- [x] **D1** _(shipped 2026-09-08 — heading size set by role, not page. Leaf-page
+  content-list headings moved `.text-h3` → `.section-label` (books: Contents /
+  People / Related; authors: Books-by-X (N) / Sermons-by-X (N) / Appears-in /
+  More-lives; sermons: More-on-X; ArticleDetail: Read-next) — the shelf model.
+  Prose sub-sections stay `.text-h3` (books "About this book"). Contact's two
+  section blocks moved `.text-h3` → `.text-h2` to match About/Settings/Legal.
+  `<SectionHeader>` already renders `.text-h2`. **Group headings decided at
+  `.text-h3` and left for D2** (grouped shelves + search result groups keep the
+  text-h3 recipe). typeScaleGuard already reserves `.text-h1` for the `<h1>`; a
+  list-vs-prose role check is not reliably automatable, so none was added.)_
+  An `<h2>` renders at four sizes: `.text-h1` via `<SectionHeader>` on
   Home, `.text-h2` on Settings/About, `.text-h3` on leaf pages, `.section-label`
   on shelves — 37 distinct class combinations. → `.section-label` above a list,
   `.text-h3` above prose, `SectionHeader` drops to `.text-h2`; `.text-h1` is

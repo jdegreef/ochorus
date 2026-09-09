@@ -152,7 +152,7 @@
 
 		{#if article.related?.length}
 			<aside class="read-next" aria-labelledby="read-next-heading">
-				<h2 id="read-next-heading" class="text-h3">Read next</h2>
+				<h2 id="read-next-heading" class="section-label">Read next</h2>
 				<ul>
 					{#each article.related as r (r.type + r.slug)}
 						<li>
