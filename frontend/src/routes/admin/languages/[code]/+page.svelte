@@ -252,6 +252,13 @@
 	const capTodo = <T,>(key: string, rows: T[]): T[] =>
 		todoExpanded[key] ? rows : rows.slice(0, TODO_CAP);
 
+	// A translated list is the "done pile" — useful to have, but on a mature
+	// language it's most of the page, and the admin is usually here to see what's
+	// LEFT. So collapse it behind its count when it's long; short lists stay open
+	// (nothing to save by hiding a handful). The heading and count stay visible
+	// either way, so the state is legible while folded.
+	const COLLAPSE_AT = 8;
+
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
 
@@ -304,6 +311,27 @@
 					>
 						{queueing === `${type}:${slug}` ? 'Queueing…' : 'Translate'}
 					</button>
+				{/if}
+			{/snippet}
+			<!-- A translated ("done") list, folded behind its heading when long. The
+			     heading + count stay visible folded, so the section's state reads at
+			     a glance; the ▸ rotates open (same idiom as the content audit). When
+			     the list is empty, there's nothing to fold — show the heading and the
+			     empty note. -->
+			{#snippet translatedList(title: string, count: number, body: import('svelte').Snippet)}
+				{#if count}
+					<details class="group mb-3" open={count <= COLLAPSE_AT}>
+						<summary class="mb-3 flex cursor-pointer list-none items-baseline gap-2">
+							<span
+								class="inline-block text-muted transition-transform group-open:rotate-90"
+								aria-hidden="true">›</span>
+							<h2 class="text-h3">{title} <span class="text-muted">({fmt(count)})</span></h2>
+						</summary>
+						{@render body()}
+					</details>
+				{:else}
+					<h2 class="text-h3 mb-3">{title} <span class="text-muted">({fmt(count)})</span></h2>
+					{#if emptyLabel}<p class="text-body text-muted">{emptyLabel}</p>{/if}
 				{/if}
 			{/snippet}
 			<header class="mb-8 mt-3">
@@ -571,8 +599,7 @@
 					id="sec-books"
 					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
 				>
-					<h2 class="text-h3 mb-3">Books <span class="text-muted">({fmt(shown.books.length)})</span></h2>
-					{#if shown.books.length}
+					{#snippet booksList()}
 						<ul class="space-y-2">
 							{#each shown.books as b (b.slug)}
 								<li class="flex items-start justify-between gap-3">
@@ -584,9 +611,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Books', shown.books.length, booksList)}
 					{#if shown.todoBooks.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">Next to work on</p>
@@ -614,8 +640,7 @@
 					id="sec-bios"
 					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
 				>
-					<h2 class="text-h3 mb-3">Long-form bios <span class="text-muted">({fmt(shown.bios.length)})</span></h2>
-					{#if shown.bios.length}
+					{#snippet biosList()}
 						<ul class="space-y-2">
 							{#each shown.bios as a (a.slug)}
 								<li class="flex items-center justify-between gap-3">
@@ -624,9 +649,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Long-form bios', shown.bios.length, biosList)}
 					{#if shown.todoBios.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">
@@ -658,8 +682,7 @@
 					id="sec-sermons"
 					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
 				>
-					<h2 class="text-h3 mb-3">Sermons <span class="text-muted">({fmt(shown.sermons.length)})</span></h2>
-					{#if shown.sermons.length}
+					{#snippet sermonsList()}
 						<ul class="space-y-2">
 							{#each shown.sermons as s (s.slug)}
 								<li class="flex items-start justify-between gap-3">
@@ -670,9 +693,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Sermons', shown.sermons.length, sermonsList)}
 					{#if shown.todoSermons.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">Next to work on</p>
@@ -700,8 +722,7 @@
 					id="sec-plans"
 					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
 				>
-					<h2 class="text-h3 mb-3">Plans <span class="text-muted">({fmt(shown.plans.length)})</span></h2>
-					{#if shown.plans.length}
+					{#snippet plansList()}
 						<ul class="space-y-2">
 							{#each shown.plans as p (p.slug)}
 								<li class="flex items-start justify-between gap-3">
@@ -712,9 +733,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Plans', shown.plans.length, plansList)}
 					{#if shown.todoPlans.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">Next to work on</p>
@@ -744,8 +764,7 @@
 					id="sec-topics"
 					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
 				>
-					<h2 class="text-h3 mb-3">Topics <span class="text-muted">({fmt(shown.topics.length)})</span></h2>
-					{#if shown.topics.length}
+					{#snippet topicsList()}
 						<ul class="space-y-2">
 							{#each shown.topics as t (t.slug)}
 								<li class="flex items-start justify-between gap-3">
@@ -755,9 +774,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Topics', shown.topics.length, topicsList)}
 					{#if shown.todoTopics.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">
@@ -791,8 +809,7 @@
 					id="sec-articles"
 					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
 				>
-					<h2 class="text-h3 mb-3">Articles <span class="text-muted">({fmt(shown.articles.length)})</span></h2>
-					{#if shown.articles.length}
+					{#snippet articlesList()}
 						<ul class="space-y-2">
 							{#each shown.articles as a (a.slug)}
 								<li class="flex items-start justify-between gap-3">
@@ -804,9 +821,8 @@
 								</li>
 							{/each}
 						</ul>
-					{:else if emptyLabel}
-						<p class="text-body text-muted">{emptyLabel}</p>
-					{/if}
+					{/snippet}
+					{@render translatedList('Articles', shown.articles.length, articlesList)}
 					{#if shown.todoArticles.length}
 						<div class="mt-4 border-t border-border pt-3">
 							<p class="section-label">Next to work on</p>
