@@ -28,6 +28,7 @@
 
 	const signupMax = $derived(Math.max(1, ...(data?.weekly_signups.map((w) => w.count) ?? [1])));
 	const localeMax = $derived(Math.max(1, ...(data?.by_locale.map((l) => l.count) ?? [1])));
+	const methodMax = $derived(Math.max(1, ...(data?.by_method.map((m) => m.count) ?? [1])));
 
 	// Emails are PII: masked by default, revealed on demand (per row, or all at once).
 	// Reveals are cleared on every (re)load so a stale row index can't expose a
@@ -132,11 +133,14 @@
 						{#if d.by_method.length}
 							<ul class="space-y-2">
 								{#each d.by_method as m (m.method)}
-									<li class="flex items-center justify-between gap-3">
-										<span class="text-body {m.method === 'unknown' ? 'text-muted' : 'text-text'}"
+									<li class="flex items-center gap-3">
+										<span class="w-20 shrink-0 truncate text-body {m.method === 'unknown' ? 'text-muted' : 'text-text'}"
 											>{m.label}</span
 										>
-										<span class="font-semibold tabular-nums text-text">{fmt(m.count)}</span>
+										<div class="h-3 flex-1 overflow-hidden rounded-full bg-surface-2">
+											<div class="h-full rounded-full bg-accent-soft" style="width: {(m.count / methodMax) * 100}%"></div>
+										</div>
+										<span class="w-8 shrink-0 text-right font-semibold tabular-nums text-text">{fmt(m.count)}</span>
 									</li>
 								{/each}
 							</ul>
