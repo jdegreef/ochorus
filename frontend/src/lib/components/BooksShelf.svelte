@@ -30,7 +30,10 @@
 
 	let view = $state<View>('grid');
 	let sort = $state<Sort>('shelf');
-	let group = $state<Group>('all');
+	// Default to the grouped view (by author), matching the Sermons shelf's
+	// grouped-by-preacher default — both browse shelves now open organized
+	// rather than one grouped and one flat (B4).
+	let group = $state<Group>('author');
 	// --- Filters (in the URL) --------------------------------------------------
 	// A filtered shelf is a place: it survives a reload, comes back with Back,
 	// and can be sent to someone. View preferences above deliberately stay in
@@ -295,14 +298,14 @@
 
 			<div class="seg">
 				<button
-					class:active={group === 'all'}
-					onclick={() => setGroup('all')}
-					aria-pressed={group === 'all'}>{t('books.groupAll')}</button
-				>
-				<button
 					class:active={group === 'author'}
 					onclick={() => setGroup('author')}
 					aria-pressed={group === 'author'}>{t('books.groupAuthor')}</button
+				>
+				<button
+					class:active={group === 'all'}
+					onclick={() => setGroup('all')}
+					aria-pressed={group === 'all'}>{t('books.groupAll')}</button
 				>
 			</div>
 
