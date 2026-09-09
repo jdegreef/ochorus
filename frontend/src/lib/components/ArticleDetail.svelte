@@ -12,6 +12,7 @@
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 
 	// The reader detail for one article. Its sibling on the same route is the
 	// topic shelf (ArticleTopicShelf) — the [slug]/+page.svelte switch picks one.
@@ -192,6 +193,8 @@
 				{/each}
 			</nav>
 		{/if}
+
+		<AccountCta />
 	</article>
 </div>
 

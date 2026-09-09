@@ -137,7 +137,7 @@
 		</section>
 	{/each}
 
-	<AccountCta action={`follow ${page.author.name} and the writers you love`} />
+	<AccountCta />
 </div>
 
 <style>
