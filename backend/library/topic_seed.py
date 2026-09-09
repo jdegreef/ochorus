@@ -116,6 +116,8 @@ TOPICS = [
             "the-secret-of-guidance",
             "the-life-of-trust",
             "days-of-heaven-upon-earth",
+            "morning-by-morning",
+            "evening-by-evening",
             "the-fourfold-gospel",
             "soar-like-the-eagle-3",
             "waiting-on-god",
