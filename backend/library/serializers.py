@@ -931,9 +931,17 @@ class BookDetailSerializer(BookListSerializer):
     # chips linking to their author pages. Localized: only people with a bio in
     # THIS edition's language are shown, the usual no-English-fallback rule.
     featured_people = serializers.SerializerMethodField()
+    # How many reviewed quotations this book's author has, so the page can show a
+    # "Quotes from {author}" link (English only, as the quote pages are) when it
+    # is non-zero. Detail-only like author_same_as: a card carries no such link,
+    # so a shelf would run this count 130 times for nothing.
+    author_quote_count = serializers.SerializerMethodField()
 
     def get_author_same_as(self, obj):
         return obj.author.same_as or []
+
+    def get_author_quote_count(self, obj) -> int:
+        return obj.author.quotes.filter(reviewed=True).count()
 
     def get_alternate_titles(self, obj) -> list[str]:
         return alternate_titles(obj.slug, obj.language, obj.title)
@@ -1015,7 +1023,7 @@ class BookDetailSerializer(BookListSerializer):
             "difficulty", "is_modern_edition", "has_modern_edition",
             "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "scripture", "opening",
-            "featured_people",
+            "featured_people", "author_quote_count",
         ]
 
     def get_available_languages(self, obj):

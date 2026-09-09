@@ -8,6 +8,7 @@
 	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, truncateMeta, topicThings } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { getLang } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
@@ -263,6 +264,17 @@
 					>{book.author.name}</a
 				>{#if years}<span class="text-muted">{` · ${years}`}</span>{/if}
 			</p>
+
+			<!-- The author's memorable lines: a bridge from the book to their quote
+			     page. English only, as the quote pages are — mirrors the author
+			     page's own Quotes link, gate and all. -->
+			{#if book.author_quote_count && getLang() === 'en'}
+				<p class="mt-1 text-small">
+					<a href={`/quotes/${book.author.slug}/`} class="text-accent hover:underline"
+						>Quotes from {book.author.name} →</a
+					>
+				</p>
+			{/if}
 
 			<SourceBadge sourceType={book.source_type} class="mt-3" />
 

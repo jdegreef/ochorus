@@ -151,6 +151,12 @@ export interface BookDetail extends BookSummary {
 	 * every entry is a live link.
 	 */
 	featured_people?: FeaturedPerson[];
+	/**
+	 * How many reviewed quotations this book's author has — the page shows a
+	 * "Quotes from {author}" link when it is non-zero (English only, as the quote
+	 * pages are). Optional so an API running behind this build simply omits it.
+	 */
+	author_quote_count?: number;
 }
 
 export interface ChapterNav {
