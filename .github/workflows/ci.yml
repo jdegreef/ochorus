@@ -15,11 +15,20 @@ name: CI
 #                     the built output, run the real-browser smoke
 # The first three are independent. `integration` is the long pole and also
 # independent, so it starts at t=0 alongside the rest. Nothing `needs:` anything.
+#
+# `merge_group` runs this same gate on the merge queue's temporary branch — the PR
+# merged onto the CURRENT main (and any PRs ahead of it in the queue). That is what
+# finally closes the divergent-migration-leaf race (the 0121->0125 cascade of
+# 2026-09-06): a PR whose migration was cut off a now-stale leaf produces two leaf
+# nodes on the real merge, so `makemigrations --check` fails HERE and the queue
+# ejects it — instead of breaking main and the deploy after it lands. Requires
+# "Require merge queue" on the main branch-protection rule to actually take effect.
 
 on:
   pull_request:
   push:
     branches: [main]
+  merge_group:
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -29,8 +38,10 @@ concurrency:
   # That is not hypothetical. #973 merged on 2026-08-17 and its main run was
   # CANCELLED by #967's and then #974's merging seconds later; the migration
   # drift and the unkeyed {#each} it carried went unreported, and every branch
-  # cut from main failed `makemigrations --check` and `eslint` for two days.
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  # cut from main failed `makemigrations --check` and `eslint` for two days. A
+  # merge_group run has the same stakes as main: cancel it and the queue gets no
+  # verdict and stalls — so only PR runs are superseded.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   # --- Backend gate -------------------------------------------------------
