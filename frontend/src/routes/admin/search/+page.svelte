@@ -7,9 +7,12 @@
 	import {
 		getAdminSearchGap,
 		type AdminSearchGap,
+		type AdminSearchGapWork,
 		getAdminSearchStats,
+		createAdminTranslationJob,
 		type SearchTopQuery
 	} from '$lib/library-admin';
+	import { ApiError } from '$lib/api';
 
 	const stats = adminResource(
 		getAdminSearchStats,
@@ -74,6 +77,25 @@
 		} catch (e) {
 			const message = e instanceof Error ? e.message : 'Lookup failed.';
 			gaps = { ...gaps, [key]: { loading: false, error: message } };
+		}
+	}
+
+	// Queue a translation straight from a gap: a work that exists elsewhere,
+	// translated into the language whose readers searched for it and found
+	// nothing. Keyed per (target language, work) so each button tracks its own
+	// state; 'busy' | 'done' | an error string.
+	let queued = $state<Record<string, 'busy' | 'done' | string>>({});
+	const queueKey = (lang: string, w: AdminSearchGapWork) => `${lang}${w.type}:${w.slug}`;
+	async function queueWork(targetLang: string, w: AdminSearchGapWork) {
+		const k = queueKey(targetLang, w);
+		if (queued[k] === 'busy' || queued[k] === 'done') return;
+		queued = { ...queued, [k]: 'busy' };
+		try {
+			await createAdminTranslationJob({ type: w.type, slug: w.slug, language: targetLang });
+			queued = { ...queued, [k]: 'done' };
+		} catch (e) {
+			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
+			queued = { ...queued, [k]: body?.detail ?? 'Could not queue — try again.' };
 		}
 	}
 </script>
@@ -279,6 +301,35 @@
 														<p class="mt-1 text-small text-muted">
 															No matches in any other language — nothing to translate from.
 														</p>
+													{/if}
+													{#if gap.data.works.length}
+														<ul class="mt-2 space-y-1 border-t border-border pt-2">
+															{#each gap.data.works as w (w.type + ':' + w.slug)}
+																{@const qk = queueKey(lang.code, w)}
+																<li class="flex items-center justify-between gap-2">
+																	<span class="min-w-0 truncate text-small">
+																		<span class="text-text">{w.title}</span>
+																		<span class="text-muted"> · {w.type}</span>
+																	</span>
+																	{#if queued[qk] === 'done'}
+																		<span class="shrink-0 text-small text-accent">✓ queued</span>
+																	{:else if queued[qk] && queued[qk] !== 'busy'}
+																		<button
+																			class="shrink-0 text-small text-warning hover:underline"
+																			title={queued[qk]}
+																			onclick={() => queueWork(lang.code, w)}>Retry</button
+																		>
+																	{:else}
+																		<button
+																			class="btn btn-sm btn-ghost shrink-0"
+																			disabled={queued[qk] === 'busy'}
+																			onclick={() => queueWork(lang.code, w)}
+																			>{queued[qk] === 'busy' ? 'Queueing…' : `Queue ${lang.name}`}</button
+																		>
+																	{/if}
+																</li>
+															{/each}
+														</ul>
 													{/if}
 												{/if}
 											</li>
