@@ -125,7 +125,7 @@
 		<a href={`/authors/${page.author.slug}/`}>{page.author.name}’s biography →</a>
 	</nav>
 
-	<AccountCta action={`follow ${page.author.name} and the themes you love`} />
+	<AccountCta />
 </div>
 
 <style>

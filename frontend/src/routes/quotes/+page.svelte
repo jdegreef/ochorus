@@ -6,6 +6,7 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
 	// English literals, as on the author pages and /scripture: this index is not
@@ -103,6 +104,8 @@
 		{/each}
 	</ul>
 	{/if}
+
+	<AccountCta />
 </div>
 
 <style>

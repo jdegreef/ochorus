@@ -6,6 +6,7 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
 	// English literals, like the /quotes index it sits beside: what it lists is
@@ -84,6 +85,8 @@
 			{/each}
 		</ul>
 	{/if}
+
+	<AccountCta />
 </div>
 
 <style>

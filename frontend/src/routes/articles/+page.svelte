@@ -6,6 +6,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import ArticleShelf from '$lib/components/ArticleShelf.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
 	import { i18n } from '$lib/i18n.svelte';
 	import { page } from '$app/stores';
@@ -70,4 +71,6 @@
 	{:else}
 		<EmptyState message="No articles yet — check back soon." />
 	{/if}
+
+	<AccountCta />
 </div>
