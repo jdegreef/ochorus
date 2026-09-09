@@ -166,12 +166,18 @@
 	const jobFor = (type: TranslationJobType, slug: string) =>
 		jobs.find((j) => j.type === type && j.slug === slug && j.language === data.code);
 
+	// One POST + the dedup that both the single and bulk paths need — kept in one
+	// place so they can't drift.
+	async function postJob(type: TranslationJobType, slug: string) {
+		const res = await createAdminTranslationJob({ type, slug, language: data.code });
+		if (!jobs.some((j) => j.url === res.job.url)) jobs = [...jobs, res.job];
+	}
+
 	async function queue(type: TranslationJobType, slug: string) {
 		queueError = null;
 		queueing = `${type}:${slug}`;
 		try {
-			const res = await createAdminTranslationJob({ type, slug, language: data.code });
-			if (!jobs.some((j) => j.url === res.job.url)) jobs = [...jobs, res.job];
+			await postJob(type, slug);
 		} catch (e) {
 			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
 			queueError =
@@ -182,46 +188,105 @@
 		}
 	}
 
+	// Bulk-queue the currently-shown todo rows of one type in a single click, so
+	// filling a section isn't N separate presses. Only rows that aren't already
+	// queued are posted; each POST opens a real GitHub issue, so we confirm the
+	// count first. Sequential (not Promise.all) to keep it gentle on the API and
+	// to stop cleanly on the first error. `busy` gates every queue control while
+	// any single or bulk POST is in flight.
+	let bulkQueueing = $state<TranslationJobType | null>(null);
+	const busy = $derived(queueing !== null || bulkQueueing !== null);
+
+	async function queueBulk(type: TranslationJobType, rows: { slug: string }[]) {
+		const pending = rows.filter((r) => !jobFor(type, r.slug));
+		if (!pending.length) return;
+		if (
+			!confirm(
+				`Queue ${pending.length} ${type} translation${pending.length === 1 ? '' : 's'} for ` +
+					`${detail?.language.name ?? data.code}? This opens ${pending.length} GitHub issue` +
+					`${pending.length === 1 ? '' : 's'}.`
+			)
+		)
+			return;
+		queueError = null;
+		bulkQueueing = type;
+		try {
+			for (const r of pending) await postJob(type, r.slug);
+		} catch (e) {
+			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
+			queueError =
+				body?.detail ??
+				(e instanceof Error ? e.message : "Couldn't queue the translations — try again.");
+		} finally {
+			bulkQueueing = null;
+		}
+	}
+
 	// What each section shows. "Live" is what a reader can actually reach in this
 	// language right now (published rows only — an unpublished translation exists
 	// but serves nothing); "suggested" is the ranked queue of what to do next.
-	type View = 'all' | 'live' | 'suggested';
+	type View = 'all' | 'live' | 'suggested' | 'attention';
 	let view = $state<View>('all');
 	const VIEWS: { id: View; label: string }[] = [
 		{ id: 'all', label: 'All' },
 		{ id: 'live', label: 'Live on site' },
-		{ id: 'suggested', label: 'Suggested' }
+		{ id: 'suggested', label: 'Suggested' },
+		{ id: 'attention', label: 'Needs attention' }
 	];
 
-	/** Books/sermons/plans to list: none under "suggested", published-only under "live". */
-	const present = <T extends { is_published: boolean }>(rows: T[]): T[] =>
-		view === 'suggested' ? [] : view === 'live' ? rows.filter((r) => r.is_published) : rows;
+	/** "Needs attention" is the finishing worklist: a translated row that isn't
+	 *  live yet (unpublished) or is still an unreviewed AI draft. Sermons and
+	 *  plans carry no source_type, so only their publish state can flag them. */
+	const attnPublishable = (r: { is_published: boolean; source_type: SourceType }) =>
+		!r.is_published || r.source_type === 'ai_unreviewed';
+	const attnSimple = (r: { is_published: boolean }) => !r.is_published;
+
+	/** Books/sermons/plans to list: none under "suggested", published-only under
+	 *  "live", attention-only under "attention" (pass the matching predicate). */
+	const present = <T extends { is_published: boolean }>(rows: T[], attn: (r: T) => boolean): T[] =>
+		view === 'suggested'
+			? []
+			: view === 'live'
+				? rows.filter((r) => r.is_published)
+				: view === 'attention'
+					? rows.filter(attn)
+					: rows;
 	/** Bios have no publish flag — a translated biography either exists or doesn't,
-	 *  and if it exists it is live. So "live" and "all" show the same rows. */
+	 *  and if it exists it is live. So "live" and "all" show the same rows; under
+	 *  "attention" an unreviewed AI bio is what's left to check. */
 	const presentBios = (rows: AdminLangBio[]): AdminLangBio[] =>
-		view === 'suggested' ? [] : rows;
-	/** Todo rows to list: hidden under "live". */
-	const suggested = <T,>(rows: T[]): T[] => (view === 'live' ? [] : rows);
+		view === 'suggested' ? [] : view === 'attention' ? rows.filter((a) => !a.reviewed) : rows;
+	/** Todo rows to list: hidden under "live" and "attention" (both are about
+	 *  finishing existing translations, not starting new ones). */
+	const suggested = <T,>(rows: T[]): T[] => (view === 'live' || view === 'attention' ? [] : rows);
 
 	// One derived view of the payload, so the template stays declarative —
 	// Svelte 5 won't allow {@const} as a direct child of <section>.
 	const shown = $derived({
-		books: present(detail?.books ?? []),
-		sermons: present(detail?.sermons ?? []),
-		plans: present(detail?.plans ?? []),
+		books: present(detail?.books ?? [], attnPublishable),
+		sermons: present(detail?.sermons ?? [], attnSimple),
+		plans: present(detail?.plans ?? [], attnSimple),
 		bios: presentBios(detail?.bios ?? []),
 		todoBooks: suggested(detail?.todo.books ?? []),
 		todoSermons: suggested(detail?.todo.sermons ?? []),
-		topics: view === 'suggested' ? [] : (detail?.topics ?? []),
+		// Topics carry no publish/review state, so nothing to attend to there.
+		topics: view === 'suggested' || view === 'attention' ? [] : (detail?.topics ?? []),
 		todoPlans: suggested(detail?.todo.plans ?? []),
 		todoBios: suggested(detail?.todo.bios ?? []),
 		todoTopics: suggested(detail?.todo.topics ?? []),
-		articles: present(detail?.articles ?? []),
+		articles: present(detail?.articles ?? [], attnPublishable),
 		todoArticles: suggested(detail?.todo.articles ?? [])
 	});
-	// Under "suggested" an empty translated list is the point, not a gap.
+	// Under "suggested" an empty translated list is the point, not a gap; under
+	// "attention" an empty list is the good outcome (nothing left to fix).
 	const emptyLabel = $derived(
-		view === 'live' ? 'Nothing live yet.' : view === 'suggested' ? '' : 'None yet.'
+		view === 'live'
+			? 'Nothing live yet.'
+			: view === 'suggested'
+				? ''
+				: view === 'attention'
+					? 'Nothing needs attention.'
+					: 'None yet.'
 	);
 
 	// Jump bar. The page is a tall stack (readiness + settings + six content
@@ -258,6 +323,24 @@
 	// (nothing to save by hiding a handful). The heading and count stay visible
 	// either way, so the state is legible while folded.
 	const COLLAPSE_AT = 8;
+
+	// Translation coverage, per content type: how far this language has come
+	// against the English catalogue. A bar reads faster than "217/312 books" and
+	// answers the question the page exists for. Counts are the full translated
+	// totals (not the view filter). English (source) has no coverage to show.
+	const progress = $derived(
+		detail && !detail.is_source
+			? [
+					{ label: 'Books', done: detail.books.length, total: detail.english_counts.books },
+					{ label: 'Sermons', done: detail.sermons.length, total: detail.english_counts.sermons },
+					{ label: 'Plans', done: detail.plans.length, total: detail.english_counts.plans },
+					{ label: 'Bios', done: detail.bios.length, total: detail.english_counts.bios },
+					{ label: 'Articles', done: detail.articles.length, total: detail.english_counts.articles }
+				]
+			: []
+	);
+	const pct = (done: number, total: number) =>
+		total > 0 ? Math.round((done / total) * 100) : 0;
 
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
@@ -303,13 +386,28 @@
 				{:else}
 					<button
 						class="btn btn-sm btn-ghost shrink-0"
-						disabled={jobsConfigured === false || queueing !== null}
+						disabled={jobsConfigured === false || busy}
 						title={jobsConfigured === false
 							? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
 							: `Queue a ${d.language.name} translation`}
 						onclick={() => queue(type, slug)}
 					>
 						{queueing === `${type}:${slug}` ? 'Queueing…' : 'Translate'}
+					</button>
+				{/if}
+			{/snippet}
+			<!-- "Queue all N" for a section's shown todo rows — one click instead of N.
+			     Skips rows already queued; hidden when the queue isn't configured or
+			     there's nothing left to queue. -->
+			{#snippet bulkQueueControl(type: TranslationJobType, rows: { slug: string }[])}
+				{@const pending = rows.filter((r) => !jobFor(type, r.slug)).length}
+				{#if jobsConfigured !== false && pending > 0}
+					<button
+						class="shrink-0 text-small font-semibold text-accent hover:underline disabled:opacity-50"
+						disabled={busy}
+						onclick={() => queueBulk(type, rows)}
+					>
+						{bulkQueueing === type ? 'Queueing…' : `Queue all ${fmt(pending)}`}
 					</button>
 				{/if}
 			{/snippet}
@@ -347,13 +445,28 @@
 					{/if}
 				</p>
 				{#if !d.is_source}
-					<p class="mt-3 text-body text-muted">
-						<strong class="text-text">{fmt(d.books.length)}</strong>/{fmt(d.english_counts.books)} books ·
-						<strong class="text-text">{fmt(d.sermons.length)}</strong>/{fmt(d.english_counts.sermons)} sermons ·
-						<strong class="text-text">{fmt(d.plans.length)}</strong>/{fmt(d.english_counts.plans)} plans ·
-						<strong class="text-text">{fmt(d.bios.length)}</strong>/{fmt(d.english_counts.bios)} long-form bios ·
-						<strong class="text-text">{fmt(d.articles.length)}</strong>/{fmt(d.english_counts.articles)} articles translated
-					</p>
+					<!-- Coverage against the English catalogue, one bar per content type —
+					     the "how far along is this language" answer at a glance. -->
+					<div class="mt-4 grid max-w-xl grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
+						{#each progress as p (p.label)}
+							<div
+								class="flex items-center gap-3 text-small"
+								role="progressbar"
+								aria-valuenow={pct(p.done, p.total)}
+								aria-valuemin="0"
+								aria-valuemax="100"
+								aria-label="{p.label}: {fmt(p.done)} of {fmt(p.total)} translated"
+							>
+								<span class="w-16 flex-none text-muted">{p.label}</span>
+								<span class="h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-surface-2">
+									<span class="block h-full rounded-full bg-accent" style="width: {pct(p.done, p.total)}%"></span>
+								</span>
+								<span class="w-16 flex-none text-right tabular-nums text-muted">
+									<strong class="text-text">{fmt(p.done)}</strong>/{fmt(p.total)}
+								</span>
+							</div>
+						{/each}
+					</div>
 				{/if}
 				{#if !d.is_source}
 					<div class="mt-4 flex flex-wrap items-center gap-2" role="group" aria-label="Filter what each section shows">
@@ -375,6 +488,7 @@
 						<span class="text-small text-muted">
 							{#if view === 'live'}Published — reaches readers after the next site build.
 							{:else if view === 'suggested'}Ranked queue of what to translate next.
+							{:else if view === 'attention'}Translated but unpublished or awaiting review — the finishing list.
 							{:else}Everything — translated and suggested.{/if}
 						</span>
 					</div>
@@ -615,7 +729,10 @@
 					{@render translatedList('Books', shown.books.length, booksList)}
 					{#if shown.todoBooks.length}
 						<div class="mt-4 border-t border-border pt-3">
-							<p class="section-label">Next to work on</p>
+							<div class="mb-1 flex items-baseline justify-between gap-3">
+								<p class="section-label">Next to work on</p>
+								{@render bulkQueueControl('book', shown.todoBooks)}
+							</div>
 							{#if queueError}
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
@@ -653,9 +770,12 @@
 					{@render translatedList('Long-form bios', shown.bios.length, biosList)}
 					{#if shown.todoBios.length}
 						<div class="mt-4 border-t border-border pt-3">
-							<p class="section-label">
-								Next to work on <span class="font-normal normal-case tracking-normal">· most-published authors first</span>
-							</p>
+							<div class="mb-1 flex items-baseline justify-between gap-3">
+								<p class="section-label">
+									Next to work on <span class="font-normal normal-case tracking-normal">· most-published authors first</span>
+								</p>
+								{@render bulkQueueControl('bio', shown.todoBios)}
+							</div>
 							{#if queueError}
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
@@ -697,7 +817,10 @@
 					{@render translatedList('Sermons', shown.sermons.length, sermonsList)}
 					{#if shown.todoSermons.length}
 						<div class="mt-4 border-t border-border pt-3">
-							<p class="section-label">Next to work on</p>
+							<div class="mb-1 flex items-baseline justify-between gap-3">
+								<p class="section-label">Next to work on</p>
+								{@render bulkQueueControl('sermon', shown.todoSermons)}
+							</div>
 							{#if queueError}
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
@@ -737,7 +860,10 @@
 					{@render translatedList('Plans', shown.plans.length, plansList)}
 					{#if shown.todoPlans.length}
 						<div class="mt-4 border-t border-border pt-3">
-							<p class="section-label">Next to work on</p>
+							<div class="mb-1 flex items-baseline justify-between gap-3">
+								<p class="section-label">Next to work on</p>
+								{@render bulkQueueControl('plan', shown.todoPlans)}
+							</div>
 							{#if queueError}
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
@@ -778,9 +904,12 @@
 					{@render translatedList('Topics', shown.topics.length, topicsList)}
 					{#if shown.todoTopics.length}
 						<div class="mt-4 border-t border-border pt-3">
-							<p class="section-label">
-								Hidden in this language ({fmt(shown.todoTopics.length)})
-							</p>
+							<div class="mb-1 flex items-baseline justify-between gap-3">
+								<p class="section-label">
+									Hidden in this language ({fmt(shown.todoTopics.length)})
+								</p>
+								{@render bulkQueueControl('topic', shown.todoTopics)}
+							</div>
 							<p class="mb-2 text-small text-muted">
 								A shelf with no title here is left out of this language's topic page entirely.
 							</p>
@@ -825,7 +954,10 @@
 					{@render translatedList('Articles', shown.articles.length, articlesList)}
 					{#if shown.todoArticles.length}
 						<div class="mt-4 border-t border-border pt-3">
-							<p class="section-label">Next to work on</p>
+							<div class="mb-1 flex items-baseline justify-between gap-3">
+								<p class="section-label">Next to work on</p>
+								{@render bulkQueueControl('article', shown.todoArticles)}
+							</div>
 							{#if queueError}
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
