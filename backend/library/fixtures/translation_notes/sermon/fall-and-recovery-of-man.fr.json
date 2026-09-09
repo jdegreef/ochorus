@@ -1,0 +1,270 @@
+{
+  "kind": "sermon",
+  "slug": "fall-and-recovery-of-man",
+  "language": "fr",
+  "job_issue": 1982,
+  "pull_request": 1992,
+  "references": [
+    {
+      "reference": "Romans 5:15",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 3:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 3:23",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Jeremiah 2:21",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 15:16",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Jeremiah 17:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 5:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 64:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 59:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 1:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 4:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Daniel 5:25",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 12:33",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 12:34",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 26:73",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 5:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 5:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Peter 2:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 3:12-17",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 1:25",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 1:23",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 5:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 5:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:36",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Galatians 3:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 3:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 4:8",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 11:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 7:11-12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 Thessalonians 2:16",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 59:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Deuteronomy 28:23",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ecclesiastes 8:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 25:41",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 5:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 2:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 Kings 19:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ezekiel 18:20",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Hebrews 9:22",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Daniel 9:24",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 19:30",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Colossians 2:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 2:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 2:8-9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 5:20",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 61:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 5:8-10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 8:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 9:15",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 53:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 38:17",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Micah 7:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 5:20",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 10:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Deuteronomy 32:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 41:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 14:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Zechariah 9:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 Corinthians 15:57",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 16:33",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 21:28",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Hebrews 10:4",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session French translation: all references are self_rendered from Louis Segond (1910) by recall. Verify each against the French Bible during native review."
+}
