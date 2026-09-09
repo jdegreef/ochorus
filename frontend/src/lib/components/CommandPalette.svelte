@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { search, type SearchHit } from '$lib/library-public';
+	import { search, scripturePageHref, type SearchHit } from '$lib/library-public';
+	import { PRIMARY_NAV, ENGLISH_HUBS } from '$lib/contentNav';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -19,24 +20,15 @@
 	let searchSeq = 0;
 
 	// Quick-nav destinations — the app's primary pages, jumpable by name.
+	// Home, then the content types in PRIMARY_NAV order (shared with the top nav
+	// and footer so the three can't drift — F2), then the English-only hubs on
+	// the same gate as the footer (in another locale they would jump to a page
+	// with nothing on it; ungate when translated), then the utility pages.
 	const COMMANDS = $derived([
 		{ href: '/', label: t('nav.home') },
-		{ href: '/books', label: t('nav.books') },
-		{ href: '/topics', label: t('nav.topics') },
-		{ href: '/plans', label: t('nav.plans') },
-		{ href: '/sermons', label: t('nav.sermons') },
-		{ href: '/biographies', label: t('nav.biographies') },
-		// Articles, Scripture and Quotes are English-only hubs (they sit in the
-		// footer Explore group only for English readers). Reachable from the
-		// palette on the same terms — in another locale they would jump to a page
-		// with nothing on it. Kept in the footer's order (F1). Ungate when they
-		// are translated.
+		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey) })),
 		...(getLang() === 'en'
-			? [
-					{ href: '/articles', label: t('nav.articles') },
-					{ href: '/scripture', label: t('reader.scripture') },
-					{ href: '/quotes', label: t('nav.quotes') }
-				]
+			? ENGLISH_HUBS.map((d) => ({ href: d.href, label: t(d.labelKey) }))
 			: []),
 		{ href: '/notebook', label: t('notebook.title') },
 		{ href: '/settings', label: t('settings.title') },
@@ -58,6 +50,8 @@
 				return { key: 'plan:' + h.plan_slug, kind: 'hit', label: t('search.typePlan'), title: h.plan_title, meta: '', href: `/plans/${h.plan_slug}` };
 			case 'article':
 				return { key: 'article:' + h.article_slug, kind: 'hit', label: t('search.typeArticle'), title: h.article_title, meta: '', href: `/articles/${h.article_slug}` };
+			case 'scripture':
+				return { key: `scripture:${h.book_slug}:${h.chapter}:${h.verse ?? ''}`, kind: 'hit', label: t('search.typeScripture'), title: h.reference, meta: '', href: scripturePageHref(h.book_slug, h.chapter, h.verse) };
 			case 'sermon':
 				return { key: 'sermon:' + h.sermon_slug, kind: 'hit', label: t('search.typeSermon'), title: h.sermon_title, meta: h.author_name, href: `/sermons/${h.sermon_slug}` };
 			default:

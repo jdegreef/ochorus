@@ -931,9 +931,17 @@ class BookDetailSerializer(BookListSerializer):
     # chips linking to their author pages. Localized: only people with a bio in
     # THIS edition's language are shown, the usual no-English-fallback rule.
     featured_people = serializers.SerializerMethodField()
+    # How many reviewed quotations this book's author has, so the page can show a
+    # "Quotes from {author}" link (English only, as the quote pages are) when it
+    # is non-zero. Detail-only like author_same_as: a card carries no such link,
+    # so a shelf would run this count 130 times for nothing.
+    author_quote_count = serializers.SerializerMethodField()
 
     def get_author_same_as(self, obj):
         return obj.author.same_as or []
+
+    def get_author_quote_count(self, obj) -> int:
+        return obj.author.quotes.filter(reviewed=True).count()
 
     def get_alternate_titles(self, obj) -> list[str]:
         return alternate_titles(obj.slug, obj.language, obj.title)
@@ -1015,7 +1023,7 @@ class BookDetailSerializer(BookListSerializer):
             "difficulty", "is_modern_edition", "has_modern_edition",
             "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "scripture", "opening",
-            "featured_people",
+            "featured_people", "author_quote_count",
         ]
 
     def get_available_languages(self, obj):
@@ -1295,7 +1303,15 @@ def plan_book_index(plans, language):
     slugs = {d.book_slug for plan in plans for d in plan.days.all()}
     if not slugs:
         return {}
-    return {b.slug: b for b in Book.objects.filter(slug__in=slugs, language=language)}
+    # select_related the author so a plan can name the writers it reads through
+    # (PlanDetailSerializer.get_authors) without an N+1; the covers/day fields
+    # ignore it, at the cost of one join.
+    return {
+        b.slug: b
+        for b in Book.objects.filter(slug__in=slugs, language=language).select_related(
+            "author"
+        )
+    }
 
 
 def _plan_total_words(plan, chapters):
@@ -1371,12 +1387,32 @@ class PlanDaySerializer(serializers.ModelSerializer):
 class PlanDetailSerializer(PlanListSerializer):
     days = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
+    authors = serializers.SerializerMethodField()
 
     class Meta(PlanListSerializer.Meta):
-        fields = PlanListSerializer.Meta.fields + ["days", "available_languages"]
+        fields = PlanListSerializer.Meta.fields + [
+            "days",
+            "available_languages",
+            "authors",
+        ]
 
     def get_available_languages(self, obj):
         return _available_languages(Plan, obj.slug)
+
+    def get_authors(self, obj):
+        """The distinct writers this plan reads through, in the order their books
+        first appear across the days — a link out to each author page, so a plan
+        is a way into their work, not only a sequence of chapters. Reads the
+        page-wide book index (author select_related), so no extra query."""
+        books = self._books(obj)
+        authors: list[dict] = []
+        seen: set[str] = set()
+        for day in obj.days.all():
+            book = books.get(day.book_slug)
+            if book and book.author.slug not in seen:
+                seen.add(book.author.slug)
+                authors.append({"slug": book.author.slug, "name": book.author.name})
+        return authors
 
     def get_days(self, obj):
         days = list(obj.days.all())

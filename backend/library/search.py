@@ -53,7 +53,10 @@ MIN_QUERY_LEN = 2
 # whose title *is* the query is almost always what the reader wants.
 ENTITY_BOOST = 1.6
 
-# Per-type caps so one kind can't crowd the others out of the merged list.
+# Per-type caps so one kind can't crowd the others out of the merged list. This
+# is the set of QUERYSET-backed types; "scripture" is deliberately absent — it is
+# a synthesized, reference-triggered hit with no queryset, handled out of band in
+# page_by_type and led directly in search_library (see _scripture_page_hits).
 CAPS = {
     "author": 5,
     "book": 8,
@@ -278,7 +281,12 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
     # chapters whose body CITES an overlapping reference (ChapterCitation
     # verse-id spans). Matched by verse id, so it works where plain text
     # search can't (abbreviations, chapter-only, a verse inside a range).
-    extra = _scripture_sermon_hits(q, sermons, base)
+    # The scripture PAGE itself leads: a reference query's most direct answer is
+    # the hub that gathers everything treating the passage, above the individual
+    # sermons and chapters that do. English-only and never inside a scope (it is
+    # a global hub, not something that lives under an author/book).
+    extra = _scripture_page_hits(q, language, scope)
+    extra += _scripture_sermon_hits(q, sermons, base)
     cite_hits = _scripture_chapter_hits(q, chapters)
     if cite_hits:
         # A chapter found by BOTH citation and plain text keeps its citation
@@ -663,6 +671,10 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
         if n:
             counts[kind] = n
             capped[kind] = n >= COUNT_CEILING
+    # "scripture" is intentionally uncounted: it has no queryset, and a reference
+    # resolves to 0-or-1 page, so the frontend's `totals[type] ?? loaded` fallback
+    # lands on the single loaded row exactly. Counting it would mean re-running
+    # the resolver here for no gain.
     return counts, capped
 
 
@@ -698,6 +710,12 @@ def page_by_type(
     "newest" meant "newest of the thirty most relevant". Ordering the full match
     set is the only way that control can mean what it says.
     """
+    # Scripture is a reference-triggered hit with no queryset behind it (see
+    # _scripture_page_hits), so it can't go through _match/_base_querysets. There
+    # is at most one page per query, so paging is trivial — this exists only so
+    # the type facet's "show this kind" fetch returns the hit rather than blank.
+    if kind == "scripture":
+        return _scripture_page_hits(q, language, scope)[offset : offset + limit]
     if kind not in CAPS:
         return []
     ctx = _Ctx(q=q, language=language)
@@ -837,6 +855,50 @@ def _lead(text: str, n: int = 160) -> str:
     whose query is a reference, not words found in the body."""
     text = (text or "").strip()
     return text[:n] + ("…" if len(text) > n else "")
+
+
+def _scripture_page_hits(q, language, scope=None):
+    """The scripture HUB page for a reference query, when one has earned a URL.
+
+    Reference-triggered like ``_scripture_sermon_hits`` / ``_scripture_chapter_hits``
+    (returns [] when ``q`` isn't a reference), but a single NAVIGATIONAL result:
+    a link to the ``/scripture/<book>/<chapter>[/<verse>]`` page that gathers
+    everything treating the passage, led above those individual passages. The
+    row carries no prose (the page is an aggregation) and no date to sort by; the
+    client builds the link from book_slug/chapter/verse, as the page chips do.
+
+    ``scripture_graph.pages_for`` is the one floor-respecting resolver (the same
+    rule the pages, sitemap and inline links use), so a hit is emitted only where
+    the page was actually built — never a link to a 404. Scripture pages are
+    English-only (built from English citations, ASV text) and are global hubs, so
+    nothing fires for a non-English reader or inside a scope — mirroring how the
+    footer and command palette gate ``/scripture``.
+
+    Returns AT MOST ONE hit — a query resolves to a single page. That invariant
+    is load-bearing downstream: scripture is deliberately absent from ``CAPS`` and
+    ``count_by_type`` (it has no queryset), so the facet's count falls back to the
+    one loaded row, which is exact only because the count is 0-or-1.
+    """
+    if scope or language != "en":
+        return []
+    from .scripture_graph import book_from_slug, pages_for, reference_label
+
+    page = pages_for([q]).get(q)
+    if not page:
+        return []
+    book = book_from_slug(page["book"])
+    verse = page.get("verse")
+    return [
+        {
+            "type": "scripture",
+            "book_slug": page["book"],
+            "chapter": page["chapter"],
+            "verse": verse,
+            "reference": reference_label(book, page["chapter"], verse) if book else "",
+            "snippet": "",
+            "date": "",
+        }
+    ]
 
 
 def _scripture_sermon_hits(q, sermons, base):

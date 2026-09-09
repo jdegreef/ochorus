@@ -151,6 +151,12 @@ export interface BookDetail extends BookSummary {
 	 * every entry is a live link.
 	 */
 	featured_people?: FeaturedPerson[];
+	/**
+	 * How many reviewed quotations this book's author has — the page shows a
+	 * "Quotes from {author}" link when it is non-zero (English only, as the quote
+	 * pages are). Optional so an API running behind this build simply omits it.
+	 */
+	author_quote_count?: number;
 }
 
 export interface ChapterNav {
@@ -289,6 +295,21 @@ export interface ArticleHit {
 	date: string;
 }
 
+export interface ScriptureHit {
+	type: 'scripture';
+	/** Book slug for the `/scripture/<book>/<chapter>[/<verse>]` link. */
+	book_slug: string;
+	chapter: number;
+	/** A specific verse, or null for a whole-chapter page. */
+	verse: number | null;
+	/** The human label the row shows — "Romans 8:28" / "Romans 8". */
+	reference: string;
+	/** Always "" — a scripture page is an aggregation, with no prose of its own. */
+	snippet: string;
+	/** Always "" — a scripture page has no date to sort by. */
+	date: string;
+}
+
 export type SearchHit =
 	| ChapterHit
 	| SermonHit
@@ -296,7 +317,8 @@ export type SearchHit =
 	| BookHit
 	| TopicHit
 	| PlanHit
-	| ArticleHit;
+	| ArticleHit
+	| ScriptureHit;
 
 export type SearchType = SearchHit['type'];
 export type SearchSort = 'relevance' | 'title' | 'newest';
@@ -736,6 +758,10 @@ export interface PlanDetail extends PlanSummary {
 	 * hreflang alternate should point at. A plan materializes per language only
 	 * once its source books are all translated, so this can be a subset. */
 	available_languages: string[];
+	/** The distinct writers the plan reads through, in first-appearance order —
+	 * a link to each author page. Optional so an API predating the field renders
+	 * no section (rolling-deploy skew). */
+	authors?: { slug: string; name: string }[];
 }
 
 export const listPlans = (language = 'en') =>
@@ -891,6 +917,14 @@ export const getScripturePage = (book: string, chapter: number, verse?: number) 
 		`/api/library/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '')
 	);
 
+/**
+ * The reader-facing scripture page URL — `/scripture/<book>/<chapter>/` with a
+ * trailing `<verse>/` for a verse page. One place for the shape the search hit
+ * and the command palette both link to; `null`/`0` verse means the whole chapter.
+ */
+export const scripturePageHref = (book: string, chapter: number, verse: number | null): string =>
+	`/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '');
+
 // --- Quotes -------------------------------------------------------------------
 // Sourced quotations, by author. English-only for the same reason the scripture
 // graph is: they are lifted from the English works, and the citation names an
@@ -987,6 +1021,8 @@ export interface QuoteAuthorSummary {
 	slug: string;
 	name: string;
 	birth_year: number | null;
+	/** Blank for authors with no free image; the card falls back to initials. */
+	photo_url: string;
 	count: number;
 }
 

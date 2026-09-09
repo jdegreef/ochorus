@@ -12,6 +12,7 @@
 	import { API_BASE_URL } from '$lib/config';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
+	import { loginHref } from '$lib/loginHref';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
@@ -27,6 +28,7 @@
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
+	import { PRIMARY_NAV, ENGLISH_HUBS } from '$lib/contentNav';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	// Preload the primary Latin subsets of the two brand fonts (display + body).
 	// @fontsource already ships them font-display:swap; preloading fetches them on
@@ -74,13 +76,11 @@
 
 	// App destinations only — About Us and Contact live in the footer (matching
 	// Take Root, whose app nav carries five primary destinations).
+	// Home (chrome) then the five content types, whose order is shared with the
+	// footer and command palette via PRIMARY_NAV so the three can't drift (F2).
 	const NAV = $derived<{ href: string; label: string; icon: IconName }[]>([
 		{ href: '/', label: t('nav.home'), icon: 'grid' },
-		{ href: '/books', label: t('nav.books'), icon: 'book' },
-		{ href: '/topics', label: t('nav.topics'), icon: 'tag' },
-		{ href: '/plans', label: t('nav.plans'), icon: 'calendar' },
-		{ href: '/sermons', label: t('nav.sermons'), icon: 'mic' },
-		{ href: '/biographies', label: t('nav.biographies'), icon: 'users' }
+		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey), icon: d.icon }))
 	]);
 
 	// The reroute hook strips the locale prefix before routing, so page.route.id
@@ -143,6 +143,16 @@
 	// (and is tested there): the locale the reader is ACTUALLY IN is always
 	// listed, advertised or not.
 	const footerLangs = $derived(footerLocales(lang.available, lang.current));
+
+	// Footer sign-up CTA target. Reuses loginHref's guard (which keeps a reader
+	// who is already on /login from being redirected back to it — see loginHref)
+	// and just adds mode=signup so the login page opens on its "create account"
+	// form. The caller localizes the path, exactly as the header's sign-in link
+	// does. Only rendered when accounts exist AND the reader is signed out.
+	const signupHref = $derived.by(() => {
+		const base = loginHref($page.url.pathname, $page.url.search);
+		return base.includes('?') ? `${base}&mode=signup` : `${base}?mode=signup`;
+	});
 
 	// The API is a separate origin in production (api.ochorus.com). Prerendered
 	// pages bake their content, but the personal blocks (Continue reading,
@@ -286,6 +296,22 @@
 					<p class="mt-2 max-w-xs text-small text-muted">
 						{t('footer.tagline')}
 					</p>
+					<!-- Sign-up CTA, signed-out readers only. auth.enabled gates it the
+					     same way the header's sign-in control is gated (AccountMenu): with
+					     Supabase keys absent the whole auth UI hides rather than offering a
+					     button that can't work. Once signed in the prompt is spent, so it
+					     drops. Reuses login.createAccountLink — already translated in every
+					     advertised locale — rather than minting a footer-only string. Soft
+					     btn-primary to match the header control; w-fit so the pill hugs its
+					     label instead of stretching the brand column. -->
+					{#if auth.enabled && !auth.user}
+						<a
+							href={localizeHref(signupHref)}
+							class="btn btn-sm btn-primary mt-4 w-fit hover:no-underline"
+						>
+							{t('login.createAccountLink')}
+						</a>
+					{/if}
 				</div>
 				<!-- Labelled by their own headings rather than a duplicated aria-label
 				     string: the visible heading IS the accessible name, so the two
@@ -296,29 +322,24 @@
 				<nav aria-labelledby="footer-explore-heading">
 					<h2 id="footer-explore-heading" class="footer-heading">{t('footer.explore')}</h2>
 					<ul class="footer-links">
-						<li><a href={localizeHref('/books')}>{t('nav.books')}</a></li>
-						<li><a href={localizeHref('/topics')}>{t('nav.topics')}</a></li>
-						<li><a href={localizeHref('/plans')}>{t('nav.plans')}</a></li>
-						<li><a href={localizeHref('/sermons')}>{t('nav.sermons')}</a></li>
-						<li><a href={localizeHref('/biographies')}>{t('nav.biographies')}</a></li>
-						<!-- English only, and shown only to English readers rather than
-						     localized. The scripture graph is built from citations parsed
-						     against English book names, so there is no Spanish or Swahili
-						     version to send anyone to — and offering the link under a
-						     locale prefix would both promise a page that does not exist
-						     and let the prerender crawler bake localized copies of it. -->
+						<!-- The primary five, in PRIMARY_NAV order (shared with the top nav
+						     and the command palette so the three can't drift — F2). -->
+						{#each PRIMARY_NAV as d (d.href)}
+							<li><a href={localizeHref(d.href)}>{t(d.labelKey)}</a></li>
+						{/each}
+						<!-- English-only hubs, shown only to English readers rather than
+						     localized. The content is lifted from / parsed against the
+						     English works (scripture citations name English book names,
+						     quotes cite English chapters, articles have no translations
+						     yet), so there is no localized page to send anyone to — and a
+						     locale-prefixed link would promise a missing page and let the
+						     prerender crawler bake localized copies of it. Footer, not top
+						     nav: an entry point for search, not a primary journey. The
+						     trailing slash matches these pages' canonical URLs. -->
 						{#if lang.current === 'en'}
-							<!-- Articles are original English writing with no translations
-							     yet, so — like Scripture and Quotes below — the link is shown
-							     only to English readers rather than localized to a page that
-							     would list nothing. It ungates when articles are translated. -->
-							<li><a href="/articles/">{t('nav.articles')}</a></li>
-							<li><a href="/scripture/">{t('reader.scripture')}</a></li>
-							<!-- Quotes, like Scripture, is an English-only hub: the
-							     quotations are lifted from the English works and every
-							     citation names an English chapter. Footer, not top nav —
-							     it is an entry point for search, not a primary journey. -->
-							<li><a href="/quotes/">{t('nav.quotes')}</a></li>
+							{#each ENGLISH_HUBS as d (d.href)}
+								<li><a href="{d.href}/">{t(d.labelKey)}</a></li>
+							{/each}
 						{/if}
 						<li><a href="/feed.xml">RSS</a></li>
 					</ul>

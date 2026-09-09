@@ -532,8 +532,14 @@ relevant group.
   review-gated sourced sentences aggregated into hub pages, not search entities.
   Flip to `[x]` once the palette-`COMMANDS` half
   (`claude/ochorus-dev-c3b9a9-reachability`) also lands on main._
-- [ ] **F2** Sitemap lists Sermons before Topics; nav, footer and palette agree
-  on Topics · Plans · Sermons. → derive all four from one list.
+- [x] **F2** _(shipped `claude/ochorus-dev-f2-chrome-order`)_ nav, footer and
+  palette now derive their content-type order from one list (`$lib/contentNav`:
+  `PRIMARY_NAV` + the English-only `ENGLISH_HUBS`), so the three can't drift;
+  `contentNav.test.ts` pins the order. The three already **agreed** by the time
+  this ran — the fix removes the triple-hardcoding that let them drift. The
+  sitemap is deliberately **left out**: its section order answers a crawl /
+  per-locale-coverage question (chapters-* first, topics/plans folded into
+  `pages`), not a nav one — documented in `sitemap.ts` rather than force-fit.
 - [x] **F3** _(shipped `claude/ochorus-dev-f3-hub-i18n`)_ The chrome on the
   Articles, Scripture and Quotes hubs — `Home`/hub crumbs (which also feed the
   BreadcrumbList JSON-LD), CTAs (`Read →`, `Browse by topic →`, `All of …`),

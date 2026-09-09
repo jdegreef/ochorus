@@ -14,6 +14,7 @@
  * counting is the half that has been wrong twice.
  */
 import { portraitPosition } from '$lib/portraits';
+import { scripturePageHref } from '$lib/library-public';
 import type { ChapterHit, SearchHit, SearchType } from '$lib/library-public';
 import { chapterName } from './reading';
 
@@ -123,6 +124,19 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				color: '',
 				round: false
 			};
+		case 'scripture':
+			return {
+				key: `scripture:${hit.book_slug}:${hit.chapter}:${hit.verse ?? ''}`,
+				label: ctx.label('scripture'),
+				href: scripturePageHref(hit.book_slug, hit.chapter, hit.verse),
+				title: hit.reference,
+				meta: '',
+				snippet: hit.snippet,
+				date: hit.date,
+				image: '',
+				color: '',
+				round: false
+			};
 		case 'sermon':
 			return {
 				key: 'sermon:' + hit.sermon_slug,
@@ -161,6 +175,9 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
  * tail underneath them.
  */
 export const GROUP_ORDER: { type: SearchHit['type']; labelKey: string }[] = [
+	// Scripture leads: it only appears for a reference query, where the passage
+	// hub is the most direct answer, above the books/passages that treat it.
+	{ type: 'scripture', labelKey: 'search.groupScripture' },
 	{ type: 'book', labelKey: 'search.groupBooks' },
 	{ type: 'author', labelKey: 'search.groupAuthors' },
 	{ type: 'topic', labelKey: 'search.groupTopics' },

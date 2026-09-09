@@ -1114,21 +1114,23 @@ class QuoteAuthorsView(APIView):
         from .models import Author
 
         # Author objects, not bare slugs: the /quotes index page renders a card
-        # per author (name, era hue, how many quotations), and the prerender
-        # entry generator and the sitemap take `.slug` from the same rows. One
-        # query, annotated — never a count() per author.
+        # per author (portrait, name, era hue, how many quotations), and the
+        # prerender entry generator and the sitemap take `.slug` from the same
+        # rows. One query, annotated — never a count() per author. photo_url is
+        # blank for authors with no free image; the card falls back to initials.
         rows = (
             Author.objects.annotate(
                 n=Count("quotes", filter=Q(quotes__reviewed=True))
             )
             .filter(n__gt=0)
             .order_by("name")
-            .values("slug", "name", "birth_year", "n")
+            .values("slug", "name", "birth_year", "photo_url", "n")
         )
         return Response(
             [
                 {"slug": r["slug"], "name": r["name"],
-                 "birth_year": r["birth_year"], "count": r["n"]}
+                 "birth_year": r["birth_year"], "photo_url": r["photo_url"],
+                 "count": r["n"]}
                 for r in rows
             ]
         )

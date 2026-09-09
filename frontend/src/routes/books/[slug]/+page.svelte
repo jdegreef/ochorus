@@ -5,9 +5,10 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { chapterName, readingMinutes, readingTime } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, truncateMeta } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, truncateMeta, topicThings } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { getLang } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
@@ -155,14 +156,14 @@
 			wordCount: totalWords || undefined,
 			// What the work is ABOUT, as opposed to what it is called — the topical
 			// shelves it belongs to, which the page has always rendered as chips
-			// and never told a machine.
-			about: book.topics?.length
-				? book.topics.map((t) => ({
-						'@type': 'Thing',
-						name: t.title,
-						url: absUrl(localizeHref(`/topics/${t.slug}`))
-					}))
-				: undefined,
+			// and never told a machine. Shared topicThings shape, same as a Person's
+			// `knowsAbout`.
+			about: topicThings(book.topics ?? []),
+			// The same shelves as a flat keyword string. `about` gives the topic
+			// entities (with URLs); `keywords` is the plain-text form some engines
+			// still read for topical relevance, drawn from the one source so the two
+			// can't disagree.
+			keywords: book.topics?.length ? book.topics.map((t) => t.title).join(', ') : undefined,
 			// `isAccessibleForFree` states the fact; this is its verb. The whole
 			// book can be read here, now, without an account, and a ReadAction is
 			// how that is expressed to a machine rather than implied.
@@ -172,7 +173,7 @@
 				actionStatus: 'https://schema.org/PotentialActionStatus'
 			},
 			datePublished: book.publication_year ? String(book.publication_year) : undefined,
-			publisher: { '@type': 'Organization', name: 'Ochorus' },
+			publisher: { '@type': 'Organization', name: 'Ochorus', url: SITE_URL },
 			// The chapters as an explicit, ordered part-list — the book→chapter
 			// edges the page renders as a table of contents but never declared to a
 			// machine. Each is a resolvable URL with its own length.
@@ -217,6 +218,7 @@
 	ogType="book"
 	ogTitle="{book.title} — {book.author.name}"
 	{ogImage}
+	ogImageAlt="{t('a11y.coverOf')} {book.title}"
 	structuredData={[bookLd, crumbsLd]}
 />
 
@@ -262,6 +264,17 @@
 					>{book.author.name}</a
 				>{#if years}<span class="text-muted">{` · ${years}`}</span>{/if}
 			</p>
+
+			<!-- The author's memorable lines: a bridge from the book to their quote
+			     page. English only, as the quote pages are — mirrors the author
+			     page's own Quotes link, gate and all. -->
+			{#if book.author_quote_count && getLang() === 'en'}
+				<p class="mt-1 text-small">
+					<a href={`/quotes/${book.author.slug}/`} class="text-accent hover:underline"
+						>Quotes from {book.author.name} →</a
+					>
+				</p>
+			{/if}
 
 			<SourceBadge sourceType={book.source_type} class="mt-3" />
 
