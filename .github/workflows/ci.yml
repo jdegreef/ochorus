@@ -77,15 +77,24 @@ jobs:
         working-directory: backend
         run: uv run python manage.py makemigrations --check --dry-run
 
+      # --parallel auto: one worker per core (4 on ubuntu-latest), each with its
+      # own cloned test DB. This suite is the workflow's long pole — ~19m serial
+      # — and it is the whole reason the four-job split did not move the needle
+      # further. It is safe to parallelize: no test pins an integer pk; every
+      # file write goes to a per-process tempfile; the only shared-path write
+      # (build_curated_covers' .cache) is confined to one test under a fixed
+      # key, and a given test method only ever runs on one worker; the
+      # TransactionTestCase concurrency tests get their own worker DB. If a race
+      # ever does surface, it fails HERE by name — not in production.
       - name: Tests
         working-directory: backend
-        run: uv run python manage.py test --verbosity 1
+        run: uv run python manage.py test --parallel auto --verbosity 1
 
       - name: Tests (Postgres, the production search path)
         working-directory: backend
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
-        run: uv run python manage.py test --verbosity 1
+        run: uv run python manage.py test --parallel auto --verbosity 1
 
   # --- Production image gate (runs in parallel with everything) ------------
   backend-image:
