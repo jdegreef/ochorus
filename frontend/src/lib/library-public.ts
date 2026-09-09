@@ -758,6 +758,10 @@ export interface PlanDetail extends PlanSummary {
 	 * hreflang alternate should point at. A plan materializes per language only
 	 * once its source books are all translated, so this can be a subset. */
 	available_languages: string[];
+	/** The distinct writers the plan reads through, in first-appearance order —
+	 * a link to each author page. Optional so an API predating the field renders
+	 * no section (rolling-deploy skew). */
+	authors?: { slug: string; name: string }[];
 }
 
 export const listPlans = (language = 'en') =>

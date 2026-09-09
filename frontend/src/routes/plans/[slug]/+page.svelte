@@ -172,6 +172,21 @@
 		</section>
 	{/if}
 
+	<!-- The writers this plan reads through — a link to each author page, so a
+	     plan is a way into their work, not only a sequence of chapters. Reuses the
+	     shared "Authors" label, so it is already translated in every locale. -->
+	{#if plan.authors?.length}
+		<section class="mt-8">
+			<h2 class="section-label">{t('search.groupAuthors')}</h2>
+			<p class="text-body">
+				{#each plan.authors as a, i (a.slug)}<a
+						href={localizeHref(`/authors/${a.slug}`)}
+						class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
+					>{i < plan.authors.length - 1 ? ' · ' : ''}{/each}
+			</p>
+		</section>
+	{/if}
+
 	<ol class="mt-8 divide-y divide-border">
 		{#each plan.days as d (d.day)}
 			{@const done = doneSet.has(d.day)}

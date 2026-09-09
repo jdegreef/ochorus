@@ -68,6 +68,13 @@ class PlanTests(TestCase):
         self.assertEqual(res.data["days"][0]["book_title"], "Humility")
         self.assertEqual(res.data["days"][0]["word_count"], 100)
 
+    def test_detail_lists_the_plan_authors(self):
+        # Both days read the one book by "am" → one distinct author, linked.
+        res = self.client.get("/api/library/plans/humility-12-days/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual([a["slug"] for a in res.data["authors"]], ["am"])
+        self.assertEqual(res.data["authors"][0]["name"], "Andrew Murray")
+
     def test_list_exposes_day_one_teaser(self):
         # The card leads with where the plan starts — day 1's book + chapter.
         res = self.client.get("/api/library/plans/?language=en")

@@ -63,6 +63,15 @@
 	<header class="mb-8">
 		<h1 class="text-h1 mb-3">{seo.h1}</h1>
 		<p class="article-topic-intro text-body text-muted">{seo.intro}</p>
+		<!-- Bridge out of the article filter into the full library shelf on this
+		     topic: the same slug is a Topic, so /topics/<slug>/ gathers the books,
+		     sermons and scripture the essays point toward. English-only, plain href. -->
+		<a
+			href={`/topics/${slug}/`}
+			data-sveltekit-preload-data="hover"
+			class="mt-3 inline-block text-small font-semibold text-accent hover:underline"
+			>Explore books, sermons and scripture on this topic →</a
+		>
 	</header>
 	<ArticleShelf {articles} activeTopic={slug} />
 
