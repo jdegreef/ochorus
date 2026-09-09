@@ -522,6 +522,13 @@
    "art": true,
    "scrim": 0.8
   },
+  "evening-by-evening": {
+   "ground": "a11948e962d19f4077474d1040d7e3f26d58b21c0a11de74e4987242488e3483",
+   "style": "revival",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
   "first-epistle-of-clement": {
    "ground": "978ec2807ebaa7d1c3799ccb135d69f10c100b5303bbd47a94838204a5abf72b",
    "style": "inscriptional",
@@ -913,6 +920,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.75
+  },
+  "morning-by-morning": {
+   "ground": "95aada7485696386dbad2c3738f482ddc807b3fd27ad99c9f64eda721b145096",
+   "style": "revival",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
   },
   "mortification-of-sin": {
    "ground": "81ab25ff3ce6cc4a67630451dbdaf9cbc6982f338d4aa2e22d03663043df9bbd",
