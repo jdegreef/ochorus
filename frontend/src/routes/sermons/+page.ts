@@ -204,7 +204,21 @@ import type { PageLoad } from './$types';
  * keep serving the English title while the api served the Swahili one. Note
  * /lg/sermons already carries a Free Grace (job #249, Ekisa eky'Obwereere) —
  * this is the Swahili edition, a different file entirely.
- */
+  *
+ * Prerender refresh 2026-09-09 (queue jobs #1976-#1985): ten French
+ * sermons landed as one-file-each editions — La grace gratuite (Free
+ * Grace), Christ, tout et en tous (Christ All in All), La puissance du
+ * silence, L'adversite benie (Blessed Adversity), Le presque chretien
+ * (The Almost Christian), Le besoin du monde (The World's Need), La Chute
+ * et le Relevement de l'homme (Fall and Recovery of Man), La methode de la
+ * grace (The Method of Grace), Pecheurs entre les mains d'un Dieu irrite
+ * (Sinners in the Hands of an Angry God) and La bonne voie pour se
+ * presenter devant le Seigneur. Re-crawl /fr/sermons so the cards and their
+ * /fr/sermons/<slug> pages bake the translated titles and "In brief"
+ * summaries. Each PR was backend-only (one fixture + one notes file), so
+ * per the #741 note above Render would otherwise SKIP the web build and the
+ * fr shelf would keep serving English titles while the API serves French.
+*/
 export const load: PageLoad = async () => {
 	const { items, loadError } = await loadShelf(listSermons(getLang()));
 	return { sermons: items, loadError };
