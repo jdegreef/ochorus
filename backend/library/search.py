@@ -278,7 +278,12 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
     # chapters whose body CITES an overlapping reference (ChapterCitation
     # verse-id spans). Matched by verse id, so it works where plain text
     # search can't (abbreviations, chapter-only, a verse inside a range).
-    extra = _scripture_sermon_hits(q, sermons, base)
+    # The scripture PAGE itself leads: a reference query's most direct answer is
+    # the hub that gathers everything treating the passage, above the individual
+    # sermons and chapters that do. English-only and never inside a scope (it is
+    # a global hub, not something that lives under an author/book).
+    extra = _scripture_page_hits(q, language, scope)
+    extra += _scripture_sermon_hits(q, sermons, base)
     cite_hits = _scripture_chapter_hits(q, chapters)
     if cite_hits:
         # A chapter found by BOTH citation and plain text keeps its citation
@@ -698,6 +703,12 @@ def page_by_type(
     "newest" meant "newest of the thirty most relevant". Ordering the full match
     set is the only way that control can mean what it says.
     """
+    # Scripture is a reference-triggered hit with no queryset behind it (see
+    # _scripture_page_hits), so it can't go through _match/_base_querysets. There
+    # is at most one page per query, so paging is trivial — this exists only so
+    # the type facet's "show this kind" fetch returns the hit rather than blank.
+    if kind == "scripture":
+        return _scripture_page_hits(q, language, scope)[offset : offset + limit]
     if kind not in CAPS:
         return []
     ctx = _Ctx(q=q, language=language)
@@ -837,6 +848,54 @@ def _lead(text: str, n: int = 160) -> str:
     whose query is a reference, not words found in the body."""
     text = (text or "").strip()
     return text[:n] + ("…" if len(text) > n else "")
+
+
+def _scripture_page_hit(page: dict) -> dict:
+    """A synthesized scripture page as a navigational hit.
+
+    ``page`` is what ``scripture_graph.pages_for`` returns — ``book`` slug,
+    ``chapter``, and ``verse`` (None for a whole-chapter page). No prose of its
+    own (the page is an aggregation), so no snippet; no date to sort by. The
+    ``reference`` is the human label the row shows ("Romans 8:28" / "Romans 8"),
+    and the client builds the ``/scripture/<book>/<chapter>[/<verse>]`` link from
+    book_slug/chapter/verse, exactly as the chapter-page chips do.
+    """
+    from .scripture_graph import book_from_slug, reference_label
+
+    book = book_from_slug(page["book"])
+    verse = page.get("verse")
+    return {
+        "type": "scripture",
+        "book_slug": page["book"],
+        "chapter": page["chapter"],
+        "verse": verse,
+        "reference": reference_label(book, page["chapter"], verse) if book else "",
+        "snippet": "",
+        "date": "",
+    }
+
+
+def _scripture_page_hits(q, language, scope=None):
+    """The scripture HUB page for a reference query, when one has earned a URL.
+
+    Reference-triggered like ``_scripture_sermon_hits`` / ``_scripture_chapter_hits``
+    (returns [] when ``q`` isn't a reference), but a single NAVIGATIONAL result:
+    a link to the ``/scripture/<book>/<chapter>[/<verse>]`` page that gathers
+    everything treating the passage, led above those individual passages.
+
+    ``scripture_graph.pages_for`` is the one floor-respecting resolver (the same
+    rule the pages, sitemap and inline links use), so a hit is emitted only where
+    the page was actually built — never a link to a 404. Scripture pages are
+    English-only (built from English citations, ASV text) and are global hubs, so
+    nothing fires for a non-English reader or inside a scope — mirroring how the
+    footer and command palette gate ``/scripture``.
+    """
+    if scope or language != "en":
+        return []
+    from .scripture_graph import pages_for
+
+    page = pages_for([q]).get(q)
+    return [_scripture_page_hit(page)] if page else []
 
 
 def _scripture_sermon_hits(q, sermons, base):

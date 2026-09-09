@@ -123,6 +123,23 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				color: '',
 				round: false
 			};
+		case 'scripture':
+			return {
+				key: `scripture:${hit.book_slug}:${hit.chapter}:${hit.verse ?? ''}`,
+				label: ctx.label('scripture'),
+				// /scripture/<book>/<chapter>/ with a trailing <verse>/ for a verse
+				// page — the same shape scriptureUrl() and the page chips build.
+				href:
+					`/scripture/${hit.book_slug}/${hit.chapter}/` +
+					(hit.verse ? `${hit.verse}/` : ''),
+				title: hit.reference,
+				meta: '',
+				snippet: hit.snippet,
+				date: hit.date,
+				image: '',
+				color: '',
+				round: false
+			};
 		case 'sermon':
 			return {
 				key: 'sermon:' + hit.sermon_slug,
@@ -161,6 +178,9 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
  * tail underneath them.
  */
 export const GROUP_ORDER: { type: SearchHit['type']; labelKey: string }[] = [
+	// Scripture leads: it only appears for a reference query, where the passage
+	// hub is the most direct answer, above the books/passages that treat it.
+	{ type: 'scripture', labelKey: 'search.groupScripture' },
 	{ type: 'book', labelKey: 'search.groupBooks' },
 	{ type: 'author', labelKey: 'search.groupAuthors' },
 	{ type: 'topic', labelKey: 'search.groupTopics' },
