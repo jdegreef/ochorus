@@ -224,6 +224,24 @@
 		view === 'live' ? 'Nothing live yet.' : view === 'suggested' ? '' : 'None yet.'
 	);
 
+	// Jump bar. The page is a tall stack (readiness + settings + six content
+	// sections), so anchors let you reach Articles without scrolling past
+	// everything. Counts track the current view; order matches the DOM order of
+	// the sections below. Readiness only exists for a target language, and has no
+	// count to tally. ids match the `scroll-mt-*` sections so a jump lands clear
+	// of the sticky bar.
+	const navSections = $derived([
+		...(detail && !detail.is_source
+			? [{ id: 'sec-readiness', label: 'Readiness', count: null as number | null }]
+			: []),
+		{ id: 'sec-books', label: 'Books', count: shown.books.length },
+		{ id: 'sec-bios', label: 'Bios', count: shown.bios.length },
+		{ id: 'sec-sermons', label: 'Sermons', count: shown.sermons.length },
+		{ id: 'sec-plans', label: 'Plans', count: shown.plans.length },
+		{ id: 'sec-topics', label: 'Topics', count: shown.topics.length },
+		{ id: 'sec-articles', label: 'Articles', count: shown.articles.length }
+	]);
+
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
 
@@ -325,6 +343,24 @@
 				{/if}
 			</header>
 
+			<!-- Jump bar. Sticky under the app nav (same anchor the admin rail pins to)
+			     so it stays reachable down the whole page. Solid `bg-surface` like the
+			     rail, so scrolled content doesn't bleed through. -->
+			<nav
+				aria-label="Jump to section"
+				class="sticky top-[var(--appnav-h,0px)] z-30 -mx-5 mb-6 flex gap-1 overflow-x-auto border-b border-border bg-surface px-5 py-2"
+			>
+				{#each navSections as s (s.id)}
+					<a
+						href="#{s.id}"
+						class="flex shrink-0 items-baseline gap-1.5 whitespace-nowrap rounded-full px-3 py-1 text-small font-semibold text-muted hover:bg-surface-2 hover:text-text hover:no-underline"
+					>
+						{s.label}
+						{#if s.count !== null}<span class="text-muted">{fmt(s.count)}</span>{/if}
+					</a>
+				{/each}
+			</nav>
+
 			{#if !d.is_source}
 				<!-- Readiness. Read-only about the verdict, editable about the BAR: the
 				     thresholds are a judgement (a language with a big catalogue behind it
@@ -332,7 +368,10 @@
 				     whether they're met is a fact the server computes. Nothing here
 				     launches anything — the go-live action re-runs these same checks
 				     server-side rather than trusting what this page is holding. -->
-				<section class="mb-6 rounded-card border border-border bg-surface p-5">
+				<section
+					id="sec-readiness"
+					class="mb-6 scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
 					<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 						<h2 class="text-h3">Readiness</h2>
 						{#if readiness}
@@ -506,7 +545,10 @@
 
 			<div class="grid gap-6 md:grid-cols-2">
 				<!-- Books -->
-				<section class="rounded-card border border-border bg-surface p-5">
+				<section
+					id="sec-books"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
 					<h2 class="text-h3 mb-3">Books <span class="text-muted">({fmt(shown.books.length)})</span></h2>
 					{#if shown.books.length}
 						<ul class="space-y-2">
@@ -545,7 +587,10 @@
 				</section>
 
 				<!-- Long-form bios -->
-				<section class="rounded-card border border-border bg-surface p-5">
+				<section
+					id="sec-bios"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
 					<h2 class="text-h3 mb-3">Long-form bios <span class="text-muted">({fmt(shown.bios.length)})</span></h2>
 					{#if shown.bios.length}
 						<ul class="space-y-2">
@@ -585,7 +630,10 @@
 				</section>
 
 				<!-- Sermons -->
-				<section class="rounded-card border border-border bg-surface p-5">
+				<section
+					id="sec-sermons"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
 					<h2 class="text-h3 mb-3">Sermons <span class="text-muted">({fmt(shown.sermons.length)})</span></h2>
 					{#if shown.sermons.length}
 						<ul class="space-y-2">
@@ -623,7 +671,10 @@
 				</section>
 
 				<!-- Plans -->
-				<section class="rounded-card border border-border bg-surface p-5">
+				<section
+					id="sec-plans"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
 					<h2 class="text-h3 mb-3">Plans <span class="text-muted">({fmt(shown.plans.length)})</span></h2>
 					{#if shown.plans.length}
 						<ul class="space-y-2">
@@ -663,7 +714,10 @@
 				     INVISIBLE in this language rather than shown in English (topic prose
 				     has no fallback), so the todo list is every missing shelf, not a
 				     ranked top-N — a language wants all of them. -->
-				<section class="rounded-card border border-border bg-surface p-5">
+				<section
+					id="sec-topics"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
 					<h2 class="text-h3 mb-3">Topics <span class="text-muted">({fmt(shown.topics.length)})</span></h2>
 					{#if shown.topics.length}
 						<ul class="space-y-2">
@@ -706,7 +760,10 @@
 				<!-- Articles. Authorless SEO/devotional pages; like sermons, a single
 				     body per language. A translated row ships ai_unreviewed until a
 				     native speaker approves it. -->
-				<section class="rounded-card border border-border bg-surface p-5">
+				<section
+					id="sec-articles"
+					class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
 					<h2 class="text-h3 mb-3">Articles <span class="text-muted">({fmt(shown.articles.length)})</span></h2>
 					{#if shown.articles.length}
 						<ul class="space-y-2">
