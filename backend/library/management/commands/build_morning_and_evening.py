@@ -29,6 +29,7 @@ new author row and no migration.
 from __future__ import annotations
 
 import re
+from collections import defaultdict
 
 import requests
 from bs4 import BeautifulSoup, Tag
@@ -37,7 +38,8 @@ from django.db import transaction
 
 from library import english_audit
 from library.corrections import settled_chapter_body
-from library.ingest import clean_fragment, word_count
+from library.ingest import clean_fragment
+from library.management.commands.import_gutenberg import _MONTHS
 from library.models import Author, Book, Chapter
 from library.quote_marks import assert_punctuation_only, convert
 
@@ -48,11 +50,6 @@ SOURCE_WORK = "https://ccel.org/ccel/spurgeon/morneve/"
 ATTRIBUTION = (
     "Text of C. H. Spurgeon's Morning and Evening (1866, 1868), transcribed by "
     "the Christian Classics Ethereal Library."
-)
-
-_MONTHS = (
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December",
 )
 
 # Each reading section's elements carry an id prefixed `d{MM}{DD}{am|pm}`
@@ -184,17 +181,24 @@ class Command(BaseCommand):
                 "changed; inspect morneve.html3 before trusting this."
             )
 
+        # Partition the reading keys once, into (session, month) → [day, …], so
+        # each month chapter is a single lookup rather than a fresh scan of all
+        # ~732 keys.
+        day_index: dict[tuple[str, str], list[str]] = defaultdict(list)
+        for mm, dd, session in readings:
+            day_index[(session, mm)].append(dd)
+
         next_order = (Book.objects.order_by("-sort_order").first().sort_order or 0) + 1
         for slug, title, subtitle, session, year, color, description in BOOKS:
             self._build_one(
                 author, slug, title, subtitle, session, year, color, description,
-                readings, next_order,
+                readings, day_index, next_order,
             )
             next_order += 1
 
     def _build_one(
         self, author, slug, title, subtitle, session, year, color, description,
-        readings, sort_order,
+        readings, day_index, sort_order,
     ):
         content = {
             "author": author,
@@ -220,13 +224,13 @@ class Command(BaseCommand):
         book.chapters.all().delete()
 
         total = 0
-        for order, mm in enumerate(f"{i:02d}" for i in range(1, 13)):
-            days = sorted(k for k in readings if k[0] == mm and k[2] == session)
+        for order, month in enumerate(_MONTHS):
+            mm = f"{order + 1:02d}"
+            days = day_index.get((session, mm))
             if not days:
                 raise CommandError(f"{slug}: no readings for month {mm}")
-            month = _MONTHS[order]
             entries = []
-            for _, dd, _ in days:
+            for dd in sorted(days):
                 body = _reading_html(readings[(mm, dd, session)])
                 entries.append(f"<h3>{month} {int(dd)}</h3>{body}")
             chapter_html = clean_fragment("".join(entries))
@@ -238,10 +242,10 @@ class Command(BaseCommand):
             if changed:
                 assert_punctuation_only(chapter_html, curled, f"{slug}.en[{order + 1}]")
             settled = settled_chapter_body(slug, order + 1, curled)
-            Chapter.objects.create(
+            chapter = Chapter.objects.create(
                 book=book, order=order + 1, title=month, body_html=settled
             )
-            wc = word_count(settled)
+            wc = chapter.word_count
             total += wc
             self.stdout.write(f"  {slug} ch{order + 1:2} {month:9} {len(days):2} days {wc:>6} words")
 
