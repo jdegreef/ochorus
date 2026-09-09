@@ -35,7 +35,7 @@
 <article
 	id={author.slug}
 	style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
-	class="group relative rounded-card border border-border p-5 transition-colors hover:border-accent hover:bg-surface-2"
+	class="card-tint group relative rounded-card border border-border p-5"
 >
 	<!-- Portrait beside the text, not above it. In the old two-up grid each row
 	     was as tall as its TALLER card, so a 171-character bio next to a

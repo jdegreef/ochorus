@@ -398,10 +398,19 @@ relevant group.
 - [ ] **D2** Grouped-shelf headings are hand-rolled four ways (Books plain text,
   Sermons portrait + link, Biographies sticky `text-text`, Search
   `section-label`). → the sermons recipe as a `GroupHeading`.
-- [ ] **D3** Card hover: three lift depths and four colour treatments across
-  `.shelf-card`, `.article-card`, `.sermon-row`, the quotes card,
-  `AuthorBioCard`, `BookListRow`, `PersonCard`, `AuthorTile`. → lift for banded
-  cards, border tint for rows; nothing else.
+- [x] **D3** _(shipped 2026-09-08 — two hover recipes now, and only two:
+  `.card-lift` (grid/banded rise) and `.card-tint` (row warm-in-place), shared
+  opt-in classes in `app.css` on `--duration-fast`, each documented in
+  STYLE_GUIDE §5. Every audited card wears one: book/shelf/library +
+  continue-reading resume lift; sermon-row/card, article, `AuthorBioCard`,
+  `PersonCard`, `AuthorTile`, `BookListRow` and the `/quotes` author card tint.
+  PersonCard (border-only) and AuthorTile (bg-only) converged; the quotes card
+  gained its missing ground shift. The book-cover "Begin reading →" plate is
+  kept as a documented cover signature, not a second hover language.)_ Card
+  hover: three lift depths and four colour treatments across `.shelf-card`,
+  `.article-card`, `.sermon-row`, the quotes card, `AuthorBioCard`,
+  `BookListRow`, `PersonCard`, `AuthorTile`. → lift for banded cards, border
+  tint for rows; nothing else.
 - [ ] **D4** `ArticleCard` is bespoke: `border-radius: 0.75rem`, `0.15s` literal
   transitions, literal `Read →`, an `<h3>` directly under the `<h1>`. The quotes
   index card has no heading at all; `BookCard`'s title is a `<div>`. → rebuild
@@ -537,14 +546,16 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 
 ### H. Cards & hover (cf. D3)
 
-- [~] **H1** _(row-card halves shipped 2026-09-05: `.article-card` and
-  `AuthorBioCard` now tint bg→surface-2 on hover like `.sermon-card`, so the
-  hue-less row cards hover alike; grid cards keep the lift. LEFT: the
-  documented two-recipe rule itself and any remaining stragglers under D3.)_
-  Content cards hover in five languages: `.book-card`/`.shelf-card`
-  and the sermon-of-week plate **lift**; `.sermon-row`, `.sermon-card`,
-  `.article-card`, `.author-card` variously tint border/bg or do nothing. → two
-  recipes only — grid card lifts, row card tints (this is the concrete form of D3).
+- [x] **H1** _(shipped 2026-09-08 with D3 — the documented two-recipe rule now
+  exists: `.card-lift` / `.card-tint` shared classes in `app.css` + STYLE_GUIDE
+  §5, on `--duration-fast`. The remaining stragglers converged — `PersonCard`
+  (was border-only) and `AuthorTile` (was bg-only) now tint like `.sermon-card`,
+  and the `/quotes` author card gained its ground shift. Row-card halves already
+  shipped 2026-09-05.)_ Content cards hover in five languages:
+  `.book-card`/`.shelf-card` and the sermon-of-week plate **lift**;
+  `.sermon-row`, `.sermon-card`, `.article-card`, `.author-card` variously tint
+  border/bg or do nothing. → two recipes only — grid card lifts, row card tints
+  (this is the concrete form of D3).
 - [ ] **H2** Card interior padding is five values across five families
   (`.book-card` 0.6rem, `.sermon-card` 0.85rem, `.shelf-card-body` 0.9rem,
   `.article-card` 1.1rem, `AuthorBioCard` p-5) — none on a shared band. → snap

@@ -9,7 +9,10 @@
 <!-- A row card (border-tint hover, no lift — see page-design D3). The whole card
      is one link; the taxonomy lives in the index's topic-filter tabs, so the
      card carries only the title, standfirst and reading time. -->
-<a class="article-card" href={localizeHref(`/articles/${article.slug}/`)}>
+<a
+	class="article-card card-tint border border-border bg-surface"
+	href={localizeHref(`/articles/${article.slug}/`)}
+>
 	<h2 class="text-h3">{article.h1}</h2>
 	{#if article.description}
 		<p class="mt-1 text-body text-muted">{article.description}</p>
@@ -18,24 +21,17 @@
 </a>
 
 <style>
+	/* Row card. Padding, radius and link colours are scoped; the resting border
+	   and ground ride on layered Tailwind utilities in the markup, and the hover
+	   (border→accent, ground→surface-2, no lift) on the shared .card-tint — so
+	   nothing ties this scoped rule and the hover always wins, exactly like
+	   .sermon-card (page-design D3/H1). */
 	.article-card {
 		display: block;
 		padding: 1.1rem 1.25rem;
-		border: 1px solid var(--color-border);
 		border-radius: 0.75rem;
-		background: var(--color-surface);
 		text-decoration: none;
 		color: inherit;
-		transition:
-			border-color var(--duration-fast) ease,
-			background var(--duration-fast) ease;
-	}
-	/* Row card, so it TINTS rather than lifts — the same border→accent +
-	   bg→surface-2 as .sermon-card, so the two row families hover alike
-	   (page-design H1). */
-	.article-card:hover {
-		border-color: var(--color-accent);
-		background: var(--color-surface-2);
 	}
 	.article-card h2 {
 		color: var(--color-text);

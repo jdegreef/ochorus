@@ -87,7 +87,7 @@
 			<li>
 				<a
 					href={`/quotes/${a.slug}/`}
-					class="flex items-center gap-4 rounded-card border border-border bg-surface p-4 hover:no-underline"
+					class="card-tint flex items-center gap-4 rounded-card border border-border bg-surface p-4"
 					style={`--hue: ${hueForBirthYear(a.birth_year)}`}
 				>
 					<span class="era-bar" aria-hidden="true"></span>
@@ -123,7 +123,13 @@
 		border-radius: 999px;
 		background: color-mix(in srgb, var(--hue) 60%, var(--color-surface));
 	}
-	a:hover {
+	/* Era-hue member of the row-tint recipe (like .sermon-row): the shared
+	   .card-tint carries the motion; the hover border and ground are the era's
+	   own hue rather than the neutral accent/surface-2. Scoped to .card-tint (not
+	   a bare `a:hover`) so it can't reach the "Browse by topic" link, and so the
+	   scoped rule outspecifies the global .card-tint:hover it overrides. */
+	.card-tint:hover {
 		border-color: color-mix(in srgb, var(--hue) 45%, var(--color-border));
+		background: color-mix(in srgb, var(--hue) 4%, var(--color-surface));
 	}
 </style>
