@@ -56,7 +56,14 @@ _CHAPTER = re.compile(
     # divisions "[CHAPTER XXIV. — All should side with Christ.]". Both halves
     # are still validated below — `_roman` rejects anything that is not a
     # well-formed numeral once the known confusions are undone.
-    r"^\s*\[?\s*chap\w*\.?\s+([IVXLCYil|]+)\.?\s*(?:[\u2014\u2013-]\s*(.*?))?\s*\]?$", re.I
+    #   the SEPARATOR — "CHAP, II." / "CHAP... XXV." (Pickering's 1838 Sibbes):
+    #     a comma read for the abbreviation's period, or the period smeared into
+    #     several. Same confusion class as the numeral ones below.
+    #   the LEADING JUNK — "\ CHAP. XXVI.", a stray rule-mark the scanner kept.
+    #     Capped at two characters so it cannot reach into prose; the numeral is
+    #     still validated by `_roman`.
+    r"^\s*[\\/|]{0,2}\s*\[?\s*chap\w*[.,]*\s+([IVXLCYil|]+)[.,]?\s*"
+    r"(?:[\u2014\u2013-]\s*(.*?))?\s*\]?$", re.I
 )
 #: A bracketed marker whose OPENING was eaten by the scanner. Grosart's chapter
 #: VIII survives only as "B VIII. — Tenderness required in ministers toward
