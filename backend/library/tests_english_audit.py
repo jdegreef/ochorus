@@ -672,9 +672,17 @@ class CorrectionsHygieneTests(SimpleTestCase):
         from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
         from library.corrections import BODY_CORRECTIONS, PARAGRAPH_BREAK
 
+        # The FIELD VALUES, not the serialized file: `json.dumps` escapes every
+        # `"` as `\"`, so a correction whose text contains a double quote — the
+        # straight quotes `things-as-they-are` uses throughout — matched nothing
+        # and was reported dead. A false positive on a test whose whole job is
+        # to notice a pair that protects nothing.
         corpus = "\n".join(
-            json.dumps(json.loads(p.read_text(encoding="utf-8")), ensure_ascii=False)
-            for p in list(BOOKS_DIR.glob("*.json")) + list(SERMONS_DIR.glob("*.json"))
+            value
+            for path in list(BOOKS_DIR.glob("*.json")) + list(SERMONS_DIR.glob("*.json"))
+            for row in json.loads(path.read_text(encoding="utf-8"))
+            for value in (row.get("fields") or {}).values()
+            if isinstance(value, str)
         )
         dead = [
             (slug, old)
@@ -794,6 +802,119 @@ class EnglishAuditContractTests(SimpleTestCase):
         )
         emitted = {label for classes in _corpus().values() for label in classes}
         self.assertEqual(emitted - known, set(), "unclassified finding class(es)")
+
+
+class ShelfRepairTests(SimpleTestCase):
+    """The rest of what the two over-matching selectors had already eaten.
+
+    `[class*=pginternal]` (#1573) and `[class*=note i]` (#1574) are both
+    qualified now, so no future import loses this text — these are the rows
+    already on the shelf, which are never re-imported.
+
+    Every case is asserted twice over: the repaired string is in the shipped
+    fixture, AND stripping it back out and re-settling puts it back. The second
+    half is the one that matters — asserting the fixture alone passes with the
+    correction deleted, while the live rows (repaired by `apply_body_corrections`
+    on every deploy) would silently revert.
+    """
+
+    #: slug -> [(damaged, repaired)] exactly as a reader would see them.
+    REPAIRS = {
+        "holy-in-christ": [
+            ("made in the note to ‘Sixth Day,’ on .</p>",
+             "made in the note to ‘Sixth Day,’ on Holiness as Proprietorship.</p>"),
+        ],
+        "the-life-of-trust": [
+            (" of the Lord Jesus. Even about the of this century",
+             " of the Lord Jesus. Even about the commencement of this century"),
+            ("large piece of ground in the of Bristol",
+             "large piece of ground in the neighborhood of Bristol"),
+            ("Again, four from among the -school children",
+             "Again, four from among the Sunday-school children"),
+            ("if one is enabled to God’s own time",
+             "if one is enabled to wait God’s own time"),
+        ],
+        "things-as-they-are": [
+            ("one of the old dames seen in . A capital typical face",
+             "one of the old dames seen in chapter vi. A capital typical face"),
+            ('stuff on the stone is the "Imp" of . <p>Then a Caste meeting',
+             'stuff on the stone is the "Imp" of chapter xx. <p>Then a Caste meeting'),
+            ('the "rabbits" mentioned in . She saw us',
+             'the "rabbits" mentioned in Chapter I. She saw us'),
+        ],
+        "selected-sermons-edwards": [
+            ("for the press (see Introduction, p. ). The manuscript",
+             "for the press (see Introduction, p. xxix). The manuscript"),
+        ],
+    }
+
+    #: `holy-in-christ`'s note headings, deleted whole rather than emptied.
+    HEADINGS = (
+        ("<h3>NOTE.</h3>", 5),
+        ("<h3> NOTE A.</h3> <h4>Holiness as Proprietorship.</h4>", 33),
+        ("<h3> NOTE B.</h3> <h4>On the Word for Holiness.</h4>", 33),
+        ("<h3> NOTE C.</h3> <h4>The Holiness of God.</h4>", 33),
+        ("<h3> NOTE D.</h3>", 33),
+        ("<h3> NOTE E.</h3>", 33),
+        ("<h3> NOTE F.</h3> <h4>Note from Bengel on Rom. i. 4.</h4>", 33),
+        ("<h3> NOTE G.</h3> <h4>‘Freed’ and ‘Possessed’—The Twofold Result of "
+         "Redemption.</h4>", 33),
+    )
+
+    @staticmethod
+    def _bodies(slug):
+        from library.content_fixtures import book_fixture_path
+
+        path = book_fixture_path(slug, "en")
+        return {r["fields"]["order"]: r["fields"]["body_html"]
+                for r in json.loads(path.read_text(encoding="utf-8"))
+                if (r.get("fields") or {}).get("body_html")}
+
+    def test_every_repair_is_in_the_shipped_fixture_exactly_once(self):
+        for slug, pairs in self.REPAIRS.items():
+            joined = "\n".join(self._bodies(slug).values())
+            for damaged, repaired in pairs:
+                with self.subTest(slug=slug, repaired=repaired[:40]):
+                    self.assertEqual(joined.count(repaired), 1)
+                    self.assertNotIn(damaged, joined)
+
+    def test_the_corrections_are_what_repair_them(self):
+        """Damage each site again; `apply_body_corrections` must undo it."""
+        for slug, pairs in self.REPAIRS.items():
+            bodies = self._bodies(slug)
+            for damaged, repaired in pairs:
+                order = next(o for o, b in bodies.items() if repaired in b)
+                with self.subTest(slug=slug, chapter=order):
+                    broken = bodies[order].replace(repaired, damaged, 1)
+                    self.assertNotEqual(broken, bodies[order])
+                    self.assertEqual(
+                        corrections.settled_chapter_body(slug, order, broken),
+                        bodies[order],
+                    )
+
+    def test_every_note_heading_is_restored_to_its_own_chapter(self):
+        """`restore_dropped_blocks` runs over EVERY chapter of the book.
+
+        So an anchor that also matched another chapter would insert a heading
+        into the wrong one. Both halves are pinned: the heading is in the
+        chapter it belongs to, and in no other.
+        """
+        bodies = self._bodies("holy-in-christ")
+        for heading, order in self.HEADINGS:
+            with self.subTest(heading=heading[:28]):
+                carriers = [o for o, b in bodies.items() if heading in b]
+                self.assertEqual(carriers, [order])
+
+    def test_a_stripped_note_heading_comes_back(self):
+        bodies = self._bodies("holy-in-christ")
+        for heading, order in self.HEADINGS:
+            with self.subTest(heading=heading[:28]):
+                broken = bodies[order].replace(heading + " ", "", 1)
+                self.assertNotEqual(broken, bodies[order])
+                self.assertEqual(
+                    corrections.settled_chapter_body("holy-in-christ", order, broken),
+                    bodies[order],
+                )
 
 
 class EdwardsSermonTextTests(SimpleTestCase):

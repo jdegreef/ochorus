@@ -72,6 +72,23 @@ export interface AdminStats {
 
 export const getAdminStats = () => apiFetch<AdminStats>('/api/admin/stats/');
 
+// The dashboard's "needs attention" hub: cheap content-health + demand signals
+// aggregated across pages. The API returns raw numbers; the page ranks them and
+// owns the labels and links (admin is English-only).
+export interface AdminAttentionSignals {
+	unreviewed_translations: number;
+	unpublished_books: number;
+	unpublished_sermons: number;
+	authors_without_bio: number;
+	empty_chapters: number;
+	empty_books: number;
+	languages_missing_books: { code: string; name: string; sermons: number }[];
+	searches: { total_30d: number; zero_30d: number; zero_rate: number };
+}
+
+export const getAdminAttention = () =>
+	apiFetch<AdminAttentionSignals>('/api/admin/attention/');
+
 // Per-language drill-down: what's translated into a language + the next items
 // to work on.
 
@@ -833,10 +850,20 @@ export const getAdminSearchStats = () => apiFetch<AdminSearchStats>('/api/admin/
  * Where an unanswered query DOES have matches — i.e. what there is to translate.
  * Admin planning only; see `AdminSearchGapView` for why it is a separate call.
  */
+export interface AdminSearchGapWork {
+	type: TranslationJobType;
+	slug: string;
+	title: string;
+	/** The languages this work was found in — where a translation can come from. */
+	languages: string[];
+}
+
 export interface AdminSearchGap {
 	query: string;
 	language: string;
 	elsewhere: (Language & { matches: number; by_type: Partial<Record<SearchType, number>> })[];
+	/** The specific works behind the matches, deduped — each queueable into `language`. */
+	works: AdminSearchGapWork[];
 }
 
 export const getAdminSearchGap = (q: string, language: string) =>

@@ -51,7 +51,7 @@
 	} = $props();
 </script>
 
-<a class="shelf-card" style="--shelf-hue: {hue}" {href}>
+<a class="shelf-card card-lift" style="--shelf-hue: {hue}" {href}>
 	<div class="shelf-card-band hue-band">
 		<span class="shelf-card-badge emblem-chip">
 			{#if portrait}

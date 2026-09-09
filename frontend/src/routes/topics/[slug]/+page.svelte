@@ -8,6 +8,7 @@
 	import BookCard from '$lib/components/BookCard.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
+	import PersonCard from '$lib/components/PersonCard.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
@@ -22,6 +23,10 @@
 	// served by an API instance that predates it (a rolling-deploy skew) renders
 	// without an Articles section rather than throwing.
 	const articles = $derived(topic.articles ?? []);
+	// Newer facets than books/sermons; default so an API without them (a
+	// rolling-deploy skew) renders those sections away rather than throwing.
+	const authors = $derived(topic.authors ?? []);
+	const relatedTopics = $derived(topic.related_topics ?? []);
 	const meta = $derived(topicMeta(topic.slug));
 
 	// Self-referential canonical, and hreflang only for the locales this shelf
@@ -155,13 +160,41 @@
 	{/if}
 
 	{#if articles.length}
-		<section>
+		<section class="mb-10">
 			<h2 class="section-label">{t('topics.articles')}</h2>
 			<div class="grid gap-3 sm:grid-cols-2">
 				{#each articles as article (article.slug)}
 					<ArticleCard {article} />
 				{/each}
 			</div>
+		</section>
+	{/if}
+
+	<!-- Authors on this shelf: a reader here often wants more of a voice, not
+	     only more of the theme. Distinct writers behind the books and sermons. -->
+	{#if authors.length}
+		<section class="mb-10">
+			<h2 class="section-label">{t('topics.authors')}</h2>
+			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+				{#each authors as person (person.slug)}
+					<PersonCard {person} />
+				{/each}
+			</div>
+		</section>
+	{/if}
+
+	<!-- Related topics: the lateral "see also", so a shelf is a junction rather
+	     than a dead end. Sibling shelves that share books, most-shared first. -->
+	{#if relatedTopics.length}
+		<section>
+			<h2 class="section-label">{t('topics.related')}</h2>
+			<nav class="related-topics" aria-label={t('topics.related')}>
+				{#each relatedTopics as rel (rel.slug)}
+					<a href={localizeHref(`/topics/${rel.slug}`)} data-sveltekit-preload-data="hover"
+						>{rel.title}</a
+					>
+				{/each}
+			</nav>
 		</section>
 	{/if}
 </div>
@@ -208,5 +241,25 @@
 		font-size: var(--fs-small);
 		letter-spacing: 0.02em;
 		color: color-mix(in srgb, var(--topic) 70%, var(--color-muted));
+	}
+
+	/* Related-topics chips: quiet pills in the topic accent, a lateral "see also"
+	   row. No physical inline properties — Arabic is a routed locale (rtl.test). */
+	.related-topics {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.related-topics a {
+		padding: 0.3rem 0.8rem;
+		border-radius: 999px;
+		border: 1px solid color-mix(in srgb, var(--topic) 28%, var(--color-border));
+		background: color-mix(in srgb, var(--topic) 8%, var(--color-surface));
+		font-size: var(--fs-small);
+		color: var(--color-text);
+		text-decoration: none;
+	}
+	.related-topics a:hover {
+		background: color-mix(in srgb, var(--topic) 16%, var(--color-surface));
 	}
 </style>

@@ -28,6 +28,7 @@ from django.db.models.functions import Coalesce
 # query config always matches what the row was indexed with.
 from .fts import config_for
 from .models import (
+    Article,
     Author,
     Book,
     Chapter,
@@ -52,8 +53,19 @@ MIN_QUERY_LEN = 2
 # whose title *is* the query is almost always what the reader wants.
 ENTITY_BOOST = 1.6
 
-# Per-type caps so one kind can't crowd the others out of the merged list.
-CAPS = {"author": 5, "book": 8, "topic": 5, "plan": 5, "chapter": 20, "sermon": 6}
+# Per-type caps so one kind can't crowd the others out of the merged list. This
+# is the set of QUERYSET-backed types; "scripture" is deliberately absent — it is
+# a synthesized, reference-triggered hit with no queryset, handled out of band in
+# page_by_type and led directly in search_library (see _scripture_page_hits).
+CAPS = {
+    "author": 5,
+    "book": 8,
+    "topic": 5,
+    "plan": 5,
+    "article": 5,
+    "chapter": 20,
+    "sermon": 6,
+}
 
 # How many matches of one type a "show more" page returns.
 PAGE_SIZE = 20
@@ -197,6 +209,20 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
         "author"
     )
     plans = Plan.objects.filter(is_published=True, language=language)
+    # Articles are the site's own SEO hubs — per-language rows with NO English
+    # fallback (like books and plans), so filtering to this language is the
+    # whole of the gating: English is the only language with rows today, so an
+    # article hit can only surface for an English query, and a future translation
+    # ungates itself the moment its row exists. Nothing here is inside a scope
+    # (an article has no author/topic/book to live under), so _scoped drops it.
+    # defer the two big unused columns: search reads only the titling fields
+    # (h1/meta_title/description for the vector, h1/description/slug/date for the
+    # hit), so pulling each matched article's full body_html and `related` JSON
+    # across the wire per keystroke is pure waste — the other entities have no
+    # such blob to pay for.
+    articles = Article.objects.filter(is_published=True, language=language).defer(
+        "body_html", "related"
+    )
     topics = Topic.objects.filter(is_published=True).prefetch_related("translations")
     if language != "en":
         # A shelf with no title in this language doesn't exist here (see
@@ -225,6 +251,7 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
         "book": books,
         "topic": topics,
         "plan": plans,
+        "article": articles,
         "chapter": chapters,
         "sermon": sermons,
     }
@@ -234,26 +261,32 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
 def search_library(q: str, language: str, scope=None) -> list[dict]:
     """Ranked search hits for ``q`` in ``language``.
 
-    Entities (books, authors, topics, plans) plus passages (chapters, sermons),
-    merged and capped at ``MAX_RESULTS``. ``scope`` narrows the search to one
-    author / topic / book — see ``_scoped``.
+    Entities (books, authors, topics, plans, articles) plus passages (chapters,
+    sermons), merged and capped at ``MAX_RESULTS``. ``scope`` narrows the search
+    to one author / topic / book — see ``_scoped``.
     """
     qs = _base_querysets(language, scope)
-    authors, books, topics = qs["author"], qs["book"], qs["topic"]
-    plans, chapters, sermons = qs["plan"], qs["chapter"], qs["sermon"]
+    # Only the two kinds the scripture-reference pass below still needs by name;
+    # the per-type search itself now takes the whole dict (like count_by_type).
+    chapters, sermons = qs["chapter"], qs["sermon"]
 
     ctx = _Ctx(q=q, language=language)
     if connection.vendor == "postgresql":
-        base = _search_postgres(ctx, authors, books, topics, plans, chapters, sermons)
+        base = _search_postgres(ctx, qs)
     else:
-        base = _search_fallback(ctx, authors, books, topics, plans, chapters, sermons)
+        base = _search_fallback(ctx, qs)
 
     # If the query is itself a scripture reference, lead with everything that
     # engages the passage — sermons preached on an overlapping text, then
     # chapters whose body CITES an overlapping reference (ChapterCitation
     # verse-id spans). Matched by verse id, so it works where plain text
     # search can't (abbreviations, chapter-only, a verse inside a range).
-    extra = _scripture_sermon_hits(q, sermons, base)
+    # The scripture PAGE itself leads: a reference query's most direct answer is
+    # the hub that gathers everything treating the passage, above the individual
+    # sermons and chapters that do. English-only and never inside a scope (it is
+    # a global hub, not something that lives under an author/book).
+    extra = _scripture_page_hits(q, language, scope)
+    extra += _scripture_sermon_hits(q, sermons, base)
     cite_hits = _scripture_chapter_hits(q, chapters)
     if cite_hits:
         # A chapter found by BOTH citation and plain text keeps its citation
@@ -283,12 +316,16 @@ class _Ctx:
 # --- Postgres -----------------------------------------------------------------
 
 
-def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
+def _search_postgres(ctx, qs):
     from django.contrib.postgres.search import (
         SearchHeadline,
         SearchQuery,
         SearchRank,
     )
+
+    authors, books, topics = qs["author"], qs["book"], qs["topic"]
+    plans, articles = qs["plan"], qs["article"]
+    chapters, sermons = qs["chapter"], qs["sermon"]
 
     config = config_for(ctx.language)
     query = SearchQuery(ctx.q, config=config, search_type="websearch")
@@ -325,6 +362,7 @@ def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
     pairs += entity(books, vector("book"), _book_hit, "book")
     pairs += entity(topics, vector("topic"), _topic_hit, "topic")
     pairs += entity(plans, vector("plan"), _plan_hit, "plan")
+    pairs += entity(articles, vector("article"), _article_hit, "article")
 
     # Chapters and sermons match against their STORED vector (GIN-indexed,
     # populated by library/fts.py with the same fields + weights the old
@@ -357,7 +395,11 @@ def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
 # --- SQLite fallback (dev) ----------------------------------------------------
 
 
-def _search_fallback(ctx, authors, books, topics, plans, chapters, sermons):
+def _search_fallback(ctx, qs):
+    authors, books, topics = qs["author"], qs["book"], qs["topic"]
+    plans, articles = qs["plan"], qs["article"]
+    chapters, sermons = qs["chapter"], qs["sermon"]
+
     q = ctx.q
     author_hits = [
         _author_hit(a, ctx)
@@ -391,6 +433,14 @@ def _search_fallback(ctx, authors, books, topics, plans, chapters, sermons):
             Q(title__icontains=q) | Q(description__icontains=q)
         ).order_by("sort_order", "title")[: CAPS["plan"]]
     ]
+    article_hits = [
+        _article_hit(ar, ctx)
+        for ar in articles.filter(
+            Q(h1__icontains=q)
+            | Q(meta_title__icontains=q)
+            | Q(description__icontains=q)
+        ).order_by("sort_order", "h1")[: CAPS["article"]]
+    ]
 
     chapter_hits = [
         _chapter_hit(c, snippet=fallback_snippet(c.body_text, q))
@@ -414,7 +464,13 @@ def _search_fallback(ctx, authors, books, topics, plans, chapters, sermons):
 
     # Entities first (navigational), then passages, capped overall.
     results = (
-        author_hits + book_hits + topic_hits + plan_hits + chapter_hits + sermon_hits
+        author_hits
+        + book_hits
+        + topic_hits
+        + plan_hits
+        + article_hits
+        + chapter_hits
+        + sermon_hits
     )
     return results[:MAX_RESULTS]
 
@@ -450,6 +506,12 @@ def _lite_q(kind: str, q: str) -> Q:
         )
     if kind == "plan":
         return Q(title__icontains=q) | Q(description__icontains=q)
+    if kind == "article":
+        return (
+            Q(h1__icontains=q)
+            | Q(meta_title__icontains=q)
+            | Q(description__icontains=q)
+        )
     if kind == "chapter":
         return (
             Q(body_text__icontains=q)
@@ -529,6 +591,14 @@ def _pg_vector(kind: str, config: str, language: str):
             SearchVector(title, weight="A", config=config)
             + SearchVector(description, weight="C", config=config)
         )
+    if kind == "article":
+        # Articles are the SEO layer: they carry no author FK and no stored
+        # body vector (no body_text on the model), so — like a book — they
+        # match on their OWN titling. h1 is the display headline, meta_title
+        # the keyword-led <title> (blank on most rows, so it simply adds
+        # nothing), and description the standfirst. Per-language rows, so these
+        # columns already hold the queried language's prose.
+        return sv("h1", "A") + sv("meta_title", "A") + sv("description", "C")
     # Plans need no such treatment: they are per-language ROWS (unique(slug,
     # language)) and the queryset is already filtered to one language, so these
     # columns hold that language's prose.
@@ -560,6 +630,11 @@ _ORDER = {
         "natural": ("sort_order", "title"),
     },
     "topic": {"title": ("title",), "newest": ("-created_at",), "natural": ("title",)},
+    "article": {
+        "title": ("h1",),
+        "newest": ("-created_at",),
+        "natural": ("sort_order", "h1"),
+    },
     "plan": {
         "title": ("title",),
         "newest": ("-created_at",),
@@ -596,6 +671,10 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
         if n:
             counts[kind] = n
             capped[kind] = n >= COUNT_CEILING
+    # "scripture" is intentionally uncounted: it has no queryset, and a reference
+    # resolves to 0-or-1 page, so the frontend's `totals[type] ?? loaded` fallback
+    # lands on the single loaded row exactly. Counting it would mean re-running
+    # the resolver here for no gain.
     return counts, capped
 
 
@@ -631,6 +710,12 @@ def page_by_type(
     "newest" meant "newest of the thirty most relevant". Ordering the full match
     set is the only way that control can mean what it says.
     """
+    # Scripture is a reference-triggered hit with no queryset behind it (see
+    # _scripture_page_hits), so it can't go through _match/_base_querysets. There
+    # is at most one page per query, so paging is trivial — this exists only so
+    # the type facet's "show this kind" fetch returns the hit rather than blank.
+    if kind == "scripture":
+        return _scripture_page_hits(q, language, scope)[offset : offset + limit]
     if kind not in CAPS:
         return []
     ctx = _Ctx(q=q, language=language)
@@ -656,6 +741,8 @@ def _hit_for(kind: str, row, ctx) -> dict:
         return _topic_hit(row, ctx)
     if kind == "plan":
         return _plan_hit(row, ctx)
+    if kind == "article":
+        return _article_hit(row, ctx)
     snippet = fallback_snippet(getattr(row, "body_text", ""), ctx.q)
     return _chapter_hit(row, snippet) if kind == "chapter" else _sermon_hit(row, snippet)
 
@@ -721,6 +808,20 @@ def _plan_hit(p, ctx):
     }
 
 
+def _article_hit(a, ctx):
+    # An article has no author and no cover, so — like a topic or a plan — the
+    # row is title + snippet, no image. `h1` is the display headline; the
+    # snippet comes from the standfirst (`description`), the only prose that
+    # isn't HTML (there is no `body_text` on an Article to excerpt).
+    return {
+        "type": "article",
+        "article_slug": a.slug,
+        "article_title": a.h1,
+        "snippet": fallback_snippet(a.description, ctx.q),
+        "date": _date(a.created_at),
+    }
+
+
 def _chapter_hit(c, snippet):
     # Chapters have no date of their own; a chapter is as old as its book.
     return {
@@ -754,6 +855,50 @@ def _lead(text: str, n: int = 160) -> str:
     whose query is a reference, not words found in the body."""
     text = (text or "").strip()
     return text[:n] + ("…" if len(text) > n else "")
+
+
+def _scripture_page_hits(q, language, scope=None):
+    """The scripture HUB page for a reference query, when one has earned a URL.
+
+    Reference-triggered like ``_scripture_sermon_hits`` / ``_scripture_chapter_hits``
+    (returns [] when ``q`` isn't a reference), but a single NAVIGATIONAL result:
+    a link to the ``/scripture/<book>/<chapter>[/<verse>]`` page that gathers
+    everything treating the passage, led above those individual passages. The
+    row carries no prose (the page is an aggregation) and no date to sort by; the
+    client builds the link from book_slug/chapter/verse, as the page chips do.
+
+    ``scripture_graph.pages_for`` is the one floor-respecting resolver (the same
+    rule the pages, sitemap and inline links use), so a hit is emitted only where
+    the page was actually built — never a link to a 404. Scripture pages are
+    English-only (built from English citations, ASV text) and are global hubs, so
+    nothing fires for a non-English reader or inside a scope — mirroring how the
+    footer and command palette gate ``/scripture``.
+
+    Returns AT MOST ONE hit — a query resolves to a single page. That invariant
+    is load-bearing downstream: scripture is deliberately absent from ``CAPS`` and
+    ``count_by_type`` (it has no queryset), so the facet's count falls back to the
+    one loaded row, which is exact only because the count is 0-or-1.
+    """
+    if scope or language != "en":
+        return []
+    from .scripture_graph import book_from_slug, pages_for, reference_label
+
+    page = pages_for([q]).get(q)
+    if not page:
+        return []
+    book = book_from_slug(page["book"])
+    verse = page.get("verse")
+    return [
+        {
+            "type": "scripture",
+            "book_slug": page["book"],
+            "chapter": page["chapter"],
+            "verse": verse,
+            "reference": reference_label(book, page["chapter"], verse) if book else "",
+            "snippet": "",
+            "date": "",
+        }
+    ]
 
 
 def _scripture_sermon_hits(q, sermons, base):
@@ -910,6 +1055,10 @@ def suggest(q: str, language: str) -> str | None:
         is_published=True, language=language
     ).values_list("title", flat=True):
         add(title)
+    for h1 in Article.objects.filter(
+        is_published=True, language=language
+    ).values_list("h1", flat=True):
+        add(h1)
     for title in Topic.objects.filter(is_published=True).values_list(
         "title", flat=True
     ):

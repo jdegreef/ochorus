@@ -1204,6 +1204,60 @@ nav.appnav .navsearch:hover {
    Plans derive it from their first cover's cover_color; Sermons from the
    author's era. The hue is only ever used through color-mix() for tints and
    for the icon, never as body text, so contrast holds in both themes. */
+
+/* ── Card hover: two recipes, and only two ──────────────────────────────────
+   Every content card hovers in one of exactly two languages, so a page of
+   mixed card types reads as one system (STYLE_GUIDE §5 → "Card hover"):
+
+     .card-lift — GRID / banded cards rise. A 2px lift and a drop shadow, the
+       border warming. Members: .book-card (neutral) and .shelf-card (era hue).
+       The sermon-of-week plate is the same hue lift but restates it in its own
+       scoped CSS: its trigger is the parent link's hover/focus-visible on a
+       nested, non-focusable plate, which a self-hover class can't express.
+
+     .card-tint — ROW cards warm in place, no lift. The border shifts to accent
+       and the ground to surface-2. Members: .sermon-card, .article-card,
+       AuthorBioCard, PersonCard, AuthorTile, BookListRow (neutral); .sermon-row
+       and the /quotes author card override the two colours with their era hue.
+
+   Both animate on --duration-fast, and nothing else. Resting
+   border/radius/background/padding stay with the individual card (its scoped
+   CSS, or layered Tailwind utilities in its markup) — only the motion and the
+   hover shift live here, so a card opts into a recipe by wearing the class and
+   the recipe is one edit, not a copy per component. Unlayered on
+   purpose, like the card classes themselves (see .book-card's note): a hue
+   member's own later :hover then overrides the neutral colour, and a Tailwind
+   hover utility can't quietly win over either. */
+.card-lift {
+	transition:
+		border-color var(--duration-fast),
+		box-shadow var(--duration-fast),
+		transform var(--duration-fast);
+}
+.card-lift:hover {
+	border-color: var(--accent-soft-border);
+	box-shadow: var(--shadow-card);
+	text-decoration: none;
+	transform: translateY(-2px);
+}
+.card-tint {
+	transition:
+		border-color var(--duration-fast),
+		background var(--duration-fast);
+}
+.card-tint:hover {
+	border-color: var(--accent);
+	background: var(--surface-2);
+	text-decoration: none;
+}
+/* Reduced motion drops the lift; the colour shifts (no vestibular cost) stay. */
+@media (prefers-reduced-motion: reduce) {
+	.card-lift,
+	.card-lift:hover {
+		transform: none;
+	}
+}
+
 .shelf-card {
 	display: flex;
 	flex-direction: column;
@@ -1216,16 +1270,12 @@ nav.appnav .navsearch:hover {
 	border-radius: var(--radius-card);
 	overflow: hidden;
 	background: var(--surface);
-	transition:
-		border-color var(--duration-fast),
-		box-shadow var(--duration-fast),
-		transform var(--duration-fast);
+	/* Motion + lift come from .card-lift (in the markup); only the hue-tinted
+	   border and shadow are the shelf card's own. */
 }
 .shelf-card:hover {
 	border-color: color-mix(in srgb, var(--shelf-hue) 55%, var(--border));
 	box-shadow: 0 6px 20px -12px color-mix(in srgb, var(--shelf-hue) 70%, transparent);
-	text-decoration: none;
-	transform: translateY(-2px);
 }
 /* ── Hue bands ─────────────────────────────────────────────────────────────
    The colour-washed ground an item's own hue is allowed to tint: a wash from
@@ -1339,16 +1389,8 @@ nav.appnav .navsearch:hover {
 	border: 1px solid var(--border);
 	border-radius: var(--radius-card);
 	background: var(--surface);
-	transition:
-		border-color var(--duration-fast),
-		box-shadow var(--duration-fast),
-		transform var(--duration-fast);
-}
-.book-card:hover {
-	border-color: var(--accent-soft-border);
-	box-shadow: var(--shadow-card);
-	text-decoration: none;
-	transform: translateY(-2px);
+	/* Hover (lift + shadow + accent border) is the neutral .card-lift recipe,
+	   worn in the markup. */
 }
 /* Horizontal variant — cover beside the text, for the single "Continue
    reading" resume card.
@@ -1373,12 +1415,6 @@ nav.appnav .navsearch:hover {
 	flex-direction: row;
 	align-items: center;
 	gap: 1rem;
-}
-@media (prefers-reduced-motion: reduce) {
-	.book-card,
-	.book-card:hover {
-		transform: none;
-	}
 }
 
 /* The shelf grid the book cards sit in.
@@ -1520,9 +1556,8 @@ nav.appnav .navsearch:hover {
 	border: 1px solid var(--border);
 	border-radius: var(--radius-card);
 	background: var(--surface);
-	transition:
-		border-color var(--duration-fast),
-		background var(--duration-fast);
+	/* Tint recipe (motion + text-decoration) comes from .card-tint in the
+	   markup; only the hue-mixed border and ground below are the row's own. */
 }
 /* The sermon's emblem chip, in the writer's era tint, so each row opens with
    its own mark rather than a wall of prose. */
@@ -1546,7 +1581,6 @@ nav.appnav .navsearch:hover {
 .sermon-row:hover {
 	border-color: color-mix(in srgb, var(--row-hue) 45%, var(--border));
 	background: color-mix(in srgb, var(--row-hue) 4%, var(--surface));
-	text-decoration: none;
 }
 .sermon-row:hover::before {
 	background: var(--row-hue);
@@ -1570,23 +1604,88 @@ nav.appnav .navsearch:hover {
 .sermon-row:hover .sermon-row-title {
 	color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
 }
-/* The brief runs the full width of the row.
+/* ── Sermon index: table-of-contents row ─────────────────────────────────────
+   The row now reads like a book's contents: one line per sermon (title ·
+   passage · a dotted leader · length), with the brief revealed on click. The
+   emblem + content flex layout of `.sermon-row` above is unchanged; what
+   follows styles the one-line entry and the disclosed brief. */
 
-   It was capped at a typographic measure first, which left a third of every row
-   empty on a wide screen and made the rows taller than they needed to be. Full
-   width spreads the same text over fewer lines, so the shelf is shorter and the
-   box is actually used. Long lines are the trade, and they are bounded in
-   practice: the brief is 300–400 characters, and the page-width stepper lets a
-   reader narrow the column if they want a tighter measure. */
-.sermon-row-brief {
-	color: var(--muted);
+/* Heading wraps the toggle (WAI accordion pattern); it carries no visual weight
+   of its own — the title span inside does. */
+.sermon-row-heading {
+	margin: 0;
+	font-size: inherit;
+	font-weight: inherit;
 }
-@media (prefers-reduced-motion: reduce) {
-	.shelf-card,
-	.shelf-card:hover {
-		transform: none;
-		transition: border-color var(--duration-fast);
-	}
+/* The title is the link to the sermon — a real, crawlable anchor on every row.
+   Row-hover already recolours it (rule above); a direct hover underlines. */
+a.sermon-row-title {
+	text-decoration: none;
+}
+a.sermon-row-title:hover {
+	text-decoration: underline;
+}
+/* Title, passage, leader and length on one baseline; wraps gracefully when the
+   title is long. */
+.sermon-row-line {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.25rem 0.75rem;
+}
+/* The dotted leader carrying the eye from the title to the length, as in a
+   printed table of contents — purely decorative, and it simply collapses to its
+   min width when the line wraps. */
+.sermon-row-leader {
+	flex: 1 1 1.5rem;
+	min-width: 1.5rem;
+	align-self: baseline;
+	border-bottom: 1.5px dotted color-mix(in srgb, var(--row-hue) 32%, var(--border-strong));
+	transform: translateY(-0.3em);
+}
+.sermon-row-meta {
+	flex: none;
+	font-size: var(--fs-small);
+	color: var(--muted);
+	font-variant-numeric: tabular-nums;
+}
+/* The disclosure control for the brief — a chevron button beside the length,
+   kept separate from the title link so each control has a single job. */
+.sermon-row-toggle {
+	flex: none;
+	align-self: center;
+	display: inline-flex;
+	padding: 0.15rem;
+	border: 0;
+	background: none;
+	color: var(--muted);
+	cursor: pointer;
+	border-radius: var(--radius-sm);
+}
+.sermon-row-toggle:hover {
+	color: var(--text);
+}
+.sermon-row-toggle:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 1px;
+}
+.sermon-row-chevron {
+	display: block;
+	transition: transform var(--duration-fast);
+}
+.sermon-row.is-open .sermon-row-chevron {
+	transform: rotate(180deg);
+}
+/* The brief, revealed under the entry. It hangs in the content column (already
+   inset past the emblem), and now that it is on-demand rather than always shown,
+   it gets a real reading measure instead of the full row width. */
+.sermon-row-peek {
+	margin-top: 0.7rem;
+}
+.sermon-row-brief {
+	margin: 0;
+	max-width: 64ch;
+	color: var(--muted);
 }
 
 /* ── Browse-page filter furniture ──────────────────────────────────────────

@@ -853,17 +853,50 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # no future import loses them — but these rows are never re-imported, so
         # ch33 on the shelf is still seven bare `<hr/>`s with no headings.
         #
-        # Repairing THOSE is `restored_blocks` on this same key, the mechanism
+        # They go back via `restored_blocks`, the mechanism
         # `ministry-of-intercession` uses for byte-identical damage from the
-        # sibling selector — not more `replacements` pairs, because a pure
-        # insertion re-fires on every deploy (see `restore_dropped_blocks`).
-        # Deliberately left for that change: it has to settle the ordered-tag
-        # parity `tests_translation_markup` enforces against this book's
-        # translations, which is not this key's business.
+        # sibling selector — not `replacements` pairs, because a pure insertion
+        # re-fires on every deploy (see `restore_dropped_blocks`). Restored with
+        # the SOURCE's own tags, `<h3>` for the note letter and `<h4>` for its
+        # subtitle (NOTE D and NOTE E have no subtitle in the print, so they get
+        # none here), spelled EXACTLY as the fixed sanitizer would produce them,
+        # so the guard recognises its own work and a re-imported edition would
+        # not carry the heading twice. That is PER-HEADING, not a house rule:
+        # A-G wear a leading space because the source writes
+        # `<h3 class="note"> <a id="note_A">NOTE A.</a></h3>` and the anchor
+        # leaves one behind, while ch5's bare `NOTE.` has no anchor
+        # (`<h3 class="note">NOTE.</h3>`) and so must have none. Getting that
+        # backwards breaks nothing today — it breaks on the re-import, by
+        # inserting a second heading beside the first.
+        #
+        # Each anchor is unique across the WHOLE book, not merely its chapter:
+        # `restore_dropped_blocks` is applied to every chapter in turn, so an
+        # anchor that also matched elsewhere would insert a heading into the
+        # wrong one. An eighth heading, a bare `NOTE.`, belongs to ch5 rather
+        # than the Notes chapter and is restored there.
         #
         # The footnote BLOCKS that pointed at them stay dropped, by design: the
         # markers referencing them are dropped too, so restoring the blocks
         # alone would orphan the note text mid-chapter.
+        "restored_blocks": [
+            ("<p>The connection between the fear of God and holiness is most i",
+             "<h3>NOTE.</h3>"),
+            ("<p>In a little book\u2014Holiness, as understood by the Writers o",
+             "<h3> NOTE A.</h3> <h4>Holiness as Proprietorship.</h4>"),
+            ("<p>The proper meaning of the Hebrew word for holy, <i>kadosh",
+             "<h3> NOTE B.</h3> <h4>On the Word for Holiness.</h4>"),
+            ("<p>There is not a word so exclusively scriptural, so distinc",
+             "<h3> NOTE C.</h3> <h4>The Holiness of God.</h4>"),
+            ("<p>\u2018Our holiness does not consist in our changing and becomi",
+             "<h3> NOTE D.</h3>"),
+            ("<p>Let me once more refer all students of holiness to Marsha",
+             "<h3> NOTE E.</h3>"),
+            ("<p>\u2018According to the Spirit of Holiness. The word <i>hagios",
+             "<h3> NOTE F.</h3> <h4>Note from Bengel on Rom. i. 4.</h4>"),
+            ("(<i>From an address by Pastor Stockmaiev.</i>) <p>\u2018Who gave ",
+             "<h3> NOTE G.</h3> <h4>\u2018Freed\u2019 and \u2018Possessed\u2019\u2014The Twofold Result of "
+             "Redemption.</h4>"),
+        ],
         "replacements": [
             ("deep Restfulness ()", "deep Restfulness (ch. 3)"),
             ("humble Reverence ()", "humble Reverence (ch. 4)"),
@@ -872,6 +905,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("simple Obedience ()", "simple Obedience (ch. 7)"),
             ("the Divine Indwelling ()", "the Divine Indwelling (ch. 8)"),
             ("His Glory and Majesty (see ‘’)", "His Glory and Majesty (see ‘Sixth Day’)"),
+            # ch33's own cross-reference back to NOTE A, lost the same way.
+            ("made in the note to ‘Sixth Day,’ on .</p>",
+             "made in the note to ‘Sixth Day,’ on Holiness as Proprietorship.</p>"),
         ],
     },
     "selected-sermons-edwards": {
@@ -908,6 +944,24 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # anchors in these four chapters moved by one, in the same commit.
         # `tests_quotes` is what catches that, and it is the reason a body
         # repair is never only a body repair.
+        # ch9 (Notes) lost FIVE page references the same way the sermon texts
+        # were lost, but to the SIBLING selector — `pginternal`, decomposing the
+        # cross-reference whole and leaving "see note, p. ." for the reader to
+        # follow. Three of the five are what `english_audit`'s
+        # `space-before-punct` class pinned at 3 for this book; a fourth sits
+        # inside parentheses so that class never saw it, and the fifth is the
+        # Introduction reference. All five numbers read off #34632.
+        "replacements": [
+            ("for the press (see Introduction, p. ). The manuscript",
+             "for the press (see Introduction, p. xxix). The manuscript"),
+            ("cf. n. here following, p. .", "cf. n. here following, p. 162."),
+            ("\u201cAnd consider here more particularly\u201d (p. ).",
+             "\u201cAnd consider here more particularly\u201d (p. 89)."),
+            # The dropped `[6]` footnote marker left a space behind the `<p>`.
+            ("</p> <p> See note, p. .", "</p> <p>See note, p. 179."),
+            ("prepared for preaching, see note p. .",
+             "prepared for preaching, see note p. 157."),
+        ],
         "restored_blocks": [
             (
                 "<p><br/>Those Christians to whom the apostle",
@@ -1068,7 +1122,45 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # The stray-page-number heading (see CORRECTIONS above) left the real
         # title as an <h3> at the top of ch23's body, which now duplicates the
         # chapter title. Every other chapter's body opens on its <h4> date line.
-        "replacements": [("<h3>A NEW VICTORY OF FAITH.</h3>", "")],
+        #
+        # The four after it are a DIFFERENT shape of the dropped-anchor defect,
+        # and the most damaging one in the corpus: this transcriber wraps each
+        # word he corrected in an internal link, so `[class*=pginternal]` did
+        # not delete a reference — it deleted a word out of Müller's sentence,
+        # leaving "Even about the of this century". Restored from the source's
+        # own correction, which names the word it is supplying. The selector is
+        # qualified now (#1573); these are the rows already on the shelf.
+        "replacements": [
+            ("<h3>A NEW VICTORY OF FAITH.</h3>", ""),
+            (" of the Lord Jesus. Even about the of this century",
+             " of the Lord Jesus. Even about the commencement of this century"),
+            ("large piece of ground in the of Bristol",
+             "large piece of ground in the neighborhood of Bristol"),
+            ("Again, four from among the -school children",
+             "Again, four from among the Sunday-school children"),
+            ("if one is enabled to God\u2019s own time",
+             "if one is enabled to wait God\u2019s own time"),
+        ],
+    },
+    "things-as-they-are": {
+        # The dropped-anchor defect: Gutenberg spells a cross-reference as an
+        # internal link, and `[class*=pginternal]` decomposed it whole instead
+        # of unwrapping it, so the reference vanished and only the punctuation
+        # around it survived. The selector is qualified now
+        # (`sanitize.KEEP_PREDICATES`, #1573) — this is the row already on the
+        # shelf, which is never re-imported. Each target was read off the
+        # Gutenberg source, not inferred from position.
+        #
+        # Three chapter cross-references in Carmichael's picture captions and
+        # asides — "one of the old dames seen in ." for "seen in chapter vi."
+        "replacements": [
+            ("one of the old dames seen in . A capital typical face",
+             "one of the old dames seen in chapter vi. A capital typical face"),
+            ('stuff on the stone is the "Imp" of . <p>Then a Caste meeting',
+             'stuff on the stone is the "Imp" of chapter xx. <p>Then a Caste meeting'),
+            ('the "rabbits" mentioned in . She saw us',
+             'the "rabbits" mentioned in Chapter I. She saw us'),
+        ],
     },
     "prayer-and-praying-men": {
         # Two words glued together in CCEL's own text (verified upstream, so
@@ -3071,11 +3163,13 @@ BODY_CORRECTIONS.setdefault('gleanings-among-the-sheaves', {}).setdefault("repla
     ("<h2>INDEX.</h2> PAGE 5 7 8 10 11 13 16 18 21 23 24 27 30 32 34 37 39 41 41 42 44 47 48 49 51 53 54 56 57 58 59 60 61 62 63 64 66 67 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 89 91 92 93 94 95 97 99 101 103 104 106 106 107 108 109 110 111 111 112 113 114 115 116 117 118 120 122 123 123 124 124 125 127 128 129 130 132 134 136 137 139 139 140 141 142 145 145 146 146 147 149 150 152 153 155 156 157 158 160 162 165 166 167 169 172 173 174 176 177 178 181 182 184 185 187 190 192 194 196 197 199 202 207 209 212 214 218 221 <hr/> <p>Transcriber's Notes: Blank pages have been eliminated. Variations in spelling and hyphenation have been left as in the original. A few typographical errors have been corrected. </p>", ""),
     # (Three scripture quotations also lost their opening quote in OCR — Phil
     # 4:8 ch02, Job 42:10 ch03, Ps 37:4 ch18. Those openers are repaired
-    # directly in the fixture, not here: the book is wholly straight-quoted, so
-    # the mark must be straight, and a straight-quote `new` cannot satisfy the
-    # corrections-hygiene guard, which reads the JSON-serialised fixture where a
-    # straight quote is escaped as \". Kept out of BODY_CORRECTIONS for that
-    # reason; the fixture edit is what ships them.)
+    # directly in the fixture, not here. The reason given was that a
+    # straight-quote `new` could not satisfy the corrections-hygiene guard,
+    # which read the JSON-serialised fixture where a straight quote is escaped
+    # as \" — THAT CONSTRAINT IS GONE: the guard now reads the field values, so
+    # a straight-quoted pair is fine and these three could move into
+    # BODY_CORRECTIONS if anyone wants them re-applied on every deploy. Left in
+    # the fixture for now because nothing is broken by it.)
     # ch05 dropped letter; ch08 KJV spelling; ch13 2 Pet 3:11 ("what manner of
     # persons ought ye to be", KJV) garbled to "manner or person".
     ('take way his own power', 'take away his own power'),

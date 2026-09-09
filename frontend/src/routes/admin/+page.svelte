@@ -4,7 +4,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { type SourceType } from '$lib/library-public';
-	import { getAdminStats } from '$lib/library-admin';
+	import { getAdminStats, getAdminAttention } from '$lib/library-admin';
 	import AddLanguageForm from '$lib/components/AddLanguageForm.svelte';
 
 	let exporting = $state<'csv' | 'json' | null>(null);
@@ -39,6 +39,51 @@
 		() => (loadedAt = new Date())
 	);
 	const stats = $derived(dashboard.data);
+
+	// The "needs attention" hub — its own resource so it paints as soon as it
+	// loads, independent of the (heavier) stats call. The API returns raw signals;
+	// the ranking, labels and links are composed here (admin is English-only).
+	const attentionRes = adminResource(getAdminAttention, 'Something went wrong loading attention.');
+	const att = $derived(attentionRes.data);
+
+	type HubTier = 'critical' | 'backlog' | 'demand';
+	interface HubRow { tier: HubTier; value: string; big: boolean; label: string; why: string; href: string; }
+	const dotClass: Record<HubTier, string> = {
+		critical: 'bg-danger',
+		backlog: 'bg-warning',
+		demand: 'bg-accent'
+	};
+
+	// Actionable rows, in reader-impact order: integrity defects → the review
+	// backlog → unmet demand. Only rows with a real filtered destination are
+	// clickable rows; count-only signals with no page yet go in the "also" line.
+	const hubRows = $derived.by<HubRow[]>(() => {
+		if (!att) return [];
+		const rows: HubRow[] = [];
+		if (att.empty_chapters)
+			rows.push({ tier: 'critical', value: fmt(att.empty_chapters), big: true, label: 'Empty chapters', why: 'Published chapters with no body text.', href: '/admin/audit' });
+		if (att.empty_books)
+			rows.push({ tier: 'critical', value: fmt(att.empty_books), big: true, label: 'Books with no chapters', why: 'A published book that opens to nothing.', href: '/admin/audit' });
+		if (att.unreviewed_translations)
+			rows.push({ tier: 'backlog', value: fmt(att.unreviewed_translations), big: true, label: 'AI translations awaiting review', why: 'Readers see an “awaiting review” badge until a native speaker checks these.', href: '/admin/review' });
+		if (att.searches.zero_30d)
+			rows.push({ tier: 'demand', value: fmt(att.searches.zero_30d), big: true, label: 'Searches that found nothing · 30d', why: `Readers asked; the library had no answer — ${Math.round(att.searches.zero_rate * 100)}% of searches.`, href: '/admin/search' });
+		for (const l of att.languages_missing_books)
+			rows.push({ tier: 'demand', value: l.name, big: false, label: `${l.name} live with 0 books`, why: `${fmt(l.sermons)} sermon${l.sermons === 1 ? '' : 's'}, but nothing for a book reader to open.`, href: `/admin/languages/${l.code}` });
+		return rows;
+	});
+	// Integrity is "clean" when neither structural count is set — shown as
+	// reassurance rather than an empty gap.
+	const integrityClean = $derived(!!att && att.empty_chapters === 0 && att.empty_books === 0);
+	// Real signals that have no dedicated page to open yet — surfaced as counts.
+	const alsoCounts = $derived.by<string[]>(() => {
+		if (!att) return [];
+		const a: string[] = [];
+		if (att.unpublished_books) a.push(`${fmt(att.unpublished_books)} unpublished book${att.unpublished_books === 1 ? '' : 's'}`);
+		if (att.unpublished_sermons) a.push(`${fmt(att.unpublished_sermons)} unpublished sermon${att.unpublished_sermons === 1 ? '' : 's'}`);
+		if (att.authors_without_bio) a.push(`${fmt(att.authors_without_bio)} author${att.authors_without_bio === 1 ? '' : 's'} without a bio`);
+		return a;
+	});
 
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
@@ -139,6 +184,49 @@
 			</div>
 		{/if}
 	</header>
+
+	<!-- Needs attention hub: what to act on, aggregated across the admin. Its own
+	     resource, so it paints before the heavier stats call and never blocks it. -->
+	{#if att && (hubRows.length || alsoCounts.length || integrityClean)}
+		<section class="mb-8 overflow-hidden rounded-card border border-border bg-surface">
+			<div class="flex flex-wrap items-baseline justify-between gap-3 border-b border-border px-5 py-3">
+				<div class="flex items-baseline gap-2">
+					<h2 class="text-h3">Needs attention</h2>
+					{#if hubRows.length}<span class="text-small text-muted">{hubRows.length} to act on</span>{/if}
+				</div>
+				<span class="text-small text-muted">Ranked by reader impact</span>
+			</div>
+
+			{#if integrityClean}
+				<p class="flex items-center gap-2 border-b border-border px-5 py-2 text-small text-muted">
+					<span class="text-accent">✓</span> Data integrity is clean — no empty chapters or bookless books.
+				</p>
+			{/if}
+
+			{#each hubRows as r (r.label)}
+				<a
+					href={r.href}
+					class="flex items-center gap-3 border-b border-border px-5 py-3 last:border-0 hover:bg-surface-2 hover:no-underline"
+				>
+					<span class="h-2 w-2 shrink-0 rounded-full {dotClass[r.tier]}"></span>
+					<span class="w-16 shrink-0 truncate text-right font-semibold tabular-nums text-text {r.big ? 'stat-number-sm' : 'text-body'}">{r.value}</span>
+					<span class="min-w-0 flex-1">
+						<span class="block font-semibold text-text">{r.label}</span>
+						<span class="block text-small text-muted">{r.why}</span>
+					</span>
+					<span class="shrink-0 text-small text-accent">→</span>
+				</a>
+			{/each}
+
+			{#if alsoCounts.length}
+				<p class="px-5 py-2.5 text-small text-muted">Also: {alsoCounts.join(' · ')}.</p>
+			{/if}
+
+			{#if !hubRows.length && !alsoCounts.length}
+				<p class="px-5 py-3 text-small text-muted">Nothing needs attention right now.</p>
+			{/if}
+		</section>
+	{/if}
 
 	<AdminGate resource={dashboard} errorTitle="Couldn't load the dashboard">
 		{#snippet loading()}

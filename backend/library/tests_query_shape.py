@@ -28,7 +28,18 @@ from django.test.utils import CaptureQueriesContext
 from django.urls import reverse
 from rest_framework.test import APIClient
 
-from .models import Author, AuthorTranslation, Book, Chapter, Plan, PlanDay, Sermon
+from .models import (
+    Author,
+    AuthorTranslation,
+    Book,
+    Chapter,
+    Plan,
+    PlanDay,
+    Quote,
+    Sermon,
+    Topic,
+    TopicBook,
+)
 
 
 def _outer_statement(sql: str) -> str:
@@ -286,3 +297,108 @@ class BookDetailOpeningQueryShapeTests(TestCase):
         _, data = self._detail()
         self.assertEqual(data["opening"]["chapter"], "Chapter I")
         self.assertTrue(data["opening"]["text"].startswith("In this my relation"))
+
+
+class QuotePageQueryShapeTests(TestCase):
+    """An author's quote page renders every reviewed quote with its citation.
+    The per-quote source (chapter→book, or sermon) is `select_related`, so the
+    page's query cost must not grow with the number of quotes — a regression to
+    per-quote source lookups is exactly the kind of N+1 that, at crawl scale,
+    shows up as egress."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.author = Author.objects.create(slug="am", name="Andrew Murray")
+        book = Book.objects.create(
+            author=cls.author, slug="abide", language="en",
+            title="Abide in Christ", is_published=True,
+        )
+        cls.chapter = Chapter.objects.create(
+            book=book, order=1, title="First", body_html="<p>x</p>"
+        )
+
+    def _make_quotes(self, n, start=0):
+        for i in range(start, start + n):
+            Quote.objects.create(
+                slug=f"am-{i}",
+                author=self.author,
+                text=f"A memorable sentence number {i} about grace and prayer.",
+                chapter=self.chapter,
+                paragraph=i + 1,
+                reviewed=True,
+            )
+
+    def _page_queries(self):
+        with CaptureQueriesContext(connection) as captured:
+            res = APIClient().get(reverse("quote-page", args=[self.author.slug]))
+        self.assertEqual(res.status_code, 200)
+        return len(captured.captured_queries), res.data
+
+    def test_the_cost_does_not_grow_with_the_number_of_quotes(self):
+        self._make_quotes(1)
+        first, _ = self._page_queries()
+
+        self._make_quotes(20, start=1)
+        grown, data = self._page_queries()
+
+        self.assertEqual(len(data["quotes"]), 21)
+        self.assertLessEqual(
+            grown,
+            first,
+            f"21 quotes cost {grown} queries against {first} for one — the "
+            "per-quote citation is resolving its book/sermon per row",
+        )
+
+    def test_the_citation_is_still_there(self):
+        """The N+1 guard must not pass by dropping the source it guards."""
+        self._make_quotes(1)
+        _, data = self._page_queries()
+        self.assertEqual(data["quotes"][0]["source"]["work"], "Abide in Christ")
+
+
+class TopicShelfQueryShapeTests(TestCase):
+    """A topic page lists its member books as cards. `_attach_books` resolves
+    them in a fixed number of queries (not per book), and the topic-chip map is
+    built once for the whole shelf — so the page's cost must not grow with the
+    number of member books."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.author = Author.objects.create(slug="am", name="Andrew Murray")
+        # English uses Topic.title directly (no TopicTranslation needed), so the
+        # shelf is_translated_into("en") the moment it has a title.
+        cls.topic = Topic.objects.create(
+            slug="prayer", title="On Prayer", is_published=True
+        )
+
+    def _add_books(self, n, start=0):
+        for i in range(start, start + n):
+            slug = f"book-{i}"
+            Book.objects.create(
+                author=self.author, slug=slug, language="en",
+                title=f"Book {i}", is_published=True,
+            )
+            TopicBook.objects.create(topic=self.topic, book_slug=slug, sort_order=i)
+
+    def _shelf_queries(self):
+        with CaptureQueriesContext(connection) as captured:
+            res = APIClient().get(
+                reverse("topic-detail", args=[self.topic.slug]), {"language": "en"}
+            )
+        self.assertEqual(res.status_code, 200)
+        return len(captured.captured_queries), res.data
+
+    def test_the_cost_does_not_grow_with_the_number_of_member_books(self):
+        self._add_books(1)
+        first, _ = self._shelf_queries()
+
+        self._add_books(8, start=1)
+        grown, data = self._shelf_queries()
+
+        self.assertEqual(len(data["books"]), 9)
+        self.assertLessEqual(
+            grown,
+            first,
+            f"nine member books cost {grown} queries against {first} for one — "
+            "_attach_books or the topic-chip map is resolving per book",
+        )

@@ -12,7 +12,11 @@ export function GET() {
 		'Disallow: /login',
 		'Disallow: /account',
 		'Disallow: /notebook',
+		'Disallow: /favorites',
 		'Disallow: /reset-password',
+		// Internal search: thin, endlessly parameterised result pages (?q=…) with
+		// nothing to index — keep crawl budget on the chapter/quote pages instead.
+		'Disallow: /search',
 		// NO blank line before the next block: a blank line TERMINATES a record
 		// in robots.txt, so anything after one belongs to no user-agent. The
 		// rules below have to stay inside the `User-agent: *` group above.

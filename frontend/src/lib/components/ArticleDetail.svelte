@@ -12,6 +12,7 @@
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 
 	// The reader detail for one article. Its sibling on the same route is the
 	// topic shelf (ArticleTopicShelf) — the [slug]/+page.svelte switch picks one.
@@ -152,7 +153,7 @@
 
 		{#if article.related?.length}
 			<aside class="read-next" aria-labelledby="read-next-heading">
-				<h2 id="read-next-heading" class="text-h3">Read next</h2>
+				<h2 id="read-next-heading" class="section-label">Read next</h2>
 				<ul>
 					{#each article.related as r (r.type + r.slug)}
 						<li>
@@ -192,6 +193,8 @@
 				{/each}
 			</nav>
 		{/if}
+
+		<AccountCta />
 	</article>
 </div>
 

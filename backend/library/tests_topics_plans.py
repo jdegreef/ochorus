@@ -68,6 +68,13 @@ class PlanTests(TestCase):
         self.assertEqual(res.data["days"][0]["book_title"], "Humility")
         self.assertEqual(res.data["days"][0]["word_count"], 100)
 
+    def test_detail_lists_the_plan_authors(self):
+        # Both days read the one book by "am" → one distinct author, linked.
+        res = self.client.get("/api/library/plans/humility-12-days/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual([a["slug"] for a in res.data["authors"]], ["am"])
+        self.assertEqual(res.data["authors"][0]["name"], "Andrew Murray")
+
     def test_list_exposes_day_one_teaser(self):
         # The card leads with where the plan starts — day 1's book + chapter.
         res = self.client.get("/api/library/plans/?language=en")
@@ -301,6 +308,26 @@ class TopicTests(TestCase):
 
     def test_detail_unpublished_is_404(self):
         self.assertEqual(self.client.get("/api/library/topics/draft/").status_code, 404)
+
+    def test_detail_lists_distinct_authors(self):
+        # Both member books are by "am" → one distinct author on the shelf.
+        res = self.client.get("/api/library/topics/prayer/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual([a["slug"] for a in res.data["authors"]], ["am"])
+        self.assertEqual(res.data["authors"][0]["name"], "Andrew Murray")
+
+    def test_detail_related_topics_by_shared_books(self):
+        # A second published, translated shelf that shares a book with "prayer".
+        other = Topic.objects.create(
+            slug="deeper-life", title="The Deeper Life", sort_order=3
+        )
+        TopicBook.objects.create(topic=other, book_slug="humility-2")
+        res = self.client.get("/api/library/topics/prayer/?language=en")
+        self.assertEqual(res.status_code, 200)
+        related = [t["slug"] for t in res.data["related_topics"]]
+        self.assertEqual(related, ["deeper-life"])
+        # A shelf that shares no book (its only member doesn't exist) is not related.
+        self.assertNotIn("empty", related)
 
     def test_book_detail_lists_its_topics(self):
         res = self.client.get("/api/library/books/prayer/?language=en")

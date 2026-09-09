@@ -60,6 +60,26 @@ const sermon = (slug = 'himself', ref = '') =>
 		date: '1890'
 	}) as unknown as SearchHit;
 
+const article = (slug = 'how-to-forgive') =>
+	({
+		type: 'article',
+		article_slug: slug,
+		article_title: 'How to Forgive',
+		snippet: 'a short guide to prayer',
+		date: '2026'
+	}) as unknown as SearchHit;
+
+const scripture = (chapter = 8, verse: number | null = 28) =>
+	({
+		type: 'scripture',
+		book_slug: 'romans',
+		chapter,
+		verse,
+		reference: verse ? `Romans ${chapter}:${verse}` : `Romans ${chapter}`,
+		snippet: '',
+		date: ''
+	}) as unknown as SearchHit;
+
 const rowsOf = (hits: SearchHit[]): ResultRow[] =>
 	hits.map((h) => ({ ...toRow(h, ctx), type: h.type }));
 
@@ -71,6 +91,11 @@ describe('toRow', () => {
 		expect(toRow(sermon(), ctx).href).toBe('/sermons/himself?q=prayer');
 		expect(toRow(book(), ctx).href).toBe('/books/humility');
 		expect(toRow(author(), ctx).href).toBe('/authors/andrew-murray');
+		// An article is a hub, not a passage, so its link carries no ?q= anchor.
+		expect(toRow(article('how-to-forgive'), ctx).href).toBe('/articles/how-to-forgive');
+		// A verse page and a whole-chapter page differ by the trailing segment.
+		expect(toRow(scripture(8, 28), ctx).href).toBe('/scripture/romans/8/28/');
+		expect(toRow(scripture(8, null), ctx).href).toBe('/scripture/romans/8/');
 	});
 
 	it('escapes a query that would otherwise break the URL', () => {
@@ -125,10 +150,27 @@ describe('groupRows', () => {
 	});
 
 	it('covers every hit type', () => {
-		const types = rowsOf([author(), book(), chapter('humility', 1), sermon()]).map((r) => r.type);
+		const types = rowsOf([
+			author(),
+			book(),
+			chapter('humility', 1),
+			sermon(),
+			article(),
+			scripture()
+		]).map((r) => r.type);
 		for (const t of types) {
 			expect(GROUP_ORDER.some((g) => g.type === t)).toBe(true);
 		}
+	});
+
+	it('leads with the scripture passage hub, above the works that treat it', () => {
+		const groups = groupRows(rowsOf([book(), chapter('humility', 1), scripture()]));
+		expect(groups.map((g) => g.type)).toEqual(['scripture', 'book', 'chapter']);
+	});
+
+	it('files articles among the navigational entities, before passages', () => {
+		const groups = groupRows(rowsOf([chapter('humility', 1), article(), book()]));
+		expect(groups.map((g) => g.type)).toEqual(['book', 'article', 'chapter']);
 	});
 });
 

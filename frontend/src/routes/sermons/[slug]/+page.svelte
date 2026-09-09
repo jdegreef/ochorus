@@ -527,7 +527,7 @@
 
 	{#if related.length}
 		<section class="mt-12 border-t border-border pt-6">
-			<h2 class="text-h3 mb-3">{t('sermon.moreOn')} {book}</h2>
+			<h2 class="section-label">{t('sermon.moreOn')} {book}</h2>
 			<ul class="space-y-2">
 				{#each related as r (r.slug)}
 					<li>

@@ -394,6 +394,114 @@ dropped; chapters under 120 words are dropped as stubs.
   the author from `authors.json` (full bio and all) while creating the book;
   verify the prod path by deleting both from the dev DB and running `seed_books`.
   *(religious-experience-and-journal, 2026-09)*
+- **A calendar devotional with a MORNING and EVENING reading per day → two
+  month-chaptered books from ONE source, via a `build_<name>` command.**
+  Spurgeon's *Morning and Evening* is best known as its two separately-published
+  halves — *Morning by Morning* (1866) and *Evening by Evening* (1868) — and
+  Ochorus follows that split. Neither the catalog path nor `import_ccel` fits:
+  the daily→month folding (`group_daily_entries`) lives ONLY in
+  `import_gutenberg`, Gutenberg has none of Spurgeon's devotionals (checked
+  Spurgeon/Meyer/Moody — Gutenberg is empty of them), and CCEL serves this work
+  as ~730 per-reading leaves (`morneve.d0101am`/`…pm`) with no grouping AND one
+  source must yield TWO books. So `build_morning_and_evening` fetches CCEL's
+  single combined file — **`cache/<work>.html3`** (one 1.9 MB static HTML with
+  every reading; far better than 730 leaf fetches; the `.txt` twin and the
+  `Rights: Public Domain` line are there too), buckets each reading's blocks by
+  its `d{MM}{DD}{am|pm}` id, splits AM→one book / PM→the other, and folds each
+  half's 366 days into 12 month chapters (`<h3>January 1</h3>` + verse + reading)
+  — the Simpson `days-of-heaven-upon-earth` shape. Three things earned:
+  - **Bucket only BLOCK tags (`p/h2/h3/h4/blockquote`), never `find_all(id=True)`
+    bare.** A nested `<a>`/`<span>` carries an id with the SAME reading prefix
+    (the "Go To Evening Reading" cross-ref link, inline scripRefs), so an
+    unfiltered bucket re-renders it as a stray paragraph. Filtering to block tags
+    leaves those anchors inside their parent's inner HTML, where `clean_fragment`
+    unwraps them.
+  - The CCEL transcription is uniformly STRAIGHT-quoted; curl it with
+    `quote_marks.convert(body, outer_guillemets=False)` + `assert_punctuation_only`
+    baked into the build (NOT `convert_work`, which no-ops on an unmixed work) —
+    the corpus uses curly double quotes and STRAIGHT apostrophes (Simpson: 324
+    straight `'` vs 4 curly), so leave apostrophes alone. `--` em-dashes are left
+    faithful (Spurgeon's own `cheque-book` ships 98 of them).
+  - Attributed to the existing `charles-h-spurgeon` author (no migration); add
+    both slugs to a `topic_seed` topic (put them with Simpson in
+    `faith-and-guidance`) so the generated cover gets an emblem and the right
+    shelf. Verse counts don't match reading counts (736 `scripPassage` vs 731
+    `passage`) — some readings carry a ref with no verse or two refs — so the
+    verse/ref folding must handle an orphan reference, not assume one-of-each.
+  *(morning-by-morning + evening-by-evening, 2026-09)*
+- **A calendar devotional whose day markers are a plain `<div class="date">`
+  (not a heading) → a `build_<name>` splitting on those divs.** Moody's
+  *Thoughts for the Quiet Hour* (Gutenberg #37292) marks each day
+  `<div class="date">January 1st.</div>` — an ordinal date in a div — so
+  `import_gutenberg`'s heading-splitter (and `group_daily_entries`, which needs a
+  `January 1`-style heading *title*) chapters nothing. Reuse `import_gutenberg`'s
+  `fetch_html` + `content_root` (fetch + PG-boilerplate strip), then walk the
+  body splitting on the date divs. Four things earned, each caught by verifying
+  day COUNT and spot-reading first/last/recovered days — never trust the build's
+  own success line:
+  - **A day's comment can live in a non-`<p>` container.** Five days' meditations
+    are `<div class="poem">` (verse form), so a `<p>`-only collector silently
+    dropped them (Jan 31 came out verse-only). Collect the poem divs too.
+    Decorative divs (`figcenter`/`figright`) carry no text; front matter
+    (`author`/`copyright`/`bbox`/`center` — the title page and Scripture index)
+    all precedes the first date div, so a `current is None` gate drops it.
+  - **`content_root` strips the LICENSE footer but NOT the trailing transcriber's
+    note.** A `<div class="tnote">` + its `<p>`s sits after the last reading and
+    rode into December 31. Close the current day (`current = None`) at the tnote.
+  - **Date-marker OCR/period quirks:** old-style bare-`d` ordinals ("May 3d." =
+    3rd — widen the ordinal alt to `st|nd|rd|th|d`) and a one-off month misread
+    ("Match"→"March", a tiny startswith fixup). A genuinely ABSENT calendar day
+    (Oct 3, marker jumps 2nd→4th) is left faithful, not invented — 364 readings.
+  - Attributed to the existing `dwight-l-moody` author as the volume's *editor*
+    (it is a compilation, each day bylined `—<i>Author.</i>` to its writer).
+  *(thoughts-for-the-quiet-hour, 2026-09)*
+- **Precept Austin (preceptaustin.org) hosts PD devotional text by month — a
+  usable source when a work is calendar-shaped but not on CCEL/Gutenberg, but its
+  markup is messy and carries its own study apparatus, so parse defensively.**
+  Meyer's *Our Daily Walk* (1913) is on neither CCEL nor Gutenberg (Archive/
+  HathiTrust had only a 1951 reprint stub); Precept serves it as twelve per-month
+  pages, each day a bold theme + a bold scripture line + the meditation `<p>`s +
+  Meyer's own closing "PRAYER … AMEN." Legal basis is the work's own PD year
+  (judge by first publication, 1913), NOT the host's permission. `build_our_daily_walk`
+  is the model; four things it earned the hard way:
+  - **URLs are irregular and the month-nav is incomplete.** Suffixes are clipped
+    unevenly (`_-_jan`/`_-_feb`/`_-_mar`/`_-_may`/`_-_aug`/`_-_oct`/`_-_nov`/`_-_dec`
+    but `_-_june`/`_-_july`/`_-_sept` spelled long), and **April has no suffix at
+    all — it lives at the bare slug `/our_daily_walk`**, absent from the on-page
+    month list. Hardcode the 12 URLs explicitly; don't derive them.
+  - **The body-field `<div>` is unusable as a content bound.** Precept's markup is
+    malformed enough that both `html.parser` AND `lxml` leave the reading `<p>`s as
+    siblings OUTSIDE `div.field--name-body` (it parses with zero `<p>` children).
+    Parse the WHOLE document's `<p>`s instead, bounded by day markers.
+  - **The day marker varies per page — use a hybrid.** Some months set the date as
+    `<p><b>January 1</b></p>`, others as a bare `<b>January 1</b>` in a bordered
+    box, and Precept OMITS the `<a name>` anchor on some days (April 2, Sept 22's
+    heading). Detect a boundary as EITHER an `<a name="january 1">` anchor OR any
+    `<b>`/`<p>` whose exact text is "January 1". A day genuinely absent from the
+    transcription (Sept 22 — heading jumps 21→23) is left faithful, not invented.
+  - **Precept decorates every scripture ref with its own commentary links —
+    strip them.** `Php 3:13-note`, `Heb 12:1KJV-note`, `Col 3:3KJV`, and the
+    hyphen can even carry a space (`21- notes`). Strip `-note`/`-notes`/`KJV`
+    ANCHORED TO THE REF DIGIT so Meyer's own prose (`love-notes`, `key-note`)
+    survives, tolerate `\s*` around the hyphen, and then close the space the
+    suffix left before a comma/period. The "dry-run understates" trap bites here:
+    a later pipeline step collapses `21- notes`→`21-notes`, so the regex must
+    match the *pre-collapse* form seen at strip time, not the stored form. Drop
+    the trailing on-page search widgets with a SPECIFIC guard (`^Search for
+    comments`, not a bare `^Search ` — that would truncate a "Search me, O God…"
+    meditation). Meyer's own "See …" cross-refs and Spurgeon mentions are prose,
+    not apparatus, and stay. *(our-daily-walk, 2026-09)*
+- **`npm run og:covers` rewrites any PRE-EXISTING stale twin it finds, not only
+  your new book's — keep the PR focused.** A fresh run wrote my 2 twins AND
+  redrew 4 unrelated `painting`-tier twins whose committed bytes had drifted from
+  the current generator on `main`. Include only yours: `git checkout` the
+  unrelated PNGs, then hand-add ONLY your slugs to `og-manifest.json` and
+  re-serialize it the way the committed file is written — **`JSON.stringify(obj,
+  null, 1)` (1-space indent), `twins` sorted by `localeCompare`** — NOT the
+  generator's current `'\t'` output (main predates that switch, so a full run
+  reformats the whole file). The manifest gate recomputes INPUT digests, not PNG
+  bytes, so a hand-added entry with the right `ground`/`style`/`script`/`art`/
+  `scrim` passes. *(2026-09)*
 - **Known limits (unfixed):** a book whose Introduction heading is fused with
   its body text in one block loses that intro (feasting-at-the-table); a drop
   cap belonging mid-paragraph after a scripture-ref merge isn't reattached

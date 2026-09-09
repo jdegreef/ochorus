@@ -117,6 +117,11 @@ export interface SitemapData {
  * and chapters are the only type big enough for the split to buy anything:
  * en is 1,264 URLs, while books/sermons/authors/pages are 130/98/175/160 and
  * would gain nothing but files.
+ *
+ * This order is DELIBERATELY not the reader-facing nav order (`$lib/contentNav`).
+ * It answers a crawl/coverage question — biggest, locale-split type first, and
+ * topics/plans folded into the small `pages` tail — not "what order does a
+ * reader meet these in", so it does not track nav/footer/palette (F2).
  */
 export const sections = (): string[] => [
 	...ADVERTISED_LOCALES.map((l) => `chapters-${l}`),

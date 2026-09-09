@@ -4,7 +4,15 @@
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { cssString } from '$lib/cssString';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
+	import {
+		absUrl,
+		jsonLd,
+		breadcrumbLd,
+		hreflangAll,
+		truncateMeta,
+		itemList,
+		topicThings
+	} from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
@@ -170,8 +178,12 @@
 	const hreflang = $derived(hreflangAll(path));
 	// Localized, because the bio may legitimately be missing in this language and
 	// a hardcoded English sentence would then become the page's meta description.
+	// A bare `.slice(0, 300)` cut the bio mid-word with no ellipsis (a SERP saw
+	// "…fourteen great-gr"); truncateMeta ends on a sentence or whole-word boundary
+	// within the ~160-char budget scrapers actually display. The book page already
+	// routes its description through the same helper.
 	const description = $derived(
-		(author.bio || t('author.metaFallback').replace('%name%', author.name)).slice(0, 300)
+		truncateMeta(author.bio || t('author.metaFallback').replace('%name%', author.name))
 	);
 	const ogImage = $derived(
 		author.photo_url
@@ -196,8 +208,28 @@
 			// reconcile against, instead of leaving them to infer it from the
 			// prose. Omitted rather than emitted empty when we have none — an
 			// empty sameAs asserts nothing and is noise in the markup.
-			sameAs: author.same_as?.length ? author.same_as : undefined
+			sameAs: author.same_as?.length ? author.same_as : undefined,
+			// The subjects this writer is known for, drawn from the topical shelves
+			// their works actually belong to — a machine-readable version of the
+			// theme chips the page already shows. Resolvable Things (the shared
+			// topicThings shape, same as a Book's `about`) so the person is joined to
+			// the topic entities, not just tagged with strings.
+			knowsAbout: topicThings(author.topics ?? [])
 		})
+	);
+	// The author→works edges. The book page declares each book's `author`, but the
+	// author page never stated the inverse, so the person and their five books were
+	// only joined visually. An ItemList of the works — the same structure the
+	// browse/shelf pages emit — makes the relationship explicit and orders it the
+	// way the page displays it. Sermons are separate CreativeWorks and stay out of
+	// a list named for books.
+	const worksLd = $derived(
+		author.books.length
+			? itemList(
+					`${t('author.booksBy')} ${author.name}`,
+					author.books.map((b) => ({ name: b.title, url: `/books/${b.slug}` }))
+				)
+			: null
 	);
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD, so the
 	// on-page path and the structured BreadcrumbList can't drift apart.
@@ -248,7 +280,8 @@
 	{hreflang}
 	ogType="profile"
 	{ogImage}
-	structuredData={[personLd, crumbsLd]}
+	ogImageAlt={author.photo_url ? `${t('a11y.portraitOf')} ${author.name}` : ''}
+	structuredData={worksLd ? [personLd, worksLd, crumbsLd] : [personLd, crumbsLd]}
 />
 
 <div class="page-col px-5 py-10">
@@ -413,7 +446,7 @@
 	<!-- Books -->
 	{#if author.books.length}
 		<section class="mt-14">
-			<h2 class="mb-4 text-h3">
+			<h2 class="section-label">
 				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal count">({author.books.length})</span>
 			</h2>
@@ -430,7 +463,7 @@
 	<!-- Sermons -->
 	{#if author.sermons.length}
 		<section class="mt-14">
-			<h2 class="mb-4 text-h3">
+			<h2 class="section-label">
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal count">({author.sermons.length})</span>
 			</h2>
@@ -450,7 +483,7 @@
 	     person cards, and showAuthor so it's clear whose work it is. -->
 	{#if author.appears_in?.length}
 		<section class="mt-14">
-			<h2 class="mb-4 text-h3">{t('author.appearsIn')}</h2>
+			<h2 class="section-label">{t('author.appearsIn')}</h2>
 			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
 				{#each author.appears_in as book (book.slug)}
 					<BookCard {book} showAuthor />
@@ -466,7 +499,7 @@
 	<!-- More lives to explore: nearest contemporaries by era. -->
 	{#if contemporaries.length}
 		<section class="mt-16 border-t border-border pt-8">
-			<h2 class="mb-4 text-h3">{t('author.moreLives')}</h2>
+			<h2 class="section-label">{t('author.moreLives')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each contemporaries as c (c.slug)}
 					<PersonCard person={c} />

@@ -42,12 +42,10 @@ describe('system classes are not redefined in scoped CSS', () => {
 		const offenders: string[] = [];
 		for (const file of svelteFiles(SRC)) {
 			const rel = file.replace(SRC, 'src');
-			// Admin is English-only with its own surface. Settings' `.seg` is a
-			// KNOWN deferred override (audit E1): it conflates the pill look the
-			// audit flags with settings-only layout (flex-end, wrap) and needs a
-			// browser pass on that auth-gated page — remove this exemption when it
-			// lands.
-			if (rel.includes('/admin/') || rel.endsWith('src/routes/settings/+page.svelte')) continue;
+			// Admin is English-only with its own surface. (Settings' `.seg` override
+			// was retired in E1 — it now uses the shared control and stacks its rows
+			// on mobile — so Settings is no longer exempt.)
+			if (rel.includes('/admin/')) continue;
 			const style = /<style>([\s\S]*?)<\/style>/.exec(readFileSync(file, 'utf8'))?.[1];
 			if (!style) continue;
 			for (const line of style.split('\n')) {

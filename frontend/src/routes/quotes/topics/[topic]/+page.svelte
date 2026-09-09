@@ -124,7 +124,7 @@
 		</section>
 	{/each}
 
-	<AccountCta action={`follow the writers on ${phrase}`} />
+	<AccountCta />
 </div>
 
 <style>

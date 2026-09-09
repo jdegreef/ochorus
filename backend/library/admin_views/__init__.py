@@ -12,6 +12,7 @@ from .analytics import (
     AdminSearchView,
     AdminUsersView,
 )
+from .attention import AdminAttentionView
 from .content import (
     AdminCoverageView,
     AdminLanguageDetailView,
@@ -37,6 +38,7 @@ from .quality import (
 
 __all__ = [
     "AdminActivityView",
+    "AdminAttentionView",
     "AdminAuditDismissView",
     "AdminAuditView",
     "AdminBookDetailView",

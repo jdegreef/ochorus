@@ -160,12 +160,15 @@ plans-progress panel must use these same components, not re-drawn tiles.
 
 ## Group heading (grouped shelves, search result groups)
 
-`h2.mb-4.flex.items-center.gap-2.5.text-h3.text-muted` — optional 32px portrait,
-the name **as a link** when it has a page, the count as `tabular-nums opacity-70`.
-This is the sermons shelf's recipe; Books (plain text, no link), Biographies
-(sticky, `text-text`) and Search (`section-label`) should converge on it.
-`<SectionHeader>` is *not* this — it renders `h2.text-h1` and is the home page's
-"shelf title + See all" pattern. (It should drop to `.text-h2`; see backlog.)
+One component: **`<GroupHeading>`** (`lib/components/GroupHeading.svelte`) —
+`h2.mb-4.flex.items-center.gap-2.5.text-h3.text-muted`, an optional 32px portrait,
+the name **as a link** when it has a page (`href`), and the count on the shared
+`.count` class (tabular figures + muted). Books, Sermons and the search-result
+groups render the default variant; Biographies passes `sticky` for its bordered
+era heading (solid ink, pinned via `--pinned-offset`, count pushed to the end),
+and a `detail` snippet carries the era's year range or Search's bespoke "N of M".
+`<SectionHeader>` is *not* this — it renders `h2.text-h2` and is the home page's
+"shelf title + See all" pattern.
 
 ## Chrome parity — the checklist for a new content type
 
@@ -176,6 +179,7 @@ lists content types, **in the same order** everywhere:
 - [ ] footer **Explore** group (same file)
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
+      _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
 - [ ] `lib/sitemap.ts` static pages (nav order) and a sitemap section — for a
       prerendered URL *family* (e.g. a topic-filtered shelf), the route's
       `entries()` and the sitemap section must advertise the **same** set, or
@@ -200,6 +204,15 @@ absent from the palette and from search.
     now fails any catalogue carrying `· Ochorus`; add the same shape of guard
     when you normalise the next catalogue-borne label. A value-only edit needs
     no `sync:catalogues` (that snapshot tracks keys, not values).
+  - **A NEW key you add to `en.json` needs a value in all eight catalogues
+    (parity), and `messages.test.ts` also fails any non-English value that is
+    byte-identical to English** — so a bare label with nothing to translate
+    ("10–30 min": `min` is the standard minute abbrev in es *and* pt) trips the
+    guard for those locales even when it's correct. That's what
+    `SAME_AS_ENGLISH_OK` is for — add the key there (not `PENDING_TRANSLATION`,
+    which is for real un-done debt). The test throws on the first failing locale
+    (es), so a second, silent collision (pt) waits behind it: fix the class, not
+    the one it named. (Length-filter labels, #1899.)
 - Counts: `N books · M authors` (middle dot, spaces). Never "Showing N of N".
 - Chrome strings — crumbs, "Home", "Read", "Topics:", plurals — go through
   `t()` / `m.*()` even on an English-only hub; only *content* may be literal.
@@ -390,18 +403,42 @@ relevant group.
 
 ### D. Sections, cards, related
 
-- [x] **D1** _(shipped #1433 — `SectionHeader` → `.text-h2`; `.text-h1` is the page title only; guarded)_ An `<h2>` renders at four sizes: `.text-h1` via `<SectionHeader>` on
+- [x] **D1** _(shipped 2026-09-08 — heading size set by role, not page. Leaf-page
+  content-list headings moved `.text-h3` → `.section-label` (books: Contents /
+  People / Related; authors: Books-by-X (N) / Sermons-by-X (N) / Appears-in /
+  More-lives; sermons: More-on-X; ArticleDetail: Read-next) — the shelf model.
+  Prose sub-sections stay `.text-h3` (books "About this book"). Contact's two
+  section blocks moved `.text-h3` → `.text-h2` to match About/Settings/Legal.
+  `<SectionHeader>` already renders `.text-h2`. **Group headings decided at
+  `.text-h3` and left for D2** (grouped shelves + search result groups keep the
+  text-h3 recipe). typeScaleGuard already reserves `.text-h1` for the `<h1>`; a
+  list-vs-prose role check is not reliably automatable, so none was added.)_
+  An `<h2>` renders at four sizes: `.text-h1` via `<SectionHeader>` on
   Home, `.text-h2` on Settings/About, `.text-h3` on leaf pages, `.section-label`
   on shelves — 37 distinct class combinations. → `.section-label` above a list,
   `.text-h3` above prose, `SectionHeader` drops to `.text-h2`; `.text-h1` is
   the `<h1>` only.
-- [ ] **D2** Grouped-shelf headings are hand-rolled four ways (Books plain text,
-  Sermons portrait + link, Biographies sticky `text-text`, Search
-  `section-label`). → the sermons recipe as a `GroupHeading`.
-- [ ] **D3** Card hover: three lift depths and four colour treatments across
-  `.shelf-card`, `.article-card`, `.sermon-row`, the quotes card,
-  `AuthorBioCard`, `BookListRow`, `PersonCard`, `AuthorTile`. → lift for banded
-  cards, border tint for rows; nothing else.
+- [x] **D2** _(shipped 2026-09-08 — one `<GroupHeading>` component on the
+  sermons recipe (`.text-h3` muted, optional portrait, linked name, `.count`)
+  replaced all four hand-rolled headings: Books, Sermons, Biographies (its
+  `sticky` variant) and the search-result groups. Search dropped `.section-label`
+  and Biographies' count converged onto `.count`.)_ Grouped-shelf headings are
+  hand-rolled four ways (Books plain text, Sermons portrait + link, Biographies
+  sticky `text-text`, Search `section-label`). → the sermons recipe as a
+  `GroupHeading`.
+- [x] **D3** _(shipped 2026-09-08 — two hover recipes now, and only two:
+  `.card-lift` (grid/banded rise) and `.card-tint` (row warm-in-place), shared
+  opt-in classes in `app.css` on `--duration-fast`, each documented in
+  STYLE_GUIDE §5. Every audited card wears one: book/shelf/library +
+  continue-reading resume lift; sermon-row/card, article, `AuthorBioCard`,
+  `PersonCard`, `AuthorTile`, `BookListRow` and the `/quotes` author card tint.
+  PersonCard (border-only) and AuthorTile (bg-only) converged; the quotes card
+  gained its missing ground shift. The book-cover "Begin reading →" plate is
+  kept as a documented cover signature, not a second hover language.)_ Card
+  hover: three lift depths and four colour treatments across `.shelf-card`,
+  `.article-card`, `.sermon-row`, the quotes card, `AuthorBioCard`,
+  `BookListRow`, `PersonCard`, `AuthorTile`. → lift for banded cards, border
+  tint for rows; nothing else.
 - [ ] **D4** `ArticleCard` is bespoke: `border-radius: 0.75rem`, `0.15s` literal
   transitions, literal `Read →`, an `<h3>` directly under the `<h1>`. The quotes
   index card has no heading at all; `BookCard`'s title is a `<div>`. → rebuild
@@ -484,8 +521,25 @@ relevant group.
 - [ ] **F1** Articles, Scripture and Quotes are footer-only (English): absent
   from the command palette and from search (`SearchHit` has no such kinds).
   → palette `COMMANDS`; an `article` hit kind.
-- [ ] **F2** Sitemap lists Sermons before Topics; nav, footer and palette agree
-  on Topics · Plans · Sermons. → derive all four from one list.
+  _Search half done (`claude/ochorus-dev-srch1-search-articles`): `ArticleHit`
+  added end to end — backend `search.py` entity branch + caps + per-type page,
+  `SearchHit` union, search-page facet rail, palette `hitItem()`, `type/group`
+  catalogue keys ×8. English-gated by the per-language `Article` filter (no
+  hard `en` check — a future translation ungates itself). **Product call:**
+  Articles only; Scripture and Quotes are deferred to their own treatment —
+  Scripture has no model (pages are synthesised from citations, and a reference
+  query already routes to scripture-engaging sermons/chapters), and Quotes are
+  review-gated sourced sentences aggregated into hub pages, not search entities.
+  Flip to `[x]` once the palette-`COMMANDS` half
+  (`claude/ochorus-dev-c3b9a9-reachability`) also lands on main._
+- [x] **F2** _(shipped `claude/ochorus-dev-f2-chrome-order`)_ nav, footer and
+  palette now derive their content-type order from one list (`$lib/contentNav`:
+  `PRIMARY_NAV` + the English-only `ENGLISH_HUBS`), so the three can't drift;
+  `contentNav.test.ts` pins the order. The three already **agreed** by the time
+  this ran — the fix removes the triple-hardcoding that let them drift. The
+  sitemap is deliberately **left out**: its section order answers a crawl /
+  per-locale-coverage question (chapters-* first, topics/plans folded into
+  `pages`), not a nav one — documented in `sitemap.ts` rather than force-fit.
 - [ ] **F3** Hard-coded English chrome on the English-only hubs (`Home` crumbs,
   `Read →`, `quotation(s)` pluralisation, empty-state copy) and on Articles,
   whose loader says it is translation-ready. → `t()` keys now.
@@ -537,14 +591,16 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 
 ### H. Cards & hover (cf. D3)
 
-- [~] **H1** _(row-card halves shipped 2026-09-05: `.article-card` and
-  `AuthorBioCard` now tint bg→surface-2 on hover like `.sermon-card`, so the
-  hue-less row cards hover alike; grid cards keep the lift. LEFT: the
-  documented two-recipe rule itself and any remaining stragglers under D3.)_
-  Content cards hover in five languages: `.book-card`/`.shelf-card`
-  and the sermon-of-week plate **lift**; `.sermon-row`, `.sermon-card`,
-  `.article-card`, `.author-card` variously tint border/bg or do nothing. → two
-  recipes only — grid card lifts, row card tints (this is the concrete form of D3).
+- [x] **H1** _(shipped 2026-09-08 with D3 — the documented two-recipe rule now
+  exists: `.card-lift` / `.card-tint` shared classes in `app.css` + STYLE_GUIDE
+  §5, on `--duration-fast`. The remaining stragglers converged — `PersonCard`
+  (was border-only) and `AuthorTile` (was bg-only) now tint like `.sermon-card`,
+  and the `/quotes` author card gained its ground shift. Row-card halves already
+  shipped 2026-09-05.)_ Content cards hover in five languages:
+  `.book-card`/`.shelf-card` and the sermon-of-week plate **lift**;
+  `.sermon-row`, `.sermon-card`, `.article-card`, `.author-card` variously tint
+  border/bg or do nothing. → two recipes only — grid card lifts, row card tints
+  (this is the concrete form of D3).
 - [ ] **H2** Card interior padding is five values across five families
   (`.book-card` 0.6rem, `.sermon-card` 0.85rem, `.shelf-card-body` 0.9rem,
   `.article-card` 1.1rem, `AuthorBioCard` p-5) — none on a shared band. → snap

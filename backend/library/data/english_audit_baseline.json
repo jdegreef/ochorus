@@ -74,9 +74,6 @@
   "himself": {
    "space-before-punct": 1
   },
-  "holy-in-christ": {
-   "space-before-punct": 1
-  },
   "how-to-bring-men-to-christ": {
    "lost-paragraphing": 2
   },
@@ -121,6 +118,10 @@
   "ministry-of-intercession": {
    "lost-paragraphing": 1
   },
+  "morning-by-morning": {
+   "space-before-punct": 1,
+   "word-fusion": 1
+  },
   "mortification-of-sin": {
    "space-before-punct": 2
   },
@@ -139,6 +140,12 @@
   },
   "on-the-priesthood": {
    "lost-paragraphing": 1
+  },
+  "our-daily-walk": {
+   "hyphen-space": 1,
+   "orphan-close-quote": 6,
+   "space-before-punct": 7,
+   "word-fusion": 2
   },
   "pauls-first-prayer": {
    "orphan-close-quote": 1
@@ -173,9 +180,6 @@
   "revival-lectures": {
    "orphan-close-quote": 1,
    "space-before-punct": 1
-  },
-  "selected-sermons-edwards": {
-   "space-before-punct": 3
   },
   "selected-sermons-whitefield": {
    "hyphen-space": 3,

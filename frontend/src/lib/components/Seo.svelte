@@ -23,6 +23,7 @@
 		ogType = 'website',
 		ogTitle = title,
 		ogImage = '',
+		ogImageAlt = '',
 		ogImageWidth,
 		ogImageHeight,
 		structuredData = []
@@ -38,6 +39,10 @@
 		ogTitle?: string;
 		/** Absolute raster image URL for social cards; omit to use the site default. */
 		ogImage?: string;
+		/** Alt text for the social card image (og:image:alt / twitter:image:alt) —
+		 *  what the card depicts (a cover, a portrait) for scrapers and screen
+		 *  readers that surface it. Omit to leave the image unlabelled. */
+		ogImageAlt?: string;
 		/** og:image pixel dimensions — pass both when the image size is known so
 		 *  scrapers can lay the card out without fetching the file first. Only the
 		 *  house 1200×630 OG rasters carry these; omit for anything else. */
@@ -64,18 +69,33 @@
 		<link rel="alternate" hreflang={a.loc} href={a.href} />
 	{/each}
 	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
+	<!-- og:site_name names the publication behind the card, so a share renders
+	     "Ochorus" under the title instead of a bare hostname; stated once here for
+	     every prerendered page. -->
+	<meta property="og:site_name" content="Ochorus" />
 	<meta property="og:type" content={ogType} />
 	<meta property="og:title" content={ogTitle} />
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={canonical} />
 	<meta property="og:image" content={card} />
+	{#if ogImageAlt}
+		<meta property="og:image:alt" content={ogImageAlt} />
+	{/if}
 	{#if cardWidth && cardHeight}
 		<meta property="og:image:width" content={String(cardWidth)} />
 		<meta property="og:image:height" content={String(cardHeight)} />
 	{/if}
-	<!-- Explicit twitter:image rather than leaning on the og:image fallback:
+	<!-- Twitter card fields. The card only inherited the image before, so a shared
+	     link showed the picture under a scraper-guessed title and blurb; title and
+	     description mirror the Open Graph values so the card reads deliberately.
+	     Explicit twitter:image rather than leaning on the og:image fallback:
 	     stated, it's the value some scrapers key on. -->
+	<meta name="twitter:title" content={ogTitle} />
+	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={card} />
+	{#if ogImageAlt}
+		<meta name="twitter:image:alt" content={ogImageAlt} />
+	{/if}
 	<meta name="twitter:card" content="summary_large_image" />
 	{#each structuredData as ld, i (i)}
 		<!-- Server-built, entity-escaped JSON-LD (see seo.ts jsonLd()); never user input. -->

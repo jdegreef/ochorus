@@ -161,6 +161,22 @@ export function collectionPage(opts: {
 	});
 }
 
+/**
+ * The topical shelves a work or writer belongs to, as schema.org Thing[] with
+ * resolvable topic URLs. The shared shape behind a Book's `about` and a Person's
+ * `knowsAbout`, so the two describe the same topic identically. Returns undefined
+ * for an empty list — an omitted property rather than an empty array in the markup.
+ */
+export function topicThings(topics: { slug: string; title: string }[]) {
+	return topics.length
+		? topics.map((t) => ({
+				'@type': 'Thing',
+				name: t.title,
+				url: absUrl(localizeHref(`/topics/${t.slug}`))
+			}))
+		: undefined;
+}
+
 /** schema.org BreadcrumbList from [name, url] pairs (urls made absolute). */
 export function breadcrumb(items: { name: string; url: string }[]) {
 	return {

@@ -931,9 +931,17 @@ class BookDetailSerializer(BookListSerializer):
     # chips linking to their author pages. Localized: only people with a bio in
     # THIS edition's language are shown, the usual no-English-fallback rule.
     featured_people = serializers.SerializerMethodField()
+    # How many reviewed quotations this book's author has, so the page can show a
+    # "Quotes from {author}" link (English only, as the quote pages are) when it
+    # is non-zero. Detail-only like author_same_as: a card carries no such link,
+    # so a shelf would run this count 130 times for nothing.
+    author_quote_count = serializers.SerializerMethodField()
 
     def get_author_same_as(self, obj):
         return obj.author.same_as or []
+
+    def get_author_quote_count(self, obj) -> int:
+        return obj.author.quotes.filter(reviewed=True).count()
 
     def get_alternate_titles(self, obj) -> list[str]:
         return alternate_titles(obj.slug, obj.language, obj.title)
@@ -1015,7 +1023,7 @@ class BookDetailSerializer(BookListSerializer):
             "difficulty", "is_modern_edition", "has_modern_edition",
             "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "scripture", "opening",
-            "featured_people",
+            "featured_people", "author_quote_count",
         ]
 
     def get_available_languages(self, obj):
@@ -1295,7 +1303,15 @@ def plan_book_index(plans, language):
     slugs = {d.book_slug for plan in plans for d in plan.days.all()}
     if not slugs:
         return {}
-    return {b.slug: b for b in Book.objects.filter(slug__in=slugs, language=language)}
+    # select_related the author so a plan can name the writers it reads through
+    # (PlanDetailSerializer.get_authors) without an N+1; the covers/day fields
+    # ignore it, at the cost of one join.
+    return {
+        b.slug: b
+        for b in Book.objects.filter(slug__in=slugs, language=language).select_related(
+            "author"
+        )
+    }
 
 
 def _plan_total_words(plan, chapters):
@@ -1371,12 +1387,32 @@ class PlanDaySerializer(serializers.ModelSerializer):
 class PlanDetailSerializer(PlanListSerializer):
     days = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
+    authors = serializers.SerializerMethodField()
 
     class Meta(PlanListSerializer.Meta):
-        fields = PlanListSerializer.Meta.fields + ["days", "available_languages"]
+        fields = PlanListSerializer.Meta.fields + [
+            "days",
+            "available_languages",
+            "authors",
+        ]
 
     def get_available_languages(self, obj):
         return _available_languages(Plan, obj.slug)
+
+    def get_authors(self, obj):
+        """The distinct writers this plan reads through, in the order their books
+        first appear across the days — a link out to each author page, so a plan
+        is a way into their work, not only a sequence of chapters. Reads the
+        page-wide book index (author select_related), so no extra query."""
+        books = self._books(obj)
+        authors: list[dict] = []
+        seen: set[str] = set()
+        for day in obj.days.all():
+            book = books.get(day.book_slug)
+            if book and book.author.slug not in seen:
+                seen.add(book.author.slug)
+                authors.append({"slug": book.author.slug, "name": book.author.name})
+        return authors
 
     def get_days(self, obj):
         days = list(obj.days.all())
@@ -1502,12 +1538,19 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
         return [by_slug[s] for s in order if s in by_slug]
 
 
+# How many sibling shelves a topic page offers under "Related topics". Mirrors
+# RELATED_LIMIT (the book page's "More like this"): enough to explore, not a wall.
+RELATED_TOPIC_LIMIT = 6
+
+
 class TopicDetailSerializer(TopicListSerializer):
     """A topic page — the shelf metadata plus the full list of member books."""
 
     books = serializers.SerializerMethodField()
     sermons = serializers.SerializerMethodField()
     articles = serializers.SerializerMethodField()
+    authors = serializers.SerializerMethodField()
+    related_topics = serializers.SerializerMethodField()
     scripture_ref = serializers.SerializerMethodField()
     scripture_text = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
@@ -1520,6 +1563,8 @@ class TopicDetailSerializer(TopicListSerializer):
             "books",
             "sermons",
             "articles",
+            "authors",
+            "related_topics",
         ]
 
     def get_available_languages(self, obj):
@@ -1551,3 +1596,62 @@ class TopicDetailSerializer(TopicListSerializer):
         return ArticleListSerializer(
             self._articles(obj), many=True, context=self.context
         ).data
+
+    def get_authors(self, obj):
+        """The distinct authors behind this shelf's books and sermons, in the
+        shelf's curated order (books first, then sermons). A shelf's authors are
+        a strong lateral link — a reader here often wants more of a voice, not
+        only more of the theme. Zero extra queries: the works are already loaded
+        with their author (``_attach_books`` / ``_attach_sermons`` select it)."""
+        seen: dict[str, dict] = {}
+        for work in list(self._books(obj)) + list(self._sermons(obj)):
+            author = work.author
+            if author and author.slug not in seen:
+                seen[author.slug] = {
+                    "slug": author.slug,
+                    "name": author.name,
+                    "photo_url": author.photo_url,
+                    "birth_year": author.birth_year,
+                    "death_year": author.death_year,
+                }
+        return list(seen.values())
+
+    def get_related_topics(self, obj):
+        """Sibling shelves that share books with this one, most-shared first.
+
+        Overlap is over ``TopicBook`` membership (``idx_topicbook_slug`` serves
+        the ``book_slug`` lookup). Constant queries — one aggregate, one fetch —
+        never one per candidate. Only shelves with a title in this language are
+        offered, so a chip never leads to a 404 (a topic 404s in a locale it
+        isn't translated into; see ``TopicDetailView``)."""
+        from django.db.models import Count
+
+        from .models import Topic, TopicBook
+
+        book_slugs = [e.book_slug for e in obj.entries.all()]
+        if not book_slugs:
+            return []
+        rows = list(
+            TopicBook.objects.filter(book_slug__in=book_slugs)
+            .exclude(topic_id=obj.id)
+            .values("topic_id")
+            .annotate(shared=Count("book_slug"))
+            .order_by("-shared", "topic_id")
+        )
+        if not rows:
+            return []
+        language = self._language()
+        by_id = {
+            t.id: t
+            for t in Topic.objects.filter(
+                id__in=[r["topic_id"] for r in rows], is_published=True
+            ).prefetch_related("translations")
+        }
+        related: list[dict] = []
+        for row in rows:
+            topic = by_id.get(row["topic_id"])
+            if topic and topic.is_translated_into(language):
+                related.append({"slug": topic.slug, "title": topic.title_for(language)})
+                if len(related) >= RELATED_TOPIC_LIMIT:
+                    break
+        return related
