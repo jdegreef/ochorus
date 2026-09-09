@@ -717,27 +717,23 @@
 		color: var(--color-muted);
 		margin-top: 0.1rem;
 	}
-	.seg {
-		display: inline-flex;
-		flex-wrap: wrap;
-		justify-content: flex-end;
-		gap: 0.15rem;
-		background: var(--color-surface-2);
-		border: 1px solid var(--color-border);
-		border-radius: 999px;
-		padding: 0.15rem;
-	}
-	.seg button {
-		border-radius: 999px;
-		padding: 0.3rem 0.75rem;
-		font-size: var(--fs-small);
-		color: var(--color-muted);
-		white-space: nowrap;
-	}
-	.seg button.active {
-		background: var(--color-accent-soft);
-		color: var(--color-accent);
-		font-weight: 600;
+	/* `.seg` is the shared segmented control from app.css — no scoped copy here
+	   (E1). On a narrow viewport the flush control can't share a row with its
+	   label (the 4-option Reading width / Theme segs overflow, and more so in
+	   longer-label locales), so the row stacks and the control spans the width
+	   with equal segments — layout only (width/flex), not a fork of its look. */
+	@media (max-width: 639.98px) {
+		.setting-row {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0.5rem;
+		}
+		.setting-row .seg {
+			width: 100%;
+		}
+		.setting-row .seg button {
+			flex: 1;
+		}
 	}
 	/* Native range, themed via accent-color — thumb and filled track pick up the
 	   brand accent in both light and dark with no per-browser pseudo-elements. */

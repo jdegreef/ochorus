@@ -1443,6 +1443,17 @@ archaic spelling and period punctuation are the text, not defects in it.
   sentence-case**) and normalise the outliers toward it, noting the change in
   each file. A book whose own chapter list reads three ways is visible on the
   shelf in a way a verse variant is not.
+- **Citation book-name FORM drifts across fan-out too — full name vs SUV
+  abbreviation** (sw days-of-heaven, batch 3, 2026-09-07). Five range-agents on
+  one 12-"chapter" daily devotional split on how they rendered the scripture
+  references: most wrote the book name out in full (Yohana, Zaburi, Wafilipi),
+  one wrote the SUV house abbreviations (Yn., Zab., Flp.). Both are legitimate,
+  but a single book must pick one — it is the same #756-list problem as title
+  casing, one more axis to normalise in the per-work reconciliation. Decide by
+  the shipped corpus (the sw editions cite in FULL names in-prose), then
+  sweep the outlier chapter's citations to match before building the fixture.
+  Cheap to catch: `grep -oE '\([A-Z][a-z]+\.' out/<slug>/ch*.json` finds the
+  abbreviated forms.
 - **The plan coupling runs in REVERSE too: prose waiting on a book** (job #594).
   The documented hazard is a book outrunning its plan prose and
   publishing an English-titled card (#819). The mirror image also exists and is
@@ -2157,6 +2168,34 @@ archaic spelling and period punctuation are the text, not defects in it.
   exactly the genuine cases and nothing accidental. `test_baseline_shrinks_only`
   is the other guard: a reference you reconciled that was previously pinned must be
   re-pinned DOWN by the same `--update-baseline`, or it fails for loosening.
+- **Null cribs + fan-out = a verse ratchet explosion, and pinning is the honest
+  exit** (sw books3, 2026-09-07: god-of-all-comfort/days-of-heaven/watchman-nee,
+  50 ch across 25 range-agents). The three most scripture-dense books in the sw
+  queue had cribs that were almost entirely `suv:null` (keyword-mined corpus
+  dumps, not verse-specific), so every agent self-rendered most verses. The
+  whole-work verse pass then reported **94 new divergences** — and **61 were
+  intra-book self-contradictions**: the SAME book rendering one verse several
+  substantively different ways, because 7 parallel range-agents each self-
+  rendered the shared verses independently with no way to see each other. This
+  is verse-rendering as another fan-out drift axis (like title casing and
+  citation form), but unlike those it is NOT cheaply normalisable: there is no
+  authoritative SUV to converge on — the reachable Take Root `swhonen` is a
+  DIFFERENT edition from the shipped corpus (see the swhonen≠corpus finding), so
+  fetching it would inject a third wording and diverge further, and the corpus
+  only carries ~half the verses. The precedented, honest resolution at this
+  scale is to **pin** (`--update-baseline`), because every verse is already
+  `ai_unreviewed`/"awaiting native review" and authoritative verse unification
+  is exactly the native-review stage's job; the ratchet baseline records the
+  current state and stops FUTURE drift. Verify the `--update-baseline` diff
+  touches ONLY your language (a Python set-diff of the baseline before/after: no
+  non-`<lang>` key may be added or grown), since `--update-baseline` regenerates
+  the whole corpus. Two cheaper mitigations for next time, both upstream of the
+  pin: (a) when a book quotes a handful of verses over and over, build a
+  ONE-verse-one-rendering table in the brief so every agent pastes the same
+  wording; (b) size the pin honestly in the PR and offer a follow-up native-
+  review pass to reconcile-and-shrink. Note `--update-baseline` REJECTS
+  `--language` ("needs the whole corpus; drop --language") — audit with
+  `--language sw`, but regenerate without it.
 - **Fan-out agents that write a GENERICALLY-NAMED helper script into the shared
   scratchpad clobber each other — tell them to name it per-slug or not at all**
   (pt author-bio batch, 2026-09-05). Two of twelve concurrent bio agents

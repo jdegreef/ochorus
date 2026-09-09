@@ -413,7 +413,7 @@
 	<!-- Books -->
 	{#if author.books.length}
 		<section class="mt-14">
-			<h2 class="mb-4 text-h3">
+			<h2 class="section-label">
 				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal count">({author.books.length})</span>
 			</h2>
@@ -430,7 +430,7 @@
 	<!-- Sermons -->
 	{#if author.sermons.length}
 		<section class="mt-14">
-			<h2 class="mb-4 text-h3">
+			<h2 class="section-label">
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal count">({author.sermons.length})</span>
 			</h2>
@@ -450,7 +450,7 @@
 	     person cards, and showAuthor so it's clear whose work it is. -->
 	{#if author.appears_in?.length}
 		<section class="mt-14">
-			<h2 class="mb-4 text-h3">{t('author.appearsIn')}</h2>
+			<h2 class="section-label">{t('author.appearsIn')}</h2>
 			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
 				{#each author.appears_in as book (book.slug)}
 					<BookCard {book} showAuthor />
@@ -466,7 +466,7 @@
 	<!-- More lives to explore: nearest contemporaries by era. -->
 	{#if contemporaries.length}
 		<section class="mt-16 border-t border-border pt-8">
-			<h2 class="mb-4 text-h3">{t('author.moreLives')}</h2>
+			<h2 class="section-label">{t('author.moreLives')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each contemporaries as c (c.slug)}
 					<PersonCard person={c} />

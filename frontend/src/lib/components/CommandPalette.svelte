@@ -26,6 +26,18 @@
 		{ href: '/plans', label: t('nav.plans') },
 		{ href: '/sermons', label: t('nav.sermons') },
 		{ href: '/biographies', label: t('nav.biographies') },
+		// Articles, Scripture and Quotes are English-only hubs (they sit in the
+		// footer Explore group only for English readers). Reachable from the
+		// palette on the same terms — in another locale they would jump to a page
+		// with nothing on it. Kept in the footer's order (F1). Ungate when they
+		// are translated.
+		...(getLang() === 'en'
+			? [
+					{ href: '/articles', label: t('nav.articles') },
+					{ href: '/scripture', label: t('reader.scripture') },
+					{ href: '/quotes', label: t('nav.quotes') }
+				]
+			: []),
 		{ href: '/notebook', label: t('notebook.title') },
 		{ href: '/settings', label: t('settings.title') },
 		{ href: '/about', label: t('nav.about') },
@@ -44,6 +56,8 @@
 				return { key: 'topic:' + h.topic_slug, kind: 'hit', label: t('search.typeTopic'), title: h.topic_title, meta: '', href: `/topics/${h.topic_slug}` };
 			case 'plan':
 				return { key: 'plan:' + h.plan_slug, kind: 'hit', label: t('search.typePlan'), title: h.plan_title, meta: '', href: `/plans/${h.plan_slug}` };
+			case 'article':
+				return { key: 'article:' + h.article_slug, kind: 'hit', label: t('search.typeArticle'), title: h.article_title, meta: '', href: `/articles/${h.article_slug}` };
 			case 'sermon':
 				return { key: 'sermon:' + h.sermon_slug, kind: 'hit', label: t('search.typeSermon'), title: h.sermon_title, meta: h.author_name, href: `/sermons/${h.sermon_slug}` };
 			default:

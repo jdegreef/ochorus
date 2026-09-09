@@ -40,6 +40,7 @@
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
 
 	const t = i18n.t;
 
@@ -100,6 +101,7 @@
 		book: () => t('search.typeBook'),
 		topic: () => t('search.typeTopic'),
 		plan: () => t('search.typePlan'),
+		article: () => t('search.typeArticle'),
 		sermon: () => t('search.typeSermon'),
 		chapter: () => t('search.typeChapter')
 	};
@@ -1056,28 +1058,27 @@
 						id="group-{g.type}"
 						style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
 					>
-						<h2
-							class="mb-2 flex items-baseline gap-2 section-label"
-						>
-							{t(g.labelKey)}
-							<!-- The per-group number distinguishes one section from the next.
-							     With a single section AND the rail's running total already on
-							     screen there is nothing to distinguish and it repeats that
-							     total verbatim — which is what put "PASSAGES 20 OF 127" three
-							     inches from "20 of 127 results". With no rail it is the only
-							     count there is, so it stays.
+						<GroupHeading name={t(g.labelKey)}>
+							{#snippet detail()}
+								<!-- The per-group number distinguishes one section from the next.
+								     With a single section AND the rail's running total already on
+								     screen there is nothing to distinguish and it repeats that
+								     total verbatim — which is what put "PASSAGES 20 OF 127" three
+								     inches from "20 of 127 results". With no rail it is the only
+								     count there is, so it stays.
 
-							     Dropped, not hidden: sr-only would leave it in the heading's
-							     accessible name, so a screen reader would still hear the
-							     duplicate this exists to remove. -->
-							{#if !(hasFacets && shownGroups.length === 1)}
-								<span class="text-small font-normal tabular-nums text-muted/70">
-									{#if more > 0}{g.rows.length} {t('search.of')} {total}{isCapped(g.type)
-											? '+'
-											: ''}{:else}{total}{/if}
-								</span>
-							{/if}
-						</h2>
+								     Dropped, not hidden: sr-only would leave it in the heading's
+								     accessible name, so a screen reader would still hear the
+								     duplicate this exists to remove. -->
+								{#if !(hasFacets && shownGroups.length === 1)}
+									<span class="text-small font-normal count">
+										{#if more > 0}{g.rows.length} {t('search.of')} {total}{isCapped(g.type)
+												? '+'
+												: ''}{:else}{total}{/if}
+									</span>
+								{/if}
+							{/snippet}
+						</GroupHeading>
 						{#if g.type === 'chapter'}
 							<!-- Passages: matches collapsed under their book. -->
 							<div class="space-y-5">

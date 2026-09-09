@@ -8,6 +8,8 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import ScriptureEpigraph from '$lib/components/ScriptureEpigraph.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
+	import { initials, portraitPosition } from '$lib/portraits';
 
 	// English-only, and written in English literals for the same reason the
 	// author page is: these quotations are lifted from the English works.
@@ -68,7 +70,26 @@
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-6">
-		<h1 class="text-h1">{page.author.name} on {phrase}</h1>
+		<div class="mb-1 flex items-center gap-4">
+			{#if page.author.photo_url}
+				<img
+					src={page.author.photo_url}
+					alt="Portrait of {page.author.name}"
+					loading="lazy"
+					width="112"
+					height="112"
+					class="h-20 w-20 shrink-0 rounded-full border border-border object-cover grayscale sm:h-24 sm:w-24"
+					style="object-position: {portraitPosition(page.author.slug)}"
+				/>
+			{:else}
+				<span
+					class="font-display text-h2 flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-accent-soft font-semibold text-accent sm:h-24 sm:w-24"
+				>
+					{initials(page.author.name)}
+				</span>
+			{/if}
+			<h1 class="text-h1">{page.author.name} on {phrase}</h1>
+		</div>
 		<ScriptureEpigraph text={topic.scripture_text} reference={topic.scripture_ref} />
 		<p class="mt-3 max-w-2xl text-small text-muted">
 			{page.quotes.length} quotation{page.quotes.length === 1 ? '' : 's'} from {page.author.name}
@@ -95,13 +116,16 @@
 		</section>
 	{/each}
 
-	<!-- The two ways out of this leaf: the same author's other themes, and the
-	     same theme's other writers. This is what makes the theme grid a mesh
-	     rather than a set of dead ends. -->
+	<!-- The three ways out of this leaf: the same theme's other writers, the same
+	     author's other themes, and the life behind the quotations. This is what
+	     makes the theme grid a mesh rather than a set of dead ends. -->
 	<nav class="more">
 		<a href={`/quotes/topics/${topic.slug}/`}>More quotes on {phrase} →</a>
 		<a href={`/quotes/${page.author.slug}/`}>All {page.author.name} quotes →</a>
+		<a href={`/authors/${page.author.slug}/`}>{page.author.name}’s biography →</a>
 	</nav>
+
+	<AccountCta />
 </div>
 
 <style>

@@ -274,7 +274,7 @@
 				{:else}
 					<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
 				{/if}
-				<FavoriteButton kind="book" slug={book.slug} />
+				<FavoriteButton kind="book" slug={book.slug} showLabel />
 				<!-- Search inside this book. Goes to the real search scoped to the
 				     book rather than a second, weaker search over cached text: the
 				     reader gets the same ranking, snippets and paging they get
@@ -447,7 +447,7 @@
 	{/if}
 
 	<section class="mt-8">
-		<h2 class="mb-3 text-h3">{t('reader.contents')}</h2>
+		<h2 class="section-label">{t('reader.contents')}</h2>
 		<ol class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}
 				<li>
@@ -470,7 +470,7 @@
 	     language is dropped), so every card here is a live link. -->
 	{#if book.featured_people?.length}
 		<section class="mt-12">
-			<h2 class="mb-4 text-h3">{t('book.peopleInBook')}</h2>
+			<h2 class="section-label">{t('book.peopleInBook')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each book.featured_people as person (person.slug)}
 					<PersonCard {person} />
@@ -481,7 +481,7 @@
 
 	{#if book.related?.length}
 		<section class="mt-12">
-			<h2 class="mb-4 text-h3">{t('book.related')}</h2>
+			<h2 class="section-label">{t('book.related')}</h2>
 			<div class="book-grid">
 				{#each book.related as rel (rel.slug)}
 					<BookCard book={rel} showAuthor />

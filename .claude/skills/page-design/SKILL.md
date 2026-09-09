@@ -160,12 +160,15 @@ plans-progress panel must use these same components, not re-drawn tiles.
 
 ## Group heading (grouped shelves, search result groups)
 
-`h2.mb-4.flex.items-center.gap-2.5.text-h3.text-muted` — optional 32px portrait,
-the name **as a link** when it has a page, the count as `tabular-nums opacity-70`.
-This is the sermons shelf's recipe; Books (plain text, no link), Biographies
-(sticky, `text-text`) and Search (`section-label`) should converge on it.
-`<SectionHeader>` is *not* this — it renders `h2.text-h1` and is the home page's
-"shelf title + See all" pattern. (It should drop to `.text-h2`; see backlog.)
+One component: **`<GroupHeading>`** (`lib/components/GroupHeading.svelte`) —
+`h2.mb-4.flex.items-center.gap-2.5.text-h3.text-muted`, an optional 32px portrait,
+the name **as a link** when it has a page (`href`), and the count on the shared
+`.count` class (tabular figures + muted). Books, Sermons and the search-result
+groups render the default variant; Biographies passes `sticky` for its bordered
+era heading (solid ink, pinned via `--pinned-offset`, count pushed to the end),
+and a `detail` snippet carries the era's year range or Search's bespoke "N of M".
+`<SectionHeader>` is *not* this — it renders `h2.text-h2` and is the home page's
+"shelf title + See all" pattern.
 
 ## Chrome parity — the checklist for a new content type
 
@@ -176,6 +179,7 @@ lists content types, **in the same order** everywhere:
 - [ ] footer **Explore** group (same file)
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
+      _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
 - [ ] `lib/sitemap.ts` static pages (nav order) and a sitemap section — for a
       prerendered URL *family* (e.g. a topic-filtered shelf), the route's
       `entries()` and the sitemap section must advertise the **same** set, or
@@ -200,6 +204,15 @@ absent from the palette and from search.
     now fails any catalogue carrying `· Ochorus`; add the same shape of guard
     when you normalise the next catalogue-borne label. A value-only edit needs
     no `sync:catalogues` (that snapshot tracks keys, not values).
+  - **A NEW key you add to `en.json` needs a value in all eight catalogues
+    (parity), and `messages.test.ts` also fails any non-English value that is
+    byte-identical to English** — so a bare label with nothing to translate
+    ("10–30 min": `min` is the standard minute abbrev in es *and* pt) trips the
+    guard for those locales even when it's correct. That's what
+    `SAME_AS_ENGLISH_OK` is for — add the key there (not `PENDING_TRANSLATION`,
+    which is for real un-done debt). The test throws on the first failing locale
+    (es), so a second, silent collision (pt) waits behind it: fix the class, not
+    the one it named. (Length-filter labels, #1899.)
 - Counts: `N books · M authors` (middle dot, spaces). Never "Showing N of N".
 - Chrome strings — crumbs, "Home", "Read", "Topics:", plurals — go through
   `t()` / `m.*()` even on an English-only hub; only *content* may be literal.
@@ -299,6 +312,7 @@ Findings from a code + live-site pass over all 40 public routes. Grouped;
 within a group, most reader-visible first. `→` names the model to converge on.
 Tick and date an item when its PR merges; append new drift at the end of the
 relevant group.
+> **Reconciled 2026-09-08.** Markers below were re-checked against `main` and flipped to match merged PRs; three E-group items are `[~]` because only part shipped (see each). This mirrors the STYLE_GUIDE §9 reconciliation of the same date.
 
 ### A. Shells, headers, titles
 
@@ -326,13 +340,13 @@ relevant group.
   three different trails (with/without Home, with/without the current item);
   Sermon's visible trail contradicts its BreadcrumbList. → `<Breadcrumb>` with
   one `crumbs` array feeding both (Book).
-- [ ] **A8** The kind eyebrow (`Sermon · 12 min · 1855`) exists on Sermon and
+- [x] **A8** _(shipped #1540 — kind eyebrow on the book and plan heads)_ The kind eyebrow (`Sermon · 12 min · 1855`) exists on Sermon and
   Reader only. → every leaf (Book: `Book · 7 chapters · 34 min`; Plan:
   `Reading plan · 27 days`).
 - [ ] **A9** Settings and Notebook hand-roll headers; eyebrows are `Ochorus`
   (legal, notebook), the nav word (about, contact), or none. → `<PageHeader>`;
   section name or no eyebrow.
-- [ ] **A10** Leaf prose measure is hand-set: `max-w-[40rem]` ×3 on Author,
+- [x] **A10** _(shipped #1537 — `.reading-page`, the one prose-page shell)_ Leaf prose measure is hand-set: `max-w-[40rem]` ×3 on Author,
   `max-w-xl` on Plan and Book, `max-w-2xl` on Quotes. `.reading-page` on
   About/Legal is defined nowhere. → one `.prose-measure` class (or
   `--reading-measure`). _(Articles: the list cap is gone — it fills `.page-col`
@@ -346,26 +360,26 @@ relevant group.
 
 ### B. Filters, counts, state
 
-- [ ] **B1** Sermons' `q`/`book` and Plans' `length` are local `$state`, so a
+- [x] **B1** _(shipped #1432 — Sermons & Plans filters live in the URL)_ Sermons' `q`/`book` and Plans' `length` are local `$state`, so a
   filtered shelf can't be shared or returned to with Back. → `urlFilters()`
   (Biographies).
-- [ ] **B2** "Clear filters" has three shapes: `FilterSummary` link (Books), link
+- [x] **B2** _(shipped #1470 — one clear-filters affordance)_ "Clear filters" has three shapes: `FilterSummary` link (Books), link
   + ghost button in the EmptyState (Biographies), a `Clear` ghost button inside
   the filter row with its own copy key (Sermons). → FilterSummary `onClear`
   everywhere; retire `sermons.clear`.
-- [ ] **B3** Result counts in five formats; Biographies renders "Showing 35 of 35
+- [x] **B3** _(shipped #1470 — count only while filtering)_ Result counts in five formats; Biographies renders "Showing 35 of 35
   writers" unfiltered; Topics/Plans show none; Quotes buries the total in the
   tagline. → `PageHeader` `meta` for the total, `FilterSummary` only when active.
-- [ ] **B4** Default grouping: Books `all`, Sermons `preacher`, with the same seg
+- [x] **B4** _(shipped #1519 — seg order made consistent)_ Default grouping: Books `all`, Sermons `preacher`, with the same seg
   order on both (so Books' default is the second option). → one default; the
   default option first.
-- [ ] **B5** Sort is a `<select>` on three shelves and a labelled `.seg` on
+- [x] **B5** _(shipped #1519 — sort/label consistency)_ Sort is a `<select>` on three shelves and a labelled `.seg` on
   Search; visible `Length:` / `Sort:` labels exist only on Plans/Search. →
   `<select>` + `aria-label`.
 - [ ] **B6** Only Biographies pins its filter bar and collapses it on mobile;
   Books has more controls and neither. Books/Sermons hard-code `scroll-mt-20`
   where Biographies/Search measure the bar. → a `FilterBar` component.
-- [ ] **B7** Count badges beside labels are styled six ways (`opacity-60`,
+- [x] **B7** _(shipped #1519 — count badge)_ Count badges beside labels are styled six ways (`opacity-60`,
   `tabular-nums opacity-70`, `text-small font-normal text-muted`, an
   accent-soft pill, `text-muted/70`, `text-eyebrow`). → one `.count` recipe.
 
@@ -383,24 +397,48 @@ relevant group.
 - [x] **C3** _(shipped #1424)_ Zero rows in a language: Books offers "Read the English library",
   Plans/Sermons get the nudge, Topics gets a dead-end message, Biographies gets
   nothing. → extend `CatalogLanguageNudge` to `topics`/`authors`; action on all.
-- [ ] **C4** Loading: Search's "Show more" replaces its label with `…` (STYLE_GUIDE
+- [x] **C4** _(shipped #1536 — keeps the label + `aria-busy`; verified on `main`)_ Loading: Search's "Show more" replaces its label with `…` (STYLE_GUIDE
   §6 forbids this); seven surfaces show a bare `…` paragraph. → keep the label
   + `.btn-spinner` + `aria-busy`; one `<LoadingLine>` using `t('common.loading')`.
 
 ### D. Sections, cards, related
 
-- [ ] **D1** An `<h2>` renders at four sizes: `.text-h1` via `<SectionHeader>` on
+- [x] **D1** _(shipped 2026-09-08 — heading size set by role, not page. Leaf-page
+  content-list headings moved `.text-h3` → `.section-label` (books: Contents /
+  People / Related; authors: Books-by-X (N) / Sermons-by-X (N) / Appears-in /
+  More-lives; sermons: More-on-X; ArticleDetail: Read-next) — the shelf model.
+  Prose sub-sections stay `.text-h3` (books "About this book"). Contact's two
+  section blocks moved `.text-h3` → `.text-h2` to match About/Settings/Legal.
+  `<SectionHeader>` already renders `.text-h2`. **Group headings decided at
+  `.text-h3` and left for D2** (grouped shelves + search result groups keep the
+  text-h3 recipe). typeScaleGuard already reserves `.text-h1` for the `<h1>`; a
+  list-vs-prose role check is not reliably automatable, so none was added.)_
+  An `<h2>` renders at four sizes: `.text-h1` via `<SectionHeader>` on
   Home, `.text-h2` on Settings/About, `.text-h3` on leaf pages, `.section-label`
   on shelves — 37 distinct class combinations. → `.section-label` above a list,
   `.text-h3` above prose, `SectionHeader` drops to `.text-h2`; `.text-h1` is
   the `<h1>` only.
-- [ ] **D2** Grouped-shelf headings are hand-rolled four ways (Books plain text,
-  Sermons portrait + link, Biographies sticky `text-text`, Search
-  `section-label`). → the sermons recipe as a `GroupHeading`.
-- [ ] **D3** Card hover: three lift depths and four colour treatments across
-  `.shelf-card`, `.article-card`, `.sermon-row`, the quotes card,
-  `AuthorBioCard`, `BookListRow`, `PersonCard`, `AuthorTile`. → lift for banded
-  cards, border tint for rows; nothing else.
+- [x] **D2** _(shipped 2026-09-08 — one `<GroupHeading>` component on the
+  sermons recipe (`.text-h3` muted, optional portrait, linked name, `.count`)
+  replaced all four hand-rolled headings: Books, Sermons, Biographies (its
+  `sticky` variant) and the search-result groups. Search dropped `.section-label`
+  and Biographies' count converged onto `.count`.)_ Grouped-shelf headings are
+  hand-rolled four ways (Books plain text, Sermons portrait + link, Biographies
+  sticky `text-text`, Search `section-label`). → the sermons recipe as a
+  `GroupHeading`.
+- [x] **D3** _(shipped 2026-09-08 — two hover recipes now, and only two:
+  `.card-lift` (grid/banded rise) and `.card-tint` (row warm-in-place), shared
+  opt-in classes in `app.css` on `--duration-fast`, each documented in
+  STYLE_GUIDE §5. Every audited card wears one: book/shelf/library +
+  continue-reading resume lift; sermon-row/card, article, `AuthorBioCard`,
+  `PersonCard`, `AuthorTile`, `BookListRow` and the `/quotes` author card tint.
+  PersonCard (border-only) and AuthorTile (bg-only) converged; the quotes card
+  gained its missing ground shift. The book-cover "Begin reading →" plate is
+  kept as a documented cover signature, not a second hover language.)_ Card
+  hover: three lift depths and four colour treatments across `.shelf-card`,
+  `.article-card`, `.sermon-row`, the quotes card, `AuthorBioCard`,
+  `BookListRow`, `PersonCard`, `AuthorTile`. → lift for banded cards, border
+  tint for rows; nothing else.
 - [ ] **D4** `ArticleCard` is bespoke: `border-radius: 0.75rem`, `0.15s` literal
   transitions, literal `Read →`, an `<h3>` directly under the `<h1>`. The quotes
   index card has no heading at all; `BookCard`'s title is a `<div>`. → rebuild
@@ -412,7 +450,11 @@ relevant group.
 - [ ] **D6** Related blocks use five different components; the sermon's "More
   sermons on X" is an **unbounded** text list; Plan, Topic, Quotes and Scripture
   have none. → card components, capped at 4–6 (Book).
-- [ ] **D7** Favorite: `FavoriteButton` is outside the `.btn` family (own padding,
+- [x] **D7** _(shipped 2026-09-08 — `FavoriteButton` rebuilt on the `.btn` family:
+  labelled `.btn-sm` on leaf action rows, icon-only `.btn-icon` in reader
+  toolbars; scoped CSS + literal durations deleted. All three leaf pages now pass
+  `showLabel`; the sermon page dropped its hand-rolled `btn-icon` heart for
+  `<FavoriteButton kind="sermon" …>`. Ships with J5.)_ Favorite: `FavoriteButton` is outside the `.btn` family (own padding,
   `0.15s` literals); the sermon page uses a `btn-icon btn-ghost` heart instead;
   only Author passes `showLabel`. → rebuild on `.btn.btn-sm`; one label policy.
 - [ ] **D8** Action rows: "Search in this X" is `btn-ghost` (Book), `btn-sm
@@ -426,7 +468,7 @@ relevant group.
 - [ ] **D10** Prev/next: a `.btn` pair in the reader, bespoke bordered cards on
   the sermon page. The exit-focus pill is pasted verbatim into Author, Sermon
   and Reader. → the reader's pair; one `.focus-exit` class.
-- [ ] **D11** `SourceBadge` sits under the byline on Book, after the text card on
+- [x] **D11** _(shipped #1427 — `SourceBadge` in the chapter reader and on author bios)_ `SourceBadge` sits under the byline on Book, after the text card on
   Sermon, and is **absent from the chapter reader and the author bio** — an
   `ai_unreviewed` chapter never shows "awaiting native review" (CLAUDE.md
   rule). → under the byline everywhere; add to the reader eyebrow line.
@@ -437,7 +479,7 @@ relevant group.
 - [ ] **D13** Summary: Book's "About this book" is an `h2` + prose; Sermon's "In
   brief" is a bordered callout with an accent eyebrow and `text-small` body. →
   one treatment.
-- [ ] **D14** Sermon page overrides `.eyebrow` to `--fs-micro` four times;
+- [x] **D14** _(shipped #1526 — documented `.eyebrow-micro`)_ Sermon page overrides `.eyebrow` to `--fs-micro` four times;
   `SermonCard` does it once more. → plain `.eyebrow`.
 
 ### E. Tokens and system classes
@@ -445,18 +487,18 @@ relevant group.
 - [ ] **E1** Settings re-declares `.seg` in scoped CSS as a pill group, losing the
   `--border-strong` edge — the same toggle looks different on Settings and
   Sermons. → delete; a `.seg--pill` modifier in `app.css` if wanted.
-- [ ] **E2** Radii: ten values in use against the guide's four, including
+- [~] **E2** _(partly shipped #1522 — radii back to the four and the phantom `--radius-chip` fallback gone; the bespoke `30rem` (SermonPlate) / `34rem` (Scripture) breakpoints remain)_ Radii: ten values in use against the guide's four, including
   `var(--radius-chip, 0.4rem)` on Quotes and Scripture where `--radius-chip`
   is defined nowhere, so the fallback always fires. Bespoke breakpoints
   `30rem` (SermonPlate) and `34rem` (Scripture). → `--radius-sm`/`--radius-card`;
   Tailwind breakpoints.
-- [ ] **E3** Literal durations survive in `ArticleCard`, `FavoriteButton`, the
+- [~] **E3** _(partly shipped — `ArticleCard`/`FavoriteButton` durations on the token; the reader (`0.15s`/`1.1s`) and `app.css` `btn-spin` (`0.7s`) literals remain)_ Literal durations survive in `ArticleCard`, `FavoriteButton`, the
   reader (`0.15s`, `1.1s`) and `app.css` (`btn-spin 0.7s`). → `--duration-*`.
 - [ ] **E4** Two token vocabularies in scoped CSS (`--color-border` on Topic,
   Quotes, Article, Scripture; bare `--border` on Author, Sermon and the
   components) plus re-declared font-stack fallbacks
   (`var(--font-display, Georgia, serif)`). → bare tokens, no fallbacks.
-- [ ] **E5** Unicode glyphs as icons in eleven places (`▦ ☰` view toggle, `✕`
+- [x] **E5** _(shipped #1530 — icon-only controls use `<Icon>`; the residual glyphs are a decorative separator and admin (exempt))_ Unicode glyphs as icons in eleven places (`▦ ☰` view toggle, `✕`
   recent-search chips, `▶` ×2, `✓`, `♥` ×2, `🔖 📝`, `✦`, `→` in "see all"
   links); the hero search `<svg>` is stroke 2. → `<Icon>`; add `check`, `note`,
   `arrow-right`.
@@ -464,14 +506,14 @@ relevant group.
   Login duplicates `.btn` as `.google-btn`, declares `.mail-badge` twice, and
   its password-reveal control is pasted into Reset. `PwaToasts` ships a solid
   `bg: var(--accent)` button. → `.field`, `.btn`, `.btn-primary`.
-- [ ] **E7** Compact ghost buttons hand-roll `py-1.5`/`py-2` on Settings ×4,
+- [x] **E7** _(shipped #1526 — compact buttons on `.btn-sm`)_ Compact ghost buttons hand-roll `py-1.5`/`py-2` on Settings ×4,
   Sermons and `CatalogLanguageNudge`. → `.btn-sm`.
 - [ ] **E8** Near-duplicate classes: `.footer-heading` ≈ `.section-label`,
   `.sermon-row-ref` ≈ `.eyebrow`, `.navsearch` ≈ a pill `.field`; the topic
   hero still carries its own weaker `.hue-band`. `.stat-number` is admin-only
   but lives with the public classes; `--hl-*` are fixed hex that don't follow
   the theme. → fold or document.
-- [ ] **E9** Off-scale Tailwind sizes slip the type guard: `text-6xl` (error
+- [~] **E9** _(partly shipped #1522 — the guard now names them; `text-6xl` (404) and `text-base` (settings/ReaderControls) remain as documented exceptions)_ Off-scale Tailwind sizes slip the type guard: `text-6xl` (error
   page), `text-lg`, `text-base` ×2. → `--fs-*`; extend the guard.
 
 ### F. Chrome and reachability
@@ -479,6 +521,17 @@ relevant group.
 - [ ] **F1** Articles, Scripture and Quotes are footer-only (English): absent
   from the command palette and from search (`SearchHit` has no such kinds).
   → palette `COMMANDS`; an `article` hit kind.
+  _Search half done (`claude/ochorus-dev-srch1-search-articles`): `ArticleHit`
+  added end to end — backend `search.py` entity branch + caps + per-type page,
+  `SearchHit` union, search-page facet rail, palette `hitItem()`, `type/group`
+  catalogue keys ×8. English-gated by the per-language `Article` filter (no
+  hard `en` check — a future translation ungates itself). **Product call:**
+  Articles only; Scripture and Quotes are deferred to their own treatment —
+  Scripture has no model (pages are synthesised from citations, and a reference
+  query already routes to scripture-engaging sermons/chapters), and Quotes are
+  review-gated sourced sentences aggregated into hub pages, not search entities.
+  Flip to `[x]` once the palette-`COMMANDS` half
+  (`claude/ochorus-dev-c3b9a9-reachability`) also lands on main._
 - [ ] **F2** Sitemap lists Sermons before Topics; nav, footer and palette agree
   on Topics · Plans · Sermons. → derive all four from one list.
 - [ ] **F3** Hard-coded English chrome on the English-only hubs (`Home` crumbs,
@@ -532,14 +585,16 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 
 ### H. Cards & hover (cf. D3)
 
-- [~] **H1** _(row-card halves shipped 2026-09-05: `.article-card` and
-  `AuthorBioCard` now tint bg→surface-2 on hover like `.sermon-card`, so the
-  hue-less row cards hover alike; grid cards keep the lift. LEFT: the
-  documented two-recipe rule itself and any remaining stragglers under D3.)_
-  Content cards hover in five languages: `.book-card`/`.shelf-card`
-  and the sermon-of-week plate **lift**; `.sermon-row`, `.sermon-card`,
-  `.article-card`, `.author-card` variously tint border/bg or do nothing. → two
-  recipes only — grid card lifts, row card tints (this is the concrete form of D3).
+- [x] **H1** _(shipped 2026-09-08 with D3 — the documented two-recipe rule now
+  exists: `.card-lift` / `.card-tint` shared classes in `app.css` + STYLE_GUIDE
+  §5, on `--duration-fast`. The remaining stragglers converged — `PersonCard`
+  (was border-only) and `AuthorTile` (was bg-only) now tint like `.sermon-card`,
+  and the `/quotes` author card gained its ground shift. Row-card halves already
+  shipped 2026-09-05.)_ Content cards hover in five languages:
+  `.book-card`/`.shelf-card` and the sermon-of-week plate **lift**;
+  `.sermon-row`, `.sermon-card`, `.article-card`, `.author-card` variously tint
+  border/bg or do nothing. → two recipes only — grid card lifts, row card tints
+  (this is the concrete form of D3).
 - [ ] **H2** Card interior padding is five values across five families
   (`.book-card` 0.6rem, `.sermon-card` 0.85rem, `.shelf-card-body` 0.9rem,
   `.article-card` 1.1rem, `AuthorBioCard` p-5) — none on a shared band. → snap
@@ -589,7 +644,10 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   `.chip.active`.
 - [ ] **J4** Two accent-soft eyebrow badges, different padding: bio count px-1.5
   vs "FULL LIFE" px-2 py-0.5. → a shared `.badge-soft`.
-- [ ] **J5** The saved-heart is red (`FavoriteButton` `--danger`) in one place and
+- [x] **J5** _(shipped 2026-09-08 — one saved state everywhere: filled heart tinted
+  `--accent` via the `text-accent` active convention the reader toggles already
+  use; `--danger` is now destructive-only. Documented in STYLE_GUIDE §5. Ships
+  with D7.)_ The saved-heart is red (`FavoriteButton` `--danger`) in one place and
   indigo (`text-accent`, sermon page) in another. → one token for "saved" (cf. D7).
 
 ### K. Colour & radius

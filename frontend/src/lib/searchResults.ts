@@ -110,6 +110,19 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				color: '',
 				round: false
 			};
+		case 'article':
+			return {
+				key: 'article:' + hit.article_slug,
+				label: ctx.label('article'),
+				href: `/articles/${hit.article_slug}`,
+				title: hit.article_title,
+				meta: '',
+				snippet: hit.snippet,
+				date: hit.date,
+				image: '',
+				color: '',
+				round: false
+			};
 		case 'sermon':
 			return {
 				key: 'sermon:' + hit.sermon_slug,
@@ -152,6 +165,7 @@ export const GROUP_ORDER: { type: SearchHit['type']; labelKey: string }[] = [
 	{ type: 'author', labelKey: 'search.groupAuthors' },
 	{ type: 'topic', labelKey: 'search.groupTopics' },
 	{ type: 'plan', labelKey: 'search.groupPlans' },
+	{ type: 'article', labelKey: 'search.groupArticles' },
 	{ type: 'chapter', labelKey: 'search.groupPassages' },
 	{ type: 'sermon', labelKey: 'search.groupSermons' }
 ];

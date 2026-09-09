@@ -87,18 +87,23 @@ class FavoriteKind(models.TextChoices):
     """What a favorite's ``slug`` names.
 
     Broader than :class:`WorkKind`: a reader follows *authors* and saves
-    *plans* as well as works. Kept as its own enum so the reading kinds and
-    the favoritable kinds can evolve independently.
+    *plans*, *topics*, *articles* and individual *quotes* as well as works.
+    Kept as its own enum so the reading kinds and the favoritable kinds can
+    evolve independently. A quote's slug is the quote's own permanent address
+    (author slug + text hash); a topic/article/plan/author slug names that row.
     """
 
     AUTHOR = "author", "Author"
     BOOK = "book", "Book"
     PLAN = "plan", "Plan"
     SERMON = "sermon", "Sermon"
+    TOPIC = "topic", "Topic"
+    ARTICLE = "article", "Article"
+    QUOTE = "quote", "Quote"
 
 
 class Favorite(models.Model):
-    """A reader's saved author / book / plan / sermon (roadmap #18).
+    """A reader's saved author / book / plan / sermon / topic / article / quote.
 
     Slug-referenced like everything else in this app, so a favorite survives
     content re-imports and is language-agnostic (a favorite author is the

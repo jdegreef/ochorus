@@ -5,6 +5,7 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import ArticleShelf from '$lib/components/ArticleShelf.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { articleTopicSeo, articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
 
 	// The /articles/<topic>/ shelf — the article index filtered to one topic,
@@ -64,6 +65,8 @@
 		<p class="article-topic-intro text-body text-muted">{seo.intro}</p>
 	</header>
 	<ArticleShelf {articles} activeTopic={slug} />
+
+	<AccountCta />
 </div>
 
 <style>

@@ -15,6 +15,7 @@ from rest_framework.test import APIClient
 
 from . import search as search_module
 from .models import (
+    Article,
     Author,
     Book,
     Chapter,
@@ -84,6 +85,25 @@ class SearchTests(TestCase):
             title="Thirty Days of Humility",
             description="A month with Andrew Murray.",
             is_published=True,
+        )
+        Article.objects.create(
+            slug="how-to-forgive",
+            language="en",
+            h1="How to Forgive Someone Who Hurt You",
+            # A distinctive keyword that appears ONLY in the SEO meta_title, so a
+            # test can prove that field is searchable on its own.
+            meta_title="Reconciliation: a keyword-led title",
+            description="A short guide to forgiveness, drawn from the classics.",
+            body_html="<p>Forgiveness begins where the wound is deepest.</p>",
+            is_published=True,
+        )
+        Article.objects.create(
+            slug="draft-article",
+            language="en",
+            h1="Unpublished Forgiveness Draft",
+            description="Not for readers yet.",
+            body_html="<p>draft</p>",
+            is_published=False,
         )
 
     def search(self, q, language="en"):
@@ -161,6 +181,60 @@ class SearchTests(TestCase):
         self.assertEqual(len(hits), 1)
         self.assertEqual(hits[0]["plan_slug"], "thirty-days")
 
+    def test_article_entity_hit(self):
+        # An article is a navigational hit — title + snippet, no author/cover.
+        hits = [r for r in self.search("Forgive") if r["type"] == "article"]
+        self.assertEqual(len(hits), 1)
+        hit = hits[0]
+        self.assertEqual(hit["article_slug"], "how-to-forgive")
+        self.assertEqual(hit["article_title"], "How to Forgive Someone Who Hurt You")
+        # The snippet is the standfirst; no author_name/cover keys on the row.
+        self.assertNotIn("author_name", hit)
+        self.assertNotIn("cover_url", hit)
+
+    def test_article_matches_meta_title(self):
+        # The keyword-led SEO meta_title is searchable on its own — guards the
+        # `meta_title` term in _pg_vector("article") / _lite_q("article") against
+        # a silent drop (a field in the vector that no test exercised is exactly
+        # how the topic vector once went wrong on the reader's path).
+        hits = [r for r in self.search("Reconciliation") if r["type"] == "article"]
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(hits[0]["article_slug"], "how-to-forgive")
+
+    def test_article_matches_description(self):
+        # Matches the standfirst, not just the headline (the SEO body an article
+        # answers a query with). No HTML leaks from body_html into the snippet.
+        hits = [r for r in self.search("forgiveness") if r["type"] == "article"]
+        self.assertEqual(len(hits), 1)
+        self.assertNotIn("<", hits[0]["snippet"])
+
+    def test_unpublished_article_excluded(self):
+        slugs = {r.get("article_slug") for r in self.search("Forgiveness")}
+        self.assertNotIn("draft-article", slugs)
+
+    def test_article_absent_for_other_language(self):
+        # Articles are per-language rows with no English fallback, so an
+        # English-only article must not surface for a non-English query — the
+        # per-language filter is the whole of the English gating.
+        hits = [
+            r for r in self.search("Forgive", language="es") if r["type"] == "article"
+        ]
+        self.assertEqual(hits, [])
+
+    def test_article_type_page(self):
+        # The "show more of this type" path returns article hits too, so the
+        # facet chip a reader clicks lands on a real page rather than an empty one.
+        res = self.client.get("/api/library/search/?q=Forgive&type=article&language=en")
+        self.assertEqual(res.status_code, 200)
+        slugs = {r["article_slug"] for r in res.data["results"]}
+        self.assertEqual(slugs, {"how-to-forgive"})
+
+    def test_article_counted_in_totals(self):
+        # count_by_type sees articles, so the merged list can report the real
+        # per-type total behind the sample it shows.
+        res = self._raw("Forgive")
+        self.assertEqual(res["totals"].get("article"), 1)
+
     def test_entities_lead_over_passages(self):
         # A book/author/topic/plan match should rank above raw body-text hits.
         results = self.search("Humility")
@@ -185,6 +259,13 @@ class SearchTests(TestCase):
     def test_suggests_misspelled_author_surname(self):
         data = self._raw("Spurgen")
         self.assertEqual(data.get("suggestion", "").lower(), "spurgeon")
+
+    def test_suggests_word_from_article_title(self):
+        # Article h1 words feed the did-you-mean vocabulary, so a misspelt one
+        # resolves — the same guarantee the book/author suggestions carry.
+        data = self._raw("somone")
+        self.assertEqual(data["results"], [])
+        self.assertEqual(data.get("suggestion", "").lower(), "someone")
 
     def test_no_suggestion_when_results_found(self):
         data = self._raw("Humility")

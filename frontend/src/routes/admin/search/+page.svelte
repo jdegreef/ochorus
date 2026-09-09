@@ -81,14 +81,22 @@
 <!-- One query list, three uses: top, unopened and zero-result. They differ only
      in the rows and the empty state, so the markup lives once. -->
 {#snippet queryList(rows: SearchTopQuery[])}
+	{@const max = Math.max(1, ...rows.map((r) => r.count))}
 	<ul class="space-y-2">
 		{#each rows as q (q.query)}
-			<li class="flex items-baseline justify-between gap-3">
-				<a
-					href="/search?q={encodeURIComponent(q.query)}"
-					class="min-w-0 truncate text-body text-text hover:text-accent">{q.query}</a
-				>
-				<span class="shrink-0 text-small tabular-nums text-muted">{fmt(q.count)}</span>
+			<li>
+				<div class="flex items-baseline justify-between gap-3">
+					<a
+						href="/search?q={encodeURIComponent(q.query)}"
+						class="min-w-0 truncate text-body text-text hover:text-accent">{q.query}</a
+					>
+					<span class="shrink-0 text-small tabular-nums text-muted">{fmt(q.count)}</span>
+				</div>
+				<!-- Volume bar, scaled to the top row of this list, so relative demand
+				     reads at a glance instead of comparing numbers down the column. -->
+				<div class="mt-1 h-1.5 overflow-hidden rounded-full bg-surface-2">
+					<div class="h-full rounded-full bg-accent-soft" style="width: {(q.count / max) * 100}%"></div>
+				</div>
 			</li>
 		{/each}
 	</ul>
@@ -136,11 +144,22 @@
 
 				<!-- Daily volume -->
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
-					<h2 class="text-h3 mb-1">Daily searches</h2>
-					<p class="mb-4 text-small text-muted">Last 14 days; the darker segment is zero-result searches.</p>
+					<div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+						<div>
+							<h2 class="text-h3">Daily searches</h2>
+							<p class="text-small text-muted">Last 14 days. Hover a bar for the day's totals.</p>
+						</div>
+						<div class="flex items-center gap-3 text-micro text-muted">
+							<span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-accent-soft"></span>found</span>
+							<span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-accent"></span>zero-result</span>
+						</div>
+					</div>
 					<div class="flex items-end gap-2" style="height: 8rem">
 						{#each d.daily as day (day.day)}
-							<div class="flex flex-1 flex-col items-center gap-1">
+							<div
+								class="flex flex-1 flex-col items-center gap-1"
+								title="{dayLabel(day.day)} · {fmt(day.searches)} search{day.searches === 1 ? '' : 'es'}{day.zero ? `, ${fmt(day.zero)} zero-result` : ''}"
+							>
 								<div class="text-small tabular-nums text-muted">{day.searches || ''}</div>
 								<div
 									class="flex w-full flex-col justify-end overflow-hidden rounded-t-sm"

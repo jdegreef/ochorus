@@ -281,6 +281,25 @@
 		if (!f || f.ratio == null) return null;
 		return f.band ? `ratio ${f.ratio}% (band ${f.band[0]}–${f.band[1]})` : `ratio ${f.ratio}%`;
 	};
+
+	// Plain-language read of the flags, so a reviewer sees the verdict before the
+	// raw numbers. Each pill says only what the machine found; a passing check is
+	// still "the machine found nothing", never "the prose is good" (see the intro).
+	const reviewPills = (i: ReviewItem): { text: string; ok: boolean }[] => {
+		const f = i.flags;
+		if (!f) return [];
+		const pills: { text: string; ok: boolean }[] = [];
+		if (f.ratio != null && f.band) {
+			const inBand = f.ratio >= f.band[0] && f.ratio <= f.band[1];
+			pills.push({
+				text: inBand ? 'Length OK' : f.ratio < f.band[0] ? 'Runs short' : 'Runs long',
+				ok: inBand
+			});
+		}
+		pills.push({ text: f.tags_match ? 'Tags OK' : 'Tags differ', ok: f.tags_match });
+		if (!f.quote_style_consistent) pills.push({ text: 'Quotes mixed', ok: false });
+		return pills;
+	};
 </script>
 
 <svelte:head><title>Admin · Review queue — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -471,6 +490,18 @@
 											</div>
 
 											{#if i.flags}
+												{@const pills = reviewPills(i)}
+												{#if pills.length}
+													<div class="mt-1 flex flex-wrap gap-1.5">
+														{#each pills as p (p.text)}
+															<span
+																class="rounded-full border px-2 py-0.5 text-micro font-medium {p.ok
+																	? 'border-border text-muted'
+																	: 'border-warning/40 text-warning'}">{p.text}</span
+															>
+														{/each}
+													</div>
+												{/if}
 												<div class="text-small mt-1 text-muted">
 													<span class={i.flags.tags_match ? '' : 'font-semibold text-warning'}>
 														tags {i.flags.tag_counts[1]}/{i.flags.tag_counts[0]}{i.flags.tags_match

@@ -11,6 +11,8 @@
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 
 	// The reader detail for one article. Its sibling on the same route is the
 	// topic shelf (ArticleTopicShelf) — the [slug]/+page.svelte switch picks one.
@@ -114,7 +116,11 @@
 			<p class="eyebrow mb-1 text-muted">Article · Ochorus · {readingTime(article.word_count)}</p>
 			<div class="flex items-start justify-between gap-4">
 				<h1 class="text-h1">{article.h1}</h1>
-				<ReaderControls />
+				<div class="flex shrink-0 items-center gap-2">
+					<!-- Save this article to "My Library". -->
+					<FavoriteButton kind="article" slug={article.slug} />
+					<ReaderControls />
+				</div>
 			</div>
 			{#if article.description}
 				<p class="standfirst">{article.description}</p>
@@ -147,7 +153,7 @@
 
 		{#if article.related?.length}
 			<aside class="read-next" aria-labelledby="read-next-heading">
-				<h2 id="read-next-heading" class="text-h3">Read next</h2>
+				<h2 id="read-next-heading" class="section-label">Read next</h2>
 				<ul>
 					{#each article.related as r (r.type + r.slug)}
 						<li>
@@ -187,6 +193,8 @@
 				{/each}
 			</nav>
 		{/if}
+
+		<AccountCta />
 	</article>
 </div>
 

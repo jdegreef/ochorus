@@ -63,7 +63,8 @@ from __future__ import annotations
 #:                         and 2026-09-08, twenty-three more (Sermons on Several Occasions) — fifty-four.
 #: george-muller         — approved 2026-08-30, eleven;
 #:                         and 2026-09-02, four more (The Life of Trust);
-#:                         and 2026-09-02, sixteen more (The Life of Trust) — thirty-one.
+#:                         and 2026-09-02, sixteen more (The Life of Trust) — thirty-one;
+#:                         and 2026-09-09, nineteen more (The Life of Trust, Answers to Prayer) — fifty.
 #: hudson-taylor         — approved 2026-08-30, ten;
 #:                         and 2026-09-02, ten more (Separation and Service);
 #:                         and 2026-09-03, thirteen more (Union and Communion, Separation and Service) — thirty-three;
@@ -2775,6 +2776,120 @@ GEORGE_MULLER = [
         "chapter": ("the-life-of-trust", 18),
         "paragraph": 33,
     },
+    {
+        "slug": "george-muller-dad57ef3",
+        "text": "Is it not manifest that it is most precious in every way to depend upon God?",
+        "chapter": ("the-life-of-trust", 25),
+        "paragraph": 4,
+    },
+    {
+        "slug": "george-muller-2059f3eb",
+        "text": "Where should the heart of the disciple of the Lord Jesus be, but in heaven?",
+        "chapter": ("the-life-of-trust", 19),
+        "paragraph": 8,
+    },
+    {
+        "slug": "george-muller-077854c2",
+        "text": "Our motives must be godly: we must not seek any gift of God to consume it upon our lusts.",
+        "chapter": ("answers-to-prayer", 3),
+        "paragraph": 158,
+    },
+    {
+        "slug": "george-muller-03935dd8",
+        "text": "We are straitened in ourselves, and suppose that we are straitened in God.",
+        "chapter": ("the-life-of-trust", 3),
+        "paragraph": 18,
+    },
+    {
+        "slug": "george-muller-25db2ca7",
+        "text": "How great is the blessing which the soul obtains by trusting in God and by waiting patiently.",
+        "chapter": ("the-life-of-trust", 21),
+        "paragraph": 44,
+    },
+    {
+        "slug": "george-muller-73e19adb",
+        "text": "How blessed therefore is it to trust in God, and in him alone, and not in circumstances nor friends!",
+        "chapter": ("the-life-of-trust", 23),
+        "paragraph": 20,
+    },
+    {
+        "slug": "george-muller-955c302c",
+        "text": "How true that word that those that trust in the Lord shall not be confounded!",
+        "chapter": ("the-life-of-trust", 22),
+        "paragraph": 18,
+    },
+    {
+        "slug": "george-muller-ac311d8d",
+        "text": "Do you verily depend upon him alone for the salvation of your soul?",
+        "chapter": ("the-life-of-trust", 25),
+        "paragraph": 7,
+    },
+    {
+        "slug": "george-muller-06569328",
+        "text": "How precious it is, even for this life, to act according to the word of God!",
+        "chapter": ("the-life-of-trust", 16),
+        "paragraph": 6,
+    },
+    {
+        "slug": "george-muller-37a07bae",
+        "text": "Do not men believe that God means what he appears plainly to have asserted?",
+        "chapter": ("the-life-of-trust", 3),
+        "paragraph": 1,
+    },
+    {
+        "slug": "george-muller-e263c093",
+        "text": "The Lord helping us, we would rather suffer privation than contract debts.",
+        "chapter": ("the-life-of-trust", 7),
+        "paragraph": 36,
+    },
+    {
+        "slug": "george-muller-6a06fd93",
+        "text": "The Lord has not laid upon us a burden which is too heavy for us; he is not a hard master.",
+        "chapter": ("the-life-of-trust", 11),
+        "paragraph": 39,
+    },
+    {
+        "slug": "george-muller-aedac97a",
+        "text": "At first, our faith will be tried very little in comparison with what it may be afterwards; for God never lays more upon us than he is willing to enable us to bear.",
+        "chapter": ("the-life-of-trust", 17),
+        "paragraph": 37,
+    },
+    {
+        "slug": "george-muller-46a167ee",
+        "text": "We may therefore profitably meditate, with God’s blessing, though we are ever so weak spiritually; nay, the weaker we are, the more we need meditation for the strengthening of our inner man.",
+        "chapter": ("the-life-of-trust", 16),
+        "paragraph": 15,
+    },
+    {
+        "slug": "george-muller-80aee326",
+        "text": "If the work in which we are engaged is indeed the work of God, then he whose work it is is surely able and willing to provide the means for it.",
+        "chapter": ("the-life-of-trust", 18),
+        "paragraph": 4,
+    },
+    {
+        "slug": "george-muller-edf32cb6",
+        "text": "Remember that the world passeth away, but that the things of God endure forever.",
+        "chapter": ("the-life-of-trust", 19),
+        "paragraph": 10,
+    },
+    {
+        "slug": "george-muller-5cce5220",
+        "text": "Is not that, which alone can make us worthy to receive anything from our Heavenly Father, the righteousness of the Lord Jesus, which is imputed to those who believe in Him?",
+        "chapter": ("answers-to-prayer", 3),
+        "paragraph": 62,
+    },
+    {
+        "slug": "george-muller-a23700ca",
+        "text": "In our natural state we dislike dealing with God alone.",
+        "chapter": ("answers-to-prayer", 1),
+        "paragraph": 55,
+    },
+    {
+        "slug": "george-muller-d2db737a",
+        "text": "Would it have been right to charge God with unfaithfulness?",
+        "chapter": ("answers-to-prayer", 2),
+        "paragraph": 17,
+    },
 ]
 
 HUDSON_TAYLOR = [
@@ -3497,6 +3612,8 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-c006d51a",  # I call upon Thee, O my God, my mercy, Who createdst me,
         "augustine-of-hippo-4db0559b",  # O let the Light, the Truth, the Light of my heart, not
         "hudson-taylor-9e37f8aa",  # Sometimes we have trials which we cannot put into praye
+        "george-muller-077854c2",  # Our motives must be godly: we must not seek any gift of 
+        "george-muller-a23700ca",  # In our natural state we dislike dealing with God alone.
     ],
     "faith": [  # Faith
         "charles-h-spurgeon-94833965",  # The righteousness of faith is not the moral excellence of fa
@@ -3579,6 +3696,10 @@ TOPIC_MEMBERS = {
         "hudson-taylor-a0b9c9a7",  # The habit of coming in faith to Him is incompatible wit
         "hudson-taylor-6356623c",  # Every true minister of GOD, every true missionary, ever
         "john-wesley-8fc9ccff",  # Faith worketh by love; faith overcometh the world; faith
+        "george-muller-03935dd8",  # We are straitened in ourselves, and suppose that we are 
+        "george-muller-955c302c",  # How true that word that those that trust in the Lord sha
+        "george-muller-aedac97a",  # At first, our faith will be tried very little in compari
+        "george-muller-80aee326",  # If the work in which we are engaged is indeed the work o
     ],
     "grace": [  # Grace
         "charles-h-spurgeon-e83563c7",  # Jesus has nothing which He will not use for a sinner's salva
@@ -3619,6 +3740,7 @@ TOPIC_MEMBERS = {
         "hudson-taylor-938e0682",  # We are not to think that our holiest service is free fr
         "john-wesley-24804ca0",  # God justifieth not the godly, but the ungodly; not those
         "john-wesley-14f9003f",  # Whatsoever good is in man, or is done by man, God is the
+        "george-muller-5cce5220",  # Is not that, which alone can make us worthy to receive a
     ],
     "holy-spirit": [  # The Holy Spirit
         "charles-h-spurgeon-c1353dff",  # The Holy Ghost Himself cannot better glorify the Lord Jesus 
@@ -3736,6 +3858,7 @@ TOPIC_MEMBERS = {
         "george-muller-caed9faa",  # From my inmost soul I do ascribe it to God alone that he has
         "amanda-berry-smith-c5cbc2c8",  # How often when we are passing through deep trials we look fo
         "hudson-taylor-9e37f8aa",  # Sometimes we have trials which we cannot put into praye
+        "george-muller-6a06fd93",  # The Lord has not laid upon us a burden which is too heav
     ],
     "holiness": [  # Holiness
         "charles-h-spurgeon-cfdd6903",  # The love of Christ casts not out the love of relatives, but 
@@ -3805,6 +3928,10 @@ TOPIC_MEMBERS = {
         "hudson-taylor-2dd2dd38",  # Where there is fitness for the work, the way will proba
         "hudson-taylor-d414362d",  # Dangers seen sometimes appal us, or appal those who lov
         "john-wesley-c49400e2",  # You cannot deceive him; for he is infinite wisdom: You c
+        "george-muller-dad57ef3",  # Is it not manifest that it is most precious in every way
+        "george-muller-25db2ca7",  # How great is the blessing which the soul obtains by trus
+        "george-muller-73e19adb",  # How blessed therefore is it to trust in God, and in him 
+        "george-muller-d2db737a",  # Would it have been right to charge God with unfaithfulne
     ],
     "joy": [  # Joy
         "charles-h-spurgeon-d6d84bd3",  # Beloved, the Lord’s workers have sauce with their bread: not
@@ -3877,6 +4004,9 @@ TOPIC_MEMBERS = {
         "hudson-taylor-292a6824",  # The Bible is a supernatural book, a divine revelation: the H
         "gareth-evans-b4cd492e",  # To every weapon of Satan they have an answer in the Word of 
         "hudson-taylor-b6346059",  # The child of GOD has no need of the counsel of the ungo
+        "george-muller-06569328",  # How precious it is, even for this life, to act according
+        "george-muller-37a07bae",  # Do not men believe that God means what he appears plainl
+        "george-muller-46a167ee",  # We may therefore profitably meditate, with God’s blessin
     ],
     "salvation": [  # Salvation & the Gospel
         "charles-h-spurgeon-91fc01a4",  # The Lord's salvation can come to us though we have only fait
@@ -3914,6 +4044,7 @@ TOPIC_MEMBERS = {
         "hudson-taylor-59c25747",  # The GOD of the Bible is a GOD who punishes sin, and can
         "john-wesley-24804ca0",  # God justifieth not the godly, but the ungodly; not those
         "john-wesley-96fdc970",  # Christ is not only God above us; which may keep us in aw
+        "george-muller-ac311d8d",  # Do you verily depend upon him alone for the salvation of
     ],
     "heaven": [  # Heaven & Eternity
         "charles-h-spurgeon-8b8e88db",  # We are not going to talk about law, and duty, and punishment
@@ -3938,6 +4069,8 @@ TOPIC_MEMBERS = {
         "hudson-taylor-6659df97",  # When the Lord Jesus comes again, those, surely, who have sto
         "gareth-evans-12ac9d3d",  # The eagle does not rest until it sees its offspring rise to 
         "richard-allen-83c101e1",  # In short, the love of this world is a heavy weight upon the 
+        "george-muller-2059f3eb",  # Where should the heart of the disciple of the Lord Jesus
+        "george-muller-edf32cb6",  # Remember that the world passeth away, but that the thing
     ],
     "surrender": [  # Surrender & Obedience
         "thomas-a-kempis-23ece4d7",  # No man commands safely unless he has learned well how to obe
@@ -4013,5 +4146,6 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-5176d739",  # Let not these occupy my soul; let God rather occupy it,
         "augustine-of-hippo-cb389651",  # Luxury affects to be called plenty and abundance; but T
         "hudson-taylor-a0b9c9a7",  # The habit of coming in faith to Him is incompatible wit
+        "george-muller-e263c093",  # The Lord helping us, we would rather suffer privation th
     ],
 }

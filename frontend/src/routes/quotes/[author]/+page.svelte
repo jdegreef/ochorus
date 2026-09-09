@@ -7,6 +7,8 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
+	import { initials, portraitPosition } from '$lib/portraits';
 
 	// English-only, and written in English literals for the same reason the
 	// scripture pages are: these quotations are lifted from the English works and
@@ -77,10 +79,38 @@
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-6">
-		<h1 class="text-h1">{page.author.name} — in their own words</h1>
+		<div class="mb-1 flex items-center gap-4">
+			{#if page.author.photo_url}
+				<img
+					src={page.author.photo_url}
+					alt="Portrait of {page.author.name}"
+					loading="lazy"
+					width="112"
+					height="112"
+					class="h-20 w-20 shrink-0 rounded-full border border-border object-cover grayscale sm:h-24 sm:w-24"
+					style="object-position: {portraitPosition(page.author.slug)}"
+				/>
+			{:else}
+				<span
+					class="font-display text-h2 flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-accent-soft font-semibold text-accent sm:h-24 sm:w-24"
+				>
+					{initials(page.author.name)}
+				</span>
+			{/if}
+			<h1 class="text-h1">{page.author.name} — in their own words</h1>
+		</div>
 		<p class="mt-2 max-w-2xl text-small text-muted">
 			{page.quotes.length} quotations, each traced to the exact paragraph it comes from. Follow
 			any of them into the full text — free, and without an account.
+		</p>
+		<!-- The page is titled after a person but, until now, never linked to them:
+		     the byline sends a reader from the quotations to the life, books and
+		     sermons behind them. Every quote author is sourced from a book or sermon,
+		     so an /authors page always exists to receive it. -->
+		<p class="mt-3 text-small">
+			<a class="byline" href={`/authors/${page.author.slug}/`}
+				>Read {page.author.name}’s biography, books and sermons →</a
+			>
 		</p>
 	</header>
 
@@ -126,6 +156,8 @@
 			</ol>
 		</section>
 	{/each}
+
+	<AccountCta />
 </div>
 
 <style>
@@ -179,6 +211,13 @@
 		padding: 0;
 		display: grid;
 		gap: 0.75rem;
+	}
+
+	/* Byline link to the author's page. Accent colour; underline on hover is
+	   inherited from the global `a` rule (app.css §links). */
+	.byline {
+		color: var(--color-accent);
+		font-weight: 500;
 	}
 
 	/* Theme chips: the author's deepest subjects, sitting under the intro. Quiet
