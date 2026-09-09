@@ -45,13 +45,20 @@
 	const t = i18n.t;
 	/** Empty for a sermon with no recorded date — the row drops the "· 1857". */
 	const year = $derived(preachedYear(sermon.preached_on));
+	const href = $derived(localizeHref(`/sermons/${sermon.slug}`));
+
+	// The index row reads like a table of contents: one line per sermon, the
+	// brief tucked away until asked for. Clicking a row opens its brief and a
+	// link to read it; a sermon with no brief yet is just a link. (`row` only.)
+	let open = $state(false);
+	const peekId = $derived(`sermon-peek-${sermon.slug}`);
 </script>
 
 {#if variant === 'row'}
-	<a
+	<div
 		class="sermon-row card-tint group"
+		class:is-open={open}
 		style="--row-hue: {hueForBirthYear(sermon.author.birth_year)}"
-		href={localizeHref(`/sermons/${sermon.slug}`)}
 	>
 		<!-- Every sermon wears its own illustrated emblem, themed to the text it
 		     expounds — the raven with bread, the bruised reed, the golden key — so
@@ -60,36 +67,50 @@
 			<Emblem name={emblemForSermon(sermon.slug)} />
 		</div>
 		<div class="min-w-0 flex-1">
-			<!-- Eyebrow line: whose sermon (only when no heading above says so) and
-			     the passage at the start, the length at the top right of the row. -->
-			<div class="flex flex-wrap items-baseline justify-between gap-x-4">
-				<p class="sermon-row-ref min-w-0">
-					{#if showAuthor}{sermon.author.name}<span class="opacity-40"> · </span>{/if}
-					{sermon.scripture_ref}
-				</p>
-				<!-- ms-auto, not just justify-between: when a long passage pushes this
-				     to its own line, justify-between leaves it stranded at the start of
-				     that line. The auto margin keeps it flush to the end either way. -->
-				<p class="ms-auto shrink-0 text-small text-muted">
-					{readingTime(sermon.word_count)}
-					{#if year}<span class="opacity-50"> · </span>{year}{/if}
-				</p>
+			<!-- One table-of-contents line: the title is the link to the sermon (a
+			     real, crawlable anchor per row); the passage, a dotted leader and the
+			     length follow; a chevron toggles the brief below — and only when
+			     there is one. The <h3> keeps the title's heading semantics. -->
+			<div class="sermon-row-line">
+				<h3 class="sermon-row-heading">
+					<a class="sermon-row-title" {href}>{sermon.title}</a>
+				</h3>
+				<span class="sermon-row-ref"
+					>{#if showAuthor}{sermon.author.name}<span class="opacity-40"> · </span>{/if}{sermon.scripture_ref}</span
+				>
+				<span class="sermon-row-leader hidden sm:block" aria-hidden="true"></span>
+				<span class="sermon-row-meta"
+					>{readingTime(sermon.word_count)}{#if year}<span class="opacity-50"> · </span>{year}{/if}</span
+				>
+				{#if sermon.summary}
+					<button
+						type="button"
+						class="sermon-row-toggle"
+						aria-label={t('sermon.inBrief')}
+						aria-expanded={open}
+						aria-controls={peekId}
+						onclick={() => (open = !open)}
+					>
+						<svg
+							class="sermon-row-chevron"
+							viewBox="0 0 24 24"
+							width="20"
+							height="20"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg
+						>
+					</button>
+				{/if}
 			</div>
-			<h3 class="sermon-row-title mt-1">{sermon.title}</h3>
-			<!-- Not every sermon has a brief written yet, so the row has to read as
-			     finished without one — hence the brief hanging below a complete
-			     title/passage/length line rather than sitting between them. -->
 			{#if sermon.summary}
-				<!-- Clamped on a phone only: a 400-character brief runs to eleven lines
-				     at 375px, and twenty-six of those is a very long shelf. The full
-				     text is one tap away, and it fits in three or four lines from sm up
-				     where the measure is wider. Same rule AuthorBioCard uses. -->
-				<p class="sermon-row-brief mt-2.5 line-clamp-5 text-body sm:line-clamp-none">
-					{sermon.summary}
-				</p>
+				<div id={peekId} class="sermon-row-peek" hidden={!open}>
+					<p class="sermon-row-brief">{sermon.summary}</p>
+				</div>
 			{/if}
 		</div>
-	</a>
+	</div>
 {:else}
 	<a
 		class="sermon-card card-tint rounded-card border border-border bg-surface"

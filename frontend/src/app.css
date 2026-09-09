@@ -1604,15 +1604,87 @@ nav.appnav .navsearch:hover {
 .sermon-row:hover .sermon-row-title {
 	color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
 }
-/* The brief runs the full width of the row.
+/* ── Sermon index: table-of-contents row ─────────────────────────────────────
+   The row now reads like a book's contents: one line per sermon (title ·
+   passage · a dotted leader · length), with the brief revealed on click. The
+   emblem + content flex layout of `.sermon-row` above is unchanged; what
+   follows styles the one-line entry and the disclosed brief. */
 
-   It was capped at a typographic measure first, which left a third of every row
-   empty on a wide screen and made the rows taller than they needed to be. Full
-   width spreads the same text over fewer lines, so the shelf is shorter and the
-   box is actually used. Long lines are the trade, and they are bounded in
-   practice: the brief is 300–400 characters, and the page-width stepper lets a
-   reader narrow the column if they want a tighter measure. */
+/* Heading wraps the toggle (WAI accordion pattern); it carries no visual weight
+   of its own — the title span inside does. */
+.sermon-row-heading {
+	margin: 0;
+	font-size: inherit;
+	font-weight: inherit;
+}
+/* The title is the link to the sermon — a real, crawlable anchor on every row.
+   Row-hover already recolours it (rule above); a direct hover underlines. */
+a.sermon-row-title {
+	text-decoration: none;
+}
+a.sermon-row-title:hover {
+	text-decoration: underline;
+}
+/* Title, passage, leader and length on one baseline; wraps gracefully when the
+   title is long. */
+.sermon-row-line {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.25rem 0.75rem;
+}
+/* The dotted leader carrying the eye from the title to the length, as in a
+   printed table of contents — purely decorative, and it simply collapses to its
+   min width when the line wraps. */
+.sermon-row-leader {
+	flex: 1 1 1.5rem;
+	min-width: 1.5rem;
+	align-self: baseline;
+	border-bottom: 1.5px dotted color-mix(in srgb, var(--row-hue) 32%, var(--border-strong));
+	transform: translateY(-0.3em);
+}
+.sermon-row-meta {
+	flex: none;
+	font-size: var(--fs-small);
+	color: var(--muted);
+	font-variant-numeric: tabular-nums;
+}
+/* The disclosure control for the brief — a chevron button beside the length,
+   kept separate from the title link so each control has a single job. */
+.sermon-row-toggle {
+	flex: none;
+	align-self: center;
+	display: inline-flex;
+	padding: 0.15rem;
+	border: 0;
+	background: none;
+	color: var(--muted);
+	cursor: pointer;
+	border-radius: var(--radius-sm);
+}
+.sermon-row-toggle:hover {
+	color: var(--text);
+}
+.sermon-row-toggle:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 1px;
+}
+.sermon-row-chevron {
+	display: block;
+	transition: transform var(--duration-fast);
+}
+.sermon-row.is-open .sermon-row-chevron {
+	transform: rotate(180deg);
+}
+/* The brief, revealed under the entry. It hangs in the content column (already
+   inset past the emblem), and now that it is on-demand rather than always shown,
+   it gets a real reading measure instead of the full row width. */
+.sermon-row-peek {
+	margin-top: 0.7rem;
+}
 .sermon-row-brief {
+	margin: 0;
+	max-width: 64ch;
 	color: var(--muted);
 }
 
