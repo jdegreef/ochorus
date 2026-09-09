@@ -29,11 +29,11 @@
 		'one traced to the book, chapter and paragraph it comes from, and linked to the ' +
 		'full text, free to read.';
 
-	const crumbs = [
-		{ name: 'Home', href: '/' },
-		{ name: 'Quotes', href: path }
-	];
-	const crumbsLd = breadcrumbLd(crumbs);
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.quotes'), href: path }
+	]);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	// A CollectionPage listing each author page, so the set is one entity to a
 	// crawler rather than four unrelated URLs.
 	const listLd = $derived(
@@ -67,13 +67,13 @@
 	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
 	     page's position is true even when we don't draw it. -->
 	<PageHeader
-		title="Quotes, with their sources"
-		tagline="The lines these writers are remembered for — {total} of them so far — each traced to the exact book, chapter and paragraph it comes from, and linked to the full work. What the unsourced quote sites cannot give you is the citation; that is the whole of this."
+		title={t('quotes.pageTitle')}
+		tagline={t('quotes.tagline').replace('%count%', String(total))}
 	/>
 
 	<!-- The other way in: by theme rather than by writer. -->
 	<p class="mb-6">
-		<a class="browse" href="/quotes/topics/">Browse quotes by topic →</a>
+		<a class="browse" href="/quotes/topics/">{t('quotes.browseByTopic')}</a>
 	</p>
 
 	<!-- A card per author. The accent bar wears the author's era hue, the same
@@ -82,7 +82,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if authors.length === 0}
-		<EmptyState message="No quotations here yet." />
+		<EmptyState message={t('quotes.emptyIndex')} />
 	{:else}
 	<ul class="grid gap-3 sm:grid-cols-2">
 		{#each authors as a (a.slug)}
@@ -113,7 +113,7 @@
 					<span class="flex-1">
 						<span class="block text-h3 text-text">{a.name}</span>
 						<span class="text-small text-muted"
-							>{a.count} quotation{a.count === 1 ? '' : 's'}</span
+							>{(a.count === 1 ? t('quotes.countOne') : t('quotes.countMany')).replace('%count%', String(a.count))}</span
 						>
 					</span>
 					<span class="text-muted" aria-hidden="true">→</span>

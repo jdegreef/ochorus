@@ -13,6 +13,9 @@
 	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	// The reader detail for one article. Its sibling on the same route is the
 	// topic shelf (ArticleTopicShelf) — the [slug]/+page.svelte switch picks one.
@@ -76,18 +79,19 @@
 	// on-page path and the structured BreadcrumbList can't drift apart (the
 	// sibling detail routes keep this single source; see books/[slug]).
 	const crumbs = $derived([
-		{ name: 'Home', href: '/' },
-		{ name: 'Articles', href: '/articles/' },
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.articles'), href: '/articles/' },
 		{ name: article.h1, href: path }
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
-	// The "Read next" label for each funnel target's kind.
-	const KIND_LABEL: Record<ArticleRelated['type'], string> = {
-		book: 'Book',
-		sermon: 'Sermon',
-		author: 'Biography'
-	};
+	// The "Read next" label for each funnel target's kind (reuses the search
+	// type labels; "Biography" is the singular of the nav word).
+	const KIND_LABEL = $derived<Record<ArticleRelated['type'], string>>({
+		book: t('search.typeBook'),
+		sermon: t('search.typeSermon'),
+		author: t('articles.kindBiography')
+	});
 </script>
 
 <Seo
@@ -113,7 +117,7 @@
 			     house byline for every article (there is no per-article author — see
 			     the backend model), so it is an English literal like the kind word,
 			     not article data. The reading time is localized via readingTime(). -->
-			<p class="eyebrow mb-1 text-muted">Article · Ochorus · {readingTime(article.word_count)}</p>
+			<p class="eyebrow mb-1 text-muted">{t('search.typeArticle')} · Ochorus · {readingTime(article.word_count)}</p>
 			<div class="flex items-start justify-between gap-4">
 				<h1 class="text-h1">{article.h1}</h1>
 				<div class="flex shrink-0 items-center gap-2">
@@ -133,7 +137,7 @@
 
 		{#if showToc}
 			<nav class="toc" aria-labelledby="toc-heading">
-				<p id="toc-heading" class="eyebrow text-muted">On this page</p>
+				<p id="toc-heading" class="eyebrow text-muted">{t('articles.onThisPage')}</p>
 				<ul>
 					{#each article.toc as h (h.id)}
 						<li><a href={`#${h.id}`}>{h.text}</a></li>
@@ -153,7 +157,7 @@
 
 		{#if article.related?.length}
 			<aside class="read-next" aria-labelledby="read-next-heading">
-				<h2 id="read-next-heading" class="section-label">Read next</h2>
+				<h2 id="read-next-heading" class="section-label">{t('articles.readNext')}</h2>
 				<ul>
 					{#each article.related as r (r.type + r.slug)}
 						<li>
@@ -181,8 +185,8 @@
 		{/if}
 
 		{#if article.topics?.length}
-			<nav class="mt-8 flex flex-wrap items-center gap-2" aria-label="Topics">
-				<span class="text-small text-muted">Topics:</span>
+			<nav class="mt-8 flex flex-wrap items-center gap-2" aria-label={t('nav.topics')}>
+				<span class="text-small text-muted">{t('nav.topics')}:</span>
 				{#each article.topics as topic (topic.slug)}
 					<a
 						href={localizeHref(`/topics/${topic.slug}`)}

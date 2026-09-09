@@ -42,11 +42,11 @@
 		'each one pointing you to a classic Christian book, sermon or life worth reading in full, ' +
 		'free.';
 
-	const crumbs = [
-		{ name: 'Home', href: '/' },
-		{ name: 'Articles', href: path }
-	];
-	const crumbsLd = breadcrumbLd(crumbs);
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.articles'), href: path }
+	]);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	// A CollectionPage listing each article, so the set reads as one entity to a
 	// crawler rather than a handful of unrelated URLs.
 	const listLd = $derived(articleCollectionLd('Articles', description, canonical, articles));
@@ -60,8 +60,8 @@
 	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
 	     page's position is true even when we don't draw it. -->
 	<PageHeader
-		title="Articles"
-		tagline="Short readings on prayer, faith and the life with God — each one written to send you on to a classic worth reading in full."
+		title={t('nav.articles')}
+		tagline={t('articles.tagline')}
 	/>
 
 	{#if loadError}
@@ -69,7 +69,7 @@
 	{:else if articles.length}
 		<ArticleShelf {articles} activeTopic="" />
 	{:else}
-		<EmptyState message="No articles yet — check back soon." />
+		<EmptyState message={t('articles.emptyIndex')} />
 	{/if}
 
 	<AccountCta />

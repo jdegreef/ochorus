@@ -10,6 +10,9 @@
 	import ScriptureEpigraph from '$lib/components/ScriptureEpigraph.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { initials, portraitPosition } from '$lib/portraits';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	// English-only, and written in English literals for the same reason the
 	// author page is: these quotations are lifted from the English works.
@@ -37,8 +40,8 @@
 	);
 
 	const crumbs = $derived([
-		{ name: 'Home', href: '/' },
-		{ name: 'Quotes', href: '/quotes/' },
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.quotes'), href: '/quotes/' },
 		{ name: page.author.name, href: `/quotes/${page.author.slug}/` },
 		{ name: topic.title, href: path }
 	]);
@@ -88,13 +91,14 @@
 					{initials(page.author.name)}
 				</span>
 			{/if}
-			<h1 class="text-h1">{page.author.name} on {phrase}</h1>
+			<h1 class="text-h1">{t('quotes.authorTopicH1').replace('%name%', page.author.name).replace('%phrase%', phrase)}</h1>
 		</div>
 		<ScriptureEpigraph text={topic.scripture_text} reference={topic.scripture_ref} />
 		<p class="mt-3 max-w-2xl text-small text-muted">
-			{page.quotes.length} quotation{page.quotes.length === 1 ? '' : 's'} from {page.author.name}
-			on {phrase}, each traced to the exact paragraph it comes from. Follow any of them into the full
-			text — free, and without an account.
+			{(page.quotes.length === 1 ? t('quotes.authorTopicIntroOne') : t('quotes.authorTopicIntroMany'))
+				.replace('%count%', String(page.quotes.length))
+				.replace('%name%', page.author.name)
+				.replace('%phrase%', phrase)}
 		</p>
 	</header>
 
@@ -120,9 +124,9 @@
 	     author's other themes, and the life behind the quotations. This is what
 	     makes the theme grid a mesh rather than a set of dead ends. -->
 	<nav class="more">
-		<a href={`/quotes/topics/${topic.slug}/`}>More quotes on {phrase} →</a>
-		<a href={`/quotes/${page.author.slug}/`}>All {page.author.name} quotes →</a>
-		<a href={`/authors/${page.author.slug}/`}>{page.author.name}’s biography →</a>
+		<a href={`/quotes/topics/${topic.slug}/`}>{t('quotes.moreOn').replace('%phrase%', phrase)}</a>
+		<a href={`/quotes/${page.author.slug}/`}>{t('quotes.allAuthor').replace('%name%', page.author.name)}</a>
+		<a href={`/authors/${page.author.slug}/`}>{t('quotes.authorBio').replace('%name%', page.author.name)}</a>
 	</nav>
 
 	<AccountCta />

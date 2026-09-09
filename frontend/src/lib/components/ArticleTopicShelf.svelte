@@ -7,6 +7,9 @@
 	import ArticleShelf from '$lib/components/ArticleShelf.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { articleTopicSeo, articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	// The /articles/<topic>/ shelf — the article index filtered to one topic,
 	// with its own keyword-led H1 and canonical so it reads as a page about the
@@ -35,8 +38,8 @@
 	const hreflang = $derived(hreflangFor(path, ['en']));
 
 	const crumbs = $derived([
-		{ name: 'Home', href: '/' },
-		{ name: 'Articles', href: '/articles/' },
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.articles'), href: '/articles/' },
 		{ name: title, href: path }
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));

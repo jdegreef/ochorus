@@ -39,11 +39,11 @@
 		`Browse ${pages.length - verseCount} chapters of the Bible and see which passages ` +
 			'in the classics treat them — every citation quoted and linked to its source.'
 	);
-	const crumbs = [
-		{ name: 'Home', href: '/' },
-		{ name: 'Scripture', href: path }
-	];
-	const crumbsLd = breadcrumbLd(crumbs);
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('reader.scripture'), href: path }
+	]);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
 	// The same CollectionPage → ItemList every sibling hub carries (books, plans,
 	// topics, sermons, …): the books of the Bible in canonical order. There is no
@@ -70,14 +70,14 @@
 	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
 	     page's position is true even when we don't draw it. -->
 	<PageHeader
-		title="Scripture in the Christian classics"
-		tagline="Every Bible reference in the library is indexed. These are the chapters the writers return to — open one to see who preached it, and what they said."
+		title={t('scripture.pageTitle')}
+		tagline={t('scripture.tagline')}
 	/>
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if !books.length}
-		<EmptyState message="The scripture index is still being built." />
+		<EmptyState message={t('scripture.empty')} />
 	{:else}
 		{#each books as book (book.slug)}
 			<section class="book">
@@ -85,7 +85,7 @@
 				<ul class="chapters">
 					{#each book.chapters as c (c.chapter)}
 						<li>
-							<a href={`/scripture/${book.slug}/${c.chapter}/`} title={`${c.citing_count} passages`}
+							<a href={`/scripture/${book.slug}/${c.chapter}/`} title={t('scripture.passagesCount').replace('%count%', String(c.citing_count))}
 								>{c.chapter}</a
 							>
 						</li>

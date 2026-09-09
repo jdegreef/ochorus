@@ -26,12 +26,12 @@
 		'and more — memorable quotations gathered by theme, each traced to the book, chapter ' +
 		'and paragraph it comes from, and free to read in full.';
 
-	const crumbs = [
-		{ name: 'Home', href: '/' },
-		{ name: 'Quotes', href: '/quotes/' },
-		{ name: 'By topic', href: path }
-	];
-	const crumbsLd = breadcrumbLd(crumbs);
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.quotes'), href: '/quotes/' },
+		{ name: t('quotes.byTopicCrumb'), href: path }
+	]);
+	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	const listLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -59,14 +59,14 @@
 
 <div class="page-col px-5 py-10">
 	<PageHeader
-		title="Quotes by topic"
-		tagline="The lines these writers are remembered for, gathered by theme — prayer, faith, grace, the Holy Spirit and more. Each one traced to the exact book, chapter and paragraph it comes from, and linked to the full work."
+		title={t('quotes.byTopic')}
+		tagline={t('quotes.topicsTagline')}
 	/>
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if topics.length === 0}
-		<EmptyState message="No topics here yet." />
+		<EmptyState message={t('quotes.topicsEmpty')} />
 	{:else}
 		<ul class="grid gap-3 sm:grid-cols-2">
 			{#each topics as tp (tp.slug)}

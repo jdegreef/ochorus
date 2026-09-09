@@ -5,9 +5,12 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import CitingPassages from '$lib/components/CitingPassages.svelte';
+	import { i18n } from '$lib/i18n.svelte';
 
-	// English-only, and written in English literals for the reason spelled out
-	// on the chapter page beside this one.
+	const t = i18n.t;
+
+	// English-only passage DATA; the chrome around it goes through the catalogues
+	// (F3), as on the chapter page beside this one.
 	let { data } = $props();
 	const page = $derived<ScripturePage>(data.page);
 
@@ -23,8 +26,8 @@
 	);
 
 	const crumbs = $derived([
-		{ name: 'Home', href: '/' },
-		{ name: 'Scripture', href: '/scripture' },
+		{ name: t('common.home'), href: '/' },
+		{ name: t('reader.scripture'), href: '/scripture' },
 		{ name: `${page.book.title} ${page.chapter}`, href: chapterPath },
 		{ name: page.reference, href: path }
 	]);
@@ -66,26 +69,25 @@
 			</blockquote>
 		{/if}
 		<p class="mt-3 text-small text-muted">
-			Treated in {page.citing_count}
-			{page.citing_count === 1 ? 'passage' : 'passages'} across the library.
+			{t('scripture.treated').replace('%count%', String(page.citing_count))}
 		</p>
 	</header>
 
 	<section>
-		<h2 class="section-label">Where it is preached</h2>
+		<h2 class="section-label">{t('scripture.preachedHeading')}</h2>
 		<CitingPassages passages={page.passages} />
 		{#if page.citing_count > page.passages_shown}
 			<p class="mt-3 text-small text-muted">
-				Showing {page.passages_shown} of {page.citing_count}; the rest are reachable through
-				search.
+				{t('scripture.showingRest')
+					.replace('%shown%', String(page.passages_shown))
+					.replace('%total%', String(page.citing_count))}
 			</p>
 		{/if}
 	</section>
 
 	<p class="mt-8 text-small">
 		<a class="text-accent hover:underline" href={chapterPath}
-			>All of {page.book.title}
-			{page.chapter} →</a
+			>{t('scripture.allOf').replace('%reference%', `${page.book.title} ${page.chapter}`)}</a
 		>
 	</p>
 </div>

@@ -3,6 +3,9 @@
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { articleHasTopic } from '$lib/articleTopics';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	/**
 	 * The topic-filter row + the article card list, shared by the /articles index
@@ -46,9 +49,9 @@
 </script>
 
 {#if topicTabs.length > 1}
-	<nav class="filter-row mb-6" aria-label="Filter articles by topic">
+	<nav class="filter-row mb-6" aria-label={t('articles.filterByTopic')}>
 		<a class="chip" class:active={activeTopic === ''} aria-current={activeTopic === '' ? 'page' : undefined} href="/articles/">
-			All <span class="count">{articles.length}</span>
+			{t('search.filterAll')} <span class="count">{articles.length}</span>
 		</a>
 		{#each topicTabs as tab (tab.slug)}
 			<a
@@ -72,5 +75,5 @@
 {:else}
 	<!-- Reachable only via a stale/hand-edited topic slug (a live chip always has
 	     ≥1 article) — show a way back rather than a blank page. -->
-	<EmptyState message="No articles under that topic." />
+	<EmptyState message={t('articles.emptyTopic')} />
 {/if}

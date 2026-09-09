@@ -9,6 +9,9 @@
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import ScriptureEpigraph from '$lib/components/ScriptureEpigraph.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	// English-only, like the author quote pages: the quotations are lifted from
 	// the English works and every citation names an English chapter.
@@ -29,9 +32,9 @@
 	);
 
 	const crumbs = $derived([
-		{ name: 'Home', href: '/' },
-		{ name: 'Quotes', href: '/quotes/' },
-		{ name: 'By topic', href: '/quotes/topics/' },
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.quotes'), href: '/quotes/' },
+		{ name: t('quotes.byTopicCrumb'), href: '/quotes/topics/' },
 		{ name: topic.title, href: path }
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
@@ -80,21 +83,22 @@
 	<Breadcrumb items={crumbs} />
 
 	<header class="mb-6">
-		<h1 class="text-h1">Quotes on {phrase}</h1>
+		<h1 class="text-h1">{t('quotes.topicH1').replace('%phrase%', phrase)}</h1>
 		{#if topic.blurb}
 			<p class="mt-2 max-w-2xl text-body text-muted">{topic.blurb}</p>
 		{/if}
 		<ScriptureEpigraph text={topic.scripture_text} reference={topic.scripture_ref} />
 		<p class="mt-3 text-small text-muted">
-			{total} quotation{total === 1 ? '' : 's'} from {page.authors.length}
-			writer{page.authors.length === 1 ? '' : 's'}, each traced to the exact paragraph it comes from.
+			{(total === 1 ? t('quotes.topicCountOne') : t('quotes.topicCountMany'))
+				.replace('%count%', String(total))
+				.replace('%writers%', String(page.authors.length))}
 		</p>
 	</header>
 
 	<!-- Jump row when there are several writers — the one structure a reader can
 	     predict, the same pattern as the author page. -->
 	{#if page.authors.length > 1}
-		<nav class="jump" aria-label="Jump to a writer">
+		<nav class="jump" aria-label={t('quotes.jumpToWriter')}>
 			{#each page.authors as g (g.author.slug)}
 				<a href={`#a-${g.author.slug}`} style={`--hue: ${hueForBirthYear(g.author.birth_year)}`}
 					>{g.author.name}</a

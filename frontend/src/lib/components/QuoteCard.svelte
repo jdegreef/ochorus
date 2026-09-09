@@ -3,6 +3,9 @@
 	import { quoteHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	// One quotation card: the sentence, the citation that sources it (a link to
 	// the exact paragraph), and a copy button that takes the attribution WITH it.
@@ -24,7 +27,9 @@
 		// up publishing these words under nobody's name.
 		const cited =
 			`"${quote.text}"\n— ${authorName}, ${quote.source.work}` +
-			(quote.source.order === null ? '' : `, chapter ${quote.source.order}`) +
+			(quote.source.order === null
+				? ''
+				: t('quotes.clipChapter').replace('%n%', String(quote.source.order))) +
 			`\n${SITE_URL}${quoteHref(quote)}`;
 		try {
 			await navigator.clipboard.writeText(cited);
@@ -52,7 +57,7 @@
 			<FavoriteButton kind="quote" slug={quote.slug} />
 			<!-- Text, not a glyph: the icon set has no copy mark, and extending a
 			     curated set for a minor affordance is not worth it. -->
-			<button class="copy" onclick={copy}>{copied ? 'Copied' : 'Copy'}</button>
+			<button class="copy" onclick={copy}>{copied ? t('quotes.copied') : t('quotes.copy')}</button>
 		</div>
 	</div>
 </li>
