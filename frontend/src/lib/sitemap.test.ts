@@ -8,7 +8,6 @@
  * be weeks reporting the damage.
  */
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { ADVERTISED_LOCALES } from './advertised-locales';
 import {
 	loc,
 	resetSitemapData,
@@ -110,17 +109,24 @@ describe('urlXml without a locale filter', () => {
 });
 
 describe('sections', () => {
-	it('gives every advertised locale its own chapter section', () => {
-		for (const l of ADVERTISED_LOCALES)
-			expect(sections()).toContain(`chapters-${l}`);
+	it('does not advertise chapters in ANY locale', () => {
+		// Chapters were pulled from the advertised set (a large "Discovered –
+		// currently not indexed" pile — see sections()). The index links only the
+		// per-type children below, so no `chapters-<locale>` child — for any
+		// locale — is enumerated, prerendered, or submitted to Google.
+		expect(sections().some((s) => s.startsWith('chapters-'))).toBe(false);
 	});
 
-	it('resolves a chapter section to that locale, and a type section to none', () => {
+	// The per-locale chapter machinery is kept INTACT so a restore is one line
+	// (re-add the `chapters-${l}` spread to sections()). These two guard that it
+	// still resolves — a `chapters-<locale>` section still maps to its locale and
+	// still selects the chapters that locale has — so the reversal stays cheap.
+	it('still resolves a chapter section to that locale, and a type section to none', () => {
 		expect(sectionLocale('chapters-sw')).toBe('sw');
 		expect(sectionLocale('books')).toBeUndefined();
 	});
 
-	it('selects only the chapters a locale actually has', () => {
+	it('still selects only the chapters a locale actually has', () => {
 		const d = data({ chapters: [chapter, entry({ en: '/books/solo/1/' })] });
 		expect(sectionEntries(d, 'chapters-sw')).toHaveLength(1);
 		expect(sectionEntries(d, 'chapters-en')).toHaveLength(2);

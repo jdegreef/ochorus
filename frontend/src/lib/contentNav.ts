@@ -10,9 +10,9 @@ import type { IconName } from '$lib/components/Icon.svelte';
  * order here and every surface moves together.
  *
  * The sitemap is deliberately NOT derived from this. Its section order answers a
- * different question — crawl budget and per-locale coverage, so `chapters-*`
- * (the big, locale-split type) leads and topics/plans fold into the small
- * `pages` tail — not "what order does a reader meet these in". See `sitemap.ts`.
+ * different question — crawl budget and per-locale coverage, with topics/plans
+ * folded into the small `pages` tail — not "what order does a reader meet these
+ * in". See `sitemap.ts`.
  */
 
 /** A primary content destination: earns a top-nav slot and a footer link. */

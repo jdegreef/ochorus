@@ -754,48 +754,98 @@ class DeployCheckTests(TestCase):
         self.assertEqual(res.data["status"], "pending")
 
     # --- The split sitemap ---------------------------------------------------
-    # sitemap.xml is a <sitemapindex> over per-type children, so the locale's
-    # own URLs are no longer in the file this fetches. The check reads the
-    # CHILD'S NAME instead — a locale gets a chapters-<code> child only once
-    # the built site really carries its chapters, which is the question. Read
-    # for the flat shape only, this would have reported "pending" forever, on
-    # the dashboard whose whole point is not to say the deploy landed when it
-    # hasn't (and not to say it hasn't when it has).
+    # sitemap.xml is a <sitemapindex> over per-type children, and chapters are no
+    # longer advertised, so the index names no locale at all. The check fetches
+    # the PAGES child and looks for this locale's static-page URLs (/<code>/) —
+    # every advertised locale has those unconditionally, so the URL confirms the
+    # build included the locale. Read for the flat shape only, this would report
+    # "pending" forever, on the dashboard whose whole point is not to say the
+    # deploy landed when it hasn't (and not to say it hasn't when it has).
 
     def _index(self, *children):
         locs = "".join(f"<sitemap><loc>https://ochorus.test/{c}</loc></sitemap>" for c in children)
         return mock.Mock(ok=True, text=f"<sitemapindex>{locs}</sitemapindex>")
 
-    def test_deployed_when_the_index_links_the_locales_chapter_sitemap(self):
+    def _pages(self, *paths):
+        locs = "".join(f"<url><loc>https://ochorus.test/{p}</loc></url>" for p in paths)
+        return mock.Mock(ok=True, text=f"<urlset>{locs}</urlset>")
+
+    def _route(self, index, pages):
+        # verify_deployed fetches /sitemap.xml first, then /sitemap-pages.xml.
+        def side_effect(url, *args, **kwargs):
+            return pages if url.endswith("/sitemap-pages.xml") else index
+
+        return side_effect
+
+    def test_deployed_when_the_pages_child_lists_this_locale(self):
         with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
             with self._perm():
                 with mock.patch("library.golive.requests.get") as get:
-                    get.return_value = self._index(
-                        "sitemap-chapters-en.xml", "sitemap-chapters-ar.xml", "sitemap-books.xml"
+                    get.side_effect = self._route(
+                        self._index("sitemap-pages.xml", "sitemap-books.xml"),
+                        self._pages("ar/", "ar/books", "es/", "es/books"),
                     )
                     res = self.client.get("/api/admin/languages/ar/deploy-check/")
         self.assertEqual(res.data["status"], "deployed")
 
-    def test_pending_when_the_index_has_no_child_for_this_locale(self):
+    def test_deployed_for_a_live_locale_that_has_no_books_yet(self):
+        # The whole reason the signal is the PAGES child, not the books child: a
+        # locale can be live (advertised, static pages built) with zero books —
+        # a forced go-live, or a sermons-only locale. Its pages child carries
+        # `/ar/` but no `/ar/books/…`, and it must still read as deployed. If this
+        # ever fails, the check has been re-narrowed to require a book URL and the
+        # false-negative is back.
         with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
             with self._perm():
                 with mock.patch("library.golive.requests.get") as get:
-                    get.return_value = self._index(
-                        "sitemap-chapters-en.xml", "sitemap-books.xml"
+                    get.side_effect = self._route(
+                        self._index("sitemap-pages.xml"),
+                        self._pages("ar/", "ar/about", "ar/sermons"),
+                    )
+                    res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "deployed")
+
+    def test_pending_when_the_pages_child_lacks_this_locale(self):
+        with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
+            with self._perm():
+                with mock.patch("library.golive.requests.get") as get:
+                    get.side_effect = self._route(
+                        self._index("sitemap-pages.xml"),
+                        self._pages("es/", "es/about"),
                     )
                     res = self.client.get("/api/admin/languages/ar/deploy-check/")
         self.assertEqual(res.data["status"], "pending")
 
-    def test_another_locales_child_is_not_mistaken_for_this_one(self):
-        # A substring check against the whole index would let any child whose
-        # name merely CONTAINS the code pass. Matching the full child URL is
-        # what keeps "ar" from being found inside a future "chapters-ar-EG".
+    def test_another_locales_pages_are_not_mistaken_for_this_one(self):
+        # A bare substring of the code would let "ar" match inside a future
+        # "ar-EG". Pinning it to a whole path segment ("/ar/") is what keeps a
+        # regional child from being read as its base language.
         with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
             with self._perm():
                 with mock.patch("library.golive.requests.get") as get:
-                    get.return_value = self._index("sitemap-chapters-ar-EG.xml")
+                    get.side_effect = self._route(
+                        self._index("sitemap-pages.xml"),
+                        self._pages("ar-EG/", "ar-EG/about"),
+                    )
                     res = self.client.get("/api/admin/languages/ar/deploy-check/")
         self.assertEqual(res.data["status"], "pending")
+
+    def test_unknown_when_the_pages_child_cannot_be_fetched(self):
+        # The index is fine but its pages child is unreachable — that is a
+        # "don't know", not a "not deployed": reporting failure here would cry
+        # wolf on a transient hiccup.
+        import requests as _requests
+
+        def side_effect(url, *args, **kwargs):
+            if url.endswith("/sitemap-pages.xml"):
+                raise _requests.RequestException("boom")
+            return self._index("sitemap-pages.xml")
+
+        with self.settings(PUBLIC_SITE_URL="https://ochorus.test"):
+            with self._perm():
+                with mock.patch("library.golive.requests.get", side_effect=side_effect):
+                    res = self.client.get("/api/admin/languages/ar/deploy-check/")
+        self.assertEqual(res.data["status"], "unknown")
 
 
 class AdminDashboardLanguageListTests(TestCase):

@@ -1,11 +1,13 @@
 /**
  * The child sitemaps — one route serving every section.
  *
- * One dynamic route rather than nine files: the sections are one list
- * (`$lib/sitemap`), and splitting them across routes would mean a new
- * directory every time a locale goes live. This way a launch adds its
- * `chapters-<code>` child on the next build with no hand-edit, exactly as the
- * flat sitemap gained a locale's URLs before the split.
+ * One dynamic route rather than a file per section: the sections are one list
+ * (`$lib/sitemap`), and splitting them across routes would mean a new directory
+ * every time the set changes. This way whatever `sections()` returns is served
+ * with no hand-edit — and were the per-locale `chapters-<code>` children ever
+ * restored (see `sections()`), a launch would add its child on the next build
+ * with no new route, exactly as the flat sitemap gained a locale's URLs before
+ * the split.
  */
 import { error } from '@sveltejs/kit';
 import type { EntryGenerator } from './$types';

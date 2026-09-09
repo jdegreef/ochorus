@@ -10,6 +10,12 @@
  * at 2,975 URLs / 1.6 MB the file is nowhere near the protocol's 50,000-URL,
  * 50 MB ceilings and will not be this decade.
  *
+ * LATER: chapters are no longer ADVERTISED at all — see `sections()` for why
+ * (a large "Discovered – currently not indexed" pile) and how it stays
+ * reversible. The per-locale chapter machinery below is kept intact so a
+ * restore is one line; it simply isn't linked from the index today. So the
+ * remaining index is per-TYPE only, and much smaller than the figures above.
+ *
  * WHY THIS MODULE EXISTS. Every child route needs the same catalogue, and
  * `apiFetch` only dedupes requests that are IN FLIGHT AT ONCE (see its note).
  * Children prerender at different moments, so nine routes each calling
@@ -112,19 +118,29 @@ export interface SitemapData {
 /**
  * The sections the index links and the child route serves, in index order.
  *
- * Chapters are split PER LOCALE and everything else is not, because locale is
- * the axis the coverage question actually lives on ("is Swahili indexing?")
- * and chapters are the only type big enough for the split to buy anything:
- * en is 1,264 URLs, while books/sermons/authors/pages are 130/98/175/160 and
- * would gain nothing but files.
+ * CHAPTERS ARE DELIBERATELY NOT LISTED. They are the largest slice of the site
+ * (en alone was ~1,264 URLs, ~81% of the whole index) and Search Console was
+ * reporting a large "Discovered – currently not indexed" pile against them:
+ * Google finding sitemap URLs it then declines to spend crawl budget fetching.
+ * Pulling them from the advertised set concentrates that budget on the books,
+ * authors and other landing pages the site most wants ranked. This is the same
+ * move, and the same reasoning, as dropping the verse-level scripture pages
+ * (see the `scripture` block in build()).
  *
- * This order is DELIBERATELY not the reader-facing nav order (`$lib/contentNav`).
- * It answers a crawl/coverage question — biggest, locale-split type first, and
- * topics/plans folded into the small `pages` tail — not "what order does a
- * reader meet these in", so it does not track nav/footer/palette (F2).
+ * This does NOT hide or deindex the chapters. They still prerender (the
+ * `/books/[slug]/[order]` route builds every one) and stay crawlable through
+ * each book page's chapter list — so Google reaches and may still index the
+ * ones it judges worthwhile. We simply stop *promising* the whole set in the
+ * sitemap. Fully reversible: restore the `chapters-${l}` spread below and the
+ * per-locale child machinery advertises them again, because it is kept intact
+ * on purpose — `sectionEntries` and `sectionLocale` still resolve a
+ * `chapters-<locale>` section, and `build()` still fills `data.chapters`.
+ *
+ * The remaining order is DELIBERATELY not the reader-facing nav order
+ * (`$lib/contentNav`). It answers a crawl/coverage question, not "what order
+ * does a reader meet these in", so it does not track nav/footer/palette (F2).
  */
 export const sections = (): string[] => [
-	...ADVERTISED_LOCALES.map((l) => `chapters-${l}`),
 	'books',
 	'sermons',
 	'authors',
