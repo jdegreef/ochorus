@@ -9,6 +9,9 @@
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { initials, portraitPosition } from '$lib/portraits';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	// English-only, and written in English literals for the same reason the
 	// scripture pages are: these quotations are lifted from the English works and
@@ -38,8 +41,8 @@
 	// author's bio. This also gives the index an inbound link from every author
 	// page, which is what makes /quotes a hub rather than a dead end.
 	const crumbs = $derived([
-		{ name: 'Home', href: '/' },
-		{ name: 'Quotes', href: '/quotes/' },
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.quotes'), href: '/quotes/' },
 		{ name: page.author.name, href: path }
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
@@ -97,11 +100,13 @@
 					{initials(page.author.name)}
 				</span>
 			{/if}
-			<h1 class="text-h1">{page.author.name} — in their own words</h1>
+			<h1 class="text-h1">{t('quotes.authorH1').replace('%name%', page.author.name)}</h1>
 		</div>
 		<p class="mt-2 max-w-2xl text-small text-muted">
-			{page.quotes.length} quotations, each traced to the exact paragraph it comes from. Follow
-			any of them into the full text — free, and without an account.
+			{(page.quotes.length === 1 ? t('quotes.authorIntroOne') : t('quotes.authorIntroMany')).replace(
+				'%count%',
+				String(page.quotes.length)
+			)}
 		</p>
 		<!-- The page is titled after a person but, until now, never linked to them:
 		     the byline sends a reader from the quotations to the life, books and
@@ -109,7 +114,7 @@
 		     so an /authors page always exists to receive it. -->
 		<p class="mt-3 text-small">
 			<a class="byline" href={`/authors/${page.author.slug}/`}
-				>Read {page.author.name}’s biography, books and sermons →</a
+				>{t('quotes.readBio').replace('%name%', page.author.name)}</a
 			>
 		</p>
 	</header>
@@ -118,11 +123,11 @@
 	     Prayer"). Only themes with enough of their quotations to stand on their
 	     own appear, so a chip never leads to a thin page. -->
 	{#if page.topics.length > 0}
-		<nav class="chips" aria-label="Quotes by topic">
-			{#each page.topics as t (t.slug)}
-				<a href={authorTopicHref(page.author.slug, t.slug)}>
-					on {onPhrase(t.title)}
-					<span class="n">{t.count}</span>
+		<nav class="chips" aria-label={t('quotes.byTopic')}>
+			{#each page.topics as topic (topic.slug)}
+				<a href={authorTopicHref(page.author.slug, topic.slug)}>
+					{t('quotes.onPhrase').replace('%phrase%', onPhrase(topic.title))}
+					<span class="n">{topic.count}</span>
 				</a>
 			{/each}
 		</nav>
@@ -131,7 +136,7 @@
 	<!-- Jump row: sixty cards is a long scroll, and the works are the one
 	     structure a reader can predict. Same pattern as /scripture. -->
 	{#if groups.length > 1}
-		<nav class="jump" aria-label="Jump to a work">
+		<nav class="jump" aria-label={t('quotes.jumpToWork')}>
 			{#each groups as g (g.id)}
 				<a href={`#${g.id}`} style={`--hue: ${g.hue}`}>{g.work}</a>
 			{/each}
