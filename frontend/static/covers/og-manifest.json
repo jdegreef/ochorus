@@ -1579,6 +1579,13 @@
    "art": false,
    "scrim": 1
   },
+  "thoughts-for-the-quiet-hour": {
+   "ground": "8bcdb26672bb3c79f1fd82e587144ef849f37f77fa64e5cec03bba4e2f9db134",
+   "style": "revival",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
   "till-he-come": {
    "ground": "1ae45f712ce4ce16bb57ee55b791ad6e3bca46c447b1417c6d0e48eb1a516a5f",
    "style": "revival",

@@ -118,6 +118,7 @@ TOPICS = [
             "days-of-heaven-upon-earth",
             "morning-by-morning",
             "evening-by-evening",
+            "thoughts-for-the-quiet-hour",
             "the-fourfold-gospel",
             "soar-like-the-eagle-3",
             "waiting-on-god",
