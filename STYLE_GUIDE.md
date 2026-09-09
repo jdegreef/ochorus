@@ -302,6 +302,21 @@ weight 600, a 150ms transition).
 - Hover: default → `--surface` + accent-soft border; primary → border to `--accent`.
 - ❌ Don't invent bespoke button styles per page — extend the system.
 
+### Favourite / saved state — one control, one colour
+
+There is **one** save control: **`<FavoriteButton>`** (author / book / plan /
+sermon). It renders on the `.btn` family in two shapes — a labelled `.btn-sm`
+for a leaf-page action row, an icon-only `.btn-icon` for a reader toolbar
+beside the other toggles — never a bespoke pill.
+
+- **Saved reads the same everywhere:** the heart **fills in solid** and tints
+  **`--accent`** (via the same `text-accent` active convention every reader
+  toggle uses — bookmark, listen, outline). One state, one colour, on every
+  surface.
+- **`--danger` is destructive-only** (remove, clear, delete, form errors) — it
+  never means "saved". A favourite is not an error, so it doesn't wear the
+  error colour.
+
 ### Page header
 
 Every top-level browse page uses **`<PageHeader>`** — optional eyebrow, `<h1>`,
