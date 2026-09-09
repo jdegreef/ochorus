@@ -8,6 +8,7 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import ScriptureEpigraph from '$lib/components/ScriptureEpigraph.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 
 	// English-only, and written in English literals for the same reason the
 	// author page is: these quotations are lifted from the English works.
@@ -102,6 +103,8 @@
 		<a href={`/quotes/topics/${topic.slug}/`}>More quotes on {phrase} →</a>
 		<a href={`/quotes/${page.author.slug}/`}>All {page.author.name} quotes →</a>
 	</nav>
+
+	<AccountCta action={`follow ${page.author.name} and the themes you love`} />
 </div>
 
 <style>
