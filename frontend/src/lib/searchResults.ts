@@ -14,6 +14,7 @@
  * counting is the half that has been wrong twice.
  */
 import { portraitPosition } from '$lib/portraits';
+import { scripturePageHref } from '$lib/library-public';
 import type { ChapterHit, SearchHit, SearchType } from '$lib/library-public';
 import { chapterName } from './reading';
 
@@ -127,11 +128,7 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 			return {
 				key: `scripture:${hit.book_slug}:${hit.chapter}:${hit.verse ?? ''}`,
 				label: ctx.label('scripture'),
-				// /scripture/<book>/<chapter>/ with a trailing <verse>/ for a verse
-				// page — the same shape scriptureUrl() and the page chips build.
-				href:
-					`/scripture/${hit.book_slug}/${hit.chapter}/` +
-					(hit.verse ? `${hit.verse}/` : ''),
+				href: scripturePageHref(hit.book_slug, hit.chapter, hit.verse),
 				title: hit.reference,
 				meta: '',
 				snippet: hit.snippet,

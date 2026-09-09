@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { search, type SearchHit } from '$lib/library-public';
+	import { search, scripturePageHref, type SearchHit } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -59,7 +59,7 @@
 			case 'article':
 				return { key: 'article:' + h.article_slug, kind: 'hit', label: t('search.typeArticle'), title: h.article_title, meta: '', href: `/articles/${h.article_slug}` };
 			case 'scripture':
-				return { key: `scripture:${h.book_slug}:${h.chapter}:${h.verse ?? ''}`, kind: 'hit', label: t('search.typeScripture'), title: h.reference, meta: '', href: `/scripture/${h.book_slug}/${h.chapter}/` + (h.verse ? `${h.verse}/` : '') };
+				return { key: `scripture:${h.book_slug}:${h.chapter}:${h.verse ?? ''}`, kind: 'hit', label: t('search.typeScripture'), title: h.reference, meta: '', href: scripturePageHref(h.book_slug, h.chapter, h.verse) };
 			case 'sermon':
 				return { key: 'sermon:' + h.sermon_slug, kind: 'hit', label: t('search.typeSermon'), title: h.sermon_title, meta: h.author_name, href: `/sermons/${h.sermon_slug}` };
 			default:

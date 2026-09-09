@@ -53,7 +53,10 @@ MIN_QUERY_LEN = 2
 # whose title *is* the query is almost always what the reader wants.
 ENTITY_BOOST = 1.6
 
-# Per-type caps so one kind can't crowd the others out of the merged list.
+# Per-type caps so one kind can't crowd the others out of the merged list. This
+# is the set of QUERYSET-backed types; "scripture" is deliberately absent — it is
+# a synthesized, reference-triggered hit with no queryset, handled out of band in
+# page_by_type and led directly in search_library (see _scripture_page_hits).
 CAPS = {
     "author": 5,
     "book": 8,
@@ -668,6 +671,10 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
         if n:
             counts[kind] = n
             capped[kind] = n >= COUNT_CEILING
+    # "scripture" is intentionally uncounted: it has no queryset, and a reference
+    # resolves to 0-or-1 page, so the frontend's `totals[type] ?? loaded` fallback
+    # lands on the single loaded row exactly. Counting it would mean re-running
+    # the resolver here for no gain.
     return counts, capped
 
 
@@ -850,38 +857,15 @@ def _lead(text: str, n: int = 160) -> str:
     return text[:n] + ("…" if len(text) > n else "")
 
 
-def _scripture_page_hit(page: dict) -> dict:
-    """A synthesized scripture page as a navigational hit.
-
-    ``page`` is what ``scripture_graph.pages_for`` returns — ``book`` slug,
-    ``chapter``, and ``verse`` (None for a whole-chapter page). No prose of its
-    own (the page is an aggregation), so no snippet; no date to sort by. The
-    ``reference`` is the human label the row shows ("Romans 8:28" / "Romans 8"),
-    and the client builds the ``/scripture/<book>/<chapter>[/<verse>]`` link from
-    book_slug/chapter/verse, exactly as the chapter-page chips do.
-    """
-    from .scripture_graph import book_from_slug, reference_label
-
-    book = book_from_slug(page["book"])
-    verse = page.get("verse")
-    return {
-        "type": "scripture",
-        "book_slug": page["book"],
-        "chapter": page["chapter"],
-        "verse": verse,
-        "reference": reference_label(book, page["chapter"], verse) if book else "",
-        "snippet": "",
-        "date": "",
-    }
-
-
 def _scripture_page_hits(q, language, scope=None):
     """The scripture HUB page for a reference query, when one has earned a URL.
 
     Reference-triggered like ``_scripture_sermon_hits`` / ``_scripture_chapter_hits``
     (returns [] when ``q`` isn't a reference), but a single NAVIGATIONAL result:
     a link to the ``/scripture/<book>/<chapter>[/<verse>]`` page that gathers
-    everything treating the passage, led above those individual passages.
+    everything treating the passage, led above those individual passages. The
+    row carries no prose (the page is an aggregation) and no date to sort by; the
+    client builds the link from book_slug/chapter/verse, as the page chips do.
 
     ``scripture_graph.pages_for`` is the one floor-respecting resolver (the same
     rule the pages, sitemap and inline links use), so a hit is emitted only where
@@ -889,13 +873,32 @@ def _scripture_page_hits(q, language, scope=None):
     English-only (built from English citations, ASV text) and are global hubs, so
     nothing fires for a non-English reader or inside a scope — mirroring how the
     footer and command palette gate ``/scripture``.
+
+    Returns AT MOST ONE hit — a query resolves to a single page. That invariant
+    is load-bearing downstream: scripture is deliberately absent from ``CAPS`` and
+    ``count_by_type`` (it has no queryset), so the facet's count falls back to the
+    one loaded row, which is exact only because the count is 0-or-1.
     """
     if scope or language != "en":
         return []
-    from .scripture_graph import pages_for
+    from .scripture_graph import book_from_slug, pages_for, reference_label
 
     page = pages_for([q]).get(q)
-    return [_scripture_page_hit(page)] if page else []
+    if not page:
+        return []
+    book = book_from_slug(page["book"])
+    verse = page.get("verse")
+    return [
+        {
+            "type": "scripture",
+            "book_slug": page["book"],
+            "chapter": page["chapter"],
+            "verse": verse,
+            "reference": reference_label(book, page["chapter"], verse) if book else "",
+            "snippet": "",
+            "date": "",
+        }
+    ]
 
 
 def _scripture_sermon_hits(q, sermons, base):

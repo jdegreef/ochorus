@@ -907,6 +907,14 @@ export const getScripturePage = (book: string, chapter: number, verse?: number) 
 		`/api/library/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '')
 	);
 
+/**
+ * The reader-facing scripture page URL — `/scripture/<book>/<chapter>/` with a
+ * trailing `<verse>/` for a verse page. One place for the shape the search hit
+ * and the command palette both link to; `null`/`0` verse means the whole chapter.
+ */
+export const scripturePageHref = (book: string, chapter: number, verse: number | null): string =>
+	`/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '');
+
 // --- Quotes -------------------------------------------------------------------
 // Sourced quotations, by author. English-only for the same reason the scripture
 // graph is: they are lifted from the English works, and the citation names an
