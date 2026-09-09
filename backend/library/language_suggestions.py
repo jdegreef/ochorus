@@ -66,6 +66,7 @@ LANGUAGE_REFERENCE: dict[str, tuple[str, int]] = {
     "ko": ("한국어", 82),
     "it": ("Italiano", 68),
     "gu": ("ગુજરાતી", 62),
+    "am": ("አማርኛ", 57),
     "yo": ("Yorùbá", 46),
     "pl": ("Polski", 45),
     "my": ("မြန်မာဘာသာ", 43),
