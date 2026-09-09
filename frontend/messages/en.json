@@ -629,5 +629,12 @@
   "storage_save_failed": "Couldn't save to this device — your notes and reading place may not be kept (storage full or private browsing).",
   "undo_removed": "Removed",
   "undo_action": "Undo",
-  "undo_note_cleared": "Note cleared"
+  "undo_note_cleared": "Note cleared",
+  "articles_empty_index": "No articles yet — check back soon.",
+  "articles_empty_topic": "No articles under that topic.",
+  "articles_filter_by_topic": "Filter articles by topic",
+  "articles_tagline": "Short readings on prayer, faith and the life with God — each one written to send you on to a classic worth reading in full.",
+  "articles_on_this_page": "On this page",
+  "articles_read_next": "Read next",
+  "articles_kind_biography": "Biography"
 }

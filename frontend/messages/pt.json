@@ -629,5 +629,12 @@
   "storage_save_failed": "Não foi possível salvar neste dispositivo — suas notas e ponto de leitura podem não ser mantidos (armazenamento cheio ou navegação privada).",
   "undo_removed": "Removido",
   "undo_action": "Desfazer",
-  "undo_note_cleared": "Nota apagada"
+  "undo_note_cleared": "Nota apagada",
+  "articles_empty_index": "Ainda não há artigos — volte em breve.",
+  "articles_empty_topic": "Não há artigos sobre esse tema.",
+  "articles_filter_by_topic": "Filtrar artigos por tema",
+  "articles_tagline": "Leituras breves sobre oração, fé e a vida com Deus — cada uma escrita para levá-lo a um clássico que vale a pena ler por inteiro.",
+  "articles_on_this_page": "Nesta página",
+  "articles_read_next": "Leia a seguir",
+  "articles_kind_biography": "Biografia"
 }

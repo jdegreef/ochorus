@@ -629,5 +629,12 @@
   "storage_save_failed": "Imeshindwa kuhifadhi kwenye kifaa hiki — maelezo yako na mahali pa kusoma yanaweza yasihifadhiwe (hifadhi imejaa au unatumia hali ya faragha).",
   "undo_removed": "Imeondolewa",
   "undo_action": "Tendua",
-  "undo_note_cleared": "Dokezo limefutwa"
+  "undo_note_cleared": "Dokezo limefutwa",
+  "articles_empty_index": "Bado hakuna makala — angalia tena hivi karibuni.",
+  "articles_empty_topic": "Hakuna makala chini ya mada hiyo.",
+  "articles_filter_by_topic": "Chuja makala kwa mada",
+  "articles_tagline": "Masomo mafupi kuhusu sala, imani na maisha pamoja na Mungu — kila moja limeandikwa kukupeleka kwenye kitabu cha kale kinachostahili kusomwa kizima.",
+  "articles_on_this_page": "Kwenye ukurasa huu",
+  "articles_read_next": "Soma inayofuata",
+  "articles_kind_biography": "Wasifu"
 }

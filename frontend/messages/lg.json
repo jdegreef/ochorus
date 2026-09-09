@@ -629,5 +629,12 @@
   "storage_save_failed": "Tekisobodde kutereka ku kyuma kino — ebiwandiiko byo n'ekifo w'osoma biyinza obutakuumibwa (etterekero lijjudde oba ok(w)ozesa engeri ey'ekyama).",
   "undo_removed": "Kiggyiddwawo",
   "undo_action": "Zzaawo",
-  "undo_note_cleared": "Ekiwandiiko kisaziddwaamu"
+  "undo_note_cleared": "Ekiwandiiko kisaziddwaamu",
+  "articles_empty_index": "Tewali biwandiiko kati — komawo mangu.",
+  "articles_empty_topic": "Tewali biwandiiko ku mulamwa ogwo.",
+  "articles_filter_by_topic": "Sengejja ebiwandiiko okusinziira ku mulamwa",
+  "articles_tagline": "Ebisomebwa ebimpi ku kusaba, okukkiriza n’obulamu ne Katonda — buli kimu kiwandiikiddwa okukutwala ku kitabo eky’edda ekisaanira okusomebwa kyonna.",
+  "articles_on_this_page": "Ku lupapula luno",
+  "articles_read_next": "Soma ekiddako",
+  "articles_kind_biography": "Ebyafaayo"
 }

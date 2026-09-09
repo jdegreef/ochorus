@@ -629,5 +629,12 @@
   "storage_save_failed": "تعذّر الحفظ على هذا الجهاز — قد لا تُحفظ ملاحظاتك وموضع قراءتك (التخزين ممتلئ أو التصفح الخاص).",
   "undo_removed": "تمت الإزالة",
   "undo_action": "تراجع",
-  "undo_note_cleared": "تم مسح الملاحظة"
+  "undo_note_cleared": "تم مسح الملاحظة",
+  "articles_empty_index": "لا توجد مقالات بعد — تحقّق لاحقًا.",
+  "articles_empty_topic": "لا توجد مقالات ضمن هذا الموضوع.",
+  "articles_filter_by_topic": "تصفية المقالات حسب الموضوع",
+  "articles_tagline": "قراءات قصيرة عن الصلاة والإيمان والحياة مع الله — كُتبت كلٌّ منها لتقودك إلى عمل كلاسيكي يستحق أن يُقرأ كاملًا.",
+  "articles_on_this_page": "في هذه الصفحة",
+  "articles_read_next": "اقرأ بعد ذلك",
+  "articles_kind_biography": "سيرة"
 }
