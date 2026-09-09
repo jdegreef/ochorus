@@ -1556,6 +1556,8 @@ nav.appnav .navsearch:hover {
 	border: 1px solid var(--border);
 	border-radius: var(--radius-card);
 	background: var(--surface);
+	/* The whole row is a click target: open the brief, then go to the sermon. */
+	cursor: pointer;
 	/* Tint recipe (motion + text-decoration) comes from .card-tint in the
 	   markup; only the hue-mixed border and ground below are the row's own. */
 }
