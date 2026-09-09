@@ -1,0 +1,266 @@
+{
+  "kind": "sermon",
+  "slug": "the-method-of-grace",
+  "language": "fr",
+  "job_issue": 1983,
+  "pull_request": 1995,
+  "references": [
+    {
+      "reference": "Jeremiah 6:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 7:15",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ezekiel 13:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 30:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 2:17",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Jeremiah 6:13",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Jeremiah 6:11-12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Philippians 4:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Acts 20:27",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Acts 20:26",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 17:21",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 2:28-29",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:8",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ezekiel 18:20",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Galatians 3:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 6:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 13:26",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 38:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 2:3",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 7:24",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 64:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 8:8",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 14:23",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "James 2:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 16:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 11:28",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 5:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 28:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 10:30",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Zechariah 2:8",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 Corinthians 3:22-23",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 8:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 12:3",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Philippians 3:13",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 4:30",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 10:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Revelation 3:17-18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Revelation 3:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Zephaniah 1:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 2:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 8:34",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Hebrews 10:29",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 20:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 20:17",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Mark 16:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 14:27",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Hosea 14:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ezekiel 36:26",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 119:165",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 57:21",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 14:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 33:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 5:20",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Galatians 6:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Hebrews 10:31",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 18:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Revelation 6:16",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 25:41",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Philippians 3:21",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 4:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ezekiel 16:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 5:17",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 12:2",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Acts 4:13",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session French translation: all references are self_rendered from Louis Segond (1910) by recall. Verify each against the French Bible during native review."
+}
