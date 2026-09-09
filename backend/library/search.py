@@ -212,7 +212,14 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
     # article hit can only surface for an English query, and a future translation
     # ungates itself the moment its row exists. Nothing here is inside a scope
     # (an article has no author/topic/book to live under), so _scoped drops it.
-    articles = Article.objects.filter(is_published=True, language=language)
+    # defer the two big unused columns: search reads only the titling fields
+    # (h1/meta_title/description for the vector, h1/description/slug/date for the
+    # hit), so pulling each matched article's full body_html and `related` JSON
+    # across the wire per keystroke is pure waste — the other entities have no
+    # such blob to pay for.
+    articles = Article.objects.filter(is_published=True, language=language).defer(
+        "body_html", "related"
+    )
     topics = Topic.objects.filter(is_published=True).prefetch_related("translations")
     if language != "en":
         # A shelf with no title in this language doesn't exist here (see
@@ -251,24 +258,20 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
 def search_library(q: str, language: str, scope=None) -> list[dict]:
     """Ranked search hits for ``q`` in ``language``.
 
-    Entities (books, authors, topics, plans) plus passages (chapters, sermons),
-    merged and capped at ``MAX_RESULTS``. ``scope`` narrows the search to one
-    author / topic / book — see ``_scoped``.
+    Entities (books, authors, topics, plans, articles) plus passages (chapters,
+    sermons), merged and capped at ``MAX_RESULTS``. ``scope`` narrows the search
+    to one author / topic / book — see ``_scoped``.
     """
     qs = _base_querysets(language, scope)
-    authors, books, topics = qs["author"], qs["book"], qs["topic"]
-    plans, articles = qs["plan"], qs["article"]
+    # Only the two kinds the scripture-reference pass below still needs by name;
+    # the per-type search itself now takes the whole dict (like count_by_type).
     chapters, sermons = qs["chapter"], qs["sermon"]
 
     ctx = _Ctx(q=q, language=language)
     if connection.vendor == "postgresql":
-        base = _search_postgres(
-            ctx, authors, books, topics, plans, articles, chapters, sermons
-        )
+        base = _search_postgres(ctx, qs)
     else:
-        base = _search_fallback(
-            ctx, authors, books, topics, plans, articles, chapters, sermons
-        )
+        base = _search_fallback(ctx, qs)
 
     # If the query is itself a scripture reference, lead with everything that
     # engages the passage — sermons preached on an overlapping text, then
@@ -305,12 +308,16 @@ class _Ctx:
 # --- Postgres -----------------------------------------------------------------
 
 
-def _search_postgres(ctx, authors, books, topics, plans, articles, chapters, sermons):
+def _search_postgres(ctx, qs):
     from django.contrib.postgres.search import (
         SearchHeadline,
         SearchQuery,
         SearchRank,
     )
+
+    authors, books, topics = qs["author"], qs["book"], qs["topic"]
+    plans, articles = qs["plan"], qs["article"]
+    chapters, sermons = qs["chapter"], qs["sermon"]
 
     config = config_for(ctx.language)
     query = SearchQuery(ctx.q, config=config, search_type="websearch")
@@ -380,7 +387,11 @@ def _search_postgres(ctx, authors, books, topics, plans, articles, chapters, ser
 # --- SQLite fallback (dev) ----------------------------------------------------
 
 
-def _search_fallback(ctx, authors, books, topics, plans, articles, chapters, sermons):
+def _search_fallback(ctx, qs):
+    authors, books, topics = qs["author"], qs["book"], qs["topic"]
+    plans, articles = qs["plan"], qs["article"]
+    chapters, sermons = qs["chapter"], qs["sermon"]
+
     q = ctx.q
     author_hits = [
         _author_hit(a, ctx)
