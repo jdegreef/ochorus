@@ -1,0 +1,98 @@
+{
+  "kind": "sermon",
+  "slug": "blessed-adversity",
+  "language": "fr",
+  "job_issue": 1979,
+  "pull_request": 1989,
+  "references": [
+    {
+      "reference": "Psalm 23:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 8:28",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 5:3-5",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 1:8",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 2:3",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Philippians 4:4-7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 1:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 1:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 2:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 1:21",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 1:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 2:5",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 2:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 19:17",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 18:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 30:5",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Genesis 1:5",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 6:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 6:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 2:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 8:31",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 8:37",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session French translation: all references are self_rendered from Louis Segond (1910) by recall. Verify each against the French Bible during native review."
+}
