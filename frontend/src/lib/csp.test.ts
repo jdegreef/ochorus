@@ -31,17 +31,15 @@ import { cspDirectives as CSP_DIRECTIVES } from '../../csp.config.js';
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 const RENDER_YAML = path.join(REPO_ROOT, 'render.yaml');
 const APP_HTML = path.resolve(__dirname, '../app.html');
+const SVELTE_CONFIG = path.resolve(__dirname, '../../svelte.config.js');
 const SRC = path.resolve(__dirname, '..');
 
 /**
- * CSP directives as configured in svelte.config.js. SvelteKit writes keyword
- * sources without the CSP quotes (`self`, not `'self'`), so assertions below
- * use that unquoted form. Hash/`unsafe-hashes` sources are written verbatim.
+ * The CSP directives, as configured. SvelteKit writes keyword sources without
+ * the CSP quotes (`self`, not `'self'`), so assertions below use that unquoted
+ * form; hash/`unsafe-hashes` sources are written verbatim.
  */
-function cspDirectives(): Record<string, string[]> {
-	expect(CSP_DIRECTIVES, 'cspDirectives missing from csp.config.js').toBeTruthy();
-	return CSP_DIRECTIVES as Record<string, string[]>;
-}
+const csp = CSP_DIRECTIVES as Record<string, string[]>;
 
 /** The web service's non-CSP headers, read straight out of render.yaml. */
 function webHeaders(): Record<string, string> {
@@ -146,8 +144,20 @@ describe('render.yaml non-CSP security headers', () => {
 });
 
 describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
+	it('is actually wired into kit.csp in hash mode', () => {
+		// This suite asserts the directives object; that only ships a CSP if
+		// svelte.config.js still feeds it to `kit.csp` in hash mode. Without this
+		// check, deleting the `csp:` line (or switching off hash mode) would drop
+		// the policy from the built pages while every other test stayed green —
+		// the exact silent-in-production failure this file exists to prevent.
+		const config = fs.readFileSync(SVELTE_CONFIG, 'utf8');
+		expect(config).toMatch(/mode:\s*['"]hash['"]/);
+		expect(config).toMatch(/directives:\s*cspDirectives/);
+		expect(config).toMatch(/import\s*\{\s*cspDirectives\s*\}\s*from\s*['"]\.\/csp\.config\.js['"]/);
+	});
+
 	it('locks the directives that hold the line', () => {
-		const d = cspDirectives();
+		const d = csp;
 		expect(d['frame-ancestors']).toEqual(['none']);
 		expect(d['object-src']).toEqual(['none']);
 		expect(d['base-uri']).toEqual(['self']);
@@ -156,7 +166,7 @@ describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
 	});
 
 	it('does NOT allow unsafe-inline scripts — the whole point of hash mode', () => {
-		const script = cspDirectives()['script-src'];
+		const script = csp['script-src'];
 		expect(script).toBeTruthy();
 		expect(script).not.toContain('unsafe-inline');
 		// A hash source proves inline scripts are admitted by hash, not blanket.
@@ -168,7 +178,7 @@ describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
 		// its hash is pinned by hand in the config. If app.html changes and the
 		// hash is not updated, the boot script would be blocked in production —
 		// fail here instead.
-		const script = cspDirectives()['script-src'];
+		const script = csp['script-src'];
 		expect(
 			script,
 			`script-src is missing the app.html theme-boot hash. app.html changed — ` +
@@ -180,7 +190,7 @@ describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
 		// connect-src is the control that stops an injected script posting the
 		// localStorage access token off-origin, so "*" would give the whole
 		// policy away.
-		const connect = cspDirectives()['connect-src'];
+		const connect = csp['connect-src'];
 		expect(connect).toBeTruthy();
 		expect(connect).not.toContain('*');
 		expect(connect.some((s) => s.startsWith('http://'))).toBe(false);
@@ -191,19 +201,19 @@ describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
 		// Anyone can create a free `<ref>.supabase.co`, so `*.supabase.co` would let
 		// an injected script POST the localStorage token to an attacker-controlled
 		// Supabase project — the exact exfiltration connect-src exists to stop.
-		const connect = cspDirectives()['connect-src'];
+		const connect = csp['connect-src'];
 		expect(connect.some((s) => s.includes('*.supabase.co'))).toBe(false);
 		expect(connect.some((s) => /^https:\/\/[a-z0-9]+\.supabase\.co$/.test(s))).toBe(true);
 	});
 
 	it('covers every host the app actually fetches', () => {
-		const connect = cspDirectives()['connect-src'];
+		const connect = csp['connect-src'];
 		const used = [...originsUsedInSource()];
 		// Guard against the scan silently matching nothing and passing vacuously.
 		expect(used.length).toBeGreaterThan(0);
-		// Normalise `self` → https:// origins are compared by host in covers().
-		const sources = connect.map((s) => (s === 'self' ? "'self'" : s));
-		const uncovered = used.filter((o) => !covers(sources, o));
+		// `self` never covers an external origin, so it falls through covers()
+		// harmlessly — only the https:// hosts are matched, by host.
+		const uncovered = used.filter((o) => !covers(connect, o));
 		expect(
 			uncovered,
 			`These hosts are fetched in src/ but are not in the CSP connect-src ` +
