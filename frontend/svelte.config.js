@@ -2,6 +2,8 @@ import adapter from '@sveltejs/adapter-static';
 
 import { readFileSync } from 'node:fs';
 
+import { cspDirectives } from './csp.config.js';
+
 /** Non-English UI locales, read from the inlang project (the source of truth). */
 const LOCALES = JSON.parse(
 	readFileSync(new URL('./project.inlang/settings.json', import.meta.url), 'utf8')
@@ -19,6 +21,13 @@ const config = {
 		// fallback. (SEO prerendering can be added later for the web target.)
 		adapter: adapter({ fallback: '200.html' }),
 		paths: { relative: false },
+		// Content-Security-Policy in `hash` mode: SvelteKit computes the hash of
+		// each inline script it emits (the per-build bootstrap) at build time and
+		// injects the policy as a <meta> on every prerendered page + the 200.html
+		// fallback. This is what lets `script-src` drop `'unsafe-inline'`. The
+		// directives (and the rationale) live in ./csp.config.js — a plain-data
+		// module so src/lib/csp.test.ts can assert them without running this file.
+		csp: { mode: 'hash', directives: cspDirectives },
 		// We register src/service-worker.ts ourselves (see lib/pwa.svelte.ts) so we
 		// can surface an "update available" prompt instead of updating silently.
 		serviceWorker: { register: false },
