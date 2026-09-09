@@ -859,9 +859,15 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # re-fires on every deploy (see `restore_dropped_blocks`). Restored with
         # the SOURCE's own tags, `<h3>` for the note letter and `<h4>` for its
         # subtitle (NOTE D and NOTE E have no subtitle in the print, so they get
-        # none here), and with the leading space the fixed sanitizer produces
-        # from `<h3 class="note"> <a id="note_A">` — so the guard recognises its
-        # own work, and a re-imported edition would not carry the heading twice.
+        # none here), spelled EXACTLY as the fixed sanitizer would produce them,
+        # so the guard recognises its own work and a re-imported edition would
+        # not carry the heading twice. That is PER-HEADING, not a house rule:
+        # A-G wear a leading space because the source writes
+        # `<h3 class="note"> <a id="note_A">NOTE A.</a></h3>` and the anchor
+        # leaves one behind, while ch5's bare `NOTE.` has no anchor
+        # (`<h3 class="note">NOTE.</h3>`) and so must have none. Getting that
+        # backwards breaks nothing today — it breaks on the re-import, by
+        # inserting a second heading beside the first.
         #
         # Each anchor is unique across the WHOLE book, not merely its chapter:
         # `restore_dropped_blocks` is applied to every chapter in turn, so an
@@ -874,7 +880,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # alone would orphan the note text mid-chapter.
         "restored_blocks": [
             ("<p>The connection between the fear of God and holiness is most i",
-             "<h3> NOTE.</h3>"),
+             "<h3>NOTE.</h3>"),
             ("<p>In a little book\u2014Holiness, as understood by the Writers o",
              "<h3> NOTE A.</h3> <h4>Holiness as Proprietorship.</h4>"),
             ("<p>The proper meaning of the Hebrew word for holy, <i>kadosh",
@@ -938,12 +944,23 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # anchors in these four chapters moved by one, in the same commit.
         # `tests_quotes` is what catches that, and it is the reason a body
         # repair is never only a body repair.
-        # ch9 (Notes) lost a page reference the same way the sermon texts were
-        # lost, but to the SIBLING selector — `pginternal`, decomposing the
-        # cross-reference whole: "for the press (see Introduction, p. )".
+        # ch9 (Notes) lost FIVE page references the same way the sermon texts
+        # were lost, but to the SIBLING selector — `pginternal`, decomposing the
+        # cross-reference whole and leaving "see note, p. ." for the reader to
+        # follow. Three of the five are what `english_audit`'s
+        # `space-before-punct` class pinned at 3 for this book; a fourth sits
+        # inside parentheses so that class never saw it, and the fifth is the
+        # Introduction reference. All five numbers read off #34632.
         "replacements": [
             ("for the press (see Introduction, p. ). The manuscript",
              "for the press (see Introduction, p. xxix). The manuscript"),
+            ("cf. n. here following, p. .", "cf. n. here following, p. 162."),
+            ("\u201cAnd consider here more particularly\u201d (p. ).",
+             "\u201cAnd consider here more particularly\u201d (p. 89)."),
+            # The dropped `[6]` footnote marker left a space behind the `<p>`.
+            ("</p> <p> See note, p. .", "</p> <p>See note, p. 179."),
+            ("prepared for preaching, see note p. .",
+             "prepared for preaching, see note p. 157."),
         ],
         "restored_blocks": [
             (
@@ -3146,11 +3163,13 @@ BODY_CORRECTIONS.setdefault('gleanings-among-the-sheaves', {}).setdefault("repla
     ("<h2>INDEX.</h2> PAGE 5 7 8 10 11 13 16 18 21 23 24 27 30 32 34 37 39 41 41 42 44 47 48 49 51 53 54 56 57 58 59 60 61 62 63 64 66 67 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 89 91 92 93 94 95 97 99 101 103 104 106 106 107 108 109 110 111 111 112 113 114 115 116 117 118 120 122 123 123 124 124 125 127 128 129 130 132 134 136 137 139 139 140 141 142 145 145 146 146 147 149 150 152 153 155 156 157 158 160 162 165 166 167 169 172 173 174 176 177 178 181 182 184 185 187 190 192 194 196 197 199 202 207 209 212 214 218 221 <hr/> <p>Transcriber's Notes: Blank pages have been eliminated. Variations in spelling and hyphenation have been left as in the original. A few typographical errors have been corrected. </p>", ""),
     # (Three scripture quotations also lost their opening quote in OCR — Phil
     # 4:8 ch02, Job 42:10 ch03, Ps 37:4 ch18. Those openers are repaired
-    # directly in the fixture, not here: the book is wholly straight-quoted, so
-    # the mark must be straight, and a straight-quote `new` cannot satisfy the
-    # corrections-hygiene guard, which reads the JSON-serialised fixture where a
-    # straight quote is escaped as \". Kept out of BODY_CORRECTIONS for that
-    # reason; the fixture edit is what ships them.)
+    # directly in the fixture, not here. The reason given was that a
+    # straight-quote `new` could not satisfy the corrections-hygiene guard,
+    # which read the JSON-serialised fixture where a straight quote is escaped
+    # as \" — THAT CONSTRAINT IS GONE: the guard now reads the field values, so
+    # a straight-quoted pair is fine and these three could move into
+    # BODY_CORRECTIONS if anyone wants them re-applied on every deploy. Left in
+    # the fixture for now because nothing is broken by it.)
     # ch05 dropped letter; ch08 KJV spelling; ch13 2 Pet 3:11 ("what manner of
     # persons ought ye to be", KJV) garbled to "manner or person".
     ('take way his own power', 'take away his own power'),

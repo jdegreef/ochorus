@@ -850,7 +850,7 @@ class ShelfRepairTests(SimpleTestCase):
 
     #: `holy-in-christ`'s note headings, deleted whole rather than emptied.
     HEADINGS = (
-        ("<h3> NOTE.</h3>", 5),
+        ("<h3>NOTE.</h3>", 5),
         ("<h3> NOTE A.</h3> <h4>Holiness as Proprietorship.</h4>", 33),
         ("<h3> NOTE B.</h3> <h4>On the Word for Holiness.</h4>", 33),
         ("<h3> NOTE C.</h3> <h4>The Holiness of God.</h4>", 33),
@@ -863,10 +863,11 @@ class ShelfRepairTests(SimpleTestCase):
 
     @staticmethod
     def _bodies(slug):
-        path = (Path(__file__).resolve().parent / "fixtures" / "content" /
-                "books" / f"{slug}.en.json")
+        from library.content_fixtures import book_fixture_path
+
+        path = book_fixture_path(slug, "en")
         return {r["fields"]["order"]: r["fields"]["body_html"]
-                for r in json.loads(path.read_text())
+                for r in json.loads(path.read_text(encoding="utf-8"))
                 if (r.get("fields") or {}).get("body_html")}
 
     def test_every_repair_is_in_the_shipped_fixture_exactly_once(self):
