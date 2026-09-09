@@ -13,6 +13,7 @@ from library.admin_import_views import (
 )
 from library.admin_views import (
     AdminActivityView,
+    AdminAttentionView,
     AdminAuditDismissView,
     AdminAuditView,
     AdminBookDetailView,
@@ -40,6 +41,7 @@ urlpatterns = [
     path("api/health/", health, name="health"),
     path("api/auth/me/", MeView.as_view(), name="me"),
     path("api/admin/stats/", AdminStatsView.as_view(), name="admin-stats"),
+    path("api/admin/attention/", AdminAttentionView.as_view(), name="admin-attention"),
     path("api/admin/search-stats/", AdminSearchView.as_view(), name="admin-search-stats"),
     path("api/admin/search-gap/", AdminSearchGapView.as_view(), name="admin-search-gap"),
     path("api/admin/coverage/", AdminCoverageView.as_view(), name="admin-coverage"),
