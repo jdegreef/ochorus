@@ -1,0 +1,118 @@
+{
+  "kind": "sermon",
+  "slug": "the-worlds-need",
+  "language": "fr",
+  "job_issue": 1981,
+  "pull_request": 1991,
+  "references": [
+    {
+      "reference": "Matthew 21:28",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 14:23",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Acts 8:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Acts 8:30",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Genesis 4:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 12:29",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Timothy 4:2",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Jeremiah 2:2-3",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Revelation 2:5",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 4:30",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 5:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 Thessalonians 5:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 12:26",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 69:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 6:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Jude 1:20",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Colossians 1:24",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 Peter 2:21",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 8:20",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 53:3",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 20:28",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Philippians 2:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 10:34-35",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 9:36",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 2:2",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 9:62",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 Timothy 2:8",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session French translation: all references are self_rendered from Louis Segond (1910) by recall. Verify each against the French Bible during native review."
+}
