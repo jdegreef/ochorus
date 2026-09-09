@@ -205,7 +205,7 @@
 					{@const c = continueBooks[0]}
 					<a
 						href={localizeHref(`/books/${c.book.slug}/${c.order}`)}
-						class="book-card book-card--row group !p-4 sm:max-w-md"
+						class="book-card book-card--row card-lift group !p-4 sm:max-w-md"
 					>
 						<div class="w-16 shrink-0 sm:w-20"><BookCover book={c.book} /></div>
 						<div class="min-w-0 flex-1">

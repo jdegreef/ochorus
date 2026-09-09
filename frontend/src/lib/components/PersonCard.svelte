@@ -26,7 +26,7 @@
 <a
 	href={localizeHref(`/authors/${person.slug}`)}
 	data-sveltekit-preload-data="hover"
-	class="flex items-center gap-3 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
+	class="card-tint flex items-center gap-3 rounded-card border border-border p-3"
 >
 	{#if person.photo_url}
 		<img

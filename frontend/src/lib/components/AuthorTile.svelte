@@ -17,7 +17,7 @@
 
 <a
 	href={localizeHref(`/authors/${author.slug}`)}
-	class="flex items-center gap-3 rounded-card border border-border p-4 hover:bg-surface-2 hover:no-underline"
+	class="card-tint flex items-center gap-3 rounded-card border border-border p-4"
 >
 	{#if author.photo_url}
 		<img
