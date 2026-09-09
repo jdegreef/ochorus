@@ -81,14 +81,22 @@
 <!-- One query list, three uses: top, unopened and zero-result. They differ only
      in the rows and the empty state, so the markup lives once. -->
 {#snippet queryList(rows: SearchTopQuery[])}
+	{@const max = Math.max(1, ...rows.map((r) => r.count))}
 	<ul class="space-y-2">
 		{#each rows as q (q.query)}
-			<li class="flex items-baseline justify-between gap-3">
-				<a
-					href="/search?q={encodeURIComponent(q.query)}"
-					class="min-w-0 truncate text-body text-text hover:text-accent">{q.query}</a
-				>
-				<span class="shrink-0 text-small tabular-nums text-muted">{fmt(q.count)}</span>
+			<li>
+				<div class="flex items-baseline justify-between gap-3">
+					<a
+						href="/search?q={encodeURIComponent(q.query)}"
+						class="min-w-0 truncate text-body text-text hover:text-accent">{q.query}</a
+					>
+					<span class="shrink-0 text-small tabular-nums text-muted">{fmt(q.count)}</span>
+				</div>
+				<!-- Volume bar, scaled to the top row of this list, so relative demand
+				     reads at a glance instead of comparing numbers down the column. -->
+				<div class="mt-1 h-1.5 overflow-hidden rounded-full bg-surface-2">
+					<div class="h-full rounded-full bg-accent-soft" style="width: {(q.count / max) * 100}%"></div>
+				</div>
 			</li>
 		{/each}
 	</ul>
