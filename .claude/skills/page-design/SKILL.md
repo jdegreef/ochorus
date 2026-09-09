@@ -534,9 +534,21 @@ relevant group.
   (`claude/ochorus-dev-c3b9a9-reachability`) also lands on main._
 - [ ] **F2** Sitemap lists Sermons before Topics; nav, footer and palette agree
   on Topics · Plans · Sermons. → derive all four from one list.
-- [ ] **F3** Hard-coded English chrome on the English-only hubs (`Home` crumbs,
-  `Read →`, `quotation(s)` pluralisation, empty-state copy) and on Articles,
-  whose loader says it is translation-ready. → `t()` keys now.
+- [x] **F3** _(shipped `claude/ochorus-dev-f3-hub-i18n`)_ The chrome on the
+  Articles, Scripture and Quotes hubs — `Home`/hub crumbs (which also feed the
+  BreadcrumbList JSON-LD), CTAs (`Read →`, `Browse by topic →`, `All of …`),
+  section labels, `quotation(s)`/`passage(s)`/`writer(s)` counters, empty states,
+  aria-labels, `Copy`/`Copied` — now goes through `t()`, filled for all 8
+  advertised locales (≈47 new keys). Reuses existing keys where they exist
+  (`common.home`, the `nav.*` words, `reader.previous/next`, `search.type*`).
+  Pluralisation follows the `_one`/`_many` convention; scripture counts are
+  always plural (a page exists only above the citation floor). The "deliberately
+  English" comments on the scripture pages / CitingPassages are updated: the
+  passage DATA and the SEO title/description prose stay English (they name /
+  describe English-only content), but the surrounding chrome is catalogued.
+  _Scope note: the content-embedding META title/description prose was left
+  English by decision — see the chrome-only split. Non-English strings are a
+  first pass pending native review, like the rest of the catalogues._
 - [ ] **F4** Meta: Plan and Topic can ship an empty description; slice lengths
   are 155/250/300; the reader, articles and scripture pages emit no `og:image`;
   the reader emits no BreadcrumbList. → localized fallback, one length, section
