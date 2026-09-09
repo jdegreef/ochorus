@@ -1472,6 +1472,172 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("(Job xiii. 8)", "(Job xlii. 8)"),
         ],
     },
+    "the-bruised-reed": {
+        # Pickering's 1838 printing sets every chapter's opening letter as a
+        # decorative IMAGE cap, so the text layer starts one letter short: "HE
+        # prophet Isaiah" for "THE prophet Isaiah". Three caps mis-scanned into
+        # junk rather than vanishing (ch5's F as "T,.", ch17's E as "*", ch27's
+        # O simply lost), which is a wrong string to replace, not a letter to
+        # prepend.
+        #
+        # NOT `dropcap_letters`, the natural-looking channel, which does not
+        # work here: it only fires while the body still opens LOWERCASE, and
+        # Sibbes opens every chapter on a small-caps run ("HIS bruising…"), so
+        # it never fired on the plain cases — and on the ten below it fired on
+        # the leaked tail instead, putting the letter in the wrong place
+        # ("Tand what the bruising. HE prophet").
+        #
+        # Those ten are the second defect, folded into the same pair: this
+        # edition prints a two- or three-line summary under each chapter marker,
+        # the importer takes the first line as the title, and the remainder
+        # stays as the body's opening words. Same shape as `on-loving-god`'s
+        # wrapped ALL-CAPS headings.
+        #
+        # Each pair carries ~34 characters of the following sentence, and every
+        # one was checked to occur exactly once in its own chapter and nowhere
+        # else in the book — a bare "<p>HE" would fire on any paragraph opening
+        # "HE", and four chapters share that opening.
+        "replacements": [
+            ('<p>and what the bruising.</p><p>HE prophet Isaiah being lifted up, a',
+             '<p>THE prophet Isaiah being lifted up, a'),  # ch1
+            ('<p>HIS bruising is required before conve',
+             '<p>THIS bruising is required before conve'),  # ch2
+            ('<p>HE second point is, That Christ will',
+             '<p>THE second point is, That Christ will'),  # ch3
+            ('<p>bruising : and comfort to such.</p><p>UT how shall we know, whether we are',
+             '<p>BUT how shall we know, whether we are'),  # ch4
+            ('<p>T,.OR the second branch; God will not q',
+             '<p>FOR the second branch; God will not q'),  # ch5
+            ('<p>UT grace is not only little, but min',
+             '<p>BUT grace is not only little, but min'),  # ch6
+            ('<p>OW for the second observation, Chris',
+             '<p>NOW for the second observation, Chris'),  # ch7
+            ('<p>beginners.</p><p>IVINES had need to take heed therefore h',
+             '<p>DIVINES had need to take heed therefore h'),  # ch8
+            ('<p>also private Christians.</p><p>O in the censures of the church, it',
+             '<p>SO in the censures of the church, it'),  # ch9
+            ('<p>will not quench.</p><p>OR trial, to let us see whether we b',
+             '<p>FOR trial, to let us see whether we b'),  # ch10
+            ('<p>quench, HESE things premised, let us know for ',
+             '<p>THESE things premised, let us know for '),  # ch11
+            ('<p>ROM the meditation of these rules and',
+             '<p>FROM the meditation of these rules and'),  # ch12
+            ('<p>ERE is a use of encouragement to duty',
+             '<p>HERE is a use of encouragement to duty'),  # ch13
+            ('<p>Discouragements.</p><p>ROM what hath been spoken, with some ',
+             '<p>FROM what hath been spoken, with some '),  # ch14
+            ('<p>whom they are. And how to recover Peace lost.</p><p>ND among other causes of discouragem',
+             '<p>AND among other causes of discouragem'),  # ch15
+            ('<p>Christ unto us.</p><p>INCE Christ is thus comfortably set ou',
+             '<p>SINCE Christ is thus comfortably set ou'),  # ch16
+            ('<p>What it is.</p><p>W* come to the third part, the const',
+             '<p>WE come to the third part, the const'),  # ch17
+            ('<p>enjoy the comfort of his mildness.</p><p>HE first conclusion from the connexi',
+             '<p>THE first conclusion from the connexi'),  # ch18
+            ('<p>Judgment and wisdom.</p><p>HE second conclusion is, that Christ',
+             '<p>THE second conclusion is, that Christ'),  # ch19
+            ('<p>sets up has government.</p><p>HE second branch is, that wheresoeve',
+             '<p>THE second branch is, that wheresoeve'),  # ch20
+            ('<p>HE third conclusion is, that this go',
+             '<p>THE third conclusion is, that this go'),  # ch21
+            ('<p>OR the second, that is, directions.<',
+             '<p>FOR the second, that is, directions.<'),  # ch22
+            ('<p>F Christ will have the victory, the',
+             '<p>IF Christ will have the victory, the'),  # ch23
+            ('<p>T is not only said, judgment shall ',
+             '<p>IT is not only said, judgment shall '),  # ch24
+            ('<p>HE fifth conclusion is, that this go',
+             '<p>THE fifth conclusion is, that this go'),  # ch25
+            ('<p>HE sixth conclusion is, that this pr',
+             '<p>THE sixth conclusion is, that this pr'),  # ch26
+            ('<p>of prevailing.</p><p>FR conclusion and general applicatio',
+             '<p>FOR conclusion and general applicatio'),  # ch27
+            # --- OCR slips, each verified in context against the scan. One
+            # class dominates: a stray letter glued to the front of a word
+            # ("ithis", "ifallen", "ifmen"), which is this scanner reading the
+            # previous word's terminal stroke into the next. Literal pairs, never
+            # a regex — "i" opens real words too.
+            ('Iam black, saith the church',
+             'I am black, saith the church'),  # ch10
+            ('at Wariance and odds',
+             'at variance and odds'),  # ch12
+            ('look upon ithis text',
+             'look upon this text'),  # ch12
+            ('oppose ais nature and office',
+             'oppose his nature and office'),  # ch16
+            ('he cannot deny himelf',
+             'he cannot deny himself'),  # ch16
+            ('his Father hath aidupon him',
+             'his Father hath laid upon him'),  # ch16
+            ('Those therefore ithat are enemies',
+             'Those therefore that are enemies'),  # ch19
+            ('Satan and antiwchrist',
+             'Satan and antichrist'),  # ch19
+            ('we keep fire ifrom powder',
+             'we keep fire from powder'),  # ch22
+            ('the generation ‘of noisome',
+             'the generation of noisome'),  # ch22
+            ('And being ifallen, in our raisings',
+             'And being fallen, in our raisings'),  # ch25
+            ('Christ that must ydo the',
+             'Christ that must do the'),  # ch25
+            ('further degree ithan we had',
+             'further degree than we had'),  # ch25
+            ('when we are ifallen, and by falls',
+             'when we are fallen, and by falls'),  # ch25
+            ('Rey. xix.1',
+             'Rev. xix. 1'),  # ch27
+            ('God will notalways suffer',
+             'God will not always suffer'),  # ch27
+            ('religion \\on the latter-spring',
+             'religion on the latter-spring'),  # ch27
+            ('gospel, ifmen had not been',
+             'gospel, if men had not been'),  # ch27
+            ('‘armed with invincible courage',
+             'armed with invincible courage'),  # ch27
+            ('of all tha hath been',
+             'of all that hath been'),  # ch27
+            ('evailing of ‘truth, and planting',
+             'evailing of truth, and planting'),  # ch19
+            # --- the lost left edge of page 75 (and two strays elsewhere).
+            # The scan clipped the first character or two off eight consecutive
+            # lines, and the remnants are real-looking words ("ut then", "a
+            # sceptre f mercy", "hen we think"), which is why the English audit
+            # calls the chapter clean. Most restore themselves from English, but
+            # "his * ae is then to present" does not — GROSART settles it as
+            # "his manner", and the same witness confirms "father, brother,
+            # head, all is", "the Evangelist", "she would not be cured",
+            # "Here we know where" and Isaiah's "Destroy it not". The critical
+            # edition is unusable as a READING text and is still the right thing
+            # to collate a doubtful word against.
+            ('one saith, Destroy ut not',
+             'one saith, Destroy it not'),  # ch7
+            ('his * ae is then to present',
+             'his manner is then to present'),  # ch16
+            ('against us : ut then let us',
+             'against us : but then let us'),  # ch16
+            ('holding out a sceptre f mercy',
+             'holding out a sceptre of mercy'),  # ch16
+            ('arms to receive us. hen we think',
+             'arms to receive us. When we think'),  # ch16
+            ('John the Evangeist',
+             'John the Evangelist'),  # ch16
+            ('with delight, as f mild and sweet',
+             'with delight, as of mild and sweet'),  # ch16
+            ('when we think f Christ, we shou!d',
+             'when we think of Christ, we should'),  # ch16
+            ('all meekness. Ifthe sweetness',
+             'all meekness. If the sweetness'),  # ch16
+            ('in husband, Sather, brother, head, allis but a beam',
+             'in husband, father, brother, head, all is but a beam'),  # ch16
+            ('weak, but we.are his',
+             'weak, but we are his'),  # ch16
+            ('Babylon, and she ould not be cured',
+             'Babylon, and she would not be cured'),  # ch16
+            ('as it were in hell. ere we know where',
+             'as it were in hell. Here we know where'),  # ch25
+        ],
+    },
     "around-the-wicket-gate": {
         # Image drop caps (Gutenberg source) — first letter of every chapter.
         "dropcap_letters": {
