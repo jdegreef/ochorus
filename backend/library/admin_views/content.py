@@ -581,10 +581,17 @@ class AdminCoverageView(APIView):
         # the translation-jobs POST accepts (`language != "en" and in known_codes`),
         # so the admin UI only offers the queue where a job would actually be filed.
         registry = known_codes()
+        unmet = self._unmet_by_language()
         return Response(
             {
                 "languages": [
-                    {**_language_entry(c), "queueable": c != "en" and c in registry}
+                    {
+                        **_language_entry(c),
+                        "queueable": c != "en" and c in registry,
+                        # Reader demand this language isn't answering — a hint for
+                        # which column to translate into next.
+                        "unmet_searches": unmet.get(c, 0),
+                    }
                     for c in codes
                 ],
                 "books": self._book_rows(),
@@ -593,6 +600,24 @@ class AdminCoverageView(APIView):
                 "bios": self._bio_rows(),
             }
         )
+
+    def _unmet_by_language(self) -> dict[str, int]:
+        """Zero-result searches per language over the last 30 days — the demand a
+        language's readers have that its content isn't answering. Cheap: one
+        grouped aggregate over the anonymous SearchQueryLog."""
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        from ..models import SearchQueryLog
+
+        since = timezone.now() - timedelta(days=30)
+        return {
+            r["language"]: r["n"]
+            for r in SearchQueryLog.objects.filter(created_at__gte=since, result_count=0)
+            .values("language")
+            .annotate(n=Count("id"))
+        }
 
     def _language_codes(self) -> list[str]:
         codes: set[str] = {"en"}  # bios' English source is Author.bio_html, not a row

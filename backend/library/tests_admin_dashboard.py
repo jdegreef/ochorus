@@ -22,6 +22,7 @@ from .models import (
     ContentRevision,
     Plan,
     PlanDay,
+    SearchQueryLog,
     Sermon,
 )
 
@@ -287,6 +288,20 @@ class AdminCoverageTests(TestCase):
         self.assertTrue(queueable["sw"])  # registered target
         self.assertTrue(queueable["es"])  # registered target
         self.assertFalse(queueable["zz"])  # content exists, but not a known code
+
+    @override_settings(DEBUG=True)
+    def test_reports_unmet_search_demand_per_language(self):
+        # Zero-result searches in a language are demand its content isn't
+        # answering — surfaced on the column so it can steer what to translate.
+        SearchQueryLog.objects.create(query="wendy bello", language="es", result_count=0)
+        SearchQueryLog.objects.create(query="jose luis navajo", language="es", result_count=0)
+        SearchQueryLog.objects.create(query="prayer", language="es", result_count=7)  # answered
+        SearchQueryLog.objects.create(query="humility", language="sw", result_count=0)
+        res = self.client.get("/api/admin/coverage/")
+        unmet = {lang["code"]: lang["unmet_searches"] for lang in res.data["languages"]}
+        self.assertEqual(unmet["es"], 2)  # two zero-result; the answered one excluded
+        self.assertEqual(unmet["sw"], 1)
+        self.assertEqual(unmet["en"], 0)
 
     @override_settings(DEBUG=True)
     def test_bios_matrix(self):

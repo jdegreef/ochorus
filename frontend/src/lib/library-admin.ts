@@ -399,6 +399,9 @@ export interface AdminCoverageRow {
 // stray content language the registry never adopted, which can't be queued.
 export interface AdminCoverageLanguage extends Language {
 	queueable: boolean;
+	/** Zero-result searches by this language's readers in the last 30 days —
+	 * demand its content isn't answering. Optional across the deploy window. */
+	unmet_searches?: number;
 }
 
 export interface AdminCoverage {

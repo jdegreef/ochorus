@@ -281,6 +281,7 @@
 					<span><span class="text-accent">●</span> present</span>
 				{/if}
 				<span><span class="text-muted">·</span> missing</span>
+				<span><span class="text-warning">⌕N</span> unmet searches · 30d</span>
 				{#if jobsConfigured !== false}
 					<span><span class="text-accent">◷</span> queued</span>
 					<span><span class="text-warning">◐</span> translating</span>
@@ -322,6 +323,12 @@
 							{#each langs as l, i (l.code)}
 								<th class="sticky top-0 z-20 bg-surface px-3 py-3 text-center font-semibold align-top" title={l.name}>
 									<a href="/admin/languages/{l.code}" class="text-muted hover:text-accent">{l.code}</a>
+									{#if l.unmet_searches}
+										<span
+											class="mt-0.5 block text-micro font-normal text-warning"
+											title={`${l.unmet_searches} reader search${l.unmet_searches === 1 ? '' : 'es'} found nothing in ${l.name} (30d) — demand to translate toward`}
+										>⌕{l.unmet_searches}</span>
+									{/if}
 									{#if jobsConfigured !== false && l.queueable && colGaps[i] > 0}
 										<button
 											type="button"
