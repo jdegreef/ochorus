@@ -54,9 +54,39 @@
 	};
 	const rowHref = (slug: string) => `${ROW_HREF_BASE[tab]}/${slug}`;
 
-	// Per-language totals for the active matrix (how many works exist in each).
+	// --- Planner controls: narrow and order the matrix to what you're working on.
+	// All three act on the same derived row list, so totals, the "+N" column
+	// counts and the column "queue all" all follow what's actually on screen.
+	let q = $state('');
+	let sortMode = $state<'default' | 'least' | 'most'>('default');
+	let unreviewedOnly = $state(false);
+	// How many languages a work is present in — the completeness sort key.
+	const completeness = (r: AdminCoverageRow) =>
+		langs.reduce((n, l) => n + (r.cells[l.code] ? 1 : 0), 0);
+	// A work with at least one AI translation still awaiting review — the backlog.
+	const hasUnreviewed = (r: AdminCoverageRow) =>
+		langs.some((l) => r.cells[l.code] === 'ai_unreviewed');
+	const visibleRows = $derived.by(() => {
+		let out = rows;
+		const term = q.trim().toLowerCase();
+		if (term)
+			out = out.filter(
+				(r) =>
+					r.title.toLowerCase().includes(term) || (r.author ?? '').toLowerCase().includes(term)
+			);
+		if (unreviewedOnly) out = out.filter(hasUnreviewed);
+		if (sortMode !== 'default')
+			out = [...out].sort((a, b) =>
+				sortMode === 'least'
+					? completeness(a) - completeness(b)
+					: completeness(b) - completeness(a)
+			);
+		return out;
+	});
+
+	// Per-language totals for the active matrix (how many visible works exist in each).
 	const totals = $derived(
-		langs.map((l) => rows.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0))
+		langs.map((l) => visibleRows.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0))
 	);
 
 	function cellMeta(v: string | undefined) {
@@ -129,8 +159,9 @@
 	const isGap = (l: AdminCoverageLanguage, r: AdminCoverageRow) =>
 		l.queueable && !r.cells[l.code] && !jobFor(r.slug, l.code);
 	// Missing-and-unqueued count per language column, for the header's "queue all".
+	// Over the visible rows, so a filtered view queues only what it shows.
 	const colGaps = $derived(
-		langs.map((l) => rows.reduce((n, r) => n + (isGap(l, r) ? 1 : 0), 0))
+		langs.map((l) => visibleRows.reduce((n, r) => n + (isGap(l, r) ? 1 : 0), 0))
 	);
 
 	// File one job; returns null on success or a message to show. Type is passed in
@@ -162,7 +193,7 @@
 			pendingBulk = { label: `“${r.title}” into every missing language`, type: jobType, targets };
 	}
 	function bulkCol(l: AdminCoverageLanguage) {
-		const targets = rows.filter((r) => isGap(l, r)).map((r) => ({ slug: r.slug, lang: l.code }));
+		const targets = visibleRows.filter((r) => isGap(l, r)).map((r) => ({ slug: r.slug, lang: l.code }));
 		if (targets.length)
 			pendingBulk = { label: `every missing work into ${l.name}`, type: jobType, targets };
 	}
@@ -215,6 +246,26 @@
 						{t.label} ({d[t.key]?.length ?? 0})
 					</button>
 				{/each}
+			</div>
+
+			<!-- Planner controls: filter, order and narrow to the review backlog. -->
+			<div class="mb-3 flex flex-wrap items-center gap-2">
+				<input
+					type="text"
+					bind:value={q}
+					placeholder="Filter by title or author…"
+					aria-label="Filter works"
+					class="field min-w-48 flex-1 text-small"
+				/>
+				<select bind:value={sortMode} aria-label="Sort works" class="field text-small">
+					<option value="default">Order: as listed</option>
+					<option value="least">Least complete first</option>
+					<option value="most">Most complete first</option>
+				</select>
+				<label class="flex items-center gap-1.5 text-small text-muted">
+					<input type="checkbox" bind:checked={unreviewedOnly} />
+					Only unreviewed AI
+				</label>
 			</div>
 
 			<!-- Legend -->
@@ -286,7 +337,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						{#each rows as r (r.slug)}
+						{#if visibleRows.length === 0}
+							<tr>
+								<td colspan={langs.length + 1} class="px-4 py-8 text-center text-body text-muted">
+									No works match these filters.
+								</td>
+							</tr>
+						{/if}
+						{#each visibleRows as r (r.slug)}
 							{@const rowGaps = langs.reduce((n, l) => n + (isGap(l, r) ? 1 : 0), 0)}
 							<tr class="group/row border-b border-border last:border-0 hover:bg-surface-2">
 								<td class="sticky left-0 z-10 bg-surface px-4 py-2.5">
@@ -354,7 +412,7 @@
 					</tbody>
 					<tfoot>
 						<tr class="border-t border-border text-small text-muted">
-							<td class="sticky left-0 z-10 bg-surface px-4 py-2.5 font-semibold">Total ({rows.length})</td>
+							<td class="sticky left-0 z-10 bg-surface px-4 py-2.5 font-semibold">Total ({visibleRows.length}{visibleRows.length !== rows.length ? ` of ${rows.length}` : ''})</td>
 							{#each totals as n, i (langs[i].code)}
 								<td class="px-3 py-2.5 text-center tabular-nums font-semibold text-text">{n}</td>
 							{/each}
