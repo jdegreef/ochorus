@@ -289,7 +289,9 @@
 			     button that can't work, and once signed in the prompt is spent, so
 			     it drops. Every string is an EXISTING, already-translated key reused
 			     from the sign-up flow (home.signupTitle / login.syncNote /
-			     login.createAccountLink), so the band mints no footer-only keys. -->
+			     login.createAccountLink), so the band mints no footer-only keys —
+			     the trade is that rewording those at their source also rewords this
+			     band. -->
 			{#if auth.enabled && !auth.user}
 				<div class="mx-auto max-w-5xl px-5 pt-10 sm:pt-12">
 					<div class="footer-invite">
@@ -300,7 +302,7 @@
 							<p class="footer-invite-title">{t('home.signupTitle')}</p>
 							<p class="text-small text-muted">{t('login.syncNote')}</p>
 						</div>
-						<a href={localizeHref(signupHref)} class="footer-invite-cta">
+						<a href={localizeHref(signupHref)} class="btn footer-invite-cta">
 							<span>{t('login.createAccountLink')}</span>
 							<Icon name="chevron-right" size={16} class="footer-invite-arrow" />
 						</a>
@@ -528,23 +530,18 @@
 		color: var(--text);
 	}
 
-	/* The one deliberately LOUD control in the app. Every other .btn-primary is
-	   soft by design (STYLE_GUIDE §5); this single conversion CTA is the
-	   exception — a solid indigo with a thin gold ring (the signature pairing)
-	   and a light sweep on hover. Scoped here, so it changes nothing else. */
+	/* The one deliberately LOUD control in the app: it wears the base .btn
+	   recipe (metrics, radius, type) via `class="btn footer-invite-cta"` and
+	   overrides only the loud bits. Every other .btn-primary is soft by design
+	   (STYLE_GUIDE §5); this single conversion CTA is the exception — a solid
+	   indigo with a thin gold ring (the signature pairing) and a warm sweep on
+	   hover. Scoped and unlayered, so it beats @layer components and changes
+	   nothing else. */
 	.footer-invite-cta {
 		position: relative;
 		overflow: hidden;
 		isolation: isolate;
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.7rem 1.35rem;
-		border-radius: var(--radius-sm);
-		font-family: var(--font-sans);
-		font-weight: 600;
-		font-size: var(--fs-body);
-		white-space: nowrap;
+		text-decoration: none;
 		color: var(--accent-contrast);
 		background: var(--accent);
 		box-shadow:
@@ -569,11 +566,12 @@
 		position: absolute;
 		inset: 0;
 		z-index: 1;
-		background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.42) 50%, transparent 65%);
+		background: linear-gradient(115deg, transparent 35%, color-mix(in srgb, var(--gold) 45%, transparent) 50%, transparent 65%);
 		transform: translateX(-130%);
 		pointer-events: none;
 	}
 	.footer-invite-cta:hover {
+		text-decoration: none;
 		transform: translateY(-1px);
 		filter: brightness(1.04);
 		box-shadow:
@@ -583,7 +581,7 @@
 	.footer-invite-cta:hover::after {
 		animation: footer-invite-sheen 0.85s ease;
 	}
-	.footer-invite-cta:hover span,
+	/* Only the arrow nudges — the label stays put. */
 	.footer-invite-cta:hover :global(.footer-invite-arrow) {
 		transform: translateX(3px);
 	}
@@ -612,14 +610,12 @@
 
 	@media (prefers-reduced-motion: reduce) {
 		.footer-invite-cta,
-		.footer-invite-cta span,
 		.footer-invite-cta :global(.footer-invite-arrow) {
 			transition: none;
 		}
 		.footer-invite-cta:hover {
 			transform: none;
 		}
-		.footer-invite-cta:hover span,
 		.footer-invite-cta:hover :global(.footer-invite-arrow) {
 			transform: none;
 		}
