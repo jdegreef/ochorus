@@ -141,6 +141,12 @@
   "on-the-priesthood": {
    "lost-paragraphing": 1
   },
+  "our-daily-walk": {
+   "hyphen-space": 1,
+   "orphan-close-quote": 6,
+   "space-before-punct": 7,
+   "word-fusion": 2
+  },
   "pauls-first-prayer": {
    "orphan-close-quote": 1
   },

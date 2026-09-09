@@ -429,6 +429,41 @@ dropped; chapters under 120 words are dropped as stubs.
     `passage`) — some readings carry a ref with no verse or two refs — so the
     verse/ref folding must handle an orphan reference, not assume one-of-each.
   *(morning-by-morning + evening-by-evening, 2026-09)*
+- **A calendar devotional whose day markers are a plain `<div class="date">`
+  (not a heading) → a `build_<name>` splitting on those divs.** Moody's
+  *Thoughts for the Quiet Hour* (Gutenberg #37292) marks each day
+  `<div class="date">January 1st.</div>` — an ordinal date in a div — so
+  `import_gutenberg`'s heading-splitter (and `group_daily_entries`, which needs a
+  `January 1`-style heading *title*) chapters nothing. Reuse `import_gutenberg`'s
+  `fetch_html` + `content_root` (fetch + PG-boilerplate strip), then walk the
+  body splitting on the date divs. Four things earned, each caught by verifying
+  day COUNT and spot-reading first/last/recovered days — never trust the build's
+  own success line:
+  - **A day's comment can live in a non-`<p>` container.** Five days' meditations
+    are `<div class="poem">` (verse form), so a `<p>`-only collector silently
+    dropped them (Jan 31 came out verse-only). Collect the poem divs too.
+    Decorative divs (`figcenter`/`figright`) carry no text; front matter
+    (`author`/`copyright`/`bbox`/`center` — the title page and Scripture index)
+    all precedes the first date div, so a `current is None` gate drops it.
+  - **`content_root` strips the LICENSE footer but NOT the trailing transcriber's
+    note.** A `<div class="tnote">` + its `<p>`s sits after the last reading and
+    rode into December 31. Close the current day (`current = None`) at the tnote.
+  - **Date-marker OCR/period quirks:** old-style bare-`d` ordinals ("May 3d." =
+    3rd — widen the ordinal alt to `st|nd|rd|th|d`) and a one-off month misread
+    ("Match"→"March", a tiny startswith fixup). A genuinely ABSENT calendar day
+    (Oct 3, marker jumps 2nd→4th) is left faithful, not invented — 364 readings.
+  - Attributed to the existing `dwight-l-moody` author as the volume's *editor*
+    (it is a compilation, each day bylined `—<i>Author.</i>` to its writer).
+  *(thoughts-for-the-quiet-hour, 2026-09)*
+- **Precept Austin (preceptaustin.org) hosts clean PD devotional text by month —
+  a good 12-page source when a work is calendar-shaped but not on CCEL/Gutenberg.**
+  Meyer's *Our Daily Walk* (1913) is on neither, and Archive/HathiTrust had only a
+  1951 reprint stub — but Precept serves it as twelve per-month pages
+  (`our_daily_walk_by_f_b_meyer_-_jan` … `-dec`), each day
+  `<p><b>January N</b></p>` + a centred bold theme + a bold scripture `<p>` + the
+  meditation `<p>`s + Meyer's own closing "PRAYER … AMEN." — clean Meyer, no
+  Precept study apparatus interleaved (verified). Legal basis is the work's own
+  PD year (judge by first publication, 1913), NOT the host's permission. *(2026-09)*
 - **`npm run og:covers` rewrites any PRE-EXISTING stale twin it finds, not only
   your new book's — keep the PR focused.** A fresh run wrote my 2 twins AND
   redrew 4 unrelated `painting`-tier twins whose committed bytes had drifted from
