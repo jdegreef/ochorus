@@ -636,5 +636,16 @@
   "articles_tagline": "Short readings on prayer, faith and the life with God — each one written to send you on to a classic worth reading in full.",
   "articles_on_this_page": "On this page",
   "articles_read_next": "Read next",
-  "articles_kind_biography": "Biography"
+  "articles_kind_biography": "Biography",
+  "scripture_page_title": "Scripture in the Christian classics",
+  "scripture_tagline": "Every Bible reference in the library is indexed. These are the chapters the writers return to — open one to see who preached it, and what they said.",
+  "scripture_empty": "The scripture index is still being built.",
+  "scripture_passages_count": "%count% passages",
+  "scripture_treated": "Treated in %count% passages across the library.",
+  "scripture_verses_heading": "The verses these writers stop at",
+  "scripture_preached_heading": "Where it is preached",
+  "scripture_showing_rest": "Showing %shown% of %total%; the rest are reachable through search.",
+  "scripture_all_of": "All of %reference% →",
+  "scripture_chapter_n": "Chapter %n%",
+  "scripture_cites": "cites %ref%"
 }

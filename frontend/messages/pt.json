@@ -636,5 +636,16 @@
   "articles_tagline": "Leituras breves sobre oração, fé e a vida com Deus — cada uma escrita para levá-lo a um clássico que vale a pena ler por inteiro.",
   "articles_on_this_page": "Nesta página",
   "articles_read_next": "Leia a seguir",
-  "articles_kind_biography": "Biografia"
+  "articles_kind_biography": "Biografia",
+  "scripture_page_title": "A Escritura nos clássicos cristãos",
+  "scripture_tagline": "Cada referência bíblica da biblioteca está indexada. Estes são os capítulos aos quais os escritores retornam — abra um para ver quem o pregou e o que disse.",
+  "scripture_empty": "O índice das Escrituras ainda está sendo construído.",
+  "scripture_passages_count": "%count% passagens",
+  "scripture_treated": "Tratado em %count% passagens da biblioteca.",
+  "scripture_verses_heading": "Os versículos em que estes escritores se detêm",
+  "scripture_preached_heading": "Onde é pregado",
+  "scripture_showing_rest": "Mostrando %shown% de %total%; o restante pode ser encontrado pela busca.",
+  "scripture_all_of": "Todo %reference% →",
+  "scripture_chapter_n": "Capítulo %n%",
+  "scripture_cites": "cita %ref%"
 }

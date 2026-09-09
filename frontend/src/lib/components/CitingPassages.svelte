@@ -1,13 +1,16 @@
 <script lang="ts">
 	import type { CitingPassage } from '$lib/library-public';
 	import { markSnippet } from '$lib/highlight';
+	import { i18n } from '$lib/i18n.svelte';
+
+	const t = i18n.t;
 
 	// The passages that cite a reference, as the scripture pages show them.
 	//
-	// Deliberately NOT localized: these pages exist in English only (citations
-	// are extracted by validating against English book names, so a translated
-	// edition indexes essentially nothing), so the links go to the English
-	// chapter rather than through localizeHref.
+	// The LINKS stay on the English chapter (no localizeHref): these pages exist
+	// in English only, since citations are extracted against English book names.
+	// The chrome text around them (the "Chapter N" fallback, the "cites" label)
+	// does go through the catalogues (F3), like the rest of the scripture chrome.
 	let { passages }: { passages: CitingPassage[] } = $props();
 </script>
 
@@ -20,11 +23,11 @@
 				<span class="author">{p.author_name}</span>
 			</a>
 			<p class="where">
-				{p.chapter_title || `Chapter ${p.chapter_order}`}
+				{p.chapter_title || t('scripture.chapterN').replace('%n%', String(p.chapter_order))}
 				<!-- The reference AS THAT BOOK PRINTS IT. A Victorian citation reads
 				     "Rom. viii. 28", and normalising it away would hide the very
 				     thing that makes the excerpt verifiable against the page. -->
-				<span class="cited">cites {p.ref}</span>
+				<span class="cited">{t('scripture.cites').replace('%ref%', p.ref)}</span>
 			</p>
 			<!-- markSnippet escapes first, then turns the backend's full-text
 			     markers into <mark> — the same path the search results use. -->

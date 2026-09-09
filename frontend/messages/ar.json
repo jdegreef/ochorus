@@ -636,5 +636,16 @@
   "articles_tagline": "قراءات قصيرة عن الصلاة والإيمان والحياة مع الله — كُتبت كلٌّ منها لتقودك إلى عمل كلاسيكي يستحق أن يُقرأ كاملًا.",
   "articles_on_this_page": "في هذه الصفحة",
   "articles_read_next": "اقرأ بعد ذلك",
-  "articles_kind_biography": "سيرة"
+  "articles_kind_biography": "سيرة",
+  "scripture_page_title": "الكتاب المقدس في الكلاسيكيات المسيحية",
+  "scripture_tagline": "كل إشارة كتابية في المكتبة مفهرسة. هذه هي الأصحاحات التي يعود إليها الكُتّاب — افتح واحدًا لترى من وعظ به وماذا قال.",
+  "scripture_empty": "فهرس الكتاب المقدس لا يزال قيد الإنشاء.",
+  "scripture_passages_count": "%count% مقاطع",
+  "scripture_treated": "يُعالَج في %count% مقاطع عبر المكتبة.",
+  "scripture_verses_heading": "الآيات التي يتوقّف عندها هؤلاء الكُتّاب",
+  "scripture_preached_heading": "أين يُبشَّر به",
+  "scripture_showing_rest": "عرض %shown% من %total%؛ ويمكن الوصول إلى الباقي عبر البحث.",
+  "scripture_all_of": "%reference% كاملًا ←",
+  "scripture_chapter_n": "الأصحاح %n%",
+  "scripture_cites": "يقتبس %ref%"
 }

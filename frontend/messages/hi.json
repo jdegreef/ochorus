@@ -636,5 +636,16 @@
   "articles_tagline": "प्रार्थना, विश्वास और परमेश्वर के साथ जीवन पर छोटे पठन — हर एक आपको किसी ऐसे क्लासिक तक ले जाने के लिए लिखा गया जिसे पूरा पढ़ना सार्थक है।",
   "articles_on_this_page": "इस पृष्ठ पर",
   "articles_read_next": "आगे पढ़ें",
-  "articles_kind_biography": "जीवनी"
+  "articles_kind_biography": "जीवनी",
+  "scripture_page_title": "ईसाई क्लासिक्स में पवित्रशास्त्र",
+  "scripture_tagline": "पुस्तकालय में हर बाइबल संदर्भ अनुक्रमित है। ये वे अध्याय हैं जिन पर लेखक बार-बार लौटते हैं — किसी एक को खोलें और देखें कि उसका प्रचार किसने किया और क्या कहा।",
+  "scripture_empty": "पवित्रशास्त्र की अनुक्रमणिका अभी बन रही है।",
+  "scripture_passages_count": "%count% अंश",
+  "scripture_treated": "पुस्तकालय भर में %count% अंशों में विवेचित।",
+  "scripture_verses_heading": "वे पद जिन पर ये लेखक ठहरते हैं",
+  "scripture_preached_heading": "इसका प्रचार कहाँ होता है",
+  "scripture_showing_rest": "%total% में से %shown% दिखाए जा रहे हैं; शेष खोज के माध्यम से पहुँचे जा सकते हैं।",
+  "scripture_all_of": "संपूर्ण %reference% →",
+  "scripture_chapter_n": "अध्याय %n%",
+  "scripture_cites": "%ref% उद्धृत करता है"
 }

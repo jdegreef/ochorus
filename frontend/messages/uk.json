@@ -636,5 +636,16 @@
   "articles_tagline": "Короткі читання про молитву, віру й життя з Богом — кожне написане, щоб привести вас до класики, яку варто прочитати повністю.",
   "articles_on_this_page": "На цій сторінці",
   "articles_read_next": "Читайте далі",
-  "articles_kind_biography": "Біографія"
+  "articles_kind_biography": "Біографія",
+  "scripture_page_title": "Писання у християнській класиці",
+  "scripture_tagline": "Кожне біблійне посилання в бібліотеці проіндексовано. Це розділи, до яких письменники повертаються — відкрийте один, щоб побачити, хто його проповідував і що сказав.",
+  "scripture_empty": "Покажчик Писання ще формується.",
+  "scripture_passages_count": "%count% уривків",
+  "scripture_treated": "Розглянуто в %count% уривках по всій бібліотеці.",
+  "scripture_verses_heading": "Вірші, на яких зупиняються ці письменники",
+  "scripture_preached_heading": "Де це проповідується",
+  "scripture_showing_rest": "Показано %shown% з %total%; решту можна знайти через пошук.",
+  "scripture_all_of": "Увесь %reference% →",
+  "scripture_chapter_n": "Розділ %n%",
+  "scripture_cites": "цитує %ref%"
 }

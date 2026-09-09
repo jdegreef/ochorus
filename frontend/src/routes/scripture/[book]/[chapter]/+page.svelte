@@ -5,13 +5,16 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import CitingPassages from '$lib/components/CitingPassages.svelte';
+	import { i18n } from '$lib/i18n.svelte';
 
-	// ENGLISH-ONLY, and the copy here is written in English rather than through
-	// the message catalogues on purpose. Citations are extracted by validating
-	// against pythonbible's English book names, so these pages can only exist in
-	// English; adding catalogue keys would either claim translations nobody has
-	// reviewed or fail the advertised-locale completeness gate. The page is
-	// English, so it says so plainly.
+	const t = i18n.t;
+
+	// The passage DATA is English-only (citations are extracted against
+	// pythonbible's English book names, so a scripture page can only exist in
+	// English). The CHROME around it — crumbs, counters, section labels — now
+	// goes through the message catalogues (F3), filled for every advertised
+	// locale so the completeness gate stays green. Reference labels
+	// (`page.reference`, book titles) stay as the data provides them.
 	let { data } = $props();
 	const page = $derived<ScripturePage>(data.page);
 	// Adjacent qualifying chapter pages, in canonical Bible order (computed in
@@ -32,8 +35,8 @@
 	);
 
 	const crumbs = $derived([
-		{ name: 'Home', href: '/' },
-		{ name: 'Scripture', href: '/scripture' },
+		{ name: t('common.home'), href: '/' },
+		{ name: t('reader.scripture'), href: '/scripture' },
 		{ name: page.reference, href: path }
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
@@ -70,14 +73,13 @@
 	<header class="mb-8">
 		<h1 class="text-h1">{page.reference}</h1>
 		<p class="mt-2 text-small text-muted">
-			Treated in {page.citing_count}
-			{page.citing_count === 1 ? 'passage' : 'passages'} across the library.
+			{t('scripture.treated').replace('%count%', String(page.citing_count))}
 		</p>
 	</header>
 
 	{#if page.verses?.length}
 		<section class="mb-10">
-			<h2 class="section-label">The verses these writers stop at</h2>
+			<h2 class="section-label">{t('scripture.versesHeading')}</h2>
 			<ul class="verses">
 				{#each page.verses as v (v.number)}
 					<li class="verse">
@@ -105,23 +107,23 @@
 	{/if}
 
 	<section>
-		<h2 class="section-label">Where it is preached</h2>
+		<h2 class="section-label">{t('scripture.preachedHeading')}</h2>
 		<CitingPassages passages={page.passages} />
 		{#if page.citing_count > page.passages_shown}
 			<p class="mt-3 text-small text-muted">
-				Showing {page.passages_shown} of {page.citing_count}; the rest are reachable through
-				search.
+				{t('scripture.showingRest')
+					.replace('%shown%', String(page.passages_shown))
+					.replace('%total%', String(page.citing_count))}
 			</p>
 		{/if}
 	</section>
 
-	<!-- Walk the reverse index in canonical order. English-only copy, like the
-	     rest of this page (see the note in the script). -->
+	<!-- Walk the reverse index in canonical order (adjacent qualifying pages). -->
 	{#if prev || next}
 		<nav class="mt-12 flex items-stretch justify-between gap-3 border-t border-border pt-6">
 			{#if prev}
 				<a href={prev.href} class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start">
-					<span class="eyebrow text-muted">Previous</span>
+					<span class="eyebrow text-muted">{t('reader.previous')}</span>
 					<span class="text-small">{prev.label}</span>
 				</a>
 			{:else}
@@ -129,7 +131,7 @@
 			{/if}
 			{#if next}
 				<a href={next.href} class="btn btn-ghost flex-1 flex-col items-end gap-0.5 text-end">
-					<span class="eyebrow text-muted">Next</span>
+					<span class="eyebrow text-muted">{t('reader.next')}</span>
 					<span class="text-small">{next.label}</span>
 				</a>
 			{:else}

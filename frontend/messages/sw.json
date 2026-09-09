@@ -636,5 +636,16 @@
   "articles_tagline": "Masomo mafupi kuhusu sala, imani na maisha pamoja na Mungu — kila moja limeandikwa kukupeleka kwenye kitabu cha kale kinachostahili kusomwa kizima.",
   "articles_on_this_page": "Kwenye ukurasa huu",
   "articles_read_next": "Soma inayofuata",
-  "articles_kind_biography": "Wasifu"
+  "articles_kind_biography": "Wasifu",
+  "scripture_page_title": "Andiko katika vitabu vya kale vya Kikristo",
+  "scripture_tagline": "Kila rejeo la Biblia katika maktaba limeorodheshwa. Hizi ni sura ambazo waandishi hurudia — fungua moja uone nani aliyeihubiri, na alichosema.",
+  "scripture_empty": "Faharasa ya Andiko bado inajengwa.",
+  "scripture_passages_count": "vifungu %count%",
+  "scripture_treated": "Limeshughulikiwa katika vifungu %count% kote maktabani.",
+  "scripture_verses_heading": "Mistari ambayo waandishi hawa husimama",
+  "scripture_preached_heading": "Mahali linapohubiriwa",
+  "scripture_showing_rest": "Inaonyesha %shown% kati ya %total%; vingine vinapatikana kupitia utafutaji.",
+  "scripture_all_of": "%reference% yote →",
+  "scripture_chapter_n": "Sura %n%",
+  "scripture_cites": "inanukuu %ref%"
 }

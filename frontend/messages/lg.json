@@ -636,5 +636,16 @@
   "articles_tagline": "Ebisomebwa ebimpi ku kusaba, okukkiriza n’obulamu ne Katonda — buli kimu kiwandiikiddwa okukutwala ku kitabo eky’edda ekisaanira okusomebwa kyonna.",
   "articles_on_this_page": "Ku lupapula luno",
   "articles_read_next": "Soma ekiddako",
-  "articles_kind_biography": "Ebyafaayo"
+  "articles_kind_biography": "Ebyafaayo",
+  "scripture_page_title": "Ekyawandiikibwa mu bitabo eby’edda eby’Ekikristaayo",
+  "scripture_tagline": "Buli kyokulabirako kya Bayibuli mu tterekero kiwandiikiddwa. Zino ze ssuula abawandiisi ze baddamu — ggulawo emu olabe eyagibuulira, n’ekyo kye yayogera.",
+  "scripture_empty": "Endagiriro y’Ekyawandiikibwa ekyakolebwa.",
+  "scripture_passages_count": "ebitundu %count%",
+  "scripture_treated": "Kikwatiddwako mu bitundu %count% mu tterekero.",
+  "scripture_verses_heading": "Ennyiriri abawandiisi bano ze bayimirirako",
+  "scripture_preached_heading": "Awabuulirwa",
+  "scripture_showing_rest": "Elaga %shown% ku %total%; ebisigaddewo bituukirirwa okuyita mu kunoonya.",
+  "scripture_all_of": "%reference% yonna →",
+  "scripture_chapter_n": "Essuula %n%",
+  "scripture_cites": "ejuliza %ref%"
 }
