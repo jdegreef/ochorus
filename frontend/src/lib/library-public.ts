@@ -375,6 +375,8 @@ export interface SermonSummary {
 	preached_on: string | null;
 	word_count: number;
 	author: Author;
+	/** Published topics this sermon belongs to (for the shelf's topic filter). */
+	topics: TopicChip[];
 	/** When the sermon was added to Ochorus (ISO) — powers the "recent" feed. */
 	created_at: string;
 	/** Last modification (ISO) — the sitemap's `<lastmod>`; see BookSummary. */
