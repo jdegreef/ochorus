@@ -1303,7 +1303,15 @@ def plan_book_index(plans, language):
     slugs = {d.book_slug for plan in plans for d in plan.days.all()}
     if not slugs:
         return {}
-    return {b.slug: b for b in Book.objects.filter(slug__in=slugs, language=language)}
+    # select_related the author so a plan can name the writers it reads through
+    # (PlanDetailSerializer.get_authors) without an N+1; the covers/day fields
+    # ignore it, at the cost of one join.
+    return {
+        b.slug: b
+        for b in Book.objects.filter(slug__in=slugs, language=language).select_related(
+            "author"
+        )
+    }
 
 
 def _plan_total_words(plan, chapters):
@@ -1379,12 +1387,32 @@ class PlanDaySerializer(serializers.ModelSerializer):
 class PlanDetailSerializer(PlanListSerializer):
     days = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
+    authors = serializers.SerializerMethodField()
 
     class Meta(PlanListSerializer.Meta):
-        fields = PlanListSerializer.Meta.fields + ["days", "available_languages"]
+        fields = PlanListSerializer.Meta.fields + [
+            "days",
+            "available_languages",
+            "authors",
+        ]
 
     def get_available_languages(self, obj):
         return _available_languages(Plan, obj.slug)
+
+    def get_authors(self, obj):
+        """The distinct writers this plan reads through, in the order their books
+        first appear across the days — a link out to each author page, so a plan
+        is a way into their work, not only a sequence of chapters. Reads the
+        page-wide book index (author select_related), so no extra query."""
+        books = self._books(obj)
+        authors: list[dict] = []
+        seen: set[str] = set()
+        for day in obj.days.all():
+            book = books.get(day.book_slug)
+            if book and book.author.slug not in seen:
+                seen.add(book.author.slug)
+                authors.append({"slug": book.author.slug, "name": book.author.name})
+        return authors
 
     def get_days(self, obj):
         days = list(obj.days.all())
