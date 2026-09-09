@@ -1590,7 +1590,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('God will notalways suffer',
              'God will not always suffer'),  # ch27
             ('religion \\on the latter-spring',
-             'religion on the latter-spring'),  # ch27
+             'religion in the latter-spring'),  # the backslash ate the "i" of
+            # "in" — Grosart reads "reformation of religion IN the
+            # latter-spring", so stripping the mark and keeping "on" would have
+            # shipped a wrong preposition.
             ('gospel, ifmen had not been',
              'gospel, if men had not been'),  # ch27
             ('‘armed with invincible courage',
@@ -1599,6 +1602,14 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'of all that hath been'),  # ch27
             ('evailing of ‘truth, and planting',
              'evailing of truth, and planting'),  # ch19
+            # ch17's summary heading wraps mid-WORD ("merciful dispo-" /
+            # "sition in Christ"), so its tail leaks as the body's opening and
+            # the drop cap follows it. Same shape as the ten above.
+            ('<p>sition in Christ. Of quenching the Spirit.</p><p>E are now to take notice',
+             '<p>WE are now to take notice'),
+            # A stray rule-mark the scanner kept mid-sentence, the same class as
+            # the one before "CHAP. XXVI." in the source.
+            ('divers sorts of men \\ that offend', 'divers sorts of men that offend'),
             # --- the lost left edge of page 75 (and two strays elsewhere).
             # The scan clipped the first character or two off eight consecutive
             # lines, and the remnants are real-looking words ("ut then", "a
@@ -1636,6 +1647,46 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'Babylon, and she would not be cured'),  # ch16
             ('as it were in hell. ere we know where',
              'as it were in hell. Here we know where'),  # ch25
+            # --- the last of the scan junk, every reading settled against
+            # Grosart: a stray backslash rule-mark eating a letter ("\\whey" for
+            # "they", "king\\doms"), and a guillemet standing where a letter was
+            # lost ("»emptation", "em»raced", "thi»"). The guillemets matter
+            # twice over: `QuoteStyleTests` counts « » as CURLY, so they pass
+            # the quote gate while leaving a French quotation mark mid-sentence.
+            ('forsake thee, \\I will not',
+             'forsake thee, I will not'),  # ch2
+            ('make the bruise \\the more painful',
+             'make the bruise the more painful'),  # ch4
+            ('In time of »emptation rather believe',
+             'In time of temptation rather believe'),  # ch15
+            ('as freely as we em»raced it before',
+             'as freely as we embraced it before'),  # ch20
+            ('we have just cause \\to be humbled',
+             'we have just cause to be humbled'),  # ch23
+            ('when the king\\doms of the earth',
+             'when the kingdoms of the earth'),  # ch25
+            ('disguised ; »goodness shall appear',
+             'disguised ; goodness shall appear'),  # ch25
+            ('to the darkness of »ur own heart',
+             'to the darkness of our own heart'),  # ch26
+            ('counteth it a generous thi» not to be awed',
+             'counteth it a generous thing not to be awed'),  # ch27
+            ('God’s time may »roceed yet further west',
+             'God’s time may proceed yet further west'),  # ch28
+            ('until Christ hath »rought all under one head',
+             'until Christ hath brought all under one head'),  # ch28
+            ('my will is that \\whey be where I am',
+             'my will is that they be where I am'),  # ch28
+            ('and against that \\which is ill',
+             'and against that which is ill'),  # ch28
+            ('carried matters often \\inconsiderately',
+             'carried matters often inconsiderately'),  # ch28
+            ('What had ‘oecome of that great work',
+             'What had become of that great work'),  # ch28
+            ('outstride all lets, apon this faith',
+             'outstride all lets, upon this faith'),  # ch28
+            ('was Christ’s, and that the would not be wanting',
+             'was Christ’s, and that he would not be wanting'),  # ch28
         ],
     },
     "around-the-wicket-gate": {

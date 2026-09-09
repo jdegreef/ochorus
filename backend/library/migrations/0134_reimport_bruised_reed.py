@@ -18,12 +18,20 @@ about_html, publication_year and sort_order are all preserved.
 `seed_books` upserts the Book ROW but deliberately never rewrites an existing
 book's chapters — chapter ``order`` is a public contract. So the fixture fix
 reaches fresh installs only; this migration carries the corrected chapters to
-the live DB from the committed fixture. The chapter COUNT and ORDER are
-unchanged (twenty-seven, and the titles match the old edition one for one), so
-no reading-plan mapping shifts — and this book has no plan, no quotes and no
+the live DB from the committed fixture.
+
+The chapter COUNT CHANGES, 27 to 28. That is not the re-import adding anything:
+Grosart's scan lost the "CHAP. XVII." marker, so the shipped edition merged two
+chapters and has carried chapters 17-27 under the WRONG TITLES ever since —
+`corrections.chapter_titles` is keyed by order and lists all 28, so it silently
+labelled each body with its neighbour's title. Pickering's marker survives
+(`CHAP. XVII. :`, with a scanned colon), so the division and the titles now
+agree with the print. A count change usually means checking reading-plan
+mappings and translation parity; this book has no plan, no quotes and no
 translation anchored to it, which is what made it the safe one to re-source
-first. Chapter has no inbound FKs (progress/marks are localStorage slug+order),
-so delete-and-recreate is safe.
+first. Chapter's inbound FKs (`ChapterCitation`, `Quote`) are both CASCADE and
+both empty for this slug, so delete-and-recreate is safe — a hand-anchored row
+on prod would not be, and there are none.
 
 Bodies are created through the SETTLED form (`settled_chapter_body`), exactly
 as `seed_books` does on a fresh install, so prod and a fresh build converge and

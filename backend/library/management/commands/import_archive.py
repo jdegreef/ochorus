@@ -62,7 +62,7 @@ _CHAPTER = re.compile(
     #   the LEADING JUNK — "\ CHAP. XXVI.", a stray rule-mark the scanner kept.
     #     Capped at two characters so it cannot reach into prose; the numeral is
     #     still validated by `_roman`.
-    r"^\s*[\\/|]{0,2}\s*\[?\s*chap\w*[.,]*\s+([IVXLCYil|]+)[.,]?\s*"
+    r"^\s*[\\/|]{0,2}\s*\[?\s*chap\w*[.,]*\s+([IVXLCYil|]+)[\s.,:;]*"
     r"(?:[\u2014\u2013-]\s*(.*?))?\s*\]?$", re.I
 )
 #: A bracketed marker whose OPENING was eaten by the scanner. Grosart's chapter
