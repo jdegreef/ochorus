@@ -385,24 +385,39 @@ class TopicTests(TestCase):
         )
 
     def test_every_translated_language_covers_every_topic(self):
-        """A translated language must cover ALL topics, not some.
+        """A translated language must cover every topic that isn't translation-pending.
 
         There is no English fallback: a topic missing from a language's file is
         omitted from that language's shelf list entirely. So a partial language
         silently ships a partial set of shelves — the same discipline as the
         per-language glossaries, which are pinned the same way. Reads
         ``data/topic_translations/<lang>.json`` through the loader.
+
+        The one sanctioned exception is ``TRANSLATION_PENDING`` (topic_seed): a
+        newly-added shelf ships live in English while the translation queue works
+        through it, so its absence from a language is allowed. Everything else is
+        still pinned — no prose for an unknown slug, and every non-pending shelf
+        present in every language — and a pending shelf that HAS been translated
+        must still be well-formed.
         """
         from library.management.commands.seed_topics import TOPICS
+        from library.topic_seed import TRANSLATION_PENDING
         from library.topic_translations import topic_translations
 
         slugs = {t[0] for t in TOPICS}
+        required = slugs - TRANSLATION_PENDING
         for lang, per_topic in topic_translations().items():
             with self.subTest(language=lang):
+                present = set(per_topic)
                 self.assertEqual(
-                    set(per_topic),
-                    slugs,
-                    f"{lang}: translated topics differ from the seeded topics",
+                    present - slugs,
+                    set(),
+                    f"{lang}: prose for a slug that names no topic",
+                )
+                self.assertEqual(
+                    required - present,
+                    set(),
+                    f"{lang}: missing shelves that are not translation-pending",
                 )
                 for slug, pair in per_topic.items():
                     title, description = pair

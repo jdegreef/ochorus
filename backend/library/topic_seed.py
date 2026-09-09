@@ -191,7 +191,337 @@ TOPICS = [
         "triumph of the cross, the excellency of Christ, and the empty tomb.",
         [],
     ),
+    (
+        "the-puritans",
+        "The Puritans",
+        "The plain, searching divinity of the Puritans \u2014 Bunyan's pilgrim, "
+        "Owen on the sin within, Watson's warmth and Edwards' fire \u2014 doctrine "
+        "pressed home upon the heart.",
+        [
+            "pilgrims-progress",
+            "grace-abounding",
+            "the-bruised-reed",
+            "mortification-of-sin",
+            "all-things-for-good",
+            "ten-commandments",
+            "a-call-to-the-unconverted",
+            "the-reformed-pastor",
+            "religious-affections",
+            "freedom-of-the-will",
+            "selected-sermons-edwards",
+        ],
+    ),
+    (
+        "abiding-in-christ",
+        "Abiding in Christ",
+        "The branch in the Vine \u2014 union and communion with the Lord Jesus, and "
+        "the life that flows from no other source than staying near him.",
+        [
+            "true-vine",
+            "holy-in-christ",
+            "absolute-surrender",
+            "the-masters-indwelling",
+            "jesus-himself-2",
+            "on-loving-god",
+            "union-and-communion",
+            "the-body-of-christ-a-reality",
+            "the-bruised-reed",
+        ],
+    ),
+    (
+        "women-of-faith",
+        "Women of Faith",
+        "Mothers, missionaries and mystics \u2014 the faith of women who prayed, "
+        "suffered and dared, from Guyon's cell to the freed slave's pulpit.",
+        [
+            "a-brand-plucked-from-the-fire",
+            "amanda-smith-autobiography",
+            "religious-experience-and-journal",
+            "susanna-wesley-clarke",
+            "godliness",
+            "if",
+            "things-as-they-are",
+            "the-christians-secret-of-a-happy-life-4",
+            "the-god-of-all-comfort",
+            "the-unselfishness-of-god",
+            "a-short-and-easy-method-of-prayer",
+            "prayer-the-pulse-of-life",
+            "clothed-with-strength-and-dignity",
+            "women-who-moved-heaven-2",
+        ],
+    ),
+    (
+        "voices-of-the-early-church",
+        "Voices of the Early Church",
+        "The faith of the first centuries in its own words \u2014 Augustine's heart "
+        "laid bare, Athanasius on the Word made flesh, and the letters of martyrs "
+        "and shepherds.",
+        [
+            "confessions",
+            "enchiridion",
+            "on-the-incarnation",
+            "life-of-antony",
+            "on-the-priesthood",
+            "treatises-of-cyprian",
+            "first-epistle-of-clement",
+            "epistles-of-ignatius",
+        ],
+    ),
+    (
+        "day-by-day",
+        "Day by Day",
+        "A reading for the morning and the evening \u2014 daily bread to keep the "
+        "soul fed, from Spurgeon's beloved classics to the books of the quiet hour.",
+        [
+            "morning-by-morning",
+            "evening-by-evening",
+            "gleanings-among-the-sheaves",
+            "thoughts-for-the-quiet-hour",
+            "our-daily-walk",
+            "days-of-heaven-upon-earth",
+            "cheque-book",
+        ],
+    ),
+    (
+        "the-east-african-revival",
+        "The East African Revival",
+        "Tukutendereza Yesu \u2014 the awakening that ran from a Kampala hillside "
+        "through six countries and most of a century, and the walk in the light "
+        "it taught.",
+        [
+            "a-hidden-fire",
+            "tukutendereza",
+            "clothed-with-strength-and-dignity",
+            "rise-up-men-of-god-2",
+            "prayer-the-pulse-of-life",
+        ],
+    ),
+    (
+        "contemporary-voices",
+        "Contemporary Voices",
+        "The old road has living guides \u2014 present-day teachers writing for East "
+        "Africa and beyond, meeting the disciple where the questions are now.",
+        [
+            "feasting-at-the-table",
+            "stepping-stones-2",
+            "the-key-in-my-hand",
+            "soar-like-the-eagle-3",
+            "he-holds-my-tomorrows",
+            "prayer-the-pulse-of-life",
+        ],
+    ),
+    (
+        "the-inner-life",
+        "The Inner Life",
+        "The path that turns inward \u2014 \u00e0 Kempis, Law and Guyon, the love of "
+        "God and the shut door of the secret place, the soul alone with him.",
+        [
+            "the-imitation-of-christ",
+            "a-serious-call",
+            "a-short-and-easy-method-of-prayer",
+            "on-loving-god",
+            "confessions",
+            "the-inner-chamber",
+        ],
+    ),
+    (
+        "the-great-awakening",
+        "The Great Awakening",
+        "The preaching that shook two continents \u2014 Whitefield and Wesley in the "
+        "open air, Edwards among his people, Finney on revival \u2014 and the "
+        "doctrine beneath the flame.",
+        [
+            "revival-lectures",
+            "sermons-on-several-occasions",
+            "selected-sermons-whitefield",
+            "selected-sermons-edwards",
+            "plain-account-christian-perfection",
+            "freedom-of-the-will",
+            "religious-affections",
+        ],
+    ),
+    (
+        "the-body-of-christ",
+        "The Body of Christ",
+        "The church as a living whole \u2014 members of one another, joined to the "
+        "Head, and the service and shepherding that flow from it.",
+        [
+            "the-body-of-christ-a-reality",
+            "the-body-of-christ-teens",
+            "on-the-priesthood",
+            "the-reformed-pastor",
+            "first-epistle-of-clement",
+            "separation-and-service",
+        ],
+    ),
+    (
+        "for-those-who-lead",
+        "For Those Who Lead",
+        "A charge to shepherds and soul-winners \u2014 the pastor's care, the "
+        "preacher's power in prayer, and how to bring men to Christ.",
+        [
+            "the-reformed-pastor",
+            "on-the-priesthood",
+            "power-through-prayer",
+            "how-to-bring-men-to-christ",
+            "men-who-tended-the-flock-2",
+            "the-fundamental-doctrines-of-the-christian-faith",
+        ],
+    ),
+    (
+        "the-wesleys-and-early-methodism",
+        "The Wesleys & Early Methodism",
+        "The awakening that became a movement \u2014 John Wesley's sermons and plain "
+        "account, the mother who shaped him, and the fervour that followed.",
+        [
+            "sermons-on-several-occasions",
+            "plain-account-christian-perfection",
+            "susanna-wesley-clarke",
+            "selected-sermons-whitefield",
+            "godliness",
+            "purity-of-heart",
+        ],
+    ),
+    (
+        "foundations-of-the-faith",
+        "Foundations of the Faith",
+        "The old doctrines, plainly held \u2014 the incarnation, the grace and will "
+        "of God, the commandments and the fundamentals once for all delivered.",
+        [
+            "the-fundamental-doctrines-of-the-christian-faith",
+            "enchiridion",
+            "on-the-incarnation",
+            "freedom-of-the-will",
+            "ten-commandments",
+        ],
+    ),
+    (
+        "saints-of-the-african-diaspora",
+        "Saints of the African Diaspora",
+        "The gospel carried in Black voices \u2014 Richard Allen and the freeborn "
+        "preachers, the holiness women who would not be silenced, and Crowther on "
+        "the Niger.",
+        [
+            "life-experience-gospel-labours",
+            "religious-experience-and-journal",
+            "a-brand-plucked-from-the-fire",
+            "amanda-smith-autobiography",
+            "journal-of-an-expedition-up-the-niger",
+        ],
+    ),
+    (
+        "the-grace-of-god",
+        "The Grace of God",
+        "Grace from first to last \u2014 free, sovereign and sufficient, abounding "
+        "to the chief of sinners and holding the weakest saint.",
+        [
+            "all-of-grace",
+            "grace-abounding",
+            "grace-for-grace-2",
+            "the-way-to-god",
+            "all-things-for-good",
+        ],
+    ),
+    (
+        "victory-over-sin",
+        "Victory Over Sin",
+        "The inward fight for holiness \u2014 mortifying sin, purity of heart, the "
+        "affections set in order, and the way into the holiest.",
+        [
+            "mortification-of-sin",
+            "religious-affections",
+            "purity-of-heart",
+            "plain-account-christian-perfection",
+            "holy-in-christ",
+            "way-into-holiest",
+        ],
+    ),
+    (
+        "to-the-ends-of-the-earth",
+        "To the Ends of the Earth",
+        "The missionary journals \u2014 Brainerd in the forests, Taylor in China, "
+        "Carmichael in India, Crowther on the Niger \u2014 the gospel carried at "
+        "any cost.",
+        [
+            "life-and-diary-of-david-brainerd",
+            "a-retrospect",
+            "separation-and-service",
+            "things-as-they-are",
+            "journal-of-an-expedition-up-the-niger",
+            "amanda-smith-autobiography",
+            "men-and-women-who-gave-everything-2",
+        ],
+    ),
+    (
+        "faith-for-the-impossible",
+        "Faith for the Impossible",
+        "Taking God at his word \u2014 M\u00fcller's orphans fed by prayer alone, the "
+        "grace of waiting on him, and the bank of faith that never breaks.",
+        [
+            "answers-to-prayer",
+            "the-life-of-trust",
+            "waiting-on-god",
+            "cheque-book",
+            "days-of-heaven-upon-earth",
+        ],
+    ),
+    (
+        "men-of-valour",
+        "Men of Valour",
+        "A call to the men \u2014 to pray, to lead, to give everything and to tend "
+        "the flock \u2014 lives of courage for the sons of God.",
+        [
+            "men-of-prayer-2",
+            "men-who-moved-heaven",
+            "men-who-tended-the-flock-2",
+            "rise-up-men-of-god-2",
+            "men-and-women-who-gave-everything-2",
+        ],
+    ),
 ]
+
+# Shelves that ship LIVE IN ENGLISH while their translations are still being
+# produced. Topic prose has no English fallback, so a shelf missing from a
+# language is simply absent there (``Topic.is_translated_into``) — these appear
+# on the English ``/topics`` and are hidden in the other languages until the
+# translation queue fills each one (``manage.py translate_topic --language
+# <lang>``, which writes ``data/topic_translations/<lang>.json``).
+#
+# This is the ONE deliberate exception to the full per-language coverage guard:
+# ``TopicTests.test_every_translated_language_covers_every_topic`` and
+# ``tests_fixture.TopicTranslationFileTests`` still demand that every OTHER
+# shelf is covered in every language, and still reject prose for a slug that
+# names no topic — they only stop treating a *pending* shelf's absence as a
+# failure. A pending shelf may also be partially covered (some languages done,
+# others not) as the queue works through it.
+#
+# Remove a slug from this set once its seven languages (ar/es/hi/lg/pt/sw/uk)
+# are all present; when the set is empty the guard is back to full strength.
+# A slug here MUST name a real topic in ``TOPICS`` above — a stale entry would
+# quietly exempt nothing and mask a genuinely uncovered shelf (a test pins this).
+TRANSLATION_PENDING: frozenset[str] = frozenset(
+    {
+        "the-puritans",
+        "abiding-in-christ",
+        "women-of-faith",
+        "voices-of-the-early-church",
+        "day-by-day",
+        "the-east-african-revival",
+        "contemporary-voices",
+        "the-inner-life",
+        "the-great-awakening",
+        "the-body-of-christ",
+        "for-those-who-lead",
+        "the-wesleys-and-early-methodism",
+        "foundations-of-the-faith",
+        "saints-of-the-african-diaspora",
+        "the-grace-of-god",
+        "victory-over-sin",
+        "to-the-ends-of-the-earth",
+        "faith-for-the-impossible",
+        "men-of-valour",
+    }
+)
 
 # Sermon members per topic, by canonical sermon slug (language-agnostic, like
 # the book members). A sermon shows on a topic's shelf in each language it
@@ -501,5 +831,97 @@ TOPIC_SCRIPTURE = {
     "the-preached-word": (
         "Romans 10:14",
         "How shall they hear without a preacher?",
+    ),
+    "the-puritans": (
+        "Hebrews 4:12",
+        "For the word of God is quick, and powerful, and sharper than any "
+        "twoedged sword, piercing even to the dividing asunder of soul and spirit.",
+    ),
+    "abiding-in-christ": (
+        "John 15:4",
+        "Abide in me, and I in you. As the branch cannot bear fruit of itself, "
+        "except it abide in the vine; no more can ye, except ye abide in me.",
+    ),
+    "women-of-faith": (
+        "Proverbs 31:30",
+        "Favour is deceitful, and beauty is vain: but a woman that feareth the "
+        "Lord, she shall be praised.",
+    ),
+    "voices-of-the-early-church": (
+        "Hebrews 12:1",
+        "We also are compassed about with so great a cloud of witnesses.",
+    ),
+    "day-by-day": (
+        "Lamentations 3:22–23",
+        "It is of the Lord's mercies that we are not consumed, because his "
+        "compassions fail not. They are new every morning: great is thy "
+        "faithfulness.",
+    ),
+    "the-east-african-revival": (
+        "1 John 1:7",
+        "But if we walk in the light, as he is in the light, we have fellowship "
+        "one with another, and the blood of Jesus Christ his Son cleanseth us "
+        "from all sin.",
+    ),
+    "contemporary-voices": (
+        "Psalm 145:4",
+        "One generation shall praise thy works to another, and shall declare "
+        "thy mighty acts.",
+    ),
+    "the-inner-life": (
+        "Matthew 6:6",
+        "But thou, when thou prayest, enter into thy closet, and when thou hast "
+        "shut thy door, pray to thy Father which is in secret.",
+    ),
+    "the-great-awakening": (
+        "Psalm 85:6",
+        "Wilt thou not revive us again: that thy people may rejoice in thee?",
+    ),
+    "the-body-of-christ": (
+        "1 Corinthians 12:27",
+        "Now ye are the body of Christ, and members in particular.",
+    ),
+    "for-those-who-lead": (
+        "1 Peter 5:2",
+        "Feed the flock of God which is among you, taking the oversight thereof, "
+        "not by constraint, but willingly.",
+    ),
+    "the-wesleys-and-early-methodism": (
+        "Luke 24:32",
+        "Did not our heart burn within us, while he talked with us by the way, "
+        "and while he opened to us the scriptures?",
+    ),
+    "foundations-of-the-faith": (
+        "Jude 3",
+        "Ye should earnestly contend for the faith which was once delivered "
+        "unto the saints.",
+    ),
+    "saints-of-the-african-diaspora": (
+        "Psalm 68:31",
+        "Princes shall come out of Egypt; Ethiopia shall soon stretch out her "
+        "hands unto God.",
+    ),
+    "the-grace-of-god": (
+        "Ephesians 2:8",
+        "For by grace are ye saved through faith; and that not of yourselves: "
+        "it is the gift of God.",
+    ),
+    "victory-over-sin": (
+        "Romans 6:14",
+        "For sin shall not have dominion over you: for ye are not under the "
+        "law, but under grace.",
+    ),
+    "to-the-ends-of-the-earth": (
+        "Acts 1:8",
+        "And ye shall be witnesses unto me both in Jerusalem, and in all "
+        "Judaea, and in Samaria, and unto the uttermost part of the earth.",
+    ),
+    "faith-for-the-impossible": (
+        "Mark 9:23",
+        "If thou canst believe, all things are possible to him that believeth.",
+    ),
+    "men-of-valour": (
+        "1 Corinthians 16:13",
+        "Watch ye, stand fast in the faith, quit you like men, be strong.",
     ),
 }

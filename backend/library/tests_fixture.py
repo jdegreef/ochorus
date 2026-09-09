@@ -2223,8 +2223,13 @@ class TopicTranslationFileTests(SimpleTestCase):
         the file.
         """
         from library.management.commands.seed_topics import TOPICS
+        from library.topic_seed import TRANSLATION_PENDING
 
         known = {t[0] for t in TOPICS}
+        # A pending shelf ships live in English and is filled per-language by the
+        # translation queue, so its absence is allowed; every other shelf must be
+        # covered. (A pending slug that names no real topic is caught below.)
+        required = known - TRANSLATION_PENDING
         dead = sorted(
             f"{lang}.json:{slug}"
             for lang, entries in self.raw.items()
@@ -2234,7 +2239,7 @@ class TopicTranslationFileTests(SimpleTestCase):
         hidden = sorted(
             f"{lang}.json missing {slug}"
             for lang, entries in self.raw.items()
-            for slug in known - set(entries)
+            for slug in required - set(entries)
         )
         self.assertEqual(dead, [], f"Prose for no topic: {dead}")
         self.assertEqual(
@@ -2242,6 +2247,13 @@ class TopicTranslationFileTests(SimpleTestCase):
             [],
             "Topic prose has no English fallback — these shelves would be "
             f"HIDDEN from their language: {hidden}",
+        )
+        stale = sorted(TRANSLATION_PENDING - known)
+        self.assertEqual(
+            stale,
+            [],
+            "TRANSLATION_PENDING names topics that don't exist — a stale entry "
+            f"silently exempts a real coverage gap: {stale}",
         )
 
     def test_no_english_file_and_codes_look_like_languages(self):
