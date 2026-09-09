@@ -2,6 +2,7 @@
 	import type { QuoteAuthorSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
+	import { initials, portraitPosition } from '$lib/portraits';
 	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -92,6 +93,23 @@
 					style={`--hue: ${hueForBirthYear(a.birth_year)}`}
 				>
 					<span class="era-bar" aria-hidden="true"></span>
+					{#if a.photo_url}
+						<img
+							src={a.photo_url}
+							alt=""
+							loading="lazy"
+							width="96"
+							height="96"
+							class="h-14 w-14 shrink-0 rounded-full border border-border object-cover grayscale sm:h-16 sm:w-16"
+							style="object-position: {portraitPosition(a.slug)}"
+						/>
+					{:else}
+						<span
+							class="font-display text-h3 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent-soft font-semibold text-accent sm:h-16 sm:w-16"
+						>
+							{initials(a.name)}
+						</span>
+					{/if}
 					<span class="flex-1">
 						<span class="block text-h3 text-text">{a.name}</span>
 						<span class="text-small text-muted"

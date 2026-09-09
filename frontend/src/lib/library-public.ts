@@ -987,6 +987,8 @@ export interface QuoteAuthorSummary {
 	slug: string;
 	name: string;
 	birth_year: number | null;
+	/** Blank for authors with no free image; the card falls back to initials. */
+	photo_url: string;
 	count: number;
 }
 
