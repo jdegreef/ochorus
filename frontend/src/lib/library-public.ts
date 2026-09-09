@@ -798,6 +798,15 @@ export interface TopicSummary {
 	covers: TopicCover[];
 }
 
+/** An author behind a shelf's works — exactly the shape `PersonCard` renders. */
+export interface TopicAuthor {
+	slug: string;
+	name: string;
+	photo_url: string;
+	birth_year: number | null;
+	death_year: number | null;
+}
+
 export interface TopicDetail extends TopicSummary {
 	scripture_ref: string;
 	scripture_text: string;
@@ -807,6 +816,11 @@ export interface TopicDetail extends TopicSummary {
 	sermons: SermonSummary[];
 	/** Articles about this topic — the bidirectional funnel back to the essays. */
 	articles: ArticleSummary[];
+	/** Distinct authors behind the shelf's works, curated order. Optional so a
+	 *  rolling-deploy skew (an API without the field yet) renders no section. */
+	authors?: TopicAuthor[];
+	/** Sibling shelves that share books, most-shared first — the lateral "see also". */
+	related_topics?: TopicChip[];
 }
 
 export const listTopics = (language = 'en') =>

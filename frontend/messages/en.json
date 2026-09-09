@@ -509,6 +509,8 @@
   "topics_books": "Books",
   "topics_sermons": "Sermons",
   "topics_articles": "Articles",
+  "topics_authors": "Authors",
+  "topics_related": "Related topics",
   "sermons_label": "Sermon",
   "settings_title": "Settings",
   "settings_subtitle": "Manage your account, reading, and appearance.",
