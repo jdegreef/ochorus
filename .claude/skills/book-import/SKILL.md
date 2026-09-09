@@ -455,15 +455,42 @@ dropped; chapters under 120 words are dropped as stubs.
   - Attributed to the existing `dwight-l-moody` author as the volume's *editor*
     (it is a compilation, each day bylined `—<i>Author.</i>` to its writer).
   *(thoughts-for-the-quiet-hour, 2026-09)*
-- **Precept Austin (preceptaustin.org) hosts clean PD devotional text by month —
-  a good 12-page source when a work is calendar-shaped but not on CCEL/Gutenberg.**
-  Meyer's *Our Daily Walk* (1913) is on neither, and Archive/HathiTrust had only a
-  1951 reprint stub — but Precept serves it as twelve per-month pages
-  (`our_daily_walk_by_f_b_meyer_-_jan` … `-dec`), each day
-  `<p><b>January N</b></p>` + a centred bold theme + a bold scripture `<p>` + the
-  meditation `<p>`s + Meyer's own closing "PRAYER … AMEN." — clean Meyer, no
-  Precept study apparatus interleaved (verified). Legal basis is the work's own
-  PD year (judge by first publication, 1913), NOT the host's permission. *(2026-09)*
+- **Precept Austin (preceptaustin.org) hosts PD devotional text by month — a
+  usable source when a work is calendar-shaped but not on CCEL/Gutenberg, but its
+  markup is messy and carries its own study apparatus, so parse defensively.**
+  Meyer's *Our Daily Walk* (1913) is on neither CCEL nor Gutenberg (Archive/
+  HathiTrust had only a 1951 reprint stub); Precept serves it as twelve per-month
+  pages, each day a bold theme + a bold scripture line + the meditation `<p>`s +
+  Meyer's own closing "PRAYER … AMEN." Legal basis is the work's own PD year
+  (judge by first publication, 1913), NOT the host's permission. `build_our_daily_walk`
+  is the model; four things it earned the hard way:
+  - **URLs are irregular and the month-nav is incomplete.** Suffixes are clipped
+    unevenly (`_-_jan`/`_-_feb`/`_-_mar`/`_-_may`/`_-_aug`/`_-_oct`/`_-_nov`/`_-_dec`
+    but `_-_june`/`_-_july`/`_-_sept` spelled long), and **April has no suffix at
+    all — it lives at the bare slug `/our_daily_walk`**, absent from the on-page
+    month list. Hardcode the 12 URLs explicitly; don't derive them.
+  - **The body-field `<div>` is unusable as a content bound.** Precept's markup is
+    malformed enough that both `html.parser` AND `lxml` leave the reading `<p>`s as
+    siblings OUTSIDE `div.field--name-body` (it parses with zero `<p>` children).
+    Parse the WHOLE document's `<p>`s instead, bounded by day markers.
+  - **The day marker varies per page — use a hybrid.** Some months set the date as
+    `<p><b>January 1</b></p>`, others as a bare `<b>January 1</b>` in a bordered
+    box, and Precept OMITS the `<a name>` anchor on some days (April 2, Sept 22's
+    heading). Detect a boundary as EITHER an `<a name="january 1">` anchor OR any
+    `<b>`/`<p>` whose exact text is "January 1". A day genuinely absent from the
+    transcription (Sept 22 — heading jumps 21→23) is left faithful, not invented.
+  - **Precept decorates every scripture ref with its own commentary links —
+    strip them.** `Php 3:13-note`, `Heb 12:1KJV-note`, `Col 3:3KJV`, and the
+    hyphen can even carry a space (`21- notes`). Strip `-note`/`-notes`/`KJV`
+    ANCHORED TO THE REF DIGIT so Meyer's own prose (`love-notes`, `key-note`)
+    survives, tolerate `\s*` around the hyphen, and then close the space the
+    suffix left before a comma/period. The "dry-run understates" trap bites here:
+    a later pipeline step collapses `21- notes`→`21-notes`, so the regex must
+    match the *pre-collapse* form seen at strip time, not the stored form. Drop
+    the trailing on-page search widgets with a SPECIFIC guard (`^Search for
+    comments`, not a bare `^Search ` — that would truncate a "Search me, O God…"
+    meditation). Meyer's own "See …" cross-refs and Spurgeon mentions are prose,
+    not apparatus, and stay. *(our-daily-walk, 2026-09)*
 - **`npm run og:covers` rewrites any PRE-EXISTING stale twin it finds, not only
   your new book's — keep the PR focused.** A fresh run wrote my 2 twins AND
   redrew 4 unrelated `painting`-tier twins whose committed bytes had drifted from
