@@ -544,6 +544,33 @@ class AdminSearchView(APIView):
         )
 
 
+# A search hit reduced to the translatable WORK behind it, named the way the
+# translation queue names it: a chapter is its book; an author is a bio job.
+# type -> (job_type, slug field, title field) on the hit.
+_GAP_WORK = {
+    "book": ("book", "book_slug", "book_title"),
+    "chapter": ("book", "book_slug", "book_title"),
+    "sermon": ("sermon", "sermon_slug", "sermon_title"),
+    "plan": ("plan", "plan_slug", "plan_title"),
+    "author": ("bio", "author_slug", "author_name"),
+    "topic": ("topic", "topic_slug", "topic_title"),
+    "article": ("article", "article_slug", "article_title"),
+}
+
+
+def _gap_work(hit: dict) -> dict | None:
+    """One search hit as a queueable work, or None for a hit that isn't one
+    (a scripture navigational row, or anything missing a slug)."""
+    spec = _GAP_WORK.get(hit.get("type"))
+    if spec is None:
+        return None
+    job_type, slug_key, title_key = spec
+    slug = hit.get(slug_key)
+    if not slug:
+        return None
+    return {"type": job_type, "slug": slug, "title": hit.get(title_key) or slug}
+
+
 class AdminSearchGapView(APIView):
     """For one unanswered query: does the library have it in another language?
 
@@ -568,7 +595,7 @@ class AdminSearchGapView(APIView):
 
     def get(self, request):
         from ..languages import live_codes
-        from ..search import MIN_QUERY_LEN, count_by_type
+        from ..search import MIN_QUERY_LEN, count_by_type, search_library
 
         q = (request.query_params.get("q") or "").strip()
         language = (request.query_params.get("language") or "").strip().lower()
@@ -579,14 +606,37 @@ class AdminSearchGapView(APIView):
             )
 
         elsewhere = []
+        # The specific works behind the matches, deduped across languages, so a
+        # gap can be turned into a translation in one click. Keyed by (type, slug).
+        works: dict[tuple[str, str], dict] = {}
         for code in live_codes():
             if code == language:
                 continue
             counts, _ = count_by_type(q, code)
             total = sum(counts.values())
-            if total:
-                elsewhere.append(
-                    {**_language_entry(code), "matches": total, "by_type": counts}
-                )
+            if not total:
+                continue
+            elsewhere.append(
+                {**_language_entry(code), "matches": total, "by_type": counts}
+            )
+            # Only languages that HAVE matches are searched in full, bounding the
+            # extra work to the few that qualify (the counters above already
+            # scanned every language; this adds a full search only where it pays).
+            for hit in search_library(q, code):
+                work = _gap_work(hit)
+                if work is None:
+                    continue
+                entry = works.setdefault((work["type"], work["slug"]), {**work, "languages": []})
+                if code not in entry["languages"]:
+                    entry["languages"].append(code)
         elsewhere.sort(key=lambda r: -r["matches"])
-        return Response({"query": q, "language": language, "elsewhere": elsewhere})
+        # Most-corroborated works first (found in the most languages).
+        ranked = sorted(works.values(), key=lambda w: (-len(w["languages"]), w["title"]))
+        return Response(
+            {
+                "query": q,
+                "language": language,
+                "elsewhere": elsewhere,
+                "works": ranked[:12],
+            }
+        )

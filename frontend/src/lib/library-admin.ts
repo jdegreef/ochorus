@@ -850,10 +850,20 @@ export const getAdminSearchStats = () => apiFetch<AdminSearchStats>('/api/admin/
  * Where an unanswered query DOES have matches — i.e. what there is to translate.
  * Admin planning only; see `AdminSearchGapView` for why it is a separate call.
  */
+export interface AdminSearchGapWork {
+	type: TranslationJobType;
+	slug: string;
+	title: string;
+	/** The languages this work was found in — where a translation can come from. */
+	languages: string[];
+}
+
 export interface AdminSearchGap {
 	query: string;
 	language: string;
 	elsewhere: (Language & { matches: number; by_type: Partial<Record<SearchType, number>> })[];
+	/** The specific works behind the matches, deduped — each queueable into `language`. */
+	works: AdminSearchGapWork[];
 }
 
 export const getAdminSearchGap = (q: string, language: string) =>

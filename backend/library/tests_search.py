@@ -778,12 +778,27 @@ class SearchGapTests(TestCase):
         self.assertNotIn("sw", rows)
 
     @override_settings(DEBUG=True)
+    def test_returns_the_matching_works_to_queue(self):
+        # Beyond the per-language counts, the specific works behind them — so a
+        # gap becomes a one-click translation job. A chapter match resolves to
+        # its book (the queueable work), deduped.
+        res = self.gap("humility", "sw")
+        works = res.data["works"]
+        self.assertEqual(len(works), 1)
+        w = works[0]
+        self.assertEqual(w["type"], "book")
+        self.assertEqual(w["slug"], "humility")
+        self.assertEqual(w["title"], "Humility")
+        self.assertEqual(w["languages"], ["en"])
+
+    @override_settings(DEBUG=True)
     def test_nothing_anywhere_means_translation_will_not_help(self):
         # The distinction the whole endpoint exists to draw: this is a work to
         # acquire, not a work to translate.
         res = self.gap("theosis", "sw")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data["elsewhere"], [])
+        self.assertEqual(res.data["works"], [])
 
     @override_settings(DEBUG=True)
     def test_a_missing_or_trivial_query_is_rejected(self):
