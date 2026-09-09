@@ -63,7 +63,13 @@
 						sub: `${fmt(stats.totals.published_books)} published`
 					},
 					{ label: 'Chapters', value: stats.totals.chapters, sub: 'across all books' },
-					{ label: 'Words', value: stats.totals.words, sub: 'chapters + sermons' },
+					{
+						label: 'Words',
+						value: stats.totals.words,
+						// A raw word count is abstract; hours-to-read (~200 wpm) is relatable.
+						// The words are still chapters + sermons — that stays true.
+						sub: `≈ ${fmt(Math.round(stats.totals.words / 12000))} hrs of reading`
+					},
 					{
 						label: 'Sermons',
 						value: stats.totals.sermons,
