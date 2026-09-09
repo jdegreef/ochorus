@@ -90,6 +90,9 @@ class SearchTests(TestCase):
             slug="how-to-forgive",
             language="en",
             h1="How to Forgive Someone Who Hurt You",
+            # A distinctive keyword that appears ONLY in the SEO meta_title, so a
+            # test can prove that field is searchable on its own.
+            meta_title="Reconciliation: a keyword-led title",
             description="A short guide to forgiveness, drawn from the classics.",
             body_html="<p>Forgiveness begins where the wound is deepest.</p>",
             is_published=True,
@@ -189,6 +192,15 @@ class SearchTests(TestCase):
         self.assertNotIn("author_name", hit)
         self.assertNotIn("cover_url", hit)
 
+    def test_article_matches_meta_title(self):
+        # The keyword-led SEO meta_title is searchable on its own — guards the
+        # `meta_title` term in _pg_vector("article") / _lite_q("article") against
+        # a silent drop (a field in the vector that no test exercised is exactly
+        # how the topic vector once went wrong on the reader's path).
+        hits = [r for r in self.search("Reconciliation") if r["type"] == "article"]
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(hits[0]["article_slug"], "how-to-forgive")
+
     def test_article_matches_description(self):
         # Matches the standfirst, not just the headline (the SEO body an article
         # answers a query with). No HTML leaks from body_html into the snippet.
@@ -247,6 +259,13 @@ class SearchTests(TestCase):
     def test_suggests_misspelled_author_surname(self):
         data = self._raw("Spurgen")
         self.assertEqual(data.get("suggestion", "").lower(), "spurgeon")
+
+    def test_suggests_word_from_article_title(self):
+        # Article h1 words feed the did-you-mean vocabulary, so a misspelt one
+        # resolves — the same guarantee the book/author suggestions carry.
+        data = self._raw("somone")
+        self.assertEqual(data["results"], [])
+        self.assertEqual(data.get("suggestion", "").lower(), "someone")
 
     def test_no_suggestion_when_results_found(self):
         data = self._raw("Humility")
