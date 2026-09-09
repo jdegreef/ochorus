@@ -19,6 +19,7 @@ from .models import (
     Author,
     Book,
     Chapter,
+    ChapterCitation,
     Language,
     Plan,
     SearchClickLog,
@@ -380,6 +381,86 @@ class ScriptureSearchTests(TestCase):
             [q["sql"] for q in captured.captured_queries if "body_html" in q["sql"]],
             [],
             "the scripture scan still pulls sermon bodies out of the database",
+        )
+
+
+ROM_8 = 45008000  # BBBCCCVVV base for Romans 8
+ROM_8_28 = 45008028
+
+
+class ScripturePageHitTests(TestCase):
+    """The scripture HUB page as a navigational search hit — a reference query's
+    lead result, above the sermons and chapters that treat the passage."""
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="a", name="A")
+        self.book = Book.objects.create(
+            author=author, slug="b", language="en", title="B"
+        )
+        # Five DISTINCT chapters each cite Romans 8:28. That clears the verse
+        # floor (5) for the verse page and, a fortiori, the chapter floor (3).
+        for order in range(1, 6):
+            ch = Chapter.objects.create(
+                book=self.book, order=order, title=f"Ch {order}", body_html="<p>x</p>"
+            )
+            ChapterCitation.objects.create(
+                chapter=ch,
+                ref_text="Romans 8:28",
+                start_verse_id=ROM_8_28,
+                end_verse_id=ROM_8_28,
+            )
+
+    def _raw(self, q, **params):
+        res = self.client.get(
+            "/api/library/search/", {"q": q, "language": "en", **params}
+        )
+        self.assertEqual(res.status_code, 200)
+        return res.data
+
+    def _scripture(self, q, **params):
+        return [r for r in self._raw(q, **params)["results"] if r["type"] == "scripture"]
+
+    def test_verse_query_leads_with_the_verse_page(self):
+        data = self._raw("Romans 8:28")
+        scr = [r for r in data["results"] if r["type"] == "scripture"]
+        self.assertEqual(len(scr), 1)
+        hit = scr[0]
+        self.assertEqual(
+            (hit["book_slug"], hit["chapter"], hit["verse"]), ("romans", 8, 28)
+        )
+        self.assertEqual(hit["reference"], "Romans 8:28")
+        # The passage hub leads the merged list, above the chapters that cite it.
+        self.assertEqual(data["results"][0]["type"], "scripture")
+
+    def test_chapter_only_query_gives_the_chapter_page(self):
+        scr = self._scripture("Romans 8")
+        self.assertEqual(len(scr), 1)
+        self.assertIsNone(scr[0]["verse"])
+        self.assertEqual(scr[0]["reference"], "Romans 8")
+
+    def test_non_reference_query_has_no_scripture_hit(self):
+        self.assertEqual(self._scripture("grace"), [])
+
+    def test_unqualified_reference_has_no_page(self):
+        # Nothing cites Romans 9, so it never earned a page — no dead-link hit.
+        self.assertEqual(self._scripture("Romans 9"), [])
+
+    def test_not_surfaced_for_non_english(self):
+        # Scripture pages are English-only; the hit must not appear for /es.
+        self.assertEqual(self._scripture("Romans 8:28", language="es"), [])
+
+    def test_not_surfaced_inside_a_scope(self):
+        # A global hub, not something inside "search within this book".
+        self.assertEqual(self._scripture("Romans 8:28", **{"in": "book:b"}), [])
+
+    def test_type_page_returns_the_scripture_hit(self):
+        # Selecting the Scripture facet fetches ?type=scripture — it must return
+        # the hit rather than a blank list.
+        res = self._raw("Romans 8:28", type="scripture")
+        self.assertEqual(
+            [(r["book_slug"], r["chapter"], r["verse"]) for r in res["results"]],
+            [("romans", 8, 28)],
         )
 
 

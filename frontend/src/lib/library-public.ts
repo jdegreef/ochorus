@@ -289,6 +289,21 @@ export interface ArticleHit {
 	date: string;
 }
 
+export interface ScriptureHit {
+	type: 'scripture';
+	/** Book slug for the `/scripture/<book>/<chapter>[/<verse>]` link. */
+	book_slug: string;
+	chapter: number;
+	/** A specific verse, or null for a whole-chapter page. */
+	verse: number | null;
+	/** The human label the row shows — "Romans 8:28" / "Romans 8". */
+	reference: string;
+	/** Always "" — a scripture page is an aggregation, with no prose of its own. */
+	snippet: string;
+	/** Always "" — a scripture page has no date to sort by. */
+	date: string;
+}
+
 export type SearchHit =
 	| ChapterHit
 	| SermonHit
@@ -296,7 +311,8 @@ export type SearchHit =
 	| BookHit
 	| TopicHit
 	| PlanHit
-	| ArticleHit;
+	| ArticleHit
+	| ScriptureHit;
 
 export type SearchType = SearchHit['type'];
 export type SearchSort = 'relevance' | 'title' | 'newest';
@@ -890,6 +906,14 @@ export const getScripturePage = (book: string, chapter: number, verse?: number) 
 	apiFetch<ScripturePage>(
 		`/api/library/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '')
 	);
+
+/**
+ * The reader-facing scripture page URL — `/scripture/<book>/<chapter>/` with a
+ * trailing `<verse>/` for a verse page. One place for the shape the search hit
+ * and the command palette both link to; `null`/`0` verse means the whole chapter.
+ */
+export const scripturePageHref = (book: string, chapter: number, verse: number | null): string =>
+	`/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '');
 
 // --- Quotes -------------------------------------------------------------------
 // Sourced quotations, by author. English-only for the same reason the scripture
