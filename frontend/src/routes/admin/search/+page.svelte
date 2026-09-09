@@ -144,11 +144,22 @@
 
 				<!-- Daily volume -->
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
-					<h2 class="text-h3 mb-1">Daily searches</h2>
-					<p class="mb-4 text-small text-muted">Last 14 days; the darker segment is zero-result searches.</p>
+					<div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+						<div>
+							<h2 class="text-h3">Daily searches</h2>
+							<p class="text-small text-muted">Last 14 days. Hover a bar for the day's totals.</p>
+						</div>
+						<div class="flex items-center gap-3 text-micro text-muted">
+							<span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-accent-soft"></span>found</span>
+							<span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-accent"></span>zero-result</span>
+						</div>
+					</div>
 					<div class="flex items-end gap-2" style="height: 8rem">
 						{#each d.daily as day (day.day)}
-							<div class="flex flex-1 flex-col items-center gap-1">
+							<div
+								class="flex flex-1 flex-col items-center gap-1"
+								title="{dayLabel(day.day)} · {fmt(day.searches)} search{day.searches === 1 ? '' : 'es'}{day.zero ? `, ${fmt(day.zero)} zero-result` : ''}"
+							>
 								<div class="text-small tabular-nums text-muted">{day.searches || ''}</div>
 								<div
 									class="flex w-full flex-col justify-end overflow-hidden rounded-t-sm"
