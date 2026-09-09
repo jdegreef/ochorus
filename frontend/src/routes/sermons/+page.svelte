@@ -7,7 +7,6 @@
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
-	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -232,14 +231,6 @@
 	{/snippet}
 
 	<CatalogLanguageNudge kind="sermons" localizedCount={sermons.length} />
-
-	<!-- A weekly pick to open the page on a focal point rather than a cold list.
-	     Hidden once the reader is actively filtering (they've stated intent). -->
-	{#if !filtering}
-		<div class="mb-8">
-			<SermonOfTheWeek embedded />
-		</div>
-	{/if}
 
 	<!-- Filter bar: free text + which book of the Bible the sermon expounds.
 	     Pinned under the app nav (itself sticky, hence the --appnav-h offset) so
