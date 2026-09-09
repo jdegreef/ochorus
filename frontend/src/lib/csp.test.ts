@@ -152,7 +152,9 @@ describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
 		// the exact silent-in-production failure this file exists to prevent.
 		const config = fs.readFileSync(SVELTE_CONFIG, 'utf8');
 		expect(config).toMatch(/mode:\s*['"]hash['"]/);
-		expect(config).toMatch(/directives:\s*cspDirectives/);
+		// directives come from cspDirectives, possibly wrapped to add the build's
+		// own API origin (directivesForThisBuild) — either way it must be wired in.
+		expect(config).toMatch(/directives:\s*(cspDirectives|directivesForThisBuild\(\))/);
 		expect(config).toMatch(/import\s*\{\s*cspDirectives\s*\}\s*from\s*['"]\.\/csp\.config\.js['"]/);
 	});
 
