@@ -204,6 +204,15 @@ absent from the palette and from search.
     now fails any catalogue carrying `· Ochorus`; add the same shape of guard
     when you normalise the next catalogue-borne label. A value-only edit needs
     no `sync:catalogues` (that snapshot tracks keys, not values).
+  - **A NEW key you add to `en.json` needs a value in all eight catalogues
+    (parity), and `messages.test.ts` also fails any non-English value that is
+    byte-identical to English** — so a bare label with nothing to translate
+    ("10–30 min": `min` is the standard minute abbrev in es *and* pt) trips the
+    guard for those locales even when it's correct. That's what
+    `SAME_AS_ENGLISH_OK` is for — add the key there (not `PENDING_TRANSLATION`,
+    which is for real un-done debt). The test throws on the first failing locale
+    (es), so a second, silent collision (pt) waits behind it: fix the class, not
+    the one it named. (Length-filter labels, #1899.)
 - Counts: `N books · M authors` (middle dot, spaces). Never "Showing N of N".
 - Chrome strings — crumbs, "Home", "Read", "Topics:", plurals — go through
   `t()` / `m.*()` even on an English-only hub; only *content* may be literal.
