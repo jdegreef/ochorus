@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import re
 from collections import defaultdict
+from html import escape
 
 import requests
 from bs4 import BeautifulSoup, Tag
@@ -128,10 +129,10 @@ def _reading_html(tags: list[Tag]) -> str:
             text = t.get_text(" ", strip=True)
             if text:
                 flush_verse()  # a prior verse with no ref stands alone
-                pending_verse = text
+                pending_verse = escape(text)  # plain text going into HTML
             continue
         if "scripPassage" in classes:  # the scripture reference
-            flush_verse(t.get_text(" ", strip=True))
+            flush_verse(escape(t.get_text(" ", strip=True)))
             continue
         # Prose (`normal`), poetry lines (`l`), and anything else with content.
         inner = t.decode_contents().strip()
