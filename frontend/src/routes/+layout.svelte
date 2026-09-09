@@ -12,6 +12,7 @@
 	import { API_BASE_URL } from '$lib/config';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
+	import { loginHref } from '$lib/loginHref';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
@@ -143,6 +144,16 @@
 	// (and is tested there): the locale the reader is ACTUALLY IN is always
 	// listed, advertised or not.
 	const footerLangs = $derived(footerLocales(lang.available, lang.current));
+
+	// Footer sign-up CTA target. Reuses loginHref's guard (which keeps a reader
+	// who is already on /login from being redirected back to it — see loginHref)
+	// and just adds mode=signup so the login page opens on its "create account"
+	// form. The caller localizes the path, exactly as the header's sign-in link
+	// does. Only rendered when accounts exist AND the reader is signed out.
+	const signupHref = $derived.by(() => {
+		const base = loginHref($page.url.pathname, $page.url.search);
+		return base.includes('?') ? `${base}&mode=signup` : `${base}?mode=signup`;
+	});
 
 	// The API is a separate origin in production (api.ochorus.com). Prerendered
 	// pages bake their content, but the personal blocks (Continue reading,
@@ -286,6 +297,22 @@
 					<p class="mt-2 max-w-xs text-small text-muted">
 						{t('footer.tagline')}
 					</p>
+					<!-- Sign-up CTA, signed-out readers only. auth.enabled gates it the
+					     same way the header's sign-in control is gated (AccountMenu): with
+					     Supabase keys absent the whole auth UI hides rather than offering a
+					     button that can't work. Once signed in the prompt is spent, so it
+					     drops. Reuses login.createAccountLink — already translated in every
+					     advertised locale — rather than minting a footer-only string. Soft
+					     btn-primary to match the header control; w-fit so the pill hugs its
+					     label instead of stretching the brand column. -->
+					{#if auth.enabled && !auth.user}
+						<a
+							href={localizeHref(signupHref)}
+							class="btn btn-sm btn-primary mt-4 w-fit hover:no-underline"
+						>
+							{t('login.createAccountLink')}
+						</a>
+					{/if}
 				</div>
 				<!-- Labelled by their own headings rather than a duplicated aria-label
 				     string: the visible heading IS the accessible name, so the two
