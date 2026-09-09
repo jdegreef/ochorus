@@ -1,0 +1,94 @@
+{
+  "kind": "sermon",
+  "slug": "christ-all-in-all",
+  "language": "fr",
+  "job_issue": 1977,
+  "pull_request": 1988,
+  "references": [
+    {
+      "reference": "Colossians 3:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 2:10-11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 8:32",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Revelation 22:17",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 49:24-25",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Job 33:24-28",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 14:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Nehemiah 9:15",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Malachi 3:6",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 41:13",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 8:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 5:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 3:2",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "James 1:5",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 11:28-29",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 3:2",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 23:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Colossians 3:2",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Mark 11:24",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Proverbs 18:24",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 53:4",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Keyless in-session French translation: all references are self_rendered from Louis Segond (1910) by recall. Verify each against the French Bible during native review."
+}
