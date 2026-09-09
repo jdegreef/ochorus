@@ -539,7 +539,8 @@ class QuotePageApiTests(TestCase):
         self.assertEqual(len(res.data["quotes"]), 1)
         listing = self.client.get("/api/library/quotes/").data
         self.assertEqual(
-            listing, [{"slug": "w", "name": "A Writer", "birth_year": None, "count": 1}]
+            listing,
+            [{"slug": "w", "name": "A Writer", "birth_year": None, "photo_url": "", "count": 1}],
         )
 
     def test_the_payload_carries_the_citation(self):
