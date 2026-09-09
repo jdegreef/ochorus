@@ -611,6 +611,16 @@
 		font-variant-numeric: tabular-nums;
 		color: var(--text);
 	}
+	/* A step down from .stat-number, for secondary metric tiles that should read
+	   as supporting figures rather than headline numbers. */
+	.stat-number-sm {
+		font-family: var(--font-display);
+		font-size: var(--fs-h2);
+		font-weight: 600;
+		line-height: 1;
+		font-variant-numeric: tabular-nums;
+		color: var(--text);
+	}
 	.btn-ghost {
 		background: transparent;
 		color: var(--text);

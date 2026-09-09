@@ -636,3 +636,82 @@ class QuotePageApiTests(TestCase):
         self.quote.reviewed = True
         self.quote.save()
         self.assertEqual(self.client.get("/api/library/authors/w/").data["quote_count"], 1)
+
+
+class QuoteResolveApiTests(TestCase):
+    """The reader's saved-quotes shelf: POST the stored slugs, get the cards.
+
+    Reviewed-only like every other quote endpoint, order-preserving so the
+    shelf shows favorites most-recent-first, and forgiving of slugs it can't
+    resolve — a saved quote that was pulled or un-approved drops off the shelf
+    rather than erroring it.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        self.murray = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        self.spurgeon = Author.objects.create(slug="c-h-spurgeon", name="C. H. Spurgeon")
+        book = Book.objects.create(
+            author=self.murray, slug="abiding", language="en", title="Abiding in Christ"
+        )
+        chapter = Chapter.objects.create(
+            book=book, order=2, title="Second", body_html="<p>a</p><p>b</p>"
+        )
+        sermon = Sermon.objects.create(
+            author=self.spurgeon, slug="the-blood", language="en",
+            title="The Blood", body_html="<p>x</p>",
+        )
+        self.q_book = Quote.objects.create(
+            slug="andrew-murray-aaa", author=self.murray,
+            text="Abide in Him and the fruit will follow of itself.",
+            chapter=chapter, paragraph=3, reviewed=True,
+        )
+        self.q_sermon = Quote.objects.create(
+            slug="c-h-spurgeon-bbb", author=self.spurgeon,
+            text="The blood speaks better things than that of Abel.",
+            sermon=sermon, paragraph=4, reviewed=True,
+        )
+        self.q_hidden = Quote.objects.create(
+            slug="andrew-murray-ccc", author=self.murray,
+            text="Not yet approved by anyone at all here.",
+            chapter=chapter, paragraph=5,
+        )
+
+    def resolve(self, slugs):
+        return self.client.post(
+            "/api/library/quotes/resolve/", {"slugs": slugs}, format="json"
+        )
+
+    def test_it_resolves_saved_quotes_with_author_and_citation(self):
+        res = self.resolve(["andrew-murray-aaa"])
+        self.assertEqual(res.status_code, 200)
+        (card,) = res.data
+        self.assertEqual(card["slug"], "andrew-murray-aaa")
+        self.assertEqual(
+            card["author"], {"slug": "andrew-murray", "name": "Andrew Murray"}
+        )
+        self.assertEqual(card["source"]["work"], "Abiding in Christ")
+        self.assertEqual(card["source"]["order"], 2)
+        self.assertEqual(card["paragraph"], 3)
+
+    def test_a_sermon_quote_names_its_sermon(self):
+        (card,) = self.resolve(["c-h-spurgeon-bbb"]).data
+        self.assertEqual(card["source"]["kind"], "sermon")
+        self.assertEqual(card["source"]["work"], "The Blood")
+        self.assertEqual(card["author"]["name"], "C. H. Spurgeon")
+
+    def test_order_follows_the_request(self):
+        slugs = ["c-h-spurgeon-bbb", "andrew-murray-aaa"]
+        self.assertEqual([c["slug"] for c in self.resolve(slugs).data], slugs)
+
+    def test_unreviewed_and_unknown_slugs_drop_silently(self):
+        res = self.resolve(["andrew-murray-ccc", "does-not-exist", "andrew-murray-aaa"])
+        self.assertEqual([c["slug"] for c in res.data], ["andrew-murray-aaa"])
+
+    def test_empty_list_is_an_empty_shelf_not_an_error(self):
+        res = self.resolve([])
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data, [])
+
+    def test_a_non_list_body_is_rejected(self):
+        self.assertEqual(self.resolve("andrew-murray-aaa").status_code, 400)

@@ -118,8 +118,25 @@ export type DetailPart =
 	| { kind: 'diff'; label: string; from: string; to: string }
 	/** A reviewer's free-text reason, shown as a quote. */
 	| { kind: 'quote'; text: string }
+	/** A URL-valued field (e.g. a filed translation issue), shown as a link chip. */
+	| { kind: 'link'; text: string; href: string }
 	/** Anything else, `label: value`. */
 	| { kind: 'text'; text: string };
+
+/**
+ * A compact label for a URL: a GitHub issue/PR shows as `#1852`, anything else
+ * as its hostname. Keeps the append-only log readable — a raw issue URL per row
+ * is noise, and `#1852` is what an admin actually recognises.
+ */
+export function linkLabel(url: string): string {
+	const m = url.match(/\/(?:issues|pull)\/(\d+)\b/);
+	if (m) return `#${m[1]}`;
+	try {
+		return new URL(url).hostname.replace(/^www\./, '');
+	} catch {
+		return url;
+	}
+}
 
 function formatValue(label: string, v: unknown): string {
 	if (typeof v === 'boolean') return v ? 'yes' : 'no';
@@ -171,6 +188,10 @@ export function summariseDetail(detail: Record<string, unknown>): DetailPart[] {
 		if (consumed.has(k)) continue;
 		if (k === 'reason') {
 			parts.push({ kind: 'quote', text: String(v) });
+			continue;
+		}
+		if (typeof v === 'string' && /^https?:\/\//.test(v)) {
+			parts.push({ kind: 'link', text: linkLabel(v), href: v });
 			continue;
 		}
 		const label = k.replace(/_/g, ' ');

@@ -7,6 +7,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
+	import AccountCta from '$lib/components/AccountCta.svelte';
 
 	// English-only, and written in English literals for the same reason the
 	// scripture pages are: these quotations are lifted from the English works and
@@ -126,6 +127,8 @@
 			</ol>
 		</section>
 	{/each}
+
+	<AccountCta action={`follow ${page.author.name} and the writers you love`} />
 </div>
 
 <style>

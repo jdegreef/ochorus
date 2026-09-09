@@ -4,15 +4,26 @@ import { FAVORITES_KEY as KEY } from './reading-schema';
 import { readingSync } from './readingSync';
 
 /**
- * The reader's favorites: followed authors, saved books and plans (and
- * sermons). Device-local first (localStorage) like every other piece of
- * reading state, mirrored to the account by `readingSync` when signed in —
- * so hearts work offline and survive sign-in via the merge.
+ * The reader's favorites: followed authors, saved books, plans, sermons,
+ * topics, articles and individual quotes. Device-local first (localStorage)
+ * like every other piece of reading state, mirrored to the account by
+ * `readingSync` when signed in — so hearts work offline and survive sign-in
+ * via the merge.
  *
- * Stored as `"kind:slug" -> savedAt(ms)`; kinds never contain ':'.
+ * Stored as `"kind:slug" -> savedAt(ms)`; kinds never contain ':'. A quote's
+ * slug is the quote's own permanent address (author slug + text hash); every
+ * other kind's slug names its row. Must stay in step with the backend's
+ * `FavoriteKind` — the sync PUT 400s on a kind the server doesn't know.
  */
 
-export type FavoriteKind = 'author' | 'book' | 'plan' | 'sermon';
+export type FavoriteKind =
+	| 'author'
+	| 'book'
+	| 'plan'
+	| 'sermon'
+	| 'topic'
+	| 'article'
+	| 'quote';
 
 export interface FavoriteEntry {
 	kind: FavoriteKind;

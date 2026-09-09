@@ -12,6 +12,7 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import { topicMeta } from '$lib/emblemNames';
 
 	let { data } = $props();
@@ -110,15 +111,20 @@
 					{articles.length === 1 ? t('common.articleOne') : t('common.articleMany')}
 				{/if}
 			</p>
-			<!-- A topic is a shelf, and a shelf you can't search is a list you have
-			     to read end to end. -->
-			{#if topic.books.length || topic.sermons.length}
-				<a
-					href={localizeHref(scopedSearchHref('topic', topic.slug))}
-					class="mt-3 inline-block text-small font-semibold text-accent hover:underline"
-					>{t('search.inTopic')} →</a
-				>
-			{/if}
+			<div class="mt-3 flex flex-wrap items-center gap-3">
+				<!-- Follow this shelf: it lands in "My Library" and updates as the
+				     topic gains works. -->
+				<FavoriteButton kind="topic" slug={topic.slug} showLabel />
+				<!-- A topic is a shelf, and a shelf you can't search is a list you have
+				     to read end to end. -->
+				{#if topic.books.length || topic.sermons.length}
+					<a
+						href={localizeHref(scopedSearchHref('topic', topic.slug))}
+						class="inline-block text-small font-semibold text-accent hover:underline"
+						>{t('search.inTopic')} →</a
+					>
+				{/if}
+			</div>
 		</div>
 	</header>
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { apiFetchRaw } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
@@ -27,11 +28,21 @@
 	}
 
 	// Internal tool: copy is English-only (not run through Paraglide).
-	const dashboard = adminResource(getAdminStats, 'Something went wrong loading the dashboard.');
+	// `loadedAt` is stamped by onLoad (only on a non-superseded payload), so the
+	// header can say how fresh the figures are — a snapshot is easy to misread as
+	// live.
+	let loadedAt = $state<Date | null>(null);
+	const dashboard = adminResource(
+		getAdminStats,
+		'Something went wrong loading the dashboard.',
+		undefined,
+		() => (loadedAt = new Date())
+	);
 	const stats = $derived(dashboard.data);
 
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
+	const timeFmt = (d: Date) => d.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' });
 	const dateFmt = (iso: string) =>
 		new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' });
 
@@ -52,7 +63,13 @@
 						sub: `${fmt(stats.totals.published_books)} published`
 					},
 					{ label: 'Chapters', value: stats.totals.chapters, sub: 'across all books' },
-					{ label: 'Words', value: stats.totals.words, sub: 'chapters + sermons' },
+					{
+						label: 'Words',
+						value: stats.totals.words,
+						// A raw word count is abstract; hours-to-read (~200 wpm) is relatable.
+						// The words are still chapters + sermons — that stays true.
+						sub: `≈ ${fmt(Math.round(stats.totals.words / 12000))} hrs of reading`
+					},
 					{
 						label: 'Sermons',
 						value: stats.totals.sermons,
@@ -85,7 +102,10 @@
 						href: '/admin/review'
 					},
 					{ label: 'authors without a bio', n: stats.attention.authors_without_bio, href: null },
-					{ label: 'empty chapters', n: stats.attention.empty_chapters, href: null }
+					// The audit lists the empty chapters themselves (integrity check). The
+					// other flags have no destination page yet — a Wave-3 acquisition/list
+					// view — so they stay non-links rather than pointing nowhere.
+					{ label: 'empty chapters', n: stats.attention.empty_chapters, href: '/admin/audit' }
 				].filter((f) => f.n > 0)
 			: []
 	);
@@ -102,6 +122,11 @@
 		</div>
 		{#if stats}
 			<div class="flex flex-wrap items-center gap-2">
+				{#if loadedAt}
+					<span class="mr-1 text-small text-muted" title={loadedAt.toLocaleString('en')}
+						>Updated {timeFmt(loadedAt)}</span
+					>
+				{/if}
 				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('csv')} disabled={!!exporting}>
 					{exporting === 'csv' ? 'Exporting…' : 'Export CSV'}
 				</button>
@@ -116,6 +141,25 @@
 	</header>
 
 	<AdminGate resource={dashboard} errorTitle="Couldn't load the dashboard">
+		{#snippet loading()}
+			<!-- Mirrors the real layout (attention chips + 8 stat tiles) so the first
+			     paint has shape instead of a bare "Loading…" on empty cream. -->
+			<div class="mb-10 flex flex-wrap gap-2" aria-hidden="true">
+				{#each Array(3) as _, i (i)}
+					<div class="h-7 w-40 animate-pulse rounded-full bg-surface-2"></div>
+				{/each}
+			</div>
+			<div class="grid grid-cols-2 gap-4 sm:grid-cols-4" aria-hidden="true">
+				{#each Array(8) as _, i (i)}
+					<div class="rounded-card border border-border bg-surface p-5">
+						<div class="h-8 w-20 animate-pulse rounded bg-surface-2"></div>
+						<div class="mt-3 h-3 w-16 animate-pulse rounded bg-surface-2"></div>
+						<div class="mt-2 h-3 w-24 animate-pulse rounded bg-surface-2"></div>
+					</div>
+				{/each}
+			</div>
+			<span class="sr-only">Loading the dashboard…</span>
+		{/snippet}
 		{#snippet children(s)}
 			<!-- Attention flags -->
 			{#if flags.length}
@@ -143,9 +187,11 @@
 
 			<!-- Headline totals -->
 			<section class="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-				{#each cards as c (c.label)}
+				{#each cards as c, i (c.label)}
 					<div class="rounded-card border border-border bg-surface p-5">
-						<div class="stat-number">{fmt(c.value)}</div>
+						<!-- The first four (Works / Books / Chapters / Words) are the library's
+						     scale and carry the large figure; the rest read as secondary. -->
+						<div class={i < 4 ? 'stat-number' : 'stat-number-sm'}>{fmt(c.value)}</div>
 						<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 						<div class="text-small text-muted">{c.sub}</div>
 					</div>
@@ -175,7 +221,16 @@
 						</thead>
 						<tbody>
 							{#each s.languages as l (l.code)}
-								<tr class="border-b border-border last:border-0 hover:bg-surface-2">
+								<!-- Whole-row click is a mouse convenience; the language name is a
+								     real anchor, so keyboard / AT users have the same destination
+								     and clicks on the name still navigate normally. -->
+								<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+								<tr
+									class="cursor-pointer border-b border-border last:border-0 hover:bg-surface-2"
+									onclick={(e) => {
+										if (!(e.target as HTMLElement).closest('a')) goto(`/admin/languages/${l.code}`);
+									}}
+								>
 									<td class="px-4 py-3">
 										<a href="/admin/languages/{l.code}" class="font-semibold text-accent hover:underline">{l.name}</a>
 										<span class="text-small text-muted">· {l.code}</span>
@@ -201,6 +256,13 @@
 						</tbody>
 					</table>
 				</div>
+				<!-- Legend for the Source column badges — a persistent key beside the
+				     per-cell hover titles, matching the coverage matrix. -->
+				<p class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-micro text-muted">
+					<span><span class="text-text">PD</span> public domain</span>
+					<span><span class="text-accent">AI✓</span> AI reviewed</span>
+					<span><span class="text-warning">AI·</span> AI unreviewed</span>
+				</p>
 				<!-- Starting a language begins here: the row is what the translate_*
 				     commands read, so it has to exist before any work can be queued. -->
 				<AddLanguageForm oncreated={dashboard.load} />

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { replaceState } from '$app/navigation';
 	import { ApiError } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
@@ -16,14 +18,32 @@
 		type VerseOutcome
 	} from '$lib/library-admin';
 
-	// Filters. Read in exactly one place (the fetcher), so moving them into the
-	// querystring later is a local change.
-	let fKind = $state('');
-	let fLanguage = $state('');
-	let fFlagged = $state(false);
-	let fOutcome = $state('');
-	let fSort = $state('oldest');
-	let page = $state(1);
+	// Filters. Read in exactly one place (the fetcher). They live in the
+	// querystring so a reload — or coming back from another admin page — restores
+	// the exact view, and a filtered queue is shareable. Seeded from the URL here;
+	// written by applyFilters / goPage via syncUrl().
+	const initialParams = browser ? new URLSearchParams(location.search) : new URLSearchParams();
+	let fKind = $state(initialParams.get('kind') ?? '');
+	let fLanguage = $state(initialParams.get('language') ?? '');
+	let fFlagged = $state(initialParams.get('flagged') === '1');
+	let fOutcome = $state(initialParams.get('outcome') ?? '');
+	let fSort = $state(initialParams.get('sort') ?? 'oldest');
+	let page = $state(Math.max(1, Number(initialParams.get('p')) || 1));
+
+	// Mirror the current filters into the URL without a navigation. Defaults are
+	// omitted so the querystring stays as short as what the reviewer actually set.
+	function syncUrl() {
+		if (!browser) return;
+		const p = new URLSearchParams();
+		if (fKind) p.set('kind', fKind);
+		if (fLanguage) p.set('language', fLanguage);
+		if (fFlagged) p.set('flagged', '1');
+		if (fOutcome) p.set('outcome', fOutcome);
+		if (fSort !== 'oldest') p.set('sort', fSort);
+		if (page > 1) p.set('p', String(page));
+		const qs = p.toString();
+		replaceState(`${location.pathname}${qs ? `?${qs}` : ''}`, {});
+	}
 
 	const key = (kind: string, slug: string, language: string) => `${kind}:${slug}:${language}`;
 	const target = (i: ReviewItem): ReviewTarget => ({
@@ -134,12 +154,14 @@
 	function applyFilters() {
 		page = 1;
 		selected = {};
+		syncUrl();
 		load();
 	}
 
 	function goPage(n: number) {
 		page = n;
 		selected = {};
+		syncUrl();
 		load();
 		if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
@@ -258,6 +280,25 @@
 		const f = i.flags;
 		if (!f || f.ratio == null) return null;
 		return f.band ? `ratio ${f.ratio}% (band ${f.band[0]}–${f.band[1]})` : `ratio ${f.ratio}%`;
+	};
+
+	// Plain-language read of the flags, so a reviewer sees the verdict before the
+	// raw numbers. Each pill says only what the machine found; a passing check is
+	// still "the machine found nothing", never "the prose is good" (see the intro).
+	const reviewPills = (i: ReviewItem): { text: string; ok: boolean }[] => {
+		const f = i.flags;
+		if (!f) return [];
+		const pills: { text: string; ok: boolean }[] = [];
+		if (f.ratio != null && f.band) {
+			const inBand = f.ratio >= f.band[0] && f.ratio <= f.band[1];
+			pills.push({
+				text: inBand ? 'Length OK' : f.ratio < f.band[0] ? 'Runs short' : 'Runs long',
+				ok: inBand
+			});
+		}
+		pills.push({ text: f.tags_match ? 'Tags OK' : 'Tags differ', ok: f.tags_match });
+		if (!f.quote_style_consistent) pills.push({ text: 'Quotes mixed', ok: false });
+		return pills;
 	};
 </script>
 
@@ -449,6 +490,18 @@
 											</div>
 
 											{#if i.flags}
+												{@const pills = reviewPills(i)}
+												{#if pills.length}
+													<div class="mt-1 flex flex-wrap gap-1.5">
+														{#each pills as p (p.text)}
+															<span
+																class="rounded-full border px-2 py-0.5 text-micro font-medium {p.ok
+																	? 'border-border text-muted'
+																	: 'border-warning/40 text-warning'}">{p.text}</span
+															>
+														{/each}
+													</div>
+												{/if}
 												<div class="text-small mt-1 text-muted">
 													<span class={i.flags.tags_match ? '' : 'font-semibold text-warning'}>
 														tags {i.flags.tag_counts[1]}/{i.flags.tag_counts[0]}{i.flags.tags_match

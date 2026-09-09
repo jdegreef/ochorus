@@ -28,9 +28,48 @@
 
 	const signupMax = $derived(Math.max(1, ...(data?.weekly_signups.map((w) => w.count) ?? [1])));
 	const localeMax = $derived(Math.max(1, ...(data?.by_locale.map((l) => l.count) ?? [1])));
+	const methodMax = $derived(Math.max(1, ...(data?.by_method.map((m) => m.count) ?? [1])));
+
+	// Emails are PII: masked by default, revealed on demand (per row, or all at once).
+	// Reveals are cleared on every (re)load so a stale row index can't expose a
+	// different account. Server-side access logging is a follow-up (needs an endpoint).
+	let showAllEmails = $state(false);
+	let revealedRows = $state<Record<number, boolean>>({});
+	const emailShown = (i: number) => showAllEmails || revealedRows[i] === true;
+	const toggleRow = (i: number) => (revealedRows = { ...revealedRows, [i]: !revealedRows[i] });
+	const toggleAllEmails = () => {
+		showAllEmails = !showAllEmails;
+		if (!showAllEmails) revealedRows = {};
+	};
+	function maskEmail(email: string): string {
+		const at = email.indexOf('@');
+		if (at <= 0) return '•••';
+		const local = email.slice(0, at);
+		return `${local.slice(0, 1)}${'•'.repeat(Math.max(3, local.length - 1))}${email.slice(at)}`;
+	}
+	$effect(() => {
+		// Re-mask whenever the list reloads (Refresh / first load).
+		void data;
+		showAllEmails = false;
+		revealedRows = {};
+	});
 </script>
 
 <svelte:head><title>Admin · Users — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
+
+{#snippet emailCell(email: string | null | undefined, i: number, cls: string)}
+	{#if email}
+		<button
+			type="button"
+			class="block max-w-full truncate text-start {cls} hover:text-text focus-visible:text-text"
+			title={emailShown(i) ? 'Hide email' : 'Reveal email'}
+			aria-label={emailShown(i) ? 'Hide email' : 'Reveal email'}
+			onclick={() => toggleRow(i)}
+		>{emailShown(i) ? email : maskEmail(email)}</button>
+	{:else}
+		<div class="truncate {cls}">—</div>
+	{/if}
+{/snippet}
 
 <div class="mx-auto max-w-5xl px-5 py-10">
 	<header class="mb-6 flex flex-wrap items-end justify-between gap-3">
@@ -65,6 +104,10 @@
 					{/each}
 				</section>
 
+				<p class="mb-8 -mt-4 text-micro text-muted">
+					Activated = has opened at least one book. Dormant = registered but hasn't started reading.
+				</p>
+
 				<!-- Weekly signups -->
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">New sign-ups per week</h2>
@@ -90,11 +133,14 @@
 						{#if d.by_method.length}
 							<ul class="space-y-2">
 								{#each d.by_method as m (m.method)}
-									<li class="flex items-center justify-between gap-3">
-										<span class="text-body {m.method === 'unknown' ? 'text-muted' : 'text-text'}"
+									<li class="flex items-center gap-3">
+										<span class="w-20 shrink-0 truncate text-body {m.method === 'unknown' ? 'text-muted' : 'text-text'}"
 											>{m.label}</span
 										>
-										<span class="font-semibold tabular-nums text-text">{fmt(m.count)}</span>
+										<div class="h-3 flex-1 overflow-hidden rounded-full bg-surface-2">
+											<div class="h-full rounded-full bg-accent-soft" style="width: {(m.count / methodMax) * 100}%"></div>
+										</div>
+										<span class="w-8 shrink-0 text-right font-semibold tabular-nums text-text">{fmt(m.count)}</span>
 									</li>
 								{/each}
 							</ul>
@@ -108,7 +154,17 @@
 
 					<!-- Recent sign-ups -->
 					<section class="rounded-card border border-border bg-surface p-5 lg:col-span-2">
-						<h2 class="text-h3 mb-3">Recent sign-ups</h2>
+						<div class="mb-3 flex items-center justify-between gap-3">
+							<h2 class="text-h3">Recent sign-ups</h2>
+							{#if d.recent.length}
+								<button
+									type="button"
+									class="text-small text-muted underline-offset-2 hover:text-text hover:underline"
+									aria-pressed={showAllEmails}
+									onclick={toggleAllEmails}>{showAllEmails ? 'Hide emails' : 'Reveal emails'}</button
+								>
+							{/if}
+						</div>
 						{#if d.recent.length}
 							<ul class="divide-y divide-border">
 								<!-- Keyed by position: the list is replaced wholesale on each load
@@ -119,9 +175,9 @@
 										<div class="min-w-0">
 											{#if u.display_name}
 												<div class="truncate font-semibold text-text">{u.display_name}</div>
-												<div class="truncate text-small text-muted">{u.email || '—'}</div>
+												{@render emailCell(u.email, i, 'text-small text-muted')}
 											{:else}
-												<div class="truncate font-semibold text-text">{u.email || '—'}</div>
+												{@render emailCell(u.email, i, 'font-semibold text-text')}
 											{/if}
 										</div>
 										<div class="flex items-baseline gap-4 text-small text-muted">

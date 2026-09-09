@@ -523,7 +523,8 @@ class SermonMarksView(APIView):
 
 
 class FavoriteView(APIView):
-    """Save / unsave one favorite (an author, book, plan or sermon)."""
+    """Save / unsave one favorite (an author, book, plan, sermon, topic,
+    article or quote — see FavoriteKind)."""
 
     permission_classes = [IsAuthenticated]
     throttle_classes = [_ReadingWriteThrottle]

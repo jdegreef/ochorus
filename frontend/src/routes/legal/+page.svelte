@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { SITE_URL } from '$lib/config';
-	import { hreflangAll } from '$lib/seo';
+	import { hreflangAll, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import Seo from '$lib/components/Seo.svelte';
@@ -9,6 +9,22 @@
 
 	const path = '/legal';
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
+
+	// WebPage, a leaf of the WebSite — the schema counterpart every hub/leaf
+	// already carries. One page holds both privacy and terms (the footer link is
+	// "Privacy & Terms"), so a single WebPage names the pair; names and
+	// description reuse the same i18n strings the visible page and <Seo> use.
+	const legalLd = $derived(
+		jsonLd({
+			'@context': 'https://schema.org',
+			'@type': 'WebPage',
+			name: t('legal.title'),
+			description: t('legal.metaDescription'),
+			url: canonical,
+			isPartOf: { '@type': 'WebSite', name: 'Ochorus', url: SITE_URL },
+			isAccessibleForFree: true
+		})
+	);
 </script>
 
 <Seo
@@ -17,6 +33,7 @@
 	{canonical}
 	hreflang={hreflangAll(path)}
 	ogImage="{SITE_URL}/og/default.png"
+	structuredData={[legalLd]}
 />
 
 <div class="reading-page">

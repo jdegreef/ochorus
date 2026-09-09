@@ -129,6 +129,11 @@
 	let group = $state<Group>('preacher');
 	let sort = $state<Sort>('shelf');
 
+	// Measured height of the pinned controls bar. The filter row wraps to a
+	// second line on narrow screens, so the offset the preacher anchors clear
+	// can't be assumed — it feeds `--pinned-offset`, mirroring Biographies.
+	let controlsH = $state(0);
+
 	// Hydrated after mount, not during load: the page is prerendered, so reading
 	// localStorage while rendering would desync the static HTML from the client.
 	onMount(() => {
@@ -195,7 +200,7 @@
 	structuredData={sermons.length ? [sermonsLd, crumbsLd] : [crumbsLd]}
 />
 
-<div class="page-col px-5 py-10">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
 	<PageHeader
 		eyebrow={t('nav.sermons')}
 		title={t('sermons.title')}
@@ -222,8 +227,18 @@
 		</div>
 	{/if}
 
-	<!-- Filter bar: free text + which book of the Bible the sermon expounds. -->
-	<div class="filter-row mb-8">
+	<!-- Filter bar: free text + which book of the Bible the sermon expounds.
+	     Pinned under the app nav (itself sticky, hence the --appnav-h offset) so
+	     the filters come WITH you — with a brief under every row the shelf runs
+	     dozens of screens. Its height is measured, not assumed: the row wraps on
+	     narrow screens, and the preacher sections below pin under whatever it
+	     currently is. Same recipe as Biographies (page-design B6/L3). -->
+	<div
+		bind:clientHeight={controlsH}
+		class="sticky z-20 -mx-5 mb-8 border-b border-border bg-bg px-5 pb-2.5 pt-3"
+		style="top: var(--appnav-h, 0px)"
+	>
+	<div class="filter-row">
 		<input
 			bind:value={filters.values.q}
 			type="search"
@@ -272,6 +287,7 @@
 		</div>
 
 	</div>
+	</div>
 
 	<!-- One clear affordance, on the FilterSummary — same as Books and
 	     Biographies. (The bespoke in-row "Clear" and sermons.clear are retired.) -->
@@ -314,7 +330,11 @@
 			</nav>
 		{/if}
 		{#each groups as g (g.slug)}
-			<section id="preacher-{g.slug}" class="mb-10 scroll-mt-20">
+			<section
+				id="preacher-{g.slug}"
+				class="mb-10"
+				style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
+			>
 				<h2 class="mb-4 flex items-center gap-2.5 text-h3 text-muted">
 					{#if g.photo_url}
 						<img

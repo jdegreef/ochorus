@@ -20,11 +20,40 @@
 	// fetcher reads it (untracked) for the one load it covers, then clears it —
 	// nothing reactive observes it, and the resource key is `language` alone.
 	let forceRefresh = false;
+
+	// Client-side stale-while-revalidate. The last scan per language is kept in
+	// sessionStorage and used to seed the first paint, so returning to this page
+	// shows the previous result at once (with its own "scanned … ago" stamp) while
+	// a fresh scan loads in the background — instead of a blank "Running audit…"
+	// on every visit. The server already caches the scan; this hides the
+	// round-trip's flash too. Best-effort: any storage failure just falls back to
+	// the normal load.
+	const cacheKey = (lang: string) => `admin:audit:${lang || 'all'}`;
+	function readAuditCache(lang: string): AdminAudit | null {
+		if (typeof sessionStorage === 'undefined') return null;
+		try {
+			const raw = sessionStorage.getItem(cacheKey(lang));
+			return raw ? (JSON.parse(raw) as AdminAudit) : null;
+		} catch {
+			return null;
+		}
+	}
 	const auditRes = adminResource(
 		() => getAdminAudit(language, forceRefresh),
 		'Something went wrong running the audit.',
-		() => language
+		() => language,
+		(result) => {
+			try {
+				sessionStorage?.setItem(cacheKey(language), JSON.stringify(result));
+			} catch {
+				/* private mode / quota — the fetch still populated the page */
+			}
+		}
 	);
+	// Seed the first paint from cache; the load already in flight overwrites it.
+	// `language` is always '' on mount (no URL seeding), so the default "all
+	// editions" scan is the one to restore.
+	auditRes.data ??= readAuditCache('');
 	const audit = $derived(auditRes.data);
 
 	async function rerun() {
@@ -190,9 +219,26 @@
 
 	<AdminGate resource={auditRes} errorTitle="Couldn't run the audit" loadingText="Running audit…">
 		{#snippet children(a)}
-			<p class="{lastUndo || actionError ? 'mb-2' : 'mb-8'} text-body {totalFindings ? 'text-warning' : 'text-muted'}">
-				{#if totalFindings}<strong>{integrityTotal}</strong> integrity {integrityTotal === 1 ? 'issue' : 'issues'} · <strong>{qualityTotal}</strong> quality {qualityTotal === 1 ? 'flag' : 'flags'}{:else}No findings — the library looks clean. 🎉{/if}
-			</p>
+			<div class="{lastUndo || actionError ? 'mb-2' : 'mb-8'}">
+				{#if totalFindings}
+					<p class="mb-2 text-body text-muted">
+						<strong class="text-danger">{integrityTotal}</strong> integrity {integrityTotal === 1 ? 'issue' : 'issues'}
+						· <strong class="text-warning">{qualityTotal}</strong> quality {qualityTotal === 1 ? 'flag' : 'flags'}
+					</p>
+					<!-- Severity at a glance: integrity defects (fix these, danger) vs
+					     advisory quality flags (warning), sized by share of the total. -->
+					<div
+						class="flex h-2 overflow-hidden rounded-full bg-surface-2"
+						role="img"
+						aria-label="{integrityTotal} integrity issues, {qualityTotal} quality flags"
+					>
+						{#if integrityTotal}<div class="bg-danger" style="width: {(integrityTotal / totalFindings) * 100}%"></div>{/if}
+						{#if qualityTotal}<div class="bg-warning" style="width: {(qualityTotal / totalFindings) * 100}%"></div>{/if}
+					</div>
+				{:else}
+					<p class="text-body text-muted">No findings — the library looks clean. 🎉</p>
+				{/if}
+			</div>
 			{#if actionError}
 				<p class="mb-8 text-small text-warning">{actionError}</p>
 			{:else if lastUndo}
@@ -282,7 +328,7 @@
 						</span>
 						<span class="shrink-0 text-small">
 							{#if dismissed}<span class="text-muted">{dismissed} accepted · </span>{/if}<span
-								class={total ? 'text-warning' : 'text-muted'}>{total || 'clear'}</span
+								class={total ? 'text-warning' : 'text-muted'}>{#if total}{total}{:else}✓ clear{/if}</span
 							>
 						</span>
 					</summary>

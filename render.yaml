@@ -167,6 +167,13 @@ services:
     # control this whole block exists for. Update the ref below if the project's
     # PUBLIC_SUPABASE_URL ever changes, or login breaks with a CSP violation.
     #
+    # ⚠️ Plausible analytics: `https://plausible.io` is in BOTH script-src (loads
+    # /js/script.js) and connect-src (the script POSTs to /api/event). The event
+    # POST comes from Plausible's own script, so csp.test.ts never sees it — it is
+    # in the policy by hand, and stays even when PUBLIC_PLAUSIBLE_DOMAIN is unset
+    # (the script simply never loads then). Self-hosting Plausible means swapping
+    # this host in both directives to match PUBLIC_PLAUSIBLE_SRC. See analytics.ts.
+    #
     # ⚠️ render.yaml changes need a manual Blueprint → Sync (gotcha #3) — this
     # will NOT take effect on the next auto-deploy.
     headers:
@@ -174,13 +181,13 @@ services:
         name: Content-Security-Policy
         value: >-
           default-src 'self';
-          script-src 'self' 'unsafe-inline';
+          script-src 'self' 'unsafe-inline' https://plausible.io;
           style-src 'self' 'unsafe-inline';
           img-src 'self' data: blob: https:;
           font-src 'self';
           connect-src 'self' https://ochorus-api.onrender.com https://api.ochorus.com
           https://eywunobxqijvwymdzlwy.supabase.co https://api.dictionaryapi.dev
-          https://*.ingest.sentry.io https://*.ingest.us.sentry.io;
+          https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://plausible.io;
           manifest-src 'self';
           worker-src 'self';
           media-src 'self';
@@ -774,6 +781,14 @@ services:
       # `build.sourcemap` on and the maps deleted after upload, since serving
       # them publishes the source.
       - key: PUBLIC_SENTRY_DSN
+        sync: false
+      # Optional: set to the site's Plausible property (its `data-domain`, e.g.
+      # `ochorus.com`) to turn on cookieless pageview analytics. Unset = off, no
+      # script loaded, no requests (see analytics.ts). The plausible.io host is
+      # already in the CSP above; a self-hosted instance also needs a
+      # PUBLIC_PLAUSIBLE_SRC var added (here or via the Render dashboard) and
+      # that host swapped into the CSP. Cloud (the default) needs neither.
+      - key: PUBLIC_PLAUSIBLE_DOMAIN
         sync: false
       # How long the prebuild waits for ochorus-api to serve THIS commit's
       # content before prerendering (scripts/await-api-release.mjs). A content
