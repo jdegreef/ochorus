@@ -72,6 +72,12 @@
 					{/each}
 				</section>
 
+				{#if d.overview.readers < 20}
+					<p class="mb-8 -mt-4 text-micro text-muted">
+						Early data — only {fmt(d.overview.readers)} reader{d.overview.readers === 1 ? '' : 's'} so far. Read the charts below as directional, not statistically firm.
+					</p>
+				{/if}
+
 				<!-- Weekly active -->
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">Weekly active readers</h2>
