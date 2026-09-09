@@ -254,6 +254,13 @@
 						</tbody>
 					</table>
 				</div>
+				<!-- Legend for the Source column badges — a persistent key beside the
+				     per-cell hover titles, matching the coverage matrix. -->
+				<p class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-micro text-muted">
+					<span><span class="text-text">PD</span> public domain</span>
+					<span><span class="text-accent">AI✓</span> AI reviewed</span>
+					<span><span class="text-warning">AI·</span> AI unreviewed</span>
+				</p>
 				<!-- Starting a language begins here: the row is what the translate_*
 				     commands read, so it has to exist before any work can be queued. -->
 				<AddLanguageForm oncreated={dashboard.load} />
