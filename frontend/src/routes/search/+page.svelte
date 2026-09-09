@@ -1071,7 +1071,7 @@
 							     accessible name, so a screen reader would still hear the
 							     duplicate this exists to remove. -->
 							{#if !(hasFacets && shownGroups.length === 1)}
-								<span class="text-small font-normal tabular-nums text-muted/70">
+								<span class="text-small font-normal count">
 									{#if more > 0}{g.rows.length} {t('search.of')} {total}{isCapped(g.type)
 											? '+'
 											: ''}{:else}{total}{/if}
