@@ -191,6 +191,19 @@ class IsAdminUserTests(TestCase):
         self.assertFalse(is_admin_user(User(email="")))
 
 
+class RobotsTxtTests(TestCase):
+    """/robots.txt on the API host tells crawlers to stay off — the corpus is on
+    the prerendered reader, and every bot request here is Supabase egress."""
+
+    def test_it_disallows_everything(self):
+        res = APIClient().get("/robots.txt")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res["Content-Type"], "text/plain")
+        body = res.content.decode()
+        self.assertIn("User-agent: *", body)
+        self.assertIn("Disallow: /", body)
+
+
 class HealthEndpointTests(TestCase):
     """/api/health/ is Render's liveness probe AND the content fingerprint the
     static web build waits on before prerendering (see

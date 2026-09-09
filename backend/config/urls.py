@@ -2,6 +2,7 @@
 
 from django.conf import settings
 from django.contrib import admin
+from django.http import HttpResponse
 from django.urls import include, path
 
 from accounts.views import MeView, health
@@ -37,7 +38,18 @@ from library.admin_views import (
     AdminVerseReviewView,
 )
 
+
+def robots_txt(_request):
+    # Served on the API host (api.ochorus.com). Nothing under the API is for
+    # crawlers — the whole library is on the prerendered reader (ochorus.com);
+    # this host serves only JSON. Disallow everything so a well-behaved bot never
+    # spends a request, or our Supabase egress, here. Bad bots ignore it — that's
+    # the CDN's job (docs/egress-cloudflare.md).
+    return HttpResponse("User-agent: *\nDisallow: /\n", content_type="text/plain")
+
+
 urlpatterns = [
+    path("robots.txt", robots_txt, name="robots"),
     path("api/health/", health, name="health"),
     path("api/auth/me/", MeView.as_view(), name="me"),
     path("api/admin/stats/", AdminStatsView.as_view(), name="admin-stats"),
