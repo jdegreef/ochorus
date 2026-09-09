@@ -328,8 +328,21 @@ class FavoriteTests(TestCase):
         self.assertEqual(Favorite.objects.filter(profile=self.profile).count(), 1)
 
     def test_unknown_kind_rejected(self):
-        res = self.client.put("/api/reading/favorites/topic/prayer/")
+        res = self.client.put("/api/reading/favorites/galaxy/andromeda/")
         self.assertEqual(res.status_code, 400)
+
+    def test_topic_article_and_quote_are_favoritable(self):
+        # The reader saves topics, articles and individual quotes as well as
+        # works — each a valid FavoriteKind, so a heart on those pages syncs
+        # rather than 400ing.
+        for kind, slug in (
+            ("topic", "prayer"),
+            ("article", "how-to-pray"),
+            ("quote", "andrew-murray-abc123"),
+        ):
+            res = self.client.put(f"/api/reading/favorites/{kind}/{slug}/")
+            self.assertEqual(res.status_code, 200, (kind, slug))
+            self.assertEqual((res.data["kind"], res.data["slug"]), (kind, slug))
 
     def test_merge_unions_favorites_and_skips_unknown(self):
         Favorite.objects.create(profile=self.profile, kind="book", slug="humility")
