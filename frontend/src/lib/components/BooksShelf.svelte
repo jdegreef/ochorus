@@ -31,10 +31,10 @@
 
 	let view = $state<View>('grid');
 	let sort = $state<Sort>('shelf');
-	// Default to the grouped view (by author), matching the Sermons shelf's
-	// grouped-by-preacher default — both browse shelves now open organized
-	// rather than one grouped and one flat (B4).
-	let group = $state<Group>('author');
+	// Default to the flat view — the shelf opens as one ungrouped roster of
+	// books. Grouping by author stays available via the control, but is no
+	// longer the default (reverting B4).
+	let group = $state<Group>('all');
 	// --- Filters (in the URL) --------------------------------------------------
 	// A filtered shelf is a place: it survives a reload, comes back with Back,
 	// and can be sent to someone. View preferences above deliberately stay in
