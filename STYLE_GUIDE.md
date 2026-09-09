@@ -333,7 +333,7 @@ sits on — an `<h2>` had drifted to four sizes (`.text-h1` on the home shelves,
 browse shelves), so the same kind of heading looked different a click apart.
 
 - **`.section-label`** — the label above a *list* of cards or rows ("Continue
-  reading", "New to the library", a search result group). Small-caps, muted.
+  reading", "New to the library"). Small-caps, muted.
 - **`.text-h3`** — a titled *prose* sub-section inside a leaf page ("About this
   book", "In this plan").
 - **`.text-h2`** — a titled *section* of a page (a Settings group, an About
@@ -342,9 +342,11 @@ browse shelves), so the same kind of heading looked different a click apart.
   heading at page-title size reads as a second title;
   `typeScaleGuard.test.ts` fails any `<h2>`–`<h6>` carrying `.text-h1`.
 
-Grouped browse shelves (Books/Sermons/Biographies by author or era) still
-hand-roll their group heading four ways; converging them on one recipe is a
-tracked follow-up (audit D2).
+Grouped browse shelves and search-result groups (Books/Sermons/Biographies by
+author or era, and each search group) share one **`<GroupHeading>`** — `.text-h3`,
+muted, with an optional 32px portrait, the group name as a link when it has a
+page, and a `.count`. Biographies' era heading pins under its controls bar and
+pushes the count to the far end; that is the component's `sticky` variant. (D2.)
 
 ### Cards
 
@@ -669,13 +671,15 @@ snapshot is the newer word.
   `--radius-chip` reference is gone. (was E2/E3.)
 - ✅ **Search "Show more" keeps its label** while loading (`aria-busy`), no `…`
   swap. (was C4.)
+- ✅ **One `<GroupHeading>` for grouped-shelf headings** — Books, Sermons,
+  Biographies (its `sticky` variant) and the search-result groups all render it
+  (`.text-h3`, muted, optional portrait, linked name, `.count`); four hand-rolled
+  recipes gone. (was D2.)
 
 **Still open:**
 - ⚠️ **Settings and Notebook hand-roll their page headers.** (A9.)
 - ⚠️ **Empty-state consolidation is partial** — the drawer/popover `compact`
   variants and Search's panel still render their own. (C2.)
-- ⚠️ **Grouped browse group headings** (Books/Sermons/Biographies by author or
-  era) still hand-roll four ways. (D2.)
 - ⚠️ **A few off-scale Tailwind sizes / scoped overrides may survive** — not
   fully re-verified this pass. (E1, E9.)
 - ⚠️ **Reachability** — Articles, Scripture and Quotes may still be absent from
