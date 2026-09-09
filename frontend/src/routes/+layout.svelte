@@ -274,23 +274,49 @@
 	</main>
 
 	{#if !readerUi.focus}
-		<footer class="border-t border-border bg-surface-2">
-			<!-- Four columns on wide screens; below that the two LINK columns stay
-			     side by side and only the prose blocks span the full width.
-			     It was three columns with every link in the middle one: an eight-item
-			     list against a two-line brand and a three-line mission, so the middle
-			     column ran about three times the height of its neighbours and the
-			     block ended on a ragged edge. Splitting the links by INTENT — where
-			     to read vs. who we are — balances that as a side effect of fixing the
-			     harder problem, which was that a reader scanning for "About Us" had
-			     to read past five content links to reach it.
-			     Keeping the two link columns paired on a phone matters more than it
-			     looks: stacked, the footer ran past 800px on a 390px screen, and it
-			     sits under EVERY page. Prose can't halve like that (the mission
-			     statement at ~180px wide is a column of two-word lines), so those
-			     span instead. -->
+		<footer class="site-footer border-t border-border bg-surface-2">
+			<!-- The footer sits under every page, so it orients rather than
+			     decorates: a signed-out reader meets one invitation, everyone meets
+			     two short link columns split by intent (where to read vs. what else
+			     is here), and the utility links (About / Contact / Terms) sit in a
+			     slim bar at the very bottom, where a reader looks for them last. An
+			     indigo-to-gold hairline along the top edge is the one colourful
+			     gesture — the signature pairing, kept to a 2px rule. -->
+
+			<!-- Sign-up invitation, signed-out readers only. auth.enabled gates it
+			     the same way the header's sign-in control is (AccountMenu): with
+			     Supabase keys absent the whole auth UI hides rather than offering a
+			     button that can't work, and once signed in the prompt is spent, so
+			     it drops. Every string is an EXISTING, already-translated key reused
+			     from the sign-up flow (home.signupTitle / login.syncNote /
+			     login.createAccountLink), so the band mints no footer-only keys —
+			     the trade is that rewording those at their source also rewords this
+			     band. -->
+			{#if auth.enabled && !auth.user}
+				<div class="mx-auto max-w-5xl px-5 pt-10 sm:pt-12">
+					<div class="footer-invite">
+						<span class="footer-invite-mark" aria-hidden="true">
+							<Icon name="bookmark" size={22} />
+						</span>
+						<div class="footer-invite-text">
+							<p class="footer-invite-title">{t('home.signupTitle')}</p>
+							<p class="text-small text-muted">{t('login.syncNote')}</p>
+						</div>
+						<a href={localizeHref(signupHref)} class="btn footer-invite-cta">
+							<span>{t('login.createAccountLink')}</span>
+							<Icon name="chevron-right" size={16} class="footer-invite-arrow" />
+						</a>
+					</div>
+				</div>
+			{/if}
+
+			<!-- Content columns. English gets four (brand · Explore · Discover ·
+			     mission); every other locale gets three, because the Discover hubs
+			     are English-only (see that block's note). grid-cols-3 and -4 are
+			     BOTH written as literals so Tailwind keeps them; the count switches
+			     on locale, not the child list. -->
 			<div
-				class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 lg:grid-cols-4"
+				class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 {lang.current === 'en' ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}"
 			>
 				<div class="col-span-2 lg:col-span-1">
 					<a class="inline-block text-text" href={localizeHref('/')} aria-label={t('common.home')}>
@@ -299,66 +325,46 @@
 					<p class="mt-2 max-w-xs text-small text-muted">
 						{t('footer.tagline')}
 					</p>
-					<!-- Sign-up CTA, signed-out readers only. auth.enabled gates it the
-					     same way the header's sign-in control is gated (AccountMenu): with
-					     Supabase keys absent the whole auth UI hides rather than offering a
-					     button that can't work. Once signed in the prompt is spent, so it
-					     drops. Reuses login.createAccountLink — already translated in every
-					     advertised locale — rather than minting a footer-only string. Soft
-					     btn-primary to match the header control; w-fit so the pill hugs its
-					     label instead of stretching the brand column. -->
-					{#if auth.enabled && !auth.user}
-						<a
-							href={localizeHref(signupHref)}
-							class="btn btn-sm btn-primary mt-4 w-fit hover:no-underline"
-						>
-							{t('login.createAccountLink')}
-						</a>
-					{/if}
 				</div>
-				<!-- Labelled by their own headings rather than a duplicated aria-label
-				     string: the visible heading IS the accessible name, so the two
-				     can't drift apart in a translation. Landmarks (not bare <div>s)
-				     because that is how a screen-reader user reaches the footer links
-				     without arrowing through the whole page — the language strip below
-				     was already a labelled <nav>; these two were not. -->
+				<!-- Labelled by their own headings rather than a duplicated aria-label:
+				     the visible heading IS the accessible name, so the two can't drift
+				     apart in translation, and a landmark is how a screen-reader user
+				     reaches these links without arrowing the whole page. -->
 				<nav aria-labelledby="footer-explore-heading">
 					<h2 id="footer-explore-heading" class="footer-heading">{t('footer.explore')}</h2>
 					<ul class="footer-links">
-						<!-- The primary five, in PRIMARY_NAV order (shared with the top nav
-						     and the command palette so the three can't drift — F2). -->
+						<!-- The primary five, in PRIMARY_NAV order (shared with the top nav and
+						     the command palette so the three can't drift — F2). -->
 						{#each PRIMARY_NAV as d (d.href)}
 							<li><a href={localizeHref(d.href)}>{t(d.labelKey)}</a></li>
 						{/each}
-						<!-- English-only hubs, shown only to English readers rather than
-						     localized. The content is lifted from / parsed against the
-						     English works (scripture citations name English book names,
-						     quotes cite English chapters, articles have no translations
-						     yet), so there is no localized page to send anyone to — and a
-						     locale-prefixed link would promise a missing page and let the
-						     prerender crawler bake localized copies of it. Footer, not top
-						     nav: an entry point for search, not a primary journey. The
-						     trailing slash matches these pages' canonical URLs. -->
-						{#if lang.current === 'en'}
+						<!-- Non-English readers have no Discover column, so RSS — the one
+						     language-neutral destination — rides in Explore for them. -->
+						{#if lang.current !== 'en'}
+							<li><a href="/feed.xml">RSS</a></li>
+						{/if}
+					</ul>
+				</nav>
+				<!-- Discover — English-only hubs, shown only to English readers rather
+				     than localized. The content is lifted from / parsed against the
+				     English works (scripture cites English book names, quotes cite
+				     English chapters, articles have no translations yet), so there is no
+				     localized page to send anyone to, and a locale-prefixed link would
+				     promise a missing page and let the prerender crawler bake localized
+				     copies of it. Because the column only ever renders in English, its
+				     heading is a plain literal (like RSS) — it needs no catalogue key.
+				     The trailing slash matches these pages' canonical URLs. -->
+				{#if lang.current === 'en'}
+					<nav aria-labelledby="footer-discover-heading">
+						<h2 id="footer-discover-heading" class="footer-heading">Discover</h2>
+						<ul class="footer-links">
 							{#each ENGLISH_HUBS as d (d.href)}
 								<li><a href="{d.href}/">{t(d.labelKey)}</a></li>
 							{/each}
-						{/if}
-						<li><a href="/feed.xml">RSS</a></li>
-					</ul>
-				</nav>
-				<!-- Notebook is deliberately absent. It is per-account state, and a
-				     signed-out visitor who clicks it from a footer that promised
-				     content lands on an empty shell. It lives in the account menu,
-				     which is where a signed-in reader already looks for it. -->
-				<nav aria-labelledby="footer-about-heading">
-					<h2 id="footer-about-heading" class="footer-heading">{t('footer.aboutHeading')}</h2>
-					<ul class="footer-links">
-						<li><a href={localizeHref('/about')}>{t('nav.about')}</a></li>
-						<li><a href={localizeHref('/contact')}>{t('nav.contact')}</a></li>
-						<li><a href="{localizeHref('/legal')}#privacy">{t('footer.legal')}</a></li>
-					</ul>
-				</nav>
+							<li><a href="/feed.xml">RSS</a></li>
+						</ul>
+					</nav>
+				{/if}
 				<div class="col-span-2 lg:col-span-1">
 					<h2 class="footer-heading">{t('footer.ministryHeading')}</h2>
 					<p class="text-small text-muted">
@@ -450,13 +456,25 @@
 				</div>
 			</nav>
 
-			<!-- A copyright line, which a site publishing Terms is normally expected
-			     to carry. Symbol, year and the product's own name: nothing here needs
-			     translating, so it costs no catalogue keys. -->
+			<!-- Utility bar at the very bottom: the About / Contact / Terms links a
+			     reader looks for last, paired with the copyright. These were a
+			     content column of their own; moved here so the two columns above are
+			     content-only and the utility links sit where footers conventionally
+			     keep them. The About landmark keeps its heading string as its
+			     accessible name. Symbol, year and the product's own name need no
+			     translating, so the © costs no catalogue keys. -->
 			<div class="border-t border-border">
-				<p class="mx-auto max-w-5xl px-5 py-3 text-small text-muted">
-					© {copyrightYear} Ochorus
-				</p>
+				<div
+					class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-4 text-small"
+				>
+					<nav class="flex flex-wrap gap-x-5 gap-y-1" aria-label={t('footer.aboutHeading')}>
+						<a class="text-muted hover:text-text" href={localizeHref('/about')}>{t('nav.about')}</a>
+						<a class="text-muted hover:text-text" href={localizeHref('/contact')}>{t('nav.contact')}</a>
+						<a class="text-muted hover:text-text" href="{localizeHref('/legal')}#privacy"
+							>{t('footer.legal')}</a>
+					</nav>
+					<p class="text-muted">© {copyrightYear} Ochorus</p>
+				</div>
 			</div>
 		</footer>
 	{/if}
@@ -464,3 +482,145 @@
 
 <CommandPalette />
 <PwaToasts />
+
+<style>
+	/* The footer's one colourful gesture: an indigo-to-gold hairline along the
+	   top edge. Purely decorative, so it stays a 2px rule. */
+	.site-footer {
+		position: relative;
+	}
+	.site-footer::before {
+		content: '';
+		position: absolute;
+		inset-block-start: 0;
+		inset-inline: 0;
+		block-size: 2px;
+		background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 55%, var(--gold) 100%);
+	}
+
+	/* Sign-up invitation. A tinted panel — the same soft-indigo surface the
+	   primary button already uses — so it reads as one warm call, not an ad. */
+	.footer-invite {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: 1.25rem;
+		padding: 1.25rem 1.5rem;
+		border: 1px solid var(--accent-soft-border);
+		border-radius: var(--radius-card);
+		background: var(--accent-soft);
+	}
+	.footer-invite-mark {
+		display: grid;
+		place-items: center;
+		inline-size: 2.75rem;
+		block-size: 2.75rem;
+		border-radius: var(--radius-sm);
+		background: var(--accent);
+		color: var(--accent-contrast);
+	}
+	.footer-invite-text {
+		display: grid;
+		gap: 0.15rem;
+	}
+	.footer-invite-title {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: var(--fs-h3);
+		color: var(--text);
+	}
+
+	/* The one deliberately LOUD control in the app: it wears the base .btn
+	   recipe (metrics, radius, type) via `class="btn footer-invite-cta"` and
+	   overrides only the loud bits. Every other .btn-primary is soft by design
+	   (STYLE_GUIDE §5); this single conversion CTA is the exception — a solid
+	   indigo with a thin gold ring (the signature pairing) and a warm sweep on
+	   hover. Scoped and unlayered, so it beats @layer components and changes
+	   nothing else. */
+	.footer-invite-cta {
+		position: relative;
+		overflow: hidden;
+		isolation: isolate;
+		text-decoration: none;
+		color: var(--accent-contrast);
+		background: var(--accent);
+		box-shadow:
+			inset 0 0 0 1px var(--gold),
+			0 7px 18px -9px var(--accent);
+		transition:
+			transform var(--duration-fast) ease,
+			box-shadow var(--duration-fast) ease,
+			filter var(--duration-fast) ease;
+	}
+	.footer-invite-cta span {
+		position: relative;
+		z-index: 2;
+	}
+	.footer-invite-cta :global(.footer-invite-arrow) {
+		position: relative;
+		z-index: 2;
+		transition: transform var(--duration-fast) ease;
+	}
+	.footer-invite-cta::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		background: linear-gradient(115deg, transparent 35%, color-mix(in srgb, var(--gold) 45%, transparent) 50%, transparent 65%);
+		transform: translateX(-130%);
+		pointer-events: none;
+	}
+	.footer-invite-cta:hover {
+		text-decoration: none;
+		transform: translateY(-1px);
+		filter: brightness(1.04);
+		box-shadow:
+			inset 0 0 0 1px var(--gold),
+			0 11px 24px -9px var(--accent);
+	}
+	.footer-invite-cta:hover::after {
+		animation: footer-invite-sheen 0.85s ease;
+	}
+	/* Only the arrow nudges — the label stays put. */
+	.footer-invite-cta:hover :global(.footer-invite-arrow) {
+		transform: translateX(3px);
+	}
+	/* Arrow points into the text's reading direction, so it flips in RTL. */
+	:global([dir='rtl']) .footer-invite-cta :global(.footer-invite-arrow) {
+		transform: scaleX(-1);
+	}
+	:global([dir='rtl']) .footer-invite-cta:hover :global(.footer-invite-arrow) {
+		transform: scaleX(-1) translateX(3px);
+	}
+	@keyframes footer-invite-sheen {
+		to {
+			transform: translateX(130%);
+		}
+	}
+
+	@media (max-width: 640px) {
+		.footer-invite {
+			grid-template-columns: auto 1fr;
+		}
+		.footer-invite-cta {
+			grid-column: 1 / -1;
+			justify-content: center;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.footer-invite-cta,
+		.footer-invite-cta :global(.footer-invite-arrow) {
+			transition: none;
+		}
+		.footer-invite-cta:hover {
+			transform: none;
+		}
+		.footer-invite-cta:hover :global(.footer-invite-arrow) {
+			transform: none;
+		}
+		.footer-invite-cta:hover::after {
+			animation: none;
+		}
+	}
+</style>
