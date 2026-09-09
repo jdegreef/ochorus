@@ -278,7 +278,25 @@ export interface PlanHit {
 	date: string;
 }
 
-export type SearchHit = ChapterHit | SermonHit | AuthorHit | BookHit | TopicHit | PlanHit;
+export interface ArticleHit {
+	type: 'article';
+	article_slug: string;
+	/** The article's on-page headline (`h1`) — the display title. */
+	article_title: string;
+	/** Excerpt of the standfirst; an article carries no author or cover. */
+	snippet: string;
+	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
+	date: string;
+}
+
+export type SearchHit =
+	| ChapterHit
+	| SermonHit
+	| AuthorHit
+	| BookHit
+	| TopicHit
+	| PlanHit
+	| ArticleHit;
 
 export type SearchType = SearchHit['type'];
 export type SearchSort = 'relevance' | 'title' | 'newest';

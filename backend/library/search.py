@@ -28,6 +28,7 @@ from django.db.models.functions import Coalesce
 # query config always matches what the row was indexed with.
 from .fts import config_for
 from .models import (
+    Article,
     Author,
     Book,
     Chapter,
@@ -53,7 +54,15 @@ MIN_QUERY_LEN = 2
 ENTITY_BOOST = 1.6
 
 # Per-type caps so one kind can't crowd the others out of the merged list.
-CAPS = {"author": 5, "book": 8, "topic": 5, "plan": 5, "chapter": 20, "sermon": 6}
+CAPS = {
+    "author": 5,
+    "book": 8,
+    "topic": 5,
+    "plan": 5,
+    "article": 5,
+    "chapter": 20,
+    "sermon": 6,
+}
 
 # How many matches of one type a "show more" page returns.
 PAGE_SIZE = 20
@@ -197,6 +206,13 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
         "author"
     )
     plans = Plan.objects.filter(is_published=True, language=language)
+    # Articles are the site's own SEO hubs — per-language rows with NO English
+    # fallback (like books and plans), so filtering to this language is the
+    # whole of the gating: English is the only language with rows today, so an
+    # article hit can only surface for an English query, and a future translation
+    # ungates itself the moment its row exists. Nothing here is inside a scope
+    # (an article has no author/topic/book to live under), so _scoped drops it.
+    articles = Article.objects.filter(is_published=True, language=language)
     topics = Topic.objects.filter(is_published=True).prefetch_related("translations")
     if language != "en":
         # A shelf with no title in this language doesn't exist here (see
@@ -225,6 +241,7 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
         "book": books,
         "topic": topics,
         "plan": plans,
+        "article": articles,
         "chapter": chapters,
         "sermon": sermons,
     }
@@ -240,13 +257,18 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
     """
     qs = _base_querysets(language, scope)
     authors, books, topics = qs["author"], qs["book"], qs["topic"]
-    plans, chapters, sermons = qs["plan"], qs["chapter"], qs["sermon"]
+    plans, articles = qs["plan"], qs["article"]
+    chapters, sermons = qs["chapter"], qs["sermon"]
 
     ctx = _Ctx(q=q, language=language)
     if connection.vendor == "postgresql":
-        base = _search_postgres(ctx, authors, books, topics, plans, chapters, sermons)
+        base = _search_postgres(
+            ctx, authors, books, topics, plans, articles, chapters, sermons
+        )
     else:
-        base = _search_fallback(ctx, authors, books, topics, plans, chapters, sermons)
+        base = _search_fallback(
+            ctx, authors, books, topics, plans, articles, chapters, sermons
+        )
 
     # If the query is itself a scripture reference, lead with everything that
     # engages the passage — sermons preached on an overlapping text, then
@@ -283,7 +305,7 @@ class _Ctx:
 # --- Postgres -----------------------------------------------------------------
 
 
-def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
+def _search_postgres(ctx, authors, books, topics, plans, articles, chapters, sermons):
     from django.contrib.postgres.search import (
         SearchHeadline,
         SearchQuery,
@@ -325,6 +347,7 @@ def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
     pairs += entity(books, vector("book"), _book_hit, "book")
     pairs += entity(topics, vector("topic"), _topic_hit, "topic")
     pairs += entity(plans, vector("plan"), _plan_hit, "plan")
+    pairs += entity(articles, vector("article"), _article_hit, "article")
 
     # Chapters and sermons match against their STORED vector (GIN-indexed,
     # populated by library/fts.py with the same fields + weights the old
@@ -357,7 +380,7 @@ def _search_postgres(ctx, authors, books, topics, plans, chapters, sermons):
 # --- SQLite fallback (dev) ----------------------------------------------------
 
 
-def _search_fallback(ctx, authors, books, topics, plans, chapters, sermons):
+def _search_fallback(ctx, authors, books, topics, plans, articles, chapters, sermons):
     q = ctx.q
     author_hits = [
         _author_hit(a, ctx)
@@ -391,6 +414,14 @@ def _search_fallback(ctx, authors, books, topics, plans, chapters, sermons):
             Q(title__icontains=q) | Q(description__icontains=q)
         ).order_by("sort_order", "title")[: CAPS["plan"]]
     ]
+    article_hits = [
+        _article_hit(ar, ctx)
+        for ar in articles.filter(
+            Q(h1__icontains=q)
+            | Q(meta_title__icontains=q)
+            | Q(description__icontains=q)
+        ).order_by("sort_order", "h1")[: CAPS["article"]]
+    ]
 
     chapter_hits = [
         _chapter_hit(c, snippet=fallback_snippet(c.body_text, q))
@@ -414,7 +445,13 @@ def _search_fallback(ctx, authors, books, topics, plans, chapters, sermons):
 
     # Entities first (navigational), then passages, capped overall.
     results = (
-        author_hits + book_hits + topic_hits + plan_hits + chapter_hits + sermon_hits
+        author_hits
+        + book_hits
+        + topic_hits
+        + plan_hits
+        + article_hits
+        + chapter_hits
+        + sermon_hits
     )
     return results[:MAX_RESULTS]
 
@@ -450,6 +487,12 @@ def _lite_q(kind: str, q: str) -> Q:
         )
     if kind == "plan":
         return Q(title__icontains=q) | Q(description__icontains=q)
+    if kind == "article":
+        return (
+            Q(h1__icontains=q)
+            | Q(meta_title__icontains=q)
+            | Q(description__icontains=q)
+        )
     if kind == "chapter":
         return (
             Q(body_text__icontains=q)
@@ -529,6 +572,14 @@ def _pg_vector(kind: str, config: str, language: str):
             SearchVector(title, weight="A", config=config)
             + SearchVector(description, weight="C", config=config)
         )
+    if kind == "article":
+        # Articles are the SEO layer: they carry no author FK and no stored
+        # body vector (no body_text on the model), so — like a book — they
+        # match on their OWN titling. h1 is the display headline, meta_title
+        # the keyword-led <title> (blank on most rows, so it simply adds
+        # nothing), and description the standfirst. Per-language rows, so these
+        # columns already hold the queried language's prose.
+        return sv("h1", "A") + sv("meta_title", "A") + sv("description", "C")
     # Plans need no such treatment: they are per-language ROWS (unique(slug,
     # language)) and the queryset is already filtered to one language, so these
     # columns hold that language's prose.
@@ -560,6 +611,11 @@ _ORDER = {
         "natural": ("sort_order", "title"),
     },
     "topic": {"title": ("title",), "newest": ("-created_at",), "natural": ("title",)},
+    "article": {
+        "title": ("h1",),
+        "newest": ("-created_at",),
+        "natural": ("sort_order", "h1"),
+    },
     "plan": {
         "title": ("title",),
         "newest": ("-created_at",),
@@ -656,6 +712,8 @@ def _hit_for(kind: str, row, ctx) -> dict:
         return _topic_hit(row, ctx)
     if kind == "plan":
         return _plan_hit(row, ctx)
+    if kind == "article":
+        return _article_hit(row, ctx)
     snippet = fallback_snippet(getattr(row, "body_text", ""), ctx.q)
     return _chapter_hit(row, snippet) if kind == "chapter" else _sermon_hit(row, snippet)
 
@@ -718,6 +776,20 @@ def _plan_hit(p, ctx):
         "plan_title": p.title,
         "snippet": fallback_snippet(p.description, ctx.q),
         "date": _date(p.created_at),
+    }
+
+
+def _article_hit(a, ctx):
+    # An article has no author and no cover, so — like a topic or a plan — the
+    # row is title + snippet, no image. `h1` is the display headline; the
+    # snippet comes from the standfirst (`description`), the only prose that
+    # isn't HTML (there is no `body_text` on an Article to excerpt).
+    return {
+        "type": "article",
+        "article_slug": a.slug,
+        "article_title": a.h1,
+        "snippet": fallback_snippet(a.description, ctx.q),
+        "date": _date(a.created_at),
     }
 
 
@@ -910,6 +982,10 @@ def suggest(q: str, language: str) -> str | None:
         is_published=True, language=language
     ).values_list("title", flat=True):
         add(title)
+    for h1 in Article.objects.filter(
+        is_published=True, language=language
+    ).values_list("h1", flat=True):
+        add(h1)
     for title in Topic.objects.filter(is_published=True).values_list(
         "title", flat=True
     ):
