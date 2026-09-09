@@ -15,7 +15,12 @@ from __future__ import annotations
 from django.test import SimpleTestCase, TestCase
 
 from .models import Author, Book, Chapter
-from .opening import MAX_DEPTH, MAX_WORDS, opening_excerpt
+from .opening import (
+    MAX_DEPTH,
+    MAX_WORDS,
+    opening_candidate_orders,
+    opening_excerpt,
+)
 
 
 def ch(title: str, *paragraphs: str):
@@ -178,6 +183,46 @@ class ExtractionTests(SimpleTestCase):
     def test_the_excerpt_is_capped(self):
         text, _ = opening_excerpt([ch("One", "alpha beta gamma delta. " * 60)])
         self.assertLessEqual(len(text.split()), MAX_WORDS)
+
+
+class CandidateOrderTests(SimpleTestCase):
+    """``opening_candidate_orders`` names the chapters whose BODIES the detail
+    serializer must fetch — the egress fix depends on it naming no more than the
+    orders ``opening_excerpt`` would actually inspect."""
+
+    def test_front_matter_is_skipped_by_title(self):
+        self.assertEqual(
+            opening_candidate_orders([(1, "Preface"), (2, "Chapter I")]), [2]
+        )
+
+    def test_it_stops_at_max_depth_non_apparatus_chapters(self):
+        meta = [(n, f"Chapter {n}") for n in range(1, 10)]
+        self.assertEqual(opening_candidate_orders(meta), list(range(1, MAX_DEPTH + 1)))
+
+    def test_apparatus_does_not_spend_depth(self):
+        """Leading apparatus is skipped without counting — the real chapters
+        past it are still reachable, so their orders (not the apparatus') are the
+        candidates."""
+        meta = [(1, "Preface"), (2, "Contents"), (3, "Translator's Note")]
+        meta += [(4, "Chapter I"), (5, "Chapter II"), (6, "Chapter III")]
+        self.assertEqual(
+            opening_candidate_orders(meta), list(range(4, 4 + MAX_DEPTH))
+        )
+
+    def test_it_matches_what_the_excerpt_loop_inspects(self):
+        """The equivalence the serializer relies on: a real chapter sitting past
+        MAX_DEPTH non-apparatus chapters is NOT a candidate, exactly as
+        opening_excerpt never reaches it (test_it_does_not_wander_deep...)."""
+        meta = [(n, "Part") for n in range(1, MAX_DEPTH + 2)] + [(99, "Real")]
+        got = opening_candidate_orders(meta)
+        self.assertNotIn(99, got)
+        self.assertEqual(got, list(range(1, MAX_DEPTH + 1)))
+
+    def test_all_apparatus_or_empty_yields_nothing(self):
+        self.assertEqual(opening_candidate_orders([]), [])
+        self.assertEqual(
+            opening_candidate_orders([(1, "Preface"), (2, "Foreword")]), []
+        )
 
 
 class PayloadTests(TestCase):

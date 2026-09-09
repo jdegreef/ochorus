@@ -131,6 +131,43 @@ def _clip(text: str) -> str:
     return clipped.rstrip(",;:— ") + "…"
 
 
+def _non_apparatus(chapters):
+    """Yield chapters in reading order, skipping apparatus by title, and stop
+    after ``MAX_DEPTH`` yielded — the window an opening can come from.
+
+    The one place the "skip apparatus, look no deeper than ``MAX_DEPTH`` real
+    chapters" rule lives: both ``opening_candidate_orders`` (which needs the
+    orders) and ``opening_excerpt`` (which needs the bodies) walk this, so the
+    serializer that fetches bodies for the candidates can never inspect a
+    different set than the excerpt does. Only element ``[1]`` (the title) is
+    read, so an item may be ``(order, title)`` or ``(order, title, body_html)``.
+    Front matter is why this isn't ``[:MAX_DEPTH]``: a book can open with several
+    apparatus sections — a preface, a translator's note, a table of contents —
+    before its first real chapter, and those are skipped without spending depth.
+    """
+    yielded = 0
+    for chapter in chapters:
+        if APPARATUS.search((chapter[1] or "").strip()):
+            continue
+        yield chapter
+        yielded += 1
+        if yielded >= MAX_DEPTH:
+            return
+
+
+def opening_candidate_orders(chapters_meta) -> list[int]:
+    """The ``order``s an opening could come from, in reading order.
+
+    ``chapters_meta`` is ``[(order, title)]``. Fetching ``body_html`` for just
+    these orders yields the same excerpt as passing the whole book to
+    ``opening_excerpt`` — both walk the same ``_non_apparatus`` window — so the
+    book-detail serializer reads bodies for only these chapters instead of
+    dragging every chapter's HTML out of the database to render one paragraph on
+    a page a prerender/crawl requests once per book.
+    """
+    return [order for order, _title in _non_apparatus(chapters_meta)]
+
+
 def opening_excerpt(chapters) -> tuple[str, str]:
     """``(excerpt, chapter_title)`` — "" when the book has no clean opening.
 
@@ -141,13 +178,7 @@ def opening_excerpt(chapters) -> tuple[str, str]:
     the book or something plucked from the middle, and saying which chapter it
     came from costs a line and removes the doubt.
     """
-    tried = 0
-    for _order, title, body_html in chapters:
-        if APPARATUS.search((title or "").strip()):
-            continue
-        tried += 1
-        if tried > MAX_DEPTH:
-            return "", ""
+    for _order, title, body_html in _non_apparatus(chapters):
         collected: list[str] = []
         words = 0
         for para in _paragraphs(body_html):
