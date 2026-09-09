@@ -663,10 +663,26 @@ BOOKS: list[BookEntry] = [
     # 1878 standalone printing: same book, half the OCR damage (0.17% suspect
     # tokens against 0.35%), and it opens "THE prophet Isaiah being lifted up"
     # where the standalone opens "B L For his cattingz God stykdi liMn".
+    # Pickering's 1838 standalone printing, NOT Grosart's 1862 collected works.
+    # Grosart is a CRITICAL edition: its variant-reading sigla ("'…,' in A and
+    # B") and editor's glosses ("— G.") are OCR-fused mid-sentence through ten
+    # chapters, the next chapter's heading leaks into the last one's tail, and
+    # the scan drops two chapter markers outright — ~200 defects that no
+    # corrections list should be asked to carry, and which made the book
+    # untranslatable (a faithful translation reproduces the apparatus). Pickering
+    # is a reader edition: no apparatus at all, and a measured ~1.4% suspect
+    # tokens against `web2` — most of THOSE being Sibbes's own `doth`/`shew`/
+    # `maketh` rather than defects. The volume binds three works, so `part` /
+    # `part_end` slice this one out; the index that follows the last chapter is
+    # the boundary.
     BookEntry("the-bruised-reed", "The Bruised Reed", "richard-sibbes",
-              "archive", "completeworksofr01sibbuoft",
-              part="THE BRUISED REED AND SMOKING FLAX.",
-              part_end="THE SWORD OF THE WICKED,",
+              "archive", "bwb_C0-AVW-616",
+              # The text-start title is split over two lines ("THE BRUISED REED
+              # AND" / "SMOKING FLAX."), so name the line the chapters actually
+              # start under — the half-title 400 lines earlier is one line, and
+              # would scope the part to the front matter.
+              part="SMOKING FLAX.",
+              part_end="INDEX.",
               subtitle="And Smoking Flax",
               cover_color="#4a6741"),
     # Owen's most-read book, and the one that needs no volume slicing: CCEL

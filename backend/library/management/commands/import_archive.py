@@ -56,7 +56,14 @@ _CHAPTER = re.compile(
     # divisions "[CHAPTER XXIV. — All should side with Christ.]". Both halves
     # are still validated below — `_roman` rejects anything that is not a
     # well-formed numeral once the known confusions are undone.
-    r"^\s*\[?\s*chap\w*\.?\s+([IVXLCYil|]+)\.?\s*(?:[\u2014\u2013-]\s*(.*?))?\s*\]?$", re.I
+    #   the SEPARATOR — "CHAP, II." / "CHAP... XXV." (Pickering's 1838 Sibbes):
+    #     a comma read for the abbreviation's period, or the period smeared into
+    #     several. Same confusion class as the numeral ones below.
+    #   the LEADING JUNK — "\ CHAP. XXVI.", a stray rule-mark the scanner kept.
+    #     Capped at two characters so it cannot reach into prose; the numeral is
+    #     still validated by `_roman`.
+    r"^\s*[\\/|]{0,2}\s*\[?\s*chap\w*[.,]*\s+([IVXLCYil|]+)[\s.,:;]*"
+    r"(?:[\u2014\u2013-]\s*(.*?))?\s*\]?$", re.I
 )
 #: A bracketed marker whose OPENING was eaten by the scanner. Grosart's chapter
 #: VIII survives only as "B VIII. — Tenderness required in ministers toward
@@ -77,6 +84,12 @@ _HYPHEN_SPACE = re.compile(r"([a-z])-\s+([a-z])")  # OCR split a compound: "fift
 _WS = re.compile(r"\s+")
 _DIGIT = re.compile(r"\d")
 _NON_LETTER = re.compile(r"[^A-Za-z]")
+#: A lone vertical bar is a column rule the scanner kept, not text — it lands
+#: between words ("follow not the ways | | | of those men") or dangling at a
+#: line end. Stripped per LINE, before the hyphen-join, so it cannot fuse two
+#: words together. Pickering's Sibbes has 52; the other two archive scans have
+#: none, so this can only help.
+_BAR_RULE = re.compile(r"(?<!\S)\|+(?!\S)|\|+(?=\s*$)")
 #: How far below a work's title its first chapter may sit and still count as
 #: that title's text (rather than a half-title page or a running header).
 _PART_HEADING_GAP = 30
@@ -374,7 +387,7 @@ def _reflow(lines: list[str]) -> str:
         buf = ""
 
     for raw in lines:
-        line = raw.strip()
+        line = _BAR_RULE.sub(" ", raw).strip()
         if not line or _BARE_NUM.match(line) or _is_header(line):
             # Page furniture / blank: end the paragraph only if it reads complete;
             # otherwise it's a page break inside a paragraph — keep accumulating.

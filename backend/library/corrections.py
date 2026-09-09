@@ -1472,6 +1472,957 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("(Job xiii. 8)", "(Job xlii. 8)"),
         ],
     },
+    "the-bruised-reed": {
+        # Pickering's 1838 printing sets every chapter's opening letter as a
+        # decorative IMAGE cap, so the text layer starts one letter short: "HE
+        # prophet Isaiah" for "THE prophet Isaiah". Three caps mis-scanned into
+        # junk rather than vanishing (ch5's F as "T,.", ch17's E as "*", ch27's
+        # O simply lost), which is a wrong string to replace, not a letter to
+        # prepend.
+        #
+        # NOT `dropcap_letters`, the natural-looking channel, which does not
+        # work here: it only fires while the body still opens LOWERCASE, and
+        # Sibbes opens every chapter on a small-caps run ("HIS bruising…"), so
+        # it never fired on the plain cases — and on the ten below it fired on
+        # the leaked tail instead, putting the letter in the wrong place
+        # ("Tand what the bruising. HE prophet").
+        #
+        # Those ten are the second defect, folded into the same pair: this
+        # edition prints a two- or three-line summary under each chapter marker,
+        # the importer takes the first line as the title, and the remainder
+        # stays as the body's opening words. Same shape as `on-loving-god`'s
+        # wrapped ALL-CAPS headings.
+        #
+        # Each pair carries ~34 characters of the following sentence, and every
+        # one was checked to occur exactly once in its own chapter and nowhere
+        # else in the book — a bare "<p>HE" would fire on any paragraph opening
+        # "HE", and four chapters share that opening.
+        "replacements": [
+            ('<p>and what the bruising.</p><p>HE prophet Isaiah being lifted up, a',
+             '<p>THE prophet Isaiah being lifted up, a'),  # ch1
+            ('<p>HIS bruising is required before conve',
+             '<p>THIS bruising is required before conve'),  # ch2
+            ('<p>HE second point is, That Christ will',
+             '<p>THE second point is, That Christ will'),  # ch3
+            ('<p>bruising : and comfort to such.</p><p>UT how shall we know, whether we are',
+             '<p>BUT how shall we know, whether we are'),  # ch4
+            ('<p>T,.OR the second branch; God will not q',
+             '<p>FOR the second branch; God will not q'),  # ch5
+            ('<p>UT grace is not only little, but min',
+             '<p>BUT grace is not only little, but min'),  # ch6
+            ('<p>OW for the second observation, Chris',
+             '<p>NOW for the second observation, Chris'),  # ch7
+            ('<p>beginners.</p><p>IVINES had need to take heed therefore h',
+             '<p>DIVINES had need to take heed therefore h'),  # ch8
+            ('<p>also private Christians.</p><p>O in the censures of the church, it',
+             '<p>SO in the censures of the church, it'),  # ch9
+            ('<p>will not quench.</p><p>OR trial, to let us see whether we b',
+             '<p>FOR trial, to let us see whether we b'),  # ch10
+            ('<p>quench, HESE things premised, let us know for ',
+             '<p>THESE things premised, let us know for '),  # ch11
+            ('<p>ROM the meditation of these rules and',
+             '<p>FROM the meditation of these rules and'),  # ch12
+            ('<p>ERE is a use of encouragement to duty',
+             '<p>HERE is a use of encouragement to duty'),  # ch13
+            ('<p>Discouragements.</p><p>ROM what hath been spoken, with some ',
+             '<p>FROM what hath been spoken, with some '),  # ch14
+            ('<p>whom they are. And how to recover Peace lost.</p><p>ND among other causes of discouragem',
+             '<p>AND among other causes of discouragem'),  # ch15
+            ('<p>Christ unto us.</p><p>INCE Christ is thus comfortably set ou',
+             '<p>SINCE Christ is thus comfortably set ou'),  # ch16
+            ('<p>What it is.</p><p>W* come to the third part, the const',
+             '<p>WE come to the third part, the const'),  # ch17
+            ('<p>enjoy the comfort of his mildness.</p><p>HE first conclusion from the connexi',
+             '<p>THE first conclusion from the connexi'),  # ch18
+            ('<p>Judgment and wisdom.</p><p>HE second conclusion is, that Christ',
+             '<p>THE second conclusion is, that Christ'),  # ch19
+            ('<p>sets up has government.</p><p>HE second branch is, that wheresoeve',
+             '<p>THE second branch is, that wheresoeve'),  # ch20
+            ('<p>HE third conclusion is, that this go',
+             '<p>THE third conclusion is, that this go'),  # ch21
+            ('<p>OR the second, that is, directions.<',
+             '<p>FOR the second, that is, directions.<'),  # ch22
+            ('<p>F Christ will have the victory, the',
+             '<p>IF Christ will have the victory, the'),  # ch23
+            ('<p>T is not only said, judgment shall ',
+             '<p>IT is not only said, judgment shall '),  # ch24
+            ('<p>HE fifth conclusion is, that this go',
+             '<p>THE fifth conclusion is, that this go'),  # ch25
+            ('<p>HE sixth conclusion is, that this pr',
+             '<p>THE sixth conclusion is, that this pr'),  # ch26
+            ('<p>of prevailing.</p><p>FR conclusion and general applicatio',
+             '<p>FOR conclusion and general applicatio'),  # ch27
+            # --- OCR slips, each verified in context against the scan. One
+            # class dominates: a stray letter glued to the front of a word
+            # ("ithis", "ifallen", "ifmen"), which is this scanner reading the
+            # previous word's terminal stroke into the next. Literal pairs, never
+            # a regex — "i" opens real words too.
+            ('Iam black, saith the church',
+             'I am black, saith the church'),  # ch10
+            ('at Wariance and odds',
+             'at variance and odds'),  # ch12
+            ('look upon ithis text',
+             'look upon this text'),  # ch12
+            ('oppose ais nature and office',
+             'oppose his nature and office'),  # ch16
+            ('he cannot deny himelf',
+             'he cannot deny himself'),  # ch16
+            ('his Father hath aidupon him',
+             'his Father hath laid upon him'),  # ch16
+            ('Those therefore ithat are enemies',
+             'Those therefore that are enemies'),  # ch19
+            ('Satan and antiwchrist',
+             'Satan and antichrist'),  # ch19
+            ('we keep fire ifrom powder',
+             'we keep fire from powder'),  # ch22
+            ('the generation ‘of noisome',
+             'the generation of noisome'),  # ch22
+            ('And being ifallen, in our raisings',
+             'And being fallen, in our raisings'),  # ch25
+            ('Christ that must ydo the',
+             'Christ that must do the'),  # ch25
+            ('further degree ithan we had',
+             'further degree than we had'),  # ch25
+            ('when we are ifallen, and by falls',
+             'when we are fallen, and by falls'),  # ch25
+            ('Rey. xix.1',
+             'Rev. xix. 1'),  # ch27
+            ('God will notalways suffer',
+             'God will not always suffer'),  # ch27
+            ('religion \\on the latter-spring',
+             'religion in the latter-spring'),  # the backslash ate the "i" of
+            # "in" — Grosart reads "reformation of religion IN the
+            # latter-spring", so stripping the mark and keeping "on" would have
+            # shipped a wrong preposition.
+            ('gospel, ifmen had not been',
+             'gospel, if men had not been'),  # ch27
+            ('‘armed with invincible courage',
+             'armed with invincible courage'),  # ch27
+            ('of all tha hath been',
+             'of all that hath been'),  # ch27
+            ('evailing of ‘truth, and planting',
+             'evailing of truth, and planting'),  # ch19
+            # ch17's summary heading wraps mid-WORD ("merciful dispo-" /
+            # "sition in Christ"), so its tail leaks as the body's opening and
+            # the drop cap follows it. Same shape as the ten above.
+            ('<p>sition in Christ. Of quenching the Spirit.</p><p>E are now to take notice',
+             '<p>WE are now to take notice'),
+            # A stray rule-mark the scanner kept mid-sentence, the same class as
+            # the one before "CHAP. XXVI." in the source.
+            ('divers sorts of men \\ that offend', 'divers sorts of men that offend'),
+            # --- the lost left edge of page 75 (and two strays elsewhere).
+            # The scan clipped the first character or two off eight consecutive
+            # lines, and the remnants are real-looking words ("ut then", "a
+            # sceptre f mercy", "hen we think"), which is why the English audit
+            # calls the chapter clean. Most restore themselves from English, but
+            # "his * ae is then to present" does not — GROSART settles it as
+            # "his manner", and the same witness confirms "father, brother,
+            # head, all is", "the Evangelist", "she would not be cured",
+            # "Here we know where" and Isaiah's "Destroy it not". The critical
+            # edition is unusable as a READING text and is still the right thing
+            # to collate a doubtful word against.
+            ('one saith, Destroy ut not',
+             'one saith, Destroy it not'),  # ch7
+            ('his * ae is then to present',
+             'his manner is then to present'),  # ch16
+            ('against us : ut then let us',
+             'against us : but then let us'),  # ch16
+            ('holding out a sceptre f mercy',
+             'holding out a sceptre of mercy'),  # ch16
+            ('arms to receive us. hen we think',
+             'arms to receive us. When we think'),  # ch16
+            ('John the Evangeist',
+             'John the Evangelist'),  # ch16
+            ('with delight, as f mild and sweet',
+             'with delight, as of mild and sweet'),  # ch16
+            ('when we think f Christ, we shou!d',
+             'when we think of Christ, we should'),  # ch16
+            ('all meekness. Ifthe sweetness',
+             'all meekness. If the sweetness'),  # ch16
+            ('in husband, Sather, brother, head, allis but a beam',
+             'in husband, father, brother, head, all is but a beam'),  # ch16
+            ('weak, but we.are his',
+             'weak, but we are his'),  # ch16
+            ('Babylon, and she ould not be cured',
+             'Babylon, and she would not be cured'),  # ch16
+            ('as it were in hell. ere we know where',
+             'as it were in hell. Here we know where'),  # ch25
+            # --- the last of the scan junk, every reading settled against
+            # Grosart: a stray backslash rule-mark eating a letter ("\\whey" for
+            # "they", "king\\doms"), and a guillemet standing where a letter was
+            # lost ("»emptation", "em»raced", "thi»"). The guillemets matter
+            # twice over: `QuoteStyleTests` counts « » as CURLY, so they pass
+            # the quote gate while leaving a French quotation mark mid-sentence.
+            ('forsake thee, \\I will not',
+             'forsake thee, I will not'),  # ch2
+            ('make the bruise \\the more painful',
+             'make the bruise the more painful'),  # ch4
+            ('In time of »emptation rather believe',
+             'In time of temptation rather believe'),  # ch15
+            ('as freely as we em»raced it before',
+             'as freely as we embraced it before'),  # ch20
+            ('we have just cause \\to be humbled',
+             'we have just cause to be humbled'),  # ch23
+            ('when the king\\doms of the earth',
+             'when the kingdoms of the earth'),  # ch25
+            ('disguised ; »goodness shall appear',
+             'disguised ; goodness shall appear'),  # ch25
+            ('to the darkness of »ur own heart',
+             'to the darkness of our own heart'),  # ch26
+            ('counteth it a generous thi» not to be awed',
+             'counteth it a generous thing not to be awed'),  # ch27
+            ('God’s time may »roceed yet further west',
+             'God’s time may proceed yet further west'),  # ch28
+            ('until Christ hath »rought all under one head',
+             'until Christ hath brought all under one head'),  # ch28
+            ('my will is that \\whey be where I am',
+             'my will is that they be where I am'),  # ch28
+            ('and against that \\which is ill',
+             'and against that which is ill'),  # ch28
+            ('carried matters often \\inconsiderately',
+             'carried matters often inconsiderately'),  # ch28
+            ('What had ‘oecome of that great work',
+             'What had become of that great work'),  # ch28
+            ('outstride all lets, apon this faith',
+             'outstride all lets, upon this faith'),  # ch28
+            ('was Christ’s, and that the would not be wanting',
+             'was Christ’s, and that he would not be wanting'),  # ch28
+            # --- the OCR pass, settled by ALIGNMENT against Grosart.
+            # Grosart's 1862 edition is a different printing of the same work,
+            # so aligning the two word-by-word says what a damaged token should
+            # read without anyone inventing it — which is how `adeidiney` is
+            # known to be "authority" and `poate` to be "working". Every pair
+            # carries enough of the preceding sentence to occur exactly once in
+            # the book.
+            #
+            # The alignment also surfaces differences that are NOT damage, and
+            # those are rejected: Pickering writes `Isai.` where Grosart writes
+            # `Isa.`, `burthen` for `burden`, `mayst` for `mayest`, and
+            # `dependance`/`dependant` (both twice in the scan, so its own
+            # spelling). Grosart is sometimes the damaged one — it reads
+            # `beliovest` where Pickering is right — so the witness is consulted,
+            # not obeyed.
+            #
+            # The last group is a soft hyphen the scanner rendered as a LEFT
+            # single quote inside a word (`con‘ceits`, `There‘fore`). A real
+            # opening quote never falls between two letters, so these are
+            # unambiguous.
+            ('so that both these together, @',
+             'so that both these together, a'),  # ch1
+            ('of those that have obtained merey,',
+             'of those that have obtained mercy,'),  # ch1
+            ('his blood: so he is @',
+             'his blood: so he is a'),  # ch3
+            ('only our friend, but our brothey',
+             'only our friend, but our brother'),  # ch3
+            ('the word of God, Isa. |xvi.',
+             'the word of God, Isa. Ixvi.'),  # ch4
+            ('violence against it: else favouring oursevles,',
+             'violence against it: else favouring ourselves,'),  # ch4
+            ('not fore the cure be erowiglt',
+             'not fore the cure be wrought,'),  # ch4
+            ('muzzle the mouth of the oa,',
+             'muzzle the mouth of the ox,'),  # ch4
+            ('careful was he that Peter vand',
+             'careful was he that Peter and'),  # ch4
+            ('former; yet more glorious than ithe',
+             'former; yet more glorious than the'),  # ch5
+            ('into it. The Lord of ‘ithe',
+             'into it. The Lord of the'),  # ch5
+            ('own temple. The pupil of ‘ithe',
+             'own temple. The pupil of the'),  # ch5
+            ('Christ to perfume them, and s0',
+             'Christ to perfume them, and so'),  # ch6
+            ('we perish? Mat. viii. 25, ery',
+             'we perish? Mat. viii. 25, cry'),  # ch6
+            ('with an issue did but towch,',
+             'with an issue did but touch,'),  # ch7
+            ('being an advantage to poverty ef',
+             'being an advantage to poverty of'),  # ch7
+            ('This example doth not countenance lwkewarmness,',
+             'This example doth not countenance lukewarmness,'),  # ch8
+            ('mingle bitterness and passion with adeidiney',
+             'mingle bitterness and passion with authority'),  # ch9
+            ('miserable persons, if humbled, is cbecnly',
+             'miserable persons, if humbled, is unseemly'),  # ch9
+            ('be called a, son, Luke xy.',
+             'be called a, son, Luke xv.'),  # ch10
+            ('in the soul is because, towether',
+             'in the soul is because, together'),  # ch11
+            ('speaks of, All you that hindle',
+             'speaks of, All you that kindle'),  # ch11
+            ('light, the candle of the wiched',
+             'light, the candle of the wicked'),  # ch11
+            ('intendment to kill Nabal, and dlesseth',
+             'intendment to kill Nabal, and blessed'),  # ch11
+            ('no grace, but they contradict themselyes',
+             'no grace, but they contradict themselves'),  # ch11
+            ('desires springing from faith and loye,',
+             'desires springing from faith and love,'),  # ch11
+            ('I were more free from ithese',
+             'I were more free from these'),  # ch11
+            ('walking with God, and to "aise',
+             'walking with God, and to raise'),  # ch12
+            ('when men give themselves to carna!',
+             'when men give themselves to carnal'),  # ch12
+            ('comfortable in the evidence. It 48',
+             'comfortable in the evidence. It is'),  # ch12
+            ('offend us now, than by igiving',
+             'offend us now, than by giving'),  # ch12
+            ('shed, lost. And as every gravc',
+             'shed, lost. And as every grace'),  # ch13
+            ('thee so are they the erief',
+             'thee so are they the grief'),  # ch13
+            ('make way to shew his oftice',
+             'make way to shew his office'),  # ch14
+            ('give a sharp sentence against themselyes,',
+             'give a sharp sentence against themselves,'),  # ch15
+            ('not make use of so zracious',
+             'not make use of so gracious'),  # ch15
+            ('way for acting his own gart',
+             'way for acting his own part'),  # ch16
+            ('seasonable time ; he cannot nold',
+             'seasonable time ; he cannot hold'),  # ch16
+            ('he answers the woman of Janaan,',
+             'he answers the woman of Canaan'),  # ch16
+            ('a word; 2. Then gives ner',
+             'a word; 2. Then gives her'),  # ch16
+            ('an answer tending to her resroach,',
+             'an answer tending to her reproach,'),  # ch16
+            ('favour to comfort him; so Jhrist',
+             'favour to comfort him; so Christ'),  # ch16
+            ('power to uphold us, than vhen',
+             'power to uphold us, than when'),  # ch16
+            ('heart carry in them some ‘eport,',
+             'heart carry in them some report,'),  # ch16
+            ('but a reflection of his ove',
+             'but a reflection of his love'),  # ch16
+            ('As Christ did in his eximple',
+             'As Christ did in his example'),  # ch16
+            ('whatsoever he calleth us to vuffer,',
+             'whatsoever he calleth us to suffer,'),  # ch16
+            ('better learn to relieve and sity',
+             'better learn to relieve and pity'),  # ch16
+            ('In his desertion in the sarden,',
+             'In his desertion in the garden,'),  # ch16
+            ('the presence of his Father, oth',
+             'the presence of his Father, both'),  # ch16
+            ('for a time for us, nd',
+             'for a time for us, and'),  # ch16
+            ('seeth it fit we should aste',
+             'seeth it fit we should taste'),  # ch16
+            ('Son drank so deep, that ve',
+             'Son drank so deep, that we'),  # ch16
+            ('is, that Christ drank the lregs',
+             'is, that Christ drank the dregs'),  # ch16
+            ('that little taste of his disHeasure',
+             'that little taste of his displeasure'),  # ch16
+            ('sorrows for us; he was woken,',
+             'sorrows for us; he was broken,'),  # ch16
+            ('conceit, that his master was @',
+             'conceit, that his master was a'),  # ch17
+            ('their own, that C will suifer',
+             'their own, that C will suffer'),  # ch17
+            ('Lamb can be angry, and ney',
+             'Lamb can be angry, and they'),  # ch17
+            ('out her hand and men efuse,',
+             'out her hand and men refuse,'),  # ch17
+            ('made men shall have no nercy',
+             'made men shall have no mercy'),  # ch17
+            ('what love and mercy hath heen',
+             'what love and mercy hath been'),  # ch17
+            ('suffering our spirits to be opypressed',
+             'suffering our spirits to be oppressed'),  # ch17
+            ('as first, holy communion, whereby sone',
+             'as first, holy communion, whereby one'),  # ch17
+            ('argument to enforce a sacrificing oursselyes',
+             'argument to enforce a sacrificing ourselves'),  # ch17
+            ('as if he should say, vunless',
+             'as if he should say, Unless'),  # ch17
+            ('our faith to ourselves, Rom. xiy.',
+             'our faith to ourselves, Rom. xiv.'),  # ch17
+            ('then especially when it is wheré',
+             'then especially when it is where'),  # ch17
+            ('spiritual misery of others: join isuch',
+             'spiritual misery of others: join such'),  # ch17
+            ('Saviour, who counteth the love vand',
+             'Saviour, who counteth the love and'),  # ch17
+            ('government and ordinances, that are vadshamed',
+             'government and ordinances, that are ashamed'),  # ch17
+            ('of the gospel, that count jpreaching',
+             'of the gospel, that count preaching'),  # ch17
+            ('whereby they may give the ibetter',
+             'whereby they may give the better'),  # ch17
+            ('is so gentle and tender vover.',
+             'is so gentle and tender over.'),  # ch19
+            ('Christ died and rose again vand',
+             'Christ died and rose again and'),  # ch19
+            ('Lord of the dead and iliving,',
+             'Lord of the dead and living,'),  # ch19
+            ('to enjoy any liberty of ithe',
+             'to enjoy any liberty of the'),  # ch19
+            ('Christ as he ruleth us, 80',
+             'Christ as he ruleth us, so'),  # ch19
+            ('likewise from an inward principle vand',
+             'likewise from an inward principle and'),  # ch19
+            ('whence those reasons have their wchief',
+             'whence those reasons have their chief'),  # ch19
+            ('are made partakers of the idivine',
+             'are made partakers of the divine'),  # ch19
+            ('of darkness, and ruleth in darkmess',
+             'of darkness, and ruleth in darkness'),  # ch20
+            ('to preserve ‘the manner of poate',
+             'to preserve ‘the manner of working'),  # ch20
+            ('think that Satan had no ‘nand',
+             'think that Satan had no hand'),  # ch20
+            ('he findeth in us. But Shere',
+             'he findeth in us. But there'),  # ch20
+            ('our nature to incline in genewal',
+             'our nature to incline in general'),  # ch20
+            ('and when convincingly he shall dis“over',
+             'and when convincingly he shall discover'),  # ch20
+            ('when we work as we hould',
+             'when we work as we should'),  # ch20
+            ('to be ill from an znward',
+             'to be ill from an inward'),  # ch20
+            ('the understanding shall judge and dertermine',
+             'the understanding shall judge and determine'),  # ch21
+            ('his way and loveth to lve',
+             'his way and loveth to live'),  # ch21
+            ('any corruption or temptation is va',
+             'any corruption or temptation is a'),  # ch22
+            ('As Joshua said when he sset',
+             'As Joshua said when he set'),  # ch22
+            ('brings in a commanding light linto',
+             'brings in a commanding light into'),  # ch22
+            ('where he begins to rule, ihe',
+             'where he begins to rule, he'),  # ch22
+            ('For the same power that ithe',
+             'For the same power that the'),  # ch22
+            ('overcome by suffering; here lambs sovercome',
+             'overcome by suffering; here lambs overcome'),  # ch22
+            ('Canaan, yet they must fight iit',
+             'Canaan, yet they must fight it'),  # ch22
+            ('by the experience of that vannoyance',
+             'by the experience of that annoyance'),  # ch22
+            ('to comfort, he will terrify ifirst',
+             'to comfort, he will terrify first'),  # ch22
+            ('being dearer to us than vour',
+             'being dearer to us than our'),  # ch22
+            ('if we had liberty to schoose',
+             'if we had liberty to choose'),  # ch22
+            ('and a voluntary people, and ‘aot',
+             'and a voluntary people, and not'),  # ch22
+            ('hand of the dial points iwell,',
+             'hand of the dial points well,'),  # ch22
+            ('in that particular case, the ‘neart',
+             'in that particular case, the heart'),  # ch22
+            ('again. A fire in the theart',
+             'again. A fire in the heart'),  # ch23
+            ('likewise teacheth us wherein our weakimess',
+             'likewise teacheth us wherein our weakness'),  # ch23
+            ('male and female asunder. This jeajlousy',
+             'male and female asunder. This jealousy'),  # ch23
+            ('will lead us out to vicitory,',
+             'will lead us out to victory,'),  # ch23
+            ('us ; Christ so honoureth ithe',
+             'us ; Christ so honoureth the'),  # ch23
+            ('and victory unto our care wof',
+             'and victory unto our care of'),  # ch23
+            ('subtle their conveyance of things ‘nath',
+             'subtle their conveyance of things hath'),  # ch25
+            ('when there shall be no slory',
+             'when there shall be no glory'),  # ch25
+            ('Even now there is a ecret',
+             'Even now there is a secret'),  # ch25
+            ('victory ; then Christ will wlead',
+             'victory ; then Christ will plead'),  # ch25
+            ('shall no longer be called Jheresy',
+             'shall no longer be called heresy'),  # ch25
+            ('opposite hinderances; 4. And by advanicing',
+             'opposite hinderances; 4. And by advancing'),  # ch26
+            ('and strength we have, or velse',
+             'and strength we have, or else'),  # ch26
+            ('humility, that goeth out of itllvself',
+             'humility, that goeth out of itself'),  # ch26
+            ('of Christ’s bringing forth judgment tp',
+             'of Christ’s bringing forth judgment to'),  # ch26
+            ('discovered, and thence we are srought',
+             'discovered, and thence we are brought'),  # ch26
+            ('ground of this dispensation is, jhat',
+             'ground of this dispensation is, that'),  # ch26
+            ('in a jealous fear and rembling,',
+             'in a jealous fear and trembling,'),  # ch26
+            ('12, lest by unreverent and preumptuous',
+             '12, lest by unreverent and presumptuous'),  # ch26
+            ('him cause to suspend his ssracious',
+             'him cause to suspend his gracious'),  # ch26
+            ('under Christ’s government have the pirit',
+             'under Christ’s government have the spirit'),  # ch26
+            ('see and feel a divine wower',
+             'see and feel a divine power'),  # ch26
+            ('God under signs of his ilispleasure,',
+             'God under signs of his displeasure,'),  # ch26
+            ('power preserving patience, nay joy wm',
+             'power preserving patience, nay joy in'),  # ch26
+            ('mourning, inward peace in the idst',
+             'mourning, inward peace in the midst'),  # ch26
+            ('for us, and we for i¢',
+             'for us, and we for it'),  # ch26
+            ('a distempered body, of which moisome',
+             'a distempered body, of which noisome'),  # ch27
+            ('cause : for the end vof',
+             'cause : for the end of'),  # ch27
+            ('bird, that maketh her fly ithe',
+             'bird, that maketh her fly the'),  # ch27
+            ('to Satan, that he should Jabour',
+             'to Satan, that he should labour'),  # ch28
+            ('not things in motion till Clirist',
+             'not things in motion till Christ'),  # ch28
+            ('into one fold, that there aay',
+             'into one fold, that there may'),  # ch28
+            ('one sheepfold, and one shepherd, Jobn',
+             'one sheepfold, and one shepherd, John'),  # ch28
+            ('No creature can hinder the sourse',
+             'No creature can hinder the course'),  # ch28
+            ('stop the influence of heaven, )aor',
+             'stop the influence of heaven, nor'),  # ch28
+            ('they thou hast given unto jime',
+             'they thou hast given unto me'),  # ch28
+            ('these are they that have takén',
+             'these are they that have taken'),  # ch28
+            ('reign with me. And then hae',
+             'reign with me. And then he'),  # ch28
+            ('other rule and authority, and yoower,',
+             'other rule and authority, and power,'),  # ch28
+            ('con‘ceits',
+             'conceits'),  # ch4
+            ('dis‘pleasure',
+             'displeasure'),  # ch4
+            ('dis‘tempers',
+             'distempers'),  # ch4
+            ('watch‘fulness',
+             'watchfulness'),  # ch12
+            ('ac‘tions',
+             'actions'),  # ch13
+            ('suc‘ceed',
+             'succeed'),  # ch15
+            ('There‘fore',
+             'Therefore'),  # ch15
+            ('expec‘tation',
+             'expectation'),  # ch17
+            ('in‘tended',
+             'intended'),  # ch17
+            ('affec‘tionate',
+             'affectionate'),  # ch17
+            ('agree‘ment',
+             'agreement'),  # ch17
+            ('un‘changed',
+             'unchanged'),  # ch19
+            ('rea‘sons',
+             'reasons'),  # ch19
+            ('pre‘serveth',
+             'preserveth'),  # ch20
+            ('de‘sirous',
+             'desirous'),  # ch21
+            ('con‘quered',
+             'conquered'),  # ch22
+            ('pre‘served',
+             'preserved'),  # ch23
+            ('govern‘ment',
+             'government'),  # ch23
+            ('over‘spread',
+             'overspread'),  # ch23
+            ('call‘ing',
+             'calling'),  # ch23
+            ('be‘cause',
+             'because'),  # ch26
+            ('it‘self',
+             'itself'),  # ch27
+            # The residue the alignment could not auto-accept — multi-token
+            # spans, and places where GROSART is the damaged side. Each was read
+            # in context and settled by hand. Rejected as faithful to Pickering
+            # rather than damage: `Isai.`/`Psalm`/`Ephes.`/`Answ.` (its own
+            # abbreviations, where Grosart writes `Isa.`/`Ps.`/`Eph.`/`Ans.`),
+            # `burthen`, `loth`, `mayst`, `irreconcileable`, `enterprizes`,
+            # `judgement`, `mispersuasions`, `perfiteth`, and the proper names
+            # `Gedeon` (KJV Heb. xi. 32) and `Jehosaphat` — a name is the one
+            # thing never to "correct" without a witness. `believest`,
+            # `lodgeth`, `man's nature` and `voluntaries` are right here and
+            # damaged in Grosart.
+            ('them, and so is his ofice.',
+             'them, and so is his office.'),  # ch6
+            ('to poverty of spirit, than ereatness',
+             'to poverty of spirit, than greatness'),  # ch7
+            ('men refuse, then Wisdom will langh',
+             'men refuse, then Wisdom will laugh'),  # ch17
+            ('to consider what an affectionate intreaty',
+             'to consider what an affectionate entreaty'),  # ch17
+            ('pre‘serve',
+             'preserve'),  # ch17
+            ('2¢',
+             'it'),  # ch3
+            ('and_short',
+             'and short'),  # ch4
+            ('Led erat',
+             'hell. Therefore'),  # ch4
+            ('Zech. iy. 10',
+             'Zech. iv. 10'),  # ch5
+            ('wigour',
+             'vigour'),  # ch5
+            ('yplaces',
+             'places'),  # ch5
+            ('pluces',
+             'places'),  # ch8
+            ('candlesticks, Rey.',
+             'candlesticks, Rev.'),  # ch6
+            ("Christ's, (Rey.",
+             "Christ's, (Rev."),  # ch25
+            ('Psalm Ixy.',
+             'Psalm lxv.'),  # ch7
+            ('diswr ustful',
+             'distrustful'),  # ch10
+            ('therplant',
+             'the plant'),  # ch10
+            ('themselves zn',
+             'themselves in'),  # ch10
+            ('Sire, walh',
+             'fire, walk'),  # ch11
+            ('SOTTOW',
+             'sorrow'),  # ch11
+            ('wefineth',
+             'refineth'),  # ch11
+            ('wovld?',
+             'would?'),  # ch13
+            ('J¢ zs',
+             'It is'),  # ch14
+            ('qlorieth,',
+             'glorieth,'),  # ch14
+            ('tuled',
+             'ruled'),  # ch15
+            ('zearer',
+             'nearer'),  # ch16
+            ('‘eeper',
+             'deeper'),  # ch16
+            ('Jhrist’s',
+             'Christ’s'),  # ch16
+            ('underaken',
+             'undertaken'),  # ch16
+            ('jpirits',
+             'spirits'),  # ch16
+            ('pase,',
+             'case,'),  # ch17
+            ('detruction:',
+             'destruction:'),  # ch17
+            ('vpon ourselves,',
+             'upon ourselves,'),  # ch17
+            ('sgranted,',
+             'granted,'),  # ch17
+            ('therefore thang',
+             'therefore hang'),  # ch17
+            ('&c. Jabour',
+             '&c. labour'),  # ch17
+            ('wpon him,',
+             'upon him,'),  # ch17
+            ('voffence',
+             'offence'),  # ch17
+            ('king; ihe',
+             'king; he'),  # ch19
+            ('lkings',
+             'kings'),  # ch19
+            ('judgement, ‘and',
+             'judgement, and'),  # ch20
+            ('UHereupon',
+             'Hereupon'),  # ch20
+            ('gudgeth',
+             'judgeth'),  # ch20
+            ('hatha spite',
+             'hath a spite'),  # ch20
+            ('conyersation.',
+             'conversation.'),  # ch20
+            ('‘loth',
+             'doth'),  # ch20
+            ('25, theaven',
+             '25, heaven'),  # ch22
+            ('as ithe',
+             'as the'),  # ch22
+            ('chanyed',
+             'changed'),  # ch22
+            ('wictory',
+             'victory'),  # ch22
+            ('imeans',
+             'means'),  # ch22
+            ('wnder',
+             'under'),  # ch22
+            ('is-come into',
+             'is come into'),  # ch22
+            ('imaketh',
+             'maketh'),  # ch22
+            ('sshews',
+             'shews'),  # ch22
+            ('duities',
+             'duties'),  # ch22
+            ('FSrom us,',
+             'From us,'),  # ch22
+            ('a sdevise.',
+             'a devise.'),  # ch23
+            ('vReepeth himself,',
+             'keepeth himself,'),  # ch23
+            ('prosper: reigion',
+             'prosper: Religion'),  # ch24
+            ('him; ‘nuch',
+             'him; much'),  # ch25
+            ('Jingers',
+             'fingers'),  # ch26
+            ('undervitake.',
+             'undertake.'),  # ch26
+            ('stand out.</p><p>wn greater, because',
+             'stand out in greater, because'),  # ch26
+            ('itronger',
+             'stronger'),  # ch26
+            ('corruption undisserned',
+             'corruption undiscerned'),  # ch26
+            ('work acsording',
+             'work according'),  # ch26
+            ('‘hould',
+             'should'),  # ch26
+            ('asvaulted',
+             'assaulted'),  # ch26
+            ('compassed with roubles,',
+             'compassed with troubles,'),  # ch26
+            ('apholding us?',
+             'upholding us?'),  # ch26
+            ('laboursy',
+             'labours'),  # ch27
+            ('ithinketh',
+             'thinketh'),  # ch27
+            ('recewe',
+             'receive'),  # ch27
+            ('Lordjund',
+             'Lord and'),  # ch28
+            ('vallings,',
+             'callings,'),  # ch28
+            ('iy. 13,',
+             'iv. 13,'),  # ch28
+            ('finward',
+             'inward'),  # ch20
+            ('as smoking Bax.</p><p>‘ It is well',
+             'as smoking flax.</p><p>Ans. It is well'),  # ch16
+            ('no mercy on them, saz, xxvii. 11',
+             'no mercy on them, Isai. xxvii. 11'),  # ch17
+            ('compassion ; @ prince of peace',
+             'compassion ; a prince of peace'),  # ch3
+            ('bondage, Isai. 1xi, 1, 2',
+             'bondage, Isai. lxi. 1, 2'),  # ch10
+            ('but for ithe truth,',
+             'but for the truth,'),  # ch22
+            ('in istate',
+             'in a state'),  # ch26
+            ('‘the burthen',
+             'the burthen'),  # ch27
+            ('‘he perfiteth',
+             'he perfiteth'),  # ch15
+            # The tail the alignment could not reach, because Grosart's span
+            # around each differs too much for a clean one-for-one swap. Mostly
+            # a LOST SPACE ("Godin him", "asa grain of mustardseed", "foundin
+            # Christ") — the scan closes a word gap as readily as it opens one —
+            # plus a running header that leaked into ch16's prose ("saith the
+            # AND SMOKING FLAX. Ke smoking flax"), and `stodamnus`, which
+            # Grosart reads "us to damn us".
+            ('we must see Godin him',
+             'we must see God in him'),  # ch1
+            ('tender care, wntil judgment',
+             'tender care, until judgment'),  # ch1
+            ('keep ourselves under Jithis work',
+             'keep ourselves under this work'),  # ch4
+            ('he therefore ap(plieth himself',
+             'he therefore applieth himself'),  # ch4
+            ('grace is asa grain of mustardseed',
+             'grace is as a grain of mustard seed'),  # ch5
+            ('contrite spirit, Psalm xxxiy. 18',
+             'contrite spirit, Psalm xxxiv. 18'),  # ch6
+            ('truth, if it be nota truth',
+             'truth, if it be not a truth'),  # ch8
+            ('kill. Wesee even contrary',
+             'kill. We see even contrary'),  # ch9
+            ('as well as the wholeelement',
+             'as well as the whole element'),  # ch10
+            ('Deut. vi. 5. Inthe covenant',
+             'Deut. vi. 5. In the covenant'),  # ch10
+            ('in sub- | jection to himself',
+             'in subjection to himself'),  # ch12
+            ('fear him, Psalm cxly. 19',
+             'fear him, Psalm cxlv. 19'),  # ch14
+            ('in mercy, Psalm Ixxyili. 39',
+             'in mercy, Psalm lxxviii. 39'),  # ch15
+            ('but shake acedar,',
+             'but shake a cedar,'),  # ch15
+            ('therefore, poor vecause we know',
+             'therefore, poor because we know'),  # ch15
+            ('who ever neglected his‘own members',
+             'who ever neglected his own members'),  # ch16
+            ('saith the AND SMOKING FLAX. Ke smoking flax',
+             'saith the smoking flax'),  # ch16
+            ('Christ may act the part ofan enemy',
+             'Christ may act the part of an enemy'),  # ch16
+            ('heart under contrary uppearances',
+             'heart under contrary appearances'),  # ch16
+            ('flax ; and Jhrist again undertaking',
+             'flax ; and Christ again undertaking'),  # ch16
+            ('the Father, appear‘ag before him',
+             'the Father, appearing before him'),  # ch16
+            ('us blameless -efore him',
+             'us blameless before him'),  # ch16
+            ('as mariners do, cast unchor',
+             'as mariners do, cast anchor'),  # ch16
+            ('what his Son’s ove was',
+             'what his Son’s love was'),  # ch16
+            ('is all to be foundin Christ',
+             'is all to be found in Christ'),  # ch16
+            ('as, 1. Such as go on inall ill courses',
+             'as, 1. Such as go on in all ill courses'),  # ch17
+            ('as that unprojitable servant',
+             'as that unprofitable servant'),  # ch17
+            ('God hath not made stodamnus.',
+             'God hath not made us to damn us.'),  # ch17
+            ('government, because itis called',
+             'government, because it is called'),  # ch20
+            ('highest reason ofall; and therefore',
+             'highest reason of all; and therefore'),  # ch20
+            ('us out ofall troublesome',
+             'us out of all troublesome'),  # ch22
+            ('therefore, that itis dangerous',
+             'therefore, that it is dangerous'),  # ch26
+            ('evidences of nis just displeasure',
+             'evidences of his just displeasure'),  # ch16
+            # The last of it. Mostly the lost-space class again, plus a handful
+            # of single-letter misreads. `blew up the decaying sparks` is left
+            # alone — it is Sibbes's own idiom, not damage.
+            ('your own levices, Proy. i. 31',
+             'your own devices, Prov. i. 31'),  # ch17
+            ("intended to stir'us up",
+             'intended to stir us up'),  # ch17
+            ('comfort tous; hereuponit is',
+             'comfort to us; hereupon it is'),  # ch18
+            ('exaltation that ihe may turn',
+             'exaltation that he may turn'),  # ch19
+            ('As God isein himself',
+             'As God is in himself'),  # ch20
+            ('conscience maketh aman a king',
+             'conscience maketh a man a king'),  # ch22
+            ('prevail, either uy to make us',
+             'prevail, either to make us'),  # ch22
+            ('accursed and daa enemies',
+             'accursed and damned enemies'),  # ch22
+            ('accompany the wguilt ofsin;',
+             'accompany the guilt of sin;'),  # ch22
+            ('out of a thick icloud;',
+             'out of a thick cloud;'),  # ch22
+            ('the pride of all fleshlow.',
+             'the pride of all flesh low.'),  # ch22
+            ('for ever with ous thereafter',
+             'for ever with us thereafter'),  # ch23
+            ('openly forth to victoryWhence we observe',
+             'openly forth to victory. Whence we observe'),  # ch25
+            ('King of kings, and Lordof lords',
+             'King of kings, and Lord of lords'),  # ch25
+            ('you can do alittle, but nothing',
+             'you can do a little, but nothing'),  # ch26
+            ("sit in judgment upon'them that judge",
+             'sit in judgment upon them that judge'),  # ch27
+            ('his enemies as wellas ours',
+             'his enemies as well as ours'),  # ch28
+            ('given him Sor vis possession',
+             'given him for his possession'),  # ch28
+            ('and we shalls ee the salvation',
+             'and we shall see the salvation'),  # ch28
+            # The last two guillemets, both a lost letter rather than a quote —
+            # Grosart supplies "a right judgment" and "hope in a state
+            # hopeless". `QuoteStyleTests` counts « » as CURLY, so these would
+            # have passed the quote gate while printing a French quotation mark
+            # mid-sentence.
+            ("light a right » judgment of things",
+             "light a right judgment of things"),
+            ("and hope in «, state hopeless",
+             "and hope in a state hopeless"),
+            ("with fears and «doubts?", "with fears and doubts?"),
+            # The one column rule that fused to its neighbour rather than
+            # standing alone, so the reflow's strip could not reach it.
+            ("the weak, Ezek. |) xxxiv. 15", "the weak, Ezek. xxxiv. 15"),
+            # Standalone junk marks the scanner left between words — a stray
+            # `~`, `}`, `©`, `=`, `%`, `_`, `¢`. Done as literal pairs rather
+            # than a reflow rule like the column bars: `*` is a real footnote
+            # marker in `susanna-wesley-clarke`, and a class wide enough to
+            # catch these would have rewritten that book's shipped fixture too.
+            ('ruised reeds. 2. Smoking wear. = ',
+             'ruised reeds. 2. Smoking wear. '),  # ch1
+            ('annel, that as sin bred grief, } ',
+             'annel, that as sin bred grief, '),  # ch4
+            ('o be led withal in all things. © ',
+             'o be led withal in all things. '),  # ch8
+            (' gracious men have a spiritual " ',
+             ' gracious men have a spiritual '),  # ch11
+            ('im. 2. Strength in himself, as _ ',
+             'im. 2. Strength in himself, as '),  # ch16
+            ('he mighty God, Isaiah ix. 6 3. _ ',
+             'he mighty God, Isaiah ix. 6 3. '),  # ch16
+            ('as if it were in vain to go to ~ ',
+             'as if it were in vain to go to '),  # ch17
+            ('f or in our application of it. _ ',
+             'f or in our application of it. '),  # ch17
+            ('his plough and neglect tillage ¢ ',
+             'his plough and neglect tillage '),  # ch17
+            ('rit floweth into the soul, and _ ',
+             'rit floweth into the soul, and '),  # ch17
+            ('able as the sun in its course, _ ',
+             'able as the sun in its course, '),  # ch20
+            ('en we fall not upon that which * ',
+             'en we fall not upon that which '),  # ch20
+            ('e heart of a Christian is like _ ',
+             'e heart of a Christian is like '),  # ch21
+            ('as at the best, a city compact _ ',
+             'as at the best, a city compact '),  # ch21
+            ('tereth not so much what ill is _ ',
+             'tereth not so much what ill is '),  # ch22
+            ('hich we shall enjoy in heaven. _ ',
+             'hich we shall enjoy in heaven. '),  # ch23
+            ('midst of our hearts, Psalm cx. } ',
+             'midst of our hearts, Psalm cx. '),  # ch27
+            (', it is a comfortable thing to _ ',
+             ', it is a comfortable thing to '),  # ch28
+            # The same junk where it abuts a word or punctuation rather than
+            # standing alone. Two carry meaning the mark displaced: "25%" is
+            # the print's "25;", and "vic-~ tory" is a line-break hyphen the
+            # scan turned into a tilde.
+            ('Gen. xxxiv. 25% but Christ',
+             'Gen. xxxiv. 25; but Christ'),  # ch3
+            ('divine; upon _long experience',
+             'divine; upon long experience'),  # ch9
+            ('good duties, "because they feel',
+             'good duties, because they feel'),  # ch13
+            ('yet even there some} like cruel',
+             'yet even there some, like cruel'),  # ch17
+            ('government within us_ principally',
+             'government within us principally'),  # ch18
+            ('so he is to him; he~ ascribes',
+             'so he is to him; he ascribes'),  # ch20
+            ('notice of by us;_ 1. Whether',
+             'notice of by us; 1. Whether'),  # ch22
+            ('to itself. Look _back to former',
+             'to itself. Look back to former'),  # ch23
+            ('counsels from the }Lord, shall walk',
+             'counsels from the Lord, shall walk'),  # ch25
+            ('assured vic-~ tory, which we may',
+             'assured victory, which we may'),  # ch28
+            ('took not advantage of}, his errors',
+             'took not advantage of his errors'),  # ch28
+            # Two bare apostrophes standing where the scan lost a word.
+            ("of his poor ' disciples ?",
+             'of his poor disciples ?'),  # ch7
+            ("but addeth ' ‘to a lustre",
+             'but addeth a lustre'),  # ch17
+        ],
+    },
     "around-the-wicket-gate": {
         # Image drop caps (Gutenberg source) — first letter of every chapter.
         "dropcap_letters": {
