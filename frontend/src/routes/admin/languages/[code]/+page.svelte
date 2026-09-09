@@ -242,6 +242,16 @@
 		{ id: 'sec-articles', label: 'Articles', count: shown.articles.length }
 	]);
 
+	// A "Next to work on" list can run to dozens of rows (every missing topic
+	// shelf, every unstarted book) — on a mature language that is most of the
+	// page's height. Show the top slice, ranked as the API already returns them,
+	// and let each section expand on demand. Keyed per section so opening one
+	// doesn't open the rest.
+	const TODO_CAP = 8;
+	let todoExpanded = $state<Record<string, boolean>>({});
+	const capTodo = <T,>(key: string, rows: T[]): T[] =>
+		todoExpanded[key] ? rows : rows.slice(0, TODO_CAP);
+
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
 
@@ -543,6 +553,18 @@
 				{/if}
 			{/if}
 
+			{#snippet todoMore(key: string, total: number)}
+				{#if total > TODO_CAP}
+					<button
+						class="mt-2 text-small font-semibold text-accent hover:underline"
+						aria-expanded={todoExpanded[key] ?? false}
+						onclick={() => (todoExpanded[key] = !todoExpanded[key])}
+					>
+						{todoExpanded[key] ? 'Show fewer' : `Show all ${fmt(total)}`}
+					</button>
+				{/if}
+			{/snippet}
+
 			<div class="grid gap-6 md:grid-cols-2">
 				<!-- Books -->
 				<section
@@ -572,7 +594,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoBooks as b (b.slug)}
+								{#each capTodo('books', shown.todoBooks) as b (b.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/books/{b.slug}" class="text-accent hover:underline">{b.title}</a>
@@ -582,6 +604,7 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('books', shown.todoBooks.length)}
 						</div>
 					{/if}
 				</section>
@@ -613,7 +636,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoBios as a (a.slug)}
+								{#each capTodo('bios', shown.todoBios) as a (a.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/authors/{a.slug}" class="text-accent hover:underline">{a.name}</a>
@@ -625,6 +648,7 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('bios', shown.todoBios.length)}
 						</div>
 					{/if}
 				</section>
@@ -656,7 +680,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoSermons as s (s.slug)}
+								{#each capTodo('sermons', shown.todoSermons) as s (s.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/sermons/{s.slug}" class="text-accent hover:underline">{s.title}</a>
@@ -666,6 +690,7 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('sermons', shown.todoSermons.length)}
 						</div>
 					{/if}
 				</section>
@@ -697,7 +722,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoPlans as p (p.slug)}
+								{#each capTodo('plans', shown.todoPlans) as p (p.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/plans/{p.slug}" class="text-accent hover:underline">{p.title}</a>
@@ -706,6 +731,7 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('plans', shown.todoPlans.length)}
 						</div>
 					{/if}
 				</section>
@@ -744,7 +770,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoTopics as t (t.slug)}
+								{#each capTodo('topics', shown.todoTopics) as t (t.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/topics/{t.slug}" class="text-accent hover:underline">{t.title}</a>
@@ -753,6 +779,7 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('topics', shown.todoTopics.length)}
 						</div>
 					{/if}
 				</section>
@@ -787,7 +814,7 @@
 								<p class="mb-2 text-small text-warning">{queueError}</p>
 							{/if}
 							<ul class="space-y-1.5">
-								{#each shown.todoArticles as a (a.slug)}
+								{#each capTodo('articles', shown.todoArticles) as a (a.slug)}
 									<li class="flex items-center justify-between gap-3 text-body">
 										<span class="min-w-0 truncate">
 											<a href="/articles/{a.slug}" class="text-accent hover:underline">{a.title}</a>
@@ -796,6 +823,7 @@
 									</li>
 								{/each}
 							</ul>
+							{@render todoMore('articles', shown.todoArticles.length)}
 						</div>
 					{/if}
 				</section>
