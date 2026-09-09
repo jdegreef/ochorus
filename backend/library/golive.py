@@ -110,14 +110,21 @@ def verify_deployed(lang: Language) -> dict:
     give: it reflects the decision, not the deploy. Fetches the live sitemap and
     looks for evidence of the locale.
 
-    TWO SITEMAP SHAPES, deliberately. `sitemap.xml` is a `<sitemapindex>` over
-    per-type children, and a locale's `sitemap-chapters-<code>.xml` is linked
-    there only when the BUILT site really carries that locale's chapters — so
-    the index alone answers the question, in one request. The old flat
-    `<urlset>` is still understood because the API and the reader deploy as
-    separate Render services: between the two deploys the live sitemap is the
-    previous shape, and a launch checked in that window must not report a
-    failure that isn't happening.
+    THE SIGNAL IS THE PAGES CHILD. `sitemap.xml` is a `<sitemapindex>` over
+    per-type children whose NAMES carry no locale — chapters used to supply a
+    per-locale `sitemap-chapters-<code>.xml`, but chapters are no longer
+    advertised (frontend `$lib/sitemap`). So we fetch a child and read the locale
+    out of its URLs. `sitemap-pages.xml` is the right child: it lists the static
+    app pages for EVERY advertised locale unconditionally (`/<code>/…`), so its
+    presence answers exactly "did this locale's build land" — a locale cannot be
+    advertised without them. (The books child would miss a locale that is live
+    but has no books yet.) One extra request over the old one-child design.
+
+    This survives the deploy-skew window (API and reader are separate Render
+    services): the pages child and its locale-prefixed `<loc>`s existed in the
+    PREVIOUS index shape too, and the flat `<urlset>` branch below still covers
+    the oldest shape — so a launch checked mid-deploy still reads true. The
+    `/<code>/` match is the very predicate that branch already uses.
     """
     site = settings.PUBLIC_SITE_URL
     if not site:
@@ -137,11 +144,24 @@ def verify_deployed(lang: Language) -> dict:
     if not res.ok:
         return {"status": "unknown", "detail": f"Sitemap returned {res.status_code}."}
     if "<sitemapindex" in res.text:
-        # The child's own name carries the locale, so no child needs fetching.
-        if f"{site}/sitemap-chapters-{lang.code}.xml" in res.text:
+        # The index names no locale, so fetch the pages child and read this
+        # locale out of its URLs. Every advertised locale has static app pages
+        # (`{site}/<code>/…`), so this answers "did the build include this
+        # locale". Anchored at the host and pinned to a whole segment by the
+        # trailing slash — the SAME predicate the flat branch below uses — so it
+        # can't match `/<code>/` deeper in a path (a topic slug) or the prefix of
+        # a regional code ("/ar/" inside a future "/ar-EG/").
+        try:
+            pages = requests.get(f"{site}/sitemap-pages.xml", timeout=20)
+        except requests.RequestException as e:
+            return {
+                "status": "unknown",
+                "detail": f"Could not fetch {site}/sitemap-pages.xml ({e.__class__.__name__}).",
+            }
+        if pages.ok and f"{site}/{lang.code}/" in pages.text:
             return {
                 "status": "deployed",
-                "detail": f"{lang.code} has a chapter sitemap in the live index.",
+                "detail": f"{lang.code} URLs are in the live sitemap.",
             }
     elif f"{site}/{lang.code}/" in res.text:
         return {"status": "deployed", "detail": f"{lang.code} URLs are in the live sitemap."}

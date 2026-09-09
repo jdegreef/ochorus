@@ -33,10 +33,10 @@ export async function GET() {
 	// route enumerates every section, and an unreached prerenderable route
 	// fails the build) — it is simply unreferenced, which is the honest state.
 	//
-	// This also gives `golive.verify_deployed` its signal: a locale's chapter
-	// child appears in this index only once the BUILT site really carries that
-	// locale's chapters, which is the one question "did my launch land?" is
-	// asking.
+	// (`golive.verify_deployed` no longer reads this index for a per-locale
+	// child NAME — chapters, which used to supply one, are no longer advertised.
+	// It fetches the pages child and reads the locale out of its URLs instead.
+	// See that function.)
 	const live = sections().filter((s) => (sectionEntries(data, s)?.length ?? 0) > 0);
 
 	const xml =
