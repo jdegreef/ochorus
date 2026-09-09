@@ -148,6 +148,16 @@ def article_topic_map(language: str) -> dict[str, list[dict]]:
     )
 
 
+def sermon_topic_map(language: str) -> dict[str, list[dict]]:
+    """``sermon_slug -> [topic chip]`` for every published topic (see
+    :func:`_topic_membership_map`) — powers the sermon shelf's topic filter.
+    ``SermonListView`` supplies it as ``sermon_topics``; the list serializer
+    builds it on demand otherwise."""
+    return _topic_membership_map(
+        language, entries_attr="sermon_entries", slug_attr="sermon_slug"
+    )
+
+
 class LocalizedMixin:
     """Mixin for serializers whose output depends on the reader's language.
 
@@ -270,7 +280,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
         return cached.get(obj.slug, [])
 
 
-class SermonListSerializer(serializers.ModelSerializer):
+class SermonListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """A sermon card — enough for the shelf and the author page (no body)."""
 
     author = AuthorSerializer(read_only=True)
@@ -280,6 +290,7 @@ class SermonListSerializer(serializers.ModelSerializer):
     # per row cost one parse total.
     scripture_book = serializers.SerializerMethodField()
     scripture_book_order = serializers.SerializerMethodField()
+    topics = serializers.SerializerMethodField()
 
     def get_scripture_book(self, obj):
         info = book_of(obj.scripture_ref)
@@ -288,6 +299,25 @@ class SermonListSerializer(serializers.ModelSerializer):
     def get_scripture_book_order(self, obj):
         info = book_of(obj.scripture_ref)
         return info[1] if info else None
+
+    def get_topics(self, obj):
+        """Published topics this sermon belongs to, for the shelf's topic filter.
+
+        Mirrors ``BookListSerializer.get_topics``: a slug→chips map built once
+        per shelf — ``SermonListView`` passes it as ``sermon_topics`` — otherwise
+        built here on first use and cached on the serializer (one shared instance
+        for ``many=True``), so the topic and author pages get real chips too
+        instead of an empty list.
+        """
+        supplied = self.context.get("sermon_topics")
+        if supplied is not None:
+            return supplied.get(obj.slug, [])
+        language = self._language()
+        cached_for, cached = getattr(self, "_topic_map", (None, None))
+        if cached_for != language:
+            cached = sermon_topic_map(language)
+            self._topic_map = (language, cached)
+        return cached.get(obj.slug, [])
 
     class Meta:
         model = Sermon
@@ -306,6 +336,7 @@ class SermonListSerializer(serializers.ModelSerializer):
             "preached_on",
             "word_count",
             "author",
+            "topics",
             "created_at",
             # The sitemap's <lastmod> — see BookListSerializer.updated_at.
             "updated_at",
@@ -791,18 +822,21 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         return len(self._books(obj))
 
     def get_sermons(self, obj):
-        return SermonListSerializer(
-            self._sermons(obj), many=True, context=self.context
-        ).data
+        # The sermon cards' topic chips come from the same topic walk this page
+        # already makes (via _topic_pass), threaded in the way get_books threads
+        # book_topics — otherwise SermonListSerializer would fetch the whole
+        # topic set a second time (BookCardPayloadTests budgets this page).
+        ctx = {**self.context, "sermon_topics": self._topic_pass(obj)[2]}
+        return SermonListSerializer(self._sermons(obj), many=True, context=ctx).data
 
     def _topic_pass(self, obj):
         """One walk over published topics, serving both chip fields.
 
-        Returns ``(author chips, book_slug -> chips)``: the shelves this author
-        appears in, and the per-book map the nested cards need. Two fields want
-        the same topic rows, so they share one fetch — otherwise the author page
-        would pull the whole topic set (plus its translations and both
-        membership tables) twice.
+        Returns ``(author chips, book_slug -> chips, sermon_slug -> chips)``: the
+        shelves this author appears in, and the per-book and per-sermon maps the
+        nested cards need. Three fields want the same topic rows, so they share
+        one fetch — otherwise the author page would pull the whole topic set
+        (plus its translations and both membership tables) more than once.
         """
         return self._cached("topic_pass", obj, lambda: self._build_topic_pass(obj))
 
@@ -816,31 +850,37 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         book_slugs = {b.slug for b in self._books(obj)}
         sermon_slugs = {s.slug for s in self._sermons(obj)}
         if not book_slugs and not sermon_slugs:
-            return [], {}
+            return [], {}, {}
         topics = Topic.objects.filter(is_published=True).prefetch_related(
             "translations", "entries", "sermon_entries"
         )
         chips = []
         by_book: dict[str, list[dict]] = {}
+        by_sermon: dict[str, list[dict]] = {}
         for topic in topics:
             # Untranslated shelves are skipped rather than shown in English —
             # a chip with no title in this language has nothing to render.
             if not topic.is_translated_into(lang):
                 continue
             chip = {"slug": topic.slug, "title": topic.title_for(lang)}
-            entries = [e.book_slug for e in topic.entries.all()]
-            for slug in entries:
-                if slug in book_slugs:
-                    by_book.setdefault(slug, []).append(chip)
-            in_topic = any(s in book_slugs for s in entries) or any(
-                e.sermon_slug in sermon_slugs for e in topic.sermon_entries.all()
-            )
-            if in_topic:
+            book_hits = [e.book_slug for e in topic.entries.all() if e.book_slug in book_slugs]
+            for slug in book_hits:
+                by_book.setdefault(slug, []).append(chip)
+            sermon_hits = [
+                e.sermon_slug
+                for e in topic.sermon_entries.all()
+                if e.sermon_slug in sermon_slugs
+            ]
+            for slug in sermon_hits:
+                by_sermon.setdefault(slug, []).append(chip)
+            if book_hits or sermon_hits:
                 chips.append(chip)
         chips.sort(key=lambda c: c["title"])
         for book_chips in by_book.values():
             book_chips.sort(key=lambda c: c["title"])
-        return chips, by_book
+        for sermon_chips in by_sermon.values():
+            sermon_chips.sort(key=lambda c: c["title"])
+        return chips, by_book, by_sermon
 
     def get_topics(self, obj):
         """The published topical shelves this author appears in — any topic

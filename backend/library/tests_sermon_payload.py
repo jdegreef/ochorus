@@ -105,6 +105,19 @@ class SermonCardPayloadTests(TestCase):
         self.assertEqual(row["summary"], "In brief.")
         self.assertNotIn("body_html", row)
 
+    def test_the_shelf_carries_each_sermons_topics(self):
+        """The card's topic chips power the shelf's topic filter (mirrors books)."""
+        res, _ = self._get(reverse("sermon-list"))
+        row = next(r for r in res.data if r["slug"] == "sermon-0")
+        self.assertEqual(row["topics"], [{"slug": "prayer", "title": "On Prayer"}])
+
+    def test_the_author_page_threads_topics_into_its_sermon_cards(self):
+        """The author page carries the same chips, from its one shared topic walk
+        (not a second per-page fetch — see the query budget in tests.py)."""
+        res, _ = self._get(reverse("author-detail", args=["am"]))
+        row = next(s for s in res.data["sermons"] if s["slug"] == "sermon-0")
+        self.assertEqual(row["topics"], [{"slug": "prayer", "title": "On Prayer"}])
+
     def test_the_sermon_page_still_serves_its_body(self):
         """The DETAIL endpoint must be untouched — it exists to serve the body."""
         res, _ = self._get(reverse("sermon-detail", args=["sermon-1"]))

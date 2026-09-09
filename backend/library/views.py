@@ -65,6 +65,7 @@ from .serializers import (
     book_topic_map,
     plan_book_index,
     plan_chapter_index,
+    sermon_topic_map,
 )
 
 logger = logging.getLogger(__name__)
@@ -259,6 +260,14 @@ class SermonListView(PublicContentCacheMixin, generics.ListAPIView):
             .defer(*SERMON_CARD_DEFER)
             .order_by("author__name", "sort_order", "title")
         )
+
+    def get_serializer_context(self):
+        # Build the slug→chips map ONCE for the shelf, so each card's topics
+        # (the shelf's topic filter) cost a fixed handful of queries, not one per
+        # sermon. Mirrors BookListView / ArticleListView.
+        ctx = super().get_serializer_context()
+        ctx["sermon_topics"] = sermon_topic_map(_language(self.request))
+        return ctx
 
 
 class SermonDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):

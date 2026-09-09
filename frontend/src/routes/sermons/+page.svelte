@@ -58,8 +58,9 @@
 	// $lib/urlFilters — the same helper Books and Biographies use. Grouping and
 	// sort stay in localStorage below: they describe the reader, not the shelf.
 	const filters = urlFilters({
-		defaults: { q: '', book: '', len: '' },
+		defaults: { q: '', book: '', len: '', topic: '' },
 		// `len` is an enum — an off-list value in the URL falls back to "any".
+		// `topic` is a free-text slug (like `book`), so it isn't listed here.
 		allowed: { len: LENGTH_BUCKETS },
 		url: () => $page.url
 	});
@@ -99,11 +100,23 @@
 		return [...m.values()].sort((a, b) => a.order - b.order);
 	});
 
+	// Distinct topics present on the shelf, alphabetical — the topic-filter chips.
+	// Mirrors BooksShelf; chips come from each sermon's `topics` payload.
+	const allTopics = $derived.by(() => {
+		const m = new Map<string, string>();
+		for (const s of sermons) for (const tc of s.topics ?? []) m.set(tc.slug, tc.title);
+		return [...m]
+			.map(([slug, title]) => ({ slug, title }))
+			.sort((a, b) => a.title.localeCompare(b.title));
+	});
+
 	const filtered = $derived.by(() => {
 		const q = filters.values.q.trim().toLowerCase();
 		return sermons.filter((s) => {
 			if (filters.values.book && s.scripture_book !== filters.values.book) return false;
 			if (filters.values.len && lengthOf(s) !== filters.values.len) return false;
+			if (filters.values.topic && !(s.topics ?? []).some((tc) => tc.slug === filters.values.topic))
+				return false;
 			if (!q) return true;
 			return (
 				s.title.toLowerCase().includes(q) ||
@@ -289,6 +302,32 @@
 
 	</div>
 	</div>
+
+	<!-- Topic filter — a chip row for taxonomy, under the controls. Mirrors the
+	     Books shelf; shown only when the shelf actually spans more than one topic.
+	     Reuses the Books labels (the same "All topics" / "Filter by topic"). -->
+	{#if allTopics.length > 1}
+		<div class="mb-6 flex flex-wrap gap-1.5" aria-label={t('books.filterTopic')} role="group">
+			<button
+				class="chip"
+				class:active={filters.values.topic === ''}
+				onclick={() => (filters.values.topic = '')}
+				aria-pressed={filters.values.topic === ''}
+			>
+				{t('books.topicAll')}
+			</button>
+			{#each allTopics as tc (tc.slug)}
+				<button
+					class="chip"
+					class:active={filters.values.topic === tc.slug}
+					onclick={() => (filters.values.topic = filters.values.topic === tc.slug ? '' : tc.slug)}
+					aria-pressed={filters.values.topic === tc.slug}
+				>
+					{tc.title}
+				</button>
+			{/each}
+		</div>
+	{/if}
 
 	<!-- One clear affordance, on the FilterSummary — same as Books and
 	     Biographies. (The bespoke in-row "Clear" and sermons.clear are retired.) -->
