@@ -480,6 +480,49 @@ TOPICS = [
     ),
 ]
 
+# Shelves that ship LIVE IN ENGLISH while their translations are still being
+# produced. Topic prose has no English fallback, so a shelf missing from a
+# language is simply absent there (``Topic.is_translated_into``) — these appear
+# on the English ``/topics`` and are hidden in the other languages until the
+# translation queue fills each one (``manage.py translate_topic --language
+# <lang>``, which writes ``data/topic_translations/<lang>.json``).
+#
+# This is the ONE deliberate exception to the full per-language coverage guard:
+# ``TopicTests.test_every_translated_language_covers_every_topic`` and
+# ``tests_fixture.TopicTranslationFileTests`` still demand that every OTHER
+# shelf is covered in every language, and still reject prose for a slug that
+# names no topic — they only stop treating a *pending* shelf's absence as a
+# failure. A pending shelf may also be partially covered (some languages done,
+# others not) as the queue works through it.
+#
+# Remove a slug from this set once its seven languages (ar/es/hi/lg/pt/sw/uk)
+# are all present; when the set is empty the guard is back to full strength.
+# A slug here MUST name a real topic in ``TOPICS`` above — a stale entry would
+# quietly exempt nothing and mask a genuinely uncovered shelf (a test pins this).
+TRANSLATION_PENDING: frozenset[str] = frozenset(
+    {
+        "the-puritans",
+        "abiding-in-christ",
+        "women-of-faith",
+        "voices-of-the-early-church",
+        "day-by-day",
+        "the-east-african-revival",
+        "contemporary-voices",
+        "the-inner-life",
+        "the-great-awakening",
+        "the-body-of-christ",
+        "for-those-who-lead",
+        "the-wesleys-and-early-methodism",
+        "foundations-of-the-faith",
+        "saints-of-the-african-diaspora",
+        "the-grace-of-god",
+        "victory-over-sin",
+        "to-the-ends-of-the-earth",
+        "faith-for-the-impossible",
+        "men-of-valour",
+    }
+)
+
 # Sermon members per topic, by canonical sermon slug (language-agnostic, like
 # the book members). A sermon shows on a topic's shelf in each language it
 # exists in. {topic slug: [ordered sermon slugs]}
