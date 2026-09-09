@@ -1487,12 +1487,19 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
         return [by_slug[s] for s in order if s in by_slug]
 
 
+# How many sibling shelves a topic page offers under "Related topics". Mirrors
+# RELATED_LIMIT (the book page's "More like this"): enough to explore, not a wall.
+RELATED_TOPIC_LIMIT = 6
+
+
 class TopicDetailSerializer(TopicListSerializer):
     """A topic page — the shelf metadata plus the full list of member books."""
 
     books = serializers.SerializerMethodField()
     sermons = serializers.SerializerMethodField()
     articles = serializers.SerializerMethodField()
+    authors = serializers.SerializerMethodField()
+    related_topics = serializers.SerializerMethodField()
     scripture_ref = serializers.SerializerMethodField()
     scripture_text = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
@@ -1505,6 +1512,8 @@ class TopicDetailSerializer(TopicListSerializer):
             "books",
             "sermons",
             "articles",
+            "authors",
+            "related_topics",
         ]
 
     def get_available_languages(self, obj):
@@ -1536,3 +1545,62 @@ class TopicDetailSerializer(TopicListSerializer):
         return ArticleListSerializer(
             self._articles(obj), many=True, context=self.context
         ).data
+
+    def get_authors(self, obj):
+        """The distinct authors behind this shelf's books and sermons, in the
+        shelf's curated order (books first, then sermons). A shelf's authors are
+        a strong lateral link — a reader here often wants more of a voice, not
+        only more of the theme. Zero extra queries: the works are already loaded
+        with their author (``_attach_books`` / ``_attach_sermons`` select it)."""
+        seen: dict[str, dict] = {}
+        for work in list(self._books(obj)) + list(self._sermons(obj)):
+            author = work.author
+            if author and author.slug not in seen:
+                seen[author.slug] = {
+                    "slug": author.slug,
+                    "name": author.name,
+                    "photo_url": author.photo_url,
+                    "birth_year": author.birth_year,
+                    "death_year": author.death_year,
+                }
+        return list(seen.values())
+
+    def get_related_topics(self, obj):
+        """Sibling shelves that share books with this one, most-shared first.
+
+        Overlap is over ``TopicBook`` membership (``idx_topicbook_slug`` serves
+        the ``book_slug`` lookup). Constant queries — one aggregate, one fetch —
+        never one per candidate. Only shelves with a title in this language are
+        offered, so a chip never leads to a 404 (a topic 404s in a locale it
+        isn't translated into; see ``TopicDetailView``)."""
+        from django.db.models import Count
+
+        from .models import Topic, TopicBook
+
+        book_slugs = [e.book_slug for e in obj.entries.all()]
+        if not book_slugs:
+            return []
+        rows = list(
+            TopicBook.objects.filter(book_slug__in=book_slugs)
+            .exclude(topic_id=obj.id)
+            .values("topic_id")
+            .annotate(shared=Count("book_slug"))
+            .order_by("-shared", "topic_id")
+        )
+        if not rows:
+            return []
+        language = self._language()
+        by_id = {
+            t.id: t
+            for t in Topic.objects.filter(
+                id__in=[r["topic_id"] for r in rows], is_published=True
+            ).prefetch_related("translations")
+        }
+        related: list[dict] = []
+        for row in rows:
+            topic = by_id.get(row["topic_id"])
+            if topic and topic.is_translated_into(language):
+                related.append({"slug": topic.slug, "title": topic.title_for(language)})
+                if len(related) >= RELATED_TOPIC_LIMIT:
+                    break
+        return related

@@ -302,6 +302,26 @@ class TopicTests(TestCase):
     def test_detail_unpublished_is_404(self):
         self.assertEqual(self.client.get("/api/library/topics/draft/").status_code, 404)
 
+    def test_detail_lists_distinct_authors(self):
+        # Both member books are by "am" → one distinct author on the shelf.
+        res = self.client.get("/api/library/topics/prayer/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual([a["slug"] for a in res.data["authors"]], ["am"])
+        self.assertEqual(res.data["authors"][0]["name"], "Andrew Murray")
+
+    def test_detail_related_topics_by_shared_books(self):
+        # A second published, translated shelf that shares a book with "prayer".
+        other = Topic.objects.create(
+            slug="deeper-life", title="The Deeper Life", sort_order=3
+        )
+        TopicBook.objects.create(topic=other, book_slug="humility-2")
+        res = self.client.get("/api/library/topics/prayer/?language=en")
+        self.assertEqual(res.status_code, 200)
+        related = [t["slug"] for t in res.data["related_topics"]]
+        self.assertEqual(related, ["deeper-life"])
+        # A shelf that shares no book (its only member doesn't exist) is not related.
+        self.assertNotIn("empty", related)
+
     def test_book_detail_lists_its_topics(self):
         res = self.client.get("/api/library/books/prayer/?language=en")
         self.assertEqual(res.status_code, 200)
