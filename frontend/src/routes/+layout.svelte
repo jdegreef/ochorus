@@ -30,6 +30,7 @@
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import { PRIMARY_NAV, ENGLISH_HUBS } from '$lib/contentNav';
 	import BrandMark from '$lib/components/BrandMark.svelte';
+	import BrandSprite from '$lib/components/BrandSprite.svelte';
 	// Preload the primary Latin subsets of the two brand fonts (display + body).
 	// @fontsource already ships them font-display:swap; preloading fetches them on
 	// the critical path so the hero/headings (Fraunces) and body copy (Hanken)
@@ -193,6 +194,8 @@
 	]}; --pw: {pageWidth.rem}rem; --appnav-h: {readerUi.focus ? 0 : navH}px"
 >
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
+	<!-- Defines the Ochorus wordmark <symbol> once; every BrandMark <use>s it. -->
+	<BrandSprite />
 	{#if !readerUi.focus}
 		<nav
 			class="appnav"

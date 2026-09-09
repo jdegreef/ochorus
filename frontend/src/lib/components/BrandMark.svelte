@@ -3,16 +3,21 @@
 	// wordmark built into the artwork, exactly as it appears on the ministry's
 	// printed books.
 	//
-	// This replaces a hand-drawn approximation that had the quill pointing the
-	// WRONG WAY (up-left, symmetric book) and existed as two divergent copies:
-	// one here and one inlined in backend/library/covers.py. The canonical file
-	// now lives in the backend (its Docker image ships `backend/` only, so
-	// covers.py cannot read anything under frontend/) and is mirrored here;
-	// `brandAssets.test.ts` fails if the two drift apart.
+	// Rendered as a <use> of the shared <symbol> that BrandSprite defines once
+	// per document (see $lib/brand/lockup). It used to inline the whole ~4.3 KB
+	// SVG on every instance via {@html}; the book shelf renders one per cover, so
+	// /books carried 85 copies (~365 KB). <use> keeps the mark inline — so
+	// `fill="currentColor"` still resolves against the surrounding text colour,
+	// one mark for both themes — while the geometry is paid for once.
 	//
-	// Inlined via `?raw` rather than <img src> so `fill="currentColor"` resolves
-	// against the surrounding text colour — one file serves both themes.
-	import lockup from '$lib/brand/ochorus-lockup.svg?raw';
+	// The <span> wrapper and the single child <svg> are kept deliberately: the
+	// share-card renderer (coverCardMarkup) inlines the full lockup into the same
+	// `<span class="brandmark">…<svg>…</svg>`, and coverMarkupParity holds the two
+	// trees against each other (it abstracts the mark to "one svg inside", so a
+	// <use> here and inline paths there stay pixel-equal and in parity). The
+	// canonical artwork lives in the backend and is mirrored to $lib/brand;
+	// `brandAssets.test.ts` fails if the two drift apart.
+	import { LOCKUP_SYMBOL_ID, LOCKUP_VIEWBOX } from '$lib/brand/lockup';
 
 	// Height; the lockup is ~1.66:1 so width follows. A bare number means px, and
 	// 36 is the header default — at the old 24px mark size the built-in wordmark
@@ -24,19 +29,23 @@
 </script>
 
 <span class="brandmark" style="--h: {size}" role="img" aria-label="Ochorus">
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -- our own build-time asset -->
-	{@html lockup}
+	<svg class="brandmark-svg" viewBox={LOCKUP_VIEWBOX} aria-hidden="true">
+		<use href="#{LOCKUP_SYMBOL_ID}" />
+	</svg>
 </span>
 
 <style>
 	.brandmark {
-		/* Just a host for the inlined <svg> — the anchor around it already
-		   handles alignment. */
+		/* Just a host for the <svg> — the anchor around it already handles
+		   alignment. */
 		display: inline-block;
 	}
-	.brandmark :global(svg) {
+	.brandmark svg {
 		height: var(--h);
 		width: auto;
 		display: block;
+		/* The symbol paints in currentColor; anchor it here so the mark follows
+		   the surrounding text in both themes. */
+		fill: currentColor;
 	}
 </style>
