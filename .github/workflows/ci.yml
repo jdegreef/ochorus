@@ -1,23 +1,25 @@
 name: CI
 
 # Quality gate for every PR and push to main. Blocks a merge until the backend
-# tests + migration check pass and the frontend type-checks and builds. Add this
-# workflow as a required status check in the repo's branch-protection settings so
-# it actually gates merges (autoDeploy ships main to production).
+# tests + migration check pass, the production image builds & serves, the
+# frontend type-checks/builds, and the browser smoke passes. Add EVERY job in
+# this workflow as a required status check in branch protection so they gate
+# merges (autoDeploy ships main to production).
 #
-# `merge_group` runs this same gate on the merge queue's temporary branch — the PR
-# merged onto the CURRENT main (and any PRs ahead of it in the queue). That is what
-# finally closes the divergent-migration-leaf race (the 0121->0125 cascade of
-# 2026-09-06): a PR whose migration was cut off a now-stale leaf produces two leaf
-# nodes on the real merge, so `makemigrations --check` fails HERE and the queue
-# ejects it — instead of breaking main and the deploy after it lands. Requires
-# "Require merge queue" on the main branch-protection rule to actually take effect.
+# Structure: four jobs that run in PARALLEL instead of one serial job.
+#   backend-tests   — ruff, migration check, SQLite + Postgres suites
+#   backend-image   — production Docker image builds (layer-cached), runs
+#                     unprivileged, and serves
+#   frontend-checks — eslint, svelte-check, unit tests (no API needed)
+#   integration     — seed a local API, build the frontend against it, assert
+#                     the built output, run the real-browser smoke
+# The first three are independent. `integration` is the long pole and also
+# independent, so it starts at t=0 alongside the rest. Nothing `needs:` anything.
 
 on:
   pull_request:
   push:
     branches: [main]
-  merge_group:
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -28,23 +30,16 @@ concurrency:
   # CANCELLED by #967's and then #974's merging seconds later; the migration
   # drift and the unkeyed {#each} it carried went unreported, and every branch
   # cut from main failed `makemigrations --check` and `eslint` for two days.
-  # The failure was eventually visible on #974's run — nothing had reported on
-  # #973's own. A merge_group run has the same stakes as main: cancel it and the
-  # queue gets no verdict and stalls — so only PR runs are superseded.
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  test-and-build:
+  # --- Backend gate -------------------------------------------------------
+  backend-tests:
+    name: Backend — lint, migrations, tests
     runs-on: ubuntu-latest
-    # Hard ceiling. Main runs are deliberately uncancellable (see concurrency
-    # above), which traded "merge loses its verdict" for "a wedged job blocks
-    # every main merge behind it until GitHub's 6-hour default" — and that is
-    # not hypothetical: on 2026-08-19 `playwright install --with-deps` wedged
-    # (GitHub later reaped it as an orphan process) and squatted for 95 minutes
-    # until someone cancelled it by hand. Observed legitimate maximum for this
-    # job is ~37 minutes uncached, ~12 cached; 45 caps a hang without ever
-    # cutting a slow-but-real run.
-    timeout-minutes: 45
+    # Observed legitimate maximum for the backend suite is well under this; the
+    # ceiling exists only to reap a hang, not to cut a slow-but-real run.
+    timeout-minutes: 25
     env:
       DJANGO_DEBUG: 'true' # local SQLite, no external services
     # Throwaway Postgres so the production search path (stored tsvectors,
@@ -65,7 +60,154 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # --- Backend gate -----------------------------------------------------
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install (frozen)
+        working-directory: backend
+        run: uv sync --frozen
+
+      - name: Lint (ruff)
+        working-directory: backend
+        run: uv run ruff check .
+
+      - name: Check for missing migrations
+        working-directory: backend
+        run: uv run python manage.py makemigrations --check --dry-run
+
+      - name: Tests
+        working-directory: backend
+        run: uv run python manage.py test --verbosity 1
+
+      - name: Tests (Postgres, the production search path)
+        working-directory: backend
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+        run: uv run python manage.py test --verbosity 1
+
+  # --- Production image gate (runs in parallel with everything) ------------
+  backend-image:
+    name: Backend — production image builds, runs unprivileged, and serves
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # Its own throwaway Postgres — it boots the real image with the real CMD
+    # (gunicorn, as `app`) against a live DB and requires a healthy response.
+    # A build alone would not catch the failure that actually matters — the
+    # image not SERVING — so this both builds AND boots it.
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Layer cache in GitHub Actions storage, keyed by build context. The base
+      # image + `uv sync` layer rarely change, so most builds reuse them and the
+      # cold `docker build` (previously every run) becomes near-instant.
+      - name: Build production image (layer-cached)
+        uses: docker/build-push-action@v6
+        with:
+          context: backend
+          load: true            # load into the local docker so we can run it
+          push: false
+          tags: ochorus-api:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Runs unprivileged and serves
+        run: |
+          user="$(docker run --rm ochorus-api:ci id -un)"
+          echo "image runs as: $user"
+          test "$user" = "app"
+          docker run -d --name api-image-smoke --network host \
+            -e PORT=8000 \
+            -e DJANGO_DEBUG=false \
+            -e DJANGO_SECRET_KEY=ci-image-smoke-not-a-real-secret \
+            -e DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1 \
+            -e DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres \
+            -e SUPABASE_URL=https://example.supabase.co \
+            ochorus-api:ci
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:8000/api/health/ >/dev/null && break
+            sleep 2
+          done
+          curl -sf http://localhost:8000/api/health/ \
+            || { echo "::error::the production image did not serve"; docker logs api-image-smoke; exit 1; }
+
+      - name: Stop image smoke container
+        if: always()
+        run: docker rm -f api-image-smoke 2>/dev/null || true
+
+  # --- Frontend static gate (no API needed; runs in parallel) --------------
+  frontend-checks:
+    name: Frontend — lint, type-check, unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          # frontend/.nvmrc, not a literal here: a developer's nvm/fnm reads that
+          # file and CI reads this line, so two literals drift silently and the
+          # only symptom is local-only failures nobody can reproduce in CI.
+          node-version-file: frontend/.nvmrc
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install (locked)
+        working-directory: frontend
+        run: npm ci
+
+      - name: Compile i18n messages
+        working-directory: frontend
+        # Paraglide output ($lib/paraglide) is gitignored (generated), so it must
+        # be compiled before svelte-check, which would otherwise fail on the
+        # $lib/paraglide/* imports.
+        run: npx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
+
+      - name: Lint (eslint)
+        working-directory: frontend
+        run: npx eslint .
+
+      - name: Type-check
+        working-directory: frontend
+        env:
+          PUBLIC_API_BASE_URL: http://localhost:8000
+        run: npm run check
+
+      - name: Unit tests
+        working-directory: frontend
+        run: npm run test
+
+  # --- Integration: build against a live API + real-browser smoke ----------
+  # This is the long pole. The frontend build prerenders pages by fetching the
+  # API, so this job brings a seeded API up locally (mirrors the real Render web
+  # build against the API), builds, asserts the built output, then runs the
+  # only gate that RUNS the app.
+  integration:
+    name: Frontend build, prerender guards, browser smoke (real API)
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      DJANGO_DEBUG: 'true' # local SQLite for the prerender API — no Postgres needed
+    steps:
+      - uses: actions/checkout@v7
+
       - name: Install uv
         uses: astral-sh/setup-uv@v7
         with:
@@ -75,58 +217,6 @@ jobs:
         working-directory: backend
         run: uv sync --frozen
 
-      - name: Backend — lint (ruff)
-        working-directory: backend
-        run: uv run ruff check .
-
-      - name: Backend — check for missing migrations
-        working-directory: backend
-        run: uv run python manage.py makemigrations --check --dry-run
-
-      - name: Backend — tests
-        working-directory: backend
-        run: uv run python manage.py test --verbosity 1
-
-      - name: Backend — tests (Postgres, the production search path)
-        working-directory: backend
-        env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
-        run: uv run python manage.py test --verbosity 1
-
-      # The production image was previously unbuilt by CI, so a Dockerfile mistake
-      # passed every check and only failed at deploy time (where it takes the API
-      # down). Building it proves collectstatic works as the non-root user, but a
-      # build alone would not catch the failure that actually matters — the image
-      # not SERVING — so this also boots it with the real CMD (gunicorn, as `app`)
-      # against the CI Postgres and requires a healthy response.
-      - name: Backend — production image builds, runs unprivileged, and serves
-        run: |
-          docker build -t ochorus-api:ci backend
-          user="$(docker run --rm ochorus-api:ci id -un)"
-          echo "image runs as: $user"
-          test "$user" = "app"
-          # Port 8010, not 8000: the prerender API starts on 8000 further down.
-          docker run -d --name api-image-smoke --network host \
-            -e PORT=8010 \
-            -e DJANGO_DEBUG=false \
-            -e DJANGO_SECRET_KEY=ci-image-smoke-not-a-real-secret \
-            -e DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1 \
-            -e DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres \
-            -e SUPABASE_URL=https://example.supabase.co \
-            ochorus-api:ci
-          for i in $(seq 1 30); do
-            curl -sf http://localhost:8010/api/health/ >/dev/null && break
-            sleep 2
-          done
-          curl -sf http://localhost:8010/api/health/ \
-            || { echo "::error::the production image did not serve"; docker logs api-image-smoke; exit 1; }
-
-      - name: Stop image smoke container
-        if: always()
-        run: docker rm -f api-image-smoke 2>/dev/null || true
-
-      # The frontend build prerenders pages by fetching the API, so bring a
-      # seeded API up locally (mirrors the real Render web build against the API).
       - name: Backend — seed + start API for prerender
         working-directory: backend
         run: |
@@ -134,10 +224,8 @@ jobs:
           uv run python manage.py seed_if_empty
           # Release-chain steps, because two page types exist only after them
           # and the built-output guards below are blind to a page that was
-          # never built. `index_citations` is what gives /scripture its 925
-          # pages; `seed_quotes` is what gives /quotes/<author> its cards. Both
-          # shipped with the guards passing vacuously — the bare-link defect on
-          # the quotes page reached production that way.
+          # never built. `index_citations` is what gives /scripture its pages;
+          # `seed_quotes` is what gives /quotes/<author> its cards.
           uv run python manage.py index_citations
           uv run python manage.py seed_quotes
           uv run python manage.py runserver 8000 --noreload &
@@ -147,16 +235,9 @@ jobs:
           done
           curl -sf http://localhost:8000/api/health/
 
-      # --- Frontend gate ----------------------------------------------------
       - name: Setup Node
         uses: actions/setup-node@v7
         with:
-          # frontend/.nvmrc, not a literal here: a developer's nvm/fnm reads that
-          # file and CI reads this line, so two literals drift silently and the
-          # only symptom is local-only failures nobody can reproduce in CI. That
-          # is not hypothetical — Node 25's jsdom has no `localStorage.clear`, so
-          # 99 store tests failed on a machine while this job stayed green, which
-          # reads as "those tests are just broken" rather than "wrong Node".
           node-version-file: frontend/.nvmrc
           cache: npm
           cache-dependency-path: frontend/package-lock.json
@@ -167,24 +248,7 @@ jobs:
 
       - name: Frontend — compile i18n messages
         working-directory: frontend
-        # Paraglide output ($lib/paraglide) is gitignored (generated), so it must
-        # be compiled before svelte-check, which would otherwise fail on the
-        # $lib/paraglide/* imports. The build step regenerates it via the Vite plugin.
         run: npx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
-
-      - name: Frontend — lint (eslint)
-        working-directory: frontend
-        run: npx eslint .
-
-      - name: Frontend — type-check
-        working-directory: frontend
-        env:
-          PUBLIC_API_BASE_URL: http://localhost:8000
-        run: npm run check
-
-      - name: Frontend — unit tests
-        working-directory: frontend
-        run: npm run test
 
       - name: Frontend — build
         working-directory: frontend
@@ -192,37 +256,18 @@ jobs:
           PUBLIC_API_BASE_URL: http://localhost:8000
         run: npm run build
 
-      # These guards assert on BUILT html, so they have to run after the build —
-      # the "Frontend — unit tests" step above runs before build/ exists and
-      # skips them. A guard that silently skips is worse than no guard.
-      #
-      # prerenderCoverage is the one that catches a page the sitemap advertises
-      # and the build never produced: the static adapter serves the noindex
-      # 200.html shell for those, so they are promised to Google and then
-      # refused. It has happened twice (all of /pt and /ar; then 49 localized
-      # author and era pages) and both times Search Console found it, not CI.
+      # These guards assert on BUILT html, so they run after the build.
+      # prerenderCoverage catches a page the sitemap advertises and the build
+      # never produced: the static adapter serves the noindex 200.html shell for
+      # those, so they are promised to Google and then refused.
       - name: Frontend — built-output guards
         working-directory: frontend
         run: npx vitest run src/lib/href.test.ts src/lib/prerenderCoverage.test.ts
 
-      # Browser smoke tests: the only gate that RUNS the app. Everything above is
-      # blind to hydration, client-side routing and live API fetches, so a broken
-      # frontend/backend contract could pass all of it (the review's drift
-      # finding). Serves the build just produced and reuses the API already up.
-      # The browser download is the single most expensive thing in this workflow
-      # and it was repeated every run. Measured on 2026-08-19: 3m21s on one run
-      # and 26m55s on another — 27 of that run's 37 minutes, to enable an
-      # 8-second test suite. It is a ~150MB fetch whose speed depends entirely
-      # on the CDN that morning, which is why the range is so wide.
-      #
-      # Slow CI is not just a cost, it is a correctness problem here: #976 was
-      # merged four minutes BEFORE its own run finished. A gate people outrun is
-      # not a gate.
-      #
+      # The browser download is the single most expensive thing in this workflow.
       # Keyed on the lockfile, so a Playwright version bump re-downloads.
       # restore-keys lets a near-miss reuse the previous browser directory —
-      # `playwright install` then fetches only what is actually missing rather
-      # than starting from empty.
+      # `playwright install` then fetches only what is actually missing.
       - name: Frontend — cache Playwright browser
         uses: actions/cache@v6
         with:
@@ -231,22 +276,18 @@ jobs:
           restore-keys: |
             playwright-${{ runner.os }}-
 
-      # No `--with-deps`, deliberately. Three facts settled it (2026-08-19):
-      #   1. It cannot be made conditional on the cache: runners are ephemeral,
-      #      so apt state never persists — OS packages are per-run or never.
-      #   2. Per-run it cost 1.5-3 minutes of apt on every cache-hit run, and it
-      #      is the step that WEDGED for 95 minutes (GitHub reaped the orphaned
-      #      `npm exec playwright install --with-deps` at cancel).
-      #   3. "Never" is safe to try because ubuntu-latest ships Google Chrome,
-      #      so Chromium's shared libraries are already on the image — and the
-      #      smoke test two steps down launches the real browser, so a missing
-      #      library fails THIS gate loudly, not production. If a runner-image
-      #      update ever removes those libs, the fix is restoring --with-deps
-      #      on this line, not debugging the smoke test.
+      # No `--with-deps`, deliberately: ubuntu-latest ships Google Chrome, so
+      # Chromium's shared libraries are already on the image, and the smoke test
+      # below launches the real browser — so a missing library fails THIS gate
+      # loudly. If a runner-image update ever removes those libs, the fix is
+      # restoring --with-deps on this line, not debugging the smoke test.
       - name: Frontend — install Playwright browser
         working-directory: frontend
         run: npx playwright install chromium
 
+      # The only gate that RUNS the app. Everything else is blind to hydration,
+      # client-side routing and live API fetches. Serves the build just produced
+      # and reuses the API already up.
       - name: Frontend — smoke tests (real browser, real API)
         working-directory: frontend
         env:
