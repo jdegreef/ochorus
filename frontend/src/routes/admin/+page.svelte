@@ -187,9 +187,11 @@
 
 			<!-- Headline totals -->
 			<section class="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-				{#each cards as c (c.label)}
+				{#each cards as c, i (c.label)}
 					<div class="rounded-card border border-border bg-surface p-5">
-						<div class="stat-number">{fmt(c.value)}</div>
+						<!-- The first four (Works / Books / Chapters / Words) are the library's
+						     scale and carry the large figure; the rest read as secondary. -->
+						<div class={i < 4 ? 'stat-number' : 'stat-number-sm'}>{fmt(c.value)}</div>
 						<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 						<div class="text-small text-muted">{c.sub}</div>
 					</div>
