@@ -447,6 +447,29 @@ the reading length at the top right, opposite the passage. Row heights vary
 freely — rows stack, so there is no bottom edge to level. `--row-hue` is the
 writer's era (same source as a shelf card), used only through `color-mix()`.
 
+**Card hover — two recipes, and only two.** Every content card answers a hover
+in one of exactly two languages, so a page of mixed card types reads as one
+system rather than a dozen bespoke reactions. Both are expressed as shared,
+opt-in classes in `app.css` (**`.card-lift`** and **`.card-tint`**) so the
+recipe is one edit, not a copy per component; a card wears one class and keeps
+only its own resting frame. Both animate on `--duration-fast` (§7) and nothing
+longer — never a literal duration.
+
+| Recipe | Who | What happens |
+|---|---|---|
+| **`.card-lift`** — a grid or banded card **rises** | `.book-card` (incl. `--row` and `LibraryBookCard`), `.shelf-card`, the sermon-of-week plate | `transform: translateY(-2px)` + `box-shadow`, border warms. Neutral cards use `--accent-soft-border` + `--shadow-card`; `.shelf-card` and the sermon-of-week plate override both with their `--shelf-hue` / `--band-hue`. Dropped under `prefers-reduced-motion`. |
+| **`.card-tint`** — a row card **warms in place**, no lift | `.sermon-card`, `.article-card`, `AuthorBioCard`, `PersonCard`, `AuthorTile`, `BookListRow` | border → `--accent`, ground → `--surface-2`. `.sermon-row` and the `/quotes` author card override both with their era `--row-hue`. |
+
+Grid cards lift, row cards tint — that is the whole vocabulary. A card that
+would do neither, or a third thing (a border-only shift, a bg-only shift, a
+gradient-slide), is drift: fold it into whichever recipe its shape calls for.
+The **one sanctioned extra** is the book-cover family's "Begin reading →" /
+"Resume →" gradient plate, revealed on `group-hover` over the artwork
+(`BookCard`, `LibraryBookCard`): it is a call-to-action on the cover **ground**,
+not a second hover *language* — the card still lifts — and it is shared by both
+cover cards, so it is a deliberate signature rather than a one-off. No other
+card gets a bespoke reveal.
+
 > ⚠️ **A Tailwind utility cannot override one of these classes.** The component
 > classes in `app.css` are **unlayered**; Tailwind's utilities live in
 > `@layer utilities`, and unlayered CSS wins over layered CSS **whatever the

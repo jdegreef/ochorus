@@ -16,7 +16,7 @@
 
 <a
 	href={localizeHref(`/books/${book.slug}`)}
-	class="group flex flex-wrap items-center gap-x-4 rounded-card border border-transparent px-2 py-2.5 hover:border-border hover:bg-surface hover:no-underline"
+	class="card-tint group flex flex-wrap items-center gap-x-4 rounded-card border border-transparent px-2 py-2.5"
 	data-testid="book-row"
 >
 	<div class="w-12 shrink-0 sm:w-14">

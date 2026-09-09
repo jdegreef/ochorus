@@ -31,7 +31,10 @@
 
 	let view = $state<View>('grid');
 	let sort = $state<Sort>('shelf');
-	let group = $state<Group>('all');
+	// Default to the grouped view (by author), matching the Sermons shelf's
+	// grouped-by-preacher default — both browse shelves now open organized
+	// rather than one grouped and one flat (B4).
+	let group = $state<Group>('author');
 	// --- Filters (in the URL) --------------------------------------------------
 	// A filtered shelf is a place: it survives a reload, comes back with Back,
 	// and can be sent to someone. View preferences above deliberately stay in
@@ -173,6 +176,11 @@
 	<a href="/books" class="btn btn-primary inline-block">{t('books.readEnglish')}</a>
 {/snippet}
 
+<!-- Filtered the shelf down to nothing: clear the filters (Biographies' model). -->
+{#snippet clearFiltersAction()}
+	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
+{/snippet}
+
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
 	{#snippet bookCounts()}
@@ -206,7 +214,7 @@
 					{@const c = continueBooks[0]}
 					<a
 						href={localizeHref(`/books/${c.book.slug}/${c.order}`)}
-						class="book-card book-card--row group !p-4 sm:max-w-md"
+						class="book-card book-card--row card-lift group !p-4 sm:max-w-md"
 					>
 						<div class="w-16 shrink-0 sm:w-20"><BookCover book={c.book} /></div>
 						<div class="min-w-0 flex-1">
@@ -296,14 +304,14 @@
 
 			<div class="seg">
 				<button
-					class:active={group === 'all'}
-					onclick={() => setGroup('all')}
-					aria-pressed={group === 'all'}>{t('books.groupAll')}</button
-				>
-				<button
 					class:active={group === 'author'}
 					onclick={() => setGroup('author')}
 					aria-pressed={group === 'author'}>{t('books.groupAuthor')}</button
+				>
+				<button
+					class:active={group === 'all'}
+					onclick={() => setGroup('all')}
+					aria-pressed={group === 'all'}>{t('books.groupAll')}</button
 				>
 			</div>
 
@@ -377,7 +385,10 @@
 
 		<!-- Results -->
 		{#if sorted.length === 0}
-			<p class="py-16 text-center text-body text-muted">{t('books.noResults')}</p>
+			<!-- Books exist in this language but the filters removed them all — a
+			     filtered-to-nothing state, so offer to clear (not the bare <p> that
+			     made Books the odd shelf out; C2). -->
+			<EmptyState message={t('books.noResults')} action={clearFiltersAction} />
 		{:else if groups}
 			{#each groups as g (g.slug)}
 				<section id="author-{g.slug}" class="mb-10 scroll-mt-20">

@@ -344,7 +344,7 @@
 
 		<select
 			bind:value={filters.values.sort}
-			class="field sm:block"
+			class="filter-field sm:block"
 			class:hidden={!filtersOpen}
 			aria-label={t('bios.sort')}
 		>

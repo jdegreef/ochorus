@@ -1204,6 +1204,60 @@ nav.appnav .navsearch:hover {
    Plans derive it from their first cover's cover_color; Sermons from the
    author's era. The hue is only ever used through color-mix() for tints and
    for the icon, never as body text, so contrast holds in both themes. */
+
+/* ── Card hover: two recipes, and only two ──────────────────────────────────
+   Every content card hovers in one of exactly two languages, so a page of
+   mixed card types reads as one system (STYLE_GUIDE §5 → "Card hover"):
+
+     .card-lift — GRID / banded cards rise. A 2px lift and a drop shadow, the
+       border warming. Members: .book-card (neutral) and .shelf-card (era hue).
+       The sermon-of-week plate is the same hue lift but restates it in its own
+       scoped CSS: its trigger is the parent link's hover/focus-visible on a
+       nested, non-focusable plate, which a self-hover class can't express.
+
+     .card-tint — ROW cards warm in place, no lift. The border shifts to accent
+       and the ground to surface-2. Members: .sermon-card, .article-card,
+       AuthorBioCard, PersonCard, AuthorTile, BookListRow (neutral); .sermon-row
+       and the /quotes author card override the two colours with their era hue.
+
+   Both animate on --duration-fast, and nothing else. Resting
+   border/radius/background/padding stay with the individual card (its scoped
+   CSS, or layered Tailwind utilities in its markup) — only the motion and the
+   hover shift live here, so a card opts into a recipe by wearing the class and
+   the recipe is one edit, not a copy per component. Unlayered on
+   purpose, like the card classes themselves (see .book-card's note): a hue
+   member's own later :hover then overrides the neutral colour, and a Tailwind
+   hover utility can't quietly win over either. */
+.card-lift {
+	transition:
+		border-color var(--duration-fast),
+		box-shadow var(--duration-fast),
+		transform var(--duration-fast);
+}
+.card-lift:hover {
+	border-color: var(--accent-soft-border);
+	box-shadow: var(--shadow-card);
+	text-decoration: none;
+	transform: translateY(-2px);
+}
+.card-tint {
+	transition:
+		border-color var(--duration-fast),
+		background var(--duration-fast);
+}
+.card-tint:hover {
+	border-color: var(--accent);
+	background: var(--surface-2);
+	text-decoration: none;
+}
+/* Reduced motion drops the lift; the colour shifts (no vestibular cost) stay. */
+@media (prefers-reduced-motion: reduce) {
+	.card-lift,
+	.card-lift:hover {
+		transform: none;
+	}
+}
+
 .shelf-card {
 	display: flex;
 	flex-direction: column;
@@ -1216,16 +1270,12 @@ nav.appnav .navsearch:hover {
 	border-radius: var(--radius-card);
 	overflow: hidden;
 	background: var(--surface);
-	transition:
-		border-color var(--duration-fast),
-		box-shadow var(--duration-fast),
-		transform var(--duration-fast);
+	/* Motion + lift come from .card-lift (in the markup); only the hue-tinted
+	   border and shadow are the shelf card's own. */
 }
 .shelf-card:hover {
 	border-color: color-mix(in srgb, var(--shelf-hue) 55%, var(--border));
 	box-shadow: 0 6px 20px -12px color-mix(in srgb, var(--shelf-hue) 70%, transparent);
-	text-decoration: none;
-	transform: translateY(-2px);
 }
 /* ── Hue bands ─────────────────────────────────────────────────────────────
    The colour-washed ground an item's own hue is allowed to tint: a wash from
@@ -1339,16 +1389,8 @@ nav.appnav .navsearch:hover {
 	border: 1px solid var(--border);
 	border-radius: var(--radius-card);
 	background: var(--surface);
-	transition:
-		border-color var(--duration-fast),
-		box-shadow var(--duration-fast),
-		transform var(--duration-fast);
-}
-.book-card:hover {
-	border-color: var(--accent-soft-border);
-	box-shadow: var(--shadow-card);
-	text-decoration: none;
-	transform: translateY(-2px);
+	/* Hover (lift + shadow + accent border) is the neutral .card-lift recipe,
+	   worn in the markup. */
 }
 /* Horizontal variant — cover beside the text, for the single "Continue
    reading" resume card.
@@ -1373,12 +1415,6 @@ nav.appnav .navsearch:hover {
 	flex-direction: row;
 	align-items: center;
 	gap: 1rem;
-}
-@media (prefers-reduced-motion: reduce) {
-	.book-card,
-	.book-card:hover {
-		transform: none;
-	}
 }
 
 /* The shelf grid the book cards sit in.
@@ -1520,9 +1556,8 @@ nav.appnav .navsearch:hover {
 	border: 1px solid var(--border);
 	border-radius: var(--radius-card);
 	background: var(--surface);
-	transition:
-		border-color var(--duration-fast),
-		background var(--duration-fast);
+	/* Tint recipe (motion + text-decoration) comes from .card-tint in the
+	   markup; only the hue-mixed border and ground below are the row's own. */
 }
 /* The sermon's emblem chip, in the writer's era tint, so each row opens with
    its own mark rather than a wall of prose. */
@@ -1546,7 +1581,6 @@ nav.appnav .navsearch:hover {
 .sermon-row:hover {
 	border-color: color-mix(in srgb, var(--row-hue) 45%, var(--border));
 	background: color-mix(in srgb, var(--row-hue) 4%, var(--surface));
-	text-decoration: none;
 }
 .sermon-row:hover::before {
 	background: var(--row-hue);
@@ -1580,13 +1614,6 @@ nav.appnav .navsearch:hover {
    reader narrow the column if they want a tighter measure. */
 .sermon-row-brief {
 	color: var(--muted);
-}
-@media (prefers-reduced-motion: reduce) {
-	.shelf-card,
-	.shelf-card:hover {
-		transform: none;
-		transition: border-color var(--duration-fast);
-	}
 }
 
 /* ── Browse-page filter furniture ──────────────────────────────────────────

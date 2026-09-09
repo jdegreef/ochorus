@@ -44,7 +44,7 @@
 
 <a
 	href={localizeHref(href)}
-	class="book-card group"
+	class="book-card card-lift group"
 	data-testid="library-book-card"
 	aria-label={inProgress ? `${book.title} — ${t('reader.resume')}` : book.title}
 >

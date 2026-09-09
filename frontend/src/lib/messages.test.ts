@@ -45,7 +45,11 @@ const SAME_AS_ENGLISH_OK = new Set([
 	'settings_theme_sepia',
 	// "Menu" is the natural UI term in Portuguese too (Spanish keeps its accent,
 	// "Menú", so this only exempts the pt collision).
-	'a11y_menu'
+	'a11y_menu',
+	// The mid length label is a bare "10–30 min" range — every word-bearing
+	// sibling (short/long) IS translated, but "min" is the standard minute
+	// abbreviation in both Spanish and Portuguese, so the range reads identically.
+	'sermons_length_mid'
 ]);
 
 /**
