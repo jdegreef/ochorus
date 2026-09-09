@@ -3,6 +3,10 @@
     "Arabic reads right-to-left; the shelf page follows the document direction, so nothing here needs to encode that.",
     "Vocabulary follows the ar glossary (النعمة, التسليم, الشفاعة, الروح القدس)."
   ],
+  "christ-and-the-cross": {
+    "title": "المسيح والصليب",
+    "description": "شخص المخلّص وعمله — الحَمَل المذبوح، وعار الصليب وانتصاره، وجلال المسيح، والقبر الفارغ."
+  },
   "deeper-life": {
     "title": "الحياة الأعمق",
     "description": "القداسة والتسليم والحياة الفائضة المستترة مع المسيح — كتب لمن يريد أن يمضي إلى العمق."
