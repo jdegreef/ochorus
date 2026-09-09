@@ -1,4 +1,8 @@
 {
+  "abiding-in-christ": {
+    "title": "Permanecer em Cristo",
+    "description": "O ramo na Videira — união e comunhão com o Senhor Jesus, e a vida que não brota de outra fonte senão a de permanecer perto dele."
+  },
   "christ-and-the-cross": {
     "title": "Cristo e a cruz",
     "description": "A pessoa e a obra do Salvador — o Cordeiro imolado, a vergonha e o triunfo da cruz, a excelência de Cristo e o túmulo vazio."
@@ -35,6 +39,10 @@
     "title": "O Chamado do Evangelho",
     "description": "O convite mais antigo que existe — vem, arrepende-te, crê. Pregadores rogando aos não convertidos, e o testemunho da graça encontrada pelo principal dos pecadores."
   },
+  "the-grace-of-god": {
+    "title": "A Graça de Deus",
+    "description": "Graça do princípio ao fim — livre, soberana e suficiente, que sobreabunda para o principal dos pecadores e sustenta o mais fraco dos santos."
+  },
   "the-preached-word": {
     "title": "A Palavra Pregada",
     "description": "A grande pregação na página — Whitefield e Wesley em plena voz, Spurgeon entre os seus lavradores — e o encargo de Baxter a todo pastor de almas."
@@ -42,5 +50,9 @@
   "the-way-of-holiness": {
     "title": "O Caminho da Santidade",
     "description": "Separados para Deus — os mandamentos examinados, a perfeição buscada com honestidade, e os afetos do coração provados e achados verdadeiros."
+  },
+  "women-of-faith": {
+    "title": "Mulheres de Fé",
+    "description": "Mães, missionárias e místicas — a fé de mulheres que oraram, sofreram e ousaram, da cela de Guyon ao púlpito da escrava liberta."
   }
 }
