@@ -2,6 +2,34 @@ import adapter from '@sveltejs/adapter-static';
 
 import { readFileSync } from 'node:fs';
 
+import { cspDirectives } from './csp.config.js';
+
+/**
+ * connect-src, plus the API origin THIS build actually talks to.
+ *
+ * The CSP now ships baked into the built pages (a <meta>), so it is enforced
+ * wherever the build runs — including the CI browser-smoke job, which drives the
+ * built app against a local backend on http://localhost:8000. csp.config.js lists
+ * only the production hosts (and must: csp.test.ts forbids http:// and localhost
+ * in the shipped policy), so without this every API fetch in CI/local preview is
+ * blocked by connect-src. PUBLIC_API_BASE_URL is the origin the build dials — in
+ * production it is https://api.ochorus.com (already listed → deduped); in CI/local
+ * it is the localhost backend. Adding it here (not in csp.config.js) keeps the
+ * shipped-prod assertions clean while letting the app reach its own API anywhere.
+ */
+function directivesForThisBuild() {
+	const base = process.env.PUBLIC_API_BASE_URL;
+	let origin;
+	try {
+		origin = base ? new URL(base).origin : '';
+	} catch {
+		origin = '';
+	}
+	const connect = cspDirectives['connect-src'];
+	if (!origin || connect.includes(origin)) return cspDirectives;
+	return { ...cspDirectives, 'connect-src': [...connect, origin] };
+}
+
 /** Non-English UI locales, read from the inlang project (the source of truth). */
 const LOCALES = JSON.parse(
 	readFileSync(new URL('./project.inlang/settings.json', import.meta.url), 'utf8')
@@ -19,6 +47,15 @@ const config = {
 		// fallback. (SEO prerendering can be added later for the web target.)
 		adapter: adapter({ fallback: '200.html' }),
 		paths: { relative: false },
+		// Content-Security-Policy in `hash` mode: SvelteKit computes the hash of
+		// each inline script it emits (the per-build bootstrap) at build time and
+		// injects the policy as a <meta> on every prerendered page + the 200.html
+		// fallback. This is what lets `script-src` drop `'unsafe-inline'`. The
+		// directives (and the rationale) live in ./csp.config.js — a plain-data
+		// module so src/lib/csp.test.ts can assert them without running this file.
+		// connect-src also picks up this build's own PUBLIC_API_BASE_URL origin
+		// (see directivesForThisBuild) so the app can reach its API in CI/local.
+		csp: { mode: 'hash', directives: directivesForThisBuild() },
 		// We register src/service-worker.ts ourselves (see lib/pwa.svelte.ts) so we
 		// can surface an "update available" prompt instead of updating silently.
 		serviceWorker: { register: false },
