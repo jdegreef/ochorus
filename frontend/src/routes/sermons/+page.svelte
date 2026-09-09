@@ -13,9 +13,13 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
 	import { portraitPosition } from '$lib/portraits';
+	import { readingMinutes } from '$lib/reading';
+	import { lengthBucket, LENGTH_BUCKETS } from '$lib/sermonLength';
+	import type { LengthBucket } from '$lib/sermonLength';
 
 	const t = i18n.t;
 
@@ -54,9 +58,31 @@
 	// $lib/urlFilters — the same helper Books and Biographies use. Grouping and
 	// sort stay in localStorage below: they describe the reader, not the shelf.
 	const filters = urlFilters({
-		defaults: { q: '', book: '' },
+		defaults: { q: '', book: '', len: '' },
+		// `len` is an enum — an off-list value in the URL falls back to "any".
+		allowed: { len: LENGTH_BUCKETS },
 		url: () => $page.url
 	});
+
+	/** The reading-time bucket a sermon falls in — at THIS reader's pace, so it
+	 *  agrees with the "N min read" the row shows. */
+	const lengthOf = (s: SermonSummary): LengthBucket => lengthBucket(readingMinutes(s.word_count));
+
+	/** Length buckets present on the shelf, with counts, for the filter's options.
+	 *  Reactive: the reader's pace can carry a sermon across a boundary, exactly
+	 *  as it moves the printed times. */
+	const lengthFacets = $derived.by(() => {
+		const c: Record<LengthBucket, number> = { short: 0, mid: 0, long: 0 };
+		for (const s of sermons) c[lengthOf(s)]++;
+		return c;
+	});
+
+	/** Option labels per bucket — the boundaries the buckets actually use. */
+	const LENGTH_LABEL: Record<LengthBucket, string> = {
+		short: 'sermons.lengthShort',
+		mid: 'sermons.lengthMid',
+		long: 'sermons.lengthLong'
+	};
 
 	/** Canonical position of a sermon's book; undated books sink to the end. */
 	const bookOrder = (s: SermonSummary) => s.scripture_book_order ?? 999;
@@ -77,6 +103,7 @@
 		const q = filters.values.q.trim().toLowerCase();
 		return sermons.filter((s) => {
 			if (filters.values.book && s.scripture_book !== filters.values.book) return false;
+			if (filters.values.len && lengthOf(s) !== filters.values.len) return false;
 			if (!q) return true;
 			return (
 				s.title.toLowerCase().includes(q) ||
@@ -102,6 +129,11 @@
 
 	let group = $state<Group>('preacher');
 	let sort = $state<Sort>('shelf');
+
+	// Measured height of the pinned controls bar. The filter row wraps to a
+	// second line on narrow screens, so the offset the preacher anchors clear
+	// can't be assumed — it feeds `--pinned-offset`, mirroring Biographies.
+	let controlsH = $state(0);
 
 	// Hydrated after mount, not during load: the page is prerendered, so reading
 	// localStorage while rendering would desync the static HTML from the client.
@@ -169,7 +201,7 @@
 	structuredData={sermons.length ? [sermonsLd, crumbsLd] : [crumbsLd]}
 />
 
-<div class="page-col px-5 py-10">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
 	<PageHeader
 		eyebrow={t('nav.sermons')}
 		title={t('sermons.title')}
@@ -196,8 +228,18 @@
 		</div>
 	{/if}
 
-	<!-- Filter bar: free text + which book of the Bible the sermon expounds. -->
-	<div class="filter-row mb-8">
+	<!-- Filter bar: free text + which book of the Bible the sermon expounds.
+	     Pinned under the app nav (itself sticky, hence the --appnav-h offset) so
+	     the filters come WITH you — with a brief under every row the shelf runs
+	     dozens of screens. Its height is measured, not assumed: the row wraps on
+	     narrow screens, and the preacher sections below pin under whatever it
+	     currently is. Same recipe as Biographies (page-design B6/L3). -->
+	<div
+		bind:clientHeight={controlsH}
+		class="sticky z-20 -mx-5 mb-8 border-b border-border bg-bg px-5 pb-2.5 pt-3"
+		style="top: var(--appnav-h, 0px)"
+	>
+	<div class="filter-row">
 		<input
 			bind:value={filters.values.q}
 			type="search"
@@ -210,6 +252,18 @@
 			<option value="">{t('sermons.allBooks')}</option>
 			{#each bookFacets as b (b.name)}
 				<option value={b.name}>{b.name} ({b.count})</option>
+			{/each}
+		</select>
+
+		<!-- How long it runs, in reading-time buckets (<10 / 10–30 / 30+ min) — a
+		     length you can shop for, not just sort by. A bucket with nothing in it
+		     is dropped, like the book scope above. -->
+		<select bind:value={filters.values.len} aria-label={t('sermons.allLengths')} class="filter-field">
+			<option value="">{t('sermons.allLengths')}</option>
+			{#each LENGTH_BUCKETS as b (b)}
+				{#if lengthFacets[b]}
+					<option value={b}>{t(LENGTH_LABEL[b])} ({lengthFacets[b]})</option>
+				{/if}
 			{/each}
 		</select>
 
@@ -233,6 +287,7 @@
 			>
 		</div>
 
+	</div>
 	</div>
 
 	<!-- One clear affordance, on the FilterSummary — same as Books and
@@ -276,22 +331,18 @@
 			</nav>
 		{/if}
 		{#each groups as g (g.slug)}
-			<section id="preacher-{g.slug}" class="mb-10 scroll-mt-20">
-				<h2 class="mb-4 flex items-center gap-2.5 text-h3 text-muted">
-					{#if g.photo_url}
-						<img
-							src={g.photo_url}
-							alt=""
-							loading="lazy"
-							width="32"
-							height="32"
-							class="h-8 w-8 shrink-0 rounded-full border border-border object-cover"
-							style="object-position: {portraitPosition(g.slug)}"
-						/>
-					{/if}
-					<a href={localizeHref(`/authors/${g.slug}`)} class="text-text hover:underline">{g.name}</a>
-					<span class="text-small font-normal count">{g.items.length}</span>
-				</h2>
+			<section
+				id="preacher-{g.slug}"
+				class="mb-10"
+				style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
+			>
+				<GroupHeading
+					name={g.name}
+					href={localizeHref(`/authors/${g.slug}`)}
+					portraitUrl={g.photo_url}
+					portraitPosition={portraitPosition(g.slug)}
+					count={g.items.length}
+				/>
 				{@render sermonList(g.items)}
 			</section>
 		{/each}

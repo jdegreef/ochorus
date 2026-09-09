@@ -16,6 +16,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
+	import { initAnalytics } from '$lib/analytics';
 	import { localizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
@@ -45,6 +46,9 @@
 		pageWidth.init();
 		auth.init();
 		pwa.init();
+		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
+		// set. The script self-tracks SPA route changes from here on.
+		initAnalytics();
 	});
 
 	// Leaving a chapter is the safe moment to take a waiting app update.

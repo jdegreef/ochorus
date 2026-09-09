@@ -982,6 +982,29 @@ export const listQuoteAuthors = () =>
 export const getQuotePage = (author: string) =>
 	apiFetch<QuotePage>(`/api/library/quotes/${author}/`);
 
+/** A saved quote as the favorites shelf shows it: the quote plus the author it
+ *  belongs to, since that shelf mixes authors and each card must name its own. */
+export interface SavedQuote extends Quote {
+	author: { slug: string; name: string };
+}
+
+/**
+ * Resolve stored quote slugs to their cards — the reader's saved-quotes shelf.
+ *
+ * A quote is favorited by its own slug, but there is no per-quote page and the
+ * shelf can hold quotes from any author, so we POST the stored slugs and get
+ * back exactly those cards in the same order. Unknown or now-unreviewed slugs
+ * are dropped by the server, so a saved quote that was pulled simply falls off
+ * the shelf. Called only when there are quote favorites to resolve.
+ */
+export const resolveQuotes = (slugs: string[]) =>
+	slugs.length
+		? apiFetch<SavedQuote[]>('/api/library/quotes/resolve/', {
+				method: 'POST',
+				body: JSON.stringify({ slugs })
+			})
+		: Promise.resolve([] as SavedQuote[]);
+
 /**
  * Where a quote's card sends the reader: the exact paragraph it came from.
  *

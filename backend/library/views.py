@@ -854,6 +854,16 @@ def _quote_payload(q):
     return {"slug": q.slug, "text": q.text, "paragraph": q.paragraph, "source": source}
 
 
+def _quote_card_payload(q):
+    # `_quote_payload` plus the author. The author page groups by author, so its
+    # cards need no byline; a shelf that MIXES authors (the reader's saved
+    # quotes) does, so each card must name its own. Callers select_related
+    # "author" alongside the source relations.
+    data = _quote_payload(q)
+    data["author"] = {"slug": q.author.slug, "name": q.author.name}
+    return data
+
+
 #: A "Quotes on X" theme page needs this many reviewed quotations before it is
 #: built, and an "<Author> Quotes on X" page this many. A quote page has no
 #: primary text under it, so a thin one is the doorway shape search engines judge
@@ -1122,6 +1132,40 @@ class QuoteAuthorsView(APIView):
                 for r in rows
             ]
         )
+
+
+class QuoteResolveView(APIView):
+    """Resolve a batch of quote slugs to their cards — the reader's saved-quotes
+    shelf.
+
+    A quote is favorited by its own slug, but there is no per-quote page to hang
+    a title on and the shelf can hold quotes from any author, so it POSTs the
+    slugs it has stored and gets back exactly those cards, each with its author
+    and citation.
+
+    POST, not GET: the slug list is unbounded and belongs in the body. Reviewed
+    only, the same publication gate every other quote view carries. Unknown or
+    now-unreviewed slugs are silently dropped (never a 404) — a saved favorite
+    whose quote was pulled shouldn't error the whole shelf; the reader simply
+    sees it fall away.
+    """
+
+    def post(self, request):
+        from .models import Quote
+
+        slugs = request.data.get("slugs")
+        if not isinstance(slugs, list):
+            return Response({"detail": "Expected a list of slugs."}, status=400)
+        # Cap the batch so a malformed client can't ask for the whole table in
+        # one request; a reader's saved shelf is far under this.
+        wanted = [s for s in slugs if isinstance(s, str)][:200]
+        rows = Quote.objects.filter(slug__in=wanted, reviewed=True).select_related(
+            "author", "chapter__book", "sermon"
+        )
+        by_slug = {q.slug: _quote_card_payload(q) for q in rows}
+        # Preserve the caller's order — favorites arrive most-recent-first, and
+        # the shelf renders them in that order.
+        return Response([by_slug[s] for s in wanted if s in by_slug])
 
 
 class ScripturePagesView(APIView):

@@ -853,17 +853,44 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # no future import loses them — but these rows are never re-imported, so
         # ch33 on the shelf is still seven bare `<hr/>`s with no headings.
         #
-        # Repairing THOSE is `restored_blocks` on this same key, the mechanism
+        # They go back via `restored_blocks`, the mechanism
         # `ministry-of-intercession` uses for byte-identical damage from the
-        # sibling selector — not more `replacements` pairs, because a pure
-        # insertion re-fires on every deploy (see `restore_dropped_blocks`).
-        # Deliberately left for that change: it has to settle the ordered-tag
-        # parity `tests_translation_markup` enforces against this book's
-        # translations, which is not this key's business.
+        # sibling selector — not `replacements` pairs, because a pure insertion
+        # re-fires on every deploy (see `restore_dropped_blocks`). Restored with
+        # the SOURCE's own tags, `<h3>` for the note letter and `<h4>` for its
+        # subtitle (NOTE D and NOTE E have no subtitle in the print, so they get
+        # none here), and with the leading space the fixed sanitizer produces
+        # from `<h3 class="note"> <a id="note_A">` — so the guard recognises its
+        # own work, and a re-imported edition would not carry the heading twice.
+        #
+        # Each anchor is unique across the WHOLE book, not merely its chapter:
+        # `restore_dropped_blocks` is applied to every chapter in turn, so an
+        # anchor that also matched elsewhere would insert a heading into the
+        # wrong one. An eighth heading, a bare `NOTE.`, belongs to ch5 rather
+        # than the Notes chapter and is restored there.
         #
         # The footnote BLOCKS that pointed at them stay dropped, by design: the
         # markers referencing them are dropped too, so restoring the blocks
         # alone would orphan the note text mid-chapter.
+        "restored_blocks": [
+            ("<p>The connection between the fear of God and holiness is most i",
+             "<h3> NOTE.</h3>"),
+            ("<p>In a little book\u2014Holiness, as understood by the Writers o",
+             "<h3> NOTE A.</h3> <h4>Holiness as Proprietorship.</h4>"),
+            ("<p>The proper meaning of the Hebrew word for holy, <i>kadosh",
+             "<h3> NOTE B.</h3> <h4>On the Word for Holiness.</h4>"),
+            ("<p>There is not a word so exclusively scriptural, so distinc",
+             "<h3> NOTE C.</h3> <h4>The Holiness of God.</h4>"),
+            ("<p>\u2018Our holiness does not consist in our changing and becomi",
+             "<h3> NOTE D.</h3>"),
+            ("<p>Let me once more refer all students of holiness to Marsha",
+             "<h3> NOTE E.</h3>"),
+            ("<p>\u2018According to the Spirit of Holiness. The word <i>hagios",
+             "<h3> NOTE F.</h3> <h4>Note from Bengel on Rom. i. 4.</h4>"),
+            ("(<i>From an address by Pastor Stockmaiev.</i>) <p>\u2018Who gave ",
+             "<h3> NOTE G.</h3> <h4>\u2018Freed\u2019 and \u2018Possessed\u2019\u2014The Twofold Result of "
+             "Redemption.</h4>"),
+        ],
         "replacements": [
             ("deep Restfulness ()", "deep Restfulness (ch. 3)"),
             ("humble Reverence ()", "humble Reverence (ch. 4)"),
@@ -872,6 +899,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("simple Obedience ()", "simple Obedience (ch. 7)"),
             ("the Divine Indwelling ()", "the Divine Indwelling (ch. 8)"),
             ("His Glory and Majesty (see ‘’)", "His Glory and Majesty (see ‘Sixth Day’)"),
+            # ch33's own cross-reference back to NOTE A, lost the same way.
+            ("made in the note to ‘Sixth Day,’ on .</p>",
+             "made in the note to ‘Sixth Day,’ on Holiness as Proprietorship.</p>"),
         ],
     },
     "selected-sermons-edwards": {
@@ -908,6 +938,13 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # anchors in these four chapters moved by one, in the same commit.
         # `tests_quotes` is what catches that, and it is the reason a body
         # repair is never only a body repair.
+        # ch9 (Notes) lost a page reference the same way the sermon texts were
+        # lost, but to the SIBLING selector — `pginternal`, decomposing the
+        # cross-reference whole: "for the press (see Introduction, p. )".
+        "replacements": [
+            ("for the press (see Introduction, p. ). The manuscript",
+             "for the press (see Introduction, p. xxix). The manuscript"),
+        ],
         "restored_blocks": [
             (
                 "<p><br/>Those Christians to whom the apostle",
@@ -1068,7 +1105,45 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # The stray-page-number heading (see CORRECTIONS above) left the real
         # title as an <h3> at the top of ch23's body, which now duplicates the
         # chapter title. Every other chapter's body opens on its <h4> date line.
-        "replacements": [("<h3>A NEW VICTORY OF FAITH.</h3>", "")],
+        #
+        # The four after it are a DIFFERENT shape of the dropped-anchor defect,
+        # and the most damaging one in the corpus: this transcriber wraps each
+        # word he corrected in an internal link, so `[class*=pginternal]` did
+        # not delete a reference — it deleted a word out of Müller's sentence,
+        # leaving "Even about the of this century". Restored from the source's
+        # own correction, which names the word it is supplying. The selector is
+        # qualified now (#1573); these are the rows already on the shelf.
+        "replacements": [
+            ("<h3>A NEW VICTORY OF FAITH.</h3>", ""),
+            (" of the Lord Jesus. Even about the of this century",
+             " of the Lord Jesus. Even about the commencement of this century"),
+            ("large piece of ground in the of Bristol",
+             "large piece of ground in the neighborhood of Bristol"),
+            ("Again, four from among the -school children",
+             "Again, four from among the Sunday-school children"),
+            ("if one is enabled to God\u2019s own time",
+             "if one is enabled to wait God\u2019s own time"),
+        ],
+    },
+    "things-as-they-are": {
+        # The dropped-anchor defect: Gutenberg spells a cross-reference as an
+        # internal link, and `[class*=pginternal]` decomposed it whole instead
+        # of unwrapping it, so the reference vanished and only the punctuation
+        # around it survived. The selector is qualified now
+        # (`sanitize.KEEP_PREDICATES`, #1573) — this is the row already on the
+        # shelf, which is never re-imported. Each target was read off the
+        # Gutenberg source, not inferred from position.
+        #
+        # Three chapter cross-references in Carmichael's picture captions and
+        # asides — "one of the old dames seen in ." for "seen in chapter vi."
+        "replacements": [
+            ("one of the old dames seen in . A capital typical face",
+             "one of the old dames seen in chapter vi. A capital typical face"),
+            ('stuff on the stone is the "Imp" of . <p>Then a Caste meeting',
+             'stuff on the stone is the "Imp" of chapter xx. <p>Then a Caste meeting'),
+            ('the "rabbits" mentioned in . She saw us',
+             'the "rabbits" mentioned in Chapter I. She saw us'),
+        ],
     },
     "prayer-and-praying-men": {
         # Two words glued together in CCEL's own text (verified upstream, so

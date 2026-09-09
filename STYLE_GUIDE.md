@@ -333,7 +333,7 @@ sits on — an `<h2>` had drifted to four sizes (`.text-h1` on the home shelves,
 browse shelves), so the same kind of heading looked different a click apart.
 
 - **`.section-label`** — the label above a *list* of cards or rows ("Continue
-  reading", "New to the library", a search result group). Small-caps, muted.
+  reading", "New to the library"). Small-caps, muted.
 - **`.text-h3`** — a titled *prose* sub-section inside a leaf page ("About this
   book", "In this plan").
 - **`.text-h2`** — a titled *section* of a page (a Settings group, an About
@@ -342,9 +342,11 @@ browse shelves), so the same kind of heading looked different a click apart.
   heading at page-title size reads as a second title;
   `typeScaleGuard.test.ts` fails any `<h2>`–`<h6>` carrying `.text-h1`.
 
-Grouped browse shelves (Books/Sermons/Biographies by author or era) still
-hand-roll their group heading four ways; converging them on one recipe is a
-tracked follow-up (audit D2).
+Grouped browse shelves and search-result groups (Books/Sermons/Biographies by
+author or era, and each search group) share one **`<GroupHeading>`** — `.text-h3`,
+muted, with an optional 32px portrait, the group name as a link when it has a
+page, and a `.count`. Biographies' era heading pins under its controls bar and
+pushes the count to the far end; that is the component's `sticky` variant. (D2.)
 
 ### Cards
 
@@ -444,6 +446,29 @@ width of the box — spreading it over fewer lines keeps the shelf short — wit
 the reading length at the top right, opposite the passage. Row heights vary
 freely — rows stack, so there is no bottom edge to level. `--row-hue` is the
 writer's era (same source as a shelf card), used only through `color-mix()`.
+
+**Card hover — two recipes, and only two.** Every content card answers a hover
+in one of exactly two languages, so a page of mixed card types reads as one
+system rather than a dozen bespoke reactions. Both are expressed as shared,
+opt-in classes in `app.css` (**`.card-lift`** and **`.card-tint`**) so the
+recipe is one edit, not a copy per component; a card wears one class and keeps
+only its own resting frame. Both animate on `--duration-fast` (§7) and nothing
+longer — never a literal duration.
+
+| Recipe | Who | What happens |
+|---|---|---|
+| **`.card-lift`** — a grid or banded card **rises** | `.book-card` (incl. `--row` and `LibraryBookCard`), `.shelf-card`, the sermon-of-week plate | `transform: translateY(-2px)` + `box-shadow`, border warms. Neutral cards use `--accent-soft-border` + `--shadow-card`; `.shelf-card` and the sermon-of-week plate override both with their `--shelf-hue` / `--band-hue`. Dropped under `prefers-reduced-motion`. |
+| **`.card-tint`** — a row card **warms in place**, no lift | `.sermon-card`, `.article-card`, `AuthorBioCard`, `PersonCard`, `AuthorTile`, `BookListRow` | border → `--accent`, ground → `--surface-2`. `.sermon-row` and the `/quotes` author card override both with their era `--row-hue`. |
+
+Grid cards lift, row cards tint — that is the whole vocabulary. A card that
+would do neither, or a third thing (a border-only shift, a bg-only shift, a
+gradient-slide), is drift: fold it into whichever recipe its shape calls for.
+The **one sanctioned extra** is the book-cover family's "Begin reading →" /
+"Resume →" gradient plate, revealed on `group-hover` over the artwork
+(`BookCard`, `LibraryBookCard`): it is a call-to-action on the cover **ground**,
+not a second hover *language* — the card still lifts — and it is shared by both
+cover cards, so it is a deliberate signature rather than a one-off. No other
+card gets a bespoke reveal.
 
 > ⚠️ **A Tailwind utility cannot override one of these classes.** The component
 > classes in `app.css` are **unlayered**; Tailwind's utilities live in
@@ -628,8 +653,14 @@ and most of §8 is enforced in CI. The 2026-09-04 audit (code + live site, all 4
 public routes) found the *atoms* consistent and the *pages* not: the drift has
 moved up a level, from tokens to anatomy. The itemised backlog — 50 findings in
 seven groups, each with file evidence and a model page — is in
-**`.claude/skills/page-design/SKILL.md`**; tick items there as they ship.
+**`.claude/skills/page-design/SKILL.md`**; tick items there as they ship. This
+list was **reconciled against `main` on 2026-09-08** — each ⚠️ was re-checked in
+the code and the ones that had shipped moved up. It was *not* a fresh
+route-by-route hunt for new drift (the 2026-09-04 audit is still that); where a
+backlog marker in the skill still reads open for an item closed here, this
+snapshot is the newer word.
 
+**In place (foundations):**
 - ✅ **Colour tokens, typefaces, type scale, radii tokens** — identical to Take Root.
 - ✅ **Themes, focus rings, nav, footer, reader focus mode** — in place.
 - ✅ **Soft primary button, `.btn-sm` / `.btn-icon`, `prefers-reduced-motion`,
@@ -637,42 +668,59 @@ seven groups, each with file evidence and a model page — is in
 - ✅ **One page width** — `.page-col` on every browse and leaf shell except the
   `/authors` redirect anchor and the two auth pages (`max-w-[26rem]`).
 - ✅ **Guards** — `pageShell`, `typeScaleGuard`, `colorTokens`, `rtl`,
-  `messageCatalogues`, `readerDirection` run in CI.
+  `messageCatalogues`, `readerDirection` run in CI. `pageShell` now covers the
+  browse shelves (Books…Articles, Quotes) and the leaf pages; Home is deliberately
+  excluded (a marketing hero, not a shelf) and the auth pages by design.
 - ✅ **Contrast** — sepia `--muted`, `--warning`, `--border-strong` as in §1.
-- ⚠️ **`<PageHeader>` covers 6 of the 9 browse shelves.** Era, Quotes, Scripture
-  and Articles hand-roll their headers; Settings and Notebook too. (Backlog A1, A9.)
-- ⚠️ **Shell padding and `<title>` suffix are split** — `py-10` ×12 vs `py-6` ×5
-  vs `py-8`; ` — Ochorus` ×39 vs ` · Ochorus` ×7. (A2, A4.)
-- ⚠️ **Three hand-rolled breadcrumbs** (author, sermon, reader), one of which
-  contradicts its own JSON-LD. (A7.)
-- ⚠️ **Empty / error / loading states** — eight empty-state renderings; three
-  loaders crash to the error route and two claim an empty shelf on a failed
-  fetch; one button still loses its label to `…`. (C1–C4.)
-- ⚠️ **Section headings** — an `<h2>` renders at four sizes depending on the
-  page; `<SectionHeader>` is `.text-h1`. (D1, D2.)
-- ⚠️ **`SourceBadge` is missing from the chapter reader and the author bio**, so
-  an unreviewed translation is read without its warning. (D11.)
-- ⚠️ **System classes redefined locally** — Settings re-declares `.seg`;
-  `--radius-chip` is referenced with a fallback but defined nowhere; literal
-  durations and ten radii survive; four Tailwind default sizes slip the guard.
-  (E1–E3, E9.)
-- ⚠️ **Reachability** — Articles, Scripture and Quotes are absent from the
-  command palette and from search. (F1.)
-- ⚠️ **Guard gaps** — `pageShell` omits Home, Articles, the Quotes index and the
-  auth pages; nothing checks durations, radius fallbacks, scoped overrides of
-  system classes, or hard-coded English. (G2.)
+
+**Closed since 2026-09-04 (verified in `main`, 2026-09-08):**
+- ✅ **`<PageHeader>` on the browse shelves** — quotes, scripture and articles now
+  use it (were hand-rolled). `biographies/era/[era]` keeps its hand-rolled
+  composite title as the deliberate exception. (was A1.)
+- ✅ **Shell padding and `<title>` suffix unified** — every `.page-col` shell is
+  `py-10`; every catalogue title ends ` — Ochorus`, guarded by
+  `messageCatalogues`. (The stray `· Ochorus` strings that remain are the guard's
+  own test and the `Article · Ochorus · <time>` eyebrow *separator*, not page
+  titles.) (was A2, A4.)
+- ✅ **One shared breadcrumb** — Author, Sermon and Reader feed a single `crumbs`
+  array into `<Breadcrumb>` and the JSON-LD; no hand-rolled `<nav>`. (was A7.)
+- ✅ **Section-heading size follows role** — `<SectionHeader>` is `.text-h2`; no
+  `<h2>` carries `.text-h1`; `typeScaleGuard` enforces it. (was D1.)
+- ✅ **`SourceBadge` on the chapter reader and the author bio** — an unreviewed
+  translation now reads with its warning in both (`books/[slug]/[order]`,
+  `authors/[slug]`). (was D11.)
+- ✅ **Radii back to the sanctioned four** — only `rounded-card`, `rounded-sm`,
+  `rounded-full` and the heatmap's `rounded-[2px]` are used; the dangling
+  `--radius-chip` reference is gone. (was E2/E3.)
+- ✅ **Search "Show more" keeps its label** while loading (`aria-busy`), no `…`
+  swap. (was C4.)
+- ✅ **One `<GroupHeading>` for grouped-shelf headings** — Books, Sermons,
+  Biographies (its `sticky` variant) and the search-result groups all render it
+  (`.text-h3`, muted, optional portrait, linked name, `.count`); four hand-rolled
+  recipes gone. (was D2.)
+
+**Still open:**
+- ⚠️ **Settings and Notebook hand-roll their page headers.** (A9.)
+- ⚠️ **Empty-state consolidation is partial** — the drawer/popover `compact`
+  variants and Search's panel still render their own. (C2.)
+- ⚠️ **A few off-scale Tailwind sizes / scoped overrides may survive** — not
+  fully re-verified this pass. (E1, E9.)
+- ⚠️ **Reachability** — Articles, Scripture and Quotes may still be absent from
+  the command palette and search; not verified closed this pass. (F1.)
 - ⚠️ **Admin still diverges** in places the tokens can't reach — `.text-display`
   page titles and its own table/tile layouts. Worth a pass of its own.
-- ⚠️ **Owed to Take Root.** The sepia `--muted` retune and the two newer tokens
-  have **not** been mirrored into Take Root yet — do that before the sets drift.
+- ⚠️ **Owed to Take Root.** Confirm the sepia `--muted` retune and the newer
+  tokens are mirrored into Take Root before the sets drift (cross-repo — not
+  verifiable from here).
 - ⚠️ **Class naming** differs slightly from Take Root (`.btn-primary`/`.btn-ghost`
   vs `.primary`/`.ghost`) — harmless, but worth converging if the systems merge.
-- ⚠️ **Cover art** — roughly half the library's covers are generated
-  typographic placeholders rather than artwork. A content problem, not a CSS
-  one, but it is the biggest thing holding the shelf back visually.
+- ⚠️ **Cover art** — the plate → real-art level-up is running author by author
+  (Murray, Bounds, Nee, Spurgeon, Torrey done; ~35 plates remain — see
+  `level-up-cover`). A content effort, but still the biggest thing holding the
+  shelf back visually.
 
-Retired since the last snapshot: `.text-display` no longer appears on any
-public detail page (the old note about `topics/[slug]`, the era page and
-`/notebook` was stale); a `.page-col` + `<PageHeader>` guard now exists.
+`.text-display` remains the home hero only.
 
-_Last reviewed: 2026-09-04. Update this section as gaps close._
+_Last reviewed: 2026-09-08 (reconciled against `main`; the 2026-09-04 full-route
+audit remains the last fresh hunt for new drift). Update this section as gaps
+close._

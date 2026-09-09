@@ -70,6 +70,13 @@
 {/if}
 
 <style>
+	/* The lift language (STYLE_GUIDE §5 → "Card hover"), hue-mixed like
+	   .shelf-card — but it cannot wear the shared .card-lift:hover, because the
+	   thing that lifts (the nested .sermon-plate) is not the thing that takes the
+	   interaction: the <a> is, and it must lift the plate on BOTH pointer hover
+	   and keyboard :focus-visible (the plate is not focusable). So the recipe is
+	   restated here against the parent trigger; the values match .shelf-card's
+	   hue lift on purpose. */
 	.plate-link > :global(.sermon-plate) {
 		transition:
 			border-color var(--duration-fast),
@@ -81,5 +88,11 @@
 		border-color: color-mix(in srgb, var(--band-hue) 55%, var(--border));
 		box-shadow: 0 6px 20px -12px color-mix(in srgb, var(--band-hue) 70%, transparent);
 		transform: translateY(-2px);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.plate-link:hover > :global(.sermon-plate),
+		.plate-link:focus-visible > :global(.sermon-plate) {
+			transform: none;
+		}
 	}
 </style>
