@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { SermonSummary } from '$lib/library-public';
+	import { goto } from '$app/navigation';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime, preachedYear } from '$lib/reading';
@@ -52,12 +53,29 @@
 	// link to read it; a sermon with no brief yet is just a link. (`row` only.)
 	let open = $state(false);
 	const peekId = $derived(`sermon-peek-${sermon.slug}`);
+
+	// Two-stage click on the row body (a pointer convenience): the title link and
+	// the chevron keep their own jobs, but a click ANYWHERE else opens the brief
+	// first, then goes to the sermon on the next click. A sermon with no brief has
+	// nothing to open, so its body goes straight there. Keyboard users reach both
+	// actions directly — the title link navigates, the chevron toggles — so this
+	// handler on a static element is an enhancement, not the only path.
+	function onRowClick(event: MouseEvent) {
+		if ((event.target as HTMLElement).closest('a, button')) return;
+		if (sermon.summary && !open) {
+			open = true;
+			return;
+		}
+		goto(href);
+	}
 </script>
 
 {#if variant === 'row'}
+	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 	<div
 		class="sermon-row card-tint group"
 		class:is-open={open}
+		onclick={onRowClick}
 		style="--row-hue: {hueForBirthYear(sermon.author.birth_year)}"
 	>
 		<!-- Every sermon wears its own illustrated emblem, themed to the text it
