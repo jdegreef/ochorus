@@ -13,6 +13,7 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
 	import { portraitPosition } from '$lib/portraits';
@@ -335,21 +336,13 @@
 				class="mb-10"
 				style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
 			>
-				<h2 class="mb-4 flex items-center gap-2.5 text-h3 text-muted">
-					{#if g.photo_url}
-						<img
-							src={g.photo_url}
-							alt=""
-							loading="lazy"
-							width="32"
-							height="32"
-							class="h-8 w-8 shrink-0 rounded-full border border-border object-cover"
-							style="object-position: {portraitPosition(g.slug)}"
-						/>
-					{/if}
-					<a href={localizeHref(`/authors/${g.slug}`)} class="text-text hover:underline">{g.name}</a>
-					<span class="text-small font-normal count">{g.items.length}</span>
-				</h2>
+				<GroupHeading
+					name={g.name}
+					href={localizeHref(`/authors/${g.slug}`)}
+					portraitUrl={g.photo_url}
+					portraitPosition={portraitPosition(g.slug)}
+					count={g.items.length}
+				/>
 				{@render sermonList(g.items)}
 			</section>
 		{/each}

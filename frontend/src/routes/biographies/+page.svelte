@@ -10,6 +10,7 @@
 	import { localizeHref } from '$lib/href';
 	import { ERAS, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { urlFilters } from '$lib/urlFilters.svelte';
@@ -431,24 +432,26 @@
 			>
 				<!-- Pinned under the controls bar: four centuries of writers scroll
 				     past, and without this you lose track of which era you are in.
-				     The offset is the nav plus the MEASURED bar — a hard-coded 125px
-				     was calibrated against one particular bar height and parked the
-				     heading inside it (z-10 under the bar's z-20, both opaque), so it
-				     simply disappeared on scroll. -->
-				<h2
-					style="top: var(--pinned-offset, 0px)"
-					class="sticky z-10 mb-6 flex items-baseline gap-2 border-b border-border bg-bg pb-2 pt-2 text-h3 text-text"
+				     `GroupHeading`'s sticky variant reads `--pinned-offset` (set on
+				     the page column above — the nav plus the MEASURED controls bar; a
+				     hard-coded 125px once parked the heading inside the bar and it
+				     vanished on scroll) and pushes the count to the far end. -->
+				<GroupHeading
+					sticky
+					name={t(g.era.k)}
+					href={localizeHref(`/biographies/era/${g.era.id}`)}
+					count={g.authors.length}
 				>
-					<a
-						href={localizeHref(`/biographies/era/${g.era.id}`)}
-						class="text-text hover:text-accent hover:no-underline">{t(g.era.k)}</a
-					>
-					<!-- Same nowrap rule as the per-writer dates: a year range must never
-					     break across lines ("–" / "1499"). The longer era names make the
-					     heading wrap on narrow screens, so this is load-bearing here. -->
-					{#if g.era.range}<span class="whitespace-nowrap text-small font-normal text-muted">{g.era.range}</span>{/if}
-					<span class="ms-auto text-small font-normal count">{g.authors.length}</span>
-				</h2>
+					{#snippet detail()}
+						<!-- Same nowrap rule as the per-writer dates: a year range must
+						     never break across lines ("–" / "1499"). The longer era names
+						     make the heading wrap on narrow screens, so this is
+						     load-bearing here. -->
+						{#if g.era.range}<span class="whitespace-nowrap text-small font-normal text-muted"
+								>{g.era.range}</span
+							>{/if}
+					{/snippet}
+				</GroupHeading>
 				<div class="space-y-4">
 					{#each g.authors as author (author.slug)}
 						<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />

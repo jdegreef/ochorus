@@ -12,6 +12,7 @@
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import BookCard from './BookCard.svelte';
 	import BookListRow from './BookListRow.svelte';
+	import GroupHeading from './GroupHeading.svelte';
 	import BookCover from './BookCover.svelte';
 	import CatalogLanguageNudge from './CatalogLanguageNudge.svelte';
 	import PageHeader from './PageHeader.svelte';
@@ -391,10 +392,7 @@
 		{:else if groups}
 			{#each groups as g (g.slug)}
 				<section id="author-{g.slug}" class="mb-10 scroll-mt-20">
-					<h2 class="mb-4 flex items-baseline gap-2 text-h3 text-muted">
-						{g.name}
-						<span class="text-small font-normal count">{g.books.length}</span>
-					</h2>
+					<GroupHeading name={g.name} count={g.books.length} />
 					{#if view === 'grid'}
 						<div class="book-grid">
 							{#each g.books as book, i (book.slug)}

@@ -160,12 +160,15 @@ plans-progress panel must use these same components, not re-drawn tiles.
 
 ## Group heading (grouped shelves, search result groups)
 
-`h2.mb-4.flex.items-center.gap-2.5.text-h3.text-muted` — optional 32px portrait,
-the name **as a link** when it has a page, the count as `tabular-nums opacity-70`.
-This is the sermons shelf's recipe; Books (plain text, no link), Biographies
-(sticky, `text-text`) and Search (`section-label`) should converge on it.
-`<SectionHeader>` is *not* this — it renders `h2.text-h1` and is the home page's
-"shelf title + See all" pattern. (It should drop to `.text-h2`; see backlog.)
+One component: **`<GroupHeading>`** (`lib/components/GroupHeading.svelte`) —
+`h2.mb-4.flex.items-center.gap-2.5.text-h3.text-muted`, an optional 32px portrait,
+the name **as a link** when it has a page (`href`), and the count on the shared
+`.count` class (tabular figures + muted). Books, Sermons and the search-result
+groups render the default variant; Biographies passes `sticky` for its bordered
+era heading (solid ink, pinned via `--pinned-offset`, count pushed to the end),
+and a `detail` snippet carries the era's year range or Search's bespoke "N of M".
+`<SectionHeader>` is *not* this — it renders `h2.text-h2` and is the home page's
+"shelf title + See all" pattern.
 
 ## Chrome parity — the checklist for a new content type
 
@@ -395,9 +398,14 @@ relevant group.
   on shelves — 37 distinct class combinations. → `.section-label` above a list,
   `.text-h3` above prose, `SectionHeader` drops to `.text-h2`; `.text-h1` is
   the `<h1>` only.
-- [ ] **D2** Grouped-shelf headings are hand-rolled four ways (Books plain text,
-  Sermons portrait + link, Biographies sticky `text-text`, Search
-  `section-label`). → the sermons recipe as a `GroupHeading`.
+- [x] **D2** _(shipped 2026-09-08 — one `<GroupHeading>` component on the
+  sermons recipe (`.text-h3` muted, optional portrait, linked name, `.count`)
+  replaced all four hand-rolled headings: Books, Sermons, Biographies (its
+  `sticky` variant) and the search-result groups. Search dropped `.section-label`
+  and Biographies' count converged onto `.count`.)_ Grouped-shelf headings are
+  hand-rolled four ways (Books plain text, Sermons portrait + link, Biographies
+  sticky `text-text`, Search `section-label`). → the sermons recipe as a
+  `GroupHeading`.
 - [x] **D3** _(shipped 2026-09-08 — two hover recipes now, and only two:
   `.card-lift` (grid/banded rise) and `.card-tint` (row warm-in-place), shared
   opt-in classes in `app.css` on `--duration-fast`, each documented in
