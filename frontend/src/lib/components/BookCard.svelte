@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { isTranslated, type BookSummary } from '$lib/library-public';
+	import { type BookSummary } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
 	import BookCover from './BookCover.svelte';
-	import SourceBadge from './SourceBadge.svelte';
 
 	let {
 		book,
@@ -19,7 +18,6 @@
 	}: { book: BookSummary; showAuthor?: boolean; priority?: boolean } = $props();
 	const t = i18n.t;
 
-	const translated = $derived(isTranslated(book.source_type));
 	const chapters = $derived(
 		`${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
 	);
@@ -31,15 +29,8 @@
 	data-testid="book-card"
 	aria-label={showAuthor ? `${book.title} — ${book.author.name}` : book.title}
 >
-	<!-- The query container is the cover, and only when something is going to sit
-	     on it: SourceBadge's overlay hides itself below 6rem of artwork, and the
-	     English shelf is entirely public-domain, so this is 0 containment roots
-	     there rather than one per card. -->
-	<div class="relative" class:cover-container={translated}>
+	<div class="relative">
 		<BookCover {book} {priority} />
-		{#if translated}
-			<SourceBadge sourceType={book.source_type} variant="overlay" class="absolute start-2 top-2" />
-		{/if}
 		<span
 			class="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end gap-1 rounded-b-card bg-gradient-to-t from-black/60 to-transparent px-3 pb-2 pt-6 text-small font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100"
 		>
@@ -60,9 +51,3 @@
 		</div>
 	</div>
 </a>
-
-<style>
-	.cover-container {
-		container-type: inline-size;
-	}
-</style>

@@ -31,7 +31,6 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
-	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
 
 	let { data } = $props();
@@ -441,11 +440,6 @@
 			{/if}
 		</div>
 	{/if}
-
-	<!-- The gap is the stack's, not the badge's: SourceBadge renders nothing for a
-	     public-domain sermon, and asking the caller to re-test that just to supply
-	     a margin put the rule in two places. -->
-	<div class="mb-8"><SourceBadge sourceType={sermon.source_type} /></div>
 
 	<!-- "In brief": an AI-drafted TL;DR so a reader knows in ten seconds
 	     whether this sermon is the one they need right now. -->

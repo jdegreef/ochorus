@@ -22,10 +22,13 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   (`unique(slug, language)`); Topics are one row + a `TopicTranslation`
   side-table. There is **no English fallback** — a language with no row simply
   doesn't show that item.
-- AI translations ship `source_type=ai_unreviewed` and wear an "awaiting native
-  review" badge until **the user** runs `approve_translation` /
-  `approve_sermon_translation`. Never auto-approve; never present an unreviewed
-  translation as an original.
+- AI translations ship `source_type=ai_unreviewed` and are promoted to reviewed
+  only when **the user** runs `approve_translation` / `approve_sermon_translation`.
+  Never auto-approve. This review state is **admin-only**: it drives the review
+  dashboard and readiness reports, and is deliberately **never shown to readers**
+  — there is no public "awaiting native review" / AI-translation badge. Do not
+  add one back (a founder product decision: native + AI QA happen through the
+  admin system, not by warning the reader).
 
 ## Covers
 
