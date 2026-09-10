@@ -1,0 +1,123 @@
+{
+  "kind": "sermon",
+  "slug": "aggressive-christianity",
+  "language": "ar",
+  "job_issue": 822,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Psalms 119:136",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 1
+    },
+    {
+      "reference": "Romans 7:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 5
+    },
+    {
+      "reference": "Revelation 11:15",
+      "status": "self_rendered",
+      "block_index": 6
+    },
+    {
+      "reference": "Romans 7:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 7
+    },
+    {
+      "reference": "1 John 3:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 8
+    },
+    {
+      "reference": "Mark 16:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 12
+    },
+    {
+      "reference": "Acts 26:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 12
+    },
+    {
+      "reference": "Acts 26:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 13
+    },
+    {
+      "reference": "Acts 26:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 13
+    },
+    {
+      "reference": "2 Corinthians 5:11",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "Acts 8:4",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 13
+    },
+    {
+      "reference": "1 Kings 20:20",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "Luke 14:23",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 14
+    },
+    {
+      "reference": "Luke 14:18",
+      "status": "self_rendered",
+      "block_index": 14
+    },
+    {
+      "reference": "Galatians 2:4",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "Matthew 28:20",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 20
+    },
+    {
+      "reference": "Acts 26:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 20
+    },
+    {
+      "reference": "Matthew 10:34",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 21
+    },
+    {
+      "reference": "Psalms 119:136",
+      "status": "self_rendered",
+      "block_index": 15
+    },
+    {
+      "reference": "Matthew 27:42",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 22
+    }
+  ]
+}
