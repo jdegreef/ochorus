@@ -1,0 +1,22 @@
+{
+ "kind": "bio",
+ "slug": "christmas-evans",
+ "language": "fr",
+ "job_issue": 2035,
+ "references": [
+  {
+   "reference": "Hebrews 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Timothy 6:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 3:20",
+   "status": "self_rendered"
+  }
+ ]
+}

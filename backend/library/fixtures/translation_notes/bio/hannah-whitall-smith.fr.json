@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "hannah-whitall-smith",
+ "language": "fr",
+ "job_issue": 2032,
+ "references": [
+  {
+   "reference": "John 16:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
