@@ -1,0 +1,164 @@
+{
+  "kind": "sermon",
+  "slug": "christ-precious-to-believers",
+  "language": "uk",
+  "job_issue": 797,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "1 Peter 2:7",
+      "status": "self_rendered",
+      "block_index": 0
+    },
+    {
+      "reference": "1 Peter 2:7",
+      "status": "self_rendered",
+      "block_index": 1
+    },
+    {
+      "reference": "Numbers 23:23",
+      "status": "self_rendered",
+      "block_index": 1
+    },
+    {
+      "reference": "Isaiah 60:22",
+      "status": "self_rendered",
+      "block_index": 1
+    },
+    {
+      "reference": "Psalm 116:18",
+      "status": "self_rendered",
+      "block_index": 2
+    },
+    {
+      "reference": "Revelation 1:11",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Hebrews 12:2",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Philippians 3:7",
+      "status": "self_rendered",
+      "block_index": 5
+    },
+    {
+      "reference": "Romans 8:35",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "Matthew 10:37",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 8
+    },
+    {
+      "reference": "Hebrews 11:36",
+      "status": "self_rendered",
+      "block_index": 9
+    },
+    {
+      "reference": "Hebrews 12:4",
+      "status": "self_rendered",
+      "block_index": 9
+    },
+    {
+      "reference": "Lamentations 4:1",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "1 Peter 2:7",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "John 20:13",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 11
+    },
+    {
+      "reference": "1 Peter 2:7",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Acts 26:29",
+      "status": "self_rendered",
+      "block_index": 15
+    },
+    {
+      "reference": "Job 2:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 15
+    },
+    {
+      "reference": "Isaiah 32:2",
+      "status": "self_rendered",
+      "block_index": 20
+    },
+    {
+      "reference": "Luke 7:47",
+      "status": "self_rendered",
+      "block_index": 22
+    },
+    {
+      "reference": "Psalm 41:3",
+      "status": "self_rendered",
+      "block_index": 22
+    },
+    {
+      "reference": "Romans 8:28",
+      "status": "self_rendered",
+      "block_index": 22
+    },
+    {
+      "reference": "John 11:25",
+      "status": "self_rendered",
+      "block_index": 22
+    },
+    {
+      "reference": "Isaiah 46:4",
+      "status": "self_rendered",
+      "block_index": 22
+    },
+    {
+      "reference": "Psalm 23:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 22
+    },
+    {
+      "reference": "Psalm 119:9",
+      "status": "self_rendered",
+      "block_index": 25
+    },
+    {
+      "reference": "John 3:18",
+      "status": "self_rendered",
+      "block_index": 25
+    },
+    {
+      "reference": "John 21:16",
+      "status": "self_rendered",
+      "block_index": 25
+    },
+    {
+      "reference": "John 21:17",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 25
+    },
+    {
+      "reference": "1 John 4:19",
+      "status": "self_rendered",
+      "block_index": 25
+    }
+  ]
+}
