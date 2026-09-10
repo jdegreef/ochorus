@@ -430,6 +430,14 @@ class SermonDetailSerializer(serializers.ModelSerializer):
     def get_available_languages(self, obj):
         return _available_languages(Sermon, obj.slug)
 
+    # How many reviewed quotations this sermon's author has, so the page can show
+    # a "Quotes from {author}" link (English only, as the quote pages are).
+    # Mirrors BookDetailSerializer.author_quote_count.
+    author_quote_count = serializers.SerializerMethodField()
+
+    def get_author_quote_count(self, obj) -> int:
+        return obj.author.quotes.filter(reviewed=True).count()
+
     class Meta:
         model = Sermon
         fields = [
@@ -452,6 +460,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "difficulty",
             "topics",
             "available_languages",
+            "author_quote_count",
         ]
 
 
