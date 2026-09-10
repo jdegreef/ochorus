@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "catherine-booth",
+ "language": "ar",
+ "job_issue": 827,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text — ebible arb_vdv, public domain"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered"
+  }
+ ]
+}
