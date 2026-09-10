@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: Ukrainian sermon — free-grace (#792). Rebuilds
+// /uk/sermons so the card and its /uk/sermons/free-grace page bake the translated
+// title and "In brief" summary.
 // prerender refresh 2026-09-07: French sermons (batch 4) — gods-love-for-a-sinning-world (#1822),
 // against-eutropius (#1823). Rebuilds /fr/sermons so each card carries its translated title.
 // prerender refresh 2026-09-07: French sermons (batch 3) — aggressive-christianity (#1820),
