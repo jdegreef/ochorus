@@ -110,11 +110,15 @@ export function buildOutline(container: HTMLElement): OutlineEntry[] {
 			const label = (el.textContent || '').trim().replace(/\s+/g, ' ');
 			if (!label) continue;
 			el.id = el.id || `sec-${n++}`;
+			// A jump target: the page's CSS hangs `scroll-margin-top` off this class
+			// so a jump lands the section below the pinned reader bar.
+			el.classList.add('sec-anchor');
 			entries.push({ id: el.id, label, kind: 'heading' });
 		} else if (tag === 'P') {
 			const label = pointLabel(el.textContent || '');
 			if (!label) continue;
 			el.id = el.id || `sec-${n++}`;
+			el.classList.add('sec-anchor');
 			entries.push({ id: el.id, label, kind: 'point' });
 		}
 	}

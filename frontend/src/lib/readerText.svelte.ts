@@ -38,7 +38,7 @@ import { getLang } from '$lib/lang.svelte';
 import { spokenText, blankFootnoteMarkers } from '$lib/listenText';
 import { shouldFollow } from '$lib/listenFollow';
 import { saveScrollAnchor } from '$lib/progress';
-import { HEADER_OFFSET } from '$lib/reading';
+import { HEADER_OFFSET, prefersReducedMotion } from '$lib/reading';
 import { DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
 
 /** How long read-along leaves the page alone after a hand-scroll. */
@@ -279,8 +279,10 @@ export class ReaderText {
 			if (follow) {
 				// Mask the scroll events our own animation is about to emit.
 				ignoreScrollUntil = Date.now() + SELF_SCROLL_MS;
-				const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-				spokenEl.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+				spokenEl.scrollIntoView({
+					block: 'center',
+					behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+				});
 			}
 		});
 
