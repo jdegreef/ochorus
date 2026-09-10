@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: Portuguese plan prose — faith-in-the-fire (#1487) and
+// everything-for-christ (#1489). Plans pages are prerendered per locale; the pt rows appear
+// once their source books are translated, and /pt/plans rebuilds to show the localized cards.
 // prerender refresh 2026-09-07 (faith-in-the-fire completes in sw): the-god-of-all-comfort
 // (#1720) ships in Swahili, and it is the second of the two source books of the curated plan
 // faith-in-the-fire — he-holds-my-tomorrows.sw already shipped — so seed_plans creates the

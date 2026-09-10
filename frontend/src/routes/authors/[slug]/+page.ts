@@ -5,6 +5,9 @@
 // translated bio and its <blockquote> pull-quotes and prayer callouts. (The content
 // for #2079–2084 ships in PRs #2107/#2108; this refresh covers all of them plus
 // william-law here.)
+// prerender refresh 2026-09-10: Portuguese author bios (batch 2) — john-newton (#1580),
+// bill-bright (#1588), billy-graham (#1589). Author pages are prerendered PER AUTHOR,
+// so each /pt/authors/<slug> page must rebuild for the translated bio and its callouts.
 // prerender refresh 2026-09-10: French author bios — gareth-evans (#2026),
 // catherine-booth (#2027), charles-finney (#2028). Author pages are prerendered PER
 // AUTHOR, so each /fr/authors/<slug> page must rebuild for the translated bio and its
