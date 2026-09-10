@@ -8,6 +8,7 @@
 		absUrl,
 		jsonLd,
 		breadcrumbLd,
+		faqPage,
 		hreflangAll,
 		truncateMeta,
 		itemList,
@@ -271,6 +272,68 @@
 		if (text.length < 20) return '';
 		return text.length > 220 ? text.slice(0, 217).trimEnd() + '…' : text;
 	});
+
+	// A short FAQ derived from what the page already knows — the life dates, the
+	// works, the topical shelves, the opening of the bio. It answers the questions
+	// people actually type ("who was X", "what did X write", "where can I read X")
+	// on the page AND emits the matching FAQPage JSON-LD, so the same facts serve
+	// the reader and the answer engines from one source.
+	//
+	// English only, and for the same reason the Quotes link above is: the question
+	// phrasings are hand-written English, and the derived answers lean on English
+	// sentence shapes. Under any other locale the block (and its structured data)
+	// simply doesn't render, rather than showing untranslated strings — the
+	// established pattern on this page, not a hardcoded string that leaks into
+	// every language.
+	const joinList = (xs: string[]) =>
+		xs.length <= 1
+			? (xs[0] ?? '')
+			: xs.length === 2
+				? `${xs[0]} and ${xs[1]}`
+				: `${xs.slice(0, -1).join(', ')}, and ${xs[xs.length - 1]}`;
+
+	const faq = $derived.by<{ q: string; a: string }[]>(() => {
+		if (getLang() !== 'en') return [];
+		const name = author.name;
+		const items: { q: string; a: string }[] = [];
+
+		// "Who was …" — the opening of the biography, tag-stripped and cut to a
+		// sentence boundary (truncateMeta does exactly that). Skipped when this
+		// writer has no bio in the library yet.
+		const bioText = (author.bio_html || '').replace(/<[^>]+>/g, ' ');
+		const who = truncateMeta(bioText || author.bio || '', 320);
+		if (who) items.push({ q: `Who was ${name}?`, a: who });
+
+		if (author.books.length) {
+			const titles = author.books.map((b) => b.title);
+			items.push({
+				q: `What did ${name} write?`,
+				a: `${name} wrote ${joinList(titles)} — ${titles.length === 1 ? 'free to read' : 'all free to read'} on Ochorus.`
+			});
+		}
+
+		if (author.birth_year && author.death_year)
+			items.push({ q: `When did ${name} live?`, a: `${name} lived from ${author.birth_year} to ${author.death_year}.` });
+		else if (author.birth_year)
+			items.push({ q: `When was ${name} born?`, a: `${name} was born in ${author.birth_year}.` });
+
+		if (author.topics.length)
+			items.push({
+				q: `What did ${name} write about?`,
+				a: `${name}’s work centres on ${joinList(author.topics.map((tp) => tp.title))}.`
+			});
+
+		items.push({
+			q: `Where can I read ${name}’s books online?`,
+			a: `Every available work by ${name} can be read free on Ochorus — in your browser, without an account.`
+		});
+
+		return items;
+	});
+	// Two entries is the floor: a lone Q&A isn't an "FAQ", and a one-item FAQPage
+	// is noise in the markup.
+	const showFaq = $derived(faq.length >= 2);
+	const faqLd = $derived(showFaq ? faqPage(faq) : null);
 </script>
 
 <Seo
@@ -281,7 +344,7 @@
 	ogType="profile"
 	{ogImage}
 	ogImageAlt={author.photo_url ? `${t('a11y.portraitOf')} ${author.name}` : ''}
-	structuredData={worksLd ? [personLd, worksLd, crumbsLd] : [personLd, crumbsLd]}
+	structuredData={[personLd, worksLd, crumbsLd, faqLd].filter((x) => x != null) as string[]}
 />
 
 <div class="page-col px-5 py-10">
@@ -496,6 +559,27 @@
 		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
 	{/if}
 
+	<!-- Frequently asked questions, derived from the page's own facts (see `faq`
+	     in the script). Renders only with two or more entries, and only in
+	     English — the same gate as the Quotes link. The visible accordion and the
+	     FAQPage JSON-LD are built from one array, so they cannot disagree. -->
+	{#if showFaq}
+		<section class="mt-14 mx-auto max-w-[40rem]">
+			<!-- Literal, not a t() key: the section only renders under English (see
+			     `faq`), so a localized heading over hardcoded-English questions would
+			     be an orphan key no locale ever shows. -->
+			<h2 class="section-label">Common questions</h2>
+			<div class="faq-list">
+				{#each faq as item, i (i)}
+					<details class="faq-item" open={i === 0}>
+						<summary>{item.q}</summary>
+						<p class="faq-a">{item.a}</p>
+					</details>
+				{/each}
+			</div>
+		</section>
+	{/if}
+
 	<!-- More lives to explore: nearest contemporaries by era. -->
 	{#if contemporaries.length}
 		<section class="mt-16 border-t border-border pt-8">
@@ -592,6 +676,53 @@
 	.bio-bookmark.is-set {
 		color: var(--accent);
 		border-color: var(--accent);
+	}
+
+	/* Derived FAQ accordion. Native <details> so it works with no JS and during
+	   prerender; the marker is replaced with a +/− that flips on [open]. */
+	.faq-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.faq-item {
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		overflow: hidden;
+	}
+	.faq-item summary {
+		cursor: pointer;
+		list-style: none;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.85rem 1rem;
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: var(--fs-body);
+		color: var(--text);
+	}
+	.faq-item summary::-webkit-details-marker {
+		display: none;
+	}
+	.faq-item summary::after {
+		content: '+';
+		margin-inline-start: auto;
+		font-size: 1.3rem;
+		line-height: 1;
+		font-weight: 400;
+		color: var(--accent);
+	}
+	.faq-item[open] summary::after {
+		content: '−';
+	}
+	.faq-a {
+		margin: 0;
+		padding: 0 1rem 0.95rem;
+		color: var(--muted);
+		font-size: var(--fs-body);
+		line-height: 1.6;
 	}
 
 	/* Featured header pull-quote — a hook above the biography. */
