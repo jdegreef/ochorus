@@ -1,4 +1,8 @@
 {
+  "abiding-in-christ": {
+    "title": "Permanecer en Cristo",
+    "description": "El pámpano en la Vid — unión y comunión con el Señor Jesús, y la vida que no brota de otra fuente que la de permanecer cerca de él."
+  },
   "christ-and-the-cross": {
     "title": "Cristo y la cruz",
     "description": "La persona y la obra del Salvador — el Cordero inmolado, la vergüenza y el triunfo de la cruz, la excelencia de Cristo y la tumba vacía."
@@ -35,6 +39,10 @@
     "title": "El llamado del evangelio",
     "description": "La invitación más antigua que existe — ven, arrepiéntete, cree. Predicadores rogando a los no convertidos, y el testimonio de la gracia hallada por el primero de los pecadores."
   },
+  "the-grace-of-god": {
+    "title": "La gracia de Dios",
+    "description": "Gracia de principio a fin — libre, soberana y suficiente, que sobreabunda para el primero de los pecadores y sostiene al más débil de los santos."
+  },
   "the-preached-word": {
     "title": "La palabra predicada",
     "description": "La gran predicación en la página — Whitefield y Wesley a plena voz, Spurgeon entre sus labradores — y el encargo de Baxter a todo pastor de almas."
@@ -42,5 +50,9 @@
   "the-way-of-holiness": {
     "title": "El camino de la santidad",
     "description": "Apartados para Dios — los mandamientos examinados, la perfección buscada con honestidad, y los afectos del corazón probados y hallados verdaderos."
+  },
+  "women-of-faith": {
+    "title": "Mujeres de fe",
+    "description": "Madres, misioneras y místicas — la fe de mujeres que oraron, sufrieron y se atrevieron, desde la celda de Guyon hasta el púlpito de la esclava liberta."
   }
 }
