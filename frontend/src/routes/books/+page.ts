@@ -3,6 +3,9 @@
 // so the card carries its translated title and the shared painting cover. It is one of the
 // three source books of the deeper-life-in-christ plan, but the-masters-indwelling has no
 // Swahili edition yet, so seed_plans creates no sw plan row and no plans/+page.ts touch is owed.
+// prerender refresh 2026-09-10: one NEW Swahili book — answers-to-prayer (#2175), a curated
+// 5-chapter George Müller collection ("Majibu ya Maombi"). Rebuilds /sw/books so the card carries
+// its translated title and the shared painting cover. Backs no plan.
 // prerender refresh 2026-09-10: Portuguese book — he-holds-my-tomorrows (#1473). Book
 // pages are prerendered per locale, so /pt/books and the book shelf must rebuild with the
 // translated title, and the reader page bakes the 18 translated chapters.
