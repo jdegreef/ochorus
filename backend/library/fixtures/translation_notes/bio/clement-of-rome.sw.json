@@ -1,0 +1,16 @@
+{
+ "kind": "bio",
+ "slug": "clement-of-rome",
+ "language": "sw",
+ "job_issue": 2081,
+ "references": [
+  {
+   "reference": "Philippians 4:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 4:8",
+   "status": "self_rendered"
+  }
+ ]
+}

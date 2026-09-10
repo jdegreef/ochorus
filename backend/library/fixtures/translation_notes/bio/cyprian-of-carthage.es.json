@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "cyprian-of-carthage",
+ "language": "es",
+ "job_issue": 1604,
+ "references": [
+  {
+   "reference": "Matthew 5:46",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 5:45",
+   "status": "self_rendered",
+   "block_index": 18
+  }
+ ]
+}
