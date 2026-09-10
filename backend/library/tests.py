@@ -1161,6 +1161,8 @@ class NoSourceLanguageLeakTests(TestCase):
     # Distinctive enough that a substring hit is a real leak, not a coincidence.
     BIO = "ZZQ-ENGLISH-BIO-SENTINEL"
     BIO_HTML = "ZZQ-ENGLISH-BIOHTML-SENTINEL"
+    FAQ_Q = "ZZQ-ENGLISH-FAQQ-SENTINEL"
+    FAQ_A = "ZZQ-ENGLISH-FAQA-SENTINEL"
     TOPIC_TITLE = "ZZQ-ENGLISH-TOPICTITLE-SENTINEL"
     TOPIC_DESC = "ZZQ-ENGLISH-TOPICDESC-SENTINEL"
     TOPIC_SCRIPT_REF = "ZZQ-ENGLISH-SCRIPTREF-SENTINEL"
@@ -1173,6 +1175,7 @@ class NoSourceLanguageLeakTests(TestCase):
             name="Jane Doe",
             bio=self.BIO,
             bio_html=f"<p>{self.BIO_HTML}</p>",
+            faq=[{"q": self.FAQ_Q, "a": self.FAQ_A}],
         )
         # Something to read in Swahili, so the author and shelf are not filtered
         # out for emptiness — this test is about prose, not about presence.
@@ -1201,6 +1204,8 @@ class NoSourceLanguageLeakTests(TestCase):
         return [
             self.BIO,
             self.BIO_HTML,
+            self.FAQ_Q,
+            self.FAQ_A,
             self.TOPIC_TITLE,
             self.TOPIC_DESC,
             self.TOPIC_SCRIPT_REF,
@@ -1263,6 +1268,24 @@ class NoSourceLanguageLeakTests(TestCase):
 
         res = self.client.get("/api/library/topics/?language=en")
         self.assertIn(self.TOPIC_TITLE, res.content.decode())
+
+    def test_faq_is_served_in_english_and_never_falls_back(self):
+        # English readers get the editorial set...
+        res = self.client.get("/api/library/authors/jane-doe/?language=en")
+        self.assertEqual(res.data["faq"], [{"q": self.FAQ_Q, "a": self.FAQ_A}])
+        # ...a locale with no translated set gets [] (the no-leak sweep proves the
+        # English strings don't slip through; this pins the shape as an empty list,
+        # which is what the page treats as "fall back to the derived block").
+        res = self.client.get("/api/library/authors/jane-doe/?language=sw")
+        self.assertEqual(res.data["faq"], [])
+        # ...and once translated, THAT language's set is served.
+        AuthorTranslation.objects.create(
+            author=self.author,
+            language="sw",
+            faq=[{"q": "Nani Jane Doe?", "a": "Mwandishi."}],
+        )
+        res = self.client.get("/api/library/authors/jane-doe/?language=sw")
+        self.assertEqual(res.data["faq"], [{"q": "Nani Jane Doe?", "a": "Mwandishi."}])
 
     def test_topic_available_languages_drives_hreflang(self):
         # A shelf 404s in a locale with no translated title, so it must not be

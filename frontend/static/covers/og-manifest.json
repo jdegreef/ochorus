@@ -1774,6 +1774,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.8
+  },
+  "pt/he-holds-my-tomorrows": {
+   "ground": "92df090398424c30b744b6d75ccb11c4e5180e41cc9482399dc747a41dda2e3d",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.55
   }
  }
 }

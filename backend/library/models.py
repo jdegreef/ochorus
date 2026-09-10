@@ -127,6 +127,17 @@ class Author(models.Model):
     # house byline, not a person, and pointing it at a real one would be a
     # false claim about authorship.
     same_as = models.JSONField(default=list, blank=True)
+    # A short question-and-answer set shown at the FOOT of the author page, below
+    # their works, and emitted as schema.org `FAQPage` markup. Each entry is a
+    # ``{"q": ..., "a": ...}`` pair of PLAIN TEXT — the question a reader (or an
+    # answer engine) actually asks about this person, and a grounded answer drawn
+    # from the verified biography and their works. Plain text, not HTML: it is
+    # rendered as escaped text and carried in JSON-LD, so it needs no sanitize
+    # profile and cannot inject markup. Six-to-ten entries where present; an
+    # author with none simply shows no Q&A band. Translatable via
+    # ``AuthorTranslation.faq`` — an untranslated set is absent, never English,
+    # exactly like the bio.
+    faq = models.JSONField(default=list, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     objects = AuthorManager()
@@ -184,6 +195,18 @@ class Author(models.Model):
         """Long-form bio HTML in ``language``; ``""`` when untranslated."""
         return self._localized("bio_html", language, fallback=fallback)
 
+    def faq_for(self, language: str, *, fallback: bool = False) -> list:
+        """The Q&A list in ``language``; ``[]`` when untranslated.
+
+        Rides on the same per-field localization as the bios. Two empties meet
+        here: a translation whose ``faq`` is ``[]`` is falsy, so ``_localized``
+        treats it as "not translated here" and skips it (the no-fallback rule);
+        and in that absent, non-fallback case ``_localized`` returns its string
+        sentinel ``""``, which the trailing ``or []`` normalizes back to the
+        empty list this list-typed field should yield.
+        """
+        return self._localized("faq", language, fallback=fallback) or []
+
     def has_bio_in(self, language: str) -> bool:
         """Whether a bio exists in ``language`` — the honest test for "does this
         author have something to read here", used by the biographies page."""
@@ -210,6 +233,11 @@ class AuthorTranslation(models.Model):
     # translated in separate passes, and the serializer falls back per-field.
     bio = models.TextField(blank=True)
     bio_html = models.TextField(blank=True)
+    # The translated Q&A set (the twin of ``Author.faq``): a list of
+    # ``{"q": ..., "a": ...}`` plain-text pairs in this language. Blank until the
+    # set is translated, and — like every prose field here — served only in its
+    # own language, never falling back to the English original.
+    faq = models.JSONField(default=list, blank=True)
     reviewed = models.BooleanField(default=False)
     # The English this was translated from has since been replaced, so the
     # wording may describe text that no longer exists. Deliberately NOT modelled

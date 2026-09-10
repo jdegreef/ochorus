@@ -401,11 +401,15 @@ class SeedFieldCoverageTests(SimpleTestCase):
         # reads each name off the fixture row with .get(), so a typo'd or
         # renamed entry yields None, the truthiness check skips it, and that
         # field simply never syncs again — no error, on any deploy, ever.
-        from library.author_sync import FILL_ONLY_FIELDS
+        from library.author_sync import FILL_ONLY_FIELDS, SYNCED_FIELDS
         from library.models import Author
 
         model_fields = {f.name for f in Author._meta.concrete_fields}
         self.assertTrue(set(FILL_ONLY_FIELDS) <= model_fields)
+        # SYNCED_FIELDS (`same_as`, `faq`) reads off the row the same way, so the
+        # same typo silently stops the sync — guard them too.
+        self.assertTrue(set(SYNCED_FIELDS) <= model_fields)
+        self.assertFalse(set(FILL_ONLY_FIELDS) & set(SYNCED_FIELDS))
         # `bio` has its own rule (empty-or-stub); it must not be fill-only too.
         self.assertNotIn("bio", FILL_ONLY_FIELDS)
 
@@ -579,6 +583,58 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
                 list(d.glob("*.short.txt")) or list(d.glob("*.html")),
                 f"{d.name}: no bio files at all — an empty dir seeds nothing",
             )
+
+
+class AuthorFaqShapeTests(SimpleTestCase):
+    """The editorial Q&A on ``Author.faq`` is shipped as plain-text JSON in
+    ``authors.json`` and rendered — both on the page and as FAQPage JSON-LD —
+    with no sanitize step, because it is supposed to carry no markup at all. This
+    guard is what keeps that promise: shape, count, plain-text, and the
+    house rule that the Q&A talks about the PERSON, never the platform.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.rows = json.loads(AUTHORS_FILE.read_text(encoding="utf-8"))
+
+    def test_faq_entries_are_well_formed_plain_text(self):
+        entity = re.compile(r"&[a-zA-Z][a-zA-Z0-9]+;")  # named/entity refs, not bare &
+        for row in self.rows:
+            f = row["fields"]
+            faq = f.get("faq")
+            if not faq:  # absent or [] — an author with no set yet
+                continue
+            slug = f["slug"]
+            with self.subTest(slug=slug):
+                self.assertIsInstance(faq, list, f"{slug}: faq must be a list")
+                # A present set is an editorial one: the spec is 6–10 entries.
+                self.assertTrue(
+                    6 <= len(faq) <= 10,
+                    f"{slug}: faq has {len(faq)} entries — the spec is 6 to 10",
+                )
+                for i, item in enumerate(faq):
+                    self.assertEqual(
+                        set(item), {"q", "a"},
+                        f"{slug}[{i}]: each entry is exactly {{q, a}}",
+                    )
+                    for key in ("q", "a"):
+                        val = item[key]
+                        self.assertIsInstance(val, str, f"{slug}[{i}].{key}: string")
+                        self.assertTrue(val.strip(), f"{slug}[{i}].{key}: non-empty")
+                        # Plain text: the render escapes it and the JSON-LD carries
+                        # it raw, so a stray tag or entity would ship literally.
+                        self.assertIsNone(
+                            _TAG.search(val), f"{slug}[{i}].{key}: contains a tag"
+                        )
+                        self.assertIsNone(
+                            entity.search(val),
+                            f"{slug}[{i}].{key}: HTML entity — write the character",
+                        )
+                        # The Q&A is about the person, not where to read them.
+                        low = val.lower()
+                        self.assertNotIn("ochorus", low, f"{slug}[{i}].{key}: names the site")
+                        self.assertNotIn("http", low, f"{slug}[{i}].{key}: carries a URL")
 
     # Roughly two sentences. A tripwire for "someone pasted the real biography
     # in here", not a style rule — the biography belongs in authors.json.
