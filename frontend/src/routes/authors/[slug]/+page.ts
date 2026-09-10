@@ -3,6 +3,10 @@
 // (#2203), augustine-of-hippo (#2198). Author pages are prerendered PER AUTHOR, so each
 // /fr/authors/<slug> page must rebuild for the translated bio and its <blockquote>
 // pull-quotes and prayer callouts.
+// prerender refresh 2026-09-10: French author bios (batch 4) — j-c-ryle (#2195),
+// martin-luther (#2196), athanasius-of-alexandria (#2197), amy-carmichael (#2204).
+// Author pages are prerendered PER AUTHOR, so each /fr/authors/<slug> page must rebuild
+// for the translated bio and its <blockquote> pull-quotes and prayer callouts.
 // prerender refresh 2026-09-10: French author bios (batch 3) — robert-murray-mcheyne
 // (#2030), frederick-brotherton-meyer (#2031), hannah-whitall-smith (#2032),
 // christmas-evans (#2035). Author pages are prerendered PER AUTHOR, so each
