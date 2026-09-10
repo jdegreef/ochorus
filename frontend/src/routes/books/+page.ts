@@ -3,6 +3,10 @@
 // so the card carries its translated title and the shared painting cover. It is one of the
 // three source books of the deeper-life-in-christ plan, but the-masters-indwelling has no
 // Swahili edition yet, so seed_plans creates no sw plan row and no plans/+page.ts touch is owed.
+// prerender refresh 2026-09-10: NEW French book — gleanings-among-the-sheaves /
+// Glanures parmi les gerbes (#1844), a harvest of Spurgeon's short readings under twenty
+// themes (20 chapters). Rebuilds /fr/books so the card carries its translated title and the
+// curated painting under the French title.
 // prerender refresh 2026-09-10: one NEW Swahili book — answers-to-prayer (#2175), a curated
 // 5-chapter George Müller collection ("Majibu ya Maombi"). Rebuilds /sw/books so the card carries
 // its translated title and the shared painting cover. Backs no plan.
