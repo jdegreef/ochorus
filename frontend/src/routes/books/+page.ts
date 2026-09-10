@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: Portuguese book — he-holds-my-tomorrows (#1473). Book
+// pages are prerendered per locale, so /pt/books and the book shelf must rebuild with the
+// translated title, and the reader page bakes the 18 translated chapters.
 // prerender refresh 2026-09-10: NEW French book — true-vine / La Vraie Vigne (#1843),
 // Andrew Murray's 31 meditations on John 15 (32 chapters). Rebuilds /fr/books so the card
 // carries its translated title and the curated painting under the French title.
