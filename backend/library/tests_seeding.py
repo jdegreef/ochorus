@@ -401,6 +401,35 @@ class SeedBooksUpsertTests(TestCase):
         self.assertEqual(self._author().photo_url, "/custom.png")
         self.assertNotEqual(filled, "/custom.png")
 
+    def test_faq_is_fixture_wins_and_reaches_an_existing_row(self):
+        # `faq` is a SYNCED_FIELD (like same_as), not fill-only: a corrected or
+        # expanded set in the fixture must overwrite whatever the row holds, so a
+        # roll-out fix reaches prod on the next deploy without a migration.
+        from library.content_fixtures import authors_by_slug
+
+        fixture_faq = authors_by_slug()["john-bunyan"]["faq"]
+        self.assertTrue(fixture_faq, "the pilot fixture should carry a faq set")
+
+        # A stale/edited value on the live row is replaced, not kept.
+        Author.objects.filter(slug="john-bunyan").update(faq=[{"q": "old", "a": "old"}])
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(Author.objects.get(slug="john-bunyan").faq, fixture_faq)
+
+        # An author whose fixture OMITS faq is left untouched (no empty list
+        # forced). Picked dynamically off a live, seeded author whose fixture row
+        # has no faq key, so this stays honest as roll-out batches add more sets.
+        by_slug = authors_by_slug()
+        untouched = next(
+            a.slug
+            for a in Author.objects.order_by("slug")
+            if "faq" not in by_slug.get(a.slug, {})
+        )
+        Author.objects.filter(slug=untouched).update(faq=[{"q": "mine", "a": "mine"}])
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(
+            Author.objects.get(slug=untouched).faq, [{"q": "mine", "a": "mine"}]
+        )
+
     def test_a_no_op_deploy_changes_no_author(self):
         # Author has no updated_at, so snapshot the synced fields themselves.
         fields = ("slug", "bio", "bio_html", "photo_url", "birth_year", "death_year")

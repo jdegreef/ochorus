@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-10: French plan prose — school-of-prayer (#2003),
+// humility-12-days (#2004), deeper-life-in-christ (#2005) ship ahead of their source
+// books' French editions (no fr row yet). the-inner-chamber-month is added too because
+// the-inner-chamber now has a French edition, so seed_plans creates its fr row now — the
+// prose keeps that card from publishing English-titled and rebuilds /fr/plans to show it.
 // prerender refresh 2026-09-10: Portuguese plan prose — faith-in-the-fire (#1487) and
 // everything-for-christ (#1489). Plans pages are prerendered per locale; the pt rows appear
 // once their source books are translated, and /pt/plans rebuilds to show the localized cards.

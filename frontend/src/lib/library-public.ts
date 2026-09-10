@@ -480,6 +480,13 @@ export interface AuthorDetail extends AuthorBio {
 	/** How many REVIEWED quotations this author has; 0 means no quote page. */
 	quote_count?: number;
 	/**
+	 * A short question-and-answer set shown at the foot of the page and emitted as
+	 * schema.org `FAQPage` markup. Plain-text pairs, in the requested language only
+	 * (empty/absent when this locale has no translated set — the no-fallback rule
+	 * the bio follows). Optional so an API behind this build renders no Q&A band.
+	 */
+	faq?: { q: string; a: string }[];
+	/**
 	 * Authoritative identifiers for this person — Wikipedia, Wikidata — emitted
 	 * as schema.org `sameAs`. Empty for the house byline and for contemporary
 	 * contributors, and optional besides: an API running behind this build

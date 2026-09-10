@@ -1,10 +1,30 @@
 {
  "the-inner-chamber-month": {
   "title": "Un mois dans la chambre intérieure",
-  "description": "Prenez l’habitude quotidienne de la prière et de la Parole : trente-six matins avec Andrew Murray, un chapitre chaque jour.",
+  "description": "Prenez chaque matin l'habitude de la prière et de la Parole : trente-six matins avec Andrew Murray, un chapitre par jour.",
   "note": [
-   "« La chambre intérieure » is the fr title of the book itself, so the plan card and the book a reader lands on say the same thing.",
-   "Prose added with the fr edition of the-inner-chamber (job #1838); seed_plans creates the (the-inner-chamber-month, fr) row now that the book is present."
+   "Coverage-gate entry: the-inner-chamber has a French edition (shipped separately), so seed_plans creates a French row for this single-book plan; without prose here it would publish English-titled. Title quotes the French book La chambre intérieure."
+  ]
+ },
+ "humility-12-days": {
+  "title": "L'humilité en 12 jours",
+  "description": "Le classique d'Andrew Murray sur la racine de toute vertu — un court chapitre par jour pendant douze jours.",
+  "note": [
+   "Job #2004. Source book humility-2 has no French edition yet, so the row is prose-ahead."
+  ]
+ },
+ "school-of-prayer": {
+  "title": "À l'école de la prière",
+  "description": "Quatre semaines à l'école de la prière avec trois guides : Andrew Murray sur la manière dont le Seigneur lui-même nous apprend à prier, D. L. Moody sur la prière qui l'emporte, et Hannah Buyinza sur la prière comme pouls quotidien de la vie chrétienne.",
+  "note": [
+   "Job #2003. Source books (lord-teach-us-to-pray-2, prevailing-prayer, prayer-the-pulse-of-life) have no French editions yet; prose-ahead."
+  ]
+ },
+ "deeper-life-in-christ": {
+  "title": "La vie profonde : Christ en vous",
+  "description": "Non pas plus d'efforts, mais une Personne : le secret de la vie profonde, c'est Christ lui-même vivant au-dedans. Andrew Murray commence par la merveille de Jésus lui-même, puis déploie la vie qui habite en nous, et Hudson Taylor conclut dans le repos de l'union et de la communion avec le Bien-Aimé.",
+  "note": [
+   "Job #2005. Source books (jesus-himself-2, the-masters-indwelling, union-and-communion) have no French editions yet; prose-ahead."
   ]
  }
 }

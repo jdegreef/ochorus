@@ -273,24 +273,37 @@
 		return text.length > 220 ? text.slice(0, 217).trimEnd() + '…' : text;
 	});
 
-	// A short FAQ derived from what the page already knows — the life dates, the
-	// works, the topical shelves, the opening of the bio. It answers the questions
-	// people actually type ("who was X", "what did X write", "where can I read X")
-	// on the page AND emits the matching FAQPage JSON-LD, so the same facts serve
-	// the reader and the answer engines from one source.
+	// The Q&A band at the foot of the page comes in two tiers. Where an editorial
+	// set has been written for this author (`editorialFaq`, below) it is used; for
+	// everyone else a short FAQ is DERIVED from what the page already knows — the
+	// life dates, the works, the topical shelves, the opening of the bio. Either
+	// way it answers the questions people actually type ("who was X", "what did X
+	// write", "where can I read X") on the page AND emits the matching FAQPage
+	// JSON-LD, so the same facts serve the reader and the answer engines from one
+	// source.
 	//
-	// English only, and for the same reason the Quotes link above is: the question
-	// phrasings are hand-written English, and the derived answers lean on English
-	// sentence shapes. Under any other locale the block (and its structured data)
-	// simply doesn't render, rather than showing untranslated strings — the
-	// established pattern on this page, not a hardcoded string that leaks into
-	// every language.
-	// Oxford-comma conjunction ("a", "a and b", "a, b, and c"). The block is
-	// English-gated, so the fixed 'en' locale matches the surrounding copy.
+	// The DERIVED block is English only, and for the same reason the Quotes link
+	// above is: the question phrasings are hand-written English, and the answers
+	// lean on English sentence shapes. Under any other locale it simply doesn't
+	// render, rather than showing untranslated strings — the established pattern
+	// on this page. (The editorial set carries its own language from the API, so
+	// it is not gated here.)
+	// Oxford-comma conjunction ("a", "a and b", "a, b, and c"). The derived block
+	// is English-gated, so the fixed 'en' locale matches the surrounding copy.
 	const enList = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
 	const joinList = (xs: string[]) => enList.format(xs);
 
-	const faq = $derived.by<{ q: string; a: string }[]>(() => {
+	// An editorial Q&A set, hand-written and verified per author, served by the
+	// API in the requested language only (empty when this locale has none — the
+	// no-fallback rule the bio follows, so it is NOT English-gated here: the API
+	// has already decided the language). Six-to-ten rich answers about the life,
+	// ministry, relationships and works — a superset of the derived block below.
+	const editorialFaq = $derived<{ q: string; a: string }[]>(author.faq ?? []);
+
+	// The derived fallback: a short FAQ built from what the page already knows —
+	// used for the ~authors without an editorial set yet, and only under English
+	// (the phrasings and answers lean on English sentence shapes).
+	const derivedFaq = $derived.by<{ q: string; a: string }[]>(() => {
 		if (getLang() !== 'en') return [];
 		const name = author.name;
 		const items: { q: string; a: string }[] = [];
@@ -327,6 +340,15 @@
 
 		return items;
 	});
+
+	// The editorial set wins wherever we've written a real one; otherwise the
+	// derived block stands in. The `>= 2` floor matches showFaq's own threshold,
+	// so a stunted editorial set (fewer than two entries — which the backend 6–10
+	// guard forbids, but nothing here should depend on that) falls back to the
+	// derived questions rather than suppressing the band entirely. The visible
+	// accordion and the FAQPage JSON-LD below both read this one array, so they
+	// can never disagree.
+	const faq = $derived(editorialFaq.length >= 2 ? editorialFaq : derivedFaq);
 	// Two entries is the floor: a lone Q&A isn't an "FAQ", and a one-item FAQPage
 	// is noise in the markup.
 	const showFaq = $derived(faq.length >= 2);
@@ -641,15 +663,16 @@
 		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
 	{/if}
 
-	<!-- Frequently asked questions, derived from the page's own facts (see `faq`
-	     in the script). Renders only with two or more entries, and only in
-	     English — the same gate as the Quotes link. The visible accordion and the
-	     FAQPage JSON-LD are built from one array, so they cannot disagree. -->
+	<!-- Frequently asked questions — the editorial set where one exists, else
+	     derived from the page's own facts (see `faq` in the script). Renders only
+	     with two or more entries. The visible accordion and the FAQPage JSON-LD
+	     are built from one array, so they cannot disagree. -->
 	{#if showFaq}
 		<section id="faq" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
-			<!-- Literal, not a t() key: the section only renders under English (see
-			     `faq`), so a localized heading over hardcoded-English questions would
-			     be an orphan key no locale ever shows. -->
+			<!-- Literal, not a t() key: today every set that reaches this heading is
+			     English — the derived block is English-gated, and the editorial sets
+			     ship English-first. When editorial Q&A is translated, move this to a
+			     localized key alongside it (the derived block stays English). -->
 			<h2 class="section-label">Common questions</h2>
 			<div class="faq-list">
 				{#each faq as item, i (i)}

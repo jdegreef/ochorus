@@ -700,6 +700,10 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     bio = serializers.SerializerMethodField()
     bio_html = serializers.SerializerMethodField()
     bio_source_type = serializers.SerializerMethodField()
+    # The Q&A set shown at the foot of the page, in the requested language only
+    # ([] when this locale has no translated set — same no-fallback rule as the
+    # bio). Detail-only: a card has nowhere to show it.
+    faq = serializers.SerializerMethodField()
     # Books this person is FOUND IN but did not write (BookPerson) — the reverse
     # of BookDetailSerializer.featured_people, so a bio can offer "appears in".
     appears_in = serializers.SerializerMethodField()
@@ -713,7 +717,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = [
-            "slug", "name", "bio", "bio_html", "bio_source_type", "photo_url",
+            "slug", "name", "bio", "bio_html", "bio_source_type", "faq", "photo_url",
             # Portrait credit — only the detail page renders it (a card shows the
             # thumbnail without a caption, which the CC licences allow because
             # every card links here, so the credit is one click from any
@@ -749,6 +753,9 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
 
     def get_bio_html(self, obj):
         return obj.bio_html_for(self._language())
+
+    def get_faq(self, obj):
+        return obj.faq_for(self._language())
 
     def get_bio_source_type(self, obj):
         """How the bio shown in the requested language got here, so the page can
