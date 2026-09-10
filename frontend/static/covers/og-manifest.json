@@ -1747,6 +1747,13 @@
    "art": true,
    "scrim": 0.95
   },
+  "fr/true-vine": {
+   "ground": "2ae642dca179a7ded689f75d540d4c5d1a3efb7566068a1a8d2bf878f6aa5185",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.85
+  },
   "fr/the-inner-chamber": {
    "ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
    "style": "devotional",

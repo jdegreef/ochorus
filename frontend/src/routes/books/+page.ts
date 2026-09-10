@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: NEW French book — true-vine / La Vraie Vigne (#1843),
+// Andrew Murray's 31 meditations on John 15 (32 chapters). Rebuilds /fr/books so the card
+// carries its translated title and the curated painting under the French title.
 // prerender refresh 2026-09-07: three NEW Swahili books — the-god-of-all-comfort (#1720),
 // days-of-heaven-upon-earth (#1722), watchman-nee-a-life (#1758). 50 chapters. Rebuilds /sw/books
 // so each card carries its translated title and localized cover. the-god-of-all-comfort ALSO
