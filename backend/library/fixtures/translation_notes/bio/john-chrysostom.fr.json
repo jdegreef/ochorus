@@ -1,0 +1,16 @@
+{
+ "kind": "bio",
+ "slug": "john-chrysostom",
+ "language": "fr",
+ "job_issue": 2033,
+ "references": [
+  {
+   "reference": "Psalm 24:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "self_rendered"
+  }
+ ]
+}
