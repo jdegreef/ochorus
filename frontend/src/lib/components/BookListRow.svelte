@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { isTranslated, type BookSummary } from '$lib/library-public';
+	import { type BookSummary } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
 	import BookCover from './BookCover.svelte';
-	import SourceBadge from './SourceBadge.svelte';
 
 	let { book, showAuthor = true }: { book: BookSummary; showAuthor?: boolean } = $props();
 	const t = i18n.t;
@@ -25,9 +24,6 @@
 	<div class="min-w-0 flex-1">
 		<div class="flex flex-wrap items-center gap-x-2">
 			<span class="text-body font-medium text-balance text-text">{book.title}</span>
-			{#if isTranslated(book.source_type)}
-				<SourceBadge sourceType={book.source_type} variant="inline" />
-			{/if}
 		</div>
 		{#if showAuthor}
 			<div class="text-small text-muted">{book.author.name}</div>

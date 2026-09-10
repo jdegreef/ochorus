@@ -22,12 +22,10 @@ export type SourceType = 'public_domain' | 'ai_reviewed' | 'ai_unreviewed';
 
 /**
  * Whether a work reached this language by translation rather than being written
- * in it. Both AI states count; whether a native speaker has SIGNED OFF on the
- * translation is a separate question, and one only the work's own page answers
- * (see SourceBadge).
- *
- * One function because the test was written out at four call sites, and a fifth
- * (the shelf's own source filter) wrote its negation.
+ * in it. Both AI states count. The review state (`ai_unreviewed` vs
+ * `ai_reviewed`) is not surfaced to readers — it drives the admin review
+ * dashboard only — so this predicate now feeds just the shelf's source filter,
+ * which segments a mixed shelf into "Original" and "Translated".
  */
 export const isTranslated = (sourceType: SourceType): boolean =>
 	sourceType !== 'public_domain';

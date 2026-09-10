@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { isTranslated, type BookSummary } from '$lib/library-public';
+	import { type BookSummary } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime, bookProgressPercent } from '$lib/reading';
 	import { getProgressRecord } from '$lib/progress';
 	import BookCover from './BookCover.svelte';
-	import SourceBadge from './SourceBadge.svelte';
 	import ProgressBar from './ProgressBar.svelte';
 
 	/**
@@ -20,10 +19,6 @@
 	 */
 	let { book }: { book: BookSummary } = $props();
 	const t = i18n.t;
-
-	// A saved AI-translated edition keeps its "awaiting native review" badge here
-	// too — a translation must never be shown as an original (see CLAUDE.md).
-	const translated = $derived(isTranslated(book.source_type));
 
 	// Read once from localStorage per book (ssr=false, so this is always the
 	// client). Re-derives if the card is reused for a different book.
@@ -48,11 +43,8 @@
 	data-testid="library-book-card"
 	aria-label={inProgress ? `${book.title} — ${t('reader.resume')}` : book.title}
 >
-	<div class="relative" class:cover-container={translated}>
+	<div class="relative">
 		<BookCover {book} />
-		{#if translated}
-			<SourceBadge sourceType={book.source_type} variant="overlay" class="absolute start-2 top-2" />
-		{/if}
 		<span
 			class="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end gap-1 rounded-b-card bg-gradient-to-t from-black/60 to-transparent px-3 pb-2 pt-6 text-small font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100"
 		>
@@ -83,11 +75,3 @@
 		</div>
 	</div>
 </a>
-
-<style>
-	/* Only a translated book needs a containment root — the SourceBadge overlay
-	   sizes itself against the cover width. Same rule BookCard uses. */
-	.cover-container {
-		container-type: inline-size;
-	}
-</style>

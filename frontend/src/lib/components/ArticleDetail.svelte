@@ -10,7 +10,6 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
-	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -129,10 +128,6 @@
 			{#if article.description}
 				<p class="standfirst">{article.description}</p>
 			{/if}
-			<!-- Nothing for an English original; on a translation it says whether a
-			     native speaker has checked it (CLAUDE.md: never present an
-			     unreviewed translation as an original). -->
-			<SourceBadge sourceType={article.source_type} class="mt-3" />
 		</header>
 
 		{#if showToc}

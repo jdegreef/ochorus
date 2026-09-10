@@ -1,0 +1,11 @@
+{
+ "kind": "book",
+ "slug": "enchiridion",
+ "language": "es",
+ "job_issue": null,
+ "pull_request": null,
+ "note": [
+  "AI translation via the keyless parallel-subagent pipeline (engine glossary; Reina-Valera register). Augustine weaves Scripture into his prose WITHOUT explicit Book C:V citations, so scripture_context supplied no authoritative verses and find_references found none — every Bible quotation and allusion in this edition was rendered conservatively by the model in Reina-Valera-style Spanish (self_rendered), with NO chapter:verse invented. The whole edition therefore needs a native/scholarly review pass against the intended Reina-Valera text; the references list is empty because the source carries no explicit citations to enumerate, not because the work quotes nothing. Doctrinal cruxes preserved over smoothing (e.g. ch05 Ps 51:5 kept plural; ch08 \"resurrección de juicio\"; ch07 \"fuego purgatorio\")."
+ ],
+ "references": []
+}

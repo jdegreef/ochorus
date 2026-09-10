@@ -2,6 +2,10 @@
 // christmas-evans (#2077), j-c-ryle (#2078). Author pages are prerendered PER AUTHOR,
 // so each /sw/authors/<slug> page must rebuild for the translated bio and its
 // <blockquote> pull-quotes and prayer callouts.
+// prerender refresh 2026-09-10: Portuguese author bios (batch 1) — a-w-tozer (#1577),
+// j-c-ryle (#1578), alexander-maclaren (#1579). Author pages are prerendered PER
+// AUTHOR, so each /pt/authors/<slug> page must rebuild for the translated bio and
+// its <blockquote> pull-quotes and prayer callouts.
 // prerender refresh 2026-09-10: Arabic author bio — thomas-a-kempis (#831). Author pages
 // are prerendered per-author; rebuild /ar/authors/thomas-a-kempis with the translated bio.
 // prerender refresh 2026-09-10: Arabic author bio — william-booth (#830). Author pages

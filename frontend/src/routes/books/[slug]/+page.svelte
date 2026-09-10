@@ -16,7 +16,6 @@
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
 	import { pwa } from '$lib/pwa.svelte';
 
@@ -275,8 +274,6 @@
 					>
 				</p>
 			{/if}
-
-			<SourceBadge sourceType={book.source_type} class="mt-3" />
 
 			<div class="mt-5 flex flex-wrap items-center gap-3">
 				{#if resumeOrder && resumeOrder > 1}

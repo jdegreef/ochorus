@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library-public';
-	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { cssString } from '$lib/cssString';
 	import {
@@ -322,7 +321,6 @@
 					{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50"> · </span>{/if}{bit}{/each}
 				</p>
 			{/if}
-			<SourceBadge sourceType={author.bio_source_type ?? 'public_domain'} class="mt-2" />
 		</div>
 		<div class="ms-auto flex flex-wrap items-center gap-2">
 			<!-- Search this author's works. A reader who has read one Murray book
