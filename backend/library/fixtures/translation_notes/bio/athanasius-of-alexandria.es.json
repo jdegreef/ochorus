@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "athanasius-of-alexandria",
+ "language": "es",
+ "job_issue": 1600,
+ "references": [
+  {
+   "reference": "Psalm 136:1",
+   "status": "self_rendered",
+   "block_index": 10
+  }
+ ]
+}
