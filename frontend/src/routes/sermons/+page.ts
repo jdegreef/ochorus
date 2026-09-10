@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-10: French sermons (batch 3) — the-circumcision-of-the-heart
+// (#2020), witnessing-for-christ (#2021), marks-of-a-true-conversion (#2023),
+// a-divine-and-supernatural-light (#2024). Rebuilds /fr/sermons so each card and its
+// /fr/sermons/<slug> page bakes the translated title.
 // prerender refresh 2026-09-10: French sermons (batch 2) — christ-precious-to-believers
 // (#2016), eight-i-wills-of-christ (#2017), the-possibilities-of-faith (#2018). Rebuilds
 // /fr/sermons so each card and its /fr/sermons/<slug> page bakes the translated title.
