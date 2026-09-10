@@ -1704,6 +1704,41 @@
    "script": "latin",
    "art": false,
    "scrim": 1
+  },
+  "fr/absolute-surrender": {
+   "ground": "27a4490e3504475ccb2a4dd793a34abd482bed06f8c4a6cd605541518d1bb793",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.95
+  },
+  "fr/baptism-with-the-holy-spirit": {
+   "ground": "bdeed4127b250e9d7f0f03c5a86ac3b99b8e31904f6ea3e75e23f75e2d5ef88b",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.85
+  },
+  "fr/clothed-with-strength-and-dignity": {
+   "ground": "e27ae9f4ee85f2ee1a687c0cd91692b0cb15e25687ac97006a167412154bed48",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.3
+  },
+  "fr/the-unselfishness-of-god": {
+   "ground": "a31312fc937e606b12ff6c9d53fd1d8e26ac1a6e4d337740c32b2a836c3d1534",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.95
+  },
+  "fr/the-inner-chamber": {
+   "ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.3
   }
  }
 }
