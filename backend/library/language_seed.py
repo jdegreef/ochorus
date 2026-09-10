@@ -257,4 +257,54 @@ SEED_LANGUAGES: dict[str, dict] = {
             "surrender": "समर्पण",
         },
     },
+    "fr": {
+        "name": "French",
+        "native": "Français",
+        # Louis Segond (1910): the standard French Protestant Bible and the
+        # register French Christian readers expect for devotional prose — a fair
+        # match for the 19th-century authors this library carries, who quote a
+        # contemporaneous text. PUBLIC DOMAIN (verified on the ebible mirror:
+        # bibles/fra_lsg/meta.json → license "public", attribution "public
+        # domain", ebible id fraLSG), so no attribution obligation and no
+        # bibleCredit.ts entry is owed.
+        #
+        # French was first added from the admin ("Add a language"), so it lived
+        # only in the prod DB and its glossary/Bible were unreadable to a worker
+        # session; a batch of French bios shipped self-rendering all scripture.
+        # This entry adopts French into the repo seed so its identity, Bible and
+        # theology glossary are re-asserted on every deploy like the built-in
+        # languages, and so translation jobs have a glossary to follow.
+        #
+        # NOTE: `bible` is the Take Root translation code, which this (egress-
+        # blocked) session CANNOT verify — api.takeroot.bible is unreachable
+        # here. `fralsg` is the best guess (cf. ebible id fraLSG); alternatives
+        # to try are `fra-lsg` and `fraLSG`. A wrong value cannot break the build
+        # (seeds/tests never hit the API) but WILL garble a networked translation
+        # run's scripture, so VERIFY before the first API-backed French job:
+        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
+        #     library.tests.LanguageSeedTableTests
+        # from a network that can reach api.takeroot.bible. Worker sessions mine
+        # Segond verbatim from the ebible mirror instead (raw.githubusercontent
+        # .com/gracious-tech/fetch_collection, bibles/fra_lsg/usfm), which needs
+        # no Take Root code.
+        "bible": "fralsg",
+        "bible_label": "Louis Segond (1910)",
+        # Segond's own wording where it is fixed vocabulary: "Demeurez en moi"
+        # (John 15) for abide, "le Saint-Esprit", "le Seigneur". "abandon /
+        # consécration" for surrender follows the French devotional tradition
+        # (Guyon, Fénelon) the library carries.
+        "glossary": {
+            "justification": "justification",
+            "sanctification": "sanctification",
+            "atonement": "expiation",
+            "grace": "grâce",
+            "the flesh": "la chair",
+            "abide": "demeurer",
+            "the Holy Spirit": "le Saint-Esprit",
+            "the Lord": "le Seigneur",
+            "godliness": "la piété",
+            "intercession": "intercession",
+            "surrender": "abandon / consécration",
+        },
+    },
 }
