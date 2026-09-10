@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-10: Ukrainian sermon — unfailing-springs (#795). Rebuilds
+// /uk/sermons so the card and its /uk/sermons/unfailing-springs page bake the translated title.
 // prerender refresh 2026-09-10: Ukrainian sermon — eight-i-wills-of-christ (#793). Rebuilds
 // /uk/sermons so the card and its /uk/sermons/eight-i-wills-of-christ page bake the translated title.
 // prerender refresh 2026-09-10: Ukrainian sermon — the-power-of-stillness (#794). Rebuilds
