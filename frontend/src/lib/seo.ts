@@ -80,6 +80,17 @@ export function jsonLd(data: unknown): string {
 }
 
 /**
+ * Plain text from an HTML fragment — every tag replaced with a space. Whitespace
+ * is NOT collapsed here (a caller counting words wants the runs; one building a
+ * string passes the result through truncateMeta, which collapses). Extracted
+ * because the author page alone stripped bio HTML this way in three places, and
+ * the same one-liner recurs across the reader/article/import surfaces.
+ */
+export function stripHtml(html: string): string {
+	return (html ?? '').replace(/<[^>]+>/g, ' ');
+}
+
+/**
  * A meta-description-sized slice of prose.
  *
  * Search engines and social scrapers truncate `<meta name="description">` and

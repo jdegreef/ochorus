@@ -10,6 +10,7 @@
 		breadcrumbLd,
 		faqPage,
 		hreflangAll,
+		stripHtml,
 		truncateMeta,
 		itemList,
 		topicThings
@@ -85,11 +86,13 @@
 		topIndex = p;
 	}
 
+	// The bio as plain text, computed once: the word count below and the FAQ's
+	// "Who was …" answer both need it, and it is a few-KB string stripped at
+	// build time, so a shared derived beats two passes over the same HTML.
+	const bioStripped = $derived(stripHtml(author.bio_html || ''));
 	// Counted from the rendered bio rather than a word_count field: the API does
 	// not expose one for biographies, and this is the only place that needs it.
-	const bioWords = $derived(
-		(author.bio_html || '').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length
-	);
+	const bioWords = $derived(bioStripped.split(/\s+/).filter(Boolean).length);
 	const minutesLeft = $derived(Math.max(1, Math.ceil(readingMinutes(bioWords) * (1 - frac))));
 
 	const cite = $derived({
@@ -264,9 +267,7 @@
 	const featuredQuote = $derived.by(() => {
 		const m = (author.bio_html || '').match(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/i);
 		if (!m) return '';
-		const text = m[1]
-			.replace(/<cite[\s\S]*?<\/cite>/i, '')
-			.replace(/<[^>]+>/g, ' ')
+		const text = stripHtml(m[1].replace(/<cite[\s\S]*?<\/cite>/i, ''))
 			.replace(/\s+/g, ' ')
 			.trim();
 		if (text.length < 20) return '';
@@ -285,23 +286,20 @@
 	// simply doesn't render, rather than showing untranslated strings — the
 	// established pattern on this page, not a hardcoded string that leaks into
 	// every language.
-	const joinList = (xs: string[]) =>
-		xs.length <= 1
-			? (xs[0] ?? '')
-			: xs.length === 2
-				? `${xs[0]} and ${xs[1]}`
-				: `${xs.slice(0, -1).join(', ')}, and ${xs[xs.length - 1]}`;
+	// Oxford-comma conjunction ("a", "a and b", "a, b, and c"). The block is
+	// English-gated, so the fixed 'en' locale matches the surrounding copy.
+	const enList = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+	const joinList = (xs: string[]) => enList.format(xs);
 
 	const faq = $derived.by<{ q: string; a: string }[]>(() => {
 		if (getLang() !== 'en') return [];
 		const name = author.name;
 		const items: { q: string; a: string }[] = [];
 
-		// "Who was …" — the opening of the biography, tag-stripped and cut to a
-		// sentence boundary (truncateMeta does exactly that). Skipped when this
-		// writer has no bio in the library yet.
-		const bioText = (author.bio_html || '').replace(/<[^>]+>/g, ' ');
-		const who = truncateMeta(bioText || author.bio || '', 320);
+		// "Who was …" — the opening of the biography, cut to a sentence boundary
+		// (truncateMeta does exactly that). Skipped when this writer has no bio in
+		// the library yet.
+		const who = truncateMeta(bioStripped || author.bio || '', 320);
 		if (who) items.push({ q: `Who was ${name}?`, a: who });
 
 		if (author.books.length) {
@@ -344,7 +342,7 @@
 	ogType="profile"
 	{ogImage}
 	ogImageAlt={author.photo_url ? `${t('a11y.portraitOf')} ${author.name}` : ''}
-	structuredData={[personLd, worksLd, crumbsLd, faqLd].filter((x) => x != null) as string[]}
+	structuredData={[personLd, worksLd, crumbsLd, faqLd].filter((x): x is string => x != null)}
 />
 
 <div class="page-col px-5 py-10">
