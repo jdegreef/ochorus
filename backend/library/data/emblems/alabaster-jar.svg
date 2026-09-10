@@ -1,0 +1,8 @@
+<!--GENERATED from frontend/src/lib/emblems.ts by npm run emblem:art; do not hand-edit.--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+		<path d="M15 18h18l-2 16c-.4 3.2-3 5-7 5s-6.6-1.8-7-5z" fill="#f3e2c4"/>
+		<path d="M15 18h18l-.6 5H15.6z" fill="#e0c69a"/>
+		<rect x="20" y="11" width="8" height="7" rx="1" fill="#e0c69a"/>
+		<ellipse cx="24" cy="11" rx="5" ry="2.2" fill="#d9a441"/>
+		<rect x="19" y="26" width="2.2" height="9" rx="1.1" fill="#fdfaf3"/>
+		<path d="M17 29.5h14" stroke="#cf5c85" stroke-width="1.5"/>
+		<path d="M24 40c-1.6 2-2.4 3.3-2.4 4.8a2.4 2.4 0 0 0 4.8 0c0-1.5-.8-2.8-2.4-4.8z" fill="#cf5c85"/></svg>

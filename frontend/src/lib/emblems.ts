@@ -506,7 +506,57 @@ export const EMBLEM_ART = {
 		<path d="M24 9c7.7 0 12 5.7 12 13.6v5.2l3.6 5.7H24z" fill="${GD}"/>
 		<circle cx="24" cy="37.5" r="3.4" fill="${BRD}"/>
 		<path d="M5.5 20c.7-3 2-5.4 4-7.4M42.5 20c-.7-3-2-5.4-4-7.4" stroke="${SL}" stroke-width="2" stroke-linecap="round" fill="none"/>
-		<path d="M3 27.5c.3-1.7.8-3.2 1.6-4.6M45 27.5c-.3-1.7-.8-3.2-1.6-4.6" stroke="${SK}" stroke-width="2" stroke-linecap="round" fill="none"/>`
+		<path d="M3 27.5c.3-1.7.8-3.2 1.6-4.6M45 27.5c-.3-1.7-.8-3.2-1.6-4.6" stroke="${SK}" stroke-width="2" stroke-linecap="round" fill="none"/>`,
+	// ── topic emblems (batch 1) ──────────────────────────────────────────────
+	'dawn-over-hills': `
+		<circle cx="24" cy="17" r="6.5" fill="${G}"/>
+		<path d="M24 5v3.5M12.5 9.5l2 2M35.5 9.5l-2 2M6.5 19h3.5M38 19h3.5" stroke="${G}" stroke-width="1.8" stroke-linecap="round"/>
+		<path d="M2 41c9-11 16-7 22-4 5 2.5 12 1 22-1v11H2z" fill="${GRD}"/>
+		<path d="M0 44c8-7 15-4 22-2 6 1.7 12 .5 26-2v8H0z" fill="${GR}"/>
+		<path d="M24 41c-2.3-2.8-1.4-5.6.7-7.1-.3 1.8.5 2.7 1.4 3.3 1 .7 1.7 1.8 1.7 3A3.8 3.8 0 0 1 24 41z" fill="${R}"/>
+		<path d="M24 40c-1.2-1.5-.7-3 .4-3.9-.2 1 .3 1.5.8 1.8.5.4.9 1 .9 1.6A2 2 0 0 1 24 40z" fill="${G}"/>`,
+	'candle-and-book': `
+		<rect x="6" y="31" width="20" height="11" rx="1.5" fill="${BRD}"/>
+		<rect x="6" y="31" width="20" height="3.2" fill="${BR}"/>
+		<rect x="8.5" y="34.5" width="15" height="6" fill="${CR}"/>
+		<path d="M16 34.5v6" stroke="${CRD}" stroke-width="1"/>
+		<rect x="30" y="20" width="6.5" height="19" rx="1" fill="${CR}"/>
+		<rect x="30" y="20" width="2.4" height="19" fill="${CRD}"/>
+		<rect x="28.5" y="38.5" width="9.5" height="3.5" rx="1.2" fill="${GD}"/>
+		<path d="M33.2 20v-4" stroke="${BRD}" stroke-width="1.3"/>
+		<path d="M33.2 8c1.7 2 2.4 3.3 2.4 5a2.4 2.4 0 0 1-4.8 0c0-1.7.7-3 2.4-5z" fill="${R}"/>
+		<path d="M33.2 12c.8 1 1.1 1.7 1.1 2.6a1.1 1.1 0 0 1-2.2 0c0-.9.3-1.6 1.1-2.6z" fill="${G}"/>`,
+	'mission-ship': `
+		<path d="M37 8l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="${G}"/>
+		<path d="M24 8v22" stroke="${BRD}" stroke-width="1.6"/>
+		<path d="M24 10c6 1.5 9 4 10 7H24z" fill="${W}"/>
+		<path d="M24 19c5 .8 8 2.2 9 4H24z" fill="${CRD}"/>
+		<path d="M24 10c-6 1.5-9 4-10 7h10z" fill="${CR}"/>
+		<path d="M9 30h30l-4 7c-1 1.6-2.6 2.2-4.5 2.2H17.5c-1.9 0-3.5-.6-4.5-2.2z" fill="${BR}"/>
+		<path d="M9 30h30l-1.3 2.3H10.3z" fill="${BRD}"/>
+		<path d="M5 40c3 0 3 1.8 6 1.8s3-1.8 6-1.8 3 1.8 6 1.8 3-1.8 6-1.8 3 1.8 6 1.8 3-1.8 6-1.8" stroke="${B}" stroke-width="1.8" fill="none" stroke-linecap="round"/>`,
+	'paschal-lamb': `
+		<circle cx="20" cy="19" r="8.5" fill="none" stroke="${G}" stroke-width="1.6"/>
+		<ellipse cx="21" cy="30" rx="11" ry="7.5" fill="${W}"/>
+		<circle cx="12" cy="26" r="2.2" fill="${CR}"/>
+		<circle cx="16" cy="23.5" r="2.4" fill="${CR}"/>
+		<circle cx="26" cy="24" r="2.4" fill="${CR}"/>
+		<circle cx="30" cy="27" r="2.2" fill="${CR}"/>
+		<ellipse cx="19" cy="19.5" rx="4.2" ry="5" fill="${CRD}"/>
+		<circle cx="17.6" cy="18.8" r=".9" fill="${BRD}"/>
+		<rect x="15" y="36" width="2.2" height="6" rx="1" fill="${CRD}"/>
+		<rect x="25" y="36" width="2.2" height="6" rx="1" fill="${CRD}"/>
+		<path d="M33 7v29" stroke="${BRD}" stroke-width="1.6"/>
+		<path d="M33 9h8v6l-4-2-4 2z" fill="${R}"/>
+		<path d="M37 10.2v3.2M35.5 11.5h3" stroke="${W}" stroke-width="1.2"/>`,
+	'alabaster-jar': `
+		<path d="M15 18h18l-2 16c-.4 3.2-3 5-7 5s-6.6-1.8-7-5z" fill="${CR}"/>
+		<path d="M15 18h18l-.6 5H15.6z" fill="${CRD}"/>
+		<rect x="20" y="11" width="8" height="7" rx="1" fill="${CRD}"/>
+		<ellipse cx="24" cy="11" rx="5" ry="2.2" fill="${G}"/>
+		<rect x="19" y="26" width="2.2" height="9" rx="1.1" fill="${W}"/>
+		<path d="M17 29.5h14" stroke="${RO}" stroke-width="1.5"/>
+		<path d="M24 40c-1.6 2-2.4 3.3-2.4 4.8a2.4 2.4 0 0 0 4.8 0c0-1.5-.8-2.8-2.4-4.8z" fill="${RO}"/>`
 } as const;
 
 export type EmblemName = keyof typeof EMBLEM_ART;

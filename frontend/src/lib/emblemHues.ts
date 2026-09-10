@@ -17,13 +17,16 @@
 import type { EmblemName } from './emblems';
 
 export const EMBLEM_HUES: Record<EmblemName, string> = {
+	'alabaster-jar': '#cf5c85',
 	'alpha-omega': '#d9a441',
 	'ark-rainbow': '#d9a441',
 	'basin-towel': '#1e6b63',
 	'bruised-reed': '#3d7434',
+	'candle-and-book': '#5f4227',
 	'chi-rho': '#d9a441',
 	'compass-rose': '#d9a441',
 	'cross-sunrise': '#d9a441',
+	'dawn-over-hills': '#d9a441',
 	'desert-spring': '#a7c9e8',
 	'door-ajar': '#d9a441',
 	'dove-descending': '#d9a441',
@@ -39,6 +42,7 @@ export const EMBLEM_HUES: Record<EmblemName, string> = {
 	'joyful-harp': '#d9a441',
 	'kneeling-light': '#2d4a80',
 	'laurel-tome': '#5a9e4d',
+	'mission-ship': '#5f4227',
 	'morning-star': '#4a6fb5',
 	'mountain-dawn': '#d9a441',
 	'mustard-tree': '#5a9e4d',
@@ -49,6 +53,7 @@ export const EMBLEM_HUES: Record<EmblemName, string> = {
 	'open-word': '#5f4227',
 	'overflowing-cup': '#a97a24',
 	'paradise-palms': '#d9a441',
+	'paschal-lamb': '#5f4227',
 	'pearl-of-price': '#1e6b63',
 	'pentecost-fire': '#d9a441',
 	'pilgrim-road': '#a97a24',

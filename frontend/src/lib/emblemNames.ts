@@ -40,7 +40,13 @@ export const TOPIC_META: Record<string, { accent: string; emblem: EmblemName }> 
 	'the-gospel-call': { accent: '#b8912f', emblem: 'herald-trumpet' }, // the oldest invitation there is
 	'enduring-classics': { accent: '#8a5bbf', emblem: 'laurel-tome' }, // the old paths, still good
 	'the-way-of-holiness': { accent: '#3e7cb8', emblem: 'narrow-gate' }, // strait is the gate
-	'the-preached-word': { accent: '#946b4a', emblem: 'open-word' } // great preaching on the page
+	'the-preached-word': { accent: '#946b4a', emblem: 'open-word' }, // great preaching on the page
+	// ── batch 1 ──────────────────────────────────────────────────────────────
+	'the-east-african-revival': { accent: '#cf5a4a', emblem: 'dawn-over-hills' }, // the walk in the light
+	'the-puritans': { accent: '#3f4d80', emblem: 'candle-and-book' }, // plain, searching divinity
+	'to-the-ends-of-the-earth': { accent: '#3a6ea5', emblem: 'mission-ship' }, // the gospel carried at any cost
+	'christ-and-the-cross': { accent: '#b3474f', emblem: 'paschal-lamb' }, // the Lamb slain (Agnus Dei)
+	'women-of-faith': { accent: '#b5628f', emblem: 'alabaster-jar' } // the costly ointment
 };
 
 /** Per-plan visual identity: accent hue + emblem (same shape as TOPIC_META). */
