@@ -1,6 +1,10 @@
 // prerender refresh 2026-09-10: one NEW Swahili book — absolute-surrender (#2167), Andrew
 // Murray's 9 addresses ("Kujisalimisha Kabisa"). Rebuilds /sw/books so the card carries its
 // translated title and the shared painting cover. Backs no plan.
+// prerender refresh 2026-09-10: NEW French book — gleanings-among-the-sheaves /
+// Glanures parmi les gerbes (#1844), a harvest of Spurgeon's short readings under twenty
+// themes (20 chapters). Rebuilds /fr/books so the card carries its translated title and the
+// curated painting under the French title.
 // prerender refresh 2026-09-10: one NEW Swahili book — answers-to-prayer (#2175), a curated
 // 5-chapter George Müller collection ("Majibu ya Maombi"). Rebuilds /sw/books so the card carries
 // its translated title and the shared painting cover. Backs no plan.
