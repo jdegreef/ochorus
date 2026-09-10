@@ -3,6 +3,9 @@
 // and the shelf rebuild with the translated title and the reader page bakes the 17
 // translated chapters. This is faith-in-the-fire's second source book, so plans/+page.ts
 // is touched in the same PR — the plan goes live now that both its books have pt editions.
+// prerender refresh 2026-09-10: one NEW Swahili book — around-the-wicket-gate (#2169),
+// C. H. Spurgeon's 11 friendly talks with seekers ("Karibu na Lango Jembamba"). Rebuilds
+// /sw/books so the card carries its translated title and the shared painting cover. Backs no plan.
 // prerender refresh 2026-09-10: NEW French book — gleanings-among-the-sheaves /
 // Glanures parmi les gerbes (#1844), a harvest of Spurgeon's short readings under twenty
 // themes (20 chapters). Rebuilds /fr/books so the card carries its translated title and the
