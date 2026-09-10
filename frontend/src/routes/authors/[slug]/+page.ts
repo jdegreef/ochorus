@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-10: French author bios (batch 3) — robert-murray-mcheyne
+// (#2030), frederick-brotherton-meyer (#2031), hannah-whitall-smith (#2032),
+// christmas-evans (#2035). Author pages are prerendered PER AUTHOR, so each
+// /fr/authors/<slug> page must rebuild for the translated bio and its <blockquote>
+// pull-quotes and prayer callouts.
 // prerender refresh 2026-09-10: French author bios (batch 2) — john-newton (#2029),
 // john-chrysostom (#2033), alexander-maclaren (#2034). Author pages are prerendered PER
 // AUTHOR, so each /fr/authors/<slug> page must rebuild for the translated bio and its
