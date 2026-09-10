@@ -1,0 +1,89 @@
+{
+  "kind": "sermon",
+  "slug": "the-new-birth",
+  "language": "ar",
+  "job_issue": 824,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "John 3:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 16
+    },
+    {
+      "reference": "John 4:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 13
+    },
+    {
+      "reference": "John 3:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 20
+    },
+    {
+      "reference": "John 1:29",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 37
+    },
+    {
+      "reference": "Romans 6:23",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 35
+    },
+    {
+      "reference": "John 3:6",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "John 3:4",
+      "status": "self_rendered",
+      "block_index": 16
+    },
+    {
+      "reference": "John 10:1",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "Matthew 11:30",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "Mark 8:24",
+      "status": "self_rendered",
+      "block_index": 2
+    },
+    {
+      "reference": "John 5:24",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Revelation 7:14",
+      "status": "self_rendered",
+      "block_index": 14
+    },
+    {
+      "reference": "Jeremiah 13:23",
+      "status": "self_rendered",
+      "block_index": 33
+    },
+    {
+      "reference": "Luke 7:14",
+      "status": "self_rendered",
+      "block_index": 33
+    },
+    {
+      "reference": "John 1:29",
+      "status": "self_rendered",
+      "block_index": 39
+    }
+  ]
+}
