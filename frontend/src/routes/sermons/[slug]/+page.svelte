@@ -164,14 +164,25 @@
 	// fix once `listSermons` is memoised.)
 	onMount(() => {
 		readerPrefs.init();
-		if (!book) return;
+		// Related sermons, ranked by shared topic first (the topic tags give
+		// relevance a scripture-only match missed), then a shared Bible book — and
+		// a sermon with no passage of its own still gets neighbours. Fetched
+		// client-side (the page is prerendered; the list is small and browser-cached).
 		listSermons(getLang())
 			.then((all) => {
+				const mine = new Set((sermon.topics ?? []).map((t) => t.slug));
+				const scored = all
+					.filter((s) => s.slug !== sermon.slug)
+					.map((s) => {
+						const shared = (s.topics ?? []).filter((t) => mine.has(t.slug)).length;
+						const sameBook = book && refBook(s.scripture_ref || '') === book ? 1 : 0;
+						return { s, score: shared * 2 + sameBook };
+					})
+					.filter((x) => x.score > 0)
+					.sort((a, b) => b.score - a.score);
 				// Capped: an unbounded related list is what the style guide forbids
 				// (a card/section must bound its members). Six is enough to browse.
-				related = all
-					.filter((s) => s.slug !== sermon.slug && refBook(s.scripture_ref || '') === book)
-					.slice(0, 6);
+				related = scored.slice(0, 6).map((x) => x.s);
 			})
 			.catch(() => (related = []));
 	});
@@ -527,7 +538,7 @@
 
 	{#if related.length}
 		<section class="mt-12 border-t border-border pt-6">
-			<h2 class="section-label">{t('sermon.moreOn')} {book}</h2>
+			<h2 class="section-label">{t('book.related')}</h2>
 			<ul class="space-y-2">
 				{#each related as r (r.slug)}
 					<li>
