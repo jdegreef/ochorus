@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-10: NEW French book — gleanings-among-the-sheaves /
+// Glanures parmi les gerbes (#1844), a harvest of Spurgeon's short readings under twenty
+// themes (20 chapters). Rebuilds /fr/books so the card carries its translated title and the
+// curated painting under the French title.
 // prerender refresh 2026-09-10: NEW French book — true-vine / La Vraie Vigne (#1843),
 // Andrew Murray's 31 meditations on John 15 (32 chapters). Rebuilds /fr/books so the card
 // carries its translated title and the curated painting under the French title.
