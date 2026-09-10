@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: French sermons (batch 2) — christ-precious-to-believers
+// (#2016), eight-i-wills-of-christ (#2017), the-possibilities-of-faith (#2018). Rebuilds
+// /fr/sermons so each card and its /fr/sermons/<slug> page bakes the translated title.
 // prerender refresh 2026-09-10: Portuguese sermons (batch 3) — against-eutropius (#1586),
 // gods-love-for-a-sinning-world (#1587). Sermon pages are prerendered per locale, so
 // /pt/sermons must rebuild with the translated titles.
