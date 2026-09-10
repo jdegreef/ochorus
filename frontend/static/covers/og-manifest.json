@@ -1698,6 +1698,13 @@
    "art": true,
    "scrim": 0.85
   },
+  "sw/union-and-communion": {
+   "ground": "17038fc6723938d8af560cc00cfe3f7f30e240388fbea5ec3eb04695cec0c2af",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.85
+  },
   "waiting-on-god": {
    "ground": "4953e3a74672ccc0d17902faaf8abbf55cef0962b5c9939cea1a6504a6b307b9",
    "style": "devotional",
@@ -1768,12 +1775,12 @@
    "art": true,
    "scrim": 0.8
   },
-  "sw/union-and-communion": {
-   "ground": "17038fc6723938d8af560cc00cfe3f7f30e240388fbea5ec3eb04695cec0c2af",
-   "style": "revival",
+  "pt/he-holds-my-tomorrows": {
+   "ground": "92df090398424c30b744b6d75ccb11c4e5180e41cc9482399dc747a41dda2e3d",
+   "style": "house",
    "script": "latin",
    "art": true,
-   "scrim": 0.85
+   "scrim": 0.55
   }
  }
 }
