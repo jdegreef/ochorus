@@ -1767,6 +1767,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.8
+  },
+  "sw/union-and-communion": {
+   "ground": "17038fc6723938d8af560cc00cfe3f7f30e240388fbea5ec3eb04695cec0c2af",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.85
   }
  }
 }
