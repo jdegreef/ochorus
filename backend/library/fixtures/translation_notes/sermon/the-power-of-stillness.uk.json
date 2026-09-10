@@ -1,0 +1,86 @@
+{
+  "kind": "sermon",
+  "slug": "the-power-of-stillness",
+  "language": "uk",
+  "job_issue": 794,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "1 Kings 19:12",
+      "status": "self_rendered",
+      "block_index": 1
+    },
+    {
+      "reference": "Philippians 4:7",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Psalm 119:165",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "1 Kings 19:12",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Psalm 46:10",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "Psalm 46:10",
+      "status": "self_rendered",
+      "block_index": 9
+    },
+    {
+      "reference": "1 Kings 19:12",
+      "status": "self_rendered",
+      "block_index": 9
+    },
+    {
+      "reference": "Isaiah 40:31",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Psalm 91:1",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Hebrews 4:10",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 12
+    },
+    {
+      "reference": "Philippians 2:13",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 12
+    },
+    {
+      "reference": "Psalm 91:1",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "1 Kings 19:12",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "Romans 8:37",
+      "status": "self_rendered",
+      "block_index": 16
+    },
+    {
+      "reference": "1 Kings 19:12",
+      "status": "self_rendered",
+      "block_index": 16
+    }
+  ]
+}
