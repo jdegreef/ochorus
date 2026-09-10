@@ -1,0 +1,777 @@
+{
+ "kind": "book",
+ "slug": "talks-to-the-farmer",
+ "language": "es",
+ "job_issue": null,
+ "pull_request": null,
+ "note": [
+  "AI translation via the keyless parallel-subagent pipeline (engine glossary + Reina-Valera 1858 supplied as authoritative scripture). Explicitly-cited verses (listed below) were rendered in the supplied Reina-Valera wording (mined). Spurgeon also weaves many verses into his prose without an explicit Book C:V citation; those were rendered by the model in RV-consistent wording (self_rendered) and are not individually enumerated. Every scripture rendering should be checked by a native reviewer. NOTE for review: a few chapters modernized the RV’s archaic vowel-accents (á→a) inside quotations while others kept them; meaning is unchanged. Doctrinal cruxes where the RV reading diverges from Spurgeon’s KJV argument were kept faithful to the author (ch08 “el trigo principal”; ch16 Amós 2:13 passive “oprimido”)."
+ ],
+ "references": [
+  {
+   "reference": "Ref(usfm='1CO', chapter=10)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1CO', chapter=2)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1CO', chapter=3)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1CO', chapter=6)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1JN', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1JN', chapter=3)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1JN', chapter=5)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1KI', chapter=19)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1PE', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1PE', chapter=4)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1PE', chapter=5)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1SA', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1TI', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='1TI', chapter=4)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='2CO', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='2CO', chapter=10)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='2CO', chapter=12)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='2CO', chapter=6)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='2CO', chapter=8)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='2KI', chapter=5)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ACT', chapter=10)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ACT', chapter=16)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ACT', chapter=17)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ACT', chapter=26)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='AMO', chapter=2)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='AMO', chapter=3)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='AMO', chapter=6)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='DEU', chapter=25)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='DEU', chapter=33)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ECC', chapter=11)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='EPH', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='EPH', chapter=2)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='EPH', chapter=6)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='EST', chapter=4)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='EXO', chapter=16)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='EXO', chapter=20)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='EXO', chapter=4)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='EZK', chapter=18)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='EZK', chapter=20)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='GAL', chapter=6)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='GEN', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='GEN', chapter=14)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='GEN', chapter=16)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='GEN', chapter=2)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='GEN', chapter=3)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='GEN', chapter=32)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='GEN', chapter=9)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='HAG', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='HAG', chapter=2)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='HEB', chapter=10)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='HEB', chapter=12)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='HEB', chapter=2)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='HOS', chapter=7)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=28)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=40)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=41)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=43)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=44)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=45)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=48)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=50)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=53)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=54)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=57)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=9)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JAS', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JAS', chapter=4)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JDG', chapter=5)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JER', chapter=3)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JER', chapter=8)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=12)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=13)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=14)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=15)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=16)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=17)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=18)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=21)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=3)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=5)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=6)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JOB', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JOB', chapter=16)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JOB', chapter=22)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='JOS', chapter=24)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='LUK', chapter=13)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='LUK', chapter=15)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='LUK', chapter=16)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='LUK', chapter=22)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='LUK', chapter=23)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='LUK', chapter=24)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='LUK', chapter=8)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=10)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=11)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=12)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=13)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=22)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=23)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=24)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=25)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=27)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=28)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=4)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=5)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=6)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=7)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MRK', chapter=15)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MRK', chapter=16)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MRK', chapter=4)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='MRK', chapter=9)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PHP', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PHP', chapter=2)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PHP', chapter=3)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=20)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=22)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=23)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=24)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=6)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=103)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=104)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=111)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=116)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=119)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=126)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=138)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=139)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=147)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=148)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=18)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=25)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=30)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=37)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=4)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=40)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=50)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=51)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=56)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=65)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=86)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=9)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='REV', chapter=22)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ROM', chapter=10)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ROM', chapter=5)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ROM', chapter=7)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ROM', chapter=8)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='RUT', chapter=2)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='SNG', chapter=1)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='SNG', chapter=2)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='SNG', chapter=5)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='SNG', chapter=7)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  },
+  {
+   "reference": "Ref(usfm='ZEC', chapter=3)",
+   "status": "mined",
+   "source_file": "Reina-Valera (rv1858) Bible via Take Root API"
+  }
+ ]
+}

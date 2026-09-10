@@ -445,6 +445,13 @@
    "art": false,
    "scrim": 1
   },
+  "es/talks-to-the-farmer": {
+   "ground": "abc63c24446d73ff2a0cca4588c0648360cc1738e42281f67bb9a842dd9454e8",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.5
+  },
   "es/the-fourfold-gospel": {
    "ground": "543d1ab7c043ae66c6374ec5cdf3ff6d0e88f653b180980aa101b9aaa2be35f7",
    "style": "revival",
