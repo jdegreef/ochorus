@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
+	import type { FilterChip } from '$lib/filterChips';
 
 	/**
 	 * "You are looking at 12 of 30 — clear the filters."
@@ -20,6 +21,7 @@
 		total,
 		template,
 		onClear,
+		chips = [],
 		class: klass = ''
 	}: {
 		shown: number;
@@ -28,6 +30,13 @@
 		template: string;
 		/** Omit when there is nothing to clear (the page decides what "filtered" means). */
 		onClear?: () => void;
+		/**
+		 * The filters currently narrowing the shelf, each removable on its own.
+		 * The free-text query and topic don't show their value anywhere else (a
+		 * <select> does), so they'd otherwise be applied but invisible. Empty on
+		 * shelves that surface their active filters inline (Plans' length row).
+		 */
+		chips?: FilterChip[];
 		/** Added to the layout classes — the biographies bar positions its copy. */
 		class?: string;
 	} = $props();
@@ -38,8 +47,20 @@
 	);
 </script>
 
-<div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 {klass}">
+<div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 {klass}">
 	<p class="text-small text-muted" aria-live="polite">{text}</p>
+	{#if chips.length}
+		<span class="flex flex-wrap gap-1.5">
+			{#each chips as chip (chip.kind)}
+				<span class="active-filter">
+					{chip.label}
+					<button type="button" onclick={chip.onRemove} aria-label={t('common.removeFilter')}
+						>&times;</button
+					>
+				</span>
+			{/each}
+		</span>
+	{/if}
 	{#if onClear}
 		<button class="text-small font-semibold text-accent hover:underline" onclick={onClear}>
 			{t('common.clearFilters')}
