@@ -331,6 +331,59 @@
 	// is noise in the markup.
 	const showFaq = $derived(faq.length >= 2);
 	const faqLd = $derived(showFaq ? faqPage(faq) : null);
+
+	// On-page jump navigation over the substantial sections. Each entry names a
+	// section `id` stamped on the markup below. Labels reuse existing localized
+	// strings (this bar shows in every locale, unlike the English-only FAQ), so
+	// no new visible copy is introduced; "Questions" rides the FAQ's own English
+	// gate, so it never appears without the section it points at.
+	const navItems = $derived(
+		[
+			author.bio_html || author.bio ? { id: 'bio', label: t('articles.kindBiography') } : null,
+			author.books.length ? { id: 'books', label: t('nav.books') } : null,
+			author.sermons.length ? { id: 'sermons', label: t('nav.sermons') } : null,
+			showFaq ? { id: 'faq', label: 'Questions' } : null
+		].filter((x): x is { id: string; label: string } => x != null)
+	);
+	// Below two targets there is nothing to jump between.
+	const showSubnav = $derived(navItems.length >= 2);
+
+	// The bar's measured height feeds `--pinned-offset` (set on the page column),
+	// the same contract the biographies index uses so anchored sections clear both
+	// the app nav and this bar. Mirrors +layout's navH measurement.
+	let subnavH = $state(0);
+	let activeSection = $state('');
+
+	// Scroll-spy: light the link for whatever section sits in the band just under
+	// the pinned bars. Rebuilt when the target set changes (e.g. after hydration).
+	// No-JS / prerender shows the bar with nothing lit — the links still jump.
+	$effect(() => {
+		if (!showSubnav || typeof IntersectionObserver === 'undefined') return;
+		const els = navItems
+			.map((n) => document.getElementById(n.id))
+			.filter((el): el is HTMLElement => el != null);
+		if (!els.length) return;
+		const io = new IntersectionObserver(
+			(entries) => {
+				for (const e of entries) if (e.isIntersecting) activeSection = e.target.id;
+			},
+			{ rootMargin: '-45% 0px -50% 0px' }
+		);
+		els.forEach((el) => io.observe(el));
+		return () => io.disconnect();
+	});
+
+	// Smooth-jump to a section (honouring reduced-motion) and light it at once, so
+	// the tap feels immediate rather than waiting on the scroll-spy to catch up.
+	function jumpTo(e: MouseEvent, id: string) {
+		const el = document.getElementById(id);
+		if (!el) return;
+		e.preventDefault();
+		activeSection = id;
+		const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+		el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+		history.replaceState(null, '', `#${id}`);
+	}
 </script>
 
 <Seo
@@ -344,7 +397,11 @@
 	structuredData={[personLd, worksLd, crumbsLd, faqLd].filter((x): x is string => x != null)}
 />
 
-<div class="page-col px-5 py-10">
+<!-- --pinned-offset: how far down the first pixel unobstructed by BOTH the app
+     nav and this page's own sticky jump-bar is; anchored sections read it for
+     scroll-margin so a jump lands below the bars. Same contract as the
+     biographies index. -->
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
 	<!-- Focus mode strips the page back to the life itself. Everything here is
 	     context around the biography — portrait, timeline, epigraph, shelves,
 	     contemporaries — and it is exactly what someone reading eleven minutes
@@ -452,6 +509,33 @@
 			{/if}
 		</div>
 	{/if}
+
+	<!-- On-page jump navigation. Pinned under the app nav (`--appnav-h`) exactly
+	     like the biographies index's controls bar; its measured height feeds
+	     `--pinned-offset` above. Hidden in focus mode with the rest of the page
+	     context. Only shown when there are ≥2 sections to move between. -->
+	{#if showSubnav}
+		<nav
+			bind:clientHeight={subnavH}
+			class="author-subnav sticky z-20 -mx-5 mt-8 border-b border-border bg-bg px-5"
+			style="top: var(--appnav-h, 0px)"
+			aria-label={t('a11y.pageSections')}
+		>
+			<ul class="flex gap-1 overflow-x-auto">
+				{#each navItems as item (item.id)}
+					<li>
+						<a
+							href="#{item.id}"
+							class="subnav-link"
+							class:is-active={activeSection === item.id}
+							aria-current={activeSection === item.id ? 'true' : undefined}
+							onclick={(e) => jumpTo(e, item.id)}>{item.label}</a
+						>
+					</li>
+				{/each}
+			</ul>
+		</nav>
+	{/if}
 	{/if}
 
 	<!-- Biography. The band — not the page — carries the reader's CSS variables,
@@ -461,7 +545,8 @@
 	     prayer-callout ::before labels reach the injected HTML. -->
 	{#if author.bio_html}
 		<div
-			class="mx-auto mt-8"
+			id="bio"
+			class="jump-anchor mx-auto mt-8"
 			style="{readerPrefs.style}; {bioLabels}; max-width: var(--reading-measure)"
 		>
 			<Reader
@@ -481,7 +566,7 @@
 			/>
 		</div>
 	{:else if author.bio}
-		<p class="mt-6 text-body leading-relaxed text-muted">{author.bio}</p>
+		<p id="bio" class="jump-anchor mt-6 text-body leading-relaxed text-muted">{author.bio}</p>
 	{/if}
 
 	{#if !readerUi.focus}
@@ -504,7 +589,7 @@
 
 	<!-- Books -->
 	{#if author.books.length}
-		<section class="mt-14">
+		<section id="books" class="jump-anchor mt-14">
 			<h2 class="section-label">
 				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal count">({author.books.length})</span>
@@ -521,7 +606,7 @@
 
 	<!-- Sermons -->
 	{#if author.sermons.length}
-		<section class="mt-14">
+		<section id="sermons" class="jump-anchor mt-14">
 			<h2 class="section-label">
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal count">({author.sermons.length})</span>
@@ -560,7 +645,7 @@
 	     English — the same gate as the Quotes link. The visible accordion and the
 	     FAQPage JSON-LD are built from one array, so they cannot disagree. -->
 	{#if showFaq}
-		<section class="mt-14 mx-auto max-w-[40rem]">
+		<section id="faq" class="jump-anchor mt-14 mx-auto max-w-[40rem]">
 			<!-- Literal, not a t() key: the section only renders under English (see
 			     `faq`), so a localized heading over hardcoded-English questions would
 			     be an orphan key no locale ever shows. -->
@@ -672,6 +757,44 @@
 	.bio-bookmark.is-set {
 		color: var(--accent);
 		border-color: var(--accent);
+	}
+
+	/* Jump-nav targets clear both pinned bars when linked to. `--pinned-offset`
+	   (app nav + the sticky sub-bar) is published on the page column; the same
+	   contract the biographies index's group headings use. */
+	.jump-anchor {
+		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
+	}
+
+	/* On-page jump bar. Sits in the flow after the hero, then pins under the app
+	   nav on scroll. Links are quiet tabs; the active one wears the accent and an
+	   underline drawn on the shared bottom border. */
+	.author-subnav {
+		/* A hair of top padding so the tabs don't kiss the app nav when pinned. */
+		padding-block: 0.35rem 0;
+	}
+	.author-subnav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.subnav-link {
+		display: inline-block;
+		padding: 0.5rem 0.75rem;
+		border-bottom: 2px solid transparent;
+		margin-bottom: -1px; /* overlap the bar's own border so the underline meets it */
+		font-size: var(--fs-small);
+		font-weight: 500;
+		white-space: nowrap;
+		color: var(--muted);
+		text-decoration: none;
+	}
+	.subnav-link:hover {
+		color: var(--text);
+	}
+	.subnav-link.is-active {
+		color: var(--accent);
+		border-bottom-color: var(--accent);
 	}
 
 	/* Derived FAQ accordion. Native <details> so it works with no JS and during
