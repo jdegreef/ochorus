@@ -7,7 +7,9 @@
 		absUrl,
 		jsonLd,
 		breadcrumbLd,
+		faqPage,
 		hreflangAll,
+		stripHtml,
 		truncateMeta,
 		itemList,
 		topicThings
@@ -83,11 +85,13 @@
 		topIndex = p;
 	}
 
+	// The bio as plain text, computed once: the word count below and the FAQ's
+	// "Who was …" answer both need it, and it is a few-KB string stripped at
+	// build time, so a shared derived beats two passes over the same HTML.
+	const bioStripped = $derived(stripHtml(author.bio_html || ''));
 	// Counted from the rendered bio rather than a word_count field: the API does
 	// not expose one for biographies, and this is the only place that needs it.
-	const bioWords = $derived(
-		(author.bio_html || '').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length
-	);
+	const bioWords = $derived(bioStripped.split(/\s+/).filter(Boolean).length);
 	const minutesLeft = $derived(Math.max(1, Math.ceil(readingMinutes(bioWords) * (1 - frac))));
 
 	const cite = $derived({
@@ -262,14 +266,71 @@
 	const featuredQuote = $derived.by(() => {
 		const m = (author.bio_html || '').match(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/i);
 		if (!m) return '';
-		const text = m[1]
-			.replace(/<cite[\s\S]*?<\/cite>/i, '')
-			.replace(/<[^>]+>/g, ' ')
+		const text = stripHtml(m[1].replace(/<cite[\s\S]*?<\/cite>/i, ''))
 			.replace(/\s+/g, ' ')
 			.trim();
 		if (text.length < 20) return '';
 		return text.length > 220 ? text.slice(0, 217).trimEnd() + '…' : text;
 	});
+
+	// A short FAQ derived from what the page already knows — the life dates, the
+	// works, the topical shelves, the opening of the bio. It answers the questions
+	// people actually type ("who was X", "what did X write", "where can I read X")
+	// on the page AND emits the matching FAQPage JSON-LD, so the same facts serve
+	// the reader and the answer engines from one source.
+	//
+	// English only, and for the same reason the Quotes link above is: the question
+	// phrasings are hand-written English, and the derived answers lean on English
+	// sentence shapes. Under any other locale the block (and its structured data)
+	// simply doesn't render, rather than showing untranslated strings — the
+	// established pattern on this page, not a hardcoded string that leaks into
+	// every language.
+	// Oxford-comma conjunction ("a", "a and b", "a, b, and c"). The block is
+	// English-gated, so the fixed 'en' locale matches the surrounding copy.
+	const enList = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+	const joinList = (xs: string[]) => enList.format(xs);
+
+	const faq = $derived.by<{ q: string; a: string }[]>(() => {
+		if (getLang() !== 'en') return [];
+		const name = author.name;
+		const items: { q: string; a: string }[] = [];
+
+		// "Who was …" — the opening of the biography, cut to a sentence boundary
+		// (truncateMeta does exactly that). Skipped when this writer has no bio in
+		// the library yet.
+		const who = truncateMeta(bioStripped || author.bio || '', 320);
+		if (who) items.push({ q: `Who was ${name}?`, a: who });
+
+		if (author.books.length) {
+			const titles = author.books.map((b) => b.title);
+			items.push({
+				q: `What did ${name} write?`,
+				a: `${name} wrote ${joinList(titles)} — ${titles.length === 1 ? 'free to read' : 'all free to read'} on Ochorus.`
+			});
+		}
+
+		if (author.birth_year && author.death_year)
+			items.push({ q: `When did ${name} live?`, a: `${name} lived from ${author.birth_year} to ${author.death_year}.` });
+		else if (author.birth_year)
+			items.push({ q: `When was ${name} born?`, a: `${name} was born in ${author.birth_year}.` });
+
+		if (author.topics.length)
+			items.push({
+				q: `What did ${name} write about?`,
+				a: `${name}’s work centres on ${joinList(author.topics.map((tp) => tp.title))}.`
+			});
+
+		items.push({
+			q: `Where can I read ${name}’s books online?`,
+			a: `Every available work by ${name} can be read free on Ochorus — in your browser, without an account.`
+		});
+
+		return items;
+	});
+	// Two entries is the floor: a lone Q&A isn't an "FAQ", and a one-item FAQPage
+	// is noise in the markup.
+	const showFaq = $derived(faq.length >= 2);
+	const faqLd = $derived(showFaq ? faqPage(faq) : null);
 </script>
 
 <Seo
@@ -280,7 +341,7 @@
 	ogType="profile"
 	{ogImage}
 	ogImageAlt={author.photo_url ? `${t('a11y.portraitOf')} ${author.name}` : ''}
-	structuredData={worksLd ? [personLd, worksLd, crumbsLd] : [personLd, crumbsLd]}
+	structuredData={[personLd, worksLd, crumbsLd, faqLd].filter((x): x is string => x != null)}
 />
 
 <div class="page-col px-5 py-10">
@@ -494,6 +555,27 @@
 		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
 	{/if}
 
+	<!-- Frequently asked questions, derived from the page's own facts (see `faq`
+	     in the script). Renders only with two or more entries, and only in
+	     English — the same gate as the Quotes link. The visible accordion and the
+	     FAQPage JSON-LD are built from one array, so they cannot disagree. -->
+	{#if showFaq}
+		<section class="mt-14 mx-auto max-w-[40rem]">
+			<!-- Literal, not a t() key: the section only renders under English (see
+			     `faq`), so a localized heading over hardcoded-English questions would
+			     be an orphan key no locale ever shows. -->
+			<h2 class="section-label">Common questions</h2>
+			<div class="faq-list">
+				{#each faq as item, i (i)}
+					<details class="faq-item" open={i === 0}>
+						<summary>{item.q}</summary>
+						<p class="faq-a">{item.a}</p>
+					</details>
+				{/each}
+			</div>
+		</section>
+	{/if}
+
 	<!-- More lives to explore: nearest contemporaries by era. -->
 	{#if contemporaries.length}
 		<section class="mt-16 border-t border-border pt-8">
@@ -590,6 +672,53 @@
 	.bio-bookmark.is-set {
 		color: var(--accent);
 		border-color: var(--accent);
+	}
+
+	/* Derived FAQ accordion. Native <details> so it works with no JS and during
+	   prerender; the marker is replaced with a +/− that flips on [open]. */
+	.faq-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.faq-item {
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		overflow: hidden;
+	}
+	.faq-item summary {
+		cursor: pointer;
+		list-style: none;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.85rem 1rem;
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: var(--fs-body);
+		color: var(--text);
+	}
+	.faq-item summary::-webkit-details-marker {
+		display: none;
+	}
+	.faq-item summary::after {
+		content: '+';
+		margin-inline-start: auto;
+		font-size: var(--fs-h3);
+		line-height: 1;
+		font-weight: 400;
+		color: var(--accent);
+	}
+	.faq-item[open] summary::after {
+		content: '−';
+	}
+	.faq-a {
+		margin: 0;
+		padding: 0 1rem 0.95rem;
+		color: var(--muted);
+		font-size: var(--fs-body);
+		line-height: 1.6;
 	}
 
 	/* Featured header pull-quote — a hook above the biography. */

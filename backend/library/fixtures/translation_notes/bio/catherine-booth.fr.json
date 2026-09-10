@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "catherine-booth",
+ "language": "fr",
+ "job_issue": 2027,
+ "references": [
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
