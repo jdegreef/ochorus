@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-10: Portuguese book — the-god-of-all-comfort (#1475),
+// Hannah Whitall Smith, 17 chapters. Book pages are prerendered per locale, so /pt/books
+// and the shelf rebuild with the translated title and the reader page bakes the 17
+// translated chapters. This is faith-in-the-fire's second source book, so plans/+page.ts
+// is touched in the same PR — the plan goes live now that both its books have pt editions.
 // prerender refresh 2026-09-10: Portuguese book — he-holds-my-tomorrows (#1473). Book
 // pages are prerendered per locale, so /pt/books and the book shelf must rebuild with the
 // translated title, and the reader page bakes the 18 translated chapters.
