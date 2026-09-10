@@ -1,21 +1,33 @@
 {
  "_note": [
-  "French topic shelves. Titles/descriptions translated for fr; Scripture epigraphs are Louis Segond (1910) verbatim (public domain), mined from the ebible fra_lsg USFM mirror, book names localized. Covers the 10 queued topic jobs (#1826-1829,#1845,#1846,#1849-1852) plus christ-and-the-cross, which the coverage gate requires (test_every_translated_language_covers_every_topic) though it has no queued job."
+  "French topic shelves — all 30 topics. Titles/descriptions translated for fr; Scripture epigraphs are Louis Segond (1910) verbatim (public domain), fetched from the Take Root fralsg API (ebible fra_lsg USFM mirror), book names localized. christ-and-the-cross carries no epigraph (as in es/pt). Completes French coverage: the original 11 shelves plus the remaining 19 (previously translation-pending), so fr satisfies require_all_topics for go-live. Note: the 19 stay in TRANSLATION_PENDING for the other partial languages (sw/hi/lg/ar/uk)."
  ],
- "prayer": {
-  "title": "Sur la prière",
-  "description": "Apprendre à prier — et à persévérer dans la prière. Les classiques sur la vie intérieure de la prière, du lieu secret jusqu'à l'intercession qui l'emporte.",
+ "abiding-in-christ": {
+  "title": "Demeurer en Christ",
+  "description": "Le sarment sur le Cep — union et communion avec le Seigneur Jésus, et la vie qui ne jaillit d’aucune autre source que de demeurer près de lui.",
   "scripture": {
-   "reference": "Jérémie 33:3",
-   "text": "Invoque-moi, et je te répondrai; Je t’annoncerai de grandes choses, des choses cachées, Que tu ne connais pas."
+   "reference": "Jean 15:4",
+   "text": "Demeurez en moi, et je demeurerai en vous. Comme le sarment ne peut de lui-même porter du fruit, s’il ne demeure attaché au cep, ainsi vous ne le pouvez non plus, si vous ne demeurez en moi."
   }
  },
- "holy-spirit": {
-  "title": "Le Saint-Esprit",
-  "description": "Le baptême, la demeure intérieure et l'œuvre de l'Esprit — la puissance promise pour la vie chrétienne.",
+ "christ-and-the-cross": {
+  "title": "Christ et la croix",
+  "description": "La personne et l'œuvre du Sauveur — l'Agneau immolé, la honte et le triomphe de la croix, l'excellence de Christ, et le tombeau vide."
+ },
+ "contemporary-voices": {
+  "title": "Voix contemporaines",
+  "description": "Le chemin ancien a des guides vivants — des maîtres d’aujourd’hui qui écrivent pour l’Afrique de l’Est et au-delà, allant à la rencontre du disciple là où se posent aujourd’hui ses questions.",
   "scripture": {
-   "reference": "Zacharie 4:6",
-   "text": "Alors il reprit et me dit: C’est ici la parole que l’Éternel adresse à Zorobabel: Ce n’est ni par la puissance ni par la force, mais c’est par mon esprit, dit l’Éternel des armées."
+   "reference": "Psaumes 145:4",
+   "text": "Que chaque génération célèbre tes œuvres, Et publie tes hauts faits!"
+  }
+ },
+ "day-by-day": {
+  "title": "Jour après jour",
+  "description": "Une lecture pour le matin et pour le soir — le pain quotidien pour nourrir l’âme, des classiques bien-aimés de Spurgeon aux livres de l’heure paisible.",
+  "scripture": {
+   "reference": "Lamentations 3:22",
+   "text": "Les bontés de l’Éternel ne sont pas épuisées, Ses compassions ne sont pas à leur terme;"
   }
  },
  "deeper-life": {
@@ -26,20 +38,12 @@
    "text": "Car vous êtes morts, et votre vie est cachée avec Christ en Dieu."
   }
  },
- "grace-and-comfort": {
-  "title": "Grâce et consolation",
-  "description": "La grâce inépuisable de Dieu et sa consolation dans chaque épreuve — une bonne nouvelle pour les cœurs las.",
+ "enduring-classics": {
+  "title": "Les classiques intemporels",
+  "description": "Les livres qui accompagnent les pèlerins depuis des siècles — les confessions d'Augustin, le songe de Bunyan, les conseils de Thomas a Kempis — les anciens sentiers, toujours bons.",
   "scripture": {
-   "reference": "2 Corinthiens 12:9",
-   "text": "et il m’a dit: Ma grâce te suffit, car ma puissance s’accomplit dans la faiblesse. Je me glorifierai donc bien plus volontiers de mes faiblesses, afin que la puissance de Christ repose sur moi."
-  }
- },
- "revival-and-missions": {
-  "title": "Réveil et missions",
-  "description": "Des vies données pour l'Évangile, et des temps de réveil — de quoi nourrir un cœur brûlant.",
-  "scripture": {
-   "reference": "Habacuc 3:2",
-   "text": "Éternel, j’ai entendu ce que tu as annoncé, je suis saisi de crainte. Accomplis ton œuvre dans le cours des années, ô Éternel! Dans le cours des années manifeste-la! Mais dans ta colère souviens-toi de tes compassions!"
+   "reference": "Jérémie 6:16",
+   "text": "Ainsi parle l’Éternel: Placez-vous sur les chemins, regardez, Et demandez quels sont les anciens sentiers, Quelle est la bonne voie; marchez-y, Et vous trouverez le repos de vos âmes! Mais ils répondent: Nous n’y marcherons pas."
   }
  },
  "faith-and-guidance": {
@@ -50,6 +54,94 @@
    "text": "Reconnais-le dans toutes tes voies, Et il aplanira tes sentiers."
   }
  },
+ "faith-for-the-impossible": {
+  "title": "La foi pour l’impossible",
+  "description": "Prendre Dieu au mot — les orphelins de Müller nourris par la seule prière, la grâce d’attendre en lui, et la banque de la foi qui ne fait jamais faillite.",
+  "scripture": {
+   "reference": "Marc 9:23",
+   "text": "Jésus lui dit: Si tu peux!… Tout est possible à celui qui croit."
+  }
+ },
+ "for-those-who-lead": {
+  "title": "Pour ceux qui conduisent",
+  "description": "Une exhortation aux pasteurs et aux gagneurs d’âmes — le soin du pasteur, la puissance du prédicateur dans la prière, et comment amener les hommes à Christ.",
+  "scripture": {
+   "reference": "1 Pierre 5:2",
+   "text": "Paissez le troupeau de Dieu qui est sous votre garde, non par contrainte, mais volontairement, selon Dieu; non pour un gain sordide, mais avec dévouement;"
+  }
+ },
+ "foundations-of-the-faith": {
+  "title": "Les fondements de la foi",
+  "description": "Les antiques doctrines, tenues avec simplicité — l’incarnation, la grâce et la volonté de Dieu, les commandements et les vérités fondamentales transmises une fois pour toutes aux saints.",
+  "scripture": {
+   "reference": "Jude 3",
+   "text": "Bien-aimés, comme je désirais vivement vous écrire au sujet de notre salut commun, je me suis senti obligé de le faire afin de vous exhorter à combattre pour la foi qui a été transmise aux saints une fois pour toutes."
+  }
+ },
+ "grace-and-comfort": {
+  "title": "Grâce et consolation",
+  "description": "La grâce inépuisable de Dieu et sa consolation dans chaque épreuve — une bonne nouvelle pour les cœurs las.",
+  "scripture": {
+   "reference": "2 Corinthiens 12:9",
+   "text": "et il m’a dit: Ma grâce te suffit, car ma puissance s’accomplit dans la faiblesse. Je me glorifierai donc bien plus volontiers de mes faiblesses, afin que la puissance de Christ repose sur moi."
+  }
+ },
+ "holy-spirit": {
+  "title": "Le Saint-Esprit",
+  "description": "Le baptême, la demeure intérieure et l'œuvre de l'Esprit — la puissance promise pour la vie chrétienne.",
+  "scripture": {
+   "reference": "Zacharie 4:6",
+   "text": "Alors il reprit et me dit: C’est ici la parole que l’Éternel adresse à Zorobabel: Ce n’est ni par la puissance ni par la force, mais c’est par mon esprit, dit l’Éternel des armées."
+  }
+ },
+ "men-of-valour": {
+  "title": "Hommes de valeur",
+  "description": "Un appel aux hommes — à prier, à conduire, à tout donner et à veiller sur le troupeau — des vies de courage pour les fils de Dieu.",
+  "scripture": {
+   "reference": "1 Corinthiens 16:13",
+   "text": "Veillez, demeurez fermes dans la foi, soyez des hommes, fortifiez-vous."
+  }
+ },
+ "prayer": {
+  "title": "Sur la prière",
+  "description": "Apprendre à prier — et à persévérer dans la prière. Les classiques sur la vie intérieure de la prière, du lieu secret jusqu'à l'intercession qui l'emporte.",
+  "scripture": {
+   "reference": "Jérémie 33:3",
+   "text": "Invoque-moi, et je te répondrai; Je t’annoncerai de grandes choses, des choses cachées, Que tu ne connais pas."
+  }
+ },
+ "revival-and-missions": {
+  "title": "Réveil et missions",
+  "description": "Des vies données pour l'Évangile, et des temps de réveil — de quoi nourrir un cœur brûlant.",
+  "scripture": {
+   "reference": "Habacuc 3:2",
+   "text": "Éternel, j’ai entendu ce que tu as annoncé, je suis saisi de crainte. Accomplis ton œuvre dans le cours des années, ô Éternel! Dans le cours des années manifeste-la! Mais dans ta colère souviens-toi de tes compassions!"
+  }
+ },
+ "saints-of-the-african-diaspora": {
+  "title": "Saints de la diaspora africaine",
+  "description": "L’Évangile porté par des voix noires — Richard Allen et les prédicateurs nés libres, les femmes de la sainteté qui refusèrent de se taire, et Crowther sur le Niger.",
+  "scripture": {
+   "reference": "Psaumes 68:31",
+   "text": "Épouvante l’animal des roseaux, La troupe des taureaux avec les veaux des peuples, Qui se prosternent avec des pièces d’argent! Disperse les peuples qui prennent plaisir à combattre!"
+  }
+ },
+ "the-body-of-christ": {
+  "title": "Le corps de Christ",
+  "description": "L’Église comme un tout vivant — membres les uns des autres, unis à la Tête, et le service et la conduite pastorale qui en découlent.",
+  "scripture": {
+   "reference": "1 Corinthiens 12:27",
+   "text": "Vous êtes le corps de Christ, et vous êtes ses membres, chacun pour sa part."
+  }
+ },
+ "the-east-african-revival": {
+  "title": "Le réveil d’Afrique de l’Est",
+  "description": "Tukutendereza Yesu — le réveil qui, d’une colline de Kampala, a parcouru six pays et presque un siècle entier, et la marche dans la lumière qu’il a enseignée.",
+  "scripture": {
+   "reference": "1 Jean 1:7",
+   "text": "Mais si nous marchons dans la lumière, comme il est lui-même dans la lumière, nous sommes mutuellement en communion, et le sang de Jésus son Fils nous purifie de tout péché."
+  }
+ },
  "the-gospel-call": {
   "title": "L'appel de l'Évangile",
   "description": "La plus ancienne des invitations — venez, repentez-vous, croyez. Des prédicateurs qui supplient les âmes non converties, et le témoignage de la grâce trouvée par le premier des pécheurs.",
@@ -58,20 +150,28 @@
    "text": "Nous faisons donc les fonctions d’ambassadeurs pour Christ, comme si Dieu exhortait par nous; nous vous en supplions au nom de Christ: Soyez réconciliés avec Dieu!"
   }
  },
- "enduring-classics": {
-  "title": "Les classiques intemporels",
-  "description": "Les livres qui accompagnent les pèlerins depuis des siècles — les confessions d'Augustin, le songe de Bunyan, les conseils de Thomas a Kempis — les anciens sentiers, toujours bons.",
+ "the-grace-of-god": {
+  "title": "La grâce de Dieu",
+  "description": "La grâce du commencement à la fin — libre, souveraine et suffisante, surabondant pour le premier des pécheurs et soutenant le plus faible des saints.",
   "scripture": {
-   "reference": "Jérémie 6:16",
-   "text": "Ainsi parle l’Éternel: Placez-vous sur les chemins, regardez, Et demandez quels sont les anciens sentiers, Quelle est la bonne voie; marchez-y, Et vous trouverez le repos de vos âmes! Mais ils répondent: Nous n’y marcherons pas."
+   "reference": "Éphésiens 2:8",
+   "text": "Car c’est par la grâce que vous êtes sauvés, par le moyen de la foi. Et cela ne vient pas de vous, c’est le don de Dieu."
   }
  },
- "the-way-of-holiness": {
-  "title": "Le chemin de la sainteté",
-  "description": "Mis à part pour Dieu — les commandements sondés, la perfection recherchée avec droiture, et les affections du cœur éprouvées et trouvées vraies.",
+ "the-great-awakening": {
+  "title": "Le Grand Réveil",
+  "description": "La prédication qui a ébranlé deux continents — Whitefield et Wesley en plein air, Edwards au milieu de son peuple, Finney sur le réveil — et la doctrine sous la flamme.",
   "scripture": {
-   "reference": "Hébreux 12:14",
-   "text": "Recherchez la paix avec tous, et la sanctification, sans laquelle personne ne verra le Seigneur."
+   "reference": "Psaumes 85:6",
+   "text": "T’irriteras-tu contre nous à jamais? Prolongeras-tu ta colère éternellement?"
+  }
+ },
+ "the-inner-life": {
+  "title": "La vie intérieure",
+  "description": "Le chemin qui se tourne vers l’intérieur — a Kempis, Law et Guyon, l’amour de Dieu et la porte close du lieu secret, l’âme seule avec lui.",
+  "scripture": {
+   "reference": "Matthieu 6:6",
+   "text": "Mais quand tu pries, entre dans ta chambre, ferme ta porte, et prie ton Père qui est là dans le lieu secret; et ton Père, qui voit dans le secret, te le rendra."
   }
  },
  "the-preached-word": {
@@ -82,8 +182,60 @@
    "text": "Comment donc invoqueront-ils celui en qui ils n’ont pas cru? Et comment croiront-ils en celui dont ils n’ont pas entendu parler? Et comment en entendront-ils parler, s’il n’y a personne qui prêche?"
   }
  },
- "christ-and-the-cross": {
-  "title": "Christ et la croix",
-  "description": "La personne et l'œuvre du Sauveur — l'Agneau immolé, la honte et le triomphe de la croix, l'excellence de Christ, et le tombeau vide."
+ "the-puritans": {
+  "title": "Les puritains",
+  "description": "La théologie simple et scrutatrice des puritains — le pèlerin de Bunyan, Owen sur le péché intérieur, la chaleur de Watson et le feu d’Edwards — la doctrine pressée jusqu’au cœur.",
+  "scripture": {
+   "reference": "Hébreux 4:12",
+   "text": "Car la parole de Dieu est vivante et efficace, plus tranchante qu’une épée quelconque à deux tranchants, pénétrante jusqu’à partager âme et esprit, jointures et mœlles; elle juge les sentiments et les pensées du cœur."
+  }
+ },
+ "the-way-of-holiness": {
+  "title": "Le chemin de la sainteté",
+  "description": "Mis à part pour Dieu — les commandements sondés, la perfection recherchée avec droiture, et les affections du cœur éprouvées et trouvées vraies.",
+  "scripture": {
+   "reference": "Hébreux 12:14",
+   "text": "Recherchez la paix avec tous, et la sanctification, sans laquelle personne ne verra le Seigneur."
+  }
+ },
+ "the-wesleys-and-early-methodism": {
+  "title": "Les Wesley et le méthodisme primitif",
+  "description": "Le réveil devenu mouvement — les sermons et le récit tout simple de John Wesley, la mère qui l’a formé, et la ferveur qui a suivi.",
+  "scripture": {
+   "reference": "Luc 24:32",
+   "text": "Et ils se dirent l’un à l’autre: Notre cœur ne brûlait-il pas au-dedans de nous, lorsqu’il nous parlait en chemin et nous expliquait les Écritures?"
+  }
+ },
+ "to-the-ends-of-the-earth": {
+  "title": "Jusqu’aux extrémités de la terre",
+  "description": "Les journaux missionnaires — Brainerd dans les forêts, Taylor en Chine, Carmichael en Inde, Crowther sur le Niger — l’Évangile porté à tout prix.",
+  "scripture": {
+   "reference": "Actes 1:8",
+   "text": "Mais vous recevrez une puissance, le Saint-Esprit survenant sur vous, et vous serez mes témoins à Jérusalem, dans toute la Judée, dans la Samarie, et jusqu’aux extrémités de la terre."
+  }
+ },
+ "victory-over-sin": {
+  "title": "La victoire sur le péché",
+  "description": "Le combat intérieur pour la sainteté — mortifier le péché, la pureté du cœur, les affections remises en ordre, et le chemin vers le lieu très saint.",
+  "scripture": {
+   "reference": "Romains 6:14",
+   "text": "Car le péché n’aura point de pouvoir sur vous, puisque vous êtes, non sous la loi, mais sous la grâce."
+  }
+ },
+ "voices-of-the-early-church": {
+  "title": "Voix de l’Église primitive",
+  "description": "La foi des premiers siècles dans ses propres mots — le cœur d’Augustin mis à nu, Athanase sur le Verbe fait chair, et les lettres des martyrs et des pasteurs.",
+  "scripture": {
+   "reference": "Hébreux 12:1",
+   "text": "Nous donc aussi, puisque nous sommes environnés d’une si grande nuée de témoins, rejetons tout fardeau, et le péché qui nous enveloppe si facilement, et courons avec persévérance dans la carrière qui nous est ouverte,"
+  }
+ },
+ "women-of-faith": {
+  "title": "Femmes de foi",
+  "description": "Mères, missionnaires et mystiques — la foi de femmes qui ont prié, souffert et osé, de la cellule de Guyon à la chaire de l’esclave affranchie.",
+  "scripture": {
+   "reference": "Proverbes 31:30",
+   "text": "La grâce est trompeuse, et la beauté est vaine; La femme qui craint l’Éternel est celle qui sera louée."
+  }
  }
 }
