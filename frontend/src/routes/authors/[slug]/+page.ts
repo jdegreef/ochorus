@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: Portuguese author bios (batch 3) — blasio-kigozi (#1590),
+// c-t-studd (#1591), anselm-of-canterbury (#1592). Author pages are prerendered PER AUTHOR,
+// so each /pt/authors/<slug> page must rebuild for the translated bio and its callouts.
 // prerender refresh 2026-09-10: Swahili author bios (batch) — martin-luther (#2079),
 // bernard-of-clairvaux (#2080), clement-of-rome (#2081), ignatius-of-antioch (#2082),
 // jarena-lee (#2083), julia-foote (#2084), william-law (#2085). Author pages are
