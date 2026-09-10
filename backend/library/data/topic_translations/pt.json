@@ -11,6 +11,22 @@
     "title": "Cristo e a cruz",
     "description": "A pessoa e a obra do Salvador — o Cordeiro imolado, a vergonha e o triunfo da cruz, a excelência de Cristo e o túmulo vazio."
   },
+  "contemporary-voices": {
+    "title": "Vozes Contemporâneas",
+    "description": "O caminho antigo tem guias vivos — mestres de hoje que escrevem para a África Oriental e além, indo ao encontro do discípulo onde estão agora as suas perguntas.",
+    "scripture": {
+      "reference": "Salmo 145:4",
+      "text": "Uma geração exaltará as tuas obras à outra, e declarará os teus atos poderosos."
+    }
+  },
+  "day-by-day": {
+    "title": "Dia após Dia",
+    "description": "Uma leitura para a manhã e para a noite — pão diário para manter a alma alimentada, dos amados clássicos de Spurgeon aos livros da hora tranquila.",
+    "scripture": {
+      "reference": "Lamentações 3:22-23",
+      "text": "É por causa das bondades do SENHOR que não somos consumidos, porque as suas misericórdias não falham. Elas se renovam a cada manhã. Grande é a sua fidelidade."
+    }
+  },
   "deeper-life": {
     "title": "A Vida Mais Profunda",
     "description": "Santidade, entrega e a vida abundante escondida com Cristo — livros para ir mais fundo.",
@@ -35,6 +51,30 @@
       "text": "Reconheça-o em todos os seus caminhos, e ele endireitará as suas veredas."
     }
   },
+  "faith-for-the-impossible": {
+    "title": "Fé para o Impossível",
+    "description": "Tomar Deus pela sua palavra — os órfãos de Müller alimentados só pela oração, a graça de esperar nele, e o banco da fé que nunca quebra.",
+    "scripture": {
+      "reference": "Marcos 9:23",
+      "text": "Jesus lhe disse: “Se tu podes crer, todas as coisas são possíveis ao que crê.”"
+    }
+  },
+  "for-those-who-lead": {
+    "title": "Para os que Lideram",
+    "description": "Uma incumbência a pastores e ganhadores de almas — o cuidado do pastor, o poder do pregador na oração, e como ganhar almas para Cristo.",
+    "scripture": {
+      "reference": "1 Pedro 5:2",
+      "text": "pastoreiem o rebanho de Deus que está entre vocês, exercendo a supervisão, não por obrigação, mas voluntariamente; não por ganho desonesto, mas de boa vontade;"
+    }
+  },
+  "foundations-of-the-faith": {
+    "title": "Fundamentos da Fé",
+    "description": "As antigas doutrinas, sustentadas com simplicidade — a encarnação, a graça e a vontade de Deus, os mandamentos e os fundamentos uma vez por todas entregues aos santos.",
+    "scripture": {
+      "reference": "Judas 3",
+      "text": "Amados, embora eu estivesse muito ansioso para lhes escrever a respeito da nossa salvação comum, senti que era necessário escrever-lhes, exortando-os a batalhar arduamente pela fé que de uma vez por todas foi entregue aos santos."
+    }
+  },
   "grace-and-comfort": {
     "title": "Graça e Consolo",
     "description": "A graça inesgotável de Deus e o seu consolo em toda provação — boas novas para o cansado.",
@@ -49,6 +89,14 @@
     "scripture": {
       "reference": "Zacarias 4:6",
       "text": "Então ele me respondeu e falou, dizendo: “Esta é a palavra do SENHOR a Zorobabel, dizendo: ‘Não por força, nem por poder, mas pelo meu Espírito’, diz o SENHOR dos Exércitos."
+    }
+  },
+  "men-of-valour": {
+    "title": "Homens de Valor",
+    "description": "Um chamado aos homens — a orar, a liderar, a dar tudo e a cuidar do rebanho — vidas de coragem para os filhos de Deus.",
+    "scripture": {
+      "reference": "1 Coríntios 16:13",
+      "text": "Vigiem! Permaneçam firmes na fé! Sejam corajosos! Sejam fortes!"
     }
   },
   "prayer": {
@@ -67,6 +115,30 @@
       "text": "SENHOR, eu ouvi da sua fama. Estou maravilhado com as suas obras, SENHOR. Renove a sua obra no meio dos anos. No meio dos anos, torne-a conhecida. Na ira, lembre-se da misericórdia."
     }
   },
+  "saints-of-the-african-diaspora": {
+    "title": "Santos da Diáspora Africana",
+    "description": "O evangelho levado por vozes negras — Richard Allen e os pregadores nascidos livres, as mulheres da santidade que não se deixaram calar, e Crowther no Níger.",
+    "scripture": {
+      "reference": "Salmo 68:31",
+      "text": "Príncipes virão do Egito. A Etiópia se apressará em estender as suas mãos para Deus."
+    }
+  },
+  "the-body-of-christ": {
+    "title": "O Corpo de Cristo",
+    "description": "A igreja como um todo vivo — membros uns dos outros, unidos à Cabeça, e o serviço e o cuidado pastoral que daí fluem.",
+    "scripture": {
+      "reference": "1 Coríntios 12:27",
+      "text": "Ora, vocês são o corpo de Cristo, e membros individualmente."
+    }
+  },
+  "the-east-african-revival": {
+    "title": "O Avivamento da África Oriental",
+    "description": "Tukutendereza Yesu — o despertamento que correu de uma colina de Kampala por seis países e quase um século inteiro, e o andar na luz que ensinou.",
+    "scripture": {
+      "reference": "1 João 1:7",
+      "text": "Mas, se andarmos na luz, como ele na luz está, temos comunhão uns com os outros, e o sangue de Jesus Cristo, seu Filho, nos purifica de todo pecado."
+    }
+  },
   "the-gospel-call": {
     "title": "O Chamado do Evangelho",
     "description": "O convite mais antigo que existe — vem, arrepende-te, crê. Pregadores rogando aos não convertidos, e o testemunho da graça encontrada pelo principal dos pecadores.",
@@ -83,6 +155,22 @@
       "text": "pois pela graça vocês foram salvos por meio da fé, e isso não vem de vocês; é dom de Deus,"
     }
   },
+  "the-great-awakening": {
+    "title": "O Grande Despertar",
+    "description": "A pregação que abalou dois continentes — Whitefield e Wesley ao ar livre, Edwards entre o seu povo, Finney sobre o avivamento — e a doutrina sob a chama.",
+    "scripture": {
+      "reference": "Salmo 85:6",
+      "text": "Não nos reavivarás novamente, para que o teu povo se alegre em ti?"
+    }
+  },
+  "the-inner-life": {
+    "title": "A Vida Interior",
+    "description": "O caminho que se volta para dentro — Kempis, Law e Guyon, o amor de Deus e a porta fechada do lugar secreto, a alma a sós com ele.",
+    "scripture": {
+      "reference": "Mateus 6:6",
+      "text": "Mas você, quando orar, entre no seu quarto e, tendo fechado a porta, ore ao seu Pai, que está em secreto; e o seu Pai, que vê em secreto, o recompensará publicamente."
+    }
+  },
   "the-preached-word": {
     "title": "A Palavra Pregada",
     "description": "A grande pregação na página — Whitefield e Wesley em plena voz, Spurgeon entre os seus lavradores — e o encargo de Baxter a todo pastor de almas.",
@@ -91,12 +179,52 @@
       "text": "Como, pois, invocarão aquele em quem não creram? E como crerão naquele de quem não ouviram falar? E como ouvirão, se não há quem pregue?"
     }
   },
+  "the-puritans": {
+    "title": "Os Puritanos",
+    "description": "A teologia simples e perscrutadora dos puritanos — o peregrino de Bunyan, Owen sobre o pecado interior, o calor de Watson e o fogo de Edwards — doutrina aplicada ao coração.",
+    "scripture": {
+      "reference": "Hebreus 4:12",
+      "text": "Pois a palavra de Deus é viva e eficaz, e mais afiada do que qualquer espada de dois gumes, penetrando até a divisão de alma e espírito, de juntas e medulas, e é apta para discernir os pensamentos e intenções do coração."
+    }
+  },
   "the-way-of-holiness": {
     "title": "O Caminho da Santidade",
     "description": "Separados para Deus — os mandamentos examinados, a perfeição buscada com honestidade, e os afetos do coração provados e achados verdadeiros.",
     "scripture": {
       "reference": "Hebreus 12:14",
       "text": "Busquem a paz com todos, e a santificação, sem a qual ninguém verá o Senhor,"
+    }
+  },
+  "the-wesleys-and-early-methodism": {
+    "title": "Os Wesley e o Metodismo Primitivo",
+    "description": "O despertamento que se tornou um movimento — os sermões e o relato singelo de John Wesley, a mãe que o formou, e o fervor que se seguiu.",
+    "scripture": {
+      "reference": "Lucas 24:32",
+      "text": "Eles disseram um ao outro: “Não ardia o nosso coração dentro de nós enquanto ele nos falava pelo caminho, e enquanto nos abria as Escrituras?”"
+    }
+  },
+  "to-the-ends-of-the-earth": {
+    "title": "Até os Confins da Terra",
+    "description": "Os diários missionários — Brainerd nas florestas, Taylor na China, Carmichael na Índia, Crowther no Níger — o evangelho levado a qualquer custo.",
+    "scripture": {
+      "reference": "Atos 1:8",
+      "text": "Mas vocês receberão poder quando o Espírito Santo descer sobre vocês. E serão minhas testemunhas em Jerusalém, em toda a Judeia e Samaria, e até os confins da terra.”"
+    }
+  },
+  "victory-over-sin": {
+    "title": "Vitória sobre o Pecado",
+    "description": "A luta interior pela santidade — mortificar o pecado, a pureza de coração, os afetos postos em ordem, e o caminho para o lugar santíssimo.",
+    "scripture": {
+      "reference": "Romanos 6:14",
+      "text": "Pois o pecado não terá domínio sobre vocês, porque vocês não estão debaixo da lei, mas debaixo da graça."
+    }
+  },
+  "voices-of-the-early-church": {
+    "title": "Vozes da Igreja Primitiva",
+    "description": "A fé dos primeiros séculos em suas próprias palavras — o coração de Agostinho posto a nu, Atanásio sobre o Verbo feito carne, e as cartas de mártires e pastores.",
+    "scripture": {
+      "reference": "Hebreus 12:1",
+      "text": "Portanto, nós também, visto que estamos rodeados por tão grande nuvem de testemunhas, deixemos de lado todo peso e o pecado que tão facilmente nos enreda, e corramos com perseverança a corrida que nos é proposta,"
     }
   },
   "women-of-faith": {
