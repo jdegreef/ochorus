@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: Portuguese sermons (batch 3) — against-eutropius (#1586),
+// gods-love-for-a-sinning-world (#1587). Sermon pages are prerendered per locale, so
+// /pt/sermons must rebuild with the translated titles.
 // prerender refresh 2026-09-10: French sermons — a-ribband-of-blue (#2019),
 // why-is-god-a-stranger-in-the-land (#2025), the-triumph-of-calvary (#2022). Rebuilds
 // /fr/sermons so each card and its /fr/sermons/<slug> page bakes the translated title.

@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: Portuguese author bio — corrie-ten-boom (#1593). Author
+// pages are prerendered PER AUTHOR, so /pt/authors/corrie-ten-boom must rebuild for the
+// translated bio and its prayer callouts.
 // prerender refresh 2026-09-10: Portuguese author bios (batch 3) — blasio-kigozi (#1590),
 // c-t-studd (#1591), anselm-of-canterbury (#1592). Author pages are prerendered PER AUTHOR,
 // so each /pt/authors/<slug> page must rebuild for the translated bio and its callouts.
