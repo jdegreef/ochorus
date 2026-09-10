@@ -1,0 +1,21 @@
+{
+ "kind": "bio",
+ "slug": "george-whitefield",
+ "language": "ar",
+ "job_issue": 828,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "self_rendered"
+  }
+ ]
+}
