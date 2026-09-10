@@ -1,0 +1,10 @@
+{
+ "the-inner-chamber-month": {
+  "title": "Un mois dans la chambre intérieure",
+  "description": "Prenez l’habitude quotidienne de la prière et de la Parole : trente-six matins avec Andrew Murray, un chapitre chaque jour.",
+  "note": [
+   "« La chambre intérieure » is the fr title of the book itself, so the plan card and the book a reader lands on say the same thing.",
+   "Prose added with the fr edition of the-inner-chamber (job #1838); seed_plans creates the (the-inner-chamber-month, fr) row now that the book is present."
+  ]
+ }
+}

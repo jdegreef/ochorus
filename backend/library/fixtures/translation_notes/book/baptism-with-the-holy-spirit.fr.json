@@ -1,0 +1,430 @@
+{
+ "kind": "book",
+ "slug": "baptism-with-the-holy-spirit",
+ "language": "fr",
+ "job_issue": 1839,
+ "pull_request": null,
+ "note": "Keyless in-session French translation: all references are self_rendered from Louis Segond (1910) by recall. Verify each against the French Bible during native review.",
+ "references": [
+  {
+   "reference": "Acts 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 10:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 10:45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 10:47",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 11:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 11:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 19:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 19:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 1:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 13:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 13:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:12-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:16-19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:44-46",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:31-35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:4-13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 6:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 1:4-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 3:21-22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 4:1-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 7:38-39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 11:15-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 1:5-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 24:48-49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:8-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:38-39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:8-13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 9:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 9:20-22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:23-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 5:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Leviticus 9:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 44:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:18-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:14-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 5:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:15-17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 9:17-20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 10:44-46",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 19:1-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 16:19-20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 16:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 6:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 11:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 13-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 14:9-11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 32:1-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:11-13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 20:10-12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 5:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 1:2-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Joshua 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 10:28-30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 4:7-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 17:4",
+   "status": "self_rendered"
+  }
+ ]
+}
