@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: Portuguese sermons (batch 2) — aggressive-christianity
+// (#1495), sweet-comfort-for-feeble-saints (#1496), the-way-of-salvation (#1497). Sermon
+// pages are prerendered per locale, so /pt/sermons must rebuild with the translated titles.
 // prerender refresh 2026-09-10: Portuguese sermons (batch 1) — pauls-praise-of-christian-love
 // (#1490), enduring-persecution-for-christ (#1491), fall-and-recovery-of-man (#1492). Sermon
 // pages are prerendered per locale, so /pt/sermons must rebuild with the translated titles.

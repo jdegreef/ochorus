@@ -32,7 +32,8 @@
 		| 'mountain'
 		| 'heart'
 		| 'flame'
-		| 'compass';
+		| 'compass'
+		| 'check';
 
 	let {
 		name,
@@ -148,5 +149,7 @@
 	{:else if name === 'compass'}
 		<circle cx="12" cy="12" r="9" />
 		<path d="m15.6 8.4-2 5.2-5.2 2 2-5.2z" />
+	{:else if name === 'check'}
+		<path d="M5 12.5l4.5 4.5L19 7" />
 	{/if}
 </svg>
