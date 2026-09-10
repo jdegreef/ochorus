@@ -1,7 +1,11 @@
 {
   "abiding-in-christ": {
     "title": "Permanecer en Cristo",
-    "description": "El pámpano en la Vid — unión y comunión con el Señor Jesús, y la vida que no brota de otra fuente que la de permanecer cerca de él."
+    "description": "El pámpano en la Vid — unión y comunión con el Señor Jesús, y la vida que no brota de otra fuente que la de permanecer cerca de él.",
+    "scripture": {
+      "reference": "Juan 15:4",
+      "text": "Estad en mí, y yo en vosotros. Como el pámpano no puede llevar fruto de sí mismo, si no estuviere en la vid; así ni vosotros, si no estuviereis en mí."
+    }
   },
   "christ-and-the-cross": {
     "title": "Cristo y la cruz",
@@ -9,50 +13,98 @@
   },
   "deeper-life": {
     "title": "La vida más profunda",
-    "description": "Santidad, entrega y la vida abundante escondida con Cristo — libros para ir más adentro."
+    "description": "Santidad, entrega y la vida abundante escondida con Cristo — libros para ir más adentro.",
+    "scripture": {
+      "reference": "Colosenses 3:3",
+      "text": "Porque muertos sois, y vuestra vida está escondida con Cristo en Dios."
+    }
   },
   "enduring-classics": {
     "title": "Los clásicos perdurables",
-    "description": "Los libros que han acompañado a los peregrinos por siglos — la confesión de Agustín, el sueño de Bunyan, el consejo de Kempis — las sendas antiguas, todavía buenas."
+    "description": "Los libros que han acompañado a los peregrinos por siglos — la confesión de Agustín, el sueño de Bunyan, el consejo de Kempis — las sendas antiguas, todavía buenas.",
+    "scripture": {
+      "reference": "Jeremías 6:16",
+      "text": "Así dijo Jehová: Paraos en los caminos, y mirad, y preguntad por las sendas antiguas, cuál sea el buen camino, y andad por él, y hallaréis descanso para vuestra alma. Mas dijeron: No andaremos."
+    }
   },
   "faith-and-guidance": {
     "title": "Fe y dirección",
-    "description": "Confiar en Dios para el pan de cada día, la dirección y toda promesa — andar por fe, no por vista."
+    "description": "Confiar en Dios para el pan de cada día, la dirección y toda promesa — andar por fe, no por vista.",
+    "scripture": {
+      "reference": "Proverbios 3:6",
+      "text": "Reconócelo en todos tus caminos, y él enderezará tus veredas."
+    }
   },
   "grace-and-comfort": {
     "title": "Gracia y consuelo",
-    "description": "La gracia inagotable de Dios y su consuelo en toda prueba — buenas nuevas para el cansado."
+    "description": "La gracia inagotable de Dios y su consuelo en toda prueba — buenas nuevas para el cansado.",
+    "scripture": {
+      "reference": "2 Corintios 12:9",
+      "text": "Y me ha dicho: Bástate mi gracia; porque mi potencia en la flaqueza se perfecciona. Por tanto, de buena gana me gloriaré más bien en mis flaquezas, porque habite en mí la potencia de Cristo."
+    }
   },
   "holy-spirit": {
     "title": "El Espíritu Santo",
-    "description": "El bautismo del Espíritu, su morada en nosotros y su obra — el poder prometido para la vida cristiana."
+    "description": "El bautismo del Espíritu, su morada en nosotros y su obra — el poder prometido para la vida cristiana.",
+    "scripture": {
+      "reference": "Zacarías 4:6",
+      "text": "Entonces respondió y hablóme, diciendo: Esta es palabra de Jehová á Zorobabel, en que se dice: No con ejército, ni con fuerza, sino con mi espíritu, ha dicho Jehová de los ejércitos."
+    }
   },
   "prayer": {
     "title": "Sobre la oración",
-    "description": "Aprender a orar — y a seguir orando. Los clásicos sobre la vida interior de la oración, desde el lugar secreto hasta la intercesión perseverante."
+    "description": "Aprender a orar — y a seguir orando. Los clásicos sobre la vida interior de la oración, desde el lugar secreto hasta la intercesión perseverante.",
+    "scripture": {
+      "reference": "Jeremías 33:3",
+      "text": "Clama á mí, y te responderé, y te enseñaré cosas grandes y dificultosas que tú no sabes."
+    }
   },
   "revival-and-missions": {
     "title": "Avivamiento y misiones",
-    "description": "Vidas derramadas por el evangelio, y tiempos de despertar — combustible para un corazón ardiente."
+    "description": "Vidas derramadas por el evangelio, y tiempos de despertar — combustible para un corazón ardiente.",
+    "scripture": {
+      "reference": "Habacuc 3:2",
+      "text": "Oh Jehová, oído he tu palabra, y temí: oh Jehová, aviva tu obra en medio de los tiempos, en medio de los tiempos hazla conocer; en la ira acuérdate de la misericordia."
+    }
   },
   "the-gospel-call": {
     "title": "El llamado del evangelio",
-    "description": "La invitación más antigua que existe — ven, arrepiéntete, cree. Predicadores rogando a los no convertidos, y el testimonio de la gracia hallada por el primero de los pecadores."
+    "description": "La invitación más antigua que existe — ven, arrepiéntete, cree. Predicadores rogando a los no convertidos, y el testimonio de la gracia hallada por el primero de los pecadores.",
+    "scripture": {
+      "reference": "2 Corintios 5:20",
+      "text": "Así que, somos embajadores en nombre de Cristo, como si Dios rogase por medio nuestro; os rogamos en nombre de Cristo: Reconciliaos con Dios."
+    }
   },
   "the-grace-of-god": {
     "title": "La gracia de Dios",
-    "description": "Gracia de principio a fin — libre, soberana y suficiente, que sobreabunda para el primero de los pecadores y sostiene al más débil de los santos."
+    "description": "Gracia de principio a fin — libre, soberana y suficiente, que sobreabunda para el primero de los pecadores y sostiene al más débil de los santos.",
+    "scripture": {
+      "reference": "Efesios 2:8",
+      "text": "Porque por gracia sois salvos por la fe; y esto no de vosotros, pues es don de Dios:"
+    }
   },
   "the-preached-word": {
     "title": "La palabra predicada",
-    "description": "La gran predicación en la página — Whitefield y Wesley a plena voz, Spurgeon entre sus labradores — y el encargo de Baxter a todo pastor de almas."
+    "description": "La gran predicación en la página — Whitefield y Wesley a plena voz, Spurgeon entre sus labradores — y el encargo de Baxter a todo pastor de almas.",
+    "scripture": {
+      "reference": "Romanos 10:14",
+      "text": "¿Cómo, pues invocarán á aquel en el cual no han creído? ¿y cómo creerán á aquel de quien no han oído? ¿y cómo oirán sin haber quien les predique?"
+    }
   },
   "the-way-of-holiness": {
     "title": "El camino de la santidad",
-    "description": "Apartados para Dios — los mandamientos examinados, la perfección buscada con honestidad, y los afectos del corazón probados y hallados verdaderos."
+    "description": "Apartados para Dios — los mandamientos examinados, la perfección buscada con honestidad, y los afectos del corazón probados y hallados verdaderos.",
+    "scripture": {
+      "reference": "Hebreos 12:14",
+      "text": "Seguid la paz con todos, y la santidad, sin la cual nadie verá al Señor:"
+    }
   },
   "women-of-faith": {
     "title": "Mujeres de fe",
-    "description": "Madres, misioneras y místicas — la fe de mujeres que oraron, sufrieron y se atrevieron, desde la celda de Guyon hasta el púlpito de la esclava liberta."
+    "description": "Madres, misioneras y místicas — la fe de mujeres que oraron, sufrieron y se atrevieron, desde la celda de Guyon hasta el púlpito de la esclava liberta.",
+    "scripture": {
+      "reference": "Proverbios 31:30",
+      "text": "Engañosa es la gracia, y vana la hermosura: la mujer que teme á Jehová, ésa será alabada."
+    }
   }
 }
