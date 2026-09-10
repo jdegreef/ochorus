@@ -242,6 +242,13 @@
    "art": true,
    "scrim": 0.55
   },
+  "sw/around-the-wicket-gate": {
+   "ground": "8ce84580fb0a6d4327977a8918a8bcad1d419a77bf91022769fdfe431fb84907",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.55
+  },
   "cheque-book": {
    "ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
    "style": "revival",
