@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-10: Arabic sermon — the-golden-key-of-prayer (#820). Rebuilds
+// /ar/sermons so the card and its /ar/sermons/the-golden-key-of-prayer page bake the translated title.
 // prerender refresh 2026-09-10: Ukrainian sermon — salvation-by-faith (#893). Rebuilds
 // /uk/sermons so the card and its /uk/sermons/salvation-by-faith page bake the translated title.
 // prerender refresh 2026-09-10: Ukrainian sermon — blessed-adversity (#892). Rebuilds
