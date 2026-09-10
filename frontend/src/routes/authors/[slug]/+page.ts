@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: Portuguese author bios (batch 2) — john-newton (#1580),
+// bill-bright (#1588), billy-graham (#1589). Author pages are prerendered PER AUTHOR,
+// so each /pt/authors/<slug> page must rebuild for the translated bio and its callouts.
 // prerender refresh 2026-09-10: Portuguese author bios (batch 1) — a-w-tozer (#1577),
 // j-c-ryle (#1578), alexander-maclaren (#1579). Author pages are prerendered PER
 // AUTHOR, so each /pt/authors/<slug> page must rebuild for the translated bio and
