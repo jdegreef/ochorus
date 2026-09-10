@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: French sermons — a-ribband-of-blue (#2019),
+// why-is-god-a-stranger-in-the-land (#2025), the-triumph-of-calvary (#2022). Rebuilds
+// /fr/sermons so each card and its /fr/sermons/<slug> page bakes the translated title.
 // prerender refresh 2026-09-10: Arabic sermon — pauls-first-prayer (#825). Rebuilds
 // /ar/sermons so the card and its /ar/sermons/pauls-first-prayer page bake the translated title.
 // prerender refresh 2026-09-10: Arabic sermon — the-new-birth (#824). Rebuilds

@@ -1,0 +1,69 @@
+{
+ "kind": "sermon",
+ "slug": "a-ribband-of-blue",
+ "language": "fr",
+ "job_issue": 2019,
+ "references": [
+  {
+   "reference": "Numbers 15:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 5:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 5:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Numbers 15:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Numbers 15:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Numbers 15:38-40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 7:51",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Thessalonians 5:19",
+   "status": "self_rendered"
+  }
+ ]
+}

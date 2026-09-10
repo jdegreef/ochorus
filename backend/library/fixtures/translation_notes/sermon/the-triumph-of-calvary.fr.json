@@ -1,0 +1,107 @@
+{
+ "kind": "sermon",
+ "slug": "the-triumph-of-calvary",
+ "language": "fr",
+ "job_issue": 2022,
+ "references": [
+  {
+   "reference": "Isaiah 63:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 63:1-6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 2:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 16:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 26:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 7:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 63:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 63:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 42:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 22:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Malachi 4:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 20:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 2:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 63:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 63:6",
+   "status": "self_rendered"
+  }
+ ]
+}
