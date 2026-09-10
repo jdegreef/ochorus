@@ -409,38 +409,34 @@
 	{#if !readerUi.focus}
 	<Breadcrumb items={crumbs} />
 
-	<!-- Wraps on a phone. The action row was already overflowing the viewport by
-	     ~99px with three buttons (it is `shrink-0` beside a name that can be two
-	     lines long); text settings and focus would have pushed it further. -->
-	<header class="flex flex-wrap items-center gap-x-5 gap-y-4">
+	<!-- A CENTRED masthead stack: portrait, name, era/counts, then the action row,
+	     all sharing the same reading column as the timeline, quote and biography
+	     below. The page used to left-align a full-width header over a centred body,
+	     so the eye jumped margins and a wide empty gutter opened beside the prose;
+	     one centred column removes both. The action row wraps and stays centred on
+	     a phone. -->
+	<header class="mx-auto max-w-[40rem] text-center">
 		{#if author.photo_url}
 			<img
 				src={author.photo_url}
 				alt="{t('a11y.portraitOf')} {author.name}"
-				class="h-24 w-24 shrink-0 rounded-full border border-border object-cover shadow-sm"
+				class="mx-auto h-28 w-28 rounded-full border border-border object-cover shadow-sm"
 				style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"
 			/>
 		{:else}
 			<span
-				class="font-display flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent"
+				class="font-display mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent"
 			>
 				{initials(author.name)}
 			</span>
 		{/if}
-		<!-- basis-64 + flex-1: the heading is now a sentence, not a name, and at its
-		     natural width it no longer fits beside the portrait — the wrapping
-		     header would drop the portrait onto its own line. Letting this column
-		     shrink keeps them side by side, while the 16rem basis still wraps on a
-		     phone. -->
-		<div class="min-w-0 flex-1 basis-64">
-			<h1 class="text-h1" dir="auto">{heading}</h1>
-			{#if summaryBits.length}
-				<p class="mt-1 text-body text-muted">
-					{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50"> · </span>{/if}{bit}{/each}
-				</p>
-			{/if}
-		</div>
-		<div class="ms-auto flex flex-wrap items-center gap-2">
+		<h1 class="text-h1 mt-4" dir="auto">{heading}</h1>
+		{#if summaryBits.length}
+			<p class="mt-1.5 text-body text-muted">
+				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50"> · </span>{/if}{bit}{/each}
+			</p>
+		{/if}
+		<div class="mt-4 flex flex-wrap items-center justify-center gap-2">
 			<!-- Search this author's works. A reader who has read one Murray book
 			     and half-remembers a phrase from another is on this page, and
 			     until now their only option was the whole library. -->
@@ -517,11 +513,11 @@
 	{#if showSubnav}
 		<nav
 			bind:clientHeight={subnavH}
-			class="author-subnav sticky z-20 -mx-5 mt-8 border-b border-border bg-bg px-5"
+			class="author-subnav sticky z-20 mx-auto mt-8 max-w-[40rem] border-b border-border bg-bg"
 			style="top: var(--appnav-h, 0px)"
 			aria-label={t('a11y.pageSections')}
 		>
-			<ul class="flex gap-1 overflow-x-auto">
+			<ul class="flex justify-center gap-1 overflow-x-auto">
 				{#each navItems as item (item.id)}
 					<li>
 						<a
@@ -589,14 +585,14 @@
 
 	<!-- Books -->
 	{#if author.books.length}
-		<section id="books" class="jump-anchor mt-14">
+		<section id="books" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
 			<h2 class="section-label">
 				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal count">({author.books.length})</span>
 			</h2>
-			<!-- Wider cards than .book-grid: one writer's shelf is a handful of
-			     books, and six-across would set them as thumbnails. -->
-			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+			<!-- Three across at most: the page is now one reading-width column, so a
+			     writer's shelf sits as a handful of real covers, not a thumbnail grid. -->
+			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
 				{#each author.books as book (book.slug)}
 					<BookCard {book} />
 				{/each}
@@ -606,7 +602,7 @@
 
 	<!-- Sermons -->
 	{#if author.sermons.length}
-		<section id="sermons" class="jump-anchor mt-14">
+		<section id="sermons" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
 			<h2 class="section-label">
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal count">({author.sermons.length})</span>
@@ -626,9 +622,9 @@
 	     (BookPerson) — an anthology or a life that features them. Book cards, not
 	     person cards, and showAuthor so it's clear whose work it is. -->
 	{#if author.appears_in?.length}
-		<section class="mt-14">
+		<section class="mx-auto mt-12 max-w-[40rem]">
 			<h2 class="section-label">{t('author.appearsIn')}</h2>
-			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
 				{#each author.appears_in as book (book.slug)}
 					<BookCard {book} showAuthor />
 				{/each}
@@ -645,7 +641,7 @@
 	     English — the same gate as the Quotes link. The visible accordion and the
 	     FAQPage JSON-LD are built from one array, so they cannot disagree. -->
 	{#if showFaq}
-		<section id="faq" class="jump-anchor mt-14 mx-auto max-w-[40rem]">
+		<section id="faq" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
 			<!-- Literal, not a t() key: the section only renders under English (see
 			     `faq`), so a localized heading over hardcoded-English questions would
 			     be an orphan key no locale ever shows. -->
@@ -663,7 +659,7 @@
 
 	<!-- More lives to explore: nearest contemporaries by era. -->
 	{#if contemporaries.length}
-		<section class="mt-16 border-t border-border pt-8">
+		<section class="mx-auto mt-12 max-w-[40rem] border-t border-border pt-8">
 			<h2 class="section-label">{t('author.moreLives')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each contemporaries as c (c.slug)}
@@ -678,7 +674,7 @@
 	     leaves `photo_attribution` blank and shows nothing here. Sits with the
 	     page context (hidden in focus mode), a quiet colophon beneath the works. -->
 	{#if author.photo_attribution}
-		<p class="mt-12 border-t border-border pt-4 text-micro text-muted">
+		<p class="mx-auto mt-12 max-w-[40rem] border-t border-border pt-4 text-micro text-muted">
 			{t('author.portraitCredit')}:
 			{#if author.photo_source_url}
 				<a
