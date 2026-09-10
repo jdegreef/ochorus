@@ -13,6 +13,7 @@
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -38,6 +39,16 @@
 	$effect(() => {
 		resumeOrder = getProgress(book.slug);
 	});
+
+	// The saved place clamped to THIS edition. Progress is keyed by the bare slug
+	// (workSlugKey), so it is shared across language editions — which can have
+	// different chapter counts. A resume point carried over from a longer edition
+	// would otherwise sit past the end here and mark every chapter "read"; keeping
+	// it only when it names a chapter that actually exists in this edition leaves
+	// a mismatched place showing no progress rather than a false "finished".
+	const resumeHere = $derived(
+		resumeOrder != null && book.chapters.some((c) => c.order === resumeOrder) ? resumeOrder : null
+	);
 
 	const years = $derived(
 		formatLifespan(book.author.birth_year, book.author.death_year, t('common.bornPrefix'))
@@ -456,18 +467,36 @@
 		</nav>
 	{/if}
 
+	<!-- Contents. When the reader has a saved place, each chapter shows where they
+	     are in it: the chapter they're in reads in the accent colour (aria-current),
+	     and every chapter before it carries a trailing check. The saved place
+	     (resumeHere) is client-only (null at prerender and for a first-time reader),
+	     so the baked HTML and a new reader's view are exactly as before — the markers
+	     are pure progressive enhancement that appears after hydration for a returning
+	     reader. The signal is the furthest chapter opened (the same value behind
+	     "Continue Ch. N"); there is no per-chapter completion record — ProgressRecord
+	     is a single resume point — so a check means "before where you are", not a
+	     claim the chapter was finished end to end. -->
 	<section class="mt-8">
 		<h2 class="section-label">{t('reader.contents')}</h2>
 		<ol class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}
+				{@const read = resumeHere != null && ch.order < resumeHere}
+				{@const current = ch.order === resumeHere}
+				{@const numCls = current ? 'text-accent' : 'text-muted'}
+				{@const titleCls = current ? 'text-accent font-medium' : 'text-text'}
 				<li>
 					<a
 						href={localizeHref(`/books/${book.slug}/${ch.order}`)}
 						class="flex items-baseline gap-3 py-2.5 hover:no-underline"
+						aria-current={current ? 'step' : undefined}
 					>
-						<span class="w-6 shrink-0 text-small text-muted">{ch.order}</span>
-						<span class="flex-1 text-body text-text" dir="auto">{chapterName(ch.order, ch.title)}</span>
+						<span class="w-6 shrink-0 text-small {numCls}">{ch.order}</span>
+						<span class="flex-1 text-body {titleCls}" dir="auto">{chapterName(ch.order, ch.title)}</span>
 						<span class="text-small text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
+						{#if read}
+							<Icon name="check" size={15} label={t('settings.heatmapRead')} class="shrink-0 text-accent" />
+						{/if}
 					</a>
 				</li>
 			{/each}
