@@ -735,6 +735,9 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             # offer the quote page only when one exists. Counting unreviewed
             # rows would link to a page the review gate keeps 404ing.
             "quote_count",
+            # Life-and-ministry events for the timeline (plain JSON on the model,
+            # so it serializes as-is). Only the detail page draws the timeline.
+            "milestones",
         ]
 
     # Reads the view's annotation; falls back to a count only when a caller
