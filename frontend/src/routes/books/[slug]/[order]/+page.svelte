@@ -15,7 +15,6 @@
 	import { readerUi } from '$lib/readerUi.svelte';
 	import FocusExit from '$lib/components/FocusExit.svelte';
 	import { marks } from '$lib/marks.svelte';
-	import SourceBadge from '$lib/components/SourceBadge.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -1405,7 +1404,6 @@
 				<span class="ms-1 text-accent">· {t('reader.modernEdition')}</span>
 			{/if}
 		</p>
-		<SourceBadge sourceType={chapter.source_type ?? 'public_domain'} class="mb-3" />
 		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto" lang={contentLang(language)}>{chapterName(chapter.order, chapter.title)}</h1>
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
