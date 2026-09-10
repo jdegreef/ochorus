@@ -218,6 +218,58 @@
 		{ name: book.title, href: `/books/${book.slug}` }
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
+
+	// A short FAQ built from what the page already knows — free to read, length,
+	// subject, author — answering the questions readers actually type ("is X free
+	// to read", "how long is X to read"). English editions only: the copy is
+	// written, not translated (the same reason `scripture` is English-only), so a
+	// non-English edition omits it rather than shipping English Q&A onto a
+	// translated page. The visible <dl> and the FAQPage JSON-LD both render from
+	// this one array, so the markup can never assert a question the page doesn't
+	// show — the match Google requires of FAQ structured data.
+	const faqItems = $derived.by((): { q: string; a: string }[] => {
+		// English editions only (see above), and only when the book has chapters:
+		// every answer counts them, and the per-chapter estimate divides by that count.
+		if (book.language !== 'en' || !book.chapter_count) return [];
+		const totalMin = readingMinutes(totalWords);
+		const hrs = Math.floor(totalMin / 60);
+		const mins = totalMin % 60;
+		const duration = hrs
+			? `${hrs} hour${hrs === 1 ? '' : 's'}${mins ? ` ${mins} minutes` : ''}`
+			: `${mins} minutes`;
+		const perChapter = Math.max(1, Math.round(totalMin / book.chapter_count));
+		const items = [
+			{
+				q: `Is ${book.title} free to read online?`,
+				a: `Yes. The complete text — all ${book.chapter_count} chapters — is free to read here at Ochorus, with no account or payment, and it can be saved to read offline.`
+			},
+			{
+				q: `How long does ${book.title} take to read?`,
+				a: `About ${duration} in total, across ${book.chapter_count} chapters — roughly ${perChapter} minutes each.`
+			}
+		];
+		if (book.description) {
+			items.push({ q: `What is ${book.title} about?`, a: book.description });
+		}
+		items.push({
+			q: `Who wrote ${book.title}?`,
+			a: `${book.author.name} wrote ${book.title}${book.publication_year ? `; it was first published in ${book.publication_year}` : ''}.`
+		});
+		return items;
+	});
+	const faqLd = $derived(
+		faqItems.length
+			? jsonLd({
+					'@context': 'https://schema.org',
+					'@type': 'FAQPage',
+					mainEntity: faqItems.map((f) => ({
+						'@type': 'Question',
+						name: f.q,
+						acceptedAnswer: { '@type': 'Answer', text: f.a }
+					}))
+				})
+			: ''
+	);
 </script>
 
 <Seo
@@ -229,7 +281,7 @@
 	ogTitle="{book.title} — {book.author.name}"
 	{ogImage}
 	ogImageAlt="{t('a11y.coverOf')} {book.title}"
-	structuredData={[bookLd, crumbsLd]}
+	structuredData={[bookLd, crumbsLd, faqLd].filter(Boolean)}
 />
 
 <div class="page-col px-5 py-10">
@@ -502,6 +554,26 @@
 			{/each}
 		</ol>
 	</section>
+
+	<!-- Common questions. Rendered from `faqItems` (English editions only), which
+	     also feeds the FAQPage JSON-LD in <Seo> — same source, so the visible
+	     answers and the structured data stay in lockstep. A <dl> because it is
+	     literally a list of question/answer pairs; every answer is visible (no
+	     accordion), which is both better for a reader skimming and what FAQ
+	     structured data requires. -->
+	{#if faqItems.length}
+		<section class="mt-12" aria-labelledby="faq-heading">
+			<h2 id="faq-heading" class="text-h3">Common questions</h2>
+			<dl class="mt-4 flex flex-col gap-5">
+				{#each faqItems as item (item.q)}
+					<div>
+						<dt class="text-body font-medium text-text">{item.q}</dt>
+						<dd class="mt-1 text-body text-muted" dir="auto">{item.a}</dd>
+					</div>
+				{/each}
+			</dl>
+		</section>
+	{/if}
 
 	<!-- People found IN this work who have a bio of their own — an anthology's
 	     subjects, the figures a biography follows. Links to their author pages.
