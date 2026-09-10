@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: Portuguese sermons (batch 3) — against-eutropius (#1586),
+// gods-love-for-a-sinning-world (#1587). Sermon pages are prerendered per locale, so
+// /pt/sermons must rebuild with the translated titles.
 // prerender refresh 2026-09-10: Portuguese sermons (batch 2) — aggressive-christianity
 // (#1495), sweet-comfort-for-feeble-saints (#1496), the-way-of-salvation (#1497). Sermon
 // pages are prerendered per locale, so /pt/sermons must rebuild with the translated titles.

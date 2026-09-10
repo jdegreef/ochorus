@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: Portuguese author bio — corrie-ten-boom (#1593). Author
+// pages are prerendered PER AUTHOR, so /pt/authors/corrie-ten-boom must rebuild for the
+// translated bio and its prayer callouts.
 // prerender refresh 2026-09-10: French author bios — gareth-evans (#2026),
 // catherine-booth (#2027), charles-finney (#2028). Author pages are prerendered PER
 // AUTHOR, so each /fr/authors/<slug> page must rebuild for the translated bio and its
