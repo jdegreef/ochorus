@@ -13,6 +13,7 @@
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
+	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
 	import { portraitPosition } from '$lib/portraits';
@@ -126,6 +127,26 @@
 	});
 
 	const filtering = $derived(filters.active);
+
+	// The filters currently narrowing the shelf, each liftable on its own. The
+	// query and the topic (shared with every shelf) come from filterChips; book
+	// and length ride along too, so one row shows the whole state and every part
+	// of it has a ×.
+	const activeChips = $derived.by(() => {
+		const c: FilterChip[] = [];
+		const q = queryChip(filters);
+		if (q) c.push(q);
+		if (filters.values.book)
+			c.push({ kind: 'book', label: filters.values.book, onRemove: () => (filters.values.book = '') });
+		if (filters.values.len) {
+			const b = filters.values.len as LengthBucket;
+			c.push({ kind: 'len', label: t(LENGTH_LABEL[b]), onRemove: () => (filters.values.len = '') });
+		}
+		const topic = topicChip(filters, allTopics);
+		if (topic) c.push(topic);
+		return c;
+	});
+
 	// Clears what narrows the shelf, not how it is arranged — the grouping and
 	// sort are the reader's own preference (localStorage) and survive.
 	function clearFilters() {
@@ -298,7 +319,12 @@
 	     Books shelf; shown only when the shelf actually spans more than one topic.
 	     Reuses the Books labels (the same "All topics" / "Filter by topic"). -->
 	{#if allTopics.length > 1}
-		<div class="mb-6 flex flex-wrap gap-1.5" aria-label={t('books.filterTopic')} role="group">
+		<div
+			class="mb-6 flex flex-wrap items-center gap-1.5"
+			aria-label={t('books.filterTopic')}
+			role="group"
+		>
+			<span class="eyebrow text-muted me-1">{t('common.topics')}</span>
 			<button
 				class="chip"
 				class:active={filters.values.topic === ''}
@@ -328,6 +354,7 @@
 			total={sermons.length}
 			template={t('sermons.showing')}
 			onClear={clearFilters}
+			chips={activeChips}
 			class="mb-6"
 		/>
 	{/if}
@@ -354,9 +381,13 @@
 		     long, so they need a way in that isn't scrolling. Same rail the Books
 		     shelf uses. -->
 		{#if groups.length > 1}
-			<nav class="mb-8 flex flex-wrap gap-1.5" aria-label={t('sermons.groupPreacher')}>
+			<nav
+				class="mb-8 flex flex-wrap items-center gap-1.5"
+				aria-label={t('sermons.jumpPreacher')}
+			>
+				<span class="eyebrow text-muted me-1">{t('sermons.jumpPreacher')}</span>
 				{#each groups as g (g.slug)}
-					<a href="#preacher-{g.slug}" class="chip hover:no-underline">{g.name}</a>
+					<a href="#preacher-{g.slug}" class="tag">{g.name}</a>
 				{/each}
 			</nav>
 		{/if}

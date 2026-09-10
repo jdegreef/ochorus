@@ -1,0 +1,86 @@
+{
+ "kind": "sermon",
+ "slug": "aggressive-christianity",
+ "language": "pt",
+ "job_issue": 1495,
+ "references": [
+  {
+   "reference": "Salmos 119:136",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Romanos 7:24",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "absolute-surrender.pt.json"
+  },
+  {
+   "reference": "Apocalipse 11:15",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Romanos 7:24",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "absolute-surrender.pt.json"
+  },
+  {
+   "reference": "1 João 3:7-8",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Marcos 16:15",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Atos 26:17",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Atos 26:17-18",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Coríntios 5:11",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Atos 8:4",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Lucas 14:23",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Mateus 28:20",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "Atos 26:17",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Mateus 10:34",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Mateus 27:42",
+   "status": "self_rendered",
+   "block_index": 22
+  }
+ ]
+}
