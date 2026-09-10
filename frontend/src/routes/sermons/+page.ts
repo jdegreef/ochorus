@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: French sermons — a-ribband-of-blue (#2019),
+// why-is-god-a-stranger-in-the-land (#2025), the-triumph-of-calvary (#2022). Rebuilds
+// /fr/sermons so each card and its /fr/sermons/<slug> page bakes the translated title.
 // prerender refresh 2026-09-10: Portuguese sermons (batch 2) — aggressive-christianity
 // (#1495), sweet-comfort-for-feeble-saints (#1496), the-way-of-salvation (#1497). Sermon
 // pages are prerendered per locale, so /pt/sermons must rebuild with the translated titles.
