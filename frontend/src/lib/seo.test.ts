@@ -5,6 +5,7 @@ import {
 	breadcrumb,
 	breadcrumbLd,
 	collectionPage,
+	faqPage,
 	hreflangFor,
 	itemList
 } from './seo';
@@ -188,5 +189,38 @@ describe('breadcrumbLd', () => {
 		const inner = out.replace(/^<script[^>]*>/, '').replace(/<\/script>$/, '');
 		const data = JSON.parse(inner.replace(/\\u003c/g, '<'));
 		expect(data.itemListElement[0].item).toBe(`${SITE_URL}/books/humility/`);
+	});
+});
+
+describe('faqPage', () => {
+	const parse = (out: string) =>
+		JSON.parse(
+			out
+				.replace(/^<script[^>]*>/, '')
+				.replace(/<\/script>$/, '')
+				.replace(/\\u003c/g, '<')
+		);
+
+	it('maps each {q, a} to a Question with a single accepted Answer', () => {
+		const out = faqPage([
+			{ q: 'When did A. B. Simpson live?', a: 'A. B. Simpson lived from 1843 to 1919.' },
+			{ q: 'Where can I read the books?', a: 'Free on Ochorus, without an account.' }
+		]);
+		const data = parse(out);
+		expect(data['@type']).toBe('FAQPage');
+		expect(data.mainEntity).toHaveLength(2);
+		expect(data.mainEntity[0]).toMatchObject({
+			'@type': 'Question',
+			name: 'When did A. B. Simpson live?',
+			acceptedAnswer: { '@type': 'Answer', text: 'A. B. Simpson lived from 1843 to 1919.' }
+		});
+	});
+
+	it('escapes < so answer/question prose cannot break out of the script tag', () => {
+		// Same guarantee jsonLd() gives every block — asserted here because a FAQ
+		// answer is free author-derived prose, the likeliest place a stray `<` lands.
+		const out = faqPage([{ q: 'A <b>bold</b> question?', a: 'An <i>answer</i>.' }]);
+		expect(out).not.toMatch(/<b>|<i>/);
+		expect(parse(out).mainEntity[0].name).toBe('A <b>bold</b> question?');
 	});
 });
