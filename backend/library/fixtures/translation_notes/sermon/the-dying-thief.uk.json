@@ -1,0 +1,128 @@
+{
+  "kind": "sermon",
+  "slug": "the-dying-thief",
+  "language": "uk",
+  "job_issue": 798,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Luke 23:39",
+      "status": "self_rendered",
+      "block_index": 0
+    },
+    {
+      "reference": "Matthew 27:44",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 4
+    },
+    {
+      "reference": "Luke 23:40",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Proverbs 9:10",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Matthew 27:37",
+      "status": "self_rendered",
+      "block_index": 6
+    },
+    {
+      "reference": "Luke 23:34",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 8
+    },
+    {
+      "reference": "Luke 23:34",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 9
+    },
+    {
+      "reference": "Hebrews 5:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 12
+    },
+    {
+      "reference": "Romans 10:10",
+      "status": "self_rendered",
+      "block_index": 14
+    },
+    {
+      "reference": "Galatians 3:13",
+      "status": "self_rendered",
+      "block_index": 16
+    },
+    {
+      "reference": "Matthew 3:17",
+      "status": "self_rendered",
+      "block_index": 16
+    },
+    {
+      "reference": "Luke 23:35",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 16
+    },
+    {
+      "reference": "Luke 23:42",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 16
+    },
+    {
+      "reference": "Luke 23:41",
+      "status": "self_rendered",
+      "block_index": 16
+    },
+    {
+      "reference": "Luke 23:42",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 17
+    },
+    {
+      "reference": "Luke 23:42",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 18
+    },
+    {
+      "reference": "Luke 23:43",
+      "status": "self_rendered",
+      "block_index": 20
+    },
+    {
+      "reference": "Romans 8:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 20
+    },
+    {
+      "reference": "Luke 2:14",
+      "status": "self_rendered",
+      "block_index": 23
+    },
+    {
+      "reference": "John 19:30",
+      "status": "self_rendered",
+      "block_index": 23
+    },
+    {
+      "reference": "Hebrews 9:22",
+      "status": "self_rendered",
+      "block_index": 23
+    },
+    {
+      "reference": "Luke 23:41",
+      "status": "self_rendered",
+      "block_index": 11
+    }
+  ]
+}
