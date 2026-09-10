@@ -1,0 +1,64 @@
+{
+ "kind": "sermon",
+ "slug": "enduring-persecution-for-christ",
+ "language": "pt",
+ "job_issue": 1491,
+ "references": [
+  {
+   "reference": "Hebreus 13:13",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "João 21:18",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Mateus 5:10",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Salmos 129:1",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Romanos 7:36",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Salmos 129:4",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Salmos 125:3",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Salmos 7:15",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Hebreus 12:1",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "the-key-in-my-hand.pt.json"
+  },
+  {
+   "reference": "Lucas 21:15",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Zacarias 2:8",
+   "status": "self_rendered",
+   "block_index": 41
+  }
+ ]
+}
