@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "bernard-of-clairvaux",
+ "language": "es",
+ "job_issue": 1625,
+ "references": [
+  {
+   "reference": "Romans 1:14",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 31:12",
+   "status": "self_rendered",
+   "block_index": 8
+  }
+ ]
+}
