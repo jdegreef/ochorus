@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "martin-luther",
+ "language": "fr",
+ "job_issue": 2196,
+ "references": [
+  {
+   "reference": "Romans 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
