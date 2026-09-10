@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-10: Arabic sermon — order-and-argument-in-prayer (#823). Rebuilds
+// /ar/sermons so the card and its /ar/sermons/order-and-argument-in-prayer page bake the translated title.
 // prerender refresh 2026-09-10: Arabic sermon — aggressive-christianity (#822). Rebuilds
 // /ar/sermons so the card and its /ar/sermons/aggressive-christianity page bake the translated title.
 // prerender refresh 2026-09-10: Arabic sermon — rest (#821). Rebuilds
