@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-10: Ukrainian sermon — blessed-adversity (#892). Rebuilds
+// /uk/sermons so the card and its /uk/sermons/blessed-adversity page bake the translated title.
 // prerender refresh 2026-09-10: Ukrainian sermon — the-dying-thief (#798). Rebuilds
 // /uk/sermons so the card and its /uk/sermons/the-dying-thief page bake the translated title.
 // prerender refresh 2026-09-10: Ukrainian sermon — christ-precious-to-believers (#797). Rebuilds
