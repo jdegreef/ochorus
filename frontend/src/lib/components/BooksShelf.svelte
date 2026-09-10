@@ -18,6 +18,7 @@
 	import PageHeader from './PageHeader.svelte';
 	import EmptyState from './EmptyState.svelte';
 	import FilterSummary from './FilterSummary.svelte';
+	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 
 	let { books, loadError = false }: { books: BookSummary[]; loadError?: boolean } = $props();
 	const t = i18n.t;
@@ -90,6 +91,28 @@
 	});
 	const authorCount = $derived(new Set(books.map((b) => b.author.slug)).size);
 	const isEnglish = $derived(getLang() === 'en');
+
+	// The filters currently narrowing the shelf, each liftable on its own. The
+	// query and topic (shared with every shelf) come from filterChips; the source
+	// segment shows its own state but rides along here so one row has the whole set.
+	const SOURCE_LABEL: Record<string, string> = {
+		public_domain: 'books.sourcePublic',
+		translated: 'books.sourceTranslated'
+	};
+	const activeChips = $derived.by(() => {
+		const c: FilterChip[] = [];
+		const q = queryChip(filters);
+		if (q) c.push(q);
+		if (filters.values.source !== 'all')
+			c.push({
+				kind: 'source',
+				label: t(SOURCE_LABEL[filters.values.source]),
+				onRemove: () => (filters.values.source = 'all')
+			});
+		const topic = topicChip(filters, allTopics);
+		if (topic) c.push(topic);
+		return c;
+	});
 
 	// Newest additions first — a "new to the library" discovery strip. Hidden
 	// while searching/filtering, and only when there are enough books to bother.
@@ -333,7 +356,12 @@
 
 		<!-- Topic filter -->
 		{#if allTopics.length > 1}
-			<div class="mb-6 flex flex-wrap gap-1.5" aria-label={t('books.filterTopic')} role="group">
+			<div
+				class="mb-6 flex flex-wrap items-center gap-1.5"
+				aria-label={t('books.filterTopic')}
+				role="group"
+			>
+				<span class="eyebrow text-muted me-1">{t('common.topics')}</span>
 				<button
 					class="chip"
 					class:active={filters.values.topic === ''}
@@ -365,18 +393,17 @@
 				total={books.length}
 				template={t('books.showing')}
 				onClear={clearFilters}
+				chips={activeChips}
 				class="mb-6"
 			/>
 		{/if}
 
 		<!-- Author quick-nav -->
 		{#if groups && groups.length > 1}
-			<nav class="mb-8 flex flex-wrap gap-1.5" aria-label={t('books.groupAuthor')}>
+			<nav class="mb-8 flex flex-wrap items-center gap-1.5" aria-label={t('books.jumpAuthor')}>
+				<span class="eyebrow text-muted me-1">{t('books.jumpAuthor')}</span>
 				{#each groups as g (g.slug)}
-					<a
-						href="#author-{g.slug}"
-						class="chip hover:no-underline"
-					>
+					<a href="#author-{g.slug}" class="tag">
 						{g.name}
 					</a>
 				{/each}

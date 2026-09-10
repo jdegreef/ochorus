@@ -80,6 +80,17 @@ export function jsonLd(data: unknown): string {
 }
 
 /**
+ * Plain text from an HTML fragment — every tag replaced with a space. Whitespace
+ * is NOT collapsed here (a caller counting words wants the runs; one building a
+ * string passes the result through truncateMeta, which collapses). Extracted
+ * because the author page alone stripped bio HTML this way in three places, and
+ * the same one-liner recurs across the reader/article/import surfaces.
+ */
+export function stripHtml(html: string): string {
+	return (html ?? '').replace(/<[^>]+>/g, ' ');
+}
+
+/**
  * A meta-description-sized slice of prose.
  *
  * Search engines and social scrapers truncate `<meta name="description">` and
@@ -199,4 +210,25 @@ export function breadcrumb(items: { name: string; url: string }[]) {
  */
 export function breadcrumbLd(items: { name: string; href: string }[]): string {
 	return jsonLd(breadcrumb(items.map((c) => ({ name: c.name, url: c.href }))));
+}
+
+/**
+ * A schema.org FAQPage as a ready-to-inject JSON-LD script, built from the same
+ * {q, a} pairs the page renders as its visible accordion — so the markup and the
+ * on-page questions can never drift. Each entry becomes a Question with a single
+ * accepted Answer, which is the shape answer engines reconcile against. (Google
+ * restricted FAQ *rich-result display* to authoritative sites in 2023; the markup
+ * still carries real value for answer/AI engines and as a clean entity signal.)
+ * Answers are plain text — callers strip any HTML before passing them in.
+ */
+export function faqPage(items: { q: string; a: string }[]): string {
+	return jsonLd({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: items.map((it) => ({
+			'@type': 'Question',
+			name: it.q,
+			acceptedAnswer: { '@type': 'Answer', text: it.a }
+		}))
+	});
 }
