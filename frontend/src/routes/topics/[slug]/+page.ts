@@ -29,6 +29,14 @@ export const trailingSlash = 'always';
 // status=draft like uk, so they stay out of the sitemap until the language is
 // switched live.
 //
+// Prerender refresh 2026-09-10 (queue jobs #1826 #1827 #1828 #1829 #1845 #1846
+// #1849 #1850 #1851 #1852): the French shelf prose — the eleven non-pending
+// topics at once (the ten queued jobs plus christ-and-the-cross, which the
+// coverage gate requires), same all-or-nothing reason as the uk/hi sets above.
+// Every /fr/topics/<slug> page 404'd before this and now renders. fr seeds
+// status=draft, so they stay out of the sitemap until the language is
+// switched live.
+//
 // Prerender one page per topic — the slug list comes from the API at build
 // time. The topics endpoint may lag on a fresh deploy (api + web build
 // together), so degrade to no topic pages rather than fail the whole build;

@@ -1,0 +1,89 @@
+{
+ "_note": [
+  "French topic shelves. Titles/descriptions translated for fr; Scripture epigraphs are Louis Segond (1910) verbatim (public domain), mined from the ebible fra_lsg USFM mirror, book names localized. Covers the 10 queued topic jobs (#1826-1829,#1845,#1846,#1849-1852) plus christ-and-the-cross, which the coverage gate requires (test_every_translated_language_covers_every_topic) though it has no queued job."
+ ],
+ "prayer": {
+  "title": "Sur la prière",
+  "description": "Apprendre à prier — et à persévérer dans la prière. Les classiques sur la vie intérieure de la prière, du lieu secret jusqu'à l'intercession qui l'emporte.",
+  "scripture": {
+   "reference": "Jérémie 33:3",
+   "text": "Invoque-moi, et je te répondrai; Je t’annoncerai de grandes choses, des choses cachées, Que tu ne connais pas."
+  }
+ },
+ "holy-spirit": {
+  "title": "Le Saint-Esprit",
+  "description": "Le baptême, la demeure intérieure et l'œuvre de l'Esprit — la puissance promise pour la vie chrétienne.",
+  "scripture": {
+   "reference": "Zacharie 4:6",
+   "text": "Alors il reprit et me dit: C’est ici la parole que l’Éternel adresse à Zorobabel: Ce n’est ni par la puissance ni par la force, mais c’est par mon esprit, dit l’Éternel des armées."
+  }
+ },
+ "deeper-life": {
+  "title": "La vie profonde",
+  "description": "La sainteté, l'abandon et la vie abondante cachée avec Christ — des livres pour aller plus loin.",
+  "scripture": {
+   "reference": "Colossiens 3:3",
+   "text": "Car vous êtes morts, et votre vie est cachée avec Christ en Dieu."
+  }
+ },
+ "grace-and-comfort": {
+  "title": "Grâce et consolation",
+  "description": "La grâce inépuisable de Dieu et sa consolation dans chaque épreuve — une bonne nouvelle pour les cœurs las.",
+  "scripture": {
+   "reference": "2 Corinthiens 12:9",
+   "text": "et il m’a dit: Ma grâce te suffit, car ma puissance s’accomplit dans la faiblesse. Je me glorifierai donc bien plus volontiers de mes faiblesses, afin que la puissance de Christ repose sur moi."
+  }
+ },
+ "revival-and-missions": {
+  "title": "Réveil et missions",
+  "description": "Des vies données pour l'Évangile, et des temps de réveil — de quoi nourrir un cœur brûlant.",
+  "scripture": {
+   "reference": "Habacuc 3:2",
+   "text": "Éternel, j’ai entendu ce que tu as annoncé, je suis saisi de crainte. Accomplis ton œuvre dans le cours des années, ô Éternel! Dans le cours des années manifeste-la! Mais dans ta colère souviens-toi de tes compassions!"
+  }
+ },
+ "faith-and-guidance": {
+  "title": "Foi et direction",
+  "description": "Se confier en Dieu pour le pain quotidien, la direction et chaque promesse — marcher par la foi, et non par la vue.",
+  "scripture": {
+   "reference": "Proverbes 3:6",
+   "text": "Reconnais-le dans toutes tes voies, Et il aplanira tes sentiers."
+  }
+ },
+ "the-gospel-call": {
+  "title": "L'appel de l'Évangile",
+  "description": "La plus ancienne des invitations — venez, repentez-vous, croyez. Des prédicateurs qui supplient les âmes non converties, et le témoignage de la grâce trouvée par le premier des pécheurs.",
+  "scripture": {
+   "reference": "2 Corinthiens 5:20",
+   "text": "Nous faisons donc les fonctions d’ambassadeurs pour Christ, comme si Dieu exhortait par nous; nous vous en supplions au nom de Christ: Soyez réconciliés avec Dieu!"
+  }
+ },
+ "enduring-classics": {
+  "title": "Les classiques intemporels",
+  "description": "Les livres qui accompagnent les pèlerins depuis des siècles — les confessions d'Augustin, le songe de Bunyan, les conseils de Thomas a Kempis — les anciens sentiers, toujours bons.",
+  "scripture": {
+   "reference": "Jérémie 6:16",
+   "text": "Ainsi parle l’Éternel: Placez-vous sur les chemins, regardez, Et demandez quels sont les anciens sentiers, Quelle est la bonne voie; marchez-y, Et vous trouverez le repos de vos âmes! Mais ils répondent: Nous n’y marcherons pas."
+  }
+ },
+ "the-way-of-holiness": {
+  "title": "Le chemin de la sainteté",
+  "description": "Mis à part pour Dieu — les commandements sondés, la perfection recherchée avec droiture, et les affections du cœur éprouvées et trouvées vraies.",
+  "scripture": {
+   "reference": "Hébreux 12:14",
+   "text": "Recherchez la paix avec tous, et la sanctification, sans laquelle personne ne verra le Seigneur."
+  }
+ },
+ "the-preached-word": {
+  "title": "La Parole prêchée",
+  "description": "La grande prédication sur la page — Whitefield et Wesley à pleine voix, Spurgeon parmi ses fermiers — et l'exhortation de Baxter à tout berger des âmes.",
+  "scripture": {
+   "reference": "Romains 10:14",
+   "text": "Comment donc invoqueront-ils celui en qui ils n’ont pas cru? Et comment croiront-ils en celui dont ils n’ont pas entendu parler? Et comment en entendront-ils parler, s’il n’y a personne qui prêche?"
+  }
+ },
+ "christ-and-the-cross": {
+  "title": "Christ et la croix",
+  "description": "La personne et l'œuvre du Sauveur — l'Agneau immolé, la honte et le triomphe de la croix, l'excellence de Christ, et le tombeau vide."
+ }
+}
