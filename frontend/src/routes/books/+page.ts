@@ -2,6 +2,9 @@
 // Glanures parmi les gerbes (#1844), a harvest of Spurgeon's short readings under twenty
 // themes (20 chapters). Rebuilds /fr/books so the card carries its translated title and the
 // curated painting under the French title.
+// prerender refresh 2026-09-10: one NEW Swahili book — answers-to-prayer (#2175), a curated
+// 5-chapter George Müller collection ("Majibu ya Maombi"). Rebuilds /sw/books so the card carries
+// its translated title and the shared painting cover. Backs no plan.
 // prerender refresh 2026-09-10: Portuguese book — he-holds-my-tomorrows (#1473). Book
 // pages are prerendered per locale, so /pt/books and the book shelf must rebuild with the
 // translated title, and the reader page bakes the 18 translated chapters.
