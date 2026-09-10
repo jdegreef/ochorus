@@ -21,6 +21,7 @@
 	import { apiFetch } from '$lib/api';
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
+	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
@@ -99,34 +100,20 @@
 	// to navigate.
 	let outline = $state<OutlineEntry[]>([]);
 	let outlineOpen = $state(false);
-	// The section the reader is currently in — for the desktop rail's highlight.
-	let activeSection = $state('');
 	$effect(() => {
 		void sermon.slug; // rebuild when navigating between sermons
 		outline = body ? buildOutline(body) : [];
-		// Off the reactive graph: reading `outline` here would re-trigger this
-		// effect (which writes it) — an update-depth loop.
-		if (typeof requestAnimationFrame !== 'undefined') requestAnimationFrame(updateActiveSection);
 	});
+	// Which section the reader is in — for the desktop rail's highlight. The
+	// shared scroll-spy re-observes as the outline is (re)built; `--pinned-offset`
+	// on the article (below) keeps its jumps landing below the reader bar.
+	const spy = scrollSpy(() => outline.map((s) => s.id));
 
-	/** The last outline section whose heading has scrolled up past the top bar. */
-	function updateActiveSection() {
-		let current = '';
-		for (const s of outline) {
-			const el = document.getElementById(s.id);
-			if (!el) continue;
-			if (el.getBoundingClientRect().top <= HEADER_OFFSET + 40) current = s.id;
-			else break; // outline is in document order — nothing below can be active
-		}
-		activeSection = current;
-	}
-
+	// Jump to an outline section and close the popover. The landing offset lives
+	// in CSS (`.sec-anchor` scroll-margin, below), not scrollTo math. The hash is
+	// left untouched — this outline is ephemeral, not a linkable sub-nav.
 	function scrollToSection(id: string) {
-		const el = document.getElementById(id);
-		if (el) {
-			const y = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET - 8;
-			window.scrollTo({ top: y, behavior: 'smooth' });
-		}
+		jumpToSection(id, { updateHash: false });
 		outlineOpen = false;
 	}
 
@@ -262,7 +249,7 @@
 	structuredData={[sermonLd, crumbsLd]}
 />
 
-<svelte:window onscroll={updateActiveSection} onkeydown={onKeydown} />
+<svelte:window onkeydown={onKeydown} />
 
 <!-- Scroll-progress bar, pinned to the very top of the viewport. -->
 <div class="read-progress" style="transform: scaleX({frac})" aria-hidden="true"></div>
@@ -368,7 +355,7 @@
 					<button
 						class="outline-rail-item"
 						class:point={s.kind === 'point'}
-						class:active={activeSection === s.id}
+						class:active={spy.active === s.id}
 						onclick={() => scrollToSection(s.id)}
 					>
 						{s.label}
@@ -379,7 +366,15 @@
 	</nav>
 {/if}
 
-<article class="mx-auto px-5 py-10" style="{readerPrefs.style}; max-width: var(--reading-measure)">
+<!-- `--pinned-offset`: how far down the first pixel unobstructed by the sticky
+     reader bar is (HEADER_OFFSET). The outline anchors below hang their
+     `scroll-margin-top` off it, so a jump lands the section clear of the bar —
+     the same contract the biographies/search pages use, replacing this page's
+     old `scrollTo(top - HEADER_OFFSET - 8)` math. -->
+<article
+	class="mx-auto px-5 py-10"
+	style="--pinned-offset: {HEADER_OFFSET}px; {readerPrefs.style}; max-width: var(--reading-measure)"
+>
 	<Breadcrumb items={crumbs} />
 
 	<!-- The head sits in its plate (see SermonPlate), except in focus mode,
@@ -575,6 +570,15 @@
 	/* Scroll-progress bar: a thin accent line scaled by reading fraction. */
 	/* `.min-left` lives in app.css — the biography page shows the same pill, and
 	   a second copy here is how the two would drift apart. */
+
+	/* Outline jump targets (marked by buildOutline) clear the sticky reader bar
+	   when jumped to. `--pinned-offset` is set on the <article> above to
+	   HEADER_OFFSET; the +0.5rem is the breathing room the old jump math added as
+	   `- 8`. :global because the class is added to the injected reader HTML, and
+	   sermon-only because buildOutline runs nowhere else. */
+	:global(.sec-anchor) {
+		scroll-margin-top: calc(var(--pinned-offset, 4rem) + 0.5rem);
+	}
 
 	/* Preaching-text card: the sermon's reference + verse(s) as an epigraph. */
 	.text-card {

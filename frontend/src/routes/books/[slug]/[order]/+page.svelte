@@ -40,6 +40,7 @@
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { createReaderText } from '$lib/readerText.svelte';
+	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, hreflangFor, truncateMeta } from '$lib/seo';
@@ -131,7 +132,14 @@
 
 	let body: HTMLDivElement | undefined = $state();
 	let titleEl: HTMLHeadingElement | undefined = $state();
-	let titleVisible = $state(true);
+	// Is the chapter title still on screen? Once it scrolls under the header the
+	// top bar swaps the "← Book" link for a "you are here" label. Shared single-
+	// element observer; the header-height inset matches the old inline IO. Starts
+	// true — the title is at the top of the page on load.
+	const titleSpy = elementVisible(() => titleEl, {
+		rootMargin: `-${HEADER_OFFSET}px 0px 0px 0px`,
+		initial: true
+	});
 
 	// The chapter order read-aloud rolled over INTO, so the per-chapter effect
 	// picks playback up from its top on arrival (audiobook roll-over). Scoped to
@@ -747,7 +755,6 @@
 		// A backward chapter turn in page mode asks to land on the last page.
 		const wantLast = $page.url.searchParams.get('pg') === 'last';
 
-		let cleanup: (() => void) | undefined;
 		(async () => {
 			await tick();
 			if (paged) {
@@ -775,12 +782,10 @@
 				restoreScroll(s, order);
 			}
 			if (!paged) updateFraction();
-			cleanup = observeTitle();
 			// Rolled over from the previous chapter's read-aloud: pick playback up
 			// at the top of this one (intent already consumed synchronously above).
 			if (rollInto) reader.startListening(0);
 		})();
-		return () => cleanup?.();
 	});
 
 	// Re-measure the page count when the layout changes under us — text prefs,
@@ -1136,15 +1141,6 @@
 		}, 250);
 	}
 
-	function observeTitle(): () => void {
-		if (!titleEl) return () => {};
-		const io = new IntersectionObserver(([e]) => (titleVisible = e.isIntersecting), {
-			rootMargin: `-${HEADER_OFFSET}px 0px 0px 0px`
-		});
-		io.observe(titleEl);
-		return () => io.disconnect();
-	}
-
 	const cite = $derived({
 		author: chapter.author_name,
 		book: chapter.book_title,
@@ -1241,7 +1237,7 @@
 				nothing is lost by standing this down where there is no room for it.
 			-->
 			<div class="hidden min-w-0 flex-1 sm:block">
-				{#if titleVisible}
+				{#if titleSpy.visible}
 					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
 						← {chapter.book_title}
 					</a>
