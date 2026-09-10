@@ -127,6 +127,14 @@ class Author(models.Model):
     # house byline, not a person, and pointing it at a real one would be a
     # false claim about authorship.
     same_as = models.JSONField(default=list, blank=True)
+    # Life-and-ministry milestones plotted on the author page's timeline: an
+    # ordered list of {"year": int, "label": str, "key": bool} dicts (key marks
+    # a turning point the timeline emphasises). Optional and progressive — an
+    # author with none keeps the plain lifespan bar, so this backfills a few
+    # marquee lives without a migration touching all ~90. Hand-authored (a data
+    # migration / seed), NOT derived from the bio, so dates are trustworthy on a
+    # page whose whole promise is trustworthy public-domain scholarship.
+    milestones = models.JSONField(default=list, blank=True)
     # A short question-and-answer set shown at the FOOT of the author page, below
     # their works, and emitted as schema.org `FAQPage` markup. Each entry is a
     # ``{"q": ..., "a": ...}`` pair of PLAIN TEXT — the question a reader (or an

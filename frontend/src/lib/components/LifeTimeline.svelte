@@ -1,30 +1,56 @@
 <script lang="ts">
 	/**
-	 * A slim lifespan timeline: the author's life drawn as an accent segment on a
-	 * century-scale axis, so a reader instantly places them in history rather than
-	 * parsing two bare years. Pure computation from birth/death years — renders
-	 * nothing without both.
+	 * The author-page lifespan timeline. Two modes, chosen by the data:
+	 *
+	 * - **Milestones present** — the axis spans the author's own events (born →
+	 *   died) and each is plotted as a labelled dot, so the reader walks the life
+	 *   rather than reading two bare years floating on an empty century. Only the
+	 *   handful of curated authors have these; everyone else falls through to:
+	 * - **Bare lifespan** — the life drawn as an accent segment on a century-scale
+	 *   axis, the original behaviour, so an un-curated author is unchanged.
+	 *
+	 * Pure computation from the props — renders nothing without at least the two
+	 * years.
 	 */
+	import type { Milestone } from '$lib/library-public';
+
 	interface Props {
 		birthYear: number | null;
 		deathYear: number | null;
+		milestones?: Milestone[];
 	}
-	let { birthYear, deathYear }: Props = $props();
+	let { birthYear, deathYear, milestones = [] }: Props = $props();
 
-	// The axis spans whole centuries bracketing the life, so the gridlines are
-	// round years (1800, 1900, …) the segment sits between.
+	// --- Milestone mode -------------------------------------------------------
+	// Sorted, valid events. Two is the floor: a lone dot is not a timeline, and
+	// the axis needs a span. The years drive the axis directly (not birth/death),
+	// so a curated list is authoritative — it carries its own "Born"/"Died".
+	const events = $derived(
+		[...(milestones ?? [])]
+			.filter((m) => typeof m?.year === 'number' && !!m?.label)
+			.sort((a, b) => a.year - b.year)
+	);
+	const span = $derived.by(() => {
+		if (events.length < 2) return null;
+		const lo = events[0].year;
+		const hi = events[events.length - 1].year;
+		return hi > lo ? { lo, hi } : null;
+	});
+	// SVG geometry. A fixed viewBox the CSS scales to the column width; padding
+	// leaves room for the outermost year labels not to clip.
+	const PAD = 40;
+	const W = 640;
+	const ex = (year: number) => (span ? PAD + ((year - span.lo) / (span.hi - span.lo)) * (W - PAD * 2) : 0);
+
+	// --- Bare-lifespan fallback (unchanged) -----------------------------------
 	const domain = $derived.by(() => {
 		if (birthYear == null || deathYear == null || deathYear < birthYear) return null;
 		const start = Math.floor(birthYear / 100) * 100;
 		const end = Math.ceil(deathYear / 100) * 100;
-		// A life wholly inside one century still needs a full century of axis.
 		return { start, end: end === start ? start + 100 : end };
 	});
-
 	const pct = (year: number) =>
 		domain ? ((year - domain.start) / (domain.end - domain.start)) * 100 : 0;
-
-	// Century gridlines strictly inside the domain (the ends are the edges).
 	const ticks = $derived.by(() => {
 		if (!domain) return [];
 		const out: number[] = [];
@@ -33,7 +59,29 @@
 	});
 </script>
 
-{#if domain && birthYear != null && deathYear != null}
+{#if span}
+	<!-- Milestone timeline. Decorative in the sense that every fact here is also
+	     in the prose, so it carries an aria-label summary and hides the dots from
+	     the a11y tree; each dot still names itself via <title> for pointer users. -->
+	<figure
+		class="life-events mx-auto mt-6 max-w-[40rem]"
+		aria-label="Timeline: {events[0].label} ({events[0].year}) to {events[events.length - 1]
+			.label} ({events[events.length - 1].year})"
+	>
+		<svg class="ev-svg" viewBox="0 0 {W} 72" role="img" aria-hidden="true">
+			<line class="ev-axis" x1={PAD} y1="26" x2={W - PAD} y2="26"></line>
+			<line class="ev-life" x1={ex(span.lo)} y1="26" x2={ex(span.hi)} y2="26"></line>
+			{#each events as m (m.year + m.label)}
+				<g class="ev" class:key={m.key}>
+					<title>{m.year} — {m.label}</title>
+					<circle cx={ex(m.year)} cy="26" r={m.key ? 5.5 : 4.5}></circle>
+					<text class="ev-yr" x={ex(m.year)} y="46" text-anchor="middle">{m.year}</text>
+					<text class="ev-lb" x={ex(m.year)} y="60" text-anchor="middle">{m.label}</text>
+				</g>
+			{/each}
+		</svg>
+	</figure>
+{:else if domain && birthYear != null && deathYear != null}
 	<div class="life-timeline mx-auto mt-6 max-w-[40rem]" aria-hidden="true">
 		<div class="track">
 			{#each ticks as y (y)}
@@ -52,12 +100,55 @@
 {/if}
 
 <style>
+	/* ── Milestone timeline ─────────────────────────────────────────────────── */
+	.life-events {
+		margin-block-start: 1.5rem;
+	}
+	.ev-svg {
+		width: 100%;
+		height: auto;
+		display: block;
+		overflow: visible;
+	}
+	.ev-axis {
+		stroke: var(--border);
+		stroke-width: 2;
+	}
+	.ev-life {
+		stroke: var(--accent);
+		stroke-width: 3;
+		stroke-linecap: round;
+	}
+	.ev circle {
+		fill: var(--bg);
+		stroke: var(--accent);
+		stroke-width: 2.5;
+	}
+	.ev.key circle {
+		fill: var(--accent);
+	}
+	.ev-yr {
+		font-family: var(--font-sans);
+		font-weight: 600;
+		font-size: var(--fs-eyebrow);
+		fill: var(--text);
+		font-variant-numeric: tabular-nums;
+	}
+	.ev-lb {
+		font-family: var(--font-sans);
+		font-size: var(--fs-micro);
+		fill: var(--muted);
+	}
+	.ev.key .ev-lb {
+		fill: var(--accent);
+	}
+
+	/* ── Bare-lifespan fallback (unchanged) ─────────────────────────────────── */
 	.track {
 		position: relative;
 		height: 3.5rem;
 		margin-top: 1.25rem;
 	}
-	/* Century baseline. */
 	.track::before {
 		content: '';
 		position: absolute;
@@ -75,11 +166,6 @@
 		background: var(--border);
 		transform: translateX(-0.5px);
 	}
-	/* The chart is chronological, and every position in it is a percentage of
-	   elapsed time written as an inline `left:` by the markup above — so these
-	   rules are physical to MATCH those, and a logical property here would put
-	   the tick labels and end dots somewhere the spans aren't. Earlier-is-left
-	   is a property of the chart, not of the prose around it. */
 	.tick-label {
 		position: absolute;
 		top: 1.1rem;
@@ -89,7 +175,6 @@
 		color: var(--muted);
 		white-space: nowrap;
 	}
-	/* The life: an accent segment over the baseline. */
 	.span {
 		position: absolute;
 		top: 1.45rem;

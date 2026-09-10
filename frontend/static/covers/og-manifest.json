@@ -81,6 +81,13 @@
    "art": true,
    "scrim": 0.55
   },
+  "sw/answers-to-prayer": {
+   "ground": "10a5609700bbccada20e96febebe3beae0da53ad2ac8b08f93626a687562db2a",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.55
+  },
   "ar/absolute-surrender": {
    "ground": "d74f9791b65faeced3a606d2fd13cc677a548e333097f93fc58ad95058699252",
    "style": "devotional",
