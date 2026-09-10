@@ -44,7 +44,16 @@ FILL_ONLY_FIELDS = ("bio_html", "photo_url", "birth_year", "death_year")
 # and a correction to the fixture has to reach production on the next deploy
 # rather than needing a migration. So the fixture is the source of truth here,
 # including when it clears the list.
-SYNCED_FIELDS = ("same_as",)
+#
+# `faq` sits here for the same reason: the Q&A is researched into `authors.json`
+# and nothing else writes it, so fill-only would only ever protect a value
+# already in the row — including a thin or wrong one shipped in an earlier batch.
+# During the roll-out we want a corrected or expanded set to reach production on
+# the next deploy, and a row that OMITS the key (an author with no Q&A yet) is
+# left untouched by the `field in fields` guard below, so nothing forces an empty
+# list onto the ~85 authors without a set. If an admin Q&A editor is ever added,
+# revisit this the way the fill-only caveat above describes.
+SYNCED_FIELDS = ("same_as", "faq")
 
 # Stub wordings that USED to be in the catalogs. A live row still carrying one
 # is just as much a placeholder as a current stub — but string equality can't
