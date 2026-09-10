@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-10: Arabic author bio — george-whitefield (#828). Author pages
+// are prerendered per-author; rebuild /ar/authors/george-whitefield with the translated bio.
 // prerender refresh 2026-09-10: Arabic author bio — catherine-booth (#827). Author pages
 // are prerendered per-author; rebuild /ar/authors/catherine-booth with the translated bio.
 // prerender refresh 2026-09-07: French author bios (batch 3) — a-b-simpson (#1812),
