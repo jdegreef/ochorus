@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-10: Arabic author bio — thomas-a-kempis (#831). Author pages
+// are prerendered per-author; rebuild /ar/authors/thomas-a-kempis with the translated bio.
 // prerender refresh 2026-09-10: Arabic author bio — william-booth (#830). Author pages
 // are prerendered per-author; rebuild /ar/authors/william-booth with the translated bio.
 // prerender refresh 2026-09-10: Arabic author bio — susanna-wesley (#829). Author pages

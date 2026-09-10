@@ -1,0 +1,17 @@
+{
+ "kind": "bio",
+ "slug": "thomas-a-kempis",
+ "language": "ar",
+ "job_issue": 831,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "1 Sam 3:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Eccl 1:2",
+   "status": "self_rendered"
+  }
+ ]
+}
