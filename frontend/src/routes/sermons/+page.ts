@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-10: Ukrainian sermon — the-power-of-stillness (#794). Rebuilds
+// /uk/sermons so the card and its /uk/sermons/the-power-of-stillness page bake the translated title.
 // prerender refresh 2026-09-10: Ukrainian sermon — free-grace (#792). Rebuilds
 // /uk/sermons so the card and its /uk/sermons/free-grace page bake the translated
 // title and "In brief" summary.
