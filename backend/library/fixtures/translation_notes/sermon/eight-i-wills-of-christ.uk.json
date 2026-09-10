@@ -1,0 +1,201 @@
+{
+  "kind": "sermon",
+  "slug": "eight-i-wills-of-christ",
+  "language": "uk",
+  "job_issue": 793,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Matthew 11:29",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 4
+    },
+    {
+      "reference": "Luke 12:19",
+      "status": "self_rendered",
+      "block_index": 5
+    },
+    {
+      "reference": "Matthew 11:28",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 5
+    },
+    {
+      "reference": "Matthew 11:28",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 6
+    },
+    {
+      "reference": "John 14:27",
+      "status": "self_rendered",
+      "block_index": 8
+    },
+    {
+      "reference": "John 15:11",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 10
+    },
+    {
+      "reference": "John 6:37",
+      "status": "self_rendered",
+      "block_index": 14
+    },
+    {
+      "reference": "John 6:37",
+      "status": "self_rendered",
+      "block_index": 17
+    },
+    {
+      "reference": "Luke 15:2",
+      "status": "self_rendered",
+      "block_index": 15
+    },
+    {
+      "reference": "Luke 15:2",
+      "status": "self_rendered",
+      "block_index": 16
+    },
+    {
+      "reference": "Luke 5:13",
+      "status": "self_rendered",
+      "block_index": 20
+    },
+    {
+      "reference": "Luke 5:13",
+      "status": "self_rendered",
+      "block_index": 21
+    },
+    {
+      "reference": "John 6:37",
+      "status": "self_rendered",
+      "block_index": 21
+    },
+    {
+      "reference": "John 1:17",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 23
+    },
+    {
+      "reference": "Isaiah 61:10",
+      "status": "self_rendered",
+      "block_index": 24
+    },
+    {
+      "reference": "Matthew 10:32",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 25
+    },
+    {
+      "reference": "Matthew 4:19",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 31
+    },
+    {
+      "reference": "John 12:32",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 31
+    },
+    {
+      "reference": "Matthew 4:19",
+      "status": "self_rendered",
+      "block_index": 34
+    },
+    {
+      "reference": "John 12:32",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 44
+    },
+    {
+      "reference": "Matthew 4:19",
+      "status": "self_rendered",
+      "block_index": 40
+    },
+    {
+      "reference": "Daniel 12:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 46
+    },
+    {
+      "reference": "Revelation 14:13",
+      "status": "self_rendered",
+      "block_index": 46
+    },
+    {
+      "reference": "Matthew 4:19",
+      "status": "self_rendered",
+      "block_index": 46
+    },
+    {
+      "reference": "Matthew 4:19",
+      "status": "self_rendered",
+      "block_index": 48
+    },
+    {
+      "reference": "John 14:18",
+      "status": "self_rendered",
+      "block_index": 50
+    },
+    {
+      "reference": "John 14:18",
+      "status": "self_rendered",
+      "block_index": 51
+    },
+    {
+      "reference": "Genesis 39:2",
+      "status": "self_rendered",
+      "block_index": 51
+    },
+    {
+      "reference": "Matthew 28:20",
+      "status": "self_rendered",
+      "block_index": 53
+    },
+    {
+      "reference": "John 6:40",
+      "status": "self_rendered",
+      "block_index": 54
+    },
+    {
+      "reference": "John 6:40",
+      "status": "self_rendered",
+      "block_index": 56
+    },
+    {
+      "reference": "John 17:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 57
+    },
+    {
+      "reference": "2 Corinthians 4:17",
+      "status": "self_rendered",
+      "block_index": 59
+    },
+    {
+      "reference": "Luke 15:18",
+      "status": "self_rendered",
+      "block_index": 65
+    },
+    {
+      "reference": "Luke 15:18",
+      "status": "self_rendered",
+      "block_index": 66
+    },
+    {
+      "reference": "Luke 15:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 68
+    }
+  ]
+}
