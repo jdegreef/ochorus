@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-10: Arabic author bio — catherine-booth (#827). Author pages
+// are prerendered per-author; rebuild /ar/authors/catherine-booth with the translated bio.
 // prerender refresh 2026-09-07: French author bios (batch 3) — a-b-simpson (#1812),
 // andrew-murray (#1813), dwight-l-moody (#1814). Author pages are prerendered PER
 // prerender refresh 2026-09-07: French author bio — charles-h-spurgeon (#1815).
