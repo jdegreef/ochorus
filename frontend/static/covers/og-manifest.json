@@ -1753,6 +1753,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.3
+  },
+  "sw/spurgeon-on-prayer": {
+   "ground": "aa77124cfcc5364def9847e26a949210b8d06fafae811e3ba73a83e6a2ea18ab",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.8
   }
  }
 }
