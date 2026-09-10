@@ -16,6 +16,7 @@
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import { queryChip, type FilterChip } from '$lib/filterChips';
 
 	const t = i18n.t;
 
@@ -103,6 +104,26 @@
 		(filters.values.filter !== 'all' ? 1 : 0) +
 		(showFullLife && filters.values.full ? 1 : 0)
 	);
+
+	// The filters currently narrowing the roster, each liftable on its own. The
+	// query (shared with every shelf) comes from filterChips; the library/bio
+	// segment and the Full-life toggle show their state in their own controls,
+	// but ride along so one row carries the whole set and every part has a ×. The
+	// `full` chip follows the same showFullLife guard as its control and the
+	// badge — a stale ?full=1 with no visible toggle must not surface a chip.
+	const activeChips = $derived.by(() => {
+		const c: FilterChip[] = [];
+		const q = queryChip(filters);
+		if (q) c.push(q);
+		if (filters.values.filter !== 'all') {
+			const k = FILTERS.find((f) => f.v === filters.values.filter)?.k;
+			if (k)
+				c.push({ kind: 'filter', label: t(k), onRemove: () => (filters.values.filter = 'all') });
+		}
+		if (showFullLife && filters.values.full === '1')
+			c.push({ kind: 'full', label: t('bios.fullLife'), onRemove: () => (filters.values.full = '') });
+		return c;
+	});
 
 	// Count summary + whether any narrowing is active (sort doesn't count).
 	const isFiltered = $derived(filters.active);
@@ -364,6 +385,7 @@
 			total={authors.length}
 			template={t('bios.showing')}
 			onClear={clearFilters}
+			chips={activeChips}
 			class="mt-1.5 {filtersOpen ? 'flex' : 'hidden'} sm:flex"
 		/>
 	{/if}
