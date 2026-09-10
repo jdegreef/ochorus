@@ -415,11 +415,19 @@ class SeedBooksUpsertTests(TestCase):
         call_command("seed_books", verbosity=0)
         self.assertEqual(Author.objects.get(slug="john-bunyan").faq, fixture_faq)
 
-        # An author whose fixture OMITS faq is left untouched (no empty list forced).
-        Author.objects.filter(slug="andrew-murray").update(faq=[{"q": "mine", "a": "mine"}])
+        # An author whose fixture OMITS faq is left untouched (no empty list
+        # forced). Picked dynamically off a live, seeded author whose fixture row
+        # has no faq key, so this stays honest as roll-out batches add more sets.
+        by_slug = authors_by_slug()
+        untouched = next(
+            a.slug
+            for a in Author.objects.order_by("slug")
+            if "faq" not in by_slug.get(a.slug, {})
+        )
+        Author.objects.filter(slug=untouched).update(faq=[{"q": "mine", "a": "mine"}])
         call_command("seed_books", verbosity=0)
         self.assertEqual(
-            Author.objects.get(slug="andrew-murray").faq, [{"q": "mine", "a": "mine"}]
+            Author.objects.get(slug=untouched).faq, [{"q": "mine", "a": "mine"}]
         )
 
     def test_a_no_op_deploy_changes_no_author(self):
