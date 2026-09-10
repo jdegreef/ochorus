@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-10: NEW French book — true-vine / La Vraie Vigne (#1843),
+// Andrew Murray's 31 meditations on John 15 (32 chapters). Rebuilds /fr/books so the card
+// carries its translated title and the curated painting under the French title.
 // prerender refresh 2026-09-10: one NEW Swahili book — spurgeon-on-prayer (#1794), a curated
 // 13-chapter collection ("Nguvu Kuu katika Maombi"). Rebuilds /sw/books so the card carries its
 // translated title and the shared painting cover. Backs no plan.
