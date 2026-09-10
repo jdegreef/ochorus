@@ -143,6 +143,16 @@ export function preachedYear(preachedOn: string | null): string {
 export const HEADER_OFFSET = 64;
 
 /**
+ * Does the reader want motion kept to a minimum? A tiny shared wrapper over the
+ * media query, so the several places that pick `behavior: 'auto' | 'smooth'` for
+ * a scroll ask it the same way. Call it from client code (event handlers,
+ * effects) — `window` is assumed present.
+ */
+export function prefersReducedMotion(): boolean {
+	return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+}
+
+/**
  * Run `place` once the prose has stopped moving, then once more after the next
  * frame — for restoring a reader to their paragraph.
  *

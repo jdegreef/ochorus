@@ -110,10 +110,9 @@
 	const spy = scrollSpy(() => outline.map((s) => s.id));
 
 	// Jump to an outline section and close the popover. The landing offset lives
-	// in CSS (`.sec-anchor` scroll-margin, below), not scrollTo math. The hash is
-	// left untouched — this outline is ephemeral, not a linkable sub-nav.
+	// in CSS (`.sec-anchor` scroll-margin, below), not scrollTo math.
 	function scrollToSection(id: string) {
-		jumpToSection(id, { updateHash: false });
+		jumpToSection(id);
 		outlineOpen = false;
 	}
 
@@ -577,7 +576,7 @@
 	   `- 8`. :global because the class is added to the injected reader HTML, and
 	   sermon-only because buildOutline runs nowhere else. */
 	:global(.sec-anchor) {
-		scroll-margin-top: calc(var(--pinned-offset, 4rem) + 0.5rem);
+		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
 	}
 
 	/* Preaching-text card: the sermon's reference + verse(s) as an epigraph. */
