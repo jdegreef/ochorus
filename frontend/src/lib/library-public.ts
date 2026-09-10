@@ -408,6 +408,12 @@ export interface Sermon extends SermonSummary {
 	 * — the only locales an hreflang alternate should point at (per-language
 	 * rows, no English fallback). */
 	available_languages: string[];
+	/**
+	 * How many reviewed quotations this sermon's author has — the page shows a
+	 * "Quotes from {author}" link when it is non-zero (English only, as the quote
+	 * pages are). Optional so an API running behind this build simply omits it.
+	 */
+	author_quote_count?: number;
 }
 
 export interface AuthorBio {

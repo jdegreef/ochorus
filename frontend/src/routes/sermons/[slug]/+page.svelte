@@ -546,10 +546,18 @@
 		</p>
 	{/if}
 
-	<nav class="mt-8">
+	<nav class="mt-8 flex flex-wrap gap-3">
 		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="btn btn-ghost"
 			>← {t('sermon.moreFrom')} {sermon.author_name}</a
 		>
+		<!-- The author's memorable lines: a bridge from the sermon to their quote
+		     page. English only, as the quote pages are — mirrors the book detail's
+		     link (feat/book-author-quotes-link), gate and all. -->
+		{#if sermon.author_quote_count && getLang() === 'en'}
+			<a href={`/quotes/${sermon.author_slug}/`} class="btn btn-ghost"
+				>Quotes from {sermon.author_name} →</a
+			>
+		{/if}
 	</nav>
 </article>
 
