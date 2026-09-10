@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-10: Arabic author bio — william-booth (#830). Author pages
+// are prerendered per-author; rebuild /ar/authors/william-booth with the translated bio.
 // prerender refresh 2026-09-10: Arabic author bio — susanna-wesley (#829). Author pages
 // are prerendered per-author; rebuild /ar/authors/susanna-wesley with the translated bio.
 // prerender refresh 2026-09-10: Arabic author bio — george-whitefield (#828). Author pages
