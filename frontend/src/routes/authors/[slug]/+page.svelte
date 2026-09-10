@@ -707,7 +707,7 @@
 	.faq-item summary::after {
 		content: '+';
 		margin-inline-start: auto;
-		font-size: 1.3rem;
+		font-size: var(--fs-h3);
 		line-height: 1;
 		font-weight: 400;
 		color: var(--accent);
