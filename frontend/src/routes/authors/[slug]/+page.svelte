@@ -478,8 +478,13 @@
 		</div>
 	</header>
 
-	<!-- Lifespan timeline: places the author in history at a glance. -->
-	<LifeTimeline birthYear={author.birth_year} deathYear={author.death_year} />
+	<!-- Lifespan timeline: their own milestones when curated, else the bare
+	     lifespan bar (see LifeTimeline). -->
+	<LifeTimeline
+		birthYear={author.birth_year}
+		deathYear={author.death_year}
+		milestones={author.milestones}
+	/>
 
 	<!-- Featured pull-quote: a hook above the biography. -->
 	{#if featuredQuote}

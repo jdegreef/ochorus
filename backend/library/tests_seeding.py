@@ -899,3 +899,51 @@ class SeedArticlesTests(TestCase):
             call_command("seed_articles", verbosity=0)  # the next deploy
         art = Article.objects.get(slug="what-is-grace", language="es")
         self.assertEqual(art.source_type, Book.SourceType.AI_REVIEWED)
+
+
+class SeedAuthorMilestonesTests(TestCase):
+    """Timeline milestones are CODE-owned content (like the topic shelves), not
+    an approver-owned field — so the seed re-asserts them every deploy, and only
+    touches authors already in the library."""
+
+    def test_sets_curated_author(self):
+        from library.author_milestones import AUTHOR_MILESTONES
+
+        Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        call_command("seed_author_milestones", verbosity=0)
+        murray = Author.objects.get(slug="andrew-murray")
+        self.assertEqual(murray.milestones, AUTHOR_MILESTONES["andrew-murray"])
+        self.assertGreaterEqual(len(murray.milestones), 2)
+
+    def test_reasserts_code_owned_values(self):
+        from library.author_milestones import AUTHOR_MILESTONES
+
+        # Drifted content is overwritten back to the code's definition — the
+        # opposite of the create-only rule the approver-owned seeds follow.
+        Author.objects.create(
+            slug="andrew-murray", name="Andrew Murray", milestones=[{"year": 1, "label": "x"}]
+        )
+        call_command("seed_author_milestones", verbosity=0)
+        self.assertEqual(
+            Author.objects.get(slug="andrew-murray").milestones,
+            AUTHOR_MILESTONES["andrew-murray"],
+        )
+
+    def test_skips_authors_absent_from_library(self):
+        # A slug not yet in the library is skipped, not created — the command can
+        # run ahead of an author landing.
+        call_command("seed_author_milestones", verbosity=0)
+        self.assertEqual(Author.objects.count(), 0)
+
+    def test_curated_milestones_are_wellformed(self):
+        # Guards the hand-authored data: sorted-able years within the lifespan
+        # feel, non-empty labels, at least two events (a lone dot is not a line).
+        from library.author_milestones import AUTHOR_MILESTONES
+
+        for slug, events in AUTHOR_MILESTONES.items():
+            self.assertGreaterEqual(len(events), 2, slug)
+            years = [e["year"] for e in events]
+            self.assertEqual(years, sorted(years), f"{slug} milestones must be chronological")
+            for e in events:
+                self.assertIsInstance(e["year"], int)
+                self.assertTrue(e["label"].strip(), f"{slug} has an empty label")

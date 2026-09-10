@@ -59,6 +59,10 @@ class Command(BaseCommand):
         # malformed note is skipped rather than failing the release.
         self.stdout.write("→ seed_translation_notes")
         call_command("seed_translation_notes")
+        # Curated life milestones for the author-page timeline (code-owned, so
+        # re-asserted every deploy; skips authors not in the library yet).
+        self.stdout.write("→ seed_author_milestones")
+        call_command("seed_author_milestones")
         # Create/refresh the curated topical shelves.
         self.stdout.write("→ seed_topics")
         call_command("seed_topics")

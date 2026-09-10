@@ -496,6 +496,19 @@ export interface AuthorDetail extends AuthorBio {
 	/** The portrait's source page (Wikimedia Commons File:), used as the credit
 	 * link. Optional for the same prerender-before-API reason. */
 	photo_source_url?: string;
+	/**
+	 * Life-and-ministry events for the timeline, oldest first. Present only for
+	 * the handful of authors that have been curated; everyone else keeps the
+	 * plain lifespan bar. Optional for the same prerender-before-API reason.
+	 */
+	milestones?: Milestone[];
+}
+
+/** One dot on the author-page timeline. `key` marks a turning point to emphasise. */
+export interface Milestone {
+	year: number;
+	label: string;
+	key?: boolean;
 }
 
 /**
