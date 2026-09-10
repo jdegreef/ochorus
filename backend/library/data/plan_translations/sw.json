@@ -49,5 +49,14 @@
       "Found while shipping the deeper-life-in-christ row, and live: the-inner-chamber is published in Swahili, so seed_plans had already created the sw plan — taking the ENGLISH tuple, because no sw entry existed. The sw plans page had been reading «A Month in the Inner Chamber». Nothing failed; that was the documented fallback, and it was silent. «Chumba cha Ndani» is the sw title of the book itself, so card and book agree.",
       "es and uk had the same row and the same gap — reported, not fixed in that job, because it was Swahili."
     ]
+  },
+  "everything-for-christ": {
+    "title": "Kila Kitu kwa Ajili ya Kristo: Maisha Yaliyomiminwa",
+    "description": "Kujisalimisha kwa moyo wote kunagharimu nini, na kunazaa nini? Shajara ya kimisionari ya David Brainerd ipekuayo moyo, ikifuatiwa na hadithi za wanaume na wanawake waliotoa kila kitu kwa ajili ya injili — wito wa kujiweka wakfu unaosimuliwa kupitia maisha yaliyouitikia.",
+    "note": [
+      "PROVISIONAL TITLE. This curated plan's two source books — life-and-diary-of-david-brainerd and men-and-women-who-gave-everything-2 — have NO Swahili edition yet, so there is no shipped book title to quote. «Maisha Yaliyomiminwa» renders the plan's own subtitle 'A Life Poured Out'; «Kujisalimisha» is the glossary term for 'surrender'.",
+      "seed_plans will NOT create this row today: a curated plan needs EVERY source book present in the language, and both are still English-only. The prose ships now, deliberately, so that the moment both books land in Swahili the row is created with this wording rather than falling back to the ENGLISH tuple (the #819 defect). Whoever translates either book should adopt this title as the card's prefix, or update this entry in the same PR.",
+      "Written for job #1736."
+    ]
   }
 }
