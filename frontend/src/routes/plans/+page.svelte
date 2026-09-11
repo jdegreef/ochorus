@@ -8,7 +8,6 @@
 	import { localizeHref } from '$lib/href';
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
 	import { planMeta } from '$lib/emblemNames';
-	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -111,8 +110,6 @@
 
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('plans.title')} tagline={t('plans.tagline')} />
-
-	<CatalogLanguageNudge kind="plans" localizedCount={plans.length} />
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />

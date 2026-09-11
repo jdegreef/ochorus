@@ -8,7 +8,6 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import SermonCard from '$lib/components/SermonCard.svelte';
-	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
@@ -250,8 +249,6 @@
 		{preacherCount}
 		{preacherCount === 1 ? t('common.authorOne') : t('common.authorMany')}
 	{/snippet}
-
-	<CatalogLanguageNudge kind="sermons" localizedCount={sermons.length} />
 
 	<!-- Filter bar: free text + which book of the Bible the sermon expounds.
 	     Pinned under the app nav (itself sticky, hence the --appnav-h offset) so

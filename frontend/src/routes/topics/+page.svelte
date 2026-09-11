@@ -9,7 +9,6 @@
 	import { topicMeta } from '$lib/emblemNames';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
-	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 
 	let { data } = $props();
 	const topics = $derived<TopicSummary[]>(data.topics);
@@ -46,8 +45,6 @@
 
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('topics.title')} tagline={t('topics.tagline')} />
-
-	<CatalogLanguageNudge kind="topics" localizedCount={topics.length} />
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
