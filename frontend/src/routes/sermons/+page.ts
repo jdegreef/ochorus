@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-11: Spanish sermons — a-divine-and-supernatural-light (#1708),
+// faith (#1709), the-triumph-of-calvary (#1710), marks-of-a-true-conversion (#1711),
+// the-circumcision-of-the-heart (#1712). Sermon pages are prerendered per locale, so
+// /es/sermons must rebuild so each card and its /es/sermons/<slug> page bakes the
+// translated title and "In brief" summary.
 // prerender refresh 2026-09-10: French sermons (batch 3) — the-circumcision-of-the-heart
 // (#2020), witnessing-for-christ (#2021), marks-of-a-true-conversion (#2023),
 // a-divine-and-supernatural-light (#2024). Rebuilds /fr/sermons so each card and its
