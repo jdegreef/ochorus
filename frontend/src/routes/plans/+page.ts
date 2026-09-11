@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-10: Portuguese plan activates — faith-in-the-fire (A God of
+// All Comfort: Faith in the Fire). Its two source books are now both in pt — he-holds-my-
+// tomorrows shipped earlier and the-god-of-all-comfort ships in this PR (#1475) — so
+// seed_plans now creates the (faith-in-the-fire, pt) row. The pt prose already lived in
+// plan_translations/pt.json, so /pt/plans re-crawls to bake the new card.
 // prerender refresh 2026-09-10: French plan prose — school-of-prayer (#2003),
 // humility-12-days (#2004), deeper-life-in-christ (#2005) ship ahead of their source
 // books' French editions (no fr row yet). the-inner-chamber-month is added too because
