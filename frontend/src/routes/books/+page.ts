@@ -13,6 +13,11 @@
 // and the shelf rebuild with the translated title and the reader page bakes the 17
 // translated chapters. This is faith-in-the-fire's second source book, so plans/+page.ts
 // is touched in the same PR — the plan goes live now that both its books have pt editions.
+// prerender refresh 2026-09-10: NEW Swahili book — union-and-communion (#2176),
+// Hudson Taylor on the Song of Solomon (10 ch, "Muungano na Ushirika"). Rebuilds /sw/books
+// so the card carries its translated title and the shared painting cover. It is one of the
+// three source books of the deeper-life-in-christ plan, but the-masters-indwelling has no
+// Swahili edition yet, so seed_plans creates no sw plan row and no plans/+page.ts touch is owed.
 // prerender refresh 2026-09-10: one NEW Swahili book — absolute-surrender (#2167), Andrew
 // Murray's 9 addresses ("Kujisalimisha Kabisa"). Rebuilds /sw/books so the card carries its
 // translated title and the shared painting cover. Backs no plan.

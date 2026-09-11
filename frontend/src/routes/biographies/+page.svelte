@@ -17,6 +17,7 @@
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import { queryChip, type FilterChip } from '$lib/filterChips';
+	import { jumpToSection } from '$lib/scrollSpy.svelte';
 
 	const t = i18n.t;
 
@@ -135,9 +136,7 @@
 		const needed = Math.ceil((i + 1) / PER_PAGE);
 		if (needed > pageNum) pageNum = needed;
 		// The row may not exist yet this frame; wait for the render it triggered.
-		tick().then(() =>
-			document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-		);
+		tick().then(() => jumpToSection(slug));
 	}
 
 	// A–Z jump targets for the name sort: first writer per initial letter. Each

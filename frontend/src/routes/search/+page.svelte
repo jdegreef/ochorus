@@ -33,6 +33,7 @@
 	} from '$lib/searchResults';
 	import type { ScriptureResult } from '$lib/scripture.svelte';
 	import { markSnippet } from '$lib/highlight';
+	import { jumpToSection } from '$lib/scrollSpy.svelte';
 	import { localizeHref } from '$lib/href';
 	import { SITE_URL } from '$lib/config';
 	import { hreflangAll } from '$lib/seo';
@@ -344,7 +345,7 @@
 
 	/** Jump to a section — not a facet switch, for the reason above. */
 	function jumpTo(type: string) {
-		document.getElementById(`group-${type}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		jumpToSection(`group-${type}`);
 	}
 
 	async function maybeScripture(term: string, token: number) {
