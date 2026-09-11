@@ -1789,6 +1789,13 @@
    "art": true,
    "scrim": 0.3
   },
+  "fr/divine-healing": {
+   "ground": "fbd4f17761a2b74121dffa7efd286af3d76f8a379f07a743ddb56624fd0673e7",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.45
+  },
   "fr/the-unselfishness-of-god": {
    "ground": "a31312fc937e606b12ff6c9d53fd1d8e26ac1a6e4d337740c32b2a836c3d1534",
    "style": "devotional",
