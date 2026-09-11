@@ -15,6 +15,9 @@
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import { topicMeta } from '$lib/emblemNames';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
+	import { portraitPosition } from '$lib/portraits';
+	import { groupBooksByAuthor } from '$lib/topicBookGroups';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -28,6 +31,10 @@
 	const authors = $derived(topic.authors ?? []);
 	const relatedTopics = $derived(topic.related_topics ?? []);
 	const meta = $derived(topicMeta(topic.slug));
+
+	// Books grouped by author for author-clustered topics (the Puritans), null —
+	// a flat grid — for a diverse gallery (Women of Faith). See topicBookGroups.
+	const bookGroups = $derived(groupBooksByAuthor(topic.books));
 
 	// Self-referential canonical, and hreflang only for the locales this shelf
 	// actually exists in. A topic no longer falls back to its English title — it
@@ -144,11 +151,35 @@
 	{#if topic.books.length}
 		<section class="mb-10">
 			<h2 class="section-label">{t('topics.books')}</h2>
-			<div class="book-grid">
-				{#each topic.books as book (book.slug)}
-					<BookCard {book} showAuthor />
-				{/each}
-			</div>
+			{#if bookGroups}
+				<!-- Grouped by author (author-dominated topic). The heading names the
+				     author, so the cards below it don't repeat it. -->
+				<div class="flex flex-col gap-8">
+					{#each bookGroups as g (g.slug)}
+						<div>
+							<GroupHeading
+								as="h3"
+								name={g.name}
+								href={localizeHref(`/authors/${g.slug}`)}
+								portraitUrl={g.photo_url}
+								portraitPosition={portraitPosition(g.slug)}
+								count={g.items.length}
+							/>
+							<div class="book-grid">
+								{#each g.items as book (book.slug)}
+									<BookCard {book} />
+								{/each}
+							</div>
+						</div>
+					{/each}
+				</div>
+			{:else}
+				<div class="book-grid">
+					{#each topic.books as book (book.slug)}
+						<BookCard {book} showAuthor />
+					{/each}
+				</div>
+			{/if}
 		</section>
 	{/if}
 

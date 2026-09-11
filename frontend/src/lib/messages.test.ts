@@ -104,13 +104,32 @@ const SAME_AS_ENGLISH_OK = new Set([
  * list that only ever grows is how "temporary" becomes permanent — same
  * two-way ratchet the English-audit baseline uses, for the same reason.
  */
+// The book page's FAQ + "more like this" reason labels. The keys ship to every
+// catalogue for parity, but only en/es/pt/fr are translated and reviewed; the
+// book page renders these only in those locales (its REVIEWED_LOCALES set), so
+// the English placeholders below never reach a reader. Awaiting native review —
+// when a locale's are translated, delete it here and add it to REVIEWED_LOCALES.
+const BOOK_EXTRAS_PENDING = [
+	'book_more_by',
+	'book_also_on',
+	'book_faq_free_q',
+	'book_faq_free_a',
+	'book_faq_length_q',
+	'book_faq_length_a',
+	'book_faq_about_q',
+	'book_faq_author_q',
+	'book_faq_author_a'
+] as const;
+
 const PENDING_TRANSLATION: Record<string, readonly string[]> = {
-	// Empty, and worth keeping that way. uk's four Scripture strings lived here
-	// until the Kulish text could be sourced; it now can be, from the ebible
-	// USFM mirror on raw.githubusercontent.com, which is reachable where
-	// api.takeroot.bible is not. The mechanism stays because the next locale
-	// will hit the same wall — the point is that a blocked string is declared
-	// and ratcheted rather than quietly allowlisted forever.
+	// A blocked/awaiting-review string is declared here and ratcheted (asserted
+	// exactly, both directions) rather than quietly allowlisted forever. uk's four
+	// Scripture strings once lived here until the Kulish text could be sourced.
+	sw: BOOK_EXTRAS_PENDING,
+	lg: BOOK_EXTRAS_PENDING,
+	hi: BOOK_EXTRAS_PENDING,
+	ar: BOOK_EXTRAS_PENDING,
+	uk: BOOK_EXTRAS_PENDING
 };
 
 const toSnake = (key: string) =>
