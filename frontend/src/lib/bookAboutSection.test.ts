@@ -39,7 +39,10 @@ describe('the book page states what the book is', () => {
 	});
 
 	it('heads both branches with the same translated label', () => {
-		expect(PAGE.match(/t\('book\.aboutWork'\)/g)?.length).toBe(2);
+		// Both About branches head with `book.aboutWork`. Count the HEADINGS, not
+		// every use of the key — the on-page jump nav reuses the same label for its
+		// "About" chip, so a raw key count is no longer 2.
+		expect(PAGE.match(/<h2 id="about-work"[^>]*>\{t\('book\.aboutWork'\)\}/g)?.length).toBe(2);
 	});
 
 	it('does not show the author bio', () => {

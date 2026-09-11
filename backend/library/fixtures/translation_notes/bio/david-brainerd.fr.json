@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "david-brainerd",
+ "language": "fr",
+ "job_issue": 2236,
+ "references": [
+  {
+   "reference": "Acts 2:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

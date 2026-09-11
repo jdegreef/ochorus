@@ -68,15 +68,23 @@
 		aria-label="Timeline: {events[0].label} ({events[0].year}) to {events[events.length - 1]
 			.label} ({events[events.length - 1].year})"
 	>
-		<svg class="ev-svg" viewBox="0 0 {W} 72" role="img" aria-hidden="true">
-			<line class="ev-axis" x1={PAD} y1="26" x2={W - PAD} y2="26"></line>
-			<line class="ev-life" x1={ex(span.lo)} y1="26" x2={ex(span.hi)} y2="26"></line>
-			{#each events as m (m.year + m.label)}
+		<!-- Labels alternate ABOVE and BELOW the axis (even index below, odd above),
+		     so two adjacent events never share a horizontal band — the only way a
+		     short axis can carry the tighter clusters a real life throws up (a
+		     conversion two years before an ordination) without the words colliding.
+		     A hairline stem ties each label back to its dot. -->
+		<svg class="ev-svg" viewBox="0 0 {W} 82" role="img" aria-hidden="true">
+			<line class="ev-axis" x1={PAD} y1="41" x2={W - PAD} y2="41"></line>
+			<line class="ev-life" x1={ex(span.lo)} y1="41" x2={ex(span.hi)} y2="41"></line>
+			{#each events as m, i (m.year + m.label)}
+				{@const below = i % 2 === 0}
 				<g class="ev" class:key={m.key}>
 					<title>{m.year} — {m.label}</title>
-					<circle cx={ex(m.year)} cy="26" r={m.key ? 5.5 : 4.5}></circle>
-					<text class="ev-yr" x={ex(m.year)} y="46" text-anchor="middle">{m.year}</text>
-					<text class="ev-lb" x={ex(m.year)} y="60" text-anchor="middle">{m.label}</text>
+					<line class="ev-stem" x1={ex(m.year)} y1="41" x2={ex(m.year)} y2={below ? 48 : 34}
+					></line>
+					<circle cx={ex(m.year)} cy="41" r={m.key ? 5.5 : 4.5}></circle>
+					<text class="ev-yr" x={ex(m.year)} y={below ? 60 : 29} text-anchor="middle">{m.year}</text>
+					<text class="ev-lb" x={ex(m.year)} y={below ? 73 : 16} text-anchor="middle">{m.label}</text>
 				</g>
 			{/each}
 		</svg>
@@ -118,6 +126,11 @@
 		stroke: var(--accent);
 		stroke-width: 3;
 		stroke-linecap: round;
+	}
+	/* Hairline tying each label back to its dot across the axis. */
+	.ev-stem {
+		stroke: var(--border);
+		stroke-width: 1;
 	}
 	.ev circle {
 		fill: var(--bg);

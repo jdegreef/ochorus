@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "richard-allen",
+ "language": "fr",
+ "job_issue": 2242,
+ "references": [
+  {
+   "reference": "Daniel 5:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
