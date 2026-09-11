@@ -1830,6 +1830,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.75
+  },
+  "pt/talks-to-the-farmer": {
+   "ground": "86bc723d98a44075b00f6219e5a67cb99cb04c82427e51231106b8de1a1ac025",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.5
   }
  }
 }
