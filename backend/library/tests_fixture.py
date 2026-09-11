@@ -1437,6 +1437,25 @@ class CoverAssetTests(SimpleTestCase):
         )
 
 
+def _sermon_content_digest(fields: dict, names: dict) -> str:
+    """The ``content`` digest a sermon's share card is drawn from.
+
+    Mirrors ``contentDigest`` in ``generate-sermon-og.mjs`` — the strings the
+    card sets, in the order it joins them. Shared by the English and the
+    localized freshness checks so the three (with the generator) cannot drift.
+    """
+    author_slug = fields["author"][0]
+    blob = "\0".join(
+        (
+            fields["title"],
+            fields.get("scripture_ref") or "",
+            names.get(author_slug, {}).get("name", author_slug),
+            (fields.get("preached_on") or "")[:4],
+        )
+    )
+    return hashlib.sha256(blob.encode()).hexdigest()
+
+
 class SermonShareCardTests(SimpleTestCase):
     """Every sermon must have its Open Graph share card committed.
 
@@ -1499,18 +1518,7 @@ class SermonShareCardTests(SimpleTestCase):
             if slug not in recorded:
                 unrecorded.append(slug)
                 continue
-            author_slug = fields["author"][0]
-            # Mirrors `contentDigest` in generate-sermon-og.mjs: the strings the
-            # card actually sets, in the order it joins them.
-            blob = "\0".join(
-                (
-                    fields["title"],
-                    fields.get("scripture_ref") or "",
-                    names.get(author_slug, {}).get("name", author_slug),
-                    (fields.get("preached_on") or "")[:4],
-                )
-            )
-            if hashlib.sha256(blob.encode()).hexdigest() != recorded[slug]["content"]:
+            if _sermon_content_digest(fields, names) != recorded[slug]["content"]:
                 stale.append(slug)
 
         self.assertEqual(
@@ -1521,6 +1529,63 @@ class SermonShareCardTests(SimpleTestCase):
             stale, [],
             "the sermon changed but its share card did not — a forwarded link "
             "would show the previous title. Run `cd frontend && npm run og:sermons`",
+        )
+
+    def test_every_localized_sermon_has_a_fresh_card(self):
+        """The locales that opt into their own cards keep the same guarantee.
+
+        `SERMON_OG_LOCALES` (a French exception to the English-only default) draw
+        a card per translated sermon at ``/og/sermons/<lang>/<slug>.png``, and the
+        reader page points a French sermon's ``og:image`` there. So existence and
+        freshness have to hold per language too: every translated sermon in an
+        opted-in locale needs a card matching its French title and passage, or a
+        forwarded link 404s or shows the English words.
+
+        The opted-in locales are read from the manifest's ``localized`` block,
+        which the generator writes from ``SERMON_OG_LOCALES``; ``sermonCards.test.ts``
+        pins that block's locale set to the frontend constant, closing the loop
+        this side cannot read.
+        """
+        manifest_file = STATIC_DIR / "og" / "sermons" / "og-manifest.json"
+        localized = json.loads(manifest_file.read_text()).get("localized", {})
+        names = authors_by_slug()
+
+        sermons_by_lang: dict = {}
+        for row in all_rows():
+            if row["model"] != "library.sermon":
+                continue
+            f = row["fields"]
+            sermons_by_lang.setdefault(f.get("language", "en"), {})[f["slug"]] = f
+
+        missing_file, unrecorded, stale = [], [], []
+        for lang, cards in localized.items():
+            fixtures = sermons_by_lang.get(lang, {})
+            # Both directions: every translated sermon has a card, and no card
+            # outlives the sermon it stood in for.
+            for slug in sorted(set(fixtures) | set(cards)):
+                if slug not in fixtures or slug not in cards:
+                    unrecorded.append(f"{lang}/{slug}")
+                    continue
+                if not (STATIC_DIR / "og" / "sermons" / lang / f"{slug}.png").is_file():
+                    missing_file.append(f"{lang}/{slug}")
+                    continue
+                if _sermon_content_digest(fixtures[slug], names) != cards[slug]["content"]:
+                    stale.append(f"{lang}/{slug}")
+
+        self.assertEqual(
+            missing_file, [],
+            "localized sermon card missing its PNG — run `cd frontend && "
+            "npm run og:sermons` and commit frontend/static/og/sermons/<lang>/<slug>.png",
+        )
+        self.assertEqual(
+            unrecorded, [],
+            "a translated sermon and its localized card disagree (one exists "
+            "without the other) — run `cd frontend && npm run og:sermons`",
+        )
+        self.assertEqual(
+            stale, [],
+            "a translated sermon changed but its localized share card did not — "
+            "run `cd frontend && npm run og:sermons`",
         )
 
 
