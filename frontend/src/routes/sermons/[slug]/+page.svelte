@@ -14,6 +14,7 @@
 		HEADER_OFFSET
 	} from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
+	import { hasLocalizedSermonCard } from '$lib/sermonOgLocales';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { SERMON_CHAPTER_ORDER } from '$lib/reading-schema';
 	import { listen } from '$lib/listen.svelte';
@@ -194,10 +195,17 @@
 	// ground (frontend/scripts/generate-sermon-og.mjs). This used to be the
 	// AUTHOR PORTRAIT, so every Spurgeon sermon forwarded into a chat as the
 	// same photograph of Spurgeon, and a sermon by an author with no portrait
-	// forwarded as a bare link. Unconditional, like the book page's cover
-	// fallback: a prerendered page cannot test for a file, so
-	// `SermonShareCardTests` guarantees it instead.
-	const ogImage = $derived(absUrl(`/og/sermons/${sermon.slug}.png`));
+	// forwarded as a bare link. Locales in SERMON_OG_LOCALES draw their own card
+	// (French title, French passage); every other language shares the English
+	// one. A prerendered page cannot test for a file, so the card's existence is
+	// guaranteed by `SermonShareCardTests` instead, per language.
+	const ogImage = $derived(
+		absUrl(
+			hasLocalizedSermonCard(sermon.language)
+				? `/og/sermons/${sermon.language}/${sermon.slug}.png`
+				: `/og/sermons/${sermon.slug}.png`
+		)
+	);
 	const sermonLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',

@@ -57,12 +57,17 @@
  * gets a landscape card in the shared OG ground (scripts/og-card.mjs), wearing
  * the emblem it already wears everywhere else in the app.
  *
- * ENGLISH ONLY, ONE PER SLUG
- * The policy and its reasoning are `generate-og.mjs`'s, inherited rather than
- * invented here: scrapers rarely read localized cards. A translated sermon
- * page therefore shares the English card — which is what every translated BOOK
- * page already does too, since all 89 of them carry a generated `.svg` cover
- * and that routes their og:image to the English `/covers/<slug>.png`.
+ * ENGLISH BY DEFAULT, WITH NAMED EXCEPTIONS
+ * The default and its reasoning are `generate-og.mjs`'s, inherited rather than
+ * invented here: scrapers rarely read localized cards, so a translated sermon
+ * page shares the English card — which is what every translated BOOK page does
+ * too, routing its og:image to the English `/covers/<slug>.png`. The exceptions
+ * are `SERMON_OG_LOCALES` (src/lib/sermonOgLocales.ts): each locale there draws
+ * its OWN card per translated sermon at `/og/sermons/<lang>/<slug>.png` (French
+ * title, French passage), and the reader page points its og:image there. That
+ * list is the single source of truth — this script and the page both read it —
+ * and a locale on it must have a card for every one of its translated sermons
+ * (the gates enforce it), or the localized og:image 404s.
  *
  * SOURCE OF TRUTH
  * The committed English sermon fixtures, not the API — this runs on a laptop
@@ -80,6 +85,9 @@ import { channels } from '../src/lib/coverArt.ts';
 // header of emblems.ts. The art here, the slug->emblem assignment there.
 import { emblemForSermon } from '../src/lib/emblemNames.ts';
 import { EMBLEM_ART, emblemHue } from '../src/lib/emblems.ts';
+// The locales that ship their OWN sermon cards instead of the English one — the
+// single source of truth the reader page reads too, so the two cannot drift.
+import { SERMON_OG_LOCALES } from '../src/lib/sermonOgLocales.ts';
 import {
 	BACKGROUND,
 	GOLD,
@@ -104,11 +112,11 @@ function authorNames() {
 	return new Map(rows.map((r) => [r.fields.slug, r.fields.name]));
 }
 
-/** Every English sermon row, in slug order. */
-function sermons() {
+/** Every sermon row for one language, in slug order. */
+function sermonsFor(lang) {
 	const names = authorNames();
 	return readdirSync(resolve(CONTENT, 'sermons'))
-		.filter((f) => f.endsWith('.en.json'))
+		.filter((f) => f.endsWith(`.${lang}.json`))
 		.sort()
 		.flatMap((file) => JSON.parse(readFileSync(resolve(CONTENT, 'sermons', file), 'utf8')))
 		.filter((row) => row.model === 'library.sermon')
@@ -247,21 +255,47 @@ function card({ title, scripture, author, year, emblem, accent }) {
 
 // ── Run ─────────────────────────────────────────────────────────────────────
 
-const rows = sermons();
-const manifest = {};
 let wrote = 0;
-for (const sermon of rows) {
-	const out = resolve(OUT_DIR, `${sermon.slug}.png`);
+
+/** Draw one sermon's card to `out`, writing only when the bytes changed. */
+async function render(sermon, out, label) {
 	const emblem = emblemForSermon(sermon.slug);
 	// Emblem hues are chosen for the app's light surfaces; on this near-black
 	// ground the darker ones need brightening before they carry type at all.
 	const accent = liftToContrast(emblemHue(emblem));
-	manifest[sermon.slug] = { content: contentDigest(sermon), art: artDigest(emblem) };
 	const png = await drawCard(card({ ...sermon, emblem, accent }));
-	if (existsSync(out) && readFileSync(out).equals(png)) continue;
-	writeFileSync(out, png);
-	wrote += 1;
-	console.log(`  ✓ og/sermons/${sermon.slug}.png  (${emblem}, ${accent})`);
+	if (!(existsSync(out) && readFileSync(out).equals(png))) {
+		writeFileSync(out, png);
+		wrote += 1;
+		console.log(`  ✓ ${label}  (${emblem}, ${accent})`);
+	}
+	return { content: contentDigest(sermon), art: artDigest(emblem) };
+}
+
+const sorted = (obj) =>
+	Object.fromEntries(Object.entries(obj).sort(([a], [b]) => a.localeCompare(b)));
+
+// English: one card per slug at /og/sermons/<slug>.png — the default every
+// translated page shares unless its locale opts into its own below.
+const rows = sermonsFor('en');
+const cards = {};
+for (const sermon of rows) {
+	cards[sermon.slug] = await render(sermon, resolve(OUT_DIR, `${sermon.slug}.png`), `og/sermons/${sermon.slug}.png`);
+}
+
+// Localized: the deliberate exceptions in SERMON_OG_LOCALES each draw their own
+// card per translated sermon at /og/sermons/<lang>/<slug>.png, so a forwarded
+// French link shows a French title. Kept in a SEPARATE manifest block from
+// `cards`, whose key set the English gate pins exactly.
+const localized = {};
+for (const lang of SERMON_OG_LOCALES) {
+	const dir = resolve(OUT_DIR, lang);
+	mkdirSync(dir, { recursive: true });
+	const langCards = {};
+	for (const sermon of sermonsFor(lang)) {
+		langCards[sermon.slug] = await render(sermon, resolve(dir, `${sermon.slug}.png`), `og/sermons/${lang}/${sermon.slug}.png`);
+	}
+	localized[lang] = sorted(langCards);
 }
 // Written every run, not only when a card changes: the digests must describe
 // the cards that are on disk now, or the gate would pass on a manifest that
@@ -272,11 +306,12 @@ writeFileSync(
 		{
 			_comment:
 				'GENERATED by npm run og:sermons. slug -> digests of what each card was ' +
-				'drawn from, so the gates can tell a stale card from a fresh one.',
+				'drawn from, so the gates can tell a stale card from a fresh one. ' +
+				'`cards` is the English set (one per slug); `localized` holds the ' +
+				'per-language cards for the SERMON_OG_LOCALES exceptions.',
 			composition: compositionDigest(),
-			cards: Object.fromEntries(
-				Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b))
-			)
+			cards: sorted(cards),
+			localized
 		},
 		null,
 		'\t'
@@ -284,7 +319,9 @@ writeFileSync(
 	'utf8'
 );
 
+const localizedCount = Object.values(localized).reduce((n, c) => n + Object.keys(c).length, 0);
 console.log(
-	`${rows.length} sermon cards drawn · ${wrote} written to ${OUT_DIR}` +
+	`${rows.length} English + ${localizedCount} localized sermon cards drawn · ` +
+		`${wrote} written to ${OUT_DIR}` +
 		(wrote ? '' : ' · all already current')
 );
