@@ -9,7 +9,8 @@
     "pt",
     "ar",
     "hi",
-    "uk"
+    "uk",
+    "fr"
   ],
   "modules": [
     "./local-plugins/plugin-message-format.js"

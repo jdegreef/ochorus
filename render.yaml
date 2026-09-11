@@ -697,6 +697,33 @@ services:
       - type: rewrite
         source: /uk/search
         destination: /uk/search.html
+      - type: rewrite
+        source: /fr
+        destination: /fr.html
+      - type: rewrite
+        source: /fr/books
+        destination: /fr/books.html
+      - type: rewrite
+        source: /fr/biographies
+        destination: /fr/biographies.html
+      - type: rewrite
+        source: /fr/about
+        destination: /fr/about.html
+      - type: rewrite
+        source: /fr/contact
+        destination: /fr/contact.html
+      - type: rewrite
+        source: /fr/legal
+        destination: /fr/legal.html
+      - type: rewrite
+        source: /fr/sermons
+        destination: /fr/sermons.html
+      - type: rewrite
+        source: /fr/plans
+        destination: /fr/plans.html
+      - type: rewrite
+        source: /fr/search
+        destination: /fr/search.html
       # /topics had NO rewrite at any locale, so topics.html (23 KB, titled)
       # was never served — /topics and /topics/ both fell to the SPA shell in
       # all four locales while sitting in the sitemap — same class of bug as the
@@ -725,6 +752,9 @@ services:
       - type: rewrite
         source: /uk/topics
         destination: /uk/topics.html
+      - type: rewrite
+        source: /fr/topics
+        destination: /fr/topics.html
       # NO no-slash -> slash 301 here, deliberately. Render's route matcher is
       # trailing-slash-INSENSITIVE: a rule with `source: /about` also serves
       # `/about/` (verified live — there is no build/about/ directory, only
