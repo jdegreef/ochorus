@@ -57,7 +57,9 @@ from __future__ import annotations
 #:                         and 2026-09-02, sixteen more (The Enchiridion) — thirty-five;
 #:                         and 2026-09-08, fifteen more (Confessions) — fifty.
 #: jonathan-edwards      — approved 2026-08-30, eleven;
-#:                         and 2026-09-02, ten more (Selected Sermons).
+#:                         and 2026-09-02, ten more (Selected Sermons) — twenty-one;
+#:                         and 2026-09-11, twenty-nine more (Religious Affections,
+#:                         Selected Sermons, standalone sermons, Freedom of the Will) — fifty.
 #: john-wesley           — approved 2026-08-30, eighteen;
 #:                         and 2026-09-02, thirteen more (Sermons on Several Occasions) — thirty-one;
 #:                         and 2026-09-08, twenty-three more (Sermons on Several Occasions) — fifty-four.
@@ -2260,6 +2262,180 @@ JONATHAN_EDWARDS = [
         "chapter": ("selected-sermons-edwards", 3),
         "paragraph": 28,
     },
+    {
+        "slug": "jonathan-edwards-193b1c59",
+        "text": "Love is an affection, but will any Christian say, men ought not to love God and Jesus Christ in a high degree?",
+        "chapter": ("religious-affections", 3),
+        "paragraph": 2,
+    },
+    {
+        "slug": "jonathan-edwards-b82be46e",
+        "text": "Fear is cast out by the Spirit of God, no other way than by the prevailing of love; nor is it ever maintained by his Spirit but when love is asleep.",
+        "chapter": ("religious-affections", 13),
+        "paragraph": 17,
+    },
+    {
+        "slug": "jonathan-edwards-4d2570d4",
+        "text": "If we would learn what true religion is, we must go where there is true religion, and nothing but true religion, and in its highest perfection, without any defect or mixture.",
+        "chapter": ("religious-affections", 2),
+        "paragraph": 67,
+    },
+    {
+        "slug": "jonathan-edwards-e429bd29",
+        "text": "If we be not in good earnest in religion, and our wills and inclinations be not strongly exercised, we are nothing.",
+        "chapter": ("religious-affections", 2),
+        "paragraph": 34,
+    },
+    {
+        "slug": "jonathan-edwards-2f3de031",
+        "text": "The saints' love to God is the fruit of God's love to them, as it is the gift of that love.",
+        "chapter": ("religious-affections", 16),
+        "paragraph": 19,
+    },
+    {
+        "slug": "jonathan-edwards-43b90c7e",
+        "text": "A spirit of pride of man's own righteousness, morality, holiness, affection, experience, faith, humiliation, or any goodness whatsoever, is a legal spirit.",
+        "chapter": ("religious-affections", 20),
+        "paragraph": 6,
+    },
+    {
+        "slug": "jonathan-edwards-786db3ae",
+        "text": "A proud spirit is a rebellious spirit, but a humble spirit is a yieldable, subject, obediential spirit.",
+        "chapter": ("religious-affections", 26),
+        "paragraph": 21,
+    },
+    {
+        "slug": "jonathan-edwards-c02f29d7",
+        "text": "Godliness consists not in a heart to intend to do the will of God, but in a heart to do it.",
+        "chapter": ("religious-affections", 26),
+        "paragraph": 65,
+    },
+    {
+        "slug": "jonathan-edwards-b41b9375",
+        "text": "What chiefly makes a man, or any creature lovely, is his excellency; and so what chiefly renders God lovely, and must undoubtedly be the chief ground of true love, is his excellency.",
+        "chapter": ("religious-affections", 16),
+        "paragraph": 6,
+    },
+    {
+        "slug": "jonathan-edwards-90170d1f",
+        "text": "A natural principle of self-love may be the foundation of great affections towards God and Christ, without seeing anything of the beauty and glory of the divine nature.",
+        "chapter": ("religious-affections", 16),
+        "paragraph": 7,
+    },
+    {
+        "slug": "jonathan-edwards-fb6548c8",
+        "text": "Herein consists the beauty of the saints, that they are saints, or holy ones; it is the moral image of God in them, which is their beauty; and that is their holiness.",
+        "chapter": ("religious-affections", 17),
+        "paragraph": 11,
+    },
+    {
+        "slug": "jonathan-edwards-cf2c4824",
+        "text": "Conversion is a great and universal change of the man, turning him from sin to God.",
+        "chapter": ("religious-affections", 21),
+        "paragraph": 3,
+    },
+    {
+        "slug": "jonathan-edwards-39fe77bc",
+        "text": "Holy fear is so much the nature of true godliness, that it is called in Scripture by no other name more frequently, than the fear of God.",
+        "chapter": ("religious-affections", 23),
+        "paragraph": 5,
+    },
+    {
+        "slug": "jonathan-edwards-406773f3",
+        "text": "Every dog hath his kennel, every swine hath his swill; and every wicked man his lust.",
+        "chapter": ("religious-affections", 26),
+        "paragraph": 32,
+    },
+    {
+        "slug": "jonathan-edwards-46a608bf",
+        "text": "Holy affections are not heat without light; but evermore arise from the information of the understanding, some spiritual instruction that the mind receives, some light or actual knowledge.",
+        "chapter": ("religious-affections", 18),
+        "paragraph": 1,
+    },
+    {
+        "slug": "jonathan-edwards-80a1ab38",
+        "text": "Persons may seem to have love to God and Christ, yea, to have very strong and violent affections of this nature, and yet have no grace.",
+        "chapter": ("religious-affections", 8),
+        "paragraph": 3,
+    },
+    {
+        "slug": "jonathan-edwards-c8077ab3",
+        "text": "The true saints have not such a spirit of discerning that they can certainly determine who are godly, and who are not.",
+        "chapter": ("religious-affections", 14),
+        "paragraph": 1,
+    },
+    {
+        "slug": "jonathan-edwards-4a8c058b",
+        "text": "All the kings of the earth before God are as grasshoppers; they are nothing, and less than nothing: both their love and their hatred is to be despised.",
+        "chapter": ("selected-sermons-edwards", 6),
+        "paragraph": 37,
+    },
+    {
+        "slug": "jonathan-edwards-2f83aa62",
+        "text": "Man hath now a greater dependence on the grace of God than he had before the fall.",
+        "chapter": ("selected-sermons-edwards", 2),
+        "paragraph": 24,
+    },
+    {
+        "slug": "jonathan-edwards-fe469383",
+        "text": "Wisdom was a thing that the Greeks admired; but Christ is the true light of the world, it is through him alone that true wisdom is imparted to the mind.",
+        "chapter": ("selected-sermons-edwards", 2),
+        "paragraph": 6,
+    },
+    {
+        "slug": "jonathan-edwards-1adaf802",
+        "text": "We are dependent on the power of God to convert us, and give faith in Jesus Christ, and the new nature.",
+        "chapter": ("selected-sermons-edwards", 2),
+        "paragraph": 28,
+    },
+    {
+        "slug": "jonathan-edwards-88349935",
+        "text": "How great is their glory and honor that are admitted to be of the household of God!",
+        "chapter": ("selected-sermons-edwards", 5),
+        "paragraph": 30,
+    },
+    {
+        "slug": "jonathan-edwards-d990b657",
+        "text": "The soul of every man craves a happiness that is equal to the capacity of his nature.",
+        "sermon": "safety-fulness-and-sweet-refreshment-in-christ",
+        "paragraph": 41,
+    },
+    {
+        "slug": "jonathan-edwards-411b4379",
+        "text": "Christ never so eminently appeared for divine justice, and yet never suffered so much from divine Justice, as when he offered up himself a sacrifice for our sins.",
+        "sermon": "the-excellency-of-christ",
+        "paragraph": 71,
+    },
+    {
+        "slug": "jonathan-edwards-5b3032a3",
+        "text": "None are so low or inferior, but Christ's condescension is sufficient to take a gracious notice of them.",
+        "sermon": "the-excellency-of-christ",
+        "paragraph": 19,
+    },
+    {
+        "slug": "jonathan-edwards-2591b226",
+        "text": "Our understandings, if we stretch them never so far, cannot reach up to his divine glory.",
+        "sermon": "the-excellency-of-christ",
+        "paragraph": 18,
+    },
+    {
+        "slug": "jonathan-edwards-932bdf53",
+        "text": "The saint hath spiritual joy and pleasure by a kind of effusion of God on the soul.",
+        "sermon": "god-glorified-in-mans-dependence",
+        "paragraph": 28,
+    },
+    {
+        "slug": "jonathan-edwards-e8e8a7e6",
+        "text": "We are dependent on Christ the Son of God, as he is our wisdom, righteousness, sanctification, and redemption.",
+        "sermon": "god-glorified-in-mans-dependence",
+        "paragraph": 7,
+    },
+    {
+        "slug": "jonathan-edwards-1481dba4",
+        "text": "The reason why it is not dishonorable to be necessarily most holy, is, because holiness in itself is an excellent and honourable thing.",
+        "chapter": ("freedom-of-the-will", 32),
+        "paragraph": 13,
+    },
 ]
 
 JOHN_WESLEY = [
@@ -3700,6 +3876,8 @@ TOPIC_MEMBERS = {
         "george-muller-955c302c",  # How true that word that those that trust in the Lord sha
         "george-muller-aedac97a",  # At first, our faith will be tried very little in compari
         "george-muller-80aee326",  # If the work in which we are engaged is indeed the work o
+        "jonathan-edwards-90170d1f",  # A natural principle of self-love may be the foundation o
+        "jonathan-edwards-80a1ab38",  # Persons may seem to have love to God and Christ, yea, to
     ],
     "grace": [  # Grace
         "charles-h-spurgeon-e83563c7",  # Jesus has nothing which He will not use for a sinner's salva
@@ -3741,6 +3919,9 @@ TOPIC_MEMBERS = {
         "john-wesley-24804ca0",  # God justifieth not the godly, but the ungodly; not those
         "john-wesley-14f9003f",  # Whatsoever good is in man, or is done by man, God is the
         "george-muller-5cce5220",  # Is not that, which alone can make us worthy to receive a
+        "jonathan-edwards-2f83aa62",  # Man hath now a greater dependence on the grace of God th
+        "jonathan-edwards-1adaf802",  # We are dependent on the power of God to convert us, and 
+        "jonathan-edwards-5b3032a3",  # None are so low or inferior, but Christ's condescension 
     ],
     "holy-spirit": [  # The Holy Spirit
         "charles-h-spurgeon-c1353dff",  # The Holy Ghost Himself cannot better glorify the Lord Jesus 
@@ -3828,6 +4009,10 @@ TOPIC_MEMBERS = {
         "john-wesley-cd956c0e",  # God hath given this honour to love alone: Love is the en
         "john-wesley-0c62bd4a",  # May we not be of one heart, though we are not of one opi
         "john-wesley-44fac614",  # As God is love, so man, dwelling in love, dwelt in God, 
+        "jonathan-edwards-193b1c59",  # Love is an affection, but will any Christian say, men ou
+        "jonathan-edwards-b82be46e",  # Fear is cast out by the Spirit of God, no other way than
+        "jonathan-edwards-2f3de031",  # The saints' love to God is the fruit of God's love to th
+        "jonathan-edwards-b41b9375",  # What chiefly makes a man, or any creature lovely, is his
     ],
     "humility": [  # Humility
         "charles-h-spurgeon-c3d3a367",  # Let us be humble that we may not need to be humbled, but may
@@ -3843,6 +4028,10 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-5e7c6a28",  # Humble knowledge of self is a surer path to God than the
         "john-wesley-1fed3831",  # With regard to the Most High, man and all the concerns o
         "john-wesley-8f518f4f",  # Every child of man is in a thousand mistakes, and is lia
+        "jonathan-edwards-43b90c7e",  # A spirit of pride of man's own righteousness, morality, 
+        "jonathan-edwards-786db3ae",  # A proud spirit is a rebellious spirit, but a humble spir
+        "jonathan-edwards-c8077ab3",  # The true saints have not such a spirit of discerning tha
+        "jonathan-edwards-2591b226",  # Our understandings, if we stretch them never so far, can
     ],
     "suffering": [  # Suffering & Trials
         "charles-h-spurgeon-116882b5",  # The Lord's mercy often rides to the door of our hearts on th
@@ -3885,6 +4074,11 @@ TOPIC_MEMBERS = {
         "john-wesley-98c3db43",  # Outward religion may be where inward is not; but if ther
         "john-wesley-a392c43e",  # Christ indeed cannot reign, where sin reigns; neither wi
         "john-wesley-ec09b762",  # The righteousness of Christ is doubtless necessary for a
+        "jonathan-edwards-4d2570d4",  # If we would learn what true religion is, we must go wher
+        "jonathan-edwards-e429bd29",  # If we be not in good earnest in religion, and our wills 
+        "jonathan-edwards-c02f29d7",  # Godliness consists not in a heart to intend to do the wi
+        "jonathan-edwards-fb6548c8",  # Herein consists the beauty of the saints, that they are 
+        "jonathan-edwards-1481dba4",  # The reason why it is not dishonorable to be necessarily 
     ],
     "the-cross": [  # The Cross of Christ
         "charles-h-spurgeon-1fe6c2ed",  # The Lord cannot read our pardon written in the blood of His 
@@ -3902,6 +4096,7 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-77d5e620",  # A man’s true progress consists in denying himself, and th
         "hudson-taylor-59c25747",  # The GOD of the Bible is a GOD who punishes sin, and can
         "hudson-taylor-a1d67b37",  # Self-denial surely means something far greater than som
+        "jonathan-edwards-411b4379",  # Christ never so eminently appeared for divine justice, a
     ],
     "trusting-god": [  # Trusting God
         "charles-h-spurgeon-63de5d24",  # Trust not thyself nor any born of woman, beyond due bounds; 
@@ -3932,6 +4127,7 @@ TOPIC_MEMBERS = {
         "george-muller-25db2ca7",  # How great is the blessing which the soul obtains by trus
         "george-muller-73e19adb",  # How blessed therefore is it to trust in God, and in him 
         "george-muller-d2db737a",  # Would it have been right to charge God with unfaithfulne
+        "jonathan-edwards-4a8c058b",  # All the kings of the earth before God are as grasshopper
     ],
     "joy": [  # Joy
         "charles-h-spurgeon-d6d84bd3",  # Beloved, the Lord’s workers have sauce with their bread: not
@@ -3956,6 +4152,7 @@ TOPIC_MEMBERS = {
         "amanda-berry-smith-3fe22a05",  # How glad I am that God nowhere teaches that men have to go i
         "amanda-berry-smith-7de9680d",  # The burden rolled away; I felt it when it left me, and a flo
         "thomas-a-kempis-21a0bdf5",  # One who is in love flies, runs, and rejoices; he is free,
+        "jonathan-edwards-932bdf53",  # The saint hath spiritual joy and pleasure by a kind of e
     ],
     "hope": [  # Hope
         "charles-h-spurgeon-b0f71ee3",  # Come to Jesus, by quitting every other hope, by thinking of 
@@ -3966,6 +4163,7 @@ TOPIC_MEMBERS = {
         "john-wesley-0d8ca0c2",  # The pure love of our neighbour, springing from the love of G
         "john-wesley-697ed3cb",  # Reason, however cultivated and improved, cannot produce the 
         "augustine-of-hippo-22d8524d",  # When, then, we believe that good is about to come, this
+        "jonathan-edwards-d990b657",  # The soul of every man craves a happiness that is equal t
     ],
     "peace": [  # Peace
         "charles-h-spurgeon-010273ba",  # Unless the heart be kept peaceable, the life will not be hap
@@ -3993,6 +4191,7 @@ TOPIC_MEMBERS = {
         "augustine-of-hippo-2fc36ce4",  # Be not foolish, O my soul, nor become deaf in the ear o
         "augustine-of-hippo-109ebfbc",  # The Word itself calleth thee to return: and there is th
         "augustine-of-hippo-e35729b7",  # Let them then be turned, and seek Thee; because not as
+        "jonathan-edwards-39fe77bc",  # Holy fear is so much the nature of true godliness, that 
     ],
     "scripture": [  # The Word of God
         "charles-h-spurgeon-14b10a83",  # You may read the Bible continuously, and yet never learn any
@@ -4007,6 +4206,7 @@ TOPIC_MEMBERS = {
         "george-muller-06569328",  # How precious it is, even for this life, to act according
         "george-muller-37a07bae",  # Do not men believe that God means what he appears plainl
         "george-muller-46a167ee",  # We may therefore profitably meditate, with God’s blessin
+        "jonathan-edwards-46a608bf",  # Holy affections are not heat without light; but evermore
     ],
     "salvation": [  # Salvation & the Gospel
         "charles-h-spurgeon-91fc01a4",  # The Lord's salvation can come to us though we have only fait
@@ -4045,6 +4245,9 @@ TOPIC_MEMBERS = {
         "john-wesley-24804ca0",  # God justifieth not the godly, but the ungodly; not those
         "john-wesley-96fdc970",  # Christ is not only God above us; which may keep us in aw
         "george-muller-ac311d8d",  # Do you verily depend upon him alone for the salvation of
+        "jonathan-edwards-cf2c4824",  # Conversion is a great and universal change of the man, t
+        "jonathan-edwards-fe469383",  # Wisdom was a thing that the Greeks admired; but Christ i
+        "jonathan-edwards-e8e8a7e6",  # We are dependent on Christ the Son of God, as he is our 
     ],
     "heaven": [  # Heaven & Eternity
         "charles-h-spurgeon-8b8e88db",  # We are not going to talk about law, and duty, and punishment
@@ -4071,6 +4274,7 @@ TOPIC_MEMBERS = {
         "richard-allen-83c101e1",  # In short, the love of this world is a heavy weight upon the 
         "george-muller-2059f3eb",  # Where should the heart of the disciple of the Lord Jesus
         "george-muller-edf32cb6",  # Remember that the world passeth away, but that the thing
+        "jonathan-edwards-88349935",  # How great is their glory and honor that are admitted to 
     ],
     "surrender": [  # Surrender & Obedience
         "thomas-a-kempis-23ece4d7",  # No man commands safely unless he has learned well how to obe
@@ -4136,6 +4340,7 @@ TOPIC_MEMBERS = {
         "john-wesley-2b7968c1",  # Sin is then overcome, but it is not rooted out; it is co
         "john-wesley-fbb70206",  # Abhor sin far more than death or hell; abhor sin itself,
         "john-wesley-59d8d274",  # The body dies when it is separated from the soul; the so
+        "jonathan-edwards-406773f3",  # Every dog hath his kennel, every swine hath his swill; a
     ],
     "contentment": [  # Contentment
         "thomas-a-kempis-1e51f540",  # The man who is at perfect ease is never suspicious, but the 
