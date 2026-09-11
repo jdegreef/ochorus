@@ -864,7 +864,13 @@ dropped; chapters under 120 words are dropped as stubs.
     the conversion in keeps it idempotent and passes `QuoteStyleTests`. Note a
     LONG multi-verse Scripture quotation legitimately opens a `“` on every verse
     and closes only once, so an open>close imbalance is faithful, not a defect
-    (`orphan-close-quote` only flags close-without-open). **PD gate: judge by the
+    (`orphan-close-quote` only flags close-without-open). **But an imbalance with
+    ZERO closers is scan damage, not scripture:** *The Bruised Reed*
+    (`bwb_C0-AVW-616`) shipped 163 `‘` + 15 `“` and no `”` — scanned marginal
+    rules the converter cased as openers, some standing where a letter was lost
+    (`“he influence`). The audit is blind to it, so count opens vs closes per
+    chapter, read every opener before a mid-sentence lowercase word, and collate
+    the lost letter against a second printing. **PD gate: judge by the
     work's FIRST publication year (1923), never the Archive item's reprint date**
     (this scan is a 1979/1991 Baker reprint of the 1923 Revell text).
   *(possibilities-of-prayer, 2026-09; the whole HFP-triage sourcing note is why
