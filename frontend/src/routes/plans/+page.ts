@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-11: French plan ACTIVATES — humility-12-days (« L'humilité en 12
+// jours »). Its lone source book humility-2 ships in French in this same batch (#2225), so
+// seed_plans now creates the (humility-12-days, fr) row from prose already in
+// plan_translations/fr.json (#2004). /fr/plans re-crawls to bake the translated card.
 // prerender refresh 2026-09-10: Portuguese plan activates — faith-in-the-fire (A God of
 // All Comfort: Faith in the Fire). Its two source books are now both in pt — he-holds-my-
 // tomorrows shipped earlier and the-god-of-all-comfort ships in this PR (#1475) — so
