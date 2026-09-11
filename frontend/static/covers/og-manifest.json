@@ -1159,6 +1159,13 @@
    "art": true,
    "scrim": 0.45
   },
+  "pt/soar-like-the-eagle-3": {
+   "ground": "917cdb154fe2af1e9e10732571bc1a3d17aa532753a81834eb58e7ac50d009cd",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.9
+  },
   "pt/stepping-stones-2": {
    "ground": "3d85ea47242de1c603f2dbbf4e0fed26aff1daa162b96a44e7b5e60f21424ad1",
    "style": "house",
