@@ -37,6 +37,9 @@
 	const path = $derived(`/topics/${topic.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const hreflang = $derived(hreflangFor(path, topic.available_languages));
+	// The per-topic share card (npm run og:topics). One value feeds both the
+	// og:image meta tag and the CollectionPage JSON-LD image, as on books/sermons.
+	const ogImage = $derived(absUrl(`/og/topics/${topic.slug}.png`));
 	// One crumb trail feeds both the visible <Breadcrumb> and the JSON-LD.
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },
@@ -51,6 +54,7 @@
 			name: topic.title,
 			description: topic.description || undefined,
 			url: canonical,
+			image: ogImage,
 			hasPart: [
 				...topic.books.slice(0, 60).map((b) => ({
 					'@type': 'Book',
@@ -79,7 +83,7 @@
 	description={topic.description}
 	{canonical}
 	{hreflang}
-	ogImage={absUrl('/og/topics.png')}
+	{ogImage}
 	structuredData={[topicLd, crumbsLd]}
 />
 
