@@ -718,6 +718,13 @@
    "art": true,
    "scrim": 1
   },
+  "sw/holy-in-christ": {
+   "ground": "b3ae10d7ea2dfc9d691d676c3cadcbaa9c68430e6fc29d0e4af93e1780257e4f",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 1
+  },
   "how-to-bring-men-to-christ": {
    "ground": "90e959b8dbd59b93bef2f3766b1a9e33981a4f9fdb0357c6eba650a723470ae3",
    "style": "revival",
