@@ -22,14 +22,18 @@
  * `npm install` is all either needs.
  *
  * satori needs a real TTF/OTF (it can't read the app's woff2 variable fonts),
- * so this uses the Liberation faces shipped with most Linux distros — a clean
- * classic serif that suits a public-domain-classics library. Swap FONT_* below
- * for the brand faces (Fraunces / Hanken) if TTFs of them are vendored.
+ * so the Liberation faces — a clean classic serif that suits a public-domain-
+ * classics library — are vendored in-repo under `scripts/fonts` (SIL OFL, see
+ * `fonts/LICENSE`). Vendored rather than read from `/usr/share` so `npm run
+ * og:*` rasterizes identically on any machine, macOS included, instead of only
+ * on a Linux box that happens to ship Liberation. Swap FONT_* below for the
+ * brand faces (Fraunces / Hanken) if TTFs of them are vendored.
  */
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 // Named with its extension because this is a plain .mjs script: Node resolves
 // it, and nothing type-checks this file. (`emblems.ts` itself cannot import
@@ -49,8 +53,9 @@ export const MUTED = '#b7afd6';
 
 export const BACKGROUND = `linear-gradient(135deg, ${BG_FROM} 0%, ${BG_TO} 100%)`;
 
-const FONT_SERIF = '/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf';
-const FONT_SANS = '/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf';
+const FONTS = resolve(dirname(fileURLToPath(import.meta.url)), 'fonts');
+const FONT_SERIF = resolve(FONTS, 'LiberationSerif-Bold.ttf');
+const FONT_SANS = resolve(FONTS, 'LiberationSans-Regular.ttf');
 
 // Read on first render, not at import: 780 KB of TTF, and reading it eagerly
 // makes the pure colour maths below unimportable (and untestable) on a machine

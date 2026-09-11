@@ -53,6 +53,13 @@
    "art": true,
    "scrim": 0.95
   },
+  "sw/absolute-surrender": {
+   "ground": "16a5c3ba386c02cdea3122b541a663237428273dfa88eb02ec5a007988d97c8f",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.95
+  },
   "all-of-grace": {
    "ground": "25d18c1f3133cdd46d916757dc58d064dd8cda9ff6adce9f7edf269c234762d4",
    "style": "revival",
@@ -1830,6 +1837,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.75
+  },
+  "pt/talks-to-the-farmer": {
+   "ground": "86bc723d98a44075b00f6219e5a67cb99cb04c82427e51231106b8de1a1ac025",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.5
   }
  }
 }
