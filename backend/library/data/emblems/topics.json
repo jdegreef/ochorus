@@ -1,15 +1,35 @@
 {
 	"_comment": "GENERATED from frontend/src/lib/emblemNames.ts by npm run emblem:art. Topic slug -> emblem name, so covers.py can draw the emblem a book’s topic wears.",
 	"topics": {
+		"abiding-in-christ": "grafted-branch",
+		"christ-and-the-cross": "paschal-lamb",
+		"contemporary-voices": "waymark",
+		"day-by-day": "sun-and-moon",
 		"deeper-life": "mountain-dawn",
 		"enduring-classics": "laurel-tome",
 		"faith-and-guidance": "compass-rose",
+		"faith-for-the-impossible": "mountain-into-sea",
+		"for-those-who-lead": "raised-lantern",
+		"foundations-of-the-faith": "cornerstone",
 		"grace-and-comfort": "overflowing-cup",
 		"holy-spirit": "dove-descending",
+		"men-of-valour": "sword-and-shield",
 		"prayer": "praying-hands",
 		"revival-and-missions": "torch-globe",
+		"saints-of-the-african-diaspora": "river-sunrise",
+		"the-body-of-christ": "loaf-and-cup",
+		"the-east-african-revival": "dawn-over-hills",
 		"the-gospel-call": "herald-trumpet",
+		"the-grace-of-god": "open-hands",
+		"the-great-awakening": "field-sunrise",
+		"the-inner-life": "sheltered-lamp",
 		"the-preached-word": "open-word",
-		"the-way-of-holiness": "narrow-gate"
+		"the-puritans": "candle-and-book",
+		"the-way-of-holiness": "narrow-gate",
+		"the-wesleys-and-early-methodism": "warmed-heart",
+		"to-the-ends-of-the-earth": "mission-ship",
+		"victory-over-sin": "broken-chain",
+		"voices-of-the-early-church": "ichthys-fish",
+		"women-of-faith": "alabaster-jar"
 	}
 }
