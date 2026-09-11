@@ -1,8 +1,30 @@
+// prerender refresh 2026-09-11: Portuguese book — women-who-moved-heaven-2 (#1785), an Ochorus
+// Originals devotional on women of persistent prayer through history, 13 chapters ("Mulheres Que
+// Moveram o Céu"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
+// the translated title and the reader page bakes the 13 chapters. No plans/+page.ts touch owed —
+// women-who-moved-heaven-2 backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-11: Portuguese book — soar-like-the-eagle-3 (#1781), Gareth Evans's
+// teaching on reaching one's spiritual potential and destiny in Christ, 12 chapters ("Voe Como
+// a Águia"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
+// translated title and the reader page bakes the 12 chapters. No plans/+page.ts touch owed —
+// soar-like-the-eagle-3 backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-11: Portuguese book — watchman-nee-a-life (#1757), a biography of
+// Watchman Nee, 21 chapters. Book pages are prerendered per locale, so /pt/books and the shelf
+// rebuild with the translated subtitle and the reader page bakes the 21 chapters. No
+// plans/+page.ts touch owed — watchman-nee-a-life backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-11: Portuguese book — cheque-book (#1585), C. H. Spurgeon's daily
+// promise devotional, 13 chapters ("O Livro de Cheques do Banco da Fé"). Book pages are
+// prerendered per locale, so /pt/books and the shelf rebuild with the translated title and the
+// reader page bakes the 13 chapters. No plans/+page.ts touch owed — cheque-book backs no
+// LAUNCH_PLANS/CURATED_PLANS entry (grepped plan_seed.py).
 // prerender refresh 2026-09-11: Portuguese book — purity-of-heart (#1584), William Booth's
 // holiness appeal, 10 chapters ("Pureza de Coração"). Book pages are prerendered per locale,
 // so /pt/books and the shelf rebuild with the translated title and the reader page bakes the
 // 10 chapters. No plans/+page.ts touch owed — purity-of-heart backs no LAUNCH_PLANS/
 // CURATED_PLANS entry (grepped plan_seed.py).
+// prerender refresh 2026-09-11: one NEW Swahili book — holy-in-christ (#2168), Andrew Murray's
+// month of 31 meditations on holiness (33 chapters, "Mtakatifu katika Kristo"). Rebuilds /sw/books
+// so the card carries its translated title and the shared painting cover. Backs no plan.
 // prerender refresh 2026-09-11: Portuguese book — talks-to-the-farmer (#1583), C. H. Spurgeon's
 // homely talks drawing spiritual lessons from farm life, 18 chapters ("Conversas com o
 // Lavrador"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
