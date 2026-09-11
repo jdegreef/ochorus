@@ -77,12 +77,26 @@
 	// Localized fallback, not an English literal: this page prerenders per locale,
 	// so a work without a description was shipping an English <meta description>
 	// and og:description at its /sw, /ar, … URL. Mirrors author.metaFallback.
-	const description = $derived(
-		truncateMeta(
-			book.description ||
-				t('book.metaFallback').replace('%title%', book.title).replace('%name%', book.author.name)
-		)
-	);
+	// A real editorial description is used as-is. When there is none, the localized
+	// metaFallback sentence is enriched with concrete, ALREADY-localized facts — the
+	// chapter count and the reading time — so a description-less book still gives the
+	// SERP something specific (and a reason to click) instead of a bare "free to read"
+	// line. Composed from existing localized helpers, so no new catalogue string is
+	// introduced; the facts trail the sentence, so truncateMeta trims them first when
+	// a long title crowds the ~160-char budget.
+	const description = $derived.by(() => {
+		if (book.description) return truncateMeta(book.description);
+		const base = t('book.metaFallback')
+			.replace('%title%', book.title)
+			.replace('%name%', book.author.name);
+		const facts = [
+			book.chapter_count
+				? `${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
+				: '',
+			totalWords ? readingTime(totalWords) : ''
+		].filter(Boolean);
+		return truncateMeta(facts.length ? `${base} ${facts.join(' · ')}.` : base);
+	});
 	// The same work's other-language editions, reused from the hreflang set
 	// (already the intersection of available_languages with advertised locales,
 	// as absolute URLs) for the Book-level translation links below.
