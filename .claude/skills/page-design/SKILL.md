@@ -170,6 +170,24 @@ and a `detail` snippet carries the era's year range or Search's bespoke "N of M"
 `<SectionHeader>` is *not* this — it renders `h2.text-h2` and is the home page's
 "shelf title + See all" pattern.
 
+The **topic leaf page** also uses `<GroupHeading>`: its Books section groups the
+books by author when the topic is *author-clustered* — most of its books share
+an author with another (the Puritans) — and stays a flat `book-grid` otherwise
+(a diverse gallery like Women of Faith). The rule is one tested pure helper,
+`lib/topicBookGroups.ts` (`groupBooksByAuthor` → groups | null); the
+`section-label` "Books" heading stays, with the author `GroupHeading`s nested
+under it. This is the adaptive-shared-anatomy approach — adapt from data, not a
+per-topic bespoke layout — extend the topic page the same way, never with a
+hand-built one-off. (The bare author-Map reduction now has three copies —
+here, `sermons/+page.svelte`, `BooksShelf.svelte` — but the topic one's null
+gate is topic-specific; a shared low-level `groupByAuthor` is a deferred
+refactor, not this pattern's job.)
+
+**Verifying a page in the in-app Browser pane:** `npm run dev` binds IPv6
+`[::1]` only, but the pane resolves `localhost`→IPv4, so navigation fails with
+"denied or failed" — start it `--host 127.0.0.1`, and export
+`PUBLIC_API_BASE_URL` so the dev CSP admits the API (see `verify-local`).
+
 ## Chrome parity — the checklist for a new content type
 
 A content type is not shipped until it is reachable from every surface that
