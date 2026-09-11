@@ -9,6 +9,7 @@ reaches a reader until a person approves it.
 
 from __future__ import annotations
 
+from django.conf import settings
 from django.core.management import call_command
 from django.test import SimpleTestCase, TestCase
 from rest_framework.test import APIClient
@@ -716,3 +717,28 @@ class QuoteResolveApiTests(TestCase):
 
     def test_a_non_list_body_is_rejected(self):
         self.assertEqual(self.resolve("andrew-murray-aaa").status_code, 400)
+
+    def test_the_endpoint_is_throttled(self):
+        # The one public POST on the module: bounded, not trusted. Throttles are
+        # inert under `manage.py test` (see common.throttling), so this hands the
+        # class a real private cache and a squeezed rate for the duration.
+        from common.testing import enforcing_throttle
+
+        from .views import _QuoteResolveThrottle
+
+        with enforcing_throttle(_QuoteResolveThrottle, "3/min"):
+            codes = [self.resolve(["andrew-murray-aaa"]).status_code for _ in range(4)]
+        self.assertEqual(codes, [200, 200, 200, 429])
+
+    def test_the_shipped_rate_does_not_fire_on_ordinary_use(self):
+        # The guard above proves it is wired; this proves the rate we ship sits
+        # above a reader (the shelf resolves once per page load), at the real
+        # rate against a real cache.
+        from common.testing import enforcing_throttle
+
+        from .views import _QuoteResolveThrottle
+
+        rate = settings.REST_FRAMEWORK["DEFAULT_THROTTLE_RATES"]["quote-resolve"]
+        with enforcing_throttle(_QuoteResolveThrottle, rate):
+            codes = [self.resolve(["andrew-murray-aaa"]).status_code for _ in range(40)]
+        self.assertEqual(set(codes), {200})

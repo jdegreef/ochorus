@@ -1145,6 +1145,19 @@ class QuoteAuthorsView(APIView):
         )
 
 
+class _QuoteResolveThrottle(ScopedCacheThrottle):
+    """Bounds the one unauthenticated POST on this module. The batch is already
+    capped at 200 slugs, so a single call is a bounded read — but nothing stops a
+    script from firing it in a loop, each call an ``slug__in`` query with four
+    joins. Its own bucket so it can't ride (or starve) the search quotas, and far
+    above a reader: the shelf resolves once per page load. ``UserRateThrottle``
+    for the same reason as the search throttles — ``apiFetch`` sends a token when
+    there is one, which ``AnonRateThrottle`` would exempt.
+    """
+
+    scope = "quote-resolve"
+
+
 class QuoteResolveView(APIView):
     """Resolve a batch of quote slugs to their cards — the reader's saved-quotes
     shelf.
@@ -1160,6 +1173,8 @@ class QuoteResolveView(APIView):
     whose quote was pulled shouldn't error the whole shelf; the reader simply
     sees it fall away.
     """
+
+    throttle_classes = [_QuoteResolveThrottle]
 
     def post(self, request):
         from .models import Quote

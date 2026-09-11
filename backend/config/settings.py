@@ -183,6 +183,11 @@ REST_FRAMEWORK = {
         # other device"): their own budget, so they never eat into the writes' —
         # and still a ceiling.
         "reading-read": "600/min",
+        # Resolves a batch of saved-quote slugs to cards (QuoteResolveView). The
+        # batch is capped at 200, but the call is a public POST that joins four
+        # tables — so it gets a ceiling for parity with the other public
+        # endpoints. Sized well above a reader (the shelf resolves once per load).
+        "quote-resolve": "120/min",
     },
     # Exactly one proxy (Render's) sits in front of the app, so the client
     # address is the LAST entry in X-Forwarded-For. Without this, DRF keys
