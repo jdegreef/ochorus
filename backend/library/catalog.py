@@ -659,22 +659,20 @@ BOOKS: list[BookEntry] = [
               "gutenberg", "73271",
               subtitle="What Prayer Requires of the One Who Prays", cover_color="#5c2a3e"),
     # Sibbes is on neither CCEL (`ccel/sibbes` 404s) nor Gutenberg — the gap the
-    # archive source exists to close. Grosart's collected edition rather than the
-    # 1878 standalone printing: same book, half the OCR damage (0.17% suspect
-    # tokens against 0.35%), and it opens "THE prophet Isaiah being lifted up"
-    # where the standalone opens "B L For his cattingz God stykdi liMn".
-    # Pickering's 1838 standalone printing, NOT Grosart's 1862 collected works.
-    # Grosart is a CRITICAL edition: its variant-reading sigla ("'…,' in A and
-    # B") and editor's glosses ("— G.") are OCR-fused mid-sentence through ten
-    # chapters, the next chapter's heading leaks into the last one's tail, and
-    # the scan drops two chapter markers outright — ~200 defects that no
-    # corrections list should be asked to carry, and which made the book
-    # untranslatable (a faithful translation reproduces the apparatus). Pickering
-    # is a reader edition: no apparatus at all, and a measured ~1.4% suspect
-    # tokens against `web2` — most of THOSE being Sibbes's own `doth`/`shew`/
-    # `maketh` rather than defects. The volume binds three works, so `part` /
-    # `part_end` slice this one out; the index that follows the last chapter is
-    # the boundary.
+    # archive source exists to close (the 1878 standalone scan is too damaged:
+    # it opens "B L For his cattingz God stykdi liMn"). Pickering's 1838
+    # standalone printing, NOT Grosart's 1862 collected works, which the book
+    # first shipped from. Grosart is a CRITICAL edition: its variant-reading
+    # sigla ("'…,' in A and B") and editor's glosses ("— G.") are OCR-fused
+    # mid-sentence through ten chapters, the next chapter's heading leaks into
+    # the last one's tail, and the scan lost the "XXVIII." marker, merging the
+    # last two chapters — ~200 defects that no corrections list should be asked
+    # to carry, and which made the book untranslatable (a faithful translation
+    # reproduces the apparatus). Pickering is a reader edition with no apparatus
+    # and 28 chapters; its OCR damage is repaired in `corrections.py`, settled
+    # word by word against Grosart as a second witness. The volume binds three
+    # works, so `part` / `part_end` slice this one out; the index that follows
+    # the last chapter is the boundary.
     BookEntry("the-bruised-reed", "The Bruised Reed", "richard-sibbes",
               "archive", "bwb_C0-AVW-616",
               # The text-start title is split over two lines ("THE BRUISED REED

@@ -527,3 +527,21 @@ Reported, not fixed
   and `the-inner-chamber`). Confirmed altered: secret-of-guidance (damaged),
   god-of-all-comfort, humility-2, the-inner-chamber; full catalog is a backlog
   (see memory `modernized-scripture-in-pd-classics`).
+- **An audit that calls a book clean can be describing its own blind spots.**
+  `the-bruised-reed` (re-imported from Pickering's 1838 scan, #1943) passed
+  `english_audit` at every stage while shipping ~180 stray opening quote marks
+  (scanned margin rules; `orphan-close-quote` looks only the other way), a
+  sentence the scan lost a whole line from, and ~90 misreads that land on REAL
+  words (`derived rot God`, `the Sear of the Lord`, `eat the it of your own
+  ways`). What found them: align the whole text word by word against a second
+  printing (here Grosart's 1862, the edition it replaced) and READ every
+  difference, not just the non-dictionary ones. Most differences are the
+  witness's own damage or house style (`burthen`, `Isai.`, `Balthasar`), so the
+  witness is consulted, not obeyed — and it overturns reviewers too (Grosart
+  reads "and **blessed** God afterwards", not the `blesseth` a review proposed).
+  Channels added for it: `strip_stray_openers` (opt-in, only for an edition
+  that sets no quotation marks; self-refusing on any body with a `”`, because an
+  entry reaches every language edition of its slug) and
+  `QuoteStyleTests.test_no_work_is_peppered_with_unclosed_openers`. Repairs to
+  STORED text reach prod through `apply_body_corrections` on deploy, so a body
+  fix needs no migration; a chapter TITLE does (`seed_books` never rewrites one).

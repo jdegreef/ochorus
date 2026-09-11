@@ -868,9 +868,14 @@ dropped; chapters under 120 words are dropped as stubs.
     ZERO closers is scan damage, not scripture:** *The Bruised Reed*
     (`bwb_C0-AVW-616`) shipped 163 `‘` + 15 `“` and no `”` — scanned marginal
     rules the converter cased as openers, some standing where a letter was lost
-    (`“he influence`). The audit is blind to it, so count opens vs closes per
-    chapter, read every opener before a mid-sentence lowercase word, and collate
-    the lost letter against a second printing. **PD gate: judge by the
+    (`“he influence`). `english_audit` is blind to it;
+    `QuoteStyleTests.test_no_work_is_peppered_with_unclosed_openers` now fails
+    on the shape (a mid-sentence opener before a lowercase word, nothing closing
+    it). Repair the lost-letter ones as pairs first, then — only for an edition
+    that sets NO quotation marks — opt the work into `strip_stray_openers`.
+    **Read every difference against a second printing, not just the non-words:**
+    a spellcheck scan passes `derived rot God`, `eat the it of your own ways`,
+    `go he hath bowels`. **PD gate: judge by the
     work's FIRST publication year (1923), never the Archive item's reprint date**
     (this scan is a 1979/1991 Baker reprint of the 1923 Revell text).
   *(possibilities-of-prayer, 2026-09; the whole HFP-triage sourcing note is why

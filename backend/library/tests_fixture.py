@@ -2072,6 +2072,55 @@ class QuoteStyleTests(SimpleTestCase):
             "leaves a quotation open across a paragraph can still fool it.",
         )
 
+    #: Unclosed mid-sentence openers per 10,000 words above which a work is
+    #: scan damage, not quotation. `the-bruised-reed` shipped at 38.3; the most
+    #: any other work reaches is 17.1 (`walking-with-god`, whose quotations close
+    #: with STRAIGHT marks — a real defect of a different kind), and nearly all
+    #: sit at 0-3.
+    ORPHAN_OPENER_LIMIT = 20
+
+    def test_no_work_is_peppered_with_unclosed_openers(self):
+        """A scanned margin rule reads as an OPENING quote mark before a word.
+
+        `the-bruised-reed` shipped 163 `‘` and 15 `“` against no `”` at all, and
+        every gate passed it: `orphan-close-quote` looks only for a close with
+        nothing open, and a count of openers against closers cannot tell scan
+        damage from a long quotation that opens a mark on every paragraph and
+        closes once (549 unclosed openers in Brainerd, all genuine). The shape
+        that separates them is a mark between two lowercase words — "a king of
+        poor ‘and afflicted persons" — with no closer after it in the paragraph.
+        Real quotation rarely opens mid-sentence on a lowercase word; damage
+        almost always does. Judged as a DENSITY because a long book earns a few.
+        """
+        closer = {"‘": re.compile(r"[\w.,;:!?]’(?![a-z])"), "“": re.compile("”")}
+        opener = re.compile(r"(?<=[a-z] )[‘“](?=[a-z])")
+        offenders = []
+        for path in ordered_fixture_paths():
+            if path.name in {"authors.json", "plans.json"}:
+                continue
+            found = words = 0
+            for row in json.loads(path.read_text()):
+                html = row["fields"].get("body_html") or ""
+                words += len(_TAG.sub(" ", html).split())
+                for para in re.findall(r"<p[^>]*>(.*?)</p>", html, re.S):
+                    text = _TAG.sub("", para)
+                    found += sum(
+                        1 for m in opener.finditer(text)
+                        if not closer[m.group()].search(text, m.end())
+                    )
+            if words and found * 10_000 / words > self.ORPHAN_OPENER_LIMIT:
+                offenders.append(f"{path.name}: {found} in {words} words")
+        self.assertEqual(
+            offenders,
+            [],
+            "These works have opening quote marks mid-sentence with nothing to "
+            "close them — the signature of a scan's margin rules, not quotation. "
+            "Read each against a second printing: some stand where a LETTER was "
+            "lost (\"“ruth from truth\"), so strip the mark only once the word is "
+            "right. `corrections.strip_stray_openers` is the channel for an "
+            "edition that sets no quotation marks at all.",
+        )
+
 
 _ARABIC_INDIC = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
 # C:V1-V2, optionally followed by ":V2b" for the cross-chapter form. The

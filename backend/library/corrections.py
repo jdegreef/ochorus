@@ -352,13 +352,19 @@ CORRECTIONS: dict[str, dict] = {
         },
     },
     "the-bruised-reed": {
-        # Grosart's scan carries its chapter titles on the marker line, where
-        # they both truncate and pick up the worst of the OCR. Each title below
-        # is the full heading transcribed from the scan (marker line plus its
-        # wrapped continuation), with the misreads repaired: "ivill"->will,
+        # Transcribed from Grosart's scan, where the titles sat on the marker
+        # line and both truncated and picked up the worst of the OCR (marker
+        # line plus its wrapped continuation, misreads repaired: "ivill"->will,
         # "Rides"->Rules, "Eeproof"->Reproof, "he\epresenteth"->he representeth,
-        # "unto its"->unto us. Chapters 1, 9 and 21 were cut mid-phrase by the
-        # page edge and are completed from the 1878 printing's contents page.
+        # "unto its"->unto us; 1, 9 and 21 completed from the 1878 contents
+        # page). They carry over unchanged to Pickering's 1838 printing, the
+        # current source: its headings read the same, one for one.
+        #
+        # Pickering has TWENTY-EIGHT chapters. Grosart's scan lost the
+        # "XXVIII." marker and merged the last two, which is why this list
+        # stopped at 27 and ch28 shipped with the importer's truncated first
+        # heading line. (Not, as #1943 claimed, 17-27 under wrong titles:
+        # every earlier title matched its body.)
         "chapter_titles": {
             1: "The Text opened and divided. What the Reed is, and what the bruising",
             2: "Those that Christ hath to do withal are bruised",
@@ -390,6 +396,7 @@ CORRECTIONS: dict[str, dict] = {
             25: "Christ's government shall be openly victorious",
             26: "Christ alone advanceth this government",
             27: "Victory not to be had without fighting",
+            28: "Be encouraged to go on cheerfully, with confidence of prevailing",
         },
     },
     "union-and-communion": {
@@ -1716,11 +1723,15 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('only our friend, but our brothey',
              'only our friend, but our brother'),  # ch3
             ('the word of God, Isa. |xvi.',
-             'the word of God, Isa. Ixvi.'),  # ch4
+             'the word of God, Isa. lxvi.'),  # ch4
             ('violence against it: else favouring oursevles,',
              'violence against it: else favouring ourselves,'),  # ch4
+            # The scan lost a whole LINE here ("take off ourselves too soon, nor
+            # pull off the plaster be-"), so repairing the one garbled word
+            # left a verbless sentence that looked fixed. Grosart supplies it.
             ('not fore the cure be erowiglt',
-             'not fore the cure be wrought,'),  # ch4
+             'not take off ourselves too soon, nor pull off the plaster before '
+             'the cure be wrought,'),  # ch4
             ('muzzle the mouth of the oa,',
              'muzzle the mouth of the ox,'),  # ch4
             ('careful was he that Peter vand',
@@ -1822,7 +1833,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('conceit, that his master was @',
              'conceit, that his master was a'),  # ch17
             ('their own, that C will suifer',
-             'their own, that C will suffer'),  # ch17
+             'their own, that Christ will suffer'),  # ch17
             ('Lamb can be angry, and ney',
              'Lamb can be angry, and they'),  # ch17
             ('out her hand and men efuse,',
@@ -1872,7 +1883,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('of darkness, and ruleth in darkmess',
              'of darkness, and ruleth in darkness'),  # ch20
             ('to preserve ‘the manner of poate',
-             'to preserve ‘the manner of working'),  # ch20
+             'to preserve the manner of working'),  # ch20
             ('think that Satan had no ‘nand',
              'think that Satan had no hand'),  # ch20
             ('he findeth in us. But Shere',
@@ -2056,8 +2067,6 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'to poverty of spirit, than greatness'),  # ch7
             ('men refuse, then Wisdom will langh',
              'men refuse, then Wisdom will laugh'),  # ch17
-            ('to consider what an affectionate intreaty',
-             'to consider what an affectionate entreaty'),  # ch17
             ('pre‘serve',
              'preserve'),  # ch17
             ('2¢',
@@ -2169,7 +2178,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('vReepeth himself,',
              'keepeth himself,'),  # ch23
             ('prosper: reigion',
-             'prosper: Religion'),  # ch24
+             'prosper: religion'),  # ch24
             ('him; ‘nuch',
              'him; much'),  # ch25
             ('Jingers',
@@ -2206,8 +2215,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'iv. 13,'),  # ch28
             ('finward',
              'inward'),  # ch20
+            # Grosart attests an answer marker here; the smudge is spelled in
+            # Pickering's own form, `Answ.` (as in ch17), not Grosart's `Ans.`.
             ('as smoking Bax.</p><p>‘ It is well',
-             'as smoking flax.</p><p>Ans. It is well'),  # ch16
+             'as smoking flax.</p><p>Answ. It is well'),  # ch16
             ('no mercy on them, saz, xxvii. 11',
              'no mercy on them, Isai. xxvii. 11'),  # ch17
             ('compassion ; @ prince of peace',
@@ -2249,8 +2260,6 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'as well as the whole element'),  # ch10
             ('Deut. vi. 5. Inthe covenant',
              'Deut. vi. 5. In the covenant'),  # ch10
-            ('in sub- | jection to himself',
-             'in subjection to himself'),  # ch12
             ('fear him, Psalm cxly. 19',
              'fear him, Psalm cxlv. 19'),  # ch14
             ('in mercy, Psalm Ixxyili. 39',
@@ -2355,7 +2364,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # marker in `susanna-wesley-clarke`, and a class wide enough to
             # catch these would have rewritten that book's shipped fixture too.
             ('ruised reeds. 2. Smoking wear. = ',
-             'ruised reeds. 2. Smoking wear. '),  # ch1
+             'ruised reeds. 2. Smoking flax. '),  # ch1
             ('annel, that as sin bred grief, } ',
              'annel, that as sin bred grief, '),  # ch4
             ('o be led withal in all things. © ',
@@ -2365,13 +2374,13 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('im. 2. Strength in himself, as _ ',
              'im. 2. Strength in himself, as '),  # ch16
             ('he mighty God, Isaiah ix. 6 3. _ ',
-             'he mighty God, Isaiah ix. 6 3. '),  # ch16
+             'he mighty God, Isaiah ix. 6. 3. '),  # ch16
             ('as if it were in vain to go to ~ ',
              'as if it were in vain to go to '),  # ch17
             ('f or in our application of it. _ ',
              'f or in our application of it. '),  # ch17
             ('his plough and neglect tillage ¢ ',
-             'his plough and neglect tillage '),  # ch17
+             'his plough and neglect tillage? '),  # ch17
             ('rit floweth into the soul, and _ ',
              'rit floweth into the soul, and '),  # ch17
             ('able as the sun in its course, _ ',
@@ -2421,7 +2430,201 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'of his poor disciples ?'),  # ch7
             ("but addeth ' ‘to a lustre",
              'but addeth a lustre'),  # ch17
+            # --- 2026-09-11: the damage #1943 shipped. These pairs run on the
+            # STORED text (the pairs above run on the raw scan), so the deploy's
+            # `apply_body_corrections` carries them to prod with no migration.
+            #
+            # Scanned marginal rules the quote converter cased as OPENING marks
+            # — 163 `‘` and 15 `“` against no `”` at all, because this edition
+            # sets no quotation marks. `strip_stray_openers` (below) removes the
+            # plain ones; these are the fourteen that stand where a LETTER was,
+            # and stripping the mark alone would leave "ruth from truth". Each
+            # word is settled against Grosart.
+            ('believe “ruth from truth', 'believe truth from truth'),  # ch15
+            ('from us. “he influence', 'from us. The influence'),  # ch16
+            ('let him ‘rust in the name', 'let him trust in the name'),  # ch16
+            ('given up ‘ito give over', 'given up to give over'),  # ch17
+            ('that there car’ hardly', 'that there can hardly'),  # ch17
+            ('stream of ‘ur own nature', 'stream of our own nature'),  # ch20
+            ('only he ‘math engraven', 'only he hath engraven'),  # ch20
+            ('any earthly ‘oss or gain', 'any earthly loss or gain'),  # ch22
+            ('came near ‘nome to', 'came near home to'),  # ch22
+            ('flesh, and “he course', 'flesh, and the course'),  # ch22
+            ('glory of ‘nis excellencies', 'glory of his excellencies'),  # ch25
+            ('will declare ‘0 all the world', 'will declare to all the world'),  # ch25
+            ('towards “hose in whom', 'towards those in whom'),  # ch25
+            ('to whom ‘0 return', 'to whom to return'),  # ch26
+            # The same rules read as a CLOSING mark after a word. Not left to a
+            # rule: `’` is also this text's apostrophe ("Jonas’ gourd").
+            ('without making’ a noise', 'without making a noise'),  # ch1
+            ('if gently’ handled', 'if gently handled'),  # ch7
+            ('upon lesser’ errors', 'upon lesser errors'),  # ch9
+            ('his disciples more’ than', 'his disciples more than'),  # ch17
+            ('spirit of Christ,’ brought', 'spirit of Christ, brought'),  # ch21
+            ('Isai. xy.8, We ’ see', 'Isai. lxv. 8. We see'),  # ch7
+            # Three places the scan lost more than a letter, supplied from
+            # Grosart — each read as a real sentence with a word or line gone.
+            ('let us not fore the cure be wrought,',
+             'let us not take off ourselves too soon, nor pull off the plaster '
+             'before the cure be wrought,'),  # ch4
+            ('given us o Christ, and Christ giveth us back again to the lather.',
+             'given us to Christ, and Christ giveth us back again to the Father.'),  # ch16
+            ('when he hall clearly discover what is spelled in particular, we re carried',
+             'when he shall clearly discover what is good in particular, we are carried'),  # ch20
+            # Misreads that land on a REAL word ("derived rot God", "eat the it
+            # of your own ways"), so a spellcheck scan calls them clean. Found by
+            # aligning the whole text against Grosart word by word and reading
+            # every difference; the 400-odd where Grosart is the damaged side,
+            # or where the editions simply differ, are left as Pickering prints
+            # them.
+            ('2. Smoking wear. ', '2. Smoking flax. '),  # ch1
+            ('as smoking flax, G They are', 'as smoking flax. They are'),  # ch1
+            ('termeth poor a spirit', 'termeth poor in spirit'),  # ch1
+            ('majesty, go he hath bowels', 'majesty, so he hath bowels'),  # ch3
+            ('a ghost, it is J, Matt.', 'a ghost, it is I, Matt.'),  # ch3
+            ('which are rung from them', 'which are wrung from them'),  # ch4
+            ('in itself, mot the least', 'in itself, not the least'),  # ch5
+            ('quenched not D that little light', 'quenched not that little light'),  # ch7
+            ('make them east off', 'make them cast off'),  # ch8
+            ('temper of tags times', 'temper of these times'),  # ch8
+            ('authority derived rot God', 'authority derived from God'),  # ch9
+            ('moderation dhan rigour', 'moderation than rigour'),  # ch9
+            ('carriage toward! miserable', 'carriage toward miserable'),  # ch9
+            ('labour to hill Christ', 'labour to kill Christ'),  # ch9
+            ('unbrother in 2 passion', 'unbrother in a passion'),  # ch9
+            ('though net seen', 'though not seen'),  # ch10
+            ('sins laid E upon him', 'sins laid upon him'),  # ch10
+            ('as the san in the spring', 'as the sun in the spring'),  # ch11
+            ('Can a dead mam complain', 'Can a dead man complain'),  # ch11
+            ('holiness and ais own', 'holiness and his own'),  # ch11
+            ('most contrary 10 God', 'most contrary to God'),  # ch12
+            ('which the ruth of God', 'which the truth of God'),  # ch12
+            ('cannot pray ; O J am', 'cannot pray ; O I am'),  # ch13
+            ('giveth the r will and', 'giveth the will and'),  # ch13
+            ('some little k addition', 'some little addition'),  # ch14
+            ('It is not J, saith', 'It is not I, saith'),  # ch14
+            ('the desire is as earnest', 'the desire is an earnest'),  # ch14
+            ('qualified, re we must', 'qualified, there we must'),  # ch15
+            ('sick man his e;', 'sick man his ague;'),  # ch15
+            ('we are weary, sand would', 'we are weary, and would'),  # ch15
+            ('Wee must know', 'We must know'),  # ch15
+            ('he seemeth so be an enemy', 'he seemeth to be an enemy'),  # ch16
+            ('with us, us with Jacob', 'with us, as with Jacob'),  # ch16
+            ('the vizard tom his face', 'the vizard from his face'),  # ch16
+            ('covenant, vet she would', 'covenant, yet she would'),  # ch16
+            ('when he vas furthest', 'when he was furthest'),  # ch16
+            ('find in bis heart', 'find in his heart'),  # ch16
+            ('his care to is. The eyes', 'his care to us. The eyes'),  # ch16
+            ('the east love we have', 'the least love we have'),  # ch16
+            ('only a nan, but a curse', 'only a man, but a curse'),  # ch16
+            ('that C will suffer them', 'that Christ will suffer them'),  # ch17
+            ('those that pill the potion', 'those that spill the potion'),  # ch17
+            ('Christ in e ways of his mercy', 'Christ in the ways of his mercy'),  # ch17
+            ('should eat the it of your own ways',
+             'should eat the fruit of your own ways'),  # ch17
+            ('men shall think, G that', 'men shall think, that'),  # ch17
+            ('encouragement herd from', 'encouragement here from'),  # ch17
+            ('in some eases peace', 'in some cases peace'),  # ch17
+            ('they may ido well', 'they may do well'),  # ch17
+            ('the Church whieh thou lovest', 'the Church which thou lovest'),  # ch17
+            ('Lord, this igh Christian', 'Lord, this poor Christian'),  # ch17
+            ('any corwuption favoured', 'any corruption favoured'),  # ch17
+            ('Jude 4. AInfirmities are', 'Jude 4. Infirmities are'),  # ch17
+            ('to tule us', 'to rule us'),  # ch19
+            ('as he its pure', 'as he is pure'),  # ch19
+            ('grace supposeth mature as', 'grace supposeth nature as'),  # ch20
+            ('of ene holy wise man', 'of one holy wise man'),  # ch20
+            ('many out on a ‘dangerous', 'many out of a dangerous'),  # ch20
+            ('issueth from fin is', 'issueth from them is'),  # ch20
+            ('with little meril,', 'with little peril,'),  # ch20
+            ('at all in as. God', 'at all in us. God'),  # ch20
+            ('the Sear of the Lord', 'the fear of the Lord'),  # ch21
+            ('flesh, shad die', 'flesh, shall die'),  # ch21
+            ('foiled vat first', 'foiled at first'),  # ch22
+            ('that as born of God', 'that is born of God'),  # ch22
+            ('that is im us', 'that is in us'),  # ch22
+            ('troublesome and idark', 'troublesome and dark'),  # ch22
+            ('It is I good, therefore', 'It is good, therefore'),  # ch23
+            ('could a devise', 'could devise'),  # ch23
+            ('consult mot with', 'consult not with'),  # ch23
+            ('that the ascribeth', 'that he ascribeth'),  # ch23
+            ('ordinances the draws near', 'ordinances he draws near'),  # ch23
+            ('sun n the firmament', 'sun in the firmament'),  # ch25
+            ('which us called', 'which is called'),  # ch25
+            ('mother Eye will', 'mother Eve will'),  # ch25
+            ('ourselves, thow easily', 'ourselves, how easily'),  # ch26
+            ('yet thow heardest', 'yet thou heardest'),  # ch6
+            ('which ss higher', 'which is higher'),  # ch26
+            ('minded is K death', 'minded is death'),  # ch27
+            ('division, mot only', 'division, not only'),  # ch27
+            ('he is as rel for the falling as the wising',
+             'he is as well for the falling as the rising'),  # ch27
+            ('giveth up hinds that', 'giveth up those that'),  # ch27
+            ('Satan and this factors', 'Satan and his factors'),  # ch27
+            ('sheep is Father hath', 'sheep his Father hath'),  # ch28
+            ('think if the calling', 'think of the calling'),  # ch28
+            ('present ) ill to his', 'present all to his'),  # ch28
+            ('and et ourselves', 'and set ourselves'),  # ch28
+            # Stray marks and fused punctuation (`short.of`, `inward:rule`).
+            ('embrace Christ,- and in him', 'embrace Christ, and in him'),  # ch1
+            ('three things: - First,', 'three things:—First,'),  # ch1
+            ('all ye that ure weary', 'all ye that are weary'),  # ch1
+            ('Psalm vi. &e. The Lord', 'Psalm vi. &c. The Lord'),  # ch4
+            ('came short.of the outward', 'came short of the outward'),  # ch5
+            ('gentle -a Saviour', 'gentle a Saviour'),  # ch8
+            ('stooping - unto them', 'stooping unto them'),  # ch8
+            ('moderation: it-is but', 'moderation: it is but'),  # ch8
+            ('and not-for Christ', 'and not for Christ'),  # ch14
+            ('in the world.. Heb. Xi.', 'in the world, Heb. xi.'),  # ch14
+            ('he mighty God, Isaiah ix. 6 3.', 'he mighty God, Isaiah ix. 6. 3.'),  # ch16
+            ('Prov. i. 31. ;', 'Prov. i. 31;'),  # ch17
+            ('neglect tillage Hence', 'neglect tillage? Hence'),  # ch17
+            ('for the wisdom. from above', 'for the wisdom from above'),  # ch17
+            ('than.a thousand', 'than a thousand'),  # ch17
+            ('inward:rule', 'inward rule'),  # ch18
+            ('savour.the things', 'savour the things'),  # ch18
+            ('our base affec(tions.', 'our base affections.'),  # ch19
+            ('prince of the world, H is judged', 'prince of the world, is judged'),  # ch20
+            ('St. Paul, [f we live', 'St. Paul, If we live'),  # ch21
+            ('enemies, [f we resist', 'enemies, If we resist'),  # ch22
+            ('after -union with', 'after union with'),  # ch22
+            ('will b , because', 'will be, because'),  # ch23
+            ('all good l,occasions', 'all good occasions'),  # ch23
+            ('we may / gain more', 'we may gain more'),  # ch23
+            ('false - glasses', 'false glasses'),  # ch25
+            ('will yield : possession', 'will yield possession'),  # ch27
+            ('able-fo remove', 'able to remove'),  # ch28
+            # Scripture references: roman `l` read as `I`/`1`, and digits the
+            # scan misread. Only where Grosart AND the verse itself agree —
+            # `Mat. ix. 24` (for Mark) and `Luke x. 42` are Pickering's own
+            # slips, not the scan's, and are left.
+            ('Jam. y. 14', 'Jam. v. 14'),  # ch4
+            ('Isa. Ixvi. 2', 'Isa. lxvi. 2'),  # ch4
+            ('Isa. lili. 2', 'Isa. liii. 2'),  # ch5
+            ('Rom. vii. 34, saith', 'Rom. vii. 24, saith'),  # ch6
+            ('candle, Psalm xviii. 26,', 'candle, Psalm xviii. 28,'),  # ch11
+            ('Psalm Ixxiii. 22', 'Psalm lxxiii. 22'),  # ch12
+            ('their teeth, Proy. x. 29', 'their teeth, Prov. x. 29'),  # ch17
+            ('a blessing, 1 Cor. 16;', 'a blessing, 1 Cor. xv. 57, 58;'),  # ch17
+            ('Psalm Ixxii. 1', 'Psalm lxxii. 1'),  # ch18
+            ('Ps. 1xxxiv. 10', 'Ps. lxxxiv. 10'),  # ch20
+            ('Psalm cxxii. 3:', 'Psalm cxxii. 5:'),  # ch21
+            ('Eph. il. 6', 'Eph. ii. 6'),  # ch22
+            ('Psalm Ixxxvi. 11', 'Psalm lxxxvi. 11'),  # ch23
+            ('fight, Psalm xiv. 1', 'fight, Psalm cxliv. 1'),  # ch26
+            ('2 Chron. xx. 21:', '2 Chron. xx. 12:'),  # ch26
+            # Three of this entry's own earlier repairs, undone on the stored
+            # text: `intreaty` is Sibbes's spelling, not a slip to modernise
+            # (that pair is gone); `religion` follows a colon in lowercase, as
+            # everywhere in this edition; and the answer marker is Pickering's
+            # `Answ.`. Their raw-scan pairs above now write the right text.
+            ('an affectionate entreaty', 'an affectionate intreaty'),  # ch17
+            ('prosper: Religion', 'prosper: religion'),  # ch24
+            ('flax.</p><p>Ans. It is well', 'flax.</p><p>Answ. It is well'),  # ch16
         ],
+        # This edition sets NO quotation marks, so every opening mark left
+        # after the pairs above is a scanned rule — see `strip_stray_openers`.
+        "strip_stray_openers": True,
     },
     "around-the-wicket-gate": {
         # Image drop caps (Gutenberg source) — first letter of every chapter.
@@ -3940,6 +4143,33 @@ def strip_transcription_footnotes(body_html: str) -> str:
     return _TRANSCRIPTION_FOOTNOTE.sub("", body_html)
 
 
+#: An opening quote mark not preceded by a letter — so not the soft hyphen a
+#: scanner can render as `‘` INSIDE a word (`con‘ceits`), which a work's own
+#: pairs rejoin, and which stripping would weld wrongly ("his‘own" -> "hisown").
+_STRAY_OPENER = _re.compile(r"(?<![^\W\d_])[‘“]")
+
+
+def strip_stray_openers(body_html: str) -> str:
+    """Remove every opening quote mark from a work that prints none. Idempotent.
+
+    Opt-in per work (`strip_stray_openers`), and only sound for an edition that
+    sets NO quotation marks at all: there, an opening mark can only be a scanned
+    margin rule the quote converter cased as an opener. `the-bruised-reed` is
+    the case — 178 openers, not one closing `”`. Anywhere else it would delete
+    real quotations. Runs AFTER the declared replacements, so a mark standing
+    where a letter was lost ("“ruth from truth") is repaired first rather than
+    stripped into a different word.
+
+    The premise is checked per body, not trusted: an entry applies to EVERY
+    language edition of its slug, and a translation may well set quotation
+    marks the English lacks. A closing `”` anywhere means this body does, so
+    it is left whole — stripping only its openers would orphan every closer.
+    """
+    if "”" in body_html:
+        return body_html
+    return _STRAY_OPENER.sub("", body_html)
+
+
 def restore_paragraph_breaks(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
     """Split a run-together paragraph at each declared seam. Idempotent.
 
@@ -4034,6 +4264,8 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
         body_html = restore_dropped_blocks(body_html, entry.get("restored_blocks", ()))
         if entry.get("strip_transcription_footnotes"):
             body_html = strip_transcription_footnotes(body_html)
+        if entry.get("strip_stray_openers"):
+            body_html = strip_stray_openers(body_html)
     body_html = rejoin_linebreak_hyphens(body_html)
     # A rule, not a list, like the rejoin above: lone footnote-marker residue
     # occurs across works and is unambiguous, so it comes out for every one. It

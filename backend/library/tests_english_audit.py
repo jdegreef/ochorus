@@ -1081,3 +1081,130 @@ class DroppedBlockRestorationTests(SimpleTestCase):
         repair must not scatter copies through the chapter."""
         doubled = "<p>Just this day I met her.</p> <p>Just this day I met her.</p>"
         self.assertEqual(self._restore(doubled).count("<h4>"), 1)
+
+
+class StrayOpenerTests(SimpleTestCase):
+    """`strip_stray_openers` — opt-in, for an edition that sets no quotes at all.
+
+    Its safety is its premise. On a work that prints no quotation marks, an
+    opening mark can only be a scanned margin rule; anywhere else it would
+    delete real quotations. So the function must refuse any body that shows a
+    quotation of its own, and must not touch a mark inside a word, which is a
+    soft hyphen the work's own pairs rejoin.
+    """
+
+    def _strip(self, html):
+        return corrections.strip_stray_openers(html)
+
+    def test_removes_an_opener_standing_before_a_word(self):
+        self.assertEqual(
+            self._strip("<p>a king of poor ‘and afflicted persons</p>"),
+            "<p>a king of poor and afflicted persons</p>",
+        )
+        self.assertEqual(
+            self._strip("<p>in holy duties, as meditation “and prayer</p>"),
+            "<p>in holy duties, as meditation and prayer</p>",
+        )
+
+    def test_removes_one_opening_a_paragraph(self):
+        self.assertEqual(self._strip("<p>‘There is a conformity</p>"),
+                         "<p>There is a conformity</p>")
+
+    def test_leaves_a_mark_inside_a_word(self):
+        """"his‘own" is a soft hyphen misread, and stripping it would weld
+        "hisown"; the work's replacement pairs are the channel for those."""
+        self.assertEqual(self._strip("<p>neglected his‘own members</p>"),
+                         "<p>neglected his‘own members</p>")
+
+    def test_leaves_apostrophes_and_closers(self):
+        html = "<p>like Jonas’ gourd, and God’s mercy</p>"
+        self.assertEqual(self._strip(html), html)
+
+    def test_refuses_a_body_that_sets_quotation_marks(self):
+        """A translation shares the English slug's entry, and may quote."""
+        html = "<p>Disse ele: “Não quebrará a cana trilhada.”</p>"
+        self.assertEqual(self._strip(html), html)
+
+    def test_is_idempotent(self):
+        once = self._strip("<p>poor ‘and “afflicted</p>")
+        self.assertEqual(self._strip(once), once)
+
+
+class BruisedReedRepairTests(SimpleTestCase):
+    """The damage #1943's re-import shipped, repaired on the stored text.
+
+    Every case is asserted both ways, as in `ShelfRepairTests`: the repair is in
+    the shipped fixture, AND putting the damage back and re-settling undoes it —
+    the half that proves the live rows are repaired too, since
+    `apply_body_corrections` carries these to prod with no migration.
+    """
+
+    SLUG = "the-bruised-reed"
+
+    #: (as #1943 shipped it, as it should read) — one per class of defect.
+    REPAIRS = (
+        # a whole scanned line lost, "repaired" into a verbless sentence
+        ("let us not fore the cure be wrought,",
+         "let us not take off ourselves too soon, nor pull off the plaster "
+         "before the cure be wrought,"),
+        # a stray opening mark where a letter was
+        ("believe “ruth from truth", "believe truth from truth"),
+        # a stray opening mark, and nothing else
+        ("a king of poor ‘and afflicted", "a king of poor and afflicted"),
+        # a stray closing mark
+        ("without making’ a noise", "without making a noise"),
+        # a misread landing on a real word
+        ("authority derived rot God", "authority derived from God"),
+        ("the Sear of the Lord", "the fear of the Lord"),
+        # a scripture reference
+        ("Rom. vii. 34, saith", "Rom. vii. 24, saith"),
+        # the entry's own earlier modernisation, undone
+        ("an affectionate entreaty", "an affectionate intreaty"),
+    )
+
+    def _bodies(self):
+        return ShelfRepairTests._bodies(self.SLUG)
+
+    def test_every_repair_is_in_the_shipped_fixture_exactly_once(self):
+        joined = "\n".join(self._bodies().values())
+        for damaged, repaired in self.REPAIRS:
+            with self.subTest(repaired=repaired[:40]):
+                self.assertEqual(joined.count(repaired), 1)
+                self.assertNotIn(damaged, joined)
+
+    def test_the_corrections_are_what_repair_them(self):
+        bodies = self._bodies()
+        for damaged, repaired in self.REPAIRS:
+            order = next(o for o, b in bodies.items() if repaired in b)
+            with self.subTest(chapter=order, repaired=repaired[:40]):
+                broken = bodies[order].replace(repaired, damaged, 1)
+                self.assertNotEqual(broken, bodies[order])
+                self.assertEqual(
+                    corrections.settled_chapter_body(self.SLUG, order, broken),
+                    bodies[order],
+                )
+
+    def test_a_reimport_of_the_raw_scan_reads_the_same(self):
+        """The raw-scan pair for the lost line now writes the whole sentence,
+        so a re-import and the repaired live row agree."""
+        raw = "<p>Therefore let us not fore the cure be erowiglt but keep</p>"
+        settled = corrections.settled_chapter_body(self.SLUG, 4, raw)
+        self.assertIn("nor pull off the plaster before the cure be wrought, but", settled)
+
+    def test_no_opening_quote_mark_survives(self):
+        """This edition sets no quotation marks, so every one was scan damage."""
+        for order, body in self._bodies().items():
+            with self.subTest(chapter=order):
+                self.assertNotIn("‘", body)
+                self.assertNotIn("“", body)
+
+    def test_every_chapter_carries_its_whole_title(self):
+        """Grosart's scan merged the last two chapters, so the title list
+        stopped at 27 and ch28 shipped cut off mid-phrase."""
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, "en").read_text(encoding="utf-8"))
+        titles = {r["fields"]["order"]: r["fields"]["title"]
+                  for r in rows if r["model"] == "library.chapter"}
+        self.assertEqual(titles, corrections.chapter_title_overrides(self.SLUG))
+        self.assertEqual(len(titles), 28)
