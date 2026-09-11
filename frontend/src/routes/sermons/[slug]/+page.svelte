@@ -206,6 +206,23 @@
 				: `/og/sermons/${sermon.slug}.png`
 		)
 	);
+	// Scripture reference in the <title>/og:title: a large share of sermon
+	// searches are passage-driven ("sermon on Matthew 11:28"), and the reference
+	// lived only in the page body — never the title tag search engines weight
+	// most. The visible H1 stays the plain title (the passage sits in the
+	// text-card right below it, and the book page's H1 is the bare title too).
+	const titleParts = $derived(
+		[sermon.title, sermon.scripture_ref || null, sermon.author_name].filter(Boolean)
+	);
+	const shareTitle = $derived(titleParts.join(' — '));
+	// Every passage the sermon engages, for the JSON-LD `about` (was just the
+	// single preaching text). `scripture_refs` already leads with `scripture_ref`
+	// when set — same field the visible scripture index reads.
+	const aboutRefs = $derived(sermon.scripture_refs ?? []);
+	// Topical + scriptural keywords for the Article node.
+	const keywords = $derived([
+		...new Set([...(sermon.topics ?? []).map((tp) => tp.title), ...aboutRefs])
+	]);
 	const sermonLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -218,10 +235,14 @@
 			},
 			inLanguage: sermon.language,
 			url: canonical,
+			mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
 			isAccessibleForFree: true,
 			datePublished: sermon.preached_on || undefined,
+			dateModified: sermon.updated_at || undefined,
+			wordCount: sermon.word_count || undefined,
 			image: ogImage,
-			about: sermon.scripture_ref ? { '@type': 'Thing', name: sermon.scripture_ref } : undefined,
+			about: aboutRefs.length ? aboutRefs.map((ref) => ({ '@type': 'Thing', name: ref })) : undefined,
+			keywords: keywords.length ? keywords : undefined,
 			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})
 	);
@@ -246,12 +267,12 @@
 </script>
 
 <Seo
-	title="{sermon.title} — {sermon.author_name} — Ochorus"
+	title="{shareTitle} — Ochorus"
 	description={metaDescription}
 	{canonical}
 	{hreflang}
 	ogType="article"
-	ogTitle="{sermon.title} — {sermon.author_name}"
+	ogTitle={shareTitle}
 	{ogImage}
 	structuredData={[sermonLd, crumbsLd]}
 />
