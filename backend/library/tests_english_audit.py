@@ -271,6 +271,31 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
             _findings("<p>nothing was opened here.”</p>").get("orphan-close-quote"), 1
         )
 
+    def test_orphan_open_quote_is_a_margin_rule_read_as_a_mark(self):
+        """`the-bruised-reed`'s shape: opening marks mid-sentence on a lowercase
+        word, nothing closing them, far too many to be quotation."""
+        peppered = "<p>a king of poor ‘and afflicted persons, he will ‘not show it</p>" * 5
+        self.assertEqual(_findings(peppered).get("orphan-open-quote"), 10)
+
+    def test_orphan_open_quote_spares_real_quotation(self):
+        for html in (
+            # a long quotation opens every paragraph, capitalised, closes once
+            "<p>“And he came unto Lehi</p><p>“And he found a jawbone.”</p>",
+            # opens mid-sentence on a lowercase word, but closes in the block
+            "<p>he told them that ‘the Holy Spirit would come’ upon them</p>",
+            "<p>we have “received the Spirit” of adoption</p>",
+        ):
+            with self.subTest(html=html[:40]):
+                self.assertNotIn("orphan-open-quote", _findings(html))
+
+    def test_orphan_open_quote_is_judged_as_a_density(self):
+        """One stray in a long work is noise; the same stray in a short one
+        at Bruised Reed density is the defect."""
+        stray = "<p>a king of poor ‘and afflicted persons</p>"
+        filler = "<p>" + "plain prose " * 50 + "</p>"
+        self.assertNotIn("orphan-open-quote", _findings(stray + filler * 20))
+        self.assertIn("orphan-open-quote", _findings(stray))
+
     def test_space_before_punct_is_reported_only_where_it_is_sporadic(self):
         """17th-century typography vs an italics-strip artifact.
 
@@ -768,6 +793,10 @@ class EnglishAuditContractTests(SimpleTestCase):
                 "dropcap-fused",
                 "misspelling",
                 "orphan-close-quote",
+                # Neither: most are a bare stray to delete, but some stand
+                # where a LETTER was lost ("“ruth from truth"), and only a
+                # second printing can say which.
+                "orphan-open-quote",
                 "run-together",
                 # Neither. The DETECTION is exact — an empty parenthesis pair
                 # is never prose — but the repair is not: only the source can
@@ -804,12 +833,23 @@ class EnglishAuditContractTests(SimpleTestCase):
         self.assertEqual(emitted - known, set(), "unclassified finding class(es)")
 
 
-class ShelfRepairTests(SimpleTestCase):
-    """The rest of what the two over-matching selectors had already eaten.
+def _book_bodies(slug: str) -> dict[int, str]:
+    """A shipped English book's chapter bodies, by order."""
+    from library.content_fixtures import book_fixture_path
 
+    path = book_fixture_path(slug, "en")
+    return {r["fields"]["order"]: r["fields"]["body_html"]
+            for r in json.loads(path.read_text(encoding="utf-8"))
+            if (r.get("fields") or {}).get("body_html")}
+
+
+class ShelfRepairTests(SimpleTestCase):
+    """Shipped rows repaired in place, because shipped books are never re-imported.
+
+    Most are what the two over-matching selectors had already eaten:
     `[class*=pginternal]` (#1573) and `[class*=note i]` (#1574) are both
-    qualified now, so no future import loses this text — these are the rows
-    already on the shelf, which are never re-imported.
+    qualified now, so no future import loses this text. `the-bruised-reed` is
+    the OCR damage its #1943 re-import shipped — one case per class of defect.
 
     Every case is asserted twice over: the repaired string is in the shipped
     fixture, AND stripping it back out and re-settling puts it back. The second
@@ -846,6 +886,23 @@ class ShelfRepairTests(SimpleTestCase):
             ("for the press (see Introduction, p. ). The manuscript",
              "for the press (see Introduction, p. xxix). The manuscript"),
         ],
+        "the-bruised-reed": [
+            # a whole scanned line lost, "repaired" into a verbless sentence
+            ("let us not fore the cure be wrought,",
+             "let us not take off ourselves too soon, nor pull off the plaster "
+             "before the cure be wrought,"),
+            # a stray opening mark where a letter was
+            ("believe “ruth from truth", "believe truth from truth"),
+            # a stray closing mark
+            ("without making’ a noise", "without making a noise"),
+            # misreads landing on a real word
+            ("authority derived rot God", "authority derived from God"),
+            ("the Sear of the Lord", "the fear of the Lord"),
+            # a scripture reference
+            ("Rom. vii. 34, saith", "Rom. vii. 24, saith"),
+            # the entry's own earlier modernisation, undone
+            ("an affectionate entreaty", "an affectionate intreaty"),
+        ],
     }
 
     #: `holy-in-christ`'s note headings, deleted whole rather than emptied.
@@ -861,18 +918,9 @@ class ShelfRepairTests(SimpleTestCase):
          "Redemption.</h4>", 33),
     )
 
-    @staticmethod
-    def _bodies(slug):
-        from library.content_fixtures import book_fixture_path
-
-        path = book_fixture_path(slug, "en")
-        return {r["fields"]["order"]: r["fields"]["body_html"]
-                for r in json.loads(path.read_text(encoding="utf-8"))
-                if (r.get("fields") or {}).get("body_html")}
-
     def test_every_repair_is_in_the_shipped_fixture_exactly_once(self):
         for slug, pairs in self.REPAIRS.items():
-            joined = "\n".join(self._bodies(slug).values())
+            joined = "\n".join(_book_bodies(slug).values())
             for damaged, repaired in pairs:
                 with self.subTest(slug=slug, repaired=repaired[:40]):
                     self.assertEqual(joined.count(repaired), 1)
@@ -881,7 +929,7 @@ class ShelfRepairTests(SimpleTestCase):
     def test_the_corrections_are_what_repair_them(self):
         """Damage each site again; `apply_body_corrections` must undo it."""
         for slug, pairs in self.REPAIRS.items():
-            bodies = self._bodies(slug)
+            bodies = _book_bodies(slug)
             for damaged, repaired in pairs:
                 order = next(o for o, b in bodies.items() if repaired in b)
                 with self.subTest(slug=slug, chapter=order):
@@ -899,14 +947,14 @@ class ShelfRepairTests(SimpleTestCase):
         into the wrong one. Both halves are pinned: the heading is in the
         chapter it belongs to, and in no other.
         """
-        bodies = self._bodies("holy-in-christ")
+        bodies = _book_bodies("holy-in-christ")
         for heading, order in self.HEADINGS:
             with self.subTest(heading=heading[:28]):
                 carriers = [o for o, b in bodies.items() if heading in b]
                 self.assertEqual(carriers, [order])
 
     def test_a_stripped_note_heading_comes_back(self):
-        bodies = self._bodies("holy-in-christ")
+        bodies = _book_bodies("holy-in-christ")
         for heading, order in self.HEADINGS:
             with self.subTest(heading=heading[:28]):
                 broken = bodies[order].replace(heading + " ", "", 1)
@@ -1081,3 +1129,35 @@ class DroppedBlockRestorationTests(SimpleTestCase):
         repair must not scatter copies through the chapter."""
         doubled = "<p>Just this day I met her.</p> <p>Just this day I met her.</p>"
         self.assertEqual(self._restore(doubled).count("<h4>"), 1)
+
+
+class BruisedReedRepairTests(SimpleTestCase):
+    """What only `the-bruised-reed` needs pinning; its string repairs are in
+    `ShelfRepairTests.REPAIRS` with the rest of the shelf's."""
+
+    SLUG = "the-bruised-reed"
+
+    def test_a_reimport_of_the_raw_scan_reads_the_same(self):
+        """The raw-scan pair for the lost line now writes the whole sentence,
+        so a re-import and the repaired live row agree."""
+        raw = "<p>Therefore let us not fore the cure be erowiglt but keep</p>"
+        settled = corrections.settled_chapter_body(self.SLUG, 4, raw)
+        self.assertIn("nor pull off the plaster before the cure be wrought, but", settled)
+
+    def test_no_opening_quote_mark_survives(self):
+        """This edition sets no quotation marks, so every one was scan damage."""
+        for order, body in _book_bodies(self.SLUG).items():
+            with self.subTest(chapter=order):
+                self.assertNotIn("‘", body)
+                self.assertNotIn("“", body)
+
+    def test_every_chapter_carries_its_whole_title(self):
+        """Grosart's scan merged the last two chapters, so the title list
+        stopped at 27 and ch28 shipped cut off mid-phrase."""
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, "en").read_text(encoding="utf-8"))
+        titles = {r["fields"]["order"]: r["fields"]["title"]
+                  for r in rows if r["model"] == "library.chapter"}
+        self.assertEqual(titles, corrections.chapter_title_overrides(self.SLUG))
+        self.assertEqual(len(titles), 28)

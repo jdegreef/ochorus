@@ -864,7 +864,20 @@ dropped; chapters under 120 words are dropped as stubs.
     the conversion in keeps it idempotent and passes `QuoteStyleTests`. Note a
     LONG multi-verse Scripture quotation legitimately opens a `“` on every verse
     and closes only once, so an open>close imbalance is faithful, not a defect
-    (`orphan-close-quote` only flags close-without-open). **PD gate: judge by the
+    (`orphan-close-quote` only flags close-without-open). **But an imbalance with
+    ZERO closers is scan damage, not scripture:** *The Bruised Reed*
+    (`bwb_C0-AVW-616`) shipped 163 `‘` + 15 `“` and no `”` — margin rules that
+    archive.org's own OCR text layer reads as openers (they are in the
+    `_djvu.txt`, mostly at a line start), some standing where a letter was lost
+    (`“he influence`). The `orphan-open-quote` audit class now flags the shape
+    (a mid-sentence opener before a lowercase word, nothing closing it, at
+    density) as the import finishes. Repair the lost-letter ones as pairs first;
+    strip the rest from the stored ENGLISH rows in a migration (0138's shape),
+    never as a `BODY_CORRECTIONS` transform — that reaches every language
+    edition of the slug, and translations quote.
+    **Read every difference against a second printing, not just the non-words:**
+    a spellcheck scan passes `derived rot God`, `eat the it of your own ways`,
+    `go he hath bowels`. **PD gate: judge by the
     work's FIRST publication year (1923), never the Archive item's reprint date**
     (this scan is a 1979/1991 Baker reprint of the 1923 Revell text).
   *(possibilities-of-prayer, 2026-09; the whole HFP-triage sourcing note is why
