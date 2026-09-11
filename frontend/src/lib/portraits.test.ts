@@ -1,7 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { PORTRAIT_POSITION, PORTRAIT_POSITION_DEFAULT, portraitPosition } from './portraits';
+import { existsSync } from 'node:fs';
+import {
+	PORTRAIT_POSITION,
+	PORTRAIT_POSITION_DEFAULT,
+	PORTRAIT_WIDTHS,
+	portraitPosition,
+	portraitSrcset
+} from './portraits';
 
 /**
  * The focal-point table is hand-read off the image files, so its one real
@@ -48,5 +55,30 @@ describe('portrait focal points', () => {
 
 	it('uses the table when there is one', () => {
 		expect(portraitPosition('charles-finney')).toBe('50% 0%');
+	});
+});
+
+describe('responsive portrait variants', () => {
+	// Every portrait `<img>` points `srcset` at `<slug>-<w>.webp`; a missing file
+	// is a broken image. build_portrait_assets.py writes them — this is the
+	// promise that keeps it run. Mirrors CoverAssetTests for the covers.
+	const dir = resolve(process.cwd(), 'static/portraits');
+
+	it('ships every width for every portrait', () => {
+		const missing: string[] = [];
+		for (const slug of files) {
+			for (const w of PORTRAIT_WIDTHS) {
+				if (!existsSync(resolve(dir, `${slug}-${w}.webp`))) missing.push(`${slug}-${w}.webp`);
+			}
+		}
+		expect(missing, 'run scripts/build_portrait_assets.py').toEqual([]);
+	});
+
+	it('builds a srcset only for a self-hosted portrait jpeg', () => {
+		expect(portraitSrcset('/portraits/andrew-murray.jpg')).toBe(
+			'/portraits/andrew-murray-96.webp 96w, /portraits/andrew-murray-224.webp 224w'
+		);
+		expect(portraitSrcset('https://example.com/x.png')).toBeUndefined();
+		expect(portraitSrcset(undefined)).toBeUndefined();
 	});
 });

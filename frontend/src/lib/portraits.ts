@@ -107,6 +107,29 @@ export function portraitPosition(slug: string | null | undefined): string {
 	return (slug && PORTRAIT_POSITION[slug]) || PORTRAIT_POSITION_DEFAULT;
 }
 
+/**
+ * Widths (px) of the responsive portrait WebP variants that
+ * `backend/scripts/build_portrait_assets.py` commits beside each source. 96
+ * covers every avatar (32–44px) at 2× DPR; 224 covers the largest painted size
+ * (the 112px biography card) at 2×. Mirrored there; `portraits.test.ts` fails if
+ * a source is missing a variant.
+ */
+export const PORTRAIT_WIDTHS = [96, 224] as const;
+
+/**
+ * A `srcset` of the small WebP variants for a `/portraits/<slug>.jpg` URL, so a
+ * 44px avatar fetches ~2 KB instead of the ~50 KB full plate. Pair it with a
+ * `sizes` matching the CSS box. Returns `undefined` for anything that is not a
+ * self-hosted portrait JPEG — an off-site photo has no committed variants, so
+ * the `<img>` falls back to its `src`.
+ */
+export function portraitSrcset(url: string | null | undefined): string | undefined {
+	if (!url) return undefined;
+	const m = /^(\/portraits\/[^?#]+)\.jpe?g$/i.exec(url);
+	if (!m) return undefined;
+	return PORTRAIT_WIDTHS.map((w) => `${m[1]}-${w}.webp ${w}w`).join(', ');
+}
+
 /** Initials for the placeholder avatar shown when a person has no portrait —
  * first letter of the first two words, uppercased. One home so the author
  * header, the bio card and the person card can't drift apart. */

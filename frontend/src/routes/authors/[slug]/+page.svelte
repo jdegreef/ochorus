@@ -20,7 +20,7 @@
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
-	import { initials, portraitPosition } from '$lib/portraits';
+	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -427,6 +427,10 @@
 		{#if author.photo_url}
 			<img
 				src={author.photo_url}
+				srcset={portraitSrcset(author.photo_url)}
+				sizes="112px"
+				width="112"
+				height="112"
 				alt="{t('a11y.portraitOf')} {author.name}"
 				class="mx-auto h-28 w-28 rounded-full border border-border object-cover shadow-sm"
 				style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"

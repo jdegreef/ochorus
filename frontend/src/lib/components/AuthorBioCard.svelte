@@ -2,7 +2,7 @@
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { initials, portraitPosition } from '$lib/portraits';
+	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
 	import BookCover from '$lib/components/BookCover.svelte';
 
 	// One writer's card: portrait, name + lifespan, the "Full life" badge, a
@@ -50,6 +50,8 @@
 			{#if author.photo_url}
 				<img
 					src={author.photo_url}
+					srcset={portraitSrcset(author.photo_url)}
+					sizes="112px"
 					alt="{t('a11y.portraitOf')} {author.name}"
 					loading="lazy"
 					width="112"
