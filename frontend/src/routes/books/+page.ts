@@ -1,3 +1,35 @@
+// prerender refresh 2026-09-11: Portuguese book — women-who-moved-heaven-2 (#1785), an Ochorus
+// Originals devotional on women of persistent prayer through history, 13 chapters ("Mulheres Que
+// Moveram o Céu"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
+// the translated title and the reader page bakes the 13 chapters. No plans/+page.ts touch owed —
+// women-who-moved-heaven-2 backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-11: Portuguese book — soar-like-the-eagle-3 (#1781), Gareth Evans's
+// teaching on reaching one's spiritual potential and destiny in Christ, 12 chapters ("Voe Como
+// a Águia"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
+// translated title and the reader page bakes the 12 chapters. No plans/+page.ts touch owed —
+// soar-like-the-eagle-3 backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-11: Portuguese book — watchman-nee-a-life (#1757), a biography of
+// Watchman Nee, 21 chapters. Book pages are prerendered per locale, so /pt/books and the shelf
+// rebuild with the translated subtitle and the reader page bakes the 21 chapters. No
+// plans/+page.ts touch owed — watchman-nee-a-life backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-11: Portuguese book — cheque-book (#1585), C. H. Spurgeon's daily
+// promise devotional, 13 chapters ("O Livro de Cheques do Banco da Fé"). Book pages are
+// prerendered per locale, so /pt/books and the shelf rebuild with the translated title and the
+// reader page bakes the 13 chapters. No plans/+page.ts touch owed — cheque-book backs no
+// LAUNCH_PLANS/CURATED_PLANS entry (grepped plan_seed.py).
+// prerender refresh 2026-09-11: Portuguese book — purity-of-heart (#1584), William Booth's
+// holiness appeal, 10 chapters ("Pureza de Coração"). Book pages are prerendered per locale,
+// so /pt/books and the shelf rebuild with the translated title and the reader page bakes the
+// 10 chapters. No plans/+page.ts touch owed — purity-of-heart backs no LAUNCH_PLANS/
+// CURATED_PLANS entry (grepped plan_seed.py).
+// prerender refresh 2026-09-11: one NEW Swahili book — holy-in-christ (#2168), Andrew Murray's
+// month of 31 meditations on holiness (33 chapters, "Mtakatifu katika Kristo"). Rebuilds /sw/books
+// so the card carries its translated title and the shared painting cover. Backs no plan.
+// prerender refresh 2026-09-11: Portuguese book — talks-to-the-farmer (#1583), C. H. Spurgeon's
+// homely talks drawing spiritual lessons from farm life, 18 chapters ("Conversas com o
+// Lavrador"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
+// the translated title and the reader page bakes the 18 chapters. No plans/+page.ts touch owed
+// — talks-to-the-farmer backs no LAUNCH_PLANS/CURATED_PLANS entry (grepped plan_seed.py).
 // prerender refresh 2026-09-11: Portuguese book — ministry-of-intercession (#1477), Andrew
 // Murray's plea for a life of intercession, 18 chapters ("O Ministério da Intercessão").
 // Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
@@ -13,6 +45,14 @@
 // and the shelf rebuild with the translated title and the reader page bakes the 17
 // translated chapters. This is faith-in-the-fire's second source book, so plans/+page.ts
 // is touched in the same PR — the plan goes live now that both its books have pt editions.
+// prerender refresh 2026-09-10: NEW Swahili book — union-and-communion (#2176),
+// Hudson Taylor on the Song of Solomon (10 ch, "Muungano na Ushirika"). Rebuilds /sw/books
+// so the card carries its translated title and the shared painting cover. It is one of the
+// three source books of the deeper-life-in-christ plan, but the-masters-indwelling has no
+// Swahili edition yet, so seed_plans creates no sw plan row and no plans/+page.ts touch is owed.
+// prerender refresh 2026-09-10: one NEW Swahili book — absolute-surrender (#2167), Andrew
+// Murray's 9 addresses ("Kujisalimisha Kabisa"). Rebuilds /sw/books so the card carries its
+// translated title and the shared painting cover. Backs no plan.
 // prerender refresh 2026-09-10: one NEW Swahili book — around-the-wicket-gate (#2169),
 // C. H. Spurgeon's 11 friendly talks with seekers ("Karibu na Lango Jembamba"). Rebuilds
 // /sw/books so the card carries its translated title and the shared painting cover. Backs no plan.

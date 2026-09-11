@@ -53,6 +53,13 @@
    "art": true,
    "scrim": 0.95
   },
+  "sw/absolute-surrender": {
+   "ground": "16a5c3ba386c02cdea3122b541a663237428273dfa88eb02ec5a007988d97c8f",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.95
+  },
   "all-of-grace": {
    "ground": "25d18c1f3133cdd46d916757dc58d064dd8cda9ff6adce9f7edf269c234762d4",
    "style": "revival",
@@ -711,6 +718,13 @@
    "art": true,
    "scrim": 1
   },
+  "sw/holy-in-christ": {
+   "ground": "b3ae10d7ea2dfc9d691d676c3cadcbaa9c68430e6fc29d0e4af93e1780257e4f",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 1
+  },
   "how-to-bring-men-to-christ": {
    "ground": "90e959b8dbd59b93bef2f3766b1a9e33981a4f9fdb0357c6eba650a723470ae3",
    "style": "revival",
@@ -1144,6 +1158,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.45
+  },
+  "pt/soar-like-the-eagle-3": {
+   "ground": "917cdb154fe2af1e9e10732571bc1a3d17aa532753a81834eb58e7ac50d009cd",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.9
   },
   "pt/stepping-stones-2": {
    "ground": "3d85ea47242de1c603f2dbbf4e0fed26aff1daa162b96a44e7b5e60f21424ad1",
@@ -1712,6 +1733,13 @@
    "art": true,
    "scrim": 0.85
   },
+  "sw/union-and-communion": {
+   "ground": "17038fc6723938d8af560cc00cfe3f7f30e240388fbea5ec3eb04695cec0c2af",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.85
+  },
   "waiting-on-god": {
    "ground": "4953e3a74672ccc0d17902faaf8abbf55cef0962b5c9939cea1a6504a6b307b9",
    "style": "devotional",
@@ -1775,6 +1803,13 @@
    "art": true,
    "scrim": 0.75
   },
+  "fr/jesus-himself-2": {
+   "ground": "c383dfce70fc191f8ba4a0a7e1224979cb2e5d73a5714c124f05624c889c4661",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.65
+  },
   "fr/the-inner-chamber": {
    "ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
    "style": "devotional",
@@ -1816,6 +1851,41 @@
    "script": "latin",
    "art": true,
    "scrim": 0.75
+  },
+  "pt/talks-to-the-farmer": {
+   "ground": "86bc723d98a44075b00f6219e5a67cb99cb04c82427e51231106b8de1a1ac025",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.5
+  },
+  "pt/purity-of-heart": {
+   "ground": "79a17f62ada9ba8452d6615ec56777daea8e0c87401c52c24f3cb69b84b6390a",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.35
+  },
+  "pt/cheque-book": {
+   "ground": "d5b24d6d237dc26380030d5597707659508f5b8ed69c8be8969fb3ebbd82bfce",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.5
+  },
+  "pt/watchman-nee-a-life": {
+   "ground": "7eec5d899fdf20ad8253da371099ae46d4bea27501f7d6d2fb692804314a473a",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.8
+  },
+  "pt/women-who-moved-heaven-2": {
+   "ground": "2748e79496cc8e3ad1e4bc0180d4450d5607a0a1e07787c5d0168583be62576f",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.3
   }
  }
 }

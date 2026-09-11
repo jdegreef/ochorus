@@ -94,13 +94,24 @@ export interface FeaturedPerson {
 /** Relative reading-difficulty badge, computed server-side; null = unjudged. */
 export type Difficulty = 'accessible' | 'moderate' | 'advanced' | null;
 
+/** Why a book is offered under "More like this" — another work by the same
+ *  author, or one that shares a topic shelf (identified by slug, which the page
+ *  resolves to a localized title from the book's own topics). Only the KIND is
+ *  carried; the visible label is composed on the page. */
+export type RelatedReason = { kind: 'author' } | { kind: 'topic'; topic: string };
+
+/** A related book, plus the reason it was suggested. */
+export interface RelatedBook extends BookSummary {
+	reason?: RelatedReason | null;
+}
+
 export interface BookDetail extends BookSummary {
 	description: string;
 	source_url: string;
 	pdf_url: string;
 	chapters: ChapterToc[];
 	topics: TopicChip[];
-	related: BookSummary[];
+	related: RelatedBook[];
 	difficulty: Difficulty;
 	/**
 	 * The author's authoritative identifiers (Wikipedia, Wikidata), for the

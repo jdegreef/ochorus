@@ -2,7 +2,7 @@
 	import type { AuthorBio } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { portraitPosition } from '$lib/portraits';
+	import { portraitPosition, portraitSrcset } from '$lib/portraits';
 	import { initials } from '$lib/strings';
 
 	/**
@@ -22,6 +22,10 @@
 	{#if author.photo_url}
 		<img
 			src={author.photo_url}
+			srcset={portraitSrcset(author.photo_url)}
+			sizes="44px"
+			width="44"
+			height="44"
 			alt="{t('a11y.portraitOf')} {author.name}"
 			loading="lazy"
 			class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"

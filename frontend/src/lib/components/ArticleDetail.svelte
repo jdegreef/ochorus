@@ -3,6 +3,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/href';
+	import { portraitSrcset } from '$lib/portraits';
 	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { scripture } from '$lib/scripture.svelte';
 	import { readingTime } from '$lib/reading';
@@ -166,7 +167,14 @@
 										style:background={r.cover_color || undefined}
 									/>
 								{:else if r.type === 'author' && r.photo_url}
-									<img class="rel-portrait" src={r.photo_url} alt="" loading="lazy" />
+									<img
+									class="rel-portrait"
+									src={r.photo_url}
+									srcset={portraitSrcset(r.photo_url)}
+									sizes="44px"
+									alt=""
+									loading="lazy"
+								/>
 								{/if}
 								<span class="rel-text">
 									<span class="kind">{KIND_LABEL[r.type]}</span>

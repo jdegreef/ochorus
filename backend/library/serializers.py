@@ -1186,7 +1186,37 @@ class BookDetailSerializer(BookListSerializer):
         ranked = sorted(
             candidates, key=lambda b: (-scores.get(b.slug, 0), b.sort_order, b.title)
         )
-        return BookListSerializer(ranked[: self.RELATED_LIMIT], many=True, context=self.context).data
+        top = ranked[: self.RELATED_LIMIT]
+        data = BookListSerializer(top, many=True, context=self.context).data
+
+        # Why each work is suggested, so the page can label it: another book by
+        # the same author, else one that shares a topic shelf. Only the reason
+        # KIND (and, for a topic, its slug) is returned — the page composes the
+        # visible label from data it already holds (the card's own author name,
+        # the book's localized topic titles), so this stays language-agnostic and
+        # adds no query per candidate. Same-author wins when a work is both, as it
+        # is the clearer label. One extra query, over only the works returned.
+        author_set = set(author_slugs)
+        shared_topic: dict[str, str] = {}
+        if topic_ids:
+            rows = (
+                TopicBook.objects.filter(
+                    topic_id__in=topic_ids, book_slug__in=[b.slug for b in top]
+                )
+                .exclude(book_slug=obj.slug)
+                .values_list("book_slug", "topic__slug")
+            )
+            for bslug, tslug in rows:
+                shared_topic.setdefault(bslug, tslug)
+        for item in data:
+            slug = item["slug"]
+            if slug in author_set:
+                item["reason"] = {"kind": "author"}
+            elif slug in shared_topic:
+                item["reason"] = {"kind": "topic", "topic": shared_topic[slug]}
+            else:
+                item["reason"] = None
+        return data
 
 
 class ChapterDetailSerializer(serializers.ModelSerializer):

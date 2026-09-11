@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { isArtCover, twinUrl } from '$lib/coverArt';
-	import { type BookDetail, formatLifespan } from '$lib/library-public';
+	import { type BookDetail, type RelatedBook, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { chapterName, readingMinutes, readingTime } from '$lib/reading';
@@ -10,6 +10,7 @@
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
+	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
@@ -270,6 +271,44 @@
 				})
 			: ''
 	);
+
+	// "More like this" reasons (A2). The reason is data from the API; the visible
+	// label is English prose composed here, so — like the FAQ — it shows on
+	// English editions only, and other editions render the grid exactly as before.
+	// No message keys, nothing machine-translated.
+	const showReasons = $derived(book.language === 'en');
+	function relatedReason(rel: RelatedBook): string | null {
+		const r = rel.reason;
+		if (!showReasons || !r) return null;
+		if (r.kind === 'author') return `More by ${rel.author.name}`;
+		const topic = book.topics?.find((tp) => tp.slug === r.topic);
+		return topic ? `Also on ${topic.title}` : null;
+	}
+
+	// On-page jump navigation (A3) — the author page's pattern: scrollSpy for the
+	// active section, jumpToSection for a smooth scroll that lands below the pinned
+	// bars via the `--pinned-offset` scroll-margin contract. Entries are only the
+	// sections that actually render, each labelled by its own existing localized
+	// heading (the English-only FAQ aside). The bar also keeps the read CTA within
+	// reach while scrolling — the page's own value over the author sub-nav.
+	const hasAbout = $derived(!!(book.about_html || book.description));
+	const navItems = $derived(
+		[
+			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
+			{ id: 'contents', label: t('reader.contents') },
+			faqItems.length ? { id: 'questions', label: 'Questions' } : null,
+			book.related?.length ? { id: 'related', label: t('book.related') } : null
+		].filter((x): x is { id: string; label: string } => x != null)
+	);
+	const showSubnav = $derived(navItems.length >= 2);
+	let subnavH = $state(0);
+	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
+	function jumpTo(e: MouseEvent, id: string) {
+		e.preventDefault();
+		history.replaceState(history.state, '', `#${id}`);
+		spy.set(id);
+		jumpToSection(id);
+	}
 </script>
 
 <Seo
@@ -284,7 +323,7 @@
 	structuredData={[bookLd, crumbsLd, faqLd].filter(Boolean)}
 />
 
-<div class="page-col px-5 py-10">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
 	<Breadcrumb items={crumbs} />
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
@@ -293,7 +332,11 @@
 		     same cover-less book looked one way on a shelf and another here — and
 		     a cover file that 404s showed a broken image here while every shelf
 		     fell back to the plate. `priority` marks it as the page's LCP image. -->
-		<div class="w-32 shrink-0">
+		<!-- A1: a larger cover raised off the page. `hero-cover` adds a layered
+		     drop-shadow that hugs the cover's rounded shape (via `filter`, so it
+		     follows any cover — painting, plate or designed raster — without a fake
+		     spine drawn over the artwork) and a slim page-edge on the fore-edge. -->
+		<div class="hero-cover w-36 shrink-0 sm:w-44">
 			<BookCover {book} priority />
 		</div>
 
@@ -411,6 +454,43 @@
 		</div>
 	</header>
 
+	<!-- A3: on-page jump navigation. Pinned under the app nav on scroll; its
+	     measured height feeds `--pinned-offset` on the page column so anchored
+	     sections land clear of both bars (the same contract the author sub-nav
+	     uses). Only shown with ≥2 sections to move between, and it keeps the read
+	     CTA reachable while scrolling — the book page's own use over the author's. -->
+	{#if showSubnav}
+		<nav
+			bind:clientHeight={subnavH}
+			class="book-subnav sticky z-20 mt-6 flex items-center gap-3 border-b border-border bg-bg"
+			style="top: var(--appnav-h, 0px)"
+			aria-label={t('a11y.pageSections')}
+		>
+			<ul class="flex flex-1 gap-1 overflow-x-auto">
+				{#each navItems as item (item.id)}
+					<li>
+						<a
+							href="#{item.id}"
+							class="subnav-link"
+							class:is-active={spy.active === item.id}
+							aria-current={spy.active === item.id ? 'true' : undefined}
+							onclick={(e) => jumpTo(e, item.id)}>{item.label}</a
+						>
+					</li>
+				{/each}
+			</ul>
+			{#if resumeOrder && resumeOrder > 1}
+				<a href={readHref(resumeOrder)} class="btn btn-primary subnav-cta shrink-0"
+					>{t('book.continueCh')} {resumeOrder}</a
+				>
+			{:else}
+				<a href={readHref(1)} class="btn btn-primary subnav-cta shrink-0"
+					>{t('book.beginReading')}</a
+				>
+			{/if}
+		</nav>
+	{/if}
+
 	<!-- About this book. The page previously said nothing about the WORK: the
 	     book's own `description` fed the meta tag and the JSON-LD and was never
 	     rendered, while the AUTHOR's bio was. So a reader arriving on a
@@ -433,7 +513,7 @@
 	     bio_html to bio, so the 63 books with a description gain visible prose
 	     today rather than waiting for a long-form piece to be written. -->
 	{#if book.about_html}
-		<section class="about-work mt-8" aria-labelledby="about-work">
+		<section id="about" class="jump-anchor about-work mt-8" aria-labelledby="about-work">
 			<h2 id="about-work" class="mb-3 text-h3">{t('book.aboutWork')}</h2>
 			<div class="text-body leading-relaxed" dir="auto">
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -441,7 +521,7 @@
 			</div>
 		</section>
 	{:else if book.description}
-		<section class="mt-8" aria-labelledby="about-work">
+		<section id="about" class="jump-anchor mt-8" aria-labelledby="about-work">
 			<h2 id="about-work" class="mb-3 text-h3">{t('book.aboutWork')}</h2>
 			<p class="text-body leading-relaxed" dir="auto">{book.description}</p>
 		</section>
@@ -529,7 +609,7 @@
 	     "Continue Ch. N"); there is no per-chapter completion record — ProgressRecord
 	     is a single resume point — so a check means "before where you are", not a
 	     claim the chapter was finished end to end. -->
-	<section class="mt-8">
+	<section id="contents" class="jump-anchor mt-8">
 		<h2 class="section-label">{t('reader.contents')}</h2>
 		<ol class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}
@@ -562,7 +642,7 @@
 	     accordion), which is both better for a reader skimming and what FAQ
 	     structured data requires. -->
 	{#if faqItems.length}
-		<section class="mt-12" aria-labelledby="faq-heading">
+		<section id="questions" class="jump-anchor mt-12" aria-labelledby="faq-heading">
 			<h2 id="faq-heading" class="text-h3">Common questions</h2>
 			<dl class="mt-4 flex flex-col gap-5">
 				{#each faqItems as item (item.q)}
@@ -591,11 +671,18 @@
 	{/if}
 
 	{#if book.related?.length}
-		<section class="mt-12">
+		<section id="related" class="jump-anchor mt-12">
 			<h2 class="section-label">{t('book.related')}</h2>
 			<div class="book-grid">
 				{#each book.related as rel (rel.slug)}
-					<BookCard book={rel} showAuthor />
+					{@const reason = relatedReason(rel)}
+					<!-- A2: why this book is here (same author / shares a topic). English
+					     editions only — the label is composed prose, not a message key;
+					     other editions render the card alone, as before. -->
+					<div class="related-cell">
+						{#if reason}<p class="related-reason">{reason}</p>{/if}
+						<BookCard book={rel} showAuthor />
+					</div>
 				{/each}
 			</div>
 		</section>
@@ -622,3 +709,78 @@
 		<p class="mt-2 text-eyebrow text-muted">{book.artwork_credit}</p>
 	{/if}
 </div>
+
+<style>
+	/* A1: lift the cover off the page. `filter: drop-shadow` follows the cover's
+	   own rounded (and possibly matted, off-3:4) shape — a plain box-shadow would
+	   be a rectangle behind it — so it reads for a painting, a plate and a
+	   designed raster alike, with no fake spine drawn over the artwork. A slim
+	   page-edge on the fore-edge, from theme tokens, implies the book's depth. */
+	.hero-cover {
+		position: relative;
+		filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.12)) drop-shadow(0 12px 20px rgb(0 0 0 / 0.22));
+	}
+	.hero-cover::after {
+		content: '';
+		position: absolute;
+		inset-block: 3%;
+		inset-inline-end: -4px;
+		width: 4px;
+		border-radius: 0 2px 2px 0;
+		background: repeating-linear-gradient(
+			to right,
+			var(--surface-2),
+			var(--surface-2) 1px,
+			var(--border) 1.5px
+		);
+	}
+
+	/* A3: jump-nav. Anchored sections clear both pinned bars via `--pinned-offset`
+	   (app nav + this sticky bar, published on the page column) — the same
+	   contract the author sub-nav uses. Links are quiet tabs; the active one wears
+	   the accent on the shared bottom border. */
+	.jump-anchor {
+		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
+	}
+	.book-subnav {
+		padding-block: 0.35rem 0;
+	}
+	.book-subnav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.subnav-link {
+		display: inline-block;
+		padding: 0.5rem 0.6rem;
+		border-bottom: 2px solid transparent;
+		margin-bottom: -1px;
+		font-size: var(--fs-small);
+		font-weight: 500;
+		white-space: nowrap;
+		color: var(--muted);
+		text-decoration: none;
+	}
+	.subnav-link:hover {
+		color: var(--text);
+	}
+	.subnav-link.is-active {
+		color: var(--accent);
+		border-bottom-color: var(--accent);
+	}
+	/* Smaller than a body button, to sit in the bar without setting its height. */
+	.subnav-cta {
+		padding: 0.4rem 0.85rem;
+		font-size: var(--fs-small);
+	}
+
+	/* A2: the reason a related book is suggested — a quiet accent eyebrow. */
+	.related-reason {
+		margin-bottom: 0.35rem;
+		font-size: var(--fs-eyebrow);
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+</style>
