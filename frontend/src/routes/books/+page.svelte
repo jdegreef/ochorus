@@ -35,7 +35,7 @@
 </script>
 
 <Seo
-	title={`${t('nav.books')} — Ochorus`}
+	title={`${t('books.metaTitle')} — Ochorus`}
 	description={t('books.metaDescription')}
 	{canonical}
 	{hreflang}
