@@ -1775,6 +1775,13 @@
    "art": true,
    "scrim": 0.85
   },
+  "fr/godliness": {
+   "ground": "fc2e575fa12936308aec9bd1cdb92f63e5dd7c510c58f227c0fb9a4eee5d0ebf",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.3
+  },
   "fr/clothed-with-strength-and-dignity": {
    "ground": "e27ae9f4ee85f2ee1a687c0cd91692b0cb15e25687ac97006a167412154bed48",
    "style": "house",
