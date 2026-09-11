@@ -1,0 +1,123 @@
+{
+ "kind": "book",
+ "slug": "purity-of-heart",
+ "language": "pt",
+ "job_issue": 1584,
+ "references": [
+  {
+   "reference": "Mateus 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 12:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Provérbios 23:26",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.pt.json"
+  },
+  {
+   "reference": "Hebreus 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 53:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 10:12",
+   "status": "mined",
+   "source_file": "the-way-to-god.pt.json"
+  },
+  {
+   "reference": "Lucas 1:74-75",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 12:15",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.pt.json"
+  },
+  {
+   "reference": "Ezequiel 36:25-27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 13:20-21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 5:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 57:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 4:7",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "Hebreus 13:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 1:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 4:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 5:48",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "1 Tessalonicenses 4:3",
+   "status": "mined",
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "2 Coríntios 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 3:17-19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 1:8",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Tiago 1:12",
+   "status": "self_rendered"
+  }
+ ]
+}

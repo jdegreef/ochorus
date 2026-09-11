@@ -1844,6 +1844,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.5
+  },
+  "pt/purity-of-heart": {
+   "ground": "79a17f62ada9ba8452d6615ec56777daea8e0c87401c52c24f3cb69b84b6390a",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.35
   }
  }
 }
