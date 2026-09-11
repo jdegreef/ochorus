@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-11: NEW French book — humility-2 / L'humilité (#2225), Andrew
+// Murray's 12 chapters on humility. Rebuilds /fr/books so the card carries its translated title
+// and the shared painting cover. This is humility-12-days' ONE source book, so seed_plans now
+// creates the (humility-12-days, fr) plan row — see the plans/+page.ts touch in this PR.
 // prerender refresh 2026-09-11: Portuguese book — ministry-of-intercession (#1477), Andrew
 // Murray's plea for a life of intercession, 18 chapters ("O Ministério da Intercessão").
 // Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
