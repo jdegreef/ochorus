@@ -98,18 +98,31 @@ class DeployScanColumnTests(TestCase):
             self.assertNotIn("body_html", sql)
         self.assertTrue(any("body_text" in sql for sql in selects))
 
-    def test_drift_prefetch_fetches_only_what_it_compares(self):
-        """The queryset seed_books actually uses, not one rebuilt here."""
-        from library.management.commands.seed_books import drift_books
+    def test_drift_query_fetches_only_what_it_compares(self):
+        """The per-book chapter read seed_books' drift check actually issues.
 
+        The drift check now reads one book's chapters at a time (no whole-corpus
+        prefetch), but must still select only the columns it compares — order,
+        title, body_html — never the tsvector or derived text.
+        """
+        from library.management.commands.seed_books import chapter_drift_reason
+
+        fixture_chapters = [
+            {
+                "book": [self.book.slug, "en"],
+                "order": 1,
+                "title": "One",
+                "body_html": "<p>Some prose.</p>",
+            }
+        ]
         with CaptureQueriesContext(connection) as captured:
-            list(drift_books())  # forces the prefetch
+            chapter_drift_reason(self.book, fixture_chapters)
         chapter_selects = [
             q["sql"]
             for q in captured.captured_queries
             if self._is_read(q["sql"]) and "library_chapter" in q["sql"]
         ]
-        self.assertTrue(chapter_selects, "the prefetch issued no chapter query")
+        self.assertTrue(chapter_selects, "the drift check issued no chapter query")
         for sql in chapter_selects:
             self.assertNotIn("search_vector", sql)
             self.assertNotIn("body_text", sql)
