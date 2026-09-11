@@ -1879,6 +1879,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.8
+  },
+  "pt/women-who-moved-heaven-2": {
+   "ground": "2748e79496cc8e3ad1e4bc0180d4450d5607a0a1e07787c5d0168583be62576f",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.3
   }
  }
 }
