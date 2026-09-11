@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-11: Portuguese book — watchman-nee-a-life (#1757), a biography of
+// Watchman Nee, 21 chapters. Book pages are prerendered per locale, so /pt/books and the shelf
+// rebuild with the translated subtitle and the reader page bakes the 21 chapters. No
+// plans/+page.ts touch owed — watchman-nee-a-life backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-11: Portuguese book — cheque-book (#1585), C. H. Spurgeon's daily
 // promise devotional, 13 chapters ("O Livro de Cheques do Banco da Fé"). Book pages are
 // prerendered per locale, so /pt/books and the shelf rebuild with the translated title and the
