@@ -196,11 +196,24 @@ class Author(models.Model):
         return getattr(self, field)
 
     def bio_for(self, language: str, *, fallback: bool = False) -> str:
-        """Short bio in ``language``; ``""`` when untranslated."""
+        """Short bio in ``language``; ``""`` when untranslated.
+
+        An imprint (``is_imprint``) is a house byline, not a person, so it never
+        presents a biography. Withheld at this shared chokepoint rather than at
+        each caller so every surface (author page, book-card mini-bio, tooling)
+        agrees — the same reason ``same_as`` is "never populated for an imprint".
+        """
+        if self.is_imprint:
+            return ""
         return self._localized("bio", language, fallback=fallback)
 
     def bio_html_for(self, language: str, *, fallback: bool = False) -> str:
-        """Long-form bio HTML in ``language``; ``""`` when untranslated."""
+        """Long-form bio HTML in ``language``; ``""`` when untranslated.
+
+        Withheld for an imprint, like ``bio_for`` — a byline has no biography.
+        """
+        if self.is_imprint:
+            return ""
         return self._localized("bio_html", language, fallback=fallback)
 
     def faq_for(self, language: str, *, fallback: bool = False) -> list:
@@ -212,7 +225,12 @@ class Author(models.Model):
         and in that absent, non-fallback case ``_localized`` returns its string
         sentinel ``""``, which the trailing ``or []`` normalizes back to the
         empty list this list-typed field should yield.
+
+        Withheld for an imprint, like the bios — the editorial Q&A is part of the
+        biographical surface a byline does not have.
         """
+        if self.is_imprint:
+            return []
         return self._localized("faq", language, fallback=fallback) or []
 
     def has_bio_in(self, language: str) -> bool:
