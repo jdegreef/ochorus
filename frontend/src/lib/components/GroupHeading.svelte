@@ -26,6 +26,7 @@
 		portraitUrl,
 		portraitPosition = PORTRAIT_POSITION_DEFAULT,
 		count,
+		as = 'h2',
 		sticky = false,
 		detail
 	}: {
@@ -38,6 +39,10 @@
 		portraitPosition?: string;
 		/** A simple numeric count, rendered as a `.count` span. */
 		count?: number;
+		/** Heading level. `h2` for a top-level shelf group (the default); `h3`
+		    when the group is nested under a section-label `h2`, as the topic
+		    leaf page's per-author Books groups are — so the outline stays valid. */
+		as?: 'h2' | 'h3';
 		/** The sticky bordered era-heading variant (Biographies). */
 		sticky?: boolean;
 		/** Inline content after the name — e.g. an era's year range, or a
@@ -46,7 +51,8 @@
 	} = $props();
 </script>
 
-<h2
+<svelte:element
+	this={as}
 	class={sticky
 		? 'sticky z-10 mb-6 flex items-baseline gap-2 border-b border-border bg-bg pb-2 pt-2 text-h3 text-text'
 		: 'mb-4 flex items-center gap-2.5 text-h3 text-muted'}
@@ -74,4 +80,4 @@
 	{#if count != null}
 		<span class="text-small font-normal count" class:ms-auto={sticky}>{count}</span>
 	{/if}
-</h2>
+</svelte:element>
