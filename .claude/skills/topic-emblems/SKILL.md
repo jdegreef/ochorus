@@ -65,15 +65,23 @@ consts + the art strings into tinted chips (dark + light) so you judge it as it
 appears on the hero. Do the full-app `/topics/<slug>/` hero pass once, when the
 whole batch is in, before the PR (needs a seeded backend — `seed_topics`).
 
-## Ledger — topics still on the fallback
+## Ledger — coverage
 
-30 topics; `TOPIC_META` curated. **Batch 1 shipped** (PR pending, branch
-`topic-emblems-accents`): the-east-african-revival (`dawn-over-hills`),
-the-puritans (`candle-and-book`), to-the-ends-of-the-earth (`mission-ship`),
-christ-and-the-cross (`paschal-lamb`), women-of-faith (`alabaster-jar`).
+**All 30 topics are curated — none on the fallback.** Shipped in PR #2211
+(branch `topic-emblems-accents`):
 
-Remaining 15: abiding-in-christ, voices-of-the-early-church, day-by-day,
-contemporary-voices, the-inner-life, the-great-awakening, the-body-of-christ,
-for-those-who-lead, the-wesleys-and-early-methodism, foundations-of-the-faith,
-saints-of-the-african-diaspora, the-grace-of-god, victory-over-sin,
-faith-for-the-impossible, men-of-valour.
+- Batch 1 (5): the-east-african-revival `dawn-over-hills`, the-puritans
+  `candle-and-book`, to-the-ends-of-the-earth `mission-ship`,
+  christ-and-the-cross `paschal-lamb`, women-of-faith `alabaster-jar`.
+- Batch 2 (15): abiding-in-christ `grafted-branch`, voices-of-the-early-church
+  `ichthys-fish`, day-by-day `sun-and-moon`, contemporary-voices `waymark`,
+  the-inner-life `sheltered-lamp`, the-great-awakening `field-sunrise`,
+  the-body-of-christ `loaf-and-cup`, for-those-who-lead `raised-lantern`,
+  the-wesleys-and-early-methodism `warmed-heart`, foundations-of-the-faith
+  `cornerstone`, saints-of-the-african-diaspora `river-sunrise`, the-grace-of-god
+  `open-hands`, victory-over-sin `broken-chain`, faith-for-the-impossible
+  `mountain-into-sea`, men-of-valour `sword-and-shield`.
+
+**Next**: `PLAN_META` still carries only its original curated set — new/uncurated
+plans fall back. Same recipe (`PLAN_META` + `planMeta`), but note `emblem:art`
+exports **topic** emblems only, so a plan emblem needs no backend art export.
