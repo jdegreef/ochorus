@@ -50,11 +50,14 @@ composition-gated (no manifest); `og:covers` doesn't use it at all.
 ## The topic content bridge (why og:topics shells to Python)
 
 Sermon content is JSON fixtures the Node generator reads directly. **Topic**
-title/description/scripture live in `backend/library/topic_seed.py` — Python
-literals with implicit string-concatenation, and the generator has no Django or
-DB. So `generate-topic-og.mjs` spawns **`backend/scripts/export_topic_cards.py`**
-(an `ast` parse → JSON; no import, no Django) for the content, and reads the
-accent + emblem from the TS catalogue (`emblemNames`/`emblems`) directly.
+title/description/scripture live in `backend/library/topic_seed.py`, and the
+generator has no Django or DB. So `generate-topic-og.mjs` spawns
+**`backend/scripts/export_topic_cards.py`**, which prints that content as JSON.
+`topic_seed.py` is a pure, side-effect-free data module, so the exporter uses
+the Django-free-script pattern — `sys.path.insert(0, BACKEND)` +
+`from library.topic_seed import TOPICS, TOPIC_SCRIPTURE` (the same way
+`library/covers.py` reads it), not an AST parse. The accent + emblem come from
+the TS catalogue (`emblemNames`/`emblems`), read directly.
 
 ## The gate pattern — two-sided, mirror it for any new card type
 
