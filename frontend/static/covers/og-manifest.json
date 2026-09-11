@@ -1796,6 +1796,13 @@
    "art": true,
    "scrim": 0.85
   },
+  "fr/the-key-in-my-hand": {
+   "ground": "ba27a94899641bcec2ba008e0202250f5fee68a4e26fa217ea2905ad707834e3",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.95
+  },
   "fr/gleanings-among-the-sheaves": {
    "ground": "34c21b0a45cba1af757a7731e0666f42b312f15d4efd47f174626f1bb6b8b996",
    "style": "revival",
