@@ -786,16 +786,37 @@ export interface AdminRecentSignup {
 	last_seen_at: string | null;
 }
 
+/** Accounts in one country, derived (approximately) from the browser timezone.
+ *  `code` is an ISO alpha-2, or the string "unknown" for the bucket of unmapped
+ *  or unreported timezones (same sentinel convention as AdminSignInMethod). */
+export interface AdminCountry {
+	code: string;
+	name: string;
+	count: number;
+}
+
+/** Accounts reporting one raw IANA timezone. `timezone` "Other" is the folded
+ *  tail below the top slots. */
+export interface AdminTimezone {
+	timezone: string;
+	count: number;
+}
+
 export interface AdminUsers {
 	total: number;
 	with_activity: number;
 	dormant: number;
 	signups_7d: number;
 	signups_30d: number;
+	/** The immediately preceding window, for a trend delta on the cards. */
+	signups_prev_7d: number;
+	signups_prev_30d: number;
 	weekly_signups: { week: string; count: number }[];
 	by_method: AdminSignInMethod[];
 	recent: AdminRecentSignup[];
 	by_locale: (Language & { count: number })[];
+	by_country: AdminCountry[];
+	by_timezone: AdminTimezone[];
 	by_theme: { theme: string; label: string; count: number }[];
 }
 

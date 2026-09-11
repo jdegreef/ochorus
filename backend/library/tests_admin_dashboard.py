@@ -871,7 +871,7 @@ class AdminUsersTests(TestCase):
         self.client = APIClient()
         User = get_user_model()
 
-        def mk(locale="en", theme="paper", providers="", display_name="", email=""):
+        def mk(locale="en", theme="paper", providers="", display_name="", email="", timezone=""):
             u = User.objects.create(username=str(uuid.uuid4()))
             return UserProfile.objects.create(
                 user=u,
@@ -881,11 +881,12 @@ class AdminUsersTests(TestCase):
                 providers=providers,
                 display_name=display_name,
                 email=email,
+                timezone=timezone,
             )
 
-        self.p1 = mk("en", "dark", providers="google", email="a@example.com")
-        self.p2 = mk("sw", "paper", providers="email,google", display_name="Bea", email="b@example.com")
-        self.p3 = mk("en", "paper")  # dormant (no progress), no provider recorded
+        self.p1 = mk("en", "dark", providers="google", email="a@example.com", timezone="America/New_York")
+        self.p2 = mk("sw", "paper", providers="email,google", display_name="Bea", email="b@example.com", timezone="Europe/London")
+        self.p3 = mk("en", "paper")  # dormant, no provider, no timezone reported
         ReadingProgress.objects.create(profile=self.p1, book_slug="humility", language="en")
         ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="sw")
 
@@ -907,6 +908,94 @@ class AdminUsersTests(TestCase):
 
         self.assertEqual(len(res.data["weekly_signups"]), 12)
         self.assertEqual(res.data["weekly_signups"][-1]["count"], 3)  # all signed up this week
+
+        # Prior-window counts exist so the UI can show a trend (no prior sign-ups
+        # here, so they're zero).
+        self.assertEqual(res.data["signups_prev_7d"], 0)
+        self.assertEqual(res.data["signups_prev_30d"], 0)
+
+    @override_settings(DEBUG=True)
+    def test_by_country_derived_from_timezone(self):
+        res = self.client.get("/api/admin/users/")
+        by_country = {r["code"]: r for r in res.data["by_country"]}
+        # p1 → US, p2 → GB, each derived from its browser timezone.
+        self.assertEqual(by_country["US"]["count"], 1)
+        self.assertEqual(by_country["US"]["name"], "United States")
+        self.assertEqual(by_country["GB"]["count"], 1)
+        # p3 reported no timezone → the single "unknown" bucket (string sentinel,
+        # matching by_method).
+        self.assertEqual(by_country["unknown"]["count"], 1)
+        self.assertEqual(by_country["unknown"]["name"], "Unknown")
+        # Unknown is ordered last regardless of size.
+        self.assertEqual(res.data["by_country"][-1]["code"], "unknown")
+
+    @override_settings(DEBUG=True)
+    def test_by_timezone_lists_raw_zones_skipping_blanks(self):
+        res = self.client.get("/api/admin/users/")
+        zones = {r["timezone"]: r["count"] for r in res.data["by_timezone"]}
+        self.assertEqual(zones["America/New_York"], 1)
+        self.assertEqual(zones["Europe/London"], 1)
+        # p3's blank timezone is not a row here (the country "Unknown" bucket
+        # already accounts for it).
+        self.assertNotIn("", zones)
+
+    @override_settings(DEBUG=True)
+    def test_by_timezone_caps_and_folds_the_tail_into_other(self):
+        import uuid
+
+        from django.contrib.auth import get_user_model
+
+        from accounts.models import UserProfile
+
+        User = get_user_model()
+        # 14 distinct mapped zones on top of setUp's 2 → 16 distinct; the raw
+        # list caps at 12 and folds the remaining 4 into one "Other" row.
+        zones = [
+            "America/Chicago", "America/Denver", "America/Los_Angeles",
+            "Europe/Paris", "Europe/Berlin", "Europe/Madrid", "Europe/Rome",
+            "Africa/Lagos", "Africa/Nairobi", "Asia/Tokyo", "Asia/Manila",
+            "Asia/Kolkata", "America/Sao_Paulo", "Australia/Sydney",
+        ]
+        for tz in zones:
+            u = User.objects.create(username=str(uuid.uuid4()))
+            UserProfile.objects.create(user=u, supabase_uid=uuid.uuid4(), timezone=tz)
+
+        res = self.client.get("/api/admin/users/")
+        by_tz = res.data["by_timezone"]
+        # 12 real zones + exactly one "Other" row.
+        self.assertEqual(len(by_tz), 13)
+        self.assertEqual(by_tz[-1]["timezone"], "Other")
+        # Every timezoned account is still accounted for: setUp's New_York + London
+        # (1 each) plus the 14 added here = 16, with the 4 beyond the cap folded
+        # into "Other".
+        self.assertEqual(sum(r["count"] for r in by_tz), 16)
+        self.assertEqual(by_tz[-1]["count"], 4)
+
+    @override_settings(DEBUG=True)
+    def test_by_country_orders_by_count_descending(self):
+        import uuid
+
+        from django.contrib.auth import get_user_model
+
+        from accounts.models import UserProfile
+
+        User = get_user_model()
+        # Give Great Britain a clear lead so the ranking is unambiguous
+        # (setUp seeds US=1, GB=1). After this GB=4, US=1.
+        for _ in range(3):
+            u = User.objects.create(username=str(uuid.uuid4()))
+            UserProfile.objects.create(
+                user=u, supabase_uid=uuid.uuid4(), timezone="Europe/London"
+            )
+
+        res = self.client.get("/api/admin/users/")
+        real = [r for r in res.data["by_country"] if r["code"] != "unknown"]
+        counts = [r["count"] for r in real]
+        # Highest first, and GB (now the largest) leads.
+        self.assertEqual(counts, sorted(counts, reverse=True))
+        self.assertEqual(real[0]["code"], "GB")
+        # The "unknown" bucket stays last regardless of these counts.
+        self.assertEqual(res.data["by_country"][-1]["code"], "unknown")
 
     @override_settings(DEBUG=True)
     def test_by_method_counts_overlap_and_unknown(self):

@@ -50,6 +50,13 @@ class UserProfile(models.Model):
     # added.
     last_seen_at = models.DateTimeField(null=True, blank=True)
 
+    # The reader's browser IANA timezone (e.g. "Europe/London"), captured
+    # client-side on sign-in. NOT an IP address — a rough, privacy-light
+    # geography signal only, from which the admin analytics derive an
+    # approximate country (accounts/geo.py). Blank until first observed; a row
+    # created before this existed stays blank until its owner signs in again.
+    timezone = models.CharField(max_length=40, blank=True, default="")
+
     # Indexed: the admin's recent-sign-ups list orders by it, and the sign-up
     # range counts (signups_7d/30d) filter on it.
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)

@@ -247,21 +247,28 @@ class AdminUsersView(APIView):
         total = UserProfile.objects.count()
         with_activity = ReadingProgress.objects.values("profile").distinct().count()
 
+        def signups_between(start_days, end_days=0):
+            qs = UserProfile.objects.filter(created_at__gte=now - timedelta(days=start_days))
+            if end_days:
+                qs = qs.filter(created_at__lt=now - timedelta(days=end_days))
+            return qs.count()
+
         return Response(
             {
                 "total": total,
                 "with_activity": with_activity,
                 "dormant": max(0, total - with_activity),
-                "signups_7d": UserProfile.objects.filter(
-                    created_at__gte=now - timedelta(days=7)
-                ).count(),
-                "signups_30d": UserProfile.objects.filter(
-                    created_at__gte=now - timedelta(days=30)
-                ).count(),
+                "signups_7d": signups_between(7),
+                "signups_30d": signups_between(30),
+                # The immediately preceding window, so the UI can show a trend
+                # delta (this 7 days vs the 7 before it, this 30 vs the prior 30).
+                "signups_prev_7d": signups_between(14, 7),
+                "signups_prev_30d": signups_between(60, 30),
                 "weekly_signups": self._weekly_signups(now),
                 "by_method": self._by_method(),
                 "recent": self._recent(),
                 "by_locale": self._by_locale(),
+                **self._geography(),
                 "by_theme": [
                     {
                         "theme": r["theme"],
@@ -341,6 +348,53 @@ class AdminUsersView(APIView):
             entry["count"] = r["n"]
             out.append(entry)
         return out
+
+    def _geography(self, tz_limit: int = 12):
+        """Where readers are, from the captured browser timezone — as two
+        breakdowns off ONE grouped scan of the ``timezone`` column.
+
+        Approximate by design (a timezone names a region, not a person; no IP is
+        stored). ``by_country`` derives an ISO country per zone
+        (``accounts.geo``) — a dict lookup over the handful of distinct zones,
+        not every account — and folds unmapped and blank zones into a single
+        ``"unknown"`` bucket (the same string-sentinel convention as
+        ``by_method``), ordered last regardless of size. ``by_timezone`` is the
+        raw zones (blanks dropped — the country "unknown" bucket already counts
+        them), capped with the tail folded into an ``"Other"`` row.
+        """
+        from collections import Counter
+
+        from django.db.models import Count
+
+        from accounts.geo import country_for_timezone, country_name
+        from accounts.models import UserProfile
+
+        rows = list(UserProfile.objects.values("timezone").annotate(n=Count("id")))
+
+        # Country: fold the grouped zones through the derivation.
+        counter: Counter[str | None] = Counter()
+        for r in rows:
+            counter[country_for_timezone(r["timezone"] or "")] += r["n"]
+        unknown = counter.pop(None, 0)
+        by_country = [
+            {"code": code, "name": country_name(code), "count": n}
+            for code, n in counter.most_common()
+        ]
+        if unknown:
+            by_country.append({"code": "unknown", "name": "Unknown", "count": unknown})
+
+        # Timezone: the raw zones, blanks excluded, top-N with an "Other" tail.
+        tz_rows = sorted(
+            (r for r in rows if r["timezone"]), key=lambda r: (-r["n"], r["timezone"])
+        )
+        by_timezone = [
+            {"timezone": r["timezone"], "count": r["n"]} for r in tz_rows[:tz_limit]
+        ]
+        rest = sum(r["n"] for r in tz_rows[tz_limit:])
+        if rest:
+            by_timezone.append({"timezone": "Other", "count": rest})
+
+        return {"by_country": by_country, "by_timezone": by_timezone}
 
     def _weekly_signups(self, now, weeks: int = 12):
         from datetime import timedelta
