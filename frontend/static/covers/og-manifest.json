@@ -1796,6 +1796,13 @@
    "art": true,
    "scrim": 0.75
   },
+  "fr/jesus-himself-2": {
+   "ground": "c383dfce70fc191f8ba4a0a7e1224979cb2e5d73a5714c124f05624c889c4661",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.65
+  },
   "fr/the-inner-chamber": {
    "ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
    "style": "devotional",
