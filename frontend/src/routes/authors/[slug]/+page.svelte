@@ -512,6 +512,7 @@
 		birthYear={author.birth_year}
 		deathYear={author.death_year}
 		milestones={author.milestones}
+		labels={getLang() === 'en'}
 	/>
 
 	<!-- Featured pull-quote: a hook above the biography, carrying the bio's own
@@ -972,6 +973,18 @@
 		padding-inline-end: 0.09em;
 		padding-block-start: 0.02em;
 		color: var(--gold);
+	}
+	/* …but NOT under RTL: a drop cap is a Latin/LTR flourish, and an enlarged,
+	   detached initial reads as broken in Arabic's cursive script. Revert it to
+	   normal prose there (higher specificity than the rule above wins). */
+	:global([dir='rtl'] .bio > p:first-of-type)::first-letter {
+		float: none;
+		font-family: inherit;
+		font-weight: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		padding: 0;
+		color: inherit;
 	}
 	:global(.bio h2) {
 		font-family: var(--font-display);

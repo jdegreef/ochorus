@@ -18,8 +18,13 @@
 		birthYear: number | null;
 		deathYear: number | null;
 		milestones?: Milestone[];
+		/** Show the event LABELS. The milestone labels are hand-authored ENGLISH,
+		 *  so on a localized page (`labels={false}`) we render the dots and years
+		 *  only — the years are universal — rather than print untranslated words
+		 *  beside a translated bio. */
+		labels?: boolean;
 	}
-	let { birthYear, deathYear, milestones = [] }: Props = $props();
+	let { birthYear, deathYear, milestones = [], labels = true }: Props = $props();
 
 	// --- Milestone mode -------------------------------------------------------
 	// Sorted, valid events. Two is the floor: a lone dot is not a timeline, and
@@ -65,8 +70,9 @@
 	     the a11y tree; each dot still names itself via <title> for pointer users. -->
 	<figure
 		class="life-events mx-auto mt-6 max-w-[40rem]"
-		aria-label="Timeline: {events[0].label} ({events[0].year}) to {events[events.length - 1]
-			.label} ({events[events.length - 1].year})"
+		aria-label={labels
+			? `Timeline: ${events[0].label} (${events[0].year}) to ${events[events.length - 1].label} (${events[events.length - 1].year})`
+			: `${events[0].year}–${events[events.length - 1].year}`}
 	>
 		<!-- Labels alternate ABOVE and BELOW the axis (even index below, odd above),
 		     so two adjacent events never share a horizontal band — the only way a
@@ -79,12 +85,14 @@
 			{#each events as m, i (m.year + m.label)}
 				{@const below = i % 2 === 0}
 				<g class="ev" class:key={m.key}>
-					<title>{m.year} — {m.label}</title>
+					<title>{m.year}{labels ? ` — ${m.label}` : ''}</title>
 					<line class="ev-stem" x1={ex(m.year)} y1="41" x2={ex(m.year)} y2={below ? 48 : 34}
 					></line>
 					<circle cx={ex(m.year)} cy="41" r={m.key ? 5.5 : 4.5}></circle>
 					<text class="ev-yr" x={ex(m.year)} y={below ? 60 : 29} text-anchor="middle">{m.year}</text>
-					<text class="ev-lb" x={ex(m.year)} y={below ? 73 : 16} text-anchor="middle">{m.label}</text>
+					{#if labels}
+						<text class="ev-lb" x={ex(m.year)} y={below ? 73 : 16} text-anchor="middle">{m.label}</text>
+					{/if}
 				</g>
 			{/each}
 		</svg>
