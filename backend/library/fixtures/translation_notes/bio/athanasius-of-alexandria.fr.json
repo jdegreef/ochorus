@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "athanasius-of-alexandria",
+ "language": "fr",
+ "job_issue": 2197,
+ "references": [
+  {
+   "reference": "Psalm 136:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

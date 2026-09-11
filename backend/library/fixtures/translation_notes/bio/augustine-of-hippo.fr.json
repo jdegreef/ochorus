@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "augustine-of-hippo",
+ "language": "fr",
+ "job_issue": 2198,
+ "references": [
+  {
+   "reference": "Romans 13:13-14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 14:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

@@ -69,8 +69,21 @@ def go_live(lang: Language, *, force: bool = False) -> dict:
     ``force`` launches despite failing checks — a deliberate override for the
     case where you disagree with the bar rather than a way around it. The
     blockers are still reported, so the decision is visible afterwards.
+
+    Its limit: a *hard* blocker (``report.hard_blockers``) is refused even when
+    forced — see ``readiness._ui_check`` for why forcing past one only trades a
+    caught problem for a frozen deploy. The guard lives here, the one admin path
+    that flips status LIVE; a direct ``status = LIVE`` write (a seed) bypasses it.
     """
     report = readiness.report(lang)
+    hard = report.hard_blockers
+    if hard:
+        return {
+            "launched": False,
+            "reason": "unbuildable",
+            "blocking": [c.key for c in hard],
+            "readiness": report.as_dict(),
+        }
     if not report.ready and not force:
         return {
             "launched": False,

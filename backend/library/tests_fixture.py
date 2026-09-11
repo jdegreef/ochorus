@@ -110,10 +110,11 @@ def files_by_path() -> dict:
 def all_rows() -> list:
     """Every content row, parsed once for the whole module.
 
-    ``load_all_rows`` re-reads all 166 files on each call (~114MB of transient
+    ``load_all_rows`` re-reads all ~690 files on each call (~170MB of transient
     allocation), and several classes here want the same rows. Cached in the test
-    module rather than in ``content_fixtures`` so the seed commands, which run in
-    long-lived processes, don't hold the parsed tree forever.
+    module rather than in ``content_fixtures`` because the whole-corpus list is
+    exactly the allocation the deploy seeds now avoid — they stream with
+    ``iter_work_files`` — so caching it there would reintroduce it.
     """
     return load_all_rows()
 

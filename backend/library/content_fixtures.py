@@ -27,6 +27,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from collections.abc import Iterator
 from functools import lru_cache
 from pathlib import Path
 
@@ -254,19 +255,35 @@ def ordered_fixture_paths() -> list[Path]:
     return paths
 
 
+def iter_work_files() -> Iterator[tuple[Path, list[dict]]]:
+    """Yield ``(path, rows)`` for each content fixture file, one file at a time.
+
+    The streaming counterpart to ``load_all_rows``. The deploy seeds walk the
+    corpus a file at a time so peak memory is a single work file, not the whole
+    ~170 MB fixture parsed into Python objects at once. That single parsed list
+    is the preDeploy allocation that spikes toward the plan's memory limit, and
+    it grows with the library (691 files today), so the seeds consume this
+    instead. A corrupt file still raises with its PATH named — with hundreds of
+    files, "some file is broken" must never collapse into "no fixtures
+    available".
+    """
+    for path in ordered_fixture_paths():
+        try:
+            yield path, json.loads(path.read_text())
+        except ValueError as exc:
+            raise ValueError(f"corrupt content fixture {path}: {exc}") from exc
+
+
 def load_all_rows() -> list[dict]:
     """All content rows across the split layout, in load order.
 
-    The seed commands and the CI gate consume this. A corrupt file raises with
-    its PATH named — with 119 files, "some file is broken" must never collapse
-    into "no fixtures available".
+    The CI gate and callers that genuinely need the whole corpus at once consume
+    this; the deploy seeds stream with ``iter_work_files`` instead of holding it
+    all. A corrupt file raises with its PATH named.
     """
     rows: list[dict] = []
-    for path in ordered_fixture_paths():
-        try:
-            rows.extend(json.loads(path.read_text()))
-        except ValueError as exc:
-            raise ValueError(f"corrupt content fixture {path}: {exc}") from exc
+    for _path, file_rows in iter_work_files():
+        rows.extend(file_rows)
     return rows
 
 

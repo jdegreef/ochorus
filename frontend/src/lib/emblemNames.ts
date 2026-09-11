@@ -40,7 +40,29 @@ export const TOPIC_META: Record<string, { accent: string; emblem: EmblemName }> 
 	'the-gospel-call': { accent: '#b8912f', emblem: 'herald-trumpet' }, // the oldest invitation there is
 	'enduring-classics': { accent: '#8a5bbf', emblem: 'laurel-tome' }, // the old paths, still good
 	'the-way-of-holiness': { accent: '#3e7cb8', emblem: 'narrow-gate' }, // strait is the gate
-	'the-preached-word': { accent: '#946b4a', emblem: 'open-word' } // great preaching on the page
+	'the-preached-word': { accent: '#946b4a', emblem: 'open-word' }, // great preaching on the page
+	// ── batch 1 ──────────────────────────────────────────────────────────────
+	'the-east-african-revival': { accent: '#cf5a4a', emblem: 'dawn-over-hills' }, // the walk in the light
+	'the-puritans': { accent: '#3f4d80', emblem: 'candle-and-book' }, // plain, searching divinity
+	'to-the-ends-of-the-earth': { accent: '#3a6ea5', emblem: 'mission-ship' }, // the gospel carried at any cost
+	'christ-and-the-cross': { accent: '#b3474f', emblem: 'paschal-lamb' }, // the Lamb slain (Agnus Dei)
+	'women-of-faith': { accent: '#b5628f', emblem: 'alabaster-jar' }, // the costly ointment
+	// ── batch 2 ──────────────────────────────────────────────────────────────
+	'abiding-in-christ': { accent: '#4f8f42', emblem: 'grafted-branch' }, // the branch in the Vine
+	'voices-of-the-early-church': { accent: '#4a7c9e', emblem: 'ichthys-fish' }, // the sign of the fish
+	'day-by-day': { accent: '#c9883f', emblem: 'sun-and-moon' }, // morning and evening
+	'contemporary-voices': { accent: '#4f78c4', emblem: 'waymark' }, // living guides on the old road
+	'the-inner-life': { accent: '#7a5a95', emblem: 'sheltered-lamp' }, // the shut door, the secret place
+	'the-great-awakening': { accent: '#cf6a3a', emblem: 'field-sunrise' }, // the fire in the open air
+	'the-body-of-christ': { accent: '#3f8a86', emblem: 'loaf-and-cup' }, // one loaf, one cup
+	'for-those-who-lead': { accent: '#8a6a3f', emblem: 'raised-lantern' }, // a light held out for others
+	'the-wesleys-and-early-methodism': { accent: '#b5503f', emblem: 'warmed-heart' }, // strangely warmed
+	'foundations-of-the-faith': { accent: '#5a6f8a', emblem: 'cornerstone' }, // the chief cornerstone
+	'saints-of-the-african-diaspora': { accent: '#3f52a8', emblem: 'river-sunrise' }, // dawn on the Niger
+	'the-grace-of-god': { accent: '#c56b6f', emblem: 'open-hands' }, // grace freely received
+	'victory-over-sin': { accent: '#7a466a', emblem: 'broken-chain' }, // the chain struck off
+	'faith-for-the-impossible': { accent: '#2f7fa0', emblem: 'mountain-into-sea' }, // say to this mountain
+	'men-of-valour': { accent: '#a5552f', emblem: 'sword-and-shield' } // quit you like men
 };
 
 /** Per-plan visual identity: accent hue + emblem (same shape as TOPIC_META). */

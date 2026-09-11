@@ -15,12 +15,13 @@ migration each time.
 from __future__ import annotations
 
 import datetime
+import json
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from library.author_sync import sync_all_authors
-from library.content_fixtures import authors_by_slug, load_all_rows
+from library.content_fixtures import AUTHORS_FILE, authors_by_slug, iter_work_files
 from library.corrections import settled_sermon_body
 from library.management.commands.seed_books import require_natural_format
 from library.models import Author, Sermon
@@ -91,83 +92,87 @@ class Command(BaseCommand):
     @transaction.atomic
     def handle(self, *args, **opts):
         try:
-            rows = load_all_rows()
+            author_rows = json.loads(AUTHORS_FILE.read_text())
         except OSError:
             self.stdout.write("No content fixtures available — nothing to seed.")
             return
-        # A ValueError (corrupt file, path named) propagates: with 119 files,
-        # "one file is broken" must abort the deploy, not skip all content.
+        # A ValueError (corrupt file) propagates: "one file is broken" must abort
+        # the deploy, not seed a partial library.
 
-        require_natural_format(rows, "seed_sermons")
-
+        require_natural_format(author_rows, "seed_sermons")
         # Natural-key join: a sermon's author is referenced as ["slug"].
-        author_fields_by_slug = authors_by_slug(rows)
+        author_fields_by_slug = authors_by_slug(author_rows)
 
         created = updated = 0
-        for row in rows:
-            if row.get("model") != "library.sermon":
-                continue
-            f = fixture_fields(row["fields"])
-            af = author_fields_by_slug.get(f["author"][0])
-            if af is None:
-                # Forbidden by the CI integrity test — a corrupt fixture must
-                # abort the deploy, not silently drop the sermon.
-                raise CommandError(
-                    f"seed_sermons: sermon {f['slug']!r} references missing "
-                    f"author {f['author'][0]!r}"
+        # Stream one work file at a time so peak memory is a single file, not the
+        # whole ~170 MB fixture parsed into Python objects at once.
+        for _path, rows in iter_work_files():
+            require_natural_format(rows, "seed_sermons")
+            for row in rows:
+                if row.get("model") != "library.sermon":
+                    continue
+                f = fixture_fields(row["fields"])
+                af = author_fields_by_slug.get(f["author"][0])
+                if af is None:
+                    # Forbidden by the CI integrity test — a corrupt fixture must
+                    # abort the deploy, not silently drop the sermon.
+                    raise CommandError(
+                        f"seed_sermons: sermon {f['slug']!r} references missing "
+                        f"author {f['author'][0]!r}"
+                    )
+                # A sermon may introduce an author with no books yet (e.g. Moody)
+                # — create the author from the fixture rather than skipping it.
+                author, _ = Author.objects.get_or_create(
+                    slug=af["slug"],
+                    defaults={
+                        "name": af.get("name", ""),
+                        "bio": af.get("bio", ""),
+                        "bio_html": af.get("bio_html", ""),
+                        "photo_url": af.get("photo_url", ""),
+                        "birth_year": af.get("birth_year"),
+                        "death_year": af.get("death_year"),
+                        # Every fixture author is "en" today, so omitting this was
+                        # invisible; a non-English author created on prod would
+                        # have silently taken the model default and mis-fed
+                        # _localized().
+                        "original_language": af.get("original_language", "en"),
+                        # Carry the flag through — see seed_books for why.
+                        "is_imprint": af.get("is_imprint", False),
+                    },
                 )
-            # A sermon may introduce an author with no books yet (e.g. Moody) —
-            # create the author from the fixture rather than skipping the sermon.
-            author, _ = Author.objects.get_or_create(
-                slug=af["slug"],
-                defaults={
-                    "name": af.get("name", ""),
-                    "bio": af.get("bio", ""),
-                    "bio_html": af.get("bio_html", ""),
-                    "photo_url": af.get("photo_url", ""),
-                    "birth_year": af.get("birth_year"),
-                    "death_year": af.get("death_year"),
-                    # Every fixture author is "en" today, so omitting this was
-                    # invisible; a non-English author created on prod would have
-                    # silently taken the model default and mis-fed _localized().
-                    "original_language": af.get("original_language", "en"),
-                    # Carry the flag through — see seed_books for why.
-                    "is_imprint": af.get("is_imprint", False),
-                },
-            )
 
-            sermon = Sermon.objects.filter(
-                slug=f["slug"], language=f.get("language", "en")
-            ).first()
-            preached_on = _date(f.get("preached_on"))
-            if sermon is None:
-                Sermon.objects.create(
-                    author=author,
-                    slug=f["slug"],
-                    language=f.get("language", "en"),
-                    preached_on=preached_on,
-                    # Omit fields the fixture row doesn't carry so the model
-                    # default applies — e.g. older rows predating source_type.
-                    **{k: f[k] for k in SERMON_FIELDS if k in f},
-                )
-                created += 1
-                continue
+                sermon = Sermon.objects.filter(
+                    slug=f["slug"], language=f.get("language", "en")
+                ).first()
+                preached_on = _date(f.get("preached_on"))
+                if sermon is None:
+                    Sermon.objects.create(
+                        author=author,
+                        slug=f["slug"],
+                        language=f.get("language", "en"),
+                        preached_on=preached_on,
+                        # Omit fields the fixture row doesn't carry so the model
+                        # default applies — e.g. older rows predating source_type.
+                        **{k: f[k] for k in SERMON_FIELDS if k in f},
+                    )
+                    created += 1
+                    continue
 
-            changed = [
-                k for k in UPDATE_FIELDS if k in f and getattr(sermon, k) != f[k]
-            ]
-            if sermon.preached_on != preached_on:
-                sermon.preached_on = preached_on
-                changed.append("preached_on")
-            if sermon.author_id != author.id:
-                sermon.author = author
-                changed.append("author")
-            if changed:
-                for k in changed:
-                    if k in SERMON_FIELDS:
-                        setattr(sermon, k, f.get(k))
-                sermon.save()  # save() re-derives body_text and word_count
-                updated += 1
+                changed = [
+                    k for k in UPDATE_FIELDS if k in f and getattr(sermon, k) != f[k]
+                ]
+                if sermon.preached_on != preached_on:
+                    sermon.preached_on = preached_on
+                    changed.append("preached_on")
+                if sermon.author_id != author.id:
+                    sermon.author = author
+                    changed.append("author")
+                if changed:
+                    for k in changed:
+                        if k in SERMON_FIELDS:
+                            setattr(sermon, k, f.get(k))
+                    sermon.save()  # save() re-derives body_text and word_count
+                    updated += 1
 
         if created or updated:
             self.stdout.write(
@@ -176,5 +181,5 @@ class Command(BaseCommand):
         else:
             self.stdout.write("Sermons already up to date.")
 
-        for line in sync_all_authors(Author, rows):
+        for line in sync_all_authors(Author, author_rows):
             self.stdout.write(line)

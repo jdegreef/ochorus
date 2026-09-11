@@ -16,6 +16,7 @@
 	} from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
+	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
@@ -374,36 +375,21 @@
 	// the same contract the biographies index uses so anchored sections clear both
 	// the app nav and this bar. Mirrors +layout's navH measurement.
 	let subnavH = $state(0);
-	let activeSection = $state('');
 
 	// Scroll-spy: light the link for whatever section sits in the band just under
-	// the pinned bars. Rebuilt when the target set changes (e.g. after hydration).
-	// No-JS / prerender shows the bar with nothing lit — the links still jump.
-	$effect(() => {
-		if (!showSubnav || typeof IntersectionObserver === 'undefined') return;
-		const els = navItems
-			.map((n) => document.getElementById(n.id))
-			.filter((el): el is HTMLElement => el != null);
-		if (!els.length) return;
-		const io = new IntersectionObserver(
-			(entries) => {
-				for (const e of entries) if (e.isIntersecting) activeSection = e.target.id;
-			},
-			{ rootMargin: '-45% 0px -50% 0px' }
-		);
-		els.forEach((el) => io.observe(el));
-		return () => io.disconnect();
-	});
+	// the pinned bars. The shared helper re-observes when the target set changes
+	// (empty while the sub-nav is hidden). No-JS / prerender shows the bar with
+	// nothing lit — the links still jump.
+	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
 
-	// Smooth-jump to a section (honouring reduced-motion) and light it at once, so
-	// the tap feels immediate rather than waiting on the scroll-spy to catch up.
+	// Smooth-jump to a section and light it at once, so the tap feels immediate
+	// rather than waiting on the scroll-spy to catch up. The landing offset lives
+	// in CSS (`--pinned-offset` + the subnav-link scroll-margin below), so
+	// jumpToSection just scrolls; the hash stays ours to set.
 	function jumpTo(e: MouseEvent, id: string) {
-		const el = document.getElementById(id);
-		if (!el) return;
 		e.preventDefault();
-		activeSection = id;
-		const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-		el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+		spy.set(id);
+		jumpToSection(id);
 		history.replaceState(null, '', `#${id}`);
 	}
 </script>
@@ -477,25 +463,31 @@
 				<a href={`/quotes/${author.slug}/`} class="btn btn-sm btn-ghost shrink-0">Quotes</a>
 			{/if}
 			<FavoriteButton kind="author" slug={author.slug} showLabel />
-			{#if listen.supported && author.bio_html}
-				<button
-					class="btn btn-icon btn-ghost shrink-0"
-					class:text-accent={listen.status !== 'idle'}
-					onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
-					aria-label={t('reader.listen')}
-					title={t('reader.listen')}><Icon name="headphones" size={16} /> {t('reader.listen')}</button
-				>
-			{/if}
-			<!-- Reader affordances, shown only when there is a long-form biography to
-			     read: text settings, and focus mode to strip the page back to prose. -->
+			<!-- Reading tools as ONE segmented control — Listen, text settings and
+			     focus mode read as a single cluster of icons rather than three
+			     separate ghost pills (matches the masthead mockup). Shown only when
+			     there is a long-form biography to read; Listen drops its label here
+			     since the icon carries it inside the group (the title/aria-label
+			     keep it named). -->
 			{#if author.bio_html}
-				<ReaderControls />
-				<button
-					class="btn btn-icon btn-ghost shrink-0"
-					onclick={() => readerUi.toggleFocus()}
-					aria-label={t('reader.focus')}
-					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
-				>
+				<div class="reader-tools shrink-0">
+					{#if listen.supported}
+						<button
+							class="btn btn-icon btn-ghost"
+							class:text-accent={listen.status !== 'idle'}
+							onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
+							aria-label={t('reader.listen')}
+							title={t('reader.listen')}><Icon name="headphones" size={16} /></button
+						>
+					{/if}
+					<ReaderControls />
+					<button
+						class="btn btn-icon btn-ghost"
+						onclick={() => readerUi.toggleFocus()}
+						aria-label={t('reader.focus')}
+						title={t('reader.focus')}><Icon name="maximize" size={18} /></button
+					>
+				</div>
 			{/if}
 		</div>
 	</header>
@@ -550,8 +542,8 @@
 						<a
 							href="#{item.id}"
 							class="subnav-link"
-							class:is-active={activeSection === item.id}
-							aria-current={activeSection === item.id ? 'true' : undefined}
+							class:is-active={spy.active === item.id}
+							aria-current={spy.active === item.id ? 'true' : undefined}
 							onclick={(e) => jumpTo(e, item.id)}>{item.label}</a
 						>
 					</li>
@@ -781,6 +773,44 @@
 	.bio-bookmark.is-set {
 		color: var(--accent);
 		border-color: var(--accent);
+	}
+
+	/* Reading tools as a segmented control: one bordered cluster with hairline
+	   dividers, instead of three separate ghost-button pills. No `overflow:hidden`
+	   — ReaderControls' text-settings popover is position:absolute and would be
+	   clipped by it — so the group rounds its own outer corners on the end tools
+	   instead. The inner buttons (and ReaderControls' own trigger, reached with
+	   :global) drop their border and radius; the group carries them. */
+	.reader-tools {
+		display: inline-flex;
+		align-items: stretch;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
+	}
+	/* Each tool fills its segment: no top/bottom/end border and no radius of its
+	   own. The LEADING (inline-start) border is the divider between tools — every
+	   tool carries it, and the first tool drops it below. `:global` reaches
+	   ReaderControls' own trigger, a child-component element this component's
+	   scope class never lands on (a plain scoped selector skipped it). */
+	.reader-tools :global(.btn) {
+		border-block: 0;
+		border-inline-end: 0;
+		border-radius: 0;
+		border-inline-start: 1px solid var(--border);
+	}
+	/* First tool: no leading divider, and it carries the group's start corners.
+	   Handles both a direct button (Listen) and ReaderControls' nested button. */
+	.reader-tools > :first-child.btn,
+	.reader-tools > :first-child :global(.btn) {
+		border-inline-start: 0;
+		border-start-start-radius: calc(var(--radius-sm) - 1px);
+		border-end-start-radius: calc(var(--radius-sm) - 1px);
+	}
+	/* Last tool (always the focus button) carries the group's end corners. */
+	.reader-tools > :last-child.btn,
+	.reader-tools > :last-child :global(.btn) {
+		border-start-end-radius: calc(var(--radius-sm) - 1px);
+		border-end-end-radius: calc(var(--radius-sm) - 1px);
 	}
 
 	/* Jump-nav targets clear both pinned bars when linked to. `--pinned-offset`
