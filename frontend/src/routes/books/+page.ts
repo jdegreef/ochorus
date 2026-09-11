@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-11: NEW French book — prayer-the-pulse-of-life / La prière — le pouls
+// de la vie (#2222), Hannah Buyinza, 12 chapters. Rebuilds /fr/books so the card carries its
+// translated title and the shared painting cover. school-of-prayer plan stays dormant (its other
+// source books lord-teach-us-to-pray-2 / prevailing-prayer have no fr edition yet).
 // prerender refresh 2026-09-11: Portuguese book — ministry-of-intercession (#1477), Andrew
 // Murray's plea for a life of intercession, 18 chapters ("O Ministério da Intercessão").
 // Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
