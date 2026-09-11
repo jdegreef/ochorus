@@ -186,9 +186,17 @@
 	// "…fourteen great-gr"); truncateMeta ends on a sentence or whole-word boundary
 	// within the ~160-char budget scrapers actually display. The book page already
 	// routes its description through the same helper.
-	const description = $derived(
-		truncateMeta(author.bio || t('author.metaFallback').replace('%name%', author.name))
-	);
+	// A bio, when this locale has one, is used as-is. When it doesn't, the localized
+	// metaFallback sentence is enriched with the same era + work counts the header
+	// shows (summaryBits — already localized), so a bio-less author page still offers
+	// the SERP something concrete rather than a bare "free classic Christian books"
+	// line. No new catalogue string; the counts matter most on translated pages,
+	// where a localized bio is most often absent.
+	const description = $derived.by(() => {
+		if (author.bio) return truncateMeta(author.bio);
+		const base = t('author.metaFallback').replace('%name%', author.name);
+		return truncateMeta(summaryBits.length ? `${base} ${summaryBits.join(' · ')}.` : base);
+	});
 	const ogImage = $derived(
 		author.photo_url
 			? absUrl(author.photo_url)
@@ -512,6 +520,7 @@
 		birthYear={author.birth_year}
 		deathYear={author.death_year}
 		milestones={author.milestones}
+		labels={getLang() === 'en'}
 	/>
 
 	<!-- Featured pull-quote: a hook above the biography, carrying the bio's own
@@ -972,6 +981,18 @@
 		padding-inline-end: 0.09em;
 		padding-block-start: 0.02em;
 		color: var(--gold);
+	}
+	/* …but NOT under RTL: a drop cap is a Latin/LTR flourish, and an enlarged,
+	   detached initial reads as broken in Arabic's cursive script. Revert it to
+	   normal prose there (higher specificity than the rule above wins). */
+	:global([dir='rtl'] .bio > p:first-of-type)::first-letter {
+		float: none;
+		font-family: inherit;
+		font-weight: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		padding: 0;
+		color: inherit;
 	}
 	:global(.bio h2) {
 		font-family: var(--font-display);

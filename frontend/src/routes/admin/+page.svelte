@@ -4,7 +4,13 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { type SourceType } from '$lib/library-public';
-	import { getAdminStats, getAdminAttention } from '$lib/library-admin';
+	import {
+		getAdminStats,
+		getAdminAttention,
+		getAdminTranslationJobs,
+		countJobsByLanguageType,
+		type TranslationJobType
+	} from '$lib/library-admin';
 	import AddLanguageForm from '$lib/components/AddLanguageForm.svelte';
 
 	let exporting = $state<'csv' | 'json' | null>(null);
@@ -45,6 +51,14 @@
 	// the ranking, labels and links are composed here (admin is English-only).
 	const attentionRes = adminResource(getAdminAttention, 'Something went wrong loading attention.');
 	const att = $derived(attentionRes.data);
+
+	// The translation queue is GitHub issues, reached over a slow paginated API
+	// that can be unconfigured or unreachable. Kept as its own best-effort
+	// resource so it NEVER blocks the (DB-fast) By-language table: the counts
+	// paint immediately and the "+N queued" overlay (countJobsByLanguageType,
+	// unit-tested) fills in when jobs arrive — or stays silent if it can't.
+	const jobsRes = adminResource(getAdminTranslationJobs, 'Something went wrong loading the queue.');
+	const queued = $derived(countJobsByLanguageType(jobsRes.data?.jobs ?? []));
 
 	type HubTier = 'critical' | 'backlog' | 'demand';
 	interface HubRow { tier: HubTier; value: string; big: boolean; label: string; why: string; href: string; }
@@ -293,8 +307,19 @@
 					<a href="/admin/coverage" class="text-small font-semibold text-accent hover:underline">Coverage matrix →</a>
 				</div>
 				<p class="mb-3 text-small text-muted">Select a language to see what's translated and what to work on next.</p>
+				<!-- The gold "+N" beside a count is items queued to translate into this
+				     language but not yet live — additive, so "25 +11" is 25 live and 11
+				     coming. Parentheses stay reserved for the "(N pub)" published subset.
+				     Rendered from `queued`; blank (never "+0") when nothing is queued. -->
+				{#snippet plus(code: string, type: TranslationJobType)}
+					{@const n = queued[code]?.[type] ?? 0}
+					{#if n}<span
+							class="ml-1 text-small font-medium text-warning"
+							title="Queued to translate">+{n}</span
+						>{/if}
+				{/snippet}
 				<div class="overflow-x-auto rounded-card border border-border bg-surface">
-					<table class="w-full min-w-[44rem] border-collapse text-body">
+					<table class="w-full min-w-[50rem] border-collapse text-body">
 						<thead>
 							<tr class="eyebrow border-b border-border text-muted">
 								<th class="px-4 py-3 text-left font-semibold">Language</th>
@@ -303,6 +328,7 @@
 								<th class="px-4 py-3 text-right font-semibold">Sermons</th>
 								<th class="px-4 py-3 text-right font-semibold">Plans</th>
 								<th class="px-4 py-3 text-right font-semibold">Bios</th>
+								<th class="px-4 py-3 text-right font-semibold">Articles</th>
 								<th class="px-4 py-3 text-right font-semibold">Words</th>
 								<th class="px-4 py-3 text-left font-semibold">Source</th>
 							</tr>
@@ -327,12 +353,13 @@
 										{fmt(l.books)}
 										{#if l.published_books !== l.books}
 											<span class="text-small text-muted">({fmt(l.published_books)} pub)</span>
-										{/if}
+										{/if}{@render plus(l.code, 'book')}
 									</td>
 									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.chapters)}</td>
-									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.sermons)}</td>
-									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.plans)}</td>
-									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.bios)}</td>
+									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.sermons)}{@render plus(l.code, 'sermon')}</td>
+									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.plans)}{@render plus(l.code, 'plan')}</td>
+									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.bios)}{@render plus(l.code, 'bio')}</td>
+									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.articles)}{@render plus(l.code, 'article')}</td>
 									<td class="px-4 py-3 text-right tabular-nums">{fmt(l.words)}</td>
 									<td class="px-4 py-3 text-small text-muted">
 										{#if l.source_types.public_domain}<span title="Public domain">PD {l.source_types.public_domain}</span>{/if}
@@ -350,6 +377,7 @@
 					<span><span class="text-text">PD</span> public domain</span>
 					<span><span class="text-accent">AI✓</span> AI reviewed</span>
 					<span><span class="text-warning">AI·</span> AI unreviewed</span>
+					<span><span class="text-warning">+N</span> queued to translate</span>
 				</p>
 				<!-- Starting a language begins here: the row is what the translate_*
 				     commands read, so it has to exist before any work can be queued. -->
