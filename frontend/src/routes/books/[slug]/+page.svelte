@@ -220,41 +220,39 @@
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
+	// Locales whose FAQ + "more like this" reason copy has been translated AND
+	// native-reviewed. These extra strings live in the message catalogues; every
+	// advertised locale carries the KEYS (catalogue parity is enforced), but the
+	// un-reviewed ones hold the English source as a gated-off placeholder, so
+	// nothing unreviewed ever renders. Add a locale here once a native speaker has
+	// checked its keys — that one edit lights the feature up for that language.
+	const REVIEWED_LOCALES = new Set(['en', 'es', 'pt', 'fr']);
+
 	// A short FAQ built from what the page already knows — free to read, length,
 	// subject, author — answering the questions readers actually type ("is X free
-	// to read", "how long is X to read"). English editions only: the copy is
-	// written, not translated (the same reason `scripture` is English-only), so a
-	// non-English edition omits it rather than shipping English Q&A onto a
-	// translated page. The visible <dl> and the FAQPage JSON-LD both render from
-	// this one array, so the markup can never assert a question the page doesn't
-	// show — the match Google requires of FAQ structured data.
+	// to read", "how long is X"). The copy is in the catalogues (see
+	// REVIEWED_LOCALES); a locale without a reviewed translation omits it rather
+	// than shipping an unreviewed answer. The visible <dl> and the FAQPage JSON-LD
+	// both render from this one array, so the markup can never assert a question
+	// the page doesn't show — the match Google requires of FAQ structured data.
 	const faqItems = $derived.by((): { q: string; a: string }[] => {
-		// English editions only (see above), and only when the book has chapters:
-		// every answer counts them, and the per-chapter estimate divides by that count.
-		if (book.language !== 'en' || !book.chapter_count) return [];
-		const totalMin = readingMinutes(totalWords);
-		const hrs = Math.floor(totalMin / 60);
-		const mins = totalMin % 60;
-		const duration = hrs
-			? `${hrs} hour${hrs === 1 ? '' : 's'}${mins ? ` ${mins} minutes` : ''}`
-			: `${mins} minutes`;
-		const perChapter = Math.max(1, Math.round(totalMin / book.chapter_count));
+		if (!REVIEWED_LOCALES.has(getLang()) || !book.chapter_count) return [];
+		const title = book.title;
 		const items = [
+			{ q: t('book.faqFreeQ').replace('%title%', title), a: t('book.faqFreeA') },
 			{
-				q: `Is ${book.title} free to read online?`,
-				a: `Yes. The complete text — all ${book.chapter_count} chapters — is free to read here at Ochorus, with no account or payment, and it can be saved to read offline.`
-			},
-			{
-				q: `How long does ${book.title} take to read?`,
-				a: `About ${duration} in total, across ${book.chapter_count} chapters — roughly ${perChapter} minutes each.`
+				q: t('book.faqLengthQ').replace('%title%', title),
+				a: t('book.faqLengthA')
+					.replace('%duration%', readingTime(totalWords))
+					.replace('%count%', String(book.chapter_count))
 			}
 		];
 		if (book.description) {
-			items.push({ q: `What is ${book.title} about?`, a: book.description });
+			items.push({ q: t('book.faqAboutQ').replace('%title%', title), a: book.description });
 		}
 		items.push({
-			q: `Who wrote ${book.title}?`,
-			a: `${book.author.name} wrote ${book.title}${book.publication_year ? `; it was first published in ${book.publication_year}` : ''}.`
+			q: t('book.faqAuthorQ').replace('%title%', title),
+			a: t('book.faqAuthorA').replace('%name%', book.author.name).replace('%title%', title)
 		});
 		return items;
 	});
@@ -273,16 +271,15 @@
 	);
 
 	// "More like this" reasons (A2). The reason is data from the API; the visible
-	// label is English prose composed here, so — like the FAQ — it shows on
-	// English editions only, and other editions render the grid exactly as before.
-	// No message keys, nothing machine-translated.
-	const showReasons = $derived(book.language === 'en');
+	// label comes from the catalogues, shown in the same reviewed locales as the
+	// FAQ (REVIEWED_LOCALES) — other locales render the grid unchanged.
+	const showReasons = $derived(REVIEWED_LOCALES.has(getLang()));
 	function relatedReason(rel: RelatedBook): string | null {
 		const r = rel.reason;
 		if (!showReasons || !r) return null;
-		if (r.kind === 'author') return `More by ${rel.author.name}`;
+		if (r.kind === 'author') return t('book.moreBy').replace('%name%', rel.author.name);
 		const topic = book.topics?.find((tp) => tp.slug === r.topic);
-		return topic ? `Also on ${topic.title}` : null;
+		return topic ? t('book.alsoOn').replace('%topic%', topic.title) : null;
 	}
 
 	// On-page jump navigation (A3) — the author page's pattern: scrollSpy for the
