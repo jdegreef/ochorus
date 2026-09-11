@@ -33,6 +33,16 @@ class MeViewTests(TestCase):
         self.profile.refresh_from_db()
         self.assertEqual(self.profile.display_name, "")
 
+    def test_patch_stores_and_returns_timezone(self):
+        res = self.client.patch(
+            "/api/auth/me/", {"timezone": "  Europe/London  "}, format="json"
+        )
+        self.assertEqual(res.status_code, 200)
+        # Trimmed on the way in, echoed back in the serialized profile.
+        self.assertEqual(res.data["timezone"], "Europe/London")
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.timezone, "Europe/London")
+
     def test_delete_removes_profile_and_cascades_all_reading_data(self):
         ReadingProgress.objects.create(
             profile=self.profile, kind="book", book_slug="humility",

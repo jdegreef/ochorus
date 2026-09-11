@@ -16,7 +16,17 @@ export interface Profile {
 	font_scale: number;
 	tts_rate?: number;
 	tts_voice_uri?: string;
+	timezone?: string;
 	is_admin?: boolean;
+}
+
+/** This browser's IANA timezone (e.g. "Europe/London"), or '' if unavailable. */
+function deviceTimezone(): string {
+	try {
+		return Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+	} catch {
+		return '';
+	}
 }
 
 // A CODE, not a sentence: the page localizes it (see $lib/authErrors).
@@ -219,6 +229,10 @@ class Auth {
 			// again. Set BEFORE the language reconcile below, which pushes
 			// deliberately. See #profileLoaded.
 			this.#profileLoaded = true;
+			// Record where this reader is signing in from (browser timezone →
+			// approximate country in the admin analytics). Independent of the
+			// prefs push, so it's safe regardless of #profileLoaded.
+			this.#syncTimezone(p.timezone);
 			// Language: a locale the reader explicitly picked on this device wins
 			// over the synced profile (otherwise the profile would bounce them back
 			// out of the language they just chose). When they have such a choice,
@@ -237,7 +251,26 @@ class Auth {
 			// device's prefs are the only ones there are, and a first sign-in
 			// must be able to create the profile from them.
 			this.#profileLoaded = true;
+			// No saved value to compare against — pass undefined so a genuine
+			// first sign-up still records its timezone (the PATCH creates the
+			// profile). Harmless if the API is simply down (it's caught).
+			this.#syncTimezone(undefined);
 		}
+	}
+
+	/**
+	 * Persist this device's timezone to the profile when it differs from what's
+	 * saved (or nothing is saved yet). Fire-and-forget and cheap: a no-op PATCH
+	 * whenever the value already matches, so it doesn't write on every sign-in.
+	 */
+	#syncTimezone(saved: string | undefined) {
+		if (!this.user) return;
+		const tz = deviceTimezone();
+		if (!tz || tz === saved) return;
+		apiFetch('/api/auth/me/', {
+			method: 'PATCH',
+			body: JSON.stringify({ timezone: tz })
+		}).catch(() => {});
 	}
 
 	/** Debounced push of the current local prefs to the profile. */

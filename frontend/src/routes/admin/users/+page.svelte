@@ -14,21 +14,43 @@
 	const dayFmt = (iso: string | null) =>
 		iso ? new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : '—';
 
-	const cards = $derived(
+	// A period-over-period change, or null when there's no prior baseline to
+	// compare against (a brand-new metric shows "new" rather than a fake +100%).
+	type Trend = { dir: 'up' | 'down' | 'flat'; text: string } | null;
+	const trend = (cur: number, prev: number): Trend => {
+		if (prev <= 0) return cur > 0 ? { dir: 'up', text: 'new' } : null;
+		const d = Math.round(((cur - prev) / prev) * 100);
+		if (d === 0) return { dir: 'flat', text: '0%' };
+		return { dir: d > 0 ? 'up' : 'down', text: `${d > 0 ? '+' : ''}${d}%` };
+	};
+
+	type Card = { label: string; value: number; sub: string; trend: Trend };
+	const cards = $derived<Card[]>(
 		data
 			? [
-					{ label: 'Registered users', value: data.total, sub: 'total accounts' },
-					{ label: 'Activated', value: data.with_activity, sub: `${pct(data.with_activity, data.total)}% have read` },
-					{ label: 'Dormant', value: data.dormant, sub: 'no reading yet' },
-					{ label: 'New · 7d', value: data.signups_7d, sub: 'this week' },
-					{ label: 'New · 30d', value: data.signups_30d, sub: 'this month' }
+					{ label: 'Registered users', value: data.total, sub: 'total accounts', trend: null },
+					{ label: 'Activated', value: data.with_activity, sub: `${pct(data.with_activity, data.total)}% have read`, trend: null },
+					{ label: 'Dormant', value: data.dormant, sub: 'no reading yet', trend: null },
+					{ label: 'New · 7d', value: data.signups_7d, sub: 'vs prev 7 days', trend: trend(data.signups_7d, data.signups_prev_7d) },
+					{ label: 'New · 30d', value: data.signups_30d, sub: 'vs prev 30 days', trend: trend(data.signups_30d, data.signups_prev_30d) }
 				]
 			: []
 	);
 
+	// A country code → flag emoji (two regional-indicator letters); a globe for
+	// the "unknown" bucket or anything that isn't a 2-letter code.
+	const flag = (code: string) =>
+		/^[A-Za-z]{2}$/.test(code)
+			? String.fromCodePoint(...[...code.toUpperCase()].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65))
+			: '🌐';
+	// Drop the "Continent/" prefix for a compact label; the city carries the info.
+	const tzLabel = (tz: string) => (tz === 'Other' ? tz : tz.split('/').pop()!.replace(/_/g, ' '));
+
 	const signupMax = $derived(Math.max(1, ...(data?.weekly_signups.map((w) => w.count) ?? [1])));
 	const localeMax = $derived(Math.max(1, ...(data?.by_locale.map((l) => l.count) ?? [1])));
 	const methodMax = $derived(Math.max(1, ...(data?.by_method.map((m) => m.count) ?? [1])));
+	const countryMax = $derived(Math.max(1, ...(data?.by_country.map((c) => c.count) ?? [1])));
+	const tzMax = $derived(Math.max(1, ...(data?.by_timezone.map((t) => t.count) ?? [1])));
 
 	// Emails are PII: masked by default, revealed on demand (per row, or all at once).
 	// Reveals are cleared on every (re)load so a stale row index can't expose a
@@ -71,6 +93,14 @@
 	{/if}
 {/snippet}
 
+<!-- The horizontal count bar shared by every breakdown list (method, language,
+     country, timezone): a track with an accent fill scaled to the list's max. -->
+{#snippet bar(value: number, max: number)}
+	<div class="h-3 flex-1 overflow-hidden rounded-full bg-surface-2">
+		<div class="h-full rounded-full bg-accent-soft" style="width: {(value / max) * 100}%"></div>
+	</div>
+{/snippet}
+
 <div class="mx-auto max-w-5xl px-5 py-10">
 	<header class="mb-6 flex flex-wrap items-end justify-between gap-3">
 		<div>
@@ -97,7 +127,21 @@
 				<section class="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
 					{#each cards as c (c.label)}
 						<div class="rounded-card border border-border bg-surface p-4">
-							<div class="stat-number">{fmt(c.value)}</div>
+							<div class="flex items-baseline gap-2">
+								<div class="stat-number">{fmt(c.value)}</div>
+								{#if c.trend}
+									<span
+										class="text-small font-semibold tabular-nums {c.trend.dir === 'up'
+											? 'text-accent'
+											: c.trend.dir === 'down'
+												? 'text-danger'
+												: 'text-muted'}"
+										title="Change vs the previous period"
+									>
+										{c.trend.dir === 'up' ? '↑' : c.trend.dir === 'down' ? '↓' : ''}{c.trend.text}
+									</span>
+								{/if}
+							</div>
 							<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 							<div class="text-small text-muted">{c.sub}</div>
 						</div>
@@ -137,9 +181,7 @@
 										<span class="w-20 shrink-0 truncate text-body {m.method === 'unknown' ? 'text-muted' : 'text-text'}"
 											>{m.label}</span
 										>
-										<div class="h-3 flex-1 overflow-hidden rounded-full bg-surface-2">
-											<div class="h-full rounded-full bg-accent-soft" style="width: {(m.count / methodMax) * 100}%"></div>
-										</div>
+										{@render bar(m.count, methodMax)}
 										<span class="w-8 shrink-0 text-right font-semibold tabular-nums text-text">{fmt(m.count)}</span>
 									</li>
 								{/each}
@@ -210,9 +252,7 @@
 							{#each d.by_locale as l (l.code)}
 								<li class="flex items-center gap-3">
 									<span class="w-28 shrink-0 truncate text-body text-text">{l.name} <span class="text-small text-muted">{l.code}</span></span>
-									<div class="h-3 flex-1 overflow-hidden rounded-full bg-surface-2">
-										<div class="h-full rounded-full bg-accent-soft" style="width: {(l.count / localeMax) * 100}%"></div>
-									</div>
+									{@render bar(l.count, localeMax)}
 									<span class="w-10 shrink-0 text-right text-small tabular-nums text-muted">{fmt(l.count)}</span>
 								</li>
 							{/each}
@@ -234,6 +274,55 @@
 						</ul>
 					</section>
 				</div>
+
+				<!-- Where readers are (approximate: from the browser timezone) -->
+				{#if d.by_country.length || d.by_timezone.length}
+					<div class="mt-6 grid gap-6 md:grid-cols-2">
+						<!-- By country -->
+						<section class="rounded-card border border-border bg-surface p-5">
+							<h2 class="text-h3 mb-1">By country</h2>
+							<p class="mb-3 text-micro text-muted">
+								Approximate — derived from each reader's browser timezone, not their IP.
+							</p>
+							{#if d.by_country.length}
+								<ul class="space-y-2">
+									{#each d.by_country as c (c.code)}
+										<li class="flex items-center gap-3">
+											<span class="w-32 shrink-0 truncate text-body {c.code === 'unknown' ? 'text-muted' : 'text-text'}">
+												<span aria-hidden="true">{flag(c.code)}</span> {c.name}
+											</span>
+											{@render bar(c.count, countryMax)}
+											<span class="w-10 shrink-0 text-right text-small tabular-nums text-muted">{fmt(c.count)}</span>
+										</li>
+									{/each}
+								</ul>
+							{:else}
+								<p class="text-body text-muted">No location signal yet.</p>
+							{/if}
+						</section>
+
+						<!-- By timezone -->
+						<section class="rounded-card border border-border bg-surface p-5">
+							<h2 class="text-h3 mb-1">By timezone</h2>
+							<p class="mb-3 text-micro text-muted">
+								The raw signal behind the countries — and the only one for readers we can't map.
+							</p>
+							{#if d.by_timezone.length}
+								<ul class="space-y-2">
+									{#each d.by_timezone as t (t.timezone)}
+										<li class="flex items-center gap-3">
+											<span class="w-32 shrink-0 truncate text-body text-text" title={t.timezone}>{tzLabel(t.timezone)}</span>
+											{@render bar(t.count, tzMax)}
+											<span class="w-10 shrink-0 text-right text-small tabular-nums text-muted">{fmt(t.count)}</span>
+										</li>
+									{/each}
+								</ul>
+							{:else}
+								<p class="text-body text-muted">No timezones recorded yet.</p>
+							{/if}
+						</section>
+					</div>
+				{/if}
 			{/if}
 		{/snippet}
 	</AdminGate>

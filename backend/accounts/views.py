@@ -58,6 +58,7 @@ class MeView(APIView):
             "font_scale": profile.font_scale,
             "tts_rate": profile.tts_rate,
             "tts_voice_uri": profile.tts_voice_uri,
+            "timezone": profile.timezone,
         }
 
     def get(self, request):
@@ -97,6 +98,13 @@ class MeView(APIView):
         if isinstance(data.get("tts_voice_uri"), str):
             profile.tts_voice_uri = data["tts_voice_uri"][:255]
             updated.append("tts_voice_uri")
+        # An IANA timezone string (e.g. "Europe/London"). Stored verbatim,
+        # length-capped; the admin analytics derive an approximate country from
+        # it. Empty string is allowed (clears it). Not validated against the tz
+        # database here — an unrecognised zone simply won't map to a country.
+        if isinstance(data.get("timezone"), str):
+            profile.timezone = data["timezone"].strip()[:40]
+            updated.append("timezone")
 
         if updated:
             profile.save(update_fields=[*updated, "updated_at"])
