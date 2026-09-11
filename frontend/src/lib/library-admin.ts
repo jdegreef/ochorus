@@ -381,6 +381,24 @@ export interface AdminTranslationJobs {
 export const getAdminTranslationJobs = () =>
 	apiFetch<AdminTranslationJobs>('/api/admin/translation-jobs/');
 
+/**
+ * Group open translation jobs into per-language, per-type counts — what the
+ * dashboard's "+N queued" overlay reads as `counts[language][type]`. Both
+ * `queued` and `in_progress` count (neither is live yet). A type with no
+ * column on the caller's table (e.g. `topic`) is still tallied but simply
+ * never looked up. English never appears — the queue rejects it as a target.
+ */
+export const countJobsByLanguageType = (
+	jobs: readonly AdminTranslationJob[]
+): Record<string, Partial<Record<TranslationJobType, number>>> => {
+	const counts: Record<string, Partial<Record<TranslationJobType, number>>> = {};
+	for (const j of jobs) {
+		const lang = (counts[j.language] ??= {});
+		lang[j.type] = (lang[j.type] ?? 0) + 1;
+	}
+	return counts;
+};
+
 export const createAdminTranslationJob = (body: {
 	type: TranslationJobType;
 	slug: string;

@@ -8,6 +8,7 @@
 		getAdminStats,
 		getAdminAttention,
 		getAdminTranslationJobs,
+		countJobsByLanguageType,
 		type TranslationJobType
 	} from '$lib/library-admin';
 	import AddLanguageForm from '$lib/components/AddLanguageForm.svelte';
@@ -54,19 +55,10 @@
 	// The translation queue is GitHub issues, reached over a slow paginated API
 	// that can be unconfigured or unreachable. Kept as its own best-effort
 	// resource so it NEVER blocks the (DB-fast) By-language table: the counts
-	// paint immediately and the "+N queued" overlay fills in when jobs arrive —
-	// or stays silent if it can't. `queued[code][type]` = open jobs (queued +
-	// in_progress) for that language and content type. English never appears —
-	// the queue rejects `en` as a target — so its cells stay clean for free.
+	// paint immediately and the "+N queued" overlay (countJobsByLanguageType,
+	// unit-tested) fills in when jobs arrive — or stays silent if it can't.
 	const jobsRes = adminResource(getAdminTranslationJobs, 'Something went wrong loading the queue.');
-	const queued = $derived.by(() => {
-		const m: Record<string, Partial<Record<TranslationJobType, number>>> = {};
-		for (const j of jobsRes.data?.jobs ?? []) {
-			const lang = (m[j.language] ??= {});
-			lang[j.type] = (lang[j.type] ?? 0) + 1;
-		}
-		return m;
-	});
+	const queued = $derived(countJobsByLanguageType(jobsRes.data?.jobs ?? []));
 
 	type HubTier = 'critical' | 'backlog' | 'demand';
 	interface HubRow { tier: HubTier; value: string; big: boolean; label: string; why: string; href: string; }
