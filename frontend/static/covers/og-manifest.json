@@ -1817,6 +1817,13 @@
    "art": true,
    "scrim": 0.85
   },
+  "fr/he-holds-my-tomorrows": {
+   "ground": "0cce2cab2c9ba862dd5969db5c2296538ef55d9b03fb7d0c3c525045db76328b",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.55
+  },
   "fr/the-key-in-my-hand": {
    "ground": "ba27a94899641bcec2ba008e0202250f5fee68a4e26fa217ea2905ad707834e3",
    "style": "house",
