@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-11: Portuguese book — women-who-moved-heaven-2 (#1785), an Ochorus
+// Originals devotional on women of persistent prayer through history, 13 chapters ("Mulheres Que
+// Moveram o Céu"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
+// the translated title and the reader page bakes the 13 chapters. No plans/+page.ts touch owed —
+// women-who-moved-heaven-2 backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-11: Portuguese book — soar-like-the-eagle-3 (#1781), Gareth Evans's
 // teaching on reaching one's spiritual potential and destiny in Christ, 12 chapters ("Voe Como
 // a Águia"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
