@@ -26,5 +26,33 @@
   "note": [
    "Job #2005. Source books (jesus-himself-2, the-masters-indwelling, union-and-communion) have no French editions yet; prose-ahead."
   ]
+ },
+ "grace-for-every-sinner": {
+  "title": "Le chemin vers Dieu : la grâce pour tout pécheur",
+  "description": "Un mois sur la plus ancienne des bonnes nouvelles. L'appel plein de tendresse de Richard Baxter à ceux qui ne sont pas convertis, D. L. Moody sur le chemin qui mène à Dieu, et Tout par grâce de Charles Spurgeon — les guides les plus simples qui soient sur la manière dont un pécheur est sauvé, et dont il peut le savoir.",
+  "note": [
+   "Job #2229. Prose-ahead: source books (a-call-to-the-unconverted, the-way-to-god, all-of-grace) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+  ]
+ },
+ "faith-in-the-fire": {
+  "title": "Le Dieu de toute consolation : la foi dans l'épreuve",
+  "description": "Pour les jours où il est difficile de prier. Hannah Whitall Smith sur le Dieu de toute consolation, et Gareth Evans sur la confiance en Celui qui tient nos lendemains — cinq semaines de marche vers une paix affermie lorsque la vie est incertaine.",
+  "note": [
+   "Job #2230. Prose-ahead: of its two source books only he-holds-my-tomorrows is being translated to French now; the-god-of-all-comfort has no fr edition yet, so the plan stays dormant until both are present."
+  ]
+ },
+ "power-from-on-high": {
+  "title": "La puissance d'en haut : le Saint-Esprit",
+  "description": "Quatre semaines avec R. A. Torrey sur la vie remplie de l'Esprit : d'abord le baptême du Saint-Esprit et la puissance qu'il donne pour le service, puis l'étude plus complète de la Personne et de l'œuvre de l'Esprit qui habite en tout croyant.",
+  "note": [
+   "Job #2231. Prose-ahead: baptism-with-the-holy-spirit is already in French, but the-person-and-work-of-the-holy-spirit has no fr edition yet, so seed_plans creates no fr row; dormant until the second book lands."
+  ]
+ },
+ "everything-for-christ": {
+  "title": "Tout pour Christ : une vie donnée",
+  "description": "Que coûte l'abandon sans réserve, et que produit-il ? Le journal missionnaire, plein d'examen de soi, de David Brainerd, suivi des récits d'hommes et de femmes qui ont tout donné pour l'Évangile — un appel à la consécration raconté à travers des vies qui y ont répondu.",
+  "note": [
+   "Job #2232. Prose-ahead: source books (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) have no French edition yet; dormant until they are translated."
+  ]
  }
 }
