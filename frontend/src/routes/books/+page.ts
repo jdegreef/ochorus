@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-11: Portuguese book — holy-in-christ (#1476), Andrew Murray's
+// month of meditations on holiness, 33 chapters ("Santo em Cristo"). Book pages are
+// prerendered per locale, so /pt/books and the shelf rebuild with the translated title and
+// the reader page bakes the 33 chapters. No plans/+page.ts touch owed — holy-in-christ backs
+// no LAUNCH_PLANS/CURATED_PLANS entry (grepped plan_seed.py).
 // prerender refresh 2026-09-10: Portuguese book — the-god-of-all-comfort (#1475),
 // Hannah Whitall Smith, 17 chapters. Book pages are prerendered per locale, so /pt/books
 // and the shelf rebuild with the translated title and the reader page bakes the 17
