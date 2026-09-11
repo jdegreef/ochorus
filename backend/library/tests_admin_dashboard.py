@@ -103,6 +103,22 @@ class AdminStatsTests(TestCase):
         self.assertEqual(langs["en"]["bios"], 1)
         self.assertEqual(langs["sw"]["bios"], 1)
 
+    @override_settings(DEBUG=True)
+    def test_language_articles_count(self):
+        # Articles are authorless per-language rows on a shared slug; each row
+        # counts toward its own language's articles tally.
+        Article.objects.create(slug="what-is-grace", language="en", h1="What is grace?")
+        Article.objects.create(slug="what-is-faith", language="en", h1="What is faith?")
+        Article.objects.create(
+            slug="what-is-grace",
+            language="sw",
+            h1="Neema ni nini?",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        langs = {row["code"]: row for row in self.client.get("/api/admin/stats/").data["languages"]}
+        self.assertEqual(langs["en"]["articles"], 2)
+        self.assertEqual(langs["sw"]["articles"], 1)
+
 
 class AdminLanguageDetailTests(TestCase):
     def setUp(self):

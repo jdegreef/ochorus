@@ -39,6 +39,7 @@ export interface AdminLanguageStat {
 	sermons: number;
 	plans: number;
 	bios: number;
+	articles: number;
 	words: number;
 	source_types: AdminSourceTypeCounts;
 }
