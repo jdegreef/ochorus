@@ -370,3 +370,44 @@ class SalvagedMarkerTests(SimpleTestCase):
             "and carried on in the same paragraph.",
         ])
         self.assertEqual(len(chapterize(text)), 1)
+
+
+class RuleQuoteTests(SimpleTestCase):
+    """A margin rule the scan read as an opening quote at the start of a line
+    (Pickering's 1838 *Bruised Reed*, which sets no quotation marks)."""
+
+    def _body(self, *lines):
+        (_, body), = chapterize("\n".join(["Chap. I. — The Text opened", *lines]))
+        return body
+
+    def test_a_line_initial_mark_before_a_lowercase_word_is_dropped(self):
+        body = self._body("so that the church is", "‘armed with invincible courage.")
+        self.assertIn("is armed with invincible courage", body)
+
+    def test_a_word_split_on_the_mark_is_rejoined(self):
+        # "con-" / "‘ceits": with the mark gone the hyphen-join closes the word.
+        self.assertIn("mean conceits of himself", self._body("He hath mean con-", "‘ceits of himself."))
+
+    def test_a_mark_mid_line_is_left_alone(self):
+        # The line start is the whole signal. Mid-line ("He will ‘not show his
+        # strength") the reflow cannot tell a rule from a quote, so the mark is
+        # left for the audit and a repair pair.
+        self.assertIn("He will ‘not show", self._body("He will ‘not show his strength."))
+
+    def test_a_work_that_closes_a_quote_keeps_its_marks(self):
+        body = self._body("The prophet saith,", "“comfort ye my people.”")
+        self.assertIn("“comfort ye", body)
+
+    def test_the_question_is_asked_of_the_part_not_the_volume(self):
+        # The volume's front matter quotes; the work sliced out of it does not.
+        text = "\n".join([
+            "MEMOIR OF THE AUTHOR",
+            "He called it “the sweetest of his books.”",
+            "THE BRUISED REED AND SMOKING FLAX.",
+            "[CHAPTER I. — The Text opened.]",
+            "so that the church is",
+            "‘armed with invincible courage.",
+            "INDEX.",
+        ])
+        (_, body), = chapterize(text, "THE BRUISED REED AND SMOKING FLAX.", "INDEX.")
+        self.assertIn("is armed with", body)
