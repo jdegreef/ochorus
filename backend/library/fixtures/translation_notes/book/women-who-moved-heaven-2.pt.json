@@ -1,0 +1,276 @@
+{
+ "kind": "book",
+ "slug": "women-who-moved-heaven-2",
+ "language": "pt",
+ "job_issue": 1785,
+ "references": [
+  {
+   "reference": "Joel 2:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 16:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 16:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 18:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Salmos 56:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timóteo 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lamentações 2:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 126:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 46:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 15:5",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Provérbios 22:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 119:147",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremias 29:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 18:20",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Josué 24:15",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.pt.json"
+  },
+  {
+   "reference": "Filipenses 4:11-12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 15:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 43:2",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.pt.json"
+  },
+  {
+   "reference": "Filipenses 4:7",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "2 Coríntios 3:17",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Gálatas 2:20",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Lucas 10:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 41:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 9:23",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Romanos 8:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 4:6-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 23:4",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "1 Pedro 5:7",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Romanos 8:38-39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 40:31",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Mateus 9:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 12:24",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Romanos 1:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 10:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Josué 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 6:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zacarias 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 11:33-34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 121:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 9:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Provérbios 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tiago 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 18:19-20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 5:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 2:42",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Jeremias 29:13",
+   "status": "mined",
+   "source_file": "ministry-of-intercession.pt.json"
+  },
+  {
+   "reference": "Mateus 7:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 7:8",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.pt.json"
+  },
+  {
+   "reference": "Lucas 18:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 4:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 11:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 18:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 5:14",
+   "status": "self_rendered"
+  }
+ ]
+}

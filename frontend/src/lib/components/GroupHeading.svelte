@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { PORTRAIT_POSITION_DEFAULT } from '$lib/portraits';
+	import { PORTRAIT_POSITION_DEFAULT, portraitSrcset } from '$lib/portraits';
 
 	/**
 	 * The heading over one group of a grouped browse shelf — Books by author,
@@ -55,6 +55,8 @@
 	{#if portraitUrl}
 		<img
 			src={portraitUrl}
+			srcset={portraitSrcset(portraitUrl)}
+			sizes="32px"
 			alt=""
 			loading="lazy"
 			width="32"

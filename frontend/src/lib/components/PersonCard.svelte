@@ -2,7 +2,7 @@
 	import { formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { initials, portraitPosition } from '$lib/portraits';
+	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
 
 	// A compact person card: portrait (or initials), name and lifespan, linking
 	// to the author page. Shared by the book page's "People in this book" strip
@@ -31,6 +31,10 @@
 	{#if person.photo_url}
 		<img
 			src={person.photo_url}
+			srcset={portraitSrcset(person.photo_url)}
+			sizes="44px"
+			width="44"
+			height="44"
 			alt="{t('a11y.portraitOf')} {person.name}"
 			loading="lazy"
 			class="h-11 w-11 shrink-0 rounded-full border border-border object-cover"
