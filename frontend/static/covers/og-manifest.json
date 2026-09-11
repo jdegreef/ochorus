@@ -1810,6 +1810,13 @@
    "art": true,
    "scrim": 0.95
   },
+  "fr/ministry-of-intercession": {
+   "ground": "96b187e084613b3d51091d14819fca905ed98f1b9ca4dec88a1155a84e8cd88a",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.75
+  },
   "fr/true-vine": {
    "ground": "2ae642dca179a7ded689f75d540d4c5d1a3efb7566068a1a8d2bf878f6aa5185",
    "style": "devotional",
