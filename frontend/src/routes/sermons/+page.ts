@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-11: Hindi sermon blessed-adversity (#2129). Sermon pages are
+// prerendered per locale, so /hi/sermons must rebuild so its card and the
+// /hi/sermons/blessed-adversity page bake the translated title and "In brief" summary.
 // prerender refresh 2026-09-11: Spanish sermons — a-divine-and-supernatural-light (#1708),
 // faith (#1709), the-triumph-of-calvary (#1710), marks-of-a-true-conversion (#1711),
 // the-circumcision-of-the-heart (#1712). Sermon pages are prerendered per locale, so
