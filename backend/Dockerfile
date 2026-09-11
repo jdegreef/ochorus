@@ -49,9 +49,18 @@ EXPOSE 8000
 # Migrations run once per deploy via Render's preDeployCommand (see render.yaml),
 # not on container start. The host provides $PORT.
 #
-# --max-requests recycles each worker after ~500 requests (jitter so the three
-# workers never restart together). CPython retains freed memory pages, so
-# occasional large allocations ratchet worker RSS toward the 512MB plan limit
-# over a process's lifetime (OOM restart, 2026-08-14); recycling resets the
-# ratchet with a clean handover instead of an OOM kill.
-CMD ["sh", "-c", "uv run gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 3 --timeout 120 --max-requests 500 --max-requests-jitter 100"]
+# 2 workers, not 3. Each worker's baseline RSS is ~170 MB, so a third worker put
+# steady-state memory around 60-80% of the 512 MB plan with almost no headroom —
+# and every deploy's zero-downtime overlap (two instances briefly live) plus the
+# per-request body serialization then tipped an instance over into an OOM restart
+# (2026-09-10; the 2026-08-14 OOM is the same ratchet). Two workers drop the
+# baseline by one worker's RSS and still suit the 0.5-CPU plan (3 was already
+# CPU-oversubscribed). If a bigger plan is adopted later, raise this with it.
+#
+# --max-requests recycles each worker after ~500 requests (jitter so the workers
+# never restart together). CPython retains freed memory pages, so occasional
+# large allocations ratchet worker RSS toward the plan limit over a process's
+# lifetime; recycling resets the ratchet with a clean handover instead of an OOM
+# kill. It mitigates the ratchet but does not eliminate it — the worker count is
+# the primary control.
+CMD ["sh", "-c", "uv run gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120 --max-requests 500 --max-requests-jitter 100"]

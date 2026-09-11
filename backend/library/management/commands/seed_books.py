@@ -27,12 +27,13 @@ NOT keep in sync, so it also emits a report-only ``chapter_drift`` warning
 
 from __future__ import annotations
 
+import json
+
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
-from django.db.models import Prefetch
 
 from library.author_sync import sync_all_authors
-from library.content_fixtures import authors_by_slug, load_all_rows
+from library.content_fixtures import AUTHORS_FILE, authors_by_slug, iter_work_files
 from library.corrections import settled_chapter_body
 from library.models import Author, Book, Chapter
 
@@ -65,26 +66,9 @@ CREATE_ONLY_FIELDS = frozenset({"source_type", "is_published"})
 UPDATE_FIELDS = tuple(f for f in BOOK_FIELDS if f not in CREATE_ONLY_FIELDS)
 
 
-def drift_books():
-    """Books carrying only the chapter columns ``chapter_drift`` compares.
-
-    An unconstrained ``prefetch_related("chapters")`` materialised EVERY chapter
-    of every language at once — bodies, body_text and tsvectors — inside the
-    atomic seed, for a report-only diagnostic. chapter_drift reads order, title
-    and body_html and nothing else, so the rest was pure allocation. Same rows,
-    a third of the bytes.
-    """
-    return Book.objects.prefetch_related(
-        Prefetch(
-            "chapters",
-            queryset=Chapter.objects.only("book_id", "order", "title", "body_html"),
-        )
-    )
-
-
-def chapter_drift(books, chapters_by_book):
-    """Report-only: yield ``(book, reason)`` for books whose stored chapters
-    differ from the fixture.
+def chapter_drift_reason(book, fixture_chapters) -> str | None:
+    """Report-only: why ``book``'s stored chapters differ from the fixture, or
+    ``None`` when they agree.
 
     seed_books upserts the Book ROW but deliberately never touches an existing
     book's chapters (chapter ``order`` is a public contract — see the module
@@ -93,55 +77,89 @@ def chapter_drift(books, chapters_by_book):
     fixture with nothing to detect it — ``regen_fixture`` rebuilds the fixture
     *from* the fixture, so neither side notices. Book metadata now auto-syncs,
     which makes chapters the lone exception, exactly the shape that gets
-    forgotten.
+    forgotten. This surfaces the gap as a deploy-log warning; the fix is a
+    fixture regen (or a migration), decided by a human. It only READS — never
+    mutates a chapter or fails the deploy.
 
-    This surfaces the gap as a deploy-log warning. It only READS — it never
-    mutates a chapter or fails the deploy; the fix is a fixture regen (or a
-    migration), decided by a human. On a faithful install the fixture and DB
-    agree, so a clean deploy prints nothing.
+    ``fixture_chapters`` is the list of chapter ``fields`` from this book's own
+    fixture file (one work per file), so the whole-corpus ``chapters_by_book``
+    dict is gone. The DB side reads only the three columns it compares — order,
+    title, body_html — for THIS book, one book at a time, so the whole-corpus
+    chapter prefetch the 2026-08-14 OOM work had to trim is now never
+    materialised at all.
 
-    Stops at the first drifted chapter per book — the point is *which book*
-    needs attention, not an exhaustive per-chapter diff.
+    Stops at the first drifted chapter — the point is *which book* needs
+    attention, not an exhaustive per-chapter diff.
     """
-    for book in books:
-        fixture = {
-            c["order"]: c
-            for c in chapters_by_book.get((book.slug, book.language), [])
-        }
-        if not fixture:
-            # A book with no fixture chapters at all (e.g. one added straight to
-            # prod) — there's nothing to compare it against, so don't guess.
-            continue
-        db = {c.order: c for c in book.chapters.all()}
-        if fixture.keys() != db.keys():
-            if len(db) == len(fixture):
-                # Same count, different order numbers — a plain count would read
-                # as "3 vs 3". Name the orders that don't line up instead.
-                odd = sorted(set(db) ^ set(fixture))
-                yield book, f"chapter order(s) {odd} differ between DB and fixture"
-            else:
-                yield book, f"{len(db)} chapter(s) in DB, {len(fixture)} in fixture"
-            continue
-        for order, fc in sorted(fixture.items()):
-            dc = db[order]
-            if (fc.get("title") or "") != (dc.title or ""):
-                yield book, (
-                    f"chapter {order} title {dc.title!r} (DB) != "
-                    f"{fc.get('title')!r} (fixture)"
-                )
-                break
-            fixture_body = fc.get("body_html") or ""
-            # Two spellings count as faithful: the fixture's own text, and that
-            # text corrected — the release corrects every stored chapter
-            # immediately BEFORE this seed, so comparing only the first reported
-            # 13 books as drifted on a clean install (see `corrections.py`).
-            # Lazily: the settled form costs 0.26ms a chapter, so it is computed
-            # only for the ~30 that already disagree, not all 3,218.
-            if fixture_body != dc.body_html and (
-                settled_chapter_body(book.slug, order, fixture_body) != dc.body_html
-            ):
-                yield book, f"chapter {order} body differs from fixture"
-                break
+    fixture = {c["order"]: c for c in fixture_chapters}
+    if not fixture:
+        # A book with no fixture chapters at all (e.g. one added straight to
+        # prod) — there's nothing to compare it against, so don't guess.
+        return None
+    db = {
+        c.order: c
+        for c in book.chapters.only("book_id", "order", "title", "body_html")
+    }
+    if fixture.keys() != db.keys():
+        if len(db) == len(fixture):
+            # Same count, different order numbers — a plain count would read as
+            # "3 vs 3". Name the orders that don't line up instead.
+            odd = sorted(set(db) ^ set(fixture))
+            return f"chapter order(s) {odd} differ between DB and fixture"
+        return f"{len(db)} chapter(s) in DB, {len(fixture)} in fixture"
+    for order, fc in sorted(fixture.items()):
+        dc = db[order]
+        if (fc.get("title") or "") != (dc.title or ""):
+            return (
+                f"chapter {order} title {dc.title!r} (DB) != "
+                f"{fc.get('title')!r} (fixture)"
+            )
+        fixture_body = fc.get("body_html") or ""
+        # Two spellings count as faithful: the fixture's own text, and that text
+        # corrected — the release corrects every stored chapter immediately
+        # BEFORE this seed, so on a clean install ~13 books would otherwise read
+        # as drifted (see `corrections.py`). Settling costs 0.26ms and is
+        # computed only for a chapter that already disagrees, not every chapter.
+        if fixture_body != dc.body_html and (
+            settled_chapter_body(book.slug, order, fixture_body) != dc.body_html
+        ):
+            return f"chapter {order} body differs from fixture"
+    return None
+
+
+def iter_chapter_drift():
+    """Yield ``(book, reason)`` for every book in the fixture whose stored
+    chapters diverge from it, streaming one work file at a time.
+
+    Only books already in the DB are compared — a just-created book matches by
+    construction, and a fixture book with no DB row yet is skipped. Peak memory
+    is a single work file: the whole-corpus scan this replaced is gone. This is
+    the one place the drift report is produced — ``handle()`` calls it after
+    seeding — so the "which books" logic lives here alone.
+    """
+    for _path, rows in iter_work_files():
+        # Key by (slug, language) rather than lumping every chapter in the file
+        # together: the layout is one book per file today, but a book must be
+        # compared only against its own chapters even if that ever changes.
+        chapters_by_book: dict[tuple, list[dict]] = {}
+        for r in rows:
+            if r.get("model") == "library.chapter":
+                chapters_by_book.setdefault(
+                    tuple(r["fields"]["book"]), []
+                ).append(r["fields"])
+        for r in rows:
+            if r.get("model") != "library.book":
+                continue
+            f = r["fields"]
+            language = f.get("language", "en")
+            book = Book.objects.filter(slug=f["slug"], language=language).first()
+            if book is None:
+                continue
+            reason = chapter_drift_reason(
+                book, chapters_by_book.get((f["slug"], language), [])
+            )
+            if reason:
+                yield book, reason
 
 
 def require_natural_format(rows, command_name: str):
@@ -178,115 +196,124 @@ class Command(BaseCommand):
     @transaction.atomic
     def handle(self, *args, **opts):
         try:
-            rows = load_all_rows()
+            author_rows = json.loads(AUTHORS_FILE.read_text())
         except OSError:
             self.stdout.write("No content fixtures available — nothing to seed.")
             return
-        # A ValueError (corrupt file, path named) propagates: with 119 files,
-        # "one file is broken" must abort the deploy, not skip all content.
+        # A ValueError (corrupt file) propagates: "one file is broken" must abort
+        # the deploy, not seed a partial library.
 
-        require_natural_format(rows, "seed_books")
-
-        # Natural-key joins: an author is referenced as ["slug"], a chapter's
-        # book as ["slug", "language"] — self-describing, no pk map to build.
-        authors = authors_by_slug(rows)
-        chapters_by_book: dict[tuple, list[dict]] = {}
-        for r in rows:
-            if r.get("model") == "library.chapter":
-                chapters_by_book.setdefault(tuple(r["fields"]["book"]), []).append(
-                    r["fields"]
-                )
+        require_natural_format(author_rows, "seed_books")
+        # Natural-key joins: an author is referenced as ["slug"] — self-describing.
+        authors = authors_by_slug(author_rows)
 
         created = updated = 0
-        for row in rows:
-            if row.get("model") != "library.book":
-                continue
-            f = row["fields"]
-            af = authors.get(f["author"][0])
-            if af is None:
-                # The CI integrity test forbids dangling references, so this is
-                # a corrupt fixture — abort the deploy rather than silently
-                # skipping the book.
-                raise CommandError(
-                    f"seed_books: book {f['slug']!r} references missing author "
-                    f"{f['author'][0]!r}"
-                )
-            author, _ = Author.objects.get_or_create(
-                slug=af["slug"],
-                defaults={
-                    "name": af.get("name", ""),
-                    "bio": af.get("bio", ""),
-                    "bio_html": af.get("bio_html", ""),
-                    "photo_url": af.get("photo_url", ""),
-                    "birth_year": af.get("birth_year"),
-                    "death_year": af.get("death_year"),
-                    # Every fixture author is "en" today, so omitting this was
-                    # invisible; a non-English author created on prod would have
-                    # silently taken the model default and mis-fed _localized().
-                    "original_language": af.get("original_language", "en"),
-                    # Carry the flag through, else an imprint added to the
-                    # fixture later is created unflagged on the existing prod DB
-                    # (seed_if_empty no-ops there) and lands on Biographies.
-                    "is_imprint": af.get("is_imprint", False),
-                    # Same reasoning for the "withhold this person" flag.
-                    "list_in_biographies": af.get("list_in_biographies", True),
-                },
-            )
-            language = f.get("language", "en")
-            book = Book.objects.filter(slug=f["slug"], language=language).first()
+        # Stream one work file at a time — books/<slug>.<lang>.json holds one Book
+        # and its Chapters — so peak memory is a single file, not the whole
+        # ~170 MB fixture parsed at once (the preDeploy allocation that grows
+        # with the library). seed_books runs once per deploy after
+        # apply_body_corrections.
+        for _path, rows in iter_work_files():
+            require_natural_format(rows, "seed_books")
+            # Chapters share their book's file, so this grouping is local — no
+            # whole-corpus chapters_by_book dict.
+            chapters_by_book: dict[tuple, list[dict]] = {}
+            for r in rows:
+                if r.get("model") == "library.chapter":
+                    chapters_by_book.setdefault(
+                        tuple(r["fields"]["book"]), []
+                    ).append(r["fields"])
 
-            if book is None:
-                book = Book.objects.create(
-                    author=author,
-                    slug=f["slug"],
-                    language=language,
-                    # Omit fields the fixture row doesn't carry so the model
-                    # default applies (e.g. older rows predating a field).
-                    **{k: f[k] for k in BOOK_FIELDS if k in f},
+            for row in rows:
+                if row.get("model") != "library.book":
+                    continue
+                f = row["fields"]
+                af = authors.get(f["author"][0])
+                if af is None:
+                    # The CI integrity test forbids dangling references, so this
+                    # is a corrupt fixture — abort the deploy rather than silently
+                    # skipping the book.
+                    raise CommandError(
+                        f"seed_books: book {f['slug']!r} references missing author "
+                        f"{f['author'][0]!r}"
+                    )
+                author, _ = Author.objects.get_or_create(
+                    slug=af["slug"],
+                    defaults={
+                        "name": af.get("name", ""),
+                        "bio": af.get("bio", ""),
+                        "bio_html": af.get("bio_html", ""),
+                        "photo_url": af.get("photo_url", ""),
+                        "birth_year": af.get("birth_year"),
+                        "death_year": af.get("death_year"),
+                        # Every fixture author is "en" today, so omitting this was
+                        # invisible; a non-English author created on prod would
+                        # have silently taken the model default and mis-fed
+                        # _localized().
+                        "original_language": af.get("original_language", "en"),
+                        # Carry the flag through, else an imprint added to the
+                        # fixture later is created unflagged on the existing prod
+                        # DB (seed_if_empty no-ops there) and lands on Biographies.
+                        "is_imprint": af.get("is_imprint", False),
+                        # Same reasoning for the "withhold this person" flag.
+                        "list_in_biographies": af.get("list_in_biographies", True),
+                    },
                 )
-                for cf in sorted(
-                    chapters_by_book.get((f["slug"], language), []),
-                    key=lambda c: c["order"],
-                ):
-                    fields = {k: cf[k] for k in CHAPTER_FIELDS if k in cf}
-                    if "body_html" in fields:
-                        # Corrected now: apply_body_corrections already ran this
-                        # deploy (it precedes seed_books), so a book arriving
-                        # today would otherwise sit live with a known defect
-                        # until the NEXT deploy came round to it.
-                        fields["body_html"] = settled_chapter_body(
-                            f["slug"], cf["order"], cf["body_html"]
-                        )
-                    # .create() runs save(), which derives body_text.
-                    Chapter.objects.create(book=book, **fields)
-                created += 1
-                self.stdout.write(
-                    f"  + {book.slug} [{language}] "
-                    f"({book.chapters.count()} chapters)"
-                )
-                continue
+                language = f.get("language", "en")
+                book = Book.objects.filter(slug=f["slug"], language=language).first()
 
-            # A field absent from the fixture row (an older serialization
-            # predating it) is not "changed to the default" — leave it be.
-            changed = [
-                k for k in UPDATE_FIELDS if k in f and getattr(book, k) != f[k]
-            ]
-            for k in changed:
-                setattr(book, k, f[k])
-            if book.author_id != author.id:
-                book.author = author
-                changed.append("author")
-            if changed:
-                # save(), never queryset.update(): Book.save()'s hook ripples a
-                # changed title/language/author into its chapters' stored search
-                # vectors (library/fts.py). A bulk update would leave them STALE
-                # rather than NULL, so backfill_search_vectors — which fills
-                # NULLs only — would never repair them.
-                book.save()
-                updated += 1
-                self.stdout.write(
-                    f"  ~ {book.slug} [{language}] ({', '.join(changed)})"
-                )
+                if book is None:
+                    book = Book.objects.create(
+                        author=author,
+                        slug=f["slug"],
+                        language=language,
+                        # Omit fields the fixture row doesn't carry so the model
+                        # default applies (e.g. older rows predating a field).
+                        **{k: f[k] for k in BOOK_FIELDS if k in f},
+                    )
+                    for cf in sorted(
+                        chapters_by_book.get((f["slug"], language), []),
+                        key=lambda c: c["order"],
+                    ):
+                        fields = {k: cf[k] for k in CHAPTER_FIELDS if k in cf}
+                        if "body_html" in fields:
+                            # Corrected now: apply_body_corrections already ran
+                            # this deploy (it precedes seed_books), so a book
+                            # arriving today would otherwise sit live with a known
+                            # defect until the NEXT deploy came round to it.
+                            fields["body_html"] = settled_chapter_body(
+                                f["slug"], cf["order"], cf["body_html"]
+                            )
+                        # .create() runs save(), which derives body_text.
+                        Chapter.objects.create(book=book, **fields)
+                    created += 1
+                    self.stdout.write(
+                        f"  + {book.slug} [{language}] "
+                        f"({book.chapters.count()} chapters)"
+                    )
+                    continue
+
+                # A field absent from the fixture row (an older serialization
+                # predating it) is not "changed to the default" — leave it be.
+                changed = [
+                    k for k in UPDATE_FIELDS if k in f and getattr(book, k) != f[k]
+                ]
+                for k in changed:
+                    setattr(book, k, f[k])
+                if book.author_id != author.id:
+                    book.author = author
+                    changed.append("author")
+                if changed:
+                    # save(), never queryset.update(): Book.save()'s hook ripples
+                    # a changed title/language/author into its chapters' stored
+                    # search vectors (library/fts.py). A bulk update would leave
+                    # them STALE rather than NULL, so backfill_search_vectors —
+                    # which fills NULLs only — would never repair them.
+                    book.save()
+                    updated += 1
+                    self.stdout.write(
+                        f"  ~ {book.slug} [{language}] ({', '.join(changed)})"
+                    )
 
         if created or updated:
             self.stdout.write(
@@ -297,24 +324,18 @@ class Command(BaseCommand):
 
         # Every fixture author, not just those reached by the book loop — the
         # biography-only authors have no book at all. See author_sync.
-        for line in sync_all_authors(Author, rows):
+        for line in sync_all_authors(Author, author_rows):
             self.stdout.write(line)
 
         # Report-only: warn if any existing book's chapters have diverged from
-        # the fixture (a transform applied to the live DB without a fixture
-        # regen). prefetch_related keeps this to two queries; just-created books
-        # match by construction, so they never trip it. This is diagnostics, and
-        # handle() is @transaction.atomic — a bug in it must NOT roll back a
-        # good seed, so its reads are swallowed (only reads, so the transaction
-        # stays usable) rather than allowed to propagate out of the block.
+        # the fixture (a live-DB transform that never got a fixture regen — the
+        # fix is a fixture regen or a migration, decided by a human). Streams one
+        # work file at a time and reads only the columns it compares. This is
+        # diagnostics inside an @transaction.atomic handle(), so a bug in it must
+        # NOT roll back a good seed — its reads are swallowed (only reads, so the
+        # transaction stays usable) rather than allowed to propagate.
         try:
-            # `.only(...)` on the prefetch: chapter_drift compares order, title
-            # and body_html and nothing else, but an unconstrained
-            # prefetch_related materialised EVERY chapter of every language at
-            # once — bodies, body_text and tsvectors — inside the atomic seed,
-            # and did it for a report-only diagnostic. Same rows, a third of the
-            # bytes.
-            drifted = list(chapter_drift(drift_books(), chapters_by_book))
+            drifted = list(iter_chapter_drift())
         except Exception as exc:  # noqa: BLE001 — never let diagnostics fail a deploy
             self.stdout.write(
                 self.style.WARNING(f"⚠ Chapter-drift check skipped ({exc!r}).")
