@@ -67,8 +67,6 @@
 		}
 		return m;
 	});
-	// 0 renders as nothing (blank, not "+0"), matching the Source badges.
-	const q = (code: string, type: TranslationJobType) => queued[code]?.[type] ?? 0;
 
 	type HubTier = 'critical' | 'backlog' | 'demand';
 	interface HubRow { tier: HubTier; value: string; big: boolean; label: string; why: string; href: string; }
@@ -322,9 +320,10 @@
 				     coming. Parentheses stay reserved for the "(N pub)" published subset.
 				     Rendered from `queued`; blank (never "+0") when nothing is queued. -->
 				{#snippet plus(code: string, type: TranslationJobType)}
-					{#if q(code, type)}<span
+					{@const n = queued[code]?.[type] ?? 0}
+					{#if n}<span
 							class="ml-1 text-small font-medium text-warning"
-							title="Queued to translate">+{q(code, type)}</span
+							title="Queued to translate">+{n}</span
 						>{/if}
 				{/snippet}
 				<div class="overflow-x-auto rounded-card border border-border bg-surface">
