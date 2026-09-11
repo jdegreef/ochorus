@@ -4341,3 +4341,499 @@ BODY_CORRECTIONS.setdefault('god-glorified-in-mans-dependence', {}).setdefault("
     # "in making the soul" — leading "in" clipped to a bare "m".
     ('perfection, m making the soul', 'perfection, in making the soul'),
 ])
+
+
+# --- Quotation marks closed with the wrong mark (2026-09-11) -----------------
+#
+# Found while repairing the-bruised-reed, then swept corpus-wide: quotations
+# whose CLOSING mark is the wrong glyph, in two shapes that
+# `tests_fixture.QuoteStyleTests` could not see (it counts double marks, and a
+# straight single is also an apostrophe):
+#
+#   * a curly opener closed by a STRAIGHT mark — ‘Search the scriptures', says
+#     … (the Whitefield sermons, christ-the-believers-wisdom en+pt,
+#     waiting-on-god in four editions): the singles half-curled;
+#   * an OPENER used as the closer — it is written “the living God“; — thirteen
+#     of them in evening-by-evening alone, and every quotation in pt
+#     all-things-for-good ch9–11. Most follow an inline tag (`“<i>seen</i>“`):
+#     `quote_marks.convert` counted ANY tag's `>` as opening context. That is
+#     fixed at the source now, so a rebuild through it cannot set them again.
+#
+# Typography only: each pair turns one mark (or moves the space beside it) and
+# no word changes, apart from the one OCR slip the niger scan confirms. Each
+# pair carries just enough context to match ONCE across every edition of its
+# slug, because an entry reaches every language on every deploy.
+# `QuoteStyleTests.test_no_quotation_closes_with_the_wrong_mark` now holds the
+# corpus at zero. (The English-audit baseline GREW by five `orphan-close-quote`
+# findings: each backwards closer had counted as an opener and masked a real
+# orphan further on. All five predate this repair.)
+#
+# NOT repaired here: sermons-on-several-occasions. Its unpaired marks ("of one
+# heart “and one soul?”") are in CCEL's text and in the Wesley Center's
+# transcription of the 1872 Jackson edition alike, so they are not ours, and
+# each one needs a printed scan to settle.
+# a-retrospect: two “…“ closers.
+BODY_CORRECTIONS.setdefault("a-retrospect", {}).setdefault("replacements", []).extend([
+    ("chï fu mu</i>“ ", "chï fu mu</i>” "),
+    ("convenience!</i>“ ", "convenience!</i>” "),
+])
+# absolute-surrender: “…love“? (en, and the sw that mirrors it).
+BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
+    ("Spirit is love<i>“?", "Spirit is love<i>”?"),
+    ("ni upendo<i>“?", "ni upendo<i>”?"),
+])
+# all-things-for-good: pt ch9–11 closed EVERY quotation with an opener, “…“ — 64 of them; the other chapters and the English are right.
+BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements", []).extend([
+    ("chamados.</i>“ ", "chamados.</i>” "),
+    ("escolhidos</i>“ (Mt 20:", "escolhidos</i>” (Mt 20:"),
+    ("éreis trevas</i>“ ", "éreis trevas</i>” "),
+    ("éramos fracos</i>“ ", "éramos fracos</i>” "),
+    ("Espírito Santo</i>“ ", "Espírito Santo</i>” "),
+    ("teu sangue</i>“ ", "teu sangue</i>” "),
+    ("sua força</i>“ ", "sua força</i>” "),
+    (" palavra</i>“ ", " palavra</i>” "),
+    ("teu poder</i>“ ", "teu poder</i>” "),
+    (" vocação</i>“ (2T", " vocação</i>” (2T"),
+    ("santidade</i>“ (Is", "santidade</i>” (Is"),
+    ("santidade</i>“ ", "santidade</i>” "),
+    ("celestial</i>“ (At", "celestial</i>” (At"),
+    ("vontade?</i>“ ", "vontade?</i>” "),
+    ("para trás?</i>“ ", "para trás?</i>” "),
+    ("ser salvo?</i>“ ", "ser salvo?</i>” "),
+    (" de Deus</i>“ ", " de Deus</i>” "),
+    ("chamados</i>“ (1C", "chamados</i>” (1C"),
+    ("teu agrado</i>“ ", "teu agrado</i>” "),
+    ("eterna glória</i>“ ", "eterna glória</i>” "),
+    ("escolhidos</i>“ ", "escolhidos</i>” "),
+    ("suas vestes</i>“ ", "suas vestes</i>” "),
+    ("irrevogáveis</i>“ ", "irrevogáveis</i>” "),
+    ("sua glória</i>“ ", "sua glória</i>” "),
+    (" herança</i>“ ", " herança</i>” "),
+    ("ressurreição</i>“ ", "ressurreição</i>” "),
+    ("iniquidade</i>“ ", "iniquidade</i>” "),
+    (" vocação</i>“ ", " vocação</i>” "),
+    (" Senhor!</i>“ ", " Senhor!</i>” "),
+    ("promessa</i>“ ", "promessa</i>” "),
+    ("inimigos</i>“ ", "inimigos</i>” "),
+    ("diante de mim</i>“ ", "diante de mim</i>” "),
+    (" justiça</i>“ ", " justiça</i>” "),
+    ("justificados</i>“ ", "justificados</i>” "),
+    ("no Senhor</i>“ (Ef", "no Senhor</i>” (Ef"),
+    ("agora vejo</i>“ ", "agora vejo</i>” "),
+    ("maravilhosa luz</i>“ ", "maravilhosa luz</i>” "),
+    (" pecados</i>“ ", " pecados</i>” "),
+    (" da vida</i>“ ", " da vida</i>” "),
+    ("está em mim</i>“ ", "está em mim</i>” "),
+    ("eu faça?</i>“ ", "eu faça?</i>” "),
+    ("celestial</i>“ ", "celestial</i>” "),
+    ("o sempre</i>“ ", "o sempre</i>” "),
+    (" Satanás</i>“ ", " Satanás</i>” "),
+    ("Caindo em si</i>“ ", "Caindo em si</i>” "),
+    ("chamados</i>“ ", "chamados</i>” "),
+    ("peculiar</i>“ ", "peculiar</i>” "),
+    ("esta regra</i>“ ", "esta regra</i>” "),
+    (" geração</i>“ ", " geração</i>” "),
+    ("no Senhor</i>“ ", "no Senhor</i>” "),
+    ("alegrar-se</i>“ ", "alegrar-se</i>” "),
+    ("sua cabeça</i>“ ", "sua cabeça</i>” "),
+    ("corteses</i>“ ", "corteses</i>” "),
+    (" de Hete</i>“ ", " de Hete</i>” "),
+    ("salvar alguns</i>“ ", "salvar alguns</i>” "),
+    ("propósito</i>“ ", "propósito</i>” "),
+    ("de Deus.</i>“ ", "de Deus.</i>” "),
+    ("que quer</i>“ ", "que quer</i>” "),
+    (" e graça</i>“ ", " e graça</i>” "),
+    ("naquele dia</i>“ ", "naquele dia</i>” "),
+    ("fôssemos santos</i>“ ", "fôssemos santos</i>” "),
+    (" eleição</i>“ ", " eleição</i>” "),
+    ("santificação</i>“ ", "santificação</i>” "),
+    ("de Cristo</i>“ ", "de Cristo</i>” "),
+])
+# christ-the-believers-wisdom: curly ‘ openers closed by a straight ' — 25 in en, 49 in pt.
+BODY_CORRECTIONS.setdefault("christ-the-believers-wisdom", {}).setdefault("replacements", []).extend([
+    (" redemption.'</p><p>W", " redemption.’</p><p>W"),
+    ("Wisdom, righteousness, sanctification, and redemption'.", "Wisdom, righteousness, sanctification, and redemption’."),
+    ("made unto us', th", "made unto us’, th"),
+    ("in his hands'.", "in his hands’."),
+    (" where I am.' ", " where I am.’ "),
+    ("of the world';", "of the world’;"),
+    ("of the world'.", "of the world’."),
+    ("of the Father'.", "of the Father’."),
+    ("made unto us',", "made unto us’,"),
+    (" in the Lord'.", " in the Lord’."),
+    (" redemption.'</p>", " redemption.’</p>"),
+    ("he possesses';", "he possesses’;"),
+    ("riches for others';", "riches for others’;"),
+    ("Know thyself',", "Know thyself’,"),
+    ("righteousness':", "righteousness’:"),
+    ("that believeth'.", "that believeth’."),
+    ("that condemns?' ", "that condemns?’ "),
+    ("of great joy';", "of great joy’;"),
+    ("Savior is born'.", "Savior is born’."),
+    ("say, rejoice'.", "say, rejoice’."),
+    ("righteousness'.", "righteousness’."),
+    ("Jesus our Lord',", "Jesus our Lord’,"),
+    ("are become new',", "are become new’,"),
+    ("fullness of God'.", "fullness of God’."),
+    ("thus with men!' ", "thus with men!’ "),
+    (" e redenção.'</p><p>S", " e redenção.’</p><p>S"),
+    ("feito por Deus'.", "feito por Deus’."),
+    ("‘sabedoria, justiça, santificação e redenção'.", "‘sabedoria, justiça, santificação e redenção’."),
+    ("feito por Deus':", "feito por Deus’:"),
+    ("prosperaria na sua mão'.", "prosperaria na sua mão’."),
+    ("onde eu estou.' ", "onde eu estou.’ "),
+    ("fundação do mundo';", "fundação do mundo’;"),
+    ("fundação do mundo'.", "fundação do mundo’."),
+    (" por meu Pai'.", " por meu Pai’."),
+    ("feito por Deus',", "feito por Deus’,"),
+    ("somente no Senhor'.", "somente no Senhor’."),
+    (" e redenção.'</p>", " e redenção.’</p>"),
+    ("bens que possui';", "bens que possui’;"),
+    ("suas riquezas';", "suas riquezas’;"),
+    ("te a ti mesmo',", "te a ti mesmo’,"),
+    ("sabedoria, justiça':", "sabedoria, justiça’:"),
+    ("aquele que crê'.", "aquele que crê’."),
+    ("que condena?' ", "que condena?’ "),
+    ("grande alegria';", "grande alegria’;"),
+    (" um Salvador'.", " um Salvador’."),
+    (" alegrai-vos'.", " alegrai-vos’."),
+    ("justiça nossa'.", "justiça nossa’."),
+    ("nosso Senhor',", "nosso Senhor’,"),
+    (" se fez novo' ", " se fez novo’ "),
+    ("plenitude de Deus'.", "plenitude de Deus’."),
+    ("com os homens!'?", "com os homens!’?"),
+    ("santificação.' ", "santificação.’ "),
+    ("concupiscência',", "concupiscência’,"),
+    ("não cobiçarás'.", "não cobiçarás’."),
+    ("santificação'.", "santificação’."),
+    ("amamos os irmãos.' ", "amamos os irmãos.’ "),
+    ("redenção</i>.'", "redenção</i>.’"),
+    ("diz ‘Haja luz',", "diz ‘Haja luz’,"),
+    ("Deus justiça',", "Deus justiça’,"),
+    (": ‘foi feito';", ": ‘foi feito’;"),
+    ("que eu tenho'.", "que eu tenho’."),
+    ("no último dia'.", "no último dia’."),
+    ("vinde ao juízo';", "vinde ao juízo’;"),
+    ("claro que o sol'.", "claro que o sol’."),
+    ("tua vitória?'", "tua vitória?’"),
+    ("Sobe para cá';", "Sobe para cá’;"),
+    ("contra a carne'.", "contra a carne’."),
+    ("desta morte?' ", "desta morte?’ "),
+    ("se nos disse'.", "se nos disse’."),
+    ("aquele que crê.' ", "aquele que crê.’ "),
+    ("e sem preço.' ", "e sem preço.’ "),
+    ("pecadores. ‘A nós',", "pecadores. ‘A nós’,"),
+    (", idólatras.' ", ", idólatras.’ "),
+    ("santificação e redenção'.", "santificação e redenção’."),
+])
+# comfort-for-the-desponding: “Oh “says one, pit! “But, earnest? “O, Jesus—“It — the closer's space on the wrong side; and ”‘Oh, a closer used as the opener.
+BODY_CORRECTIONS.setdefault("comfort-for-the-desponding", {}).setdefault("replacements", []).extend([
+    ("matters.</i> “Oh “s", "matters.</i> “Oh” s"),
+    (" to the pit! “B", " to the pit!” B"),
+    ("not earnest? “O", "not earnest?” O"),
+    ("you may say, ”‘", "you may say, “‘"),
+    ("Christ Jesus—“I", "Christ Jesus—” I"),
+])
+# divine-healing: a “… .“ closer (en, hi, pt).
+BODY_CORRECTIONS.setdefault("divine-healing", {}).setdefault("replacements", []).extend([
+    ("give ear... .“ ", "give ear... .” "),
+    ("कान लगाए...।“ ", "कान लगाए...।” "),
+    ("ouvidos... .“ ", "ouvidos... .” "),
+])
+# evening-by-evening: “seen“, “If“ ×5, “and“ … — thirteen backwards closers.
+BODY_CORRECTIONS.setdefault("evening-by-evening", {}).setdefault("replacements", []).extend([
+    ("“<i>seen</i>“ ", "“<i>seen</i>” "),
+    ("was there;</i>“ ", "was there;</i>” "),
+    ("condescension</i>“ ", "condescension</i>” "),
+    ("clean hands</i>“ ", "clean hands</i>” "),
+    ("<i>weeping</i>“.", "<i>weeping</i>”."),
+    ("said nots</i>“ ", "said nots</i>” "),
+    (". “<i>If</i>“ ", ". “<i>If</i>” "),
+    ("me--“<i>if</i>“ ", "me--“<i>if</i>” "),
+    ("temptation--“<i>if</i>“ ", "temptation--“<i>if</i>” "),
+    ("--“<i>if</i>“ ", "--“<i>if</i>” "),
+    (", “<i>if</i>“ ", ", “<i>if</i>” "),
+    (" “<i>and</i>“ ", " “<i>and</i>” "),
+    ("<i>Christ</i>“-", "<i>Christ</i>”-"),
+])
+# grace-for-grace-2: “it is finished. “Many — the closer's space on the wrong side; and “presentings, left open.
+BODY_CORRECTIONS.setdefault("grace-for-grace-2", {}).setdefault("replacements", []).extend([
+    ("is finished. “M", "is finished.” M"),
+    ("presentings, ", "presentings,” "),
+])
+# journal-of-an-expedition-up-the-niger: ‘ denge,' / ‘ Mary,' closers; and 'got oft“ by', which the 1855 scan reads "got off by backing the engine" (OCR: oflF).
+BODY_CORRECTIONS.setdefault("journal-of-an-expedition-up-the-niger", {}).setdefault("replacements", []).extend([
+    ("she was got oft“ ", "she was got off "),
+    ("called ‘ denge,' ", "called ‘ denge,’ "),
+    ("schooner ‘ Mary,' ", "schooner ‘ Mary,’ "),
+])
+# let-us-pray-2: a “…priesthood“ closer.
+BODY_CORRECTIONS.setdefault("let-us-pray-2", {}).setdefault("replacements", []).extend([
+    ("royal priesthood“ ", "royal priesthood” "),
+])
+# life-and-diary-of-david-brainerd: a stray “ after one of its 160 dated entries ("<i>Nov. 4.</i>—" everywhere else).
+BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {}).setdefault("replacements", []).extend([
+    ("<i>Nov. 4.</i>“—", "<i>Nov. 4.</i>—"),
+])
+# morning-by-morning: “Nevertheless“--, “shall be filled“, “taste“, “thou“--.
+BODY_CORRECTIONS.setdefault("morning-by-morning", {}).setdefault("replacements", []).extend([
+    ("Nevertheless</i>“-", "Nevertheless</i>”-"),
+    ("be filled</i>“ ", "be filled</i>” "),
+    ("<i>taste</i>“ ", "<i>taste</i>” "),
+    ("“<i>thou</i>“-", "“<i>thou</i>”-"),
+])
+# order-and-argument-in-prayer: a “…thy will.“ closer (en, pt, sw).
+BODY_CORRECTIONS.setdefault("order-and-argument-in-prayer", {}).setdefault("replacements", []).extend([
+    ("thy will.</i>“ ", "thy will.</i>” "),
+    ("vontade.</i>“ ", "vontade.</i>” "),
+    ("mapenzi yako.</i>“ ", "mapenzi yako.</i>” "),
+])
+# our-daily-walk: “running over “ (, “I AM _____ “ says, conquerors! “ These, “…Abide in Me“--.
+BODY_CORRECTIONS.setdefault("our-daily-walk", {}).setdefault("replacements", []).extend([
+    (" “I AM _____ “ ", " “I AM _____” "),
+    (" conquerors! “ ", " conquerors!” "),
+    ("running over “ ", "running over” "),
+    ("Abide in Me</b>“-", "Abide in Me</b>”-"),
+])
+# purpose-in-prayer: a “…kicked you out?“ closer.
+BODY_CORRECTIONS.setdefault("purpose-in-prayer", {}).setdefault("replacements", []).extend([
+    ("kicked you out?“ ", "kicked you out?” "),
+])
+# selected-sermons-whitefield: curly ‘ openers closed by a straight ' (the same text as the walking-with-god and christ-the-believers-wisdom sermons). "disciples' heads" is a possessive and stays.
+BODY_CORRECTIONS.setdefault("selected-sermons-whitefield", {}).setdefault("replacements", []).extend([
+    ("created he them.' ", "created he them.’ "),
+    (" not strewed'.", " not strewed’."),
+    ("walked with God'.", "walked with God’."),
+    ("God took him'.", "God took him’."),
+    (" against him'.", " against him’."),
+    (" pleased God';", " pleased God’;"),
+    ("walked with God.' ", "walked with God.’ "),
+    ("walked with God';", "walked with God’;"),
+    ("and I did eat'.", "and I did eat’."),
+    ("God himself.' ", "God himself.’ "),
+    ("present with him';", "present with him’;"),
+    ("regenerated.' ", "regenerated.’ "),
+    (" are agreed?' ", " are agreed?’ "),
+    ("dwelling in us'.", "dwelling in us’."),
+    ("and with them';", "and with them’;"),
+    (" also walked'.", " also walked’."),
+    ("walked with God', th", "walked with God’, th"),
+    (" to strength';", " to strength’;"),
+    (" of the Lord'. In", " of the Lord’. In"),
+    ("known to all men'.", "known to all men’."),
+    ("Jesus Christ'.", "Jesus Christ’."),
+    ("walked with God',", "walked with God’,"),
+    ("the scriptures',", "the scriptures’,"),
+    ("testify of me'.", "testify of me’."),
+    ("unto his paths';", "unto his paths’;"),
+    ("day and night'.", "day and night’."),
+    ("thyself to reading',", "thyself to reading’,"),
+    ("of thy mouth'.", "of thy mouth’."),
+    ("It is written'.", "It is written’."),
+    ("of the Spirit'.", "of the Spirit’."),
+    ("None like this'.", "None like this’."),
+    ("the holy mount';", "the holy mount’;"),
+    (" your hearts':", " your hearts’:"),
+    ("secret prayer''", "secret prayer’'"),
+    ("Praying always',", "Praying always’,"),
+    ("supplication.' ", "supplication.’ "),
+    ("Watch and pray',", "Watch and pray’,"),
+    (" temptation.' ", " temptation.’ "),
+    (" my God here'.", " my God here’."),
+    ("and meditation',", "and meditation’,"),
+    ("I was musing',", "I was musing’,"),
+    ("fire kindled.' ", "fire kindled.’ "),
+    ("in the flesh',", "in the flesh’,"),
+    ("heavenly Father'.", "heavenly Father’."),
+    ("thyself from idols':", "thyself from idols’:"),
+    ("me thy heart'.", "me thy heart’."),
+    ("from providence',", "from providence’,"),
+    ("to feed upon.' ", "to feed upon.’ "),
+    ("Spirit of God',", "Spirit of God’,"),
+    ("commandments, blameless'.", "commandments, blameless’."),
+    (" of the Lord'.", " of the Lord’."),
+    (" ‘My delight',", " ‘My delight’,"),
+    ("that do excel' ", "that do excel’ "),
+    (" his friend?' ", " his friend?’ "),
+    ("with the king'.", "with the king’."),
+    ("delighteth to honor?' ", "delighteth to honor?’ "),
+    ("delighteth to honor.' ", "delighteth to honor.’ "),
+    ("of his master'.", "of his master’."),
+    (" ungodliness'.", " ungodliness’."),
+    (" paths peace'.", " paths peace’."),
+    ("in the world'.", "in the world’."),
+    ("perfect freedom'.", "perfect freedom’."),
+    ("you speak of?' ", "you speak of?’ "),
+    (" of this way',", " of this way’,"),
+    ("them falsely'.", "them falsely’."),
+    ("exceeding glad',", "exceeding glad’,"),
+    ("everlasting life'.", "everlasting life’."),
+    ("quantam et qualem',", "quantam et qualem’,"),
+    ("seventy years',", "seventy years’,"),
+    ("presence of my God?' ", "presence of my God?’ "),
+    ("and lofty One',", "and lofty One’,"),
+    (" at my word.' ", " at my word.’ "),
+    (" of my mouth'.", " of my mouth’."),
+    ("us wisdom, righteousness, sanctification, and redemption.' ", "us wisdom, righteousness, sanctification, and redemption.’ "),
+    ("Wisdom, righteousness, sanctification, and redemption'.", "Wisdom, righteousness, sanctification, and redemption’."),
+    ("made unto us', th", "made unto us’, th"),
+    ("in his hands'.", "in his hands’."),
+    (" where I am.' ", " where I am.’ "),
+    ("of the world';", "of the world’;"),
+    ("of the world'.", "of the world’."),
+    ("of the Father'.", "of the Father’."),
+    ("made unto us',", "made unto us’,"),
+    (" in the Lord'.", " in the Lord’."),
+    (" redemption.' </p> <p", " redemption.’ </p> <p"),
+    ("he possesses';", "he possesses’;"),
+    ("riches for others';", "riches for others’;"),
+    ("Know thyself',", "Know thyself’,"),
+    ("righteousness':", "righteousness’:"),
+    ("that believeth'.", "that believeth’."),
+    ("that condemns?' ", "that condemns?’ "),
+    ("of great joy';", "of great joy’;"),
+    ("Savior is born'.", "Savior is born’."),
+    ("say, rejoice'.", "say, rejoice’."),
+    ("righteousness'.", "righteousness’."),
+    ("Jesus our Lord',", "Jesus our Lord’,"),
+    ("are become new',", "are become new’,"),
+    ("fullness of God'.", "fullness of God’."),
+    ("thus with men!' ", "thus with men!’ "),
+])
+# spurgeon-on-prayer: a “…thy will.“ closer (en, sw).
+BODY_CORRECTIONS.setdefault("spurgeon-on-prayer", {}).setdefault("replacements", []).extend([
+    ("thy will.</i>“ ", "thy will.</i>” "),
+    ("mapenzi yako.</i>“ ", "mapenzi yako.</i>” "),
+])
+# stepping-stones-2: lg ‘…' closers (the straight marks inside words are Luganda orthography and stay).
+BODY_CORRECTIONS.setdefault("stepping-stones-2", {}).setdefault("replacements", []).extend([
+    ("‘okuyitibwa,' ", "‘okuyitibwa,’ "),
+    ("Abooluganda.'", "Abooluganda.’"),
+    ("Abooluganda?' ", "Abooluganda?’ "),
+    ("eky'‘eddiini.' ", "eky'‘eddiini.’ "),
+    ("okutuuka ku balala' ", "okutuuka ku balala’ "),
+])
+# the-immutability-of-god: a fully reversed pair, ”shall be“ (en, hi, pt, sw); two fr ‘…' closers.
+BODY_CORRECTIONS.setdefault("the-immutability-of-god", {}).setdefault("replacements", []).extend([
+    ("Nevertheless it says ”<i>shall be</i>“ ", "Nevertheless it says “<i>shall be</i>” "),
+    ("voilà à terre;' ", "voilà à terre;’ "),
+    ("à ta maison.' ", "à ta maison.’ "),
+    (" वहाँ अब भी ”<i>ठहराया जाएगा</i>“ ", " वहाँ अब भी “<i>ठहराया जाएगा</i>” "),
+    ("está escrito ”<i>será</i>“.", "está escrito “<i>será</i>”."),
+    ("hivyo inasema ”<i>atahukumiwa</i>“ ", "hivyo inasema “<i>atahukumiwa</i>” "),
+])
+# the-inner-chamber: “to help him “; and a ‘…!' closer (en, hi).
+BODY_CORRECTIONS.setdefault("the-inner-chamber", {}).setdefault("replacements", []).extend([
+    ("and keep it!&#x27; ", "and keep it!’ "),
+    ("“to help him “;", "“to help him”;"),
+    ("और मानते हैं!&#x27; ", "और मानते हैं!’ "),
+])
+# the-life-of-trust: a “…fear him.“ closer.
+BODY_CORRECTIONS.setdefault("the-life-of-trust", {}).setdefault("replacements", []).extend([
+    ("fear him.</i>“", "fear him.</i>”"),
+])
+# the-normal-christian-life: two ‘ quotations closed straight, one of them opened with a backtick. (The book's other `…' quotations are a separate, unrepaired class.)
+BODY_CORRECTIONS.setdefault("the-normal-christian-life", {}).setdefault("replacements", []).extend([
+    ("will of God?&#x27; T", "will of God?’ T"),
+    ("which says, `Get all you can for as little as possible. ‘T", "which says, ‘Get all you can for as little as possible.’ T"),
+])
+# thoughts-for-the-quiet-hour: “the living God“; and three more.
+BODY_CORRECTIONS.setdefault("thoughts-for-the-quiet-hour", {}).setdefault("replacements", []).extend([
+    ("living God</i>“;", "living God</i>”;"),
+    ("than these!</i>“—", "than these!</i>”—"),
+    ("be safe!</i>“—", "be safe!</i>”—"),
+    ("<i>sincere</i>“—", "<i>sincere</i>”—"),
+])
+# waiting-on-god: ‘…' closers in ch07/13/20/28, in every edition that mirrors them (en, hi, pt, sw).
+BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", []).extend([
+    ("all the day.' </i>Wai", "all the day.’ </i>Wai"),
+    ("inherit the land.' ", "inherit the land.’ "),
+    ("waited for Him.' ", "waited for Him.’ "),
+    ("will hear me.' A", "will hear me.’ A"),
+    ("हता रहता हूँ।' </i>दिन", "हता रहता हूँ।’ </i>दिन"),
+    ("िकारी होंगे।' ", "िकारी होंगे।’ "),
+    ("ोहते आए हैं।' क", "ोहते आए हैं।’ क"),
+    ("मेरी सुनेगा।' ए", "मेरी सुनेगा।’ ए"),
+    (" o dia todo.' </i>Esp", " o dia todo.’ </i>Esp"),
+    ("herdarão a terra.' ", "herdarão a terra.’ "),
+    ("esperamos por ele.' ", "esperamos por ele.’ "),
+    ("vai me ouvir.' U", "vai me ouvir.’ U"),
+    ("mchana kutwa.' </i>Kun", "mchana kutwa.’ </i>Kun"),
+    ("watairithi nchi.' ", "watairithi nchi.’ "),
+    ("Tumemngojea.' ", "Tumemngojea.’ "),
+    (" atanisikia.' Tar", " atanisikia.’ Tar"),
+])
+# walking-with-god: curly ‘ openers closed by a straight ' — 71.
+BODY_CORRECTIONS.setdefault("walking-with-god", {}).setdefault("replacements", []).extend([
+    (" not strewed'.", " not strewed’."),
+    ("walked with God'.", "walked with God’."),
+    ("God took him'.", "God took him’."),
+    (" against him'.", " against him’."),
+    (" pleased God';", " pleased God’;"),
+    ("walked with God.' ", "walked with God.’ "),
+    ("walked with God';", "walked with God’;"),
+    ("and I did eat'.", "and I did eat’."),
+    ("God himself.' ", "God himself.’ "),
+    ("present with him';", "present with him’;"),
+    (" are agreed?' ", " are agreed?’ "),
+    ("dwelling in us'.", "dwelling in us’."),
+    ("and with them';", "and with them’;"),
+    (" also walked'.", " also walked’."),
+    ("walked with God', th", "walked with God’, th"),
+    (" to strength';", " to strength’;"),
+    (" of the Lord'. In", " of the Lord’. In"),
+    ("known to all men'.", "known to all men’."),
+    ("Jesus Christ'.", "Jesus Christ’."),
+    ("walked with God',", "walked with God’,"),
+    ("the scriptures',", "the scriptures’,"),
+    ("testify of me'.", "testify of me’."),
+    ("unto his paths';", "unto his paths’;"),
+    ("day and night'.", "day and night’."),
+    ("thyself to reading',", "thyself to reading’,"),
+    ("of thy mouth'.", "of thy mouth’."),
+    ("It is written'.", "It is written’."),
+    ("of the Spirit'.", "of the Spirit’."),
+    ("None like this'.", "None like this’."),
+    ("the holy mount';", "the holy mount’;"),
+    (" your hearts':", " your hearts’:"),
+    ("secret prayer''", "secret prayer’'"),
+    ("Praying always',", "Praying always’,"),
+    ("supplication.' ", "supplication.’ "),
+    ("Watch and pray',", "Watch and pray’,"),
+    (" temptation.' ", " temptation.’ "),
+    (" my God here'.", " my God here’."),
+    ("and meditation',", "and meditation’,"),
+    ("I was musing',", "I was musing’,"),
+    ("fire kindled.' ", "fire kindled.’ "),
+    ("in the flesh',", "in the flesh’,"),
+    ("heavenly Father'.", "heavenly Father’."),
+    ("thyself from idols':", "thyself from idols’:"),
+    ("me thy heart'.", "me thy heart’."),
+    ("from providence',", "from providence’,"),
+    ("to feed upon.' ", "to feed upon.’ "),
+    ("Spirit of God',", "Spirit of God’,"),
+    ("commandments, blameless'.", "commandments, blameless’."),
+    (" of the Lord'.", " of the Lord’."),
+    (" ‘My delight',", " ‘My delight’,"),
+    ("that do excel' ", "that do excel’ "),
+    (" his friend?' ", " his friend?’ "),
+    ("with the king'.", "with the king’."),
+    ("delighteth to honor?' ", "delighteth to honor?’ "),
+    ("delighteth to honor.' ", "delighteth to honor.’ "),
+    ("of his master'.", "of his master’."),
+    (" ungodliness'.", " ungodliness’."),
+    (" paths peace'.", " paths peace’."),
+    ("in the world'.", "in the world’."),
+    ("perfect freedom'.", "perfect freedom’."),
+    ("you speak of?' ", "you speak of?’ "),
+    (" of this way',", " of this way’,"),
+    ("them falsely'.", "them falsely’."),
+    ("exceeding glad',", "exceeding glad’,"),
+    ("everlasting life'.", "everlasting life’."),
+    ("quantam et qualem',", "quantam et qualem’,"),
+    ("seventy years',", "seventy years’,"),
+    ("presence of my God?' ", "presence of my God?’ "),
+    ("and lofty One',", "and lofty One’,"),
+    (" at my word.' ", " at my word.’ "),
+    (" of my mouth'.", " of my mouth’."),
+])

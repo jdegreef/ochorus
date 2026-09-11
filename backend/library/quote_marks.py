@@ -56,6 +56,77 @@ def is_mixed(text: str) -> bool:
     return bool(straight and curly)
 
 
+# Where a quotation's context resets. Shared by `convert` (the start of a block
+# is where a quotation opens) and `mispaired_marks` (a paragraph that closes
+# with its quotation still open is a period convention — the next paragraph
+# reopens — not a wrongly-set mark). `<br>` counts: verse lines are set with it.
+_BLOCK = re.compile(r"</?(?:p|h\d|li|blockquote|div|br|td|tr)\b[^>]*>", re.I)
+# A tag as `convert` walks one, unterminated included, so both read the same text.
+_TAG_WALK = re.compile(r"<[^>]*>?")
+_OPENING_CONTEXT = " \t\n\xa0([{—–-"
+_CLOSING_CONTEXT = ".,;:!?)]—–-…"
+_MARK_OR_BREAK = re.compile("[\n“”‘’']")
+
+
+def mispaired_marks(html: str) -> list[str]:
+    """Quotations CLOSED with the wrong glyph — excerpts, one per mark.
+
+    Two shapes, both invisible to `mark_counts`, which counts double marks and
+    cannot count a straight single at all (it is also the apostrophe):
+
+      * a curly opener closed by a STRAIGHT mark — ‘Search the scriptures', says
+        our Lord. A straight mark counts as the closer only where nothing but
+        punctuation or a capital follows it, so a possessive plural inside the
+        quotation (‘the very hairs of his disciples' heads are …’) stays an
+        apostrophe;
+      * an OPENER used as the closer — it is written “the living God“; — a “
+        standing where a closer stands (after a word, before a space or
+        punctuation) while a “ is already open in the same block.
+
+    Never asked of a work that sets „…“, where “ IS the closer (Ukrainian).
+    """
+    if "„" in html or ("‘" not in html and "“" not in html and "&" not in html):
+        return []
+    plain = unescape(_TAG_WALK.sub(lambda m: "\n" if _BLOCK.match(m[0]) else "", html))
+    found: list[str] = []
+    double_open = single_open = False
+    for m in _MARK_OR_BREAK.finditer(plain):
+        k, ch = m.start(), m[0]
+        prev = plain[k - 1] if k else "\n"
+        nxt = plain[k + 1] if k + 1 < len(plain) else "\n"
+        if ch == "\n":
+            double_open = single_open = False
+        elif ch == "“":
+            if (
+                double_open
+                and prev not in _OPENING_CONTEXT
+                and (nxt.isspace() or nxt in _CLOSING_CONTEXT)
+            ):
+                found.append(plain[max(0, k - 50) : k + 15])
+                double_open = False
+            else:
+                double_open = True
+        elif ch == "”":
+            double_open = False
+        elif ch == "‘":
+            single_open = True
+        elif ch == "’":
+            single_open = False
+        # What is left is a straight ': a closer only inside a ‘ quotation, after
+        # a word, and followed by punctuation, a block end, or a non-lowercase word.
+        elif (
+            single_open
+            and not prev.isspace()
+            and (
+                nxt in "\n" + _CLOSING_CONTEXT
+                or (nxt.isspace() and not plain[k + 2 : k + 3].islower())
+            )
+        ):
+            found.append(plain[max(0, k - 50) : k + 15])
+            single_open = False
+    return found
+
+
 def uses_guillemets(text: str) -> bool:
     """Does this WORK set « » as its outer quotation mark?
 
@@ -98,11 +169,14 @@ def convert(html: str, *, outer_guillemets: bool) -> tuple[str, int]:
     out: list[str] = []
     i, n, changed = 0, len(html), 0
     depth = 0
+    before = ""  # the last VISIBLE character; "" at the start of a block
     while i < n:
         # Never touch anything inside a tag: attribute values are quoted too.
         if html[i] == "<":
             j = html.find(">", i)
             j = n if j == -1 else j + 1
+            if _BLOCK.match(html, i):
+                before = ""
             out.append(html[i:j])
             i = j
             continue
@@ -115,32 +189,36 @@ def convert(html: str, *, outer_guillemets: bool) -> tuple[str, int]:
                 depth += 1
             elif html[i] == "»":
                 depth = max(0, depth - 1)
+            before = html[i]
             out.append(html[i])
             i += 1
             continue
 
         # What PRECEDES the mark decides it, and nothing else. A mark following
         # a word or its punctuation closes; a mark following a space, a bracket,
-        # a dash, or the end of a tag opens.
+        # a dash, or the start of a block opens. An INLINE tag is transparent:
+        # "<i>seen</i>" closes after the n, not after the `>`.
         #
-        # Two earlier versions also consulted the following character, and both
-        # were wrong in ways only the corpus showed:
+        # Earlier versions were wrong in ways only the corpus showed:
         #
-        #   * ">" had to join the opening set — a quotation opening a paragraph
+        #   * the start of a block has to open — a quotation opening a paragraph
         #     has `<p>` and nothing else to its left, and without this EVERY
-        #     paragraph-initial quotation became a closing mark;
+        #     paragraph-initial quotation became a closing mark. That was first
+        #     done by counting ANY tag's `>` as opening context, which set
+        #     `“<i>seen</i>“` — the backwards closers of the 2026-09-11 sweep
+        #     (all thirteen in evening-by-evening follow a `</i>`);
         #   * "followed by punctuation means closing" breaks on a quotation that
         #     opens with an ellipsis — godliness ch14 has
         #     `John 17:14: "...and the world has hated them` — and on sources
         #     that set a space inside the marks, `" Aggressive Christianity ,"`.
         #
         # The preceding character answers all of those correctly on its own.
-        before = out[-1][-1:] if out else ""
-        opens = not before or before.isspace() or before in "([{—–->"
+        opens = not before or before.isspace() or before in "([{—–-"
         if outer_guillemets and depth == 0:
-            out.append("«" if opens else "»")
+            before = "«" if opens else "»"
         else:
-            out.append("“" if opens else "”")
+            before = "“" if opens else "”"
+        out.append(before)
         changed += 1
         i += width
     return "".join(out), changed

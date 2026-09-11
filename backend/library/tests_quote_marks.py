@@ -26,6 +26,7 @@ from library.models import Author, Book, Chapter, Sermon
 from library.quote_marks import (
     assert_punctuation_only,
     convert,
+    mispaired_marks,
     uses_guillemets,
 )
 from library.text import html_to_text
@@ -75,6 +76,14 @@ class QuoteConversionTests(SimpleTestCase):
         self.assertIn("“aquí”", first)
         self.assertIn("«otra»", second)
 
+    def test_an_inline_tag_is_transparent(self):
+        # Any tag's `>` used to count as opening context, which set
+        # `“<i>seen</i>“` — every backwards closer in evening-by-evening.
+        out, _ = convert('<p>what we have "<i>seen</i>" keeps pace</p>', outer_guillemets=False)
+        self.assertEqual(out, "<p>what we have “<i>seen</i>” keeps pace</p>")
+        out, _ = convert('<p><i>"Hold</i> fast"</p>', outer_guillemets=False)
+        self.assertEqual(out, "<p><i>“Hold</i> fast”</p>")
+
     def test_a_mark_opening_a_paragraph_opens(self):
         """`<p>` and nothing else to its left."""
         out, _ = convert('<p>"Come and see," he said.</p>', outer_guillemets=False)
@@ -119,6 +128,27 @@ class QuoteConversionTests(SimpleTestCase):
         ]:
             with self.subTest(before=before), self.assertRaises(AssertionError):
                 assert_punctuation_only(before, after, "script")
+
+
+class MispairedMarksTests(SimpleTestCase):
+    """`mispaired_marks`, the rule behind the corpus guard in tests_fixture."""
+
+    def test_a_straight_mark_closing_a_curly_opener_is_found(self):
+        self.assertEqual(len(mispaired_marks("<p>he is ‘an hard master'. These</p>")), 1)
+
+    def test_a_possessive_plural_inside_the_quotation_is_an_apostrophe(self):
+        html = "<p>‘the hairs of his disciples' heads are all numbered’</p>"
+        self.assertEqual(mispaired_marks(html), [])
+
+    def test_an_opener_in_the_closers_place_is_found(self):
+        self.assertEqual(len(mispaired_marks("<p>written “the living God“; but</p>")), 1)
+
+    def test_a_quotation_left_open_to_the_next_paragraph_is_period_style(self):
+        self.assertEqual(mispaired_marks("<p>“Stay,</p><p>“and hear.”</p>"), [])
+
+    def test_a_work_setting_low_high_quotes_is_not_asked(self):
+        # „…“ sets “ as the CLOSER (Ukrainian).
+        self.assertEqual(mispaired_marks("<p>„Слово“ і „діло“</p>"), [])
 
 
 class Migration0084FidelityTests(SimpleTestCase):
