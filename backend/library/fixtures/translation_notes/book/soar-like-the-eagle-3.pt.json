@@ -1,0 +1,277 @@
+{
+ "kind": "book",
+ "slug": "soar-like-the-eagle-3",
+ "language": "pt",
+ "job_issue": 1781,
+ "references": [
+  {
+   "reference": "Isaías 40:28-31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 103:1-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 5:17",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.pt.json"
+  },
+  {
+   "reference": "1 Coríntios 15:53",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 5:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 6:14",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Hebreus 12:1",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.pt.json"
+  },
+  {
+   "reference": "Cântico dos Cânticos 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 10:43",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 4:12",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Filipenses 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 11:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timóteo 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 12:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 12:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 4:7",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Efésios 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 4:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 12:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Reis 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 6:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Números 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 17:20-23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 13:3-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 13:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 17:15-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 21:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 16:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 1:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Reis 6:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Reis 6:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 3:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 121:1-2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 11:28-30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 16:18",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.pt.json"
+  },
+  {
+   "reference": "Gálatas 6:2",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Gálatas 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 23:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 25:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 4:11-13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 12:12-27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 12:4-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 12:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timóteo 1:6-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 4:18-19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 11:3",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.pt.json"
+  },
+  {
+   "reference": "Mateus 11:4-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 20:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 24:49",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Efésios 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timóteo 4:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timóteo 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 12:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 40:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 12:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 4:3",
+   "status": "self_rendered"
+  }
+ ]
+}

@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-11: Portuguese book — soar-like-the-eagle-3 (#1781), Gareth Evans's
+// teaching on reaching one's spiritual potential and destiny in Christ, 12 chapters ("Voe Como
+// a Águia"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
+// translated title and the reader page bakes the 12 chapters. No plans/+page.ts touch owed —
+// soar-like-the-eagle-3 backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-11: Portuguese book — watchman-nee-a-life (#1757), a biography of
 // Watchman Nee, 21 chapters. Book pages are prerendered per locale, so /pt/books and the shelf
 // rebuild with the translated subtitle and the reader page bakes the 21 chapters. No
