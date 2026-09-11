@@ -680,5 +680,14 @@
   "quotes_jump_to_writer": "Ir para um escritor",
   "quotes_copy": "Copiar",
   "quotes_copied": "Copiado",
-  "quotes_clip_chapter": ", capítulo %n%"
+  "quotes_clip_chapter": ", capítulo %n%",
+  "book_more_by": "Mais de %name%",
+  "book_also_on": "Também sobre %topic%",
+  "book_faq_free_q": "É possível ler %title% gratuitamente online?",
+  "book_faq_free_a": "Sim — o texto completo pode ser lido gratuitamente aqui no Ochorus, sem conta nem pagamento, e você pode salvá-lo para ler sem conexão.",
+  "book_faq_length_q": "Quanto tempo leva para ler %title%?",
+  "book_faq_length_a": "Cerca de %duration%, ao longo de %count% capítulos.",
+  "book_faq_about_q": "Sobre o que é %title%?",
+  "book_faq_author_q": "Quem escreveu %title%?",
+  "book_faq_author_a": "%name% escreveu %title%."
 }

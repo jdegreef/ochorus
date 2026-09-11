@@ -680,5 +680,14 @@
   "quotes_jump_to_writer": "Перейти до письменника",
   "quotes_copy": "Копіювати",
   "quotes_copied": "Скопійовано",
-  "quotes_clip_chapter": ", розділ %n%"
+  "quotes_clip_chapter": ", розділ %n%",
+  "book_more_by": "More by %name%",
+  "book_also_on": "Also on %topic%",
+  "book_faq_free_q": "Is %title% free to read online?",
+  "book_faq_free_a": "Yes — the complete text is free to read here at Ochorus, with no account or payment, and you can save it to read offline.",
+  "book_faq_length_q": "How long does %title% take to read?",
+  "book_faq_length_a": "About a %duration%, across %count% chapters.",
+  "book_faq_about_q": "What is %title% about?",
+  "book_faq_author_q": "Who wrote %title%?",
+  "book_faq_author_a": "%name% wrote %title%."
 }
