@@ -75,6 +75,18 @@ class FixtureIdentifierTests(SimpleTestCase):
                 with self.subTest(author=a["slug"]):
                     self.assertEqual(a.get("same_as", []), [])
 
+    def test_an_imprint_never_carries_a_bio(self):
+        # A byline is not a person, so it presents no biography: no short bio,
+        # no long-form bio_html, no editorial Q&A. Keeps the fixture side of the
+        # rule the `bio_for`/`faq_for` guards enforce at read time; a bio typed
+        # into an imprint row here would render it as an author with a life.
+        for a in fixture_authors():
+            if a.get("is_imprint"):
+                with self.subTest(author=a["slug"]):
+                    self.assertEqual((a.get("bio") or "").strip(), "")
+                    self.assertEqual((a.get("bio_html") or "").strip(), "")
+                    self.assertEqual(a.get("faq", []), [])
+
     def test_a_wikipedia_identifier_names_an_article_not_a_search(self):
         for a in fixture_authors():
             for url in a.get("same_as", []):
@@ -222,3 +234,26 @@ class ApiTests(TestCase):
         Author.objects.create(slug="x", name="Another")
         res = self.client.get("/api/library/authors/x/")
         self.assertEqual(res.data["same_as"], [])
+
+    def test_an_imprint_presents_no_biography_even_if_one_is_stored(self):
+        # The durable half of the "a byline is not an author with a bio" rule:
+        # whatever a stray admin edit leaves in the row, the reader-facing
+        # methods and the detail endpoint withhold the biographical surface.
+        imprint = Author.objects.create(
+            slug="house",
+            name="A House Byline",
+            is_imprint=True,
+            bio="Should never be shown.",
+            bio_html="<p>Nor this.</p>",
+            faq=[{"q": "Who?", "a": "Nobody — it is a byline."}],
+        )
+        self.assertEqual(imprint.bio_for("en"), "")
+        self.assertEqual(imprint.bio_html_for("en"), "")
+        self.assertEqual(imprint.faq_for("en"), [])
+        self.assertFalse(imprint.has_bio_in("en"))
+
+        res = self.client.get("/api/library/authors/house/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["bio"], "")
+        self.assertEqual(res.data["bio_html"], "")
+        self.assertEqual(res.data["faq"], [])
