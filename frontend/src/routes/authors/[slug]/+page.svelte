@@ -261,17 +261,27 @@
 			author.sermons.reduce((n, s) => n + (s.word_count ?? 0), 0)
 	);
 
-	// A featured pull-quote for the header: the first <blockquote> in the bio,
-	// tag-stripped (drop the <cite> attribution). Regex, not the DOM, so it works
-	// during prerender too. Absent / too-short quotes just don't show.
-	const featuredQuote = $derived.by(() => {
+	// A featured pull-quote for the header: the first <blockquote> in the bio.
+	// Regex, not the DOM, so it works during prerender too. Absent / too-short
+	// quotes just don't show. The bio's own <cite> is kept as the attribution
+	// beneath the quote (its leading dash trimmed) rather than discarded.
+	const featuredQuote = $derived.by<{ text: string; cite: string }>(() => {
 		const m = (author.bio_html || '').match(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/i);
-		if (!m) return '';
-		const text = stripHtml(m[1].replace(/<cite[\s\S]*?<\/cite>/i, ''))
+		if (!m) return { text: '', cite: '' };
+		const inner = m[1];
+		const citeMatch = inner.match(/<cite[^>]*>([\s\S]*?)<\/cite>/i);
+		const cite = citeMatch
+			? stripHtml(citeMatch[1])
+					.replace(/\s+/g, ' ')
+					.replace(/^[—–-]\s*/, '')
+					.trim()
+			: '';
+		const text = stripHtml(inner.replace(/<cite[\s\S]*?<\/cite>/i, ''))
 			.replace(/\s+/g, ' ')
 			.trim();
-		if (text.length < 20) return '';
-		return text.length > 220 ? text.slice(0, 217).trimEnd() + '…' : text;
+		if (text.length < 20) return { text: '', cite: '' };
+		const clipped = text.length > 220 ? text.slice(0, 217).trimEnd() + '…' : text;
+		return { text: clipped, cite };
 	});
 
 	// The Q&A band at the foot of the page comes in two tiers. Where an editorial
@@ -500,9 +510,15 @@
 		milestones={author.milestones}
 	/>
 
-	<!-- Featured pull-quote: a hook above the biography. -->
-	{#if featuredQuote}
-		<blockquote class="author-quote mx-auto mt-8 max-w-[40rem]">{featuredQuote}</blockquote>
+	<!-- Featured pull-quote: a hook above the biography, carrying the bio's own
+	     attribution beneath it. -->
+	{#if featuredQuote.text}
+		<figure class="mx-auto mt-8 max-w-[40rem]">
+			<blockquote class="author-quote">{featuredQuote.text}</blockquote>
+			{#if featuredQuote.cite}
+				<figcaption class="author-quote-cite">{featuredQuote.cite}</figcaption>
+			{/if}
+		</figure>
 	{/if}
 
 	<!-- Where to start + total reading time. -->
@@ -512,6 +528,9 @@
 		>
 			{#if startWork}
 				<span class="text-muted">
+					<span class="eyebrow me-1.5 text-muted"
+						>{t('author.newToAuthor').replace('%name%', author.name)}</span
+					>
 					{t('author.startWith')}
 					<a
 						href={localizeHref(`/books/${startWork.slug}`)}
@@ -915,6 +934,16 @@
 	.author-quote::after {
 		content: '”';
 	}
+	/* The bio's own attribution, beneath the quote and aligned with its text
+	   (past the gold rule). A quiet sans line — the cites are free-form sentences,
+	   not a tidy NAME · WORK, so they read as prose, not an uppercase label. */
+	.author-quote-cite {
+		margin-top: 0.55rem;
+		padding-inline-start: 1.25rem;
+		font-family: var(--font-sans);
+		font-size: var(--fs-small);
+		color: var(--muted);
+	}
 
 	/* Long-form biography styling. Targets the injected {@html} via :global.
 	   Pull-quotes and prayer callouts stand out.
@@ -925,6 +954,20 @@
 	   win over the reader on this one surface. */
 	:global(.bio p) {
 		margin: 0 0 1.15em;
+	}
+	/* A gold drop cap opens the life — the first letter of the FIRST paragraph
+	   only, so pull-quotes and prayer callouts keep their own opening. Sized in
+	   `em` so it tracks the reader's text-size control, and floated inline-start
+	   so it sits correctly under a routed RTL (Arabic) bio too. */
+	:global(.bio > p:first-of-type)::first-letter {
+		float: inline-start;
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: 3.4em;
+		line-height: 0.82;
+		padding-inline-end: 0.09em;
+		padding-block-start: 0.02em;
+		color: var(--gold);
 	}
 	:global(.bio h2) {
 		font-family: var(--font-display);
