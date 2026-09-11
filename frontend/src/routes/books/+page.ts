@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-11: Portuguese book — purity-of-heart (#1584), William Booth's
+// holiness appeal, 10 chapters ("Pureza de Coração"). Book pages are prerendered per locale,
+// so /pt/books and the shelf rebuild with the translated title and the reader page bakes the
+// 10 chapters. No plans/+page.ts touch owed — purity-of-heart backs no LAUNCH_PLANS/
+// CURATED_PLANS entry (grepped plan_seed.py).
 // prerender refresh 2026-09-11: Portuguese book — talks-to-the-farmer (#1583), C. H. Spurgeon's
 // homely talks drawing spiritual lessons from farm life, 18 chapters ("Conversas com o
 // Lavrador"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
