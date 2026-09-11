@@ -186,9 +186,17 @@
 	// "…fourteen great-gr"); truncateMeta ends on a sentence or whole-word boundary
 	// within the ~160-char budget scrapers actually display. The book page already
 	// routes its description through the same helper.
-	const description = $derived(
-		truncateMeta(author.bio || t('author.metaFallback').replace('%name%', author.name))
-	);
+	// A bio, when this locale has one, is used as-is. When it doesn't, the localized
+	// metaFallback sentence is enriched with the same era + work counts the header
+	// shows (summaryBits — already localized), so a bio-less author page still offers
+	// the SERP something concrete rather than a bare "free classic Christian books"
+	// line. No new catalogue string; the counts matter most on translated pages,
+	// where a localized bio is most often absent.
+	const description = $derived.by(() => {
+		if (author.bio) return truncateMeta(author.bio);
+		const base = t('author.metaFallback').replace('%name%', author.name);
+		return truncateMeta(summaryBits.length ? `${base} ${summaryBits.join(' · ')}.` : base);
+	});
 	const ogImage = $derived(
 		author.photo_url
 			? absUrl(author.photo_url)
