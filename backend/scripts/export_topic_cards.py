@@ -27,7 +27,7 @@ from pathlib import Path
 BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
 
-from library.topic_seed import TOPICS, TOPIC_SCRIPTURE  # noqa: E402
+from library.topic_seed import TOPIC_SCRIPTURE, TOPICS  # noqa: E402
 
 
 def topic_cards() -> dict[str, dict[str, str]]:

@@ -1559,7 +1559,7 @@ class TopicShareCardTests(SimpleTestCase):
         )
 
     def test_every_card_was_drawn_from_the_topic_it_stands_in_for(self):
-        from library.topic_seed import TOPICS, TOPIC_SCRIPTURE
+        from library.topic_seed import TOPIC_SCRIPTURE, TOPICS
 
         recorded = self._recorded()
         stale, unrecorded = [], []

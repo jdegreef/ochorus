@@ -86,6 +86,10 @@ generator to refresh the manifest, and commit PNGs + manifest together.
   card; the leaf page points `og:image` unconditionally at `/og/<type>/<slug>.png`.
 - **Requirements:** Node ≥ 22.18 (unprompted TS type-stripping) and, for topics,
   `python3` on PATH. `satori` + `@resvg/resvg-js` are devDependencies (`npm install`).
+- **CI runs `ruff check` before the backend suite, so `manage.py test` green is
+  not enough** — run `cd backend && uv run ruff check .` before pushing any
+  backend script/test. (Import-member sort `I001` bit the topics PR: green tests
+  locally, red CI. `ruff check --fix` sorts it.)
 
 ## Ledger
 
