@@ -1803,6 +1803,13 @@
    "art": true,
    "scrim": 0.75
   },
+  "fr/prayer-the-pulse-of-life": {
+   "ground": "6c5bc6830807a295441d54775ee22ec5cd828cfa5222bfb36243c44def42432c",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.95
+  },
   "fr/jesus-himself-2": {
    "ground": "c383dfce70fc191f8ba4a0a7e1224979cb2e5d73a5714c124f05624c889c4661",
    "style": "devotional",
