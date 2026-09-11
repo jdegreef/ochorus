@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-11: NEW French book — jesus-himself-2 / Jésus lui-même (#2218),
+// Andrew Murray on Luke 24 (2 chapters). Rebuilds /fr/books so the card carries its translated
+// title and the shared painting cover. Backs no plan row yet (deeper-life-in-christ needs its
+// other source books in fr).
 // prerender refresh 2026-09-11: Portuguese book — ministry-of-intercession (#1477), Andrew
 // Murray's plea for a life of intercession, 18 chapters ("O Ministério da Intercessão").
 // Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
