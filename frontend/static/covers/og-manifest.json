@@ -1516,6 +1516,13 @@
    "art": true,
    "scrim": 0.6
   },
+  "sw/till-he-come": {
+   "ground": "a3055051836f3acb228877c9eba9aa2ac60092c1dae375f14658610239b4cccf",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.75
+  },
   "sw/true-vine": {
    "ground": "b21a2d190081d450028f966856d1b99f90382b464512156ff1a739954a354ca0",
    "style": "devotional",
