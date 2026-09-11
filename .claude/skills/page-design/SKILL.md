@@ -183,6 +183,13 @@ here, `sermons/+page.svelte`, `BooksShelf.svelte` — but the topic one's null
 gate is topic-specific; a shared low-level `groupByAuthor` is a deferred
 refactor, not this pattern's job.)
 
+Same shape for the **order of the content sections**: Books / Sermons /
+Articles are rendered in *prominence* order — the topic leads with the type it
+has the most of and drops any that are empty (`lib/topicSections.ts`), so a
+sermon-heavy topic (The Gospel Call, Christ & the Cross) surfaces its sermons
+first and an article-heavy one (The Deeper Life, 21 articles) its articles,
+while a balanced topic keeps the familiar Books → Sermons → Articles order.
+
 **Verifying a page in the in-app Browser pane:** `npm run dev` binds IPv6
 `[::1]` only, but the pane resolves `localhost`→IPv4, so navigation fails with
 "denied or failed" — start it `--host 127.0.0.1`, and export
