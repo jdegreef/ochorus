@@ -16,6 +16,7 @@
 	} from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
+	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
@@ -374,36 +375,21 @@
 	// the same contract the biographies index uses so anchored sections clear both
 	// the app nav and this bar. Mirrors +layout's navH measurement.
 	let subnavH = $state(0);
-	let activeSection = $state('');
 
 	// Scroll-spy: light the link for whatever section sits in the band just under
-	// the pinned bars. Rebuilt when the target set changes (e.g. after hydration).
-	// No-JS / prerender shows the bar with nothing lit — the links still jump.
-	$effect(() => {
-		if (!showSubnav || typeof IntersectionObserver === 'undefined') return;
-		const els = navItems
-			.map((n) => document.getElementById(n.id))
-			.filter((el): el is HTMLElement => el != null);
-		if (!els.length) return;
-		const io = new IntersectionObserver(
-			(entries) => {
-				for (const e of entries) if (e.isIntersecting) activeSection = e.target.id;
-			},
-			{ rootMargin: '-45% 0px -50% 0px' }
-		);
-		els.forEach((el) => io.observe(el));
-		return () => io.disconnect();
-	});
+	// the pinned bars. The shared helper re-observes when the target set changes
+	// (empty while the sub-nav is hidden). No-JS / prerender shows the bar with
+	// nothing lit — the links still jump.
+	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
 
-	// Smooth-jump to a section (honouring reduced-motion) and light it at once, so
-	// the tap feels immediate rather than waiting on the scroll-spy to catch up.
+	// Smooth-jump to a section and light it at once, so the tap feels immediate
+	// rather than waiting on the scroll-spy to catch up. The landing offset lives
+	// in CSS (`--pinned-offset` + the subnav-link scroll-margin below), so
+	// jumpToSection just scrolls; the hash stays ours to set.
 	function jumpTo(e: MouseEvent, id: string) {
-		const el = document.getElementById(id);
-		if (!el) return;
 		e.preventDefault();
-		activeSection = id;
-		const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-		el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+		spy.set(id);
+		jumpToSection(id);
 		history.replaceState(null, '', `#${id}`);
 	}
 </script>
@@ -550,8 +536,8 @@
 						<a
 							href="#{item.id}"
 							class="subnav-link"
-							class:is-active={activeSection === item.id}
-							aria-current={activeSection === item.id ? 'true' : undefined}
+							class:is-active={spy.active === item.id}
+							aria-current={spy.active === item.id ? 'true' : undefined}
 							onclick={(e) => jumpTo(e, item.id)}>{item.label}</a
 						>
 					</li>
