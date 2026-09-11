@@ -2215,8 +2215,6 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'iv. 13,'),  # ch28
             ('finward',
              'inward'),  # ch20
-            # Grosart attests an answer marker here; the smudge is spelled in
-            # Pickering's own form, `Answ.` (as in ch17), not Grosart's `Ans.`.
             ('as smoking Bax.</p><p>‘ It is well',
              'as smoking flax.</p><p>Answ. It is well'),  # ch16
             ('no mercy on them, saz, xxvii. 11',
@@ -2434,12 +2432,13 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # STORED text (the pairs above run on the raw scan), so the deploy's
             # `apply_body_corrections` carries them to prod with no migration.
             #
-            # Scanned marginal rules the quote converter cased as OPENING marks
-            # — 163 `‘` and 15 `“` against no `”` at all, because this edition
-            # sets no quotation marks. `strip_stray_openers` (below) removes the
-            # plain ones; these are the fourteen that stand where a LETTER was,
-            # and stripping the mark alone would leave "ruth from truth". Each
-            # word is settled against Grosart.
+            # The OCR read this edition's margin rules as OPENING quote marks —
+            # 163 `‘` and 15 `“` against no `”`, because it sets no quotation
+            # marks at all. Migration 0138 strips the plain ones from the stored
+            # English rows (a transform here would reach every language edition
+            # of the slug, and translations do quote). These are the fourteen
+            # standing where a LETTER was, which stripping alone would leave as
+            # "ruth from truth"; each word is settled against Grosart.
             ('believe “ruth from truth', 'believe truth from truth'),  # ch15
             ('from us. “he influence', 'from us. The influence'),  # ch16
             ('let him ‘rust in the name', 'let him trust in the name'),  # ch16
@@ -2622,9 +2621,6 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('prosper: Religion', 'prosper: religion'),  # ch24
             ('flax.</p><p>Ans. It is well', 'flax.</p><p>Answ. It is well'),  # ch16
         ],
-        # This edition sets NO quotation marks, so every opening mark left
-        # after the pairs above is a scanned rule — see `strip_stray_openers`.
-        "strip_stray_openers": True,
     },
     "around-the-wicket-gate": {
         # Image drop caps (Gutenberg source) — first letter of every chapter.
@@ -4143,33 +4139,6 @@ def strip_transcription_footnotes(body_html: str) -> str:
     return _TRANSCRIPTION_FOOTNOTE.sub("", body_html)
 
 
-#: An opening quote mark not preceded by a letter — so not the soft hyphen a
-#: scanner can render as `‘` INSIDE a word (`con‘ceits`), which a work's own
-#: pairs rejoin, and which stripping would weld wrongly ("his‘own" -> "hisown").
-_STRAY_OPENER = _re.compile(r"(?<![^\W\d_])[‘“]")
-
-
-def strip_stray_openers(body_html: str) -> str:
-    """Remove every opening quote mark from a work that prints none. Idempotent.
-
-    Opt-in per work (`strip_stray_openers`), and only sound for an edition that
-    sets NO quotation marks at all: there, an opening mark can only be a scanned
-    margin rule the quote converter cased as an opener. `the-bruised-reed` is
-    the case — 178 openers, not one closing `”`. Anywhere else it would delete
-    real quotations. Runs AFTER the declared replacements, so a mark standing
-    where a letter was lost ("“ruth from truth") is repaired first rather than
-    stripped into a different word.
-
-    The premise is checked per body, not trusted: an entry applies to EVERY
-    language edition of its slug, and a translation may well set quotation
-    marks the English lacks. A closing `”` anywhere means this body does, so
-    it is left whole — stripping only its openers would orphan every closer.
-    """
-    if "”" in body_html:
-        return body_html
-    return _STRAY_OPENER.sub("", body_html)
-
-
 def restore_paragraph_breaks(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
     """Split a run-together paragraph at each declared seam. Idempotent.
 
@@ -4264,8 +4233,6 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
         body_html = restore_dropped_blocks(body_html, entry.get("restored_blocks", ()))
         if entry.get("strip_transcription_footnotes"):
             body_html = strip_transcription_footnotes(body_html)
-        if entry.get("strip_stray_openers"):
-            body_html = strip_stray_openers(body_html)
     body_html = rejoin_linebreak_hyphens(body_html)
     # A rule, not a list, like the rejoin above: lone footnote-marker residue
     # occurs across works and is unambiguous, so it comes out for every one. It

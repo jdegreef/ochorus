@@ -101,6 +101,7 @@ rewriting a public-domain author.
 | `anachronism` | **Read the original edition.** Never guess | This is how invented text shows up (a modern transcriber's note is the common shape — `way-into-holiest` ch01 carries "readable to the computer audience … e-mail me at rlarryh@teleport.com"). The author may also be quoting someone. **`car`/`cars` no longer fires** — it scored 41 false / 0 true corpus-wide (railroad cars, streetcars, balloon cars, biblical chariots), so the trigger was removed; don't re-add it (see the `ANACHRONISM` comment in `english_audit.py`) |
 | `misspelling` | Fix if it's a name or place; leave period spellings | Moody's "Heratii" is wrong two sentences after he spells Horatii correctly. But a 17th-century spelling is not a misspelling |
 | `orphan-close-quote` | Read the passage | A close with nothing open usually means an attribution broke mid-sentence — the surrounding text is the real defect |
+| `orphan-open-quote` | **Read each against a second printing** | Fires only at density (>20 per 10k words): a scan's margin rules read as openers mid-sentence. Most are bare strays, but some stand where a LETTER was lost ("“ruth from truth") — pair those first, then strip the rest from the English rows in a migration, never a `BODY_CORRECTIONS` transform (it reaches translations) |
 | `run-together` | Fix — a missing space after a full stop | Mechanical, but confirm it isn't an ellipsis or an abbreviation |
 | `title-case-vs-body` | Pick the reading the body supports | Fires only on a lone letter after a hyphen ("Type-a" vs "Type-A") |
 | `hyphen-space` | **Already normalized — read the survivors** | `corrections.rejoin_linebreak_hyphens` closes "self- righteous" on every import and every deploy, which took 434 to 26. What is left is what the rule refuses to guess: a resumption with a CAPITAL (either a flattened dash, "thus- Moses", or a real compound, "non- Israelite" — not separable mechanically), a suspended compound ("two- and twenty"), or a hyphen at a `</p>` boundary, which is a verse line |
@@ -539,9 +540,16 @@ Reported, not fixed
   witness's own damage or house style (`burthen`, `Isai.`, `Balthasar`), so the
   witness is consulted, not obeyed — and it overturns reviewers too (Grosart
   reads "and **blessed** God afterwards", not the `blesseth` a review proposed).
-  Channels added for it: `strip_stray_openers` (opt-in, only for an edition
-  that sets no quotation marks; self-refusing on any body with a `”`, because an
-  entry reaches every language edition of its slug) and
-  `QuoteStyleTests.test_no_work_is_peppered_with_unclosed_openers`. Repairs to
-  STORED text reach prod through `apply_body_corrections` on deploy, so a body
-  fix needs no migration; a chapter TITLE does (`seed_books` never rewrites one).
+  The `orphan-open-quote` class now sees that shape. **A content-blind
+  transform must not go in `BODY_CORRECTIONS`**: an entry reaches every
+  language edition of its slug on every deploy, and "no `”` in this body" is
+  NOT a proof it sets no quotes — 126 translated bodies quote with `‘…’` or
+  `„…“` and carry no `”`. Do a one-off strip of the English rows in a
+  migration (0138) instead. String PAIRS on stored text are fine there — they
+  cannot match another language — and reach prod through
+  `apply_body_corrections` on deploy with no migration; a chapter TITLE needs
+  one (`seed_books` never rewrites it).
+  **A stored-text pair that rewrites an earlier raw-scan pair's OUTPUT kills
+  that pair** — neither side is left in the fixture, and
+  `test_no_replacement_pair_is_dead` fails. Change the earlier pair to write
+  the final text directly; the stored-text pair then only ever fires on prod.

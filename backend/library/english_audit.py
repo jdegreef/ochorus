@@ -484,6 +484,35 @@ def _orphan_quotes(blocks: list[str]) -> Iterator[tuple[str, int, str]]:
         depth = max(0, depth + opens - closes)
 
 
+#: A quote mark opening mid-sentence on a lowercase word ("a king of poor ‘and
+#: afflicted persons"). Written mark-first, lookbehind after: a pattern that
+#: OPENS on a lookbehind gives `re` no literal to scan for (3x slower).
+_MID_OPENER = re.compile(r"[‘“](?<=[a-z] [‘“])(?=[a-z])")
+_CLOSER = {"‘": re.compile(r"[\w.,;:!?]’(?![a-z])"), "“": re.compile("”")}
+
+# Above this many unclosed mid-sentence openers per 10,000 words, a work's
+# opening marks are a scan's margin rules, not quotation. Real quotation rarely
+# opens mid-sentence on a lowercase word and nearly always closes in the same
+# block; the OCR of `the-bruised-reed`'s 1838 scan read a rule as `‘`/`“` 178
+# times against no `”` at all (38.3 per 10k). Every other work sits at 0-3, the
+# highest at 17.1 (`walking-with-god`, whose quotations close with STRAIGHT
+# marks — a different defect). Judged as a density because a long book earns a
+# few, and `orphan-close-quote` cannot see this: it looks the other way.
+ORPHAN_OPENER_DENSITY = 20
+
+
+def _orphan_openers(t: str) -> Iterator[int]:
+    for m in _MID_OPENER.finditer(t):
+        if not _CLOSER[m.group()].search(t, m.end()):
+            yield m.start()
+
+
+def _dense_only(per_work: dict[str, list[Finding]], words: Counter[str]) -> Iterator[Finding]:
+    for work, rows in per_work.items():
+        if words[work] and len(rows) * 10_000 / words[work] > ORPHAN_OPENER_DENSITY:
+            yield from rows
+
+
 # Above this many hits in ONE work, space-before-punct is the era's typography
 # rather than an italics-strip artifact. The distribution is sharply bimodal:
 # 777 / 647 / 586 in the three 17th-century texts, against 1 or 2 in a modern
@@ -528,16 +557,23 @@ def audit_records(records: Iterable[Record]) -> list[Finding]:
     """Every finding across `records`, per-work aggregation applied."""
     found: list[Finding] = []
     spb: dict[str, list[Finding]] = defaultdict(list)
+    openers: dict[str, list[Finding]] = defaultdict(list)
+    words: Counter[str] = Counter()
     counts = library_word_counts()
 
     for rec in records:
         blocks = [text(b) for _, b in BLOCK.findall(rec.body_html or "")]
         for i, t in enumerate(blocks):
+            words[rec.work] += len(t.split())
             for label, ex in _check_block(t, rec.is_pd, counts):
                 found.append(Finding(label, rec.where, rec.work, i, ex))
             for m in SPACE_BEFORE_PUNCT.finditer(t):
                 spb[rec.work].append(
                     Finding("space-before-punct", rec.where, rec.work, i, excerpt(t, m.start()))
+                )
+            for at in _orphan_openers(t):
+                openers[rec.work].append(
+                    Finding("orphan-open-quote", rec.where, rec.work, i, excerpt(t, at))
                 )
         for label, i, ex in _orphan_quotes(blocks):
             found.append(Finding(label, rec.where, rec.work, i, ex))
@@ -555,6 +591,7 @@ def audit_records(records: Iterable[Record]) -> list[Finding]:
                 found.append(Finding("title-case-vs-body", rec.where, rec.work, -1, rec.title))
 
     found.extend(_sporadic_only(spb))
+    found.extend(_dense_only(openers, words))
     return found
 
 
