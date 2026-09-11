@@ -1516,6 +1516,13 @@
    "art": true,
    "scrim": 0.6
   },
+  "sw/till-he-come": {
+   "ground": "a3055051836f3acb228877c9eba9aa2ac60092c1dae375f14658610239b4cccf",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.75
+  },
   "sw/true-vine": {
    "ground": "b21a2d190081d450028f966856d1b99f90382b464512156ff1a739954a354ca0",
    "style": "devotional",
@@ -1803,12 +1810,26 @@
    "art": true,
    "scrim": 0.95
   },
+  "fr/ministry-of-intercession": {
+   "ground": "96b187e084613b3d51091d14819fca905ed98f1b9ca4dec88a1155a84e8cd88a",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.75
+  },
   "fr/true-vine": {
    "ground": "2ae642dca179a7ded689f75d540d4c5d1a3efb7566068a1a8d2bf878f6aa5185",
    "style": "devotional",
    "script": "latin",
    "art": true,
    "scrim": 0.85
+  },
+  "fr/he-holds-my-tomorrows": {
+   "ground": "0cce2cab2c9ba862dd5969db5c2296538ef55d9b03fb7d0c3c525045db76328b",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.55
   },
   "fr/the-key-in-my-hand": {
    "ground": "ba27a94899641bcec2ba008e0202250f5fee68a4e26fa217ea2905ad707834e3",
@@ -1823,6 +1844,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.75
+  },
+  "fr/humility-2": {
+   "ground": "b7ebe70a06a8600d5d850fffd7c551de82f033f08f76304260f30eefb4ecf8d7",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.95
   },
   "fr/prayer-the-pulse-of-life": {
    "ground": "6c5bc6830807a295441d54775ee22ec5cd828cfa5222bfb36243c44def42432c",
