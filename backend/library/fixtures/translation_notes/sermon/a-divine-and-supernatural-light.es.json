@@ -1,0 +1,125 @@
+{
+ "kind": "sermon",
+ "slug": "a-divine-and-supernatural-light",
+ "language": "es",
+ "job_issue": 1708,
+ "references": [
+  {
+   "reference": "Matthew 16:17",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 16:16",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 28:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jude 1:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "1 John 3:6",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "3 John 1:11",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "John 14:19",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "John 17:3",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Galatians 1:15",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Psalm 119:18",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json",
+   "block_index": 40
+  },
+  {
+   "reference": "Psalm 25:14",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "John 6:40",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "John 17:6",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "John 12:44",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Luke 12:57",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "2 Peter 1:16",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Jeremiah 23:28",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Corinthians 1:26",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "self_rendered",
+   "block_index": 57
+  }
+ ]
+}

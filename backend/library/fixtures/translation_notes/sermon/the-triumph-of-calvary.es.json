@@ -1,0 +1,97 @@
+{
+ "kind": "sermon",
+ "slug": "the-triumph-of-calvary",
+ "language": "es",
+ "job_issue": 1710,
+ "references": [
+  {
+   "reference": "Isaiah 63:1",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 63:2",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 63:4",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 63:5",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 63:6",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 2:23",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Isaiah 26:19",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:15",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Isaiah 42:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 42:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 42:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Malachi 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 22:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 20:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 34:16",
+   "status": "self_rendered"
+  }
+ ]
+}
