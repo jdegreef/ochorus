@@ -1865,6 +1865,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.5
+  },
+  "pt/watchman-nee-a-life": {
+   "ground": "7eec5d899fdf20ad8253da371099ae46d4bea27501f7d6d2fb692804314a473a",
+   "style": "house",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.8
   }
  }
 }
