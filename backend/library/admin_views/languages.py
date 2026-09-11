@@ -152,7 +152,10 @@ class AdminLanguageGoLiveView(AdminAudited, APIView):
 
     Returns 409 with the blockers when a language isn't ready. `force: true`
     launches anyway, for the case where you disagree with the bar rather than as
-    a way around it; the response records that it was forced.
+    a way around it; the response records that it was forced. `force` does NOT
+    override a hard blocker (a missing/incomplete UI catalogue): that launch
+    would guarantee a failed reader build, so it is refused (409, reason
+    `unbuildable`) with or without force.
     """
 
     permission_classes = [IsAdminEmail]
