@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "george-muller",
+ "language": "fr",
+ "job_issue": 2199,
+ "references": [
+  {
+   "reference": "Psalm 119:68",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

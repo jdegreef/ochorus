@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "john-bunyan",
+ "language": "fr",
+ "job_issue": 2200,
+ "references": [
+  {
+   "reference": "Jeremiah 49:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 15:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Job 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

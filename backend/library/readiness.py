@@ -66,6 +66,13 @@ class Check:
     detail: str
     current: int | None = None
     required: int | None = None
+    # Can ``go_live(force=True)`` override this check when it fails? ``force``
+    # exists for "I disagree with the bar" — a judgement about whether there is
+    # enough to read yet (books, bios, plans). A FALSE here marks a check whose
+    # failure is not a judgement but a guarantee that the reader's *build* will
+    # fail, so overriding it only trades a caught problem for an uncaught one.
+    # See ``_ui_check``.
+    forceable: bool = True
 
     @property
     def blocking(self) -> bool:
@@ -86,11 +93,18 @@ class Report:
     def blockers(self) -> list[Check]:
         return [c for c in self.checks if c.blocking]
 
+    @property
+    def hard_blockers(self) -> list[Check]:
+        """Blockers ``force`` can't override (see ``Check.forceable``)."""
+        return [c for c in self.checks if c.blocking and not c.forceable]
+
     def as_dict(self) -> dict:
         return {
             "code": self.code,
             "ready": self.ready,
             "blocking": [c.key for c in self.blockers],
+            # A subset of ``blocking``: the ones ``force`` can't get past.
+            "unforceable": [c.key for c in self.hard_blockers],
             "checks": [asdict(c) for c in self.checks],
         }
 
@@ -369,9 +383,15 @@ def _ui_check(lang: Language) -> Check:
     present, total = counts
     if present >= total:
         return Check("ui", "Interface strings", PASS, f"All {total} translated.", total, total)
+    # A live locale with no (or an incomplete) UI catalogue cannot ship: the
+    # reader is a static build that fails on it — `fetch-live-locales.mjs` when a
+    # live locale isn't a compiled UI locale at all, `messageCatalogues.test.ts`
+    # when an advertised one has a missing key. So this failure is unforceable:
+    # launching past it doesn't override a bar, it guarantees a red deploy.
     if present == 0:
         return Check(
-            "ui", "Interface strings", FAIL, f"No {lang.code} catalogue.", 0, total
+            "ui", "Interface strings", FAIL, f"No {lang.code} catalogue.", 0, total,
+            forceable=False,
         )
     return Check(
         "ui",
@@ -380,6 +400,7 @@ def _ui_check(lang: Language) -> Check:
         f"{total - present} string(s) would render in English.",
         present,
         total,
+        forceable=False,
     )
 
 

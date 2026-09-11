@@ -1802,6 +1802,27 @@
    "script": "latin",
    "art": true,
    "scrim": 0.55
+  },
+  "pt/the-god-of-all-comfort": {
+   "ground": "9d3aeb380b8125f061f036c872017e2e676b1bf72f111a9bb8f780485f0b2d25",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.95
+  },
+  "pt/holy-in-christ": {
+   "ground": "21eece141c473e4dfdafc27eaccff0123de8db692633ada21f606b9483ccb49f",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 1
+  },
+  "pt/ministry-of-intercession": {
+   "ground": "c1fad63f32eaeb37a2ec11401f9a76c668fcacf130b92e1353ae28eb7eb28231",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.75
   }
  }
 }

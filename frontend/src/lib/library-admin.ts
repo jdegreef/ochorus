@@ -198,6 +198,10 @@ export interface AdminLanguageReadiness {
 	ready: boolean;
 	/** Keys of the failing checks, for a one-line summary. */
 	blocking: string[];
+	/** Subset of `blocking` that `force` can't override — a launch past these
+	 *  guarantees a failed reader build (today: a missing/incomplete UI
+	 *  catalogue), so "launch anyway" is refused for them. */
+	unforceable: string[];
 	status: string;
 	checks: ReadinessCheck[];
 	thresholds: LanguageThresholds;
@@ -225,7 +229,9 @@ export const updateAdminLanguageThresholds = (
 // must not merge them into one green tick.
 export interface GoLiveResult {
 	launched: boolean;
-	/** Only on refusal: 'not_ready', with `readiness.blocking` explaining why. */
+	/** Only on refusal: 'not_ready' (force overrides it) or 'unbuildable' (a hard
+	 *  blocker force can't override — see `readiness.unforceable`). `readiness`
+	 *  explains why in both cases. */
 	reason?: string;
 	already_live?: boolean;
 	/** True when launched despite failing checks. */

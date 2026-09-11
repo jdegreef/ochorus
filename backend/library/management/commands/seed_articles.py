@@ -19,7 +19,7 @@ from __future__ import annotations
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from library.content_fixtures import load_all_rows
+from library.content_fixtures import iter_work_files
 from library.management.commands.seed_books import require_natural_format
 from library.models import Article
 
@@ -55,45 +55,41 @@ class Command(BaseCommand):
     # half-synced article set.
     @transaction.atomic
     def handle(self, *args, **opts):
-        try:
-            rows = load_all_rows()
-        except OSError:
-            self.stdout.write("No content fixtures available — nothing to seed.")
-            return
-        # A ValueError (corrupt file, path named) propagates: "one file is
-        # broken" must abort the deploy, not skip all content.
-
-        require_natural_format(rows, "seed_articles")
-
         created = updated = 0
-        for row in rows:
-            if row.get("model") != "library.article":
-                continue
-            f = row["fields"]
-            language = f.get("language", "en")
-            article = Article.objects.filter(
-                slug=f["slug"], language=language
-            ).first()
+        # Stream one work file at a time so peak memory is a single file, not the
+        # whole ~170 MB fixture parsed into Python objects at once. A corrupt file
+        # still raises with its path named (iter_work_files), aborting the deploy
+        # rather than seeding a partial library.
+        for _path, rows in iter_work_files():
+            require_natural_format(rows, "seed_articles")
+            for row in rows:
+                if row.get("model") != "library.article":
+                    continue
+                f = row["fields"]
+                language = f.get("language", "en")
+                article = Article.objects.filter(
+                    slug=f["slug"], language=language
+                ).first()
 
-            if article is None:
-                Article.objects.create(
-                    slug=f["slug"],
-                    language=language,
-                    # Omit fields the fixture row doesn't carry so the model
-                    # default applies (e.g. a row predating a field).
-                    **{k: f[k] for k in ARTICLE_FIELDS if k in f},
-                )
-                created += 1
-                continue
+                if article is None:
+                    Article.objects.create(
+                        slug=f["slug"],
+                        language=language,
+                        # Omit fields the fixture row doesn't carry so the model
+                        # default applies (e.g. a row predating a field).
+                        **{k: f[k] for k in ARTICLE_FIELDS if k in f},
+                    )
+                    created += 1
+                    continue
 
-            changed = [
-                k for k in UPDATE_FIELDS if k in f and getattr(article, k) != f[k]
-            ]
-            if changed:
-                for k in changed:
-                    setattr(article, k, f[k])
-                article.save()
-                updated += 1
+                changed = [
+                    k for k in UPDATE_FIELDS if k in f and getattr(article, k) != f[k]
+                ]
+                if changed:
+                    for k in changed:
+                        setattr(article, k, f[k])
+                    article.save()
+                    updated += 1
 
         if created or updated:
             self.stdout.write(

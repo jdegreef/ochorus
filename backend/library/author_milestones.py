@@ -52,4 +52,52 @@ AUTHOR_MILESTONES: dict[str, list[dict]] = {
         {"year": 1948, "label": "Pursuit of God", "key": True},
         {"year": 1963, "label": "Died", "key": True},
     ],
+    "charles-h-spurgeon": [
+        {"year": 1834, "label": "Born", "key": True},
+        {"year": 1850, "label": "Converted"},
+        {"year": 1861, "label": "Tabernacle", "key": True},
+        {"year": 1892, "label": "Died", "key": True},
+    ],
+    "j-c-ryle": [
+        {"year": 1816, "label": "Born", "key": True},
+        {"year": 1841, "label": "Ordained"},
+        {"year": 1880, "label": "Bishop", "key": True},
+        {"year": 1900, "label": "Died", "key": True},
+    ],
+    "dwight-l-moody": [
+        {"year": 1837, "label": "Born", "key": True},
+        {"year": 1855, "label": "Converted"},
+        {"year": 1873, "label": "Britain tours"},
+        {"year": 1889, "label": "Bible Institute", "key": True},
+        {"year": 1899, "label": "Died", "key": True},
+    ],
+    "george-whitefield": [
+        {"year": 1714, "label": "Born", "key": True},
+        {"year": 1739, "label": "Field preaching", "key": True},
+        {"year": 1770, "label": "Died", "key": True},
+    ],
+    "hudson-taylor": [
+        {"year": 1832, "label": "Born", "key": True},
+        {"year": 1854, "label": "To China"},
+        {"year": 1865, "label": "Founds CIM", "key": True},
+        {"year": 1905, "label": "Died", "key": True},
+    ],
+    "william-carey": [
+        {"year": 1761, "label": "Born", "key": True},
+        {"year": 1793, "label": "To India", "key": True},
+        {"year": 1834, "label": "Died", "key": True},
+    ],
+    "amy-carmichael": [
+        {"year": 1867, "label": "Born", "key": True},
+        {"year": 1895, "label": "To India"},
+        {"year": 1901, "label": "Dohnavur", "key": True},
+        {"year": 1951, "label": "Died", "key": True},
+    ],
+    "charles-finney": [
+        {"year": 1792, "label": "Born", "key": True},
+        {"year": 1821, "label": "Converted"},
+        {"year": 1830, "label": "Revival", "key": True},
+        {"year": 1851, "label": "Oberlin"},
+        {"year": 1875, "label": "Died", "key": True},
+    ],
 }

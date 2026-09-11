@@ -1,0 +1,794 @@
+{
+ "kind": "book",
+ "slug": "ministry-of-intercession",
+ "language": "pt",
+ "job_issue": 1477,
+ "references": [
+  {
+   "reference": "João 15:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 16:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 11:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tiago 4:2",
+   "status": "mined",
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "Isaías 59:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 64:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 6:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 18:27",
+   "status": "mined",
+   "source_file": "absolute-surrender.pt.json"
+  },
+  {
+   "reference": "2 Coríntios 9:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 11:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 11:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 1:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 4:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 4:31-33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tiago 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 10:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 10:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 10:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 12:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 12:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 28:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 28:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 13:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 11:5-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 62:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Crônicas 15:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronômio 3:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 11:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 18:1-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 18:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 19:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 32:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 32:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 11:24",
+   "status": "mined",
+   "source_file": "godliness.pt.json"
+  },
+  {
+   "reference": "Êxodo 32:31-32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 33:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 33:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 34:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronômio 9:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Reis 18:43",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tiago 5:16-17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Reis 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tiago 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 3:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 15:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 11:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 40:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 15:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 15:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 15:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 17:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 4:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jó 15:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jó 21:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 12:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Josué 7:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 33:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Josué 7:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 63:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezequiel 22:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rute 3:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremias 8:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremias 3:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremias 12:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 7:24",
+   "status": "mined",
+   "source_file": "absolute-surrender.pt.json"
+  },
+  {
+   "reference": "Romanos 7:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:2",
+   "status": "mined",
+   "source_file": "absolute-surrender.pt.json"
+  },
+  {
+   "reference": "Colossenses 1:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 5:20-21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 12:9-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 15:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timóteo 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 5:6-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 9:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 5:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 17:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 24:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 89:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 40:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 2:6",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Gálatas 5:16",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Romanos 8:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 5:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 8:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 15:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 10:52",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremias 29:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Crônicas 15:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronômio 6:4-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 145:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 4:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 11:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 5:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zacarias 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:26",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Romanos 8:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 6:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judas 20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 6:9",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "João 4:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 4:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 2:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 3:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 14:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 3:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 1:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 5:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 9:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 9:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 11:1",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Hebreus 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 14:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 30:18-19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 4:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 17:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Miqueias 7:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 9:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timóteo 1:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 11:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 10:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 9:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 6:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 4:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 1:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 3:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Tessalonicenses 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timóteo 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filemom 4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 3:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 5:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 15:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 1:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 1:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 5:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filemom 22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timóteo 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 18:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 85:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Habacuque 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 138:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 57:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Oseias 6:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 30:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Amós 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 4:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezequiel 14:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 66:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezequiel 36:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 3:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 58:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juízes 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Oseias 6:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 22:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 13:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 6:14",
+   "status": "self_rendered"
+  }
+ ]
+}

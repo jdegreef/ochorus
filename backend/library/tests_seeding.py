@@ -467,23 +467,11 @@ class SeedBooksChapterDriftTests(TestCase):
         cls.book = Book.objects.filter(language="en").first()
 
     def _drift(self):
-        # chapters_by_book keyed exactly as the command builds it.
-        from library.content_fixtures import load_all_rows
-        from library.management.commands.seed_books import chapter_drift
+        # Exactly the drift report seed_books emits, streamed one work file at a
+        # time (the command runs the same per-book check inline while it seeds).
+        from library.management.commands.seed_books import iter_chapter_drift
 
-        chapters_by_book: dict = {}
-        for r in load_all_rows():
-            if r["model"] == "library.chapter":
-                chapters_by_book.setdefault(
-                    tuple(r["fields"]["book"]), []
-                ).append(r["fields"])
-        drifted = {
-            b.slug: reason
-            for b, reason in chapter_drift(
-                Book.objects.prefetch_related("chapters"), chapters_by_book
-            )
-        }
-        return drifted
+        return {b.slug: reason for b, reason in iter_chapter_drift()}
 
     def test_faithful_seed_reports_no_drift(self):
         self.assertEqual(self._drift(), {})
@@ -563,7 +551,7 @@ class SeedBooksChapterDriftTests(TestCase):
         self.book.delete()  # so this run has real work to commit
         out = StringIO()
         with patch(
-            "library.management.commands.seed_books.chapter_drift",
+            "library.management.commands.seed_books.chapter_drift_reason",
             side_effect=RuntimeError("boom"),
         ):
             call_command("seed_books", stdout=out, stderr=out)
@@ -878,9 +866,9 @@ class SeedArticlesTests(TestCase):
     """`seed_articles`, focused on the create-only review badge.
 
     There are no committed article translation fixtures yet (every article is an
-    English original), so these drive the seed with a synthetic fixture row via
-    ``load_all_rows`` — the same shape ``content_fixtures`` would return — rather
-    than a checked-in ``.es.json``. The invariant under test is the one the
+    English original), so these drive the seed with a synthetic fixture file via
+    ``iter_work_files`` — the same ``(path, rows)`` shape it yields — rather than
+    a checked-in ``.es.json``. The invariant under test is the one the
     constitution stresses: ``source_type`` is create-only, so an approval is not
     reverted on the next deploy.
     """
@@ -902,8 +890,8 @@ class SeedArticlesTests(TestCase):
 
     def test_seed_creates_the_translation_badge(self):
         with patch(
-            "library.management.commands.seed_articles.load_all_rows",
-            return_value=self._rows("ai_unreviewed"),
+            "library.management.commands.seed_articles.iter_work_files",
+            return_value=[("what-is-grace.es.json", self._rows("ai_unreviewed"))],
         ):
             call_command("seed_articles", verbosity=0)
         art = Article.objects.get(slug="what-is-grace", language="es")
@@ -915,8 +903,8 @@ class SeedArticlesTests(TestCase):
         # ai_unreviewed on the next deploy would silently restore the "awaiting
         # native review" badge and make approve_article_translation useless.
         with patch(
-            "library.management.commands.seed_articles.load_all_rows",
-            return_value=self._rows("ai_unreviewed"),
+            "library.management.commands.seed_articles.iter_work_files",
+            return_value=[("what-is-grace.es.json", self._rows("ai_unreviewed"))],
         ):
             call_command("seed_articles", verbosity=0)
             call_command(

@@ -1,0 +1,1279 @@
+{
+ "kind": "book",
+ "slug": "holy-in-christ",
+ "language": "pt",
+ "job_issue": 1476,
+ "references": [
+  {
+   "reference": "1 Pedro 1:15",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.pt.json"
+  },
+  {
+   "reference": "Romanos 8:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 5:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 5:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timóteo 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Tessalonicenses 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 1:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 20:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 5:48",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "Filipenses 1:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 4:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 31:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 31:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 4:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 1:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 1:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 1:16",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.pt.json"
+  },
+  {
+   "reference": "Êxodo 3:4-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 10:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 4:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 13:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 2:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 57:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 12:29",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.pt.json"
+  },
+  {
+   "reference": "Hebreus 12:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 11:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 9:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 15:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 34:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 96:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 99:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Provérbios 9:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 8:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 7:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 1:15-17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 15:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 13:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Números 3:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 11:45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 43:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 12:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Números 3:12-13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 35:8-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 13:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 1:30",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "Êxodo 15:11-17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 29:43",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 10:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 6:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 15:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 14:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 12:5-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 1:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 97:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 99",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 22:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 22:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 19:4-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Números 15:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 20:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 22:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 3:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 24:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 2:8",
+   "status": "mined",
+   "source_file": "humility-2.pt.json"
+  },
+  {
+   "reference": "Hebreus 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 10:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 10:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 4:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 25:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 46:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 14:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 14:10",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "1 Coríntios 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 6:19",
+   "status": "mined",
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "Efésios 2:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 14:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 28:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 51:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 2:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zacarias 14:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 20:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Números 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 11:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 11:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 6:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremias 7:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 7:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 33:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 2:20",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "Josué 24:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 21:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 43:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 43:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 12:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 29:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 41:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 40:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 2:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 1:5",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Romanos 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 3:20",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "Romanos 8:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 1:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 6:1-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 6:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 6:9-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 14:11",
+   "status": "mined",
+   "source_file": "the-way-to-god.pt.json"
+  },
+  {
+   "reference": "Mateus 5:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 1:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 6:69",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 106:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 65:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 3:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 7:39",
+   "status": "mined",
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "João 14:26",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "2 Tessalonicenses 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 22:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 3:14-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 7:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 2:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 17:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 17:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 8:31-32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 18:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 14:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 17:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 10:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 10:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 26:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 19:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 19:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 9:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 16:24",
+   "status": "mined",
+   "source_file": "absolute-surrender.pt.json"
+  },
+  {
+   "reference": "Atos 3:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 26:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 11:1",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.pt.json"
+  },
+  {
+   "reference": "1 Pedro 1:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 1:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 5:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 11:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronômio 3:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 106:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 9:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judas 1:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judas 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 10:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 4:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 7:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 7:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 7:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 7:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 14:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 4:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 3:5",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "Romanos 6:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 15:56",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:2",
+   "status": "mined",
+   "source_file": "absolute-surrender.pt.json"
+  },
+  {
+   "reference": "1 Coríntios 7:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 7:24",
+   "status": "mined",
+   "source_file": "absolute-surrender.pt.json"
+  },
+  {
+   "reference": "Romanos 7:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 1:74-75",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 5:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 9:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 7:16",
+   "status": "mined",
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "Romanos 14:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 13:52",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Neemias 8:10-12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 16:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 30:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 12:10",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "Gálatas 6:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 45:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 61:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 35:8-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 1:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 10:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 28:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 1:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 1:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 7:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 10:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 4:11",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "Filipenses 1:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 2:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 2:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timóteo 4:4",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "1 Timóteo 4:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timóteo 1:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 3:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 9:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 5:25-26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timóteo 2:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 29:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Crônicas 29:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tiago 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 13:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 2:10",
+   "status": "mined",
+   "source_file": "humility-2.pt.json"
+  },
+  {
+   "reference": "1 Tessalonicenses 3:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 3:12",
+   "status": "mined",
+   "source_file": "absolute-surrender.pt.json"
+  },
+  {
+   "reference": "1 João 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 13:10",
+   "status": "mined",
+   "source_file": "absolute-surrender.pt.json"
+  },
+  {
+   "reference": "1 Coríntios 13:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timóteo 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tessalonicenses 4:3",
+   "status": "mined",
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "Daniel 4:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 6:10",
+   "status": "mined",
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "2 Coríntios 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 40:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timóteo 2:21",
+   "status": "mined",
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "1 Pedro 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 10:19-22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 9:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 10:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 7:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 7:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 7:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timóteo 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 21:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 2:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 12:10",
+   "status": "mined",
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "Hebreus 12:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 5:8-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 40:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 22:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronômio 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 2:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 4:13-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 2:20",
+   "status": "mined",
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "Êxodo 29:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 30:25-32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 21:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 89:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 10:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 11:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 12:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 16:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 6:45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 23:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 92:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 133:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Pedro 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 22:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 22:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 16:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 5:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Pedro 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Tessalonicenses 1:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipse 22:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 29:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 6:57",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 9:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tito 2:14",
+   "status": "self_rendered"
+  }
+ ]
+}

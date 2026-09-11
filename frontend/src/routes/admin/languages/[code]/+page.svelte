@@ -630,7 +630,17 @@
 								>
 									{launching ? 'Taking live…' : 'Go live'}
 								</button>
-								{#if !readiness.ready}
+								{#if readiness.unforceable.length}
+									<!-- A hard blocker (a missing/incomplete UI catalogue) can't be
+									     forced: launching would fail the reader build. So no "launch
+									     anyway" here — say what to fix instead. -->
+									<span class="text-small text-warning">
+										Can't go live: {readiness.unforceable.join(', ')} must be
+										resolved first (force won't skip {readiness.unforceable.length > 1
+											? 'these'
+											: 'this'}).
+									</span>
+								{:else if !readiness.ready}
 									<span class="text-small text-muted">
 										Clear the {readiness.blocking.length} failing check(s) first, or
 									</span>

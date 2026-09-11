@@ -456,6 +456,37 @@ class ReadinessReportTests(TestCase):
         bios = {c.key: c for c in self._report(self.es).checks}["bios"]
         self.assertEqual(bios.status, "pass")
 
+    def test_a_missing_ui_catalogue_fails_and_is_not_forceable(self):
+        # A count bar (books, bios) is a judgement `force` can override. A
+        # missing UI catalogue is not: a live locale with no compiled catalogue
+        # cannot build, so its failure is marked unforceable and go-live refuses
+        # it even when forced.
+        with mock.patch.object(readiness_module, "_ui_counts", return_value=(0, 120)):
+            ui = readiness_module._ui_check(self.es)
+        self.assertEqual(ui.status, "fail")
+        self.assertFalse(ui.forceable)
+
+    def test_an_incomplete_ui_catalogue_is_also_unforceable(self):
+        with mock.patch.object(readiness_module, "_ui_counts", return_value=(119, 120)):
+            ui = readiness_module._ui_check(self.es)
+        self.assertEqual(ui.status, "fail")
+        self.assertFalse(ui.forceable)
+
+    def test_hard_blockers_are_only_the_unforceable_failures(self):
+        # Zero out the count bars so the UI catalogue is the sole blocker, then
+        # confirm it lands in `hard_blockers` (and the endpoint's `unforceable`
+        # list) while a normal count failure would not.
+        self.es.min_books = 0
+        self.es.min_bios = 0
+        self.es.min_plans = 0
+        self.es.require_all_topics = False
+        self.es.save()
+        with mock.patch.object(readiness_module, "_ui_counts", return_value=(0, 120)):
+            r = self._report(self.es)
+        self.assertFalse(r.ready)
+        self.assertEqual([c.key for c in r.hard_blockers], ["ui"])
+        self.assertEqual(r.as_dict()["unforceable"], ["ui"])
+
 
 class AdminLanguageReadinessEndpointTests(TestCase):
     """The admin readiness report and the editable bar."""
@@ -644,6 +675,32 @@ class GoLiveTests(TestCase):
         self.assertTrue(res.data["forced"], "an override must be recorded as one")
         self.ar.refresh_from_db()
         self.assertEqual(self.ar.status, "live")
+
+    def test_force_cannot_launch_a_locale_with_no_ui_catalogue(self):
+        # The incident this guards: a language flipped live with no compiled UI
+        # locale fails every `fetch-live-locales.mjs` run and freezes ALL
+        # deploys. `force` overrides judgement bars, never this — a forced launch
+        # here would take the site down, not put the language up.
+        from unittest.mock import patch
+
+        ui_fail = readiness_module.Check(
+            "ui", "Interface strings", readiness_module.FAIL, "No ar catalogue.",
+            0, 120, forceable=False,
+        )
+        rep = readiness_module.Report("ar", [ui_fail])
+        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+            with mock.patch.object(readiness_module, "report", return_value=rep):
+                res = self.client.post(
+                    "/api/admin/languages/ar/go-live/", {"force": True}, format="json"
+                )
+        self.assertEqual(res.status_code, 409)
+        self.assertFalse(res.data["launched"])
+        self.assertEqual(res.data["reason"], "unbuildable")
+        self.assertEqual(res.data["blocking"], ["ui"])
+        self.assertEqual(res.data["readiness"]["unforceable"], ["ui"])
+        # It did NOT launch — the row stays draft.
+        self.ar.refresh_from_db()
+        self.assertEqual(self.ar.status, "draft")
 
     def test_a_ready_language_launches_and_is_stamped(self):
         with self._perm_and_ready(ready=True):
