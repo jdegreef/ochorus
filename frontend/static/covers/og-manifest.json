@@ -1851,6 +1851,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.35
+  },
+  "pt/cheque-book": {
+   "ground": "d5b24d6d237dc26380030d5597707659508f5b8ed69c8be8969fb3ebbd82bfce",
+   "style": "revival",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.5
   }
  }
 }

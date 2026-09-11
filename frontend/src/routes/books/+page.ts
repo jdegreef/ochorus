@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-11: Portuguese book — cheque-book (#1585), C. H. Spurgeon's daily
+// promise devotional, 13 chapters ("O Livro de Cheques do Banco da Fé"). Book pages are
+// prerendered per locale, so /pt/books and the shelf rebuild with the translated title and the
+// reader page bakes the 13 chapters. No plans/+page.ts touch owed — cheque-book backs no
+// LAUNCH_PLANS/CURATED_PLANS entry (grepped plan_seed.py).
 // prerender refresh 2026-09-11: Portuguese book — purity-of-heart (#1584), William Booth's
 // holiness appeal, 10 chapters ("Pureza de Coração"). Book pages are prerendered per locale,
 // so /pt/books and the shelf rebuild with the translated title and the reader page bakes the
