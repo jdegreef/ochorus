@@ -71,6 +71,14 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 	return {
 		get active() {
 			return active;
+		},
+		/**
+		 * Pre-light a section before the observer catches up — for a jump handler
+		 * that wants the tapped link lit at once rather than a frame after the
+		 * smooth scroll starts.
+		 */
+		set(id: string) {
+			active = id;
 		}
 	};
 }
