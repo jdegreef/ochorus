@@ -1809,6 +1809,13 @@
    "script": "latin",
    "art": true,
    "scrim": 1
+  },
+  "pt/ministry-of-intercession": {
+   "ground": "c1fad63f32eaeb37a2ec11401f9a76c668fcacf130b92e1353ae28eb7eb28231",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.75
   }
  }
 }
