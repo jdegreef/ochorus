@@ -1,0 +1,340 @@
+{
+ "kind": "book",
+ "slug": "absolute-surrender",
+ "language": "sw",
+ "job_issue": 2167,
+ "references": [
+  {
+   "reference": "1 Wafalme 20:1-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wafalme 20:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wafilipi 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Kutoka 9:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 9:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 9:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 9:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 7:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 13:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 13:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 13:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 4:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 4:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 13:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 13:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 13:3-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 13:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 22:61-62",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 13:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 22:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 19:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 5:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 14:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 16:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 16:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 16:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 16:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 16:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 26:72",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 14:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 14:29; Luka 22:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 22:62",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 21:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Petro 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Petro 2:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matendo 5:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Petro 3:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Petro 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 18:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 18:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 18:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 18:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 1:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 17:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 14:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Thessalonians 4:1,10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 27:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:50",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:8",
+   "status": "self_rendered"
+  }
+ ]
+}
