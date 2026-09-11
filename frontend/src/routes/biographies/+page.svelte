@@ -11,7 +11,6 @@
 	import { ERAS, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
-	import CatalogLanguageNudge from '$lib/components/CatalogLanguageNudge.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -410,8 +409,6 @@
 		</nav>
 	{/if}
 	</div>
-
-	<CatalogLanguageNudge kind="authors" localizedCount={authors.length} />
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />

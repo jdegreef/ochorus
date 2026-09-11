@@ -14,7 +14,6 @@
 	import BookListRow from './BookListRow.svelte';
 	import GroupHeading from './GroupHeading.svelte';
 	import BookCover from './BookCover.svelte';
-	import CatalogLanguageNudge from './CatalogLanguageNudge.svelte';
 	import PageHeader from './PageHeader.svelte';
 	import EmptyState from './EmptyState.svelte';
 	import FilterSummary from './FilterSummary.svelte';
@@ -212,8 +211,6 @@
 		<span class="opacity-50">·</span>
 		{authorCount} {t('books.authorsWord')}
 	{/snippet}
-
-	<CatalogLanguageNudge kind="books" localizedCount={books.length} />
 
 	{#if loadError}
 		<!-- The API couldn't be reached. -->
