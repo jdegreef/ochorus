@@ -118,6 +118,7 @@ class AdminStatsView(APIView):
                         "sermons": 0,
                         "plans": 0,
                         "bios": 0,
+                        "articles": 0,
                         "words": 0,
                         "source_types": {
                             "public_domain": 0,
@@ -179,6 +180,11 @@ class AdminStatsView(APIView):
         en_bios = Author.objects.exclude(bio_html="").count()
         if en_bios:
             row("en")["bios"] = en_bios
+
+        # Articles are authorless per-language rows on a shared slug (like plans),
+        # so a plain per-language count is the whole story — no source split.
+        for r in Article.objects.values("language").annotate(n=Count("id")):
+            row(r["language"])["articles"] = r["n"]
 
         return sorted(
             rows.values(),
