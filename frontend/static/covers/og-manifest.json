@@ -1802,6 +1802,13 @@
    "script": "latin",
    "art": true,
    "scrim": 0.95
+  },
+  "pt/holy-in-christ": {
+   "ground": "21eece141c473e4dfdafc27eaccff0123de8db692633ada21f606b9483ccb49f",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 1
   }
  }
 }
