@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-11: French author bios (batch 6) — bernard-of-clairvaux (#2233),
+// clement-of-rome (#2234), cyprian-of-carthage (#2235), david-brainerd (#2236),
+// ignatius-of-antioch (#2237), jarena-lee (#2238), jeanne-guyon (#2239), john-owen (#2240),
+// julia-foote (#2241), richard-allen (#2242). Author pages are prerendered PER AUTHOR, so
+// each /fr/authors/<slug> page must rebuild for the translated bio and its <blockquote>
+// pull-quotes and prayer callouts.
 // prerender refresh 2026-09-10: French author bios (batch 5) — george-muller (#2199),
 // john-bunyan (#2200), richard-baxter (#2201), thomas-watson (#2202), amanda-berry-smith
 // (#2203), augustine-of-hippo (#2198). Author pages are prerendered PER AUTHOR, so each
