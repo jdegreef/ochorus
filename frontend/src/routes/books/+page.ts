@@ -2,6 +2,11 @@
 // Murray's 12 chapters on humility. Rebuilds /fr/books so the card carries its translated title
 // and the shared painting cover. This is humility-12-days' ONE source book, so seed_plans now
 // creates the (humility-12-days, fr) plan row — see the plans/+page.ts touch in this PR.
+// prerender refresh 2026-09-11: Portuguese book — talks-to-the-farmer (#1583), C. H. Spurgeon's
+// homely talks drawing spiritual lessons from farm life, 18 chapters ("Conversas com o
+// Lavrador"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
+// the translated title and the reader page bakes the 18 chapters. No plans/+page.ts touch owed
+// — talks-to-the-farmer backs no LAUNCH_PLANS/CURATED_PLANS entry (grepped plan_seed.py).
 // prerender refresh 2026-09-11: Portuguese book — ministry-of-intercession (#1477), Andrew
 // Murray's plea for a life of intercession, 18 chapters ("O Ministério da Intercessão").
 // Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
@@ -22,6 +27,9 @@
 // so the card carries its translated title and the shared painting cover. It is one of the
 // three source books of the deeper-life-in-christ plan, but the-masters-indwelling has no
 // Swahili edition yet, so seed_plans creates no sw plan row and no plans/+page.ts touch is owed.
+// prerender refresh 2026-09-10: one NEW Swahili book — absolute-surrender (#2167), Andrew
+// Murray's 9 addresses ("Kujisalimisha Kabisa"). Rebuilds /sw/books so the card carries its
+// translated title and the shared painting cover. Backs no plan.
 // prerender refresh 2026-09-10: one NEW Swahili book — around-the-wicket-gate (#2169),
 // C. H. Spurgeon's 11 friendly talks with seekers ("Karibu na Lango Jembamba"). Rebuilds
 // /sw/books so the card carries its translated title and the shared painting cover. Backs no plan.

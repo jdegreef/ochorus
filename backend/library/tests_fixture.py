@@ -1524,6 +1524,68 @@ class SermonShareCardTests(SimpleTestCase):
         )
 
 
+class TopicShareCardTests(SimpleTestCase):
+    """Every topic must have its Open Graph share card committed and current.
+
+    The topic page points ``og:image`` unconditionally at
+    ``/og/topics/<slug>.png`` (one card per slug, English — a prerendered page
+    cannot test for a file), so the guarantee lives here. Same two-sided split
+    as the sermon cards: this recomputes the strings off ``topic_seed.py`` — the
+    side that can read that module — while ``topicCards.test.ts`` recomputes the
+    emblem + curated accent and the generator's own composition.
+    """
+
+    def _recorded(self):
+        manifest_file = STATIC_DIR / "og" / "topics" / "og-manifest.json"
+        self.assertTrue(
+            manifest_file.is_file(),
+            "frontend/static/og/topics/og-manifest.json is missing — run "
+            "`cd frontend && npm run og:topics`",
+        )
+        return json.loads(manifest_file.read_text())["cards"]
+
+    def test_every_topic_has_a_share_card(self):
+        from library.topic_seed import TOPICS
+
+        missing = sorted(
+            slug
+            for slug, *_ in TOPICS
+            if not (STATIC_DIR / "og" / "topics" / f"{slug}.png").is_file()
+        )
+        self.assertEqual(
+            missing, [],
+            "topic with no og:image share card — run `cd frontend && "
+            "npm run og:topics` and commit frontend/static/og/topics/<slug>.png",
+        )
+
+    def test_every_card_was_drawn_from_the_topic_it_stands_in_for(self):
+        from library.topic_seed import TOPIC_SCRIPTURE, TOPICS
+
+        recorded = self._recorded()
+        stale, unrecorded = [], []
+        for slug, title, description, _books in sorted(TOPICS, key=lambda t: t[0]):
+            if slug not in recorded:
+                unrecorded.append(slug)
+                continue
+            ref, text = TOPIC_SCRIPTURE.get(slug, ("", ""))
+            # Mirrors `contentDigest` in generate-topic-og.mjs: the strings the
+            # card sets, in the order it joins them.
+            blob = "\0".join((title, description, ref, text))
+            if hashlib.sha256(blob.encode()).hexdigest() != recorded[slug]["content"]:
+                stale.append(slug)
+
+        self.assertEqual(
+            unrecorded, [],
+            "topic with no entry in og-manifest.json — run `npm run og:topics`",
+        )
+        self.assertEqual(
+            stale, [],
+            "the topic's title/description/scripture changed but its share card "
+            "did not — a forwarded link would show the previous text. Run "
+            "`cd frontend && npm run og:topics`",
+        )
+
+
 class SermonBriefCoverageTests(SimpleTestCase):
     """Every sermon on the shelf should carry its "In brief".
 
