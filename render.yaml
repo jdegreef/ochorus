@@ -188,13 +188,30 @@ services:
       # every SPA navigation. A more specific path wins over /* on Render, so
       # this overrides the blanket rule for these files only.
       #
-      # NOT extended to /covers, /portraits, /og: those names are STABLE (slug
-      # based, not hashed), so a redrawn cover reuses its URL — `immutable` would
-      # pin the old image in browsers that saw it. Giving them a moderate
-      # max-age is a separate call with a staleness cost; left as is for now.
+      # The images (/covers, /portraits, /og, /icons) can NOT be `immutable`:
+      # their names are STABLE (slug-based, not hashed), so a redrawn cover reuses
+      # its URL — the cover level-up work repaints plates → paintings under the
+      # same slug regularly. So they get a MODEST browser cache instead: an hour
+      # ends the per-visit revalidation of the ~110 covers + portraits a shelf
+      # loads, while `s-maxage=300` keeps the shared CDN fresh within five minutes
+      # of a redraw's deploy, so a repeat visitor sees new art within the hour and
+      # a first-time one immediately. (`max-age=0` re-validated every image on
+      # every visit; the audit's "0 resources with an efficient cache policy".)
       - path: /_app/immutable/*
         name: Cache-Control
         value: "public, max-age=31536000, immutable"
+      - path: /covers/*
+        name: Cache-Control
+        value: "public, max-age=3600, s-maxage=300"
+      - path: /portraits/*
+        name: Cache-Control
+        value: "public, max-age=3600, s-maxage=300"
+      - path: /og/*
+        name: Cache-Control
+        value: "public, max-age=3600, s-maxage=300"
+      - path: /icons/*
+        name: Cache-Control
+        value: "public, max-age=3600, s-maxage=300"
 
     routes:
       # Legacy WordPress URLs (ochorus.com was a WordPress site before this app
