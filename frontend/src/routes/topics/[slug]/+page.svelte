@@ -18,6 +18,7 @@
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { portraitPosition } from '$lib/portraits';
 	import { groupBooksByAuthor } from '$lib/topicBookGroups';
+	import { topicSectionOrder } from '$lib/topicSections';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -35,6 +36,16 @@
 	// Books grouped by author for author-clustered topics (the Puritans), null —
 	// a flat grid — for a diverse gallery (Women of Faith). See topicBookGroups.
 	const bookGroups = $derived(groupBooksByAuthor(topic.books));
+
+	// Content sections led by the type the topic is mostly made of; empties
+	// dropped. See topicSectionOrder.
+	const sectionOrder = $derived(
+		topicSectionOrder({
+			books: topic.books.length,
+			sermons: topic.sermons.length,
+			articles: articles.length
+		})
+	);
 
 	// Self-referential canonical, and hreflang only for the locales this shelf
 	// actually exists in. A topic no longer falls back to its English title — it
@@ -148,7 +159,7 @@
 		<EmptyState message={t('topics.empty')} />
 	{/if}
 
-	{#if topic.books.length}
+	{#snippet booksSection()}
 		<section class="mb-10">
 			<h2 class="section-label">{t('topics.books')}</h2>
 			{#if bookGroups}
@@ -181,9 +192,9 @@
 				</div>
 			{/if}
 		</section>
-	{/if}
+	{/snippet}
 
-	{#if topic.sermons.length}
+	{#snippet sermonsSection()}
 		<section class="mb-10">
 			<h2 class="section-label">{t('topics.sermons')}</h2>
 			<div class="grid gap-3 sm:grid-cols-2">
@@ -192,9 +203,9 @@
 				{/each}
 			</div>
 		</section>
-	{/if}
+	{/snippet}
 
-	{#if articles.length}
+	{#snippet articlesSection()}
 		<section class="mb-10">
 			<h2 class="section-label">{t('topics.articles')}</h2>
 			<div class="grid gap-3 sm:grid-cols-2">
@@ -203,7 +214,16 @@
 				{/each}
 			</div>
 		</section>
-	{/if}
+	{/snippet}
+
+	<!-- Content sections in prominence order: a topic leads with the type it is
+	     mostly made of (a sermon-heavy topic surfaces its sermons first), empty
+	     types dropped. See topicSectionOrder. -->
+	{#each sectionOrder as kind (kind)}
+		{#if kind === 'books'}{@render booksSection()}
+		{:else if kind === 'sermons'}{@render sermonsSection()}
+		{:else}{@render articlesSection()}{/if}
+	{/each}
 
 	<!-- Authors on this shelf: a reader here often wants more of a voice, not
 	     only more of the theme. Distinct writers behind the books and sermons. -->
