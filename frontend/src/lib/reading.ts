@@ -58,6 +58,16 @@ export function bookProgressPercent(order: number, chapterCount: number): number
 }
 
 /**
+ * Whether a book is finished: its last-opened chapter is its last. One rule in
+ * one place, so the "Finished" total (readingStats) and the /reading page's
+ * Finished section can't disagree about which books count. A chapter count of 0
+ * (unknown) is never finished — you can't complete what has no measured length.
+ */
+export function isBookFinished(order: number, chapterCount: number): boolean {
+	return chapterCount > 0 && order >= chapterCount;
+}
+
+/**
  * Localized reading-time label, e.g. "12 min read" / "dakika 12 za kusoma".
  * The count is substituted into the locale's template so word order stays
  * correct per language (the number isn't always at the front).
