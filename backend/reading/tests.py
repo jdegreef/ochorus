@@ -299,6 +299,103 @@ class ReadingSyncTests(TestCase):
         self.assertEqual(anon.get("/api/reading/state/").status_code, 401)
 
 
+class FinishedProgressTests(TestCase):
+    """Marking a work finished, and the union rule that keeps a completion.
+
+    ``finished_at`` splits "Continue reading" (null) from the finished/history
+    shelf (set). It resolves apart from the reading position: finishing unions
+    (earliest non-null wins, never cleared by a plain position write), reopening
+    never un-finishes, and only an explicit ``unfinish`` clears it — a live-only
+    signal the sign-in merge deliberately never carries.
+    """
+
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-000000000010")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="fin@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def _progress(self, slug="humility", **body):
+        return self.client.put(
+            f"/api/reading/progress/{slug}/", body, format="json"
+        )
+
+    def test_new_work_is_not_finished(self):
+        res = self._progress(chapter_order=1, paragraph_index=0)
+        self.assertIsNone(res.data["finished_at"])
+
+    def test_finished_at_marks_and_survives_a_later_position_write(self):
+        # Reach the end → finished.
+        res = self._progress(
+            chapter_order=35, paragraph_index=40, finished_at=1_700_000_000_000
+        )
+        self.assertTrue(res.data["finished_at"].startswith("2023-11-14"))
+
+        # Reopening and reading a bit more (no finished_at) must NOT clear it —
+        # reopening a finished work does not un-finish it.
+        res = self._progress(chapter_order=2, paragraph_index=3, updated_at=1_700_000_001_000)
+        self.assertTrue(res.data["finished_at"].startswith("2023-11-14"))
+        self.assertEqual(res.data["chapter_order"], 2)  # position still moved
+
+    def test_finish_unions_earliest_and_ignores_a_later_finish(self):
+        self._progress(chapter_order=1, finished_at=1_700_000_000_000)
+        # A second device claims a LATER finish time — the earliest wins.
+        res = self._progress(chapter_order=1, finished_at=1_800_000_000_000)
+        self.assertTrue(res.data["finished_at"].startswith("2023-11-14"))
+
+    def test_unfinish_clears_it(self):
+        self._progress(chapter_order=5, finished_at=1_700_000_000_000)
+        res = self._progress(chapter_order=5, unfinish=True)
+        self.assertIsNone(res.data["finished_at"])
+
+    def test_a_stale_position_write_still_lands_a_finish(self):
+        # A newer position is already stored...
+        self._progress(chapter_order=9, updated_at=2_000_000_000_000)
+        # ...and a stale device (older clock) reports it finished the work. The
+        # position must not rewind, but the finish must still land.
+        res = self._progress(
+            chapter_order=3, updated_at=1_000_000_000_000, finished_at=1_500_000_000_000
+        )
+        self.assertEqual(res.data["chapter_order"], 9)  # position kept
+        self.assertTrue(res.data["finished_at"].startswith("2017-07-14"))
+
+    def test_merge_unions_a_finish_and_never_clears(self):
+        # Server already has the work finished.
+        ReadingProgress.objects.create(
+            profile=self.profile,
+            book_slug="humility",
+            chapter_order=35,
+            finished_at="2023-11-14T22:13:20Z",
+        )
+        # A stale local bundle that never finished it must NOT clear the finish.
+        payload = {
+            "progress": [
+                {"book_slug": "humility", "chapter_order": 4, "paragraph_index": 0}
+            ]
+        }
+        state = self.client.post("/api/reading/merge/", payload, format="json").data
+        self.assertIsNotNone(state["progress"][0]["finished_at"])
+
+    def test_merge_carries_a_local_finish_up_to_the_server(self):
+        ReadingProgress.objects.create(
+            profile=self.profile, book_slug="abide", chapter_order=2
+        )
+        payload = {
+            "progress": [
+                {
+                    "book_slug": "abide",
+                    "chapter_order": 2,
+                    "finished_at": 1_700_000_000_000,
+                    "updated_at": 1_700_000_000_000,
+                }
+            ]
+        }
+        state = self.client.post("/api/reading/merge/", payload, format="json").data
+        self.assertTrue(state["progress"][0]["finished_at"].startswith("2023-11-14"))
+
+
 class FavoriteTests(TestCase):
     def setUp(self):
         self.user = User.objects.create(username="00000000-0000-0000-0000-000000000002")

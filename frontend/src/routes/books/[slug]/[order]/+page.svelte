@@ -9,7 +9,8 @@
 		saveProgress,
 		getScrollAnchor,
 		saveScrollAnchor,
-		getProgressRecord
+		getProgressRecord,
+		offerFinish
 	} from '$lib/progress';
 	import { readerPrefs, MARGIN } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
@@ -309,6 +310,11 @@
 		// you; genuine reading reaches the end well after it.
 		if (performance.now() - chapterOpenedAt < 1500) return;
 		chapterCelebrated = true;
+		// Reaching the end of the LAST chapter finishes the book — it drops out of
+		// "Continue reading" and onto the finished shelf, with a quiet Undo (auto-
+		// detection can misfire on a reader who skimmed to the end). `!chapter.next`
+		// is the last-chapter signal used throughout this route.
+		if (!chapter.next) offerFinish(slug, 'book');
 		if (reduceMotion?.matches) return;
 		navigator.vibrate?.(12);
 		celebrate = true;

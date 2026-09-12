@@ -10,7 +10,7 @@
 	import { readingGoal } from '$lib/readingGoal.svelte';
 	import { currentStreak, longestStreak, localToday } from '$lib/streak';
 	import { weekReadCount } from '$lib/heatmap';
-	import { collectReadingActivity, readingCounts, type ReadingStats } from '$lib/readingStats';
+	import { readingCounts } from '$lib/readingStats';
 
 	/**
 	 * The signed-in dashboard's "your reading" panel: streak, weekly goal, a
@@ -27,19 +27,11 @@
 	const t = i18n.t;
 
 	let ticks = $state(0);
-	// Full stats (incl. "finished", which needs the catalog) load async; the
-	// streak/goal/heatmap come straight from localStorage and render immediately.
-	let stats = $state<ReadingStats | null>(null);
 
 	onMount(() => {
 		const bump = () => ticks++;
 		bump();
 		window.addEventListener('ochorus:sync', bump);
-		// A failed fetch just leaves `stats` null — `s` below falls back to the
-		// synchronous counts (with finished = 0), so no explicit error branch.
-		collectReadingActivity(lang.current)
-			.then((r) => (stats = r.stats))
-			.catch(() => {});
 		return () => window.removeEventListener('ochorus:sync', bump);
 	});
 
@@ -54,13 +46,12 @@
 	const goal = $derived(readingGoal.perWeek);
 	const goalMet = $derived(weekCount >= goal);
 
-	// The stats behind the tiles. The five synchronous totals come straight from
-	// `readingCounts()` every time (kept live by `void ticks`, so an ochorus:sync
-	// merge refreshes them), while `finished` — the one total that needs the
-	// catalog — rides in from the async load and is 0 until it lands.
-	const s = $derived.by<ReadingStats>(() => {
+	// Every tile now comes straight from `readingCounts()` — "finished" is a
+	// stored stamp, not a catalog lookup, so all six render at once (kept live by
+	// `void ticks`, so an ochorus:sync merge or a finish refreshes them).
+	const s = $derived.by(() => {
 		void ticks;
-		return { ...readingCounts(), finished: stats?.finished ?? 0 };
+		return readingCounts();
 	});
 	const hasNotebook = $derived(s.highlights + s.notes + s.bookmarks > 0);
 </script>

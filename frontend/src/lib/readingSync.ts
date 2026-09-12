@@ -47,6 +47,8 @@ interface ServerProgress {
 	updated_at: string;
 	/** The writing device's own clock; null only from a client that sent none. */
 	client_updated_at?: string | null;
+	/** When the reader finished this work; null while in progress. */
+	finished_at?: string | null;
 }
 interface ServerMarks {
 	kind: WorkKind;
@@ -85,6 +87,11 @@ interface ServerState {
 	plan_progress?: ServerPlanProgress[];
 }
 
+
+/** A nullable server ISO datetime → epoch ms, or null (unset, or unparseable). */
+function msOrNull(s?: string | null): number | null {
+	return s ? Date.parse(s) || null : null;
+}
 
 function readJson<T>(key: string, fallback: T): T {
 	if (!browser) return fallback;
@@ -150,25 +157,55 @@ class ReadingSync {
 		return kind === 'book' ? '' : `?kind=${kind}`;
 	}
 
+	/** PUT one progress row. `extra` carries whatever rides on top of the shared
+	 *  position body (a finished stamp, an unfinish signal); the position-body
+	 *  contract lives here once so a live save and a finish can't drift. */
+	#putProgress(kind: WorkKind, slug: string, rec: ProgressRecord, extra: object) {
+		return apiFetch(`/api/reading/progress/${slug}/${this.#kindQuery(kind)}`, {
+			method: 'PUT',
+			body: JSON.stringify({
+				kind,
+				language: rec.language,
+				chapter_order: rec.order,
+				paragraph_index: rec.paragraph_index,
+				// The record's client-clock time, so the server keeps a newer position
+				// when a stale tab flushes a late push (recency is judged against the
+				// client's own clock — see reading/views _upsert_progress).
+				updated_at: rec.at,
+				...extra
+			})
+		})
+			.then(() => this.#markSynced())
+			.catch(() => {});
+	}
+
 	pushProgress(kind: WorkKind, slug: string, rec: ProgressRecord) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`p:${workSlugKey(kind, slug)}`, () => {
-			apiFetch(`/api/reading/progress/${slug}/${this.#kindQuery(kind)}`, {
-				method: 'PUT',
-				body: JSON.stringify({
-					kind,
-					language: rec.language,
-					chapter_order: rec.order,
-					paragraph_index: rec.paragraph_index,
-					// The record's client-clock time, so the server keeps a newer
-					// position when a stale tab flushes a late push (recency is judged
-					// against the client's own clock — see reading/views _upsert_progress).
-					updated_at: rec.at
-				})
-			})
-				.then(() => this.#markSynced())
-				.catch(() => {});
+			// Re-assert a finished stamp the record carries so the server keeps it
+			// (it unions — the earliest wins, an omitted value never clears). A plain
+			// position save of an unfinished work sends nothing extra.
+			this.#putProgress(kind, slug, rec, rec.finished_at ? { finished_at: rec.finished_at } : {});
 		});
+	}
+
+	/**
+	 * Mirror a finish / un-finish to the account IMMEDIATELY (not debounced).
+	 * These are discrete actions, not high-frequency scroll saves, and going
+	 * through the debounce would be a correctness hazard for the un-finish
+	 * direction: a scroll save landing in the same window would coalesce the
+	 * `unfinish` signal away, and the server's union would re-assert the finish.
+	 * So this cancels any pending position push for the work (its position rides
+	 * along here anyway) and PUTs straight away.
+	 */
+	setFinished(kind: WorkKind, slug: string, rec: ProgressRecord, finished: boolean) {
+		if (!this.signedIn || !browser) return;
+		const key = `p:${workSlugKey(kind, slug)}`;
+		clearTimeout(this.#timers.get(key));
+		this.#timers.delete(key);
+		// Finishing sends the stamp (server unions it); un-finishing sends the
+		// explicit clear signal instead — the one thing that clears it.
+		this.#putProgress(kind, slug, rec, finished ? { finished_at: rec.finished_at } : { unfinish: true });
 	}
 
 	/**
@@ -186,6 +223,7 @@ class ReadingSync {
 				language: string;
 				updated_at: string;
 				client_updated_at: string | null;
+				finished_at?: string | null;
 			}>(`/api/reading/progress/${slug}/${this.#kindQuery(kind)}`);
 			const at = Date.parse(r.client_updated_at ?? r.updated_at);
 			if (!Number.isFinite(at)) return null;
@@ -193,7 +231,8 @@ class ReadingSync {
 				order: r.chapter_order,
 				paragraph_index: r.paragraph_index,
 				language: r.language,
-				at
+				at,
+				finished_at: msOrNull(r.finished_at)
 			};
 		} catch {
 			return null;
@@ -315,7 +354,9 @@ class ReadingSync {
 					language: r.language || 'en',
 					chapter_order: r.order,
 					paragraph_index: r.paragraph_index || 0,
-					updated_at: r.at
+					updated_at: r.at,
+					// Carry a local finish up to the account (the merge unions it).
+					...(r.finished_at ? { finished_at: r.finished_at } : {})
 				};
 			}),
 			marks: Object.entries(localMarks)
@@ -439,7 +480,8 @@ class ReadingSync {
 				// The writing device's clock, like every other `at` — the server's
 				// receive time is always later, and a local record stamped with it
 				// would out-date every other device's genuine reading.
-				at: Date.parse(p.client_updated_at ?? p.updated_at) || Date.now()
+				at: Date.parse(p.client_updated_at ?? p.updated_at) || Date.now(),
+				finished_at: msOrNull(p.finished_at)
 			};
 		}
 		const marks: MarksStore = {};

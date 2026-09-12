@@ -38,7 +38,15 @@
 	     that made it instead (the stack's aria-live already announces the rest). -->
 	{#if undo.current && !undo.current.inline}
 		<div class="pwa-toast">
-			<span>{t(undo.current.kind === 'note' ? 'undo.noteCleared' : 'undo.removed')}</span>
+			<span
+				>{t(
+					undo.current.kind === 'finished'
+						? 'undo.finished'
+						: undo.current.kind === 'note'
+							? 'undo.noteCleared'
+							: 'undo.removed'
+				)}</span
+			>
 			<button class="btn btn-sm btn-primary" onclick={() => undo.act()}>{t('undo.action')}</button>
 			<button class="pwa-link" onclick={() => undo.dismiss()}>{t('pwa.dismiss')}</button>
 		</div>

@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { listSermons, type BookSummary, type SermonSummary } from '$lib/library-public';
 	import BookCover from '$lib/components/BookCover.svelte';
-	import { allProgress } from '$lib/progress';
+	import { allProgress, offerFinish } from '$lib/progress';
 	import { workSlugKey } from '$lib/reading-schema';
 	import { bookProgressPercent } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
@@ -53,6 +53,7 @@
 	type Item = {
 		kind: 'book' | 'sermon';
 		key: string;
+		slug: string;
 		href: string;
 		title: string;
 		author: string;
@@ -69,6 +70,8 @@
 		const bySlug = new Map(books.map((b) => [b.slug, b]));
 		const sermonBySlug = new Map((sermonList ?? []).map((s) => [s.slug, s]));
 		return allProgress()
+			// A finished work has left "Continue reading" for the finished shelf.
+			.filter((p) => p.finished_at == null)
 			.map((p): Item | null => {
 				if (p.kind === 'sermon') {
 					const sermon = sermonBySlug.get(p.slug);
@@ -77,6 +80,7 @@
 					return {
 						key: workSlugKey(p.kind, p.slug),
 						kind: 'sermon',
+						slug: p.slug,
 						href: `/sermons/${p.slug}${resume}`,
 						title: sermon.title,
 						author: sermon.author.name,
@@ -96,6 +100,7 @@
 				return {
 					kind: 'book',
 					key: workSlugKey(p.kind, p.slug),
+					slug: p.slug,
 					href: `/books/${book.slug}/${p.order}`,
 					title: book.title,
 					author: book.author.name,
@@ -107,6 +112,13 @@
 			.filter((x) => x !== null)
 			.slice(0, limit);
 	});
+
+	// Explicit "I'm done with this" — clears it straight from the dashboard
+	// without reopening, with a short Undo. The list re-derives off the
+	// 'ochorus:sync' the finish dispatches, so the card leaves on its own.
+	function finish(item: Item) {
+		offerFinish(item.slug, item.kind);
+	}
 </script>
 
 {#if items.length}
@@ -114,9 +126,10 @@
 		<SectionHeader title={t('continue.title')} />
 		<div class="grid gap-4 sm:grid-cols-2" class:lg:grid-cols-4={limit >= 4}>
 			{#each items as item (item.key)}
+			<div class="group relative">
 				<a
 					href={localizeHref(item.href)}
-					class="group flex gap-4 rounded-card border border-border p-4 hover:bg-surface-2 hover:no-underline"
+					class="flex gap-4 rounded-card border border-border p-4 hover:bg-surface-2 hover:no-underline"
 				>
 					{#if item.book}
 						<!-- Draw through BookCover, not a bare <img>: a plate (SVG) ground
@@ -144,6 +157,19 @@
 						<div class="mt-1 text-micro text-muted">{item.meta}</div>
 					</div>
 				</a>
+				<!-- Mark finished, without reopening. Faint until the card is hovered
+				     or the button focused (always reachable on touch, where there is
+				     no hover), so it doesn't compete with the title. -->
+				<button
+					type="button"
+					onclick={() => finish(item)}
+					title={t('continue.markFinished')}
+					aria-label="{t('continue.markFinished')}: {item.title}"
+					class="absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface-2 text-muted opacity-70 transition hover:text-accent focus-visible:opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
+				>
+					<Icon name="check" size={16} />
+				</button>
+			</div>
 			{/each}
 		</div>
 	</section>

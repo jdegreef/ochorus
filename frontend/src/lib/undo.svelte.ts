@@ -17,8 +17,13 @@
 export interface UndoOffer {
 	/** Put back what was removed. Must be safe to call once. */
 	restore: () => void;
-	/** What was removed, for the wording. Default: a generic "Removed". */
-	kind?: 'note';
+	/**
+	 * What happened, for the wording. Default: a generic "Removed". `'note'` is a
+	 * cleared note; `'finished'` is a work just marked finished (its restore
+	 * un-finishes it) — the one offer that undoes an ADD rather than a removal,
+	 * but the mechanism is identical: a short-lived "take it back".
+	 */
+	kind?: 'note' | 'finished';
 	/**
 	 * Show the offer INSIDE the surface that made it rather than as a corner
 	 * toast. Needed when that surface is a modal dialog (the contents drawer):

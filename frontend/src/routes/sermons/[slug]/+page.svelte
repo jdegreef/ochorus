@@ -490,6 +490,7 @@
 		listenArtist={sermon.author_name}
 		bind:body
 		bind:frac
+		finishOnEnd
 	/>
 
 	<!-- Scripture index: the passages this sermon engages, each a jump into

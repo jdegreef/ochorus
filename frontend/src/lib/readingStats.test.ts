@@ -8,6 +8,7 @@ describe('readingCounts', () => {
 	it('is all zeros on a fresh device', () => {
 		expect(readingCounts()).toEqual({
 			inProgress: 0,
+			finished: 0,
 			highlights: 0,
 			notes: 0,
 			favorites: 0,
@@ -44,10 +45,25 @@ describe('readingCounts', () => {
 		);
 		expect(readingCounts()).toEqual({
 			inProgress: 2,
+			finished: 0,
 			highlights: 2,
 			notes: 1,
 			favorites: 2,
 			bookmarks: 1
 		});
+	});
+
+	it('a finished work counts as finished, not in progress (no double count)', () => {
+		localStorage.setItem(
+			PROGRESS_KEY,
+			JSON.stringify({
+				humility: { order: 3, paragraph_index: 0, language: 'en', at: 1 },
+				abide: { order: 12, paragraph_index: 0, language: 'en', at: 2, finished_at: 1700 },
+				'sermon:free-grace': { order: 1, paragraph_index: 0, language: 'en', at: 3, finished_at: 1800 }
+			})
+		);
+		const c = readingCounts();
+		expect(c.inProgress).toBe(1); // only the unfinished book
+		expect(c.finished).toBe(2); // the finished book AND the finished sermon
 	});
 });

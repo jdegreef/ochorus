@@ -37,7 +37,13 @@
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';
 	import { contentLang, HEADER_OFFSET, placeAfterLayout } from '$lib/reading';
-	import { getScrollAnchor, saveScrollAnchor, saveProgress, getProgressRecord } from '$lib/progress';
+	import {
+		getScrollAnchor,
+		saveScrollAnchor,
+		saveProgress,
+		getProgressRecord,
+		offerFinish
+	} from '$lib/progress';
 	import { listen } from '$lib/listen.svelte';
 	import { type WorkKind } from '$lib/reading-schema';
 	import { createReaderText, type Cite } from '$lib/readerText.svelte';
@@ -79,6 +85,17 @@
 		 * more. Defaults to the readers' bar height; surfaces without one pass 0.
 		 */
 		headerOffset?: number;
+		/**
+		 * When true, scrolling to the end of this prose finishes the WORK — it drops
+		 * out of "Continue reading" onto the finished shelf. Set it only on a
+		 * dedicated reading surface, where reaching the end of the prose really is
+		 * the reader finishing the work: the sermon page is the sermon. NOT the
+		 * author page, where the bio is one band above a book grid — scrolling past
+		 * it to browse the books would be a false completion; a bio is finished
+		 * explicitly instead (Settings › Activity). Books don't use this component;
+		 * their finish is "reached the end of the LAST chapter", in the chapter route.
+		 */
+		finishOnEnd?: boolean;
 	}
 
 	let {
@@ -93,13 +110,34 @@
 		class: className = '',
 		body = $bindable(),
 		frac = $bindable(0),
-		headerOffset = HEADER_OFFSET
+		headerOffset = HEADER_OFFSET,
+		finishOnEnd = false
 	}: Props = $props();
 
 	// --- Position --------------------------------------------------------------
 	// Anchored to the top-visible paragraph, not a pixel offset, so a saved spot
 	// survives a change of text size or column width.
 	let saveTimer: ReturnType<typeof setTimeout> | undefined;
+
+	// When this work was opened, so the restore-scroll settle (which emits scroll
+	// events and can land near the end of a work the reader left there) doesn't
+	// auto-finish it. Genuine reading reaches the end well after this window —
+	// same guard as the chapter reader's markChapterComplete.
+	let openedAt = 0;
+	// Fire the finish at most once per open (like the book route's
+	// `chapterCelebrated`), so lingering in the end region doesn't re-run
+	// `offerFinish` — and its localStorage read — on every scroll tick.
+	let didFinish = false;
+	/** How far through the prose counts as "reached the end" for auto-finish —
+	 *  forgiving of trailing attribution / footnotes below the last paragraph. */
+	const FINISH_FRAC = 0.95;
+
+	function maybeFinish() {
+		if (didFinish || !finishOnEnd || performance.now() - openedAt < 1500 || frac < FINISH_FRAC)
+			return;
+		didFinish = true;
+		offerFinish(slug, kind);
+	}
 
 	/** Index of the first block still on screen. Pages need this for bookmarks. */
 	export function topVisibleIndex(): number {
@@ -127,6 +165,8 @@
 			// (the spoken paragraph); don't overwrite it with the viewport-top one.
 			// While PAUSED we do save — the reader may be scrolling ahead to read.
 			if (listen.status !== 'playing') saveScrollAnchor(slug, order, topVisibleIndex(), kind);
+			// Reaching the end of a single-document work finishes it (no-op for books).
+			maybeFinish();
 		}, 250);
 	}
 
@@ -139,6 +179,8 @@
 		const key = `${kind}:${slug}:${order}`;
 		if (!body || restoredFor === key) return;
 		restoredFor = key;
+		openedAt = performance.now();
+		didFinish = false;
 		// A pending scroll-save from the PREVIOUS work must not fire against this
 		// one's body (it would record a bogus synced resume point).
 		clearTimeout(saveTimer);
