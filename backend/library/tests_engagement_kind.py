@@ -6,9 +6,12 @@ that column alone, so:
 
 * a sermon and a book sharing a slug merged into ONE row, labelled with the
   book's title and author;
-* every sermon and bio row pins ``chapter_order`` to 1, so against a
-  single-chapter book they all counted as "finishers";
 * and the row linked to ``/books/<slug>``, which 404s for a sermon or a bio.
+
+Finishers are counted from the stored ``finished_at`` stamp (the reader's real
+completion), scoped by ``(kind, slug)`` — so a sermon or biography gets a real
+finisher number too, and finishing the sermon never counts toward a book that
+shares its slug.
 
 These are the numbers content and translation priorities are chosen from, so
 "roughly right" is not good enough.
@@ -18,6 +21,7 @@ from __future__ import annotations
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase, override_settings
+from django.utils import timezone
 from rest_framework.test import APIClient
 
 from accounts.models import UserProfile
@@ -92,23 +96,39 @@ class EngagementKindTests(TestCase):
         rows = self._rows()
         self.assertEqual(rows[("bio", "am")]["title"], "Andrew Murray")
 
-    def test_sermon_readers_are_not_counted_as_finishers(self):
-        """chapter_order=1 must not read as "finished" for a single document."""
+    def test_reading_without_a_finished_stamp_is_not_finishing(self):
+        # Nobody in setUp has finished_at set — merely reading (even a sermon or
+        # bio, a single document) is not finishing. Every kind reports a real 0,
+        # not None: finishing counts for all kinds now.
         rows = self._rows()
-        self.assertIsNone(rows[("sermon", "humility")]["finishers"])
-        self.assertIsNone(rows[("bio", "am")]["finishers"])
-
-    def test_book_finishers_still_count_and_exclude_other_kinds(self):
-        rows = self._rows()
-        # The book's only reader is on chapter 1 of 2, so nobody has finished —
-        # even though two sermon readers sit at chapter_order 1 under the same slug.
         self.assertEqual(rows[("book", "humility")]["finishers"], 0)
+        self.assertEqual(rows[("sermon", "humility")]["finishers"], 0)
+        self.assertEqual(rows[("bio", "am")]["finishers"], 0)
 
-    def test_a_reader_who_reached_the_last_chapter_is_a_finisher(self):
-        ReadingProgress.objects.filter(
-            kind=WorkKind.BOOK, book_slug="humility"
-        ).update(chapter_order=2)
-        self.assertEqual(self._rows()[("book", "humility")]["finishers"], 1)
+    def test_finishers_count_the_stamp_for_every_kind(self):
+        # A sermon and a biography can be finished now (the stored finished_at
+        # stamp), not just a book — so each gets a real finisher count.
+        now = timezone.now()
+        ReadingProgress.objects.filter(kind=WorkKind.SERMON, book_slug="humility").update(
+            finished_at=now
+        )
+        ReadingProgress.objects.filter(kind=WorkKind.BIO, book_slug="am").update(
+            finished_at=now
+        )
+        rows = self._rows()
+        self.assertEqual(rows[("sermon", "humility")]["finishers"], 2)
+        self.assertEqual(rows[("bio", "am")]["finishers"], 1)
+
+    def test_a_sermon_finish_is_not_counted_toward_a_book_sharing_its_slug(self):
+        # The book and the sermon both use the slug "humility". Finishing the
+        # sermon must not read as finishing the book — finishers are scoped by
+        # (kind, slug).
+        ReadingProgress.objects.filter(kind=WorkKind.SERMON, book_slug="humility").update(
+            finished_at=timezone.now()
+        )
+        rows = self._rows()
+        self.assertEqual(rows[("sermon", "humility")]["finishers"], 2)
+        self.assertEqual(rows[("book", "humility")]["finishers"], 0)
 
     def test_highlights_are_separated_by_kind_too(self):
         profile = UserProfile.objects.first()

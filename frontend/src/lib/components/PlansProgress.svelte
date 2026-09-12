@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { listPlans, type PlanSummary } from '$lib/library-public';
-	import { planProgress } from '$lib/planProgress.svelte';
+	import { buildPlanRows, type PlanRow } from '$lib/planRows';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
-	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import PlanCard from '$lib/components/PlanCard.svelte';
 
 	/**
 	 * Cross-plan progress overview: every plan the reader has started, each with
@@ -18,38 +18,6 @@
 	 */
 	const t = i18n.t;
 
-	interface Row {
-		slug: string;
-		title: string;
-		total: number;
-		done: number;
-		pct: number;
-		next: number | null;
-	}
-	let rows = $state<Row[]>([]);
-
-	// Re-derive on every plan-progress mutation (a day marked on another tab, a
-	// sign-in merge) so the bars stay live.
-	const build = (plans: PlanSummary[]): Row[] => {
-		void planProgress.ticks;
-		return planProgress
-			.started()
-			.map(({ slug }) => plans.find((p) => p.slug === slug))
-			.filter((p): p is PlanSummary => !!p)
-			.map((p) => {
-				const done = planProgress.doneDays(p.slug).length;
-				const total = p.day_count;
-				return {
-					slug: p.slug,
-					title: p.title,
-					total,
-					done,
-					pct: total ? Math.round((done / total) * 100) : 0,
-					next: planProgress.nextDay(p.slug, total)
-				};
-			});
-	};
-
 	let plans = $state<PlanSummary[]>([]);
 	onMount(async () => {
 		try {
@@ -58,9 +26,9 @@
 			/* plans are a bonus block — never break the homepage */
 		}
 	});
-	$effect(() => {
-		rows = plans.length ? build(plans) : [];
-	});
+	// Re-derives on every plan-progress mutation (buildPlanRows reads
+	// planProgress.ticks), so the bars stay live across tabs and a sign-in merge.
+	const rows = $derived<PlanRow[]>(plans.length ? buildPlanRows(plans) : []);
 </script>
 
 {#if rows.length >= 2}
@@ -72,32 +40,7 @@
 		/>
 		<ul class="grid gap-3 sm:grid-cols-2">
 			{#each rows as r (r.slug)}
-				<li>
-					<a
-						href={localizeHref(`/plans/${r.slug}`)}
-						class="block rounded-card border border-border bg-surface p-4 hover:border-accent hover:no-underline"
-					>
-						<div class="flex items-baseline justify-between gap-3">
-							<span class="min-w-0 truncate text-body font-semibold text-text">{r.title}</span>
-							<span class="shrink-0 text-small tabular-nums text-muted">
-								{#if r.next === null}
-									✓ {t('plans.finished')}
-								{:else}
-									{r.pct}%
-								{/if}
-							</span>
-						</div>
-						<div class="mt-2.5">
-							<ProgressBar
-								percent={r.pct}
-								label="{r.title}: {r.done} {t('plans.of')} {r.total} {t('plans.days')}"
-							/>
-						</div>
-						<p class="mt-1.5 text-small text-muted">
-							{r.done} {t('plans.of')} {r.total} {t('plans.days')}
-						</p>
-					</a>
-				</li>
+				<li><PlanCard row={r} /></li>
 			{/each}
 		</ul>
 	</section>

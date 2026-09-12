@@ -7,6 +7,7 @@ edited — on its own. Pure move: no test changed.
 
 from django.core.cache import cache
 from django.test import TestCase, override_settings
+from django.utils import timezone
 from rest_framework.test import APIClient
 
 from common.testing import body_of
@@ -821,8 +822,12 @@ class AdminEngagementTests(TestCase):
         self.p1 = UserProfile.objects.create(user=User.objects.create(username=str(uuid.uuid4())), supabase_uid=uuid.uuid4())
         self.p2 = UserProfile.objects.create(user=User.objects.create(username=str(uuid.uuid4())), supabase_uid=uuid.uuid4())
 
-        # p1 finished humility (ch3 of 3) + started abide; p2 at humility ch1.
-        ReadingProgress.objects.create(profile=self.p1, book_slug="humility", language="en", chapter_order=3)
+        # p1 finished humility (the stored finished_at stamp) + started abide;
+        # p2 is mid-humility (no stamp).
+        ReadingProgress.objects.create(
+            profile=self.p1, book_slug="humility", language="en", chapter_order=3,
+            finished_at=timezone.now(),
+        )
         ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="en", chapter_order=1)
         ReadingProgress.objects.create(profile=self.p1, book_slug="abide", language="en", chapter_order=1)
         ChapterMarks.objects.create(
@@ -843,7 +848,7 @@ class AdminEngagementTests(TestCase):
 
         most = {b["slug"]: b for b in res.data["most_read"]}
         self.assertEqual(most["humility"]["readers"], 2)
-        self.assertEqual(most["humility"]["finishers"], 1)  # only p1 reached ch3
+        self.assertEqual(most["humility"]["finishers"], 1)  # only p1 finished it
         self.assertEqual(most["abide"]["readers"], 1)
 
         self.assertEqual(res.data["most_marked"][0]["slug"], "humility")
