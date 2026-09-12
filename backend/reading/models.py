@@ -61,6 +61,23 @@ class ReadingProgress(models.Model):
     # Null on rows written before this field existed / by pre-timestamp clients.
     client_updated_at = models.DateTimeField(null=True, blank=True)
 
+    # When the reader FINISHED this work: reaching the end of the last chapter
+    # (books) or of the single document (sermons, bios), or an explicit "mark as
+    # finished". Null while it is still in progress. This is what splits the
+    # reader's "Continue reading" list (finished_at IS NULL) from the finished /
+    # history shelf (finished_at IS NOT NULL), and it counts for every readable
+    # kind — unlike the old client-side guess (chapter_order >= chapter_count),
+    # which only worked for books and re-broke if a book was re-imported at a
+    # different length.
+    #
+    # Finishing UNIONS across devices: the earliest non-null wins and a routine
+    # position write never clears it (see `_upsert_progress`), so a completion
+    # earned on any device is never lost — the same lossless rule as plan days
+    # and favorites. Reopening a finished work does not un-finish it. The one
+    # thing that clears it is an explicit un-finish, which — like un-favoriting —
+    # is a live-only signal the sign-in merge deliberately does not carry.
+    finished_at = models.DateTimeField(null=True, blank=True)
+
     class Meta:
         ordering = ["-updated_at"]
         constraints = [

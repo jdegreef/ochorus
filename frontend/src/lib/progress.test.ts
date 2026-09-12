@@ -1,10 +1,17 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { saveProgress, saveScrollAnchor, getProgressRecord } from './progress';
+import {
+	saveProgress,
+	saveScrollAnchor,
+	getProgressRecord,
+	markFinished,
+	unmarkFinished,
+	isFinished
+} from './progress';
 
 // The account mirror is a no-op in these unit tests — we only assert the local
 // cache the reader resumes from.
 vi.mock('./readingSync', () => ({
-	readingSync: { pushProgress: () => {}, pushActivity: () => {} }
+	readingSync: { pushProgress: () => {}, pushActivity: () => {}, setFinished: () => {} }
 }));
 
 beforeEach(() => localStorage.clear());
@@ -60,5 +67,47 @@ describe('`at` means when the position last changed', () => {
 		vi.setSystemTime(3_000_000);
 		saveProgress('humility', 4, 'en');
 		expect(getProgressRecord('humility')).toMatchObject({ order: 4, at: 3_000_000 });
+	});
+});
+
+describe('finishing a work', () => {
+	it('marks finished, is idempotent, and reports the flip', () => {
+		saveProgress('humility', 3, 'en');
+		expect(isFinished('humility')).toBe(false);
+		expect(markFinished('humility')).toBe(true); // flipped
+		expect(isFinished('humility')).toBe(true);
+		expect(getProgressRecord('humility')?.finished_at).toBeTypeOf('number');
+		expect(markFinished('humility')).toBe(false); // already finished — no-op
+	});
+
+	it('does nothing for a work with no progress record', () => {
+		expect(markFinished('never-opened')).toBe(false);
+		expect(getProgressRecord('never-opened')).toBeNull();
+	});
+
+	it('reopening a finished work and reading on does NOT un-finish it', () => {
+		saveProgress('humility', 34, 'en');
+		markFinished('humility');
+		// Reopen at another chapter and move — position advances, finish stays.
+		saveProgress('humility', 2, 'en');
+		saveScrollAnchor('humility', 2, 5);
+		expect(getProgressRecord('humility')).toMatchObject({ order: 2, paragraph_index: 5 });
+		expect(isFinished('humility')).toBe(true);
+	});
+
+	it('un-finishing clears the stamp', () => {
+		saveProgress('humility', 3, 'en');
+		markFinished('humility');
+		unmarkFinished('humility');
+		expect(isFinished('humility')).toBe(false);
+		expect(getProgressRecord('humility')?.finished_at).toBeNull();
+	});
+
+	it('namespaces by kind — finishing a sermon leaves a same-slug book alone', () => {
+		saveProgress('humility', 3, 'en', 'book');
+		saveProgress('humility', 1, 'en', 'sermon');
+		markFinished('humility', 'sermon');
+		expect(isFinished('humility', 'sermon')).toBe(true);
+		expect(isFinished('humility', 'book')).toBe(false);
 	});
 });

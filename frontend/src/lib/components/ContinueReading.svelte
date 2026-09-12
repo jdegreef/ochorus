@@ -14,10 +14,10 @@
 	 * account); books join against the provided list for titles and covers,
 	 * sermons against a lazily fetched sermon list — fetched only when sermon
 	 * progress actually exists, so most renders cost nothing extra. Works
-	 * unknown in this language are skipped; a book stays here through its last
-	 * chapter (opening the last chapter isn't finishing it) and ages off
-	 * naturally as newer reads push it past the limit. Renders nothing when
-	 * there's nothing in progress.
+	 * unknown in this language are skipped. A FINISHED work leaves this strip for
+	 * the finished shelf (/reading#finished); the rest age off naturally as newer
+	 * reads push them past the limit. Renders nothing when there's nothing in
+	 * progress.
 	 */
 	let { books, limit = 4 }: { books: BookSummary[]; limit?: number } = $props();
 
@@ -48,11 +48,13 @@
 
 	// The resume-card list is built (and its deep-links composed) in one shared
 	// place so the strip and the /reading page can't drift; the strip just takes
-	// its own head. A book stays here through its last chapter — the strip shows
-	// every item and ages them off by the limit, so `finished` is ignored.
+	// its own head. A finished work has left "Continue reading" for the finished
+	// shelf, so the strip drops it before taking its head.
 	const items = $derived.by(() => {
 		void ticks;
-		return buildResumeItems(books, sermonList ?? []).slice(0, limit);
+		return buildResumeItems(books, sermonList ?? [])
+			.filter((i) => !i.finished)
+			.slice(0, limit);
 	});
 </script>
 

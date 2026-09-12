@@ -228,7 +228,8 @@ describe('readingSync.fetchProgress', () => {
 			order: 7,
 			paragraph_index: 3,
 			language: 'en',
-			at: Date.parse('2024-01-01T09:58:00.000Z')
+			at: Date.parse('2024-01-01T09:58:00.000Z'),
+			finished_at: null
 		});
 	});
 

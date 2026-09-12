@@ -39,13 +39,15 @@ describe('buildResumeItems', () => {
 		]);
 	});
 
-	it('flags a book on its last chapter as finished; a sermon never is', () => {
+	it('flags a work finished from its stored finished_at, for any kind', () => {
 		localStorage.setItem(
 			PROGRESS_KEY,
 			JSON.stringify({
-				humility: { order: 6, paragraph_index: 0, language: 'en', at: 2 },
-				'waiting-on-god': { order: 27, paragraph_index: 0, language: 'en', at: 3 },
-				'sermon:power-of-stillness': { order: 1, paragraph_index: 0, language: 'en', at: 4 }
+				// Finished by the stamp — not by "on the last chapter": order/count is
+				// irrelevant now, only finished_at is.
+				humility: { order: 6, paragraph_index: 0, language: 'en', at: 2, finished_at: 1700 },
+				'waiting-on-god': { order: 35, paragraph_index: 0, language: 'en', at: 3 },
+				'sermon:power-of-stillness': { order: 1, paragraph_index: 0, language: 'en', at: 4, finished_at: 1800 }
 			})
 		);
 		const by = Object.fromEntries(
@@ -54,9 +56,9 @@ describe('buildResumeItems', () => {
 				[sermon('power-of-stillness', 'The Power of Stillness', '')]
 			).map((i) => [i.key, i])
 		);
-		expect(by['humility'].finished).toBe(true); // order 6 of 6
-		expect(by['waiting-on-god'].finished).toBe(false); // order 27 of 35
-		expect(by['sermon:power-of-stillness'].finished).toBe(false);
+		expect(by['humility'].finished).toBe(true); // has finished_at
+		expect(by['waiting-on-god'].finished).toBe(false); // at its last chapter, but no stamp
+		expect(by['sermon:power-of-stillness'].finished).toBe(true); // sermons can finish too now
 	});
 
 	it('builds a chapter deep-link and meter for books, and a ref for sermons', () => {

@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { readingSync } from './readingSync';
 import { readingActivity } from './readingActivity.svelte';
 import { storageHealth } from './storageHealth.svelte';
+import { undo } from './undo.svelte';
 import {
 	PROGRESS_KEY,
 	ANCHOR_KEY,
@@ -90,12 +91,75 @@ export function saveProgress(
 		readingActivity.recordToday();
 		return;
 	}
-	const rec: ProgressRecord = { order, paragraph_index, language, at: Date.now() };
+	// Carry a finished stamp forward: reopening a finished work and reading on
+	// does not un-finish it (only an explicit un-finish clears it).
+	const rec: ProgressRecord = {
+		order,
+		paragraph_index,
+		language,
+		at: Date.now(),
+		finished_at: prev?.finished_at ?? null
+	};
 	map[key] = rec;
 	write(map);
 	readingSync.pushProgress(kind, slug, rec);
 	// Opening/advancing a chapter is the "read today" signal for the streak.
 	readingActivity.recordToday();
+}
+
+/** Has the reader finished this work? */
+export function isFinished(slug: string, kind: WorkKind = 'book'): boolean {
+	return getProgressRecord(slug, kind)?.finished_at != null;
+}
+
+/**
+ * Mark a work finished — reaching the end of the last chapter / single document,
+ * or an explicit tap. Idempotent: already-finished is a no-op, so the readers
+ * can call it freely on every scroll-to-the-end without re-pushing. Requires an
+ * existing progress record (there always is one — the reader saves a position on
+ * open before anything can finish); a work with no position can't be finished.
+ * Returns true when it flipped a work to finished (so a caller can offer Undo).
+ */
+export function markFinished(slug: string, kind: WorkKind = 'book'): boolean {
+	if (!browser) return false;
+	const map = read();
+	const key = workSlugKey(kind, slug);
+	const rec = map[key];
+	if (!rec || rec.finished_at != null) return false;
+	rec.finished_at = Date.now();
+	write(map);
+	// Not debounced: a discrete action, and coalescing it with scroll saves is a
+	// hazard for the un-finish direction (see readingSync.setFinished).
+	readingSync.setFinished(kind, slug, rec, true);
+	window.dispatchEvent(new CustomEvent('ochorus:sync'));
+	return true;
+}
+
+/**
+ * Mark finished AND offer a short Undo — the one "I'm done with this" action
+ * behind both auto-detection (reaching the end in a reader) and the explicit
+ * taps (the dashboard card). Silent when the work is already finished
+ * (`markFinished` is a no-op, so no misleading Undo appears).
+ */
+export function offerFinish(slug: string, kind: WorkKind = 'book'): void {
+	if (markFinished(slug, kind)) {
+		undo.offer({ restore: () => unmarkFinished(slug, kind), kind: 'finished' });
+	}
+}
+
+/** Un-finish a work — an explicit "not done after all" / Undo. Clears the stamp
+ *  and, while online, tells the server to clear it too (a live-only signal, like
+ *  un-favoriting; the sign-in merge never carries it). */
+export function unmarkFinished(slug: string, kind: WorkKind = 'book'): void {
+	if (!browser) return;
+	const map = read();
+	const key = workSlugKey(kind, slug);
+	const rec = map[key];
+	if (!rec || rec.finished_at == null) return;
+	rec.finished_at = null;
+	write(map);
+	readingSync.setFinished(kind, slug, rec, false);
+	window.dispatchEvent(new CustomEvent('ochorus:sync'));
 }
 
 /**

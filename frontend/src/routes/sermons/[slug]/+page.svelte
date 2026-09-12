@@ -515,6 +515,7 @@
 		listenArtist={sermon.author_name}
 		bind:body
 		bind:frac
+		finishOnEnd
 	/>
 
 	<!-- Questions for reflection: answered study questions grounded in the sermon.

@@ -1,6 +1,6 @@
 import { allProgress } from './progress';
 import { workSlugKey } from './reading-schema';
-import { bookProgressPercent, isBookFinished } from './reading';
+import { bookProgressPercent } from './reading';
 import type { BookSummary, SermonSummary } from './library-public';
 
 /**
@@ -19,6 +19,8 @@ import type { BookSummary, SermonSummary } from './library-public';
  */
 export type ResumeItem = {
 	kind: 'book' | 'sermon';
+	/** The work's own slug — for the finish / un-finish actions on the card. */
+	slug: string;
 	/** Stable list key (`slug` for books, `sermon:slug` for sermons). */
 	key: string;
 	/** Deep-link back to the exact resume point, before localisation. */
@@ -35,10 +37,10 @@ export type ResumeItem = {
 	/** The sermon's reference (may be ''); absent for books. */
 	scriptureRef?: string;
 	/**
-	 * A book whose last-opened chapter is its last — the same rule the "Finished"
-	 * total uses (`isBookFinished`), so the tile count and the /reading section
-	 * agree. Always false for sermons. The strip ignores this and shows every
-	 * item; /reading splits on it.
+	 * Whether the reader has FINISHED this work — the stored `finished_at` stamp
+	 * (reaching the end, or an explicit mark), the same fact the "Finished" total
+	 * counts, so the tile and the /reading section agree. Works for sermons too,
+	 * not just books. The strip drops finished works; /reading splits on this.
 	 */
 	finished: boolean;
 };
@@ -59,13 +61,14 @@ export function buildResumeItems(books: BookSummary[], sermons: SermonSummary[])
 				const resume = p.paragraph_index > 0 ? `?p=${p.paragraph_index}` : '';
 				return {
 					kind: 'sermon',
+					slug: p.slug,
 					key: workSlugKey(p.kind, p.slug),
 					href: `/sermons/${p.slug}${resume}`,
 					title: sermon.title,
 					author: sermon.author.name,
 					pct: null,
 					scriptureRef: sermon.scripture_ref,
-					finished: false
+					finished: p.finished_at != null
 				};
 			}
 			// Only books past this point — a biography's position has no resume card.
@@ -74,6 +77,7 @@ export function buildResumeItems(books: BookSummary[], sermons: SermonSummary[])
 			if (!book) return null;
 			return {
 				kind: 'book',
+				slug: p.slug,
 				key: workSlugKey(p.kind, p.slug),
 				href: `/books/${book.slug}/${p.order}`,
 				title: book.title,
@@ -82,7 +86,7 @@ export function buildResumeItems(books: BookSummary[], sermons: SermonSummary[])
 				pct: bookProgressPercent(p.order, book.chapter_count),
 				order: p.order,
 				chapterCount: book.chapter_count,
-				finished: isBookFinished(p.order, book.chapter_count)
+				finished: p.finished_at != null
 			};
 		})
 		.filter((x): x is ResumeItem => x !== null);

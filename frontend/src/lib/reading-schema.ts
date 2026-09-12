@@ -284,6 +284,16 @@ export interface ProgressRecord {
 	paragraph_index: number;
 	language: string;
 	at: number;
+	/**
+	 * When the reader FINISHED this work (epoch ms), or null/absent while it is
+	 * still in progress. Set by reaching the end of the last chapter (books) or
+	 * the single document (sermons, bios), or an explicit "mark as finished".
+	 * A finished work drops out of "Continue reading" and onto the finished /
+	 * history shelf. Reopening it does not clear this — only an explicit
+	 * un-finish does. Synced with the account: finishing unions across devices
+	 * (earliest wins), like the streak; see readingSync / reading views.
+	 */
+	finished_at?: number | null;
 }
 
 /** `workSlugKey(kind, slug)` -> ProgressRecord. */

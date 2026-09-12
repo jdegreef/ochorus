@@ -259,7 +259,17 @@ def _now_ms() -> int:
 
 
 def _upsert_progress(
-    profile, kind, slug, *, language, chapter_order, paragraph_index, client_dt, keep_server_when_unknown
+    profile,
+    kind,
+    slug,
+    *,
+    language,
+    chapter_order,
+    paragraph_index,
+    client_dt,
+    keep_server_when_unknown,
+    finished_at=None,
+    clear_finished=False,
 ):
     """Upsert one reading-position row, keeping the server's when it is newer.
 
@@ -280,16 +290,51 @@ def _upsert_progress(
     PUT is an ACTIVE write, and an old client that sends no timestamp must still
     be able to save. The merge passes True: an untimestamped bundle is stale local
     state, so it must not overwrite a newer server position it can't out-date.
+
+    ``finished_at`` is resolved SEPARATELY from the position, and it UNIONS: the
+    earliest non-null wins and a write that omits it never clears it, so a
+    completion earned on any device survives (the same lossless rule as plan days
+    and favorites). Keeping it independent of the recency rule matters — a device
+    that reaches the end has, by definition, the furthest position, but a stale
+    late push finishing an already-advanced work must still land its finish
+    without rewinding the position, and an explicit un-finish must clear even
+    when its position is stale. ``clear_finished`` (an explicit un-finish) is the
+    one thing that clears it; like un-favoriting it is a live-only signal the
+    merge never carries.
     """
     existing = ReadingProgress.objects.filter(
         profile=profile, kind=kind, book_slug=slug
     ).first()
+
+    # Resolve the finished state first, independently of the position below.
+    server_finished = existing.finished_at if existing else None
+    if clear_finished:
+        resolved_finished = None
+    elif server_finished and finished_at:
+        resolved_finished = min(server_finished, finished_at)
+    else:
+        resolved_finished = server_finished or finished_at
+
+    # Is the incoming POSITION stale (the stored one is at least as new)? Either
+    # the stored client-clock is at or ahead of the incoming one, or the incoming
+    # carries no clock and the caller keeps the server's in that case (the merge).
+    position_stale = False
     if existing:
         stored = existing.client_updated_at
-        if client_dt is not None and stored is not None and stored >= client_dt:
-            return existing
-        if client_dt is None and keep_server_when_unknown:
-            return existing
+        position_stale = (stored is not None and client_dt is not None and stored >= client_dt) or (
+            client_dt is None and keep_server_when_unknown
+        )
+
+    if position_stale:
+        # Keep the server's newer position, but still apply a finished change —
+        # finishing/un-finishing is resolved apart from the position for exactly
+        # this case (a stale position must not rewind, yet the finish must land).
+        # `position_stale` is only ever set inside `if existing:`, so it's here.
+        if resolved_finished != server_finished:
+            existing.finished_at = resolved_finished
+            existing.save(update_fields=["finished_at"])
+        return existing
+
     obj, _ = ReadingProgress.objects.update_or_create(
         profile=profile,
         kind=kind,
@@ -299,6 +344,7 @@ def _upsert_progress(
             "chapter_order": chapter_order,
             "paragraph_index": paragraph_index,
             "client_updated_at": client_dt,
+            "finished_at": resolved_finished,
         },
     )
     return obj
@@ -411,6 +457,10 @@ class ProgressView(APIView):
             client_dt=_ms_to_dt(data.get("updated_at")),
             # An active write: an old client without a timestamp must still save.
             keep_server_when_unknown=False,
+            # `finished_at` (epoch ms) marks the work finished; `unfinish` clears
+            # it. A plain position save carries neither and leaves it untouched.
+            finished_at=_ms_to_dt(data.get("finished_at")),
+            clear_finished=bool(data.get("unfinish")),
         )
         return Response(ReadingProgressSerializer(obj).data)
 
@@ -760,6 +810,10 @@ class MergeView(APIView):
                 # Stale local state must not overwrite a newer server position it
                 # can't out-date; an untimestamped row keeps the server's.
                 keep_server_when_unknown=True,
+                # Finishing unions in (earliest non-null wins); the merge never
+                # CLEARS — un-finish is a live-only signal, like un-favoriting.
+                finished_at=_ms_to_dt(row.get("finished_at")),
+                clear_finished=False,
             )
 
     def _merge_bookmarks(self, profile, incoming):
