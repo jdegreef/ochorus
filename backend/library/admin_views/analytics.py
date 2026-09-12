@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
-from ..models import Author, Book, Chapter, SearchClickLog, Sermon
+from ..models import Author, Book, SearchClickLog, Sermon
 from ..views import _language_entry
 
 
@@ -91,54 +91,46 @@ class AdminEngagementView(APIView):
             meta[("bio", a["slug"])] = (a["name"], "")
         return meta
 
-    def _chapter_counts(self) -> dict:
-        return {
-            r["book__slug"]: r["n"]
-            for r in Chapter.objects.filter(book__language="en")
-            .values("book__slug")
-            .annotate(n=Count("id"))
-        }
-
     def _row(self, meta, kind, slug, **extra) -> dict:
         title, author = meta.get((kind, slug), (slug, ""))
         return {"kind": kind, "slug": slug, "title": title, "author": author, **extra}
 
     def _most_read(self, limit: int = 10) -> list[dict]:
-        from reading.models import ReadingProgress, WorkKind
+        from reading.models import ReadingProgress
 
         meta = self._work_meta()
-        counts = self._chapter_counts()
         # Grouped by KIND as well as slug. Without it a sermon and a book sharing
         # a slug merged into one row wearing the book's title, and every sermon
         # reader was counted against that book.
+        #
+        # Finishers come from the stored `finished_at` stamp — the same explicit,
+        # synced completion the reader's "Finished" shelf counts (reaching the end
+        # of a work, or marking it done). Counting it as a conditional aggregate
+        # in the SAME grouped query means one scan, not a COUNT per row; it counts
+        # for EVERY kind (so a sermon or biography gets a real finisher number),
+        # and the group's (kind, book_slug) keeps a sermon finish from counting
+        # toward a book sharing its slug. This replaces the old "reached the last
+        # chapter" guess, which was books-only and counted merely opening it.
         top = (
             ReadingProgress.objects.values("kind", "book_slug")
-            .annotate(readers=Count("profile", distinct=True))
+            .annotate(
+                readers=Count("profile", distinct=True),
+                finishers=Count(
+                    "profile", filter=Q(finished_at__isnull=False), distinct=True
+                ),
+            )
             .order_by("-readers")[:limit]
         )
-        out = []
-        for r in top:
-            kind, slug = r["kind"], r["book_slug"]
-            # "Finished" only means something for a multi-chapter work. Sermons
-            # and bios pin chapter_order to 1, so the old query counted every
-            # one of their readers as a finisher of a one-chapter book.
-            finishers = None
-            if kind == WorkKind.BOOK:
-                length = counts.get(slug)
-                finishers = (
-                    ReadingProgress.objects.filter(
-                        kind=WorkKind.BOOK, book_slug=slug, chapter_order__gte=length
-                    )
-                    .values("profile")
-                    .distinct()
-                    .count()
-                    if length
-                    else 0
-                )
-            out.append(
-                self._row(meta, kind, slug, readers=r["readers"], finishers=finishers)
+        return [
+            self._row(
+                meta,
+                r["kind"],
+                r["book_slug"],
+                readers=r["readers"],
+                finishers=r["finishers"],
             )
-        return out
+            for r in top
+        ]
 
     def _most_marked(self, limit: int = 10) -> list[dict]:
         from reading.models import ChapterMarks
