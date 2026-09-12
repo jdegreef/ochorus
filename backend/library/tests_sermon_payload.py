@@ -123,6 +123,30 @@ class SermonCardPayloadTests(TestCase):
         res, _ = self._get(reverse("sermon-detail", args=["sermon-1"]))
         self.assertIn("Consider the loving-kindness", res.data["body_html"])
 
+    def test_the_sermon_page_serves_study_questions(self):
+        """The detail endpoint carries the answered study questions verbatim —
+        the source for both the reflection section and the FAQPage JSON-LD."""
+        qa = [
+            {"question": "What is the point?", "answer": "That God does not change."},
+            {"question": "Why does it comfort?", "answer": "His people are not consumed."},
+        ]
+        Sermon.objects.create(
+            author=self.author,
+            slug="with-questions",
+            language="en",
+            title="With Questions",
+            body_html=BODY,
+            study_questions=qa,
+            is_published=True,
+        )
+        res, _ = self._get(reverse("sermon-detail", args=["with-questions"]))
+        self.assertEqual(res.data["study_questions"], qa)
+
+    def test_the_shelf_omits_study_questions(self):
+        """Study questions are a detail-only field — a card never carries them."""
+        res, _ = self._get(reverse("sermon-list"))
+        self.assertNotIn("study_questions", res.data[0])
+
     def test_the_fallback_queryset_prefetches_author_translations(self):
         """The fallback was the one sermon path without the prefetch.
 
