@@ -23,7 +23,7 @@
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, truncateMeta, stripHtml } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -182,11 +182,15 @@
 	const year = $derived(preachedYear(sermon.preached_on));
 
 	// --- SEO -------------------------------------------------------------------
-	// A real description from the opening prose (beats the generic template) and
-	// structured data: an Article for the sermon (its preaching text as `about`)
-	// plus a breadcrumb.
+	// Description, then structured data (an Article for the sermon plus a
+	// breadcrumb). Prefer the written "In brief" summary: it reads as a snippet,
+	// where the opening prose of these sermons is usually the scripture epigraph
+	// itself ("I am the Lord…") — a Bible quote, not a description of the sermon.
+	// Fall back to the opening prose, then the generic template. truncateMeta
+	// gives a clean sentence-boundary cut (mirrors the book page).
 	const metaDescription = $derived(
-		(sermon.body_html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155) ||
+		truncateMeta(sermon.summary) ||
+			truncateMeta(stripHtml(sermon.body_html)) ||
 			t('sermon.metaFallback')
 				.replace('%title%', sermon.title)
 				.replace('%name%', sermon.author_name)
@@ -496,8 +500,11 @@
 				{t('sermon.scriptureIndex')}
 			</span>
 			{#each sermon.scripture_refs as ref (ref)}
+				<!-- Link to the crawlable /scripture reverse-index page when this
+				     passage has one (English-only pages, so not localized); else fall
+				     back to a localized search. Same resolver the body links with. -->
 				<a
-					href={localizeHref(`/search?q=${encodeURIComponent(ref)}`)}
+					href={sermon.scripture_links?.[ref] ?? localizeHref(`/search?q=${encodeURIComponent(ref)}`)}
 					class="tag"
 				>
 					{ref}

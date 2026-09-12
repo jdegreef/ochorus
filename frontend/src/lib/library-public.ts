@@ -410,6 +410,10 @@ export interface Sermon extends SermonSummary {
 	next: SermonNeighbour | null;
 	/** Distinct passages the sermon engages (its text + body citations). */
 	scripture_refs: string[];
+	/** Reference → `/scripture/<book>/<chapter>/` page URL, for the refs whose
+	 * chapter cleared the scripture-graph floor. The chip row links there (a
+	 * crawlable internal link) and falls back to search for refs not present. */
+	scripture_links: Record<string, string>;
 	difficulty: Difficulty;
 	/** Topical shelves this sermon belongs to (localized), for cross-links. */
 	topics: TopicChip[];
