@@ -553,3 +553,64 @@ Reported, not fixed
   that pair** — neither side is left in the fixture, and
   `test_no_replacement_pair_is_dead` fails. Change the earlier pair to write
   the final text directly; the stored-text pair then only ever fires on prod.
+- **Quotations closed with the WRONG MARK — a class the quote-style test could
+  not see** (2026-09-11, 390 pairs across 25 works). Two shapes: a curly opener
+  closed by a straight mark (`‘Search the scriptures', says` — the Whitefield
+  sermons, `christ-the-believers-wisdom` en+pt, `waiting-on-god` ×4 editions),
+  and an OPENER standing as the closer (`it is written “the living God“;` —
+  `evening-by-evening` ×13, every quotation in pt `all-things-for-good`
+  ch9–11). `QuoteStyleTests` counts double marks only, and a straight single is
+  also an apostrophe, so neither registered. `quote_marks.mispaired_marks` is
+  the rule now, and `test_no_quotation_closes_with_the_wrong_mark` holds the
+  corpus at zero. It deliberately skips the ambiguous shapes — a closer whose
+  space sits on the wrong side (`“Oh “says one`), a straight mark followed by a
+  lowercase word (`‘is in them that do excel' in virtue`, or a possessive
+  plural, `disciples' heads`) — so read for those by hand.
+  **Root cause of the backwards closers: `quote_marks.convert`** (used by
+  `normalize_quotes.py`, migration 0084 and the `build_*` commands for
+  morning/evening, our-daily-walk, thoughts-for-the-quiet-hour) counted ANY
+  tag's `>` as opening context, so `"<i>seen</i>"` became `“<i>seen</i>“`.
+  Fixed: an inline tag is transparent and only a block start opens. When a
+  corpus class clusters after one character, look for the converter that wrote
+  it before writing 100 pairs.
+  Three things bit, worth knowing before the next sweep:
+  - **Fixing a backwards closer GROWS `orphan-close-quote`.** `_orphan_quotes`
+    keeps a running depth across blocks, so every `“` used as a closer counted
+    as an opener and masked a genuine orphan further down. Five surfaced
+    (our-daily-walk's Isa 38:15 and Jacob's speech, comfort-for-the-desponding's
+    verse lines, …); all pre-existing, none at a repaired site. Diff the
+    findings before/after (`english_audit._orphan_quotes` over
+    `git show origin/main:<fixture>`) before re-pinning, and say they were
+    newly visible. **The verse-consistency ratchet does the same**: once pt
+    all-things-for-good's quotations closed, its fragments of 2Tm 1:9 and Rm
+    7:18 became readable as quotations and showed as "divergent" renderings.
+    Partial quotes of one verse aren't a conflict, so the right answer is to
+    re-pin (`audit_verse_consistency --update-baseline`), not to reword.
+  - **A tagless pair must be unique in `body_text` too.** A tag becomes a space
+    there, so `" redemption.' "` — unique in the HTML — also matched a
+    legitimately straight-quoted `'…redemption.'</p>` in the rendered text, and
+    `test_the_fixture_is_clean` failed. Check a pair's `old` against
+    `html_to_text` of every edition, not just `body_html`.
+  - **Three hundred pairs want a generator, not a hand list** — and the
+    generator must never let a pair's context reach a site not yet repaired, or
+    the later pair rewrites the earlier one's `new` and the earlier one reads as
+    dead. Prove the lot the way the deploy does: `settled_*_body(fixture)` must
+    equal your target for every row of every edition, and settle again to a
+    no-op. Several translation fixtures turned out already unsettled (English
+    name repairs — "Deja Vue", "Stocklholm" — also match the sw/es/lg text), so
+    assert `settled(target) == settled(fixture)` rather than `== target`. Then
+    prove the PRODUCTION path too, which starts from already-settled text: load
+    `git show origin/main:backend/library/corrections.py` as a module and
+    assert `settled_new(settled_old(fixture)) == settled_new(target)` per row.
+  - **The `--write` settle commands re-serialise whole files.**
+    `rederive_body_text` / `rederive_word_count` write with `render_rows`, and
+    11 of this sweep's 40 fixtures don't round-trip through it (the known
+    whitespace drift), so `--write` would have turned a one-mark fix into a
+    whole-file diff. Check `render_rows(json.loads(t)) == t` first; where it
+    fails, substitute the three encoded values (`body_html`, `body_text`,
+    `word_count`) in place, then run the commands WITHOUT `--write` and expect
+    "0 rows".
+  **`sermons-on-several-occasions` is NOT ours**: its ~140 unpaired marks
+  (`“of one heart “and one soul?”`) are in CCEL's text and in the Wesley
+  Center's transcription of the 1872 Jackson edition alike. Settle each against
+  a printed scan; don't guess from context.

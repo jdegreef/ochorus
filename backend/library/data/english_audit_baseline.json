@@ -35,6 +35,9 @@
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
+  "comfort-for-the-desponding": {
+   "orphan-close-quote": 2
+  },
   "divine-healing": {
    "orphan-close-quote": 3,
    "space-before-punct": 11
@@ -90,7 +93,7 @@
   },
   "journal-of-an-expedition-up-the-niger": {
    "lost-paragraphing": 1,
-   "orphan-close-quote": 3
+   "orphan-close-quote": 4
   },
   "justification-by-grace": {
    "orphan-close-quote": 1
@@ -143,7 +146,7 @@
   },
   "our-daily-walk": {
    "hyphen-space": 1,
-   "orphan-close-quote": 6,
+   "orphan-close-quote": 8,
    "space-before-punct": 7,
    "word-fusion": 2
   },
