@@ -875,6 +875,33 @@ dropped; chapters under 120 words are dropped as stubs.
     strip the rest from the stored ENGLISH rows in a migration (0138's shape),
     never as a `BODY_CORRECTIONS` transform — that reaches every language
     edition of the slug, and translations quote.
+    **`import_archive` now prevents the bulk of it.** The mark's POSITION is
+    the signal, and only the raw line has it: `_reflow` drops a line-initial
+    `‘`/`“` before a lowercase letter (`_RULE_QUOTE`, next to `_BAR_RULE`)
+    when the work's `part` slice closes no `”` — asked of the slice, since the
+    same volume's front matter and other treatises close 23. On a re-import
+    that takes the Bruised Reed from 163 marks to 26 and its audit from 133
+    `orphan-open-quote` findings to clean (the other archive books import
+    byte-identical). What still arrives: ~21 line-initial marks before a
+    CAPITAL (`‘Christ`, outside the rule by design) and ~5 mid-line, so a
+    0138-style strip is still needed after a re-import. Stripping also
+    removes the evidence a pair keys on: a lost-letter pair must be spelled
+    as the importer now emits it (`believe ruth from truth`, with enough
+    context that `old` is not inside `new`), which is why the Bruised Reed
+    entry keeps both spellings for its 0138 group. **Any importer rule that
+    changes raw text pre-empts pairs — find them, don't guess:** run the old
+    and new `chapterize` on the saved `_djvu.txt`, apply the entry's pairs IN
+    ORDER to each, and list the pairs that fire on old only. Mark-removed `old`
+    == `new` → prune (it protects nothing now); otherwise re-spell it. But a
+    DEPLOYED migration that calls `settled_chapter_body` (0134, 0138) reads
+    `corrections.py` at run time, so a pair whose `old` is in the
+    pre-change fixture (`git show <sha>^:…json`) must keep its spelling — add
+    a twin instead. **Limit:** "no `”`" also holds for an edition that quotes
+    with SINGLE marks only, and for a scan OCR'd with STRAIGHT double quotes
+    (`susanna-wesley-clarke`, `on-loving-god` — harmless there, 0 curly `‘`);
+    in either, a real line-initial `‘` before a lowercase word would be eaten.
+    Count the curly `‘` in the slice before trusting the rule.
+    *(2026-09)*
     **Read every difference against a second printing, not just the non-words:**
     a spellcheck scan passes `derived rot God`, `eat the it of your own ways`,
     `go he hath bowels`. **PD gate: judge by the
