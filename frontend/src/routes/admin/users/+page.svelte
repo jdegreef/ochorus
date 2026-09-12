@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { getAdminUsers } from '$lib/library-admin';
+	import TrendChip from '$lib/components/TrendChip.svelte';
+	import { getAdminUsers, periodTrend, type Trend } from '$lib/library-admin';
 
 	const users = adminResource(getAdminUsers, 'Something went wrong loading users.');
 	const data = $derived(users.data);
@@ -14,16 +15,6 @@
 	const dayFmt = (iso: string | null) =>
 		iso ? new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : '—';
 
-	// A period-over-period change, or null when there's no prior baseline to
-	// compare against (a brand-new metric shows "new" rather than a fake +100%).
-	type Trend = { dir: 'up' | 'down' | 'flat'; text: string } | null;
-	const trend = (cur: number, prev: number): Trend => {
-		if (prev <= 0) return cur > 0 ? { dir: 'up', text: 'new' } : null;
-		const d = Math.round(((cur - prev) / prev) * 100);
-		if (d === 0) return { dir: 'flat', text: '0%' };
-		return { dir: d > 0 ? 'up' : 'down', text: `${d > 0 ? '+' : ''}${d}%` };
-	};
-
 	type Card = { label: string; value: number; sub: string; trend: Trend };
 	const cards = $derived<Card[]>(
 		data
@@ -31,8 +22,8 @@
 					{ label: 'Registered users', value: data.total, sub: 'total accounts', trend: null },
 					{ label: 'Activated', value: data.with_activity, sub: `${pct(data.with_activity, data.total)}% have read`, trend: null },
 					{ label: 'Dormant', value: data.dormant, sub: 'no reading yet', trend: null },
-					{ label: 'New · 7d', value: data.signups_7d, sub: 'vs prev 7 days', trend: trend(data.signups_7d, data.signups_prev_7d) },
-					{ label: 'New · 30d', value: data.signups_30d, sub: 'vs prev 30 days', trend: trend(data.signups_30d, data.signups_prev_30d) }
+					{ label: 'New · 7d', value: data.signups_7d, sub: 'vs prev 7 days', trend: periodTrend(data.signups_7d, data.signups_prev_7d) },
+					{ label: 'New · 30d', value: data.signups_30d, sub: 'vs prev 30 days', trend: periodTrend(data.signups_30d, data.signups_prev_30d) }
 				]
 			: []
 	);
@@ -129,18 +120,7 @@
 						<div class="rounded-card border border-border bg-surface p-4">
 							<div class="flex items-baseline gap-2">
 								<div class="stat-number">{fmt(c.value)}</div>
-								{#if c.trend}
-									<span
-										class="text-small font-semibold tabular-nums {c.trend.dir === 'up'
-											? 'text-accent'
-											: c.trend.dir === 'down'
-												? 'text-danger'
-												: 'text-muted'}"
-										title="Change vs the previous period"
-									>
-										{c.trend.dir === 'up' ? '↑' : c.trend.dir === 'down' ? '↓' : ''}{c.trend.text}
-									</span>
-								{/if}
+								<TrendChip trend={c.trend} />
 							</div>
 							<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 							<div class="text-small text-muted">{c.sub}</div>

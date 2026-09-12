@@ -838,8 +838,13 @@ class AdminEngagementTests(TestCase):
         self.assertEqual(ov["readers"], 2)
         self.assertEqual(ov["total_users"], 2)
         self.assertEqual(ov["active_7d"], 2)
+        self.assertEqual(ov["active_30d"], 2)
         self.assertEqual(ov["readers_with_marks"], 1)
         self.assertEqual(ov["marked_chapters"], 1)
+        # Prior-window counts back the week-over-week deltas the page shows. All
+        # activity here is "now", so the preceding windows are empty.
+        self.assertEqual(ov["active_7d_prev"], 0)
+        self.assertEqual(ov["active_30d_prev"], 0)
 
         most = {b["slug"]: b for b in res.data["most_read"]}
         self.assertEqual(most["humility"]["readers"], 2)

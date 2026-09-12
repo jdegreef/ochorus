@@ -718,6 +718,18 @@ export const undoAuditDismissal = (t: AuditDismissTarget) => {
 	return apiFetch<{ ok: boolean }>(`/api/admin/audit/dismiss/?${q}`, { method: 'DELETE' });
 };
 
+// A period-over-period change for a dashboard stat, or null when there's no
+// prior baseline to divide by — a brand-new metric reads "new" rather than a
+// fake +100%. Shared by the engagement and users pages so their trend chips
+// stay identical (render one with <TrendChip>).
+export type Trend = { dir: 'up' | 'down' | 'flat'; text: string } | null;
+export const periodTrend = (cur: number, prev: number): Trend => {
+	if (prev <= 0) return cur > 0 ? { dir: 'up', text: 'new' } : null;
+	const d = Math.round(((cur - prev) / prev) * 100);
+	if (d === 0) return { dir: 'flat', text: '0%' };
+	return { dir: d > 0 ? 'up' : 'down', text: `${d > 0 ? '+' : ''}${d}%` };
+};
+
 // Reading-engagement analytics (aggregate-only).
 
 export interface EngagementOverview {
@@ -725,7 +737,12 @@ export interface EngagementOverview {
 	progress_rows: number;
 	active_1d: number;
 	active_7d: number;
+	/** Distinct readers active in the 7 days BEFORE the last 7 — the denominator
+	 *  for an honest week-over-week delta, not a bare count. */
+	active_7d_prev: number;
 	active_30d: number;
+	/** The 30 days before the last 30, for the same reason. */
+	active_30d_prev: number;
 	readers_with_marks: number;
 	marked_chapters: number;
 	total_users: number;

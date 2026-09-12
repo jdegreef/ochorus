@@ -33,20 +33,26 @@ class AdminEngagementView(APIView):
 
         now = timezone.now()
 
-        def active(days):
-            return (
-                ReadingProgress.objects.filter(updated_at__gte=now - timedelta(days=days))
-                .values("profile")
-                .distinct()
-                .count()
+        def active(days, offset=0):
+            """Distinct readers whose progress moved in a window ending ``offset``
+            days ago. ``active(7)`` is the last 7 days; ``active(7, 7)`` is the 7
+            days before that, so the page can show an honest week-over-week delta
+            rather than a bare count."""
+            qs = ReadingProgress.objects.filter(
+                updated_at__gte=now - timedelta(days=days + offset)
             )
+            if offset:
+                qs = qs.filter(updated_at__lt=now - timedelta(days=offset))
+            return qs.values("profile").distinct().count()
 
         overview = {
             "readers": ReadingProgress.objects.values("profile").distinct().count(),
             "progress_rows": ReadingProgress.objects.count(),
             "active_1d": active(1),
             "active_7d": active(7),
+            "active_7d_prev": active(7, 7),
             "active_30d": active(30),
+            "active_30d_prev": active(30, 30),
             "readers_with_marks": ChapterMarks.objects.exclude(marks=[])
             .values("profile")
             .distinct()

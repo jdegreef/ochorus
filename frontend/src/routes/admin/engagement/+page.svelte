@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { getAdminEngagement, type EngagementWork } from '$lib/library-admin';
+	import TrendChip from '$lib/components/TrendChip.svelte';
+	import { getAdminEngagement, periodTrend, type EngagementWork, type Trend } from '$lib/library-admin';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -11,20 +12,45 @@
 	const weekLabel = (iso: string) =>
 		new Date(iso + 'T00:00:00').toLocaleDateString('en', { month: 'short', day: 'numeric' });
 
-	const cards = $derived(
+	const weekMax = $derived(Math.max(1, ...(data?.weekly_active.map((w) => w.readers) ?? [1])));
+	const langMax = $derived(Math.max(1, ...(data?.by_language.map((l) => l.readers) ?? [1])));
+
+	// Sparkline for the Active · 7d tile: the 8-week active series as one line, so
+	// the trend behind the number reads at a glance. Built to a 100×28 viewBox.
+	const sparkPoints = $derived.by(() => {
+		const series = data?.weekly_active ?? [];
+		if (series.length < 2) return '';
+		const n = series.length - 1;
+		return series
+			.map((w, i) => `${(i / n) * 100},${26 - (w.readers / weekMax) * 24}`)
+			.join(' ');
+	});
+
+	// Reading pulse — the headline figures, each with a plain-English sub and,
+	// where there's a prior window to divide by, a week-over-week trend chip. The
+	// active tile also carries the weekly sparkline (`spark`).
+	const cards = $derived<{ label: string; value: number; sub: string; trend: Trend; spark?: boolean }[]>(
 		data
 			? [
-					{ label: 'Readers', value: data.overview.readers, sub: 'with saved progress' },
-					{ label: 'Active · 7d', value: data.overview.active_7d, sub: `${fmt(data.overview.active_1d)} today` },
-					{ label: 'Active · 30d', value: data.overview.active_30d, sub: 'in the last month' },
-					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers` },
-					{ label: 'Registered users', value: data.overview.total_users, sub: 'accounts' }
+					{ label: 'Readers', value: data.overview.readers, sub: 'with saved progress', trend: null },
+					{
+						label: 'Active · 7d',
+						value: data.overview.active_7d,
+						sub: `${fmt(data.overview.active_1d)} today`,
+						trend: periodTrend(data.overview.active_7d, data.overview.active_7d_prev),
+						spark: true
+					},
+					{
+						label: 'Active · 30d',
+						value: data.overview.active_30d,
+						sub: 'in the last month',
+						trend: periodTrend(data.overview.active_30d, data.overview.active_30d_prev)
+					},
+					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null },
+					{ label: 'Registered users', value: data.overview.total_users, sub: 'accounts', trend: null }
 				]
 			: []
 	);
-
-	const weekMax = $derived(Math.max(1, ...(data?.weekly_active.map((w) => w.readers) ?? [1])));
-	const langMax = $derived(Math.max(1, ...(data?.by_language.map((l) => l.readers) ?? [1])));
 
 	// Books, sermons and biographies all appear in these lists and their slugs
 	// live in different namespaces, so the row's kind decides the path. Every row
@@ -43,11 +69,17 @@
 	<header class="mb-6 flex flex-wrap items-end justify-between gap-3">
 		<div>
 			<p class="eyebrow mb-2 text-accent">Admin</p>
-			<h1 class="text-display">Engagement</h1>
-			<p class="mt-2 text-body text-muted">What readers are reading. Aggregate counts only — no personal data.</p>
+			<h1 class="text-h1">Engagement</h1>
+			<p class="mt-2 max-w-prose text-body text-muted">
+				What readers are reading, marking, and loving — aggregate counts only, no personal data.
+			</p>
+			<span class="privacy-badge mt-3 inline-flex items-center gap-2 text-small text-muted">
+				<span class="privacy-dot" aria-hidden="true"></span>
+				Aggregate only · no individual readers
+			</span>
 		</div>
 		{#if data}
-			<button class="btn btn-ghost" onclick={engagement.load} disabled={engagement.loading}
+			<button class="btn btn-ghost btn-sm" onclick={engagement.load} disabled={engagement.loading}
 				>{engagement.loading ? 'Refreshing…' : 'Refresh'}</button
 			>
 		{/if}
@@ -61,25 +93,36 @@
 					<p class="mt-1 text-body text-muted">Once signed-in readers start reading, their (anonymous, aggregate) activity shows up here.</p>
 				</div>
 			{:else}
-				<!-- Overview -->
-				<section class="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+				<!-- Reading pulse -->
+				<p class="section-label">Reading pulse</p>
+				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
 					{#each cards as c (c.label)}
 						<div class="rounded-card border border-border bg-surface p-4">
-							<div class="stat-number">{fmt(c.value)}</div>
-							<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
+							<div class="flex items-start justify-between gap-2">
+								<div class="stat-number">{fmt(c.value)}</div>
+								{#if c.spark && sparkPoints}
+									<svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true">
+										<polyline points={sparkPoints} />
+									</svg>
+								{/if}
+							</div>
+							<div class="mt-2 flex items-center gap-2">
+								<span class="text-small font-semibold text-text">{c.label}</span>
+								<TrendChip trend={c.trend} />
+							</div>
 							<div class="text-small text-muted">{c.sub}</div>
 						</div>
 					{/each}
 				</section>
 
 				{#if d.overview.readers < 20}
-					<p class="mb-8 -mt-4 text-micro text-muted">
+					<p class="mt-3 text-micro text-muted">
 						Early data — only {fmt(d.overview.readers)} reader{d.overview.readers === 1 ? '' : 's'} so far. Read the charts below as directional, not statistically firm.
 					</p>
 				{/if}
 
 				<!-- Weekly active -->
-				<section class="mb-8 rounded-card border border-border bg-surface p-5">
+				<section class="mt-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">Weekly active readers</h2>
 					<div class="flex items-end gap-2" style="height: 8rem">
 						{#each d.weekly_active as w (w.week)}
@@ -95,20 +138,31 @@
 					</div>
 				</section>
 
-				<div class="grid gap-6 lg:grid-cols-2">
+				<div class="mt-6 grid gap-6 lg:grid-cols-2">
 					<!-- Most read -->
 					<section class="rounded-card border border-border bg-surface p-5">
-						<h2 class="text-h3 mb-3">Most read</h2>
+						<h2 class="text-h3 mb-1">Most read</h2>
+						<p class="mb-3 text-small text-muted">Distinct readers — and, for books, how many reached the end.</p>
 						{#if d.most_read.length}
-							<ul class="space-y-2">
+							<ul class="space-y-3">
 								{#each d.most_read as b (`${b.kind}:${b.slug}`)}
-									<li class="flex items-baseline justify-between gap-3">
-										<a href={workHref(b)} class="min-w-0 truncate text-body text-text hover:text-accent">
-											{b.title}<span class="text-small text-muted"> · {b.author}</span>
-										</a>
-										<span class="shrink-0 text-small text-muted tabular-nums">
-											<span class="font-semibold text-text">{fmt(b.readers)}</span> readers{#if b.finishers} · {fmt(b.finishers)} finished{/if}
-										</span>
+									<li>
+										<div class="flex items-baseline justify-between gap-3">
+											<a href={workHref(b)} class="min-w-0 truncate text-body text-text hover:text-accent">
+												{b.title}<span class="text-small text-muted"> · {b.author}</span>
+											</a>
+											<span class="shrink-0 text-small text-muted tabular-nums">
+												<span class="font-semibold text-text">{fmt(b.readers)}</span> readers
+											</span>
+										</div>
+										{#if b.finishers != null && b.readers}
+											<div class="mt-1.5 flex items-center gap-2">
+												<div class="depthbar" title="{fmt(b.finishers)} of {fmt(b.readers)} reached the end">
+													<span style="width: {(b.finishers / b.readers) * 100}%"></span>
+												</div>
+												<span class="w-24 shrink-0 text-micro text-muted tabular-nums">{Math.round((b.finishers / b.readers) * 100)}% finished</span>
+											</div>
+										{/if}
 									</li>
 								{/each}
 							</ul>
@@ -119,7 +173,8 @@
 
 					<!-- Most marked -->
 					<section class="rounded-card border border-border bg-surface p-5">
-						<h2 class="text-h3 mb-3">Most highlighted</h2>
+						<h2 class="text-h3 mb-1">Most highlighted</h2>
+						<p class="mb-3 text-small text-muted">Readers who marked up the text — where it resonates.</p>
 						{#if d.most_marked.length}
 							<ul class="space-y-2">
 								{#each d.most_marked as b (`${b.kind}:${b.slug}`)}
@@ -158,3 +213,50 @@
 		{/snippet}
 	</AdminGate>
 </div>
+
+<style>
+	/* Privacy badge — a persistent reminder that this page is aggregate-only,
+	   dressed as a quiet feature rather than fine print. */
+	.privacy-badge {
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		background: var(--surface);
+		padding: 0.3rem 0.7rem;
+	}
+	.privacy-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 999px;
+		background: var(--accent);
+	}
+
+	/* Reading-pulse sparkline — the 8-week active line behind the number. */
+	.spark {
+		width: 68px;
+		height: 26px;
+		flex-shrink: 0;
+	}
+	.spark polyline {
+		fill: none;
+		stroke: var(--accent);
+		stroke-width: 1.6;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		vector-effect: non-scaling-stroke;
+	}
+
+	/* Completion bar under a most-read book: how far readers got. */
+	.depthbar {
+		flex: 1;
+		height: 6px;
+		border-radius: 999px;
+		background: var(--surface-2);
+		overflow: hidden;
+		border: 1px solid var(--border);
+	}
+	.depthbar span {
+		display: block;
+		height: 100%;
+		background: var(--accent);
+	}
+</style>
