@@ -91,13 +91,14 @@ _NON_LETTER = re.compile(r"[^A-Za-z]")
 #: none, so this can only help.
 _BAR_RULE = re.compile(r"(?<!\S)\|+(?!\S)|\|+(?=\s*$)")
 #: The same margin rule read as an OPENING QUOTE instead of a bar. Pickering's
-#: 1838 Sibbes sets no quotation marks at all, yet its text layer opens 194 of
-#: the Bruised Reed's lines on `‘` or `“` before a lowercase letter; most of
-#: the 163 `‘` and 15 `“` #1943 shipped were these. Only visible per LINE (the
-#: reflow loses the position), and only safe in a work that closes no double
-#: quote, which `chapterize` decides. Dropping it also lets the hyphen-join
-#: close a word the scan split on the same mark ("con-" / "‘ceits").
-_RULE_QUOTE = re.compile(r"^[‘“](?=[a-z])")
+#: 1838 Sibbes sets no quotation marks at all, yet its text layer opens 209 of
+#: the Bruised Reed's lines on `‘` or `“` before a letter (15 of them a
+#: capital: "‘Christ", "‘When"); most of the 163 `‘` and 15 `“` #1943 shipped
+#: were these. Only visible per LINE (the reflow loses the position), and only
+#: safe in a work that closes no double quote, which `chapterize` decides.
+#: Dropping it also lets the hyphen-join close a word the scan split on the
+#: same mark ("con-" / "‘ceits").
+_RULE_QUOTE = re.compile(r"^[‘“](?=[A-Za-z])")
 #: How far below a work's title its first chapter may sit and still count as
 #: that title's text (rather than a half-title page or a running header).
 _PART_HEADING_GAP = 30

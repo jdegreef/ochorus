@@ -877,14 +877,16 @@ dropped; chapters under 120 words are dropped as stubs.
     edition of the slug, and translations quote.
     **`import_archive` now prevents the bulk of it.** The mark's POSITION is
     the signal, and only the raw line has it: `_reflow` drops a line-initial
-    `‘`/`“` before a lowercase letter (`_RULE_QUOTE`, next to `_BAR_RULE`)
-    when the work's `part` slice closes no `”` — asked of the slice, since the
-    same volume's front matter and other treatises close 23. On a re-import
-    that takes the Bruised Reed from 163 marks to 26 and its audit from 133
+    `‘`/`“` before a letter (`_RULE_QUOTE`, next to `_BAR_RULE`) when the
+    work's `part` slice closes no `”` — asked of the slice, since the same
+    volume's front matter and other treatises close 23. On a re-import that
+    takes the Bruised Reed from 163 marks to 11 and its audit from 133
     `orphan-open-quote` findings to clean (the other archive books import
-    byte-identical). What still arrives: ~21 line-initial marks before a
-    CAPITAL (`‘Christ`, outside the rule by design) and ~5 mid-line, so a
-    0138-style strip is still needed after a re-import. Stripping also
+    byte-identical). What still arrives: 10 MID-line marks, mostly after a
+    sentence end ("bitterly. ‘This reed") — the reflow can't tell those from a
+    quote — and `‘6.` before a digit. A digit is left on purpose: `‘0 all` is
+    a lost "t" only a pair restores. So a 0138-style strip is still needed
+    after a re-import, just a much smaller one. Stripping also
     removes the evidence a pair keys on: a lost-letter pair must be spelled
     as the importer now emits it (`believe ruth from truth`, with enough
     context that `old` is not inside `new`), which is why the Bruised Reed
@@ -899,7 +901,7 @@ dropped; chapters under 120 words are dropped as stubs.
     a twin instead. **Limit:** "no `”`" also holds for an edition that quotes
     with SINGLE marks only, and for a scan OCR'd with STRAIGHT double quotes
     (`susanna-wesley-clarke`, `on-loving-god` — harmless there, 0 curly `‘`);
-    in either, a real line-initial `‘` before a lowercase word would be eaten.
+    in either, a real line-initial `‘` before a letter would be eaten.
     Count the curly `‘` in the slice before trusting the rule.
     *(2026-09)*
     **Read every difference against a second printing, not just the non-words:**
