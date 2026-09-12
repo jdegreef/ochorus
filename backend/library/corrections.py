@@ -1582,8 +1582,6 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'Satan and antichrist'),  # ch19
             ('we keep fire ifrom powder',
              'we keep fire from powder'),  # ch22
-            ('the generation ‘of noisome',
-             'the generation of noisome'),  # ch22
             ('And being ifallen, in our raisings',
              'And being fallen, in our raisings'),  # ch25
             ('Christ that must ydo the',
@@ -1603,12 +1601,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # shipped a wrong preposition.
             ('gospel, ifmen had not been',
              'gospel, if men had not been'),  # ch27
-            ('‘armed with invincible courage',
-             'armed with invincible courage'),  # ch27
             ('of all tha hath been',
              'of all that hath been'),  # ch27
-            ('evailing of ‘truth, and planting',
-             'evailing of truth, and planting'),  # ch19
             # ch17's summary heading wraps mid-WORD ("merciful dispo-" /
             # "sition in Christ"), so its tail leaks as the body's opening and
             # the drop cap follows it. Same shape as the ten above.
@@ -1688,7 +1682,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'and against that which is ill'),  # ch28
             ('carried matters often \\inconsiderately',
              'carried matters often inconsiderately'),  # ch28
-            ('What had ‘oecome of that great work',
+            ('What had oecome of that great work',
              'What had become of that great work'),  # ch28
             ('outstride all lets, apon this faith',
              'outstride all lets, upon this faith'),  # ch28
@@ -1710,10 +1704,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # `beliovest` where Pickering is right — so the witness is consulted,
             # not obeyed.
             #
-            # The last group is a soft hyphen the scanner rendered as a LEFT
-            # single quote inside a word (`con‘ceits`, `There‘fore`). A real
-            # opening quote never falls between two letters, so these are
-            # unambiguous.
+            # A soft hyphen the scan read as `‘` at a line start ("con-" /
+            # "‘ceits") needs no pair: `import_archive` drops the mark and the
+            # hyphen-join closes the word. The same goes for the bare strays
+            # earlier pairs here spelled with their mark.
             ('so that both these together, @',
              'so that both these together, a'),  # ch1
             ('of those that have obtained merey,',
@@ -1738,9 +1732,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'careful was he that Peter and'),  # ch4
             ('former; yet more glorious than ithe',
              'former; yet more glorious than the'),  # ch5
-            ('into it. The Lord of ‘ithe',
+            ('into it. The Lord of ithe',
              'into it. The Lord of the'),  # ch5
-            ('own temple. The pupil of ‘ithe',
+            ('own temple. The pupil of ithe',
              'own temple. The pupil of the'),  # ch5
             ('Christ to perfume them, and s0',
              'Christ to perfume them, and so'),  # ch6
@@ -1804,7 +1798,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'favour to comfort him; so Christ'),  # ch16
             ('power to uphold us, than vhen',
              'power to uphold us, than when'),  # ch16
-            ('heart carry in them some ‘eport,',
+            ('heart carry in them some eport,',
              'heart carry in them some report,'),  # ch16
             ('but a reflection of his ove',
              'but a reflection of his love'),  # ch16
@@ -1882,15 +1876,15 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'are made partakers of the divine'),  # ch19
             ('of darkness, and ruleth in darkmess',
              'of darkness, and ruleth in darkness'),  # ch20
-            ('to preserve ‘the manner of poate',
+            ('to preserve the manner of poate',
              'to preserve the manner of working'),  # ch20
-            ('think that Satan had no ‘nand',
+            ('think that Satan had no nand',
              'think that Satan had no hand'),  # ch20
             ('he findeth in us. But Shere',
              'he findeth in us. But there'),  # ch20
             ('our nature to incline in genewal',
              'our nature to incline in general'),  # ch20
-            ('and when convincingly he shall dis“over',
+            ('and when convincingly he shall disover',
              'and when convincingly he shall discover'),  # ch20
             ('when we work as we hould',
              'when we work as we should'),  # ch20
@@ -1922,11 +1916,11 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'being dearer to us than our'),  # ch22
             ('if we had liberty to schoose',
              'if we had liberty to choose'),  # ch22
-            ('and a voluntary people, and ‘aot',
+            ('and a voluntary people, and aot',
              'and a voluntary people, and not'),  # ch22
             ('hand of the dial points iwell,',
              'hand of the dial points well,'),  # ch22
-            ('in that particular case, the ‘neart',
+            ('in that particular case, the neart',
              'in that particular case, the heart'),  # ch22
             ('again. A fire in the theart',
              'again. A fire in the heart'),  # ch23
@@ -1940,7 +1934,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'us ; Christ so honoureth the'),  # ch23
             ('and victory unto our care wof',
              'and victory unto our care of'),  # ch23
-            ('subtle their conveyance of things ‘nath',
+            ('subtle their conveyance of things nath',
              'subtle their conveyance of things hath'),  # ch25
             ('when there shall be no slory',
              'when there shall be no glory'),  # ch25
@@ -2006,50 +2000,6 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'reign with me. And then he'),  # ch28
             ('other rule and authority, and yoower,',
              'other rule and authority, and power,'),  # ch28
-            ('con‘ceits',
-             'conceits'),  # ch4
-            ('dis‘pleasure',
-             'displeasure'),  # ch4
-            ('dis‘tempers',
-             'distempers'),  # ch4
-            ('watch‘fulness',
-             'watchfulness'),  # ch12
-            ('ac‘tions',
-             'actions'),  # ch13
-            ('suc‘ceed',
-             'succeed'),  # ch15
-            ('There‘fore',
-             'Therefore'),  # ch15
-            ('expec‘tation',
-             'expectation'),  # ch17
-            ('in‘tended',
-             'intended'),  # ch17
-            ('affec‘tionate',
-             'affectionate'),  # ch17
-            ('agree‘ment',
-             'agreement'),  # ch17
-            ('un‘changed',
-             'unchanged'),  # ch19
-            ('rea‘sons',
-             'reasons'),  # ch19
-            ('pre‘serveth',
-             'preserveth'),  # ch20
-            ('de‘sirous',
-             'desirous'),  # ch21
-            ('con‘quered',
-             'conquered'),  # ch22
-            ('pre‘served',
-             'preserved'),  # ch23
-            ('govern‘ment',
-             'government'),  # ch23
-            ('over‘spread',
-             'overspread'),  # ch23
-            ('call‘ing',
-             'calling'),  # ch23
-            ('be‘cause',
-             'because'),  # ch26
-            ('it‘self',
-             'itself'),  # ch27
             # The residue the alignment could not auto-accept — multi-token
             # spans, and places where GROSART is the damaged side. Each was read
             # in context and settled by hand. Rejected as faithful to Pickering
@@ -2067,8 +2017,6 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'to poverty of spirit, than greatness'),  # ch7
             ('men refuse, then Wisdom will langh',
              'men refuse, then Wisdom will laugh'),  # ch17
-            ('pre‘serve',
-             'preserve'),  # ch17
             ('2¢',
              'it'),  # ch3
             ('and_short',
@@ -2111,8 +2059,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'ruled'),  # ch15
             ('zearer',
              'nearer'),  # ch16
-            ('‘eeper',
-             'deeper'),  # ch16
+            ('righteousness pierceth eeper than',
+             'righteousness pierceth deeper than'),  # ch16
             ('Jhrist’s',
              'Christ’s'),  # ch16
             ('underaken',
@@ -2139,8 +2087,6 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'king; he'),  # ch19
             ('lkings',
              'kings'),  # ch19
-            ('judgement, ‘and',
-             'judgement, and'),  # ch20
             ('UHereupon',
              'Hereupon'),  # ch20
             ('gudgeth',
@@ -2149,8 +2095,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'hath a spite'),  # ch20
             ('conyersation.',
              'conversation.'),  # ch20
-            ('‘loth',
-             'doth'),  # ch20
+            ('and the devil loth but promote',
+             'and the devil doth but promote'),  # ch20
             ('25, theaven',
              '25, heaven'),  # ch22
             ('as ithe',
@@ -2179,7 +2125,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'keepeth himself,'),  # ch23
             ('prosper: reigion',
              'prosper: religion'),  # ch24
-            ('him; ‘nuch',
+            ('him; nuch',
              'him; much'),  # ch25
             ('Jingers',
              'fingers'),  # ch26
@@ -2193,8 +2139,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'corruption undiscerned'),  # ch26
             ('work acsording',
              'work according'),  # ch26
-            ('‘hould',
-             'should'),  # ch26
+            ('And therefore we hould work out',
+             'And therefore we should work out'),  # ch26
             ('asvaulted',
              'assaulted'),  # ch26
             ('compassed with roubles,',
@@ -2227,10 +2173,6 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'but for the truth,'),  # ch22
             ('in istate',
              'in a state'),  # ch26
-            ('‘the burthen',
-             'the burthen'),  # ch27
-            ('‘he perfiteth',
-             'he perfiteth'),  # ch15
             # The tail the alignment could not reach, because Grosart's span
             # around each differs too much for a clean one-for-one swap. Mostly
             # a LOST SPACE ("Godin him", "asa grain of mustardseed", "foundin
@@ -2276,7 +2218,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
              'heart under contrary appearances'),  # ch16
             ('flax ; and Jhrist again undertaking',
              'flax ; and Christ again undertaking'),  # ch16
-            ('the Father, appear‘ag before him',
+            ('the Father, appearag before him',
              'the Father, appearing before him'),  # ch16
             ('us blameless -efore him',
              'us blameless before him'),  # ch16
@@ -2426,7 +2368,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # Two bare apostrophes standing where the scan lost a word.
             ("of his poor ' disciples ?",
              'of his poor disciples ?'),  # ch7
-            ("but addeth ' ‘to a lustre",
+            ("but addeth ' to a lustre",
              'but addeth a lustre'),  # ch17
             # --- 2026-09-11: the damage #1943 shipped. These pairs run on the
             # STORED text (the pairs above run on the raw scan), so the deploy's
@@ -2453,6 +2395,23 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('will declare ‘0 all the world', 'will declare to all the world'),  # ch25
             ('towards “hose in whom', 'towards those in whom'),  # ch25
             ('to whom ‘0 return', 'to whom to return'),  # ch26
+            # The same repairs as a re-import now reads them: `import_archive`
+            # drops a line-initial rule mark itself, so a raw scan arrives as
+            # "ruth from truth", mark already gone. The with-mark spellings stay
+            # (the last is in the Grosart group below) — 0138 settles the stored
+            # rows through them before it strips.
+            ('believe ruth from truth', 'believe truth from truth'),  # ch15
+            ('from us. he influence', 'from us. The influence'),  # ch16
+            ('let him rust in the name', 'let him trust in the name'),  # ch16
+            ('given up ito give over', 'given up to give over'),  # ch17
+            ('stream of ur own nature', 'stream of our own nature'),  # ch20
+            ('only he math engraven', 'only he hath engraven'),  # ch20
+            ('any earthly oss or gain', 'any earthly loss or gain'),  # ch22
+            ('came near nome to', 'came near home to'),  # ch22
+            ('flesh, and he course', 'flesh, and the course'),  # ch22
+            ('glory of nis excellencies', 'glory of his excellencies'),  # ch25
+            ('towards hose in whom', 'towards those in whom'),  # ch25
+            ('many out on a dangerous', 'many out of a dangerous'),  # ch20
             # The same rules read as a CLOSING mark after a word. Not left to a
             # rule: `’` is also this text's apostrophe ("Jonas’ gourd").
             ('without making’ a noise', 'without making a noise'),  # ch1

@@ -90,6 +90,14 @@ _NON_LETTER = re.compile(r"[^A-Za-z]")
 #: words together. Pickering's Sibbes has 52; the other two archive scans have
 #: none, so this can only help.
 _BAR_RULE = re.compile(r"(?<!\S)\|+(?!\S)|\|+(?=\s*$)")
+#: The same margin rule read as an OPENING QUOTE instead of a bar. Pickering's
+#: 1838 Sibbes sets no quotation marks at all, yet its text layer opens 194 of
+#: the Bruised Reed's lines on `‘` or `“` before a lowercase letter; most of
+#: the 163 `‘` and 15 `“` #1943 shipped were these. Only visible per LINE (the
+#: reflow loses the position), and only safe in a work that closes no double
+#: quote, which `chapterize` decides. Dropping it also lets the hyphen-join
+#: close a word the scan split on the same mark ("con-" / "‘ceits").
+_RULE_QUOTE = re.compile(r"^[‘“](?=[a-z])")
 #: How far below a work's title its first chapter may sit and still count as
 #: that title's text (rather than a half-title page or a running header).
 _PART_HEADING_GAP = 30
@@ -371,8 +379,11 @@ def fetch_text(item_id: str) -> str:
     return resp.text
 
 
-def _reflow(lines: list[str]) -> str:
-    """Turn hard-wrapped OCR lines into clean <p>…</p> HTML."""
+def _reflow(lines: list[str], *, rule_quotes: bool = False) -> str:
+    """Turn hard-wrapped OCR lines into clean <p>…</p> HTML.
+
+    ``rule_quotes``: drop `_RULE_QUOTE` marks (see there).
+    """
     paras: list[str] = []
     buf = ""
 
@@ -388,6 +399,8 @@ def _reflow(lines: list[str]) -> str:
 
     for raw in lines:
         line = _BAR_RULE.sub(" ", raw).strip()
+        if rule_quotes:
+            line = _RULE_QUOTE.sub("", line)
         if not line or _BARE_NUM.match(line) or _is_header(line):
             # Page furniture / blank: end the paragraph only if it reads complete;
             # otherwise it's a page break inside a paragraph — keep accumulating.
@@ -450,9 +463,13 @@ def chapterize(text: str, part: str = "", part_end: str = "") -> list[tuple[str,
             raise CommandError(f"part_end {part_end!r} is not a heading after {part!r}")
         markers, contents = markers_in_part(markers, start, end), []
         part_limit = end
+        # Asked of the WORK, not the volume: Pickering's Sibbes closes no quote
+        # in the Bruised Reed, and 23 in the preface and treatises around it.
+        rule_quotes = "”" not in "\n".join(lines[start:end])
     else:
         markers, contents = split_contents_run(markers)
         part_limit = None
+        rule_quotes = "”" not in text
     from_contents = contents_titles(lines, contents)
 
     sections: list[tuple[str, str]] = []
@@ -478,7 +495,7 @@ def chapterize(text: str, part: str = "", part_end: str = "") -> list[tuple[str,
             from_contents.get(value, "") if value else "",
             body_was_inline=bool(inline_title),
         )
-        body = _reflow(block[body_start:])
+        body = _reflow(block[body_start:], rule_quotes=rule_quotes)
         sections.append((title, body))
     return sections
 

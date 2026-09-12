@@ -461,6 +461,11 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "topics",
             "available_languages",
             "author_quote_count",
+            # For the sermon page's JSON-LD `dateModified`. Honest as a
+            # modification date: seed_sermons diffs before saving, so `auto_now`
+            # doesn't re-stamp every row on every deploy (same reasoning that
+            # lets the sitemap use it as <lastmod>).
+            "updated_at",
         ]
 
 
