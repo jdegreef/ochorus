@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import { getBook, getChapter, getSermon, getAuthor, type BookDetail } from '$lib/library-public';
 	import { getLang, lang as langStore, localeName } from '$lib/lang.svelte';
 	import { bookmarks, byPosition } from '$lib/bookmarks.svelte';
@@ -62,34 +64,71 @@
 		!loading && books.length === 0 && sermons.length === 0 && bios.length === 0
 	);
 
+	// Which kinds of entry to show. The dashboard's Highlights / Notes / Bookmarks
+	// tiles deep-link here with ?view=…; 'all' is the plain notebook.
+	type NotebookView = 'all' | 'highlights' | 'notes' | 'bookmarks';
+	const isView = (v: string | null): v is NotebookView =>
+		v === 'all' || v === 'highlights' || v === 'notes' || v === 'bookmarks';
+	const initialView = $page.url.searchParams.get('view');
+	let view = $state<NotebookView>(isView(initialView) ? initialView : 'all');
+	const VIEWS: { id: NotebookView; label: string }[] = [
+		{ id: 'all', label: t('notebook.allColors') },
+		{ id: 'highlights', label: t('settings.statHighlights') },
+		{ id: 'notes', label: t('settings.statNotes') },
+		{ id: 'bookmarks', label: t('reader.bookmarks') }
+	];
+
 	// Live search across every book, chapter title, highlight, note and bookmark,
 	// plus an optional filter to one highlight colour.
 	let query = $state('');
 	let colorFilter = $state(''); // '' = all colours
 	const q = $derived(query.trim().toLowerCase());
-	const active = $derived(q.length > 0 || colorFilter !== '');
+	const active = $derived(q.length > 0 || colorFilter !== '' || view !== 'all');
+
+	// Each view decides which lanes show. Bookmarks aren't highlights and carry no
+	// colour, so the bookmarks view drops the colour filter (and clears it on the
+	// way in); the notes view keeps only highlights that carry a note.
+	const showBookmarks = $derived(view === 'all' || view === 'bookmarks');
+	const showHighlights = $derived(view !== 'bookmarks');
+	const notesOnly = $derived(view === 'notes');
+
+	function setView(v: NotebookView) {
+		view = v;
+		if (v === 'bookmarks') colorFilter = '';
+		// Keep the view in the URL so it's shareable and survives the reload a
+		// language change triggers (mirrors Settings' ?section=).
+		const url = new URL($page.url);
+		if (v === 'all') url.searchParams.delete('view');
+		else url.searchParams.set('view', v);
+		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
+	}
 	const filtered = $derived.by(() => {
 		if (!active) return books;
 		const hit = (s: string) => s.toLowerCase().includes(q);
 		return books
 			.map((bk) => {
 				const bookHit = !q || hit(bk.title) || hit(bk.author);
-				// Bookmarks aren't coloured, so a colour filter hides them.
-				const bookmarks = colorFilter
-					? []
-					: bookHit
-						? bk.bookmarks
-						: bk.bookmarks.filter((b) => hit(b.snippet) || hit(b.title));
-				const chapters = bk.chapters
-					.map((ch) => ({
-						...ch,
-						highlights: ch.highlights.filter(
-							(h) =>
-								(!colorFilter || h.color === colorFilter) &&
-								(bookHit || hit(h.text) || hit(h.note ?? '') || hit(ch.title))
-						)
-					}))
-					.filter((ch) => ch.highlights.length);
+				// Bookmarks aren't coloured, so a colour filter hides them; a view
+				// that isn't showing bookmarks hides them too.
+				const bookmarks =
+					!showBookmarks || colorFilter
+						? []
+						: bookHit
+							? bk.bookmarks
+							: bk.bookmarks.filter((b) => hit(b.snippet) || hit(b.title));
+				const chapters = showHighlights
+					? bk.chapters
+							.map((ch) => ({
+								...ch,
+								highlights: ch.highlights.filter(
+									(h) =>
+										(!colorFilter || h.color === colorFilter) &&
+										(!notesOnly || !!h.note) &&
+										(bookHit || hit(h.text) || hit(h.note ?? '') || hit(ch.title))
+								)
+							}))
+							.filter((ch) => ch.highlights.length)
+						: [];
 				return { ...bk, bookmarks, chapters };
 			})
 			.filter((bk) => bk.bookmarks.length || bk.chapters.length);
@@ -100,8 +139,26 @@
 		workHit: boolean,
 		hit: (s: string) => boolean
 	) =>
-		// Bookmarks aren't coloured, so a colour filter hides them.
-		colorFilter ? [] : workHit ? list : list.filter((b) => hit(b.snippet) || hit(b.title));
+		// Bookmarks aren't coloured, so a colour filter hides them; a view that
+		// isn't showing bookmarks hides them too.
+		!showBookmarks || colorFilter
+			? []
+			: workHit
+				? list
+				: list.filter((b) => hit(b.snippet) || hit(b.title));
+
+	/** Highlights surviving the colour / notes / query filters — the sermon and
+	 * biography lanes share it (their highlights are a flat list, unlike a book's
+	 * per-chapter ones, which stay inline). */
+	const matchingHighlights = (list: HL[], workHit: boolean, hit: (s: string) => boolean) =>
+		showHighlights
+			? list.filter(
+					(h) =>
+						(!colorFilter || h.color === colorFilter) &&
+						(!notesOnly || !!h.note) &&
+						(workHit || hit(h.text) || hit(h.note ?? ''))
+				)
+			: [];
 
 	const filteredSermons = $derived.by(() => {
 		if (!active) return sermons;
@@ -109,12 +166,11 @@
 		return sermons
 			.map((sm) => {
 				const sermonHit = !q || hit(sm.title) || hit(sm.author);
-				const highlights = sm.highlights.filter(
-					(h) =>
-						(!colorFilter || h.color === colorFilter) &&
-						(sermonHit || hit(h.text) || hit(h.note ?? ''))
-				);
-				return { ...sm, bookmarks: matchingBookmarks(sm.bookmarks, sermonHit, hit), highlights };
+				return {
+					...sm,
+					bookmarks: matchingBookmarks(sm.bookmarks, sermonHit, hit),
+					highlights: matchingHighlights(sm.highlights, sermonHit, hit)
+				};
 			})
 			.filter((sm) => sm.bookmarks.length || sm.highlights.length);
 	});
@@ -124,12 +180,11 @@
 		return bios
 			.map((b) => {
 				const bioHit = !q || hit(b.name);
-				const highlights = b.highlights.filter(
-					(h) =>
-						(!colorFilter || h.color === colorFilter) &&
-						(bioHit || hit(h.text) || hit(h.note ?? ''))
-				);
-				return { ...b, bookmarks: matchingBookmarks(b.bookmarks, bioHit, hit), highlights };
+				return {
+					...b,
+					bookmarks: matchingBookmarks(b.bookmarks, bioHit, hit),
+					highlights: matchingHighlights(b.highlights, bioHit, hit)
+				};
 			})
 			.filter((b) => b.bookmarks.length || b.highlights.length);
 	});
@@ -389,6 +444,23 @@
 		     it is the one place that most needs a way back to the books. -->
 		<EmptyState message={t('notebook.empty')} action={browseLibrary} />
 	{:else}
+		<!-- What to show: all, or just one kind. The dashboard's Highlights / Notes
+		     / Bookmarks tiles deep-link straight to one of these via ?view=…. -->
+		<div class="mb-4 flex flex-wrap items-center gap-2" role="group" aria-label={t('notebook.filterType')}>
+			{#each VIEWS as v (v.id)}
+				<button
+					class="rounded-full border px-3 py-1 text-small"
+					class:border-accent={view === v.id}
+					class:text-accent={view === v.id}
+					class:border-border={view !== v.id}
+					class:text-muted={view !== v.id}
+					onclick={() => setView(v.id)}
+					aria-pressed={view === v.id}
+				>
+					{v.label}
+				</button>
+			{/each}
+		</div>
 		<div class="mb-6 flex flex-wrap items-center gap-3">
 			<input
 				type="search"
@@ -397,30 +469,34 @@
 				aria-label={t('notebook.search')}
 				class="field grow"
 			/>
-			<div class="flex items-center gap-2" role="group" aria-label={t('notebook.filterColor')}>
-				<button
-					class="rounded-full border px-2.5 py-1 text-small"
-					class:border-accent={colorFilter === ''}
-					class:text-accent={colorFilter === ''}
-					class:border-border={colorFilter !== ''}
-					class:text-muted={colorFilter !== ''}
-					onclick={() => (colorFilter = '')}
-					aria-pressed={colorFilter === ''}
-				>
-					{t('notebook.allColors')}
-				</button>
-				{#each HIGHLIGHT_COLORS as color (color)}
+			<!-- Colours only make sense where highlights show; the bookmarks view has
+			     none, so the swatch row drops out there. -->
+			{#if view !== 'bookmarks'}
+				<div class="flex items-center gap-2" role="group" aria-label={t('notebook.filterColor')}>
 					<button
-						class="hl-swatch"
-						data-color={color}
-						class:active={colorFilter === color}
-						onclick={() => (colorFilter = colorFilter === color ? '' : color)}
-						aria-pressed={colorFilter === color}
-						aria-label="{t('notebook.filterColor')}: {t(`reader.hl_${color}`)}"
-						title={t(`reader.hl_${color}`)}
-					></button>
-				{/each}
-			</div>
+						class="rounded-full border px-2.5 py-1 text-small"
+						class:border-accent={colorFilter === ''}
+						class:text-accent={colorFilter === ''}
+						class:border-border={colorFilter !== ''}
+						class:text-muted={colorFilter !== ''}
+						onclick={() => (colorFilter = '')}
+						aria-pressed={colorFilter === ''}
+					>
+						{t('notebook.allColors')}
+					</button>
+					{#each HIGHLIGHT_COLORS as color (color)}
+						<button
+							class="hl-swatch"
+							data-color={color}
+							class:active={colorFilter === color}
+							onclick={() => (colorFilter = colorFilter === color ? '' : color)}
+							aria-pressed={colorFilter === color}
+							aria-label="{t('notebook.filterColor')}: {t(`reader.hl_${color}`)}"
+							title={t(`reader.hl_${color}`)}
+						></button>
+					{/each}
+				</div>
+			{/if}
 		</div>
 
 		{#if noMatches}

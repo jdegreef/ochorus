@@ -9,6 +9,7 @@ import {
 	type WorkKind
 } from './reading-schema';
 import { listBooks, listSermons, listAuthors } from './library-public';
+import { isBookFinished } from './reading';
 
 /**
  * "Your reading" — device-local reading stats and recent history, derived from
@@ -98,7 +99,7 @@ export async function collectReadingActivity(
 			if (m) {
 				title = m.title;
 				author = m.author;
-				done = m.chapters > 0 && p.order >= m.chapters;
+				done = isBookFinished(p.order, m.chapters);
 			}
 		} else if (p.kind === 'sermon') {
 			const m = sermonMeta.get(p.slug);
