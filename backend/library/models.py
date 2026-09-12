@@ -571,6 +571,13 @@ class Sermon(models.Model):
     # and shipped in the sermon's fixture file, per the pipeline's founding
     # rule (prod holds no model credentials); blank = the reader shows none.
     summary = models.TextField(blank=True, default="")
+    # Answered study questions: a list of {"question", "answer"} objects, both
+    # PLAIN TEXT (no HTML — rendered as escaped text, so no sanitize path). Like
+    # `summary`: AI-drafted off-server, grounded strictly in this sermon, shipped
+    # in the fixture; the reader shows a "Questions for reflection" section and
+    # the page emits FAQPage JSON-LD. Empty list = nothing shown. See the
+    # `sermon-questions` skill for the generation + review pipeline.
+    study_questions = models.JSONField(default=list, blank=True)
     # Cleaned, structured HTML body (paragraphs, headings, blockquotes).
     body_html = models.TextField()
     # Plain text derived from body_html; what full-text search indexes.
