@@ -479,6 +479,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "scripture_refs",
             "scripture_links",
             "summary",
+            "study_questions",
             "difficulty",
             "topics",
             "available_languages",

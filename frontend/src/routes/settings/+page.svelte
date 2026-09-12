@@ -13,7 +13,6 @@
 	import { SITE_URL } from '$lib/config';
 	import { collectExport, toMarkdown, downloadFile } from '$lib/dataExport';
 	import { collectReadingActivity, type ReadingStats, type HistoryItem } from '$lib/readingStats';
-	import { offerFinish, unmarkFinished } from '$lib/progress';
 	import { readingActivity } from '$lib/readingActivity.svelte';
 	import { readingGoal } from '$lib/readingGoal.svelte';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
@@ -132,23 +131,6 @@
 		const { stats: s, history: h } = await collectReadingActivity(lang.current);
 		stats = s;
 		history = h;
-	}
-	// The history splits into what's still being read (newest-read first, as it
-	// arrives) and a finished shelf (newest-finished first — the reading record).
-	const reading = $derived(history.filter((h) => !h.finished));
-	const finishedHistory = $derived(
-		history.filter((h) => h.finished).sort((a, b) => (b.finishedAt ?? 0) - (a.finishedAt ?? 0))
-	);
-	// Un-finish from the shelf — a mis-finished work goes back to reading. The
-	// 'ochorus:sync' it dispatches bumps syncTick, which reloads this list.
-	function unfinish(h: HistoryItem) {
-		unmarkFinished(h.slug, h.kind);
-	}
-	// Explicitly finish from the reading list — the finish path for a work with no
-	// dedicated reading surface to auto-detect on (a biography), and for anything
-	// the reader knows they're done with. offerFinish shows the same Undo.
-	function finish(h: HistoryItem) {
-		offerFinish(h.slug, h.kind);
 	}
 	$effect(() => {
 		syncTick; // reload after a sync/merge changes the local cache
@@ -655,57 +637,26 @@
 						<StatTiles {stats} />
 					{/if}
 
-					<!-- Currently reading -->
+					<!-- Recently reading -->
 					<h3 class="text-h3 mb-3 mt-8">{t('settings.recentReading')}</h3>
-					{#if reading.length}
+					{#if history.length}
 						<ol class="divide-y divide-border">
-							{#each reading as h (h.kind + ':' + h.slug)}
-								<li class="flex items-baseline gap-3 py-2.5">
-									<a href={historyHref(h)} class="flex min-w-0 flex-1 items-baseline gap-3 hover:no-underline">
+							{#each history as h (h.kind + ':' + h.slug)}
+								<li>
+									<a href={historyHref(h)} class="flex items-baseline gap-3 py-2.5 hover:no-underline">
 										<span class="flex-1 min-w-0">
 											<span class="block truncate text-body text-text">{h.title}</span>
 											<span class="block truncate text-small text-muted">
-												{#if h.author}{h.author}{/if}{#if h.kind === 'book'} · {t('settings.chapterN')} {h.order}{/if}
+												{#if h.author}{h.author}{/if}{#if h.kind === 'book'} · {t('settings.chapterN')} {h.order}{/if}{#if h.finished} · {t('settings.statFinished')}{/if}
 											</span>
 										</span>
 										<span class="shrink-0 text-small text-muted">{relativeTime(h.at, lang.current, t('settings.syncJustNow'))}</span>
 									</a>
-									<button
-										type="button"
-										class="shrink-0 text-small text-muted hover:text-accent"
-										onclick={() => finish(h)}
-									>
-										{t('continue.markFinished')}
-									</button>
 								</li>
 							{/each}
 						</ol>
 					{:else}
 						<p class="text-body text-muted">{t('settings.activityEmpty')}</p>
-					{/if}
-
-					<!-- Finished — the reading history, newest completion first. -->
-					{#if finishedHistory.length}
-						<h3 class="text-h3 mb-3 mt-8">{t('settings.statFinished')}</h3>
-						<ol class="divide-y divide-border">
-							{#each finishedHistory as h (h.kind + ':' + h.slug)}
-								<li class="flex items-baseline gap-3 py-2.5">
-									<a href={historyHref(h)} class="min-w-0 flex-1 hover:no-underline">
-										<span class="block truncate text-body text-text">{h.title}</span>
-										<span class="block truncate text-small text-muted">
-											{#if h.author}{h.author}{/if}{#if h.finishedAt} · {relativeTime(h.finishedAt, lang.current, t('settings.syncJustNow'))}{/if}
-										</span>
-									</a>
-									<button
-										type="button"
-										class="shrink-0 text-small text-muted hover:text-accent"
-										onclick={() => unfinish(h)}
-									>
-										{t('settings.unfinish')}
-									</button>
-								</li>
-							{/each}
-						</ol>
 					{/if}
 				{:else}
 					<p class="text-small text-muted">…</p>

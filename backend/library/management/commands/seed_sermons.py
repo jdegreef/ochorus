@@ -35,6 +35,10 @@ SERMON_FIELDS = (
     "title",
     "scripture_ref",
     "summary",
+    # Fixture-owned like `summary` — AI-drafted off-server and shipped in the
+    # fixture, no live-DB workflow edits it, so it updates from the fixture on
+    # every deploy (not create-only). A plain list, so save() derives nothing.
+    "study_questions",
     "body_html",
     "source_type",
     "source_url",

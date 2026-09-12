@@ -414,6 +414,9 @@ export interface Sermon extends SermonSummary {
 	 * chapter cleared the scripture-graph floor. The chip row links there (a
 	 * crawlable internal link) and falls back to search for refs not present. */
 	scripture_links: Record<string, string>;
+	/** Answered study questions (plain text), shown as a "Questions for
+	 * reflection" section and emitted as FAQPage JSON-LD. Empty = none written. */
+	study_questions: { question: string; answer: string }[];
 	difficulty: Difficulty;
 	/** Topical shelves this sermon belongs to (localized), for cross-links. */
 	topics: TopicChip[];
