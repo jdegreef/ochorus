@@ -315,14 +315,15 @@ def _upsert_progress(
     else:
         resolved_finished = server_finished or finished_at
 
-    # Is the incoming POSITION stale (the stored one is at least as new)?
+    # Is the incoming POSITION stale (the stored one is at least as new)? Either
+    # the stored client-clock is at or ahead of the incoming one, or the incoming
+    # carries no clock and the caller keeps the server's in that case (the merge).
     position_stale = False
     if existing:
         stored = existing.client_updated_at
-        if client_dt is not None and stored is not None and stored >= client_dt:
-            position_stale = True
-        elif client_dt is None and keep_server_when_unknown:
-            position_stale = True
+        position_stale = (stored is not None and client_dt is not None and stored >= client_dt) or (
+            client_dt is None and keep_server_when_unknown
+        )
 
     if position_stale:
         # Keep the server's newer position, but still apply a finished change —
