@@ -380,9 +380,17 @@ class RuleQuoteTests(SimpleTestCase):
         (_, body), = chapterize("\n".join(["Chap. I. — The Text opened", *lines]))
         return body
 
-    def test_a_line_initial_mark_before_a_lowercase_word_is_dropped(self):
+    def test_a_line_initial_mark_before_a_word_is_dropped(self):
         body = self._body("so that the church is", "‘armed with invincible courage.")
         self.assertIn("is armed with invincible courage", body)
+
+    def test_a_line_initial_mark_before_a_capital_is_dropped_too(self):
+        body = self._body("let us go to", "‘Christ presently to bind us up again.")
+        self.assertIn("go to Christ presently", body)
+
+    def test_a_line_initial_mark_before_a_digit_is_left_for_the_pairs(self):
+        # "‘0 all the world": the 0 is a lost "t", which only a pair can restore.
+        self.assertIn("‘0 all", self._body("he will declare", "‘0 all the world what he is."))
 
     def test_a_word_split_on_the_mark_is_rejoined(self):
         # "con-" / "‘ceits": with the mark gone the hyphen-join closes the word.
