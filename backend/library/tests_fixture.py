@@ -77,7 +77,7 @@ from library.ingest import (
     strip_restated_heading,
     word_count,
 )
-from library.quote_marks import mark_counts
+from library.quote_marks import mark_counts, mispaired_marks
 from library.text import html_to_text
 
 EXPECTED_MODELS = {
@@ -104,6 +104,21 @@ def files_by_path() -> dict:
     this module want the per-file view.
     """
     return rows_by_file()
+
+
+@lru_cache(maxsize=1)
+def work_bodies() -> tuple[tuple[str, str], ...]:
+    """(file name, the work's body_html joined) for every work file.
+
+    Quote style is a fact about the WORK, so both quote guards read each work
+    whole — and read it here, once, so the two cannot disagree about what a
+    work is.
+    """
+    return tuple(
+        (path.name, "".join(r["fields"].get("body_html", "") or "" for r in rows))
+        for path, rows in files_by_path().items()
+        if path.name not in {"authors.json", "plans.json"}
+    )
 
 
 @lru_cache(maxsize=1)
@@ -2045,10 +2060,7 @@ class QuoteStyleTests(SimpleTestCase):
 
     def test_no_work_mixes_straight_and_curly_quotes(self):
         offenders = []
-        for path in ordered_fixture_paths():
-            if path.name in {"authors.json", "plans.json"}:
-                continue
-            rows = json.loads(path.read_text())
+        for name, work in work_bodies():
             # `library.quote_marks` owns the counting rule, and the fixture sweep and
             # migration 0084 read it from there too. It used to be re-derived
             # here, which is the one place a drift would go unnoticed — this is
@@ -2057,11 +2069,9 @@ class QuoteStyleTests(SimpleTestCase):
             # narrow count could not see: susanna-wesley-clarke.en, wholly
             # straight-quoted, had ten OCR-damaged guillemets in it, two of them
             # corrupted letters.
-            straight, curly = mark_counts(
-                "".join(r["fields"].get("body_html", "") or "" for r in rows)
-            )
+            straight, curly = mark_counts(work)
             if straight and curly:
-                offenders.append(f"{path.name}: {straight} straight, {curly} curly")
+                offenders.append(f"{name}: {straight} straight, {curly} curly")
         self.assertEqual(
             offenders,
             [],
@@ -2070,6 +2080,26 @@ class QuoteStyleTests(SimpleTestCase):
             "marks, then re-read the diff: the opening/closing decision is made "
             "from context, and a source that sets a space inside its marks or "
             "leaves a quotation open across a paragraph can still fool it.",
+        )
+
+    def test_no_quotation_closes_with_the_wrong_mark(self):
+        """A quotation opened curly must close curly, and close with a CLOSER.
+
+        The counting test above could not see the 390 the 2026-09-11 sweep
+        repaired; `quote_marks.mispaired_marks` says why, and owns the rule.
+        """
+        offenders = [
+            f"{name}: …{excerpt}…"
+            for name, work in work_bodies()
+            for excerpt in mispaired_marks(work)
+        ]
+        self.assertEqual(
+            offenders,
+            [],
+            "These quotations close with the wrong mark. Repair each with a "
+            "`corrections.BODY_CORRECTIONS` pair (stored text is re-corrected on "
+            "every deploy) and settle the fixture; see the 2026-09-11 block at the "
+            "end of corrections.py.",
         )
 
 

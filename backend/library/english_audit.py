@@ -494,10 +494,11 @@ _CLOSER = {"‘": re.compile(r"[\w.,;:!?]’(?![a-z])"), "“": re.compile("”"
 # opening marks are a scan's margin rules, not quotation. Real quotation rarely
 # opens mid-sentence on a lowercase word and nearly always closes in the same
 # block; the OCR of `the-bruised-reed`'s 1838 scan read a rule as `‘`/`“` 178
-# times against no `”` at all (38.3 per 10k). Every other work sits at 0-3, the
-# highest at 17.1 (`walking-with-god`, whose quotations close with STRAIGHT
-# marks — a different defect). Judged as a density because a long book earns a
-# few, and `orphan-close-quote` cannot see this: it looks the other way.
+# times against no `”` at all (38.3 per 10k). Every other work sits under 2
+# (`walking-with-god` read 17.1 until its straight-closed quotations were
+# repaired on 2026-09-11 — a different defect). Judged as a density because a
+# long book earns a few, and `orphan-close-quote` cannot see this: it looks the
+# other way.
 ORPHAN_OPENER_DENSITY = 20
 
 
