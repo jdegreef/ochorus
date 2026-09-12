@@ -70,6 +70,13 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    # dorny/paths-filter lists a PR's changed files through the GitHub API, which
+    # needs pull-requests:read — this repo's default token doesn't grant it
+    # ("Resource not accessible by integration"). Scoped to THIS job so the other
+    # jobs keep their default token permissions (gha cache, artifact upload).
+    permissions:
+      contents: read
+      pull-requests: read
     outputs:
       backend: ${{ steps.filter.outputs.backend }}
       content: ${{ steps.filter.outputs.content }}
