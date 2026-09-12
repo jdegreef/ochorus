@@ -367,11 +367,15 @@ class SermonDetailSerializer(serializers.ModelSerializer):
 
     scripture_refs = serializers.SerializerMethodField()
 
-    def get_scripture_refs(self, obj):
+    def _scripture_refs(self, obj):
         """The distinct passages this sermon engages — its text first, then
-        references cited in the body — for the scripture-index chip row. The
-        main text is deduped against body citations by verse overlap so
-        "Mark 9:23" doesn't appear twice under two spellings."""
+        references cited in the body. The main text is deduped against body
+        citations by verse overlap so "Mark 9:23" doesn't appear twice under
+        two spellings. Cached on the instance: the body parse is not free and
+        both ``scripture_refs`` and ``scripture_links`` want the same list."""
+        cache = getattr(obj, "_scripture_refs_cache", None)
+        if cache is not None:
+            return cache
         from .scripture import cited_references, reference_verse_ids
 
         refs: list[str] = []
@@ -384,7 +388,24 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             if main_ids and ids and ids <= main_ids:
                 continue
             refs.append(r)
-        return refs[:8]
+        obj._scripture_refs_cache = refs[:8]
+        return obj._scripture_refs_cache
+
+    def get_scripture_refs(self, obj):
+        """The passages this sermon engages, for the scripture-index chip row."""
+        return self._scripture_refs(obj)
+
+    scripture_links = serializers.SerializerMethodField()
+
+    def get_scripture_links(self, obj):
+        """Map of those references to their ``/scripture/<book>/<chapter>/`` page,
+        for the ones whose Bible chapter cleared the scripture-graph floor. Lets
+        the chip row link to the crawlable reverse-index page (a real internal
+        link) instead of a search query; refs with no page keep the search
+        fallback on the frontend. Reuses the resolver the body links with."""
+        from .scripture_graph import scripture_links
+
+        return scripture_links(self._scripture_refs(obj))
 
     def _neighbours(self, obj):
         """The (prev, next) sermon in this author's corpus, in shelf order.
@@ -456,6 +477,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "prev",
             "next",
             "scripture_refs",
+            "scripture_links",
             "summary",
             "difficulty",
             "topics",
