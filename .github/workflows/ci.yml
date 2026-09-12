@@ -2,9 +2,12 @@ name: CI
 
 # Quality gate for every PR and push to main. Blocks a merge until the backend
 # tests + migration check pass, the production image builds & serves, the
-# frontend type-checks/builds, and the browser smoke passes. Add EVERY job in
-# this workflow as a required status check in branch protection so they gate
-# merges (autoDeploy ships main to production).
+# frontend type-checks/builds, and the browser smoke passes. The ONE required
+# status check in branch protection is `test-and-build` (the aggregator at the
+# bottom) — NOT the individual jobs. That is deliberate: the jobs are path-
+# filtered and a skipped job must not block, so only the always-running
+# aggregator is required. Do not add the sub-jobs as required contexts.
+# (autoDeploy ships main to production.)
 #
 # Structure: four jobs that run in PARALLEL instead of one serial job.
 #   backend-tests   — ruff, migration check, SQLite + Postgres suites
@@ -13,8 +16,13 @@ name: CI
 #   frontend-checks — eslint, svelte-check, unit tests (no API needed)
 #   integration     — seed a local API, build the frontend against it, assert
 #                     the built output, run the real-browser smoke
-# The first three are independent. `integration` is the long pole and also
-# independent, so it starts at t=0 alongside the rest. Nothing `needs:` anything.
+# The four are independent of each other. On a PR they gate on `changes` (a
+# ~10s paths filter) so a change only pays for the jobs it can actually break —
+# a content-only PR skips the Docker image build and the frontend static checks;
+# a frontend-only PR skips the backend suites and the image. See the `changes`
+# job for the exact mapping and why `integration` runs on nearly everything.
+# On push/main and merge_group NOTHING is filtered — every job runs, because
+# main auto-deploys and the merge queue is the last gate before production.
 #
 # `merge_group` runs this same gate on the merge queue's temporary branch — the PR
 # merged onto the CURRENT main (and any PRs ahead of it in the queue). That is what
@@ -44,9 +52,52 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  # --- Which areas changed (PR only) --------------------------------------
+  # A cheap filter so a PR runs only the jobs its diff can break. The heavy
+  # gates below `needs: [changes]` and switch on these outputs. Two rules keep
+  # it SAFE (it may only ever over-run, never under-run a needed job):
+  #   * A mixed PR trips several filters at once — each is an independent "did
+  #     any matching file change" boolean — so it runs the union, never a subset.
+  #   * The filter runs on pull_request ONLY. On push/main and merge_group the
+  #     step is skipped, the outputs are empty, and every job's `if` falls back
+  #     to its `github.event_name != 'pull_request'` clause and runs — the full
+  #     gate, because those events ship to production.
+  # `backend` deliberately EXCLUDES the content fixtures: a fixture-only change
+  # cannot break "the image builds and serves /api/health/" (fixture INTEGRITY
+  # is covered by backend-tests, which content triggers), so it must not drag in
+  # the Docker build. A `.py` seed module (quote_seed, corrections, …) is code
+  # and does trip `backend` — over-running the image build, which is the safe side.
+  changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+      content: ${{ steps.filter.outputs.content }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+      ci: ${{ steps.filter.outputs.ci }}
+    steps:
+      - uses: dorny/paths-filter@v3
+        id: filter
+        if: github.event_name == 'pull_request'
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+              - '!backend/library/fixtures/**'
+            content:
+              - 'backend/library/fixtures/**'
+            frontend:
+              - 'frontend/**'
+            ci:
+              - '.github/workflows/**'
+              - 'render.yaml'
+
   # --- Backend gate -------------------------------------------------------
   backend-tests:
     name: Backend — lint, migrations, tests
+    needs: [changes]
+    # Backend code OR content (fixture integrity tests). Skips a frontend-only PR.
+    if: ${{ github.event_name != 'pull_request' || needs.changes.outputs.ci == 'true' || needs.changes.outputs.backend == 'true' || needs.changes.outputs.content == 'true' }}
     runs-on: ubuntu-latest
     # Observed legitimate maximum for the backend suite is well under this; the
     # ceiling exists only to reap a hang, not to cut a slow-but-real run.
@@ -110,6 +161,10 @@ jobs:
   # --- Production image gate (runs in parallel with everything) ------------
   backend-image:
     name: Backend — production image builds, runs unprivileged, and serves
+    needs: [changes]
+    # Backend CODE only. A content-only or frontend-only PR cannot change whether
+    # the image builds and serves, so it skips this (the biggest single saving).
+    if: ${{ github.event_name != 'pull_request' || needs.changes.outputs.ci == 'true' || needs.changes.outputs.backend == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     # Its own throwaway Postgres — it boots the real image with the real CMD
@@ -174,6 +229,10 @@ jobs:
   # --- Frontend static gate (no API needed; runs in parallel) --------------
   frontend-checks:
     name: Frontend — lint, type-check, unit tests
+    needs: [changes]
+    # Frontend source only — eslint/svelte-check/unit tests read nothing from the
+    # backend, so a backend- or content-only PR skips this.
+    if: ${{ github.event_name != 'pull_request' || needs.changes.outputs.ci == 'true' || needs.changes.outputs.frontend == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -221,6 +280,12 @@ jobs:
   # only gate that RUNS the app.
   integration:
     name: Frontend build, prerender guards, browser smoke (real API)
+    needs: [changes]
+    # The prerender fetches the live API, so BOTH backend code and content can
+    # change the built output — this runs on any code/content change and skips
+    # only a docs-only PR. It is the long pole, so skipping it is the second-
+    # biggest saving, but only where nothing it renders could have moved.
+    if: ${{ github.event_name != 'pull_request' || needs.changes.outputs.ci == 'true' || needs.changes.outputs.backend == 'true' || needs.changes.outputs.content == 'true' || needs.changes.outputs.frontend == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
@@ -342,21 +407,40 @@ jobs:
   # FAIL (report red), not skip — a skipped required check blocks merge just as
   # hard as a pending one. If you add or rename a real job above, add it both to
   # `needs` and to the test below.
+  #
+  # A path-filtered job reports `skipped`, which is a PASS here — the change
+  # couldn't break it, so there was nothing to run. Only `failure`/`cancelled`
+  # (or a `changes` job that didn't succeed) fails the gate. This is what lets
+  # the sub-jobs skip while `test-and-build` — the one required context in branch
+  # protection — still runs on every PR and gives the true verdict.
   test-and-build:
     name: test-and-build
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: always()
-    needs: [backend-tests, backend-image, frontend-checks, integration]
+    needs: [changes, backend-tests, backend-image, frontend-checks, integration]
     steps:
-      - name: Every gate passed
+      - name: Every gate passed or was skipped
         run: |
+          echo "changes:         ${{ needs.changes.result }}"
           echo "backend-tests:   ${{ needs.backend-tests.result }}"
           echo "backend-image:   ${{ needs.backend-image.result }}"
           echo "frontend-checks: ${{ needs.frontend-checks.result }}"
           echo "integration:     ${{ needs.integration.result }}"
-          [ "${{ needs.backend-tests.result }}" = "success" ] \
-            && [ "${{ needs.backend-image.result }}" = "success" ] \
-            && [ "${{ needs.frontend-checks.result }}" = "success" ] \
-            && [ "${{ needs.integration.result }}" = "success" ] \
-            || { echo "::error::a required CI job did not succeed"; exit 1; }
+          # The filter itself must have run; a broken filter must not merge blind.
+          if [ "${{ needs.changes.result }}" != "success" ]; then
+            echo "::error::the changes filter did not succeed"; exit 1
+          fi
+          fail=
+          for entry in \
+            "backend-tests:${{ needs.backend-tests.result }}" \
+            "backend-image:${{ needs.backend-image.result }}" \
+            "frontend-checks:${{ needs.frontend-checks.result }}" \
+            "integration:${{ needs.integration.result }}"; do
+            name="${entry%%:*}"; result="${entry##*:}"
+            case "$result" in
+              success|skipped) : ;;  # skipped == path filter said this change can't break it
+              *) echo "::error::$name did not pass (result: $result)"; fail=1 ;;
+            esac
+          done
+          [ -z "$fail" ] || exit 1
