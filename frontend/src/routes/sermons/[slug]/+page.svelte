@@ -23,7 +23,16 @@
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, truncateMeta, stripHtml } from '$lib/seo';
+	import {
+		absUrl,
+		jsonLd,
+		breadcrumbLd,
+		hreflangFor,
+		truncateMeta,
+		stripHtml,
+		faqPage,
+		REVIEWED_UI_LOCALES
+	} from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -260,6 +269,22 @@
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
+	// Answered study questions — a "Questions for reflection" section and the
+	// matching FAQPage JSON-LD, both from the one `study_questions` array so the
+	// markup can never assert a question the page doesn't show. The question/answer
+	// TEXT is per-sermon content (already in the sermon's language); only the
+	// section HEADING is catalogue copy, so — like the book page's FAQ — the
+	// section is gated to locales whose heading is native-reviewed. English-only
+	// content today, so in practice this renders for en. (Google restricted FAQ
+	// rich results to authoritative sites in 2023; the value here is the unique
+	// content and the clean entity signal, not a SERP accordion.)
+	const faqItems = $derived(
+		REVIEWED_UI_LOCALES.has(getLang())
+			? (sermon.study_questions ?? []).map((qa) => ({ q: qa.question, a: qa.answer }))
+			: []
+	);
+	const faqLd = $derived(faqItems.length ? faqPage(faqItems) : '');
+
 	// Selecting text offers copy-quote / share (with attribution), highlight and
 	// note; a single word opens the dictionary — same as the chapter reader.
 	const cite = $derived({
@@ -278,7 +303,7 @@
 	ogType="article"
 	ogTitle={shareTitle}
 	{ogImage}
-	structuredData={[sermonLd, crumbsLd]}
+	structuredData={[sermonLd, crumbsLd, faqLd].filter(Boolean)}
 />
 
 <svelte:window onkeydown={onKeydown} />
@@ -491,6 +516,25 @@
 		bind:body
 		bind:frac
 	/>
+
+	<!-- Questions for reflection: answered study questions grounded in the sermon.
+	     Renders from the same `study_questions` array as the FAQPage JSON-LD, so
+	     the markup never asserts a question the reader can't see. Plain text, so
+	     no {@html}. Gated to reviewed-heading locales (faqItems) — see the note by
+	     the derivation. -->
+	{#if faqItems.length}
+		<section class="mt-12 border-t border-border pt-6" aria-labelledby="questions-heading">
+			<h2 id="questions-heading" class="text-h3 mb-4">{t('sermon.questionsTitle')}</h2>
+			<dl class="space-y-5">
+				{#each faqItems as item (item.q)}
+					<div>
+						<dt class="text-body font-semibold text-text">{item.q}</dt>
+						<dd class="mt-1 text-body leading-relaxed text-muted">{item.a}</dd>
+					</div>
+				{/each}
+			</dl>
+		</section>
+	{/if}
 
 	<!-- Scripture index: the passages this sermon engages, each a jump into
 	     scripture search — so scripture is a navigation surface, not just text. -->

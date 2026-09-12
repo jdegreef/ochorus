@@ -121,15 +121,24 @@ const BOOK_EXTRAS_PENDING = [
 	'book_faq_author_a'
 ] as const;
 
+// The sermon page's "Questions for reflection" heading. Same story as
+// BOOK_EXTRAS_PENDING: en/es/pt/fr are translated and reviewed (the sermon
+// page's REVIEWED_LOCALES), the rest hold the English source as a gated-off
+// placeholder that never reaches a reader. Delete a locale's entry and add it to
+// REVIEWED_LOCALES once a native speaker checks the heading.
+const SERMON_EXTRAS_PENDING = ['sermon_questions_title'] as const;
+
+const UI_EXTRAS_PENDING = [...BOOK_EXTRAS_PENDING, ...SERMON_EXTRAS_PENDING];
+
 const PENDING_TRANSLATION: Record<string, readonly string[]> = {
 	// A blocked/awaiting-review string is declared here and ratcheted (asserted
 	// exactly, both directions) rather than quietly allowlisted forever. uk's four
 	// Scripture strings once lived here until the Kulish text could be sourced.
-	sw: BOOK_EXTRAS_PENDING,
-	lg: BOOK_EXTRAS_PENDING,
-	hi: BOOK_EXTRAS_PENDING,
-	ar: BOOK_EXTRAS_PENDING,
-	uk: BOOK_EXTRAS_PENDING
+	sw: UI_EXTRAS_PENDING,
+	lg: UI_EXTRAS_PENDING,
+	hi: UI_EXTRAS_PENDING,
+	ar: UI_EXTRAS_PENDING,
+	uk: UI_EXTRAS_PENDING
 };
 
 const toSnake = (key: string) =>

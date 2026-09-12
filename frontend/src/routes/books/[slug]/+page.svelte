@@ -5,7 +5,15 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { chapterName, readingMinutes, readingTime } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, truncateMeta, topicThings } from '$lib/seo';
+	import {
+		absUrl,
+		jsonLd,
+		breadcrumbLd,
+		hreflangFor,
+		truncateMeta,
+		topicThings,
+		REVIEWED_UI_LOCALES
+	} from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
@@ -234,23 +242,19 @@
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
-	// Locales whose FAQ + "more like this" reason copy has been translated AND
-	// native-reviewed. These extra strings live in the message catalogues; every
-	// advertised locale carries the KEYS (catalogue parity is enforced), but the
-	// un-reviewed ones hold the English source as a gated-off placeholder, so
-	// nothing unreviewed ever renders. Add a locale here once a native speaker has
-	// checked its keys — that one edit lights the feature up for that language.
-	const REVIEWED_LOCALES = new Set(['en', 'es', 'pt', 'fr']);
+	// Locales whose FAQ + "more like this" reason copy is native-reviewed — the
+	// shared gate (see REVIEWED_UI_LOCALES in seo.ts), so this page and the sermon
+	// page's reflection questions light up together, not one at a time.
 
 	// A short FAQ built from what the page already knows — free to read, length,
 	// subject, author — answering the questions readers actually type ("is X free
 	// to read", "how long is X"). The copy is in the catalogues (see
-	// REVIEWED_LOCALES); a locale without a reviewed translation omits it rather
+	// REVIEWED_UI_LOCALES); a locale without a reviewed translation omits it rather
 	// than shipping an unreviewed answer. The visible <dl> and the FAQPage JSON-LD
 	// both render from this one array, so the markup can never assert a question
 	// the page doesn't show — the match Google requires of FAQ structured data.
 	const faqItems = $derived.by((): { q: string; a: string }[] => {
-		if (!REVIEWED_LOCALES.has(getLang()) || !book.chapter_count) return [];
+		if (!REVIEWED_UI_LOCALES.has(getLang()) || !book.chapter_count) return [];
 		const title = book.title;
 		const items = [
 			{ q: t('book.faqFreeQ').replace('%title%', title), a: t('book.faqFreeA') },
@@ -286,8 +290,8 @@
 
 	// "More like this" reasons (A2). The reason is data from the API; the visible
 	// label comes from the catalogues, shown in the same reviewed locales as the
-	// FAQ (REVIEWED_LOCALES) — other locales render the grid unchanged.
-	const showReasons = $derived(REVIEWED_LOCALES.has(getLang()));
+	// FAQ (REVIEWED_UI_LOCALES) — other locales render the grid unchanged.
+	const showReasons = $derived(REVIEWED_UI_LOCALES.has(getLang()));
 	function relatedReason(rel: RelatedBook): string | null {
 		const r = rel.reason;
 		if (!showReasons || !r) return null;
