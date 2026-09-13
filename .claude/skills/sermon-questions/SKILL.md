@@ -81,4 +81,11 @@ and the clean entity signal, not a SERP accordion.
 
 ~90 English sermons total. Work in batches (pilot = 10, then 20s), picking a spread
 across authors/eras so quality is judged broadly (the founder reviews the diff
-before scaling). Read in sub-batches of ~5, author, write, verify. #2342 shipped 30.
+before scaling). Read in sub-batches of ~5, author, write, verify. #2342 shipped 40.
+
+**Count a batch against `origin/main...HEAD`, not the working tree.** #2330
+shipped a few pilot examples straight to main, so those sermons already carry
+`study_questions` on the branch — `grep -l study_questions .../sermons/*.en.json`
+over-counts by exactly those. To state how many a PR *adds* (for the title/body),
+count `git diff --name-only origin/main...HEAD -- .../sermons/` instead. (Once
+reported the branch total 43 when the PR added 40.)
