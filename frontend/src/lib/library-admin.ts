@@ -922,6 +922,16 @@ export const getAdminUserDirectory = (
 	return apiFetch<AdminUserDirectory>(`/api/admin/users/directory/${s ? `?${s}` : ''}`);
 };
 
+/** The CSV-export URL for the directory at the given search + sort (all matching
+ *  rows). Fetch it with `apiFetchRaw` for the blob — the endpoint + param rules
+ *  live here, not inline in the page. */
+export const adminUserDirectoryCsvUrl = (params: { q?: string; sort?: AdminUserSort } = {}) => {
+	const qs = new URLSearchParams({ fmt: 'csv' });
+	if (params.q) qs.set('q', params.q);
+	if (params.sort && params.sort !== 'recent') qs.set('sort', params.sort);
+	return `/api/admin/users/directory/?${qs}`;
+};
+
 // Per-user detail: one reader's profile and activity, keyed by Supabase UUID.
 // Admin-only; the companion to the aggregate AdminUsersView. Everything is
 // derived on request from the reading tables — see the backend AdminUserDetailView.

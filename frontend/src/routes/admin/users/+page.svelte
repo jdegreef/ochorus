@@ -4,6 +4,7 @@
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import {
+		adminUserDirectoryCsvUrl,
 		formatDuration,
 		getAdminUserDirectory,
 		getAdminUsers,
@@ -58,14 +59,11 @@
 	async function exportCsv() {
 		exporting = true;
 		try {
-			const params = new URLSearchParams({ fmt: 'csv' });
-			if (query) params.set('q', query);
-			if (dirSort !== 'recent') params.set('sort', dirSort);
-			const res = await apiFetchRaw(`/api/admin/users/directory/?${params}`);
+			const res = await apiFetchRaw(adminUserDirectoryCsvUrl({ q: query, sort: dirSort }));
 			const url = URL.createObjectURL(await res.blob());
 			const a = document.createElement('a');
 			a.href = url;
-			a.download = 'ochorus-users.csv';
+			a.download = `ochorus-users-${new Date().toISOString().slice(0, 10)}.csv`;
 			a.click();
 			URL.revokeObjectURL(url);
 		} catch {

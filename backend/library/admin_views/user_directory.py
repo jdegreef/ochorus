@@ -13,25 +13,38 @@ lives on the detail page.
 
 from __future__ import annotations
 
+from django.db.models import F
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
 from ..views import _language_entry
-from .analytics import _provider_label
+from .analytics import _profile_summary
+
+
+def _csv_safe(value) -> str:
+    """A CSV cell that a spreadsheet won't run as a formula. A reader controls
+    their own display name, so a value beginning ``= + - @`` (or a tab/CR) is
+    prefixed with an apostrophe — otherwise Excel/Sheets may execute it when the
+    admin opens the export."""
+    s = "" if value is None else str(value)
+    return "'" + s if s[:1] in ("=", "+", "-", "@", "\t", "\r") else s
 
 # One page of the directory. Fixed (not client-controlled) so a caller can't ask
 # for an unbounded slice.
 PAGE_SIZE = 50
 
-# The orderings the table offers. Each is a list of order_by args; last_seen puts
-# never-seen accounts last regardless of direction.
+# The orderings the table offers, as order_by args. Every one ends in
+# ``supabase_uid`` so paging is stable — without a unique final key, rows that tie
+# on the visible columns (e.g. two blank-name accounts under "name") have an
+# undefined order and can repeat or vanish across pages. ``seen`` keeps never-seen
+# accounts (null ``last_seen_at``) at the bottom regardless of direction.
 SORTS = {
-    "recent": ["-created_at"],
-    "seen": ["-last_seen_at", "-created_at"],
-    "active": ["-reading_seconds", "-created_at"],
-    "name": ["display_name", "email"],
+    "recent": ["-created_at", "supabase_uid"],
+    "seen": [F("last_seen_at").desc(nulls_last=True), "-created_at", "supabase_uid"],
+    "active": ["-reading_seconds", "-created_at", "supabase_uid"],
+    "name": ["display_name", "email", "supabase_uid"],
 }
 DEFAULT_SORT = "recent"
 
@@ -73,7 +86,6 @@ class AdminUserDirectoryView(APIView):
         the CSV export. Returns ``(qs, sort, q)``."""
         from django.db.models import (
             Count,
-            F,
             IntegerField,
             OuterRef,
             Q,
@@ -114,12 +126,7 @@ class AdminUserDirectoryView(APIView):
         sort = request.query_params.get("sort") or DEFAULT_SORT
         if sort not in SORTS:
             sort = DEFAULT_SORT
-        # `last_seen_at` is nullable; keep never-seen accounts at the bottom of the
-        # "seen" sort rather than letting NULLs float to the top.
-        if sort == "seen":
-            qs = qs.order_by(F("last_seen_at").desc(nulls_last=True), "-created_at")
-        else:
-            qs = qs.order_by(*SORTS[sort])
+        qs = qs.order_by(*SORTS[sort])
         return qs, sort, q
 
     def _csv(self, qs):
@@ -150,10 +157,10 @@ class AdminUserDirectoryView(APIView):
         for p in qs.iterator():
             writer.writerow(
                 [
-                    p.display_name,
-                    p.email,
-                    " ".join(p.provider_list),
-                    p.locale,
+                    _csv_safe(p.display_name),
+                    _csv_safe(p.email),
+                    _csv_safe(" ".join(p.provider_list)),
+                    _csv_safe(p.locale),
                     p.created_at.date().isoformat(),
                     p.last_seen_at.date().isoformat() if p.last_seen_at else "",
                     p.works,
@@ -161,7 +168,11 @@ class AdminUserDirectoryView(APIView):
                 ]
             )
         stamp = timezone.now().date().isoformat()
-        resp = HttpResponse(buf.getvalue(), content_type="text/csv")
+        # A UTF-8 BOM so Excel reads non-ASCII names/emails correctly rather than
+        # as mojibake.
+        resp = HttpResponse(
+            "\ufeff" + buf.getvalue(), content_type="text/csv; charset=utf-8"
+        )
         resp["Content-Disposition"] = f'attachment; filename="ochorus-users-{stamp}.csv"'
         return resp
 
@@ -173,17 +184,11 @@ class AdminUserDirectoryView(APIView):
         return min(max(1, page), pages)
 
     def _row(self, p) -> dict:
+        # The shared per-account summary (uid/name/email/providers/locale/dates),
+        # plus this page's rollups.
         return {
-            "uid": str(p.supabase_uid),
-            "display_name": p.display_name,
-            "email": p.email,
-            "providers": [
-                {"code": c, "label": _provider_label(c)} for c in p.provider_list
-            ],
-            "locale": p.locale,
+            **_profile_summary(p),
             "locale_name": _language_entry(p.locale)["name"],
-            "joined_at": p.created_at.isoformat(),
-            "last_seen_at": p.last_seen_at.isoformat() if p.last_seen_at else None,
             "works": p.works,
             "reading_seconds": p.reading_seconds,
         }

@@ -110,10 +110,10 @@ class AdminUserDirectoryTests(TestCase):
     def test_csv_export(self):
         res = self.get(fmt="csv")
         self.assertEqual(res.status_code, 200)
-        self.assertEqual(res["Content-Type"], "text/csv")
+        self.assertTrue(res["Content-Type"].startswith("text/csv"))
         self.assertIn("attachment", res["Content-Disposition"])
         self.assertIn(".csv", res["Content-Disposition"])
-        body = res.content.decode()
+        body = res.content.decode("utf-8-sig")  # tolerate the Excel BOM
         lines = [line for line in body.splitlines() if line]
         # Header + all three users (no pagination on export).
         self.assertEqual(lines[0], "name,email,providers,language,joined,last_seen,works,reading_seconds")
@@ -121,6 +121,15 @@ class AdminUserDirectoryTests(TestCase):
         # Email is in the clear in the export (unlike the masked UI).
         self.assertIn("alice@example.com", body)
         self.assertIn("600", body)  # Alice's reading_seconds
+
+    def test_csv_escapes_formula_injection(self):
+        u = User.objects.create(username="evil", email="e@x.com")
+        UserProfile.objects.create(
+            user=u, supabase_uid=uuid.uuid4(), email="e@x.com", display_name="=cmd()"
+        )
+        body = self.get(fmt="csv").content.decode("utf-8-sig")
+        self.assertIn("'=cmd()", body)  # apostrophe-guarded
+        self.assertNotIn(",=cmd()", body)  # never a raw formula cell
 
     def test_csv_respects_search(self):
         body = self.get(fmt="csv", q="test.org").content.decode()

@@ -257,6 +257,24 @@ def _provider_label(code: str) -> str:
     return PROVIDER_LABELS.get(code, code.replace("_", " ").title())
 
 
+def _profile_summary(p) -> dict:
+    """The per-account fields shared by the recent-signups list and the user
+    directory. One home for the provider→label contract (labelled server-side so
+    the frontend keeps no copy of the map — see ``_recent``); the directory adds
+    its own rollups on top of this.
+    """
+    return {
+        # The stable handle the per-user detail page is keyed by.
+        "uid": str(p.supabase_uid),
+        "display_name": p.display_name,
+        "email": p.email,
+        "providers": [{"code": c, "label": _provider_label(c)} for c in p.provider_list],
+        "locale": p.locale,
+        "joined_at": p.created_at.isoformat(),
+        "last_seen_at": p.last_seen_at.isoformat() if p.last_seen_at else None,
+    }
+
+
 # How many of the most recent sign-ups the admin page lists individually.
 RECENT_SIGNUPS_LIMIT = 25
 
@@ -356,23 +374,7 @@ class AdminUsersView(APIView):
         from accounts.models import UserProfile
 
         rows = UserProfile.objects.order_by("-created_at")[:RECENT_SIGNUPS_LIMIT]
-        return [
-            {
-                # The stable handle the per-user detail page is keyed by.
-                "uid": str(p.supabase_uid),
-                "display_name": p.display_name,
-                "email": p.email,
-                # Labeled server-side (like ``by_method``) so the frontend needs
-                # no copy of the provider→label map to keep in sync.
-                "providers": [
-                    {"code": c, "label": _provider_label(c)} for c in p.provider_list
-                ],
-                "locale": p.locale,
-                "joined_at": p.created_at.isoformat(),
-                "last_seen_at": p.last_seen_at.isoformat() if p.last_seen_at else None,
-            }
-            for p in rows
-        ]
+        return [_profile_summary(p) for p in rows]
 
     def _by_locale(self):
         from django.db.models import Count
