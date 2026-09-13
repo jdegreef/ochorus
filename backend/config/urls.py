@@ -34,6 +34,7 @@ from library.admin_views import (
     AdminSearchView,
     AdminStatsView,
     AdminTranslationJobsView,
+    AdminUserDetailView,
     AdminUsersView,
     AdminVerseReviewView,
 )
@@ -70,6 +71,11 @@ urlpatterns = [
         name="admin-engagement",
     ),
     path("api/admin/users/", AdminUsersView.as_view(), name="admin-users"),
+    path(
+        "api/admin/users/<uuid:uid>/",
+        AdminUserDetailView.as_view(),
+        name="admin-user-detail",
+    ),
     path("api/admin/export/", AdminExportView.as_view(), name="admin-export"),
     path("api/admin/authors/", AdminAuthorCreateView.as_view(), name="admin-author-create"),
     path(

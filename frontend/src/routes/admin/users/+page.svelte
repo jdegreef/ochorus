@@ -2,7 +2,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
-	import { getAdminUsers, periodTrend, type Trend } from '$lib/library-admin';
+	import { getAdminUsers, maskEmail, periodTrend, type Trend } from '$lib/library-admin';
 
 	const users = adminResource(getAdminUsers, 'Something went wrong loading users.');
 	const data = $derived(users.data);
@@ -54,12 +54,6 @@
 		showAllEmails = !showAllEmails;
 		if (!showAllEmails) revealedRows = {};
 	};
-	function maskEmail(email: string): string {
-		const at = email.indexOf('@');
-		if (at <= 0) return '•••';
-		const local = email.slice(0, at);
-		return `${local.slice(0, 1)}${'•'.repeat(Math.max(3, local.length - 1))}${email.slice(at)}`;
-	}
 	$effect(() => {
 		// Re-mask whenever the list reloads (Refresh / first load).
 		void data;
@@ -189,34 +183,38 @@
 						</div>
 						{#if d.recent.length}
 							<ul class="divide-y divide-border">
-								<!-- Keyed by position: the list is replaced wholesale on each load
-							     and the payload carries no stable id, so email+date could
-							     collide (blank emails, same timestamp). -->
-							{#each d.recent as u, i (i)}
-									<li class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-2.5">
-										<div class="min-w-0">
-											{#if u.display_name}
-												<div class="truncate font-semibold text-text">{u.display_name}</div>
-												{@render emailCell(u.email, i, 'text-small text-muted')}
-											{:else}
-												{@render emailCell(u.email, i, 'font-semibold text-text')}
-											{/if}
-										</div>
-										<div class="flex items-baseline gap-4 text-small text-muted">
-											<span class="text-text">
-												{#if u.providers.length}
-													{u.providers.map((p) => p.label).join(', ')}
+								{#each d.recent as u, i (u.uid)}
+										<li class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-2.5">
+											<div class="min-w-0">
+												{#if u.display_name}
+													<a href="/admin/users/{u.uid}" class="block truncate font-semibold text-text hover:text-accent hover:underline">{u.display_name}</a>
+													{@render emailCell(u.email, i, 'text-small text-muted')}
 												{:else}
-													<span class="text-muted">—</span>
+													<!-- No name: the row is reached via the "View" link; email stays a reveal button. -->
+													<a href="/admin/users/{u.uid}" class="text-small text-accent hover:underline">View profile →</a>
+													{@render emailCell(u.email, i, 'font-semibold text-text')}
 												{/if}
-											</span>
-											<span class="whitespace-nowrap tabular-nums" title="Joined">{dayFmt(u.joined_at)}</span>
-											<span class="hidden whitespace-nowrap tabular-nums sm:inline" title="Last seen"
-												>seen {dayFmt(u.last_seen_at)}</span
-											>
-										</div>
-									</li>
-								{/each}
+											</div>
+											<div class="flex items-baseline gap-4 text-small text-muted">
+												<span class="text-text">
+													{#if u.providers.length}
+														{u.providers.map((p) => p.label).join(', ')}
+													{:else}
+														<span class="text-muted">—</span>
+													{/if}
+												</span>
+												<span class="whitespace-nowrap tabular-nums" title="Joined">{dayFmt(u.joined_at)}</span>
+												<span class="hidden whitespace-nowrap tabular-nums sm:inline" title="Last seen"
+													>seen {dayFmt(u.last_seen_at)}</span
+												>
+												<a
+													href="/admin/users/{u.uid}"
+													class="whitespace-nowrap text-accent hover:underline"
+													aria-label="View {u.display_name || u.email || 'this reader'}'s profile">View →</a
+												>
+											</div>
+										</li>
+									{/each}
 							</ul>
 						{:else}
 							<p class="text-body text-muted">No sign-ups yet.</p>
