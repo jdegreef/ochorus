@@ -1157,6 +1157,33 @@ export const setBookPublished = (slug: string, language: string, published: bool
 		{ method: 'POST', body: JSON.stringify({ language, published }) }
 	);
 
+// The sermon counterpart to the book detail — one canonical sermon across its
+// languages, minus chapters (a sermon is a single body).
+export interface AdminSermonLang extends Language {
+	title: string;
+	scripture_ref: string;
+	source_type: SourceType;
+	is_published: boolean;
+	word_count: number;
+	source_url: string;
+}
+export interface AdminSermonDetail {
+	slug: string;
+	title: string;
+	author: { name: string; slug: string };
+	languages: AdminSermonLang[];
+}
+
+export const getAdminSermon = (slug: string) =>
+	apiFetch<AdminSermonDetail>(`/api/admin/sermons/${encodeURIComponent(slug)}/`);
+
+/** Publish/unpublish one sermon edition — the sibling of setBookPublished. */
+export const setSermonPublished = (slug: string, language: string, published: boolean) =>
+	apiFetch<{ slug: string; language: string; is_published: boolean }>(
+		`/api/admin/sermons/${encodeURIComponent(slug)}/publish/`,
+		{ method: 'POST', body: JSON.stringify({ language, published }) }
+	);
+
 // Search analytics: what readers look for, and what they don't find.
 
 export interface SearchStatsWindow {

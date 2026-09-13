@@ -22,7 +22,13 @@ from .content import (
     AdminLanguageDetailView,
     AdminStatsView,
 )
-from .detail import AdminBookDetailView, AdminBookPublishView, AdminExportView
+from .detail import (
+    AdminBookDetailView,
+    AdminBookPublishView,
+    AdminExportView,
+    AdminSermonDetailView,
+    AdminSermonPublishView,
+)
 from .jobs import AdminTranslationJobsView
 from .languages import (
     AdminLanguageCreateView,
@@ -64,6 +70,8 @@ __all__ = [
     "AdminLanguageThresholdsView",
     "AdminReviewDetailView",
     "AdminReviewQueueView",
+    "AdminSermonDetailView",
+    "AdminSermonPublishView",
     "AdminVerseReviewView",
     "AdminStatsView",
     "AdminTranslationJobsView",

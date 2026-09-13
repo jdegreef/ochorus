@@ -85,23 +85,28 @@ class AdminBookDetailView(APIView):
         )
 
 
-class AdminBookPublishView(AdminAudited, APIView):
-    """Publish or unpublish one language edition of a book.
+class _EditionPublishView(AdminAudited, APIView):
+    """Publish or unpublish one language edition of a per-language work.
 
-    ``is_published`` is the reader-visibility switch — the public API filters
-    on it (``BookListView`` / ``BookDetailView``), so unpublishing removes the
-    edition from the site immediately, and it is the lever an urgent copyright
-    takedown pulls. It is deliberately **create-only** in ``seed_books``
-    (``CREATE_ONLY_FIELDS``), so a decision made here is never walked back by a
-    deploy re-seeding from the fixture.
+    ``is_published`` is the reader-visibility switch — the public API filters on
+    it, so unpublishing removes the edition from the site immediately, and it is
+    the lever an urgent copyright takedown pulls. It is deliberately
+    **create-only** in the seed (``CREATE_ONLY_FIELDS``), so a decision made here
+    is never walked back by a deploy re-seeding from the fixture.
 
-    ``POST /api/admin/books/<slug>/publish/`` with ``{language, published}``.
-    Scoped to a single ``(slug, language)`` row — the admin book page toggles
+    ``POST /api/admin/<works>/<slug>/publish/`` with ``{language, published}``.
+    Scoped to a single ``(slug, language)`` row — the admin detail page toggles
     one edition at a time. Prerendered SEO pages catch up on the throttled
     rebuild ``mark_content_changed`` triggers, the same path import-publish uses.
+
+    Subclasses set ``model`` (Book/Sermon) and ``target_kind`` (the audit-target
+    prefix); ``save(update_fields=["is_published"])`` is load-bearing on both —
+    a bare ``save()`` would re-tokenise every chapter/body for the search index.
     """
 
     permission_classes = [IsAdminEmail]
+    model = None
+    target_kind = ""
 
     def audit_action_for(self, request):
         return (
@@ -123,25 +128,79 @@ class AdminBookPublishView(AdminAudited, APIView):
         # finalize_response only records on a 2xx, and post() always returns
         # these three keys there — so no defensive fallbacks are reachable.
         d = response.data
-        return f"book:{d['slug']}:{d['language']}", {"is_published": d["is_published"]}
+        return f"{self.target_kind}:{d['slug']}:{d['language']}", {
+            "is_published": d["is_published"]
+        }
 
     def post(self, request, slug):
         language, published = self._parse(request.data)
         if not language:
             return Response({"detail": "A language is required."}, status=400)
-        book = Book.objects.filter(slug=slug, language=language).first()
-        if book is None:
+        obj = self.model.objects.filter(slug=slug, language=language).first()
+        if obj is None:
             return Response(
                 {"detail": f"No {language} edition of “{slug}”."}, status=404
             )
-        if book.is_published != published:
-            book.is_published = published
-            book.save(update_fields=["is_published"])
+        if obj.is_published != published:
+            obj.is_published = published
+            obj.save(update_fields=["is_published"])
             # Reader-visible now on the SPA (the API filters is_published); the
             # prerendered pages follow on the throttled rebuild.
             invalidation.mark_content_changed()
         return Response(
-            {"slug": book.slug, "language": book.language, "is_published": book.is_published}
+            {"slug": obj.slug, "language": obj.language, "is_published": obj.is_published}
+        )
+
+
+class AdminBookPublishView(_EditionPublishView):
+    """Publish/unpublish one book edition (see :class:`_EditionPublishView`)."""
+
+    model = Book
+    target_kind = "book"
+
+
+class AdminSermonPublishView(_EditionPublishView):
+    """Publish/unpublish one sermon edition (see :class:`_EditionPublishView`)."""
+
+    model = Sermon
+    target_kind = "sermon"
+
+
+class AdminSermonDetailView(APIView):
+    """A single canonical sermon across all its languages, for the admin.
+
+    The sermon counterpart to :class:`AdminBookDetailView`, minus chapters — a
+    sermon is a single body, so each language row carries just its metadata and
+    the publish state the toggle acts on. English is listed first.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request, slug):
+        sermons = list(Sermon.objects.filter(slug=slug).select_related("author"))
+        if not sermons:
+            return Response({"detail": "No such sermon."}, status=404)
+        canonical = next((s for s in sermons if s.language == "en"), sermons[0])
+
+        languages = [
+            {
+                **_language_entry(s.language),
+                "title": s.title,
+                "scripture_ref": s.scripture_ref,
+                "source_type": s.source_type,
+                "is_published": s.is_published,
+                "word_count": s.word_count,
+                "source_url": s.source_url,
+            }
+            for s in sorted(sermons, key=lambda x: (x.language != "en", x.language))
+        ]
+        return Response(
+            {
+                "slug": slug,
+                "title": canonical.title,
+                "author": {"name": canonical.author.name, "slug": canonical.author.slug},
+                "languages": languages,
+            }
         )
 
 

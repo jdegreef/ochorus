@@ -81,6 +81,15 @@ describe('parseTarget', () => {
 		});
 	});
 
+	it('links a sermon to its admin page and keeps the language edition', () => {
+		expect(parseTarget('sermon:all-of-grace:en')).toEqual({
+			kind: 'document',
+			slug: 'all-of-grace',
+			lang: 'en',
+			href: '/admin/sermons/all-of-grace'
+		});
+	});
+
 	it('links an author to the public author page', () => {
 		expect(parseTarget('author:andrew-murray')).toEqual({
 			kind: 'author',

@@ -1213,3 +1213,109 @@ class AdminBookPublishTests(TestCase):
             format="json",
         )
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminSermonDetailTests(TestCase):
+    """The admin sermon detail endpoint — one sermon across its languages."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="cs", name="Charles Spurgeon")
+        Sermon.objects.create(
+            author=self.author, slug="grace", language="en", title="All of Grace",
+            body_html="<p>one two three</p>", scripture_ref="Eph 2:8", source_url="http://x",
+        )
+        Sermon.objects.create(
+            author=self.author, slug="grace", language="es", title="Toda la gracia",
+            body_html="<p>uno dos</p>", source_type=Book.SourceType.AI_UNREVIEWED,
+            is_published=False,
+        )
+
+    @override_settings(DEBUG=True)
+    def test_lists_editions_english_first(self):
+        res = self.client.get("/api/admin/sermons/grace/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["title"], "All of Grace")
+        self.assertEqual(res.data["author"]["slug"], "cs")
+        langs = res.data["languages"]
+        self.assertEqual(langs[0]["code"], "en")
+        self.assertEqual(langs[0]["scripture_ref"], "Eph 2:8")
+        es = next(row for row in langs if row["code"] == "es")
+        self.assertEqual(es["source_type"], "ai_unreviewed")
+        self.assertFalse(es["is_published"])
+
+    @override_settings(DEBUG=True)
+    def test_unknown_slug_404(self):
+        res = self.client.get("/api/admin/sermons/nope/")
+        self.assertEqual(res.status_code, 404)
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/sermons/grace/")
+        self.assertIn(res.status_code, (401, 403))
+
+
+class AdminSermonPublishTests(TestCase):
+    """The publish/unpublish toggle for a sermon edition (shared base with books)."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="cs", name="Charles Spurgeon")
+        self.en = Sermon.objects.create(
+            author=self.author, slug="grace", language="en", title="All of Grace",
+            body_html="<p>x</p>",
+        )
+        self.es = Sermon.objects.create(
+            author=self.author, slug="grace", language="es", title="Toda la gracia",
+            body_html="<p>y</p>", is_published=False,
+        )
+
+    @override_settings(DEBUG=True)
+    def test_unpublish_removes_edition_and_is_audited(self):
+        before = self.client.get("/api/library/sermons/?language=en")
+        self.assertIn("grace", [s["slug"] for s in before.data])
+
+        res = self.client.post(
+            "/api/admin/sermons/grace/publish/",
+            {"language": "en", "published": False}, format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["is_published"])
+        self.en.refresh_from_db()
+        self.assertFalse(self.en.is_published)
+
+        after = self.client.get("/api/library/sermons/?language=en")
+        self.assertNotIn("grace", [s["slug"] for s in after.data])
+
+        act = AdminAction.objects.latest("id")
+        self.assertEqual(act.action, AdminAction.Action.CONTENT_UNPUBLISH)
+        self.assertEqual(act.target, "sermon:grace:en")
+
+    @override_settings(DEBUG=True)
+    def test_publish_makes_edition_live(self):
+        res = self.client.post(
+            "/api/admin/sermons/grace/publish/",
+            {"language": "es", "published": True}, format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.es.refresh_from_db()
+        self.assertTrue(self.es.is_published)
+        act = AdminAction.objects.latest("id")
+        self.assertEqual(act.action, AdminAction.Action.CONTENT_PUBLISH)
+        self.assertEqual(act.target, "sermon:grace:es")
+
+    @override_settings(DEBUG=True)
+    def test_unknown_edition_is_404(self):
+        res = self.client.post(
+            "/api/admin/sermons/grace/publish/",
+            {"language": "fr", "published": False}, format="json",
+        )
+        self.assertEqual(res.status_code, 404)
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.post(
+            "/api/admin/sermons/grace/publish/",
+            {"language": "en", "published": False}, format="json",
+        )
+        self.assertIn(res.status_code, (401, 403))

@@ -85,10 +85,10 @@ export interface ParsedTarget {
 }
 
 /**
- * A target string (`language:sw`, `book:humility:es`, `author:andrew-murray`)
- * split into its kind, slug and a link. The convention is `kind:slug[:lang]`,
- * free text by design on the backend, so anything off-shape becomes a plain,
- * unlinked label rather than a broken link.
+ * A target string (`language:sw`, `book:humility:es`, `sermon:grace:en`,
+ * `author:andrew-murray`) split into its kind, slug and a link. The convention
+ * is `kind:slug[:lang]`, free text by design on the backend, so anything
+ * off-shape becomes a plain, unlinked label rather than a broken link.
  */
 export function parseTarget(target: string): ParsedTarget {
 	const [kind, slug, lang] = (target ?? '').split(':');
@@ -97,6 +97,8 @@ export function parseTarget(target: string): ParsedTarget {
 	if (kind === 'author' && slug) return { kind: 'author', slug, href: `/authors/${slug}` };
 	if (kind === 'book' && slug)
 		return { kind: 'document', slug, lang: lang || undefined, href: `/admin/books/${slug}` };
+	if (kind === 'sermon' && slug)
+		return { kind: 'document', slug, lang: lang || undefined, href: `/admin/sermons/${slug}` };
 	return { kind: 'other', slug: target ?? '', href: null };
 }
 
