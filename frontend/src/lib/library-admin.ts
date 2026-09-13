@@ -880,6 +880,48 @@ export interface AdminUsers {
 
 export const getAdminUsers = () => apiFetch<AdminUsers>('/api/admin/users/');
 
+// The searchable user directory — every account, paginated, each row linking to
+// its per-user detail page. The companion to AdminUsers (which only names the 25
+// most recent). Admin-only.
+
+/** One row in the directory. `works` = distinct works opened; `reading_seconds`
+ *  = active reading time (see EngagementTime). */
+export interface AdminUserRow {
+	uid: string;
+	display_name: string;
+	email: string;
+	providers: { code: string; label: string }[];
+	locale: string;
+	locale_name: string;
+	joined_at: string;
+	last_seen_at: string | null;
+	works: number;
+	reading_seconds: number;
+}
+
+export type AdminUserSort = 'recent' | 'seen' | 'active' | 'name';
+
+export interface AdminUserDirectory {
+	results: AdminUserRow[];
+	total: number;
+	page: number;
+	pages: number;
+	page_size: number;
+	sort: AdminUserSort;
+	q: string;
+}
+
+export const getAdminUserDirectory = (
+	params: { q?: string; page?: number; sort?: AdminUserSort } = {}
+) => {
+	const qs = new URLSearchParams();
+	if (params.q) qs.set('q', params.q);
+	if (params.page && params.page > 1) qs.set('page', String(params.page));
+	if (params.sort && params.sort !== 'recent') qs.set('sort', params.sort);
+	const s = qs.toString();
+	return apiFetch<AdminUserDirectory>(`/api/admin/users/directory/${s ? `?${s}` : ''}`);
+};
+
 // Per-user detail: one reader's profile and activity, keyed by Supabase UUID.
 // Admin-only; the companion to the aggregate AdminUsersView. Everything is
 // derived on request from the reading tables — see the backend AdminUserDetailView.
