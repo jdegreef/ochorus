@@ -52,7 +52,16 @@ export const cspDirectives = {
 		'sha256-7dQwUgLau1NFCCGjfn9FsYptB6ZtWxJin6VohGIu20I='
 	],
 	'style-src': ['self', 'unsafe-inline'],
-	'img-src': ['self', 'data:', 'blob:', 'https:'],
+	// Every image the app paints is same-origin: book covers under `/covers/`
+	// and author portraits under `/portraits/` are repo-committed static assets
+	// served by the site itself, never hot-linked. `data:` covers the inlined
+	// favicon/placeholder rasters; `blob:` the covers the offline download
+	// reconstructs from the cache. NO blanket `https:` — it let an XSS-injected
+	// `<img>` beacon to any host on the internet, and nothing the reader sees
+	// needs it. The one path that used to lean on it (an admin pasting an
+	// external cover URL at import) was removed: covers are repo assets, so
+	// import no longer stores a cover_url at all.
+	'img-src': ['self', 'data:', 'blob:'],
 	// `data:` because Vite inlines small font subsets as data:font/woff2 URIs
 	// under its assetsInlineLimit; without it the face is blocked at runtime.
 	'font-src': ['self', 'data:'],
