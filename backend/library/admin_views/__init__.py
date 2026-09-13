@@ -12,7 +12,11 @@ from .analytics import (
     AdminSearchView,
     AdminUsersView,
 )
-from .attention import AdminAttentionView
+from .attention import (
+    AdminAttentionView,
+    AdminAuthorsWithoutBioView,
+    AdminUnpublishedView,
+)
 from .content import (
     AdminCoverageView,
     AdminLanguageDetailView,
@@ -40,6 +44,7 @@ from .user_detail import AdminUserDetailView
 __all__ = [
     "AdminActivityView",
     "AdminAttentionView",
+    "AdminAuthorsWithoutBioView",
     "AdminAuditDismissView",
     "AdminAuditView",
     "AdminBookDetailView",
@@ -61,6 +66,7 @@ __all__ = [
     "AdminVerseReviewView",
     "AdminStatsView",
     "AdminTranslationJobsView",
+    "AdminUnpublishedView",
     "AdminUserDetailView",
     "AdminUsersView",
 ]

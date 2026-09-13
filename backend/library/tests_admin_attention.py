@@ -86,3 +86,80 @@ class AdminAttentionTests(TestCase):
         # No DEBUG bypass: an anonymous request is refused, like every admin view.
         res = self.client.get("/api/admin/attention/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminUnpublishedWorklistTests(TestCase):
+    """The enumerated worklist behind the "unpublished" attention counts."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="am", name="Andrew Murray")
+        # A published book (excluded) and two unpublished ones (listed).
+        pub = Book.objects.create(author=self.author, slug="humility", language="en", title="Humility")
+        Chapter.objects.create(book=pub, order=1, title="One", body_html="<p>x</p>", word_count=2)
+        draft = Book.objects.create(
+            author=self.author, slug="secret", language="en", title="Secret", is_published=False
+        )
+        Chapter.objects.create(book=draft, order=1, title="A", body_html="<p>a b c</p>", word_count=3)
+        Book.objects.create(
+            author=self.author, slug="abide", language="es", title="Permaneced", is_published=False
+        )
+        # A published and an unpublished sermon.
+        Sermon.objects.create(
+            author=self.author, slug="grace", language="en", title="Grace", body_html="<p>x</p>"
+        )
+        Sermon.objects.create(
+            author=self.author, slug="mercy", language="en", title="Mercy",
+            body_html="<p>x</p>", is_published=False,
+        )
+
+    @override_settings(DEBUG=True)
+    def test_lists_only_unpublished_with_counts(self):
+        res = self.client.get("/api/admin/unpublished/")
+        self.assertEqual(res.status_code, 200)
+        books = res.data["books"]
+        self.assertEqual({(b["slug"], b["language"]) for b in books}, {("secret", "en"), ("abide", "es")})
+        secret = next(b for b in books if b["slug"] == "secret")
+        self.assertEqual(secret["author"], "Andrew Murray")
+        self.assertEqual(secret["chapters"], 1)
+        self.assertEqual(secret["words"], 3)
+
+        sermons = res.data["sermons"]
+        self.assertEqual([(s["slug"], s["language"]) for s in sermons], [("mercy", "en")])
+
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/unpublished/")
+        self.assertIn(res.status_code, (401, 403))
+
+
+class AdminAuthorsWithoutBioTests(TestCase):
+    """The enumerated worklist behind the "authors without a bio" count."""
+
+    def setUp(self):
+        self.client = APIClient()
+        # Has a bio → excluded.
+        Author.objects.create(slug="am", name="Andrew Murray", bio="Preacher.")
+        # An imprint with no bio → excluded (never gets a bio).
+        Author.objects.create(slug="oo", name="Ochorus Originals", is_imprint=True)
+        # Two bio-less people; "busy" carries more content, so ranks first.
+        busy = Author.objects.create(slug="busy", name="Busy Writer")
+        Book.objects.create(author=busy, slug="b1", language="en", title="B1")
+        # A Spanish edition of the SAME work — must NOT make busy read as 3 books.
+        Book.objects.create(author=busy, slug="b1", language="es", title="B1 (es)")
+        Book.objects.create(author=busy, slug="b2", language="en", title="B2")
+        Sermon.objects.create(author=busy, slug="s1", language="en", title="S1", body_html="<p>x</p>")
+        Author.objects.create(slug="quiet", name="Quiet Writer")
+
+    @override_settings(DEBUG=True)
+    def test_ranks_bio_less_non_imprints_by_content(self):
+        res = self.client.get("/api/admin/authors-without-bio/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual([a["slug"] for a in res.data], ["busy", "quiet"])
+        busy = res.data[0]
+        # Distinct works: b1 (en+es) + b2 = 2, not 3 editions.
+        self.assertEqual(busy["books"], 2)
+        self.assertEqual(busy["sermons"], 1)
+
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/authors-without-bio/")
+        self.assertIn(res.status_code, (401, 403))

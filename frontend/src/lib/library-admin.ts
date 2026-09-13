@@ -103,6 +103,42 @@ export interface AdminAttentionSignals {
 export const getAdminAttention = () =>
 	apiFetch<AdminAttentionSignals>('/api/admin/attention/');
 
+// Worklists behind two of the attention counts — enumerated so the dashboard
+// chips can link to something actionable. Fetched only when the reader opens
+// the worklist, so the dashboard's own attention call stays counts-only.
+export interface AdminUnpublishedBook {
+	slug: string;
+	language: string;
+	title: string;
+	author: string;
+	chapters: number;
+	words: number;
+}
+export interface AdminUnpublishedSermon {
+	slug: string;
+	language: string;
+	title: string;
+	author: string;
+}
+export interface AdminUnpublished {
+	books: AdminUnpublishedBook[];
+	sermons: AdminUnpublishedSermon[];
+}
+
+/** Unpublished books and sermons — the worklist for the "unpublished" chips. */
+export const getAdminUnpublished = () => apiFetch<AdminUnpublished>('/api/admin/unpublished/');
+
+export interface AdminAuthorWithoutBio {
+	slug: string;
+	name: string;
+	books: number;
+	sermons: number;
+}
+
+/** Non-imprint authors with an empty bio, most-carrying first. */
+export const getAdminAuthorsWithoutBio = () =>
+	apiFetch<AdminAuthorWithoutBio[]>('/api/admin/authors-without-bio/');
+
 // Per-language drill-down: what's translated into a language + the next items
 // to work on.
 

@@ -153,17 +153,15 @@
 	const flags = $derived(
 		stats
 			? [
-					{ label: 'unpublished books', n: stats.attention.unpublished_books, href: null },
-					{ label: 'unpublished sermons', n: stats.attention.unpublished_sermons, href: null },
+					{ label: 'unpublished books', n: stats.attention.unpublished_books, href: '/admin/unpublished' },
+					{ label: 'unpublished sermons', n: stats.attention.unpublished_sermons, href: '/admin/unpublished' },
 					{
 						label: 'unreviewed AI translations',
 						n: stats.attention.unreviewed_translations,
 						href: '/admin/review'
 					},
-					{ label: 'authors without a bio', n: stats.attention.authors_without_bio, href: null },
-					// The audit lists the empty chapters themselves (integrity check). The
-					// other flags have no destination page yet — a Wave-3 acquisition/list
-					// view — so they stay non-links rather than pointing nowhere.
+					{ label: 'authors without a bio', n: stats.attention.authors_without_bio, href: '/admin/authors-without-bio' },
+					// The audit lists the empty chapters themselves (integrity check).
 					{ label: 'empty chapters', n: stats.attention.empty_chapters, href: '/admin/audit' }
 				].filter((f) => f.n > 0)
 			: []

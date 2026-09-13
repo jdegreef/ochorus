@@ -8,13 +8,20 @@ The client owns the ranking, labels and links; this view only returns numbers.
 Deliberately cheap: every query here is a count or a small aggregate. The heavy
 book-qa scan (the advisory "quality flags") stays on ``/api/admin/audit/`` — it
 would make this endpoint slow, and it is advisory, not attention.
+
+Two of those counts also get an enumerated worklist here — unpublished content
+(``AdminUnpublishedView``) and authors without a bio
+(``AdminAuthorsWithoutBioView``) — the same signals, listed, so the dashboard's
+attention chips can link somewhere actionable instead of reporting a number with
+no way to act on it. They are separate endpoints, fetched only when the reader
+opens the worklist, so the dashboard's own attention call stays counts-only.
 """
 
 from __future__ import annotations
 
 from datetime import timedelta
 
-from django.db.models import Count, Q
+from django.db.models import Count, Q, Sum
 from django.utils import timezone
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -91,3 +98,80 @@ class AdminAttentionView(APIView):
             "zero_30d": zero,
             "zero_rate": round(zero / total, 3) if total else 0.0,
         }
+
+
+class AdminUnpublishedView(APIView):
+    """The unpublished books and sermons behind the dashboard's unpublished
+    counts — the worklist its "unpublished books/sermons" chips link to.
+
+    Books link on to their admin detail page, where the publish toggle lives;
+    sermons have no admin detail yet, so the client links them to their reader
+    page. Ordered author-then-title so a person's drafts sit together. No
+    pagination: unpublished work is a bounded backlog, not a growing log.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        books = [
+            {
+                "slug": b.slug,
+                "language": b.language,
+                "title": b.title,
+                "author": b.author.name,
+                "chapters": b.num_chapters,
+                "words": b.words or 0,
+            }
+            for b in Book.objects.filter(is_published=False)
+            .select_related("author")
+            .annotate(num_chapters=Count("chapters"), words=Sum("chapters__word_count"))
+            .order_by("author__name", "title", "language")
+        ]
+        sermons = [
+            {
+                "slug": s.slug,
+                "language": s.language,
+                "title": s.title,
+                "author": s.author.name,
+            }
+            for s in Sermon.objects.filter(is_published=False)
+            .select_related("author")
+            .order_by("author__name", "title", "language")
+        ]
+        return Response({"books": books, "sermons": sermons})
+
+
+class AdminAuthorsWithoutBioView(APIView):
+    """Authors with an empty short bio — the worklist behind the "authors
+    without a bio" chip, feeding the write-biography workflow.
+
+    Imprints are excluded for the same reason the count excludes them: a byline
+    like "Ochorus Originals" is not a person and never gets a bio, so counting
+    it would leave the to-do permanently unfinishable. Ranked by how much
+    content the author carries, so the highest-value gaps come first.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def get(self, request):
+        # Count distinct WORKS, not editions: `books__slug` collapses the same
+        # book in several languages to one, so an author isn't ranked "5 books"
+        # for one work translated five ways. `n_books`/`n_sermons` (not
+        # `books`/`sermons`) because an annotation may not shadow the
+        # reverse-relation accessor of the same name (related_name), which raises
+        # at query build; `distinct=True` also undoes the books×sermons join
+        # cross-product so each count stands alone.
+        authors = (
+            Author.objects.filter(bio="", is_imprint=False)
+            .annotate(
+                n_books=Count("books__slug", distinct=True),
+                n_sermons=Count("sermons__slug", distinct=True),
+            )
+            .order_by("-n_books", "-n_sermons", "name")
+        )
+        return Response(
+            [
+                {"slug": a.slug, "name": a.name, "books": a.n_books, "sermons": a.n_sermons}
+                for a in authors
+            ]
+        )
