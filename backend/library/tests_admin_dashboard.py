@@ -1106,12 +1106,29 @@ class AdminExportTests(TestCase):
     def test_csv_inventory(self):
         res = self.client.get("/api/admin/export/?fmt=csv")
         self.assertEqual(res.status_code, 200)
-        self.assertEqual(res["Content-Type"], "text/csv")
+        self.assertEqual(res["Content-Type"], "text/csv; charset=utf-8")
         self.assertIn("attachment; filename=", res["Content-Disposition"])
-        body = res.content.decode()
+        # A UTF-8 BOM leads the file so Excel reads non-ASCII titles correctly.
+        self.assertTrue(res.content.startswith(b"\xef\xbb\xbf"))
+        body = res.content.decode("utf-8-sig")
         self.assertIn("type,slug,language,title", body)
         self.assertIn("book,humility,en,Humility", body)
         self.assertIn("sermon,grace,en,Grace", body)
+
+    @override_settings(DEBUG=True)
+    def test_csv_guards_formula_injection(self):
+        # A title beginning with a formula leader must be apostrophe-prefixed so a
+        # spreadsheet won't execute it when the admin opens the export.
+        author = Author.objects.create(slug="ev", name="=cmd|evil")
+        Book.objects.create(
+            author=author, slug="danger", language="en", title="=1+2"
+        )
+        res = self.client.get("/api/admin/export/?fmt=csv")
+        body = res.content.decode("utf-8-sig")
+        # The guarded cells carry the apostrophe; the raw formula never appears.
+        self.assertIn("'=1+2", body)
+        self.assertIn("'=cmd|evil", body)
+        self.assertNotIn(",=1+2", body)
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):

@@ -284,8 +284,9 @@ class AdminExportView(APIView):
         import csv
         import io
 
-        from django.http import HttpResponse
         from django.utils import timezone
+
+        from .csv_export import csv_response, csv_safe
 
         buf = io.StringIO()
         writer = csv.writer(buf)
@@ -293,23 +294,24 @@ class AdminExportView(APIView):
             ["type", "slug", "language", "title", "author", "source_type",
              "published", "chapters_or_days", "words", "source_url"]
         )
+        # csv_safe on the free-text cells (title, author, source_url); the slug,
+        # language, numeric and boolean columns are constrained and left as-is.
         for b in data["books"]:
             writer.writerow(
-                ["book", b["slug"], b["language"], b["title"], b["author"],
-                 b["source_type"], b["is_published"], b["chapters"], b["words"],
-                 b["source_url"]]
+                ["book", b["slug"], b["language"], csv_safe(b["title"]),
+                 csv_safe(b["author"]), b["source_type"], b["is_published"],
+                 b["chapters"], b["words"], csv_safe(b["source_url"])]
             )
         for s in data["sermons"]:
             writer.writerow(
-                ["sermon", s["slug"], s["language"], s["title"], s["author"], "",
-                 s["is_published"], "", s["words"], s["source_url"]]
+                ["sermon", s["slug"], s["language"], csv_safe(s["title"]),
+                 csv_safe(s["author"]), "", s["is_published"], "", s["words"],
+                 csv_safe(s["source_url"])]
             )
         for p in data["plans"]:
             writer.writerow(
-                ["plan", p["slug"], p["language"], p["title"], "", "",
+                ["plan", p["slug"], p["language"], csv_safe(p["title"]), "", "",
                  p["is_published"], p["days"], "", ""]
             )
         stamp = timezone.now().date().isoformat()
-        resp = HttpResponse(buf.getvalue(), content_type="text/csv")
-        resp["Content-Disposition"] = f'attachment; filename="ochorus-inventory-{stamp}.csv"'
-        return resp
+        return csv_response(buf.getvalue(), f"ochorus-inventory-{stamp}.csv")
