@@ -317,6 +317,8 @@ class AdminUsersView(APIView):
         rows = UserProfile.objects.order_by("-created_at")[:RECENT_SIGNUPS_LIMIT]
         return [
             {
+                # The stable handle the per-user detail page is keyed by.
+                "uid": str(p.supabase_uid),
                 "display_name": p.display_name,
                 "email": p.email,
                 # Labeled server-side (like ``by_method``) so the frontend needs

@@ -1,5 +1,18 @@
 import { apiFetch } from './api';
+import type { FavoriteKind } from './favorites.svelte';
 import type { Language, SearchType, SourceType } from './library-public';
+import type { WorkKind } from './reading-schema';
+
+/** Mask an email for display — first char of the local part, then bullets, then
+ *  the domain. The single PII-masking rule shared by both admin user pages, so
+ *  the list and the detail page can't drift into masking the same address
+ *  differently. Reveal is each page's own local state. */
+export function maskEmail(email: string): string {
+	const at = email.indexOf('@');
+	if (at <= 0) return '•••';
+	const local = email.slice(0, at);
+	return `${local.slice(0, 1)}${'•'.repeat(Math.max(3, local.length - 1))}${email.slice(at)}`;
+}
 
 // --- Admin dashboard ---------------------------------------------------------
 // Aggregate content stats for the /admin page. Admin-only (see backend
@@ -795,6 +808,8 @@ export interface AdminSignInMethod {
  *  `providers` carry their display label from the server, so the client never
  *  keeps its own copy of the provider→label map. */
 export interface AdminRecentSignup {
+	/** The Supabase UUID — the stable handle the per-user detail page is keyed by. */
+	uid: string;
 	display_name: string;
 	email: string;
 	providers: { code: string; label: string }[];
@@ -838,6 +853,132 @@ export interface AdminUsers {
 }
 
 export const getAdminUsers = () => apiFetch<AdminUsers>('/api/admin/users/');
+
+// Per-user detail: one reader's profile and activity, keyed by Supabase UUID.
+// Admin-only; the companion to the aggregate AdminUsersView. Everything is
+// derived on request from the reading tables — see the backend AdminUserDetailView.
+//
+// The kinds reuse the canonical `WorkKind` / `FavoriteKind` unions (their
+// source of truth is the sync schema) rather than re-declaring them, so a new
+// kind added there can't silently drift out of step here.
+
+/** A work the reader has open or has finished. `finished_at` is null while in
+ *  progress (see reading.ReadingProgress.finished_at). */
+export interface UserProgress {
+	kind: WorkKind;
+	slug: string;
+	language: string;
+	title: string;
+	author: string;
+	chapter_order: number;
+	paragraph_index: number;
+	updated_at: string | null;
+	finished_at: string | null;
+}
+
+export interface UserFavorite {
+	kind: FavoriteKind;
+	slug: string;
+	/** Resolved display label, or the slug itself when it can't be resolved (quotes). */
+	label: string;
+	created_at: string | null;
+}
+
+export interface UserPlan {
+	slug: string;
+	title: string;
+	started_at: string | null;
+	updated_at: string | null;
+	done: number;
+	/** Days in the plan, or null if the plan row is gone. */
+	total_days: number | null;
+	pct: number | null;
+}
+
+export interface UserHighlight {
+	kind: WorkKind;
+	slug: string;
+	language: string;
+	title: string;
+	chapter_order: number;
+	count: number;
+	marks: { text: string; note: string }[];
+	updated_at: string | null;
+}
+
+export interface UserBookmark {
+	kind: WorkKind;
+	slug: string;
+	title: string;
+	chapter_order: number;
+	paragraph_index: number;
+	snippet: string;
+	label: string;
+	created_at: string | null;
+}
+
+/** One event in the merged, reverse-chron activity timeline. `type` selects the
+ *  copy the UI renders; the other fields identify what it points at. */
+export interface UserTimelineEvent {
+	type: 'read' | 'finished' | 'favorite' | 'bookmark' | 'highlight' | 'plan_started';
+	at: string;
+	kind: string;
+	slug: string;
+	language?: string;
+	title: string;
+	chapter_order?: number;
+	snippet?: string;
+	count?: number;
+}
+
+export interface AdminUserDetail {
+	profile: {
+		uid: string;
+		display_name: string;
+		email: string;
+		providers: { code: string; label: string }[];
+		locale: string;
+		locale_name: string;
+		theme: string;
+		theme_label: string;
+		font_scale: number;
+		joined_at: string | null;
+		last_seen_at: string | null;
+		timezone: string;
+		/** Approximate, from the browser timezone; null when unmappable. */
+		country: { code: string; name: string } | null;
+	};
+	stats: {
+		works_started: number;
+		works_finished: number;
+		books: number;
+		sermons: number;
+		bios: number;
+		favorites: number;
+		highlights: number;
+		bookmarks: number;
+		plans: number;
+		days_read: number;
+		streak_current: number;
+		streak_longest: number;
+	};
+	reading: {
+		in_progress: UserProgress[];
+		finished: UserProgress[];
+		last_read: UserProgress | null;
+	};
+	favorites: UserFavorite[];
+	plans: UserPlan[];
+	highlights: UserHighlight[];
+	bookmarks: UserBookmark[];
+	/** `today` is the reader's own local date, so the heatmap aligns to the same
+	 *  day the streak was judged against (not the admin viewer's timezone). */
+	activity: { days: string[]; first: string | null; last: string | null; today: string };
+	timeline: UserTimelineEvent[];
+}
+
+export const getAdminUser = (uid: string) =>
+	apiFetch<AdminUserDetail>(`/api/admin/users/${encodeURIComponent(uid)}/`);
 
 // Per-book detail: a canonical work across all its languages.
 
