@@ -1,11 +1,77 @@
 <script lang="ts">
+	import { apiFetchRaw } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
-	import { getAdminUsers, maskEmail, periodTrend, type Trend } from '$lib/library-admin';
+	import {
+		adminUserDirectoryCsvUrl,
+		formatDuration,
+		getAdminUserDirectory,
+		getAdminUsers,
+		maskEmail,
+		periodTrend,
+		type AdminUserSort,
+		type Trend
+	} from '$lib/library-admin';
 
 	const users = adminResource(getAdminUsers, 'Something went wrong loading users.');
 	const data = $derived(users.data);
+
+	// The searchable directory: every account, not just the recent 25. A second
+	// resource with a key over (query, page, sort), so it re-fetches when any of
+	// them change; the search box is debounced into `query` so it doesn't fire
+	// per keystroke.
+	let search = $state('');
+	let query = $state('');
+	let dirPage = $state(1);
+	let dirSort = $state<AdminUserSort>('recent');
+	let searchTimer: ReturnType<typeof setTimeout> | undefined;
+	function onSearch(v: string) {
+		search = v;
+		clearTimeout(searchTimer);
+		searchTimer = setTimeout(() => {
+			query = search.trim();
+			dirPage = 1;
+		}, 300);
+	}
+	function setSort(s: AdminUserSort) {
+		dirSort = s;
+		dirPage = 1;
+	}
+	const directory = adminResource(
+		() => getAdminUserDirectory({ q: query, page: dirPage, sort: dirSort }),
+		'Something went wrong loading the directory.',
+		() => `${query}\u0000${dirPage}\u0000${dirSort}`
+	);
+	const dir = $derived(directory.data);
+
+	const SORTS: { key: AdminUserSort; label: string }[] = [
+		{ key: 'recent', label: 'Newest' },
+		{ key: 'seen', label: 'Last seen' },
+		{ key: 'active', label: 'Most active' },
+		{ key: 'name', label: 'Name' }
+	];
+
+	// Download the directory (the current search + sort, all matching rows) as
+	// CSV. apiFetchRaw carries the auth header a plain <a download> can't; the
+	// blob→object-URL→click dance mirrors the dashboard's inventory export.
+	let exporting = $state(false);
+	async function exportCsv() {
+		exporting = true;
+		try {
+			const res = await apiFetchRaw(adminUserDirectoryCsvUrl({ q: query, sort: dirSort }));
+			const url = URL.createObjectURL(await res.blob());
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = `ochorus-users-${new Date().toISOString().slice(0, 10)}.csv`;
+			a.click();
+			URL.revokeObjectURL(url);
+		} catch {
+			/* denied or offline — the page already surfaces auth errors */
+		} finally {
+			exporting = false;
+		}
+	}
 
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
@@ -301,6 +367,86 @@
 						</section>
 					</div>
 				{/if}
+
+				<!-- All users: searchable directory (every account, not just the recent 25) -->
+				<section class="mt-8 rounded-card border border-border bg-surface p-5">
+					<div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+						<h2 class="text-h3">All users{#if dir} <span class="text-muted">· {fmt(dir.total)}</span>{/if}</h2>
+						<div class="flex items-center gap-2">
+							<input
+								type="search"
+								placeholder="Search name or email…"
+								aria-label="Search users"
+								class="w-56 rounded-card border border-border bg-surface-2 px-3 py-1.5 text-body text-text"
+								value={search}
+								oninput={(e) => onSearch(e.currentTarget.value)}
+							/>
+							<button
+								type="button"
+								class="btn btn-ghost whitespace-nowrap"
+								disabled={exporting || !dir?.total}
+								onclick={exportCsv}>{exporting ? 'Exporting…' : 'Export CSV'}</button
+							>
+						</div>
+					</div>
+					<div class="mb-3 flex flex-wrap gap-2">
+						{#each SORTS as s (s.key)}
+							<button
+								type="button"
+								class="rounded-full px-3 py-1 text-small {dirSort === s.key ? 'bg-accent-soft text-text' : 'text-muted hover:text-text'}"
+								aria-pressed={dirSort === s.key}
+								onclick={() => setSort(s.key)}>{s.label}</button>
+						{/each}
+					</div>
+					{#if directory.loading && !dir}
+						<p class="text-body text-muted">Loading…</p>
+					{:else if directory.error}
+						<p class="text-body text-warning">{directory.error}</p>
+					{:else if dir && dir.results.length}
+						<div class="overflow-x-auto">
+							<table class="w-full text-start text-small">
+								<thead class="text-micro uppercase text-muted">
+									<tr class="border-b border-border">
+										<th class="py-2 text-start font-semibold">Reader</th>
+										<th class="py-2 text-start font-semibold">Sign-in</th>
+										<th class="py-2 text-start font-semibold">Lang</th>
+										<th class="py-2 text-end font-semibold">Works</th>
+										<th class="py-2 text-end font-semibold">Time</th>
+										<th class="py-2 text-end font-semibold">Joined</th>
+										<th class="py-2 text-end font-semibold">Seen</th>
+									</tr>
+								</thead>
+								<tbody class="divide-y divide-border">
+									{#each dir.results as u (u.uid)}
+										<tr class="hover:bg-surface-2">
+											<td class="py-2 pe-3">
+												<a href="/admin/users/{u.uid}" class="font-semibold text-text hover:text-accent hover:underline">{u.display_name || 'Unnamed'}</a>
+												<div class="text-micro text-muted">{u.email ? maskEmail(u.email) : '—'}</div>
+											</td>
+											<td class="py-2 pe-3 text-muted">{u.providers.map((p) => p.label).join(', ') || '—'}</td>
+											<td class="py-2 pe-3 text-muted">{u.locale}</td>
+											<td class="py-2 ps-3 text-end tabular-nums text-text">{fmt(u.works)}</td>
+											<td class="py-2 ps-3 text-end tabular-nums text-text">{formatDuration(u.reading_seconds)}</td>
+											<td class="py-2 ps-3 text-end tabular-nums text-muted">{dayFmt(u.joined_at)}</td>
+											<td class="py-2 ps-3 text-end tabular-nums text-muted">{dayFmt(u.last_seen_at)}</td>
+										</tr>
+									{/each}
+								</tbody>
+							</table>
+						</div>
+						{#if dir.pages > 1}
+							<div class="mt-4 flex items-center justify-between gap-3 text-small text-muted">
+								<span>Page {dir.page} of {dir.pages}</span>
+								<div class="flex gap-2">
+									<button type="button" class="btn btn-ghost" disabled={dir.page <= 1} onclick={() => (dirPage = dir.page - 1)}>Prev</button>
+									<button type="button" class="btn btn-ghost" disabled={dir.page >= dir.pages} onclick={() => (dirPage = dir.page + 1)}>Next</button>
+								</div>
+							</div>
+						{/if}
+					{:else}
+						<p class="text-body text-muted">No users match “{query}”.</p>
+					{/if}
+				</section>
 			{/if}
 		{/snippet}
 	</AdminGate>

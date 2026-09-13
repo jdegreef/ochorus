@@ -40,6 +40,7 @@ from .quality import (
     AdminVerseReviewView,
 )
 from .user_detail import AdminUserDetailView
+from .user_directory import AdminUserDirectoryView
 
 __all__ = [
     "AdminActivityView",
@@ -68,5 +69,6 @@ __all__ = [
     "AdminTranslationJobsView",
     "AdminUnpublishedView",
     "AdminUserDetailView",
+    "AdminUserDirectoryView",
     "AdminUsersView",
 ]
