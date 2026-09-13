@@ -1336,3 +1336,148 @@ class AdminSermonPublishTests(TestCase):
             {"language": "en", "published": False}, format="json",
         )
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminContentEditJobsTests(TestCase):
+    """The content-edit queue: a chapter-title fix → a GitHub issue (mocked)."""
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        self.book = Book.objects.create(
+            author=author, slug="humility", language="en", title="Humility"
+        )
+        # Two chapters, so a query that joins the whole chapter set (rather than
+        # the one at `order`) would read the wrong title — the bug a single
+        # chapter would hide.
+        Chapter.objects.create(
+            book=self.book, order=1, title="Lowliness", body_html="<p>a</p>"
+        )
+        Chapter.objects.create(
+            book=self.book, order=2, title="Chapter 2", body_html="<p>one two</p>"
+        )
+
+    @staticmethod
+    def _issue(title, number=7):
+        return {
+            "title": title,
+            "labels": [{"name": "content-edit"}],
+            "html_url": f"https://github.com/o/r/issues/{number}",
+            "number": number,
+            "created_at": "2026-09-13T00:00:00Z",
+        }
+
+    @override_settings(DEBUG=True)
+    def test_get_reports_unconfigured_without_a_token(self):
+        res = self.client.get("/api/admin/content-edit-jobs/")
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["configured"])
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_get_lists_open_edit_jobs(self):
+        from unittest.mock import MagicMock, patch
+
+        issue = self._issue("[edit] retitle book:humility/en#2")
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: [issue], raise_for_status=lambda: None)
+            res = self.client.get("/api/admin/content-edit-jobs/")
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["configured"])
+        job = res.data["jobs"][0]
+        self.assertEqual((job["slug"], job["language"], job["order"]), ("humility", "en", 2))
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_files_issue_and_is_audited(self):
+        from unittest.mock import MagicMock, patch
+
+        created = self._issue("[edit] retitle book:humility/en#2")
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: [], raise_for_status=lambda: None)
+            gh.post.return_value = MagicMock(json=lambda: created, raise_for_status=lambda: None)
+            res = self.client.post(
+                "/api/admin/content-edit-jobs/",
+                {"slug": "humility", "language": "en", "order": 2, "title": "True Humility"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 201)
+        self.assertTrue(res.data["created"])
+        self.assertEqual(res.data["job"]["order"], 2)
+        payload = gh.post.call_args.kwargs["json"]
+        self.assertEqual(payload["title"], "[edit] retitle book:humility/en#2")
+        self.assertEqual(payload["labels"], ["content-edit"])
+        self.assertIn("True Humility", payload["body"])
+        # Both edits are spelled out for the worker.
+        self.assertIn("Fixture", payload["body"])
+        self.assertIn("migration", payload["body"])
+
+        act = AdminAction.objects.latest("id")
+        self.assertEqual(act.action, AdminAction.Action.CONTENT_EDIT_JOB)
+        self.assertEqual(act.target, "book:humility:en")
+        self.assertEqual(act.detail["chapter"], 2)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_duplicate_returns_existing(self):
+        from unittest.mock import MagicMock, patch
+
+        existing = self._issue("[edit] retitle book:humility/en#2")
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: [existing], raise_for_status=lambda: None)
+            res = self.client.post(
+                "/api/admin/content-edit-jobs/",
+                {"slug": "humility", "language": "en", "order": 2, "title": "True Humility"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["created"])
+        gh.post.assert_not_called()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_no_change_rejected(self):
+        res = self.client.post(
+            "/api/admin/content-edit-jobs/",
+            {"slug": "humility", "language": "en", "order": 2, "title": "Chapter 2"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 400)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_reads_the_targeted_chapters_own_title(self):
+        # Proposing chapter 1's title *for chapter 2* must be accepted: the no-op
+        # guard has to compare against chapter 2's title, not another chapter's.
+        from unittest.mock import MagicMock, patch
+
+        created = self._issue("[edit] retitle book:humility/en#2")
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: [], raise_for_status=lambda: None)
+            gh.post.return_value = MagicMock(json=lambda: created, raise_for_status=lambda: None)
+            res = self.client.post(
+                "/api/admin/content-edit-jobs/",
+                {"slug": "humility", "language": "en", "order": 2, "title": "Lowliness"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 201)
+        # And the issue body quotes chapter 2's real current title.
+        self.assertIn("Chapter 2", gh.post.call_args.kwargs["json"]["body"])
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_unknown_chapter_404(self):
+        res = self.client.post(
+            "/api/admin/content-edit-jobs/",
+            {"slug": "humility", "language": "en", "order": 99, "title": "X"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 404)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_blank_title_rejected(self):
+        res = self.client.post(
+            "/api/admin/content-edit-jobs/",
+            {"slug": "humility", "language": "en", "order": 2, "title": "  "},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 400)
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/content-edit-jobs/")
+        self.assertIn(res.status_code, (401, 403))

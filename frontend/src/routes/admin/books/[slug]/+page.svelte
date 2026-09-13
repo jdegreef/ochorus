@@ -2,6 +2,7 @@
 	import { ApiError } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import ChapterTitleFix from '$lib/components/ChapterTitleFix.svelte';
 	import PublishToggle from '$lib/components/PublishToggle.svelte';
 	import { type SourceType } from '$lib/library-public';
 	import { getAdminBook, setBookPublished } from '$lib/library-admin';
@@ -103,6 +104,7 @@
 											{#each c.flags as f (f)}
 												<span class="rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning">{FLAG_LABEL[f] ?? f}</span>
 											{/each}
+											<ChapterTitleFix slug={b.slug} language={l.code} order={c.order} title={c.title} />
 											<span class="text-small tabular-nums text-muted">{fmt(c.word_count)}</span>
 										</span>
 									</li>

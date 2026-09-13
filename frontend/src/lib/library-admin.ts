@@ -1145,6 +1145,25 @@ export interface AdminBookDetail {
 export const getAdminBook = (slug: string) =>
 	apiFetch<AdminBookDetail>(`/api/admin/books/${encodeURIComponent(slug)}/`);
 
+// Content-edit queue: a chapter-title fix files a GitHub issue a worker turns
+// into a fixture PR (a title is fixture-owned prose, not a live DB write).
+export interface ContentEditJob {
+	slug: string;
+	language: string;
+	order: number;
+	url: string;
+	number: number | null;
+	state: 'queued' | 'in_progress';
+	created_at: string;
+}
+
+/** File a "retitle this chapter" job; `created` is false if one was already open. */
+export const fileRetitleJob = (slug: string, language: string, order: number, title: string) =>
+	apiFetch<{ job: ContentEditJob | null; created: boolean }>('/api/admin/content-edit-jobs/', {
+		method: 'POST',
+		body: JSON.stringify({ slug, language, order, title })
+	});
+
 /**
  * Publish or unpublish one language edition of a book. `is_published` is the
  * reader-visibility switch (the public API filters on it), so unpublishing

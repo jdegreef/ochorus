@@ -44,6 +44,7 @@ const META: Record<string, ActionMeta> = {
 	'language.thresholds': { category: 'language', icon: 'sliders', loud: false },
 	'language.go_live': { category: 'language', icon: 'globe', loud: true },
 	'translation.job': { category: 'translation', icon: 'translate', loud: false },
+	'content.edit_job': { category: 'content', icon: 'edit', loud: false },
 	'author.create': { category: 'author', icon: 'author', loud: false },
 	'content.publish': { category: 'content', icon: 'document', loud: true },
 	'content.unpublish': { category: 'content', icon: 'document', loud: true },

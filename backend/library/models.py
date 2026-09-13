@@ -1593,6 +1593,7 @@ class AdminAction(models.Model):
         LANGUAGE_THRESHOLDS = "language.thresholds", "Readiness thresholds changed"
         LANGUAGE_GO_LIVE = "language.go_live", "Language taken live"
         TRANSLATION_JOB = "translation.job", "Translation job filed"
+        CONTENT_EDIT_JOB = "content.edit_job", "Content edit job filed"
         AUTHOR_CREATE = "author.create", "Author created"
         CONTENT_PUBLISH = "content.publish", "Document published"
         CONTENT_UNPUBLISH = "content.unpublish", "Document unpublished"
