@@ -21,15 +21,7 @@ from accounts.permissions import IsAdminEmail
 
 from ..views import _language_entry
 from .analytics import _profile_summary
-
-
-def _csv_safe(value) -> str:
-    """A CSV cell that a spreadsheet won't run as a formula. A reader controls
-    their own display name, so a value beginning ``= + - @`` (or a tab/CR) is
-    prefixed with an apostrophe — otherwise Excel/Sheets may execute it when the
-    admin opens the export."""
-    s = "" if value is None else str(value)
-    return "'" + s if s[:1] in ("=", "+", "-", "@", "\t", "\r") else s
+from .csv_export import csv_response, csv_safe
 
 # One page of the directory. Fixed (not client-controlled) so a caller can't ask
 # for an unbounded slice.
@@ -137,7 +129,6 @@ class AdminUserDirectoryView(APIView):
         import csv
         import io
 
-        from django.http import HttpResponse
         from django.utils import timezone
 
         buf = io.StringIO()
@@ -157,10 +148,10 @@ class AdminUserDirectoryView(APIView):
         for p in qs.iterator():
             writer.writerow(
                 [
-                    _csv_safe(p.display_name),
-                    _csv_safe(p.email),
-                    _csv_safe(" ".join(p.provider_list)),
-                    _csv_safe(p.locale),
+                    csv_safe(p.display_name),
+                    csv_safe(p.email),
+                    csv_safe(" ".join(p.provider_list)),
+                    csv_safe(p.locale),
                     p.created_at.date().isoformat(),
                     p.last_seen_at.date().isoformat() if p.last_seen_at else "",
                     p.works,
@@ -168,13 +159,7 @@ class AdminUserDirectoryView(APIView):
                 ]
             )
         stamp = timezone.now().date().isoformat()
-        # A UTF-8 BOM so Excel reads non-ASCII names/emails correctly rather than
-        # as mojibake.
-        resp = HttpResponse(
-            "\ufeff" + buf.getvalue(), content_type="text/csv; charset=utf-8"
-        )
-        resp["Content-Disposition"] = f'attachment; filename="ochorus-users-{stamp}.csv"'
-        return resp
+        return csv_response(buf.getvalue(), f"ochorus-users-{stamp}.csv")
 
     def _page(self, request, pages) -> int:
         try:
