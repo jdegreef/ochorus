@@ -106,3 +106,25 @@ class AdminUserDirectoryTests(TestCase):
 
     def test_bad_sort_falls_back(self):
         self.assertEqual(self.get(sort="whatever").json()["sort"], "recent")
+
+    def test_csv_export(self):
+        res = self.get(fmt="csv")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res["Content-Type"], "text/csv")
+        self.assertIn("attachment", res["Content-Disposition"])
+        self.assertIn(".csv", res["Content-Disposition"])
+        body = res.content.decode()
+        lines = [line for line in body.splitlines() if line]
+        # Header + all three users (no pagination on export).
+        self.assertEqual(lines[0], "name,email,providers,language,joined,last_seen,works,reading_seconds")
+        self.assertEqual(len(lines), 4)
+        # Email is in the clear in the export (unlike the masked UI).
+        self.assertIn("alice@example.com", body)
+        self.assertIn("600", body)  # Alice's reading_seconds
+
+    def test_csv_respects_search(self):
+        body = self.get(fmt="csv", q="test.org").content.decode()
+        lines = [line for line in body.splitlines() if line]
+        self.assertEqual(len(lines), 2)  # header + Carol only (carol@test.org)
+        self.assertIn("carol@test.org", body)
+        self.assertNotIn("alice@example.com", body)

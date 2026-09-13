@@ -42,8 +42,38 @@ class AdminUserDirectoryView(APIView):
     permission_classes = [IsAdminEmail]
 
     def get(self, request):
+        qs, sort, q = self._queryset(request)
+
+        # ``?fmt=csv`` downloads every matching row (the whole filtered/sorted
+        # set, no pagination) — see AdminExportView for the same convention and
+        # why it isn't the DRF-reserved ``format`` param.
+        if request.query_params.get("fmt", "").lower() == "csv":
+            return self._csv(qs)
+
+        total = qs.count()
+        pages = max(1, (total + PAGE_SIZE - 1) // PAGE_SIZE)
+        page = self._page(request, pages)
+        start = (page - 1) * PAGE_SIZE
+        rows = list(qs[start : start + PAGE_SIZE])
+
+        return Response(
+            {
+                "results": [self._row(p) for p in rows],
+                "total": total,
+                "page": page,
+                "pages": pages,
+                "page_size": PAGE_SIZE,
+                "sort": sort,
+                "q": q,
+            }
+        )
+
+    def _queryset(self, request):
+        """The annotated, searched, sorted queryset shared by the JSON page and
+        the CSV export. Returns ``(qs, sort, q)``."""
         from django.db.models import (
             Count,
+            F,
             IntegerField,
             OuterRef,
             Q,
@@ -87,29 +117,53 @@ class AdminUserDirectoryView(APIView):
         # `last_seen_at` is nullable; keep never-seen accounts at the bottom of the
         # "seen" sort rather than letting NULLs float to the top.
         if sort == "seen":
-            from django.db.models import F
-
             qs = qs.order_by(F("last_seen_at").desc(nulls_last=True), "-created_at")
         else:
             qs = qs.order_by(*SORTS[sort])
+        return qs, sort, q
 
-        total = qs.count()
-        pages = max(1, (total + PAGE_SIZE - 1) // PAGE_SIZE)
-        page = self._page(request, pages)
-        start = (page - 1) * PAGE_SIZE
-        rows = list(qs[start : start + PAGE_SIZE])
+    def _csv(self, qs):
+        """The directory as a CSV download. Emails are in the clear — this is an
+        authed admin export, its whole purpose — unlike the masked-by-default UI.
+        ``reading_seconds`` is raw for spreadsheet analysis; iterate so a large
+        user base doesn't all sit in memory at once."""
+        import csv
+        import io
 
-        return Response(
-            {
-                "results": [self._row(p) for p in rows],
-                "total": total,
-                "page": page,
-                "pages": pages,
-                "page_size": PAGE_SIZE,
-                "sort": sort,
-                "q": q,
-            }
+        from django.http import HttpResponse
+        from django.utils import timezone
+
+        buf = io.StringIO()
+        writer = csv.writer(buf)
+        writer.writerow(
+            [
+                "name",
+                "email",
+                "providers",
+                "language",
+                "joined",
+                "last_seen",
+                "works",
+                "reading_seconds",
+            ]
         )
+        for p in qs.iterator():
+            writer.writerow(
+                [
+                    p.display_name,
+                    p.email,
+                    " ".join(p.provider_list),
+                    p.locale,
+                    p.created_at.date().isoformat(),
+                    p.last_seen_at.date().isoformat() if p.last_seen_at else "",
+                    p.works,
+                    p.reading_seconds,
+                ]
+            )
+        stamp = timezone.now().date().isoformat()
+        resp = HttpResponse(buf.getvalue(), content_type="text/csv")
+        resp["Content-Disposition"] = f'attachment; filename="ochorus-users-{stamp}.csv"'
+        return resp
 
     def _page(self, request, pages) -> int:
         try:

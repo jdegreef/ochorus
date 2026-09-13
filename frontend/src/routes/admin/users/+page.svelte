@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { apiFetchRaw } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
@@ -49,6 +50,30 @@
 		{ key: 'active', label: 'Most active' },
 		{ key: 'name', label: 'Name' }
 	];
+
+	// Download the directory (the current search + sort, all matching rows) as
+	// CSV. apiFetchRaw carries the auth header a plain <a download> can't; the
+	// blob→object-URL→click dance mirrors the dashboard's inventory export.
+	let exporting = $state(false);
+	async function exportCsv() {
+		exporting = true;
+		try {
+			const params = new URLSearchParams({ fmt: 'csv' });
+			if (query) params.set('q', query);
+			if (dirSort !== 'recent') params.set('sort', dirSort);
+			const res = await apiFetchRaw(`/api/admin/users/directory/?${params}`);
+			const url = URL.createObjectURL(await res.blob());
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = 'ochorus-users.csv';
+			a.click();
+			URL.revokeObjectURL(url);
+		} catch {
+			/* denied or offline — the page already surfaces auth errors */
+		} finally {
+			exporting = false;
+		}
+	}
 
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
@@ -349,14 +374,22 @@
 				<section class="mt-8 rounded-card border border-border bg-surface p-5">
 					<div class="mb-4 flex flex-wrap items-center justify-between gap-3">
 						<h2 class="text-h3">All users{#if dir} <span class="text-muted">· {fmt(dir.total)}</span>{/if}</h2>
-						<input
-							type="search"
-							placeholder="Search name or email…"
-							aria-label="Search users"
-							class="w-56 rounded-card border border-border bg-surface-2 px-3 py-1.5 text-body text-text"
-							value={search}
-							oninput={(e) => onSearch(e.currentTarget.value)}
-						/>
+						<div class="flex items-center gap-2">
+							<input
+								type="search"
+								placeholder="Search name or email…"
+								aria-label="Search users"
+								class="w-56 rounded-card border border-border bg-surface-2 px-3 py-1.5 text-body text-text"
+								value={search}
+								oninput={(e) => onSearch(e.currentTarget.value)}
+							/>
+							<button
+								type="button"
+								class="btn btn-ghost whitespace-nowrap"
+								disabled={exporting || !dir?.total}
+								onclick={exportCsv}>{exporting ? 'Exporting…' : 'Export CSV'}</button
+							>
+						</div>
 					</div>
 					<div class="mb-3 flex flex-wrap gap-2">
 						{#each SORTS as s (s.key)}
