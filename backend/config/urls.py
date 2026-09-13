@@ -20,6 +20,7 @@ from library.admin_views import (
     AdminAuthorsWithoutBioView,
     AdminBookDetailView,
     AdminBookPublishView,
+    AdminContentEditJobsView,
     AdminCoverageView,
     AdminEngagementView,
     AdminExportView,
@@ -149,6 +150,11 @@ urlpatterns = [
         "api/admin/translation-jobs/",
         AdminTranslationJobsView.as_view(),
         name="admin-translation-jobs",
+    ),
+    path(
+        "api/admin/content-edit-jobs/",
+        AdminContentEditJobsView.as_view(),
+        name="admin-content-edit-jobs",
     ),
     # Creating a language is how a new one begins: the row is what the
     # translate_* commands read, so it must exist before any work can be queued.
