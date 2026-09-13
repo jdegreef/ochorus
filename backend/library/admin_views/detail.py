@@ -8,7 +8,9 @@ from rest_framework.views import APIView
 
 from accounts.permissions import IsAdminEmail
 
-from ..models import Author, Book, Plan, Sermon
+from .. import invalidation
+from ..audit import AdminAudited
+from ..models import AdminAction, Author, Book, Plan, Sermon
 from ..qa import chapter_flags
 from ..views import _language_entry
 
@@ -17,8 +19,8 @@ class AdminBookDetailView(APIView):
     """A single canonical work across all its languages, for the admin.
 
     Each language row carries its metadata (source, cover, links) and its
-    chapter list with word counts and quality flags (see ``chapter_flags``),
-    plus ids for deep-linking into the Django admin. English is listed first.
+    chapter list with word counts and quality flags (see ``chapter_flags``).
+    English is listed first.
     """
 
     permission_classes = [IsAdminEmail]
@@ -54,7 +56,6 @@ class AdminBookDetailView(APIView):
             languages.append(
                 {
                     **_language_entry(b.language),
-                    "id": b.id,
                     "title": b.title,
                     "subtitle": b.subtitle,
                     "description": b.description,
@@ -81,6 +82,66 @@ class AdminBookDetailView(APIView):
                 },
                 "languages": languages,
             }
+        )
+
+
+class AdminBookPublishView(AdminAudited, APIView):
+    """Publish or unpublish one language edition of a book.
+
+    ``is_published`` is the reader-visibility switch — the public API filters
+    on it (``BookListView`` / ``BookDetailView``), so unpublishing removes the
+    edition from the site immediately, and it is the lever an urgent copyright
+    takedown pulls. It is deliberately **create-only** in ``seed_books``
+    (``CREATE_ONLY_FIELDS``), so a decision made here is never walked back by a
+    deploy re-seeding from the fixture.
+
+    ``POST /api/admin/books/<slug>/publish/`` with ``{language, published}``.
+    Scoped to a single ``(slug, language)`` row — the admin book page toggles
+    one edition at a time. Prerendered SEO pages catch up on the throttled
+    rebuild ``mark_content_changed`` triggers, the same path import-publish uses.
+    """
+
+    permission_classes = [IsAdminEmail]
+
+    def audit_action_for(self, request):
+        return (
+            AdminAction.Action.CONTENT_PUBLISH
+            if self._parse(request.data)[1]
+            else AdminAction.Action.CONTENT_UNPUBLISH
+        )
+
+    @staticmethod
+    def _parse(data) -> tuple[str, bool]:
+        """``(language, published)`` from the request body. ``published``
+        defaults to True so a bare press publishes rather than silently toggling
+        to an unintended state."""
+        language = (data.get("language") or "").strip()
+        published = data.get("published")
+        return language, True if published is None else bool(published)
+
+    def audit_entry(self, request, response):
+        # finalize_response only records on a 2xx, and post() always returns
+        # these three keys there — so no defensive fallbacks are reachable.
+        d = response.data
+        return f"book:{d['slug']}:{d['language']}", {"is_published": d["is_published"]}
+
+    def post(self, request, slug):
+        language, published = self._parse(request.data)
+        if not language:
+            return Response({"detail": "A language is required."}, status=400)
+        book = Book.objects.filter(slug=slug, language=language).first()
+        if book is None:
+            return Response(
+                {"detail": f"No {language} edition of “{slug}”."}, status=404
+            )
+        if book.is_published != published:
+            book.is_published = published
+            book.save(update_fields=["is_published"])
+            # Reader-visible now on the SPA (the API filters is_published); the
+            # prerendered pages follow on the throttled rebuild.
+            invalidation.mark_content_changed()
+        return Response(
+            {"slug": book.slug, "language": book.language, "is_published": book.is_published}
         )
 
 

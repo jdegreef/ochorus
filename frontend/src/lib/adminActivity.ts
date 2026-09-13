@@ -46,6 +46,7 @@ const META: Record<string, ActionMeta> = {
 	'translation.job': { category: 'translation', icon: 'translate', loud: false },
 	'author.create': { category: 'author', icon: 'author', loud: false },
 	'content.publish': { category: 'content', icon: 'document', loud: true },
+	'content.unpublish': { category: 'content', icon: 'document', loud: true },
 	'review.decide': { category: 'review', icon: 'approve', loud: false },
 	'review.undo': { category: 'review', icon: 'undo', loud: false }
 };

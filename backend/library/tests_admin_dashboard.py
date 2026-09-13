@@ -1117,3 +1117,99 @@ class AdminExportTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/export/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminBookPublishTests(TestCase):
+    """The publish/unpublish toggle on the admin book page.
+
+    ``is_published`` is the reader-visibility switch, so this asserts the toggle
+    actually moves the public API (not just the flag), records the right paired
+    audit action, and is admin-gated like every other write.
+    """
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="am", name="Andrew Murray")
+        self.en = Book.objects.create(
+            author=self.author, slug="humility", language="en", title="Humility"
+        )
+        Chapter.objects.create(book=self.en, order=1, title="One", body_html="<p>one</p>")
+        # An unpublished AI edition, ready to be made live.
+        self.sw = Book.objects.create(
+            author=self.author, slug="humility", language="sw", title="Unyenyekevu",
+            source_type=Book.SourceType.AI_UNREVIEWED, is_published=False,
+        )
+
+    @override_settings(DEBUG=True)
+    def test_unpublish_removes_edition_from_the_reader_and_is_audited(self):
+        before = self.client.get("/api/library/books/?language=en")
+        self.assertIn("humility", [b["slug"] for b in before.data])
+
+        res = self.client.post(
+            "/api/admin/books/humility/publish/",
+            {"language": "en", "published": False},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["is_published"])
+        self.en.refresh_from_db()
+        self.assertFalse(self.en.is_published)
+
+        after = self.client.get("/api/library/books/?language=en")
+        self.assertNotIn("humility", [b["slug"] for b in after.data])
+
+        act = AdminAction.objects.latest("id")
+        self.assertEqual(act.action, AdminAction.Action.CONTENT_UNPUBLISH)
+        self.assertEqual(act.target, "book:humility:en")
+        self.assertEqual(act.detail, {"is_published": False})
+
+    @override_settings(DEBUG=True)
+    def test_publish_makes_edition_live_and_is_audited(self):
+        res = self.client.post(
+            "/api/admin/books/humility/publish/",
+            {"language": "sw", "published": True},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["is_published"])
+        self.sw.refresh_from_db()
+        self.assertTrue(self.sw.is_published)
+
+        live = self.client.get("/api/library/books/?language=sw")
+        self.assertIn("humility", [b["slug"] for b in live.data])
+
+        act = AdminAction.objects.latest("id")
+        self.assertEqual(act.action, AdminAction.Action.CONTENT_PUBLISH)
+
+    @override_settings(DEBUG=True)
+    def test_a_bare_press_defaults_to_publishing(self):
+        res = self.client.post(
+            "/api/admin/books/humility/publish/", {"language": "sw"}, format="json"
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["is_published"])
+
+    @override_settings(DEBUG=True)
+    def test_unknown_edition_is_404(self):
+        res = self.client.post(
+            "/api/admin/books/humility/publish/",
+            {"language": "fr", "published": False},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 404)
+
+    @override_settings(DEBUG=True)
+    def test_language_is_required(self):
+        res = self.client.post(
+            "/api/admin/books/humility/publish/", {"published": False}, format="json"
+        )
+        self.assertEqual(res.status_code, 400)
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.post(
+            "/api/admin/books/humility/publish/",
+            {"language": "en", "published": False},
+            format="json",
+        )
+        self.assertIn(res.status_code, (401, 403))

@@ -18,6 +18,7 @@ from library.admin_views import (
     AdminAuditDismissView,
     AdminAuditView,
     AdminBookDetailView,
+    AdminBookPublishView,
     AdminCoverageView,
     AdminEngagementView,
     AdminExportView,
@@ -86,6 +87,11 @@ urlpatterns = [
         "api/admin/import/publish/",
         AdminImportPublishView.as_view(),
         name="admin-import-publish",
+    ),
+    path(
+        "api/admin/books/<slug:slug>/publish/",
+        AdminBookPublishView.as_view(),
+        name="admin-book-publish",
     ),
     path(
         "api/admin/books/<slug:slug>/",
