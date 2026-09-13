@@ -990,7 +990,6 @@ export interface AdminBookChapter {
 }
 
 export interface AdminBookLang extends Language {
-	id: number;
 	title: string;
 	subtitle: string;
 	description: string;
@@ -1014,6 +1013,18 @@ export interface AdminBookDetail {
 
 export const getAdminBook = (slug: string) =>
 	apiFetch<AdminBookDetail>(`/api/admin/books/${encodeURIComponent(slug)}/`);
+
+/**
+ * Publish or unpublish one language edition of a book. `is_published` is the
+ * reader-visibility switch (the public API filters on it), so unpublishing
+ * removes the edition from the site immediately. Scoped to one `(slug, language)`
+ * row — the caller toggles one edition at a time.
+ */
+export const setBookPublished = (slug: string, language: string, published: boolean) =>
+	apiFetch<{ slug: string; language: string; is_published: boolean }>(
+		`/api/admin/books/${encodeURIComponent(slug)}/publish/`,
+		{ method: 'POST', body: JSON.stringify({ language, published }) }
+	);
 
 // Search analytics: what readers look for, and what they don't find.
 

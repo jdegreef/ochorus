@@ -1570,8 +1570,9 @@ class AdminAction(models.Model):
     Nothing recorded this. Eight endpoints under ``/api/admin/`` mutate the
     library or its configuration — a language created, its Bible code or
     glossary edited, its readiness bar moved, a language taken live, a
-    translation job filed, an author created, a document published — and
-    afterwards the only evidence any of it happened was the changed row itself.
+    translation job filed, an author created, a document published or taken
+    down — and afterwards the only evidence any of it happened was the changed
+    row itself.
     "Who took Hindi live, and when?" had no answer.
 
     Not a replacement for ``ReviewOutcome``, which already records a review
@@ -1594,6 +1595,7 @@ class AdminAction(models.Model):
         TRANSLATION_JOB = "translation.job", "Translation job filed"
         AUTHOR_CREATE = "author.create", "Author created"
         CONTENT_PUBLISH = "content.publish", "Document published"
+        CONTENT_UNPUBLISH = "content.unpublish", "Document unpublished"
         REVIEW_DECIDE = "review.decide", "Review decision recorded"
         REVIEW_UNDO = "review.undo", "Review decision undone"
         AUDIT_DISMISS = "audit.dismiss", "Audit finding accepted as known"
