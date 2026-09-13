@@ -22,7 +22,7 @@
 			<header class="mb-6 mt-3">
 				<p class="eyebrow mb-2 text-accent">Admin · Worklist</p>
 				<h1 class="text-display">Unpublished</h1>
-				<p class="mt-2 text-body text-muted">Books and sermons that aren't live on the site. Open a book to publish it.</p>
+				<p class="mt-2 text-body text-muted">Books and sermons that aren't live on the site. Open one to publish it.</p>
 			</header>
 
 			{#if !d.books.length && !d.sermons.length}
@@ -48,13 +48,15 @@
 
 			{#if d.sermons.length}
 				<section>
-					<h2 class="mb-1 text-h3">Sermons <span class="text-muted">· {fmt(d.sermons.length)}</span></h2>
-					<p class="mb-3 text-small text-muted">No admin publish control for sermons yet — listed for visibility.</p>
+					<h2 class="mb-3 text-h3">Sermons <span class="text-muted">· {fmt(d.sermons.length)}</span></h2>
 					<ul class="divide-y divide-border rounded-card border border-border bg-surface">
 						{#each d.sermons as s (s.slug + s.language)}
-							<li class="px-4 py-3">
-								<span class="block truncate font-semibold text-text">{s.title}</span>
-								<span class="text-small text-muted">{s.author} · {s.language}</span>
+							<li class="flex items-baseline justify-between gap-3 px-4 py-3">
+								<a href="/admin/sermons/{s.slug}" class="min-w-0">
+									<span class="block truncate font-semibold text-text hover:text-accent">{s.title}</span>
+									<span class="text-small text-muted">{s.author} · {s.language}</span>
+								</a>
+								<span class="shrink-0 text-small font-semibold text-accent">Publish →</span>
 							</li>
 						{/each}
 					</ul>

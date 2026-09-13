@@ -34,6 +34,8 @@ from library.admin_views import (
     AdminReviewQueueView,
     AdminSearchGapView,
     AdminSearchView,
+    AdminSermonDetailView,
+    AdminSermonPublishView,
     AdminStatsView,
     AdminTranslationJobsView,
     AdminUnpublishedView,
@@ -111,6 +113,16 @@ urlpatterns = [
         "api/admin/books/<slug:slug>/",
         AdminBookDetailView.as_view(),
         name="admin-book-detail",
+    ),
+    path(
+        "api/admin/sermons/<slug:slug>/publish/",
+        AdminSermonPublishView.as_view(),
+        name="admin-sermon-publish",
+    ),
+    path(
+        "api/admin/sermons/<slug:slug>/",
+        AdminSermonDetailView.as_view(),
+        name="admin-sermon-detail",
     ),
     path(
         "api/admin/review-queue/",

@@ -2,6 +2,7 @@
 	import { ApiError } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import PublishToggle from '$lib/components/PublishToggle.svelte';
 	import { type SourceType } from '$lib/library-public';
 	import { getAdminBook, setBookPublished } from '$lib/library-admin';
 
@@ -23,34 +24,12 @@
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
 
-	// Per-edition publish toggle, keyed by language code (one edition per code
-	// on this page). `override` holds the optimistic/confirmed state; `confirming`
-	// gates the removing direction so a stray click can't pull a live edition.
+	// The publish state the toggle acts on, keyed by language code (one edition
+	// per code). Starts from the loaded row and is updated on a successful
+	// toggle; PublishToggle owns the transient pending/confirm/error UI.
 	let override = $state<Record<string, boolean>>({});
-	let pending = $state<Record<string, boolean>>({});
-	let toggleError = $state<Record<string, string>>({});
-	let confirming = $state<Record<string, boolean>>({});
-
 	const published = (l: { code: string; is_published: boolean }) =>
 		override[l.code] ?? l.is_published;
-
-	async function setPublished(slug: string, code: string, next: boolean) {
-		// $state records are deeply reactive, so mutate in place (as the rest of
-		// the admin does) rather than rebuilding the map each step.
-		confirming[code] = false;
-		pending[code] = true;
-		delete toggleError[code];
-		override[code] = next; // optimistic
-		try {
-			const res = await setBookPublished(slug, code, next);
-			override[code] = res.is_published;
-		} catch (e) {
-			delete override[code]; // revert to the server value
-			toggleError[code] = e instanceof Error ? e.message : 'Could not update.';
-		} finally {
-			pending[code] = false;
-		}
-	}
 
 	const SOURCE_LABEL: Record<SourceType, string> = {
 		public_domain: 'Public domain',
@@ -101,18 +80,13 @@
 								</div>
 							</div>
 							<div class="flex shrink-0 flex-col items-end gap-1.5 text-small">
-								{#if confirming[l.code]}
-									<span class="flex items-center gap-2">
-										<span class="text-warning">Hide from the site?</span>
-										<button type="button" onclick={() => setPublished(b.slug, l.code, false)} class="rounded-full border border-warning px-2.5 py-0.5 text-warning hover:bg-warning/10">Unpublish</button>
-										<button type="button" onclick={() => (confirming[l.code] = false)} class="text-muted hover:text-text">Cancel</button>
-									</span>
-								{:else if published(l)}
-									<button type="button" disabled={pending[l.code]} onclick={() => (confirming[l.code] = true)} class="rounded-full border border-border px-2.5 py-0.5 text-muted hover:border-warning hover:text-warning disabled:opacity-50">{pending[l.code] ? 'Working…' : 'Unpublish'}</button>
-								{:else}
-									<button type="button" disabled={pending[l.code]} onclick={() => setPublished(b.slug, l.code, true)} class="rounded-full border border-accent px-2.5 py-0.5 text-accent hover:bg-accent/10 disabled:opacity-50">{pending[l.code] ? 'Working…' : 'Publish'}</button>
-								{/if}
-								{#if toggleError[l.code]}<span class="max-w-[16rem] text-right text-micro text-warning">{toggleError[l.code]}</span>{/if}
+								<PublishToggle
+									published={published(l)}
+									onToggle={async (next) => {
+										const res = await setBookPublished(b.slug, l.code, next);
+										override[l.code] = res.is_published;
+									}}
+								/>
 								{#if l.source_url}<a href={l.source_url} class="text-muted hover:text-accent" target="_blank" rel="noopener">source ↗</a>{/if}
 								{#if l.pdf_url}<a href={l.pdf_url} class="text-muted hover:text-accent" target="_blank" rel="noopener">PDF ↗</a>{/if}
 							</div>
