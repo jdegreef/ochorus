@@ -95,7 +95,9 @@ def _work_titles(pairs):
         rows = Sermon.objects.filter(slug__in=sermon_slugs).values(
             "slug", "language", "title", "author__name"
         )
-        meta.update({("sermon", s): v for s, v in _prefer_en(rows, title_author).items()})
+        meta.update(
+            {("sermon", s): v for s, v in _prefer_en(rows, title_author).items()}
+        )
     if bio_slugs:
         for a in Author.objects.filter(slug__in=bio_slugs).values("slug", "name"):
             meta[("bio", a["slug"])] = (a["name"], "")
@@ -122,18 +124,46 @@ def _favorite_labels(pairs):
             labels[(kind, slug)] = val
 
     if by_kind.get("book"):
-        add("book", Book.objects.filter(slug__in=by_kind["book"]).values("slug", "language", "title"), "title")
+        add(
+            "book",
+            Book.objects.filter(slug__in=by_kind["book"]).values(
+                "slug", "language", "title"
+            ),
+            "title",
+        )
     if by_kind.get("sermon"):
-        add("sermon", Sermon.objects.filter(slug__in=by_kind["sermon"]).values("slug", "language", "title"), "title")
+        add(
+            "sermon",
+            Sermon.objects.filter(slug__in=by_kind["sermon"]).values(
+                "slug", "language", "title"
+            ),
+            "title",
+        )
     if by_kind.get("plan"):
-        add("plan", Plan.objects.filter(slug__in=by_kind["plan"]).values("slug", "language", "title"), "title")
+        add(
+            "plan",
+            Plan.objects.filter(slug__in=by_kind["plan"]).values(
+                "slug", "language", "title"
+            ),
+            "title",
+        )
     if by_kind.get("article"):
-        add("article", Article.objects.filter(slug__in=by_kind["article"]).values("slug", "language", "h1"), "h1")
+        add(
+            "article",
+            Article.objects.filter(slug__in=by_kind["article"]).values(
+                "slug", "language", "h1"
+            ),
+            "h1",
+        )
     if by_kind.get("topic"):
-        for t in Topic.objects.filter(slug__in=by_kind["topic"]).values("slug", "title"):
+        for t in Topic.objects.filter(slug__in=by_kind["topic"]).values(
+            "slug", "title"
+        ):
             labels[("topic", t["slug"])] = t["title"]
     if by_kind.get("author"):
-        for a in Author.objects.filter(slug__in=by_kind["author"]).values("slug", "name"):
+        for a in Author.objects.filter(slug__in=by_kind["author"]).values(
+            "slug", "name"
+        ):
             labels[("author", a["slug"])] = a["name"]
     # Quotes keep their opaque slug — no title row to resolve to.
     return labels
@@ -286,7 +316,14 @@ class AdminUserDetailView(APIView):
 
         # --- Timeline: one merged, reverse-chron stream ---------------------
         timeline = self._timeline(
-            progress, favorites, bookmarks, marks, plan_progress, work_title, fav_labels, plan_meta
+            progress,
+            favorites,
+            bookmarks,
+            marks,
+            plan_progress,
+            work_title,
+            fav_labels,
+            plan_meta,
         )
 
         country = country_for_timezone(profile.timezone or "")
@@ -330,7 +367,9 @@ class AdminUserDetailView(APIView):
                 "reading": {
                     "in_progress": in_progress[:LIST_LIMIT],
                     "finished": finished[:LIST_LIMIT],
-                    "last_read": in_progress[0] if in_progress else (finished[0] if finished else None),
+                    "last_read": in_progress[0]
+                    if in_progress
+                    else (finished[0] if finished else None),
                 },
                 "favorites": favorite_rows[:LIST_LIMIT],
                 "plans": plans,
@@ -367,7 +406,15 @@ class AdminUserDetailView(APIView):
         return meta
 
     def _timeline(
-        self, progress, favorites, bookmarks, marks, plan_progress, work_title, fav_labels, plan_meta
+        self,
+        progress,
+        favorites,
+        bookmarks,
+        marks,
+        plan_progress,
+        work_title,
+        fav_labels,
+        plan_meta,
     ):
         """Merge every dated per-user event into one reverse-chron list.
 

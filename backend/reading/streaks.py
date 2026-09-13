@@ -38,7 +38,7 @@ def reading_streaks(days, *, today: date) -> tuple[int, int]:
 
     longest = 1
     run = 1
-    for prev, cur in zip(unique, unique[1:]):
+    for prev, cur in zip(unique, unique[1:], strict=False):
         if cur - prev == timedelta(days=1):
             run += 1
         else:

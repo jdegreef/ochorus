@@ -9,7 +9,7 @@ timeline merges. Auth is the loopback DEBUG bypass, as the other admin tests use
 from __future__ import annotations
 
 import uuid
-from datetime import date, timedelta
+from datetime import timedelta
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase, override_settings
@@ -35,21 +35,34 @@ class AdminUserDetailTests(TestCase):
         self.client = APIClient()
 
         author = Author.objects.create(slug="am", name="Andrew Murray", bio="Preacher.")
-        book = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
-        Chapter.objects.create(book=book, order=1, title="One", body_html="<p>a b c</p>")
-        Chapter.objects.create(book=book, order=2, title="Two", body_html="<p>d e f</p>")
+        book = Book.objects.create(
+            author=author, slug="humility", language="en", title="Humility"
+        )
+        Chapter.objects.create(
+            book=book, order=1, title="One", body_html="<p>a b c</p>"
+        )
+        Chapter.objects.create(
+            book=book, order=2, title="Two", body_html="<p>d e f</p>"
+        )
         # A Spanish edition of the same slug, so title resolution has to PREFER
         # the English row rather than whichever it sees first.
-        Book.objects.create(author=author, slug="humility", language="es", title="Humildad")
+        Book.objects.create(
+            author=author, slug="humility", language="es", title="Humildad"
+        )
         Sermon.objects.create(
-            author=author, slug="all-of-grace", language="en", title="All of Grace",
+            author=author,
+            slug="all-of-grace",
+            language="en",
+            title="All of Grace",
             body_html="<p>grace</p>",
         )
         plan = Plan.objects.create(slug="p1", language="en", title="Plan One")
         PlanDay.objects.create(plan=plan, day=1, book_slug="humility", chapter_order=1)
         PlanDay.objects.create(plan=plan, day=2, book_slug="humility", chapter_order=2)
 
-        user = get_user_model().objects.create(username="reader1", email="reader@example.com")
+        user = get_user_model().objects.create(
+            username="reader1", email="reader@example.com"
+        )
         self.uid = uuid.uuid4()
         self.profile = UserProfile.objects.create(
             user=user,
@@ -65,12 +78,20 @@ class AdminUserDetailTests(TestCase):
 
         # In-progress book, finished sermon.
         ReadingProgress.objects.create(
-            profile=self.profile, kind="book", book_slug="humility", language="en",
-            chapter_order=2, paragraph_index=4,
+            profile=self.profile,
+            kind="book",
+            book_slug="humility",
+            language="en",
+            chapter_order=2,
+            paragraph_index=4,
         )
         ReadingProgress.objects.create(
-            profile=self.profile, kind="sermon", book_slug="all-of-grace", language="en",
-            chapter_order=1, finished_at=timezone.now(),
+            profile=self.profile,
+            kind="sermon",
+            book_slug="all-of-grace",
+            language="en",
+            chapter_order=1,
+            finished_at=timezone.now(),
         )
         # Favorites across kinds.
         Favorite.objects.create(profile=self.profile, kind="book", slug="humility")
@@ -78,21 +99,37 @@ class AdminUserDetailTests(TestCase):
         Favorite.objects.create(profile=self.profile, kind="quote", slug="am-abc123")
         # Highlight with a note, and a bookmark.
         ChapterMarks.objects.create(
-            profile=self.profile, kind="book", book_slug="humility", language="en",
-            chapter_order=1, marks=[{"id": "m1", "p": 0, "s": 0, "e": 3, "text": "a b c", "note": "yes"}],
+            profile=self.profile,
+            kind="book",
+            book_slug="humility",
+            language="en",
+            chapter_order=1,
+            marks=[
+                {"id": "m1", "p": 0, "s": 0, "e": 3, "text": "a b c", "note": "yes"}
+            ],
         )
         Bookmark.objects.create(
-            profile=self.profile, kind="book", book_slug="humility", chapter_order=1,
-            paragraph_index=0, snippet="a b c", title="One",
+            profile=self.profile,
+            kind="book",
+            book_slug="humility",
+            chapter_order=1,
+            paragraph_index=0,
+            snippet="a b c",
+            title="One",
         )
         # A plan in progress.
         PlanProgress.objects.create(
-            profile=self.profile, plan_slug="p1", started_at=timezone.now(), done=[1],
+            profile=self.profile,
+            plan_slug="p1",
+            started_at=timezone.now(),
+            done=[1],
         )
         # A live 3-day reading streak ending today.
         today = timezone.now().date()
         for i in range(3):
-            ReadingDay.objects.create(profile=self.profile, day=today - timedelta(days=i))
+            ReadingDay.objects.create(
+                profile=self.profile, day=today - timedelta(days=i)
+            )
 
     def get(self, uid=None):
         return self.client.get(f"/api/admin/users/{uid or self.uid}/")
@@ -129,7 +166,9 @@ class AdminUserDetailTests(TestCase):
         self.assertEqual(d["reading"]["finished"][0]["title"], "All of Grace")
 
     def test_favorites_labelled(self):
-        favs = {(f["kind"], f["slug"]): f["label"] for f in self.get().json()["favorites"]}
+        favs = {
+            (f["kind"], f["slug"]): f["label"] for f in self.get().json()["favorites"]
+        }
         self.assertEqual(favs[("book", "humility")], "Humility")
         self.assertEqual(favs[("author", "am")], "Andrew Murray")
         # A quote keeps its opaque slug.
@@ -148,7 +187,9 @@ class AdminUserDetailTests(TestCase):
         # so the streak and the frontend heatmap align on the same day.
         from zoneinfo import ZoneInfo
 
-        expected = timezone.now().astimezone(ZoneInfo("America/New_York")).date().isoformat()
+        expected = (
+            timezone.now().astimezone(ZoneInfo("America/New_York")).date().isoformat()
+        )
         self.assertEqual(self.get().json()["activity"]["today"], expected)
 
     def test_highlights_carry_note(self):
@@ -159,11 +200,16 @@ class AdminUserDetailTests(TestCase):
     def test_timeline_merges_and_sorts(self):
         tl = self.get().json()["timeline"]
         types = {e["type"] for e in tl}
-        self.assertTrue({"read", "finished", "favorite", "bookmark", "highlight", "plan_started"} <= types)
+        self.assertTrue(
+            {"read", "finished", "favorite", "bookmark", "highlight", "plan_started"}
+            <= types
+        )
         stamps = [e["at"] for e in tl]
         self.assertEqual(stamps, sorted(stamps, reverse=True))
 
     def test_requires_admin(self):
         # Remote (non-loopback) request without a token is refused.
-        res = self.client.get(f"/api/admin/users/{self.uid}/", REMOTE_ADDR="203.0.113.9")
+        res = self.client.get(
+            f"/api/admin/users/{self.uid}/", REMOTE_ADDR="203.0.113.9"
+        )
         self.assertIn(res.status_code, (401, 403))
