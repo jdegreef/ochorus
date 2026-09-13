@@ -24,6 +24,7 @@ from reading.models import (
     PlanProgress,
     ReadingDay,
     ReadingProgress,
+    ReadingSession,
 )
 
 from .models import Author, Book, Chapter, Plan, PlanDay, Sermon
@@ -130,6 +131,34 @@ class AdminUserDetailTests(TestCase):
             ReadingDay.objects.create(
                 profile=self.profile, day=today - timedelta(days=i)
             )
+        # Two reading sittings (time on site): 8 min + 4 min.
+        now = timezone.now()
+        ReadingSession.objects.create(
+            profile=self.profile,
+            client_id="c1",
+            started_at=now - timedelta(minutes=10),
+            last_seen_at=now - timedelta(minutes=2),
+            seconds=480,
+            kind="book",
+            book_slug="humility",
+        )
+        ReadingSession.objects.create(
+            profile=self.profile,
+            client_id="c2",
+            started_at=now - timedelta(hours=3),
+            last_seen_at=now - timedelta(hours=2, minutes=56),
+            seconds=240,
+            kind="sermon",
+            book_slug="all-of-grace",
+        )
+        # A zero-second sitting must NOT count (matches the global avg denominator).
+        ReadingSession.objects.create(
+            profile=self.profile,
+            client_id="c0",
+            started_at=now,
+            last_seen_at=now,
+            seconds=0,
+        )
 
     def get(self, uid=None):
         return self.client.get(f"/api/admin/users/{uid or self.uid}/")
@@ -191,6 +220,16 @@ class AdminUserDetailTests(TestCase):
             timezone.now().astimezone(ZoneInfo("America/New_York")).date().isoformat()
         )
         self.assertEqual(self.get().json()["activity"]["today"], expected)
+
+    def test_reading_time(self):
+        d = self.get().json()
+        self.assertEqual(d["stats"]["reading_seconds"], 720)  # 480 + 240
+        self.assertEqual(d["stats"]["sessions"], 2)
+        self.assertEqual(d["stats"]["avg_session_seconds"], 360)
+        # Sessions listed newest-first with a resolved title.
+        self.assertEqual(len(d["sessions"]), 2)
+        self.assertEqual(d["sessions"][0]["seconds"], 480)
+        self.assertEqual(d["sessions"][0]["title"], "Humility")
 
     def test_highlights_carry_note(self):
         hl = self.get().json()["highlights"]

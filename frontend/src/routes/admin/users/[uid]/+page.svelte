@@ -4,7 +4,7 @@
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import ReadingHeatmap from '$lib/components/ReadingHeatmap.svelte';
 	import type { FavoriteKind } from '$lib/favorites.svelte';
-	import { getAdminUser, maskEmail, type UserTimelineEvent } from '$lib/library-admin';
+	import { formatDuration, getAdminUser, maskEmail, type UserTimelineEvent } from '$lib/library-admin';
 	import type { WorkKind } from '$lib/reading-schema';
 
 	let { data } = $props();
@@ -99,16 +99,23 @@
 		plan_started: 'Started plan'
 	};
 
-	type Stat = { label: string; value: number; sub?: string };
+	// `text` overrides the numeric value for a card that shows a formatted string
+	// (the reading-time total).
+	type Stat = { label: string; value: number; sub?: string; text?: string };
 	const stats = $derived<Stat[]>(
 		u
 			? [
 					{ label: 'Works started', value: u.stats.works_started, sub: `${u.stats.books}b · ${u.stats.sermons}s · ${u.stats.bios} bio` },
 					{ label: 'Finished', value: u.stats.works_finished },
+					{
+						label: 'Time reading',
+						value: u.stats.reading_seconds,
+						text: formatDuration(u.stats.reading_seconds),
+						sub: u.stats.sessions ? `${u.stats.sessions} sittings · avg ${formatDuration(u.stats.avg_session_seconds)}` : 'no sittings yet'
+					},
 					{ label: 'Favorites', value: u.stats.favorites },
 					{ label: 'Highlights', value: u.stats.highlights },
 					{ label: 'Bookmarks', value: u.stats.bookmarks },
-					{ label: 'Plans', value: u.stats.plans },
 					{ label: 'Days read', value: u.stats.days_read },
 					{ label: 'Streak', value: u.stats.streak_current, sub: `longest ${u.stats.streak_longest}` }
 				]
@@ -161,7 +168,7 @@
 			<section class="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
 				{#each stats as s (s.label)}
 					<div class="rounded-card border border-border bg-surface p-4">
-						<div class="stat-number">{fmt(s.value)}</div>
+						<div class="stat-number">{s.text ?? fmt(s.value)}</div>
 						<div class="mt-2 text-small font-semibold text-text">{s.label}</div>
 						{#if s.sub}<div class="text-small text-muted">{s.sub}</div>{/if}
 					</div>
@@ -273,6 +280,24 @@
 										<div class="h-full rounded-full bg-accent-soft" style="width: {pl.pct}%"></div>
 									</div>
 								{/if}
+							</li>
+						{/each}
+					</ul>
+				</section>
+			{/if}
+
+			<!-- Reading sittings (time on site) -->
+			{#if d.sessions.length}
+				<section class="mb-8 rounded-card border border-border bg-surface p-5">
+					<h2 class="text-h3 mb-3">Reading sittings <span class="text-muted">· {formatDuration(d.stats.reading_seconds)} total</span></h2>
+					<ul class="divide-y divide-border">
+						{#each d.sessions as s, si (si)}
+							<li class="flex items-baseline justify-between gap-3 py-2">
+								<div class="min-w-0">
+									<span class="text-body text-text">{formatDuration(s.seconds)}</span>
+									{#if s.title}<span class="text-small text-muted"> · {s.title}</span>{/if}
+								</div>
+								<span class="shrink-0 whitespace-nowrap text-small text-muted tabular-nums">{dateTimeFmt(s.started_at)}</span>
 							</li>
 						{/each}
 					</ul>

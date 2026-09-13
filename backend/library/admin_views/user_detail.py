@@ -7,9 +7,9 @@ saved, how consistently they show up. Admin-only (``IsAdminEmail``), keyed by
 the Supabase UUID so the URL leaks neither the Django pk nor the email.
 
 Everything here is *derived on request* from the reading tables (there is no
-per-user rollup) — cheap because it is scoped to one profile. No time-on-site or
-session data exists anywhere in the app, so the finest activity signal is the
-day-level ``ReadingDay`` (the streak/calendar) plus ``last_seen_at``.
+per-user rollup) — cheap because it is scoped to one profile. Reading *time*
+comes from ``ReadingSession`` (active reading, not tab-open time); the coarser
+day-level ``ReadingDay`` still drives the streak/calendar.
 """
 
 from __future__ import annotations
@@ -202,6 +202,22 @@ class AdminUserDetailView(APIView):
         work_pairs |= {(m.kind, m.book_slug) for m in marks}
         work_pairs |= {(b.kind, b.book_slug) for b in bookmarks}
 
+        # --- Reading sittings (time on site) --------------------------------
+        # Totals aggregate in the DB (a long-tenured reader has unboundedly many
+        # sittings); only the newest LIST_LIMIT are materialised for display.
+        # Filtered to seconds>0 so the average's denominator matches the global
+        # engagement one (_reading_time).
+        from django.db.models import Count, Sum
+
+        real_sessions = profile.sessions.filter(seconds__gt=0)
+        session_agg = real_sessions.aggregate(total=Sum("seconds"), n=Count("id"))
+        total_seconds = session_agg["total"] or 0
+        session_count = session_agg["n"] or 0
+        sessions = list(real_sessions[:LIST_LIMIT])
+        work_pairs |= {
+            (s.kind, s.book_slug) for s in sessions if s.kind and s.book_slug
+        }
+
         titles = _work_titles(work_pairs)
         fav_labels = _favorite_labels(fav_pairs)
 
@@ -238,6 +254,21 @@ class AdminUserDetailView(APIView):
         local_today = _reader_today(profile.timezone)
         current_streak, longest_streak = reading_streaks(days, today=local_today)
         sorted_days = sorted(days)
+
+        # --- Reading time (from sittings) — totals computed above ------------
+        session_rows = [
+            {
+                "started_at": _iso(s.started_at),
+                "last_seen_at": _iso(s.last_seen_at),
+                "seconds": s.seconds,
+                "kind": s.kind,
+                "slug": s.book_slug,
+                "title": work_title(s.kind, s.book_slug)[0]
+                if s.kind and s.book_slug
+                else "",
+            }
+            for s in sessions
+        ]
 
         # --- Plans (title + day-count in one annotated query) ----------------
         plan_progress = list(profile.plan_progress.all())
@@ -363,6 +394,11 @@ class AdminUserDetailView(APIView):
                     "days_read": len(days),
                     "streak_current": current_streak,
                     "streak_longest": longest_streak,
+                    "reading_seconds": total_seconds,
+                    "sessions": session_count,
+                    "avg_session_seconds": round(total_seconds / session_count)
+                    if session_count
+                    else 0,
                 },
                 "reading": {
                     "in_progress": in_progress[:LIST_LIMIT],
@@ -373,6 +409,7 @@ class AdminUserDetailView(APIView):
                 },
                 "favorites": favorite_rows[:LIST_LIMIT],
                 "plans": plans,
+                "sessions": session_rows[:LIST_LIMIT],
                 "highlights": highlight_rows[:LIST_LIMIT],
                 "bookmarks": bookmark_rows[:LIST_LIMIT],
                 "activity": {

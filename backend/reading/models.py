@@ -330,3 +330,68 @@ class PlanProgress(models.Model):
 
     def __str__(self) -> str:
         return f"{self.profile_id} plan:{self.plan_slug} ({len(self.done)} done)"
+
+
+class ReadingSession(models.Model):
+    """One sitting of reading — the signal behind "time on site".
+
+    A session is a contiguous stretch of reading. The client accumulates the
+    *active* reading time into the current session and syncs it, rolling to a
+    new session after a long gap of no reading. Active time is the same
+    plausible words-over-milliseconds the pace estimator already measures
+    (foreground, non-idle, real forward reading — see the frontend `pace.ts`),
+    so ``seconds`` is time actually spent reading, not the wall-clock span
+    (which would fold in idle and paused time). ``started_at`` / ``last_seen_at``
+    bound the sitting, for time-of-day and recency.
+
+    Identity is (profile, ``client_id``): the client owns the session id, so a
+    sync is an idempotent upsert and a session survives a reload mid-sitting.
+    Union-merge like the rest of the reading layer — ``seconds`` only grows (the
+    larger wins), the earliest start and latest last-seen win — so a retry or a
+    second device never double-counts or drops time.
+
+    Per-profile and coarse by design: no per-paragraph log, no clickstream, just
+    how long each sitting lasted and roughly when. Ochorus stays privacy-light
+    (no IP; see accounts/geo.py). ``kind``/``book_slug``/``language`` record what
+    the reader opened the sitting on — context only; a sitting may span works.
+    """
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="sessions",
+    )
+    # The client's own id for this sitting — the upsert key, so a sync is
+    # idempotent and a reload mid-sitting keeps writing the same row.
+    client_id = models.CharField(max_length=80)
+    started_at = models.DateTimeField()
+    last_seen_at = models.DateTimeField()
+    # Active reading seconds in the sitting (monotonic — see class docstring).
+    seconds = models.PositiveIntegerField(default=0)
+    # What the reader opened the sitting on (context; blank on an older client).
+    kind = models.CharField(
+        max_length=10, choices=WorkKind.choices, blank=True, default=""
+    )
+    book_slug = models.SlugField(max_length=160, blank=True)
+    language = models.CharField(max_length=10, blank=True, default="")
+
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-last_seen_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "client_id"], name="uniq_session_profile_client"
+            ),
+        ]
+        indexes = [
+            # The engagement rollups window on started_at / last_seen_at; the
+            # per-user page reads a profile's sessions newest-first.
+            models.Index(
+                fields=["profile", "-last_seen_at"], name="idx_session_profile_seen"
+            ),
+            models.Index(fields=["started_at"], name="idx_session_started"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id} read {self.seconds}s @ {self.started_at:%Y-%m-%d %H:%M}"
