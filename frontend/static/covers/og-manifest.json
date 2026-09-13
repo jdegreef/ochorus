@@ -1579,6 +1579,13 @@
    "art": false,
    "scrim": 1
   },
+  "pt/the-bruised-reed": {
+   "ground": "1914990859ba5573963ebb2055c965e7197f56c27a7aba0a48d65b26d056f4b2",
+   "style": "press",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
   "the-fourfold-gospel": {
    "ground": "db69f96349627742c737be57da3e78156d0cbc57c92d6ab8efd4dc4b8662a828",
    "style": "revival",
