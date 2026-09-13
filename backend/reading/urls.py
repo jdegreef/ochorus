@@ -9,12 +9,14 @@ from .views import (
     PlanProgressView,
     ProgressView,
     SermonMarksView,
+    SessionsView,
     StateView,
 )
 
 urlpatterns = [
     path("state/", StateView.as_view(), name="reading-state"),
     path("merge/", MergeView.as_view(), name="reading-merge"),
+    path("sessions/", SessionsView.as_view(), name="reading-sessions"),
     path("activity/<str:day>/", ActivityView.as_view(), name="reading-activity"),
     path(
         "favorites/<slug:kind>/<slug:slug>/",

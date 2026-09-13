@@ -782,8 +782,23 @@ export interface EngagementLang extends Language {
 	readers: number;
 }
 
+/** Time-on-site rollup from reading sittings. `seconds` values are ACTIVE
+ *  reading time (foreground, non-idle), so these are real reading totals, not
+ *  tab-open time. All zero until the instrumentation has data. */
+export interface EngagementTime {
+	total_seconds: number;
+	sessions: number;
+	readers: number;
+	avg_session_seconds: number;
+	seconds_7d: number;
+	readers_7d: number;
+	seconds_30d: number;
+	readers_30d: number;
+}
+
 export interface AdminEngagement {
 	overview: EngagementOverview;
+	time: EngagementTime;
 	most_read: EngagementWork[];
 	most_marked: EngagementWork[];
 	by_language: EngagementLang[];
@@ -791,6 +806,17 @@ export interface AdminEngagement {
 }
 
 export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
+
+/** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
+ *  by the admin engagement and per-user pages so time reads the same everywhere. */
+export function formatDuration(seconds: number): string {
+	if (!seconds || seconds < 1) return '—';
+	const h = Math.floor(seconds / 3600);
+	const m = Math.floor((seconds % 3600) / 60);
+	if (h) return m ? `${h}h ${m}m` : `${h}h`;
+	if (m) return `${m}m`;
+	return `${Math.round(seconds)}s`;
+}
 
 // Account analytics: sign-up growth, locale/theme split, activation.
 
@@ -931,6 +957,16 @@ export interface UserTimelineEvent {
 	count?: number;
 }
 
+/** One reading sitting on the per-user page. `seconds` is active reading time. */
+export interface UserSession {
+	started_at: string | null;
+	last_seen_at: string | null;
+	seconds: number;
+	kind: string;
+	slug: string;
+	title: string;
+}
+
 export interface AdminUserDetail {
 	profile: {
 		uid: string;
@@ -961,6 +997,10 @@ export interface AdminUserDetail {
 		days_read: number;
 		streak_current: number;
 		streak_longest: number;
+		/** Active reading time (see EngagementTime). Zero until instrumented. */
+		reading_seconds: number;
+		sessions: number;
+		avg_session_seconds: number;
 	};
 	reading: {
 		in_progress: UserProgress[];
@@ -969,6 +1009,9 @@ export interface AdminUserDetail {
 	};
 	favorites: UserFavorite[];
 	plans: UserPlan[];
+	/** Reading sittings, newest first. `title` is blank when the sitting had no
+	 *  work context (an older client). */
+	sessions: UserSession[];
 	highlights: UserHighlight[];
 	bookmarks: UserBookmark[];
 	/** `today` is the reader's own local date, so the heatmap aligns to the same

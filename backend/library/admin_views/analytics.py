@@ -63,12 +63,53 @@ class AdminEngagementView(APIView):
         return Response(
             {
                 "overview": overview,
+                "time": self._reading_time(now),
                 "most_read": self._most_read(),
                 "most_marked": self._most_marked(),
                 "by_language": self._by_language(),
                 "weekly_active": self._weekly_active(now),
             }
         )
+
+    def _reading_time(self, now):
+        """Time-on-site rollup from ReadingSession (see reading.models).
+
+        ``seconds`` is *active* reading time, so these are real reading totals,
+        not tab-open time. Windows are on ``last_seen_at`` (when the sitting was
+        last touched). ``avg_session_seconds`` is over sittings with any time.
+        Empty (all zeros) until the instrumentation has data — the panel hides
+        itself then.
+        """
+        from datetime import timedelta
+
+        from django.db.models import Avg, Count, Sum
+
+        from reading.models import ReadingSession
+
+        sessions = ReadingSession.objects.filter(seconds__gt=0)
+
+        def window(days):
+            return sessions.filter(
+                last_seen_at__gte=now - timedelta(days=days)
+            ).aggregate(secs=Sum("seconds"), readers=Count("profile", distinct=True))
+
+        totals = sessions.aggregate(
+            secs=Sum("seconds"),
+            count=Count("id"),
+            readers=Count("profile", distinct=True),
+            avg=Avg("seconds"),
+        )
+        w7, w30 = window(7), window(30)
+        return {
+            "total_seconds": totals["secs"] or 0,
+            "sessions": totals["count"] or 0,
+            "readers": totals["readers"] or 0,
+            "avg_session_seconds": round(totals["avg"] or 0),
+            "seconds_7d": w7["secs"] or 0,
+            "readers_7d": w7["readers"] or 0,
+            "seconds_30d": w30["secs"] or 0,
+            "readers_30d": w30["readers"] or 0,
+        }
 
     def _total_users(self) -> int:
         from accounts.models import UserProfile

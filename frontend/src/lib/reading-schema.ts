@@ -27,6 +27,10 @@ export const LAST_SYNC_KEY = 'ochorus:last-sync';
 // Device-local — never synced — but the reader's own data all the same: on a
 // shared device the next person must not inherit it. See readingPace.svelte.ts.
 export const PACE_KEY = 'ochorus:reading-pace';
+// The current reading sitting (its active seconds + bounds), buffered here and
+// synced to the account so the admin can see time-on-site. Reader's own data —
+// wiped on sign-out like the rest. See readingTime.svelte.ts.
+export const SESSION_KEY = 'ochorus:reading-session';
 // Legacy device-local sermon stores, folded into MARKS_KEY / ANCHOR_KEY under
 // `sermon:`-prefixed keys when sermons joined the synced reading layer
 // (roadmap #10). Kept only so the one-time migrations and the sign-out wipe
@@ -50,6 +54,7 @@ export const READING_DATA_KEYS = [
 	ACTIVITY_KEY,
 	LAST_SYNC_KEY,
 	PACE_KEY,
+	SESSION_KEY,
 	LEGACY_SERMON_MARKS_KEY,
 	LEGACY_SERMON_ANCHOR_KEY
 ] as const;

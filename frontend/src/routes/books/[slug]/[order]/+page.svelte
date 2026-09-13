@@ -37,6 +37,7 @@
 	import { syncedAhead, type Position } from '$lib/resumeSync';
 	import { paceDelta, paragraphWordCounts, type PaceSample } from '$lib/pace';
 	import { readingPace } from '$lib/readingPace.svelte';
+	import { readingTimer } from '$lib/readingTime.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
@@ -1102,7 +1103,11 @@
 		const now = Date.now();
 		if (lastSample) {
 			const d = paceDelta(lastSample, { p, at: now }, paraWords);
-			if (d) readingPace.record(d.words, d.ms);
+			if (d) {
+				readingPace.record(d.words, d.ms);
+				// Same validated active-reading time feeds "time on site".
+				readingTimer.record(d.ms, { kind: 'book', slug, language });
+			}
 		}
 		lastSample = { p, at: now };
 	}

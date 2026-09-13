@@ -2,7 +2,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
-	import { getAdminEngagement, periodTrend, type EngagementWork, type Trend } from '$lib/library-admin';
+	import { formatDuration, getAdminEngagement, periodTrend, type EngagementWork, type Trend } from '$lib/library-admin';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -119,6 +119,30 @@
 					<p class="mt-3 text-micro text-muted">
 						Early data — only {fmt(d.overview.readers)} reader{d.overview.readers === 1 ? '' : 's'} so far. Read the charts below as directional, not statistically firm.
 					</p>
+				{/if}
+
+				<!-- Reading time (from sittings) -->
+				{#if d.time.sessions}
+					<section class="mt-8 rounded-card border border-border bg-surface p-5">
+						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">Reading time</h2>
+							<span class="text-small text-muted">Active reading — foreground, non-idle — not tab-open time.</span>
+						</div>
+						<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+							{#each [
+								{ label: 'Total time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings` },
+								{ label: 'Avg sitting', text: formatDuration(d.time.avg_session_seconds), sub: `${fmt(d.time.readers)} readers` },
+								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers` },
+								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers` }
+							] as c (c.label)}
+								<div class="rounded-card border border-border bg-surface-2 p-4">
+									<div class="stat-number">{c.text}</div>
+									<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
+									<div class="text-small text-muted">{c.sub}</div>
+								</div>
+							{/each}
+						</div>
+					</section>
 				{/if}
 
 				<!-- Weekly active -->

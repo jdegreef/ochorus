@@ -35,6 +35,7 @@ from .models import (
     PlanProgress,
     ReadingDay,
     ReadingProgress,
+    ReadingSession,
     WorkKind,
 )
 from .serializers import (
@@ -700,6 +701,87 @@ class ActivityView(APIView):
         profile = _profile(request)
         ReadingDay.objects.get_or_create(profile=profile, day=parsed)
         return Response({"day": parsed.isoformat()})
+
+
+# A single sitting can't sanely exceed a day of ACTIVE reading; clamp so a buggy
+# or hostile client can't store a wild total that would skew every average.
+MAX_SESSION_SECONDS = 24 * 60 * 60
+
+
+def _session_kind(value) -> str:
+    """A WorkKind for the session's context, or "" — blank is allowed here
+    (unlike progress, which must file a row under *some* kind). An unknown value
+    is dropped to blank rather than stored."""
+    return value if value in WorkKind.values else ""
+
+
+def _sessions_from_body(request) -> list[dict]:
+    """The session dicts from the PUT body — `{"sessions": [...]}` or a bare list."""
+    data = request.data
+    rows = data.get("sessions") if isinstance(data, dict) else data
+    return [r for r in rows if isinstance(r, dict)] if isinstance(rows, list) else []
+
+
+class SessionsView(APIView):
+    """Sync reading sittings — the signal behind "time on site".
+
+    The client owns each sitting's id and accumulates its ACTIVE reading time
+    (see :class:`reading.models.ReadingSession`); this upserts by
+    (profile, client_id) with the same union rule as the rest of the layer —
+    seconds only grow, the earliest start and latest last-seen win — so a retry
+    or a second device never double-counts or loses time. Context
+    (kind/slug/language) is filled once, from the first sync that carries it.
+    """
+
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
+
+    def put(self, request):
+        profile = _profile(request)
+        rows = _sessions_from_body(request)[:MAX_MERGE_ROWS]
+        saved = 0
+        with transaction.atomic():
+            for r in rows:
+                cid = r.get("client_id")
+                if not isinstance(cid, str) or not cid:
+                    continue
+                start = _ms_to_dt(r.get("started_at"))
+                seen = _ms_to_dt(r.get("last_seen_at"))
+                if start is None or seen is None:
+                    continue
+                if seen < start:
+                    seen = start
+                secs = _clamp_int(r.get("seconds"), 0, 0, MAX_SESSION_SECONDS)
+                slug = r.get("book_slug")
+                book_slug = (
+                    slug if isinstance(slug, str) and len(slug) <= SLUG_MAX else ""
+                )
+                obj, created = ReadingSession.objects.get_or_create(
+                    profile=profile,
+                    client_id=cid[:80],
+                    defaults={
+                        "started_at": start,
+                        "last_seen_at": seen,
+                        "seconds": secs,
+                        "kind": _session_kind(r.get("kind")),
+                        "book_slug": book_slug,
+                        "language": _lang(r.get("language")) if r.get("language") else "",
+                    },
+                )
+                if not created:
+                    obj.started_at = min(obj.started_at, start)
+                    obj.last_seen_at = max(obj.last_seen_at, seen)
+                    obj.seconds = max(obj.seconds, secs)
+                    # Context is write-once: fill it only if a prior sync hadn't.
+                    if not obj.kind:
+                        obj.kind = _session_kind(r.get("kind"))
+                    if not obj.book_slug and book_slug:
+                        obj.book_slug = book_slug
+                    if not obj.language and r.get("language"):
+                        obj.language = _lang(r.get("language"))
+                    obj.save()
+                saved += 1
+        return Response({"ok": True, "count": saved})
 
 
 class MergeView(APIView):

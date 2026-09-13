@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { undo } from './undo.svelte';
 import { apiFetch } from './api';
 import type { PlanState } from './planProgress.svelte';
+import type { SessionSync } from './sessionClock';
 import {
 	PROGRESS_KEY,
 	MARKS_KEY,
@@ -266,6 +267,21 @@ class ReadingSync {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`a:${day}`, () => {
 			apiFetch(`/api/reading/activity/${day}/`, { method: 'PUT' })
+				.then(() => this.#markSynced())
+				.catch(() => {});
+		});
+	}
+
+	/** Mirror reading sittings (time on site) to the account. The server upserts
+	 *  each by its client id with a union rule, so re-sending a growing sitting is
+	 *  idempotent. Debounced per sitting so mid-read pushes coalesce. */
+	pushSessions(sessions: SessionSync[]) {
+		if (!this.signedIn || !browser || !sessions.length) return;
+		this.#debounce(`s:${sessions[0].client_id}`, () => {
+			apiFetch('/api/reading/sessions/', {
+				method: 'PUT',
+				body: JSON.stringify({ sessions })
+			})
 				.then(() => this.#markSynced())
 				.catch(() => {});
 		});
