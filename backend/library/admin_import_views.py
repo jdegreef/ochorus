@@ -161,7 +161,6 @@ class AdminImportPublishView(AdminAudited, APIView):
                     source_url,
                     subtitle=d.get("subtitle"),
                     cover_color=d.get("cover_color"),
-                    cover_url=d.get("cover_url"),
                     publication_year=d.get("publication_year"),
                     attribution=d.get("attribution"),
                 )

@@ -48,7 +48,6 @@
 	// Optional book metadata, captured at import instead of a separate edit later.
 	let subtitle = $state('');
 	let coverColor = $state('');
-	let coverUrl = $state('');
 	let publicationYear = $state('');
 	let attribution = $state('');
 
@@ -152,7 +151,6 @@
 							kind: 'book',
 							subtitle,
 							cover_color: coverColor,
-							cover_url: coverUrl,
 							publication_year: publicationYear,
 							attribution,
 							chapters: preview.chapters.map((c) => ({ title: c.title, html: c.html }))
@@ -183,7 +181,6 @@
 		sourceUrl = '';
 		subtitle = '';
 		coverColor = '';
-		coverUrl = '';
 		publicationYear = '';
 		attribution = '';
 		error = null;
@@ -434,12 +431,6 @@
 								class="field min-w-0 flex-1"
 							/>
 							</div>
-						</div>
-						<div>
-							<label class="mb-1 block text-small font-semibold text-text" for="coverurl">
-								Cover image URL <span class="font-normal text-muted">(optional)</span>
-							</label>
-							<input id="coverurl" bind:value={coverUrl} placeholder="https://…" class="field w-full" />
 						</div>
 					</div>
 					<label class="mb-1 mt-3 block text-small font-semibold text-text" for="attr">

@@ -175,6 +175,19 @@ describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
 		expect(script.some((s) => s.startsWith('sha256-'))).toBe(true);
 	});
 
+	it('does NOT allow a blanket https: scheme in img-src', () => {
+		// Every image the app paints is same-origin (`/covers/`, `/portraits/`),
+		// plus data:/blob: — nothing hot-links a third-party image. A bare
+		// `https:` here would let an XSS-injected <img> beacon to any host. If a
+		// real external image source is ever needed, add that exact host, never
+		// the scheme. (Import stores no off-site cover_url, which is what makes
+		// this safe — see csp.config.js and library/upload_import.create_book.)
+		const img = csp['img-src'];
+		expect(img).toBeTruthy();
+		expect(img).not.toContain('https:');
+		expect(img).not.toContain('http:');
+	});
+
 	it('pins the app.html theme-boot hash to the actual script', () => {
 		// SvelteKit hashes the scripts IT emits, but not the template boot script;
 		// its hash is pinned by hand in the config. If app.html changes and the

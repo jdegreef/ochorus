@@ -197,29 +197,30 @@ class CreateTests(TestCase):
             "en",
             subtitle="A Subtitle",
             cover_color="#3b5bdb",
-            cover_url="https://example.org/c.jpg",
             publication_year=1885,
             attribution="Public domain — CCEL scan",
         )
         self.assertEqual(book.subtitle, "A Subtitle")
         self.assertEqual(book.cover_color, "#3b5bdb")
-        self.assertEqual(book.cover_url, "https://example.org/c.jpg")
+        # Import never stores a cover_url — covers are repo-borne /covers/ assets,
+        # so an imported book starts coverless (a generated plate stands in) until
+        # a designed cover ships in a fixture. This is what lets the CSP forbid
+        # off-site images (no blanket `img-src https:`).
+        self.assertEqual(book.cover_url, "")
         self.assertEqual(book.publication_year, 1885)
         self.assertEqual(book.attribution, "Public domain — CCEL scan")
 
     def test_create_book_metadata_is_validated(self):
-        # Bad hex, non-http cover url, and out-of-range year are dropped, not stored.
+        # Bad hex and out-of-range year are dropped, not stored.
         book = ui.create_book(
             self.author,
             "Bad Meta",
             [{"title": "One", "html": f"<p>{BODY}</p>"}],
             "en",
             cover_color="red; drop table",
-            cover_url="javascript:alert(1)",
             publication_year=99999,
         )
         self.assertEqual(book.cover_color, "")
-        self.assertEqual(book.cover_url, "")
         self.assertIsNone(book.publication_year)
 
     def test_clean_hex_only_accepts_valid_css_lengths(self):

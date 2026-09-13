@@ -258,7 +258,6 @@ def create_book(
     *,
     subtitle: str = "",
     cover_color: str = "",
-    cover_url: str = "",
     publication_year=None,
     attribution: str = "",
 ) -> Book:
@@ -278,7 +277,12 @@ def create_book(
         subtitle=str(subtitle or "").strip()[:300],
         source_type=Book.SourceType.PUBLIC_DOMAIN,
         source_url=_http_url(source_url),
-        cover_url=_http_url(cover_url),
+        # No cover_url from import: covers are repo-borne assets under
+        # /covers/ (drawn by the cover pipeline, committed in the book's
+        # fixture), never an off-site URL. Leaving it blank lets the generated
+        # plate stand in until a designed/curated cover ships. This is also
+        # what lets the CSP drop the blanket `img-src https:` — nothing renders
+        # a third-party image.
         cover_color=_plate_hex(cover_color),
         publication_year=_clean_year(publication_year),
         attribution=str(attribution or "").strip(),
