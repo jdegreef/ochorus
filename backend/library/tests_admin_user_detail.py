@@ -151,6 +151,14 @@ class AdminUserDetailTests(TestCase):
             kind="sermon",
             book_slug="all-of-grace",
         )
+        # A zero-second sitting must NOT count (matches the global avg denominator).
+        ReadingSession.objects.create(
+            profile=self.profile,
+            client_id="c0",
+            started_at=now,
+            last_seen_at=now,
+            seconds=0,
+        )
 
     def get(self, uid=None):
         return self.client.get(f"/api/admin/users/{uid or self.uid}/")

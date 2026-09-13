@@ -716,9 +716,9 @@ def _session_kind(value) -> str:
 
 
 def _sessions_from_body(request) -> list[dict]:
-    """The session dicts from the PUT body — `{"sessions": [...]}` or a bare list."""
-    data = request.data
-    rows = data.get("sessions") if isinstance(data, dict) else data
+    """The session dicts from the PUT body's ``sessions`` list — same envelope
+    convention as MergeView's sections (``_as_dict(...).get(...)``)."""
+    rows = _as_dict(request.data).get("sessions", [])
     return [r for r in rows if isinstance(r, dict)] if isinstance(rows, list) else []
 
 
@@ -753,9 +753,7 @@ class SessionsView(APIView):
                     seen = start
                 secs = _clamp_int(r.get("seconds"), 0, 0, MAX_SESSION_SECONDS)
                 slug = r.get("book_slug")
-                book_slug = (
-                    slug if isinstance(slug, str) and len(slug) <= SLUG_MAX else ""
-                )
+                book_slug = slug if _valid_slug(slug) else ""
                 obj, created = ReadingSession.objects.get_or_create(
                     profile=profile,
                     client_id=cid[:80],
@@ -769,6 +767,13 @@ class SessionsView(APIView):
                     },
                 )
                 if not created:
+                    # Re-read under a row lock before the union, exactly as
+                    # _upsert_plan_progress does: without it two concurrent PUTs
+                    # for the same (profile, client_id) — two tabs share the
+                    # localStorage client id — can both read the old row and the
+                    # later write wins with a *smaller* max. SQLite no-ops the
+                    # lock; Postgres serializes the two writers.
+                    obj = ReadingSession.objects.select_for_update().get(pk=obj.pk)
                     obj.started_at = min(obj.started_at, start)
                     obj.last_seen_at = max(obj.last_seen_at, seen)
                     obj.seconds = max(obj.seconds, secs)

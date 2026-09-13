@@ -203,7 +203,17 @@ class AdminUserDetailView(APIView):
         work_pairs |= {(b.kind, b.book_slug) for b in bookmarks}
 
         # --- Reading sittings (time on site) --------------------------------
-        sessions = list(profile.sessions.all())
+        # Totals aggregate in the DB (a long-tenured reader has unboundedly many
+        # sittings); only the newest LIST_LIMIT are materialised for display.
+        # Filtered to seconds>0 so the average's denominator matches the global
+        # engagement one (_reading_time).
+        from django.db.models import Count, Sum
+
+        real_sessions = profile.sessions.filter(seconds__gt=0)
+        session_agg = real_sessions.aggregate(total=Sum("seconds"), n=Count("id"))
+        total_seconds = session_agg["total"] or 0
+        session_count = session_agg["n"] or 0
+        sessions = list(real_sessions[:LIST_LIMIT])
         work_pairs |= {
             (s.kind, s.book_slug) for s in sessions if s.kind and s.book_slug
         }
@@ -245,8 +255,7 @@ class AdminUserDetailView(APIView):
         current_streak, longest_streak = reading_streaks(days, today=local_today)
         sorted_days = sorted(days)
 
-        # --- Reading time (from sittings) ------------------------------------
-        total_seconds = sum(s.seconds for s in sessions)
+        # --- Reading time (from sittings) — totals computed above ------------
         session_rows = [
             {
                 "started_at": _iso(s.started_at),
@@ -386,9 +395,9 @@ class AdminUserDetailView(APIView):
                     "streak_current": current_streak,
                     "streak_longest": longest_streak,
                     "reading_seconds": total_seconds,
-                    "sessions": len(sessions),
-                    "avg_session_seconds": round(total_seconds / len(sessions))
-                    if sessions
+                    "sessions": session_count,
+                    "avg_session_seconds": round(total_seconds / session_count)
+                    if session_count
                     else 0,
                 },
                 "reading": {

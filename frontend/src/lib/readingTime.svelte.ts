@@ -39,11 +39,12 @@ class ReadingTime {
 		if (!browser) return;
 		this.#session = readJSON<Session | null>(SESSION_KEY, null);
 		// Flush the sitting when the reader leaves — a hidden tab or a close is
-		// exactly where the last, unpushed seconds would otherwise be lost.
+		// exactly where the last, unpushed seconds would otherwise be lost. Use
+		// the immediate (keepalive) path: a debounced push never fires on unload.
 		document.addEventListener('visibilitychange', () => {
-			if (document.visibilityState === 'hidden') this.flush();
+			if (document.visibilityState === 'hidden') this.flush(true);
 		});
-		window.addEventListener('pagehide', () => this.flush());
+		window.addEventListener('pagehide', () => this.flush(true));
 	}
 
 	/**
@@ -55,21 +56,28 @@ class ReadingTime {
 		if (!browser || !(ms > 0)) return;
 		const now = Date.now();
 		const { session, rolled } = advanceSession(this.#session, ms, now, ctx, newId);
-		// A new sitting began — send the finished one before overwriting it.
+		// A new sitting began — send the finished one before overwriting it. (When
+		// signed out this push no-ops, so only the CURRENT sitting is retained for
+		// the post-sign-in flush; earlier signed-out sittings aren't queued. Time
+		// on site is a signed-in metric, so this is an accepted edge, not a gap.)
 		if (rolled && this.#session) this.#push(this.#session);
 		this.#session = session;
 		writeJSON(SESSION_KEY, session);
 		if (now - this.#lastPush > PUSH_EVERY_MS) this.flush();
 	}
 
-	/** Send the current sitting to the server now (no-op if there's nothing new). */
-	flush(): void {
-		if (this.#session && this.#session.seconds > 0) this.#push(this.#session);
+	/**
+	 * Send the current sitting to the server. `immediate` (the tab-hide / unload
+	 * path) sends synchronously with keepalive so it isn't lost to a torn-down
+	 * event loop; the default (mid-read) path debounces so bursts coalesce.
+	 */
+	flush(immediate = false): void {
+		if (this.#session && this.#session.seconds > 0) this.#push(this.#session, immediate);
 	}
 
-	#push(s: Session): void {
+	#push(s: Session, immediate = false): void {
 		this.#lastPush = Date.now();
-		readingSync.pushSessions([
+		const rows = [
 			{
 				client_id: s.clientId,
 				started_at: s.startedAt,
@@ -79,7 +87,9 @@ class ReadingTime {
 				book_slug: s.slug,
 				language: s.language
 			}
-		]);
+		];
+		if (immediate) readingSync.pushSessionsNow(rows);
+		else readingSync.pushSessions(rows);
 	}
 }
 

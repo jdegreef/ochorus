@@ -287,6 +287,21 @@ class ReadingSync {
 		});
 	}
 
+	/** Send sittings NOW — no debounce — from the tab-hide / unload path, where a
+	 *  debounced timer would never fire. `keepalive` lets the PUT outlive the
+	 *  page (and still carries the auth header, unlike sendBeacon). Without this
+	 *  the final, unflushed seconds of every sitting were lost. */
+	pushSessionsNow(sessions: SessionSync[]) {
+		if (!this.signedIn || !browser || !sessions.length) return;
+		apiFetch('/api/reading/sessions/', {
+			method: 'PUT',
+			body: JSON.stringify({ sessions }),
+			keepalive: true
+		})
+			.then(() => this.#markSynced())
+			.catch(() => {});
+	}
+
 	/** Mirror a heart toggle (kind: author | book | plan | sermon). */
 	pushFavorite(kind: string, slug: string, active: boolean) {
 		if (!this.signedIn || !browser) return;
