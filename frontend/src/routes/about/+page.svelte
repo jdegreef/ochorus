@@ -18,11 +18,18 @@
 	// The "from the page to the field" gallery. Captions double as each image's
 	// accessible name — the figure describes the photo, so alt repeats it rather
 	// than inventing a second description that could drift.
+	// The outreach gallery. Uniform aspect per row (two wide, three portrait,
+	// three landscape) so the grid never leaves ragged gaps; `span` carries the
+	// column count at mobile (2-col) and sm+ (6-col). Captions double as alt text.
 	const field = [
-		{ img: 'handover', cap: 'about.capHandover', cls: 'row-span-2 aspect-[3/4]' },
-		{ img: 'school', cap: 'about.capSchool', cls: 'sm:col-span-2 aspect-[3/2]' },
-		{ img: 'soar', cap: 'about.capSoar', cls: 'aspect-square' },
-		{ img: 'murray-table', cap: 'about.capMurray', cls: 'aspect-square' }
+		{ img: 'gate', cap: 'about.capGate', span: 'col-span-2 sm:col-span-3', aspect: 'aspect-video' },
+		{ img: 'matugga-read', cap: 'about.capMatugga', span: 'col-span-2 sm:col-span-3', aspect: 'aspect-video' },
+		{ img: 'handover', cap: 'about.capHandover', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[3/4]' },
+		{ img: 'teacher-standing', cap: 'about.capTeacher', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[3/4]' },
+		{ img: 'staff-seated', cap: 'about.capStaff', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[3/4]' },
+		{ img: 'school', cap: 'about.capSchool', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[4/3]' },
+		{ img: 'soar', cap: 'about.capSoar', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[4/3]' },
+		{ img: 'murray-table', cap: 'about.capMurray', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[4/3]' }
 	];
 
 	// The printed original, shown as a box + cover + interior spread.
@@ -144,10 +151,12 @@
 			<h2 class="text-h2 text-text">{t('about.fieldHeading')}</h2>
 			<p class="mt-3 text-body text-muted">{t('about.outreachP1')}</p>
 		</div>
-		<div class="grid auto-rows-[minmax(0,1fr)] grid-cols-2 gap-4 sm:grid-cols-3">
+		<div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
 			{#each field as f (f.img)}
-				<figure class={f.cls}>
-					<div class="h-full overflow-hidden rounded-card border border-border bg-surface-2">
+				<figure class={f.span}>
+					<div
+						class="overflow-hidden rounded-card border border-border bg-surface-2 {f.aspect}"
+					>
 						<img
 							src="/about/{f.img}.jpg"
 							alt={t(f.cap)}
