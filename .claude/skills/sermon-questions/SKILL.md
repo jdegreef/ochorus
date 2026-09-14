@@ -81,7 +81,17 @@ and the clean entity signal, not a SERP accordion.
 
 ~90 English sermons total. Work in batches (pilot = 10, then 20s), picking a spread
 across authors/eras so quality is judged broadly (the founder reviews the diff
-before scaling). Read in sub-batches of ~5, author, write, verify. #2342 shipped 40.
+before scaling). Read in sub-batches of ~5, author, write, verify.
+
+**ONE PR PER BATCH — never keep pushing to a branch whose PR already merged.**
+A squash-merge closes the PR and does NOT re-merge later pushes. #2342 was
+squash-merged at its 10-sermon pilot state; the +20 and +10 that were then
+pushed to the *same* branch went to a dead branch and never reached main — 30
+sermons of authored questions sat stranded until a recovery PR (#2353) lifted
+them off the closed branch and re-applied them onto main. The PR still showed
+"MERGED" and accepted a retitle to "40 sermons", which masked the loss. So:
+cut a fresh branch + PR for each batch, and if a batch's PR has merged, verify
+main actually carries that batch (`git diff origin/main...HEAD`) before moving on.
 
 **Count a batch against `origin/main...HEAD`, not the working tree.** #2330
 shipped a few pilot examples straight to main, so those sermons already carry
@@ -89,3 +99,8 @@ shipped a few pilot examples straight to main, so those sermons already carry
 over-counts by exactly those. To state how many a PR *adds* (for the title/body),
 count `git diff --name-only origin/main...HEAD -- .../sermons/` instead. (Once
 reported the branch total 43 when the PR added 40.)
+
+**Recovering stranded questions:** lift the `study_questions` array from the
+closed branch (`git show <branch>:<path>`) and insert it after `summary` in
+main's *current* file via `render_rows` — do NOT copy whole files over, or you
+clobber any main-side body/summary edits made since the branch forked.
