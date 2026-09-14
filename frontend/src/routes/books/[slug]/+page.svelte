@@ -9,11 +9,13 @@
 		absUrl,
 		jsonLd,
 		breadcrumbLd,
+		pickQa,
 		hreflangFor,
 		truncateMeta,
 		topicThings,
 		REVIEWED_UI_LOCALES
 	} from '$lib/seo';
+	import QandA from '$lib/components/QandA.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
@@ -246,14 +248,22 @@
 	// shared gate (see REVIEWED_UI_LOCALES in seo.ts), so this page and the sermon
 	// page's reflection questions light up together, not one at a time.
 
+	// Editorial Q&A: hand-authored, grounded in the work, per-language (it rides the
+	// book row like about_html, so a translated edition carries its own). This is
+	// the two-tier model the bio page uses — editorial preferred, the derived set
+	// below as the fallback. Content, not chrome, so it is NOT locale-gated: an es
+	// row's qa is Spanish. The stored shape is {question, answer}; map to {q, a}
+	// for faqPage() and the shared component (the sermon page does the same).
+	const editorialQa = $derived(
+		(book.qa ?? []).map((it) => ({ q: it.question, a: it.answer }))
+	);
+
 	// A short FAQ built from what the page already knows — free to read, length,
 	// subject, author — answering the questions readers actually type ("is X free
 	// to read", "how long is X"). The copy is in the catalogues (see
 	// REVIEWED_UI_LOCALES); a locale without a reviewed translation omits it rather
-	// than shipping an unreviewed answer. The visible <dl> and the FAQPage JSON-LD
-	// both render from this one array, so the markup can never assert a question
-	// the page doesn't show — the match Google requires of FAQ structured data.
-	const faqItems = $derived.by((): { q: string; a: string }[] => {
+	// than shipping an unreviewed answer. Used only when there is no editorial set.
+	const derivedFaq = $derived.by((): { q: string; a: string }[] => {
 		if (!REVIEWED_UI_LOCALES.has(getLang()) || !book.chapter_count) return [];
 		const title = book.title;
 		const items = [
@@ -274,19 +284,11 @@
 		});
 		return items;
 	});
-	const faqLd = $derived(
-		faqItems.length
-			? jsonLd({
-					'@context': 'https://schema.org',
-					'@type': 'FAQPage',
-					mainEntity: faqItems.map((f) => ({
-						'@type': 'Question',
-						name: f.q,
-						acceptedAnswer: { '@type': 'Answer', text: f.a }
-					}))
-				})
-			: ''
-	);
+
+	// The one array the visible section and the FAQPage JSON-LD both read (so the
+	// markup can never assert a question the page doesn't show), plus that JSON-LD.
+	// The editorial-vs-derived floor and the faqPage() wiring live once in pickQa.
+	const qa = $derived(pickQa(editorialQa, derivedFaq));
 
 	// "More like this" reasons (A2). The reason is data from the API; the visible
 	// label comes from the catalogues, shown in the same reviewed locales as the
@@ -311,7 +313,7 @@
 		[
 			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
 			{ id: 'contents', label: t('reader.contents') },
-			faqItems.length ? { id: 'questions', label: 'Questions' } : null,
+			qa.items.length ? { id: 'questions', label: 'Questions' } : null,
 			book.related?.length ? { id: 'related', label: t('book.related') } : null
 		].filter((x): x is { id: string; label: string } => x != null)
 	);
@@ -335,7 +337,7 @@
 	ogTitle="{book.title} — {book.author.name}"
 	{ogImage}
 	ogImageAlt="{t('a11y.coverOf')} {book.title}"
-	structuredData={[bookLd, crumbsLd, faqLd].filter(Boolean)}
+	structuredData={[bookLd, crumbsLd, qa.ld].filter(Boolean)}
 />
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
@@ -650,25 +652,11 @@
 		</ol>
 	</section>
 
-	<!-- Common questions. Rendered from `faqItems` (English editions only), which
-	     also feeds the FAQPage JSON-LD in <Seo> — same source, so the visible
-	     answers and the structured data stay in lockstep. A <dl> because it is
-	     literally a list of question/answer pairs; every answer is visible (no
-	     accordion), which is both better for a reader skimming and what FAQ
-	     structured data requires. -->
-	{#if faqItems.length}
-		<section id="questions" class="jump-anchor mt-12" aria-labelledby="faq-heading">
-			<h2 id="faq-heading" class="text-h3">Common questions</h2>
-			<dl class="mt-4 flex flex-col gap-5">
-				{#each faqItems as item (item.q)}
-					<div>
-						<dt class="text-body font-medium text-text">{item.q}</dt>
-						<dd class="mt-1 text-body text-muted" dir="auto">{item.a}</dd>
-					</div>
-				{/each}
-			</dl>
-		</section>
-	{/if}
+	<!-- Questions and Answers. `qa.items` (editorial if present, else the derived
+	     set) also feeds the FAQPage JSON-LD in <Seo> via the same pickQa call, so
+	     the visible answers and the structured data stay in lockstep. The shared
+	     <QandA> section id is `questions`, which the jump-nav above points at. -->
+	<QandA items={qa.items} title="Questions and Answers" />
 
 	<!-- People found IN this work who have a bio of their own — an anthology's
 	     subjects, the figures a biography follows. Links to their author pages.

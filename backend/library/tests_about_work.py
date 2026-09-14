@@ -127,6 +127,39 @@ class PayloadTests(TestCase):
         self.assertNotIn("about_html", BookListSerializer(book).data)
 
 
+class QaPayloadTests(TestCase):
+    """`Book.qa` — editorial Questions & Answers, the same contract the sermon
+    and author Q&A use, exposed under the unified serializer key `qa` with
+    `{question, answer}` items. Detail carries it; the shelf card does not."""
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="john-owen", name="John Owen")
+
+    def _book(self, **kw):
+        return Book.objects.create(
+            author=self.author, slug="mortification-of-sin", language="en",
+            title="The Mortification of Sin in Believers", **kw
+        )
+
+    def test_the_detail_payload_carries_it(self):
+        from .serializers import BookDetailSerializer
+
+        qa = [{"question": "What is it about?", "answer": "Killing sin."}]
+        book = self._book(qa=qa)
+        self.assertEqual(BookDetailSerializer(book).data["qa"], qa)
+
+    def test_a_book_without_one_sends_an_empty_list(self):
+        from .serializers import BookDetailSerializer
+
+        self.assertEqual(BookDetailSerializer(self._book()).data["qa"], [])
+
+    def test_the_shelf_card_does_not_carry_it(self):
+        from .serializers import BookListSerializer
+
+        book = self._book(qa=[{"question": "Q?", "answer": "A."}])
+        self.assertNotIn("qa", BookListSerializer(book).data)
+
+
 class SeedTests(TestCase):
     def test_the_seed_carries_it_through_and_keeps_it_current(self):
         """Fixture-owned editorial prose, like `description`: an edit to the
@@ -135,3 +168,12 @@ class SeedTests(TestCase):
 
         self.assertIn("about_html", BOOK_FIELDS)
         self.assertIn("about_html", UPDATE_FIELDS)
+
+    def test_the_seed_keeps_qa_current(self):
+        """`qa` is fixture-owned like `about_html` — an expanded set in the
+        committed file must reach an existing row on the next deploy, so it is
+        an update field, not create-only."""
+        from library.management.commands.seed_books import BOOK_FIELDS, UPDATE_FIELDS
+
+        self.assertIn("qa", BOOK_FIELDS)
+        self.assertIn("qa", UPDATE_FIELDS)

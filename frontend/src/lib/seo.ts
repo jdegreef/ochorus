@@ -244,3 +244,20 @@ export function faqPage(items: { q: string; a: string }[]): string {
 		}))
 	});
 }
+
+/**
+ * The two-tier Q&A contract in one place: prefer the editorial set once it clears
+ * the two-item floor a real Q&A section needs, otherwise fall back to the derived
+ * one, and build the FAQPage JSON-LD from whichever won. Returns the single array
+ * the page renders AND the JSON-LD built from it, so the visible answers and the
+ * structured data can never assert different questions. Book, author and topic
+ * pages share this rather than re-hand-rolling the `>= 2` floor and the
+ * `faqPage()` wiring per page (docs/questions-and-answers-plan.md §3.2–3.4).
+ */
+export function pickQa(
+	editorial: { q: string; a: string }[],
+	derived: { q: string; a: string }[]
+): { items: { q: string; a: string }[]; ld: string } {
+	const items = editorial.length >= 2 ? editorial : derived;
+	return { items, ld: items.length ? faqPage(items) : '' };
+}

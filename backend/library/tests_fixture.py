@@ -601,12 +601,65 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
             )
 
 
+def assert_qa_wellformed(test, items, keys, label):
+    """Shared shape / plain-text guard for editorial Q&A.
+
+    Q&A (author ``faq``, book/topic ``qa``) ships as plain-text JSON and is
+    rendered — on the page and as FAQPage JSON-LD — with no sanitize step, so it
+    must carry no markup and must talk about the CONTENT, not the platform.
+    ``items`` is the stored list, ``keys`` the exact key set each entry must have
+    ({"q", "a"} for authors, {"question", "answer"} for books/topics), ``label``
+    a human tag for the failure message. One helper so the two callers cannot
+    drift (backend/CLAUDE.md: "a second copy drifts — it already did once").
+    """
+    test.assertIsInstance(items, list, f"{label}: Q&A must be a list")
+    # A present set is an editorial one: the spec is 6–10 entries.
+    test.assertTrue(
+        6 <= len(items) <= 10,
+        f"{label}: Q&A has {len(items)} entries — the spec is 6 to 10",
+    )
+    for i, item in enumerate(items):
+        test.assertEqual(set(item), keys, f"{label}[{i}]: each entry is exactly {keys}")
+        for key in keys:
+            val = item[key]
+            test.assertIsInstance(val, str, f"{label}[{i}].{key}: string")
+            test.assertTrue(val.strip(), f"{label}[{i}].{key}: non-empty")
+            # Plain text: the render escapes it and the JSON-LD carries it raw,
+            # so a stray tag or entity would ship literally.
+            test.assertIsNone(_TAG.search(val), f"{label}[{i}].{key}: contains a tag")
+            test.assertIsNone(
+                _ENTITY.search(val),
+                f"{label}[{i}].{key}: HTML entity — write the character",
+            )
+            # The Q&A is about the content, not where to read it.
+            low = val.lower()
+            test.assertNotIn("ochorus", low, f"{label}[{i}].{key}: names the site")
+            test.assertNotIn("http", low, f"{label}[{i}].{key}: carries a URL")
+
+
+class BookQaShapeTests(SimpleTestCase):
+    """The editorial Q&A on ``Book.qa`` — the unified ``{question, answer}``
+    contract new types adopt (docs/questions-and-answers-plan.md). Book qa rides
+    the per-language row, so this checks every book file, not only English.
+    """
+
+    def test_qa_entries_are_well_formed_plain_text(self):
+        # The whole corpus is already parsed once behind files_by_path()'s cache;
+        # the book row is guaranteed first (test_book_files_coherent).
+        for path, rows in files_by_path().items():
+            if path.parent != BOOKS_DIR:
+                continue
+            qa = rows[0]["fields"].get("qa")
+            if not qa:  # absent or [] — a book with no set yet
+                continue
+            with self.subTest(book=path.name):
+                assert_qa_wellformed(self, qa, {"question", "answer"}, path.name)
+
+
 class AuthorFaqShapeTests(SimpleTestCase):
-    """The editorial Q&A on ``Author.faq`` is shipped as plain-text JSON in
-    ``authors.json`` and rendered — both on the page and as FAQPage JSON-LD —
-    with no sanitize step, because it is supposed to carry no markup at all. This
-    guard is what keeps that promise: shape, count, plain-text, and the
-    house rule that the Q&A talks about the PERSON, never the platform.
+    """The editorial Q&A on ``Author.faq``, shipped as plain-text JSON in
+    ``authors.json``. The house rule: the Q&A talks about the PERSON, never the
+    platform. Shares the shape guard with book qa via ``assert_qa_wellformed``.
     """
 
     @classmethod
@@ -615,42 +668,13 @@ class AuthorFaqShapeTests(SimpleTestCase):
         cls.rows = json.loads(AUTHORS_FILE.read_text(encoding="utf-8"))
 
     def test_faq_entries_are_well_formed_plain_text(self):
-        entity = re.compile(r"&[a-zA-Z][a-zA-Z0-9]+;")  # named/entity refs, not bare &
         for row in self.rows:
             f = row["fields"]
             faq = f.get("faq")
             if not faq:  # absent or [] — an author with no set yet
                 continue
-            slug = f["slug"]
-            with self.subTest(slug=slug):
-                self.assertIsInstance(faq, list, f"{slug}: faq must be a list")
-                # A present set is an editorial one: the spec is 6–10 entries.
-                self.assertTrue(
-                    6 <= len(faq) <= 10,
-                    f"{slug}: faq has {len(faq)} entries — the spec is 6 to 10",
-                )
-                for i, item in enumerate(faq):
-                    self.assertEqual(
-                        set(item), {"q", "a"},
-                        f"{slug}[{i}]: each entry is exactly {{q, a}}",
-                    )
-                    for key in ("q", "a"):
-                        val = item[key]
-                        self.assertIsInstance(val, str, f"{slug}[{i}].{key}: string")
-                        self.assertTrue(val.strip(), f"{slug}[{i}].{key}: non-empty")
-                        # Plain text: the render escapes it and the JSON-LD carries
-                        # it raw, so a stray tag or entity would ship literally.
-                        self.assertIsNone(
-                            _TAG.search(val), f"{slug}[{i}].{key}: contains a tag"
-                        )
-                        self.assertIsNone(
-                            entity.search(val),
-                            f"{slug}[{i}].{key}: HTML entity — write the character",
-                        )
-                        # The Q&A is about the person, not where to read them.
-                        low = val.lower()
-                        self.assertNotIn("ochorus", low, f"{slug}[{i}].{key}: names the site")
-                        self.assertNotIn("http", low, f"{slug}[{i}].{key}: carries a URL")
+            with self.subTest(slug=f["slug"]):
+                assert_qa_wellformed(self, faq, {"q", "a"}, f["slug"])
 
     # Roughly two sentences. A tripwire for "someone pasted the real biography
     # in here", not a style rule — the biography belongs in authors.json.
@@ -2114,6 +2138,9 @@ _RANGE = re.compile(
     r"(?:[:.]([0-9٠-٩]{1,3}))?"
 )
 _TAG = re.compile(r"<[^>]+>")
+# Named HTML entity refs (`&amp;`, `&quot;`), not a bare `&` — Q&A ships as plain
+# text, so an entity would render literally. Shared by the Q&A shape guards.
+_ENTITY = re.compile(r"&[a-zA-Z][a-zA-Z0-9]+;")
 # A filename that plausibly names a language ("es", "en-modern") — shared by the
 # per-language data-file gates; a shape check, deliberately not a registry lookup
 # (the registry is DB-owned so an admin can add a language without a deploy).
