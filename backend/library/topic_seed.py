@@ -506,6 +506,23 @@ TOPICS = [
             "women-who-moved-heaven-2",
         ],
     ),
+    (
+        "soar-like-the-eagle",
+        "Soar Like the Eagle",
+        "They that wait upon the Lord renew their strength — the classics on "
+        "drawing power from God when your own is spent. Books for the weary: to "
+        "wait, to rest, and to mount up again on eagles' wings.",
+        [
+            "waiting-on-god",
+            "soar-like-the-eagle-3",
+            "the-christians-secret-of-a-happy-life-4",
+            "the-god-of-all-comfort",
+            "the-life-of-trust",
+            "the-secret-of-guidance",
+            "thoughts-for-the-quiet-hour",
+            "clothed-with-strength-and-dignity",
+        ],
+    ),
 ]
 
 # Shelves that ship LIVE IN ENGLISH while their translations are still being
@@ -549,6 +566,7 @@ TRANSLATION_PENDING: frozenset[str] = frozenset(
         "faith-for-the-impossible",
         "men-of-valour",
         "for-teens",
+        "soar-like-the-eagle",
     }
 )
 
@@ -666,6 +684,12 @@ TOPIC_SERMONS = {
         "the-shameful-sufferer",
         "the-triumph-of-calvary",
         "worthy-is-the-lamb",
+    ],
+    "soar-like-the-eagle": [
+        "rest",
+        "the-power-of-stillness",
+        "the-power-of-feeble-faith",
+        "under-the-shepherds-care",
     ],
 }
 
@@ -808,6 +832,12 @@ TOPIC_ARTICLES = {
         "sinners-in-the-hands-of-an-angry-god-explained",
         "what-is-the-church",
         "religious-affections-guide",
+    ],
+    "soar-like-the-eagle": [
+        "how-to-wait-on-god",
+        "how-to-find-rest-for-your-soul",
+        "how-to-be-content",
+        "how-to-trust-god-in-suffering",
     ],
 }
 
@@ -958,6 +988,12 @@ TOPIC_SCRIPTURE = {
         "Let no man despise thy youth; but be thou an example of the "
         "believers, in word, in conversation, in charity, in spirit, in "
         "faith, in purity.",
+    ),
+    "soar-like-the-eagle": (
+        "Isaiah 40:31",
+        "But they that wait upon the Lord shall renew their strength; they "
+        "shall mount up with wings as eagles; they shall run, and not be "
+        "weary; and they shall walk, and not faint.",
     ),
 }
 
@@ -1136,6 +1172,32 @@ TOPIC_QA = {
         {
             "question": "Where should a reader begin?",
             "answer": "Hannah Whitall Smith's \"The Christian's Secret of a Happy Life\" is a warm and accessible starting point on the life of trust; Amanda Berry Smith's \"Autobiography\" offers gripping testimony; and Amy Carmichael's \"If\" is a short, piercing meditation for those ready to be searched. Together they open the shelf's range from settled peace to costly devotion."
+        }
+    ],
+    "soar-like-the-eagle": [
+        {
+            "question": "What is the Soar Like the Eagle collection?",
+            "answer": "It gathers the Christian classics on waiting for God and the renewal of strength — books for the weary soul that has run to the end of its own resources. The shelf takes as its keynote the promise of Isaiah 40:31, that they who wait upon the Lord \"shall mount up with wings as eagles,\" and ranges from Andrew Murray's month of readings on waiting to Hannah Whitall Smith on the rest of a life of full trust."
+        },
+        {
+            "question": "Where should a beginner start?",
+            "answer": "Andrew Murray's \"Waiting on God\" is the natural first step — thirty-one short readings that teach the habit a day at a time. From there, Hannah Whitall Smith's \"The Christian's Secret of a Happy Life\" and \"The God of All Comfort\" show what a rested, trusting life looks like, and George Müller's \"The Life of Trust\" gives it feet in a record of decades of prayers answered."
+        },
+        {
+            "question": "What does it mean to \"wait on the Lord\"?",
+            "answer": "It is not idle passivity but an active, expectant dependence — turning from our own strained effort to draw strength from God himself. The writers here treat waiting as the secret of endurance: the reason some run and grow weary while others mount up as eagles is not greater willpower but a deeper reliance on the One who \"giveth power to the faint.\""
+        },
+        {
+            "question": "Which authors are in this collection?",
+            "answer": "The shelf draws together Andrew Murray, Hannah Whitall Smith, George Müller, F. B. Meyer and D. L. Moody, among others — a spread of Reformed and Keswick, Victorian and modern voices. What unites such different writers is a single conviction: that the tired Christian's help is not in trying harder but in waiting on God, who renews the strength of those who hope in him."
+        },
+        {
+            "question": "Is this shelf only for seasons of burnout?",
+            "answer": "It speaks first to the weary — but the life of waiting is meant for every day, not only for the moment strength gives out. The daily-reading books here, like D. L. Moody's \"Thoughts for the Quiet Hour,\" build the quiet, God-ward habit in ordinary time, so that strength is already being renewed before the hard day comes."
+        },
+        {
+            "question": "Why read these older books on waiting today?",
+            "answer": "Because the soul's weariness has not changed, and these writers faced it honestly — the dryness, the delay, and the temptation to strive in our own power. Tested across generations, their counsel is practical rather than sentimental, and it points past technique to the God who promises that those who wait upon him \"shall run, and not be weary; and they shall walk, and not faint.\""
         }
     ]
 }

@@ -32,6 +32,7 @@ export const EMBLEM_HUES: Record<EmblemName, string> = {
 	'desert-spring': '#a7c9e8',
 	'door-ajar': '#d9a441',
 	'dove-descending': '#d9a441',
+	'eagles-wings': '#a97a24',
 	'easy-yoke': '#d9a441',
 	'feast-table': '#d9a441',
 	'field-sunrise': '#d9a441',

@@ -1,6 +1,6 @@
 {
  "_note": [
-  "French topic shelves — all 30 topics. Titles/descriptions translated for fr; Scripture epigraphs are Louis Segond (1910) verbatim (public domain), fetched from the Take Root fralsg API (ebible fra_lsg USFM mirror), book names localized. christ-and-the-cross carries no epigraph (as in es/pt). Completes French coverage: the original 11 shelves plus the remaining 19 (previously translation-pending), so fr satisfies require_all_topics for go-live. Note: the 19 stay in TRANSLATION_PENDING for the other partial languages (sw/hi/lg/ar/uk)."
+  "French topic shelves — the 30 go-live topics, plus the newer pending shelf soar-like-the-eagle (31 in all). Titles/descriptions translated for fr; Scripture epigraphs are Louis Segond (1910) verbatim (public domain), fetched from the Take Root fralsg API (ebible fra_lsg USFM mirror), book names localized. christ-and-the-cross carries no epigraph (as in es/pt). Completes French coverage: the original 11 shelves plus the remaining 19 (previously translation-pending), so fr satisfies require_all_topics for go-live. Note: those 19 — and soar-like-the-eagle — stay in TRANSLATION_PENDING for the other partial languages (sw/hi/lg/ar/uk)."
  ],
  "abiding-in-christ": {
   "title": "Demeurer en Christ",
@@ -236,6 +236,14 @@
   "scripture": {
    "reference": "Proverbes 31:30",
    "text": "La grâce est trompeuse, et la beauté est vaine; La femme qui craint l’Éternel est celle qui sera louée."
+  }
+ },
+ "soar-like-the-eagle": {
+  "title": "S’élever comme l’aigle",
+  "description": "Ceux qui se confient en l’Éternel renouvellent leur force — les classiques sur l’art de puiser en Dieu la force quand la nôtre est épuisée. Des livres pour ceux qui sont las : attendre, se reposer et reprendre leur envol comme les aigles.",
+  "scripture": {
+   "reference": "Ésaïe 40:31",
+   "text": "Mais ceux qui se confient en l’Éternel renouvellent leur force. Ils prennent le vol comme les aigles; Ils courent, et ne se lassent point, Ils marchent, et ne se fatiguent point."
   }
  }
 }
