@@ -121,14 +121,13 @@ CURATED_PLANS = [
         "first-steps-for-teens",
         "Starting Out: Faith for Teens",
         "A first walk with Jesus, for teenage readers. Charles Spurgeon meets "
-        "you at the gate with the plainest of invitations; a teen edition of "
-        "Watchman Nee shows what it means to belong to the body of Christ; and "
-        "Amy Carmichael's If holds up the love that following him asks — three "
-        "short books over about three weeks.",
+        "you at the gate with the plainest of help for anyone finding their way "
+        "to Christ; then the true stories of men and women who gave him "
+        "everything show what that life becomes — two short books over about "
+        "three weeks.",
         [
             "around-the-wicket-gate",
-            "the-body-of-christ-teens",
-            "if",
+            "men-and-women-who-gave-everything-2",
         ],
     ),
 ]
