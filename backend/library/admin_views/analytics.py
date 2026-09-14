@@ -7,12 +7,14 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 
 from ..models import Author, Book, SearchClickLog, Sermon
 from ..views import _language_entry
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminEngagementView(APIView):
     """Reading-engagement analytics from ReadingProgress / ChapterMarks.
 
@@ -22,7 +24,6 @@ class AdminEngagementView(APIView):
     English chapter.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         from datetime import timedelta
@@ -279,6 +280,7 @@ def _profile_summary(p) -> dict:
 RECENT_SIGNUPS_LIMIT = 25
 
 
+@requires(AdminCapability.USERS, verb=AdminVerb.VIEW)
 class AdminUsersView(APIView):
     """Account analytics: sign-up growth, locale/theme split, activation.
 
@@ -289,7 +291,6 @@ class AdminUsersView(APIView):
     ``IsAdminEmail``, and served to no one else.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         from datetime import timedelta
@@ -460,6 +461,7 @@ class AdminUsersView(APIView):
 
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminSearchView(APIView):
     """Search analytics — what readers look for, and what they don't find.
 
@@ -474,7 +476,6 @@ class AdminSearchView(APIView):
     absolutes.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         from datetime import timedelta
@@ -668,6 +669,7 @@ def _gap_work(hit: dict) -> dict | None:
     return {"type": job_type, "slug": slug, "title": hit.get(title_key) or slug}
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminSearchGapView(APIView):
     """For one unanswered query: does the library have it in another language?
 
@@ -688,7 +690,6 @@ class AdminSearchGapView(APIView):
     this is for.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         from ..languages import live_codes

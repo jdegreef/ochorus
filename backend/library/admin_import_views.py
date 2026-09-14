@@ -13,7 +13,8 @@ from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 
 from . import invalidation, upload_import
 from .audit import AdminAudited, AdminNotAudited
@@ -38,6 +39,7 @@ def _unique_author_slug(name: str) -> str:
     return slug
 
 
+@requires(AdminCapability.AUTHORS, verb=AdminVerb.ACT)
 class AdminAuthorCreateView(AdminAudited, APIView):
     """POST {name} → create a name-only stub Author.
 
@@ -46,7 +48,6 @@ class AdminAuthorCreateView(AdminAudited, APIView):
     ``AuthorBio``-shaped row so the picker can select it immediately.
     """
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.AUTHOR_CREATE
 
     def audit_entry(self, request, response):
@@ -62,6 +63,7 @@ class AdminAuthorCreateView(AdminAudited, APIView):
         return Response({**AuthorSerializer(author).data, "book_count": 0}, status=201)
 
 
+@requires(AdminCapability.PUBLISH, verb=AdminVerb.VIEW)
 class AdminImportLanguagesView(APIView):
     """GET → every language we support publishing in (not just ones with content).
 
@@ -70,7 +72,6 @@ class AdminImportLanguagesView(APIView):
     a new language. The import picker uses this fuller list instead.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         # Every language the registry knows — the import form's target list.
@@ -79,10 +80,10 @@ class AdminImportLanguagesView(APIView):
         return Response([_language_entry(code) for code in language_map()])
 
 
+@requires(AdminCapability.PUBLISH, verb=AdminVerb.ACT)
 class AdminImportParseView(AdminNotAudited, APIView):
     """POST a file (+ ``kind`` = book|sermon) → detected-chapters preview, no save."""
 
-    permission_classes = [IsAdminEmail]
     audit_exempt = (
         "Parses an upload into a preview and returns it. Nothing is written — "
         "publishing is a separate request, and that one is audited."
@@ -104,10 +105,10 @@ class AdminImportParseView(AdminNotAudited, APIView):
         return Response(result)
 
 
+@requires(AdminCapability.PUBLISH, verb=AdminVerb.ACT, language_arg="language")
 class AdminImportPublishView(AdminAudited, APIView):
     """POST reviewed content → create the Book+Chapters or Sermon; return its link."""
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.CONTENT_PUBLISH
 
     def audit_entry(self, request, response):

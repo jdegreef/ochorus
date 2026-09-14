@@ -62,10 +62,24 @@ class MeView(APIView):
         }
 
     def get(self, request):
-        from .permissions import is_admin_user
+        from .models import AdminGrant
+        from .permissions import _verified_email, is_admin_user
 
         data = self._serialize(self._profile(request))
-        data["is_admin"] = is_admin_user(request.user, request)
+        is_super = is_admin_user(request.user, request)
+        data["is_admin"] = is_super
+        data["is_super_admin"] = is_super
+        # Scoped grants drive the frontend's capability-aware nav. A super admin
+        # holds no grant rows (their power is the allowlist), so report the full
+        # set so their UI shows everything; everyone else gets exactly their grants.
+        if is_super:
+            data["roles"] = ["super_admin"]
+            data["scopes"] = "all"
+        else:
+            email = _verified_email(request.user, request)
+            scopes = AdminGrant.scopes_for(email) if email else []
+            data["scopes"] = scopes
+            data["roles"] = sorted({s["role"] for s in scopes if s["role"]})
         return Response(data)
 
     def patch(self, request):

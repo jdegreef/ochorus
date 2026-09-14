@@ -11,7 +11,8 @@ from __future__ import annotations
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 
 from ..models import AdminAction
 
@@ -43,6 +44,7 @@ def _parse_cursor(raw: str | None) -> int | None:
     return value if value > 0 else None
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminActivityView(APIView):
     """Admin actions, newest first — a page at a time, optionally one target.
 
@@ -64,7 +66,6 @@ class AdminActivityView(APIView):
     to make a trailing request that comes back empty.
     """
 
-    permission_classes = [IsAdminEmail]
 
     #: Enough to cover a working session and a couple before it.
     LIMIT = 100

@@ -17,7 +17,8 @@ from django.db.models import F
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 
 from ..views import _language_entry
 from .analytics import _profile_summary
@@ -41,10 +42,10 @@ SORTS = {
 DEFAULT_SORT = "recent"
 
 
+@requires(AdminCapability.USERS, verb=AdminVerb.VIEW)
 class AdminUserDirectoryView(APIView):
     """A searchable, paginated index of every account, each linking to its page."""
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         qs, sort, q = self._queryset(request)

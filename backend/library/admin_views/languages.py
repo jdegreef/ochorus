@@ -20,7 +20,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 
 from .. import golive, readiness
 from ..audit import AdminAudited
@@ -40,6 +41,7 @@ from ..translation import (
 from ..views import _language_entry
 
 
+@requires(AdminCapability.LANGUAGE_ADMIN, verb=AdminVerb.VIEW, language_arg="code")
 class AdminLanguageReadinessView(APIView):
     """Is this language ready to go live, and what is still missing?
 
@@ -52,7 +54,6 @@ class AdminLanguageReadinessView(APIView):
     same checks server-side rather than trusting a report a browser is holding.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request, code):
         lang = Language.objects.filter(code=code.lower()).first()
@@ -71,6 +72,7 @@ class AdminLanguageReadinessView(APIView):
         return Response(data)
 
 
+@requires(AdminCapability.LANGUAGE_ADMIN, verb=AdminVerb.ACT, language_arg="code")
 class AdminLanguageThresholdsView(AdminAudited, APIView):
     """Edit a language's readiness bar.
 
@@ -81,7 +83,6 @@ class AdminLanguageThresholdsView(AdminAudited, APIView):
     repo's seed, which never touches these fields once the row exists.
     """
 
-    permission_classes = [IsAdminEmail]
 
     audit_action = AdminAction.Action.LANGUAGE_THRESHOLDS
 
@@ -143,6 +144,7 @@ class AdminLanguageThresholdsView(AdminAudited, APIView):
         )
 
 
+@requires(AdminCapability.LANGUAGE_ADMIN, verb=AdminVerb.APPROVE, language_arg="code")
 class AdminLanguageGoLiveView(AdminAudited, APIView):
     """Take a language live: re-check, record, and trigger the rebuild.
 
@@ -158,7 +160,6 @@ class AdminLanguageGoLiveView(AdminAudited, APIView):
     `unbuildable`) with or without force.
     """
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.LANGUAGE_GO_LIVE
 
     def audit_entry(self, request, response):
@@ -188,6 +189,7 @@ class AdminLanguageGoLiveView(AdminAudited, APIView):
         return Response(result)
 
 
+@requires(AdminCapability.LANGUAGE_ADMIN, verb=AdminVerb.VIEW, language_arg="code")
 class AdminLanguageDeployCheckView(APIView):
     """Did the launch actually reach readers?
 
@@ -196,7 +198,6 @@ class AdminLanguageDeployCheckView(APIView):
     reporting one as the other is how a dashboard starts lying.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request, code):
         lang = Language.objects.filter(code=code.lower()).first()
@@ -275,6 +276,7 @@ def _clean_glossary(raw) -> dict:
     return cleaned
 
 
+@requires(AdminCapability.LANGUAGE_ADMIN, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.ACT})
 class AdminLanguageCreateView(AdminAudited, APIView):
     """Add a language to the registry — where a new language begins.
 
@@ -294,7 +296,6 @@ class AdminLanguageCreateView(AdminAudited, APIView):
     at first use — the alternative is discovering it during a paid job.
     """
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.LANGUAGE_CREATE
 
     def audit_entry(self, request, response):
@@ -429,6 +430,7 @@ class AdminLanguageCreateView(AdminAudited, APIView):
         )
 
 
+@requires(AdminCapability.LANGUAGE_ADMIN, verb=AdminVerb.ACT, language_arg="code")
 class AdminLanguageSettingsView(AdminAudited, APIView):
     """Edit a language's identity: names, Bible, glossary, direction.
 
@@ -439,7 +441,6 @@ class AdminLanguageSettingsView(AdminAudited, APIView):
     added from the admin are owned by the database.
     """
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.LANGUAGE_SETTINGS
 
     def audit_entry(self, request, response):

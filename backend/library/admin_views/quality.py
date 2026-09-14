@@ -12,7 +12,8 @@ from django.utils import timezone
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import allowed_languages, requires
 
 from .. import invalidation
 from ..audit import AdminAudited
@@ -43,6 +44,11 @@ from ..qa import (
 )
 
 
+# No `language_arg`: POST is a batch whose language is per item, so the view-level
+# gate can't scope it — GET filters, and POST/DELETE enforce, against
+# `allowed_languages` per row (a top-level language_arg would fail-open on the
+# batch, since the batch carries no top-level language).
+@requires(AdminCapability.REVIEW, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.ACT, "DELETE": AdminVerb.ACT})
 class AdminReviewQueueView(AdminAudited, APIView):
     """The AI-translation review queue.
 
@@ -63,7 +69,6 @@ class AdminReviewQueueView(AdminAudited, APIView):
     express "needs work" — a state the original booleans cannot hold.
     """
 
-    permission_classes = [IsAdminEmail]
 
     KINDS = ("book", "sermon", "bio")
     PAGE_SIZE = 25
@@ -164,6 +169,11 @@ class AdminReviewQueueView(AdminAudited, APIView):
             sel = [r for r in sel if r["kind"] == kind]
         if language:
             sel = [r for r in sel if r["language"] == language]
+        # Least privilege: a language-scoped reviewer sees only their languages'
+        # queue, not the whole library's. None = no restriction (super admin / *).
+        allowed = allowed_languages(request, AdminCapability.REVIEW, AdminVerb.VIEW)
+        if allowed is not None:
+            sel = [r for r in sel if r["language"] in allowed]
         if flagged_only:
             sel = [r for r in sel if r["flagged"]]
 
@@ -403,6 +413,12 @@ class AdminReviewQueueView(AdminAudited, APIView):
         note = (data.get("note") or "").strip()
         reviewer = getattr(request.user, "email", "") or ""
 
+        # The language scope lives here, not on the view gate: each item names its
+        # own language, so a scoped reviewer's grant is enforced per item. None =
+        # no restriction (super admin / all). An item outside scope is skipped
+        # (the batch already reports partial results), never silently applied.
+        allowed = allowed_languages(request, AdminCapability.REVIEW, AdminVerb.ACT)
+
         # Bulk approval is the one action here that can launder unreviewed
         # content at scale, so eligibility is re-asserted server-side rather
         # than trusted from the client's selection.
@@ -416,6 +432,12 @@ class AdminReviewQueueView(AdminAudited, APIView):
             kind, slug, language = raw.get("kind"), raw.get("slug"), raw.get("language")
             if kind not in self.KINDS or not slug or not language:
                 skipped.append({**raw, "reason": "kind, slug and language are required."})
+                continue
+            if allowed is not None and language not in allowed:
+                skipped.append(
+                    {"kind": kind, "slug": slug, "language": language,
+                     "reason": "outside your language scope."}
+                )
                 continue
             key = (kind, slug, language)
             if enforce_gate and key not in has_notes:
@@ -535,6 +557,9 @@ class AdminReviewQueueView(AdminAudited, APIView):
             return Response(
                 {"detail": "kind, slug and language are required."}, status=400
             )
+        allowed = allowed_languages(request, AdminCapability.REVIEW, AdminVerb.ACT)
+        if allowed is not None and language not in allowed:
+            return Response({"detail": "outside your language scope."}, status=403)
         # Reversing is lossless: ai_reviewed → ai_unreviewed restores exactly the
         # state the fixture ships, and seed_* treats these fields as create-only
         # so the next deploy will not overwrite the correction.
@@ -573,6 +598,7 @@ def _tally(rows: list[dict], field: str) -> dict:
     return dict(sorted(out.items(), key=lambda kv: (-kv[1], kv[0])))
 
 
+@requires(AdminCapability.REVIEW, verb=AdminVerb.VIEW, language_arg="language")
 class AdminReviewDetailView(APIView):
     """Source and translation, split into aligned blocks, for in-place review.
 
@@ -587,7 +613,6 @@ class AdminReviewDetailView(APIView):
     index anyway; a silently shifted diff is worse than no diff.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         q = request.query_params
@@ -782,6 +807,7 @@ def _present(check: str, items: list, dismissed: set) -> dict:
     }
 
 
+@requires(AdminCapability.REVIEW, verbs={"POST": AdminVerb.ACT, "DELETE": AdminVerb.ACT}, language_arg="language")
 class AdminVerseReviewView(AdminAudited, APIView):
     """Settle ONE flagged quotation.
 
@@ -800,7 +826,6 @@ class AdminVerseReviewView(AdminAudited, APIView):
     that safe.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def audit_action_for(self, request):
         return (
@@ -893,6 +918,7 @@ class AdminVerseReviewView(AdminAudited, APIView):
         )
 
 
+@requires(AdminCapability.AUDIT, verb=AdminVerb.VIEW)
 class AdminAuditView(APIView):
     """Content-quality and data-integrity audit for the admin dashboard.
 
@@ -906,7 +932,6 @@ class AdminAuditView(APIView):
     acting (see the skill's known-accepted list).
     """
 
-    permission_classes = [IsAdminEmail]
 
     #: The scan is a full pass over every chapter, so it is memoised on the
     #: content revision (in the key, like the public ETag): it recomputes only
@@ -1151,6 +1176,7 @@ class AdminAuditView(APIView):
         return out
 
 
+@requires(AdminCapability.AUDIT, verbs={"POST": AdminVerb.ACT, "DELETE": AdminVerb.ACT}, language_arg="language")
 class AdminAuditDismissView(AdminAudited, APIView):
     """Accept — or un-accept — one advisory quality finding.
 
@@ -1165,7 +1191,6 @@ class AdminAuditDismissView(AdminAudited, APIView):
     real broken plan day or missing chapter can never be quietly accepted away.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def audit_action_for(self, request):
         return (

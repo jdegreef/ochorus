@@ -507,7 +507,7 @@ class AdminLanguageTopicsTests(TestCase):
 
     def _get(self, code):
 
-        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+        with patch("accounts.permissions.RequireCapability.has_permission", return_value=True):
             return self.client.get(f"/api/admin/languages/{code}/")
 
     def test_present_and_todo_split_by_translated_title(self):
