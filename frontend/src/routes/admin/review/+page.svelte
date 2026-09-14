@@ -3,6 +3,7 @@
 	import { replaceState } from '$app/navigation';
 	import { ApiError } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
+	import { auth } from '$lib/auth.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import {
 		getReviewQueue,
@@ -189,6 +190,16 @@
 	function onPanelScroll(e: Event) {
 		const el = e.currentTarget as HTMLElement;
 		if (el.scrollTop + el.clientHeight >= el.scrollHeight - 24) scrolledEnough = true;
+	}
+
+	// Whether the signed-in user can APPLY an approval in this language (vs only
+	// propose it). A super admin can everywhere; a review:act reviewer proposes a
+	// provisional decision an approver later confirms. UX only — the API enforces.
+	const canApprove = (language: string) => auth.can('review', 'approve', language);
+	// The verb for an item's primary button, given who's acting and its state.
+	function approveLabel(i: ReviewItem): string {
+		if (!canApprove(i.language)) return 'Submit for approval';
+		return i.outcome?.provisional ? 'Confirm' : 'Approve';
 	}
 
 	async function decide(items: ReviewItem[], outcome: 'approved' | 'needs_work', note = '') {
@@ -391,7 +402,8 @@
 						class="btn btn-sm btn-primary ml-auto"
 						onclick={() => decide(selectedItems, 'approved')}
 					>
-						Approve {selectedItems.length} selected
+						{selectedItems.every((i) => canApprove(i.language)) ? 'Approve' : 'Submit'}
+						{selectedItems.length} selected
 					</button>
 					<button class="btn btn-sm btn-ghost" onclick={() => (selected = {})}>
 						Clear
@@ -526,6 +538,15 @@
 											{#if i.outcome?.outcome === 'needs_work'}
 												<p class="text-small mt-1 text-warning">
 													Needs work{i.outcome.note ? `: ${i.outcome.note}` : ''}
+												</p>
+											{/if}
+											{#if i.outcome?.outcome === 'approved' && i.outcome?.provisional}
+												<p class="text-small mt-1 text-accent">
+													{#if canApprove(i.language)}
+														Proposed{i.outcome.reviewer ? ` by ${i.outcome.reviewer}` : ''} — awaiting your confirmation.
+													{:else}
+														Submitted{i.outcome.reviewer ? ` by ${i.outcome.reviewer}` : ''} — awaiting an approver's confirmation.
+													{/if}
 												</p>
 											{/if}
 											{#if rowError[k]}<p class="text-small mt-2 text-warning">{rowError[k]}</p>{/if}
@@ -734,7 +755,7 @@
 															disabled={busy[k] || !scrolledEnough}
 															onclick={() => decide([i], 'approved')}
 														>
-															{busy[k] ? 'Saving…' : 'Approve'}
+															{busy[k] ? 'Saving…' : approveLabel(i)}
 														</button>
 														<button
 															class="btn btn-sm btn-ghost"
