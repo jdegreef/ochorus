@@ -25,6 +25,13 @@
 		{ img: 'murray-table', cap: 'about.capMurray', cls: 'aspect-square' }
 	];
 
+	// The printed original, shown as a box + cover + interior spread.
+	const featureShots = [
+		{ img: 'book-box', alt: 'about.featureAltBox', cls: 'col-span-2 aspect-[3/2]' },
+		{ img: 'book-cover', alt: 'about.featureAltCover', cls: 'aspect-[3/4]' },
+		{ img: 'book-interior', alt: 'about.featureAltInterior', cls: 'aspect-[3/4]' }
+	];
+
 	// AboutPage, a leaf of the WebSite — the schema counterpart every hub/leaf
 	// already carries. Names and description reuse the same i18n strings the
 	// visible page and <Seo> use, so the three can't drift.
@@ -159,30 +166,16 @@
 <section class="border-y border-border bg-surface">
 	<div class="mx-auto grid max-w-5xl items-center gap-10 px-5 py-16 sm:py-20 md:grid-cols-2 md:gap-14">
 		<div class="grid grid-cols-2 gap-4">
-			<div class="col-span-2 overflow-hidden rounded-card border border-border bg-surface-2">
-				<img
-					src="/about/book-box.jpg"
-					alt={t('about.featureAltBox')}
-					loading="lazy"
-					class="aspect-[3/2] w-full object-cover"
-				/>
-			</div>
-			<div class="overflow-hidden rounded-card border border-border bg-surface-2">
-				<img
-					src="/about/book-cover.jpg"
-					alt={t('about.featureAltCover')}
-					loading="lazy"
-					class="aspect-[3/4] w-full object-cover"
-				/>
-			</div>
-			<div class="overflow-hidden rounded-card border border-border bg-surface-2">
-				<img
-					src="/about/book-interior.jpg"
-					alt={t('about.featureAltInterior')}
-					loading="lazy"
-					class="aspect-[3/4] w-full object-cover"
-				/>
-			</div>
+			{#each featureShots as s (s.img)}
+				<div class="overflow-hidden rounded-card border border-border bg-surface-2 {s.cls}">
+					<img
+						src="/about/{s.img}.jpg"
+						alt={t(s.alt)}
+						loading="lazy"
+						class="h-full w-full object-cover"
+					/>
+				</div>
+			{/each}
 		</div>
 		<div>
 			<p
