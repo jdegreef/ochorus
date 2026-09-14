@@ -43,6 +43,9 @@ const SAME_AS_ENGLISH_OK = new Set([
 	'search_sort_title',
 	// "Sepia" is the borrowed colour-tone name, unchanged across our locales.
 	'settings_theme_sepia',
+	// The About page's ministry partner is a proper-noun organisation name, kept
+	// in its registered English form in every locale.
+	'about_partner_name',
 	// "Menu" is the natural UI term in Portuguese too (Spanish keeps its accent,
 	// "Menú", so this only exempts the pt collision).
 	'a11y_menu',
