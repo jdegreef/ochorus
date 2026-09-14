@@ -1386,6 +1386,15 @@ class ReviewOutcome(models.Model):
     note = models.TextField(blank=True)
     reviewer = models.EmailField(blank=True)
     decided_at = models.DateTimeField(auto_now_add=True)
+    # Maker-checker: a reviewer who only holds ``review:act`` records a
+    # *provisional* decision that does NOT flip ``source_type`` — the item stays
+    # in the queue until someone with ``review:approve`` (or a super admin)
+    # confirms it, which does the flip. ``confirmed_at`` unset ⇒ provisional;
+    # ``reviewer`` stays the original proposer, ``confirmed_by`` is the approver
+    # (they may differ — the two-person value of the workflow). A decision made
+    # directly by an approver is confirmed on the spot (both set to them).
+    confirmed_by = models.EmailField(blank=True)
+    confirmed_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         ordering = ["-decided_at"]
@@ -1395,6 +1404,11 @@ class ReviewOutcome(models.Model):
             ),
         ]
         indexes = [models.Index(fields=["outcome", "language"])]
+
+    @property
+    def is_provisional(self) -> bool:
+        """Recorded but not yet confirmed by an approver (so not applied)."""
+        return self.confirmed_at is None
 
     def __str__(self) -> str:
         return f"{self.kind}:{self.slug} [{self.language}] {self.outcome}"
