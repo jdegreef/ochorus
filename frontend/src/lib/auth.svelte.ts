@@ -7,6 +7,7 @@ import { listen } from './listen.svelte';
 import { theme, normalizePref } from './theme.svelte';
 import { lang } from './lang.svelte';
 import { readingSync } from './readingSync';
+import { type AdminScope, type Scopes, can as canDo, hasAnyAdminAccess } from './adminAccess';
 
 export interface Profile {
 	email: string;
@@ -18,6 +19,10 @@ export interface Profile {
 	tts_voice_uri?: string;
 	timezone?: string;
 	is_admin?: boolean;
+	is_super_admin?: boolean;
+	roles?: string[];
+	// A super admin gets the literal "all"; everyone else, their grant list.
+	scopes?: AdminScope[] | 'all';
 }
 
 /** This browser's IANA timezone (e.g. "Europe/London"), or '' if unavailable. */
@@ -48,6 +53,14 @@ class Auth {
 	displayName = $state('');
 	// Whether the signed-in user may see the /admin dashboard (from the profile).
 	isAdmin = $state(false);
+	// Scoped admin capabilities (from the profile): 'all' for a super admin, else
+	// the user's grants. Drives the capability-aware admin nav via `can()`. This
+	// is UX only — the API enforces every request regardless.
+	scopes = $state<Scopes>([]);
+	// Any admin access at all — a super admin OR at least one grant. Gates the
+	// "Admin" entry link (a scoped grantee isn't a super admin, so `isAdmin`
+	// alone would hide the whole area from them).
+	hasAdminAccess = $derived(hasAnyAdminAccess(this.scopes));
 	// True once the initial session has been resolved (or auth is unconfigured),
 	// so callers can wait before making authenticated requests rather than firing
 	// a premature unauthenticated one on a fresh page load.
@@ -67,6 +80,12 @@ class Auth {
 	 * device reading the profile in that window got the clobbered values.
 	 */
 	#profileLoaded = false;
+
+	/** Does the signed-in user hold `capability` at `verb` (in `language`, when the
+	 *  action is language-scoped)? UX only — the API authorises every request. */
+	can(capability: string, verb: string = 'view', language?: string): boolean {
+		return canDo(this.scopes, capability, verb, language);
+	}
 
 	async init() {
 		if (!browser || this.#ready) return;
@@ -105,6 +124,7 @@ class Auth {
 				this.#profileLoaded = false;
 				this.displayName = '';
 				this.isAdmin = false;
+				this.scopes = [];
 				readingSync.clearOnSignOut();
 			}
 		});
@@ -113,7 +133,10 @@ class Auth {
 	#applySession(session: { access_token: string; user: { email?: string } } | null) {
 		this.#token = session?.access_token ?? null;
 		this.user = session ? { email: session.user.email ?? '' } : null;
-		if (!session) this.isAdmin = false;
+		if (!session) {
+			this.isAdmin = false;
+			this.scopes = [];
+		}
 		readingSync.setSignedIn(!!session);
 	}
 
@@ -207,6 +230,7 @@ class Auth {
 		this.user = null;
 		this.#token = null;
 		this.isAdmin = false;
+		this.scopes = [];
 		this.displayName = '';
 		// Wipe this user's reading data from the device: on a shared browser it
 		// would otherwise be merged into the next account that signs in.
@@ -218,6 +242,7 @@ class Auth {
 		try {
 			const p = await apiFetch<Profile>('/api/auth/me/');
 			this.isAdmin = !!p.is_admin;
+			this.scopes = p.scopes ?? [];
 			this.displayName = p.display_name || '';
 			if (typeof p.theme === 'string' && p.theme) theme.set(normalizePref(p.theme));
 			if (p.font_scale) readerPrefs.setScale(p.font_scale);

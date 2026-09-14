@@ -61,7 +61,7 @@
 						<div class="truncate text-small text-muted">{auth.user.email}</div>
 					</div>
 					<div class="my-1 border-t border-border"></div>
-					{#if auth.isAdmin}
+					{#if auth.hasAdminAccess}
 						<a class="account-item" href={localizeHref('/admin')} onclick={() => (open = false)}
 							>Admin</a
 						>

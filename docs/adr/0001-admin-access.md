@@ -100,6 +100,24 @@ not a table — the rows are the truth.
   language-independent; creating a language is not scoped to an existing one), so
   a grant's language set doesn't narrow them — deliberate, not an oversight.
 
+## Frontend navigation (Phase 1, PR2)
+
+The admin rail (`routes/admin/+layout.svelte`) shows only the sections a user's
+grants open, via `auth.can(capability)` (the pure mirror in `$lib/adminAccess.ts`;
+UX only — the API still authorises every request). The "Admin" entry link is
+gated on `auth.hasAdminAccess` (super **or** any grant), not `is_admin` (which is
+super-only), so scoped grantees can reach the area.
+
+The rail has sections for `reporting`, `publish`, `review`, `audit`, `users`.
+`translate` / `content_edit` / `authors` are reached as **drill-downs** (book and
+author detail pages), and `language_admin`'s landing is the dashboard's language
+list — none has a dedicated top-level section. So every preset includes
+`reporting:view` (the Dashboard) to guarantee a navigable entry; a hand-issued
+single-capability grant for a drill-down capability is the one case that lands
+with an empty rail (reachable by URL, still API-authorised). Per-control gating
+inside a page (hiding an action above a user's verb) is a later refinement — the
+API is the enforcement in the meantime.
+
 ## Consequences
 
 - With no grants issued, behaviour is identical to today: super admins in, all
