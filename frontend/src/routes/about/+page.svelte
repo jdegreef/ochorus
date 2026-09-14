@@ -39,6 +39,52 @@
 		{ img: 'book-interior', alt: 'about.featureAltInterior', cls: 'aspect-[3/4]' }
 	];
 
+	// Lightbox: any photo opens large in a native <dialog> (free Escape-to-close,
+	// backdrop, focus handling). Prerender-safe — the dialog is empty until opened.
+	let dialogEl = $state<HTMLDialogElement | null>(null);
+	let lightbox = $state<{ src: string; cap: string } | null>(null);
+	function openLightbox(src: string, cap: string) {
+		lightbox = { src, cap };
+		dialogEl?.showModal();
+	}
+
+	// Count-up: a stat's final value is already in the DOM (so prerender / no-JS /
+	// reduced-motion all show the real number); this animates from 0 to it once,
+	// when the tile scrolls into view, then restores the exact string. Parses an
+	// optional prefix ($) and suffix (+) and keeps thousands separators.
+	function countUp(node: HTMLElement, value: string) {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		const m = value.match(/^(\D*)([\d,]+)(\D*)$/);
+		if (!m) return;
+		const [, prefix, digits, suffix] = m;
+		const target = Number(digits.replace(/,/g, ''));
+		const grouped = digits.includes(',');
+		const fmt = (v: number) => prefix + (grouped ? v.toLocaleString('en-US') : String(v)) + suffix;
+		let raf = 0;
+		const io = new IntersectionObserver(
+			(entries) => {
+				if (!entries[0].isIntersecting) return;
+				io.disconnect();
+				const start = performance.now();
+				const tick = (now: number) => {
+					const p = Math.min(1, (now - start) / 900);
+					node.textContent = fmt(Math.round(target * (1 - Math.pow(1 - p, 3))));
+					if (p < 1) raf = requestAnimationFrame(tick);
+					else node.textContent = value;
+				};
+				raf = requestAnimationFrame(tick);
+			},
+			{ threshold: 0.5 }
+		);
+		io.observe(node);
+		return {
+			destroy() {
+				io.disconnect();
+				if (raf) cancelAnimationFrame(raf);
+			}
+		};
+	}
+
 	// AboutPage, a leaf of the WebSite — the schema counterpart every hub/leaf
 	// already carries. Names and description reuse the same i18n strings the
 	// visible page and <Seo> use, so the three can't drift.
@@ -155,7 +201,7 @@
 			{#each [['7', 'about.statContinents'], [String(languageCount), 'about.statLanguages'], ['100+', 'about.statTitles'], ['90+', 'about.statSermons'], ['1,000+', 'about.statPrinted'], ['$0', 'about.statFree']] as [n, label] (label)}
 				<div class="bg-surface p-6">
 					<div class="mb-3.5 h-[3px] w-7 rounded bg-gold/80" aria-hidden="true"></div>
-					<dd class="text-h2 font-display leading-none text-gold tabular-nums">{n}</dd>
+					<dd class="text-h2 font-display leading-none text-gold tabular-nums" use:countUp={n}>{n}</dd>
 					<dt class="mt-3 text-small uppercase tracking-wider text-muted">{t(label)}</dt>
 				</div>
 			{/each}
@@ -174,16 +220,18 @@
 		<div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
 			{#each field as f (f.img)}
 				<figure class={f.span}>
-					<div
-						class="overflow-hidden rounded-card border border-border bg-surface-2 {f.aspect}"
+					<button
+						type="button"
+						onclick={() => openLightbox(`/about/${f.img}.jpg`, t(f.cap))}
+						class="group block w-full cursor-zoom-in overflow-hidden rounded-card border border-border bg-surface-2 {f.aspect} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
 					>
 						<img
 							src="/about/{f.img}.jpg"
 							alt={t(f.cap)}
 							loading="lazy"
-							class="h-full w-full object-cover"
+							class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
 						/>
-					</div>
+					</button>
 					<figcaption class="mt-2 text-small text-muted">{t(f.cap)}</figcaption>
 				</figure>
 			{/each}
@@ -196,14 +244,18 @@
 	<div class="mx-auto grid max-w-5xl items-center gap-10 px-5 py-16 sm:py-20 md:grid-cols-2 md:gap-14">
 		<div class="grid grid-cols-2 gap-4">
 			{#each featureShots as s (s.img)}
-				<div class="overflow-hidden rounded-card border border-border bg-surface-2 {s.cls}">
+				<button
+					type="button"
+					onclick={() => openLightbox(`/about/${s.img}.jpg`, t(s.alt))}
+					class="group block w-full cursor-zoom-in overflow-hidden rounded-card border border-border bg-surface-2 {s.cls} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+				>
 					<img
 						src="/about/{s.img}.jpg"
 						alt={t(s.alt)}
 						loading="lazy"
-						class="h-full w-full object-cover"
+						class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
 					/>
-				</div>
+				</button>
 			{/each}
 		</div>
 		<div>
@@ -280,3 +332,37 @@
 		</div>
 	</div>
 </section>
+
+<!-- ============================ LIGHTBOX ============================
+     Native <dialog>: Escape and backdrop close it, focus is handled by the UA.
+     Clicking outside the figure (target === the dialog) closes; the type colour
+     is fixed cream on the photo's own dark ground, like the hero. -->
+<dialog
+	bind:this={dialogEl}
+	onclose={() => (lightbox = null)}
+	onclick={(e) => {
+		if (e.target === dialogEl) dialogEl?.close();
+	}}
+	class="m-auto max-w-4xl bg-transparent p-0 backdrop:bg-black/85"
+>
+	{#if lightbox}
+		<figure class="relative m-0">
+			<button
+				type="button"
+				onclick={() => dialogEl?.close()}
+				aria-label={t('about.close')}
+				class="absolute end-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-black/60 text-white hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+			>
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+					<path d="M6 6l12 12M18 6L6 18" />
+				</svg>
+			</button>
+			<img
+				src={lightbox.src}
+				alt={lightbox.cap}
+				class="max-h-[82vh] w-auto rounded-card"
+			/>
+			<figcaption class="mt-3 text-center text-small text-white/80">{lightbox.cap}</figcaption>
+		</figure>
+	{/if}
+</dialog>
