@@ -29,6 +29,7 @@
 	let {
 		slug,
 		compact = false,
+		portrait = null,
 		children
 	}: {
 		slug: string;
@@ -43,6 +44,15 @@
 		 * nothing — measured, not assumed.
 		 */
 		compact?: boolean;
+		/**
+		 * An author portrait to stand in the chip in place of the sermon emblem,
+		 * so the preacher has a face — used by the Sermon of the week panel. Left
+		 * null (the sermon's own page) keeps the emblem, so this is purely
+		 * additive and the page header is unchanged. `pos` is the `object-position`
+		 * from `$lib/portraits`, which lands the crop on the face; the chip keeps
+		 * its tinted ring, so the photo still wears the band's hue.
+		 */
+		portrait?: { src: string; pos?: string } | null;
 		/** The sermon's own header — eyebrow, title, byline. */
 		children: Snippet;
 	} = $props();
@@ -57,14 +67,19 @@
 >
 	<div class="min-w-0 flex-1">{@render children()}</div>
 	<!-- Decorative: every caller names the sermon in the band beside it, so
-	     labelling the emblem would have a screen reader say it twice. Emblem
-	     hides itself when given no `label`, as at every other chip call site.
-	     The chip keeps its size and tint while the art loads, so nothing
-	     reflows when it arrives. -->
-	<span class="emblem-chip">
-		{#await import('$lib/components/Emblem.svelte') then Loaded}
-			<Loaded.default name={art.emblem} />
-		{/await}
+	     labelling the emblem — or the portrait that stands in for it — would have
+	     a screen reader say it twice. Emblem hides itself when given no `label`,
+	     as at every other chip call site; the portrait carries an empty alt for
+	     the same reason. The chip keeps its size and tint while the art loads, so
+	     nothing reflows when it arrives. -->
+	<span class="emblem-chip" class:portrait-chip={portrait}>
+		{#if portrait}
+			<img src={portrait.src} alt="" loading="lazy" style="object-position: {portrait.pos ?? '50% 0%'}" />
+		{:else}
+			{#await import('$lib/components/Emblem.svelte') then Loaded}
+				<Loaded.default name={art.emblem} />
+			{/await}
+		{/if}
 	</span>
 </div>
 
@@ -85,6 +100,16 @@
 		--chip-size: 3.5rem;
 		gap: 1rem;
 		padding: 1rem 1.15rem;
+	}
+	/* The portrait fills the chip the emblem otherwise centres a 66%-sized SVG
+	   in; grayscale matches AuthorTile so the same face reads the same way
+	   wherever it appears. The chip's tinted ring and hue background (`.emblem-chip`
+	   in app.css) still show at the rim, so the photo sits in the band's colour. */
+	.portrait-chip img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: grayscale(1);
 	}
 	/* Phones. At full size the chip eats a third of a 390px measure and pushed
 	   the longest title to four lines, so it shrinks — but it does NOT go away:
