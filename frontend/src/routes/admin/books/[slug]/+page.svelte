@@ -2,10 +2,10 @@
 	import { ApiError } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import ChapterTitleFix from '$lib/components/ChapterTitleFix.svelte';
+	import QueueFixButton from '$lib/components/QueueFixButton.svelte';
 	import PublishToggle from '$lib/components/PublishToggle.svelte';
 	import { type SourceType } from '$lib/library-public';
-	import { getAdminBook, setBookPublished } from '$lib/library-admin';
+	import { getAdminBook, setBookPublished, fileRetitleJob, fileBodyFixJob } from '$lib/library-admin';
 
 	let { data } = $props();
 
@@ -104,7 +104,26 @@
 											{#each c.flags as f (f)}
 												<span class="rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning">{FLAG_LABEL[f] ?? f}</span>
 											{/each}
-											<ChapterTitleFix slug={b.slug} language={l.code} order={c.order} title={c.title} />
+											<QueueFixButton
+												label="Fix title"
+												seed={c.title}
+												fieldLabel="New chapter title"
+												saveLabel="Queue fix"
+												filedLabel="fix queued"
+												submit={(next) =>
+													next === (c.title ?? '').trim()
+														? Promise.resolve(null)
+														: fileRetitleJob(b.slug, l.code, c.order, next)}
+											/>
+											<QueueFixButton
+												label="Flag text"
+												multiline
+												placeholder="What's wrong with this chapter's text?"
+												fieldLabel="What's wrong with the text"
+												saveLabel="Queue fix"
+												filedLabel="text flagged"
+												submit={(note) => fileBodyFixJob(b.slug, l.code, c.order, note)}
+											/>
 											<span class="text-small tabular-nums text-muted">{fmt(c.word_count)}</span>
 										</span>
 									</li>
