@@ -5,7 +5,10 @@
 	import { readingTime } from '$lib/reading';
 	import BookCover from './BookCover.svelte';
 
-	let { book, showAuthor = true }: { book: BookSummary; showAuthor?: boolean } = $props();
+	// `anchor`: when set, this row is the first of its author's run and carries
+	// the `#author-<slug>` target the by-author quick-nav jumps to.
+	let { book, showAuthor = true, anchor }: { book: BookSummary; showAuthor?: boolean; anchor?: string } =
+		$props();
 	const t = i18n.t;
 
 	const chapters = $derived(
@@ -15,7 +18,8 @@
 
 <a
 	href={localizeHref(`/books/${book.slug}`)}
-	class="card-tint group flex flex-wrap items-center gap-x-4 rounded-card border border-transparent px-2 py-2.5"
+	id={anchor ? `author-${anchor}` : undefined}
+	class={`card-tint group flex flex-wrap items-center gap-x-4 rounded-card border border-transparent px-2 py-2.5${anchor ? ' scroll-mt-20' : ''}`}
 	data-testid="book-row"
 >
 	<div class="w-12 shrink-0 sm:w-14">
