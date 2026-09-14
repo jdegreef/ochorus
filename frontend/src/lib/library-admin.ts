@@ -556,6 +556,10 @@ export interface ReviewOutcome {
 	note: string;
 	reviewer: string;
 	decided_at: string;
+	// Maker-checker: an approval recorded by a reviewer who lacks review:approve
+	// is provisional (not applied) until an approver confirms it.
+	provisional?: boolean;
+	confirmed_by?: string;
 }
 
 export type ReviewKind = 'book' | 'sermon' | 'bio';
