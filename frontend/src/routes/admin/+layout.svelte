@@ -14,6 +14,7 @@
 		{ href: '/admin', label: 'Dashboard', exact: true, capability: 'reporting' },
 		{ href: '/admin/import', label: 'Import document', capability: 'publish' },
 		{ href: '/admin/coverage', label: 'Coverage matrix', capability: 'reporting' },
+		{ href: '/admin/language-health', label: 'Language health', capability: 'reporting' },
 		{ href: '/admin/review', label: 'Review queue', capability: 'review' },
 		{ href: '/admin/audit', label: 'Content audit', capability: 'audit' },
 		{ href: '/admin/activity', label: 'Activity', capability: 'reporting' },

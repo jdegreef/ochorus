@@ -30,6 +30,7 @@ from .detail import (
     AdminSermonDetailView,
     AdminSermonPublishView,
 )
+from .health import AdminLanguageHealthView
 from .jobs import AdminTranslationJobsView
 from .languages import (
     AdminLanguageCreateView,
@@ -60,6 +61,7 @@ __all__ = [
     "AdminBookPublishView",
     "AdminContentEditJobsView",
     "AdminCoverageView",
+    "AdminLanguageHealthView",
     "AdminEngagementView",
     "AdminSearchGapView",
     "AdminSearchView",

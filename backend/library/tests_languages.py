@@ -405,6 +405,31 @@ class ReadinessReportTests(TestCase):
         books = {c.key: c for c in self._report(self.es).checks}["books"]
         self.assertEqual(books.status, "pass")
 
+    def test_verify_bible_false_skips_the_network_check(self):
+        # The bulk scoreboard path must not make a live Bible call per language.
+        with mock.patch.object(readiness_module, "_bible_check") as live:
+            bible = {
+                c.key: c
+                for c in readiness_module.report(self.es, verify_bible=False).checks
+            }["bible"]
+        live.assert_not_called()
+        # A configured code reads as unknown here (deferred to the real check);
+        # it neither blocks nor scores.
+        self.assertEqual(bible.status, readiness_module.UNKNOWN)
+
+    def test_verify_bible_false_still_catches_a_missing_bible(self):
+        # The cheap, local failure — no Bible configured at all — is still caught
+        # without a network call.
+        self.es.bible_code = ""
+        self.es.save()
+        with mock.patch.object(readiness_module, "_bible_check") as live:
+            bible = {
+                c.key: c
+                for c in readiness_module.report(self.es, verify_bible=False).checks
+            }["bible"]
+        live.assert_not_called()
+        self.assertEqual(bible.status, readiness_module.FAIL)
+
     def test_unknown_does_not_block_readiness(self):
         # Bible and interface strings can be unanswerable where they're asked —
         # no network, or an API container that can't see the frontend. Treating

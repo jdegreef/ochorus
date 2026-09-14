@@ -180,6 +180,39 @@ export interface AdminAuthorWithoutBio {
 export const getAdminAuthorsWithoutBio = () =>
 	apiFetch<AdminAuthorWithoutBio[]>('/api/admin/authors-without-bio/');
 
+// Per-language health: one composite score (readiness + coverage + review +
+// engagement) per language, ranked, so the dashboard can lead with where the
+// next hour of work should go. Read-only and derived — see the backend view.
+export type HealthScoreKey = 'readiness' | 'coverage' | 'review' | 'engagement';
+export interface AdminLanguageHealth {
+	code: string;
+	name: string;
+	native_name: string;
+	rtl: boolean;
+	is_source: boolean;
+	is_live: boolean;
+	/** 0–100 composite. */
+	health: number;
+	/** Each component in 0–1; the composite's ingredients. */
+	scores: Record<HealthScoreKey, number>;
+	content: {
+		published_books: number;
+		unreviewed_books: number;
+		sermons: number;
+		bios: number;
+		plans: number;
+		chapters: number;
+		words: number;
+	};
+	readiness: { ready: boolean; blocking: string[] };
+	readers: number;
+}
+
+export const getAdminLanguageHealth = () =>
+	apiFetch<{ source_published_books: number; languages: AdminLanguageHealth[] }>(
+		'/api/admin/language-health/'
+	);
+
 // Per-language drill-down: what's translated into a language + the next items
 // to work on.
 
