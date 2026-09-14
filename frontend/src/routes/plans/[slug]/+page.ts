@@ -10,7 +10,10 @@ export const trailingSlash = 'always';
 // Prerender one page per plan — the slug list comes from the API at build
 // time. The plans endpoint may lag on a fresh deploy (api + web build
 // together), so degrade to no plan pages rather than fail the whole build;
-// a later rebuild picks them up once the API is serving them.
+// a later rebuild picks them up once the API is serving them. Note: a plan
+// added by a backend-only change (plan_seed.py) skips the web build entirely
+// (Render only builds web when a frontend/ file changed), so its page needs
+// one forced web rebuild to prerender — see the deploy skill.
 export const entries: EntryGenerator = async () => {
 	try {
 		const plans = await listPlans('en');
