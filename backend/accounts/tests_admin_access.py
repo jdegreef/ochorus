@@ -153,14 +153,21 @@ class ScopeEnforcementTests(TestCase):
         self.pt.refresh_from_db()
         self.assertEqual(self.pt.source_type, self.Book.SourceType.AI_UNREVIEWED)  # NOT flipped
 
-    def test_in_scope_language_is_applied(self):
+    def test_in_scope_language_is_recorded(self):
+        from library.models import ReviewOutcome
+
         self.client.post(
             "/api/admin/review-queue/",
             {"items": [{"kind": "book", "slug": "humility", "language": "es"}], "outcome": "approved"},
             format="json",
         )
+        # In scope → the decision is recorded. This reviewer holds review:act (not
+        # approve), so it's PROVISIONAL: recorded but not yet flipped — an approver
+        # confirms the flip (see tests_provisional_review).
+        outcome = ReviewOutcome.objects.get(kind="book", slug="humility", language="es")
+        self.assertTrue(outcome.is_provisional)
         self.es.refresh_from_db()
-        self.assertEqual(self.es.source_type, self.Book.SourceType.AI_REVIEWED)
+        self.assertEqual(self.es.source_type, self.Book.SourceType.AI_UNREVIEWED)
 
     def test_get_queue_is_filtered_to_the_reviewers_languages(self):
         res = self.client.get("/api/admin/review-queue/")
