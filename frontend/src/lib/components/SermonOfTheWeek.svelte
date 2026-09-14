@@ -5,6 +5,7 @@
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { portraitPosition } from '$lib/portraits';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
 
 	const t = i18n.t;
@@ -52,7 +53,13 @@
 		     more often than it is a link, and shouldn't assume it is one. Same
 		     moves as .shelf-card:hover, mixed off the plate's own hue. -->
 		<a href={localizeHref(`/sermons/${pick.slug}`)} class="plate-link block hover:no-underline">
-			<SermonPlate slug={pick.slug} compact>
+			<SermonPlate
+				slug={pick.slug}
+				compact
+				portrait={pick.author.photo_url
+					? { src: pick.author.photo_url, pos: portraitPosition(pick.author.slug) }
+					: null}
+			>
 				<p class="eyebrow mb-2 text-accent">
 					{t('home.sermonOfWeek')}
 				</p>
