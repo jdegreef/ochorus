@@ -13,6 +13,17 @@ import type { PageLoad } from './$types';
 const AUTHOR_LIMIT = 8;
 
 /**
+ * How many topic chips the home "Browse by topic" row shows before
+ * "All topics →". Uncapped, the row printed every shelf with content — 20+
+ * pills — which on a phone became a wall that buried the whole page below it.
+ * The chip row is a teaser; the full grid lives at /topics, where the section
+ * header's link already points. Richest shelves first (members = books +
+ * sermons, title breaking ties so the cap is stable across builds), so the
+ * few that show are the most useful ones.
+ */
+const HOME_TOPIC_LIMIT = 8;
+
+/**
  * Tolerate a failed shelf at RUNTIME, never while building.
  *
  * The two contexts want opposite things from the same error. During the build
@@ -81,6 +92,13 @@ export const load: PageLoad = async () => {
 			.filter((a) => a.book_count > 0)
 			.sort((a, b) => b.book_count - a.book_count || a.name.localeCompare(b.name))
 			.slice(0, AUTHOR_LIMIT),
-		topics: topics.filter((topic) => topic.book_count > 0)
+		topics: topics
+			.filter((topic) => topic.book_count > 0)
+			.sort(
+				(a, b) =>
+					b.book_count + b.sermon_count - (a.book_count + a.sermon_count) ||
+					a.title.localeCompare(b.title)
+			)
+			.slice(0, HOME_TOPIC_LIMIT)
 	};
 };
