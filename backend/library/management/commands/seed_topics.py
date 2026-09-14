@@ -29,6 +29,7 @@ from library.models import (
 )
 from library.topic_seed import (
     TOPIC_ARTICLES,
+    TOPIC_QA,
     TOPIC_SCRIPTURE,
     TOPIC_SERMONS,
     TOPICS,
@@ -44,6 +45,7 @@ class Command(BaseCommand):
         prose, scripture = topic_translations(), topic_scripture()
         for order, (slug, title, description, book_slugs) in enumerate(TOPICS):
             ref, verse = TOPIC_SCRIPTURE.get(slug, ("", ""))
+            qa = TOPIC_QA.get(slug, [])
             topic, was_created = Topic.objects.get_or_create(
                 slug=slug,
                 defaults={
@@ -51,16 +53,26 @@ class Command(BaseCommand):
                     "description": description,
                     "scripture_ref": ref,
                     "scripture_text": verse,
+                    "qa": qa,
                     "sort_order": order,
                 },
             )
             if was_created:
                 created += 1
-            elif (topic.scripture_ref, topic.scripture_text) != (ref, verse):
-                # Backfill/refresh the epigraph on an already-seeded topic.
-                topic.scripture_ref = ref
-                topic.scripture_text = verse
-                topic.save(update_fields=["scripture_ref", "scripture_text"])
+            else:
+                # Backfill/refresh the fixture-owned English fields on an
+                # already-seeded topic (scripture and qa are researched into
+                # topic_seed and nothing else writes them, so a corrected or
+                # expanded set must reach production on the next deploy).
+                changed = []
+                if (topic.scripture_ref, topic.scripture_text) != (ref, verse):
+                    topic.scripture_ref, topic.scripture_text = ref, verse
+                    changed += ["scripture_ref", "scripture_text"]
+                if topic.qa != qa:
+                    topic.qa = qa
+                    changed.append("qa")
+                if changed:
+                    topic.save(update_fields=changed)
             # Upsert membership each run so new books join existing shelves.
             added = 0
             for i, book_slug in enumerate(book_slugs):

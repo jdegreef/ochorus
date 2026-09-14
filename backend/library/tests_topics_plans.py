@@ -487,6 +487,51 @@ class TopicTests(TestCase):
         )
 
 
+class TopicQaTests(TestCase):
+    """`Topic.qa` — editorial Questions & Answers, localized via `qa_for` like the
+    prose fields, exposed under the unified serializer key `qa`."""
+
+    def setUp(self):
+        self.topic = Topic.objects.create(
+            slug="prayer",
+            title="On Prayer",
+            qa=[
+                {"question": "What is it?", "answer": "Prayer."},
+                {"question": "Why pray?", "answer": "Because."},
+            ],
+        )
+        TopicTranslation.objects.create(
+            topic=self.topic,
+            language="sw",
+            title="Maombi",
+            qa=[{"question": "Ni nini?", "answer": "Maombi."}],
+        )
+        # A locale translated for its title but carrying no Q&A of its own.
+        TopicTranslation.objects.create(topic=self.topic, language="fr", title="Prière")
+
+    def test_qa_for_returns_the_english_set_on_the_base_row(self):
+        self.assertEqual(self.topic.qa_for("en")[0]["question"], "What is it?")
+
+    def test_qa_for_returns_the_translated_set(self):
+        self.assertEqual(
+            self.topic.qa_for("sw"), [{"question": "Ni nini?", "answer": "Maombi."}]
+        )
+
+    def test_qa_for_a_locale_without_a_set_is_empty_not_english(self):
+        # No English fallback — a reader never sees an English Q&A on a localized
+        # page — unless a coverage surface asks for it explicitly.
+        self.assertEqual(self.topic.qa_for("fr"), [])
+        self.assertEqual(self.topic.qa_for("fr", fallback=True), self.topic.qa)
+
+    def test_detail_serializer_exposes_qa_localized(self):
+        from library.serializers import TopicDetailSerializer
+
+        en = TopicDetailSerializer(self.topic, context={"language": "en"}).data
+        self.assertEqual(len(en["qa"]), 2)
+        fr = TopicDetailSerializer(self.topic, context={"language": "fr"}).data
+        self.assertEqual(fr["qa"], [])
+
+
 class AdminLanguageTopicsTests(TestCase):
     """The admin language page's topic lists — present vs hidden."""
 

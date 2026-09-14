@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { TopicDetail } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, pickQa } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
@@ -14,6 +14,7 @@
 	import Emblem from '$lib/components/Emblem.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import QandA from '$lib/components/QandA.svelte';
 	import { topicMeta } from '$lib/emblemNames';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { portraitPosition } from '$lib/portraits';
@@ -32,6 +33,15 @@
 	const authors = $derived(topic.authors ?? []);
 	const relatedTopics = $derived(topic.related_topics ?? []);
 	const meta = $derived(topicMeta(topic.slug));
+
+	// Editorial Q&A about the shelf. Content, per-language via qa_for on the API,
+	// so it's not locale-gated here — an untranslated locale simply returns [].
+	// Topics have no derived fallback (unlike books), so the second arg is empty;
+	// pickQa still centralizes the >=2 floor and the FAQPage JSON-LD. Stored shape
+	// is {question, answer}; map to {q, a} for pickQa/faqPage/QandA.
+	const qa = $derived(
+		pickQa((topic.qa ?? []).map((it) => ({ q: it.question, a: it.answer })), [])
+	);
 
 	// Books grouped by author for author-clustered topics (the Puritans), null —
 	// a flat grid — for a diverse gallery (Women of Faith). See topicBookGroups.
@@ -102,7 +112,7 @@
 	{canonical}
 	{hreflang}
 	{ogImage}
-	structuredData={[topicLd, crumbsLd]}
+	structuredData={[topicLd, crumbsLd, qa.ld].filter(Boolean)}
 />
 
 <div class="page-col px-5 py-10" style="--topic: {meta.accent}">
@@ -237,6 +247,11 @@
 			</div>
 		</section>
 	{/if}
+
+	<!-- Questions and Answers about the shelf. `qa.items` also feeds the FAQPage
+	     JSON-LD in <Seo> via the same pickQa call, so the visible answers and the
+	     structured data stay in lockstep. Shared with the book page. -->
+	<QandA items={qa.items} title="Questions and Answers" />
 
 	<!-- Related topics: the lateral "see also", so a shelf is a junction rather
 	     than a dead end. Sibling shelves that share books, most-shared first. -->

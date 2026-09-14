@@ -1670,12 +1670,14 @@ class TopicDetailSerializer(TopicListSerializer):
     related_topics = serializers.SerializerMethodField()
     scripture_ref = serializers.SerializerMethodField()
     scripture_text = serializers.SerializerMethodField()
+    qa = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
 
     class Meta(TopicListSerializer.Meta):
         fields = TopicListSerializer.Meta.fields + [
             "scripture_ref",
             "scripture_text",
+            "qa",
             "available_languages",
             "books",
             "sermons",
@@ -1702,6 +1704,9 @@ class TopicDetailSerializer(TopicListSerializer):
 
     def get_scripture_text(self, obj):
         return obj.scripture_text_for(self._language())
+
+    def get_qa(self, obj):
+        return obj.qa_for(self._language())
 
     def get_books(self, obj):
         return BookListSerializer(self._books(obj), many=True, context=self.context).data
