@@ -656,6 +656,23 @@ class BookQaShapeTests(SimpleTestCase):
                 assert_qa_wellformed(self, qa, {"question", "answer"}, path.name)
 
 
+class TopicQaShapeTests(SimpleTestCase):
+    """The editorial Q&A on ``Topic.qa`` — same ``{question, answer}`` contract as
+    books. Topics have no fixture; the English set lives in ``topic_seed.TOPIC_QA``
+    (seeded onto the row, translated in ``TopicTranslation.qa``). Every slug must
+    name a real topic, and every set must pass the shared shape guard.
+    """
+
+    def test_qa_entries_are_well_formed_plain_text(self):
+        from library.topic_seed import TOPIC_QA, TOPICS
+
+        slugs = {t[0] for t in TOPICS}
+        for slug, qa in TOPIC_QA.items():
+            with self.subTest(topic=slug):
+                self.assertIn(slug, slugs, f"TOPIC_QA[{slug}] names no topic in TOPICS")
+                assert_qa_wellformed(self, qa, {"question", "answer"}, slug)
+
+
 class AuthorFaqShapeTests(SimpleTestCase):
     """The editorial Q&A on ``Author.faq``, shipped as plain-text JSON in
     ``authors.json``. The house rule: the Q&A talks about the PERSON, never the

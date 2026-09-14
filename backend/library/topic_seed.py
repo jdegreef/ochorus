@@ -960,3 +960,182 @@ TOPIC_SCRIPTURE = {
         "faith, in purity.",
     ),
 }
+
+
+# Editorial Questions & Answers per topic, in ENGLISH — the shelf's own
+# grounded Q&A. Plain text (no HTML): seed_topics writes it to Topic.qa, the
+# reader shows a "Questions and Answers" section and the page emits FAQPage
+# JSON-LD. Translations ride TopicTranslation.qa (English first). A slug here
+# MUST name a real topic in TOPICS above. {slug: [{question, answer}, ...]}
+TOPIC_QA = {
+    "prayer": [
+        {
+            "question": "What is the On Prayer collection?",
+            "answer": "It gathers the Christian classics on the inner life of prayer — learning to pray, and learning to keep praying, from the secret place of private devotion to prevailing intercession for others. The shelf ranges from gentle beginners' guides to bracing calls to persevere, and takes as its keynote the promise of Jeremiah 33:3: \"Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not.\""
+        },
+        {
+            "question": "Which classic works on prayer are included?",
+            "answer": "Among them are Andrew Murray's \"The Inner Chamber\" and \"Lord, Teach Us to Pray,\" Spurgeon's teaching on prayer and his \"Cheque Book of the Bank of Faith,\" Jeanne Guyon's \"A Short and Easy Method of Prayer,\" E. M. Bounds on prevailing and persistent prayer, George Müller's \"Answers to Prayer,\" and Watchman Nee's \"Let Us Pray\" — a spread across centuries and traditions united by a single subject."
+        },
+        {
+            "question": "Where should a beginner start?",
+            "answer": "Andrew Murray's \"Lord, Teach Us to Pray\" and \"The Inner Chamber\" are gentle, practical starting points that assume you are learning. From there, Guyon draws the reader toward contemplative prayer of the heart, E. M. Bounds presses the urgency and cost of intercession, and George Müller's record of answered prayer builds confidence that God hears — so the shelf can be walked from first steps toward a settled life of prayer."
+        },
+        {
+            "question": "What is intercessory or prevailing prayer?",
+            "answer": "It is praying through to an answer and standing in the gap for others rather than only for oneself — the persistent, believing prayer the shelf's authors treat as every Christian's calling. E. M. Bounds and Watchman Nee especially press it: that God has chosen to work through the prayers of his people, so that intercession is real labour with real effect, not a formality."
+        },
+        {
+            "question": "What does the shelf teach about unanswered prayer?",
+            "answer": "It answers discouragement with both realism and hope. George Müller's \"Answers to Prayer\" records decades of specific requests met by God, while the whole collection urges persistence on the ground of Jeremiah 33:3 — that God invites us to call and promises to answer. The classics distinguish delay from denial and teach the believer to keep asking, aligning the will with God's rather than abandoning the request."
+        },
+        {
+            "question": "What is the \"secret place\" or inner chamber?",
+            "answer": "It is the practice of private, hidden prayer — withdrawing from the noise of the day to meet God alone, as Jesus taught his disciples to enter the closet and shut the door. Andrew Murray's \"The Inner Chamber\" is the shelf's fullest treatment of it: that the strength of all public and intercessory prayer is drawn from this unseen, personal communion with God."
+        },
+        {
+            "question": "Which authors are represented in the collection?",
+            "answer": "The shelf draws together Andrew Murray, Charles Spurgeon, Jeanne Guyon, E. M. Bounds, George Müller and Watchman Nee, among others — Reformed and Wesleyan, Victorian and modern, Western and Chinese. What unites such different writers is a shared conviction that prayer is the pulse of the Christian life and that it can be learned."
+        },
+        {
+            "question": "Why read old books on prayer today?",
+            "answer": "Because the difficulty of prayer has not changed, and these writers faced it honestly — dryness, distraction, delay, and the temptation to give up. Tested across generations, their counsel is practical rather than sentimental, and it consistently points past technique to the God who says, \"Call unto me, and I will answer thee.\" They teach not a method to master but a relationship to keep."
+        }
+    ],
+    "the-puritans": [
+        {
+            "question": "What is The Puritans collection?",
+            "answer": "It gathers the plain, searching divinity of the Puritans — doctrine pressed home upon the heart and conscience rather than left in the abstract. Bunyan's pilgrim, Owen on the sin within, Watson's warmth and Edwards' fire all appear here, held together by the conviction of Hebrews 4:12 that the word of God is living and powerful, \"sharper than any twoedged sword,\" piercing to the dividing of soul and spirit."
+        },
+        {
+            "question": "Which Puritan authors and works are included?",
+            "answer": "Among them are John Bunyan's \"The Pilgrim's Progress\" and \"Grace Abounding,\" John Owen's \"The Mortification of Sin,\" Thomas Watson's \"All Things for Good\" and his exposition of the Ten Commandments, Richard Sibbes' \"The Bruised Reed,\" Richard Baxter's \"The Reformed Pastor\" and \"A Call to the Unconverted,\" and Jonathan Edwards' \"Religious Affections,\" \"Freedom of the Will\" and selected sermons."
+        },
+        {
+            "question": "What is Puritan writing like?",
+            "answer": "It is plain in style and searching in aim: the Puritans wrote to be understood and to be obeyed, applying doctrine directly to the heart, the conscience and daily life. They combined rigorous theology with warm, experiential religion — as much concerned with how grace is felt and lived as with how it is defined — which is why their books still function as spiritual counsel and not only as historical texts."
+        },
+        {
+            "question": "Where should a newcomer to the Puritans start?",
+            "answer": "Bunyan's \"The Pilgrim's Progress\" is the natural entry — an allegory that carries the whole of Puritan spiritual experience in story form — and Richard Sibbes' \"The Bruised Reed\" is a gentle, encouraging introduction to their pastoral heart. Owen's \"The Mortification of Sin\" and Edwards' \"Religious Affections\" are more demanding and best read once the plainer works have set the tone."
+        },
+        {
+            "question": "What does Owen's Mortification of Sin teach?",
+            "answer": "Its famous charge is that the believer must \"be killing sin or it will be killing you\" — that indwelling sin is never dormant and must be put to death daily by the power of the Spirit, not merely managed or restrained. Owen is unsparing about self-deception, insisting that true mortification works from a changed heart and reliance on Christ rather than from mere outward discipline."
+        },
+        {
+            "question": "Is Puritan theology harsh or cold?",
+            "answer": "It is searching but not cold. The same tradition that examines sin so closely also produced Sibbes' \"The Bruised Reed,\" written to those afraid they are too far gone, and Watson's warm assurance in \"All Things for Good.\" The Puritans took sin seriously precisely because they took grace seriously, and their severity toward self-deception sits alongside deep tenderness toward the genuinely struggling believer."
+        },
+        {
+            "question": "What is Jonathan Edwards known for here?",
+            "answer": "Edwards represents the shelf's intellectual and revival fire. \"Religious Affections\" distinguishes true from false religious experience — asking what marks a genuine work of God in the heart — while \"Freedom of the Will\" is his major philosophical defence of God's sovereignty in salvation, and his sermons show the same theology preached for a verdict."
+        },
+        {
+            "question": "Why read the Puritans today?",
+            "answer": "Because few writers have mapped the inner Christian life — conversion, indwelling sin, assurance, holiness and joy — with such honesty and care. Their doctrine is pressed home upon the heart, and their books have walked with readers for centuries because they answer questions every serious believer still asks. They reward slow, prayerful reading rather than a hurried skim."
+        }
+    ],
+    "the-east-african-revival": [
+        {
+            "question": "What was the East African Revival?",
+            "answer": "It was a movement of spiritual awakening that ran from a hillside near Kampala through some six countries and across most of the twentieth century. Beginning among Anglican missionaries and African believers in the Rwanda–Uganda region in the 1930s, it spread through East Africa and beyond, marked by open confession of sin, reconciliation, and joyful public praise, and it shaped generations of Christians across the region."
+        },
+        {
+            "question": "What does \"Tukutendereza Yesu\" mean?",
+            "answer": "It is the Luganda phrase meaning \"We praise You, Jesus,\" the opening of the hymn that became the anthem of the revival. Sung across languages and borders, it distilled the movement's spirit — grateful, cross-centred praise for cleansing by the blood of Jesus — and it gave the whole awakening its recognisable voice wherever it spread."
+        },
+        {
+            "question": "What is \"walking in the light\"?",
+            "answer": "It is the revival's central practice, drawn from 1 John 1:7: \"if we walk in the light, as he is in the light, we have fellowship one with another, and the blood of Jesus Christ his Son cleanseth us from all sin.\" In practice it meant keeping short accounts with God and neighbour through immediate, open confession of sin and quick reconciliation, so that fellowship stayed unbroken and joy remained fresh."
+        },
+        {
+            "question": "Which books cover the revival?",
+            "answer": "The shelf includes \"A Hidden Fire\" and \"Tukutendereza,\" along with \"Clothed with Strength and Dignity,\" \"Rise Up, Men of God,\" and \"Prayer, the Pulse of Life\" — works that tell the movement's story and carry forward the teaching on the walk in the light, repentance and reconciliation that were its heart."
+        },
+        {
+            "question": "Who were the Balokole, the \"saved ones\"?",
+            "answer": "Balokole is the Luganda word for \"saved ones,\" the name given to those transformed by the revival. They were known for continual repentance, open confession, and irrepressible joy — believers who insisted that a Christian must walk continually in the light of the cross, keeping nothing hidden, and whose changed lives and fellowship carried the awakening from place to place."
+        },
+        {
+            "question": "How is the East African Revival distinctive?",
+            "answer": "Unlike a brief campaign, it was a sustained culture of revival that lasted for decades and crossed many nations, and it was largely carried by African believers themselves rather than driven from outside. Its emphasis fell not on dramatic signs but on the ordinary, costly disciplines of confession, reconciliation and daily walking in the light — which is why its influence proved so durable."
+        },
+        {
+            "question": "What can readers learn from it today?",
+            "answer": "Its enduring lesson is the practice of walking in the light: bringing sin into the open before God and others quickly, seeking reconciliation without delay, and keeping short accounts so that fellowship and joy are not lost. The revival shows that awakening is sustained less by excitement than by continual repentance and honesty within a community of believers."
+        },
+        {
+            "question": "What role did praise and fellowship play?",
+            "answer": "They were central. The revival was audibly joyful — \"Tukutendereza Yesu\" rang through its gatherings — and its life was corporate, lived out in small fellowships where believers confessed to one another and encouraged one another. Praise expressed gratitude for cleansing by the blood, and fellowship was the setting in which walking in the light was actually practised."
+        }
+    ],
+    "holy-spirit": [
+        {
+            "question": "What is The Holy Spirit collection about?",
+            "answer": "It gathers classic teaching on the person and work of the Holy Spirit — his baptism, indwelling and empowering — as the promised power for the Christian life. Its keynote is Zechariah 4:6, \"Not by might, nor by power, but by my spirit, saith the Lord of hosts\": that the Christian life and service are lived out in the Spirit's strength rather than by human effort."
+        },
+        {
+            "question": "Which books are included?",
+            "answer": "The shelf holds R. A. Torrey's \"The Baptism with the Holy Spirit\" and \"The Person and Work of the Holy Spirit,\" Andrew Murray's \"The Master's Indwelling,\" and \"Jesus Himself\" — works that together treat who the Spirit is, what he does, and how the believer enters into his fullness for daily life and for service."
+        },
+        {
+            "question": "What is the baptism or filling of the Spirit?",
+            "answer": "It is the promised enduing of the believer with power, especially for witness and service, which these authors distinguish from the new birth. R. A. Torrey in particular sets out the Spirit's baptism as a definite experience to be sought and received by faith — power not for display but for effective testimony to Christ, in keeping with Zechariah 4:6."
+        },
+        {
+            "question": "Who is the Holy Spirit?",
+            "answer": "He is the third person of the Trinity — not an impersonal force but a person to be known, grieved, obeyed and depended upon. R. A. Torrey's \"The Person and Work of the Holy Spirit\" is the shelf's fullest treatment, insisting that clarity about who the Spirit is must come before any right understanding of what he does in and through the believer."
+        },
+        {
+            "question": "What is the Spirit's \"indwelling\"?",
+            "answer": "It is the reality of Christ living in the believer by his Spirit, so that the Christian life is not imitation from without but Christ's own life lived from within. Andrew Murray's \"The Master's Indwelling\" and \"Jesus Himself\" dwell on this — that the secret of holiness and rest is the indwelling presence of the Lord himself, received and yielded to by faith."
+        },
+        {
+            "question": "Where should a reader start?",
+            "answer": "R. A. Torrey's \"The Person and Work of the Holy Spirit\" gives the doctrinal foundation — who the Spirit is and what he does — and is a clear place to begin. Andrew Murray's \"The Master's Indwelling\" then turns from doctrine to the experience of the indwelling life, so the two together move the reader from understanding to appropriation."
+        },
+        {
+            "question": "What is the difference between the Spirit in conversion and in empowering?",
+            "answer": "These authors distinguish the Spirit's work in the new birth — regenerating and indwelling every believer at conversion — from a subsequent enduing with power for service. The distinction is pastoral, not divisive: they urge Christians who are already born of the Spirit to go on to seek his fullness, so that the promised power for witness is not left unclaimed."
+        },
+        {
+            "question": "Why read older books on the Holy Spirit?",
+            "answer": "Because they keep the focus where Scripture puts it — on power for holiness and witness rather than on novelty — and they were written by men whose ministries visibly depended on the Spirit. Torrey and Murray write to lead the reader into an actual experience of the Spirit's fullness, testing every claim against Scripture and against the fruit of a changed life."
+        }
+    ],
+    "women-of-faith": [
+        {
+            "question": "What is the Women of Faith collection?",
+            "answer": "It gathers the writing and life-stories of Christian women who prayed, suffered and dared — mothers, missionaries and mystics, from Guyon's prison cell to a freed slave's pulpit. Its keynote is Proverbs 31:30, \"Favour is deceitful, and beauty is vain: but a woman that feareth the Lord, she shall be praised\" — worth measured by devotion to God rather than by appearance or acclaim."
+        },
+        {
+            "question": "Whose lives and writings does it include?",
+            "answer": "Among them are Jeanne Guyon, the French mystic imprisoned for her teaching on prayer; Amanda Berry Smith, born a slave and become an evangelist on four continents; Susanna Wesley, mother of John and Charles; Hannah Whitall Smith, author of \"The Christian's Secret of a Happy Life\"; and Amy Carmichael, missionary to India — a range of centuries, nations and callings."
+        },
+        {
+            "question": "Which classics by women are on the shelf?",
+            "answer": "They include Jeanne Guyon's \"A Short and Easy Method of Prayer,\" Amanda Berry Smith's \"Autobiography,\" Hannah Whitall Smith's \"The Christian's Secret of a Happy Life,\" \"The God of All Comfort\" and \"The Unselfishness of God,\" and Amy Carmichael's \"Things as They Are\" and \"If\" — works of prayer, testimony and missionary witness that have shaped readers far beyond their own day."
+        },
+        {
+            "question": "Who was Amanda Berry Smith?",
+            "answer": "She was born into slavery in Maryland in 1837 and became one of the most widely travelled evangelists of the holiness movement, preaching across the United States, Britain, India and West Africa. A washerwoman by trade and largely self-taught, she went as an independent missionary trusting God for her needs, and her \"Autobiography\" is a classic record of faith, hardship and joy."
+        },
+        {
+            "question": "Who was Susanna Wesley?",
+            "answer": "She was the mother of John and Charles Wesley and, through them, a formative influence on the evangelical revival. Raising a large family in a country parsonage, she gave each child ordered instruction and personal spiritual attention, and her disciplined, praying household is often remembered as a seedbed of the awakening that her sons would carry across two nations."
+        },
+        {
+            "question": "Who was Amy Carmichael?",
+            "answer": "She was a missionary to south India who founded the Dohnavur Fellowship and gave her life to rescuing children from temple servitude. Her book \"Things as They Are\" told the hard truth of the mission field when readers preferred romance, and \"If\" distilled her searching vision of Calvary love — the cost of caring for others as Christ cares."
+        },
+        {
+            "question": "Why gather a shelf of women's writing?",
+            "answer": "Because the faith of these women — their prayer, endurance and daring — has shaped the church as surely as any preacher's, and their voices are worth hearing together. From the mystic's cell to the mission compound to the family hearth, they show the life of Proverbs 31:30 lived out across centuries and continents: a worth grounded in the fear of the Lord."
+        },
+        {
+            "question": "Where should a reader begin?",
+            "answer": "Hannah Whitall Smith's \"The Christian's Secret of a Happy Life\" is a warm and accessible starting point on the life of trust; Amanda Berry Smith's \"Autobiography\" offers gripping testimony; and Amy Carmichael's \"If\" is a short, piercing meditation for those ready to be searched. Together they open the shelf's range from settled peace to costly devotion."
+        }
+    ]
+}

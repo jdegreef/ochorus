@@ -948,6 +948,13 @@ class Topic(models.Model):
     # A themed Scripture epigraph shown on the topic page (public-domain wording).
     scripture_ref = models.CharField(max_length=120, blank=True)
     scripture_text = models.TextField(blank=True)
+    # Answered Questions & Answers about the shelf: a list of {"question",
+    # "answer"} objects, both PLAIN TEXT (no HTML — rendered as escaped text, so
+    # no sanitize path). Ochorus's own writing about the topic, grounded in it;
+    # translated in the side-table like the prose above. The reader shows a
+    # "Questions and Answers" section and the page emits FAQPage JSON-LD. Empty
+    # list = nothing shown. See the `content-questions` skill.
+    qa = models.JSONField(default=list, blank=True)
     sort_order = models.PositiveIntegerField(default=0)
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -986,6 +993,17 @@ class Topic(models.Model):
     def scripture_text_for(self, language: str, *, fallback: bool = False) -> str:
         return self._localized("scripture_text", language, fallback=fallback)
 
+    def qa_for(self, language: str, *, fallback: bool = False) -> list:
+        """The editorial Q&A list in ``language``; ``[]`` when untranslated.
+
+        Rides the same per-field localization as the prose accessors above, like
+        ``Author.faq_for``: ``_localized`` treats an empty ``qa`` as "not
+        translated here" (the no-fallback rule) and, in that absent non-fallback
+        case, returns its string sentinel ``""`` — which the trailing ``or []``
+        normalizes back to the empty list this list-typed field should yield.
+        """
+        return self._localized("qa", language, fallback=fallback) or []
+
     def is_translated_into(self, language: str) -> bool:
         """Whether this shelf has a usable title in ``language``.
 
@@ -1013,6 +1031,9 @@ class TopicTranslation(models.Model):
     description = models.TextField(blank=True)
     scripture_ref = models.CharField(max_length=120, blank=True)
     scripture_text = models.TextField(blank=True)
+    # Translated Q&A — the side-table twin of Topic.qa, surfaced by qa_for().
+    # Empty until a translation ships; readers fall back to nothing, not English.
+    qa = models.JSONField(default=list, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

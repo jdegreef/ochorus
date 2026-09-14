@@ -887,6 +887,13 @@ export interface TopicAuthor {
 export interface TopicDetail extends TopicSummary {
 	scripture_ref: string;
 	scripture_text: string;
+	/**
+	 * Editorial Questions & Answers about the shelf — hand-authored, grounded in
+	 * the topic, per-language via qa_for (English first). The page shows a
+	 * "Questions and Answers" section and emits FAQPage JSON-LD; empty/absent =
+	 * nothing shown (topics have no derived fallback).
+	 */
+	qa?: { question: string; answer: string }[];
 	/** Locales this shelf exists in — it 404s elsewhere, so hreflang uses this. */
 	available_languages: string[];
 	books: BookSummary[];

@@ -81,6 +81,12 @@ and the clean entity signal, not a SERP accordion.
 - JSON valid across the touched fixtures; run `tests_fixture`, `tests_sanitize`,
   `tests_sermon_payload` (all green). Rendering is proven by #2330 — identical data
   shape, no need to re-verify the browser for a pure content batch.
+- **When the change touches BACKEND `.py` (any plumbing PR), also run
+  `uv run ruff check library/` before pushing** — CI's "Backend — lint" job runs
+  ruff and fails the whole run on a violation (an inline `import TOPICS, TOPIC_QA`
+  that ruff wanted resorted to `TOPIC_QA, TOPICS` failed the first topic-PR run).
+  The Django test command does NOT catch lint. Pure content-fixture batches skip
+  this (no .py changed).
 - It's a content-fixture change, so **ship via [[ship-content-fix]]**: the fixture
   edit moves the content digest, the prerendered pages rebuild, and `seed_sermons`
   upserts the field on deploy.
@@ -223,3 +229,45 @@ Then author Q&A (~8 per book), grounded in the book's `description` +
 `about_html`; pick books whose `about_html` is non-empty (many are blank). Books
 PR #1 = plumbing + 5 books (confessions, imitation-of-christ, the-bruised-reed,
 the-reformed-pastor, all-of-grace).
+
+## Topics (side-table Q&A, like authors) — needed PLUMBING
+
+Topics are one base row + a `TopicTranslation` side-table (no per-language rows),
+so Q&A rides BOTH, like author `faq`:
+
+- **`Topic.qa` + `TopicTranslation.qa`** JSONFields (`default=list`), items
+  `{question, answer}`. Add a **`qa_for(language)`** accessor — the list analogue
+  of `description_for`. It CANNOT route through `Topic._localized` (that defaults
+  to `""`; Q&A must default to `[]`), so write a dedicated method: English on the
+  base row, the translated set for other langs, `[]` (not English) with no
+  `fallback=True`.
+- **Serializer:** `qa = SerializerMethodField()` + `get_qa` → `obj.qa_for(self._language())`, mirroring `get_scripture_ref` (TopicDetailSerializer).
+- **Seeding:** topics have NO fixture — the English set is a `TOPIC_QA` dict in
+  `library/topic_seed.py` (a declared content root, so edits trigger rebuilds; no
+  content_sources.json change). `seed_topics` writes it into `Topic.qa` on create
+  AND **refreshes it every deploy** (fixture-owned like the scripture epigraph —
+  add `qa` to a `changed` list beside the scripture refresh, not create-only).
+  Translated qa rides `TopicTranslation.qa` (English first; wire a translated-qa
+  loader later).
+- **Writing TOPIC_QA:** author into a JSON batch `{slug: [[q, a], ...]}`, then
+  emit the Python literal with `json.dumps(obj, indent=4, ensure_ascii=False)` and
+  append `TOPIC_QA = <that>` to `topic_seed.py` — valid Python (all strings), and
+  it sidesteps the triple-quote gotcha. Verify it imports.
+- **Frontend:** topic page imports the shared `pickQa` + `<QandA>`; topics have NO
+  derived tier, so `pickQa(editorial, [])`. Add `qa.ld` to the `<Seo>`
+  structuredData. TS type: `qa?` on `TopicDetail`.
+- **Shape test:** `TopicQaShapeTests` reuses `assert_qa_wellformed` and also
+  asserts each `TOPIC_QA` slug names a real topic in `TOPICS`. `qa_for`/serializer
+  localization covered by `TopicQaTests` in `tests_topics_plans.py`.
+
+**Stacked-PR pattern (important) — sibling content-type PRs share infra.** Book
+and Topic BOTH introduce `QandA.svelte`, `pickQa` (seo.ts) and
+`assert_qa_wellformed` (tests_fixture.py). Two branches off main would duplicate
+them and collide. Instead **stack the second on the first**:
+`git rebase --onto <first-branch> main <second-branch>` — identical add/adds
+dedupe cleanly, so the stacked diff shows only the second type's own files.
+Renumber the second's migration (`0144`→`0145`) to depend on the first's
+`0144_*`, and open the PR with `--base <first-branch>` (GitHub auto-retargets to
+main when the first merges). **Merge order: Book then Topic.** Topic PR #1 =
+plumbing + 5 topics (prayer, the-puritans, the-east-african-revival, holy-spirit,
+women-of-faith).
