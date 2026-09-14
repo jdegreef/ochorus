@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { getAdminAuthorsWithoutBio } from '$lib/library-admin';
+	import QueueFixButton from '$lib/components/QueueFixButton.svelte';
+	import { getAdminAuthorsWithoutBio, fileBioJob } from '$lib/library-admin';
 
 	const res = adminResource(
 		getAdminAuthorsWithoutBio,
@@ -36,7 +37,19 @@
 					{#each authors as a (a.slug)}
 						<li class="flex items-baseline justify-between gap-3 px-4 py-3">
 							<a href="/authors/{a.slug}" class="min-w-0 truncate font-semibold text-text hover:text-accent" target="_blank" rel="noopener">{a.name} ↗</a>
-							<span class="shrink-0 text-small text-muted">{worksLabel(a)}</span>
+							<span class="flex shrink-0 items-center gap-3">
+								<span class="text-small text-muted">{worksLabel(a)}</span>
+								<QueueFixButton
+									label="Request bio"
+									multiline
+									allowEmpty
+									placeholder="Anything to emphasise? (optional)"
+									fieldLabel="What to emphasise in the bio"
+									saveLabel="Request"
+									filedLabel="bio requested"
+									submit={(note) => fileBioJob(a.slug, note)}
+								/>
+							</span>
 						</li>
 					{/each}
 				</ul>
