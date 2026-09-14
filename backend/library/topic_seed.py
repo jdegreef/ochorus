@@ -478,6 +478,34 @@ TOPICS = [
             "men-and-women-who-gave-everything-2",
         ],
     ),
+    (
+        "for-teens",
+        "For Teens",
+        "Faith for the teenage years — coming to Christ, belonging to his "
+        "people, and the courage to follow. Short, plain, honest books, and "
+        "true stories of lives that were spent for him, written for or well "
+        "within reach of younger readers.",
+        [
+            "the-body-of-christ-teens",
+            "if",
+            "around-the-wicket-gate",
+            "all-of-grace",
+            "the-way-to-god",
+            "prayer-the-pulse-of-life",
+            "he-holds-my-tomorrows",
+            "soar-like-the-eagle-3",
+            "stepping-stones-2",
+            "clothed-with-strength-and-dignity",
+            "rise-up-men-of-god-2",
+            "a-retrospect",
+            "things-as-they-are",
+            "the-life-of-trust",
+            "life-and-diary-of-david-brainerd",
+            "men-and-women-who-gave-everything-2",
+            "men-who-moved-heaven",
+            "women-who-moved-heaven-2",
+        ],
+    ),
 ]
 
 # Shelves that ship LIVE IN ENGLISH while their translations are still being
@@ -520,6 +548,7 @@ TRANSLATION_PENDING: frozenset[str] = frozenset(
         "to-the-ends-of-the-earth",
         "faith-for-the-impossible",
         "men-of-valour",
+        "for-teens",
     }
 )
 
@@ -923,5 +952,11 @@ TOPIC_SCRIPTURE = {
     "men-of-valour": (
         "1 Corinthians 16:13",
         "Watch ye, stand fast in the faith, quit you like men, be strong.",
+    ),
+    "for-teens": (
+        "1 Timothy 4:12",
+        "Let no man despise thy youth; but be thou an example of the "
+        "believers, in word, in conversation, in charity, in spirit, in "
+        "faith, in purity.",
     ),
 }

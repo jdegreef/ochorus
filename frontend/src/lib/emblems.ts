@@ -660,7 +660,21 @@ export const EMBLEM_ART = {
 		<circle cx="36" cy="10" r="1.8" fill="${GD}"/>
 		<path d="M22 9l11 3.6v9.4c0 7.4-4.6 12-11 15-6.4-3-11-7.6-11-15v-9.4z" fill="${B}"/>
 		<path d="M22 9l11 3.6v9.4c0 7.4-4.6 12-11 15z" fill="${BD}"/>
-		<path d="M22 15.5v13M16.5 21h11" stroke="${G}" stroke-width="2.1" stroke-linecap="round"/>`
+		<path d="M22 15.5v13M16.5 21h11" stroke="${G}" stroke-width="2.1" stroke-linecap="round"/>`,
+	'rooted-sapling': `
+		<circle cx="24" cy="21" r="15" fill="${GR}" fill-opacity=".2"/>
+		<circle cx="36.5" cy="10.5" r="3.3" fill="${G}"/>
+		<path d="M36.5 4.9v1.9M32 6.5l1 1.3M41 6.5l-1 1.3" stroke="${G}" stroke-width="1.7" stroke-linecap="round"/>
+		<path d="M22.6 38V18.5h2.8V38z" fill="${BR}"/>
+		<path d="M24 27.5c-3.7-.8-6.1-3.1-6.9-6.9 3.9 0 6.5 1.8 6.9 5.1z" fill="${GRD}"/>
+		<path d="M24 27.5c3.7-.8 6.1-3.1 6.9-6.9-3.9 0-6.5 1.8-6.9 5.1z" fill="${GRD}"/>
+		<path d="M24 21.8c-1.7-3.5-1.1-7 1.8-10.3 1.4 3 1.2 6-1.8 10.3z" fill="${GR}"/>
+		<path d="M24 21.8c1.7-3.5 1.1-7-1.8-10.3-1.4 3-1.2 6 1.8 10.3z" fill="${GR}"/>
+		<path d="M19.4 23.2c-3-.3-5.1-2.1-6.2-5 3.2-.5 5.5.5 6.7 3.3z" fill="${GR}"/>
+		<path d="M28.6 23.2c3-.3 5.1-2.1 6.2-5-3.2-.5-5.5.5-6.7 3.3z" fill="${GR}"/>
+		<path d="M24 38c-1.8-1.6-3.8-2.4-6-2.6M24 38c1.8-1.6 3.8-2.4 6-2.6" stroke="${BRD}" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+		<path d="M8.5 40.5h31" stroke="${B}" stroke-width="2.4" stroke-linecap="round"/>
+		<path d="M11.5 43.4c1.9-1.3 3.8-1.3 5.7 0M19 43.4c1.9-1.3 3.8-1.3 5.7 0M26.5 43.4c1.9-1.3 3.8-1.3 5.7 0" stroke="${SK}" stroke-width="1.5" stroke-linecap="round" fill="none"/>`
 } as const;
 
 export type EmblemName = keyof typeof EMBLEM_ART;

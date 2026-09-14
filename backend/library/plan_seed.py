@@ -117,4 +117,18 @@ CURATED_PLANS = [
             "men-and-women-who-gave-everything-2",
         ],
     ),
+    (
+        "first-steps-for-teens",
+        "Starting Out: Faith for Teens",
+        "A first walk with Jesus, for teenage readers. Charles Spurgeon meets "
+        "you at the gate with the plainest of invitations; a teen edition of "
+        "Watchman Nee shows what it means to belong to the body of Christ; and "
+        "Amy Carmichael's If holds up the love that following him asks — three "
+        "short books over about three weeks.",
+        [
+            "around-the-wicket-gate",
+            "the-body-of-christ-teens",
+            "if",
+        ],
+    ),
 ]

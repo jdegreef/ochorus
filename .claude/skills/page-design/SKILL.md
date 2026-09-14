@@ -217,6 +217,32 @@ lists content types, **in the same order** everywhere:
 Articles, Scripture and Quotes each failed several of these: footer-only,
 absent from the palette and from search.
 
+## Adding a topic shelf (a topic ROW, not a new route)
+
+The `/topics/[slug]` page and its chips are generated from data, so a new
+shelf is one seed edit — but three separate build-time asset sets are each
+guarded by a test that fails ONE AT A TIME, so you rediscover them the slow
+way unless you regen all three up front:
+
+- [ ] `backend/library/topic_seed.py` — the `TOPICS` tuple (`slug, title,
+      description, [book slugs]`), plus `TOPIC_SERMONS`/`TOPIC_SCRIPTURE` if
+      wanted. **Append LAST**: a plate-cover book draws the emblem of the
+      *first* topic (seed order) that holds it, so inserting earlier silently
+      re-skins existing covers. No migration — topics are seed data.
+- [ ] English-only shelf → add the slug to `TRANSLATION_PENDING` in the same
+      file, or the per-language coverage guard demands prose in all 7 langs.
+- [ ] emblem identity in `frontend/src/lib/emblemNames.ts` `TOPIC_META`
+      (`accent` + a **unique** `emblem` with ≥3 colours in `emblems.ts`
+      `EMBLEM_ART`, per `emblems.test.ts`) — then **`npm run emblem:art`**
+      (writes `backend/library/data/emblems/topics.json` + `<emblem>.svg`,
+      read by `covers.py`) **and `npm run emblem:hues`** (`emblemHues.ts`).
+      `emblemArt.test.ts` / `emblemHues.test.ts` fail on drift. Omit the
+      `TOPIC_META` entry and the shelf uses a graceful fallback emblem — no
+      art, no regen — but a flagship shelf earns its own.
+- [ ] **`node scripts/generate-topic-og.mjs`** (= `npm run og:topics`) — the
+      OG share card PNG + `static/og/topics/og-manifest.json` entry;
+      `tests_fixture.TopicShareCardTests` (two tests) fail without it.
+
 ## Copy conventions
 
 - `<title>`: `{Page} — Ochorus` — em dash with spaces, everywhere. Leaf pages
