@@ -36,7 +36,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import allowed_languages, requires
 
 from ..audit import AdminAudited
 from ..languages import entry as language_entry
@@ -111,10 +112,10 @@ def _list_open_jobs() -> list[dict]:
     return jobs
 
 
+@requires(AdminCapability.CONTENT_EDIT, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.SUGGEST}, language_arg="language")
 class AdminContentEditJobsView(AdminAudited, APIView):
     """GET the open content-edit queue; POST to file a chapter-title fix."""
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.CONTENT_EDIT_JOB
 
     def audit_entry(self, request, response):
@@ -140,6 +141,10 @@ class AdminContentEditJobsView(AdminAudited, APIView):
                 {"detail": "GitHub is unreachable — try again shortly."},
                 status=status.HTTP_502_BAD_GATEWAY,
             )
+        # Least privilege: a language-scoped user sees only their languages' jobs.
+        allowed = allowed_languages(request, AdminCapability.CONTENT_EDIT, AdminVerb.VIEW)
+        if allowed is not None:
+            jobs = [j for j in jobs if j["language"] in allowed]
         return Response({"configured": True, "jobs": jobs})
 
     def post(self, request):

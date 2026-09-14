@@ -26,15 +26,16 @@ from django.utils import timezone
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 
 from ..models import Author, Book, Chapter, Language, Plan, SearchQueryLog, Sermon
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminAttentionView(APIView):
     """Aggregated signals for the dashboard's attention hub. Ranked by the client."""
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         return Response(
@@ -100,6 +101,7 @@ class AdminAttentionView(APIView):
         }
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminUnpublishedView(APIView):
     """The unpublished books and sermons behind the dashboard's unpublished
     counts — the worklist its "unpublished books/sermons" chips link to.
@@ -110,7 +112,6 @@ class AdminUnpublishedView(APIView):
     pagination: unpublished work is a bounded backlog, not a growing log.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         books = [
@@ -141,6 +142,7 @@ class AdminUnpublishedView(APIView):
         return Response({"books": books, "sermons": sermons})
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminAuthorsWithoutBioView(APIView):
     """Authors with an empty short bio — the worklist behind the "authors
     without a bio" chip, feeding the write-biography workflow.
@@ -151,7 +153,6 @@ class AdminAuthorsWithoutBioView(APIView):
     content the author carries, so the highest-value gaps come first.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         # Count distinct WORKS, not editions: `books__slug` collapses the same

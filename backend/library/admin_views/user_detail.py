@@ -17,7 +17,8 @@ from __future__ import annotations
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 
 from ..views import _language_entry
 from .analytics import THEME_LABELS, _provider_label
@@ -169,6 +170,7 @@ def _favorite_labels(pairs):
     return labels
 
 
+@requires(AdminCapability.USERS, verb=AdminVerb.VIEW)
 class AdminUserDetailView(APIView):
     """One reader: profile, reading, favorites, plans, streak, and a timeline.
 
@@ -177,7 +179,6 @@ class AdminUserDetailView(APIView):
     is a separate, audited endpoint).
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request, uid):
         from accounts.geo import country_for_timezone, country_name

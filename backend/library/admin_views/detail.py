@@ -6,7 +6,8 @@ from django.db.models import Count, Sum
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 
 from .. import invalidation
 from ..audit import AdminAudited
@@ -15,6 +16,7 @@ from ..qa import chapter_flags
 from ..views import _language_entry
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminBookDetailView(APIView):
     """A single canonical work across all its languages, for the admin.
 
@@ -23,7 +25,6 @@ class AdminBookDetailView(APIView):
     English is listed first.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request, slug):
         books = list(Book.objects.filter(slug=slug).select_related("author"))
@@ -85,6 +86,7 @@ class AdminBookDetailView(APIView):
         )
 
 
+@requires(AdminCapability.PUBLISH, verb=AdminVerb.ACT, language_arg="language")
 class _EditionPublishView(AdminAudited, APIView):
     """Publish or unpublish one language edition of a per-language work.
 
@@ -104,7 +106,6 @@ class _EditionPublishView(AdminAudited, APIView):
     a bare ``save()`` would re-tokenise every chapter/body for the search index.
     """
 
-    permission_classes = [IsAdminEmail]
     model = None
     target_kind = ""
 
@@ -166,6 +167,7 @@ class AdminSermonPublishView(_EditionPublishView):
     target_kind = "sermon"
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminSermonDetailView(APIView):
     """A single canonical sermon across all its languages, for the admin.
 
@@ -174,7 +176,6 @@ class AdminSermonDetailView(APIView):
     the publish state the toggle acts on. English is listed first.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request, slug):
         sermons = list(Sermon.objects.filter(slug=slug).select_related("author"))
@@ -204,6 +205,7 @@ class AdminSermonDetailView(APIView):
         )
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminExportView(APIView):
     """Download the full content inventory as JSON (default) or CSV.
 
@@ -212,7 +214,6 @@ class AdminExportView(APIView):
     for offline analysis or reporting. Admin-gated.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         data = self._inventory()

@@ -503,7 +503,7 @@ class AdminLanguageReadinessEndpointTests(TestCase):
         """
         from unittest.mock import patch
 
-        perm = patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+        perm = patch("accounts.permissions.RequireCapability.has_permission", return_value=True)
         bible = mock.patch.object(
             readiness_module,
             "_bible_check",
@@ -630,7 +630,7 @@ class GoLiveTests(TestCase):
         """Admin permission, a stubbed Bible check, and a chosen readiness verdict."""
         from unittest.mock import patch
 
-        perm = patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+        perm = patch("accounts.permissions.RequireCapability.has_permission", return_value=True)
         checks = [] if ready else [
             readiness_module.Check("books", "Books", readiness_module.FAIL, "0 books — needs 5.")
         ]
@@ -688,7 +688,7 @@ class GoLiveTests(TestCase):
             0, 120, forceable=False,
         )
         rep = readiness_module.Report("ar", [ui_fail])
-        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+        with patch("accounts.permissions.RequireCapability.has_permission", return_value=True):
             with mock.patch.object(readiness_module, "report", return_value=rep):
                 res = self.client.post(
                     "/api/admin/languages/ar/go-live/", {"force": True}, format="json"
@@ -762,7 +762,7 @@ class GoLiveTests(TestCase):
     def test_english_cannot_be_launched(self):
         from unittest.mock import patch
 
-        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+        with patch("accounts.permissions.RequireCapability.has_permission", return_value=True):
             res = self.client.post("/api/admin/languages/en/go-live/", {}, format="json")
         self.assertEqual(res.status_code, 400)
 
@@ -782,7 +782,7 @@ class DeployCheckTests(TestCase):
     def _perm(self):
         from unittest.mock import patch
 
-        return patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+        return patch("accounts.permissions.RequireCapability.has_permission", return_value=True)
 
     def test_unknown_without_a_site_url_rather_than_a_guess(self):
         with self.settings(PUBLIC_SITE_URL=""):
@@ -921,7 +921,7 @@ class AdminDashboardLanguageListTests(TestCase):
     def _rows(self):
         from unittest.mock import patch
 
-        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+        with patch("accounts.permissions.RequireCapability.has_permission", return_value=True):
             return {r["code"]: r for r in self.client.get("/api/admin/stats/").data["languages"]}
 
     def test_a_language_with_no_content_is_still_listed(self):
@@ -977,7 +977,7 @@ class AdminAddLanguageTests(TestCase):
         """
         from unittest.mock import patch
 
-        perm = patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True)
+        perm = patch("accounts.permissions.RequireCapability.has_permission", return_value=True)
         fetch = patch(
             # The seam is the module that CALLS it, so this names languages.py —
             # where the create view lives now that the language-registry
@@ -1028,7 +1028,7 @@ class AdminAddLanguageTests(TestCase):
 
         self._post()
         languages_module.invalidate()
-        with patch("accounts.permissions.IsAdminEmail.has_permission", return_value=True):
+        with patch("accounts.permissions.RequireCapability.has_permission", return_value=True):
             rows = {r["code"] for r in self.client.get("/api/admin/stats/").data["languages"]}
         self.assertIn("zz", rows)
 

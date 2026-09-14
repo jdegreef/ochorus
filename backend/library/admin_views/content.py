@@ -13,7 +13,8 @@ from django.db.models import Count, F, Q, Sum
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 
 from ..languages import known_codes
 from ..models import (
@@ -32,10 +33,10 @@ from ..views import _language_entry
 from .languages import language_settings
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminStatsView(APIView):
     """Library-wide content statistics for the admin dashboard."""
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         return Response(
@@ -258,6 +259,7 @@ class AdminStatsView(APIView):
 TODO_LIMIT = 10
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminLanguageDetailView(APIView):
     """Per-language drill-down: what's translated into a language, and the next
     few items to translate next.
@@ -269,7 +271,6 @@ class AdminLanguageDetailView(APIView):
     so it has no todo lists.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request, code):
         code = code.lower()
@@ -564,6 +565,7 @@ class AdminLanguageDetailView(APIView):
         }
 
 
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminCoverageView(APIView):
     """Translation-coverage matrices: every canonical work (row) × language
     (column), so gaps across the whole library are visible at a glance.
@@ -577,7 +579,6 @@ class AdminCoverageView(APIView):
     row's ``cells``.
     """
 
-    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         codes = self._language_codes()
