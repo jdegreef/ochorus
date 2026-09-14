@@ -55,7 +55,17 @@ Per English sermon, **four answered questions**:
 
 A tiny apply script per batch (insert-after-`summary` + `render_rows`) is the clean
 tool; keep the questions in triple-quoted Python strings so the many `'`/`"` don't
-need escaping.
+need escaping. Two gotchas that cost a re-run each:
+
+- **A `"""…"""` string may not END in a `"`.** A question like
+  `"""…right...?""""` closes the triple-quote and leaves a dangling `"`
+  (SyntaxError: unterminated string). If a question naturally ends on a quoted
+  phrase, reword so the string ends on a letter/`?`/`.`, not `"`.
+- **A long sermon's `body_text` can exceed the Read tool's ~25k-token cap.** Dump
+  each sermon to its own scratch file (not one big file), and for the giants
+  (Edwards' *Excellency of Christ*, Finney) split the body at a sentence boundary
+  near the midpoint and read the halves — you must read the whole thing to ground
+  the answers, so don't skim the tail.
 
 ## Rendering (already built, don't re-add)
 
