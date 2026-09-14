@@ -3,12 +3,27 @@
 	import { hreflangAll, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { LIVE_LOCALES } from '$lib/live-locales.generated';
 	import Seo from '$lib/components/Seo.svelte';
 
 	const t = i18n.t;
 
 	const path = '/about';
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
+
+	// The number of languages a reader can actually read Ochorus in — the LIVE
+	// (advertised) locales, so the stat is always true and never hand-counted.
+	const languageCount = LIVE_LOCALES.length;
+
+	// The "from the page to the field" gallery. Captions double as each image's
+	// accessible name — the figure describes the photo, so alt repeats it rather
+	// than inventing a second description that could drift.
+	const field = [
+		{ img: 'handover', cap: 'about.capHandover', cls: 'row-span-2 aspect-[3/4]' },
+		{ img: 'school', cap: 'about.capSchool', cls: 'sm:col-span-2 aspect-[3/2]' },
+		{ img: 'soar', cap: 'about.capSoar', cls: 'aspect-square' },
+		{ img: 'murray-table', cap: 'about.capMurray', cls: 'aspect-square' }
+	];
 
 	// AboutPage, a leaf of the WebSite — the schema counterpart every hub/leaf
 	// already carries. Names and description reuse the same i18n strings the
@@ -31,44 +46,215 @@
 	description={t('about.metaDescription')}
 	{canonical}
 	hreflang={hreflangAll(path)}
-	ogImage="{SITE_URL}/og/default.png"
+	ogImage="{SITE_URL}/og/about.png"
 	structuredData={[aboutLd]}
 />
 
-<div class="reading-page">
-	<p class="eyebrow mb-2 text-accent">{t('nav.about')}</p>
-	<h1 class="text-h1 mb-8">{t('about.title')}</h1>
-
-	<div class="space-y-5 text-body text-muted">
-		<h2 class="text-h2 text-text">{t('about.heading')}</h2>
-		<p>{t('about.p1')}</p>
-		<p>{t('about.p2')}</p>
-		<p>{t('about.p3')}</p>
-		<p>{t('about.p4')}</p>
-
-		<h2 class="text-h2 text-text pt-4">{t('about.outreachHeading')}</h2>
-		<p>{t('about.outreachP1')}</p>
-		<p>{t('about.outreachP2')}</p>
+<!-- ============================= HERO =============================
+     A photo band: text sits on the ministry's own photograph, so the type
+     colour is a fixed cream over a dark scrim rather than a theme token —
+     the ground here is the photo, identical in every site theme. -->
+<section class="relative isolate overflow-hidden bg-black">
+	<img
+		src="/about/hero.jpg"
+		srcset="/about/hero-800.jpg 900w, /about/hero.jpg 1600w"
+		sizes="100vw"
+		alt={t('about.heroAlt')}
+		fetchpriority="high"
+		width="1600"
+		height="1340"
+		class="absolute inset-0 -z-10 h-full w-full object-cover object-top opacity-60"
+	/>
+	<div
+		class="absolute inset-0 -z-10 bg-gradient-to-b from-black/40 via-black/25 to-black/85"
+		aria-hidden="true"
+	></div>
+	<div class="mx-auto flex min-h-[62vh] max-w-5xl flex-col justify-end px-5 py-16 sm:py-24">
+		<p class="eyebrow mb-3 text-gold">{t('about.title')}</p>
+		<!-- The page <h1>. Light on the photo scrim, so the colour is theme-fixed
+		     white (the ground is the photograph, not a theme surface). -->
+		<h1 class="text-h1 max-w-[16ch] text-white">{t('about.heading')}</h1>
+		<p class="mt-4 max-w-2xl text-body text-white/90">{t('about.p1')}</p>
+		<p class="mt-6 text-small uppercase tracking-[0.12em] text-gold">{t('about.heroMeta')}</p>
 	</div>
+</section>
 
-	<!-- Rooted in Scripture: three verses as callouts. Public-domain wording
-	     (WEB in English); the es/sw/lg renderings await a native-review pass. -->
-	<section class="mt-12">
-		<h2 class="text-h2 text-text mb-5">{t('about.scripturesHeading')}</h2>
-		<div class="space-y-4">
-			{#each [['about.scripture1', 'about.scripture1Ref'], ['about.scripture2', 'about.scripture2Ref'], ['about.scripture3', 'about.scripture3Ref']] as [text, ref] (ref)}
-				<figure class="rounded-card border-s-2 border-gold bg-surface-2 py-4 pe-4 ps-5">
-					<blockquote class="font-display text-body text-text">
-						“{t(text)}”
-					</blockquote>
-					<figcaption class="mt-2 text-small text-muted">{t(ref)}</figcaption>
+<!-- ============================= STORY ============================= -->
+<section class="bg-bg">
+	<div class="mx-auto max-w-2xl px-5 py-16 sm:py-20">
+		<p class="eyebrow mb-4 text-accent">{t('about.storyEyebrow')}</p>
+		<hr class="mb-6 h-[3px] w-14 border-0 bg-gold" />
+		<p class="text-h3 font-display leading-snug text-text">{t('about.p2')}</p>
+		<div class="mt-5 space-y-4 text-body text-muted">
+			<p>{t('about.p3')}</p>
+			<p>{t('about.p4')}</p>
+		</div>
+	</div>
+</section>
+
+<!-- ======================= VISION & PILLARS ======================= -->
+<section class="border-y border-border bg-surface">
+	<div class="mx-auto grid max-w-5xl gap-10 px-5 py-16 sm:py-20 md:grid-cols-2 md:gap-14">
+		<div>
+			<p class="eyebrow mb-4 text-accent">{t('about.visionEyebrow')}</p>
+			<p class="text-h2 font-display leading-tight text-text">{t('about.visionQuote')}</p>
+		</div>
+		<div class="space-y-6 self-center">
+			{#each [['about.pillar1Title', 'about.pillar1Body'], ['about.pillar2Title', 'about.pillar2Body'], ['about.pillar3Title', 'about.pillar3Body']] as [title, body] (title)}
+				<div>
+					<p class="eyebrow mb-1.5 text-gold">{t(title)}</p>
+					<p class="text-body text-muted">{t(body)}</p>
+				</div>
+			{/each}
+		</div>
+	</div>
+</section>
+
+<!-- ============================= STATS ============================= -->
+<section class="bg-surface-2">
+	<div class="mx-auto max-w-5xl px-5 py-16 sm:py-20">
+		<div class="mb-10 max-w-2xl">
+			<p class="eyebrow mb-3 text-gold">{t('about.statsEyebrow')}</p>
+			<h2 class="text-h2 text-text">{t('about.statsHeading')}</h2>
+			<p class="mt-3 text-body text-muted">{t('about.statsIntro')}</p>
+		</div>
+		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-card border border-border bg-border md:grid-cols-4">
+			{#each [[String(languageCount), 'about.statLanguages'], ['$0', 'about.statFree'], ['2021', 'about.statFounded'], ['2', 'about.statContinents']] as [n, label] (label)}
+				<div class="bg-surface p-6">
+					<dd class="text-h1 font-display leading-none text-gold">{n}</dd>
+					<dt class="mt-3 text-small uppercase tracking-wider text-muted">{t(label)}</dt>
+				</div>
+			{/each}
+		</dl>
+	</div>
+</section>
+
+<!-- ===================== FROM PAGE TO FIELD ===================== -->
+<section class="bg-bg">
+	<div class="mx-auto max-w-5xl px-5 py-16 sm:py-20">
+		<div class="mb-10 max-w-2xl">
+			<p class="eyebrow mb-3 text-accent">{t('about.outreachHeading')}</p>
+			<h2 class="text-h2 text-text">{t('about.fieldHeading')}</h2>
+			<p class="mt-3 text-body text-muted">{t('about.outreachP1')}</p>
+		</div>
+		<div class="grid auto-rows-[minmax(0,1fr)] grid-cols-2 gap-4 sm:grid-cols-3">
+			{#each field as f (f.img)}
+				<figure class={f.cls}>
+					<div class="h-full overflow-hidden rounded-card border border-border bg-surface-2">
+						<img
+							src="/about/{f.img}.jpg"
+							alt={t(f.cap)}
+							loading="lazy"
+							class="h-full w-full object-cover"
+						/>
+					</div>
+					<figcaption class="mt-2 text-small text-muted">{t(f.cap)}</figcaption>
 				</figure>
 			{/each}
 		</div>
-	</section>
-
-	<div class="mt-10 flex flex-wrap gap-3">
-		<a href={localizeHref('/books')} class="btn btn-primary">{t('home.browseLibrary')}</a>
-		<a href={localizeHref('/contact')} class="btn btn-ghost">{t('about.getInTouch')}</a>
 	</div>
-</div>
+</section>
+
+<!-- ==================== FEATURE: written & printed ==================== -->
+<section class="border-y border-border bg-surface">
+	<div class="mx-auto grid max-w-5xl items-center gap-10 px-5 py-16 sm:py-20 md:grid-cols-2 md:gap-14">
+		<div class="grid grid-cols-2 gap-4">
+			<div class="col-span-2 overflow-hidden rounded-card border border-border bg-surface-2">
+				<img
+					src="/about/book-box.jpg"
+					alt={t('about.featureAltBox')}
+					loading="lazy"
+					class="aspect-[3/2] w-full object-cover"
+				/>
+			</div>
+			<div class="overflow-hidden rounded-card border border-border bg-surface-2">
+				<img
+					src="/about/book-cover.jpg"
+					alt={t('about.featureAltCover')}
+					loading="lazy"
+					class="aspect-[3/4] w-full object-cover"
+				/>
+			</div>
+			<div class="overflow-hidden rounded-card border border-border bg-surface-2">
+				<img
+					src="/about/book-interior.jpg"
+					alt={t('about.featureAltInterior')}
+					loading="lazy"
+					class="aspect-[3/4] w-full object-cover"
+				/>
+			</div>
+		</div>
+		<div>
+			<p
+				class="eyebrow mb-4 inline-block rounded-full border border-border px-3 py-1 text-gold"
+			>
+				{t('about.featureTag')}
+			</p>
+			<h2 class="text-h2 text-text">{t('about.featureHeading')}</h2>
+			<div class="mt-4 space-y-4 text-body text-muted">
+				<p>{t('about.featureP1')}</p>
+				<p>{t('about.featureP2')}</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ========================== SCRIPTURE ==========================
+     Public-domain wording (WEB in English); other renderings await a native
+     review pass. Kept from the previous page, unchanged. -->
+<section class="bg-bg">
+	<div class="mx-auto max-w-5xl px-5 py-16 sm:py-20">
+		<p class="eyebrow mb-6 text-accent">{t('about.scripturesHeading')}</p>
+		<div class="grid gap-5 md:grid-cols-3">
+			{#each [['about.scripture1', 'about.scripture1Ref'], ['about.scripture2', 'about.scripture2Ref'], ['about.scripture3', 'about.scripture3Ref']] as [text, ref] (ref)}
+				<figure class="rounded-card border-s-2 border-gold bg-surface py-5 pe-4 ps-5 shadow-sm">
+					<blockquote class="font-display text-body italic text-text">
+						“{t(text)}”
+					</blockquote>
+					<figcaption class="mt-3 text-small uppercase tracking-wider text-gold">
+						{t(ref)}
+					</figcaption>
+				</figure>
+			{/each}
+		</div>
+	</div>
+</section>
+
+<!-- =========================== PARTNER =========================== -->
+<section class="border-y border-border bg-surface">
+	<div class="mx-auto max-w-5xl px-5 py-16 sm:py-20">
+		<p class="eyebrow mb-3 text-accent">{t('about.partnerEyebrow')}</p>
+		<h2 class="mb-8 max-w-[22ch] text-h2 text-text">{t('about.partnerHeading')}</h2>
+		<div class="flex max-w-3xl gap-5 rounded-card border border-border bg-surface-2 p-6 sm:p-8">
+			<span
+				class="font-display grid h-12 w-12 shrink-0 place-items-center rounded-full bg-bg text-h3 text-gold"
+				aria-hidden="true">✦</span
+			>
+			<div>
+				<h3 class="text-h3 font-display text-text">{t('about.partnerName')}</h3>
+				<p class="mt-2 text-body text-muted">{t('about.partnerBody')}</p>
+				<p class="mt-3">
+					<a
+						href="https://ugandapartnership.com"
+						target="_blank"
+						rel="noopener"
+						class="text-small text-accent underline underline-offset-2">ugandapartnership.com</a
+					>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ============================= CTA ============================= -->
+<section class="bg-surface-2">
+	<div class="mx-auto max-w-3xl px-5 py-16 text-center sm:py-20">
+		<p class="eyebrow mb-3 text-gold">{t('about.ctaEyebrow')}</p>
+		<h2 class="text-h2 mx-auto max-w-[18ch] text-text">{t('about.ctaHeading')}</h2>
+		<p class="mx-auto mt-4 max-w-xl text-body text-muted">{t('about.ctaBody')}</p>
+		<div class="mt-8 flex flex-wrap justify-center gap-3">
+			<a href={localizeHref('/books')} class="btn btn-primary">{t('home.browseLibrary')}</a>
+			<a href={localizeHref('/contact')} class="btn btn-ghost">{t('about.getInTouch')}</a>
+		</div>
+	</div>
+</section>
