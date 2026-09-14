@@ -1,0 +1,45 @@
+{
+ "kind": "sermon",
+ "slug": "the-circumcision-of-the-heart",
+ "language": "pt",
+ "job_issue": null,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 9:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 2:29",
+   "status": "self_rendered"
+  }
+ ]
+}
