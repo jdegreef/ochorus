@@ -21,14 +21,25 @@
 	// The outreach gallery. Uniform aspect per row (two wide, three portrait,
 	// three landscape) so the grid never leaves ragged gaps; `span` carries the
 	// column count at mobile (2-col) and sm+ (6-col). Captions double as alt text.
-	const field = [
+	// `pos` overrides the object-position for a portrait source whose subject sits
+	// off-centre, so object-cover keeps them in frame instead of trimming to centre.
+	const field: { img: string; cap: string; span: string; aspect: string; pos?: string }[] = [
 		{ img: 'gate', cap: 'about.capGate', span: 'col-span-2 sm:col-span-3', aspect: 'aspect-video' },
 		{ img: 'matugga-read', cap: 'about.capMatugga', span: 'col-span-2 sm:col-span-3', aspect: 'aspect-video' },
 		{ img: 'handover', cap: 'about.capHandover', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[3/4]' },
 		{ img: 'teacher-standing', cap: 'about.capTeacher', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[3/4]' },
 		{ img: 'staff-seated', cap: 'about.capStaff', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[3/4]' },
 		{ img: 'school', cap: 'about.capSchool', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[4/3]' },
-		{ img: 'soar', cap: 'about.capSoar', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[4/3]' },
+		// The source is a near-square 3:4 portrait: his face fills the top and the
+		// books the bottom, so a 4:3 crop trimmed both. A 15/14 box holds the whole
+		// subject, and a top-biased position keeps his full face in frame.
+		{
+			img: 'soar',
+			cap: 'about.capSoar',
+			span: 'col-span-1 sm:col-span-2',
+			aspect: 'aspect-[15/14]',
+			pos: 'object-[center_30%]'
+		},
 		{ img: 'murray-table', cap: 'about.capMurray', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[4/3]' }
 	];
 
@@ -229,7 +240,7 @@
 							src="/about/{f.img}.jpg"
 							alt={t(f.cap)}
 							loading="lazy"
-							class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+							class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100 {f.pos ?? ''}"
 						/>
 					</button>
 					<figcaption class="mt-2 text-small text-muted">{t(f.cap)}</figcaption>
