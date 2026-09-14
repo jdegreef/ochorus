@@ -13,7 +13,7 @@ from django.test import SimpleTestCase
 from django.urls import get_resolver
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import RequireCapability
+from accounts.permissions import IsAdminEmail, RequireCapability
 
 _VALID_CAPS = set(AdminCapability.values)
 _VALID_VERBS = set(AdminVerb.values)
@@ -47,8 +47,14 @@ class AdminAccessCoverageTests(SimpleTestCase):
         problems = []
         for route, cls in _admin_views():
             gate = getattr(cls, "permission_classes", None) or []
+            # A super-admin-only endpoint (IsAdminEmail — the ADMIN_EMAILS
+            # allowlist) is a valid, STRICTER gate that needs no capability
+            # declaration: it's how deliberately-undelegated actions like the
+            # team/access console are locked to the owner.
+            if IsAdminEmail in gate:
+                continue
             if RequireCapability not in gate:
-                problems.append(f"{route} ({cls.__name__}): not gated by RequireCapability")
+                problems.append(f"{route} ({cls.__name__}): not gated by RequireCapability or IsAdminEmail")
                 continue
             cap = getattr(cls, "admin_capability", None)
             if cap not in _VALID_CAPS:

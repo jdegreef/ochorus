@@ -1,4 +1,5 @@
 import { apiFetch } from './api';
+import type { AdminScope } from './adminAccess';
 import type { FavoriteKind } from './favorites.svelte';
 import type { Language, SearchType, SourceType } from './library-public';
 import type { WorkKind } from './reading-schema';
@@ -99,6 +100,46 @@ export interface AdminAttentionSignals {
 	languages_missing_books: { code: string; name: string; sermons: number }[];
 	searches: { total_30d: number; zero_30d: number; zero_rate: number };
 }
+
+// The team / access console — super admin only. Grant/revoke scoped admin
+// access; the backend enforces that only super admins can reach these.
+export interface TeamMember {
+	email: string;
+	scopes: AdminScope[];
+	roles: string[];
+}
+export interface AdminTeam {
+	members: TeamMember[];
+	super_admins: string[];
+	roles: string[];
+	capabilities: [string, string][];
+	verbs: [string, string][];
+	languages: string[];
+}
+export const getAdminTeam = () => apiFetch<AdminTeam>('/api/admin/team/');
+
+/** Grant a role (or a single capability+verb) to an email, scoped to languages. */
+export const grantAdminAccess = (payload: {
+	email: string;
+	role?: string;
+	capability?: string;
+	verb?: string;
+	languages?: string[];
+}) =>
+	apiFetch<{ email: string; scopes: AdminScope[] }>('/api/admin/team/', {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
+
+/** Revoke a grantee's access — all of it, or just one capability. */
+export const revokeAdminAccess = (email: string, capability?: string) => {
+	const q = new URLSearchParams({ email });
+	if (capability) q.set('capability', capability);
+	return apiFetch<{ email: string; revoked: number; scopes: AdminScope[] }>(
+		`/api/admin/team/?${q}`,
+		{ method: 'DELETE' }
+	);
+};
 
 export const getAdminAttention = () =>
 	apiFetch<AdminAttentionSignals>('/api/admin/attention/');

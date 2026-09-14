@@ -1601,6 +1601,8 @@ class AdminAction(models.Model):
         REVIEW_UNDO = "review.undo", "Review decision undone"
         AUDIT_DISMISS = "audit.dismiss", "Audit finding accepted as known"
         AUDIT_RESTORE = "audit.restore", "Audit finding acceptance undone"
+        ROLE_GRANT = "role.grant", "Admin access granted"
+        ROLE_REVOKE = "role.revoke", "Admin access revoked"
 
     action = models.CharField(max_length=32, choices=Action.choices)
     #: Who, by email — the identity `IsAdminEmail` gates on. Blank only when a
