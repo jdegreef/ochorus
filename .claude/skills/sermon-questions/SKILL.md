@@ -171,3 +171,55 @@ from a `"same_as": []` gaining a trailing comma) and all 91 rows intact.
 **Cadence:** 10 authors per PR (data-only, so skip the `/simplify`+`/code-review`
 pass), then Books (a one-time plumbing PR first — Book has no Q&A field), then
 Topics. Bio batch 1 = #2372 (coverage 29 → 39 of 91).
+
+## Books (author-type Q&A on a per-language row) — needed PLUMBING
+
+Books had NO Q&A field. The plumbing PR (mirrors sermon #2330) added:
+
+- **`Book.qa` JSONField** (`default=list, blank=True`), items **`{question,
+  answer}`** — the unified serializer-key contract new types adopt (NOT the
+  legacy bio `q`/`a`). Book is per-language, so `qa` rides the row like
+  `about_html`; no translation table, no `_for` accessor.
+- **Serializer:** add `"qa"` to `BookDetailSerializer.Meta.fields` (plain field —
+  list card omits it automatically).
+- **seed_books:** add `"qa"` to `BOOK_FIELDS`, NOT to `CREATE_ONLY_FIELDS`, so it
+  upserts from the fixture every deploy.
+- **Migration:** `makemigrations library --name book_qa` (schema-only AddField;
+  the data lives in the fixture, per backend/CLAUDE.md).
+- **Frontend:** the book page ALREADY had a *derived* "Common questions" FAQ
+  (hand-rolled JSON-LD). Made editorial `book.qa` the preferred tier with the
+  derived set as fallback (`editorialQa.length >= 2 ? editorialQa : derivedFaq`),
+  routed JSON-LD through the shared `faqPage()`, and extracted a shared
+  **`$lib/components/QandA.svelte`** (visible `<dl>`; page owns the JSON-LD).
+  Map stored `{question,answer}` → `{q,a}` for `faqPage()`, as the sermon page
+  does. TS type: add `qa?` to `BookDetail` in `library-public.ts`.
+- **Shape test:** `BookQaShapeTests` in `tests_fixture.py` mirrors
+  `AuthorFaqShapeTests` but globs `BOOKS_DIR/*.json`, reads row-0's `qa`, and
+  asserts `{question, answer}` keys (+ same 6–10 count / plain-text / no-site /
+  no-URL guards). Also added `qa` payload+seed tests to `tests_about_work.py`.
+
+**Byte-stability gotcha — book fixtures are NOT render_rows format.** Unlike
+authors.json (`json.dumps indent=2`) and sermon files, book files carry **Django
+serializer** formatting: `indent=1` nesting AND **per-file** unicode escaping
+(some `\uXXXX`-escaped, some literal — mixed across the corpus). `render_rows`
+(`ensure_ascii=False`) would reformat every non-ASCII char. So DON'T
+load-modify-dump. Insert `qa` **textually**: build the block with
+`json.dumps(qa, indent=1, ensure_ascii=<file has \\u ?>)`, re-indent +2 spaces to
+the fields level, and splice it in right after the book row's `about_html` line.
+Verify additive (`git diff --numstat` → N insertions, **0** deletions).
+
+**Browser verification needs a BUILT preview, not `npm run dev`.** The dev CSP
+`connect-src` has no localhost, so a book page that fetches
+`http://localhost:8000` fails with "Something went wrong" in dev. The localhost
+allowance is added only for a build, by `svelte.config.js` `directivesForThisBuild()`
+reading **`process.env.PUBLIC_API_BASE_URL`** (from the shell env, NOT `.env`).
+So: `PUBLIC_API_BASE_URL=http://localhost:8000 npm run build && … preview`.
+**Never add localhost to `csp.config.js`** — `csp.test.ts` forbids `http://` and
+`localhost` there. (Fastest sufficient proof is often the API curl +
+`BookDetailSerializer` check + the passing check/unit gates; the visible `<dl>`
+is extracted verbatim from the previously-shipping block.)
+
+Then author Q&A (~8 per book), grounded in the book's `description` +
+`about_html`; pick books whose `about_html` is non-empty (many are blank). Books
+PR #1 = plumbing + 5 books (confessions, imitation-of-christ, the-bruised-reed,
+the-reformed-pastor, all-of-grace).

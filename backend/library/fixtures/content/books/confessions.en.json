@@ -11,6 +11,40 @@
   "subtitle": "Translated by Edward B. Pusey",
   "description": "Written around 397, the Confessions is the first true autobiography in Western literature and still the most searching. Augustine tells his own story back to God as one long prayer — a boyhood theft of pears, the schools of Carthage, nine years among the Manichees, a career built on rhetoric he knew to be hollow, and the tears of his mother Monica following him across the sea. Book VIII brings him to a garden in Milan and a child's voice saying take up and read; Book IX to Monica's death at Ostia. The last four books turn from memory to God himself — on memory, on time and eternity, and on the opening words of Genesis. Its first paragraph has never been improved upon: our heart is restless, until it repose in Thee.",
   "about_html": "<p>The book that invented the inward autobiography. Augustine addresses it not to a reader but to God \u2014 page after page of second person \u2014 and the effect is that you are overhearing a prayer rather than being told a story. It follows him from infancy through the theft of some pears he did not even want, through Manichaeism, ambition, a mistress, Milan, and his mother's long refusal to give him up, to a garden, a child's voice, and a book of Paul.</p> <p>He wrote it around the age of forty-five, a decade after his conversion and some years into being a bishop in North Africa \u2014 an established churchman publishing an account of his own disgrace. That is part of what makes it strange. It is not the memoir of a man looking back fondly; it is a man examining his memory in front of God and discovering that he does not understand himself, which is where the last books turn from narrative into an inquiry about time and memory that philosophers still argue over.</p> <p>Read the first nine books for the life. Read the tenth if you want the sentence about memory that everything else in the tradition answers. It repays a reader who suspects their own motives \u2014 Augustine assumes his are worse than they look and is rarely wrong.</p>",
+  "qa": [
+   {
+    "question": "What is Augustine's Confessions?",
+    "answer": "Written around 397, it is the first true autobiography in Western literature and still the most searching. Augustine wrote it near the age of forty-five, roughly a decade after his conversion and some years into being a bishop in North Africa \u2014 an established churchman publishing a candid account of his own disgrace. He tells his own story back to God as one long prayer, following himself from infancy through ambition and error to the garden in Milan where his life turned."
+   },
+   {
+    "question": "Why is the book addressed to God rather than to a reader?",
+    "answer": "Augustine writes it in the second person to God \u2014 page after page \u2014 so that the effect is of overhearing a prayer rather than being told a story. It is not a memoir of a man looking back fondly; it is a man examining his memory in front of God and discovering that he does not fully understand himself. That self-suspicion is the book's engine: he assumes his own motives are worse than they look, and is rarely wrong."
+   },
+   {
+    "question": "What story does the Confessions tell?",
+    "answer": "It follows Augustine from infancy through a boyhood theft of pears he did not even want, the schools of Carthage, nine years among the Manichees, a career built on rhetoric he knew to be hollow, a long relationship with a mistress, and his years in Milan \u2014 all under the shadow of his mother's refusal to give him up. It moves toward a garden, a child's voice, and a book of Paul, and then to his mother's death at Ostia."
+   },
+   {
+    "question": "What happens in the garden scene in Book VIII?",
+    "answer": "In Book VIII Augustine reaches a crisis in a garden in Milan, torn between his old life and the call of God. He hears a child's voice repeating \"take up and read,\" opens the letters of Paul, and reads the passage that resolves his long struggle. It is the hinge of the whole book \u2014 the moment the restless will he has described for seven books finally yields."
+   },
+   {
+    "question": "Who was Monica, and what part does she play?",
+    "answer": "Monica was Augustine's mother, whose prayers and tears follow him across the sea and through every wrong turn; her long refusal to give him up is one of the book's steady threads. Book IX brings the story to her death at Ostia, shortly after his conversion, in one of the most tender passages in the work \u2014 a shared vision and a quiet parting between a mother and the son she had prayed toward God for decades."
+   },
+   {
+    "question": "What are the last four books about?",
+    "answer": "After the narrative of his life, the final books turn from memory to God himself. Augustine writes on memory, on time and eternity, and on the opening words of Genesis \u2014 the tenth book in particular contains the meditation on memory that later thinkers in the tradition keep answering. The story becomes an inquiry: read the first nine books for the life, and the later books for the questions his conversion opened up."
+   },
+   {
+    "question": "What is the famous opening line?",
+    "answer": "Its first sentence has never been improved upon: our heart is restless, Augustine says, until it repose in God. The whole book is an unfolding of that one line \u2014 the account of a restless, gifted man chasing satisfaction through ambition, philosophy and pleasure, and finding rest only when he stops running from the God who had been nearer to him than he was to himself."
+   },
+   {
+    "question": "Who should read the Confessions, and why does it endure?",
+    "answer": "It repays a reader who suspects their own motives. Augustine is merciless with himself and assumes the worst of his own heart, which is exactly what makes the book feel honest rather than pious. Sixteen centuries on it remains the founding text of Christian self-examination \u2014 read for the drama of the life in the early books, and for the questions about memory, time and desire that the later books never stop asking."
+   }
+  ],
   "publication_year": 397,
   "source_type": "public_domain",
   "source_url": "",

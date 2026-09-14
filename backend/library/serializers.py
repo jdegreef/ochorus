@@ -1109,7 +1109,7 @@ class BookDetailSerializer(BookListSerializer):
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
             "available_languages", "artwork_credit", "author_same_as",
-            "alternate_titles", "about_html", "scripture", "opening",
+            "alternate_titles", "about_html", "qa", "scripture", "opening",
             "featured_people", "author_quote_count",
         ]
 

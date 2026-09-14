@@ -336,6 +336,14 @@ class Book(models.Model):
     # it is the part worth writing, and it is per-language for the same reason
     # every other row is: there is no English fallback.
     about_html = models.TextField(blank=True)
+    # Answered Questions & Answers: a list of {"question", "answer"} objects, both
+    # PLAIN TEXT (no HTML — rendered as escaped text, so no sanitize path). Like
+    # `about_html`, this is Ochorus's own writing about the work, grounded strictly
+    # in it: AI-drafted off-server, shipped in the fixture, per-language for the
+    # same reason every other row is. The reader shows a "Questions and Answers"
+    # section and the page emits FAQPage JSON-LD. Empty list = nothing shown. See
+    # the `content-questions` skill for the generation pipeline.
+    qa = models.JSONField(default=list, blank=True)
     # Year the work was first published (e.g. 1885). Optional — many classics
     # are known only by era.
     publication_year = models.PositiveIntegerField(null=True, blank=True)

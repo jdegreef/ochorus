@@ -122,6 +122,13 @@ export interface BookDetail extends BookSummary {
 	alternate_titles?: string[];
 	about_html?: string;
 	/**
+	 * Editorial Questions & Answers about the work — hand-authored, grounded in
+	 * the book, per-language (English first). Preferred over the derived
+	 * "Common questions"; the page shows a "Questions and Answers" section and
+	 * emits FAQPage JSON-LD. Empty/absent = fall back to the derived set.
+	 */
+	qa?: { question: string; answer: string }[];
+	/**
 	 * The passages this book returns to most, derived from its chapters'
 	 * citations — see library/scripture_graph.treated_passages. `chapters` is
 	 * how many of the book's own chapters treat the passage, which is what the
