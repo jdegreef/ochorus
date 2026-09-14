@@ -1,6 +1,7 @@
 import { building } from '$app/environment';
 import { listBooks, listAuthors, listTopics, listSermons } from '$lib/library-public';
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
+import { isPlateCover } from '$lib/coverArt';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
@@ -60,7 +61,20 @@ export const load: PageLoad = async () => {
 		// day: this page is prerendered, so a client-side pick would swap all
 		// six cards at hydration, in view, on the site's front page. A shelf
 		// that changes with each deploy and never clusters is the better trade.
-		featured: pickByDay(books, 6, dayNumber(), (b) => b.author.slug),
+		//
+		// Only books with real cover art reach this editorial shelf: a generated
+		// flat plate (the `.svg` tier — see `isPlateCover`) reads as half-finished
+		// on the front page beside a painting or a photograph. Filtered BEFORE
+		// `pickByDay`, so the six still favour six different authors. `books` is
+		// returned unfiltered above, so Continue-reading (which reads that list,
+		// not `featured`) still lands a returning reader on their own book —
+		// plate cover or not.
+		featured: pickByDay(
+			books.filter((b) => !isPlateCover(b.cover_url)),
+			6,
+			dayNumber(),
+			(b) => b.author.slug
+		),
 		// Most-published first (name breaks ties, so the cap is stable across
 		// builds) — if only eight authors fit, they should be the substantial ones.
 		authors: authors
