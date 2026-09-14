@@ -22,13 +22,19 @@
 		{ href: '/admin/users', label: 'Users', capability: 'users' },
 		// Managing access is undelegated — super admins only (auth.isAdmin is the
 		// super-admin flag; a scoped grantee is not is_admin).
-		{ href: '/admin/team', label: 'Team & access', superOnly: true }
+		{ href: '/admin/team', label: 'Team & access', superOnly: true },
+		// Help explains the admin system itself — shown to anyone with any admin
+		// access, whatever their capabilities.
+		{ href: '/admin/help', label: 'Help & roles', anyAccess: true }
 	];
 
-	// Only the sections the signed-in user can reach: a super-only section needs
-	// the super-admin flag; the rest need the capability their grant opens.
+	// Only the sections the signed-in user can reach: Help needs any admin access,
+	// a super-only section needs the super-admin flag, the rest need the
+	// capability their grant opens.
 	const visible = $derived(
-		sections.filter((s) => (s.superOnly ? auth.isAdmin : auth.can(s.capability!)))
+		sections.filter((s) =>
+			s.anyAccess ? auth.hasAdminAccess : s.superOnly ? auth.isAdmin : auth.can(s.capability!)
+		)
 	);
 
 	// Exact match for the dashboard root; prefix match for sections (so a future
