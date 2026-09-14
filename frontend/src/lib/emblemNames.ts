@@ -62,7 +62,8 @@ export const TOPIC_META: Record<string, { accent: string; emblem: EmblemName }> 
 	'the-grace-of-god': { accent: '#c56b6f', emblem: 'open-hands' }, // grace freely received
 	'victory-over-sin': { accent: '#7a466a', emblem: 'broken-chain' }, // the chain struck off
 	'faith-for-the-impossible': { accent: '#2f7fa0', emblem: 'mountain-into-sea' }, // say to this mountain
-	'men-of-valour': { accent: '#a5552f', emblem: 'sword-and-shield' } // quit you like men
+	'men-of-valour': { accent: '#a5552f', emblem: 'sword-and-shield' }, // quit you like men
+	'for-teens': { accent: '#62a730', emblem: 'rooted-sapling' } // like a tree planted by water
 };
 
 /** Per-plan visual identity: accent hue + emblem (same shape as TOPIC_META). */

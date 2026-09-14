@@ -73,6 +73,7 @@ export const EMBLEM_HUES: Record<EmblemName, string> = {
 	'rising-incense': '#a97a24',
 	'river-sunrise': '#d9a441',
 	'rock-unmoved': '#3c5970',
+	'rooted-sapling': '#5a9e4d',
 	'rose-among-thorns': '#3d7434',
 	'sealed-scroll': '#d95f43',
 	'sheltered-lamp': '#d9a441',
