@@ -243,6 +243,30 @@ way unless you regen all three up front:
       OG share card PNG + `static/og/topics/og-manifest.json` entry;
       `tests_fixture.TopicShareCardTests` (two tests) fail without it.
 
+**Check `is_published` on PROD before choosing members — the fixture holds
+UNPUBLISHED works.** A shelf shows only its *published* members, and no test
+guards which ones you list, so an unpublished member just silently vanishes
+from the live shelf. Verify each intended slug against the LIVE API
+(`/api/library/books/<slug>/?language=en` → 200 = published; 404 = not) —
+`is_published` is create-only in the seed and toggled live via the admin, so
+the fixture value is not authoritative for prod. (Shipped a "For Teens" shelf
+whose two most on-topic books, `the-body-of-christ-teens` and `if`, were
+unpublished and so absent live — #2373.)
+
+**A curated PLAN (`plan_seed.CURATED_PLANS`) is created ONLY in a language
+where EVERY source book is published there** — one unpublished source book and
+`seed_plans` silently skips it forever (logs the bland "Plans already seeded
+(or source books missing)"), so the plan never appears on prod even though CI
+was green. So: (a) pick source books confirmed 200-live, (b) keep the plan
+English-only by anchoring on a published **English-only** book (else it becomes
+creatable in other langs and the coverage guard demands `plan_translations`),
+and (c) **verify creation locally** — nothing asserts a specific new plan
+exists, so seed a DB and run it:
+`manage.py seed_if_empty && manage.py seed_plans` then check
+`Plan.objects.filter(slug=…)` has the row with its days. (The teen plan seeded
+green in CI but never went live because two of its three books were unpublished
+— #2380 reworked it onto published books.)
+
 ## Copy conventions
 
 - `<title>`: `{Page} — Ochorus` — em dash with spaces, everywhere. Leaf pages
