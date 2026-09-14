@@ -69,21 +69,35 @@
      colour is a fixed cream over a dark scrim rather than a theme token —
      the ground here is the photo, identical in every site theme. -->
 <section class="relative isolate overflow-hidden bg-black">
-	<img
-		src="/about/hero.jpg"
-		srcset="/about/hero-800.jpg 900w, /about/hero.jpg 1600w"
-		sizes="100vw"
-		alt={t('about.heroAlt')}
-		fetchpriority="high"
-		width="1600"
-		height="1340"
-		class="absolute inset-0 -z-10 h-full w-full object-cover object-top opacity-60"
-	/>
+	<!-- Art-directed crop: a wide band centred on the crowd for md+ screens (the
+	     source photo is nearly square, so a full-bleed wide band otherwise shows
+	     only the empty roof); a taller crop on phones. Both crops trim the burnt-in
+	     camera watermark. object-center keeps faces in frame at every ratio. -->
+	<picture>
+		<source
+			media="(min-width: 768px)"
+			srcset="/about/hero-wide-1000.jpg 1000w, /about/hero-wide.jpg 1600w"
+			sizes="100vw"
+		/>
+		<img
+			src="/about/hero-tall.jpg"
+			srcset="/about/hero-tall-800.jpg 800w, /about/hero-tall.jpg 1600w"
+			sizes="100vw"
+			alt={t('about.heroAlt')}
+			fetchpriority="high"
+			width="1600"
+			height="1105"
+			class="absolute inset-0 -z-10 h-full w-full object-cover object-center opacity-70"
+		/>
+	</picture>
+	<!-- Bottom-anchored scrim: keeps the crowd bright while the type stays legible. -->
 	<div
-		class="absolute inset-0 -z-10 bg-gradient-to-b from-black/40 via-black/25 to-black/85"
+		class="absolute inset-0 -z-10 bg-gradient-to-b from-black/25 via-black/10 to-black/85"
 		aria-hidden="true"
 	></div>
-	<div class="mx-auto flex min-h-[62vh] max-w-5xl flex-col justify-end px-5 py-16 sm:py-24">
+	<div
+		class="mx-auto flex min-h-[clamp(420px,60vh,620px)] max-w-5xl flex-col justify-end px-5 py-16 sm:py-24"
+	>
 		<p class="eyebrow mb-3 text-gold">{t('about.title')}</p>
 		<!-- The page <h1>. Light on the photo scrim, so the colour is theme-fixed
 		     white (the ground is the photograph, not a theme surface). -->
@@ -132,10 +146,16 @@
 			<h2 class="text-h2 text-text">{t('about.statsHeading')}</h2>
 			<p class="mt-3 text-body text-muted">{t('about.statsIntro')}</p>
 		</div>
-		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-card border border-border bg-border md:grid-cols-4">
-			{#each [[String(languageCount), 'about.statLanguages'], ['$0', 'about.statFree'], ['2021', 'about.statFounded'], ['2', 'about.statContinents']] as [n, label] (label)}
+		<!-- Rounded floors, not hand-counted exacts: the library only grows, so
+		     "100+" / "90+" / "1,000+" stay true between deploys without a recount.
+		     Languages alone is exact and dynamic (the LIVE-locale registry). -->
+		<dl
+			class="grid grid-cols-2 gap-px overflow-hidden rounded-card border border-border bg-border sm:grid-cols-3 lg:grid-cols-6"
+		>
+			{#each [['7', 'about.statContinents'], [String(languageCount), 'about.statLanguages'], ['100+', 'about.statTitles'], ['90+', 'about.statSermons'], ['1,000+', 'about.statPrinted'], ['$0', 'about.statFree']] as [n, label] (label)}
 				<div class="bg-surface p-6">
-					<dd class="text-h1 font-display leading-none text-gold">{n}</dd>
+					<div class="mb-3.5 h-[3px] w-7 rounded bg-gold/80" aria-hidden="true"></div>
+					<dd class="text-h2 font-display leading-none text-gold tabular-nums">{n}</dd>
 					<dt class="mt-3 text-small uppercase tracking-wider text-muted">{t(label)}</dt>
 				</div>
 			{/each}
