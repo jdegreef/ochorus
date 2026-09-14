@@ -89,9 +89,17 @@ and the clean entity signal, not a SERP accordion.
 
 ## Batching
 
-~90 English sermons total. Work in batches (pilot = 10, then 20s), picking a spread
-across authors/eras so quality is judged broadly (the founder reviews the diff
-before scaling). Read in sub-batches of ~5, author, write, verify.
+**The initial backfill is COMPLETE — all 93 English sermons have questions**
+(finished 2026-09-14 across #2330/#2342/#2353/#2356/#2360/#2365). So this skill
+now fires for the *maintenance* case: a newly-imported sermon that lacks
+`study_questions`. List any such with
+`grep -L study_questions backend/library/fixtures/content/sermons/*.en.json`
+and author its four questions the same way. Only if a large new tranche arrives
+does the batch cadence below apply again.
+
+Batch cadence (for a fresh backlog): work in batches (pilot = 10, then 20s),
+picking a spread across authors/eras so quality is judged broadly (the founder
+reviews the diff before scaling). Read in sub-batches of ~5, author, write, verify.
 
 **ONE PR PER BATCH — never keep pushing to a branch whose PR already merged.**
 A squash-merge closes the PR and does NOT re-merge later pushes. #2342 was
