@@ -137,6 +137,26 @@ def _count_check(key: str, label: str, current: int, required: int, noun: str) -
     )
 
 
+def _bible_check_offline(lang: Language) -> Check:
+    """The Bible check without the network probe — for bulk callers that can't
+    afford one live Take Root call per language. It still catches the cheap,
+    local failure (no Bible configured at all); a configured code reads as
+    UNKNOWN, which neither blocks nor scores, deferring the real verification to
+    the single-language readiness route."""
+    if lang.is_source:
+        return Check("bible", "Bible", SKIPPED, "English is the source language.")
+    if not lang.bible_code:
+        return Check(
+            "bible",
+            "Bible",
+            FAIL,
+            "No Bible configured — scripture would be omitted from translations.",
+        )
+    return Check(
+        "bible", "Bible", UNKNOWN, "Not verified here — see the language's readiness page."
+    )
+
+
 def _bible_check(lang: Language) -> Check:
     if lang.is_source:
         return Check(
@@ -407,11 +427,18 @@ def _ui_check(lang: Language) -> Check:
 # --- the report ---------------------------------------------------------------
 
 
-def report(lang: Language) -> Report:
-    """Every readiness check for one language."""
+def report(lang: Language, *, verify_bible: bool = True) -> Report:
+    """Every readiness check for one language.
+
+    ``verify_bible=False`` swaps the Bible check for a cheap, network-free one —
+    a bulk caller (the language-health scoreboard) that scores many languages at
+    once must not fan out one live Take Root call per language on every load,
+    which is why the single-language readiness route exists in the first place.
+    The scoreboard is an overview; the go-live decision runs the real check.
+    """
     code = lang.code
     checks = [
-        _bible_check(lang),
+        _bible_check(lang) if verify_bible else _bible_check_offline(lang),
         _attribution_check(lang),
         _glossary_check(lang),
         _ui_check(lang),

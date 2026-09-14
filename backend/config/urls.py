@@ -28,6 +28,7 @@ from library.admin_views import (
     AdminLanguageDeployCheckView,
     AdminLanguageDetailView,
     AdminLanguageGoLiveView,
+    AdminLanguageHealthView,
     AdminLanguageReadinessView,
     AdminLanguageSettingsView,
     AdminLanguageThresholdsView,
@@ -72,6 +73,11 @@ urlpatterns = [
     path("api/admin/search-stats/", AdminSearchView.as_view(), name="admin-search-stats"),
     path("api/admin/search-gap/", AdminSearchGapView.as_view(), name="admin-search-gap"),
     path("api/admin/coverage/", AdminCoverageView.as_view(), name="admin-coverage"),
+    path(
+        "api/admin/language-health/",
+        AdminLanguageHealthView.as_view(),
+        name="admin-language-health",
+    ),
     path("api/admin/audit/", AdminAuditView.as_view(), name="admin-audit"),
     path(
         "api/admin/audit/dismiss/",

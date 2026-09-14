@@ -1614,3 +1614,83 @@ class AdminContentEditJobsTests(TestCase):
             format="json",
         )
         self.assertEqual(res.status_code, 400)
+
+class AdminLanguageHealthTests(TestCase):
+    """The per-language health score — a composite of readiness, coverage,
+    review and engagement, ranked healthiest-first."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="am", name="Andrew Murray", bio="x")
+
+        # A small, deterministic library: English is the source shelf (the
+        # coverage ceiling); Spanish has half of it, one edition still unreviewed.
+        for i in range(4):
+            Book.objects.create(
+                author=self.author, slug=f"b{i}", language="en", title=f"B{i}",
+                is_published=True, source_type=Book.SourceType.PUBLIC_DOMAIN,
+            )
+        Book.objects.create(
+            author=self.author, slug="b0", language="es", title="B0",
+            is_published=True, source_type=Book.SourceType.AI_REVIEWED,
+        )
+        Book.objects.create(
+            author=self.author, slug="b1", language="es", title="B1",
+            is_published=True, source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        # No Bible mock is needed: the scoreboard scores with verify_bible=False,
+        # so it never makes the live Take Root call (see test_makes_no_bible_call).
+
+    @override_settings(DEBUG=True)
+    def _get(self):
+        res = self.client.get("/api/admin/language-health/")
+        self.assertEqual(res.status_code, 200)
+        return res.data
+
+    def test_source_language_scores_full_on_coverage_and_review(self):
+        data = self._get()
+        by_code = {r["code"]: r for r in data["languages"]}
+        self.assertEqual(data["source_published_books"], 4)
+        en = by_code["en"]
+        self.assertEqual(en["scores"]["coverage"], 1.0)
+        self.assertEqual(en["scores"]["review"], 1.0)
+        self.assertTrue(en["is_source"])
+
+    def test_coverage_is_measured_against_the_source_shelf(self):
+        by_code = {r["code"]: r for r in self._get()["languages"]}
+        # Spanish has 2 of English's 4 published books.
+        self.assertEqual(by_code["es"]["content"]["published_books"], 2)
+        self.assertAlmostEqual(by_code["es"]["scores"]["coverage"], 0.5, places=3)
+
+    def test_review_score_reflects_the_unreviewed_share(self):
+        by_code = {r["code"]: r for r in self._get()["languages"]}
+        es = by_code["es"]
+        # 1 of 2 published Spanish books is unreviewed → review score 0.5.
+        self.assertEqual(es["content"]["unreviewed_books"], 1)
+        self.assertAlmostEqual(es["scores"]["review"], 0.5, places=3)
+
+    def test_ranked_healthiest_first(self):
+        codes = [r["health"] for r in self._get()["languages"]]
+        self.assertEqual(codes, sorted(codes, reverse=True))
+
+    def test_engagement_normalises_to_the_busiest_language(self):
+        # No reading data → engagement is zero for everyone (not a crash).
+        for r in self._get()["languages"]:
+            self.assertEqual(r["scores"]["engagement"], 0.0)
+
+    def test_makes_no_bible_call(self):
+        # The scoreboard must never fan out a live Bible-API call per language —
+        # that is why the single-language readiness route exists. If it did, this
+        # patched _bible_check would be hit.
+        from unittest import mock
+
+        from . import readiness
+
+        with mock.patch.object(readiness, "_bible_check") as bible:
+            self._get()
+        bible.assert_not_called()
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.get("/api/admin/language-health/")
+        self.assertIn(res.status_code, (401, 403))
