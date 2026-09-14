@@ -1,6 +1,6 @@
 ---
 name: sermon-questions
-description: Write answered "study questions" for Ochorus sermon pages and ship them as a content fixture. Use when asked to add study/reflection questions to sermons, generate the sermon-questions pilot or a batch, or scale them across the sermon library. Four answered questions per sermon, question-shaped for search and answered STRICTLY from the sermon's own text, stored in the sermon fixture and rendered as a "Questions for reflection" section plus FAQPage JSON-LD. Authored by the agent (NOT an API-key command). This is a living playbook — append new gotchas as we find them.
+description: Write answered Questions & Answers for Ochorus content pages and ship them as a content fixture. Covers SERMON study questions (Sermon.study_questions, keys question/answer) and AUTHOR/BIO Q&A (Author.faq, keys q/a) — see the "Bios (author Q&A)" section for the different field, file, and serialization. Use when asked to add study/reflection questions or Q&A to sermons or author bios, generate a pilot or batch, or scale coverage. Question-shaped for search and answered STRICTLY from the work's own text; rendered as a Q&A section plus FAQPage JSON-LD. Authored by the agent (NOT an API-key command). Never call it "FAQ" in reader-facing prose. This is a living playbook — append new gotchas as we find them.
 ---
 
 # Writing sermon study questions
@@ -122,3 +122,52 @@ reported the branch total 43 when the PR added 40.)
 closed branch (`git show <branch>:<path>`) and insert it after `summary` in
 main's *current* file via `render_rows` — do NOT copy whole files over, or you
 clobber any main-side body/summary edits made since the branch forked.
+
+## Bios (author Q&A) — same idea, DIFFERENT mechanics
+
+The unified Q&A rollout (`docs/questions-and-answers-plan.md`, doc in #2371)
+extends this content type to **Bios, Books, and Topics**. Naming: always
+**"Q&A" / "Questions and Answers", NEVER "FAQ"** in reader-facing / prose
+contexts (founder rule) — the storage field is still literally `faq`, don't
+rename it. Bios need **no plumbing** — everything already ships:
+
+- **Field: `Author.faq` / `AuthorTranslation.faq`** — a `JSONField`, list of
+  `{"q", "a"}` objects. **Keys are `q`/`a`, NOT `question`/`answer`** (sermons
+  use the long keys — do not copy the sermon shape). Read `faq_for(language)`.
+- **File: `authors.json`** (one shared file, not one-per-work), and it is
+  **NOT written with `render_rows`.** authors.json is
+  `json.dumps(rows, indent=2, ensure_ascii=False) + "\n"` — verified
+  byte-identical; using `render_rows` reformats all ~5700 lines. (Confirmed by
+  round-trip; the render_rows assumption was wrong.)
+- **Deploy path:** `author_sync.SYNCED_FIELDS = ("same_as", "faq")` — fixture
+  wins on EVERY deploy, but a row that OMITS the key is left untouched (the
+  `field in fields` guard), so authoring `faq` deploys and authors without a set
+  are never forced empty. No create-only concern.
+- **Rendering (already built):** the author page renders `faq` as an accordion
+  (editorial `author.faq` if ≥2 items, else a derived-from-page-facts fallback)
+  and emits `FAQPage` JSON-LD via the shared `faqPage()` helper; nav chip
+  "Questions". Do not re-add.
+
+**House style:** ~9–10 items per author, answers ~500-char biographical prose
+grounded STRICTLY in that author's own bio (dates, places, quotes, events) —
+match the existing sets (andrew-murray is a good reference). Read the full bio
+first.
+
+**Authoring gotcha — the site-name test.** `tests_fixture.AuthorFaqShapeTests`
+(`test_faq_entries_are_well_formed_plain_text`) fails if an answer contains the
+string "ochorus" (case-insensitive), among other well-formedness/plain-text
+checks. Bios routinely say "the volume Ochorus carries" — reword to name the
+work instead (e.g. `In "The Secret of Guidance"…`). Run the same gate:
+`tests_fixture tests_sanitize tests_sermon_payload`.
+
+**Avoid the triple-quote gotcha entirely: use a JSON batch file, not Python
+strings.** Author into `bio-batch-*.json` shaped `{slug: [[q, a], ...]}` (escape
+internal `"` as `\"`), then apply with a tiny idempotent script that skips slugs
+that already have a non-empty `faq` and writes with the exact
+`json.dumps(indent=2, ensure_ascii=False)+"\n"` serialization. Verify the diff
+is **additive** (`git diff --numstat` — expect ~N insertions, 1 benign deletion
+from a `"same_as": []` gaining a trailing comma) and all 91 rows intact.
+
+**Cadence:** 10 authors per PR (data-only, so skip the `/simplify`+`/code-review`
+pass), then Books (a one-time plumbing PR first — Book has no Q&A field), then
+Topics. Bio batch 1 = #2372 (coverage 29 → 39 of 91).
