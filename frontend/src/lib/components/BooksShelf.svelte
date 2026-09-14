@@ -12,7 +12,6 @@
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import BookCard from './BookCard.svelte';
 	import BookListRow from './BookListRow.svelte';
-	import GroupHeading from './GroupHeading.svelte';
 	import BookCover from './BookCover.svelte';
 	import PageHeader from './PageHeader.svelte';
 	import EmptyState from './EmptyState.svelte';
@@ -159,6 +158,14 @@
 		}
 		return [...map.values()];
 	});
+
+	// The by-author shelf renders as ONE flat grid, not a <section> per author:
+	// `authorFlat` is those groups concatenated, so an author's books stay
+	// together while a one-book author is a single card in the row rather than a
+	// heading over an otherwise empty one. `authorAnchor` maps each author's
+	// first book to the `#author-<slug>` id the quick-nav jumps to.
+	const authorFlat = $derived(groups ? groups.flatMap((g) => g.books) : []);
+	const authorAnchor = $derived(new Map((groups ?? []).map((g) => [g.books[0].slug, g.slug])));
 
 	// --- SEO: ItemList structured data ------------------------------------------
 	// Item URLs are LOCALIZED. This shelf prerenders once per locale, and a bare
@@ -414,24 +421,24 @@
 			     made Books the odd shelf out; C2). -->
 			<EmptyState message={t('books.noResults')} action={clearFiltersAction} />
 		{:else if groups}
-			{#each groups as g (g.slug)}
-				<section id="author-{g.slug}" class="mb-10 scroll-mt-20">
-					<GroupHeading name={g.name} count={g.books.length} />
-					{#if view === 'grid'}
-						<div class="book-grid">
-							{#each g.books as book, i (book.slug)}
-								<BookCard {book} priority={i < 6} />
-							{/each}
-						</div>
-					{:else}
-						<div class="flex flex-col gap-1">
-							{#each g.books as book (book.slug)}
-								<BookListRow {book} showAuthor={false} />
-							{/each}
-						</div>
-					{/if}
-				</section>
-			{/each}
+			<!-- By author: one flat shelf, books ordered so each author's works sit
+			     together and the author rides every card. A <section> per author
+			     turned a library of mostly one-book authors into a tall column of
+			     near-empty rows; a single grid fills left-to-right, and the
+			     quick-nav above still lands on each author's first book. -->
+			{#if view === 'grid'}
+				<div class="book-grid">
+					{#each authorFlat as book, i (book.slug)}
+						<BookCard {book} showAuthor priority={i < 6} anchor={authorAnchor.get(book.slug)} />
+					{/each}
+				</div>
+			{:else}
+				<div class="flex flex-col gap-1">
+					{#each authorFlat as book (book.slug)}
+						<BookListRow {book} anchor={authorAnchor.get(book.slug)} />
+					{/each}
+				</div>
+			{/if}
 		{:else if view === 'grid'}
 			<div class="book-grid">
 				{#each sorted as book, i (book.slug)}
