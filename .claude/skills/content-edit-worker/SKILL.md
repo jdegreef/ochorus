@@ -33,12 +33,42 @@ Backend that files these: `library/admin_views/content_jobs.py`.
 
 ## The job
 
-- Label **`content-edit`**, deterministic title
-  **`[edit] retitle book:<slug>/<lang>#<order>`**, and a JSON block in the body:
-  `{"job": "retitle", "type": "book", "slug": "...", "language": "...", "order": N}`.
-  The body also quotes the current and proposed titles.
-- One open job per `(slug, language, order)` — the filer guards duplicates.
-- Today the only job is **`retitle`** (a chapter title). Append new kinds here.
+Every job is a **`content-edit`**-labelled issue with a deterministic title and a
+JSON block in the body naming the target. One open job per `(kind, target)` — the
+filer guards duplicates, per kind (a title and a body job for the same chapter can
+coexist). Three kinds share the queue:
+
+- **`retitle`** — a chapter title. Title `[edit] retitle book:<slug>/<lang>#<order>`,
+  JSON `{"job": "retitle", "type": "book", "slug": …, "language": …, "order": N}`.
+  The body quotes the current and proposed titles. **The fix is below** (steps 4–5).
+- **`revise`** — a chapter's **text**. Title `[edit] revise book:<slug>/<lang>#<order>`,
+  JSON `{"job": "revise", …, "order": N}`. The body quotes the reporter's note (what's
+  wrong). Same two-edit shape as a retitle, but the body carries three derived columns,
+  not one, and is sanitised prose:
+  - **Edit 1 (fixture):** set `body_html` of the `order` chapter in
+    `books/<slug>.<lang>.json`. Sanitise to the **chapter** profile
+    (`sanitize.clean_fragment` — narrow, no attributes; NOT `clean_bio_html`), and
+    write the **settled form** (`corrections.settled_chapter_body`), or
+    `apply_body_corrections` reverts your change on the next deploy (see
+    `backend/CLAUDE.md`, "the sibling rule for prose").
+  - **Edit 2 (migration):** update the live row **through `save()`** so `body_text`,
+    `word_count` **and** `search_vector` all refresh — a bare `queryset.update()`
+    leaves search matching the old prose (stale, not null; the backfill won't repair
+    it). Confirm with `manage.py content_diff`.
+- **`rewrite-bio`** — an author biography. Title `[edit] rewrite-bio author:<slug>/<lang>`
+  (no `#order`), JSON `{"job": "rewrite-bio", "type": "author", "slug": …, "language": …}`.
+  The body carries an optional emphasis note. Use the **`write-biography`** skill, and
+  the **`clean_bio_html`** sanitiser profile (bios carry `<aside class="prayer">`,
+  `<cite>` and internal links — the chapter profile would strip them):
+  - **English (`en`):** set the `Author` row's `bio` (short plain text) + `bio_html`
+    (long-form HTML). Ships in `authors.json`; add a data migration to reach the prod row.
+  - **Translated:** an `AuthorTranslation` ships as files under
+    `migrations/data/author_bios_<lang>/` (`<slug>.short.txt` + `<slug>.html`);
+    `seed_author_translations` upserts unreviewed rows on deploy — no per-batch migration,
+    the files win. Never hand-edit a reviewed row (see `backend/CLAUDE.md`).
+
+The retitle protocol below is the template; a `revise`/`rewrite-bio` job follows the
+same claim → worktree → two-edits → verify → ship loop, with the per-kind edits above.
 
 ## Protocol (follow in order)
 

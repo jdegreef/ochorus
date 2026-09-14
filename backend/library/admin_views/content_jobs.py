@@ -1,19 +1,24 @@
 """Admin dashboard API — the content-edit job queue (fix buttons → GitHub issues).
 
-A chapter's QA flags (a generic or wrong title, say) get a "Fix title" control on
-the admin book page; submitting a correction files a GitHub issue (label
-``content-edit``) that a Claude Code worker session turns into a fixture PR.
+Content-quality flags get a "fix" control in the admin: a chapter's wrong title
+or garbled text on the book page, an author's missing/thin bio on the worklist.
+Submitting one files a GitHub issue (label ``content-edit``) that a Claude Code
+worker session turns into a fixture PR. Three job **kinds** share this one queue:
+
+- ``title`` — retitle a chapter (a concrete proposed title).
+- ``body`` — revise a chapter's text (a note describing what's wrong).
+- ``bio`` — write/expand an author biography (an optional emphasis note).
 
 Same queue-over-GitHub design as the translation queue (see ``jobs.py``), and for
-the same reason: a chapter title is **fixture-owned prose** (see
-``backend/CLAUDE.md``), so an in-admin edit cannot be a live DB write. A live edit
-would move no content digest — the prerendered reader page would never rebuild —
-and ``seed_books`` deliberately never syncs an existing book's chapters, so it
-would also drift from the fixture and be walked back on a fresh install. The
+the same reason: a chapter title/body and an author bio are **fixture-owned prose**
+(see ``backend/CLAUDE.md``), so an in-admin edit cannot be a live DB write. A live
+edit would move no content digest — the prerendered reader page would never
+rebuild — and ``seed_books`` deliberately never syncs an existing book's chapters,
+so it would also drift from the fixture and be walked back on a fresh install. The
 correct shape is a PR that edits the fixture *and* migrates the live rows; prod
 holds no credentials to author that, so the admin files a job and a worker ships
 it. State is derived, not stored: queued = open issue, done = the worker closed
-it (and the corrected title deploys via the fixture + migration).
+it. The per-kind worker instructions live in the ``content-edit-worker`` skill.
 
 The GitHub plumbing is intentionally a small local copy of ``jobs.py``'s rather
 than shared: that module's tests patch ``library.admin_views.jobs.requests`` by
@@ -42,22 +47,38 @@ from accounts.permissions import allowed_languages, requires
 from ..audit import AdminAudited
 from ..languages import entry as language_entry
 from ..languages import known_codes
-from ..models import AdminAction, Chapter
+from ..models import AdminAction, Author, Chapter
 
 GITHUB_API = os.getenv("GITHUB_API_BASE", "https://api.github.com")
 LABEL = "content-edit"
 IN_PROGRESS_LABEL = "in-progress"
 
 # The job's identity (duplicate-press guard) and what the worker parses — both
-# ends share this exact shape. One open job per (book slug, language, chapter).
-_TITLE_RE = re.compile(r"^\[edit\] retitle book:([a-z0-9-]+)/([a-z-]{2,10})#(\d+)$")
+# ends share these exact shapes. One open job per (kind, target). The wire verb
+# encodes the kind and the entity it targets; a chapter carries an order, an
+# author bio does not.
+#   [edit] retitle     book:<slug>/<lang>#<order>   → title
+#   [edit] revise      book:<slug>/<lang>#<order>   → body
+#   [edit] rewrite-bio author:<slug>/<lang>         → bio
+_TITLE_RE = re.compile(
+    r"^\[edit\] (?P<verb>retitle|revise|rewrite-bio) "
+    r"(?P<entity>book|author):(?P<slug>[a-z0-9-]+)/(?P<lang>[a-z-]{2,10})"
+    r"(?:#(?P<order>\d+))?$"
+)
+
+# kind ↔ (verb, entity). A chapter job needs an order; a bio job must not have one.
+_VERB_FOR = {"title": "retitle", "body": "revise", "bio": "rewrite-bio"}
+_KIND_FOR = {v: k for k, v in _VERB_FOR.items()}
+_CHAPTER_KINDS = ("title", "body")
 
 _PAGE_SIZE = 100
 _MAX_PAGES = 20
 
 
-def _job_title(slug: str, language: str, order: int) -> str:
-    return f"[edit] retitle book:{slug}/{language}#{order}"
+def _job_title(kind: str, slug: str, language: str, order: int | None) -> str:
+    if kind == "bio":
+        return f"[edit] {_VERB_FOR[kind]} author:{slug}/{language}"
+    return f"[edit] {_VERB_FOR[kind]} book:{slug}/{language}#{order}"
 
 
 def _headers() -> dict:
@@ -71,11 +92,21 @@ def _issue_to_job(issue: dict) -> dict | None:
     m = _TITLE_RE.match(issue.get("title", ""))
     if not m:
         return None
+    kind = _KIND_FOR[m.group("verb")]
+    entity, order = m.group("entity"), m.group("order")
+    # Reject a title that pairs a verb with the wrong entity or order-ness — a
+    # chapter kind must be a `book:…#order`, a bio must be an author with none.
+    if kind in _CHAPTER_KINDS and (entity != "book" or order is None):
+        return None
+    if kind == "bio" and (entity != "author" or order is not None):
+        return None
     labels = {lbl.get("name", "") for lbl in issue.get("labels", [])}
     return {
-        "slug": m.group(1),
-        "language": m.group(2),
-        "order": int(m.group(3)),
+        "kind": kind,
+        "entity": entity,
+        "slug": m.group("slug"),
+        "language": m.group("lang"),
+        "order": int(order) if order is not None else None,
         "url": issue.get("html_url", ""),
         "number": issue.get("number"),
         "state": "in_progress" if IN_PROGRESS_LABEL in labels else "queued",
@@ -112,21 +143,27 @@ def _list_open_jobs() -> list[dict]:
     return jobs
 
 
-@requires(AdminCapability.CONTENT_EDIT, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.SUGGEST}, language_arg="language")
+@requires(
+    AdminCapability.CONTENT_EDIT,
+    verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.SUGGEST},
+    language_arg="language",
+)
 class AdminContentEditJobsView(AdminAudited, APIView):
-    """GET the open content-edit queue; POST to file a chapter-title fix."""
+    """GET the open content-edit queue; POST to file a fix (title / body / bio)."""
 
     audit_action = AdminAction.Action.CONTENT_EDIT_JOB
 
     def audit_entry(self, request, response):
-        # `book:<slug>:<lang>` so the activity log links the row to the book's
-        # admin page (parseTarget already handles that shape); the chapter and
-        # the filed/duplicate outcome ride in the detail.
+        # A book kind links the row to the book's admin page (`book:<slug>:<lang>`);
+        # a bio links to the author page (`author:<slug>`). parseTarget handles both.
         data = request.data
+        kind = str(data.get("kind", "title")).strip().lower()
         slug = str(data.get("slug", "")).strip().lower()
         language = str(data.get("language", "")).strip().lower()
-        return f"book:{slug}:{language}", {
-            "chapter": data.get("order", ""),
+        target = f"author:{slug}" if kind == "bio" else f"book:{slug}:{language}"
+        return target, {
+            "kind": kind,
+            "chapter": data.get("order", "") if kind in _CHAPTER_KINDS else "",
             "created": response.data.get("created", False),
             "issue": (response.data.get("job") or {}).get("url", ""),
         }
@@ -148,9 +185,18 @@ class AdminContentEditJobsView(AdminAudited, APIView):
         return Response({"configured": True, "jobs": jobs})
 
     def post(self, request):
+        kind = str(request.data.get("kind", "title")).strip().lower()
+        if kind in _CHAPTER_KINDS:
+            return self._file_chapter_job(request, kind)
+        if kind == "bio":
+            return self._file_bio_job(request)
+        return Response({"detail": "unknown edit kind."}, status=400)
+
+    # --- chapter jobs (title / body) -------------------------------------------
+
+    def _file_chapter_job(self, request, kind: str):
         slug = str(request.data.get("slug", "")).strip().lower()
         language = str(request.data.get("language", "")).strip().lower()
-        proposed = str(request.data.get("title", "")).strip()
         try:
             order = int(request.data.get("order"))
         except (TypeError, ValueError):
@@ -158,14 +204,10 @@ class AdminContentEditJobsView(AdminAudited, APIView):
 
         if not re.fullmatch(r"[a-z0-9-]+", slug or ""):
             return Response({"detail": "invalid slug."}, status=400)
-        # A title fix can target any known language, English included — unlike a
+        # A content fix can target any known language, English included — unlike a
         # translation, which must be into a non-English one.
         if language not in known_codes():
             return Response({"detail": "language must be a known code."}, status=400)
-        if not proposed:
-            return Response({"detail": "a new title is required."}, status=400)
-        if len(proposed) > 300:
-            return Response({"detail": "that title is too long."}, status=400)
 
         # Query Chapter directly (one join): filtering and selecting across the
         # Book→chapters reverse relation in separate clauses emits TWO joins, so
@@ -182,30 +224,83 @@ class AdminContentEditJobsView(AdminAudited, APIView):
                 status=status.HTTP_404_NOT_FOUND,
             )
         current_title, book_title = chapter
-        if (current_title or "").strip() == proposed:
-            return Response(
-                {"detail": "that is already the chapter's title."}, status=400
-            )
+
+        if kind == "title":
+            proposed = str(request.data.get("title", "")).strip()
+            if not proposed:
+                return Response({"detail": "a new title is required."}, status=400)
+            if len(proposed) > 300:
+                return Response({"detail": "that title is too long."}, status=400)
+            if (current_title or "").strip() == proposed:
+                return Response(
+                    {"detail": "that is already the chapter's title."}, status=400
+                )
+            note = proposed
+        else:  # body
+            note = str(request.data.get("note", "")).strip()
+            if not note:
+                return Response(
+                    {"detail": "describe what's wrong with the text."}, status=400
+                )
+            if len(note) > 2000:
+                return Response({"detail": "that note is too long."}, status=400)
+
         if not settings.GITHUB_TRANSLATION_TOKEN:
-            return Response(
-                {
-                    "detail": "Content-edit queue isn't configured — set "
-                    "GITHUB_TRANSLATION_TOKEN in the API environment."
-                },
-                status=status.HTTP_503_SERVICE_UNAVAILABLE,
-            )
+            return self._unconfigured()
 
         lang_name = language_entry(language)["name"]
-        title = _job_title(slug, language, order)
-        try:
-            # Duplicate-press guard: one open job per (slug, language, order).
-            for job in _list_open_jobs():
-                if (job["slug"], job["language"], job["order"]) == (slug, language, order):
-                    return Response({"job": job, "created": False})
+        body = (
+            self._title_body(slug, language, lang_name, order, book_title, current_title, note)
+            if kind == "title"
+            else self._body_body(slug, language, lang_name, order, book_title, note)
+        )
+        return self._file(kind, slug, language, order, body)
 
-            body = self._issue_body(
-                slug, language, lang_name, order, book_title, current_title, proposed
+    # --- bio jobs --------------------------------------------------------------
+
+    def _file_bio_job(self, request):
+        slug = str(request.data.get("slug", "")).strip().lower()
+        # The bio worklist is the English `Author.bio`; a translated bio job names
+        # its language explicitly. Default to English, the source bio.
+        language = str(request.data.get("language", "en")).strip().lower()
+
+        if not re.fullmatch(r"[a-z0-9-]+", slug or ""):
+            return Response({"detail": "invalid slug."}, status=400)
+        if language not in known_codes():
+            return Response({"detail": "language must be a known code."}, status=400)
+
+        author = Author.objects.filter(slug=slug).values_list("name", "is_imprint").first()
+        if author is None:
+            return Response(
+                {"detail": f"no author {slug!r}."}, status=status.HTTP_404_NOT_FOUND
             )
+        name, is_imprint = author
+        # An imprint (e.g. "Ochorus Originals") is a byline, not a person — it never
+        # gets a bio, so a bio job for one would be permanently unfinishable.
+        if is_imprint:
+            return Response({"detail": "an imprint has no biography."}, status=400)
+
+        note = str(request.data.get("note", "")).strip()
+        if len(note) > 2000:
+            return Response({"detail": "that note is too long."}, status=400)
+
+        if not settings.GITHUB_TRANSLATION_TOKEN:
+            return self._unconfigured()
+
+        lang_name = language_entry(language)["name"]
+        body = self._bio_body(slug, language, lang_name, name, note)
+        return self._file("bio", slug, language, None, body)
+
+    # --- shared GitHub plumbing ------------------------------------------------
+
+    def _file(self, kind: str, slug: str, language: str, order: int | None, body: str):
+        """Duplicate-guard on (kind, slug, language, order), then open the issue."""
+        title = _job_title(kind, slug, language, order)
+        identity = (kind, slug, language, order)
+        try:
+            for job in _list_open_jobs():
+                if (job["kind"], job["slug"], job["language"], job["order"]) == identity:
+                    return Response({"job": job, "created": False})
             r = requests.post(
                 f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
                 headers=_headers(),
@@ -218,18 +313,28 @@ class AdminContentEditJobsView(AdminAudited, APIView):
                 {"detail": "couldn't reach GitHub to file the job — try again shortly."},
                 status=status.HTTP_502_BAD_GATEWAY,
             )
-
         return Response(
             {"job": _issue_to_job(r.json()), "created": True},
             status=status.HTTP_201_CREATED,
         )
 
     @staticmethod
-    def _issue_body(slug, language, lang_name, order, book_title, current, proposed) -> str:
-        """The worker's instructions. A chapter title lives in the fixture AND in
-        the live DB row, and ``seed_books`` syncs neither — so the fix is two
-        edits, and the title feeds the search index, so the row must go through
-        ``save()``."""
+    def _unconfigured():
+        return Response(
+            {
+                "detail": "Content-edit queue isn't configured — set "
+                "GITHUB_TRANSLATION_TOKEN in the API environment."
+            },
+            status=status.HTTP_503_SERVICE_UNAVAILABLE,
+        )
+
+    # --- issue bodies (the worker's instructions) ------------------------------
+
+    @staticmethod
+    def _title_body(slug, language, lang_name, order, book_title, current, proposed) -> str:
+        """A chapter title lives in the fixture AND in the live DB row, and
+        ``seed_books`` syncs neither — so the fix is two edits, and the title feeds
+        the search index, so the row must go through ``save()``."""
         return (
             f"Retitle chapter **{order}** of **{book_title}** ({lang_name}, `{language}`).\n\n"
             f"- Current: {current or '(untitled)'!r}\n"
@@ -249,4 +354,66 @@ class AdminContentEditJobsView(AdminAudited, APIView):
             "`queryset.update()`), so the title's search vector refreshes — a bare "
             "update leaves search matching the old title.\n\n"
             "Filed from the Ochorus admin dashboard. Ship via the normal PR flow."
+        )
+
+    @staticmethod
+    def _body_body(slug, language, lang_name, order, book_title, note) -> str:
+        """A chapter body is sanitised prose with three derived columns; the worker
+        must respect the settled form and refresh the search vector through
+        ``save()``. See the ``content-edit-worker`` skill for the full contract."""
+        return (
+            f"Revise the **text** of chapter **{order}** of **{book_title}** "
+            f"({lang_name}, `{language}`).\n\n"
+            "Reported problem:\n"
+            f"> {note}\n\n"
+            "```json\n"
+            f'{{"job": "revise", "type": "book", "slug": "{slug}", '
+            f'"language": "{language}", "order": {order}}}\n'
+            "```\n\n"
+            "**Two edits, because `seed_books` syncs neither a fixture chapter nor a "
+            "live row:**\n"
+            f"1. Fixture — edit `body_html` of the `library.chapter` row with "
+            f"`\"order\": {order}` in `library/fixtures/content/books/{slug}.{language}.json`. "
+            "Sanitise to the **chapter** profile (`clean_fragment`, narrow, no "
+            "attributes — NOT the bio profile), and write the **settled form** "
+            "(`corrections.settled_chapter_body`) so `apply_body_corrections` doesn't "
+            "revert it on the next deploy.\n"
+            "2. Data migration — update the live row **through `save()`** so all three "
+            "derived columns refresh (`body_text`, `word_count`, `search_vector`); a "
+            "bare `queryset.update()` leaves search matching the old prose.\n\n"
+            "Confirm the change with `manage.py content_diff`. Filed from the Ochorus "
+            "admin dashboard; ship via the normal PR flow."
+        )
+
+    @staticmethod
+    def _bio_body(slug, language, lang_name, name, note) -> str:
+        """An author biography: English lives on the ``Author`` row, a translation
+        is an ``AuthorTranslation`` shipped as migration data files. Written with the
+        ``write-biography`` skill and the bio sanitiser profile."""
+        is_english = language == "en"
+        reported = f"> {note}\n\n" if note else ""
+        return (
+            f"Write / expand the biography of **{name}** (`{slug}`)"
+            + ("" if is_english else f", in **{lang_name}** (`{language}`)")
+            + ".\n\n"
+            + ("Note:\n" + reported if note else "")
+            + "```json\n"
+            f'{{"job": "rewrite-bio", "type": "author", "slug": "{slug}", '
+            f'"language": "{language}"}}\n'
+            "```\n\n"
+            "Use the **write-biography** skill. Bios use the `clean_bio_html` sanitiser "
+            "profile (they legitimately carry `<aside class=\"prayer\">`, `<cite>` and "
+            "internal links) — never the chapter profile, which would strip them.\n"
+            + (
+                "- English — set the `Author` row's `bio` (short plain-text) and "
+                "`bio_html` (long-form HTML). The bio ships in `authors.json`; add a "
+                "data migration to reach the existing prod row.\n"
+                if is_english
+                else "- Translated — an `AuthorTranslation` ships as files under "
+                f"`library/migrations/data/author_bios_{language}/` "
+                "(`<slug>.short.txt` + `<slug>.html`); `seed_author_translations` "
+                "upserts unreviewed rows from them on deploy. No new migration per "
+                "batch — the files win.\n"
+            )
+            + "Filed from the Ochorus admin dashboard; ship via the normal PR flow."
         )

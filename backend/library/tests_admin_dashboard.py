@@ -1482,6 +1482,138 @@ class AdminContentEditJobsTests(TestCase):
         res = self.client.get("/api/admin/content-edit-jobs/")
         self.assertIn(res.status_code, (401, 403))
 
+    # --- body-fix jobs ---------------------------------------------------------
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_body_fix_files_revise_issue(self):
+        from unittest.mock import MagicMock, patch
+
+        created = self._issue("[edit] revise book:humility/en#2")
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: [], raise_for_status=lambda: None)
+            gh.post.return_value = MagicMock(json=lambda: created, raise_for_status=lambda: None)
+            res = self.client.post(
+                "/api/admin/content-edit-jobs/",
+                {
+                    "kind": "body",
+                    "slug": "humility",
+                    "language": "en",
+                    "order": 2,
+                    "note": "The second paragraph is duplicated.",
+                },
+                format="json",
+            )
+        self.assertEqual(res.status_code, 201)
+        self.assertEqual(res.data["job"]["kind"], "body")
+        payload = gh.post.call_args.kwargs["json"]
+        self.assertEqual(payload["title"], "[edit] revise book:humility/en#2")
+        self.assertIn("duplicated", payload["body"])
+        # The body worker instruction names the settled-form + search-vector traps.
+        self.assertIn("settled", payload["body"])
+        self.assertIn("search_vector", payload["body"])
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_body_fix_requires_a_note(self):
+        res = self.client.post(
+            "/api/admin/content-edit-jobs/",
+            {"kind": "body", "slug": "humility", "language": "en", "order": 2, "note": "  "},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 400)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_body_and_title_jobs_for_one_chapter_coexist(self):
+        # The duplicate guard is per-kind: an open title job must not block a body
+        # job for the same chapter (they're different fixes).
+        from unittest.mock import MagicMock, patch
+
+        title_job = self._issue("[edit] retitle book:humility/en#2")
+        body_created = self._issue("[edit] revise book:humility/en#2", number=8)
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(
+                json=lambda: [title_job], raise_for_status=lambda: None
+            )
+            gh.post.return_value = MagicMock(
+                json=lambda: body_created, raise_for_status=lambda: None
+            )
+            res = self.client.post(
+                "/api/admin/content-edit-jobs/",
+                {"kind": "body", "slug": "humility", "language": "en", "order": 2, "note": "typo"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 201)
+        self.assertTrue(res.data["created"])
+        gh.post.assert_called_once()
+
+    # --- bio jobs --------------------------------------------------------------
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_bio_files_author_job(self):
+        from unittest.mock import MagicMock, patch
+
+        created = self._issue("[edit] rewrite-bio author:am/en")
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: [], raise_for_status=lambda: None)
+            gh.post.return_value = MagicMock(json=lambda: created, raise_for_status=lambda: None)
+            res = self.client.post(
+                "/api/admin/content-edit-jobs/",
+                {"kind": "bio", "slug": "am", "language": "en", "note": "Emphasise his missionary years."},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 201)
+        self.assertEqual(res.data["job"]["kind"], "bio")
+        self.assertIsNone(res.data["job"]["order"])
+        payload = gh.post.call_args.kwargs["json"]
+        self.assertEqual(payload["title"], "[edit] rewrite-bio author:am/en")
+        self.assertIn("write-biography", payload["body"])
+        self.assertIn("missionary", payload["body"])
+        # A bio job links the activity row to the author, not a book.
+        act = AdminAction.objects.latest("id")
+        self.assertEqual(act.target, "author:am")
+        self.assertEqual(act.detail["kind"], "bio")
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_bio_note_is_optional(self):
+        from unittest.mock import MagicMock, patch
+
+        created = self._issue("[edit] rewrite-bio author:am/en")
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: [], raise_for_status=lambda: None)
+            gh.post.return_value = MagicMock(json=lambda: created, raise_for_status=lambda: None)
+            res = self.client.post(
+                "/api/admin/content-edit-jobs/",
+                {"kind": "bio", "slug": "am"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 201)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_bio_rejects_an_imprint(self):
+        Author.objects.create(slug="ochorus-originals", name="Ochorus Originals", is_imprint=True)
+        res = self.client.post(
+            "/api/admin/content-edit-jobs/",
+            {"kind": "bio", "slug": "ochorus-originals"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 400)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_bio_unknown_author_404(self):
+        res = self.client.post(
+            "/api/admin/content-edit-jobs/",
+            {"kind": "bio", "slug": "nobody"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 404)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_unknown_kind_rejected(self):
+        res = self.client.post(
+            "/api/admin/content-edit-jobs/",
+            {"kind": "sideways", "slug": "humility", "language": "en"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 400)
 
 class AdminLanguageHealthTests(TestCase):
     """The per-language health score — a composite of readiness, coverage,

@@ -1223,24 +1223,42 @@ export interface AdminBookDetail {
 export const getAdminBook = (slug: string) =>
 	apiFetch<AdminBookDetail>(`/api/admin/books/${encodeURIComponent(slug)}/`);
 
-// Content-edit queue: a chapter-title fix files a GitHub issue a worker turns
-// into a fixture PR (a title is fixture-owned prose, not a live DB write).
+// Content-edit queue: a fix files a GitHub issue a worker turns into a fixture
+// PR (a title, a chapter body and an author bio are all fixture-owned prose, not
+// live DB writes). Three kinds share the one endpoint — a chapter title/body
+// carries an `order`; an author bio does not.
+export type ContentEditKind = 'title' | 'body' | 'bio';
 export interface ContentEditJob {
+	kind: ContentEditKind;
+	entity: 'book' | 'author';
 	slug: string;
 	language: string;
-	order: number;
+	order: number | null;
 	url: string;
 	number: number | null;
 	state: 'queued' | 'in_progress';
 	created_at: string;
 }
 
+type FiledJob = { job: ContentEditJob | null; created: boolean };
+const fileContentEdit = (body: Record<string, unknown>) =>
+	apiFetch<FiledJob>('/api/admin/content-edit-jobs/', {
+		method: 'POST',
+		body: JSON.stringify(body)
+	});
+
 /** File a "retitle this chapter" job; `created` is false if one was already open. */
 export const fileRetitleJob = (slug: string, language: string, order: number, title: string) =>
-	apiFetch<{ job: ContentEditJob | null; created: boolean }>('/api/admin/content-edit-jobs/', {
-		method: 'POST',
-		body: JSON.stringify({ slug, language, order, title })
-	});
+	fileContentEdit({ kind: 'title', slug, language, order, title });
+
+/** File a "revise this chapter's text" job — `note` describes what's wrong. */
+export const fileBodyFixJob = (slug: string, language: string, order: number, note: string) =>
+	fileContentEdit({ kind: 'body', slug, language, order, note });
+
+/** File a "write / expand this author's bio" job; `note` (optional) says what to
+ *  emphasise. Defaults to the English source bio. */
+export const fileBioJob = (slug: string, note: string, language = 'en') =>
+	fileContentEdit({ kind: 'bio', slug, language, note });
 
 /**
  * Publish or unpublish one language edition of a book. `is_published` is the
