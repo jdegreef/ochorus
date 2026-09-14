@@ -19,11 +19,17 @@
 		{ href: '/admin/activity', label: 'Activity', capability: 'reporting' },
 		{ href: '/admin/engagement', label: 'Engagement', capability: 'reporting' },
 		{ href: '/admin/search', label: 'Search', capability: 'reporting' },
-		{ href: '/admin/users', label: 'Users', capability: 'users' }
+		{ href: '/admin/users', label: 'Users', capability: 'users' },
+		// Managing access is undelegated — super admins only (auth.isAdmin is the
+		// super-admin flag; a scoped grantee is not is_admin).
+		{ href: '/admin/team', label: 'Team & access', superOnly: true }
 	];
 
-	// Only the sections the signed-in user's grants open (a super admin sees all).
-	const visible = $derived(sections.filter((s) => auth.can(s.capability)));
+	// Only the sections the signed-in user can reach: a super-only section needs
+	// the super-admin flag; the rest need the capability their grant opens.
+	const visible = $derived(
+		sections.filter((s) => (s.superOnly ? auth.isAdmin : auth.can(s.capability!)))
+	);
 
 	// Exact match for the dashboard root; prefix match for sections (so a future
 	// /admin/coverage/… detail page keeps its parent highlighted).

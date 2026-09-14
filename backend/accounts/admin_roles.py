@@ -12,6 +12,7 @@ allowlist bootstrap, outside the grant table (see ``accounts.permissions``).
 
 from __future__ import annotations
 
+from .models import ALL_LANGUAGES, AdminGrant
 from .models import AdminCapability as C
 from .models import AdminVerb as V
 
@@ -53,3 +54,47 @@ PRESETS: dict[str, list[tuple[str, str]]] = {
 }
 
 ROLE_NAMES = tuple(PRESETS)
+
+
+def apply_grant(email, *, role=None, capability=None, verb=None, languages=ALL_LANGUAGES, granted_by=""):
+    """Create/replace the grant rows for ``email`` — from a preset ``role`` OR a
+    single ``(capability, verb)``. The single home for "assign access", shared by
+    the ``admin_grants`` command and the ``/admin/team`` endpoint. Returns the
+    role label ('' for a raw capability grant). Raises ``ValueError`` on bad
+    input; the caller is responsible for the super-admin guard.
+    """
+    email = (email or "").strip().lower()
+    if not email:
+        raise ValueError("email is required")
+    if role:
+        if role not in PRESETS:
+            raise ValueError(f"unknown role {role!r}")
+        pairs, label = PRESETS[role], role
+    elif capability and verb:
+        # Validate against the enums (the CLI does this via argparse choices; an
+        # unvalidated capability/verb would persist a dead grant that matches
+        # nothing — an integrity gap, so reject it here for both callers).
+        if capability not in C.values:
+            raise ValueError(f"unknown capability {capability!r}")
+        if verb not in V.values:
+            raise ValueError(f"unknown verb {verb!r}")
+        pairs, label = [(capability, verb)], ""
+    else:
+        raise ValueError("a role, or both capability and verb, is required")
+    granted_by = (granted_by or "").strip().lower()
+    for cap, vb in pairs:
+        AdminGrant.objects.update_or_create(
+            email=email,
+            capability=cap,
+            defaults={"verb": vb, "languages": languages, "role_label": label, "granted_by": granted_by},
+        )
+    return label
+
+
+def revoke_grant(email, *, capability=None) -> int:
+    """Remove grant rows for ``email`` (all, or just one ``capability``). Returns
+    the number removed."""
+    qs = AdminGrant.objects.filter(email=(email or "").strip().lower())
+    if capability:
+        qs = qs.filter(capability=capability)
+    return qs.delete()[0]

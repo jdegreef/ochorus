@@ -18,7 +18,7 @@ import type { AdminActionRow } from './library-admin';
  * readers (a language going live, a document published); the rest are told apart
  * by their glyph, which is the same judgement the old two-tone `tone()` made.
  */
-export type Category = 'language' | 'content' | 'review' | 'translation' | 'author';
+export type Category = 'language' | 'content' | 'review' | 'translation' | 'author' | 'access';
 
 /** Which glyph a row wears. The view owns the actual path data. */
 export type IconName =
@@ -49,7 +49,9 @@ const META: Record<string, ActionMeta> = {
 	'content.publish': { category: 'content', icon: 'document', loud: true },
 	'content.unpublish': { category: 'content', icon: 'document', loud: true },
 	'review.decide': { category: 'review', icon: 'approve', loud: false },
-	'review.undo': { category: 'review', icon: 'undo', loud: false }
+	'review.undo': { category: 'review', icon: 'undo', loud: false },
+	'role.grant': { category: 'access', icon: 'sliders', loud: true },
+	'role.revoke': { category: 'access', icon: 'sliders', loud: true }
 };
 
 /** The categories, in the order the filter offers them. */
@@ -58,7 +60,8 @@ export const CATEGORIES: readonly Category[] = [
 	'content',
 	'review',
 	'translation',
-	'author'
+	'author',
+	'access'
 ];
 
 /**

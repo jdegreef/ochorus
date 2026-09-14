@@ -15,7 +15,7 @@ from __future__ import annotations
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
-from accounts.admin_roles import PRESETS, ROLE_NAMES
+from accounts.admin_roles import ROLE_NAMES, apply_grant, revoke_grant
 from accounts.models import (
     ALL_LANGUAGES,
     AdminCapability,
@@ -53,39 +53,24 @@ class Command(BaseCommand):
                 f"{email} is already a super admin via ADMIN_EMAILS — grants add nothing."
             )
         languages = self._clean_languages(opts["languages"])
-
-        if opts["role"]:
-            pairs = PRESETS[opts["role"]]
-            label = opts["role"]
-            granted = f"role '{opts['role']}'"
-        elif opts["capability"] and opts["verb"]:
-            pairs = [(opts["capability"], opts["verb"])]
-            label = ""
-            granted = f"{opts['capability']}:{opts['verb']}"
-        else:
-            raise CommandError("grant needs either --role, or both --capability and --verb.")
-
-        granted_by = (opts.get("by") or "").strip().lower()
-        for capability, verb in pairs:
-            AdminGrant.objects.update_or_create(
-                email=email,
-                capability=capability,
-                defaults={
-                    "verb": verb,
-                    "languages": languages,
-                    "role_label": label,
-                    "granted_by": granted_by,
-                },
+        try:
+            label = apply_grant(
+                email,
+                role=opts["role"],
+                capability=opts["capability"],
+                verb=opts["verb"],
+                languages=languages,
+                granted_by=opts.get("by", ""),
             )
+        except ValueError as exc:
+            raise CommandError(str(exc)) from exc
+        granted = f"role '{label}'" if label else f"{opts['capability']}:{opts['verb']}"
         self.stdout.write(self.style.SUCCESS(f"Granted {granted} to {email} ({languages})."))
         self._show(email)
 
     def _revoke(self, opts):
         email = self._require_email(opts)
-        qs = AdminGrant.objects.filter(email=email)
-        if opts["capability"]:
-            qs = qs.filter(capability=opts["capability"])
-        n, _ = qs.delete()
+        n = revoke_grant(email, capability=opts["capability"])
         self.stdout.write(self.style.SUCCESS(f"Revoked {n} grant row(s) from {email}."))
 
     def _list(self, opts):

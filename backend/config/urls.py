@@ -38,6 +38,7 @@ from library.admin_views import (
     AdminSermonDetailView,
     AdminSermonPublishView,
     AdminStatsView,
+    AdminTeamView,
     AdminTranslationJobsView,
     AdminUnpublishedView,
     AdminUserDetailView,
@@ -151,6 +152,7 @@ urlpatterns = [
         AdminTranslationJobsView.as_view(),
         name="admin-translation-jobs",
     ),
+    path("api/admin/team/", AdminTeamView.as_view(), name="admin-team"),
     path(
         "api/admin/content-edit-jobs/",
         AdminContentEditJobsView.as_view(),
