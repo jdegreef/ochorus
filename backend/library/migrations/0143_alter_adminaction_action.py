@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('library', '0141_alter_adminaction_action'),
+        ('library', '0142_reviewoutcome_confirmed_at_and_more'),
     ]
 
     operations = [
