@@ -13,7 +13,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import allowed_languages, requires
+from accounts.permissions import allowed_languages, has_capability, requires
 
 from .. import invalidation
 from ..audit import AdminAudited
@@ -136,9 +136,17 @@ class AdminReviewQueueView(AdminAudited, APIView):
             # must not render an absence of notes as an absence of problems.
             r["notes_recorded"] = k in noted
 
-        # Facets are computed over everything still awaiting a decision, so the
-        # counts a reviewer navigates by never shift when a filter is applied.
-        undecided = [r for r in rows if not r["outcome"]]
+        # Everything still awaiting attention: no decision yet, OR a PROVISIONAL
+        # approval a reviewer proposed that still needs an approver to confirm
+        # (a confirmed approval flips source_type and leaves the queue entirely;
+        # needs_work shows under its own filter). Facets count these so the
+        # numbers a reviewer navigates by don't shift when a filter is applied.
+        undecided = [
+            r
+            for r in rows
+            if not r["outcome"]
+            or (r["outcome"]["outcome"] == "approved" and r["outcome"].get("provisional"))
+        ]
         facets = {
             "language": _tally(undecided, "language"),
             "kind": _tally(undecided, "kind"),
@@ -287,6 +295,11 @@ class AdminReviewQueueView(AdminAudited, APIView):
                 "note": o.note,
                 "reviewer": o.reviewer,
                 "decided_at": o.decided_at.isoformat(),
+                # Provisional = a reviewer proposed it but no approver has
+                # confirmed, so it wasn't applied and still awaits sign-off. A
+                # confirmed decision names its approver.
+                "provisional": o.confirmed_at is None,
+                "confirmed_by": o.confirmed_by,
             }
             for o in ReviewOutcome.objects.all()
         }
@@ -410,6 +423,7 @@ class AdminReviewQueueView(AdminAudited, APIView):
             return Response(
                 {"detail": "outcome must be 'approved' or 'needs_work'."}, status=400
             )
+        approving = outcome == ReviewOutcome.Outcome.APPROVED
         note = (data.get("note") or "").strip()
         reviewer = getattr(request.user, "email", "") or ""
 
@@ -465,6 +479,41 @@ class AdminReviewQueueView(AdminAudited, APIView):
                     }
                 )
                 continue
+            # Maker-checker. An APPROVE from someone who holds only review:act is
+            # PROVISIONAL: record the decision but do NOT flip source_type, so the
+            # item stays in the queue awaiting an approver's confirmation. An
+            # approver (review:approve, or a super admin) approving — whether fresh
+            # or confirming a junior's provisional decision — flips it for real.
+            # needs_work never flips to reviewed, so it doesn't need approve rights.
+            approver = has_capability(request, AdminCapability.REVIEW, AdminVerb.APPROVE, language)
+            # Only an approver may CHANGE an already-confirmed item — needs_work or
+            # a re-decision on it unwinds an approver's decision (and would erase
+            # the confirmation record), so it needs review:approve, not just act.
+            # (A reviewer can still retract their own not-yet-confirmed proposal.)
+            if not approver and self._is_confirmed(kind, slug, language):
+                skipped.append(
+                    {"kind": kind, "slug": slug, "language": language,
+                     "reason": "already confirmed — only an approver can change it."}
+                )
+                continue
+            if approving and not approver:
+                ReviewOutcome.objects.update_or_create(
+                    kind=kind,
+                    slug=slug,
+                    language=language,
+                    defaults={
+                        "outcome": outcome,
+                        "note": note,
+                        "reviewer": reviewer,
+                        "confirmed_by": "",
+                        "confirmed_at": None,
+                    },
+                )
+                done.append(
+                    {"kind": kind, "slug": slug, "language": language, "status": "provisional"}
+                )
+                continue
+
             # The field flip and its audit row are ONE unit. Apart, a failure
             # between them approves a translation invisibly: the queue lists only
             # ai_unreviewed rows, so the item vanishes from it with no
@@ -479,11 +528,23 @@ class AdminReviewQueueView(AdminAudited, APIView):
                     err = self._apply(kind, slug, language, outcome)
                     if err:
                         raise _Skip(err)
+                    # Confirming a provisional decision keeps the original
+                    # proposer as `reviewer` and records the approver separately —
+                    # the two hands the workflow is for.
+                    existing = ReviewOutcome.objects.filter(
+                        kind=kind, slug=slug, language=language
+                    ).first()
                     ReviewOutcome.objects.update_or_create(
                         kind=kind,
                         slug=slug,
                         language=language,
-                        defaults={"outcome": outcome, "note": note, "reviewer": reviewer},
+                        defaults={
+                            "outcome": outcome,
+                            "note": note,
+                            "reviewer": (existing.reviewer if existing and existing.reviewer else reviewer),
+                            "confirmed_by": reviewer if approving else "",
+                            "confirmed_at": timezone.now() if approving else None,
+                        },
                     )
             except _Skip as skip:
                 # _apply's own refusals (no such translation, public-domain
@@ -494,11 +555,13 @@ class AdminReviewQueueView(AdminAudited, APIView):
                     {"kind": kind, "slug": slug, "language": language, "reason": str(skip)}
                 )
                 continue
-            done.append({"kind": kind, "slug": slug, "language": language})
+            done.append(
+                {"kind": kind, "slug": slug, "language": language, "status": "confirmed" if approving else outcome}
+            )
 
-        # Any decision flips a reader-visible "awaiting native review" badge, so
-        # rebuild the reader (once for the whole batch, after the rows committed).
-        if done:
+        # Rebuild only if something actually flipped source_type — a provisional
+        # decision records a proposal but changes nothing, so it triggers nothing.
+        if any(d.get("status") != "provisional" for d in done):
             invalidation.mark_content_changed()
         # 207: a batch where some rows were held back is a normal result, not a
         # failure — one ineligible row must not reject the other twenty-four.
@@ -549,6 +612,19 @@ class AdminReviewQueueView(AdminAudited, APIView):
         tr.save(update_fields=["reviewed", "source_stale"])
         return None
 
+    def _is_confirmed(self, kind, slug, language) -> bool:
+        """Is this item already confirmed/approved (its field flipped)? Changing
+        that back takes review:approve, not just review:act — see the POST/DELETE
+        guards."""
+        if kind in ("book", "sermon"):
+            model = Book if kind == "book" else Sermon
+            return model.objects.filter(
+                slug=slug, language=language, source_type=Book.SourceType.AI_REVIEWED
+            ).exists()
+        return AuthorTranslation.objects.filter(
+            author__slug=slug, language=language, reviewed=True
+        ).exists()
+
     def delete(self, request):
         """Undo a decision, returning the item to the queue."""
         q = request.query_params
@@ -560,6 +636,15 @@ class AdminReviewQueueView(AdminAudited, APIView):
         allowed = allowed_languages(request, AdminCapability.REVIEW, AdminVerb.ACT)
         if allowed is not None and language not in allowed:
             return Response({"detail": "outside your language scope."}, status=403)
+        # Undoing a confirmed decision unwinds an approver's call — that takes
+        # review:approve, not just act (a reviewer can still retract their own
+        # not-yet-confirmed proposal, which leaves the field unflipped).
+        if not has_capability(
+            request, AdminCapability.REVIEW, AdminVerb.APPROVE, language
+        ) and self._is_confirmed(kind, slug, language):
+            return Response(
+                {"detail": "already confirmed — only an approver can undo it."}, status=403
+            )
         # Reversing is lossless: ai_reviewed → ai_unreviewed restores exactly the
         # state the fixture ships, and seed_* treats these fields as create-only
         # so the next deploy will not overwrite the correction.
