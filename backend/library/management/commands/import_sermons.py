@@ -1,4 +1,4 @@
-"""Ingest individual public-domain sermons from CCEL into the library.
+"""Ingest individual sermons from CCEL, Gutenberg, the web, and SermonIndex.
 
 CCEL sermon pages (e.g. Spurgeon's Sermons volumes) share one shape inside
 ``div#theText .book-content``:
@@ -291,8 +291,68 @@ def extract_web_sermon(html: str, title: str, body_starts: str = "") -> str:
     return body
 
 
+# A byline line in a transcribed masthead ("Pastor and author A.W. Tozer",
+# "by Martyn Lloyd-Jones"). Guarded by a word-count cap at the call site so it
+# can only match a short standalone line, never a sentence that opens "By …".
+_SI_BYLINE = re.compile(r"^(pastor and author\b|by\s+[A-Z])", re.I)
+
+
+def _si_core(text: str) -> str:
+    """A heading normalised for comparison, stripped of surrounding quotes/punct."""
+    return re.sub(r"^\W+|\W+$", "", _norm_heading(text))
+
+
+def extract_sermonindex(html: str, title: str = "") -> str:
+    """Return the sermon transcript from a SermonIndex v2 page.
+
+    The redesigned SermonIndex (``div.sermon-page-v2``) wraps the transcript in
+    ``div.sermon-v2-transcript-body`` — paragraphs only — surrounded by a great
+    deal of AI-generated furniture: a ``sermon-v2-desc`` summary, a "Key Quotes"
+    block, an FAQ, an outline, download buttons. All of that lives in SIBLING
+    nodes, so taking the transcript body alone leaves every bit of it behind;
+    ``clean_fragment`` then drops the wrapping div and its classes and keeps the
+    paragraphs. Short devotional excerpts (Tozer's editorial snippets) share the
+    same shape; the caller's word-count floor rejects them.
+
+    Audio transcripts often open with a masthead the transcriber typed as its
+    own short lines — the title, a byline, the date, a bare scripture reference.
+    Those leading lines are dropped, but only while they look like masthead and
+    only within the first few paragraphs: the scan stops at the first line of
+    real prose, so it can never eat the sermon.
+    """
+    s = soup(html)
+    body = s.select_one(".sermon-v2-transcript-body")
+    if body is None:
+        return ""
+    paras = body.find_all("p")
+    wanted = _si_core(title)
+    start = 0
+    for p in paras[:4]:
+        t = p.get_text(" ", strip=True)
+        words = len(t.split())
+        # A masthead line is a fragment, not a sentence — none of these end in
+        # terminal punctuation. That guard is what keeps a real opening sentence
+        # that happens to name a month ("We began this last December.") or open
+        # "By Faith …" from being mistaken for a byline or date and dropped.
+        sentence = t.rstrip().endswith((".", "!", "?"))
+        is_title = bool(wanted) and _si_core(t) == wanted
+        is_byline = bool(_SI_BYLINE.match(t)) and words <= 6 and not sentence
+        is_date = _DATE.search(t) is not None and words <= 9 and not sentence
+        is_ref = (
+            re.search(r"\b\d{1,3}:\d{1,3}\b", t) is not None
+            and words <= 12
+            and t[:1].isupper()
+            and not sentence
+        )
+        if is_title or is_byline or is_date or is_ref:
+            start += 1
+        else:
+            break
+    return clean_fragment("".join(str(p) for p in paras[start:]))
+
+
 class Command(BaseCommand):
-    help = "Import public-domain sermons from CCEL, Gutenberg, and the web."
+    help = "Import sermons from CCEL, Gutenberg, the web, and SermonIndex."
 
     def add_arguments(self, parser):
         parser.add_argument("slugs", nargs="*", help="Sermon slugs (default: all).")
@@ -334,6 +394,9 @@ class Command(BaseCommand):
                 body = extract_web_sermon(
                     fetch_web(entry.source_ref), entry.title, entry.body_starts
                 )
+                scripture_ref, preached_on = "", None
+            elif entry.source == "sermonindex":
+                body = extract_sermonindex(fetch_web(entry.source_ref), entry.title)
                 scripture_ref, preached_on = "", None
             else:
                 body, scripture_ref, preached_on = extract(fetch(entry.source_ref))

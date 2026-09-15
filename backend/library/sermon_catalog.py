@@ -1,10 +1,16 @@
-"""The curated sermon shelf: individual public-domain sermons.
+"""The curated sermon shelf: individual sermons, one per entry.
+
+Most are public domain (CCEL, Gutenberg); the SermonIndex block carries
+still-in-copyright authors (Tozer, Lloyd-Jones) imported with permission — so
+"public domain" is not a safe assumption for every entry here.
 
 Like ``catalog.py`` for books, each sermon declares where its clean source
-lives. ``source`` is "ccel" (the only importer so far); ``source_ref`` is the
-full URL of the per-sermon page. The importer parses the scripture reference
-and preached-on date from the page itself; the optional ``scripture_ref`` /
-``preached_on`` fields override when parsing gets it wrong.
+lives. ``source`` is "ccel", "gutenberg", "web", or "sermonindex";
+``source_ref`` is the full URL of the per-sermon page (an ebook id for
+gutenberg). CCEL parses the scripture reference and preached-on date from the
+page itself; the other sources don't, so set the optional ``scripture_ref`` /
+``preached_on`` fields where they are known (they also override CCEL when its
+parse gets it wrong).
 
 The order of SERMONS is the shelf order (sort_order).
 
@@ -25,8 +31,8 @@ class SermonEntry:
     slug: str
     title: str
     author_slug: str  # canonical DB author slug (see AuthorListView / fixture)
-    source: str  # "ccel" (one page per sermon) | "gutenberg" (heading section of an ebook)
-    source_ref: str  # ccel: full URL of the sermon page; gutenberg: ebook id
+    source: str  # "ccel" | "gutenberg" | "web" | "sermonindex"
+    source_ref: str  # ccel/web/sermonindex: full URL of the page; gutenberg: ebook id
     section: str = ""  # gutenberg: the heading text of the sermon, at any level
     scripture_ref: str = ""  # override; parsed from the page when empty
     preached_on: str = ""  # ISO date override; parsed from the page when empty
@@ -54,6 +60,9 @@ _WHITEFIELD = "https://ccel.org/ccel/whitefield/sermons/"
 _EDWARDS = "https://ccel.org/ccel/edwards/sermons/"
 _NEWTON = "https://ccel.org/ccel/newton/"
 _MACLAREN = "https://ccel.org/ccel/maclaren/"
+# SermonIndex speaker pages — one transcript per page. Full URL is
+# _SI + "<speaker-slug>/<sermon-slug>/".
+_SI = "https://sermonindex.net/speakers/"
 
 SERMONS: list[SermonEntry] = [
     # --- Assurance & the character of God -----------------------------------
@@ -869,5 +878,119 @@ SERMONS: list[SermonEntry] = [
         "ccel",
         _MACLAREN + "psalms/psalms.ii.xxix.html",
         scripture_ref="Psalm 37:4-7",
+    ),
+    # A.W. Tozer — the first sermons on his shelf (bio-only author, no books).
+    # Transcribed messages from SermonIndex; curated for full-length, standalone
+    # sermons on worship, the cross, backsliding, and the greatness of God — the
+    # short devotional excerpts SermonIndex also carries are left off (they fall
+    # under the importer's word floor anyway). The three dated pulpit sermons
+    # keep the date the transcript records.
+    SermonEntry(
+        "the-infinite-god", "The Infinite God", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/the-infinite-god/", scripture_ref="Psalm 147:5",
+    ),
+    SermonEntry(
+        "god-is-our-refuge-and-strength", "God Is Our Refuge and Strength",
+        "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/god-is-our-refuge-strength/", scripture_ref="Psalm 46:1",
+    ),
+    SermonEntry(
+        "god-made-man-to-worship", "God Made Man to Worship", "a-w-tozer",
+        "sermonindex", _SI + "aw-tozer/god-made-man-to-worship/",
+    ),
+    SermonEntry(
+        "all-with-one-accord", "All with One Accord", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/all-with-one-accord/", scripture_ref="Acts 2:1",
+    ),
+    SermonEntry(
+        "the-cross-is-a-radical-thing", "The Cross Is a Radical Thing",
+        "a-w-tozer", "sermonindex", _SI + "aw-tozer/the-cross-is-a-radical-thing/",
+    ),
+    SermonEntry(
+        "causes-of-backsliding", "Causes of Backsliding", "a-w-tozer",
+        "sermonindex", _SI + "aw-tozer/causes-of-backsliding/",
+        scripture_ref="Proverbs 14:14",
+    ),
+    SermonEntry(
+        "a-call-to-return-to-god", "A Call to Return to God", "a-w-tozer",
+        "sermonindex", _SI + "aw-tozer/a-call-to-return-to-god/",
+    ),
+    SermonEntry(
+        "the-bridge-that-was-too-short", "The Bridge That Was Too Short",
+        "a-w-tozer", "sermonindex", _SI + "aw-tozer/the-bridge-that-was-too-short/",
+        scripture_ref="Acts 26",
+    ),
+    SermonEntry(
+        "three-great-days", "Three Great Days: An Easter Message", "a-w-tozer",
+        "sermonindex", _SI + "aw-tozer/three-great-days-an-easter-message/",
+        preached_on="1958-04-06",
+    ),
+    SermonEntry(
+        "prepare-by-prayer", "Prepare by Prayer", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/prepare-by-prayer/", scripture_ref="Matthew 26:31-46",
+        preached_on="1957-06-09",
+    ),
+    SermonEntry(
+        "faith-as-confidence-in-god", "Faith, as Confidence in God", "a-w-tozer",
+        "sermonindex", _SI + "aw-tozer/faith-as-confidence-in-god/",
+        scripture_ref="John 14:13-14; 1 John 5:14", preached_on="1955-08-21",
+    ),
+    # Martyn Lloyd-Jones — the first sermons on his shelf (bio-only author, no
+    # books). Transcribed from SermonIndex: the Sermon-on-the-Mount trio, the
+    # great salvation sermons, and single expository messages on grace, prayer,
+    # and revival.
+    SermonEntry(
+        "the-salt-of-the-earth", "The Salt of the Earth", "martyn-lloyd-jones",
+        "sermonindex", _SI + "martyn-lloyd-jones/the-salt-of-the-earth/",
+        scripture_ref="Matthew 5:13",
+    ),
+    SermonEntry(
+        "the-light-of-the-world", "The Light of the World", "martyn-lloyd-jones",
+        "sermonindex", _SI + "martyn-lloyd-jones/the-light-of-the-world/",
+        scripture_ref="Matthew 5:14-16",
+    ),
+    SermonEntry(
+        "god-or-mammon", "God or Mammon", "martyn-lloyd-jones", "sermonindex",
+        _SI + "martyn-lloyd-jones/god-or-mammon/", scripture_ref="Matthew 6:19-24",
+    ),
+    SermonEntry(
+        "jesus-on-prayer", "Jesus on Prayer", "martyn-lloyd-jones", "sermonindex",
+        _SI + "martyn-lloyd-jones/jesus-on-prayer/", scripture_ref="Matthew 6:5-8",
+    ),
+    SermonEntry(
+        "the-parable-of-the-prodigal-son", "The Parable of the Prodigal Son",
+        "martyn-lloyd-jones", "sermonindex",
+        _SI + "martyn-lloyd-jones/the-parable-of-the-prodigal-son/",
+        scripture_ref="Luke 15:11-32",
+    ),
+    SermonEntry(
+        "working-out-our-own-salvation", "Working Out Our Own Salvation",
+        "martyn-lloyd-jones", "sermonindex",
+        _SI + "martyn-lloyd-jones/working-out-our-own-salvation/",
+        scripture_ref="Philippians 2:12-13",
+    ),
+    SermonEntry(
+        "so-great-salvation", "So Great Salvation", "martyn-lloyd-jones",
+        "sermonindex", _SI + "martyn-lloyd-jones/so-great-salvation/",
+        scripture_ref="Hebrews 2:1-4",
+    ),
+    SermonEntry(
+        "full-salvation", "Full Salvation", "martyn-lloyd-jones", "sermonindex",
+        _SI + "martyn-lloyd-jones/full-salvation/",
+    ),
+    SermonEntry(
+        "the-wrath-of-god", "The Wrath of God", "martyn-lloyd-jones",
+        "sermonindex", _SI + "martyn-lloyd-jones/the-wrath-of-god/",
+        scripture_ref="Romans 1:18",
+    ),
+    SermonEntry(
+        "a-living-hope-of-the-hereafter", "A Living Hope of the Hereafter",
+        "martyn-lloyd-jones", "sermonindex",
+        _SI + "martyn-lloyd-jones/a-living-hope-of-the-hereafter/",
+        scripture_ref="1 Peter 1:3-4",
+    ),
+    SermonEntry(
+        "what-is-revival", "What Is Revival?", "martyn-lloyd-jones",
+        "sermonindex", _SI + "martyn-lloyd-jones/what-is-revival/",
     ),
 ]
