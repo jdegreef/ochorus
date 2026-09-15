@@ -51,7 +51,7 @@
 {#if topicTabs.length > 1}
 	<nav class="filter-row mb-6" aria-label={t('articles.filterByTopic')}>
 		<a class="chip" class:active={activeTopic === ''} aria-current={activeTopic === '' ? 'page' : undefined} href="/articles/">
-			{t('search.filterAll')} <span class="count">{articles.length}</span>
+			{t('search.filterAll')}<span class="count">{articles.length}</span>
 		</a>
 		{#each topicTabs as tab (tab.slug)}
 			<a
@@ -60,7 +60,7 @@
 				aria-current={activeTopic === tab.slug ? 'page' : undefined}
 				href="/articles/{tab.slug}/"
 			>
-				{tab.title} <span class="count">{tab.count}</span>
+				{tab.title}<span class="count">{tab.count}</span>
 			</a>
 		{/each}
 	</nav>

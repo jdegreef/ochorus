@@ -323,4 +323,7 @@
 		align-self: stretch;
 		background: var(--border);
 	}
+	/* .selbar-btn's 44px touch target lives in the global app.css
+	   `@media (pointer: coarse)` block (a global selector matches this scoped
+	   class by name), beside the other reader controls. */
 </style>
