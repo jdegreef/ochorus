@@ -1164,6 +1164,13 @@ nav.appnav .navsearch:hover {
 	font-variant-numeric: tabular-nums;
 	color: var(--muted);
 }
+/* In a filter pill the count sits right after the label ("Books 37"). The call
+   sites put it on its own line, which Svelte trims to nothing, so the gap has to
+   come from here — scoped to chips so headings that right-align their count with
+   `ms-auto` (GroupHeading) are untouched. */
+.chip .count {
+	margin-inline-start: 0.3rem;
+}
 
 /* The EYEBROW — the kicker above a page title, a card title, a popover heading.
    Distinct from .section-label above, which labels a block of content within a
@@ -1939,13 +1946,19 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.widthctl button,
 		.account-item,
 		.rc-opt,
+		.selbar-btn,
 		.google-btn {
 			min-height: 2.75rem;
 		}
 		/* Buttons whose label would otherwise sit at the top of the taller box.
-		   (.btn and .widthctl button are already inline-flex + centred.) */
+		   (.btn and .widthctl button are already inline-flex + centred.) A global
+		   selector still matches a component-scoped class by name — Svelte scoping
+		   only raises the specificity of a component's OWN selectors — so
+		   `.selbar-btn` (defined only in SelectionBar.svelte, like `.rc-opt` and
+		   `.google-btn`) is handled here rather than duplicated in that file. */
 		.chip,
-		.seg button {
+		.seg button,
+		.selbar-btn {
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
@@ -1954,15 +1967,20 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 			display: flex;
 			align-items: center;
 		}
-		/* The avatar and gear keep their 32px disc — enlarging them would reflow a
-		   nav bar that is already tight on a phone. Instead each grows an
-		   invisible, centred 44px hit area, which is what the finger needs. */
+		/* The nav bar's icon buttons — avatar, gear, hamburger and search pill —
+		   keep their compact disc, because enlarging them would reflow a bar that
+		   is already tight on a phone. Instead each grows an invisible, centred
+		   44px hit area, which is what the finger needs. */
 		.account-btn,
-		.prefs-btn {
+		.prefs-btn,
+		.navtoggle,
+		.navsearch {
 			position: relative;
 		}
 		.account-btn::after,
-		.prefs-btn::after {
+		.prefs-btn::after,
+		.navtoggle::after,
+		.navsearch::after {
 			content: '';
 			position: absolute;
 			top: 50%;
@@ -1981,6 +1999,21 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	.field,
 	.filter-field {
 		font-size: var(--fs-body);
+	}
+	/* Also unlayered, and for the same reason: the base .hl-swatch width and the
+	   footer links' `py-1` utility would both beat a rule inside the @layer above.
+	   The four highlight-colour swatches are an inherently touch action, so the
+	   disc itself grows to the target on a phone (an invisible hit area would
+	   overlap its neighbours at 0.3rem apart). */
+	.hl-swatch {
+		width: 2.75rem;
+		height: 2.75rem;
+	}
+	/* Footer language strip: grow each autonym's row with padding (no display
+	   change, as .footer-links a does) — a mis-tap here doesn't scroll, it
+	   switches the whole site's language. */
+	.footer-lang {
+		padding-block: 0.7rem;
 	}
 }
 

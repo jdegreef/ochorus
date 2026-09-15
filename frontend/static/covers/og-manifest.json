@@ -26,11 +26,11 @@
    "scrim": 1
   },
   "a-retrospect": {
-   "ground": "d3166331f6beff1bc85dc4b336357ae441aeb869b81775064ae7f669d23c84f9",
+   "ground": "0521a9b4a137ca2637f39483ecad9d2d792f4e8fb817a1007ac2457678cace81",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.85
   },
   "a-serious-call": {
    "ground": "4f01eab7166112682128eb186abcc66ad3c3003e2b8d57a2733ba87682b48d6b",
@@ -249,6 +249,13 @@
    "art": true,
    "scrim": 0.55
   },
+  "brave-for-god": {
+   "ground": "7fe5042c3ee149f373fd1dfc95957ed0570c505e89d184a24b6392b16f89672c",
+   "style": "house",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
   "sw/around-the-wicket-gate": {
    "ground": "8ce84580fb0a6d4327977a8918a8bcad1d419a77bf91022769fdfe431fb84907",
    "style": "revival",
@@ -271,11 +278,11 @@
    "scrim": 1
   },
   "days-of-heaven-upon-earth": {
-   "ground": "6217dfe1fbbda48292bccb868127977ab7197e2d53d41bac95384a7d685b7c75",
+   "ground": "b1a664f1d52598c64e23cbbd9266dffed4668a23693b0be5fbadb3a98f33e4be",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.7
   },
   "divine-healing": {
    "ground": "af714b6b1c4dd06581012c8a91eaf12ec964f029929dfed0a9327d179b0a45b2",
@@ -474,11 +481,11 @@
    "scrim": 0.8
   },
   "es/separation-and-service": {
-   "ground": "cad64c13ac360a3b5749bf0557546ac4becda2489677b7d1e938965901dc4eb8",
+   "ground": "a51bafe3114633c0a1f6c78949aad266e93b04a2f61478572e2c58ed3bab6adb",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.8
   },
   "es/talks-to-the-farmer": {
    "ground": "abc63c24446d73ff2a0cca4588c0648360cc1738e42281f67bb9a842dd9454e8",
@@ -796,11 +803,11 @@
    "scrim": 0.3
   },
   "lg/days-of-heaven-upon-earth": {
-   "ground": "e64b4c6a38d280286950d44744bab86eb033c5e72c4d1b39d2fc0ba546994048",
+   "ground": "b1561f668d7d04562ad7020e3f09c9800faf2bc1990f544c432932fca622cd44",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.7
   },
   "lg/feasting-at-the-table": {
    "ground": "cc7ee2adc9479b3488c09b82f3a1af77a1a8c55aa2df806a4df05abcbca2d169",
@@ -1300,11 +1307,11 @@
    "scrim": 0.6
   },
   "separation-and-service": {
-   "ground": "5ae1db4d9e3c0a5a2a1871a103064d0936fa323dd2eae87570b549627b06f6ab",
+   "ground": "b5c37147984c8cb9a880244433b052d9a7562c9a92fb0accee0ac6801b0919cb",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.8
   },
   "sermons-on-several-occasions": {
    "ground": "61d5bb1c857733055d6fad0c2da99d72dcc1d325dce5a9f3da6aed0b692dc3d5",
@@ -1356,11 +1363,11 @@
    "scrim": 0.3
   },
   "sw/days-of-heaven-upon-earth": {
-   "ground": "86f59c90ceabf1572d279d516db2b712382040b49103dac9e440cc14ce13be6f",
+   "ground": "ce0c94b9e37f6cd7dc116c1e640202290b71f0033cd5a175a7711cd964749611",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.7
   },
   "sw/divine-healing": {
    "ground": "687d09bde421adcf1dfc9bfcdd013ce6e4382989a21b4f68d648ca6247ce6f9b",
@@ -1489,11 +1496,11 @@
    "scrim": 0.95
   },
   "sw/the-gospel-of-healing": {
-   "ground": "a5dae69e8af98ea62405dbf29663bfa73f5e157c533c3b26e018b57bddd517b6",
+   "ground": "4c94be3f1b83a6d1d3d2e91c3a9b97c14e7645a9d0bf6010c03275f71b5a9fc5",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.55
   },
   "sw/the-inner-chamber": {
    "ground": "f61e809f09f9599943ecc915b7631473eff9c78e20dbdbf35a0c021d057941a6",
@@ -1615,11 +1622,11 @@
    "scrim": 1
   },
   "the-gospel-of-healing": {
-   "ground": "1883499ea592265954865f02edbaf0e6c92b980f512ca2405bf0817d4d15f720",
+   "ground": "05fbf49fb1b67d63712dabaca8c8586877422f76d1165904f7f34c1aa8e54b3c",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.55
   },
   "the-imitation-of-christ": {
    "ground": "6a70cd9985a4ad6de6e946a0aacf9740b431aa940bc84cfc49d70b38912fbf8a",

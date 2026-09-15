@@ -18,6 +18,7 @@ that draw a cover; `coverScrim.test.ts` fails if the two drift.
 
 ART_SCRIM: dict[str, float] = {
     "a-call-to-the-unconverted": 0.70,
+    "a-retrospect": 0.85,
     "absolute-surrender": 0.95,
     "all-of-grace": 0.70,
     "all-things-for-good": 0.85,
@@ -27,6 +28,7 @@ ART_SCRIM: dict[str, float] = {
     "cheque-book": 0.50,
     "clothed-with-strength-and-dignity": 0.30,
     "confessions": 1.00,
+    "days-of-heaven-upon-earth": 0.70,
     "divine-healing": 0.45,
     "essentials-of-prayer": 0.80,
     "feasting-at-the-table": 0.80,
@@ -58,6 +60,7 @@ ART_SCRIM: dict[str, float] = {
     "religious-affections": 0.50,
     "revival-lectures": 0.85,
     "selected-sermons-whitefield": 0.60,
+    "separation-and-service": 0.80,
     "sermons-on-several-occasions": 0.75,
     "soar-like-the-eagle-3": 0.90,
     "spurgeon-on-prayer": 0.80,
@@ -68,6 +71,7 @@ ART_SCRIM: dict[str, float] = {
     "the-fourfold-gospel": 0.85,
     "the-fundamental-doctrines-of-the-christian-faith": 0.95,
     "the-god-of-all-comfort": 0.95,
+    "the-gospel-of-healing": 0.55,
     "the-imitation-of-christ": 0.85,
     "the-inner-chamber": 0.30,
     "the-key-in-my-hand": 0.95,

@@ -619,7 +619,17 @@
 		</section>
 	{/if}
 
-	{#if sermon.source_url}
+	<!-- A permission credit (`attribution`) takes precedence over the generic
+	     public-domain line: these sermons are copyrighted and used by
+	     permission, so the page must never label them public domain. -->
+	{#if sermon.attribution}
+		<p class="mt-12 border-t border-border pt-5 text-small text-muted">
+			{sermon.attribution}
+			{#if sermon.source_url}
+				<a href={sermon.source_url} target="_blank" rel="noreferrer">SermonIndex</a>.
+			{/if}
+		</p>
+	{:else if sermon.source_url}
 		<p class="mt-12 border-t border-border pt-5 text-small text-muted">
 			{t('book.publicDomain')}
 			<a href={sermon.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.

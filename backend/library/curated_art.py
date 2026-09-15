@@ -401,6 +401,45 @@ CURATED: dict[str, Artwork] = {
         "harvest brought in and a spire standing in it.",
         focus=0.45,
     ),
+    # ── Batch 10 · Hudson Taylor's plate books ─────────────────────────────
+    # (Batch 9 is Wesley's, just above.) Taylor gave his life to inland China,
+    # so A Retrospect wears Chinese ink, as Nee's cover does — a different
+    # register from the oils on purpose, for the one book here whose whole
+    # subject is China. Separation and Service is on Numbers 6–7 (the Nazarite
+    # set apart, the offerings brought), so it gets a Western path into
+    # consecrated light. Cleveland CC0.
+    "a-retrospect": Artwork(
+        "cma", 149613, "Chen Hongshou",
+        "Paintings after Ancient Masters: Daoist and Crane in Autumn Landscape",
+        "1598–1652",
+        "Taylor looks back over a life spent inland in China. Chen Hongshou sets "
+        "a lone figure by the water under autumn trees — the country Taylor gave "
+        "himself to, rendered in its own tradition's hand.",
+    ),
+    "separation-and-service": Artwork(
+        "cma", 172806, "Sanford Robinson Gifford", "Autumn, a Wood Path", "1876",
+        "Numbers 6 and 7: the Nazarite set apart, then the offerings brought. "
+        "Gifford lights a single path through a wood like a nave — a way walked "
+        "apart, toward the service at its end.",
+    ),
+    # ── Batch 11 · A. B. Simpson's plate books ─────────────────────────────
+    # (Batch 10 is Hudson Taylor's, just above.) Simpson founded the Christian
+    # and Missionary Alliance; two of his works wore plates, both multilingual
+    # (lg, sw). Luminous American landscape for the C&MA man — heaven ablaze
+    # over the earth, and still water that restores.
+    "days-of-heaven-upon-earth": Artwork(
+        "cma", 141639, "Frederic Edwin Church", "Twilight in the Wilderness", "1860",
+        "A daily devotional named from Deuteronomy 11:21 — 'as the days of "
+        "heaven upon the earth.' Church sets the whole sky ablaze over a still "
+        "lake: the heavens come down onto the land.",
+        focus=0.4,
+    ),
+    "the-gospel-of-healing": Artwork(
+        "cma", 140338, "Charles François Daubigny", "Sunset on the River Oise", "1866",
+        "Simpson's book on divine healing. Daubigny lays a river down still and "
+        "reflecting at dusk — the restoring water of Psalm 23, quiet enough to "
+        "mend by.",
+    ),
 }
 
 
