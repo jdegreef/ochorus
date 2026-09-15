@@ -1399,6 +1399,16 @@ all of which this command already does. The steps:
   again, then `DJANGO_DEBUG=true uv run python manage.py makemigrations
   --check --dry-run`; if it names leaves, `makemigrations --merge --no-input`
   and commit the no-op merge migration.
+  **The SAME merge-ref trap hits `ruff`** — CI lints the PR merged into *current*
+  main, so a rule a parallel session TIGHTENED after your branch base fails CI
+  while your local `ruff check .` (older config) passes green. Bit the Pilgrim's
+  Progress build with **B905 (`zip()` without `strict=`)**, added to the config
+  upstream — local ruff said "All checks passed", CI red. So `git merge
+  origin/main` and re-run `uv run ruff check .` before pushing, same as the
+  migration check. (B905 fix: pass `strict=True`, but only after making the
+  iterables equal length — `zip(items, bounds[:-1], bounds[1:], strict=True)`,
+  not the mismatched `bounds`/`bounds[1:]`, which would raise at runtime.)
+  *(pilgrims-progress-words-of-one-syllable, 2026-09)*
 - **Batch several authors' sermons into ONE PR** when they land together
   *(Tier 2, #1418, 2026-09-04)*. Every sermon PR touches `og-manifest.json`,
   and catalog additions all insert at the same tail, so N parallel sermon PRs
