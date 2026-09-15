@@ -154,6 +154,29 @@ class SupabaseJWTAuthenticationTests(TestCase):
         self.auth.authenticate(_request(_token()))  # no app_metadata at all
         self.assertEqual(UserProfile.objects.get(supabase_uid=SUB).providers, "google")
 
+    # -- sign-up-band attribution (user_metadata.signup_variant) --------------
+
+    def test_records_signup_variant_from_token_metadata(self):
+        token = _token(email="reader@example.com", user_metadata={"signup_variant": "habit"})
+        user, _ = self.auth.authenticate(_request(token))
+        self.assertEqual(UserProfile.objects.get(user=user).signup_variant, "habit")
+
+    def test_signup_variant_is_create_only(self):
+        # Recorded at first sign-up; a later login (even one advertising a
+        # different arm, as a stale localStorage would) must not move it.
+        self.auth.authenticate(_request(_token(user_metadata={"signup_variant": "keep"})))
+        self.auth.authenticate(_request(_token(user_metadata={"signup_variant": "library"})))
+        self.assertEqual(UserProfile.objects.get(supabase_uid=SUB).signup_variant, "keep")
+
+    def test_unknown_signup_variant_is_dropped(self):
+        # A stray/hand-edited value can't pollute the analytics vocabulary.
+        self.auth.authenticate(_request(_token(user_metadata={"signup_variant": "bogus"})))
+        self.assertEqual(UserProfile.objects.get(supabase_uid=SUB).signup_variant, "")
+
+    def test_no_signup_variant_leaves_it_blank(self):
+        self.auth.authenticate(_request(_token(email="reader@example.com")))
+        self.assertEqual(UserProfile.objects.get(supabase_uid=SUB).signup_variant, "")
+
     def test_authenticate_header_is_bearer(self):
         self.assertEqual(self.auth.authenticate_header(_request(None)), "Bearer")
 

@@ -1020,6 +1020,37 @@ class AdminUsersTests(TestCase):
         self.assertEqual(labels["email"], "Email")
 
     @override_settings(DEBUG=True)
+    def test_by_signup_variant_counts_labels_and_targeted_flag(self):
+        import uuid
+
+        from django.contrib.auth import get_user_model
+
+        from accounts.models import UserProfile
+
+        User = get_user_model()
+
+        def mk_variant(variant):
+            u = User.objects.create(username=str(uuid.uuid4()))
+            UserProfile.objects.create(user=u, supabase_uid=uuid.uuid4(), signup_variant=variant)
+
+        for v in ("keep", "keep", "habit", "progress"):
+            mk_variant(v)
+        # setUp's three profiles have no variant → they land in "unknown".
+
+        res = self.client.get("/api/admin/users/")
+        rows = {r["variant"]: r for r in res.data["by_signup_variant"]}
+        self.assertEqual(rows["keep"]["count"], 2)
+        self.assertEqual(rows["habit"]["count"], 1)
+        self.assertEqual(rows["progress"]["count"], 1)
+        self.assertEqual(rows["unknown"]["count"], 3)
+        # The progress arm is flagged as targeted; the random arms are not.
+        self.assertTrue(rows["progress"]["targeted"])
+        self.assertFalse(rows["keep"]["targeted"])
+        self.assertEqual(rows["keep"]["label"], "Keep what you find")
+        # "unknown" stays last regardless of its size.
+        self.assertEqual(res.data["by_signup_variant"][-1]["variant"], "unknown")
+
+    @override_settings(DEBUG=True)
     def test_recent_lists_individuals_newest_first(self):
         res = self.client.get("/api/admin/users/")
         recent = res.data["recent"]

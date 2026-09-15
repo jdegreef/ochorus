@@ -3,7 +3,6 @@
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
-	import { auth } from '$lib/auth.svelte';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import ReadingNudge from '$lib/components/ReadingNudge.svelte';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
@@ -11,6 +10,7 @@
 	import TopicChips from '$lib/components/TopicChips.svelte';
 	import AuthorTile from '$lib/components/AuthorTile.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
+	import SignupBand from '$lib/components/SignupBand.svelte';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
 
 	/**
@@ -184,20 +184,11 @@
 </section>
 
 <!-- Create-an-account band: right after "how it works" explains the tracking
-     benefit — the natural moment to ask for the sign-up. The sync benefit is the
-     reason to sign up, so lead with it. Only where accounts actually work (auth
-     configured) — otherwise it would promise a feature the deployment lacks. -->
-{#if auth.enabled}
-	<section class="mt-14 border-y border-border bg-surface-2">
-		<div class="mx-auto max-w-3xl px-5 py-16 text-center">
-			<h2 class="text-h2 mb-3">{t('home.signupTitle')}</h2>
-			<p class="mx-auto mb-6 max-w-xl text-body text-muted">{t('login.syncNote')}</p>
-			<a href="{localizeHref('/login')}?mode=signup" class="btn btn-primary">
-				{t('login.createAccountLink')}
-			</a>
-		</div>
-	</section>
-{/if}
+     benefit — the natural moment to ask for the sign-up. Four bands run behind
+     one component (three A/B arms + a progress-targeted one); it self-gates on
+     `auth.enabled`, so it stays hidden where accounts don't work and never bakes
+     into the prerendered HTML. See SignupBand. -->
+<SignupBand books={data.books} />
 
 <!-- Sermon of the week — editorial content discovery, not personal. Renders
      nothing when there is no featured sermon in the current language. -->

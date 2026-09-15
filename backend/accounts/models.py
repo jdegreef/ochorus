@@ -11,6 +11,15 @@ def split_providers(value: str) -> list[str]:
     return [p for p in value.split(",") if p]
 
 
+#: The logged-out home sign-up band arms (``UserProfile.signup_variant``). Three
+#: random A/B arms shown to first-time visitors, plus ``progress`` — the
+#: progress-targeted variant shown only to readers who already have local
+#: reading. Kept here so the JWT capture (``accounts.authentication``) and the
+#: admin breakdown (``library.admin_views.analytics``) share one vocabulary; an
+#: unknown value from a stray client is dropped rather than stored.
+SIGNUP_VARIANTS = ("keep", "habit", "library", "progress")
+
+
 class UserProfile(models.Model):
     """App-side profile for a Supabase-authenticated user.
 
@@ -56,6 +65,15 @@ class UserProfile(models.Model):
     # approximate country (accounts/geo.py). Blank until first observed; a row
     # created before this existed stays blank until its owner signs in again.
     timezone = models.CharField(max_length=40, blank=True, default="")
+
+    # Which logged-out sign-up band drove this account — the home page's A/B +
+    # targeted sign-up prompt (see SIGNUP_VARIANTS). Captured from the JWT's
+    # ``user_metadata.signup_variant`` at profile CREATION only (a create-only
+    # observation, like the fixture-owned fields): a later login never revisits
+    # it, so it records the arm that was showing when the reader actually signed
+    # up. Blank for accounts created before this shipped and for sign-ups that
+    # carried no variant (e.g. Google OAuth, which can't pass metadata).
+    signup_variant = models.CharField(max_length=32, blank=True, default="")
 
     # Indexed: the admin's recent-sign-ups list orders by it, and the sign-up
     # range counts (signups_7d/30d) filter on it.

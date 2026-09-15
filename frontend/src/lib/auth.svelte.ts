@@ -7,6 +7,7 @@ import { listen } from './listen.svelte';
 import { theme, normalizePref } from './theme.svelte';
 import { lang } from './lang.svelte';
 import { readingSync } from './readingSync';
+import { shownVariant } from './signupBand';
 import { type AdminScope, type Scopes, can as canDo, hasAnyAdminAccess } from './adminAccess';
 
 export interface Profile {
@@ -39,6 +40,18 @@ const NOT_CONFIGURED = AUTH_NOT_CONFIGURED;
 
 /** Absolute app origin for redirect URLs (magic link / OAuth land back here). */
 const origin = () => (browser ? window.location.origin : undefined);
+
+/**
+ * Supabase sign-up options carrying the sign-up-band attribution, or nothing.
+ * `data` lands in the user's ``user_metadata`` (so it survives the email
+ * confirmation round-trip) and Django records it create-only against the new
+ * account. Only set when the reader actually saw a band — the backend also
+ * validates the value, so a stale key can never corrupt the analytics.
+ */
+function signupMetadata(): { data?: { signup_variant: string } } {
+	const variant = shownVariant();
+	return variant ? { data: { signup_variant: variant } } : {};
+}
 
 /**
  * Auth + cross-device preference sync. Supabase owns the credentials; on sign-in
@@ -164,7 +177,7 @@ class Auth {
 		const { error } = await sb.auth.signUp({
 			email,
 			password,
-			options: { emailRedirectTo: origin() }
+			options: { emailRedirectTo: origin(), ...signupMetadata() }
 		});
 		// `||`, not `??`: an AuthError with an empty-string code would otherwise
 		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
@@ -178,7 +191,10 @@ class Auth {
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithOtp({
 			email,
-			options: { emailRedirectTo: origin() }
+			// `data` seeds user_metadata only when this link CREATES the account,
+			// so it attributes a first-time sign-up and is ignored for a returning
+			// reader — same create-only story as the password path.
+			options: { emailRedirectTo: origin(), ...signupMetadata() }
 		});
 		// `||`, not `??`: an AuthError with an empty-string code would otherwise
 		// return '' — which every caller's `if (err)` reads as SUCCESS, silently

@@ -258,6 +258,23 @@ def _provider_label(code: str) -> str:
     return PROVIDER_LABELS.get(code, code.replace("_", " ").title())
 
 
+# Human labels for the logged-out home sign-up band arms (see
+# accounts.models.SIGNUP_VARIANTS). "progress" is the progress-targeted variant,
+# shown only to readers who already have local reading — a warmer audience than
+# the random A/B arms, so it is not comparable head-to-head; the UI keeps it
+# labelled and set apart. Anything unlisted is title-cased.
+SIGNUP_VARIANT_LABELS = {
+    "keep": "Keep what you find",
+    "habit": "Reading rhythm",
+    "library": "Build your shelf",
+    "progress": "Progress-targeted",
+}
+
+
+def _signup_variant_label(code: str) -> str:
+    return SIGNUP_VARIANT_LABELS.get(code, code.replace("_", " ").title())
+
+
 def _profile_summary(p) -> dict:
     """The per-account fields shared by the recent-signups list and the user
     directory. One home for the provider→label contract (labelled server-side so
@@ -324,6 +341,7 @@ class AdminUsersView(APIView):
                 "signups_prev_30d": signups_between(60, 30),
                 "weekly_signups": self._weekly_signups(now),
                 "by_method": self._by_method(),
+                "by_signup_variant": self._by_signup_variant(),
                 "recent": self._recent(),
                 "by_locale": self._by_locale(),
                 **self._geography(),
@@ -368,6 +386,42 @@ class AdminUsersView(APIView):
         ]
         if unknown:
             out.append({"method": "unknown", "label": "Unknown", "count": unknown})
+        return out
+
+    def _by_signup_variant(self):
+        """Accounts per logged-out sign-up band arm — the home page's A/B test.
+
+        Each account counts once, under the arm that was showing when it was
+        created (create-only, so a later login can't move it). ``targeted``
+        flags the progress-targeted variant: it is shown only to readers who
+        already had local reading, so its rate is NOT comparable head-to-head
+        with the random arms — the UI sets it apart. ``unknown`` collects
+        accounts with nothing recorded (created before this shipped, or a
+        sign-up that carried no variant, e.g. Google OAuth). Only the four known
+        arms are ever stored (validated on capture), so no junk reaches here.
+        """
+        from django.db.models import Count
+
+        from accounts.models import UserProfile
+
+        rows = {
+            r["signup_variant"]: r["n"]
+            for r in UserProfile.objects.values("signup_variant").annotate(n=Count("id"))
+        }
+        unknown = rows.pop("", 0)
+        out = [
+            {
+                "variant": code,
+                "label": _signup_variant_label(code),
+                "count": n,
+                "targeted": code == "progress",
+            }
+            for code, n in sorted(rows.items(), key=lambda kv: (-kv[1], kv[0]))
+        ]
+        if unknown:
+            out.append(
+                {"variant": "unknown", "label": "Unknown", "count": unknown, "targeted": False}
+            )
         return out
 
     def _recent(self):
