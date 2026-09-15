@@ -17,10 +17,16 @@ year are recorded anyway because crediting the work is right, and because a
 reader of this file should be able to check the provenance without re-deriving
 it. ``SOURCES`` below turns each entry into that receipt.
 
-WHY NOT THE ART INSTITUTE OF CHICAGO, the obvious third: its catalogue API is
-excellent, but its IIIF image server refuses programmatic clients — 403 to
-every User-Agent tried, a browser's included. Metadata reachable, pixels not,
-so it cannot be a source here.
+THE ART INSTITUTE OF CHICAGO is the third, and its catalogue API is the best of
+the lot. Its IIIF image server was long thought unreachable — it 403s every
+programmatic client, a browser's own User-Agent included — but that was one
+missing header, not a policy: send ``Referer: https://www.artic.edu/`` and the
+same request returns 200. The two-hop shape is the catch to know — an object's
+id and its ``image_id`` are different values, the former on api.artic.edu and
+the latter the key to the pixels — and ``build_curated_covers._aic_image_url``
+walks it. Opened here for the landscape-heavy backlog the Met's keyword search
+would not surface: its relevance ranking answers a landscape query with famous
+figure paintings, and the Institute's search actually finds the picture.
 
 ART DIRECTION — landscape, architecture, sky, water, path.
 Deliberately no figurative devotional painting. The Met's religious holdings
@@ -60,6 +66,10 @@ SOURCES: dict[str, Source] = {
     "cma": Source(
         "The Cleveland Museum of Art, CC0",
         "https://www.clevelandart.org/art/{}",
+    ),
+    "aic": Source(
+        "The Art Institute of Chicago, CC0",
+        "https://www.artic.edu/artworks/{}",
     ),
 }
 
@@ -353,6 +363,26 @@ CURATED: dict[str, Artwork] = {
         "met", 438106, "Canaletto", "Warwick Castle", "1748",
         "A stronghold on its rock, drawn stone by stone — the fundamentals are "
         "the fortress a faith is kept in, and this is one built to last.",
+    ),
+    # ── Batch 8 · Athanasius, and a third collection ───────────────────────
+    # The two 4th-century Alexandrian works wore flat plates, and both wanted a
+    # landscape the Met's search could not surface — a desert and a dawn. So this
+    # batch opens the Art Institute of Chicago as the third source (see the
+    # module docstring: its pixels are reachable after all, given a Referer).
+    # Two different painters, as the art direction asks — a wilderness and a
+    # first light.
+    "life-of-antony": Artwork(
+        "aic", 16512, "Victor Pierre Huguet", "Ravine Near Biskra", "c. 1895",
+        "Antony went out into the Egyptian desert and, Athanasius says, made the "
+        "wilderness a city. Huguet painted North Africa from life — a ravine at "
+        "the desert's edge, robed riders small in it: the solitude the hermit "
+        "went to find.",
+    ),
+    "on-the-incarnation": Artwork(
+        "aic", 57163, "Thomas Cole", "New England Scenery", "1839",
+        "Athanasius' argument is that God took a body so a light could reach a "
+        "world sunk in the dark. Cole fills the whole valley with first light "
+        "and sets a white spire exactly where it falls.",
     ),
 }
 
