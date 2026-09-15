@@ -2339,6 +2339,48 @@
       "same_as": [
         "https://en.wikipedia.org/wiki/John_Cassian",
         "https://www.wikidata.org/wiki/Q313795"
+      ],
+      "faq": [
+        {
+          "q": "Who was John Cassian?",
+          "a": "Born around AD 360, most likely in Scythia Minor at the mouth of the Danube, John Cassian spent roughly fifteen years among the desert fathers of Egypt asking old men how to pray, and the rest of his life writing down their answers in Latin for monks in southern France who would never see Egypt. Almost everything the Western church came to know about the desert fathers, it knows because Cassian took notes; Benedict told his monks to read Cassian's Conferences aloud every evening, and for a thousand years they did."
+        },
+        {
+          "q": "How did he come to the Egyptian desert?",
+          "a": "As a young man he left for the Holy Land with a friend named Germanus, whose name appears on nearly every page he ever wrote, and entered a monastery near Bethlehem. It was not enough. The two had heard that the real thing lay further south and got permission for a short visit to Egypt — and stayed something like fifteen years, going from elder to elder in the settlements of Scetis and the Cells, asking questions of the first generation after Antony."
+        },
+        {
+          "q": "What are the Conferences?",
+          "a": "They are the record of those conversations — twenty-four dialogues, each with a named abba, on chastity, discouragement, friendship, the will, Scripture, and above all prayer. The two conferences with Abba Isaac, the ninth and tenth, are the reason people still read the book: Isaac teaches that prayer is not an activity you perform at intervals but a state you can live in, and that the obstacle is not sin so much as the mind's inability to stay still."
+        },
+        {
+          "q": "What was Abba Isaac's method of prayer?",
+          "a": "It was startlingly practical: take one verse of Scripture and use it constantly as the mind's ballast. \"For keeping up continual recollection of God this pious formula is to be ever set before you: O God, make speed to save me: O Lord, make haste to help me.\" Isaac walks through an ordinary day showing the verse in use — at waking, at temptation, before supper, in the small hours — one of the earliest descriptions of what later ages would call the practice of the presence of God."
+        },
+        {
+          "q": "Did he describe prayer beyond words?",
+          "a": "Yes. Cassian writes of a state in which the soul, kindled beyond speech, pours itself out with unspeakable groans, but he is careful to say this cannot be manufactured and should not be sought for its own sake. He insists too that the man weeping over his sins in terror and the man silent in delight at the goodness of God are equally far along; what matters is not which you feel but that you have stopped performing."
+        },
+        {
+          "q": "What was his link to John Chrysostom?",
+          "a": "Around 400 the Origenist controversy broke the peace of the Egyptian desert, and Cassian and Germanus went to Constantinople, where the archbishop John Chrysostom ordained Cassian a deacon and put the two friends in charge of the cathedral treasury. They were there for the Synod of the Oak, the false charges and the deposition, and Cassian took Chrysostom's side without hedging — chosen to carry the loyal clergy's appeal to Pope Innocent I in Rome."
+        },
+        {
+          "q": "What are the Institutes?",
+          "a": "The Institutes came first: the practical manual, covering how a monastery is actually run, what the monks wear, how the offices are kept, and then, in its second half, the eight principal faults — gluttony, lust, avarice, anger, dejection, listlessness, vainglory and pride. That list, revised by Gregory the Great, became the seven deadly sins of the medieval West. Cassian's treatment is less moralising than clinical, and his chapters on acedia, the listlessness that empties out the afternoon, are still quoted."
+        },
+        {
+          "q": "What holds the Conferences together?",
+          "a": "A single conviction, stated in the first conference: the immediate goal of the monastic life is purity of heart, and everything else — fasting, vigils, poverty, solitude — is an instrument, worthless the moment it is mistaken for the point. It is the thread that keeps the whole desert tradition, in Cassian's hands, from hardening into mere technique or heroics."
+        },
+        {
+          "q": "What was the controversy over grace?",
+          "a": "The thirteenth conference deals with grace and free will, and its refusal to say that the first movement toward God is always and only God's brought Cassian into conflict with the followers of Augustine; Prosper of Aquitaine attacked him in print. The label later attached to his position, \"semi-Pelagianism,\" is a sixteenth-century coinage and a poor summary of what he actually says — the observation of a man who had watched hundreds struggle and could not bring himself to call their striving nothing."
+        },
+        {
+          "q": "Why is Cassian worth reading?",
+          "a": "He forecloses the temptation to read the desert fathers as extremists with nothing to say to ordinary life: he is writing for men in Gaul with rain and mud and neighbours, keeping what transfers and saying plainly when something does not. What transfers is the diagnosis — he is extraordinarily good on the mind that will not stay put, on a wandering thought in prayer as a symptom to understand rather than a failure to flog. He died at Marseilles around 435."
+        }
       ]
     }
   },
@@ -2358,6 +2400,48 @@
       "same_as": [
         "https://en.wikipedia.org/wiki/Anselm_of_Canterbury",
         "https://www.wikidata.org/wiki/Q43939"
+      ],
+      "faq": [
+        {
+          "q": "Who was Anselm of Canterbury?",
+          "a": "Anselm (1033–1109) was a monk of Bec who became an unwilling Archbishop of Canterbury and was exiled twice for refusing to treat the church's offices as the king's property. He is remembered for the argument at the heart of the Proslogion, but that book is a prayer from first line to last, written by a man who said he did not seek to understand in order to believe, but believed in order to understand — and his private prayers changed how the medieval West prayed."
+        },
+        {
+          "q": "What kind of book is the Proslogion?",
+          "a": "It is not a work of philosophy with some devotional decoration but a man on his knees, addressing God directly for its entire length, who happens partway through to see something and cannot stop himself from working it out on the page. Read as a treatise it is clever; read as it was written, it is one of the most moving things in medieval literature — and its famous argument was never meant to be prised out of the prayer it sits in."
+        },
+        {
+          "q": "What was his early life?",
+          "a": "He was born in Aosta, in the Alpine north of Italy, in 1033. His mother Ermenberga was devout and the parent he loved; his father Gundulf was harsh, and after his mother died the household became intolerable. At about twenty-three Anselm left home, crossed the Alps, and spent three years wandering through Burgundy and France with no settled plan, until a teacher ended it: Lanfranc, at the small monastery of Bec, where Anselm took vows in 1060."
+        },
+        {
+          "q": "What does \"faith seeking understanding\" mean?",
+          "a": "He first called the Proslogion \"Faith Seeking Understanding,\" and the phrase is the key to everything he did. He is not building a ladder from doubt up to belief; he is a believer trying to see what he already trusts. As he wrote in the first chapter, \"I do not seek to understand that I may believe, but I believe in order to understand. For this also I believe, that unless I believed, I should not understand.\""
+        },
+        {
+          "q": "How did his famous argument come to him?",
+          "a": "He wanted a single argument that needed nothing but itself, and it nearly broke him: \"at last in despair I was about to cease, as if from the search for a thing which could not be found.\" When he tried to give it up, it forced itself on him \"with a kind of importunity,\" and one day, wearied with resisting, \"in the very conflict of my thoughts, the proof of which I had despaired offered itself.\" He received it as a gift rather than an achievement."
+        },
+        {
+          "q": "What kind of teacher was he?",
+          "a": "Bec under Anselm was not a severe house, and that was deliberate. When an abbot complained that the boys in his care were incorrigible, beaten day and night and only getting worse, Anselm asked what a young tree would look like if it were hemmed in on every side so that it could not put out a branch, and said souls need room in the same way. He is one of the very few of his century on record as thinking that beating children produced worse adults."
+        },
+        {
+          "q": "How did he become archbishop, and why exile?",
+          "a": "In 1093, entirely against his will, he was made Archbishop of Canterbury; William Rufus had kept the see vacant for four years to pocket its revenues, and the bishops had to force the pastoral staff into Anselm's clenched fist. The sixteen years that followed were mostly conflict — he believed the church's offices were not the king's property, and Rufus, then Henry I, believed otherwise — and he went into exile twice, in 1097 and 1103, rather than give way."
+        },
+        {
+          "q": "What is Cur Deus Homo?",
+          "a": "\"Why God Became Man,\" written during his first exile, asks the question a sceptic would ask: given that God is God, why the incarnation — why not simply forgive? Anselm's answer, worked out as a dialogue with his student Boso, is that sin is not a debt God is owed like money but a dishonouring of the order of things that only a human being could repay and only God could afford. It is the origin of what later theology calls the satisfaction account of the atonement."
+        },
+        {
+          "q": "Was he willing to be argued with?",
+          "a": "Remarkably so. A monk named Gaunilo wrote a rebuttal of the Proslogion's central argument, cheerfully titled \"In Behalf of the Fool,\" and Anselm wrote a reply — then asked that from then on Gaunilo's objection and his answer be copied together with the book itself. For nine centuries the most famous argument in medieval theology has travelled with its best contemporary refutation attached, at the author's own insistence."
+        },
+        {
+          "q": "What did his prayers achieve, and how did he die?",
+          "a": "Alongside all his arguments he wrote prayers and meditations, circulated to friends — private, extravagant, emotionally naked, addressed to Christ and the saints in the first person, and unlike anything before them in Latin. They did more than any of his arguments to change how ordinary Western Christians prayed. He died on 21 April 1109 at Canterbury in Holy Week, having said he would like to live a little longer to solve a question about the soul's origin — dying, and still curious."
+        }
       ]
     }
   },
@@ -2377,6 +2461,48 @@
       "same_as": [
         "https://en.wikipedia.org/wiki/Bernard_of_Clairvaux",
         "https://www.wikidata.org/wiki/Q188411"
+      ],
+      "faq": [
+        {
+          "q": "Who was Bernard of Clairvaux?",
+          "a": "Bernard (1090–1153) entered a struggling new monastery at twenty-two bringing thirty companions with him, and was an abbot at twenty-five for the remaining thirty-eight years of his life. He made a pope, pursued Abelard to condemnation, preached a crusade that failed catastrophically, and in the same years wrote On Loving God and eighty-six sermons on the Song of Songs. He was the most powerful man in twelfth-century Europe who held no office worth having — an abbot, nothing more."
+        },
+        {
+          "q": "How did he come to Cîteaux and found Clairvaux?",
+          "a": "Born in 1090 near Dijon, the third son of a Burgundian knight, he presented himself in 1113 at Cîteaux — a reformed, deliberately austere house close to collapse for want of recruits — and did not come alone, arriving with about thirty men he had spent months persuading. Two years later the abbot sent him with twelve monks to found a daughter house in a valley in Champagne. They called it Clairvaux, and he was its abbot for thirty-eight years, from which sixty-eight further monasteries were founded."
+        },
+        {
+          "q": "What does On Loving God teach?",
+          "a": "A cardinal had asked why God should be loved and how much, and Bernard answered in the first two sentences: \"the reason for loving God is God Himself; and the measure of love due to Him is immeasurable love.\" The whole book turns on a single refusal — that the love of God can be measured out in proportion to anything at all. His answer to \"how much\" is not a quantity but the abolition of the question."
+        },
+        {
+          "q": "What are the four degrees of love?",
+          "a": "Bernard describes love arriving in stages. A man begins by loving himself for his own sake, which is where everyone starts; under pressure he learns to love God for what God gives him — a self-interested love Bernard does not despise; then he comes to love God for God's own sake. And then, rarely and briefly, a fourth: loving oneself only in God. He is honest that he has not lived there, calling it a rapture momentary at best in this life."
+        },
+        {
+          "q": "What was his public power?",
+          "a": "From about 1130 the outside world took hold of him. A disputed papal election split Europe, and his advocacy did more than anything else to make Innocent II pope; he was called to arbitrate quarrels, examine bishops and settle disputes across France, Italy and Germany. Hundreds of his letters survive, showing a man complaining bitterly about the traffic while continuing to direct it — a monk who had left the world at twenty-two and ended up managing it."
+        },
+        {
+          "q": "What was his conflict with Abelard?",
+          "a": "He pursued Peter Abelard, the age's most brilliant and abrasive theologian, to condemnation at Sens in 1140, believing Abelard was dissolving the mysteries of the faith into logic-chopping, while Abelard believed Bernard was substituting fervour for thought. Modern readers are generally on Abelard's side, and even those who are not tend to find Bernard's methods in that campaign hard to defend; he was capable of ferocity, and did not always know when he was being ferocious in his own cause."
+        },
+        {
+          "q": "What happened with the Second Crusade?",
+          "a": "In 1146, at the command of Pope Eugenius III — once his own monk at Clairvaux — Bernard preached the Second Crusade, and was overwhelmingly persuasive: the crowds were enormous and two kings took the cross. The expedition achieved nothing at vast human cost. He did not hide from it; in On Consideration he faced the wreck directly rather than reaching for the easy explanation, and took the weight of it on himself — one of the things worth respecting about him is that he wrote up his own worst failure."
+        },
+        {
+          "q": "What did he do about the massacres in the Rhineland?",
+          "a": "A monk named Radulf had gone ahead of Bernard's crusade preaching, whipping up massacres of Jewish communities in the Rhine cities. Bernard travelled there to stop him — confronting him in person, sending him back to his monastery, and insisting in writing that the Jews were not to be touched. It worked, and contemporary Jewish chroniclers recorded their gratitude; yet it is also true that the crusade he had summoned created the conditions Radulf exploited. Both halves are his."
+        },
+        {
+          "q": "What are his sermons on the Song of Songs?",
+          "a": "Through all his public labours he was preaching, in chapter at Clairvaux, a series of sermons on the Song of Songs — eighty-six of them over eighteen years, reaching only the beginning of the third chapter of the book. They are the summit of his writing and of a whole tradition of reading that poem as the love between Christ and the soul: sensuous, exact, psychologically observant, and utterly unembarrassed. He was still working on them when he died."
+        },
+        {
+          "q": "How did he die, and what is his legacy?",
+          "a": "He died at Clairvaux on 20 August 1153, worn out at sixty-three, having outlived his own health by years of fasting he later admitted had been foolish. Luther, with little patience for medieval saints, made an exception for him; Calvin quoted him; Dante gave him the last word in the Paradiso. What is worth taking from Bernard is not the political triumphs, which mostly turned to dust, but his relentless argument that effectiveness is not the point, and that the only proper measure of the love of God is that there isn't one."
+        }
       ]
     }
   },
@@ -2396,6 +2522,48 @@
       "same_as": [
         "https://en.wikipedia.org/wiki/Edward_McKendree_Bounds",
         "https://www.wikidata.org/wiki/Q4018797"
+      ],
+      "faq": [
+        {
+          "q": "Who was E. M. Bounds?",
+          "a": "Edward McKendree Bounds (1835–1913) was an American Methodist pastor, Civil War chaplain and former attorney who gave the last years of his life to rising at four in the morning to pray. He died largely unknown outside the churches he had served, leaving a stack of manuscripts; a century later his books on prayer have been translated into dozens of languages and never gone out of print. He is one of the clearest cases of a life whose fruit came almost entirely after its end."
+        },
+        {
+          "q": "What was his early life?",
+          "a": "Born in Missouri in 1835 and named for the frontier bishop William McKendree, he lost his father at fourteen and, like many of his generation, went west in the gold-rush years before coming back to read law, admitted to the bar as one of the youngest attorneys in the state. Converted under a Methodist revival, he gave up the practice — worth noting in a man trained to argue — and in 1859, at twenty-four, was ordained."
+        },
+        {
+          "q": "What did the Civil War cost him?",
+          "a": "In 1861 he was arrested by Union troops as a suspected Southern sympathiser and required to swear an oath of allegiance or pay a fine; he refused both, not out of politics but because he would not be compelled in a matter of conscience, and was held some eighteen months. He then served the rest of the war as a Confederate chaplain and was struck by a sabre at Franklin. The cause he served fought to preserve slavery, which nothing he later wrote alters."
+        },
+        {
+          "q": "What happened at Franklin after the war?",
+          "a": "He went back to Franklin — the town where he had been wounded, whose fields still held men he had buried — to pastor its Methodist church, and his method was almost absurdly simple. He looked for a handful of men who actually believed prayer did something, found about half a dozen, and every Tuesday night they knelt together and prayed for themselves, the church, the town, and revival in a wrecked and bitter country."
+        },
+        {
+          "q": "What did Franklin teach him?",
+          "a": "That decade shaped the rest of him. Everything he later put on paper about the uselessness of machinery and the necessity of praying men he learned first on the floor of a church in a defeated town: \"What the Church needs to-day is not more machinery or better, not new organizations or more and novel methods, but men whom the Holy Spirit can use — men of prayer, men mighty in prayer.\""
+        },
+        {
+          "q": "Was he a successful churchman?",
+          "a": "By ordinary reckoning, yes. He pastored in Alabama and Missouri and served as editor of the St Louis Christian Advocate and then associate editor of the Nashville Christian Advocate, for a time one of the more influential desks in Southern Methodism. He married twice — his first wife, Emmie, died in 1886 — and had nine children in all. The man who wrote so insistently about praying at four in the morning was not a monk with an empty house but a father with a full one."
+        },
+        {
+          "q": "What were the hours before daylight?",
+          "a": "Around 1894 he left the editor's chair for Washington, Georgia, held no prominent pulpit again, and made prayer his principal work — in the plain sense of work. He rose at four in the morning and prayed until seven, and those who knew him described a man walking and praying aloud in the dark hours, often carrying a single text for days until it burned. Almost nobody was watching."
+        },
+        {
+          "q": "What did he write in those hours?",
+          "a": "Eight manuscripts on prayer, covering its necessity, its possibilities, its reality, its weapons, and the men who had prayed in Scripture. Only one, \"Preacher and Prayer\" (1907, later retitled \"Power Through Prayer\"), found a publisher while he lived; the other seven sat in manuscript, and he had no reason to believe they would ever be read. \"The men who have done the most for God in this world have been early on their knees,\" he wrote."
+        },
+        {
+          "q": "How were the other seven books published?",
+          "a": "Bounds died at home in Washington, Georgia, on 24 August 1913, having written to a friend, \"When He is ready, I am ready; I long to taste the joys of the heavenlies.\" The manuscripts might have ended in an attic; instead two friends, Claudius Chilton and Homer Hodge, took up the labour of editing and placing them, and they appeared through the 1920s into 1931. He saw none of it, yet they have since been read in dozens of languages by more people than heard him preach."
+        },
+        {
+          "q": "Why does he still read?",
+          "a": "Bounds is not a systematic theologian and does not pretend to be; he repeats himself and hammers one nail. But he wrote as a man describing something he did every morning rather than something he had read about, and that is why the books have outlasted almost everything published alongside them. His central conviction never moves: God works through people, not arrangements. \"Talking to men for God is a great thing,\" he wrote, \"but talking to God for men is greater still.\""
+        }
       ]
     }
   },
@@ -2415,6 +2583,48 @@
       "same_as": [
         "https://en.wikipedia.org/wiki/Richard_Sibbes",
         "https://www.wikidata.org/wiki/Q3431220"
+      ],
+      "faq": [
+        {
+          "q": "Who was Richard Sibbes?",
+          "a": "Richard Sibbes (1577–1635) was an English Puritan preacher known in his own day as \"the heavenly Doctor.\" He preached in one of the harshest religious ages England has known and became famous for gentleness: where much of the Puritan pulpit pressed hard on the conscience, Sibbes went looking for the people who had already given up on themselves — the doubting, the downcast, the believer so bruised he could barely pray — and spoke to them with such tenderness that his century nicknamed him \"the sweet dropper.\""
+        },
+        {
+          "q": "What were his origins?",
+          "a": "He was born in 1577 at Tostock in Suffolk, the son of Paul Sibbes, a wheelwright — a maker and mender of wheels — who is said to have wished the boy would take up the family trade rather than bury himself in books. But the local minister and friends saw the promise in him, and from the grammar school at Bury St Edmunds he went up to St John's College, Cambridge, in 1595, took his degree in 1599, and was elected a Fellow in 1601."
+        },
+        {
+          "q": "How was he converted?",
+          "a": "Learning is not the same as life, and the decisive turn came around 1603 under the preaching of Paul Baynes, who had succeeded the great William Perkins in the pulpit of St Andrew's, Cambridge. Baynes was no celebrity and lived in relative obscurity, but under his plain, searching ministry Sibbes was converted, and he spoke of Baynes ever after as his father in the gospel — placing him in the lineage Perkins to Baynes to Sibbes."
+        },
+        {
+          "q": "What was his ministry?",
+          "a": "Ordained in his early thirties, he became a lecturer at Holy Trinity Church, Cambridge, around 1610 and drew crowds. In 1617 he was chosen preacher to the lawyers of Gray's Inn in London, one of the most influential pulpits in the country; in 1626 Cambridge called him back as Master of St Catharine's Hall; in 1627 he was made Doctor of Divinity, the title that fixed his nickname; and in 1633 the Crown presented him to the vicarage of Holy Trinity, where he had begun."
+        },
+        {
+          "q": "What is The Bruised Reed about?",
+          "a": "He built his most famous book on Matthew 12:20 — \"A bruised reed shall he not break, and smoking flax shall he not quench\" — and turned it into a sustained, patient argument that Christ does not despise weak, struggling, half-extinguished faith but tends it. Its keynote is one of the most quoted sentences in Puritan devotion: \"There is more mercy in Christ than sin in us.\""
+        },
+        {
+          "q": "What do the two images mean?",
+          "a": "He read them with a physician's care. The bruised reed is the soul crushed by a sense of its own sin, and Sibbes held that such bruising is not a sign of Christ's absence but the very ground he works on. The smoking flax is faith reduced to a barely glowing wick, all smoke and little flame, and the whole burden of the book is that Christ comes not to snuff that smoke but to fan it back into fire — the smallest true spark is his own kindling."
+        },
+        {
+          "q": "Why was he so gentle?",
+          "a": "This gentleness was not softness of temperament but a settled conviction about how God actually saves people. Sibbes believed that harsh, hectoring preaching drove wounded consciences away from the very Christ they needed, and that the gospel wins its way by drawing rather than driving — by wooing the soul to the loveliness of Christ until it comes willingly. He was as shrewd as he was tender: \"Weakness with watchfulness will stand, when strength with too much confidence fails.\""
+        },
+        {
+          "q": "What is The Soul's Conflict?",
+          "a": "Its companion treatise is a whole book on the discipline the psalmist practised when he turned on his own despondency and demanded, \"Why art thou cast down, O my soul?\" Sibbes taught the downcast believer to do the same — to reason with his own sinking heart rather than sink with it, preaching to himself and arguing his soul back from despair to God until the question gives way to renewed hope."
+        },
+        {
+          "q": "How was he father to a generation?",
+          "a": "He sat at the warm centre of the Puritan \"spiritual brotherhood.\" Through his preaching John Cotton was converted and later carried that faith to New England; Thomas Goodwin was turned toward a warmer, experiential Calvinism, and John Preston from ornamental preaching to the plain proclamation of Christ. His most famous fruit came through a book: a pedlar sold a copy of The Bruised Reed to a Shropshire household, whose son Richard Baxter said it \"opened the love of God to me.\""
+        },
+        {
+          "q": "How did he die?",
+          "a": "He died on 5 July 1635 at Gray's Inn, unmarried, having spent himself on the souls in his care. About a week before the end he had preached to the lawyers on the fourteenth chapter of John — \"Let not your heart be troubled\" — fitting last words for the great comforter of troubled hearts. Asked how his soul stood, he said he should do God much wrong if he did not say, very well. Izaak Walton wrote of him: \"Heaven was in him, before he was in heaven.\""
+        }
       ]
     }
   },
@@ -2434,6 +2644,48 @@
       "same_as": [
         "https://en.wikipedia.org/wiki/John_Owen_(theologian)",
         "https://www.wikidata.org/wiki/Q1339789"
+      ],
+      "faq": [
+        {
+          "q": "Who was John Owen?",
+          "a": "John Owen (1616–1683) was the foremost theologian of English Puritanism — chaplain to Oliver Cromwell, Dean of Christ Church and Vice-Chancellor of Oxford, and after 1662 a dissenting minister barred from the universities he had led. He is famous for the density of his prose and for an unusually exact understanding of how sin actually works on a person, which is why his little book on killing sin has outlived nearly everything else his century wrote on the subject."
+        },
+        {
+          "q": "What was his youth like?",
+          "a": "He was born in 1616 at Stadhampton in Oxfordshire, the son of a Puritan minister, went up to Queen's College, Oxford, at about twelve, and took his degree at sixteen, reading with a ferocious discipline that allowed him only four hours of sleep a night — a regimen he later regretted as a theft from his own health. By 1637 he could not in conscience submit to Archbishop Laud's new church statutes, and he left the university rather than bend, at the cost of his prospects."
+        },
+        {
+          "q": "How did he find assurance?",
+          "a": "For all his learning, Owen spent his young manhood under a long and crushing darkness: he believed the gospel but could not feel it was his, and doubted whether he was converted at all. Around 1642 he went to hear the celebrated Edmund Calamy, who did not appear; in his place an unknown country minister preached on \"Why are ye fearful, O ye of little faith?\" — and under that plain sermon, from a preacher whose name Owen could never afterward identify, the assurance he had begged for finally came."
+        },
+        {
+          "q": "How did he rise under Cromwell?",
+          "a": "His pen made him known; he preached before the Long Parliament, and the day after the execution of Charles I preached before it again, where he met Cromwell. Cromwell took him as an army chaplain to Ireland and Scotland, made him Dean of Christ Church, Oxford, in 1651 and Vice-Chancellor of the whole university the following year — so that the boy who had walked out of Oxford on principle now ran it, reforming and protecting scholars of every party."
+        },
+        {
+          "q": "What is The Mortification of Sin?",
+          "a": "Published in 1656 as an exposition of a single verse of Romans, it remains the classic Christian handbook on the daily, deliberate war against indwelling sin, and its most quoted sentence is a whole spirituality in a breath: \"Do you mortify; do you make it your daily work; be always at it whilst you live; cease not a day from this work; be killing sin, or it will be killing you.\""
+        },
+        {
+          "q": "What is Of Communion with God?",
+          "a": "If The Mortification of Sin shows Owen's severity, its 1657 companion shows his sweetness. It argues that the believer enjoys a real, distinct, experienced fellowship with each Person of the Trinity — with the Father in his love, the Son in his grace, the Spirit in his comfort. \"So much as we see of the love of God,\" he wrote, \"so much shall we delight in him, and no more.\" The man remembered as a hammer against sin was chiefly occupied, in his own study, with the enjoyment of God."
+        },
+        {
+          "q": "What happened when he was ejected?",
+          "a": "At the Restoration in 1660 Owen lost the deanery, and the Act of Uniformity of 1662 drove him and some two thousand other ministers out of the Church of England altogether. For the rest of his life he was a Nonconformist, preaching to gathered congregations that met at risk and writing tirelessly for toleration, refused the pulpits and the university he had led. He became the acknowledged leader and defender of Independency, and though offers came, including one from Boston, he stayed to shepherd the persecuted flock at home."
+        },
+        {
+          "q": "What was his friendship with Bunyan?",
+          "a": "Owen prized the preaching of John Bunyan, the imprisoned Bedford tinker, and is credibly said to have used his standing at court to help win Bunyan's release. When Charles II expressed surprise that so learned a doctor would cross London to hear an unschooled mender of pots, Owen is reported to have answered that he would gladly give all his learning for the tinker's power in the pulpit — the exact words come down only through later tradition, but the humility in them is entirely his."
+        },
+        {
+          "q": "What did his private life cost him?",
+          "a": "It was staggering. He married Mary Rooke and by her had, his biographers report, some eleven children — all but one dying young, and the single daughter who reached adulthood came home after an unhappy marriage and soon died of consumption. Mary herself died in 1675. The man who wrote most exactingly about grief bearing believers up had buried nearly his whole family, and the sorrow gives his writing on suffering and assurance the weight of a thing paid for."
+        },
+        {
+          "q": "How did he die?",
+          "a": "Owen died on 24 August 1683 at Ealing. Two days before, dictating a farewell to his old friend Charles Fleetwood, he wrote, \"I am going to Him whom my soul hath loved, or rather who hath loved me with an everlasting love, which is the whole ground of all my consolation.\" Told on his last morning that his book Meditations on the Glory of Christ had gone to press, he answered, \"the long looked-for day is come at last.\" He was buried at Bunhill Fields among the dissenters he had loved."
+        }
       ]
     }
   },
@@ -2453,6 +2705,48 @@
       "same_as": [
         "https://en.wikipedia.org/wiki/Martin_Luther",
         "https://www.wikidata.org/wiki/Q9554"
+      ],
+      "faq": [
+        {
+          "q": "Who was Martin Luther?",
+          "a": "Martin Luther (1483–1546) was the German monk whose recovery of justification by faith alone sparked the Protestant Reformation. Driven into a monastery by terror in a thunderstorm and then into peace by a verse in Romans, he posted his Ninety-Five Theses in 1517, defied pope and emperor at the Diet of Worms, translated the New Testament into German at the Wartburg, and gave the church its hymns and catechisms. His last written words were, \"We are beggars. This is true.\""
+        },
+        {
+          "q": "What was the vow in the storm?",
+          "a": "On 2 July 1505, returning to Erfurt after visiting his parents, Luther — then a dutiful law student obeying a father who wanted him to rise into the law — was caught in a violent thunderstorm near Stotternheim. A lightning bolt struck so close it threw him to the ground, and in raw terror of death and judgement he cried out, \"Help me, Saint Anne, and I will become a monk!\" Two weeks later, over his furious father's protests, he sold his law books and entered the Augustinian monastery at Erfurt."
+        },
+        {
+          "q": "What was his terror in the monastery?",
+          "a": "He threw himself into monastic life with desperate seriousness — fasting, watching, praying, and confessing his sins for hours until his weary confessor told him to come back when he had done something worth confessing. But peace would not come. He was crushed by an overwhelming sense of the righteousness of God, who demanded a perfection he knew he could never reach, and the harder he laboured the more hopeless he grew; if ever a monk got to heaven by his monkery, he said, it would have been he."
+        },
+        {
+          "q": "What was his discovery of \"the gate of paradise\"?",
+          "a": "Set to lecture through the Psalms and the letters of Paul at Wittenberg, and wrestling above all with \"the righteous shall live by faith,\" the whole edifice of his fear gave way. He saw that the righteousness of God in the gospel is not a standard God demands and damns us by, but a gift God gives, received by faith alone in Christ: \"I felt that I had been altogether born again and had entered paradise itself through open gates. This passage of Paul became to me a gate to heaven.\""
+        },
+        {
+          "q": "What were the Ninety-Five Theses?",
+          "a": "If a sinner is set right with God by faith and not by works or payments, then the whole machinery of merit — and above all the sale of indulgences, certificates claiming to buy souls out of purgatory — was a lie. On 31 October 1517 Luther posted ninety-five theses for academic debate on the door of the Castle Church in Wittenberg, protesting the traffic in indulgences. He meant to start a scholarly argument; printed and carried across Germany within weeks, he started the Reformation."
+        },
+        {
+          "q": "What happened at the Diet of Worms?",
+          "a": "Excommunicated after burning the papal bull, Luther was called in 1521 to answer before the Emperor Charles V and the assembled princes at Worms, his books piled on a table, and ordered to recant. He refused unless convinced by Scripture and plain reason: \"My conscience is captive to the Word of God. To go against conscience is neither right nor safe. Here I stand; I can do no other. God help me. Amen.\" The Edict of Worms declared him an outlaw whom anyone might kill."
+        },
+        {
+          "q": "What did he do at the Wartburg?",
+          "a": "His prince, Frederick the Wise, spirited him away in a staged ambush and hid him in the Wartburg Castle, where for the better part of a year Luther lived in disguise as a bearded knight, \"Junker Jörg,\" often ill and battered by depression. And he worked: in eleven weeks he translated the entire New Testament from Greek into a vigorous, singing German that ordinary people could read, a gift that shaped the German language itself and put the living Word into the hands of the plough-boy and the housewife."
+        },
+        {
+          "q": "What was his home life like?",
+          "a": "In 1525 he married Katharina von Bora, a runaway nun who had escaped her convent hidden among the fish barrels of a merchant's wagon; it scandalised half of Europe and delighted him. \"My Katie\" took charge of the vast, chaotic household of the old cloister and ran it, and him, with a firm hand he cheerfully acknowledged. Out of that home came some of the warmest writing of the Reformation — \"A Simple Way to Pray,\" written for his barber, and the hymn \"A mighty fortress is our God.\""
+        },
+        {
+          "q": "How did he pray Melanchthon back from death?",
+          "a": "In the summer of 1540 his dearest friend and fellow-labourer Philip Melanchthon fell so gravely ill at Weimar that he seemed already dying. Luther rushed to his side and, turning to the window, prayed with an almost frightening boldness, reminding God of every promise in Scripture to hear prayer and refusing to let his friend go. Melanchthon began to revive, took food, and recovered. \"God gave me my brother Melanchthon back in direct answer to prayer,\" Luther said; Philip lived and laboured another twenty years."
+        },
+        {
+          "q": "How did he die?",
+          "a": "Worn by decades of overwork, in the winter of 1546 he travelled, unwell, back to Eisleben — the town where he had been born — to make peace between two quarrelling noble brothers. He completed the reconciliation, and then his heart gave out. In the early hours of 18 February 1546 his friend Justus Jonas asked whether he was ready to die trusting Christ and the gospel he had preached, and he answered clearly, \"Yes.\" Beside him they found his last written words: \"We are beggars. This is true.\""
+        }
       ]
     }
   },
@@ -2533,6 +2827,48 @@
       "same_as": [
         "https://en.wikipedia.org/wiki/Erica_Sabiti",
         "https://www.wikidata.org/wiki/Q86444889"
+      ],
+      "faq": [
+        {
+          "q": "Who was Erica Sabiti?",
+          "a": "Erica Sabiti (1903–1988) was the first African Archbishop of the Church of Uganda. Ordained in 1933, he met the balokole of the East African Revival in 1939 while travelling with his bishop in Rwanda and Burundi, and became one of the movement's leaders. His election as archbishop in 1966 was opposed on ethnic grounds, and the division was healed only when the province's nine diocesan bishops confessed their own part in it and united behind him."
+        },
+        {
+          "q": "Where did he come from, and what shaped him?",
+          "a": "He was born in 1903 at Rwebishuru in Ankole, in the south-west of Uganda, into a country of hills and cattle a long way from the Buganda kingdom where the church's power sat; his father was a chief who died while Erica was young. He went to King's College, Budo, and it was there, through a window, that the decisive thing happened: the chapel carried words of Christ in its glass — \"I did all this for you, what have you done for me?\" — and Sabiti traced the impetus of his whole life to reading them."
+        },
+        {
+          "q": "Why is his conversion story unusual?",
+          "a": "Because he was not a man waiting to be converted. He was a believing, trained, ordained Anglican clergyman with a parish ministry — by every measure his church used, a finished article, ordained deacon in 1933 and priest in 1934. And for six years after his ordination, the thing that would define the rest of his life had not yet touched him."
+        },
+        {
+          "q": "How did the revival reach him?",
+          "a": "In 1939 he accompanied the Bishop of Uganda on a visit to churches in Rwanda and Burundi, where the East African Revival had been running for several years out of the mission station at Gahini. Sabiti met the balokole — the \"saved ones\" — on that trip, and his ministry was transformed. He had not gone looking; he was travelling as somebody's companion, in another country, among people who were not his responsibility."
+        },
+        {
+          "q": "Why is he called the more relevant witness?",
+          "a": "For any reader who has been a Christian a long time, or who is employed by the church and quietly dry, Sabiti is the more relevant of the revival's two great early names. Simeon Nsibambi was a layman who forced the question; Sabiti was already inside the machine, doing the job well, when the thing arrived sideways. Nobody, his life says, is too far in to be given more."
+        },
+        {
+          "q": "What were the years before he became a bishop?",
+          "a": "Not a rocket, but two and a half decades of ordinary ministry: ordained in 1933, he was not consecrated Bishop of Rwenzori until 1960 — twenty-six years of parish work, teaching, and the unrecorded labour that makes up most of a faithful life. We know almost nothing about those years, which is the honest situation with most of the church's best people. The office at the end did not make those years worthwhile; they were already the ministry."
+        },
+        {
+          "q": "Why was his election as archbishop opposed?",
+          "a": "In 1966 he became the first Ugandan — the first African — to hold the office, over a province then covering Uganda, Rwanda, Burundi and Boga-Zaire. It should have been a moment of pure celebration, but Sabiti was a Munyankore from the south-west, and the archbishop's seat was at Namirembe in Buganda; there was bitter opposition from those who would accept only a Muganda in that chair. The dispute was not about doctrine or competence — it was ethnic, public, and dragged on for years."
+        },
+        {
+          "q": "How was the division finally healed?",
+          "a": "The deadlock was broken when the province's nine diocesan bishops confessed the sins that had contributed to the division, and then together recognised Erica as their archbishop. It was the revival's oldest practice — naming your own sin in company — applied to a bench of bishops in a national crisis. Not a diplomatic settlement that divides the difference, but the method Nsibambi and Kinuka had practised in small rooms for thirty years, scaled up, and it held."
+        },
+        {
+          "q": "What was the Bible in the bag?",
+          "a": "In early 1972, in the worst period of Idi Amin's regime, Sabiti was summoned to the Command Post. He was diabetic and always travelled with a flask of tea; his assistant carried the bag, which also held his Bible. Taken to Amin and threatened three times, the near-seventy-year-old archbishop reached into the bag and took out his Bible — the book he had been carrying since a schoolboy read a sentence in a chapel window. Accounts of the words vary; the gesture is not ambiguous."
+        },
+        {
+          "q": "What does he leave the church?",
+          "a": "He retired in 1974 and was succeeded by Janani Luwum, murdered by Amin's regime three years later; Sabiti outlived his successor by eleven years and died at Kinoni on 15 May 1988. He wrote no famous books, but demonstrates two things the church keeps forgetting: that ordination is not the same as being filled, and that the revival's method of naming one's own sin heals not only marriages and friendships but institutions — a division negotiation could not settle in years, undone in one meeting."
+        }
       ]
     }
   },
@@ -2551,6 +2887,48 @@
       "created_at": "2026-09-02T23:28:45.848224Z",
       "same_as": [
         "https://en.wikipedia.org/wiki/Jarena_Lee"
+      ],
+      "faq": [
+        {
+          "q": "Who was Jarena Lee?",
+          "a": "Born free in New Jersey in 1783, Jarena Lee was converted under Richard Allen and became the first woman authorized to preach in the African Methodist Episcopal Church, travelling thousands of miles to proclaim the gospel. She published the first autobiography by an African American woman, and spent decades on foot, by wagon and by rail carrying a message she was certain belonged to the poor, the enslaved, the unlettered and the woman as fully as to anyone else."
+        },
+        {
+          "q": "What was her early life?",
+          "a": "She was born free on 11 February 1783 in Cape May, New Jersey — a rare thing for a Black child in revolutionary America, and a mercy she never took for granted. Freedom did not spare her hardship: at seven she was sent sixty miles from her parents to work as a servant girl, and she grew up lonely, far from home, and aware long before she understood the gospel of a tender conscience, a fear of death, and a sense that she was made for more."
+        },
+        {
+          "q": "How was she converted?",
+          "a": "That hunger drew her to Philadelphia, the cradle of the free Black church, where she came under the preaching of Richard Allen, the former slave who had founded Bethel and would become the first bishop of the AME denomination. She had passed through years of religious searching, at times so oppressed in spirit that the tempter pressed her toward taking her own life; then, about 1804, \"My soul was gloriously converted to God, under preaching, at the very outset of the sermon.\""
+        },
+        {
+          "q": "What was her experience of sanctification?",
+          "a": "Conversion did not settle her; it set her seeking a deeper work, and for years she wrestled with her own sinfulness, doubt and temptation to despair. Then, alone, after weeks pleading to know she was wholly the Lord's, the assurance broke over her like a storm of light: \"That very instant, as if lightning had darted through me, I sprang to my feet, and cried, 'The Lord has sanctified my soul!' There was none to hear this but the angels who stood around to witness my joy.\""
+        },
+        {
+          "q": "What was the call she could not silence?",
+          "a": "Not long after, she heard what she could only describe as an inward, unmistakable command to preach the gospel, and it frightened her — a poor, unlettered Black woman in a church and an age that reserved the pulpit entirely for men. She carried it to Richard Allen, who, kind but bound by the Methodist Discipline, answered that their book made no provision for women preachers. She submitted outwardly, but inwardly the conviction only deepened."
+        },
+        {
+          "q": "How did she defend women's preaching?",
+          "a": "She came to see the refusal as the age's blindness rather than God's will, and set down a defense that still rings: \"If the man may preach, because the Saviour died for him, why not the woman? seeing he died for her also. Is he not a whole Saviour, instead of a half one?\" It was the conviction her whole ministry would prove — that the good news is no respecter of persons."
+        },
+        {
+          "q": "How did grief shape her call?",
+          "a": "In 1811 she married the Reverend Joseph Lee, which carried her away from the Bethel community into isolation she felt keenly. Then grief came in waves: within about six years she had buried her husband and several of her children and found herself a widow with a young child and almost nothing. Yet the sorrow did not extinguish the call — it clarified it; stripped of her supports, she leaned harder on God, and the old command to preach returned with new force."
+        },
+        {
+          "q": "What was the breakthrough about 1819?",
+          "a": "In the very church where she had been converted, a visiting preacher rose to expound a text, faltered, and seemed to lose the Spirit's help. \"The same instant, I sprang, as by altogether supernatural impulse, to my feet,\" she wrote, and gave an exhortation on his very text; then sat down trembling, certain she had disgraced herself. Instead Bishop Allen rose before the whole assembly and declared that he now believed, as fully as of any preacher present, that God had called her — the answer to a prayer she had carried for nearly a decade."
+        },
+        {
+          "q": "What was her preaching life like?",
+          "a": "One of the most extraordinary of the nineteenth century. For decades she travelled thousands of miles a year — on foot, by wagon, and by the new railroad cars — across the free states and into slave territory, preaching in churches, camp meetings, homes and open fields to Black and white congregations alike. In a single year she recorded travelling more than two thousand miles and preaching nearly two hundred sermons, her journal page after page a record of prayer that carried her into strange towns and hostile meetings."
+        },
+        {
+          "q": "What did she write, and how is she remembered?",
+          "a": "In 1836 she did what no African American woman had done before, publishing her autobiography, \"The Life and Religious Experience of Jarena Lee,\" paying for the printing herself so her testimony would outlast her, and in 1849 she expanded it with her travel journal. After 1849 the record goes quiet; she is thought to have died about 1864. Her testimony did outlast her: in 2016 the African Methodist Episcopal Church posthumously ordained her, granting the standing the age had denied and God had plainly given."
+        }
       ]
     }
   },
@@ -2569,6 +2947,48 @@
       "created_at": "2026-09-03T02:11:25.065656Z",
       "same_as": [
         "https://en.wikipedia.org/wiki/Julia_A._J._Foote"
+      ],
+      "faq": [
+        {
+          "q": "Who was Julia Foote?",
+          "a": "Born to formerly enslaved parents in 1823, Julia A. J. Foote was a holiness evangelist who was excommunicated for preaching as a woman and later became the first woman ordained a deacon in the A.M.E. Zion Church. She carried a message of full salvation across the North and into Canada for decades, and the very church that had cast her out received her, near the end of her life, as one of its own ministers."
+        },
+        {
+          "q": "What was her hard inheritance?",
+          "a": "She was born on 21 May 1823 in Schenectady, New York, to parents who had known slavery firsthand: her father, born free, had been stolen as a child and enslaved, and her mother was born a slave in New York and served a cruel master before the family won its freedom. Sent out at ten to work as a servant, whipped once for a theft she had not committed, she learned to read chiefly so that she could read the Testament for herself, sounding out its words by firelight."
+        },
+        {
+          "q": "How was she converted?",
+          "a": "At fifteen she was converted on a Sunday evening at a quarterly meeting, in a rush of assurance she never doubted afterward. But conversion only opened a deeper hunger: she had heard the Methodists speak of a second work of grace — entire sanctification, a heart made clean and wholly Christ's — and she would not rest until she had it, believing the gospel promised not only forgiveness for what one had done but cleansing for what one was."
+        },
+        {
+          "q": "What was \"the work of full salvation\"?",
+          "a": "After her marriage about 1836 to George Foote, a sailor, she moved to Boston, and there the longing was answered. She entered into what she called all her life \"the work of full salvation\" — sanctification as a distinct, definite gift of the Holy Spirit — and from that day holiness was the burden of her testimony. When she rose in class-meeting to tell of it, some crowded round to ask how they too might find it; others drew off in suspicious little groups, a division that would follow her for the rest of her life."
+        },
+        {
+          "q": "What was the call she fought?",
+          "a": "The call to preach came slowly and against her will. For months she was drawn out in prayer and exhortation from house to house, her whole soul, she said, seemed drawn out for the salvation of souls; friends warned she was too forward. When the conviction sharpened into a summons she resisted it as Jonah had, recoiling at her own unfitness — \"I thought it could not be that I was called to preach — I, so weak and ignorant\" — and answering, \"No, Lord, not me,\" until she could no longer refuse."
+        },
+        {
+          "q": "Why was she excommunicated?",
+          "a": "When she began to preach, the minister of her own African Methodist Episcopal Zion congregation in Boston moved against her. She asked only to be heard; he refused, put her name before the church, and had her cut off. She was tried and expelled from the church she loved — excommunicated for the double offense of preaching holiness and preaching as a woman — and her appeal to the conference of ministers was disappointed again. It was a wound that never fully closed, yet she refused to let it stop her or turn her bitter."
+        },
+        {
+          "q": "How did she defend women's preaching?",
+          "a": "Out of that cost came one of the clearest defenses of women's preaching in nineteenth-century America. Searching the Scriptures for herself, she could not find the God who had so plainly called and used her forbidding her to speak, and her argument was disarmingly simple: \"If the power to preach the Gospel is short-lived and spasmodic in the case of women, it must be equally so in that of men; and if women have lost the gift of prophecy, so have men.\""
+        },
+        {
+          "q": "What was her preaching life?",
+          "a": "For decades she carried her message across New England and New York, into Ohio and the Midwest, up into Canada — travelling constantly, often poor and often ill, preaching in churches when they would have her and in halls, homes and camp meetings when they would not. In 1878 she preached to an estimated five thousand people at a holiness meeting in Lodi, Ohio, becoming one of the best-known evangelists of the Wesleyan-Holiness movement — sustained, her memoir records on nearly every page, by unceasing prayer."
+        },
+        {
+          "q": "What is A Brand Plucked from the Fire?",
+          "a": "In 1879, settled in Cleveland, Ohio, Foote published her autobiography, taking its title from the prophet Zechariah's vision of a soul snatched from the flames. It is a plain, fervent book, unashamed of visions and holy joy, and it stands among the most important spiritual narratives left by a Black woman of her century. She wrote it, she said, not for her own name but so that her testimony to full salvation might outlast her and lead others into the same liberty."
+        },
+        {
+          "q": "How was she vindicated?",
+          "a": "Vindication came slowly, and then fully. In 1894 the African Methodist Episcopal Zion Church — the same communion that had once excommunicated her — ordained Julia Foote a deacon, the first woman it had ever so ordained; in 1900, not long before her death, she was ordained an elder, only the second woman to reach that office in the denomination. The church that had cast her out as a young woman received her, at the last, as one of its own ministers, and she died that same year."
+        }
       ]
     }
   },
