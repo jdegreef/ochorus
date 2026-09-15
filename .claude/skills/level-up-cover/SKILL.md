@@ -27,14 +27,32 @@ Confirm `is_published`, `cover_url` (`.svg` = plate), `subtitle`, `langs`, autho
 
 ## 1. Source the art (the sourcing method that actually works)
 
-Met Open Access API. See memory `met-api-pd-art-sourcing`: **search by SUBJECT
-word** (`?q=<subject>&hasImages=true`) — `artistOrCulture`, artist-name, and
-`departmentId`/`medium` params all return nothing or 403. Then fetch each object
-and filter `isPublicDomain && classification=="Paintings" && primaryImage`, exclude
-religious/portrait subjects, prefer Western landscape/architecture (a Chinese
-landscape for a Chinese subject is right — Nee). **One facet/subject per book**, a
-different painter each, so an author's shelf reads as one without N identical
-scenes. Verify every finalist's PD flag before building. Record it in
+Two collections, and **prefer the Art Institute of Chicago for landscapes**. The
+Met's `?q=` search is visually blind — it ranks a landscape query by popularity
+and buries actual landscapes under famous figure paintings (a "Frederic Edwin
+Church" query returned Vermeer and El Greco). The **Art Institute of Chicago**
+(`aic` source, added #2409) has a real search engine and CC0 images, and finds
+the picture:
+
+- **AIC** — `https://api.artic.edu/api/v1/artworks/search?q=<term>&fields=id,title,artist_title,is_public_domain,image_id,classification_title&query[term][is_public_domain]=true`.
+  Filter `classification_title` contains `painting`. The IIIF pixels
+  (`https://www.artic.edu/iiif/2/<image_id>/full/1686,/0/default.jpg`) 403 unless
+  you send `Referer: https://www.artic.edu/` — that header, not a policy, is the
+  whole reason AIC was long thought unusable (`build_curated_covers` now carries
+  it via `REFERERS`). `image_id` is a UUID, NOT the object id.
+- **Met** (`met`) — search by SUBJECT word (`?q=<subject>&hasImages=true`), fetch
+  each object, filter `isPublicDomain && classification=="Paintings" &&
+  primaryImage`. Still fine when you know the subject noun; weak for "find me a
+  good landscape". See memory `met-api-pd-art-sourcing`.
+- **Cleveland** (`cma`) — the third, `share_license_status=="CC0"`.
+
+**LOOK before you pick.** Both search APIs return junk mixed with gems, so
+download the small images, montage them into a contact sheet, and Read it — then
+mock the actual cover (3:4 crop + scrim + white title) so you judge the COVER,
+not the painting. Exclude religious/portrait subjects, prefer landscape /
+architecture / sky / water / path. **One facet/subject per book, a different
+painter each**, so an author's shelf reads as one without N identical scenes.
+Verify every finalist's PD flag before building. Record it in
 `backend/library/curated_art.py` `CURATED` with a one-line rationale + per-work
 `focus` (0–1 crop bias along the overflowing axis; tall hanging scrolls → ~0.3).
 
@@ -108,6 +126,12 @@ serves + prerendered pages reference it.
   too; delete ALL of them or `build_cover_assets` fails, and repoint every `<slug>.<lang>.json`.
 
 ## Done so far
-Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3).
-Remaining plates ~35: a few 2-plate authors (Simpson, Carmichael, Wesley, Athanasius,
-Hudson Taylor, Originals) + ~19 single-plate authors (best as one batched sweep).
+Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
+Athanasius #2409 (2 — life-of-antony/Huguet, on-the-incarnation/Cole; also OPENED the
+`aic` source, see §1).
+Remaining plates ~25: 2-plate authors (Simpson [+lg/sw], Wesley, Hudson Taylor [+es],
+Originals) + ~19 single-plate authors (best as one batched sweep). Carmichael's `if`
+and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian
+(`treatises-of-cyprian`) was being handled on `feature/cyprian-treatises` — check before
+taking it. Susanna Wesley stays a generated cover on purpose (portrait trap, see
+`curated_art.py`).
