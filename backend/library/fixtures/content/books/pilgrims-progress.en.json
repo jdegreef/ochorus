@@ -11,6 +11,40 @@
   "subtitle": "From This World to That Which Is to Come",
   "description": "Christian's journey from the City of Destruction to the Celestial City, past the Slough of Despond, Vanity Fair and the Valley of the Shadow of Death. Begun in prison — Bunyan spent twelve years in Bedford jail for preaching without a licence — and published in 1678, it has never been out of print since.",
   "about_html": "<p>An allegory that reads like an adventure. Christian leaves the City of Destruction with a burden on his back and a book in his hand, and everything he meets on the road to the Celestial City is both a place and a thing that happens to people: the Slough of Despond, the Hill Difficulty, Vanity Fair, Doubting Castle, the Valley of the Shadow of Death. Bunyan's genius is that the allegory never feels like a code to be decrypted — Giant Despair is simply frightening.</p> <p>Bunyan was a tinker with little formal schooling who spent twelve years in Bedford jail rather than promise to stop preaching. The book was begun in prison, and its landscape is English and ordinary: the mud, the by-paths, the magistrates at Vanity Fair who try Faithful for refusing to trade. Its characters talk the way people actually talked, which is why it escaped the church and became one of the most widely translated books in the world.</p> <p>A second part followed six years later, and it is the half most readers have never opened: Christiana, who stayed behind in the first book, sets out with the children and a neighbour, and travels the same road in company rather than alone. The terrors are the same terrors; the difference is that someone is there. Bunyan wrote it partly because imitators had begun publishing sequels of their own.</p> <p>It has never been out of print since 1678. Read it as a story first; the theology is load-bearing, but Bunyan built it into the walls rather than hanging it on them.</p>",
+  "qa": [
+   {
+    "question": "What is The Pilgrim's Progress about?",
+    "answer": "It follows a man named Christian who flees the City of Destruction with a great burden on his back and a book in his hand, journeying toward the Celestial City. Every place he passes through is both a landscape and an experience of the soul — the Slough of Despond, the Hill Difficulty, Vanity Fair, Doubting Castle, the Valley of the Shadow of Death — so that the whole Christian life is told as one long, dangerous, hopeful road home."
+   },
+   {
+    "question": "Who wrote it, and under what circumstances?",
+    "answer": "John Bunyan, a Bedford tinker with little formal schooling, who spent twelve years in jail rather than promise to stop preaching without a licence. He began the book in prison, and its world is English and ordinary — the mud, the by-paths, the fairs — which is part of why it has never felt like a distant classic but like a map of one's own experience."
+   },
+   {
+    "question": "Why is it called an allegory, and is it hard to follow?",
+    "answer": "It is an allegory because each character and place stands for something in the Christian's inward journey — but Bunyan's genius is that the story never reads like a code to be decrypted. Giant Despair is simply frightening; Vanity Fair is simply seductive; the burden simply weighs. The meaning comes through the story rather than beside it, which is why children and scholars have both been gripped by it."
+   },
+   {
+    "question": "When was it written, and how widely has it been read?",
+    "answer": "It was published in 1678 and has never been out of print since — for a long time the most widely read book in English after the Bible, translated into more than two hundred languages. Its images entered the common speech of English-speaking Christianity, so that phrases like the Slough of Despond and Vanity Fair are used by people who have never opened it."
+   },
+   {
+    "question": "What happens to Christian's burden?",
+    "answer": "He carries it from the City of Destruction, and it will not come off by his own effort — not at the good man's house, not by resolve. It falls from his back only at the sight of the Cross, rolling down into an empty tomb, and he gives three leaps for joy and goes on his way singing. It is the book's picture of what the gospel does that self-improvement cannot."
+   },
+   {
+    "question": "Who are some of the characters Christian meets?",
+    "answer": "Evangelist, who sets him on the way; Faithful and Hopeful, his companions; Mr. Worldly Wiseman, who would send him to the law instead of the Cross; Giant Despair, who imprisons the pilgrims in Doubting Castle until Christian remembers the key called Promise. Each is a temptation, a help, or a danger drawn so vividly that readers recognize people they have met — and moods they have been in."
+   },
+   {
+    "question": "Is the second part, about Christian's wife, included?",
+    "answer": "Bunyan later wrote a second part following Christiana, Christian's wife, and their children as they make the same journey with Great-heart as their guide — a gentler, more companioned pilgrimage than Christian's solitary one. Together the two parts show the road walked both alone and in the fellowship of a family and a church."
+   },
+   {
+    "question": "Where should a first-time reader begin?",
+    "answer": "Simply at the beginning, reading it as the adventure it is rather than hunting for meanings — they arrive on their own. Christian's flight, the loss of his burden at the Cross, the fight with Apollyon, and the crossing of the last river to the Celestial City are the great set-pieces. Read slowly, it becomes a mirror; read quickly, it is still one of the best stories ever told."
+   }
+  ],
   "publication_year": 1678,
   "source_type": "public_domain",
   "source_url": "",
