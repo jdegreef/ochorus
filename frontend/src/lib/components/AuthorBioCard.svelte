@@ -37,11 +37,13 @@
 	style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
 	class="card-tint group relative rounded-card border border-border p-5"
 >
-	<!-- Portrait beside the text, not above it. In the old two-up grid each row
-	     was as tall as its TALLER card, so a 171-character bio next to a
-	     640-character one left a hole; one writer per row makes every row
-	     independent and the hole cannot form. -->
-	<div class="flex gap-5">
+	<!-- Portrait beside the text from sm up. In the old two-up grid each row was
+	     as tall as its TALLER card, so a 171-character bio next to a 640-character
+	     one left a hole; one writer per row makes every row independent and the
+	     hole cannot form. On a phone the side-by-side left the bio in a ~219px
+	     column that wrapped every 2–3 words, so below sm the portrait sits ABOVE
+	     the text and the bio gets the full card width. -->
+	<div class="flex flex-col gap-4 sm:flex-row sm:gap-5">
 		<a
 			href={localizeHref(`/authors/${author.slug}`)}
 			data-sveltekit-preload-data="hover"

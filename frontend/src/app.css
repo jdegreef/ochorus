@@ -1717,6 +1717,44 @@ a.sermon-row-title:hover {
 	gap: 0.5rem;
 }
 
+/* A filter-chip row that becomes a single horizontal scroller on a phone, so a
+   long topic list can't push the content it filters two screens down; from sm up
+   it wraps as an ordinary chip cloud. The right-edge mask fades the last chip to
+   hint the overflow — it fades to whatever is behind, so it's theme-agnostic.
+   Unlayered on purpose, so it reliably wins over any Tailwind layout utility a
+   caller composes onto it (a `flex-wrap`/`overflow` utility would otherwise beat
+   a rule inside `@layer components`). Shared by the Books and Sermons topic
+   filters. */
+.chip-scroller {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.375rem;
+}
+@media (max-width: 639.98px) {
+	.chip-scroller {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scrollbar-width: none;
+		-webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
+		mask-image: linear-gradient(to right, #000 88%, transparent);
+	}
+	.chip-scroller::-webkit-scrollbar {
+		display: none;
+	}
+	/* Chips must not compress in the single-line scroller. */
+	.chip-scroller > * {
+		flex-shrink: 0;
+	}
+	/* The scroller runs from the inline-start edge, so the fade belongs on the
+	   END edge — the left under RTL. */
+	[dir='rtl'] .chip-scroller {
+		-webkit-mask-image: linear-gradient(to left, #000 88%, transparent);
+		mask-image: linear-gradient(to left, #000 88%, transparent);
+	}
+}
+
 /* Any input, select or textarea in the app. One height, one radius, one edge.
    `.filter-field` is the same thing under its original name — the filter rows
    on the browse pages read better with it, and both names resolve here. */

@@ -317,7 +317,7 @@
 	     Reuses the Books labels (the same "All topics" / "Filter by topic"). -->
 	{#if allTopics.length > 1}
 		<div
-			class="mb-6 flex flex-wrap items-center gap-1.5"
+			class="chip-scroller mb-6"
 			aria-label={t('books.filterTopic')}
 			role="group"
 		>
