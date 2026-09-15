@@ -49,11 +49,13 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'dietrich-bonhoeffer': '50% 0%', // 1939 standing figure; head high at ~15% of a 0.63 plate
 	'dwight-l-moody': '50% 5%',
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
+	'festo-kivengere': '50% 10%', // bishop photo; face at ~37% of a 0.70 plate
 	'frederick-brotherton-meyer': '50% 0%',
 	'gareth-evans': '50% 45%', // square source
 	'george-herbert': '50% 8%', // engraving; face at ~35% of a 0.80 plate
 	'george-muller': '50% 37%',
 	'george-whitefield': '50% 0%',
+	'gladys-aylward': '50% 8%', // bust-cropped from a full-length photo; face at ~28% of a 0.74 plate
 	'gregory-the-great': '50% 0%', // Goya painting, seated; face high at ~13% of a 0.57 plate
 	'hannah-whitall-smith': '50% 0%',
 	'hudson-taylor': '50% 20%',

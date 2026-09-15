@@ -146,6 +146,18 @@ force if every paragraph is a box.
    `bio_html` and `photo_url` are **fill-only** — they move `""` to the fixture's
    value and never overwrite. REPLACING either on a live row still needs a
    migration (step below). Two more traps that still hold:
+
+   - **A CC portrait's credit fields sync by NOTHING.** `photo_attribution` /
+     `photo_source_url` are in neither `FILL_ONLY_FIELDS` nor `SYNCED_FIELDS`,
+     so putting them only in `authors.json` reaches a *fresh* DB but never the
+     seeded *prod* row — the photo shows (photo_url fills) but the required CC
+     credit silently doesn't. So a **Creative-Commons portrait needs a data
+     migration on FIRST add**, not just when replacing (the 0129 / 0146 pattern:
+     `Author.objects.filter(slug=…).update(photo_url=…, photo_attribution=…,
+     photo_source_url=…)`). Set the credit in BOTH `authors.json` (fresh DB) and
+     the migration (prod). A **public-domain** portrait needs no migration at
+     all — photo_url is fill-only, so an empty row fills on the next deploy
+     (Tozer #2390); put photo_url in the fixture and stop.
    - `seed_if_empty` only fills an EMPTY database;
    - **`content_sync.backfill_bios_and_sermons` is RETIRED** — it detects the
      natural-key fixture and no-ops by design (the old 0017/0036 migrations
