@@ -151,6 +151,10 @@ serves + prerendered pages reference it.
   clears, else Render dashboard → ochorus-web → Deploy latest commit (user-only).
 - **E · per-language plates** — a translated plate book has `covers/<lang>/<slug>.svg`
   too; delete ALL of them or `build_cover_assets` fails, and repoint every `<slug>.<lang>.json`.
+  The **plate files are the authoritative edition list**: `find frontend/static/covers
+  -name "<slug>.svg"` (all dirs) BEFORE you build — a quick fixture-language scope can
+  under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`, and
+  would otherwise have shipped still pointing at a deleted plate).
 
 ## Done so far
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),

@@ -440,6 +440,44 @@ CURATED: dict[str, Artwork] = {
         "reflecting at dusk — the restoring water of Psalm 23, quiet enough to "
         "mend by.",
     ),
+    # ── Batch 12 · The Church Fathers' plate books ─────────────────────────
+    # (Batch 11 is Simpson's, landing in parallel.) Five ancient and medieval
+    # writers who wore plates, given the classical and architectural register
+    # their world asks for — ruins, a harbor, an archway, a dome — and, for
+    # Bernard, a wood to love God in. Cleveland CC0.
+    "enchiridion": Artwork(
+        "cma", 135483, "Salvator Rosa", "Ruins in a Rocky Landscape", "c. 1640",
+        "Augustine's handbook of faith, hope and love, written as Rome was "
+        "falling. Rosa sets classical ruins in a wild country — the earthly city "
+        "passing, which is half of Augustine's argument.",
+    ),
+    "on-loving-god": Artwork(
+        "cma", 128371, "Jean-Baptiste-Camille Corot",
+        "The Pond at the Entrance of the Woods", "c. 1860–75",
+        "Bernard's treatise turns wholly inward — why God is to be loved, and "
+        "how without measure. Corot's warm, enclosing wood is that interior: "
+        "quiet, gold, a place to love from.",
+    ),
+    "first-epistle-of-clement": Artwork(
+        "cma", 163456, "Fitz Henry Lane",
+        "Harbor of Boston, with the City in the Distance", "c. 1846–1847",
+        "Clement wrote from Rome to quiet a divided Corinth, a harbor city, back "
+        "into peace and order. Lane's harbor lies still at first light — the calm "
+        "the letter is asking for.",
+    ),
+    "epistles-of-ignatius": Artwork(
+        "cma", 148862, "Hubert Robert", "The Grotto of Posillipo", "c. 1769",
+        "Ignatius wrote these letters under guard on the road to Rome and his "
+        "death. Robert lights a long grotto with figures walking toward the "
+        "opening — the way out that is also the way through.",
+    ),
+    "on-the-priesthood": Artwork(
+        "cma", 147938, "Giovanni Paolo Panini", "Interior of the Pantheon, Rome", "1747",
+        "Chrysostom's defence of the weight and terror of the pastoral office. "
+        "Panini stands inside the one great dome left open to the sky — the house "
+        "of God with the light coming straight down into it.",
+        focus=0.4,
+    ),
 }
 
 
