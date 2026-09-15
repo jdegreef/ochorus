@@ -299,18 +299,18 @@
    "scrim": 1
   },
   "enchiridion": {
-   "ground": "7c033bdbcff6c3f21f1e7c95ea21c88d30ead18eb59cf95e58a75c449fff631c",
+   "ground": "e2019e027f55ad618f84ec4ad8e7ae060f22a347d03a6f7914243c5d2180c7c8",
    "style": "inscriptional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.45
   },
   "epistles-of-ignatius": {
-   "ground": "6cb294fd2717aecde0d36cb7f9ad9638cdd6ff9c99cc0fcf204f621d9c76cf5c",
+   "ground": "b259b71e9d1b30cebac05e16d3cd2658956c26a2174dbf900e8cf0667b9362e4",
    "style": "inscriptional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.7
   },
   "es/a-short-and-easy-method-of-prayer": {
    "ground": "3167a5ac966460ce86d91ddce01dabf90506193f4660f06341a7cbb679c66a1b",
@@ -355,11 +355,11 @@
    "scrim": 0.3
   },
   "es/enchiridion": {
-   "ground": "5a88ce5616d82a9151fcd14013c607953f7d282bbece7c17da6bc0c01944f729",
+   "ground": "df59230d258f73037f971ae5dfc34730d68177dce50b66576d572227ecd26a62",
    "style": "inscriptional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.45
   },
   "es/essentials-of-prayer": {
    "ground": "706179fb754c8fd90d47cd17780cd9892c98d1bed0f206f4449a0fce88e526b4",
@@ -418,11 +418,11 @@
    "scrim": 0.75
   },
   "es/on-loving-god": {
-   "ground": "952574f091e116f04969447e250ac8a577f3b2ec45588363b82dc118008fdadf",
+   "ground": "7f648bacae5086715b891514be89bee7c6f35f4893ccfc5cae2dda3d9fb66772",
    "style": "inscriptional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.65
   },
   "es/possibilities-of-prayer": {
    "ground": "50ce22e211c86362e7ffb980386ee95891b81923eb524d89a6e0b134d0d9a0b8",
@@ -579,11 +579,11 @@
    "scrim": 1
   },
   "first-epistle-of-clement": {
-   "ground": "978ec2807ebaa7d1c3799ccb135d69f10c100b5303bbd47a94838204a5abf72b",
+   "ground": "137cdb7e6283d0991777a24feef91bed0afaf15652c2248870f789f239e635b4",
    "style": "inscriptional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.75
   },
   "freedom-of-the-will": {
    "ground": "4ea3b353acb149bbd8daf7c9bef83437620e1cd2a5acddd1c3d12c35016e92a2",
@@ -999,11 +999,11 @@
    "scrim": 0.75
   },
   "on-loving-god": {
-   "ground": "9ecfa141d89b51f8acfd11fe581faee75b90b5d758c88eb365c0ec058a4340f7",
+   "ground": "49ca984558d07987a88f7e525dd92b2dedca9120fcd95d30f2b8adf4535d388e",
    "style": "inscriptional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.65
   },
   "on-the-incarnation": {
    "ground": "256edd288ca5af1ca9bd7c1b4df6aae6fbeff421ab403ad41892505180c3d7fb",
@@ -1013,11 +1013,11 @@
    "scrim": 0.85
   },
   "on-the-priesthood": {
-   "ground": "0cc758e0ca605f7c50c1d0ac699e6163ce1e38b8cc60a2e72cf0dd2509ee6f66",
+   "ground": "42cfbd3d4c95cb963945b041de8f5138c28c6f8044f95b451d7711531e37d372",
    "style": "inscriptional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.65
   },
   "our-daily-walk": {
    "ground": "277630f5775c1ceede40412f8055da7ea024c8b8ceb6b6f972e51617566967ca",
