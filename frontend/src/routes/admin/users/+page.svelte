@@ -106,6 +106,9 @@
 	const signupMax = $derived(Math.max(1, ...(data?.weekly_signups.map((w) => w.count) ?? [1])));
 	const localeMax = $derived(Math.max(1, ...(data?.by_locale.map((l) => l.count) ?? [1])));
 	const methodMax = $derived(Math.max(1, ...(data?.by_method.map((m) => m.count) ?? [1])));
+	const variantMax = $derived(
+		Math.max(1, ...(data?.by_signup_variant.map((v) => v.count) ?? [1]))
+	);
 	const countryMax = $derived(Math.max(1, ...(data?.by_country.map((c) => c.count) ?? [1])));
 	const tzMax = $derived(Math.max(1, ...(data?.by_timezone.map((t) => t.count) ?? [1])));
 
@@ -287,6 +290,45 @@
 						{/if}
 					</section>
 				</div>
+
+				<!-- By sign-up prompt: which logged-out home band earned each account
+				     (the A/B test). The three random arms are comparable; the
+				     progress-targeted arm is a different audience, so it's set apart. -->
+				{#if d.by_signup_variant.length}
+					<section class="mb-8 rounded-card border border-border bg-surface p-5">
+						<h2 class="text-h3 mb-3">By sign-up prompt</h2>
+						<ul class="space-y-2">
+							{#each d.by_signup_variant as v (v.variant)}
+								<li class="flex items-center gap-3">
+									<span
+										class="flex w-44 shrink-0 items-center gap-1.5 truncate text-body {v.variant ===
+										'unknown'
+											? 'text-muted'
+											: 'text-text'}"
+									>
+										{v.label}
+										{#if v.targeted}
+											<span
+												class="rounded-full bg-accent-soft px-1.5 py-0.5 text-micro font-semibold text-accent"
+												title="Shown only to readers who already had local reading — a different audience, so not comparable head-to-head with the random arms."
+												>targeted</span
+											>
+										{/if}
+									</span>
+									{@render bar(v.count, variantMax)}
+									<span class="w-8 shrink-0 text-right font-semibold tabular-nums text-text"
+										>{fmt(v.count)}</span
+									>
+								</li>
+							{/each}
+						</ul>
+						<p class="mt-3 text-micro text-muted">
+							The three random arms split first-time visitors evenly, so their counts compare
+							directly. “Progress-targeted” is shown only to readers who already had reading in
+							progress — a warmer audience, tracked but not ranked against the others.
+						</p>
+					</section>
+				{/if}
 
 				<div class="grid gap-6 md:grid-cols-2">
 					<!-- By locale -->

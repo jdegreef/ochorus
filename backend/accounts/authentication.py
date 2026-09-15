@@ -67,6 +67,27 @@ def token_providers(payload) -> list[str]:
     return sorted(found)
 
 
+def token_signup_variant(payload) -> str:
+    """The logged-out sign-up band arm a token reports, or ``""``.
+
+    Supabase carries custom sign-up metadata in ``user_metadata`` — set by the
+    client at ``signUp({ options: { data } })``, so it is present only for a
+    genuine sign-up (a plain login sends none) and it survives the email
+    confirmation round-trip (it lives on the auth user, not the JS session).
+    We read it only when the profile is first created (see
+    ``_get_or_create_user``), which makes the field naturally create-only.
+    Unknown values are dropped so a stray client can't write junk into the
+    analytics vocabulary.
+    """
+    from .models import SIGNUP_VARIANTS
+
+    meta = payload.get("user_metadata") if isinstance(payload, dict) else None
+    if not isinstance(meta, dict):
+        return ""
+    value = meta.get("signup_variant")
+    return value if isinstance(value, str) and value in SIGNUP_VARIANTS else ""
+
+
 def _claim_true(value) -> bool:
     """A JWT boolean claim, tolerant of the string form some providers emit."""
     return value is True or (isinstance(value, str) and value.strip().lower() == "true")
@@ -250,6 +271,9 @@ class SupabaseJWTAuthentication(authentication.BaseAuthentication):
                 "supabase_uid": sub,
                 "email": email,
                 "providers": providers,
+                # Create-only: recorded once, from the sign-up token's metadata,
+                # and never revisited by a later login (see token_signup_variant).
+                "signup_variant": token_signup_variant(payload),
                 "last_seen_at": now,
             },
         )

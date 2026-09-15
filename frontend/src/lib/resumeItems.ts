@@ -49,11 +49,19 @@ export type ResumeItem = {
  * Resolve device-local reading progress into resume cards, newest first.
  * `books`/`sermons` are the current-language catalogs the caller already has.
  * No slicing — the strip takes its own head; /reading shows them all.
+ *
+ * `progress` defaults to `allProgress()`; a caller that already read it (to
+ * decide something else on the same tick) passes it in to avoid a second
+ * localStorage read + parse + sort.
  */
-export function buildResumeItems(books: BookSummary[], sermons: SermonSummary[]): ResumeItem[] {
+export function buildResumeItems(
+	books: BookSummary[],
+	sermons: SermonSummary[],
+	progress: ReturnType<typeof allProgress> = allProgress()
+): ResumeItem[] {
 	const bookBySlug = new Map(books.map((b) => [b.slug, b]));
 	const sermonBySlug = new Map(sermons.map((s) => [s.slug, s]));
-	return allProgress()
+	return progress
 		.map((p): ResumeItem | null => {
 			if (p.kind === 'sermon') {
 				const sermon = sermonBySlug.get(p.slug);

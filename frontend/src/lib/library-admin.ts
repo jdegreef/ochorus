@@ -954,6 +954,19 @@ export interface AdminSignInMethod {
 	count: number;
 }
 
+/** One logged-out sign-up-band arm and how many accounts it drove — the home
+ *  page's A/B test. Each account counts once. `targeted` marks the
+ *  progress-targeted variant, shown only to readers with local reading, so its
+ *  count is NOT comparable head-to-head with the random arms. `variant`
+ *  "unknown" collects accounts with none recorded (created before the test, or a
+ *  sign-up that carried no variant, e.g. Google). */
+export interface AdminSignupVariant {
+	variant: string;
+	label: string;
+	count: number;
+	targeted: boolean;
+}
+
 /** A single recent sign-up. Admin-only — this is the one place account
  *  analytics names individuals (see the backend AdminUsersView docstring).
  *  `providers` carry their display label from the server, so the client never
@@ -996,6 +1009,7 @@ export interface AdminUsers {
 	signups_prev_30d: number;
 	weekly_signups: { week: string; count: number }[];
 	by_method: AdminSignInMethod[];
+	by_signup_variant: AdminSignupVariant[];
 	recent: AdminRecentSignup[];
 	by_locale: (Language & { count: number })[];
 	by_country: AdminCountry[];
