@@ -540,6 +540,12 @@ relevant group.
   colourways (bordered muted, bordered text, filled surface-2) with three label
   styles; Sermon's scripture chips always link to search where Book's link to
   `/scripture/…`. → `.chip` + `.eyebrow` label; shared href logic.
+  _(partial, #2426: the two shelf topic-**filter** rows — Books + Sermons —
+  are now the shared `TopicFilterRow.svelte` (`.chip-scroller` container +
+  `.eyebrow` label, props `topics`/`selected`/`onSelect`). Reuse it for any new
+  shelf filter; the `/topics` browse chips and sermon scripture chips remain.
+  Not to be confused with `TopicChips.svelte`, the "Browse by topic"
+  anchor-link section.)_
 - [ ] **D10** Prev/next: a `.btn` pair in the reader, bespoke bordered cards on
   the sermon page. The exit-focus pill is pasted verbatim into Author, Sermon
   and Reader. → the reader's pair; one `.focus-exit` class.

@@ -16,6 +16,7 @@
 	import PageHeader from './PageHeader.svelte';
 	import EmptyState from './EmptyState.svelte';
 	import FilterSummary from './FilterSummary.svelte';
+	import TopicFilterRow from './TopicFilterRow.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 
 	let { books, loadError = false }: { books: BookSummary[]; loadError?: boolean } = $props();
@@ -359,34 +360,11 @@
 		</div>
 
 		<!-- Topic filter -->
-		{#if allTopics.length > 1}
-			<div
-				class="chip-scroller mb-6"
-				aria-label={t('books.filterTopic')}
-				role="group"
-			>
-				<span class="eyebrow text-muted me-1">{t('common.topics')}</span>
-				<button
-					class="chip"
-					class:active={filters.values.topic === ''}
-					onclick={() => (filters.values.topic = '')}
-					aria-pressed={filters.values.topic === ''}
-				>
-					{t('books.topicAll')}
-				</button>
-				{#each allTopics as tc (tc.slug)}
-					<button
-						class="chip"
-						class:active={filters.values.topic === tc.slug}
-						onclick={() =>
-							(filters.values.topic = filters.values.topic === tc.slug ? '' : tc.slug)}
-						aria-pressed={filters.values.topic === tc.slug}
-					>
-						{tc.title}
-					</button>
-				{/each}
-			</div>
-		{/if}
+		<TopicFilterRow
+			topics={allTopics}
+			selected={filters.values.topic}
+			onSelect={(topic) => (filters.values.topic = topic)}
+		/>
 
 		<!-- What the filters have left. The shelf showed nothing here at all, so a
 		     query matching nine of fifty-nine books looked exactly like a library
