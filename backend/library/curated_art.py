@@ -422,6 +422,24 @@ CURATED: dict[str, Artwork] = {
         "Gifford lights a single path through a wood like a nave — a way walked "
         "apart, toward the service at its end.",
     ),
+    # ── Batch 11 · A. B. Simpson's plate books ─────────────────────────────
+    # (Batch 10 is Hudson Taylor's, just above.) Simpson founded the Christian
+    # and Missionary Alliance; two of his works wore plates, both multilingual
+    # (lg, sw). Luminous American landscape for the C&MA man — heaven ablaze
+    # over the earth, and still water that restores.
+    "days-of-heaven-upon-earth": Artwork(
+        "cma", 141639, "Frederic Edwin Church", "Twilight in the Wilderness", "1860",
+        "A daily devotional named from Deuteronomy 11:21 — 'as the days of "
+        "heaven upon the earth.' Church sets the whole sky ablaze over a still "
+        "lake: the heavens come down onto the land.",
+        focus=0.4,
+    ),
+    "the-gospel-of-healing": Artwork(
+        "cma", 140338, "Charles François Daubigny", "Sunset on the River Oise", "1866",
+        "Simpson's book on divine healing. Daubigny lays a river down still and "
+        "reflecting at dusk — the restoring water of Psalm 23, quiet enough to "
+        "mend by.",
+    ),
 }
 
 

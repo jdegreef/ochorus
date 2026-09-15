@@ -278,11 +278,11 @@
    "scrim": 1
   },
   "days-of-heaven-upon-earth": {
-   "ground": "6217dfe1fbbda48292bccb868127977ab7197e2d53d41bac95384a7d685b7c75",
+   "ground": "b1a664f1d52598c64e23cbbd9266dffed4668a23693b0be5fbadb3a98f33e4be",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.7
   },
   "divine-healing": {
    "ground": "af714b6b1c4dd06581012c8a91eaf12ec964f029929dfed0a9327d179b0a45b2",
@@ -803,11 +803,11 @@
    "scrim": 0.3
   },
   "lg/days-of-heaven-upon-earth": {
-   "ground": "e64b4c6a38d280286950d44744bab86eb033c5e72c4d1b39d2fc0ba546994048",
+   "ground": "b1561f668d7d04562ad7020e3f09c9800faf2bc1990f544c432932fca622cd44",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.7
   },
   "lg/feasting-at-the-table": {
    "ground": "cc7ee2adc9479b3488c09b82f3a1af77a1a8c55aa2df806a4df05abcbca2d169",
@@ -1363,11 +1363,11 @@
    "scrim": 0.3
   },
   "sw/days-of-heaven-upon-earth": {
-   "ground": "86f59c90ceabf1572d279d516db2b712382040b49103dac9e440cc14ce13be6f",
+   "ground": "ce0c94b9e37f6cd7dc116c1e640202290b71f0033cd5a175a7711cd964749611",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.7
   },
   "sw/divine-healing": {
    "ground": "687d09bde421adcf1dfc9bfcdd013ce6e4382989a21b4f68d648ca6247ce6f9b",
@@ -1496,11 +1496,11 @@
    "scrim": 0.95
   },
   "sw/the-gospel-of-healing": {
-   "ground": "a5dae69e8af98ea62405dbf29663bfa73f5e157c533c3b26e018b57bddd517b6",
+   "ground": "4c94be3f1b83a6d1d3d2e91c3a9b97c14e7645a9d0bf6010c03275f71b5a9fc5",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.55
   },
   "sw/the-inner-chamber": {
    "ground": "f61e809f09f9599943ecc915b7631473eff9c78e20dbdbf35a0c021d057941a6",
@@ -1622,11 +1622,11 @@
    "scrim": 1
   },
   "the-gospel-of-healing": {
-   "ground": "1883499ea592265954865f02edbaf0e6c92b980f512ca2405bf0817d4d15f720",
+   "ground": "05fbf49fb1b67d63712dabaca8c8586877422f76d1165904f7f34c1aa8e54b3c",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.55
   },
   "the-imitation-of-christ": {
    "ground": "6a70cd9985a4ad6de6e946a0aacf9740b431aa940bc84cfc49d70b38912fbf8a",
