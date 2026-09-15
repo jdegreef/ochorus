@@ -26,7 +26,7 @@
  */
 export const PORTRAIT_POSITION: Record<string, string> = {
 	'a-b-simpson': '50% 50%', // square source — the crop takes the whole plate
-	'a-w-tozer': '50% 10%', // centered 3:4 bust; face at ~45% of a 0.75 plate
+	'a-w-tozer': '50% 2%', // 1950s bust; head sits high in a 0.75 plate — 10% clipped the crown, 2% keeps it in frame
 	'alexander-maclaren': '50% 0%', // 1889 bust photo; face high at ~22% of a 0.75 plate
 	'amanda-berry-smith': '50% 0%',
 	'amy-carmichael': '50% 0%',
