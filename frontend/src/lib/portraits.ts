@@ -35,6 +35,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'athanasius-of-alexandria': '50% 0%', // icon: head at ~20% of a 0.69 plate
 	'augustine-of-hippo': '50% 0%',
 	'bernard-of-clairvaux': '50% 0%', // painting cropped to a bust; face at ~42%, near-square so nearly inert
+	'bill-bright': '50% 5%', // 1980 bust photo; face at ~34% of a 0.75 plate
 	'billy-graham': '50% 0%', // 1966 press photo; face high at ~23% of a 0.80 plate
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
@@ -58,6 +59,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'gladys-aylward': '50% 8%', // bust-cropped from a full-length photo; face at ~28% of a 0.74 plate
 	'gregory-the-great': '50% 0%', // Goya painting, seated; face high at ~13% of a 0.57 plate
 	'hannah-whitall-smith': '50% 0%',
+	'helen-roseveare': '50% 8%', // 2003 bust photo; face at ~36% of a 0.82 plate
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
 	'j-c-ryle': '50% 0%', // 1888 photograph: bust, face high at ~30% of a 0.70 plate
