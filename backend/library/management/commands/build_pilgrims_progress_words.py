@@ -115,7 +115,7 @@ def _chapters() -> list[tuple[str, str]]:
         search_from = idx + 1
     bounds = starts + [len(paras)]
     out: list[tuple[str, str]] = []
-    for (title, _), lo, hi in zip(CHAPTERS, bounds, bounds[1:]):
+    for (title, _), lo, hi in zip(CHAPTERS, bounds[:-1], bounds[1:], strict=True):
         body = "".join(f"<p>{paras[i][0]}</p>" for i in range(lo, hi))
         out.append((title, body))
     return out
