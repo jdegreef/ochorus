@@ -26,11 +26,11 @@
    "scrim": 1
   },
   "a-retrospect": {
-   "ground": "d3166331f6beff1bc85dc4b336357ae441aeb869b81775064ae7f669d23c84f9",
+   "ground": "0521a9b4a137ca2637f39483ecad9d2d792f4e8fb817a1007ac2457678cace81",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.85
   },
   "a-serious-call": {
    "ground": "4f01eab7166112682128eb186abcc66ad3c3003e2b8d57a2733ba87682b48d6b",
@@ -481,11 +481,11 @@
    "scrim": 0.8
   },
   "es/separation-and-service": {
-   "ground": "cad64c13ac360a3b5749bf0557546ac4becda2489677b7d1e938965901dc4eb8",
+   "ground": "a51bafe3114633c0a1f6c78949aad266e93b04a2f61478572e2c58ed3bab6adb",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.8
   },
   "es/talks-to-the-farmer": {
    "ground": "abc63c24446d73ff2a0cca4588c0648360cc1738e42281f67bb9a842dd9454e8",
@@ -1307,11 +1307,11 @@
    "scrim": 0.6
   },
   "separation-and-service": {
-   "ground": "5ae1db4d9e3c0a5a2a1871a103064d0936fa323dd2eae87570b549627b06f6ab",
+   "ground": "b5c37147984c8cb9a880244433b052d9a7562c9a92fb0accee0ac6801b0919cb",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.8
   },
   "sermons-on-several-occasions": {
    "ground": "61d5bb1c857733055d6fad0c2da99d72dcc1d325dce5a9f3da6aed0b692dc3d5",
