@@ -394,6 +394,51 @@ dropped; chapters under 120 words are dropped as stubs.
   the author from `authors.json` (full bio and all) while creating the book;
   verify the prod path by deleting both from the dev DB and running `seed_books`.
   *(religious-experience-and-journal, 2026-09)*
+- **A two-part CONTINUOUS NARRATIVE (an allegory/story with no chapters) → a
+  `build_<name>` that splits on EPISODE anchor phrases, not word-count chunks.**
+  Godolphin's *Pilgrim's Progress in Words of One Syllable* (Gutenberg #7088) is
+  27k words under only PART I / PART II `<h2>`s — two endless scrolls. Unlike the
+  Jarena Lee diary (arbitrary ~7k chunks), a beloved story wants its real
+  episodes as chapters, and Godolphin KEPT Bunyan's proper names (Slough of
+  Despond, Vanity Fair, Doubting Castle…), so define `CHAPTERS = [(title,
+  opening-phrase), …]` and split by finding each anchor in `content_root(...)`'s
+  `<p>` list IN ORDER (sequential search from the last boundary, so a repeated
+  phrase only matches at its episode). Robust across Gutenberg's `-h.htm` vs
+  `cache/epub` markup variants (which have DIFFERENT `<p>` indexing — anchors
+  survive, absolute indices don't). Assert exactly N anchors found + a
+  word-count-parity floor; skip divider `<p>`s ("END OF FIRST PART."). **Confirm
+  the chapter list/titles with the founder before writing them** (a flagship
+  book's structure is a lasting editorial artifact — `book-import` says to ask).
+  This is a SEPARATE edition from the full original — new slug, same author
+  (Bunyan), the retelling named in the subtitle. `build_pilgrims_progress_words`
+  is the model. *(pilgrims-progress-words-of-one-syllable, 14 episode chapters,
+  2026-09)*
+- **A new-book gotcha: `cover_color` must clear WCAG AA for the white byline, or
+  `tests_fixture.CoverAssetTests.test_plate_colours_can_carry_white_type` reds.**
+  A warm mid-tone like `#b5791f` is only 3.51:1. Floor it with
+  `covers.ink_safe(hex)` (→ `#99661a`, still warm) and store the floored value.
+  The og twin's `ground` digest is independent of `cover_color`, so re-running
+  `og:covers` after a colour change needs no manifest edit.
+- **`og:covers` on macOS re-renders UNRELATED stale twins** (Playwright/font
+  rendering differs from the canonical CI bytes), so a fresh-worktree run reports
+  "wrote 5 of 279" when you added one. `coverOgManifest.test.ts` /
+  `CoverAssetTests` only check each twin's `ground`/`style` digest (NOT the PNG
+  bytes), so `git checkout` the unrelated PNGs (keep canonical bytes) and add ONLY
+  your slug to `og-manifest.json`. **Do NOT `sorted()` the whole twins dict** to
+  place your entry — parallel sessions append `fr/`/`pt/`/`sw/` twins out of
+  order, so a re-sort is a huge spurious diff; insert your key in-place after its
+  neighbour (`json.dumps(obj, indent=1, ensure_ascii=False)+"\n"` round-trips the
+  committed file byte-for-byte). *(pilgrims-progress, 2026-09)*
+- **Creating a genuinely NEW topic shelf (not just adding a book to one) is a
+  regen QUARTET, or CI reds.** In `topic_seed.py`: the `TOPICS` entry (append
+  LAST so no existing book's plate emblem shifts — the FIRST topic holding a book
+  wins its emblem), `TRANSLATION_PENDING` (ship English-only, no 7-language
+  prose), and a `TOPIC_SCRIPTURE` epigraph. In `frontend/`: a `TOPIC_META` entry
+  (unique emblem, ≥3-colour art in `emblems.ts`) then `node
+  scripts/generate-emblem-art.mjs` (topics.json + the `.svg`), `npm run
+  emblem:hues` (emblemHues.ts), and `node scripts/generate-topic-og.mjs` (the
+  share card `.png` + og-manifest — `TopicShareCardTests` fails without it).
+  `TOPIC_QA` is optional. *(for-young-readers shelf, 2026-09)*
 - **A calendar devotional with a MORNING and EVENING reading per day → two
   month-chaptered books from ONE source, via a `build_<name>` command.**
   Spurgeon's *Morning and Evening* is best known as its two separately-published

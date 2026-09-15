@@ -684,7 +684,15 @@ export const EMBLEM_ART = {
 		<path d="M24 19 C21.4 21 21 25 21.7 30 C22.2 34.2 23 37.2 24 39.8 C25 37.2 25.8 34.2 26.3 30 C27 25 26.6 21 24 19 Z" fill="${BR}"/>
 		<path d="M21 37 L24 42 L27 37 Z" fill="${GD}"/>
 		<circle cx="24" cy="16" r="3.4" fill="${CR}"/>
-		<path d="M22.7 17.4 L24 20.2 L25.3 17.4 Z" fill="${GD}"/>`
+		<path d="M22.7 17.4 L24 20.2 L25.3 17.4 Z" fill="${GD}"/>`,
+	'guiding-star': `
+		<circle cx="24" cy="19" r="15" fill="${SK}" fill-opacity=".35"/>
+		<path d="M33 5l1.9 4.6 4.9.5-3.7 3.3 1.1 4.8L33 15.9l-4.3 2.3 1.1-4.8-3.7-3.3 4.9-.5z" fill="${G}"/>
+		<path d="M23 6.5l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9z" fill="${G}" fill-opacity=".85"/>
+		<path d="M6 41h36v3H6z" fill="${GRD}"/>
+		<path d="M6 41c6-9 14-9 19-3 4 4.8 9 5 11 2v4H6z" fill="${GR}"/>
+		<path d="M20 43c1-6 8-8 6-15-1.5-5 3-7 5-10" stroke="${CRD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+		<path d="M20 43c1-6 8-8 6-15-1.5-5 3-7 5-10" stroke="${W}" stroke-width="1.1" fill="none" stroke-linecap="round"/>`
 } as const;
 
 export type EmblemName = keyof typeof EMBLEM_ART;
