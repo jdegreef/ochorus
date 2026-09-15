@@ -251,7 +251,7 @@
 	<!-- Questions and Answers about the shelf. `qa.items` also feeds the FAQPage
 	     JSON-LD in <Seo> via the same pickQa call, so the visible answers and the
 	     structured data stay in lockstep. Shared with the book page. -->
-	<QandA items={qa.items} title="Questions and Answers" />
+	<QandA items={qa.items} title={t('qa.sectionTitle')} />
 
 	<!-- Related topics: the lateral "see also", so a shelf is a junction rather
 	     than a dead end. Sibling shelves that share books, most-shared first. -->

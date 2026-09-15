@@ -107,22 +107,13 @@ const SAME_AS_ENGLISH_OK = new Set([
  * list that only ever grows is how "temporary" becomes permanent — same
  * two-way ratchet the English-audit baseline uses, for the same reason.
  */
-// The book page's FAQ + "more like this" reason labels. The keys ship to every
+// The book page's "more like this" reason labels. The keys ship to every
 // catalogue for parity, but only en/es/pt/fr are translated and reviewed; the
 // book page renders these only in those locales (its REVIEWED_LOCALES set), so
 // the English placeholders below never reach a reader. Awaiting native review —
 // when a locale's are translated, delete it here and add it to REVIEWED_LOCALES.
-const BOOK_EXTRAS_PENDING = [
-	'book_more_by',
-	'book_also_on',
-	'book_faq_free_q',
-	'book_faq_free_a',
-	'book_faq_length_q',
-	'book_faq_length_a',
-	'book_faq_about_q',
-	'book_faq_author_q',
-	'book_faq_author_a'
-] as const;
+// (The old derived-FAQ keys were removed when books went editorial-only.)
+const BOOK_EXTRAS_PENDING = ['book_more_by', 'book_also_on'] as const;
 
 // The sermon page's "Questions for reflection" heading. Same story as
 // BOOK_EXTRAS_PENDING: en/es/pt/fr are translated and reviewed (the sermon
@@ -131,7 +122,18 @@ const BOOK_EXTRAS_PENDING = [
 // REVIEWED_LOCALES once a native speaker checks the heading.
 const SERMON_EXTRAS_PENDING = ['sermon_questions_title'] as const;
 
-const UI_EXTRAS_PENDING = [...BOOK_EXTRAS_PENDING, ...SERMON_EXTRAS_PENDING];
+// The book/topic Q&A section heading ("Questions and Answers"). Same story again:
+// en/es/pt/fr are translated and reviewed, the rest hold the English source as a
+// placeholder until a native speaker checks it. Delete a locale's entry once its
+// heading is translated. (The Q&A section only renders where per-row Q&A content
+// exists for the locale, so today the placeholder never reaches a reader anyway.)
+const QA_EXTRAS_PENDING = ['qa_section_title'] as const;
+
+const UI_EXTRAS_PENDING = [
+	...BOOK_EXTRAS_PENDING,
+	...SERMON_EXTRAS_PENDING,
+	...QA_EXTRAS_PENDING
+];
 
 const PENDING_TRANSLATION: Record<string, readonly string[]> = {
 	// A blocked/awaiting-review string is declared here and ratcheted (asserted

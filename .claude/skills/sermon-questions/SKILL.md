@@ -76,6 +76,33 @@ one `study_questions` array, gated to `REVIEWED_UI_LOCALES` (`en/es/pt/fr`) so t
 *rich results* to authoritative sites in 2023, so the value is the unique content
 and the clean entity signal, not a SERP accordion.
 
+## Localizing the section heading (the shared `<QandA>` title)
+
+The book/topic `<QandA>` `title` is a **catalogue key** (`qa_section_title`), NOT a
+literal — set it with `t('qa.sectionTitle')`. Adding or changing a reader-facing UI
+string is a fixed lifecycle, or `frontend/src/lib/messages.test.ts` fails the build:
+
+1. Add the key to **all 9** `frontend/messages/*.json` (parity is enforced). The
+   files are order-preserving-JSON: `json.dumps(obj, ensure_ascii=False, indent=2)
+   + "\n"` round-trips them exactly, so load-modify-dump is byte-safe (a naive
+   line-delete of a *trailing* key orphans a comma — reserialize instead).
+2. Real translations for the reviewed locales **en/es/pt/fr**; the English source
+   as a placeholder for **ar/hi/lg/sw/uk**, AND declare that key in
+   `PENDING_TRANSLATION` (a two-way ratchet — an undeclared English placeholder
+   fails, and so does leaving a now-translated key listed).
+3. `npm run sync:catalogues` (regenerates `backend/library/data/ui_catalogues.json`
+   — the API image can't see `messages/`), then `npm run check` + `npm run test`.
+
+A Q&A section only renders where per-row Q&A content exists for the locale, so an
+English placeholder heading never actually reaches a reader.
+
+## Editorial-only vs. a derived tier
+
+Books ship **editorial-only** (founder decision): the book page shows only
+hand-authored `book.qa` — `pickQa(editorialQa, [])`, no derived fallback. Topics
+were always editorial-only. Only the **author** page keeps a two-tier
+editorial-or-derived `faq`. Don't reintroduce a derived Q&A tier for books/topics.
+
 ## Verify, then ship
 
 - JSON valid across the touched fixtures; run `tests_fixture`, `tests_sanitize`,

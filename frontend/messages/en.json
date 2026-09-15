@@ -544,6 +544,7 @@
   "sermon_scripture_index": "Scripture in this sermon",
   "sermon_topics": "Topics",
   "sermon_min_left": "min left",
+  "qa_section_title": "Questions and Answers",
   "sermon_questions_title": "Questions for reflection",
   "sermon_outline": "In this sermon",
   "sermon_text": "Text",
@@ -733,12 +734,5 @@
   "quotes_copied": "Copied",
   "quotes_clip_chapter": ", chapter %n%",
   "book_more_by": "More by %name%",
-  "book_also_on": "Also on %topic%",
-  "book_faq_free_q": "Is %title% free to read online?",
-  "book_faq_free_a": "Yes — the complete text is free to read here at Ochorus, with no account or payment, and you can save it to read offline.",
-  "book_faq_length_q": "How long does %title% take to read?",
-  "book_faq_length_a": "About a %duration%, across %count% chapters.",
-  "book_faq_about_q": "What is %title% about?",
-  "book_faq_author_q": "Who wrote %title%?",
-  "book_faq_author_a": "%name% wrote %title%."
+  "book_also_on": "Also on %topic%"
 }
