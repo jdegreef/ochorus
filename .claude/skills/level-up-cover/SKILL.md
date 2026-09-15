@@ -39,12 +39,22 @@ the picture:
   (`https://www.artic.edu/iiif/2/<image_id>/full/1686,/0/default.jpg`) 403 unless
   you send `Referer: https://www.artic.edu/` — that header, not a policy, is the
   whole reason AIC was long thought unusable (`build_curated_covers` now carries
-  it via `REFERERS`). `image_id` is a UUID, NOT the object id.
+  it via `REFERERS`). `image_id` is a UUID, NOT the object id. **AIC throttles a
+  session that hammers its IIIF host** — after a few pools of contact-sheet
+  downloads every fetch 403s for a while (even with the Referer), and backoff
+  doesn't clear it fast. When that happens, switch to Cleveland (below) rather
+  than waiting it out; download smalls with delays and reuse cached files.
+- **Cleveland** (`cma`) — the clean fallback and, when AIC is throttling, the
+  better first stop. `https://openaccess-api.clevelandart.org/api/artworks/?q=<term>&cc0=1&type=Painting&has_image=1&limit=20`
+  is a real search with a `type=Painting` filter; images are on
+  `openaccess-cdn.clevelandart.org` with NO hotlink protection (direct download,
+  no Referer). Object `id` = the API path id = the `object_id` you record. Used
+  for Wesley (Constable, Inness) when AIC blocked mid-batch. British/European
+  landscapes are well represented (Constable, Gainsborough, Wilson, Turner).
 - **Met** (`met`) — search by SUBJECT word (`?q=<subject>&hasImages=true`), fetch
   each object, filter `isPublicDomain && classification=="Paintings" &&
   primaryImage`. Still fine when you know the subject noun; weak for "find me a
   good landscape". See memory `met-api-pd-art-sourcing`.
-- **Cleveland** (`cma`) — the third, `share_license_status=="CC0"`.
 
 **LOOK before you pick.** Both search APIs return junk mixed with gems, so
 download the small images, montage them into a contact sheet, and Read it — then

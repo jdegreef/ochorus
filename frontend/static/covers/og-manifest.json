@@ -1034,11 +1034,11 @@
    "scrim": 1
   },
   "plain-account-christian-perfection": {
-   "ground": "14f79a881f38534b38e843632bb5208371e00ae830fbee4a54649b4a6f7a1168",
+   "ground": "b0305149824498ac9942e808a3f46943e1b89b229eb8259459407a9d03e2c3d4",
    "style": "enlightenment",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.85
   },
   "possibilities-of-prayer": {
    "ground": "07fd9527eed259906c15e46f63a9afdfd352d53ec36fba831abbc9923049ca93",
@@ -1307,11 +1307,11 @@
    "scrim": 1
   },
   "sermons-on-several-occasions": {
-   "ground": "7046ca3cbb052dda7c471547cde793c571bd3e54971626f92a851ccf02ea57f3",
+   "ground": "61d5bb1c857733055d6fad0c2da99d72dcc1d325dce5a9f3da6aed0b692dc3d5",
    "style": "enlightenment",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.75
   },
   "spurgeon-on-prayer": {
    "ground": "ca182666c92fe4b62928fa74cacacdf3495b0906d51a09507a0a5b96b32dc06f",
