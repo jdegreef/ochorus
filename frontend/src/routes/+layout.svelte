@@ -428,14 +428,14 @@
 						     whole site's language and records the choice. -->
 						{#if l.code === lang.current}
 							<span
-								class="whitespace-nowrap py-1 font-semibold text-text"
+								class="footer-lang whitespace-nowrap py-1 font-semibold text-text"
 								lang={l.code}
 								aria-current="true">{l.native_name}</span
 							>
 						{:else}
 							<a
 								href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
-								class="whitespace-nowrap py-1 text-muted hover:text-text"
+								class="footer-lang whitespace-nowrap py-1 text-muted hover:text-text"
 								lang={l.code}
 								onclick={(e) => {
 									// Hand modified and non-primary clicks back to the browser.
