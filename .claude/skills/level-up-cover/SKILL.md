@@ -38,6 +38,15 @@ scenes. Verify every finalist's PD flag before building. Record it in
 `backend/library/curated_art.py` `CURATED` with a one-line rationale + per-work
 `focus` (0–1 crop bias along the overflowing axis; tall hanging scrolls → ~0.3).
 
+**On "public domain" here (founder steer, 2026-09-15): be reasonable, not
+rigid.** Cover grounds don't have to be strictly PD — freely-licensed (CC0/CC BY)
+or plainly reuse-intended art is fine too. The Met Open-Access `isPublicDomain`
+filter stays the default only because it's the easiest *reliable* pipeline (and
+`build_curated_covers` re-verifies that flag), not because PD is the sole
+acceptable licence. If you pull a ground from another free source, record its
+licence + source in the `CURATED` rationale; skip only the genuinely
+risky (commercial/stock/watermarked, or actively policed).
+
 ## 2. Build (exact order — from `backend/`, `DJANGO_DEBUG=true uv run python …`)
 
 ```bash
