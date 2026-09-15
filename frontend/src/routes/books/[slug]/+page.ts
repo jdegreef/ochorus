@@ -1,3 +1,8 @@
+// Rebuild marker 2026-09-15b: #2412 added Isaac Watts's Divine Songs for
+// Children + the new author isaac-watts. Same new-content prerender race —
+// /books/divine-songs-for-children, /authors/isaac-watts and the updated
+// /topics/for-young-readers shelf baked as shells. API confirmed live with
+// all three; this touch forces one web build to prerender them.
 // Rebuild marker 2026-09-15: #2401 added the retold Pilgrim's Progress
 // (words of one syllable) + the for-young-readers shelf. The book's first
 // deploy lost the prerender race — the web build enumerated /books before
