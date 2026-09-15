@@ -294,16 +294,27 @@ format: **grayscale JPEG, max 600px, `frontend/static/portraits/<slug>.jpg`,
 `photo_url="/portraits/<slug>.jpg"`.**
 
 **Some subjects have no honest portrait.** William Law never permitted one to be
-taken in life, so every later engraving is an imagined likeness — and Commons'
-lead image for him is CC BY 4.0, not PD. When the only candidates are imagined
-or non-PD, **ship the monogram** and say why in the bio; a spurious face is
-worse than initials. (Checking the licence caught this: two of three portraits
-in that batch were PD, the third was not.)
+taken in life, so every later engraving is an *imagined* likeness — and a
+spurious face is worse than initials, so **ship the monogram** and say why. Note
+what does and doesn't drive that call: it's the *imagined* part, not the licence.
+A real photo under CC BY 4.0 is perfectly usable (fill `photo_attribution` +
+`photo_source_url`); a made-up face is not, at any licence.
 
-Source pre-1900 figures from Wikimedia Commons and **verify the licence** — never
-assume. Find the lead portrait via the Wikipedia `pageimages` API, then check
-`extmetadata.LicenseShortName == "Public domain"` via the Commons `imageinfo`
-API before using it. Convert with PIL (`magick`/`convert` are NOT installed):
+**Licence: be reasonable, not rigid (founder steer, 2026-09-15).** Free-to-use
+covers more than strict public domain — PD, Creative Commons (BY/BY-SA carry a
+credit in `photo_attribution`; the page shows it), offered-for-reuse, or plainly
+low-risk are all fine. Don't default to the monogram over a good, free image out
+of PD-purism. Reserve the caution for what's actually risky: a clearly
+commercial / stock / watermarked shot, or one someone is actively policing —
+and when it's a genuine judgement call, surface it to the founder rather than
+silently dropping the face.
+
+Source figures from Wikimedia Commons and **read the licence** — record what you
+used. Find the lead portrait via the Wikipedia `pageimages` API, then read
+`extmetadata.LicenseShortName` / `.UsageTerms` via the Commons `imageinfo` API:
+`"Public domain"` needs no attribution; a CC tag means fill `photo_attribution`
+("<creator>, <licence>, via Wikimedia Commons") + `photo_source_url`. Convert
+with PIL (`magick`/`convert` are NOT installed):
 
 ```python
 im = Image.open(io.BytesIO(raw)).convert("L")   # "L" = the house B&W look
@@ -324,33 +335,29 @@ a ~3:4 bust centred on the face before saving, then derive the focal `N` from th
 CROPPED file (`y = (fy − 0.45·a) ÷ (1 − a)`), and eyeball the circle mask once
 (render an ellipse over an object-cover crop) to confirm the face lands well.
 
-**A CC "own work" claim on a lifetime photo is copyfraud — reject it.** For a
-20th-century subject (the era where PD runs out), Commons' only image is often a
-real press/studio photograph from the person's life that a recent uploader
-re-posted as "own work" under CC BY(-SA). The tell is
-`extmetadata.DateTimeOriginal`: a file created *after* the subject died (Festo
-Kivengere d. 1988, image dated 2016) cannot be the uploader's own work, so the
-licence doesn't hold — and it isn't PD anyway, and the portrait system carries no
-attribution field to satisfy CC BY. Treat it exactly like William Law: ship the
-monogram. The honest route to a real face for these is a rights grant from the
-holder (a ministry, estate, or archive), which is the founder's call to pursue,
-not something to fake with a mislicensed upload. (Kivengere / Nsibambi both
-stayed monograms this way — Nsibambi has no free image at all.)
+**20th-century subjects (where PD runs out) — don't reflexively reject a free
+image.** Commons' only picture is often a real photograph from the person's life
+that a later uploader re-posted under CC BY(-SA), sometimes tagged "own work"
+(the tell is `extmetadata.DateTimeOriginal` dated after the subject died — e.g.
+Festo Kivengere d. 1988, file dated 2016). The old rule shipped a monogram for
+these; the founder's steer is the opposite — a freely-offered image like that is
+low-risk and fine to use, with the credit filled in (`photo_attribution` +
+`photo_source_url`; the "no attribution field" that once justified rejecting
+these was simply wrong — the fields exist). Prefer a real face with a credit over
+initials. Still skip the genuinely risky ones — a clearly commercial / agency /
+watermarked shot, or one a rights-holder is actively policing — and when a
+better, cleaner image could be had via a rights grant from a ministry/estate/
+archive, note that for the founder to pursue. A genuine judgement call is theirs,
+not one to resolve by dropping the face.
 
-**But read the `Credit` field before you reject — a CC tag over a provably
-pre-1929 source is copyfraud the OTHER way, and the source may be usable.** A
-19th-century subject (Alexander Maclaren, d. 1910) can have Commons images tagged
-`CC BY-SA 4.0` with `DateTimeOriginal` 2019, where the uploader's own `Credit`
-says the picture is from an 1889 publication (*Manchester Faces and Places*). The
-underlying work is then unambiguously US-PD by publication year, and a faithful
-reproduction of a PD 2D work earns no new copyright — so the CC tag is legally
-ineffective and the image IS usable (this is the `{{PD-Art}}` case). The
-DIFFERENCE from Kivengere is the source date: Kivengere's underlying photo is a
-possibly-copyrighted 20th-c. image; Maclaren's is a named 1889 print. Default to
-the monogram AND surface the finding to the founder ("a genuine 1889 PD portrait
-exists, only under a copyfraud CC tag — add it, or not?") rather than silently
-dropping a famous face — the publication-date-vs-uploader-tag call is theirs, not
-one to make unilaterally. *(Maclaren shipped a monogram + a flagged note, 2026-09.)*
+**Bonus: a CC tag over a provably old source needs no attribution at all.** When
+a Commons image is tagged e.g. `CC BY-SA 4.0` but its `Credit` names a pre-1929
+publication (Alexander Maclaren, d. 1910 — an 1889 print in *Manchester Faces
+and Places*), the underlying 2D work is US-PD by publication year and a faithful
+reproduction earns no new copyright, so the CC tag is legally ineffective (the
+`{{PD-Art}}` case): use it as plain PD, `photo_attribution` optional. Reading the
+`Credit`/date is worth it — it can upgrade a "CC, needs credit" image to "PD, no
+strings."
 
 **If the environment can't reach the image (blocked egress, no Commons access),
 that is not "no portrait exists" — it's "couldn't fetch it here."** Don't
@@ -374,6 +381,17 @@ the face centred at `fy` (a fraction of image height):
 Measure `a` and `fy` off the file you just saved, not off the Commons original.
 Tall plates with a high head clamp to `50% 0%`; a square source crops nothing, so
 its value is inert — list it anyway to keep the table a complete inventory.
+
+**The formula is a starting point, not the authority — the circle render is.**
+`fy` is easy to over-estimate on a high-headed bust, and too-large an `N` clips
+the crown in the avatar (A. W. Tozer shipped `50% 10%` on #2390 with a wrong
+"face at ~45%" note; it cut the top of his head, fixed to `50% 2%` on #2396). So
+actually LOOK before trusting the number: render the candidate into the site's
+real crop — a 112px `border-radius:50%` box with `object-fit:cover;
+object-position:50% N%` over the committed file — a few `N` values side by side,
+and pick the one with headroom above the hair and the chin inside. When unsure,
+bias toward `0%`. The same side-by-side harness audits the whole table at once
+(all files × their current value) if a crop is ever questioned.
 
 ## Adding sermons (optional, same page)
 
@@ -540,8 +558,10 @@ quality:
 Cost: ~7 research + 7 writer agents. The `same_as` decision is per-figure — the
 well-documented ones (Church, Luwum, Kanamuzeyi) got a verified Wikipedia URL;
 the four with no confirmed standalone entity were registered blank in
-`tests_author_entity` rather than given a guessed identifier. Portraits: a whole
-20th-century batch is monograms — lifetime photos are copyfraud-risk, so none
-shipped a face.
+`tests_author_entity` rather than given a guessed identifier. Portraits: this
+20th-century batch shipped as monograms under the old PD-only rule — worth a
+revisit under the relaxed policy above, since several (Luwum, Kivengere,
+Kanamuzeyi) have freely-offered Commons photos that are fine to use with a
+credit.
 
 _This is a living playbook — append tips and pitfalls as we write more._

@@ -45,6 +45,21 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   the sixteen works in `DERIVED_GROUND` keep the English cover in English and
   wear a crop of its photography everywhere else (`scripts/build_derived_grounds.py`).
 
+## Sourcing (be reasonable, not rigid)
+
+- The **reader's classics** — the book/sermon texts themselves — are public
+  domain. That's the product and the legal footing for reproducing whole works;
+  keep it.
+- **Everything around them — author photos, cover art, supplementary images —
+  does NOT have to be strictly public domain.** Freely-licensed (Creative
+  Commons; the `Author.photo_attribution` + `photo_source_url` fields exist to
+  carry the credit and show it on the page), offered for reuse, or plainly
+  low-risk is fine. Use judgement; don't default to a monogram or skip a good
+  image out of excess PD-purism. Reserve the caution for what's actually risky —
+  clearly commercial, watermarked/stock, or an image someone is actively
+  policing. When it's a genuine judgement call, surface it to the founder rather
+  than silently dropping the asset. (Founder steer, 2026-09-15.)
+
 ## The fixture (now a friendly edge)
 
 - Content lives in `backend/library/fixtures/content/` — **one file per work**:
