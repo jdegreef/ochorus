@@ -1,3 +1,10 @@
+// Rebuild marker 2026-09-15: #2401 added the retold Pilgrim's Progress
+// (words of one syllable) + the for-young-readers shelf. The book's first
+// deploy lost the prerender race — the web build enumerated /books before
+// seed_books created the row, so /books/pilgrims-progress-words-of-one-syllable
+// and /topics/for-young-readers baked as the 6 KB SPA shell. The API is
+// confirmed live with both; this frontend touch forces one web build to
+// prerender them.
 // Rebuild marker 2026-09-02: #1320 added Augustine's Enchiridion (11 thematic
 // chapters). The book's first deploy lost the prerender race — the web build
 // enumerated /books before the API's seed_books created the row, so the page
