@@ -1643,6 +1643,19 @@ X" → author `X`, subtitle carries the descriptive line. (Contrast the
 `ochorus-originals` bio *collections* — many subjects in one volume — which are
 their own author with per-chapter subject links.) *(watchman-nee-a-life, 2026-09)*
 
+**A HOUSE-WRITTEN original collection (no source at all) → a `build_<name>` that
+holds the original prose as committed module constants**, exactly like the
+anthology/manuscript builds but with nothing fetched. File it under the existing
+`ochorus-originals` author, `source_type: public_domain` (the house convention —
+the Originals all use it), `source_url: ""`, and add the slug to its topic shelf.
+Chapter bodies are plain `<p>` prose (no `<a>` links — `clean_fragment` strips
+attributes; cross-link to subjects via `BookPerson`, not inline links). Two
+gates to pre-check: colon-subtitle chapter titles ("Name: The Hook") must satisfy
+`titlecase.recase_title(t) == t`, and keep quotes uniformly curly so
+`QuoteStyleTests` (consistency) passes. For a CHILDREN's collection, short
+chapters (~350–450 words) read better than long ones. `build_brave_for_god` (six
+young-readers hero lives) is the model. *(brave-for-god, 2026-09)*
+
 ## Two kinds of fix
 
 - **Improve the importer** (`import_ochorus.py`) when the pattern recurs across
