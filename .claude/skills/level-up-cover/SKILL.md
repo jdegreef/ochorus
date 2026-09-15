@@ -156,13 +156,29 @@ serves + prerendered pages reference it.
   under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`, and
   would otherwise have shipped still pointing at a deleted plate).
 
+## Running the singles as a batched sweep
+Too many single-plate authors to do per-book A/B/C. The method that works:
+group them into **coherent sub-batches** (Church Fathers; African-American
+autobiographies; Puritans/English devotional), curate **one** best pick per book,
+mock them all, and present a **single grid** ("approve, or name any to swap") —
+one PR per sub-batch (multi-author is fine here; the skill sanctions it). Two
+principles that earned their place: **defer, don't mismatch** — Crowther's Niger
+journal was held rather than wear a Dutch castle-river, because no African/tropical
+source was reachable while AIC was throttling; and **painter-resonance** where it
+honours the author — Duncanson (the pre-eminent Black American landscapist) for the
+AME pioneers Lee and Allen. Each sub-batch stacks a new `curated_art` Batch; land
+them in order and union-resolve the `curated_art`/scrim/manifest overlap on rebase.
+
 ## Done so far
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
-Athanasius #2409 (2 — life-of-antony/Huguet, on-the-incarnation/Cole; also OPENED the
-`aic` source, see §1).
-Remaining plates ~25: 2-plate authors (Simpson [+lg/sw], Wesley, Hudson Taylor [+es],
-Originals) + ~19 single-plate authors (best as one batched sweep). Carmichael's `if`
-and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian
-(`treatises-of-cyprian`) was being handled on `feature/cyprian-treatises` — check before
-taking it. Susanna Wesley stays a generated cover on purpose (portrait trap, see
-`curated_art.py`).
+Athanasius #2409 (2 — Huguet/Cole; also OPENED the `aic` source, see §1),
+Wesley #2414 (2 — Constable/Inness), Hudson Taylor #2416 (2 — Chen Hongshou ink/Gifford),
+Simpson #2419 (2 — Church/Daubigny, +lg/sw). IN FLIGHT: Church Fathers (5 —
+Rosa/Corot/Lane/H.Robert/Panini), African-American autobiographies (4 —
+Heade/Chase/Inness/Duncanson).
+Remaining: Crowther (`journal-of-an-expedition-up-the-niger` — DEFERRED, wants an
+AIC tropical/Church once AIC un-throttles) + the Puritan/English devotional group
+(Owen, Sibbes, Law, Edwards, Meyer, Müller, Guyon, Bounds straggler, Carmichael
+`things-as-they-are`). Carmichael's `if` and all four Watchman-Nee titles are
+`is_published:false` — skip. Cyprian was on `feature/cyprian-treatises` — check
+first. Susanna Wesley stays a generated cover on purpose (portrait trap).
