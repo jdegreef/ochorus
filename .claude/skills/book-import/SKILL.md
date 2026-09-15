@@ -394,6 +394,31 @@ dropped; chapters under 120 words are dropped as stubs.
   the author from `authors.json` (full bio and all) while creating the book;
   verify the prod path by deleting both from the dev DB and running `seed_books`.
   *(religious-experience-and-journal, 2026-09)*
+- **A VERSE collection (a hymnbook / children's songs) → a `build_<name>` that
+  splits on the song markers and PRESERVES the stanzas.** Isaac Watts's *Divine
+  Songs* (Gutenberg #13439) marks each song as a `<p>Song N. <i>Title</i></p>`
+  line (NOT a heading), then one `<p>` per stanza with lines separated by `<br>`.
+  Split on the `Song N.` markers, group the songs into a few reading chapters,
+  and render each as `<h3>{title}</h3>` + its stanza `<p>`s. Keep the verse
+  intact: `<br>` and `<p>` survive `clean_fragment` (both in the sanitizer
+  allowlist — a `<br>`-only block is dropped, but a stanza has text so it stays),
+  so line and stanza breaks come through — do NOT reflow verse to prose. Watch
+  the tail: this edition appends a CCEL *addendum* of later moral songs (with
+  metre notation like `12,8,12,8`) after a transcriber note — detect the note
+  ("addendum"/"ccel") and stop before it, shipping only Watts's original text. A
+  brand-new author (Isaac Watts) needs only an `authors.json` entry appended
+  (byte-clean: `json.dumps(o, indent=2, ensure_ascii=False)+"\n"` round-trips it)
+  — `seed_books` get_or_creates from it, no migration. `build_divine_songs` is
+  the model. *(divine-songs-for-children, 2026-09)*
+- **An `is_published:false` book may be a COPYRIGHT hold, not a draft — check
+  migration `0022_unpublish_copyrighted_books` before ever publishing or
+  re-importing one.** `the-body-of-christ-teens` (a 1978 CFP Nee translation) and
+  `if` (Carmichael 1938, URAA-restored to ~2033) are hidden on prod because they
+  are still under US copyright, and their fixtures are MISLABELLED
+  `source_type: public_domain`; `corrections.py` also excludes them from
+  re-import. Publishing them (a fixture flip + a data migration — the very
+  pattern 0022 uses to UNpublish) would put copyrighted content live. Don't. When
+  a book is unpublished, find out WHY first. *(2026-09)*
 - **A two-part CONTINUOUS NARRATIVE (an allegory/story with no chapters) → a
   `build_<name>` that splits on EPISODE anchor phrases, not word-count chunks.**
   Godolphin's *Pilgrim's Progress in Words of One Syllable* (Gutenberg #7088) is
