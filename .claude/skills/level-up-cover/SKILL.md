@@ -85,7 +85,10 @@ uv run python manage.py build_curated_covers <slug…>        # writes covers/ar
 #   find frontend/static/covers -name "<slug>.svg" -delete   (build_cover_assets HARD-FAILS if left)
 uv run python scripts/build_cover_assets.py                 # webp variants; also repoints DB cover_url
 # repoint the fixtures (the shipped truth) — cover_url for EVERY language row → /covers/art/<slug>.jpg
-#   textual one-field edit (content_fixtures.persist_field shape); build_cover_assets often already did it
+#   build_cover_assets repoints the EN row but NOT extra-language rows (es/ sw/ lg/…) — do those by hand.
+#   GOTCHA: repoint with a str.replace on the one cover_url line, NEVER json.load+json.dump — dump
+#   reformats the whole fixture (81-line diff, escaping/indent drift). Restore from origin + str.replace
+#   if you already dumped. (Same shape as the og-manifest reformat trap below.)
 uv run python scripts/tune_art_scrim.py                     # measured scrim (art_scrim.py + coverScrim.ts)
 ( cd ../frontend && npm run og:covers )                     # composed og twins (needs node_modules symlink)
 ```

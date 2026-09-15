@@ -11,6 +11,7 @@
 
 export const COVER_SCRIM: Record<string, number> = {
 	'a-call-to-the-unconverted': 0.70,
+	'a-retrospect': 0.85,
 	'absolute-surrender': 0.95,
 	'all-of-grace': 0.70,
 	'all-things-for-good': 0.85,
@@ -51,6 +52,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'religious-affections': 0.50,
 	'revival-lectures': 0.85,
 	'selected-sermons-whitefield': 0.60,
+	'separation-and-service': 0.80,
 	'sermons-on-several-occasions': 0.75,
 	'soar-like-the-eagle-3': 0.90,
 	'spurgeon-on-prayer': 0.80,
