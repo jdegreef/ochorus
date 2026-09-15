@@ -674,7 +674,17 @@ export const EMBLEM_ART = {
 		<path d="M28.6 23.2c3-.3 5.1-2.1 6.2-5-3.2-.5-5.5.5-6.7 3.3z" fill="${GR}"/>
 		<path d="M24 38c-1.8-1.6-3.8-2.4-6-2.6M24 38c1.8-1.6 3.8-2.4 6-2.6" stroke="${BRD}" stroke-width="1.5" stroke-linecap="round" fill="none"/>
 		<path d="M8.5 40.5h31" stroke="${B}" stroke-width="2.4" stroke-linecap="round"/>
-		<path d="M11.5 43.4c1.9-1.3 3.8-1.3 5.7 0M19 43.4c1.9-1.3 3.8-1.3 5.7 0M26.5 43.4c1.9-1.3 3.8-1.3 5.7 0" stroke="${SK}" stroke-width="1.5" stroke-linecap="round" fill="none"/>`
+		<path d="M11.5 43.4c1.9-1.3 3.8-1.3 5.7 0M19 43.4c1.9-1.3 3.8-1.3 5.7 0M26.5 43.4c1.9-1.3 3.8-1.3 5.7 0" stroke="${SK}" stroke-width="1.5" stroke-linecap="round" fill="none"/>`,
+	'eagles-wings': `
+		<circle cx="24" cy="23" r="16" fill="${SK}" fill-opacity=".3"/>
+		<path d="M24 22 L5.5 10 C10 15 11 19 10 22 C14.5 20 18.5 21 21 26 Z" fill="${G}"/>
+		<path d="M24 22 L42.5 10 C38 15 37 19 38 22 C33.5 20 29.5 21 27 26 Z" fill="${G}"/>
+		<path d="M23 24 L11.5 17.5 C13.5 20.5 14 22.5 13 24.5 C16 23.5 18 24.5 20.5 27 Z" fill="${GD}"/>
+		<path d="M25 24 L36.5 17.5 C34.5 20.5 34 22.5 35 24.5 C32 23.5 30 24.5 27.5 27 Z" fill="${GD}"/>
+		<path d="M24 19 C21.4 21 21 25 21.7 30 C22.2 34.2 23 37.2 24 39.8 C25 37.2 25.8 34.2 26.3 30 C27 25 26.6 21 24 19 Z" fill="${BR}"/>
+		<path d="M21 37 L24 42 L27 37 Z" fill="${GD}"/>
+		<circle cx="24" cy="16" r="3.4" fill="${CR}"/>
+		<path d="M22.7 17.4 L24 20.2 L25.3 17.4 Z" fill="${GD}"/>`
 } as const;
 
 export type EmblemName = keyof typeof EMBLEM_ART;
