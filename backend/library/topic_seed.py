@@ -713,6 +713,7 @@ TOPIC_ARTICLES = {
         "who-is-the-holy-spirit",
         "what-are-the-spiritual-gifts",
         "what-is-the-fruit-of-the-spirit",
+        "soar-like-the-eagle-guide",
     ],
     "deeper-life": [
         "what-does-it-mean-to-abide-in-christ",
@@ -736,6 +737,7 @@ TOPIC_ARTICLES = {
         "what-is-worship",
         "how-to-find-rest-for-your-soul",
         "what-is-spiritual-warfare",
+        "soar-like-the-eagle-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",

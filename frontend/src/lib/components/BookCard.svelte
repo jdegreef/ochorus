@@ -14,8 +14,13 @@
 		 * `loading="lazy"` and started at opacity-0, which defers the preload
 		 * scanner and makes some LCP implementations discount it entirely.
 		 */
-		priority = false
-	}: { book: BookSummary; showAuthor?: boolean; priority?: boolean } = $props();
+		priority = false,
+		/**
+		 * When set, this card is the first of its author's run in the by-author
+		 * shelf and carries the `#author-<slug>` target the quick-nav jumps to.
+		 */
+		anchor
+	}: { book: BookSummary; showAuthor?: boolean; priority?: boolean; anchor?: string } = $props();
 	const t = i18n.t;
 
 	const chapters = $derived(
@@ -25,7 +30,8 @@
 
 <a
 	href={localizeHref(`/books/${book.slug}`)}
-	class="book-card card-lift group"
+	id={anchor ? `author-${anchor}` : undefined}
+	class={`book-card card-lift group${anchor ? ' scroll-mt-20' : ''}`}
 	data-testid="book-card"
 	aria-label={showAuthor ? `${book.title} — ${book.author.name}` : book.title}
 >
