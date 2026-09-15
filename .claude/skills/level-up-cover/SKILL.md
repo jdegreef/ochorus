@@ -76,9 +76,15 @@ uv run python manage.py build_curated_covers <slug…>        # writes covers/ar
 uv run python scripts/build_cover_assets.py                 # webp variants; also repoints DB cover_url
 # repoint the fixtures (the shipped truth) — cover_url for EVERY language row → /covers/art/<slug>.jpg
 #   textual one-field edit (content_fixtures.persist_field shape); build_cover_assets often already did it
+uv run python scripts/tune_art_scrim.py                     # measured scrim (art_scrim.py + coverScrim.ts)
 ( cd ../frontend && npm run og:covers )                     # composed og twins (needs node_modules symlink)
-uv run python scripts/tune_art_scrim.py                     # measured scrim so white type clears AA
 ```
+**Order matters: `tune_art_scrim` BEFORE `og:covers`.** The twin is composed with
+`scrimStrength(slug)` read from `coverScrim.ts`; a fresh painting defaults to scrim
+1 and `tune_art_scrim` lowers it (0.85 for the Athanasius pair). Draw the twin
+first and its manifest `scrim` is stale → `coverOgManifest.test.ts` fails. (The
+skill used to list these the other way; if you already drew twins at scrim 1, just
+re-run `og:covers` after tuning — it redraws only the changed slugs.)
 
 `cover_url` is **NOT create-only** in `seed_books` (`CREATE_ONLY_FIELDS =
 {source_type, is_published}`), so the fixture edit reaches prod on deploy — **no
@@ -92,8 +98,16 @@ data migration.** Verify covers by reading the og twin PNGs (`covers/<slug>.png`
 # (pre-existing manifest drift, non-deterministic PNG bytes). Revert them — the gate
 # hashes manifest INPUT digests, not PNG bytes, so it stays green:
 git checkout origin/main -- <non-target covers/*.png>
-uv run python manage.py test library.tests_fixture library.tests_covers   # 111 must pass
+uv run python manage.py test library.tests_fixture library.tests_covers   # 118 pass now
 ```
+**og-manifest.json may get WHOLESALE-REFORMATTED.** On some setups (Node 25 here,
+2026-09) `generate-cover-og.mjs` writes the manifest TAB-indented while origin is
+1-space — every one of its ~1959 lines shows as changed though only your slugs'
+data differs. Don't ship that. Restore origin and surgically re-apply just your
+entries: `git checkout origin/main -- frontend/static/covers/og-manifest.json`,
+then patch each of your slugs' `ground`/`art`/`scrim` fields in place (a tiny
+Python `str.replace` asserting one match each; re-`json.load` to validate). Diff
+should be ~6 lines per slug (art false→true, scrim, ground digest), not 1959.
 Diff must be **only** this author's slugs + `curated_art.py` + `art_scrim.py` +
 `coverScrim.ts` + `og-manifest.json` (+ the `AUTHOR_STYLE` line if you added one).
 Data-only diff → **skip** the `/simplify`+`/code-review` pass. PR, then merge on
