@@ -1220,5 +1220,311 @@ TOPIC_QA = {
             "question": "Why read these older books on waiting today?",
             "answer": "Because the soul's weariness has not changed, and these writers faced it honestly — the dryness, the delay, and the temptation to strive in our own power. Tested across generations, their counsel is practical rather than sentimental, and it points past technique to the God who promises that those who wait upon him \"shall run, and not be weary; and they shall walk, and not faint.\""
         }
+    ],
+    "deeper-life": [
+        {
+            "question": "What is The Deeper Life collection about?",
+            "answer": "It gathers books on holiness, surrender, and the abundant life hidden with Christ — works for the believer who wants to go further in than conversion, past the first steps into the fullness of the Christian life. Its keynote is Colossians 3:3, \"For ye are dead, and your life is hid with Christ in God\": the deeper life is presented not as an achievement to be won but as a hiddenness already secured in Christ, to be entered by faith."
+        },
+        {
+            "question": "Which classic works does it include?",
+            "answer": "Among them are Andrew Murray's \"Humility\" and \"The Way into the Holiest,\" Bernard of Clairvaux's \"On Loving God,\" Hannah Whitall Smith's \"The Christian's Secret of a Happy Life,\" Amy Carmichael's \"If,\" and Watchman Nee's \"The Normal Christian Life\" — a spread across centuries and traditions united by a single concern: the life of God lived out from within the believer."
+        },
+        {
+            "question": "What does the shelf mean by surrender?",
+            "answer": "The yielding of the whole self to God as the doorway to the deeper life — not striving to become holy by effort but abandoning oneself to Christ so that He may live His life through the believer. It is the note struck across the collection, from Murray's insistence on humility as the root to Nee's account of the Christian life as Christ's own life reproduced in us."
+        },
+        {
+            "question": "What is the \"abundant life\" these writers describe?",
+            "answer": "Not an intenser version of religious effort but Christ living His own life through the believer, so that holiness becomes a gift received rather than a height climbed. Watchman Nee's \"The Normal Christian Life\" is the shelf's fullest treatment — its argument that the ordinary birthright of every Christian is not endless struggle but Christ Himself lived out from within."
+        },
+        {
+            "question": "Why is humility so central here?",
+            "answer": "Because these writers agree that pride is the great obstacle to the deeper life and humility its root. Andrew Murray's little book on the subject argues that humility is not one virtue among many but the ground in which all the others grow — the emptying of self that alone makes room for the fullness of God. Without it, the deeper life is sought in vain."
+        },
+        {
+            "question": "Where should a reader begin?",
+            "answer": "Hannah Whitall Smith's \"The Christian's Secret of a Happy Life\" is a warm and accessible entry into the life of trust; Andrew Murray's \"Humility\" goes to the root; and Watchman Nee's \"The Normal Christian Life\" sets out the whole mechanism — how the cross, the blood, and the indwelling Spirit make the abundant life a reality rather than a hope."
+        },
+        {
+            "question": "Is this a \"second blessing\" teaching?",
+            "answer": "The shelf holds the classic holiness and Keswick stream, but read at its best it points not to a single later crisis that lifts a believer onto a permanently higher plane so much as to a continual return to Christ and daily abiding in Him. The emphasis falls on dependence and surrender kept up over a lifetime rather than on one decisive experience held ever after."
+        },
+        {
+            "question": "Why read these books today?",
+            "answer": "Because the gap between knowing about God and actually abiding in Him is perennial, and few writers have mapped the way across it so faithfully. Tested over generations, these works speak to the Christian who has believed the gospel and still longs for more — and they answer that longing not with a technique but with a Person, the Christ in whom the believer's life is already hidden."
+        }
+    ],
+    "grace-and-comfort": [
+        {
+            "question": "What is the Grace & Comfort collection about?",
+            "answer": "It gathers books on the unfailing grace of God and His comfort in every trial — good news for the weary, the failing, and the afflicted. Its keynote is 2 Corinthians 12:9, \"My grace is sufficient for thee: for my strength is made perfect in weakness\": the shelf's whole burden is that grace is not earned by the strong but given to the weak, and that God's comfort meets His people precisely at the point of their need."
+        },
+        {
+            "question": "Which works are included?",
+            "answer": "Among them are Spurgeon's \"All of Grace\" and \"Grace for Grace,\" Hannah Whitall Smith's \"The God of All Comfort\" and \"The Unselfishness of God,\" Andrew Murray's \"The Way to God,\" and Thomas Watson's \"All Things for Good\" — works written to steady the anxious and lift the discouraged with the plain assurance of grace."
+        },
+        {
+            "question": "What does the shelf teach about grace?",
+            "answer": "That it is all of God and none of us — that God justifies the ungodly, and that salvation is a free gift received by faith, not a wage earned by improvement. Spurgeon's \"All of Grace\" is the clearest statement: if any part of salvation depended on the reader's worthiness, the reader would be lost, which is precisely why grace must be free from first to last."
+        },
+        {
+            "question": "What does it offer the suffering and the weary?",
+            "answer": "Comfort that is honest rather than sentimental. Thomas Watson's \"All Things for Good\" — written the year after he was ejected from his living — argues from Romans 8:28 that the very providences which seem to wreck a life are, in God's hands, working together for the believer's good, like poisons tempered by an apothecary's skill into a sovereign medicine."
+        },
+        {
+            "question": "What does 2 Corinthians 12:9 mean for these books?",
+            "answer": "\"My grace is sufficient for thee: for my strength is made perfect in weakness\" is the shelf's promise that God's grace does not wait for us to be strong but is proved most fully where we are weakest. It reframes affliction and failure not as evidence of God's absence but as the very place His sustaining grace is displayed."
+        },
+        {
+            "question": "Who was Hannah Whitall Smith, and what does she add?",
+            "answer": "A nineteenth-century American Quaker writer whose \"The God of All Comfort\" and \"The Unselfishness of God\" turn again and again to the character of God as the ground of a settled peace. Her counsel to the anxious is to look away from their own frames and feelings to the unchanging goodness of the God who loves them — a happiness rooted not in circumstances but in Him."
+        },
+        {
+            "question": "Where should a reader begin?",
+            "answer": "Spurgeon's \"All of Grace\" is the place to start for the free offer of the gospel; Hannah Whitall Smith's \"The God of All Comfort\" for the weary heart; and Thomas Watson's \"All Things for Good\" for anyone facing a providence they cannot understand. Together they move from the grace that saves to the grace that sustains."
+        },
+        {
+            "question": "Why read these books today?",
+            "answer": "Because weakness, weariness, and grief are not solved but only sharpened by a religion of effort, and these writers offer the opposite — a grace that meets the reader exactly where strength runs out. Tested by their own authors' hard losses, they press one message on the discouraged: that God's grace is sufficient, and His comfort real, in every trial."
+        }
+    ],
+    "revival-and-missions": [
+        {
+            "question": "What is the Revival & Missions collection about?",
+            "answer": "It gathers the lives poured out for the gospel and the seasons of awakening God has sent — fuel for a burning heart. Its keynote is Habakkuk 3:2, \"O Lord, revive thy work in the midst of the years\": the shelf holds both the prayer for revival and the record of what it costs and produces, in the diaries of missionaries and the lectures of revivalists."
+        },
+        {
+            "question": "Which works are included?",
+            "answer": "Among them are Charles Finney's \"Revival Lectures,\" \"The Life and Diary of David Brainerd,\" Amy Carmichael's \"Things as They Are,\" the journal of an expedition up the Niger, Amanda Berry Smith's autobiography (\"A Brand Plucked from the Fire\"), and collections of the lives of men and women who gave everything for the gospel."
+        },
+        {
+            "question": "What does the shelf teach about revival?",
+            "answer": "That it is God's work to send — \"revive thy work\" — yet sought through prayer, humbling, and the plain preaching of the gospel. Finney's \"Revival Lectures\" argue that revival follows the right use of God-given means, while Brainerd's diary shows the hidden intercession behind an awakening; together they hold the mystery and the labour side by side."
+        },
+        {
+            "question": "What is David Brainerd's place here?",
+            "answer": "\"The Life and Diary of David Brainerd,\" published by Jonathan Edwards, is one of the most influential missionary memoirs ever written — the record of a young man who prayed to exhaustion among the Native peoples of colonial America and saw, shortly before his early death, a remarkable awakening at Crossweeksung. It has sent more people to the mission field than the biographies of a hundred famous preachers."
+        },
+        {
+            "question": "What kind of missionary lives does it hold?",
+            "answer": "Costly ones, told plainly. Amy Carmichael's \"Things as They Are\" refused to romanticise the mission field for readers who preferred a prettier picture; Amanda Berry Smith's autobiography records a freed slave's evangelism across four continents; and the collections of those who \"gave everything\" gather many such lives — poured out, often unheralded, for the sake of the gospel among the unreached."
+        },
+        {
+            "question": "What does Habakkuk 3:2 mean for the shelf?",
+            "answer": "\"O Lord, revive thy work in the midst of the years, in the midst of the years make known\" is the prayer under the whole collection — a cry that God would do again, in the reader's own dry season, what He has done before. It sets revival not as something the church manufactures but as something it begs for, and it ties the books of awakening to the books of mission as one work."
+        },
+        {
+            "question": "Where should a reader begin?",
+            "answer": "Brainerd's diary is the classic entry, both moving and searching; Finney's \"Revival Lectures\" set out the case that revival can be prayed and worked toward; and Amy Carmichael's \"Things as They Are\" gives the honest cost of the mission field. Together they stir the heart and count the price at once."
+        },
+        {
+            "question": "Why read these books today?",
+            "answer": "Because a burning heart is kindled less by argument than by example, and these are the examples — men and women who staked everything on the gospel, and seasons when God came down in power. They answer the reader's own coldness not with a technique but with a summons: to pray \"revive thy work,\" and to give what cannot be kept for what cannot be lost."
+        }
+    ],
+    "faith-and-guidance": [
+        {
+            "question": "What is the Faith & Guidance collection about?",
+            "answer": "It gathers books on trusting God for daily bread, direction, and every promise — the life of walking by faith and not by sight. Its keynote is Proverbs 3:6, \"In all thy ways acknowledge him, and he shall direct thy paths\": the shelf's burden is that the God who guides is to be trusted for the next step and the daily need alike, and that faith is the settled posture of the whole life, not an occasional act."
+        },
+        {
+            "question": "Which works are included?",
+            "answer": "Among them are F. B. Meyer's \"The Secret of Guidance,\" George Müller's \"The Life of Trust,\" A. B. Simpson's \"Days of Heaven Upon Earth,\" Spurgeon's \"Morning by Morning\" and \"Evening by Evening,\" F. B. Meyer's \"Our Daily Walk,\" and Andrew Murray's \"Waiting on God\" — daily readings and treatises alike on the trusting, guided life."
+        },
+        {
+            "question": "What does the shelf teach about guidance?",
+            "answer": "That God guides those who acknowledge Him in all their ways, and that His leading is found less in signs than in a heart kept near and obedient. F. B. Meyer's \"The Secret of Guidance\" is the shelf's fullest treatment: God's facts laid like a foundation, faith resting on them, and feelings following in God's own time — the temper of trust rather than a technique for extracting instructions."
+        },
+        {
+            "question": "What is George Müller's contribution?",
+            "answer": "\"The Life of Trust\" is the record of a man who ran orphanages for thousands of children without ever asking a human being for money — praying in the day's needs and writing down how God met them, again and again, often at the last hour. It is the shelf's great case study in trusting God for daily bread, and it shaped later missionaries who staked their own work on the same God."
+        },
+        {
+            "question": "What are the daily-reading books here?",
+            "answer": "Spurgeon's \"Morning by Morning\" and \"Evening by Evening,\" A. B. Simpson's \"Days of Heaven Upon Earth,\" and F. B. Meyer's \"Our Daily Walk\" are devotional companions built for a portion each day — short, Scripture-anchored readings meant to feed the trusting life through the ordinary rhythm of morning and evening rather than in a single sitting."
+        },
+        {
+            "question": "What does Proverbs 3:6 mean for the shelf?",
+            "answer": "\"In all thy ways acknowledge him, and he shall direct thy paths\" is the promise under the whole collection — that guidance is bound to trust, and that the believer's part is to acknowledge God in everything, leaving the directing to Him. It ties the books of daily devotion to the books of faith as one life: acknowledging God each day, and being led."
+        },
+        {
+            "question": "Where should a reader begin?",
+            "answer": "F. B. Meyer's \"The Secret of Guidance\" is the natural starting point for anyone anxious about God's will; George Müller's \"The Life of Trust\" builds confidence that God provides; and Spurgeon's \"Morning by Morning\" offers a daily companion to keep the heart near. Together they teach both the doctrine and the daily practice of walking by faith."
+        },
+        {
+            "question": "Why read these books today?",
+            "answer": "Because anxiety about provision and direction is perennial, and these writers answer it not with a formula but with a God who can be trusted for the next step. Tested in orphanages and mission fields and ordinary parishes, they press one counsel on the worried: acknowledge God in all your ways, rest on His promises, and let Him direct your paths."
+        }
+    ],
+    "the-gospel-call": [
+        {
+            "question": "What is The Gospel Call collection about?",
+            "answer": "It gathers the oldest invitation there is — come, repent, believe — in preachers pleading with the unconverted and in the testimony of grace found by the chief of sinners. Its keynote is 2 Corinthians 5:20, \"We pray you in Christ's stead, be ye reconciled to God\": the shelf is aimed squarely at the reader who is not yet a Christian, or who longs to be and does not know where to begin."
+        },
+        {
+            "question": "Which works are included?",
+            "answer": "Among them are Richard Baxter's \"A Call to the Unconverted,\" Spurgeon's \"Around the Wicket Gate,\" John Bunyan's \"Grace Abounding to the Chief of Sinners,\" and R. A. Torrey's \"How to Bring Men to Christ\" — books that press the gospel invitation home and show grace laying hold of real, resisting sinners."
+        },
+        {
+            "question": "What does 2 Corinthians 5:20 mean for the shelf?",
+            "answer": "\"We pray you in Christ's stead, be ye reconciled to God\" is the note of the whole collection — the gospel not merely explained but pleaded, God Himself entreating sinners through His preachers. It sets the tone: these are not detached treatises but appeals, addressed to the reader as one who still needs to come."
+        },
+        {
+            "question": "What is Bunyan's Grace Abounding?",
+            "answer": "John Bunyan's account of his own conversion — the years of terror, doubt, and half-heard verses that ran before \"The Pilgrim's Progress.\" Unsparing about despair, it is one of the first books in English to describe an ordinary man's inner life from the inside, and it stands on the shelf as the testimony of grace found by one who reckoned himself the chief of sinners."
+        },
+        {
+            "question": "What is Baxter's A Call to the Unconverted?",
+            "answer": "Richard Baxter's earnest, tender pleading with those who have not yet turned to God — a book written, he said, as a dying man to dying men, urging the unconverted not to put off the one decision that matters. It is among the most direct of the shelf's appeals, and it moved many in its own century and long after to come to Christ."
+        },
+        {
+            "question": "What does the shelf teach about conversion?",
+            "answer": "That it is the free gift of God, received by repentance and faith, and that the invitation is genuinely open to all — the vilest sinner not excepted. Bunyan's own story proves it from the inside; Baxter and Spurgeon press it from the pulpit; and Torrey's \"How to Bring Men to Christ\" equips the reader to carry the same invitation to others."
+        },
+        {
+            "question": "Where should a reader begin?",
+            "answer": "Spurgeon's \"Around the Wicket Gate\" and Baxter's \"A Call to the Unconverted\" are the plainest entries for the seeker; Bunyan's \"Grace Abounding\" is the great testimony of grace laying hold of a despairing man; and Torrey's \"How to Bring Men to Christ\" is for the believer who wants to point others to the same door."
+        },
+        {
+            "question": "Why read these books today?",
+            "answer": "Because the oldest invitation is still open, and these writers issue it with a warmth and urgency that later ages rarely match. Whether the reader is seeking, doubting, or wanting to bring someone else, the shelf presses one thing: that God entreats sinners to be reconciled to Him, and that grace has laid hold of worse cases than yours."
+        }
+    ],
+    "enduring-classics": [
+        {
+            "question": "What is The Enduring Classics collection about?",
+            "answer": "It gathers the books that have walked with pilgrims for centuries — Augustine's confession, Bunyan's dream, the counsel of Thomas à Kempis — the old paths that are still good. Its keynote is Jeremiah 6:16, \"ask for the old paths, where is the good way, and walk therein, and ye shall find rest for your souls\": the shelf commends the tested and time-worn over the merely new."
+        },
+        {
+            "question": "Which works are included?",
+            "answer": "Among them are Augustine's \"Confessions,\" the treatises of Cyprian, the first epistle of Clement, the epistles of Ignatius, Bunyan's \"The Pilgrim's Progress,\" Thomas à Kempis's \"The Imitation of Christ,\" Jonathan Edwards's \"Freedom of the Will,\" and William Law's \"A Serious Call\" — a span from the early church to the eighteenth century."
+        },
+        {
+            "question": "What does Jeremiah 6:16 mean for the shelf?",
+            "answer": "\"Stand ye in the ways, and see, and ask for the old paths, where is the good way, and walk therein\" is the collection's whole argument — that wisdom is more often found by returning to the tested roads than by chasing novelty. It sets these classics not as museum pieces but as the good way still worth walking, promising rest to the soul that does."
+        },
+        {
+            "question": "What is Augustine's Confessions?",
+            "answer": "Written around 397, it is the first true autobiography in Western literature and still the most searching — Augustine telling his own story back to God as one long prayer, from a boyhood theft to the garden in Milan where his life turned. Its opening line has never been improved upon: that our heart is restless until it rests in God, which is the note the whole shelf sounds."
+        },
+        {
+            "question": "What is The Imitation of Christ?",
+            "answer": "Written in the 1420s and, after the Bible, the most widely read Christian book ever, Thomas à Kempis's four short books of counsel call the reader away from the noise of opinion and ambition into the inner life — humility, patience, silence, and a friendship with Christ that outlasts every consolation. It is a classic precisely because its sentences still read as though written this morning."
+        },
+        {
+            "question": "What voices from the early church are here?",
+            "answer": "The collection reaches back to the first Christian centuries with Clement of Rome's letter to Corinth (the earliest Christian writing outside the New Testament), the seven urgent letters Ignatius of Antioch wrote on his way to the arena, and the treatises of Cyprian of Carthage — the church, in its earliest generations, learning to live out the gospel and pass it on."
+        },
+        {
+            "question": "Where should a reader begin?",
+            "answer": "Bunyan's \"The Pilgrim's Progress\" is the most accessible entry, carrying the whole of Christian experience in story form; Augustine's \"Confessions\" rewards the reader who suspects their own motives; and \"The Imitation of Christ\" is best taken slowly, a short chapter at a time, as it was written to be."
+        },
+        {
+            "question": "Why read these old books today?",
+            "answer": "Because a book that has fed pilgrims for centuries has been tested in a way no new book can be, and these have not lost their power to search and steady the reader. Jeremiah's counsel holds: the old paths are still the good way, and the soul that walks them finds rest that novelty cannot give."
+        }
+    ],
+    "the-way-of-holiness": [
+        {
+            "question": "What is The Way of Holiness collection about?",
+            "answer": "It gathers books on being set apart for God — the commandments searched, Christian perfection honestly pursued, and the affections of the heart tried and found true. Its keynote is Hebrews 12:14, \"Follow peace with all men, and holiness, without which no man shall see the Lord\": the shelf treats holiness not as an optional extra but as the very thing the Christian life is for."
+        },
+        {
+            "question": "Which works are included?",
+            "answer": "Among them are John Wesley's \"A Plain Account of Christian Perfection,\" the book \"Godliness,\" Jonathan Edwards's \"Religious Affections,\" and an exposition of the Ten Commandments — works that pursue holiness from several angles: the goal of perfect love, the test of true religious experience, and the searching of God's law."
+        },
+        {
+            "question": "What does Hebrews 12:14 mean for the shelf?",
+            "answer": "\"Follow peace with all men, and holiness, without which no man shall see the Lord\" is the collection's sober premise — that holiness is not negotiable, but the necessary mark of those who will see God. It sets the pursuit of holiness as the serious business of every Christian, not the special calling of a few."
+        },
+        {
+            "question": "What is Wesley's Plain Account of Christian Perfection?",
+            "answer": "John Wesley's careful statement of what he did and did not mean by Christian perfection — not sinless flawlessness or freedom from mistake, but a heart so filled with the love of God and neighbour that love reigns in it. It is the shelf's fullest treatment of holiness as the goal of the Christian life, honestly guarded against the extremes on either side."
+        },
+        {
+            "question": "What does Edwards's Religious Affections contribute?",
+            "answer": "Jonathan Edwards's great work distinguishing true religious experience from false — asking what actually marks a genuine work of God in the heart, as against mere emotion or self-deception. It brings to the shelf a searching test: that holiness shows itself not in fervour alone but in a settled bent of the affections toward God and His holiness itself."
+        },
+        {
+            "question": "Is holiness here presented as effort or gift?",
+            "answer": "The shelf holds both emphases in tension — the diligent searching of the commandments and the mortifying of sin on one side, and on the other the conviction that holiness is the fruit of God's grace working in the heart. What unites the works is the refusal to treat holiness as optional: it is pursued honestly, neither presumed nor despaired of."
+        },
+        {
+            "question": "Where should a reader begin?",
+            "answer": "Wesley's \"A Plain Account of Christian Perfection\" is the clearest statement of the goal; Edwards's \"Religious Affections\" is the searching test of whether one's own religion is true; and the exposition of the Ten Commandments grounds the whole pursuit in God's revealed law. Together they map the way of holiness from law to love."
+        },
+        {
+            "question": "Why read these books today?",
+            "answer": "Because the call to holiness is easily softened or ignored, and these writers refuse to let it go — pressing the necessity of it, guarding against both legalism and complacency, and pointing to the love of God as its heart. They answer the reader's half-hearted religion with Hebrews' plain word: without holiness no one will see the Lord."
+        }
+    ],
+    "the-preached-word": [
+        {
+            "question": "What is The Preached Word collection about?",
+            "answer": "It gathers great preaching on the page — Whitefield and Wesley in full voice, Spurgeon among his farmers — and Baxter's charge to every shepherd of souls. Its keynote is Romans 10:14, \"How shall they hear without a preacher?\": the shelf honours preaching as the appointed means by which the gospel reaches the world, and it lets the reader sit under the great preachers in print."
+        },
+        {
+            "question": "Which works are included?",
+            "answer": "Among them are selected sermons of George Whitefield, John Wesley's \"Sermons on Several Occasions,\" Spurgeon's \"Talks to the Farmer\" and \"Till He Come,\" Richard Baxter's \"The Reformed Pastor,\" and expositions of the fundamental doctrines of the faith — the preached word preserved, and the theology of the preacher's own work."
+        },
+        {
+            "question": "What does Romans 10:14 mean for the shelf?",
+            "answer": "\"How shall they hear without a preacher?\" is the collection's charter — that faith comes by hearing, and hearing by the preached word, so that preaching is not a relic but God's chosen instrument. It sets these sermons and manuals not as literary specimens but as the living voice of the gospel, carried down to the reader on the page."
+        },
+        {
+            "question": "Whose preaching does the shelf preserve?",
+            "answer": "The great voices of the eighteenth-century awakening and the Victorian pulpit — George Whitefield, whose open-air preaching stirred two continents; John Wesley, whose \"Sermons on Several Occasions\" set out the doctrine of the Methodist revival; and Charles Spurgeon, whose \"Talks to the Farmer\" drew the gospel out of homely country pictures for ordinary hearers."
+        },
+        {
+            "question": "What is Baxter's The Reformed Pastor?",
+            "answer": "Richard Baxter on the work of a minister, written for a gathering of Worcestershire clergy — not sermon craft but the personal, house-by-house instruction of every family in a parish. It brings to the shelf the theology of the preacher's own calling: that a man who preaches to hundreds on Sunday and knows none of them the rest of the week has not done the job."
+        },
+        {
+            "question": "What can a modern reader gain from old sermons?",
+            "answer": "The chance to sit under preachers whose power moved thousands, and to learn from them how the gospel is proclaimed with warmth, clarity, and force. Read devotionally rather than as history, these sermons still do the work they were preached for — pressing Christ on the conscience — and Baxter's manual still searches those who preach."
+        },
+        {
+            "question": "Where should a reader begin?",
+            "answer": "Spurgeon's \"Talks to the Farmer\" is the most accessible entry, plain and vivid; Wesley's \"Sermons on Several Occasions\" set out the heart of his gospel; and Baxter's \"The Reformed Pastor\" is essential for anyone in ministry or wanting to understand it. Together they offer both the sermon and the theology of the sermon."
+        },
+        {
+            "question": "Why read these books today?",
+            "answer": "Because preaching remains God's appointed means, and the greatest preachers repay study — not to imitate their style but to catch their seriousness about the gospel and about souls. The shelf lets the reader hear Whitefield, Wesley, and Spurgeon still, and lets Baxter still charge every shepherd with the care of the flock."
+        }
+    ],
+    "christ-and-the-cross": [
+        {
+            "question": "What is the Christ & the Cross collection about?",
+            "answer": "It gathers preaching on the person and work of the Saviour — the Lamb slain, the shame and triumph of the cross, the excellency of Christ, and the empty tomb. The shelf turns the reader's attention to the centre of the whole faith: who Jesus is, what He did at Calvary, and what His resurrection secured."
+        },
+        {
+            "question": "What sermons does it include?",
+            "answer": "Among them are \"Behold the Lamb of God,\" \"Christ Precious to Believers,\" \"The Excellency of Christ,\" \"How to Contemplate Christ's Holy Sufferings,\" \"The Resurrection of Jesus,\" \"The Shameful Sufferer,\" \"The Triumph of Calvary,\" and \"Worthy is the Lamb\" — messages that dwell on the sufferings and glory of the Saviour from many angles."
+        },
+        {
+            "question": "What does it mean that Christ is the \"Lamb slain\"?",
+            "answer": "It is the shelf's recurring image — Jesus as the sacrifice offered for sin, the Lamb of God who takes away the sin of the world. Sermons like \"Behold the Lamb of God\" and \"Worthy is the Lamb\" press this: that the cross was not a tragedy that befell Christ but the offering He came to make, and that the slain Lamb is now the worthy one, adored in heaven."
+        },
+        {
+            "question": "How does the shelf hold together shame and triumph?",
+            "answer": "By refusing to separate them. Titles like \"The Shameful Sufferer\" and \"The Triumph of Calvary\" set side by side the humiliation of the cross — its scandal, pain, and apparent defeat — and its hidden victory, in which sin was borne away and death undone. The cross is presented as at once the lowest shame and the highest triumph of the Saviour."
+        },
+        {
+            "question": "What is the \"excellency of Christ\"?",
+            "answer": "The surpassing worth and beauty of the Saviour Himself — the theme of the sermon \"The Excellency of Christ,\" which dwells on the wonder that in Him seemingly opposite glories meet: majesty and meekness, justice and mercy, the Lion and the Lamb. The shelf's aim is not only to explain what Christ did but to make the reader see how worthy He is."
+        },
+        {
+            "question": "What place does the resurrection have?",
+            "answer": "A central one — the empty tomb completes the shelf's account of the Saviour's work. \"The Resurrection of Jesus\" and the triumph sermons proclaim that Calvary's apparent defeat was reversed on the third day, so that the Lamb who was slain now lives, and the believer's hope rests not on a dead teacher but on a risen and reigning Lord."
+        },
+        {
+            "question": "Where should a reader begin?",
+            "answer": "\"Behold the Lamb of God\" is a fitting entry into the meaning of the cross; \"The Excellency of Christ\" lifts the eyes to the worth of the Saviour Himself; and \"The Resurrection of Jesus\" and \"The Triumph of Calvary\" carry the reader from Good Friday's shame to Easter's victory. Together they set the whole work of Christ before the reader."
+        },
+        {
+            "question": "Why is this the heart of the collection?",
+            "answer": "Because the person and work of Christ are the centre of the whole Christian faith, and every other theme flows from them. The shelf exists to keep the reader's gaze where it belongs — on the Lamb slain and risen, the shame and triumph of the cross, and the excellency of the Saviour who is worthy of all worship."
+        }
     ]
 }
