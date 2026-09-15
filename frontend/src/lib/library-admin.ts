@@ -1,4 +1,4 @@
-import { apiFetch } from './api';
+import { apiFetch, apiFetchRaw } from './api';
 import type { AdminScope } from './adminAccess';
 import type { FavoriteKind } from './favorites.svelte';
 import type { Language, SearchType, SourceType } from './library-public';
@@ -117,6 +117,17 @@ export interface AdminTeam {
 	languages: string[];
 }
 export const getAdminTeam = () => apiFetch<AdminTeam>('/api/admin/team/');
+
+/**
+ * Fetch the Admin Manual PDF (super-admin only) as an object URL. The endpoint is
+ * bearer-gated, so a plain `<a href>` can't reach it — we fetch the blob with the
+ * token attached and hand back a `blob:` URL the caller opens in a new tab. The
+ * caller owns the URL; revoking it would break the opened tab, so it isn't revoked.
+ */
+export const fetchAdminManualUrl = async (): Promise<string> => {
+	const res = await apiFetchRaw('/api/admin/manual/');
+	return URL.createObjectURL(await res.blob());
+};
 
 /** Grant a role (or a single capability+verb) to an email, scoped to languages. */
 export const grantAdminAccess = (payload: {

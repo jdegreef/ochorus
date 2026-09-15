@@ -1694,3 +1694,25 @@ class AdminLanguageHealthTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/language-health/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminManualTests(TestCase):
+    """The Admin Manual PDF endpoint — super admins only, served inline."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    @override_settings(DEBUG=True)
+    def test_super_admin_gets_the_pdf_inline(self):
+        res = self.client.get("/api/admin/manual/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res["Content-Type"], "application/pdf")
+        self.assertIn("inline", res["Content-Disposition"])
+        if hasattr(res, "streaming_content"):
+            res.close()  # release the file handle opened by FileResponse
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_super_admin(self):
+        # A signed-out / non-allowlisted caller cannot reach it.
+        res = self.client.get("/api/admin/manual/")
+        self.assertIn(res.status_code, (401, 403))
