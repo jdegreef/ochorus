@@ -14,6 +14,10 @@
 			"content": "7e292b60cf125bdd256ab026b82fd847a98edb6367ae9357604baa9901db9141",
 			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
+		"abiding-in-christ": {
+			"content": "61e50c2bfaec5b5733f1d593543e382f92263575b2c1050386b26909e967b886",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
 		"against-eutropius": {
 			"content": "487ba1c3e7c03d63f4eb65591c5a494f46e488144ced1fab73d6c29ecffc2be1",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
@@ -41,6 +45,18 @@
 		"blessed-prosperity": {
 			"content": "97e34c7d1ef753ee4365e081fb32a516c2a6ed7f5ab22b6be85fe84692b561bd",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
+		"broken-before-the-throne": {
+			"content": "1d0593f4b75c9143df393f4835d4eac9bdf5d197ae2cdd08c7bd4a05bed5319c",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"burdens-and-gifts": {
+			"content": "e4c71ce4d560b418d57499f5719641cd9838fae50bbc1e8661781403472e80d1",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"caleb-a-different-spirit": {
+			"content": "1e3668d554e84fe26ce96fbdc7d567c23eef1b4f3f2b2036f22cab9b2e388c24",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"catholic-spirit": {
 			"content": "6aa2c468f3b4c385cbba149f67b1c65a28f5e7820a32bd27d7aaf08b440da167",
@@ -126,9 +142,17 @@
 			"content": "a67347bebfa22de74c5fd4c4e38376daafb7561d1241df8ac3c35bb51102dd47",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
+		"four-reasons-we-need-revival-in-north-america": {
+			"content": "ed9a7fc4e23971d9b041fb47e11b97b89570d706dab76efabda5cf07230c9d4c",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
 		"free-grace": {
 			"content": "43fd7561c1c80c780f2a0faeb520d2d3e1f183ec0ed7696343f7135fff2fec39",
 			"art": "95dc35b22ecab4ab1c127c0171c0371b2d5a775d8b134617f1884b5b206d0fd7"
+		},
+		"glory-of-his-inheritance": {
+			"content": "92a65c385e9b2cf0ac9479777069e90920787400d3a29fe5548c058cbac3061f",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"god-glorified-in-mans-dependence": {
 			"content": "437adb991ac73d2102fc8ba12ccbb6052081792d946c828800fb2f3a67e922aa",
@@ -141,6 +165,18 @@
 		"grace-and-truth": {
 			"content": "09246ae4ce03f3f896ba04cb5bdeb8aa838b33248f4933a3cb5d7bce4bebf9ef",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"guard-the-fire": {
+			"content": "e860f8eac422171cded1722ea7c601945784d4000102a3a32b7f46e151fa0598",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"guard-the-gift": {
+			"content": "73333a6195c9ea8c3d2c3b9571117fbd1fa0765dd2c13089cac9942642504e44",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
+		"guard-the-truth": {
+			"content": "03a0a2d810a3758517a4d113c15b28ab39a975b1b1acc209f7447cc5167127af",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"himself": {
 			"content": "d4230634a8faf2f7b737e23d7b64f41fe7d9c54f91e4cc3479d8826c3698206e",
@@ -165,6 +201,10 @@
 		"marks-of-a-true-conversion": {
 			"content": "6d4ca1e84f469b14790f5167a4e369762dceab243b8674ade39d53e2c0d88c33",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
+		"mary-of-bethany": {
+			"content": "5e71cdc6b3751ea484609f59b20aa806e68d55e8cbb664a3a966287dc0231db5",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"naaman-the-syrian": {
 			"content": "c865b2279b0d86e24358c6044e5ef61726d16736af00018eac15cce691c7c2e6",
@@ -249,6 +289,10 @@
 		"the-excellency-of-christ": {
 			"content": "a034b11ca72592b1ad2c77cc6dc4e9d8a1eab11a876024078a85d39e711b6057",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
+		"the-gift-of-faith": {
+			"content": "35406361e4c2ac8b16d882c5c185d2d88beb6e2c71064f4b772ef67b1d31e071",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"the-golden-key-of-prayer": {
 			"content": "4d55494457453a857ff1572cab7c2938178ee25fe3d4a688abf655897c68e550",

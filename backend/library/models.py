@@ -596,6 +596,13 @@ class Sermon(models.Model):
     # backfill_search_vectors; GIN-indexed in migration 0041. See library/fts.py.
     search_vector = SearchVectorField(null=True, editable=False, serialize=False)
     source_url = models.URLField(blank=True)
+    # Free-text rights / permission / credit note, the twin of Book.attribution.
+    # Blank for a public-domain sermon (the reader then shows its generic
+    # "public domain" line); set for a work used by permission, where it both
+    # RECORDS the grant and REPLACES that line on the page — so a copyrighted
+    # sermon is never mislabelled public domain. Fixture-owned prose, updated on
+    # every deploy (in SERMON_FIELDS, not create-only).
+    attribution = models.TextField(blank=True, default="")
 
     sort_order = models.PositiveIntegerField(default=0)
     is_published = models.BooleanField(default=True)

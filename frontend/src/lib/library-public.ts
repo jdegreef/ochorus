@@ -409,6 +409,10 @@ export interface Sermon extends SermonSummary {
 	body_html: string;
 	source_type: SourceType;
 	source_url: string;
+	/** Free-text rights/credit note. Blank for a public-domain sermon (the page
+	 * shows its generic public-domain line); set for one used by permission,
+	 * where it replaces that line so the sermon is never mislabelled. */
+	attribution?: string;
 	author_name: string;
 	author_slug: string;
 	author_photo: string;
