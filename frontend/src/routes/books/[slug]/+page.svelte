@@ -244,51 +244,26 @@
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
-	// Locales whose FAQ + "more like this" reason copy is native-reviewed — the
-	// shared gate (see REVIEWED_UI_LOCALES in seo.ts), so this page and the sermon
-	// page's reflection questions light up together, not one at a time.
+	// Locales whose "more like this" reason copy is native-reviewed — the shared
+	// gate (see REVIEWED_UI_LOCALES in seo.ts). Only the reason labels use it now;
+	// the Q&A section below is editorial-only and per-language (not locale-gated).
 
 	// Editorial Q&A: hand-authored, grounded in the work, per-language (it rides the
-	// book row like about_html, so a translated edition carries its own). This is
-	// the two-tier model the bio page uses — editorial preferred, the derived set
-	// below as the fallback. Content, not chrome, so it is NOT locale-gated: an es
-	// row's qa is Spanish. The stored shape is {question, answer}; map to {q, a}
-	// for faqPage() and the shared component (the sermon page does the same).
+	// book row like about_html, so a translated edition carries its own). Books show
+	// ONLY this editorial set — the derived "Common questions" fallback was dropped
+	// (founder decision, questions-and-answers-plan.md §8): every Q&A shown is
+	// human-authored. Content, not chrome, so it is NOT locale-gated: an es row's qa
+	// is Spanish. The stored shape is {question, answer}; map to {q, a} for the
+	// shared component and faqPage() (the sermon page does the same).
 	const editorialQa = $derived(
 		(book.qa ?? []).map((it) => ({ q: it.question, a: it.answer }))
 	);
 
-	// A short FAQ built from what the page already knows — free to read, length,
-	// subject, author — answering the questions readers actually type ("is X free
-	// to read", "how long is X"). The copy is in the catalogues (see
-	// REVIEWED_UI_LOCALES); a locale without a reviewed translation omits it rather
-	// than shipping an unreviewed answer. Used only when there is no editorial set.
-	const derivedFaq = $derived.by((): { q: string; a: string }[] => {
-		if (!REVIEWED_UI_LOCALES.has(getLang()) || !book.chapter_count) return [];
-		const title = book.title;
-		const items = [
-			{ q: t('book.faqFreeQ').replace('%title%', title), a: t('book.faqFreeA') },
-			{
-				q: t('book.faqLengthQ').replace('%title%', title),
-				a: t('book.faqLengthA')
-					.replace('%duration%', readingTime(totalWords))
-					.replace('%count%', String(book.chapter_count))
-			}
-		];
-		if (book.description) {
-			items.push({ q: t('book.faqAboutQ').replace('%title%', title), a: book.description });
-		}
-		items.push({
-			q: t('book.faqAuthorQ').replace('%title%', title),
-			a: t('book.faqAuthorA').replace('%name%', book.author.name).replace('%title%', title)
-		});
-		return items;
-	});
-
 	// The one array the visible section and the FAQPage JSON-LD both read (so the
 	// markup can never assert a question the page doesn't show), plus that JSON-LD.
-	// The editorial-vs-derived floor and the faqPage() wiring live once in pickQa.
-	const qa = $derived(pickQa(editorialQa, derivedFaq));
+	// The >=2 floor and the faqPage() wiring live once in pickQa; the empty second
+	// arg is the (now removed) derived tier — editorial-only.
+	const qa = $derived(pickQa(editorialQa, []));
 
 	// "More like this" reasons (A2). The reason is data from the API; the visible
 	// label comes from the catalogues, shown in the same reviewed locales as the
@@ -656,7 +631,7 @@
 	     set) also feeds the FAQPage JSON-LD in <Seo> via the same pickQa call, so
 	     the visible answers and the structured data stay in lockstep. The shared
 	     <QandA> section id is `questions`, which the jump-nav above points at. -->
-	<QandA items={qa.items} title="Questions and Answers" />
+	<QandA items={qa.items} title={t('qa.sectionTitle')} />
 
 	<!-- People found IN this work who have a bio of their own — an anthology's
 	     subjects, the figures a biography follows. Links to their author pages.

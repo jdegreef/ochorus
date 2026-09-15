@@ -544,6 +544,7 @@
   "sermon_scripture_index": "L’Écriture dans ce sermon",
   "sermon_topics": "Thèmes",
   "sermon_min_left": "min restantes",
+  "qa_section_title": "Questions et réponses",
   "sermon_questions_title": "Questions pour la réflexion",
   "sermon_outline": "Dans ce sermon",
   "sermon_text": "Texte",
@@ -733,12 +734,5 @@
   "quotes_copied": "Copié",
   "quotes_clip_chapter": ", chapitre %n%",
   "book_more_by": "Plus de %name%",
-  "book_also_on": "Également sur %topic%",
-  "book_faq_free_q": "Peut-on lire %title% gratuitement en ligne ?",
-  "book_faq_free_a": "Oui — le texte intégral est disponible gratuitement ici sur Ochorus, sans compte ni paiement, et vous pouvez l'enregistrer pour le lire hors ligne.",
-  "book_faq_length_q": "Combien de temps faut-il pour lire %title% ?",
-  "book_faq_length_a": "Environ %duration%, répartis sur %count% chapitres.",
-  "book_faq_about_q": "De quoi parle %title% ?",
-  "book_faq_author_q": "Qui a écrit %title% ?",
-  "book_faq_author_a": "%name% a écrit %title%."
+  "book_also_on": "Également sur %topic%"
 }
