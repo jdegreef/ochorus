@@ -1019,6 +1019,13 @@
    "art": true,
    "scrim": 0.65
   },
+  "pilgrims-progress-words-of-one-syllable": {
+   "ground": "464a68f328172c2fdd4bb55add7b5da3752793618539d973c72bc6184d347c53",
+   "style": "press",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
   "plain-account-christian-perfection": {
    "ground": "14f79a881f38534b38e843632bb5208371e00ae830fbee4a54649b4a6f7a1168",
    "style": "enlightenment",

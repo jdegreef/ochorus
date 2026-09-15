@@ -41,6 +41,7 @@ export const EMBLEM_HUES: Record<EmblemName, string> = {
 	'gospel-banner': '#a97a24',
 	'grace-fountain': '#4a6fb5',
 	'grafted-branch': '#8a5fbf',
+	'guiding-star': '#d9a441',
 	'heavens-ladder': '#d9a441',
 	'herald-trumpet': '#a97a24',
 	'ichthys-fish': '#1e6b63',

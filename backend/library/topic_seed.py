@@ -523,6 +523,16 @@ TOPICS = [
             "clothed-with-strength-and-dignity",
         ],
     ),
+    (
+        "for-young-readers",
+        "For Young Readers",
+        "The faith, told simply, for children and those who read with them — "
+        "the great story of the journey home, in language a child can follow. "
+        "A shelf that grows as more is retold and written for the young.",
+        [
+            "pilgrims-progress-words-of-one-syllable",
+        ],
+    ),
 ]
 
 # Shelves that ship LIVE IN ENGLISH while their translations are still being
@@ -567,6 +577,7 @@ TRANSLATION_PENDING: frozenset[str] = frozenset(
         "men-of-valour",
         "for-teens",
         "soar-like-the-eagle",
+        "for-young-readers",
     }
 )
 
@@ -997,6 +1008,11 @@ TOPIC_SCRIPTURE = {
         "But they that wait upon the Lord shall renew their strength; they "
         "shall mount up with wings as eagles; they shall run, and not be "
         "weary; and they shall walk, and not faint.",
+    ),
+    "for-young-readers": (
+        "Matthew 19:14",
+        "Suffer little children, and forbid them not, to come unto me: for of "
+        "such is the kingdom of heaven.",
     ),
 }
 

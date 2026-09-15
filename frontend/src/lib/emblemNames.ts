@@ -64,7 +64,8 @@ export const TOPIC_META: Record<string, { accent: string; emblem: EmblemName }> 
 	'faith-for-the-impossible': { accent: '#2f7fa0', emblem: 'mountain-into-sea' }, // say to this mountain
 	'men-of-valour': { accent: '#a5552f', emblem: 'sword-and-shield' }, // quit you like men
 	'for-teens': { accent: '#62a730', emblem: 'rooted-sapling' }, // like a tree planted by water
-	'soar-like-the-eagle': { accent: '#b0741f', emblem: 'eagles-wings' } // mount up with wings as eagles
+	'soar-like-the-eagle': { accent: '#b0741f', emblem: 'eagles-wings' }, // mount up with wings as eagles
+	'for-young-readers': { accent: '#3f8fd0', emblem: 'guiding-star' } // the journey home under a guiding light
 };
 
 /** Per-plan visual identity: accent hue + emblem (same shape as TOPIC_META). */
