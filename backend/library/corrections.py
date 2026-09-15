@@ -4796,3 +4796,28 @@ BODY_CORRECTIONS.setdefault("walking-with-god", {}).setdefault("replacements", [
     (" at my word.' ", " at my word.’ "),
     (" of my mouth'.", " of my mouth’."),
 ])
+
+# Transcription artifacts in the SermonIndex sermons (Tozer / Lloyd-Jones),
+# each forced by grammar or the KJV text quoted — stray spaces before
+# punctuation, a spaced ellipsis, a suspended hyphen written as "health- or",
+# and one fused word. Per-slug and English-only; keeps the corpus English audit
+# flat on import.
+BODY_CORRECTIONS.setdefault("the-salt-of-the-earth", {}).setdefault("replacements", []).append(
+    ("health- or life-giving", "health-giving or life-giving")
+)
+BODY_CORRECTIONS.setdefault("god-or-mammon", {}).setdefault("replacements", []).append(
+    ("income tax return .... ! Certainly", "income tax return...! Certainly")
+)
+BODY_CORRECTIONS.setdefault("jesus-on-prayer", {}).setdefault("replacements", []).append(
+    ('their reward." ,</p>', 'their reward."</p>')
+)
+BODY_CORRECTIONS.setdefault("the-parable-of-the-prodigal-son", {}).setdefault("replacements", []).append(
+    ("same chapter , they", "same chapter, they")
+)
+BODY_CORRECTIONS.setdefault("working-out-our-own-salvation", {}).setdefault("replacements", []).append(
+    ("socalled", "so-called")
+)
+BODY_CORRECTIONS.setdefault("the-wrath-of-god", {}).setdefault("replacements", []).extend([
+    ('sinned . . .".', 'sinned...".'),
+    ("this mean ? I", "this mean? I"),
+])
