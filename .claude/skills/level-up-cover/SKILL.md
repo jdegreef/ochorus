@@ -27,14 +27,32 @@ Confirm `is_published`, `cover_url` (`.svg` = plate), `subtitle`, `langs`, autho
 
 ## 1. Source the art (the sourcing method that actually works)
 
-Met Open Access API. See memory `met-api-pd-art-sourcing`: **search by SUBJECT
-word** (`?q=<subject>&hasImages=true`) — `artistOrCulture`, artist-name, and
-`departmentId`/`medium` params all return nothing or 403. Then fetch each object
-and filter `isPublicDomain && classification=="Paintings" && primaryImage`, exclude
-religious/portrait subjects, prefer Western landscape/architecture (a Chinese
-landscape for a Chinese subject is right — Nee). **One facet/subject per book**, a
-different painter each, so an author's shelf reads as one without N identical
-scenes. Verify every finalist's PD flag before building. Record it in
+Two collections, and **prefer the Art Institute of Chicago for landscapes**. The
+Met's `?q=` search is visually blind — it ranks a landscape query by popularity
+and buries actual landscapes under famous figure paintings (a "Frederic Edwin
+Church" query returned Vermeer and El Greco). The **Art Institute of Chicago**
+(`aic` source, added #2409) has a real search engine and CC0 images, and finds
+the picture:
+
+- **AIC** — `https://api.artic.edu/api/v1/artworks/search?q=<term>&fields=id,title,artist_title,is_public_domain,image_id,classification_title&query[term][is_public_domain]=true`.
+  Filter `classification_title` contains `painting`. The IIIF pixels
+  (`https://www.artic.edu/iiif/2/<image_id>/full/1686,/0/default.jpg`) 403 unless
+  you send `Referer: https://www.artic.edu/` — that header, not a policy, is the
+  whole reason AIC was long thought unusable (`build_curated_covers` now carries
+  it via `REFERERS`). `image_id` is a UUID, NOT the object id.
+- **Met** (`met`) — search by SUBJECT word (`?q=<subject>&hasImages=true`), fetch
+  each object, filter `isPublicDomain && classification=="Paintings" &&
+  primaryImage`. Still fine when you know the subject noun; weak for "find me a
+  good landscape". See memory `met-api-pd-art-sourcing`.
+- **Cleveland** (`cma`) — the third, `share_license_status=="CC0"`.
+
+**LOOK before you pick.** Both search APIs return junk mixed with gems, so
+download the small images, montage them into a contact sheet, and Read it — then
+mock the actual cover (3:4 crop + scrim + white title) so you judge the COVER,
+not the painting. Exclude religious/portrait subjects, prefer landscape /
+architecture / sky / water / path. **One facet/subject per book, a different
+painter each**, so an author's shelf reads as one without N identical scenes.
+Verify every finalist's PD flag before building. Record it in
 `backend/library/curated_art.py` `CURATED` with a one-line rationale + per-work
 `focus` (0–1 crop bias along the overflowing axis; tall hanging scrolls → ~0.3).
 
@@ -58,9 +76,15 @@ uv run python manage.py build_curated_covers <slug…>        # writes covers/ar
 uv run python scripts/build_cover_assets.py                 # webp variants; also repoints DB cover_url
 # repoint the fixtures (the shipped truth) — cover_url for EVERY language row → /covers/art/<slug>.jpg
 #   textual one-field edit (content_fixtures.persist_field shape); build_cover_assets often already did it
+uv run python scripts/tune_art_scrim.py                     # measured scrim (art_scrim.py + coverScrim.ts)
 ( cd ../frontend && npm run og:covers )                     # composed og twins (needs node_modules symlink)
-uv run python scripts/tune_art_scrim.py                     # measured scrim so white type clears AA
 ```
+**Order matters: `tune_art_scrim` BEFORE `og:covers`.** The twin is composed with
+`scrimStrength(slug)` read from `coverScrim.ts`; a fresh painting defaults to scrim
+1 and `tune_art_scrim` lowers it (0.85 for the Athanasius pair). Draw the twin
+first and its manifest `scrim` is stale → `coverOgManifest.test.ts` fails. (The
+skill used to list these the other way; if you already drew twins at scrim 1, just
+re-run `og:covers` after tuning — it redraws only the changed slugs.)
 
 `cover_url` is **NOT create-only** in `seed_books` (`CREATE_ONLY_FIELDS =
 {source_type, is_published}`), so the fixture edit reaches prod on deploy — **no
@@ -74,8 +98,16 @@ data migration.** Verify covers by reading the og twin PNGs (`covers/<slug>.png`
 # (pre-existing manifest drift, non-deterministic PNG bytes). Revert them — the gate
 # hashes manifest INPUT digests, not PNG bytes, so it stays green:
 git checkout origin/main -- <non-target covers/*.png>
-uv run python manage.py test library.tests_fixture library.tests_covers   # 111 must pass
+uv run python manage.py test library.tests_fixture library.tests_covers   # 118 pass now
 ```
+**og-manifest.json may get WHOLESALE-REFORMATTED.** On some setups (Node 25 here,
+2026-09) `generate-cover-og.mjs` writes the manifest TAB-indented while origin is
+1-space — every one of its ~1959 lines shows as changed though only your slugs'
+data differs. Don't ship that. Restore origin and surgically re-apply just your
+entries: `git checkout origin/main -- frontend/static/covers/og-manifest.json`,
+then patch each of your slugs' `ground`/`art`/`scrim` fields in place (a tiny
+Python `str.replace` asserting one match each; re-`json.load` to validate). Diff
+should be ~6 lines per slug (art false→true, scrim, ground digest), not 1959.
 Diff must be **only** this author's slugs + `curated_art.py` + `art_scrim.py` +
 `coverScrim.ts` + `og-manifest.json` (+ the `AUTHOR_STYLE` line if you added one).
 Data-only diff → **skip** the `/simplify`+`/code-review` pass. PR, then merge on
@@ -108,6 +140,12 @@ serves + prerendered pages reference it.
   too; delete ALL of them or `build_cover_assets` fails, and repoint every `<slug>.<lang>.json`.
 
 ## Done so far
-Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3).
-Remaining plates ~35: a few 2-plate authors (Simpson, Carmichael, Wesley, Athanasius,
-Hudson Taylor, Originals) + ~19 single-plate authors (best as one batched sweep).
+Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
+Athanasius #2409 (2 — life-of-antony/Huguet, on-the-incarnation/Cole; also OPENED the
+`aic` source, see §1).
+Remaining plates ~25: 2-plate authors (Simpson [+lg/sw], Wesley, Hudson Taylor [+es],
+Originals) + ~19 single-plate authors (best as one batched sweep). Carmichael's `if`
+and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian
+(`treatises-of-cyprian`) was being handled on `feature/cyprian-treatises` — check before
+taking it. Susanna Wesley stays a generated cover on purpose (portrait trap, see
+`curated_art.py`).

@@ -41,6 +41,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import urllib.parse
 import urllib.request
 from contextlib import contextmanager
 from pathlib import Path
@@ -56,6 +57,16 @@ from library.models import Book
 COVERS_DIR = settings.BASE_DIR.parent / "frontend" / "static" / "covers"
 CACHE = settings.BASE_DIR.parent / ".cache" / "curated-art"
 UA = {"User-Agent": "ochorus-cover-build/1.0 (+https://ochorus.com)"}
+
+#: Hosts that 403 a bare programmatic request and relent given a Referer. The
+#: Art Institute's IIIF server refuses any client that arrives without one — a
+#: browser's own User-Agent included — and turns the same request from 403 to
+#: 200 the moment `Referer: https://www.artic.edu/` is present. Only the pixel
+#: host gates on this: the catalogue API at api.artic.edu answers any client,
+#: which is what lets `_aic_image_url` reach the metadata to begin with. This
+#: header is why curated_art.py's docstring no longer calls AIC's pixels
+#: unreachable.
+REFERERS = {"www.artic.edu": "https://www.artic.edu/"}
 W, H = 600, 800
 
 
@@ -88,7 +99,11 @@ def _written_atomically(dest: Path):
 
 def _fetch(url: str, dest: Path) -> None:
     """Download to `dest`, whole or not at all."""
-    req = urllib.request.Request(url, headers=UA)
+    headers = dict(UA)
+    referer = REFERERS.get(urllib.parse.urlsplit(url).hostname)
+    if referer:
+        headers["Referer"] = referer
+    req = urllib.request.Request(url, headers=headers)
     with _written_atomically(dest) as part:
         with urllib.request.urlopen(req, timeout=90) as r, part.open("wb") as f:
             shutil.copyfileobj(r, f)
@@ -133,8 +148,36 @@ def _cma_image_url(object_id: int) -> str:
     raise CommandError(f"Cleveland object {object_id} has no print or web image.")
 
 
+def _aic_image_url(object_id: int) -> str:
+    """The Art Institute of Chicago's largest usable image URL for an object.
+
+    Two hops, not one. The catalogue at api.artic.edu answers with the licence
+    flag and an ``image_id`` — a UUID that is NOT the object id — and the pixels
+    live on the IIIF server keyed by that UUID. ``full/1686,`` is the widest
+    standard derivative the CDN serves without a per-object config lookup, and
+    ample for a 600x800 crop; the fetch of those pixels needs a Referer (see
+    ``REFERERS``), which the object id, being on the catalogue host, does not.
+
+    That 1686 assumes the source is at least that wide — true of every museum
+    scan, but a smaller original would 403 here (the server refuses a width it
+    would have to upscale to, and ``full/full`` is blocked outright), which is a
+    loud build-time failure to reland with a narrower size, not a silent wrong
+    cover.
+    """
+    obj = _json(
+        f"https://api.artic.edu/api/v1/artworks/{object_id}"
+        "?fields=is_public_domain,image_id"
+    )["data"]
+    if not obj.get("is_public_domain"):
+        raise CommandError(f"AIC object {object_id} is NOT flagged public domain — refusing.")
+    image_id = obj.get("image_id")
+    if not image_id:
+        raise CommandError(f"AIC object {object_id} has no image.")
+    return f"https://www.artic.edu/iiif/2/{image_id}/full/1686,/0/default.jpg"
+
+
 #: Manifest ``source`` → the function that licence-checks it and returns a URL.
-FETCHERS = {"met": _met_image_url, "cma": _cma_image_url}
+FETCHERS = {"met": _met_image_url, "cma": _cma_image_url, "aic": _aic_image_url}
 
 
 def _cache_key(art: Artwork) -> str:

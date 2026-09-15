@@ -957,11 +957,11 @@
    "scrim": 1
   },
   "life-of-antony": {
-   "ground": "b8d68b82f5d631de4cf12eecedc0ed43875517f0d14f64664eabbab47426b700",
+   "ground": "ac403faacec4452d74c116d78b24d44951ee6cbdd987fe9e8c56e166cc00e646",
    "style": "inscriptional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.85
   },
   "ministry-of-intercession": {
    "ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
@@ -999,11 +999,11 @@
    "scrim": 1
   },
   "on-the-incarnation": {
-   "ground": "d30af98073eec4232fee171574c16c78db2e7364713c237925dc64a129981321",
+   "ground": "256edd288ca5af1ca9bd7c1b4df6aae6fbeff421ab403ad41892505180c3d7fb",
    "style": "inscriptional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.85
   },
   "on-the-priesthood": {
    "ground": "0cc758e0ca605f7c50c1d0ac699e6163ce1e38b8cc60a2e72cf0dd2509ee6f66",
