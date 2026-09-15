@@ -4126,5 +4126,50 @@
       ],
       "created_at": "2026-09-06T00:00:00Z"
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "isaac-watts",
+      "name": "Isaac Watts",
+      "bio": "The father of English hymnody. A frail Nonconformist minister who freed English worship from singing only the metrical psalms, Isaac Watts wrote some 750 hymns of his own — among them “When I Survey the Wondrous Cross,” “Joy to the World,” and “O God, Our Help in Ages Past” — and in 1715 produced the first hymnbook ever written for young children.",
+      "bio_html": "<p>Before Isaac Watts, English Dissenters sang almost nothing but the psalms of David, laboriously fitted to metre and often to dreary tunes. Watts thought that Christian worship ought to be able to say more than the Old Testament alone had said, and in his early twenties he set out to prove it. The result was a revolution in how the English-speaking church sings — and a body of hymns so deep in the language that millions know his lines without ever learning his name.</p>\n\n<h2>A Dissenter's son</h2>\n<p>He was born in Southampton on 17 July 1674, the eldest of nine children. His father, also named Isaac, was a Nonconformist so firm in his convictions that he was in prison for them when his son was born; family tradition says the infant was nursed on the steps of the gaol. Frail and small all his life, the boy showed an alarming precocity — Latin at four, Greek at nine, Hebrew at thirteen — and a gift for rhyme that both delighted and exasperated his parents.</p>\n<p>Barred as a Dissenter from Oxford and Cambridge, he studied instead at a Nonconformist academy and became, in time, minister of the Independent congregation at Mark Lane in London. Poor health dogged his ministry, and for the last thirty-six years of his life he lived as a permanent guest of Sir Thomas and Lady Abney — an invitation to stay a week that quietly lasted decades.</p>\n\n<h2>Hymns of human composure</h2>\n<p>The story that started it all is very likely true: the young Watts complained about the wretched singing at his Southampton chapel, and his father told him to write something better if he could. He could. He called his new songs “hymns of human composure” — not paraphrases of Scripture but fresh praise in a believer's own words — and defended the idea against those who thought it near blasphemy. His <em>Hymns and Spiritual Songs</em> (1707) and <em>The Psalms of David Imitated</em> (1719) between them carried some 750 hymns, and they simply never went out of use.</p>\n<blockquote><p>When I survey the wondrous cross<br/>On which the Prince of glory died,<br/>My richest gain I count but loss,<br/>And pour contempt on all my pride.</p><cite>— from “When I Survey the Wondrous Cross”</cite></blockquote>\n<p>“Joy to the World,” “O God, Our Help in Ages Past,” “Alas! and Did My Saviour Bleed,” “Jesus Shall Reign Where'er the Sun” — the list is a hymnbook in itself. He is rightly called the father of English hymnody.</p>\n\n<h2>Songs for children</h2>\n<p>In 1715 Watts did something no one had thought to do: he wrote a hymnbook for the very young. <em>Divine Songs Attempted in Easy Language for the Use of Children</em> put the great truths of the faith into verse a small child could learn by heart, and for more than a century it was among the most widely memorised books in the English language. Generations first met praise, and providence, and the shortness of life in Watts's easy lines — and first met the busy bee and the voice of the sluggard there too.</p>\n\n<h2>The wider mind</h2>\n<p>Watts was more than a writer of hymns. His textbook <em>Logick</em> (1724) was used at Oxford, Cambridge, Harvard and Yale for a hundred years, and he wrote on education, astronomy and the workings of the mind with the same clear practicality he brought to worship. He died on 25 November 1748 and was buried in Bunhill Fields among the Dissenters; a monument to him stands in Westminster Abbey. But his truer monument is sung, not carved — every Christmas, and every communion, and in every nursery where a child is still taught to sing.</p>",
+      "photo_url": "",
+      "birth_year": 1674,
+      "death_year": 1748,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-09-15T00:00:00.000Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Isaac_Watts",
+        "https://www.wikidata.org/wiki/Q212763"
+      ],
+      "faq": [
+        {
+          "q": "What is Isaac Watts best known for?",
+          "a": "He is called the father of English hymnody. Watts freed English worship from singing only the metrical psalms and wrote some 750 hymns of his own, including “When I Survey the Wondrous Cross,” “Joy to the World,” and “O God, Our Help in Ages Past.”"
+        },
+        {
+          "q": "Which famous hymns did Isaac Watts write?",
+          "a": "Among his roughly 750 hymns are “When I Survey the Wondrous Cross,” “Joy to the World,” “O God, Our Help in Ages Past,” “Jesus Shall Reign Where’er the Sun,” and “Alas! and Did My Saviour Bleed.” Many are still sung every Christmas and every communion."
+        },
+        {
+          "q": "Did Isaac Watts write for children?",
+          "a": "Yes. His Divine Songs (1715) was the first hymnbook written for young children, putting the truths of the faith into simple verse a child could learn by heart. For over a century it was one of the most widely memorised books in English, and “How doth the little busy bee” and “’Tis the voice of the sluggard” began there."
+        },
+        {
+          "q": "What did Watts mean by “hymns of human composure”?",
+          "a": "It was his term for hymns written in a believer’s own words — fresh praise rather than strict metrical paraphrases of the Psalms. The idea was controversial in his day, but it reshaped how the whole English-speaking church sings."
+        },
+        {
+          "q": "Why couldn’t Isaac Watts study at Oxford or Cambridge?",
+          "a": "He was a Nonconformist — a Dissenter from the Church of England — and the universities were then closed to those who would not conform. He studied instead at a Dissenting academy and ministered to an Independent congregation in London."
+        },
+        {
+          "q": "When and where did Isaac Watts live?",
+          "a": "He was born in Southampton in 1674 and died in 1748, ministering in London and spending his last decades as a guest of the Abney family. He is buried in Bunhill Fields, with a monument to him in Westminster Abbey."
+        }
+      ]
+    }
   }
 ]

@@ -531,6 +531,7 @@ TOPICS = [
         "A shelf that grows as more is retold and written for the young.",
         [
             "pilgrims-progress-words-of-one-syllable",
+            "divine-songs-for-children",
         ],
     ),
 ]
