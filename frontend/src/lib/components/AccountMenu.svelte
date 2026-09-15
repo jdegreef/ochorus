@@ -4,8 +4,29 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { loginHref as buildLoginHref } from '$lib/loginHref';
+	import { fetchAdminManualUrl } from '$lib/library-admin';
 
 	const t = i18n.t;
+
+	// The Admin Manual PDF (super admins only). The endpoint is bearer-gated, so we
+	// fetch the blob and open it in a new tab — opened synchronously on the click so
+	// the popup isn't blocked, then pointed at the PDF once it downloads.
+	let manualLoading = $state(false);
+	async function openManual() {
+		if (manualLoading) return;
+		const tab = window.open('', '_blank');
+		manualLoading = true;
+		try {
+			const url = await fetchAdminManualUrl();
+			if (tab) tab.location.href = url;
+			else window.location.href = url; // popup blocked — fall back to this tab
+		} catch {
+			tab?.close();
+		} finally {
+			manualLoading = false;
+			open = false;
+		}
+	}
 
 	// Matches Take Root's account control: a round initials avatar that opens a
 	// small dropdown (email + account + sign out); a soft button when signed out.
@@ -65,6 +86,13 @@
 						<a class="account-item" href={localizeHref('/admin')} onclick={() => (open = false)}
 							>Admin</a
 						>
+					{/if}
+					{#if auth.isAdmin}
+						<!-- Super admins only (auth.isAdmin is the super-admin flag). The
+						     manual PDF is bearer-gated, so this fetches it and opens the blob. -->
+						<button class="account-item" onclick={openManual} disabled={manualLoading}>
+							{manualLoading ? 'Opening…' : 'Admin Manual PDF'}
+						</button>
 					{/if}
 					<a class="account-item" href={localizeHref('/favorites')} onclick={() => (open = false)}
 						>{t('fav.yourFavorites')}</a

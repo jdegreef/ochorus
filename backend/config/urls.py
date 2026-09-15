@@ -32,6 +32,7 @@ from library.admin_views import (
     AdminLanguageReadinessView,
     AdminLanguageSettingsView,
     AdminLanguageThresholdsView,
+    AdminManualView,
     AdminReviewDetailView,
     AdminReviewQueueView,
     AdminSearchGapView,
@@ -78,6 +79,7 @@ urlpatterns = [
         AdminLanguageHealthView.as_view(),
         name="admin-language-health",
     ),
+    path("api/admin/manual/", AdminManualView.as_view(), name="admin-manual"),
     path("api/admin/audit/", AdminAuditView.as_view(), name="admin-audit"),
     path(
         "api/admin/audit/dismiss/",
