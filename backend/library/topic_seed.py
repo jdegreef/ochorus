@@ -838,6 +838,7 @@ TOPIC_ARTICLES = {
         "how-to-find-rest-for-your-soul",
         "how-to-be-content",
         "how-to-trust-god-in-suffering",
+        "soar-like-the-eagle-guide",
     ],
 }
 
