@@ -471,6 +471,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "body_html",
             "source_type",
             "source_url",
+            "attribution",
             "author_name",
             "author_slug",
             "author_photo",

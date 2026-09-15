@@ -42,6 +42,9 @@ SERMON_FIELDS = (
     "body_html",
     "source_type",
     "source_url",
+    # Fixture-owned rights/credit note like `summary`; no live-DB workflow edits
+    # it, so it updates from the fixture on every deploy (not create-only).
+    "attribution",
     "sort_order",
     "is_published",
 )
