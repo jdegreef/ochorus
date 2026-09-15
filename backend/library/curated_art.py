@@ -384,6 +384,23 @@ CURATED: dict[str, Artwork] = {
         "world sunk in the dark. Cole fills the whole valley with first light "
         "and sets a white spire exactly where it falls.",
     ),
+    # ── Batch 9 · John Wesley's plate books ────────────────────────────────
+    # Two of Wesley's works wore plates. His own century and country, from the
+    # Cleveland CC0 collection: the open English sky he preached under, and a
+    # harvest for the book on love brought to its maturity. Two painters.
+    "sermons-on-several-occasions": Artwork(
+        "cma", 147017, "John Constable", "Branch Hill Pond, Hampstead", "1828",
+        "Wesley preached in the open air to crowds no church would hold. "
+        "Constable's English heath under a working sky is the weather and the "
+        "country those sermons were first shouted into.",
+    ),
+    "plain-account-christian-perfection": Artwork(
+        "cma", 118116, "George Inness", "Harvest Time", "1864",
+        "Wesley's perfection is love grown to its full, not sinlessness seized — "
+        "the ripe field, not the forced bloom. Inness fills the light with a "
+        "harvest brought in and a spire standing in it.",
+        focus=0.45,
+    ),
 }
 
 
