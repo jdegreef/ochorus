@@ -3,6 +3,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/href';
+	import { locales } from '$lib/paraglide/runtime';
 	import { portraitSrcset } from '$lib/portraits';
 	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { scripture } from '$lib/scripture.svelte';
@@ -190,9 +191,18 @@
 		{#if article.topics?.length}
 			<nav class="mt-8 flex flex-wrap items-center gap-2" aria-label={t('nav.topics')}>
 				<span class="text-small text-muted">{t('nav.topics')}:</span>
+				<!-- Link each chip in the language the ARTICLE resolved to
+				     (`article.language`), not the page's UI locale. Articles fall
+				     back to English, so /sw/articles/<slug> can be the English
+				     original; its chips are the backend's list for that language
+				     (each one translated into it), but a topic has no English
+				     fallback — localizing them to /sw/ points at topic pages that
+				     don't exist there and 404s the prerender crawl. -->
 				{#each article.topics as topic (topic.slug)}
 					<a
-						href={localizeHref(`/topics/${topic.slug}`)}
+						href={localizeHref(`/topics/${topic.slug}`, {
+							locale: article.language as (typeof locales)[number]
+						})}
 						class="tag"
 					>
 						{topic.title}
