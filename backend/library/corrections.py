@@ -4821,3 +4821,36 @@ BODY_CORRECTIONS.setdefault("the-wrath-of-god", {}).setdefault("replacements", [
     ('sinned . . .".', 'sinned...".'),
     ("this mean ? I", "this mean? I"),
 ])
+
+# Transcription artifacts in the R. A. Torrey sermons (SermonIndex): a doubled
+# comma, and parenthetical/clause dashes typed as a spaced hyphen ("-a personal
+# friend-") — restored to em dashes. Per-slug and English-only; keeps the corpus
+# English audit flat on re-import.
+BODY_CORRECTIONS.setdefault("refuges-of-lies", {}).setdefault("replacements", []).extend([
+    ("Brooklyn,, he", "Brooklyn, he"),
+    ("dying- His wife", "dying—His wife"),
+])
+BODY_CORRECTIONS.setdefault("excuses", {}).setdefault("replacements", []).extend([
+    ("to me -a personal friend- and", "to me—a personal friend—and"),
+    ("under guard -for they dared not trust him alone- and",
+     "under guard—for they dared not trust him alone—and"),
+])
+BODY_CORRECTIONS.setdefault("the-most-important-question", {}).setdefault("replacements", []).extend([
+    ("to-night -I care not what position in society you hold- I charge",
+     "to-night—I care not what position in society you hold—I charge"),
+    ("mighty grip -and it was a mighty grip- and",
+     "mighty grip—and it was a mighty grip—and"),
+])
+BODY_CORRECTIONS.setdefault("the-way-of-salvation-made-plain", {}).setdefault("replacements", []).append(
+    ("to be -my Lord, having right to the absolute control of my life- I will",
+     "to be—my Lord, having right to the absolute control of my life—I will")
+)
+BODY_CORRECTIONS.setdefault("heroes-and-cowards", {}).setdefault("replacements", []).extend([
+    ("cheeks -he was a little white-haired Swedish boy- and",
+     "cheeks—he was a little white-haired Swedish boy—and"),
+    ("think of it- to have", "think of it—to have"),
+])
+BODY_CORRECTIONS.setdefault("the-drama-of-life-in-three-acts", {}).setdefault("replacements", []).extend([
+    ("his own way- It is either", "his own way—It is either"),
+    ("their feebleness- The old man", "their feebleness—The old man"),
+])
