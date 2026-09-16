@@ -1481,6 +1481,13 @@
    "art": true,
    "scrim": 0.5
   },
+  "sw/the-christians-secret-of-a-happy-life-4": {
+   "ground": "4b5368a915ec465da59513f5f23e67b0795107e81589ebcdd1d482f33c8b18b2",
+   "style": "devotional",
+   "script": "latin",
+   "art": true,
+   "scrim": 0.45
+  },
   "sw/the-fourfold-gospel": {
    "ground": "976ff3d612d8a48631c31ec06ae934c87a27df53d247074256f3289f651ae593",
    "style": "revival",
