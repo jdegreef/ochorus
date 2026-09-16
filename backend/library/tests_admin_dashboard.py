@@ -809,7 +809,7 @@ class AdminEngagementTests(TestCase):
         from django.contrib.auth import get_user_model
 
         from accounts.models import UserProfile
-        from reading.models import ChapterMarks, ReadingProgress
+        from reading.models import ChapterMarks, Favorite, FavoriteKind, ReadingProgress
 
         self.client = APIClient()
         author = Author.objects.create(slug="am", name="Andrew Murray")
@@ -834,6 +834,11 @@ class AdminEngagementTests(TestCase):
             profile=self.p1, book_slug="humility", language="en", chapter_order=1,
             marks=[{"id": "a", "p": 0, "s": 0, "e": 5}],
         )
+        # Hearts: abide is loved by both readers, humility + the author by p1.
+        Favorite.objects.create(profile=self.p1, kind=FavoriteKind.BOOK, slug="abide")
+        Favorite.objects.create(profile=self.p2, kind=FavoriteKind.BOOK, slug="abide")
+        Favorite.objects.create(profile=self.p1, kind=FavoriteKind.BOOK, slug="humility")
+        Favorite.objects.create(profile=self.p1, kind=FavoriteKind.AUTHOR, slug="am")
 
     @override_settings(DEBUG=True)
     def test_overview_and_rollups(self):
@@ -862,6 +867,25 @@ class AdminEngagementTests(TestCase):
         # 8 weekly buckets; this week has activity.
         self.assertEqual(len(res.data["weekly_active"]), 8)
         self.assertEqual(res.data["weekly_active"][-1]["readers"], 2)
+
+    @override_settings(DEBUG=True)
+    def test_hearts(self):
+        res = self.client.get("/api/admin/engagement/")
+        ov = res.data["overview"]
+        self.assertEqual(ov["hearts"], 4)
+        self.assertEqual(ov["hearts_7d"], 4)
+        self.assertEqual(ov["hearts_7d_prev"], 0)  # all created "now"
+
+        by_kind = {r["kind"]: r["count"] for r in res.data["hearts_by_kind"]}
+        self.assertEqual(by_kind["book"], 3)
+        self.assertEqual(by_kind["author"], 1)
+
+        loved = {(b["kind"], b["slug"]): b for b in res.data["most_loved"]}
+        self.assertEqual(loved[("book", "abide")]["hearts"], 2)
+        self.assertEqual(loved[("book", "abide")]["title"], "Abide")
+        # An author favorite is titled and linked as a bio (the person).
+        self.assertEqual(loved[("bio", "am")]["hearts"], 1)
+        self.assertEqual(loved[("bio", "am")]["title"], "Andrew Murray")
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
