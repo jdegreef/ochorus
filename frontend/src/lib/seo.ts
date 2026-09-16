@@ -213,14 +213,14 @@ export function breadcrumbLd(items: { name: string; href: string }[]): string {
 }
 
 /**
- * Locales whose supplementary UI copy — FAQ headings, "more like this" reason
- * labels — has been translated AND native-reviewed. Every advertised locale
+ * Locales whose supplementary UI copy — FAQ headings, reflection-question
+ * headings — has been translated AND native-reviewed. Every advertised locale
  * carries the KEYS (catalogue parity is enforced), but the un-reviewed ones hold
  * the English source as a gated-off placeholder; a page renders these extras
  * only for the locales in this set, so nothing unreviewed reaches a reader. The
- * one copy: the book page (FAQ + reason labels) and the sermon page (reflection
- * questions) both gate on it, so adding a reviewed locale is one edit, not two
- * that drift. Add a locale here once a native speaker has checked its keys.
+ * one copy: the book page (FAQ) and the sermon page (reflection questions) both
+ * gate on it, so adding a reviewed locale is one edit, not two that drift. Add a
+ * locale here once a native speaker has checked its keys.
  */
 export const REVIEWED_UI_LOCALES = new Set(['en', 'es', 'pt', 'fr']);
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { isArtCover, twinUrl } from '$lib/coverArt';
-	import { type BookDetail, type RelatedBook, formatLifespan } from '$lib/library-public';
+	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { chapterName, readingMinutes, readingTime } from '$lib/reading';
@@ -12,8 +12,7 @@
 		pickQa,
 		hreflangFor,
 		truncateMeta,
-		topicThings,
-		REVIEWED_UI_LOCALES
+		topicThings
 	} from '$lib/seo';
 	import QandA from '$lib/components/QandA.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -244,10 +243,6 @@
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
-	// Locales whose "more like this" reason copy is native-reviewed — the shared
-	// gate (see REVIEWED_UI_LOCALES in seo.ts). Only the reason labels use it now;
-	// the Q&A section below is editorial-only and per-language (not locale-gated).
-
 	// Editorial Q&A: hand-authored, grounded in the work, per-language (it rides the
 	// book row like about_html, so a translated edition carries its own). Books show
 	// ONLY this editorial set — the derived "Common questions" fallback was dropped
@@ -264,18 +259,6 @@
 	// The >=2 floor and the faqPage() wiring live once in pickQa; the empty second
 	// arg is the (now removed) derived tier — editorial-only.
 	const qa = $derived(pickQa(editorialQa, []));
-
-	// "More like this" reasons (A2). The reason is data from the API; the visible
-	// label comes from the catalogues, shown in the same reviewed locales as the
-	// FAQ (REVIEWED_UI_LOCALES) — other locales render the grid unchanged.
-	const showReasons = $derived(REVIEWED_UI_LOCALES.has(getLang()));
-	function relatedReason(rel: RelatedBook): string | null {
-		const r = rel.reason;
-		if (!showReasons || !r) return null;
-		if (r.kind === 'author') return t('book.moreBy').replace('%name%', rel.author.name);
-		const topic = book.topics?.find((tp) => tp.slug === r.topic);
-		return topic ? t('book.alsoOn').replace('%topic%', topic.title) : null;
-	}
 
 	// On-page jump navigation (A3) — the author page's pattern: scrollSpy for the
 	// active section, jumpToSection for a smooth scroll that lands below the pinned
@@ -653,14 +636,7 @@
 			<h2 class="section-label">{t('book.related')}</h2>
 			<div class="book-grid">
 				{#each book.related as rel (rel.slug)}
-					{@const reason = relatedReason(rel)}
-					<!-- A2: why this book is here (same author / shares a topic). English
-					     editions only — the label is composed prose, not a message key;
-					     other editions render the card alone, as before. -->
-					<div class="related-cell">
-						{#if reason}<p class="related-reason">{reason}</p>{/if}
-						<BookCard book={rel} showAuthor />
-					</div>
+					<BookCard book={rel} showAuthor />
 				{/each}
 			</div>
 		</section>
@@ -750,15 +726,5 @@
 	.subnav-cta {
 		padding: 0.4rem 0.85rem;
 		font-size: var(--fs-small);
-	}
-
-	/* A2: the reason a related book is suggested — a quiet accent eyebrow. */
-	.related-reason {
-		margin-bottom: 0.35rem;
-		font-size: var(--fs-eyebrow);
-		font-weight: 600;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-		color: var(--accent);
 	}
 </style>
