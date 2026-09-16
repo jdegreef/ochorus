@@ -95,6 +95,19 @@
 	const topTabLabel = $derived(topTabs.find((t) => t.key === topTab)?.label ?? '');
 	const finishedPct = (b: EngagementTopRow) =>
 		b.readers ? Math.round((b.finishers / b.readers) * 100) : 0;
+
+	// Plan funnel steps, each as a share of "started" so the drop-off reads down
+	// the bars. Started is the 100% baseline; the rest narrow from it.
+	const planSteps = $derived.by(() => {
+		const f = data?.plan_funnel;
+		if (!f || !f.started) return [];
+		const share = (n: number) => Math.round((n / f.started) * 100);
+		return [
+			{ label: 'Started', count: f.started, pct: 100, note: '' },
+			{ label: 'Came back', count: f.returned, pct: share(f.returned), note: `${share(f.returned)}%` },
+			{ label: 'Completed', count: f.completed, pct: share(f.completed), note: `${share(f.completed)}%` }
+		];
+	});
 </script>
 
 <svelte:head><title>Admin · Engagement — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -293,6 +306,57 @@
 							</ul>
 						</section>
 					</div>
+				{/if}
+
+				<!-- Reading plans: funnel + per-plan -->
+				{#if d.plan_funnel.started}
+					<section class="mt-6 rounded-card border border-border bg-surface p-5">
+						<div class="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">Reading plans</h2>
+							<span class="text-small text-muted">Plans live or die on retention — where readers drop off.</span>
+						</div>
+						<div class="space-y-2">
+							{#each planSteps as s (s.label)}
+								<div class="flex items-center gap-3">
+									<span class="w-24 shrink-0 text-small text-text">{s.label}</span>
+									<div class="h-4 flex-1 overflow-hidden rounded-full bg-surface-2">
+										<div class="h-full rounded-full bg-accent-soft" style="width: {s.pct}%"></div>
+									</div>
+									<span class="w-24 shrink-0 text-end text-small tabular-nums text-muted">
+										<span class="font-semibold text-text">{fmt(s.count)}</span>{#if s.note} · {s.note}{/if}
+									</span>
+								</div>
+							{/each}
+						</div>
+						{#if d.plan_funnel.by_plan.length}
+							<div class="mt-5 overflow-x-auto">
+								<table class="w-full">
+									<thead>
+										<tr class="text-micro uppercase tracking-wide text-muted">
+											<th class="py-2 pe-3 text-start font-semibold">Plan</th>
+											<th class="px-3 py-2 text-end font-semibold">Started</th>
+											<th class="px-3 py-2 text-end font-semibold">Came back</th>
+											<th class="px-3 py-2 text-end font-semibold">Completed</th>
+											<th class="ps-3 py-2 text-end font-semibold">Completion</th>
+										</tr>
+									</thead>
+									<tbody>
+										{#each d.plan_funnel.by_plan as p (p.slug)}
+											<tr class="border-t border-border">
+												<td class="max-w-0 py-2 pe-3">
+													<a href="/plans/{p.slug}" class="block truncate text-body text-text hover:text-accent">{p.title}</a>
+												</td>
+												<td class="px-3 py-2 text-end tabular-nums">{fmt(p.started)}</td>
+												<td class="px-3 py-2 text-end tabular-nums">{fmt(p.returned)}</td>
+												<td class="px-3 py-2 text-end tabular-nums">{fmt(p.completed)}</td>
+												<td class="ps-3 py-2 text-end tabular-nums text-muted">{p.started ? Math.round((p.completed / p.started) * 100) : 0}%</td>
+											</tr>
+										{/each}
+									</tbody>
+								</table>
+							</div>
+						{/if}
+					</section>
 				{/if}
 
 				<!-- By language -->

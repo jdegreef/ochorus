@@ -809,7 +809,13 @@ class AdminEngagementTests(TestCase):
         from django.contrib.auth import get_user_model
 
         from accounts.models import UserProfile
-        from reading.models import ChapterMarks, Favorite, FavoriteKind, ReadingProgress
+        from reading.models import (
+            ChapterMarks,
+            Favorite,
+            FavoriteKind,
+            PlanProgress,
+            ReadingProgress,
+        )
 
         self.client = APIClient()
         author = Author.objects.create(slug="am", name="Andrew Murray")
@@ -839,6 +845,17 @@ class AdminEngagementTests(TestCase):
         Favorite.objects.create(profile=self.p2, kind=FavoriteKind.BOOK, slug="abide")
         Favorite.objects.create(profile=self.p1, kind=FavoriteKind.BOOK, slug="humility")
         Favorite.objects.create(profile=self.p1, kind=FavoriteKind.AUTHOR, slug="am")
+        # A 7-day plan: p1 finished it, p2 came back (2 days) but didn't finish.
+        plan = Plan.objects.create(slug="seven-days", language="en", title="Seven Days")
+        for day in range(1, 8):
+            PlanDay.objects.create(plan=plan, day=day, book_slug="humility", chapter_order=1)
+        PlanProgress.objects.create(
+            profile=self.p1, plan_slug="seven-days", started_at=timezone.now(),
+            done=[1, 2, 3, 4, 5, 6, 7],
+        )
+        PlanProgress.objects.create(
+            profile=self.p2, plan_slug="seven-days", started_at=timezone.now(), done=[1, 2],
+        )
 
     @override_settings(DEBUG=True)
     def test_overview_and_rollups(self):
@@ -887,6 +904,19 @@ class AdminEngagementTests(TestCase):
         # An author favorite is titled and linked as a bio (the person).
         self.assertEqual(loved[("bio", "am")]["hearts"], 1)
         self.assertEqual(loved[("bio", "am")]["title"], "Andrew Murray")
+
+    @override_settings(DEBUG=True)
+    def test_plan_funnel(self):
+        res = self.client.get("/api/admin/engagement/")
+        f = res.data["plan_funnel"]
+        self.assertEqual(f["started"], 2)
+        self.assertEqual(f["returned"], 2)  # both ticked >= 2 days
+        self.assertEqual(f["completed"], 1)  # only p1 finished all 7
+        row = {p["slug"]: p for p in f["by_plan"]}["seven-days"]
+        self.assertEqual(row["title"], "Seven Days")
+        self.assertEqual(row["length"], 7)
+        self.assertEqual(row["started"], 2)
+        self.assertEqual(row["completed"], 1)
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
