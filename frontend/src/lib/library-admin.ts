@@ -883,6 +883,10 @@ export interface EngagementOverview {
 	active_30d_prev: number;
 	readers_with_marks: number;
 	marked_chapters: number;
+	/** Total hearts (Favorites) saved, with a rows-created week-over-week window. */
+	hearts: number;
+	hearts_7d: number;
+	hearts_7d_prev: number;
 	total_users: number;
 }
 
@@ -921,11 +925,30 @@ export interface EngagementTime {
 	readers_30d: number;
 }
 
+/** A most-hearted work. Like EngagementWork but keyed on hearts, and without
+ *  a reader/finisher count (a Favorite is a save, independent of reading). */
+export interface EngagementLoved {
+	kind: EngagementKind;
+	slug: string;
+	title: string;
+	author: string;
+	hearts: number;
+}
+
+/** Hearts (Favorites) for one favoritable kind — books, authors, plans,
+ *  topics, sermons, articles, quotes. `kind` is the raw FavoriteKind value. */
+export interface EngagementHeartKind {
+	kind: string;
+	count: number;
+}
+
 export interface AdminEngagement {
 	overview: EngagementOverview;
 	time: EngagementTime;
 	most_read: EngagementWork[];
 	most_marked: EngagementWork[];
+	most_loved: EngagementLoved[];
+	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];
 	weekly_active: { week: string; readers: number }[];
 }

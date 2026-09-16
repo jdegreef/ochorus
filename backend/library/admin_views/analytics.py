@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from functools import cached_property
+
 from django.db.models import Count, Q
 from rest_framework import status
 from rest_framework.response import Response
@@ -30,7 +32,7 @@ class AdminEngagementView(APIView):
 
         from django.utils import timezone
 
-        from reading.models import ChapterMarks, ReadingProgress
+        from reading.models import ChapterMarks, Favorite, ReadingProgress
 
         now = timezone.now()
 
@@ -46,6 +48,14 @@ class AdminEngagementView(APIView):
                 qs = qs.filter(updated_at__lt=now - timedelta(days=offset))
             return qs.values("profile").distinct().count()
 
+        def hearts(days, offset=0):
+            """Favorites created in the same kind of window, for the hearts
+            trend chip. Counts rows (a saved item), not distinct readers."""
+            qs = Favorite.objects.filter(created_at__gte=now - timedelta(days=days + offset))
+            if offset:
+                qs = qs.filter(created_at__lt=now - timedelta(days=offset))
+            return qs.count()
+
         overview = {
             "readers": ReadingProgress.objects.values("profile").distinct().count(),
             "progress_rows": ReadingProgress.objects.count(),
@@ -59,6 +69,9 @@ class AdminEngagementView(APIView):
             .distinct()
             .count(),
             "marked_chapters": ChapterMarks.objects.exclude(marks=[]).count(),
+            "hearts": Favorite.objects.count(),
+            "hearts_7d": hearts(7),
+            "hearts_7d_prev": hearts(7, 7),
             "total_users": self._total_users(),
         }
         return Response(
@@ -67,6 +80,8 @@ class AdminEngagementView(APIView):
                 "time": self._reading_time(now),
                 "most_read": self._most_read(),
                 "most_marked": self._most_marked(),
+                "most_loved": self._most_loved(),
+                "hearts_by_kind": self._hearts_by_kind(),
                 "by_language": self._by_language(),
                 "weekly_active": self._weekly_active(now),
             }
@@ -117,8 +132,14 @@ class AdminEngagementView(APIView):
 
         return UserProfile.objects.count()
 
+    @cached_property
     def _work_meta(self) -> dict:
         """``(kind, slug)`` → ``(title, author)`` for every work a row can name.
+
+        A ``cached_property`` so the three roll-ups that need it (most read,
+        marked and loved) share one build per request instead of rebuilding the
+        whole-catalogue map three times. The view instance is per-request, so
+        the cache never outlives it.
 
         Keyed by kind as well as slug because ``ReadingProgress.book_slug`` names
         a book, a sermon OR an author biography (see ``WorkKind``), and those
@@ -146,7 +167,7 @@ class AdminEngagementView(APIView):
     def _most_read(self, limit: int = 10) -> list[dict]:
         from reading.models import ReadingProgress
 
-        meta = self._work_meta()
+        meta = self._work_meta
         # Grouped by KIND as well as slug. Without it a sermon and a book sharing
         # a slug merged into one row wearing the book's title, and every sermon
         # reader was counted against that book.
@@ -183,7 +204,7 @@ class AdminEngagementView(APIView):
     def _most_marked(self, limit: int = 10) -> list[dict]:
         from reading.models import ChapterMarks
 
-        meta = self._work_meta()
+        meta = self._work_meta
         top = (
             ChapterMarks.objects.exclude(marks=[])
             .values("kind", "book_slug")
@@ -198,6 +219,45 @@ class AdminEngagementView(APIView):
                 readers=r["readers"],
                 chapters=r["chapters"],
             )
+            for r in top
+        ]
+
+    def _hearts_by_kind(self) -> list[dict]:
+        """Hearts (Favorites) per kind. Readers save more than the works they
+        read — authors, plans, topics, articles and quotes too — so this is the
+        one place the full shape of what's being saved shows, even where the
+        individual items aren't titled below."""
+        from reading.models import Favorite
+
+        return [
+            {"kind": r["kind"], "count": r["count"]}
+            for r in Favorite.objects.values("kind")
+            .annotate(count=Count("id"))
+            .order_by("-count")
+        ]
+
+    def _most_loved(self, limit: int = 10) -> list[dict]:
+        """Most-hearted works, named. A Favorite's ``author`` kind saves a
+        person, which ``_work_meta`` keys as a ``bio``; books and sermons keep
+        their kind. The other favoritable kinds (plans, topics, articles,
+        quotes) are counted in ``_hearts_by_kind`` rather than titled here — they
+        don't share ``_work_meta``'s (kind, slug) namespace."""
+        from reading.models import Favorite, FavoriteKind
+
+        meta = self._work_meta
+        kind_to_meta = {
+            FavoriteKind.BOOK: "book",
+            FavoriteKind.SERMON: "sermon",
+            FavoriteKind.AUTHOR: "bio",
+        }
+        top = (
+            Favorite.objects.filter(kind__in=list(kind_to_meta))
+            .values("kind", "slug")
+            .annotate(hearts=Count("id"))
+            .order_by("-hearts")[:limit]
+        )
+        return [
+            self._row(meta, kind_to_meta[r["kind"]], r["slug"], hearts=r["hearts"])
             for r in top
         ]
 

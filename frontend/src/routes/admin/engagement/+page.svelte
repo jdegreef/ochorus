@@ -14,6 +14,21 @@
 
 	const weekMax = $derived(Math.max(1, ...(data?.weekly_active.map((w) => w.readers) ?? [1])));
 	const langMax = $derived(Math.max(1, ...(data?.by_language.map((l) => l.readers) ?? [1])));
+	const heartKindMax = $derived(Math.max(1, ...(data?.hearts_by_kind.map((h) => h.count) ?? [1])));
+
+	// A FavoriteKind value → a readable plural ("book" → "Books"). The kinds are
+	// a small fixed set from the server; anything unmapped is title-cased so a new
+	// kind still reads sensibly.
+	const kindLabels: Record<string, string> = {
+		book: 'Books',
+		author: 'Authors',
+		sermon: 'Sermons',
+		plan: 'Plans',
+		topic: 'Topics',
+		article: 'Articles',
+		quote: 'Quotes'
+	};
+	const kindLabel = (k: string) => kindLabels[k] ?? k.charAt(0).toUpperCase() + k.slice(1);
 
 	// Sparkline for the Active · 7d tile: the 8-week active series as one line, so
 	// the trend behind the number reads at a glance. Built to a 100×28 viewBox.
@@ -46,16 +61,23 @@
 						sub: 'in the last month',
 						trend: periodTrend(data.overview.active_30d, data.overview.active_30d_prev)
 					},
+					{
+						label: 'Hearts',
+						value: data.overview.hearts,
+						sub: `${fmt(data.overview.hearts_7d)} this week`,
+						trend: periodTrend(data.overview.hearts_7d, data.overview.hearts_7d_prev)
+					},
 					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null },
 					{ label: 'Registered users', value: data.overview.total_users, sub: 'accounts', trend: null }
 				]
 			: []
 	);
 
-	// Books, sermons and biographies all appear in these lists and their slugs
-	// live in different namespaces, so the row's kind decides the path. Every row
-	// used to link to /books/<slug>, which 404s for a sermon or a bio.
-	const workHref = (w: EngagementWork) =>
+	// Books, sermons and biographies share the slug column and link to different
+	// namespaces, so the row's kind decides the path (a bare /books/<slug> 404s
+	// for a sermon or bio). Takes just kind+slug so most-read and most-loved rows
+	// can both use it.
+	const workHref = (w: { kind: EngagementWork['kind']; slug: string }) =>
 		w.kind === 'sermon'
 			? `/sermons/${w.slug}`
 			: w.kind === 'bio'
@@ -95,7 +117,7 @@
 			{:else}
 				<!-- Reading pulse -->
 				<p class="section-label">Reading pulse</p>
-				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
 					{#each cards as c (c.label)}
 						<div class="rounded-card border border-border bg-surface p-4">
 							<div class="flex items-start justify-between gap-2">
@@ -217,6 +239,48 @@
 						{/if}
 					</section>
 				</div>
+
+				<!-- Hearts: most loved + saved by kind -->
+				{#if d.overview.hearts}
+					<div class="mt-6 grid gap-6 lg:grid-cols-2">
+						<section class="rounded-card border border-border bg-surface p-5">
+							<h2 class="text-h3 mb-1">Most loved</h2>
+							<p class="mb-3 text-small text-muted">The works readers hearted most — books, sermons and authors.</p>
+							{#if d.most_loved.length}
+								<ul class="space-y-2">
+									{#each d.most_loved as b (`${b.kind}:${b.slug}`)}
+										<li class="flex items-baseline justify-between gap-3">
+											<a href={workHref(b)} class="min-w-0 truncate text-body text-text hover:text-accent">
+												{b.title}{#if b.author}<span class="text-small text-muted"> · {b.author}</span>{/if}
+											</a>
+											<span class="shrink-0 text-small tabular-nums text-muted">
+												<span class="font-semibold text-text">{fmt(b.hearts)}</span> <span class="text-accent" aria-hidden="true">♥</span>
+											</span>
+										</li>
+									{/each}
+								</ul>
+							{:else}
+								<p class="text-body text-muted">No hearts on readable works yet.</p>
+							{/if}
+						</section>
+
+						<section class="rounded-card border border-border bg-surface p-5">
+							<h2 class="text-h3 mb-1">Saved by kind</h2>
+							<p class="mb-3 text-small text-muted">Readers save more than they read — authors, plans, topics and quotes too.</p>
+							<ul class="space-y-2">
+								{#each d.hearts_by_kind as h (h.kind)}
+									<li class="flex items-center gap-3">
+										<span class="w-20 shrink-0 truncate text-body text-text">{kindLabel(h.kind)}</span>
+										<div class="h-3 flex-1 overflow-hidden rounded-full bg-surface-2">
+											<div class="h-full rounded-full bg-accent-soft" style="width: {(h.count / heartKindMax) * 100}%"></div>
+										</div>
+										<span class="w-10 shrink-0 text-right text-small tabular-nums text-muted">{fmt(h.count)}</span>
+									</li>
+								{/each}
+							</ul>
+						</section>
+					</div>
+				{/if}
 
 				<!-- By language -->
 				<section class="mt-6 rounded-card border border-border bg-surface p-5">
