@@ -951,10 +951,31 @@ export interface EngagementHeartKind {
 	count: number;
 }
 
+/** One plan's engagement. `returned` = readers who used it past its first day
+ *  (ticked ≥ 2 days); `completed` = readers who finished all `length` days. */
+export interface EngagementPlanRow {
+	slug: string;
+	title: string;
+	length: number | null;
+	started: number;
+	returned: number;
+	completed: number;
+}
+
+/** The reading-plan funnel: overall started → returned → completed, plus a
+ *  per-plan breakdown. */
+export interface EngagementPlanFunnel {
+	started: number;
+	returned: number;
+	completed: number;
+	by_plan: EngagementPlanRow[];
+}
+
 export interface AdminEngagement {
 	overview: EngagementOverview;
 	time: EngagementTime;
 	top_content: EngagementTopContent;
+	plan_funnel: EngagementPlanFunnel;
 	most_loved: EngagementLoved[];
 	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];

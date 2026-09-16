@@ -81,6 +81,7 @@ class AdminEngagementView(APIView):
                 "top_content": self._top_content(),
                 "most_loved": self._most_loved(),
                 "hearts_by_kind": self._hearts_by_kind(),
+                "plan_funnel": self._plan_funnel(),
                 "by_language": self._by_language(),
                 "weekly_active": self._weekly_active(now),
             }
@@ -268,6 +269,58 @@ class AdminEngagementView(APIView):
             self._row(meta, kind_to_meta[r["kind"]], r["slug"], hearts=r["hearts"])
             for r in top
         ]
+
+    def _plan_funnel(self) -> dict:
+        """Reading-plan engagement: the started → came-back → completed funnel,
+        overall and per plan.
+
+        A plan's length is its number of distinct days (identical across the
+        per-language rows that share a slug); ``PlanProgress.done`` is the list of
+        day-numbers a reader has ticked off, so *completed* is ``len(done) >=
+        length`` and *came back* (used the plan past its first day) is
+        ``len(done) >= 2``. The done lists are read once and bucketed in Python —
+        a JSON array's length isn't a filter the DB can push down, and the row
+        count here is readers×plans, not content-sized."""
+        from reading.models import PlanProgress
+
+        from ..models import Plan, PlanDay
+
+        lengths = {
+            r["plan__slug"]: r["n"]
+            for r in PlanDay.objects.values("plan__slug").annotate(
+                n=Count("day", distinct=True)
+            )
+        }
+        # Prefer the English title; fall back to whatever language exists.
+        titles: dict[str, str] = {}
+        for p in Plan.objects.values("slug", "language", "title"):
+            if p["language"] == "en" or p["slug"] not in titles:
+                titles[p["slug"]] = p["title"]
+
+        agg: dict[str, dict] = {}
+        for slug, done in PlanProgress.objects.values_list("plan_slug", "done"):
+            a = agg.setdefault(slug, {"started": 0, "returned": 0, "completed": 0})
+            a["started"] += 1
+            n = len(done or [])
+            if n >= 2:
+                a["returned"] += 1
+            length = lengths.get(slug)
+            if length and n >= length:
+                a["completed"] += 1
+
+        by_plan = sorted(
+            (
+                {"slug": slug, "title": titles.get(slug, slug), "length": lengths.get(slug), **a}
+                for slug, a in agg.items()
+            ),
+            key=lambda r: -r["started"],
+        )
+        return {
+            "started": sum(a["started"] for a in agg.values()),
+            "returned": sum(a["returned"] for a in agg.values()),
+            "completed": sum(a["completed"] for a in agg.values()),
+            "by_plan": by_plan[:12],
+        }
 
     def _by_language(self) -> list[dict]:
         from reading.models import ReadingProgress
