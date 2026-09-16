@@ -73,10 +73,17 @@ class EngagementKindTests(TestCase):
             profile=reader(4), kind=WorkKind.BIO, book_slug="am", chapter_order=1
         )
 
-    def _rows(self, section="most_read"):
+    def _rows(self):
+        """Every top-content row, flattened across the per-kind tabs and keyed by
+        (kind, slug). The leaderboard splits books, sermons and bios into their
+        own tabs; these tests assert the underlying rows never blend."""
         res = APIClient().get("/api/admin/engagement/")
         self.assertEqual(res.status_code, 200)
-        return {(r["kind"], r["slug"]): r for r in res.data[section]}
+        return {
+            (r["kind"], r["slug"]): r
+            for tab in res.data["top_content"].values()
+            for r in tab
+        }
 
     def test_the_book_and_the_sermon_are_separate_rows(self):
         rows = self._rows()
@@ -131,6 +138,8 @@ class EngagementKindTests(TestCase):
         self.assertEqual(rows[("book", "humility")]["finishers"], 0)
 
     def test_highlights_are_separated_by_kind_too(self):
+        # A highlight on the SERMON is counted on the sermon row's highlighters,
+        # never on the book sharing its slug — scoped by (kind, slug).
         profile = UserProfile.objects.first()
         ChapterMarks.objects.create(
             profile=profile,
@@ -139,6 +148,6 @@ class EngagementKindTests(TestCase):
             chapter_order=1,
             marks=[{"id": "a", "p": 0, "s": 0, "e": 4}],
         )
-        rows = self._rows("most_marked")
-        self.assertIn(("sermon", "humility"), rows)
-        self.assertEqual(rows[("sermon", "humility")]["title"], "A Sermon on Humility")
+        rows = self._rows()
+        self.assertEqual(rows[("sermon", "humility")]["highlighters"], 1)
+        self.assertEqual(rows[("book", "humility")]["highlighters"], 0)

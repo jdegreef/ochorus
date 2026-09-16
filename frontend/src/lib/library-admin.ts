@@ -893,18 +893,27 @@ export interface EngagementOverview {
 /** What a reading row's slug names — see WorkKind on the server. */
 export type EngagementKind = 'book' | 'sermon' | 'bio';
 
-export interface EngagementWork {
-	/** Books, sermons and biographies share the slug column and can collide, so
-	 *  a row is only identified by kind AND slug. */
+/** One row of the reach-vs-depth "Top content" leaderboard: a work with the
+ *  four figures that read across a book, sermon or biography at once — how many
+ *  reached it, finished it, hearted it, and marked it up. */
+export interface EngagementTopRow {
 	kind: EngagementKind;
 	slug: string;
 	title: string;
 	author: string;
 	readers: number;
-	/** Books only: reaching the last chapter means nothing for a single-document
-	 *  sermon or bio, so the server sends null rather than a misleading count. */
-	finishers?: number | null;
-	chapters?: number;
+	/** Distinct readers who finished (the synced `finished_at` stamp). */
+	finishers: number;
+	hearts: number;
+	/** Distinct readers who highlighted the work. */
+	highlighters: number;
+}
+
+/** The leaderboard split by kind so each tab holds its own top works. */
+export interface EngagementTopContent {
+	book: EngagementTopRow[];
+	sermon: EngagementTopRow[];
+	bio: EngagementTopRow[];
 }
 
 export interface EngagementLang extends Language {
@@ -925,8 +934,8 @@ export interface EngagementTime {
 	readers_30d: number;
 }
 
-/** A most-hearted work. Like EngagementWork but keyed on hearts, and without
- *  a reader/finisher count (a Favorite is a save, independent of reading). */
+/** A most-hearted work, keyed on hearts and without a reader/finisher count
+ *  (a Favorite is a save, independent of reading). */
 export interface EngagementLoved {
 	kind: EngagementKind;
 	slug: string;
@@ -945,8 +954,7 @@ export interface EngagementHeartKind {
 export interface AdminEngagement {
 	overview: EngagementOverview;
 	time: EngagementTime;
-	most_read: EngagementWork[];
-	most_marked: EngagementWork[];
+	top_content: EngagementTopContent;
 	most_loved: EngagementLoved[];
 	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];
