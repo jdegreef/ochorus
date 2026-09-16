@@ -11,6 +11,40 @@
   "subtitle": "Sobre la fe, la esperanza y el amor",
   "description": "El compacto manual de la fe cristiana de Agustín, escrito para un amigo que le pidió lo esencial en breve. Responde por las tres virtudes teologales — la fe en el Credo, la esperanza en el Padrenuestro, y el amor que es el fin de todos los mandamientos — con su penetrante tratamiento del mal como la mera ausencia del bien, de la gracia y de la resurrección por el camino.",
   "about_html": "",
+  "qa": [
+   {
+    "question": "¿De qué trata El Enquiridión, de Agustín?",
+    "answer": "Es el manual compacto de la fe cristiana de Agustín, escrito para un amigo llamado Laurencio que le había pedido lo esencial en breve. Agustín responde por medio de las tres virtudes teologales —fe, esperanza y amor—, exponiendo la fe mediante el Credo, la esperanza mediante el Padrenuestro, y el amor como el fin al que ambas se ordenan. El resultado es un breve resumen de la creencia cristiana del mayor maestro latino de la Iglesia."
+   },
+   {
+    "question": "¿Qué significa la palabra «Enquiridión»?",
+    "answer": "Significa manual, algo que se lleva en la mano. Agustín lo escribió como una declaración breve y portátil de la fe para un lector que quería el corazón de la doctrina cristiana sin un largo tratado, y el título lo señala precisamente: una guía compacta para tener a mano y consultar."
+   },
+   {
+    "question": "¿Cómo estructura Agustín el libro?",
+    "answer": "En torno a la fe, la esperanza y el amor. Trata lo que el cristiano ha de creer exponiendo el Credo de los Apóstoles, lo que ha de esperar y pedir exponiendo el Padrenuestro, y une el todo bajo el amor, al que llama la mayor de las tres y la meta del mandamiento. Es un marco deliberadamente sencillo para la totalidad de la fe."
+   },
+   {
+    "question": "¿Quién fue Agustín de Hipona?",
+    "answer": "Un obispo del norte de África de finales del siglo IV y comienzos del V, y el teólogo más influyente de la Iglesia occidental, autor de las Confesiones y de La ciudad de Dios. Convertido tras una larga e inquieta búsqueda, llegó a ser el gran maestro de la gracia, y el Enquiridión destila su pensamiento maduro en un breve compendio."
+   },
+   {
+    "question": "¿Qué enseña el Enquiridión acerca del mal?",
+    "answer": "Agustín da su conocida explicación de que el mal no es una sustancia ni una cosa por derecho propio, sino una privación: una corrupción o ausencia del bien. Todo lo que existe es bueno en cuanto existe; el mal es la herida o la pérdida de ese bien. Dios saca bien aun del mal, y Agustín usa esto para sostener a la vez la bondad de Dios y su soberanía sobre un mundo caído."
+   },
+   {
+    "question": "¿Qué lugar tiene la gracia en el libro?",
+    "answer": "Uno central. Como siempre en Agustín, la salvación es obra de la gracia de Dios y no del mérito humano: la fe misma es don de Dios, y el amor que cumple la ley es derramado en el corazón por el Espíritu Santo. El Enquiridión lleva su convicción de toda la vida de que somos salvos por gracia mediante la fe, que obra por el amor, y todo ello obra de Dios."
+   },
+   {
+    "question": "¿Para quién es este libro?",
+    "answer": "Para todo cristiano que quiera lo esencial de la fe expuesto de manera breve y autorizada, tal como lo pidió Laurencio al principio. Ha servido durante siglos como un resumen doctrinal conciso, apreciado precisamente porque una mente tan grande eligió ser tan breve, y recompensa por igual al principiante y al bien leído."
+   },
+   {
+    "question": "¿Por dónde debería empezar el lector?",
+    "answer": "Por el principio, siguiendo el propio orden de Agustín: la fe del Credo, la esperanza del Padrenuestro y el amor que los corona. Como es breve y está ordenado deliberadamente como un resumen, puede leerse de corrido, dando al lector un mapa compacto de toda la fe cristiana de uno de sus más grandes maestros."
+   }
+  ],
   "publication_year": null,
   "source_type": "ai_unreviewed",
   "source_url": "",
