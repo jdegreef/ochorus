@@ -11,6 +11,40 @@
   "subtitle": "E o Pavio que Fumega",
   "description": "Isaías prometeu que a cana esmagada não seria quebrada nem o pavio que fumega seria apagado, e Sibbes dedica este livro ao que isso significa para quem se sente mal aceso. É o mais gentil dos clássicos puritanos, escrito para os desanimados, os meio convertidos e os espiritualmente exaustos, e em nenhum momento disposto a pressionar com mais força quem já está curvado. Richard Baxter o leu e foi transformado por ele; assim também gerações que descobriram que nada mais naquele século lhes permitia ser fracos.",
   "about_html": "<p>Sibbes toma uma única linha de Isaías, citada por Mateus a respeito de Cristo — “a cana esmagada ele não quebrará, e o pavio que fumega ele não apagará” — e escreve um livro inteiro para pessoas que temem estar longe demais. Seu argumento é que a contusão não é prova contra elas, e que uma fé que é toda fumaça e nenhuma chama ainda é fogo.</p> <p>Sibbes pregou em Londres na década de 1620, a uma geração criada num tipo inquiridor de autoexame que podia resvalar para o desespero — crentes ensinados a buscar em si mesmos evidências da graça e encontrando pouca. Esta é a correção pastoral a isso, de dentro da mesma tradição: não menos seriedade quanto ao pecado, mas um lugar diferente onde buscar a certeza.</p> <p>As duas metades da imagem lhe importam. Uma cana esmagada não é uma cana quebrada, e o pavio que fumega é um pavio que se apagou mas ainda guarda fogo: o que parece fracasso é, na leitura dele, aquilo que está sendo mantido aceso. Ele tem o cuidado de não tornar isso barato — tem muito a dizer sobre não confundir preguiça com fraqueza — mas a direção de todo o livro é que Cristo não dá fim ao que já está danificado.</p> <p>Richard Baxter o leu aos quinze anos e disse que fez toda a diferença: “Sibbes abriu-me mais o amor de Deus, e deu-me uma apreensão mais viva do mistério da redenção e de quanto eu devia a Jesus Cristo.” Tem feito o mesmo por leitores nessa condição desde então, e é breve.</p>",
+  "qa": [
+   {
+    "question": "De que trata A Cana Esmagada?",
+    "answer": "Richard Sibbes toma uma só linha de Isaías, citada por Mateus a respeito de Cristo — não quebrará a cana esmagada, nem apagará a torcida que fumega — e escreve um livro inteiro para pessoas que temem estar demasiado longe. Publicado em 1630, argumenta que a contusão não é prova contra elas, e que uma fé que é toda fumo e nenhuma chama ainda é fogo."
+   },
+   {
+    "question": "O que significam as imagens da cana esmagada e da torcida que fumega?",
+    "answer": "Ambas as metades da figura importam a Sibbes. Uma cana esmagada não é uma cana quebrada, e a torcida que fumega é um pavio que se apagou mas ainda tem fogo. O que ao desanimado parece fracasso é, na sua leitura, a própria coisa que está a ser mantida acesa — e a promessa é que Cristo não dá o golpe final ao que já está danificado."
+   },
+   {
+    "question": "Para quem está escrito o livro?",
+    "answer": "Está escrito para os desanimados, os meio convertidos e os espiritualmente exaustos — o mais terno dos clássicos puritanos, sem em ponto algum querer premir mais alguém já vergado. Sibbes escreve para leitores mal acesos, e recusa acrescentar peso a um fardo que já está prestes a apagar o fogo."
+   },
+   {
+    "question": "Por que um livro assim era necessário no tempo de Sibbes?",
+    "answer": "Sibbes pregou em Londres na década de 1620 a uma geração criada num tipo penetrante de auto-exame que podia resvalar para o desespero — crentes ensinados a procurar em si mesmos evidência da graça e a achar pouca. A Cana Esmagada é a correcção pastoral a isso, oferecida de dentro da mesma tradição: não menos seriedade quanto ao pecado, mas um lugar diferente onde procurar a segurança."
+   },
+   {
+    "question": "O livro torna a graça barata?",
+    "answer": "Não. Sibbes tem o cuidado de não o fazer, e tem muito a dizer sobre não confundir a preguiça com fraqueza nem desculpar o pecado como mera fragilidade. A ternura não é indulgência; é dirigida precisamente à pessoa que leva o pecado a sério e está a ser esmagada por ele, e toda a direcção do livro é que Cristo não apagará uma fé que ainda tenha algum fogo."
+   },
+   {
+    "question": "Como o livro afectou Richard Baxter?",
+    "answer": "Richard Baxter leu-o por volta dos quinze anos e disse que fez a diferença na sua vida: «abriu-me mais o amor de Deus», escreveu, «e deu-me uma apreensão mais viva do mistério da redenção e de quanto eu devia a Jesus Cristo». Tem feito o mesmo por leitores nessa condição desde então."
+   },
+   {
+    "question": "Qual é o seu principal argumento sobre a segurança?",
+    "answer": "Sibbes redirecciona onde um crente em luta deve procurar a segurança — para longe da força da sua própria fé e para a ternura de Cristo para com a fé fraca. A segurança assenta não em quão vivamente arde a chama, mas na promessa de que Ele não apagará nem o mais ténue fogo, o que liberta o leitor de se medir até ao desespero."
+   },
+   {
+    "question": "É um livro longo?",
+    "answer": "Não — é curto, o que faz parte da sua utilidade. A sua brevidade torna-o fácil de pôr nas mãos de alguém no próprio desânimo que aborda, e fácil de retomar quando esse desânimo volta."
+   }
+  ],
   "publication_year": null,
   "source_type": "ai_unreviewed",
   "source_url": "",
