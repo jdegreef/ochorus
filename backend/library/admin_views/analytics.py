@@ -79,6 +79,7 @@ class AdminEngagementView(APIView):
                 "overview": overview,
                 "time": self._reading_time(now),
                 "top_content": self._top_content(),
+                "rising": self._rising(now),
                 "highlight_heatmap": self._highlight_heatmap(),
                 "most_loved": self._most_loved(),
                 "hearts_by_kind": self._hearts_by_kind(),
@@ -270,6 +271,46 @@ class AdminEngagementView(APIView):
             self._row(meta, kind_to_meta[r["kind"]], r["slug"], hearts=r["hearts"])
             for r in top
         ]
+
+    def _rising(self, now, limit: int = 8) -> list[dict]:
+        """Works with the biggest gain in weekly readers — what's catching on
+        NOW, beside the all-time leaderboard that a few classics dominate.
+
+        Two windowed grouped reads (this week; the seven days before it), each
+        distinct profiles per (kind, slug); the gainers are the works whose
+        weekly reach grew. This counts activity in the window (distinct readers
+        who touched the work), not brand-new readers — labelled as such on the
+        page — and small movements wash out because only positive deltas rank."""
+        from datetime import timedelta
+
+        from reading.models import ReadingProgress
+
+        def window(start_days, end_days=0):
+            qs = ReadingProgress.objects.filter(
+                updated_at__gte=now - timedelta(days=start_days)
+            )
+            if end_days:
+                qs = qs.filter(updated_at__lt=now - timedelta(days=end_days))
+            return {
+                (r["kind"], r["book_slug"]): r["n"]
+                for r in qs.values("kind", "book_slug").annotate(
+                    n=Count("profile", distinct=True)
+                )
+            }
+
+        this_week, prev_week = window(7), window(14, 7)
+        meta = self._work_meta
+        rows = []
+        for (kind, slug), this_n in this_week.items():
+            prev_n = prev_week.get((kind, slug), 0)
+            delta = this_n - prev_n
+            if delta <= 0:
+                continue
+            rows.append(
+                self._row(meta, kind, slug, this_week=this_n, prev_week=prev_n, delta=delta)
+            )
+        rows.sort(key=lambda r: (-r["delta"], -r["this_week"]))
+        return rows[:limit]
 
     def _highlight_heatmap(self) -> dict | None:
         """Per-chapter highlight density for the most-marked book — the heat

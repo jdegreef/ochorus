@@ -919,6 +919,26 @@ class AdminEngagementTests(TestCase):
         self.assertEqual(row["completed"], 1)
 
     @override_settings(DEBUG=True)
+    def test_rising_counts_this_week_over_last(self):
+        from datetime import timedelta
+
+        from reading.models import ReadingProgress
+
+        # Move abide's reader into last week; humility stays "now". (update()
+        # bypasses auto_now, so the backdated updated_at sticks.)
+        ReadingProgress.objects.filter(book_slug="abide").update(
+            updated_at=timezone.now() - timedelta(days=10)
+        )
+        res = self.client.get("/api/admin/engagement/")
+        rising = {(r["kind"], r["slug"]): r for r in res.data["rising"]}
+        # humility: 2 readers this week, none before — a real gain.
+        self.assertEqual(rising[("book", "humility")]["this_week"], 2)
+        self.assertEqual(rising[("book", "humility")]["prev_week"], 0)
+        self.assertEqual(rising[("book", "humility")]["delta"], 2)
+        # abide's only activity was last week, so it isn't rising this week.
+        self.assertNotIn(("book", "abide"), rising)
+
+    @override_settings(DEBUG=True)
     def test_highlight_heatmap(self):
         res = self.client.get("/api/admin/engagement/")
         hm = res.data["highlight_heatmap"]

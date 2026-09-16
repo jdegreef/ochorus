@@ -218,6 +218,29 @@
 					</div>
 				</section>
 
+				<!-- Rising this week — biggest gain in weekly readers -->
+				{#if d.rising.length}
+					<section class="mt-8 rounded-card border border-border bg-surface p-5">
+						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">Rising this week</h2>
+							<span class="text-small text-muted">Biggest gain in weekly readers vs last week — what's catching on now.</span>
+						</div>
+						<ul class="space-y-2">
+							{#each d.rising as b (`${b.kind}:${b.slug}`)}
+								<li class="flex items-baseline justify-between gap-3">
+									<a href={workHref(b)} class="min-w-0 truncate text-body text-text hover:text-accent">
+										{b.title}{#if b.author}<span class="text-small text-muted"> · {b.author}</span>{/if}
+									</a>
+									<span class="shrink-0 text-small tabular-nums text-muted">
+										<span class="font-semibold text-text">{fmt(b.this_week)}</span> this week
+										<span class="ms-2 font-semibold text-accent">↑ {fmt(b.delta)}</span>
+									</span>
+								</li>
+							{/each}
+						</ul>
+					</section>
+				{/if}
+
 				<!-- Top content — reach vs depth, by kind -->
 				<section class="mt-8 rounded-card border border-border bg-surface p-5">
 					<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">

@@ -989,10 +989,23 @@ export interface EngagementHeatmap {
 	peak_readers: number;
 }
 
+/** A work whose weekly reach grew — `delta` distinct readers more this week
+ *  than the week before. Momentum, not brand-new readers. */
+export interface EngagementRisingRow {
+	kind: EngagementKind;
+	slug: string;
+	title: string;
+	author: string;
+	this_week: number;
+	prev_week: number;
+	delta: number;
+}
+
 export interface AdminEngagement {
 	overview: EngagementOverview;
 	time: EngagementTime;
 	top_content: EngagementTopContent;
+	rising: EngagementRisingRow[];
 	highlight_heatmap: EngagementHeatmap | null;
 	plan_funnel: EngagementPlanFunnel;
 	most_loved: EngagementLoved[];
