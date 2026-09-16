@@ -523,7 +523,7 @@
    "scrim": 0.9
   },
   "es/the-secret-of-guidance": {
-   "ground": "39e8d47739a60600064801e53d1f768b7581cb53ae79e1bb8f34c7b47bd4939e",
+   "ground": "ede183597e4b2fbf740ec87df22eb60429f8838022ea4146af06a9b2a6b8f01f",
    "style": "devotional",
    "script": "latin",
    "art": true,
@@ -1020,7 +1020,7 @@
    "scrim": 0.65
   },
   "our-daily-walk": {
-   "ground": "277630f5775c1ceede40412f8055da7ea024c8b8ceb6b6f972e51617566967ca",
+   "ground": "832e3c3873233e66c1099d8bec7dd24169ff48ad26049636f603df436a3582e4",
    "style": "devotional",
    "script": "latin",
    "art": false,
@@ -1790,7 +1790,7 @@
    "scrim": 0.8
   },
   "way-into-holiest": {
-   "ground": "c24f62b7b8f6f70497d3b57c971350764b89a3744cd4cfa56e1476a024e127b5",
+   "ground": "4eb25026c8e1354506a7d9c7f63eb4d6eae92a26393667d351898928b3e38636",
    "style": "devotional",
    "script": "latin",
    "art": true,
