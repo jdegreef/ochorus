@@ -10,6 +10,40 @@
   "title": "Freedom of the Will",
   "subtitle": "A Careful and Strict Inquiry",
   "description": "Jonathan Edwards's most rigorous piece of philosophy: an argument that the will is never indifferent but always follows what the mind finds most compelling, so that a person is free to do as they please and yet not free to please otherwise. Written against the idea of a will that determines itself out of nothing.",
+  "qa": [
+   {
+    "question": "What is Freedom of the Will about?",
+    "answer": "It is Jonathan Edwards's most rigorous work of philosophy and theology: a sustained argument that the will is never neutral or indifferent but always follows what the mind finds most compelling. From this Edwards concludes that a person is free to do as they please, yet not free to please otherwise — a defence of God's sovereignty and human responsibility against the notion of an uncaused, self-determining will."
+   },
+   {
+    "question": "Who was Jonathan Edwards?",
+    "answer": "Jonathan Edwards was an eighteenth-century New England pastor and theologian, a leader of the Great Awakening, and often regarded as the greatest philosophical mind in American history. Alongside his revival writings and his Religious Affections, this treatise shows his rigorous, closely reasoned side, applied to one of the hardest questions in theology and philosophy."
+   },
+   {
+    "question": "What is Edwards's central argument?",
+    "answer": "That the will always chooses according to the strongest motive — that a person acts on whatever, at the moment of choice, appears most desirable to the mind. So the will is not a neutral power that could equally go either way, but is determined by the person's own inclinations and perceptions. We do what we most want, and in that sense are free, but we cannot want otherwise than we do."
+   },
+   {
+    "question": "What is the difference between 'natural' and 'moral' ability that Edwards draws?",
+    "answer": "Edwards distinguishes natural inability — being physically or externally prevented from doing something — from moral inability, which is simply the lack of will or inclination to do it. A sinner is not naturally unable to come to God, as if chained, but morally unable, in that his own heart will not; and this, Edwards argues, leaves him fully responsible, since nothing outside himself compels his refusal."
+   },
+   {
+    "question": "Why did Edwards write it?",
+    "answer": "To defend the Calvinist understanding of God's sovereignty and human responsibility against the growing view that true freedom requires a will undetermined by anything, even by one's own character or God's decree. Edwards aimed to show that such a self-determining will is both incoherent and unbiblical, and that real moral responsibility rests instead on our acting from our own strongest desires."
+   },
+   {
+    "question": "Is this a difficult book to read?",
+    "answer": "Yes — it is Edwards's most demanding work, closely and abstractly argued, and it repays patience and careful attention. But its logic is powerful and its influence immense; readers willing to follow its reasoning find one of the most formidable defences of divine sovereignty and a searching analysis of what human freedom really means."
+   },
+   {
+    "question": "Why has the book been so influential?",
+    "answer": "Because it framed the debate over free will, sovereignty, and responsibility for generations of theologians, and remains a landmark in both American philosophy and Reformed theology. Its distinctions have shaped how many Christians reconcile God's sovereignty with human accountability, and it is still studied and argued over more than two and a half centuries later."
+   },
+   {
+    "question": "Where should a reader begin?",
+    "answer": "At the beginning, where Edwards defines his terms — the will, motives, ability — since his whole argument is built precisely upon them. This is a book to be read slowly and in order, following the chain of reasoning link by link; readers who take the time find its rigor rewarding and its conclusions difficult to evade."
+   }
+  ],
   "publication_year": 1754,
   "source_type": "public_domain",
   "source_url": "",
