@@ -971,10 +971,29 @@ export interface EngagementPlanFunnel {
 	by_plan: EngagementPlanRow[];
 }
 
+/** One chapter's highlight density — distinct readers who marked it up. */
+export interface EngagementHeatChapter {
+	chapter: number;
+	readers: number;
+}
+
+/** Per-chapter highlight density for the most-marked book, or null when nothing
+ *  has been highlighted yet. Every chapter is present (0 included) so the strip
+ *  draws whole; `peak_chapter` is the most-marked one. */
+export interface EngagementHeatmap {
+	slug: string;
+	title: string;
+	author: string;
+	chapters: EngagementHeatChapter[];
+	peak_chapter: number | null;
+	peak_readers: number;
+}
+
 export interface AdminEngagement {
 	overview: EngagementOverview;
 	time: EngagementTime;
 	top_content: EngagementTopContent;
+	highlight_heatmap: EngagementHeatmap | null;
 	plan_funnel: EngagementPlanFunnel;
 	most_loved: EngagementLoved[];
 	hearts_by_kind: EngagementHeartKind[];
