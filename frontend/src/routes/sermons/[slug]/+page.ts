@@ -9,6 +9,9 @@ export const trailingSlash = 'always';
 // A content-only merge (fixtures + cards) can race the API's seed: the web build
 // prerenders whatever the API holds at build time, so new sermon pages ship as the
 // SPA shell until the next build that touches frontend/. Tier 2 (#1418) did.
+// (2026-09-15: rebuild for R. A. Torrey's SermonIndex sermons (#2446), which
+// raced their own deploy, and to bake the Portuguese book Q&A (#2445) into the
+// prerendered /pt/books pages.)
 
 // Prerender one page per sermon — the slug list comes from the API at build
 // time. The sermon endpoint may lag on a fresh deploy (api + web build together),
