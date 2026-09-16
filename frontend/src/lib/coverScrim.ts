@@ -10,11 +10,13 @@
 // `CoverAssetTests` re-measures that against the artwork on disk.
 
 export const COVER_SCRIM: Record<string, number> = {
+	'a-brand-plucked-from-the-fire': 0.95,
 	'a-call-to-the-unconverted': 0.70,
 	'a-retrospect': 0.85,
 	'absolute-surrender': 0.95,
 	'all-of-grace': 0.70,
 	'all-things-for-good': 0.85,
+	'amanda-smith-autobiography': 0.75,
 	'answers-to-prayer': 0.55,
 	'around-the-wicket-gate': 0.55,
 	'baptism-with-the-holy-spirit': 0.85,
@@ -39,6 +41,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'humility-2': 0.95,
 	'jesus-himself-2': 0.65,
 	'life-and-diary-of-david-brainerd': 0.70,
+	'life-experience-gospel-labours': 0.80,
 	'life-of-antony': 0.85,
 	'lord-teach-us-to-pray-2': 0.60,
 	'ministry-of-intercession': 0.75,
@@ -56,6 +59,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'purpose-in-prayer': 0.65,
 	'reality-of-prayer': 0.80,
 	'religious-affections': 0.50,
+	'religious-experience-and-journal': 0.90,
 	'revival-lectures': 0.85,
 	'selected-sermons-whitefield': 0.60,
 	'separation-and-service': 0.80,

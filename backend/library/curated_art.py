@@ -478,6 +478,38 @@ CURATED: dict[str, Artwork] = {
         "of God with the light coming straight down into it.",
         focus=0.4,
     ),
+    # ── Batch 13 · African-American spiritual autobiographies ──────────────
+    # (Batch 12 is the Church Fathers', landing in parallel.) Four Black
+    # preachers' and missionaries' own life-stories. For Jarena Lee and Richard
+    # Allen — both AME pioneers — the ground is by William Merritt Chase and
+    # Robert S. Duncanson; Duncanson was the pre-eminent Black American landscape
+    # painter of the century, which is the point. Cleveland CC0.
+    "amanda-smith-autobiography": Artwork(
+        "cma", 144967, "Martin Johnson Heade", "Point Judith, Rhode Island", "1867–68",
+        "A washerwoman who became a world evangelist — India, Africa, England. "
+        "Heade lays a luminous sea under a wide sky: the horizon her calling kept "
+        "crossing.",
+    ),
+    "religious-experience-and-journal": Artwork(
+        "cma", 117715, "William Merritt Chase", "The Old Road to the Sea", "c. 1893",
+        "Jarena Lee, the first woman authorised to preach in the AME church, rode "
+        "and walked thousands of miles doing it. Chase opens a bright road across "
+        "a meadow toward the sea — the itinerant's own view.",
+    ),
+    "a-brand-plucked-from-the-fire": Artwork(
+        "cma", 134072, "George Inness", "Sunny Autumn Day", "1892",
+        "Julia Foote took her title from Zechariah 3:2 — a brand snatched out of "
+        "the burning. Inness fills the trees with autumn fire, alive and standing: "
+        "the rescue rather than the ruin.",
+        focus=0.4,
+    ),
+    "life-experience-gospel-labours": Artwork(
+        "cma", 171296, "Robert S. Duncanson", "Vale of Kashmir", "1867",
+        "Richard Allen founded the AME church and became its first bishop. His "
+        "life-story wears a luminous valley by Duncanson, the foremost Black "
+        "American landscape painter of Allen's own century — the honour is the "
+        "hand as much as the scene.",
+    ),
 }
 
 

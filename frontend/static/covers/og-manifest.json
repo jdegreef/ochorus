@@ -5,11 +5,11 @@
  "fonts": "41c38d96baff251262ef9f47c2944a57660f0a2aac0b882b7f1309ed1017cbdf",
  "twins": {
   "a-brand-plucked-from-the-fire": {
-   "ground": "cb8466a300a0936259886dc06b1f7b9af2b1930a3e92a712b0a319a81a94e630",
+   "ground": "f3b7562829d74b0dcc42559133d13b3d1199aa6e9c9c915bcac80c2793d3484d",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.95
   },
   "a-call-to-the-unconverted": {
    "ground": "689800d8c2cae0fbd40918c9ca62c29bd12198213ea2a027f1e7f0c544be9982",
@@ -75,11 +75,11 @@
    "scrim": 0.85
   },
   "amanda-smith-autobiography": {
-   "ground": "110821467004b06445dd48a27d29244e03bf2f2fadef05b6b54882bb11b27cd3",
+   "ground": "aa4cc11c5427d667a4a86ff334ec4bc11d306a55e8dd70f6631e589785737d50",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.75
   },
   "answers-to-prayer": {
    "ground": "eea397da9a1340cccc9ed01bd4d174bcfa0db47a0da4fc6676220efe11d644ca",
@@ -404,11 +404,11 @@
    "scrim": 0.65
   },
   "es/life-experience-gospel-labours": {
-   "ground": "8d5a2c6559dddb96cc255580c15a10988a008c158937726e6755e045c11adb3e",
+   "ground": "1705cd87178e053c6e4ebd45fa51e33d2d8aba36c8f4edceb52c2d16d274dd6f",
    "style": "enlightenment",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.8
   },
   "es/necessity-of-prayer": {
    "ground": "3df1bade5a5b97226ca4291390c2dc77ecd451f13fc040a9e3b56ad5ff8723f4",
@@ -957,11 +957,11 @@
    "scrim": 0.7
   },
   "life-experience-gospel-labours": {
-   "ground": "ab972d9ce9456ffd581edd7f8d988bf896f42272232aa5f9ad4df7b6366bdb42",
+   "ground": "14ce76f8769c384ae142f7a77f4a4eb21ed7c2029fac5a2a4f24b82926eae475",
    "style": "enlightenment",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.8
   },
   "life-of-antony": {
    "ground": "ac403faacec4452d74c116d78b24d44951ee6cbdd987fe9e8c56e166cc00e646",
@@ -1279,11 +1279,11 @@
    "scrim": 0.5
   },
   "religious-experience-and-journal": {
-   "ground": "800899d80dc640861602c80ec647562641b361ad97519abc51c24ddd2b267e4a",
+   "ground": "bc037c161116bc6ef9abfd549261d3a2b8715dedb14046422a0ce2b666c232a9",
    "style": "enlightenment",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.9
   },
   "revival-lectures": {
    "ground": "842406cf6789e2fa5426e898a4ab03998bc0395d73e3ce44b25030af0ec886ea",
