@@ -292,82 +292,16 @@
 		return { text: clipped, cite };
 	});
 
-	// The Q&A band at the foot of the page comes in two tiers. Where an editorial
-	// set has been written for this author (`editorialFaq`, below) it is used; for
-	// everyone else a short FAQ is DERIVED from what the page already knows — the
-	// life dates, the works, the topical shelves, the opening of the bio. Either
-	// way it answers the questions people actually type ("who was X", "what did X
-	// write", "where can I read X") on the page AND emits the matching FAQPage
-	// JSON-LD, so the same facts serve the reader and the answer engines from one
-	// source.
-	//
-	// The DERIVED block is English only, and for the same reason the Quotes link
-	// above is: the question phrasings are hand-written English, and the answers
-	// lean on English sentence shapes. Under any other locale it simply doesn't
-	// render, rather than showing untranslated strings — the established pattern
-	// on this page. (The editorial set carries its own language from the API, so
-	// it is not gated here.)
-	// Oxford-comma conjunction ("a", "a and b", "a, b, and c"). The derived block
-	// is English-gated, so the fixed 'en' locale matches the surrounding copy.
-	const enList = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
-	const joinList = (xs: string[]) => enList.format(xs);
-
-	// An editorial Q&A set, hand-written and verified per author, served by the
-	// API in the requested language only (empty when this locale has none — the
-	// no-fallback rule the bio follows, so it is NOT English-gated here: the API
-	// has already decided the language). Six-to-ten rich answers about the life,
-	// ministry, relationships and works — a superset of the derived block below.
-	const editorialFaq = $derived<{ q: string; a: string }[]>(author.faq ?? []);
-
-	// The derived fallback: a short FAQ built from what the page already knows —
-	// used for the ~authors without an editorial set yet, and only under English
-	// (the phrasings and answers lean on English sentence shapes).
-	const derivedFaq = $derived.by<{ q: string; a: string }[]>(() => {
-		if (getLang() !== 'en') return [];
-		const name = author.name;
-		const items: { q: string; a: string }[] = [];
-
-		// "Who was …" — the opening of the biography, cut to a sentence boundary
-		// (truncateMeta does exactly that). Skipped when this writer has no bio in
-		// the library yet.
-		const who = truncateMeta(bioStripped || author.bio || '', 320);
-		if (who) items.push({ q: `Who was ${name}?`, a: who });
-
-		if (author.books.length) {
-			const titles = author.books.map((b) => b.title);
-			items.push({
-				q: `What did ${name} write?`,
-				a: `${name} wrote ${joinList(titles)} — ${titles.length === 1 ? 'free to read' : 'all free to read'} on Ochorus.`
-			});
-		}
-
-		if (author.birth_year && author.death_year)
-			items.push({ q: `When did ${name} live?`, a: `${name} lived from ${author.birth_year} to ${author.death_year}.` });
-		else if (author.birth_year)
-			items.push({ q: `When was ${name} born?`, a: `${name} was born in ${author.birth_year}.` });
-
-		if (author.topics.length)
-			items.push({
-				q: `What did ${name} write about?`,
-				a: `${name}’s work centres on ${joinList(author.topics.map((tp) => tp.title))}.`
-			});
-
-		items.push({
-			q: `Where can I read ${name}’s books online?`,
-			a: `Every available work by ${name} can be read free on Ochorus — in your browser, without an account.`
-		});
-
-		return items;
-	});
-
-	// The editorial set wins wherever we've written a real one; otherwise the
-	// derived block stands in. The `>= 2` floor matches showFaq's own threshold,
-	// so a stunted editorial set (fewer than two entries — which the backend 6–10
-	// guard forbids, but nothing here should depend on that) falls back to the
-	// derived questions rather than suppressing the band entirely. The visible
-	// accordion and the FAQPage JSON-LD below both read this one array, so they
-	// can never disagree.
-	const faq = $derived(editorialFaq.length >= 2 ? editorialFaq : derivedFaq);
+	// The Q&A band at the foot of the page: an editorial set, hand-written and
+	// verified per author, served by the API in the requested language only —
+	// empty when this locale has none (the no-fallback rule the bio follows, so
+	// it is NOT gated here; the API has already decided the language). Every
+	// biography now carries a set; there is no longer a page-derived fallback —
+	// a future author added before its set is written simply shows no Q&A band,
+	// which is the honest answer, rather than a generic "read X free" stand-in.
+	// The visible accordion and the FAQPage JSON-LD below both read this one
+	// array, so they can never disagree.
+	const faq = $derived<{ q: string; a: string }[]>(author.faq ?? []);
 	// Two entries is the floor: a lone Q&A isn't an "FAQ", and a one-item FAQPage
 	// is noise in the markup.
 	const showFaq = $derived(faq.length >= 2);
@@ -375,9 +309,9 @@
 
 	// On-page jump navigation over the substantial sections. Each entry names a
 	// section `id` stamped on the markup below. Labels reuse existing localized
-	// strings (this bar shows in every locale, unlike the English-only FAQ), so
-	// no new visible copy is introduced; "Questions" rides the FAQ's own English
-	// gate, so it never appears without the section it points at.
+	// strings, so no new visible copy is introduced; "Questions" rides `showFaq`,
+	// so it never appears without the section it points at (in a locale whose Q&A
+	// is not yet translated the API returns none, and both drop out together).
 	const navItems = $derived(
 		[
 			author.bio_html || author.bio ? { id: 'bio', label: t('articles.kindBiography') } : null,
@@ -687,16 +621,15 @@
 		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
 	{/if}
 
-	<!-- Frequently asked questions — the editorial set where one exists, else
-	     derived from the page's own facts (see `faq` in the script). Renders only
-	     with two or more entries. The visible accordion and the FAQPage JSON-LD
-	     are built from one array, so they cannot disagree. -->
+	<!-- Frequently asked questions — the editorial set for this author (see `faq`
+	     in the script). Renders only with two or more entries. The visible
+	     accordion and the FAQPage JSON-LD are built from one array, so they cannot
+	     disagree. -->
 	{#if showFaq}
 		<section id="faq" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
-			<!-- Literal, not a t() key: today every set that reaches this heading is
-			     English — the derived block is English-gated, and the editorial sets
-			     ship English-first. When editorial Q&A is translated, move this to a
-			     localized key alongside it (the derived block stays English). -->
+			<!-- Literal, not a t() key: the editorial sets ship English-first, so
+			     today every set that reaches this heading is English. When the Q&A is
+			     translated per locale, move this to a localized key alongside it. -->
 			<h2 class="section-label">Common questions</h2>
 			<div class="faq-list">
 				{#each faq as item, i (i)}
