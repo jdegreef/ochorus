@@ -918,6 +918,22 @@ class AdminEngagementTests(TestCase):
         self.assertEqual(row["started"], 2)
         self.assertEqual(row["completed"], 1)
 
+    @override_settings(DEBUG=True)
+    def test_highlight_heatmap(self):
+        res = self.client.get("/api/admin/engagement/")
+        hm = res.data["highlight_heatmap"]
+        # humility is the only marked book, so it's the most-marked one.
+        self.assertEqual(hm["slug"], "humility")
+        self.assertEqual(hm["title"], "Humility")
+        # 3 chapters exist; only chapter 1 is marked (by p1). Every chapter is
+        # present so the strip draws whole.
+        self.assertEqual(len(hm["chapters"]), 3)
+        by_ch = {c["chapter"]: c["readers"] for c in hm["chapters"]}
+        self.assertEqual(by_ch[1], 1)
+        self.assertEqual(by_ch[2], 0)
+        self.assertEqual(hm["peak_chapter"], 1)
+        self.assertEqual(hm["peak_readers"], 1)
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
         res = self.client.get("/api/admin/engagement/")

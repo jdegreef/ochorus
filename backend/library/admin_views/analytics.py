@@ -79,6 +79,7 @@ class AdminEngagementView(APIView):
                 "overview": overview,
                 "time": self._reading_time(now),
                 "top_content": self._top_content(),
+                "highlight_heatmap": self._highlight_heatmap(),
                 "most_loved": self._most_loved(),
                 "hearts_by_kind": self._hearts_by_kind(),
                 "plan_funnel": self._plan_funnel(),
@@ -269,6 +270,54 @@ class AdminEngagementView(APIView):
             self._row(meta, kind_to_meta[r["kind"]], r["slug"], hearts=r["hearts"])
             for r in top
         ]
+
+    def _highlight_heatmap(self) -> dict | None:
+        """Per-chapter highlight density for the most-marked book — the heat
+        strip that shows WHERE in a work readers mark up.
+
+        A book, because the strip is per chapter: a single-document sermon or
+        biography would be one cell. Every chapter is returned, unmarked ones
+        included (0), so the frontend can draw the full strip; ``peak`` names the
+        chapter that resonates most."""
+        from reading.models import ChapterMarks, WorkKind
+
+        from ..models import Chapter
+
+        top = (
+            ChapterMarks.objects.filter(kind=WorkKind.BOOK)
+            .exclude(marks=[])
+            .values("book_slug")
+            .annotate(readers=Count("profile", distinct=True))
+            .order_by("-readers")
+            .first()
+        )
+        if not top:
+            return None
+        slug = top["book_slug"]
+        per = {
+            r["chapter_order"]: r["readers"]
+            for r in ChapterMarks.objects.filter(kind=WorkKind.BOOK, book_slug=slug)
+            .exclude(marks=[])
+            .values("chapter_order")
+            .annotate(readers=Count("profile", distinct=True))
+        }
+        # Draw the full strip: the English edition's chapter count, or (if that
+        # book isn't in the catalogue) the highest marked chapter as a fallback.
+        length = (
+            Chapter.objects.filter(book__slug=slug, book__language="en").count()
+            or max(per, default=0)
+        )
+        chapters = [{"chapter": i, "readers": per.get(i, 0)} for i in range(1, length + 1)]
+        peak = max(chapters, key=lambda c: c["readers"], default=None)
+        title, author = self._work_meta.get(("book", slug), (slug, ""))
+        return {
+            "slug": slug,
+            "title": title,
+            "author": author,
+            "chapters": chapters,
+            "peak_chapter": peak["chapter"] if peak and peak["readers"] else None,
+            "peak_readers": peak["readers"] if peak else 0,
+        }
 
     def _plan_funnel(self) -> dict:
         """Reading-plan engagement: the started → came-back → completed funnel,

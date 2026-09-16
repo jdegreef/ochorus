@@ -96,6 +96,15 @@
 	const finishedPct = (b: EngagementTopRow) =>
 		b.readers ? Math.round((b.finishers / b.readers) * 100) : 0;
 
+	// A heatmap cell's gold wash, scaled to the busiest chapter so the strip's
+	// contrast is about this book, not an absolute count. Unmarked chapters stay
+	// at the recessed surface tone.
+	const heatColor = (readers: number) => {
+		const peak = data?.highlight_heatmap?.peak_readers ?? 0;
+		const pct = peak ? Math.round((readers / peak) * 82) : 0;
+		return `color-mix(in srgb, var(--gold) ${pct}%, var(--surface-2))`;
+	};
+
 	// Plan funnel steps, each as a share of "started" so the drop-off reads down
 	// the bars. Started is the 100% baseline; the rest narrow from it.
 	const planSteps = $derived.by(() => {
@@ -266,6 +275,41 @@
 					{/if}
 				</section>
 
+				<!-- Highlight heatmap — where readers mark up the most-marked book -->
+				{#if d.highlight_heatmap && d.highlight_heatmap.chapters.length}
+					{@const hm = d.highlight_heatmap}
+					<section class="mt-6 rounded-card border border-border bg-surface p-5">
+						<div class="mb-1 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">Where readers mark up</h2>
+							<span class="text-small text-muted">Highlight density by chapter</span>
+						</div>
+						<p class="mb-3 text-small text-muted">
+							<a href="/books/{hm.slug}" class="text-text hover:text-accent">{hm.title}</a>{#if hm.author}<span> · {hm.author}</span>{/if} — the most-marked book.
+						</p>
+						<div class="heatstrip">
+							{#each hm.chapters as c (c.chapter)}
+								<div
+									class="heatcell"
+									style="background: {heatColor(c.readers)}"
+									title="Chapter {c.chapter} · {fmt(c.readers)} reader{c.readers === 1 ? '' : 's'} highlighted"
+								></div>
+							{/each}
+						</div>
+						<div class="mt-3 flex flex-wrap items-center justify-between gap-2 text-small text-muted">
+							<span class="flex items-center gap-2">
+								Fewer
+								<span class="heatkey" style="background: color-mix(in srgb, var(--gold) 15%, var(--surface-2))"></span>
+								<span class="heatkey" style="background: color-mix(in srgb, var(--gold) 45%, var(--surface-2))"></span>
+								<span class="heatkey" style="background: color-mix(in srgb, var(--gold) 82%, var(--surface-2))"></span>
+								more highlighted
+							</span>
+							{#if hm.peak_chapter}
+								<span>Peak · chapter {hm.peak_chapter} · <span class="font-semibold text-text tabular-nums">{fmt(hm.peak_readers)}</span> readers</span>
+							{/if}
+						</div>
+					</section>
+				{/if}
+
 				<!-- Hearts: most loved + saved by kind -->
 				{#if d.overview.hearts}
 					<div class="mt-6 grid gap-6 lg:grid-cols-2">
@@ -408,6 +452,27 @@
 		stroke-linecap: round;
 		stroke-linejoin: round;
 		vector-effect: non-scaling-stroke;
+	}
+
+	/* Highlight heatmap — one gold cell per chapter, wrapping across the width.
+	   Gold is the reading-mark colour (STYLE_GUIDE §5); 2px corners keep the
+	   small cells square rather than rounding to dots. */
+	.heatstrip {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(14px, 1fr));
+		gap: 4px;
+	}
+	.heatcell {
+		aspect-ratio: 1;
+		border-radius: 2px;
+		border: 1px solid var(--border);
+	}
+	.heatkey {
+		display: inline-block;
+		width: 14px;
+		height: 14px;
+		border-radius: 2px;
+		border: 1px solid var(--border);
 	}
 
 	/* Completion bar under a most-read book: how far readers got. */
