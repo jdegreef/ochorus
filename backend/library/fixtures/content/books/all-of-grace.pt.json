@@ -11,6 +11,40 @@
   "subtitle": "Uma Palavra Sincera aos Que Buscam a Salvação",
   "description": "Tudo pela Graça é a apresentação simples e sincera do evangelho por Charles Spurgeon, escrita para o leitor que anseia ser salvo mas não sabe por onde começar. Passo a passo, ele mostra que Deus justifica o ímpio, que a salvação é pela graça mediante a fé e não pelas obras, e que o arrependimento e a fé são, eles mesmos, dádivas de Deus. Calorosa, direta e rica em ilustrações simples, insiste num único convite: venha a Cristo tal como você está.",
   "about_html": "<p>Spurgeon's book for someone who is not yet a Christian and suspects they are too far gone to become one. It is plain to the point of bluntness, addressed throughout as “you”, and it moves through the objections in the order people actually raise them: I am not good enough, I cannot feel anything, I have tried before, I do not know how to believe.</p> <p>He wrote it in 1886, near the end of a ministry spent preaching to thousands in London, and it carries the habits of a preacher rather than a writer — short paragraphs, homely illustrations, a refusal to leave a point until it has landed. The text under all of it is Ephesians 2:8, and the title is the argument: if any part of salvation were owed to the reader's improvement, the reader would be lost, which is precisely why they are not.</p> <p>Spurgeon anticipates the objection that this is too easy, and answers it at length. His point is not that sin is small but that faith is not a work — that the man who says he cannot believe well enough has misunderstood what he is being asked for.</p> <p>It is the shortest book on this shelf and the most often given away. If you are looking for somewhere to start, or something to hand to someone else, this is it.</p>",
+  "qa": [
+   {
+    "question": "Para quem Spurgeon escreveu Tudo pela Graça?",
+    "answer": "Charles Spurgeon escreveu-o para quem ainda não é cristão e suspeita estar demasiado longe para chegar a sê-lo. Dirige-se ao leitor do princípio ao fim como «tu», e fala directamente a quem anseia ser salvo mas não sabe por onde começar: simples até à franqueza, e sem deixar esse leitor sem um caminho claro à sua frente."
+   },
+   {
+    "question": "Qual é a mensagem central do livro?",
+    "answer": "Passo a passo, Spurgeon mostra que Deus justifica o ímpio, que a salvação é pela graça mediante a fé e não pelas obras, e que até o arrependimento e a fé são dádivas de Deus. O título é o argumento: se alguma parte da salvação se devesse ao próprio melhoramento do leitor, o leitor estaria perdido; e é precisamente por isso que não está."
+   },
+   {
+    "question": "Que objecções responde Spurgeon?",
+    "answer": "Percorre as objecções pela ordem em que as pessoas realmente as levantam: não sou suficientemente bom, nada sinto, já tentei antes e não sei como crer. Em vez de as descartar, toma cada uma por sua vez e responde-lhe com simplicidade, o que explica em boa parte por que o livro tem sido tão útil a leitores angustiados há mais de um século."
+   },
+   {
+    "question": "Que texto da Escritura sustenta o livro?",
+    "answer": "O texto que está por baixo de tudo é Efésios 2:8: que a salvação é pela graça, mediante a fé, e isto não vem de nós, é dom de Deus. Spurgeon edifica todo o apelo sobre esse versículo, e volta a ele para mostrar que uma graça que dependesse, ainda que em parte, da dignidade do leitor não seria graça de modo algum."
+   },
+   {
+    "question": "Não é «demasiado fácil» a salvação só pela fé?",
+    "answer": "Spurgeon antecipa essa mesma objecção e responde-lhe longamente. O seu ponto não é que o pecado seja pequeno, mas que a fé não é uma obra: ao leitor não se pede que ganhe algo, mas que confie. Fazer a salvação depender da qualidade dos próprios sentimentos ou esforços, argumenta, é não entender o que é oferecido."
+   },
+   {
+    "question": "Que quer dizer Spurgeon quando afirma que a fé não é uma obra?",
+    "answer": "Quer dizer que quem afirma não conseguir crer suficientemente bem entendeu mal aquilo que lhe é pedido. A fé não é mais uma conquista que se deva medir e achar insuficiente; é simplesmente repousar em Cristo. O que se exige não é uma fé suficientemente forte, mas uma confiança verdadeira Naquele que salva o ímpio."
+   },
+   {
+    "question": "Qual é o estilo do livro?",
+    "answer": "Traz os hábitos de um pregador mais do que os de um escritor: parágrafos breves, ilustrações simples e a recusa de deixar um ponto antes de ele ter calado. Spurgeon escreveu-o em 1886, perto do fim de um ministério dedicado a pregar a multidões em Londres, e o calor e a franqueza do púlpito fazem-se sentir em cada página."
+   },
+   {
+    "question": "Por que Tudo pela Graça é tão recomendado?",
+    "answer": "É o mais breve dos livros de Spurgeon nesta estante e o que mais se costuma oferecer. Escrito como uma palavra sincera aos que buscam a salvação, serve tanto de ponto de partida para a leitura como de algo para pôr nas mãos de outro: uma apresentação simples e calorosa do evangelho que insiste num único convite: vem a Cristo tal como estás."
+   }
+  ],
   "publication_year": null,
   "source_type": "ai_unreviewed",
   "source_url": "",
