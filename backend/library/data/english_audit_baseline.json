@@ -1,5 +1,5 @@
 {
- "_comment": "Ratchet for library/tests_english_audit.py \u2014 a work's class may shrink but never grow. Regenerate with `manage.py audit_english --update-baseline` and say in the commit message what you fixed.",
+ "_comment": "Ratchet for library/tests_english_audit.py \u2014 a work's class may shrink but never grow. Regenerate with `manage.py audit_english --update-baseline` and say in the commit message what you fixed. A NEW work is ordinary (that is how an import lands here) and is printed with the findings it brings in; an ALREADY-PINNED work that gained findings is a regression, and the command refuses to absorb it without --absorb.",
  "works": {
   "a-call-to-the-unconverted": {
    "orphan-close-quote": 3,

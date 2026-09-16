@@ -215,6 +215,36 @@ def read_baseline() -> dict[str, int]:
     return json.loads(BASELINE_PATH.read_text(encoding="utf-8"))["conflicts"]
 
 
+def baseline_regressions(
+    counts: dict[str, int], previous: dict[str, int] | None = None
+) -> list[str]:
+    """Pins in ``counts`` that would LOOSEN the committed ratchet, as prose lines.
+
+    The ratchet in ``tests_verse_consistency`` is airtight against drift — a new
+    key or a grown count fails CI. What it cannot see is the re-pin itself:
+    ``write_baseline`` writes whatever it is handed, so
+    ``--update-baseline`` after a batch ABSORBS every conflict that batch
+    introduced and CI goes green on the wider number. That is how the pin went
+    from 110 conflicts on 2026-08-24 to 322 on 2026-09-16 while the tests passed
+    on every commit — 0.62 to 0.78 conflicts per translated edition, so the
+    corpus was getting less consistent, not merely bigger.
+
+    Absorbing is sometimes right (a reconciliation you cannot finish today), but
+    it is a decision, not a side effect of re-pinning. So the command refuses
+    unless ``--absorb`` says so out loud, and this is what it prints.
+    """
+    old = read_baseline() if previous is None else previous
+    return sorted(
+        (
+            f"{k.replace(chr(9), ' ')}: {old[k]} -> {n} renderings"
+            if k in old
+            else f"{k.replace(chr(9), ' ')}: NEW, {n} renderings"
+        )
+        for k, n in counts.items()
+        if n > old.get(k, 0)
+    )
+
+
 def write_baseline(counts: dict[str, int]) -> None:
     BASELINE_PATH.parent.mkdir(parents=True, exist_ok=True)
     BASELINE_PATH.write_text(
@@ -226,7 +256,10 @@ def write_baseline(counts: dict[str, int]) -> None:
                     "count may fall or a reference may leave, neither may grow. "
                     "Regenerate with `manage.py audit_verse_consistency "
                     "--update-baseline` and say in the commit message which renderings "
-                    "you reconciled."
+                    "you reconciled. That command REFUSES a re-pin that would loosen "
+                    "the ratchet — absorbing a new or widened conflict needs --absorb "
+                    "said out loud, because a silent re-pin is how this file went from "
+                    "110 conflicts to 322 with CI green throughout."
                 ),
                 "conflicts": dict(sorted(counts.items())),
             },

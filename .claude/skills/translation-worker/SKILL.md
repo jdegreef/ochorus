@@ -452,6 +452,47 @@ Write it as you go rather than reconstructing it at the end: the moment you
 decide a verse cannot be mined is the moment you know it, and it is exactly the
 fact the reviewer needs.
 
+## Reconcile YOUR OWN work's verse conflicts before you ship
+
+The notes file says where a verse's wording came from. This says whether it
+agrees with how your language already quotes that verse everywhere else — and
+it is your job, not a reviewer's, because you are the only person who will ever
+read this work with attention in this language.
+
+Before opening the PR:
+
+```bash
+cd backend && DJANGO_DEBUG=true uv run python manage.py \
+  audit_verse_consistency --language <lang>
+```
+
+Every conflict naming YOUR slug is yours to fix. Match the wording the language
+already uses — the other rendering is in the report, with the file it came
+from — unless yours is plainly the better one, in which case fix the OLDER work
+in the same PR and say so. Either way the count goes down or stays flat.
+
+**Then re-pin, and expect it to refuse:**
+
+```bash
+uv run python manage.py audit_verse_consistency --update-baseline
+```
+
+It now REFUSES a re-pin that would loosen the ratchet, printing exactly which
+references would be absorbed. That refusal is the signal you left work behind —
+go back and reconcile. `--absorb` exists for the case you genuinely cannot
+settle (a verse whose two renderings are both defensible and need a native
+speaker), and using it obliges you to say in the commit message and on the issue
+which references you absorbed and why.
+
+**Why this became a step.** The ratchet's two CI tests are airtight against
+drift but blind to the re-pin itself, so `--update-baseline` after a batch
+absorbed whatever that batch introduced and every commit stayed green. Measured:
+110 pinned conflicts on 2026-08-24, **322** on 2026-09-16 — and per translated
+edition that is 0.62 rising to 0.78, so the corpus was getting *less* consistent
+while the gate reported success. A conflict costs one session a few minutes at
+the moment it is created and is near-unfindable a month later, because by then
+nobody knows which of the two renderings came first.
+
 ## When the ENGLISH is wrong — report it, always
 
 Translating is how we find defects in the source, because it is the one process

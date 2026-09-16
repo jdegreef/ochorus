@@ -39,16 +39,35 @@ on:
   merge_group:
 
 concurrency:
-  group: ci-${{ github.ref }}
+  # A PUSH TO MAIN GETS ITS OWN GROUP, keyed by commit. Every other event keeps
+  # the per-ref group, so a PR's older runs are still superseded by its newer
+  # ones and a merge_group run still serialises on its queue branch.
+  #
+  # `cancel-in-progress: false` is NOT enough on its own to protect main, and
+  # that is the whole reason for the sha. GitHub holds at most ONE pending run
+  # per concurrency group: when a third run arrives, the one waiting in the
+  # queue is CANCELLED to make room for it. So with every main commit sharing
+  # `ci-refs/heads/main`, a merge lands, a second waits, and the third evicts
+  # the second — no cancel-in-progress required, and no verdict for the commit
+  # that got evicted.
+  #
+  # Measured on 2026-09-16: 18 of the last 30 push-to-main runs ended
+  # `cancelled`, i.e. ~60% of merges deployed to production without CI ever
+  # reporting on them. This was invisible while main took a handful of merges a
+  # day; at ~50/day the queue never drains. Giving each commit its own group
+  # removes the shared queue slot entirely — runs go wide instead of evicting
+  # each other, which is the right way to spend runner minutes when the
+  # alternative is an unverified production deploy.
+  #
+  # The stakes, from the last time this happened: #973 merged on 2026-08-17 and
+  # its main run was CANCELLED by #967's and then #974's merging seconds later;
+  # the migration drift and the unkeyed {#each} it carried went unreported, and
+  # every branch cut from main failed `makemigrations --check` and `eslint` for
+  # two days.
+  group: ci-${{ github.ref }}-${{ github.event_name == 'push' && github.sha || '' }}
   # Superseding a PR push is the point of this — the older run tests code nobody
-  # will merge. On MAIN it is the opposite: cancelling means the merge that was
-  # just pushed gets no verdict at all, and main auto-deploys to production.
-  # That is not hypothetical. #973 merged on 2026-08-17 and its main run was
-  # CANCELLED by #967's and then #974's merging seconds later; the migration
-  # drift and the unkeyed {#each} it carried went unreported, and every branch
-  # cut from main failed `makemigrations --check` and `eslint` for two days. A
-  # merge_group run has the same stakes as main: cancel it and the queue gets no
-  # verdict and stalls — so only PR runs are superseded.
+  # will merge. A merge_group run has the same stakes as main: cancel it and the
+  # queue gets no verdict and stalls — so only PR runs are superseded.
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
