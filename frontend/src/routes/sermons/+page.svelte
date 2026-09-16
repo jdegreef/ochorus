@@ -11,6 +11,7 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import TopicFilterRow from '$lib/components/TopicFilterRow.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { urlFilters } from '$lib/urlFilters.svelte';
@@ -313,35 +314,13 @@
 	</div>
 
 	<!-- Topic filter — a chip row for taxonomy, under the controls. Mirrors the
-	     Books shelf; shown only when the shelf actually spans more than one topic.
-	     Reuses the Books labels (the same "All topics" / "Filter by topic"). -->
-	{#if allTopics.length > 1}
-		<div
-			class="chip-scroller mb-6"
-			aria-label={t('books.filterTopic')}
-			role="group"
-		>
-			<span class="eyebrow text-muted me-1">{t('common.topics')}</span>
-			<button
-				class="chip"
-				class:active={filters.values.topic === ''}
-				onclick={() => (filters.values.topic = '')}
-				aria-pressed={filters.values.topic === ''}
-			>
-				{t('books.topicAll')}
-			</button>
-			{#each allTopics as tc (tc.slug)}
-				<button
-					class="chip"
-					class:active={filters.values.topic === tc.slug}
-					onclick={() => (filters.values.topic = filters.values.topic === tc.slug ? '' : tc.slug)}
-					aria-pressed={filters.values.topic === tc.slug}
-				>
-					{tc.title}
-				</button>
-			{/each}
-		</div>
-	{/if}
+	     Books shelf; the shared component reuses the Books labels (the same "All
+	     topics" / "Filter by topic") and shows only when the shelf spans >1 topic. -->
+	<TopicFilterRow
+		topics={allTopics}
+		selected={filters.values.topic}
+		onSelect={(topic) => (filters.values.topic = topic)}
+	/>
 
 	<!-- One clear affordance, on the FilterSummary — same as Books and
 	     Biographies. (The bespoke in-row "Clear" and sermons.clear are retired.) -->
