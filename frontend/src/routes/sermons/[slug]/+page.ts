@@ -14,6 +14,8 @@ export const trailingSlash = 'always';
 // time. The sermon endpoint may lag on a fresh deploy (api + web build together),
 // so degrade to no sermon pages rather than fail the whole build; a later
 // rebuild picks them up once the API is serving them.
+// (2026-09-15: rebuild to prerender the Tozer & Lloyd-Jones batch (#2421),
+// which raced the API seed on its own deploy.)
 export const entries: EntryGenerator = async () => {
 	try {
 		const sermons = await listSermons('en');
