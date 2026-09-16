@@ -78,8 +78,7 @@ class AdminEngagementView(APIView):
             {
                 "overview": overview,
                 "time": self._reading_time(now),
-                "most_read": self._most_read(),
-                "most_marked": self._most_marked(),
+                "top_content": self._top_content(),
                 "most_loved": self._most_loved(),
                 "hearts_by_kind": self._hearts_by_kind(),
                 "by_language": self._by_language(),
@@ -164,24 +163,23 @@ class AdminEngagementView(APIView):
         title, author = meta.get((kind, slug), (slug, ""))
         return {"kind": kind, "slug": slug, "title": title, "author": author, **extra}
 
-    def _most_read(self, limit: int = 10) -> list[dict]:
-        from reading.models import ReadingProgress
+    def _leaderboard(self, work_kind, fav_kind, limit: int = 8) -> list[dict]:
+        """Top works of one kind by readers, each carrying the four figures the
+        page shows side by side: readers, finishers, hearts and distinct
+        highlighters.
 
-        meta = self._work_meta
-        # Grouped by KIND as well as slug. Without it a sermon and a book sharing
-        # a slug merged into one row wearing the book's title, and every sermon
-        # reader was counted against that book.
-        #
-        # Finishers come from the stored `finished_at` stamp — the same explicit,
-        # synced completion the reader's "Finished" shelf counts (reaching the end
-        # of a work, or marking it done). Counting it as a conditional aggregate
-        # in the SAME grouped query means one scan, not a COUNT per row; it counts
-        # for EVERY kind (so a sermon or biography gets a real finisher number),
-        # and the group's (kind, book_slug) keeps a sermon finish from counting
-        # toward a book sharing its slug. This replaces the old "reached the last
-        # chapter" guess, which was books-only and counted merely opening it.
-        top = (
-            ReadingProgress.objects.values("kind", "book_slug")
+        Finishers come from the stored ``finished_at`` stamp — the same explicit,
+        synced completion the reader's "Finished" shelf counts — as a conditional
+        aggregate in the grouped read query (one scan, and it counts for every
+        kind). Hearts and highlighters are two more grouped lookups scoped to the
+        leaderboard's own slugs, so a tab is a bounded handful of queries however
+        large the library grows.
+        """
+        from reading.models import ChapterMarks, Favorite, ReadingProgress
+
+        top = list(
+            ReadingProgress.objects.filter(kind=work_kind)
+            .values("book_slug")
             .annotate(
                 readers=Count("profile", distinct=True),
                 finishers=Count(
@@ -190,37 +188,47 @@ class AdminEngagementView(APIView):
             )
             .order_by("-readers")[:limit]
         )
+        slugs = [r["book_slug"] for r in top]
+        hearts = {
+            r["slug"]: r["n"]
+            for r in Favorite.objects.filter(kind=fav_kind, slug__in=slugs)
+            .values("slug")
+            .annotate(n=Count("id"))
+        }
+        highlighters = {
+            r["book_slug"]: r["n"]
+            for r in ChapterMarks.objects.filter(kind=work_kind, book_slug__in=slugs)
+            .exclude(marks=[])
+            .values("book_slug")
+            .annotate(n=Count("profile", distinct=True))
+        }
+        meta = self._work_meta
         return [
             self._row(
                 meta,
-                r["kind"],
+                work_kind,
                 r["book_slug"],
                 readers=r["readers"],
                 finishers=r["finishers"],
+                hearts=hearts.get(r["book_slug"], 0),
+                highlighters=highlighters.get(r["book_slug"], 0),
             )
             for r in top
         ]
 
-    def _most_marked(self, limit: int = 10) -> list[dict]:
-        from reading.models import ChapterMarks
+    def _top_content(self) -> dict:
+        """The reach-vs-depth leaderboard, split by kind so each tab holds its
+        own top works. Books, sermons and biographies each carry both reads and
+        marks, so the same four columns read across all three; plans and topics
+        engage in different shapes (a funnel; saved-by-kind) and live elsewhere
+        on the page."""
+        from reading.models import FavoriteKind, WorkKind
 
-        meta = self._work_meta
-        top = (
-            ChapterMarks.objects.exclude(marks=[])
-            .values("kind", "book_slug")
-            .annotate(readers=Count("profile", distinct=True), chapters=Count("id"))
-            .order_by("-readers", "-chapters")[:limit]
-        )
-        return [
-            self._row(
-                meta,
-                r["kind"],
-                r["book_slug"],
-                readers=r["readers"],
-                chapters=r["chapters"],
-            )
-            for r in top
-        ]
+        return {
+            "book": self._leaderboard(WorkKind.BOOK, FavoriteKind.BOOK),
+            "sermon": self._leaderboard(WorkKind.SERMON, FavoriteKind.SERMON),
+            "bio": self._leaderboard(WorkKind.BIO, FavoriteKind.AUTHOR),
+        }
 
     def _hearts_by_kind(self) -> list[dict]:
         """Hearts (Favorites) per kind. Readers save more than the works they

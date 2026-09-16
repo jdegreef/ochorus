@@ -856,12 +856,13 @@ class AdminEngagementTests(TestCase):
         self.assertEqual(ov["active_7d_prev"], 0)
         self.assertEqual(ov["active_30d_prev"], 0)
 
-        most = {b["slug"]: b for b in res.data["most_read"]}
-        self.assertEqual(most["humility"]["readers"], 2)
-        self.assertEqual(most["humility"]["finishers"], 1)  # only p1 finished it
-        self.assertEqual(most["abide"]["readers"], 1)
-
-        self.assertEqual(res.data["most_marked"][0]["slug"], "humility")
+        books = {b["slug"]: b for b in res.data["top_content"]["book"]}
+        self.assertEqual(books["humility"]["readers"], 2)
+        self.assertEqual(books["humility"]["finishers"], 1)  # only p1 finished it
+        self.assertEqual(books["humility"]["highlighters"], 1)  # p1 marked it
+        self.assertEqual(books["humility"]["hearts"], 1)
+        self.assertEqual(books["abide"]["readers"], 1)
+        self.assertEqual(books["abide"]["hearts"], 2)  # both readers hearted it
         by_lang = {r["code"]: r["readers"] for r in res.data["by_language"]}
         self.assertEqual(by_lang["en"], 2)
         # 8 weekly buckets; this week has activity.

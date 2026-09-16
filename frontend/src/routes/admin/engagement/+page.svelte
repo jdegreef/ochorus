@@ -2,7 +2,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
-	import { formatDuration, getAdminEngagement, periodTrend, type EngagementWork, type Trend } from '$lib/library-admin';
+	import { formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -77,12 +77,24 @@
 	// namespaces, so the row's kind decides the path (a bare /books/<slug> 404s
 	// for a sermon or bio). Takes just kind+slug so most-read and most-loved rows
 	// can both use it.
-	const workHref = (w: { kind: EngagementWork['kind']; slug: string }) =>
+	const workHref = (w: { kind: EngagementKind; slug: string }) =>
 		w.kind === 'sermon'
 			? `/sermons/${w.slug}`
 			: w.kind === 'bio'
 				? `/authors/${w.slug}`
 				: `/books/${w.slug}`;
+
+	// Top content — one tab per readable kind, each carrying its own top works.
+	const topTabs: { key: EngagementKind; label: string }[] = [
+		{ key: 'book', label: 'Books' },
+		{ key: 'sermon', label: 'Sermons' },
+		{ key: 'bio', label: 'Authors' }
+	];
+	let topTab = $state<EngagementKind>('book');
+	const topRows = $derived<EngagementTopRow[]>(data?.top_content[topTab] ?? []);
+	const topTabLabel = $derived(topTabs.find((t) => t.key === topTab)?.label ?? '');
+	const finishedPct = (b: EngagementTopRow) =>
+		b.readers ? Math.round((b.finishers / b.readers) * 100) : 0;
 </script>
 
 <svelte:head><title>Admin · Engagement — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -184,61 +196,62 @@
 					</div>
 				</section>
 
-				<div class="mt-6 grid gap-6 lg:grid-cols-2">
-					<!-- Most read -->
-					<section class="rounded-card border border-border bg-surface p-5">
-						<h2 class="text-h3 mb-1">Most read</h2>
-						<p class="mb-3 text-small text-muted">Distinct readers — and, for books, how many reached the end.</p>
-						{#if d.most_read.length}
-							<ul class="space-y-3">
-								{#each d.most_read as b (`${b.kind}:${b.slug}`)}
-									<li>
-										<div class="flex items-baseline justify-between gap-3">
-											<a href={workHref(b)} class="min-w-0 truncate text-body text-text hover:text-accent">
-												{b.title}<span class="text-small text-muted"> · {b.author}</span>
-											</a>
-											<span class="shrink-0 text-small text-muted tabular-nums">
-												<span class="font-semibold text-text">{fmt(b.readers)}</span> readers
-											</span>
-										</div>
-										{#if b.finishers != null && b.readers}
-											<div class="mt-1.5 flex items-center gap-2">
-												<div class="depthbar" title="{fmt(b.finishers)} of {fmt(b.readers)} reached the end">
-													<span style="width: {(b.finishers / b.readers) * 100}%"></span>
+				<!-- Top content — reach vs depth, by kind -->
+				<section class="mt-8 rounded-card border border-border bg-surface p-5">
+					<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+						<h2 class="text-h3">Top content</h2>
+						<span class="text-small text-muted">An open isn't a read — reach and depth side by side.</span>
+					</div>
+					<div class="seg mb-4" role="tablist" aria-label="Content type">
+						{#each topTabs as t (t.key)}
+							<button
+								role="tab"
+								aria-selected={topTab === t.key}
+								class={topTab === t.key ? 'active' : ''}
+								onclick={() => (topTab = t.key)}>{t.label}</button
+							>
+						{/each}
+					</div>
+					{#if topRows.length}
+						<div class="overflow-x-auto">
+							<table class="w-full">
+								<thead>
+									<tr class="text-micro uppercase tracking-wide text-muted">
+										<th class="py-2 pe-3 text-start font-semibold">Title</th>
+										<th class="px-3 py-2 text-end font-semibold">Readers</th>
+										<th class="px-3 py-2 text-end font-semibold">Finished</th>
+										<th class="px-3 py-2 text-end font-semibold">Hearts</th>
+										<th class="ps-3 py-2 text-end font-semibold">Highlighted</th>
+									</tr>
+								</thead>
+								<tbody>
+									{#each topRows as b (`${b.kind}:${b.slug}`)}
+										<tr class="border-t border-border">
+											<td class="max-w-0 py-2 pe-3">
+												<a href={workHref(b)} class="block truncate text-body text-text hover:text-accent">
+													{b.title}{#if b.author}<span class="text-small text-muted"> · {b.author}</span>{/if}
+												</a>
+											</td>
+											<td class="px-3 py-2 text-end tabular-nums">{fmt(b.readers)}</td>
+											<td class="px-3 py-2">
+												<div class="ms-auto flex w-32 items-center gap-2">
+													<div class="depthbar" title="{fmt(b.finishers)} of {fmt(b.readers)} finished">
+														<span style="width: {finishedPct(b)}%"></span>
+													</div>
+													<span class="w-9 shrink-0 text-end text-micro text-muted tabular-nums">{finishedPct(b)}%</span>
 												</div>
-												<span class="w-24 shrink-0 text-micro text-muted tabular-nums">{Math.round((b.finishers / b.readers) * 100)}% finished</span>
-											</div>
-										{/if}
-									</li>
-								{/each}
-							</ul>
-						{:else}
-							<p class="text-body text-muted">No data yet.</p>
-						{/if}
-					</section>
-
-					<!-- Most marked -->
-					<section class="rounded-card border border-border bg-surface p-5">
-						<h2 class="text-h3 mb-1">Most highlighted</h2>
-						<p class="mb-3 text-small text-muted">Readers who marked up the text — where it resonates.</p>
-						{#if d.most_marked.length}
-							<ul class="space-y-2">
-								{#each d.most_marked as b (`${b.kind}:${b.slug}`)}
-									<li class="flex items-baseline justify-between gap-3">
-										<a href={workHref(b)} class="min-w-0 truncate text-body text-text hover:text-accent">
-											{b.title}<span class="text-small text-muted"> · {b.author}</span>
-										</a>
-										<span class="shrink-0 text-small text-muted tabular-nums">
-											<span class="font-semibold text-text">{fmt(b.readers)}</span> readers · {fmt(b.chapters)} ch
-										</span>
-									</li>
-								{/each}
-							</ul>
-						{:else}
-							<p class="text-body text-muted">No highlights yet.</p>
-						{/if}
-					</section>
-				</div>
+											</td>
+											<td class="px-3 py-2 text-end tabular-nums">{fmt(b.hearts)}</td>
+											<td class="ps-3 py-2 text-end tabular-nums">{fmt(b.highlighters)}</td>
+										</tr>
+									{/each}
+								</tbody>
+							</table>
+						</div>
+					{:else}
+						<p class="mt-3 text-body text-muted">No {topTabLabel.toLowerCase()} activity yet.</p>
+					{/if}
+				</section>
 
 				<!-- Hearts: most loved + saved by kind -->
 				{#if d.overview.hearts}
