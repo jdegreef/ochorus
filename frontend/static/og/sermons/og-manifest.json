@@ -142,6 +142,10 @@
 			"content": "c5e2e7fc86b18998b0e0b5f8e75fc25cd3616c5df891c202c283ef20101062ca",
 			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
+		"excuses": {
+			"content": "2e39b62b13468c52659f9f55cfccfc29f11af6fd8bcd5eab33ba268b57034a0d",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
 		"faith": {
 			"content": "12fb50637609b006c937f8dca4d0e17749da084b62968fab98d1857aa62eb2b9",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
@@ -160,6 +164,10 @@
 		},
 		"filled-with-the-spirit": {
 			"content": "a67347bebfa22de74c5fd4c4e38376daafb7561d1241df8ac3c35bb51102dd47",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"found-wanting": {
+			"content": "680545e4691d979aedd5646b0ea0fbf7a6439c0a22a4c28f3709a8396a5f6b20",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"four-reasons-we-need-revival-in-north-america": {
@@ -213,6 +221,10 @@
 		"guard-the-truth": {
 			"content": "03a0a2d810a3758517a4d113c15b28ab39a975b1b1acc209f7447cc5167127af",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"heroes-and-cowards": {
+			"content": "d6c35f87fdf609421985781de1296ebe66419d1cac690929167254ade475167b",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
 		"himself": {
 			"content": "d4230634a8faf2f7b737e23d7b64f41fe7d9c54f91e4cc3479d8826c3698206e",
@@ -278,6 +290,10 @@
 			"content": "8330f321c326748fcf7370712018449aeba2195dd43d7e34225b5520e8359e19",
 			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
+		"refuges-of-lies": {
+			"content": "693a7efb8c2d3eb227a919c8d1d0fe7a0a6cae455abc647174e843cc19f00a8d",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
 		"rest": {
 			"content": "2145408f8568cd5babd836a0b7d28273d3e733445d3ed82be65d36aacf95c373",
 			"art": "1d723e0f5819f8b6ef9ddf525e1dd21964afcddd2ddff42a34e8ce895df48d51"
@@ -334,8 +350,16 @@
 			"content": "641202d324e62f195b4618dbad3c15ce01d4a4e3a7f11107c72063b73a81935d",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
+		"the-day-of-golden-opportunity": {
+			"content": "d19976afe8cf85e427367925a23608fe72af466203f3fdfaf264f034c9a2cda9",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
 		"the-death-of-self": {
 			"content": "1fffbe166970dfb151e716ceadec910d12a0a3a0a4371b143c19b43ac34170fd",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"the-drama-of-life-in-three-acts": {
+			"content": "c84929d9cbbafab2cb9c930b0619d9431ed3de346165db46a633b421b767c9d1",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"the-dying-thief": {
@@ -393,6 +417,10 @@
 		"the-method-of-grace": {
 			"content": "f326971f04c2addff9e56f7c78299d0437ed71ddd673c046082c6e08df61b3ef",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
+		"the-most-important-question": {
+			"content": "8efa261da026c6925ef3a6e78f7ee5f8c5f358cab8da652b935962121c9f8596",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
 		"the-new-birth": {
 			"content": "194c411eb1a6cf68362c68f2522774e41ea76916346102de2c0ad7b80ccc8291",
@@ -454,9 +482,17 @@
 			"content": "0ff214cacd5eadabe8cbce746a6aaa8ee0a86d67ab98a4cf1db6397a1acd970f",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
+		"the-uplifted-christ": {
+			"content": "2f442d0f877e641809c4c46ac94a676dbfd6150658988dcbf364c5248ab7ea37",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
 		"the-way-of-salvation": {
 			"content": "151b76b0c1604949d091d01f48c00420054529381befbe652eec80cf109ac49b",
 			"art": "c63f7ded14fc0aaebb329e201ef9ab2bd50df90979f7dec6b8583bc6499804da"
+		},
+		"the-way-of-salvation-made-plain": {
+			"content": "014c188816f0b7639aee8ec6874999325a3a9dcbc8cb6023612646014ed8ecc6",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
 		"the-worlds-need": {
 			"content": "729f64b7b7c9cdc61b6fa4684a8d0ccec82532b0ef7cae63dbb579a23b11a40a",
@@ -465,6 +501,10 @@
 		"the-wrath-of-god": {
 			"content": "26213828544d813e96c7deb30318b008a9ae217db9be6bba71e7db0d243a0361",
 			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
+		"three-fires": {
+			"content": "784016f640283de353eb95de05680a3708889588652b50560c65bcfb36bc47ce",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
 		"three-great-days": {
 			"content": "029ebe316b856bc62a1dfdbb870de8aeb3f868ea923cef10c5f93433ad1d63d3",
@@ -489,6 +529,14 @@
 		"what-is-revival": {
 			"content": "9543cebacbb0db26c35bbf84d5c73ce9c18b6daac6732af6644f57dec3dad558",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"what-it-costs-not-to-be-a-christian": {
+			"content": "8cc3c941145ad2b95efb13bb1250e1a367abc8f4ccc477e23729eab7962b900e",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"where-will-you-spend-eternity": {
+			"content": "e13160ce146a5dc33b78df3afacc850894e246178530125b7a2b27a1b2925b36",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
 		"why-is-god-a-stranger-in-the-land": {
 			"content": "272b9e7866483930649543a1fb11dc0275761012edccf461725c4d8ae8075a4f",

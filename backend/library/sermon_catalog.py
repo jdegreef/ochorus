@@ -993,4 +993,68 @@ SERMONS: list[SermonEntry] = [
         "what-is-revival", "What Is Revival?", "martyn-lloyd-jones",
         "sermonindex", _SI + "martyn-lloyd-jones/what-is-revival/",
     ),
+    # R. A. Torrey — genuine standalone evangelistic and revival addresses
+    # (each a single sermon on one text), from SermonIndex. Deliberately NOT his
+    # systematic teaching books, which SermonIndex also serves chapter-by-chapter
+    # and which belong on the book shelf (several already are) — these are the
+    # preached sermons, joining his two existing ones.
+    SermonEntry(
+        "where-will-you-spend-eternity", "Where Will You Spend Eternity?",
+        "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/where-will-you-spend-eternity/", scripture_ref="John 16:5",
+    ),
+    SermonEntry(
+        "refuges-of-lies", "Refuges of Lies", "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/refuges-of-lies/", scripture_ref="Isaiah 28:17",
+    ),
+    SermonEntry(
+        "found-wanting", "Found Wanting", "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/found-wanting/", scripture_ref="Daniel 5:25-27",
+    ),
+    SermonEntry(
+        "excuses", "Excuses", "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/excuses/", scripture_ref="Luke 14:18",
+    ),
+    SermonEntry(
+        "the-most-important-question", "The Most Important Question",
+        "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/the-most-important-question-that-any-man-ever-asked-or-answered/",
+        scripture_ref="Matthew 27:22",
+    ),
+    SermonEntry(
+        "the-uplifted-christ", "The Great Attraction: The Uplifted Christ",
+        "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/the-great-attraction-the-uplifted-christ/",
+        scripture_ref="John 12:32",
+    ),
+    SermonEntry(
+        "the-way-of-salvation-made-plain", "The Way of Salvation Made as Plain as Day",
+        "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/the-way-of-salvation-made-as-plain-as-day/",
+        scripture_ref="Acts 16:30-31",
+    ),
+    SermonEntry(
+        "what-it-costs-not-to-be-a-christian", "What It Costs Not to Be a Christian",
+        "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/what-it-costs-not-to-be-a-christian/",
+        scripture_ref="Psalm 119:59",
+    ),
+    SermonEntry(
+        "three-fires", "Three Fires", "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/three-fires/", scripture_ref="Matthew 3:11",
+    ),
+    SermonEntry(
+        "the-day-of-golden-opportunity", "The Day of Golden Opportunity",
+        "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/the-day-of-golden-opportunity/", scripture_ref="Hebrews 3:7",
+    ),
+    SermonEntry(
+        "heroes-and-cowards", "Heroes and Cowards", "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/heroes-and-cowards/", scripture_ref="Proverbs 29:25",
+    ),
+    SermonEntry(
+        "the-drama-of-life-in-three-acts", "The Drama of Life in Three Acts",
+        "r-a-torrey", "sermonindex",
+        _SI + "ra-torrey/the-drama-of-life-in-three-acts/", scripture_ref="Luke 15:11",
+    ),
 ]

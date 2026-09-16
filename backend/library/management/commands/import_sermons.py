@@ -348,7 +348,14 @@ def extract_sermonindex(html: str, title: str = "") -> str:
             start += 1
         else:
             break
-    return clean_fragment("".join(str(p) for p in paras[start:]))
+    html_body = "".join(str(p) for p in paras[start:])
+    # A stray space before ? ! ; : is a transcription tic (English "sorrow ?",
+    # "that day :"); collapse it. Deliberately NOT the comma or period — a
+    # spaced ellipsis and abbreviations make those unsafe to touch blind — and
+    # deliberately English-only, at import, so it never reaches a language whose
+    # typography wants that space (French "sorrow ?").
+    html_body = re.sub(r" +([?!;:])", r"\1", html_body)
+    return clean_fragment(html_body)
 
 
 class Command(BaseCommand):

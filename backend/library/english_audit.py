@@ -196,9 +196,13 @@ FUSION_HEADS = frozenset({
 #: English agent noun — Amanda Smith's mother was "a beautiful washer and
 #: ironer". Named here for the same reason as the others: the oracle cannot tell
 #: a real `-er` agent noun on a function-word head from a lost space.
+#: `nosing` is `no`+`sing` to the oracle, but it is the ordinary verb — Torrey's
+#: prodigal watches swine "nosing about in the sand". Named for the same reason
+#: as `washer`: the oracle cannot tell a real word on a function-word head from a
+#: lost space.
 FUSION_EXEMPT = frozenset({
-    "anothers", "nomad", "nomen", "noway", "noways", "solet", "sounder",
-    "washer",
+    "anothers", "nomad", "nomen", "nosing", "noway", "noways", "solet",
+    "sounder", "washer",
 })
 #: A tail must reach this many uses across the English library to count as a word.
 COMMON_MIN = 20
