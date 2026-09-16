@@ -1,3 +1,8 @@
+// Rebuild marker 2026-09-15: book Q&A batches (#2427/#2430/#2432/#2433/#2434/
+// #2435, en + es) are backend-only fixture changes, so Render skipped the web
+// build and the new FAQPage Q&A never baked into the prerendered book pages. The
+// API is confirmed live with the `qa` field populated; this frontend touch forces
+// one web build to prerender the Q&A across all affected books.
 // Rebuild marker 2026-09-15: #2401 added the retold Pilgrim's Progress
 // (words of one syllable) + the for-young-readers shelf. The book's first
 // deploy lost the prerender race — the web build enumerated /books before
