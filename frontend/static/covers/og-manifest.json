@@ -33,18 +33,18 @@
    "scrim": 0.85
   },
   "a-serious-call": {
-   "ground": "4f01eab7166112682128eb186abcc66ad3c3003e2b8d57a2733ba87682b48d6b",
+   "ground": "27f93644f679fdbc7fd669c81b640f27a7a5b1857e3925a9b50a170304811f00",
    "style": "enlightenment",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.65
   },
   "a-short-and-easy-method-of-prayer": {
-   "ground": "d6b8f71d8325be736feb6e3aca9d6df1f45a9168a6ab776058e9636cbce17cb1",
+   "ground": "a66dc7e7338d5545d63eef3b0bf3b9d5274806bae25c6616b34deae1d9a28fbb",
    "style": "devotional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.8
   },
   "absolute-surrender": {
    "ground": "0d0bae9493e4aa971d41f42b362110787f97cf65000fda96cdaff8e5f5beeb3f",
@@ -313,11 +313,11 @@
    "scrim": 0.7
   },
   "es/a-short-and-easy-method-of-prayer": {
-   "ground": "3167a5ac966460ce86d91ddce01dabf90506193f4660f06341a7cbb679c66a1b",
+   "ground": "c75f9e14f8a2a0e87fcbe1018606942b7134b37ce232ff3de18a78afd4693e99",
    "style": "devotional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.8
   },
   "es/all-of-grace": {
    "ground": "4c27f99f956f15bd728a240afab3cfd7f3848f91e5b7d2a67399ffe15db61411",
@@ -425,10 +425,10 @@
    "scrim": 0.65
   },
   "es/possibilities-of-prayer": {
-   "ground": "50ce22e211c86362e7ffb980386ee95891b81923eb524d89a6e0b134d0d9a0b8",
+   "ground": "8fe3b2647d6276f4fa3e94b217c2fc2f11df805a6a72b1510041949240019d9d",
    "style": "devotional",
    "script": "latin",
-   "art": false,
+   "art": true,
    "scrim": 1
   },
   "es/power-through-prayer": {
@@ -985,11 +985,11 @@
    "scrim": 1
   },
   "mortification-of-sin": {
-   "ground": "81ab25ff3ce6cc4a67630451dbdaf9cbc6982f338d4aa2e22d03663043df9bbd",
+   "ground": "bd7d06fa465afa54e7dca9ad6ea55c0af9fdc4a4eb207f1c2a8c489bf8b1c678",
    "style": "press",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.35
   },
   "necessity-of-prayer": {
    "ground": "4453c77330141789ef73c7211ec8bf6011cceacf05b45f5b8bafe0af09f10e23",
@@ -1048,10 +1048,10 @@
    "scrim": 0.85
   },
   "possibilities-of-prayer": {
-   "ground": "07fd9527eed259906c15e46f63a9afdfd352d53ec36fba831abbc9923049ca93",
+   "ground": "cae7de009a1255af4caee1c90e403b77b4152d7dcec1134f9058beb91b63c45b",
    "style": "devotional",
    "script": "latin",
-   "art": false,
+   "art": true,
    "scrim": 1
   },
   "power-through-prayer": {
@@ -1293,11 +1293,11 @@
    "scrim": 0.85
   },
   "selected-sermons-edwards": {
-   "ground": "d1c45dc3d3fd674943faa8a509eb8c31477b5f3c8614fcdb64de911fa643fb2f",
+   "ground": "78121e68911d16aba053efc9f3ab6c3a15667b430381e017a9803f1f6a2c4e49",
    "style": "enlightenment",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.85
   },
   "selected-sermons-whitefield": {
    "ground": "03dc28985d3a1c3ddf2763466d013b3ad4bfe2d9e8798a82c67ff52cc93a58e7",
@@ -1636,11 +1636,11 @@
    "scrim": 0.85
   },
   "the-life-of-trust": {
-   "ground": "26c795b8ff1dc53e59b6c6ad4932ef76a192df61dda9d794901d88dcb7beca7b",
+   "ground": "89b1f3246a70f85e0a65425b7f842156ca97ed3ab1257e1dadc9ec7c710205b6",
    "style": "revival",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.85
   },
   "the-normal-christian-life": {
    "ground": "8bb2cd5bfa77bd37b5401ec9e9a3ae51a47520480d88b0b122813c7ce593a0c7",
@@ -1790,11 +1790,11 @@
    "scrim": 0.8
   },
   "way-into-holiest": {
-   "ground": "a322f7e2c337cadaf64cde66de6c269faa24bc5822b796149fe5578d2348676d",
+   "ground": "c24f62b7b8f6f70497d3b57c971350764b89a3744cd4cfa56e1476a024e127b5",
    "style": "devotional",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.8
   },
   "fr/absolute-surrender": {
    "ground": "27a4490e3504475ccb2a4dd793a34abd482bed06f8c4a6cd605541518d1bb793",
