@@ -10,6 +10,40 @@
   "title": "Susanna Wesley",
   "subtitle": "A Biography by Eliza Clarke",
   "description": "Eliza Clarke’s biography of Susanna Wesley, mother of John and Charles Wesley, whose ordered household and patient teaching at Epworth helped shape two of the great figures of English Christianity. It follows her from birth to widowhood—her marriage, her method of training her children, the rectory fire, and the trials and steadfast faith of her later years. A portrait of quiet, persevering godliness in the midst of hardship.",
+  "qa": [
+   {
+    "question": "What is this biography of Susanna Wesley about?",
+    "answer": "It is Eliza Clarke's life of Susanna Wesley, the mother of John and Charles Wesley, whose ordered household and patient teaching at Epworth helped shape two of the great figures of English Christianity. It follows her from birth through her marriage, her disciplined raising of a large family, her trials and faith, and her lasting influence on the sons who led the evangelical revival."
+   },
+   {
+    "question": "Who was Susanna Wesley?",
+    "answer": "Susanna Wesley (1669–1742) was an Englishwoman remembered above all as the mother of John Wesley, founder of Methodism, and Charles Wesley, the great hymn-writer. A woman of strong mind and deep piety, she raised a large family under difficult circumstances at the Epworth rectory, and her methodical teaching and spiritual influence profoundly shaped her famous sons."
+   },
+   {
+    "question": "Why is she called the 'Mother of Methodism'?",
+    "answer": "Because her ordered, disciplined household and careful spiritual training of her children laid the foundations of character and devotion on which John and Charles Wesley built. Her methodical way of raising and teaching her family, and her own strong faith, so shaped the men who led the Methodist revival that she is often honoured as its mother in spirit."
+   },
+   {
+    "question": "What was her household at Epworth like?",
+    "answer": "Ordered, disciplined, and devout, despite poverty, hardship, and a large number of children. Susanna gave each child careful attention and regular instruction, ran the home by settled rules, and maintained a serious spiritual life within it. This disciplined, prayerful household became the seedbed of the character and habits that marked her famous sons."
+   },
+   {
+    "question": "What hardships did she face?",
+    "answer": "Many — poverty, a difficult and often absent husband, the deaths of several children, a rectory fire that nearly claimed young John, and the ordinary strain of raising a large family on slender means. The biography shows her faith and steadiness through these trials, which is part of why her story has been valued as an example of devout perseverance."
+   },
+   {
+    "question": "How did she influence John and Charles Wesley?",
+    "answer": "Deeply and lastingly. Susanna's methodical teaching, her insistence on discipline and personal religion, and her own robust faith shaped her sons' characters and convictions from childhood. John in particular corresponded with her on spiritual matters into adulthood and valued her counsel, and the disciplined 'method' that named Methodism owed much to the home she built."
+   },
+   {
+    "question": "Who should read this biography?",
+    "answer": "Anyone interested in the roots of Methodism and the evangelical revival, in the history of Christian family life, or in the often-overlooked women behind great movements. It offers both an inspiring portrait of a devout and capable woman and insight into the home that helped form John and Charles Wesley."
+   },
+   {
+    "question": "Where should a reader begin?",
+    "answer": "At the beginning, following Susanna's life in order from her upbringing through her marriage, motherhood, and later years. As a continuous biography it is meant to be read in sequence, so that the reader sees how her character and faith developed and how her ordered household came to shape the sons who changed English Christianity."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",
