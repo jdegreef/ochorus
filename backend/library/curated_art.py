@@ -510,6 +510,54 @@ CURATED: dict[str, Artwork] = {
         "American landscape painter of Allen's own century — the honour is the "
         "hand as much as the scene.",
     ),
+    # ── Batch 14 · Puritan & English devotional plate books ────────────────
+    # The last of the single-plate sweep — English and European divines, each to
+    # its own subject. Cleveland CC0. (Sibbes, Carmichael and Crowther are held
+    # for a later pass: they want tender / tropical grounds the Met and Cleveland
+    # don't carry, and AIC was throttling.)
+    "mortification-of-sin": Artwork(
+        "cma", 166506, "Jan Griffier", "Winter Landscape", "c. 1680–1718",
+        "Owen on killing sin in the believer. Griffier's Dutch winter is the work "
+        "in a picture — the year's growth cut back to bare wood and ice, Owen's "
+        "own century's weather.",
+    ),
+    "selected-sermons-edwards": Artwork(
+        "cma", 125058, "Jasper F. Cropsey",
+        "The Clove — A Storm Scene in the Catskills", "1851",
+        "Edwards preached the terror and the beauty of God in one breath. Cropsey "
+        "opens a storm in his own New England hills — the sublime the sermons "
+        "reach for, lightning and light together.",
+    ),
+    "way-into-holiest": Artwork(
+        "cma", 108809, "Emil Carlsen", "Wood Interior", "c. 1910",
+        "Meyer's book walks Hebrews into the Holy of Holies. Carlsen stands the "
+        "trees up like the pillars of a nave and lays a path between them toward "
+        "the light — the way in.",
+    ),
+    "the-life-of-trust": Artwork(
+        "cma", 150047, "Camille Flers", "Cottage by the River with Washerwomen", "1835",
+        "Müller fed a thousand orphans on prayer and never asked a man for money. "
+        "Flers paints a plain riverside house and the day's work going on — daily "
+        "bread, quietly provided.",
+    ),
+    "a-short-and-easy-method-of-prayer": Artwork(
+        "cma", 148968, "Célestin Nanteuil", "In the Forest", "1841",
+        "Guyon's method is to sink out of words into the presence of God. "
+        "Nanteuil's still forest interior is that inward turn — a quiet place, off "
+        "the road, to pray from.",
+    ),
+    "possibilities-of-prayer": Artwork(
+        "cma", 150038, "Antoine-Claude Ponthus-Cinier", "Châteauvieux-sur-Suran", "1848",
+        "Bounds' last plate-covered book on prayer. A stronghold on its hill above "
+        "a valley the light is crossing — what prayer lays hold of, kept high and "
+        "sure.",
+    ),
+    "a-serious-call": Artwork(
+        "cma", 141166, "Jan Wijnants", "Herengracht, Amsterdam", "c. 1661",
+        "Law summons the reader to a whole and ordered devotion. Wijnants draws a "
+        "quiet town at its most composed — a still canal, a bridge, the ordinary "
+        "way walked with care — in Law's own century.",
+    ),
 }
 
 
