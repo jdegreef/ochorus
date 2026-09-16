@@ -129,6 +129,19 @@ serves + prerendered pages reference it.
 
 ## Gotchas (each has bitten a run)
 
+- **F · the og "ground" digest hashes the BYLINE, not just the painting** — it is
+  `sha256(cover_bytes + "\0" + title + "\0" + subtitle + "\0" + author_name)`
+  (`tests_fixture.test_every_twin_was_made_from_the_cover_it_stands_in_for`). So a
+  change to a book's title/subtitle OR its author's display name makes that
+  edition's twin STALE even though the painting is untouched — regenerate it (the
+  file-missing trick: `rm covers/<slug>.png` then `npm run og:covers` redraws just
+  the missing ones, no `--force`), and patch the manifest `ground` accordingly.
+  A long author name also TRUNCATES the byline on the cover ("Frederick Brotherton
+  Meyer" → "FREDERICK BROTHERTON M…"); rename to the publishing name. `name` is NOT
+  seed-synced (author_sync syncs only `same_as`), so a rename is fixture
+  authors.json + the `catalog.py` stub + a data migration, then regen the author's
+  byline-drawn twins (#2443, F. B. Meyer). Designed rasters bake their own byline —
+  a rename does not touch them.
 - **A · `__pycache__` staleness** — `build_curated_covers` reports "Not in the
   curated manifest" for slugs you just added to `CURATED`. Stale `.pyc`. Clear
   ALL of `backend/**/__pycache__` (a `find … -exec rm` in the *same* compound

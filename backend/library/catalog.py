@@ -130,7 +130,7 @@ AUTHORS: dict[str, AuthorEntry] = {
     ),
     "frederick-brotherton-meyer": AuthorEntry(
         slug="frederick-brotherton-meyer",
-        name="Frederick Brotherton Meyer",
+        name="F. B. Meyer",
         birth_year=1847,
         death_year=1929,
         bio=(
