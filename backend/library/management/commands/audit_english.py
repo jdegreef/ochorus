@@ -46,6 +46,15 @@ class Command(BaseCommand):
             action="store_true",
             help="Rewrite the CI ratchet baseline from this run (whole corpus only).",
         )
+        parser.add_argument(
+            "--absorb",
+            action="store_true",
+            help=(
+                "With --update-baseline: allow the re-pin to LOOSEN — accept "
+                "findings an ALREADY-PINNED work has gained. A brand-new work "
+                "never needs this. Say in the commit message why they stand."
+            ),
+        )
 
     def handle(self, *args, **opts):
         # Checked before the 5s scan, and as a CommandError so the exit code is
@@ -53,6 +62,8 @@ class Command(BaseCommand):
         # 0, is one CI will read as success.
         if opts["update_baseline"] and opts["slugs"]:
             raise CommandError("--update-baseline needs the whole corpus; drop the slug.")
+        if opts["absorb"] and not opts["update_baseline"]:
+            raise CommandError("--absorb only means anything with --update-baseline.")
 
         findings = []
         for slug in opts["slugs"] or [None]:
@@ -81,7 +92,30 @@ class Command(BaseCommand):
             )
 
         if opts["update_baseline"]:
-            english_audit.write_baseline(english_audit.counts_by_work(findings))
+            per_work = english_audit.counts_by_work(findings)
+            # Tightening, and adding a work the pin has never seen, are free. An
+            # already-pinned work that GAINED findings is a regression, and
+            # absorbing it silently is what the ratchet exists to prevent.
+            loosened = english_audit.baseline_regressions(per_work)
+            # Both reads must happen BEFORE write_baseline — they compare against
+            # the committed file, which the write replaces.
+            added = english_audit.baseline_new_works(per_work)
+            if loosened and not opts["absorb"]:
+                raise CommandError(
+                    f"This re-pin would LOOSEN the ratchet on {len(loosened)} "
+                    "already-pinned work/class pair(s):\n  "
+                    + "\n  ".join(loosened)
+                    + "\n\nRepair them (see the english-qa skill for the channels), "
+                    "or re-run with --absorb and say in the commit message why they "
+                    "stand."
+                )
+            english_audit.write_baseline(per_work)
+            for line in added:
+                self.stdout.write(f"  + {line}")
+            if loosened:
+                self.stdout.write(
+                    self.style.WARNING(f"\nAbsorbed {len(loosened)} regression(s) into the pin.")
+                )
             self.stdout.write(
                 self.style.SUCCESS(f"\nBaseline written to {english_audit.BASELINE_PATH.name}.")
             )

@@ -31,6 +31,15 @@ class Command(BaseCommand):
             action="store_true",
             help="Re-pin the CI ratchet from this run (whole corpus only).",
         )
+        parser.add_argument(
+            "--absorb",
+            action="store_true",
+            help=(
+                "With --update-baseline: allow the re-pin to LOOSEN — accept new "
+                "conflicts, or extra renderings of pinned ones. Say in the commit "
+                "message why they are not being reconciled."
+            ),
+        )
 
     def handle(self, *args, **opts):
         # Checked before the scan, and as a CommandError so the exit code is
@@ -38,6 +47,8 @@ class Command(BaseCommand):
         # is one CI reads as success.
         if opts["update_baseline"] and opts["language"]:
             raise CommandError("--update-baseline needs the whole corpus; drop --language.")
+        if opts["absorb"] and not opts["update_baseline"]:
+            raise CommandError("--absorb only means anything with --update-baseline.")
 
         found = verse_consistency.conflicts()
         self.stdout.write(verse_consistency.format_report(found, opts["language"]))
@@ -62,7 +73,29 @@ class Command(BaseCommand):
             )
 
         if opts["update_baseline"]:
-            verse_consistency.write_baseline(verse_consistency.baseline_counts(found))
+            counts = verse_consistency.baseline_counts(found)
+            # A re-pin may TIGHTEN freely; loosening is a decision someone has to
+            # make on purpose. Refused as a CommandError so the exit code is
+            # non-zero and nothing is written — see baseline_regressions for what
+            # a silent absorb cost us between August and September.
+            loosened = verse_consistency.baseline_regressions(counts)
+            if loosened and not opts["absorb"]:
+                raise CommandError(
+                    f"This re-pin would LOOSEN the ratchet on {len(loosened)} "
+                    "reference(s):\n  "
+                    + "\n  ".join(loosened)
+                    + "\n\nReconcile them — match the wording the language already "
+                    "uses (this command, with --language <lang>, prints every "
+                    "rendering) — or, if they must ship as they are, re-run with "
+                    "--absorb and say in the commit message why."
+                )
+            verse_consistency.write_baseline(counts)
+            if loosened:
+                self.stdout.write(
+                    self.style.WARNING(
+                        f"\nAbsorbed {len(loosened)} new/widened conflict(s) into the pin."
+                    )
+                )
             self.stdout.write(
                 self.style.SUCCESS(f"\nBaseline written to {verse_consistency.BASELINE_PATH.name}.")
             )

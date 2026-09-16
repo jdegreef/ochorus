@@ -67,6 +67,57 @@ class EnglishAuditRatchetTests(SimpleTestCase):
         )
 
 
+class EnglishAuditRepinTests(SimpleTestCase):
+    """The guard on the re-pin, the sibling of `VerseConsistencyRepinTests`.
+
+    The ratchet above is exact equality against the committed file, so ANY
+    change — including importing a book — needs `--update-baseline`. That makes
+    the re-pin routine, and a routine re-pin is one nobody reads: whatever
+    defects the new import carries go straight into the pin, and so does any
+    regression in a work that was already there. 59 works on 2026-08-24, 87 on
+    2026-09-16, with nothing on the way saying what each import brought in.
+
+    So the two cases are separated. A new work is ordinary and is reported; an
+    already-pinned work that GAINED findings needs `--absorb` said out loud.
+    """
+
+    OLD = {"a-book": {"hyphen-space": 3, "broken-smallcaps": 1}}
+
+    def test_an_existing_work_gaining_findings_is_a_regression(self):
+        self.assertEqual(
+            english_audit.baseline_regressions({"a-book": {"hyphen-space": 5}}, self.OLD),
+            ["a-book [hyphen-space]: 3 -> 5"],
+        )
+
+    def test_an_existing_work_gaining_a_whole_class_is_a_regression(self):
+        self.assertEqual(
+            english_audit.baseline_regressions({"a-book": {"welded-footnote": 2}}, self.OLD),
+            ["a-book [welded-footnote]: 0 -> 2"],
+        )
+
+    def test_a_brand_new_work_is_not_a_regression(self):
+        """An import is the ordinary way this file grows — see BASELINE_PATH."""
+        self.assertEqual(
+            english_audit.baseline_regressions({"new-book": {"hyphen-space": 40}}, self.OLD), []
+        )
+
+    def test_a_new_work_is_reported_with_what_it_brings_in(self):
+        self.assertEqual(
+            english_audit.baseline_new_works(
+                {"new-book": {"hyphen-space": 40, "broken-smallcaps": 2}}, self.OLD
+            ),
+            ["new-book: 42 finding(s) across 2 class(es)"],
+        )
+
+    def test_repairing_a_work_is_not_a_regression(self):
+        self.assertEqual(
+            english_audit.baseline_regressions({"a-book": {"hyphen-space": 1}}, self.OLD), []
+        )
+
+    def test_the_committed_baseline_is_its_own_fixed_point(self):
+        self.assertEqual(english_audit.baseline_regressions(_corpus()), [])
+
+
 class EnglishAuditPrecisionTests(SimpleTestCase):
     """One test per check, each pinning the defect AND the convention it spares."""
 

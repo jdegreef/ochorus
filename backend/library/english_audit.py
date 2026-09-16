@@ -719,6 +719,48 @@ def read_baseline() -> dict[str, dict[str, int]]:
     return json.loads(BASELINE_PATH.read_text(encoding="utf-8"))["works"]
 
 
+def baseline_regressions(
+    per_work: dict[str, dict[str, int]], previous: dict[str, dict[str, int]] | None = None
+) -> list[str]:
+    """Pins that would LOOSEN the committed ratchet, as prose lines.
+
+    The sibling of ``verse_consistency.baseline_regressions``, with one
+    difference that matters: here a work the baseline has never seen is NOT a
+    regression. The ratchet is keyed per work precisely so a new import adds its
+    own line, and importing a book is the ordinary way this file grows.
+
+    What is a regression is an EXISTING work gaining findings — a correction pass
+    that made a class worse, or a re-extraction that dragged artifacts in. The
+    ratchet test catches that in CI; what it cannot catch is
+    ``--update-baseline`` absorbing it, because the re-pin moves the number the
+    test compares against. New works are reported separately rather than
+    silently: 59 works on 2026-08-24, 87 on 2026-09-16, and nothing along the way
+    said how many defects each import brought with it.
+    """
+    old = read_baseline() if previous is None else previous
+    lines = []
+    for work, classes in sorted(per_work.items()):
+        if work not in old:
+            continue
+        for klass, n in sorted(classes.items()):
+            was = old[work].get(klass, 0)
+            if n > was:
+                lines.append(f"{work} [{klass}]: {was} -> {n}")
+    return lines
+
+
+def baseline_new_works(
+    per_work: dict[str, dict[str, int]], previous: dict[str, dict[str, int]] | None = None
+) -> list[str]:
+    """Works this re-pin would add, with the defect count each brings in."""
+    old = read_baseline() if previous is None else previous
+    return [
+        f"{work}: {sum(classes.values())} finding(s) across {len(classes)} class(es)"
+        for work, classes in sorted(per_work.items())
+        if work not in old
+    ]
+
+
 def write_baseline(per_work: dict[str, dict[str, int]]) -> None:
     BASELINE_PATH.write_text(
         json.dumps(
@@ -726,7 +768,11 @@ def write_baseline(per_work: dict[str, dict[str, int]]) -> None:
                 "_comment": (
                     "Ratchet for library/tests_english_audit.py — a work's class may "
                     "shrink but never grow. Regenerate with `manage.py audit_english "
-                    "--update-baseline` and say in the commit message what you fixed."
+                    "--update-baseline` and say in the commit message what you fixed. "
+                    "A NEW work is ordinary (that is how an import lands here) and is "
+                    "printed with the findings it brings in; an ALREADY-PINNED work "
+                    "that gained findings is a regression, and the command refuses to "
+                    "absorb it without --absorb."
                 ),
                 "works": per_work,
             },

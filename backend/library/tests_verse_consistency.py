@@ -80,6 +80,49 @@ class VerseConsistencyRatchetTests(SimpleTestCase):
         )
 
 
+class VerseConsistencyRepinTests(SimpleTestCase):
+    """The guard on the re-pin itself — the hole the two ratchet tests cannot see.
+
+    Both tests above compare the corpus against the committed baseline, so they
+    are only as strict as that file. `--update-baseline` rewrites it from
+    whatever the corpus currently says, which means a batch that introduces
+    conflicts can absorb them and leave CI green on every commit. That is
+    measured, not hypothetical: 110 pinned conflicts on 2026-08-24, 322 on
+    2026-09-16, tests passing throughout, and the per-edition rate rising from
+    0.62 to 0.78 — the corpus drifting while the ratchet reported success.
+    """
+
+    def test_a_new_reference_would_loosen_the_pin(self):
+        self.assertEqual(
+            vc.baseline_regressions({"sw\tWarumi 10:17": 2}, {}),
+            ["sw Warumi 10:17: NEW, 2 renderings"],
+        )
+
+    def test_an_extra_rendering_of_a_pinned_reference_would_loosen_it(self):
+        self.assertEqual(
+            vc.baseline_regressions({"sw\tWarumi 10:17": 3}, {"sw\tWarumi 10:17": 2}),
+            ["sw Warumi 10:17: 2 -> 3 renderings"],
+        )
+
+    def test_tightening_is_not_a_regression(self):
+        """Reconciling a conflict must re-pin freely — that is the point."""
+        self.assertEqual(
+            vc.baseline_regressions({"sw\tWarumi 10:17": 2}, {"sw\tWarumi 10:17": 3}), []
+        )
+
+    def test_a_reference_leaving_entirely_is_not_a_regression(self):
+        self.assertEqual(vc.baseline_regressions({}, {"sw\tWarumi 10:17": 2}), [])
+
+    def test_the_committed_baseline_is_its_own_fixed_point(self):
+        """Re-pinning the corpus as it stands must be a no-op.
+
+        If this fails, the committed baseline disagrees with the corpus and one
+        of the two ratchet tests above is already red — this just says which
+        direction, and keeps `--update-baseline` honest for the next person.
+        """
+        self.assertEqual(vc.baseline_regressions(_corpus()), [])
+
+
 class VerseConsistencyPrecisionTests(SimpleTestCase):
     """One test per rule, each pinning the defect AND the convention it spares."""
 
