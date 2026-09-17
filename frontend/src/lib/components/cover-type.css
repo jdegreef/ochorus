@@ -612,11 +612,21 @@ rgb(0 0 0 / 0.26) 0%,
    The band is drawn BEHIND the byline and never moves it: the byline is an edge
    `covers.py` places too (see the gate in `coverComposition.test.ts`), so the
    band is positioned from the same variables, `--byline-top` and
-   `--byline-size`, rather than by boxing the element. It darkens, never lightens, so it
-   only adds to the contrast `ink_safe` floored the plate colour for. */
+   `--byline-size`, rather than by boxing the element. It darkens, never
+   lightens, so it only adds to the contrast `ink_safe` floored the plate colour
+   for — PROVIDED it is under the byline. An absolutely positioned pseudo-element
+   paints over the in-flow type after it (and the byline's opacity makes it a
+   layer of its own), so the band has to be sent back explicitly: `isolation`
+   makes this block the stacking context, and `z-index: -1` puts the band
+   beneath its type but above the ground outside it. Left on top it dimmed the
+   byline by a fifth — measured 236 to 188 on its brightest pixel. */
+.cover-type.style-originals {
+	isolation: isolate;
+}
 .cover-type.style-originals::after {
 	content: '';
 	position: absolute;
+	z-index: -1;
 	inset: calc(var(--byline-top) - 3.8cqw) var(--frame-inset) auto;
 	height: calc(var(--byline-size) + 7.5cqw);
 	pointer-events: none;
@@ -911,8 +921,8 @@ rgb(0 0 0 / 0.26) 0%,
 	font-weight: 400;
 	letter-spacing: 0;
 }
-/* The loud recipes take Amiri's real 700 (for `young`, Noto Sans Arabic's). `inscriptional` is here rather
-   than in a face of its own: Arabic's register distinction is a weight, not a
+/* The loud recipes take Amiri's real 700 (for `young`, Noto Sans Arabic's).
+   `inscriptional` is here rather than in a face of its own: Arabic's register distinction is a weight, not a
    second family (see app.css on why Reem Kufi was dropped), and its Latin
    twin's 7.6cqw is a CAPS size — Arabic is caseless, so it takes the same size
    as the rest of the script. */
