@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django.conf import settings
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -130,4 +132,49 @@ class MeView(APIView):
         auth identity itself is managed by Supabase; a later sign-in simply
         starts a fresh, empty profile."""
         self._profile(request).delete()
+        return Response(status=204)
+
+
+class SignupSourceView(APIView):
+    """Attribute an account to the logged-out sign-up band that drove it, for
+    sign-ups that can't carry the arm in the JWT.
+
+    Email/magic-link ride ``user_metadata.signup_variant`` (set at ``signUp``,
+    recorded create-only in ``authentication.token_signup_variant``) — that
+    survives the email-confirmation round-trip, even on another device. But
+    Supabase ``signInWithOAuth`` takes no ``user_metadata``, so a Google sign-up
+    reaches Django untagged. The client posts the stored arm here right after a
+    NEW user's first sign-in.
+
+    Create-only AND fresh-only: it writes the arm only when the profile has none
+    yet *and* was created within the last hour, so a returning reader carrying a
+    stale stored arm from a past visit can never be mislabelled (the client
+    applies the same new-account gate; this is the backstop). It is a harmless
+    no-op for an email/magic-link account whose tag the JWT path already set.
+    """
+
+    permission_classes = [IsAuthenticated]
+
+    #: A profile older than this at POST time is treated as a returning reader,
+    #: never a fresh sign-up — so its blank arm is left blank.
+    FRESH = timedelta(hours=1)
+
+    def post(self, request):
+        from django.utils import timezone
+
+        from .models import SIGNUP_VARIANTS, UserProfile
+
+        variant = request.data.get("signup_variant")
+        if variant not in SIGNUP_VARIANTS:
+            # Unknown/missing arm — accept the request but record nothing, so a
+            # stray client can't write junk into the analytics vocabulary.
+            return Response(status=204)
+
+        profile, _ = UserProfile.objects.get_or_create(
+            user=request.user,
+            defaults={"supabase_uid": request.user.username, "email": request.user.email},
+        )
+        if profile.signup_variant == "" and timezone.now() - profile.created_at <= self.FRESH:
+            profile.signup_variant = variant
+            profile.save(update_fields=["signup_variant", "updated_at"])
         return Response(status=204)

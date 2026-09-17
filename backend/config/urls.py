@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import include, path
 
-from accounts.views import MeView, health
+from accounts.views import MeView, SignupSourceView, health
 from library.admin_import_views import (
     AdminAuthorCreateView,
     AdminImportLanguagesView,
@@ -63,6 +63,7 @@ urlpatterns = [
     path("robots.txt", robots_txt, name="robots"),
     path("api/health/", health, name="health"),
     path("api/auth/me/", MeView.as_view(), name="me"),
+    path("api/auth/signup-source/", SignupSourceView.as_view(), name="signup-source"),
     path("api/admin/stats/", AdminStatsView.as_view(), name="admin-stats"),
     path("api/admin/attention/", AdminAttentionView.as_view(), name="admin-attention"),
     path("api/admin/unpublished/", AdminUnpublishedView.as_view(), name="admin-unpublished"),
