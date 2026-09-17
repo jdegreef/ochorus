@@ -111,6 +111,8 @@ DESIGNED: dict[str, str] = {
         "46b871cd0fe570bf38f6f6fe628064d7643d5d5baee2f77777331c347fd4ab99",
     "/covers/men-who-tended-the-flock-2.jpg":
         "e051d1a0e83eb33f8254ef9a68fbe79c2cc6f0ba3b271a0a10de15a77a5eb1b5",
+    "/covers/pilgrims-progress-children.jpg":
+        "9250c3a997cdeff08f92539bc745ab5ee7adb483788d16e610c2b924125c98fe",
     "/covers/prayer-the-pulse-of-life.png":
         "29030df615f17c8cf480f36a1bf738c14a7407cf9cc51c0e178cc480386cc3e1",
     "/covers/purity-of-heart.jpg":

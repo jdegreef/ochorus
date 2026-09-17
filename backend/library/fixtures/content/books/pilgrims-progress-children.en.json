@@ -1,0 +1,220 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "john-bunyan"
+  ],
+  "slug": "pilgrims-progress-children",
+  "language": "en",
+  "title": "The Pilgrim's Progress (For Children)",
+  "subtitle": "",
+  "description": "John Bunyan’s famous story of a traveller named Christian, who leaves his city with a heavy burden on his back and journeys all the way to the Celestial City. This children’s edition retells his adventure in short chapters made to be read aloud: a Bible verse, one scene of the journey, one thing it means for you, and a short prayer.",
+  "qa": [
+   {
+    "question": "What is The Pilgrim’s Progress (For Children) about?",
+    "answer": "It is a children’s version of John Bunyan’s famous story. A man named Christian sets out from his home with a heavy burden on his back and travels a long, adventurous road to the Celestial City. Along the way he meets giants, monsters, friends and dangers — and every part of the journey quietly pictures what it is like to follow God."
+   },
+   {
+    "question": "Who was John Bunyan?",
+    "answer": "An English preacher who lived long ago and spent years in prison for his faith. While there he wrote The Pilgrim’s Progress, which became one of the best-loved stories in the world — an adventure that teaches about God through the tale of a traveller called Christian."
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells one scene of Christian’s journey, shows one simple thing it means for you, and ends with a short prayer."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children — to be read aloud by a grown-up, or read by an older child alone. Bunyan’s fuller Pilgrim’s Progress is also available for older readers, along with a plain-English retelling."
+   },
+   {
+    "question": "Why is the story full of monsters and giants?",
+    "answer": "Because Bunyan made it a picture-story. Christian’s road stands for the life of following God, and its dangers — a swamp, a giant, a dark valley — stand for the real troubles and temptations we meet. Telling it as an adventure makes those lessons easy for a child to remember."
+   },
+   {
+    "question": "Are the names in the story unusual on purpose?",
+    "answer": "Yes. Bunyan gave his characters and places names that describe them — Christian, Faithful, Hopeful, the Slough of Despond, the Hill Difficulty, Giant Despair. The name tells you what each one is like, which helps young readers follow the meaning of the story."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "",
+  "cover_url": "/covers/pilgrims-progress-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 23,
+  "is_published": true,
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Man Who Cried, \"What Shall I Do?\"",
+  "body_html": "<blockquote>“What must I do to be saved?” — from Acts 16</blockquote> <p>In a place called the City of Destruction, there lived a man named Christian. One day he was reading a book, and what he read frightened him terribly. He learned that his city was going to be destroyed — and worst of all, he could feel a great, heavy burden on his back that he could not get off, no matter how he tried.</p> <p>He began to cry out, “What shall I do? What must I do to be saved?” His family thought he had gone mad. But Christian could not stop worrying about that heavy load.</p> <p>Then a man named Evangelist came to him and asked why he was crying. Christian told him about the burden and his fear. Evangelist pointed far across a wide field and asked, “Do you see that little gate?” Christian couldn’t see it. “Do you see that shining light?” said Evangelist. “Yes, I think I do,” said Christian. “Keep that light in your eye, and go straight to it.”</p> <p>So Christian began to run — run for the little gate and the shining light — with his fingers in his ears so nothing could stop him, calling out, “Life! Life! Eternal life!”</p> <p>That is where every great journey with God begins: seeing that something is wrong, and running toward the light. If you feel a weight of doing wrong, you don’t have to carry it alone. There is a light to run to. His name is Jesus.</p> <p><em>Dear God, when I feel the weight of the wrong I’ve done, help me run to you, the true Light. Amen.</em></p>",
+  "body_text": "“What must I do to be saved?” — from Acts 16 In a place called the City of Destruction, there lived a man named Christian. One day he was reading a book, and what he read frightened him terribly. He learned that his city was going to be destroyed — and worst of all, he could feel a great, heavy burden on his back that he could not get off, no matter how he tried. He began to cry out, “What shall I do? What must I do to be saved?” His family thought he had gone mad. But Christian could not stop worrying about that heavy load. Then a man named Evangelist came to him and asked why he was crying. Christian told him about the burden and his fear. Evangelist pointed far across a wide field and asked, “Do you see that little gate?” Christian couldn’t see it. “Do you see that shining light?” said Evangelist. “Yes, I think I do,” said Christian. “Keep that light in your eye, and go straight to it.” So Christian began to run — run for the little gate and the shining light — with his fingers in his ears so nothing could stop him, calling out, “Life! Life! Eternal life!” That is where every great journey with God begins: seeing that something is wrong, and running toward the light. If you feel a weight of doing wrong, you don’t have to carry it alone. There is a light to run to. His name is Jesus. Dear God, when I feel the weight of the wrong I’ve done, help me run to you, the true Light. Amen.",
+  "word_count": 275
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "Stuck in the Swamp",
+  "body_html": "<blockquote>“He lifted me out of the mud and set my feet on solid ground.” — from Psalm 40</blockquote> <p>Christian hurried across the field toward the shining light. But he wasn’t watching where he stepped — and suddenly, <em>splash!</em> — he tumbled straight into a deep, muddy bog.</p> <p>This was no ordinary puddle. It had a name: the Slough of Despond, which means the Swamp of Feeling Hopeless. The more Christian struggled, the deeper he sank, because that heavy burden on his back pulled him down into the mud.</p> <p>A neighbour named Pliable had been following him. But when Pliable got splattered with mud, he grumbled, crawled out on the near side, and stomped off home. Poor Christian was left alone, sinking, trying and trying to reach the far side.</p> <p>Then a man came along. His name was Help. “What are you doing down there?” he asked. And he reached out and said, “Give me your hand.” He pulled Christian right out of the bog and set him on good, solid ground again.</p> <p>Sometimes, when we first start following God, we hit a patch where everything feels hopeless and heavy, and we start to sink. That’s normal. It happened even to Christian. But we are not meant to climb out all by ourselves.</p> <p>When you feel like you’re sinking, do what Christian did — reach for the hand that’s reaching for you. God sends help.</p> <p><em>Dear God, when I feel stuck and hopeless, thank you that you reach out your hand. Help me to take hold of it. Amen.</em></p>",
+  "body_text": "“He lifted me out of the mud and set my feet on solid ground.” — from Psalm 40 Christian hurried across the field toward the shining light. But he wasn’t watching where he stepped — and suddenly, splash! — he tumbled straight into a deep, muddy bog. This was no ordinary puddle. It had a name: the Slough of Despond, which means the Swamp of Feeling Hopeless. The more Christian struggled, the deeper he sank, because that heavy burden on his back pulled him down into the mud. A neighbour named Pliable had been following him. But when Pliable got splattered with mud, he grumbled, crawled out on the near side, and stomped off home. Poor Christian was left alone, sinking, trying and trying to reach the far side. Then a man came along. His name was Help. “What are you doing down there?” he asked. And he reached out and said, “Give me your hand.” He pulled Christian right out of the bog and set him on good, solid ground again. Sometimes, when we first start following God, we hit a patch where everything feels hopeless and heavy, and we start to sink. That’s normal. It happened even to Christian. But we are not meant to climb out all by ourselves. When you feel like you’re sinking, do what Christian did — reach for the hand that’s reaching for you. God sends help. Dear God, when I feel stuck and hopeless, thank you that you reach out your hand. Help me to take hold of it. Amen.",
+  "word_count": 258
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "The Little Gate That Opens",
+  "body_html": "<blockquote>“Knock, and the door will be opened to you.” — from Matthew 7</blockquote> <p>At last Christian reached the little gate — the one Evangelist had pointed to. Above it were written these words: “Knock, and it shall be opened to you.”</p> <p>So Christian knocked. And knocked again. He wasn’t sure anyone would come. What if the gate stayed shut? What if he wasn’t good enough to be let in?</p> <p>But the gate opened! A kind man named Goodwill stood there. “Who is it? Where have you come from, and what do you want?” he asked.</p> <p>“I am a poor sinner with a heavy burden,” said Christian. “I’ve come all the way from the City of Destruction, and I want to go to the wonderful City on the hill.”</p> <p>“I am willing with all my heart!” said Goodwill — and he opened the gate wide and pulled Christian safely inside. Christian asked if his burden could come off now. “Be patient,” said Goodwill. “Keep going, and at the right place it will fall off all by itself.”</p> <p>Then Goodwill showed him the narrow path and sent him on his way.</p> <p>Here is something wonderful about God: he never turns away anyone who comes to him. You don’t have to be good enough first. You just have to knock. Come to God, and he will open the door and welcome you in with all his heart.</p> <p><em>Dear God, thank you that when I come to you, you never turn me away. I’m knocking — please let me in. Amen.</em></p>",
+  "body_text": "“Knock, and the door will be opened to you.” — from Matthew 7 At last Christian reached the little gate — the one Evangelist had pointed to. Above it were written these words: “Knock, and it shall be opened to you.” So Christian knocked. And knocked again. He wasn’t sure anyone would come. What if the gate stayed shut? What if he wasn’t good enough to be let in? But the gate opened! A kind man named Goodwill stood there. “Who is it? Where have you come from, and what do you want?” he asked. “I am a poor sinner with a heavy burden,” said Christian. “I’ve come all the way from the City of Destruction, and I want to go to the wonderful City on the hill.” “I am willing with all my heart!” said Goodwill — and he opened the gate wide and pulled Christian safely inside. Christian asked if his burden could come off now. “Be patient,” said Goodwill. “Keep going, and at the right place it will fall off all by itself.” Then Goodwill showed him the narrow path and sent him on his way. Here is something wonderful about God: he never turns away anyone who comes to him. You don’t have to be good enough first. You just have to knock. Come to God, and he will open the door and welcome you in with all his heart. Dear God, thank you that when I come to you, you never turn me away. I’m knocking — please let me in. Amen.",
+  "word_count": 257
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "The House of Wonderful Rooms",
+  "body_html": "<blockquote>“Open my eyes, that I may see wonderful things.” — from Psalm 119</blockquote> <p>Along the path Christian came to the house of a man called the Interpreter, whose job was to help people understand important things. The Interpreter lit a candle and said, “Come, let me show you some wonders.” And he took Christian from room to room.</p> <p>In one room there was a big parlour so full of dust that nobody could breathe. A man began to sweep it — but the dust flew up in thick clouds and made Christian cough and choke! Then a girl came and gently sprinkled water all over the floor, and suddenly the room could be swept clean and lovely.</p> <p>“The dust is sin,” the Interpreter explained. “Just telling people the rules only stirs the sin up, like sweeping dry dust. But the good news of Jesus is like the water — it settles the dust and makes the heart truly clean.”</p> <p>In another room a fire burned against a wall. A man kept throwing water on it to put it out — yet the fire only burned higher and hotter! Christian was puzzled. Then the Interpreter took him behind the wall, where another man was secretly pouring oil on the fire to keep it alive. “That is Jesus,” he said, “keeping the fire of faith burning in your heart, even when things try to put it out.”</p> <p>God loves to teach us how things really work on the inside. Ask him to open your eyes, and he will show you wonderful things.</p> <p><em>Dear God, please open my eyes to understand you. Keep the fire of your love burning in me. Amen.</em></p>",
+  "body_text": "“Open my eyes, that I may see wonderful things.” — from Psalm 119 Along the path Christian came to the house of a man called the Interpreter, whose job was to help people understand important things. The Interpreter lit a candle and said, “Come, let me show you some wonders.” And he took Christian from room to room. In one room there was a big parlour so full of dust that nobody could breathe. A man began to sweep it — but the dust flew up in thick clouds and made Christian cough and choke! Then a girl came and gently sprinkled water all over the floor, and suddenly the room could be swept clean and lovely. “The dust is sin,” the Interpreter explained. “Just telling people the rules only stirs the sin up, like sweeping dry dust. But the good news of Jesus is like the water — it settles the dust and makes the heart truly clean.” In another room a fire burned against a wall. A man kept throwing water on it to put it out — yet the fire only burned higher and hotter! Christian was puzzled. Then the Interpreter took him behind the wall, where another man was secretly pouring oil on the fire to keep it alive. “That is Jesus,” he said, “keeping the fire of faith burning in your heart, even when things try to put it out.” God loves to teach us how things really work on the inside. Ask him to open your eyes, and he will show you wonderful things. Dear God, please open my eyes to understand you. Keep the fire of your love burning in me. Amen.",
+  "word_count": 279
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "The Burden Rolls Away",
+  "body_html": "<blockquote>“Come to me, all who are weary and heavy-laden, and I will give you rest.” — from Matthew 11</blockquote> <p>This is the best part of the whole story.</p> <p>Christian came to a place where there stood a Cross, and a little way down from it, an open tomb. Remember that heavy burden he had carried all this way — the one he could never get off, no matter how hard he tried?</p> <p>The very moment Christian came up to the Cross, his burden came loose from his shoulders. It rolled off his back, and it tumbled down, down, down the hill — right into the open tomb — and it was gone. Gone! He never saw it again.</p> <p>Christian was so happy he hardly knew what to do. Tears of joy ran down his face, and he said, “He has given me rest by his sorrow, and life by his death.” Then he gave three great leaps for joy!</p> <p>And three Shining Ones came to him. The first said, “Your sins are forgiven.” The second took away his old ragged clothes and dressed him in beautiful new ones. And the third put a mark on his forehead and gave him a rolled-up letter to read on the way and to hand in at the gate of the great City.</p> <p>That heavy burden was sin, and only Jesus, who died on the Cross, could take it away. You cannot lift your own load of wrongdoing off your back — but Jesus can, and he does. That’s the best news there is.</p> <p><em>Dear Jesus, thank you for taking away the heavy load of my sin at the Cross. Thank you for giving me rest. Amen.</em></p>",
+  "body_text": "“Come to me, all who are weary and heavy-laden, and I will give you rest.” — from Matthew 11 This is the best part of the whole story. Christian came to a place where there stood a Cross, and a little way down from it, an open tomb. Remember that heavy burden he had carried all this way — the one he could never get off, no matter how hard he tried? The very moment Christian came up to the Cross, his burden came loose from his shoulders. It rolled off his back, and it tumbled down, down, down the hill — right into the open tomb — and it was gone. Gone! He never saw it again. Christian was so happy he hardly knew what to do. Tears of joy ran down his face, and he said, “He has given me rest by his sorrow, and life by his death.” Then he gave three great leaps for joy! And three Shining Ones came to him. The first said, “Your sins are forgiven.” The second took away his old ragged clothes and dressed him in beautiful new ones. And the third put a mark on his forehead and gave him a rolled-up letter to read on the way and to hand in at the gate of the great City. That heavy burden was sin, and only Jesus, who died on the Cross, could take it away. You cannot lift your own load of wrongdoing off your back — but Jesus can, and he does. That’s the best news there is. Dear Jesus, thank you for taking away the heavy load of my sin at the Cross. Thank you for giving me rest. Amen.",
+  "word_count": 283
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "The Hard Hill and the Palace Beautiful",
+  "body_html": "<blockquote>“Put on the whole armour of God.” — from Ephesians 6</blockquote> <p>Soon the path came to a steep hill called Difficulty. It was so steep that Christian had to climb on his hands and knees! Halfway up there was a little shelter to rest in, and Christian sat down — but he was so tired he fell fast asleep, and the precious letter slipped out of his hand.</p> <p>When he woke and hurried on, he suddenly realised the letter was gone! Oh, how sad he was. He had to walk all the way back down to find it. There it was, right where he had slept. He picked it up, thanked God, and climbed on.</p> <p>Near the top of the hill stood two lions, and they roared! Two travellers had just run away in fright. But a watchman called out, “Don’t be afraid of the lions — they are chained! Just keep to the middle of the path.” So Christian walked bravely between them, and they could not touch him.</p> <p>At the top was a grand house called the Palace Beautiful, built to help tired travellers. Kind women named Discretion, Prudence, Piety and Charity welcomed him, fed him, and let him rest. And before he left, they dressed him head to foot in strong, shining armour — for the road ahead.</p> <p>Following God can be a steep, tiring climb, and sometimes the things that scare us are chained and cannot really hurt us. God gives us rest, good friends, and armour for the journey. Keep climbing — and stay on the path.</p> <p><em>Dear God, when the way is hard and steep, give me rest, and dress me in your armour to keep going. Amen.</em></p>",
+  "body_text": "“Put on the whole armour of God.” — from Ephesians 6 Soon the path came to a steep hill called Difficulty. It was so steep that Christian had to climb on his hands and knees! Halfway up there was a little shelter to rest in, and Christian sat down — but he was so tired he fell fast asleep, and the precious letter slipped out of his hand. When he woke and hurried on, he suddenly realised the letter was gone! Oh, how sad he was. He had to walk all the way back down to find it. There it was, right where he had slept. He picked it up, thanked God, and climbed on. Near the top of the hill stood two lions, and they roared! Two travellers had just run away in fright. But a watchman called out, “Don’t be afraid of the lions — they are chained! Just keep to the middle of the path.” So Christian walked bravely between them, and they could not touch him. At the top was a grand house called the Palace Beautiful, built to help tired travellers. Kind women named Discretion, Prudence, Piety and Charity welcomed him, fed him, and let him rest. And before he left, they dressed him head to foot in strong, shining armour — for the road ahead. Following God can be a steep, tiring climb, and sometimes the things that scare us are chained and cannot really hurt us. God gives us rest, good friends, and armour for the journey. Keep climbing — and stay on the path. Dear God, when the way is hard and steep, give me rest, and dress me in your armour to keep going. Amen.",
+  "word_count": 284
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "Christian Fights the Dragon",
+  "body_html": "<blockquote>“Resist the devil, and he will flee from you.” — from James 4</blockquote> <p>Down in a low valley, a horrible monster came stomping to meet Christian. His name was Apollyon. He was covered in scales like a fish, he had wings like a dragon and feet like a bear, and fire and smoke came out of him. He was dreadful!</p> <p>“You belong to me,” Apollyon roared, “and I will not let you go to that City.” Christian said no — he served the King now. So the monster hurled a flaming dart at him, then another, and another, thick as hail. Christian lifted his shield to catch them, but he was wounded in his head, his hand, and his foot.</p> <p>The fight went on and on — for half a day! At last Christian grew so weak that his sword flew out of his hand, and Apollyon rushed in to finish him. It looked like the end.</p> <p>But Christian stretched out and grabbed his sword again, and cried, “Don’t cheer yet, my enemy — when I fall, I will get up again!” He gave a mighty thrust, and shouted, “In all these things we are more than conquerors, through Jesus who loved us!” And Apollyon spread his dragon wings and flew away. Christian had won — and leaves from the tree of life healed his wounds.</p> <p>The devil is real, but you don’t have to beat him with your own strength. Christian won with God’s Word and the victory of Jesus. When you say no to what’s wrong and hold on to God, the enemy runs.</p> <p><em>Dear God, make me brave. Help me say no to what is wrong, and win by trusting in Jesus. Amen.</em></p>",
+  "body_text": "“Resist the devil, and he will flee from you.” — from James 4 Down in a low valley, a horrible monster came stomping to meet Christian. His name was Apollyon. He was covered in scales like a fish, he had wings like a dragon and feet like a bear, and fire and smoke came out of him. He was dreadful! “You belong to me,” Apollyon roared, “and I will not let you go to that City.” Christian said no — he served the King now. So the monster hurled a flaming dart at him, then another, and another, thick as hail. Christian lifted his shield to catch them, but he was wounded in his head, his hand, and his foot. The fight went on and on — for half a day! At last Christian grew so weak that his sword flew out of his hand, and Apollyon rushed in to finish him. It looked like the end. But Christian stretched out and grabbed his sword again, and cried, “Don’t cheer yet, my enemy — when I fall, I will get up again!” He gave a mighty thrust, and shouted, “In all these things we are more than conquerors, through Jesus who loved us!” And Apollyon spread his dragon wings and flew away. Christian had won — and leaves from the tree of life healed his wounds. The devil is real, but you don’t have to beat him with your own strength. Christian won with God’s Word and the victory of Jesus. When you say no to what’s wrong and hold on to God, the enemy runs. Dear God, make me brave. Help me say no to what is wrong, and win by trusting in Jesus. Amen.",
+  "word_count": 286
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "Through the Dark Valley",
+  "body_html": "<blockquote>“Even though I walk through the darkest valley, I will fear no evil, for you are with me.” — from Psalm 23</blockquote> <p>The next part of the journey was the scariest of all: a place called the Valley of the Shadow of Death. It was so dark that Christian often couldn’t tell where to put his feet. On one side was a deep ditch, and on the other a dangerous swamp, and frightening noises came out of the blackness.</p> <p>His sword was no use against this darkness. So Christian reached for a different weapon — the very best one of all. It was called All-prayer. He simply cried out, “O Lord, I beg you, save me!”</p> <p>One of the wicked creatures crept up close behind him and whispered nasty thoughts in his ear, so quietly that Christian was afraid the bad thoughts were coming from his own mind. That frightened him even more.</p> <p>But then — through the dark — he heard a voice up ahead. Someone else was walking the valley too, saying out loud: “Though I walk through the valley of the shadow of death, I will fear no evil, for you are with me.” Christian’s heart lifted. He was not alone after all! And when morning came, he walked safely out the other side.</p> <p>Sometimes life feels dark and scary, and we can’t see the way. That’s when the best thing to do is the simplest thing: pray. God is with you in the dark, even when you can’t see him, and morning always comes.</p> <p><em>Dear God, when things are dark and scary, help me to pray. Thank you that you are with me and I need not be afraid. Amen.</em></p>",
+  "body_text": "“Even though I walk through the darkest valley, I will fear no evil, for you are with me.” — from Psalm 23 The next part of the journey was the scariest of all: a place called the Valley of the Shadow of Death. It was so dark that Christian often couldn’t tell where to put his feet. On one side was a deep ditch, and on the other a dangerous swamp, and frightening noises came out of the blackness. His sword was no use against this darkness. So Christian reached for a different weapon — the very best one of all. It was called All-prayer. He simply cried out, “O Lord, I beg you, save me!” One of the wicked creatures crept up close behind him and whispered nasty thoughts in his ear, so quietly that Christian was afraid the bad thoughts were coming from his own mind. That frightened him even more. But then — through the dark — he heard a voice up ahead. Someone else was walking the valley too, saying out loud: “Though I walk through the valley of the shadow of death, I will fear no evil, for you are with me.” Christian’s heart lifted. He was not alone after all! And when morning came, he walked safely out the other side. Sometimes life feels dark and scary, and we can’t see the way. That’s when the best thing to do is the simplest thing: pray. God is with you in the dark, even when you can’t see him, and morning always comes. Dear God, when things are dark and scary, help me to pray. Thank you that you are with me and I need not be afraid. Amen.",
+  "word_count": 284
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "Vanity Fair and the Faithful Friend",
+  "body_html": "<blockquote>“Be faithful, even to the point of death, and I will give you the crown of life.” — from Revelation 2</blockquote> <p>By now Christian had a travelling companion — a good, brave friend named Faithful. Together they came to a busy town with a huge fair called Vanity Fair, where people sold every shiny thing you could imagine and cared about nothing else.</p> <p>The two pilgrims wouldn’t even look at all the glittering stuff. “What will you buy?” the sellers shouted. “We buy the truth,” they answered. That was all they wanted.</p> <p>This made the crowd furious. They mocked the two friends, covered them in dirt, and locked them in a cage. Then they put brave Faithful on trial, with a mean judge and lying witnesses, and treated him terribly — but Faithful never stopped trusting God.</p> <p>And here is the wonderful secret Bunyan wanted children to know: the moment Faithful’s life on earth ended, a chariot with horses swept down and carried him up through the clouds, straight to the gates of the great City. He got there first of all! Christian escaped the town — and soon a new friend named Hopeful joined him, because Hopeful had watched how bravely Christian and Faithful loved God.</p> <p>The world doesn’t always like people who love God, and being faithful can cost something. But God sees, God remembers, and the reward is greater than anything the fair could sell.</p> <p><em>Dear God, help me love the truth more than shiny things, and to stay faithful to you no matter what. Amen.</em></p>",
+  "body_text": "“Be faithful, even to the point of death, and I will give you the crown of life.” — from Revelation 2 By now Christian had a travelling companion — a good, brave friend named Faithful. Together they came to a busy town with a huge fair called Vanity Fair, where people sold every shiny thing you could imagine and cared about nothing else. The two pilgrims wouldn’t even look at all the glittering stuff. “What will you buy?” the sellers shouted. “We buy the truth,” they answered. That was all they wanted. This made the crowd furious. They mocked the two friends, covered them in dirt, and locked them in a cage. Then they put brave Faithful on trial, with a mean judge and lying witnesses, and treated him terribly — but Faithful never stopped trusting God. And here is the wonderful secret Bunyan wanted children to know: the moment Faithful’s life on earth ended, a chariot with horses swept down and carried him up through the clouds, straight to the gates of the great City. He got there first of all! Christian escaped the town — and soon a new friend named Hopeful joined him, because Hopeful had watched how bravely Christian and Faithful loved God. The world doesn’t always like people who love God, and being faithful can cost something. But God sees, God remembers, and the reward is greater than anything the fair could sell. Dear God, help me love the truth more than shiny things, and to stay faithful to you no matter what. Amen.",
+  "word_count": 259
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "Escaping Giant Despair",
+  "body_html": "<blockquote>“He has given us his very great and precious promises.” — from 2 Peter 1</blockquote> <p>One day, to make the walking easier, Christian and Hopeful stepped off the narrow path into a nicer-looking meadow. Big mistake! A storm came, they got lost, and they fell asleep in the wrong field.</p> <p>At dawn a huge, cruel giant found them. His name was Giant Despair, and the field belonged to his home, Doubting Castle. He dragged the two friends off and threw them into a dark, smelly dungeon, with no food and no light, for days and days. The giant was horrible to them and told them to give up all hope.</p> <p>Poor Christian and Hopeful were miserable. But Hopeful kept saying, “Take heart — hold on — God will help us.” And on Saturday at midnight, they began to pray.</p> <p>Then, just before morning, Christian suddenly cried out: “What a fool I am! I have been lying in this dungeon when I could have walked free! I have a key in my pocket, called Promise, that will open any lock in Doubting Castle!”</p> <p>He pulled out the key. It opened the dungeon door. It opened the outer door. It even opened the heavy iron gate. And the two friends walked free, back to the good King’s road.</p> <p>When you feel trapped and hopeless, remember Christian’s key. God’s promises — the things he has told us in the Bible — can unlock any dungeon of despair. Don’t forget you’re holding the key.</p> <p><em>Dear God, when I feel trapped and sad, help me remember your promises. Thank you that they set me free. Amen.</em></p>",
+  "body_text": "“He has given us his very great and precious promises.” — from 2 Peter 1 One day, to make the walking easier, Christian and Hopeful stepped off the narrow path into a nicer-looking meadow. Big mistake! A storm came, they got lost, and they fell asleep in the wrong field. At dawn a huge, cruel giant found them. His name was Giant Despair, and the field belonged to his home, Doubting Castle. He dragged the two friends off and threw them into a dark, smelly dungeon, with no food and no light, for days and days. The giant was horrible to them and told them to give up all hope. Poor Christian and Hopeful were miserable. But Hopeful kept saying, “Take heart — hold on — God will help us.” And on Saturday at midnight, they began to pray. Then, just before morning, Christian suddenly cried out: “What a fool I am! I have been lying in this dungeon when I could have walked free! I have a key in my pocket, called Promise, that will open any lock in Doubting Castle!” He pulled out the key. It opened the dungeon door. It opened the outer door. It even opened the heavy iron gate. And the two friends walked free, back to the good King’s road. When you feel trapped and hopeless, remember Christian’s key. God’s promises — the things he has told us in the Bible — can unlock any dungeon of despair. Don’t forget you’re holding the key. Dear God, when I feel trapped and sad, help me remember your promises. Thank you that they set me free. Amen.",
+  "word_count": 271
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "The Shepherds Who Show Wonders",
+  "body_html": "<blockquote>“The Lord is my shepherd; I shall not want.” — from Psalm 23</blockquote> <p>After all that, Christian and Hopeful came to a lovely place: the Delectable Mountains, which were so close to the great City that you could almost see it. Green hills, gardens, fountains — and four kind shepherds looking after the sheep. Their names were Knowledge, Experience, Watchful, and Sincere.</p> <p>The shepherds welcomed the tired travellers, gave them food, and let them rest. Then they said, “Come, let us show you some things.” They took them up the hills and showed them sights that were partly wonderful and partly a warning — places where travellers who left the right path had come to harm. It made Christian and Hopeful very glad they had stayed on the way.</p> <p>Best of all, the shepherds led them up a high hill called Clear and gave them a special telescope. The two friends’ hands trembled with excitement, but through it they caught a glimpse — far, far ahead — of the gate of the Celestial City itself. Their journey’s end was in sight!</p> <p>As the pilgrims set off again, the shepherds gave them a kindly warning: keep watching, and don’t fall asleep along the way.</p> <p>God is like those good shepherds. He feeds us, gives us rest, warns us of danger, and lets us catch sight of the wonderful home he is bringing us to. The Lord is your shepherd — you can trust him to lead you all the way.</p> <p><em>Dear God, thank you for being my shepherd, who feeds me, guides me, and shows me the way home. Amen.</em></p>",
+  "body_text": "“The Lord is my shepherd; I shall not want.” — from Psalm 23 After all that, Christian and Hopeful came to a lovely place: the Delectable Mountains, which were so close to the great City that you could almost see it. Green hills, gardens, fountains — and four kind shepherds looking after the sheep. Their names were Knowledge, Experience, Watchful, and Sincere. The shepherds welcomed the tired travellers, gave them food, and let them rest. Then they said, “Come, let us show you some things.” They took them up the hills and showed them sights that were partly wonderful and partly a warning — places where travellers who left the right path had come to harm. It made Christian and Hopeful very glad they had stayed on the way. Best of all, the shepherds led them up a high hill called Clear and gave them a special telescope. The two friends’ hands trembled with excitement, but through it they caught a glimpse — far, far ahead — of the gate of the Celestial City itself. Their journey’s end was in sight! As the pilgrims set off again, the shepherds gave them a kindly warning: keep watching, and don’t fall asleep along the way. God is like those good shepherds. He feeds us, gives us rest, warns us of danger, and lets us catch sight of the wonderful home he is bringing us to. The Lord is your shepherd — you can trust him to lead you all the way. Dear God, thank you for being my shepherd, who feeds me, guides me, and shows me the way home. Amen.",
+  "word_count": 269
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "Over the River to the Golden City",
+  "body_html": "<blockquote>“When you pass through the waters, I will be with you.” — from Isaiah 43</blockquote> <p>At last Christian and Hopeful came near the end of their long journey. They could see the Celestial City shining on its hill, its walls and gate gleaming like gold. But between them and the gate lay one last thing: a deep river, with no bridge across it.</p> <p>“You must go through the river,” they were told, “or you cannot reach the gate.” So the two friends stepped in — and the water was deep. Christian began to sink, and fear filled him. “I’m going under!” he cried. “The waves are going over my head!” All his old worries came rushing back.</p> <p>But Hopeful held up Christian’s head and called out, “Be cheerful, my brother — I can feel the bottom, and it is solid!” And Christian remembered God’s promise: “When you pass through the waters, I will be with you.” At once his feet found the ground, and together they crossed safely to the other side.</p> <p>There, two shining ones met them and led them up to the golden gate. They handed in their letters, and the gate swung open. They were given shining robes, and harps, and crowns — and as they went in, every bell in the City rang out for joy, and a voice said, “Come and share your Master’s happiness!”</p> <p>Christian was home at last, safe and full of joy forever. And that is where the road of following God leads every traveller who keeps trusting him — all the way home.</p> <p><em>Dear God, thank you that you are with me all the way, even to the very end, and that your City is home. Help me keep walking with you. Amen.</em></p>",
+  "body_text": "“When you pass through the waters, I will be with you.” — from Isaiah 43 At last Christian and Hopeful came near the end of their long journey. They could see the Celestial City shining on its hill, its walls and gate gleaming like gold. But between them and the gate lay one last thing: a deep river, with no bridge across it. “You must go through the river,” they were told, “or you cannot reach the gate.” So the two friends stepped in — and the water was deep. Christian began to sink, and fear filled him. “I’m going under!” he cried. “The waves are going over my head!” All his old worries came rushing back. But Hopeful held up Christian’s head and called out, “Be cheerful, my brother — I can feel the bottom, and it is solid!” And Christian remembered God’s promise: “When you pass through the waters, I will be with you.” At once his feet found the ground, and together they crossed safely to the other side. There, two shining ones met them and led them up to the golden gate. They handed in their letters, and the gate swung open. They were given shining robes, and harps, and crowns — and as they went in, every bell in the City rang out for joy, and a voice said, “Come and share your Master’s happiness!” Christian was home at last, safe and full of joy forever. And that is where the road of following God leads every traveller who keeps trusting him — all the way home. Dear God, thank you that you are with me all the way, even to the very end, and that your City is home. Help me keep walking with you. Amen.",
+  "word_count": 292
+ }
+}
+]
