@@ -1,0 +1,31 @@
+{
+ "kind": "bio",
+ "slug": "thomas-a-kempis",
+ "language": "fr",
+ "job_issue": 2492,
+ "references": [
+  {
+   "reference": "ECC 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1SA 3:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "PSA 119:125",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "PSA 119:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "DEU 32:2",
+   "status": "self_rendered"
+  }
+ ]
+}

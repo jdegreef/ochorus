@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "richard-sibbes",
+ "language": "fr",
+ "job_issue": 2489,
+ "references": [
+  {
+   "reference": "Matthew 12:20a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 42:5a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 14:1a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
