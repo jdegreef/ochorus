@@ -299,7 +299,7 @@
 	     carrying a trail. Detail pages (a book, an author) still get one, where
 	     the hierarchy is real. The BreadcrumbList JSON-LD stays — it describes
 	     the page's position for search results, which is still true. -->
-	<PageHeader eyebrow={t('bios.eyebrow')} title={t('bios.title')} tagline={t('bios.tagline')} />
+	<PageHeader title={t('nav.biographies')} tagline={t('bios.tagline')} />
 
 	<!-- Controls + A–Z, pinned under the app nav (which is itself sticky, hence
 	     the --appnav-h offset). With one writer per row the list is 35 screens
