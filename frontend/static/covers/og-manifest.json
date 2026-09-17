@@ -668,6 +668,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"fr/waiting-on-god": {
+			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6
+		},
 		"fr/baptism-with-the-holy-spirit": {
 			"ground": "bdeed4127b250e9d7f0f03c5a86ac3b99b8e31904f6ea3e75e23f75e2d5ef88b",
 			"style": "revival",
