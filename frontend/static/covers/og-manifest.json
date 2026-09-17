@@ -256,6 +256,13 @@
    "art": false,
    "scrim": 1
   },
+  "brave-for-god-2": {
+   "ground": "a77cb676c27c27ee7a6f321b2f8601d964dbcdd7a9e62d5ab807ce9c59151c11",
+   "style": "house",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
   "sw/around-the-wicket-gate": {
    "ground": "8ce84580fb0a6d4327977a8918a8bcad1d419a77bf91022769fdfe431fb84907",
    "style": "revival",
