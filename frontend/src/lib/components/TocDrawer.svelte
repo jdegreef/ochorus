@@ -128,7 +128,7 @@
 							<button
 								class="bm-remove"
 								onclick={() => removeBookmarkUndoable(bm.id, { inline: true })}
-								aria-label={t('reader.bookmark')}><Icon name="close" size={14} /></button
+								aria-label={t('reader.removeBookmark')}><Icon name="close" size={14} /></button
 							>
 						</li>
 					{/each}
