@@ -1057,4 +1057,66 @@ SERMONS: list[SermonEntry] = [
         "r-a-torrey", "sermonindex",
         _SI + "ra-torrey/the-drama-of-life-in-three-acts/", scripture_ref="Luke 15:11",
     ),
+    # Corrie ten Boom — transcribed talks from SermonIndex (in copyright; the
+    # fixtures carry an `attribution` line so the reader never labels them public
+    # domain). Her enduring themes: surrender, forgiveness, the love of Christ,
+    # prayer, and steadfastness in tribulation.
+    SermonEntry(
+        "total-surrender", "Total Surrender", "corrie-ten-boom", "sermonindex",
+        _SI + "corrie-ten-boom/total-surrender/",
+    ),
+    SermonEntry(
+        "the-love-of-christ", "The Love of Christ", "corrie-ten-boom", "sermonindex",
+        _SI + "corrie-ten-boom/the-love-of-christ/",
+    ),
+    SermonEntry(
+        "power-in-prayer", "Power in Prayer", "corrie-ten-boom", "sermonindex",
+        _SI + "corrie-ten-boom/power-in-prayer/",
+    ),
+    SermonEntry(
+        "how-to-forgive", "How to Forgive", "corrie-ten-boom", "sermonindex",
+        _SI + "corrie-ten-boom/how-to-forgive/",
+    ),
+    SermonEntry(
+        "tribulation", "Tribulation", "corrie-ten-boom", "sermonindex",
+        _SI + "corrie-ten-boom/tribulation/",
+    ),
+    SermonEntry(
+        "the-greatest-of-these-is-love", "The Greatest of These Is Love",
+        "corrie-ten-boom", "sermonindex",
+        _SI + "corrie-ten-boom/the-greatest-of-these-is-love/",
+        scripture_ref="1 Corinthians 13:13",
+    ),
+    # Elisabeth Elliot — transcribed conference talks from SermonIndex (in
+    # copyright; attribution as above). Her short "Gateway to Joy" devotionals
+    # are left off (they fall under the importer's word floor). Themes: a quiet
+    # heart, the cross, holiness, and the pilgrim life.
+    SermonEntry(
+        "i-keep-a-quiet-heart", "I Keep a Quiet Heart", "elisabeth-elliot",
+        "sermonindex", _SI + "elisabeth-elliot/i-keep-a-quiet-heart/",
+        scripture_ref="Psalm 131:2",
+    ),
+    SermonEntry(
+        "how-to-find-rest", "How to Find Rest", "elisabeth-elliot", "sermonindex",
+        _SI + "elisabeth-elliot/how-to-find-rest/",
+    ),
+    SermonEntry(
+        "the-meaning-of-the-cross", "The Meaning of the Cross", "elisabeth-elliot",
+        "sermonindex", _SI + "elisabeth-elliot/meaning-of-the-cross/",
+    ),
+    SermonEntry(
+        "hearts-set-on-pilgrimage", "Hearts Set on Pilgrimage", "elisabeth-elliot",
+        "sermonindex", _SI + "elisabeth-elliot/hearts-set-on-pilgrimage/",
+        scripture_ref="Psalm 84:5",
+    ),
+    SermonEntry(
+        "christ-lives-in-me", "Christ Lives in Me", "elisabeth-elliot",
+        "sermonindex", _SI + "elisabeth-elliot/christ-lives-in-me/",
+        scripture_ref="Galatians 2:20",
+    ),
+    SermonEntry(
+        "women-that-make-a-difference", "Women That Make a Difference",
+        "elisabeth-elliot", "sermonindex",
+        _SI + "elisabeth-elliot/women-that-make-a-difference/",
+    ),
 ]

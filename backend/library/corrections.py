@@ -4854,3 +4854,22 @@ BODY_CORRECTIONS.setdefault("the-drama-of-life-in-three-acts", {}).setdefault("r
     ("his own way- It is either", "his own way—It is either"),
     ("their feebleness- The old man", "their feebleness—The old man"),
 ])
+
+# Corrie ten Boom "How to Forgive" (SermonIndex) opens with an emcee's spoken
+# introduction — two paragraphs that are not ten Boom — before she takes over
+# ("Corrie? I'm so glad I am again here."). Strip the introduction so the sermon
+# begins with her own words. Removing it also clears the hyphen-space audit
+# finding it carried ("Corrie Ten- Corrie Tenboom").
+BODY_CORRECTIONS.setdefault("how-to-forgive", {}).setdefault("replacements", []).append(
+    (
+        "<p>It's a real pleasure to introduce Corrie Ten- Corrie Tenboom to you. "
+        "To many of you, I don't think she needs an introduction. But I'm going to "
+        "introduce her by what she calls herself, a tramp for Jesus.</p><p>That's "
+        "just a servant of Jesus. I think that's the best way that we could say "
+        "Corrie is just a servant of Jesus Christ, just like all of us are here "
+        "this morning. And if his servant comes, as his servants are sitting out "
+        "there, let's just listen to what Jesus wants to say to us in a personal "
+        "way today.</p><p>Corrie? ",
+        "<p>",
+    )
+)
