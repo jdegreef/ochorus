@@ -764,6 +764,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"fr/purity-of-heart": {
+			"ground": "1fe8f872cc1054134db78c2b92194f37168a9e5d5c340921e7fd84980a3c12a3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35
+		},
 		"fr/the-inner-chamber": {
 			"ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
 			"style": "devotional",
