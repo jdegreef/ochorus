@@ -236,8 +236,7 @@
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
 	<PageHeader
-		eyebrow={t('nav.sermons')}
-		title={t('sermons.title')}
+		title={t('nav.sermons')}
 		tagline={t('sermons.tagline')}
 		meta={sermons.length ? sermonCounts : undefined}
 	/>
