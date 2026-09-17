@@ -448,6 +448,34 @@
 		</div>
 	</header>
 
+	<!-- On-page jump navigation. Sits directly under the masthead's action row —
+	     a full-width section rule the reader meets before the timeline — then pins
+	     under the app nav (`--appnav-h`) on scroll; its measured height feeds
+	     `--pinned-offset` above. Hidden in focus mode with the rest of the page
+	     context. Only shown when there are ≥2 sections to move between. -->
+	{#if showSubnav}
+		<nav
+			bind:clientHeight={subnavH}
+			class="author-subnav sticky z-20 mt-6 border-b border-border bg-bg"
+			style="top: var(--appnav-h, 0px)"
+			aria-label={t('a11y.pageSections')}
+		>
+			<ul class="flex justify-center gap-1 overflow-x-auto">
+				{#each navItems as item (item.id)}
+					<li>
+						<a
+							href="#{item.id}"
+							class="subnav-link"
+							class:is-active={spy.active === item.id}
+							aria-current={spy.active === item.id ? 'true' : undefined}
+							onclick={(e) => jumpTo(e, item.id)}>{item.label}</a
+						>
+					</li>
+				{/each}
+			</ul>
+		</nav>
+	{/if}
+
 	<!-- Lifespan timeline: their own milestones when curated, else the bare
 	     lifespan bar (see LifeTimeline). -->
 	<LifeTimeline
@@ -489,33 +517,6 @@
 				<span class="text-muted sm:ms-auto">{t('author.allWorks')} · {readingTime(totalWords)}</span>
 			{/if}
 		</div>
-	{/if}
-
-	<!-- On-page jump navigation. Pinned under the app nav (`--appnav-h`) exactly
-	     like the biographies index's controls bar; its measured height feeds
-	     `--pinned-offset` above. Hidden in focus mode with the rest of the page
-	     context. Only shown when there are ≥2 sections to move between. -->
-	{#if showSubnav}
-		<nav
-			bind:clientHeight={subnavH}
-			class="author-subnav sticky z-20 mx-auto mt-8 max-w-[40rem] border-b border-border bg-bg"
-			style="top: var(--appnav-h, 0px)"
-			aria-label={t('a11y.pageSections')}
-		>
-			<ul class="flex justify-center gap-1 overflow-x-auto">
-				{#each navItems as item (item.id)}
-					<li>
-						<a
-							href="#{item.id}"
-							class="subnav-link"
-							class:is-active={spy.active === item.id}
-							aria-current={spy.active === item.id ? 'true' : undefined}
-							onclick={(e) => jumpTo(e, item.id)}>{item.label}</a
-						>
-					</li>
-				{/each}
-			</ul>
-		</nav>
 	{/if}
 	{/if}
 
