@@ -1601,18 +1601,18 @@
    "scrim": 1
   },
   "the-bruised-reed": {
-   "ground": "5b7d944b3bfd5306590f62ffcd423c9d54c880766807d2557054d03ef983c938",
+   "ground": "b787f60e6baaa7ecc6924988197a601ff65c8217645d46bb8bb7e8c5c1335a5f",
    "style": "press",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.85
   },
   "pt/the-bruised-reed": {
-   "ground": "1914990859ba5573963ebb2055c965e7197f56c27a7aba0a48d65b26d056f4b2",
+   "ground": "10586d2aac80ebc4ffa8a6d42cc3f92381df370d688a17e482bdc91bce2f155e",
    "style": "press",
    "script": "latin",
-   "art": false,
-   "scrim": 1
+   "art": true,
+   "scrim": 0.85
   },
   "the-fourfold-gospel": {
    "ground": "db69f96349627742c737be57da3e78156d0cbc57c92d6ab8efd4dc4b8662a828",

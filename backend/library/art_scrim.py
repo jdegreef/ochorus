@@ -81,6 +81,7 @@ ART_SCRIM: dict[str, float] = {
     "stepping-stones-2": 0.70,
     "talks-to-the-farmer": 0.50,
     "ten-commandments": 0.90,
+    "the-bruised-reed": 0.85,
     "the-christians-secret-of-a-happy-life-4": 0.45,
     "the-fourfold-gospel": 0.85,
     "the-fundamental-doctrines-of-the-christian-faith": 0.95,

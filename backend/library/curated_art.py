@@ -558,6 +558,18 @@ CURATED: dict[str, Artwork] = {
         "quiet town at its most composed — a still canal, a bridge, the ordinary "
         "way walked with care — in Law's own century.",
     ),
+    # ── Batch 15 · Richard Sibbes (the last reachable single) ──────────────
+    # The Bruised Reed came out of the deferred set once a tender Western marsh
+    # surfaced on Cleveland. Its shelf-mates Carmichael and Crowther still wait
+    # for AIC (a tropical/Orientalist source the Met and Cleveland can't give),
+    # and the two East-African-Revival Originals are held for an art-direction
+    # call, not museum art.
+    "the-bruised-reed": Artwork(
+        "cma", 140341, "Jules Dupré", "Marshland", "1860s–70s",
+        "Isaiah's bruised reed and smoking flax, for people who feel barely "
+        "alight. Dupré lays a low marsh under a vast, tender sky — the gentlest "
+        "of the Puritans given the gentlest weather.",
+    ),
 }
 
 
