@@ -1,0 +1,220 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "charles-h-spurgeon"
+  ],
+  "slug": "talks-to-the-farmer-children",
+  "language": "en",
+  "title": "Talks to the Farmer (For Children)",
+  "subtitle": "",
+  "description": "Charles Spurgeon saw God’s truth hiding in an ordinary farm — a weedy field, a sower’s seed, the first green shoot of spring, sheep at shearing time, and the barn at harvest. This children’s edition retells his farm pictures in short, simple chapters made to be read aloud: a verse, a little story from the farm, one thing it means for you, and a short prayer to finish.",
+  "qa": [
+   {
+    "question": "What is Talks to the Farmer (For Children) about?",
+    "answer": "It is a children’s version of Charles Spurgeon’s Talks to the Farmer. Each short chapter takes one picture from farm life — a broken fence, a sower planting seeds, the first shoot of spring, sheep being sheared, the harvest — and gently shows what it teaches us about God, in simple words for young readers."
+   },
+   {
+    "question": "Who was Charles Spurgeon?",
+    "answer": "He was a famous preacher who lived in London a long time ago and loved to explain big truths about God using everyday things like farms, weather and harvest. That is exactly why his farm stories work so well for children."
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells a little story from the farm, shows one simple thing it means for you, and ends with a short prayer."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children — to be read aloud by a grown-up, or read by an older child on their own. Spurgeon’s fuller, unabridged Talks to the Farmer is also available for older readers, along with a version made for teenagers."
+   },
+   {
+    "question": "Why does it use farm stories to teach about God?",
+    "answer": "Because Jesus did too — his story of the farmer sowing seed is one of the best-known in the Bible. A picture you can see, like a seed or a sheep or a harvest, helps a child remember a truth far better than a long explanation."
+   },
+   {
+    "question": "What are some of the stories in the book?",
+    "answer": "It follows the farming year. There is a weedy field that a lazy man left alone, a farmer sowing his seeds, frost melting away into spring, the first green shoot pushing up through the ground, sheep at shearing time, poor Ruth gathering grain, and the harvest gathered safely into the barn. Each little story teaches one simple thing about God."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "",
+  "cover_url": "",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 21,
+  "is_published": false,
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Sluggard's Field",
+  "body_html": "<blockquote>“I walked past a lazy man’s field, and it was full of weeds and thorns.” — from Proverbs 24</blockquote> <p>Wise King Solomon went for a walk one day, and he stopped to look at a little farm. Oh dear — what a mess it was! Prickly weeds and thistles grew everywhere. You could hardly see the ground.</p> <p>Now, the man who owned that field was not a wicked man. He never planted a single weed. So how did it get so full of them?</p> <p>Here is the answer, and it is a bit surprising. He didn’t do anything at all! He was lazy. He never pulled the weeds, and he never planted good seeds. And do you know what? A field never stays empty. If you don’t grow good plants in it, weeds grow all by themselves. Nobody has to plant weeds — they just come.</p> <p>Your heart is a little like that field. The good things you do — saying your prayers, being kind, telling the truth, obeying — those are like good plants growing. But if you stop doing the good things and just do nothing, other things grow instead, all on their own. Grumpiness. Unkind words. Forgetting about God.</p> <p>So don’t wait! Don’t say, “I’ll be good tomorrow.” The lazy man always said “tomorrow,” and his whole field turned to weeds. Plant a good seed today — a kind word, a little prayer — and let it grow.</p> <p><em>Dear God, help me not to be lazy. Help me to plant good things in my heart today, and not wait until tomorrow. Amen.</em></p>",
+  "body_text": "“I walked past a lazy man’s field, and it was full of weeds and thorns.” — from Proverbs 24 Wise King Solomon went for a walk one day, and he stopped to look at a little farm. Oh dear — what a mess it was! Prickly weeds and thistles grew everywhere. You could hardly see the ground. Now, the man who owned that field was not a wicked man. He never planted a single weed. So how did it get so full of them? Here is the answer, and it is a bit surprising. He didn’t do anything at all! He was lazy. He never pulled the weeds, and he never planted good seeds. And do you know what? A field never stays empty. If you don’t grow good plants in it, weeds grow all by themselves. Nobody has to plant weeds — they just come. Your heart is a little like that field. The good things you do — saying your prayers, being kind, telling the truth, obeying — those are like good plants growing. But if you stop doing the good things and just do nothing, other things grow instead, all on their own. Grumpiness. Unkind words. Forgetting about God. So don’t wait! Don’t say, “I’ll be good tomorrow.” The lazy man always said “tomorrow,” and his whole field turned to weeds. Plant a good seed today — a kind word, a little prayer — and let it grow. Dear God, help me not to be lazy. Help me to plant good things in my heart today, and not wait until tomorrow. Amen.",
+  "word_count": 265
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "The Broken Fence",
+  "body_html": "<blockquote>“I walked past a lazy man’s field, and it was full of weeds, and its stone wall was broken down.” — from Proverbs 24</blockquote> <p>One day, wise King Solomon went for a walk. He stopped beside a little farm, and he looked at it for a long time.</p> <p>It was a mess! Weeds and prickly thistles grew everywhere. And the stone wall around the field had fallen down, with big gaps in it.</p> <p>Now, the man who owned that farm was not a wicked man. He never <em>knocked</em> the wall down. That is the funny thing. He was just lazy. When a stone fell out, he said, “I’ll fix it tomorrow.” But tomorrow he said, “I’ll fix it tomorrow” all over again. So the wall stayed broken.</p> <p>And do you know what happens to a field when the wall is broken? Everything gets in! Sheep and goats wander through the gaps and eat all the good plants. Weeds blow in and take over. And when the rain comes hard, there is no wall to hold the good soil, so it washes away.</p> <p>That poor, lazy man lost his whole field — not because he did something bad, but because he <em>didn’t do anything at all.</em></p> <p>Your heart has a wall too. It is made of good things that keep you safe: saying your prayers, listening to the people who teach you about God, and being brave enough to say “no” when something is wrong.</p> <p>If we get lazy and let those good things go, the wall gets gaps in it. And then all sorts of bad things can wander in.</p> <p>So keep your wall strong! And if a stone has fallen out, you don’t have to fix everything today. Just pick up one stone and put it back.</p> <p><em>Dear God, help me keep the good wall around my heart. When a stone falls out, help me put it back straight away. Amen.</em></p>",
+  "body_text": "“I walked past a lazy man’s field, and it was full of weeds, and its stone wall was broken down.” — from Proverbs 24 One day, wise King Solomon went for a walk. He stopped beside a little farm, and he looked at it for a long time. It was a mess! Weeds and prickly thistles grew everywhere. And the stone wall around the field had fallen down, with big gaps in it. Now, the man who owned that farm was not a wicked man. He never knocked the wall down. That is the funny thing. He was just lazy. When a stone fell out, he said, “I’ll fix it tomorrow.” But tomorrow he said, “I’ll fix it tomorrow” all over again. So the wall stayed broken. And do you know what happens to a field when the wall is broken? Everything gets in! Sheep and goats wander through the gaps and eat all the good plants. Weeds blow in and take over. And when the rain comes hard, there is no wall to hold the good soil, so it washes away. That poor, lazy man lost his whole field — not because he did something bad, but because he didn’t do anything at all. Your heart has a wall too. It is made of good things that keep you safe: saying your prayers, listening to the people who teach you about God, and being brave enough to say “no” when something is wrong. If we get lazy and let those good things go, the wall gets gaps in it. And then all sorts of bad things can wander in. So keep your wall strong! And if a stone has fallen out, you don’t have to fix everything today. Just pick up one stone and put it back. Dear God, help me keep the good wall around my heart. When a stone falls out, help me put it back straight away. Amen.",
+  "word_count": 322
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "Frost and Thaw",
+  "body_html": "<blockquote>“He gives the snow. He sends his word, and melts it away.” — from Psalm 147</blockquote> <p>Have you ever seen the world on a frosty winter morning? Everything is hard and white and frozen. The puddles turn to ice. The ground is as hard as stone.</p> <p>Then, after a while, a warm wind blows. The sun comes out. And in just a few hours, all the ice and frost melt away into water, as if they were never there!</p> <p>Who does that? The Bible says God does. He sends the frost, and he sends the warm wind that melts it. Both of them come from him.</p> <p>Something like that can happen inside us, too. Sometimes we do something wrong, and then we feel it. Our heart goes cold and sad and sorry. That sad, sorry feeling is a bit like the frost.</p> <p>But that is not the end of the story! When we tell God we are sorry, he sends his love like a warm spring wind. It melts the cold sadness away, and he forgives us, and our heart feels happy and warm again.</p> <p>Only God can melt a heart like that. We cannot do it ourselves. So if you ever feel cold and sorry inside because of something you did, don’t stay frozen. Tell God. He loves to send the warm wind.</p> <p><em>Dear God, when my heart feels cold and sorry, please send your warm love to melt it, and forgive me. Amen.</em></p>",
+  "body_text": "“He gives the snow. He sends his word, and melts it away.” — from Psalm 147 Have you ever seen the world on a frosty winter morning? Everything is hard and white and frozen. The puddles turn to ice. The ground is as hard as stone. Then, after a while, a warm wind blows. The sun comes out. And in just a few hours, all the ice and frost melt away into water, as if they were never there! Who does that? The Bible says God does. He sends the frost, and he sends the warm wind that melts it. Both of them come from him. Something like that can happen inside us, too. Sometimes we do something wrong, and then we feel it. Our heart goes cold and sad and sorry. That sad, sorry feeling is a bit like the frost. But that is not the end of the story! When we tell God we are sorry, he sends his love like a warm spring wind. It melts the cold sadness away, and he forgives us, and our heart feels happy and warm again. Only God can melt a heart like that. We cannot do it ourselves. So if you ever feel cold and sorry inside because of something you did, don’t stay frozen. Tell God. He loves to send the warm wind. Dear God, when my heart feels cold and sorry, please send your warm love to melt it, and forgive me. Amen.",
+  "word_count": 245
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "The Grain That Grows",
+  "body_html": "<blockquote>“Unless a seed falls into the ground, it stays just one seed. But if it does, it grows into much more.” — from John 12</blockquote> <p>Imagine you are holding one little seed in your hand. Just one.</p> <p>Now, what if you kept it safe in a jar on a shelf, so nothing could ever happen to it? In a year, how many seeds would you have? Still just one! It would stay one lonely little seed forever.</p> <p>But what if you planted it in the ground instead? Something amazing happens under the soil. The little seed splits open and changes — and up grows a tall plant, with lots and lots of new seeds on it! One seed became many, because it was planted.</p> <p>Jesus said he was like that seed. He was willing to give up his own life, like a seed going into the ground — and because he did, so many, many people can now have new life with God. He didn’t keep his life safe just for himself. He gave it, and it grew into a huge harvest of people who love him.</p> <p>And Jesus said we can be like that too. If you hold on to everything just for yourself — always wanting to be first, never sharing — you stay small, like one seed in a jar. But if you give and share and think of others, your life grows into something big and beautiful.</p> <p>Giving is not losing. Giving is how good things grow.</p> <p><em>Dear God, thank you for Jesus, who gave his life for me. Help me to give and share, so good things can grow. Amen.</em></p>",
+  "body_text": "“Unless a seed falls into the ground, it stays just one seed. But if it does, it grows into much more.” — from John 12 Imagine you are holding one little seed in your hand. Just one. Now, what if you kept it safe in a jar on a shelf, so nothing could ever happen to it? In a year, how many seeds would you have? Still just one! It would stay one lonely little seed forever. But what if you planted it in the ground instead? Something amazing happens under the soil. The little seed splits open and changes — and up grows a tall plant, with lots and lots of new seeds on it! One seed became many, because it was planted. Jesus said he was like that seed. He was willing to give up his own life, like a seed going into the ground — and because he did, so many, many people can now have new life with God. He didn’t keep his life safe just for himself. He gave it, and it grew into a huge harvest of people who love him. And Jesus said we can be like that too. If you hold on to everything just for yourself — always wanting to be first, never sharing — you stay small, like one seed in a jar. But if you give and share and think of others, your life grows into something big and beautiful. Giving is not losing. Giving is how good things grow. Dear God, thank you for Jesus, who gave his life for me. Help me to give and share, so good things can grow. Amen.",
+  "word_count": 275
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "The Sower",
+  "body_html": "<blockquote>“A farmer went out to plant his seeds.” — from Luke 8</blockquote> <p>Once there was a farmer who went out to plant seeds. He reached into his bag, took out a big handful, and threw them across his field. Let’s follow the seeds and see where they landed!</p> <p>Some seeds fell on the <strong>hard path</strong>, where everyone walked. The path was too hard for the seeds to sink in. So the birds swooped down and — gobble, gobble — ate them all up.</p> <p>Some seeds fell on <strong>rocky ground</strong>, where the soil was thin. These seeds grew fast! But their roots couldn’t go down deep. So when the hot sun came out, the little plants dried up and died.</p> <p>Some seeds fell where <strong>thorns and weeds</strong> were growing. The seeds started to grow — but the weeds grew faster and taller, and crowded them out, until the little plants had no room and no sunshine.</p> <p>But some seeds fell on <strong>good, soft soil.</strong> These seeds grew down deep and up tall, and they made lots and lots of new grain. What a harvest!</p> <p>Jesus told this story, and then he told us what it means. The seed is God’s word. And the different kinds of ground are like different kinds of hearts.</p> <p>Is your heart like the hard path, too busy to listen? Like the rocky ground, excited for a minute and then forgetting? Like the weedy ground, too full of other things? Or is it like the good soil, ready to listen and grow?</p> <p>Here is the happy secret: even hard ground can be dug up and made soft and good. If you ask him, God will get your heart ready, so his word can grow big and strong inside you.</p> <p><em>Dear God, please make my heart like the good soil, ready to listen to you and grow. Amen.</em></p>",
+  "body_text": "“A farmer went out to plant his seeds.” — from Luke 8 Once there was a farmer who went out to plant seeds. He reached into his bag, took out a big handful, and threw them across his field. Let’s follow the seeds and see where they landed! Some seeds fell on the hard path, where everyone walked. The path was too hard for the seeds to sink in. So the birds swooped down and — gobble, gobble — ate them all up. Some seeds fell on rocky ground, where the soil was thin. These seeds grew fast! But their roots couldn’t go down deep. So when the hot sun came out, the little plants dried up and died. Some seeds fell where thorns and weeds were growing. The seeds started to grow — but the weeds grew faster and taller, and crowded them out, until the little plants had no room and no sunshine. But some seeds fell on good, soft soil. These seeds grew down deep and up tall, and they made lots and lots of new grain. What a harvest! Jesus told this story, and then he told us what it means. The seed is God’s word. And the different kinds of ground are like different kinds of hearts. Is your heart like the hard path, too busy to listen? Like the rocky ground, excited for a minute and then forgetting? Like the weedy ground, too full of other things? Or is it like the good soil, ready to listen and grow? Here is the happy secret: even hard ground can be dug up and made soft and good. If you ask him, God will get your heart ready, so his word can grow big and strong inside you. Dear God, please make my heart like the good soil, ready to listen to you and grow. Amen.",
+  "word_count": 312
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "Spring in the Heart",
+  "body_html": "<blockquote>“You take care of the earth and water it. You bless the little plants that grow.” — from Psalm 65</blockquote> <p>Winter is cold, and the ground looks brown and bare and empty. Nothing seems to be happening at all.</p> <p>But then spring comes. And one day, if you look very closely, you will see it — a tiny green shoot, pushing up through the cold, hard soil. It is ever so small. You could almost step on it without noticing. But it is alive! And that tiny green shoot is the very beginning of a whole field of wheat.</p> <p>When you first start to love God, it can be small like that. Maybe you say a little prayer. Maybe you want to be good. Maybe you believe in Jesus just a little bit. It might feel too small to matter.</p> <p>But it matters so much! God sees that tiny green shoot in your heart, and it makes him very happy. A farmer doesn’t stamp on a little shoot because it isn’t a big plant yet — he takes care of it and waters it and helps it grow. That is exactly what God does with you.</p> <p>So never think your love for God is too small to count. The biggest, tallest wheat in the whole field started as one tiny green shoot. Keep turning toward God, like a little plant turning to the sun, and he will help you grow.</p> <p><em>Dear God, thank you that even my smallest love for you matters. Please help it grow bigger and stronger. Amen.</em></p>",
+  "body_text": "“You take care of the earth and water it. You bless the little plants that grow.” — from Psalm 65 Winter is cold, and the ground looks brown and bare and empty. Nothing seems to be happening at all. But then spring comes. And one day, if you look very closely, you will see it — a tiny green shoot, pushing up through the cold, hard soil. It is ever so small. You could almost step on it without noticing. But it is alive! And that tiny green shoot is the very beginning of a whole field of wheat. When you first start to love God, it can be small like that. Maybe you say a little prayer. Maybe you want to be good. Maybe you believe in Jesus just a little bit. It might feel too small to matter. But it matters so much! God sees that tiny green shoot in your heart, and it makes him very happy. A farmer doesn’t stamp on a little shoot because it isn’t a big plant yet — he takes care of it and waters it and helps it grow. That is exactly what God does with you. So never think your love for God is too small to count. The biggest, tallest wheat in the whole field started as one tiny green shoot. Keep turning toward God, like a little plant turning to the sun, and he will help you grow. Dear God, thank you that even my smallest love for you matters. Please help it grow bigger and stronger. Amen.",
+  "word_count": 260
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "Sheep Before the Shearers",
+  "body_html": "<blockquote>“He was quiet, like a little sheep.” — from Isaiah 53</blockquote> <p>Have you ever seen a sheep with its thick, woolly coat? Once a year, the farmer gives each sheep a haircut. It’s called shearing. He snips off all the heavy wool so the sheep will be cool and comfy in the warm summer.</p> <p>Now, a wise sheep does a clever thing while it is being sheared. It lies very, very <em>still.</em> And because it stays still, the sharp shears never hurt it at all. But if a sheep kicks and wriggles and fights — ouch! — that’s when it can get nicked. The wriggling is what hurts, not the shears.</p> <p>The Bible says that sometimes God is like that gentle farmer, and we are like the sheep. Sometimes God takes something away from us that we love. It can make us very sad, like losing our warm woolly coat.</p> <p>But listen — here are three things to remember.</p> <p>God only shears in the <em>warm</em> weather, never in the freezing cold. That means God knows the right time, and he will never give you more than you can bear.</p> <p>The wool always grows <em>back.</em> God never takes something away without having something good to give.</p> <p>And it hurts least when you stay <em>still</em> and trust him, instead of kicking and fighting.</p> <p>And do you know who lay perfectly still, like a little sheep? Jesus did. When people were unkind to him, he stayed quiet and gentle, all because he loved us. So when a hard thing comes, you can be brave and still, just like Jesus.</p> <p><em>Dear God, when something makes me sad, help me stay still and trust you, because I know you love me. Amen.</em></p>",
+  "body_text": "“He was quiet, like a little sheep.” — from Isaiah 53 Have you ever seen a sheep with its thick, woolly coat? Once a year, the farmer gives each sheep a haircut. It’s called shearing. He snips off all the heavy wool so the sheep will be cool and comfy in the warm summer. Now, a wise sheep does a clever thing while it is being sheared. It lies very, very still. And because it stays still, the sharp shears never hurt it at all. But if a sheep kicks and wriggles and fights — ouch! — that’s when it can get nicked. The wriggling is what hurts, not the shears. The Bible says that sometimes God is like that gentle farmer, and we are like the sheep. Sometimes God takes something away from us that we love. It can make us very sad, like losing our warm woolly coat. But listen — here are three things to remember. God only shears in the warm weather, never in the freezing cold. That means God knows the right time, and he will never give you more than you can bear. The wool always grows back. God never takes something away without having something good to give. And it hurts least when you stay still and trust him, instead of kicking and fighting. And do you know who lay perfectly still, like a little sheep? Jesus did. When people were unkind to him, he stayed quiet and gentle, all because he loved us. So when a hard thing comes, you can be brave and still, just like Jesus. Dear God, when something makes me sad, help me stay still and trust you, because I know you love me. Amen.",
+  "word_count": 287
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "In the Hayfield",
+  "body_html": "<blockquote>“He makes the grass grow for the animals.” — from Psalm 104</blockquote> <p>Think about grass. It grows everywhere — in fields, in parks, by the road. You walk on it every day and probably never think about it at all.</p> <p>But here is a question: who makes the grass grow? We might say, “Oh, it just grows by itself.” But it doesn’t, really. God makes every single blade of grass grow. He is that close to the world, and that busy taking care of it.</p> <p>And why does he grow all that grass? The Bible says he grows it “for the animals” — for the cows and the sheep, so they will have plenty to eat. Think about that. God grows food for animals, who can’t even say thank you!</p> <p>So here is something wonderful to remember: if God takes such good care of the grass and the cows and the sheep, how much more does he take care of <em>you?</em></p> <p>Did you know that every little blade of grass gets its own drop of dew in the morning? Not one big drop for the whole field — a little drop for each one. That is how carefully God gives things what they need. And he knows exactly what you need, too.</p> <p>Even when you feel small, or think nobody notices you, God sees you. He has never once forgotten you.</p> <p><em>Dear God, thank you for taking care of even the grass. Thank you for taking care of me. Amen.</em></p>",
+  "body_text": "“He makes the grass grow for the animals.” — from Psalm 104 Think about grass. It grows everywhere — in fields, in parks, by the road. You walk on it every day and probably never think about it at all. But here is a question: who makes the grass grow? We might say, “Oh, it just grows by itself.” But it doesn’t, really. God makes every single blade of grass grow. He is that close to the world, and that busy taking care of it. And why does he grow all that grass? The Bible says he grows it “for the animals” — for the cows and the sheep, so they will have plenty to eat. Think about that. God grows food for animals, who can’t even say thank you! So here is something wonderful to remember: if God takes such good care of the grass and the cows and the sheep, how much more does he take care of you? Did you know that every little blade of grass gets its own drop of dew in the morning? Not one big drop for the whole field — a little drop for each one. That is how carefully God gives things what they need. And he knows exactly what you need, too. Even when you feel small, or think nobody notices you, God sees you. He has never once forgotten you. Dear God, thank you for taking care of even the grass. Thank you for taking care of me. Amen.",
+  "word_count": 250
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "The Joy of Harvest",
+  "body_html": "<blockquote>“They are as happy as people are at harvest time.” — from Isaiah 9</blockquote> <p>All summer long, the farmer works hard. He plants the seeds. He pulls the weeds. He waits and waits for the grain to grow. It takes a long, long time.</p> <p>And then, at last, comes the best day of all — harvest! The grain is golden and ripe. Everyone helps gather it in. The barn fills right up. And when the work is done, there is a big, happy harvest feast, and everybody celebrates together.</p> <p>The Bible says God’s people have happy times like harvest time. And do you know what the very happiest one is? It is when someone comes to love God.</p> <p>The man who first told these farm stories, Spurgeon, said that the happiest day of his whole life was when he helped just one person come to know Jesus. He said he was happier than if someone had given him all the treasure in the world!</p> <p>And there is a farmer’s rule worth knowing: <strong>you grow what you plant.</strong> If a farmer plants good wheat seeds, he gets good wheat. So if you plant good things in your life now — kindness, prayers, love for God — one day you will have a wonderful, happy harvest.</p> <p>What will you plant today?</p> <p><em>Dear God, help me to plant good and kind things every day, and thank you for the happy harvest you are growing in me. Amen.</em></p>",
+  "body_text": "“They are as happy as people are at harvest time.” — from Isaiah 9 All summer long, the farmer works hard. He plants the seeds. He pulls the weeds. He waits and waits for the grain to grow. It takes a long, long time. And then, at last, comes the best day of all — harvest! The grain is golden and ripe. Everyone helps gather it in. The barn fills right up. And when the work is done, there is a big, happy harvest feast, and everybody celebrates together. The Bible says God’s people have happy times like harvest time. And do you know what the very happiest one is? It is when someone comes to love God. The man who first told these farm stories, Spurgeon, said that the happiest day of his whole life was when he helped just one person come to know Jesus. He said he was happier than if someone had given him all the treasure in the world! And there is a farmer’s rule worth knowing: you grow what you plant. If a farmer plants good wheat seeds, he gets good wheat. So if you plant good things in your life now — kindness, prayers, love for God — one day you will have a wonderful, happy harvest. What will you plant today? Dear God, help me to plant good and kind things every day, and thank you for the happy harvest you are growing in me. Amen.",
+  "word_count": 244
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "Gleaning",
+  "body_html": "<blockquote>“Let her gather grain, and be kind to her.” — from the story of Ruth</blockquote> <p>Long ago there was a young woman named Ruth. She was poor, and she had no food. So she did what poor people did back then: she went out to the fields to <em>glean.</em></p> <p>Gleaning meant walking behind the farm workers and picking up the little bits of grain they dropped as they worked. The leftovers. It was hard work, bending down again and again, just to gather a little.</p> <p>Now, the field Ruth went to belonged to a good, kind man named Boaz. And when Boaz saw Ruth working so hard, he did the loveliest thing. He quietly told his workers, “Drop some extra grain on purpose, right where she can find it. And be kind to her.” He made sure she would have plenty — and he never even told her he had done it.</p> <p>God is like kind Boaz. Maybe you feel small, or think you don’t have very much. But God has so many good things for you, and he wants you to come and gather them up. All you have to do is bend down and pick them up — that means come to him, listen to him, and pray.</p> <p>And here is a lovely bit: when Ruth had gathered enough, she took some home to share with someone who was hungry. When God fills your heart with good things, you can share them with others, too.</p> <p><em>Dear God, thank you for being so kind and generous to me. Help me to come to you, and to share your good gifts with others. Amen.</em></p>",
+  "body_text": "“Let her gather grain, and be kind to her.” — from the story of Ruth Long ago there was a young woman named Ruth. She was poor, and she had no food. So she did what poor people did back then: she went out to the fields to glean. Gleaning meant walking behind the farm workers and picking up the little bits of grain they dropped as they worked. The leftovers. It was hard work, bending down again and again, just to gather a little. Now, the field Ruth went to belonged to a good, kind man named Boaz. And when Boaz saw Ruth working so hard, he did the loveliest thing. He quietly told his workers, “Drop some extra grain on purpose, right where she can find it. And be kind to her.” He made sure she would have plenty — and he never even told her he had done it. God is like kind Boaz. Maybe you feel small, or think you don’t have very much. But God has so many good things for you, and he wants you to come and gather them up. All you have to do is bend down and pick them up — that means come to him, listen to him, and pray. And here is a lovely bit: when Ruth had gathered enough, she took some home to share with someone who was hungry. When God fills your heart with good things, you can share them with others, too. Dear God, thank you for being so kind and generous to me. Help me to come to you, and to share your good gifts with others. Amen.",
+  "word_count": 274
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "Threshing",
+  "body_html": "<blockquote>“He does not beat the grain forever.” — from Isaiah 28</blockquote> <p>When the wheat is gathered in, there is one more job to do, and it looks a little rough. You see, each grain of wheat is stuck inside a hard, useless shell, called a husk. To get the good grain out, the farmer has to beat it — bang, bang, bang — with a stick. This is called threshing.</p> <p>It might look like the farmer is being unkind to the wheat. But he isn’t! He is setting the good grain free from the shell that is stuck around it. He has to do it, or the good grain would stay trapped inside.</p> <p>Sometimes hard or sad things happen to us, and it can feel a bit like being threshed. But here are two things to remember, and they are both full of comfort.</p> <p>First: the farmer only bothers to thresh the <em>good</em> grain. He leaves the weeds alone. So when a hard time comes, it does not mean God has forgotten you. It means you are precious to him, like good wheat.</p> <p>Second: the farmer never, ever beats the grain forever. He always stops! Hard times do not last forever either. God is gentle and careful, and he will never give you more than you can bear. Soon the beating stops, and the good grain is safe.</p> <p><em>Dear God, when hard things happen, help me remember that you have not forgotten me, and that it will not last forever. Amen.</em></p>",
+  "body_text": "“He does not beat the grain forever.” — from Isaiah 28 When the wheat is gathered in, there is one more job to do, and it looks a little rough. You see, each grain of wheat is stuck inside a hard, useless shell, called a husk. To get the good grain out, the farmer has to beat it — bang, bang, bang — with a stick. This is called threshing. It might look like the farmer is being unkind to the wheat. But he isn’t! He is setting the good grain free from the shell that is stuck around it. He has to do it, or the good grain would stay trapped inside. Sometimes hard or sad things happen to us, and it can feel a bit like being threshed. But here are two things to remember, and they are both full of comfort. First: the farmer only bothers to thresh the good grain. He leaves the weeds alone. So when a hard time comes, it does not mean God has forgotten you. It means you are precious to him, like good wheat. Second: the farmer never, ever beats the grain forever. He always stops! Hard times do not last forever either. God is gentle and careful, and he will never give you more than you can bear. Soon the beating stops, and the good grain is safe. Dear God, when hard things happen, help me remember that you have not forgotten me, and that it will not last forever. Amen.",
+  "word_count": 251
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "Wheat in the Barn",
+  "body_html": "<blockquote>“Gather the wheat into my barn.” — from Matthew 13</blockquote> <p>Here is the very last part of the harvest, and it is the happiest part of all.</p> <p>When the good wheat is finally ready, the farmer gathers it all up and carries it safely inside the barn. And once it is inside, nothing can hurt it anymore. No rain. No frost. No cold wind. It is safe and dry and warm, right where it belongs.</p> <p>Jesus told a story just like this. He said that one day God will gather all his people together — people from every country in the world, big ones and small ones, young ones and old ones — and bring them safely home to be with him. Like wheat gathered into the barn.</p> <p>That safe, happy, forever home is called heaven. It is a place with no more crying and no more sadness — just being with God, and being safe, forever.</p> <p>So we don’t ever need to be afraid of the end. For everyone who loves God, the end is not a sad thing at all. It is like the wheat coming into the barn at last. It is going home.</p> <p>Will you be part of God’s harvest? You can be! Just tell him you want to belong to him. And then, one day, you will be gathered safely home.</p> <p><em>Dear God, thank you that you gather your people safely home. I want to belong to you. Please keep me close, today and forever. Amen.</em></p>",
+  "body_text": "“Gather the wheat into my barn.” — from Matthew 13 Here is the very last part of the harvest, and it is the happiest part of all. When the good wheat is finally ready, the farmer gathers it all up and carries it safely inside the barn. And once it is inside, nothing can hurt it anymore. No rain. No frost. No cold wind. It is safe and dry and warm, right where it belongs. Jesus told a story just like this. He said that one day God will gather all his people together — people from every country in the world, big ones and small ones, young ones and old ones — and bring them safely home to be with him. Like wheat gathered into the barn. That safe, happy, forever home is called heaven. It is a place with no more crying and no more sadness — just being with God, and being safe, forever. So we don’t ever need to be afraid of the end. For everyone who loves God, the end is not a sad thing at all. It is like the wheat coming into the barn at last. It is going home. Will you be part of God’s harvest? You can be! Just tell him you want to belong to him. And then, one day, you will be gathered safely home. Dear God, thank you that you gather your people safely home. I want to belong to you. Please keep me close, today and forever. Amen.",
+  "word_count": 251
+ }
+}
+]
