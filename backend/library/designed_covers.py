@@ -87,6 +87,8 @@ from typing import NamedTuple
 #: committed file. Add an entry when you add a cover; change one only when you
 #: mean to replace the artwork.
 DESIGNED: dict[str, str] = {
+    "/covers/a-retrospect-children.jpg":
+        "df182354203c95fb652f66605aca61511ebf76b1c2f3a4f1dc4930249cfde4c7",
     "/covers/baptism-with-the-holy-spirit.png":
         "d7a50b3b4aef331a353c928d60f5a0a4db8328429a9e024e80dab6f11a8d9667",
     "/covers/clothed-with-strength-and-dignity.jpg":
