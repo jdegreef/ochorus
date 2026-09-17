@@ -707,6 +707,9 @@ class SeedAuthorTranslationsTests(TestCase):
             for tr in rows:
                 self.assertEqual(tr.bio, bios[tr.author.slug].get("bio", ""))
                 self.assertEqual(tr.bio_html, bios[tr.author.slug].get("bio_html", ""))
+                # The translated Q&A rides the same seed (empty for an author with
+                # no <slug>.faq.json yet).
+                self.assertEqual(tr.faq, bios[tr.author.slug].get("faq", []))
                 self.assertFalse(tr.reviewed)
         # One literal oracle, independent of read_bios (which fed the seed too).
         murray_es = AuthorTranslation.objects.get(
@@ -714,6 +717,9 @@ class SeedAuthorTranslationsTests(TestCase):
         )
         self.assertTrue(murray_es.bio.startswith("Andrew Murray hijo"))
         self.assertIn("<", murray_es.bio_html)
+        # Its Q&A came through too — a plain-text {q, a} list, not empty.
+        self.assertTrue(murray_es.faq)
+        self.assertEqual(set(murray_es.faq[0]), {"q", "a"})
 
     def test_upserts_corrections_to_unreviewed_rows(self):
         # The repo data files are the source of truth while a row is
