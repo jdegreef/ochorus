@@ -11,7 +11,40 @@
   "subtitle": "Bunyan's classic retold for young readers by Mary Godolphin",
   "description": "John Bunyan's beloved allegory, retold in the 1860s by “Mary Godolphin” (Lucy Aikin) using only words of one syllable, so that the youngest readers can follow Christian on his journey from the City of Destruction to the Celestial City. The whole story is here — the Slough of Despond, the Wicket Gate, the Cross, Vanity Fair, Doubting Castle and the Delectable Mountains — in the simplest of language, with Christiana's pilgrimage in Part II. A gentle first way into the greatest of English allegories.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Pilgrim's Progress in Words of One Syllable?",
+    "answer": "It is John Bunyan's beloved allegory retold in the 1860s by 'Mary Godolphin' (Lucy Aikin) using only words of one syllable, so that the youngest readers can follow Christian on his journey from the City of Destruction to the Celestial City. The whole story is here — the Slough of Despond, the Wicket Gate, the Cross, Vanity Fair, Doubting Castle, and the Delectable Mountains — in the simplest of language, with Christiana's pilgrimage in the second part."
+   },
+   {
+    "question": "Who retold it, and why in words of one syllable?",
+    "answer": "It was retold by Lucy Aikin, writing under the name 'Mary Godolphin,' who produced several classics in one-syllable words. The aim was to make great books accessible to the youngest children and to those just learning to read, so that even a beginning reader could follow the pilgrim's road in words simple enough to sound out."
+   },
+   {
+    "question": "Is the whole story of Pilgrim's Progress included?",
+    "answer": "Yes — the retelling keeps the whole journey: Christian's flight from the City of Destruction with his burden, the Slough of Despond, the Wicket Gate, the loss of his burden at the Cross, Vanity Fair, Doubting Castle, the Delectable Mountains, and the crossing to the Celestial City. It even includes the second part, Christiana's pilgrimage, so children get the complete allegory in simple form."
+   },
+   {
+    "question": "Does using only one-syllable words change the story?",
+    "answer": "It simplifies the language but keeps the substance. The great scenes, characters, and meaning of Bunyan's allegory all remain; only the vocabulary is reduced so a child can read it. Some of Bunyan's richness of phrasing is necessarily lost, but the gain is that the youngest readers can meet the story for themselves rather than waiting until they are older."
+   },
+   {
+    "question": "Who is this version for?",
+    "answer": "For young children and beginning readers — those not yet ready for Bunyan's original language but old enough to enjoy the adventure. It serves as a gentle first way into the greatest of English allegories, whether read aloud to a child or read by a child just gaining confidence with words."
+   },
+   {
+    "question": "How does it relate to the original Pilgrim's Progress?",
+    "answer": "It is a faithful simplification of the same allegory, not a different story. Children who meet Christian's journey here can later read Bunyan's full original with the shape of the story already familiar, so this version works both as a complete story in itself and as a stepping stone toward the classic."
+   },
+   {
+    "question": "What can children learn from it?",
+    "answer": "The great truths Bunyan built his allegory to teach: that the Christian life is a journey with real dangers and helps, that the burden of sin falls away at the Cross, and that the pilgrim who presses on reaches the Celestial City. Told simply, these lessons reach children as a gripping adventure that is also a picture of faith."
+   },
+   {
+    "question": "Where should a reader begin?",
+    "answer": "At the beginning, with Christian setting out from the City of Destruction, and on through his journey in order. It is a continuous story meant to be read straight through — aloud to younger children or by older ones themselves — so the best way in is simply to start the adventure at its start."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/7088",
