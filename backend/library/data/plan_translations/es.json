@@ -32,5 +32,29 @@
     "note": [
       "«El aposento interior» is the es title of the book itself, so the card and the book a reader lands on say the same thing."
     ]
+  },
+  "grace-for-every-sinner": {
+    "title": "El Camino a Dios: gracia para todo pecador",
+    "description": "Un mes sobre la buena noticia más antigua que existe. El tierno llamado de Richard Baxter a los inconversos, D. L. Moody sobre el camino a Dios, y «Todo por Gracia» de Charles Spurgeon: las guías más sencillas de cómo un pecador es salvo, y de cómo saberlo.",
+    "note": [
+      "Queue job #1606. The description names D. L. Moody's book the way its shipped Spanish edition does — «El Camino a Dios» (the-way-to-god.es title verbatim) — and Spurgeon's as «Todo por Gracia» (all-of-grace.es title verbatim), so the plan card and the books it opens agree.",
+      "a-call-to-the-unconverted has NO Spanish edition yet (open job #1366), so seed_plans will NOT create this (grace-for-every-sinner, es) row today — the prose ships ahead so that book's arrival cannot publish an English-titled plan (the #819 defect). Whoever translates a-call-to-the-unconverted should keep or adjust this card's phrasing in the same PR."
+    ]
+  },
+  "faith-in-the-fire": {
+    "title": "El Dios de todo consuelo: fe en medio del fuego",
+    "description": "Para los días en que cuesta orar. Hannah Whitall Smith sobre el Dios de todo consuelo, y Gareth Evans sobre confiar en Aquel que sostiene nuestros mañanas: un recorrido de cinco semanas hacia una paz firme cuando la vida es incierta.",
+    "note": [
+      "Queue job #1608. The description echoes Gareth Evans's shipped Spanish edition «Él sostiene mis mañanas» (he-holds-my-tomorrows.es) in the phrase «Aquel que sostiene nuestros mañanas», so the card and the book it opens agree.",
+      "the-god-of-all-comfort has NO Spanish edition yet (open job #1453), so seed_plans will NOT create this (faith-in-the-fire, es) row today — the prose ships ahead so that book's arrival cannot publish an English-titled plan. Whoever translates the-god-of-all-comfort should keep or adjust this card's phrasing in the same PR."
+    ]
+  },
+  "everything-for-christ": {
+    "title": "Todo por Cristo: una vida derramada",
+    "description": "¿Qué cuesta la entrega de todo el corazón, y qué produce? El escrutador diario misionero de David Brainerd, seguido de las historias de hombres y mujeres que lo dieron todo por causa del evangelio: un llamado a la consagración contado a través de vidas que lo respondieron.",
+    "note": [
+      "Queue job #2065. Prose-only translation of the Plan's title and description.",
+      "NEITHER source book has a Spanish edition yet — life-and-diary-of-david-brainerd and men-and-women-who-gave-everything-2 are both untranslated — so seed_plans will NOT create this (everything-for-christ, es) row today. The prose ships ahead so that neither book's arrival can publish an English-titled plan (the #819 defect)."
+    ]
   }
 }
