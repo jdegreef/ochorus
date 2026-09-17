@@ -534,6 +534,7 @@ TOPICS = [
             "divine-songs-for-children",
             "brave-for-god",
             "brave-for-god-2",
+            "brave-for-god-3",
         ],
     ),
 ]
