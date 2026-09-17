@@ -5,12 +5,15 @@ import { describe, expect, it } from 'vitest';
 import type { CoverScript } from './coverStyles';
 import {
 	AUTHOR_STYLE,
+	BOOK_STYLE,
 	COVER_SCRIPTS,
 	COVER_STYLE_IDS,
 	CURSIVE_SCRIPTS,
 	ERA_STYLE,
+	SERIES_VOLUME,
 	coverStyleFor,
-	scriptOf
+	scriptOf,
+	volumeNumeral
 } from './coverStyles';
 import { ERAS, eraOf } from './eras';
 import { COVER_CSS, COVER_CSS_CODE, lastDecl } from '../test/coverCss';
@@ -156,16 +159,68 @@ describe('cover styles', () => {
 		// An admin import, or a contributor added this morning. Every branch has
 		// to land on a real recipe: a book with no style looks broken next to one
 		// with, and "no style" is what a new author is by definition.
-		expect(coverStyleFor(eraOf(1620), 'nobody-in-any-table')).toBe('press');
-		expect(coverStyleFor(eraOf(null), 'nobody-in-any-table')).toBe('house');
+		expect(coverStyleFor(eraOf(1620), 'nobody-in-any-table', 'no-such-book')).toBe('press');
+		expect(coverStyleFor(eraOf(null), 'nobody-in-any-table', 'no-such-book')).toBe('house');
 	});
 
 	it('prefers the author over their century', () => {
 		// Murray is missionary-era, and his era is set in a Victorian display
 		// face; his own books are devotional manuals. Seven editions hang on this
 		// line being read in this order.
-		expect(coverStyleFor(eraOf(1828), 'andrew-murray')).toBe('devotional');
-		expect(coverStyleFor(eraOf(1828), 'charles-h-spurgeon')).toBe('revival');
+		expect(coverStyleFor(eraOf(1828), 'andrew-murray', 'waiting-on-god')).toBe('devotional');
+		expect(coverStyleFor(eraOf(1828), 'charles-h-spurgeon', 'all-of-grace')).toBe('revival');
+	});
+
+	it("prefers a book's audience over its author", () => {
+		// Bunyan is a Puritan, and his own books wear the press. The retelling for
+		// children is the same author and not the same book.
+		expect(coverStyleFor(eraOf(1628), 'john-bunyan', 'pilgrims-progress')).toBe('press');
+		expect(
+			coverStyleFor(eraOf(1628), 'john-bunyan', 'pilgrims-progress-words-of-one-syllable')
+		).toBe('young');
+		// And Ochorus' own books wear the imprint unless they were written for a
+		// child, in which case the shelf they sit on decides.
+		expect(coverStyleFor(eraOf(null), 'ochorus-originals', 'a-hidden-fire')).toBe('originals');
+		expect(coverStyleFor(eraOf(null), 'ochorus-originals', 'brave-for-god')).toBe('young');
+	});
+
+	it('dresses exactly the For Young Readers shelf in the young style', () => {
+		// The table restates the shelf so both renderers can read it; this is
+		// what stops the restatement going stale. A book added to the shelf and
+		// not here keeps its author's century; a book dropped from the shelf and
+		// left here stays dressed for a child.
+		const seed = readFileSync(join(CONTENT, '..', '..', 'topic_seed.py'), 'utf8');
+		const block = /"for-young-readers",[\s\S]*?\[([\s\S]*?)\]/.exec(seed);
+		expect(block, 'for-young-readers is no longer in topic_seed.py').not.toBeNull();
+		const shelf = [...block![1].matchAll(/"([a-z0-9-]+)"/g)].map(([, slug]) => slug).sort();
+		const young = Object.entries(BOOK_STYLE)
+			.filter(([, id]) => id === 'young')
+			.map(([slug]) => slug)
+			.sort();
+		expect(young).toEqual(shelf);
+	});
+
+	it('names only books that exist in the book and series tables', () => {
+		// A misspelt slug is not an error anywhere else — it simply never
+		// matches, and the book it was meant for keeps its old cover.
+		const books = new Set(
+			readdirSync(join(CONTENT, 'books')).map((f) => f.split('.')[0])
+		);
+		for (const slug of [...Object.keys(BOOK_STYLE), ...Object.keys(SERIES_VOLUME)]) {
+			expect(books.has(slug), `${slug} is styled or numbered but is not a book`).toBe(true);
+		}
+	});
+
+	it("numbers a series volume in the edition's own digits", () => {
+		expect(volumeNumeral('brave-for-god-2', 'en')).toBe('2');
+		// The locale's own default numbering system, from CLDR — not a table of
+		// ours. Arabic and Hindi default to Western digits in current data, and
+		// Persian and Marathi do not, so those two show the call is honoured.
+		expect(volumeNumeral('brave-for-god-2', 'fa')).toBe('۲');
+		expect(volumeNumeral('brave-for-god-2', 'mr')).toBe('२');
+		expect(volumeNumeral('waiting-on-god', 'en')).toBeNull();
+		// A tag no browser has heard of still gets a numeral, never a blank ring.
+		expect(volumeNumeral('brave-for-god-3', 'not a tag')).toBe('3');
 	});
 });
 

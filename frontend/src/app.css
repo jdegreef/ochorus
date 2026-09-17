@@ -204,6 +204,18 @@
 	   recipe is PT Serif — and this token names Fraunces itself rather than
 	   opening with var(--font-display), for the reason above. */
 	--cover-face-house: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', var(--font-display);
+	/* The imprint is the house face set louder, so it names the same stack —
+	   its own token only because every recipe must have one to be checked. */
+	--cover-face-originals: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', var(--font-display);
+	/* The one sans on a cover, and the one token that costs no download: every
+	   family in it is already fetched for the interface, in --font-sans's own
+	   order. PT Sans is not optional: Hanken Grotesk ships Cyrillic EXTENDED
+	   only, so a Ukrainian title would otherwise reach a system font.
+	   It ends on generics rather than var(--font-sans) because the share-card
+	   script declares only the cover tokens and --font-display: a var() the
+	   card never declares invalidates the whole stack, and the title lands in
+	   Times with nothing to say so. */
+	--cover-face-young: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'PT Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Runtime theme variables. Default = "lamplight" (dark); [data-theme='light']

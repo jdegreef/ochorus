@@ -39,6 +39,9 @@ export interface CoverCardBook {
 	subtitle?: string | null;
 	/** A `coverStyles` id — `devotional`, `press`, … */
 	style: string;
+	/** The series volume numeral, from `coverStyles.volumeNumeral`; null
+	 *  outside a series. */
+	volume?: string | null;
 	/** A `coverStyles` script suffix, or null for Latin. */
 	script?: string | null;
 	/** The edition's language tag, for shaping. */
@@ -87,6 +90,7 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	return `<div class="${classes.join(' ')}">
 	<div class="byline" dir="auto">${escapeHtml(book.author)}</div>
 	<div class="middle">
+		${book.volume ? `<div class="volume" lang="${lang}">${escapeHtml(book.volume)}</div>` : ''}
 		<div class="title" lang="${lang}" dir="auto">${escapeHtml(book.title)}</div>
 		<div class="rule"></div>
 		${

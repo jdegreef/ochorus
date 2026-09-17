@@ -255,7 +255,7 @@ rgb(0 0 0 / 0.26) 0%,
 	   the contrast AT that height, so a byline sitting higher up the gradient
 	   than the generator's would sit on a lighter tone than the floor was
 	   computed against. */
-	padding: 17cqw 7cqw 9cqw;
+	padding: var(--byline-top) 7cqw 9cqw;
 	color: #fff;
 	text-align: center;
 	/* The frame's distance from the plate edge, named because the press corner
@@ -263,6 +263,11 @@ rgb(0 0 0 / 0.26) 0%,
 	   the frame move out from under them — the drift this file already
 	   documents at the press rules below. */
 	--frame-inset: 4.3cqw;
+	/* The byline's place and size, named for the same reason: the originals
+	   imprint band is drawn behind the byline from these, and a second copy of
+	   the numbers would let the byline move out of its band. */
+	--byline-top: 17cqw;
+	--byline-size: 3.9cqw;
 	/* ONE HAIRLINE INK for every short rule an ornament flanks itself with:
 	   both period marks and the press corners draw the same 1px white at the
 	   same alpha, and they were three separate literals. The alpha is final
@@ -299,7 +304,7 @@ rgb(0 0 0 / 0.26) 0%,
    Tailwind, so a utility class would leave the two renderers disagreeing. */
 .cover-type .byline {
 	font-family: var(--font-display);
-	font-size: 3.9cqw;
+	font-size: var(--byline-size);
 	letter-spacing: 0.28em;
 	text-transform: uppercase;
 	opacity: 0.86;
@@ -599,6 +604,88 @@ rgb(0 0 0 / 0.26) 0%,
 	margin-top: 3.6cqw;
 }
 
+/* ORIGINALS — Ochorus' own imprint. The byline already reads OCHORUS ORIGINALS,
+   so the composition makes that line what it is: an imprint, run as a band
+   across the frame the way a publisher's series banner sets its name apart from
+   an author's. The mark under the title is a solid bar rather than a hairline —
+   the one filled rule in the library, recognisable from across a shelf.
+   The band is drawn BEHIND the byline and never moves it: the byline is an edge
+   `covers.py` places too (see the gate in `coverComposition.test.ts`), so the
+   band is positioned from the same variables, `--byline-top` and
+   `--byline-size`, rather than by boxing the element. It darkens, never
+   lightens, so it only adds to the contrast `ink_safe` floored the plate colour
+   for — PROVIDED it is under the byline. An absolutely positioned pseudo-element
+   paints over the in-flow type after it (and the byline's opacity makes it a
+   layer of its own), so the band has to be sent back explicitly: `isolation`
+   makes this block the stacking context, and `z-index: -1` puts the band
+   beneath its type but above the ground outside it. Left on top it dimmed the
+   byline by a fifth — measured 236 to 188 on its brightest pixel. */
+.cover-type.style-originals {
+	isolation: isolate;
+}
+.cover-type.style-originals::after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	inset: calc(var(--byline-top) - 3.8cqw) var(--frame-inset) auto;
+	height: calc(var(--byline-size) + 7.5cqw);
+	pointer-events: none;
+	background:
+		var(--hairline) top / 100% 1px no-repeat,
+		var(--hairline) bottom / 100% 1px no-repeat,
+		rgb(0 0 0 / 0.2);
+}
+.cover-type.style-originals .rule {
+	width: 8cqw;
+	height: 0.8cqw;
+	margin-top: 5.4cqw;
+	background: rgb(255 255 255 / 0.8);
+}
+.cover-type.style-originals .subtitle {
+	margin-top: 4.4cqw;
+}
+
+/* YOUNG — books written or retold for children. Softer everywhere a title page
+   is hard: the frame's corners rounded, three dots where the others draw a
+   rule, the subtitle upright. Dots in gradients, like the press corners, so
+   they survive a list row where a drawn mark turns to grey. */
+.cover-type.style-young::before {
+	border-radius: 4cqw;
+}
+.cover-type.style-young .rule {
+	width: 9cqw;
+	height: 1.8cqw;
+	margin-top: 4.6cqw;
+	background: radial-gradient(circle, rgb(255 255 255 / 0.8) 0 0.8cqw, transparent 0.9cqw) 0 50% /
+		3cqw 1.8cqw repeat-x;
+}
+.cover-type.style-young .subtitle {
+	margin-top: 3.8cqw;
+	font-style: normal;
+	opacity: 0.9;
+}
+
+/* THE SERIES NUMERAL, for any style: a numeral in a ring above the title, part
+   of the title block so the two are centred together. Outside the container
+   gate like the ornaments, and for the same reason — at shelf size a two-line
+   title is small, and the numeral is then the largest glyph on the cover, the
+   thing that tells three volumes of one series apart. In the house serif on
+   every style, so a series looks like one series whichever recipe dresses it. */
+.cover-type .volume {
+	display: grid;
+	place-items: center;
+	width: 11cqw;
+	height: 11cqw;
+	margin: 0 auto 4.4cqw;
+	border: 1px solid rgb(255 255 255 / 0.6);
+	border-radius: 50%;
+	font-family: var(--font-display);
+	font-size: 6cqw;
+	font-weight: 600;
+	line-height: 1;
+	font-variant-numeric: lining-nums;
+}
+
 /* Two lines at most — the generator's own subtitle budget; past that the plate
    is a thumbnail and the words are unreadable anyway. */
 .cover-type .subtitle {
@@ -718,6 +805,27 @@ rgb(0 0 0 / 0.26) 0%,
 		font-family: var(--cover-face-house);
 		font-weight: 600;
 	}
+	/* The imprint in the house face, set heavier and tighter than the house
+	   recipe — the same voice as the app that publishes it, speaking louder. */
+	.cover-type.style-originals .title {
+		font-family: var(--cover-face-originals);
+		font-weight: 700;
+		font-size: 10.2cqw;
+		line-height: 1.08;
+		letter-spacing: -0.01em;
+	}
+	/* The one sans on a cover: Hanken Grotesk, the interface face, heavy and
+	   large — the register of a picture book rather than a title page, and a
+	   face the reader's device has already downloaded. Its subtitle stays in
+	   the house serif, set upright: a sans title over a serif line is the
+	   picture book's own pairing. */
+	.cover-type.style-young .title {
+		font-family: var(--cover-face-young);
+		font-weight: 800;
+		font-size: 9.6cqw;
+		line-height: 1.06;
+		letter-spacing: -0.015em;
+	}
 
 	/* ── The same evening-out, for the scripts ──────────────────────────────
 	 * INSIDE THE GATE, unlike the corrections at the foot of this file, and the
@@ -799,28 +907,30 @@ rgb(0 0 0 / 0.26) 0%,
 /* ARABIC. Two of these are corrections, not tuning.
  *
  * TRACKING GOES TO ZERO. Arabic is cursive — its letters join — and
- * `letter-spacing` prises those joins apart into disconnected shapes. Five of
- * the six recipes set a tracking, `inscriptional` at 0.06em, and every one of
- * them was doing this to every Arabic title. `text-transform: uppercase` is
+ * `letter-spacing` prises those joins apart into disconnected shapes. Most
+ * recipes set a tracking, `inscriptional` at 0.06em, and every one of them
+ * was doing this to every Arabic title. `text-transform: uppercase` is
  * left alone: it is simply inert here, and overriding it would claim something
  * this does not know.
  *
  * WEIGHT. Amiri ships 400 and 700 and nothing between, so the recipes asking
  * 500 and 600 were being served a synthesised bold — the smeared stems
- * `coverStyles.ts` already refuses to ask a Latin face for. The two loud
- * recipes take Amiri's real 700; the rest take its 400. */
+ * `coverStyles.ts` already refuses to ask a Latin face for. The loud recipes
+ * take Amiri's real 700; the rest take its 400. */
 .cover-type.script-arabic .title {
 	font-weight: 400;
 	letter-spacing: 0;
 }
-/* The three loud recipes take Amiri's real 700. `inscriptional` is here rather
-   than in a face of its own: Arabic's register distinction is a weight, not a
+/* The loud recipes take Amiri's real 700 (for `young`, Noto Sans Arabic's).
+   `inscriptional` is here rather than in a face of its own: Arabic's register distinction is a weight, not a
    second family (see app.css on why Reem Kufi was dropped), and its Latin
    twin's 7.6cqw is a CAPS size — Arabic is caseless, so it takes the same size
    as the rest of the script. */
 .cover-type.script-arabic.style-inscriptional .title,
 .cover-type.script-arabic.style-revival .title,
-.cover-type.script-arabic.style-house .title {
+.cover-type.script-arabic.style-house .title,
+.cover-type.script-arabic.style-originals .title,
+.cover-type.script-arabic.style-young .title {
 	font-weight: 700;
 }
 
@@ -838,14 +948,22 @@ rgb(0 0 0 / 0.26) 0%,
 .cover-type.script-devanagari.style-revival .title {
 	font-weight: 600;
 }
+/* `young` is the one sans recipe, so its Devanagari is Noto Sans rather than
+   Tiro or Martel — and Noto Sans ships a real 700, the nearest to the heavy
+   Latin title. */
+.cover-type.script-devanagari.style-young .title {
+	font-weight: 700;
+}
 
 /* CYRILLIC needs the least: EB Garamond and Playfair ship it, so `devotional`
    and `revival` are already right and appear nowhere here. The rest fall to
-   Old Standard TT or PT Serif, which ship 400 and 700 — so the two recipes
-   asking 600 are the whole correction. Tracking stays: Cyrillic is not
-   cursive, and caps tracking is as right for it as for Latin. */
+   Old Standard TT, PT Serif or PT Sans, which ship 400 and 700 — so the
+   recipes asking for a weight between or beyond are the whole correction.
+   Tracking stays: Cyrillic is not cursive, and caps tracking is as right for
+   it as for Latin. */
 .cover-type.script-cyrillic.style-inscriptional .title,
-.cover-type.script-cyrillic.style-house .title {
+.cover-type.script-cyrillic.style-house .title,
+.cover-type.script-cyrillic.style-young .title {
 	font-weight: 700;
 }
 

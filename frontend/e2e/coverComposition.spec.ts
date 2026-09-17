@@ -105,6 +105,20 @@ const BOOKS: Array<[string, CoverCardBook]> = [
 		}
 	],
 	[
+		// The tallest title block the library draws: a series numeral above a
+		// four-line title in the heaviest recipe, over a two-line subtitle.
+		'a series volume with a long title and subtitle',
+		{
+			author: 'John Bunyan',
+			title: "The Pilgrim's Progress in Words of One Syllable",
+			subtitle: "Bunyan's classic retold for young readers by Mary Godolphin",
+			style: 'young',
+			volume: '3',
+			lang: 'en',
+			art: false
+		}
+	],
+	[
 		'right-to-left Arabic',
 		{
 			author: 'Andrew Murray',
@@ -149,6 +163,24 @@ test.describe('a cover is composed the way a cover is', () => {
 				.toBeLessThanOrEqual(title.y + 1);
 			expect(title.y + title.height, 'the title overlaps the brandmark')
 				.toBeLessThanOrEqual(mark.y + 1);
+			// A series numeral sits between the two, and is the element most
+			// likely to push the title block into the byline above it.
+			if (book.volume) {
+				const volume = await box(p, '.volume');
+				expect(byline.y + byline.height, 'the byline overlaps the series numeral')
+					.toBeLessThanOrEqual(volume.y + 1);
+				expect(volume.y + volume.height, 'the series numeral overlaps the title')
+					.toBeLessThanOrEqual(title.y + 1);
+			}
+			// A long title pushes its subtitle down, and on a plate the emblem is
+			// drawn into the band below — which is exactly where this broke while
+			// the young recipe's title size was being set.
+			if (book.subtitle && !book.art) {
+				const subtitle = await box(p, '.subtitle');
+				const band = await box(p, '.emblem-band');
+				expect(subtitle.y + subtitle.height, 'the subtitle runs into the emblem')
+					.toBeLessThanOrEqual(band.y + 1);
+			}
 
 			// NOTHING IS INVISIBLE. A zero-width title still has a position, and
 			// every ordering assertion above is happy with it.
