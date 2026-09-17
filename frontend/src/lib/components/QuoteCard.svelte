@@ -19,18 +19,25 @@
 		cite
 	}: { quote: Quote; authorName: string; cite: string } = $props();
 
+	// "Work" or "Work, chapter N" — the source line as prose. Shared by the copy
+	// text and the shareable card so the two attributions never drift, the same
+	// reason the card component itself is shared (see header). A plain function,
+	// not `$derived`: it is only ever read inside a click handler, never in the
+	// template, so there is nothing to react to. `clipChapter` already carries
+	// its own leading ", ".
+	const sourceLine = () =>
+		quote.source.work +
+		(quote.source.order === null
+			? ''
+			: t('quotes.clipChapter').replace('%n%', String(quote.source.order)));
+
 	let copied = $state(false);
 	let timer: ReturnType<typeof setTimeout>;
 	async function copy() {
 		// Copy the quotation WITH its citation. The attribution travelling with
 		// the text is the whole point — stripping it is how the aggregators ended
 		// up publishing these words under nobody's name.
-		const cited =
-			`"${quote.text}"\n— ${authorName}, ${quote.source.work}` +
-			(quote.source.order === null
-				? ''
-				: t('quotes.clipChapter').replace('%n%', String(quote.source.order))) +
-			`\n${SITE_URL}${quoteHref(quote)}`;
+		const cited = `"${quote.text}"\n— ${authorName}, ${sourceLine()}\n${SITE_URL}${quoteHref(quote)}`;
 		try {
 			await navigator.clipboard.writeText(cited);
 			copied = true;
@@ -39,6 +46,33 @@
 		} catch {
 			// A denied clipboard permission is not worth an error state; the text
 			// is on the page and selectable either way.
+		}
+	}
+
+	// The reader turns a highlighted line into a branded PNG (see SelectionBar);
+	// a quotation on this page is the same shareable unit, so it gets the same
+	// action. The renderer is pure canvas that also inlines the brand mark, so
+	// it is imported on first tap rather than at module load — it has no place in
+	// the initial bundle of a page that is mostly read. `cardBusy` guards the
+	// gap while it loads and rasterizes. Quotes are English-only, so `language`
+	// is left to its Latin default.
+	let cardBusy = $state(false);
+	async function quoteCard() {
+		if (cardBusy) return;
+		cardBusy = true;
+		try {
+			const { shareQuoteCard } = await import('$lib/quoteCard');
+			await shareQuoteCard({
+				quote: quote.text,
+				author: authorName,
+				source: sourceLine(),
+				site: 'ochorus.com'
+			});
+		} catch {
+			// Rendering or sharing failed (or the user dismissed the sheet) — the
+			// quotation is still on the page, so there is nothing to surface.
+		} finally {
+			cardBusy = false;
 		}
 	}
 </script>
@@ -57,7 +91,13 @@
 			<FavoriteButton kind="quote" slug={quote.slug} />
 			<!-- Text, not a glyph: the icon set has no copy mark, and extending a
 			     curated set for a minor affordance is not worth it. -->
-			<button class="copy" onclick={copy}>{copied ? t('quotes.copied') : t('quotes.copy')}</button>
+			<button class="act" onclick={copy}>{copied ? t('quotes.copied') : t('quotes.copy')}</button>
+			<!-- The same "Quote card" the reader offers on a highlight: a branded
+			     PNG with the line and its source, built to leave the site. Reuses the
+			     reader's label so the one action reads the same in both places. -->
+			<button class="act" onclick={quoteCard} disabled={cardBusy} aria-busy={cardBusy}
+				>{t('reader.quoteCard')}</button
+			>
 		</div>
 	</div>
 </li>
@@ -100,8 +140,9 @@
 		color: var(--color-accent);
 		text-decoration: underline;
 	}
-	/* Quiet until wanted: the quotation is the content, this is an affordance. */
-	.copy {
+	/* Quiet until wanted: the quotation is the content, these are affordances.
+	   Shared by Copy and Quote card so the row reads as one set of controls. */
+	.act {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.3rem;
@@ -113,8 +154,17 @@
 		color: var(--color-muted);
 		cursor: pointer;
 	}
-	.copy:hover {
+	.act:hover {
 		background: var(--color-surface-2);
 		color: var(--color-text);
+	}
+	.act:disabled {
+		cursor: default;
+	}
+	/* A button disabled only to block a second tap while it works must still read
+	   as working, not greyed-out — it marks itself `aria-busy`, so only an inertly
+	   disabled button fades. Mirrors the `.btn` pattern in app.css (STYLE_GUIDE §6). */
+	.act:disabled:not([aria-busy='true']) {
+		opacity: 0.6;
 	}
 </style>
