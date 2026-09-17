@@ -1,3 +1,9 @@
+// Rebuild marker 2026-09-16: #2459 corrected R. A. Torrey's reversed initials
+// in Men of Prayer's chapter 6 via a data migration (the fixture was already
+// right; seed_books never re-syncs existing chapters). The api is confirmed
+// live with "R. A. Torrey", but that page's contents list is a backend-only
+// change, so Render skipped the web build and the prerendered HTML still shows
+// "A. R. Torrey". This frontend touch forces one web rebuild to re-prerender it.
 // Rebuild marker 2026-09-15: book Q&A batches (#2427/#2430/#2432/#2433/#2434/
 // #2435, en + es) are backend-only fixture changes, so Render skipped the web
 // build and the new FAQPage Q&A never baked into the prerendered book pages. The
