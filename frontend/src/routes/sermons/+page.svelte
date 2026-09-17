@@ -241,14 +241,17 @@
 		tagline={t('sermons.tagline')}
 		meta={sermons.length ? sermonCounts : undefined}
 	/>
-	<!-- "N sermons · M preachers" — the same counts line the Books shelf carries,
-	     using authors as the second count (the writers behind the sermons). -->
+	<!-- "N sermons · M preachers" — mirrors the Books shelf's count line, but names
+	     the writers behind the sermons as PREACHERS, not "authors": it's the
+	     accurate word (and the one this page's "By preacher" grouping already
+	     uses), and it stops the sermon count from clashing with the distinct
+	     "authors" figures on the home and Books pages. -->
 	{#snippet sermonCounts()}
 		{sermons.length}
 		{sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
 		<span class="opacity-50">·</span>
 		{preacherCount}
-		{preacherCount === 1 ? t('common.authorOne') : t('common.authorMany')}
+		{preacherCount === 1 ? t('common.preacherOne') : t('common.preacherMany')}
 	{/snippet}
 
 	<!-- Filter bar: free text + which book of the Bible the sermon expounds.
