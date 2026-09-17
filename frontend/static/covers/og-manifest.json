@@ -708,6 +708,14 @@
 			"art": true,
 			"scrim": 0.75
 		},
+		"fr/holy-in-christ": {
+			"ground": "9eca7c6b221e948d38c3ac011e4dae27b19bc9bb1f7e4bc97b1e3346d8218a5f",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1
+		},
 		"fr/godliness": {
 			"ground": "fc2e575fa12936308aec9bd1cdb92f63e5dd7c510c58f227c0fb9a4eee5d0ebf",
 			"style": "revival",
