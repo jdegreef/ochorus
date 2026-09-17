@@ -104,9 +104,17 @@ class Artwork(NamedTuple):
 
 
 # slug -> artwork. Slugs match Book.slug (shared across languages).
+# THE CREDIT IS THE COLLECTION'S, VERBATIM. `artist`, `title` and `year` are
+# recorded exactly as the museum records them — not tidied, not shortened, not
+# re-punctuated — because `credit()` serves them to readers as provenance they
+# can go and check. Thirteen of sixty-six entries were wrong before anything
+# compared them to the source: a date off by nine years, titles quietly
+# shortened, dates that had lost their qualifier, artists' names abridged. `build_curated_covers`
+# now refuses an entry that disagrees with the live record, on every run.
+
 CURATED: dict[str, Artwork] = {
     "waiting-on-god": Artwork(
-        "met", 437914, "Simon de Vlieger", "Calm Sea", "ca. 1640s",
+        "met", 437914, "Simon de Vlieger", "Calm Sea", "after 1640",
         "Still water under a wide sky — waiting, held rather than idle.",
     ),
     "all-of-grace": Artwork(
@@ -118,23 +126,23 @@ CURATED: dict[str, Artwork] = {
         "Dark wood at first light — prayer that persists until morning.",
     ),
     "the-fourfold-gospel": Artwork(
-        "met", 283081, "Roger Fenton", "Salisbury Cathedral — The Nave", "1858",
+        "met", 283081, "Roger Fenton", "Salisbury Cathedral - The Nave, from the South Transept", "1858",
         "A nave receding into light: the one gospel seen down its full length.",
     ),
     "life-and-diary-of-david-brainerd": Artwork(
-        "met", 16875, "Worthington Whittredge", "The Brook in the Woods", "ca. 1885–90",
+        "met", 16875, "Worthington Whittredge", "The Brook in the Woods", "ca. 1885–86",
         "American forest — the wilderness Brainerd actually walked into.",
     ),
     "pilgrims-progress": Artwork(
-        "met", 459103, "Henri-Joseph Harpignies", "The Rocky Path in the Morvan", "1878",
+        "met", 459103, "Henri-Joseph Harpignies", "The Rocky Path in the Morvan (Chemin des roches dans le Morvan)", "1869",
         "A path climbing out of frame. The book in one image.",
     ),
     "the-reformed-pastor": Artwork(
-        "met", 928532, "Pieter Jansz. Saenredam", "Interior of the Sint-Pieterskerk", "1632",
+        "met", 928532, "Pieter Jansz. Saenredam", "Interior of the Sint-Pieterskerk, 's-Hertogenbosch", "1632",
         "A whitewashed reformed church — Baxter's own subject, drawn from life.",
     ),
     "ten-commandments": Artwork(
-        "met", 359021, "John Ruskin", "The Valley of Lauterbrunnen, Switzerland", "1866",
+        "met", 359021, "John Ruskin", "The Valley of Lauterbrunnen, Switzerland", "ca. 1866",
         "The mountain, where the Law was given.",
     ),
     "confessions": Artwork(
@@ -316,7 +324,7 @@ CURATED: dict[str, Artwork] = {
     # church — the subject's own world. Kuncan was a monk who painted through the
     # Ming collapse; his dusk mountains carry endurance and vision at once.
     "watchman-nee-a-life": Artwork(
-        "met", 39557, "Kuncan", "Wooded Mountains at Dusk", "1666",
+        "met", 39557, "Kuncan", "Wooded Mountains at Dusk", "dated 1666",
         "Towering peaks going into the dark — a life of suffering and spiritual "
         "vision, in the idiom of the country Nee never left.",
         focus=0.3,
@@ -360,7 +368,7 @@ CURATED: dict[str, Artwork] = {
         "not seized, and the book is about keeping to the way.",
     ),
     "the-fundamental-doctrines-of-the-christian-faith": Artwork(
-        "met", 438106, "Canaletto", "Warwick Castle", "1748",
+        "met", 438106, "Canaletto (Giovanni Antonio Canal)", "Warwick Castle", "1748",
         "A stronghold on its rock, drawn stone by stone — the fundamentals are "
         "the fortress a faith is kept in, and this is one built to last.",
     ),
@@ -452,7 +460,7 @@ CURATED: dict[str, Artwork] = {
         "passing, which is half of Augustine's argument.",
     ),
     "on-loving-god": Artwork(
-        "cma", 128371, "Jean-Baptiste-Camille Corot",
+        "cma", 128371, "Jean Baptiste Camille Corot",
         "The Pond at the Entrance of the Woods", "c. 1860–75",
         "Bernard's treatise turns wholly inward — why God is to be loved, and "
         "how without measure. Corot's warm, enclosing wood is that interior: "
@@ -523,7 +531,7 @@ CURATED: dict[str, Artwork] = {
     ),
     "selected-sermons-edwards": Artwork(
         "cma", 125058, "Jasper F. Cropsey",
-        "The Clove — A Storm Scene in the Catskills", "1851",
+        "The Clove - A Storm Scene in the Catskill Mountains", "1851",
         "Edwards preached the terror and the beauty of God in one breath. Cropsey "
         "opens a storm in his own New England hills — the sublime the sermons "
         "reach for, lightning and light together.",
@@ -541,7 +549,7 @@ CURATED: dict[str, Artwork] = {
         "bread, quietly provided.",
     ),
     "a-short-and-easy-method-of-prayer": Artwork(
-        "cma", 148968, "Célestin Nanteuil", "In the Forest", "1841",
+        "cma", 148968, "Célestin François Nanteuil", "In the Forest", "1841",
         "Guyon's method is to sink out of words into the presence of God. "
         "Nanteuil's still forest interior is that inward turn — a quiet place, off "
         "the road, to pray from.",
@@ -565,7 +573,7 @@ CURATED: dict[str, Artwork] = {
     # and the two East-African-Revival Originals are held for an art-direction
     # call, not museum art.
     "the-bruised-reed": Artwork(
-        "cma", 140341, "Jules Dupré", "Marshland", "1860s–70s",
+        "cma", 140341, "Jules Dupré", "Marshland", "1860s-1870s",
         "Isaiah's bruised reed and smoking flax, for people who feel barely "
         "alight. Dupré lays a low marsh under a vast, tender sky — the gentlest "
         "of the Puritans given the gentlest weather.",

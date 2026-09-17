@@ -397,12 +397,18 @@ services:
       - type: redirect
         source: /wp-content/uploads/2026/01/small-library-copy-3100.png
         destination: /covers/the-body-of-christ-teens.svg
+      # ABOVE the rule, never inside it. `renderRoutes.test.ts` reads this file
+      # positionally — `- type:` on one line, `source:` on the next,
+      # `destination:` on the one after — and silently SKIPS any rule whose
+      # three lines are interrupted. This comment sat between `source:` and
+      # `destination:`, which quietly excluded this very rule from the
+      # existence check it was written to describe.
+      #
+      # What it says: a retired cover's redirect follows the COVER, not the
+      # filename. This one was repointed when the book was given a painting and
+      # its generated plate deleted.
       - type: redirect
         source: /wp-content/uploads/2025/08/Normal-Christian-Life.jpg
-        # Repointed when the book was given a painting and its generated plate
-        # was deleted. A retired cover's redirect has to follow the cover, not
-        # the filename — `renderRoutes.test.ts` fails on a destination that no
-        # longer exists in static/, which is what caught this.
         destination: /covers/art/the-normal-christian-life.jpg
       # Retired biography ARTICLES (migrations 0118/0119). Biographies live
       # only in the biography section now, so each retired /articles/<slug>
