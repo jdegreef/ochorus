@@ -417,6 +417,16 @@ that matter:
   mined would have told the reviewer four verses were checked that nobody had
   checked. When in doubt, diff your rendering against the source file character
   for character before writing `mined`.
+  **This is now enforced, for the rows where it can be.** `manage.py
+  audit_mined_notes` opens each cited fixture and checks the wording; the CI gate
+  is `library.tests_mined_verification`, which fails on any NEW contradicted
+  claim (the backlog is pinned in `KNOWN_ADAPTED`, shrink-only). Run the command
+  before you ship and fix what it names — the repair is usually not to reword the
+  translation but to mark the row `self_rendered` and drop its `source_file`,
+  because an adapted verse IS the reviewer's job. Read its census, not just its
+  verdict: only the rows citing a `<slug>.<lang>.json` are checkable at all, so
+  "no contradicted claims" over a corpus that mostly cites Bible editions is a
+  narrow statement, and the command says how narrow.
   **If you AUTOMATE that substring check over the translators' reports, strip the
   report line's annotations FIRST or you get mass false downgrades** (batch of
   2026-09-02): a report's "text" field is `“<the rendered verse>”—Book C:V.`
