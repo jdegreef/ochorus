@@ -1,0 +1,116 @@
+{
+ "kind": "sermon",
+ "slug": "prevailing-prayer",
+ "language": "es",
+ "job_issue": 1715,
+ "references": [
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Samuel 12:22",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "2 Samuel 12:23",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Deuteronomy 9:14",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Exodus 32:12",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Luke 22:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Revelation 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:53",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Psalm 119:136",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Jeremiah 4:19",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Esther 4:1",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Isaiah 66:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Hebrews 2:13",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 36:37",
+   "status": "self_rendered",
+   "block_index": 65
+  }
+ ]
+}

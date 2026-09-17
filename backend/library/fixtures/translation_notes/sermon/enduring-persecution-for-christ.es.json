@@ -1,0 +1,131 @@
+{
+ "kind": "sermon",
+ "slug": "enduring-persecution-for-christ",
+ "language": "es",
+ "job_issue": 1713,
+ "references": [
+  {
+   "reference": "Hebrews 13:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 5:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Thessalonians 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 21:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 2:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:10",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 10:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:27",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Psalm 129:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 129:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 125:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 7:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Hebrews 11:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 21:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 8:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 26:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 9:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered"
+  }
+ ]
+}
