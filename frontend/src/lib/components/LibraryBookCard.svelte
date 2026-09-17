@@ -53,8 +53,10 @@
 	</div>
 
 	<div class="mt-2 flex flex-1 flex-col px-0.5">
-		<div class="line-clamp-2 text-small font-medium leading-snug text-text">{book.title}</div>
-		<div class="truncate text-small text-muted">{book.author.name}</div>
+		<div class="line-clamp-2 text-small font-medium leading-snug text-text" title={book.title}>
+			{book.title}
+		</div>
+		<div class="truncate text-small text-muted" title={book.author.name}>{book.author.name}</div>
 		<div class="mt-auto pt-1.5">
 			{#if inProgress}
 				<ProgressBar {percent} label="{book.title}: {t('reader.resume')}" />

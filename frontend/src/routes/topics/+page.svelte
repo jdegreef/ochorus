@@ -72,7 +72,7 @@
 							{topic.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
 						{/if}
 						{#if topic.sermon_count}
-							{#if topic.book_count}· {/if}{topic.sermon_count}
+							{#if topic.book_count}<span class="opacity-50"> · </span>{/if}{topic.sermon_count}
 							{topic.sermon_count === 1 ? t('common.sermonOne') : t('common.sermonMany')}
 						{/if}
 					{/snippet}
