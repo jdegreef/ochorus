@@ -5,6 +5,11 @@ workbook has a **Read me** tab, a wide **Matrix** tab (one row per entity), and
 a **Keywords (long)** tab (one phrase per row, tier-banded, import-ready for
 Ahrefs/SEMrush/a rank tracker). Every phrase maps to a real URL.
 
+Each workbook's long sheet is also committed as a UTF-8 `.csv` of the same
+basename (`books-en.csv`, …) — the diff-friendly, tool-importable form. The
+`.xlsx` are the richer artifact (three tabs, formatting); the `.csv` are the
+review- and import-friendly companion. Regenerate the CSVs from the long tab.
+
 | File | Entity | URL pattern | Phrases |
 |---|---|---|---|
 | `books-en.xlsx` | 108 English books | `/books/<slug>` | 756 |
