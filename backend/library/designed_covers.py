@@ -123,6 +123,10 @@ DESIGNED: dict[str, str] = {
         "f3564c524858961bbe55d4a7b900f70b88589a349ca8ad56f9b94ef92bce15da",
     "/covers/talks-to-the-farmer.jpg":
         "120ca61d19bce6c692bc1bc8c9eecc38543224945496fbb427f0c1ecdbf6ed48",
+    "/covers/talks-to-the-farmer-children.jpg":
+        "bdc9b9dcb04b2e12fa7699fe5c101e55bf44864693a27cb3b25122e7c0cf219c",
+    "/covers/talks-to-the-farmer-teens.jpg":
+        "476d31c3de2cf2a401fe72bc31f1faa26b96128a0834610a7f7a9ea257591d2c",
     "/covers/the-christians-secret-of-a-happy-life-4.jpg":
         "d9b9836cb2eaa1cd8d669cb3f2fc880ed884c0ab020e13afb7fde2e6ea2685e5",
     "/covers/the-god-of-all-comfort.jpg":
