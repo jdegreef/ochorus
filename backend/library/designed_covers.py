@@ -135,6 +135,8 @@ DESIGNED: dict[str, str] = {
         "524abc40f0fb242aaba695875851382a6d98481799a6178304d47c8befbde671",
     "/covers/the-key-in-my-hand.jpg":
         "3e1a5e8c26072334f96a3a1039808ab24d0e749aad148613c23948c987fb1b62",
+    "/covers/the-life-of-trust-children.jpg":
+        "71984f6a7041ad1bd19388512f88044e57e62efc49823a2f38bc2c2c7e834ba1",
     "/covers/the-masters-indwelling.jpg":
         "389d6f2248dd21120d79be7def954bebe8ed895a93b0517eefa45e6ee8715949",
     "/covers/the-person-and-work-of-the-holy-spirit.jpg":
