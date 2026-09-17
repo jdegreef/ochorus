@@ -22,9 +22,17 @@
 			"content": "7e292b60cf125bdd256ab026b82fd847a98edb6367ae9357604baa9901db9141",
 			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
+		"a-true-and-a-false-faith": {
+			"content": "486f984c060d31fc69871821b65e384fa65edf7bd37991dcb0c830c8090a25d7",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
 		"abiding-in-christ": {
 			"content": "61e50c2bfaec5b5733f1d593543e382f92263575b2c1050386b26909e967b886",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"adaptation-of-measures": {
+			"content": "c10658c5e8006c0b9be9841c4b54f3f51f0904da5651e8c75c2f76732b5fe44b",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"against-eutropius": {
 			"content": "487ba1c3e7c03d63f4eb65591c5a494f46e488144ced1fab73d6c29ecffc2be1",
@@ -45,6 +53,10 @@
 		"are-you-born-again": {
 			"content": "c1ad1e6faa3a6d54fe4a7e8415368c5aad52d638c781d869e4ab65c4553a8b47",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"assurance-of-salvation": {
+			"content": "328b41c7eb0d96f8516988dc95dd1610285a55bc88d9d12bd683e34aa1a18a1a",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
 		"behold-the-lamb-of-god": {
 			"content": "2ff18541e46336ab7664685da67a3276c833ed130a299e46294f11c5d8d8455f",
@@ -129,6 +141,10 @@
 		"consolation-in-the-furnace": {
 			"content": "2a1f8e5ae5b099088ca7194e3d676df877820e01b842704906a2abde59c7fbc3",
 			"art": "59a648b205bcd69349ac2c7b73e1871bf61d1df3eb0f6526d7ad5b36a5f52c00"
+		},
+		"dealing-with-anxious-souls": {
+			"content": "dbf1422d31a3f9481c3424faa803016414cbe6f7b1de22c0aa29c81a7dac02dd",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
 		"do-you-pray": {
 			"content": "6aff1b578ab1189b0149b8ca7276e18683c63eeef5a625f02a363d0fee93cb86",
@@ -250,6 +266,10 @@
 			"content": "8bb93ffe001d7ad125ec66401a9293ecab043bd2223c6e834a9182dc6e3ab6c6",
 			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
+		"how-to-work-for-god-with-success": {
+			"content": "597202b28773762b443936ab399172b78966bd57a4016a6152300c687627b025",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
 		"i-keep-a-quiet-heart": {
 			"content": "a9323027cb2ac82084b7be55020db1cb7351b6a5922c4a59ac93837fe162ac79",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
@@ -302,6 +322,10 @@
 			"content": "1ae261744ef5243a8e471b9c34e1da470603165cf053eb80ef9d1743587eed09",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
+		"please-sir-save-me": {
+			"content": "e12ac6459ef591a4601f08881bf6070b5a882e2f90baa1d539713984bbe6b45d",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
 		"power-in-prayer": {
 			"content": "cb0edcacbebf31e795a383f831df32f2bffd86cd219acb891e4503a7211fabd9",
 			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
@@ -321,6 +345,10 @@
 		"rest": {
 			"content": "2145408f8568cd5babd836a0b7d28273d3e733445d3ed82be65d36aacf95c373",
 			"art": "1d723e0f5819f8b6ef9ddf525e1dd21964afcddd2ddff42a34e8ce895df48d51"
+		},
+		"rope-wanted": {
+			"content": "6b34f580899832ef131209b6a918d2683f6a76445dafa4cd6b7f20944a56a765",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
 		"safety-fulness-and-sweet-refreshment-in-christ": {
 			"content": "4b1c14060cf2af1ed83a23b7b29a10d41f7afcfb8bd9bff6021610980d46913d",
@@ -361,6 +389,10 @@
 		"the-appearing-of-the-grace-of-god": {
 			"content": "5c88fbbd4cacebe9d40fa9dab36e902a3f5b832a9711a3e6d732e360df4508ca",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"the-atonement-of-jesus-christ": {
+			"content": "63107ae213fbb8920e1fe9156eb037da428d9cfc1610f47a12c608a0e37e9b26",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
 		"the-bridge-that-was-too-short": {
 			"content": "b38d6f72d9d32c75579fba04b2fb36d86959ff3a24871dc49ca447517e870e6d",
@@ -514,6 +546,10 @@
 			"content": "716df6ad29e427eccd4faf225930cee8e6674c7cb1dd6e9c14490ac12b60e400",
 			"art": "a5189620af47a2f8dfcaab22b93ef11d5dd5306b10885e4546ae1ff7fb95dc55"
 		},
+		"the-training-of-children": {
+			"content": "ed60a17b69c7ab14b2d3bbcc49e468b8f378e7a0c99638335650868ae76c548c",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
 		"the-triumph-of-calvary": {
 			"content": "0ff214cacd5eadabe8cbce746a6aaa8ee0a86d67ab98a4cf1db6397a1acd970f",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
@@ -600,6 +636,10 @@
 		},
 		"worthy-is-the-lamb": {
 			"content": "fcf7170f1b8b0efdee3b24a9f8ee132eda19d4cd59c63db2ec21ca0ae6bc6ade",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
+		"youre-going-too-fast": {
+			"content": "b7a794037e87de71f37204256ee76e2c463f0007b28e36fc011e5b2fc5f26960",
 			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		}
 	},

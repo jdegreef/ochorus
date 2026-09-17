@@ -1119,4 +1119,58 @@ SERMONS: list[SermonEntry] = [
         "elisabeth-elliot", "sermonindex",
         _SI + "elisabeth-elliot/women-that-make-a-difference/",
     ),
+    # William Booth — the Salvation Army's founder (d. 1912, public domain). He
+    # left few long text sermons; these are his central atonement message, his
+    # defense of the Army's urgency, and two of his famous short evangelistic
+    # parables.
+    SermonEntry(
+        "the-atonement-of-jesus-christ", "The Atonement of Jesus Christ",
+        "william-booth", "sermonindex",
+        _SI + "william-booth/the-atonement-of-jesus-christ/",
+    ),
+    SermonEntry(
+        "youre-going-too-fast", "You're Going Too Fast", "william-booth",
+        "sermonindex", _SI + "william-booth/youre-going-too-fast/",
+    ),
+    SermonEntry(
+        "rope-wanted", "Rope Wanted", "william-booth", "sermonindex",
+        _SI + "william-booth/rope-wanted/",
+    ),
+    SermonEntry(
+        "please-sir-save-me", "Please, Sir, Save Me", "william-booth",
+        "sermonindex", _SI + "william-booth/please-sir-save-me/",
+    ),
+    # Catherine Booth — the Army's co-founder and "Mother" (d. 1890, public
+    # domain). Full addresses joining her four already on the shelf: on faith,
+    # method, child-rearing, soul-work, assurance, and effective service.
+    SermonEntry(
+        "a-true-and-a-false-faith", "A True and a False Faith", "catherine-booth",
+        "sermonindex", _SI + "catherine-booth/a-true-and-a-false-faith/",
+        scripture_ref="Galatians 5:6",
+    ),
+    SermonEntry(
+        "adaptation-of-measures", "Adaptation of Measures", "catherine-booth",
+        "sermonindex", _SI + "catherine-booth/adaptation-of-measures/",
+    ),
+    SermonEntry(
+        "the-training-of-children", "The Training of Children", "catherine-booth",
+        "sermonindex",
+        _SI + "catherine-booth/the-training-of-children-an-address-to-parents/",
+    ),
+    SermonEntry(
+        "dealing-with-anxious-souls", "Dealing with Anxious Souls",
+        "catherine-booth", "sermonindex",
+        _SI + "catherine-booth/dealing-with-anxious-souls-an-address-to-christian-workers/",
+    ),
+    SermonEntry(
+        "assurance-of-salvation", "Assurance of Salvation", "catherine-booth",
+        "sermonindex", _SI + "catherine-booth/assurance-of-salvation/",
+        scripture_ref="Romans 7:4",
+    ),
+    SermonEntry(
+        "how-to-work-for-god-with-success", "How to Work for God with Success",
+        "catherine-booth", "sermonindex",
+        _SI + "catherine-booth/how-to-work-for-god-with-success/",
+        scripture_ref="Matthew 21:28",
+    ),
 ]
