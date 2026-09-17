@@ -165,6 +165,19 @@ describe('the two cover renderers agree', () => {
 			{ lang: 'hi', script: 'devanagari', title: 'परमेश्वर की प्रतीक्षा' }
 		],
 		[
+			'a series volume, in its own digits',
+			{ cover_url: PLATE, slug: 'brave-for-god-2', language: 'ar', title: 'شجعان لله' },
+			{
+				lang: 'ar',
+				script: 'arabic',
+				title: 'شجعان لله',
+				volume: '2',
+				// The style the component will derive from the slug, so the
+				// comparison is of the tree and not of which recipe was picked.
+				style: 'young'
+			}
+		],
+		[
 			'cyrillic',
 			{ cover_url: PLATE, language: 'uk', title: 'Чекання на Бога' },
 			{ lang: 'uk', script: 'cyrillic', title: 'Чекання на Бога' }

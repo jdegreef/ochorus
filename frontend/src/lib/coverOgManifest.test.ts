@@ -3,7 +3,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { coverStyleFor } from './coverStyles';
+import { coverStyleFor, volumeNumeral } from './coverStyles';
 import { eraOf } from './eras';
 import { COVER_CSS_CODE } from '../test/coverCss';
 import { isArtCover, isPlateCover, twinUrl } from './coverArt';
@@ -62,7 +62,7 @@ function once<T>(read: () => T): () => T {
 const STATIC = resolve(process.cwd(), 'static');
 const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content');
 
-type Twin = { ground: string; style: string };
+type Twin = { ground: string; style: string; volume?: string | null };
 
 const manifestFile = once(() =>
 	JSON.parse(readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8'))
@@ -115,7 +115,8 @@ const needTwins = once(() => {
 			// `twinUrl` owns — restating it here would be the drift this whole file
 			// exists to catch, one directory up.
 			key: twinUrl(f.slug, f.language).replace('/covers/', '').replace(/\.png$/, ''),
-			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0])
+			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
+			volume: volumeNumeral(f.slug, f.language)
 		}));
 });
 
@@ -217,5 +218,18 @@ describe('the og twins were drawn in the style the table names now', () => {
 			'an author was restyled but their share cards were not redrawn — run ' +
 				'`cd frontend && npm run og:covers`'
 		).toEqual([]);
+	});
+
+	it('numbers every card as the series table does', () => {
+		// The numeral is drawn from a table the other digests never see: `ground`
+		// is the file and the strings, `markup` the tree's SHAPE. A book added to
+		// a series would otherwise keep a card with no numeral on it.
+		const recorded = manifest();
+		const stale = needTwins()
+			.filter((b) => recorded[b.key] && (recorded[b.key].volume ?? null) !== b.volume)
+			.map((b) => `${b.key}: drawn as ${recorded[b.key].volume ?? null}, now ${b.volume}`);
+		expect(stale, 'a series changed but its share cards did not — run `npm run og:covers`').toEqual(
+			[]
+		);
 	});
 });

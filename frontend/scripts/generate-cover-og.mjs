@@ -115,7 +115,7 @@ import { isArtCover, isPlateCover, twinUrl } from '../src/lib/coverArt.ts';
 // set in the Latin face and laid out left-to-right.
 import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
-import { coverStyleFor, scriptOf } from '../src/lib/coverStyles.ts';
+import { coverStyleFor, scriptOf, volumeNumeral } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -193,7 +193,10 @@ function needTwins() {
 				author: author.name,
 				// The card is set in the style the cover is set in — one table, read
 				// from the app's own module rather than restated here.
-				style: coverStyleFor(eraOf(author.birth_year), author.slug),
+				style: coverStyleFor(eraOf(author.birth_year), author.slug, fields.slug),
+				// Its series numeral, in the edition's digits — the same call the
+				// component makes, so a card and a page cannot number a book apart.
+				volume: volumeNumeral(fields.slug, fields.language || 'en'),
 				cover,
 				// The edition's language, and the script its type is set in — both
 				// through the app's own table. Only English books get a twin today,
@@ -448,6 +451,7 @@ html,body{margin:0}
 			title: book.title,
 			subtitle: book.subtitle,
 			style: book.style,
+			volume: book.volume,
 			script: book.script,
 			lang: book.language,
 			art: book.art,
@@ -526,6 +530,10 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
  *              moves only if that table does; a twin whose LANGUAGE changed is a
  *              different key rather than a changed entry.
  *   `art`    — painting or plate, which is a different ground element entirely.
+ *   `volume` — the series numeral over the title. Written as null outside a
+ *              series rather than left out, because the skip is lenient about
+ *              an ABSENT field: a book that joined a series would otherwise
+ *              find no recorded value to disagree with, and keep its old card.
  *
  * Add a field to `coverPage`'s call and it belongs here too, or the first card
  * that needs it will be skipped.
@@ -534,6 +542,7 @@ function made(book, groundBytes) {
 	return {
 		ground: digest(inputs(book, groundBytes)),
 		style: book.style,
+		volume: book.volume,
 		script: scriptKey(book.script),
 		art: book.art,
 		scrim: book.scrim

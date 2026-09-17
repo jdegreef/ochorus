@@ -57,7 +57,9 @@ export const COVER_STYLE_IDS = [
 	'press', // the Fell types the Puritans were printed in
 	'enlightenment', // Baskerville, the Wesleys' century
 	'revival', // a Victorian display face
-	'house' // Fraunces, what the rest of the site is set in
+	'house', // Fraunces, what the rest of the site is set in
+	'originals', // Ochorus' own imprint, in the house face
+	'young' // the site's sans, for books written or retold for children
 ] as const;
 
 export type CoverStyleId = (typeof COVER_STYLE_IDS)[number];
@@ -115,7 +117,11 @@ export const AUTHOR_STYLE: Record<string, CoverStyleId> = {
 	'frederick-brotherton-meyer': 'devotional',
 	'hannah-whitall-smith': 'devotional',
 	'amy-carmichael': 'devotional',
-	'e-m-bounds': 'devotional'
+	'e-m-bounds': 'devotional',
+	// Ochorus' own books. Their author has no birth year, so they fell to the
+	// house voice with every other living writer — and a publisher's imprint
+	// that looks like everyone else's books is not an imprint.
+	'ochorus-originals': 'originals'
 };
 
 /**
@@ -234,13 +240,79 @@ export function scriptOf(language: string): CoverScript | null {
  *
  * Takes the era rather than deriving it (see the header on why this module
  * cannot import `eraOf`), so a caller writes
- * `coverStyleFor(eraOf(author.birth_year), author.slug)`.
+ * `coverStyleFor(eraOf(author.birth_year), author.slug, book.slug)`.
+ *
+ * The book slug is required rather than optional so a renderer cannot forget
+ * it: a caller that left it off would still compile, and would draw every
+ * young reader's cover in their author's century.
  *
  * Total, and never null: an author the tables have never heard of — an admin
  * import, a contributor added this morning — comes back with their century's
  * recipe, and one with no birth year comes back in the house voice, because
  * `eraOf(null)` is `contemporary`.
  */
-export function coverStyleFor(era: EraId, authorSlug: string): CoverStyleId {
-	return AUTHOR_STYLE[authorSlug] ?? ERA_STYLE[era];
+export function coverStyleFor(era: EraId, authorSlug: string, bookSlug: string): CoverStyleId {
+	return BOOK_STYLE[bookSlug] ?? AUTHOR_STYLE[authorSlug] ?? ERA_STYLE[era];
+}
+
+/**
+ * The books whose AUDIENCE decides their cover, not their author or century.
+ *
+ * Every other table here asks when a book was written. A book retold for a
+ * child answers a different question: Bunyan in words of one syllable is not a
+ * Puritan title page, and dressing it in the Fell types — which his era gives
+ * it — is how a children's shelf came to look like a row of scholarly editions.
+ *
+ * Keyed by BOOK because audience is a property of the work, not the writer: the
+ * same author can be on both shelves, and `ochorus-originals` is. Consulted
+ * before the author table for the same reason — it is the narrower claim.
+ *
+ * The For Young Readers shelf, as `topic_seed.py` lists it. Not derived from
+ * the topic at runtime: the og script reads fixtures, not the topic seed, and
+ * both renderers have to reach the same answer from what they can each see.
+ * `coverStyles.test.ts` fails when the shelf and this table disagree.
+ */
+export const BOOK_STYLE: Record<string, CoverStyleId> = {
+	'pilgrims-progress-words-of-one-syllable': 'young',
+	'divine-songs-for-children': 'young',
+	'brave-for-god': 'young',
+	'brave-for-god-2': 'young',
+	'brave-for-god-3': 'young'
+};
+
+/**
+ * Which volume of a series a book is — the numeral a cover sets above its title.
+ *
+ * The title often says it already ("Book Two"), and at a size a reader can read
+ * a title that is enough. It is not enough on a shelf: a cover is mostly seen at
+ * 48-64px, where the title is unreadable and three volumes of one series look
+ * like three unrelated books. A numeral in a ring is the one thing that survives
+ * there, which is also why it sits outside the container gate.
+ *
+ * A table of slugs rather than a model field, like every other table in this
+ * module: covers are curated by hand, and both renderers read this file.
+ */
+export const SERIES_VOLUME: Record<string, number> = {
+	'brave-for-god': 1,
+	'brave-for-god-2': 2,
+	'brave-for-god-3': 3
+};
+
+/**
+ * A book's volume numeral in its edition's own digits, or null outside a series.
+ *
+ * `Intl.NumberFormat` rather than the ASCII digit, so each language gets its
+ * locale's DEFAULT numbering system from CLDR — Persian ۲, Marathi २ — without a
+ * table of ours, the same reasoning that keeps `scriptOf` free of one. Arabic
+ * and Hindi default to Western digits in current data, and that is CLDR's call
+ * to make, not this module's. A global, not an import, like `Intl.Locale`.
+ */
+export function volumeNumeral(bookSlug: string, language: string): string | null {
+	const volume = SERIES_VOLUME[bookSlug];
+	if (!volume) return null;
+	try {
+		return new Intl.NumberFormat(language).format(volume);
+	} catch {
+		return String(volume);
+	}
 }

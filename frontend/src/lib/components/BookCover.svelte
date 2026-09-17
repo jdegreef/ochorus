@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
 	import { scrimStrength } from '$lib/coverScrim';
-	import { coverStyleFor, scriptOf } from '$lib/coverStyles';
+	import { coverStyleFor, scriptOf, volumeNumeral } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
 	import { eraOf } from '$lib/eras';
 	// The cover's whole drawing, in the one file that also feeds the share-card
@@ -116,7 +116,9 @@
 	const label = $derived(`${t('a11y.coverOf')} ${book.title}`);
 
 	/** The author's house style — a class name; `cover-type.css` holds the rest. */
-	const style = $derived(coverStyleFor(eraOf(book.author.birth_year), book.author.slug));
+	const style = $derived(
+		coverStyleFor(eraOf(book.author.birth_year), book.author.slug, book.slug)
+	);
 	/** This edition's language as a browser will accept it. `en-modern` is
 	 *  Ochorus' own edition marker, not a BCP-47 subtag, so a browser drops it
 	 *  whole and shapes the title in the UI locale instead — which is the defect
@@ -126,6 +128,8 @@
 	/** The script whose metrics this edition needs correcting for; null for
 	 *  Latin. The FACE needs no class — app.css's stacks fall back per glyph. */
 	const script = $derived(scriptOf(lang));
+	/** This book's place in its series, in its edition's digits; null outside one. */
+	const volume = $derived(volumeNumeral(book.slug, lang));
 </script>
 
 <!-- The cover's type. Identical over a painting, over a plate file and over the
@@ -146,6 +150,9 @@
 		     THEM between the byline and the mark. Left as three siblings, the
 		     leftover space split three ways and the title rode up the plate. -->
 		<div class="middle">
+			<!-- A series volume rides with the title block, so the auto margins
+			     centre the numeral and the words together. -->
+			{#if volume}<div class="volume" {lang}>{volume}</div>{/if}
 			<!-- `lang` on the words themselves, not on the plate: it is what lets
 			     a browser shape and hyphenate the title correctly. NOT an
 			     accessibility win, though it looks like one — the plate is
