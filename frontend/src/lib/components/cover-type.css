@@ -255,7 +255,7 @@ rgb(0 0 0 / 0.26) 0%,
 	   the contrast AT that height, so a byline sitting higher up the gradient
 	   than the generator's would sit on a lighter tone than the floor was
 	   computed against. */
-	padding: 17cqw 7cqw 9cqw;
+	padding: var(--byline-top) 7cqw 9cqw;
 	color: #fff;
 	text-align: center;
 	/* The frame's distance from the plate edge, named because the press corner
@@ -263,6 +263,11 @@ rgb(0 0 0 / 0.26) 0%,
 	   the frame move out from under them — the drift this file already
 	   documents at the press rules below. */
 	--frame-inset: 4.3cqw;
+	/* The byline's place and size, named for the same reason: the originals
+	   imprint band is drawn behind the byline from these, and a second copy of
+	   the numbers would let the byline move out of its band. */
+	--byline-top: 17cqw;
+	--byline-size: 3.9cqw;
 	/* ONE HAIRLINE INK for every short rule an ornament flanks itself with:
 	   both period marks and the press corners draw the same 1px white at the
 	   same alpha, and they were three separate literals. The alpha is final
@@ -299,7 +304,7 @@ rgb(0 0 0 / 0.26) 0%,
    Tailwind, so a utility class would leave the two renderers disagreeing. */
 .cover-type .byline {
 	font-family: var(--font-display);
-	font-size: 3.9cqw;
+	font-size: var(--byline-size);
 	letter-spacing: 0.28em;
 	text-transform: uppercase;
 	opacity: 0.86;
@@ -606,14 +611,14 @@ rgb(0 0 0 / 0.26) 0%,
    the one filled rule in the library, recognisable from across a shelf.
    The band is drawn BEHIND the byline and never moves it: the byline is an edge
    `covers.py` places too (see the gate in `coverComposition.test.ts`), so the
-   band is positioned from the same numbers — 17cqw of top padding and a 3.9cqw
-   line — rather than by boxing the element. It darkens, never lightens, so it
+   band is positioned from the same variables, `--byline-top` and
+   `--byline-size`, rather than by boxing the element. It darkens, never lightens, so it
    only adds to the contrast `ink_safe` floored the plate colour for. */
 .cover-type.style-originals::after {
 	content: '';
 	position: absolute;
-	inset: 13.2cqw var(--frame-inset) auto;
-	height: 11.4cqw;
+	inset: calc(var(--byline-top) - 3.8cqw) var(--frame-inset) auto;
+	height: calc(var(--byline-size) + 7.5cqw);
 	pointer-events: none;
 	background:
 		var(--hairline) top / 100% 1px no-repeat,
@@ -892,21 +897,21 @@ rgb(0 0 0 / 0.26) 0%,
 /* ARABIC. Two of these are corrections, not tuning.
  *
  * TRACKING GOES TO ZERO. Arabic is cursive — its letters join — and
- * `letter-spacing` prises those joins apart into disconnected shapes. Five of
- * the six recipes set a tracking, `inscriptional` at 0.06em, and every one of
- * them was doing this to every Arabic title. `text-transform: uppercase` is
+ * `letter-spacing` prises those joins apart into disconnected shapes. Most
+ * recipes set a tracking, `inscriptional` at 0.06em, and every one of them
+ * was doing this to every Arabic title. `text-transform: uppercase` is
  * left alone: it is simply inert here, and overriding it would claim something
  * this does not know.
  *
  * WEIGHT. Amiri ships 400 and 700 and nothing between, so the recipes asking
  * 500 and 600 were being served a synthesised bold — the smeared stems
- * `coverStyles.ts` already refuses to ask a Latin face for. The two loud
- * recipes take Amiri's real 700; the rest take its 400. */
+ * `coverStyles.ts` already refuses to ask a Latin face for. The loud recipes
+ * take Amiri's real 700; the rest take its 400. */
 .cover-type.script-arabic .title {
 	font-weight: 400;
 	letter-spacing: 0;
 }
-/* The three loud recipes take Amiri's real 700. `inscriptional` is here rather
+/* The loud recipes take Amiri's real 700 (for `young`, Noto Sans Arabic's). `inscriptional` is here rather
    than in a face of its own: Arabic's register distinction is a weight, not a
    second family (see app.css on why Reem Kufi was dropped), and its Latin
    twin's 7.6cqw is a CAPS size — Arabic is caseless, so it takes the same size
@@ -942,9 +947,10 @@ rgb(0 0 0 / 0.26) 0%,
 
 /* CYRILLIC needs the least: EB Garamond and Playfair ship it, so `devotional`
    and `revival` are already right and appear nowhere here. The rest fall to
-   Old Standard TT, PT Serif or PT Sans, which ship 400 and 700 — so the recipes
-   asking for a weight between or beyond are the whole correction. Tracking stays: Cyrillic is not
-   cursive, and caps tracking is as right for it as for Latin. */
+   Old Standard TT, PT Serif or PT Sans, which ship 400 and 700 — so the
+   recipes asking for a weight between or beyond are the whole correction.
+   Tracking stays: Cyrillic is not cursive, and caps tracking is as right for
+   it as for Latin. */
 .cover-type.script-cyrillic.style-inscriptional .title,
 .cover-type.script-cyrillic.style-house .title,
 .cover-type.script-cyrillic.style-young .title {

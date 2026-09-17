@@ -4,6 +4,7 @@ import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { coverStyleFor, volumeNumeral } from './coverStyles';
+import { baseEdition } from './reading-schema';
 import { eraOf } from './eras';
 import { COVER_CSS_CODE } from '../test/coverCss';
 import { isArtCover, isPlateCover, twinUrl } from './coverArt';
@@ -116,7 +117,7 @@ const needTwins = once(() => {
 			// exists to catch, one directory up.
 			key: twinUrl(f.slug, f.language).replace('/covers/', '').replace(/\.png$/, ''),
 			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
-			volume: volumeNumeral(f.slug, f.language)
+			volume: volumeNumeral(f.slug, baseEdition(f.language))
 		}));
 });
 

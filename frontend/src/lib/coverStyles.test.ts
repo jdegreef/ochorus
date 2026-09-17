@@ -204,7 +204,7 @@ describe('cover styles', () => {
 		// A misspelt slug is not an error anywhere else — it simply never
 		// matches, and the book it was meant for keeps its old cover.
 		const books = new Set(
-			readdirSync(join(CONTENT, 'books')).map((f) => f.replace(/\.[a-z-]+\.json$/, ''))
+			readdirSync(join(CONTENT, 'books')).map((f) => f.split('.')[0])
 		);
 		for (const slug of [...Object.keys(BOOK_STYLE), ...Object.keys(SERIES_VOLUME)]) {
 			expect(books.has(slug), `${slug} is styled or numbered but is not a book`).toBe(true);

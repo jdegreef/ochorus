@@ -117,6 +117,7 @@ import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
 import { coverStyleFor, scriptOf, volumeNumeral } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
+import { baseEdition } from '../src/lib/reading-schema.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const STATIC = resolve(HERE, '../static');
@@ -196,7 +197,7 @@ function needTwins() {
 				style: coverStyleFor(eraOf(author.birth_year), author.slug, fields.slug),
 				// Its series numeral, in the edition's digits — the same call the
 				// component makes, so a card and a page cannot number a book apart.
-				volume: volumeNumeral(fields.slug, fields.language || 'en'),
+				volume: volumeNumeral(fields.slug, baseEdition(fields.language || 'en')),
 				cover,
 				// The edition's language, and the script its type is set in — both
 				// through the app's own table. Only English books get a twin today,

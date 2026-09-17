@@ -242,9 +242,9 @@ export function scriptOf(language: string): CoverScript | null {
  * cannot import `eraOf`), so a caller writes
  * `coverStyleFor(eraOf(author.birth_year), author.slug, book.slug)`.
  *
- * The book slug is required rather than optional so a renderer cannot forget
- * it: a caller that left it off would still compile, and would draw every
- * young reader's cover in their author's century.
+ * The book slug is required rather than optional: were it optional, a
+ * renderer that left it off would still compile, and would draw every young
+ * reader's cover in their author's century.
  *
  * Total, and never null: an author the tables have never heard of — an admin
  * import, a contributor added this morning — comes back with their century's
@@ -268,8 +268,10 @@ export function coverStyleFor(era: EraId, authorSlug: string, bookSlug: string):
  * before the author table for the same reason — it is the narrower claim.
  *
  * The For Young Readers shelf, as `topic_seed.py` lists it. Not derived from
- * the topic at runtime: the og script reads fixtures, not the topic seed, and
- * both renderers have to reach the same answer from what they can each see.
+ * `BookSummary.topics` at runtime, and that is not an oversight: the API drops
+ * a shelf that has no title in the edition's language, so an Arabic or French
+ * Brave for God would carry no chip and lose its style. The og script cannot
+ * read the topic seed either, so both renderers read this.
  * `coverStyles.test.ts` fails when the shelf and this table disagree.
  */
 export const BOOK_STYLE: Record<string, CoverStyleId> = {
@@ -290,7 +292,9 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
  * there, which is also why it sits outside the container gate.
  *
  * A table of slugs rather than a model field, like every other table in this
- * module: covers are curated by hand, and both renderers read this file.
+ * module: covers are curated by hand, and both renderers read this file. It is
+ * one series today; the second is the point to make series and volume fields
+ * on `Book`, which the fixture would then hand both renderers for free.
  */
 export const SERIES_VOLUME: Record<string, number> = {
 	'brave-for-god': 1,
