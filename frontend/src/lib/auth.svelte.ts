@@ -81,6 +81,9 @@ class Auth {
 	#token: string | null = null;
 	#ready = false;
 	#pushTimer: ReturnType<typeof setTimeout> | undefined;
+	/** The Supabase account's ISO creation time (for the new-vs-returning check
+	 *  when attributing the sign-up band); null when signed out. */
+	#userCreatedAt: string | null = null;
 	/**
 	 * Whether the account's saved preferences have been applied locally yet.
 	 *
@@ -143,9 +146,14 @@ class Auth {
 		});
 	}
 
-	#applySession(session: { access_token: string; user: { email?: string } } | null) {
+	#applySession(
+		session: { access_token: string; user: { email?: string; created_at?: string } } | null
+	) {
 		this.#token = session?.access_token ?? null;
 		this.user = session ? { email: session.user.email ?? '' } : null;
+		// The Supabase account's creation time, used only to tell a brand-new
+		// sign-up from a returning login when attributing the sign-up band.
+		this.#userCreatedAt = session?.user.created_at ?? null;
 		if (!session) {
 			this.isAdmin = false;
 			this.scopes = [];
@@ -274,6 +282,7 @@ class Auth {
 			// approximate country in the admin analytics). Independent of the
 			// prefs push, so it's safe regardless of #profileLoaded.
 			this.#syncTimezone(p.timezone);
+			this.#recordSignupSource();
 			// Language: a locale the reader explicitly picked on this device wins
 			// over the synced profile (otherwise the profile would bounce them back
 			// out of the language they just chose). When they have such a choice,
@@ -296,7 +305,28 @@ class Auth {
 			// first sign-up still records its timezone (the PATCH creates the
 			// profile). Harmless if the API is simply down (it's caught).
 			this.#syncTimezone(undefined);
+			this.#recordSignupSource();
 		}
+	}
+
+	/**
+	 * Attribute a NEW account to the sign-up band the reader saw, for providers
+	 * that can't carry it in the JWT (OAuth). Fire-and-forget POST of the stored
+	 * arm, gated to a genuinely fresh account (Supabase `created_at` within the
+	 * window) so a returning reader's stale stored arm is never sent. The backend
+	 * re-checks create-only + freshness, and email/magic-link accounts already
+	 * carry their arm from the JWT, so this is a no-op for them.
+	 */
+	#recordSignupSource() {
+		if (!this.user) return;
+		const variant = shownVariant();
+		if (!variant) return;
+		const created = this.#userCreatedAt ? Date.parse(this.#userCreatedAt) : NaN;
+		if (!Number.isFinite(created) || Date.now() - created > 15 * 60 * 1000) return;
+		apiFetch('/api/auth/signup-source/', {
+			method: 'POST',
+			body: JSON.stringify({ signup_variant: variant })
+		}).catch(() => {});
 	}
 
 	/**

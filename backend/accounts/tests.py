@@ -81,6 +81,64 @@ class MeViewTests(TestCase):
         self.assertEqual(anon.delete("/api/auth/me/").status_code, 401)
 
 
+class SignupSourceViewTests(TestCase):
+    """POST /api/auth/signup-source/ — attributes an OAuth (or any) sign-up to
+    the band it saw, create-only and fresh-only."""
+
+    def setUp(self):
+        self.user = User.objects.create(username="11111111-1111-1111-1111-111111111111")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="me@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def _post(self, variant):
+        return self.client.post(
+            "/api/auth/signup-source/", {"signup_variant": variant}, format="json"
+        )
+
+    def test_tags_a_fresh_blank_profile(self):
+        res = self._post("library")
+        self.assertEqual(res.status_code, 204)
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.signup_variant, "library")
+
+    def test_is_create_only_never_overwrites(self):
+        self.profile.signup_variant = "keep"
+        self.profile.save(update_fields=["signup_variant"])
+        self._post("library")
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.signup_variant, "keep")
+
+    def test_does_not_tag_an_old_profile(self):
+        # A returning reader whose account predates this sign-in must not be
+        # tagged by a stale stored arm, even though the field is still blank.
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        UserProfile.objects.filter(pk=self.profile.pk).update(
+            created_at=timezone.now() - timedelta(hours=2)
+        )
+        self._post("library")
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.signup_variant, "")
+
+    def test_unknown_variant_is_ignored(self):
+        res = self._post("bogus")
+        self.assertEqual(res.status_code, 204)
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.signup_variant, "")
+
+    def test_requires_auth(self):
+        anon = APIClient()
+        res = anon.post(
+            "/api/auth/signup-source/", {"signup_variant": "keep"}, format="json"
+        )
+        self.assertEqual(res.status_code, 401)
+
+
 class OriginUrlTests(TestCase):
     def test_strips_rest_path(self):
         # The exact misconfiguration that broke prod JWT validation.
