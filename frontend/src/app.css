@@ -871,6 +871,16 @@ nav.appnav .appnav-inner {
 	margin-inline: auto;
 	padding: 0.6rem 1.25rem;
 }
+/* On the smallest phones (≤360px) the brand + search/gear/Sign-in controls + the
+   hamburger were ~8px too wide for one row, so the hamburger wrapped onto a
+   second line under the logo. Tighten the column gap and side padding (still a
+   16px gutter) to keep the bar one row; wider phones are unaffected. */
+@media (max-width: 360px) {
+	nav.appnav .appnav-inner {
+		gap: 0.45rem 0.4rem;
+		padding-inline: 1rem;
+	}
+}
 /* On wide screens the links are centred in the bar regardless of the brand /
    control widths: out of flow, pinned to the bar's centre. */
 nav.appnav .navlinks {
@@ -1847,6 +1857,16 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	background: var(--accent-soft);
 	color: var(--accent);
 	font-weight: 600;
+}
+/* On the narrowest phones a three-option segment (e.g. biographies'
+   All / In the library / Biography only) overran its box and the last label was
+   clipped by `.seg`'s `overflow: hidden`. Tighten the horizontal padding so the
+   labels fit; the 44px touch height (set elsewhere for coarse pointers) is
+   untouched. */
+@media (max-width: 400px) {
+	.seg button {
+		padding-inline: 0.4rem;
+	}
 }
 
 /* Filter chip — the pill rows (topics on Books, length on Plans). */

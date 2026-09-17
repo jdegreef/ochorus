@@ -727,4 +727,13 @@
 		padding: 0.4rem 0.85rem;
 		font-size: var(--fs-small);
 	}
+	/* On a phone the CTA + a long "About this book" tab squeezed the tab list so
+	   "Contents" was clipped to "Conte" against the button. The primary
+	   Begin/Continue button lives in the hero above, so drop the sticky duplicate
+	   below sm and give the section tabs the full width. */
+	@media (max-width: 639.98px) {
+		.subnav-cta {
+			display: none;
+		}
+	}
 </style>
