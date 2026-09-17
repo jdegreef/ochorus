@@ -1,3 +1,6 @@
+// Rebuild marker 2026-09-16b: #2473 added Brave for God: Book Three. API
+// confirmed live; forcing one web build to prerender /books/brave-for-god-3
+// and the updated /topics/for-young-readers shelf (5 books).
 // Rebuild marker 2026-09-16: #2459 corrected R. A. Torrey's reversed initials
 // in Men of Prayer's chapter 6 via a data migration (the fixture was already
 // right; seed_books never re-syncs existing chapters). The api is confirmed
