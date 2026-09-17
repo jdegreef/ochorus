@@ -2068,6 +2068,14 @@
 			"art": true,
 			"scrim": 0.8
 		},
+		"sw/way-into-holiest": {
+			"ground": "ccc23c936cca03954a801237d65e76942d4a3c5ad04ed21c3d0dbd9705d8ee77",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
+		},
 		"sw/women-who-moved-heaven-2": {
 			"ground": "9025d1ea25113562a8cd8f636b61229829042ee0656eae8fde2bd309b2a0e1ed",
 			"style": "originals",

@@ -1,0 +1,1220 @@
+{
+ "kind": "book",
+ "slug": "way-into-holiest",
+ "language": "sw",
+ "job_issue": 2173,
+ "references": [
+  {
+   "reference": "Hebrews 1:1,2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:39-41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 11:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 50:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Peter 1:21; 1 Peter 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 1:3-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 20:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 10:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 4:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 7:53",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 1:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 1:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 45:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:8-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 110:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 16:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waefeso 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 13:11-12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ufunuo 22:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ufunuo 7:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 11:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaya 45:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 2:2-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 10:28-29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 8:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 8:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 40:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 139:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 8:5-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mwanzo 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mwanzo 1:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 5:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 28:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 24:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lamentations 1:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 24:46",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 5:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 2:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 15:56",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 24:46",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ufunuo 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 5:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 10:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wakorintho 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 23:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 14:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 8:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 2:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 2:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 30:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 9:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 2:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 3:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 16:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 14:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 106:24-26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 32:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 78:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 115:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 4:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 16:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 11:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 14:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 11:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 19:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 19:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:63",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Kings 22:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 12:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 15:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Kings 7:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 17:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 17:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Chronicles 26:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 5:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 5:7-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 26:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 14:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 26:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 12:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 26:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 22:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 22:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 26:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 22:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 6:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 5:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 6:4-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 6:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 6:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 22:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Samuel 23:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:58",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 6:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 14:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Chronicles 26:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 32:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 8:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 8:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 24:10-11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 24:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 25:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 8:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Kutoka 19:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Kutoka 24:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yeremia 31:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Kumbukumbu la Torati 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Kutoka 21:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hosea 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 8:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 8:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mwanzo 50:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 10:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:24-25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 9:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 9:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 7:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 7:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 7:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 7:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 9:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 9:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wakorintho 5:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 12:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Leviticus 17:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 5:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 21:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 21:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 40:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 69:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 6:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 40:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 54:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 16:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 45:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 1:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 11:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 5:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 15:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:1-2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:13-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 6:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 28:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 21:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:14,15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:22-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:18,22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 132:13-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 5:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Haggai 2:6-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Daniel 2:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 10:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Malachi 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 11:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wafilipi 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 7:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 13:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 16:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 15:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 21:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 23:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 5:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wakorintho 1:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 13:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 1:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 28:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 5:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:50",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:51",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 27:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 13:20-21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 40:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 13:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 26:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 14:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 13:21",
+   "status": "self_rendered"
+  }
+ ]
+}
