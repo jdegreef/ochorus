@@ -2020,6 +2020,14 @@
 			"art": true,
 			"scrim": 0.6
 		},
+		"sw/things-as-they-are": {
+			"ground": "533fc2826c5fc7fcc4cc123a41e912c6d5e175867bf66c3e7f182672e2f950e8",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"sw/till-he-come": {
 			"ground": "a3055051836f3acb228877c9eba9aa2ac60092c1dae375f14658610239b4cccf",
 			"style": "revival",

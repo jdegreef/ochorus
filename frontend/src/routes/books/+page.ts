@@ -3,6 +3,10 @@
 // Moveram o Céu"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
 // the translated title and the reader page bakes the 13 chapters. No plans/+page.ts touch owed —
 // women-who-moved-heaven-2 backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-17: one NEW Swahili book — things-as-they-are (#2172), Amy
+// Carmichael's unvarnished account of missionary work in southern India, 35 chapters ("Mambo Kama
+// Yalivyo"). Rebuilds /sw/books so the card carries its translated title on its localized plate
+// cover, and the reader page bakes the 35 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-16: one NEW Swahili book — the-christians-secret-of-a-happy-life-4
 // (#2171), Hannah Whitall Smith's classic on the higher life, 22 chapters ("Siri ya Mkristo ya
 // Maisha ya Furaha"). Rebuilds /sw/books so the card carries its translated title over the derived
