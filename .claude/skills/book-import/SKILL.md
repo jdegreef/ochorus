@@ -1643,6 +1643,55 @@ X" → author `X`, subtitle carries the descriptive line. (Contrast the
 `ochorus-originals` bio *collections* — many subjects in one volume — which are
 their own author with per-chapter subject links.) *(watchman-nee-a-life, 2026-09)*
 
+**An ORIGINAL, in-copyright book (the founder's own work, not a PD classic) is
+filed under the `ochorus-originals` imprint with NO schema change.** The shelf is
+otherwise public-domain, and `SourceType` has no `original` value — do NOT add
+one just to ship a book. Follow the non-PD SermonIndex precedent:
+  - `author` = `ochorus-originals` (the `is_imprint` house byline); `source_type`
+    stays `public_domain` (the enum's least-wrong value); `publication_year` =
+    the real (contemporary) year.
+  - Leave `source_url` **blank** — the book page renders the "Public domain" line
+    only when `source_url` AND `source_type == public_domain` are both set
+    (`books/[slug]/+page.svelte`), so a blank URL suppresses the false claim.
+  - The Book page does **not** surface the `attribution` field (the Sermon page
+    does), so put the authorship + any Scripture-translation rights notice (e.g.
+    NIV) in **`about_html`** (which IS rendered) — and also fill `attribution`
+    for the record. This is the honest place to say "© <author>… Scripture from
+    the NIV®" without touching the model.
+  - Parse the `.docx` from `word/document.xml` directly (ElementTree, no
+    python-docx needed): `pStyle` gives `Heading1`/`Heading2`; per-`<w:r>`
+    `<w:b>`/`<w:i>` give the sub-headings that carry NO heading style — this book's
+    convention was **bold = a heading** ("Reflection", "Prayer", numbered
+    "1. …" items) and **italic = an epigraph/subtitle/emphasis**. Render bold-short
+    lines as `<h3>`, italic runs as `<em>`, and strip emphasis from a trailing
+    "— Book c:v" citation so refs read consistently across chapters.
+  - Confirm the byline/scope/Scripture-translation decisions with the founder
+    before building — they are brand calls, not defaults. *(growing-in-wisdom,
+    original student guide, #2476, 2026-09-16)*
+
+**`npm run og:covers` regenerates any DRIFTED twin, not just your new one, and
+REWRITES the whole `og-manifest.json` in a different indent than committed** — so
+a fresh-worktree run shows N unrelated PNGs modified + a 2000-line manifest
+reformat. Don't commit that. `git checkout --` the unrelated PNGs and the
+manifest, then splice ONLY your entry into the committed manifest with a script:
+load it order-preserving (`object_pairs_hook=OrderedDict`), insert your slug
+before the first BASE (no `/`) slug that sorts after it, and write back
+`json.dump(indent=1)` + trailing `\n`. Do **NOT** `sorted()` the twins — the
+committed order appends translation twins (`fr/`, `pt/`, `sw/`) at the END, not
+alphabetically, so a re-sort explodes the diff. Verify `git diff --numstat` is
+`7 0`. *(growing-in-wisdom, 2026-09-16)*
+
+**Verifying a new book in the LOCAL browser 500s on EVERY book, not just yours —
+it's the dev CSP, not your content.** The built/dev pages carry a hash-mode CSP
+`<meta>` whose `connect-src` lists only the prod API hosts + `'self'`;
+`svelte.config.js:directivesForThisBuild()` adds the local API origin from
+`process.env.PUBLIC_API_BASE_URL`, but a plain `npm run dev` (preview_start /
+launch.json) doesn't reliably get that into `process.env`, so client-side
+`apiFetch` to `localhost:80xx` is CSP-blocked and the page throws to the 500
+boundary. Confirm it's environmental by loading an existing book (it 500s too),
+then verify via the API JSON (`/api/library/books/<slug>/`) + the backend gates
+instead of chasing a screenshot. *(growing-in-wisdom, 2026-09-16)*
+
 **A HOUSE-WRITTEN original collection (no source at all) → a `build_<name>` that
 holds the original prose as committed module constants**, exactly like the
 anthology/manuscript builds but with nothing fetched. File it under the existing

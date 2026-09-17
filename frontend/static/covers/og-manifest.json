@@ -739,6 +739,13 @@
    "art": true,
    "scrim": 0.6
   },
+  "growing-in-wisdom": {
+   "ground": "80c1611083e9de1bc4fcfd28adf9073045503d47d8a891827d0c4c70230c9115",
+   "style": "house",
+   "script": "latin",
+   "art": false,
+   "scrim": 1
+  },
   "holy-in-christ": {
    "ground": "25e3f970266c7bccd9a7035ca1d534d54c4abeba99b7b6d57c028277bd7904d4",
    "style": "devotional",
