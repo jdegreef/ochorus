@@ -29,10 +29,20 @@ on a Protestant evangelical classic — the first pass surfaced Barocci's
 *Saint Francis* for a Moody revival book, which is the mismatch in miniature.
 Landscape and architecture carry the subject without claiming a tradition.
 
-NOT EVERY BOOK SHOULD GET ART. Susanna Wesley is deliberately absent: every
-candidate was a period portrait of a different real woman, and a portrait on a
-cover reads as a portrait OF that person. Shipping one would imply an image is
-Susanna Wesley when it isn't. She keeps a generated cover.
+NO COVER MAY BE A PORTRAIT OF ITS SUBJECT. A portrait on a cover reads as a
+picture OF the person the book is about, which is a claim the artwork cannot
+support — every candidate for `susanna-wesley-clarke` was a period portrait of a
+DIFFERENT real woman. She was left without art for a long time on that ground;
+she now wears a house of her own century instead, which raises no such question,
+and the rule is enforced for every book rather than by naming hers
+(`test_no_curated_cover_is_a_portrait_of_its_subject`, and a classification
+check at fetch time in `build_curated_covers`).
+
+THE CREDIT MUST BE THE MUSEUM'S. `artist`, `title` and `year` below are recorded
+exactly as the collection records them — not tidied, not shortened — because
+`credit()` serves them to readers as provenance they can go and check. Four
+entries carried quietly wrong values (a date off by nine years, three titles
+truncated) until the fetcher started comparing them against the live record.
 """
 
 from __future__ import annotations
@@ -79,7 +89,7 @@ class Artwork(NamedTuple):
 # slug -> artwork. Slugs match Book.slug (shared across languages).
 CURATED: dict[str, Artwork] = {
     "waiting-on-god": Artwork(
-        "met", 437914, "Simon de Vlieger", "Calm Sea", "ca. 1640s",
+        "met", 437914, "Simon de Vlieger", "Calm Sea", "after 1640",
         "Still water under a wide sky — waiting, held rather than idle.",
     ),
     "all-of-grace": Artwork(
@@ -91,23 +101,23 @@ CURATED: dict[str, Artwork] = {
         "Dark wood at first light — prayer that persists until morning.",
     ),
     "the-fourfold-gospel": Artwork(
-        "met", 283081, "Roger Fenton", "Salisbury Cathedral — The Nave", "1858",
+        "met", 283081, "Roger Fenton", "Salisbury Cathedral - The Nave, from the South Transept", "1858",
         "A nave receding into light: the one gospel seen down its full length.",
     ),
     "life-and-diary-of-david-brainerd": Artwork(
-        "met", 16875, "Worthington Whittredge", "The Brook in the Woods", "ca. 1885–90",
+        "met", 16875, "Worthington Whittredge", "The Brook in the Woods", "ca. 1885–86",
         "American forest — the wilderness Brainerd actually walked into.",
     ),
     "pilgrims-progress": Artwork(
-        "met", 459103, "Henri-Joseph Harpignies", "The Rocky Path in the Morvan", "1878",
+        "met", 459103, "Henri-Joseph Harpignies", "The Rocky Path in the Morvan (Chemin des roches dans le Morvan)", "1869",
         "A path climbing out of frame. The book in one image.",
     ),
     "the-reformed-pastor": Artwork(
-        "met", 928532, "Pieter Jansz. Saenredam", "Interior of the Sint-Pieterskerk", "1632",
+        "met", 928532, "Pieter Jansz. Saenredam", "Interior of the Sint-Pieterskerk, 's-Hertogenbosch", "1632",
         "A whitewashed reformed church — Baxter's own subject, drawn from life.",
     ),
     "ten-commandments": Artwork(
-        "met", 359021, "John Ruskin", "The Valley of Lauterbrunnen, Switzerland", "1866",
+        "met", 359021, "John Ruskin", "The Valley of Lauterbrunnen, Switzerland", "ca. 1866",
         "The mountain, where the Law was given.",
     ),
     "confessions": Artwork(
@@ -240,7 +250,7 @@ CURATED: dict[str, Artwork] = {
         "stream and not a miracle.",
     ),
     "grace-for-grace-2": Artwork(
-        "cma", 140338, "Charles-François Daubigny", "Sunset on the River Oise", "1866",
+        "cma", 140338, "Charles François Daubigny", "Sunset on the River Oise", "1866",
         "John 1:16 — grace UPON grace, one measure laid over the last until "
         "there is nothing left to add. Light on water is the only thing that "
         "does that in front of you.",
@@ -248,12 +258,12 @@ CURATED: dict[str, Artwork] = {
     "if": Artwork(
         "cma", 133298, "George Inness", "Montclair, New Jersey", "c. 1878",
         "A hundred one-line self-examinations, not one of which raises its "
-        "voice. Neither does this: a hazy valley, olive trees, nothing "
+        "voice. Neither does this: a hazy valley under flat light, nothing in it "
         "insisting on itself. The quietest painting in the library, for the "
         "quietest book in it.",
     ),
     "let-us-pray-2": Artwork(
-        "cma", 128371, "Camille Corot", "The Pond at the Entrance of the Woods", "c. 1860–75",
+        "cma", 128371, "Jean Baptiste Camille Corot", "The Pond at the Entrance of the Woods", "c. 1860–75",
         "The edge of a wood, where you go to be out of sight. Nee is writing "
         "about the closet rather than the platform.",
     ),
@@ -264,7 +274,7 @@ CURATED: dict[str, Artwork] = {
         "Perfection as a long way up, which is how the book argues it.",
     ),
     "sermons-on-several-occasions": Artwork(
-        "cma", 128363, "Charles-François Daubigny",
+        "cma", 128363, "Charles François Daubigny",
         "Villerville Seen from Le Ratier", "1855",
         "The same enormous sky over a low horizon that `selected-sermons-"
         "whitefield` wears, and the echo is the point: the two men preached the "
@@ -296,7 +306,7 @@ CURATED: dict[str, Artwork] = {
         "than as a crowd of separate trees.",
     ),
     "the-gospel-of-healing": Artwork(
-        "cma", 124078, "Camille Corot", "Pond at Ville-d'Avray", "late 1860s",
+        "cma", 124078, "Jean Baptiste Camille Corot", "Pond at Ville-d'Avray", "late 1860s",
         "Still water, where Murray's `divine-healing` gets a moving stream. Two "
         "books on one subject sitting on one shelf should not wear one picture.",
     ),

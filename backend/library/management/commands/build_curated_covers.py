@@ -100,38 +100,90 @@ def _json(url: str) -> dict:
         return json.load(r)
 
 
-def _met_image_url(object_id: int) -> str:
-    """The Met's largest open-access image URL for an object."""
-    obj = _json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{object_id}")
+def _verify(art: Artwork, artist, title, year, subjects) -> None:
+    """Check a manifest entry against the collection's own record.
+
+    Two jobs, both done here because this is the moment the authoritative JSON
+    is in hand and nothing downstream ever sees it again.
+
+    THE CREDIT. `credit()` serves the artist, title and year to readers as
+    provenance they can go and check, and nothing else compares them to the
+    source. Four entries carried quietly wrong values — a date off by nine
+    years, three titles silently shortened — for as long as this was unchecked.
+    Recorded exactly as the museum records them, so a mismatch is a mistake
+    rather than a house style.
+
+    THE PORTRAIT RULE, from the collection's own SUBJECT terms where it has
+    them. `test_no_curated_cover_is_a_portrait_of_its_subject` greps titles for
+    "Portrait of", which misses the commonest museum convention by far — the
+    sitter's name alone, "Elizabeth Farren" — so where the record can answer
+    the question properly, ask it.
+
+    ONLY THE MET CAN. Its `tags` are subject terms ("Portraits", "Women"
+    against our "Roads", "Landscapes"). Cleveland publishes no genre field at
+    all: its `type` is the medium ("Painting") and `technique` the support, so
+    a Gainsborough portrait and a Corot pond are indistinguishable there. For a
+    `cma` entry this receives None and the title grep is the whole of the check
+    — worth knowing before trusting it. Checked: a Met portrait is refused
+    here, and the same object from Cleveland would not be.
+    """
+    for field, ours, theirs in (
+        ("artist", art.artist, artist or ""),
+        ("title", art.title, title or ""),
+        ("year", art.year, year or ""),
+    ):
+        if ours.strip() != theirs.strip():
+            raise CommandError(
+                f"{art.source}:{art.object_id} — the manifest's {field} is not the "
+                f"collection's.\n  manifest: {ours!r}\n  {art.source}:      {theirs!r}\n"
+                f"The credit is served to readers as provenance, so record theirs."
+            )
+    if any("portrait" in term.lower() for term in (subjects or ())):
+        raise CommandError(
+            f"{art.source}:{art.object_id} is tagged {sorted(subjects)} — a portrait on a "
+            f"cover reads as a picture OF the person the book is about, which is a claim "
+            f"the artwork cannot support."
+        )
+
+
+def _met_image_url(art: Artwork) -> str:
+    """The Met's largest open-access image URL for a manifest entry."""
+    obj = _json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{art.object_id}")
     # Re-verified on every fetch rather than trusted from the manifest: the
     # manifest records what we believed, the API is what is true.
     if not obj.get("isPublicDomain"):
-        raise CommandError(f"Met object {object_id} is NOT flagged public domain — refusing.")
+        raise CommandError(f"Met object {art.object_id} is NOT flagged public domain — refusing.")
+    _verify(art, obj.get("artistDisplayName"), obj["title"], obj.get("objectDate"),
+            [t["term"] for t in (obj.get("tags") or []) if t.get("term")])
     src = obj.get("primaryImage") or obj.get("primaryImageSmall")
     if not src:
-        raise CommandError(f"Met object {object_id} has no image.")
+        raise CommandError(f"Met object {art.object_id} has no image.")
     return src
 
 
-def _cma_image_url(object_id: int) -> str:
+def _cma_image_url(art: Artwork) -> str:
     """The Cleveland Museum's largest usable image URL for an object.
 
     `print` (a few thousand px) rather than `full`, which is a TIFF `sips` would
     have to transcode for no gain at 600x800; `web` is the fallback for objects
     with no print derivative. Both are on their open-access CDN.
     """
-    obj = _json(f"https://openaccess-api.clevelandart.org/api/artworks/{object_id}")["data"]
+    obj = _json(f"https://openaccess-api.clevelandart.org/api/artworks/{art.object_id}")["data"]
     if obj.get("share_license_status") != "CC0":
         raise CommandError(
-            f"Cleveland object {object_id} is "
+            f"Cleveland object {art.object_id} is "
             f"{obj.get('share_license_status')!r}, not CC0 — refusing."
         )
+    # No subject terms: Cleveland publishes the medium, not the genre. See
+    # `_verify` — the title grep in the test is the only portrait check here.
+    _verify(art, (obj.get("creators") or [{}])[0].get("description", "").split(" (")[0],
+            obj["title"], obj.get("creation_date"), None)
     images = obj.get("images") or {}
     for size in ("print", "web"):
         url = (images.get(size) or {}).get("url")
         if url:
             return url
-    raise CommandError(f"Cleveland object {object_id} has no print or web image.")
+    raise CommandError(f"Cleveland object {art.object_id} has no print or web image.")
 
 
 #: Manifest ``source`` → the function that licence-checks it and returns a URL.
@@ -158,9 +210,17 @@ def _artwork_image(art: Artwork) -> Path:
     fetch = FETCHERS.get(art.source)
     if fetch is None:
         raise CommandError(f"No fetcher for source {art.source!r} — see FETCHERS.")
+    # ALWAYS, even when the bytes are already cached. The fetcher is what checks
+    # the licence, the credit and the classification against the live record,
+    # and gating it on a cache miss would mean each entry was checked exactly
+    # once — on the day it was added, by the person who added it, against the
+    # record they had just read. That is the moment it is least likely to be
+    # wrong. One small JSON GET per entry, in a command run by hand a few times
+    # a year, buys the guarantee every other run.
+    url = fetch(art)
     raw = CACHE / f"{_cache_key(art)}.orig.jpg"
     if not raw.exists():
-        _fetch(fetch(art.object_id), raw)
+        _fetch(url, raw)
     return raw
 
 

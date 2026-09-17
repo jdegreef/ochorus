@@ -279,14 +279,14 @@ services:
       - type: redirect
         source: /wp-content/uploads/2026/01/small-library-copy-3100.png
         destination: /covers/art/the-body-of-christ-teens.jpg
+      # ABOVE the rule, not inside it. `renderRoutes.test.ts` reads this file
+      # positionally — `- type:` on one line, `source:` on the next,
+      # `destination:` on the one after — and silently SKIPS any rule whose
+      # three lines are interrupted. A comment sat between `source:` and
+      # `destination:` here, which quietly excluded this very rule from the
+      # existence check its own comment claimed enforced it.
       - type: redirect
         source: /wp-content/uploads/2025/08/Normal-Christian-Life.jpg
-        # These `/covers/art/*.jpg` destinations were `/covers/<slug>.svg` until
-        # each book was given a painting and its generated plate was deleted. A
-        # retired cover's redirect follows the COVER, not the filename, and
-        # `renderRoutes.test.ts` is what enforces it: it fails on a destination
-        # that no longer exists in static/. Curating a book therefore means
-        # checking this block — six of these rules have moved so far.
         destination: /covers/art/the-normal-christian-life.jpg
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.

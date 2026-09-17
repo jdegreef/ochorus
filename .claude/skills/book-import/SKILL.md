@@ -526,12 +526,22 @@ the transcribed chapters against the work's own TOC before choosing it.
      classic. The first pass returned Barocci's *Saint Francis* for a Moody
      revival book.
    - **Never a portrait standing in for a named person.** A portrait on a
-     cover reads as a portrait OF that person. Susanna Wesley is excluded for
-     exactly this reason, with a test asserting it.
+     cover reads as a portrait OF that person, which the artwork cannot
+     support. `susanna-wesley-clarke` went without art on this ground for a
+     long time — every candidate was a portrait of a different real woman — and
+     now wears a house of her century instead, which raises no such question.
+     Enforced for every book by
+     `test_no_curated_cover_is_a_portrait_of_its_subject` and by a
+     classification check at download.
+   - **Record the museum's own artist, title and year**, untidied. `credit()`
+     serves them to readers as provenance, and the fetcher refuses a manifest
+     entry that disagrees with the live record.
 
-   Licence comes from the Met's `isPublicDomain` flag, re-checked at download
-   rather than trusted from the manifest — so use the Met (or another source
-   with a per-object licence flag), not a general image search.
+   Licence comes from the collection's per-object flag — the Met's
+   `isPublicDomain`, Cleveland's `share_license_status` — re-checked at download
+   rather than trusted from the manifest. Use a source that has one, not a
+   general image search. Adding a collection means a `Source` in
+   `curated_art.SOURCES` and a fetcher in `build_curated_covers.FETCHERS`.
 
 ## Two kinds of fix
 

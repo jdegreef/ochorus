@@ -15,11 +15,12 @@
  * matching nothing and passing.
  */
 import { describe, expect, it } from 'vitest';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const REPO = join(process.cwd(), '..');
 const STATIC = join(process.cwd(), 'static');
+const BOOK_FIXTURES = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
 
 interface Rule {
 	type: string;
@@ -106,7 +107,7 @@ describe('render.yaml routing rules', () => {
 	});
 
 	it('redirects every retired cover to a file that exists', () => {
-		// These point at static/covers/*.svg, which IS in the repo — so unlike the
+		// These point into static/covers/, which IS in the repo — so unlike the
 		// page destinations, this is a real existence check, and it is the one
 		// that catches a rename.
 		const covers = all.filter((r) => r.destination.startsWith('/covers/'));
@@ -117,6 +118,42 @@ describe('render.yaml routing rules', () => {
 				`${r.destination} (line ${r.line}) does not exist in static/`
 			).toBe(true);
 		}
+	});
+
+	it('redirects every retired cover to the cover that book wears NOW', () => {
+		// Existence is not enough, and twice was not enough either: these rules
+		// broke in two consecutive batches when a book swapped its generated plate
+		// for a painting, and both times the failure said only "this file is
+		// missing", leaving the right destination to be worked out by hand.
+		//
+		// The fixture already knows the answer — `cover_url` is the cover that
+		// book wears — so ask it, and the failure becomes the fix. It also closes
+		// a hole the existence check cannot see: if a curated book's plate were
+		// ever left behind on disk, the redirect would go on serving a retired
+		// design forever and the check above would stay green.
+		const covers = all.filter((r) => r.destination.startsWith('/covers/'));
+		const byCover = new Map<string, string>();
+		for (const file of readdirSync(BOOK_FIXTURES).filter((f) => f.endsWith('.en.json'))) {
+			for (const row of JSON.parse(readFileSync(join(BOOK_FIXTURES, file), 'utf-8'))) {
+				if (row.model === 'library.book' && row.fields.cover_url) {
+					byCover.set(row.fields.slug, row.fields.cover_url);
+				}
+			}
+		}
+		const stale = covers
+			.map((r) => {
+				// `/covers/art/<slug>.jpg` and `/covers/<slug>.svg` both name a slug.
+				const slug = r.destination.replace(/^\/covers\/(art\/)?/, '').replace(/\.[a-z0-9]+$/, '');
+				const now = byCover.get(slug);
+				return now && now !== r.destination
+					? `line ${r.line}: -> ${r.destination}, but ${slug} now wears ${now}`
+					: null;
+			})
+			.filter(Boolean);
+		expect(
+			stale,
+			'a retired-cover redirect points at a cover its book no longer wears'
+		).toEqual([]);
 	});
 
 	it('redirects to book pages that are actually published', () => {

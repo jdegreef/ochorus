@@ -6085,8 +6085,11 @@ class CuratedArtTests(TestCase):
         from library.curated_art import CURATED
 
         # Titles that would be a person rather than a place. Cheap and
-        # deliberately blunt: the manifest is 37 hand-written lines, and a
-        # curator who wants a portrait has to defeat a named list to get one.
+        # deliberately blunt, and it MISSES the commonest museum convention —
+        # the sitter's name alone, "Elizabeth Farren" — so it is the backstop,
+        # not the guard. The real check is at fetch time, against the Met's
+        # subject tags (`build_curated_covers._verify`); Cleveland publishes no
+        # genre field, and for those entries this grep is all there is.
         portraitish = ("portrait of", "self-portrait", "bust of", "effigy")
         offenders = [
             f"{slug}: {art.title}"
