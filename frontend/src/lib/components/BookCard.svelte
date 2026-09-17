@@ -45,9 +45,11 @@
 	</div>
 
 	<div class="mt-2 flex flex-1 flex-col px-0.5">
-		<div class="line-clamp-2 text-small font-medium leading-snug text-text">{book.title}</div>
+		<div class="line-clamp-2 text-small font-medium leading-snug text-text" title={book.title}>
+			{book.title}
+		</div>
 		{#if showAuthor}
-			<div class="truncate text-small text-muted">{book.author.name}</div>
+			<div class="truncate text-small text-muted" title={book.author.name}>{book.author.name}</div>
 		{/if}
 		<!-- mt-auto pins the meta to the card's bottom, so a one-line title and a
 		     two-line title still bottom out level across a grid row. -->

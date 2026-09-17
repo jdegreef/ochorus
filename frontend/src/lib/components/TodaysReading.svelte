@@ -76,7 +76,7 @@
 				<p class="eyebrow mb-1 text-accent">
 					{t('plans.todaysReading')}
 				</p>
-				<h2 class="text-h3 truncate text-text">
+				<h2 class="text-h3 truncate text-text" title={today.chapterTitle || today.bookTitle}>
 					{today.chapterTitle || today.bookTitle}
 				</h2>
 				<p class="mt-0.5 text-small text-muted">
