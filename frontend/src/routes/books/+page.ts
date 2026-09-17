@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-17: Spanish book — a-call-to-the-unconverted (#1366), Richard
+// Baxter's "Un llamado a los inconversos". Book pages are prerendered per locale, so
+// /es/books must rebuild so the card and its /es/books/a-call-to-the-unconverted pages bake
+// the translated title and chapters.
 // prerender refresh 2026-09-11: Portuguese book — women-who-moved-heaven-2 (#1785), an Ochorus
 // Originals devotional on women of persistent prayer through history, 13 chapters ("Mulheres Que
 // Moveram o Céu"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
