@@ -796,6 +796,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"fr/the-way-to-god": {
+			"ground": "842c2871e515cde3856d373cb046f5409bb76ca4bb15f8be289cfab2f9b6e32c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6
+		},
 		"fr/true-vine": {
 			"ground": "2ae642dca179a7ded689f75d540d4c5d1a3efb7566068a1a8d2bf878f6aa5185",
 			"style": "devotional",
