@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "susanna-wesley",
+ "language": "fr",
+ "job_issue": 2491,
+ "references": [
+  {
+   "reference": "a brand plucked from the burning",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "the throne of grace",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

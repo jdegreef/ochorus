@@ -1,0 +1,17 @@
+{
+ "kind": "bio",
+ "slug": "elisabeth-elliot",
+ "language": "fr",
+ "job_issue": 2486,
+ "references": [
+  {
+   "reference": "Jeremiah 31:3b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Deuteronomy 33:27b",
+   "status": "self_rendered"
+  }
+ ]
+}
