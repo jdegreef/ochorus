@@ -25,8 +25,8 @@ WHAT IS AND IS NOT CHECKABLE HERE
   That is *stronger* provenance than a corpus lift, but the text is not in the
   repo and CI has no egress, so there is nothing here to compare against.
 
-Measured on 2026-09-17: 6,559 `mined` rows against 13,371 `self_rendered`, and
-of the mined ones only **554 cite a fixture** — the other 6,005 cite a Bible.
+Measured on 2026-09-17: 6,558 `mined` rows against 13,372 `self_rendered`, and
+of the mined ones only **553 cite a fixture** — the other 6,005 cite a Bible.
 So this module speaks to about 8% of the mined rows and is silent, by
 construction, on the rest. It says so in its census rather than implying
 coverage it does not have.
@@ -41,7 +41,8 @@ name ("Marko 9:23"), so the book name cannot be the join.
 1. **Both sides must be locatable.** If the translation never quotes the verse
    in that form, or the cited file doesn't, there is nothing to compare and the
    row is counted, not failed. 317 + 46 rows land here — most quotations are
-   not written as «…» (Ref c:v).
+   not written as «…» (Ref c:v), which is why 553 fixture-citing rows come down
+   to 120 comparisons.
 
 2. **Same-verse confirmation, proportionally.** A numeric key alone conflates
    different books: Joel 2:25 with Revelation 2:25, and — measured in
@@ -58,10 +59,14 @@ name ("Marko 9:23"), so the book name cannot be the join.
    for the same reason.
 
 What survives all three is a claim that the two texts ARE the same verse and are
-NOT the same words: a verse adapted while being lifted. The one the corpus
-carries today is ``watchman-nee-a-life.sw`` Ephesians 5:21 — the source reads
-"kunyenyekeana katika kumcha Kristo", the translation "mkinyenyekeana katika
-kumcha Kristo", the verb re-personed. Faithful Swahili; not a mined verse.
+NOT the same words: a verse adapted while being lifted. The corpus carried
+exactly one when this was written — ``watchman-nee-a-life.sw`` Ephesians 5:21,
+where the source reads "kunyenyekeana katika kumcha Kristo" and the translation
+"mkinyenyekeana katika kumcha Kristo", the verb re-personed. Faithful Swahili;
+not a mined verse, and repaired in the same change by marking the row
+`self_rendered` — which is the usual repair. Rewording a translation to match a
+source it merely resembles would be the wrong way round; the note is what was
+inaccurate, not the prose.
 
 Reads the committed fixtures, not the database — the fixture is what ships, so a
 drifted local DB cannot make this lie. Same reasoning as ``english_audit`` and

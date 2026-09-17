@@ -27,12 +27,14 @@ from library import mined_verification as mv
 # translation-worker skill says is `self_rendered`, not `mined`.
 #   (notes file, reference)
 # Delete the line when the repair ships — a stale entry fails below.
-KNOWN_ADAPTED: set[tuple[str, str]] = {
-    # The source reads "kunyenyekeana katika kumcha Kristo"; the translation
-    # re-persons the verb to "mkinyenyekeana …". Faithful Swahili, but the
-    # wording is the translator's, so the row owes a reviewer a look.
-    ("watchman-nee-a-life.sw.json", "Ephesians 5:21"),
-}
+#
+# EMPTY, and that is the finished state rather than an untested one: the gate's
+# one finding on the corpus it was written against — watchman-nee-a-life.sw
+# Ephesians 5:21, the verb re-personed out of the-key-in-my-hand.sw — was
+# repaired in the same PR by marking the row `self_rendered`, which is what an
+# adapted verse is. The precision tests below still carry both of its texts, so
+# the case it proves survives the repair.
+KNOWN_ADAPTED: set[tuple[str, str]] = set()
 
 
 class MinedProvenanceGateTests(SimpleTestCase):
@@ -76,7 +78,7 @@ class MinedProvenanceGateTests(SimpleTestCase):
 
         Every rule below narrows what is comparable, and a scanner that narrows
         itself to zero passes every other test in this file while proving
-        nothing. 121 rows were checkable on 2026-09-17; the floor is set well
+        nothing. 120 rows were checkable on 2026-09-17; the floor is set well
         under that so ordinary corpus churn doesn't trip it, and a collapse to
         near-zero does.
         """
@@ -107,9 +109,10 @@ class MinedPrecisionTests(SimpleTestCase):
     def test_one_clause_worded_two_ways_is_the_same_verse(self):
         """The convention the rule above must not eat.
 
-        The Ephesians 5:21 pin: same clause, the verb re-personed. If this read
-        as two different verses the gate would exempt exactly what it exists to
-        find.
+        The Ephesians 5:21 case this gate was written on: same clause, the verb
+        re-personed. If this read as two different verses the gate would exempt
+        exactly what it exists to find — so the pair stays pinned here even
+        though the corpus row itself has been repaired.
         """
         self.assertTrue(
             mv.same_verse(
@@ -154,7 +157,7 @@ class MinedPrecisionTests(SimpleTestCase):
     # --- source_file classification ------------------------------------------
 
     def test_a_bible_edition_is_not_a_filename(self):
-        """6,005 of 6,559 mined rows cite one of these; none is a defect."""
+        """6,005 of 6,558 mined rows cite one of these; none is a defect."""
         for name in (
             "Van Dyck (arb-vd) Bible text",
             "Louis Segond (1910)",

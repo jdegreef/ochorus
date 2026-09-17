@@ -1998,9 +1998,8 @@
   },
   {
    "reference": "Ephesians 5:21",
-   "status": "mined",
-   "block_index": 103,
-   "source_file": "the-key-in-my-hand.sw.json"
+   "status": "self_rendered",
+   "block_index": 103
   },
   {
    "reference": "Ephesians 5:25",
