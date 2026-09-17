@@ -1469,7 +1469,24 @@ nav.appnav .navsearch:hover {
 	/* Two on a phone, not three. The shelf was three-across at every width, which
 	   on a 390px screen is a 97px card: the title clamps to "A Treatise on
 	   Holy…" and the meta line breaks into three ("12 / chapters · 3 / hr 30 min
-	   read"). Two gives 154px, a readable title and a two-line meta. */
+	   read"). Two gives 154px, a readable title and a two-line meta.
+
+	   154px is the bar the UPPER steps answer to: a card narrower than that
+	   clamps the (line-clamp-2) title and wraps the meta. The shelf sits in a
+	   `.page-col px-5` column, so its width is roughly `100vw − 5rem`. On that
+	   arithmetic 5-up clears 154px only past ~914px and 6-up past ~1084px, so
+	   those two steps key off `lg`/`xl` rather than `md`/`lg` — otherwise a
+	   768px tablet (portrait iPad) gets 5-up at 125px cards, a shelf of postage
+	   stamps. So md tablets stay at a readable 4-up (160px), 5-up is a desktop
+	   width, 6-up a wide one. Tailwind breakpoints per STYLE_GUIDE §Breakpoints.
+
+	   The lower steps are NOT held to 154px and predate this: 30rem→3-up dips to
+	   ~123px at 480px and 40rem→4-up to ~128px at 640px. Left as-is — a phone in
+	   this band would otherwise sit at one wide column — and the bespoke 30rem is
+	   tracked in page-design E2. One knock-on of no 5-up step between md and lg:
+	   4-up runs to 1023px, where a card reaches ~224px — briefly larger than the
+	   page-col-capped 183px of 6-up on a wide screen. Accepted as the price of
+	   Tailwind-only breakpoints; a bespoke ~57rem step is the lever if it grates. */
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	column-gap: 1rem;
 	row-gap: 1.5rem;
@@ -1484,12 +1501,12 @@ nav.appnav .navsearch:hover {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 }
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
 	.book-grid {
 		grid-template-columns: repeat(5, minmax(0, 1fr));
 	}
 }
-@media (min-width: 64rem) {
+@media (min-width: 80rem) {
 	.book-grid {
 		grid-template-columns: repeat(6, minmax(0, 1fr));
 	}
