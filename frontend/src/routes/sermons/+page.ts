@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-17: Spanish sermons (final three) — enduring-persecution-for-christ
+// (#1713), why-is-god-a-stranger-in-the-land (#1714), prevailing-prayer (#1715). Sermon pages
+// are prerendered per locale, so /es/sermons must rebuild so each card and its
+// /es/sermons/<slug> page bakes the translated title and "In brief" summary. Clears the
+// Spanish sermon queue.
 // prerender refresh 2026-09-11: Hindi sermon blessed-adversity (#2129). Sermon pages are
 // prerendered per locale, so /hi/sermons must rebuild so its card and the
 // /hi/sermons/blessed-adversity page bake the translated title and "In brief" summary.
