@@ -1,0 +1,220 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "hudson-taylor"
+  ],
+  "slug": "a-retrospect-children",
+  "language": "en",
+  "title": "A Retrospect (For Children)",
+  "subtitle": "",
+  "description": "Hudson Taylor left England to bring the good news of Jesus to inland China, trusting God for everything he needed. This children’s edition retells the true story of his life in short chapters made to be read aloud: a Bible verse, an adventure or an answered prayer, one thing it means for you, and a short prayer.",
+  "qa": [
+   {
+    "question": "What is A Retrospect (For Children) about?",
+    "answer": "It is a children’s version of Hudson Taylor’s own life story. Taylor sailed from England to China to tell people about Jesus, and he trusted God to provide everything he needed along the way. Each short chapter tells one true adventure or answered prayer from his life."
+   },
+   {
+    "question": "Who was Hudson Taylor?",
+    "answer": "An Englishman who became a missionary to China long ago and started a mission that sent many workers deep inland to tell people about Jesus. He was famous for trusting God for his food, his money, and his safety, and for wearing Chinese clothes so he could reach the people he loved."
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells a true story from Hudson Taylor’s life, shows one simple thing it means for you, and ends with a short prayer."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children — to be read aloud by a grown-up, or read by an older child alone. Hudson Taylor’s fuller autobiography, A Retrospect, is also available for older readers."
+   },
+   {
+    "question": "What is the main thing the book teaches?",
+    "answer": "That God can be trusted completely — for money, for safety, and for help — by anyone who follows him. Hudson Taylor’s life is a true adventure of asking God and watching him provide, so that children can learn to trust him too."
+   },
+   {
+    "question": "Are the stories true?",
+    "answer": "Yes. They are retold simply for children, but they come from Hudson Taylor’s own account of his life — the real voyage, the real answered prayers, and the real beginnings of his mission to China."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "",
+  "cover_url": "/covers/a-retrospect-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 24,
+  "is_published": true,
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Little Book in the Basket",
+  "body_html": "<blockquote>“It is finished.” — from John 19</blockquote> <p>When Hudson Taylor was about fifteen, he had a long, empty afternoon with nothing to do. His mother was far away visiting friends. Hudson wandered into his father’s library, looking for something — anything — to read, and out of a little basket of pamphlets he pulled a small Gospel booklet.</p> <p>“I’ll read the story part,” he thought, “and skip the preachy bit at the end.”</p> <p>But as he read, three words jumped out at him: “the finished work of Christ.” And into his mind came Jesus’ words from the Cross: “It is finished.” Suddenly Hudson understood. Jesus had already paid for all his sins — completely, once and for all. There was nothing left for Hudson to earn or add. All he had to do was say thank you and accept it.</p> <p>So right there, alone in a quiet old warehouse where he had gone to read, Hudson knelt down and gave his life to Jesus.</p> <p>Here is the good news Hudson discovered, and it is for you too: when Jesus said “It is finished,” he meant it. You don’t have to be good enough to earn God’s love. Jesus has already done everything. You just have to receive it, like a gift.</p> <p><em>Dear Jesus, thank you that you finished the work of saving me on the Cross. I receive your gift with all my heart. Amen.</em></p>",
+  "body_text": "“It is finished.” — from John 19 When Hudson Taylor was about fifteen, he had a long, empty afternoon with nothing to do. His mother was far away visiting friends. Hudson wandered into his father’s library, looking for something — anything — to read, and out of a little basket of pamphlets he pulled a small Gospel booklet. “I’ll read the story part,” he thought, “and skip the preachy bit at the end.” But as he read, three words jumped out at him: “the finished work of Christ.” And into his mind came Jesus’ words from the Cross: “It is finished.” Suddenly Hudson understood. Jesus had already paid for all his sins — completely, once and for all. There was nothing left for Hudson to earn or add. All he had to do was say thank you and accept it. So right there, alone in a quiet old warehouse where he had gone to read, Hudson knelt down and gave his life to Jesus. Here is the good news Hudson discovered, and it is for you too: when Jesus said “It is finished,” he meant it. You don’t have to be good enough to earn God’s love. Jesus has already done everything. You just have to receive it, like a gift. Dear Jesus, thank you that you finished the work of saving me on the Cross. I receive your gift with all my heart. Amen.",
+  "word_count": 235
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "Mother's Locked Door",
+  "body_html": "<blockquote>“The prayer of a good person is powerful and works wonders.” — from James 5</blockquote> <p>Here is the amazing part. At the very same time Hudson was reading that little booklet, something was happening far, far away.</p> <p>His mother, visiting friends many miles from home, suddenly felt she simply had to pray for her boy. She went up to her room, turned the key in the lock so no one would disturb her, and prayed — and prayed — for hours. She kept praying until deep in her heart she felt certain that God had heard, and that Hudson was now safe with God. Then she stopped asking and started thanking him.</p> <p>Two weeks later she came home. Hudson ran to her, bursting to share his wonderful news. But before he could speak, she smiled and said, “I know, my boy. I have been rejoicing for a whole fortnight!” God himself had told her, and she had told no one.</p> <p>Later Hudson found his sister Amelia’s little diary. In it she had written that she would pray for her brother every single day until he came to God. And it was exactly one month later that he did.</p> <p>Somebody, somewhere, may be praying for you right now — and God hears every one of those prayers. And you can pray like that for the people you love, too. God really does listen.</p> <p><em>Dear God, thank you for people who pray for me. Help me to pray faithfully for the people I love. Amen.</em></p>",
+  "body_text": "“The prayer of a good person is powerful and works wonders.” — from James 5 Here is the amazing part. At the very same time Hudson was reading that little booklet, something was happening far, far away. His mother, visiting friends many miles from home, suddenly felt she simply had to pray for her boy. She went up to her room, turned the key in the lock so no one would disturb her, and prayed — and prayed — for hours. She kept praying until deep in her heart she felt certain that God had heard, and that Hudson was now safe with God. Then she stopped asking and started thanking him. Two weeks later she came home. Hudson ran to her, bursting to share his wonderful news. But before he could speak, she smiled and said, “I know, my boy. I have been rejoicing for a whole fortnight!” God himself had told her, and she had told no one. Later Hudson found his sister Amelia’s little diary. In it she had written that she would pray for her brother every single day until he came to God. And it was exactly one month later that he did. Somebody, somewhere, may be praying for you right now — and God hears every one of those prayers. And you can pray like that for the people you love, too. God really does listen. Dear God, thank you for people who pray for me. Help me to pray faithfully for the people I love. Amen.",
+  "word_count": 253
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "The Last Half-Crown",
+  "body_html": "<blockquote>“Give to the one who asks you.” — from Matthew 5</blockquote> <p>Hudson wanted to be a missionary in far-off China, where he would have to trust God for everything. So he decided to start practising trusting God right away.</p> <p>One night he had just one coin left in the whole world — a single half-crown. Late that evening a poor man begged him to come and pray for his wife, who was very ill. In their bare, cold room Hudson found hungry children and a mother with a tiny new baby, and no food at all.</p> <p>Hudson wanted to help — but if he gave them his one coin, he’d have nothing left himself! He tried to tell them about a loving Father in heaven, but the words stuck. How could he talk about God’s care while clutching his last coin? So he took a deep breath and gave the poor family his whole half-crown. At once his happiness came flooding back, and he walked home singing.</p> <p>The very next morning, the postman brought a letter. Inside was a pair of gloves — and out of them dropped a coin worth four times what Hudson had given away! “Wonderful!” laughed Hudson. God had given back far more than he had let go.</p> <p>You can never out-give God. When you share what you have with someone who needs it, you can trust your loving Father to take care of you.</p> <p><em>Dear God, help me to give cheerfully, even when it’s hard, and to trust you to take care of me. Amen.</em></p>",
+  "body_text": "“Give to the one who asks you.” — from Matthew 5 Hudson wanted to be a missionary in far-off China, where he would have to trust God for everything. So he decided to start practising trusting God right away. One night he had just one coin left in the whole world — a single half-crown. Late that evening a poor man begged him to come and pray for his wife, who was very ill. In their bare, cold room Hudson found hungry children and a mother with a tiny new baby, and no food at all. Hudson wanted to help — but if he gave them his one coin, he’d have nothing left himself! He tried to tell them about a loving Father in heaven, but the words stuck. How could he talk about God’s care while clutching his last coin? So he took a deep breath and gave the poor family his whole half-crown. At once his happiness came flooding back, and he walked home singing. The very next morning, the postman brought a letter. Inside was a pair of gloves — and out of them dropped a coin worth four times what Hudson had given away! “Wonderful!” laughed Hudson. God had given back far more than he had let go. You can never out-give God. When you share what you have with someone who needs it, you can trust your loving Father to take care of you. Dear God, help me to give cheerfully, even when it’s hard, and to trust you to take care of me. Amen.",
+  "word_count": 260
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "The Forgotten Wages",
+  "body_html": "<blockquote>“Your Father knows what you need before you ask him.” — from Matthew 6</blockquote> <p>Hudson worked for a busy doctor, who paid him wages. But Hudson wanted to train his trust in God even more. So he made a plan: when his pay was due, he would <em>not</em> remind the doctor. Instead, he would ask God to remind him.</p> <p>Pay day came and went — and the doctor, who was very forgetful, simply forgot. Hudson said nothing to him, but he told God all about it, and his money got lower and lower.</p> <p>Then one day the doctor suddenly said, “By the way, Taylor — isn’t your pay due again?” Hudson’s heart jumped! But then the doctor remembered he had just sent all his spare money to the bank. Oh dear. Hudson kept quiet and kept praying.</p> <p>Late that Saturday night — about ten o’clock — the doctor came back into the room, chuckling. One of his richest patients had just turned up at that strange hour to pay a bill! The doctor handed the money to Hudson and said, “You might as well take these.”</p> <p>God had done it — quietly nudging other people, at just the right time, without Hudson having to ask anyone but God.</p> <p>You don’t always have to work everything out yourself or nag people for what you need. Your Father in heaven already knows, and he can arrange things in ways you’d never expect. Ask him.</p> <p><em>Dear God, thank you that you already know what I need. Help me to bring it to you first, and trust your timing. Amen.</em></p>",
+  "body_text": "“Your Father knows what you need before you ask him.” — from Matthew 6 Hudson worked for a busy doctor, who paid him wages. But Hudson wanted to train his trust in God even more. So he made a plan: when his pay was due, he would not remind the doctor. Instead, he would ask God to remind him. Pay day came and went — and the doctor, who was very forgetful, simply forgot. Hudson said nothing to him, but he told God all about it, and his money got lower and lower. Then one day the doctor suddenly said, “By the way, Taylor — isn’t your pay due again?” Hudson’s heart jumped! But then the doctor remembered he had just sent all his spare money to the bank. Oh dear. Hudson kept quiet and kept praying. Late that Saturday night — about ten o’clock — the doctor came back into the room, chuckling. One of his richest patients had just turned up at that strange hour to pay a bill! The doctor handed the money to Hudson and said, “You might as well take these.” God had done it — quietly nudging other people, at just the right time, without Hudson having to ask anyone but God. You don’t always have to work everything out yourself or nag people for what you need. Your Father in heaven already knows, and he can arrange things in ways you’d never expect. Ask him. Dear God, thank you that you already know what I need. Help me to bring it to you first, and trust your timing. Amen.",
+  "word_count": 266
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "\"You Shall Not Die\"",
+  "body_html": "<blockquote>“I shall not die, but live, and tell what the Lord has done.” — from Psalm 118</blockquote> <p>While training to be a doctor in London, Hudson was very poor and often lived on just brown bread and water. One evening a needle pricked his finger, and he thought nothing of it. But the next day, while he was helping with a difficult and dangerous medical job, that little cut let in a serious sickness, and Hudson grew terribly ill.</p> <p>The senior doctor looked at him gravely and said, “You are a dead man.”</p> <p>What do you think Hudson’s first thought was? It was not fear for himself. It was sadness that now he might never get to China! But then a deep, calm certainty settled over his heart: “I have work to do in China, and I shall not die.”</p> <p>He had no money for a carriage, so weak as he was, he made his slow way home by bus and on foot. Two other men who got the same sickness at the same time both died. But Hudson lived. God had kept him — because God still had work for him to do far away in China.</p> <p>God has a plan for your life, and he will take care of you until it is finished. You are safe in his hands.</p> <p><em>Dear God, thank you that my life is in your hands and you have good plans for me. Help me trust you, whatever comes. Amen.</em></p>",
+  "body_text": "“I shall not die, but live, and tell what the Lord has done.” — from Psalm 118 While training to be a doctor in London, Hudson was very poor and often lived on just brown bread and water. One evening a needle pricked his finger, and he thought nothing of it. But the next day, while he was helping with a difficult and dangerous medical job, that little cut let in a serious sickness, and Hudson grew terribly ill. The senior doctor looked at him gravely and said, “You are a dead man.” What do you think Hudson’s first thought was? It was not fear for himself. It was sadness that now he might never get to China! But then a deep, calm certainty settled over his heart: “I have work to do in China, and I shall not die.” He had no money for a carriage, so weak as he was, he made his slow way home by bus and on foot. Two other men who got the same sickness at the same time both died. But Hudson lived. God had kept him — because God still had work for him to do far away in China. God has a plan for your life, and he will take care of you until it is finished. You are safe in his hands. Dear God, thank you that my life is in your hands and you have good plans for me. Help me trust you, whatever comes. Amen.",
+  "word_count": 247
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "The Storm by the Rocks",
+  "body_html": "<blockquote>“He calmed the storm, and guided them to the harbour they longed for.” — from Psalm 107</blockquote> <p>At last the great day came. Hudson boarded a sailing ship bound for China. His mother came to say goodbye, tidying his little bunk and praying with him one last time. As the ship pulled away, her cry of sadness “went through me like a knife,” Hudson said. But he was going where God had called him.</p> <p>Then trouble struck. A fierce gale blew up and trapped the ship for twelve stormy days. One Sunday night the wind drove them straight toward a rocky shore — closer and closer, until the ship was almost near enough to touch the rocks. It looked like the end.</p> <p>The captain, who loved God too, turned to Hudson and said, “We cannot live half an hour now. What about your call to serve the Lord in China?” Hudson answered that he would rather be here, obeying God, than anywhere else — and that he still believed he would reach China.</p> <p>A few minutes later the captain hurried back with a shout: “The wind has changed! We can sail out of the bay!” And they did. The rocks were left safely behind.</p> <p>Even in the middle of a frightening storm, you can be at peace when you know you are where God wants you to be. He is the Lord of the wind and the waves.</p> <p><em>Dear God, when life feels like a storm, help me stay peaceful, knowing you are with me and in control. Amen.</em></p>",
+  "body_text": "“He calmed the storm, and guided them to the harbour they longed for.” — from Psalm 107 At last the great day came. Hudson boarded a sailing ship bound for China. His mother came to say goodbye, tidying his little bunk and praying with him one last time. As the ship pulled away, her cry of sadness “went through me like a knife,” Hudson said. But he was going where God had called him. Then trouble struck. A fierce gale blew up and trapped the ship for twelve stormy days. One Sunday night the wind drove them straight toward a rocky shore — closer and closer, until the ship was almost near enough to touch the rocks. It looked like the end. The captain, who loved God too, turned to Hudson and said, “We cannot live half an hour now. What about your call to serve the Lord in China?” Hudson answered that he would rather be here, obeying God, than anywhere else — and that he still believed he would reach China. A few minutes later the captain hurried back with a shout: “The wind has changed! We can sail out of the bay!” And they did. The rocks were left safely behind. Even in the middle of a frightening storm, you can be at peace when you know you are where God wants you to be. He is the Lord of the wind and the waves. Dear God, when life feels like a storm, help me stay peaceful, knowing you are with me and in control. Amen.",
+  "word_count": 259
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "Praying for a Wind",
+  "body_html": "<blockquote>“Call to me, and I will answer you.” — from Jeremiah 33</blockquote> <p>On the same long voyage, a different danger came — the opposite of a storm. The ship reached a place where there was <em>no wind at all.</em> The sails hung limp, and a strong current was slowly dragging the ship toward dangerous hidden rocks, while fires burned on a nearby shore.</p> <p>The sailors tried everything to turn the ship, but nothing worked. Finally the captain said sadly, “We can only wait and see what happens.”</p> <p>“No,” said Hudson. “There is one thing we haven’t done yet.” He found the other people on board who loved God — just four of them, counting himself — and asked each one to go and pray for a wind.</p> <p>Hudson prayed a short prayer, and felt so sure God would answer that he went up on deck and asked a grumpy officer to please get the sails ready. The officer sneered, “I’d rather <em>see</em> a wind than hear about one!” But even as he spoke — look! — the top sail began to flutter. A breeze was coming! Soon the ship was sailing swiftly and safely away from the rocks.</p> <p>Sometimes we try everything except the most important thing. When you don’t know what else to do, remember Hudson’s words: “There is one thing we haven’t done yet.” Pray. God loves to answer.</p> <p><em>Dear God, help me to pray first, not last. Thank you that you hear me and answer at just the right time. Amen.</em></p>",
+  "body_text": "“Call to me, and I will answer you.” — from Jeremiah 33 On the same long voyage, a different danger came — the opposite of a storm. The ship reached a place where there was no wind at all. The sails hung limp, and a strong current was slowly dragging the ship toward dangerous hidden rocks, while fires burned on a nearby shore. The sailors tried everything to turn the ship, but nothing worked. Finally the captain said sadly, “We can only wait and see what happens.” “No,” said Hudson. “There is one thing we haven’t done yet.” He found the other people on board who loved God — just four of them, counting himself — and asked each one to go and pray for a wind. Hudson prayed a short prayer, and felt so sure God would answer that he went up on deck and asked a grumpy officer to please get the sails ready. The officer sneered, “I’d rather see a wind than hear about one!” But even as he spoke — look! — the top sail began to flutter. A breeze was coming! Soon the ship was sailing swiftly and safely away from the rocks. Sometimes we try everything except the most important thing. When you don’t know what else to do, remember Hudson’s words: “There is one thing we haven’t done yet.” Pray. God loves to answer. Dear God, help me to pray first, not last. Thank you that you hear me and answer at just the right time. Amen.",
+  "word_count": 254
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "Dressing Like the People He Loved",
+  "body_html": "<blockquote>“I have become all things to all people, so that I might help to save some.” — from 1 Corinthians 9</blockquote> <p>When Hudson arrived in China, he wanted the people there to listen to his good news about Jesus. But there was a problem: he looked so different! In his English clothes, crowds would follow him, point, laugh, and even shout rude names. It was hard to be heard over all the mocking.</p> <p>So Hudson did something bold. He decided to dress the way the Chinese people dressed, and he even had his hair shaved and styled like theirs. Now, when he walked through a town, people didn’t stare and jeer. They listened quietly, and even invited him into their homes.</p> <p>Hudson had a friend, Mr. Burns, who still wore his English clothes. Mr. Burns noticed that Hudson got calm, friendly crowds, while he himself got followed by rude, mocking boys. After watching this for a few weeks, Mr. Burns put on Chinese clothes too!</p> <p>Hudson didn’t change his clothes because he had to. He did it out of love — he was willing to give up his own comfort and pride so that people would listen and come to know Jesus.</p> <p>Love does that. It thinks about others first. Is there a way you could give up something small — being right, being first, being comfortable — to help someone else feel welcome?</p> <p><em>Dear God, make me willing to give up my own comfort out of love, so others can see your kindness in me. Amen.</em></p>",
+  "body_text": "“I have become all things to all people, so that I might help to save some.” — from 1 Corinthians 9 When Hudson arrived in China, he wanted the people there to listen to his good news about Jesus. But there was a problem: he looked so different! In his English clothes, crowds would follow him, point, laugh, and even shout rude names. It was hard to be heard over all the mocking. So Hudson did something bold. He decided to dress the way the Chinese people dressed, and he even had his hair shaved and styled like theirs. Now, when he walked through a town, people didn’t stare and jeer. They listened quietly, and even invited him into their homes. Hudson had a friend, Mr. Burns, who still wore his English clothes. Mr. Burns noticed that Hudson got calm, friendly crowds, while he himself got followed by rude, mocking boys. After watching this for a few weeks, Mr. Burns put on Chinese clothes too! Hudson didn’t change his clothes because he had to. He did it out of love — he was willing to give up his own comfort and pride so that people would listen and come to know Jesus. Love does that. It thinks about others first. Is there a way you could give up something small — being right, being first, being comfortable — to help someone else feel welcome? Dear God, make me willing to give up my own comfort out of love, so others can see your kindness in me. Amen.",
+  "word_count": 257
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "The Night on the Temple Steps",
+  "body_html": "<blockquote>“I will never leave you, nor forsake you.” — from Hebrews 13</blockquote> <p>One day Hudson’s own servant ran away — and took all of Hudson’s luggage with him! Suddenly Hudson had almost nothing, far from home in a strange place. Footsore and tired, he searched everywhere for somewhere to sleep, but no one would take him in.</p> <p>At last he lay down on the cold stone steps in front of a locked-up temple, tucking his little bit of money under his head for a pillow. In the dark, a beggar crept close, hoping to rob him. Hudson quietly asked, “What do you want?” — and the man slipped away. Then more men gathered around his feet, pretending they only wanted to keep him company.</p> <p>Hudson wasn’t fooled, and he wasn’t alone either. “I worship God,” he told them. “He is my Father, and I trust in him.” To stay awake and safe, he sang hymns, said Bible verses out loud, and prayed — until the men got so tired of it that they wandered off before morning.</p> <p>All through that dark, scary night, God was watching over Hudson, just as he had promised: “I will never leave you, nor forsake you.”</p> <p>When you feel alone, or things go wrong and you’re afraid, remember: God is right there with you, even in the dark. He has promised never to leave you.</p> <p><em>Dear God, thank you that you never leave me, even in the dark and scary times. Help me trust that you are always near. Amen.</em></p>",
+  "body_text": "“I will never leave you, nor forsake you.” — from Hebrews 13 One day Hudson’s own servant ran away — and took all of Hudson’s luggage with him! Suddenly Hudson had almost nothing, far from home in a strange place. Footsore and tired, he searched everywhere for somewhere to sleep, but no one would take him in. At last he lay down on the cold stone steps in front of a locked-up temple, tucking his little bit of money under his head for a pillow. In the dark, a beggar crept close, hoping to rob him. Hudson quietly asked, “What do you want?” — and the man slipped away. Then more men gathered around his feet, pretending they only wanted to keep him company. Hudson wasn’t fooled, and he wasn’t alone either. “I worship God,” he told them. “He is my Father, and I trust in him.” To stay awake and safe, he sang hymns, said Bible verses out loud, and prayed — until the men got so tired of it that they wandered off before morning. All through that dark, scary night, God was watching over Hudson, just as he had promised: “I will never leave you, nor forsake you.” When you feel alone, or things go wrong and you’re afraid, remember: God is right there with you, even in the dark. He has promised never to leave you. Dear God, thank you that you never leave me, even in the dark and scary times. Help me trust that you are always near. Amen.",
+  "word_count": 255
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "Forgiving the Thief",
+  "body_html": "<blockquote>“Forgive, and you will be forgiven.” — from Luke 6</blockquote> <p>Soon Hudson found out something upsetting: it was his own servant who had planned and stolen everything he owned in China — about forty pounds’ worth of things, which was a great deal.</p> <p>Hudson could have had the thief caught and punished. It would have been easy, and no one would have blamed him. But this servant was someone Hudson had prayed for. And Hudson remembered Jesus’ teaching — the very words they had once read together — about not paying back evil with evil.</p> <p>So Hudson made a surprising choice. The man’s soul, he decided, mattered far more than a pile of stolen things. Instead of punishing him, Hudson wrote the thief a kind letter, begging him to be sorry and to trust in the Lord Jesus.</p> <p>And here is a lovely ending: a friend back in England, who was glad to hear how Hudson had forgiven the thief, sent him a gift — a cheque for exactly forty pounds, the same amount he had lost. It was the first of many gifts from that friend.</p> <p>Forgiving someone who hurt you is one of the hardest and bravest things you can do. But it is what Jesus did for us, and God takes care of those who forgive.</p> <p><em>Dear God, when someone hurts me, help me to forgive the way Jesus forgives me. I trust you with the rest. Amen.</em></p>",
+  "body_text": "“Forgive, and you will be forgiven.” — from Luke 6 Soon Hudson found out something upsetting: it was his own servant who had planned and stolen everything he owned in China — about forty pounds’ worth of things, which was a great deal. Hudson could have had the thief caught and punished. It would have been easy, and no one would have blamed him. But this servant was someone Hudson had prayed for. And Hudson remembered Jesus’ teaching — the very words they had once read together — about not paying back evil with evil. So Hudson made a surprising choice. The man’s soul, he decided, mattered far more than a pile of stolen things. Instead of punishing him, Hudson wrote the thief a kind letter, begging him to be sorry and to trust in the Lord Jesus. And here is a lovely ending: a friend back in England, who was glad to hear how Hudson had forgiven the thief, sent him a gift — a cheque for exactly forty pounds, the same amount he had lost. It was the first of many gifts from that friend. Forgiving someone who hurt you is one of the hardest and bravest things you can do. But it is what Jesus did for us, and God takes care of those who forgive. Dear God, when someone hurts me, help me to forgive the way Jesus forgives me. I trust you with the rest. Amen.",
+  "word_count": 241
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "One Coin Left, and a Cup of Cocoa",
+  "body_html": "<blockquote>“The Lord will provide.” — from Genesis 22</blockquote> <p>In the city of Ningpo, Hudson and his friend Mr. Jones fed breakfast to about seventy poor people every single day. On their wall hung two little signs to remind them who paid for it all. One said, “The Lord has helped us all the way.” The other said, “The Lord will provide.”</p> <p>One morning they were down to a single tiny coin — worth less than a penny. They decided to go and sell their iron stove to buy food. But when they set out, they found the bridge across the river had washed away in the night! The little ferry-boat cost two coins, and they had only one. So they turned back home, empty-handed.</p> <p>At home they discovered a little packet of cocoa. They mixed it with hot water and drank it, and it gave them just enough strength to keep going. And then — while they were still on their knees praying — a letter arrived from England. Inside was money, sent by a friend far away who had no idea how much it was needed that very morning.</p> <p>God did not send it a day early. But he did not send it a moment too late, either. “The Lord will provide” turned out to be perfectly true.</p> <p>God gives us what we need for today, right when we need it. You can trust him for your “daily bread,” too.</p> <p><em>Dear God, thank you that you provide exactly what I need, right on time. Help me trust you one day at a time. Amen.</em></p>",
+  "body_text": "“The Lord will provide.” — from Genesis 22 In the city of Ningpo, Hudson and his friend Mr. Jones fed breakfast to about seventy poor people every single day. On their wall hung two little signs to remind them who paid for it all. One said, “The Lord has helped us all the way.” The other said, “The Lord will provide.” One morning they were down to a single tiny coin — worth less than a penny. They decided to go and sell their iron stove to buy food. But when they set out, they found the bridge across the river had washed away in the night! The little ferry-boat cost two coins, and they had only one. So they turned back home, empty-handed. At home they discovered a little packet of cocoa. They mixed it with hot water and drank it, and it gave them just enough strength to keep going. And then — while they were still on their knees praying — a letter arrived from England. Inside was money, sent by a friend far away who had no idea how much it was needed that very morning. God did not send it a day early. But he did not send it a moment too late, either. “The Lord will provide” turned out to be perfectly true. God gives us what we need for today, right when we need it. You can trust him for your “daily bread,” too. Dear God, thank you that you provide exactly what I need, right on time. Help me trust you one day at a time. Amen.",
+  "word_count": 265
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "Two Words on the Sands",
+  "body_html": "<blockquote>“Ask the Lord of the harvest to send out workers into his harvest field.” — from Matthew 9</blockquote> <p>Years later, Hudson was back in England, worn out and unwell. One day he stood looking at a great big map of China. He thought of the millions and millions of people living deep inland, far from the coast, who had never once heard about Jesus — and his heart nearly broke.</p> <p>Hudson knew what was needed: more workers, lots of them, to go and tell those people the good news. But he was afraid to ask God for them — because if God sent them, Hudson would be responsible for looking after them all! The worry felt too big.</p> <p>One Sunday, in a town called Brighton, he just couldn’t sit still in church among a thousand comfortable people. So he walked out alone onto the sandy beach. There, with the waves rolling in, he finally stopped being afraid and gave the whole huge job to God.</p> <p>And then he prayed a bold, specific prayer: he asked God for <strong>twenty-four fellow workers</strong> to go to the parts of China that had no missionary at all. He even wrote his prayer down in the margin of the Bible he was carrying. Then he went home, and for the first time in months, his heart was full of peace.</p> <p>That prayer on the beach was the beginning of a great mission that would send hundreds of workers into China.</p> <p>When you finally stop being afraid and hand your biggest worry to God, he gives you peace — and he can do more than you ever dreamed. So don’t be afraid to ask him for big things.</p> <p><em>Dear God, help me to stop being afraid and give my biggest worries to you. Thank you that you can do great things. Amen.</em></p>",
+  "body_text": "“Ask the Lord of the harvest to send out workers into his harvest field.” — from Matthew 9 Years later, Hudson was back in England, worn out and unwell. One day he stood looking at a great big map of China. He thought of the millions and millions of people living deep inland, far from the coast, who had never once heard about Jesus — and his heart nearly broke. Hudson knew what was needed: more workers, lots of them, to go and tell those people the good news. But he was afraid to ask God for them — because if God sent them, Hudson would be responsible for looking after them all! The worry felt too big. One Sunday, in a town called Brighton, he just couldn’t sit still in church among a thousand comfortable people. So he walked out alone onto the sandy beach. There, with the waves rolling in, he finally stopped being afraid and gave the whole huge job to God. And then he prayed a bold, specific prayer: he asked God for twenty-four fellow workers to go to the parts of China that had no missionary at all. He even wrote his prayer down in the margin of the Bible he was carrying. Then he went home, and for the first time in months, his heart was full of peace. That prayer on the beach was the beginning of a great mission that would send hundreds of workers into China. When you finally stop being afraid and hand your biggest worry to God, he gives you peace — and he can do more than you ever dreamed. So don’t be afraid to ask him for big things. Dear God, help me to stop being afraid and give my biggest worries to you. Thank you that you can do great things. Amen.",
+  "word_count": 306
+ }
+}
+]
