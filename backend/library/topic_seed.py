@@ -533,6 +533,7 @@ TOPICS = [
             "pilgrims-progress-words-of-one-syllable",
             "divine-songs-for-children",
             "brave-for-god",
+            "brave-for-god-2",
         ],
     ),
 ]
