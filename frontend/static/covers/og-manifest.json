@@ -1524,6 +1524,14 @@
 			"art": true,
 			"scrim": 0.9
 		},
+		"pt/spurgeon-on-prayer": {
+			"ground": "45e72f90b2c861c4a31aad5059cfe51bb0d8486cd59bc34954390a9e7cb3d6fe",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
+		},
 		"pt/stepping-stones-2": {
 			"ground": "3d85ea47242de1c603f2dbbf4e0fed26aff1daa162b96a44e7b5e60f21424ad1",
 			"style": "house",
