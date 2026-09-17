@@ -86,6 +86,10 @@
 			"content": "f3c935fd04b6ab84df684f064f057b5773fd889fb90d26b7c70d858db337e8a4",
 			"art": "902aed97f85b58ae4d60b7b8dd7cdb2f095c23d412f442f61d1b48b6620b454f"
 		},
+		"christ-lives-in-me": {
+			"content": "359d6df89adb9f5ccf0e3b749dd120ae6f61cb32a87bdce41acc19e787fe03f3",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
 		"christ-precious-to-believers": {
 			"content": "d9b38520954af1bcff7e077ac903063ff138574454b2863d7457676ec88c3d7c",
 			"art": "26eeae38d3bda240011785cb9319273055a615ae997878ae25cbe2e72eda04f2"
@@ -222,6 +226,10 @@
 			"content": "03a0a2d810a3758517a4d113c15b28ab39a975b1b1acc209f7447cc5167127af",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
+		"hearts-set-on-pilgrimage": {
+			"content": "b51999ebed257d149fe6539b918b43e36bbb2c9331ed8bc7a6063cab4931a830",
+			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+		},
 		"heroes-and-cowards": {
 			"content": "d6c35f87fdf609421985781de1296ebe66419d1cac690929167254ade475167b",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
@@ -233,6 +241,18 @@
 		"how-to-contemplate-christs-holy-sufferings": {
 			"content": "0015c08ce656d2fa9e98c1ce28a75b5f2040d9fff4f6b5f12a58ffee4461b273",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"how-to-find-rest": {
+			"content": "59c859c6777a13f11adb4a71886a32f20ce402fb65dacd2666b025084dbb6edd",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"how-to-forgive": {
+			"content": "8bb93ffe001d7ad125ec66401a9293ecab043bd2223c6e834a9182dc6e3ab6c6",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
+		"i-keep-a-quiet-heart": {
+			"content": "a9323027cb2ac82084b7be55020db1cb7351b6a5922c4a59ac93837fe162ac79",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"if-god-be-for-us": {
 			"content": "ad602cda7043c4a405ecf89b627212116b84f69e66fa345285038a0fd24dbacb",
@@ -281,6 +301,10 @@
 		"pauls-praise-of-christian-love": {
 			"content": "1ae261744ef5243a8e471b9c34e1da470603165cf053eb80ef9d1743587eed09",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"power-in-prayer": {
+			"content": "cb0edcacbebf31e795a383f831df32f2bffd86cd219acb891e4503a7211fabd9",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 		},
 		"prepare-by-prayer": {
 			"content": "8081b29e259efaa58909f012eea6741415f2c3bd167dcfe20b7637727ce9f5c1",
@@ -382,6 +406,10 @@
 			"content": "60e150e6d4a8ee22a5be98ee37d617dfce2d34575a777a7daa77d6e52513a5b7",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
+		"the-greatest-of-these-is-love": {
+			"content": "16a64d75fcbb9ac87c99df62a7519c697d269cddbcd29306cfacc4f4a1668ffd",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
 		"the-greatest-sentence-ever-written": {
 			"content": "39250c0b9a699ba89ccb8289b497ce15a80775c60c89f1dd29ab2da9a532e3bd",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
@@ -412,6 +440,14 @@
 		},
 		"the-lord-our-righteousness": {
 			"content": "a8b19a7caf7313f6a59a477301944906f37f36c86972c0a177cb7128b6c5d74f",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"the-love-of-christ": {
+			"content": "554aab85928a8160d8740e7b51cda1bd2a3c73f3f6f51a933ee691d9a96710db",
+			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+		},
+		"the-meaning-of-the-cross": {
+			"content": "79070e0892ab3de7c212d262e88b8e58fd99bf39885d428d743b12a757070bd7",
 			"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 		},
 		"the-method-of-grace": {
@@ -510,6 +546,14 @@
 			"content": "029ebe316b856bc62a1dfdbb870de8aeb3f868ea923cef10c5f93433ad1d63d3",
 			"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 		},
+		"total-surrender": {
+			"content": "687300e1374ca0b91b9be365e2d55f98b8c79f69f44ef7591f37f81d37732beb",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
+		"tribulation": {
+			"content": "460e1f2c2e1c2bc29819d06609db4d94f45f14686f8f7513c052a3a46484f19c",
+			"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+		},
 		"under-the-shepherds-care": {
 			"content": "f5778a677ea02ed83ded012214c72db8ffe9bf6680eda287649b54dd40b9b375",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
@@ -544,6 +588,10 @@
 		},
 		"witnessing-for-christ": {
 			"content": "ba0ec10ff35f8e703485822b786b2054e43f2c630b6034d4aa1cc92b86942a66",
+			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+		},
+		"women-that-make-a-difference": {
+			"content": "85456c0a365b45028797316da99f18cd72a6d4fa32ccd349ec2c7b092d8a717c",
 			"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 		},
 		"working-out-our-own-salvation": {
