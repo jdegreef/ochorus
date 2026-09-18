@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-18: Luganda author bios (batch) — robert-murray-mcheyne (#1499),
+// john-chrysostom (#1500), christmas-evans (#1501), john-calvin (#1502), cyprian-of-carthage
+// (#1503). Author pages are prerendered PER AUTHOR, so each /lg/authors/<slug> page must
+// rebuild for the translated bio and its <blockquote> pull-quotes and prayer callouts.
 // prerender refresh 2026-09-11: French author bios (batch 6) — bernard-of-clairvaux (#2233),
 // clement-of-rome (#2234), cyprian-of-carthage (#2235), david-brainerd (#2236),
 // ignatius-of-antioch (#2237), jarena-lee (#2238), jeanne-guyon (#2239), john-owen (#2240),

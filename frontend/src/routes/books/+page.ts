@@ -2,6 +2,16 @@
 // the fourth house-written young-readers volume (six more missionary lives: Paton, Mary Jones,
 // George Liele, C.T. Studd, Lilias Trotter, Ida Scudder). Rebuilds /books and the For Young Readers
 // shelf so the new card and its plate cover appear, and the reader page bakes the six chapters.
+// prerender refresh 2026-09-17: two NEW Swahili public-domain young-readers books —
+// pilgrims-progress-words-of-one-syllable (Godolphin's Bunyan for children, 14 ch, "Safari ya
+// Msafiri kwa Watoto") and divine-songs-for-children (Watts's 1715 hymns as verse, 3 ch, "Nyimbo
+// za Kimungu kwa Watoto"). Rebuilds /sw/books so each card carries its translated title on its
+// localized plate cover, and the reader pages bake the chapters. Neither backs a
+// LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-17: Spanish book — a-call-to-the-unconverted (#1366), Richard
+// Baxter's "Un llamado a los inconversos". Book pages are prerendered per locale, so
+// /es/books must rebuild so the card and its /es/books/a-call-to-the-unconverted pages bake
+// the translated title and chapters.
 // prerender refresh 2026-09-17: Portuguese book — spurgeon-on-prayer (#1793), C. H. Spurgeon's
 // twelve sermons on prayer plus an introduction, 13 chapters ("Grande Poder na Oração"). Book
 // pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title
@@ -12,6 +22,11 @@
 // Moveram o Céu"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
 // the translated title and the reader page bakes the 13 chapters. No plans/+page.ts touch owed —
 // women-who-moved-heaven-2 backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-17: three NEW Swahili books — the Brave for God young-readers trilogy
+// (brave-for-god / -2 / -3), house-written Ochorus Originals of eighteen missionary lives told for
+// children ("Jasiri kwa ajili ya Mungu"). Rebuilds /sw/books so each card carries its translated
+// title on its localized plate cover, and the reader pages bake the six chapters apiece. None back
+// a LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-17: one NEW Swahili book — susanna-wesley-clarke (#2174), Eliza
 // Clarke's biography of Susanna Wesley, mother of John and Charles Wesley, 16 chapters ("Susanna
 // Wesley"). Rebuilds /sw/books so the card carries its translated title on its localized plate

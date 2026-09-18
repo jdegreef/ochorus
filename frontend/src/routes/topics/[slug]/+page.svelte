@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { TopicDetail } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
+	import { readJSON, writeJSON } from '$lib/persisted';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, pickQa } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -44,8 +46,29 @@
 	);
 
 	// Books grouped by author for author-clustered topics (the Puritans), null —
-	// a flat grid — for a diverse gallery (Women of Faith). See topicBookGroups.
+	// a diverse gallery (Women of Faith) that never clusters. See topicBookGroups.
+	// When non-null the shelf offers a By-author / All-books toggle; when null
+	// there is nothing to group, so the toggle is hidden and it stays flat.
 	const bookGroups = $derived(groupBooksByAuthor(topic.books));
+
+	// How the Books section is laid out. The default is one flat cover grid — the
+	// same dense grid the /books shelf shows — so every topic reads consistently;
+	// an author-clustered topic can switch to per-author sections via the toggle.
+	// Device-local (it describes the reader's preference, not the shelf), and read
+	// after mount so the prerendered HTML is always the flat default. Shared across
+	// topics under one key, mirroring the /books view preference.
+	type BookView = 'all' | 'author';
+	const BOOK_VIEW_KEY = 'ochorus:topic-books-view';
+	let bookView = $state<BookView>('all');
+	// Only the stored 'author' preference overrides the flat default, so a stale or
+	// malformed value can never leave the shelf in a non-existent view.
+	onMount(() => {
+		if (readJSON<BookView>(BOOK_VIEW_KEY, 'all') === 'author') bookView = 'author';
+	});
+	const setBookView = (v: BookView) => {
+		bookView = v;
+		writeJSON(BOOK_VIEW_KEY, v);
+	};
 
 	// Content sections led by the type the topic is mostly made of; empties
 	// dropped. See topicSectionOrder.
@@ -171,8 +194,27 @@
 
 	{#snippet booksSection()}
 		<section class="mb-10">
-			<h2 class="section-label">{t('topics.books')}</h2>
-			{#if bookGroups}
+			<!-- The section label rides a row with the layout toggle, so the control
+			     sits with the shelf it governs. The toggle only appears when the topic
+			     is author-clustered enough to be worth grouping (bookGroups != null). -->
+			<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+				<h2 class="section-label !mb-0">{t('topics.books')}</h2>
+				{#if bookGroups}
+					<div class="seg">
+						<button
+							class:active={bookView === 'all'}
+							onclick={() => setBookView('all')}
+							aria-pressed={bookView === 'all'}>{t('books.groupAll')}</button
+						>
+						<button
+							class:active={bookView === 'author'}
+							onclick={() => setBookView('author')}
+							aria-pressed={bookView === 'author'}>{t('books.groupAuthor')}</button
+						>
+					</div>
+				{/if}
+			</div>
+			{#if bookGroups && bookView === 'author'}
 				<!-- Grouped by author (author-dominated topic). The heading names the
 				     author, so the cards below it don't repeat it. -->
 				<div class="flex flex-col gap-8">
@@ -195,6 +237,9 @@
 					{/each}
 				</div>
 			{:else}
+				<!-- One flat cover grid — the default, and the same dense grid the
+				     /books shelf shows. The author rides each card since no heading
+				     names it. -->
 				<div class="book-grid">
 					{#each topic.books as book (book.slug)}
 						<BookCard {book} showAuthor />

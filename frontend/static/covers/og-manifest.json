@@ -356,6 +356,14 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"es/a-call-to-the-unconverted": {
+			"ground": "827ffa2f6ca60178ab1158f2715f85e868bce52c644654ae9c9de6dc90979f6c",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
 		"es/a-short-and-easy-method-of-prayer": {
 			"ground": "c75f9e14f8a2a0e87fcbe1018606942b7134b37ce232ff3de18a78afd4693e99",
 			"style": "devotional",
@@ -676,6 +684,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"fr/cheque-book": {
+			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5
+		},
 		"fr/all-of-grace": {
 			"ground": "1c9bdb35d02ae3c9fa0d528a870e445629a55f39a200014464be0effca918144",
 			"style": "revival",
@@ -724,14 +740,6 @@
 			"art": true,
 			"scrim": 0.75
 		},
-		"fr/holy-in-christ": {
-			"ground": "9eca7c6b221e948d38c3ac011e4dae27b19bc9bb1f7e4bc97b1e3346d8218a5f",
-			"style": "devotional",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 1
-		},
 		"fr/godliness": {
 			"ground": "fc2e575fa12936308aec9bd1cdb92f63e5dd7c510c58f227c0fb9a4eee5d0ebf",
 			"style": "revival",
@@ -755,6 +763,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55
+		},
+		"fr/holy-in-christ": {
+			"ground": "9eca7c6b221e948d38c3ac011e4dae27b19bc9bb1f7e4bc97b1e3346d8218a5f",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1
 		},
 		"fr/humility-2": {
 			"ground": "b7ebe70a06a8600d5d850fffd7c551de82f033f08f76304260f30eefb4ecf8d7",
@@ -843,6 +859,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85
+		},
+		"fr/waiting-on-god": {
+			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6
 		},
 		"freedom-of-the-will": {
 			"ground": "4ea3b353acb149bbd8daf7c9bef83437620e1cd2a5acddd1c3d12c35016e92a2",
@@ -1828,6 +1852,30 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"sw/brave-for-god": {
+			"ground": "c7358524e68bcefbae267bb109a71c6aaabd09789160b822f5b2a532b554d708",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"sw/brave-for-god-2": {
+			"ground": "33b84fe32eb9ba5242c3e2a4f3c6c9eaf30d29bc94c96cc8523cf759bdd515da",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"sw/brave-for-god-3": {
+			"ground": "9118f5248c2fa45e786a699ce3e549c17eec98b33cc44a2027fd6ac43dbd89a1",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"sw/cheque-book": {
 			"ground": "0833bf4d3686764b58c07d24a0456e8b730a2e50746e64a5d24424e95da739fe",
 			"style": "revival",
@@ -1859,6 +1907,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45
+		},
+		"sw/divine-songs-for-children": {
+			"ground": "ac8dc35cf805df8955ae064bbd3edd823fc988a9bb5d9a3dd9ecab108f9c29ce",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"sw/feasting-at-the-table": {
 			"ground": "f61b586fba60709a32c02d807625cc8f5193860501758abd9a17ec92af560a51",
@@ -1931,6 +1987,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75
+		},
+		"sw/pilgrims-progress-words-of-one-syllable": {
+			"ground": "fe7f486faae208e5b336e11c44f97cc62376b1954bd3a4877e18e1400f87f9a5",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"sw/power-through-prayer": {
 			"ground": "00a4043c9fbe2104b4ce4d782e80296b4e40b399974728afd08c5f9be3bc91a4",

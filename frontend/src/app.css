@@ -738,6 +738,16 @@ article:not(.paged) .reading > p:first-of-type:not(:lang(ar)):not(:lang(hi))::fi
 	orphans: 2;
 	widows: 2;
 }
+/* The book page's "About this book" band renders server-sanitised `about_html`
+   (multiple <p>) as `.text-body`, not `.reading`, so it misses the paragraph
+   spacing above and — under Tailwind preflight, which zeroes <p> margins — its
+   paragraphs run together. Give the injected paragraphs their own gap. */
+.about-work p {
+	margin: 0 0 1.15em; /* matches `.reading p`'s paragraph rhythm */
+}
+.about-work p:last-child {
+	margin-bottom: 0;
+}
 .reading h2,
 .reading h3 {
 	font-family: var(--font-display);
@@ -1807,6 +1817,10 @@ a.sermon-row-title:hover {
 	font-size: var(--fs-small);
 	line-height: 1.5;
 	color: var(--text);
+	/* A placeholder wider than the field (e.g. the sermons filter's on a phone,
+	   where the coarse-pointer rule below bumps it to 16px) should trail off with
+	   an ellipsis, not a hard clip. Applies to the value too. */
+	text-overflow: ellipsis;
 }
 /* A control in an "on" state (an armed sleep timer, an active filter). Needed
    as a modifier because .field is unlayered: a border-accent utility beside it
@@ -2064,10 +2078,14 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.navsearch {
 			position: relative;
 		}
+		/* The finish toggle on a Continue-reading card is a 28px disc, already
+		   `absolute` (so it's its own positioning context) — it just needs the
+		   same invisible 44px finger target, not a bigger disc. */
 		.account-btn::after,
 		.prefs-btn::after,
 		.navtoggle::after,
-		.navsearch::after {
+		.navsearch::after,
+		.finish-btn::after {
 			content: '';
 			position: absolute;
 			top: 50%;
