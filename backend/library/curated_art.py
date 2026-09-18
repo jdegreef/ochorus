@@ -35,10 +35,13 @@ on a Protestant evangelical classic — the first pass surfaced Barocci's
 *Saint Francis* for a Moody revival book, which is the mismatch in miniature.
 Landscape and architecture carry the subject without claiming a tradition.
 
-NOT EVERY BOOK SHOULD GET ART. Susanna Wesley is deliberately absent: every
-candidate was a period portrait of a different real woman, and a portrait on a
-cover reads as a portrait OF that person. Shipping one would imply an image is
-Susanna Wesley when it isn't. She keeps a generated cover.
+A BIOGRAPHY GETS A LANDSCAPE, NEVER A PORTRAIT. Susanna Wesley was long left on
+a generated cover because every *portrait* candidate was a different real woman,
+and a portrait on a cover reads as a portrait OF the subject — shipping one would
+imply an image is Susanna Wesley when it isn't. The art-direction rule already
+solves this: a wordless landscape claims no likeness, so she now wears a quiet
+wooded Hobbema rather than a plate. The lesson stands for any biography — the
+ground is a place or a mood, never a face.
 """
 
 from __future__ import annotations
@@ -589,6 +592,23 @@ CURATED: dict[str, Artwork] = {
         "Isaiah's bruised reed and smoking flax, for people who feel barely "
         "alight. Dupré lays a low marsh under a vast, tender sky — the gentlest "
         "of the Puritans given the gentlest weather.",
+    ),
+    # ── Batch 16 · two shelf-mates that were waiting for a source ───────────
+    # Both were held in the deferred set (see Batch 15's note). Carmichael was
+    # waiting for a tropical source the Met and Cleveland couldn't give; the Art
+    # Institute has Church's Andean daybreak, palms and all. Susanna Wesley was
+    # held because every candidate was a PORTRAIT — a landscape retires that
+    # objection (see the module docstring), so her biography gets a wooded home.
+    "susanna-wesley-clarke": Artwork(
+        "aic", 869, "Meindert Hobbema", "The Watermill with the Great Red Roof", "c. 1665",
+        "A working home among dark trees, painted in her own century — the "
+        "Epworth household, not a face the cover would pretend was hers.",
+    ),
+    "things-as-they-are": Artwork(
+        "aic", 76571, "Frederic Edwin Church", "View of Cotopaxi", "1857",
+        "A vast tropical valley at daybreak, palms against the light — the far, "
+        "hot mission field Carmichael gave her life to, seen at first morning.",
+        focus=0.6,
     ),
 }
 
