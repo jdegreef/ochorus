@@ -1,0 +1,39 @@
+{% autoescape on %}<!DOCTYPE html>
+<html lang="{{ lang|default:'en' }}" dir="{{ dir|default:'ltr' }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>{{ subject }}</title>
+</head>
+<body style="margin:0; padding:0; background:#f0ece3; color:#2b2b2b;">
+<!-- preheader: shown in the inbox preview, hidden in the body -->
+<div style="display:none; max-height:0; overflow:hidden; opacity:0;">{{ preheader }}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f0ece3;">
+  <tr>
+    <td align="center" style="padding:28px 16px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0"
+             style="width:600px; max-width:100%; background:#ffffff; border-radius:10px; overflow:hidden; border:1px solid #e4ddd0;">
+        <tr>
+          <td style="padding:22px 32px 10px 32px; border-bottom:1px solid #efe9dd;">
+            <span style="font-family:Georgia,'Times New Roman',serif; font-size:20px; font-weight:bold; letter-spacing:0.5px; color:#6b5b3e;">Ochorus</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:26px 32px 8px 32px; font-family:Georgia,'Times New Roman',serif; color:#2b2b2b;">
+            {% block content %}{% endblock %}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:18px 32px 26px 32px; font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:12px; line-height:1.6; color:#8a8175; border-top:1px solid #efe9dd;">
+            Ochorus — a free reader for public-domain Christian classics.<br>
+            You are receiving this because you have an Ochorus account.
+            <a href="{{ unsubscribe_url }}" style="color:#8a8175; text-decoration:underline;">Unsubscribe</a>.
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>{% endautoescape %}

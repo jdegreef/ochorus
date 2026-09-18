@@ -212,6 +212,7 @@ urlpatterns = [
         AdminLanguageDeployCheckView.as_view(),
         name="admin-language-deploy-check",
     ),
+    path("api/emails/", include("emails.urls")),
     path("api/library/", include("library.urls")),
     path("api/reading/", include("reading.urls")),
 ]
