@@ -1,0 +1,331 @@
+{
+ "kind": "book",
+ "slug": "growing-in-wisdom",
+ "language": "lg",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Ref(usfm='JER', chapter=29)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=2)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1TI', chapter=4)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='JER', chapter=1)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='GEN', chapter=50)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PHP', chapter=4)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=25)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='LUK', chapter=16)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1SA', chapter=17)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='HAB', chapter=2)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=23)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=21)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='COL', chapter=3)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='HEB', chapter=12)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=6)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=25)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=14)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='DAN', chapter=1)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=90)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=9)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1KI', chapter=3)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='JAS', chapter=1)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=19)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=22)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='ACT', chapter=22)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=14)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='MRK', chapter=6)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=10)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='ECC', chapter=11)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=24)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='ROM', chapter=12)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=12)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='MRK', chapter=1)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='GAL', chapter=6)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=11)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1SA', chapter=16)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='GEN', chapter=39)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=20)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=15)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=13)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=27)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=15)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1CO', chapter=15)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=18)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=1)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1PE', chapter=5)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=16)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=11)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=2)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='LUK', chapter=22)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='ISA', chapter=26)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='GAL', chapter=5)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=119)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1TH', chapter=5)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='LUK', chapter=6)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=66)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='JOS', chapter=1)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=6)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='MRK', chapter=8)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='DEU', chapter=8)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=145)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=34)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=62)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PHP', chapter=3)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='JHN', chapter=13)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PHP', chapter=2)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1CO', chapter=4)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=24)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='ECC', chapter=3)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1PE', chapter=4)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1TH', chapter=4)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='MAT', chapter=5)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='1CO', chapter=6)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='EPH', chapter=2)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=5)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='MRK', chapter=10)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='EPH', chapter=3)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=3)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PRO', chapter=1)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ref(usfm='PSA', chapter=37)",
+   "status": "self_rendered"
+  }
+ ],
+ "note": [
+  "Scripture was supplied to the AI translators verbatim from the Luganda (lug) Bible via the engine's scripture_context; verses woven into prose without an explicit citation fell to the model and need native review."
+ ]
+}

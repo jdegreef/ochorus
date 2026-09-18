@@ -932,6 +932,22 @@
 			"art": false,
 			"scrim": 1
 		},
+		"sw/growing-in-wisdom": {
+			"ground": "3949cba18648fbf8cc681f7d8ebdc07e3c8596ac9aefae8ca7d52873f060f3b0",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"lg/growing-in-wisdom": {
+			"ground": "f2a197457c87dfeeebab53f3a4adcba8ef534e6b3c8b0b326d28862bc6494878",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"hi/all-of-grace": {
 			"ground": "78fae5e14193a81d07daeff0d5f7a217d67ae78bc7b6ca5b3c773a1b75b87f23",
 			"style": "revival",
