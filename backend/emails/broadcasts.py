@@ -65,8 +65,10 @@ def send_broadcast(broadcast, *, limit=None) -> dict:
         audience = audience[:limit]
 
     tally = {"sent": 0, "skipped": 0, "failed": 0}
-    # Subscriptions fetched per profile; get_or_create is a single indexed lookup.
-    for profile in audience.iterator():
+    # Iterate the materialized queryset (NOT .iterator()): we write per recipient
+    # inside the loop, and a server-side cursor held open across those writes is
+    # invalidated on Postgres. Audiences are small; batch by id range if that changes.
+    for profile in audience:
         subscription, _ = EmailSubscription.objects.get_or_create(profile=profile)
         tally[_send_one(broadcast, profile, subscription)] += 1
 
