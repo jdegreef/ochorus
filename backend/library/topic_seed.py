@@ -716,6 +716,8 @@ TOPIC_ARTICLES = {
         "how-to-pray-for-revival",
         "the-life-of-trust-guide",
         "power-through-prayer-guide",
+        "the-inner-chamber-guide",
+        "prayer-and-praying-men-guide",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -799,6 +801,7 @@ TOPIC_ARTICLES = {
         "is-the-bible-reliable",
         "do-science-and-faith-contradict",
         "divine-healing-guide",
+        "the-secret-of-guidance-guide",
     ],
     "the-gospel-call": [
         "how-to-be-born-again",
@@ -823,6 +826,7 @@ TOPIC_ARTICLES = {
         "is-jesus-the-only-way",
         "freedom-of-the-will-guide",
         "selected-sermons-whitefield-guide",
+        "the-way-to-god-guide",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -886,6 +890,10 @@ TOPIC_ARTICLES = {
         "epistles-of-ignatius-guide",
         "a-retrospect-guide",
         "power-through-prayer-guide",
+        "the-way-to-god-guide",
+        "the-secret-of-guidance-guide",
+        "the-inner-chamber-guide",
+        "prayer-and-praying-men-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
