@@ -730,6 +730,7 @@ TOPIC_ARTICLES = {
         "what-are-the-spiritual-gifts",
         "what-is-the-fruit-of-the-spirit",
         "soar-like-the-eagle-guide",
+        "the-person-and-work-of-the-holy-spirit-guide",
     ],
     "deeper-life": [
         "what-does-it-mean-to-abide-in-christ",
@@ -754,6 +755,7 @@ TOPIC_ARTICLES = {
         "how-to-find-rest-for-your-soul",
         "what-is-spiritual-warfare",
         "soar-like-the-eagle-guide",
+        "waiting-on-god-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -782,6 +784,7 @@ TOPIC_ARTICLES = {
         "how-to-share-your-faith",
         "the-life-and-diary-of-david-brainerd-guide",
         "revival-lectures-guide",
+        "things-as-they-are-guide",
     ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
@@ -817,6 +820,7 @@ TOPIC_ARTICLES = {
         "what-is-baptism",
         "how-do-we-know-jesus-rose",
         "is-jesus-the-only-way",
+        "freedom-of-the-will-guide",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -856,6 +860,10 @@ TOPIC_ARTICLES = {
         "the-life-of-trust-guide",
         "ten-commandments-guide",
         "revival-lectures-guide",
+        "waiting-on-god-guide",
+        "the-person-and-work-of-the-holy-spirit-guide",
+        "things-as-they-are-guide",
+        "freedom-of-the-will-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
