@@ -85,6 +85,22 @@ export function readingTime(words: number): string {
 }
 
 /**
+ * Localized "time left in the whole book" label, e.g. "3 hr 12 min left in
+ * book" — the Kindle-style companion to the chapter's "N min left". Takes the
+ * already-computed whole-minute count (via `readingMinutes`, at the reader's
+ * pace) rather than words, so the caller can format from a memoized integer and
+ * the message lookups don't re-run on every scroll pass. Same H/M formatter as
+ * `readingTime`, so the two figures in the footer agree.
+ */
+export function bookTimeLeft(minutes: number): string {
+	return durationLabel(minutes, {
+		min: 'progress.bookMin',
+		hr: 'progress.bookHr',
+		hrMin: 'progress.bookHrMin'
+	});
+}
+
+/**
  * Localized listen-time label, e.g. "12 min listen" — the audio counterpart of
  * `readingTime`, at the reader's chosen `rate`. Same %n%/%h%/%m% templating so
  * word order stays correct per language.

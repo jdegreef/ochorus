@@ -139,6 +139,10 @@ interface Stored {
 	measure: Measure;
 	font: ReaderFont;
 	align: Align;
+	// Whether the reader has explicitly picked an alignment. Until they do, the
+	// effective alignment is chosen per layout — paged reads justified (like a
+	// printed page / Kindle), scroll stays left-ragged — see `effectiveAlign`.
+	alignChosen: boolean;
 	margin: Margin;
 	paged: boolean;
 	tapToScroll: boolean;
@@ -151,6 +155,7 @@ const DEFAULTS: Stored = {
 	measure: 'normal',
 	font: 'serif',
 	align: 'left',
+	alignChosen: false,
 	margin: 'normal',
 	paged: false,
 	// Off by default: tapping the body to scroll is opt-in. An implicit version
@@ -161,6 +166,13 @@ const DEFAULTS: Stored = {
 };
 
 const ALIGNS: readonly Align[] = ['left', 'justify'];
+
+/** The CSS value for a reader alignment: justify → `justify`, left → `start`
+ *  (logical, so it flips correctly in RTL). One owner for the mapping, shared by
+ *  the article style pipeline and the settings-panel preview. */
+export function cssAlign(a: Align): 'justify' | 'start' {
+	return a === 'justify' ? 'justify' : 'start';
+}
 
 /** Exported for tests: the store's own `init()` runs it once per page load. */
 export function load(): Stored {
@@ -181,6 +193,8 @@ export function load(): Stored {
 					: DEFAULTS.measure,
 		font: (raw.font as ReaderFont) in FONT_STACK ? (raw.font as ReaderFont) : DEFAULTS.font,
 		align: ALIGNS.includes(raw.align as Align) ? (raw.align as Align) : DEFAULTS.align,
+		alignChosen:
+			typeof raw.alignChosen === 'boolean' ? raw.alignChosen : DEFAULTS.alignChosen,
 		// hasOwn, not `in`: `in` walks the prototype, so a stored "constructor"
 		// would pass and inject `function Object()` into the article's style.
 		margin: Object.hasOwn(MARGIN, String(raw.margin)) ? (raw.margin as Margin) : DEFAULTS.margin,
@@ -203,6 +217,8 @@ class ReaderPrefs {
 	measure = $state<Measure>(DEFAULTS.measure);
 	font = $state<ReaderFont>(DEFAULTS.font);
 	align = $state<Align>(DEFAULTS.align);
+	/** True once the reader picks an alignment; until then it's layout-derived. */
+	alignChosen = $state(DEFAULTS.alignChosen);
 	/** Side gutters of the reading column in scroll mode. */
 	margin = $state<Margin>(DEFAULTS.margin);
 	paged = $state(DEFAULTS.paged);
@@ -221,6 +237,7 @@ class ReaderPrefs {
 		this.measure = s.measure;
 		this.font = s.font;
 		this.align = s.align;
+		this.alignChosen = s.alignChosen;
 		this.margin = s.margin;
 		this.paged = s.paged;
 		this.tapToScroll = s.tapToScroll;
@@ -235,6 +252,7 @@ class ReaderPrefs {
 			measure: this.measure,
 			font: this.font,
 			align: this.align,
+			alignChosen: this.alignChosen,
 			margin: this.margin,
 			paged: this.paged,
 			tapToScroll: this.tapToScroll,
@@ -264,6 +282,7 @@ class ReaderPrefs {
 	}
 	setAlign(v: Align) {
 		this.align = v;
+		this.alignChosen = true;
 		this.#save();
 	}
 	setMargin(v: Margin) {
@@ -294,6 +313,7 @@ class ReaderPrefs {
 		this.measure = browser ? defaultMeasureFor(window.innerWidth) : DEFAULTS.measure;
 		this.font = DEFAULTS.font;
 		this.align = DEFAULTS.align;
+		this.alignChosen = DEFAULTS.alignChosen;
 		this.margin = DEFAULTS.margin;
 		this.paged = DEFAULTS.paged;
 		this.tapToScroll = DEFAULTS.tapToScroll;
@@ -301,17 +321,40 @@ class ReaderPrefs {
 		this.#save();
 	}
 
-	/** Inline `style` string for the reading <article>. */
-	get style(): string {
+	/**
+	 * The alignment actually in force for a given layout. An explicit choice wins
+	 * everywhere; until the reader makes one, paged mode reads justified (a
+	 * printed-page / Kindle look) while scroll stays left-ragged. `get style()`
+	 * already emits the scroll answer (it equals this for paged === false), so the
+	 * page reader only overrides the paged, still-unchosen case.
+	 */
+	effectiveAlign(paged: boolean): Align {
+		return this.alignChosen ? this.align : paged ? 'justify' : 'left';
+	}
+
+	/**
+	 * Inline `style` string for the reading <article>, with alignment resolved for
+	 * a given layout — the one place align/hyphens become CSS. `paged` reads
+	 * justified (a printed-page look) until the reader chooses; scroll stays
+	 * left-ragged. The paged chapter reader calls `styleFor(true)`; everything
+	 * else uses `style` (= `styleFor(false)`), whose output is unchanged.
+	 */
+	styleFor(paged = false): string {
+		const align = this.effectiveAlign(paged);
 		return [
 			`--reading-scale:${this.scale}`,
 			`--reading-leading:${LEADING[this.leading]}`,
 			`--reading-measure:${MEASURE[this.measure]}`,
 			`--reading-font:${FONT_STACK[this.font]}`,
-			`--reading-align:${this.align === 'justify' ? 'justify' : 'start'}`,
+			`--reading-align:${cssAlign(align)}`,
 			`--reading-margin:${MARGIN[this.margin]}`,
-			`--reading-hyphens:${this.align === 'justify' ? 'auto' : 'manual'}`
+			`--reading-hyphens:${align === 'justify' ? 'auto' : 'manual'}`
 		].join(';');
+	}
+
+	/** Inline `style` string for a scroll reading surface (the common case). */
+	get style(): string {
+		return this.styleFor(false);
 	}
 }
 

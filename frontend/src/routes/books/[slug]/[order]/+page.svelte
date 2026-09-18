@@ -25,7 +25,9 @@
 		contentLang,
 		editionLang,
 		readingTime,
+		readingMinutes,
 		listenTime,
+		bookTimeLeft,
 		minutesLeft as minutesLeftOf,
 		HEADER_OFFSET,
 		placeAfterLayout
@@ -366,19 +368,46 @@
 	}
 
 	const minsLeft = $derived(minutesLeftOf(chapter.word_count, chapterFrac));
-	const bookPercent = $derived.by(() => {
+	// One clamped read-fraction for the whole-book figures below, so "% through"
+	// and "time left in book" always agree on how far into the open chapter the
+	// reader is (chapterFrac is already [0,1] at every writer, but sharing the
+	// clamp keeps the two from ever diverging if that changes).
+	const readFrac = $derived(Math.min(1, Math.max(0, chapterFrac)));
+	// The book's word counts split around the open chapter — the words before it,
+	// the words after it, and the total. Computed once per (book, chapter), NOT on
+	// the scroll path, then shared by both the "% through" figure and the "time
+	// left in book" estimate so the two readings can never drift apart.
+	const bookWords = $derived.by(() => {
 		const b = bookForProgress;
 		if (!b || b.slug !== slug || !b.chapters.length) return null;
-		const totalWords = b.chapters.reduce((sum, c) => sum + c.word_count, 0);
-		if (!totalWords) return null;
-		const before = b.chapters
-			.filter((c) => c.order < chapter.order)
-			.reduce((sum, c) => sum + c.word_count, 0);
-		return Math.min(
-			100,
-			Math.round(((before + chapter.word_count * chapterFrac) / totalWords) * 100)
-		);
+		let before = 0;
+		let later = 0;
+		let total = 0;
+		for (const c of b.chapters) {
+			total += c.word_count;
+			if (c.order < chapter.order) before += c.word_count;
+			else if (c.order > chapter.order) later += c.word_count;
+		}
+		return { before, later, total };
 	});
+	const bookPercent = $derived.by(() => {
+		const w = bookWords;
+		if (!w || !w.total) return null;
+		return Math.min(100, Math.round(((w.before + chapter.word_count * readFrac) / w.total) * 100));
+	});
+	// Whole minutes of reading left in the book: the tail of the open chapter plus
+	// every chapter after it, at the reader's pace. Kept as an integer so the
+	// localized label below reformats only when the minute count changes — not on
+	// every throttled scroll tick.
+	const bookMinsLeft = $derived.by(() => {
+		const w = bookWords;
+		if (!w) return null;
+		const remainingHere = chapter.word_count * (1 - readFrac);
+		return readingMinutes(remainingHere + w.later);
+	});
+	// "3 hr 12 min left in book" — the whole-book companion to the chapter's "N
+	// min left" (Kindle shows both).
+	const bookTimeLeftLabel = $derived(bookMinsLeft === null ? null : bookTimeLeft(bookMinsLeft));
 
 	// --- Page-turn mode --------------------------------------------------------
 	// An opt-in e-reader layout (readerPrefs.paged): the chapter body is laid out
@@ -513,6 +542,13 @@
 		applyInsets();
 		const w = articleEl.clientWidth;
 		pageW = w;
+		// Hand the fixed edge page-turn arrows the REAL column width, in px. They're
+		// siblings of the <article>, not descendants, so they can't inherit its
+		// --reading-measure to work it out themselves — and the article's own
+		// max-width is a `var(--reading-measure)` expression that resolves to nothing
+		// outside it. With this they park just outside the actual column instead of
+		// guessing a fixed spread (which ran a wide measure's text under them).
+		document.documentElement.style.setProperty('--reader-col-w', `${w}px`);
 		// Apply the column width + count imperatively so the scrollWidth read below
 		// reflows against them synchronously (Svelte's reactive style flush is async).
 		pager.style.setProperty('--page-w', `${w}px`);
@@ -556,6 +592,19 @@
 		}
 	}
 
+	/** A faint fade played on each discrete page turn — the incoming page eases up
+	 *  from slightly dim as it slides in, a gentler transition than the bare
+	 *  translateX. Imperative (Web Animations) so it fires ONLY on a real turn, not
+	 *  on every scrubber step (which calls goToPage directly), and self-restarts
+	 *  cleanly turn after turn. Silent under prefers-reduced-motion. */
+	function playTurnFade() {
+		if (!pager || reduceMotion?.matches) return;
+		pager.animate?.(
+			[{ opacity: 0.6 }, { opacity: 1 }],
+			{ duration: 300, easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)' }
+		);
+	}
+
 	/** Turn forward/back a page, rolling over to the adjacent chapter at the ends. */
 	function turnPage(dir: 1 | -1) {
 		const next = pageIndex + dir;
@@ -565,6 +614,7 @@
 			gotoChapter(chapter.next);
 		} else {
 			goToPage(next);
+			playTurnFade();
 		}
 	}
 
@@ -692,6 +742,9 @@
 		clearTimeout(peekTimer);
 		clearTimeout(returnTimer);
 		clearTimeout(syncTimer);
+		// Leaving the reader: drop the paged-column width so it can't skew another
+		// page's :root (only this route's edge arrows read it).
+		if (browser) document.documentElement.style.removeProperty('--reader-col-w');
 	});
 
 	onMount(() => {
@@ -940,11 +993,13 @@
 
 	/**
 	 * Tapping the page. In PAGED mode this is how you turn: on TOUCH the screen is
-	 * split in half — tap the right side to go forward, the left to go back (the
-	 * split is physical; RTL content flips which half is "next", handled in
+	 * split into thirds (Kindle's model) — the right third goes forward, the left
+	 * third back, and the centre third toggles the chrome (immersive focus mode).
+	 * The split is physical; RTL content flips which side is "next" (handled in
 	 * tapTurn). On a fine pointer only the outer 15% stays live (deadZone 0.7):
 	 * there a click in the body is for selecting, and the edge arrows are the
-	 * affordance, so a half-screen click zone would fight normal clicking.
+	 * affordance, so a half-screen click zone would fight normal clicking — and
+	 * the centre does nothing rather than stealing a text-selection click.
 	 *
 	 * In SCROLL mode a tap turns nothing unless the reader opted into
 	 * `tapToScroll`, and then only in the lower part of the screen, on touch —
@@ -963,9 +1018,14 @@
 		if (window.getSelection()?.toString()) return;
 		const coarse = coarsePointer?.matches ?? false;
 		if (paged) {
-			const turn = tapTurn(e.clientX, window.innerWidth, contentRtl, coarse ? 0 : 0.7);
+			// Touch: Kindle-style thirds — outer thirds turn, the centre third
+			// toggles the chrome (deadZone 0.34). Fine pointer keeps the outer-15%
+			// live zone (deadZone 0.7) and does NOTHING in the centre, so a click in
+			// the body is still for selecting text, not summoning toolbars.
+			const turn = tapTurn(e.clientX, window.innerWidth, contentRtl, coarse ? 0.34 : 0.7);
 			if (turn === 'next') turnPage(1);
 			else if (turn === 'prev') turnPage(-1);
+			else if (coarse) readerUi.toggleFocus();
 			return;
 		}
 		if (readerPrefs.tapToScroll && coarse && e.clientY / window.innerHeight > 0.66) {
@@ -1331,7 +1391,7 @@
 				<!-- `sample`: the chapter's opening line, so the panel's live preview
 				     restyles the reader's own prose. metaDescription is already the
 				     body's plain text. -->
-				<ReaderControls layout margins sample={metaDescription.slice(0, 90)} />
+				<ReaderControls layout margins align={readerPrefs.effectiveAlign(paged)} sample={metaDescription.slice(0, 90)} />
 				<button
 					class="btn btn-icon btn-ghost"
 					onclick={() => readerUi.toggleFocus()}
@@ -1369,7 +1429,7 @@
 	class:paged
 	class:focus={readerUi.focus}
 	class:twocol={cols === 2}
-	style="{readerPrefs.style}; max-width: {articleMax}"
+	style="{readerPrefs.styleFor(paged)}; --article-max: {articleMax}"
 	onclick={onArticleClick}
 	ontouchstart={onTouchStart}
 	ontouchend={onTouchEnd}
@@ -1609,6 +1669,13 @@
 				<span class="mx-1.5 opacity-50">·</span>
 				<span>{bookPercent}% {t('progress.through')}</span>
 			{/if}
+			{#if bookTimeLeftLabel}
+				<!-- Whole-book time, hidden on the narrowest screens (like "your
+				     pace") so the phone footer stays a single tidy line. -->
+				<span class="hidden sm:inline"
+					><span class="mx-1.5 opacity-50">·</span>{bookTimeLeftLabel}</span
+				>
+			{/if}
 		</div>
 	</div>
 {/if}
@@ -1720,7 +1787,11 @@
 		transform: translateX(
 			calc(var(--page-dir, 1) * -1 * var(--page-idx) * var(--page-w) + var(--drag, 0px))
 		);
-		transition: transform var(--duration-base) ease;
+		/* A softer glide than a flat `ease`: a longer ease-out curve so the page
+		   arrives gently instead of snapping, closer to an e-reader's turn. The
+		   faint opacity fade on each turn is played imperatively (see playTurnFade)
+		   so it fires only on a discrete turn, never while scrubbing. */
+		transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
 	}
 	/* While the finger is down the page tracks it 1:1 — no easing to lag behind. */
 	.paged .pager.dragging {
@@ -1788,16 +1859,30 @@
 		border-color: var(--accent);
 	}
 	/* Park each arrow just outside the (centred) reading column. The offset keys
-	   off the normal-measure spread width; max() keeps it on-screen when the
-	   column runs wide, and touch screens hide the arrows entirely (below). */
+	   off the REAL column width (--reader-col-w, measured and published from the
+	   reader's chosen measure) rather than a fixed guess, so a wide measure no
+	   longer runs the text under the arrow; max() keeps it on-screen, and the cap
+	   below reserves the lane it sits in. Touch screens hide the arrows (below). */
 	/* Physical on purpose: these two are a mirrored PAIR of screen-edge arrows,
 	   and which one means "next" already flips on `contentRtl` in the markup.
 	   Making the positions logical would move both to the same edge. */
 	.pageturn.left {
-		left: max(0.5rem, calc((100vw - 88rem) / 2 - 3.75rem)); /* rtl-ok: mirrored pair, direction handled in markup */
+		left: max(0.5rem, calc((100vw - var(--reader-col-w, 88rem)) / 2 - 3.5rem)); /* rtl-ok: mirrored pair, direction handled in markup */
 	}
 	.pageturn.right {
-		right: max(0.5rem, calc((100vw - 88rem) / 2 - 3.75rem)); /* rtl-ok: mirrored pair, direction handled in markup */
+		right: max(0.5rem, calc((100vw - var(--reader-col-w, 88rem)) / 2 - 3.5rem)); /* rtl-ok: mirrored pair, direction handled in markup */
+	}
+	/* On pointer devices (where the arrows show) hold a margin lane open on each
+	   side, so however wide the reader's measure, the column stops short of the
+	   arrows — the Kindle look, with clear margins and the arrows off the text.
+	   --article-max lives on the <article>, where its `var(--reading-measure)`
+	   resolves; the cap only ever narrows it, never widens a measure the reader
+	   picked. `article.paged` outweighs the base `.reading-article` max-width by
+	   specificity, so no !important is needed. */
+	@media (not (pointer: coarse)) {
+		article.paged {
+			max-width: min(var(--article-max), calc(100vw - 9rem));
+		}
 	}
 	/* On touch screens the tap zones suffice; keep the edges clean. */
 	@media (pointer: coarse) {
@@ -1823,6 +1908,13 @@
 	   so the chapter's last line and its "Next chapter" CTA are not underneath
 	   the scrubber. */
 	.reading-article {
+		/* The article's width comes from --article-max (set inline: the reader's
+		   measure, or the two-column spread). Owning it in CSS rather than an inline
+		   max-width lets the pointer-device cap below win by specificity — no
+		   !important. In scroll mode --article-max resolves to the plain measure.
+		   The fallback keeps the column bounded if --article-max is ever absent
+		   rather than letting it render full-bleed. */
+		max-width: var(--article-max, var(--reading-measure));
 		/* Side gutters come from the reader's Margins pref (readerPrefs emits
 		   --reading-margin on this element); page mode zeroes padding and keeps
 		   its own --pgpad, so this is scroll mode only. */
