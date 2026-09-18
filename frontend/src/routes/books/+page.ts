@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-18: Spanish book — the-god-of-all-comfort (#1453), Hannah Whitall
+// Smith's classic on resting in God's goodness ("El Dios de toda consolación"), 17 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title
+// and the reader page bakes the 17 chapters. This is the last es source book of the
+// faith-in-the-fire curated plan (with he-holds-my-tomorrows, already es), so it ALSO activates
+// that plan — see the paired plans/+page.ts touch.
 // prerender refresh 2026-09-18: five NEW Luganda books — the whole For Young Readers shelf in
 // Luganda: brave-for-god / -2 / -3 (Obuvumu ku lwa Katonda), pilgrims-progress-words-of-one-syllable
 // (Olugendo lw'Omutambuze mu Bigambo Ebyangu), and divine-songs-for-children (Ennyimba Entukuvu

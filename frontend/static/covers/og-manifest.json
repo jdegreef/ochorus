@@ -588,6 +588,14 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"es/the-god-of-all-comfort": {
+			"ground": "f75ff80c9d051851d4bf7bdb32715dd2341d5f98a7ab1e19894d4375bfad3326",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95
+		},
 		"es/the-inner-chamber": {
 			"ground": "336703e5a3b031ffc4533590d4d4a6024e164a09540a43bc18546d77db4c3e7d",
 			"style": "devotional",
