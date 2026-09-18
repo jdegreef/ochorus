@@ -50,10 +50,10 @@ const BUILD = resolve(process.cwd(), process.argv[2] ?? 'build');
 const CARDS = '/og/covers/';
 const FALLBACK = '/og/default.png';
 
-/** The cover's box on the card: full height less a margin, at 3:4. */
+/** The cover's height on the card: the full height less a margin. Its width
+ *  follows its own aspect — see `cover()`. */
 const PAD = 36;
 const CH = H - 2 * PAD;
-const CW = Math.round((CH * 3) / 4);
 const RADIUS = 10;
 /** How far the shadow spreads past the cover on each side. */
 const SPREAD = 30;
@@ -112,36 +112,44 @@ async function ground(src) {
 	return sharp(small).resize(W, H, { fit: 'fill', kernel: 'cubic' }).toBuffer();
 }
 
-const MASK = Buffer.from(
-	`<svg width="${CW}" height="${CH}"><rect width="${CW}" height="${CH}" rx="${RADIUS}" fill="#fff"/></svg>`
-);
-
-/** The cover itself, scaled into its box with rounded corners. */
-function cover(src) {
-	return sharp(src)
-		.resize(CW, CH, { fit: 'cover' })
-		.composite([{ input: MASK, blend: 'dest-in' }])
+/**
+ * The cover itself, at the card's height and ITS OWN aspect, with rounded
+ * corners. Never cropped to 3:4: a designed cover carries its byline, frame
+ * and mark in its pixels at the edges, and seven of them are ~0.66, so a 3:4
+ * crop cut ~6% off each end — the Inner Chamber lost the top of its frame into
+ * its byline. `BookCover` mats these covers for the same reason.
+ */
+async function cover(src) {
+	const { width = 3, height = 4 } = await sharp(src).metadata();
+	const cw = Math.min(Math.round((CH * width) / height), W - 2 * PAD);
+	const mask = `<svg width="${cw}" height="${CH}"><rect width="${cw}" height="${CH}" rx="${RADIUS}" fill="#fff"/></svg>`;
+	const image = await sharp(src)
+		.resize(cw, CH, { fit: 'fill' })
+		.composite([{ input: Buffer.from(mask), blend: 'dest-in' }])
 		.png()
 		.toBuffer();
+	return { image, cw };
 }
 
-/** A soft shadow under the cover, so it reads as an object on the ground. */
-const SHADOW = await sharp(
-	Buffer.from(
-		`<svg width="${CW + 2 * SPREAD}" height="${CH + 2 * SPREAD}"><rect x="${SPREAD}" y="${SPREAD + 6}" width="${CW}" height="${CH}" rx="${RADIUS}" fill="#000" fill-opacity=".6"/></svg>`
-	)
-)
-	.blur(14)
-	.png()
-	.toBuffer();
+/** A soft shadow under a cover of this width, so it reads as an object on the
+ *  ground. Covers come in a handful of widths, so each is drawn once. */
+const shadows = new Map();
+function shadow(cw) {
+	if (!shadows.has(cw)) {
+		const svg = `<svg width="${cw + 2 * SPREAD}" height="${CH + 2 * SPREAD}"><rect x="${SPREAD}" y="${SPREAD + 6}" width="${cw}" height="${CH}" rx="${RADIUS}" fill="#000" fill-opacity=".6"/></svg>`;
+		shadows.set(cw, sharp(Buffer.from(svg)).blur(14).png().toBuffer());
+	}
+	return shadows.get(cw);
+}
 
 async function card(src, dest) {
-	const left = Math.round((W - CW) / 2);
+	const { image, cw } = await cover(src);
+	const left = Math.round((W - cw) / 2);
 	mkdirSync(dirname(dest), { recursive: true });
 	await sharp(await ground(src))
 		.composite([
-			{ input: SHADOW, top: PAD - SPREAD, left: left - SPREAD },
-			{ input: await cover(src), top: PAD, left }
+			{ input: await shadow(cw), top: PAD - SPREAD, left: left - SPREAD },
+			{ input: image, top: PAD, left }
 		])
 		.jpeg({ quality: 82, mozjpeg: true })
 		.toFile(dest);
