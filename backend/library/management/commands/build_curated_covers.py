@@ -3,6 +3,17 @@
     python manage.py build_curated_covers            # every curated slug
     python manage.py build_curated_covers confessions
     python manage.py build_curated_covers --dry-run
+    python manage.py build_curated_covers confessions --force   # redraw a painting
+
+FILLS GAPS; ``--force`` REDRAWS — the convention ``localize_covers`` and
+``build_derived_grounds`` already follow. A committed painting is what ships,
+and the crop cache below is LOCAL: in a fresh checkout it is empty, so a redraw
+re-downloads and re-encodes the museum image into new bytes, which moves the
+painting's variants and every language's share twin for a picture nobody
+changed. So an existing painting is left as committed. Its licence is still
+re-checked and its rows still repointed on every run; only the file is kept.
+Pass ``--force`` after changing a work's ``focus``, which is the one reason to
+redraw a painting on purpose.
 
 For each slug in library/curated_art.py this downloads that entry's open-access
 image, crops it to the cover's 3:4 box, and writes ONE painting per work to
@@ -364,6 +375,11 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument("slugs", nargs="*", help="Curated slugs (default: all).")
         parser.add_argument("--dry-run", action="store_true")
+        parser.add_argument(
+            "--force",
+            action="store_true",
+            help="Redraw paintings already committed (after changing a work's `focus`).",
+        )
 
     def handle(self, *args, **opts):
         # BOTH curated tiers are fetched here, because fetching is the half
@@ -384,8 +400,13 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f"  – {slug}: no Book rows, skipping"))
                 continue
 
-            jpeg = _crop_3x4(_artwork_image(art), _cache_key(art), art.focus)
+            # The fetch is what re-verifies the licence against the live record,
+            # so it runs for every work, drawn or kept.
+            image = _artwork_image(art)
             url, rel = art_url(slug)
+            dest = COVERS_DIR / rel
+            keep = dest.exists() and not opts["force"]
+            jpeg = dest if keep else _crop_3x4(image, _cache_key(art), art.focus)
 
             # ONE painting per work, with no type in it. Every language points at
             # this file and BookCover draws the title over it, so the reader
@@ -395,9 +416,9 @@ class Command(BaseCommand):
             # URI: six copies of one painting for `waiting-on-god`, each 72 KB,
             # each a separate download.
             if not opts["dry_run"]:
-                dest = COVERS_DIR / rel
-                dest.parent.mkdir(parents=True, exist_ok=True)
-                dest.write_bytes(jpeg.read_bytes())
+                if not keep:
+                    dest.parent.mkdir(parents=True, exist_ok=True)
+                    dest.write_bytes(jpeg.read_bytes())
                 for book in rows:
                     # THE ENGLISH ROW OF A `CURATED_GROUND` WORK IS NOT MOVED.
                     # That work has a hand-made English cover and came here only
@@ -412,10 +433,12 @@ class Command(BaseCommand):
                     if book.cover_url != url:
                         book.cover_url = url
                         book.save(update_fields=["cover_url"])
-            wrote += 1
+            wrote += not keep
             kb = jpeg.stat().st_size // 1024
+            mark = "=" if keep else "✓"
             self.stdout.write(
-                f"  ✓ {rel:34s} {kb:4d} KB  {art.artist} · {len(rows)} editions share it"
+                f"  {mark} {rel:34s} {kb:4d} KB  {art.artist} · {len(rows)} editions share it"
+                + ("  (kept as committed; --force redraws)" if keep else "")
             )
 
         verb = "would write" if opts["dry_run"] else "wrote"

@@ -1,6 +1,6 @@
 ---
 name: level-up-cover
-description: Level up a flat plate-covered book to a CURATED painted ground — pick a public-domain artwork per book, run the cover pipeline, repoint fixtures, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (author-by-author; ~35 plates remain after Murray/Bounds/Nee/Spurgeon/Torrey). Encodes the exact command order, the sourcing method, and the gotchas that bite each run. This is a living playbook — append new failure modes as we find them.
+description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (author-by-author; ~35 plates remain after Murray/Bounds/Nee/Spurgeon/Torrey). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
 ---
 
 # Levelling up a plate cover to CURATED art
@@ -19,7 +19,7 @@ is wrong for their register (a closet-prayer writer in the missionary era → ad
 
 ```bash
 # which of the author's books are PUBLISHED plates? (skip is_published:false — e.g. Nee's
-# unpublished teaching titles) and which languages each has (repoint ALL of them)
+# unpublished teaching titles) and which languages each has (paint_covers repoints them all)
 python3 -c "..."   # read backend/library/fixtures/content/books/<slug>.<lang>.json fields
 ```
 Confirm `is_published`, `cover_url` (`.svg` = plate), `subtitle`, `langs`, author
@@ -83,16 +83,14 @@ With the `CURATED` entries written, everything else is mechanical:
 cd backend && DJANGO_DEBUG=true uv run python scripts/paint_covers.py <slug…>
 ```
 
-It runs the pipeline in its load-bearing order and stops at the first failure:
-clear `__pycache__` (gotcha A) → `migrate` (gotcha B) → `build_curated_covers`
-(fetch, crop, re-verify PD) → **delete every retired plate** `<slug>.svg` in every
-language dir (gotcha E) → `build_cover_assets` (webp variants, and repoints
-**every** edition row's `cover_url`, surgically) → `tune_art_scrim` → `og:covers`
-(scrim first — a twin is drawn with it) → **restore any twin redrawn outside your
-works** → the cover gates. `--dry-run` prints the plan; `--no-check` skips the
-gates. It refuses a slug not in `CURATED`, and a dirty `static/covers` (it has to
-tell your changes from the generator's noise). Needs `frontend/node_modules` and
-Node 22 on PATH.
+It runs every stage in its load-bearing order — the stages, and why the order
+matters, are its docstring (`paint_covers.py --help`) — and stops at the first
+failure. `--dry-run` prints the plan, including every plate it would delete;
+`--no-check` skips the gates; `--recrop` redraws a painting after you change its
+`focus` (a committed painting is otherwise kept as is). It refuses a slug not in
+`CURATED`. If it reports twins redrawn **outside** your works, their inputs
+really changed — look before committing. Needs `frontend/node_modules` and Node
+22 on PATH.
 
 `cover_url` is **NOT create-only** in `seed_books` (`CREATE_ONLY_FIELDS =
 {source_type, is_published}`), so the fixture edit reaches prod on deploy — **no
@@ -119,18 +117,21 @@ prerendered pages reference it.
   change to a book's title/subtitle OR its author's display name makes that
   edition's twin STALE even though the painting is untouched — regenerate it (the
   file-missing trick: `rm covers/<slug>.png` then `npm run og:covers` redraws just
-  the missing ones, no `--force`), and patch the manifest `ground` accordingly.
+  the missing ones, no `--force`, and rewrites their manifest entries).
   A long author name also TRUNCATES the byline on the cover ("Frederick Brotherton
   Meyer" → "FREDERICK BROTHERTON M…"); rename to the publishing name. `name` is NOT
   seed-synced (author_sync syncs only `same_as`), so a rename is fixture
   authors.json + the `catalog.py` stub + a data migration, then regen the author's
   byline-drawn twins (#2443, F. B. Meyer). Designed rasters bake their own byline —
   a rename does not touch them.
-- **A · `__pycache__` staleness** *(automated: `paint_covers` step 1)* — `build_curated_covers` reports "Not in the
-  curated manifest" for slugs you just added to `CURATED`. Stale `.pyc`. Clear
-  ALL of `backend/**/__pycache__` (a `find … -exec rm` in the *same* compound
-  command doesn't reliably take — run it as its own step) then re-run.
-- **B · worktree DB is stale** *(migrate is automated: step 2)* — `OperationalError: no such column …`. The copied
+- **A · "Not in the curated manifest"** for slugs you just added to `CURATED`.
+  First suspect the checkout, not Python: an edit made in one tree (the Dropbox
+  copy, another worktree) and a command run in another looks exactly like this.
+  Python recompiles a `.pyc` whenever its source changes size or mtime, so a
+  stale bytecode cache is the unlikely cause; clearing `backend/**/__pycache__`
+  is harmless if you want to rule it out. `paint_covers` checks `CURATED` before
+  it runs anything, so it fails fast here either way.
+- **B · worktree DB is stale** *(migrate is automated: `paint_covers` step 1)* — `OperationalError: no such column …`. The copied
   `db.sqlite3` predates a migration on `main`. `manage.py migrate` first (memory
   `local-backend-dev-state-2026-09`). A fresh worktree also needs the seeded
   `db.sqlite3` + `.env` copied in and `manage.py seed_books` so the books exist
@@ -148,11 +149,11 @@ prerendered pages reference it.
   clears, else Render dashboard → ochorus-web → Deploy latest commit (user-only).
 - **E · per-language plates** *(automated: `paint_covers` deletes every `<slug>.svg`
   in every dir, and `build_cover_assets` repoints every edition row)* — a translated
-  plate book has `covers/<lang>/<slug>.svg` too, and each must go.
-  The **plate files are the authoritative edition list**: `find frontend/static/covers
-  -name "<slug>.svg"` (all dirs) BEFORE you build — a quick fixture-language scope can
-  under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`, and
-  would otherwise have shipped still pointing at a deleted plate).
+  plate book has `covers/<lang>/<slug>.svg` too, and each must go. The **plate
+  files are the authoritative edition list** — a quick fixture-language scope can
+  under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`),
+  which is why `paint_covers` finds plates on disk rather than from the fixtures;
+  `--dry-run` lists every one it would delete.
 
 ## Running the singles as a batched sweep
 Too many single-plate authors to do per-book A/B/C. The method that works:

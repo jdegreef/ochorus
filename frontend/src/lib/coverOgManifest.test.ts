@@ -65,9 +65,8 @@ const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', '
 
 type Twin = { ground: string; style: string; volume?: string | null };
 
-const manifestFile = once(() =>
-	JSON.parse(readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8'))
-);
+const manifestText = once(() => readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8'));
+const manifestFile = once(() => JSON.parse(manifestText()));
 
 const manifest = (): Record<string, Twin> => manifestFile().twins;
 
@@ -179,8 +178,7 @@ describe('the og twins were drawn in the style the table names now', () => {
 		// Read off the RAW text, not the parsed object: a hand-patch once added
 		// `fr/waiting-on-god` a second time, and JSON.parse keeps one silently,
 		// so a check on the parsed keys could never see it.
-		const raw = readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8');
-		const keys = [...raw.matchAll(/^\t\t"([^"]+)": \{$/gm)].map(([, key]) => key);
+		const keys = [...manifestText().matchAll(/^\t\t"([^"]+)": \{$/gm)].map(([, key]) => key);
 		expect(keys.length, 'the twin entries were not found where expected').toBeGreaterThan(0);
 		expect(keys, 'og-manifest.json twins are duplicated or out of order — run `npm run og:covers`').toEqual(
 			[...new Set(keys)].sort((a, b) => a.localeCompare(b))

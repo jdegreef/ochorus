@@ -60,7 +60,7 @@ The look is `components/cover-type.css`; *which* look is `coverStyles.ts`.
 | series numeral over the title | `SERIES_VOLUME` in `coverStyles.ts` | book |
 | script corrections (Arabic, Devanagari, Cyrillic) | `COVER_SCRIPTS` + the `.script-*` blocks in `cover-type.css` | the edition's language, via `Intl.Locale` |
 | scrim under the type on a painting | `art_scrim.py` / `coverScrim.ts` | work — **measured**, by `tune_art_scrim.py` |
-| topic emblem on a plate | `data/emblems/topics.json` | the book's first topic |
+| topic emblem on a plate | `backend/library/data/emblems/topics.json` | the book's first topic |
 
 The eight styles: `inscriptional`, `devotional`, `press`, `enlightenment`,
 `revival`, `house` (by century); `originals` (Ochorus' own imprint);
@@ -86,15 +86,13 @@ The level-up of a plate to a painting — the common job — is one command afte
 the art is chosen:
 
 ```bash
-cd backend && uv run python scripts/paint_covers.py <slug> [<slug> …]
+cd backend && DJANGO_DEBUG=true uv run python scripts/paint_covers.py <slug> [<slug> …]
 ```
 
-It runs, and stops at the first failure: clear `__pycache__` → `migrate` →
-`build_curated_covers` → delete the retired plates → `build_cover_assets` →
-`tune_art_scrim` → `og:covers` → restore any twin it redrew outside your works →
-the cover gates. **The order is load-bearing:** the scrim must be measured
-before the twins are drawn with it, and the plates must be gone before
-`build_cover_assets` (which refuses to run past a leftover one).
+Its stages and their order are its docstring (`--help`). **The order is
+load-bearing:** the scrim must be measured before the twins are drawn with it,
+and the retired plates must be gone before `build_cover_assets`, which refuses to
+run past a leftover one. A committed painting is kept unless you pass `--recrop`.
 
 The other tools, for jobs `paint_covers` does not cover:
 
@@ -120,20 +118,20 @@ The other tools, for jobs `paint_covers` does not cover:
 | `coverArt.test.ts` | a published edition's share source is missing, or twin/landscape sizes drift |
 | e2e `smoke.spec.ts` | the built site doesn't serve a book's landscape card as a JPEG |
 
-**The manifest is generated.** Don't hand-edit `og-manifest.json` — a
-hand-appended entry out of order, or twice, now fails the order gate. If a
+**The manifest is generated** — don't hand-edit `og-manifest.json`. If a
 translation needs a twin, run `npm run og:covers`; it redraws only what changed.
 
 ## 7. Known sharp edges
 
-- **Share twins depend on the Chromium build.** A redraw on a different build
-  moves PNG bytes without moving the design. The gates digest *inputs*, not
-  bytes, so it is safe to restore twins you did not mean to change —
-  `paint_covers` does this for you.
+- **A redrawn twin means its inputs moved.** The generator skips a twin whose
+  recorded inputs are unchanged, so if a run redraws one outside your works,
+  something about it really changed — don't restore its old bytes, which would
+  leave the manifest vouching for a picture it no longer describes.
+  `paint_covers` lists any such twins.
 - **A twin digests the byline.** Renaming an author or retitling a book makes
   that edition's twin stale though the painting is untouched.
 - **Translation races.** A new translation of a work you are painting can land
   between your branch and merge; CI then fails the shared-ground gate for the new
-  language. Rebase, re-run `paint_covers`, push.
+  language. Rebase, re-run `paint_covers` for the work, push.
 - **The landscape card is built, not committed.** It exists only in `build/`;
   in `npm run dev` its URL 404s, which is expected.
