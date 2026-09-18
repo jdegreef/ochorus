@@ -766,6 +766,7 @@ TOPIC_ARTICLES = {
         "what-does-the-bible-say-about-the-end-times",
         "the-bruised-reed-guide",
         "why-would-a-good-god-allow-suffering",
+        "the-unselfishness-of-god-guide",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -815,6 +816,7 @@ TOPIC_ARTICLES = {
         "how-do-we-know-jesus-rose",
         "is-jesus-the-only-way",
         "freedom-of-the-will-guide",
+        "selected-sermons-whitefield-guide",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -836,6 +838,8 @@ TOPIC_ARTICLES = {
         "a-serious-call-guide",
         "ten-commandments-guide",
         "sermons-on-several-occasions-guide",
+        "holy-in-christ-guide",
+        "a-brand-plucked-from-the-fire-guide",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
@@ -863,6 +867,10 @@ TOPIC_ARTICLES = {
         "the-reformed-pastor-guide",
         "life-of-antony-guide",
         "till-he-come-guide",
+        "selected-sermons-whitefield-guide",
+        "the-unselfishness-of-god-guide",
+        "holy-in-christ-guide",
+        "a-brand-plucked-from-the-fire-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
