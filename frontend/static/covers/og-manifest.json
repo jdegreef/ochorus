@@ -668,6 +668,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"fr/all-of-grace": {
+			"ground": "1c9bdb35d02ae3c9fa0d528a870e445629a55f39a200014464be0effca918144",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
 		"fr/waiting-on-god": {
 			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
 			"style": "devotional",
