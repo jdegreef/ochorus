@@ -1,0 +1,110 @@
+{
+  "kind": "sermon",
+  "slug": "the-dying-thief",
+  "language": "lg",
+  "job_issue": 1511,
+  "pull_request": 2835,
+  "references": [
+    {
+      "reference": "Matthew 27:44",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 27:37b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 3:17b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 2:14a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 23:34",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 23:35b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 23:40a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 23:41a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 23:41b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 23:42",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 23:42a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 23:43b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Proverbs 9:10a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Hebrews 7:17b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Hebrews 9:22b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 10:10a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 8:1a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Galatians 3:13b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 19:30a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 27:5",
+      "status": "self_rendered",
+      "why": "'and he went right out and hanged himself' — Moody's own paraphrase, not a direct citation; rendered as commentary."
+    }
+  ],
+  "note": "Base text Luke 23:39-43. Every quoted verse was pasted verbatim from the Open Luganda Contemporary Bible (lug_bib), which matches the shipped Luganda corpus; the references above are the parts actually quoted (a/b marks a half-verse). FLAGGED FOR REVIEW — a genuine text-tradition divergence at Luke 23:42: Moody argues on the KJV word 'Lord' ('now he calls Him Lord'), but the OLCB reads the NAME «Yesu», not «Mukama». Per the no-put-words-in-the-Bible's-mouth rule the OLCB verse was pasted verbatim (Yesu) while Moody's surrounding commentary was translated faithfully (yamuyita «Mukama»); the editorial section heading he wrote is rendered «MUKAMA, ONZIJUKIRA». A native reviewer should decide whether to footnote this. Also noted: the English's 'eight thousand converted in two days' appears to conflate Acts 2:41/4:4 — rendered as-given, no verse pasted (none is quoted there)."
+}

@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-18: Luganda author bio martin-luther (#1504). Author pages are
+// prerendered PER AUTHOR, so /lg/authors/martin-luther must rebuild for the translated bio
+// and its <blockquote> pull-quotes and prayer callout.
 // prerender refresh 2026-09-18: Luganda author bios (batch) — robert-murray-mcheyne (#1499),
 // john-chrysostom (#1500), christmas-evans (#1501), john-calvin (#1502), cyprian-of-carthage
 // (#1503). Author pages are prerendered PER AUTHOR, so each /lg/authors/<slug> page must

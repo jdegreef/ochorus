@@ -1,0 +1,90 @@
+{
+  "kind": "sermon",
+  "slug": "pauls-praise-of-christian-love",
+  "language": "lg",
+  "job_issue": 1512,
+  "pull_request": 2835,
+  "references": [
+    {
+      "reference": "1 Corinthians 13:1",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:2",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:3",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:4",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:5",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:6",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:7",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:8",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:9",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:10",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:12",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:13",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Philippians 2:3-4",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 6:70b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Proverbs 2:14a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 1:16a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    }
+  ],
+  "note": "Base text 1 Corinthians 13; Luther expounds it verse by verse. Every quoted verse (all of 1 Corinthians 13 that he quotes, plus Philippians 2:3-4, John 6:70, Proverbs 2:14 and Romans 1:16) was pasted verbatim from the Open Luganda Contemporary Bible (lug_bib), which matches the shipped Luganda corpus. References that Luther only CITES without quoting (Romans 12, 1 Corinthians 12, 1 Corinthians 8, Galatians 4:24-31, John 3:14, etc.) carry no pasted text and are not listed. FOUND IN THE ENGLISH, not fixed here: section 20 is garbled and ends abruptly (the source itself marks '[ed. the text abruptly ends here]'); the section numbering skips 3 (§2→§4); §11 has a mismatched opening quote. All mirrored faithfully rather than reconstructed."
+}

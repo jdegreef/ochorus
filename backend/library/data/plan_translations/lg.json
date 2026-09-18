@@ -26,5 +26,23 @@
   "the-inner-chamber-month": {
     "title": "Omwezi mu Kisenge eky'omunda",
     "description": "Zimba empisa eya buli lunaku ey'okusaba n'Ekigambo: enkya amakumi asatu mu mukaaga ne Andrew Murray, essuula emu buli lunaku."
+  },
+  "grace-for-every-sinner": {
+    "title": "Ekkubo Erituusa eri Katonda: Ekisa eri Buli Mwonoonyi",
+    "description": "Omwezi ku mawulire amalungi agasinga obukadde okubaawo. Okukoowoola kwa Richard Baxter okuwoomerevu eri abo abatannakyuka, Moody ng'ayogera ku kkubo erituusa eri Katonda, ne «Byonna Bya Kisa» bya Charles Spurgeon — abalagirizi abasingayo obulambulukufu ku ngeri omwonoonyi gy'alokolebwamu, n'engeri gy'ayinza okukimanyiramu.",
+    "note": [
+      "Job #1509 (PR pending). Curated 3-book plan: a-call-to-the-unconverted, the-way-to-god, all-of-grace.",
+      "Book titles quoted to match the shipped Luganda editions: «Byonna Bya Kisa» (all-of-grace.lg) for Spurgeon's 'All of Grace'; 'ekkubo erituusa eri Katonda' echoes the-way-to-god.lg title 'Ekkubo Erituusa eri Katonda'.",
+      "a-call-to-the-unconverted is not yet in Luganda, so seed_plans will NOT create the (grace-for-every-sinner, lg) row until that third book ships; the prose lands now, ready for then."
+    ]
+  },
+  "everything-for-christ": {
+    "title": "Byonna ku lwa Kristo: Obulamu Obwayiibwa",
+    "description": "Okwewaayo n'omutima gwonna kuwera ki, era kuvaamu ki? Olujjukiro lwa David Brainerd olw'obumisioni olunoonya omutima, oluvannyuma n'ebyafaayo by'abasajja n'abakazi abaawaayo byonna ku lw'enjiri — okuyitibwa eri okwewaayo okwogerwa nga kuyita mu bulamu obwakwanukula.",
+    "note": [
+      "Job #1510 (PR pending). Curated 2-book plan: life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2.",
+      "Neither source book is in Luganda yet, so seed_plans will NOT create the (everything-for-christ, lg) row until both ship; the prose lands now, ready for then.",
+      "surrender/consecration rendered okwewaayo per the lg glossary."
+    ]
   }
 }
