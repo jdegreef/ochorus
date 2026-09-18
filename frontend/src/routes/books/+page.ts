@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-18: one NEW Swahili book — pilgrims-progress (#2586), John Bunyan's
+// allegory (Parts I and II), 22 chapters ("Safari ya Msafiri"). Rebuilds /sw/books so the card
+// carries its translated title over the shared painting cover, and the reader page bakes the 22
+// chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-18: one NEW Swahili book — life-and-diary-of-david-brainerd (#2584),
 // Jonathan Edwards's edition of the missionary's journals, 12 chapters ("Maisha na Shajara ya
 // David Brainerd"). Rebuilds /sw/books so the card carries its translated title over the shared
