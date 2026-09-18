@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-17: two NEW Swahili public-domain young-readers books —
+// pilgrims-progress-words-of-one-syllable (Godolphin's Bunyan for children, 14 ch, "Safari ya
+// Msafiri kwa Watoto") and divine-songs-for-children (Watts's 1715 hymns as verse, 3 ch, "Nyimbo
+// za Kimungu kwa Watoto"). Rebuilds /sw/books so each card carries its translated title on its
+// localized plate cover, and the reader pages bake the chapters. Neither backs a
+// LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-17: Spanish book — a-call-to-the-unconverted (#1366), Richard
 // Baxter's "Un llamado a los inconversos". Book pages are prerendered per locale, so
 // /es/books must rebuild so the card and its /es/books/a-call-to-the-unconverted pages bake
