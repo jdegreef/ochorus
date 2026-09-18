@@ -169,6 +169,24 @@ describe('the og twins were drawn with the composition that ships now', () => {
 });
 
 describe('the og twins were drawn in the style the table names now', () => {
+	it('keeps the twins once each, in the order the generator writes them', () => {
+		// The generator writes this file sorted, so a run is a stable diff. An
+		// entry hand-patched in out of order — a translation adding its card at
+		// the end — makes the NEXT person's run re-sort it, and their cover PR
+		// arrives carrying a reshuffle of other people's entries that they then
+		// have to pick apart by hand. Caught here, at the edit that caused it.
+		//
+		// Read off the RAW text, not the parsed object: a hand-patch once added
+		// `fr/waiting-on-god` a second time, and JSON.parse keeps one silently,
+		// so a check on the parsed keys could never see it.
+		const raw = readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8');
+		const keys = [...raw.matchAll(/^\t\t"([^"]+)": \{$/gm)].map(([, key]) => key);
+		expect(keys.length, 'the twin entries were not found where expected').toBeGreaterThan(0);
+		expect(keys, 'og-manifest.json twins are duplicated or out of order — run `npm run og:covers`').toEqual(
+			[...new Set(keys)].sort((a, b) => a.localeCompare(b))
+		);
+	});
+
 	it('records a ground and a style for every twin', () => {
 		// A half-written entry would let the checks below pass by skipping.
 		const half = Object.entries(manifest())
