@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-18: Spanish book — a-hidden-fire (#1367), the Ochorus Originals
+// life of Simeon Nsibambi ("Un fuego escondido"), 7 chapters. Book pages are prerendered per
+// locale, so /es/books and the shelf rebuild with the translated title and the reader page
+// bakes the 7 chapters. No plans/+page.ts touch owed — a-hidden-fire backs no
+// LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-17: Spanish book — a-call-to-the-unconverted (#1366), Richard
 // Baxter's "Un llamado a los inconversos". Book pages are prerendered per locale, so
 // /es/books must rebuild so the card and its /es/books/a-call-to-the-unconverted pages bake
