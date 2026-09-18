@@ -64,6 +64,33 @@ services:
       # sitemap. Optional: without it that check reports "unknown".
       - key: PUBLIC_SITE_URL
         sync: false
+      # --- Email programme (Resend) ---------------------------------------
+      # The `emails` app sends welcome/onboarding + broadcasts through Resend and
+      # mirrors every open/click/bounce into its own tables. All optional until
+      # the sending domain is verified: with EMAIL_ENABLED off (the default) the
+      # pipeline records sends as "skipped" and contacts nobody.
+      #
+      # EMAIL_ENABLED: set to "true" to actually send, once news.<domain> is
+      # verified in Resend with DKIM/SPF/DMARC.
+      - key: EMAIL_ENABLED
+        sync: false
+      # Resend API key (secret) — the send credential.
+      - key: RESEND_API_KEY
+        sync: false
+      # Resend/Svix webhook signing secret (whsec_…) — verifies inbound events.
+      - key: RESEND_WEBHOOK_SECRET
+        sync: false
+      # The From line, e.g. "Ochorus <hello@news.ochorus.com>".
+      - key: EMAIL_FROM
+        sync: false
+      # Supabase service-role key — reads the reader's VERIFIED email from
+      # auth.users (the source of truth for the address to send to).
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      # Optional ISO cutoff: the welcome sweep only mails accounts created on or
+      # after it, so a first run never blasts the back catalogue.
+      - key: EMAIL_WELCOME_START
+        sync: false
 
   # --- SvelteKit reader (static SPA) ---------------------------------------
   - name: ochorus-web
