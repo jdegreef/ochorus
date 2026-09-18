@@ -162,6 +162,24 @@ don't hand-wrap refs in the fixture.
   settles each body through `clean_bio_html` and fails out-of-band on
   word_count, `<7` refs, any straight quote, or a `related` that doesn't lead
   with the book — see the Fan-out notes below.
+- **For a generically-titled book, READ the author from the book row's natural
+  key — never infer it from the title.** `Godliness` is Catherine Booth, not
+  whoever "sounds right"; `Purity of Heart` is William Booth; `An Autobiography`
+  is Amanda Berry Smith; `Days of Heaven Upon Earth` is A. B. Simpson;
+  `The Fundamental Doctrines of the Christian Faith` is R. A. Torrey. The book's
+  `"author": ["<slug>"]` field is the source of truth; a writer that guesses
+  ships a misattributed guide. When fanning out, tell each writer to confirm the
+  author from the fixture first (a batch of 40 guides, 2026-09-18, hit five such
+  generic titles). Also skip a sibling that is `is_published: false` (dead link).
+- **PD-gate the pick — not every un-guided library book is a public-domain
+  classic.** The library also holds modern, in-copyright works (`feasting-at-the-table`
+  is Gareth Evans, 1995) and Ochorus originals (`growing-in-wisdom`). Publishing a
+  study guide that quotes a *living/in-copyright* author's book at length is a
+  rights question, not just an editorial one — so before writing, check the
+  author's `death_year` (roughly <1929 is safely PD) and skip modern/original
+  works and `-2/-3/-4` compilation slugs. When in doubt, surface it to the founder
+  rather than shipping the guide (2026-09-18: caught Feasting at the Table this way
+  and swapped in a PD classic).
 - **Book guides have a home topic: `enduring-classics`.** Its blurb already names
   Augustine, Bunyan and à Kempis. Tag guides there AND to their doctrinal topic.
   Append new slugs at the END of each `TOPIC_ARTICLES` list — order is display

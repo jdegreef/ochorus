@@ -153,6 +153,85 @@ CURATED_PLANS = [
         ],
     ),
     (
+        "christ-our-healer",
+        "Christ Our Healer",
+        "Six weeks on Christ as Saviour, Sanctifier, Healer, and Coming King. "
+        "A. B. Simpson lays out the fourfold gospel and its ministry of healing, "
+        "and Andrew Murray closes with a month of meditations on the Lord who "
+        "still heals the body as a pledge of the life to come.",
+        [
+            "the-fourfold-gospel",
+            "the-gospel-of-healing",
+            "divine-healing",
+        ],
+    ),
+    (
+        "pursuit-of-holiness",
+        "The Pursuit of Holiness",
+        "Nine weeks on being wholly the Lord's. Andrew Murray traces our "
+        "holiness to our union with the Holy One, William Law calls us to a life "
+        "devout in every ordinary hour, and John Wesley sets out plainly what "
+        "Christian perfection is — and is not.",
+        [
+            "holy-in-christ",
+            "a-serious-call",
+            "plain-account-christian-perfection",
+        ],
+    ),
+    (
+        "send-the-fire",
+        "Send the Fire: Praying for Revival",
+        "How revival comes, and how to pray it down. Charles Finney's lectures "
+        "on the conditions of revival, R. A. Torrey on the baptism with the Holy "
+        "Spirit that empowers it, and the sermons through which God shook New "
+        "England under Jonathan Edwards.",
+        [
+            "revival-lectures",
+            "baptism-with-the-holy-spirit",
+            "selected-sermons-edwards",
+        ],
+    ),
+    (
+        "the-pilgrims-way",
+        "The Pilgrim's Way",
+        "The road home, in three classics. Charles Spurgeon meets the seeker at "
+        "the wicket gate, John Bunyan's immortal allegory follows the pilgrim "
+        "the whole way to the Celestial City, and Bunyan's own testimony shows "
+        "the grace that abounded to the chief of sinners.",
+        [
+            "around-the-wicket-gate",
+            "pilgrims-progress",
+            "grace-abounding",
+        ],
+    ),
+    (
+        "waiting-on-god-trust",
+        "Waiting on God: A Life of Trust",
+        "Ten weeks in the school of trust. Andrew Murray teaches the daily "
+        "discipline of waiting on God, F. B. Meyer opens the secret of being "
+        "guided by him, and George Müller's astonishing life of faith shows what "
+        "such trust receives.",
+        [
+            "waiting-on-god",
+            "the-secret-of-guidance",
+            "the-life-of-trust",
+        ],
+    ),
+    (
+        "women-of-faith",
+        "Women of Faith",
+        "A longer journey with three remarkable women. Hannah Whitall Smith "
+        "opens the secret of a happy life, and the autobiographies of Amanda "
+        "Berry Smith and Julia A. J. Foote — two Black women who preached the "
+        "gospel across the nineteenth-century world — show that secret lived out "
+        "at great cost.",
+        [
+            "the-christians-secret-of-a-happy-life-4",
+            "amanda-smith-autobiography",
+            "a-brand-plucked-from-the-fire",
+        ],
+    ),
+    (
         "first-steps-for-teens",
         "Starting Out: Faith for Teens",
         "A first walk with Jesus, for teenage readers. Charles Spurgeon meets "

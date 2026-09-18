@@ -1,0 +1,74 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="presentation">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0" stop-color="#3a5a42"/>
+      <stop offset="0.5" stop-color="#274031"/>
+      <stop offset="1" stop-color="#12231a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.7" r="0.42">
+      <stop offset="0" stop-color="#f3e6c0" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#f3e6c0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.44" r="0.85">
+      <stop offset="0.52" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.44"/>
+    </radialGradient>
+    <linearGradient id="topscrim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e1c14" stop-opacity="0.5"/>
+      <stop offset="0.4" stop-color="#0e1c14" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="1.4" height="4" fill="#000" opacity="0.06"/>
+    </pattern>
+    <linearGradient id="leaf" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#eedaa8"/>
+      <stop offset="1" stop-color="#c2a463"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#sky)"/>
+  <circle cx="300" cy="560" r="220" fill="url(#glow)"/>
+
+  <!-- low horizon; sky above kept clear for the title -->
+  <path d="M0 726 Q300 700 600 726 L600 800 L0 800 Z" fill="#0e1c14" opacity="0.6"/>
+  <path d="M0 720 Q300 694 600 720" fill="none" stroke="#eedaa8" stroke-opacity="0.16" stroke-width="2"/>
+
+  <!-- oak: a tall, slightly tapering trunk that rises into the canopy, with two
+       low boughs sweeping out — a broad spreading tree, not a mushroom -->
+  <path d="M289 724 C286 668 285 626 292 590 L308 590 C315 626 314 670 311 724 Z" fill="#bd9b5d"/>
+  <g stroke="#a5863f" stroke-linecap="round" fill="none">
+    <path d="M296 636 C270 626 236 620 206 604" stroke-width="9"/>
+    <path d="M304 628 C332 620 366 616 396 602" stroke-width="9"/>
+    <path d="M300 604 C300 576 300 556 300 540" stroke-width="8"/>
+  </g>
+  <g stroke="#846c36" stroke-opacity="0.4" stroke-width="1.4" fill="none">
+    <path d="M291 700 q11 -4 20 0"/><path d="M292 672 q9 -4 16 0"/><path d="M293 644 q8 -3 13 0"/>
+  </g>
+
+  <!-- broad, spreading oak crown with a gently lobed top; a clean silhouette,
+       its underside lifted so the trunk reads clearly below. Crown top ~y=494. -->
+  <path d="M164 560
+           C156 528 180 508 206 510
+           C206 490 232 482 252 494
+           C258 476 282 474 294 494
+           C302 478 330 478 338 498
+           C358 488 386 498 386 520
+           C414 522 434 544 426 574
+           C420 596 388 606 352 604
+           C332 616 268 616 248 604
+           C212 606 172 594 168 570
+           C166 566 164 563 164 560 Z" fill="url(#leaf)"/>
+  <!-- a soft top-light and one restrained shadow, for form without lumpiness -->
+  <path d="M206 510 C232 482 282 474 294 494 C282 478 250 486 236 508 C220 512 206 510 206 510 Z"
+        fill="#f2e2b0" opacity="0.5"/>
+  <path d="M352 604 C388 606 420 596 426 574 C420 590 392 598 360 596 C356 600 352 604 352 604 Z"
+        fill="#a5863f" opacity="0.45"/>
+  <!-- a few acorns at the crown's edge -->
+  <g fill="#eedaa8">
+    <circle cx="230" cy="600" r="3"/><circle cx="330" cy="600" r="3"/><circle cx="290" cy="608" r="3"/>
+  </g>
+
+  <rect width="600" height="800" fill="url(#grain)"/>
+  <rect width="600" height="800" fill="url(#vig)"/>
+  <rect width="600" height="800" fill="url(#topscrim)"/>
+</svg>

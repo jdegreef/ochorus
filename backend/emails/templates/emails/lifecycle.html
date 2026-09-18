@@ -1,0 +1,20 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<h1 style="margin:0 0 14px 0; font-size:24px; line-height:1.25; color:#3a3226;">{{ copy.heading }}</h1>
+{% if greeting %}<p style="margin:0 0 14px 0; font-size:16px; line-height:1.6;">{{ greeting }}</p>{% endif %}
+{% for para in copy.paragraphs %}
+<p style="margin:0 0 14px 0; font-size:16px; line-height:1.6;">{{ para }}</p>
+{% endfor %}
+{% if copy.cta_label %}
+<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 18px 0;">
+  <tr>
+    <td style="border-radius:8px; background:#6b5b3e;">
+      <a href="{{ cta_url }}" style="display:inline-block; padding:12px 26px; font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:15px; font-weight:600; color:#ffffff; text-decoration:none; border-radius:8px;">{{ copy.cta_label }}</a>
+    </td>
+  </tr>
+</table>
+{% endif %}
+{% if copy.signoff or copy.signature %}
+<p style="margin:0; font-size:16px; line-height:1.6;">{{ copy.signoff }}{% if copy.signature %}<br>{{ copy.signature }}{% endif %}</p>
+{% endif %}
+{% endblock %}

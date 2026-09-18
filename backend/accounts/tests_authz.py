@@ -47,6 +47,13 @@ PUBLIC_WRITE_EXEMPTIONS = {
         "writes NOTHING. POST only because the slug list is unbounded and "
         "belongs in the body, not the URL. Throttled and batch-capped to 200."
     ),
+    "emails.views.ResendWebhookView": (
+        "Resend delivery webhook: trusted by its Svix HMAC signature, not a "
+        "session, so it cannot carry auth (Resend is the caller, not a user). "
+        "verify_webhook() rejects any body without a valid signature before "
+        "anything is written; it only appends EmailEvent rows for a known "
+        "message id. See emails.resend_client.verify_webhook."
+    ),
 }
 
 

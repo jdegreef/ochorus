@@ -2,6 +2,16 @@
 // and journal of George Müller of Bristol, 28 chapters ("Maisha ya Kumtumaini Mungu"). Rebuilds
 // /sw/books so the card carries its translated title over the shared painting cover, and the reader
 // page bakes the 28 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-18: one NEW Luganda book — brave-for-god-4 ("Abavumu ku lwa Katonda:
+// Ekitabo eky'Okuna"), the fourth Brave for God volume (Paton, Mary Jones, George Liele, C.T.
+// Studd, Lilias Trotter, Ida Scudder). Rebuilds /lg/books so the card carries its translated title
+// over the shared curated painting, and the reader page bakes the six chapters. This completes the
+// Brave for God quartet in Luganda (Books 1–3 already lg). Backs no plan.
+// prerender refresh 2026-09-18: one NEW Swahili book — brave-for-god-4 ("Jasiri kwa ajili ya
+// Mungu: Kitabu cha Nne"), the fourth Brave for God volume (Paton, Mary Jones, George Liele,
+// C.T. Studd, Lilias Trotter, Ida Scudder). Rebuilds /sw/books so the card carries its translated
+// title over the shared curated painting, and the reader page bakes the six chapters. This
+// completes the Brave for God quartet in Swahili (Books 1–3 already sw). Backs no plan.
 // prerender refresh 2026-09-18: one NEW Swahili book — pilgrims-progress (#2586), John Bunyan's
 // allegory (Parts I and II), 22 chapters ("Safari ya Msafiri"). Rebuilds /sw/books so the card
 // carries its translated title over the shared painting cover, and the reader page bakes the 22

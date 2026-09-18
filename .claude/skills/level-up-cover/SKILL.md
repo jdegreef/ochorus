@@ -101,8 +101,10 @@ data migration.** Verify covers by reading the og twin PNGs (`covers/<slug>.png`
 
 ## 3. Scope-check, ship
 
-Diff must be **only** this batch's slugs + `curated_art.py` + `art_scrim.py` +
-`coverScrim.ts` + `og-manifest.json` (+ an `AUTHOR_STYLE` line if you added one).
+Diff must be **only** this batch's slugs + `curated_art.py` + `art_sources.py`
+(build_curated_covers records each painting's `crop_recipe` here — expected, not
+stray) + `art_scrim.py` + `coverScrim.ts` + `og-manifest.json` (+ an
+`AUTHOR_STYLE` line if you added one).
 **Never hand-edit `og-manifest.json`** — `coverOgManifest.test.ts` now fails an
 entry that is out of order or duplicated (a hand-appended French card once was
 both, and every later run re-sorted it into someone else's PR). If a twin is
@@ -174,12 +176,24 @@ them in order and union-resolve the `curated_art`/scrim/manifest overlap on reba
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
 Athanasius #2409 (2 — Huguet/Cole; also OPENED the `aic` source, see §1),
 Wesley #2414 (2 — Constable/Inness), Hudson Taylor #2416 (2 — Chen Hongshou ink/Gifford),
-Simpson #2419 (2 — Church/Daubigny, +lg/sw). IN FLIGHT: Church Fathers (5 —
-Rosa/Corot/Lane/H.Robert/Panini), African-American autobiographies (4 —
-Heade/Chase/Inness/Duncanson).
+Simpson #2419 (2 — Church/Daubigny, +lg/sw). Batch 16 #2891 (2 — both AIC):
+Carmichael `things-as-they-are` (Church, *View of Cotopaxi* — the tropical source
+the deferred note wanted; `focus=0.6` puts the dark valley in the title band, not
+the sun) + Susanna Wesley `susanna-wesley-clarke` (Hobbema watermill). IN FLIGHT:
+Church Fathers (5 — Rosa/Corot/Lane/H.Robert/Panini), African-American
+autobiographies (4 — Heade/Chase/Inness/Duncanson).
 Remaining: Crowther (`journal-of-an-expedition-up-the-niger` — DEFERRED, wants an
 AIC tropical/Church once AIC un-throttles) + the Puritan/English devotional group
-(Owen, Sibbes, Law, Edwards, Meyer, Müller, Guyon, Bounds straggler, Carmichael
-`things-as-they-are`). Carmichael's `if` and all four Watchman-Nee titles are
-`is_published:false` — skip. Cyprian was on `feature/cyprian-treatises` — check
-first. Susanna Wesley stays a generated cover on purpose (portrait trap).
+(Owen, Sibbes, Law, Edwards, Meyer, Müller, Guyon, Bounds straggler). Carmichael's
+`if` and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian was
+on `feature/cyprian-treatises` — check first.
+
+**REVERSING A "deliberately absent" book** (Susanna Wesley, #2891): a book can be
+documented in the `curated_art.py` docstring AND guarded by a test as
+intentionally plate-only. Susanna's reason was portrait-specific (every candidate
+was a period portrait of a different real woman → reads as a likeness of her). A
+**biography gets a landscape, never a portrait** — a wordless landscape retires
+that objection. To reverse: update the docstring note AND the enforcing test in
+`tests_covers.py` (there `test_susanna_wesley_has_no_artwork_on_purpose` asserted
+her ABSENCE — repurposed to guard the KIND of art: present + `"portrait"` not in
+its title). Get the founder's go-ahead before overriding a documented decision.

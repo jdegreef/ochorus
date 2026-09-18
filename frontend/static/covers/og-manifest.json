@@ -1116,6 +1116,38 @@
 			"art": false,
 			"scrim": 1
 		},
+		"key-teachings-of-a-b-simpson": {
+			"ground": "2a995725b1bc1419811e0fbcade56c7eb902fa4296f175e359c55a518b3604bc",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1
+		},
+		"key-teachings-of-jonathan-edwards": {
+			"ground": "f0fdd6d0cafe143b685132cd0bb8568a946cb13fbb5fe9c8508d5eccbe01c885",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1
+		},
+		"key-teachings-of-richard-baxter": {
+			"ground": "27740ccf4a6a59104867647560f04f21b419ea4200129c5e4d75719acdb270c5",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1
+		},
+		"key-teachings-of-watchman-nee": {
+			"ground": "e70c51c9ad64824a8fcd95bd66519c157c582412ef4c8f16ee943e2c903b0273",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1
+		},
 		"let-us-pray-2": {
 			"ground": "4725e322e9f3052085a3cf616a13b1d6bbb3a9f9efe226aaf09d166fcf8aa6c9",
 			"style": "house",
@@ -1163,6 +1195,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7
+		},
+		"lg/brave-for-god-4": {
+			"ground": "3638b90d6bded60d30d8bd4ef9e184f51ad99d30dea25ee380d542ab19e5ae2a",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
 		},
 		"lg/cheque-book": {
 			"ground": "e9b4a668853c1f90838c65521d39530be463728259b51ab14bef84907a9171c4",
@@ -1893,12 +1933,12 @@
 			"scrim": 0.8
 		},
 		"susanna-wesley-clarke": {
-			"ground": "128d56f11dc172aa9e958354d12cc265121c9a6d20abb0fc375f97d7c1c7c166",
+			"ground": "6951faa8a60fc830729da35de67d522c9460432498c712a38726b10a132065c4",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.7
 		},
 		"sw/a-short-and-easy-method-of-prayer": {
 			"ground": "5a6c63bcde424f32628412296d039b3dd5e383f4e162457c066fb1e2286a3a3b",
@@ -1971,6 +2011,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7
+		},
+		"sw/brave-for-god-4": {
+			"ground": "cd4ed2202942c618d60c3cf5c7322cd03747273ed4946d6861361df6d17dfeba",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
 		},
 		"sw/cheque-book": {
 			"ground": "0833bf4d3686764b58c07d24a0456e8b730a2e50746e64a5d24424e95da739fe",
@@ -2181,12 +2229,12 @@
 			"scrim": 0.7
 		},
 		"sw/susanna-wesley-clarke": {
-			"ground": "947454db1e1e9e339b0bdf6a553c1e7167aa8f3e54a1cfea8af98a24b45eab87",
+			"ground": "74e9bdacceb5127ff5419da1c04a4ae2bf967efedb9a23276822e8c7e6b3d5f2",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.7
 		},
 		"sw/talks-to-the-farmer": {
 			"ground": "aef70956828f33655198d8cf50574cd15dad62a3886a77f1e369cd485937773f",
@@ -2285,12 +2333,12 @@
 			"scrim": 0.6
 		},
 		"sw/things-as-they-are": {
-			"ground": "533fc2826c5fc7fcc4cc123a41e912c6d5e175867bf66c3e7f182672e2f950e8",
+			"ground": "c4e646765ff4b8bbe12bde1d6ff6d08ceb6c233ca7982095bf2d5b78e5fd68c9",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.65
 		},
 		"sw/till-he-come": {
 			"ground": "a3055051836f3acb228877c9eba9aa2ac60092c1dae375f14658610239b4cccf",
@@ -2445,12 +2493,12 @@
 			"scrim": 0.6
 		},
 		"things-as-they-are": {
-			"ground": "deaba4c697c1f87ab7f425b816de8e34012d2517b68dc0d58ab1737331c55df7",
+			"ground": "7090f06cc32398199d5011091deb2f02f2a7caa55e4d8a62a1e71beb562023d5",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.65
 		},
 		"thoughts-for-the-quiet-hour": {
 			"ground": "8bcdb26672bb3c79f1fd82e587144ef849f37f77fa64e5cec03bba4e2f9db134",
