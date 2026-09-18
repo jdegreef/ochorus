@@ -4,8 +4,8 @@
     uv run python scripts/paint_covers.py <slug> [<slug> ...]
     uv run python scripts/paint_covers.py <slug> --dry-run     # print the plan
     uv run python scripts/paint_covers.py <slug> --no-check    # skip the gates
-    uv run python scripts/paint_covers.py <slug> --recrop      # redraw a painting
-                                                               # after changing its focus
+    uv run python scripts/paint_covers.py <slug> --recrop      # redraw a painting even
+                                                               # when its entry is unchanged
 
 THE ONE HUMAN STEP COMES FIRST: choose the painting and add each work's entry to
 `library/curated_art.py` (`.claude/skills/level-up-cover` is how to choose one).
