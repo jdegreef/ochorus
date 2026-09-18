@@ -1828,6 +1828,14 @@
 			"art": true,
 			"scrim": 0.45
 		},
+		"sw/divine-songs-for-children": {
+			"ground": "ac8dc35cf805df8955ae064bbd3edd823fc988a9bb5d9a3dd9ecab108f9c29ce",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"sw/feasting-at-the-table": {
 			"ground": "f61b586fba60709a32c02d807625cc8f5193860501758abd9a17ec92af560a51",
 			"style": "house",
@@ -1899,6 +1907,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75
+		},
+		"sw/pilgrims-progress-words-of-one-syllable": {
+			"ground": "fe7f486faae208e5b336e11c44f97cc62376b1954bd3a4877e18e1400f87f9a5",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"sw/power-through-prayer": {
 			"ground": "00a4043c9fbe2104b4ce4d782e80296b4e40b399974728afd08c5f9be3bc91a4",

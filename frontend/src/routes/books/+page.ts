@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-17: two NEW Swahili public-domain young-readers books —
+// pilgrims-progress-words-of-one-syllable (Godolphin's Bunyan for children, 14 ch, "Safari ya
+// Msafiri kwa Watoto") and divine-songs-for-children (Watts's 1715 hymns as verse, 3 ch, "Nyimbo
+// za Kimungu kwa Watoto"). Rebuilds /sw/books so each card carries its translated title on its
+// localized plate cover, and the reader pages bake the chapters. Neither backs a
+// LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-17: Portuguese book — spurgeon-on-prayer (#1793), C. H. Spurgeon's
 // twelve sermons on prayer plus an introduction, 13 chapters ("Grande Poder na Oração"). Book
 // pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title
