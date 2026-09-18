@@ -104,7 +104,7 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     schedule: "*/15 * * * *"
-    dockerCommand: "uv run python manage.py send_lifecycle_emails"
+    dockerCommand: "uv run python manage.py send_lifecycle_emails && uv run python manage.py send_due_broadcasts"
     envVars:
       - key: DJANGO_DEBUG
         value: "false"

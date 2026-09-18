@@ -20,14 +20,19 @@ from __future__ import annotations
 from functools import cached_property
 
 from django.db.models import Count
+from django.utils.dateparse import parse_datetime
+from rest_framework import status as http_status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.models import AdminCapability, AdminVerb
+from accounts.models import AdminCapability, AdminVerb, UserProfile
 from accounts.permissions import requires
 
+from . import audience as audience_mod
+from . import broadcasts as broadcasts_mod
 from .models import (
     Broadcast,
+    BroadcastStatus,
     EmailEvent,
     EmailKind,
     EmailMessage,
@@ -162,3 +167,215 @@ class AdminEmailMetricsView(APIView):
                 suppressed_at__isnull=False
             ).count(),
         }
+
+
+# --- Broadcast compose / schedule / send ------------------------------------
+
+
+def _broadcast_stats(broadcast) -> dict:
+    sent = EmailMessage.objects.filter(
+        broadcast=broadcast, status=SendStatus.SENT
+    ).count()
+    counts = {}
+    rows = (
+        EmailEvent.objects.filter(
+            message__broadcast=broadcast, message__status=SendStatus.SENT
+        )
+        .values("type")
+        .annotate(n=Count("message_id", distinct=True))
+    )
+    for row in rows:
+        counts[row["type"]] = row["n"]
+    return _metrics(sent, counts)
+
+
+def _serialize_broadcast(b: Broadcast, *, detail: bool = False) -> dict:
+    data = {
+        "id": b.id,
+        "name": b.name,
+        "status": b.status,
+        "subject": b.subject,
+        "audience": b.audience,
+        "from_address": b.from_address,
+        "scheduled_at": b.scheduled_at.isoformat() if b.scheduled_at else None,
+        "created_at": b.created_at.isoformat(),
+        "updated_at": b.updated_at.isoformat(),
+        # Locales the campaign can actually send in (subject AND content present).
+        "locales": sorted(set(b.subject) & set(b.content)),
+        "audience_count": audience_mod.count(b.audience),
+    }
+    if detail:
+        data["content"] = b.content
+        data["stats"] = _broadcast_stats(b)
+    return data
+
+
+def _apply_fields(broadcast: Broadcast, data) -> None:
+    """Copy editable fields from request data onto a broadcast (no send)."""
+    if "name" in data:
+        broadcast.name = str(data["name"]).strip()[:200]
+    for field in ("subject", "content", "audience"):
+        if field in data and isinstance(data[field], dict):
+            setattr(broadcast, field, data[field])
+    if "from_address" in data:
+        broadcast.from_address = str(data["from_address"]).strip()[:200]
+
+
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.ACT})
+class AdminBroadcastsView(APIView):
+    """List broadcasts, or create a draft."""
+
+    def get(self, request):
+        rows = [_serialize_broadcast(b) for b in Broadcast.objects.all()]
+        return Response({"broadcasts": rows})
+
+    def post(self, request):
+        broadcast = Broadcast(status=BroadcastStatus.DRAFT)
+        _apply_fields(broadcast, request.data)
+        if not broadcast.name:
+            return Response(
+                {"detail": "name is required"}, status=http_status.HTTP_400_BAD_REQUEST
+            )
+        broadcast.save()
+        return Response(
+            _serialize_broadcast(broadcast, detail=True),
+            status=http_status.HTTP_201_CREATED,
+        )
+
+
+@requires(
+    AdminCapability.EMAIL,
+    verbs={"GET": AdminVerb.VIEW, "PATCH": AdminVerb.ACT, "DELETE": AdminVerb.ACT},
+)
+class AdminBroadcastDetailView(APIView):
+    """Read, edit (draft/scheduled only), or delete a broadcast."""
+
+    def _get(self, pk):
+        return Broadcast.objects.filter(pk=pk).first()
+
+    def get(self, request, pk):
+        broadcast = self._get(pk)
+        if broadcast is None:
+            return Response(status=http_status.HTTP_404_NOT_FOUND)
+        return Response(_serialize_broadcast(broadcast, detail=True))
+
+    def patch(self, request, pk):
+        broadcast = self._get(pk)
+        if broadcast is None:
+            return Response(status=http_status.HTTP_404_NOT_FOUND)
+        if broadcast.status in (BroadcastStatus.SENDING, BroadcastStatus.SENT):
+            return Response(
+                {"detail": "a sent broadcast can't be edited"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        _apply_fields(broadcast, request.data)
+        broadcast.save()
+        return Response(_serialize_broadcast(broadcast, detail=True))
+
+    def delete(self, request, pk):
+        broadcast = self._get(pk)
+        if broadcast is None:
+            return Response(status=http_status.HTTP_404_NOT_FOUND)
+        if broadcast.status in (BroadcastStatus.SENDING, BroadcastStatus.SENT):
+            return Response(
+                {"detail": "a sent broadcast can't be deleted"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        broadcast.delete()
+        return Response(status=http_status.HTTP_204_NO_CONTENT)
+
+
+@requires(AdminCapability.EMAIL, verb=AdminVerb.ACT)
+class AdminBroadcastActionView(APIView):
+    """Act on a broadcast: ``send`` now, ``schedule``, ``cancel``, or ``test``."""
+
+    def post(self, request, pk):
+        broadcast = Broadcast.objects.filter(pk=pk).first()
+        if broadcast is None:
+            return Response(status=http_status.HTTP_404_NOT_FOUND)
+
+        action = str(request.data.get("action", "")).strip()
+        if action == "test":
+            return self._test(request, broadcast)
+        if action == "send":
+            return self._send(broadcast)
+        if action == "schedule":
+            return self._schedule(request, broadcast)
+        if action == "cancel":
+            return self._cancel(broadcast)
+        return Response(
+            {"detail": f"unknown action {action!r}"},
+            status=http_status.HTTP_400_BAD_REQUEST,
+        )
+
+    @staticmethod
+    def _sendable(broadcast) -> str | None:
+        if not (set(broadcast.subject) & set(broadcast.content)):
+            return "broadcast has no subject/content in any language"
+        if broadcast.status in (BroadcastStatus.SENDING, BroadcastStatus.SENT):
+            return "broadcast has already been sent"
+        return None
+
+    def _send(self, broadcast):
+        problem = self._sendable(broadcast)
+        if problem:
+            return Response({"detail": problem}, status=http_status.HTTP_409_CONFLICT)
+        tally = broadcasts_mod.send_broadcast(broadcast)
+        return Response({"tally": tally, **_serialize_broadcast(broadcast, detail=True)})
+
+    def _schedule(self, request, broadcast):
+        problem = self._sendable(broadcast)
+        if problem:
+            return Response({"detail": problem}, status=http_status.HTTP_409_CONFLICT)
+        when = parse_datetime(str(request.data.get("scheduled_at", "")))
+        if when is None:
+            return Response(
+                {"detail": "a valid scheduled_at is required"},
+                status=http_status.HTTP_400_BAD_REQUEST,
+            )
+        broadcast.scheduled_at = when
+        broadcast.status = BroadcastStatus.SCHEDULED
+        broadcast.save(update_fields=["scheduled_at", "status", "updated_at"])
+        return Response(_serialize_broadcast(broadcast, detail=True))
+
+    def _cancel(self, broadcast):
+        if broadcast.status not in (BroadcastStatus.DRAFT, BroadcastStatus.SCHEDULED):
+            return Response(
+                {"detail": "only a draft or scheduled broadcast can be canceled"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        broadcast.status = BroadcastStatus.CANCELED
+        broadcast.save(update_fields=["status", "updated_at"])
+        return Response(_serialize_broadcast(broadcast, detail=True))
+
+    @staticmethod
+    def _test(request, broadcast):
+        profile = UserProfile.objects.filter(
+            supabase_uid=getattr(request.user, "username", "")
+        ).first()
+        if profile is None:
+            return Response(
+                {"detail": "a test send goes to your own account; none was found"},
+                status=http_status.HTTP_400_BAD_REQUEST,
+            )
+        ok = broadcasts_mod.send_test(broadcast, profile)
+        if not ok:
+            return Response(
+                {"detail": "test send failed (no deliverable address or content, or sending disabled)"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        return Response({"ok": True, "sent_to": profile.email})
+
+
+@requires(AdminCapability.EMAIL, verb=AdminVerb.ACT)
+class AdminAudiencePreviewView(APIView):
+    """Count the readers an audience filter would target (compose-time preview)."""
+
+    def post(self, request):
+        audience = request.data.get("audience") or {}
+        if not isinstance(audience, dict):
+            return Response(
+                {"detail": "audience must be an object"},
+                status=http_status.HTTP_400_BAD_REQUEST,
+            )
+        return Response({"count": audience_mod.count(audience)})

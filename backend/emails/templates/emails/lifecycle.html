@@ -1,10 +1,11 @@
 {% extends "emails/base.html" %}
 {% block content %}
 <h1 style="margin:0 0 14px 0; font-size:24px; line-height:1.25; color:#3a3226;">{{ copy.heading }}</h1>
-<p style="margin:0 0 14px 0; font-size:16px; line-height:1.6;">{{ greeting }}</p>
+{% if greeting %}<p style="margin:0 0 14px 0; font-size:16px; line-height:1.6;">{{ greeting }}</p>{% endif %}
 {% for para in copy.paragraphs %}
 <p style="margin:0 0 14px 0; font-size:16px; line-height:1.6;">{{ para }}</p>
 {% endfor %}
+{% if copy.cta_label %}
 <table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 18px 0;">
   <tr>
     <td style="border-radius:8px; background:#6b5b3e;">
@@ -12,5 +13,8 @@
     </td>
   </tr>
 </table>
-<p style="margin:0; font-size:16px; line-height:1.6;">{{ copy.signoff }}<br>{{ copy.signature }}</p>
+{% endif %}
+{% if copy.signoff or copy.signature %}
+<p style="margin:0; font-size:16px; line-height:1.6;">{{ copy.signoff }}{% if copy.signature %}<br>{{ copy.signature }}{% endif %}</p>
+{% endif %}
 {% endblock %}

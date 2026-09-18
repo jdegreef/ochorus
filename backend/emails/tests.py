@@ -510,3 +510,160 @@ class AdminEmailMetricsTests(TestCase):
         self.assertEqual(data["overview"]["sent"], 1)
         self.assertEqual(data["subscribers"]["total"], 1)
         self.assertEqual(data["subscribers"]["newsletter_opt_in"], 1)
+
+
+from .audience import count as audience_count  # noqa: E402
+from .audience import resolve as audience_resolve  # noqa: E402
+from .broadcasts import send_broadcast  # noqa: E402
+from .models import Broadcast, BroadcastStatus  # noqa: E402
+from .rendering import render_broadcast  # noqa: E402
+
+
+def _broadcast(**kw):
+    defaults = {
+        "name": "September news",
+        "subject": {"en": "Hello from Ochorus"},
+        "content": {
+            "en": {
+                "heading": "This month",
+                "paragraphs": ["A new classic is live."],
+                "cta_label": "Read it",
+                "cta_path": "books",
+            }
+        },
+        "audience": {},
+    }
+    defaults.update(kw)
+    return Broadcast.objects.create(**defaults)
+
+
+class AudienceTests(TestCase):
+    def test_empty_audience_is_everyone(self):
+        _make_profile()
+        _make_profile()
+        self.assertEqual(audience_count({}), 2)
+
+    def test_locale_filter(self):
+        _make_profile(locale="en")
+        _make_profile(locale="es")
+        self.assertEqual(audience_count({"locale": "es"}), 1)
+        self.assertEqual(audience_count({"locale": ["en", "es"]}), 2)
+
+    def test_has_plan_filter(self):
+        planned = _make_profile()
+        _make_profile()  # no plan
+        PlanProgress.objects.create(
+            profile=planned, plan_slug="humility-plan", started_at=timezone.now(), done=[]
+        )
+        self.assertEqual([p.pk for p in audience_resolve({"has_plan": True})], [planned.pk])
+        self.assertEqual(audience_count({"has_plan": False}), 1)
+
+
+@SENDING
+class BroadcastSendTests(TestCase):
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_sends_to_opted_in_audience(self, send):
+        _make_profile(email="a@example.com")
+        _make_profile(email="b@example.com")
+        tally = send_broadcast(_broadcast())
+        self.assertEqual(tally["sent"], 2)
+        self.assertEqual(send.call_count, 2)
+        self.assertEqual(
+            EmailMessage.objects.filter(kind=EmailKind.BROADCAST, status=SendStatus.SENT).count(), 2
+        )
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_skips_opted_out_reader(self, send):
+        profile = _make_profile()
+        EmailSubscription.objects.create(profile=profile, newsletter_opt_in=False)
+        tally = send_broadcast(_broadcast())
+        self.assertEqual(tally, {"sent": 0, "skipped": 1, "failed": 0})
+        send.assert_not_called()
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_send_is_idempotent(self, send):
+        _make_profile()
+        broadcast = _broadcast()
+        send_broadcast(broadcast)
+        send_broadcast(broadcast)  # re-run
+        self.assertEqual(send.call_count, 1)  # not 2
+        self.assertEqual(EmailMessage.objects.filter(kind=EmailKind.BROADCAST).count(), 1)
+
+    def test_render_falls_back_to_english(self):
+        profile = _make_profile(locale="es")  # broadcast has only en content
+        sub = EmailSubscription.objects.create(profile=profile)
+        rendered = render_broadcast(_broadcast(), profile, sub)
+        self.assertIsNotNone(rendered)
+        self.assertEqual(rendered.subject, "Hello from Ochorus")
+        self.assertIn("This month", rendered.html)
+
+    def test_render_none_when_no_content(self):
+        profile = _make_profile()
+        sub = EmailSubscription.objects.create(profile=profile)
+        # subject present but content empty → nothing to render
+        self.assertIsNone(render_broadcast(_broadcast(content={}), profile, sub))
+
+
+@override_settings(DEBUG=True)  # loopback test client → admin gate bypassed
+class BroadcastAdminTests(TestCase):
+    def _post(self, url, payload):
+        return self.client.post(url, data=json.dumps(payload), content_type="application/json")
+
+    def test_create_and_list(self):
+        res = self._post(
+            "/api/admin/broadcasts/",
+            {"name": "Draft one", "subject": {"en": "Hi"}, "content": {"en": {"heading": "H"}}},
+        )
+        self.assertEqual(res.status_code, 201)
+        self.assertEqual(res.json()["status"], BroadcastStatus.DRAFT)
+        listing = self.client.get("/api/admin/broadcasts/").json()["broadcasts"]
+        self.assertEqual(len(listing), 1)
+
+    def test_create_requires_name(self):
+        res = self._post("/api/admin/broadcasts/", {"subject": {"en": "Hi"}})
+        self.assertEqual(res.status_code, 400)
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_send_action(self, send):
+        _make_profile()
+        b = _broadcast()
+        res = self._post(f"/api/admin/broadcasts/{b.pk}/action/", {"action": "send"})
+        self.assertEqual(res.status_code, 200)
+        b.refresh_from_db()
+        self.assertEqual(b.status, BroadcastStatus.SENT)
+        self.assertEqual(res.json()["tally"]["sent"], 1)
+
+    def test_schedule_and_cancel(self):
+        b = _broadcast()
+        res = self._post(
+            f"/api/admin/broadcasts/{b.pk}/action/",
+            {"action": "schedule", "scheduled_at": "2099-01-01T09:00:00Z"},
+        )
+        self.assertEqual(res.status_code, 200)
+        b.refresh_from_db()
+        self.assertEqual(b.status, BroadcastStatus.SCHEDULED)
+
+        res = self._post(f"/api/admin/broadcasts/{b.pk}/action/", {"action": "cancel"})
+        self.assertEqual(res.status_code, 200)
+        b.refresh_from_db()
+        self.assertEqual(b.status, BroadcastStatus.CANCELED)
+
+    def test_audience_preview(self):
+        _make_profile(locale="sw")
+        res = self._post("/api/admin/broadcasts/audience-preview/", {"audience": {"locale": "sw"}})
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.json()["count"], 1)
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_sent_broadcast_cannot_be_edited(self, send):
+        _make_profile()
+        b = _broadcast()
+        send_broadcast(b)
+        res = self.client.patch(
+            f"/api/admin/broadcasts/{b.pk}/",
+            data=json.dumps({"name": "renamed"}),
+            content_type="application/json",
+        )
+        self.assertEqual(res.status_code, 409)
