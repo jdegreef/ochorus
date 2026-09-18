@@ -1893,12 +1893,12 @@
 			"scrim": 0.8
 		},
 		"susanna-wesley-clarke": {
-			"ground": "128d56f11dc172aa9e958354d12cc265121c9a6d20abb0fc375f97d7c1c7c166",
+			"ground": "6951faa8a60fc830729da35de67d522c9460432498c712a38726b10a132065c4",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.7
 		},
 		"sw/a-short-and-easy-method-of-prayer": {
 			"ground": "5a6c63bcde424f32628412296d039b3dd5e383f4e162457c066fb1e2286a3a3b",
@@ -2189,12 +2189,12 @@
 			"scrim": 0.7
 		},
 		"sw/susanna-wesley-clarke": {
-			"ground": "947454db1e1e9e339b0bdf6a553c1e7167aa8f3e54a1cfea8af98a24b45eab87",
+			"ground": "74e9bdacceb5127ff5419da1c04a4ae2bf967efedb9a23276822e8c7e6b3d5f2",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.7
 		},
 		"sw/talks-to-the-farmer": {
 			"ground": "aef70956828f33655198d8cf50574cd15dad62a3886a77f1e369cd485937773f",
@@ -2285,12 +2285,12 @@
 			"scrim": 0.6
 		},
 		"sw/things-as-they-are": {
-			"ground": "533fc2826c5fc7fcc4cc123a41e912c6d5e175867bf66c3e7f182672e2f950e8",
+			"ground": "c4e646765ff4b8bbe12bde1d6ff6d08ceb6c233ca7982095bf2d5b78e5fd68c9",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.65
 		},
 		"sw/till-he-come": {
 			"ground": "a3055051836f3acb228877c9eba9aa2ac60092c1dae375f14658610239b4cccf",
@@ -2445,12 +2445,12 @@
 			"scrim": 0.6
 		},
 		"things-as-they-are": {
-			"ground": "deaba4c697c1f87ab7f425b816de8e34012d2517b68dc0d58ab1737331c55df7",
+			"ground": "7090f06cc32398199d5011091deb2f02f2a7caa55e4d8a62a1e71beb562023d5",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.65
 		},
 		"thoughts-for-the-quiet-hour": {
 			"ground": "8bcdb26672bb3c79f1fd82e587144ef849f37f77fa64e5cec03bba4e2f9db134",
