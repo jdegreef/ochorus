@@ -573,6 +573,18 @@ class BroadcastSendTests(TestCase):
         )
 
     @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_custom_from_address_is_used(self, send):
+        _make_profile()
+        send_broadcast(_broadcast(from_address="News <news@ochorus.test>"))
+        self.assertEqual(send.call_args.kwargs["from_email"], "News <news@ochorus.test>")
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_default_from_when_unset(self, send):
+        _make_profile()
+        send_broadcast(_broadcast())  # no from_address
+        self.assertIsNone(send.call_args.kwargs["from_email"])
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
     def test_skips_opted_out_reader(self, send):
         profile = _make_profile()
         EmailSubscription.objects.create(profile=profile, newsletter_opt_in=False)

@@ -46,6 +46,7 @@ def _send_one(broadcast, profile, subscription) -> str:
         to_email=to_email,
         locale=(profile.locale or "en"),
         broadcast=broadcast,
+        from_email=broadcast.from_address or None,
     )
     if message.status == SendStatus.SENT:
         return "sent"
@@ -94,6 +95,7 @@ def send_test(broadcast, profile) -> bool:
         to_email=to_email,
         locale=(profile.locale or "en"),
         broadcast=broadcast,
+        from_email=broadcast.from_address or None,
     )
     return message.status == SendStatus.SENT
 
