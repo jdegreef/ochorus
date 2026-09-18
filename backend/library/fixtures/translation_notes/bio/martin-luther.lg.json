@@ -1,0 +1,16 @@
+{
+  "kind": "bio",
+  "slug": "martin-luther",
+  "language": "lg",
+  "job_issue": 1504,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Romans 1:17",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "why": "'The righteous shall live by faith' — the phrase Luther wrestled with; pasted verbatim from the OLCB («Abatuukirivu banaabeeranga balamu lwa kukkiriza»)."
+    }
+  ],
+  "note": "The only chapter:verse scripture is Romans 1:17, pasted verbatim from the Open Luganda Contemporary Bible (which matches the shipped Luganda corpus). The hymn line ('A mighty fortress', Luther's paraphrase of Psalm 46), the Melanchthon deathbed prayer, 'Here I stand', 'Help me, Saint Anne', and 'We are beggars; this is true' are Luther's own words, translated as prose."
+}
