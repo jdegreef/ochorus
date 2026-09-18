@@ -541,8 +541,30 @@ class QuotePageApiTests(TestCase):
         listing = self.client.get("/api/library/quotes/").data
         self.assertEqual(
             listing,
-            [{"slug": "w", "name": "A Writer", "birth_year": None, "photo_url": "", "count": 1}],
+            [{"slug": "w", "name": "A Writer", "birth_year": None,
+              "photo_url": "", "count": 1,
+              "teaser": "A memorable sentence about grace."}],
         )
+
+    def test_the_index_teaser_is_the_authors_shortest_reviewed_quote(self):
+        # The card teaser is the shortest line, and only ever a published one.
+        self.quote.reviewed = True  # 33 chars
+        self.quote.save()
+        Quote.objects.create(
+            slug="w-short", author=self.author, text="Short and sweet.",
+            chapter=self.chapter, paragraph=7, reviewed=True,
+        )
+        Quote.objects.create(
+            slug="w-long", author=self.author,
+            text="A far longer line no card would want to show in full, ever.",
+            chapter=self.chapter, paragraph=8, reviewed=True,
+        )
+        Quote.objects.create(  # shorter than the teaser, but unreviewed
+            slug="w-tiny", author=self.author, text="Tiny.",
+            chapter=self.chapter, paragraph=9,
+        )
+        row = self.client.get("/api/library/quotes/").data[0]
+        self.assertEqual(row["teaser"], "Short and sweet.")
 
     def test_the_payload_carries_the_citation(self):
         self.quote.reviewed = True
