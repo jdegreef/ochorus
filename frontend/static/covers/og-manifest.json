@@ -1956,6 +1956,14 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"sw/susanna-wesley-clarke": {
+			"ground": "947454db1e1e9e339b0bdf6a553c1e7167aa8f3e54a1cfea8af98a24b45eab87",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"sw/talks-to-the-farmer": {
 			"ground": "aef70956828f33655198d8cf50574cd15dad62a3886a77f1e369cd485937773f",
 			"style": "revival",
