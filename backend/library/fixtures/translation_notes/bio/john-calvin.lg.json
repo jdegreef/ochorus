@@ -1,0 +1,15 @@
+{
+  "kind": "bio",
+  "slug": "john-calvin",
+  "language": "lg",
+  "job_issue": 1502,
+  "pull_request": 2828,
+  "references": [
+    {
+      "reference": "Psalm 13:1",
+      "status": "self_rendered",
+      "why": "The psalmist’s cry 'How long, O Lord' that frames the closing section and the final <h2>; rendered 'Okutuusa Ddi, Ai Mukama'. Self_rendered — not mined from the shipped Luganda corpus."
+    }
+  ],
+  "note": "The only scripture is Psalm 13:1 ('How long, O Lord'), self_rendered in Luganda. Calvin’s motto, his account of his sudden conversion, and the closing lecture-prayer are his own words, translated as prose, not scripture."
+}
