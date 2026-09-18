@@ -1,0 +1,228 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "amanda-berry-smith"
+  ],
+  "slug": "amanda-smith-autobiography-children",
+  "language": "en",
+  "title": "The Story of Amanda Smith (For Children)",
+  "subtitle": "",
+  "description": "Meet Amanda Berry Smith, born into slavery in Maryland long, long ago, who grew up to trust God for everything — even a pair of shoes. In her own true stories, retold gently for children, a brave father buys his family free, a hidden man is kept safe, and one washerwoman carries the good news of Jesus all the way to England, India, and Africa.",
+  "qa": [
+   {
+    "question": "Who was Amanda Berry Smith?",
+    "answer": "She was a Black woman, born into slavery in Maryland around 1837, who grew up to become a well-known travelling preacher. She trusted God with everything and told people about Jesus in America, England, India, and Africa."
+   },
+   {
+    "question": "Was Amanda really born a slave?",
+    "answer": "Yes, she was. But her father, Samuel Berry, worked night after night to earn money and buy freedom — first his own, and then his wife’s and children’s. Amanda was still very small when he bought her free."
+   },
+   {
+    "question": "What did Amanda do for work before she was a preacher?",
+    "answer": "For many years she was a washerwoman. She stood at her washtub scrubbing other people’s clothes, sometimes all night long, to earn money and care for her family."
+   },
+   {
+    "question": "Are the miracles in these stories made up?",
+    "answer": "No. Every story comes from the book Amanda wrote about her own life. We have not added any pretend miracles — these are the real things she said God did for her."
+   },
+   {
+    "question": "Why does Amanda talk to God about small things, like shoes?",
+    "answer": "Amanda believed God cared about every part of her life, whether big or small. When her shoes wore out, she simply asked God, and a friend soon handed her exactly the money she needed."
+   },
+   {
+    "question": "Did Amanda have a happy life?",
+    "answer": "She knew great joy in God, but she also knew deep sorrow. Some of her little children died when they were very young, and people were often unkind to her. Yet she always said that God comforted her and never left her alone."
+   },
+   {
+    "question": "Who was little Bob?",
+    "answer": "Bob was a small boy in Africa whose father asked Amanda to raise him and teach him about God. Amanda was weak and had very little money, but she trusted God and took Bob as her very own child."
+   },
+   {
+    "question": "What can children learn from Amanda’s life?",
+    "answer": "That God can be trusted in the dark as well as in the light, that honesty and kindness are worth far more than money, and that God hears even the smallest prayer."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "",
+  "cover_url": "/covers/amanda-smith-autobiography-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 25,
+  "is_published": true,
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Day Father Bought Us Free",
+  "body_html": "<blockquote><p><em>“Stand fast therefore in the liberty wherewith Christ hath made us free.”</em> — Galatians 5:1</p></blockquote> <p>Long ago, in a place called Maryland, a little girl named Amanda was born. In those sad days, Black families like hers were not free. They could be bought and sold, like a horse or a bag of grain, and they were made to work without any pay.</p> <p>But Amanda had a wonderful father named Samuel Berry. He was strong, and he was patient, and he had one great dream — to make his whole family free.</p> <p>So Samuel worked. All day he worked for the woman who owned him. Then, when the sun went down and other people slept, he worked some more. He made brooms. He wove mats out of corn husks. He burned lime. In harvest time he walked three or four miles after dark to work in the fields until one or two in the morning, then slept only an hour before starting all over again.</p> <p>Penny by penny, year after year, he saved. First he bought his own freedom. Then he bought his wife. Then, one by one, he bought his children — until at last little Amanda was free too.</p> <p>She was so small she could not even remember being a slave. But all her life she loved to say that God had set her free.</p> <p>Do you see how hard Amanda’s father worked for the people he loved? Your heavenly Father worked even harder to make you free — He gave His own Son, Jesus. You did not earn it; it is His gift to you.</p> <p>Dear God, thank You for loving me so much that You made a way to set me free. Help me to love others the way Amanda’s father loved his family. Amen.</p>",
+  "body_text": "“Stand fast therefore in the liberty wherewith Christ hath made us free.” — Galatians 5:1 Long ago, in a place called Maryland, a little girl named Amanda was born. In those sad days, Black families like hers were not free. They could be bought and sold, like a horse or a bag of grain, and they were made to work without any pay. But Amanda had a wonderful father named Samuel Berry. He was strong, and he was patient, and he had one great dream — to make his whole family free. So Samuel worked. All day he worked for the woman who owned him. Then, when the sun went down and other people slept, he worked some more. He made brooms. He wove mats out of corn husks. He burned lime. In harvest time he walked three or four miles after dark to work in the fields until one or two in the morning, then slept only an hour before starting all over again. Penny by penny, year after year, he saved. First he bought his own freedom. Then he bought his wife. Then, one by one, he bought his children — until at last little Amanda was free too. She was so small she could not even remember being a slave. But all her life she loved to say that God had set her free. Do you see how hard Amanda’s father worked for the people he loved? Your heavenly Father worked even harder to make you free — He gave His own Son, Jesus. You did not earn it; it is His gift to you. Dear God, thank You for loving me so much that You made a way to set me free. Help me to love others the way Amanda’s father loved his family. Amen.",
+  "word_count": 299
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "Grandmother’s Prayers by the Dairy",
+  "body_html": "<blockquote><p><em>“The effectual fervent prayer of a righteous man availeth much.”</em> — James 5:16</p></blockquote> <p>Before Amanda’s father could buy his family, something had to change. And it changed because of an old woman who knew how to pray — Amanda’s grandmother.</p> <p>Grandmother loved God with all her heart. Again and again she asked Him to open a way so her grandchildren could be free. When she had something too big to carry, she would slip out into the bushes and, as Amanda said, simply “tell Jesus” all about it.</p> <p>One day, a young woman named Miss Celie went to a camp meeting just to watch. But there she heard about Jesus, and she gave Him her heart. Her family did not like it one bit. They tried everything to change her mind.</p> <p>Then Miss Celie became very ill with a fever. As she lay dying, she gathered her family close and asked them to promise one thing: that they would let Samuel buy his wife and children. Three times she asked, and at last they promised.</p> <p>Each time Miss Celie spoke, Amanda’s mother ran to tell Grandmother, and each time Grandmother hurried out to thank God. Her long years of praying were being answered.</p> <p>When you pray for something and the answer does not come right away, do not give up. Amanda’s grandmother prayed for years, and God heard every single word. He hears you, too.</p> <p>Dear God, thank You that You never grow tired of listening to me. Teach me to keep praying, even when the answer takes a long time. Amen.</p>",
+  "body_text": "“The effectual fervent prayer of a righteous man availeth much.” — James 5:16 Before Amanda’s father could buy his family, something had to change. And it changed because of an old woman who knew how to pray — Amanda’s grandmother. Grandmother loved God with all her heart. Again and again she asked Him to open a way so her grandchildren could be free. When she had something too big to carry, she would slip out into the bushes and, as Amanda said, simply “tell Jesus” all about it. One day, a young woman named Miss Celie went to a camp meeting just to watch. But there she heard about Jesus, and she gave Him her heart. Her family did not like it one bit. They tried everything to change her mind. Then Miss Celie became very ill with a fever. As she lay dying, she gathered her family close and asked them to promise one thing: that they would let Samuel buy his wife and children. Three times she asked, and at last they promised. Each time Miss Celie spoke, Amanda’s mother ran to tell Grandmother, and each time Grandmother hurried out to thank God. Her long years of praying were being answered. When you pray for something and the answer does not come right away, do not give up. Amanda’s grandmother prayed for years, and God heard every single word. He hears you, too. Dear God, thank You that You never grow tired of listening to me. Teach me to keep praying, even when the answer takes a long time. Amen.",
+  "word_count": 262
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "The Man Hidden in the Bed",
+  "body_html": "<blockquote><p><em>“I was a stranger, and ye took me in.”</em> — Matthew 25:35</p></blockquote> <p>After Amanda’s family was free, they lived on a farm in Pennsylvania. Their little house became a secret safe place. When people ran away from slavery, tired and frightened, they came to Samuel Berry, and he helped them travel on to freedom, often in the dark of night.</p> <p>This was dangerous work, and cruel men watched the house closely, hoping to catch someone.</p> <p>One morning, while it was still early, Amanda’s father was out feeding the pigs. Looking up, he saw four men on horseback riding toward the house. There was no time to run inside. So he called out to his wife, “Mother, I see four men coming; do the best you can.”</p> <p>Amanda’s mother was quick and brave. A man who had escaped was hiding upstairs. In a flash she brought him down and hid him inside the bed, tucked beneath the mattress. Then she laid her own little two-year-old son on top, sleeping.</p> <p>The men searched everywhere. They looked upstairs and in the kitchen. They even peeked at the sleeping child in the bed — but they never found the man hidden underneath. They rode away, and soon the man was safely on his way north.</p> <p>Amanda’s mother used her courage and her cleverness to protect someone who needed help. When God gives you a chance to be kind to someone in trouble, you can be brave and helpful, too.</p> <p>Dear God, make me brave and kind like Amanda’s mother. Help me to care for anyone who needs a safe and gentle friend. Amen.</p>",
+  "body_text": "“I was a stranger, and ye took me in.” — Matthew 25:35 After Amanda’s family was free, they lived on a farm in Pennsylvania. Their little house became a secret safe place. When people ran away from slavery, tired and frightened, they came to Samuel Berry, and he helped them travel on to freedom, often in the dark of night. This was dangerous work, and cruel men watched the house closely, hoping to catch someone. One morning, while it was still early, Amanda’s father was out feeding the pigs. Looking up, he saw four men on horseback riding toward the house. There was no time to run inside. So he called out to his wife, “Mother, I see four men coming; do the best you can.” Amanda’s mother was quick and brave. A man who had escaped was hiding upstairs. In a flash she brought him down and hid him inside the bed, tucked beneath the mattress. Then she laid her own little two-year-old son on top, sleeping. The men searched everywhere. They looked upstairs and in the kitchen. They even peeked at the sleeping child in the bed — but they never found the man hidden underneath. They rode away, and soon the man was safely on his way north. Amanda’s mother used her courage and her cleverness to protect someone who needed help. When God gives you a chance to be kind to someone in trouble, you can be brave and helpful, too. Dear God, make me brave and kind like Amanda’s mother. Help me to care for anyone who needs a safe and gentle friend. Amen.",
+  "word_count": 269
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "Learning to Read by the Window",
+  "body_html": "<blockquote><p><em>“Wisdom is the principal thing; therefore get wisdom.”</em> — Proverbs 4:7</p></blockquote> <p>Amanda longed to go to school. But when she was a girl, Black children were hardly allowed to learn. The nearest school was far away, and even there she was made to wait at the back while all the other children were taught first. In all her life, Amanda went to school for only about three months.</p> <p>One freezing winter morning, she begged to walk the two and a half miles to the schoolhouse anyway. The snow was deep, and she grew so cold she could not even speak when she finally reached the door. A boy had to open it for her, and kind hands warmed her up inside.</p> <p>But Amanda would not give up on learning. Her father brought home newspapers, and she had a clever idea. She cut out the big letters with scissors. Then she laid them along the windowsill and asked her mother to help her put the letters together into words.</p> <p>How her heart leaped the day she read her very first sentence: “The house, the tree, the dog, the cow.” She was so proud! She gathered the other children around to show them how she could read.</p> <p>Amanda wanted to learn, and she worked hard, even when it was difficult. Learning is a gift from God. When something is hard for you, keep trying — a patient heart can do wonderful things.</p> <p>Dear God, thank You for my mind and for the good things I get to learn. Help me not to give up when learning feels hard. Amen.</p>",
+  "body_text": "“Wisdom is the principal thing; therefore get wisdom.” — Proverbs 4:7 Amanda longed to go to school. But when she was a girl, Black children were hardly allowed to learn. The nearest school was far away, and even there she was made to wait at the back while all the other children were taught first. In all her life, Amanda went to school for only about three months. One freezing winter morning, she begged to walk the two and a half miles to the schoolhouse anyway. The snow was deep, and she grew so cold she could not even speak when she finally reached the door. A boy had to open it for her, and kind hands warmed her up inside. But Amanda would not give up on learning. Her father brought home newspapers, and she had a clever idea. She cut out the big letters with scissors. Then she laid them along the windowsill and asked her mother to help her put the letters together into words. How her heart leaped the day she read her very first sentence: “The house, the tree, the dog, the cow.” She was so proud! She gathered the other children around to show them how she could read. Amanda wanted to learn, and she worked hard, even when it was difficult. Learning is a gift from God. When something is hard for you, keep trying — a patient heart can do wonderful things. Dear God, thank You for my mind and for the good things I get to learn. Help me not to give up when learning feels hard. Amen.",
+  "word_count": 267
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "Praying in the Cellar",
+  "body_html": "<blockquote><p><em>“Him that cometh to me I will in no wise cast out.”</em> — John 6:37</p></blockquote> <p>When Amanda grew up, she wanted more than anything to belong to God. But she had a proud, strong will, and for a long time she wanted to be saved her own way, quietly, without any fuss.</p> <p>She prayed and prayed. In her heart she felt she was not good enough, and a whispering voice kept telling her, “God will not hear you.” The harder she tried, the further away God seemed.</p> <p>At last, one afternoon while she was working in a kind Quaker family’s home, Amanda made up her mind. She set the table, put the kettle on, and went down into the cellar to pray. “I must have salvation this afternoon,” she said, “or I will pray until I do.”</p> <p>She poured out her whole heart to God. And then she prayed the simplest words of all: “O Lord, if Thou wilt help me, I will believe Thee.” And in the very moment she said she would trust Him — she did.</p> <p>Joy flooded her soul like sunshine. The heavy burden rolled away. She looked at her hands and felt brand new all over. She ran up the cellar stairs, and later she looked in the big mirror, sure that even her face must look different.</p> <p>Amanda thought she had to make herself good enough for God. But Jesus welcomes anyone who simply comes to Him and trusts Him. You do not have to be good enough first. You only have to come.</p> <p>Dear Jesus, thank You that You never turn anyone away. Here I am — I come to You, and I trust You. Amen.</p>",
+  "body_text": "“Him that cometh to me I will in no wise cast out.” — John 6:37 When Amanda grew up, she wanted more than anything to belong to God. But she had a proud, strong will, and for a long time she wanted to be saved her own way, quietly, without any fuss. She prayed and prayed. In her heart she felt she was not good enough, and a whispering voice kept telling her, “God will not hear you.” The harder she tried, the further away God seemed. At last, one afternoon while she was working in a kind Quaker family’s home, Amanda made up her mind. She set the table, put the kettle on, and went down into the cellar to pray. “I must have salvation this afternoon,” she said, “or I will pray until I do.” She poured out her whole heart to God. And then she prayed the simplest words of all: “O Lord, if Thou wilt help me, I will believe Thee.” And in the very moment she said she would trust Him — she did. Joy flooded her soul like sunshine. The heavy burden rolled away. She looked at her hands and felt brand new all over. She ran up the cellar stairs, and later she looked in the big mirror, sure that even her face must look different. Amanda thought she had to make herself good enough for God. But Jesus welcomes anyone who simply comes to Him and trusts Him. You do not have to be good enough first. You only have to come. Dear Jesus, thank You that You never turn anyone away. Here I am — I come to You, and I trust You. Amen.",
+  "word_count": 283
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "The Money on the Kitchen Floor",
+  "body_html": "<blockquote><p><em>“He that is faithful in that which is least is faithful also in much.”</em> — Luke 16:10</p></blockquote> <p>Amanda had a younger sister named Frances, and Amanda loved her dearly. To set her free, Amanda had to pay a great deal of money — more than she had. So she borrowed fifty dollars, and now she owed that debt. It worried her day and night.</p> <p>One afternoon a kind, wealthy man named Mr. Robert visited the family. After dinner he played in the kitchen, and without knowing it, he dropped a little twist of paper on the floor. It looked like nothing special.</p> <p>Later, when Amanda bent to pick it up, her eyes went wide. It was money — three hundred dollars! And no one else was in the room.</p> <p>A sneaky thought crept in: “Keep it. Now you can pay off your debt, and no one will ever know.” But Amanda answered right back, “No. I do not mean to get into any trouble about this money at all.”</p> <p>When Mr. Robert came home searching everywhere, Amanda quietly reached into her pocket and handed him every dollar. He was so happy and so grateful that he gave her fifty dollars as a thank-you — the exact amount she needed to pay off her debt!</p> <p>Amanda did the honest thing, even when no one was watching and even when she really needed the money. God saw, and God took care of her. When you are faithful in small things, you can trust Him to care for you, too.</p> <p>Dear God, help me to be honest even when it is hard, and even when no one is looking. Thank You that I can always trust You. Amen.</p>",
+  "body_text": "“He that is faithful in that which is least is faithful also in much.” — Luke 16:10 Amanda had a younger sister named Frances, and Amanda loved her dearly. To set her free, Amanda had to pay a great deal of money — more than she had. So she borrowed fifty dollars, and now she owed that debt. It worried her day and night. One afternoon a kind, wealthy man named Mr. Robert visited the family. After dinner he played in the kitchen, and without knowing it, he dropped a little twist of paper on the floor. It looked like nothing special. Later, when Amanda bent to pick it up, her eyes went wide. It was money — three hundred dollars! And no one else was in the room. A sneaky thought crept in: “Keep it. Now you can pay off your debt, and no one will ever know.” But Amanda answered right back, “No. I do not mean to get into any trouble about this money at all.” When Mr. Robert came home searching everywhere, Amanda quietly reached into her pocket and handed him every dollar. He was so happy and so grateful that he gave her fifty dollars as a thank-you — the exact amount she needed to pay off her debt! Amanda did the honest thing, even when no one was watching and even when she really needed the money. God saw, and God took care of her. When you are faithful in small things, you can trust Him to care for you, too. Dear God, help me to be honest even when it is hard, and even when no one is looking. Thank You that I can always trust You. Amen.",
+  "word_count": 285
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "Trusting God with the Baby",
+  "body_html": "<blockquote><p><em>“What time I am afraid, I will trust in thee.”</em> — Psalm 56:3</p></blockquote> <p>One Sunday morning, Amanda wanted very much to go and hear a certain preacher across the city. She gave her baby, Will, his bath and laid him gently in his cradle. Then she asked her older daughter, Mazie, to watch him. “If he cries,” she said, “do not pick him up; just rock him.”</p> <p>Off she went to church. But as the preacher spoke, a frightening feeling swept over her. She was sure she could hear her baby screaming far away. A voice whispered, “Mazie has dropped him! Something terrible has happened! Run home right now!”</p> <p>Amanda’s heart pounded. She almost jumped up to race home. But then she remembered — she had told other people to trust God. Could she not trust Him herself?</p> <p>“I will trust the Lord,” she said quietly, “even with my baby.” Again the scary thoughts came, and again she answered, “I said I would trust the Lord, and I will.” So she stayed, and she listened, and God filled her heart with wonderful peace.</p> <p>When Amanda finally hurried home and opened the door, she found little Will sleeping sweetly in his cradle. He had never even woken up. He was perfectly safe.</p> <p>Sometimes our minds fill up with scary “what ifs.” When you feel afraid, you can do what Amanda did: give the worry to God and trust Him. He loves you, and He is always taking care of you.</p> <p>Dear God, when I feel scared, help me to remember that You are near. I give You my worries, because I know You take good care of me. Amen.</p>",
+  "body_text": "“What time I am afraid, I will trust in thee.” — Psalm 56:3 One Sunday morning, Amanda wanted very much to go and hear a certain preacher across the city. She gave her baby, Will, his bath and laid him gently in his cradle. Then she asked her older daughter, Mazie, to watch him. “If he cries,” she said, “do not pick him up; just rock him.” Off she went to church. But as the preacher spoke, a frightening feeling swept over her. She was sure she could hear her baby screaming far away. A voice whispered, “Mazie has dropped him! Something terrible has happened! Run home right now!” Amanda’s heart pounded. She almost jumped up to race home. But then she remembered — she had told other people to trust God. Could she not trust Him herself? “I will trust the Lord,” she said quietly, “even with my baby.” Again the scary thoughts came, and again she answered, “I said I would trust the Lord, and I will.” So she stayed, and she listened, and God filled her heart with wonderful peace. When Amanda finally hurried home and opened the door, she found little Will sleeping sweetly in his cradle. He had never even woken up. He was perfectly safe. Sometimes our minds fill up with scary “what ifs.” When you feel afraid, you can do what Amanda did: give the worry to God and trust Him. He loves you, and He is always taking care of you. Dear God, when I feel scared, help me to remember that You are near. I give You my worries, because I know You take good care of me. Amen.",
+  "word_count": 278
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "The Shoes She Prayed For",
+  "body_html": "<blockquote><p><em>“What things soever ye desire, when ye pray, believe that ye receive them.”</em> — Mark 11:24</p></blockquote> <p>One day Amanda felt sure that God wanted her to go and tell people about Jesus in a town called Salem. It was far away, and she did not know a single person there. But she trusted God, and she began to get ready to go.</p> <p>There was just one problem. Her shoes were worn right through — there were holes in the bottoms. If her feet got wet on the journey, she knew she would fall sick.</p> <p>Amanda did not have money for new shoes. So she did what she always did: she told God about it. “Lord,” she prayed, “if it is Your will, please give me the money for shoes.” And she believed He would.</p> <p>A few days later, at a meeting, a dear old man named Father Brummell shook her hand as he said goodbye. As he did, he quietly pressed something into her palm. Amanda thanked him and slipped it into her pocket without looking.</p> <p>That night by the fire, she remembered it. She pulled it out and counted — one, two, three, four, five dollars! It was exactly enough for a new pair of shoes. She was so happy she could hardly sleep. God had answered her prayer.</p> <p>God is never too busy for the small things in your life. Whatever you truly need, you can tell Him about it and trust Him to help — even something as ordinary as a pair of shoes.</p> <p>Dear God, thank You that You care about the little things I need. Help me to bring everything to You and to trust You for the answer. Amen.</p>",
+  "body_text": "“What things soever ye desire, when ye pray, believe that ye receive them.” — Mark 11:24 One day Amanda felt sure that God wanted her to go and tell people about Jesus in a town called Salem. It was far away, and she did not know a single person there. But she trusted God, and she began to get ready to go. There was just one problem. Her shoes were worn right through — there were holes in the bottoms. If her feet got wet on the journey, she knew she would fall sick. Amanda did not have money for new shoes. So she did what she always did: she told God about it. “Lord,” she prayed, “if it is Your will, please give me the money for shoes.” And she believed He would. A few days later, at a meeting, a dear old man named Father Brummell shook her hand as he said goodbye. As he did, he quietly pressed something into her palm. Amanda thanked him and slipped it into her pocket without looking. That night by the fire, she remembered it. She pulled it out and counted — one, two, three, four, five dollars! It was exactly enough for a new pair of shoes. She was so happy she could hardly sleep. God had answered her prayer. God is never too busy for the small things in your life. Whatever you truly need, you can tell Him about it and trust Him to help — even something as ordinary as a pair of shoes. Dear God, thank You that You care about the little things I need. Help me to bring everything to You and to trust You for the answer. Amen.",
+  "word_count": 285
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "Afraid of the Deep Water",
+  "body_html": "<blockquote><p><em>“When thou passest through the waters, I will be with thee.”</em> — Isaiah 43:2</p></blockquote> <p>By now, everyone knew Amanda as a woman who told others to trust God, no matter what. Then, one day, some friends said, “Amanda, we believe God wants you to sail across the great ocean to England, to tell people about Jesus there.”</p> <p>But there was a secret in Amanda’s heart. She was afraid of the deep, wide sea. She kept making excuses. She even wrote a letter saying she would not go.</p> <p>That evening a heavy sadness came over her, and she could not understand why. She knelt down and said, “Lord, I will not sleep until I know what is wrong with me.”</p> <p>And gently, God showed her the truth. It was as if a voice said, “You go about telling other people to trust the Lord in the dark. But you are telling them to do what you will not do yourself. You are afraid to trust Me and cross the ocean.”</p> <p>Amanda felt ashamed. “Lord, that is the truth,” she said. “Forgive me, and give me another chance, and I will go.” And she did — she sailed all the way across the sea to England, and God went with her the whole way.</p> <p>It is easy to tell others to be brave. It is harder to be brave yourself! When God asks you to trust Him with something scary, remember that He goes right through the deep water with you.</p> <p>Dear God, when I am afraid of something big, help me to trust You for myself. Thank You that You are always right beside me. Amen.</p>",
+  "body_text": "“When thou passest through the waters, I will be with thee.” — Isaiah 43:2 By now, everyone knew Amanda as a woman who told others to trust God, no matter what. Then, one day, some friends said, “Amanda, we believe God wants you to sail across the great ocean to England, to tell people about Jesus there.” But there was a secret in Amanda’s heart. She was afraid of the deep, wide sea. She kept making excuses. She even wrote a letter saying she would not go. That evening a heavy sadness came over her, and she could not understand why. She knelt down and said, “Lord, I will not sleep until I know what is wrong with me.” And gently, God showed her the truth. It was as if a voice said, “You go about telling other people to trust the Lord in the dark. But you are telling them to do what you will not do yourself. You are afraid to trust Me and cross the ocean.” Amanda felt ashamed. “Lord, that is the truth,” she said. “Forgive me, and give me another chance, and I will go.” And she did — she sailed all the way across the sea to England, and God went with her the whole way. It is easy to tell others to be brave. It is harder to be brave yourself! When God asks you to trust Him with something scary, remember that He goes right through the deep water with you. Dear God, when I am afraid of something big, help me to trust You for myself. Thank You that You are always right beside me. Amen.",
+  "word_count": 275
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "The Stolen Trunk",
+  "body_html": "<blockquote><p><em>“He that is slow to anger is better than the mighty; and he that ruleth his spirit than he that taketh a city.”</em> — Proverbs 16:32</p></blockquote> <p>God led Amanda on another long journey — this time by ship all the way to Africa. Her clothes and her belongings were packed carefully in her trunk down in the bottom of the ship.</p> <p>But while the ship was loading, some men broke the lock on her trunk and stole many of her things — even her shoes. When Amanda found out, she was very sorry to lose them. Some of those things she never got back at all.</p> <p>Now, everyone expected her to shout and stamp and lose her temper. Even the captain of the ship watched, amazed, and said, “Mrs. Smith, I do not see how you keep your temper!”</p> <p>Amanda smiled and answered, “Captain, I am sorry to lose my things. But if losing my temper and getting angry would bring them back, then you would surely see me carry on! Since it would not bring them back, why should I?” And God kept her heart quiet and calm.</p> <p>When something is stolen or broken or unfair, it is easy to explode in anger. But being angry does not fix things — it only makes us feel worse. God can help you stay calm and gentle, even when something goes wrong. That is real strength.</p> <p>Dear God, when things go wrong and I feel angry, help me to stay calm like Amanda. Rule my heart with Your peace. Amen.</p>",
+  "body_text": "“He that is slow to anger is better than the mighty; and he that ruleth his spirit than he that taketh a city.” — Proverbs 16:32 God led Amanda on another long journey — this time by ship all the way to Africa. Her clothes and her belongings were packed carefully in her trunk down in the bottom of the ship. But while the ship was loading, some men broke the lock on her trunk and stole many of her things — even her shoes. When Amanda found out, she was very sorry to lose them. Some of those things she never got back at all. Now, everyone expected her to shout and stamp and lose her temper. Even the captain of the ship watched, amazed, and said, “Mrs. Smith, I do not see how you keep your temper!” Amanda smiled and answered, “Captain, I am sorry to lose my things. But if losing my temper and getting angry would bring them back, then you would surely see me carry on! Since it would not bring them back, why should I?” And God kept her heart quiet and calm. When something is stolen or broken or unfair, it is easy to explode in anger. But being angry does not fix things — it only makes us feel worse. God can help you stay calm and gentle, even when something goes wrong. That is real strength. Dear God, when things go wrong and I feel angry, help me to stay calm like Amanda. Rule my heart with Your peace. Amen.",
+  "word_count": 259
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "The Cart That Would Not Go",
+  "body_html": "<blockquote><p><em>“For he shall give his angels charge over thee, to keep thee in all thy ways.”</em> — Psalm 91:11</p></blockquote> <p>Amanda travelled even farther, all the way to the faraway land of India, to tell people about Jesus. One night she and her friend Miss Frow were riding along a rough country road in a cart pulled by big, slow oxen called bullocks.</p> <p>It was very, very dark. There were no streetlights and no moon to help them see the way ahead.</p> <p>Suddenly, the bullocks stopped. They simply would not take another step. The driver told them to go on, but the animals refused. Amanda and her friend grew frustrated. “Why won’t this cart move?” they wondered.</p> <p>At last they climbed down to see for themselves. They walked just a few steps ahead into the darkness — and their hearts nearly stopped. Right in front of them was a deep, dangerous ditch cut across the whole road! If the bullocks had walked on, the cart would have crashed, and everyone might have been badly hurt.</p> <p>How they praised God then! Those stubborn animals had not been stubborn at all. God had used them to stop the cart and keep His travellers safe from danger they could not even see.</p> <p>Sometimes God protects you in ways you do not notice, and sometimes a “no” or a delay is really Him keeping you safe. You can trust that He is watching over every one of your ways.</p> <p>Dear God, thank You for watching over me, even when I cannot see the danger. Help me to trust that You are always keeping me safe. Amen.</p>",
+  "body_text": "“For he shall give his angels charge over thee, to keep thee in all thy ways.” — Psalm 91:11 Amanda travelled even farther, all the way to the faraway land of India, to tell people about Jesus. One night she and her friend Miss Frow were riding along a rough country road in a cart pulled by big, slow oxen called bullocks. It was very, very dark. There were no streetlights and no moon to help them see the way ahead. Suddenly, the bullocks stopped. They simply would not take another step. The driver told them to go on, but the animals refused. Amanda and her friend grew frustrated. “Why won’t this cart move?” they wondered. At last they climbed down to see for themselves. They walked just a few steps ahead into the darkness — and their hearts nearly stopped. Right in front of them was a deep, dangerous ditch cut across the whole road! If the bullocks had walked on, the cart would have crashed, and everyone might have been badly hurt. How they praised God then! Those stubborn animals had not been stubborn at all. God had used them to stop the cart and keep His travellers safe from danger they could not even see. Sometimes God protects you in ways you do not notice, and sometimes a “no” or a delay is really Him keeping you safe. You can trust that He is watching over every one of your ways. Dear God, thank You for watching over me, even when I cannot see the danger. Help me to trust that You are always keeping me safe. Amen.",
+  "word_count": 271
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "The Boy at the Gate",
+  "body_html": "<blockquote><p><em>“And whoso shall receive one such little child in my name receiveth me.”</em> — Matthew 18:5</p></blockquote> <p>While Amanda was living in Africa, two little boys used to come round to visit her. One of them was named Bob. His skin was soft and dark, and he had the brightest smile. Amanda often saved bits of food for the boys, and they were always so pleased. She grew to love them very much.</p> <p>One day Bob’s father, Jack, came to Amanda. He told her, sadly, that he himself had never learned about God. “I do not want my little boy to grow up without knowing God, the way I did,” he said. “Please, will you take him and teach him?”</p> <p>Amanda wanted to help. But she was often weak and ill with fever, and she had very little money. “How could I care for a child?” she wondered. So she took the question to God in prayer.</p> <p>And God gently answered her heart: “You do what you can, and where you leave off, God will raise up somebody else to do the rest.”</p> <p>“That is fair,” Amanda said. “I will trust the Lord and take the child, and do the best I can.” So little Bob became her very own boy, to raise and to love.</p> <p>God does not ask you to do everything all by yourself. He only asks you to do what you can, and then to trust Him with the rest. When you welcome and help a child, Jesus says it is just like welcoming Him.</p> <p>Dear God, help me to do the good I can, and to trust You with what I cannot. Thank You for loving children so much. Amen.</p>",
+  "body_text": "“And whoso shall receive one such little child in my name receiveth me.” — Matthew 18:5 While Amanda was living in Africa, two little boys used to come round to visit her. One of them was named Bob. His skin was soft and dark, and he had the brightest smile. Amanda often saved bits of food for the boys, and they were always so pleased. She grew to love them very much. One day Bob’s father, Jack, came to Amanda. He told her, sadly, that he himself had never learned about God. “I do not want my little boy to grow up without knowing God, the way I did,” he said. “Please, will you take him and teach him?” Amanda wanted to help. But she was often weak and ill with fever, and she had very little money. “How could I care for a child?” she wondered. So she took the question to God in prayer. And God gently answered her heart: “You do what you can, and where you leave off, God will raise up somebody else to do the rest.” “That is fair,” Amanda said. “I will trust the Lord and take the child, and do the best I can.” So little Bob became her very own boy, to raise and to love. God does not ask you to do everything all by yourself. He only asks you to do what you can, and then to trust Him with the rest. When you welcome and help a child, Jesus says it is just like welcoming Him. Dear God, help me to do the good I can, and to trust You with what I cannot. Thank You for loving children so much. Amen.",
+  "word_count": 284
+ }
+}
+]
