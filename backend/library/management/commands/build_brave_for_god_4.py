@@ -1,0 +1,326 @@
+"""Build *Brave for God: Book Four* — six more For Young Readers hero lives.
+
+The fourth volume of the house-written children's hero collection (see
+``build_brave_for_god`` / ``_2`` / ``_3``). Original prose, committed here as
+module constants, nothing fetched.
+
+Fixture-driven: ``seed_books`` creates it on the next deploy from
+``fixtures/content/books/brave-for-god-4.en.json``. Idempotent.
+
+    DJANGO_DEBUG=true uv run python manage.py build_brave_for_god_4
+"""
+
+from __future__ import annotations
+
+from django.core.management.base import BaseCommand, CommandError
+from django.db import transaction
+from django.db.models import Max
+
+from library import covers, english_audit
+from library.corrections import settled_chapter_body
+from library.ingest import clean_fragment, word_count
+from library.models import Author, Book, Chapter
+
+SLUG = "brave-for-god-4"
+TITLE = "Brave for God: Book Four"
+SUBTITLE = "Six more who followed Jesus into the wide world"
+AUTHOR_SLUG = "ochorus-originals"
+COVER_COLOR = covers.ink_safe("#2f5a8a")  # a brave sea-blue, floored to WCAG AA
+
+DESCRIPTION = (
+    "Six more true stories of faith, told simply for young readers: a man who "
+    "buried his own family on a faraway island and stayed to dig a well that won "
+    "it for God; a Welsh girl who walked barefoot over the hills for a Bible; a "
+    "freed slave who carried the gospel to Jamaica before Carey ever sailed; a "
+    "famous cricketer who gave away a fortune for the forests of Africa; an "
+    "artist who traded fame for the desert; and a doctor who opened the hospital "
+    "doors for the women of India. The fourth book of Brave for God."
+)
+
+ATTRIBUTION = (
+    "An Ochorus Original, written for young readers. The stories are true; the "
+    "telling is our own."
+)
+
+CHAPTERS: list[tuple[str, list[str]]] = [
+    (
+        "John Paton: The Man Who Dug for Water",
+        [
+            "John Paton grew up in a poor family in Scotland, in a tiny cottage "
+            "where his father prayed aloud so often and so warmly that the children "
+            "half believed heaven was just on the other side of the wall. When John "
+            "was a grown man he heard about the people of the New Hebrides — "
+            "far-off islands in the South Seas where no one had ever told the "
+            "people about Jesus, and where strangers were sometimes killed. John "
+            "decided to go. When an old man warned him that he would be eaten by "
+            "cannibals, John answered that once he was dead it made little "
+            "difference whether he was eaten by cannibals or by worms — what "
+            "mattered was doing what God had asked.",
+            "In 1858 John and his young wife Mary sailed to the island of Tanna and "
+            "built a little house on the shore. But almost at once, great sorrow "
+            "fell upon them. Mary and their baby son both grew sick and died, only "
+            "weeks after they had arrived. John dug their graves with his own hands "
+            "and buried them there on that lonely island. He said afterwards that "
+            "if he had not been sure that Jesus was near him, he thought the grief "
+            "would have driven him mad.",
+            "He did not run away. John stayed on Tanna alone among people who often "
+            "threatened to kill him. Many nights he lay awake listening for the "
+            "sound of men creeping to his door, and again and again God kept him "
+            "safe. At last, when the danger grew too fierce, he escaped to another "
+            "island — but he was not finished.",
+            "On the little island of Aniwa, John tried something the islanders "
+            "thought was madness: he began to dig a deep hole in the ground, "
+            "looking for fresh water. The people had only ever known water that "
+            "fell as rain from the sky, and they laughed at the strange missionary "
+            "digging downward instead of looking up. Then, far below, John struck "
+            "cool, clear water bubbling up out of the earth. The islanders were "
+            "astonished — water from the ground, like rain from below! If the "
+            "missionary had been right about the hidden water, they began to say, "
+            "perhaps he was right about the hidden God as well.",
+            "Little by little the people of Aniwa turned from their old fears to "
+            "follow Jesus. John Paton gave them the Bible in their own words and "
+            "lived among them for many years — the man who had buried his own "
+            "family on a faraway shore and stayed anyway. He had learned that God "
+            "is worth trusting even in the deepest grief, and that one brave heart, "
+            "planted in a hard place, can turn a whole island toward heaven.",
+        ],
+    ),
+    (
+        "Mary Jones: The Girl Who Walked for a Bible",
+        [
+            "Mary Jones was a poor weaver's daughter who grew up in a little cottage "
+            "among the green hills of Wales. More than anything in the world, Mary "
+            "longed for one thing — a Bible of her very own, to read in her own "
+            "language, Welsh. But Bibles were rare and dear in those days, far too "
+            "costly for a poor girl, and the nearest one she could read belonged to "
+            "a farmer two miles away. Mary walked to his house again and again, "
+            "just to turn its pages.",
+            "So Mary began to save. She kept hens and sold their eggs; she gathered "
+            "firewood; she did odd jobs for her neighbours; and every small coin she "
+            "earned she put carefully away. It took her six long years. She was a "
+            "little girl when she began, and almost a grown young woman by the time "
+            "her jar of coins was full enough at last.",
+            "There was still one problem: the only man with Welsh Bibles to sell "
+            "lived in the town of Bala, twenty-five miles away over the hills. So "
+            "one morning Mary set off on foot, walking barefoot much of the way to "
+            "save her shoes, all those miles across the Welsh countryside, clutching "
+            "her hard-earned money. When she reached Bala and found the good "
+            "minister, Thomas Charles, she asked him for a Bible.",
+            "At first her heart nearly broke, for the Bibles were all promised to "
+            "other people — every single one. But when Mr. Charles saw how far "
+            "the girl had walked, and how many years she had saved, and how she wept "
+            "at the thought of going home without a Bible, he could not bear it. He "
+            "gave her one of the promised Bibles anyway, and Mary walked all the way "
+            "home again, hugging God's Word against her heart at last.",
+            "But Mary's long walk did something far bigger than she knew. Mr. "
+            "Charles could not forget her. He told her story to other Christians and "
+            "asked: if one poor girl in Wales wanted a Bible this badly, how many "
+            "thousands of people all over the world must be longing for one too? Out "
+            "of that question a great work was born — a society to print Bibles "
+            "cheaply and carry them into every land and every language on earth. "
+            "Millions of people have held a Bible because one Welsh girl walked "
+            "barefoot over the hills for hers. Mary Jones had shown the whole world "
+            "how precious the Word of God is, and how far a brave heart will go to "
+            "hold it.",
+        ],
+    ),
+    (
+        "George Liele: The Freed Slave Who Sailed First",
+        [
+            "George Liele was born a slave in America, long ago, before there were "
+            "any missionary societies in the world at all. He worked on a plantation "
+            "and knew the deep sorrow of belonging to another man. But one day "
+            "George heard the good news that Jesus loved him and had died to set him "
+            "free — free in his soul, whatever chains were on his body — and "
+            "his whole life changed. He became a preacher, and even while he was "
+            "still a slave he began telling others, black and white, slave and free, "
+            "about the Saviour.",
+            "George preached so well and so faithfully that his master, who was a "
+            "Christian, set him free to do it. Then the master died, and some tried "
+            "to force George back into slavery. To keep his freedom and his family "
+            "safe, George agreed to work off the cost of his passage on a ship, and "
+            "in this way he sailed far away to the island of Jamaica, out in the "
+            "warm Caribbean Sea.",
+            "Now here is a thing that few people noticed at the time. George Liele "
+            "left his own country to carry the gospel to another land years before "
+            "William Carey ever set sail for India. A man who had once been a slave "
+            "became one of the very first people ever to go out from America as a "
+            "missionary.",
+            "In Jamaica, George preached to the enslaved people on the sugar "
+            "plantations, who suffered terribly and whom almost no one else cared "
+            "for. He baptised hundreds of them and built the first Baptist church on "
+            "the whole island. The rulers did not like a black man gathering the "
+            "slaves to worship, and they threw George into prison and even put him "
+            "in chains. But he would not stop, and the little churches he had "
+            "planted only grew.",
+            "George Liele never became famous like the missionaries who came after "
+            "him. He wrote no great books and had no society behind him — only "
+            "his freed heart and his love for people the world had thrown away. Yet "
+            "the work he began in Jamaica went on and on after him, and some of the "
+            "churches he founded still stand today. He had shown that no one is too "
+            "lowly, and no past too hard, to be sent by God — and that a man who "
+            "had once been a slave could carry to others the greatest freedom of "
+            "all.",
+        ],
+    ),
+    (
+        "C.T. Studd: The Cricketer Who Gave It All Away",
+        [
+            "Charles Studd — everyone called him C.T. — was one of the "
+            "most famous young men in England. He was a brilliant cricketer, among "
+            "the finest in the whole country, who played for England while crowds "
+            "cheered his name. He was rich as well, for his family had a fortune "
+            "that would one day be his. He had everything the world says a young man "
+            "should want.",
+            "But C.T. had given his heart to Jesus, and he found he could not be "
+            "happy just playing games and spending money while millions of people "
+            "had never once heard of his Saviour. While he was still a young man he "
+            "made an astonishing choice: he would go to China as a missionary, "
+            "joining a band of well-born young men who all gave up bright futures "
+            "together, and whom people called the Cambridge Seven.",
+            "Then C.T. did something that made the newspapers gasp. When he came of "
+            "age and his great fortune became his own, he gave nearly all of it "
+            "away — thousands upon thousands of pounds — to feed the poor and "
+            "spread the gospel, keeping almost nothing back for himself. He said "
+            "that if Jesus Christ really is God, and died for him, then no sacrifice "
+            "could ever be too great to make for Jesus in return.",
+            "C.T. served in China, and later in India, but even as an old and often "
+            "sick man he could not rest while there were still people who had never "
+            "heard. He read that in the very heart of Africa lived whole peoples "
+            "with no missionary at all, and he could not get it out of his mind. "
+            "Though everyone told him he was far too old and too ill, he went "
+            "— into the forests of the Congo — to preach where no one else "
+            "would go.",
+            "There in Africa, C.T. Studd spent the last years of his life, founding "
+            "a mission to carry the good news into places others had passed by. He "
+            "had begun with fame, and a fortune, and a game the whole country loved, "
+            "and he had traded them all for a hut in the forest and the joy of "
+            "telling lost people about Jesus. He had decided, quite simply, that "
+            "Christ was worth more than everything else put together — and he "
+            "lived as though he truly believed it.",
+        ],
+    ),
+    (
+        "Lilias Trotter: The Artist Who Chose the Desert",
+        [
+            "Lilias Trotter was a young woman in England with a wonderful gift: she "
+            "could paint. She saw colour and light in a way few people ever do, and "
+            "one of the greatest art teachers in all of England, a famous man named "
+            "John Ruskin, told her that if she gave herself to painting she could "
+            "become one of the greatest artists the country had ever seen. It was a "
+            "dazzling promise, and it was true.",
+            "But Lilias loved Jesus more than she loved painting. She had begun to "
+            "help poor women and girls on the dark streets of London who had no one "
+            "to care for them, and slowly she felt God drawing her heart toward a "
+            "harder and far less glamorous life. She had to choose between the fame "
+            "her teacher promised and the quiet, costly work she believed God was "
+            "asking of her.",
+            "Lilias chose God. She laid down the brilliant future in art that "
+            "everyone said she should have, and instead she sailed for North Africa, "
+            "to the land of Algeria, to live among people who followed a different "
+            "religion and who very rarely heard about Jesus. To many it seemed a "
+            "terrible waste of a great gift.",
+            "In Algeria, Lilias found the work slow and lonely. Few people would "
+            "listen; some who did believe were treated cruelly for it; and results "
+            "came only a little at a time, like water soaking into dry ground. Yet "
+            "she did not give up. She learned the language, made her home among the "
+            "people, loved the children, and stayed for nearly forty years — "
+            "almost her whole grown-up life.",
+            "And her gift was not wasted after all. Lilias used her paintbrush to "
+            "make little books full of beautiful pictures that told the story of "
+            "Jesus in ways the people around her could understand and treasure. She "
+            "had given up being famous in order to be faithful, and she had learned "
+            "that the smallest, hardest life poured out for God is worth more than "
+            "the grandest one kept for ourselves. The desert she chose came to "
+            "bloom, in the end, because a great artist decided that Jesus was her "
+            "masterpiece.",
+        ],
+    ),
+    (
+        "Ida Scudder: The Doctor Who Answered Three Knocks",
+        [
+            "Ida Scudder grew up in a family of missionaries in India, and she was "
+            "quite sure she did not want that life for herself. She had seen how "
+            "hard it was, and as a young woman she went back to America, determined "
+            "to have an easier, happier life far away from all of it. But God had a "
+            "surprise waiting for her in India that would change everything.",
+            "One night, while Ida was visiting her parents, three men came knocking "
+            "at the door, one after another. Each had a wife who was very ill and in "
+            "terrible danger, trying to bring a baby into the world. Ida offered to "
+            "come at once and help — but each man refused in horror, because in "
+            "their custom no man who was not family, not even a doctor, could enter "
+            "the room, and there were no women doctors at all. A woman could only be "
+            "helped by a woman.",
+            "Ida sent for a doctor anyway, but the doctor was a man, and so all "
+            "three families turned him away. That single, dreadful night, all three "
+            "of those young women died — not because no one could have saved "
+            "them, but because there was no woman with the skill to try. Ida could "
+            "not sleep. She lay awake hearing their story over and over, and by "
+            "morning she knew that God was calling her, after all, to give her life "
+            "to India — this time as a doctor.",
+            "So Ida went back to America, not to escape now but to study, and she "
+            "trained as one of the first women doctors of her day. Then she returned "
+            "to India with her medical bag and a burning purpose: that women should "
+            "never again die simply because no woman could help them.",
+            "Ida began small, seeing a few patients on the veranda of her home, but "
+            "the need was so vast that the work grew and grew. She built a hospital, "
+            "and then a great medical school to train Indian women to become doctors "
+            "and nurses themselves, so that the healing would spread far beyond "
+            "anything she could ever do alone. Thousands upon thousands of lives "
+            "were saved through the doors that Ida Scudder opened. She had run away "
+            "from India as a girl, but three knocks in the night had turned her back "
+            "— and she had learned that God can take the very thing we most want "
+            "to escape and make it the bravest, most beautiful work of our lives.",
+        ],
+    ),
+]
+
+
+class Command(BaseCommand):
+    help = "Build the young-readers hero collection 'Brave for God: Book Four' (dev DB); then serialize the fixture."
+
+    @transaction.atomic
+    def handle(self, *args, **opts):
+        try:
+            author = Author.objects.get(slug=AUTHOR_SLUG)
+        except Author.DoesNotExist as exc:
+            raise CommandError(f"author {AUTHOR_SLUG!r} not found — seed authors.json first.") from exc
+
+        content = {
+            "author": author,
+            "title": TITLE,
+            "subtitle": SUBTITLE,
+            "description": DESCRIPTION,
+            "attribution": ATTRIBUTION,
+            "cover_color": COVER_COLOR,
+            "source_url": "",
+        }
+        next_order = (Book.objects.aggregate(m=Max("sort_order"))["m"] or 0) + 1
+        book, created = Book.objects.update_or_create(
+            slug=SLUG,
+            language="en",
+            defaults=content,
+            create_defaults={
+                **content,
+                "source_type": Book.SourceType.PUBLIC_DOMAIN,
+                "is_published": True,
+                "sort_order": next_order,
+            },
+        )
+        book.chapters.all().delete()
+
+        total = 0
+        for order, (title, paras) in enumerate(CHAPTERS, start=1):
+            body = "".join(f"<p>{p}</p>" for p in paras)
+            body = settled_chapter_body(SLUG, order, clean_fragment(body))
+            wc = word_count(body)
+            if wc < 300:
+                raise CommandError(f"ch {order} ({title!r}): only {wc} words — aborted.")
+            total += wc
+            Chapter.objects.create(book=book, order=order, title=title, body_html=body)
+            self.stdout.write(f"  ch {order}: {title[:48]:48} {wc:>4} words")
+
+        book.refresh_from_db()
+        english_audit.report(self, english_audit.audit_book(book), book.slug)
+        verb = "Created" if created else "Rebuilt"
+        self.stdout.write(self.style.SUCCESS(f"{verb} {TITLE!r} — {book.chapter_count} chapters, {total} words"))

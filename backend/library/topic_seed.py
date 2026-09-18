@@ -535,6 +535,7 @@ TOPICS = [
             "brave-for-god",
             "brave-for-god-2",
             "brave-for-god-3",
+            "brave-for-god-4",
         ],
     ),
 ]

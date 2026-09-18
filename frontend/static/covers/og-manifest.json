@@ -292,6 +292,14 @@
 			"art": false,
 			"scrim": 1
 		},
+		"brave-for-god-4": {
+			"ground": "b3e3d9c06a6fd47486a60ae9b3e4f06775a373874074c96980666caa34ced38e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"cheque-book": {
 			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
 			"style": "revival",

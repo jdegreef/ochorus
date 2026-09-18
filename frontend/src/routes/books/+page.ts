@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-17: one NEW English book — brave-for-god-4, "Brave for God: Book Four",
+// the fourth house-written young-readers volume (six more missionary lives: Paton, Mary Jones,
+// George Liele, C.T. Studd, Lilias Trotter, Ida Scudder). Rebuilds /books and the For Young Readers
+// shelf so the new card and its plate cover appear, and the reader page bakes the six chapters.
 // prerender refresh 2026-09-17: Portuguese book — spurgeon-on-prayer (#1793), C. H. Spurgeon's
 // twelve sermons on prayer plus an introduction, 13 chapters ("Grande Poder na Oração"). Book
 // pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title
