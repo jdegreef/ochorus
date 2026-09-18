@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-18: five NEW Luganda books — the whole For Young Readers shelf in
+// Luganda: brave-for-god / -2 / -3 (Obuvumu ku lwa Katonda), pilgrims-progress-words-of-one-syllable
+// (Olugendo lw'Omutambuze mu Bigambo Ebyangu), and divine-songs-for-children (Ennyimba Entukuvu
+// ez'Abaana). Rebuilds /lg/books so each card carries its translated title on its localized plate
+// cover, and the reader pages bake the chapters. None back a LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-18: Spanish book — a-hidden-fire (#1367), the Ochorus Originals
 // life of Simeon Nsibambi ("Un fuego escondido"), 7 chapters. Book pages are prerendered per
 // locale, so /es/books and the shelf rebuild with the translated title and the reader page

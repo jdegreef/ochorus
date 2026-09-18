@@ -1124,6 +1124,30 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"lg/brave-for-god": {
+			"ground": "ad748ec57be59fbba5c2176efbae1a4274bd0eec6aad08a385bb8c9c0f1d594a",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"lg/brave-for-god-2": {
+			"ground": "7da206006bad470192fcf49cbed7e156dd102ca19d420d4cf947be5dc8f6ab79",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"lg/brave-for-god-3": {
+			"ground": "18163cfcb1134679da2453dba7787fae4503d47a020d1d48585572fe17a77f5f",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"lg/cheque-book": {
 			"ground": "e9b4a668853c1f90838c65521d39530be463728259b51ab14bef84907a9171c4",
 			"style": "revival",
@@ -1147,6 +1171,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7
+		},
+		"lg/divine-songs-for-children": {
+			"ground": "5ce03748c25875fc64235c075d7ebda09ca8854bcaa8038d758124eadd88c212",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"lg/feasting-at-the-table": {
 			"ground": "cc7ee2adc9479b3488c09b82f3a1af77a1a8c55aa2df806a4df05abcbca2d169",
@@ -1195,6 +1227,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6
+		},
+		"lg/pilgrims-progress-words-of-one-syllable": {
+			"ground": "b2c30b8b36f8491df655987b6f3e6202a6fb4c03a68d7f6c4e15bdaff39531eb",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"lg/prayer-the-pulse-of-life": {
 			"ground": "842b16bd6293350349dfa3f338a5ac38838c6723a58c4e6598b2a86c1a2f2dfe",
