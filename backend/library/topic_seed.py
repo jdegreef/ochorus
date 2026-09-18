@@ -37,7 +37,6 @@ TOPICS = [
             "spurgeon-on-prayer",
             "a-short-and-easy-method-of-prayer",
             "lord-teach-us-to-pray-2",
-            "let-us-pray-2",
             "prevailing-prayer",
             "answers-to-prayer",
             "men-of-prayer-2",
@@ -69,8 +68,6 @@ TOPICS = [
             "the-christians-secret-of-a-happy-life-4",
             "purity-of-heart",
             "way-into-holiest",
-            "if",
-            "the-normal-christian-life",
             "watchman-nee-a-life",
         ],
     ),
@@ -81,7 +78,6 @@ TOPICS = [
         "for the weary.",
         [
             "all-of-grace",
-            "grace-for-grace-2",
             "the-god-of-all-comfort",
             "the-unselfishness-of-god",
             "he-holds-my-tomorrows",
@@ -224,7 +220,6 @@ TOPICS = [
             "jesus-himself-2",
             "on-loving-god",
             "union-and-communion",
-            "the-body-of-christ-a-reality",
             "the-bruised-reed",
         ],
     ),
@@ -239,7 +234,6 @@ TOPICS = [
             "religious-experience-and-journal",
             "susanna-wesley-clarke",
             "godliness",
-            "if",
             "things-as-they-are",
             "the-christians-secret-of-a-happy-life-4",
             "the-god-of-all-comfort",
@@ -346,8 +340,6 @@ TOPICS = [
         "The church as a living whole \u2014 members of one another, joined to the "
         "Head, and the service and shepherding that flow from it.",
         [
-            "the-body-of-christ-a-reality",
-            "the-body-of-christ-teens",
             "on-the-priesthood",
             "the-reformed-pastor",
             "first-epistle-of-clement",
@@ -417,7 +409,6 @@ TOPICS = [
         [
             "all-of-grace",
             "grace-abounding",
-            "grace-for-grace-2",
             "the-way-to-god",
             "all-things-for-good",
         ],
@@ -1048,7 +1039,7 @@ TOPIC_QA = {
         },
         {
             "question": "Which classic works on prayer are included?",
-            "answer": "Among them are Andrew Murray's \"The Inner Chamber\" and \"Lord, Teach Us to Pray,\" Spurgeon's teaching on prayer and his \"Cheque Book of the Bank of Faith,\" Jeanne Guyon's \"A Short and Easy Method of Prayer,\" E. M. Bounds on prevailing and persistent prayer, George Müller's \"Answers to Prayer,\" and Watchman Nee's \"Let Us Pray\" — a spread across centuries and traditions united by a single subject."
+            "answer": "Among them are Andrew Murray's \"The Inner Chamber\" and \"Lord, Teach Us to Pray,\" Spurgeon's teaching on prayer and his \"Cheque Book of the Bank of Faith,\" Jeanne Guyon's \"A Short and Easy Method of Prayer,\" E. M. Bounds on prevailing and persistent prayer, George Müller's \"Answers to Prayer,\" and Andrew Murray's \"The Ministry of Intercession\" — a spread across centuries and traditions united by a single subject."
         },
         {
             "question": "Where should a beginner start?",
@@ -1188,7 +1179,7 @@ TOPIC_QA = {
         },
         {
             "question": "Which classics by women are on the shelf?",
-            "answer": "They include Jeanne Guyon's \"A Short and Easy Method of Prayer,\" Amanda Berry Smith's \"Autobiography,\" Hannah Whitall Smith's \"The Christian's Secret of a Happy Life,\" \"The God of All Comfort\" and \"The Unselfishness of God,\" and Amy Carmichael's \"Things as They Are\" and \"If\" — works of prayer, testimony and missionary witness that have shaped readers far beyond their own day."
+            "answer": "They include Jeanne Guyon's \"A Short and Easy Method of Prayer,\" Amanda Berry Smith's \"Autobiography,\" Hannah Whitall Smith's \"The Christian's Secret of a Happy Life,\" \"The God of All Comfort\" and \"The Unselfishness of God,\" and Amy Carmichael's \"Things as They Are\" — works of prayer, testimony and missionary witness that have shaped readers far beyond their own day."
         },
         {
             "question": "Who was Amanda Berry Smith?",
@@ -1208,7 +1199,7 @@ TOPIC_QA = {
         },
         {
             "question": "Where should a reader begin?",
-            "answer": "Hannah Whitall Smith's \"The Christian's Secret of a Happy Life\" is a warm and accessible starting point on the life of trust; Amanda Berry Smith's \"Autobiography\" offers gripping testimony; and Amy Carmichael's \"If\" is a short, piercing meditation for those ready to be searched. Together they open the shelf's range from settled peace to costly devotion."
+            "answer": "Hannah Whitall Smith's \"The Christian's Secret of a Happy Life\" is a warm and accessible starting point on the life of trust; Amanda Berry Smith's \"Autobiography\" offers gripping testimony; and Amy Carmichael's \"Things as They Are\" carries the honest cost of the mission field for those ready to be stirred. Together they open the shelf's range from settled peace to costly devotion."
         }
     ],
     "soar-like-the-eagle": [
@@ -1244,7 +1235,7 @@ TOPIC_QA = {
         },
         {
             "question": "Which classic works does it include?",
-            "answer": "Among them are Andrew Murray's \"Humility\" and \"The Way into the Holiest,\" Bernard of Clairvaux's \"On Loving God,\" Hannah Whitall Smith's \"The Christian's Secret of a Happy Life,\" Amy Carmichael's \"If,\" and Watchman Nee's \"The Normal Christian Life\" — a spread across centuries and traditions united by a single concern: the life of God lived out from within the believer."
+            "answer": "Among them are Andrew Murray's \"Humility\" and \"The Way into the Holiest,\" Bernard of Clairvaux's \"On Loving God,\" Hannah Whitall Smith's \"The Christian's Secret of a Happy Life,\" and Andrew Murray's \"Holy in Christ\" — a spread across centuries and traditions united by a single concern: the life of God lived out from within the believer."
         },
         {
             "question": "What does the shelf mean by surrender?",
@@ -1252,7 +1243,7 @@ TOPIC_QA = {
         },
         {
             "question": "What is the \"abundant life\" these writers describe?",
-            "answer": "Not an intenser version of religious effort but Christ living His own life through the believer, so that holiness becomes a gift received rather than a height climbed. Watchman Nee's \"The Normal Christian Life\" is the shelf's fullest treatment — its argument that the ordinary birthright of every Christian is not endless struggle but Christ Himself lived out from within."
+            "answer": "Not an intenser version of religious effort but Christ living His own life through the believer, so that holiness becomes a gift received rather than a height climbed. Andrew Murray's \"The Master's Indwelling\" and \"Holy in Christ\" are the shelf's fullest treatment — that the ordinary birthright of every Christian is not endless struggle but Christ Himself lived out from within."
         },
         {
             "question": "Why is humility so central here?",
@@ -1260,7 +1251,7 @@ TOPIC_QA = {
         },
         {
             "question": "Where should a reader begin?",
-            "answer": "Hannah Whitall Smith's \"The Christian's Secret of a Happy Life\" is a warm and accessible entry into the life of trust; Andrew Murray's \"Humility\" goes to the root; and Watchman Nee's \"The Normal Christian Life\" sets out the whole mechanism — how the cross, the blood, and the indwelling Spirit make the abundant life a reality rather than a hope."
+            "answer": "Hannah Whitall Smith's \"The Christian's Secret of a Happy Life\" is a warm and accessible entry into the life of trust; Andrew Murray's \"Humility\" goes to the root; and Andrew Murray's \"The Master's Indwelling\" sets out the whole mechanism — how surrender and the indwelling Spirit make the abundant life a reality rather than a hope."
         },
         {
             "question": "Is this a \"second blessing\" teaching?",
@@ -1278,7 +1269,7 @@ TOPIC_QA = {
         },
         {
             "question": "Which works are included?",
-            "answer": "Among them are Spurgeon's \"All of Grace\" and \"Grace for Grace,\" Hannah Whitall Smith's \"The God of All Comfort\" and \"The Unselfishness of God,\" Andrew Murray's \"The Way to God,\" and Thomas Watson's \"All Things for Good\" — works written to steady the anxious and lift the discouraged with the plain assurance of grace."
+            "answer": "Among them are Spurgeon's \"All of Grace,\" Hannah Whitall Smith's \"The God of All Comfort\" and \"The Unselfishness of God,\" Andrew Murray's \"The Way to God,\" and Thomas Watson's \"All Things for Good\" — works written to steady the anxious and lift the discouraged with the plain assurance of grace."
         },
         {
             "question": "What does the shelf teach about grace?",
@@ -1754,7 +1745,7 @@ TOPIC_QA = {
         },
         {
             "question": "Which works are included?",
-            "answer": "Among them are \"The Body of Christ: A Reality\" and its edition for teens, John Chrysostom's \"On the Priesthood,\" Richard Baxter's \"The Reformed Pastor,\" the first epistle of Clement of Rome, and \"Separation and Service\" — works on the nature of the church and the ministry that serves it."
+            "answer": "Among them are John Chrysostom's \"On the Priesthood,\" Richard Baxter's \"The Reformed Pastor,\" Watchman Nee's \"Separation and Service,\" and the first epistle of Clement of Rome — works on the nature of the church and the ministry that serves it."
         },
         {
             "question": "What does 1 Corinthians 12:27 mean for the shelf?",
@@ -1762,7 +1753,7 @@ TOPIC_QA = {
         },
         {
             "question": "What does the shelf teach about the church?",
-            "answer": "That it is a living whole, not a human organisation — members of one another, drawing their common life from Christ. \"The Body of Christ: A Reality\" presses this against a merely formal view of church membership, and Clement's ancient letter to Corinth shows the same conviction at work in the earliest generation, calling a divided church back to its unity in Christ."
+            "answer": "That it is a living whole, not a human organisation — members of one another, drawing their common life from Christ. \"Separation and Service\" presses the believer's set-apart place within that body, and Clement's ancient letter to Corinth shows the same conviction at work in the earliest generation, calling a divided church back to its unity in Christ."
         },
         {
             "question": "How does the shelf connect the body and its ministry?",
@@ -1774,7 +1765,7 @@ TOPIC_QA = {
         },
         {
             "question": "Where should a reader begin?",
-            "answer": "\"The Body of Christ: A Reality\" is the natural entry into the doctrine of the church as a living whole; Baxter's \"The Reformed Pastor\" shows the shepherding that serves it; and Clement's letter grounds the theme in the earliest church. Together they move from the nature of the body to the care of it."
+            "answer": "Clement's letter to Corinth is the natural entry — the earliest Christian voice on the body's unity; Baxter's \"The Reformed Pastor\" shows the shepherding that serves it; and Chrysostom's \"On the Priesthood\" weighs the awe of that ministry. Together they move from the nature of the body to the care of it."
         },
         {
             "question": "Why read these books today?",
@@ -1924,7 +1915,7 @@ TOPIC_QA = {
         },
         {
             "question": "Which works are included?",
-            "answer": "Among them are Spurgeon's \"All of Grace\" and \"Grace for Grace,\" John Bunyan's \"Grace Abounding to the Chief of Sinners,\" Andrew Murray's \"The Way to God,\" and Thomas Watson's \"All Things for Good\" — works that set out grace as free at the start, sufficient in the trial, and faithful to the end."
+            "answer": "Among them are Spurgeon's \"All of Grace,\" John Bunyan's \"Grace Abounding to the Chief of Sinners,\" Andrew Murray's \"The Way to God,\" and Thomas Watson's \"All Things for Good\" — works that set out grace as free at the start, sufficient in the trial, and faithful to the end."
         },
         {
             "question": "What does Ephesians 2:8 mean for the shelf?",

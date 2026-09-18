@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-18: swept the remaining topic Q&A that named copyright-blocked,
+// unpublished books as "included" — Nee's "Let Us Pray"/"The Normal Christian Life", Carmichael's
+// "If", "Grace for Grace", and "The Body of Christ: A Reality" — across prayer, the-way-of-holiness,
+// grace-and-comfort, the-gospel-call, the women shelf, and the body-of-christ topic (reframed on its
+// published members). Also dropped the dead blocked slugs from topic memberships. Rebuilds those
+// /topics/<slug>/ pages to bake the corrected grounded Q&A.
 // prerender refresh 2026-09-18: corrected the For Teens shelf Q&A — it had named two
 // copyright-blocked, unpublished titles ("The Body of Christ" for teens, Amy Carmichael's
 // "If") as included works; replaced with published shelf titles (Growing in Wisdom, etc.)
