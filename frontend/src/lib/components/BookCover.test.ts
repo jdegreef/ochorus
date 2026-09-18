@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { flushSync, mount, unmount } from 'svelte';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import BookCover from './BookCover.svelte';
 import type { BookSummary } from '$lib/library-public';
@@ -189,6 +189,40 @@ describe('BookCover falls back to a plate', () => {
 		img.dispatchEvent(new Event('load'));
 		flushSync();
 	};
+
+	it('never renders a cover hidden while it waits for a script', () => {
+		// A prerendered cover must be able to paint the moment it decodes. It used
+		// to ship at opacity 0 and wait for an `onload` handler, which on /books/
+		// held a cover that arrived at 1.0s invisible until 2.3s — the page's LCP.
+		const el = render({ book: book({ cover_url: '/covers/lord-teach-us-to-pray-2.jpg' }) });
+		const img = el.querySelector('img')!;
+		expect(img.className).not.toMatch(/\bopacity-0\b/);
+		// The placeholder is behind it, not instead of it.
+		expect(el.querySelector('.animate-pulse')).not.toBeNull();
+	});
+
+	it('recognises a cover that finished loading before it hydrated', () => {
+		// The prerendered <img> is fetched before the scripts arrive, so its
+		// `load` event can fire before `onload` is attached — and is never
+		// replayed. Such an image is already `complete` when the component
+		// attaches, and must be treated as loaded: placeholder retired, and a
+		// designed cover's shape measured so it gets its mat.
+		const complete = vi.spyOn(HTMLImageElement.prototype, 'complete', 'get').mockReturnValue(true);
+		const w = vi.spyOn(HTMLImageElement.prototype, 'naturalWidth', 'get').mockReturnValue(443);
+		const h = vi.spyOn(HTMLImageElement.prototype, 'naturalHeight', 'get').mockReturnValue(668);
+		try {
+			const el = render({ book: book({ cover_url: '/covers/lord-teach-us-to-pray-2.jpg' }) });
+			flushSync();
+			expect(el.querySelector('.animate-pulse')).toBeNull();
+			const imgs = el.querySelectorAll('img');
+			expect(imgs).toHaveLength(2);
+			expect(imgs[0].className).toContain('object-contain');
+		} finally {
+			complete.mockRestore();
+			w.mockRestore();
+			h.mockRestore();
+		}
+	});
 
 	it('mats an off-3:4 designed cover so nothing is cropped, leaving a 3:4 one alone', () => {
 		const el = render({ book: book({ cover_url: '/covers/lord-teach-us-to-pray-2.jpg' }) });
