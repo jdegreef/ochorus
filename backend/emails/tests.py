@@ -8,6 +8,8 @@ import hashlib
 import hmac
 import json
 import time
+import uuid
+from datetime import timedelta
 from unittest import mock
 
 from django.contrib.auth import get_user_model
@@ -15,9 +17,19 @@ from django.test import TestCase, override_settings
 from django.utils import timezone
 
 from accounts.models import UserProfile
+from reading.models import PlanProgress
 
-from .lifecycle import send_welcome, welcome_key
-from .management.commands.send_welcome_emails import _parse_cutoff
+from .lifecycle import (
+    CLASSIC_STEP,
+    COMEBACK_STEP,
+    PLAN_STEP,
+    WELCOME_STEP,
+    due_step,
+    send_due,
+    send_welcome,
+    welcome_key,
+)
+from .management.commands.send_lifecycle_emails import _parse_cutoff
 from .models import (
     EmailEvent,
     EmailKind,
@@ -47,10 +59,11 @@ SENDING = override_settings(
 
 
 def _make_profile(email="reader@example.com", locale="en", name="James Reader"):
-    user = User.objects.create(username=f"uid-{email}")
+    uid = uuid.uuid4()
+    user = User.objects.create(username=str(uid))
     return UserProfile.objects.create(
         user=user,
-        supabase_uid="00000000-0000-0000-0000-000000000001",
+        supabase_uid=uid,
         email=email,
         display_name=name,
         locale=locale,
@@ -322,3 +335,122 @@ class CutoffParsingTests(TestCase):
 
     def test_rejects_garbage(self):
         self.assertIsNone(_parse_cutoff("not-a-date"))
+
+
+class LifecycleStepTests(TestCase):
+    """The drip step registry: which step is due given account age and state."""
+
+    def _profile(self, *, age_days=0, seen_days_ago=None, **kw):
+        profile = _make_profile(**kw)
+        created = timezone.now() - timedelta(days=age_days)
+        last_seen = (
+            timezone.now() - timedelta(days=seen_days_ago)
+            if seen_days_ago is not None
+            else None
+        )
+        # created_at is auto_now_add; bypass it with an UPDATE.
+        UserProfile.objects.filter(pk=profile.pk).update(
+            created_at=created, last_seen_at=last_seen
+        )
+        profile.refresh_from_db()
+        return profile
+
+    def _mark_sent(self, profile, *steps):
+        for step in steps:
+            EmailMessage.objects.create(
+                recipient=profile,
+                to_email="x@example.com",
+                kind=EmailKind.LIFECYCLE,
+                lifecycle_step=step,
+                idempotency_key=f"lifecycle:{step}:{profile.pk}",
+                status=SendStatus.SENT,
+                sent_at=timezone.now(),
+            )
+
+    def test_fresh_account_is_due_welcome(self):
+        profile = self._profile(age_days=0)
+        self.assertEqual(due_step(profile, timezone.now()).name, WELCOME_STEP)
+
+    def test_plan_nudge_after_welcome_when_no_plan(self):
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP)
+        self.assertEqual(due_step(profile, timezone.now()).name, PLAN_STEP)
+
+    def test_plan_nudge_skipped_when_reader_has_a_plan(self):
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP)
+        PlanProgress.objects.create(
+            profile=profile, plan_slug="humility-plan", started_at=timezone.now(), done=[]
+        )
+        # Day 3 with a plan: welcome sent, plan skipped, classic needs day 4+,
+        # no last_seen for comeback → nothing due yet.
+        self.assertIsNone(due_step(profile, timezone.now()))
+
+    def test_classic_due_on_day_four(self):
+        profile = self._profile(age_days=5)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        self.assertEqual(due_step(profile, timezone.now()).name, CLASSIC_STEP)
+
+    def test_comeback_when_reader_has_lapsed(self):
+        profile = self._profile(age_days=30, seen_days_ago=10)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP, CLASSIC_STEP)
+        self.assertEqual(due_step(profile, timezone.now()).name, COMEBACK_STEP)
+
+    def test_recently_active_reader_gets_no_comeback(self):
+        profile = self._profile(age_days=30, seen_days_ago=1)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP, CLASSIC_STEP)
+        self.assertIsNone(due_step(profile, timezone.now()))
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_sweep_sends_one_email_earliest_step_first(self, send):
+        # An old account with nothing sent still gets welcome first, not classic.
+        profile = self._profile(age_days=20)
+        message = send_due(profile)
+        self.assertEqual(message.lifecycle_step, WELCOME_STEP)
+        self.assertEqual(send.call_count, 1)
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_min_gap_defers_next_step(self, send):
+        # A step sent an hour ago holds off the next, so a back-dated account
+        # can't get the whole drip in consecutive cron runs.
+        profile = self._profile(age_days=20)
+        EmailMessage.objects.create(
+            recipient=profile,
+            to_email="x@example.com",
+            kind=EmailKind.LIFECYCLE,
+            lifecycle_step=WELCOME_STEP,
+            idempotency_key=welcome_key(profile),
+            status=SendStatus.SENT,
+            sent_at=timezone.now() - timedelta(hours=1),
+        )
+        self.assertIsNone(send_due(profile))
+        send.assert_not_called()
+
+    def test_every_registered_step_has_english_copy(self):
+        # Guard the STEPS ↔ copy coupling: a step added without a copy block
+        # should fail the build, not KeyError at send time.
+        from emails.copy import LIFECYCLE
+        from emails.lifecycle import STEPS
+
+        for step in STEPS:
+            self.assertIn(step.name, LIFECYCLE, f"no copy block for step {step.name!r}")
+            self.assertIn("en", LIFECYCLE[step.name], f"no English copy for {step.name!r}")
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_next_step_sent_after_gap_elapses(self, send):
+        profile = self._profile(age_days=20)
+        EmailMessage.objects.create(
+            recipient=profile,
+            to_email="x@example.com",
+            kind=EmailKind.LIFECYCLE,
+            lifecycle_step=WELCOME_STEP,
+            idempotency_key=welcome_key(profile),
+            status=SendStatus.SENT,
+            sent_at=timezone.now() - timedelta(days=2),
+        )
+        message = send_due(profile)
+        self.assertEqual(message.lifecycle_step, PLAN_STEP)
+        send.assert_called_once()

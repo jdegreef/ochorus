@@ -1,7 +1,8 @@
-"""Send the welcome email to readers who are due one.
+"""Send due lifecycle emails to the reader cohort.
 
-Run by hand for now; Phase 1's Render cron calls it on a timer. Safe to run
-repeatedly — the idempotency key means no reader is welcomed twice.
+Phase 1's Render cron runs this on a timer; safe to run repeatedly — every step
+is send-once (the idempotency key), and the sweep sends at most one email per
+reader per run.
 
 The ``cutoff`` gate is a guard against a first run mailing the whole back
 catalogue: only accounts created on/after it are in scope. It defaults to
@@ -19,7 +20,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 from django.utils.dateparse import parse_date, parse_datetime
 
-from emails.lifecycle import profiles_awaiting_welcome, send_welcome
+from emails.lifecycle import candidate_profiles, due_step, send_due
 from emails.models import SendStatus
 
 logger = logging.getLogger(__name__)
@@ -45,39 +46,38 @@ def _parse_cutoff(value: str):
 
 
 class Command(BaseCommand):
-    help = "Send the welcome email to readers who have not received one."
+    help = "Send due lifecycle emails (welcome, plan nudge, classic, re-engagement)."
 
     def add_arguments(self, parser):
         parser.add_argument(
             "--since",
-            help="ISO datetime; only welcome accounts created on/after it.",
+            help="ISO date/datetime; only include accounts created on/after it.",
         )
         parser.add_argument(
             "--days",
             type=int,
-            help="Welcome accounts created within the last N days.",
+            help="Include accounts created within the last N days.",
         )
         parser.add_argument(
-            "--limit", type=int, default=500, help="Max readers per run."
+            "--limit", type=int, default=1000, help="Max readers per run."
         )
         parser.add_argument(
             "--dry-run",
             action="store_true",
-            help="List who would be welcomed without sending.",
+            help="List who would be emailed (and which step) without sending.",
         )
 
     def handle(self, *args, **opts):
         cutoff = self._cutoff(opts)
-        limit = opts["limit"]
-        dry = opts["dry_run"]
+        candidates = candidate_profiles(cutoff)[: opts["limit"]]
 
-        due = profiles_awaiting_welcome(cutoff)[:limit]
+        if opts["dry_run"]:
+            self._dry_run(candidates, cutoff)
+            return
+
         sent = skipped = failed = 0
-        for profile in due:
-            if dry:
-                self.stdout.write(f"would welcome: {profile.pk} ({profile.locale})")
-                continue
-            message = send_welcome(profile)
+        for profile in candidates:
+            message = send_due(profile)
             if message is None:
                 skipped += 1
             elif message.status == SendStatus.SENT:
@@ -86,15 +86,23 @@ class Command(BaseCommand):
                 skipped += 1
             else:
                 failed += 1
-
-        if dry:
-            self.stdout.write(self.style.SUCCESS(f"dry run: {len(due)} due since {cutoff:%Y-%m-%d}"))
-        else:
-            self.stdout.write(
-                self.style.SUCCESS(
-                    f"welcome sweep: sent={sent} skipped={skipped} failed={failed}"
-                )
+        self.stdout.write(
+            self.style.SUCCESS(
+                f"lifecycle sweep: sent={sent} skipped={skipped} failed={failed}"
             )
+        )
+
+    def _dry_run(self, candidates, cutoff):
+        now = timezone.now()
+        due = 0
+        for profile in candidates:
+            step = due_step(profile, now)
+            if step is not None:
+                due += 1
+                self.stdout.write(f"would send {step.name}: {profile.pk} ({profile.locale})")
+        self.stdout.write(
+            self.style.SUCCESS(f"dry run: {due} due since {cutoff:%Y-%m-%d}")
+        )
 
     def _cutoff(self, opts):
         if opts.get("since"):
@@ -109,8 +117,6 @@ class Command(BaseCommand):
             parsed = _parse_cutoff(configured)
             if parsed is not None:
                 return parsed
-            # Set but unparseable: warn rather than silently narrow to the
-            # default window (which would send to a wider set than intended).
             logger.warning(
                 "EMAIL_WELCOME_START=%r is not a valid date/datetime; "
                 "using the default %d-day window.",

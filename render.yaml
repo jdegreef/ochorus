@@ -92,6 +92,71 @@ services:
       - key: EMAIL_WELCOME_START
         sync: false
 
+  # --- Lifecycle email cron (Phase 1) --------------------------------------
+  # Runs the drip sweep on a timer, reusing the API's Docker image (no new
+  # build). It shares the API's email + Supabase config via `fromService`, so the
+  # cron and the API can never drift out of step (e.g. EMAIL_ENABLED on one but
+  # not the other). With EMAIL_ENABLED off it records sends as "skipped" and
+  # mails nobody. NOTE: render.yaml changes need a manual Blueprint → Sync.
+  - name: ochorus-lifecycle-email
+    type: cron
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    schedule: "*/15 * * * *"
+    dockerCommand: "uv run python manage.py send_lifecycle_emails"
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "false"
+      # The command signs nothing, so its own generated secret is fine.
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromService:
+          name: ochorus-api
+          type: web
+          envVarKey: DATABASE_URL
+      - key: SUPABASE_URL
+        fromService:
+          name: ochorus-api
+          type: web
+          envVarKey: SUPABASE_URL
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        fromService:
+          name: ochorus-api
+          type: web
+          envVarKey: SUPABASE_SERVICE_ROLE_KEY
+      - key: EMAIL_ENABLED
+        fromService:
+          name: ochorus-api
+          type: web
+          envVarKey: EMAIL_ENABLED
+      - key: RESEND_API_KEY
+        fromService:
+          name: ochorus-api
+          type: web
+          envVarKey: RESEND_API_KEY
+      - key: EMAIL_FROM
+        fromService:
+          name: ochorus-api
+          type: web
+          envVarKey: EMAIL_FROM
+      - key: EMAIL_WELCOME_START
+        fromService:
+          name: ochorus-api
+          type: web
+          envVarKey: EMAIL_WELCOME_START
+      - key: PUBLIC_SITE_URL
+        fromService:
+          name: ochorus-api
+          type: web
+          envVarKey: PUBLIC_SITE_URL
+      # The API's own public origin. The cron can't derive it (that comes from
+      # the API service's RENDER_EXTERNAL_HOSTNAME), so set it to the API URL,
+      # e.g. https://ochorus-api.onrender.com.
+      - key: API_PUBLIC_URL
+        sync: false
+
   # --- SvelteKit reader (static SPA) ---------------------------------------
   - name: ochorus-web
     type: web
