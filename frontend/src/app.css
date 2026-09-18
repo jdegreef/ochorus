@@ -882,12 +882,24 @@ nav.appnav.appnav-static {
 }
 /* The bar's content sits in a centred container (like Take Root's live nav),
    so the brand and controls are inset from the viewport edges and align with
-   the page content on wide screens. */
+   the page content on wide screens.
+
+   A three-column grid — 1fr | auto | 1fr — is what keeps the links optically
+   centred at EVERY width without ever crowding the brand or controls: the
+   brand holds the left rail, the links take the auto middle track (as wide as
+   they are, centred in the space that's left), and the controls hold the right
+   rail. This replaces an older split scheme — absolute-centred links above
+   1024px, `justify-content:flex-end` below it — whose fallback jammed the six
+   links against the controls in the 768–1023px band and stranded the logo with
+   a wide gap. The grid squeezes the side rails as the viewport narrows and
+   hands off to the hamburger at 767px; it never reflows into that lopsided
+   state. On a phone the media query below reverts this to a wrapping flex row
+   so the drawer (a 100%-basis line break) still works. */
 nav.appnav .appnav-inner {
 	position: relative;
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
 	align-items: center;
-	flex-wrap: wrap;
 	gap: 0.45rem 0.9rem;
 	max-width: 88rem;
 	margin-inline: auto;
@@ -903,15 +915,13 @@ nav.appnav .appnav-inner {
 		padding-inline: 1rem;
 	}
 }
-/* On wide screens the links are centred in the bar regardless of the brand /
-   control widths: out of flow, pinned to the bar's centre. */
+/* The links sit in the grid's auto middle track (see .appnav-inner), so they
+   centre themselves in the space between brand and controls — no out-of-flow
+   positioning, so they can't overlap either rail. */
 nav.appnav .navlinks {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 0.25rem;
 }
 nav.appnav .navctl {
@@ -956,13 +966,13 @@ nav.appnav .brand {
 nav.appnav .brand:hover {
 	text-decoration: none;
 }
-/* On desktop the menu fills the bar and holds the controls at the right;
-   the links are centred separately (see .navlinks above). */
+/* On desktop the menu is the grid's auto middle track — it shrinks to the
+   links it wraps and rides the bar's centre (see .appnav-inner / .navlinks).
+   On a phone it becomes the full-width drawer (media query below). */
 nav.appnav .navmenu {
 	display: flex;
-	flex: 1;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: center;
 	gap: 0.9rem;
 }
 /* Hamburger toggle — hidden until the mobile breakpoint. */
@@ -977,20 +987,42 @@ nav.appnav .navtoggle {
 nav.appnav .navtoggle:hover {
 	color: var(--accent);
 }
-/* Below this the absolute centring would collide with the brand/controls:
-   let the links flow in the bar instead. One below Tailwind's `lg` (1024px):
-   these queries used to sit at 960px and 760px, eight pixels off the `lg` and
-   `md` the markup reflows at, so there was a sliver at each where the nav and
-   the content it sits above disagreed about the layout. */
-@media (max-width: 1023.98px) {
+/* Tablets (768–1023px): the six links plus the brand and controls need ~892px
+   on one row (more in longer-label locales), so between `md` and `lg` they get
+   their OWN row instead. The bar becomes a wrapping flex column of two lines —
+   brand + controls on top (navctl's `order:1` puts it beside the brand, its
+   `margin-inline-start:auto` holds it to the end), the centred links on a
+   full-width line beneath (`flex-basis:100%` breaks the line; navlinks wraps if
+   a locale is wide enough to need it). This keeps every link visible and
+   centred here — no hamburger, no horizontal overflow — where the single-row
+   grid could not fit them. Below 768px the drawer takes over (next block). */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+	nav.appnav .appnav-inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+	nav.appnav .navctl {
+		order: 1;
+	}
+	nav.appnav .navmenu {
+		order: 2;
+		flex-basis: 100%;
+		margin-top: 0.4rem;
+	}
 	nav.appnav .navlinks {
-		position: static;
-		transform: none;
+		flex-wrap: wrap;
 	}
 }
 /* Phones: collapse links + controls behind a hamburger drawer. One below
-   Tailwind's `md` (768px). */
+   Tailwind's `md` (768px). The grid reverts to a wrapping flex row here so the
+   drawer's 100%-basis line break and the visual `order` swaps below take
+   effect (grid ignores both). */
 @media (max-width: 767.98px) {
+	nav.appnav .appnav-inner {
+		display: flex;
+		flex-wrap: wrap;
+	}
 	nav.appnav .navtoggle {
 		display: inline-flex;
 		align-items: center;
