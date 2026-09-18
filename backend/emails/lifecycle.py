@@ -22,7 +22,7 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.utils import timezone
 
@@ -50,6 +50,12 @@ COMEBACK_STEP = "comeback"
 _PLAN_AFTER_DAYS = 2
 _CLASSIC_AFTER_DAYS = 4
 _COMEBACK_AFTER_DAYS = 7
+
+# Never send a reader two lifecycle emails closer together than this, whatever
+# the cron cadence or their account age. Without it, a back-dated account newly
+# in the cohort (e.g. the cutoff moved) would get every due step in consecutive
+# 15-minute runs; this keeps the drip to at most one email a day.
+_MIN_GAP = timedelta(hours=20)
 
 
 @dataclass(frozen=True)
@@ -107,6 +113,17 @@ def _sent_steps(profile) -> set[str]:
     )
 
 
+def _last_lifecycle_sent_at(profile):
+    return (
+        EmailMessage.objects.filter(
+            recipient=profile, kind=EmailKind.LIFECYCLE, status=SendStatus.SENT
+        )
+        .order_by("-sent_at")
+        .values_list("sent_at", flat=True)
+        .first()
+    )
+
+
 def due_step(profile, now: datetime) -> LifecycleStep | None:
     """The earliest unsent step whose predicate is true for ``profile``."""
     ctx = _build_context(profile, now)
@@ -145,7 +162,11 @@ def send_due(profile) -> EmailMessage | None:
     subscription, _ = EmailSubscription.objects.get_or_create(profile=profile)
     if not subscription.wants(EmailKind.LIFECYCLE):
         return None
-    step = due_step(profile, timezone.now())
+    now = timezone.now()
+    last_sent = _last_lifecycle_sent_at(profile)
+    if last_sent is not None and now - last_sent < _MIN_GAP:
+        return None
+    step = due_step(profile, now)
     if step is None:
         return None
     return _send(profile, subscription, step.name)

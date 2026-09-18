@@ -409,3 +409,48 @@ class LifecycleStepTests(TestCase):
         message = send_due(profile)
         self.assertEqual(message.lifecycle_step, WELCOME_STEP)
         self.assertEqual(send.call_count, 1)
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_min_gap_defers_next_step(self, send):
+        # A step sent an hour ago holds off the next, so a back-dated account
+        # can't get the whole drip in consecutive cron runs.
+        profile = self._profile(age_days=20)
+        EmailMessage.objects.create(
+            recipient=profile,
+            to_email="x@example.com",
+            kind=EmailKind.LIFECYCLE,
+            lifecycle_step=WELCOME_STEP,
+            idempotency_key=welcome_key(profile),
+            status=SendStatus.SENT,
+            sent_at=timezone.now() - timedelta(hours=1),
+        )
+        self.assertIsNone(send_due(profile))
+        send.assert_not_called()
+
+    def test_every_registered_step_has_english_copy(self):
+        # Guard the STEPS ↔ copy coupling: a step added without a copy block
+        # should fail the build, not KeyError at send time.
+        from emails.copy import LIFECYCLE
+        from emails.lifecycle import STEPS
+
+        for step in STEPS:
+            self.assertIn(step.name, LIFECYCLE, f"no copy block for step {step.name!r}")
+            self.assertIn("en", LIFECYCLE[step.name], f"no English copy for {step.name!r}")
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_next_step_sent_after_gap_elapses(self, send):
+        profile = self._profile(age_days=20)
+        EmailMessage.objects.create(
+            recipient=profile,
+            to_email="x@example.com",
+            kind=EmailKind.LIFECYCLE,
+            lifecycle_step=WELCOME_STEP,
+            idempotency_key=welcome_key(profile),
+            status=SendStatus.SENT,
+            sent_at=timezone.now() - timedelta(days=2),
+        )
+        message = send_due(profile)
+        self.assertEqual(message.lifecycle_step, PLAN_STEP)
+        send.assert_called_once()
