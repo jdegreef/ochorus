@@ -41,6 +41,8 @@ from __future__ import annotations
 
 import json
 import shutil
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from contextlib import contextmanager
@@ -109,46 +111,126 @@ def _fetch(url: str, dest: Path) -> None:
             shutil.copyfileobj(r, f)
 
 
+#: Seconds to wait before each retry of a catalogue lookup.
+_RETRY_WAITS = (3, 10, 30)
+
+
 def _json(url: str) -> dict:
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
-        return json.load(r)
+    """A collection's catalogue record, retried through burst rate-limiting.
+
+    Every entry is checked against its live record on every run (see
+    `_artwork_image`), which means one catalogue call per entry, back to back —
+    the Met alone is ~40 in a row. Its API answers that pattern with a 403 on a
+    request that succeeds seconds later: seen while writing this, on an object
+    fetched cleanly minutes before. Without a retry the verification would turn
+    into a command that fails at random, and a check people learn to re-run until
+    it passes is not a check. So 403, 429 and 5xx get a patient retry; anything
+    else, and a refusal that outlasts the waits, still fails loudly.
+    """
+    for wait in (*_RETRY_WAITS, None):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            if wait is None or not (e.code in (403, 429) or e.code >= 500):
+                raise
+        except urllib.error.URLError:
+            if wait is None:
+                raise
+        time.sleep(wait)
+    raise AssertionError("unreachable")
 
 
-def _met_image_url(object_id: int) -> str:
-    """The Met's largest open-access image URL for an object."""
-    obj = _json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{object_id}")
+def _verify(art: Artwork, artist, title, year, subjects) -> None:
+    """Check a manifest entry against the collection's own record.
+
+    Two jobs, both here because this is the one moment the authoritative JSON is
+    in hand and nothing downstream ever sees it again.
+
+    THE CREDIT. `curated_art.credit()` serves the artist, title and year to
+    readers as provenance they can go and check, and until now nothing compared
+    them to the source. Thirteen of sixty-six entries were wrong: `Pilgrim's
+    Progress` was dated 1878 against the Met's 1869, titles had been quietly
+    shortened, dates had lost their qualifier, and artists' names had been
+    abridged. Recorded
+    exactly as the collection records them, so a difference is a mistake rather
+    than a house style.
+
+    THE PORTRAIT RULE, from the collection's SUBJECT terms where it has them. A
+    portrait on a cover reads as a picture OF the person the book is about,
+    which is a claim the artwork cannot support.
+    `test_no_curated_cover_is_a_portrait_of_its_subject` greps titles for
+    "Portrait of", which misses the commonest museum convention by far — the
+    sitter's name alone, "Elizabeth Farren".
+
+    THE MET AND CHICAGO CAN ANSWER IT. The Met's `tags` and AIC's
+    `subject_titles` are subject terms ("Portraits", "self-portraits" against
+    our "Roads", "landscapes"). Cleveland publishes no genre
+    field at all: `type` is the medium ("Painting") and `technique` the support,
+    so a Gainsborough portrait and a Corot pond are indistinguishable there. A
+    `cma` entry therefore passes None here and the title grep is the whole of
+    its check — worth knowing before trusting it.
+    """
+    for field, ours, theirs in (
+        ("artist", art.artist, artist or ""),
+        ("title", art.title, title or ""),
+        ("year", art.year, year or ""),
+    ):
+        if ours.strip() != theirs.strip():
+            raise CommandError(
+                f"{art.source}:{art.object_id} — the manifest's {field} is not the "
+                f"collection's.\n  manifest: {ours!r}\n  {art.source + ':':9} {theirs!r}\n"
+                f"credit() serves this to readers as provenance, so record theirs."
+            )
+    if any("portrait" in term.lower() for term in (subjects or ())):
+        raise CommandError(
+            f"{art.source}:{art.object_id} is tagged {sorted(subjects)} — a portrait on a "
+            f"cover reads as a picture OF the person the book is about, which is a claim "
+            f"the artwork cannot support."
+        )
+
+
+def _met_image_url(art: Artwork) -> str:
+    """The Met's largest open-access image URL for a manifest entry."""
+    obj = _json(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{art.object_id}")
     # Re-verified on every fetch rather than trusted from the manifest: the
     # manifest records what we believed, the API is what is true.
     if not obj.get("isPublicDomain"):
-        raise CommandError(f"Met object {object_id} is NOT flagged public domain — refusing.")
+        raise CommandError(f"Met object {art.object_id} is NOT flagged public domain — refusing.")
+    _verify(art, obj.get("artistDisplayName"), obj["title"], obj.get("objectDate"),
+            [t["term"] for t in (obj.get("tags") or []) if t.get("term")])
     src = obj.get("primaryImage") or obj.get("primaryImageSmall")
     if not src:
-        raise CommandError(f"Met object {object_id} has no image.")
+        raise CommandError(f"Met object {art.object_id} has no image.")
     return src
 
 
-def _cma_image_url(object_id: int) -> str:
+def _cma_image_url(art: Artwork) -> str:
     """The Cleveland Museum's largest usable image URL for an object.
 
     `print` (a few thousand px) rather than `full`, which is a TIFF `sips` would
     have to transcode for no gain at 600x800; `web` is the fallback for objects
     with no print derivative. Both are on their open-access CDN.
     """
-    obj = _json(f"https://openaccess-api.clevelandart.org/api/artworks/{object_id}")["data"]
+    obj = _json(f"https://openaccess-api.clevelandart.org/api/artworks/{art.object_id}")["data"]
     if obj.get("share_license_status") != "CC0":
         raise CommandError(
-            f"Cleveland object {object_id} is "
+            f"Cleveland object {art.object_id} is "
             f"{obj.get('share_license_status')!r}, not CC0 — refusing."
         )
+    # No subject terms: Cleveland publishes the medium, not the genre. See
+    # `_verify` — the title grep in the tests is the only portrait check here.
+    _verify(art, (obj.get("creators") or [{}])[0].get("description", "").split(" (")[0],
+            obj["title"], obj.get("creation_date"), None)
     images = obj.get("images") or {}
     for size in ("print", "web"):
         url = (images.get(size) or {}).get("url")
         if url:
             return url
-    raise CommandError(f"Cleveland object {object_id} has no print or web image.")
+    raise CommandError(f"Cleveland object {art.object_id} has no print or web image.")
 
 
-def _aic_image_url(object_id: int) -> str:
+def _aic_image_url(art: Artwork) -> str:
     """The Art Institute of Chicago's largest usable image URL for an object.
 
     Two hops, not one. The catalogue at api.artic.edu answers with the licence
@@ -165,14 +247,18 @@ def _aic_image_url(object_id: int) -> str:
     cover.
     """
     obj = _json(
-        f"https://api.artic.edu/api/v1/artworks/{object_id}"
-        "?fields=is_public_domain,image_id"
+        f"https://api.artic.edu/api/v1/artworks/{art.object_id}"
+        "?fields=is_public_domain,image_id,artist_title,title,date_display,subject_titles"
     )["data"]
     if not obj.get("is_public_domain"):
-        raise CommandError(f"AIC object {object_id} is NOT flagged public domain — refusing.")
+        raise CommandError(f"AIC object {art.object_id} is NOT flagged public domain — refusing.")
+    # AIC's `subject_titles` are real subject terms ("self-portraits" on a
+    # self-portrait, "landscapes" on a Cole), so it gets the full portrait check.
+    _verify(art, obj.get("artist_title"), obj.get("title"), obj.get("date_display"),
+            obj.get("subject_titles") or [])
     image_id = obj.get("image_id")
     if not image_id:
-        raise CommandError(f"AIC object {object_id} has no image.")
+        raise CommandError(f"AIC object {art.object_id} has no image.")
     return f"https://www.artic.edu/iiif/2/{image_id}/full/1686,/0/default.jpg"
 
 
@@ -200,9 +286,16 @@ def _artwork_image(art: Artwork) -> Path:
     fetch = FETCHERS.get(art.source)
     if fetch is None:
         raise CommandError(f"No fetcher for source {art.source!r} — see FETCHERS.")
+    # ALWAYS, even when the bytes are already cached. The fetcher is what checks
+    # the licence, the credit and the subject terms against the live record, and
+    # gating it on a cache miss would mean each entry was checked exactly once —
+    # on the day it was added, by the person who added it, against the record
+    # they had just read. That is the moment it is least likely to be wrong. One
+    # small JSON GET per entry, in a command run by hand a few times a year.
+    url = fetch(art)
     raw = CACHE / f"{_cache_key(art)}.orig.jpg"
     if not raw.exists():
-        _fetch(fetch(art.object_id), raw)
+        _fetch(url, raw)
     return raw
 
 
