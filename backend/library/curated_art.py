@@ -668,3 +668,73 @@ def credit(slug: str) -> str | None:
         return None
     return f"{a.artist}, “{a.title}” ({a.year}). {source.institution}."
 
+
+# ── Original grounds ────────────────────────────────────────────────────────
+# The FOURTH shared-ground tier, and the only one whose picture is ours.
+#
+# The three tables above all resolve to a picture SOMEONE ELSE made and a
+# recipe that can draw the file again: `CURATED` and `CURATED_GROUND` re-fetch a
+# museum object and re-verify its licence, `DERIVED_GROUND` re-crops a designed
+# cover and digests what it cut. An Ochorus Original — the `Brave for God`
+# series, and the imprint's own titles after it — has no museum object to fetch
+# and no designed cover to crop: its ground is an illustration drawn FOR the
+# book (`scripts` render a wordless 600x800 scene). So there is no recipe to
+# re-run, and nothing above can redraw the file.
+#
+# That is exactly the shape of a DESIGNED cover — a hand-made raster no tool may
+# rewrite — except wordless, so `BookCover` still sets each language's title
+# over it. `designed_covers.DESIGNED` cannot hold it (that registry is scoped to
+# WORDED rasters a row wears as its cover, and `covers/art/` is deliberately
+# outside it, trusting the other tiers to be re-drawable). So an Original ground
+# is frozen HERE instead, by the same means: the committed file's SHA-256, held
+# up by a gate that re-reads it. Replacing one on purpose is a two-line diff —
+# new file, new digest — as it is for a designed cover.
+#
+# WHY A TABLE, NOT `CURATED` WITH A "local" SOURCE. `CURATED`'s whole invariant
+# is that every row is verifiable museum art under a licence `credit()` can
+# quote; a row we drew has no such receipt, and putting it there would make the
+# one table whose job is provenance lie about a picture with none. `credit()`
+# returns None for these — an Original wears no external attribution — which is
+# why it is not consulted above.
+#
+# LIKE `CURATED` and unlike the two designed-cover tiers, `keeps_english_designed`
+# is FALSE here: an Original has no English designed cover to keep, so every
+# language — English included — wears the illustration.
+
+
+class Original(NamedTuple):
+    """An illustration drawn for one work, frozen by the bytes we committed."""
+
+    #: SHA-256 of the committed `covers/art/<slug>.jpg`. Nothing may redraw it,
+    #: so `test_original_grounds_are_frozen` re-reads the file and compares.
+    sha256: str
+    #: Why this scene, for the reader of this file — the receipt an Original has
+    #: in place of a museum credit.
+    why: str
+
+
+# slug -> the ground we drew. Slugs match Book.slug (shared across languages).
+ORIGINAL_GROUND: dict[str, Original] = {
+    "brave-for-god": Original(
+        "919c1e481e5e5aef9f9d5460bb1cb8491c37443a9a6dc728173b45d76395b713",
+        "A child sets out at first light down a trail toward the horizon — the "
+        "series' shared frame. Book 1 of the storybook set: deep dawn over "
+        "rolling country. Every book holds the frame and changes the sky.",
+    ),
+    "brave-for-god-2": Original(
+        "4e54f05e22beff434205d4c308aa33b75313792a3bd9ea64d22be48ab48ed352",
+        "The same child, the same trail — now a moonlit coast, a small boat on "
+        "the water beyond. Book 2 carries the voyage into “the wide world”.",
+    ),
+    "brave-for-god-3": Original(
+        "0eb8b877adce7e100667c5279644b2d7f3079b787dddb7b1bade43d24d0c6c54",
+        "Dusk over a mountain range, a snow-lit peak at centre. Book 3 — the "
+        "journey climbs.",
+    ),
+    "brave-for-god-4": Original(
+        "83d91d80e6349d938d30432ab7f1a5ae2fee7f233736f881d77df1494ea151eb",
+        "Forest twilight, a line of firs along the horizon. Book 4 closes the "
+        "set where the wide world grows deepest.",
+    ),
+}
+

@@ -62,10 +62,11 @@ from library.covers import (
     W,
     art_url,
     author_ink_contrast,
+    shares_a_ground,
     twin_path,
     variant_url,
 )
-from library.curated_art import CURATED, CURATED_GROUND
+from library.curated_art import CURATED, CURATED_GROUND, ORIGINAL_GROUND
 from library.designed_covers import (
     DERIVED_GROUND,
     DESIGNED,
@@ -1013,7 +1014,12 @@ class CoverAssetTests(SimpleTestCase):
         )
 
     def test_curated_editions_share_one_painting(self):
-        """A curated work ships ONE painting, and every language points at it.
+        """A shared-picture work ships ONE image, and every language points at it.
+
+        Covers both all-language tiers — ``CURATED`` (a museum painting) and
+        ``ORIGINAL_GROUND`` (an illustration drawn for the work). The invariant
+        is identical: one wordless file under ``covers/art/``, worn by every
+        edition including English, because neither tier keeps a designed cover.
 
         The artwork used to be embedded in a per-language SVG, because an SVG
         served through <img> cannot fetch a sibling file — so `waiting-on-god`
@@ -1022,22 +1028,23 @@ class CoverAssetTests(SimpleTestCase):
         the painting is now a plain image: one file, one cache entry, one
         download, whatever language you read in.
         """
+        shared = set(CURATED) | set(ORIGINAL_GROUND)
         wrong = sorted(
             (f["slug"], f["language"], _cover(f))
             for f in self.books
-            if f["slug"] in CURATED and _cover(f) != art_url(f["slug"])[0]
+            if f["slug"] in shared and _cover(f) != art_url(f["slug"])[0]
         )
         self.assertEqual(
             wrong, [],
-            "curated edition not pointing at the shared painting "
+            "shared-picture edition not pointing at its one image "
             "(/covers/art/<slug>.jpg) — run scripts/build_cover_assets.py",
         )
         absent = sorted(
-            slug for slug in CURATED
+            slug for slug in shared
             if any(f["slug"] == slug for f in self.books)
             and not (STATIC_DIR / "covers" / art_url(slug)[1]).is_file()
         )
-        self.assertEqual(absent, [], "curated work with no committed painting")
+        self.assertEqual(absent, [], "shared-picture work with no committed image")
 
     def test_every_twin_was_made_from_the_cover_it_stands_in_for(self):
         """Existence was never the hard part — staleness was.
@@ -1190,6 +1197,71 @@ class CoverAssetTests(SimpleTestCase):
             "— add it with its sha256 so nothing can redraw it",
         )
 
+    def test_original_grounds_are_frozen(self):
+        """An Ochorus Original's ground is a hand-made file nothing can redraw.
+
+        The gate above deliberately EXEMPTS `covers/art/` — a museum painting
+        and a derived crop are output their scripts can draw again, so freezing
+        the bytes would forbid the redraw. An `ORIGINAL_GROUND` file is the
+        exception in that exemption: it is an illustration drawn for the work,
+        with no museum to re-fetch and no designed cover to re-crop, so it is as
+        un-redrawable as a designed cover — and frozen the same way, by the
+        SHA-256 recorded beside it in `curated_art.ORIGINAL_GROUND`.
+
+        Without this, an Original ground would be the one raster in the library
+        that no gate pins: outside `DESIGNED` because it is wordless, inside
+        `covers/art/` where the digest gate does not look. Replacing one on
+        purpose stays a two-line diff — new file, new digest.
+        """
+        missing, changed = [], []
+        for slug, art in sorted(ORIGINAL_GROUND.items()):
+            path = STATIC_DIR / "covers" / art_url(slug)[1]
+            if not path.is_file():
+                missing.append(slug)
+            elif digest(path) != art.sha256:
+                changed.append(slug)
+        self.assertEqual(
+            missing, [],
+            "an ORIGINAL_GROUND names a work with no committed illustration at "
+            "covers/art/<slug>.jpg",
+        )
+        self.assertEqual(
+            changed, [],
+            "an Ochorus Original's ground changed but its recorded sha256 did "
+            "not — nothing may redraw one of these. If you replaced the artwork "
+            "on purpose, update its digest in curated_art.ORIGINAL_GROUND in the "
+            "same commit",
+        )
+
+    def test_every_art_file_belongs_to_a_tier(self):
+        """Every file under `covers/art/` is claimed by a shared-ground tier.
+
+        `covers/art/` is the one raster directory the `DESIGNED` digest gate
+        skips, on the promise that everything in it is either re-drawable
+        (`CURATED`, `CURATED_GROUND`, `DERIVED_GROUND`) or frozen by its own tier
+        (`ORIGINAL_GROUND`). An unclaimed file breaks that promise: an Original
+        dropped here without its `ORIGINAL_GROUND` entry `shares_a_ground` cannot
+        see, so `build_cover_assets` treats its row as a plain raster and
+        `test_original_grounds_are_frozen` never freezes it — the un-redrawable
+        illustration ships with nothing pinning its bytes. This is the gate that
+        makes registering an Original the only way to add one.
+        """
+        # `shares_a_ground` IS the four-tier union, and re-spelling it here would
+        # be the fifth hand-kept copy its docstring exists to prevent — so a
+        # future tier is covered by this gate the moment it joins the predicate.
+        orphans = sorted(
+            p.stem
+            for p in (STATIC_DIR / "covers" / "art").glob("*.jpg")
+            if not shares_a_ground(p.stem)
+        )
+        self.assertEqual(
+            orphans, [],
+            "a file under covers/art/ belongs to no shared-ground tier — an "
+            "original illustration must be registered in "
+            "curated_art.ORIGINAL_GROUND (with its sha256) so it is frozen, and "
+            "a museum painting in CURATED/CURATED_GROUND",
+        )
+
     def test_derived_grounds_clothe_every_translation(self):
         """A work with a derived ground: English keeps the designed cover, and
         every other language wears the ground.
@@ -1279,11 +1351,15 @@ class CoverAssetTests(SimpleTestCase):
             ("CURATED", "DERIVED_GROUND"),
             ("CURATED", "CURATED_GROUND"),
             ("CURATED_GROUND", "DERIVED_GROUND"),
+            ("CURATED", "ORIGINAL_GROUND"),
+            ("CURATED_GROUND", "ORIGINAL_GROUND"),
+            ("DERIVED_GROUND", "ORIGINAL_GROUND"),
         ):
             tiers = {
                 "CURATED": CURATED,
                 "DERIVED_GROUND": DERIVED_GROUND,
                 "CURATED_GROUND": CURATED_GROUND,
+                "ORIGINAL_GROUND": ORIGINAL_GROUND,
             }
             self.assertEqual(
                 sorted(set(tiers[a]) & set(tiers[b])), [],

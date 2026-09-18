@@ -269,36 +269,36 @@
 			"scrim": 0.55
 		},
 		"brave-for-god": {
-			"ground": "7fe5042c3ee149f373fd1dfc95957ed0570c505e89d184a24b6392b16f89672c",
+			"ground": "b0c63c0a373f3c4dcebeec3fc4cbe40058d2b154f5a98022314c54d352010eca",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.65
 		},
 		"brave-for-god-2": {
-			"ground": "a77cb676c27c27ee7a6f321b2f8601d964dbcdd7a9e62d5ab807ce9c59151c11",
+			"ground": "3ad162c36fb441c21dbd3848e6d89a662eed6ddaa8e36bd29432442bfd38ed37",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.75
 		},
 		"brave-for-god-3": {
-			"ground": "da8559fdffa1c25b827d93355999763c6292e86deb7375bb55f17db5d932235c",
+			"ground": "a20102dc43324934f91d9790d268ca427fb8bb631afdab26f8510233aefe9d89",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.7
 		},
 		"brave-for-god-4": {
-			"ground": "b3e3d9c06a6fd47486a60ae9b3e4f06775a373874074c96980666caa34ced38e",
+			"ground": "e7c8db7b710663c0bb427ed6cc4cfacdbe1da4ef87eba0d53c5cf3e702f82772",
 			"style": "young",
 			"volume": "4",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.8
 		},
 		"cheque-book": {
 			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
@@ -700,14 +700,6 @@
 			"art": true,
 			"scrim": 0.95
 		},
-		"fr/cheque-book": {
-			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
-			"style": "revival",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 0.5
-		},
 		"fr/all-of-grace": {
 			"ground": "1c9bdb35d02ae3c9fa0d528a870e445629a55f39a200014464be0effca918144",
 			"style": "revival",
@@ -716,14 +708,6 @@
 			"art": true,
 			"scrim": 0.7
 		},
-		"fr/waiting-on-god": {
-			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
-			"style": "devotional",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 0.6
-		},
 		"fr/baptism-with-the-holy-spirit": {
 			"ground": "bdeed4127b250e9d7f0f03c5a86ac3b99b8e31904f6ea3e75e23f75e2d5ef88b",
 			"style": "revival",
@@ -731,6 +715,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85
+		},
+		"fr/cheque-book": {
+			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5
 		},
 		"fr/clothed-with-strength-and-dignity": {
 			"ground": "e27ae9f4ee85f2ee1a687c0cd91692b0cb15e25687ac97006a167412154bed48",
@@ -771,14 +763,6 @@
 			"script": "latin",
 			"art": false,
 			"scrim": 1
-		},
-		"fr/the-god-of-all-comfort": {
-			"ground": "3bc088fdd73df57df3c20bcbabb1ba2dcd8684c5e91bc4aec125b092e2fc2517",
-			"style": "devotional",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 0.95
 		},
 		"fr/he-holds-my-tomorrows": {
 			"ground": "0cce2cab2c9ba862dd5969db5c2296538ef55d9b03fb7d0c3c525045db76328b",
@@ -844,6 +828,30 @@
 			"art": true,
 			"scrim": 0.35
 		},
+		"fr/stepping-stones-2": {
+			"ground": "7daa1e31d9cac5649ddd8142a5d508e12549c87df2610b566578895530ef16ef",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
+		"fr/talks-to-the-farmer": {
+			"ground": "a98d8c68fcb55e7ccb5e9d72ce6a63dfc2841f307454c6c43b08dfde23348420",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5
+		},
+		"fr/the-god-of-all-comfort": {
+			"ground": "3bc088fdd73df57df3c20bcbabb1ba2dcd8684c5e91bc4aec125b092e2fc2517",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95
+		},
 		"fr/the-inner-chamber": {
 			"ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
 			"style": "devotional",
@@ -883,22 +891,6 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85
-		},
-		"fr/stepping-stones-2": {
-			"ground": "7daa1e31d9cac5649ddd8142a5d508e12549c87df2610b566578895530ef16ef",
-			"style": "house",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 0.7
-		},
-		"fr/talks-to-the-farmer": {
-			"ground": "a98d8c68fcb55e7ccb5e9d72ce6a63dfc2841f307454c6c43b08dfde23348420",
-			"style": "revival",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 0.5
 		},
 		"fr/waiting-on-god": {
 			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
@@ -942,30 +934,6 @@
 		},
 		"growing-in-wisdom": {
 			"ground": "c2657449c6501dea09ef5cdec1ca8994cdccdabc5713ba9df6e71dc71a1f45bd",
-			"style": "originals",
-			"volume": null,
-			"script": "latin",
-			"art": false,
-			"scrim": 1
-		},
-		"hurlbuts-life-of-christ": {
-			"ground": "3a879eea06afd2cb313183c4ecb0de5bce209c8fc1cfd15b8197c8841be1db62",
-			"style": "young",
-			"volume": null,
-			"script": "latin",
-			"art": false,
-			"scrim": 1
-		},
-		"sw/growing-in-wisdom": {
-			"ground": "3949cba18648fbf8cc681f7d8ebdc07e3c8596ac9aefae8ca7d52873f060f3b0",
-			"style": "originals",
-			"volume": null,
-			"script": "latin",
-			"art": false,
-			"scrim": 1
-		},
-		"lg/growing-in-wisdom": {
-			"ground": "f2a197457c87dfeeebab53f3a4adcba8ef534e6b3c8b0b326d28862bc6494878",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -1124,6 +1092,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"hurlbuts-life-of-christ": {
+			"ground": "3a879eea06afd2cb313183c4ecb0de5bce209c8fc1cfd15b8197c8841be1db62",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"if": {
 			"ground": "0c65bcb9120c231a9934c71eb12065665162accd56ddffed98cf593540cbb2b0",
 			"style": "devotional",
@@ -1165,28 +1141,28 @@
 			"scrim": 0.85
 		},
 		"lg/brave-for-god": {
-			"ground": "ad748ec57be59fbba5c2176efbae1a4274bd0eec6aad08a385bb8c9c0f1d594a",
+			"ground": "94bc629cd9e6ac21c04f2ffe412987978ffb9877047056d77d975e908a4b4877",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.65
 		},
 		"lg/brave-for-god-2": {
-			"ground": "7da206006bad470192fcf49cbed7e156dd102ca19d420d4cf947be5dc8f6ab79",
+			"ground": "2230f0428645c71c4003c00c0a46e77d9c1878c2a3fc6dfdd31ff040fe38e3c0",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.75
 		},
 		"lg/brave-for-god-3": {
-			"ground": "18163cfcb1134679da2453dba7787fae4503d47a020d1d48585572fe17a77f5f",
+			"ground": "15554594be57489502eab9dffddb829e5733b95cb0b36e18aec6ea1f9566fe68",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.7
 		},
 		"lg/cheque-book": {
 			"ground": "e9b4a668853c1f90838c65521d39530be463728259b51ab14bef84907a9171c4",
@@ -1235,6 +1211,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3
+		},
+		"lg/growing-in-wisdom": {
+			"ground": "f2a197457c87dfeeebab53f3a4adcba8ef534e6b3c8b0b326d28862bc6494878",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"lg/he-holds-my-tomorrows": {
 			"ground": "5cb1de8698203ceadce2983df6a0baaa7f4ba5247a5e8ac16ef60cf8125f3a69",
@@ -1965,28 +1949,28 @@
 			"scrim": 0.85
 		},
 		"sw/brave-for-god": {
-			"ground": "c7358524e68bcefbae267bb109a71c6aaabd09789160b822f5b2a532b554d708",
+			"ground": "b4cd36e562bb4f654337271d321b68b83a8c216f77e783fded5b9d43a6070b49",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.65
 		},
 		"sw/brave-for-god-2": {
-			"ground": "33b84fe32eb9ba5242c3e2a4f3c6c9eaf30d29bc94c96cc8523cf759bdd515da",
+			"ground": "8af2166aa7a99ec63d9506eb2a4817dcf6d8e3f8aef1e2ec842d4a74a6cc4e96",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.75
 		},
 		"sw/brave-for-god-3": {
-			"ground": "9118f5248c2fa45e786a699ce3e549c17eec98b33cc44a2027fd6ac43dbd89a1",
+			"ground": "2202e4d87047e232e55e7d183441373e11e19811afa10cf123b3e88612f4820c",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
-			"art": false,
-			"scrim": 1
+			"art": true,
+			"scrim": 0.7
 		},
 		"sw/cheque-book": {
 			"ground": "0833bf4d3686764b58c07d24a0456e8b730a2e50746e64a5d24424e95da739fe",
@@ -2051,6 +2035,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3
+		},
+		"sw/growing-in-wisdom": {
+			"ground": "3949cba18648fbf8cc681f7d8ebdc07e3c8596ac9aefae8ca7d52873f060f3b0",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"sw/he-holds-my-tomorrows": {
 			"ground": "b95ee9e3b308e4f21e054b07b88482f596683328ba443f8a8da2f07db63a4470",

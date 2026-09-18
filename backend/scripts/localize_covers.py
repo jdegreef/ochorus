@@ -104,7 +104,7 @@ from library.covers import (  # noqa: E402
     shares_a_ground,
     write_og_twin,
 )
-from library.curated_art import CURATED  # noqa: E402
+from library.curated_art import CURATED, ORIGINAL_GROUND  # noqa: E402
 from library.designed_covers import DERIVED_GROUND, is_designed  # noqa: E402
 
 ROOT = BACKEND.parent
@@ -229,13 +229,14 @@ def main() -> int:
             # file it as designed artwork and draw a plate over a book that
             # already has a cover.
             #
-            # TWO TIERS TAKE THIS PATH and they differ only in where the file
-            # came from — `CURATED` is a public-domain painting fetched by
+            # SEVERAL TIERS TAKE THIS PATH and they differ only in where the
+            # file came from — `CURATED` is a public-domain painting fetched by
             # `build_curated_covers`, `DERIVED_GROUND` is a crop of this work's
-            # OWN designed English cover, drawn by `build_derived_grounds`. What
-            # happens to the fixture row is identical, so the branch is shared;
-            # the registries stay separate because one carries a museum's
-            # licence receipt and the other must never be mistaken for it.
+            # OWN designed English cover, drawn by `build_derived_grounds`,
+            # `ORIGINAL_GROUND` is an illustration drawn for the work itself.
+            # What happens to the fixture row is identical, so the branch is
+            # shared; the registries stay separate because one carries a museum's
+            # licence receipt and the others must never be mistaken for it.
             #
             # The English row is NOT here — this loop only sees translations —
             # which is exactly the point for the derived tier: English goes on
@@ -255,6 +256,7 @@ def main() -> int:
                 tier = (
                     "curated" if slug in CURATED
                     else "derived" if slug in DERIVED_GROUND
+                    else "original" if slug in ORIGINAL_GROUND
                     else "art-gnd"
                 )
                 print(f"  ✓ {url:52} {tier:9} {'row':9} {'':8} {title}")
