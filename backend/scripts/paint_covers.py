@@ -4,6 +4,8 @@
     uv run python scripts/paint_covers.py <slug> [<slug> ...]
     uv run python scripts/paint_covers.py <slug> --dry-run     # say what would run
     uv run python scripts/paint_covers.py <slug> --no-check    # skip the gates
+    uv run python scripts/paint_covers.py <slug> --recrop      # redo a painting you
+                                                               # re-cropped (focus)
 
 THE ONE HUMAN STEP COMES FIRST: choose the painting and add each work's entry to
 `library/curated_art.py` (`.claude/skills/level-up-cover` is how to choose one).
@@ -13,7 +15,7 @@ that order, and stops at the first failure:
 
   1. clear stale `__pycache__`   — a stale .pyc hides a new CURATED entry
   2. migrate                     — a worktree's copied DB can predate main
-  3. build_curated_covers        — the painting, PD re-verified at fetch
+  3. build_curated_covers        — the painting, for works that have none yet
   4. delete the retired plates   — every `<slug>.svg`, in every language dir
   5. build_cover_assets          — webp variants; repoints EVERY edition row
   6. tune_art_scrim              — measured scrim, BEFORE the twins are drawn
@@ -44,6 +46,7 @@ COVERS = FRONTEND / "static" / "covers"
 sys.path.insert(0, str(BACKEND))
 
 # Django-free, like the scripts it drives.
+from library.covers import art_url  # noqa: E402
 from library.curated_art import CURATED  # noqa: E402
 
 PY = ["uv", "run", "python"]
@@ -76,6 +79,11 @@ def main() -> int:
     ap.add_argument("slugs", nargs="+", help="Works already added to CURATED.")
     ap.add_argument("--dry-run", action="store_true", help="Print the plan; change nothing.")
     ap.add_argument("--no-check", action="store_true", help="Skip the gates at the end.")
+    ap.add_argument(
+        "--recrop",
+        action="store_true",
+        help="Redraw paintings that already exist (after changing a work's `focus`).",
+    )
     args = ap.parse_args()
     slugs = set(args.slugs)
     dry = args.dry_run
@@ -111,7 +119,19 @@ def main() -> int:
     run([*PY, "manage.py", "migrate", "--noinput"], BACKEND, dry)
 
     step(3, "fetch and crop the paintings")
-    run([*PY, "manage.py", "build_curated_covers", *sorted(slugs)], BACKEND, dry)
+    # Only works with no painting yet, unless asked. The committed painting is
+    # what ships; `build_curated_covers` re-crops from a LOCAL cache, and in a
+    # fresh checkout that cache is empty, so it re-downloads and re-encodes the
+    # museum image and overwrites the painting with new bytes — which moves
+    # its variants and every language's twin for a picture nobody changed.
+    # That made re-running this after a translation race (the skill's fix for
+    # gotcha C) churn a dozen files.
+    todo = sorted(s for s in slugs if args.recrop or not (COVERS / art_url(s)[1]).exists())
+    kept = sorted(slugs - set(todo))
+    if kept:
+        print(f"   already painted, left as committed: {', '.join(kept)} (--recrop to redo)")
+    if todo:
+        run([*PY, "manage.py", "build_curated_covers", *todo], BACKEND, dry)
 
     step(4, "delete the retired plates")
     for slug in sorted(slugs):
