@@ -722,6 +722,7 @@ TOPIC_ARTICLES = {
         "the-morning-watch",
         "augustines-confessions-guide",
         "how-to-pray-for-revival",
+        "the-life-of-trust-guide",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -780,6 +781,7 @@ TOPIC_ARTICLES = {
         "revival-and-repentance-breaking-up-the-fallow-ground",
         "how-to-share-your-faith",
         "the-life-and-diary-of-david-brainerd-guide",
+        "revival-lectures-guide",
     ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
@@ -833,6 +835,8 @@ TOPIC_ARTICLES = {
         "what-is-spiritual-warfare",
         "how-to-love-your-enemies",
         "mortification-of-sin-guide",
+        "a-serious-call-guide",
+        "ten-commandments-guide",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
@@ -848,6 +852,10 @@ TOPIC_ARTICLES = {
         "religious-affections-guide",
         "mortification-of-sin-guide",
         "the-bruised-reed-guide",
+        "a-serious-call-guide",
+        "the-life-of-trust-guide",
+        "ten-commandments-guide",
+        "revival-lectures-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",

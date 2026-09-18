@@ -52,6 +52,14 @@ keep new person-lives out of `/articles` entirely.
   (book/sermon/author) that the API resolves to Read-next cards. Point only at
   works that actually exist — pull the live catalogue first
   (`curl .../api/library/books/?language=en`) and confirm the slugs.
+- **Inline `<a>` links in the BODY to detail routes MUST end with a trailing
+  slash** — `/books/<slug>/`, `/authors/<slug>/`, `/sermons/<slug>/`. A bare
+  `/books/<slug>` fails the frontend built-output guard
+  `href.test.ts > "contains no bare (non-slash) detail-route links"` and reds the
+  whole `test-and-build` (the aggregator fails 3s after the frontend job). The
+  `related` funnel is slashed for you by the API; hand-written prose links are
+  not — writer agents forget (batch of 4, 2026-09-18: 5 bare links across 2
+  guides). Grep the fixture: `grep -oE 'href=\"/(books|authors|sermons)/[^\"/]+\"'`.
 - **A book guide is cross-linked FROM its book page — so `related` ORDER now
   matters.** `BookDetailSerializer.guides` (`library/serializers.guides_for_book`,
   PR #2843) surfaces a "Reader's guide" section on `/books/<slug>/` for the article
@@ -130,6 +138,22 @@ don't hand-wrap refs in the fixture.
   own fixture (`books/<slug>.en.json`) — the Ochorus *Imitation* is Croft–Bolton,
   the *Confessions* is Pusey, so a line remembered from another translation will
   not match the text the reader clicks through to. Grep the fixture first.
+  **Then VERIFY every blockquote against the book fixture — but normalise
+  punctuation first.** An exact-substring check throws false MISSes because the
+  guide's curly quotes / em-dashes differ from the fixture's glyphs; strip both
+  sides to letters-and-spaces only (`re.sub(r'[^a-z ]',' ',s.lower())`) before
+  the membership test. A real MISS after that = an invented/misremembered quote;
+  drop it. (Batch of 4 study guides, 2026-09-18: 4 of 14 blockquotes looked
+  missing under exact match and were all genuine once punctuation was stripped.)
+- **A study guide is a book guide with a study shape.** Same `<slug>-guide` slug
+  + `related`-leads-with-the-book contract (above), but the `<h2>` sequence is:
+  what it is → its argument/structure → central themes → **Who should read it** →
+  How to read it today → **For reflection** (3–5 questions). Put "Summary" or
+  "Study Guide" in `meta_title` for the search intent. Fan out one writer per
+  book (unique scratch paths, no shared builder), then one central builder that
+  settles each body through `clean_bio_html` and fails out-of-band on
+  word_count, `<7` refs, any straight quote, or a `related` that doesn't lead
+  with the book — see the Fan-out notes below.
 - **Book guides have a home topic: `enduring-classics`.** Its blurb already names
   Augustine, Bunyan and à Kempis. Tag guides there AND to their doctrinal topic.
   Append new slugs at the END of each `TOPIC_ARTICLES` list — order is display
