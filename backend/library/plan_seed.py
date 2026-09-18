@@ -127,6 +127,32 @@ CURATED_PLANS = [
         ],
     ),
     (
+        "praying-men",
+        "Praying Men: A School of Prayer with E. M. Bounds",
+        "Seven weeks in the furnace of intercession with the great apostle of "
+        "prayer. E. M. Bounds begins with the preacher's own need of power, then "
+        "unfolds the purpose that makes prayer prevail, and the necessity that "
+        "makes it the whole business of the Christian life.",
+        [
+            "power-through-prayer",
+            "purpose-in-prayer",
+            "necessity-of-prayer",
+        ],
+    ),
+    (
+        "the-puritan-heart",
+        "The Puritan Heart",
+        "Eight weeks with three masters of the inner life. Richard Sibbes binds "
+        "up the bruised reed, John Owen wages war on the sin that still dwells "
+        "within, and Thomas Watson rests the whole struggle on the promise that "
+        "all things work together for good.",
+        [
+            "the-bruised-reed",
+            "mortification-of-sin",
+            "all-things-for-good",
+        ],
+    ),
+    (
         "first-steps-for-teens",
         "Starting Out: Faith for Teens",
         "A first walk with Jesus, for teenage readers. Charles Spurgeon meets "
