@@ -364,6 +364,14 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"es/a-hidden-fire": {
+			"ground": "9789f647f829bd87ce2167fd821f0811d8402e4191a11cc2233f825b9a01f27a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"es/a-short-and-easy-method-of-prayer": {
 			"ground": "c75f9e14f8a2a0e87fcbe1018606942b7134b37ce232ff3de18a78afd4693e99",
 			"style": "devotional",

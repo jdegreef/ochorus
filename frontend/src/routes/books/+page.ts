@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-18: Spanish book — a-hidden-fire (#1367), the Ochorus Originals
+// life of Simeon Nsibambi ("Un fuego escondido"), 7 chapters. Book pages are prerendered per
+// locale, so /es/books and the shelf rebuild with the translated title and the reader page
+// bakes the 7 chapters. No plans/+page.ts touch owed — a-hidden-fire backs no
+// LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-17: one NEW English book — brave-for-god-4, "Brave for God: Book Four",
 // the fourth house-written young-readers volume (six more missionary lives: Paton, Mary Jones,
 // George Liele, C.T. Studd, Lilias Trotter, Ida Scudder). Rebuilds /books and the For Young Readers
