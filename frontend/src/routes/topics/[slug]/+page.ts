@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-18: corrected the For Teens shelf Q&A — it had named two
+// copyright-blocked, unpublished titles ("The Body of Christ" for teens, Amy Carmichael's
+// "If") as included works; replaced with published shelf titles (Growing in Wisdom, etc.)
+// and dropped the two dead slugs from the shelf membership. Topic pages are prerendered
+// per topic, so /topics/for-teens/ must rebuild to bake the corrected grounded Q&A.
 import { getTopic, listTopics } from '$lib/library-public';
 import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';
