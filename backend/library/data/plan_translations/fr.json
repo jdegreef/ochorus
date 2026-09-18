@@ -54,5 +54,12 @@
   "note": [
    "Job #2232. Prose-ahead: source books (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) have no French edition yet; dormant until they are translated."
   ]
+ },
+ "growing-in-wisdom-18-days": {
+  "title": "Grandir en sagesse en 18 jours",
+  "description": "Le guide de James DeGreef pour les étudiants — une courte lecture par jour pendant dix-huit jours. De la découverte de votre vocation à la construction d'une vision pour l'avenir, chaque jour associe un conseil pratique à une Écriture, une réflexion et une prière.",
+  "note": [
+   "growing-in-wisdom has a French edition (shipped separately), so seed_plans creates a French row for this single-book plan; this prose keeps it from publishing English-titled."
+  ]
  }
 }

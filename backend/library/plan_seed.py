@@ -35,6 +35,15 @@ LAUNCH_PLANS = [
         "Build a daily habit of prayer and the Word: thirty-six mornings with "
         "Andrew Murray, one chapter each day.",
     ),
+    (
+        "growing-in-wisdom-18-days",
+        "growing-in-wisdom",
+        "Growing in Wisdom in 18 Days",
+        "James DeGreef's guide for students — one short reading a day for "
+        "eighteen days. From discovering your purpose to building a vision for "
+        "the future, each day pairs practical counsel with a Scripture, a "
+        "reflection, and a prayer.",
+    ),
 ]
 
 # Curated plans that walk through SEVERAL books in order (each book read in
