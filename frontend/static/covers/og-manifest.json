@@ -757,11 +757,11 @@
 			"scrim": 0.3
 		},
 		"fr/growing-in-wisdom": {
-			"ground": "1ba83d4a94077ccfa536af9336f9b442268692e7865d6312acec8de6a38b9d4f",
+			"ground": "26197d892d0e8c2720eebf34e656c6368c8cd32fa690bfa43f8bea999b0e7e8a",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"fr/he-holds-my-tomorrows": {
@@ -933,11 +933,11 @@
 			"scrim": 1
 		},
 		"growing-in-wisdom": {
-			"ground": "c2657449c6501dea09ef5cdec1ca8994cdccdabc5713ba9df6e71dc71a1f45bd",
+			"ground": "9fad74782c966323521d80fbc545a8f9f105d45188f8ab1b180ea7a43515b585",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"hi/all-of-grace": {
@@ -1253,11 +1253,11 @@
 			"scrim": 0.3
 		},
 		"lg/growing-in-wisdom": {
-			"ground": "f2a197457c87dfeeebab53f3a4adcba8ef534e6b3c8b0b326d28862bc6494878",
+			"ground": "59c686e883a75ae10a8ffec858de18a5a111542f12fcf0bedb5a568d24e457fd",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"lg/he-holds-my-tomorrows": {
@@ -2085,11 +2085,11 @@
 			"scrim": 0.3
 		},
 		"sw/growing-in-wisdom": {
-			"ground": "3949cba18648fbf8cc681f7d8ebdc07e3c8596ac9aefae8ca7d52873f060f3b0",
+			"ground": "2ba31897414b044c561f714f4dc2a2a2f711c4fa614d995ac88fe86e62f09c74",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1
 		},
 		"sw/he-holds-my-tomorrows": {
