@@ -27,6 +27,8 @@ from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb, UserProfile
 from accounts.permissions import requires
+from library.audit import AdminAudited, AdminNotAudited
+from library.models import AdminAction
 
 from . import audience as audience_mod
 from . import broadcasts as broadcasts_mod
@@ -222,8 +224,13 @@ def _apply_fields(broadcast: Broadcast, data) -> None:
 
 
 @requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.ACT})
-class AdminBroadcastsView(APIView):
+class AdminBroadcastsView(AdminAudited, APIView):
     """List broadcasts, or create a draft."""
+
+    audit_action = AdminAction.Action.BROADCAST_CREATE
+
+    def audit_entry(self, request, response):
+        return (f"broadcast:{response.data.get('id')}", {"name": response.data.get("name", "")})
 
     def get(self, request):
         rows = [_serialize_broadcast(b) for b in Broadcast.objects.all()]
@@ -247,8 +254,18 @@ class AdminBroadcastsView(APIView):
     AdminCapability.EMAIL,
     verbs={"GET": AdminVerb.VIEW, "PATCH": AdminVerb.ACT, "DELETE": AdminVerb.ACT},
 )
-class AdminBroadcastDetailView(APIView):
+class AdminBroadcastDetailView(AdminAudited, APIView):
     """Read, edit (draft/scheduled only), or delete a broadcast."""
+
+    def audit_action_for(self, request):
+        return (
+            AdminAction.Action.BROADCAST_DELETE
+            if request.method == "DELETE"
+            else AdminAction.Action.BROADCAST_EDIT
+        )
+
+    def audit_entry(self, request, response):
+        return (f"broadcast:{self.kwargs.get('pk')}", {})
 
     def _get(self, pk):
         return Broadcast.objects.filter(pk=pk).first()
@@ -286,8 +303,25 @@ class AdminBroadcastDetailView(APIView):
 
 
 @requires(AdminCapability.EMAIL, verb=AdminVerb.ACT)
-class AdminBroadcastActionView(APIView):
+class AdminBroadcastActionView(AdminAudited, APIView):
     """Act on a broadcast: ``send`` now, ``schedule``, ``cancel``, or ``test``."""
+
+    _ACTION_AUDIT = {
+        "send": AdminAction.Action.BROADCAST_SEND,
+        "schedule": AdminAction.Action.BROADCAST_SCHEDULE,
+        "cancel": AdminAction.Action.BROADCAST_CANCEL,
+        "test": AdminAction.Action.BROADCAST_TEST,
+    }
+
+    def audit_action_for(self, request):
+        action = str(request.data.get("action", "")).strip()
+        return self._ACTION_AUDIT.get(action, AdminAction.Action.BROADCAST_SEND)
+
+    def audit_entry(self, request, response):
+        return (
+            f"broadcast:{self.kwargs.get('pk')}",
+            {"action": str(request.data.get("action", "")).strip()},
+        )
 
     def post(self, request, pk):
         broadcast = Broadcast.objects.filter(pk=pk).first()
@@ -368,8 +402,10 @@ class AdminBroadcastActionView(APIView):
 
 
 @requires(AdminCapability.EMAIL, verb=AdminVerb.ACT)
-class AdminAudiencePreviewView(APIView):
+class AdminAudiencePreviewView(AdminNotAudited, APIView):
     """Count the readers an audience filter would target (compose-time preview)."""
+
+    audit_exempt = "Read-only: counts an audience filter and writes nothing (POST only because the filter is a JSON body)."
 
     def post(self, request):
         audience = request.data.get("audience") or {}
