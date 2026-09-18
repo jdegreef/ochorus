@@ -56,5 +56,13 @@
       "Queue job #2065. Prose-only translation of the Plan's title and description.",
       "NEITHER source book has a Spanish edition yet — life-and-diary-of-david-brainerd and men-and-women-who-gave-everything-2 are both untranslated — so seed_plans will NOT create this (everything-for-christ, es) row today. The prose ships ahead so that neither book's arrival can publish an English-titled plan (the #819 defect)."
     ]
+  },
+  "praying-men": {
+    "title": "Hombres de oración: una escuela de oración con E. M. Bounds",
+    "description": "Siete semanas en el horno de la intercesión con el gran apóstol de la oración. E. M. Bounds comienza con la necesidad de poder del propio predicador, luego despliega el propósito que hace que la oración prevalezca, y la necesidad que la convierte en el asunto entero de la vida cristiana.",
+    "note": [
+      "The description names the three source books the way their shipped Spanish editions do — «Poder a través de la oración» (power-through-prayer.es), «Propósito en la oración» (purpose-in-prayer.es) and «La necesidad de la oración» (necessity-of-prayer.es), all fixture titles verbatim — so the plan card and the books it opens agree.",
+      "All three Bounds books are ALREADY published in es, so seed_plans creates this (praying-men, es) row on the same deploy that adds the plan — this prose must land in the SAME PR as the English definition or the es plans page publishes the English card (the #819 defect)."
+    ]
   }
 }
