@@ -129,10 +129,15 @@ jobs:
     # ceiling exists only to reap a hang, not to cut a slow-but-real run.
     timeout-minutes: 25
     env:
-      DJANGO_DEBUG: 'true' # local SQLite, no external services
-    # Throwaway Postgres so the production search path (stored tsvectors,
-    # GIN migration, websearch queries) actually runs in CI — the SQLite
-    # test run skips every @skipUnless(vendor == "postgresql") test.
+      DJANGO_DEBUG: 'true'
+    # The suite runs ONCE, on Postgres — the production database. Postgres is a
+    # strict superset of the old SQLite pass: it runs every test PLUS the ~19
+    # @skipUnless(connection.vendor == "postgresql") tests (stored tsvectors,
+    # the GIN migration, websearch queries, RLS, row locking) that SQLite skips,
+    # and there are no SQLite-only tests for it to miss. The separate SQLite pass
+    # was ~1,400 tests re-run for zero production coverage; dropping it halves
+    # this job, the workflow's long pole. (Local dev still runs on SQLite, so a
+    # SQLite-only regression surfaces there — production is what CI must gate.)
     services:
       postgres:
         image: postgres:17-alpine
@@ -174,11 +179,7 @@ jobs:
       # key, and a given test method only ever runs on one worker; the
       # TransactionTestCase concurrency tests get their own worker DB. If a race
       # ever does surface, it fails HERE by name — not in production.
-      - name: Tests
-        working-directory: backend
-        run: uv run python manage.py test --parallel auto --verbosity 1
-
-      - name: Tests (Postgres, the production search path)
+      - name: Tests (Postgres — the production database)
         working-directory: backend
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
