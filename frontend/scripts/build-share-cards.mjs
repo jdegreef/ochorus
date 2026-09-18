@@ -1,10 +1,10 @@
 /**
- * Compose every edition's landscape share card into the build.
+ * Compose every landscape share card the built site asks for.
  *
  * Runs as `postbuild`, so it runs on every deploy and in CI's build job:
  *
  *     npm run build          # vite build, then this
- *     node scripts/build-share-cards.mjs [outDir]   # by hand; default ./build
+ *     node scripts/build-share-cards.mjs [buildDir]   # by hand; default ./build
  *
  * WHY A LANDSCAPE CARD
  * Facebook, X and LinkedIn crop a link preview to 1.91:1. A book's og:image
@@ -19,101 +19,118 @@
  * already carries its title in its pixels — a designed cover by design, every
  * other edition through its twin — shaped for its own script, Arabic and
  * Devanagari included, which satori cannot do. So a card is only that raster,
- * scaled, on a heavily blurred and dimmed field of its own colours. No fonts,
- * no browser: `sharp` alone, deterministic, about a tenth of a second a card.
+ * scaled, on a blurred and dimmed field of its own colours. No fonts, no
+ * browser: `sharp` alone, deterministic, a few seconds for the whole library.
  *
  * WHY AT BUILD, NOT COMMITTED
  * The other cards are hand-run and committed, and each needs a manifest and a
  * staleness gate to catch the day its source moved and nobody re-ran it. This
- * one is a pure function of files already in the repo, so it is rebuilt from
- * them on every deploy: nothing to commit (~340 cards, ~12 MB), nothing to
- * go stale, nothing to gate.
+ * one is a pure function of files the build already holds, so it is rebuilt
+ * with them: nothing to commit (~340 cards, ~12 MB), nothing to go stale.
  *
- * SOURCE OF TRUTH: the committed fixtures, as for the twins. The book pages
- * are prerendered from the API, which is seeded from these same files. A
- * published edition whose source raster is missing FAILS THE BUILD — a page
- * pointing its og:image at a card that was never made is the failure this
- * refuses to ship. (`coverArt.test.ts` asserts the same thing in the unit
- * suite, so it surfaces before a build does.)
+ * THE BUILD IS THE SOURCE OF TRUTH — not the fixtures. The pages are
+ * prerendered from the live API, and a published edition can exist there
+ * without a fixture row (the admin can add one; `seed_books` never deletes).
+ * Enumerated from the fixtures, such a page would name a card that was never
+ * made, and its path would be answered with the SPA's HTML fallback. So this
+ * reads the prerendered pages themselves: each og:image under `/og/covers/`
+ * is a card to make, and the book page's `Book.image` (the cover, from
+ * `shareImage`) is what to make it from. A card whose source cannot be found
+ * gets the site's default card instead, and says so: a link preview with the
+ * house card beats one with none, and one edition missing a cover must not
+ * fail a deploy. (`coverArt.test.ts` holds the committed library to having
+ * every source, so the fallback is for rows the repo does not know about.)
  */
 import sharp from 'sharp';
-import { mkdirSync, readFileSync, readdirSync, existsSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import {
-	LANDSCAPE_HEIGHT as H,
-	LANDSCAPE_WIDTH as W,
-	landscapeUrl,
-	shareImage
-} from '../src/lib/coverArt.ts';
+import { existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
+import { LANDSCAPE_HEIGHT as H, LANDSCAPE_WIDTH as W } from '../src/lib/coverArt.ts';
 
-const HERE = dirname(fileURLToPath(import.meta.url));
-const STATIC = resolve(HERE, '../static');
-const CONTENT = resolve(HERE, '../../backend/library/fixtures/content');
-const OUT = resolve(process.cwd(), process.argv[2] ?? 'build');
+const BUILD = resolve(process.cwd(), process.argv[2] ?? 'build');
+const CARDS = '/og/covers/';
+const FALLBACK = '/og/default.png';
 
 /** The cover's box on the card: full height less a margin, at 3:4. */
 const PAD = 36;
 const CH = H - 2 * PAD;
 const CW = Math.round((CH * 3) / 4);
 const RADIUS = 10;
+/** How far the shadow spreads past the cover on each side. */
+const SPREAD = 30;
 
-/** Every published edition with a cover, and the raster that stands for it. */
-function editions() {
-	return readdirSync(resolve(CONTENT, 'books'))
-		.filter((f) => f.endsWith('.json'))
-		.sort()
-		.flatMap((f) => JSON.parse(readFileSync(resolve(CONTENT, 'books', f), 'utf8')))
-		.filter((row) => row.model === 'library.book' && row.fields.is_published !== false)
-		.map(({ fields }) => ({
-			slug: fields.slug,
-			language: fields.language || 'en',
-			cover_url: fields.cover_url || ''
-		}))
-		.map((book) => ({ book, source: shareImage(book) }))
-		.filter(({ source }) => source !== null);
+// ── What the site asks for ──────────────────────────────────────────────────
+
+/** Every prerendered page under the directories that name a cover card. */
+function pages(dir = BUILD) {
+	return readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+		const path = join(dir, e.name);
+		if (e.isDirectory()) return pages(path);
+		return e.name === 'index.html' && /\/(books|authors)\//.test(path) ? [path] : [];
+	});
 }
+
+const OG_IMAGE = /<meta property="og:image" content="([^"]+)"/;
+const LD = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
+
+/** Card path → the cover to compose it from (null where no page says). */
+function wanted() {
+	const cards = new Map();
+	for (const file of pages()) {
+		const html = readFileSync(file, 'utf8');
+		const og = OG_IMAGE.exec(html)?.[1];
+		if (!og) continue;
+		const card = new URL(og).pathname;
+		if (!card.startsWith(CARDS)) continue;
+		if (!cards.has(card)) cards.set(card, null);
+		// Only a book page states the cover; an author page names the same card
+		// as its first book's page and leaves the source to that page.
+		for (const [, json] of html.matchAll(LD)) {
+			const ld = JSON.parse(json);
+			if (ld['@type'] === 'Book' && ld.image) cards.set(card, new URL(ld.image).pathname);
+		}
+	}
+	return cards;
+}
+
+// ── The card ────────────────────────────────────────────────────────────────
 
 /**
  * The ground: the whole cover averaged down to a 6×3 field of its colours and
- * blown back up under a heavy blur. Two drafts measured what less does: a blur
- * at card size keeps the title as smudges either side of the cover, and a
- * 24×13 crop still carries the title's band as soft blocks. Squeezing the
- * whole cover (not cropping it) into a few pixels averages the title away and
- * leaves only its palette. Dimmed so the cover sits forward of it.
+ * blown back up. Squeezing the cover (not cropping it) averages its title
+ * away and leaves only its palette; two drafts showed that less leaves the
+ * title as smudges either side of the cover. Blurred at a tenth of the card's
+ * size — at full size the blur was ~70% of the script's time, for a result
+ * that differed from this by under half a level per pixel.
  */
 async function ground(src) {
 	const tiny = await sharp(src).resize(6, 3, { fit: 'fill' }).toBuffer();
-	return sharp(tiny)
-		.resize(W, H, { fit: 'fill', kernel: 'cubic' })
-		.blur(48)
+	const small = await sharp(tiny)
+		.resize(W / 10, Math.round(H / 10), { fit: 'fill', kernel: 'cubic' })
+		.blur(4.8)
 		.modulate({ brightness: 0.55 })
 		.toBuffer();
+	return sharp(small).resize(W, H, { fit: 'fill', kernel: 'cubic' }).toBuffer();
 }
 
+const MASK = Buffer.from(
+	`<svg width="${CW}" height="${CH}"><rect width="${CW}" height="${CH}" rx="${RADIUS}" fill="#fff"/></svg>`
+);
+
 /** The cover itself, scaled into its box with rounded corners. */
-async function cover(src) {
-	const mask = Buffer.from(
-		`<svg width="${CW}" height="${CH}"><rect width="${CW}" height="${CH}" rx="${RADIUS}" fill="#fff"/></svg>`
-	);
+function cover(src) {
 	return sharp(src)
 		.resize(CW, CH, { fit: 'cover' })
-		.composite([{ input: mask, blend: 'dest-in' }])
+		.composite([{ input: MASK, blend: 'dest-in' }])
 		.png()
 		.toBuffer();
 }
 
 /** A soft shadow under the cover, so it reads as an object on the ground. */
-const SHADOW = await sharp({
-	create: { width: CW + 60, height: CH + 60, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } }
-})
-	.composite([
-		{
-			input: Buffer.from(
-				`<svg width="${CW + 60}" height="${CH + 60}"><rect x="30" y="36" width="${CW}" height="${CH}" rx="${RADIUS}" fill="#000" fill-opacity=".6"/></svg>`
-			)
-		}
-	])
+const SHADOW = await sharp(
+	Buffer.from(
+		`<svg width="${CW + 2 * SPREAD}" height="${CH + 2 * SPREAD}"><rect x="${SPREAD}" y="${SPREAD + 6}" width="${CW}" height="${CH}" rx="${RADIUS}" fill="#000" fill-opacity=".6"/></svg>`
+	)
+)
 	.blur(14)
 	.png()
 	.toBuffer();
@@ -123,38 +140,45 @@ async function card(src, dest) {
 	mkdirSync(dirname(dest), { recursive: true });
 	await sharp(await ground(src))
 		.composite([
-			{ input: SHADOW, top: PAD - 30, left: left - 30 },
+			{ input: SHADOW, top: PAD - SPREAD, left: left - SPREAD },
 			{ input: await cover(src), top: PAD, left }
 		])
 		.jpeg({ quality: 82, mozjpeg: true })
 		.toFile(dest);
 }
 
+/** The house card, for a page whose cover the build does not hold. */
+async function fallback(dest) {
+	mkdirSync(dirname(dest), { recursive: true });
+	await sharp(join(BUILD, FALLBACK)).resize(W, H).jpeg({ quality: 82 }).toFile(dest);
+}
+
 async function main() {
 	const started = Date.now();
-	const all = editions();
-	const missing = all.filter(({ source }) => !existsSync(resolve(STATIC, `.${source.url}`)));
-	if (missing.length) {
-		throw new Error(
-			`build-share-cards: ${missing.length} published edition(s) name a cover that is not ` +
-				`in static/, so their share card cannot be made:\n` +
-				missing.map(({ book, source }) => `  ${book.language}/${book.slug} → ${source.url}`).join('\n')
+	const jobs = [...wanted()].map(([card, source]) => {
+		const src = source && join(BUILD, source);
+		return { card, src: src && existsSync(src) ? src : null, source };
+	});
+	const orphans = jobs.filter((j) => !j.src);
+	if (orphans.length) {
+		console.warn(
+			`build-share-cards: ${orphans.length} card(s) have no cover in the build, so they get ` +
+				`the default card:\n` +
+				orphans.map((j) => `  ${j.card} ← ${j.source ?? 'no Book.image on any page'}`).join('\n')
 		);
 	}
-	// A few at a time: sharp threads each image itself, and all ~340 at once
-	// only queues them behind one another while holding every buffer.
-	const queue = [...all];
-	const worker = async () => {
-		for (let job = queue.shift(); job; job = queue.shift()) {
-			await card(
-				resolve(STATIC, `.${job.source.url}`),
-				resolve(OUT, `.${landscapeUrl(job.book.slug, job.book.language)}`)
-			);
-		}
-	};
-	await Promise.all(Array.from({ length: 4 }, worker));
+	// A few at a time: sharp threads each image itself, and all at once only
+	// queues them behind one another while holding every buffer.
+	for (let i = 0; i < jobs.length; i += 4) {
+		await Promise.all(
+			jobs.slice(i, i + 4).map((j) =>
+				j.src ? card(j.src, join(BUILD, j.card)) : fallback(join(BUILD, j.card))
+			)
+		);
+	}
 	console.log(
-		`build-share-cards: ${all.length} cards into ${OUT} in ${((Date.now() - started) / 1000).toFixed(1)}s`
+		`build-share-cards: ${jobs.length - orphans.length} cards, ${orphans.length} fallbacks, ` +
+			`in ${((Date.now() - started) / 1000).toFixed(1)}s`
 	);
 }
 

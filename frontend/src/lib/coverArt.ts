@@ -107,8 +107,10 @@ export function hasTwin(coverUrl: string | null | undefined): boolean {
 }
 
 /**
- * The raster that stands for one edition anywhere outside the page: its
- * og:image, the author page's fallback card, its image-sitemap entry.
+ * The raster that stands for one edition's COVER anywhere outside the page:
+ * its `Book.image` structured data, its image-sitemap entry, and the source
+ * the landscape share card is built from (`shareCard`, which is what a link
+ * preview shows).
  *
  * A DESIGNED cover is its own image — its title is in its pixels. The two
  * wordless grounds are not: a plate is an `.svg`, which WhatsApp, Facebook and
@@ -135,7 +137,10 @@ export function shareImage(book: { slug: string; language: string; cover_url: st
 
 /** The landscape share card's canvas: 1.91:1, what Facebook, X and LinkedIn
  *  crop a link preview to. A 3:4 cover shown there loses its top and bottom —
- *  which is where a cover keeps its byline and its title. */
+ *  which is where a cover keeps its byline and its title. The same canvas as
+ *  `scripts/og-card.mjs`'s drawn cards; not imported there, because that file's
+ *  bytes are in the sermon cards' staleness digest and touching it would redraw
+ *  them all for no change in pixels. */
 export const LANDSCAPE_WIDTH = 1200;
 export const LANDSCAPE_HEIGHT = 630;
 
@@ -143,8 +148,9 @@ export const LANDSCAPE_HEIGHT = 630;
  * Where one edition's landscape share card is served.
  *
  * Not committed: `scripts/build-share-cards.mjs` composes it into the build
- * on every deploy, from the raster `shareImage` names, so it cannot go stale
- * against a cover that changed. One directory per language for every language,
+ * on every deploy, for every card a prerendered page names, from the cover
+ * that page's `Book.image` names — so it cannot go stale against a cover that
+ * changed, nor be missing for a page the build made. One directory per language for every language,
  * English included — unlike the twins, no card here was ever shared at an
  * older address that has to keep working.
  */

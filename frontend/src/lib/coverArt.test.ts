@@ -217,13 +217,16 @@ describe('shareCard', () => {
 	});
 
 	it('has a source on disk for every published edition the build will card', () => {
-		// `scripts/build-share-cards.mjs` fails the BUILD on a missing source,
-		// because a page would otherwise point its og:image at a card that was
-		// never made. Asked here too, so it fails in the unit suite first.
+		// The card build falls back to the house card where a page's cover is
+		// not in the build — right for a row the repo does not know about, and
+		// a silent downgrade for one it does. So the committed library is held
+		// to having every source here, where a gap fails instead.
 		const books = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
 		const missing = readdirSync(books)
-			.flatMap((f) => JSON.parse(readFileSync(join(books, f), 'utf8')))
-			.filter((r) => r.model === 'library.book' && r.fields.is_published !== false)
+			// The book row only: a work's file carries every chapter after it, and
+			// holding all of them to read one row each cost ~300 MB of heap.
+			.map((f) => JSON.parse(readFileSync(join(books, f), 'utf8')).find((r: { model: string }) => r.model === 'library.book'))
+			.filter((r) => r && r.fields.is_published !== false)
 			.map((r) => shareImage({ slug: r.fields.slug, language: r.fields.language, cover_url: r.fields.cover_url ?? '' }))
 			.filter((img): img is NonNullable<typeof img> => img !== null)
 			.filter((img) => !existsSync(join(process.cwd(), 'static', img.url)))

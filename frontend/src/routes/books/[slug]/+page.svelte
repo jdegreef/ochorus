@@ -126,30 +126,25 @@
 	const titleTag = $derived(
 		t('book.titleTag').replace('%title%', book.title).replace('%name%', book.author.name)
 	);
-	// og:image must be raster — WhatsApp/Facebook/Twitter refuse SVG preview
-	// images — and it must carry the book's TITLE, since a preview card is often
-	// all a reader sees. Two covers can't stand in for themselves: a generated
-	// `.svg`, and a `covers/art/` painting, which is a background the reader's
-	// browser draws the type over and so has no words in the pixels. Both fall
-	// back to the pre-rasterized twin.
+	// Two pictures of one edition, for two readers.
 	//
-	// THE TWIN IS PER EDITION, because the title is in its pixels. Keyed by slug
-	// alone, this served the ENGLISH card on every translated page — and these
-	// pages are prerendered, so it was baked into the HTML a crawler reads
-	// rather than something the runtime could put right. It also made the share
-	// layer the one place in the app that falls back to English, which the
-	// content model does not do anywhere else.
-	// Two pictures of one edition, for two readers. A link preview gets the
-	// landscape CARD, because Facebook, X and LinkedIn crop to 1.91:1 and a 3:4
-	// cover loses its title in that crop (see scripts/build-share-cards.mjs).
-	// Structured data gets the COVER itself: `Book.image` says what the book
-	// looks like, and a cover on a blurred ground is not that.
+	// A link preview gets the landscape CARD: Facebook, X and LinkedIn crop to
+	// 1.91:1, and a 3:4 cover loses its title in that crop. The card is built
+	// from the page itself at deploy (scripts/build-share-cards.mjs).
+	//
+	// Structured data gets the COVER — `Book.image` says what the book looks
+	// like, and a cover on a blurred ground is not that. It must be a raster
+	// carrying the TITLE, so a generated `.svg` and a `covers/art/` painting
+	// (no words in its pixels) are both stood in for by the edition's twin; see
+	// `shareImage`. The twin is per EDITION, because the title is in its
+	// pixels: keyed by slug alone it once served the English cover on every
+	// translated page, baked into prerendered HTML the runtime never corrects.
+	// The card build reads this `Book.image` as its source, so it names the
+	// cover the card is made from, too.
 	const share = $derived(shareCard(book));
 	const ogImage = $derived(share ? absUrl(share.url) : '');
-	const coverImage = $derived.by(() => {
-		const img = shareImage(book);
-		return img ? absUrl(img.url) : '';
-	});
+	const cover = $derived(shareImage(book));
+	const coverImage = $derived(cover ? absUrl(cover.url) : '');
 	// Watson's *All Things for Good* carries "A Divine Cordial" as its SUBTITLE
 	// and as an alternate title, so the page printed it twice, two lines apart.
 	// Dropped from the visible line, NOT from `alternateName`: a subtitle does
