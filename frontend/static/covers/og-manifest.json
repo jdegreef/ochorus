@@ -1836,6 +1836,30 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"sw/brave-for-god": {
+			"ground": "c7358524e68bcefbae267bb109a71c6aaabd09789160b822f5b2a532b554d708",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"sw/brave-for-god-2": {
+			"ground": "33b84fe32eb9ba5242c3e2a4f3c6c9eaf30d29bc94c96cc8523cf759bdd515da",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
+		"sw/brave-for-god-3": {
+			"ground": "9118f5248c2fa45e786a699ce3e549c17eec98b33cc44a2027fd6ac43dbd89a1",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"sw/cheque-book": {
 			"ground": "0833bf4d3686764b58c07d24a0456e8b730a2e50746e64a5d24424e95da739fe",
 			"style": "revival",

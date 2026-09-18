@@ -12,6 +12,11 @@
 // Moveram o Céu"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
 // the translated title and the reader page bakes the 13 chapters. No plans/+page.ts touch owed —
 // women-who-moved-heaven-2 backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-17: three NEW Swahili books — the Brave for God young-readers trilogy
+// (brave-for-god / -2 / -3), house-written Ochorus Originals of eighteen missionary lives told for
+// children ("Jasiri kwa ajili ya Mungu"). Rebuilds /sw/books so each card carries its translated
+// title on its localized plate cover, and the reader pages bake the six chapters apiece. None back
+// a LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-17: one NEW Swahili book — susanna-wesley-clarke (#2174), Eliza
 // Clarke's biography of Susanna Wesley, mother of John and Charles Wesley, 16 chapters ("Susanna
 // Wesley"). Rebuilds /sw/books so the card carries its translated title on its localized plate
