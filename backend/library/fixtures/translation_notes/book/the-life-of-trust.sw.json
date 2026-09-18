@@ -1,0 +1,608 @@
+{
+ "kind": "book",
+ "slug": "the-life-of-trust",
+ "language": "sw",
+ "job_issue": 2581,
+ "references": [
+  {
+   "reference": "Luka 17:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 4:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 7:7-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 7:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 11:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 18:19-20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 21:21-22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 11:22-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 14:12-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 16:23-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yakobo 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yakobo 5:17-18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 15:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 11:32-35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 17:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 9:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mwanzo 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 118:8-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yeremia 17:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 10:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ufunuo 22:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wafilipi 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 34:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 5:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wakorintho 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 11:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezra 8:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wafilipi 1:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waefeso 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 9:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waefeso 1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yakobo 2:1-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wafilipi 4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 12:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 6:19-34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 14:13, 14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 25:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 6:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 13:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 11:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 2:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ufunuo 3:14-22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wakolosai 1:21-23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wakorintho 6:14-18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Habakuki 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaya 11:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 13:24-30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 13:36-43",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timotheo 3:1-13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matendo 15:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mwanzo 14:21-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "3 Yohana 7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 13:24-43",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 20:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matendo 28:2-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zekaria 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wakorintho 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 11:13-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 6:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 81:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 6:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 9:36-37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mhubiri 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 11:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 63",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 64",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 65",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 65:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 103",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 68:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 9:36, 37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 6:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wakorintho 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timotheo 6:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 6:19-20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 34:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mwanzo 18:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 14:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 103:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timotheo 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mhubiri 9:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 18:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 4:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mwanzo 6:1-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 66:18-19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mithali 22:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mhubiri 11:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wagalatia 6:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 15:58",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mithali 22:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mithali 11:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 6:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 37:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wagalatia 3:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Petro 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wafilipi 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 6:25-34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Nyakati 20:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 11:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matendo 10:43",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 10:9, 10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 8:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 8:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 19:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yakobo 1:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 10:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 13:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wakorintho 8:1-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaya 54:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Petro 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 6:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 16:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mambo ya Walawi 26:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mwanzo 28:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wakorintho 9:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mithali 11:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 6:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 7:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wathesalonike 4:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wathesalonike 3:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waefeso 4:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mithali 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 14:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wafilipi 4:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yakobo 1:2-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zekaria 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Samweli 7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 18:1-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 34:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mithali 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mithali 11:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mithali 16:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 12:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yakobo 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 21:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matendo 4:36-37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 7:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 37:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Nehemia 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 103:1",
+   "status": "self_rendered"
+  }
+ ]
+}

@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-18: one NEW Swahili book — the-life-of-trust (#2581), the autobiography
+// and journal of George Müller of Bristol, 28 chapters ("Maisha ya Kumtumaini Mungu"). Rebuilds
+// /sw/books so the card carries its translated title over the shared painting cover, and the reader
+// page bakes the 28 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-18: one NEW Swahili book — pilgrims-progress (#2586), John Bunyan's
 // allegory (Parts I and II), 22 chapters ("Safari ya Msafiri"). Rebuilds /sw/books so the card
 // carries its translated title over the shared painting cover, and the reader page bakes the 22

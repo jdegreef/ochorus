@@ -2244,6 +2244,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"sw/the-life-of-trust": {
+			"ground": "241881e37eadc95bae908d63a9fddf27bac4bb058b60cca192b79e03997c334b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
+		},
 		"sw/the-masters-indwelling": {
 			"ground": "32d6dc5d1e047b10968d86db3355ba626d9408e91995d39c3bd34e14fa40bd1c",
 			"style": "devotional",
