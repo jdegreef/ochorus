@@ -1099,6 +1099,8 @@ export interface QuoteAuthorSummary {
 	/** Blank for authors with no free image; the card falls back to initials. */
 	photo_url: string;
 	count: number;
+	/** The author's shortest reviewed quote — the card's teaser line. "" if none. */
+	teaser: string;
 }
 
 export const listQuoteAuthors = () =>
