@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 import {
 	COVER_WIDTHS,
+	LANDSCAPE_HEIGHT,
+	LANDSCAPE_WIDTH,
 	TWIN_HEIGHT,
 	TWIN_WIDTH,
 	channels,
@@ -11,6 +13,7 @@ import {
 	coverSrcset,
 	isArtCover,
 	isPlateCover,
+	shareCard,
 	shareImage,
 	toHex,
 	tintable
@@ -192,5 +195,42 @@ describe('shareImage', () => {
 		// committed twin, so the constants cannot drift from the files quietly.
 		const png = readFileSync(join(process.cwd(), 'static/covers/waiting-on-god.png'));
 		expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual([TWIN_WIDTH, TWIN_HEIGHT]);
+	});
+});
+
+describe('shareCard', () => {
+	const ed = (cover_url: string, language = 'en') => ({ slug: 'waiting-on-god', language, cover_url });
+
+	it('gives every edition with a cover a landscape card, in its own language', () => {
+		expect(shareCard(ed('/covers/godliness.jpg'))).toEqual({
+			url: '/og/covers/en/waiting-on-god.jpg',
+			width: LANDSCAPE_WIDTH,
+			height: LANDSCAPE_HEIGHT
+		});
+		expect(shareCard(ed('/covers/art/waiting-on-god.jpg', 'ar'))?.url).toBe(
+			'/og/covers/ar/waiting-on-god.jpg'
+		);
+	});
+
+	it('claims no card where there is no cover to set on one', () => {
+		expect(shareCard(ed(''))).toBeNull();
+	});
+
+	it('has a source on disk for every published edition the build will card', () => {
+		// The card build falls back to the house card where a page's cover is
+		// not in the build — right for a row the repo does not know about, and
+		// a silent downgrade for one it does. So the committed library is held
+		// to having every source here, where a gap fails instead.
+		const books = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
+		const missing = readdirSync(books)
+			// The book row only: a work's file carries every chapter after it, and
+			// holding all of them to read one row each cost ~300 MB of heap.
+			.map((f) => JSON.parse(readFileSync(join(books, f), 'utf8')).find((r: { model: string }) => r.model === 'library.book'))
+			.filter((r) => r && r.fields.is_published !== false)
+			.map((r) => shareImage({ slug: r.fields.slug, language: r.fields.language, cover_url: r.fields.cover_url ?? '' }))
+			.filter((img): img is NonNullable<typeof img> => img !== null)
+			.filter((img) => !existsSync(join(process.cwd(), 'static', img.url)))
+			.map((img) => img.url);
+		expect(missing).toEqual([]);
 	});
 });
