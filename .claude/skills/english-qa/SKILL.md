@@ -206,6 +206,17 @@ rule. Two more traps this book hit, both worth internalising:
    Write the `BODY_CORRECTIONS` replacement to match in **any** language where
    the defect is numeric or a proper name (the `the-key-in-my-hand` entry does
    this); use `source_fixes.py` where the prose around it is localized.
+   **When the defect propagated as DIFFERENT localized words per language**
+   (`divine-songs-for-children`: an OCR "play"-for-"pray" in the EN body, echoed
+   as Swahili `hawachezi`-for-`hawaombi`), neither of those fits — one pair can't
+   match both, and `source_fixes` is one `(slug, order)` replacement across
+   languages. Put **one language-scoped pair per edition in the SAME slug's
+   `replacements`** (each bites only its own language, so `("but never play;",…)`
+   and `("hawachezi kamwe",…)` coexist and reach prod on deploy). A translation
+   pair still leaves its fixture stale — settle each edition by hand (see the
+   translation failure mode), and check the Luganda/other editions before
+   assuming they're wrong: here `lg` had already rendered the correct `batasaba`
+   ("never pray") and needed no change.
 5. **Apply**, then re-run the audit for that slug and confirm the class is gone.
 6. **Regenerate the fixture** (`uv run python scripts/regen_fixture.py`) — the
    fixture is what a fresh build loads and what the ratchet measures.
