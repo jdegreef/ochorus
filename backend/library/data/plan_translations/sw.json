@@ -58,5 +58,9 @@
       "seed_plans will NOT create this row today: a curated plan needs EVERY source book present in the language, and both are still English-only. The prose ships now, deliberately, so that the moment both books land in Swahili the row is created with this wording rather than falling back to the ENGLISH tuple (the #819 defect). Whoever translates either book should adopt this title as the card's prefix, or update this entry in the same PR.",
       "Written for job #1736."
     ]
+  },
+  "growing-in-wisdom-18-days": {
+    "title": "Kukua katika Hekima kwa Siku 18",
+    "description": "Mwongozo wa James DeGreef kwa wanafunzi — somo moja fupi kila siku kwa siku kumi na nane. Kuanzia kugundua kusudi lako hadi kujenga maono ya wakati ujao, kila siku huunganisha ushauri wa vitendo na Andiko, tafakari, na sala."
   }
 }
