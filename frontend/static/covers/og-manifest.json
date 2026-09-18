@@ -860,6 +860,14 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"fr/talks-to-the-farmer": {
+			"ground": "a98d8c68fcb55e7ccb5e9d72ce6a63dfc2841f307454c6c43b08dfde23348420",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5
+		},
 		"fr/waiting-on-god": {
 			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
 			"style": "devotional",
