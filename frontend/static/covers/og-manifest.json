@@ -764,6 +764,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"fr/purity-of-heart": {
+			"ground": "1fe8f872cc1054134db78c2b92194f37168a9e5d5c340921e7fd84980a3c12a3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35
+		},
 		"fr/the-inner-chamber": {
 			"ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
 			"style": "devotional",
@@ -787,6 +795,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95
+		},
+		"fr/the-way-to-god": {
+			"ground": "842c2871e515cde3856d373cb046f5409bb76ca4bb15f8be289cfab2f9b6e32c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6
 		},
 		"fr/true-vine": {
 			"ground": "2ae642dca179a7ded689f75d540d4c5d1a3efb7566068a1a8d2bf878f6aa5185",
@@ -1532,6 +1548,14 @@
 			"art": true,
 			"scrim": 0.9
 		},
+		"pt/spurgeon-on-prayer": {
+			"ground": "45e72f90b2c861c4a31aad5059cfe51bb0d8486cd59bc34954390a9e7cb3d6fe",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
+		},
 		"pt/stepping-stones-2": {
 			"ground": "3d85ea47242de1c603f2dbbf4e0fed26aff1daa162b96a44e7b5e60f21424ad1",
 			"style": "house",
@@ -2020,6 +2044,14 @@
 			"art": true,
 			"scrim": 0.6
 		},
+		"sw/things-as-they-are": {
+			"ground": "533fc2826c5fc7fcc4cc123a41e912c6d5e175867bf66c3e7f182672e2f950e8",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"sw/till-he-come": {
 			"ground": "a3055051836f3acb228877c9eba9aa2ac60092c1dae375f14658610239b4cccf",
 			"style": "revival",
@@ -2055,6 +2087,14 @@
 		"sw/watchman-nee-a-life": {
 			"ground": "eb012ea9e64f4c122040e5e734312119320d2fce7c9b94c768665ce278b2ee16",
 			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
+		},
+		"sw/way-into-holiest": {
+			"ground": "ccc23c936cca03954a801237d65e76942d4a3c5ad04ed21c3d0dbd9705d8ee77",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"art": true,

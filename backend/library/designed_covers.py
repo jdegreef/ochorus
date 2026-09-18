@@ -87,6 +87,8 @@ from typing import NamedTuple
 #: committed file. Add an entry when you add a cover; change one only when you
 #: mean to replace the artwork.
 DESIGNED: dict[str, str] = {
+    "/covers/a-retrospect-children.jpg":
+        "df182354203c95fb652f66605aca61511ebf76b1c2f3a4f1dc4930249cfde4c7",
     "/covers/baptism-with-the-holy-spirit.png":
         "d7a50b3b4aef331a353c928d60f5a0a4db8328429a9e024e80dab6f11a8d9667",
     "/covers/clothed-with-strength-and-dignity.jpg":
@@ -111,6 +113,8 @@ DESIGNED: dict[str, str] = {
         "46b871cd0fe570bf38f6f6fe628064d7643d5d5baee2f77777331c347fd4ab99",
     "/covers/men-who-tended-the-flock-2.jpg":
         "e051d1a0e83eb33f8254ef9a68fbe79c2cc6f0ba3b271a0a10de15a77a5eb1b5",
+    "/covers/pilgrims-progress-children.jpg":
+        "9250c3a997cdeff08f92539bc745ab5ee7adb483788d16e610c2b924125c98fe",
     "/covers/prayer-the-pulse-of-life.png":
         "29030df615f17c8cf480f36a1bf738c14a7407cf9cc51c0e178cc480386cc3e1",
     "/covers/purity-of-heart.jpg":
@@ -123,6 +127,10 @@ DESIGNED: dict[str, str] = {
         "f3564c524858961bbe55d4a7b900f70b88589a349ca8ad56f9b94ef92bce15da",
     "/covers/talks-to-the-farmer.jpg":
         "120ca61d19bce6c692bc1bc8c9eecc38543224945496fbb427f0c1ecdbf6ed48",
+    "/covers/talks-to-the-farmer-children.jpg":
+        "bdc9b9dcb04b2e12fa7699fe5c101e55bf44864693a27cb3b25122e7c0cf219c",
+    "/covers/talks-to-the-farmer-teens.jpg":
+        "476d31c3de2cf2a401fe72bc31f1faa26b96128a0834610a7f7a9ea257591d2c",
     "/covers/the-christians-secret-of-a-happy-life-4.jpg":
         "d9b9836cb2eaa1cd8d669cb3f2fc880ed884c0ab020e13afb7fde2e6ea2685e5",
     "/covers/the-god-of-all-comfort.jpg":
@@ -131,6 +139,8 @@ DESIGNED: dict[str, str] = {
         "524abc40f0fb242aaba695875851382a6d98481799a6178304d47c8befbde671",
     "/covers/the-key-in-my-hand.jpg":
         "3e1a5e8c26072334f96a3a1039808ab24d0e749aad148613c23948c987fb1b62",
+    "/covers/the-life-of-trust-children.jpg":
+        "71984f6a7041ad1bd19388512f88044e57e62efc49823a2f38bc2c2c7e834ba1",
     "/covers/the-masters-indwelling.jpg":
         "389d6f2248dd21120d79be7def954bebe8ed895a93b0517eefa45e6ee8715949",
     "/covers/the-person-and-work-of-the-holy-spirit.jpg":

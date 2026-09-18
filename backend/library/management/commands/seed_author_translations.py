@@ -32,6 +32,7 @@ unreviewed rows on the next deploy.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from django.core.management.base import BaseCommand
@@ -51,8 +52,8 @@ def language_dirs() -> list[tuple[str, Path]]:
     )
 
 
-def read_bios(d: Path) -> dict[str, dict[str, str]]:
-    """slug -> {bio, bio_html} for one language dir (absent fields omitted).
+def read_bios(d: Path) -> dict[str, dict]:
+    """slug -> {bio, bio_html, faq} for one language dir (absent fields omitted).
 
     Short bios are per-slug files (``<slug>.short.txt``), like the long-form
     ``<slug>.html`` always was — so two bio jobs in the same language no longer
@@ -60,8 +61,13 @@ def read_bios(d: Path) -> dict[str, dict[str, str]]:
     still opens ``author_bios_sw``/``author_bios_lg``'s copies unguarded and
     migrations are immutable, so those two files exist, empty, for its sake
     alone (see this directory's README).
+
+    The editorial Q&A rides here too, as ``<slug>.faq.json`` — a JSON array of
+    ``{"q", "a"}`` plain-text pairs, the translated twin of ``Author.faq``. It is
+    the ONE ``.json`` this reader touches; the frozen ``short.json`` inputs are
+    matched by exact name below, never by glob, so they never collide.
     """
-    bios: dict[str, dict[str, str]] = {}
+    bios: dict[str, dict] = {}
     for path in d.glob("*.short.txt"):
         bio = path.read_text(encoding="utf-8").strip()
         if bio:
@@ -71,6 +77,11 @@ def read_bios(d: Path) -> dict[str, dict[str, str]]:
         html = path.read_text(encoding="utf-8").strip()
         if html:
             bios.setdefault(path.stem, {})["bio_html"] = html
+    for path in d.glob("*.faq.json"):
+        faq = json.loads(path.read_text(encoding="utf-8"))
+        if faq:
+            slug = path.name.removesuffix(".faq.json")
+            bios.setdefault(slug, {})["faq"] = faq
     return bios
 
 

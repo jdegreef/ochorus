@@ -637,6 +637,51 @@ def assert_qa_wellformed(test, items, keys, label):
             test.assertNotIn("http", low, f"{label}[{i}].{key}: carries a URL")
 
 
+class AuthorFaqTranslationShapeTests(SimpleTestCase):
+    """The TRANSLATED editorial Q&A — ``<slug>.faq.json`` files under
+    ``migrations/data/author_bios_<lang>/``, seeded into ``AuthorTranslation.faq``
+    (like the ``.short.txt`` / ``.html`` bios). Each file must pass the same shape
+    guard as the English set AND carry the same number of pairs — a translation
+    answers every English question, no more and no fewer.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        rows = json.loads(AUTHORS_FILE.read_text(encoding="utf-8"))
+        cls.en_faq_len = {
+            r["fields"]["slug"]: len(r["fields"]["faq"])
+            for r in rows
+            if r["fields"].get("faq")
+        }
+
+    def test_translated_faq_files_are_well_formed_and_match_english(self):
+        from library.management.commands.seed_author_translations import (
+            DATA_DIR,
+            PREFIX,
+        )
+
+        files = sorted(DATA_DIR.glob(f"{PREFIX}*/*.faq.json"))
+        for path in files:
+            lang = path.parent.name.removeprefix(PREFIX)
+            slug = path.name.removesuffix(".faq.json")
+            with self.subTest(faq=f"{slug} [{lang}]"):
+                faq = json.loads(path.read_text(encoding="utf-8"))
+                assert_qa_wellformed(self, faq, {"q", "a"}, f"{slug} [{lang}]")
+                # A translation exists only for an author who has an English set,
+                # and answers exactly its questions.
+                self.assertIn(
+                    slug, self.en_faq_len,
+                    f"{slug} [{lang}]: translated faq for an author with no "
+                    "English faq in authors.json",
+                )
+                self.assertEqual(
+                    len(faq), self.en_faq_len[slug],
+                    f"{slug} [{lang}]: {len(faq)} pairs vs "
+                    f"{self.en_faq_len.get(slug)} in English — must match",
+                )
+
+
 class BookQaShapeTests(SimpleTestCase):
     """The editorial Q&A on ``Book.qa`` — the unified ``{question, answer}``
     contract new types adopt (docs/questions-and-answers-plan.md). Book qa rides

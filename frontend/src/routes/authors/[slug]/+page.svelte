@@ -628,10 +628,11 @@
 	     disagree. -->
 	{#if showFaq}
 		<section id="faq" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
-			<!-- Literal, not a t() key: the editorial sets ship English-first, so
-			     today every set that reaches this heading is English. When the Q&A is
-			     translated per locale, move this to a localized key alongside it. -->
-			<h2 class="section-label">Common questions</h2>
+			<!-- Localized: the API serves the Q&A per locale (AuthorTranslation.faq),
+			     so the heading follows the reader's language too. Reuses the same
+			     `qa.sectionTitle` key the book Q&A section uses, so the two read
+			     identically. -->
+			<h2 class="section-label">{t('qa.sectionTitle')}</h2>
 			<div class="faq-list">
 				{#each faq as item, i (i)}
 					<details class="faq-item" open={i === 0}>

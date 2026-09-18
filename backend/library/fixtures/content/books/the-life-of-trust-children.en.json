@@ -1,0 +1,220 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "george-muller"
+  ],
+  "slug": "the-life-of-trust-children",
+  "language": "en",
+  "title": "The Life of Trust (For Children)",
+  "subtitle": "",
+  "description": "George Müller cared for thousands of orphans in England, and he did it by asking no one but God for the money, the food, and the help he needed — and praying. This children’s edition retells the true story of his life in short chapters made to be read aloud: a Bible verse, a story of a prayer God answered, one thing it means for you, and a short prayer.",
+  "qa": [
+   {
+    "question": "What is The Life of Trust (For Children) about?",
+    "answer": "It is a children’s version of George Müller’s own life story. Müller looked after thousands of orphan children in England, and instead of asking people for money he asked God — and God provided again and again. Each short chapter tells one true story of a prayer that God answered."
+   },
+   {
+    "question": "Who was George Müller?",
+    "answer": "A man who lived in England long ago and built homes that cared for thousands of orphans — children with no mother or father. He decided never to ask anyone but God for what the children needed, and he wrote down how God answered his prayers so that others would trust God too."
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells a true story from George Müller’s life, shows one simple thing it means for you, and ends with a short prayer."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children — to be read aloud by a grown-up, or read by an older child alone. George Müller’s fuller autobiography, The Life of Trust, is also available for older readers."
+   },
+   {
+    "question": "What is the main thing the book teaches?",
+    "answer": "That God hears and answers prayer, and that he can be trusted to provide what we truly need. George Müller’s life is one long true story of asking God for help and watching God provide, so that children can learn to trust him too."
+   },
+   {
+    "question": "Are the stories true?",
+    "answer": "Yes. They are retold simply for children, but they come from George Müller’s own account of his life — the real orphan homes he built and the real prayers God answered, which he wrote down as they happened."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "",
+  "cover_url": "/covers/the-life-of-trust-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 22,
+  "is_published": true,
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Coin in the Shoe",
+  "body_html": "<blockquote>“All of us, like sheep, have wandered away.” — from Isaiah 53</blockquote> <p>Would you believe that the man who cared for thousands of orphans was a thief when he was a boy? It’s true. His name was George Müller, and when he was young he was not good at all.</p> <p>George liked to take money that wasn’t his. One day his father wanted to find out if George had been stealing. So he counted out some money, left it in the room, and went away, to see if any would go missing.</p> <p>George was left alone with the money. And what did he do? He took some — and hid a coin under his foot, inside his shoe! But when his father came back and counted, the money was gone. They searched George, and there was the coin, hiding in his shoe.</p> <p>George didn’t stop there. As he grew older he told lies, and spent money he didn’t have, until one day, when he was sixteen, he was even put in prison for a while.</p> <p>Now, why does his true story start with all the wrong things he did? Because it makes the rest so wonderful. God was not finished with George. God can take a boy who lies and steals and change him completely — and one day use him to help more children than George could count.</p> <p>So if you have done wrong things, don’t ever think you are too bad for God. Nobody is. God loves to change hearts.</p> <p><em>Dear God, thank you that you can change anyone, even me. Please make my heart good and clean. Amen.</em></p>",
+  "body_text": "“All of us, like sheep, have wandered away.” — from Isaiah 53 Would you believe that the man who cared for thousands of orphans was a thief when he was a boy? It’s true. His name was George Müller, and when he was young he was not good at all. George liked to take money that wasn’t his. One day his father wanted to find out if George had been stealing. So he counted out some money, left it in the room, and went away, to see if any would go missing. George was left alone with the money. And what did he do? He took some — and hid a coin under his foot, inside his shoe! But when his father came back and counted, the money was gone. They searched George, and there was the coin, hiding in his shoe. George didn’t stop there. As he grew older he told lies, and spent money he didn’t have, until one day, when he was sixteen, he was even put in prison for a while. Now, why does his true story start with all the wrong things he did? Because it makes the rest so wonderful. God was not finished with George. God can take a boy who lies and steals and change him completely — and one day use him to help more children than George could count. So if you have done wrong things, don’t ever think you are too bad for God. Nobody is. God loves to change hearts. Dear God, thank you that you can change anyone, even me. Please make my heart good and clean. Amen.",
+  "word_count": 271
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "The Open Door",
+  "body_html": "<blockquote>“While he was still far away, his father saw him and ran to him.” — from Luke 15</blockquote> <p>One Saturday evening, when George was a young man, his friend took him to a house where some Christians were meeting. George felt shy. He had never been anywhere like it.</p> <p>Inside, the people read the Bible together, and they sang, and then something happened that George never forgot. A man got down on his knees to pray. George had never seen anyone kneel to pray before — he had never even prayed on his knees himself. It moved him deep down in his heart.</p> <p>The kind man whose house it was could see George felt out of place. So he said the loveliest thing: “Come as often as you please. My house and my heart are open to you.”</p> <p>George went home that night — and instead of feeling empty and restless as he usually did, he lay down in his bed peaceful and happy. Something brand new had begun inside him. He said later it was the turning point of his whole life. That was the night George came home to God.</p> <p>God is like that kind man at the door, only far, far kinder. However far away from him you have wandered, his heart is open to you. You never have to be good enough first. You just have to come.</p> <p><em>Dear God, thank you that your heart is always open to me. I want to come to you. Amen.</em></p>",
+  "body_text": "“While he was still far away, his father saw him and ran to him.” — from Luke 15 One Saturday evening, when George was a young man, his friend took him to a house where some Christians were meeting. George felt shy. He had never been anywhere like it. Inside, the people read the Bible together, and they sang, and then something happened that George never forgot. A man got down on his knees to pray. George had never seen anyone kneel to pray before — he had never even prayed on his knees himself. It moved him deep down in his heart. The kind man whose house it was could see George felt out of place. So he said the loveliest thing: “Come as often as you please. My house and my heart are open to you.” George went home that night — and instead of feeling empty and restless as he usually did, he lay down in his bed peaceful and happy. Something brand new had begun inside him. He said later it was the turning point of his whole life. That was the night George came home to God. God is like that kind man at the door, only far, far kinder. However far away from him you have wandered, his heart is open to you. You never have to be good enough first. You just have to come. Dear God, thank you that your heart is always open to me. I want to come to you. Amen.",
+  "word_count": 251
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "Praying His Friends to Tears",
+  "body_html": "<blockquote>“Pray for one another.” — from James 5</blockquote> <p>Now that George was so happy knowing God, he wanted his friends to be happy too. So he told two of his old friends all about it.</p> <p>But they just shrugged. “We don’t feel that we are sinners,” they said. “We don’t feel we’ve done anything that needs forgiving.”</p> <p>What could George do? He couldn’t make them see. So he did the only thing he could think of — he prayed. Right there, he got down on his knees and asked God to show his two friends the truth about their own hearts. Then he went off into his bedroom and kept on praying for them.</p> <p>And when George came back — his two friends were crying. Both of them! God had done what George could not. They told him that now they knew they were sinners, and that they needed God too.</p> <p>George was learning something he would use for the rest of his life: <strong>when we can’t change something ourselves, we can pray, and God can.</strong></p> <p>Is there someone you wish knew God — a friend, a brother or sister, someone in your family? You don’t have to make them believe. You can do what George did. You can pray for them, and leave the rest to God.</p> <p><em>Dear God, please help the people I love to know you. I can’t do it, but you can. Amen.</em></p>",
+  "body_text": "“Pray for one another.” — from James 5 Now that George was so happy knowing God, he wanted his friends to be happy too. So he told two of his old friends all about it. But they just shrugged. “We don’t feel that we are sinners,” they said. “We don’t feel we’ve done anything that needs forgiving.” What could George do? He couldn’t make them see. So he did the only thing he could think of — he prayed. Right there, he got down on his knees and asked God to show his two friends the truth about their own hearts. Then he went off into his bedroom and kept on praying for them. And when George came back — his two friends were crying. Both of them! God had done what George could not. They told him that now they knew they were sinners, and that they needed God too. George was learning something he would use for the rest of his life: when we can’t change something ourselves, we can pray, and God can. Is there someone you wish knew God — a friend, a brother or sister, someone in your family? You don’t have to make them believe. You can do what George did. You can pray for them, and leave the rest to God. Dear God, please help the people I love to know you. I can’t do it, but you can. Amen.",
+  "word_count": 237
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "No More Wages, Only God",
+  "body_html": "<blockquote>“My God will supply everything you need.” — from Philippians 4</blockquote> <p>When George grew up he became a preacher, and the church paid him wages, like a job. But George had an unusual idea. He decided to stop taking wages altogether!</p> <p>Instead, he would trust God to provide. He put a little box on the wall of the church, so anyone who wanted to could give — but he made a firm rule: he would never ask a single person for money. He would only ever ask <em>God.</em> If he had a need, he would tell God about it, and nobody else.</p> <p>It sounds a bit frightening, doesn’t it? And one day soon it was put to the test. George and his wife had almost no money left — only a few coins. So they did what they had promised: they knelt down and told God.</p> <p>A few hours later, a woman came to their door and asked, “Do you need any money?” She gave them some — and here is the wonderful part. She said God had put it in her heart to give it two weeks earlier! God had started the answer before George had even prayed. And George had never told her they were in need. Only God knew.</p> <p>God knows exactly what you need before you even ask him. You can tell him about anything, and trust him to take care of you.</p> <p><em>Dear God, thank you that you already know what I need. Help me to trust you and tell you everything. Amen.</em></p>",
+  "body_text": "“My God will supply everything you need.” — from Philippians 4 When George grew up he became a preacher, and the church paid him wages, like a job. But George had an unusual idea. He decided to stop taking wages altogether! Instead, he would trust God to provide. He put a little box on the wall of the church, so anyone who wanted to could give — but he made a firm rule: he would never ask a single person for money. He would only ever ask God. If he had a need, he would tell God about it, and nobody else. It sounds a bit frightening, doesn’t it? And one day soon it was put to the test. George and his wife had almost no money left — only a few coins. So they did what they had promised: they knelt down and told God. A few hours later, a woman came to their door and asked, “Do you need any money?” She gave them some — and here is the wonderful part. She said God had put it in her heart to give it two weeks earlier! God had started the answer before George had even prayed. And George had never told her they were in need. Only God knew. God knows exactly what you need before you even ask him. You can tell him about anything, and trust him to take care of you. Dear God, thank you that you already know what I need. Help me to trust you and tell you everything. Amen.",
+  "word_count": 258
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "A Knock at the Door",
+  "body_html": "<blockquote>“Give us today our daily bread.” — from Matthew 6</blockquote> <p>One Sunday, George and his wife were down to their very last few pennies. There was barely enough bread in the house for that one day, and no money to buy more for the evening.</p> <p>So George prayed. He didn’t pray a fancy prayer. He asked God, very simply, to send them some bread for that evening — real bread, for their table, that very day.</p> <p>And here is what happened. <strong>While George was still praying</strong> — before he had even finished — there was a knock at the door!</p> <p>A poor woman was standing there. She had brought some of her own dinner to share, and a little money from another poor friend. And later that same afternoon, she came back again, this time carrying a big loaf of bread.</p> <p>God had heard. In fact, God had sent that woman on her way with the bread before George had finished asking. The answer was already coming while he was still on his knees.</p> <p>When Jesus taught us to pray, he told us to ask for our “daily bread” — the things we need each day. George took that seriously, and God took care of him. You can ask God for the ordinary things you need too. He cares about all of it, even bread for supper.</p> <p><em>Dear God, thank you that you care about even the small, everyday things. Please give me what I need today. Amen.</em></p>",
+  "body_text": "“Give us today our daily bread.” — from Matthew 6 One Sunday, George and his wife were down to their very last few pennies. There was barely enough bread in the house for that one day, and no money to buy more for the evening. So George prayed. He didn’t pray a fancy prayer. He asked God, very simply, to send them some bread for that evening — real bread, for their table, that very day. And here is what happened. While George was still praying — before he had even finished — there was a knock at the door! A poor woman was standing there. She had brought some of her own dinner to share, and a little money from another poor friend. And later that same afternoon, she came back again, this time carrying a big loaf of bread. God had heard. In fact, God had sent that woman on her way with the bread before George had finished asking. The answer was already coming while he was still on his knees. When Jesus taught us to pray, he told us to ask for our “daily bread” — the things we need each day. George took that seriously, and God took care of him. You can ask God for the ordinary things you need too. He cares about all of it, even bread for supper. Dear God, thank you that you care about even the small, everyday things. Please give me what I need today. Amen.",
+  "word_count": 248
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "Open Your Mouth Wide",
+  "body_html": "<blockquote>“Open your mouth wide, and I will fill it.” — from Psalm 81</blockquote> <p>One day George read about a man long ago who had built a home for orphans — children with no mother or father — just by trusting God. And a big idea began to grow in George’s heart. What if <em>he</em> started a home for orphans too?</p> <p>George prayed and prayed about it. He even asked God to take the idea away if it wasn’t from him. Then, reading his Bible, he found these words: “Open your mouth wide, and I will fill it.” It was as if God were saying, “Ask me for big things, George. I can do them.”</p> <p>So George asked God for three big things: a house for the children, a large sum of money, and kind people to look after them.</p> <p>Then he waited to see what God would do. The very first gift was one single shilling — one small coin. The next day, someone sent a big wardrobe. Then a woman offered to come and help. Then a husband and wife offered to look after the children without being paid at all.</p> <p>Little by little, God filled every need. And one spring day the orphan home opened its doors — with seventeen children living in it!</p> <p>George didn’t do all this to look clever. He did it so that everyone could see, with their own eyes, that <strong>God is real, and God still hears prayer.</strong></p> <p><em>Dear God, you are big enough for anything. Help me to bring you my biggest hopes, and to trust you with them. Amen.</em></p>",
+  "body_text": "“Open your mouth wide, and I will fill it.” — from Psalm 81 One day George read about a man long ago who had built a home for orphans — children with no mother or father — just by trusting God. And a big idea began to grow in George’s heart. What if he started a home for orphans too? George prayed and prayed about it. He even asked God to take the idea away if it wasn’t from him. Then, reading his Bible, he found these words: “Open your mouth wide, and I will fill it.” It was as if God were saying, “Ask me for big things, George. I can do them.” So George asked God for three big things: a house for the children, a large sum of money, and kind people to look after them. Then he waited to see what God would do. The very first gift was one single shilling — one small coin. The next day, someone sent a big wardrobe. Then a woman offered to come and help. Then a husband and wife offered to look after the children without being paid at all. Little by little, God filled every need. And one spring day the orphan home opened its doors — with seventeen children living in it! George didn’t do all this to look clever. He did it so that everyone could see, with their own eyes, that God is real, and God still hears prayer. Dear God, you are big enough for anything. Help me to bring you my biggest hopes, and to trust you with them. Amen.",
+  "word_count": 268
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "The Girl Who Gave Everything",
+  "body_html": "<blockquote>“God loves a cheerful giver.” — from 2 Corinthians 9</blockquote> <p>One of the loveliest gifts the orphans ever received came from a poor young woman who sewed clothes for a living. She earned only a few pennies a week, and she never once complained.</p> <p>Then one day she was given some money of her own — quite a lot of it. Now, what would you do with a surprise like that? Buy pretty new clothes? Keep it all safe for yourself?</p> <p>Here is what she did. First she paid off some old debts. Then she gave a share to her mother. And then she brought a large gift — one hundred pounds! — to George, for the orphans.</p> <p>George was so surprised that he asked her again and again, to make sure she really wanted to give so much. And she answered with words worth remembering: “The Lord Jesus gave his last drop of blood for me. Should I not give him this?”</p> <p>And do you know — she kept it all a secret. She went on wearing her same plain old clothes, and she went right back to sewing, working hard as ever, even while she was quietly giving so much away.</p> <p>She loved Jesus, so giving made her happy, not sad. You don’t have to be rich to be a giver. You just have to have a heart that loves. What could you give — quietly, cheerfully — to someone who needs it?</p> <p><em>Dear God, thank you for giving me Jesus. Make me a happy, secret giver, like that kind woman. Amen.</em></p>",
+  "body_text": "“God loves a cheerful giver.” — from 2 Corinthians 9 One of the loveliest gifts the orphans ever received came from a poor young woman who sewed clothes for a living. She earned only a few pennies a week, and she never once complained. Then one day she was given some money of her own — quite a lot of it. Now, what would you do with a surprise like that? Buy pretty new clothes? Keep it all safe for yourself? Here is what she did. First she paid off some old debts. Then she gave a share to her mother. And then she brought a large gift — one hundred pounds! — to George, for the orphans. George was so surprised that he asked her again and again, to make sure she really wanted to give so much. And she answered with words worth remembering: “The Lord Jesus gave his last drop of blood for me. Should I not give him this?” And do you know — she kept it all a secret. She went on wearing her same plain old clothes, and she went right back to sewing, working hard as ever, even while she was quietly giving so much away. She loved Jesus, so giving made her happy, not sad. You don’t have to be rich to be a giver. You just have to have a heart that loves. What could you give — quietly, cheerfully — to someone who needs it? Dear God, thank you for giving me Jesus. Make me a happy, secret giver, like that kind woman. Amen.",
+  "word_count": 264
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "The Baker's Present",
+  "body_html": "<blockquote>“He is a father to the fatherless.” — from Psalm 68</blockquote> <p>As more and more orphans came to live with George, there were more and more mouths to feed. And sometimes the food very nearly ran out.</p> <p>One morning was as hard as any. There was only enough food for that single day. The kind woman who cooked for the boys had just two small coins left, and she stood there wondering: should she spend them on bread, or on meat? There wasn’t enough for both.</p> <p>And right then — knock, knock — the baker came to the door. But he hadn’t come to be paid. He had come to <em>give.</em> He left three big loaves of fresh bread as a present, just like that!</p> <p>George noticed something, looking back over all these days. He wrote it down so he wouldn’t forget: <strong>the help always came before there was real hunger.</strong> God never once let the children actually go without. He was never late.</p> <p>The Bible calls God “a father to the fatherless” — which means God is like a good, loving dad to children who have no dad. Those orphans had no fathers of their own. But they had the very best Father, watching over every single meal.</p> <p>God is a good Father to you too. He sees what you need, and he is never late.</p> <p><em>Dear God, thank you for being a loving Father who never forgets me. Help me trust that you are always right on time. Amen.</em></p>",
+  "body_text": "“He is a father to the fatherless.” — from Psalm 68 As more and more orphans came to live with George, there were more and more mouths to feed. And sometimes the food very nearly ran out. One morning was as hard as any. There was only enough food for that single day. The kind woman who cooked for the boys had just two small coins left, and she stood there wondering: should she spend them on bread, or on meat? There wasn’t enough for both. And right then — knock, knock — the baker came to the door. But he hadn’t come to be paid. He had come to give. He left three big loaves of fresh bread as a present, just like that! George noticed something, looking back over all these days. He wrote it down so he wouldn’t forget: the help always came before there was real hunger. God never once let the children actually go without. He was never late. The Bible calls God “a father to the fatherless” — which means God is like a good, loving dad to children who have no dad. Those orphans had no fathers of their own. But they had the very best Father, watching over every single meal. God is a good Father to you too. He sees what you need, and he is never late. Dear God, thank you for being a loving Father who never forgets me. Help me trust that you are always right on time. Amen.",
+  "word_count": 251
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "Three Sacks of Potatoes",
+  "body_html": "<blockquote>“Before they call, I will answer.” — from Isaiah 65</blockquote> <p>Another morning came when there was hardly anything in the house, and quite a lot of money was needed to feed all the children. So George did what he always did. He went to pray.</p> <p>And while he was still praying — it was about ten o’clock in the morning — a man came to the door with a message. A lady had ordered <strong>three whole sacks of potatoes</strong> to be sent to the orphan homes!</p> <p>Three big sacks of potatoes, arriving at just the right moment. George said they could not possibly have come at a better time.</p> <p>Something like that happened again and again. Once, George met a man in the street who gave him money for the orphans — and George realised that if he had walked by even half a minute later, he would have missed him completely! But he wasn’t half a minute late. God had worked out the timing perfectly.</p> <p>Isn’t that amazing? God doesn’t only send what we need. He sends it at exactly the right minute — sometimes while we are still praying, sometimes just before we walk past. He is never in a rush, and he is never too late.</p> <p>Nothing is too small for God to arrange. He cares about the details of your day, right down to the minute.</p> <p><em>Dear God, thank you that you know the perfect time for everything. Help me to wait for you and not to worry. Amen.</em></p>",
+  "body_text": "“Before they call, I will answer.” — from Isaiah 65 Another morning came when there was hardly anything in the house, and quite a lot of money was needed to feed all the children. So George did what he always did. He went to pray. And while he was still praying — it was about ten o’clock in the morning — a man came to the door with a message. A lady had ordered three whole sacks of potatoes to be sent to the orphan homes! Three big sacks of potatoes, arriving at just the right moment. George said they could not possibly have come at a better time. Something like that happened again and again. Once, George met a man in the street who gave him money for the orphans — and George realised that if he had walked by even half a minute later, he would have missed him completely! But he wasn’t half a minute late. God had worked out the timing perfectly. Isn’t that amazing? God doesn’t only send what we need. He sends it at exactly the right minute — sometimes while we are still praying, sometimes just before we walk past. He is never in a rush, and he is never too late. Nothing is too small for God to arrange. He cares about the details of your day, right down to the minute. Dear God, thank you that you know the perfect time for everything. Help me to wait for you and not to worry. Amen.",
+  "word_count": 253
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "Milk for Breakfast",
+  "body_html": "<blockquote>“Those who seek the Lord lack no good thing.” — from Psalm 34</blockquote> <p>Every morning the orphans had the same happy breakfast: warm oatmeal porridge with milk. But milk costs money — and one evening there was almost none.</p> <p>The milkman would come early the next morning, before eight o’clock, and there would be no money to pay him and no milk for the children’s porridge. What could be done?</p> <p>So that evening, at six o’clock, George and two helpers knelt down together and asked God to send what was needed before morning.</p> <p>They had <strong>only just got up off their knees</strong> when a letter arrived. Inside was a gift for the orphans! The kind person who sent it had written something wonderful along with it: “I love to send these little gifts. They so often come just at the right time.”</p> <p>She had no idea about the milk, or the morning, or the empty purse. But God knew. And he had already sent her letter on its way, so that it arrived the very evening it was needed — in time for milk in the morning.</p> <p>God loves to answer prayers like that: an evening prayer, answered before the sun comes up. When you seek God and trust him, you will not miss out on the good things you truly need.</p> <p><em>Dear God, thank you that you answer prayers, even before morning comes. I will trust you with tomorrow. Amen.</em></p>",
+  "body_text": "“Those who seek the Lord lack no good thing.” — from Psalm 34 Every morning the orphans had the same happy breakfast: warm oatmeal porridge with milk. But milk costs money — and one evening there was almost none. The milkman would come early the next morning, before eight o’clock, and there would be no money to pay him and no milk for the children’s porridge. What could be done? So that evening, at six o’clock, George and two helpers knelt down together and asked God to send what was needed before morning. They had only just got up off their knees when a letter arrived. Inside was a gift for the orphans! The kind person who sent it had written something wonderful along with it: “I love to send these little gifts. They so often come just at the right time.” She had no idea about the milk, or the morning, or the empty purse. But God knew. And he had already sent her letter on its way, so that it arrived the very evening it was needed — in time for milk in the morning. God loves to answer prayers like that: an evening prayer, answered before the sun comes up. When you seek God and trust him, you will not miss out on the good things you truly need. Dear God, thank you that you answer prayers, even before morning comes. I will trust you with tomorrow. Amen.",
+  "word_count": 241
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "The Bank That Cannot Break",
+  "body_html": "<blockquote>“Store up treasure in heaven, where nothing is ever lost.” — from Matthew 6</blockquote> <p>One day some visitors came to look around the boys’ orphan home. They were amazed at how well the children were cared for. But they were also a little puzzled.</p> <p>“Of course,” a lady said, “you couldn’t run all this without a big pile of money saved up in the bank. You must have a good stock of funds.”</p> <p>And a gentleman asked the woman who ran the home, “Do you have a good stock of money put by?”</p> <p>Now, the truth was there was hardly any money at all just then. But listen to the beautiful answer she gave: “Our money is kept in a bank that cannot break.”</p> <p>What did she mean? She meant <strong>God himself.</strong> Ordinary banks can run out. But God never runs out, and God never lets his people down. He was their bank — the one bank in all the world that can never, ever break.</p> <p>The lady was so touched that tears came into her eyes. And as the visitors left, the gentleman gave five pounds — which arrived at the exact moment when George didn’t have a single penny left.</p> <p>You can keep your treasure in that same safe place. Money can be lost or spent, but the good things you do for God, and your trust in him, are stored up somewhere nothing can ever break.</p> <p><em>Dear God, you never run out and you never fail. Help me to keep my treasure safe with you. Amen.</em></p>",
+  "body_text": "“Store up treasure in heaven, where nothing is ever lost.” — from Matthew 6 One day some visitors came to look around the boys’ orphan home. They were amazed at how well the children were cared for. But they were also a little puzzled. “Of course,” a lady said, “you couldn’t run all this without a big pile of money saved up in the bank. You must have a good stock of funds.” And a gentleman asked the woman who ran the home, “Do you have a good stock of money put by?” Now, the truth was there was hardly any money at all just then. But listen to the beautiful answer she gave: “Our money is kept in a bank that cannot break.” What did she mean? She meant God himself. Ordinary banks can run out. But God never runs out, and God never lets his people down. He was their bank — the one bank in all the world that can never, ever break. The lady was so touched that tears came into her eyes. And as the visitors left, the gentleman gave five pounds — which arrived at the exact moment when George didn’t have a single penny left. You can keep your treasure in that same safe place. Money can be lost or spent, but the good things you do for God, and your trust in him, are stored up somewhere nothing can ever break. Dear God, you never run out and you never fail. Help me to keep my treasure safe with you. Amen.",
+  "word_count": 259
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "A House on the Hill, Built by Prayer",
+  "body_html": "<blockquote>“Let patience finish its work.” — from James 1</blockquote> <p>The orphan homes grew so full and so busy that George decided to do something enormous: build one great big house out in the country, big enough for <em>three hundred</em> children. And he would pay for all of it the same way as always — only by praying.</p> <p>A huge house costs a huge amount of money. So George began to pray for it, day after day. And on the thirty-sixth day of praying, a gift of one thousand pounds arrived! It was a wonderful amount — yet George felt as calm as if someone had handed him a single small coin, because by now he simply expected God to answer.</p> <p>Then a man who drew building plans — someone George had never even met — offered to design the whole house and watch over the building for free!</p> <p>Next George needed land. He heard of a fine field on a hill called Ashley Down. But the first evening, the owner could not be found anywhere. George wasn’t upset; he felt God had a reason. And he was right. That very night, the owner woke up at three in the morning and couldn’t get back to sleep — his mind was full of that field. He decided that if George wanted it, he would sell it — and for far less than he had planned to charge!</p> <p>So George bought the big field, and in time great houses stood on that hill, filled with hundreds and hundreds of happy, well-fed orphans — every brick of it built by prayer.</p> <p>God can do more than we ever dream. Keep praying, keep waiting, and watch what he can build.</p> <p><em>Dear God, you can do great big things. Teach me to keep praying and to wait for you patiently. Amen.</em></p>",
+  "body_text": "“Let patience finish its work.” — from James 1 The orphan homes grew so full and so busy that George decided to do something enormous: build one great big house out in the country, big enough for three hundred children. And he would pay for all of it the same way as always — only by praying. A huge house costs a huge amount of money. So George began to pray for it, day after day. And on the thirty-sixth day of praying, a gift of one thousand pounds arrived! It was a wonderful amount — yet George felt as calm as if someone had handed him a single small coin, because by now he simply expected God to answer. Then a man who drew building plans — someone George had never even met — offered to design the whole house and watch over the building for free! Next George needed land. He heard of a fine field on a hill called Ashley Down. But the first evening, the owner could not be found anywhere. George wasn’t upset; he felt God had a reason. And he was right. That very night, the owner woke up at three in the morning and couldn’t get back to sleep — his mind was full of that field. He decided that if George wanted it, he would sell it — and for far less than he had planned to charge! So George bought the big field, and in time great houses stood on that hill, filled with hundreds and hundreds of happy, well-fed orphans — every brick of it built by prayer. God can do more than we ever dream. Keep praying, keep waiting, and watch what he can build. Dear God, you can do great big things. Teach me to keep praying and to wait for you patiently. Amen.",
+  "word_count": 306
+ }
+}
+]

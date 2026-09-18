@@ -2,11 +2,24 @@
 // Baxter's "Un llamado a los inconversos". Book pages are prerendered per locale, so
 // /es/books must rebuild so the card and its /es/books/a-call-to-the-unconverted pages bake
 // the translated title and chapters.
+// prerender refresh 2026-09-17: Portuguese book — spurgeon-on-prayer (#1793), C. H. Spurgeon's
+// twelve sermons on prayer plus an introduction, 13 chapters ("Grande Poder na Oração"). Book
+// pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title
+// and the reader page bakes the 13 chapters. No plans/+page.ts touch owed — spurgeon-on-prayer
+// backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-11: Portuguese book — women-who-moved-heaven-2 (#1785), an Ochorus
 // Originals devotional on women of persistent prayer through history, 13 chapters ("Mulheres Que
 // Moveram o Céu"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
 // the translated title and the reader page bakes the 13 chapters. No plans/+page.ts touch owed —
 // women-who-moved-heaven-2 backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-17: one NEW Swahili book — things-as-they-are (#2172), Amy
+// Carmichael's unvarnished account of missionary work in southern India, 35 chapters ("Mambo Kama
+// Yalivyo"). Rebuilds /sw/books so the card carries its translated title on its localized plate
+// cover, and the reader page bakes the 35 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-17: one NEW Swahili book — way-into-holiest (#2173), F. B. Meyer's
+// devotional exposition of the Epistle to the Hebrews, 36 chapters ("Njia ya Kuingia Patakatifu
+// pa Patakatifu"). Rebuilds /sw/books so the card carries its translated title over the shared
+// painting cover, and the reader page bakes the 36 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-16: one NEW Swahili book — the-christians-secret-of-a-happy-life-4
 // (#2171), Hannah Whitall Smith's classic on the higher life, 22 chapters ("Siri ya Mkristo ya
 // Maisha ya Furaha"). Rebuilds /sw/books so the card carries its translated title over the derived
