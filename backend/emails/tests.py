@@ -454,3 +454,59 @@ class LifecycleStepTests(TestCase):
         message = send_due(profile)
         self.assertEqual(message.lifecycle_step, PLAN_STEP)
         send.assert_called_once()
+
+
+@override_settings(DEBUG=True)  # loopback test client → admin gate bypassed
+class AdminEmailMetricsTests(TestCase):
+    """The admin open/click/bounce rollup endpoint."""
+
+    def _sent(self, profile, step, key):
+        return EmailMessage.objects.create(
+            recipient=profile,
+            to_email="a@example.com",
+            kind=EmailKind.LIFECYCLE,
+            lifecycle_step=step,
+            idempotency_key=key,
+            status=SendStatus.SENT,
+            sent_at=timezone.now(),
+        )
+
+    def _event(self, message, event_type, eid):
+        EmailEvent.objects.create(
+            message=message,
+            type=event_type,
+            occurred_at=timezone.now(),
+            provider_event_id=eid,
+        )
+
+    def test_step_rollup_and_rates(self):
+        profile = _make_profile()
+        opened = self._sent(profile, WELCOME_STEP, "lifecycle:welcome:1")
+        self._event(opened, EventType.OPENED, "e1")
+        self._event(opened, EventType.CLICKED, "e2")
+        bounced = self._sent(profile, WELCOME_STEP, "lifecycle:welcome:2")
+        self._event(bounced, EventType.BOUNCED, "e3")
+
+        res = self.client.get("/api/admin/email-metrics/")
+        self.assertEqual(res.status_code, 200)
+        data = res.json()
+
+        welcome = next(r for r in data["by_step"] if r["step"] == WELCOME_STEP)
+        self.assertEqual(welcome["sent"], 2)
+        self.assertEqual(welcome["delivered"], 1)  # 2 sent − 1 bounce
+        self.assertEqual(welcome["opens"], 1)
+        self.assertEqual(welcome["clicks"], 1)
+        self.assertEqual(welcome["bounces"], 1)
+        self.assertEqual(welcome["open_rate"], 1.0)  # 1 open / 1 delivered
+        self.assertEqual(welcome["click_rate"], 1.0)
+        self.assertEqual(welcome["bounce_rate"], 0.5)  # 1 bounce / 2 sent
+
+    def test_overview_and_subscribers(self):
+        profile = _make_profile()
+        EmailSubscription.objects.create(profile=profile)
+        self._sent(profile, WELCOME_STEP, "lifecycle:welcome:1")
+
+        data = self.client.get("/api/admin/email-metrics/").json()
+        self.assertEqual(data["overview"]["sent"], 1)
+        self.assertEqual(data["subscribers"]["total"], 1)
+        self.assertEqual(data["subscribers"]["newsletter_opt_in"], 1)

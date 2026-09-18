@@ -19,6 +19,7 @@
 		{ href: '/admin/audit', label: 'Content audit', capability: 'audit' },
 		{ href: '/admin/activity', label: 'Activity', capability: 'reporting' },
 		{ href: '/admin/engagement', label: 'Engagement', capability: 'reporting' },
+		{ href: '/admin/emails', label: 'Emails', capability: 'reporting' },
 		{ href: '/admin/search', label: 'Search', capability: 'reporting' },
 		{ href: '/admin/users', label: 'Users', capability: 'users' },
 		// Managing access is undelegated — super admins only (auth.isAdmin is the
