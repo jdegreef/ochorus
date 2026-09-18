@@ -759,6 +759,7 @@ TOPIC_ARTICLES = {
         "true-vine-guide",
         "way-into-holiest-guide",
         "days-of-heaven-upon-earth-guide",
+        "the-fourfold-gospel-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -777,6 +778,7 @@ TOPIC_ARTICLES = {
         "why-would-a-good-god-allow-suffering",
         "the-unselfishness-of-god-guide",
         "the-god-of-all-comfort-guide",
+        "gleanings-among-the-sheaves-guide",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -807,6 +809,7 @@ TOPIC_ARTICLES = {
         "do-science-and-faith-contradict",
         "divine-healing-guide",
         "the-secret-of-guidance-guide",
+        "the-fundamental-doctrines-of-the-christian-faith-guide",
     ],
     "the-gospel-call": [
         "how-to-be-born-again",
@@ -833,6 +836,7 @@ TOPIC_ARTICLES = {
         "selected-sermons-whitefield-guide",
         "the-way-to-god-guide",
         "talks-to-the-farmer-guide",
+        "a-call-to-the-unconverted-guide",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -910,6 +914,10 @@ TOPIC_ARTICLES = {
         "purity-of-heart-guide",
         "talks-to-the-farmer-guide",
         "purpose-in-prayer-guide",
+        "a-call-to-the-unconverted-guide",
+        "the-fourfold-gospel-guide",
+        "gleanings-among-the-sheaves-guide",
+        "the-fundamental-doctrines-of-the-christian-faith-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
