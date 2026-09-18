@@ -1,0 +1,356 @@
+{
+ "kind": "book",
+ "slug": "a-short-and-easy-method-of-prayer",
+ "language": "sw",
+ "job_issue": 2582,
+ "references": [
+  {
+   "reference": "1 Peter 2:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 17:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 7:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 8:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 13:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 13:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 3:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ecclesiasticus 2:2-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom. 4:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matt. 6:32, 34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Prov. 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Prov. 16:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ps. 37:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mithali 27:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wagalatia 6:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 45:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 31:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ps 46:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isa 57:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hekima ya Sulemani 7:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Habakuki 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaya 51:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaya 46:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 45:10, 11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hosea 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 5:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom. 8:26,27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ps 32:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ps 46:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ps 16:8-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exod 14:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samweli 1:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wimbo Ulio Bora 1:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wimbo Ulio Bora 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yoshua bin Sira 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yoshua bin Sira 24:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ufunuo 5:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom 8:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ps 18:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wisdom 7:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wisdom 7:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 5:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Cor 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 10:41-42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Cor 6:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ps 73:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom 8:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom 8:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom 8:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom 8:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom 8:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 11:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom 8:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isa 55:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zech 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isa 49:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Joel 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 30:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 40:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ps 119:130",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ps 19:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ps 116:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 18:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isa 40:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Prov 9:4-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exod 33:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rev 8:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Cor 3:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Cor 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rom 3:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Phil 3:13-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matt 11:25",
+   "status": "self_rendered"
+  }
+ ]
+}
