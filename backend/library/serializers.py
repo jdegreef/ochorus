@@ -1177,9 +1177,15 @@ class BookDetailSerializer(BookListSerializer):
         """Sibling audience editions (full ⇄ teens ⇄ children) as cover cards,
         so a reader who lands on the full text finds the young-reader retelling
         and vice versa. Empty for the vast majority of works, which have no
-        retelling — the section then simply doesn't render."""
+        retelling — the section then simply doesn't render.
+
+        Pass an empty ``book_topics`` so the card serializer returns no topic
+        chips without building the shelf-wide topic map: the edition cards don't
+        render chips, and get_related already pays for its own map build on the
+        same page — one is enough."""
         rows = sibling_editions(obj)
-        return BookListSerializer(rows, many=True, context=self.context).data
+        context = {**self.context, "book_topics": {}}
+        return BookListSerializer(rows, many=True, context=context).data
 
     def get_available_languages(self, obj):
         return _available_languages(Book, obj.slug)
@@ -1238,8 +1244,6 @@ class BookDetailSerializer(BookListSerializer):
         many topics they share with this one (the strong signal), then a boost
         for being by the same author. Books present only in another language are
         excluded, so every suggestion is one the reader can open here."""
-        from django.db.models import Count, Sum
-
         scores: dict[str, int] = {}
 
         # Shared-topic overlap: how many of this work's topics each other work
@@ -1284,7 +1288,7 @@ class BookDetailSerializer(BookListSerializer):
             )
             .select_related("author")
             .prefetch_related("author__translations")
-            .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
+            .annotate(**BOOK_CARD_ANNOTATIONS)
         )
         ranked = sorted(
             candidates, key=lambda b: (-scores.get(b.slug, 0), b.sort_order, b.title)
