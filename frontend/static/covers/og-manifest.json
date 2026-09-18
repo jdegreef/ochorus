@@ -868,6 +868,14 @@
 			"art": true,
 			"scrim": 0.85
 		},
+		"fr/stepping-stones-2": {
+			"ground": "7daa1e31d9cac5649ddd8142a5d508e12549c87df2610b566578895530ef16ef",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
 		"fr/talks-to-the-farmer": {
 			"ground": "a98d8c68fcb55e7ccb5e9d72ce6a63dfc2841f307454c6c43b08dfde23348420",
 			"style": "revival",
