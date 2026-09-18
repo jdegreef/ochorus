@@ -42,11 +42,11 @@
     ]
   },
   "faith-in-the-fire": {
-    "title": "El Dios de todo consuelo: fe en medio del fuego",
-    "description": "Para los días en que cuesta orar. Hannah Whitall Smith sobre el Dios de todo consuelo, y Gareth Evans sobre confiar en Aquel que sostiene nuestros mañanas: un recorrido de cinco semanas hacia una paz firme cuando la vida es incierta.",
+    "title": "El Dios de toda consolación: fe en medio del fuego",
+    "description": "Para los días en que cuesta orar. Hannah Whitall Smith sobre el Dios de toda consolación, y Gareth Evans sobre confiar en Aquel que sostiene nuestros mañanas: un recorrido de cinco semanas hacia una paz firme cuando la vida es incierta.",
     "note": [
       "Queue job #1608. The description echoes Gareth Evans's shipped Spanish edition «Él sostiene mis mañanas» (he-holds-my-tomorrows.es) in the phrase «Aquel que sostiene nuestros mañanas», so the card and the book it opens agree.",
-      "the-god-of-all-comfort has NO Spanish edition yet (open job #1453), so seed_plans will NOT create this (faith-in-the-fire, es) row today — the prose ships ahead so that book's arrival cannot publish an English-titled plan. Whoever translates the-god-of-all-comfort should keep or adjust this card's phrasing in the same PR."
+      "Queue job #1453 (this PR): the-god-of-all-comfort ships in Spanish as «El Dios de toda consolación» (the RV1960 rendering of 2 Corintios 1:3 that titles the book), which ACTIVATES this (faith-in-the-fire, es) plan — its two source books are now both in es (he-holds-my-tomorrows already shipped). Harmonised this card's title and description from «todo consuelo» to «toda consolación» to match the shipped book title verbatim, so the plan card and the book it opens agree."
     ]
   },
   "everything-for-christ": {
