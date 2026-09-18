@@ -756,6 +756,14 @@
 			"art": true,
 			"scrim": 0.3
 		},
+		"fr/growing-in-wisdom": {
+			"ground": "1ba83d4a94077ccfa536af9336f9b442268692e7865d6312acec8de6a38b9d4f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"fr/the-god-of-all-comfort": {
 			"ground": "3bc088fdd73df57df3c20bcbabb1ba2dcd8684c5e91bc4aec125b092e2fc2517",
 			"style": "devotional",
