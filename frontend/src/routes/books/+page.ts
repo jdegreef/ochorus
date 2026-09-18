@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-18: one NEW Swahili book — life-and-diary-of-david-brainerd (#2584),
+// Jonathan Edwards's edition of the missionary's journals, 12 chapters ("Maisha na Shajara ya
+// David Brainerd"). Rebuilds /sw/books so the card carries its translated title over the shared
+// painting cover, and the reader page bakes the 12 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
+// entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-18: Spanish book — the-god-of-all-comfort (#1453), Hannah Whitall
 // Smith's classic on resting in God's goodness ("El Dios de toda consolación"), 17 chapters. Book
 // pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title

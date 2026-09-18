@@ -2076,6 +2076,14 @@
 			"art": true,
 			"scrim": 0.65
 		},
+		"sw/life-and-diary-of-david-brainerd": {
+			"ground": "29c596e666e325cc4a1eaeba34dd185570bf828c97c4d0078c31308ec20386e4",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
 		"sw/lord-teach-us-to-pray-2": {
 			"ground": "aeaef04edf6808238a7d335c771fa77c326ab14ed13e28769f5e12028d97a59d",
 			"style": "devotional",
