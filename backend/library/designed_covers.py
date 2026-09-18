@@ -89,6 +89,8 @@ from typing import NamedTuple
 DESIGNED: dict[str, str] = {
     "/covers/a-retrospect-children.jpg":
         "df182354203c95fb652f66605aca61511ebf76b1c2f3a4f1dc4930249cfde4c7",
+    "/covers/amanda-smith-autobiography-children.jpg":
+        "8a499dcd89376c202a5eaf63356f33b66b350eff6555b59f7992585a94ded811",
     "/covers/baptism-with-the-holy-spirit.png":
         "d7a50b3b4aef331a353c928d60f5a0a4db8328429a9e024e80dab6f11a8d9667",
     "/covers/clothed-with-strength-and-dignity.jpg":
