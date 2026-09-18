@@ -1820,6 +1820,14 @@
 			"art": false,
 			"scrim": 1
 		},
+		"sw/a-short-and-easy-method-of-prayer": {
+			"ground": "5a6c63bcde424f32628412296d039b3dd5e383f4e162457c066fb1e2286a3a3b",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
+		},
 		"sw/absolute-surrender": {
 			"ground": "16a5c3ba386c02cdea3122b541a663237428273dfa88eb02ec5a007988d97c8f",
 			"style": "devotional",
