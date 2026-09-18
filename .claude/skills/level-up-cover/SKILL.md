@@ -86,8 +86,10 @@ cd backend && DJANGO_DEBUG=true uv run python scripts/paint_covers.py <slug…>
 It runs every stage in its load-bearing order — the stages, and why the order
 matters, are its docstring (`paint_covers.py --help`) — and stops at the first
 failure. `--dry-run` prints the plan, including every plate it would delete;
-`--no-check` skips the gates; `--recrop` redraws a painting after you change its
-`focus` (a committed painting is otherwise kept as is). It refuses a slug not in
+`--no-check` skips the gates. A committed painting is kept while it was cut from
+its entry; change the entry's artwork or `focus` and the next run redraws it
+(`library/art_sources.py` records each painting's recipe, and a gate fails a
+painting whose entry moved without one). `--recrop` redraws regardless. It refuses a slug not in
 `CURATED`. If it reports twins redrawn **outside** your works, their inputs
 really changed — look before committing. Needs `frontend/node_modules` and Node
 22 on PATH.

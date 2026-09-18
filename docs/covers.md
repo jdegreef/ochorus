@@ -92,7 +92,9 @@ cd backend && DJANGO_DEBUG=true uv run python scripts/paint_covers.py <slug> [<s
 Its stages and their order are its docstring (`--help`). **The order is
 load-bearing:** the scrim must be measured before the twins are drawn with it,
 and the retired plates must be gone before `build_cover_assets`, which refuses to
-run past a leftover one. A committed painting is kept unless you pass `--recrop`.
+run past a leftover one. A committed painting is kept while it was cut from its
+current entry (`library/art_sources.py` records what each was cut from); change
+the entry's artwork or `focus` and it is redrawn.
 
 The other tools, for jobs `paint_covers` does not cover:
 
@@ -109,7 +111,7 @@ The other tools, for jobs `paint_covers` does not cover:
 | Gate | Fails when |
 |---|---|
 | `tests_fixture` — designed covers | a designed file's bytes changed, or a new one is unregistered |
-| `tests_fixture` — shared grounds | a curated edition doesn't point at its painting; a painting is missing; a plate was left behind |
+| `tests_fixture` — shared grounds | a curated edition doesn't point at its painting; a painting is missing; a plate was left behind; a painting wasn't cut from its current entry |
 | `tests_fixture` — per-language | a translated edition wears another language's file |
 | `tests_fixture` — twins | an edition that needs a twin has none, or its twin was drawn from an older cover or title |
 | `coverOgManifest.test.ts` | twins drawn with an older stylesheet, markup, style or series number; the manifest is **out of order or has a duplicate entry** |

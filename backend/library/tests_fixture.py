@@ -821,6 +821,34 @@ class CoverAssetTests(SimpleTestCase):
             r["fields"] for r in all_rows() if r["model"] == "library.book"
         ]
 
+
+    def test_every_painting_was_cut_from_its_entry(self):
+        """A committed painting is kept across runs only while it was cut from
+        the entry that credits it. Swap a work to a different artwork, or move
+        its ``focus``, without redrawing, and the page would credit the new
+        painter under the old picture — with every other gate green, since none
+        of them look at what a museum image IS. ``art_sources.py`` records what
+        each painting was drawn from; this holds it to the entries.
+        """
+        from library.art_sources import ART_SOURCES
+        from library.covers import art_url
+        from library.curated_art import crop_recipe
+
+        entries = {**CURATED, **CURATED_GROUND}
+        moved = sorted(
+            f"{slug}: drawn from {ART_SOURCES.get(slug)}, entry is {crop_recipe(art)}"
+            for slug, art in entries.items()
+            if (STATIC_DIR / "covers" / art_url(slug)[1]).is_file()
+            and ART_SOURCES.get(slug) != crop_recipe(art)
+        )
+        self.assertEqual(
+            moved,
+            [],
+            "a painting no longer matches its CURATED entry — run "
+            "`manage.py build_curated_covers <slug>` to redraw it",
+        )
+        stale = sorted(set(ART_SOURCES) - set(entries))
+        self.assertEqual(stale, [], "art_sources.py names works that are no longer curated")
     def test_published_covers_are_self_hosted(self):
         external = sorted(
             (f["slug"], f["language"], _cover(f))

@@ -12,9 +12,9 @@ THE ONE HUMAN STEP COMES FIRST: choose the painting and add each work's entry to
 Everything after that is mechanical — it used to be a list of hand-run
 commands whose order mattered — and runs here, stopping at the first failure:
 
-  1. migrate                  — a worktree's copied DB can predate main
+  1. migrate, seed_if_empty   — a fresh worktree's DB is empty or behind main
   2. build_curated_covers     — fetch, re-verify the licence, crop the painting
-                                (a committed painting is kept; --recrop redraws)
+                                (kept if cut from this entry; --recrop redraws)
   3. delete the retired plates — every `<slug>.svg`, in every language dir
   4. build_cover_assets       — webp variants; repoints EVERY edition row
   5. tune_art_scrim <slugs>   — measure these paintings' scrim
@@ -71,7 +71,7 @@ def main() -> int:
     ap.add_argument(
         "--recrop",
         action="store_true",
-        help="Redraw paintings already committed (after changing a work's `focus`).",
+        help="Redraw committed paintings even when their entry is unchanged.",
     )
     args = ap.parse_args()
     slugs = sorted(set(args.slugs))
@@ -98,8 +98,13 @@ def main() -> int:
             "frontend/node_modules is missing — run `npm ci` in frontend/ first."
         )
 
-    step(1, "migrate")
+    step(1, "migrate, and seed an empty database")
     run([*PY, "manage.py", "migrate", "--noinput"])
+    # A fresh worktree — the repo's working agreement — starts with an empty
+    # DB, and build_curated_covers skips any work with no Book rows. Without
+    # this, a new painting is silently never drawn and step 4 fails pointing
+    # back at the step that just "succeeded". A no-op once seeded.
+    run([*PY, "manage.py", "seed_if_empty"])
 
     step(2, "fetch and crop the paintings")
     run(
