@@ -718,6 +718,8 @@ TOPIC_ARTICLES = {
         "power-through-prayer-guide",
         "the-inner-chamber-guide",
         "prayer-and-praying-men-guide",
+        "ministry-of-intercession-guide",
+        "necessity-of-prayer-guide",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -754,6 +756,7 @@ TOPIC_ARTICLES = {
         "life-of-antony-guide",
         "till-he-come-guide",
         "true-vine-guide",
+        "way-into-holiest-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -851,6 +854,7 @@ TOPIC_ARTICLES = {
         "holy-in-christ-guide",
         "a-brand-plucked-from-the-fire-guide",
         "first-epistle-of-clement-guide",
+        "godliness-guide",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
@@ -894,6 +898,10 @@ TOPIC_ARTICLES = {
         "the-secret-of-guidance-guide",
         "the-inner-chamber-guide",
         "prayer-and-praying-men-guide",
+        "way-into-holiest-guide",
+        "ministry-of-intercession-guide",
+        "godliness-guide",
+        "necessity-of-prayer-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
