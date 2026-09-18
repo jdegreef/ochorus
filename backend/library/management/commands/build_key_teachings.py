@@ -502,10 +502,10 @@ class Command(BaseCommand):
             create_defaults={
                 **content,
                 "source_type": Book.SourceType.PUBLIC_DOMAIN,
-                # Land unpublished — the series goes live only when the founder
-                # flips each book on in the admin after reviewing the render.
-                # Create-only, so that later publish is never walked back.
-                "is_published": False,
+                # Published — the founder reviewed the render and cleared the
+                # series (migration 0155 flipped the rows already on prod).
+                # Create-only, so the admin's later toggle is never walked back.
+                "is_published": True,
                 "sort_order": next_order,
             },
         )
