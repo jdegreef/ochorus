@@ -121,11 +121,50 @@ async function requestJSON<T>(path: string, init: RequestInit): Promise<T> {
  */
 const REQUEST_TIMEOUT_MS = 15_000;
 
+/**
+ * A signal that aborts after `ms`, preferring the native `AbortSignal.timeout`
+ * and falling back to a manual controller where it is missing.
+ *
+ * `AbortSignal.timeout` and `AbortSignal.any` (below) are recent: iOS/macOS
+ * Safari only gained them in 16.4 and 17.4 respectively. `withTimeout` runs on
+ * EVERY request, so without this feature-detection an older-but-current mobile
+ * Safari threw a `TypeError` out of the very first `apiFetch` — the whole reader
+ * (shelves, search, chapter bodies all fetch through here) dead on arrival, with
+ * no error UI to explain it. `AbortController` itself is universally supported
+ * (Safari 11.1+), so the fallback leans on it.
+ */
+function timeoutSignal(ms: number): AbortSignal {
+	if (typeof AbortSignal.timeout === 'function') return AbortSignal.timeout(ms);
+	const controller = new AbortController();
+	// A browser timer; aborting an already-settled fetch is a no-op, so the worst
+	// case is one harmless fire `ms` after a request that finished sooner.
+	setTimeout(() => controller.abort(), ms);
+	return controller.signal;
+}
+
+/**
+ * The union of several abort signals — aborts as soon as any of them does.
+ * Prefers native `AbortSignal.any`, falling back to manual linking. See
+ * {@link timeoutSignal} for why the fallback has to exist.
+ */
+function anySignal(signals: AbortSignal[]): AbortSignal {
+	if (typeof AbortSignal.any === 'function') return AbortSignal.any(signals);
+	const controller = new AbortController();
+	for (const signal of signals) {
+		if (signal.aborted) {
+			controller.abort(signal.reason);
+			break;
+		}
+		signal.addEventListener('abort', () => controller.abort(signal.reason), { once: true });
+	}
+	return controller.signal;
+}
+
 function withTimeout(caller: AbortSignal | null | undefined): AbortSignal | undefined {
 	if (building) return caller ?? undefined;
-	const timeout = AbortSignal.timeout(REQUEST_TIMEOUT_MS);
+	const timeout = timeoutSignal(REQUEST_TIMEOUT_MS);
 	// Preserve a caller's own signal (the define popover aborts on new input).
-	return caller ? AbortSignal.any([caller, timeout]) : timeout;
+	return caller ? anySignal([caller, timeout]) : timeout;
 }
 
 /**
