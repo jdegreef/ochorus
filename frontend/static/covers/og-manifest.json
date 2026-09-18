@@ -724,6 +724,14 @@
 			"art": true,
 			"scrim": 0.3
 		},
+		"fr/the-god-of-all-comfort": {
+			"ground": "3bc088fdd73df57df3c20bcbabb1ba2dcd8684c5e91bc4aec125b092e2fc2517",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95
+		},
 		"fr/he-holds-my-tomorrows": {
 			"ground": "0cce2cab2c9ba862dd5969db5c2296538ef55d9b03fb7d0c3c525045db76328b",
 			"style": "house",
