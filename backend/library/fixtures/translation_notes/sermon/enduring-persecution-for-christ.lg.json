@@ -1,0 +1,65 @@
+{
+  "kind": "sermon",
+  "slug": "enduring-persecution-for-christ",
+  "language": "lg",
+  "job_issue": 1513,
+  "pull_request": 2868,
+  "references": [
+    {
+      "reference": "Hebrews 13:13",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 21:18b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 5:10a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Psalm 129:1-3",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 8:36b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Psalm 129:4b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Psalm 125:3",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Psalm 7:15",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Hebrews 12:1a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 21:15a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Zechariah 2:8b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    }
+  ],
+  "note": "Base text Hebrews 13:13. Every quoted verse pasted verbatim from OLCB (mined) — no crib misses. Indirect/paraphrased citations (no quote marks in the source) were rendered as Calvin's own prose with book names localized and Roman numerals converted to Western digits. FOUND IN THE ENGLISH, not fixed: several miscited references — 'Rom. vii., 36' is Romans 8:36; 'Matt viii., 38' is Mark 8:38; 'Psalm cxvi., 13' is Psalm 116:15 (the verse actually quoted); 'Heb. iii., 9' is Hebrews 4:9. The verse WORDING pasted is correct OLCB; the corrected reference was used where the quotation made it unambiguous, and each is flagged here for the reviewer."
+}

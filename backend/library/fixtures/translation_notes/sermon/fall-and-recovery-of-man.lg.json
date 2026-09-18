@@ -1,0 +1,278 @@
+{
+  "kind": "sermon",
+  "slug": "fall-and-recovery-of-man",
+  "language": "lg",
+  "job_issue": 1515,
+  "pull_request": 2868,
+  "references": [
+    {
+      "reference": "Romans 5:15",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 3:10a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 3:23",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Jeremiah 2:21",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 3:6a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 John 5:19b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Isaiah 64:6a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 12:33a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ephesians 5:11",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 12:34b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ephesians 5:4",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 3:12",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Colossians 3:6",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:18a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 3:18b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 3:36b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Galatians 3:10",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Isaiah 3:11",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Job 4:8b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Psalm 11:6",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Psalm 7:11-12",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Revelation 20:9",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Thessalonians 2:16",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Isaiah 9:5",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ecclesiastes 8:6b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 25:41",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:12",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ephesians 2:1",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:15b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ezekiel 18:20a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 19:30",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 2:14",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ephesians 2:8-9",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:20b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:15a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:8-10",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 8:7",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Hebrews 10:4",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "2 Corinthians 9:15",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "2 Corinthians 5:20",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 10:10a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Deuteronomy 32:10",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:10b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 14:19",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 16:33",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 21:28",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Zechariah 9:12",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 15:57",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Isaiah 59:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Daniel 5:27",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Daniel 9:24",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Peter 2:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "John 14:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 5:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 21:28",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Base text Romans 5:15. Romans 5 and dozens of supporting verses pasted verbatim from OLCB (mined). Self_rendered where OLCB diverges from the author's wording: Isaiah 59:19 (OLCB makes the Lord, not the enemy, the flood), Daniel 5:27/9:24 (interpretive glosses/phrases), 2 Peter 2:7, John 14:19 (person mismatch — pasted OLCB verbatim but flagged), Romans 5:10 and Luke 21:28 (declarative vs OLCB's question / added 'rejoice'). Hymn stanzas are the author's verse, not scripture."
+}

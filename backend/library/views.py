@@ -1120,7 +1120,7 @@ class QuoteAuthorsView(APIView):
     def get(self, request):
         from django.db.models import Count, Q
 
-        from .models import Author
+        from .models import Author, Quote
 
         # Author objects, not bare slugs: the /quotes index page renders a card
         # per author (portrait, name, era hue, how many quotations), and the
@@ -1133,13 +1133,31 @@ class QuoteAuthorsView(APIView):
             )
             .filter(n__gt=0)
             .order_by("name")
-            .values("slug", "name", "birth_year", "photo_url", "n")
+            .values("id", "slug", "name", "birth_year", "photo_url", "n")
         )
+
+        # A teaser line per author, so the index card is something to browse
+        # rather than a bare directory entry. It comes from ONE pass over the
+        # reviewed quotes — a few hundred rows on a page that prerenders, so a
+        # grouped query beats a per-author subquery and stays trivially testable.
+        # The teaser is the author's SHORTEST quote: the punchiest line, and the
+        # one that fits the card's two lines without truncation. Ties break
+        # lexicographically so the pick is stable across deploys. The quote text
+        # is English (as on the author pages), so it is content the card prints
+        # as-is, not a localized string.
+        teaser: dict[int, str] = {}
+        for author_id, text in Quote.objects.filter(reviewed=True).values_list(
+            "author_id", "text"
+        ):
+            best = teaser.get(author_id)
+            if best is None or (len(text), text) < (len(best), best):
+                teaser[author_id] = text
+
         return Response(
             [
                 {"slug": r["slug"], "name": r["name"],
                  "birth_year": r["birth_year"], "photo_url": r["photo_url"],
-                 "count": r["n"]}
+                 "count": r["n"], "teaser": teaser.get(r["id"], "")}
                 for r in rows
             ]
         )

@@ -42,11 +42,11 @@
     ]
   },
   "faith-in-the-fire": {
-    "title": "El Dios de todo consuelo: fe en medio del fuego",
-    "description": "Para los días en que cuesta orar. Hannah Whitall Smith sobre el Dios de todo consuelo, y Gareth Evans sobre confiar en Aquel que sostiene nuestros mañanas: un recorrido de cinco semanas hacia una paz firme cuando la vida es incierta.",
+    "title": "El Dios de toda consolación: fe en medio del fuego",
+    "description": "Para los días en que cuesta orar. Hannah Whitall Smith sobre el Dios de toda consolación, y Gareth Evans sobre confiar en Aquel que sostiene nuestros mañanas: un recorrido de cinco semanas hacia una paz firme cuando la vida es incierta.",
     "note": [
       "Queue job #1608. The description echoes Gareth Evans's shipped Spanish edition «Él sostiene mis mañanas» (he-holds-my-tomorrows.es) in the phrase «Aquel que sostiene nuestros mañanas», so the card and the book it opens agree.",
-      "the-god-of-all-comfort has NO Spanish edition yet (open job #1453), so seed_plans will NOT create this (faith-in-the-fire, es) row today — the prose ships ahead so that book's arrival cannot publish an English-titled plan. Whoever translates the-god-of-all-comfort should keep or adjust this card's phrasing in the same PR."
+      "Queue job #1453 (this PR): the-god-of-all-comfort ships in Spanish as «El Dios de toda consolación» (the RV1960 rendering of 2 Corintios 1:3 that titles the book), which ACTIVATES this (faith-in-the-fire, es) plan — its two source books are now both in es (he-holds-my-tomorrows already shipped). Harmonised this card's title and description from «todo consuelo» to «toda consolación» to match the shipped book title verbatim, so the plan card and the book it opens agree."
     ]
   },
   "everything-for-christ": {
@@ -55,6 +55,14 @@
     "note": [
       "Queue job #2065. Prose-only translation of the Plan's title and description.",
       "NEITHER source book has a Spanish edition yet — life-and-diary-of-david-brainerd and men-and-women-who-gave-everything-2 are both untranslated — so seed_plans will NOT create this (everything-for-christ, es) row today. The prose ships ahead so that neither book's arrival can publish an English-titled plan (the #819 defect)."
+    ]
+  },
+  "praying-men": {
+    "title": "Hombres de oración: una escuela de oración con E. M. Bounds",
+    "description": "Siete semanas en el horno de la intercesión con el gran apóstol de la oración. E. M. Bounds comienza con la necesidad de poder del propio predicador, luego despliega el propósito que hace que la oración prevalezca, y la necesidad que la convierte en el asunto entero de la vida cristiana.",
+    "note": [
+      "The description names the three source books the way their shipped Spanish editions do — «Poder a través de la oración» (power-through-prayer.es), «Propósito en la oración» (purpose-in-prayer.es) and «La necesidad de la oración» (necessity-of-prayer.es), all fixture titles verbatim — so the plan card and the books it opens agree.",
+      "All three Bounds books are ALREADY published in es, so seed_plans creates this (praying-men, es) row on the same deploy that adds the plan — this prose must land in the SAME PR as the English definition or the es plans page publishes the English card (the #819 defect)."
     ]
   }
 }

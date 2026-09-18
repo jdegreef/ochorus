@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-18: Spanish plan ACTIVATES — faith-in-the-fire
+// («El Dios de toda consolación: fe en medio del fuego»). Shipping the-god-of-all-comfort (#1453)
+// completes the plan's two source books in es (with he-holds-my-tomorrows, already shipped), so
+// seed_plans now creates the (faith-in-the-fire, es) row; /es/plans must rebuild to show it. The
+// plan card's title/description were harmonised to the shipped book title in the same PR.
 // prerender refresh 2026-09-17: Spanish plan ACTIVATES — grace-for-every-sinner
 // («El Camino a Dios: gracia para todo pecador»). Shipping a-call-to-the-unconverted (#1366)
 // completes the plan's three source books in es (with the-way-to-god and all-of-grace), so

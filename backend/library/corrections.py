@@ -4873,3 +4873,14 @@ BODY_CORRECTIONS.setdefault("how-to-forgive", {}).setdefault("replacements", [])
         "<p>",
     )
 )
+
+# Isaac Watts, Divine Songs, "Against evil Company" st.1 l.3 — an OCR slip read
+# "but never pray" as "but never play", flattening the stanza's contrast (children
+# who curse/swear but never PRAY). The wrong word was copied faithfully into the
+# Swahili edition ("hawachezi kamwe", they never play → "hawaombi kamwe", they never
+# pray); the Luganda edition already rendered the correct sense. Each pair only bites
+# its own language. Found while translating into Luganda, 2026-09-18.
+BODY_CORRECTIONS.setdefault("divine-songs-for-children", {}).setdefault("replacements", []).extend([
+    ("but never play;", "but never pray;"),
+    ("hawachezi kamwe", "hawaombi kamwe"),
+])

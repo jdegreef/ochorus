@@ -1,3 +1,28 @@
+// prerender refresh 2026-09-18: one NEW Luganda book — brave-for-god-4 ("Abavumu ku lwa Katonda:
+// Ekitabo eky'Okuna"), the fourth Brave for God volume (Paton, Mary Jones, George Liele, C.T.
+// Studd, Lilias Trotter, Ida Scudder). Rebuilds /lg/books so the card carries its translated title
+// over the shared curated painting, and the reader page bakes the six chapters. This completes the
+// Brave for God quartet in Luganda (Books 1–3 already lg). Backs no plan.
+// prerender refresh 2026-09-18: one NEW Swahili book — brave-for-god-4 ("Jasiri kwa ajili ya
+// Mungu: Kitabu cha Nne"), the fourth Brave for God volume (Paton, Mary Jones, George Liele,
+// C.T. Studd, Lilias Trotter, Ida Scudder). Rebuilds /sw/books so the card carries its translated
+// title over the shared curated painting, and the reader page bakes the six chapters. This
+// completes the Brave for God quartet in Swahili (Books 1–3 already sw). Backs no plan.
+// prerender refresh 2026-09-18: one NEW Swahili book — pilgrims-progress (#2586), John Bunyan's
+// allegory (Parts I and II), 22 chapters ("Safari ya Msafiri"). Rebuilds /sw/books so the card
+// carries its translated title over the shared painting cover, and the reader page bakes the 22
+// chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-18: one NEW Swahili book — life-and-diary-of-david-brainerd (#2584),
+// Jonathan Edwards's edition of the missionary's journals, 12 chapters ("Maisha na Shajara ya
+// David Brainerd"). Rebuilds /sw/books so the card carries its translated title over the shared
+// painting cover, and the reader page bakes the 12 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
+// entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-18: Spanish book — the-god-of-all-comfort (#1453), Hannah Whitall
+// Smith's classic on resting in God's goodness ("El Dios de toda consolación"), 17 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title
+// and the reader page bakes the 17 chapters. This is the last es source book of the
+// faith-in-the-fire curated plan (with he-holds-my-tomorrows, already es), so it ALSO activates
+// that plan — see the paired plans/+page.ts touch.
 // prerender refresh 2026-09-18: five NEW Luganda books — the whole For Young Readers shelf in
 // Luganda: brave-for-god / -2 / -3 (Obuvumu ku lwa Katonda), pilgrims-progress-words-of-one-syllable
 // (Olugendo lw'Omutambuze mu Bigambo Ebyangu), and divine-songs-for-children (Ennyimba Entukuvu

@@ -1,0 +1,83 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="presentation">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0" stop-color="#35477a"/>
+      <stop offset="0.5" stop-color="#25335c"/>
+      <stop offset="1" stop-color="#121a33"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.62" r="0.42">
+      <stop offset="0" stop-color="#f3e6c0" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#f3e6c0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.44" r="0.85">
+      <stop offset="0.52" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.46"/>
+    </radialGradient>
+    <linearGradient id="topscrim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1426" stop-opacity="0.5"/>
+      <stop offset="0.4" stop-color="#0d1426" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="1.4" height="4" fill="#000" opacity="0.06"/>
+    </pattern>
+    <linearGradient id="leaf" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#eedaa8"/>
+      <stop offset="1" stop-color="#c2a463"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a6098"/>
+      <stop offset="1" stop-color="#1a2444"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#sky)"/>
+  <circle cx="300" cy="548" r="215" fill="url(#glow)"/>
+
+  <!-- the bank, then a band of living water at the foot -->
+  <path d="M0 690 Q300 668 600 690 L600 706 L0 706 Z" fill="#0d1426" opacity="0.55"/>
+  <rect x="0" y="704" width="600" height="96" fill="url(#water)" opacity="0.85"/>
+  <g stroke="#cfe0ff" stroke-opacity="0.22" stroke-width="1.6" fill="none">
+    <path d="M60 726 q40 -7 80 0 t80 0 t80 0 t80 0 t80 0 t80 0"/>
+    <path d="M40 752 q46 -7 92 0 t92 0 t92 0 t92 0 t92 0"/>
+    <path d="M80 776 q40 -6 80 0 t80 0 t80 0 t80 0 t80 0"/>
+  </g>
+
+  <!-- roots reaching from the trunk down toward the water -->
+  <g stroke="#b1904f" stroke-opacity="0.9" fill="none" stroke-linecap="round">
+    <path d="M296 636 C280 660 256 676 232 700" stroke-width="6"/>
+    <path d="M300 638 C300 664 300 682 300 702" stroke-width="6"/>
+    <path d="M304 636 C320 660 344 676 368 700" stroke-width="6"/>
+    <path d="M298 648 C286 668 272 682 262 700" stroke-width="3.5" stroke-opacity="0.7"/>
+    <path d="M302 648 C314 668 328 682 338 700" stroke-width="3.5" stroke-opacity="0.7"/>
+  </g>
+
+  <!-- slender trunk, rooted at the bank -->
+  <path d="M294 640 C291 596 291 560 299 532 C305 560 304 598 306 640 Z" fill="#bd9b5d"/>
+  <g stroke="#846c36" stroke-opacity="0.4" stroke-width="1.3" fill="none">
+    <path d="M292 618 q10 -4 16 0"/><path d="M293 592 q9 -4 14 0"/><path d="M294 566 q8 -3 12 0"/>
+    <!-- two branches lifting into the canopy -->
+    <path d="M298 534 C286 516 268 508 254 500" stroke="#b1904f" stroke-width="5"/>
+    <path d="M302 534 C316 516 334 508 348 500" stroke="#b1904f" stroke-width="5"/>
+  </g>
+
+  <!-- a rounded, fruitful canopy; crown top ~y=492 (clear of the subtitle) -->
+  <path d="M198 552
+           C190 516 214 494 246 492
+           C258 476 296 474 306 492
+           C338 494 358 516 350 550
+           C348 578 300 592 274 590
+           C230 588 200 578 198 552 Z" fill="url(#leaf)"/>
+  <g fill="#b89a5e" opacity="0.5">
+    <ellipse cx="248" cy="544" rx="34" ry="26"/>
+    <ellipse cx="316" cy="540" rx="30" ry="24"/>
+  </g>
+  <!-- fruit -->
+  <g fill="#eedaa8">
+    <circle cx="238" cy="560" r="3.2"/><circle cx="300" cy="574" r="3.2"/>
+    <circle cx="340" cy="556" r="3.2"/><circle cx="272" cy="540" r="3.2"/>
+  </g>
+
+  <rect width="600" height="800" fill="url(#grain)"/>
+  <rect width="600" height="800" fill="url(#vig)"/>
+  <rect width="600" height="800" fill="url(#topscrim)"/>
+</svg>

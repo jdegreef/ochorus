@@ -52,6 +52,14 @@ keep new person-lives out of `/articles` entirely.
   (book/sermon/author) that the API resolves to Read-next cards. Point only at
   works that actually exist — pull the live catalogue first
   (`curl .../api/library/books/?language=en`) and confirm the slugs.
+- **Inline `<a>` links in the BODY to detail routes MUST end with a trailing
+  slash** — `/books/<slug>/`, `/authors/<slug>/`, `/sermons/<slug>/`. A bare
+  `/books/<slug>` fails the frontend built-output guard
+  `href.test.ts > "contains no bare (non-slash) detail-route links"` and reds the
+  whole `test-and-build` (the aggregator fails 3s after the frontend job). The
+  `related` funnel is slashed for you by the API; hand-written prose links are
+  not — writer agents forget (batch of 4, 2026-09-18: 5 bare links across 2
+  guides). Grep the fixture: `grep -oE 'href=\"/(books|authors|sermons)/[^\"/]+\"'`.
 - **A book guide is cross-linked FROM its book page — so `related` ORDER now
   matters.** `BookDetailSerializer.guides` (`library/serializers.guides_for_book`,
   PR #2843) surfaces a "Reader's guide" section on `/books/<slug>/` for the article
@@ -93,6 +101,14 @@ don't hand-wrap refs in the fixture.
   `article.word_count` raises `AttributeError`. Count with
   `from library.text import word_count; word_count(settled_body)` (a pure regex
   split, no DB needed — runs off `clean_bio_html` output alone).
+- **Count the ≥7 Scripture floor with the REAL detector, not a naive regex or
+  the writer's self-report.** Only refs the site validates become tappable links,
+  and chapter-only ("John 16") or malformed ("Acts 2/10", "Romans 7–8") forms do
+  NOT count. Use `library.scripture.reference_candidates(settled_body)` (the
+  pythonbible-validated candidate finder `annotate_references` runs) —
+  `len(set(str(r) for r in reference_candidates(body)))`. A batch-2 guide
+  self-reported "13+ refs" but the detector saw 3, all chapter-only; the fix was
+  to rewrite them as `Book Chapter:Verse`. Insist writers use verse-level refs.
 - **Don't use `<q>` for quotations — it's not in the allowlist and vanishes.**
   `clean_bio_html` silently strips `<q>…</q>`, leaving the quoted Scripture with
   NO marks at all. Write quotations with literal curly `“ ”` in the body (a
@@ -130,6 +146,40 @@ don't hand-wrap refs in the fixture.
   own fixture (`books/<slug>.en.json`) — the Ochorus *Imitation* is Croft–Bolton,
   the *Confessions* is Pusey, so a line remembered from another translation will
   not match the text the reader clicks through to. Grep the fixture first.
+  **Then VERIFY every blockquote against the book fixture — but normalise
+  punctuation first.** An exact-substring check throws false MISSes because the
+  guide's curly quotes / em-dashes differ from the fixture's glyphs; strip both
+  sides to letters-and-spaces only (`re.sub(r'[^a-z ]',' ',s.lower())`) before
+  the membership test. A real MISS after that = an invented/misremembered quote;
+  drop it. (Batch of 4 study guides, 2026-09-18: 4 of 14 blockquotes looked
+  missing under exact match and were all genuine once punctuation was stripped.)
+- **A study guide is a book guide with a study shape.** Same `<slug>-guide` slug
+  + `related`-leads-with-the-book contract (above), but the `<h2>` sequence is:
+  what it is → its argument/structure → central themes → **Who should read it** →
+  How to read it today → **For reflection** (3–5 questions). Put "Summary" or
+  "Study Guide" in `meta_title` for the search intent. Fan out one writer per
+  book (unique scratch paths, no shared builder), then one central builder that
+  settles each body through `clean_bio_html` and fails out-of-band on
+  word_count, `<7` refs, any straight quote, or a `related` that doesn't lead
+  with the book — see the Fan-out notes below.
+- **For a generically-titled book, READ the author from the book row's natural
+  key — never infer it from the title.** `Godliness` is Catherine Booth, not
+  whoever "sounds right"; `Purity of Heart` is William Booth; `An Autobiography`
+  is Amanda Berry Smith; `Days of Heaven Upon Earth` is A. B. Simpson;
+  `The Fundamental Doctrines of the Christian Faith` is R. A. Torrey. The book's
+  `"author": ["<slug>"]` field is the source of truth; a writer that guesses
+  ships a misattributed guide. When fanning out, tell each writer to confirm the
+  author from the fixture first (a batch of 40 guides, 2026-09-18, hit five such
+  generic titles). Also skip a sibling that is `is_published: false` (dead link).
+- **PD-gate the pick — not every un-guided library book is a public-domain
+  classic.** The library also holds modern, in-copyright works (`feasting-at-the-table`
+  is Gareth Evans, 1995) and Ochorus originals (`growing-in-wisdom`). Publishing a
+  study guide that quotes a *living/in-copyright* author's book at length is a
+  rights question, not just an editorial one — so before writing, check the
+  author's `death_year` (roughly <1929 is safely PD) and skip modern/original
+  works and `-2/-3/-4` compilation slugs. When in doubt, surface it to the founder
+  rather than shipping the guide (2026-09-18: caught Feasting at the Table this way
+  and swapped in a PD classic).
 - **Book guides have a home topic: `enduring-classics`.** Its blurb already names
   Augustine, Bunyan and à Kempis. Tag guides there AND to their doctrinal topic.
   Append new slugs at the END of each `TOPIC_ARTICLES` list — order is display

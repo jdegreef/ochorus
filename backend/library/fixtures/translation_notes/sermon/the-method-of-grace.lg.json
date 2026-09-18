@@ -1,0 +1,100 @@
+{
+  "kind": "sermon",
+  "slug": "the-method-of-grace",
+  "language": "lg",
+  "job_issue": 1516,
+  "pull_request": 2868,
+  "references": [
+    {
+      "reference": "Jeremiah 6:14",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Jeremiah 6:13",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Jeremiah 6:11-12",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 17:21",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ezekiel 18:20",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 7:24",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 8:8",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 14:23",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 16:8",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 16:9",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 11:28",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 8:1",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 20:19",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 14:27",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Psalm 119:165",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Galatians 6:7",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 18:5",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 25:41",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    }
+  ],
+  "note": "Base text Jeremiah 6:14 (Whitefield's refrain 'Peace, peace, when there is no peace'). Jeremiah 6:11-14 and the supporting verses pasted verbatim from OLCB (mined). Self_rendered where the author paraphrases: Romans 2:28-29 (Whitefield swaps 'Jew'→'Christian'), and the Mark 16:7 + John 20:17 composite. FOUND IN THE ENGLISH, not fixed: block 5 has a mismatched quote mark (curly open, straight-single close, never closed); block 8's doubled 'not' reads as a transcription slip inverting the sense; block 10 'say of his disciples' reads as 'say to'. All mirrored/rendered faithfully and flagged."
+}

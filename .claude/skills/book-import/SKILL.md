@@ -352,6 +352,20 @@ dropped; chapters under 120 words are dropped as stubs.
   from the DB rather than hand-typing the curly quotes). Common enough across
   Gutenberg editions that a general ingest strip may be worth it if it recurs.
   *(ministry-of-intercession, 2026-09)*
+- **A Gutenberg edition can set an ornamental `<div class="chaptertitle">CHAPTER
+  N</div>` ABOVE the real `<h2>` title**, so the h2 is borrowed correctly but the
+  bare "CHAPTER N" label leaks in and every body opens "CHAPTER 1 …". Fixed in
+  `sanitize.DROP_SELECTORS` by adding `.chaptertitle`, **qualified by a
+  `KEEP_PREDICATE`** (`_is_not_bare_chapter_label`) so it drops only a div whose
+  whole text is a bare `chapter|part|book [numeral]` label and never a real
+  title. **The numeral guard must use a STRICT roman** (the `ingest._ROMAN_WORD`
+  construction), never `[ivxlcdm]+` — that class also spells "civil"/"mill"/"did",
+  so a real `.chaptertitle` title reducing to "Part Civil" would be wrongly
+  dropped (caught in code review). Also: Hurlbut's Preface is genuine front
+  matter `is_front_matter` won't drop (the skill deliberately keeps "Preface");
+  for a NEW book, delete that chapter in the DB and renumber before serializing
+  the fixture rather than adding a blanket rule. *(hurlbuts-life-of-christ,
+  Gutenberg #40460, 104 ch, 2026-09)*
 - **This-edition-only chapter titles live in the CONTENTS, not the chapter
   openings.** Some Gutenberg editions (e.g. Murray #29296) open each chapter
   with a bare "CHAPTER N" then the scripture epigraph — no descriptive title in
@@ -1691,6 +1705,97 @@ launch.json) doesn't reliably get that into `process.env`, so client-side
 boundary. Confirm it's environmental by loading an existing book (it 500s too),
 then verify via the API JSON (`/api/library/books/<slug>/`) + the backend gates
 instead of chasing a screenshot. *(growing-in-wisdom, 2026-09-16)*
+
+**The "Key Teachings of …" study-companion series (`build_key_teachings`).** These
+are Ochorus's OWN house-written expositions ABOUT a classic teacher — not the
+author's text — one shared 89-page digital-PDF template: title page, disclaimer,
+Introduction, a titled biographical narrative, eighteen `CHAPTER N` chapters (each
+ending in application points + a prayer), Conclusion, "A Reader's Guide". The
+design is the point: quoting only the KJV and naming (never reproducing) the
+author's works lets the series safely cover a STILL-COPYRIGHTED author (Watchman
+Nee) as well as PD ones (Simpson, Edwards, Baxter) — QA every chapter to confirm
+no in-copyright prose is quoted before shipping a copyrighted-author volume.
+Filed under the SUBJECT as author with the Ochorus line in `subtitle`
+(per the rule above); `source_type` has no house value so it ships `public_domain`
+with the rights note in `attribution`. Committed source PDFs live in
+`data/key-teachings/` (Ochorus's own prose, unfetchable). Why NOT `import_pdf`:
+the generic PDF path mishandles this typographically rich source three ways, so
+the command extracts font size AND weight per block (`page.get_text("dict")`,
+bold = span flag `16` or "bold" in the font name):
+- The small-caps running header ("N THE KEY TEACHINGS OF …") is set SMALLER than
+  body (6pt vs 10pt), so it never becomes a heading-size block and dodges
+  `chapterize`'s frequency ban — it leaks into every chapter body. Drop it by
+  content (a small block that is not a chapter:verse citation is furniture).
+- Bold in-chapter subheadings sit at BODY size, so `_merge_paragraphs` fuses each
+  into the next paragraph ("The test There is a question…"). Promote a bold,
+  short (≤10-word), unpunctuated body block to `<h2>` instead.
+- The biographical narrative and "A Reader's Guide" carry neither a `CHAPTER N`
+  marker nor a `_SECTION_RE` keyword, so the marker pass folds them into
+  Introduction/Conclusion. Split on EVERY heading-size block (they're all one
+  size) to get the full 22 chapters.
+Font model per block: `>=body*1.11` title/boundary; `~body` prose (bold+short →
+`<h2>`); `~body*0.80` set-apart Scripture → `<blockquote>`; `<body*0.72` small —
+a chapter:verse ref is a kept epigraph citation, everything else furniture. Two
+more traps: (1) build block text LINE-BY-LINE and de-hyphenate a line-end
+`letter-` split (join next line, no space) — the digital PDF justifies with soft
+hyphens, so a naive span-join yields "move- ment" ×232 (the stock importer ships
+these). De-hyphenate at the PROSE-MERGE step too, not only within a block: a
+page/column break splits a word across two BLOCKS ("Chris-" ‖ "tians"), which
+`_merge_paragraphs` would rejoin with a space. And to tell a syllable break
+("rev-elation" → drop hyphen) from a real compound ("self-righteousness" → keep),
+DON'T lean on the dictionary alone — web2 lacks inflections and proper nouns, so
+"concat-not-a-word → keep" wrongly keeps "won-dered", "Simp-son", "pub-lished"
+(≈135 of 151). The rule that works: DROP by default (right ~98%), KEEP only for
+`self-*` (keep unless the joined word is a known CLOSED self-word — a tiny
+explicit set {selfish, selfless, selfsame, selfhood}; do NOT load
+`/usr/share/dict/web2`, a hidden env/CI dependency that also mis-keeps proper
+nouns) and number/ordinal-word compounds ("twenty-five"). (2) A chapter's OPENING-PAGE
+number ("17", "21", …) is set in the Scripture size band and sits mid-paragraph —
+match a bare arabic/roman block and drop it WITHOUT flushing prose, or it becomes
+a `<blockquote>17</blockquote>` and breaks the paragraph around it. The
+`online`/`freely available online` anachronism in a Reader's Guide is faithful
+(the companion is written now) — baseline it. Land the series `is_published=False`
+(create-only) for founder review. **A stale local DB can miss an author already
+in `authors.json`** (Baxter, added after the dev DB was seeded) — the build's
+`Author.objects.get` then fails though prod is fine (`seed_books` creates from
+the fixture); refresh with `manage.py loaddata library/fixtures/content/authors.json`.
+Covers: a "different tree per book" is a WORDLESS art ground under
+`/covers/art/<slug>.svg` (output, `BookCover` overlays the title → multilingual),
+NOT a frozen designed cover — those are RASTERS with the words baked in, and only
+those need a `designed_covers.py` digest. `BookCover` centres the title, so keep
+the tree in the LOWER third (crown clear of the subtitle), title floating in the
+sky above. To PREVIEW one with the title overlay, inline the SVG into a
+self-contained HTML mock (byline top, centred title/rule/subtitle, foot mark),
+serve it with `python3 -m http.server` and screenshot in the Browser pane — a
+`file://` URL cannot be screenshotted there. Finish steps that bit: (1) set
+`cover_url = /covers/art/<slug>.svg` in the build (create AND update — art is
+the whole point) and delete any earlier `generate_covers` plate at
+`/covers/<slug>.svg`. (2) Run titles through `recase_title` in the build or
+`tests_fixture` reds ("Days of Heaven **Upon** Earth" → "upon", "In Adam, **In**
+Christ" → "in"). (3) The rights note is reader-visible ONLY through `about_html`
+— `attribution` is not rendered on the book page. Give each book an `about_html`
+(`<p>`-only, ≥150 words, sanitizer-clean, must not contain the `description`
+verbatim) carrying the companion/rights note; the copyrighted-author volume
+(Nee) carries the full "not affiliated with any rights-holder… obtain from
+their rightful publishers" disavowal there. (4) og twins: `npm run og:covers`
+(needs `npm install` + `npx playwright install chromium` in the worktree; it
+uses chromium+webfonts, so NO Liberation-font gotcha — that is `og:sermons`
+only). **The manifest trap:** the committed `og-manifest.json` is in an OLDER
+format than the current generator (1-space indent + insertion order vs the
+generator's tab + `localeCompare` sort), so a fresh `og:covers` rewrites the
+whole ~4000-line file AND redraws any twin gone stale on your base (4 unrelated
+Torrey twins here). Don't ship that. `git checkout HEAD --` the unrelated twin
+PNGs, then merge ONLY your entries into the base manifest in ITS format —
+`node -e` load base, copy your slugs' entries from the fresh manifest, write
+`JSON.stringify(base,null,1)+"\n"` (match the base's indent, detected from the
+file — 1 here). Result: a 28-line add, not a 4000-line reorder. Gates check
+per-twin digests, not order/indent, so an unsorted 1-space manifest stays green.
+BETTER, if you can: rebase onto CURRENT `origin/main` BEFORE running `og:covers`
+— main's committed manifest is already in the generator's format, so the run
+appends your entries as a clean +N-line diff with no whole-file rewrite. The
+rewrite is a STALE-BASE artifact, not a permanent condition.
+*(build_key_teachings: Simpson/Edwards/Baxter/Nee, 2026-09; one `WORKS` entry +
+a committed PDF each; fixture-driven, no migration.)*
 
 **A HOUSE-WRITTEN original collection (no source at all) → a `build_<name>` that
 holds the original prose as committed module constants**, exactly like the

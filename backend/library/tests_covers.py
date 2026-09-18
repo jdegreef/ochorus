@@ -335,14 +335,19 @@ class CuratedArtFetchTests(SimpleTestCase):
 class CuratedArtTests(TestCase):
     """Guards on the curated-artwork manifest (library/curated_art.py)."""
 
-    def test_susanna_wesley_has_no_artwork_on_purpose(self):
-        """Every candidate portrait was of a DIFFERENT real woman, and a
-        portrait on a cover reads as a portrait OF that person. Adding one
-        would imply an image is Susanna Wesley when it isn't. If someone adds
-        her here later, this should make them argue for it first."""
+    def test_susanna_wesley_biography_wears_a_landscape_not_a_portrait(self):
+        """A biography's cover must never be a portrait: a face reads as a
+        likeness OF the subject, and every period candidate was a DIFFERENT
+        real woman. Susanna Wesley was long left on a plate for exactly that
+        reason; she now wears a wordless landscape (Hobbema), which claims no
+        likeness. Guard the KIND of art, not her absence — swap her to a
+        portrait and this fails. (The manifest-wide grep in
+        test_no_curated_cover_is_a_portrait_of_its_subject backs this up.)"""
         from library.curated_art import CURATED
 
-        self.assertNotIn("susanna-wesley-clarke", CURATED)
+        art = CURATED.get("susanna-wesley-clarke")
+        self.assertIsNotNone(art, "Susanna Wesley's biography should wear curated art")
+        self.assertNotIn("portrait", art.title.lower())
 
     def test_every_entry_records_its_provenance_and_reason(self):
         # BOTH curated tiers. `CURATED_GROUND` carries the same museum object

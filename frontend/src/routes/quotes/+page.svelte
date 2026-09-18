@@ -110,11 +110,22 @@
 							{initials(a.name)}
 						</span>
 					{/if}
-					<span class="flex-1">
+					<span class="min-w-0 flex-1">
 						<span class="block text-h3 text-text">{a.name}</span>
 						<span class="text-small text-muted"
 							>{(a.count === 1 ? t('quotes.countOne') : t('quotes.countMany')).replace('%count%', String(a.count))}</span
 						>
+						{#if a.teaser}
+							<!-- A representative line — the author's shortest quote — turns
+							     the directory into something to browse. It is the quotation
+							     text itself (English, as on the author pages), so it is
+							     printed as content, not a localized string. Clamped to two
+							     lines so every card keeps the same height. -->
+							<span
+								class="font-display text-small mt-1.5 line-clamp-2 italic text-muted"
+								>{`“${a.teaser}”`}</span
+							>
+						{/if}
 					</span>
 					<span class="text-muted" aria-hidden="true">→</span>
 				</a>
