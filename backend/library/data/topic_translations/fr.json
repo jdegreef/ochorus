@@ -245,5 +245,21 @@
    "reference": "Ésaïe 40:31",
    "text": "Mais ceux qui se confient en l’Éternel renouvellent leur force. Ils prennent le vol comme les aigles; Ils courent, et ne se lassent point, Ils marchent, et ne se fatiguent point."
   }
+ },
+ "for-teens": {
+  "title": "Pour les adolescents",
+  "description": "La foi pour les années de l’adolescence — venir à Christ, appartenir à son peuple, et le courage de le suivre. Des livres courts, simples et sincères, et de vraies histoires de vies dépensées pour lui, écrits pour les jeunes lecteurs ou tout à fait à leur portée.",
+  "scripture": {
+   "reference": "1 Timothée 4:12",
+   "text": "Que personne ne méprise ta jeunesse; mais sois un modèle pour les fidèles, en parole, en conduite, en charité, en foi, en pureté."
+  }
+ },
+ "for-young-readers": {
+  "title": "Pour les jeunes lecteurs",
+  "description": "La foi, racontée simplement, pour les enfants et ceux qui lisent avec eux — la grande histoire du voyage vers la maison, dans une langue qu’un enfant peut suivre. Une étagère qui grandit à mesure que l’on raconte et que l’on écrit davantage pour les petits.",
+  "scripture": {
+   "reference": "Matthieu 19:14",
+   "text": "Et Jésus dit: Laissez les petits enfants, et ne les empêchez pas de venir à moi; car le royaume des cieux est pour ceux qui leur ressemblent."
+  }
  }
 }
