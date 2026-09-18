@@ -95,6 +95,44 @@ describe('a per-locale child sitemap', () => {
 	});
 });
 
+describe('images', () => {
+	const withImages = (): Entry => ({
+		byLocale: new Map([
+			['en', '/books/x/'],
+			['sw', '/books/x/']
+		]),
+		images: new Map([
+			['en', 'https://ochorus.com/covers/x.png'],
+			['sw', 'https://ochorus.com/covers/sw/x.png']
+		])
+	});
+
+	it('puts each edition’s image on its own locale’s row only', () => {
+		// The Swahili page is about the Swahili cover; claiming the English card
+		// for it would tell an image index the wrong title belongs to the page.
+		const sw = urlXml(withImages(), 'sw');
+		expect(sw).toContain('<image:loc>https://ochorus.com/covers/sw/x.png</image:loc>');
+		expect(sw).not.toContain('/covers/x.png');
+		expect(urlXml(withImages()).match(/<image:image>/g)).toHaveLength(2);
+	});
+
+	it('emits no image element for a row that has none', () => {
+		expect(urlXml(entry({ en: '/books/y/' }))).not.toContain('image:');
+	});
+
+	it('declares the image namespace the rows use', () => {
+		expect(urlsetXml([withImages()])).toContain(
+			'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'
+		);
+	});
+
+	it('escapes an ampersand rather than ending the document', () => {
+		const e = withImages();
+		e.images!.set('en', 'https://cdn.example/x.png?a=1&b=2');
+		expect(urlXml(e, 'en')).toContain('?a=1&amp;b=2');
+	});
+});
+
 describe('urlXml without a locale filter', () => {
 	it('emits one row per locale, as the flat sitemap did', () => {
 		expect([...urlXml(chapter).matchAll(/<loc>/g)]).toHaveLength(2);

@@ -88,6 +88,38 @@ export function twinUrl(slug: string, language: string): string {
 	return language === 'en' ? `/covers/${slug}.png` : `/covers/${language}/${slug}.png`;
 }
 
+/** The og twin's pixel size — `generate-cover-og.mjs` draws every card at it,
+ *  and `coverArt.test.ts` reads a committed twin to hold the two together. */
+export const TWIN_WIDTH = 600;
+export const TWIN_HEIGHT = 800;
+
+/**
+ * The raster that stands for one edition anywhere outside the page: its
+ * og:image, the author page's fallback card, its image-sitemap entry.
+ *
+ * A DESIGNED cover is its own image — its title is in its pixels. The two
+ * wordless grounds are not: a plate is an `.svg`, which WhatsApp, Facebook and
+ * X refuse outright, and a painting has no title on it at all. Both are
+ * represented by the edition's twin instead. An edition with no cover file yet
+ * (an admin import before its ground is drawn) has no twin either, so it gets
+ * nothing, and the caller falls back to the site card rather than a 404.
+ *
+ * One function because three callers need the rule, and the copy on the author
+ * page was the one that got it wrong — it handed a plate's `.svg` to scrapers
+ * as the card for every author without a portrait.
+ */
+export function shareImage(book: { slug: string; language: string; cover_url: string }): {
+	url: string;
+	width?: number;
+	height?: number;
+} | null {
+	if (!book.cover_url) return null;
+	if (isArtCover(book.cover_url) || isPlateCover(book.cover_url)) {
+		return { url: twinUrl(book.slug, book.language), width: TWIN_WIDTH, height: TWIN_HEIGHT };
+	}
+	return { url: book.cover_url };
+}
+
 export const COVER_WIDTHS = [320, 640];
 const RASTER = /\.(jpe?g|png)$/;
 

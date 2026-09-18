@@ -36,11 +36,14 @@ import {
 	listQuoteTopicPages,
 	listScripturePages,
 	listSermons,
-	listTopics
+	listTopics,
+	type BookSummary
 } from '$lib/library-public';
 import { locales } from '$lib/paraglide/runtime';
 import { ADVERTISED_LOCALES, UNADVERTISED_LOCALES } from '$lib/advertised-locales';
 import { ERAS, eraOf } from '$lib/eras';
+import { shareImage } from '$lib/coverArt';
+import { absUrl } from '$lib/seo';
 
 /** Locale-prefixed absolute URL ('' prefix for the default locale, en). */
 export const loc = (locale: string, path: string) =>
@@ -50,7 +53,14 @@ export interface Entry {
 	/** Locale → path, for every locale where this page really exists. */
 	byLocale: Map<string, string>;
 	lastmod?: string;
+	/** Locale → the absolute URL of the image that page is ABOUT: a book
+	 *  edition's cover, an author's portrait. Per locale because a translated
+	 *  edition's cover carries its own title. Absent where there is none. */
+	images?: Map<string, string>;
 }
+
+/** `&` and `<` in a URL would end the document early; nothing else can. */
+const xmlText = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 /**
  * The `<url>` rows for one entry.
@@ -72,12 +82,18 @@ export function urlXml(entry: Entry, only?: string): string {
 	const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${loc(defLocale, entry.byLocale.get(defLocale)!)}"/>`;
 	const lastmod = entry.lastmod ? `    <lastmod>${entry.lastmod.slice(0, 10)}</lastmod>\n` : '';
 	// One <url> per language version, each carrying the full alternate set.
+	// An image rides on the row of the locale it belongs to, never on the others:
+	// the Swahili page is about the Swahili cover. `image:loc` alone — Google
+	// retired `image:title` and `image:caption` in 2022 and ignores them.
 	return [...entry.byLocale.entries()]
 		.filter(([l]) => only === undefined || l === only)
-		.map(
-			([l, p]) =>
-				`  <url>\n    <loc>${loc(l, p)}</loc>\n${lastmod}${alts}\n${xDefault}\n  </url>`
-		)
+		.map(([l, p]) => {
+			const img = entry.images?.get(l);
+			const image = img
+				? `\n    <image:image>\n      <image:loc>${xmlText(img)}</image:loc>\n    </image:image>`
+				: '';
+			return `  <url>\n    <loc>${loc(l, p)}</loc>\n${lastmod}${alts}\n${xDefault}${image}\n  </url>`;
+		})
 		.join('\n');
 }
 
@@ -90,7 +106,8 @@ export function urlsetXml(entries: Entry[], only?: string): string {
 	return (
 		'<?xml version="1.0" encoding="UTF-8"?>\n' +
 		'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' +
-		' xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
+		' xmlns:xhtml="http://www.w3.org/1999/xhtml"' +
+		' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' +
 		body +
 		'\n</urlset>\n'
 	);
@@ -305,9 +322,17 @@ async function build(): Promise<SitemapData> {
 	// Author pages prerender for every locale (the bio falls back to English).
 	const authorSlugs = new Set<string>(authors.map((a) => a.slug));
 	for (const { books } of perLocale) for (const b of books) authorSlugs.add(b.author.slug);
-	const authorEntries: Entry[] = [...authorSlugs].map((slug) => ({
-		byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, `/authors/${slug}/`]))
-	}));
+	// The portrait is the same image in every locale — an author is one row.
+	const portraits = new Map(authors.filter((a) => a.photo_url).map((a) => [a.slug, a.photo_url]));
+	const authorEntries: Entry[] = [...authorSlugs].map((slug) => {
+		const photo = portraits.get(slug);
+		return {
+			byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, `/authors/${slug}/`])),
+			images: photo
+				? new Map(ADVERTISED_LOCALES.map((l) => [l, absUrl(photo)]))
+				: undefined
+		};
+	});
 
 	// Per-era biography landing pages — only eras that actually have writers
 	// (mirrors the route's entries()). Like author pages, they exist in every
@@ -327,7 +352,10 @@ async function build(): Promise<SitemapData> {
 	const collect = (
 		kind: 'books' | 'sermons' | 'topics' | 'plans',
 		pathOf: (slug: string) => string,
-		lastmodOf?: (item: { slug: string; updated_at?: string }) => string | undefined
+		lastmodOf?: (item: { slug: string; updated_at?: string }) => string | undefined,
+		// Only books pass one, so it is typed for them; `collect` is otherwise
+		// indifferent to what a work carries beyond a slug and a date.
+		imageOf?: (item: BookSummary) => string | null
 	) => {
 		const byWork = new Map<string, Entry>();
 		for (const slice of advertisedSlices) {
@@ -337,6 +365,8 @@ async function build(): Promise<SitemapData> {
 				e.byLocale.set(slice.locale, pathOf(item.slug));
 				const lm = lastmodOf?.(item);
 				if (lm && (!e.lastmod || lm > e.lastmod)) e.lastmod = lm;
+				const img = imageOf?.(item as BookSummary);
+				if (img) (e.images ??= new Map()).set(slice.locale, img);
 			}
 		}
 		return [...byWork.values()];
@@ -351,7 +381,17 @@ async function build(): Promise<SitemapData> {
 	// substitute date would be a claim. It stays optional here so an API
 	// running behind this build (separate Render services, always a skew
 	// window) simply omits the tag rather than breaking the sitemap.
-	const books = collect('books', (s) => `/books/${s}/`, (b) => b.updated_at);
+	// The same raster the book page hands scrapers as its og:image, so a search
+	// engine and a link preview see one picture of each edition.
+	const books = collect(
+		'books',
+		(s) => `/books/${s}/`,
+		(b) => b.updated_at,
+		(b) => {
+			const img = shareImage(b);
+			return img ? absUrl(img.url) : null;
+		}
+	);
 	const sermons = collect('sermons', (s) => `/sermons/${s}/`, (s) => s.updated_at);
 	pages.push(...collect('topics', (s) => `/topics/${s}/`));
 	pages.push(...collect('plans', (s) => `/plans/${s}/`));
