@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-18: Luganda sermons — enduring-persecution-for-christ (#1513),
+// the-almost-christian (#1514), fall-and-recovery-of-man (#1515), the-method-of-grace (#1516).
+// Sermon pages are prerendered per locale, so /lg/sermons must rebuild so each card and its
+// /lg/sermons/<slug> page bakes the translated title and "In brief" summary.
 // prerender refresh 2026-09-18: Luganda sermons — the-dying-thief (#1511),
 // pauls-praise-of-christian-love (#1512). Sermon pages are prerendered per locale, so
 // /lg/sermons must rebuild so each card and its /lg/sermons/<slug> page bakes the translated

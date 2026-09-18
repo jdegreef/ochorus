@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-18: Luganda author bio john-newton (#1693). Author pages are
+// prerendered PER AUTHOR, so /lg/authors/john-newton must rebuild for the translated bio
+// and its <blockquote> pull-quotes and prayer callouts.
 // prerender refresh 2026-09-18: Luganda author bio martin-luther (#1504). Author pages are
 // prerendered PER AUTHOR, so /lg/authors/martin-luther must rebuild for the translated bio
 // and its <blockquote> pull-quotes and prayer callout.

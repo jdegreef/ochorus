@@ -1,0 +1,250 @@
+{
+  "kind": "sermon",
+  "slug": "the-almost-christian",
+  "language": "lg",
+  "job_issue": 1514,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Acts 26:28",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ephesians 5:4",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ephesians 4:29",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 4:30",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 5:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Matthew 7:12",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ecclesiastes 9:10",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 12:11",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Galatians 6:10",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Zechariah 13:1",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 18:13",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 6:2",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 7:4",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "2 Corinthians 12:13",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Timothy 6:12",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Mark 12:30",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 1:47",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 Thessalonians 5:18",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Isaiah 26:8",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Psalm 73:25",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Galatians 6:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "1 John 2:16",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:4",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 John 4:16",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 22:39",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 10:29",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ephesians 5:2",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:5",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 9:22",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 13:6-7",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 John 5:1",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 1:12",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 John 5:4",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 3:36",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Proverbs 15:11",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Colossians 3:17",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Peter 2:5",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 John 4:21",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Micah 7:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Colossians 2:14",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Ephesians 1:7",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Romans 8:16",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Exodus 33:19",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Exodus 34:6-7",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:6",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 20:28",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 18:1",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 21:17",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 3:24",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:1",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:2",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 5:5",
+      "status": "self_rendered"
+    }
+  ],
+  "note": "Base text Acts 26:28. Wesley weaves scripture in fragments and shifts person/number constantly, so many verses are self_rendered adaptations rather than verbatim OLCB pastes; verbatim pastes are recorded mined(OLCB). Two genuine crib mismatches flagged: the NEGATIVE golden rule (Matthew 7:12/Luke 6:31 — OLCB gives only the positive form) and Ephesians 5:18 ('wine wherein is excess' — OLCB is an imperative). Horace's Latin, the Anglican Homily, and 'Hell is paved with good intentions' are non-scripture, rendered as prose."
+}
