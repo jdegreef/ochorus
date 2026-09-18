@@ -17,6 +17,8 @@ Rate conventions:
 
 from __future__ import annotations
 
+from functools import cached_property
+
 from django.db.models import Count
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -127,13 +129,12 @@ class AdminEmailMetricsView(APIView):
         return {"step": step}
 
     def _broadcast_label(self, broadcast_id) -> dict:
-        name = self._broadcast_names().get(broadcast_id, f"#{broadcast_id}")
+        name = self._broadcast_names.get(broadcast_id, f"#{broadcast_id}")
         return {"id": broadcast_id, "name": name}
 
+    @cached_property
     def _broadcast_names(self) -> dict:
-        if not hasattr(self, "_bnames"):
-            self._bnames = dict(Broadcast.objects.values_list("id", "name"))
-        return self._bnames
+        return dict(Broadcast.objects.values_list("id", "name"))
 
     def _overview(self) -> dict:
         sent = EmailMessage.objects.filter(status=SendStatus.SENT).count()
