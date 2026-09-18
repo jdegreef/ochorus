@@ -60,6 +60,60 @@ def _modern_edition_available(slug: str) -> bool:
     ).exists()
 
 
+#: Slug suffixes that make a separate young-reader Book row of the same work — a
+#: "(For Teens)" / "(For Children)" retelling. Unlike the Modern English edition
+#: (a parallel-language row under the same slug), these are their own rows under
+#: ``<base>-teens`` / ``<base>-children``, and NOTHING in the model joins them to
+#: the full text: the relationship is the slug convention alone, derived here.
+#: Ordered by descending reading age (teens before children) — this is what
+#: drives the full → teens → children order the cross-links are shown in.
+EDITION_SUFFIXES = ("-teens", "-children")
+
+
+def _edition_base_slug(slug: str) -> str:
+    """The full-text slug a young-reader edition retells, or the slug itself."""
+    for suffix in EDITION_SUFFIXES:
+        if slug.endswith(suffix):
+            return slug[: -len(suffix)]
+    return slug
+
+
+def _edition_family(base: str) -> list[str]:
+    """The full text and its young-reader editions in display order
+    (full → teens → children). These are the slugs the convention allows, not a
+    query — a member may or may not exist as a row."""
+    return [base] + [base + suffix for suffix in EDITION_SUFFIXES]
+
+
+def sibling_editions(book):
+    """Published audience editions of the SAME work as ``book`` — the full text
+    and its "(For Teens)" / "(For Children)" retellings — excluding ``book``
+    itself, ordered full → teens → children.
+
+    The relationship is derived from the slug convention
+    (``<base>`` ⇄ ``<base>-teens`` ⇄ ``<base>-children``), not stored, so this
+    is the one place that knows it. Same-language only: the retellings live in
+    English today, but keying on ``book.language`` means a translated set would
+    cross-link within its own language and never fall back across one — the
+    no-English-fallback rule the whole content model rests on. The
+    ``is_published`` filter runs per request, so an unpublished edition simply
+    never appears — no separate prod check to keep in sync (a plain win over a
+    hand-listed shelf, where an unpublished member silently vanishes)."""
+    family = _edition_family(_edition_base_slug(book.slug))
+    rank = {slug: i for i, slug in enumerate(family)}
+    rows = (
+        Book.objects.filter(
+            slug__in=[s for s in family if s != book.slug],
+            language=book.language,
+            is_published=True,
+        )
+        .select_related("author")
+        .prefetch_related("author__translations")
+        .annotate(**BOOK_CARD_ANNOTATIONS)
+    )
+    return sorted(rows, key=lambda b: rank[b.slug])
+
+
 def _available_languages(model, slug: str) -> list[str]:
     """Sorted content locales this work is published in — for hreflang.
 
@@ -994,6 +1048,11 @@ class BookDetailSerializer(BookListSerializer):
     # English work; these let the reader offer a per-book toggle to it.
     is_modern_edition = serializers.SerializerMethodField()
     has_modern_edition = serializers.SerializerMethodField()
+    # Other audience editions of the SAME work — the "(For Children)" /
+    # "(For Teens)" retellings and the full text they retell — cross-linked both
+    # ways. Detail only, like related: it is one extra query, nothing on a page
+    # and 130× nothing a shelf shouldn't pay.
+    editions = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
     artwork_credit = serializers.SerializerMethodField()
     # The author's authoritative identifiers, for the Person inside this page's
@@ -1109,10 +1168,24 @@ class BookDetailSerializer(BookListSerializer):
             "description", "source_url", "pdf_url", "chapters",
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
-            "available_languages", "artwork_credit", "author_same_as",
+            "editions", "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "qa", "scripture", "opening",
             "featured_people", "author_quote_count",
         ]
+
+    def get_editions(self, obj):
+        """Sibling audience editions (full ⇄ teens ⇄ children) as cover cards,
+        so a reader who lands on the full text finds the young-reader retelling
+        and vice versa. Empty for the vast majority of works, which have no
+        retelling — the section then simply doesn't render.
+
+        Pass an empty ``book_topics`` so the card serializer returns no topic
+        chips without building the shelf-wide topic map: the edition cards don't
+        render chips, and get_related already pays for its own map build on the
+        same page — one is enough."""
+        rows = sibling_editions(obj)
+        context = {**self.context, "book_topics": {}}
+        return BookListSerializer(rows, many=True, context=context).data
 
     def get_available_languages(self, obj):
         return _available_languages(Book, obj.slug)
@@ -1171,8 +1244,6 @@ class BookDetailSerializer(BookListSerializer):
         many topics they share with this one (the strong signal), then a boost
         for being by the same author. Books present only in another language are
         excluded, so every suggestion is one the reader can open here."""
-        from django.db.models import Count, Sum
-
         scores: dict[str, int] = {}
 
         # Shared-topic overlap: how many of this work's topics each other work
@@ -1201,6 +1272,13 @@ class BookDetailSerializer(BookListSerializer):
         for slug in author_slugs:
             scores[slug] = scores.get(slug, 0) + self.AUTHOR_WEIGHT
 
+        # A young-reader edition of THIS work shares its author (and often its
+        # topics), so it would surface here as "more like this" — but it is the
+        # same work, already shown in its own "Other editions" section above. Drop
+        # the whole edition family so a card never appears twice on the page.
+        for slug in _edition_family(_edition_base_slug(obj.slug)):
+            scores.pop(slug, None)
+
         if not scores:
             return []
 
@@ -1210,7 +1288,7 @@ class BookDetailSerializer(BookListSerializer):
             )
             .select_related("author")
             .prefetch_related("author__translations")
-            .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
+            .annotate(**BOOK_CARD_ANNOTATIONS)
         )
         ranked = sorted(
             candidates, key=lambda b: (-scores.get(b.slug, 0), b.sort_order, b.title)
