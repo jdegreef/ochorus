@@ -101,8 +101,31 @@ DROP_SELECTORS = [
     # because substring class matching over-matches, and `epubonly` needs no
     # slack.
     ".epubonly",
+    # Some Gutenberg editions set an ornamental "CHAPTER N" line as its own
+    # `<div class="chaptertitle">`, ABOVE the real `<h2>` title — the reader
+    # already numbers chapters, so left in it opens every body "CHAPTER 1 …".
+    # Qualified (see KEEP_PREDICATES): dropped only when the div is a bare
+    # chapter/part/book label, never when it carries a real title.
+    ".chaptertitle",
     "[id*=navbar]", "[id*=toc]",
 ]
+
+# A `.chaptertitle` (or similar) whose whole text is just "CHAPTER 3" / "PART II"
+# / "Book One" is furniture the reader re-derives; anything else is a real title.
+# The numeral must be arabic, a STRICT roman (never `[ivxlcdm]+`, which also
+# spells "civil"/"mill"/"did" — see the book-import skill), or a small word, so
+# a real title reducing to "Part Civil" is kept, not dropped as furniture.
+_STRICT_ROMAN = r"(?=[ivxlcdm])m{0,3}(?:cm|cd|d?c{0,3})(?:xc|xl|l?x{0,3})(?:ix|iv|v?i{0,3})"
+_BARE_CHAPTER_LABEL = re.compile(
+    rf"^(?:chapter|part|book)\b\.?(?:\s+(?:\d+|{_STRICT_ROMAN}|one|two|three|four|"
+    r"five|six|seven|eight|nine|ten|eleven|twelve))?\.?$",
+    re.I,
+)
+
+
+def _is_not_bare_chapter_label(el: Tag) -> bool:
+    """Keep the element unless its entire text is a bare chapter-number label."""
+    return not _BARE_CHAPTER_LABEL.match(el.get_text(" ", strip=True))
 
 # Project Gutenberg puts `class="pginternal"` on EVERY internal link, so the
 # class says nothing about what the link IS. Three kinds wear it: the TOC's page
@@ -258,6 +281,7 @@ def _scrub_attrs(tag: Tag, *, allow_bio_attrs: bool) -> None:
 KEEP_PREDICATES = {
     NOTE_SELECTOR: _is_gutenberg_note_content,
     PGINTERNAL_SELECTOR: _is_pg_cross_reference,
+    ".chaptertitle": _is_not_bare_chapter_label,
 }
 
 

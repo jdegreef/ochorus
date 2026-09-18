@@ -352,6 +352,20 @@ dropped; chapters under 120 words are dropped as stubs.
   from the DB rather than hand-typing the curly quotes). Common enough across
   Gutenberg editions that a general ingest strip may be worth it if it recurs.
   *(ministry-of-intercession, 2026-09)*
+- **A Gutenberg edition can set an ornamental `<div class="chaptertitle">CHAPTER
+  N</div>` ABOVE the real `<h2>` title**, so the h2 is borrowed correctly but the
+  bare "CHAPTER N" label leaks in and every body opens "CHAPTER 1 …". Fixed in
+  `sanitize.DROP_SELECTORS` by adding `.chaptertitle`, **qualified by a
+  `KEEP_PREDICATE`** (`_is_not_bare_chapter_label`) so it drops only a div whose
+  whole text is a bare `chapter|part|book [numeral]` label and never a real
+  title. **The numeral guard must use a STRICT roman** (the `ingest._ROMAN_WORD`
+  construction), never `[ivxlcdm]+` — that class also spells "civil"/"mill"/"did",
+  so a real `.chaptertitle` title reducing to "Part Civil" would be wrongly
+  dropped (caught in code review). Also: Hurlbut's Preface is genuine front
+  matter `is_front_matter` won't drop (the skill deliberately keeps "Preface");
+  for a NEW book, delete that chapter in the DB and renumber before serializing
+  the fixture rather than adding a blanket rule. *(hurlbuts-life-of-christ,
+  Gutenberg #40460, 104 ch, 2026-09)*
 - **This-edition-only chapter titles live in the CONTENTS, not the chapter
   openings.** Some Gutenberg editions (e.g. Murray #29296) open each chapter
   with a bare "CHAPTER N" then the scripture epigraph — no descriptive title in

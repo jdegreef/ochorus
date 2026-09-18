@@ -948,6 +948,14 @@
 			"art": false,
 			"scrim": 1
 		},
+		"hurlbuts-life-of-christ": {
+			"ground": "3a879eea06afd2cb313183c4ecb0de5bce209c8fc1cfd15b8197c8841be1db62",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"sw/growing-in-wisdom": {
 			"ground": "3949cba18648fbf8cc681f7d8ebdc07e3c8596ac9aefae8ca7d52873f060f3b0",
 			"style": "originals",

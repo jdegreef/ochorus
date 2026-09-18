@@ -5431,5 +5431,49 @@
         }
       ]
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "jesse-lyman-hurlbut",
+      "name": "Jesse Lyman Hurlbut",
+      "birth_year": 1843,
+      "death_year": 1930,
+      "photo_url": "",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Jesse_Lyman_Hurlbut"
+      ],
+      "original_language": "en",
+      "is_imprint": false,
+      "bio": "Jesse Lyman Hurlbut (1843–1930) was an American Methodist minister and a leader of the Sunday-school and Chautauqua movements, best known for retelling the Scriptures for the young. His story-books — above all his Story of the Bible — carried the Bible into millions of homes in plain, vivid language a child could follow.",
+      "bio_html": "<p>Jesse Lyman Hurlbut was born in New York City in 1843 and gave his long life to a single conviction: that the Bible could be taught to anyone, of any age, if only it were told plainly and well. Ordained in the Methodist Episcopal Church, he served churches across New Jersey and New York, but it was as a teacher of teachers that he left his deepest mark. He believed the Sunday school was one of the great instruments of the church, and he spent decades making it better — training its teachers, ordering its lessons, and writing the books it would use.</p><p>Hurlbut became a central figure in the Chautauqua movement, the remarkable nineteenth-century experiment in adult education that began beside a lake in New York and spread across America. As its superintendent of instruction he helped shape a scheme of study that reached hundreds of thousands of ordinary people, and he carried the same passion into the graded Sunday-school lessons that were adopted across the country. His aim was never novelty for its own sake but clarity: to put the knowledge of Scripture within reach of the learner who had been given up as beyond teaching.</p><h2>The story-teller of the Bible</h2><p>Out of that life of teaching came the books for which he is still remembered. His Story of the Bible (1904) retold the whole of Scripture, from Genesis to Revelation, as a connected narrative in one hundred and sixty-eight short stories, each complete in itself. It was written for a child of ten, yet honest and unsentimental enough for that child’s parents, and it went on to sell in the millions and to be translated into many languages. A companion volume did the same for the Gospels, telling the life of Jesus in the same simple, careful way. He also wrote widely used study helps — a Bible atlas, outline studies of the Old and New Testaments, and manuals for building up the Sunday school.</p><p>What set Hurlbut’s retellings apart was a rule he kept strictly: he added nothing. He invented no scenes and no conversations, and he founded no romance upon the sacred history. “The design,” he wrote of his life of Christ, “has been to write the biography of Jesus, not a romance founded upon his life.” His whole purpose was that a young reader, having followed the story, would be led not away from the Bible but straight toward it — ready and eager to read the Scriptures themselves.</p><p>Hurlbut died in 1930, but his books outlived him by a century and more. Generations of children first met Abraham and Moses, David and Daniel, and above all Jesus, in his plain and reverent pages; and countless teachers learned from him how to open the Book to the young. He remains one of the great servants of that humble, essential work — telling the old, true story so that the youngest may understand.</p>",
+      "faq": [
+        {
+          "q": "Who was Jesse Lyman Hurlbut?",
+          "a": "An American Methodist minister (1843–1930) and a leader of the Sunday-school and Chautauqua movements, best known for retelling the Bible for young readers in clear, vivid language."
+        },
+        {
+          "q": "What is Hurlbut best known for?",
+          "a": "His Story of the Bible (1904), which retold the whole of Scripture as a connected narrative in one hundred and sixty-eight short stories and sold in the millions, and his companion life of Christ for the young."
+        },
+        {
+          "q": "What was the Chautauqua movement, and what was his part in it?",
+          "a": "Chautauqua was a nineteenth-century movement of popular adult education that spread across America from a lake in New York. Hurlbut served as its superintendent of instruction, shaping a course of study that reached vast numbers of ordinary learners."
+        },
+        {
+          "q": "Are his Bible retellings faithful to Scripture?",
+          "a": "Yes. Hurlbut kept a strict rule of adding nothing — no invented scenes or conversations — following the biblical record closely so that a young reader would be led toward the Bible itself rather than away from it."
+        },
+        {
+          "q": "Who are his books written for?",
+          "a": "He wrote for a child of about ten, plainly enough to be followed without help, yet honest and unsentimental enough that parents and teachers reading alongside would find them worthwhile too."
+        },
+        {
+          "q": "Why read Hurlbut today?",
+          "a": "Because few writers have told the Bible’s story to the young more clearly or reverently. His pages remain a warm, faithful first way into Scripture for children — and a model for anyone teaching it."
+        }
+      ],
+      "created_at": "2026-09-18T00:00:00Z"
+    }
   }
 ]
