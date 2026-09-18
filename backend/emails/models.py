@@ -163,6 +163,17 @@ class Broadcast(models.Model):
         return f"broadcast<{self.name}>"
 
 
+def idempotency_key(kind: str, discriminator: str, profile) -> str:
+    """The send-once key for an (email × recipient), in ONE place.
+
+    The unique column on :class:`EmailMessage` is the guarantee; this is the
+    single owner of its *format*, so a new lifecycle step or the broadcast path
+    can't drift the string and silently defeat uniqueness. ``discriminator`` is
+    the step name (``"welcome"``) or the broadcast id.
+    """
+    return f"{kind}:{discriminator}:{profile.pk}"
+
+
 class EmailMessage(models.Model):
     """One email sent (or attempted) to one recipient.
 

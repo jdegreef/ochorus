@@ -11,10 +11,10 @@ from dataclasses import dataclass
 
 from django.template.loader import render_to_string
 
+from library.languages import entry as language_entry
+
 from . import copy as copy_mod
 from . import links
-
-_RTL_LOCALES = frozenset({"ar", "he", "fa", "ur"})
 
 
 @dataclass(frozen=True)
@@ -32,9 +32,8 @@ def _display_name(profile) -> str:
 
 def render_welcome(profile, subscription) -> RenderedEmail:
     """Render the welcome email for ``profile`` in their language."""
-    locale = (getattr(profile, "locale", "") or "en").lower()
-    text = copy_mod.welcome_copy(locale)
-    lang = locale.split("-")[0]
+    lang = copy_mod.base_lang(getattr(profile, "locale", "") or "en")
+    text = copy_mod.welcome_copy(lang)
 
     context = {
         "copy": text,
@@ -44,7 +43,7 @@ def render_welcome(profile, subscription) -> RenderedEmail:
         "cta_url": links.site_url(str(text.get("cta_path", ""))),
         "unsubscribe_url": links.unsubscribe_url(subscription.unsubscribe_token),
         "lang": lang,
-        "dir": "rtl" if lang in _RTL_LOCALES else "ltr",
+        "dir": "rtl" if language_entry(lang).get("rtl") else "ltr",
     }
     html = render_to_string("emails/welcome.html", context)
     return RenderedEmail(subject=str(text["subject"]), html=html)

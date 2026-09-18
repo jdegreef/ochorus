@@ -74,6 +74,15 @@ WELCOME: dict[str, dict[str, object]] = {
 }
 
 
+def base_lang(locale: str) -> str:
+    """A profile locale reduced to its base language code (``pt-BR`` → ``pt``).
+
+    The one place email localization normalizes a locale, shared by the copy
+    lookup and the renderer so the two can't disagree.
+    """
+    return (locale or DEFAULT_LOCALE).split("-")[0].lower()
+
+
 def welcome_copy(locale: str) -> dict[str, object]:
     """The welcome copy for ``locale``, falling back to English."""
-    return WELCOME.get((locale or "").split("-")[0].lower(), WELCOME[DEFAULT_LOCALE])
+    return WELCOME.get(base_lang(locale), WELCOME[DEFAULT_LOCALE])

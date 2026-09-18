@@ -12,7 +12,13 @@ from __future__ import annotations
 
 from accounts.models import UserProfile
 
-from .models import EmailKind, EmailMessage, EmailSubscription, SendStatus
+from .models import (
+    EmailKind,
+    EmailMessage,
+    EmailSubscription,
+    SendStatus,
+    idempotency_key,
+)
 from .recipient import verified_email
 from .rendering import render_welcome
 from .sending import deliver
@@ -21,7 +27,7 @@ WELCOME_STEP = "welcome"
 
 
 def welcome_key(profile) -> str:
-    return f"lifecycle:{WELCOME_STEP}:{profile.pk}"
+    return idempotency_key(EmailKind.LIFECYCLE, WELCOME_STEP, profile)
 
 
 def send_welcome(profile) -> EmailMessage | None:
