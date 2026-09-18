@@ -721,6 +721,8 @@ TOPIC_ARTICLES = {
         "ministry-of-intercession-guide",
         "necessity-of-prayer-guide",
         "purpose-in-prayer-guide",
+        "prevailing-prayer-guide",
+        "essentials-of-prayer-guide",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -760,6 +762,7 @@ TOPIC_ARTICLES = {
         "way-into-holiest-guide",
         "days-of-heaven-upon-earth-guide",
         "the-fourfold-gospel-guide",
+        "jesus-himself-2-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -794,6 +797,7 @@ TOPIC_ARTICLES = {
         "things-as-they-are-guide",
         "amanda-smith-autobiography-guide",
         "a-retrospect-guide",
+        "religious-experience-and-journal-guide",
     ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
@@ -918,6 +922,10 @@ TOPIC_ARTICLES = {
         "the-fourfold-gospel-guide",
         "gleanings-among-the-sheaves-guide",
         "the-fundamental-doctrines-of-the-christian-faith-guide",
+        "prevailing-prayer-guide",
+        "religious-experience-and-journal-guide",
+        "jesus-himself-2-guide",
+        "essentials-of-prayer-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
