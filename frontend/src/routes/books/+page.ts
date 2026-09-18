@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-18: one NEW Luganda book — brave-for-god-4 ("Abavumu ku lwa Katonda:
+// Ekitabo eky'Okuna"), the fourth Brave for God volume (Paton, Mary Jones, George Liele, C.T.
+// Studd, Lilias Trotter, Ida Scudder). Rebuilds /lg/books so the card carries its translated title
+// over the shared curated painting, and the reader page bakes the six chapters. This completes the
+// Brave for God quartet in Luganda (Books 1–3 already lg). Backs no plan.
 // prerender refresh 2026-09-18: one NEW Swahili book — brave-for-god-4 ("Jasiri kwa ajili ya
 // Mungu: Kitabu cha Nne"), the fourth Brave for God volume (Paton, Mary Jones, George Liele,
 // C.T. Studd, Lilias Trotter, Ida Scudder). Rebuilds /sw/books so the card carries its translated
