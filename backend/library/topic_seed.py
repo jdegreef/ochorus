@@ -723,6 +723,7 @@ TOPIC_ARTICLES = {
         "purpose-in-prayer-guide",
         "prevailing-prayer-guide",
         "essentials-of-prayer-guide",
+        "a-short-and-easy-method-of-prayer-guide",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -763,6 +764,7 @@ TOPIC_ARTICLES = {
         "days-of-heaven-upon-earth-guide",
         "the-fourfold-gospel-guide",
         "jesus-himself-2-guide",
+        "the-masters-indwelling-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -798,6 +800,7 @@ TOPIC_ARTICLES = {
         "amanda-smith-autobiography-guide",
         "a-retrospect-guide",
         "religious-experience-and-journal-guide",
+        "life-experience-gospel-labours-guide",
     ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
@@ -841,6 +844,7 @@ TOPIC_ARTICLES = {
         "the-way-to-god-guide",
         "talks-to-the-farmer-guide",
         "a-call-to-the-unconverted-guide",
+        "all-of-grace-guide",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -926,6 +930,10 @@ TOPIC_ARTICLES = {
         "religious-experience-and-journal-guide",
         "jesus-himself-2-guide",
         "essentials-of-prayer-guide",
+        "all-of-grace-guide",
+        "a-short-and-easy-method-of-prayer-guide",
+        "the-masters-indwelling-guide",
+        "life-experience-gospel-labours-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
