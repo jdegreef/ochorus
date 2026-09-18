@@ -700,14 +700,6 @@
 			"art": true,
 			"scrim": 0.95
 		},
-		"fr/cheque-book": {
-			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
-			"style": "revival",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 0.5
-		},
 		"fr/all-of-grace": {
 			"ground": "1c9bdb35d02ae3c9fa0d528a870e445629a55f39a200014464be0effca918144",
 			"style": "revival",
@@ -716,14 +708,6 @@
 			"art": true,
 			"scrim": 0.7
 		},
-		"fr/waiting-on-god": {
-			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
-			"style": "devotional",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 0.6
-		},
 		"fr/baptism-with-the-holy-spirit": {
 			"ground": "bdeed4127b250e9d7f0f03c5a86ac3b99b8e31904f6ea3e75e23f75e2d5ef88b",
 			"style": "revival",
@@ -731,6 +715,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85
+		},
+		"fr/cheque-book": {
+			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5
 		},
 		"fr/clothed-with-strength-and-dignity": {
 			"ground": "e27ae9f4ee85f2ee1a687c0cd91692b0cb15e25687ac97006a167412154bed48",
@@ -771,14 +763,6 @@
 			"script": "latin",
 			"art": false,
 			"scrim": 1
-		},
-		"fr/the-god-of-all-comfort": {
-			"ground": "3bc088fdd73df57df3c20bcbabb1ba2dcd8684c5e91bc4aec125b092e2fc2517",
-			"style": "devotional",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 0.95
 		},
 		"fr/he-holds-my-tomorrows": {
 			"ground": "0cce2cab2c9ba862dd5969db5c2296538ef55d9b03fb7d0c3c525045db76328b",
@@ -844,6 +828,30 @@
 			"art": true,
 			"scrim": 0.35
 		},
+		"fr/stepping-stones-2": {
+			"ground": "7daa1e31d9cac5649ddd8142a5d508e12549c87df2610b566578895530ef16ef",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
+		"fr/talks-to-the-farmer": {
+			"ground": "a98d8c68fcb55e7ccb5e9d72ce6a63dfc2841f307454c6c43b08dfde23348420",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5
+		},
+		"fr/the-god-of-all-comfort": {
+			"ground": "3bc088fdd73df57df3c20bcbabb1ba2dcd8684c5e91bc4aec125b092e2fc2517",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95
+		},
 		"fr/the-inner-chamber": {
 			"ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
 			"style": "devotional",
@@ -883,22 +891,6 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85
-		},
-		"fr/stepping-stones-2": {
-			"ground": "7daa1e31d9cac5649ddd8142a5d508e12549c87df2610b566578895530ef16ef",
-			"style": "house",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 0.7
-		},
-		"fr/talks-to-the-farmer": {
-			"ground": "a98d8c68fcb55e7ccb5e9d72ce6a63dfc2841f307454c6c43b08dfde23348420",
-			"style": "revival",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 0.5
 		},
 		"fr/waiting-on-god": {
 			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
@@ -942,30 +934,6 @@
 		},
 		"growing-in-wisdom": {
 			"ground": "c2657449c6501dea09ef5cdec1ca8994cdccdabc5713ba9df6e71dc71a1f45bd",
-			"style": "originals",
-			"volume": null,
-			"script": "latin",
-			"art": false,
-			"scrim": 1
-		},
-		"hurlbuts-life-of-christ": {
-			"ground": "3a879eea06afd2cb313183c4ecb0de5bce209c8fc1cfd15b8197c8841be1db62",
-			"style": "young",
-			"volume": null,
-			"script": "latin",
-			"art": false,
-			"scrim": 1
-		},
-		"sw/growing-in-wisdom": {
-			"ground": "3949cba18648fbf8cc681f7d8ebdc07e3c8596ac9aefae8ca7d52873f060f3b0",
-			"style": "originals",
-			"volume": null,
-			"script": "latin",
-			"art": false,
-			"scrim": 1
-		},
-		"lg/growing-in-wisdom": {
-			"ground": "f2a197457c87dfeeebab53f3a4adcba8ef534e6b3c8b0b326d28862bc6494878",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -1124,6 +1092,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"hurlbuts-life-of-christ": {
+			"ground": "3a879eea06afd2cb313183c4ecb0de5bce209c8fc1cfd15b8197c8841be1db62",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
+		},
 		"if": {
 			"ground": "0c65bcb9120c231a9934c71eb12065665162accd56ddffed98cf593540cbb2b0",
 			"style": "devotional",
@@ -1235,6 +1211,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3
+		},
+		"lg/growing-in-wisdom": {
+			"ground": "f2a197457c87dfeeebab53f3a4adcba8ef534e6b3c8b0b326d28862bc6494878",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"lg/he-holds-my-tomorrows": {
 			"ground": "5cb1de8698203ceadce2983df6a0baaa7f4ba5247a5e8ac16ef60cf8125f3a69",
@@ -2051,6 +2035,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3
+		},
+		"sw/growing-in-wisdom": {
+			"ground": "3949cba18648fbf8cc681f7d8ebdc07e3c8596ac9aefae8ca7d52873f060f3b0",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"sw/he-holds-my-tomorrows": {
 			"ground": "b95ee9e3b308e4f21e054b07b88482f596683328ba443f8a8da2f07db63a4470",

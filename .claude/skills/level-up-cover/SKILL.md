@@ -1,6 +1,6 @@
 ---
 name: level-up-cover
-description: Level up a flat plate-covered book to a CURATED painted ground — pick a public-domain artwork per book, run the cover pipeline, repoint fixtures, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (author-by-author; ~35 plates remain after Murray/Bounds/Nee/Spurgeon/Torrey). Encodes the exact command order, the sourcing method, and the gotchas that bite each run. This is a living playbook — append new failure modes as we find them.
+description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (author-by-author; ~35 plates remain after Murray/Bounds/Nee/Spurgeon/Torrey). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
 ---
 
 # Levelling up a plate cover to CURATED art
@@ -19,7 +19,7 @@ is wrong for their register (a closet-prayer writer in the missionary era → ad
 
 ```bash
 # which of the author's books are PUBLISHED plates? (skip is_published:false — e.g. Nee's
-# unpublished teaching titles) and which languages each has (repoint ALL of them)
+# unpublished teaching titles) and which languages each has (paint_covers repoints them all)
 python3 -c "..."   # read backend/library/fixtures/content/books/<slug>.<lang>.json fields
 ```
 Confirm `is_published`, `cover_url` (`.svg` = plate), `subtitle`, `langs`, author
@@ -75,57 +75,41 @@ acceptable licence. If you pull a ground from another free source, record its
 licence + source in the `CURATED` rationale; skip only the genuinely
 risky (commercial/stock/watermarked, or actively policed).
 
-## 2. Build (exact order — from `backend/`, `DJANGO_DEBUG=true uv run python …`)
+## 2. Build — one command
+
+With the `CURATED` entries written, everything else is mechanical:
 
 ```bash
-find . -name __pycache__ -type d -exec rm -rf {} + ; find . -name '*.pyc' -delete   # GOTCHA A
-uv run python manage.py migrate                                                     # GOTCHA B
-uv run python manage.py build_curated_covers <slug…>        # writes covers/art/<slug>.jpg, re-verifies PD
-# delete EVERY orphaned plate svg, incl per-language (es/, lg/, sw/…):
-#   find frontend/static/covers -name "<slug>.svg" -delete   (build_cover_assets HARD-FAILS if left)
-uv run python scripts/build_cover_assets.py                 # webp variants; also repoints DB cover_url
-# repoint the fixtures (the shipped truth) — cover_url for EVERY language row → /covers/art/<slug>.jpg
-#   build_cover_assets repoints the EN row but NOT extra-language rows (es/ sw/ lg/…) — do those by hand.
-#   GOTCHA: repoint with a str.replace on the one cover_url line, NEVER json.load+json.dump — dump
-#   reformats the whole fixture (81-line diff, escaping/indent drift). Restore from origin + str.replace
-#   if you already dumped. (Same shape as the og-manifest reformat trap below.)
-uv run python scripts/tune_art_scrim.py                     # measured scrim (art_scrim.py + coverScrim.ts)
-( cd ../frontend && npm run og:covers )                     # composed og twins (needs node_modules symlink)
+cd backend && DJANGO_DEBUG=true uv run python scripts/paint_covers.py <slug…>
 ```
-**Order matters: `tune_art_scrim` BEFORE `og:covers`.** The twin is composed with
-`scrimStrength(slug)` read from `coverScrim.ts`; a fresh painting defaults to scrim
-1 and `tune_art_scrim` lowers it (0.85 for the Athanasius pair). Draw the twin
-first and its manifest `scrim` is stale → `coverOgManifest.test.ts` fails. (The
-skill used to list these the other way; if you already drew twins at scrim 1, just
-re-run `og:covers` after tuning — it redraws only the changed slugs.)
+
+It runs every stage in its load-bearing order — the stages, and why the order
+matters, are its docstring (`paint_covers.py --help`) — and stops at the first
+failure. `--dry-run` prints the plan, including every plate it would delete;
+`--no-check` skips the gates. A committed painting is kept while it was cut from
+its entry; change the entry's artwork or `focus` and the next run redraws it
+(`library/art_sources.py` records each painting's recipe, and a gate fails a
+painting whose entry moved without one). `--recrop` redraws regardless. It refuses a slug not in
+`CURATED`. If it reports twins redrawn **outside** your works, their inputs
+really changed — look before committing. Needs `frontend/node_modules` and Node
+22 on PATH.
 
 `cover_url` is **NOT create-only** in `seed_books` (`CREATE_ONLY_FIELDS =
 {source_type, is_published}`), so the fixture edit reaches prod on deploy — **no
 data migration.** Verify covers by reading the og twin PNGs (`covers/<slug>.png`)
-— they are the composed cover.
+— they are the composed cover. The whole system is mapped in `docs/covers.md`.
 
-## 3. Scope-clean, gate, ship
+## 3. Scope-check, ship
 
-```bash
-# og:covers deterministically re-touches a few ALREADY-SHIPPED twins of other books
-# (pre-existing manifest drift, non-deterministic PNG bytes). Revert them — the gate
-# hashes manifest INPUT digests, not PNG bytes, so it stays green:
-git checkout origin/main -- <non-target covers/*.png>
-uv run python manage.py test library.tests_fixture library.tests_covers   # 118 pass now
-```
-**og-manifest.json may get WHOLESALE-REFORMATTED.** On some setups (Node 25 here,
-2026-09) `generate-cover-og.mjs` writes the manifest TAB-indented while origin is
-1-space — every one of its ~1959 lines shows as changed though only your slugs'
-data differs. Don't ship that. Restore origin and surgically re-apply just your
-entries: `git checkout origin/main -- frontend/static/covers/og-manifest.json`,
-then patch each of your slugs' `ground`/`art`/`scrim` fields in place (a tiny
-Python `str.replace` asserting one match each; re-`json.load` to validate). Diff
-should be ~6 lines per slug (art false→true, scrim, ground digest), not 1959.
-Diff must be **only** this author's slugs + `curated_art.py` + `art_scrim.py` +
-`coverScrim.ts` + `og-manifest.json` (+ the `AUTHOR_STYLE` line if you added one).
-Data-only diff → **skip** the `/simplify`+`/code-review` pass. PR, then merge on
-green + deploy (`founder-kit:deploy`), verifying API `cover_url` flips + web art
-serves + prerendered pages reference it.
+Diff must be **only** this batch's slugs + `curated_art.py` + `art_scrim.py` +
+`coverScrim.ts` + `og-manifest.json` (+ an `AUTHOR_STYLE` line if you added one).
+**Never hand-edit `og-manifest.json`** — `coverOgManifest.test.ts` now fails an
+entry that is out of order or duplicated (a hand-appended French card once was
+both, and every later run re-sorted it into someone else's PR). If a twin is
+missing, run `npm run og:covers`. Data-only diff → **skip** the
+`/simplify`+`/code-review` pass. PR, then merge on green + deploy
+(`founder-kit:deploy`), verifying API `cover_url` flips + web art serves +
+prerendered pages reference it.
 
 ## Gotchas (each has bitten a run)
 
@@ -135,18 +119,21 @@ serves + prerendered pages reference it.
   change to a book's title/subtitle OR its author's display name makes that
   edition's twin STALE even though the painting is untouched — regenerate it (the
   file-missing trick: `rm covers/<slug>.png` then `npm run og:covers` redraws just
-  the missing ones, no `--force`), and patch the manifest `ground` accordingly.
+  the missing ones, no `--force`, and rewrites their manifest entries).
   A long author name also TRUNCATES the byline on the cover ("Frederick Brotherton
   Meyer" → "FREDERICK BROTHERTON M…"); rename to the publishing name. `name` is NOT
   seed-synced (author_sync syncs only `same_as`), so a rename is fixture
   authors.json + the `catalog.py` stub + a data migration, then regen the author's
   byline-drawn twins (#2443, F. B. Meyer). Designed rasters bake their own byline —
   a rename does not touch them.
-- **A · `__pycache__` staleness** — `build_curated_covers` reports "Not in the
-  curated manifest" for slugs you just added to `CURATED`. Stale `.pyc`. Clear
-  ALL of `backend/**/__pycache__` (a `find … -exec rm` in the *same* compound
-  command doesn't reliably take — run it as its own step) then re-run.
-- **B · worktree DB is stale** — `OperationalError: no such column …`. The copied
+- **A · "Not in the curated manifest"** for slugs you just added to `CURATED`.
+  First suspect the checkout, not Python: an edit made in one tree (the Dropbox
+  copy, another worktree) and a command run in another looks exactly like this.
+  Python recompiles a `.pyc` whenever its source changes size or mtime, so a
+  stale bytecode cache is the unlikely cause; clearing `backend/**/__pycache__`
+  is harmless if you want to rule it out. `paint_covers` checks `CURATED` before
+  it runs anything, so it fails fast here either way.
+- **B · worktree DB is stale** *(migrate is automated: `paint_covers` step 1)* — `OperationalError: no such column …`. The copied
   `db.sqlite3` predates a migration on `main`. `manage.py migrate` first (memory
   `local-backend-dev-state-2026-09`). A fresh worktree also needs the seeded
   `db.sqlite3` + `.env` copied in and `manage.py seed_books` so the books exist
@@ -155,19 +142,20 @@ serves + prerendered pages reference it.
   plate edition of a book you're CURATED-ing between your branch and merge; CI (which
   tests the merge) fails `test_curated_editions_share_one_painting`
   (`[(slug, es, /covers/es/<slug>.svg)] != []`). Fix: `git rebase origin/main`,
-  repoint the new lang's `cover_url`, delete its plate svg, `npm run og:covers`,
+  re-run `paint_covers <slug>` (it deletes the new plate and repoints the row),
   amend, force-push. Do it FAST (branch→ship one session) and the window shrinks.
   (memory `cover-levelup-translation-race`.)
 - **D · web-deploy stall** — during a migration-leaf deploy thrash the `ochorus-web`
   build queue starves; API flips `cover_url` but art files 404 site-wide (other
   sessions' frontend PRs also undeployed). Not your PR. It self-heals as the queue
   clears, else Render dashboard → ochorus-web → Deploy latest commit (user-only).
-- **E · per-language plates** — a translated plate book has `covers/<lang>/<slug>.svg`
-  too; delete ALL of them or `build_cover_assets` fails, and repoint every `<slug>.<lang>.json`.
-  The **plate files are the authoritative edition list**: `find frontend/static/covers
-  -name "<slug>.svg"` (all dirs) BEFORE you build — a quick fixture-language scope can
-  under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`, and
-  would otherwise have shipped still pointing at a deleted plate).
+- **E · per-language plates** *(automated: `paint_covers` deletes every `<slug>.svg`
+  in every dir, and `build_cover_assets` repoints every edition row)* — a translated
+  plate book has `covers/<lang>/<slug>.svg` too, and each must go. The **plate
+  files are the authoritative edition list** — a quick fixture-language scope can
+  under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`),
+  which is why `paint_covers` finds plates on disk rather than from the fixtures;
+  `--dry-run` lists every one it would delete.
 
 ## Running the singles as a batched sweep
 Too many single-plate authors to do per-book A/B/C. The method that works:

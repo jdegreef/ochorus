@@ -97,10 +97,22 @@ class Artwork(NamedTuple):
     #: the same lesson behind it: framing is most of whether a ground reads as a
     #: picture or as a texture.
     #:
-    #: Nothing detects a crop left stale by a changed `focus` — unlike a derived
-    #: ground, which digests the cover it was cut from, a museum's image has no
-    #: digest recorded here. Change this and re-run `build_curated_covers`.
+    #: A changed `focus` redraws the painting on the next run: each committed
+    #: painting's recipe (object and focus, `crop_recipe`) is recorded in
+    #: `art_sources.py`, and a gate fails a painting whose recipe has moved.
     focus: float = 0.5
+
+
+def crop_recipe(art: Artwork) -> str:
+    """What a committed painting was cut from: the object and the crop.
+
+    Recorded per work in ``library/art_sources.py`` by ``build_curated_covers``
+    when it draws a painting, and compared on every later run. The painting is
+    only KEPT if its recorded recipe is still this entry's — so swapping a work
+    to a different artwork, or moving its ``focus``, redraws it rather than
+    leaving the old picture under the new credit.
+    """
+    return f"{art.source}-{art.object_id}@{art.focus:.2f}"
 
 
 # slug -> artwork. Slugs match Book.slug (shared across languages).
