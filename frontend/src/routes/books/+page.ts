@@ -3,6 +3,10 @@
 // locale, so /es/books and the shelf rebuild with the translated title and the reader page
 // bakes the 7 chapters. No plans/+page.ts touch owed — a-hidden-fire backs no
 // LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-18: one NEW Swahili book — the-masters-indwelling (#2585), Andrew
+// Murray's Keswick addresses on the indwelling Christ, 13 chapters ("Ukaaji wa Bwana Ndani
+// Yetu"). Rebuilds /sw/books so the card carries its translated title over the derived painting
+// ground (cover_url + cover_color overridden to the wordless art crop). Backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-17: one NEW English book — brave-for-god-4, "Brave for God: Book Four",
 // the fourth house-written young-readers volume (six more missionary lives: Paton, Mary Jones,
 // George Liele, C.T. Studd, Lilias Trotter, Ida Scudder). Rebuilds /books and the For Young Readers
