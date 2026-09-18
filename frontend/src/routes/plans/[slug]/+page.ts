@@ -5,6 +5,9 @@ import type { EntryGenerator, PageLoad } from './$types';
 
 // Trailing-slash canonical -> prerenders to plans/<slug>/index.html, which the
 // static host serves as a directory index (see books/[slug] for the full note).
+// (Touched to force a web rebuild so the new "Growing in Wisdom in 18 Days" plan
+// and the sw/lg book pages prerender — their content shipped in backend-only
+// commits that skip the frontend build; see the deploy skill's content-race note.)
 export const trailingSlash = 'always';
 
 // Prerender one page per plan — the slug list comes from the API at build
