@@ -1,0 +1,157 @@
+Phrase,Intent,Tier,Shelf,Books#,Target URL
+books on prayer,Collection,1,On Prayer,11,https://ochorus.com/topics/prayer
+best books on prayer,Best-of,1,On Prayer,11,https://ochorus.com/topics/prayer
+classic books on prayer,Adjectival,1,On Prayer,11,https://ochorus.com/topics/prayer
+how to pray,Felt-need (informational),2,On Prayer,11,https://ochorus.com/topics/prayer
+christian classics on prayer,Classics,2,On Prayer,11,https://ochorus.com/topics/prayer
+free books on prayer,Free,2,On Prayer,11,https://ochorus.com/topics/prayer
+books on the holy spirit,Collection,1,The Holy Spirit,4,https://ochorus.com/topics/holy-spirit
+best books on the holy spirit,Best-of,1,The Holy Spirit,4,https://ochorus.com/topics/holy-spirit
+who is the holy spirit,Felt-need (informational),2,The Holy Spirit,4,https://ochorus.com/topics/holy-spirit
+christian classics on the holy spirit,Classics,2,The Holy Spirit,4,https://ochorus.com/topics/holy-spirit
+free books on the holy spirit,Free,2,The Holy Spirit,4,https://ochorus.com/topics/holy-spirit
+books on the deeper christian life,Collection,1,The Deeper Life,8,https://ochorus.com/topics/deeper-life
+best books on the deeper christian life,Best-of,1,The Deeper Life,8,https://ochorus.com/topics/deeper-life
+what is the deeper christian life,Felt-need (informational),2,The Deeper Life,8,https://ochorus.com/topics/deeper-life
+christian classics on the deeper christian life,Classics,2,The Deeper Life,8,https://ochorus.com/topics/deeper-life
+free books on the deeper christian life,Free,2,The Deeper Life,8,https://ochorus.com/topics/deeper-life
+books on grace and comfort,Collection,1,Grace & Comfort,7,https://ochorus.com/topics/grace-and-comfort
+best books on grace and comfort,Best-of,1,Grace & Comfort,7,https://ochorus.com/topics/grace-and-comfort
+bible comfort for hard times,Adjectival,1,Grace & Comfort,7,https://ochorus.com/topics/grace-and-comfort
+how to find comfort in god,Felt-need (informational),2,Grace & Comfort,7,https://ochorus.com/topics/grace-and-comfort
+christian classics on grace and comfort,Classics,2,Grace & Comfort,7,https://ochorus.com/topics/grace-and-comfort
+free books on grace and comfort,Free,2,Grace & Comfort,7,https://ochorus.com/topics/grace-and-comfort
+books on revival and missions,Collection,1,Revival & Missions,10,https://ochorus.com/topics/revival-and-missions
+best books on revival and missions,Best-of,1,Revival & Missions,10,https://ochorus.com/topics/revival-and-missions
+what is revival,Felt-need (informational),2,Revival & Missions,10,https://ochorus.com/topics/revival-and-missions
+christian classics on revival and missions,Classics,2,Revival & Missions,10,https://ochorus.com/topics/revival-and-missions
+free books on revival and missions,Free,2,Revival & Missions,10,https://ochorus.com/topics/revival-and-missions
+books on faith and guidance,Collection,1,Faith & Guidance,10,https://ochorus.com/topics/faith-and-guidance
+best books on faith and guidance,Best-of,1,Faith & Guidance,10,https://ochorus.com/topics/faith-and-guidance
+books on trusting god,Adjectival,1,Faith & Guidance,10,https://ochorus.com/topics/faith-and-guidance
+how to know god's will,Felt-need (informational),2,Faith & Guidance,10,https://ochorus.com/topics/faith-and-guidance
+christian classics on faith and guidance,Classics,2,Faith & Guidance,10,https://ochorus.com/topics/faith-and-guidance
+free books on faith and guidance,Free,2,Faith & Guidance,10,https://ochorus.com/topics/faith-and-guidance
+books on the gospel,Collection,1,The Gospel Call,4,https://ochorus.com/topics/the-gospel-call
+best books on the gospel,Best-of,1,The Gospel Call,4,https://ochorus.com/topics/the-gospel-call
+how to be saved,Felt-need (informational),2,The Gospel Call,4,https://ochorus.com/topics/the-gospel-call
+christian classics on the gospel,Classics,2,The Gospel Call,4,https://ochorus.com/topics/the-gospel-call
+free books on the gospel,Free,2,The Gospel Call,4,https://ochorus.com/topics/the-gospel-call
+christian classics to read,Collection,1,The Enduring Classics,8,https://ochorus.com/topics/enduring-classics
+best christian classic books,Adjectival,1,The Enduring Classics,8,https://ochorus.com/topics/enduring-classics
+best christian books of all time,Felt-need (informational),2,The Enduring Classics,8,https://ochorus.com/topics/enduring-classics
+books on holiness,Collection,1,The Way of Holiness,4,https://ochorus.com/topics/the-way-of-holiness
+best books on holiness,Best-of,1,The Way of Holiness,4,https://ochorus.com/topics/the-way-of-holiness
+what is christian holiness,Felt-need (informational),2,The Way of Holiness,4,https://ochorus.com/topics/the-way-of-holiness
+christian classics on holiness,Classics,2,The Way of Holiness,4,https://ochorus.com/topics/the-way-of-holiness
+free books on holiness,Free,2,The Way of Holiness,4,https://ochorus.com/topics/the-way-of-holiness
+classic sermons to read,Collection,1,The Preached Word,7,https://ochorus.com/topics/the-preached-word
+famous christian sermons,Adjectival,1,The Preached Word,7,https://ochorus.com/topics/the-preached-word
+greatest sermons ever preached,Felt-need (informational),2,The Preached Word,7,https://ochorus.com/topics/the-preached-word
+books on the cross of christ,Collection,1,Christ & the Cross,0,https://ochorus.com/topics/christ-and-the-cross
+best books on the cross of christ,Best-of,1,Christ & the Cross,0,https://ochorus.com/topics/christ-and-the-cross
+what did jesus accomplish on the cross,Felt-need (informational),2,Christ & the Cross,0,https://ochorus.com/topics/christ-and-the-cross
+christian classics on the cross of christ,Classics,2,Christ & the Cross,0,https://ochorus.com/topics/christ-and-the-cross
+free books on the cross of christ,Free,2,Christ & the Cross,0,https://ochorus.com/topics/christ-and-the-cross
+books on the puritans,Collection,1,The Puritans,11,https://ochorus.com/topics/the-puritans
+best books on the puritans,Best-of,1,The Puritans,11,https://ochorus.com/topics/the-puritans
+puritan books,Adjectival,1,The Puritans,11,https://ochorus.com/topics/the-puritans
+best puritan books to read,Felt-need (informational),2,The Puritans,11,https://ochorus.com/topics/the-puritans
+christian classics on the puritans,Classics,2,The Puritans,11,https://ochorus.com/topics/the-puritans
+free books on the puritans,Free,2,The Puritans,11,https://ochorus.com/topics/the-puritans
+books on abiding in christ,Collection,1,Abiding in Christ,9,https://ochorus.com/topics/abiding-in-christ
+best books on abiding in christ,Best-of,1,Abiding in Christ,9,https://ochorus.com/topics/abiding-in-christ
+abiding in christ book,Adjectival,1,Abiding in Christ,9,https://ochorus.com/topics/abiding-in-christ
+what does abiding in christ mean,Felt-need (informational),2,Abiding in Christ,9,https://ochorus.com/topics/abiding-in-christ
+christian classics on abiding in christ,Classics,2,Abiding in Christ,9,https://ochorus.com/topics/abiding-in-christ
+free books on abiding in christ,Free,2,Abiding in Christ,9,https://ochorus.com/topics/abiding-in-christ
+books on women of faith,Collection,1,Women of Faith,14,https://ochorus.com/topics/women-of-faith
+best books on women of faith,Best-of,1,Women of Faith,14,https://ochorus.com/topics/women-of-faith
+christian biographies of women,Adjectival,1,Women of Faith,14,https://ochorus.com/topics/women-of-faith
+famous christian women in history,Felt-need (informational),2,Women of Faith,14,https://ochorus.com/topics/women-of-faith
+christian classics on women of faith,Classics,2,Women of Faith,14,https://ochorus.com/topics/women-of-faith
+free books on women of faith,Free,2,Women of Faith,14,https://ochorus.com/topics/women-of-faith
+books on the early church fathers,Collection,1,Voices of the Early Church,8,https://ochorus.com/topics/voices-of-the-early-church
+best books on the early church fathers,Best-of,1,Voices of the Early Church,8,https://ochorus.com/topics/voices-of-the-early-church
+church fathers books,Adjectival,1,Voices of the Early Church,8,https://ochorus.com/topics/voices-of-the-early-church
+who were the church fathers,Felt-need (informational),2,Voices of the Early Church,8,https://ochorus.com/topics/voices-of-the-early-church
+christian classics on the early church fathers,Classics,2,Voices of the Early Church,8,https://ochorus.com/topics/voices-of-the-early-church
+free books on the early church fathers,Free,2,Voices of the Early Church,8,https://ochorus.com/topics/voices-of-the-early-church
+daily devotional classics,Collection,1,Day by Day,7,https://ochorus.com/topics/day-by-day
+best classic daily devotional,Adjectival,1,Day by Day,7,https://ochorus.com/topics/day-by-day
+best daily devotional,Felt-need (informational),2,Day by Day,7,https://ochorus.com/topics/day-by-day
+books on the east african revival,Collection,1,The East African Revival,5,https://ochorus.com/topics/the-east-african-revival
+best books on the east african revival,Best-of,1,The East African Revival,5,https://ochorus.com/topics/the-east-african-revival
+what was the east african revival,Felt-need (informational),2,The East African Revival,5,https://ochorus.com/topics/the-east-african-revival
+christian classics on the east african revival,Classics,2,The East African Revival,5,https://ochorus.com/topics/the-east-african-revival
+free books on the east african revival,Free,2,The East African Revival,5,https://ochorus.com/topics/the-east-african-revival
+modern christian classics,Collection,1,Contemporary Voices,6,https://ochorus.com/topics/contemporary-voices
+best modern christian books,Felt-need (informational),2,Contemporary Voices,6,https://ochorus.com/topics/contemporary-voices
+books on the inner life,Collection,1,The Inner Life,6,https://ochorus.com/topics/the-inner-life
+best books on the inner life,Best-of,1,The Inner Life,6,https://ochorus.com/topics/the-inner-life
+contemplative christian classics,Adjectival,1,The Inner Life,6,https://ochorus.com/topics/the-inner-life
+christian mysticism books,Felt-need (informational),2,The Inner Life,6,https://ochorus.com/topics/the-inner-life
+christian classics on the inner life,Classics,2,The Inner Life,6,https://ochorus.com/topics/the-inner-life
+free books on the inner life,Free,2,The Inner Life,6,https://ochorus.com/topics/the-inner-life
+books on the great awakening,Collection,1,The Great Awakening,7,https://ochorus.com/topics/the-great-awakening
+best books on the great awakening,Best-of,1,The Great Awakening,7,https://ochorus.com/topics/the-great-awakening
+what was the great awakening,Felt-need (informational),2,The Great Awakening,7,https://ochorus.com/topics/the-great-awakening
+christian classics on the great awakening,Classics,2,The Great Awakening,7,https://ochorus.com/topics/the-great-awakening
+free books on the great awakening,Free,2,The Great Awakening,7,https://ochorus.com/topics/the-great-awakening
+books on the church,Collection,1,The Body of Christ,6,https://ochorus.com/topics/the-body-of-christ
+best books on the church,Best-of,1,The Body of Christ,6,https://ochorus.com/topics/the-body-of-christ
+what is the body of christ,Felt-need (informational),2,The Body of Christ,6,https://ochorus.com/topics/the-body-of-christ
+christian classics on the church,Classics,2,The Body of Christ,6,https://ochorus.com/topics/the-body-of-christ
+free books on the church,Free,2,The Body of Christ,6,https://ochorus.com/topics/the-body-of-christ
+books on christian leadership,Collection,1,For Those Who Lead,6,https://ochorus.com/topics/for-those-who-lead
+best books on christian leadership,Best-of,1,For Those Who Lead,6,https://ochorus.com/topics/for-those-who-lead
+books for pastors,Adjectival,1,For Those Who Lead,6,https://ochorus.com/topics/for-those-who-lead
+best books on pastoral ministry,Felt-need (informational),2,For Those Who Lead,6,https://ochorus.com/topics/for-those-who-lead
+christian classics on christian leadership,Classics,2,For Those Who Lead,6,https://ochorus.com/topics/for-those-who-lead
+free books on christian leadership,Free,2,For Those Who Lead,6,https://ochorus.com/topics/for-those-who-lead
+books on john wesley and methodism,Collection,1,The Wesleys & Early Methodism,6,https://ochorus.com/topics/the-wesleys-and-early-methodism
+best books on john wesley and methodism,Best-of,1,The Wesleys & Early Methodism,6,https://ochorus.com/topics/the-wesleys-and-early-methodism
+john wesley books,Adjectival,1,The Wesleys & Early Methodism,6,https://ochorus.com/topics/the-wesleys-and-early-methodism
+what did john wesley teach,Felt-need (informational),2,The Wesleys & Early Methodism,6,https://ochorus.com/topics/the-wesleys-and-early-methodism
+christian classics on john wesley and methodism,Classics,2,The Wesleys & Early Methodism,6,https://ochorus.com/topics/the-wesleys-and-early-methodism
+free books on john wesley and methodism,Free,2,The Wesleys & Early Methodism,6,https://ochorus.com/topics/the-wesleys-and-early-methodism
+books on christian doctrine,Collection,1,Foundations of the Faith,5,https://ochorus.com/topics/foundations-of-the-faith
+best books on christian doctrine,Best-of,1,Foundations of the Faith,5,https://ochorus.com/topics/foundations-of-the-faith
+christian theology for beginners,Adjectival,1,Foundations of the Faith,5,https://ochorus.com/topics/foundations-of-the-faith
+basics of the christian faith,Felt-need (informational),2,Foundations of the Faith,5,https://ochorus.com/topics/foundations-of-the-faith
+christian classics on christian doctrine,Classics,2,Foundations of the Faith,5,https://ochorus.com/topics/foundations-of-the-faith
+free books on christian doctrine,Free,2,Foundations of the Faith,5,https://ochorus.com/topics/foundations-of-the-faith
+books on black christian history,Collection,1,Saints of the African Diaspora,5,https://ochorus.com/topics/saints-of-the-african-diaspora
+best books on black christian history,Best-of,1,Saints of the African Diaspora,5,https://ochorus.com/topics/saints-of-the-african-diaspora
+african american christian classics,Adjectival,1,Saints of the African Diaspora,5,https://ochorus.com/topics/saints-of-the-african-diaspora
+early black christian leaders,Felt-need (informational),2,Saints of the African Diaspora,5,https://ochorus.com/topics/saints-of-the-african-diaspora
+christian classics on black christian history,Classics,2,Saints of the African Diaspora,5,https://ochorus.com/topics/saints-of-the-african-diaspora
+free books on black christian history,Free,2,Saints of the African Diaspora,5,https://ochorus.com/topics/saints-of-the-african-diaspora
+books on the grace of god,Collection,1,The Grace of God,5,https://ochorus.com/topics/the-grace-of-god
+best books on the grace of god,Best-of,1,The Grace of God,5,https://ochorus.com/topics/the-grace-of-god
+what is the grace of god,Felt-need (informational),2,The Grace of God,5,https://ochorus.com/topics/the-grace-of-god
+christian classics on the grace of god,Classics,2,The Grace of God,5,https://ochorus.com/topics/the-grace-of-god
+free books on the grace of god,Free,2,The Grace of God,5,https://ochorus.com/topics/the-grace-of-god
+books on overcoming sin,Collection,1,Victory Over Sin,6,https://ochorus.com/topics/victory-over-sin
+best books on overcoming sin,Best-of,1,Victory Over Sin,6,https://ochorus.com/topics/victory-over-sin
+books on fighting sin,Adjectival,1,Victory Over Sin,6,https://ochorus.com/topics/victory-over-sin
+how to overcome sin,Felt-need (informational),2,Victory Over Sin,6,https://ochorus.com/topics/victory-over-sin
+christian classics on overcoming sin,Classics,2,Victory Over Sin,6,https://ochorus.com/topics/victory-over-sin
+free books on overcoming sin,Free,2,Victory Over Sin,6,https://ochorus.com/topics/victory-over-sin
+books on christian missionaries,Collection,1,To the Ends of the Earth,7,https://ochorus.com/topics/to-the-ends-of-the-earth
+best books on christian missionaries,Best-of,1,To the Ends of the Earth,7,https://ochorus.com/topics/to-the-ends-of-the-earth
+missionary biographies,Adjectival,1,To the Ends of the Earth,7,https://ochorus.com/topics/to-the-ends-of-the-earth
+famous missionary biographies,Felt-need (informational),2,To the Ends of the Earth,7,https://ochorus.com/topics/to-the-ends-of-the-earth
+christian classics on christian missionaries,Classics,2,To the Ends of the Earth,7,https://ochorus.com/topics/to-the-ends-of-the-earth
+free books on christian missionaries,Free,2,To the Ends of the Earth,7,https://ochorus.com/topics/to-the-ends-of-the-earth
+books on faith and prayer,Collection,1,Faith for the Impossible,5,https://ochorus.com/topics/faith-for-the-impossible
+best books on faith and prayer,Best-of,1,Faith for the Impossible,5,https://ochorus.com/topics/faith-for-the-impossible
+books on answered prayer,Adjectival,1,Faith for the Impossible,5,https://ochorus.com/topics/faith-for-the-impossible
+how to have more faith,Felt-need (informational),2,Faith for the Impossible,5,https://ochorus.com/topics/faith-for-the-impossible
+christian classics on faith and prayer,Classics,2,Faith for the Impossible,5,https://ochorus.com/topics/faith-for-the-impossible
+free books on faith and prayer,Free,2,Faith for the Impossible,5,https://ochorus.com/topics/faith-for-the-impossible
+books on christian manhood,Collection,1,Men of Valour,5,https://ochorus.com/topics/men-of-valour
+best books on christian manhood,Best-of,1,Men of Valour,5,https://ochorus.com/topics/men-of-valour
+christian books for men,Adjectival,1,Men of Valour,5,https://ochorus.com/topics/men-of-valour
+christian classics on christian manhood,Classics,2,Men of Valour,5,https://ochorus.com/topics/men-of-valour
+free books on christian manhood,Free,2,Men of Valour,5,https://ochorus.com/topics/men-of-valour

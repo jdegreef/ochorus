@@ -4,6 +4,10 @@
 // za Kimungu kwa Watoto"). Rebuilds /sw/books so each card carries its translated title on its
 // localized plate cover, and the reader pages bake the chapters. Neither backs a
 // LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-17: Spanish book — a-call-to-the-unconverted (#1366), Richard
+// Baxter's "Un llamado a los inconversos". Book pages are prerendered per locale, so
+// /es/books must rebuild so the card and its /es/books/a-call-to-the-unconverted pages bake
+// the translated title and chapters.
 // prerender refresh 2026-09-17: Portuguese book — spurgeon-on-prayer (#1793), C. H. Spurgeon's
 // twelve sermons on prayer plus an introduction, 13 chapters ("Grande Poder na Oração"). Book
 // pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title
@@ -14,6 +18,10 @@
 // Moveram o Céu"). Book pages are prerendered per locale, so /pt/books and the shelf rebuild with
 // the translated title and the reader page bakes the 13 chapters. No plans/+page.ts touch owed —
 // women-who-moved-heaven-2 backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-17: one NEW Swahili book — susanna-wesley-clarke (#2174), Eliza
+// Clarke's biography of Susanna Wesley, mother of John and Charles Wesley, 16 chapters ("Susanna
+// Wesley"). Rebuilds /sw/books so the card carries its translated title on its localized plate
+// cover, and the reader page bakes the 16 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-17: one NEW Swahili book — things-as-they-are (#2172), Amy
 // Carmichael's unvarnished account of missionary work in southern India, 35 chapters ("Mambo Kama
 // Yalivyo"). Rebuilds /sw/books so the card carries its translated title on its localized plate

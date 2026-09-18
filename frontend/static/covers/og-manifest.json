@@ -348,6 +348,14 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"es/a-call-to-the-unconverted": {
+			"ground": "827ffa2f6ca60178ab1158f2715f85e868bce52c644654ae9c9de6dc90979f6c",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
 		"es/a-short-and-easy-method-of-prayer": {
 			"ground": "c75f9e14f8a2a0e87fcbe1018606942b7134b37ce232ff3de18a78afd4693e99",
 			"style": "devotional",
@@ -668,6 +676,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"fr/all-of-grace": {
+			"ground": "1c9bdb35d02ae3c9fa0d528a870e445629a55f39a200014464be0effca918144",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7
+		},
 		"fr/waiting-on-god": {
 			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
 			"style": "devotional",
@@ -708,14 +724,6 @@
 			"art": true,
 			"scrim": 0.75
 		},
-		"fr/holy-in-christ": {
-			"ground": "9eca7c6b221e948d38c3ac011e4dae27b19bc9bb1f7e4bc97b1e3346d8218a5f",
-			"style": "devotional",
-			"volume": null,
-			"script": "latin",
-			"art": true,
-			"scrim": 1
-		},
 		"fr/godliness": {
 			"ground": "fc2e575fa12936308aec9bd1cdb92f63e5dd7c510c58f227c0fb9a4eee5d0ebf",
 			"style": "revival",
@@ -724,6 +732,14 @@
 			"art": true,
 			"scrim": 0.3
 		},
+		"fr/the-god-of-all-comfort": {
+			"ground": "3bc088fdd73df57df3c20bcbabb1ba2dcd8684c5e91bc4aec125b092e2fc2517",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95
+		},
 		"fr/he-holds-my-tomorrows": {
 			"ground": "0cce2cab2c9ba862dd5969db5c2296538ef55d9b03fb7d0c3c525045db76328b",
 			"style": "house",
@@ -731,6 +747,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55
+		},
+		"fr/holy-in-christ": {
+			"ground": "9eca7c6b221e948d38c3ac011e4dae27b19bc9bb1f7e4bc97b1e3346d8218a5f",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1
 		},
 		"fr/humility-2": {
 			"ground": "b7ebe70a06a8600d5d850fffd7c551de82f033f08f76304260f30eefb4ecf8d7",
@@ -763,6 +787,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95
+		},
+		"fr/prevailing-prayer": {
+			"ground": "0f39b12f569d63f845c4b516b9099047eb7cf07c60fe2bd664ff28a594796ccb",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45
 		},
 		"fr/purity-of-heart": {
 			"ground": "1fe8f872cc1054134db78c2b92194f37168a9e5d5c340921e7fd84980a3c12a3",
@@ -811,6 +843,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85
+		},
+		"fr/waiting-on-god": {
+			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6
 		},
 		"freedom-of-the-will": {
 			"ground": "4ea3b353acb149bbd8daf7c9bef83437620e1cd2a5acddd1c3d12c35016e92a2",
@@ -1971,6 +2011,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7
+		},
+		"sw/susanna-wesley-clarke": {
+			"ground": "947454db1e1e9e339b0bdf6a553c1e7167aa8f3e54a1cfea8af98a24b45eab87",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1
 		},
 		"sw/talks-to-the-farmer": {
 			"ground": "aef70956828f33655198d8cf50574cd15dad62a3886a77f1e369cd485937773f",

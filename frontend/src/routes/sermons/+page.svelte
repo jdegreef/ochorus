@@ -234,7 +234,7 @@
 	structuredData={sermons.length ? [sermonsLd, crumbsLd] : [crumbsLd]}
 />
 
-<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
+<div class="page-col px-5 py-10 sermon-shell" style="--controls-h: {controlsH}px">
 	<PageHeader
 		title={t('nav.sermons')}
 		tagline={t('sermons.tagline')}
@@ -258,11 +258,14 @@
 	     the filters come WITH you — with a brief under every row the shelf runs
 	     dozens of screens. Its height is measured, not assumed: the row wraps on
 	     narrow screens, and the preacher sections below pin under whatever it
-	     currently is. Same recipe as Biographies (page-design B6/L3). -->
+	     currently is. Same recipe as Biographies (page-design B6/L3), EXCEPT
+	     below md: there the wrapped row would pin ~40% of the phone viewport, so
+	     it scrolls away like the Books filters instead. The sticky rule and the
+	     matching --pinned-offset (which drops --controls-h when the bar isn't
+	     pinned) live in the <style> block below. (Biographies still pins.) -->
 	<div
 		bind:clientHeight={controlsH}
-		class="sticky z-20 -mx-5 mb-8 border-b border-border bg-bg px-5 pb-2.5 pt-3"
-		style="top: var(--appnav-h, 0px)"
+		class="sermon-filter z-20 -mx-5 mb-8 border-b border-border bg-bg px-5 pb-2.5 pt-3"
 	>
 	<div class="filter-row">
 		<input
@@ -389,3 +392,24 @@
 		{@render sermonList(sorted)}
 	{/if}
 </div>
+
+<style>
+	/* Below md the filter row scrolls away with the page (see the comment on the
+	   .sermon-filter element): a phone can't afford a pinned block that wraps to
+	   ~40% of the viewport, and the Books shelf's filters already behave this
+	   way. So the preacher anchors only need to clear the sticky app nav. */
+	.sermon-shell {
+		--pinned-offset: var(--appnav-h, 0px);
+	}
+	@media (min-width: 768px) {
+		/* Tablet/desktop: the row fits on a line or two, so it pins under the nav
+		   and the anchors clear both the nav and the measured filter height. */
+		.sermon-shell {
+			--pinned-offset: calc(var(--appnav-h, 0px) + var(--controls-h, 0px));
+		}
+		.sermon-filter {
+			position: sticky;
+			top: var(--appnav-h, 0px);
+		}
+	}
+</style>

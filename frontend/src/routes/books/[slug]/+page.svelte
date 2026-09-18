@@ -269,6 +269,7 @@
 	const hasAbout = $derived(!!(book.about_html || book.description));
 	const navItems = $derived(
 		[
+			book.editions?.length ? { id: 'editions', label: t('book.otherEditions') } : null,
 			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
 			{ id: 'contents', label: t('reader.contents') },
 			qa.items.length ? { id: 'questions', label: 'Questions' } : null,
@@ -464,6 +465,26 @@
 				>
 			{/if}
 		</nav>
+	{/if}
+
+	<!-- Other audience editions of the SAME work — the "(For Children)" /
+	     "(For Teens)" retelling and the full text it retells, cross-linked both
+	     ways. Placed first in the body, not down with "More like this": a parent
+	     who reached the full text needs the young-reader edition surfaced before
+	     they start reading, and a child on the retelling needs the way back to
+	     the original. Derived and published-gated server-side (see the API's
+	     `editions`), so it renders only for the handful of works that have one.
+	     The card titles already carry the "(For …)" suffix, so the grid reads as
+	     the editions it is without a per-card badge. -->
+	{#if book.editions?.length}
+		<section id="editions" class="jump-anchor mt-8">
+			<h2 class="section-label">{t('book.otherEditions')}</h2>
+			<div class="book-grid">
+				{#each book.editions as ed (ed.slug)}
+					<BookCard book={ed} />
+				{/each}
+			</div>
+		</section>
 	{/if}
 
 	<!-- About this book. The page previously said nothing about the WORK: the

@@ -87,7 +87,7 @@
 		onclick={toggleFinished}
 		title={complete ? t('settings.unfinish') : t('continue.markFinished')}
 		aria-label="{complete ? t('settings.unfinish') : t('continue.markFinished')}: {item.title}"
-		class="absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface-2 text-muted opacity-70 transition hover:text-accent focus-visible:opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
+		class="finish-btn absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface-2 text-muted opacity-70 transition hover:text-accent focus-visible:opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
 	>
 		<Icon name={complete ? 'skip-back' : 'check'} size={15} />
 	</button>
