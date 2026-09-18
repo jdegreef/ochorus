@@ -1988,6 +1988,14 @@
 			"art": true,
 			"scrim": 0.75
 		},
+		"sw/on-loving-god": {
+			"ground": "8a31409490afb763bb14900c33a63516cd445e3ffc88d76e31e8ec55c97f4942",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65
+		},
 		"sw/pilgrims-progress-words-of-one-syllable": {
 			"ground": "fe7f486faae208e5b336e11c44f97cc62376b1954bd3a4877e18e1400f87f9a5",
 			"style": "young",
