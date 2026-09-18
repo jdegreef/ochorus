@@ -168,6 +168,21 @@ serves + prerendered pages reference it.
   -name "<slug>.svg"` (all dirs) BEFORE you build — a quick fixture-language scope can
   under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`, and
   would otherwise have shipped still pointing at a deleted plate).
+- **G · relanding a long-parked batch — it's probably already superseded.** A cover
+  batch PR left open for weeks against fast-moving `main` is very likely NOT real
+  work to land: parallel sessions re-curate the same books under newer, authoritative
+  paintings, and #2481-style follow-ups ship the machinery in a better form. Do NOT
+  trust a `git merge-tree` "N non-manifest changes" count — it diffs the branch's
+  STALE merge-base and reads regeneration-vs-live-covers as new work. Verify per-slug
+  against CURRENT `origin/main`: `git show origin/main:backend/library/curated_art.py
+  | grep '"<slug>": Artwork'` and check the fixture `cover_url` already points at
+  `/covers/art/<slug>.jpg`. Whatever `main` has is authoritative — never regenerate
+  over it. What's genuinely un-landed is only the slugs `main` lacks AND that are
+  `is_published:true` AND not under a documented deferral (a `curated_art.py` batch
+  note or this skill's "Done so far" saying a book "waits for AIC" / "stays generated
+  on purpose"). If nothing survives that filter, close the PR as superseded rather
+  than rebase it. (PR #2482, curated-art-batch-3, closed superseded 2026-09-18: 14/21
+  already live, 5 `is_published:false`, the last 2 deferred.)
 
 ## Running the singles as a batched sweep
 Too many single-plate authors to do per-book A/B/C. The method that works:
