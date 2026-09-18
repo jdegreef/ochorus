@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-17: one NEW English book — brave-for-god-4, "Brave for God: Book Four",
+// the fourth house-written young-readers volume (six more missionary lives: Paton, Mary Jones,
+// George Liele, C.T. Studd, Lilias Trotter, Ida Scudder). Rebuilds /books and the For Young Readers
+// shelf so the new card and its plate cover appear, and the reader page bakes the six chapters.
 // prerender refresh 2026-09-17: two NEW Swahili public-domain young-readers books —
 // pilgrims-progress-words-of-one-syllable (Godolphin's Bunyan for children, 14 ch, "Safari ya
 // Msafiri kwa Watoto") and divine-songs-for-children (Watts's 1715 hymns as verse, 3 ch, "Nyimbo
