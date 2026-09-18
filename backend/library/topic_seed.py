@@ -2094,7 +2094,7 @@ TOPIC_QA = {
         },
         {
             "question": "Which works are included?",
-            "answer": "Among them are Ochorus's own \"Growing in Wisdom,\" Spurgeon's \"Around the Wicket Gate\" and \"All of Grace,\" Andrew Murray's \"The Way to God,\" \"Prayer, the Pulse of Life,\" and \"He Holds My Tomorrows,\" \"Rise Up, Men of God,\" and true stories such as David Brainerd's diary and the lives of men and women who gave everything for the gospel."
+            "answer": "Among them are \"Growing in Wisdom,\" Spurgeon's \"Around the Wicket Gate\" and \"All of Grace,\" Andrew Murray's \"The Way to God,\" \"Prayer, the Pulse of Life,\" and \"He Holds My Tomorrows,\" \"Rise Up, Men of God,\" and true stories such as David Brainerd's diary and the lives of men and women who gave everything for the gospel."
         },
         {
             "question": "What does 1 Timothy 4:12 mean for the shelf?",
