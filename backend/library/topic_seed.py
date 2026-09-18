@@ -715,6 +715,7 @@ TOPIC_ARTICLES = {
         "augustines-confessions-guide",
         "how-to-pray-for-revival",
         "the-life-of-trust-guide",
+        "power-through-prayer-guide",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -768,6 +769,7 @@ TOPIC_ARTICLES = {
         "the-bruised-reed-guide",
         "why-would-a-good-god-allow-suffering",
         "the-unselfishness-of-god-guide",
+        "the-god-of-all-comfort-guide",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -782,6 +784,7 @@ TOPIC_ARTICLES = {
         "revival-lectures-guide",
         "things-as-they-are-guide",
         "amanda-smith-autobiography-guide",
+        "a-retrospect-guide",
     ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
@@ -879,6 +882,10 @@ TOPIC_ARTICLES = {
         "divine-healing-guide",
         "first-epistle-of-clement-guide",
         "amanda-smith-autobiography-guide",
+        "the-god-of-all-comfort-guide",
+        "epistles-of-ignatius-guide",
+        "a-retrospect-guide",
+        "power-through-prayer-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
@@ -887,6 +894,7 @@ TOPIC_ARTICLES = {
         "what-is-the-church",
         "religious-affections-guide",
         "the-reformed-pastor-guide",
+        "epistles-of-ignatius-guide",
     ],
     "soar-like-the-eagle": [
         "how-to-wait-on-god",
