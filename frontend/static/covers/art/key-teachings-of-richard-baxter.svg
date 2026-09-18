@@ -1,0 +1,65 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="presentation">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0" stop-color="#6e3a33"/>
+      <stop offset="0.5" stop-color="#4e2620"/>
+      <stop offset="1" stop-color="#291310"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.68" r="0.44">
+      <stop offset="0" stop-color="#f3e6c0" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#f3e6c0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.44" r="0.85">
+      <stop offset="0.52" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.44"/>
+    </radialGradient>
+    <linearGradient id="topscrim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c0e0b" stop-opacity="0.5"/>
+      <stop offset="0.4" stop-color="#1c0e0b" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="1.4" height="4" fill="#000" opacity="0.06"/>
+    </pattern>
+    <linearGradient id="leaf" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#eedaa8"/>
+      <stop offset="1" stop-color="#c2a463"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#sky)"/>
+  <circle cx="300" cy="580" r="225" fill="url(#glow)"/>
+
+  <!-- low horizon; sky above kept clear for the title -->
+  <path d="M0 726 Q300 700 600 726 L600 800 L0 800 Z" fill="#1c0e0b" opacity="0.6"/>
+  <path d="M0 720 Q300 694 600 720" fill="none" stroke="#eedaa8" stroke-opacity="0.16" stroke-width="2"/>
+
+  <!-- short cedar trunk, rooted at the horizon -->
+  <path d="M294 724 C292 686 292 648 299 622 C305 648 304 688 307 724 Z" fill="#bd9b5d"/>
+
+  <!-- cedar of Lebanon: flat-topped, horizontally tiered boughs, widest low,
+       narrowing up; crown top ~y=492 (clear of the subtitle). -->
+  <g fill="url(#leaf)">
+    <!-- broadest lower tier -->
+    <path d="M300 626 C232 626 150 616 130 604 C176 600 196 592 300 592 C404 592 424 600 470 604 C450 616 368 626 300 626 Z"/>
+    <!-- second tier -->
+    <path d="M300 592 C244 592 180 584 162 574 C204 570 224 562 300 562 C376 562 396 570 438 574 C420 584 356 592 300 592 Z"/>
+    <!-- third tier -->
+    <path d="M300 562 C256 562 208 556 192 548 C226 544 244 536 300 536 C356 536 374 544 408 548 C392 556 344 562 300 562 Z"/>
+    <!-- fourth tier -->
+    <path d="M300 536 C268 536 234 532 220 526 C244 522 260 514 300 514 C340 514 356 522 380 526 C366 532 332 536 300 536 Z"/>
+    <!-- crown tip, a small flat top -->
+    <path d="M300 514 C280 514 258 510 250 505 C268 502 282 494 300 494 C318 494 332 502 350 505 C342 510 320 514 300 514 Z"/>
+    <!-- the leader -->
+    <path d="M297 494 L303 494 L302 480 Q300 474 298 480 Z"/>
+  </g>
+  <!-- faint shadow lines under each tier for depth -->
+  <g stroke="#93743f" stroke-opacity="0.35" stroke-width="1.6" fill="none">
+    <path d="M180 610 Q300 600 420 610"/>
+    <path d="M205 580 Q300 572 395 580"/>
+    <path d="M230 552 Q300 546 370 552"/>
+  </g>
+
+  <rect width="600" height="800" fill="url(#grain)"/>
+  <rect width="600" height="800" fill="url(#vig)"/>
+  <rect width="600" height="800" fill="url(#topscrim)"/>
+</svg>
