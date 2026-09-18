@@ -20,6 +20,7 @@
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
+	import { shareImage } from '$lib/coverArt';
 	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -197,12 +198,12 @@
 		const base = t('author.metaFallback').replace('%name%', author.name);
 		return truncateMeta(summaryBits.length ? `${base} ${summaryBits.join(' · ')}.` : base);
 	});
+	// A portrait, else the first book's shareable raster — never its raw
+	// `cover_url`, which for a plate is an `.svg` scrapers refuse and for a
+	// painting is a picture with no title on it (see `shareImage`).
+	const bookCard = $derived(author.books[0] ? shareImage(author.books[0]) : null);
 	const ogImage = $derived(
-		author.photo_url
-			? absUrl(author.photo_url)
-			: author.books[0]?.cover_url
-				? absUrl(author.books[0].cover_url)
-				: ''
+		author.photo_url ? absUrl(author.photo_url) : bookCard ? absUrl(bookCard.url) : ''
 	);
 
 	const personLd = $derived(
@@ -353,7 +354,13 @@
 	{hreflang}
 	ogType="profile"
 	{ogImage}
-	ogImageAlt={author.photo_url ? `${t('a11y.portraitOf')} ${author.name}` : ''}
+	ogImageWidth={author.photo_url ? undefined : bookCard?.width}
+	ogImageHeight={author.photo_url ? undefined : bookCard?.height}
+	ogImageAlt={author.photo_url
+		? `${t('a11y.portraitOf')} ${author.name}`
+		: bookCard
+			? `${t('a11y.coverOf')} ${author.books[0].title}`
+			: ''}
 	structuredData={[personLd, worksLd, crumbsLd, faqLd].filter((x): x is string => x != null)}
 />
 

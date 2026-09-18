@@ -107,7 +107,13 @@ import sharp from 'sharp';
 // it, and nothing type-checks this file. Both modules are import-free at
 // runtime for exactly this reason — see `coverStyles.ts`'s header and
 // `nodeLoadable.test.ts`.
-import { isArtCover, isPlateCover, twinUrl } from '../src/lib/coverArt.ts';
+import {
+	TWIN_HEIGHT,
+	TWIN_WIDTH,
+	hasTwin,
+	isArtCover,
+	twinUrl
+} from '../src/lib/coverArt.ts';
 // The cover's type, as markup — the same tree `BookCover` renders, stated once
 // so `coverMarkupParity.test.ts` can hold the two renderers against each other.
 // It used to be hand-built below, and had drifted into a card with no
@@ -136,9 +142,11 @@ const COVER_CSS = readFileSync(
 	'utf8'
 ).replace(/\/\*[\s\S]*?\*\//g, '');
 
-/** The cover's own canvas — `covers.py`'s W, H. A twin is the same picture. */
-const WIDTH = 600;
-const HEIGHT = 800;
+/** The cover's own canvas — `covers.py`'s W, H. A twin is the same picture,
+ *  and its size is the app's, so the og:image dimensions a page advertises are
+ *  the ones drawn here. */
+const WIDTH = TWIN_WIDTH;
+const HEIGHT = TWIN_HEIGHT;
 
 // ── The content ─────────────────────────────────────────────────────────────
 
@@ -221,7 +229,7 @@ function needTwins() {
 				scrim: scrimStrength(fields.slug)
 			};
 		})
-		.filter((b) => b.art || isPlateCover(b.cover));
+		.filter((b) => hasTwin(b.cover));
 }
 
 /** (key, file) for one edition's twin, from the URL the app resolves — so the

@@ -4,11 +4,14 @@ import { join } from 'node:path';
 
 import {
 	COVER_WIDTHS,
+	TWIN_HEIGHT,
+	TWIN_WIDTH,
 	channels,
 	coverGradient,
 	coverSrcset,
 	isArtCover,
 	isPlateCover,
+	shareImage,
 	toHex,
 	tintable
 } from './coverArt';
@@ -162,5 +165,32 @@ describe('cover variants', () => {
 		// not one of ours to draw on.
 		expect(isPlateCover('https://example.org/some-cover.svg')).toBe(false);
 		expect(isPlateCover(null)).toBe(false);
+	});
+});
+
+describe('shareImage', () => {
+	const ed = (cover_url: string, language = 'en') => ({ slug: 'waiting-on-god', language, cover_url });
+
+	it('lets a designed cover stand for itself — its title is in its pixels', () => {
+		expect(shareImage(ed('/covers/godliness.jpg'))).toEqual({ url: '/covers/godliness.jpg' });
+	});
+
+	it('hands a painting or a plate to its twin, with the size a scraper can lay out', () => {
+		// Neither can be its own card: a plate is an SVG, which the big scrapers
+		// refuse, and a painting carries no title at all.
+		const twin = { url: '/covers/sw/waiting-on-god.png', width: TWIN_WIDTH, height: TWIN_HEIGHT };
+		expect(shareImage(ed('/covers/art/waiting-on-god.jpg', 'sw'))).toEqual(twin);
+		expect(shareImage(ed('/covers/sw/waiting-on-god.svg', 'sw'))).toEqual(twin);
+	});
+
+	it('claims nothing for an edition with no cover yet, rather than a twin that 404s', () => {
+		expect(shareImage(ed(''))).toBeNull();
+	});
+
+	it('advertises the size the twins are actually drawn at', () => {
+		// A PNG's IHDR puts width and height at bytes 16 and 20. Read off a real
+		// committed twin, so the constants cannot drift from the files quietly.
+		const png = readFileSync(join(process.cwd(), 'static/covers/waiting-on-god.png'));
+		expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual([TWIN_WIDTH, TWIN_HEIGHT]);
 	});
 });

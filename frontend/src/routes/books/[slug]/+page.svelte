@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isArtCover, twinUrl } from '$lib/coverArt';
+	import { shareImage } from '$lib/coverArt';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -139,11 +139,8 @@
 	// rather than something the runtime could put right. It also made the share
 	// layer the one place in the app that falls back to English, which the
 	// content model does not do anywhere else.
-	const ogImage = $derived(
-		book.cover_url && !book.cover_url.endsWith('.svg') && !isArtCover(book.cover_url)
-			? absUrl(book.cover_url)
-			: absUrl(twinUrl(book.slug, book.language))
-	);
+	const share = $derived(shareImage(book));
+	const ogImage = $derived(share ? absUrl(share.url) : '');
 	// Watson's *All Things for Good* carries "A Divine Cordial" as its SUBTITLE
 	// and as an alternate title, so the page printed it twice, two lines apart.
 	// Dropped from the visible line, NOT from `alternateName`: a subtitle does
@@ -295,6 +292,8 @@
 	ogType="book"
 	ogTitle="{book.title} — {book.author.name}"
 	{ogImage}
+	ogImageWidth={share?.width}
+	ogImageHeight={share?.height}
 	ogImageAlt="{t('a11y.coverOf')} {book.title}"
 	structuredData={[bookLd, crumbsLd, qa.ld].filter(Boolean)}
 />
