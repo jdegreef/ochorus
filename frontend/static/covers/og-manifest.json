@@ -2148,6 +2148,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"sw/the-masters-indwelling": {
+			"ground": "32d6dc5d1e047b10968d86db3355ba626d9408e91995d39c3bd34e14fa40bd1c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.55
+		},
 		"sw/the-person-and-work-of-the-holy-spirit": {
 			"ground": "b2f73e8fc09b2f749cbd3f6f83df52a889f615c29e747fdeba4b750f639198c4",
 			"style": "revival",
