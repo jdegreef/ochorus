@@ -232,6 +232,21 @@ CURATED_PLANS = [
         ],
     ),
     (
+        "voices-of-the-early-church",
+        "Voices of the Early Church",
+        "The first Christian centuries in their own words. Clement of Rome "
+        "writes from the church at Rome while the apostles' own generation "
+        "still lived, Ignatius of Antioch sends his letters on the road to "
+        "martyrdom, and Athanasius of Alexandria sets out the heart of the "
+        "faith — why God himself became man — in On the Incarnation. Short "
+        "daily readings over about four months.",
+        [
+            "first-epistle-of-clement",
+            "epistles-of-ignatius",
+            "on-the-incarnation",
+        ],
+    ),
+    (
         "first-steps-for-teens",
         "Starting Out: Faith for Teens",
         "A first walk with Jesus, for teenage readers. Charles Spurgeon meets "
