@@ -171,6 +171,21 @@ export interface BookDetail extends BookSummary {
 	 * pages are). Optional so an API running behind this build simply omits it.
 	 */
 	author_quote_count?: number;
+	/**
+	 * The reader's guide(s) for this work — the articles that explain it, linked
+	 * back from a "Reader's guide" section (the reverse of an article's Read-next
+	 * funnel; see library/serializers.guides_for_book). English-only, so empty on
+	 * a localized page and the section just doesn't render. Optional so an API
+	 * running behind this build omits it cleanly.
+	 */
+	guides?: BookGuide[];
+}
+
+/** A reader's-guide article surfaced on the book page it explains. */
+export interface BookGuide {
+	slug: string;
+	h1: string;
+	description: string;
 }
 
 export interface ChapterNav {
