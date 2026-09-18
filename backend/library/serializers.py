@@ -65,8 +65,8 @@ def _modern_edition_available(slug: str) -> bool:
 #: (a parallel-language row under the same slug), these are their own rows under
 #: ``<base>-teens`` / ``<base>-children``, and NOTHING in the model joins them to
 #: the full text: the relationship is the slug convention alone, derived here.
-#: Ordered full → teens → children (descending reading age), the order the
-#: cross-links are shown in. Longest suffix first so stripping is unambiguous.
+#: Ordered by descending reading age (teens before children) — this is what
+#: drives the full → teens → children order the cross-links are shown in.
 EDITION_SUFFIXES = ("-teens", "-children")
 
 
@@ -76,6 +76,13 @@ def _edition_base_slug(slug: str) -> str:
         if slug.endswith(suffix):
             return slug[: -len(suffix)]
     return slug
+
+
+def _edition_family(base: str) -> list[str]:
+    """The full text and its young-reader editions in display order
+    (full → teens → children). These are the slugs the convention allows, not a
+    query — a member may or may not exist as a row."""
+    return [base] + [base + suffix for suffix in EDITION_SUFFIXES]
 
 
 def sibling_editions(book):
@@ -92,10 +99,7 @@ def sibling_editions(book):
     ``is_published`` filter runs per request, so an unpublished edition simply
     never appears — no separate prod check to keep in sync (a plain win over a
     hand-listed shelf, where an unpublished member silently vanishes)."""
-    from django.db.models import Count, Sum
-
-    base = _edition_base_slug(book.slug)
-    family = [base] + [base + suffix for suffix in EDITION_SUFFIXES]
+    family = _edition_family(_edition_base_slug(book.slug))
     rank = {slug: i for i, slug in enumerate(family)}
     rows = (
         Book.objects.filter(
@@ -105,9 +109,9 @@ def sibling_editions(book):
         )
         .select_related("author")
         .prefetch_related("author__translations")
-        .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
+        .annotate(**BOOK_CARD_ANNOTATIONS)
     )
-    return sorted(rows, key=lambda b: rank.get(b.slug, len(family)))
+    return sorted(rows, key=lambda b: rank[b.slug])
 
 
 def _available_languages(model, slug: str) -> list[str]:
@@ -1268,9 +1272,7 @@ class BookDetailSerializer(BookListSerializer):
         # topics), so it would surface here as "more like this" — but it is the
         # same work, already shown in its own "Other editions" section above. Drop
         # the whole edition family so a card never appears twice on the page.
-        base = _edition_base_slug(obj.slug)
-        edition_family = {base} | {base + suffix for suffix in EDITION_SUFFIXES}
-        for slug in edition_family:
+        for slug in _edition_family(_edition_base_slug(obj.slug)):
             scores.pop(slug, None)
 
         if not scores:
