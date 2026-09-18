@@ -1055,6 +1055,89 @@ export interface AdminEmailMetrics {
 export const getAdminEmailMetrics = () =>
 	apiFetch<AdminEmailMetrics>('/api/admin/email-metrics/');
 
+// --- Broadcasts (compose / schedule / send) ---------------------------------
+
+export type BroadcastStatus = 'draft' | 'scheduled' | 'sending' | 'sent' | 'canceled';
+
+/** One language's content block for a broadcast (structured, not raw HTML). */
+export interface BroadcastBlock {
+	heading?: string;
+	paragraphs?: string[];
+	cta_label?: string;
+	cta_path?: string;
+	preheader?: string;
+	greeting?: string;
+}
+
+export interface BroadcastAudience {
+	locale?: string;
+	signup_variant?: string;
+	activity?: 'active_7d' | 'active_30d' | 'lapsed_30d' | 'never_seen';
+	has_plan?: boolean;
+}
+
+export interface AdminBroadcast {
+	id: number;
+	name: string;
+	status: BroadcastStatus;
+	subject: Record<string, string>;
+	audience: BroadcastAudience;
+	from_address: string;
+	scheduled_at: string | null;
+	created_at: string;
+	updated_at: string;
+	locales: string[];
+	audience_count: number;
+	// detail only:
+	content?: Record<string, BroadcastBlock>;
+	stats?: EmailMetricRow;
+}
+
+export interface BroadcastPayload {
+	name?: string;
+	subject?: Record<string, string>;
+	content?: Record<string, BroadcastBlock>;
+	audience?: BroadcastAudience;
+	from_address?: string;
+}
+
+export const listBroadcasts = () =>
+	apiFetch<{ broadcasts: AdminBroadcast[] }>('/api/admin/broadcasts/');
+
+export const getBroadcast = (id: number) =>
+	apiFetch<AdminBroadcast>(`/api/admin/broadcasts/${id}/`);
+
+export const createBroadcast = (payload: BroadcastPayload) =>
+	apiFetch<AdminBroadcast>('/api/admin/broadcasts/', {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
+
+export const updateBroadcast = (id: number, payload: BroadcastPayload) =>
+	apiFetch<AdminBroadcast>(`/api/admin/broadcasts/${id}/`, {
+		method: 'PATCH',
+		body: JSON.stringify(payload)
+	});
+
+export const deleteBroadcast = (id: number) =>
+	apiFetch<null>(`/api/admin/broadcasts/${id}/`, { method: 'DELETE' });
+
+export const broadcastAction = (
+	id: number,
+	action: 'send' | 'schedule' | 'cancel' | 'test',
+	extra: { scheduled_at?: string } = {}
+) =>
+	apiFetch<AdminBroadcast & { tally?: Record<string, number>; ok?: boolean; sent_to?: string }>(
+		`/api/admin/broadcasts/${id}/action/`,
+		{ method: 'POST', body: JSON.stringify({ action, ...extra }) }
+	);
+
+export const previewAudience = (audience: BroadcastAudience) =>
+	apiFetch<{ count: number }>('/api/admin/broadcasts/audience-preview/', {
+		method: 'POST',
+		body: JSON.stringify({ audience })
+	});
+
 /** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
  *  by the admin engagement and per-user pages so time reads the same everywhere. */
 export function formatDuration(seconds: number): string {
