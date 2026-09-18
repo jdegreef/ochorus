@@ -750,6 +750,7 @@ TOPIC_ARTICLES = {
         "waiting-on-god-guide",
         "life-of-antony-guide",
         "till-he-come-guide",
+        "true-vine-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -780,6 +781,7 @@ TOPIC_ARTICLES = {
         "the-life-and-diary-of-david-brainerd-guide",
         "revival-lectures-guide",
         "things-as-they-are-guide",
+        "amanda-smith-autobiography-guide",
     ],
     "faith-and-guidance": [
         "how-to-find-gods-will-for-your-life",
@@ -793,6 +795,7 @@ TOPIC_ARTICLES = {
         "can-i-be-a-christian-and-have-doubts",
         "is-the-bible-reliable",
         "do-science-and-faith-contradict",
+        "divine-healing-guide",
     ],
     "the-gospel-call": [
         "how-to-be-born-again",
@@ -840,6 +843,7 @@ TOPIC_ARTICLES = {
         "sermons-on-several-occasions-guide",
         "holy-in-christ-guide",
         "a-brand-plucked-from-the-fire-guide",
+        "first-epistle-of-clement-guide",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
@@ -871,6 +875,10 @@ TOPIC_ARTICLES = {
         "the-unselfishness-of-god-guide",
         "holy-in-christ-guide",
         "a-brand-plucked-from-the-fire-guide",
+        "true-vine-guide",
+        "divine-healing-guide",
+        "first-epistle-of-clement-guide",
+        "amanda-smith-autobiography-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
