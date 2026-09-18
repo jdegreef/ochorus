@@ -101,6 +101,14 @@ don't hand-wrap refs in the fixture.
   `article.word_count` raises `AttributeError`. Count with
   `from library.text import word_count; word_count(settled_body)` (a pure regex
   split, no DB needed — runs off `clean_bio_html` output alone).
+- **Count the ≥7 Scripture floor with the REAL detector, not a naive regex or
+  the writer's self-report.** Only refs the site validates become tappable links,
+  and chapter-only ("John 16") or malformed ("Acts 2/10", "Romans 7–8") forms do
+  NOT count. Use `library.scripture.reference_candidates(settled_body)` (the
+  pythonbible-validated candidate finder `annotate_references` runs) —
+  `len(set(str(r) for r in reference_candidates(body)))`. A batch-2 guide
+  self-reported "13+ refs" but the detector saw 3, all chapter-only; the fix was
+  to rewrite them as `Book Chapter:Verse`. Insist writers use verse-level refs.
 - **Don't use `<q>` for quotations — it's not in the allowlist and vanishes.**
   `clean_bio_html` silently strips `<q>…</q>`, leaving the quoted Scripture with
   NO marks at all. Write quotations with literal curly `“ ”` in the body (a
