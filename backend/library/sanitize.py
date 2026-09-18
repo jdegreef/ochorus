@@ -112,9 +112,13 @@ DROP_SELECTORS = [
 
 # A `.chaptertitle` (or similar) whose whole text is just "CHAPTER 3" / "PART II"
 # / "Book One" is furniture the reader re-derives; anything else is a real title.
+# The numeral must be arabic, a STRICT roman (never `[ivxlcdm]+`, which also
+# spells "civil"/"mill"/"did" — see the book-import skill), or a small word, so
+# a real title reducing to "Part Civil" is kept, not dropped as furniture.
+_STRICT_ROMAN = r"(?=[ivxlcdm])m{0,3}(?:cm|cd|d?c{0,3})(?:xc|xl|l?x{0,3})(?:ix|iv|v?i{0,3})"
 _BARE_CHAPTER_LABEL = re.compile(
-    r"^(?:chapter|part|book)\b\.?(?:\s+(?:[\divxlcdm]+|one|two|three|four|five|"
-    r"six|seven|eight|nine|ten|eleven|twelve))?\.?$",
+    rf"^(?:chapter|part|book)\b\.?(?:\s+(?:\d+|{_STRICT_ROMAN}|one|two|three|four|"
+    r"five|six|seven|eight|nine|ten|eleven|twelve))?\.?$",
     re.I,
 )
 
