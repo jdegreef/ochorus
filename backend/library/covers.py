@@ -54,7 +54,7 @@ from pathlib import Path
 # The three cover-tier registries, for the two predicates below. Both are plain
 # tables with no Django import between them and this, which is what lets the
 # predicates live beside `art_url` rather than in a command.
-from library.curated_art import CURATED, CURATED_GROUND
+from library.curated_art import CURATED, CURATED_GROUND, ORIGINAL_GROUND
 from library.designed_covers import DERIVED_GROUND
 
 # A plain module, imported for exactly that reason — see its docstring.
@@ -99,15 +99,23 @@ def shares_a_ground(slug: str) -> bool:
       drawn by ``scripts/build_derived_grounds.py``.
     * ``CURATED_GROUND`` — a museum painting for a work that HAS a designed
       English cover but no croppable picture inside it.
+    * ``ORIGINAL_GROUND`` — an illustration drawn for the work itself (an
+      Ochorus Original), frozen by digest because no recipe can redraw it.
 
     Three call sites spelled the membership out as an ``or`` over two tables —
     ``generate_covers``, ``scripts/localize_covers.py`` and
     ``scripts/build_cover_assets.py``. A third tier is what turns that
     repetition into a hazard: miss one site and a work is half in the tier,
     which does not fail loudly — it draws a plate over a book that already has
-    a cover, or ships a painting with no webp variants.
+    a cover, or ships a painting with no webp variants. A fourth only sharpens
+    it, which is why membership stays behind this one predicate.
     """
-    return slug in CURATED or slug in DERIVED_GROUND or slug in CURATED_GROUND
+    return (
+        slug in CURATED
+        or slug in DERIVED_GROUND
+        or slug in CURATED_GROUND
+        or slug in ORIGINAL_GROUND
+    )
 
 
 def keeps_english_designed(slug: str) -> bool:
@@ -119,8 +127,9 @@ def keeps_english_designed(slug: str) -> bool:
     it. Repointing it at the ground is the precise loss both designed-cover
     tiers exist to prevent.
 
-    ``CURATED`` is the tier this is false for: those works have no designed
-    cover, so every one of their languages takes the painting.
+    ``CURATED`` and ``ORIGINAL_GROUND`` are the tiers this is false for: those
+    works have no designed cover, so every one of their languages — English
+    included — takes the shared picture.
     """
     return slug in DERIVED_GROUND or slug in CURATED_GROUND
 
