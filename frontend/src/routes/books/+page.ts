@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-18: one NEW Swahili book — the-life-of-trust (#2581), the autobiography
+// and journal of George Müller of Bristol, 28 chapters ("Maisha ya Kumtumaini Mungu"). Rebuilds
+// /sw/books so the card carries its translated title over the shared painting cover, and the reader
+// page bakes the 28 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-18: one NEW Luganda book — brave-for-god-4 ("Abavumu ku lwa Katonda:
 // Ekitabo eky'Okuna"), the fourth Brave for God volume (Paton, Mary Jones, George Liele, C.T.
 // Studd, Lilias Trotter, Ida Scudder). Rebuilds /lg/books so the card carries its translated title
