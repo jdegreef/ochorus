@@ -748,6 +748,8 @@ TOPIC_ARTICLES = {
         "what-is-spiritual-warfare",
         "soar-like-the-eagle-guide",
         "waiting-on-god-guide",
+        "life-of-antony-guide",
+        "till-he-come-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -833,6 +835,7 @@ TOPIC_ARTICLES = {
         "mortification-of-sin-guide",
         "a-serious-call-guide",
         "ten-commandments-guide",
+        "sermons-on-several-occasions-guide",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
@@ -856,6 +859,10 @@ TOPIC_ARTICLES = {
         "the-person-and-work-of-the-holy-spirit-guide",
         "things-as-they-are-guide",
         "freedom-of-the-will-guide",
+        "sermons-on-several-occasions-guide",
+        "the-reformed-pastor-guide",
+        "life-of-antony-guide",
+        "till-he-come-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
@@ -863,6 +870,7 @@ TOPIC_ARTICLES = {
         "sinners-in-the-hands-of-an-angry-god-explained",
         "what-is-the-church",
         "religious-affections-guide",
+        "the-reformed-pastor-guide",
     ],
     "soar-like-the-eagle": [
         "how-to-wait-on-god",
