@@ -297,6 +297,33 @@ class HealthEndpointTests(TestCase):
         res = APIClient().get("/api/health/")
         self.assertEqual(res.data["content_version"], content_digest())
 
+    def test_reports_the_database_as_reachable_on_the_happy_path(self):
+        res = APIClient().get("/api/health/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["database"], "ok")
+
+    def test_returns_503_when_the_database_is_unreachable(self):
+        """A container that can't reach Postgres must report unhealthy, not a
+        green file-walk — otherwise Render keeps routing to an instance whose
+        every real endpoint 500s. The file-derived fields still ride along so
+        the web build's poller reads them (and, seeing a non-200, simply waits).
+        """
+        from unittest import mock
+
+        from django.db import OperationalError
+
+        # Simulate a dead database at the cursor: the probe's SELECT 1 raises.
+        with mock.patch(
+            "django.db.connection.cursor", side_effect=OperationalError("connection refused")
+        ):
+            res = APIClient().get("/api/health/")
+        self.assertEqual(res.status_code, 503)
+        self.assertEqual(res.data["status"], "error")
+        self.assertEqual(res.data["database"], "error")
+        # Still present so the web build's poller can read them off a 503.
+        self.assertIn("content_version", res.data)
+        self.assertIn("commit", res.data)
+
     def test_the_digest_matches_what_the_web_build_computes(self):
         """The gate is a Python digest compared against a JavaScript one, and if
         the two rules ever drift the build either hangs for its whole timeout or

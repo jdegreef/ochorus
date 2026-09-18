@@ -1,10 +1,38 @@
+import logging
 from datetime import timedelta
 
 from django.conf import settings
+from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+logger = logging.getLogger(__name__)
+
+
+def _database_ok() -> bool:
+    """Can this instance actually reach its database?
+
+    A cheap ``SELECT 1`` — no table, no row, no ORM. It exists because the rest
+    of this endpoint answers "ok" from files alone (``content_version`` walks the
+    baked digest, ``commit`` is an env var), so without it a container whose
+    Postgres is down, whose connection pool is exhausted, or whose persistent
+    ``conn_max_age`` connections have gone stale reports perfectly healthy while
+    every real endpoint 500s — and Render, seeing green, keeps routing to it and
+    never restarts it. This is the one dependency worth probing on the path
+    Render's health check hits.
+    """
+    from django.db import connection
+
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+            cursor.fetchone()
+        return True
+    except Exception:  # noqa: BLE001 — a probe converts ANY db error into 503, never a 500.
+        logger.warning("Health check database probe failed", exc_info=True)
+        return False
 
 
 @api_view(["GET"])
@@ -12,11 +40,18 @@ from rest_framework.views import APIView
 def health(request):
     """Liveness probe used by Render's health check.
 
+    Returns 200 only when this instance can reach its database (a shallow
+    ``SELECT 1``, see ``_database_ok``); a database it cannot reach is a 503, so
+    Render and any uptime monitor see the outage instead of a green file-walk.
+
     Also publishes what this instance is serving, for the web build's benefit.
     The reader is a static site prerendered against this API, and a content
     commit deploys both services at once — so the build needs a way to tell "the
     API already has my content" from "the API is still on the previous release",
-    rather than baking the old content into pages meant to show the new.
+    rather than baking the old content into pages meant to show the new. These
+    fields are file/env-derived, so they stay in the body even on a 503 (the web
+    build's poller treats any non-200 as "not ready yet" and simply waits —
+    exactly the right thing against an API whose database is down).
 
     ``content_version`` is the field that question is answered with; ``commit``
     is informational (which release is live, for a human looking at the
@@ -27,13 +62,16 @@ def health(request):
     """
     from library.content_fixtures import content_digest
 
+    db_ok = _database_ok()
     return Response(
         {
-            "status": "ok",
+            "status": "ok" if db_ok else "error",
             "service": "ochorus",
             "commit": settings.RELEASE_COMMIT,
             "content_version": content_digest(),
-        }
+            "database": "ok" if db_ok else "error",
+        },
+        status=status.HTTP_200_OK if db_ok else status.HTTP_503_SERVICE_UNAVAILABLE,
     )
 
 
