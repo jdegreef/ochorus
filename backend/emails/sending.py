@@ -24,8 +24,21 @@ logger = logging.getLogger(__name__)
 
 def emails_enabled() -> bool:
     """Whether sends actually go out. Off by default so nothing leaves a dev box
-    or CI; flip ``EMAIL_ENABLED`` on in production once the domain is verified."""
-    return bool(settings.EMAIL_ENABLED and settings.RESEND_API_KEY)
+    or CI; flip ``EMAIL_ENABLED`` on in production once the domain is verified.
+
+    Also requires the base URLs, because an email whose unsubscribe link and CTA
+    are relative is broken and its ``List-Unsubscribe`` header is invalid. If
+    sending is switched on but a base URL is missing, refuse to send (recorded as
+    SKIPPED) and warn, rather than mail dead links."""
+    if not (settings.EMAIL_ENABLED and settings.RESEND_API_KEY):
+        return False
+    if not (settings.API_PUBLIC_URL and settings.PUBLIC_SITE_URL):
+        logger.warning(
+            "EMAIL_ENABLED is on but API_PUBLIC_URL/PUBLIC_SITE_URL is unset; "
+            "not sending (links would be relative)."
+        )
+        return False
+    return True
 
 
 def unsubscribe_headers(subscription) -> dict:

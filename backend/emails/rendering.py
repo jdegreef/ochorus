@@ -1,8 +1,10 @@
 """Turn a reader + subscription into a rendered email (subject + HTML).
 
-Localized off the reader's ``locale`` (see :mod:`emails.copy`); right-to-left
-locales get ``dir="rtl"`` so Arabic renders correctly. The base layout adds the
-Ochorus chrome and the unsubscribe footer.
+Localized off the reader's ``locale`` (see :mod:`emails.copy`). Text direction
+comes from the :class:`Language` registry — a language whose row has ``rtl`` set
+gets ``dir="rtl"`` (so a language with no registry row, e.g. in an unseeded test
+DB, falls back to LTR). The base layout adds the Ochorus chrome and the
+unsubscribe footer.
 """
 
 from __future__ import annotations

@@ -17,6 +17,7 @@ from django.utils import timezone
 from accounts.models import UserProfile
 
 from .lifecycle import send_welcome, welcome_key
+from .management.commands.send_welcome_emails import _parse_cutoff
 from .models import (
     EmailEvent,
     EmailKind,
@@ -25,6 +26,7 @@ from .models import (
     EventType,
     SendStatus,
 )
+from .recipient import verified_email as resolve_recipient_email
 from .rendering import render_welcome
 
 User = get_user_model()
@@ -264,3 +266,59 @@ class WebhookTests(TestCase):
         res = self._post(payload)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(EmailEvent.objects.count(), 0)
+
+
+class RecipientResolutionTests(TestCase):
+    """Supabase-configured is authoritative; only an unconfigured Supabase
+    falls back to the (possibly unverified) profile email."""
+
+    def setUp(self):
+        self.profile = _make_profile(email="profile@example.com")
+
+    @mock.patch("emails.recipient.is_configured", return_value=False)
+    def test_falls_back_to_profile_email_when_unconfigured(self, _cfg):
+        self.assertEqual(resolve_recipient_email(self.profile), "profile@example.com")
+
+    @mock.patch("emails.recipient._supabase_verified_email", return_value=None)
+    @mock.patch("emails.recipient.is_configured", return_value=True)
+    def test_configured_failure_does_not_fall_back(self, _cfg, _sv):
+        # A None from Supabase (unconfirmed OR failed lookup) must NOT downgrade
+        # to profile.email when Supabase is the configured source of truth.
+        self.assertIsNone(resolve_recipient_email(self.profile))
+
+    @mock.patch(
+        "emails.recipient._supabase_verified_email", return_value="verified@supabase.co"
+    )
+    @mock.patch("emails.recipient.is_configured", return_value=True)
+    def test_configured_returns_supabase_address(self, _cfg, _sv):
+        self.assertEqual(resolve_recipient_email(self.profile), "verified@supabase.co")
+
+
+@override_settings(
+    EMAIL_ENABLED=True,
+    RESEND_API_KEY="test-key",
+    API_PUBLIC_URL="",
+    PUBLIC_SITE_URL="",
+    SUPABASE_URL="",
+    SUPABASE_SERVICE_ROLE_KEY="",
+)
+class BaseUrlGuardTests(TestCase):
+    def test_missing_base_urls_skips_send(self):
+        profile = _make_profile()
+        with mock.patch("emails.sending.send_email") as send:
+            message = send_welcome(profile)
+            send.assert_not_called()
+        self.assertEqual(message.status, SendStatus.SKIPPED)
+
+
+class CutoffParsingTests(TestCase):
+    def test_parses_date_only(self):
+        dt = _parse_cutoff("2026-09-17")
+        self.assertIsNotNone(dt)
+        self.assertEqual((dt.year, dt.month, dt.day), (2026, 9, 17))
+
+    def test_parses_datetime(self):
+        self.assertIsNotNone(_parse_cutoff("2026-09-17T08:00:00"))
+
+    def test_rejects_garbage(self):
+        self.assertIsNone(_parse_cutoff("not-a-date"))

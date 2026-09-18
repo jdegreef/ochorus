@@ -11,17 +11,21 @@ still runs end to end.
 
 from __future__ import annotations
 
+from accounts.supabase_admin import is_configured
 from accounts.supabase_admin import verified_email as _supabase_verified_email
 
 
 def verified_email(profile) -> str | None:
     """The reader's confirmed email, or ``None`` if we can't establish one.
 
-    Tries Supabase first (authoritative, tells us whether the address is
-    verified); falls back to ``profile.email`` when Supabase isn't wired up.
+    When Supabase is configured it is authoritative: its result (which is
+    ``None`` for an unconfirmed address *or* a failed lookup) stands, and we do
+    NOT fall back to ``profile.email`` — a transient Supabase failure must not
+    quietly downgrade us to a possibly-unverified address; the sweep simply
+    retries next pass. The ``profile.email`` fallback is only for when Supabase
+    isn't wired up at all (local, tests), so the pipeline still runs.
     """
-    email = _supabase_verified_email(profile)
-    if email:
-        return email
+    if is_configured():
+        return _supabase_verified_email(profile)
     fallback = (getattr(profile, "email", "") or "").strip()
     return fallback or None

@@ -21,6 +21,17 @@ logger = logging.getLogger(__name__)
 _TIMEOUT = 4
 
 
+def is_configured() -> bool:
+    """Whether Supabase admin lookups are wired up (URL + service-role key).
+
+    Callers use this to tell "no Supabase here, use a local fallback" apart from
+    "Supabase is configured but this lookup returned nothing" — the two must not
+    be conflated, or a transient failure silently downgrades to an unverified
+    address.
+    """
+    return bool((settings.SUPABASE_URL or "").strip() and settings.SUPABASE_SERVICE_ROLE_KEY)
+
+
 def verified_email(profile) -> str | None:
     """The profile's confirmed email from Supabase, or ``None``.
 

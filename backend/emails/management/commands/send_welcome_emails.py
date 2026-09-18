@@ -11,17 +11,37 @@ further back deliberately with ``--since`` or ``--days``.
 
 from __future__ import annotations
 
-from datetime import timedelta
+import logging
+from datetime import datetime, time, timedelta
 
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
-from django.utils.dateparse import parse_datetime
+from django.utils.dateparse import parse_date, parse_datetime
 
 from emails.lifecycle import profiles_awaiting_welcome, send_welcome
 from emails.models import SendStatus
 
+logger = logging.getLogger(__name__)
+
 _DEFAULT_WINDOW_DAYS = 2
+
+
+def _parse_cutoff(value: str):
+    """Parse an ISO datetime OR date (midnight) into an aware datetime.
+
+    Accepting a bare date matters: a cutoff is naturally written '2026-09-17',
+    which ``parse_datetime`` alone returns ``None`` for — silently dropping the
+    value. Returns ``None`` only when the string is neither.
+    """
+    parsed = parse_datetime(value)
+    if parsed is None:
+        day = parse_date(value)
+        if day is not None:
+            parsed = datetime.combine(day, time.min)
+    if parsed is None:
+        return None
+    return parsed if timezone.is_aware(parsed) else timezone.make_aware(parsed)
 
 
 class Command(BaseCommand):
@@ -78,15 +98,23 @@ class Command(BaseCommand):
 
     def _cutoff(self, opts):
         if opts.get("since"):
-            parsed = parse_datetime(opts["since"])
+            parsed = _parse_cutoff(opts["since"])
             if parsed is None:
                 raise CommandError(f"could not parse --since: {opts['since']!r}")
-            return parsed if timezone.is_aware(parsed) else timezone.make_aware(parsed)
+            return parsed
         if opts.get("days") is not None:
             return timezone.now() - timedelta(days=opts["days"])
         configured = getattr(settings, "EMAIL_WELCOME_START", "")
         if configured:
-            parsed = parse_datetime(configured)
+            parsed = _parse_cutoff(configured)
             if parsed is not None:
-                return parsed if timezone.is_aware(parsed) else timezone.make_aware(parsed)
+                return parsed
+            # Set but unparseable: warn rather than silently narrow to the
+            # default window (which would send to a wider set than intended).
+            logger.warning(
+                "EMAIL_WELCOME_START=%r is not a valid date/datetime; "
+                "using the default %d-day window.",
+                configured,
+                _DEFAULT_WINDOW_DAYS,
+            )
         return timezone.now() - timedelta(days=_DEFAULT_WINDOW_DAYS)
