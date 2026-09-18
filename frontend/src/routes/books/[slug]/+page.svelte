@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { shareImage } from '$lib/coverArt';
+	import { shareCard, shareImage } from '$lib/coverArt';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -139,8 +139,17 @@
 	// rather than something the runtime could put right. It also made the share
 	// layer the one place in the app that falls back to English, which the
 	// content model does not do anywhere else.
-	const share = $derived(shareImage(book));
+	// Two pictures of one edition, for two readers. A link preview gets the
+	// landscape CARD, because Facebook, X and LinkedIn crop to 1.91:1 and a 3:4
+	// cover loses its title in that crop (see scripts/build-share-cards.mjs).
+	// Structured data gets the COVER itself: `Book.image` says what the book
+	// looks like, and a cover on a blurred ground is not that.
+	const share = $derived(shareCard(book));
 	const ogImage = $derived(share ? absUrl(share.url) : '');
+	const coverImage = $derived.by(() => {
+		const img = shareImage(book);
+		return img ? absUrl(img.url) : '';
+	});
 	// Watson's *All Things for Good* carries "A Divine Cordial" as its SUBTITLE
 	// and as an alternate title, so the page printed it twice, two lines apart.
 	// Dropped from the visible line, NOT from `alternateName`: a subtitle does
@@ -172,7 +181,7 @@
 				sameAs: book.author_same_as?.length ? book.author_same_as : undefined
 			},
 			description: book.description || undefined,
-			image: ogImage || undefined,
+			image: coverImage || undefined,
 			inLanguage: book.language,
 			url: canonical,
 			isAccessibleForFree: true,

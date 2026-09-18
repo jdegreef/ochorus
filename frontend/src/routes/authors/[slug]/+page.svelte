@@ -20,7 +20,7 @@
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
-	import { shareImage } from '$lib/coverArt';
+	import { shareCard } from '$lib/coverArt';
 	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -198,10 +198,10 @@
 		const base = t('author.metaFallback').replace('%name%', author.name);
 		return truncateMeta(summaryBits.length ? `${base} ${summaryBits.join(' · ')}.` : base);
 	});
-	// A portrait, else the first book's shareable raster — never its raw
+	// A portrait, else the first book's landscape share card — never its raw
 	// `cover_url`, which for a plate is an `.svg` scrapers refuse and for a
-	// painting is a picture with no title on it (see `shareImage`).
-	const bookCard = $derived(author.books[0] ? shareImage(author.books[0]) : null);
+	// painting is a picture with no title on it (see `shareCard`).
+	const bookCard = $derived(author.books[0] ? shareCard(author.books[0]) : null);
 	const ogImage = $derived(
 		author.photo_url ? absUrl(author.photo_url) : bookCard ? absUrl(bookCard.url) : ''
 	);
@@ -212,7 +212,10 @@
 			'@type': 'Person',
 			name: author.name,
 			description: author.bio || undefined,
-			image: ogImage || undefined,
+			// The PERSON's image: a portrait or nothing. The share card falls
+			// back to a book cover, which is right for a link preview and wrong
+			// here — structured data would be claiming the cover depicts them.
+			image: author.photo_url ? absUrl(author.photo_url) : undefined,
 			birthDate: author.birth_year ? String(author.birth_year) : undefined,
 			deathDate: author.death_year ? String(author.death_year) : undefined,
 			url: canonical,

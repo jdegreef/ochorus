@@ -370,3 +370,19 @@ test('an unknown slug is served the SPA fallback and renders not-found', async (
 	expect(res?.status()).toBe(200);
 	await expect(page.getByRole('heading', { name: /not found/i })).toBeVisible();
 });
+
+test("a book's share card is built and served as an image", async ({ page, request }) => {
+	// The landscape card is not committed — `postbuild` composes it into the
+	// build (scripts/build-share-cards.mjs). This is the check that the step ran
+	// and that the page points at what it wrote. Content type, not status: an
+	// unknown path is answered 200 with the SPA fallback, so a missing card
+	// would pass a status check as an HTML page.
+	await page.goto(`/books/${BOOK}/`);
+	const og = await page.locator('meta[property="og:image"]').getAttribute('content');
+	expect(og, 'the book page names no og:image').toBeTruthy();
+	const path = new URL(og!).pathname;
+	expect(path).toBe(`/og/covers/en/${BOOK}.jpg`);
+	const res = await request.get(path);
+	expect(res.status()).toBe(200);
+	expect(res.headers()['content-type']).toContain('image/jpeg');
+});

@@ -133,6 +133,43 @@ export function shareImage(book: { slug: string; language: string; cover_url: st
 	return { url: book.cover_url };
 }
 
+/** The landscape share card's canvas: 1.91:1, what Facebook, X and LinkedIn
+ *  crop a link preview to. A 3:4 cover shown there loses its top and bottom —
+ *  which is where a cover keeps its byline and its title. */
+export const LANDSCAPE_WIDTH = 1200;
+export const LANDSCAPE_HEIGHT = 630;
+
+/**
+ * Where one edition's landscape share card is served.
+ *
+ * Not committed: `scripts/build-share-cards.mjs` composes it into the build
+ * on every deploy, from the raster `shareImage` names, so it cannot go stale
+ * against a cover that changed. One directory per language for every language,
+ * English included — unlike the twins, no card here was ever shared at an
+ * older address that has to keep working.
+ */
+export function landscapeUrl(slug: string, language: string): string {
+	return `/og/covers/${language}/${slug}.jpg`;
+}
+
+/**
+ * The card a link preview shows: the edition's shareable cover, set on a
+ * landscape ground so a 1.91:1 crop keeps all of it. Null exactly where
+ * `shareImage` is — an edition with no cover has nothing to set.
+ */
+export function shareCard(book: {
+	slug: string;
+	language: string;
+	cover_url: string;
+}): { url: string; width: number; height: number } | null {
+	if (!shareImage(book)) return null;
+	return {
+		url: landscapeUrl(book.slug, book.language),
+		width: LANDSCAPE_WIDTH,
+		height: LANDSCAPE_HEIGHT
+	};
+}
+
 export const COVER_WIDTHS = [320, 640];
 const RASTER = /\.(jpe?g|png)$/;
 
