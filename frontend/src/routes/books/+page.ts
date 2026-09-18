@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-18: one NEW Swahili book — brave-for-god-4 ("Jasiri kwa ajili ya
+// Mungu: Kitabu cha Nne"), the fourth Brave for God volume (Paton, Mary Jones, George Liele,
+// C.T. Studd, Lilias Trotter, Ida Scudder). Rebuilds /sw/books so the card carries its translated
+// title over the shared curated painting, and the reader page bakes the six chapters. This
+// completes the Brave for God quartet in Swahili (Books 1–3 already sw). Backs no plan.
 // prerender refresh 2026-09-18: one NEW Swahili book — life-and-diary-of-david-brainerd (#2584),
 // Jonathan Edwards's edition of the missionary's journals, 12 chapters ("Maisha na Shajara ya
 // David Brainerd"). Rebuilds /sw/books so the card carries its translated title over the shared

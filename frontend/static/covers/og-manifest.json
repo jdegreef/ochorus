@@ -1972,6 +1972,14 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"sw/brave-for-god-4": {
+			"ground": "cd4ed2202942c618d60c3cf5c7322cd03747273ed4946d6861361df6d17dfeba",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
+		},
 		"sw/cheque-book": {
 			"ground": "0833bf4d3686764b58c07d24a0456e8b730a2e50746e64a5d24424e95da739fe",
 			"style": "revival",
