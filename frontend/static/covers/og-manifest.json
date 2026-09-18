@@ -764,6 +764,14 @@
 			"art": true,
 			"scrim": 0.95
 		},
+		"fr/prevailing-prayer": {
+			"ground": "0f39b12f569d63f845c4b516b9099047eb7cf07c60fe2bd664ff28a594796ccb",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45
+		},
 		"fr/purity-of-heart": {
 			"ground": "1fe8f872cc1054134db78c2b92194f37168a9e5d5c340921e7fd84980a3c12a3",
 			"style": "revival",
