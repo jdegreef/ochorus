@@ -279,7 +279,8 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'divine-songs-for-children': 'young',
 	'brave-for-god': 'young',
 	'brave-for-god-2': 'young',
-	'brave-for-god-3': 'young'
+	'brave-for-god-3': 'young',
+	'brave-for-god-4': 'young'
 };
 
 /**
@@ -299,7 +300,8 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 export const SERIES_VOLUME: Record<string, number> = {
 	'brave-for-god': 1,
 	'brave-for-god-2': 2,
-	'brave-for-god-3': 3
+	'brave-for-god-3': 3,
+	'brave-for-god-4': 4
 };
 
 /**

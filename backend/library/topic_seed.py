@@ -535,6 +535,7 @@ TOPICS = [
             "brave-for-god",
             "brave-for-god-2",
             "brave-for-god-3",
+            "brave-for-god-4",
         ],
     ),
 ]
@@ -768,6 +769,7 @@ TOPIC_ARTICLES = {
         "how-to-find-rest-for-your-soul",
         "what-does-the-bible-say-about-the-end-times",
         "the-bruised-reed-guide",
+        "why-would-a-good-god-allow-suffering",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -789,6 +791,9 @@ TOPIC_ARTICLES = {
         "how-to-overcome-doubt",
         "how-to-wait-on-god",
         "how-to-grow-in-your-faith",
+        "can-i-be-a-christian-and-have-doubts",
+        "is-the-bible-reliable",
+        "do-science-and-faith-contradict",
     ],
     "the-gospel-call": [
         "how-to-be-born-again",
@@ -809,6 +814,8 @@ TOPIC_ARTICLES = {
         "on-the-incarnation-guide",
         "what-does-the-bible-say-about-the-end-times",
         "what-is-baptism",
+        "how-do-we-know-jesus-rose",
+        "is-jesus-the-only-way",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -856,6 +863,14 @@ TOPIC_ARTICLES = {
         "how-to-be-content",
         "how-to-trust-god-in-suffering",
         "soar-like-the-eagle-guide",
+    ],
+    "for-teens": [
+        "can-i-be-a-christian-and-have-doubts",
+        "is-the-bible-reliable",
+        "why-would-a-good-god-allow-suffering",
+        "do-science-and-faith-contradict",
+        "how-do-we-know-jesus-rose",
+        "is-jesus-the-only-way",
     ],
 }
 

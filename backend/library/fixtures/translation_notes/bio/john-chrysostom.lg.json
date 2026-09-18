@@ -1,0 +1,20 @@
+{
+  "kind": "bio",
+  "slug": "john-chrysostom",
+  "language": "lg",
+  "job_issue": 1500,
+  "pull_request": 2828,
+  "references": [
+    {
+      "reference": "Psalm 24:1",
+      "status": "self_rendered",
+      "why": "Embedded verbatim inside Chrysostom's quoted letter ('the earth is the Lord’s'); rendered in reverent Luganda as «ensi ya Mukama». Not mined from the shipped Luganda corpus, so self_rendered for the reviewer to verify against the OLCB/Union tradition."
+    },
+    {
+      "reference": "Job 1:21",
+      "status": "self_rendered",
+      "why": "Near-verbatim allusion in the same letter ('Naked I came from my mother’s womb, naked shall I leave this world'); the letter adapts Job’s wording, so the rendering is the translator’s, not mined."
+    }
+  ],
+  "note": "The only chapter:verse scripture is the two Old-Testament phrases Chrysostom quotes inside his own letter (the blockquote). Both are self_rendered in reverent Luganda; the lg corpus was not mined for them. His motto/doxology 'Glory be to God for all things' is his own words, translated as prose."
+}

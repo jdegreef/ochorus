@@ -1,0 +1,25 @@
+{
+  "kind": "bio",
+  "slug": "christmas-evans",
+  "language": "lg",
+  "job_issue": 1501,
+  "pull_request": 2828,
+  "references": [
+    {
+      "reference": "Hebrews 4:12",
+      "status": "self_rendered",
+      "why": "Quoted phrase 'a sharp two-edged sword' embedded in the narrative; self_rendered, not mined."
+    },
+    {
+      "reference": "Acts 3:19",
+      "status": "self_rendered",
+      "why": "Evans’s own description of the mountain experience in Acts language ('a remarkable refreshing from the presence of the Lord'); self_rendered."
+    },
+    {
+      "reference": "1 Timothy 6:8",
+      "status": "self_rendered",
+      "why": "Quoted phrase 'having food and raiment'; self_rendered, not mined."
+    }
+  ],
+  "note": "Three short scriptural phrases are quoted inside Evans’s own prose/covenant; all self_rendered in Luganda (the lg corpus was not mined for these partial phrases). His journal covenant and last words ('Good-bye! Drive on!') are his own words, translated as prose. 'as dry as Gilboa' is his idiom, kept as prose."
+}
