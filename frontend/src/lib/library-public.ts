@@ -101,6 +101,15 @@ export interface BookDetail extends BookSummary {
 	chapters: ChapterToc[];
 	topics: TopicChip[];
 	related: BookSummary[];
+	/**
+	 * Other audience editions of the SAME work — the "(For Children)" /
+	 * "(For Teens)" retellings and the full text they retell — cross-linked both
+	 * ways, as cover cards (full → teens → children). Empty for the vast
+	 * majority of works, which have no retelling. Derived server-side from the
+	 * slug convention (`<base>` ⇄ `<base>-teens` ⇄ `<base>-children`) and gated
+	 * on `is_published`, so an unpublished edition never appears here.
+	 */
+	editions: BookSummary[];
 	difficulty: Difficulty;
 	/**
 	 * The author's authoritative identifiers (Wikipedia, Wikidata), for the

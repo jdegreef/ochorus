@@ -22,6 +22,15 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   (`unique(slug, language)`); Topics are one row + a `TopicTranslation`
   side-table. There is **no English fallback** — a language with no row simply
   doesn't show that item.
+- A **young-reader edition** is a separate same-language Book row, not a
+  language variant: slug `<base>-children` / `<base>-teens`, title suffixed
+  "(For Children)" / "(For Teens)", parent author kept. Nothing in the model
+  joins it to the full text — the slug convention IS the link (mirrors how the
+  Modern English edition is derived from slug + language, not a FK), and the
+  book page's `editions` cross-link derives the full ⇄ teens ⇄ children family
+  from it (`serializers.sibling_editions`). So don't reuse one of those suffixes
+  for an unrelated work, and don't drop the convention without checking who
+  reads it.
 - AI translations ship `source_type=ai_unreviewed` and are promoted to reviewed
   only when **the user** runs `approve_translation` / `approve_sermon_translation`.
   Never auto-approve. This review state is **admin-only**: it drives the review

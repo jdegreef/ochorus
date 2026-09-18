@@ -1209,8 +1209,10 @@
 />
 
 <!-- Compact "where you are" — book · chapter. One definition, rendered both as
-     the inline label (≥sm) and the phone location line below the controls. -->
-{#snippet locationLabel()}<span class="text-muted">{chapter.book_title} · </span>{chapterName(chapter.order, chapter.title)}{/snippet}
+     the inline label (≥sm) and the phone location line below the controls.
+     When the chapter's name is just the book's title (a single-work volume like
+     "Absolute Surrender"), drop the redundant "Book · " prefix. -->
+{#snippet locationLabel()}{@const chap = chapterName(chapter.order, chapter.title)}{#if chapter.book_title !== chap}<span class="text-muted">{chapter.book_title} · </span>{/if}{chap}{/snippet}
 
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode,
      except a transient peek summoned by a swipe-down from the top (see above). -->
