@@ -486,6 +486,7 @@ TOPICS = [
         "true stories of lives that were spent for him, written for or well "
         "within reach of younger readers.",
         [
+            "growing-in-wisdom",
             "the-body-of-christ-teens",
             "if",
             "around-the-wicket-gate",
