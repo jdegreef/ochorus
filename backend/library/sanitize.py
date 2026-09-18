@@ -101,8 +101,27 @@ DROP_SELECTORS = [
     # because substring class matching over-matches, and `epubonly` needs no
     # slack.
     ".epubonly",
+    # Some Gutenberg editions set an ornamental "CHAPTER N" line as its own
+    # `<div class="chaptertitle">`, ABOVE the real `<h2>` title — the reader
+    # already numbers chapters, so left in it opens every body "CHAPTER 1 …".
+    # Qualified (see KEEP_PREDICATES): dropped only when the div is a bare
+    # chapter/part/book label, never when it carries a real title.
+    ".chaptertitle",
     "[id*=navbar]", "[id*=toc]",
 ]
+
+# A `.chaptertitle` (or similar) whose whole text is just "CHAPTER 3" / "PART II"
+# / "Book One" is furniture the reader re-derives; anything else is a real title.
+_BARE_CHAPTER_LABEL = re.compile(
+    r"^(?:chapter|part|book)\b\.?(?:\s+(?:[\divxlcdm]+|one|two|three|four|five|"
+    r"six|seven|eight|nine|ten|eleven|twelve))?\.?$",
+    re.I,
+)
+
+
+def _is_not_bare_chapter_label(el: Tag) -> bool:
+    """Keep the element unless its entire text is a bare chapter-number label."""
+    return not _BARE_CHAPTER_LABEL.match(el.get_text(" ", strip=True))
 
 # Project Gutenberg puts `class="pginternal"` on EVERY internal link, so the
 # class says nothing about what the link IS. Three kinds wear it: the TOC's page
@@ -258,6 +277,7 @@ def _scrub_attrs(tag: Tag, *, allow_bio_attrs: bool) -> None:
 KEEP_PREDICATES = {
     NOTE_SELECTOR: _is_gutenberg_note_content,
     PGINTERNAL_SELECTOR: _is_pg_cross_reference,
+    ".chaptertitle": _is_not_bare_chapter_label,
 }
 
 

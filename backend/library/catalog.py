@@ -419,6 +419,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "and the Holy Spirit."
         ),
     ),
+    "jesse-lyman-hurlbut": AuthorEntry(
+        slug="jesse-lyman-hurlbut",
+        name="Jesse Lyman Hurlbut",
+        birth_year=1843,
+        death_year=1930,
+        bio=(
+            "American Methodist minister and Sunday-school leader, a central "
+            "figure in the Chautauqua movement, best known for retelling the "
+            "Bible for the young in plain, vivid language."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -716,6 +727,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-fundamental-doctrines-of-the-christian-faith",
               "The Fundamental Doctrines of the Christian Faith", "r-a-torrey",
               "gutenberg", "52648", cover_color="#6a4c93"),
+    # Hurlbut's Life of Christ for Young and Old (1915, Gutenberg #40460) — the
+    # life of Jesus told as ~104 short story-chapters from the four Gospels, for
+    # the young-readers shelf. (His whole-Bible Story of the Bible is OCR-only.)
+    BookEntry("hurlbuts-life-of-christ",
+              "Hurlbut's Life of Christ for Young and Old", "jesse-lyman-hurlbut",
+              "gutenberg", "40460",
+              subtitle="The life of Jesus told simply, for young and old",
+              cover_color="#7a4a2a"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
