@@ -1779,7 +1779,18 @@
 		height: 100%;
 		max-width: none;
 		box-sizing: border-box;
-		padding: 0.85rem var(--pgpad) 0.5rem;
+		/* The bottom padding is a full line of slack, not a cosmetic gap. With
+		   `column-fill: auto` the browser starts the last line of a column if its
+		   TOP fits, then lets its bottom spill past the content box — and
+		   `article.paged`'s `overflow: hidden` sliced that spill into unreadable
+		   letter-tops at the foot of every page. Reserving one prose line-height
+		   below the fill area keeps that spilled line whole (it lands in the padding,
+		   which the clip does not reach) or reflows it to the next page. The value is
+		   the reading line-height itself — `1.18rem` base size (see app.css `.reading`)
+		   × the reader's Size (`--reading-scale`) × Spacing (`--reading-leading`) —
+		   so the slack tracks the text at every setting, plus a small margin. */
+		padding: 0.85rem var(--pgpad)
+			calc(1.18rem * var(--reading-scale, 1) * var(--reading-leading, 1.85) + 0.4rem);
 		/* Each page window (width --page-w) holds --cols columns. With the gap set
 		   to twice the side padding, the columns land flush inside the page and the
 		   inter-page gutter parks the next column fully off-screen (no sliver). This
