@@ -665,6 +665,61 @@ def resolve_related(related, language: str) -> list[dict]:
     return cards
 
 
+def guides_for_book(book_slug: str, language: str) -> list[dict]:
+    """The published articles that are a reader's guide *to* this book — so a
+    book page can surface the guide that explains it, the reverse of the
+    article→book Read-next funnel.
+
+    Two conditions, both needed to name the *guide* rather than the many
+    topical/definitional articles that merely funnel a reader to a good book:
+
+    * the article is a guide at all — its slug ends ``-guide``, the repo's
+      convention for a reader's guide (the ``write-article`` playbook's book
+      guides; there is no typed flag on Article, so the convention is the
+      definition — adjust here if one is added); and
+    * this book is the guide's PRIMARY subject — the first book in its Read-next
+      ``related``. A guide can point on to sibling works (Augustine's guide also
+      lists *Grace Abounding*), so keying on the first book attributes each guide
+      to the one work it is about, not to every book it mentions.
+
+    Returns ``[{slug, h1, description}, ...]`` in article sort order (normally
+    one). English-only in practice: articles are English-only, so a non-English
+    book matches nothing and the caller gates on that anyway. ``related`` is a
+    schema-less hand-authored JSON field, so a malformed entry is skipped rather
+    than raising. One scan of the article table (no bodies), paid on a book
+    DETAIL page only — never a shelf.
+    """
+    rows = (
+        Article.objects.filter(
+            is_published=True, language=language, slug__endswith="-guide"
+        )
+        .order_by("sort_order", "h1")
+        .values("slug", "h1", "description", "related")
+    )
+    out = []
+    for row in rows:
+        related = row["related"]
+        if not isinstance(related, list):
+            continue
+        first_book = next(
+            (
+                item.get("slug")
+                for item in related
+                if isinstance(item, dict) and item.get("type") == "book"
+            ),
+            None,
+        )
+        if first_book == book_slug:
+            out.append(
+                {
+                    "slug": row["slug"],
+                    "h1": row["h1"],
+                    "description": row["description"],
+                }
+            )
+    return out
+
+
 class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """An article card — enough for the /articles index (no body).
 
@@ -1083,6 +1138,18 @@ class BookDetailSerializer(BookListSerializer):
     # is non-zero. Detail-only like author_same_as: a card carries no such link,
     # so a shelf would run this count 130 times for nothing.
     author_quote_count = serializers.SerializerMethodField()
+    # The reader's guide(s) for this work — published articles whose Read-next
+    # funnel points back here (see ``guides_for_book``). The reverse of the
+    # article→book funnel, so a reader landing on the book finds the guide that
+    # explains it, and the guide gets an internal link from a high-value page.
+    # English-only (articles are); empty elsewhere, so the section just doesn't
+    # render. Detail-only: it scans the article table, nothing a shelf should pay.
+    guides = serializers.SerializerMethodField()
+
+    def get_guides(self, obj) -> list[dict]:
+        if obj.language != "en":
+            return []
+        return guides_for_book(obj.slug, obj.language)
 
     def get_author_same_as(self, obj):
         return obj.author.same_as or []
@@ -1170,7 +1237,7 @@ class BookDetailSerializer(BookListSerializer):
             "difficulty", "is_modern_edition", "has_modern_edition",
             "editions", "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "qa", "scripture", "opening",
-            "featured_people", "author_quote_count",
+            "featured_people", "author_quote_count", "guides",
         ]
 
     def get_editions(self, obj):

@@ -52,6 +52,14 @@ keep new person-lives out of `/articles` entirely.
   (book/sermon/author) that the API resolves to Read-next cards. Point only at
   works that actually exist — pull the live catalogue first
   (`curl .../api/library/books/?language=en`) and confirm the slugs.
+- **A book guide is cross-linked FROM its book page — so `related` ORDER now
+  matters.** `BookDetailSerializer.guides` (`library/serializers.guides_for_book`,
+  PR #2843) surfaces a "Reader's guide" section on `/books/<slug>/` for the article
+  whose slug ends **`-guide`** AND whose `related` **leads with that book** (the
+  first `type:book` ref). So for a book guide: keep the `<book>-guide`-style slug,
+  and make the guided book the **first** `related` entry — sibling works go after
+  it. A guide that lists another book first will attach to the wrong book's page
+  (or none); a non-`-guide` slug won't cross-link at all.
 - **Quote discipline (critical).** Only genuine, public-domain direct quotations,
   in `<blockquote>…<cite>Name</cite></blockquote>`. **Never invent a quote and
   attribute it to a real person.** When unsure, *describe* the author's teaching
