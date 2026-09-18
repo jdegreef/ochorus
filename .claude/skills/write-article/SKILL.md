@@ -52,6 +52,14 @@ keep new person-lives out of `/articles` entirely.
   (book/sermon/author) that the API resolves to Read-next cards. Point only at
   works that actually exist — pull the live catalogue first
   (`curl .../api/library/books/?language=en`) and confirm the slugs.
+- **Inline `<a>` links in the BODY to detail routes MUST end with a trailing
+  slash** — `/books/<slug>/`, `/authors/<slug>/`, `/sermons/<slug>/`. A bare
+  `/books/<slug>` fails the frontend built-output guard
+  `href.test.ts > "contains no bare (non-slash) detail-route links"` and reds the
+  whole `test-and-build` (the aggregator fails 3s after the frontend job). The
+  `related` funnel is slashed for you by the API; hand-written prose links are
+  not — writer agents forget (batch of 4, 2026-09-18: 5 bare links across 2
+  guides). Grep the fixture: `grep -oE 'href=\"/(books|authors|sermons)/[^\"/]+\"'`.
 - **A book guide is cross-linked FROM its book page — so `related` ORDER now
   matters.** `BookDetailSerializer.guides` (`library/serializers.guides_for_book`,
   PR #2843) surfaces a "Reader's guide" section on `/books/<slug>/` for the article
