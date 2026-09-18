@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-17: Spanish plan ACTIVATES — grace-for-every-sinner
+// («El Camino a Dios: gracia para todo pecador»). Shipping a-call-to-the-unconverted (#1366)
+// completes the plan's three source books in es (with the-way-to-god and all-of-grace), so
+// seed_plans now creates the (grace-for-every-sinner, es) row; /es/plans must rebuild to show it.
 // prerender refresh 2026-09-18: French plan ACTIVATES — faith-in-the-fire (« Le Dieu de toute
 // consolation : la foi dans l'épreuve »). Its two source books are now both in French —
 // he-holds-my-tomorrows shipped earlier and the-god-of-all-comfort ships in this PR (#2499) —

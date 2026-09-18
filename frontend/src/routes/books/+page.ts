@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-17: Spanish book — a-call-to-the-unconverted (#1366), Richard
+// Baxter's "Un llamado a los inconversos". Book pages are prerendered per locale, so
+// /es/books must rebuild so the card and its /es/books/a-call-to-the-unconverted pages bake
+// the translated title and chapters.
 // prerender refresh 2026-09-17: Portuguese book — spurgeon-on-prayer (#1793), C. H. Spurgeon's
 // twelve sermons on prayer plus an introduction, 13 chapters ("Grande Poder na Oração"). Book
 // pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title
