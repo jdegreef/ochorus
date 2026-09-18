@@ -93,6 +93,30 @@
 	const loaded = $derived(loadedUrl === book.cover_url);
 	const failed = $derived(failedUrl === book.cover_url);
 
+	/** What a cover that has loaded tells us: that it is here (the placeholder
+	 *  can go), and its shape (whether a designed cover needs its mat). */
+	function onLoaded(img: HTMLImageElement) {
+		loadedUrl = book.cover_url;
+		if (img.naturalHeight) {
+			ratio = img.naturalWidth / img.naturalHeight;
+			ratioUrl = book.cover_url;
+		}
+	}
+
+	/**
+	 * Run `onLoaded` for an image that finished BEFORE this component hydrated.
+	 *
+	 * These pages are prerendered, so a cover's `<img>` is in the HTML and the
+	 * browser fetches it long before the scripts arrive — often it has finished,
+	 * and fired its `load` event, before Svelte attaches `onload`. That event is
+	 * gone; nothing replays it. Measured on /books/: the first-row cover loaded
+	 * at 1.0s and was only seen as loaded at 2.3s, when the grid re-rendered.
+	 * So on attach, an image that is already complete is treated as loaded now.
+	 */
+	function whenComplete(img: HTMLImageElement) {
+		if (img.complete && img.naturalWidth) onLoaded(img);
+	}
+
 	// The two grounds that carry no words and want type over them. A DESIGNED
 	// raster (the ministry titles, `/covers/<slug>.jpg`) is excluded by both:
 	// its words are in the file, and a second set over them would be a mess.
@@ -185,6 +209,14 @@
 
 <div class="relative aspect-[3/4] w-full overflow-hidden {rounded} shadow-sm">
 	{#if book.cover_url && !failed}
+		<!-- The placeholder sits UNDER the image, not instead of it: an image
+		     paints the moment it decodes and covers it, with no script involved.
+		     It used to be the other way round — every cover held at opacity 0
+		     until an `onload` handler revealed it — which on a prerendered shelf
+		     meant a cover that had arrived at 1.0s stayed invisible until
+		     hydration re-rendered the grid at 2.3s, and the page's LCP waited
+		     with it. `loaded` now only retires the pulse, which would otherwise
+		     animate under every cover forever. -->
 		{#if !loaded && !priority}
 			<div class="absolute inset-0 animate-pulse bg-surface-2"></div>
 		{/if}
@@ -196,20 +228,10 @@
 			fetchpriority={priority ? 'high' : undefined}
 			width={priority ? 300 : undefined}
 			height={priority ? 400 : undefined}
-			onload={(e) => {
-				loadedUrl = book.cover_url;
-				const img = e.currentTarget as HTMLImageElement;
-				if (img.naturalHeight) {
-					ratio = img.naturalWidth / img.naturalHeight;
-					ratioUrl = book.cover_url;
-				}
-			}}
+			onload={(e) => onLoaded(e.currentTarget as HTMLImageElement)}
 			onerror={() => (failedUrl = book.cover_url)}
-			class="absolute inset-0 h-full w-full {needsMat
-				? 'object-contain'
-				: 'object-cover'} transition-opacity duration-[var(--duration-base)]"
-			class:opacity-0={!loaded && !priority}
-			class:opacity-100={loaded || priority}
+			use:whenComplete
+			class="absolute inset-0 h-full w-full {needsMat ? 'object-contain' : 'object-cover'}"
 		/>
 		{#if needsMat}
 			<!-- The mat: the same cover, cover-filled, blurred and dimmed, behind the
@@ -226,8 +248,6 @@
 				aria-hidden="true"
 				loading={priority ? 'eager' : 'lazy'}
 				class="absolute inset-0 -z-10 h-full w-full scale-110 object-cover blur-xl brightness-[.82]"
-				class:opacity-0={!loaded && !priority}
-				class:opacity-100={loaded || priority}
 			/>
 		{/if}
 		{#if overFile}
