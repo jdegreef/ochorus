@@ -768,5 +768,12 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "Forest twilight, a line of firs along the horizon. Book 4 closes the "
         "set where the wide world grows deepest.",
     ),
+    "growing-in-wisdom": Original(
+        "fe3a7ee388b67085b7aaceab5be296a9a50e20502cb234e5c8f6fc590f34c3b6",
+        "The Teens 'Editorial' system: a lone figure crests a dark ridge toward "
+        "a single dawn breaking over distant mountains, under a starfield — the "
+        "pursuit of wisdom. Deep night-blue with one warm light; the drama is in "
+        "the sky so the figure stays clear of the title.",
+    ),
 }
 

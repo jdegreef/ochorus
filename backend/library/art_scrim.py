@@ -47,6 +47,7 @@ ART_SCRIM: dict[str, float] = {
     "gleanings-among-the-sheaves": 0.75,
     "godliness": 0.30,
     "grace-abounding": 0.65,
+    "growing-in-wisdom": 0.70,
     "he-holds-my-tomorrows": 0.55,
     "holy-in-christ": 1.00,
     "how-to-bring-men-to-christ": 0.60,
