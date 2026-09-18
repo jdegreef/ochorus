@@ -1,6 +1,7 @@
 import { SITE_URL } from '$lib/config';
 import { FEED_EPOCH, isoOrEpoch } from '$lib/feedDate';
 import { listBooks, listSermons } from '$lib/library-public';
+import { xmlEscape as xml } from '$lib/xml';
 
 export const prerender = true;
 
@@ -16,15 +17,6 @@ export const prerender = true;
 
 const MAX_ITEMS = 40;
 
-/** Escape the five XML predefined entities for text and attribute values. */
-function xml(s: string): string {
-	return s
-		.replace(/&/g, '&amp;')
-		.replace(/</g, '&lt;')
-		.replace(/>/g, '&gt;')
-		.replace(/"/g, '&quot;')
-		.replace(/'/g, '&apos;');
-}
 
 interface FeedItem {
 	title: string;

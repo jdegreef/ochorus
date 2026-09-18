@@ -88,10 +88,23 @@ export function twinUrl(slug: string, language: string): string {
 	return language === 'en' ? `/covers/${slug}.png` : `/covers/${language}/${slug}.png`;
 }
 
-/** The og twin's pixel size — `generate-cover-og.mjs` draws every card at it,
- *  and `coverArt.test.ts` reads a committed twin to hold the two together. */
+/** The og twin's pixel size. `generate-cover-og.mjs` draws every card at it
+ *  by importing these, and `coverArt.test.ts` reads a committed twin so the
+ *  files on disk are held to them too. */
 export const TWIN_WIDTH = 600;
 export const TWIN_HEIGHT = 800;
+
+/**
+ * Does an edition with this cover get an og twin? The wordless grounds do —
+ * a plate and a painting — because neither can be its own card.
+ *
+ * One predicate for both sides of the twin: `generate-cover-og.mjs` draws a
+ * twin for exactly these, and `shareImage` publishes a twin URL for exactly
+ * these, so a disagreement cannot publish a card that was never drawn.
+ */
+export function hasTwin(coverUrl: string | null | undefined): boolean {
+	return isArtCover(coverUrl) || isPlateCover(coverUrl);
+}
 
 /**
  * The raster that stands for one edition anywhere outside the page: its
@@ -114,7 +127,7 @@ export function shareImage(book: { slug: string; language: string; cover_url: st
 	height?: number;
 } | null {
 	if (!book.cover_url) return null;
-	if (isArtCover(book.cover_url) || isPlateCover(book.cover_url)) {
+	if (hasTwin(book.cover_url)) {
 		return { url: twinUrl(book.slug, book.language), width: TWIN_WIDTH, height: TWIN_HEIGHT };
 	}
 	return { url: book.cover_url };

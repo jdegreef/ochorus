@@ -354,7 +354,13 @@
 	{hreflang}
 	ogType="profile"
 	{ogImage}
-	ogImageAlt={author.photo_url ? `${t('a11y.portraitOf')} ${author.name}` : ''}
+	ogImageWidth={author.photo_url ? undefined : bookCard?.width}
+	ogImageHeight={author.photo_url ? undefined : bookCard?.height}
+	ogImageAlt={author.photo_url
+		? `${t('a11y.portraitOf')} ${author.name}`
+		: bookCard
+			? `${t('a11y.coverOf')} ${author.books[0].title}`
+			: ''}
 	structuredData={[personLd, worksLd, crumbsLd, faqLd].filter((x): x is string => x != null)}
 />
 

@@ -36,14 +36,14 @@ import {
 	listQuoteTopicPages,
 	listScripturePages,
 	listSermons,
-	listTopics,
-	type BookSummary
+	listTopics
 } from '$lib/library-public';
 import { locales } from '$lib/paraglide/runtime';
 import { ADVERTISED_LOCALES, UNADVERTISED_LOCALES } from '$lib/advertised-locales';
 import { ERAS, eraOf } from '$lib/eras';
 import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
+import { xmlEscape } from '$lib/xml';
 
 /** Locale-prefixed absolute URL ('' prefix for the default locale, en). */
 export const loc = (locale: string, path: string) =>
@@ -59,8 +59,7 @@ export interface Entry {
 	images?: Map<string, string>;
 }
 
-/** `&` and `<` in a URL would end the document early; nothing else can. */
-const xmlText = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
 
 /**
  * The `<url>` rows for one entry.
@@ -90,7 +89,7 @@ export function urlXml(entry: Entry, only?: string): string {
 		.map(([l, p]) => {
 			const img = entry.images?.get(l);
 			const image = img
-				? `\n    <image:image>\n      <image:loc>${xmlText(img)}</image:loc>\n    </image:image>`
+				? `\n    <image:image>\n      <image:loc>${xmlEscape(img)}</image:loc>\n    </image:image>`
 				: '';
 			return `  <url>\n    <loc>${loc(l, p)}</loc>\n${lastmod}${alts}\n${xDefault}${image}\n  </url>`;
 		})
@@ -326,11 +325,10 @@ async function build(): Promise<SitemapData> {
 	const portraits = new Map(authors.filter((a) => a.photo_url).map((a) => [a.slug, a.photo_url]));
 	const authorEntries: Entry[] = [...authorSlugs].map((slug) => {
 		const photo = portraits.get(slug);
+		const img = photo ? absUrl(photo) : null;
 		return {
 			byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, `/authors/${slug}/`])),
-			images: photo
-				? new Map(ADVERTISED_LOCALES.map((l) => [l, absUrl(photo)]))
-				: undefined
+			images: img ? new Map(ADVERTISED_LOCALES.map((l) => [l, img])) : undefined
 		};
 	});
 
@@ -349,23 +347,25 @@ async function build(): Promise<SitemapData> {
 	// locales that actually have that work. Detail pages canonicalize to a
 	// trailing slash (prerendered as directory indexes; the static host serves
 	// those only for the trailing-slash URL).
-	const collect = (
-		kind: 'books' | 'sermons' | 'topics' | 'plans',
+	// Generic over the kind, so each callback is typed for the works it is
+	// actually handed — a books-only `imageOf` passed for sermons is a type
+	// error rather than an unchecked cast.
+	type Slice = (typeof advertisedSlices)[number];
+	const collect = <K extends 'books' | 'sermons' | 'topics' | 'plans'>(
+		kind: K,
 		pathOf: (slug: string) => string,
-		lastmodOf?: (item: { slug: string; updated_at?: string }) => string | undefined,
-		// Only books pass one, so it is typed for them; `collect` is otherwise
-		// indifferent to what a work carries beyond a slug and a date.
-		imageOf?: (item: BookSummary) => string | null
+		lastmodOf?: (item: Slice[K][number]) => string | undefined,
+		imageOf?: (item: Slice[K][number]) => string | null
 	) => {
 		const byWork = new Map<string, Entry>();
 		for (const slice of advertisedSlices) {
-			for (const item of slice[kind] as { slug: string; updated_at?: string }[]) {
+			for (const item of slice[kind] as Slice[K][number][]) {
 				let e = byWork.get(item.slug);
 				if (!e) byWork.set(item.slug, (e = { byLocale: new Map() }));
 				e.byLocale.set(slice.locale, pathOf(item.slug));
 				const lm = lastmodOf?.(item);
 				if (lm && (!e.lastmod || lm > e.lastmod)) e.lastmod = lm;
-				const img = imageOf?.(item as BookSummary);
+				const img = imageOf?.(item);
 				if (img) (e.images ??= new Map()).set(slice.locale, img);
 			}
 		}
