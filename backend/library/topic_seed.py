@@ -720,6 +720,7 @@ TOPIC_ARTICLES = {
         "prayer-and-praying-men-guide",
         "ministry-of-intercession-guide",
         "necessity-of-prayer-guide",
+        "purpose-in-prayer-guide",
     ],
     "holy-spirit": [
         "what-is-the-baptism-of-the-holy-spirit",
@@ -757,6 +758,7 @@ TOPIC_ARTICLES = {
         "till-he-come-guide",
         "true-vine-guide",
         "way-into-holiest-guide",
+        "days-of-heaven-upon-earth-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -830,6 +832,7 @@ TOPIC_ARTICLES = {
         "freedom-of-the-will-guide",
         "selected-sermons-whitefield-guide",
         "the-way-to-god-guide",
+        "talks-to-the-farmer-guide",
     ],
     "the-way-of-holiness": [
         "what-is-sanctification",
@@ -855,6 +858,7 @@ TOPIC_ARTICLES = {
         "a-brand-plucked-from-the-fire-guide",
         "first-epistle-of-clement-guide",
         "godliness-guide",
+        "purity-of-heart-guide",
     ],
     "enduring-classics": [
         "pilgrims-progress-guide",
@@ -902,6 +906,10 @@ TOPIC_ARTICLES = {
         "ministry-of-intercession-guide",
         "godliness-guide",
         "necessity-of-prayer-guide",
+        "days-of-heaven-upon-earth-guide",
+        "purity-of-heart-guide",
+        "talks-to-the-farmer-guide",
+        "purpose-in-prayer-guide",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
