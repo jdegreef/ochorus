@@ -36,18 +36,20 @@ def send_email(
     html: str,
     headers: dict | None = None,
     idempotency_key: str | None = None,
+    from_email: str | None = None,
 ) -> str:
     """Send one email through Resend and return its message id.
 
-    Raises :class:`ResendError` when Resend isn't configured or the API rejects
-    the send — the caller records the failure on the message row.
+    ``from_email`` overrides the default ``EMAIL_FROM`` (a broadcast may set its
+    own From line). Raises :class:`ResendError` when Resend isn't configured or
+    the API rejects the send — the caller records the failure on the message row.
     """
     api_key = settings.RESEND_API_KEY
     if not api_key:
         raise ResendError("RESEND_API_KEY is not configured")
 
     payload = {
-        "from": settings.EMAIL_FROM,
+        "from": from_email or settings.EMAIL_FROM,
         "to": [to],
         "subject": subject,
         "html": html,

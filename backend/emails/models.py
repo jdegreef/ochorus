@@ -136,17 +136,21 @@ class EmailSubscription(models.Model):
 
 
 class Broadcast(models.Model):
-    """An admin-composed campaign. Subject and body are keyed by locale so one
-    campaign carries every language. Sent by the Phase 2 admin surface; the
-    model exists now so the four-table foundation is complete and migrations
-    don't churn later."""
+    """An admin-composed campaign, localized per language.
+
+    ``subject`` is ``{locale: "subject line"}``. ``content`` is
+    ``{locale: {heading, paragraphs: [...], cta_label, cta_path, greeting?}}`` —
+    structured blocks, not raw HTML, so a broadcast renders through the same safe
+    lifecycle template with nothing to sanitize (see emails/rendering.py). A
+    recipient whose language has no block falls back to English, then to any
+    available language.
+    """
 
     name = models.CharField(max_length=200)
-    # {locale: "subject"} and {locale: "<html>"}.
     subject = models.JSONField(default=dict)
-    body_html = models.JSONField(default=dict)
+    content = models.JSONField(default=dict)
     # An audience filter, e.g. {"locale": "pt", "no_plan": true}. Interpreted by
-    # the Phase 2 audience layer.
+    # the audience layer (emails/audience.py).
     audience = models.JSONField(default=dict, blank=True)
     from_address = models.CharField(max_length=200, blank=True)
     scheduled_at = models.DateTimeField(null=True, blank=True)

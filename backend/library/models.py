@@ -1653,6 +1653,13 @@ class AdminAction(models.Model):
         AUDIT_RESTORE = "audit.restore", "Audit finding acceptance undone"
         ROLE_GRANT = "role.grant", "Admin access granted"
         ROLE_REVOKE = "role.revoke", "Admin access revoked"
+        BROADCAST_CREATE = "broadcast.create", "Broadcast created"
+        BROADCAST_EDIT = "broadcast.edit", "Broadcast edited"
+        BROADCAST_DELETE = "broadcast.delete", "Broadcast deleted"
+        BROADCAST_SEND = "broadcast.send", "Broadcast sent"
+        BROADCAST_SCHEDULE = "broadcast.schedule", "Broadcast scheduled"
+        BROADCAST_CANCEL = "broadcast.cancel", "Broadcast canceled"
+        BROADCAST_TEST = "broadcast.test", "Broadcast test sent"
 
     action = models.CharField(max_length=32, choices=Action.choices)
     #: Who, by email — the identity `IsAdminEmail` gates on. Blank only when a

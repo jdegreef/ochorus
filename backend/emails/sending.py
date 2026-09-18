@@ -61,6 +61,7 @@ def deliver(
     locale: str,
     lifecycle_step: str = "",
     broadcast=None,
+    from_email: str | None = None,
 ) -> EmailMessage:
     """Send ``rendered`` to ``to_email`` at most once, keyed by ``idempotency_key``.
 
@@ -97,6 +98,7 @@ def deliver(
             html=rendered.html,
             headers=unsubscribe_headers(subscription),
             idempotency_key=idempotency_key,
+            from_email=from_email,
         )
     except ResendError as exc:
         logger.warning("send failed for %s: %s", idempotency_key, exc)
