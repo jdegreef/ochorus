@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {
 		readerPrefs,
+		cssAlign,
 		type Align,
 		type Leading,
 		type Margin,
@@ -44,8 +45,18 @@
 		 * prose rather than a translated sample sentence. Omit (sermons, bios)
 		 * and no preview renders.
 		 */
-		sample = ''
-	}: { layout?: boolean; margins?: boolean; sample?: string } = $props();
+		sample = '',
+		/**
+		 * The alignment to show as active. Defaults to the stored `align`, which is
+		 * right for scroll surfaces; the paged chapter reader passes its layout-
+		 * derived value (`effectiveAlign`) so the highlight matches what's on the
+		 * page when paged mode is justifying by default. Clicking still records an
+		 * explicit choice via `setAlign`.
+		 */
+		align = undefined
+	}: { layout?: boolean; margins?: boolean; sample?: string; align?: Align } = $props();
+
+	const activeAlign = $derived(align ?? readerPrefs.align);
 
 	// Shared, not local: the reader's keyboard handler has to know a panel is
 	// open so it stops turning pages under it (see readerUi.panelOpen).
@@ -135,7 +146,9 @@
 				     properties the article consumes (one definition, in app.css);
 				     `dir="auto"` because this is content prose inside localized
 				     chrome — see readerDirection.test.ts. -->
-				<div class="reading rc-preview mb-3" style={readerPrefs.style} dir="auto" aria-hidden="true">
+				<!-- Kept on one source line: readerDirection.test.ts matches
+				     `rc-preview mb-3` and dir="auto" on the same line. -->
+				<div class="reading rc-preview mb-3" style="{readerPrefs.style}; text-align: {cssAlign(activeAlign)}" dir="auto" aria-hidden="true">
 					{sample}
 				</div>
 			{/if}
@@ -263,12 +276,12 @@
 					{#each ALIGNMENTS as o (o.v)}
 						<button
 							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
-							class:border-accent={readerPrefs.align === o.v}
-							class:text-accent={readerPrefs.align === o.v}
-							class:border-border-strong={readerPrefs.align !== o.v}
-							class:text-muted={readerPrefs.align !== o.v}
+							class:border-accent={activeAlign === o.v}
+							class:text-accent={activeAlign === o.v}
+							class:border-border-strong={activeAlign !== o.v}
+							class:text-muted={activeAlign !== o.v}
 							onclick={() => readerPrefs.setAlign(o.v)}
-							aria-pressed={readerPrefs.align === o.v}>{t(o.k)}</button
+							aria-pressed={activeAlign === o.v}>{t(o.k)}</button
 						>
 					{/each}
 				</div>
