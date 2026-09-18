@@ -89,8 +89,12 @@ from typing import NamedTuple
 DESIGNED: dict[str, str] = {
     "/covers/a-retrospect-children.jpg":
         "df182354203c95fb652f66605aca61511ebf76b1c2f3a4f1dc4930249cfde4c7",
+    "/covers/a-retrospect-teens.jpg":
+        "4b6813f19ad8ca22775338f4ed812187306dd7e3b9a9f497a36f27aa6ea0f444",
     "/covers/amanda-smith-autobiography-children.jpg":
         "8a499dcd89376c202a5eaf63356f33b66b350eff6555b59f7992585a94ded811",
+    "/covers/amanda-smith-autobiography-teens.jpg":
+        "e8edd6cb79044d4d6ee9d5552e641256c0b4f75a35c6e6c7488b43cb475cb5fc",
     "/covers/baptism-with-the-holy-spirit.png":
         "d7a50b3b4aef331a353c928d60f5a0a4db8328429a9e024e80dab6f11a8d9667",
     "/covers/clothed-with-strength-and-dignity.jpg":
@@ -117,6 +121,8 @@ DESIGNED: dict[str, str] = {
         "e051d1a0e83eb33f8254ef9a68fbe79c2cc6f0ba3b271a0a10de15a77a5eb1b5",
     "/covers/pilgrims-progress-children.jpg":
         "9250c3a997cdeff08f92539bc745ab5ee7adb483788d16e610c2b924125c98fe",
+    "/covers/pilgrims-progress-teens.jpg":
+        "5e38bc71fc780ffdba0c2c3ee3df4276c2f47e5f6f6d9323667005641a3df66a",
     "/covers/prayer-the-pulse-of-life.png":
         "29030df615f17c8cf480f36a1bf738c14a7407cf9cc51c0e178cc480386cc3e1",
     "/covers/purity-of-heart.jpg":
@@ -143,6 +149,8 @@ DESIGNED: dict[str, str] = {
         "3e1a5e8c26072334f96a3a1039808ab24d0e749aad148613c23948c987fb1b62",
     "/covers/the-life-of-trust-children.jpg":
         "71984f6a7041ad1bd19388512f88044e57e62efc49823a2f38bc2c2c7e834ba1",
+    "/covers/the-life-of-trust-teens.jpg":
+        "65c2b20e3fa9bdd79b0ae99354579b4a81ade87f573cba9e7d9db495bbe892cf",
     "/covers/the-masters-indwelling.jpg":
         "389d6f2248dd21120d79be7def954bebe8ed895a93b0517eefa45e6ee8715949",
     "/covers/the-person-and-work-of-the-holy-spirit.jpg":
