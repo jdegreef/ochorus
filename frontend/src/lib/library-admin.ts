@@ -1016,6 +1016,45 @@ export interface AdminEngagement {
 
 export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
 
+// --- Email campaign metrics --------------------------------------------------
+
+export interface EmailMetricRow {
+	sent: number;
+	delivered: number;
+	opens: number;
+	clicks: number;
+	bounces: number;
+	complaints: number;
+	open_rate: number;
+	click_rate: number;
+	bounce_rate: number;
+	complaint_rate: number;
+}
+
+export interface EmailStepRow extends EmailMetricRow {
+	step: string;
+}
+
+export interface EmailBroadcastRow extends EmailMetricRow {
+	id: number;
+	name: string;
+}
+
+export interface AdminEmailMetrics {
+	overview: EmailMetricRow & { failed: number };
+	by_step: EmailStepRow[];
+	by_broadcast: EmailBroadcastRow[];
+	subscribers: {
+		total: number;
+		newsletter_opt_in: number;
+		unsubscribed: number;
+		suppressed: number;
+	};
+}
+
+export const getAdminEmailMetrics = () =>
+	apiFetch<AdminEmailMetrics>('/api/admin/email-metrics/');
+
 /** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
  *  by the admin engagement and per-user pages so time reads the same everywhere. */
 export function formatDuration(seconds: number): string {

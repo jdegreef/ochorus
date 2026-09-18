@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.urls import include, path
 
 from accounts.views import MeView, SignupSourceView, health
+from emails.admin_views import AdminEmailMetricsView
 from library.admin_import_views import (
     AdminAuthorCreateView,
     AdminImportLanguagesView,
@@ -162,6 +163,11 @@ urlpatterns = [
         name="admin-translation-jobs",
     ),
     path("api/admin/team/", AdminTeamView.as_view(), name="admin-team"),
+    path(
+        "api/admin/email-metrics/",
+        AdminEmailMetricsView.as_view(),
+        name="admin-email-metrics",
+    ),
     path(
         "api/admin/content-edit-jobs/",
         AdminContentEditJobsView.as_view(),
