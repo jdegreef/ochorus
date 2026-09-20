@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-20: French plan ACTIVATES — christ-our-healer (« Christ notre
+// Guérisseur »). Shipping the-fourfold-gospel and the-gospel-of-healing in French completes the
+// plan's three source books (with divine-healing, already fr), so seed_plans now creates the
+// (christ-our-healer, fr) row from prose added to plan_translations/fr.json in this PR.
+// /fr/plans re-crawls to bake the translated card.
 // prerender refresh 2026-09-18: Spanish plan ACTIVATES — faith-in-the-fire
 // («El Dios de toda consolación: fe en medio del fuego»). Shipping the-god-of-all-comfort (#1453)
 // completes the plan's two source books in es (with he-holds-my-tomorrows, already shipped), so

@@ -1,3 +1,10 @@
+// prerender refresh 2026-09-20: five NEW French books — the-fourfold-gospel («L'Évangile
+// quadruple»), the-gospel-of-healing («L'Évangile de la guérison»), around-the-wicket-gate
+// («Autour de la porte étroite»), feasting-at-the-table («Le festin à la table») and
+// soar-like-the-eagle-3 («S'élever comme l'aigle»), from the translation queue (#2908–2913).
+// Rebuilds /fr/books so each card carries its translated title over the shared cover, and the
+// reader pages bake the chapters. the-fourfold-gospel + the-gospel-of-healing back the
+// christ-our-healer curated plan (see plans/+page.ts).
 // prerender refresh 2026-09-18: one NEW Swahili book — the-life-of-trust (#2581), the autobiography
 // and journal of George Müller of Bristol, 28 chapters ("Maisha ya Kumtumaini Mungu"). Rebuilds
 // /sw/books so the card carries its translated title over the shared painting cover, and the reader
