@@ -708,6 +708,14 @@
 			"art": true,
 			"scrim": 0.7
 		},
+		"fr/around-the-wicket-gate": {
+			"ground": "8ee1c35a9c120b72ab5ff4fd435f081168a71c7ec6274758ade9b1356e4a02d8",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.55
+		},
 		"fr/baptism-with-the-holy-spirit": {
 			"ground": "bdeed4127b250e9d7f0f03c5a86ac3b99b8e31904f6ea3e75e23f75e2d5ef88b",
 			"style": "revival",
@@ -739,6 +747,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45
+		},
+		"fr/feasting-at-the-table": {
+			"ground": "503f76c2507bac0b0b3e4fd3bf320dba927fe3ce6af3b39a4f3bf57637b52e9d",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8
 		},
 		"fr/gleanings-among-the-sheaves": {
 			"ground": "34c21b0a45cba1af757a7731e0666f42b312f15d4efd47f174626f1bb6b8b996",
@@ -828,6 +844,14 @@
 			"art": true,
 			"scrim": 0.35
 		},
+		"fr/soar-like-the-eagle-3": {
+			"ground": "ec48341447e406b960abc7394623f89d53fd85abcb561c5f7583150298dac0bd",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9
+		},
 		"fr/stepping-stones-2": {
 			"ground": "7daa1e31d9cac5649ddd8142a5d508e12549c87df2610b566578895530ef16ef",
 			"style": "house",
@@ -844,6 +868,14 @@
 			"art": true,
 			"scrim": 0.5
 		},
+		"fr/the-fourfold-gospel": {
+			"ground": "dbf24af7fb97a8cc2629ca2822231404489e73d62633cf11cfcf08115b87fe1a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
+		},
 		"fr/the-god-of-all-comfort": {
 			"ground": "3bc088fdd73df57df3c20bcbabb1ba2dcd8684c5e91bc4aec125b092e2fc2517",
 			"style": "devotional",
@@ -851,6 +883,14 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95
+		},
+		"fr/the-gospel-of-healing": {
+			"ground": "7402d8598c4d4ffab1f585b7d1d90b2c910dfe8d9014401292d7152298da74ef",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.55
 		},
 		"fr/the-inner-chamber": {
 			"ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
