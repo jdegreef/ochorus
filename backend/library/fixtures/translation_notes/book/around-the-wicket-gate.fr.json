@@ -1,0 +1,36 @@
+{
+ "kind": "book",
+ "slug": "around-the-wicket-gate",
+ "language": "fr",
+ "job_issue": 2909,
+ "references": [
+  {
+   "reference": "Marc 16:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Pierre 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romains 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Pierre 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Pierre 3:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  }
+ ]
+}

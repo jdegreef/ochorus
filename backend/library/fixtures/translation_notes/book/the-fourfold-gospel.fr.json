@@ -18,7 +18,9 @@
   },
   {
    "reference": "Matthieu 8:17",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
   },
   {
    "reference": "Hébreux 13:8",
@@ -38,19 +40,27 @@
   },
   {
    "reference": "Luc 2:49",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
   },
   {
    "reference": "Jean 4:34",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
   },
   {
    "reference": "Jean 5:30",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 16
   },
   {
    "reference": "Jean 6:38",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
   },
   {
    "reference": "Jean 13:34",
@@ -60,11 +70,15 @@
   },
   {
    "reference": "Luc 24:44",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 14
   },
   {
    "reference": "Jean 5:19",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 16
   },
   {
    "reference": "Philippiens 2:5",
@@ -98,7 +112,9 @@
   },
   {
    "reference": "Éphésiens 5:2",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 24
   },
   {
    "reference": "Psaumes 17:8",

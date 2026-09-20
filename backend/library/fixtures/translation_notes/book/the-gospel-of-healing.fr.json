@@ -6,7 +6,9 @@
  "references": [
   {
    "reference": "Exode 15:25",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 2
   },
   {
    "reference": "Exode 15:26",
@@ -38,11 +40,15 @@
   },
   {
    "reference": "Ésaïe 53:4",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
   },
   {
    "reference": "Ésaïe 53:5",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
   },
   {
    "reference": "Matthieu 8:17",
@@ -58,7 +64,9 @@
   },
   {
    "reference": "Marc 16:15",
-   "status": "self_rendered"
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
   },
   {
    "reference": "Marc 16:16",
@@ -70,7 +78,7 @@
    "reference": "Marc 16:17",
    "status": "mined",
    "source_file": "Louis Segond (1910) Bible text",
-   "block_index": 14
+   "block_index": 0
   },
   {
    "reference": "Marc 16:18",
