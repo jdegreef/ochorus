@@ -61,5 +61,12 @@
   "note": [
    "growing-in-wisdom has a French edition (shipped separately), so seed_plans creates a French row for this single-book plan; this prose keeps it from publishing English-titled."
   ]
+ },
+ "christ-our-healer": {
+  "title": "Christ notre Guérisseur",
+  "description": "Six semaines sur Christ comme Sauveur, Sanctificateur, Guérisseur et Roi qui vient. A. B. Simpson expose l’Évangile quadruple et son ministère de guérison, et Andrew Murray termine par un mois de méditations sur le Seigneur qui guérit encore le corps comme un gage de la vie à venir.",
+  "note": [
+   "Job #2908/#2911 (French book batch, branch claude/french-content-translation-1r96r4). Curated plan; its three source books are now all in French: the-fourfold-gospel.fr («L’Évangile quadruple»), the-gospel-of-healing.fr («L’Évangile de la guérison»), and divine-healing.fr (already shipped). seed_plans creates (christ-our-healer, fr) on this deploy."
+  ]
  }
 }

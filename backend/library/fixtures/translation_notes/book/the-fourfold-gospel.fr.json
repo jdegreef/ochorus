@@ -1,0 +1,154 @@
+{
+ "kind": "book",
+ "slug": "the-fourfold-gospel",
+ "language": "fr",
+ "job_issue": 2908,
+ "references": [
+  {
+   "reference": "Apocalypse 7:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Jean 17:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthieu 8:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hébreux 13:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Apocalypse 2:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Jean 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luc 2:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jean 4:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jean 5:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jean 6:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jean 13:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Luc 24:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jean 5:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippiens 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippiens 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippiens 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippiens 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romains 15:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romains 15:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Romains 15:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éphésiens 5:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psaumes 17:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psaumes 31:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psaumes 120:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Psaumes 120:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Ésaïe 26:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Jean 17:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Ésaïe 42:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "Ésaïe 27:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "Ésaïe 27:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 46
+  }
+ ]
+}
