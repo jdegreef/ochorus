@@ -5,8 +5,12 @@
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { loginHref as buildLoginHref } from '$lib/loginHref';
 	import { fetchAdminManualUrl } from '$lib/library-admin';
+	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 
 	const t = i18n.t;
+
+	// The feedback modal is opened from this menu; the menu closes as it opens.
+	let feedbackOpen = $state(false);
 
 	// The Admin Manual PDF (super admins only). The endpoint is bearer-gated, so we
 	// fetch the blob and open it in a new tab — opened synchronously on the click so
@@ -107,10 +111,20 @@
 						class="account-item"
 						onclick={() => {
 							open = false;
+							feedbackOpen = true;
+						}}>{t('feedback.send')}</button
+					>
+					<button
+						class="account-item"
+						onclick={() => {
+							open = false;
 							auth.signOut();
 						}}>{t('account.signOut')}</button
 					>
 				</div>
+			{/if}
+			{#if feedbackOpen}
+				<FeedbackDialog onClose={() => (feedbackOpen = false)} />
 			{/if}
 		</div>
 	{:else}

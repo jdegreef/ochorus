@@ -759,5 +759,21 @@
   "quotes_copied": "Kikoppeddwa",
   "quotes_clip_chapter": ", essuula %n%",
   "book_more_by": "More by %name%",
-  "book_also_on": "Also on %topic%"
+  "book_also_on": "Also on %topic%",
+  "feedback_send": "Send feedback",
+  "feedback_title": "Share your feedback",
+  "feedback_intro": "A note on the text, the content, or a feature you'd like — we read every one.",
+  "feedback_type": "What's this about?",
+  "feedback_type_language": "Language / translation",
+  "feedback_type_content": "Content",
+  "feedback_type_feature": "Feature idea",
+  "feedback_type_bug": "Something's broken",
+  "feedback_type_other": "Other",
+  "feedback_placeholder": "Describe your suggestion…",
+  "feedback_about": "About this page",
+  "feedback_submit": "Send",
+  "feedback_sending": "Sending…",
+  "feedback_thanks_title": "Thank you",
+  "feedback_thanks_body": "Your feedback has reached the team.",
+  "feedback_error": "Something went wrong. Please try again."
 }

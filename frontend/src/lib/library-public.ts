@@ -1288,3 +1288,27 @@ export function quoteCollectionLd(opts: {
 		}
 	};
 }
+
+/** The five kinds a reader can file feedback under — mirrors the backend
+ *  `FeedbackCategory`. */
+export type FeedbackCategory = 'language' | 'content' | 'feature' | 'bug' | 'other';
+
+/** A piece of reader feedback, with whatever page context the client could
+ *  resolve. Signed-in only — the server stamps the submitter and their role. */
+export interface FeedbackSubmission {
+	category: FeedbackCategory;
+	body: string;
+	page_url?: string;
+	content_kind?: string;
+	content_slug?: string;
+	content_language?: string;
+	chapter_ref?: string;
+	ui_locale?: string;
+}
+
+/** File a suggestion. Requires a signed-in reader; the endpoint is throttled. */
+export const submitFeedback = (body: FeedbackSubmission) =>
+	apiFetch<{ id: number; ok: boolean }>('/api/feedback/', {
+		method: 'POST',
+		body: JSON.stringify(body)
+	});
