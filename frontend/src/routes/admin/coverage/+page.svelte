@@ -2,6 +2,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { ApiError } from '$lib/api';
+	import { auth } from '$lib/auth.svelte';
 	import {
 		getAdminCoverage,
 		getAdminTranslationJobs,
@@ -21,6 +22,11 @@
 		void loadJobs()
 	);
 	const cov = $derived(coverage.data);
+
+	// Queueing translation work is super-admin-only: a language admin reads the
+	// matrix (state + what's already queued) but never files jobs from it. UX only
+	// — the POST is gated server-side too (see admin_views/jobs.py).
+	const canQueue = $derived(auth.isAdmin);
 
 	type Tab = 'books' | 'sermons' | 'plans' | 'bios';
 	let tab = $state<Tab>('books');
@@ -285,7 +291,9 @@
 				{#if jobsConfigured !== false}
 					<span><span class="text-accent">◷</span> queued</span>
 					<span><span class="text-warning">◐</span> translating</span>
-					<span class="text-muted">— click a gap, or a row / column “+N”, to queue</span>
+					{#if canQueue}
+						<span class="text-muted">— click a gap, or a row / column “+N”, to queue</span>
+					{/if}
 				{/if}
 			</div>
 
@@ -329,7 +337,7 @@
 											title={`${l.unmet_searches} reader search${l.unmet_searches === 1 ? '' : 'es'} found nothing in ${l.name} (30d) — demand to translate toward`}
 										>⌕{l.unmet_searches}</span>
 									{/if}
-									{#if jobsConfigured !== false && l.queueable && colGaps[i] > 0}
+									{#if canQueue && jobsConfigured !== false && l.queueable && colGaps[i] > 0}
 										<button
 											type="button"
 											class="mt-0.5 block w-full text-micro font-semibold text-muted transition-colors hover:text-accent disabled:opacity-40 disabled:hover:text-muted"
@@ -357,7 +365,7 @@
 								<td class="sticky left-0 z-10 bg-surface px-4 py-2.5">
 									<a href={rowHref(r.slug)} class="block max-w-[16rem] truncate font-medium text-text hover:text-accent">{r.title}</a>
 									{#if r.author}<span class="block max-w-[16rem] truncate text-small text-muted">{r.author}</span>{/if}
-									{#if jobsConfigured !== false && rowGaps > 0}
+									{#if canQueue && jobsConfigured !== false && rowGaps > 0}
 										<button
 											type="button"
 											class="mt-1 text-micro font-semibold text-muted opacity-0 transition group-hover/row:opacity-100 hover:text-accent focus:opacity-100 disabled:opacity-40"
@@ -387,12 +395,14 @@
 											>
 												{job.state === 'in_progress' ? '◐' : '◷'}
 											</a>
-										{:else if jobsConfigured === false || !l.queueable}
+										{:else if jobsConfigured === false || !l.queueable || !canQueue}
 											<span
 												class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted"
 												title={jobsConfigured === false
 													? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
-													: `${l.name} isn't a translation target — nothing to queue`}
+													: !canQueue
+														? `Missing: ${r.title} → ${l.name}`
+														: `${l.name} isn't a translation target — nothing to queue`}
 											>·</span>
 										{:else}
 											{@const spot = queueing === jobKey(r.slug, l.code)}

@@ -25,8 +25,8 @@ from rest_framework import status as http_status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.models import AdminCapability, AdminVerb, UserProfile
-from accounts.permissions import requires
+from accounts.models import UserProfile
+from accounts.permissions import IsAdminEmail
 from library.audit import AdminAudited, AdminNotAudited
 from library.models import AdminAction
 
@@ -70,9 +70,14 @@ def _metrics(sent: int, counts: dict[str, int]) -> dict:
     }
 
 
-@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminEmailMetricsView(APIView):
-    """Open/click/bounce rollups per lifecycle step and per broadcast."""
+    """Open/click/bounce rollups per lifecycle step and per broadcast.
+
+    Super-admin-only: the whole Emails section (reader broadcasts and their
+    metrics) is reserved to the ``ADMIN_EMAILS`` allowlist. Language admins do
+    reader-facing content QA, not outbound email (a founder decision, 2026-09-21)."""
+
+    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         sent_by_step = self._sent_counts("lifecycle_step", kind=EmailKind.LIFECYCLE)
@@ -223,10 +228,10 @@ def _apply_fields(broadcast: Broadcast, data) -> None:
         broadcast.from_address = str(data["from_address"]).strip()[:200]
 
 
-@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.ACT})
 class AdminBroadcastsView(AdminAudited, APIView):
-    """List broadcasts, or create a draft."""
+    """List broadcasts, or create a draft. Super-admin-only (see AdminEmailMetricsView)."""
 
+    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.BROADCAST_CREATE
 
     def audit_entry(self, request, response):
@@ -250,12 +255,12 @@ class AdminBroadcastsView(AdminAudited, APIView):
         )
 
 
-@requires(
-    AdminCapability.EMAIL,
-    verbs={"GET": AdminVerb.VIEW, "PATCH": AdminVerb.ACT, "DELETE": AdminVerb.ACT},
-)
 class AdminBroadcastDetailView(AdminAudited, APIView):
-    """Read, edit (draft/scheduled only), or delete a broadcast."""
+    """Read, edit (draft/scheduled only), or delete a broadcast.
+
+    Super-admin-only (see AdminEmailMetricsView)."""
+
+    permission_classes = [IsAdminEmail]
 
     def audit_action_for(self, request):
         return (
@@ -302,9 +307,12 @@ class AdminBroadcastDetailView(AdminAudited, APIView):
         return Response(status=http_status.HTTP_204_NO_CONTENT)
 
 
-@requires(AdminCapability.EMAIL, verb=AdminVerb.ACT)
 class AdminBroadcastActionView(AdminAudited, APIView):
-    """Act on a broadcast: ``send`` now, ``schedule``, ``cancel``, or ``test``."""
+    """Act on a broadcast: ``send`` now, ``schedule``, ``cancel``, or ``test``.
+
+    Super-admin-only (see AdminEmailMetricsView)."""
+
+    permission_classes = [IsAdminEmail]
 
     _ACTION_AUDIT = {
         "send": AdminAction.Action.BROADCAST_SEND,
@@ -401,10 +409,12 @@ class AdminBroadcastActionView(AdminAudited, APIView):
         return Response({"ok": True, "sent_to": profile.email})
 
 
-@requires(AdminCapability.EMAIL, verb=AdminVerb.ACT)
 class AdminAudiencePreviewView(AdminNotAudited, APIView):
-    """Count the readers an audience filter would target (compose-time preview)."""
+    """Count the readers an audience filter would target (compose-time preview).
 
+    Super-admin-only (see AdminEmailMetricsView)."""
+
+    permission_classes = [IsAdminEmail]
     audit_exempt = "Read-only: counts an audience filter and writes nothing (POST only because the filter is a JSON body)."
 
     def post(self, request):
