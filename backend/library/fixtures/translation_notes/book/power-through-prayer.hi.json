@@ -1,0 +1,293 @@
+{
+ "kind": "book",
+ "slug": "power-through-prayer",
+ "language": "hi",
+ "job_issue": 1749,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "John 1:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 9:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "2 Chronicles 16:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 28:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 2:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 6:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 28
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "James 5:18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Psalms 63:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 5:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 74
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 74
+  },
+  {
+   "reference": "Psalms 92:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 18:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 10:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 11:35",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Psalms 126:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 24:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 145
+  },
+  {
+   "reference": "1 Thessalonians 3:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 15:30",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "Colossians 4:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "2 Thessalonians 3:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 164
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 164
+  },
+  {
+   "reference": "1 Kings 17:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "1 Thessalonians 3:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 172
+  },
+  {
+   "reference": "Luke 6:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 174
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 64:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 183
+  }
+ ],
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/hin_irv/usx). All 66 books, 31,104 verses on disk, so translators could look up anything that sounded like scripture; Bounds cites almost nothing.",
+  "A `mined` row means an exact byte substring of the IRV of at least 45 characters, measured against the finished chapter body — not a translator's claim. A verse re-personed or re-aimed to fit Bounds's sentence is recorded self_rendered even where a long span matches. `block_index` is a GLOBAL 0-based index over the whole book's blocks (</p>|</blockquote>|</h*>|</li>) in chapter order.",
+  "Bounds quotes other PREACHERS (Wesley, Brainerd, Baxter, Fletcher, Payson…) at least as often as the Bible; those are reported speech, not recorded as scripture references."
+ ]
+}

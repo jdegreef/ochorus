@@ -778,7 +778,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.7
 		},
 		"fr/he-holds-my-tomorrows": {
 			"ground": "0cce2cab2c9ba862dd5969db5c2296538ef55d9b03fb7d0c3c525045db76328b",
@@ -986,7 +986,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.7
 		},
 		"hi/all-of-grace": {
 			"ground": "78fae5e14193a81d07daeff0d5f7a217d67ae78bc7b6ca5b3c773a1b75b87f23",
@@ -1054,6 +1054,14 @@
 		},
 		"hi/ministry-of-intercession": {
 			"ground": "ea6803622e2cd17da98b1d994a4ab8a92aaea70d7aaa7830ac92af0061a73a40",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.75
+		},
+		"hi/power-through-prayer": {
+			"ground": "54263128fd280791463794320ec4f8598ae2b31dfc4813792080dab41df7aec2",
 			"style": "devotional",
 			"volume": null,
 			"script": "devanagari",
@@ -1306,7 +1314,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.7
 		},
 		"lg/he-holds-my-tomorrows": {
 			"ground": "5cb1de8698203ceadce2983df6a0baaa7f4ba5247a5e8ac16ef60cf8125f3a69",
@@ -2138,7 +2146,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1
+			"scrim": 0.7
 		},
 		"sw/he-holds-my-tomorrows": {
 			"ground": "b95ee9e3b308e4f21e054b07b88482f596683328ba443f8a8da2f07db63a4470",

@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-21: one NEW Hindi book — power-through-prayer
+// («प्रार्थना के द्वारा सामर्थ्य», E. M. Bounds, #1749), 20 chapters. Rebuilds /hi/books so the card
+// carries its translated title over the shared curated painting, and the reader pages bake the
+// chapters. Backs the praying-men curated plan, which stays INACTIVE in Hindi until its two
+// companion Bounds books are translated too — so no plans/+page.ts touch here.
 // prerender refresh 2026-09-21: one NEW French book — men-and-women-who-gave-everything-2
 // («Des hommes et des femmes qui ont tout donné», #2784), Ochorus Originals, 13 chapters (ten
 // missionary profiles + intro, conclusion and a Scripture appendix). Rebuilds /fr/books so the card
