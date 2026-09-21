@@ -70,6 +70,28 @@ class SubmitTests(TestCase):
         self.assertEqual(item.status, FeedbackStatus.NEW)
         self.assertEqual(item.submitter_role, "")  # ordinary reader
 
+    def test_non_http_page_url_is_dropped(self):
+        # The admin queue renders page_url as a clickable link, so a
+        # javascript:/data: scheme must never be stored.
+        self.client.force_authenticate(user=_reader(), token=VERIFIED)
+        resp = self.client.post(
+            "/api/feedback/",
+            {"body": "A note with a nasty url.", "page_url": "javascript:alert(1)"},
+            format="json",
+        )
+        self.assertEqual(resp.status_code, 201)
+        self.assertEqual(Feedback.objects.get().page_url, "")
+
+    def test_http_page_url_is_kept(self):
+        self.client.force_authenticate(user=_reader(), token=VERIFIED)
+        resp = self.client.post(
+            "/api/feedback/",
+            {"body": "A note with a good url.", "page_url": "https://ochorus.com/books/x/"},
+            format="json",
+        )
+        self.assertEqual(resp.status_code, 201)
+        self.assertEqual(Feedback.objects.get().page_url, "https://ochorus.com/books/x/")
+
     def test_short_body_is_rejected(self):
         self.client.force_authenticate(user=_reader(), token=VERIFIED)
         resp = self.client.post("/api/feedback/", {"body": "no"}, format="json")

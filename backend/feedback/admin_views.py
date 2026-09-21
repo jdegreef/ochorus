@@ -11,6 +11,7 @@ language admin's languages; today ``feedback`` is a flat capability the founder
 
 from __future__ import annotations
 
+from django.db.models import Count
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -65,10 +66,12 @@ class AdminFeedbackListView(APIView):
             qs = qs.filter(category=category)
 
         items = [_serialize(f) for f in qs[:PAGE_SIZE]]
+        # Counts are global (the chips show the whole backlog per status), so a
+        # single grouped query rather than the filtered `qs`.
         counts = dict.fromkeys(FeedbackStatus.values, 0)
-        for row in Feedback.objects.values_list("status", flat=True):
-            if row in counts:
-                counts[row] += 1
+        for row in Feedback.objects.values("status").annotate(n=Count("id")):
+            if row["status"] in counts:
+                counts[row["status"]] = row["n"]
         return Response({"items": items, "counts": counts, "total": sum(counts.values())})
 
 
@@ -107,7 +110,12 @@ class AdminFeedbackDetailView(AdminAudited, APIView):
             dup = data.get("duplicate_of")
             if dup in (None, "", 0):
                 item.duplicate_of = None
-            elif isinstance(dup, int) and dup != item.pk and Feedback.objects.filter(pk=dup).exists():
+            elif (
+                isinstance(dup, int)
+                and not isinstance(dup, bool)  # bool is an int subclass; reject `true`
+                and dup != item.pk
+                and Feedback.objects.filter(pk=dup).exists()
+            ):
                 item.duplicate_of_id = dup
             else:
                 return Response({"detail": "Invalid duplicate_of."}, status=400)

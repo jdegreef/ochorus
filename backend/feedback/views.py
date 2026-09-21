@@ -9,6 +9,8 @@ queue.
 
 from __future__ import annotations
 
+from urllib.parse import urlsplit
+
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -52,18 +54,26 @@ def submitter_role(request, email: str) -> str:
     """
     if is_admin_user(request.user, request):
         return "super_admin"
-    labels = {g.role_label for g in AdminGrant.objects.filter(email=email) if g.role_label}
+    grants = list(AdminGrant.objects.filter(email=email))
+    labels = {g.role_label for g in grants if g.role_label}
     if "language_admin" in labels:
         return "language_admin"
     if labels:
         return sorted(labels)[0]
-    if AdminGrant.objects.filter(email=email).exists():
+    if grants:
         return "admin"
     return ""
 
 
 def _clip(value, limit: int) -> str:
     return str(value or "").strip()[:limit]
+
+
+def _clip_url(value, limit: int) -> str:
+    """Like _clip, but only keep an http(s) URL — the admin queue renders this as
+    a clickable link, so a ``javascript:``/``data:`` scheme would be stored XSS."""
+    url = _clip(value, limit)
+    return url if urlsplit(url).scheme in ("http", "https") else ""
 
 
 class FeedbackView(APIView):
@@ -96,7 +106,7 @@ class FeedbackView(APIView):
             submitter_role=submitter_role(request, email),
             category=category,
             body=body,
-            page_url=_clip(data.get("page_url"), 2000),
+            page_url=_clip_url(data.get("page_url"), 2000),
             content_kind=_clip(data.get("content_kind"), 20),
             content_slug=_clip(data.get("content_slug"), 200),
             content_language=_clip(data.get("content_language"), 20),
