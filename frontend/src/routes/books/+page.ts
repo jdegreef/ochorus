@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-21: one NEW French book — men-and-women-who-gave-everything-2
+// («Des hommes et des femmes qui ont tout donné», #2784), Ochorus Originals, 13 chapters (ten
+// missionary profiles + intro, conclusion and a Scripture appendix). Rebuilds /fr/books so the card
+// carries its translated title over the derived-ground cover, and the reader pages bake the chapters.
+// Backs the first-steps-for-teens plan, which now ACTIVATES in French (see plans/+page.ts).
 // prerender refresh 2026-09-20: five NEW French books — the-fourfold-gospel («L'Évangile
 // quadruple»), the-gospel-of-healing («L'Évangile de la guérison»), around-the-wicket-gate
 // («Autour de la porte étroite»), feasting-at-the-table («Le festin à la table») and

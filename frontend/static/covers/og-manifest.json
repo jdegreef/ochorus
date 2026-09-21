@@ -812,6 +812,14 @@
 			"art": true,
 			"scrim": 0.65
 		},
+		"fr/men-and-women-who-gave-everything-2": {
+			"ground": "85cfe9b6bb48cc9900529987d53466e07667c6a79bd8ce4d05647f1350c8eb82",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3
+		},
 		"fr/ministry-of-intercession": {
 			"ground": "96b187e084613b3d51091d14819fca905ed98f1b9ca4dec88a1155a84e8cd88a",
 			"style": "devotional",

@@ -51,6 +51,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'life-experience-gospel-labours': 0.80,
 	'life-of-antony': 0.85,
 	'lord-teach-us-to-pray-2': 0.60,
+	'men-and-women-who-gave-everything-2': 0.30,
 	'ministry-of-intercession': 0.75,
 	'mortification-of-sin': 0.35,
 	'necessity-of-prayer': 0.75,

@@ -274,6 +274,14 @@ DERIVED_GROUND: dict[str, Ground] = {
     "lord-teach-us-to-pray-2": Ground(0.44, 0.84, 0.03, 2.50,
         source="d1a60e268eb163232e075407d5b3ca24ee2caf70b056dce1f02ad048117c6da0",
     ),
+    # A photograph of hands on an open Bible, a finger following the text. The
+    # title fills the upper third and the "Volume 2 …" subtitle ends by ~0.65;
+    # the words-free picture is the open page spread below it and above the
+    # Ochorus mark at the foot (~0.88) — the richest wordless band on the cover,
+    # the same shape as feasting-at-the-table's open book.
+    "men-and-women-who-gave-everything-2": Ground(0.66, 0.86, 0.06, 1.12, sky=0.22,
+        source="40ae45aab2c1e92e509dc5b655d7ca07c53f42988a3a0907581f2e4591807bca",
+    ),
     "purity-of-heart": Ground(0.55, 0.79, 0.12, 2.00,
         source="f3659ad885cb95c3bf8f0d954d45c078c709674407fd560fcc4cf96d1bd60554",
     ),

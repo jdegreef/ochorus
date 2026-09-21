@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-21: French plan ACTIVATES — first-steps-for-teens («Premiers pas :
+// la foi pour les adolescents»). Shipping men-and-women-who-gave-everything-2 in French (#2784)
+// completes the plan's two source books (with around-the-wicket-gate, already fr), so seed_plans
+// now creates the (first-steps-for-teens, fr) row from prose already in plan_translations/fr.json.
+// /fr/plans re-crawls to bake the translated card.
 // prerender refresh 2026-09-20: French plan ACTIVATES — christ-our-healer (« Christ notre
 // Guérisseur »). Shipping the-fourfold-gospel and the-gospel-of-healing in French completes the
 // plan's three source books (with divine-healing, already fr), so seed_plans now creates the
