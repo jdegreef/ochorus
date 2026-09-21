@@ -1,0 +1,188 @@
+{
+ "kind": "sermon",
+ "slug": "filled-with-the-spirit",
+ "language": "hi",
+ "job_issue": 2990,
+ "pull_request": 3015,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx, which serves USX). All 66 books, 31,104 verses on disk for the run, so translators could look up anything that sounded like scripture rather than work from a citation-only crib (these sermons cite no chapter:verse at all).",
+  "A `mined` row means an exact byte substring (>=45 chars, or the whole verse when shorter) of the IRV verse measured against the FINISHED hi body, not a translator's claim. A verse the translator re-personed, re-aimed, or recombined to fit the author's argument is recorded self_rendered even where it shows a long verbatim span, because changing the wording makes it ours.",
+  "USX parse guarded against the three documented traps: <note> stripped content-and-all; section-heading paras (style s/d/ms/mr/sr/r/qa/cl/cd) stripped even where they sit inside a verse span; verse text taken from sid to the matching eid. Output re-scanned: zero residual tags, zero contaminated tails."
+ ],
+ "references": [
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "John 7:38",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "John 1:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Romans 10:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 10:27",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "John 15:12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "John 16:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 138:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Deuteronomy 33:23",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 28
+  },
+  {
+   "reference": "Luke 1:53",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Deuteronomy 6:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Kings 3:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "2 Kings 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 3:5a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 3:5b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 81:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 13:34",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "John 7:37",
+   "status": "self_rendered"
+  }
+ ]
+}

@@ -1,0 +1,94 @@
+{
+ "kind": "sermon",
+ "slug": "blessed-prosperity",
+ "language": "hi",
+ "job_issue": 2976,
+ "pull_request": 3015,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx, which serves USX). All 66 books, 31,104 verses on disk for the run, so translators could look up anything that sounded like scripture rather than work from a citation-only crib (these sermons cite no chapter:verse at all).",
+  "A `mined` row means an exact byte substring (>=45 chars, or the whole verse when shorter) of the IRV verse measured against the FINISHED hi body, not a translator's claim. A verse the translator re-personed, re-aimed, or recombined to fit the author's argument is recorded self_rendered even where it shows a long verbatim span, because changing the wording makes it ours.",
+  "USX parse guarded against the three documented traps: <note> stripped content-and-all; section-heading paras (style s/d/ms/mr/sr/r/qa/cl/cd) stripped even where they sit inside a verse span; verse text taken from sid to the matching eid. Output re-scanned: zero residual tags, zero contaminated tails."
+ ],
+ "references": [
+  {
+   "reference": "Psalms 37:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Psalms 73:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 1:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "Psalms 1:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 12:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 7:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "2 Corinthians 6:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalms 1:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 12:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 119:165",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 11:26",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 39
+  }
+ ]
+}
