@@ -295,19 +295,40 @@ class LanguageAdminRestrictionTests(TestCase):
         self.assertEqual(self.client.get("/api/admin/email-metrics/").status_code, 200)
         self.assertEqual(self.client.get("/api/admin/broadcasts/").status_code, 200)
 
-    # --- Language-admin manual: any admin, but not the public -----------------
-    def test_language_manual_reachable_by_any_admin(self):
-        self._as_language_admin((C.REPORTING, V.VIEW))
+
+@override_settings(DEBUG=False, ADMIN_EMAILS={"super@ochorus.com"})
+class LanguageAdminManualTests(TestCase):
+    """The language-admin manual PDF endpoint — reachable by any admin, denied to
+    a signed-in non-admin.
+
+    Its own class on purpose (mirrors AdminManualTests): the reachable test streams
+    a real FileResponse and closes it, which fires ``request_finished`` →
+    ``close_old_connections()`` and drops this test's DB connection. On Postgres
+    that breaks any test that runs AFTER it in the same class (the next ``setUp``
+    hits a closed connection), so the file-serving test is kept last (alphabetical
+    order puts 'reachable' after 'denied') with nothing following it — exactly how
+    AdminManualTests stays green on the Postgres CI run."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.la = User.objects.create(username="uid-manual-la", email="la@ochorus.com")
+
+    def test_manual_denied_without_admin_access(self):
+        # Signed in, verified, but holds no grant and is not super.
+        self.client.force_authenticate(user=self.la, token=VERIFIED)
+        self.assertEqual(self.client.get("/api/admin/language-manual/").status_code, 403)
+
+    def test_manual_reachable_by_any_admin(self):
+        # A scoped grant (REPORTING/view, which every role preset holds) reaches it.
+        AdminGrant.objects.create(
+            email="la@ochorus.com", capability=C.REPORTING, verb=V.VIEW, languages="*"
+        )
+        self.client.force_authenticate(user=self.la, token=VERIFIED)
         res = self.client.get("/api/admin/language-manual/")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res["Content-Type"], "application/pdf")
         if hasattr(res, "streaming_content"):
             res.close()
-
-    def test_language_manual_denied_without_admin_access(self):
-        # Signed in, verified, but holds no grant and is not super.
-        self.client.force_authenticate(user=self.la, token=VERIFIED)
-        self.assertEqual(self.client.get("/api/admin/language-manual/").status_code, 403)
 
 
 @override_settings(DEBUG=False, ADMIN_EMAILS={"super@ochorus.com"})
