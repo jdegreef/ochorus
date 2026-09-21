@@ -39,9 +39,11 @@ PRESETS: dict[str, list[tuple[str, str]]] = {
         (C.CONTENT_EDIT, V.SUGGEST),
     ],
     # Runs their language end to end — publish, confirm reviews, act on the
-    # queues and authors. Deliberately WITHOUT user/PII analytics and WITHOUT
-    # language administration (create/settings/thresholds/go-live stay super
-    # admin — the destructive, global levers). A later-phase role.
+    # queues and authors, and VIEW their language's readiness cockpit
+    # (/admin/languages/<code>). Deliberately WITHOUT user/PII analytics, and the
+    # language-admin grant is VIEW only: create/settings/thresholds (:act) and
+    # go-live (:approve) stay super admin — the destructive, global levers a read
+    # grant can't reach on the verb ladder. A later-phase role.
     "language_admin": [
         (C.REPORTING, V.VIEW),
         (C.AUDIT, V.ACT),
@@ -50,6 +52,7 @@ PRESETS: dict[str, list[tuple[str, str]]] = {
         (C.TRANSLATE, V.ACT),
         (C.CONTENT_EDIT, V.ACT),
         (C.AUTHORS, V.ACT),
+        (C.LANGUAGE_ADMIN, V.VIEW),
     ],
 }
 
