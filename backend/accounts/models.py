@@ -107,6 +107,7 @@ class AdminCapability(models.TextChoices):
     AUTHORS = "authors", "Author records"
     LANGUAGE_ADMIN = "language_admin", "Language administration"
     EMAIL = "email", "Email campaigns (compose & send)"
+    FEEDBACK = "feedback", "Reader feedback queue"
 
 
 class AdminVerb(models.TextChoices):
