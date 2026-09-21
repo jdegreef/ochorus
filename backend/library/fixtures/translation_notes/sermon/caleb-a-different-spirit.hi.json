@@ -1,0 +1,182 @@
+{
+ "kind": "sermon",
+ "slug": "caleb-a-different-spirit",
+ "language": "hi",
+ "job_issue": 2961,
+ "pull_request": null,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx, which serves USX). All 66 books, 31,104 verses on disk for the run, so translators could look up anything that sounded like scripture rather than work from a citation-only crib (these sermons cite no chapter:verse at all).",
+  "A `mined` row means an exact byte substring (>=45 chars, or the whole verse when shorter) of the IRV verse measured against the FINISHED hi body, not a translator's claim. A verse the translator re-personed, re-aimed, or recombined to fit the author's argument is recorded self_rendered even where it shows a long verbatim span, because changing the wording makes it ours.",
+  "USX parse guarded against the three documented traps: <note> stripped content-and-all; section-heading paras (style s/d/ms/mr/sr/r/qa/cl/cd) stripped even where they sit inside a verse span; verse text taken from sid to the matching eid. Output re-scanned: zero residual tags, zero contaminated tails."
+ ],
+ "references": [
+  {
+   "reference": "Philippians 2:1",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:11",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Numbers 14:23",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Joshua 14:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Joshua 14:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Joshua 14:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Joshua 14:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Joshua 14:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Joshua 14:11",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Joshua 14:12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Joshua 14:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Joshua 14:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Timothy 4:12a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:8a",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "John 1:29a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:31a",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 57
+  },
+  {
+   "reference": "John 15:4a",
+   "status": "self_rendered"
+  }
+ ]
+}
