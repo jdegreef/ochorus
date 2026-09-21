@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-21: ten French author bios — watchman-nee (#2630), william-law (#2631),
+// john-calvin (#2632), anselm-of-canterbury (#2633), bill-bright (#2634), billy-graham (#2635),
+// blasio-kigozi (#2636), c-t-studd (#2638), david-livingstone (#2639), derek-prince (#2640).
+// Author pages are prerendered PER AUTHOR, so /fr/authors/<slug> must rebuild for each translated
+// bio and its <blockquote> pull-quotes and prayer callouts.
 // prerender refresh 2026-09-18: Luganda author bio john-newton (#1693). Author pages are
 // prerendered PER AUTHOR, so /lg/authors/john-newton must rebuild for the translated bio
 // and its <blockquote> pull-quotes and prayer callouts.

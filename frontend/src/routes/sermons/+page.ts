@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-21: ten French sermons — broken-before-the-throne (#2649),
+// order-and-argument-in-prayer (#2650), the-dying-thief (#2651), the-joy-of-the-lord (#2652),
+// blessed-prosperity (#2653), catholic-spirit (#2654), the-holy-ghost (#2655),
+// the-resurrection-of-jesus (#2656), walking-with-god (#2657), god-glorified-in-mans-dependence
+// (#2658). Sermon pages are prerendered per locale, so /fr/sermons must rebuild so each card and
+// its /fr/sermons/<slug> page bakes the translated title, "In brief" summary and study questions.
 // prerender refresh 2026-09-18: Luganda sermons — enduring-persecution-for-christ (#1513),
 // the-almost-christian (#1514), fall-and-recovery-of-man (#1515), the-method-of-grace (#1516).
 // Sermon pages are prerendered per locale, so /lg/sermons must rebuild so each card and its
