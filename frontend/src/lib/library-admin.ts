@@ -124,10 +124,19 @@ export const getAdminTeam = () => apiFetch<AdminTeam>('/api/admin/team/');
  * token attached and hand back a `blob:` URL the caller opens in a new tab. The
  * caller owns the URL; revoking it would break the opened tab, so it isn't revoked.
  */
-export const fetchAdminManualUrl = async (): Promise<string> => {
-	const res = await apiFetchRaw('/api/admin/manual/');
+const fetchManualUrl = async (path: string): Promise<string> => {
+	const res = await apiFetchRaw(path);
 	return URL.createObjectURL(await res.blob());
 };
+
+/** The Admin Manual PDF (super admins only). */
+export const fetchAdminManualUrl = () => fetchManualUrl('/api/admin/manual/');
+
+/**
+ * The Language Admin Manual PDF — readable by any admin (super or a scoped grant);
+ * the account menu shows the link only to language admins.
+ */
+export const fetchLanguageAdminManualUrl = () => fetchManualUrl('/api/admin/language-manual/');
 
 /** Grant a role (or a single capability+verb) to an email, scoped to languages. */
 export const grantAdminAccess = (payload: {

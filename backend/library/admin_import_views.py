@@ -14,7 +14,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import requires
+from accounts.permissions import IsAdminEmail, requires
 
 from . import invalidation, upload_import
 from .audit import AdminAudited, AdminNotAudited
@@ -63,15 +63,21 @@ class AdminAuthorCreateView(AdminAudited, APIView):
         return Response({**AuthorSerializer(author).data, "book_count": 0}, status=201)
 
 
-@requires(AdminCapability.PUBLISH, verb=AdminVerb.VIEW)
 class AdminImportLanguagesView(APIView):
     """GET → every language we support publishing in (not just ones with content).
 
     The public ``LanguageListView`` only lists languages that already have a
     published book, which would make it impossible to import the *first* book in
     a new language. The import picker uses this fuller list instead.
+
+    Super-admin-only: document import is reserved to the ``ADMIN_EMAILS``
+    allowlist (a founder product decision, 2026-09-21). Language admins run
+    review/QA on their languages, not raw content ingestion — so the whole import
+    surface, picker included, is gated on :class:`IsAdminEmail` rather than the
+    ``PUBLISH`` capability a grantee could hold.
     """
 
+    permission_classes = [IsAdminEmail]
 
     def get(self, request):
         # Every language the registry knows — the import form's target list.
@@ -80,10 +86,12 @@ class AdminImportLanguagesView(APIView):
         return Response([_language_entry(code) for code in language_map()])
 
 
-@requires(AdminCapability.PUBLISH, verb=AdminVerb.ACT)
 class AdminImportParseView(AdminNotAudited, APIView):
-    """POST a file (+ ``kind`` = book|sermon) → detected-chapters preview, no save."""
+    """POST a file (+ ``kind`` = book|sermon) → detected-chapters preview, no save.
 
+    Super-admin-only (see :class:`AdminImportLanguagesView`)."""
+
+    permission_classes = [IsAdminEmail]
     audit_exempt = (
         "Parses an upload into a preview and returns it. Nothing is written — "
         "publishing is a separate request, and that one is audited."
@@ -105,10 +113,12 @@ class AdminImportParseView(AdminNotAudited, APIView):
         return Response(result)
 
 
-@requires(AdminCapability.PUBLISH, verb=AdminVerb.ACT, language_arg="language")
 class AdminImportPublishView(AdminAudited, APIView):
-    """POST reviewed content → create the Book+Chapters or Sermon; return its link."""
+    """POST reviewed content → create the Book+Chapters or Sermon; return its link.
 
+    Super-admin-only (see :class:`AdminImportLanguagesView`)."""
+
+    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.CONTENT_PUBLISH
 
     def audit_entry(self, request, response):
