@@ -1,0 +1,96 @@
+{
+ "kind": "book",
+ "slug": "soar-like-the-eagle-3",
+ "language": "fr",
+ "job_issue": 2910,
+ "references": [
+  {
+   "reference": "Psaumes 103:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Éphésiens 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Philippiens 1:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "2 Rois 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Rois 6:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psaumes 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galates 6:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galates 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éphésiens 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Éphésiens 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Éphésiens 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romains 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthiens 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthiens 12:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthiens 12:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothée 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothée 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 51
+  },
+  {
+   "reference": "Éphésiens 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psaumes 23:1",
+   "status": "self_rendered"
+  }
+ ]
+}

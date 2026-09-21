@@ -669,6 +669,18 @@
 				"content": "ea505c2c3b913b7686e7a21900a6f71f94cafc5dd2dbf87cc04deefa00a1e280",
 				"art": "9cd00f892ca0891ecc1333a269dd432483319497e9fc151fa1507428773014e7"
 			},
+			"blessed-prosperity": {
+				"content": "ff0b4ac5883c961a171ac27414beffdcddc8ca0f933d01bb238e96d766965728",
+				"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+			},
+			"broken-before-the-throne": {
+				"content": "7248c88acf109fd505e8dc44eb5e66d40ba427e72d2642f04dec83262623eda9",
+				"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+			},
+			"catholic-spirit": {
+				"content": "526289548a29f42c5c58b4e1b8aba0d88b6e9336ff5c392b25b07bd5d3fa0b14",
+				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+			},
 			"christ-all-in-all": {
 				"content": "6557f82cab081947aed3dd5315f82014ab3ea953ced3b0fc400ec53d0aa2f904",
 				"art": "3d8f702979ee73b00ad14fa4b29f64effd77e55fb5da2d3aaaa472f6aabaae4d"
@@ -697,6 +709,10 @@
 				"content": "6a5a731c671f9b1e2d4978df1b92d28ea0372fe7954abb289f9253f6fc723583",
 				"art": "95dc35b22ecab4ab1c127c0171c0371b2d5a775d8b134617f1884b5b206d0fd7"
 			},
+			"god-glorified-in-mans-dependence": {
+				"content": "94617731701d86e1fa7e501e3d445245edb7026fab95b3796363448494264412",
+				"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+			},
 			"gods-love-for-a-sinning-world": {
 				"content": "2d4c046ddf708c1e5418470165b0c6b321eb9ec0b311a2ce1dc53db329c5df31",
 				"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
@@ -708,6 +724,10 @@
 			"marks-of-a-true-conversion": {
 				"content": "f7367b2d92a1cb8fc1c57ba6c261c395e1bdad1f2228a8aeae08e10fc47c90fd",
 				"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+			},
+			"order-and-argument-in-prayer": {
+				"content": "adc3641cb3ef5709855cdb6e587f8bc2cabe57d88c9809931ca264158965d7bf",
+				"art": "d585dead56066e45bf6ad50fd033a766a4c791e5ce428d0172a985fa5b759a3c"
 			},
 			"pauls-praise-of-christian-love": {
 				"content": "20d188cb56fc1a2c2914c07a95eaa2326842bf7c02441271e0211511bfd1b1d7",
@@ -729,6 +749,10 @@
 				"content": "5205396d6b3713c9ea18403490ebd31ffd2b2ca454af64ccc0e49c7166df22e2",
 				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 			},
+			"the-dying-thief": {
+				"content": "f4fa351397b4699acb607410041673e9bb2a36a3877a3d71b0c2631ce640b796",
+				"art": "c362a82aa2a96d3b77460852bbe0941c8f4ae90b12c5c26eb9f3e46417b961ba"
+			},
 			"the-golden-key-of-prayer": {
 				"content": "626a8c1b88bf038943e0e99a447025c54b6c89a057d531198e93d51ea2cadb14",
 				"art": "c0ea17542d40e7c8ee0e3c36b070a1588358a77250bd419d3ddcc9c13f41408b"
@@ -737,9 +761,17 @@
 				"content": "8a1b004196944b022d850dd632dc89786069a7b36ab104dae2223d628da6f576",
 				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 			},
+			"the-holy-ghost": {
+				"content": "b2ef5b2d11f9cc6fa4d715388931dddc7ee4c36f11d249e943307c01dcf2c8e8",
+				"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+			},
 			"the-immutability-of-god": {
 				"content": "7421fb2ffafe39453c3166391e997b1a5d7411c8b409b9f2acba65fda15ee901",
 				"art": "c6b3ff2e470d7a842ee34e4eb31ae227e0f958b594bc763f0757f58f68c534af"
+			},
+			"the-joy-of-the-lord": {
+				"content": "b883f87dcc7b903bcf4346ef7fa19a15fd21f64bed0d276dee2671124fbbb654",
+				"art": "ba9904d62fa0dcf2760da255c1225089715c4948b42c1371b3d50119a6633a98"
 			},
 			"the-method-of-grace": {
 				"content": "0cde63d6518a05a428f838154fbbe0047ec6ce2dd76dcfb27adbddfe62eab754",
@@ -753,6 +785,10 @@
 				"content": "c19273c833c7d944cbe5fc7f3a9592e662e955a5faaad45d89ed551ebbff8bab",
 				"art": "75c125cec37af1c81f6c9c3603658309afba2fc879a952a2f4a6bd4002e76253"
 			},
+			"the-resurrection-of-jesus": {
+				"content": "2f648f4c973e4ac82c458cfdce43fe4297900ef022d85d67a0efb1e44e234b63",
+				"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
+			},
 			"the-triumph-of-calvary": {
 				"content": "d394e3478d9ecb467d7e04ebd04f2b3f8d3e601ad5e3fd721f6f0fb0e0ad0452",
 				"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
@@ -764,6 +800,10 @@
 			"unfailing-springs": {
 				"content": "dbb5f25a2fc0fff168dcd65b104980c46ec89d5d729c0c3a6897dd693412cf64",
 				"art": "a119b69171daeb01d17d2651e5f18619184df5898f80387ffc4295c5b18e2537"
+			},
+			"walking-with-god": {
+				"content": "d56cce3503b929a813d35bf40a3f64363c80d7ee4ffb65bccfd40c62af543a50",
+				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 			},
 			"why-is-god-a-stranger-in-the-land": {
 				"content": "472ee74d4faf04af46ff7ae2afa2bb6c034812f05879219a684688bcea0b4c10",

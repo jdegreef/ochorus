@@ -1,0 +1,178 @@
+{
+ "kind": "sermon",
+ "slug": "god-glorified-in-mans-dependence",
+ "language": "fr",
+ "job_issue": 2658,
+ "references": [
+  {
+   "reference": "Éphésiens 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Corinthiens 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Éphésiens 1:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "2 Corinthiens 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Éphésiens 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "Éphésiens 4:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Pierre 1:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Luc 11:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Luc 11:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Hébreux 7:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jérémie 23:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthiens 5:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "1 Corinthiens 8:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Pierre 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hébreux 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jean 4:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Apocalypse 22:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jean 7:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Jean 7:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "2 Corinthiens 1:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Éphésiens 1:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Éphésiens 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Matthieu 7:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Galates 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Galates 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Luc 24:49",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Actes 2:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Romains 11:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Marc 10:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "Psaumes 115:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 40
+  }
+ ]
+}

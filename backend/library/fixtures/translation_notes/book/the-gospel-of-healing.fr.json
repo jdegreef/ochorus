@@ -1,0 +1,236 @@
+{
+ "kind": "book",
+ "slug": "the-gospel-of-healing",
+ "language": "fr",
+ "job_issue": 2911,
+ "references": [
+  {
+   "reference": "Exode 15:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Exode 15:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Psaumes 105:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Job 1:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psaumes 103:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Psaumes 103:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Ésaïe 53:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Ésaïe 53:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthieu 8:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Jean 14:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Marc 16:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Marc 16:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Marc 16:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Marc 16:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Jacques 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Actes 15:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galates 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marc 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jean 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éphésiens 5:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romains 8:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthieu 12:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthiens 4:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Corinthiens 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "Hébreux 13:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Thessaloniciens 5:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genèse 17:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Nombres 21:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jean 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marc 1:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthieu 8:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marc 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jean 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthieu 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luc 13:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthieu 8:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthieu 8:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luc 8:48",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthieu 9:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthieu 15:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthieu 17:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marc 8:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luc 18:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marc 11:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Actes 3:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Actes 9:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Actes 14:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthieu 3:1",
+   "status": "self_rendered"
+  }
+ ]
+}
