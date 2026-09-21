@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "j-c-ryle",
+ "language": "hi",
+ "job_issue": 2098,
+ "pull_request": 3025,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx, which serves USX). All 66 books, 31,104 verses on disk, so translators could look up anything that sounded like scripture.",
+  "A `mined` row means an exact byte substring of the IRV of at least 30 characters, measured against the finished file — not a translator's claim. The 30-char threshold (vs the sermon runs' 45) is calibrated to biographies, which quote short clauses; it is conservative and UNDERCOUNTS very short verbatim quotations toward self_rendered, adding review rather than manufacturing a clean bill of health.",
+  "A biography quotes its SUBJECT far more than it quotes the Bible. Pull-quotes of the person's own words are reported speech and are deliberately NOT recorded as scripture references; several bios in this batch quote little or no scripture, which is the honest answer rather than a gap."
+ ],
+ "references": [
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 3
+  }
+ ]
+}
