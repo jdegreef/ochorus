@@ -73,7 +73,7 @@
   "title": "Premiers pas : la foi pour les adolescents",
   "description": "Une première marche avec Jésus, pour les lecteurs adolescents. Charles Spurgeon vous accueille à la porte avec l'aide la plus simple qui soit pour quiconque cherche son chemin vers Christ ; puis les histoires vraies d'hommes et de femmes qui lui ont tout donné montrent ce que devient une telle vie — deux petits livres en trois semaines environ.",
   "note": [
-   "Job #2642. Source books: around-the-wicket-gate (French edition shipped, « Autour de la porte etroite ») and men-and-women-who-gave-everything-2 (no French edition yet), so seed_plans creates the (first-steps-for-teens, fr) row only once both are in French; prose-ahead until then. Title/description quote the shipped French book title."
+   "Job #2642. Source books: around-the-wicket-gate (French edition shipped, « Autour de la porte etroite ») and men-and-women-who-gave-everything-2 (French edition shipped in #2784, « Des hommes et des femmes qui ont tout donné »). Both are now in French, so seed_plans creates the (first-steps-for-teens, fr) row. Title/description quote the shipped French book titles."
   ]
  }
 }

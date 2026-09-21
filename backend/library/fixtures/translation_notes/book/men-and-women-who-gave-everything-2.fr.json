@@ -1,0 +1,270 @@
+{
+ "kind": "book",
+ "slug": "men-and-women-who-gave-everything-2",
+ "language": "fr",
+ "job_issue": 2784,
+ "references": [
+  {
+   "reference": "Matthieu 28:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Actes 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Romains 10:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Actes 20:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Jérémie 33:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Habacuc 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthieu 28:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Job 23:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Ésaïe 55:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Jean 20:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Ésaïe 49:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthiens 4:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Proverbes 31:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Jean 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Actes 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Luc 4:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Luc 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Jean 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthiens 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "1 Corinthiens 9:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Jean 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Timothée 2:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthiens 9:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Philippiens 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Jacques 1:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Joël 2:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Ésaïe 40:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Philippiens 3:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthieu 19:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Jean 12:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Romains 15:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Romains 8:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Actes 17:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthieu 6:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Timothée 4:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthiens 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Philippiens 3:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Pierre 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthiens 12:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Luc 9:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthieu 5:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Romains 12:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Ésaïe 43:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Proverbes 3:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 9
+  }
+ ]
+}
