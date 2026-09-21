@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-21: six Hindi author bios — a-w-tozer (#2929), billy-graham (#2934),
+// corrie-ten-boom (#2938), c-t-studd (#2942), john-calvin (#2948), john-hyde (#2953). Author pages
+// are prerendered PER AUTHOR, so /hi/authors/<slug> must rebuild for each translated bio and its
+// <blockquote> pull-quotes and prayer callouts.
 // prerender refresh 2026-09-21: ten Hindi author bios — john-newton (#2096), alexander-maclaren
 // (#2097), j-c-ryle (#2098), thomas-watson (#2099), amanda-berry-smith (#2100), amy-carmichael
 // (#2101), bernard-of-clairvaux (#2102), clement-of-rome (#2103), cyprian-of-carthage (#2104),
