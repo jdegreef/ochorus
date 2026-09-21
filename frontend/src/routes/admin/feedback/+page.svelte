@@ -43,13 +43,23 @@
 		return auth.can('feedback', 'act');
 	}
 
+	// Only http(s) URLs are safe to render as a clickable link — a stored
+	// javascript:/data: page_url would be an XSS sink when an admin clicks it.
+	// (The backend also sanitises on ingest; this is defence in depth.)
+	function safeHref(u: string): string {
+		return /^https?:\/\//i.test(u) ? u : '';
+	}
+
 	async function triage(item: FeedbackItem, body: Parameters<typeof triageFeedback>[1]) {
 		busy[item.id] = true;
 		rowError[item.id] = '';
 		try {
 			const updated = await triageFeedback(item.id, body);
-			// Reflect the change locally so the row updates without a full reload.
+			// Reflect the change locally for instant feedback, then reload so the
+			// status counts and the active filter reconcile (a triaged item may no
+			// longer match the current filter).
 			Object.assign(item, updated);
+			void queue.load();
 		} catch (e) {
 			rowError[item.id] =
 				e instanceof ApiError && e.body && typeof e.body === 'object' && 'detail' in e.body
@@ -133,13 +143,15 @@
 
 							<p class="mb-3 whitespace-pre-wrap text-body">{item.body}</p>
 
-							{#if item.page_url}
+							{#if safeHref(item.page_url)}
 								<a
 									class="mb-3 block truncate text-small text-accent"
-									href={item.page_url}
+									href={safeHref(item.page_url)}
 									target="_blank"
-									rel="noopener">{item.page_url}</a
+									rel="noopener noreferrer">{item.page_url}</a
 								>
+							{:else if item.page_url}
+								<p class="mb-3 truncate text-small text-muted">{item.page_url}</p>
 							{/if}
 
 							{#if canAct()}
