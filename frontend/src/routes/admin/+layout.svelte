@@ -12,7 +12,11 @@
 	// still authorises every request.
 	const sections = [
 		{ href: '/admin', label: 'Dashboard', exact: true, capability: 'reporting' },
-		{ href: '/admin/import', label: 'Import document', capability: 'publish' },
+		// Undelegated, super-admin-only levers (a founder decision, 2026-09-21):
+		// document import and the reader-email broadcast section. Language admins do
+		// content QA in their languages, not raw ingestion or outbound email — the
+		// backend gates these on IsAdminEmail too, so hiding the nav only tidies UX.
+		{ href: '/admin/import', label: 'Import document', superOnly: true },
 		{ href: '/admin/coverage', label: 'Coverage matrix', capability: 'reporting' },
 		{ href: '/admin/language-health', label: 'Language health', capability: 'reporting' },
 		{ href: '/admin/review', label: 'Review queue', capability: 'review' },
@@ -20,8 +24,8 @@
 		{ href: '/admin/audit', label: 'Content audit', capability: 'audit' },
 		{ href: '/admin/activity', label: 'Activity', capability: 'reporting' },
 		{ href: '/admin/engagement', label: 'Engagement', capability: 'reporting' },
-		{ href: '/admin/emails', label: 'Emails', capability: 'reporting', exact: true },
-		{ href: '/admin/emails/compose', label: 'Compose email', capability: 'email' },
+		{ href: '/admin/emails', label: 'Emails', superOnly: true, exact: true },
+		{ href: '/admin/emails/compose', label: 'Compose email', superOnly: true },
 		{ href: '/admin/search', label: 'Search', capability: 'reporting' },
 		{ href: '/admin/users', label: 'Users', capability: 'users' },
 		// Managing access is undelegated — super admins only (auth.isAdmin is the
@@ -64,7 +68,9 @@
 		<div class="px-5 pt-5">
 			<a href="/admin" class="inline-block hover:no-underline">
 				<span class="eyebrow block text-accent">Ochorus</span>
-				<span class="block text-h3 leading-tight text-text">Admin</span>
+				<!-- A language admin (any non-super admin) sees "Language Admin"; the
+				     super admin keeps "Admin". -->
+				<span class="block text-h3 leading-tight text-text">{auth.adminLabel}</span>
 			</a>
 		</div>
 

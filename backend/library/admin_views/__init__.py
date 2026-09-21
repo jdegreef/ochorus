@@ -40,7 +40,7 @@ from .languages import (
     AdminLanguageSettingsView,
     AdminLanguageThresholdsView,
 )
-from .manual import AdminManualView
+from .manual import AdminLanguageManualView, AdminManualView
 from .quality import (
     AdminAuditDismissView,
     AdminAuditView,
@@ -63,6 +63,7 @@ __all__ = [
     "AdminContentEditJobsView",
     "AdminCoverageView",
     "AdminLanguageHealthView",
+    "AdminLanguageManualView",
     "AdminManualView",
     "AdminEngagementView",
     "AdminSearchGapView",

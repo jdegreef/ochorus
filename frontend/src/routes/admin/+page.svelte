@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { apiFetchRaw } from '$lib/api';
+	import { auth } from '$lib/auth.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { type SourceType } from '$lib/library-public';
@@ -168,12 +169,12 @@
 	);
 </script>
 
-<svelte:head><title>Admin — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
+<svelte:head><title>{auth.adminLabel} — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
 <div class="mx-auto max-w-6xl px-5 py-10">
 	<header class="mb-10 flex flex-wrap items-end justify-between gap-4">
 		<div>
-			<p class="eyebrow mb-2 text-accent">Admin</p>
+			<p class="eyebrow mb-2 text-accent">{auth.adminLabel}</p>
 			<h1 class="text-display">Content dashboard</h1>
 			<p class="mt-2 text-body text-muted">A snapshot of the library — quantities, languages and health.</p>
 		</div>
@@ -378,8 +379,12 @@
 					<span><span class="text-warning">+N</span> queued to translate</span>
 				</p>
 				<!-- Starting a language begins here: the row is what the translate_*
-				     commands read, so it has to exist before any work can be queued. -->
-				<AddLanguageForm oncreated={dashboard.load} />
+				     commands read, so it has to exist before any work can be queued.
+				     Language administration is super-admin-only, so a language admin
+				     never sees this form (the create endpoint is gated too). -->
+				{#if auth.isAdmin}
+					<AddLanguageForm oncreated={dashboard.load} />
+				{/if}
 			</section>
 
 			<div class="grid gap-6 md:grid-cols-2">

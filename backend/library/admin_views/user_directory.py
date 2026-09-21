@@ -18,10 +18,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import requires
+from accounts.permissions import is_admin_user, requires
 
 from ..views import _language_entry
-from .analytics import _profile_summary
+from .analytics import _profile_summary, mask_email
 from .csv_export import csv_response, csv_safe
 
 # One page of the directory. Fixed (not client-controlled) so a caller can't ask
@@ -48,13 +48,19 @@ class AdminUserDirectoryView(APIView):
 
 
     def get(self, request):
-        qs, sort, q = self._queryset(request)
+        # Reader emails are PII: only a super admin sees them in the clear; a
+        # scoped USERS grantee (a language admin) gets them masked at the source.
+        # Computed first because `_queryset` also uses it — a non-super caller must
+        # not be able to search or sort on the cleartext column (an oracle that
+        # would defeat the display masking), so the email filter/sort is theirs only.
+        reveal = is_admin_user(request.user, request)
+        qs, sort, q = self._queryset(request, reveal=reveal)
 
         # ``?fmt=csv`` downloads every matching row (the whole filtered/sorted
         # set, no pagination) — see AdminExportView for the same convention and
         # why it isn't the DRF-reserved ``format`` param.
         if request.query_params.get("fmt", "").lower() == "csv":
-            return self._csv(qs)
+            return self._csv(qs, reveal=reveal)
 
         total = qs.count()
         pages = max(1, (total + PAGE_SIZE - 1) // PAGE_SIZE)
@@ -64,7 +70,7 @@ class AdminUserDirectoryView(APIView):
 
         return Response(
             {
-                "results": [self._row(p) for p in rows],
+                "results": [self._row(p, reveal=reveal) for p in rows],
                 "total": total,
                 "page": page,
                 "pages": pages,
@@ -74,9 +80,14 @@ class AdminUserDirectoryView(APIView):
             }
         )
 
-    def _queryset(self, request):
+    def _queryset(self, request, *, reveal: bool):
         """The annotated, searched, sorted queryset shared by the JSON page and
-        the CSV export. Returns ``(qs, sort, q)``."""
+        the CSV export. Returns ``(qs, sort, q)``.
+
+        ``reveal`` (the requester's super-admin flag) governs whether the *raw
+        email column* may be searched or sorted on: for a non-super caller it may
+        not, or the ``icontains`` search and the name-sort tiebreak would be a
+        cleartext-PII oracle that reads around the display masking."""
         from django.db.models import (
             Count,
             IntegerField,
@@ -114,17 +125,29 @@ class AdminUserDirectoryView(APIView):
 
         q = (request.query_params.get("q") or "").strip()
         if q:
-            qs = qs.filter(Q(email__icontains=q) | Q(display_name__icontains=q))
+            # Search display name always; the email column only for a super admin —
+            # otherwise `icontains` is a cleartext oracle over addresses the caller
+            # is only allowed to see masked.
+            cond = Q(display_name__icontains=q)
+            if reveal:
+                cond |= Q(email__icontains=q)
+            qs = qs.filter(cond)
 
         sort = request.query_params.get("sort") or DEFAULT_SORT
         if sort not in SORTS:
             sort = DEFAULT_SORT
-        qs = qs.order_by(*SORTS[sort])
+        # Same reason: drop the email tiebreak from the ordering for a non-super
+        # caller (alphabetical-by-email leaks order over cleartext). Stability is
+        # kept — every ordering still ends in the unique supabase_uid.
+        order = SORTS[sort] if reveal else [k for k in SORTS[sort] if k != "email"]
+        qs = qs.order_by(*order)
         return qs, sort, q
 
-    def _csv(self, qs):
-        """The directory as a CSV download. Emails are in the clear — this is an
-        authed admin export, its whole purpose — unlike the masked-by-default UI.
+    def _csv(self, qs, *, reveal: bool = False):
+        """The directory as a CSV download. For a super admin, emails are in the
+        clear — this is an authed admin export, its whole purpose — unlike the
+        masked-by-default UI; for a scoped USERS grantee they are masked here too,
+        so the export can't route around the source-level masking.
         ``reading_seconds`` is raw for spreadsheet analysis; iterate so a large
         user base doesn't all sit in memory at once."""
         import csv
@@ -150,7 +173,7 @@ class AdminUserDirectoryView(APIView):
             writer.writerow(
                 [
                     csv_safe(p.display_name),
-                    csv_safe(p.email),
+                    csv_safe(p.email if reveal else mask_email(p.email)),
                     csv_safe(" ".join(p.provider_list)),
                     csv_safe(p.locale),
                     p.created_at.date().isoformat(),
@@ -169,11 +192,11 @@ class AdminUserDirectoryView(APIView):
             page = 1
         return min(max(1, page), pages)
 
-    def _row(self, p) -> dict:
+    def _row(self, p, *, reveal: bool = False) -> dict:
         # The shared per-account summary (uid/name/email/providers/locale/dates),
-        # plus this page's rollups.
+        # plus this page's rollups. ``reveal`` masks the email for non-super admins.
         return {
-            **_profile_summary(p),
+            **_profile_summary(p, reveal=reveal),
             "locale_name": _language_entry(p.locale)["name"],
             "works": p.works,
             "reading_seconds": p.reading_seconds,

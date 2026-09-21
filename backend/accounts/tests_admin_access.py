@@ -17,7 +17,7 @@ from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
 from accounts.models import AdminCapability as C
-from accounts.models import AdminGrant
+from accounts.models import AdminGrant, UserProfile
 from accounts.models import AdminVerb as V
 
 User = get_user_model()
@@ -224,3 +224,177 @@ class AdminGrantsCommandTests(TestCase):
 
         with self.assertRaises(CommandError):
             self._run("grant", "--email", "super@ochorus.com", "--role", "reviewer")
+
+
+@override_settings(DEBUG=False, ADMIN_EMAILS={"super@ochorus.com"})
+class LanguageAdminRestrictionTests(TestCase):
+    """The founder decision (2026-09-21): a language admin (any non-super admin)
+    reviews content but does not queue translations, import documents, run the
+    reader-email section, or see reader emails in the clear. Each lever is gated
+    server-side, not merely hidden in the SPA — this exercises the gate."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.super = User.objects.create(username="uid-super", email="super@ochorus.com")
+        self.la = User.objects.create(username="uid-la", email="la@ochorus.com")
+
+    def _as_super(self):
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+
+    def _as_language_admin(self, *pairs):
+        """Authenticate as a non-super admin holding the given (capability, verb)
+        grants — a language admin as far as the app is concerned."""
+        for cap, verb in pairs:
+            AdminGrant.objects.create(email="la@ochorus.com", capability=cap, verb=verb, languages="*")
+        self.client.force_authenticate(user=self.la, token=VERIFIED)
+
+    # --- Queueing translation work: super-admin-only ---------------------------
+    def test_language_admin_cannot_queue_translations(self):
+        # A TRANSLATE/act grant does NOT let a language admin file a job — the POST
+        # is reserved to a super admin. (GET is separately language-scoped and
+        # already fails closed for a request that names no language, so a scoped
+        # grantee doesn't reach the queue list either; the reservation here is the
+        # POST guard added in admin_views/jobs.py.)
+        self._as_language_admin((C.TRANSLATE, V.ACT))
+        res = self.client.post(
+            "/api/admin/translation-jobs/",
+            {"type": "book", "slug": "x", "language": "es"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 403)
+
+    def test_super_admin_may_queue(self):
+        self._as_super()
+        # The permission passes for a super admin; junk input then fails
+        # validation (400) rather than the 403 a language admin hits — proof the
+        # gate, not the payload, is what stops the language admin.
+        res = self.client.post(
+            "/api/admin/translation-jobs/", {"type": "nonsense"}, format="json"
+        )
+        self.assertEqual(res.status_code, 400)
+
+    # --- Import documents: super-admin-only -----------------------------------
+    def test_import_is_super_admin_only(self):
+        # A PUBLISH grant used to open the import picker; now it does not.
+        self._as_language_admin((C.PUBLISH, V.ACT))
+        self.assertEqual(self.client.get("/api/admin/import/languages/").status_code, 403)
+
+    def test_super_admin_reaches_import(self):
+        self._as_super()
+        self.assertEqual(self.client.get("/api/admin/import/languages/").status_code, 200)
+
+    # --- Reader-email broadcast section: super-admin-only ----------------------
+    def test_emails_section_is_super_admin_only(self):
+        # REPORTING (which every role preset holds) used to open the metrics view.
+        self._as_language_admin((C.REPORTING, V.VIEW))
+        self.assertEqual(self.client.get("/api/admin/email-metrics/").status_code, 403)
+        self.assertEqual(self.client.get("/api/admin/broadcasts/").status_code, 403)
+
+    def test_super_admin_reaches_emails(self):
+        self._as_super()
+        self.assertEqual(self.client.get("/api/admin/email-metrics/").status_code, 200)
+        self.assertEqual(self.client.get("/api/admin/broadcasts/").status_code, 200)
+
+
+@override_settings(DEBUG=False, ADMIN_EMAILS={"super@ochorus.com"})
+class LanguageAdminManualTests(TestCase):
+    """The language-admin manual PDF endpoint — reachable by any admin, denied to
+    a signed-in non-admin.
+
+    Its own class on purpose (mirrors AdminManualTests): the reachable test streams
+    a real FileResponse and closes it, which fires ``request_finished`` →
+    ``close_old_connections()`` and drops this test's DB connection. On Postgres
+    that breaks any test that runs AFTER it in the same class (the next ``setUp``
+    hits a closed connection), so the file-serving test is kept last (alphabetical
+    order puts 'reachable' after 'denied') with nothing following it — exactly how
+    AdminManualTests stays green on the Postgres CI run."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.la = User.objects.create(username="uid-manual-la", email="la@ochorus.com")
+
+    def test_manual_denied_without_admin_access(self):
+        # Signed in, verified, but holds no grant and is not super.
+        self.client.force_authenticate(user=self.la, token=VERIFIED)
+        self.assertEqual(self.client.get("/api/admin/language-manual/").status_code, 403)
+
+    def test_manual_reachable_by_any_admin(self):
+        # A scoped grant (REPORTING/view, which every role preset holds) reaches it.
+        AdminGrant.objects.create(
+            email="la@ochorus.com", capability=C.REPORTING, verb=V.VIEW, languages="*"
+        )
+        self.client.force_authenticate(user=self.la, token=VERIFIED)
+        res = self.client.get("/api/admin/language-manual/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res["Content-Type"], "application/pdf")
+        if hasattr(res, "streaming_content"):
+            res.close()
+
+
+@override_settings(DEBUG=False, ADMIN_EMAILS={"super@ochorus.com"})
+class ReaderEmailMaskingTests(TestCase):
+    """Reader emails are PII: a super admin sees them in the clear; a scoped USERS
+    grantee (a language admin) gets them masked at the source, across every users
+    payload — so the SPA's reveal toggle has nothing to reveal."""
+
+    def setUp(self):
+        import uuid
+
+        self.client = APIClient()
+        self.super = User.objects.create(username="uid-super2", email="super@ochorus.com")
+        self.la = User.objects.create(username="uid-la2", email="la@ochorus.com")
+        AdminGrant.objects.create(email="la@ochorus.com", capability=C.USERS, verb=V.VIEW, languages="*")
+        # A reader whose address the users payloads will carry.
+        self.reader_uid = uuid.uuid4()
+        UserProfile.objects.create(
+            user=User.objects.create(username=str(self.reader_uid)),
+            supabase_uid=self.reader_uid,
+            email="reader@example.com",
+        )
+
+    def test_super_admin_sees_cleartext(self):
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        recent = self.client.get("/api/admin/users/").data["recent"]
+        self.assertEqual(recent[0]["email"], "reader@example.com")
+        row = self.client.get("/api/admin/users/directory/").data["results"][0]
+        self.assertEqual(row["email"], "reader@example.com")
+        detail = self.client.get(f"/api/admin/users/{self.reader_uid}/").data
+        self.assertEqual(detail["profile"]["email"], "reader@example.com")
+
+    def test_language_admin_sees_masked(self):
+        self.client.force_authenticate(user=self.la, token=VERIFIED)
+        recent = self.client.get("/api/admin/users/").data["recent"]
+        self.assertNotEqual(recent[0]["email"], "reader@example.com")
+        self.assertIn("•", recent[0]["email"])
+        self.assertTrue(recent[0]["email"].endswith("@example.com"))
+        row = self.client.get("/api/admin/users/directory/").data["results"][0]
+        self.assertIn("•", row["email"])
+        detail = self.client.get(f"/api/admin/users/{self.reader_uid}/").data
+        self.assertIn("•", detail["profile"]["email"])
+
+    def test_directory_csv_masks_for_language_admin(self):
+        self.client.force_authenticate(user=self.la, token=VERIFIED)
+        res = self.client.get("/api/admin/users/directory/?fmt=csv")
+        body = res.content.decode()
+        self.assertNotIn("reader@example.com", body)
+        self.assertIn("@example.com", body)  # still the masked form
+
+    def test_language_admin_cannot_search_the_cleartext_email(self):
+        # The directory search must not be a cleartext oracle: "reader" is the
+        # local part (not present in the masked form), so a non-super search on it
+        # finds nothing, while a super admin's search still matches.
+        self.client.force_authenticate(user=self.la, token=VERIFIED)
+        self.assertEqual(self.client.get("/api/admin/users/directory/?q=reader").data["total"], 0)
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        self.assertEqual(self.client.get("/api/admin/users/directory/?q=reader").data["total"], 1)
+
+    def test_language_admin_sorts_do_not_crash_and_stay_masked(self):
+        # Every sort must work for a non-super caller — including the ones whose
+        # ordering carries an F()-expression tiebreak ('seen', 'active') that the
+        # email-stripping list comprehension filters over. Guards a refactor of
+        # SORTS from silently reintroducing an email-ordered oracle or a crash.
+        self.client.force_authenticate(user=self.la, token=VERIFIED)
+        for sort in ("recent", "seen", "active", "name"):
+            res = self.client.get(f"/api/admin/users/directory/?sort={sort}")
+            self.assertEqual(res.status_code, 200, sort)
+            self.assertIn("•", res.data["results"][0]["email"])
