@@ -440,7 +440,8 @@
 	font-size: var(--fs-small);
 	line-height: 1.5;
 }
-.footer-links a {
+.footer-links a,
+.footer-links button {
 	/* inline-block + vertical padding grows the tap target without moving the
 	   text: at 14px with a 0.5rem gap the rows were well under the 44px
 	   guideline, and these stack tightest on the phones that need them most. */
@@ -448,7 +449,17 @@
 	padding-block: 0.3rem;
 	color: var(--muted);
 }
-.footer-links a:hover {
+/* The feedback row is a <button> (it opens a modal, not a page) but reads as a
+   link: strip the native chrome so it sits flush with the anchors above it. */
+.footer-links button {
+	border: 0;
+	background: none;
+	cursor: pointer;
+	font: inherit;
+	text-align: start;
+}
+.footer-links a:hover,
+.footer-links button:hover {
 	color: var(--text);
 }
 

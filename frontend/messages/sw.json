@@ -158,7 +158,7 @@
   "reader_remove_bookmark": "Ondoa alamisho",
   "reader_bookmarks": "Alamisho",
   "reader_no_bookmarks": "Bado hakuna alamisho",
-  "notebook_title": "Daftari",
+  "notebook_title": "Daftari langu",
   "notebook_subtitle": "Alamisho, misisitizo na madokezo yako.",
   "notebook_empty": "Bado hujahifadhi chochote — weka alamisho au sisitiza kifungu unaposoma.",
   "notebook_search": "Tafuta katika madokezo yako…",
@@ -533,7 +533,7 @@
   "home_recommended_next": "Yaliyopendekezwa kwako",
   "fav_save": "Hifadhi",
   "fav_saved": "Imehifadhiwa",
-  "fav_your_favorites": "Vipendwa vyako",
+  "fav_your_favorites": "Rafu yangu ya vitabu",
   "fav_empty": "Bado hujahifadhi chochote — gusa moyo kwenye mwandishi, kitabu, mada, makala au nukuu ili ukihifadhi hapa.",
   "fav_group_authors": "Waandishi",
   "fav_group_books": "Vitabu",
@@ -775,5 +775,6 @@
   "feedback_sending": "Sending…",
   "feedback_thanks_title": "Thank you",
   "feedback_thanks_body": "Your feedback has reached the team.",
-  "feedback_error": "Something went wrong. Please try again."
+  "feedback_error": "Something went wrong. Please try again.",
+  "account_settings": "Mipangilio yangu"
 }

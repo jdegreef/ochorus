@@ -158,7 +158,7 @@
   "reader_remove_bookmark": "Retirer le signet",
   "reader_bookmarks": "Signets",
   "reader_no_bookmarks": "Aucun signet pour l’instant",
-  "notebook_title": "Carnet",
+  "notebook_title": "Mon carnet",
   "notebook_subtitle": "Vos signets, surlignages et notes.",
   "notebook_empty": "Rien d’enregistré pour l’instant — placez un signet ou surlignez un passage pendant votre lecture.",
   "notebook_search": "Rechercher dans vos notes…",
@@ -533,7 +533,7 @@
   "home_recommended_next": "Recommandé pour vous",
   "fav_save": "Enregistrer",
   "fav_saved": "Enregistré",
-  "fav_your_favorites": "Vos favoris",
+  "fav_your_favorites": "Ma bibliothèque",
   "fav_empty": "Rien d’enregistré pour l’instant — touchez le cœur sur un auteur, un livre, un thème, un article ou une citation pour le garder ici.",
   "fav_group_authors": "Auteurs",
   "fav_group_books": "Livres",
@@ -775,5 +775,6 @@
   "feedback_sending": "Envoi…",
   "feedback_thanks_title": "Merci",
   "feedback_thanks_body": "Votre retour est bien parvenu à l'équipe.",
-  "feedback_error": "Une erreur s'est produite. Veuillez réessayer."
+  "feedback_error": "Une erreur s'est produite. Veuillez réessayer.",
+  "account_settings": "Mes paramètres"
 }
