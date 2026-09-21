@@ -198,6 +198,21 @@ class AdminGrantsCommandTests(TestCase):
         self.assertEqual(review.verb, V.ACT)
         self.assertEqual(review.languages, "es,pt")
 
+    def test_language_admin_gets_a_read_only_language_cockpit(self):
+        # The language_admin preset grants LANGUAGE_ADMIN at VIEW — so a language
+        # admin can open /admin/languages/<code> — but NOT the act/approve levers
+        # (thresholds/settings/create are :act, go-live is :approve), which stay
+        # super admin. Guards the preset intent so a future edit can't silently
+        # drop the cockpit or over-grant the destructive levers.
+        self._run("grant", "--email", "la@ochorus.com", "--role", "language_admin", "--languages", "lg")
+        grant = AdminGrant.objects.get(email="la@ochorus.com", capability=C.LANGUAGE_ADMIN)
+        self.assertEqual(grant.verb, V.VIEW)
+        self.assertTrue(grant.satisfies(V.VIEW))
+        self.assertFalse(grant.satisfies(V.ACT))
+        self.assertFalse(grant.satisfies(V.APPROVE))
+        self.assertTrue(grant.covers_language("lg"))
+        self.assertFalse(grant.covers_language("es"))
+
     def test_revoke_removes_grants(self):
         AdminGrant.objects.create(email="r@ochorus.com", capability=C.REVIEW, verb=V.ACT)
         self._run("revoke", "--email", "r@ochorus.com")
