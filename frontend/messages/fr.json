@@ -759,5 +759,21 @@
   "quotes_copied": "Copié",
   "quotes_clip_chapter": ", chapitre %n%",
   "book_more_by": "Plus de %name%",
-  "book_also_on": "Également sur %topic%"
+  "book_also_on": "Également sur %topic%",
+  "feedback_send": "Envoyer un retour",
+  "feedback_title": "Partagez votre avis",
+  "feedback_intro": "Une remarque sur le texte, le contenu ou une fonctionnalité souhaitée — nous lisons chaque message.",
+  "feedback_type": "De quoi s'agit-il ?",
+  "feedback_type_language": "Langue / traduction",
+  "feedback_type_content": "Contenu",
+  "feedback_type_feature": "Idée de fonctionnalité",
+  "feedback_type_bug": "Quelque chose ne marche pas",
+  "feedback_type_other": "Autre",
+  "feedback_placeholder": "Décrivez votre suggestion…",
+  "feedback_about": "À propos de cette page",
+  "feedback_submit": "Envoyer",
+  "feedback_sending": "Envoi…",
+  "feedback_thanks_title": "Merci",
+  "feedback_thanks_body": "Votre retour est bien parvenu à l'équipe.",
+  "feedback_error": "Une erreur s'est produite. Veuillez réessayer."
 }

@@ -1632,3 +1632,64 @@ export const getAdminActivity = (opts: { before?: number | null; target?: string
 	const qs = params.toString();
 	return apiFetch<AdminActivity>(`/api/admin/activity/${qs ? `?${qs}` : ''}`);
 };
+
+// --- Reader feedback queue ---------------------------------------------------
+
+/** One item in the feedback queue — the backend `Feedback`, serialized. */
+export interface FeedbackItem {
+	id: number;
+	category: string;
+	body: string;
+	status: string;
+	submitter_email: string;
+	/** '' for an ordinary reader, else e.g. 'language_admin' / 'super_admin'. */
+	submitter_role: string;
+	page_url: string;
+	content_kind: string;
+	content_slug: string;
+	content_language: string;
+	chapter_ref: string;
+	ui_locale: string;
+	assignee_email: string;
+	admin_note: string;
+	duplicate_of: number | null;
+	created_at: string;
+	updated_at: string;
+}
+
+export interface FeedbackQueue {
+	items: FeedbackItem[];
+	/** Per-status totals, for the filter chips. */
+	counts: Record<string, number>;
+	total: number;
+}
+
+/** The statuses an item can be moved to (NEW is the birth state, never a
+ *  target) — mirrors the backend `TRIAGE_STATUSES`. */
+export const FEEDBACK_TRIAGE_STATUSES = [
+	'triaging',
+	'planned',
+	'in_progress',
+	'done',
+	'declined',
+	'duplicate'
+] as const;
+
+/** GET the feedback queue, optionally filtered by status and category. */
+export const getFeedbackQueue = (p: { status?: string; category?: string } = {}) => {
+	const q = new URLSearchParams();
+	if (p.status) q.set('status', p.status);
+	if (p.category) q.set('category', p.category);
+	const qs = q.toString();
+	return apiFetch<FeedbackQueue>(`/api/admin/feedback/${qs ? `?${qs}` : ''}`);
+};
+
+/** POST a triage change for one item — only the fields present are applied. */
+export const triageFeedback = (
+	id: number,
+	body: { status?: string; assignee_email?: string; admin_note?: string; duplicate_of?: number | null }
+) =>
+	apiFetch<FeedbackItem>(`/api/admin/feedback/${encodeURIComponent(String(id))}/`, {
+		method: 'POST',
+		body: JSON.stringify(body)
+	});

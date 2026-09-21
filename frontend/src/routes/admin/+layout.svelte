@@ -16,6 +16,7 @@
 		{ href: '/admin/coverage', label: 'Coverage matrix', capability: 'reporting' },
 		{ href: '/admin/language-health', label: 'Language health', capability: 'reporting' },
 		{ href: '/admin/review', label: 'Review queue', capability: 'review' },
+		{ href: '/admin/feedback', label: 'Feedback', capability: 'feedback' },
 		{ href: '/admin/audit', label: 'Content audit', capability: 'audit' },
 		{ href: '/admin/activity', label: 'Activity', capability: 'reporting' },
 		{ href: '/admin/engagement', label: 'Engagement', capability: 'reporting' },
