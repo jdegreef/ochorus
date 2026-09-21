@@ -158,7 +158,7 @@
   "reader_remove_bookmark": "Прибрати закладку",
   "reader_bookmarks": "Закладки",
   "reader_no_bookmarks": "Закладок ще немає",
-  "notebook_title": "Зошит",
+  "notebook_title": "Мій зошит",
   "notebook_subtitle": "Ваші закладки, виділення та нотатки.",
   "notebook_empty": "Ще нічого не збережено — зробіть закладку або виділіть уривок під час читання.",
   "notebook_search": "Шукати у ваших нотатках…",
@@ -533,7 +533,7 @@
   "home_recommended_next": "Рекомендовано для вас",
   "fav_save": "Зберегти",
   "fav_saved": "Збережено",
-  "fav_your_favorites": "Ваше улюблене",
+  "fav_your_favorites": "Моя книжкова полиця",
   "fav_empty": "Ще нічого не збережено — торкніться сердечка на авторі, книзі, темі, статті чи цитаті, щоб зберегти це тут.",
   "fav_group_authors": "Автори",
   "fav_group_books": "Книги",
@@ -775,5 +775,6 @@
   "feedback_sending": "Sending…",
   "feedback_thanks_title": "Thank you",
   "feedback_thanks_body": "Your feedback has reached the team.",
-  "feedback_error": "Something went wrong. Please try again."
+  "feedback_error": "Something went wrong. Please try again.",
+  "account_settings": "Мої налаштування"
 }

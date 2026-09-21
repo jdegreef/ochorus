@@ -158,7 +158,7 @@
   "reader_remove_bookmark": "बुकमार्क हटाएँ",
   "reader_bookmarks": "बुकमार्क",
   "reader_no_bookmarks": "अभी कोई बुकमार्क नहीं",
-  "notebook_title": "नोटबुक",
+  "notebook_title": "मेरी नोटबुक",
   "notebook_subtitle": "आपके बुकमार्क, हाइलाइट और टिप्पणियाँ।",
   "notebook_empty": "अभी कुछ सहेजा नहीं गया — पढ़ते समय कोई जगह बुकमार्क करें या कोई अंश हाइलाइट करें।",
   "notebook_search": "अपनी टिप्पणियाँ खोजें…",
@@ -533,7 +533,7 @@
   "home_recommended_next": "आपके लिए सुझाव",
   "fav_save": "सहेजें",
   "fav_saved": "सहेजा गया",
-  "fav_your_favorites": "आपके पसंदीदा",
+  "fav_your_favorites": "मेरी बुकशेल्फ़",
   "fav_empty": "अभी कुछ सहेजा नहीं गया — किसी लेखक, पुस्तक, विषय, लेख या उद्धरण पर दिल को छूकर उसे यहाँ रखें।",
   "fav_group_authors": "लेखक",
   "fav_group_books": "पुस्तकें",
@@ -775,5 +775,6 @@
   "feedback_sending": "Sending…",
   "feedback_thanks_title": "Thank you",
   "feedback_thanks_body": "Your feedback has reached the team.",
-  "feedback_error": "Something went wrong. Please try again."
+  "feedback_error": "Something went wrong. Please try again.",
+  "account_settings": "मेरी सेटिंग्स"
 }

@@ -158,7 +158,7 @@
   "reader_remove_bookmark": "Ggyawo akabonero",
   "reader_bookmarks": "Obubonero",
   "reader_no_bookmarks": "Tewali bubonero nnaba",
-  "notebook_title": "Ekitabo ky'ebijjukizo",
+  "notebook_title": "Ekitabo kyange ky'ebijjukizo",
   "notebook_subtitle": "Obubonero bwo, ebikulambikibbwa n'ebiwandiiko.",
   "notebook_empty": "Tewali kya kuterekeddwa nnaba — teeka akabonero oba olambike ekitundu ng'osoma.",
   "notebook_search": "Noonya mu ebyo bye wawandiika…",
@@ -533,7 +533,7 @@
   "home_recommended_next": "Ebikusemberezebwa",
   "fav_save": "Tereka",
   "fav_saved": "Etereke",
-  "fav_your_favorites": "By'oyagala ennyo",
+  "fav_your_favorites": "Etterekero lyange ly'ebitabo",
   "fav_empty": "Tewali kya kuterekeddwa nnaba — koona ku mutima ku muwandiisi, ekitabo, omulamwa, ekiwandiiko oba ekigambo okukikuuma wano.",
   "fav_group_authors": "Abawandiisi",
   "fav_group_books": "Ebitabo",
@@ -775,5 +775,6 @@
   "feedback_sending": "Sending…",
   "feedback_thanks_title": "Thank you",
   "feedback_thanks_body": "Your feedback has reached the team.",
-  "feedback_error": "Something went wrong. Please try again."
+  "feedback_error": "Something went wrong. Please try again.",
+  "account_settings": "Entegeka zange"
 }
