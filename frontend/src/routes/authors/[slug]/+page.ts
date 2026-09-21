@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-21: ten Hindi author bios — john-newton (#2096), alexander-maclaren
+// (#2097), j-c-ryle (#2098), thomas-watson (#2099), amanda-berry-smith (#2100), amy-carmichael
+// (#2101), bernard-of-clairvaux (#2102), clement-of-rome (#2103), cyprian-of-carthage (#2104),
+// david-brainerd (#2105). Author pages are prerendered PER AUTHOR, so /hi/authors/<slug> must
+// rebuild for each translated bio and its <blockquote> pull-quotes and prayer callouts.
 // prerender refresh 2026-09-21: ten French author bios — watchman-nee (#2630), william-law (#2631),
 // john-calvin (#2632), anselm-of-canterbury (#2633), bill-bright (#2634), billy-graham (#2635),
 // blasio-kigozi (#2636), c-t-studd (#2638), david-livingstone (#2639), derek-prince (#2640).
