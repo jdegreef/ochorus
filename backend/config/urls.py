@@ -13,6 +13,7 @@ from emails.admin_views import (
     AdminBroadcastsView,
     AdminEmailMetricsView,
 )
+from feedback.admin_views import AdminFeedbackDetailView, AdminFeedbackListView
 from library.admin_import_views import (
     AdminAuthorCreateView,
     AdminImportLanguagesView,
@@ -169,6 +170,12 @@ urlpatterns = [
         name="admin-translation-jobs",
     ),
     path("api/admin/team/", AdminTeamView.as_view(), name="admin-team"),
+    path("api/admin/feedback/", AdminFeedbackListView.as_view(), name="admin-feedback"),
+    path(
+        "api/admin/feedback/<int:pk>/",
+        AdminFeedbackDetailView.as_view(),
+        name="admin-feedback-detail",
+    ),
     path(
         "api/admin/email-metrics/",
         AdminEmailMetricsView.as_view(),
@@ -241,6 +248,7 @@ urlpatterns = [
         name="admin-language-deploy-check",
     ),
     path("api/emails/", include("emails.urls")),
+    path("api/feedback/", include("feedback.urls")),
     path("api/library/", include("library.urls")),
     path("api/reading/", include("reading.urls")),
 ]

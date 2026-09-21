@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     # Local apps
     "accounts",
     "emails",
+    "feedback",
     "library",
     "reading",
 ]
@@ -189,6 +190,10 @@ REST_FRAMEWORK = {
         # tables — so it gets a ceiling for parity with the other public
         # endpoints. Sized well above a reader (the shelf resolves once per load).
         "quote-resolve": "120/min",
+        # A signed-in reader filing feedback (FeedbackView). Occasional by
+        # nature — a handful a day at most — so this only catches a script
+        # flooding the queue, never a genuine submitter. Per account.
+        "feedback": "20/hour",
     },
     # Exactly one proxy (Render's) sits in front of the app, so the client
     # address is the LAST entry in X-Forwarded-For. Without this, DRF keys
