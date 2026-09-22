@@ -966,6 +966,133 @@ TOPIC_ARTICLES = {
 }
 
 
+# SEO overrides per topic — the <title> and <meta description> the topic
+# page uses instead of the bare "<title> — Ochorus" / `description`. English
+# only; per-language values ride TopicTranslation. seo_title is the FULL tag
+# text (it already ends in "— Ochorus"). {slug: (seo_title, meta_description)}.
+TOPIC_SEO = {
+    "prayer": (
+        "Books on Prayer — Free Christian Classics — Ochorus",
+        "How to pray? The enduring Christian classics on prayer — learning to pray and to keep praying, free to read on Ochorus.",
+    ),
+    "holy-spirit": (
+        "Books on the Holy Spirit — Free Classics — Ochorus",
+        "Who is the Holy Spirit? Classic books on the Spirit's baptism, indwelling and power — free to read on Ochorus.",
+    ),
+    "deeper-life": (
+        "The Deeper Christian Life — Free Classics — Ochorus",
+        "What is the deeper Christian life? Classics on holiness, surrender and the abundant life hidden with Christ — free on Ochorus.",
+    ),
+    "grace-and-comfort": (
+        "Grace & Comfort — Free Christian Classics — Ochorus",
+        "Comfort for hard times: the Christian classics on the unfailing grace of God in every trial — free to read on Ochorus.",
+    ),
+    "revival-and-missions": (
+        "Revival & Missions — Free Christian Classics — Ochorus",
+        "What is revival? Classic accounts of awakening and lives poured out for the gospel — free to read on Ochorus.",
+    ),
+    "faith-and-guidance": (
+        "Faith & Guidance — Free Christian Classics — Ochorus",
+        "How to know God's will: classics on trusting God for daily bread, direction and every promise — free on Ochorus.",
+    ),
+    "the-gospel-call": (
+        "The Gospel Call — Free Christian Classics — Ochorus",
+        "How to be saved: the classic gospel invitations to turn, repent and believe — free to read on Ochorus.",
+    ),
+    "enduring-classics": (
+        "The Christian Classics — Free to Read — Ochorus",
+        "The best Christian classics to read — the books that have walked with pilgrims for centuries, free on Ochorus.",
+    ),
+    "the-way-of-holiness": (
+        "The Way of Holiness — Free Classics — Ochorus",
+        "What is Christian holiness? The classics on being set apart for God, free to read on Ochorus.",
+    ),
+    "the-preached-word": (
+        "Classic Sermons — Free to Read — Ochorus",
+        "The greatest sermons ever preached — great preaching on the page, in full, free to read on Ochorus.",
+    ),
+    "christ-and-the-cross": (
+        "Christ & the Cross — Free Christian Classics — Ochorus",
+        "What Jesus accomplished on the cross: the classics on the person and work of the Saviour — free on Ochorus.",
+    ),
+    "the-puritans": (
+        "Puritan Books — Free to Read — Ochorus",
+        "The best Puritan books to read — the plain, searching divinity of the Puritans, free to read on Ochorus.",
+    ),
+    "abiding-in-christ": (
+        "Abiding in Christ — Free Christian Classics — Ochorus",
+        "What does abiding in Christ mean? The classics on union and communion with the Lord Jesus — free on Ochorus.",
+    ),
+    "women-of-faith": (
+        "Women of Faith — Free Christian Classics — Ochorus",
+        "The great Christian women of history — mothers, missionaries and mystics whose faith prevailed, free on Ochorus.",
+    ),
+    "voices-of-the-early-church": (
+        "The Early Church Fathers — Free Classics — Ochorus",
+        "Who were the church fathers? The faith of the first centuries in its own words, free to read on Ochorus.",
+    ),
+    "day-by-day": (
+        "Daily Devotional Classics — Free to Read — Ochorus",
+        "The best daily devotionals — a reading for the morning and the evening, free to read on Ochorus.",
+    ),
+    "the-east-african-revival": (
+        "The East African Revival — Free Classics — Ochorus",
+        "What was the East African Revival? Tukutendereza Yesu — the awakening in its own voices, free on Ochorus.",
+    ),
+    "contemporary-voices": (
+        "Modern Christian Classics — Free to Read — Ochorus",
+        "The best modern Christian books — living guides writing on the old road, free to read on Ochorus.",
+    ),
+    "the-inner-life": (
+        "The Inner Life — Free Christian Classics — Ochorus",
+        "Christian mysticism and the contemplative life — the path that turns inward, free to read on Ochorus.",
+    ),
+    "the-great-awakening": (
+        "The Great Awakening — Free Classics — Ochorus",
+        "What was the Great Awakening? The preaching that shook two continents, free to read on Ochorus.",
+    ),
+    "the-body-of-christ": (
+        "Books on the Church — Free Classics — Ochorus",
+        "What is the body of Christ? The classics on the church as a living whole, members of one another — free on Ochorus.",
+    ),
+    "for-those-who-lead": (
+        "Christian Leadership — Free Classics — Ochorus",
+        "The best books on pastoral ministry — a charge to shepherds and soul-winners, free to read on Ochorus.",
+    ),
+    "the-wesleys-and-early-methodism": (
+        "John Wesley & Early Methodism — Free Classics — Ochorus",
+        "What did John Wesley teach? Wesley's sermons and the awakening that became a movement, free on Ochorus.",
+    ),
+    "foundations-of-the-faith": (
+        "Christian Doctrine — Free Classics — Ochorus",
+        "The basics of the Christian faith — the old doctrines plainly held, free to read on Ochorus.",
+    ),
+    "saints-of-the-african-diaspora": (
+        "The Black Christian Tradition — Free Classics — Ochorus",
+        "The early Black Christian leaders — the gospel carried in Black voices, free to read on Ochorus.",
+    ),
+    "the-grace-of-god": (
+        "The Grace of God — Free Christian Classics — Ochorus",
+        "What is the grace of God? Grace from first to last — free, sovereign and sufficient — the classics, free on Ochorus.",
+    ),
+    "victory-over-sin": (
+        "Books on Overcoming Sin — Free Classics — Ochorus",
+        "How to overcome sin: the classics on mortifying sin and purity of heart, free to read on Ochorus.",
+    ),
+    "to-the-ends-of-the-earth": (
+        "Missionary Biographies — Free to Read — Ochorus",
+        "The great missionary biographies — the missionary journals in full, free to read on Ochorus.",
+    ),
+    "faith-for-the-impossible": (
+        "Faith for the Impossible — Free Classics — Ochorus",
+        "How to have more faith: taking God at his word — orphans fed by prayer alone and more, free on Ochorus.",
+    ),
+    "men-of-valour": (
+        "Christian Books for Men — Free to Read — Ochorus",
+        "The best Christian books for men — a call to pray, to lead, to give everything, free to read on Ochorus.",
+    ),
+}
+
 # A themed Scripture epigraph per topic (KJV — public domain), shown on the
 # topic page. {slug: (reference, verse text)}
 TOPIC_SCRIPTURE = {

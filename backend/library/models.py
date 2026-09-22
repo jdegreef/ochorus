@@ -952,6 +952,13 @@ class Topic(models.Model):
     slug = models.SlugField(max_length=160, unique=True)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
+    # SEO overrides for the topic page's <title> and <meta description>. Both
+    # optional: when blank the reader falls back to "<title> — Ochorus" and to
+    # `description`. English lives here; per-language values ride
+    # `TopicTranslation` like the prose above, so a locale with no override
+    # keeps its localized default (the no-fallback rule of `_localized`).
+    seo_title = models.CharField(max_length=200, blank=True)
+    meta_description = models.CharField(max_length=320, blank=True)
     # A themed Scripture epigraph shown on the topic page (public-domain wording).
     scripture_ref = models.CharField(max_length=120, blank=True)
     scripture_text = models.TextField(blank=True)
@@ -993,6 +1000,12 @@ class Topic(models.Model):
 
     def description_for(self, language: str, *, fallback: bool = False) -> str:
         return self._localized("description", language, fallback=fallback)
+
+    def seo_title_for(self, language: str, *, fallback: bool = False) -> str:
+        return self._localized("seo_title", language, fallback=fallback)
+
+    def meta_description_for(self, language: str, *, fallback: bool = False) -> str:
+        return self._localized("meta_description", language, fallback=fallback)
 
     def scripture_ref_for(self, language: str, *, fallback: bool = False) -> str:
         return self._localized("scripture_ref", language, fallback=fallback)
@@ -1036,6 +1049,12 @@ class TopicTranslation(models.Model):
     language = models.CharField(max_length=10)
     title = models.CharField(max_length=200, blank=True)
     description = models.TextField(blank=True)
+    # Translated SEO overrides — the side-table twins of Topic.seo_title /
+    # Topic.meta_description, surfaced by seo_title_for() / meta_description_for().
+    # Blank until a locale ships one; readers fall back to the localized default,
+    # not the English override (the no-fallback rule).
+    seo_title = models.CharField(max_length=200, blank=True)
+    meta_description = models.CharField(max_length=320, blank=True)
     scripture_ref = models.CharField(max_length=120, blank=True)
     scripture_text = models.TextField(blank=True)
     # Translated Q&A — the side-table twin of Topic.qa, surfaced by qa_for().
