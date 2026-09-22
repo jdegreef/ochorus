@@ -20,7 +20,13 @@
 	const t = i18n.t;
 
 	const active = $derived(favorites.has(kind, slug));
-	const label = $derived(active ? t('fav.saved') : t('fav.save'));
+	// A topic is a shelf you follow, not an item you save, so it gets its own
+	// verb; every other kind keeps the shared "Save"/"Saved".
+	const label = $derived(
+		kind === 'topic'
+			? t(active ? 'fav.followingTopic' : 'fav.followTopic')
+			: t(active ? 'fav.saved' : 'fav.save')
+	);
 </script>
 
 <button
