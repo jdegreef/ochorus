@@ -8,6 +8,7 @@
 	import { localizeHref } from '$lib/href';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
@@ -126,6 +127,7 @@
 			<p class="text-small font-medium text-muted">✓ {t('plans.finished')}</p>
 		{/if}
 		<FavoriteButton kind="plan" slug={plan.slug} showLabel />
+		<ShareButton url={canonical} title={plan.title} showLabel />
 	</div>
 
 	{#if started && next !== null}
@@ -153,7 +155,7 @@
 	     benefit most; a single-book plan is already summarised in the header. -->
 	{#if planBooks.length > 1}
 		<section class="mt-8">
-			<h2 class="section-label">
+			<h2 class="section-heading">
 				{t('plans.inThisPlan')}
 			</h2>
 			<ol class="space-y-2.5">
@@ -177,7 +179,7 @@
 	     shared "Authors" label, so it is already translated in every locale. -->
 	{#if plan.authors?.length}
 		<section class="mt-8">
-			<h2 class="section-label">{t('search.groupAuthors')}</h2>
+			<h2 class="section-heading">{t('search.groupAuthors')}</h2>
 			<p class="text-body">
 				{#each plan.authors as a, i (a.slug)}<a
 						href={localizeHref(`/authors/${a.slug}`)}
