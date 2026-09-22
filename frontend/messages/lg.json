@@ -778,5 +778,10 @@
   "feedback_error": "Something went wrong. Please try again.",
   "account_settings": "Entegeka zange",
   "share_copy_link": "Koppa ekyungo",
-  "share_link_copied": "Ekyungo kikoppeddwa"
+  "share_link_copied": "Ekyungo kikoppeddwa",
+  "book_free_to_read": "Soma ku bwereere",
+  "book_no_account": "Tewetaaga kkawunti",
+  "book_explore": "Noonya",
+  "book_read_in_language": "Soma mu lulimi lwo",
+  "book_available_in": "Ekitabo kino era kiri mu:"
 }

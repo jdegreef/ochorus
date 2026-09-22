@@ -778,5 +778,10 @@
   "feedback_error": "Une erreur s'est produite. Veuillez réessayer.",
   "account_settings": "Mes paramètres",
   "share_copy_link": "Copier le lien",
-  "share_link_copied": "Lien copié"
+  "share_link_copied": "Lien copié",
+  "book_free_to_read": "Lecture gratuite",
+  "book_no_account": "Aucun compte requis",
+  "book_explore": "Explorer",
+  "book_read_in_language": "Lisez dans votre langue",
+  "book_available_in": "Ce livre est aussi disponible en :"
 }

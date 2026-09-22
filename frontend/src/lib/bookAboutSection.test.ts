@@ -54,7 +54,11 @@ describe('the book page states what the book is', () => {
 	});
 
 	it('runs the full page width, like the Contents list below it', () => {
-		const about = PAGE.slice(PAGE.indexOf("{#if book.about_html}"), PAGE.indexOf("{#if book.topics"));
+		// Slice just the About band — from its opening `{#if}` to the opening-excerpt
+		// figure that now follows it (the figure is a reading-measure blockquote and
+		// legitimately carries `max-w-xl`, so it must sit OUTSIDE this window). The
+		// guard is that the About prose band itself sets no reading measure.
+		const about = PAGE.slice(PAGE.indexOf('{#if book.about_html}'), PAGE.indexOf('{#if book.opening}'));
 		expect(about).not.toMatch(/max-w-/);
 	});
 });
