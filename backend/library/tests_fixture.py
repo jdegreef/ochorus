@@ -2576,7 +2576,14 @@ class TopicTranslationFileTests(SimpleTestCase):
         }
 
     def test_every_entry_is_well_formed(self):
-        allowed = {"title", "description", "scripture", "note"}
+        allowed = {
+            "title",
+            "description",
+            "seo_title",
+            "meta_description",
+            "scripture",
+            "note",
+        }
         bad = []
         for lang, entries in self.raw.items():
             for slug, e in entries.items():
@@ -2586,6 +2593,18 @@ class TopicTranslationFileTests(SimpleTestCase):
                         bad.append(f"{where} missing {field}")
                 if set(e) - allowed:
                     bad.append(f"{where} unknown field(s) {sorted(set(e) - allowed)}")
+                # seo_title / meta_description are optional but come as a pair:
+                # a title with no blurb (or vice versa) is a half-written
+                # override — topic_seo() reads both, so both must be present and
+                # non-empty when either is.
+                if (("seo_title" in e) or ("meta_description" in e)) and (
+                    not (e.get("seo_title") or "").strip()
+                    or not (e.get("meta_description") or "").strip()
+                ):
+                    bad.append(
+                        f"{where} seo_title and meta_description must be a "
+                        "non-empty pair"
+                    )
                 sc = e.get("scripture")
                 if sc is not None and (
                     not isinstance(sc, dict)
