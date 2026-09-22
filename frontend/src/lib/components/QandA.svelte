@@ -10,12 +10,19 @@
 	// a list of question/answer pairs. `title` is passed in so each page names the
 	// section in its own words. The section id is fixed to `questions` — the book
 	// page's jump-nav anchor points at `#questions`.
-	let { items, title }: { items: { q: string; a: string }[]; title: string } = $props();
+	// `headingClass` lets a page opt its Questions heading into that page's own
+	// section-heading treatment; it defaults to `text-h3` so pages not yet
+	// converged (topics) are unchanged. The book page passes `section-heading`.
+	let {
+		items,
+		title,
+		headingClass = 'text-h3'
+	}: { items: { q: string; a: string }[]; title: string; headingClass?: string } = $props();
 </script>
 
 {#if items.length}
 	<section id="questions" class="jump-anchor mt-12" aria-labelledby="qa-heading">
-		<h2 id="qa-heading" class="text-h3">{title}</h2>
+		<h2 id="qa-heading" class={headingClass}>{title}</h2>
 		<dl class="mt-4 flex flex-col gap-5">
 			{#each items as item (item.q)}
 				<div>

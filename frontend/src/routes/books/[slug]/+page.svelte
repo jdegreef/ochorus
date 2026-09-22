@@ -277,7 +277,7 @@
 			book.guides?.length ? { id: 'guide', label: 'Reader’s guide' } : null,
 			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
 			{ id: 'contents', label: t('reader.contents') },
-			qa.items.length ? { id: 'questions', label: 'Questions' } : null,
+			qa.items.length ? { id: 'questions', label: t('qa.sectionTitle') } : null,
 			book.related?.length ? { id: 'related', label: t('book.related') } : null
 		].filter((x): x is { id: string; label: string } => x != null)
 	);
@@ -485,7 +485,7 @@
 	     the editions it is without a per-card badge. -->
 	{#if book.editions?.length}
 		<section id="editions" class="jump-anchor mt-8">
-			<h2 class="section-label">{t('book.otherEditions')}</h2>
+			<h2 class="section-heading">{t('book.otherEditions')}</h2>
 			<div class="book-grid">
 				{#each book.editions as ed (ed.slug)}
 					<BookCard book={ed} />
@@ -503,7 +503,7 @@
 	     handles the rare extra. -->
 	{#if book.guides?.length}
 		<section id="guide" class="jump-anchor mt-8">
-			<h2 class="section-label">Reader’s guide</h2>
+			<h2 class="section-heading">Reader’s guide</h2>
 			<ul class="mt-3 flex flex-col gap-3">
 				{#each book.guides as guide (guide.slug)}
 					<li>
@@ -550,7 +550,7 @@
 	     today rather than waiting for a long-form piece to be written. -->
 	{#if book.about_html}
 		<section id="about" class="jump-anchor about-work mt-8" aria-labelledby="about-work">
-			<h2 id="about-work" class="mb-3 text-h3">{t('book.aboutWork')}</h2>
+			<h2 id="about-work" class="section-heading">{t('book.aboutWork')}</h2>
 			<div class="text-body leading-relaxed" dir="auto">
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				{@html book.about_html}
@@ -558,7 +558,7 @@
 		</section>
 	{:else if book.description}
 		<section id="about" class="jump-anchor mt-8" aria-labelledby="about-work">
-			<h2 id="about-work" class="mb-3 text-h3">{t('book.aboutWork')}</h2>
+			<h2 id="about-work" class="section-heading">{t('book.aboutWork')}</h2>
 			<p class="text-body leading-relaxed" dir="auto">{book.description}</p>
 		</section>
 	{/if}
@@ -646,7 +646,15 @@
 	     is a single resume point — so a check means "before where you are", not a
 	     claim the chapter was finished end to end. -->
 	<section id="contents" class="jump-anchor mt-8">
-		<h2 class="section-label">{t('reader.contents')}</h2>
+		<h2 class="section-heading">
+			{t('reader.contents')}
+			<span class="meta"
+				>· {book.chapter_count}
+				{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(
+					totalWords
+				)}</span
+			>
+		</h2>
 		<ol class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}
 				{@const read = resumeHere != null && ch.order < resumeHere}
@@ -675,7 +683,7 @@
 	     set) also feeds the FAQPage JSON-LD in <Seo> via the same pickQa call, so
 	     the visible answers and the structured data stay in lockstep. The shared
 	     <QandA> section id is `questions`, which the jump-nav above points at. -->
-	<QandA items={qa.items} title={t('qa.sectionTitle')} />
+	<QandA items={qa.items} title={t('qa.sectionTitle')} headingClass="section-heading" />
 
 	<!-- People found IN this work who have a bio of their own — an anthology's
 	     subjects, the figures a biography follows. Links to their author pages.
@@ -683,7 +691,7 @@
 	     language is dropped), so every card here is a live link. -->
 	{#if book.featured_people?.length}
 		<section class="mt-12">
-			<h2 class="section-label">{t('book.peopleInBook')}</h2>
+			<h2 class="section-heading">{t('book.peopleInBook')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each book.featured_people as person (person.slug)}
 					<PersonCard {person} />
@@ -694,7 +702,7 @@
 
 	{#if book.related?.length}
 		<section id="related" class="jump-anchor mt-12">
-			<h2 class="section-label">{t('book.related')}</h2>
+			<h2 class="section-heading">{t('book.related')}</h2>
 			<div class="book-grid">
 				{#each book.related as rel (rel.slug)}
 					<BookCard book={rel} showAuthor />
