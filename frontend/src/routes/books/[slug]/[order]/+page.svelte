@@ -14,6 +14,7 @@
 	} from '$lib/progress';
 	import { readerPrefs, MARGIN } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
+	import { nextBarHidden } from '$lib/readerAutohide';
 	import FocusExit from '$lib/components/FocusExit.svelte';
 	import { marks } from '$lib/marks.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -1193,6 +1194,7 @@
 	// HEADER_OFFSET was introduced to end.
 	let saveTimer: ReturnType<typeof setTimeout> | undefined;
 	function onScroll() {
+		trackChrome();
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(() => {
 			if (!body) return;
@@ -1251,6 +1253,31 @@
 			}
 		}
 	});
+
+	// --- Auto-hide the top bar on scroll-down (scroll mode) --------------------
+	// More reading area without a mode to discover: the top bar slides away as you
+	// read on and returns the moment you scroll back up (or reach the top). The
+	// bottom progress bar and the 2px progress hairline stay. `barHidden` is the
+	// raw scroll-direction intent; `hideChrome` gates it so the bar is only ever
+	// hidden in plain scroll reading — never in page-turn or focus mode, and never
+	// while a drawer, the text-settings panel, or a focus-peek owns the screen.
+	let barHidden = $state(false);
+	let lastScrollY = 0;
+	function trackChrome() {
+		const y = window.scrollY;
+		barHidden = nextBarHidden(barHidden, y, lastScrollY, window.innerHeight);
+		lastScrollY = y;
+	}
+	const hideChrome = $derived(
+		barHidden && !paged && !readerUi.focus && !readerUi.panelOpen && !reader.open && !showPeek
+	);
+	// A fresh chapter — or leaving focus mode — opens with the bar visible; the
+	// reader's own scrolling re-hides it.
+	$effect(() => {
+		void chapter.order;
+		void readerUi.focus;
+		barHidden = false;
+	});
 </script>
 
 <Seo
@@ -1296,6 +1323,7 @@
 		class:fixed={paged || showPeek}
 		class:sticky={!paged && !showPeek}
 		class:peeking={showPeek}
+		class:autohidden={hideChrome}
 	>
 		<div
 			class="mx-auto flex items-center justify-between gap-3 py-2.5"
@@ -1748,6 +1776,16 @@
 		.reader-chrome.peeking {
 			animation: none;
 		}
+	}
+	/* Auto-hide on scroll-down (scroll mode). The sticky bar slides up off-screen
+	   and back; only a transform, so nothing reflows and the prose stays put. The
+	   bottom progress bar and the top hairline are left pinned. (The global
+	   reduced-motion block near the top of app.css snaps the transition.) */
+	.reader-chrome {
+		transition: transform var(--duration-base) ease;
+	}
+	.reader-chrome.autohidden {
+		transform: translateY(-100%);
 	}
 	/* Touch: give the chrome's icon buttons a full-height tap target (≥44px on
 	   the axis that fits — nine controls can't also be 44px WIDE on a 360px
