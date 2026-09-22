@@ -1231,6 +1231,35 @@ nav.appnav .navsearch:hover {
 	color: var(--muted);
 }
 
+/* One heading for every section of a leaf page — the list sections (Contents,
+   More like this) and the prose sections (About, Questions) used to split
+   between `.section-label` (small uppercase sans) and `.text-h3` (serif), so
+   sibling sections read as two different design languages down one page. This
+   is the single family they now share: the display serif at the h2 step, over
+   a hairline rule that groups each section's heading with its content. Card
+   titles stay a step down at `.text-h3`, so the outline still reads
+   heading → section → card. Rolled out page by page (books first). */
+.section-heading {
+	margin-bottom: 1rem;
+	padding-bottom: 0.4rem;
+	border-bottom: 1px solid var(--border);
+	font-family: var(--font-display);
+	font-size: var(--fs-h2);
+	line-height: 1.2;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	color: var(--text);
+}
+/* A quiet count / length trailing the heading text ("Contents · 15 chapters ·
+   34 min"), on the same baseline but demoted to small muted sans. */
+.section-heading .meta {
+	font-family: var(--font-sans);
+	font-size: var(--fs-small);
+	font-weight: 500;
+	letter-spacing: 0;
+	color: var(--muted);
+}
+
 /* A count beside a label or heading — the chip / tab / result / group counts
    that had drifted through opacity-60, opacity-70, text-muted and text-eyebrow.
    Sets only the count-specific bits (tabular figures + muted ink); the call
