@@ -158,7 +158,7 @@
   "reader_remove_bookmark": "Remove bookmark",
   "reader_bookmarks": "Bookmarks",
   "reader_no_bookmarks": "No bookmarks yet",
-  "notebook_title": "My Notebook",
+  "notebook_title": "Notebook",
   "notebook_subtitle": "Your bookmarks, highlights and notes.",
   "notebook_empty": "Nothing saved yet — bookmark a spot or highlight a passage while reading.",
   "notebook_search": "Search your notes…",
@@ -201,7 +201,7 @@
   "continue_title": "Continue reading",
   "continue_mark_finished": "Mark as finished",
   "continue_chapter": "Chapter",
-  "account_title": "My account",
+  "account_title": "Account",
   "account_signed_in_as": "Signed in as",
   "account_sync_note": "your reading place, highlights and notes sync across devices.",
   "account_signed_out_note": "Sign in (top right) to sync your reading across devices.",
@@ -533,7 +533,7 @@
   "home_recommended_next": "Recommended for you",
   "fav_save": "Save",
   "fav_saved": "Saved",
-  "fav_your_favorites": "My Bookshelf",
+  "fav_your_favorites": "Bookshelf",
   "fav_empty": "Nothing saved yet — tap the heart on an author, book, topic, article or quote to keep it here.",
   "fav_group_authors": "Authors",
   "fav_group_books": "Books",
@@ -776,5 +776,5 @@
   "feedback_thanks_title": "Thank you",
   "feedback_thanks_body": "Your feedback has reached the team.",
   "feedback_error": "Something went wrong. Please try again.",
-  "account_settings": "My Settings"
+  "account_settings": "Settings"
 }
