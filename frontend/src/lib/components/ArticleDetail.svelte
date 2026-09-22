@@ -13,6 +13,7 @@
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -124,6 +125,7 @@
 				<div class="flex shrink-0 items-center gap-2">
 					<!-- Save this article to "My Library". -->
 					<FavoriteButton kind="article" slug={article.slug} />
+					<ShareButton url={canonical} title="{article.h1} — Ochorus" />
 					<ReaderControls />
 				</div>
 			</div>
@@ -154,7 +156,7 @@
 
 		{#if article.related?.length}
 			<aside class="read-next" aria-labelledby="read-next-heading">
-				<h2 id="read-next-heading" class="section-label">{t('articles.readNext')}</h2>
+				<h2 id="read-next-heading" class="section-heading">{t('articles.readNext')}</h2>
 				<ul>
 					{#each article.related as r (r.type + r.slug)}
 						<li>

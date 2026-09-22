@@ -33,6 +33,7 @@
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import LifeTimeline from '$lib/components/LifeTimeline.svelte';
 	import Reader from '$lib/components/Reader.svelte';
@@ -429,6 +430,7 @@
 				<a href={`/quotes/${author.slug}/`} class="btn btn-sm btn-ghost shrink-0">Quotes</a>
 			{/if}
 			<FavoriteButton kind="author" slug={author.slug} showLabel />
+			<ShareButton url={canonical} title={author.name} showLabel />
 			<!-- Reading tools as ONE segmented control — Listen, text settings and
 			     focus mode read as a single cluster of icons rather than three
 			     separate ghost pills (matches the masthead mockup). Shown only when
@@ -582,7 +584,7 @@
 	<!-- Books -->
 	{#if author.books.length}
 		<section id="books" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
-			<h2 class="section-label">
+			<h2 class="section-heading">
 				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal count">({author.books.length})</span>
 			</h2>
@@ -599,7 +601,7 @@
 	<!-- Sermons -->
 	{#if author.sermons.length}
 		<section id="sermons" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
-			<h2 class="section-label">
+			<h2 class="section-heading">
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal count">({author.sermons.length})</span>
 			</h2>
@@ -619,7 +621,7 @@
 	     person cards, and showAuthor so it's clear whose work it is. -->
 	{#if author.appears_in?.length}
 		<section class="mx-auto mt-12 max-w-[40rem]">
-			<h2 class="section-label">{t('author.appearsIn')}</h2>
+			<h2 class="section-heading">{t('author.appearsIn')}</h2>
 			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
 				{#each author.appears_in as book (book.slug)}
 					<BookCard {book} showAuthor />
@@ -642,7 +644,7 @@
 			     so the heading follows the reader's language too. Reuses the same
 			     `qa.sectionTitle` key the book Q&A section uses, so the two read
 			     identically. -->
-			<h2 class="section-label">{t('qa.sectionTitle')}</h2>
+			<h2 class="section-heading">{t('qa.sectionTitle')}</h2>
 			<div class="faq-list">
 				{#each faq as item, i (i)}
 					<details class="faq-item" open={i === 0}>
@@ -657,7 +659,7 @@
 	<!-- More lives to explore: nearest contemporaries by era. -->
 	{#if contemporaries.length}
 		<section class="mx-auto mt-12 max-w-[40rem] border-t border-border pt-8">
-			<h2 class="section-label">{t('author.moreLives')}</h2>
+			<h2 class="section-heading">{t('author.moreLives')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each contemporaries as c (c.slug)}
 					<PersonCard person={c} />

@@ -19,6 +19,7 @@
 	import Emblem from '$lib/components/Emblem.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import QandA from '$lib/components/QandA.svelte';
 	import { topicMeta } from '$lib/emblemNames';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
@@ -244,6 +245,7 @@
 				<!-- Follow this shelf: it lands in "My Library" and updates as the
 				     topic gains works. -->
 				<FavoriteButton kind="topic" slug={topic.slug} showLabel />
+				<ShareButton url={canonical} title={topic.title} showLabel />
 				<!-- A topic is a shelf, and a shelf you can't search is a list you have
 				     to read end to end. -->
 				{#if topic.books.length || topic.sermons.length}
@@ -269,7 +271,7 @@
 
 	{#snippet booksSection()}
 		<section class="mb-10">
-			<h2 class="section-label">{t('topics.books')}</h2>
+			<h2 class="section-heading">{t('topics.books')}</h2>
 
 			<!-- Shelf controls: the filter / sort / grid-list toolbar appears only on a
 			     shelf big enough to need it (showToolbar); the By-author / All-books
@@ -380,7 +382,7 @@
 
 	{#snippet sermonsSection()}
 		<section class="mb-10">
-			<h2 class="section-label">{t('topics.sermons')}</h2>
+			<h2 class="section-heading">{t('topics.sermons')}</h2>
 			<div class="grid gap-3 sm:grid-cols-2">
 				{#each topic.sermons as sermon (sermon.slug)}
 					<SermonCard {sermon} showAuthor />
@@ -391,7 +393,7 @@
 
 	{#snippet articlesSection()}
 		<section class="mb-10">
-			<h2 class="section-label">{t('topics.articles')}</h2>
+			<h2 class="section-heading">{t('topics.articles')}</h2>
 			<div class="grid gap-3 sm:grid-cols-2">
 				{#each articles as article (article.slug)}
 					<ArticleCard {article} />
@@ -413,7 +415,7 @@
 	     only more of the theme. Distinct writers behind the books and sermons. -->
 	{#if authors.length}
 		<section class="mb-10">
-			<h2 class="section-label">{t('topics.authors')}</h2>
+			<h2 class="section-heading">{t('topics.authors')}</h2>
 			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 				{#each authors as person (person.slug)}
 					<PersonCard {person} />
@@ -425,13 +427,13 @@
 	<!-- Questions and Answers about the shelf. `qa.items` also feeds the FAQPage
 	     JSON-LD in <Seo> via the same pickQa call, so the visible answers and the
 	     structured data stay in lockstep. Shared with the book page. -->
-	<QandA items={qa.items} title={t('qa.sectionTitle')} />
+	<QandA items={qa.items} title={t('qa.sectionTitle')} headingClass="section-heading" />
 
 	<!-- Related topics: the lateral "see also", so a shelf is a junction rather
 	     than a dead end. Sibling shelves that share books, most-shared first. -->
 	{#if relatedTopics.length}
 		<section>
-			<h2 class="section-label">{t('topics.related')}</h2>
+			<h2 class="section-heading">{t('topics.related')}</h2>
 			<nav class="related-topics" aria-label={t('topics.related')}>
 				{#each relatedTopics as rel (rel.slug)}
 					<a href={localizeHref(`/topics/${rel.slug}`)} data-sveltekit-preload-data="hover"
