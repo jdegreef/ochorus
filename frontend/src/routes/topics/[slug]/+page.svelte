@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
 	import type { TopicDetail } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { readJSON, writeJSON } from '$lib/persisted';
@@ -8,6 +9,8 @@
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import BookListRow from '$lib/components/BookListRow.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
@@ -22,6 +25,7 @@
 	import { portraitPosition } from '$lib/portraits';
 	import { groupBooksByAuthor } from '$lib/topicBookGroups';
 	import { topicSectionOrder } from '$lib/topicSections';
+	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -51,24 +55,81 @@
 	// there is nothing to group, so the toggle is hidden and it stays flat.
 	const bookGroups = $derived(groupBooksByAuthor(topic.books));
 
-	// How the Books section is laid out. The default is one flat cover grid — the
-	// same dense grid the /books shelf shows — so every topic reads consistently;
-	// an author-clustered topic can switch to per-author sections via the toggle.
-	// Device-local (it describes the reader's preference, not the shelf), and read
-	// after mount so the prerendered HTML is always the flat default. Shared across
-	// topics under one key, mirroring the /books view preference.
-	type BookView = 'all' | 'author';
-	const BOOK_VIEW_KEY = 'ochorus:topic-books-view';
-	let bookView = $state<BookView>('all');
-	// Only the stored 'author' preference overrides the flat default, so a stale or
-	// malformed value can never leave the shelf in a non-existent view.
+	// The Books section's controls. Defaults render one flat cover grid in shelf
+	// order — the same dense grid the /books shelf shows — so a topic reads
+	// consistently with the library; the reader can re-group, re-sort, filter, or
+	// switch to a list. All device-local (they describe the reader, not the shelf)
+	// and read after mount, so the prerendered HTML always ships the flat default.
+	// Same shape and semantics as the /books view preference, under its own key.
+	type Group = 'all' | 'author';
+	type View = 'grid' | 'list';
+	// `-view2`: the key held a bare 'all'|'author' string in the first cut of this
+	// shelf; it now holds a {view, sort, group} bundle, so a fresh key avoids
+	// reading the old string as an object (a harmless one-time preference reset).
+	const PREFS_KEY = 'ochorus:topic-books-view2';
+	// The sort/filter/list controls only earn their space once a shelf is big
+	// enough that scanning it pays off; below this a topic stays the clean grid it
+	// was, with just the group toggle (which is useful at any size).
+	const TOOLBAR_MIN_BOOKS = 12;
+
+	let group = $state<Group>('all');
+	let sort = $state<BookSort>('shelf');
+	let view = $state<View>('grid');
+	// The filter text stays in component state, not the URL: a topic subsection is
+	// not a standalone shelf to deep-link into (unlike /books, whose filters are a
+	// place). SvelteKit reuses this page component across /topics/<slug>
+	// navigations, so the filter would otherwise leak from one topic to the next —
+	// afterNavigate clears it so every topic opens unfiltered.
+	let query = $state('');
+	afterNavigate(() => (query = ''));
 	onMount(() => {
-		if (readJSON<BookView>(BOOK_VIEW_KEY, 'all') === 'author') bookView = 'author';
+		const p = readJSON<{ view?: View; sort?: BookSort; group?: Group }>(PREFS_KEY, {});
+		if (p.view === 'grid' || p.view === 'list') view = p.view;
+		if (p.sort) sort = p.sort;
+		if (p.group === 'all' || p.group === 'author') group = p.group;
 	});
-	const setBookView = (v: BookView) => {
-		bookView = v;
-		writeJSON(BOOK_VIEW_KEY, v);
+	const savePrefs = () => writeJSON(PREFS_KEY, { view, sort, group });
+	const setGroup = (g: Group) => ((group = g), savePrefs());
+	const setView = (v: View) => ((view = v), savePrefs());
+	const onSort = (e: Event) => {
+		sort = (e.currentTarget as HTMLSelectElement).value as BookSort;
+		savePrefs();
 	};
+
+	// The toolbar controls are hidden below the size threshold; when hidden their
+	// (possibly persisted) values must not silently apply a list/longest the reader
+	// can neither see nor undo, so the effective view/sort/query fall back to the
+	// defaults there. The group toggle is exempt — it shows at any size.
+	const showToolbar = $derived(topic.books.length >= TOOLBAR_MIN_BOOKS);
+	const effView = $derived(showToolbar ? view : 'grid');
+	const effSort = $derived(showToolbar ? sort : 'shelf');
+	// Guarded like view/sort: even though afterNavigate clears query per topic, the
+	// guard makes it structurally impossible for a filter to apply where its input
+	// isn't shown (no flash between a reused render and the navigate reset).
+	const effQuery = $derived(showToolbar ? query.trim().toLowerCase() : '');
+
+	// The flat shelf: filtered by the query, then sorted. matchesBookQuery treats
+	// an empty query as "no filter", so this covers the unfiltered case too.
+	const flatBooks = $derived(
+		sortBooks(
+			topic.books.filter((b) => matchesBookQuery(b, effQuery)),
+			effSort
+		)
+	);
+	// The grouped shelf: the original author clusters, each filtered + sorted with
+	// empties dropped — so the author structure stays stable while membership and
+	// order follow the controls.
+	const displayGroups = $derived.by(() => {
+		if (!bookGroups) return null;
+		return bookGroups
+			.map((g) => ({ ...g, items: sortBooks(g.items.filter((b) => matchesBookQuery(b, effQuery)), effSort) }))
+			.filter((g) => g.items.length > 0);
+	});
+	// A filter that matched nothing — distinct from a genuinely empty shelf, which
+	// topicSectionOrder already drops. The grouped and flat views filter the same
+	// partition of topic.books, so flatBooks.length is the match count in both.
+	const noResults = $derived(effQuery !== '' && flatBooks.length === 0);
+	const clearQuery = () => (query = '');
 
 	// Content sections led by the type the topic is mostly made of; empties
 	// dropped. See topicSectionOrder.
@@ -192,33 +253,78 @@
 		<EmptyState message={t('topics.empty')} />
 	{/if}
 
+	<!-- Filtered the shelf down to nothing: offer to clear the query (mirrors the
+	     /books shelf's no-results action). -->
+	{#snippet clearFiltersAction()}
+		<button class="btn btn-ghost" onclick={clearQuery}>{t('common.clearFilters')}</button>
+	{/snippet}
+
 	{#snippet booksSection()}
 		<section class="mb-10">
-			<!-- The section label rides a row with the layout toggle, so the control
-			     sits with the shelf it governs. The toggle only appears when the topic
-			     is author-clustered enough to be worth grouping (bookGroups != null). -->
-			<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
-				<h2 class="section-label !mb-0">{t('topics.books')}</h2>
-				{#if bookGroups}
-					<div class="seg">
-						<button
-							class:active={bookView === 'all'}
-							onclick={() => setBookView('all')}
-							aria-pressed={bookView === 'all'}>{t('books.groupAll')}</button
-						>
-						<button
-							class:active={bookView === 'author'}
-							onclick={() => setBookView('author')}
-							aria-pressed={bookView === 'author'}>{t('books.groupAuthor')}</button
-						>
-					</div>
-				{/if}
-			</div>
-			{#if bookGroups && bookView === 'author'}
-				<!-- Grouped by author (author-dominated topic). The heading names the
-				     author, so the cards below it don't repeat it. -->
+			<h2 class="section-label">{t('topics.books')}</h2>
+
+			<!-- Shelf controls: the filter / sort / grid-list toolbar appears only on a
+			     shelf big enough to need it (showToolbar); the By-author / All-books
+			     toggle appears whenever the topic clusters, at any size. The row is
+			     omitted entirely when neither applies, so a small flat topic is just
+			     its grid. Order mirrors the /books shelf: filter · sort · group · view. -->
+			{#if showToolbar || bookGroups}
+				<div class="filter-row mb-6">
+					{#if showToolbar}
+						<input
+							bind:value={query}
+							type="search"
+							class="filter-field grow"
+							placeholder={t('books.filterPlaceholder')}
+							aria-label={t('books.filterPlaceholder')}
+						/>
+						<select value={sort} onchange={onSort} class="filter-field" aria-label={t('common.sort')}>
+							<option value="shelf">{t('common.sortShelf')}</option>
+							<option value="title">{t('common.sortTitle')}</option>
+							<option value="longest">{t('common.sortLongest')}</option>
+							<option value="shortest">{t('common.sortShortest')}</option>
+						</select>
+					{/if}
+					{#if bookGroups}
+						<div class="seg">
+							<button
+								class:active={group === 'all'}
+								onclick={() => setGroup('all')}
+								aria-pressed={group === 'all'}>{t('books.groupAll')}</button
+							>
+							<button
+								class:active={group === 'author'}
+								onclick={() => setGroup('author')}
+								aria-pressed={group === 'author'}>{t('books.groupAuthor')}</button
+							>
+						</div>
+					{/if}
+					{#if showToolbar}
+						<div class="seg">
+							<button
+								class:active={effView === 'grid'}
+								onclick={() => setView('grid')}
+								aria-label={t('books.viewGrid')}
+								aria-pressed={effView === 'grid'}><Icon name="grid" /></button
+							>
+							<button
+								class:active={effView === 'list'}
+								onclick={() => setView('list')}
+								aria-label={t('books.viewList')}
+								aria-pressed={effView === 'list'}><Icon name="list" /></button
+							>
+						</div>
+					{/if}
+				</div>
+			{/if}
+
+			{#if noResults}
+				<EmptyState message={t('books.noResults')} action={clearFiltersAction} />
+			{:else if bookGroups && group === 'author'}
+				<!-- Grouped by author. The heading names the author, so the cards below
+				     it don't repeat it (list rows drop their author for the same reason). -->
 				<div class="flex flex-col gap-8">
-					{#each bookGroups as g (g.slug)}
+					{#each displayGroups ?? [] as g (g.slug)}
 						<div>
 							<GroupHeading
 								as="h3"
@@ -228,12 +334,27 @@
 								portraitPosition={portraitPosition(g.slug)}
 								count={g.items.length}
 							/>
-							<div class="book-grid">
-								{#each g.items as book (book.slug)}
-									<BookCard {book} />
-								{/each}
-							</div>
+							{#if effView === 'list'}
+								<div class="flex flex-col gap-1">
+									{#each g.items as book (book.slug)}
+										<BookListRow {book} showAuthor={false} />
+									{/each}
+								</div>
+							{:else}
+								<div class="book-grid">
+									{#each g.items as book (book.slug)}
+										<BookCard {book} />
+									{/each}
+								</div>
+							{/if}
 						</div>
+					{/each}
+				</div>
+			{:else if effView === 'list'}
+				<!-- One flat list — the author rides each row since no heading names it. -->
+				<div class="flex flex-col gap-1">
+					{#each flatBooks as book (book.slug)}
+						<BookListRow {book} />
 					{/each}
 				</div>
 			{:else}
@@ -241,7 +362,7 @@
 				     /books shelf shows. The author rides each card since no heading
 				     names it. -->
 				<div class="book-grid">
-					{#each topic.books as book (book.slug)}
+					{#each flatBooks as book (book.slug)}
 						<BookCard {book} showAuthor />
 					{/each}
 				</div>
