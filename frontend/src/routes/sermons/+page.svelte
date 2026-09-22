@@ -363,7 +363,7 @@
 		     shelf uses. -->
 		{#if groups.length > 1}
 			<nav
-				class="mb-8 flex flex-wrap items-center gap-1.5"
+				class="chip-scroller mb-8"
 				aria-label={t('sermons.jumpPreacher')}
 			>
 				<span class="eyebrow text-muted me-1">{t('sermons.jumpPreacher')}</span>

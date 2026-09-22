@@ -4,6 +4,7 @@
 	import { localizeHref } from '$lib/href';
 	import { readingTime, bookProgressPercent } from '$lib/reading';
 	import { getProgressRecord } from '$lib/progress';
+	import { splitEdition } from '$lib/edition';
 	import BookCover from './BookCover.svelte';
 	import ProgressBar from './ProgressBar.svelte';
 
@@ -35,6 +36,10 @@
 			? `/books/${book.slug}/${rec.order}?p=${rec.paragraph_index}`
 			: `/books/${book.slug}`
 	);
+
+	// See BookCard: keep a young-reader edition's "(For Teens)" / "(For Children)"
+	// visible on its own line rather than letting the title clamp hide it.
+	const edition = $derived(splitEdition(book.slug, book.title));
 </script>
 
 <a
@@ -54,8 +59,11 @@
 
 	<div class="mt-2 flex flex-1 flex-col px-0.5">
 		<div class="line-clamp-2 text-small font-medium leading-snug text-text" title={book.title}>
-			{book.title}
+			{edition ? edition.base : book.title}
 		</div>
+		{#if edition}
+			<div class="text-eyebrow font-medium text-accent">{edition.audience}</div>
+		{/if}
 		<div class="truncate text-small text-muted" title={book.author.name}>{book.author.name}</div>
 		<div class="mt-auto pt-1.5">
 			{#if inProgress}

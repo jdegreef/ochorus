@@ -1876,6 +1876,37 @@ a.sermon-row-title:hover {
 	}
 }
 
+/* A horizontal shelf of covers (Continue reading, New to the library, an
+   author's book rail). Unlike .chip-scroller it never wraps — a rail always
+   scrolls — so it keeps overflow at every width; but the end-edge fade that
+   signals "more this way" (in place of a hard clip) is only wanted where it
+   actually overflows, i.e. on a phone. So the fade + hidden scrollbar are
+   scoped to <sm, matching .chip-scroller's recipe; a desktop that fits the
+   rail keeps its native scrollbar and no fade. Covers already carry shrink-0. */
+.cover-rail {
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+}
+@media (max-width: 639.98px) {
+	.cover-rail {
+		scrollbar-width: none;
+		-webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
+		mask-image: linear-gradient(to right, #000 88%, transparent);
+	}
+	.cover-rail::-webkit-scrollbar {
+		display: none;
+	}
+	.cover-rail > * {
+		flex-shrink: 0;
+	}
+	/* Runs from the inline-start edge, so the fade is on the END edge — the
+	   left under RTL. */
+	[dir='rtl'] .cover-rail {
+		-webkit-mask-image: linear-gradient(to left, #000 88%, transparent);
+		mask-image: linear-gradient(to left, #000 88%, transparent);
+	}
+}
+
 /* Any input, select or textarea in the app. One height, one radius, one edge.
    `.filter-field` is the same thing under its original name — the filter rows
    on the browse pages read better with it, and both names resolve here. */

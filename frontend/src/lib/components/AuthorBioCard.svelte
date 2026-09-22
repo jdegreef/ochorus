@@ -161,11 +161,13 @@
 	     a 375px phone, where five covers need 368px — so the rail keeps its
 	     horizontal scroll. It costs nothing at widths that don't overflow (no
 	     scrollbar appears) and holds every row to the same height, which
-	     wrapping would not. `overscroll-x-contain` stops a swipe off the end of
-	     the strip from turning into a browser back-navigation. -->
+	     wrapping would not. The shared `.cover-rail` carries the overflow, the
+	     overscroll-contain that stops a swipe off the end from turning into a
+	     browser back-navigation, and — on a phone — an end-edge fade in place of
+	     a hard clip. -->
 	{#if shelf.length}
 			<div
-			class="mt-4 flex gap-3 overflow-x-auto overscroll-x-contain pb-1"
+			class="cover-rail mt-4 flex gap-3 pb-1"
 			aria-label={t('nav.books')}
 		>
 				{#each shelf.slice(0, SHELF_MAX) as book (book.slug)}

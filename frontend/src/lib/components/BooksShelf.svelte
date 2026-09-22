@@ -242,7 +242,7 @@
 						</div>
 					</a>
 				{:else}
-					<div class="flex gap-4 overflow-x-auto pb-1">
+					<div class="cover-rail flex gap-4 pb-1">
 						{#each continueBooks as c (c.book.slug)}
 							<a
 								href={localizeHref(`/books/${c.book.slug}/${c.order}`)}
@@ -266,7 +266,7 @@
 				<h2 class="section-label">
 					{t('books.newTitle')}
 				</h2>
-				<div class="flex gap-4 overflow-x-auto pb-1">
+				<div class="cover-rail flex gap-4 pb-1">
 					{#each recent as book (book.slug)}
 						<a
 							href={localizeHref(`/books/${book.slug}`)}
