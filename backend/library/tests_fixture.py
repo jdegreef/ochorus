@@ -2597,14 +2597,14 @@ class TopicTranslationFileTests(SimpleTestCase):
                 # a title with no blurb (or vice versa) is a half-written
                 # override — topic_seo() reads both, so both must be present and
                 # non-empty when either is.
-                if ("seo_title" in e) or ("meta_description" in e):
-                    if not (e.get("seo_title") or "").strip() or not (
-                        e.get("meta_description") or ""
-                    ).strip():
-                        bad.append(
-                            f"{where} seo_title and meta_description must be a "
-                            "non-empty pair"
-                        )
+                if (("seo_title" in e) or ("meta_description" in e)) and (
+                    not (e.get("seo_title") or "").strip()
+                    or not (e.get("meta_description") or "").strip()
+                ):
+                    bad.append(
+                        f"{where} seo_title and meta_description must be a "
+                        "non-empty pair"
+                    )
                 sc = e.get("scripture")
                 if sc is not None and (
                     not isinstance(sc, dict)
