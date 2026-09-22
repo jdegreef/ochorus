@@ -1,46 +1,68 @@
 {
   "christ-and-the-cross": {
     "title": "Kristo na msalaba",
-    "description": "Nafsi na kazi ya Mwokozi — Mwana-Kondoo aliyechinjwa, aibu na ushindi wa msalaba, ubora wa Kristo, na kaburi tupu."
+    "description": "Nafsi na kazi ya Mwokozi — Mwana-Kondoo aliyechinjwa, aibu na ushindi wa msalaba, ubora wa Kristo, na kaburi tupu.",
+    "seo_title": "Vitabu kuhusu Kristo na msalaba — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Kristo na msalaba, soma bila malipo katika Ochorus."
   },
   "deeper-life": {
     "title": "Maisha ya Ndani Zaidi",
-    "description": "Utakatifu, kujisalimisha, na maisha tele yaliyofichwa pamoja na Kristo — vitabu vya kwenda ndani zaidi."
+    "description": "Utakatifu, kujisalimisha, na maisha tele yaliyofichwa pamoja na Kristo — vitabu vya kwenda ndani zaidi.",
+    "seo_title": "Vitabu kuhusu Maisha ya Ndani Zaidi — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maisha ya Ndani Zaidi, soma bila malipo katika Ochorus."
   },
   "enduring-classics": {
     "title": "Vitabu vya Kale Vidumuvyo",
-    "description": "Vitabu vilivyofuatana na wasafiri kwa karne nyingi — ungamo la Agustino, ndoto ya Bunyan, shauri la Kempis — njia za zamani, ambazo bado ni njema."
+    "description": "Vitabu vilivyofuatana na wasafiri kwa karne nyingi — ungamo la Agustino, ndoto ya Bunyan, shauri la Kempis — njia za zamani, ambazo bado ni njema.",
+    "seo_title": "Vitabu kuhusu Vitabu vya Kale Vidumuvyo — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Vitabu vya Kale Vidumuvyo, soma bila malipo katika Ochorus."
   },
   "faith-and-guidance": {
     "title": "Imani na Uongozi",
-    "description": "Kumtumaini Mungu kwa riziki ya kila siku, mwelekeo, na kila ahadi — kuenenda kwa imani, si kwa kuona."
+    "description": "Kumtumaini Mungu kwa riziki ya kila siku, mwelekeo, na kila ahadi — kuenenda kwa imani, si kwa kuona.",
+    "seo_title": "Vitabu kuhusu Imani na Uongozi — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Imani na Uongozi, soma bila malipo katika Ochorus."
   },
   "grace-and-comfort": {
     "title": "Neema na Faraja",
-    "description": "Neema ya Mungu isiyokoma na faraja yake katika kila jaribu — habari njema kwa waliochoka."
+    "description": "Neema ya Mungu isiyokoma na faraja yake katika kila jaribu — habari njema kwa waliochoka.",
+    "seo_title": "Vitabu kuhusu Neema na Faraja — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neema na Faraja, soma bila malipo katika Ochorus."
   },
   "holy-spirit": {
     "title": "Roho Mtakatifu",
-    "description": "Ubatizo wa Roho, kukaa kwake ndani yetu, na kazi yake — nguvu iliyoahidiwa kwa maisha ya Kikristo."
+    "description": "Ubatizo wa Roho, kukaa kwake ndani yetu, na kazi yake — nguvu iliyoahidiwa kwa maisha ya Kikristo.",
+    "seo_title": "Vitabu kuhusu Roho Mtakatifu — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Roho Mtakatifu, soma bila malipo katika Ochorus."
   },
   "prayer": {
     "title": "Kuhusu Maombi",
-    "description": "Kujifunza kuomba — na kuendelea kuomba. Vitabu vya kale kuhusu maisha ya ndani ya maombi, kutoka mahali pa faragha hadi maombezi yenye kudumu."
+    "description": "Kujifunza kuomba — na kuendelea kuomba. Vitabu vya kale kuhusu maisha ya ndani ya maombi, kutoka mahali pa faragha hadi maombezi yenye kudumu.",
+    "seo_title": "Vitabu kuhusu Maombi — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maombi, soma bila malipo katika Ochorus."
   },
   "revival-and-missions": {
     "title": "Uamsho na Umisheni",
-    "description": "Maisha yaliyomwagwa kwa ajili ya injili, na majira ya uamsho — kuni kwa moyo unaowaka."
+    "description": "Maisha yaliyomwagwa kwa ajili ya injili, na majira ya uamsho — kuni kwa moyo unaowaka.",
+    "seo_title": "Vitabu kuhusu Uamsho na Umisheni — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Uamsho na Umisheni, soma bila malipo katika Ochorus."
   },
   "the-gospel-call": {
     "title": "Wito wa Injili",
-    "description": "Mwaliko wa kale kuliko yote — njoo, tubu, amini. Wahubiri wakiwasihi wasioongoka, na ushuhuda wa neema aliyoipata mkuu wa wenye dhambi."
+    "description": "Mwaliko wa kale kuliko yote — njoo, tubu, amini. Wahubiri wakiwasihi wasioongoka, na ushuhuda wa neema aliyoipata mkuu wa wenye dhambi.",
+    "seo_title": "Vitabu kuhusu Wito wa Injili — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Wito wa Injili, soma bila malipo katika Ochorus."
   },
   "the-preached-word": {
     "title": "Neno Lihubiriwalo",
-    "description": "Mahubiri makuu katika kurasa — Whitefield na Wesley kwa sauti kamili, Spurgeon kati ya wakulima wake — na agizo la Baxter kwa kila mchungaji wa roho."
+    "description": "Mahubiri makuu katika kurasa — Whitefield na Wesley kwa sauti kamili, Spurgeon kati ya wakulima wake — na agizo la Baxter kwa kila mchungaji wa roho.",
+    "seo_title": "Vitabu kuhusu Neno Lihubiriwalo — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neno Lihubiriwalo, soma bila malipo katika Ochorus."
   },
   "the-way-of-holiness": {
     "title": "Njia ya Utakatifu",
-    "description": "Kutengwa kwa ajili ya Mungu — amri zikichunguzwa, ukamilifu ukifuatwa kwa unyofu, na shauku za moyo zikijaribiwa na kuonekana kweli."
+    "description": "Kutengwa kwa ajili ya Mungu — amri zikichunguzwa, ukamilifu ukifuatwa kwa unyofu, na shauku za moyo zikijaribiwa na kuonekana kweli.",
+    "seo_title": "Vitabu kuhusu Njia ya Utakatifu — Ochorus",
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Njia ya Utakatifu, soma bila malipo katika Ochorus."
   }
 }
