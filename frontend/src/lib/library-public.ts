@@ -905,6 +905,15 @@ export interface TopicDetail extends TopicSummary {
 	scripture_ref: string;
 	scripture_text: string;
 	/**
+	 * SEO override for the page <title>. The full tag text (already ends in
+	 * "— Ochorus"); "" when the shelf has no override, so the reader falls back
+	 * to `${title} — Ochorus`. English-owned; "" in a locale until localized.
+	 * Optional so an API without the field yet (rolling deploy) reads undefined.
+	 */
+	seo_title?: string;
+	/** SEO override for <meta description>; "" (or absent) → falls back to `description`. */
+	meta_description?: string;
+	/**
 	 * Editorial Questions & Answers about the shelf — hand-authored, grounded in
 	 * the topic, per-language via qa_for (English first). The page shows a
 	 * "Questions and Answers" section and emits FAQPage JSON-LD; empty/absent =
