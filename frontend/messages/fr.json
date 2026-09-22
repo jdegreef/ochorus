@@ -533,6 +533,8 @@
   "home_recommended_next": "Recommandé pour vous",
   "fav_save": "Enregistrer",
   "fav_saved": "Enregistré",
+  "fav_follow_topic": "Suivre ce thème",
+  "fav_following_topic": "Suivi",
   "fav_your_favorites": "Ma bibliothèque",
   "fav_empty": "Rien d’enregistré pour l’instant — touchez le cœur sur un auteur, un livre, un thème, un article ou une citation pour le garder ici.",
   "fav_group_authors": "Auteurs",

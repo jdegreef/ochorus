@@ -211,51 +211,55 @@
 <div class="page-col px-5 py-10" style="--topic: {meta.accent}">
 	<Breadcrumb items={crumbs} />
 
+	<!-- Two-column banner: the description and actions run down the main column
+	     while the Scripture epigraph sits beside them, so the shelf clears the fold
+	     sooner. The verse column wraps under the main one on narrow screens. -->
 	<header class="hero mb-8 mt-4">
 		<span class="badge emblem-chip"><Emblem name={meta.emblem} /></span>
-		<div class="min-w-0">
-			<h1 class="text-h1 mb-2">{topic.title}</h1>
-			{#if topic.description}
-				<!-- No measure cap: the hero is already bounded by the page column, and
-				     capping the text at 36rem inside a 64rem card left the whole header
-				     bunched against the left edge with half the card empty. -->
-				<p class="text-body text-muted">{topic.description}</p>
-			{/if}
+		<div class="hero-body">
+			<div class="hero-main min-w-0">
+				<h1 class="text-h1 mb-2">{topic.title}</h1>
+				{#if topic.description}
+					<!-- No measure cap: the main column is already bounded by its flex
+					     basis, so a cap here would strand the text against the left edge. -->
+					<p class="text-body text-muted">{topic.description}</p>
+				{/if}
+				<div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+					<!-- Follow this shelf: it lands in "My Library" and updates as the
+					     topic gains works. -->
+					<FavoriteButton kind="topic" slug={topic.slug} showLabel />
+					<ShareButton url={canonical} title={topic.title} showLabel />
+					<!-- A topic is a shelf, and a shelf you can't search is a list you have
+					     to read end to end. -->
+					{#if topic.books.length || topic.sermons.length}
+						<a
+							href={localizeHref(scopedSearchHref('topic', topic.slug))}
+							class="inline-block text-small font-semibold text-accent hover:underline"
+							>{t('search.inTopic')} →</a
+						>
+					{/if}
+					<span class="text-small text-muted">
+						{topic.books.length}
+						{topic.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
+						{#if topic.sermons.length}
+							· {topic.sermons.length}
+							{topic.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
+						{/if}
+						{#if articles.length}
+							· {articles.length}
+							{articles.length === 1 ? t('common.articleOne') : t('common.articleMany')}
+						{/if}
+					</span>
+				</div>
+			</div>
 			{#if topic.scripture_text}
-				<figure class="verse">
+				<figure class="verse hero-verse">
 					<blockquote>{topic.scripture_text}</blockquote>
 					{#if topic.scripture_ref}
 						<figcaption>— {topic.scripture_ref}</figcaption>
 					{/if}
 				</figure>
 			{/if}
-			<p class="mt-3 text-small text-muted">
-				{topic.books.length}
-				{topic.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
-				{#if topic.sermons.length}
-					· {topic.sermons.length}
-					{topic.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
-				{/if}
-				{#if articles.length}
-					· {articles.length}
-					{articles.length === 1 ? t('common.articleOne') : t('common.articleMany')}
-				{/if}
-			</p>
-			<div class="mt-3 flex flex-wrap items-center gap-3">
-				<!-- Follow this shelf: it lands in "My Library" and updates as the
-				     topic gains works. -->
-				<FavoriteButton kind="topic" slug={topic.slug} showLabel />
-				<ShareButton url={canonical} title={topic.title} showLabel />
-				<!-- A topic is a shelf, and a shelf you can't search is a list you have
-				     to read end to end. -->
-				{#if topic.books.length || topic.sermons.length}
-					<a
-						href={localizeHref(scopedSearchHref('topic', topic.slug))}
-						class="inline-block text-small font-semibold text-accent hover:underline"
-						>{t('search.inTopic')} →</a
-					>
-				{/if}
-			</div>
 		</div>
 	</header>
 
@@ -456,6 +460,31 @@
 		background:
 			radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--topic) 16%, transparent), transparent 55%),
 			color-mix(in srgb, var(--topic) 7%, var(--color-surface));
+	}
+	/* The banner body beside the emblem: the text column and the Scripture column
+	   sit side by side, and the verse wraps under the text when the row can't hold
+	   both at their basis (narrow screens). The gap spaces them in either axis. */
+	.hero-body {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		gap: 1rem 1.75rem;
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+	.hero-main {
+		flex: 1 1 22rem;
+	}
+	/* The verse as the right-hand column. It keeps the `.verse` accent rule but
+	   drops the stacked top margin (the flex gap spaces it now) and is bounded so a
+	   long epigraph wraps to more lines rather than crowding the text column. The
+	   selector is compounded with `.verse` so the `margin` reset outranks `.verse`'s
+	   own `margin` (which is declared later in this block) and the verse top-aligns
+	   with the text column. */
+	.verse.hero-verse {
+		flex: 1 1 15rem;
+		max-width: 26rem;
+		margin: 0;
 	}
 	/* The hero's emblem chip (recipe in app.css) — only size and hue here. */
 	.badge {
