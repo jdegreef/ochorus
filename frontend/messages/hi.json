@@ -776,5 +776,7 @@
   "feedback_thanks_title": "Thank you",
   "feedback_thanks_body": "Your feedback has reached the team.",
   "feedback_error": "Something went wrong. Please try again.",
-  "account_settings": "मेरी सेटिंग्स"
+  "account_settings": "मेरी सेटिंग्स",
+  "share_copy_link": "लिंक कॉपी करें",
+  "share_link_copied": "लिंक कॉपी हो गया"
 }

@@ -25,6 +25,7 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
@@ -374,6 +375,11 @@
 					<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
 				{/if}
 				<FavoriteButton kind="book" slug={book.slug} showLabel />
+				<!-- Share this edition. Opens the OS share sheet on mobile, else a small
+				     Copy link / WhatsApp / Facebook / Email menu; the URL is this page's
+				     per-locale canonical, and its link preview is the edition's own share
+				     card (shareCard/og-manifest). -->
+				<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
 				<!-- Search inside this book. Goes to the real search scoped to the
 				     book rather than a second, weaker search over cached text: the
 				     reader gets the same ranking, snippets and paging they get

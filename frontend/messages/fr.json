@@ -776,5 +776,7 @@
   "feedback_thanks_title": "Merci",
   "feedback_thanks_body": "Votre retour est bien parvenu à l'équipe.",
   "feedback_error": "Une erreur s'est produite. Veuillez réessayer.",
-  "account_settings": "Mes paramètres"
+  "account_settings": "Mes paramètres",
+  "share_copy_link": "Copier le lien",
+  "share_link_copied": "Lien copié"
 }

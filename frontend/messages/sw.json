@@ -776,5 +776,7 @@
   "feedback_thanks_title": "Thank you",
   "feedback_thanks_body": "Your feedback has reached the team.",
   "feedback_error": "Something went wrong. Please try again.",
-  "account_settings": "Mipangilio yangu"
+  "account_settings": "Mipangilio yangu",
+  "share_copy_link": "Nakili kiungo",
+  "share_link_copied": "Kiungo kimenakiliwa"
 }

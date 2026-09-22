@@ -776,5 +776,7 @@
   "feedback_thanks_title": "Thank you",
   "feedback_thanks_body": "Your feedback has reached the team.",
   "feedback_error": "Something went wrong. Please try again.",
-  "account_settings": "إعداداتي"
+  "account_settings": "إعداداتي",
+  "share_copy_link": "نسخ الرابط",
+  "share_link_copied": "تم نسخ الرابط"
 }
