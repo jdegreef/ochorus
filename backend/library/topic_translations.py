@@ -81,3 +81,22 @@ def topic_scripture() -> dict[str, dict[str, tuple[str, str]]]:
         }
         for lang, payload in raw_topic_translations().items()
     }
+
+
+def topic_seo() -> dict[str, dict[str, tuple[str, str]]]:
+    """``{language: {slug: (seo_title, meta_description)}}`` for entries that
+    carry a localized SEO override.
+
+    Optional per entry, like ``scripture``: a shelf without one keeps the
+    localized-title default in that locale (the reader falls back). Both keys
+    are required together when either is present, so a half-written override
+    fails the release here rather than seeding a stray title with no blurb.
+    """
+    return {
+        lang: {
+            slug: (e["seo_title"], e["meta_description"])
+            for slug, e in _entries(payload).items()
+            if "seo_title" in e or "meta_description" in e
+        }
+        for lang, payload in raw_topic_translations().items()
+    }

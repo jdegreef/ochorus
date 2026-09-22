@@ -35,7 +35,7 @@ from library.topic_seed import (
     TOPIC_SERMONS,
     TOPICS,
 )
-from library.topic_translations import topic_scripture, topic_translations
+from library.topic_translations import topic_scripture, topic_seo, topic_translations
 
 
 class Command(BaseCommand):
@@ -43,7 +43,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **opts):
         created = 0
-        prose, scripture = topic_translations(), topic_scripture()
+        prose, scripture, seo = (
+            topic_translations(),
+            topic_scripture(),
+            topic_seo(),
+        )
         for order, (slug, title, description, book_slugs) in enumerate(TOPICS):
             ref, verse = TOPIC_SCRIPTURE.get(slug, ("", ""))
             qa = TOPIC_QA.get(slug, [])
@@ -125,12 +129,15 @@ class Command(BaseCommand):
                 # must blank the stored one on the next deploy, not leave it
                 # rendering forever. So absent scripture writes "", never skips.
                 ref, verse_tr = scripture.get(lang, {}).get(slug, ("", ""))
+                seo_title_tr, meta_tr = seo.get(lang, {}).get(slug, ("", ""))
                 TopicTranslation.objects.update_or_create(
                     topic=topic,
                     language=lang,
                     defaults={
                         "title": tr[0],
                         "description": tr[1],
+                        "seo_title": seo_title_tr,
+                        "meta_description": meta_tr,
                         "scripture_ref": ref,
                         "scripture_text": verse_tr,
                     },
