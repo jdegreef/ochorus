@@ -776,5 +776,7 @@
   "feedback_thanks_title": "Thank you",
   "feedback_thanks_body": "Your feedback has reached the team.",
   "feedback_error": "Something went wrong. Please try again.",
-  "account_settings": "Entegeka zange"
+  "account_settings": "Entegeka zange",
+  "share_copy_link": "Koppa ekyungo",
+  "share_link_copied": "Ekyungo kikoppeddwa"
 }
