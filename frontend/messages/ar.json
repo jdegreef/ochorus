@@ -778,5 +778,10 @@
   "feedback_error": "Something went wrong. Please try again.",
   "account_settings": "إعداداتي",
   "share_copy_link": "نسخ الرابط",
-  "share_link_copied": "تم نسخ الرابط"
+  "share_link_copied": "تم نسخ الرابط",
+  "book_free_to_read": "قراءة مجانية",
+  "book_no_account": "لا حاجة إلى حساب",
+  "book_explore": "استكشف",
+  "book_read_in_language": "اقرأ بلغتك",
+  "book_available_in": "هذا الكتاب متوفر أيضًا بـ:"
 }

@@ -778,5 +778,10 @@
   "feedback_error": "Algo salió mal. Inténtalo de nuevo.",
   "account_settings": "Mi configuración",
   "share_copy_link": "Copiar enlace",
-  "share_link_copied": "Enlace copiado"
+  "share_link_copied": "Enlace copiado",
+  "book_free_to_read": "Lectura gratuita",
+  "book_no_account": "Sin necesidad de cuenta",
+  "book_explore": "Explorar",
+  "book_read_in_language": "Léelo en tu idioma",
+  "book_available_in": "Este libro también está disponible en:"
 }

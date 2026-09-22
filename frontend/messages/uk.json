@@ -778,5 +778,10 @@
   "feedback_error": "Something went wrong. Please try again.",
   "account_settings": "Мої налаштування",
   "share_copy_link": "Копіювати посилання",
-  "share_link_copied": "Посилання скопійовано"
+  "share_link_copied": "Посилання скопійовано",
+  "book_free_to_read": "Читати безкоштовно",
+  "book_no_account": "Обліковий запис не потрібен",
+  "book_explore": "Досліджуйте",
+  "book_read_in_language": "Читайте своєю мовою",
+  "book_available_in": "Ця книга також доступна:"
 }

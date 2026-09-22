@@ -778,5 +778,10 @@
   "feedback_error": "Something went wrong. Please try again.",
   "account_settings": "Settings",
   "share_copy_link": "Copy link",
-  "share_link_copied": "Link copied"
+  "share_link_copied": "Link copied",
+  "book_free_to_read": "Free to read",
+  "book_no_account": "No account needed",
+  "book_explore": "Explore",
+  "book_read_in_language": "Read in your language",
+  "book_available_in": "This book is also available in:"
 }

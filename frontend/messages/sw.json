@@ -778,5 +778,10 @@
   "feedback_error": "Something went wrong. Please try again.",
   "account_settings": "Mipangilio yangu",
   "share_copy_link": "Nakili kiungo",
-  "share_link_copied": "Kiungo kimenakiliwa"
+  "share_link_copied": "Kiungo kimenakiliwa",
+  "book_free_to_read": "Soma bila malipo",
+  "book_no_account": "Hakuna akaunti inayohitajika",
+  "book_explore": "Gundua",
+  "book_read_in_language": "Soma kwa lugha yako",
+  "book_available_in": "Kitabu hiki pia kinapatikana katika:"
 }

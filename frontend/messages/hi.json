@@ -778,5 +778,10 @@
   "feedback_error": "Something went wrong. Please try again.",
   "account_settings": "मेरी सेटिंग्स",
   "share_copy_link": "लिंक कॉपी करें",
-  "share_link_copied": "लिंक कॉपी हो गया"
+  "share_link_copied": "लिंक कॉपी हो गया",
+  "book_free_to_read": "मुफ़्त में पढ़ें",
+  "book_no_account": "किसी खाते की ज़रूरत नहीं",
+  "book_explore": "एक्सप्लोर करें",
+  "book_read_in_language": "अपनी भाषा में पढ़ें",
+  "book_available_in": "यह पुस्तक इनमें भी उपलब्ध है:"
 }
