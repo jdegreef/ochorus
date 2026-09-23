@@ -7,8 +7,11 @@
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 	import {
 		dailyStreak,
+		collectionsOf,
 		entryTime,
 		faithfulness,
+		inCollection,
+		sameCollection,
 		groupByDay,
 		onThisDay,
 		journalStats,
@@ -32,6 +35,7 @@
 	import FaithfulnessTimeline from '$lib/components/notebook/FaithfulnessTimeline.svelte';
 	import OnThisDay from '$lib/components/notebook/OnThisDay.svelte';
 	import SyncStatus from '$lib/components/notebook/SyncStatus.svelte';
+	import CollectionHead from '$lib/components/notebook/CollectionHead.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 
 	const t = i18n.t;
@@ -93,8 +97,24 @@
 		{ id: 'bookmarks', label: t('reader.bookmarks') }
 	]);
 
-	const journalFilter = $derived<JournalFilter | null>(VIEWS[view].journal);
-	const readingView = $derived<ReadingView | null>(VIEWS[view].reading);
+	// An open collection: every entry filed under one name, whatever its kind —
+	// from its chip, an entry's 📁, or a link (?collection=…).
+	let collectionFilter = $state<string | null>($page.url.searchParams.get('collection'));
+	const collections = $derived(collectionsOf(journal.store));
+	const openCollection = $derived(
+		collectionFilter === null ? null : (collections.find((c) => sameCollection(c.name, collectionFilter!)) ?? null)
+	);
+	function showCollection(name: string | null) {
+		collectionFilter = name;
+		const url = new URL($page.url);
+		if (name) url.searchParams.set('collection', name);
+		else url.searchParams.delete('collection');
+		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
+		if (name) window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+
+	const journalFilter = $derived<JournalFilter | null>(collectionFilter !== null ? 'all' : VIEWS[view].journal);
+	const readingView = $derived<ReadingView | null>(collectionFilter !== null ? null : VIEWS[view].reading);
 	const newKind = $derived<JournalKind>(VIEWS[view].kind);
 	// The clippings fetch every highlighted chapter, so they load the first time
 	// a reading tab is open — never for a reader who stays on the prayer list —
@@ -133,6 +153,7 @@
 	const entries = $derived.by(() => {
 		if (!journalFilter) return [];
 		const list = visibleEntries(journal.store, journalFilter, q);
+		if (collectionFilter !== null) return list.filter((e) => inCollection(e, collectionFilter!));
 		if (view !== 'prayers' || personFilter === null) return list;
 		const who = personFilter.toLowerCase();
 		return list.filter((e) => e.person.trim().toLowerCase() === who);
@@ -150,6 +171,7 @@
 
 	function setView(v: NotebookView) {
 		view = v;
+		if (collectionFilter !== null) showCollection(null);
 		if (VIEWS[v].reading) clippingsLoaded = true;
 		personFilter = null;
 		listFilter = null;
@@ -257,12 +279,29 @@
 				class="field mb-6 w-full"
 			/>
 
+			{#if openCollection}
+				<CollectionHead
+					collection={openCollection}
+					onrenamed={(name) => showCollection(name || null)}
+					onclose={() => showCollection(null)}
+				/>
+			{:else if collections.length && (view === 'all' || view === 'notes')}
+				<!-- The reader's collections, a tap from opening. -->
+				<div class="collections" role="group" aria-label={t('notebook.collections')}>
+					<span class="text-micro font-semibold text-muted">📁 {t('notebook.collections')}</span>
+					{#each collections as c (c.name)}
+						<button class="chip" onclick={() => showCollection(c.name)}>{c.name}<span class="count">{c.count}</span></button>
+					{/each}
+				</div>
+			{/if}
+
 			{#if journalFilter}
 				<section aria-label={t('notebook.myWriting')}>
 					<!-- Keyed on the kind so switching to the Prayers tab starts a prayer. -->
-					{#key `${newKind}:${composerKey}`}
+					{#key `${newKind}:${composerKey}:${collectionFilter}`}
 						<EntryComposer
 							kind={newKind}
+							collectionDefault={openCollection?.name ?? ''}
 							initial={prefill ? { kind: 'prayer', ...prefill } : undefined}
 							onsave={(d) => {
 								journal.add(d);
@@ -339,7 +378,7 @@
 							<h2 class="day">{dayLabel(d.day, d.at)}</h2>
 							<div class="entries">
 								{#each d.entries as e (e.id)}
-									<JournalEntryCard entry={e} {locale} />
+									<JournalEntryCard entry={e} {locale} onopencollection={showCollection} />
 								{/each}
 							</div>
 						{/each}
@@ -563,6 +602,13 @@
 		font-style: italic;
 	}
 
+	.collections {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.4rem;
+		margin: -0.75rem 0 1.25rem;
+	}
 	.daily-card {
 		display: flex;
 		align-items: center;

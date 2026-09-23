@@ -2,6 +2,8 @@ import { describe, it, expect } from 'vitest';
 import {
 	cleanEntry,
 	cleanSource,
+	collectionsOf,
+	inCollection,
 	composeDaily,
 	dailyStreak,
 	dailyVerse,
@@ -38,6 +40,7 @@ function entry(id: string, over: Partial<JournalEntry> = {}): JournalEntry {
 		title: '',
 		body: id,
 		ref: '',
+		collection: '',
 		person: '',
 		group: '',
 		remind: '',
@@ -320,5 +323,22 @@ describe('journal entries', () => {
 			['', 1, ['Sam']]
 		]);
 		expect(prayersByGroup(store, 'gulu').map((l) => l.group)).toEqual(['missions']);
+	});
+
+	it('lists collections, matched whatever their case, most recently used first', () => {
+		const store = cleanStore({
+			a: entry('a', { collection: 'Notes on Humility', updatedAt: T0 + 1 }),
+			b: entry('b', { collection: '  notes on humility ', updatedAt: T0 + 9 }),
+			r: entry('r', { collection: 'Romans study', updatedAt: T0 + 5 }),
+			gone: tombstone(entry('gone', { collection: 'Romans study' })),
+			loose: entry('loose')
+		});
+		expect(collectionsOf(store)).toEqual([
+			{ name: 'Notes on Humility', count: 2, updatedAt: T0 + 9 },
+			{ name: 'Romans study', count: 1, updatedAt: T0 + 5 }
+		]);
+		expect(inCollection(store.b, 'NOTES ON HUMILITY')).toBe(true);
+		expect(inCollection(store.loose, '')).toBe(false);
+		expect(visibleEntries(store, 'all', 'romans').map((e) => e.id)).toEqual(['r']);
 	});
 });

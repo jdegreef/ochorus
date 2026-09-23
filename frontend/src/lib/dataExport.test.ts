@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { toMarkdown, type ExportBundle } from './dataExport';
+import { collectionFileName, collectionMarkdown, toMarkdown, type ExportBundle } from './dataExport';
+import { cleanEntry, type JournalEntry } from './journal';
 
 const bundle: ExportBundle = {
 	app: 'Ochorus',
@@ -58,3 +59,31 @@ describe('data export', () => {
 		expect(md).toContain('No reading data on this device yet');
 	});
 });
+
+describe('collection export', () => {
+	const e = (o: Partial<JournalEntry>) => cleanEntry({ id: o.id ?? 'x', kind: 'note', ...o })!;
+	it('sets a collection out as Markdown, oldest first', () => {
+		const md = collectionMarkdown(
+			'Notes on Humility',
+			[
+				e({ id: 'b', title: 'Dependence', body: 'To let God be all.', createdAt: Date.UTC(2026, 8, 2), ref: 'Phil 2:5',
+					source: { kind: 'book', slug: 'humility', order: 1, p: 3, edition: 'en', title: 'Humility · Chapter 1', quote: 'Humility is the place of entire dependence on God.' } }),
+				e({ id: 'a', kind: 'prayer', body: 'Make me humble.', person: 'Me', createdAt: Date.UTC(2026, 8, 1),
+					answeredAt: Date.UTC(2026, 8, 20), answer: 'Slowly, yes.' })
+			],
+			'2026-09-23T10:00:00.000Z'
+		);
+		expect(md.startsWith('# Notes on Humility\n')).toBe(true);
+		expect(md.indexOf('## Answered prayer — 2026-09-01')).toBeLessThan(md.indexOf('## Dependence — 2026-09-02'));
+		expect(md).toContain('_Note · Phil 2:5_');
+		expect(md).toContain('> — Humility · Chapter 1');
+		expect(md).toContain('**Answered 2026-09-20.** Slowly, yes.');
+	});
+
+	it('names the file after the collection', () => {
+		expect(collectionFileName('Notes on Humility')).toBe('notes-on-humility.md');
+		expect(collectionFileName('Étude: Romains 8')).toBe('etude-romains-8.md');
+		expect(collectionFileName('***')).toBe('collection.md');
+	});
+});
+

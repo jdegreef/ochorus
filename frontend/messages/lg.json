@@ -967,5 +967,15 @@
   "notebook_list_remind": "Nzijukiza okusabira olukalala luno",
   "notebook_list_remind_title": "Nzijukiza okusabira: {group}",
   "notebook_group_remind_summary": "Sabira: {group}",
-  "notebook_all_lists": "Enkalala zonna"
+  "notebook_all_lists": "Enkalala zonna",
+  "notebook_collections": "Ebibinja by'ebiwandiiko",
+  "notebook_collection_label": "Ekibinja",
+  "notebook_collection_placeholder": "Ekibinja (si kya tteeka), ng'Okusoma Abaruumi",
+  "notebook_collection_one": "Ekiwandiiko 1",
+  "notebook_collection_many": "Ebiwandiiko {n}",
+  "notebook_collection_rename": "Kyusa erinnya",
+  "notebook_collection_export": "Fulumya",
+  "notebook_collection_remove": "Ggyawo ekibinja",
+  "notebook_collection_remove_confirm": "Nyiga nate — ebiwandiiko bisigala",
+  "notebook_all_entries": "Byonna"
 }

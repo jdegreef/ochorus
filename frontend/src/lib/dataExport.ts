@@ -12,7 +12,7 @@ import {
 	type BookmarksStore,
 	type WorkKind
 } from './reading-schema';
-import { cleanStore, visibleEntries } from './journal';
+import { cleanStore, visibleEntries, type JournalEntry } from './journal';
 import { listBooks, listSermons, listAuthors, listPlans } from './library-public';
 
 /**
@@ -293,4 +293,42 @@ export function downloadFile(filename: string, mime: string, content: string) {
 	a.click();
 	a.remove();
 	URL.revokeObjectURL(url);
+}
+
+/**
+ * One collection as a Markdown document — "Notes on Humility" to keep, share
+ * or paste elsewhere: each entry oldest first, under its title (or kind) and
+ * date, with the passage it was written from, its words, and — for a prayer —
+ * its updates and how it was answered.
+ */
+export function collectionMarkdown(name: string, entries: JournalEntry[], exportedAt: string): string {
+	const lines: string[] = [`# ${name}`, '', `_Exported ${exportedAt.slice(0, 10)} from Ochorus._`, ''];
+	const kindLabel = (e: JournalEntry) =>
+		e.kind === 'note' ? 'Note' : e.kind === 'daily' ? 'Daily prayer' : e.answeredAt ? 'Answered prayer' : 'Prayer';
+	for (const e of [...entries].sort((a, b) => a.createdAt - b.createdAt)) {
+		const day = new Date(e.createdAt).toISOString().slice(0, 10);
+		lines.push(`## ${e.title || kindLabel(e)} — ${day}`);
+		const meta = [kindLabel(e), e.person && `for ${e.person}`, e.ref].filter(Boolean).join(' · ');
+		lines.push(`_${meta}_`, '');
+		if (e.source?.quote) lines.push(`> ${e.source.quote}`, `> — ${e.source.title}`, '');
+		if (e.body) lines.push(e.body, '');
+		for (const u of e.updates) lines.push(`- ${new Date(u.at).toISOString().slice(0, 10)}: ${u.text}`);
+		if (e.updates.length) lines.push('');
+		if (e.answeredAt) {
+			const when = new Date(e.answeredAt).toISOString().slice(0, 10);
+			lines.push(`**Answered ${when}.**${e.answer ? ` ${e.answer}` : ''}`, '');
+		}
+	}
+	return lines.join('\n');
+}
+
+/** A collection's name as a download file name ("Notes on Humility" → notes-on-humility.md). */
+export function collectionFileName(name: string): string {
+	const slug = name
+		.normalize('NFKD')
+		.replace(/[̀-ͯ]/g, '')
+		.toLowerCase()
+		.replace(/[^\p{L}\p{N}]+/gu, '-')
+		.replace(/^-+|-+$/g, '');
+	return `${slug || 'collection'}.md`;
 }

@@ -6,6 +6,8 @@
 		PRAYER_GROUPS,
 		REF_MAX,
 		TITLE_MAX,
+		COLLECTION_MAX,
+		collectionsOf,
 		knownPeople,
 		type JournalKind,
 		type PrayerGroup
@@ -25,6 +27,7 @@
 		initial,
 		kind: startKind = 'note',
 		editing = false,
+		collectionDefault = '',
 		onsave,
 		oncancel
 	}: {
@@ -33,6 +36,9 @@
 		/** Which kind a NEW entry starts as (the open tab decides). */
 		kind?: JournalKind;
 		editing?: boolean;
+		/** File a new entry in this collection unless the reader changes it —
+		 *  the collection that is open. Does not open the composer by itself. */
+		collectionDefault?: string;
 		onsave: (draft: EntryDraft) => void;
 		oncancel?: () => void;
 	} = $props();
@@ -49,6 +55,7 @@
 			ref: '',
 			person: '',
 			group: '' as PrayerGroup | '',
+			collection: collectionDefault,
 			...initial
 		},
 		// A new entry opens as one line and unfolds when the reader starts writing
@@ -61,6 +68,10 @@
 	let ref = $state(seed.draft.ref);
 	let person = $state(seed.draft.person);
 	let group = $state<PrayerGroup | ''>(seed.draft.group);
+	let collection = $state(seed.draft.collection);
+	// The reader's collections, most recent first, to file this under in a tap.
+	const collectionNames = $derived(collectionsOf(journal.store).map((c) => c.name));
+	const collectionListId = `collections-${Math.random().toString(36).slice(2, 8)}`;
 	let open = $state(seed.open);
 
 	// Everyone already prayed for, so "Anna" is typed once and picked after.
@@ -73,6 +84,7 @@
 		ref = '';
 		person = '';
 		group = '';
+		collection = seed.draft.collection;
 		open = false;
 	}
 
@@ -80,7 +92,7 @@
 
 	function save() {
 		if (!canSave) return;
-		onsave({ kind, title, body, ref, person, group });
+		onsave({ kind, title, body, ref, person, group, collection });
 		if (!editing) reset();
 	}
 
@@ -167,14 +179,28 @@
 		</div>
 	{/if}
 	{#if open}
-		<input
-			class="field ref-field mt-3 w-full"
-			bind:value={ref}
-			maxlength={REF_MAX}
-			placeholder={t('notebook.refPlaceholder')}
-			aria-label={t('notebook.refLabel')}
-			{onkeydown}
-		/>
+		<div class="mt-3 flex flex-wrap gap-2">
+			<input
+				class="field ref-field grow"
+				bind:value={ref}
+				maxlength={REF_MAX}
+				placeholder={t('notebook.refPlaceholder')}
+				aria-label={t('notebook.refLabel')}
+				{onkeydown}
+			/>
+			<input
+				class="field collection-field"
+				bind:value={collection}
+				list={collectionListId}
+				maxlength={COLLECTION_MAX}
+				placeholder={t('notebook.collectionPlaceholder')}
+				aria-label={t('notebook.collectionLabel')}
+				{onkeydown}
+			/>
+			<datalist id={collectionListId}>
+				{#each collectionNames as name (name)}<option value={name}></option>{/each}
+			</datalist>
+		</div>
 		<div class="mt-4 flex flex-wrap items-center justify-end gap-2">
 			<DictateButton ontext={(said) => (body = appendPhrase(body, said))} />
 			<span class="me-auto text-micro text-muted">{t('notebook.saveHint')}</span>
@@ -266,6 +292,9 @@
 	}
 	.ref-field {
 		font-style: italic;
+	}
+	.collection-field {
+		flex: 1 1 12rem;
 	}
 	.person-field {
 		flex: 1 1 12rem;

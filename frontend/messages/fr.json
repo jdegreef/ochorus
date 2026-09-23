@@ -967,5 +967,15 @@
   "notebook_list_remind": "Me rappeler de prier pour cette liste",
   "notebook_list_remind_title": "Me rappeler de prier pour : {group}",
   "notebook_group_remind_summary": "Prier pour : {group}",
-  "notebook_all_lists": "Toutes les listes"
+  "notebook_all_lists": "Toutes les listes",
+  "notebook_collections": "Recueils",
+  "notebook_collection_label": "Recueil",
+  "notebook_collection_placeholder": "Recueil (facultatif), p. ex. Étude de Romains",
+  "notebook_collection_one": "1 entrée",
+  "notebook_collection_many": "{n} entrées",
+  "notebook_collection_rename": "Renommer",
+  "notebook_collection_export": "Exporter",
+  "notebook_collection_remove": "Retirer le recueil",
+  "notebook_collection_remove_confirm": "Touchez encore — les entrées sont conservées",
+  "notebook_all_entries": "Tout"
 }

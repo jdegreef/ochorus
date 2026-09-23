@@ -118,6 +118,12 @@ class JournalTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual((res.data["kind"], res.data["person"], res.data["answered_at"]), ("daily", "", None))
 
+    def test_collection_is_kept_trimmed_and_forgotten_on_delete(self):
+        res = self.put("c1", kind="note", body="x", collection="  Notes on Humility  ")
+        self.assertEqual(res.data["collection"], "Notes on Humility")
+        self.put("c1", deleted=True)
+        self.assertEqual(JournalEntry.objects.get(entry_id="c1").collection, "")
+
     def test_only_a_prayer_is_answered(self):
         self.put("n1", kind="note", body="x", answer="y", answered_at=5000)
         obj = JournalEntry.objects.get(profile=self.profile)

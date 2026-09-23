@@ -882,6 +882,7 @@ def _journal_source(value) -> dict | None:
 
 
 _JOURNAL_BLANK = {
+    "collection": "",
     "title": "",
     "body": "",
     "answer": "",
@@ -941,6 +942,8 @@ def _journal_fields(data) -> dict | None:
         "answer": text("answer", JOURNAL_ANSWER_MAX) if answered else "",
         "answered_at": answered,
         "ref": text("ref", 200),
+        # Whitespace-trimmed, so "Romans " and "Romans" are one collection.
+        "collection": text("collection", 200).strip()[:80],
         # Who a prayer is for, its group, reminder and follow-ups are prayer
         # things; a note carries none of them.
         "person": text("person", 80) if prayer else "",

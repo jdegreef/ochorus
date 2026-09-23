@@ -967,5 +967,15 @@
   "notebook_list_remind": "ذكّرني بالصلاة لأجل هذه القائمة",
   "notebook_list_remind_title": "ذكّرني بالصلاة لأجل: {group}",
   "notebook_group_remind_summary": "صلِّ لأجل: {group}",
-  "notebook_all_lists": "كل القوائم"
+  "notebook_all_lists": "كل القوائم",
+  "notebook_collections": "المجموعات",
+  "notebook_collection_label": "المجموعة",
+  "notebook_collection_placeholder": "المجموعة (اختياري)، مثل دراسة رومية",
+  "notebook_collection_one": "مُدخل واحد",
+  "notebook_collection_many": "{n} مُدخلات",
+  "notebook_collection_rename": "إعادة التسمية",
+  "notebook_collection_export": "تصدير",
+  "notebook_collection_remove": "إزالة المجموعة",
+  "notebook_collection_remove_confirm": "اضغط مرة أخرى — تبقى المُدخلات",
+  "notebook_all_entries": "الكل"
 }

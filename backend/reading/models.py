@@ -511,6 +511,10 @@ class JournalEntry(models.Model):
     answered_at = models.DateTimeField(null=True, blank=True)
     # Optional Scripture / passage reference the entry is about ("Psalm 23").
     ref = models.CharField(max_length=200, blank=True)
+    # The collection the reader filed it in ("Notes on Humility", "Romans
+    # study") — a name, not a row: a collection is the entries that share it,
+    # so renaming one is an edit to those entries and nothing else is stored.
+    collection = models.CharField(max_length=80, blank=True)
     # Who or what a prayer is for ("Anna", "Gulu church"), and its group
     # (family / friends / church / missions / work / world) — the Notebook's
     # "by person" prayer list is built from these.

@@ -967,5 +967,15 @@
   "notebook_list_remind": "Nikumbushe kuombea orodha hii",
   "notebook_list_remind_title": "Nikumbushe kuombea: {group}",
   "notebook_group_remind_summary": "Ombea: {group}",
-  "notebook_all_lists": "Orodha zote"
+  "notebook_all_lists": "Orodha zote",
+  "notebook_collections": "Makusanyo",
+  "notebook_collection_label": "Mkusanyo",
+  "notebook_collection_placeholder": "Mkusanyo (si lazima), mf. Somo la Warumi",
+  "notebook_collection_one": "Andiko 1",
+  "notebook_collection_many": "Maandiko {n}",
+  "notebook_collection_rename": "Badilisha jina",
+  "notebook_collection_export": "Hamisha",
+  "notebook_collection_remove": "Ondoa mkusanyo",
+  "notebook_collection_remove_confirm": "Gusa tena — maandiko yanabaki",
+  "notebook_all_entries": "Yote"
 }
