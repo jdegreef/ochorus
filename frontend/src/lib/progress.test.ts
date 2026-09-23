@@ -5,8 +5,10 @@ import {
 	getProgressRecord,
 	markFinished,
 	unmarkFinished,
-	isFinished
+	isFinished,
+	offerFinishUnopened
 } from './progress';
+import { undo } from './undo.svelte';
 
 // The account mirror is a no-op in these unit tests — we only assert the local
 // cache the reader resumes from.
@@ -109,5 +111,22 @@ describe('finishing a work', () => {
 		markFinished('humility', 'sermon');
 		expect(isFinished('humility', 'sermon')).toBe(true);
 		expect(isFinished('humility', 'book')).toBe(false);
+	});
+});
+
+describe('finishing a book never opened here (the Bookshelf "already read")', () => {
+	it('shelves it as finished at its last chapter, and Undo removes every trace', () => {
+		offerFinishUnopened('humility', 12, 'en');
+		expect(getProgressRecord('humility')).toMatchObject({ order: 12, paragraph_index: 0 });
+		expect(isFinished('humility')).toBe(true);
+		undo.act();
+		expect(getProgressRecord('humility')).toBeNull();
+	});
+
+	it('defers to the ordinary finish for a book that has a position', () => {
+		saveProgress('humility', 3, 'en');
+		offerFinishUnopened('humility', 12, 'en');
+		expect(getProgressRecord('humility')).toMatchObject({ order: 3 });
+		expect(isFinished('humility')).toBe(true);
 	});
 });

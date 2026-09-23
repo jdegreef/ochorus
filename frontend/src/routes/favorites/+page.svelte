@@ -26,6 +26,8 @@
 	import { topicMeta } from '$lib/emblemNames';
 	import { allProgress } from '$lib/progress';
 	import { buildShelves, shelfHref } from '$lib/bookshelf';
+	import { readJSON, writeJSON } from '$lib/persisted';
+	import Icon from '$lib/components/Icon.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import Bookshelf from '$lib/components/Bookshelf.svelte';
@@ -118,6 +120,17 @@
 	const bookCount = $derived(
 		shelves.reading.length + shelves.toRead.length + shelves.finished.length
 	);
+	// Covers or spines — a per-device preference, like the reader's own layout
+	// settings, so it lives in localStorage and isn't synced.
+	const VIEW_KEY = 'ochorus:shelf-view';
+	let view = $state<'covers' | 'spines'>(
+		readJSON<string>(VIEW_KEY, 'covers') === 'spines' ? 'spines' : 'covers'
+	);
+	function setView(v: 'covers' | 'spines') {
+		view = v;
+		writeJSON(VIEW_KEY, v);
+	}
+
 	// The book to pick up: the one most recently read.
 	const current = $derived(shelves.reading[0]);
 	const hasOthers = $derived(allFavs.some((e) => e.kind !== 'book'));
@@ -244,13 +257,29 @@
 	{/if}
 
 	{#if loaded}
+		{#if bookCount}
+			<div class="-mb-6 mt-8 flex justify-end">
+				<div class="view-toggle" role="group" aria-label={t('fav.shelfView')}>
+					<button type="button" aria-pressed={view === 'covers'} onclick={() => setView('covers')}>
+						<Icon name="grid" size={15} />
+						{t('fav.viewCovers')}
+					</button>
+					<button type="button" aria-pressed={view === 'spines'} onclick={() => setView('spines')}>
+						<Icon name="layers" size={15} />
+						{t('fav.viewSpines')}
+					</button>
+				</div>
+			</div>
+		{/if}
 		<Bookshelf
+			{view}
 			id="reading"
 			title={t('fav.shelfReading')}
 			items={shelves.reading}
 			emptyHint={t('fav.shelfReadingEmpty')}
 		/>
 		<Bookshelf
+			{view}
 			id="to-read"
 			title={t('fav.shelfToRead')}
 			items={shelves.toRead}
@@ -264,6 +293,7 @@
 			</div>
 		{/if}
 		<Bookshelf
+			{view}
 			id="finished"
 			title={t('fav.shelfFinished')}
 			items={shelves.finished}
@@ -411,3 +441,31 @@
 		</section>
 	{/if}
 </div>
+
+<style>
+	.view-toggle {
+		display: inline-flex;
+		padding: 3px;
+		gap: 2px;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-surface);
+	}
+	.view-toggle button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.3rem 0.8rem;
+		border: 0;
+		border-radius: 999px;
+		background: transparent;
+		color: var(--color-muted);
+		font-size: var(--fs-small);
+		cursor: pointer;
+	}
+	.view-toggle button[aria-pressed='true'] {
+		background: var(--color-accent-soft);
+		color: var(--color-accent);
+		font-weight: 600;
+	}
+</style>

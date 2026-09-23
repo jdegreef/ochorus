@@ -114,3 +114,45 @@ export function shelfHref(item: ShelfBook): string {
 	}
 	return `/books/${item.book.slug}`;
 }
+
+/**
+ * A book's spine in the spines view, in px at full scale. Thickness follows
+ * the book's length (word count, else chapters) so a long work looks it;
+ * height varies a little per book — steadily, from its slug — so a shelf of
+ * spines is uneven the way real books are, but doesn't reshuffle on reload.
+ */
+export function spineSize(book: Pick<BookSummary, 'slug' | 'word_count' | 'chapter_count'>): {
+	width: number;
+	height: number;
+} {
+	const bulk = book.word_count ? book.word_count / 7000 : book.chapter_count * 0.9;
+	const width = Math.round(22 + Math.min(22, Math.max(0, bulk)));
+	let h = 0;
+	for (const c of book.slug) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+	const height = 150 + (h % 6) * 7; // 150–185
+	return { width, height };
+}
+
+/**
+ * Pack spines into shelf rows, left to right, starting a new row when the next
+ * spine won't fit in `avail` px (`gap` between spines). Returns item indices
+ * per row. A spine wider than a whole row still gets a row of its own.
+ */
+export function packRows(widths: number[], avail: number, gap: number): number[][] {
+	const rows: number[][] = [];
+	let row: number[] = [];
+	let used = 0;
+	widths.forEach((w, i) => {
+		const need = row.length ? used + gap + w : w;
+		if (row.length && need > avail) {
+			rows.push(row);
+			row = [i];
+			used = w;
+		} else {
+			row.push(i);
+			used = need;
+		}
+	});
+	if (row.length) rows.push(row);
+	return rows;
+}

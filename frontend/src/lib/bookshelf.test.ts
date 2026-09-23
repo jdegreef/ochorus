@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildShelves, shelfHref } from './bookshelf';
+import { buildShelves, packRows, shelfHref, spineSize } from './bookshelf';
 import type { BookSummary } from './library-public';
 
 const book = (slug: string, chapter_count = 10) =>
@@ -70,5 +70,25 @@ describe('buildShelves', () => {
 		const s = buildShelves(catalog, [fav('c', 1)], [{ ...rec('a', 3, 1), paragraph_index: 7 }]);
 		expect(shelfHref(s.reading[0])).toBe('/books/a/3?p=7');
 		expect(shelfHref(s.toRead[0])).toBe('/books/c');
+	});
+});
+
+describe('spines', () => {
+	it('sizes a longer book thicker, within bounds, and stably', () => {
+		const thin = spineSize({ slug: 'a', word_count: 8000, chapter_count: 3 });
+		const thick = spineSize({ slug: 'a', word_count: 400000, chapter_count: 40 });
+		expect(thin.width).toBeLessThan(thick.width);
+		expect(thick.width).toBe(44);
+		expect(spineSize({ slug: 'a', word_count: null, chapter_count: 3 })).toEqual(
+			spineSize({ slug: 'a', word_count: null, chapter_count: 3 })
+		);
+		expect(thin.height).toBeGreaterThanOrEqual(150);
+		expect(thin.height).toBeLessThanOrEqual(185);
+	});
+
+	it('packs spines into rows that fit, keeping order', () => {
+		expect(packRows([30, 30, 30, 30], 100, 5)).toEqual([[0, 1, 2], [3]]);
+		expect(packRows([200, 10], 100, 5)).toEqual([[0], [1]]);
+		expect(packRows([], 100, 5)).toEqual([]);
 	});
 });

@@ -3,12 +3,12 @@
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
-	import { offerFinish, unmarkFinished } from '$lib/progress';
 	import { splitEdition } from '$lib/edition';
 	import { shelfHref, type ShelfBook } from '$lib/bookshelf';
 	import BookCover from './BookCover.svelte';
 	import Icon from './Icon.svelte';
 	import ProgressBar from './ProgressBar.svelte';
+	import ShelfBookActions from './ShelfBookActions.svelte';
 
 	/**
 	 * One cell of a Bookshelf row: a strip of the case's back wall with the book
@@ -23,8 +23,10 @@
 	 * (for a book still to read) how long it is.
 	 *
 	 * A reading book links straight back to the exact paragraph; anything else to
-	 * the book's page. A corner button finishes a book being read (with Undo), or
-	 * puts a finished one back on the Reading shelf, without opening it.
+	 * the book's page. A "⋯" button in the corner opens the book's actions
+	 * (ShelfBookActions) — finish, un-finish, download, remove — without opening
+	 * it: faint until the cell is hovered or the button focused, always there on
+	 * touch.
 	 */
 	let { item }: { item: ShelfBook | null } = $props();
 	const t = i18n.t;
@@ -39,17 +41,34 @@
 			? `${t('continue.chapter')} ${item.order} / ${item.book.chapter_count} · ${item.pct}%`
 			: ''
 	);
-	const toggleLabel = $derived(
-		item?.status === 'finished' ? t('settings.unfinish') : t('continue.markFinished')
-	);
 
-	function toggleFinished(e: Event) {
-		e.preventDefault();
-		if (!item) return;
-		if (item.status === 'finished') unmarkFinished(item.book.slug, 'book');
-		else offerFinish(item.book.slug, 'book');
+	let open = $state(false);
+	let root = $state<HTMLDivElement>();
+	let menu = $state<HTMLDivElement>();
+	// The menu hangs from the button's end edge; in a shelf's first column on a
+	// phone that runs it off the start of the screen. Measure once it's drawn
+	// and anchor it to the other edge instead. Reset on every open.
+	let flip = $state(false);
+	$effect(() => {
+		if (!open || !menu) return;
+		const r = menu.getBoundingClientRect();
+		if (r.left < 8 || r.right > window.innerWidth - 8) flip = true;
+	});
+	function toggle(e: MouseEvent) {
+		e.stopPropagation();
+		flip = false;
+		open = !open;
 	}
 </script>
+
+<svelte:window
+	onclick={(e) => {
+		if (open && root && !root.contains(e.target as Node)) open = false;
+	}}
+	onkeydown={(e) => {
+		if (open && e.key === 'Escape') open = false;
+	}}
+/>
 
 {#if item}
 	{@const book = item.book}
@@ -76,17 +95,30 @@
 					</span>
 				{/if}
 			</a>
-			{#if item.status !== 'toRead'}
+			<div class="absolute end-2.5 top-3.5 {open ? 'z-30' : 'z-10'}" bind:this={root}>
 				<button
 					type="button"
-					onclick={toggleFinished}
-					title={toggleLabel}
-					aria-label="{toggleLabel}: {book.title}"
-					class="absolute end-3 top-4 z-10 flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface-2 text-muted opacity-80 transition hover:text-accent focus-visible:opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
+					onclick={toggle}
+					aria-expanded={open}
+					aria-label="{t('fav.bookActions')}: {book.title}"
+					class="flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface text-muted opacity-90 shadow-sm transition hover:text-accent focus-visible:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 {open
+						? 'sm:opacity-100'
+						: ''}"
 				>
-					<Icon name={item.status === 'finished' ? 'skip-back' : 'check'} size={14} />
+					<Icon name="more" size={16} />
 				</button>
-			{/if}
+				{#if open}
+					<div
+						bind:this={menu}
+						class="account-menu"
+						class:flip
+						role="group"
+						aria-label="{t('fav.bookActions')}: {book.title}"
+					>
+						<ShelfBookActions {item} onDone={() => (open = false)} />
+					</div>
+				{/if}
+			</div>
 		</div>
 		<div class="plank" aria-hidden="true"></div>
 		<div class="label">
@@ -210,6 +242,10 @@
 		box-shadow: 0 7px 9px -6px rgb(0 0 0 / 0.45);
 		position: relative;
 		z-index: 1;
+	}
+	.flip {
+		inset-inline-end: auto;
+		inset-inline-start: 0;
 	}
 	.label {
 		padding: 0.6rem clamp(0.4rem, 1.4vw, 0.9rem) 0;
