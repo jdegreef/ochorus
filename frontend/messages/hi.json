@@ -960,5 +960,12 @@
   "notebook_sync_done": "सब सिंक हो गया",
   "notebook_sync_entry_pending": "इसी डिवाइस पर",
   "notebook_sync_entry_pending_hint": "इसी डिवाइस पर सहेजा गया; संभव होते ही आपके खाते से सिंक हो जाएगा।",
-  "notebook_sync_entry_done": "आपके खाते से सिंक हो गया"
+  "notebook_sync_entry_done": "आपके खाते से सिंक हो गया",
+  "notebook_by_group": "समूह के अनुसार",
+  "notebook_one_list_prayer": "1 प्रार्थना",
+  "notebook_list_prayers": "{n} प्रार्थनाएँ",
+  "notebook_list_remind": "इस सूची के लिए प्रार्थना करना याद दिलाएँ",
+  "notebook_list_remind_title": "इनके लिए प्रार्थना याद दिलाएँ: {group}",
+  "notebook_group_remind_summary": "इनके लिए प्रार्थना करें: {group}",
+  "notebook_all_lists": "सभी सूचियाँ"
 }
