@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-23: NEW English plan — rooted-book-4-30-days ("Rooted: 30 Days with
+// God — Book 4"), a LAUNCH_PLANS entry over rooted-4 reading chapters 2–31 (Day 1–30). English only.
+// /plans re-crawls to bake the new card.
 // prerender refresh 2026-09-22: NEW English plan — rooted-book-3-30-days ("Rooted: 30 Days with
 // God — Book 3"), a LAUNCH_PLANS entry over rooted-3 reading chapters 2–31 (Day 1–30). English only.
 // /plans re-crawls to bake the new card.
