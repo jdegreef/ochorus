@@ -3,7 +3,8 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { coverStyleFor, volumeNumeral } from './coverStyles';
+import { coverLayoutFor, layoutKey } from './coverLayouts';
+import { coverStyleFor, scriptOf, volumeNumeral } from './coverStyles';
 import { baseEdition } from './reading-schema';
 import { eraOf } from './eras';
 import { COVER_CSS_CODE } from '../test/coverCss';
@@ -63,7 +64,7 @@ function once<T>(read: () => T): () => T {
 const STATIC = resolve(process.cwd(), 'static');
 const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content');
 
-type Twin = { ground: string; style: string; volume?: string | null };
+type Twin = { ground: string; style: string; volume?: string | null; layout?: string };
 
 const manifestText = once(() => readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8'));
 const manifestFile = once(() => JSON.parse(manifestText()));
@@ -116,7 +117,10 @@ const needTwins = once(() => {
 			// exists to catch, one directory up.
 			key: twinUrl(f.slug, f.language).replace('/covers/', '').replace(/\.png$/, ''),
 			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
-			volume: volumeNumeral(f.slug, baseEdition(f.language))
+			volume: volumeNumeral(f.slug, baseEdition(f.language)),
+			layout: layoutKey(
+				isArtCover(f.cover_url) ? coverLayoutFor(f.slug, scriptOf(f.language || 'en')) : null
+			)
 		}));
 });
 
@@ -233,6 +237,21 @@ describe('the og twins were drawn in the style the table names now', () => {
 		expect(
 			stale,
 			'an author was restyled but their share cards were not redrawn — run ' +
+				'`cd frontend && npm run og:covers`'
+		).toEqual([]);
+	});
+
+	it('composes every card in the layout the table names', () => {
+		// `coverLayouts.ts` is a table Python cannot read, like the style, so it
+		// is recorded beside the digest and checked here. An entry without one
+		// predates layouts, and every card drawn then was framed.
+		const recorded = manifest();
+		const stale = needTwins()
+			.filter((b) => recorded[b.key] && (recorded[b.key].layout ?? 'framed') !== b.layout)
+			.map((b) => `${b.key}: drawn ${recorded[b.key].layout ?? 'framed'}, now ${b.layout}`);
+		expect(
+			stale,
+			'a work was given a layout but its share cards were not redrawn — run ' +
 				'`cd frontend && npm run og:covers`'
 		).toEqual([]);
 	});

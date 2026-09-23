@@ -121,6 +121,7 @@ import {
 // set in the Latin face and laid out left-to-right.
 import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
+import { coverLayoutFor, layoutKey } from '../src/lib/coverLayouts.ts';
 import { coverStyleFor, scriptOf, volumeNumeral } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 import { baseEdition } from '../src/lib/reading-schema.ts';
@@ -226,7 +227,11 @@ function needTwins() {
 				// And how far its scrim is scaled — the same table the component
 				// reads. A card drawn without this wears the strength the palest
 				// painting in the library needs.
-				scrim: scrimStrength(fields.slug)
+				scrim: scrimStrength(fields.slug),
+				// A painting's composition; a plate takes none.
+				layout: isArtCover(cover)
+					? coverLayoutFor(fields.slug, scriptOf(fields.language || 'en'))
+					: null
 			};
 		})
 		.filter((b) => hasTwin(b.cover));
@@ -439,7 +444,7 @@ function coverPage(book, groundBytes) {
 	// which is what lets its gradient and emblem paint at any size without a
 	// second file. Neither carries a word.
 	const ground = book.art
-		? `<img class="ground" src="data:image/jpeg;base64,${groundBytes.toString('base64')}" alt="">`
+		? `<img class="ground cover-ground" src="data:image/jpeg;base64,${groundBytes.toString('base64')}" alt="">`
 		: `<div class="ground">${groundBytes.toString('utf8')}</div>`;
 	return `<style>${fontCssFor(book.script)}${COVER_CSS}
 html,body{margin:0}
@@ -464,7 +469,8 @@ html,body{margin:0}
 			script: book.script,
 			lang: book.language,
 			art: book.art,
-			scrim: book.scrim
+			scrim: book.scrim,
+			layout: book.layout
 		},
 		LOCKUP
 	)}
@@ -539,6 +545,9 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
  *              moves only if that table does; a twin whose LANGUAGE changed is a
  *              different key rather than a changed entry.
  *   `art`    — painting or plate, which is a different ground element entirely.
+ *   `layout` — the composition a painting is set in (`coverLayouts.ts`), as
+ *              `framed` or `<layout>/<hue>`. Checked by `coverOgManifest.test.ts`
+ *              against the table, as `style` is.
  *   `volume` — the series numeral over the title. Written as null outside a
  *              series rather than left out, because the skip is lenient about
  *              an ABSENT field: a book that joined a series would otherwise
@@ -554,7 +563,8 @@ function made(book, groundBytes) {
 		volume: book.volume,
 		script: scriptKey(book.script),
 		art: book.art,
-		scrim: book.scrim
+		scrim: book.scrim,
+		layout: layoutKey(book.layout)
 	};
 }
 
@@ -604,6 +614,10 @@ function fontDigest(books) {
  */
 function drawnFrom(cached, entry) {
 	if (!cached || cached.ground !== entry.ground || cached.style !== entry.style) return false;
+	// Not lenient about `layout`: every twin drawn before layouts existed WAS
+	// framed, so an absent value is a known one, and a work newly given a layout
+	// must not be skipped for lack of an old value to disagree with.
+	if ((cached.layout ?? 'framed') !== entry.layout) return false;
 	return Object.keys(entry).every((k) => cached[k] === undefined || cached[k] === entry[k]);
 }
 
@@ -707,7 +721,7 @@ async function main() {
 					'cover file and the type over it (checked by CoverAssetTests), `style` ' +
 					'names the house style it was set in, and `css` digests the composition ' +
 					'they were drawn with (both checked by coverOgManifest.test.ts). ' +
-					'`script`, `art`, `scrim` and `fonts` are the rest of what a card is ' +
+					'`script`, `art`, `scrim`, `layout` and `fonts` are the rest of what a card is ' +
 					'made from, read back by the skip so a change to any of them redraws.',
 				// THE COMPOSITION, so a change to it cannot ship without a redraw.
 				// This file's header used to say nothing but running it could catch a

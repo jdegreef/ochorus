@@ -52,6 +52,9 @@ export interface CoverCardBook {
 	/** How far to scale the scrim over this painting, from `coverScrim`. Only a
 	 *  painting has a scrim to scale, so a plate leaves it undefined. */
 	scrim?: number | null;
+	/** The layout a painting is composed in, from `coverLayouts.coverLayoutFor`;
+	 *  null or absent for the framed composition. Ignored on a plate. */
+	layout?: { layout: string; hue: string } | null;
 }
 
 /** Escape text for an HTML attribute or a text node. */
@@ -126,6 +129,15 @@ export function coverPlateMarkup(book: CoverCardBook, lockup: string): string {
 	// `.cover-plate.over-art::before`, and a pseudo-element cannot be selected
 	// from a descendant.
 	if (book.subtitle) classes.push('has-subtitle');
+	// A layout repaints the plate — paper, band, the ink — so it is a class here,
+	// where the scrim it replaces is drawn, and not on the type block below.
+	if (book.art && book.layout) {
+		classes.push(
+			'has-layout',
+			`layout-${escapeHtml(book.layout.layout)}`,
+			`hue-${escapeHtml(book.layout.hue)}`
+		);
+	}
 	// Matching the component: the property is set only where there is a scrim to
 	// scale, so a plate's markup is unchanged and the parity gate compares like
 	// with like. A painting without a measured strength takes 1, which is what
