@@ -16,7 +16,16 @@ export const MARKS_KEY = 'ochorus:marks';
 export const ANCHOR_KEY = 'ochorus:anchors';
 export const BOOKMARKS_KEY = 'ochorus:bookmarks';
 export const PLANS_KEY = 'ochorus:plans';
+// The Notebook's own writing — notes and prayers (see journal.ts).
+export const JOURNAL_KEY = 'ochorus:journal';
+// Journal entries not yet confirmed by the account: id → the updatedAt last
+// written. Only these ride the sign-in merge (see readingSync).
+export const JOURNAL_DIRTY_KEY = 'ochorus:journal-dirty';
+// The day's guided prayer while it is being written: { day, parts }.
+export const DAILY_DRAFT_KEY = 'ochorus:daily-draft';
 export const FAVORITES_KEY = 'ochorus:favorites';
+/** Removals (un-hearts, shelf removals) the account hasn't confirmed — see removals.ts. */
+export const REMOVALS_KEY = 'ochorus:removals';
 // The reading-streak activity log: a JSON array of local 'YYYY-MM-DD' days the
 // reader read on. Synced (union-merged) with the account like the rest.
 export const ACTIVITY_KEY = 'ochorus:activity';
@@ -55,7 +64,11 @@ export const READING_DATA_KEYS = [
 	ANCHOR_KEY,
 	BOOKMARKS_KEY,
 	PLANS_KEY,
+	JOURNAL_KEY,
+	JOURNAL_DIRTY_KEY,
+	DAILY_DRAFT_KEY,
 	FAVORITES_KEY,
+	REMOVALS_KEY,
 	ACTIVITY_KEY,
 	LAST_SYNC_KEY,
 	PACE_KEY,

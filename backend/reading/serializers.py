@@ -1,6 +1,13 @@
 from rest_framework import serializers
 
-from .models import Bookmark, ChapterMarks, Favorite, PlanProgress, ReadingProgress
+from .models import (
+    Bookmark,
+    ChapterMarks,
+    Favorite,
+    JournalEntry,
+    PlanProgress,
+    ReadingProgress,
+)
 
 
 class BookmarkSerializer(serializers.ModelSerializer):
@@ -14,6 +21,28 @@ class BookmarkSerializer(serializers.ModelSerializer):
             "bm_id",
             "snippet",
             "title",
+        ]
+
+
+class JournalEntrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JournalEntry
+        fields = [
+            "entry_id",
+            "kind",
+            "title",
+            "body",
+            "answer",
+            "answered_at",
+            "ref",
+            "person",
+            "group",
+            "remind",
+            "updates",
+            "source",
+            "deleted",
+            "client_created_at",
+            "client_updated_at",
         ]
 
 

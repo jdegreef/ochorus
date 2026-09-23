@@ -59,6 +59,7 @@ const SAME_AS_ENGLISH_OK = new Set([
 	// (es/pt render them differently, e.g. "Sermones"/"Sermões"), the same
 	// per-locale exemption `a11y_menu` already makes for pt.
 	'author_portrait_credit', // Portrait
+	'notebook_daily_amen', // Amen.
 	'bios_eyebrow', // Biographies
 	'bios_sermons_many', // sermons
 	'bios_sermons_one', // sermon

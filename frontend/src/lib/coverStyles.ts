@@ -282,7 +282,8 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'brave-for-god-3': 'young',
 	'brave-for-god-4': 'young',
 	'hurlbuts-life-of-christ': 'young',
-	'rooted-1': 'young'
+	'rooted-1': 'young',
+	'rooted-2': 'young'
 };
 
 /**
@@ -304,7 +305,8 @@ export const SERIES_VOLUME: Record<string, number> = {
 	'brave-for-god-2': 2,
 	'brave-for-god-3': 3,
 	'brave-for-god-4': 4,
-	'rooted-1': 1
+	'rooted-1': 1,
+	'rooted-2': 2
 };
 
 /**

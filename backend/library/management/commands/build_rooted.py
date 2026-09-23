@@ -117,6 +117,69 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    2: {
+        "sort_order": 76,
+        "publication_year": 2026,
+        "title": "Rooted – 30 Days with God for Youth – Book 2",
+        "subtitle": "Following Jesus: walking with Jesus from the manger to the empty tomb",
+        "cover_url": "/covers/rooted-2.svg",
+        "cover_color": covers.ink_safe("#7a4a2a"),  # a rich soil brown
+        "description": (
+            "Thirty short daily devotions for readers aged 9 to 12 that walk "
+            "through the life of Jesus, from the manger in Bethlehem to the empty "
+            "tomb. Each day opens with a passage from the Gospels, shows what it "
+            "reveals about Jesus, asks one question to think about and one thing "
+            "to try, and ends with a prayer. The second book of Rooted."
+        ),
+        "about_html": (
+            "<p>Rooted is an original Ochorus devotional series for readers aged 9 "
+            "to 12, and this is its second book. Book 1 planted the roots: who God "
+            "is, the good news, and how to pray and grow. Book 2 turns to the one "
+            "those roots grow into, and spends thirty days walking beside Jesus "
+            "through His life on earth, drawing on all four Gospels.</p>"
+            "<p>The five weeks follow His story in order. Jesus arrives: the "
+            "manger, the shepherds, the wise men, and the twelve-year-old in His "
+            "Father’s house. Jesus begins: His baptism, His temptation in the "
+            "wilderness, and the fishermen He called to follow Him. Jesus’ power: "
+            "a storm stilled, a boy’s lunch that fed thousands, a blind beggar "
+            "healed and Lazarus called out of the tomb. Jesus’ teaching: the "
+            "Beatitudes, salt and light, the lost sheep, the runaway son and the "
+            "good Samaritan. And Jesus wins: Zacchaeus, the donkey and the "
+            "palm branches, the towel and basin, the cross and the empty tomb, "
+            "ending with the Great Commission.</p>"
+            "<p>Every day follows the same short pattern: a passage from the "
+            "Berean Standard Bible, a teaching that tells the story and asks what "
+            "it shows about Jesus, a question to think about, one thing to try "
+            "that day, and a prayer. It can be read alone or aloud together, and "
+            "it works whether or not a reader has started with Book 1.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 2 of Rooted about?",
+                "answer": "It walks young readers through the life of Jesus in thirty short daily devotions, from His birth in Bethlehem to His resurrection and His last command to go and make disciples. Each day has a Bible passage, a short teaching, a question, something to try and a prayer.",
+            },
+            {
+                "question": "Who is it for?",
+                "answer": "Readers aged 9 to 12, to read on their own or with a parent, grandparent or leader. The stories come from all four Gospels, so it also makes a good first walk through the life of Christ.",
+            },
+            {
+                "question": "Do I need to read Book 1 first?",
+                "answer": "No. Book 2 stands on its own, and its introduction explains how each day works. Book 1 lays the foundation (who God is, the good news of Jesus and how to pray), so reading it first helps, but you can start right here.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+            {
+                "question": "How does it handle the crucifixion?",
+                "answer": "Honestly but gently. Week 5 tells the story of Jesus’ arrest, the cross and the empty tomb in words suited to young readers, focusing on why Jesus died and what His resurrection means.",
+            },
+            {
+                "question": "What comes after Book 2?",
+                "answer": "Book 3, which is about growing fruit: how staying connected to Jesus, the vine, grows love, joy, peace, kindness and self-control, and shapes the words we say and the habits we build.",
+            },
+        ],
+    },
 }
 
 _INLINE = [
@@ -125,9 +188,10 @@ _INLINE = [
 ]
 _LIST = re.compile(r"^(?:-|\d+\.) (.*)$")
 # `quote_marks.convert` sets the double marks; single marks are ours to set. A
-# mark after a space, a dash or an opening mark opens a nested quotation;
-# everything else is an apostrophe or a closing mark.
-_OPEN_SINGLE = re.compile(r"(^|[\s\"“(—])'")
+# mark after a space, a dash or an OPENING double mark opens a nested
+# quotation; everything else is an apostrophe or a closing mark — including
+# one after a closing double mark (`…of God."'"`).
+_OPEN_SINGLE = re.compile(r"(^\"|(?<=\s)\"|^|[\s“(—])'")
 
 
 def _single_marks(text: str) -> str:

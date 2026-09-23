@@ -58,6 +58,16 @@ LAUNCH_PLANS = [
         "think about, something to try, and a prayer.",
         (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
     ),
+    (
+        "rooted-book-2-30-days",
+        "rooted-2",
+        "Rooted: 30 Days with God — Book 2",
+        "Thirty days walking with Jesus, for readers aged 9 to 12: from the "
+        "manger in Bethlehem through His miracles and stories to the cross and "
+        "the empty tomb. Each day is one short reading with a Gospel passage, a "
+        "question to think about, something to try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
+    ),
 ]
 
 # Curated plans that walk through SEVERAL books in order (each book read in

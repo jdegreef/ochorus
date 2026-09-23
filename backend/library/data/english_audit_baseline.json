@@ -190,6 +190,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 1
   },
+  "school-of-prayer": {
+   "space-before-punct": 11
+  },
   "selected-sermons-whitefield": {
    "hyphen-space": 3,
    "lost-paragraphing": 2,
