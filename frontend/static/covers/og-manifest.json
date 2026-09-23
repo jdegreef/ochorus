@@ -137,7 +137,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"ar/clothed-with-strength-and-dignity": {
 			"ground": "a3d614670ef190cf2901371852caa6328ad4d4200ae3505d173ffad00d1882a4",
@@ -263,7 +263,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"ar/the-unselfishness-of-god": {
 			"ground": "0d81812281102654ad7d38888c8378e7fceb89b0dd55ffb98aced3987aba64f2",
@@ -461,7 +461,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"es/clothed-with-strength-and-dignity": {
 			"ground": "51241c283312c3535049107445396f8972e8af119f511d82da81df92ddbc870b",
@@ -515,7 +515,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"es/humility-2": {
 			"ground": "d6046be6ce4cb2267982a0dc9b4bd8de643b29595e2d5707d62de5e4cef767ba",
@@ -695,7 +695,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"es/the-secret-of-guidance": {
 			"ground": "ede183597e4b2fbf740ec87df22eb60429f8838022ea4146af06a9b2a6b8f01f",
@@ -812,7 +812,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"fr/cheque-book": {
 			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
@@ -1127,7 +1127,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"hi/clothed-with-strength-and-dignity": {
 			"ground": "a37e2b937513601c765bfc2e1c2159590c1cebbaa38a3a6c3bd4db0193a88297",
@@ -1280,7 +1280,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"how-to-succeed-in-the-christian-life": {
 			"ground": "364f5cd67e613b8d6f826481b98eb2877a7f09d10e78af0651ad6c14dab5ca59",
@@ -1289,7 +1289,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"hurlbuts-life-of-christ": {
 			"ground": "3a879eea06afd2cb313183c4ecb0de5bce209c8fc1cfd15b8197c8841be1db62",
@@ -1379,7 +1379,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"lg/brave-for-god": {
 			"ground": "94bc629cd9e6ac21c04f2ffe412987978ffb9877047056d77d975e908a4b4877",
@@ -1622,7 +1622,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"lg/the-unselfishness-of-god": {
 			"ground": "7ef203f24c89929d21d87d7605fbd992ff36513860217253475718c8d51cda67",
@@ -1856,7 +1856,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"pt/cheque-book": {
 			"ground": "d5b24d6d237dc26380030d5597707659508f5b8ed69c8be8969fb3ebbd82bfce",
@@ -2081,7 +2081,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"pt/the-unselfishness-of-god": {
 			"ground": "79910f0fe5615fc77c65418d3147f7ee2ac1577de608478af34b80eebb49fd4f",
@@ -2306,7 +2306,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"sw/brave-for-god": {
 			"ground": "b4cd36e562bb4f654337271d321b68b83a8c216f77e783fded5b9d43a6070b49",
@@ -2675,7 +2675,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"sw/the-unselfishness-of-god": {
 			"ground": "575c1467dac9c1da6f6162a5723f67884c1acd93a164d71dfd401803e7fd14d9",
@@ -2819,7 +2819,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"the-gospel-of-healing": {
 			"ground": "05fbf49fb1b67d63712dabaca8c8586877422f76d1165904f7f34c1aa8e54b3c",
@@ -2936,7 +2936,7 @@
 			"script": "cyrillic",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "duotone/ochre"
+			"layout": "diagonal/ochre"
 		},
 		"uk/clothed-with-strength-and-dignity": {
 			"ground": "00ba9532f6717d38be465563dd2a9681fefdcf09304c70fc3425ff8e0f3ea415",

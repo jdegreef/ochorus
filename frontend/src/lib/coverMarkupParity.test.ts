@@ -165,7 +165,7 @@ describe('the two cover renderers agree', () => {
 			{
 				cover_url: '/covers/art/a-retrospect.jpg',
 				slug: 'a-retrospect',
-				author: { slug: 'richard-baxter', name: 'Andrew Murray', birth_year: 1828 }
+				author: { ...book().author, slug: 'richard-baxter' }
 			},
 			{
 				art: true,
