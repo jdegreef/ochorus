@@ -108,8 +108,13 @@ def sync_series(stdout) -> dict[str, Series]:
 def series_of(f: dict, series: dict[str, Series]) -> Series | None:
     """The Series a fixture book row names, or None; raises on a dangling one."""
     ref = f.get("series")
-    if not ref:
+    if ref is None:
         return None
+    if not (isinstance(ref, list) and len(ref) == 1):
+        raise CommandError(
+            f"seed_books: book {f['slug']!r} has a malformed series reference "
+            f"{ref!r} — expected a natural key, [\"<series-slug>\"]"
+        )
     try:
         return series[ref[0]]
     except KeyError:

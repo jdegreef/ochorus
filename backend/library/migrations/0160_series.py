@@ -60,11 +60,11 @@ class Migration(migrations.Migration):
         ),
         migrations.AddConstraint(
             model_name='book',
-            constraint=models.UniqueConstraint(fields=('series', 'language', 'series_position'), name='uniq_book_series_volume'),
+            constraint=models.UniqueConstraint(deferrable=models.Deferrable['DEFERRED'], fields=('series', 'language', 'series_position'), name='uniq_book_series_volume'),
         ),
         migrations.AddConstraint(
             model_name='book',
-            constraint=models.CheckConstraint(condition=models.Q(('series_position__isnull', True), ('series__isnull', False), _connector='OR'), name='book_series_position_needs_series'),
+            constraint=models.CheckConstraint(condition=models.Q(('series_position__isnull', True), models.Q(('series__isnull', False), ('series_position__gte', 1)), _connector='OR'), name='book_series_position_needs_series'),
         ),
         migrations.RunPython(enable_rls, disable_rls),
     ]

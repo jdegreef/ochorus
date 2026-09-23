@@ -379,6 +379,15 @@ class SeriesMembershipTests(SimpleTestCase):
             if r["model"] == "library.book" and r["fields"].get("series")
         ]
 
+    def test_volume_numbers_count_from_one(self):
+        # The DB's check constraint says the same; this names the file.
+        bad = sorted(
+            f["slug"] for f in self.members
+            if (pos := f.get("series_position")) is not None
+            and not (isinstance(pos, int) and pos >= 1)
+        )
+        self.assertEqual(bad, [], "a volume number must be a whole number from 1")
+
     def test_a_position_needs_a_series(self):
         stray = sorted(
             f["slug"] for r in all_rows()

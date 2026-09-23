@@ -440,15 +440,20 @@ class Book(models.Model):
             ),
             # Two editions of one language cannot both be volume 2. Rows with
             # no position (a collection, or no series) are exempt: NULLs are
-            # distinct in a unique index.
+            # distinct in a unique index. DEFERRED because seed_books saves a
+            # book at a time: renumbering a series (a new volume 1, a swap)
+            # passes through a moment where two rows share a number, and an
+            # immediate check would abort the deploy on it.
             models.UniqueConstraint(
                 fields=["series", "language", "series_position"],
                 name="uniq_book_series_volume",
+                deferrable=models.Deferrable.DEFERRED,
             ),
-            # A volume number means nothing outside a series.
+            # A volume number means nothing outside a series, and counts from 1
+            # (the cover draws no ring for a missing one).
             models.CheckConstraint(
                 condition=models.Q(series_position__isnull=True)
-                | models.Q(series__isnull=False),
+                | models.Q(series__isnull=False, series_position__gte=1),
                 name="book_series_position_needs_series",
             ),
         ]
