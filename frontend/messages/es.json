@@ -1031,5 +1031,10 @@
   "notebook_reflect_saved": "Guardado en tu cuaderno",
   "notebook_reflect_open": "Abrir en tu cuaderno",
   "notebook_reflect_write": "Escribe tu respuesta",
-  "notebook_reflect_answer_prompt": "Tu respuesta…"
+  "notebook_reflect_answer_prompt": "Tu respuesta…",
+  "reader_suggest_edit": "Sugerir una corrección",
+  "feedback_edit_title": "Envía comentarios sobre esto",
+  "feedback_edit_intro": "Dinos qué se lee mal y, si quieres, qué debería decir.",
+  "feedback_suggested_label": "Sugiere una corrección (opcional)",
+  "feedback_suggested_placeholder": "¿Qué debería decir?"
 }

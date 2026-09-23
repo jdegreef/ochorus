@@ -92,6 +92,18 @@ class Feedback(models.Model):
     #: The UI language the reader was using (may differ from content_language).
     ui_locale = models.CharField(max_length=20, blank=True)
 
+    # --- the selection, for highlight-to-feedback (source="highlight") ---
+    #: The exact text the reader selected. This is the DURABLE anchor: an admin
+    #: reads it, finds it, and it feeds a content-edit job — robust across a
+    #: re-import in a way character offsets are not.
+    selected_text = models.TextField(blank=True)
+    #: The reader's proposed correction — "what should it say?". Optional.
+    suggested_text = models.TextField(blank=True)
+    #: The starting block index within the chapter, for a deep-link back to the
+    #: spot (the reader route consumes ``?p=``). Best-effort; the quote above is
+    #: what an admin actually relies on.
+    anchor_block = models.PositiveIntegerField(null=True, blank=True)
+
     # --- triage ---
     status = models.CharField(
         max_length=20, choices=FeedbackStatus.choices, default=FeedbackStatus.NEW

@@ -1031,5 +1031,10 @@
   "notebook_reflect_saved": "محفوظ في دفترك",
   "notebook_reflect_open": "افتح في دفترك",
   "notebook_reflect_write": "اكتب إجابتك",
-  "notebook_reflect_answer_prompt": "إجابتك…"
+  "notebook_reflect_answer_prompt": "إجابتك…",
+  "reader_suggest_edit": "Suggest an edit",
+  "feedback_edit_title": "Send feedback on this",
+  "feedback_edit_intro": "Tell us what reads wrong — and, if you like, what it should say.",
+  "feedback_suggested_label": "Suggest a correction (optional)",
+  "feedback_suggested_placeholder": "What should it say?"
 }

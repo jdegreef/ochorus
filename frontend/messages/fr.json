@@ -1031,5 +1031,10 @@
   "notebook_reflect_saved": "Enregistré dans votre carnet",
   "notebook_reflect_open": "Ouvrir dans votre carnet",
   "notebook_reflect_write": "Écrire votre réponse",
-  "notebook_reflect_answer_prompt": "Votre réponse…"
+  "notebook_reflect_answer_prompt": "Votre réponse…",
+  "reader_suggest_edit": "Suggérer une correction",
+  "feedback_edit_title": "Donnez votre avis sur ce passage",
+  "feedback_edit_intro": "Dites-nous ce qui ne va pas — et, si vous voulez, ce que cela devrait dire.",
+  "feedback_suggested_label": "Proposer une correction (facultatif)",
+  "feedback_suggested_placeholder": "Que devrait-il dire ?"
 }
