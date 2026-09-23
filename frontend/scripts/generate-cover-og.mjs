@@ -229,9 +229,7 @@ function needTwins() {
 				// painting in the library needs.
 				scrim: scrimStrength(fields.slug),
 				// A painting's composition; a plate takes none.
-				layout: isArtCover(cover)
-					? coverLayoutFor(fields.slug, scriptOf(fields.language || 'en'))
-					: null
+				layout: isArtCover(cover) ? coverLayoutFor(fields.slug, script) : null
 			};
 		})
 		.filter((b) => hasTwin(b.cover));

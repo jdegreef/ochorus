@@ -27,13 +27,11 @@
  */
 
 /**
- * The compositions. Each id is a class, `.layout-<id>`.
- *
- * `framed` is listed so that it has a name — the share-card manifest records
- * it — but draws no block of its own: it is the base composition.
+ * The compositions. Each id is a class, `.layout-<id>`. The original — the
+ * painting full bleed under a scrim — is not among them: it is the base
+ * composition, which the manifest records as `framed`.
  */
 export const COVER_LAYOUT_IDS = [
-	'framed', // the painting, full bleed, under a scrim — the original
 	'band', // a colour band, the title on paper, the painting below
 	'box', // the painting at full brightness, the title on a paper panel
 	'split', // the painting on the left, paper on the right
@@ -66,7 +64,7 @@ export const COVER_HUE_IDS = [
 export type CoverHueId = (typeof COVER_HUE_IDS)[number];
 
 export interface CoverLayout {
-	layout: Exclude<CoverLayoutId, 'framed'>;
+	layout: CoverLayoutId;
 	hue: CoverHueId;
 }
 
@@ -99,18 +97,24 @@ export const BOOK_LAYOUT: Record<string, CoverLayout> = {
 	'waiting-on-god': { layout: 'rail', hue: 'sage' }
 };
 
+/** The scripts a title cannot be turned sideways in. */
+const SIDEWAYS_UNSAFE = new Set(['arabic', 'devanagari']);
+
 /**
  * The layout a painted cover is drawn in, or null for `framed`.
  *
  * `script` is `coverStyles.scriptOf`'s answer for the edition. The rail sets
- * its title sideways, which suits a Latin title and mangles an Arabic or
- * Devanagari one, so a non-Latin edition of a railed work takes the title box
- * instead, in the same colour.
+ * its title sideways, which suits a Latin or Cyrillic title and mangles an
+ * Arabic or Devanagari one — a cursive or hanging script turned on its side —
+ * so those editions of a railed work take the title box instead, in the same
+ * colour.
  */
 export function coverLayoutFor(slug: string, script: string | null): CoverLayout | null {
 	const found = BOOK_LAYOUT[slug];
 	if (!found) return null;
-	if (found.layout === 'rail' && script) return { layout: 'box', hue: found.hue };
+	if (found.layout === 'rail' && SIDEWAYS_UNSAFE.has(script ?? '')) {
+		return { layout: 'box', hue: found.hue };
+	}
 	return found;
 }
 

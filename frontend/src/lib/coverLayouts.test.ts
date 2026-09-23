@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { isArtCover } from './coverArt';
+import { channels, contrastRatio as contrast, isArtCover } from './coverArt';
 import {
 	BOOK_LAYOUT,
 	COVER_HUE_IDS,
@@ -25,25 +25,18 @@ import { COVER_CSS_CODE, blocksFor, lastDecl } from '../test/coverCss';
 
 type Rgb = [number, number, number];
 
-const hex = (h: string): Rgb => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255) as Rgb;
-
-const lin = (c: number) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
-const luminance = ([r, g, b]: Rgb) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
-const contrast = (a: Rgb, b: Rgb) => {
-	const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
-	return (hi + 0.05) / (lo + 0.05);
-};
 /** `a` over `b` at `alpha`, composited in sRGB as a browser does. */
-const over = (a: Rgb, b: Rgb, alpha: number): Rgb => a.map((c, i) => c * alpha + b[i] * (1 - alpha)) as Rgb;
+const over = (a: Rgb, b: Rgb, alpha: number): Rgb =>
+	a.map((c, i) => c * alpha + b[i] * (1 - alpha)) as Rgb;
 
 const BLACK: Rgb = [0, 0, 0];
-const WHITE: Rgb = [1, 1, 1];
+const WHITE: Rgb = [255, 255, 255];
 
 function hue(id: string): { band: Rgb; paper: Rgb; ink: Rgb } {
 	const get = (prop: string) => {
 		const v = lastDecl(`.hue-${id}`, new RegExp(`${prop}:\\s*(#[0-9a-f]{6})`));
 		expect(v, `.hue-${id} declares no ${prop}`).not.toBeNull();
-		return hex(v!);
+		return channels(v!);
 	};
 	return { band: get('--c-band'), paper: get('--c-paper'), ink: get('--c-ink') };
 }
@@ -58,7 +51,7 @@ function number(selector: string, pattern: RegExp): number {
 describe('the layout table and the stylesheet name the same things', () => {
 	it('draws every layout it names, and names every layout it draws', () => {
 		const drawn = new Set([...COVER_CSS_CODE.matchAll(/\.layout-([a-z]+)/g)].map((m) => m[1]));
-		expect([...drawn].sort()).toEqual(COVER_LAYOUT_IDS.filter((id) => id !== 'framed').sort());
+		expect([...drawn].sort()).toEqual([...COVER_LAYOUT_IDS].sort());
 	});
 
 	it('draws every hue it names, and names every hue it draws', () => {
@@ -71,7 +64,9 @@ describe('the layout table and the stylesheet name the same things', () => {
 		const offenders = Object.keys(BOOK_LAYOUT).filter((slug) => {
 			let cover = '';
 			try {
-				cover = JSON.parse(readFileSync(join(books, `${slug}.en.json`), 'utf8'))[0].fields.cover_url;
+				cover = JSON.parse(readFileSync(join(books, `${slug}.en.json`), 'utf8')).find(
+					(r: { model: string }) => r.model === 'library.book'
+				).fields.cover_url;
 			} catch {
 				return true;
 			}
@@ -94,7 +89,11 @@ describe('coverLayoutFor', () => {
 	it('gives a non-latin edition of a railed work the title box, in its colour', () => {
 		const railed = Object.keys(BOOK_LAYOUT).find((s) => BOOK_LAYOUT[s].layout === 'rail')!;
 		expect(coverLayoutFor(railed, null)?.layout).toBe('rail');
-		expect(coverLayoutFor(railed, 'arabic')).toEqual({ layout: 'box', hue: BOOK_LAYOUT[railed].hue });
+		expect(coverLayoutFor(railed, 'arabic')).toEqual({
+			layout: 'box',
+			hue: BOOK_LAYOUT[railed].hue
+		});
+		expect(coverLayoutFor(railed, 'cyrillic')?.layout).toBe('rail');
 	});
 });
 
@@ -132,7 +131,7 @@ describe('the translucent papers hold at their thinnest', () => {
 		const lift = number(ground, /brightness\(([\d.]+)\)/);
 		// The darkest a greyscale print gets once `contrast()` and `brightness()`
 		// have flattened it: black, pulled toward mid-grey, then lifted.
-		const floor = ((0 - 0.5) * flat + 0.5) * lift;
+		const floor = ((0 - 0.5) * flat + 0.5) * lift * 255;
 		for (const id of COVER_HUE_IDS) {
 			const { band, paper, ink } = hue(id);
 			const wash = over(band, paper, tint);

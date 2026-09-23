@@ -1093,6 +1093,30 @@ rgb(0 0 0 / 0.26) 0%,
 	filter: drop-shadow(0 0 1.2cqw rgb(0 0 0 / 0.55));
 }
 
+/* What several layouts share: the title before the byline (band, box,
+   diagonal — the framed order puts the byline first); the title block hung
+   from the byline with the mark pushed to the foot (fade, duotone, wash); type
+   ranged to the start edge (split, diagonal, duotone); no rule (box, rail). */
+.cover-plate.over-art:is(.layout-band, .layout-box, .layout-diagonal) .cover-type .middle {
+	order: 1;
+	margin: 0;
+}
+.cover-plate.over-art:is(.layout-band, .layout-box, .layout-diagonal) .cover-type .byline {
+	order: 2;
+}
+.cover-plate.over-art:is(.layout-fade, .layout-duotone, .layout-wash) .cover-type .middle {
+	margin: 4cqw 0 auto;
+}
+.cover-plate.over-art:is(.layout-split, .layout-diagonal, .layout-duotone) .cover-type {
+	text-align: start;
+}
+.cover-plate.over-art:is(.layout-split, .layout-diagonal, .layout-duotone) .cover-type .rule {
+	margin: 4cqw 0 0;
+}
+.cover-plate.over-art:is(.layout-box, .layout-rail) .cover-type .rule {
+	display: none;
+}
+
 /* ── band: a colour band with the mark, the title on paper, the painting below.
    The band is 20cqw (15% of the 133.3cqw plate), the paper runs to 55%, and a
    rule of the band colour closes it. */
@@ -1115,12 +1139,7 @@ rgb(0 0 0 / 0.26) 0%,
 	justify-content: center;
 	--mark-h: 11cqw;
 }
-.cover-plate.over-art.layout-band .cover-type .middle {
-	order: 1;
-	margin: 0;
-}
 .cover-plate.over-art.layout-band .cover-type .byline {
-	order: 2;
 	margin-top: 4.5cqw;
 	color: var(--c-ink);
 }
@@ -1148,15 +1167,9 @@ rgb(0 0 0 / 0.26) 0%,
 	--mark-h: 7.5cqw;
 }
 .cover-plate.over-art.layout-box .cover-type .middle {
-	order: 1;
-	margin: 0;
 	zoom: 0.9;
 }
-.cover-plate.over-art.layout-box .cover-type .rule {
-	display: none;
-}
 .cover-plate.over-art.layout-box .cover-type .byline {
-	order: 2;
 	margin-top: 3.5cqw;
 }
 .cover-plate.over-art.layout-box .cover-type .brandmark {
@@ -1180,7 +1193,6 @@ rgb(0 0 0 / 0.26) 0%,
 .cover-plate.over-art.layout-split .cover-type {
 	left: 49.6%;
 	padding: 8cqw 5cqw 7cqw 6cqw;
-	text-align: start;
 	--mark-h: 8cqw;
 }
 .cover-plate.over-art.layout-split .cover-type .byline {
@@ -1192,9 +1204,6 @@ rgb(0 0 0 / 0.26) 0%,
 .cover-plate.over-art.layout-split .cover-type .middle {
 	margin: auto 0 0;
 	zoom: 0.78;
-}
-.cover-plate.over-art.layout-split .cover-type .rule {
-	margin: 4cqw 0 0;
 }
 .cover-plate.over-art.layout-split .cover-type .brandmark {
 	margin: 6cqw auto 0 0;
@@ -1214,7 +1223,6 @@ rgb(0 0 0 / 0.26) 0%,
 	padding: 10cqw 8cqw 5cqw;
 }
 .cover-plate.over-art.layout-fade .cover-type .middle {
-	margin: 4cqw 0 auto;
 	zoom: 0.9;
 }
 
@@ -1231,22 +1239,15 @@ rgb(0 0 0 / 0.26) 0%,
 }
 .cover-plate.over-art.layout-diagonal .cover-type {
 	padding: 7cqw 8cqw 8cqw;
-	text-align: start;
 }
 .cover-plate.over-art.layout-diagonal .cover-type .brandmark {
 	order: -1;
 	margin: 0 auto auto 0;
 }
 .cover-plate.over-art.layout-diagonal .cover-type .middle {
-	order: 1;
-	margin: 0;
 	zoom: 0.92;
 }
-.cover-plate.over-art.layout-diagonal .cover-type .rule {
-	margin: 4cqw 0 0;
-}
 .cover-plate.over-art.layout-diagonal .cover-type .byline {
-	order: 2;
 	margin-top: 4cqw;
 }
 
@@ -1262,14 +1263,9 @@ rgb(0 0 0 / 0.26) 0%,
 }
 .cover-plate.over-art.layout-duotone .cover-type {
 	padding: 9cqw 8cqw 7cqw;
-	text-align: start;
 }
 .cover-plate.over-art.layout-duotone .cover-type .middle {
-	margin: 4cqw 0 auto;
 	zoom: 1.08;
-}
-.cover-plate.over-art.layout-duotone .cover-type .rule {
-	margin: 4cqw 0 0;
 }
 .cover-plate.over-art.layout-duotone .cover-type .brandmark {
 	margin: 0 0 0 auto;
@@ -1289,9 +1285,6 @@ rgb(0 0 0 / 0.26) 0%,
 }
 .cover-plate.over-art.layout-wash .cover-type {
 	padding: 10cqw 9cqw 7cqw;
-}
-.cover-plate.over-art.layout-wash .cover-type .middle {
-	margin: 4cqw 0 auto;
 }
 .cover-plate.over-art.layout-wash .cover-type .subtitle {
 	display: -webkit-box;
@@ -1329,9 +1322,6 @@ rgb(0 0 0 / 0.26) 0%,
 	min-height: 0;
 	margin: 0;
 	zoom: 0.82;
-}
-.cover-plate.over-art.layout-rail .cover-type .rule {
-	display: none;
 }
 .cover-plate.over-art.layout-rail .cover-type .byline {
 	margin-top: 4cqw;
