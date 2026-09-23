@@ -1832,12 +1832,23 @@ declared against a CCEL or PDF source.
 **A declared book may already be LIVE under a different slug — verify the WORK,
 not just the declared slug's fixture.** `Talks to Farmers` (declared, Gutenberg
 #42518) is the same book as the on-site `talks-to-the-farmer`, chapter for
-chapter; `Humility` (= `humility-2`) and `school-of-prayer`
-(= `lord-teach-us-to-pray-2`) were the same trap. A 404 on the declared slug is
+chapter; `Humility` (= `humility-2`) was the same trap. A 404 on the declared slug is
 necessary but not sufficient — search the live API for the title
 (`/api/library/search/?q=…`) and compare the source TOC against any
 similarly-titled existing book before importing, or you ship a second copy of a
 book already on the shelf. *(2026-09)*
+
+**The reverse trap: a similar title can be an EXCERPT, not the work.**
+`school-of-prayer` was once listed here as "= `lord-teach-us-to-pray-2`", and
+it isn't: that on-site book is Murray's first four lessons (~8k words, ending
+"THE END"); the full work is 31 lessons plus the Müller note (~70k). Compare
+chapter counts and word totals, not just titles — then decide deliberately.
+The full work shipped alongside the excerpt, which keeps its translations, its
+plan and its quotes. Two things that import needed, both reusable: CCEL's
+"FIRST LESSON." heading run is not a CHAPTER ordinal, so `extract_body` keeps
+it (strip it with literal `replacements`, the `separation-and-service`
+precedent); and a CCEL transcription can carry a wrong date (its Preface said
+1895 for 1885) — corroborate a year from the text before trusting it. *(2026-09)*
 
 A brand-new book needs **no data migration**: the deploy's `manage.py release`
 runs `seed_books`, which creates a new book *with its chapters* straight from
