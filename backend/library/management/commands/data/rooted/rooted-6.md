@@ -1,0 +1,1142 @@
+# Rooted – 30 Days with God for Youth – Book 6
+
+*Bearing Fruit: God's purpose for your life, now and forever*
+
+Scripture quotations are from the Berean Standard Bible (BSB), public domain.
+
+---
+
+## Introduction: Made for a Purpose
+
+Why are you here?
+
+Not "why are you reading this book." Why are you *here*, alive, on this planet, at this time in history? Out of all the billions of people who have ever lived, why did God make *you*?
+
+That's one of the biggest questions anyone can ask. And the Bible has an amazing answer: **God made you on purpose, for a purpose.**
+
+Think about a fruit tree. A farmer doesn't plant an apple tree just so it can stand in the field looking nice. He plants it so it will grow apples, fruit that feeds people and blesses everyone around it. That's what the tree is for.
+
+Jesus said something similar about you:
+
+> "This is to My Father's glory, that you bear much fruit, proving yourselves to be My disciples."
+> — John 15:8 (BSB)
+
+In the earlier books of Rooted, you've been growing. You put down roots in God. You walked with Jesus through His life. You learned about the fruit of the Spirit. You learned to stand strong in storms. You learned to branch out in love. Now, in this final book, we're going to look at what all that growing is **for**: the purpose God has for your life, now and forever.
+
+### What's in this book
+
+This is **Book 6**, the last book of Rooted. (If you haven't read the others, that's okay! You can start right here.)
+
+- **Week 1 — God's Plan for You.** You were chosen, created and called on purpose.
+- **Week 2 — Gifts and Work.** Using your talents, your schoolwork, your money and your rest for God.
+- **Week 3 — Your Body and Your Time.** Taking care of the body God gave you, growing up, using your time well and being wise online.
+- **Week 4 — Leading and Serving.** Serving like Jesus, staying focused, speaking up and being an example.
+- **Week 5 — Looking Ahead.** Jesus coming back, heaven, running the race and finishing well.
+
+### How each day works
+
+Every day takes about five to ten minutes and has five parts:
+
+1. **The verse.** A short passage from the Bible. Read it slowly.
+2. **The teaching.** What the verse means, often with a Bible story or a picture from everyday life.
+3. **Think about it.** A question to think about on your own or with someone.
+4. **Try this.** One way to live out God's purpose today.
+5. **The prayer.** A prayer to pray. Add your own words too!
+
+### Tips for the last stretch
+
+- **Dream with God.** As you read, ask God what He might want to do with your life. Write your ideas down.
+- **Start now.** God's purpose isn't only for when you're grown up. It starts today.
+- **Talk to people who have walked with God a long time.** Ask them how God led them.
+- **Missed a day? Just keep going.** You're almost at the finish line!
+
+You are not an accident. You're not "just a kid." You are a branch on God's vine, and He has fruit He wants to grow through you. Let's find out what it is.
+
+### For parents, grandparents and leaders
+
+Book 6 of *Rooted*, the last of the series, is about purpose: calling, gifts, stewardship, service and the Christian hope, for readers aged 9 to 12, with Scripture from the Berean Standard Bible. A few days touch on growing up. Day 13 includes a brief body-safety note (tell a trusted adult if anyone touches you in a way that feels wrong). Day 14 speaks about the changes of growing up in general terms and encourages readers to bring their questions to you. Day 16 covers online safety. Day 17 teaches that male and female are both made in God's image and equally precious. You may want to talk through those days together.
+
+---
+
+# Week 1 · God's Plan for You
+
+---
+
+## Day 1 — Chosen to Bear Fruit
+
+> "You did not choose Me, but I chose you. And I appointed you to go and bear fruit—fruit that will remain—so that whatever you ask the Father in My name, He will give you."
+> — John 15:16 (BSB)
+
+Have you ever stood in a line while two captains picked teams? One by one, names get called. And you wait, hoping, *Please pick me. Please don't let me be last.* It's a great feeling to be chosen, and a terrible feeling to be left standing.
+
+The night before He died, Jesus told His disciples something amazing: "You did not choose Me, but **I chose you**."
+
+The disciples might have thought they were the ones who decided to follow Jesus. And they did decide! But Jesus wanted them to know that He had chosen them first. Before they ever took a step toward Him, He had already picked them.
+
+If you belong to Jesus, the same is true for you. You're not on His team by accident. You're not the last one picked because nobody else was left. Jesus chose you on purpose, because He wanted you.
+
+And Jesus didn't just choose them to sit on the bench. He said, "I **appointed** you to go and bear fruit." To *appoint* someone means to give them a job. Jesus chose His disciples for a purpose.
+
+What kind of fruit? We've talked about fruit all through Rooted. There's the fruit of the Spirit growing in your character: love, joy, peace, patience and the rest. There's the fruit of good deeds that help others. And there's the fruit of people coming to know Jesus because of you.
+
+Then Jesus said something special about this fruit. It's "fruit that will **remain**." Lots of things don't last. Trophies get dusty. Toys break. Video game scores are forgotten. But fruit that God grows through you lasts forever. When you help someone know Jesus, or show them His love, that matters for all eternity.
+
+Over the next 30 days, we'll look at the fruit God wants to grow through your life. But it starts right here: you were chosen by Jesus, on purpose, for a purpose.
+
+**Think about it:** How does it feel to know that Jesus chose you, and not the other way around?
+
+**Try this:** Write "Chosen on purpose, for a purpose" somewhere you'll see it every day this month.
+
+*Dear Jesus, thank You for choosing me. Thank You that I'm not on Your team by accident. You picked me because You wanted me. Help me bear fruit for You, fruit that will last forever. In Your name, Amen.*
+
+---
+
+## Day 2 — God's Masterpiece
+
+> "For it is by grace you have been saved through faith, and this not from yourselves; it is the gift of God, not by works, so that no one can boast. For we are God's workmanship, created in Christ Jesus to do good works, which God prepared in advance as our way of life."
+> — Ephesians 2:8–10 (BSB)
+
+Have you ever made something you were really proud of? A drawing, a LEGO build, a science project or a batch of cookies? When you make something with care, it reflects you. It shows your ideas and your skill.
+
+Paul says, "We are God's **workmanship**." The word Paul used means something carefully and skillfully made, like a work of art. You are God's masterpiece! He designed you with care, and you show something about Him.
+
+Notice the order of these verses.
+
+First, verses 8 and 9 say we are saved "by grace…through faith…not by works." You can't earn your way to God by doing good things. Salvation is a gift you receive by trusting Jesus.
+
+But then verse 10 says we were "created in Christ Jesus **to do** good works." So good works matter a lot! They just come *after* salvation, not before. We don't do good things to get saved. We do good things because we've been saved.
+
+Think of it this way. A car isn't made by driving. It's built in a factory first. But once it's built, it's made *for* driving! In the same way, God makes us new in Christ as a gift, and then He sends us out to do good.
+
+And here's the most exciting part: God "**prepared in advance**" the good works He wants you to do. Before you were even born, God had already planned good things for you to do. Kind words you'll say, people you'll help, jobs you'll do, prayers you'll pray. He's been getting them ready for you!
+
+That means your life has meaning. Every day, there are good works waiting for you, prepared by God. Some are small, like helping a friend with homework. Some might be big, like becoming a doctor, a teacher, a missionary or a parent. But they all matter to God.
+
+**Think about it:** What do you think are some of the "good works" God might have prepared for you to do?
+
+**Try this:** Each morning this week, pray, "God, what good works have You prepared for me today?" Then keep your eyes open for them.
+
+*Dear God, thank You that I am Your masterpiece. Thank You that You saved me by grace, as a gift. Now help me do the good works You prepared for me. Show me what they are, and help me do them with joy. In Jesus' name, Amen.*
+
+---
+
+## Day 3 — Plans for Hope
+
+> "For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, to give you a future and a hope."
+> — Jeremiah 29:11 (BSB)
+
+You might have seen this verse on posters, mugs and graduation cards. It's one of the most famous verses in the Bible. But do you know the story behind it?
+
+When God first spoke these words through the prophet Jeremiah, His people were in big trouble. Their enemies, the Babylonians, had conquered them and carried many of them far away from home to the city of Babylon. They were living as **exiles** in a strange land, far from everything they knew.
+
+Some false prophets were telling them, "Don't worry, you'll be home soon!" But Jeremiah wrote them a letter with a different message from God. He told them they would be in Babylon for **seventy years**. That's a long time! Many of the adults would never make it home.
+
+So God told them to build houses, plant gardens, raise families and pray for the city where they were living. And then He gave them this promise: "I know the plans I have for you… plans to give you a future and a hope."
+
+That's important. God's good plans didn't mean their troubles would disappear right away. His plans included waiting. They included living in a hard place for a long time. But God promised He hadn't forgotten them. He had a good future planned, and He would bring them home.
+
+That's true for you too. God has good plans for your life. But His plans don't mean everything will always be easy. Sometimes His good plans include hard seasons, waiting and things you don't understand. But you can trust that He knows what He's doing, and that His plans for you are good.
+
+And look at what God said next: "Then you will call upon Me and come and pray to Me, and I will listen to you. You will seek Me and find Me when you search for Me with all your heart" (Jeremiah 29:12–13). The best part of God's plan is God Himself. He wants you to know Him.
+
+**Think about it:** Why do you think it matters that God spoke this promise to people who were in a hard place?
+
+**Try this:** If you're in a hard or confusing season, write Jeremiah 29:11 on a card. Next to it, write, "Even here, God has good plans."
+
+*Dear God, thank You that You know the plans You have for me, and that they are good. Even when life is hard or I have to wait, help me trust that You haven't forgotten me. Most of all, help me seek You with all my heart. In Jesus' name, Amen.*
+
+---
+
+## Day 4 — Straight Paths
+
+> "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He will make your paths straight."
+> — Proverbs 3:5–6 (BSB)
+
+Imagine you're hiking in a thick forest you've never been to before. There are paths going in every direction. Some go uphill, some downhill, some seem to disappear into the bushes. Which one should you take?
+
+Now imagine you have a guide with you, someone who has walked this forest a thousand times and knows every path. Would you ignore the guide and choose your own way? Of course not! You'd follow the one who knows where to go.
+
+Life is like that forest. You'll face lots of choices. Which friends to spend time with. What to do after school. What to study, what job to have, where to live, who to marry. And many of those choices will be confusing.
+
+Proverbs gives us a guide for all of them.
+
+**"Trust in the LORD with all your heart."** Not just a little bit. With your whole heart. Put all your weight on Him, like leaning back into a chair you know will hold you.
+
+**"Lean not on your own understanding."** Your own understanding is limited. You can't see the future. You don't know everything. Sometimes what *seems* like the best path isn't. So don't rely only on what you think.
+
+**"In all your ways acknowledge Him."** In every part of your life, remember God. Ask Him for help. Include Him in your decisions, big and small. Don't just pray about the "spiritual" stuff. Pray about your friendships, your schoolwork, your hobbies and your future.
+
+**"And He will make your paths straight."** Here's the promise! When you trust God and include Him in everything, He guides you. He'll clear the way and lead you where you need to go.
+
+That doesn't mean you'll always see the whole path ahead. Often, like a flashlight in the dark, God shows you just the next step. But you can trust that He knows where the path leads.
+
+**Think about it:** Is there a decision you're facing right now where you've been leaning on your own understanding instead of trusting God?
+
+**Try this:** Before each decision today, pause and ask, "God, what would You want me to do?"
+
+*Dear God, I want to trust You with all my heart. Help me not to lean on my own understanding. In all my ways, I want to remember You and include You. Please make my paths straight and lead me where You want me to go. In Jesus' name, Amen.*
+
+---
+
+## Day 5 — Speak, Lord
+
+> "Then the LORD came and stood there, calling as before, 'Samuel! Samuel!' And Samuel answered, 'Speak, for Your servant is listening.'"
+> — 1 Samuel 3:10 (BSB)
+
+Samuel was just a boy when his mother, Hannah, brought him to live at the house of God. She had prayed for years for a son, and when God answered, she promised Samuel would serve the Lord his whole life. So Samuel grew up helping the old priest, Eli.
+
+In those days, the Bible says, "the word of the LORD was rare" (1 Samuel 3:1). God wasn't speaking to people very often.
+
+One night, Samuel was lying down to sleep when he heard someone call his name: "Samuel!" He jumped up and ran to Eli. "Here I am! You called me." But Eli said, "I didn't call you. Go back to bed."
+
+It happened again. And again. Three times! Finally Eli realized what was going on. It was God calling the boy! So Eli told Samuel, "If He calls you again, say, 'Speak, LORD, for Your servant is listening.'"
+
+Samuel went back to bed. And the LORD came and called, "Samuel! Samuel!" This time Samuel answered, "Speak, for Your servant is listening."
+
+And God spoke to him. That night was the beginning of Samuel's life as a prophet. The Bible says, "Samuel grew, and the LORD was with him" (1 Samuel 3:19). He became one of the greatest leaders in Israel's history.
+
+God spoke to a **kid**. And He can speak to you too.
+
+How does God speak today? Mostly through His Word, the Bible. When you read it, God is speaking to you. He also speaks through the quiet leading of the Holy Spirit, through wise people like parents and pastors, and through prayer.
+
+But notice Samuel's answer: "Your servant is **listening**." A lot of our prayers are us talking and talking. That's good! But God wants us to listen too. And Samuel called himself God's *servant*, which means he was ready to do what God said.
+
+**Think about it:** How do you think God might want to speak to you right now?
+
+**Try this:** Before you read your Bible today, pray Samuel's prayer: "Speak, Lord, for Your servant is listening." Then read slowly and quietly, listening for what God wants to tell you.
+
+*Speak, Lord, for Your servant is listening. Thank You that You speak to kids, just like You spoke to Samuel. Help me hear Your voice when I read Your Word, and give me a heart ready to obey. In Jesus' name, Amen.*
+
+---
+
+## Day 6 — Don't Let Anyone Look Down on You
+
+> "Let no one despise your youth, but set an example for the believers in speech, in conduct, in love, in faith, in purity."
+> — 1 Timothy 4:12 (BSB)
+
+Have you ever been told, "You're too young"? Too young to understand. Too young to help. Too young to make a difference.
+
+Timothy probably heard that a lot. He was a young pastor, leading a church where many of the people were older than him. Some of them might have thought, *What does this young guy know?*
+
+So Paul wrote to encourage him: "Let no one **despise your youth**." To *despise* means to look down on. Paul was saying, *Don't let anyone think you're not important because you're young.*
+
+The Bible is full of young people God used in big ways:
+
+- **Samuel** heard God's voice as a boy.
+- **David** was a teenager when he defeated Goliath.
+- **Josiah** became king of Israel when he was just **eight years old** (2 Kings 22:1), and he led the whole nation back to God.
+- A young **servant girl** in the house of Naaman, a powerful army commander, told him about God's prophet, and Naaman was healed (2 Kings 5).
+- **Mary** was probably a teenager when she became the mother of Jesus.
+- A **boy** gave his lunch to Jesus, and it fed five thousand people.
+
+God doesn't wait until people are grown up to use them.
+
+But notice *how* Paul tells Timothy to show people he's not too young. Not by arguing, or by bragging, or by demanding respect. Instead: "set an **example**." Show them through how you live. Paul lists five areas:
+
+- **In speech:** how you talk.
+- **In conduct:** how you act.
+- **In love:** how you treat people.
+- **In faith:** how you trust God.
+- **In purity:** keeping your heart and life clean.
+
+You might think only grown-ups can be examples. But you can be an example right now, to your friends, your siblings and even adults! When grown-ups see a kid who is kind, honest and faithful to God, it inspires them too.
+
+You're not the church of tomorrow. You're part of the church today.
+
+**Think about it:** Which of Paul's five areas (speech, conduct, love, faith, purity) is easiest for you? Which is hardest?
+
+**Try this:** Choose one of the five areas, and focus on being an example in it all day today.
+
+*Dear God, thank You that I'm not too young to follow You and make a difference. Help me set an example in my speech, my actions, my love, my faith and my purity. Use me right now, just as I am. In Jesus' name, Amen.*
+
+---
+
+# Week 2 · Gifts and Work
+
+---
+
+## Day 7 — Well Done
+
+> "His master replied, 'Well done, good and faithful servant! You have been faithful with a few things; I will put you in charge of many things. Enter into the joy of your master!'"
+> — Matthew 25:21 (BSB)
+
+Jesus told a story about a rich man who was going on a long trip. Before he left, he called three servants and gave each of them some of his money to take care of. The money was measured in **talents**, and a single talent was a huge amount, worth many years of wages!
+
+To the first servant, he gave five talents. To the second, two talents. To the third, one talent. Each got an amount based on his ability.
+
+The first servant went right to work. He traded and invested, and he doubled his money: five became ten! The second servant did the same: two became four.
+
+But the third servant was afraid. He dug a hole in the ground and buried his master's money. He didn't lose it, but he didn't do anything with it either.
+
+After a long time, the master came home. The first servant showed him the ten talents. The master was delighted! He said, "**Well done, good and faithful servant!** You have been faithful with a few things; I will put you in charge of many things." He said the same thing to the second servant.
+
+But the third servant said, "I was afraid, so I hid your money in the ground. Here it is." And the master was very disappointed. He took that one talent away and gave it to the servant who had ten.
+
+This story is about what we do with what God has given us. Everything you have is a gift from God: your abilities, your time, your money, your opportunities and your relationships. You didn't make any of it. God loaned it to you, and He wants you to use it for Him.
+
+Notice that the master didn't expect the servant with two talents to make as much as the one with five. God doesn't compare you to anyone else. He just wants you to be faithful with what *you've* been given.
+
+And look at the reward: not just more responsibility, but "enter into the **joy** of your master." One day, if you've been faithful, you'll hear Jesus say, "Well done!" Can you imagine anything better?
+
+**Think about it:** What are some "talents" God has given you? Are you using them, or have you "buried" some of them?
+
+**Try this:** Choose one gift or ability you have and use it today in a way that helps someone else or honors God.
+
+*Dear God, thank You for everything You've given me. Help me not to bury my gifts out of fear, but to use them faithfully for You. One day, I want to hear You say, "Well done, good and faithful servant." In Jesus' name, Amen.*
+
+---
+
+## Day 8 — All for God's Glory
+
+> "So whether you eat or drink or whatever you do, do it all to the glory of God."
+> — 1 Corinthians 10:31 (BSB)
+
+What does eating a sandwich have to do with God?
+
+Paul says, "Whether you eat or drink or whatever you do, do it all to the glory of God." Eating and drinking! Those are about the most ordinary things there are. You do them every day without even thinking.
+
+But that's exactly Paul's point. There's no part of your life that's too ordinary for God. You don't have one "God part" of your life (like church and prayer) and a separate "normal part" (like school, sports and chores). **All** of it can be for God.
+
+What does it mean to do something "to the glory of God"? God's *glory* means His greatness and goodness shining out so people can see it. When you do something to the glory of God, you're doing it in a way that shows how great and good He is.
+
+Here's what that might look like:
+
+- **Eating:** thanking God for your food, and sharing with others.
+- **Playing sports:** giving your best, playing fair, being a good sport when you win or lose.
+- **Doing homework:** working hard and being honest, because your mind is a gift from God.
+- **Playing with friends:** being kind, including others and not cheating.
+- **Doing chores:** working cheerfully without complaining.
+- **Making art or music:** enjoying the creativity God gave you.
+- **Resting:** enjoying the good gifts God has made.
+
+Think about it this way. If you're playing soccer, you could be playing for yourself (so people will think you're great), for your team, or for God. When you play for God, you'll still try your hardest. But you'll also play with a good attitude, be kind to the other team and thank God for your body that can run and kick.
+
+This changes everything! Your whole day, from the moment you wake up until you go to sleep, can be a way of worshiping God.
+
+**Think about it:** What's something ordinary you do every day that you've never thought of as a way to honor God? How could you do it "to the glory of God"?
+
+**Try this:** Pick three ordinary things you'll do today. Before each one, whisper, "God, I'm doing this for You."
+
+*Dear God, I want everything I do to bring You glory: my eating, my playing, my schoolwork, my chores and my rest. Help me remember that no part of my life is too ordinary for You. In Jesus' name, Amen.*
+
+---
+
+## Day 9 — Ten Times Better
+
+> "To these four young men God gave knowledge and understanding in every kind of literature and wisdom… In every matter of wisdom and understanding about which the king consulted them, he found them ten times better than all the magicians and enchanters in his entire kingdom."
+> — Daniel 1:17, 20 (BSB)
+
+Remember Daniel and his three friends? They were teenagers when they were taken far from home to Babylon. The king put them in a three-year training program to learn the language, writing and knowledge of the Babylonians. It was like going to school in a foreign country, in a language they didn't speak very well.
+
+That would have been hard! They could have given up. They could have done just enough to get by. But they didn't. They worked hard and studied well. And look at what the Bible says: "**God gave** knowledge and understanding" to them.
+
+At the end of their training, the king tested them himself. He asked them all kinds of hard questions. And he found them "**ten times better**" than all the wise men in his entire kingdom!
+
+Daniel and his friends show us that school matters to God.
+
+You might think school has nothing to do with your faith. Math, spelling, science and history seem like "normal" subjects, not "God" subjects. But everything you learn about is part of God's world. When you study science, you're learning how God made creation work. When you study history, you're learning how God has worked through people and nations. When you learn math, you're discovering the order and patterns God built into everything.
+
+And your mind itself is a gift from God. Using it well is a way of honoring Him.
+
+So what does this mean for you?
+
+- **Work hard.** Give your best effort, not just the minimum.
+- **Ask God for help.** Before a test or a hard assignment, pray! Remember, God gave Daniel understanding.
+- **Be honest.** Don't cheat, even if others do.
+- **Be patient with yourself.** Not everyone is good at everything. God doesn't expect you to be the best at every subject. He wants your best effort.
+- **Use what you learn to help others.** Your education is a gift you can use to serve people someday.
+
+Your schoolwork can be worship!
+
+**Think about it:** What's your hardest subject in school? How might you approach it differently if you did it for God?
+
+**Try this:** Before you start your homework today, pray and ask God to help you understand and do your best.
+
+*Dear God, thank You for my mind and for the chance to learn. Help me work hard at school, not just for grades, but to honor You. When things are hard to understand, please give me knowledge and understanding, like You gave Daniel. In Jesus' name, Amen.*
+
+---
+
+## Day 10 — Where Your Treasure Is
+
+> "Do not store up for yourselves treasures on earth, where moth and rust destroy, and where thieves break in and steal. But store up for yourselves treasures in heaven, where moth and rust do not destroy, and where thieves do not break in and steal. For where your treasure is, there your heart will be also."
+> — Matthew 6:19–21 (BSB)
+
+Think back to the toy you wanted most when you were five years old. Maybe you begged for it for months. Maybe you thought about it every day. And then you finally got it!
+
+Where is that toy now? Is it broken? Lost? Stuffed in the back of a closet? Given away? Most likely, you barely think about it anymore.
+
+That's what Jesus is talking about. "Treasures on earth" are the things of this world: toys, clothes, games, money, phones and stuff. Jesus says these things don't last. "Moth and rust destroy" them. Things wear out, break down, go out of style or get stolen. Someday, all of it will be gone.
+
+But there's another kind of treasure: "treasures in heaven." Those are things that last forever. Things like:
+
+- Loving God and knowing Him.
+- Loving people and helping them.
+- Telling others about Jesus.
+- Being generous and giving to people in need.
+- Growing to be more like Jesus.
+
+Nothing can destroy those treasures. They last for all eternity.
+
+Then Jesus says something really important: "For where your treasure is, there your heart will be also." Whatever you treasure most is what your heart will care about most. If your biggest treasure is stuff, your heart will be all about getting more stuff. If your biggest treasure is God and His kingdom, your heart will be all about Him.
+
+Money and things aren't bad. God gives us good things to enjoy! But they make a terrible master. The question is: What's your *biggest* treasure?
+
+One way to find out: What do you think about most? What do you spend your money and time on? What would upset you most if you lost it?
+
+**Think about it:** What are your "treasures on earth"? What are some "treasures in heaven" you could store up?
+
+**Try this:** Give away something you own that you don't really use anymore, to someone who could use it. Or give some of your money to help someone in need.
+
+*Dear Jesus, help me not to love stuff more than I love You. Help me store up treasures in heaven by loving You, loving others and being generous. Let my heart be all about You. In Your name, Amen.*
+
+---
+
+## Day 11 — Honor God First
+
+> "Honor the LORD with your wealth and with the firstfruits of all your crops; then your barns will be filled with plenty, and your vats will overflow with new wine."
+> — Proverbs 3:9–10 (BSB)
+
+In Bible times, most people were farmers. They planted crops, waited all season and then harvested them. And God told His people to do something special at harvest time: give Him the **firstfruits**.
+
+The firstfruits were the very first part of the harvest, the first grain that ripened, the first grapes from the vine. Before the farmers ate any of their crops or sold them, they brought the first and best part to God.
+
+Why the first part? Why not just give God whatever was left over at the end?
+
+Because giving God the first part showed that He came **first**. It said, "God, everything I have comes from You. You're the most important. And I trust You to provide the rest."
+
+It's a lot like a birthday cake. Who gets the first slice? Usually the birthday person, because they're the most important person at the party. Giving God the first part says He's the most important.
+
+Most of us aren't farmers today. But the idea still works. When you get money, whether it's allowance, birthday money or money from a job, you can give some of it to God first. Many Christians give a portion of their money to their church or to help people in need, before they spend any of it on themselves. Some give a tenth, called a **tithe**.
+
+You can give God your firstfruits in other ways too:
+
+- **Your time:** Start your day with God before you check your phone or turn on the TV.
+- **Your energy:** Give Him your best effort, not your leftovers.
+- **Your talents:** Use your gifts for Him first.
+
+And look at God's promise: "then your barns will be filled with plenty." That doesn't mean God will make everyone rich. But it does mean you can't out-give God. When you trust Him and honor Him first, He takes care of you.
+
+**Think about it:** Do you usually give God your "firstfruits" or your "leftovers," with your money, your time and your energy?
+
+**Try this:** The next time you get money, set aside a portion for God first, before you spend any. Also try giving God the first few minutes of your day tomorrow.
+
+*Dear God, everything I have comes from You. Help me honor You with the first and best of my money, my time and my energy, not my leftovers. I trust You to take care of me. In Jesus' name, Amen.*
+
+---
+
+## Day 12 — Made for Rest
+
+> "Then Jesus declared, 'The Sabbath was made for man, not man for the Sabbath.'"
+> — Mark 2:27 (BSB)
+
+After six days of creating the whole universe, what did God do on the seventh day? He rested.
+
+God didn't rest because He was tired. God never gets tired! He rested to show us something. Rest is part of the way God designed the world, and part of the way He designed **us**.
+
+Later, God gave His people a special command: every seventh day would be a **Sabbath**, a day of rest. No work. Instead, they would rest, worship God and enjoy time with family.
+
+By Jesus' time, some religious leaders had turned the Sabbath into a long list of rules. You couldn't carry things, walk too far or even pick a little grain to eat if you were hungry. They cared more about their rules than about people!
+
+So Jesus said, "The Sabbath was made for man, not man for the Sabbath." In other words, God gave us rest as a **gift**. It's for our good. It's not a burden or a test.
+
+Many people today don't rest well. They're always busy. Schedules are packed with school, homework, sports, lessons, practices and activities. And when there's free time, it often gets filled up with screens. Our bodies might be sitting still, but our minds never stop.
+
+God knows we need real rest. Rest reminds us that we're not God. The world keeps spinning even when we stop! And rest shows that we trust Him to take care of things.
+
+Here are some ways to rest well:
+
+- **Sleep enough.** Your growing body needs lots of sleep.
+- **Unplug sometimes.** Take breaks from screens.
+- **Worship.** Spend time with God's people at church.
+- **Enjoy God's creation.** Go outside, take a walk and look at the sky.
+- **Spend unhurried time** with family and friends.
+- **Do something that fills you up,** like reading, drawing or playing.
+
+Even Jesus took time to rest. When His disciples were busy and tired, He invited them to come away with Him to a quiet place and rest (Mark 6:31).
+
+Rest isn't laziness. It's a gift from God.
+
+**Think about it:** Do you get enough real rest? What keeps you from resting well?
+
+**Try this:** Plan a time of real rest this week. Unplug from screens for a few hours and do something restful with your family or outside.
+
+*Dear God, thank You for the gift of rest. Help me trust You enough to stop and rest. Help me take breaks, sleep well and enjoy time with You and the people I love. Thank You that the Sabbath was made for me. In Jesus' name, Amen.*
+
+---
+
+# Week 3 · Your Body and Your Time
+
+---
+
+## Day 13 — A Temple
+
+> "Do you not know that your body is a temple of the Holy Spirit who is in you, whom you have received from God? You are not your own; you were bought at a price. Therefore glorify God with your body."
+> — 1 Corinthians 6:19–20 (BSB)
+
+In the Old Testament, the temple in Jerusalem was the most special building in the world. It was where God's presence lived among His people. It was built with gold, cedar wood and precious stones. It was treated with great care and respect.
+
+Paul says something amazing: if you belong to Jesus, **your body is a temple**. The Holy Spirit lives in you! God's presence doesn't live in a building anymore. He lives in His people.
+
+That means your body is precious. It's not "just" a body. It's a home for God.
+
+Paul also says, "You are not your own; you were bought at a price." What price? Jesus gave His life on the cross to make you His. So your body belongs to God, and He wants you to take good care of it.
+
+How can you honor God with your body?
+
+- **Take care of it.** Eat healthy food, drink water, get exercise and sleep enough.
+- **Don't harm it.** Stay away from things that damage your body, like drugs, alcohol or vaping. Don't take dangerous risks just to show off.
+- **Keep it clean.** Take care of your hygiene. That's a way of respecting what God made!
+- **Use it for good.** Use your hands to help, your feet to go where God sends you and your mouth to speak kind words.
+- **Be thankful for it.** Even if you don't love everything about how you look, your body is a gift from God.
+
+And here's something important: because your body is precious to God, it's worth protecting. **If anyone ever touches you in a way that makes you feel uncomfortable, confused or unsafe, tell a trusted adult right away.** Your body belongs to God, and He wants you to be safe.
+
+Some kids have bodies that work differently: bodies with disabilities, illnesses or challenges. Those bodies are just as precious to God, and just as much His temple. Every body that belongs to Jesus is holy ground.
+
+**Think about it:** What's one way you could take better care of the body God gave you?
+
+**Try this:** Choose one healthy habit to practice this week, like drinking more water, going to bed on time, or playing outside instead of on a screen.
+
+*Dear God, thank You for my body. Thank You that if I belong to Jesus, my body is a temple of Your Holy Spirit. Help me take care of it, protect it and use it to honor You. Thank You that I was bought at a price. In Jesus' name, Amen.*
+
+---
+
+## Day 14 — A Time for Everything
+
+> "To everything there is a season, and a time for every purpose under heaven."
+> — Ecclesiastes 3:1 (BSB)
+>
+> "He has made everything beautiful in its time."
+> — Ecclesiastes 3:11 (BSB)
+
+Have you noticed how the year moves through seasons? Winter, when trees are bare. Spring, when new leaves and flowers pop out. Summer, when everything is green and full. Fall, when the leaves change color and drop. Each season is different, but each one is part of God's design.
+
+Your life has seasons too. You were once a tiny baby. Then a toddler learning to walk. Now you're a kid, maybe getting close to being a teenager. And someday you'll be an adult.
+
+Right about the age you are now, a lot of changes start to happen. Your body begins to grow and change. Your feelings might change too. Some days you might feel happy and confident, and other days you might feel moody, emotional or unsure of yourself. Friendships might change. The things you're interested in might change.
+
+All of that can feel exciting. It can also feel confusing, awkward or even a little scary.
+
+Here's what God wants you to know: **growing up is part of His good design.** The changes that happen as you grow aren't mistakes. God designed your body and your life to grow, season by season. "He has made everything beautiful in its time."
+
+Remember Day 6 of Book 2? Jesus Himself grew up. He grew "in wisdom and stature." He went through every season of growing up, just like you. He understands.
+
+When you have questions about growing up, and everyone does, the best people to talk to are your **parents** or another trusted adult who loves you, like a grandparent, an aunt or a school nurse. They've been through it too! Don't be embarrassed to ask. It's much better to get your questions answered by someone who loves you than to guess, or to get answers from friends or the internet that might not be true.
+
+And remember: in every season, God is with you. He knew you before you were born, and He'll be with you through every change. Psalm 139 says, "all my days were written in Your book and ordained for me before one of them came to be" (Psalm 139:16).
+
+**Think about it:** What's one thing about growing up that you're excited about? What's one thing that feels confusing?
+
+**Try this:** Talk with a parent or trusted adult about growing up. You could start by asking, "What was it like for you when you were my age?"
+
+*Dear God, thank You that You have a time for everything, and that You make things beautiful in their time. As I grow and change, help me trust that You designed me. Help me talk to people I trust when I have questions. Thank You for being with me in every season. In Jesus' name, Amen.*
+
+---
+
+## Day 15 — Make the Most of Your Time
+
+> "Pay careful attention, then, to how you walk, not as unwise but as wise, redeeming the time, because the days are evil."
+> — Ephesians 5:15–16 (BSB)
+
+Here's a fun fact: every single day has exactly **1,440 minutes**. Everyone gets the same amount: kids and grown-ups, rich people and poor people, presidents and farmers. Nobody gets more, and nobody gets less.
+
+The question is, how will you use them?
+
+Paul says, "Pay careful attention… to how you walk." In the Bible, *walk* often means the way you live. Be careful how you live. Be wise, not foolish. And he says to be "**redeeming the time**."
+
+To *redeem* something means to buy it back or rescue it. Paul is saying: rescue your time! Don't let it slip away and get wasted. Use it for things that matter.
+
+Time is one of the most valuable gifts God gives us. And unlike money, you can never get it back. Once a minute is gone, it's gone forever.
+
+What eats up your time? For many kids (and grown-ups!), it's screens. Videos, games and scrolling can gobble up hours without us even noticing. You sit down to watch "just one video," and suddenly it's been two hours! None of those things are bad on their own. But they can steal time from better things.
+
+Here are some ways to redeem your time:
+
+- **Start with God.** Give Him the first part of your day.
+- **Do what matters first.** Homework and chores before games.
+- **Set limits on screens.** Decide ahead of time how long you'll play, and stick to it.
+- **Spend time with people.** Real, face-to-face time with family and friends.
+- **Make things.** Build, draw, write, cook, play music or learn a skill.
+- **Serve someone.** Use some of your time to help others.
+- **Rest well.** Remember Day 12! Rest is a good use of time too.
+
+This doesn't mean you can never have fun. God loves when you enjoy life! It means being wise about how you spend the minutes God gives you.
+
+At the end of each day, you could ask: *Did I use today well?*
+
+**Think about it:** What activities take up most of your time? Are there any that you think are stealing time from better things?
+
+**Try this:** Keep track of how you spend your free time today. At the end of the day, look at your list and ask God to help you use your time wisely.
+
+*Dear God, thank You for the gift of time. Help me not to waste it, but to use it wisely. Help me put the most important things first, and spend my minutes on things that matter to You. In Jesus' name, Amen.*
+
+---
+
+## Day 16 — Wise and Innocent
+
+> "Behold, I am sending you out like sheep among wolves; therefore be as shrewd as snakes and as innocent as doves."
+> — Matthew 10:16 (BSB)
+
+When Jesus sent out His disciples to tell people about God's kingdom, He gave them some interesting advice. He said they would be like "sheep among wolves." Not everyone would be kind to them. Some people would try to hurt them or trick them.
+
+So He told them to be "as **shrewd as snakes** and as **innocent as doves**."
+
+Those are two very different animals! A snake is *shrewd*, which means clever, careful and aware of danger. A dove is *innocent*, which means pure, gentle and not trying to hurt anyone.
+
+Jesus wanted His followers to be both: smart about danger, but still pure and kind.
+
+That's great advice for the online world. The internet can be a wonderful place. You can learn, create, laugh and connect with family and friends. But there are also wolves online: people who pretend to be someone they're not, people who try to trick kids, and people who are cruel.
+
+Here's how to be **shrewd** online:
+
+- **Never share personal information** like your full name, address, school, phone number or passwords with people you don't know.
+- **Remember that people online aren't always who they say they are.** Someone who says they're a kid your age might not be.
+- **Never agree to meet someone in person** that you only know online.
+- **If someone online asks you to keep secrets, send pictures or do something that makes you uncomfortable, stop and tell a parent or trusted adult right away.** You won't be in trouble.
+- **Think before you post.** Once something is online, it can be very hard to take back.
+
+And here's how to be **innocent** online:
+
+- **Be kind.** Don't write mean comments or join in when others are being cruel.
+- **Don't look at things that aren't good for you.** (Remember what we learned about guarding your eyes.)
+- **Be the same person online as you are in real life.**
+- **Use your screen for good,** like encouraging friends and sharing things that are true and helpful.
+
+Jesus doesn't want you to be afraid. He wants you to be wise. And He's with you everywhere, even online.
+
+**Think about it:** Why do you think Jesus wanted His followers to be both "shrewd" and "innocent"? Which is harder for you online?
+
+**Try this:** Sit down with a parent and talk about online safety. Make a family plan together for what to do if something online ever makes you uncomfortable.
+
+*Dear Jesus, help me be as shrewd as a snake and as innocent as a dove. Give me wisdom to stay safe online and in real life. Help me be kind and pure in everything I say and do, and help me tell a grown-up if something doesn't feel right. In Your name, Amen.*
+
+---
+
+## Day 17 — In His Image
+
+> "So God created man in His own image; in the image of God He created him; male and female He created them."
+> — Genesis 1:27 (BSB)
+
+When you look into a mirror, what do you see? Your reflection. It shows what you look like. It's not actually you, but it's an image of you.
+
+On the sixth day of creation, God made people. And He did something He didn't do for any other creature. He made them "**in His own image**."
+
+That doesn't mean God has a body like ours, or that He looks like us. It means people were made to **reflect** God, like a mirror. We can think, create, love, make choices and have a relationship with Him. No animal, no star and no mountain can do that. Only people.
+
+And look at the last part: "**male and female** He created them." God made both men and women, boys and girls, in His image. Both reflect Him. Both are precious to Him. Neither one is better than the other. God designed them differently, and He called His creation "very good" (Genesis 1:31).
+
+In the New Testament, Paul wrote that in Christ, "there is neither Jew nor Greek, slave nor free, male nor female, for you are all one in Christ Jesus" (Galatians 3:28). Whoever you are, if you belong to Jesus, you have the same place in God's family as everyone else.
+
+Being made in God's image means some really important things:
+
+**You have great worth.** Your value doesn't come from how you look, how smart you are, how popular you are or what you can do. It comes from being made in God's image. Nothing can take that away.
+
+**Every person has great worth.** Every person you meet, of every color, every country, every age and every ability, is made in God's image. The kid nobody likes. The person with a disability. The elderly neighbor. The baby who hasn't been born yet. The person who is mean to you. Every single one reflects God.
+
+**We should treat everyone with respect.** When you make fun of someone, bully them or look down on them, you're mistreating someone who was made in God's image. When you're kind to them, you're honoring the God they reflect.
+
+Sin has cracked the mirror. We don't reflect God perfectly anymore. But Jesus came to restore us, and as we follow Him, we become more and more like Him.
+
+**Think about it:** How would you treat people differently if you remembered every single person is made in God's image?
+
+**Try this:** Today, as you look at each person you meet, silently think, "You are made in God's image." Let it change how you treat them.
+
+*Dear God, thank You for making me in Your image. Thank You that both male and female are made in Your image, and that every person has great worth to You. Help me treat everyone with respect and love, because they reflect You. In Jesus' name, Amen.*
+
+---
+
+## Day 18 — Tend the Garden
+
+> "Then the LORD God took the man and placed him in the Garden of Eden to cultivate and keep it."
+> — Genesis 2:15 (BSB)
+
+What was the very first job God ever gave a person?
+
+Before there were any teachers, doctors, builders or pilots, God gave Adam a job. He placed him in the beautiful Garden of Eden "to **cultivate** and **keep** it." To cultivate means to help things grow. To keep means to take care of and protect.
+
+Adam was the first gardener! And his job shows us something about how God wants us to treat the world He made.
+
+God created everything: oceans full of fish, skies full of birds, forests, mountains, flowers and animals of every kind. Then He said it was "very good." The world belongs to Him. "The earth is the LORD's, and the fullness thereof," says Psalm 24:1.
+
+But God put people in charge of taking care of it. That's called being a **steward**. Remember, a steward is someone who takes care of something that belongs to someone else. The world isn't ours to do whatever we want with. It's God's, and He has trusted us to care for it.
+
+That doesn't mean we worship nature. We worship the God who made it. But when we take care of His creation, we honor Him, like taking care of a gift someone you love gave you.
+
+Here are some ways kids can "tend the garden":
+
+- **Don't litter.** Pick up trash when you see it.
+- **Don't waste.** Turn off lights, don't let the water run and don't throw away food you could eat.
+- **Be kind to animals.** Take good care of pets, and don't hurt creatures just for fun.
+- **Plant something.** Grow a garden, a flower or a tree.
+- **Enjoy creation.** Go outside! Notice the beauty God made and thank Him for it.
+- **Share.** Share what you have with people who need it, because the earth's good things are for everyone.
+
+When you take care of God's world, you're doing the very first job God ever gave to people.
+
+**Think about it:** Why do you think God gave people the job of taking care of His creation?
+
+**Try this:** Do one thing today to care for God's creation. Pick up litter, plant something, or take extra good care of a pet.
+
+*Dear God, thank You for the beautiful world You made. Thank You for trusting people to take care of it. Help me be a good steward of Your creation, and help me enjoy it and thank You for it every day. In Jesus' name, Amen.*
+
+---
+
+# Week 4 · Leading and Serving
+
+---
+
+## Day 19 — The Greatest Serve
+
+> "But it shall not be this way among you. Instead, whoever wants to become great among you must be your servant, and whoever wants to be first must be the slave of all. For even the Son of Man did not come to be served, but to serve, and to give His life as a ransom for many."
+> — Mark 10:43–45 (BSB)
+
+Two of Jesus' disciples, the brothers James and John, came to Jesus with a big request. "Teacher, we want You to do for us whatever we ask." Jesus said, "What do you want Me to do for you?" And they answered, "Grant that one of us may sit at Your right hand and the other at Your left in Your glory." In other words: *Give us the most important seats! Make us the greatest!*
+
+When the other ten disciples heard about it, they were angry. Probably because they wanted those seats too!
+
+So Jesus gathered them all together and explained. In the world, He said, people who are "great" are the ones who boss others around. Rulers show off their power. Leaders get served. But then Jesus said, "**It shall not be this way among you.**"
+
+In God's kingdom, everything is flipped. "Whoever wants to become great among you must be your **servant**."
+
+Then Jesus pointed to Himself. "Even the Son of Man did not come to be served, but to serve, and to give His life as a ransom for many." Jesus is the greatest person who ever lived, the King of kings. And how did He show His greatness? By serving. By washing feet. By dying on the cross for us.
+
+That's what real leadership looks like. The best leaders aren't the ones who are bossy, or who get the most attention, or who make everybody do what they want. The best leaders are the ones who serve others.
+
+You might be a leader right now: a team captain, an older sibling, a class helper or the one your friends follow. And if you're not yet, you probably will be someday. Here's how to lead like Jesus:
+
+- **Put others first.** Think about what's good for the group, not just for you.
+- **Do the jobs nobody wants.** Great leaders don't think they're too important for small tasks.
+- **Listen.** Care about what other people think and feel.
+- **Help others succeed.** Celebrate when they do well.
+- **Set an example.** Don't ask others to do what you won't do.
+
+The world asks, "How many people serve you?" Jesus asks, "How many people do you serve?"
+
+**Think about it:** Who is a leader you know who serves others? What makes them a good leader?
+
+**Try this:** If you're a leader in any group (at home, school, a team or church), find a way to serve the people you lead today.
+
+*Dear Jesus, You are the King of everything, but You came to serve. Help me understand that true greatness means serving others. Whenever I lead, help me lead like You, with a servant's heart. In Your name, Amen.*
+
+---
+
+## Day 20 — A Great Work
+
+> "So I sent messengers to them, saying, 'I am doing a great work and cannot come down. Why should the work stop while I leave it to go down to you?'"
+> — Nehemiah 6:3 (BSB)
+
+The walls of Jerusalem lay in ruins. Many years earlier, enemies had broken them down and burned the gates. Without walls, the city was unprotected. God's people were weak and ashamed.
+
+A man named **Nehemiah** heard about it and was heartbroken. He prayed, and God gave him a big job: go back to Jerusalem and rebuild the walls.
+
+Nehemiah gathered the people, and they got to work. Families built sections of the wall next to their houses. Everyone pitched in.
+
+But not everyone was happy about it. Some powerful enemies, men named Sanballat and Geshem, didn't want the walls rebuilt. First they made fun of the builders. Then they threatened to attack. And when that didn't work, they tried something sneaky. They sent a message inviting Nehemiah to come down and meet with them in one of the villages. Nehemiah knew it was a trap to get him away from the work, and maybe to hurt him.
+
+So Nehemiah sent back today's verse: "**I am doing a great work and cannot come down.**"
+
+They asked him four times! And four times, Nehemiah gave the same answer. He stayed focused.
+
+And guess what? The whole wall was finished in just **fifty-two days** (Nehemiah 6:15). Even their enemies realized that the work had been done with the help of God.
+
+God has "great work" for you to do too. Maybe it's doing well in school, learning a skill, helping your family, growing in your faith or serving at church. And just like Nehemiah, you'll face distractions that try to pull you away.
+
+Some distractions are obvious: screens, games, friends who want you to goof off. Others are sneakier: discouragement ("This is too hard"), mocking ("That's so lame"), or even good things that crowd out the most important things.
+
+When distractions come, remember Nehemiah's answer: "I am doing a great work and cannot come down." Stay focused on what God has called you to do.
+
+**Think about it:** What "great work" do you think God wants you to focus on right now? What distractions try to pull you away from it?
+
+**Try this:** The next time you're distracted from something important, say Nehemiah's words to yourself: "I am doing a great work and cannot come down." Then get back to it!
+
+*Dear God, thank You for giving me important work to do for You. Help me stay focused like Nehemiah, and not be pulled away by distractions. Give me strength to keep going until the work is done. In Jesus' name, Amen.*
+
+---
+
+## Day 21 — For Such a Time as This
+
+> "For if you remain silent at this time, relief and deliverance for the Jews will arise from another place, but you and your father's house will perish. And who knows if perhaps you have come to the kingdom for such a time as this?"
+> — Esther 4:14 (BSB)
+
+In Book 4, you met Esther, the young Jewish woman who became queen of Persia. When a wicked man named Haman convinced the king to sign a law to destroy all the Jewish people, Esther's cousin Mordecai asked her to go to the king and plead for her people.
+
+But Esther was afraid. Going to the king without being invited could mean death.
+
+So Mordecai sent her today's message. Notice two things he said.
+
+First: "If you remain silent… relief and deliverance for the Jews will arise from another place." Mordecai trusted that God would save His people one way or another. God didn't *need* Esther. But He was giving her the chance to be part of His plan.
+
+Second: "Who knows if perhaps you have come to the kingdom **for such a time as this**?" In other words: *Esther, maybe this is why God made you queen. Maybe God put you in this exact place, at this exact time, for this exact moment.*
+
+Esther could have thought her becoming queen was just luck. But Mordecai helped her see that God had put her there on purpose.
+
+The same is true for you. It's not an accident that you were born when you were, into your family, in your town, at your school, with your friends. God placed you exactly where you are, at exactly this time in history, for a reason.
+
+Maybe there's a friend who needs you. Maybe there's a neighbor only you know about. Maybe there's someone at school who's lonely, or a kid being picked on, or a family member who doesn't know Jesus. Maybe God put you in their life for such a time as this.
+
+Esther had a choice. She could stay silent and safe, or she could step into God's plan. She chose to go to the king, and God used her to save her people.
+
+You have choices like that too. God probably won't ask you to go before a king. But He might ask you to speak up, reach out, help someone or stand for what's right. When He does, remember: maybe this is why you're here.
+
+**Think about it:** Why do you think God put you exactly where you are right now: your family, your school and your neighborhood?
+
+**Try this:** Ask God, "Who have You put in my life, for such a time as this?" Then do something kind for the person who comes to mind.
+
+*Dear God, thank You that I'm not where I am by accident. You placed me here, at this time, for a reason. Help me see the people and opportunities You've put in front of me. Give me courage like Esther to step into Your plan. In Jesus' name, Amen.*
+
+---
+
+## Day 22 — Speak Up
+
+> "Open your mouth for those with no voice, for the cause of all the dispossessed. Open your mouth, judge righteously, and defend the cause of the poor and needy."
+> — Proverbs 31:8–9 (BSB)
+
+The last chapter of Proverbs contains advice a mother gave to her son, a young king named Lemuel. She wanted him to be a good king. So she told him to use his power to help people who couldn't help themselves: "**Open your mouth** for those with no voice."
+
+Some people have no voice. That doesn't mean they can't talk. It means nobody listens to them, or they don't have the power to stand up for themselves. They might be poor, sick, very young, very old, disabled or treated unfairly. The Bible says God cares deeply about them, and He wants His people to speak up for them.
+
+About two hundred years ago, a man in England named **William Wilberforce** became a Christian. He was a member of Parliament, which is like being a lawmaker. He learned about the terrible slave trade, where people were being captured, chained and sold, and he believed God wanted him to fight against it.
+
+Many powerful people opposed him. He was mocked and threatened. He lost vote after vote. But for about twenty years, he kept speaking up for people who had no voice. Finally, in 1807, Parliament voted to end the slave trade. Wilberforce kept working for the rest of his life to end slavery completely.
+
+You don't have to be a lawmaker to speak up. Here are ways kids can open their mouths for those with no voice:
+
+- **Stand up for a kid who's being bullied.** Say, "Stop, that's not okay." And tell a trusted adult.
+- **Include someone who's always left out.**
+- **Don't laugh at jokes that make fun of people** because of how they look, where they're from or how they're different.
+- **Tell a grown-up** if you see someone being hurt or treated unfairly.
+- **Help people in need,** and ask your family how you can help too.
+- **Pray** for people who are treated unfairly around the world.
+
+Speaking up takes courage. It might not be popular. But when you speak up for someone who can't speak up for themselves, you're doing exactly what Jesus did for you.
+
+**Think about it:** Who are people with "no voice" in your school or community? How could you speak up for them?
+
+**Try this:** The next time you see someone being treated unfairly, don't stay silent. Say something kind, stand with them or tell a trusted adult.
+
+*Dear God, thank You that You care about people who have no voice. Give me courage to open my mouth for them, to stand up for kids who are bullied, to include people who are left out and to help people in need. Make me brave. In Jesus' name, Amen.*
+
+---
+
+## Day 23 — An Example
+
+> "In everything, show yourself to be an example by doing good works."
+> — Titus 2:7 (BSB)
+
+Have you ever noticed a little kid copying an older kid? Maybe your younger brother wants to wear the same clothes as you, or your little cousin tries to talk just like you, or a younger kid at church follows you around and does everything you do.
+
+That's because younger kids are always watching. And they learn more from what they *see* than from what they're *told*.
+
+Paul wrote a letter to a young pastor named Titus. And he told him: "In everything, show yourself to be an **example** by doing good works." Not just in some things. In **everything**.
+
+Whether you realize it or not, you're already an example to someone. The question isn't *whether* you're an example. It's *what kind* of example you are.
+
+Think about the younger kids in your life. What are they learning from watching you?
+
+- When you get frustrated, do they see you yell, or take a breath?
+- When you lose a game, do they see you pout, or congratulate the winner?
+- When your parents ask you to do something, do they see you argue, or obey?
+- When someone is left out, do they see you ignore them, or include them?
+- When you make a mistake, do they see you blame others, or say sorry?
+
+That might feel like a lot of pressure! But here's the good news: you don't have to be perfect to be a good example. In fact, one of the best things you can show younger kids is what to do when you **mess up**. When you admit you were wrong, say sorry and try again, you're teaching them something really important.
+
+And remember: the best example of all is Jesus. The more you follow Him, the more your life will point others to Him. Paul once wrote, "You are to imitate me, just as I imitate Christ" (1 Corinthians 11:1). That's the goal: to follow Jesus so closely that when others follow you, they end up following Him.
+
+**Think about it:** Who is watching your example right now? What are they learning from you?
+
+**Try this:** Choose one good habit you want the younger kids in your life to copy. Practice it on purpose today when they're around.
+
+*Dear God, help me remember that people are watching my example, especially younger kids. Help me show them what it looks like to follow You. When I mess up, help me show them how to say sorry and try again. In Jesus' name, Amen.*
+
+---
+
+## Day 24 — He Will Finish It
+
+> "Being confident of this, that He who began a good work in you will carry it on to completion until the day of Christ Jesus."
+> — Philippians 1:6 (BSB)
+
+Have you ever started a project and never finished it? Maybe a puzzle that's still sitting half-done on a table. A drawing you gave up on halfway through. A book you meant to read but put down after chapter two. We've all left things unfinished.
+
+But God never does.
+
+Paul wrote this to his friends in the church at Philippi. He was in prison, but he was full of joy, because he was so sure of this: "He who began a good work in you will carry it on to **completion**."
+
+What is the "good work" God began in you? It's the work of making you more like Jesus. It started when you first trusted Him. God forgave you, gave you new life and put His Spirit inside you. And He's been working on you ever since.
+
+Sometimes it might not feel like much is happening. You still mess up. You still struggle with the same sins. You still have bad days. You might wonder, *Is God really changing me?*
+
+But Paul says to be "confident." God isn't done with you yet. He's still working, and He will **finish** what He started.
+
+Think about a potter making a clay pot. At first, it's just a lump of clay spinning on the wheel. Then, slowly, the potter shapes it with his hands. It takes time. It might look lumpy and strange halfway through. But the potter doesn't give up. He keeps working until it's beautiful.
+
+God is the potter, and you are the clay (Isaiah 64:8). He's shaping you, little by little, into what He designed you to be. And He won't quit halfway.
+
+When will He be finished? "Until the day of Christ Jesus," when Jesus comes back. On that day, God's work in you will be complete. You'll be fully like Jesus.
+
+Until then, you can be patient with yourself, because God is patient with you. And you can keep growing, trusting that He's still at work.
+
+**Think about it:** What's something God has already changed in you since you started following Him? What are you still waiting for Him to change?
+
+**Try this:** Write down three ways you've seen yourself grow since Book 1 of Rooted (or since you started following Jesus). Thank God for each one.
+
+*Dear God, thank You for the good work You started in me. Thank You that You never give up, and You will finish what You began. When I feel like I'm not growing, help me trust that You're still working. Keep shaping me to be like Jesus. In His name, Amen.*
+
+---
+
+# Week 5 · Looking Ahead
+
+---
+
+## Day 25 — I Will Come Back
+
+> "Do not let your hearts be troubled. You believe in God; believe in Me as well. In My Father's house are many rooms. If it were not so, would I have told you that I am going there to prepare a place for you? And if I go and prepare a place for you, I will come back and welcome you into My presence, so that you also may be where I am."
+> — John 14:1–3 (BSB)
+
+Have you ever had someone you love go away for a while? Maybe a parent on a work trip, a grandparent who lives far away, or a friend who moved. Saying goodbye is hard. But when they say, "I'll come back," it gives you something to look forward to. You might count the days until you see them again.
+
+On the night before He died, Jesus told His disciples He was going away. They were confused and upset. He had been with them for three years! How could He leave?
+
+So Jesus comforted them with a beautiful promise: "In My Father's house are many rooms… I am going there to prepare a place for you… **I will come back** and welcome you into My presence, so that you also may be where I am."
+
+Jesus was going back to heaven. But He was going to get a place ready for them, like someone preparing a room for a guest they love. And He promised He would come back to bring them home.
+
+That promise is for you too.
+
+The Bible teaches that one day, Jesus is coming back. We don't know when. Jesus said no one knows the day or the hour. But it's as sure as the sunrise. The same Jesus who was born in Bethlehem, died on the cross and rose from the dead will return. And everyone who belongs to Him will be with Him forever.
+
+That's the most exciting thing about the future! Whatever else happens in your life, whatever job you have or wherever you live, the best part of your story is still ahead.
+
+So how do we live while we wait?
+
+- **Don't let your heart be troubled.** Trust Jesus. He keeps His promises.
+- **Keep following Him.** Live every day in a way that would make you glad if He came back today.
+- **Tell others.** Help as many people as possible be ready to meet Him.
+- **Look forward to it!** The last prayer in the whole Bible is "Come, Lord Jesus!" (Revelation 22:20).
+
+**Think about it:** How does knowing that Jesus is coming back change the way you live today?
+
+**Try this:** Pray the last prayer in the Bible today: "Come, Lord Jesus!" Then live the day in a way you'd be glad for Him to see.
+
+*Dear Jesus, thank You that You're preparing a place for me, and that You promised to come back. Help me not to let my heart be troubled. Help me live every day ready to see You. Come, Lord Jesus! In Your name, Amen.*
+
+---
+
+## Day 26 — No More Tears
+
+> "And I heard a loud voice from the throne saying: 'Behold, the dwelling place of God is with man, and He will dwell with them. They will be His people, and God Himself will be with them as their God. He will wipe away every tear from their eyes, and there will be no more death or mourning or crying or pain, for the former things have passed away.' And the One seated on the throne said, 'Behold, I make all things new.'"
+> — Revelation 21:3–5 (BSB)
+
+What do you think heaven will be like?
+
+Some people imagine sitting on clouds playing harps forever. That sounds kind of boring, doesn't it? But the Bible's picture of the future is so much better than that!
+
+Near the very end of the Bible, the apostle John saw a vision of what's coming. He saw "a new heaven and a new earth" (Revelation 21:1). God isn't going to throw away His creation. He's going to make it **new**: everything fixed, everything the way it was always supposed to be.
+
+Look at what John heard:
+
+**God will live with His people.** "The dwelling place of God is with man." Remember the Garden of Eden, where God walked with Adam and Eve? Sin broke that. But in the new creation, we'll be with God, face to face, forever.
+
+**No more tears.** "He will wipe away every tear from their eyes." Think about that. God Himself, gently wiping away every tear, like a parent comforting a crying child.
+
+**No more death, sadness, crying or pain.** No more hospitals. No more funerals. No more goodbyes. No more sickness, fear, loneliness or hurt. All of it will be gone forever.
+
+**Everything made new.** "Behold, I make all things new." Everything sin broke, God will fix. Every sad thing will come untrue.
+
+Think about all the hard things we talked about in Book 4: fear, worry, sadness, death and unfairness. In the new creation, none of those will exist anymore. The storms will be over forever.
+
+And the best part isn't the streets of gold or the lack of pain. The best part is **God**. We will be with Him, and we'll see Jesus face to face. Everything good we've ever enjoyed on earth is just a small taste of the joy of being with Him.
+
+That's the future waiting for everyone who belongs to Jesus. And it will never end.
+
+**Think about it:** What are you most looking forward to about the new heaven and new earth?
+
+**Try this:** Draw a picture of what you imagine the new creation might be like. Include something that shows "no more tears."
+
+*Dear God, thank You for the amazing future You've promised. Thank You that one day You'll wipe away every tear, and there will be no more death, sadness or pain. Thank You that You'll make all things new. Most of all, thank You that I'll be with You forever. In Jesus' name, Amen.*
+
+---
+
+## Day 27 — Run the Race
+
+> "Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off every encumbrance and the sin that so easily entangles, and let us run with endurance the race set out for us. Let us fix our eyes on Jesus, the author and perfecter of our faith, who for the joy set before Him endured the cross, scorning its shame, and sat down at the right hand of the throne of God."
+> — Hebrews 12:1–2 (BSB)
+
+Have you ever run a long race? At first you feel great. But partway through, your legs start to burn, your lungs ache and you want to stop. The finish line seems so far away!
+
+The Bible says following Jesus is like running a long race. Not a quick sprint, but a marathon that lasts your whole life. And Hebrews gives us advice for running it well.
+
+**Remember who's cheering.** "We are surrounded by such a great cloud of witnesses." The chapter right before this one lists heroes of faith: Abraham, Moses, Joseph, David, Rahab and many more. These are people who ran the race before us and finished. It's like they're in the stands of a stadium, cheering us on! Think of everyone you've met in the Rooted books: Samuel, Daniel, Esther, Joseph, Peter and Paul. They all show us that it can be done.
+
+**Throw off what slows you down.** "Let us throw off every encumbrance and the sin that so easily entangles." Imagine trying to run a race wearing a heavy backpack and a long coat that tangles around your legs. You'd trip! Some things slow us down in following Jesus. Sins, like lying or selfishness, trip us up. But other things might not even be sins. They're just weights: habits or distractions that pull us away from God. A good runner gets rid of anything that slows them down.
+
+**Keep going.** "Let us run with endurance." *Endurance* means keeping going, even when it's hard. Don't give up!
+
+**Keep your eyes on Jesus.** "Let us fix our eyes on Jesus." Runners look toward the finish line, not at the ground or at the other runners. Jesus is our finish line and our example. He ran His race all the way to the cross, "for the joy set before Him." He knew the joy on the other side was worth it.
+
+When you're tired, discouraged or tempted to quit, look to Jesus. He finished His race, and He'll help you finish yours.
+
+**Think about it:** What's something that "slows you down" in following Jesus? What would it look like to throw it off?
+
+**Try this:** Go for a run or a walk today. As you do, think about the race of faith, and pray for strength to keep running.
+
+*Dear Jesus, help me run the race of faith with endurance. Help me throw off anything that slows me down. When I'm tired, help me keep my eyes on You. Thank You for finishing Your race for me. In Your name, Amen.*
+
+---
+
+## Day 28 — Keep Growing
+
+> "But grow in the grace and knowledge of our Lord and Savior Jesus Christ. To Him be the glory both now and to the day of eternity. Amen."
+> — 2 Peter 3:18 (BSB)
+
+These are the very last words Peter wrote in the Bible. After everything he had been through (fishing on the Sea of Galilee, following Jesus for three years, walking on water, denying Jesus three times, being forgiven, preaching to thousands, leading the church and going to prison), his last instruction was simple: "**Grow.**"
+
+That's interesting, isn't it? Peter had been following Jesus for more than thirty years by then. You might think he'd say, "You've learned enough. You're done." But Peter knew that following Jesus is about growing, and growing never stops.
+
+What should we grow in?
+
+**Grace.** Grow in understanding how much God loves you and has forgiven you. The older you get, the more you realize how amazing His grace is.
+
+**Knowledge.** Grow in knowing Jesus. Not just knowing *about* Him, but knowing Him personally, the way you know a good friend.
+
+You've spent a lot of days growing with Rooted. That's awesome! But this isn't the end. It's just the beginning. How can you keep growing after this book?
+
+- **Keep reading your Bible.** Try reading one of the Gospels, or a few Psalms or Proverbs each day. Ask a parent or pastor to help you pick a reading plan.
+- **Keep praying.** Talk to God every day, about everything.
+- **Stay connected to church.** Keep going, keep learning, and find ways to serve.
+- **Find people who are a few steps ahead of you** in following Jesus and learn from them.
+- **Memorize Scripture.** Keep adding verses to your heart.
+- **Read good books.** Look for stories of people who followed God, like the *Brave for God* books.
+- **Keep obeying.** Growth happens when you do what God says, not just when you know it.
+
+Remember Book 1? Roots don't grow all at once. They grow a little bit every day, when no one is watching. That's still true. Keep going, a little at a time, for the rest of your life.
+
+And notice how Peter ended: "To Him be the glory." That's the point of all our growing. Not so people will think we're great, but so Jesus gets all the glory.
+
+**Think about it:** What's one way you want to keep growing after you finish Rooted?
+
+**Try this:** Make a plan for how you'll keep growing after this book. Write down what you'll read, when you'll pray, and one person you could ask to help you.
+
+*Dear Jesus, I don't want to stop growing. Help me grow in Your grace and in knowing You, every day for the rest of my life. Help me keep reading Your Word, praying and following You. To You be the glory, now and forever. Amen.*
+
+---
+
+## Day 29 — Finishing Well
+
+> "For I am already being poured out like a drink offering, and the time of my departure is at hand. I have fought the good fight, I have finished the race, I have kept the faith. From now on there is laid up for me the crown of righteousness, which the Lord, the righteous Judge, will award to me on that day—and not only to me, but to all who crave His appearing."
+> — 2 Timothy 4:6–8 (BSB)
+
+These are some of the last words the apostle Paul ever wrote.
+
+He was an old man, sitting in a cold prison cell in Rome. He knew he would soon be put to death for following Jesus. And he wrote one last letter to his young friend Timothy.
+
+Paul looked back over his life. He had been beaten, stoned, shipwrecked and thrown in prison. He had traveled thousands of miles to tell people about Jesus. He had started churches all over the Roman world. And through it all, he had stayed faithful.
+
+So Paul could say three amazing things:
+
+**"I have fought the good fight."** Following Jesus had been a battle, against temptation, against discouragement, against people who opposed him. But he had fought it well.
+
+**"I have finished the race."** He hadn't quit. He had run all the way to the end.
+
+**"I have kept the faith."** Through everything, he had kept trusting Jesus.
+
+And Paul wasn't afraid of the end. He was looking forward to "the crown of righteousness" that Jesus would give him. And notice who else gets that crown: "not only to me, but to **all who crave His appearing**." That means everyone who loves Jesus and longs for Him to come back. That includes you!
+
+Here's something important: it's not enough to start well. Lots of people start following Jesus with excitement and then drift away. What matters is **finishing well**.
+
+You're young, and the finish line is probably a long way off. But the choices you make now start building the habits of a lifetime. Every day you choose to follow Jesus is a step toward finishing well.
+
+Wouldn't it be amazing if, at the end of your life, you could say what Paul said? *I fought the good fight. I finished the race. I kept the faith.*
+
+You can. Not because you're strong, but because Jesus is faithful, and He will help you all the way to the end.
+
+**Think about it:** What do you think it takes to "finish well" as a follower of Jesus? What could help you keep going for your whole life?
+
+**Try this:** Ask an older Christian you admire, maybe a grandparent or someone at church, "What has helped you keep following Jesus for so long?" Write down what they say.
+
+*Dear God, I want to finish well. Help me fight the good fight, finish the race and keep the faith, for my whole life. Thank You that You will help me all the way to the end. I look forward to the day I see Jesus. In His name, Amen.*
+
+---
+
+## Day 30 — Rooted for Life
+
+> "Blessed is the man who does not walk in the counsel of the wicked, or set foot on the path of sinners, or sit in the seat of mockers. But his delight is in the Law of the LORD, and on His law he meditates day and night. He is like a tree planted by streams of water, yielding its fruit in season, whose leaf does not wither, and who prospers in all he does."
+> — Psalm 1:1–3 (BSB)
+
+This is it: the very last day of the very last book of Rooted!
+
+Let's end where the whole book of Psalms begins, with a picture of a tree.
+
+Psalm 1 describes two kinds of people. One kind walks with the wicked, follows sinners and sits with mockers, people who make fun of God. Step by step, they get pulled further and further away.
+
+But the other kind of person is different. "His **delight** is in the Law of the LORD." He loves God's Word. He thinks about it "day and night." And look at what he becomes:
+
+"**He is like a tree planted by streams of water.**"
+
+That's the picture we've been following for six whole books! Think back over the journey:
+
+- In **Book 1**, you were **planted**. You learned who God is, heard the good news about Jesus, discovered who you are in Christ and learned to pray. Your roots started growing.
+- In **Book 2**, you **followed Jesus** from the manger to the empty tomb.
+- In **Book 3**, you learned how God grows **fruit** in your life: love, joy, peace, patience, kindness, goodness, faithfulness, gentleness and self-control.
+- In **Book 4**, you learned how to stand **strong in the storm**, when you're afraid, sad or tempted.
+- In **Book 5**, you **branched out** in love to your family, friends, church and the world.
+- And in **Book 6**, you discovered God's purpose: to **bear fruit** that lasts forever.
+
+Now look at the promises of Psalm 1. A tree planted by streams of water:
+
+- **Yields its fruit in season.** It keeps producing good things, year after year.
+- **Its leaf does not wither.** Even in dry times, it stays green and alive.
+- **Prospers in all he does.** Its life is full and good, because it's connected to the source of life.
+
+That's the kind of person God wants you to be for the rest of your life. Not just for 180 days. For life.
+
+And here's the secret, the same secret from the very first day of Book 1: it's all about the roots. The tree doesn't stay green by trying really hard. It stays green because its roots reach down to the water. Keep your roots in Jesus, and He will keep you growing.
+
+**Think about it:** Looking back over all six books of Rooted, what's the most important thing you've learned?
+
+**Try this:** Draw one last tree in your notebook: a big one, planted by a stream. Write your favorite verse from all six books on its trunk. Then show someone and tell them what God has taught you.
+
+*Dear God, thank You for this whole journey. Thank You for planting me, growing me and helping me bear fruit. Make me like a tree planted by streams of water, rooted in You for the rest of my life. Keep me growing, keep me strong and use me to bless others. I love You. In Jesus' name, Amen.*
+
+---
+
+## Conclusion: Rooted and Built Up
+
+You made it! If you've read all six books of Rooted, you've spent **180 days** with God. That's half a year of reading His Word, learning about Him and talking with Him. What an amazing thing!
+
+Let's go back to where it all started. On the very first day of Book 1, we read this verse:
+
+> "Therefore, just as you have received Christ Jesus as Lord, continue to walk in Him, rooted and built up in Him, established in the faith as you were taught, and overflowing with thankfulness."
+> — Colossians 2:6–7 (BSB)
+
+Look how far you've come since then!
+
+You learned that you were **planted** in God's family by receiving Jesus. You walked with Him through His life. You watched Him grow fruit in you. You learned to stand strong in storms. You reached out in love to others. And now you've discovered that God made you on purpose, for a purpose: to bear fruit that lasts forever.
+
+But notice the word Paul used: "**continue**." Continue to walk in Him. The journey doesn't end here. In a way, it's just beginning! Everything you've learned in Rooted is a foundation for a whole lifetime of following Jesus.
+
+### If you haven't trusted Jesus yet
+
+Maybe you've read these books and learned a lot about God, but you've never actually trusted Jesus for yourself. There's no better day than today. God loves you. Jesus died on the cross for your sins and rose again. He offers you forgiveness, new life and a place in His family forever, as a free gift. You can pray something like this:
+
+*Dear Jesus, I believe You are the Son of God. I believe You died on the cross for my sins and rose again. I'm sorry for the wrong things I've done. I trust You as my Savior, and I want to follow You as my Lord for the rest of my life. Plant me in Your family, and help me grow. Amen.*
+
+If you prayed that, please tell someone: a parent, a pastor or a Christian friend. They'll want to celebrate with you and help you keep growing!
+
+### Where to go from here
+
+Here are some ideas for how to keep growing after Rooted:
+
+- **Read a whole book of the Bible.** Try the Gospel of John, the Psalms, or the book of Acts to see what happened after Jesus went back to heaven.
+- **Read Rooted again.** You'll be surprised how much more you notice the second time through.
+- **Read true stories of faith.** Look for books about people who followed God, like the *Brave for God* series on Ochorus.
+- **Keep a prayer journal.** Write down your prayers and how God answers them.
+- **Find a mentor.** Ask an older Christian to meet with you, read the Bible with you and pray for you.
+- **Serve.** Find a way to use your gifts at church or in your community.
+
+Wherever life takes you, remember: you're a tree planted by streams of water. Keep your roots deep in Jesus, and He will keep you growing, strong in the storms and full of fruit, for the rest of your life.
+
+We're so glad you've been on this journey. Keep growing!
+
+> "Now to Him who is able to keep you from stumbling and to present you unblemished in His glorious presence, with great joy—to the only God our Savior be glory, majesty, dominion, and authority through Jesus Christ our Lord before all time, and now, and for all eternity. Amen."
+> — Jude 1:24–25 (BSB)
