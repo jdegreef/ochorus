@@ -984,5 +984,8 @@
   "notebook_testimony_for": "ku lwa {person}",
   "notebook_testimony_include_request": "Teekamu kye twasaba",
   "notebook_testimony_include_person": "Teekamu gwe twasabira ({person})",
-  "notebook_testimony_hint": "Tewali kiva ku kyuma kyo okutuusa ng'ogabanye."
+  "notebook_testimony_hint": "Tewali kiva ku kyuma kyo okutuusa ng'ogabanye.",
+  "notebook_pin": "Kwata waggulu",
+  "notebook_unpin": "Ggyako",
+  "notebook_pinned": "Ebikwatiddwa waggulu"
 }

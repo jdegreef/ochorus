@@ -984,5 +984,8 @@
   "notebook_testimony_for": "for {person}",
   "notebook_testimony_include_request": "Include what was prayed",
   "notebook_testimony_include_person": "Include who it was for ({person})",
-  "notebook_testimony_hint": "Nothing leaves your device until you share it."
+  "notebook_testimony_hint": "Nothing leaves your device until you share it.",
+  "notebook_pin": "Pin",
+  "notebook_unpin": "Unpin",
+  "notebook_pinned": "Pinned"
 }

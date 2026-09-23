@@ -984,5 +984,8 @@
   "notebook_testimony_for": "за {person}",
   "notebook_testimony_include_request": "Включити, про що молилися",
   "notebook_testimony_include_person": "Включити, за кого ({person})",
-  "notebook_testimony_hint": "Ніщо не залишає ваш пристрій, доки ви не поділитеся."
+  "notebook_testimony_hint": "Ніщо не залишає ваш пристрій, доки ви не поділитеся.",
+  "notebook_pin": "Закріпити",
+  "notebook_unpin": "Відкріпити",
+  "notebook_pinned": "Закріплені"
 }

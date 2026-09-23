@@ -984,5 +984,8 @@
   "notebook_testimony_for": "pour {person}",
   "notebook_testimony_include_request": "Inclure ce qui a été demandé",
   "notebook_testimony_include_person": "Inclure pour qui c'était ({person})",
-  "notebook_testimony_hint": "Rien ne quitte votre appareil tant que vous ne partagez pas."
+  "notebook_testimony_hint": "Rien ne quitte votre appareil tant que vous ne partagez pas.",
+  "notebook_pin": "Épingler",
+  "notebook_unpin": "Désépingler",
+  "notebook_pinned": "Épinglées"
 }
