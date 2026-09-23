@@ -31,4 +31,14 @@ describe('buildReminderICS', () => {
 		});
 		expect(ics).toContain('DESCRIPTION:Read a classic\\, daily.');
 	});
+
+	it('repeats weekly on the chosen weekday, from its next occurrence', () => {
+		// 2026-07-22 is a Wednesday; Sunday 07:00 first falls on the 26th.
+		const ics = buildReminderICS('07:00', { ...base, now: new Date('2026-07-22T09:00:00'), weekday: 0 });
+		expect(ics).toContain('RRULE:FREQ=WEEKLY;BYDAY=SU');
+		expect(ics).toContain('DTSTART:20260726T070000');
+		// Wednesday itself, but the time has passed: a week later.
+		const wed = buildReminderICS('07:00', { ...base, now: new Date('2026-07-22T09:00:00'), weekday: 3 });
+		expect(wed).toContain('DTSTART:20260729T070000');
+	});
 });

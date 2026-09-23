@@ -10,9 +10,10 @@ returns the merged whole.
 
 from __future__ import annotations
 
-from datetime import UTC, date, datetime
+import re
+from datetime import UTC, date, datetime, timedelta
 
-from django.db import transaction
+from django.db import IntegrityError, transaction
 from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -32,7 +33,10 @@ from .models import (
     ChapterMarks,
     Favorite,
     FavoriteKind,
+    JournalEntry,
+    JournalKind,
     PlanProgress,
+    PrayerGroup,
     ReadingDay,
     ReadingProgress,
     ReadingSession,
@@ -43,6 +47,7 @@ from .serializers import (
     BookmarkSerializer,
     ChapterMarksSerializer,
     FavoriteSerializer,
+    JournalEntrySerializer,
     PlanProgressSerializer,
     ReadingProgressSerializer,
 )
@@ -234,6 +239,23 @@ def _ms_to_dt(ms) -> datetime | None:
         return datetime.fromtimestamp(float(ms) / 1000.0, tz=UTC)
     except (TypeError, ValueError, OverflowError, OSError):
         return None
+
+
+def _passage(kind, slug, order, p) -> tuple[str, int, int] | None:
+    """A place in a text — (kind, order, p) — validated, or None.
+
+    `p` is bounded like the other integer columns (see MAX_CHAPTER_ORDER): an
+    arbitrarily long run of digits would reach the DB as an integer-overflow
+    DataError (a 500), and a paragraph index far beyond any real chapter is
+    junk regardless. Shared by bookmarks and a journal entry's source.
+    """
+    k = _kind_or_none(kind)
+    o = _valid_order(order)
+    if k is None or not _valid_slug(slug) or o is None:
+        return None
+    if not isinstance(p, int) or isinstance(p, bool) or not 0 <= p <= MAX_CHAPTER_ORDER:
+        return None
+    return k, o, p
 
 
 def _kind_or_none(value) -> str | None:
@@ -734,22 +756,8 @@ class BookmarksView(APIView):
     permission_classes = [IsAuthenticated]
     throttle_classes = [_ReadingWriteThrottle]
 
-    def _locate(self, kind, slug, order, p):
-        """Validate the path parts → (kind, order, p) or None.
-
-        `p` is bounded like the other integer columns (see MAX_CHAPTER_ORDER):
-        `<int:p>` matches an arbitrarily long run of digits, and an out-of-range
-        value would reach the DB as an integer-overflow DataError (a 500). A
-        paragraph index far beyond any real chapter is junk regardless.
-        """
-        k = _kind_or_none(kind)
-        o = _valid_order(order)
-        if k is None or not _valid_slug(slug) or o is None or not 0 <= p <= MAX_CHAPTER_ORDER:
-            return None
-        return k, o, p
-
     def put(self, request, kind, slug, order, p):
-        loc = self._locate(kind, slug, order, p)
+        loc = _passage(kind, slug, order, p)
         if loc is None:
             return Response({"detail": "Invalid bookmark."}, status=400)
         k, o, pi = loc
@@ -765,7 +773,7 @@ class BookmarksView(APIView):
         return Response(BookmarkSerializer(obj).data)
 
     def delete(self, request, kind, slug, order, p):
-        loc = self._locate(kind, slug, order, p)
+        loc = _passage(kind, slug, order, p)
         if loc is None:
             return Response({"detail": "Invalid bookmark."}, status=400)
         k, o, pi = loc
@@ -774,6 +782,219 @@ class BookmarksView(APIView):
             profile=profile, kind=k, book_slug=slug, chapter_order=o, paragraph_index=pi
         ).delete()
         return Response(status=204)
+
+
+# --- Journal (the Notebook's own notes and prayers) ---------------------------
+
+# A client id: the frontend mints `<base36 time>-<random>`; anything URL-safe
+# up to the column width is accepted, anything else is junk.
+_JOURNAL_ID = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
+# Column / anti-abuse bounds. Generous for real writing (a long prayer journal
+# entry is a few thousand characters), finite so one account can't store MBs.
+JOURNAL_BODY_MAX = 20_000
+JOURNAL_ANSWER_MAX = 10_000
+MAX_JOURNAL_ENTRIES = 5_000
+# How far ahead of the server a client clock may stamp a write. Last-write-wins
+# trusts the device's clock; one set years ahead would otherwise make its entry
+# immune to every later edit from a correct device.
+JOURNAL_CLOCK_SKEW = timedelta(days=1)
+_JOURNAL_REMIND = re.compile(r"^(daily|weekly-[0-6])@([01]\d|2[0-3]):[0-5]\d$")
+MAX_JOURNAL_UPDATES = 50
+JOURNAL_UPDATE_MAX = 2_000
+
+
+def _journal_updates(value) -> list:
+    """A prayer's follow-ups → a bounded list of {at, text}; junk dropped."""
+    if not isinstance(value, list):
+        return []
+    out = []
+    for u in value[:MAX_JOURNAL_UPDATES]:
+        if not isinstance(u, dict) or not isinstance(u.get("text"), str) or not u["text"].strip():
+            continue
+        at = _ms_to_dt(u.get("at"))
+        if at is None:
+            continue
+        out.append({"at": int(at.timestamp() * 1000), "text": u["text"][:JOURNAL_UPDATE_MAX]})
+    return out
+
+
+def _journal_source(value) -> dict | None:
+    """The passage an entry was written from, validated field by field, or None.
+
+    Only positions and display text are kept — never a URL — so nothing a
+    client sends can become a link the Notebook renders."""
+    # The kind is required here: _kind_or_none's absent-means-book default is
+    # for old progress clients, and would file a sermon's passage as a book's.
+    if not isinstance(value, dict) or value.get("kind") not in WorkKind.values:
+        return None
+    slug = value.get("slug")
+    place = _passage(value.get("kind"), slug, value.get("order"), value.get("p"))
+    edition = value.get("edition")
+    if place is None or not isinstance(edition, str) or not 0 < len(edition) <= 16:
+        return None
+    kind, order, p = place
+    return {
+        "kind": kind,
+        "slug": slug,
+        "order": order,
+        "p": p,
+        "edition": edition,
+        "title": str(value.get("title") or "")[:200],
+        "quote": str(value.get("quote") or "")[:600],
+    }
+
+
+_JOURNAL_BLANK = {
+    "title": "",
+    "body": "",
+    "answer": "",
+    "answered_at": None,
+    "ref": "",
+    "person": "",
+    "group": "",
+    "remind": "",
+    "updates": [],
+    "source": None,
+}
+
+
+# Every column a later write may change — all but identity and first-write time.
+_JOURNAL_WRITABLE = [*_JOURNAL_BLANK, "kind", "deleted", "client_updated_at", "updated_at"]
+
+
+def _journal_fields(data) -> dict | None:
+    """A journal payload → cleaned column values, or None when it is unusable.
+
+    Text is bounded to the columns rather than rejected, like a bookmark's
+    snippet. An unknown kind is None (a newer client than this server —
+    misfiling a prayer as a note would lose what makes it one). Only a prayer
+    can be answered.
+    """
+    if not isinstance(data, dict):
+        return None
+    kind = data.get("kind") or JournalKind.NOTE
+    if kind not in JournalKind.values:
+        return None
+    now = datetime.now(UTC)
+    updated = min(_ms_to_dt(data.get("client_updated_at")) or now, now + JOURNAL_CLOCK_SKEW)
+    created = min(_ms_to_dt(data.get("client_created_at")) or updated, updated)
+
+    def text(key, n):
+        return str(data.get(key) or "")[:n]
+
+    deleted = data.get("deleted") is True
+    if deleted:
+        # A tombstone keeps its identity and clock, never the reader's words —
+        # the one place that rule lives.
+        return {
+            **_JOURNAL_BLANK,
+            "kind": kind,
+            "deleted": True,
+            "client_created_at": created,
+            "client_updated_at": updated,
+        }
+    prayer = kind == JournalKind.PRAYER
+    answered = _ms_to_dt(data.get("answered_at")) if prayer else None
+    group = data.get("group")
+    remind = data.get("remind")
+    return {
+        "kind": kind,
+        "title": text("title", 200),
+        "body": text("body", JOURNAL_BODY_MAX),
+        "answer": text("answer", JOURNAL_ANSWER_MAX) if answered else "",
+        "answered_at": answered,
+        "ref": text("ref", 200),
+        # Who a prayer is for, its group, reminder and follow-ups are prayer
+        # things; a note carries none of them.
+        "person": text("person", 80) if prayer else "",
+        "group": group if prayer and group in PrayerGroup.values else "",
+        "remind": remind if prayer and isinstance(remind, str) and _JOURNAL_REMIND.match(remind) else "",
+        "updates": _journal_updates(data.get("updates")) if prayer else [],
+        "source": _journal_source(data.get("source")),
+        "deleted": False,
+        "client_created_at": created,
+        "client_updated_at": updated,
+    }
+
+
+def _live_journal_count(profile) -> int:
+    """Entries toward the cap — tombstones are never pruned, and counting them
+    would one day lock a reader who deletes a lot out of writing anything."""
+    return profile.journal_entries.filter(deleted=False).count()
+
+
+def _journal_wins(obj: JournalEntry, fields: dict) -> bool:
+    """Whether an incoming write replaces the stored entry.
+
+    Last-write-wins on the writing device's clock; an equal clock is the same
+    write arriving again (every sign-in merge re-sends the whole journal), so
+    it is skipped rather than rewritten. A delete is STICKY once stored — an
+    offline device's stale edit of a prayer the reader deleted must not bring
+    it back — and always lands, whatever the clocks say, so a device whose
+    clock runs fast can't make its entry undeletable.
+    """
+    if obj.deleted:
+        return False
+    return fields["deleted"] or fields["client_updated_at"] > obj.client_updated_at
+
+
+def _apply_journal(obj: JournalEntry, fields: dict) -> None:
+    for k, v in fields.items():
+        if k != "client_created_at":
+            setattr(obj, k, v)
+
+
+def _upsert_journal(profile, entry_id: str, fields: dict) -> JournalEntry | None:
+    """One entry, under a row lock (see ``_journal_wins``). Returns None only
+    when a NEW entry would pass the per-account cap."""
+    for _ in range(2):
+        with transaction.atomic():
+            obj = (
+                JournalEntry.objects.select_for_update()
+                .filter(profile=profile, entry_id=entry_id)
+                .first()
+            )
+            if obj is not None:
+                if _journal_wins(obj, fields):
+                    _apply_journal(obj, fields)
+                    obj.save()
+                return obj
+            if not fields["deleted"] and _live_journal_count(profile) >= MAX_JOURNAL_ENTRIES:
+                return None
+            try:
+                with transaction.atomic():
+                    return JournalEntry.objects.create(
+                        profile=profile, entry_id=entry_id, **fields
+                    )
+            except IntegrityError:
+                # A concurrent first write of the same entry won the insert;
+                # loop once to take the locked update path against its row.
+                continue
+    return JournalEntry.objects.get(profile=profile, entry_id=entry_id)
+
+
+class JournalView(APIView):
+    """Save one Notebook entry (a note or a prayer), or tombstone it.
+
+    PUT carries the whole entry — edits are last-write-wins by the client's
+    `client_updated_at` — and a delete is a PUT with `deleted: true`, so it
+    propagates to every device instead of being resurrected by one that was
+    offline. See :class:`JournalEntry`.
+    """
+
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
+
+    def put(self, request, entry_id):
+        if not _JOURNAL_ID.match(entry_id):
+            return Response({"detail": "Invalid entry id."}, status=400)
+        fields = _journal_fields(_dict_body(request))
+        if fields is None:
+            return Response({"detail": "Invalid entry."}, status=400)
+        obj = _upsert_journal(_profile(request), entry_id, fields)
+        if obj is None:
+            return Response({"detail": "Notebook is full."}, status=400)
+        return Response(JournalEntrySerializer(obj).data)
 
 
 class PlanProgressView(APIView):
@@ -920,7 +1141,7 @@ class MergeView(APIView):
         # A JSON array/scalar body (a stale client shape) must not 500 the whole
         # sign-in reconciliation; each helper also guards its own section.
         data = _as_dict(request.data)
-        # All six phases are one transaction: a failure in a later phase (or a
+        # All the phases are one transaction: a failure in a later phase (or a
         # DB error mid-write) must not leave the account half-reconciled — the
         # client writes the returned state back over localStorage, so a partial
         # merge would silently diverge local and server.
@@ -935,6 +1156,7 @@ class MergeView(APIView):
             self._merge_bookmarks(profile, data.get("bookmarks") or [])
             self._merge_activity(profile, data.get("activity") or [])
             self._merge_plan_progress(profile, data.get("plan_progress") or [])
+            self._merge_journal(profile, data.get("journal") or [])
         # `removed_applied` tells the client this API honours `removed`, so it
         # may drop its pending list. An API from before tombstones ignores the
         # field — without this, the client would clear removals nobody applied.
@@ -980,6 +1202,59 @@ class MergeView(APIView):
                 continue
             started = _ms_to_dt(row.get("started_at")) or datetime.now(UTC)
             _upsert_plan_progress(profile, slug, _clean_done(row.get("done")), started)
+
+    def _merge_journal(self, profile, incoming):
+        """The same last-write-wins rule as a live PUT (``_journal_wins``),
+        batched: this runs on every sign-in and session restore with the whole
+        journal, so it is one locked read, one bulk update of the entries that
+        changed, and one bulk insert of the new ones — not a round-trip per
+        entry. A non-list is ignored and malformed rows skipped, like every
+        other section; new entries stop at the per-account cap."""
+        if not isinstance(incoming, list):
+            return
+        rows = {}
+        for row in incoming[:MAX_MERGE_ROWS]:
+            if not isinstance(row, dict):
+                continue
+            entry_id = row.get("entry_id")
+            fields = _journal_fields(row)
+            if isinstance(entry_id, str) and _JOURNAL_ID.match(entry_id) and fields is not None:
+                rows[entry_id] = fields
+        if not rows:
+            return
+        existing = {
+            e.entry_id: e
+            for e in JournalEntry.objects.select_for_update().filter(
+                profile=profile, entry_id__in=list(rows)
+            )
+        }
+        changed = []
+        for entry_id, fields in rows.items():
+            obj = existing.get(entry_id)
+            if obj is not None and _journal_wins(obj, fields):
+                _apply_journal(obj, fields)
+                changed.append(obj)
+        if changed:
+            # bulk_update skips auto_now, so the server-side stamp is set here.
+            now = datetime.now(UTC)
+            for obj in changed:
+                obj.updated_at = now
+            JournalEntry.objects.bulk_update(changed, _JOURNAL_WRITABLE)
+        room = MAX_JOURNAL_ENTRIES - _live_journal_count(profile)
+        new = []
+        for entry_id, fields in rows.items():
+            if entry_id in existing:
+                continue
+            # A tombstone is always accepted (it holds no words, and a delete
+            # must sync); only live entries spend the cap.
+            if not fields["deleted"]:
+                if room <= 0:
+                    continue
+                room -= 1
+            new.append(JournalEntry(profile=profile, entry_id=entry_id, **fields))
+        # ON CONFLICT DO NOTHING: an entry a concurrent write created since the
+        # read above keeps that write, like the other merge sections' unions.
+        JournalEntry.objects.bulk_create(new, ignore_conflicts=True)
 
     def _merge_activity(self, profile, incoming):
         """Union: a day read on either side counts (a streak is the union of
@@ -1172,6 +1447,9 @@ def _serialize_state(profile) -> dict:
         "marks": ChapterMarksSerializer(profile.marks.all(), many=True).data,
         "favorites": FavoriteSerializer(profile.favorites.all(), many=True).data,
         "bookmarks": BookmarkSerializer(profile.bookmarks.all(), many=True).data,
+        # Tombstones included: a device holding a since-deleted entry learns
+        # the delete from them instead of pushing the entry back.
+        "journal": JournalEntrySerializer(profile.journal_entries.all(), many=True).data,
         "plan_progress": PlanProgressSerializer(
             profile.plan_progress.all(), many=True
         ).data,

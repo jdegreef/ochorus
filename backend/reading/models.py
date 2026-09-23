@@ -445,3 +445,88 @@ class ReadingSession(models.Model):
 
     def __str__(self) -> str:
         return f"{self.profile_id} read {self.seconds}s @ {self.started_at:%Y-%m-%d %H:%M}"
+
+
+class JournalKind(models.TextChoices):
+    NOTE = "note", "Note"
+    PRAYER = "prayer", "Prayer"
+
+
+class PrayerGroup(models.TextChoices):
+    """The Notebook prayer list's groups (journal.ts PRAYER_GROUPS mirrors these)."""
+
+    FAMILY = "family", "Family"
+    FRIENDS = "friends", "Friends"
+    CHURCH = "church", "Church"
+    MISSIONS = "missions", "Missions"
+    WORK = "work", "Work"
+    WORLD = "world", "The world"
+
+
+class JournalEntry(models.Model):
+    """One entry the reader wrote in their Notebook — a note or a prayer.
+
+    Unlike a highlight or bookmark this is the reader's OWN writing, not a
+    place in a text, so it carries no work/position. A prayer becomes an
+    "answered prayer" by gaining ``answered_at`` (and optionally ``answer``,
+    how it was answered) — the same row, so the request and its answer stay
+    together.
+
+    Entries are EDITED, not just added/removed, so sync is last-write-wins on
+    the writing device's own clock (``client_updated_at``), and a delete is a
+    tombstone (``deleted=True``, text blanked) rather than a row removal: an
+    offline device still holding the entry would otherwise re-introduce it on
+    its next merge — the resurrection Bookmark accepts but a deleted prayer
+    must not. ``entry_id`` is the client's own id, so the localStorage cache
+    round-trips unchanged.
+
+    Private by design: nothing outside the owner's own sync reads these (the
+    admin user page deliberately does not show them).
+    """
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="journal_entries",
+    )
+    entry_id = models.CharField(max_length=64)
+    kind = models.CharField(
+        max_length=10, choices=JournalKind.choices, default=JournalKind.NOTE
+    )
+    title = models.CharField(max_length=200, blank=True)
+    body = models.TextField(blank=True)
+    # How a prayer was answered, in the reader's words (blank until then).
+    answer = models.TextField(blank=True)
+    answered_at = models.DateTimeField(null=True, blank=True)
+    # Optional Scripture / passage reference the entry is about ("Psalm 23").
+    ref = models.CharField(max_length=200, blank=True)
+    # Who or what a prayer is for ("Anna", "Gulu church"), and its group
+    # (family / friends / church / missions / work / world) — the Notebook's
+    # "by person" prayer list is built from these.
+    person = models.CharField(max_length=80, blank=True)
+    group = models.CharField(max_length=20, blank=True, choices=PrayerGroup.choices)
+    # A reminder the reader added to their calendar, kept so the Notebook can
+    # say so: "daily@07:00" or "weekly-<0-6, Sunday first>@09:00", or blank.
+    remind = models.CharField(max_length=20, blank=True)
+    # Dated follow-ups on a prayer: [{"at": <epoch ms>, "text": "..."}].
+    updates = models.JSONField(default=list, blank=True)
+    # The passage the entry was written from, when it began as a highlight in
+    # the reader: {kind, slug, order, p, edition, title, quote}. Positions, not
+    # a URL, so the link back is always built by the client from known parts.
+    source = models.JSONField(null=True, blank=True)
+    deleted = models.BooleanField(default=False)
+
+    client_created_at = models.DateTimeField()
+    client_updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-client_created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "entry_id"], name="uniq_journal_profile_entry"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id}:{self.kind}:{self.entry_id}"
