@@ -1352,7 +1352,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "diagonal/indigo"
+			"layout": "framed"
 		},
 		"let-us-pray-2": {
 			"ground": "4725e322e9f3052085a3cf616a13b1d6bbb3a9f9efe226aaf09d166fcf8aa6c9",
@@ -2135,7 +2135,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "diagonal/indigo"
+			"layout": "framed"
 		},
 		"pt/women-who-moved-heaven-2": {
 			"ground": "2748e79496cc8e3ad1e4bc0180d4450d5607a0a1e07787c5d0168583be62576f",
@@ -2747,7 +2747,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "diagonal/indigo"
+			"layout": "framed"
 		},
 		"sw/way-into-holiest": {
 			"ground": "ccc23c936cca03954a801237d65e76942d4a3c5ad04ed21c3d0dbd9705d8ee77",
@@ -2855,7 +2855,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "diagonal/indigo"
+			"layout": "framed"
 		},
 		"the-reformed-pastor": {
 			"ground": "dc2edf59ee8bc58c50ee8181b46c82f50aa02da5601156c5f730f04f1b433de0",
@@ -3026,7 +3026,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "diagonal/indigo"
+			"layout": "framed"
 		},
 		"way-into-holiest": {
 			"ground": "4eb25026c8e1354506a7d9c7f63eb4d6eae92a26393667d351898928b3e38636",

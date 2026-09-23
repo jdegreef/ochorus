@@ -91,8 +91,7 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
 	'george-muller': { layout: 'split', hue: 'oxblood' },
 	'hudson-taylor': { layout: 'rail', hue: 'teal' },
 	'jonathan-edwards': { layout: 'fade', hue: 'slate' },
-	'r-a-torrey': { layout: 'duotone', hue: 'ochre' },
-	'watchman-nee': { layout: 'diagonal', hue: 'indigo' }
+	'r-a-torrey': { layout: 'duotone', hue: 'ochre' }
 };
 
 /** The scripts a title cannot be turned sideways in. */
