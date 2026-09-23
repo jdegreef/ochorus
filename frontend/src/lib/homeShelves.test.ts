@@ -58,7 +58,7 @@ describe('deriveHomeShelves', () => {
 	});
 
 	it('carries exactly the classified book fields — nothing unlisted rides along', () => {
-		// Which fields ride is a compile-time choice (`everyBookFieldClassified`
+		// Which fields ride is a compile-time choice (`EveryBookFieldClassified`
 		// in library-public); at runtime, an unlisted extra is never inlined.
 		const withExtra = lists({ books: books.map((b) => ({ ...b, blurb: 'a long blurb' })) });
 		const [first] = deriveHomeShelves(withExtra, 20000).featured;

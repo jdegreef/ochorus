@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
@@ -37,6 +38,31 @@ const absoluteAssetUrls = (): Plugin => ({
 	}
 });
 
+/**
+ * A fingerprint of the SET of cover files — their paths, not their bytes.
+ *
+ * The reader's resume cache (`$lib/resumeBooks`) keeps a few books' cover
+ * URLs between visits, and must not draw one a deploy has moved: a plate that
+ * became a painting changes its `cover_url` (`/covers/x.svg` →
+ * `/covers/art/x.jpg`), and that always adds or removes a file here. A redraw
+ * at the SAME path needs nothing — the browser simply loads the new file — so
+ * bytes are deliberately left out. Keyed on this rather than on the build, the
+ * cache survives the ~30 deploys a day that touch no cover at all.
+ */
+function coversVersion(): string {
+	const root = path.resolve(__dirname, 'static/covers');
+	const files: string[] = [];
+	const walk = (dir: string) => {
+		for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+			const p = path.join(dir, entry.name);
+			if (entry.isDirectory()) walk(p);
+			else files.push(path.relative(root, p));
+		}
+	};
+	if (fs.existsSync(root)) walk(root);
+	return createHash('sha1').update(files.sort().join('\n')).digest('hex').slice(0, 12);
+}
+
 export default defineConfig({
 	plugins: [
 		tailwindcss(),
@@ -65,6 +91,8 @@ export default defineConfig({
 		 * is unset, which yields '' — Sentry then sends no release rather than a
 		 * wrong one.
 		 */
-		__RELEASE__: JSON.stringify(process.env.RENDER_GIT_COMMIT ?? '')
+		__RELEASE__: JSON.stringify(process.env.RENDER_GIT_COMMIT ?? ''),
+		/** See `coversVersion` above. */
+		__COVERS_VERSION__: JSON.stringify(coversVersion())
 	}
 });

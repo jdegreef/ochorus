@@ -1,3 +1,17 @@
+<script lang="ts" module>
+	/**
+	 * A card-shaped placeholder, for a list that knows a card is coming but not
+	 * yet what it holds ("Continue reading" above the hero, while a list loads).
+	 * It lives HERE, beside the card, and draws the card's own frame and line
+	 * boxes — the same border and padding, the same w-14 3:4 cover box, the
+	 * title/author/caption lines at their real sizes and the real ProgressBar —
+	 * so it is the card's height by construction, not by a measurement someone
+	 * has to keep in step. A sermon card has no meter, so neither does its
+	 * placeholder.
+	 */
+	export { placeholder };
+</script>
+
 <script lang="ts">
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -45,6 +59,26 @@
 		return `${t('continue.chapter')} ${item.order} / ${item.chapterCount} · ${item.pct}%`;
 	});
 </script>
+
+{#snippet placeholder(kind: 'book' | 'sermon')}
+	<div class="group relative" aria-hidden="true" data-testid="work-card-placeholder">
+		<div class="flex gap-4 rounded-card border border-border p-4">
+			<div class="aspect-[3/4] w-14 shrink-0 animate-pulse rounded-sm bg-surface-2"></div>
+			<div class="min-w-0 flex-1 self-center">
+				<div class="truncate text-small font-semibold">
+					<span class="inline-block w-3/4 animate-pulse rounded bg-surface-2">&nbsp;</span>
+				</div>
+				<div class="mt-0.5 truncate text-small">
+					<span class="inline-block w-1/2 animate-pulse rounded bg-surface-2">&nbsp;</span>
+				</div>
+				{#if kind === 'book'}
+					<div class="mt-2"><ProgressBar percent={0} label="" /></div>
+				{/if}
+				<div class="mt-1 text-micro">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="group relative">
 <a
