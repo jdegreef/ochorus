@@ -934,5 +934,20 @@
   "notebook_otd_year": "Há um ano",
   "notebook_otd_years": "Há {n} anos",
   "notebook_otd_answered": "Deus respondeu",
-  "notebook_otd_wrote": "Você escreveu"
+  "notebook_otd_wrote": "Você escreveu",
+  "notebook_print_title": "Diário de oração",
+  "notebook_print_intro": "Seu caderno como um livrinho — orações respondidas, as que você ainda ora, notas e orações diárias — para imprimir ou guardar em PDF.",
+  "notebook_print_period": "Período",
+  "notebook_print_period_year": "Este ano",
+  "notebook_print_period_last12": "Últimos 12 meses",
+  "notebook_print_period_month": "Este mês",
+  "notebook_print_period_all": "Tudo",
+  "notebook_print_include": "Incluir",
+  "notebook_print_button": "Imprimir ou salvar em PDF",
+  "notebook_print_hint": "Para guardar uma cópia, escolha “Salvar como PDF” na janela de impressão.",
+  "notebook_print_empty": "Ainda não há nada para imprimir neste período.",
+  "notebook_print_until": "Até",
+  "notebook_print_asked": "Pedida em",
+  "notebook_print_epigraph": "“Grande é a tua fidelidade.” — Lamentações 3:23",
+  "notebook_print_link": "Imprimir"
 }

@@ -934,5 +934,20 @@
   "notebook_otd_year": "Mwaka mmoja uliopita",
   "notebook_otd_years": "Miaka {n} iliyopita",
   "notebook_otd_answered": "Mungu alijibu",
-  "notebook_otd_wrote": "Uliandika"
+  "notebook_otd_wrote": "Uliandika",
+  "notebook_print_title": "Shajara ya maombi",
+  "notebook_print_intro": "Daftari lako kama kitabu kidogo — maombi yaliyojibiwa, unayoendelea kuomba, madokezo na maombi ya kila siku — kuchapisha au kuhifadhi kama PDF.",
+  "notebook_print_period": "Kipindi",
+  "notebook_print_period_year": "Mwaka huu",
+  "notebook_print_period_last12": "Miezi 12 iliyopita",
+  "notebook_print_period_month": "Mwezi huu",
+  "notebook_print_period_all": "Yote",
+  "notebook_print_include": "Jumuisha",
+  "notebook_print_button": "Chapisha au hifadhi kama PDF",
+  "notebook_print_hint": "Kuhifadhi nakala, chagua “Hifadhi kama PDF” kwenye dirisha la kuchapisha.",
+  "notebook_print_empty": "Bado hakuna cha kuchapisha kwa kipindi hiki.",
+  "notebook_print_until": "Hadi",
+  "notebook_print_asked": "Liliombwa",
+  "notebook_print_epigraph": "“Uaminifu wako ni mkuu.” — Maombolezo 3:23",
+  "notebook_print_link": "Chapisha"
 }

@@ -934,5 +934,20 @@
   "notebook_otd_year": "Рік тому",
   "notebook_otd_years": "Років тому: {n}",
   "notebook_otd_answered": "Бог відповів",
-  "notebook_otd_wrote": "Ви написали"
+  "notebook_otd_wrote": "Ви написали",
+  "notebook_print_title": "Молитовний щоденник",
+  "notebook_print_intro": "Ваш записник як невеличка книжка — вислухані молитви, ті, за що ви ще молитеся, нотатки й щоденні молитви — щоб надрукувати чи зберегти як PDF.",
+  "notebook_print_period": "Період",
+  "notebook_print_period_year": "Цей рік",
+  "notebook_print_period_last12": "Останні 12 місяців",
+  "notebook_print_period_month": "Цей місяць",
+  "notebook_print_period_all": "Увесь час",
+  "notebook_print_include": "Включити",
+  "notebook_print_button": "Надрукувати або зберегти як PDF",
+  "notebook_print_hint": "Щоб зберегти копію, оберіть «Зберегти як PDF» у вікні друку.",
+  "notebook_print_empty": "За цей період ще нічого друкувати.",
+  "notebook_print_until": "До",
+  "notebook_print_asked": "Попрошено",
+  "notebook_print_epigraph": "«Велика вірність Твоя!» — Плач Єремії 3:23",
+  "notebook_print_link": "Друк"
 }

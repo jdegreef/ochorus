@@ -934,5 +934,20 @@
   "notebook_otd_year": "One year ago",
   "notebook_otd_years": "{n} years ago",
   "notebook_otd_answered": "God answered",
-  "notebook_otd_wrote": "You wrote"
+  "notebook_otd_wrote": "You wrote",
+  "notebook_print_title": "Prayer journal",
+  "notebook_print_intro": "Your Notebook set as a small book — answered prayers, the prayers you are still praying, notes and daily prayers — to print or keep as a PDF.",
+  "notebook_print_period": "Period",
+  "notebook_print_period_year": "This year",
+  "notebook_print_period_last12": "Last 12 months",
+  "notebook_print_period_month": "This month",
+  "notebook_print_period_all": "All time",
+  "notebook_print_include": "Include",
+  "notebook_print_button": "Print or save as PDF",
+  "notebook_print_hint": "To keep a copy, choose “Save as PDF” in the print dialog.",
+  "notebook_print_empty": "Nothing to print for this period yet.",
+  "notebook_print_until": "Until",
+  "notebook_print_asked": "Asked",
+  "notebook_print_epigraph": "“Great is thy faithfulness.” — Lamentations 3:23",
+  "notebook_print_link": "Print"
 }

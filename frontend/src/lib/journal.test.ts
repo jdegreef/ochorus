@@ -8,6 +8,8 @@ import {
 	faithfulness,
 	monthsBack,
 	onThisDay,
+	journalForPrint,
+	periodStart,
 	cleanStore,
 	formatRemind,
 	fromServer,
@@ -274,5 +276,31 @@ describe('journal entries', () => {
 		]);
 		expect(onThisDay(store, '2026-09-23')).toHaveLength(3);
 		expect(onThisDay(store, '2026-09-24')).toEqual([]);
+	});
+
+	it('lays the journal out as a book for the chosen period, oldest first', () => {
+		const at = (iso: string) => new Date(`${iso}T10:00:00`).getTime();
+		const store = cleanStore({
+			n1: entry('n1', { createdAt: at('2026-09-10') }),
+			n0: entry('n0', { createdAt: at('2026-02-01') }),
+			old: entry('old', { createdAt: at('2025-05-01') }),
+			a1: entry('a1', { kind: 'prayer', createdAt: at('2025-12-01'), answeredAt: at('2026-09-02') }),
+			a0: entry('a0', { kind: 'prayer', createdAt: at('2026-01-01'), answeredAt: at('2026-03-05') }),
+			p1: entry('p1', { kind: 'prayer', person: 'Anna', createdAt: at('2026-09-01') }),
+			p0: entry('p0', { kind: 'prayer', person: 'Anna', createdAt: at('2026-08-01') }),
+			d: entry('d', { kind: 'daily', createdAt: at('2026-09-20') }),
+			gone: tombstone(entry('gone', { createdAt: at('2026-09-11') }))
+		});
+		const year = journalForPrint(store, periodStart('year', new Date('2026-09-23T12:00:00')));
+		expect(year.notes.map((e) => e.id)).toEqual(['n0', 'n1']);
+		// Answered in the year counts, even though it was asked the year before.
+		expect(year.answered.map((m) => [m.month, m.prayers.map((e) => e.id)])).toEqual([
+			['2026-03', ['a0']],
+			['2026-09', ['a1']]
+		]);
+		expect(year.praying.map((c) => [c.person, c.prayers.map((e) => e.id)])).toEqual([['Anna', ['p0', 'p1']]]);
+		expect(year.daily.map((e) => e.id)).toEqual(['d']);
+		expect(journalForPrint(store, 0).notes.map((e) => e.id)).toEqual(['old', 'n0', 'n1']);
+		expect(periodStart('month', new Date('2026-09-23T12:00:00'))).toBe(new Date(2026, 8, 1).getTime());
 	});
 });

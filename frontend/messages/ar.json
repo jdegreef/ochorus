@@ -934,5 +934,20 @@
   "notebook_otd_year": "قبل سنة",
   "notebook_otd_years": "قبل {n} سنوات",
   "notebook_otd_answered": "استجاب الله",
-  "notebook_otd_wrote": "كتبت"
+  "notebook_otd_wrote": "كتبت",
+  "notebook_print_title": "دفتر الصلاة",
+  "notebook_print_intro": "دفترك مُنسَّقًا ككتيّب — الصلوات المستجابة، والتي ما زلت تصلّيها، والملاحظات، والصلوات اليومية — للطباعة أو الحفظ بصيغة PDF.",
+  "notebook_print_period": "الفترة",
+  "notebook_print_period_year": "هذا العام",
+  "notebook_print_period_last12": "آخر 12 شهرًا",
+  "notebook_print_period_month": "هذا الشهر",
+  "notebook_print_period_all": "الكل",
+  "notebook_print_include": "تضمين",
+  "notebook_print_button": "اطبع أو احفظ بصيغة PDF",
+  "notebook_print_hint": "للاحتفاظ بنسخة، اختر «حفظ بصيغة PDF» في نافذة الطباعة.",
+  "notebook_print_empty": "لا شيء للطباعة في هذه الفترة بعد.",
+  "notebook_print_until": "حتى",
+  "notebook_print_asked": "طُلبت",
+  "notebook_print_epigraph": "«عظيمة أمانتك.» — مراثي إرميا 3:23",
+  "notebook_print_link": "طباعة"
 }
