@@ -148,6 +148,55 @@ class Favorite(models.Model):
         return f"{self.profile_id} ♥ {self.kind}:{self.slug}"
 
 
+class Removal(models.Model):
+    """A reader deliberately took something off their shelf: a reading position
+    (the Bookshelf's "Remove from shelf") or a heart.
+
+    The live DELETE removes the row itself, so everything else that reads
+    ``ReadingProgress`` / ``Favorite`` — state, analytics, admin — is unchanged.
+    This row is the TOMBSTONE that keeps it removed. Without it the removal
+    doesn't survive the next sign-in merge: every signed-in device runs that
+    merge on each app load, uploads what it still holds locally, and the union
+    quietly re-creates the row on the account (and so on every device).
+
+    With it, an incoming position or heart that is NOT newer than ``removed_at``
+    is dropped as stale; one that is newer — the reader opened the book again,
+    or re-hearted it — is a genuine new act, which clears the tombstone and
+    lands. ``removed_at`` is the removing device's clock, compared with the
+    incoming write's client clock (``client_updated_at`` / the heart's saved-at),
+    the same client-to-client rule ``_upsert_progress`` uses for recency.
+
+    ``kind`` is the WorkKind for a position and the FavoriteKind for a heart;
+    ``domain`` says which. Kept forever — one small row per removal — because a
+    device can be offline for any length of time.
+    """
+
+    class Domain(models.TextChoices):
+        PROGRESS = "progress", "Reading position"
+        FAVORITE = "favorite", "Favorite"
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="removals",
+    )
+    domain = models.CharField(max_length=10, choices=Domain.choices)
+    kind = models.CharField(max_length=10)
+    slug = models.SlugField(max_length=160)
+    removed_at = models.DateTimeField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "domain", "kind", "slug"],
+                name="uniq_removal_profile_item",
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id} ✕ {self.domain}:{self.kind}:{self.slug}"
+
+
 class ChapterMarks(models.Model):
     """A reader's highlights and notes within one chapter.
 
@@ -208,9 +257,10 @@ class Bookmark(models.Model):
     Modelled like :class:`Favorite`: one row per saved spot, created by a live
     PUT and removed by a DELETE, and merges union by position — so a bookmark
     made on any device shows on all of them. Un-bookmarking is a real server
-    DELETE (it propagates), but — as with Favorites and PlanProgress — it is
-    not tombstoned, so a still-offline device that holds the bookmark can
-    re-introduce it on its next merge. That is the accepted tradeoff for a
+    DELETE (it propagates), but — as with PlanProgress — it is not
+    tombstoned, so a still-offline device that holds the bookmark can
+    re-introduce it on its next merge. (Favorites and reading positions ARE
+    tombstoned now — see ``Removal``; bookmarks could follow the same way.) That is the accepted tradeoff for a
     curated set that unions, and it keeps this a plain add/remove model rather
     than the tombstoned reconcile ChapterMarks needs.
 
