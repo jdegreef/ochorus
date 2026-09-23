@@ -10,6 +10,7 @@
 		entryTime,
 		faithfulness,
 		groupByDay,
+		onThisDay,
 		journalStats,
 		prayersByPerson,
 		visibleEntries,
@@ -26,6 +27,8 @@
 	import ReadingClippings from '$lib/components/notebook/ReadingClippings.svelte';
 	import PrayerList from '$lib/components/notebook/PrayerList.svelte';
 	import FaithfulnessTimeline from '$lib/components/notebook/FaithfulnessTimeline.svelte';
+	import OnThisDay from '$lib/components/notebook/OnThisDay.svelte';
+	import { readJSON, writeJSON } from '$lib/persisted';
 
 	const t = i18n.t;
 	const locale = getLang();
@@ -67,6 +70,16 @@
 
 	const stats = $derived(journalStats(journal.store));
 	const daily = $derived(dailyStreak(journal.store, localToday()));
+
+	// "On this day": memories from this date months and years ago. Hiding it is
+	// a per-device choice for the rest of today, not reading data.
+	const OTD_HIDDEN_KEY = 'ochorus:otd-hidden';
+	let otdHidden = $state(readJSON<string | null>(OTD_HIDDEN_KEY, null) === localToday());
+	const memories = $derived(view === 'all' && !otdHidden && !query.trim() ? onThisDay(journal.store, localToday()) : []);
+	function hideOtd() {
+		otdHidden = true;
+		writeJSON(OTD_HIDDEN_KEY, localToday());
+	}
 	const TABS = $derived<{ id: NotebookView; label: string; count?: number }[]>([
 		{ id: 'all', label: t('notebook.allColors') },
 		{ id: 'notes', label: t('settings.statNotes'), count: stats.notes },
@@ -206,6 +219,10 @@
 						{daily.doneToday ? t('notebook.dailyAgain') : t('notebook.dailyBegin')}
 					</span>
 				</a>
+			{/if}
+
+			{#if memories.length}
+				<OnThisDay {memories} onhide={hideOtd} />
 			{/if}
 
 			<input

@@ -926,5 +926,13 @@
   "notebook_stat_praying": "قيد الصلاة الآن",
   "notebook_stat_avg_days": "متوسط أيام الصلاة",
   "notebook_timeline": "الخط الزمني",
-  "notebook_answered_layout": "عرض الصلوات المستجابة"
+  "notebook_answered_layout": "عرض الصلوات المستجابة",
+  "notebook_otd_title": "في مثل هذا اليوم",
+  "notebook_otd_hide": "إخفاء لليوم",
+  "notebook_otd_month": "قبل شهر",
+  "notebook_otd_months": "قبل {n} أشهر",
+  "notebook_otd_year": "قبل سنة",
+  "notebook_otd_years": "قبل {n} سنوات",
+  "notebook_otd_answered": "استجاب الله",
+  "notebook_otd_wrote": "كتبت"
 }

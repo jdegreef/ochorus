@@ -926,5 +926,13 @@
   "notebook_stat_praying": "Unaombea sasa",
   "notebook_stat_avg_days": "Wastani wa siku za maombi",
   "notebook_timeline": "Mfuatano wa matukio",
-  "notebook_answered_layout": "Onyesha maombi yaliyojibiwa"
+  "notebook_answered_layout": "Onyesha maombi yaliyojibiwa",
+  "notebook_otd_title": "Siku kama ya leo",
+  "notebook_otd_hide": "Ficha kwa leo",
+  "notebook_otd_month": "Mwezi mmoja uliopita",
+  "notebook_otd_months": "Miezi {n} iliyopita",
+  "notebook_otd_year": "Mwaka mmoja uliopita",
+  "notebook_otd_years": "Miaka {n} iliyopita",
+  "notebook_otd_answered": "Mungu alijibu",
+  "notebook_otd_wrote": "Uliandika"
 }

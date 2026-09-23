@@ -6,6 +6,8 @@ import {
 	dailyStreak,
 	dailyVerse,
 	faithfulness,
+	monthsBack,
+	onThisDay,
 	cleanStore,
 	formatRemind,
 	fromServer,
@@ -239,5 +241,38 @@ describe('journal entries', () => {
 		// A search narrows the timeline, not the totals.
 		expect(faithfulness(store, 'visa').months.map((m) => m.month)).toEqual(['2026-03']);
 		expect(faithfulness(cleanStore({})).avgDays).toBeNull();
+	});
+
+	it('finds the same day months and years back, never a neighbouring one', () => {
+		expect(monthsBack('2026-09-23', 1)).toBe('2026-08-23');
+		expect(monthsBack('2026-01-15', 3)).toBe('2025-10-15');
+		expect(monthsBack('2026-03-31', 1)).toBeNull(); // no 31 February
+		expect(monthsBack('2028-02-29', 12)).toBeNull(); // 2027 is no leap year
+		expect(monthsBack('2026-09-23', 24)).toBe('2024-09-23');
+	});
+
+	it('remembers what was written and answered on this day', () => {
+		const at = (iso: string) => new Date(`${iso}T10:00:00`).getTime();
+		const store = cleanStore({
+			yearNote: entry('yearNote', { createdAt: at('2025-09-23'), body: 'a year ago' }),
+			monthPrayer: entry('monthPrayer', { kind: 'prayer', createdAt: at('2026-08-23') }),
+			answered: entry('answered', {
+				kind: 'prayer',
+				createdAt: at('2025-01-02'),
+				answeredAt: at('2026-06-23')
+			}),
+			both: entry('both', { kind: 'prayer', createdAt: at('2025-09-23'), answeredAt: at('2026-08-23') }),
+			other: entry('other', { createdAt: at('2026-09-22') }),
+			gone: tombstone(entry('gone', { createdAt: at('2026-08-23') }))
+		});
+		const mem = onThisDay(store, '2026-09-23', 10);
+		expect(mem.map((x) => [x.entry.id, x.what, x.ago.unit, x.ago.n])).toEqual([
+			['both', 'answered', 'month', 1],
+			['monthPrayer', 'written', 'month', 1],
+			['answered', 'answered', 'month', 3],
+			['yearNote', 'written', 'year', 1]
+		]);
+		expect(onThisDay(store, '2026-09-23')).toHaveLength(3);
+		expect(onThisDay(store, '2026-09-24')).toEqual([]);
 	});
 });

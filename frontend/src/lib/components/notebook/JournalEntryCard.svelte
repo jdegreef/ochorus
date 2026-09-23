@@ -101,7 +101,7 @@
 		oncancel={() => (mode = 'view')}
 	/>
 {:else}
-	<article class="entry" class:prayer={entry.kind === 'prayer'} class:answered={!!entry.answeredAt}>
+	<article id="entry-{entry.id}" class="entry" class:prayer={entry.kind === 'prayer'} class:answered={!!entry.answeredAt}>
 		<header class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
 			<span class="kind eyebrow">
 				{#if entry.kind === 'note'}✎ {t('reader.note')}{:else if entry.kind === 'daily'}☀ {t('notebook.dailyKind')}{:else if entry.answeredAt}✓ {t('notebook.answeredPrayer')}{:else}🙏 {t('notebook.prayer')}{/if}
@@ -255,6 +255,8 @@
 <style>
 	.entry {
 		--rule-gap: 2rem;
+		/* Arriving from an "On this day" link: clear the sticky header. */
+		scroll-margin-top: 5rem;
 		/* Green ink pulled toward the text colour: darker on paper, lighter in
 		   lamplight, so small "answered" text keeps its contrast in every theme. */
 		--answered-ink: color-mix(in srgb, var(--hl-green) 65%, var(--text));
