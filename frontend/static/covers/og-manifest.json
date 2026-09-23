@@ -1971,7 +1971,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "duotone/mauve",
+			"layout": "split/mauve",
 			"bar": 0
 		},
 		"possibilities-of-prayer": {
@@ -2501,7 +2501,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "duotone/mauve",
+			"layout": "split/mauve",
 			"bar": 0
 		},
 		"spurgeon-on-prayer": {
