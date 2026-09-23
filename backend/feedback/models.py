@@ -36,6 +36,15 @@ class FeedbackStatus(models.TextChoices):
     DUPLICATE = "duplicate", "Duplicate"
 
 
+class FeedbackSource(models.TextChoices):
+    """Which surface a submission came from — so the queue can see what drives
+    volume (a facet the admin can filter on, later)."""
+
+    MENU = "menu", "Account menu"
+    FAB = "fab", "Floating button"
+    HIGHLIGHT = "highlight", "Highlighted text"
+
+
 #: Statuses a submission can be moved to, and which the admin queue offers. NEW
 #: is the birth state, never a triage target.
 TRIAGE_STATUSES = frozenset(FeedbackStatus.values) - {FeedbackStatus.NEW}
@@ -66,6 +75,11 @@ class Feedback(models.Model):
         max_length=20, choices=FeedbackCategory.choices, default=FeedbackCategory.OTHER
     )
     body = models.TextField()
+    #: The surface the reader used — the account menu, the floating button, or a
+    #: text highlight. A facet for the queue; defaults to the menu (the original).
+    source = models.CharField(
+        max_length=20, choices=FeedbackSource.choices, default=FeedbackSource.MENU
+    )
 
     # --- where (auto-captured context; all optional) ---
     page_url = models.TextField(blank=True)
@@ -77,6 +91,18 @@ class Feedback(models.Model):
     chapter_ref = models.CharField(max_length=100, blank=True)
     #: The UI language the reader was using (may differ from content_language).
     ui_locale = models.CharField(max_length=20, blank=True)
+
+    # --- the selection, for highlight-to-feedback (source="highlight") ---
+    #: The exact text the reader selected. This is the DURABLE anchor: an admin
+    #: reads it, finds it, and it feeds a content-edit job — robust across a
+    #: re-import in a way character offsets are not.
+    selected_text = models.TextField(blank=True)
+    #: The reader's proposed correction — "what should it say?". Optional.
+    suggested_text = models.TextField(blank=True)
+    #: The starting block index within the chapter, for a deep-link back to the
+    #: spot (the reader route consumes ``?p=``). Best-effort; the quote above is
+    #: what an admin actually relies on.
+    anchor_block = models.PositiveIntegerField(null=True, blank=True)
 
     # --- triage ---
     status = models.CharField(

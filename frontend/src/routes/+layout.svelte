@@ -21,6 +21,7 @@
 	import { localizeHref, deLocalizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
+	import FeedbackFab from '$lib/components/FeedbackFab.svelte';
 	import { MEASURE } from '$lib/readerPrefs.svelte';
 	import { pageWidth } from '$lib/pageWidth.svelte';
 	import { isReaderRoute } from '$lib/readerRoutes';
@@ -559,6 +560,10 @@
 
 <CommandPalette />
 <PwaToasts />
+
+<!-- The floating feedback button — signed-in only, hidden in focus mode and over
+     the admin console (it self-gates). Opens its own FeedbackDialog. -->
+<FeedbackFab />
 
 <!-- Feedback modal, opened from the footer's My Account column (the account
      dropdown mounts its own). FeedbackDialog is signed-in only, and feedbackOpen

@@ -686,8 +686,11 @@ def guides_for_book(book_slug: str, language: str) -> list[dict]:
       to the one work it is about, not to every book it mentions.
 
     Returns ``[{slug, h1, description}, ...]`` in article sort order (normally
-    one). English-only in practice: articles are English-only, so a non-English
-    book matches nothing and the caller gates on that anyway. ``related`` is a
+    one), in the requested language only — articles are per-language rows like
+    everything else, so a localized edition gets its own guide or none, never the
+    English one (the no-English-fallback rule). A translated guide therefore
+    surfaces only where the BOOK also has an edition in that language, which is
+    why translating a guide alone does not make it appear. ``related`` is a
     schema-less hand-authored JSON field, so a malformed entry is skipped rather
     than raising. One scan of the article table (no bodies), paid on a book
     DETAIL page only — never a shelf.
@@ -983,8 +986,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     def get_articles(self, obj) -> list[dict]:
         # No English-only gate, deliberately — translated article rows exist, so
         # the language filter is the whole rule. BookDetailSerializer.guides
-        # still gates on English and hides 13 already-translated guides on
-        # localized book pages; that is a real bug, but its own change.
+        # follows it too.
         return articles_for_author(obj.slug, self._language())
 
     def get_sermon_count(self, obj):
@@ -1215,13 +1217,15 @@ class BookDetailSerializer(BookListSerializer):
     # funnel points back here (see ``guides_for_book``). The reverse of the
     # article→book funnel, so a reader landing on the book finds the guide that
     # explains it, and the guide gets an internal link from a high-value page.
-    # English-only (articles are); empty elsewhere, so the section just doesn't
-    # render. Detail-only: it scans the article table, nothing a shelf should pay.
+    # Per-language, like everything else on the page. Detail-only: it scans the
+    # article table, nothing a shelf should pay (pinned by
+    # BookCardPayloadTests.test_book_detail_query_count_is_the_same_in_every_language).
     guides = serializers.SerializerMethodField()
 
     def get_guides(self, obj) -> list[dict]:
-        if obj.language != "en":
-            return []
+        # No language gate: guides_for_book already filters on this edition's
+        # language. A blanket English-only gate here predated the translated
+        # guide rows and suppressed all of them.
         return guides_for_book(obj.slug, obj.language)
 
     def get_author_same_as(self, obj):

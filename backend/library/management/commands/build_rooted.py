@@ -1,7 +1,7 @@
 """Build a volume of a house 30-day devotional series from its manuscript.
 
-*Rooted – 30 Days with God for Youth* and its sister series for girls,
-*Daughters of the King*: devotionals for readers aged 9–12, every day a BSB
+*Rooted – 30 Days with God for Youth* and its sister series for girls and
+boys, *Daughters of the King* and *Sons of the King*: devotionals for readers aged 9–12, every day a BSB
 Scripture, a short teaching, "Think about it" / "Try this", and a prayer. Each
 book also has an Introduction and a Conclusion, so a volume is 32 chapters: the
 introduction, Day 1 … Day 30, the conclusion.
@@ -528,11 +528,86 @@ DAUGHTERS_OF_THE_KING: dict[int, dict[str, object]] = {
     },
 }
 
+SONS_OF_THE_KING: dict[int, dict[str, object]] = {
+    1: {
+        "sort_order": 82,
+        "publication_year": 2026,
+        "title": "Sons of the King – 30 Days with God for Guys – Book 1",
+        "subtitle": "Strong: who you are, whose you are, and the brave men who went before you",
+        "cover_url": "/covers/sons-of-the-king-1.svg",
+        "cover_color": covers.ink_safe("#2f4a6b"),  # a deep steel blue
+        "description": (
+            "Thirty short daily devotions for boys aged 9 to 12 about who they "
+            "are as sons of the King: worth that comes from God, not scores or "
+            "stats; strength under control; friends who make you better; "
+            "courage from Caleb, Jonathan, Elijah and Stephen; and working hard, "
+            "keeping your word and standing firm. Each day has a Bible verse, a "
+            "short teaching, a question, something to try and a prayer. The "
+            "first book of Sons of the King."
+        ),
+        "about_html": (
+            "<p>Sons of the King is an original Ochorus devotional series for "
+            "boys aged 9 to 12, a brother to Daughters of the King and our co-ed "
+            "series Rooted. Its anchor is God’s promise in 2 Corinthians 6:18: “I "
+            "will be a Father to you, and you will be My sons and daughters.” "
+            "This first book is about identity and strength: what makes a guy "
+            "strong, when the world keeps measuring him by his scores, his "
+            "muscles and how tough he looks.</p>"
+            "<p>The first week hears what God says about him: a new name like "
+            "Peter’s, worth that is more than his score, a son and heir, a "
+            "compassionate Father, strength from God, and Gideon, the least. The "
+            "second is about strength under control: Samson, anger, Cain and the "
+            "sin at the door, revenge, the gentleness of Jesus, and why real men "
+            "cry. The third is about friends and brothers, from iron sharpening "
+            "iron and Barnabas the encourager to finding a mentor, treating girls "
+            "with respect, and standing up for the kid nobody likes. The fourth "
+            "is about courage with Caleb, Jonathan, Elijah, Stephen and the boy "
+            "king Josiah. The fifth is about work, honor and faith, ending with "
+            "“Be men of courage… Do everything in love.”</p>"
+            "<p>Every day follows the same short pattern: a Scripture from the "
+            "Berean Standard Bible, a teaching, a question to think about, one "
+            "thing to try, and a prayer. Each week ends with a true story from "
+            "our Brave for God books: Samuel Crowther, Festo Kivengere, C.T. "
+            "Studd, Eric Liddell and William Carey. The book builds character and "
+            "faith through the men of Scripture and does not teach adult roles. "
+            "Many boys will enjoy reading it with a father, grandfather or "
+            "mentor.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Sons of the King about?",
+                "answer": "It is a devotional series for boys aged 9 to 12. Book 1 helps boys know who they are in God’s eyes and what real strength is: worth that comes from God rather than scores or toughness, and strength that is under control and used in love.",
+            },
+            {
+                "question": "How is it different from Rooted?",
+                "answer": "Rooted is for all young readers and covers the foundations of faith. Sons of the King speaks to things boys often face in their own way, like anger, proving themselves, hiding their feelings and friendship, and it tells the stories of men in the Bible and in history who trusted God.",
+            },
+            {
+                "question": "Does it talk about feelings and anger?",
+                "answer": "Yes. Week 2 is about strength under control: handling anger, not taking revenge, being gentle like Jesus, and knowing that real men cry, as David and Jesus did.",
+            },
+            {
+                "question": "Who are the true stories at the end of each week?",
+                "answer": "Five men from our Brave for God books: Samuel Crowther, Festo Kivengere, C.T. Studd, Eric Liddell and William Carey. Each short story shows a real man who trusted God, and the full stories are in the Brave for God series.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+            {
+                "question": "What comes after Book 1?",
+                "answer": "Book 2 is about being faithful: integrity when no one is watching, being wise with screens and gaming, handling temptation, winning and losing well, and following Jesus like the disciples.",
+            },
+        ],
+    },
+}
+
 # The series a book can be built into, by `Series.slug`: each one's volumes are
 # `<slug>-<n>`, read from `data/<slug>/<slug>-<n>.md`.
 SERIES: dict[str, dict[int, dict[str, object]]] = {
     "rooted": ROOTED,
     "daughters-of-the-king": DAUGHTERS_OF_THE_KING,
+    "sons-of-the-king": SONS_OF_THE_KING,
 }
 
 _INLINE = [

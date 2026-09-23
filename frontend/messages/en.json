@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "People in this book",
+  "book_readers_guide": "Reader’s guide",
+  "book_read_guide": "Read the guide",
   "author_appears_in": "Also appears in",
   "author_articles_about": "Articles about",
   "author_read_article": "Read the article",
@@ -587,6 +589,13 @@
   "fav_view_covers": "Covers",
   "fav_view_spines": "Spines",
   "fav_close_book": "Put back",
+  "shelf_download": "Download shelf",
+  "shelf_downloading": "Downloading %n% of %t%",
+  "shelf_stop": "Stop",
+  "shelf_all_saved": "All saved offline",
+  "shelf_remove_downloads": "Remove downloads",
+  "shelf_failed": "%n% couldn't be downloaded",
+  "shelf_retry": "Try again",
   "year_title": "Your year in books",
   "year_choose": "Year",
   "year_goal": "Reading goal",
@@ -1022,5 +1031,10 @@
   "notebook_reflect_saved": "Saved in your Notebook",
   "notebook_reflect_open": "Open in your Notebook",
   "notebook_reflect_write": "Write your answer",
-  "notebook_reflect_answer_prompt": "Your answer…"
+  "notebook_reflect_answer_prompt": "Your answer…",
+  "reader_suggest_edit": "Suggest an edit",
+  "feedback_edit_title": "Send feedback on this",
+  "feedback_edit_intro": "Tell us what reads wrong — and, if you like, what it should say.",
+  "feedback_suggested_label": "Suggest a correction (optional)",
+  "feedback_suggested_placeholder": "What should it say?"
 }

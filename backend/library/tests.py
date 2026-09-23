@@ -1500,6 +1500,37 @@ class BookCardPayloadTests(TestCase):
         with self.assertNumQueries(13):
             self.client.get("/api/library/authors/murray/?language=en")
 
+    def test_book_detail_query_count_is_the_same_in_every_language(self):
+        """The book page had NO query guard, which is how it came to pay an
+        unmeasured cost: dropping `get_guides`' English-only gate put one article
+        scan on every localized edition (15 -> 16 queries, measured), where
+        before they paid nothing. That is the right trade — a localized edition
+        must be able to show its own guide — but 245 of the 382 book editions in
+        the fixture are non-English, so it is 245 extra scans per prerender and
+        deserves a pin rather than a shrug.
+
+        Both numbers are pinned, and the localized one is LOWER than English on
+        purpose: English additionally resolves the topic chips and the author's
+        reviewed-quote count for this fixture. What matters is that neither grows
+        with the number of guides or articles.
+        """
+        lg = Book.objects.create(
+            author=self.author, slug="humility", language="lg", title="Obuwombeefu"
+        )
+        Chapter.objects.create(book=lg, order=1, title="Emu", body_html=body_of(120))
+        # Two guides per language: if the scan ever went per-guide, these double it.
+        for lang in ("en", "lg"):
+            for n in (1, 2):
+                Article.objects.create(
+                    slug=f"humility-{n}-guide", language=lang, h1=f"Guide {lang}{n}",
+                    description="d", body_html="<p>x</p>", is_published=True,
+                    related=[{"type": "book", "slug": "humility"}],
+                )
+        with self.assertNumQueries(18):
+            self.client.get("/api/library/books/humility/?language=en")
+        with self.assertNumQueries(16):
+            self.client.get("/api/library/books/humility/?language=lg")
+
 
 class TranslationBadgeSourceTypeTests(TestCase):
     """The reader and the author page must badge an unreviewed AI translation —

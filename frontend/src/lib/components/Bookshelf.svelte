@@ -9,6 +9,7 @@
 	import ShelfBook from './ShelfBook.svelte';
 	import ShelfBookActions from './ShelfBookActions.svelte';
 	import ShelfSpine from './ShelfSpine.svelte';
+	import ShelfDownloadControl from './ShelfDownloadControl.svelte';
 
 	/**
 	 * One shelf of the Bookshelf page — "Currently reading", "To read" or
@@ -147,11 +148,15 @@
 {/snippet}
 
 <section {id} class="scroll-mt-24 pt-10" aria-labelledby="{id}-title">
-	<div class="mb-4 flex items-baseline gap-3">
+	<div class="mb-4 flex flex-wrap items-baseline gap-3">
 		<h2 id="{id}-title" class="text-h2">{title}</h2>
 		<span class="rounded-full bg-surface-2 px-2.5 py-0.5 text-small font-semibold text-muted"
 			>{items.length}</span
 		>
+		<ShelfDownloadControl
+			shelf={id}
+			books={items.map((i) => ({ slug: i.book.slug, language: i.book.language }))}
+		/>
 	</div>
 
 	<div bind:clientWidth={width}>

@@ -42,5 +42,16 @@
   "created_at": "2026-09-23T00:00:00Z",
   "updated_at": "2026-09-23T00:00:00Z"
  }
+},
+{
+ "model": "library.series",
+ "fields": {
+  "slug": "sons-of-the-king",
+  "title": "Sons of the King – 30 Days with God for Guys",
+  "description": "Thirty-day devotionals for boys aged 9 to 12: who you are as a son of the King, strength under control, and the brave men of the Bible and of history who trusted Him.",
+  "sort_order": 50,
+  "created_at": "2026-09-23T00:00:00Z",
+  "updated_at": "2026-09-23T00:00:00Z"
+ }
 }
 ]

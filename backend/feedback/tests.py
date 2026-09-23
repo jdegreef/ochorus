@@ -69,6 +69,50 @@ class SubmitTests(TestCase):
         self.assertEqual(item.content_language, "lg")
         self.assertEqual(item.status, FeedbackStatus.NEW)
         self.assertEqual(item.submitter_role, "")  # ordinary reader
+        self.assertEqual(item.source, "menu")  # default when unspecified
+
+    def test_source_is_recorded(self):
+        self.client.force_authenticate(user=_reader(), token=VERIFIED)
+        self.client.post(
+            "/api/feedback/", {"body": "From the floating button.", "source": "fab"}, format="json"
+        )
+        self.assertEqual(Feedback.objects.get().source, "fab")
+
+    def test_highlight_selection_is_recorded(self):
+        self.client.force_authenticate(user=_reader(), token=VERIFIED)
+        self.client.post(
+            "/api/feedback/",
+            {
+                "body": "This line reads stiffly.",
+                "source": "highlight",
+                "selected_text": "the grace of God abounding",
+                "suggested_text": "God's abounding grace",
+                "anchor_block": 4,
+            },
+            format="json",
+        )
+        item = Feedback.objects.get()
+        self.assertEqual(item.source, "highlight")
+        self.assertEqual(item.selected_text, "the grace of God abounding")
+        self.assertEqual(item.suggested_text, "God's abounding grace")
+        self.assertEqual(item.anchor_block, 4)
+
+    def test_bad_anchor_block_is_dropped(self):
+        self.client.force_authenticate(user=_reader(), token=VERIFIED)
+        for bad in (True, -1, "3", 1.5):
+            self.client.post(
+                "/api/feedback/",
+                {"body": "A note with a bad anchor.", "anchor_block": bad},
+                format="json",
+            )
+        self.assertTrue(all(f.anchor_block is None for f in Feedback.objects.all()))
+
+    def test_unknown_source_falls_back_to_menu(self):
+        self.client.force_authenticate(user=_reader(), token=VERIFIED)
+        self.client.post(
+            "/api/feedback/", {"body": "No valid source here.", "source": "bogus"}, format="json"
+        )
+        self.assertEqual(Feedback.objects.get().source, "menu")
 
     def test_non_http_page_url_is_dropped(self):
         # The admin queue renders page_url as a clickable link, so a

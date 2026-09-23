@@ -753,8 +753,12 @@ class Article(models.Model):
 
     Everything else follows the per-language row convention: ``slug`` is the
     canonical identifier shared across translations, unique per language, with no
-    English fallback. English is the only language today; a future translation is
-    just another row on the same slug.
+    English fallback. English is where they start, but translations exist (fr,
+    lg, es, pt, sw) and a translated article is simply another row on the same
+    slug — so code reading articles must filter by language rather than assume
+    English. This docstring said "English is the only language today" long after
+    that stopped being true, and two separate callers were written to gate on
+    English because of it.
     """
 
     # Canonical, language-agnostic identifier shared across translations.

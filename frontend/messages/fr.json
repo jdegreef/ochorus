@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Personnages de ce livre",
+  "book_readers_guide": "Guide de lecture",
+  "book_read_guide": "Lire le guide",
   "author_appears_in": "Apparaît aussi dans",
   "author_articles_about": "Articles sur",
   "author_read_article": "Lire l'article",
@@ -587,6 +589,13 @@
   "fav_view_covers": "Couvertures",
   "fav_view_spines": "Dos",
   "fav_close_book": "Remettre",
+  "shelf_download": "Télécharger l'étagère",
+  "shelf_downloading": "Téléchargement %n% sur %t%",
+  "shelf_stop": "Arrêter",
+  "shelf_all_saved": "Tout est enregistré hors ligne",
+  "shelf_remove_downloads": "Supprimer les téléchargements",
+  "shelf_failed": "%n% n'ont pas pu être téléchargés",
+  "shelf_retry": "Réessayer",
   "year_title": "Votre année en livres",
   "year_choose": "Année",
   "year_goal": "Objectif de lecture",
@@ -1022,5 +1031,10 @@
   "notebook_reflect_saved": "Enregistré dans votre carnet",
   "notebook_reflect_open": "Ouvrir dans votre carnet",
   "notebook_reflect_write": "Écrire votre réponse",
-  "notebook_reflect_answer_prompt": "Votre réponse…"
+  "notebook_reflect_answer_prompt": "Votre réponse…",
+  "reader_suggest_edit": "Suggérer une correction",
+  "feedback_edit_title": "Donnez votre avis sur ce passage",
+  "feedback_edit_intro": "Dites-nous ce qui ne va pas — et, si vous voulez, ce que cela devrait dire.",
+  "feedback_suggested_label": "Proposer une correction (facultatif)",
+  "feedback_suggested_placeholder": "Que devrait-il dire ?"
 }

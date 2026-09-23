@@ -150,7 +150,12 @@ const FEEDBACK_EXTRAS_PENDING = [
 	'feedback_sending',
 	'feedback_thanks_title',
 	'feedback_thanks_body',
-	'feedback_error'
+	'feedback_error',
+	'reader_suggest_edit',
+	'feedback_edit_title',
+	'feedback_edit_intro',
+	'feedback_suggested_label',
+	'feedback_suggested_placeholder'
 ] as const;
 
 const UI_EXTRAS_PENDING = [
