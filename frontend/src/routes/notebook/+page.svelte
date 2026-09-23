@@ -28,6 +28,7 @@
 	import PrayerList from '$lib/components/notebook/PrayerList.svelte';
 	import FaithfulnessTimeline from '$lib/components/notebook/FaithfulnessTimeline.svelte';
 	import OnThisDay from '$lib/components/notebook/OnThisDay.svelte';
+	import SyncStatus from '$lib/components/notebook/SyncStatus.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 
 	const t = i18n.t;
@@ -178,10 +179,11 @@
 		<div class="paper">
 			<div class="paper-head">
 				<PageHeader title={t('notebook.title')} tagline={t('notebook.subtitle')} />
-				<p class="today text-small">
-					{longDate(today)}
+				<div class="head-side">
+					<p class="today text-small">{longDate(today)}</p>
 					<a class="print-link" href={localizeHref('/notebook/print')}><span aria-hidden="true" class="me-1">🖨</span>{t('notebook.printLink')}</a>
-				</p>
+					<SyncStatus />
+				</div>
 			</div>
 
 			{#if record && record.answered > 0}
@@ -479,12 +481,19 @@
 		gap: 0 1.5rem;
 		align-items: flex-start;
 	}
+	/* The date, Print and the sync line: one column, its lines aligned to one
+	   edge whether it sits beside the title or has wrapped under it. */
+	.head-side {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.15rem;
+	}
 	.print-link {
 		display: block;
 		margin-top: 0.2rem;
 		font-family: var(--font-sans);
 		font-style: normal;
-		text-align: end;
 	}
 	.today {
 		font-family: var(--font-display);

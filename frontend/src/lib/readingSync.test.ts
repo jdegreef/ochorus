@@ -7,7 +7,9 @@ import {
 	PROGRESS_KEY,
 	MARKS_KEY,
 	LAST_SYNC_KEY,
-	FAVORITES_KEY
+	FAVORITES_KEY,
+	JOURNAL_KEY,
+	JOURNAL_DIRTY_KEY
 } from './reading-schema';
 import { addPending, bookmarkTarget, pendingAt } from './removals';
 
@@ -303,5 +305,60 @@ describe('readingSync.fetchProgress', () => {
 		await expect(readingSync.fetchProgress('book', 'humility')).resolves.toBeNull();
 		vi.stubGlobal('fetch', vi.fn(async () => { throw new TypeError('offline'); }));
 		await expect(readingSync.fetchProgress('book', 'humility')).resolves.toBeNull();
+	});
+});
+
+describe('readingSync.flushJournal', () => {
+	const entry = (id: string, updatedAt: number) => ({
+		id,
+		kind: 'note',
+		title: '',
+		body: id,
+		ref: '',
+		person: '',
+		group: '',
+		remind: '',
+		updates: [],
+		source: null,
+		answer: '',
+		answeredAt: null,
+		createdAt: 1000,
+		updatedAt
+	});
+	const seed = () => {
+		localStorage.setItem(JOURNAL_KEY, JSON.stringify({ a: entry('a', 2000), b: entry('b', 3000) }));
+		localStorage.setItem(JOURNAL_DIRTY_KEY, JSON.stringify({ a: 2000, b: 3000, gone: 5 }));
+	};
+
+	afterEach(() => {
+		vi.restoreAllMocks();
+		readingSync.setSignedIn(false);
+	});
+
+	it('delivers what the account is owed, newest first, and stops owing it', async () => {
+		seed();
+		const fetchSpy = vi
+			.spyOn(globalThis, 'fetch')
+			.mockImplementation(async () => new Response('{}', { status: 200 }));
+		readingSync.setSignedIn(true);
+		await expect(readingSync.flushJournal()).resolves.toBe(true);
+		expect(fetchSpy.mock.calls.map(([url]) => String(url).match(/journal\/(\w+)\//)?.[1])).toEqual(['b', 'a']);
+		// An owed id with no entry left on the device can never be delivered.
+		expect(readingSync.pendingJournal()).toEqual({});
+	});
+
+	it('stops at the first failure and keeps the rest owed', async () => {
+		seed();
+		vi.spyOn(globalThis, 'fetch').mockRejectedValue(new TypeError('offline'));
+		readingSync.setSignedIn(true);
+		await expect(readingSync.flushJournal()).resolves.toBe(false);
+		expect(Object.keys(readingSync.pendingJournal()).sort()).toEqual(['a', 'b', 'gone']);
+	});
+
+	it('does nothing signed out', async () => {
+		seed();
+		const fetchSpy = vi.spyOn(globalThis, 'fetch');
+		await expect(readingSync.flushJournal()).resolves.toBe(false);
+		expect(fetchSpy).not.toHaveBeenCalled();
 	});
 });

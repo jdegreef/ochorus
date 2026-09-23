@@ -949,5 +949,16 @@
   "notebook_print_until": "Okutuusa",
   "notebook_print_asked": "Yasabibwa",
   "notebook_print_epigraph": "“Obwesigwa bwo bungi.” — Okukungubaga 3:23",
-  "notebook_print_link": "Kuba mu kyapa"
+  "notebook_print_link": "Kuba mu kyapa",
+  "notebook_sync_device": "Kiterekeddwa ku kyuma kino kyokka.",
+  "notebook_sync_sign_in": "Yingira okukikuuma",
+  "notebook_sync_offline": "Toli ku mutimbagano — byonna biterekeddwa ku kyuma kino.",
+  "notebook_sync_offline_waiting": "Toli ku mutimbagano — {n} bijja kugattibwa ng'okomyewo",
+  "notebook_sync_waiting": "{n} birindiridde okugattibwa",
+  "notebook_sync_now": "Gatta kati",
+  "notebook_syncing": "Kigatta…",
+  "notebook_sync_done": "Byonna bigattiddwa",
+  "notebook_sync_entry_pending": "Ku kyuma kino",
+  "notebook_sync_entry_pending_hint": "Kiterekeddwa ku kyuma kino; kijja kugattibwa ku akawunti yo nga kisobose.",
+  "notebook_sync_entry_done": "Kigattiddwa ku akawunti yo"
 }

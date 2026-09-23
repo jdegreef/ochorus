@@ -949,5 +949,16 @@
   "notebook_print_until": "Hadi",
   "notebook_print_asked": "Liliombwa",
   "notebook_print_epigraph": "“Uaminifu wako ni mkuu.” — Maombolezo 3:23",
-  "notebook_print_link": "Chapisha"
+  "notebook_print_link": "Chapisha",
+  "notebook_sync_device": "Imehifadhiwa kwenye kifaa hiki pekee.",
+  "notebook_sync_sign_in": "Ingia ili kuiweka salama",
+  "notebook_sync_offline": "Uko nje ya mtandao — kila kitu kimehifadhiwa kwenye kifaa hiki.",
+  "notebook_sync_offline_waiting": "Nje ya mtandao — {n} vitasawazishwa ukirudi",
+  "notebook_sync_waiting": "{n} vinasubiri kusawazishwa",
+  "notebook_sync_now": "Sawazisha sasa",
+  "notebook_syncing": "Inasawazisha…",
+  "notebook_sync_done": "Vyote vimesawazishwa",
+  "notebook_sync_entry_pending": "Kwenye kifaa hiki",
+  "notebook_sync_entry_pending_hint": "Imehifadhiwa kwenye kifaa hiki; itasawazishwa na akaunti yako itakapowezekana.",
+  "notebook_sync_entry_done": "Imesawazishwa na akaunti yako"
 }

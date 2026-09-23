@@ -949,5 +949,16 @@
   "notebook_print_until": "Until",
   "notebook_print_asked": "Asked",
   "notebook_print_epigraph": "“Great is thy faithfulness.” — Lamentations 3:23",
-  "notebook_print_link": "Print"
+  "notebook_print_link": "Print",
+  "notebook_sync_device": "Saved on this device only.",
+  "notebook_sync_sign_in": "Sign in to keep it safe",
+  "notebook_sync_offline": "You're offline — everything is saved on this device.",
+  "notebook_sync_offline_waiting": "Offline — {n} to sync when you're back",
+  "notebook_sync_waiting": "{n} waiting to sync",
+  "notebook_sync_now": "Sync now",
+  "notebook_syncing": "Syncing…",
+  "notebook_sync_done": "All synced",
+  "notebook_sync_entry_pending": "On this device",
+  "notebook_sync_entry_pending_hint": "Saved on this device; it will sync to your account when it can.",
+  "notebook_sync_entry_done": "Synced to your account"
 }

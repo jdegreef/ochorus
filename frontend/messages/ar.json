@@ -949,5 +949,16 @@
   "notebook_print_until": "حتى",
   "notebook_print_asked": "طُلبت",
   "notebook_print_epigraph": "«عظيمة أمانتك.» — مراثي إرميا 3:23",
-  "notebook_print_link": "طباعة"
+  "notebook_print_link": "طباعة",
+  "notebook_sync_device": "محفوظ على هذا الجهاز فقط.",
+  "notebook_sync_sign_in": "سجّل الدخول لحمايته",
+  "notebook_sync_offline": "أنت غير متصل — كل شيء محفوظ على هذا الجهاز.",
+  "notebook_sync_offline_waiting": "غير متصل — {n} للمزامنة عند عودتك",
+  "notebook_sync_waiting": "{n} بانتظار المزامنة",
+  "notebook_sync_now": "زامن الآن",
+  "notebook_syncing": "جارٍ المزامنة…",
+  "notebook_sync_done": "تمت مزامنة الكل",
+  "notebook_sync_entry_pending": "على هذا الجهاز",
+  "notebook_sync_entry_pending_hint": "محفوظ على هذا الجهاز؛ ستتم مزامنته مع حسابك عندما يكون ذلك ممكنًا.",
+  "notebook_sync_entry_done": "تمت المزامنة مع حسابك"
 }

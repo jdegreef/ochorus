@@ -949,5 +949,16 @@
   "notebook_print_until": "До",
   "notebook_print_asked": "Попрошено",
   "notebook_print_epigraph": "«Велика вірність Твоя!» — Плач Єремії 3:23",
-  "notebook_print_link": "Друк"
+  "notebook_print_link": "Друк",
+  "notebook_sync_device": "Збережено лише на цьому пристрої.",
+  "notebook_sync_sign_in": "Увійдіть, щоб зберегти надійно",
+  "notebook_sync_offline": "Ви офлайн — усе збережено на цьому пристрої.",
+  "notebook_sync_offline_waiting": "Офлайн — до синхронізації після повернення: {n}",
+  "notebook_sync_waiting": "Очікують синхронізації: {n}",
+  "notebook_sync_now": "Синхронізувати",
+  "notebook_syncing": "Синхронізація…",
+  "notebook_sync_done": "Усе синхронізовано",
+  "notebook_sync_entry_pending": "На цьому пристрої",
+  "notebook_sync_entry_pending_hint": "Збережено на цьому пристрої; синхронізується з вашим обліковим записом, щойно буде змога.",
+  "notebook_sync_entry_done": "Синхронізовано з вашим обліковим записом"
 }
