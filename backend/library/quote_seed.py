@@ -49,7 +49,9 @@ from __future__ import annotations
 #: thomas-a-kempis       — approved 2026-08-30, thirty-six;
 #:                          eighteen more 2026-09-07 (fifty-four).
 #: andrew-murray         — approved 2026-08-30, twenty-seven;
-#:                         and 2026-09-02, twenty-three more (the four new books).
+#:                         and 2026-09-02, twenty-three more (the four new books);
+#:                         and 2026-09-23, twenty-five more (With Christ in the School
+#:                         of Prayer, lessons 5–31) — seventy-five.
 #: e-m-bounds            — approved 2026-08-30, twenty-eight;
 #:                          twenty-seven more 2026-09-02 (fifty-five).
 #: augustine-of-hippo    — approved 2026-08-30, thirteen;
@@ -1495,6 +1497,156 @@ ANDREW_MURRAY = [
         "text": "Ever stand before God, in Christ; ever wait for all grace from God, in Christ; ever yield yourself to bear the more fruit the Husbandman asks, in Christ.",
         "chapter": ("true-vine", 11),
         "paragraph": 5,
+    },
+    {
+        "slug": "andrew-murray-f1456932",
+        "text": "The child who only wants to know the love of the father when he has something to ask, will be disappointed.",
+        "chapter": ("school-of-prayer", 7),
+        "paragraph": 6,
+    },
+    {
+        "slug": "andrew-murray-4fd4375c",
+        "text": "The Lord does not demand of us a perfect fulfilment of the law; no, but only the childlike and whole-hearted surrender to live as a child with Him in obedience and truth.",
+        "chapter": ("school-of-prayer", 7),
+        "paragraph": 5,
+    },
+    {
+        "slug": "andrew-murray-2f3cd850",
+        "text": "The one thing by which man can honour and enjoy his God is faith.",
+        "chapter": ("school-of-prayer", 9),
+        "paragraph": 7,
+    },
+    {
+        "slug": "andrew-murray-21b2f5b3",
+        "text": "Our prayers must not be a vague appeal to His mercy, an indefinite cry for blessing, but the distinct expression of definite need.",
+        "chapter": ("school-of-prayer", 11),
+        "paragraph": 2,
+    },
+    {
+        "slug": "andrew-murray-0bdab1a3",
+        "text": "Many a one wishes to be saved, but perishes because he does not will it.",
+        "chapter": ("school-of-prayer", 11),
+        "paragraph": 6,
+    },
+    {
+        "slug": "andrew-murray-3f9c18d7",
+        "text": "In one aspect there must be faith before there can be prayer; in another the faith is the outcome and the growth of prayer.",
+        "chapter": ("school-of-prayer", 12),
+        "paragraph": 3,
+    },
+    {
+        "slug": "andrew-murray-363d5b2b",
+        "text": "Faith in the promise is the fruit of faith in the promiser: the prayer of faith is rooted in the life of faith.",
+        "chapter": ("school-of-prayer", 13),
+        "paragraph": 6,
+    },
+    {
+        "slug": "andrew-murray-20f246b8",
+        "text": "A heart full of God has power for the prayer of faith.",
+        "chapter": ("school-of-prayer", 13),
+        "paragraph": 9,
+    },
+    {
+        "slug": "andrew-murray-3a68d90a",
+        "text": "Faith can only live by feeding on what is Divine, on God Himself.",
+        "chapter": ("school-of-prayer", 14),
+        "paragraph": 4,
+    },
+    {
+        "slug": "andrew-murray-3f0a513b",
+        "text": "Not according to what I try to be when praying, but what I am when not praying, is my prayer dealt with by God.",
+        "chapter": ("school-of-prayer", 15),
+        "paragraph": 4,
+    },
+    {
+        "slug": "andrew-murray-b8b0d6bf",
+        "text": "A prayer meeting without recognised answer to prayer ought to be an anomaly.",
+        "chapter": ("school-of-prayer", 16),
+        "paragraph": 5,
+    },
+    {
+        "slug": "andrew-murray-8f923be4",
+        "text": "God will not delay one moment longer than is absolutely necessary; He will do all in His power to hasten and speed the answer.",
+        "chapter": ("school-of-prayer", 17),
+        "paragraph": 4,
+    },
+    {
+        "slug": "andrew-murray-9a33edf0",
+        "text": "Man was created, and has now again been redeemed, to pray, and by his prayer to have dominion.",
+        "chapter": ("school-of-prayer", 19),
+        "paragraph": 9,
+    },
+    {
+        "slug": "andrew-murray-377c0454",
+        "text": "Give yourself, and live, to do the works of Christ and you will learn to pray so as to obtain wonderful answers to prayer.",
+        "chapter": ("school-of-prayer", 20),
+        "paragraph": 9,
+    },
+    {
+        "slug": "andrew-murray-bb9d377b",
+        "text": "With our whole being consciously yielded to the inspiration of the Word and Spirit, our desires will be no longer ours but His; their chief end the glory of God.",
+        "chapter": ("school-of-prayer", 21),
+        "paragraph": 11,
+    },
+    {
+        "slug": "andrew-murray-54521d6f",
+        "text": "Faith is obedience at home and looking to the Master: obedience is faith going out to do His will.",
+        "chapter": ("school-of-prayer", 22),
+        "paragraph": 5,
+    },
+    {
+        "slug": "andrew-murray-254d7f38",
+        "text": "The chief thing is, not to know what God has said we must do, but that God Himself says it to us.",
+        "chapter": ("school-of-prayer", 23),
+        "paragraph": 7,
+    },
+    {
+        "slug": "andrew-murray-6b7ccf7f",
+        "text": "Obedience is the only path that leads to the glory of God.",
+        "chapter": ("school-of-prayer", 24),
+        "paragraph": 6,
+    },
+    {
+        "slug": "andrew-murray-6862a329",
+        "text": "The name and the power of asking go together: when the Name of Jesus has become the power that rules my life, its power in prayer with God will be seen too.",
+        "chapter": ("school-of-prayer", 25),
+        "paragraph": 8,
+    },
+    {
+        "slug": "andrew-murray-022ae1f5",
+        "text": "To pray in the Name of Jesus is to pray in unity, in sympathy with Him.",
+        "chapter": ("school-of-prayer", 28),
+        "paragraph": 4,
+    },
+    {
+        "slug": "andrew-murray-2196a38c",
+        "text": "Every believer ought to pray much that the unity of the Church, not in external organizations, but in spirit and in truth, may be made manifest.",
+        "chapter": ("school-of-prayer", 28),
+        "paragraph": 8,
+    },
+    {
+        "slug": "andrew-murray-ac9e4831",
+        "text": "Our priestly power with God depends on our personal life and walk.",
+        "chapter": ("school-of-prayer", 31),
+        "paragraph": 6,
+    },
+    {
+        "slug": "andrew-murray-7d56611c",
+        "text": "God needs, greatly needs, priests who can draw near to Him, who live in His presence, and by their intercession draw down the blessings of His grace on others.",
+        "chapter": ("school-of-prayer", 31),
+        "paragraph": 11,
+    },
+    {
+        "slug": "andrew-murray-0865b7b0",
+        "text": "Christ is all, the life and the strength too for a never-ceasing prayer-life.",
+        "chapter": ("school-of-prayer", 32),
+        "paragraph": 5,
+    },
+    {
+        "slug": "andrew-murray-b1464290",
+        "text": "Not in God, not in His secret will, not in the limitations of His promises, but in us, in ourselves is the hindrance; we are not what we should be to obtain the promise.",
+        "chapter": ("school-of-prayer", 32),
+        "paragraph": 3,
     },
 ]
 
@@ -3790,6 +3942,23 @@ TOPIC_MEMBERS = {
         "hudson-taylor-9e37f8aa",  # Sometimes we have trials which we cannot put into praye
         "george-muller-077854c2",  # Our motives must be godly: we must not seek any gift of 
         "george-muller-a23700ca",  # In our natural state we dislike dealing with God alone.
+        "andrew-murray-f1456932",  # The child who only wants to know the love of the father when
+        "andrew-murray-21b2f5b3",  # Our prayers must not be a vague appeal to His mercy, an inde
+        "andrew-murray-3f9c18d7",  # In one aspect there must be faith before there can be prayer
+        "andrew-murray-363d5b2b",  # Faith in the promise is the fruit of faith in the promiser: 
+        "andrew-murray-20f246b8",  # A heart full of God has power for the prayer of faith.
+        "andrew-murray-3f0a513b",  # Not according to what I try to be when praying, but what I a
+        "andrew-murray-b8b0d6bf",  # A prayer meeting without recognised answer to prayer ought t
+        "andrew-murray-8f923be4",  # God will not delay one moment longer than is absolutely nece
+        "andrew-murray-9a33edf0",  # Man was created, and has now again been redeemed, to pray, a
+        "andrew-murray-377c0454",  # Give yourself, and live, to do the works of Christ and you w
+        "andrew-murray-6862a329",  # The name and the power of asking go together: when the Name 
+        "andrew-murray-022ae1f5",  # To pray in the Name of Jesus is to pray in unity, in sympath
+        "andrew-murray-2196a38c",  # Every believer ought to pray much that the unity of the Chur
+        "andrew-murray-ac9e4831",  # Our priestly power with God depends on our personal life and
+        "andrew-murray-7d56611c",  # God needs, greatly needs, priests who can draw near to Him, 
+        "andrew-murray-0865b7b0",  # Christ is all, the life and the strength too for a never-cea
+        "andrew-murray-b1464290",  # Not in God, not in His secret will, not in the limitations o
     ],
     "faith": [  # Faith
         "charles-h-spurgeon-94833965",  # The righteousness of faith is not the moral excellence of fa
@@ -3878,6 +4047,12 @@ TOPIC_MEMBERS = {
         "george-muller-80aee326",  # If the work in which we are engaged is indeed the work o
         "jonathan-edwards-90170d1f",  # A natural principle of self-love may be the foundation o
         "jonathan-edwards-80a1ab38",  # Persons may seem to have love to God and Christ, yea, to
+        "andrew-murray-2f3cd850",  # The one thing by which man can honour and enjoy his God is f
+        "andrew-murray-3f9c18d7",  # In one aspect there must be faith before there can be prayer
+        "andrew-murray-363d5b2b",  # Faith in the promise is the fruit of faith in the promiser: 
+        "andrew-murray-20f246b8",  # A heart full of God has power for the prayer of faith.
+        "andrew-murray-3a68d90a",  # Faith can only live by feeding on what is Divine, on God Him
+        "andrew-murray-54521d6f",  # Faith is obedience at home and looking to the Master: obedie
     ],
     "grace": [  # Grace
         "charles-h-spurgeon-e83563c7",  # Jesus has nothing which He will not use for a sinner's salva
@@ -3922,6 +4097,7 @@ TOPIC_MEMBERS = {
         "jonathan-edwards-2f83aa62",  # Man hath now a greater dependence on the grace of God th
         "jonathan-edwards-1adaf802",  # We are dependent on the power of God to convert us, and 
         "jonathan-edwards-5b3032a3",  # None are so low or inferior, but Christ's condescension 
+        "andrew-murray-4fd4375c",  # The Lord does not demand of us a perfect fulfilment of the l
     ],
     "holy-spirit": [  # The Holy Spirit
         "charles-h-spurgeon-c1353dff",  # The Holy Ghost Himself cannot better glorify the Lord Jesus 
@@ -3937,6 +4113,7 @@ TOPIC_MEMBERS = {
         "hudson-taylor-61a35270",  # The Holy Spirit is the other Comforter, sent by the Father i
         "hudson-taylor-7ac514c2",  # Thanks be to God, the illumination of the HOLY GHOST is prom
         "thomas-a-kempis-72fe1814",  # Not every desire is from the Holy Spirit, even though it
+        "andrew-murray-bb9d377b",  # With our whole being consciously yielded to the inspiration 
     ],
     "love-of-god": [  # The Love of God
         "charles-h-spurgeon-8b8e88db",  # We are not going to talk about law, and duty, and punishment
@@ -4013,6 +4190,7 @@ TOPIC_MEMBERS = {
         "jonathan-edwards-b82be46e",  # Fear is cast out by the Spirit of God, no other way than
         "jonathan-edwards-2f3de031",  # The saints' love to God is the fruit of God's love to th
         "jonathan-edwards-b41b9375",  # What chiefly makes a man, or any creature lovely, is his
+        "andrew-murray-f1456932",  # The child who only wants to know the love of the father when
     ],
     "humility": [  # Humility
         "charles-h-spurgeon-c3d3a367",  # Let us be humble that we may not need to be humbled, but may
@@ -4079,6 +4257,8 @@ TOPIC_MEMBERS = {
         "jonathan-edwards-c02f29d7",  # Godliness consists not in a heart to intend to do the wi
         "jonathan-edwards-fb6548c8",  # Herein consists the beauty of the saints, that they are 
         "jonathan-edwards-1481dba4",  # The reason why it is not dishonorable to be necessarily 
+        "andrew-murray-3f0a513b",  # Not according to what I try to be when praying, but what I a
+        "andrew-murray-ac9e4831",  # Our priestly power with God depends on our personal life and
     ],
     "the-cross": [  # The Cross of Christ
         "charles-h-spurgeon-1fe6c2ed",  # The Lord cannot read our pardon written in the blood of His 
@@ -4128,6 +4308,7 @@ TOPIC_MEMBERS = {
         "george-muller-73e19adb",  # How blessed therefore is it to trust in God, and in him 
         "george-muller-d2db737a",  # Would it have been right to charge God with unfaithfulne
         "jonathan-edwards-4a8c058b",  # All the kings of the earth before God are as grasshopper
+        "andrew-murray-8f923be4",  # God will not delay one moment longer than is absolutely nece
     ],
     "joy": [  # Joy
         "charles-h-spurgeon-d6d84bd3",  # Beloved, the Lord’s workers have sauce with their bread: not
@@ -4207,6 +4388,7 @@ TOPIC_MEMBERS = {
         "george-muller-37a07bae",  # Do not men believe that God means what he appears plainl
         "george-muller-46a167ee",  # We may therefore profitably meditate, with God’s blessin
         "jonathan-edwards-46a608bf",  # Holy affections are not heat without light; but evermore
+        "andrew-murray-254d7f38",  # The chief thing is, not to know what God has said we must do
     ],
     "salvation": [  # Salvation & the Gospel
         "charles-h-spurgeon-91fc01a4",  # The Lord's salvation can come to us though we have only fait
@@ -4248,6 +4430,7 @@ TOPIC_MEMBERS = {
         "jonathan-edwards-cf2c4824",  # Conversion is a great and universal change of the man, t
         "jonathan-edwards-fe469383",  # Wisdom was a thing that the Greeks admired; but Christ i
         "jonathan-edwards-e8e8a7e6",  # We are dependent on Christ the Son of God, as he is our 
+        "andrew-murray-0bdab1a3",  # Many a one wishes to be saved, but perishes because he does 
     ],
     "heaven": [  # Heaven & Eternity
         "charles-h-spurgeon-8b8e88db",  # We are not going to talk about law, and duty, and punishment
@@ -4304,6 +4487,10 @@ TOPIC_MEMBERS = {
         "hudson-taylor-a1d67b37",  # Self-denial surely means something far greater than som
         "john-wesley-c8f76836",  # The love of the creature is changed to the love of the C
         "john-wesley-4819ac9b",  # If you move but one step towards God, you are not as oth
+        "andrew-murray-4fd4375c",  # The Lord does not demand of us a perfect fulfilment of the l
+        "andrew-murray-bb9d377b",  # With our whole being consciously yielded to the inspiration 
+        "andrew-murray-54521d6f",  # Faith is obedience at home and looking to the Master: obedie
+        "andrew-murray-6b7ccf7f",  # Obedience is the only path that leads to the glory of God.
     ],
     "sin-and-temptation": [  # Sin & Temptation
         "charles-h-spurgeon-bda51fda",  # Our Lord Jesus did not die for imaginary sins, but His heart
