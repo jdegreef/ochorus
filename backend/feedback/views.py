@@ -19,7 +19,7 @@ from accounts.models import AdminGrant, UserProfile
 from accounts.permissions import is_admin_user
 from common.throttling import ScopedCacheThrottle
 
-from .models import Feedback, FeedbackCategory
+from .models import Feedback, FeedbackCategory, FeedbackSource
 
 #: Lower/upper bounds on the body. A blank or one-word "feedback" is noise; the
 #: cap stops a single row from being used as unbounded storage.
@@ -97,6 +97,10 @@ class FeedbackView(APIView):
         if category not in FeedbackCategory.values:
             category = FeedbackCategory.OTHER
 
+        source = str(data.get("source") or "").strip()
+        if source not in FeedbackSource.values:
+            source = FeedbackSource.MENU
+
         profile = _profile(request)
         email = (profile.email or request.user.email or "").strip().lower()
 
@@ -106,6 +110,7 @@ class FeedbackView(APIView):
             submitter_role=submitter_role(request, email),
             category=category,
             body=body,
+            source=source,
             page_url=_clip_url(data.get("page_url"), 2000),
             content_kind=_clip(data.get("content_kind"), 20),
             content_slug=_clip(data.get("content_slug"), 200),

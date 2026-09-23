@@ -32,6 +32,7 @@ def _serialize(item: Feedback) -> dict:
         "id": item.id,
         "category": item.category,
         "body": item.body,
+        "source": item.source,
         "status": item.status,
         "submitter_email": item.submitter_email,
         "submitter_role": item.submitter_role,

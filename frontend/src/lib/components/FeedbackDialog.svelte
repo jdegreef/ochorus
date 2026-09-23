@@ -12,12 +12,14 @@
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { getLang } from '$lib/lang.svelte';
 	import { feedbackContext } from '$lib/feedbackContext';
-	import { submitFeedback, type FeedbackCategory } from '$lib/library-public';
+	import { submitFeedback, type FeedbackCategory, type FeedbackSource } from '$lib/library-public';
 
 	interface Props {
 		onClose: () => void;
+		/** Which surface opened the dialog — recorded with the submission. */
+		source?: FeedbackSource;
 	}
-	let { onClose }: Props = $props();
+	let { onClose, source = 'menu' }: Props = $props();
 
 	const t = i18n.t;
 
@@ -51,6 +53,7 @@
 			await submitFeedback({
 				category,
 				body: body.trim(),
+				source,
 				page_url: typeof window === 'undefined' ? '' : window.location.href,
 				content_language: getLang(),
 				ui_locale: getLang(),

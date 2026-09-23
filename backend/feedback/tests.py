@@ -69,6 +69,21 @@ class SubmitTests(TestCase):
         self.assertEqual(item.content_language, "lg")
         self.assertEqual(item.status, FeedbackStatus.NEW)
         self.assertEqual(item.submitter_role, "")  # ordinary reader
+        self.assertEqual(item.source, "menu")  # default when unspecified
+
+    def test_source_is_recorded(self):
+        self.client.force_authenticate(user=_reader(), token=VERIFIED)
+        self.client.post(
+            "/api/feedback/", {"body": "From the floating button.", "source": "fab"}, format="json"
+        )
+        self.assertEqual(Feedback.objects.get().source, "fab")
+
+    def test_unknown_source_falls_back_to_menu(self):
+        self.client.force_authenticate(user=_reader(), token=VERIFIED)
+        self.client.post(
+            "/api/feedback/", {"body": "No valid source here.", "source": "bogus"}, format="json"
+        )
+        self.assertEqual(Feedback.objects.get().source, "menu")
 
     def test_non_http_page_url_is_dropped(self):
         # The admin queue renders page_url as a clickable link, so a

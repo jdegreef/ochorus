@@ -36,6 +36,15 @@ class FeedbackStatus(models.TextChoices):
     DUPLICATE = "duplicate", "Duplicate"
 
 
+class FeedbackSource(models.TextChoices):
+    """Which surface a submission came from — so the queue can see what drives
+    volume (a facet the admin can filter on, later)."""
+
+    MENU = "menu", "Account menu"
+    FAB = "fab", "Floating button"
+    HIGHLIGHT = "highlight", "Highlighted text"
+
+
 #: Statuses a submission can be moved to, and which the admin queue offers. NEW
 #: is the birth state, never a triage target.
 TRIAGE_STATUSES = frozenset(FeedbackStatus.values) - {FeedbackStatus.NEW}
@@ -66,6 +75,11 @@ class Feedback(models.Model):
         max_length=20, choices=FeedbackCategory.choices, default=FeedbackCategory.OTHER
     )
     body = models.TextField()
+    #: The surface the reader used — the account menu, the floating button, or a
+    #: text highlight. A facet for the queue; defaults to the menu (the original).
+    source = models.CharField(
+        max_length=20, choices=FeedbackSource.choices, default=FeedbackSource.MENU
+    )
 
     # --- where (auto-captured context; all optional) ---
     page_url = models.TextField(blank=True)

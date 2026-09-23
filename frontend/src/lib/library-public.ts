@@ -1384,11 +1384,15 @@ export function quoteCollectionLd(opts: {
  *  `FeedbackCategory`. */
 export type FeedbackCategory = 'language' | 'content' | 'feature' | 'bug' | 'other';
 
+/** The surface the reader used to file it — mirrors the backend `FeedbackSource`. */
+export type FeedbackSource = 'menu' | 'fab' | 'highlight';
+
 /** A piece of reader feedback, with whatever page context the client could
  *  resolve. Signed-in only — the server stamps the submitter and their role. */
 export interface FeedbackSubmission {
 	category: FeedbackCategory;
 	body: string;
+	source?: FeedbackSource;
 	page_url?: string;
 	content_kind?: string;
 	content_slug?: string;
