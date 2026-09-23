@@ -14,6 +14,7 @@
 	import {
 		getFeedbackQueue,
 		triageFeedback,
+		fileBodyFixJob,
 		FEEDBACK_TRIAGE_STATUSES,
 		type FeedbackItem
 	} from '$lib/library-admin';
@@ -96,6 +97,54 @@
 
 	function label(s: string) {
 		return s.replace(/_/g, ' ');
+	}
+
+	// A book-chapter suggestion can graduate into a content-edit job (the fixture-PR
+	// path). Needs the content-edit capability in the item's language.
+	function canGraduate(item: FeedbackItem): boolean {
+		return (
+			item.content_kind === 'book' &&
+			!!item.chapter_ref &&
+			/^\d+$/.test(item.chapter_ref) &&
+			auth.can('content_edit', 'suggest', item.content_language)
+		);
+	}
+
+	// Turn the reader's suggestion into a "revise this chapter" content-edit job,
+	// then mark the feedback planned with a link to the job.
+	async function graduate(item: FeedbackItem) {
+		busy[item.id] = true;
+		rowError[item.id] = '';
+		try {
+			const note = [
+				item.selected_text ? `Reader flagged: “${item.selected_text}”` : '',
+				item.body,
+				item.suggested_text ? `Suggested: ${item.suggested_text}` : ''
+			]
+				.filter(Boolean)
+				.join(' — ')
+				.slice(0, 2000);
+			const { job } = await fileBodyFixJob(
+				item.content_slug,
+				item.content_language,
+				Number(item.chapter_ref),
+				note
+			);
+			const link = job?.url ? `Filed as content-edit job: ${job.url}` : 'Filed as content-edit job.';
+			const admin_note = item.admin_note ? `${item.admin_note}\n${link}` : link;
+			const updated = await triageFeedback(item.id, { status: 'planned', admin_note });
+			Object.assign(item, updated);
+			void queue.load();
+		} catch (e) {
+			rowError[item.id] =
+				e instanceof ApiError && e.body && typeof e.body === 'object' && 'detail' in e.body
+					? String((e.body as { detail: unknown }).detail)
+					: e instanceof ApiError
+						? e.message
+						: 'Something went wrong.';
+		} finally {
+			busy[item.id] = false;
+		}
 	}
 </script>
 
@@ -234,6 +283,14 @@
 											>Assign to me</button
 										>
 									{/if}
+										{#if canGraduate(item)}
+											<button
+												class="btn btn-sm ms-auto"
+												disabled={busy[item.id]}
+												title="File a content-edit job to fix this chapter"
+												onclick={() => graduate(item)}>File as content-edit job</button
+											>
+										{/if}
 								</div>
 
 								<div class="mt-2 flex items-start gap-2">
