@@ -231,6 +231,27 @@ worker specifics that shipped ~11 editions:
   quotations conservatively in the language's reverent biblical register and
   note that in the PR + issue comment.
 
+**Book chapter top-up** — the English edition grows after translations
+shipped (an author adds chapters; first case: `stepping-stones-2` gained
+chapters 40–43 in 2026-09, PR #3104). **This is not a queue job.**
+`tests_translation_markup.test_no_translation_is_missing_whole_chapters` fails
+CI the moment English has a chapter any existing translation lacks, and it is
+deliberately unpinnable — so the English chapters cannot merge ahead of their
+translations. Whoever adds the English chapters translates them into EVERY
+existing `<slug>.<lang>.json` in the same PR:
+- Translate only the new chapters (same `system_prompt(<lang>)`, `<p>`-count
+  validation and scripture handling as a full book) and APPEND them to each
+  existing file, keeping its formatting (`content_fixtures.render_rows` if the
+  file round-trips through it, else match what's there) with
+  `body_text`/`word_count` derived as above.
+- Don't touch the book row, existing chapters, `source_type` or the cover. If an
+  edition is already reviewed, say in the PR that it now holds unreviewed
+  chapters.
+- Open `book:<slug> -> <lang>` jobs for languages WITHOUT an edition are
+  unaffected — they translate from the English fixture as it stands.
+- The ordinary double-ship guard still holds for queue jobs: an existing
+  `<slug>.<lang>.json` means shipped.
+
 **Sermon** — same shape, smaller: single body instead of chapters; translate
 `title`, `scripture_ref` (localize the Bible book name, keep chapter:verse),
 and `body_html` (preserve ALL tags 1:1 — blockquote/h2/br/i, hymn stanzas);

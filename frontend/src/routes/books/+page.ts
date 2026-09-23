@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-23: stepping-stones-2 (Gareth Evans, Stepping Stones) gains four new
+// English chapters, 40–43 (A Tribute to Anne … Lion's Pride), from the author's 2026 edition.
 // prerender refresh 2026-09-22: one NEW English book — rooted-3, "Rooted – 30 Days with God for
 // Youth – Book 3" (Growing Fruit), the third volume of the house-written devotional series for ages
 // 9–12 (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture).
