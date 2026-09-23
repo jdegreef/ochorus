@@ -1,99 +1,126 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { getBook, getChapter, getSermon, getAuthor, type BookDetail } from '$lib/library-public';
-	import { getLang, lang as langStore, localeName } from '$lib/lang.svelte';
-	import { bookmarks, byPosition } from '$lib/bookmarks.svelte';
-	import { marks } from '$lib/marks.svelte';
+	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { localizeHref } from '$lib/href';
-	import { chapterLabel } from '$lib/reading';
+	import * as m from '$lib/paraglide/messages.js';
+	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 	import {
-		HIGHLIGHT_COLORS,
-		MODERN_EDITION,
-		baseEdition,
-		type Bookmark,
-		type Mark,
-		type WorkKind
-	} from '$lib/reading-schema';
-	import { createLimiter, NOTEBOOK_CONCURRENCY } from '$lib/limiter';
-	import { paragraphs, groupMarks, type Highlight as HL } from '$lib/markText';
-	import EmptyState from '$lib/components/EmptyState.svelte';
+		dailyStreak,
+		entryTime,
+		faithfulness,
+		groupByDay,
+		journalStats,
+		prayersByPerson,
+		visibleEntries,
+		type PrayerGroup,
+		type JournalFilter,
+		type JournalKind
+	} from '$lib/journal';
+	import { journal } from '$lib/journal.svelte';
+	import { localToday, shiftDay } from '$lib/streak';
+	import { localizeHref } from '$lib/href';
+	import PageHeader from '$lib/components/PageHeader.svelte';
+	import EntryComposer from '$lib/components/notebook/EntryComposer.svelte';
+	import JournalEntryCard from '$lib/components/notebook/JournalEntryCard.svelte';
+	import ReadingClippings from '$lib/components/notebook/ReadingClippings.svelte';
+	import PrayerList from '$lib/components/notebook/PrayerList.svelte';
+	import FaithfulnessTimeline from '$lib/components/notebook/FaithfulnessTimeline.svelte';
 
 	const t = i18n.t;
+	const locale = getLang();
 
-	// `edition` rides along so a highlight can be linked back into the text it
-	// was made on, and named when that is not the edition the page is in.
-	/** The locale union `localizeHref` accepts; `isAvailable` is its runtime check. */
-	type UiLocale = NonNullable<Parameters<typeof localizeHref>[1]>['locale'];
-
-	// One block per (chapter, EDITION). A chapter highlighted in both the
-	// original and the Modern English text is two blocks, because the quoted
-	// passages come from two different texts and only their own offsets index
-	// them — see `editionLabel` for how the second one is named.
-	type ChapterBlock = {
-		order: number;
-		edition: string;
-		title: string;
-		highlights: HL[];
-	};
-	type BookBlock = {
-		slug: string;
-		title: string;
-		author: string;
-		bookmarks: Bookmark[];
-		chapters: ChapterBlock[];
-	};
-
-	type SermonBlock = {
-		slug: string;
-		title: string;
-		author: string;
-		bookmarks: Bookmark[];
-		highlights: HL[];
-	};
-	// A biography block: the slug is the author's; the "title" is their name.
-	type BioBlock = { slug: string; name: string; bookmarks: Bookmark[]; highlights: HL[] };
-
-	let loading = $state(true);
-	let books = $state<BookBlock[]>([]);
-	let sermons = $state<SermonBlock[]>([]);
-	let bios = $state<BioBlock[]>([]);
-	const isEmpty = $derived(
-		!loading && books.length === 0 && sermons.length === 0 && bios.length === 0
-	);
-
-	// Which kinds of entry to show. The dashboard's Highlights / Notes / Bookmarks
-	// tiles deep-link here with ?view=…; 'all' is the plain notebook.
-	type NotebookView = 'all' | 'highlights' | 'notes' | 'bookmarks';
-	const isView = (v: string | null): v is NotebookView =>
-		v === 'all' || v === 'highlights' || v === 'notes' || v === 'bookmarks';
+	/**
+	 * The Notebook: the reader's own writing — notes, prayers, answered prayers —
+	 * on a ruled page, with everything they marked while reading pasted in below
+	 * ("From my reading": highlights, margin notes, bookmarks).
+	 *
+	 * The index tabs are views. The dashboard's Highlights / Notes / Bookmarks
+	 * tiles deep-link here with ?view=…, so those three ids keep their meaning:
+	 * 'notes' shows the reader's written notes AND the margin notes on passages.
+	 */
+	type ReadingView = 'all' | 'notes' | 'highlights' | 'bookmarks';
+	/**
+	 * Every tab, and what it shows: which slice of the reader's own writing
+	 * (`journal`), which of the reading clippings (`reading`), what a new entry
+	 * starts as, and what an empty page says. Prayers are the reader's own, so
+	 * the prayer tabs have no clippings; highlights and bookmarks no writing.
+	 */
+	const VIEWS = {
+		all: { journal: 'all', reading: 'all', kind: 'note', empty: 'notebook.emptyJournal' },
+		notes: { journal: 'notes', reading: 'notes', kind: 'note', empty: 'notebook.emptyJournal' },
+		prayers: { journal: 'prayers', reading: null, kind: 'prayer', empty: 'notebook.emptyPrayers' },
+		answered: { journal: 'answered', reading: null, kind: 'prayer', empty: 'notebook.emptyAnswered' },
+		highlights: { journal: null, reading: 'highlights', kind: 'note', empty: '' },
+		bookmarks: { journal: null, reading: 'bookmarks', kind: 'note', empty: '' }
+	} satisfies Record<
+		string,
+		{ journal: JournalFilter | null; reading: ReadingView | null; kind: JournalKind; empty: string }
+	>;
+	type NotebookView = keyof typeof VIEWS;
+	const isView = (v: string | null): v is NotebookView => v !== null && Object.hasOwn(VIEWS, v);
 	const initialView = $page.url.searchParams.get('view');
 	let view = $state<NotebookView>(isView(initialView) ? initialView : 'all');
-	const VIEWS: { id: NotebookView; label: string }[] = [
-		{ id: 'all', label: t('notebook.allColors') },
-		{ id: 'highlights', label: t('settings.statHighlights') },
-		{ id: 'notes', label: t('settings.statNotes') },
-		{ id: 'bookmarks', label: t('reader.bookmarks') }
-	];
 
-	// Live search across every book, chapter title, highlight, note and bookmark,
-	// plus an optional filter to one highlight colour.
 	let query = $state('');
 	let colorFilter = $state(''); // '' = all colours
-	const q = $derived(query.trim().toLowerCase());
-	const active = $derived(q.length > 0 || colorFilter !== '' || view !== 'all');
 
-	// Each view decides which lanes show. Bookmarks aren't highlights and carry no
-	// colour, so the bookmarks view drops the colour filter (and clears it on the
-	// way in); the notes view keeps only highlights that carry a note.
-	const showBookmarks = $derived(view === 'all' || view === 'bookmarks');
-	const showHighlights = $derived(view !== 'bookmarks');
-	const notesOnly = $derived(view === 'notes');
+	const stats = $derived(journalStats(journal.store));
+	const daily = $derived(dailyStreak(journal.store, localToday()));
+	const TABS = $derived<{ id: NotebookView; label: string; count?: number }[]>([
+		{ id: 'all', label: t('notebook.allColors') },
+		{ id: 'notes', label: t('settings.statNotes'), count: stats.notes },
+		{ id: 'prayers', label: t('notebook.tabPrayers'), count: stats.prayers },
+		{ id: 'answered', label: t('notebook.tabAnswered'), count: stats.answered },
+		{ id: 'highlights', label: t('settings.statHighlights') },
+		{ id: 'bookmarks', label: t('reader.bookmarks') }
+	]);
+
+	const journalFilter = $derived<JournalFilter | null>(VIEWS[view].journal);
+	const readingView = $derived<ReadingView | null>(VIEWS[view].reading);
+	const newKind = $derived<JournalKind>(VIEWS[view].kind);
+	// The clippings fetch every highlighted chapter, so they load the first time
+	// a reading tab is open — never for a reader who stays on the prayer list —
+	// and then stay mounted (hidden) so switching tabs doesn't fetch again.
+	let clippingsLoaded = $state(!isView(initialView) || VIEWS[initialView].reading !== null);
+
+	const q = $derived(query.trim());
+
+	// The Prayers tab reads as a prayer list, by person, until the reader opens
+	// one person's prayers (or asks for them by date).
+	let prayerLayout = $state<'person' | 'date'>('person');
+	// The Answered tab opens on the faithfulness timeline; "By date" has the cards.
+	let answeredLayout = $state<'timeline' | 'date'>('timeline');
+	const record = $derived(view === 'answered' ? faithfulness(journal.store, q) : null);
+	const showTimeline = $derived(view === 'answered' && answeredLayout === 'timeline');
+	/** One person's prayers, opened from their card; null = everyone. */
+	let personFilter = $state<string | null>(null);
+	const byPerson = $derived(view === 'prayers' && prayerLayout === 'person' && personFilter === null);
+	const personCards = $derived(byPerson ? prayersByPerson(journal.store, q) : []);
+
+	const entries = $derived.by(() => {
+		if (!journalFilter) return [];
+		const list = visibleEntries(journal.store, journalFilter, q);
+		if (view !== 'prayers' || personFilter === null) return list;
+		const who = personFilter.toLowerCase();
+		return list.filter((e) => e.person.trim().toLowerCase() === who);
+	});
+
+	// "+ Prayer" on a person's card: a composer already addressed to them.
+	let prefill = $state<{ person: string; group: PrayerGroup | '' } | undefined>(undefined);
+	let composerKey = $state(0);
+	function prayFor(person: string, group: PrayerGroup | '') {
+		prefill = { person, group };
+		composerKey += 1;
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+	const days = $derived(groupByDay(entries, (e) => entryTime(e, journalFilter ?? 'all')));
 
 	function setView(v: NotebookView) {
 		view = v;
+		if (VIEWS[v].reading) clippingsLoaded = true;
+		personFilter = null;
+		prefill = undefined;
 		if (v === 'bookmarks') colorFilter = '';
 		// Keep the view in the URL so it's shareable and survives the reload a
 		// language change triggers (mirrors Settings' ?section=).
@@ -102,579 +129,452 @@
 		else url.searchParams.set('view', v);
 		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
 	}
-	const filtered = $derived.by(() => {
-		if (!active) return books;
-		const hit = (s: string) => s.toLowerCase().includes(q);
-		return books
-			.map((bk) => {
-				const bookHit = !q || hit(bk.title) || hit(bk.author);
-				// Bookmarks aren't coloured, so a colour filter hides them; a view
-				// that isn't showing bookmarks hides them too.
-				const bookmarks =
-					!showBookmarks || colorFilter
-						? []
-						: bookHit
-							? bk.bookmarks
-							: bk.bookmarks.filter((b) => hit(b.snippet) || hit(b.title));
-				const chapters = showHighlights
-					? bk.chapters
-							.map((ch) => ({
-								...ch,
-								highlights: ch.highlights.filter(
-									(h) =>
-										(!colorFilter || h.color === colorFilter) &&
-										(!notesOnly || !!h.note) &&
-										(bookHit || hit(h.text) || hit(h.note ?? '') || hit(ch.title))
-								)
-							}))
-							.filter((ch) => ch.highlights.length)
-						: [];
-				return { ...bk, bookmarks, chapters };
-			})
-			.filter((bk) => bk.bookmarks.length || bk.chapters.length);
-	});
-	/** Bookmarks surviving the query — same rule the books lane uses. */
-	const matchingBookmarks = (
-		list: Bookmark[],
-		workHit: boolean,
-		hit: (s: string) => boolean
-	) =>
-		// Bookmarks aren't coloured, so a colour filter hides them; a view that
-		// isn't showing bookmarks hides them too.
-		!showBookmarks || colorFilter
-			? []
-			: workHit
-				? list
-				: list.filter((b) => hit(b.snippet) || hit(b.title));
 
-	/** Highlights surviving the colour / notes / query filters — the sermon and
-	 * biography lanes share it (their highlights are a flat list, unlike a book's
-	 * per-chapter ones, which stay inline). */
-	const matchingHighlights = (list: HL[], workHit: boolean, hit: (s: string) => boolean) =>
-		showHighlights
-			? list.filter(
-					(h) =>
-						(!colorFilter || h.color === colorFilter) &&
-						(!notesOnly || !!h.note) &&
-						(workHit || hit(h.text) || hit(h.note ?? ''))
-				)
-			: [];
-
-	const filteredSermons = $derived.by(() => {
-		if (!active) return sermons;
-		const hit = (s: string) => s.toLowerCase().includes(q);
-		return sermons
-			.map((sm) => {
-				const sermonHit = !q || hit(sm.title) || hit(sm.author);
-				return {
-					...sm,
-					bookmarks: matchingBookmarks(sm.bookmarks, sermonHit, hit),
-					highlights: matchingHighlights(sm.highlights, sermonHit, hit)
-				};
-			})
-			.filter((sm) => sm.bookmarks.length || sm.highlights.length);
-	});
-	const filteredBios = $derived.by(() => {
-		if (!active) return bios;
-		const hit = (s: string) => s.toLowerCase().includes(q);
-		return bios
-			.map((b) => {
-				const bioHit = !q || hit(b.name);
-				return {
-					...b,
-					bookmarks: matchingBookmarks(b.bookmarks, bioHit, hit),
-					highlights: matchingHighlights(b.highlights, bioHit, hit)
-				};
-			})
-			.filter((b) => b.bookmarks.length || b.highlights.length);
-	});
-	const hasContent = $derived(books.length > 0 || sermons.length > 0 || bios.length > 0);
-	const noMatches = $derived(
-		!loading &&
-			hasContent &&
-			active &&
-			filtered.length === 0 &&
-			filteredSermons.length === 0 &&
-			filteredBios.length === 0
-	);
-
-	// paragraphs() / groupMarks() (and the HL type) are shared with the in-reader
-	// notes drawer via $lib/markText.
-
-	/**
-	 * How a block's edition is named, or '' for the one the page is already in.
-	 *
-	 * A chapter highlighted in two editions is two blocks with the same number
-	 * and title, so without this they read as a duplicate rather than as the
-	 * original and the modern text.
-	 */
-	function editionLabel(edition: string): string {
-		if (edition === getLang()) return '';
-		if (edition === MODERN_EDITION) return t('reader.modernEdition');
-		return localeName(baseEdition(edition));
+	const today = new Date();
+	const todayKey = localToday(today);
+	const yesterdayKey = shiftDay(todayKey, -1);
+	const longDate = (at: number | Date) =>
+		new Date(at).toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+	function dayLabel(day: string, at: number): string {
+		if (day === todayKey) return t('plans.today');
+		if (day === yesterdayKey) return t('notebook.yesterday');
+		return longDate(at);
 	}
 
-	/**
-	 * A link into the EDITION the highlight was made in, not the page's.
-	 *
-	 * Without this the notebook sends the reader to a text their highlight is
-	 * not in — the modern edition needs its query flag, and a highlight made in
-	 * another language belongs to that language's pages. An edition whose
-	 * language the UI does not carry falls back to the current locale rather
-	 * than building a URL for a locale that does not route.
-	 */
-	function editionHref(path: string, edition: string): string {
-		const modern = edition === MODERN_EDITION;
-		const withEdition = modern ? `${path}${path.includes('?') ? '&' : '?'}edition=modern` : path;
-		const locale = modern ? 'en' : baseEdition(edition);
-		// `isAvailable` IS the check the type wants; a content language can be
-		// added in the admin without a frontend deploy, so the set of editions is
-		// wider than the compiled locales and this cannot be proven statically.
-		return langStore.isAvailable(locale)
-			? localizeHref(withEdition, { locale: locale as UiLocale })
-			: localizeHref(withEdition);
-	}
-
-	// Every fetch below is wrapped in its own try/catch and every failure is the
-	// same one: the reader is offline. A highlight still links through to where
-	// it was made, it just can't show its own text — so one unreachable chapter
-	// degrades that card, never the page. That per-item tolerance is also what
-	// makes the concurrency below safe: nothing here rejects.
-	onMount(async () => {
-		const lang = getLang();
-		const bms = bookmarks.all();
-		// Split by EDITION, and every edition is shown. The page used to ask for
-		// `lang` alone, which meant a highlight made on the Modern English text
-		// simply had no entry here — and before editions were tagged at all it
-		// was worse: the passage was sliced out of the ORIGINAL text, quoting the
-		// reader words they never highlighted. Each group is fetched in its own
-		// edition below, so every quotation comes from the text it was made on.
-		const allMarks = marks.allByEdition(lang);
-		type MarkEntry = (typeof allMarks)[number];
-		const mks = allMarks.filter((m) => m.kind === 'book');
-		// Bookmarks now exist on all three kinds, so each lane takes its own —
-		// and each lane's membership is the UNION of what was highlighted and
-		// what was bookmarked. Keying a lane on highlights alone would drop a
-		// sermon someone bookmarked and never highlighted, which is the whole
-		// point of a bookmark: the place you meant to come back to.
-		const bmOf = (kind: WorkKind) => bms.filter((b) => b.kind === kind);
-		const bookBms = bmOf('book');
-		const sermonBms = bmOf('sermon');
-		const bioBms = bmOf('bio');
-		const slugs = [...new Set([...bookBms.map((b) => b.slug), ...mks.map((m) => m.slug)])];
-
-		// The whole page used to load one request at a time, nested two deep:
-		// every book, then every highlighted chapter within it, then every
-		// sermon, then every biography. A reader with highlights across ten
-		// books waited out fifty sequential round-trips staring at an ellipsis,
-		// and the wait grew with exactly the history the page exists to show.
-		// Now the three sections load together under ONE ceiling for the page.
-		// The gate wraps each FETCH, never the per-book work that awaits one:
-		// a task holding a slot while it waits for a slot deadlocks, and the
-		// books lane is exactly that shape (a book, then its chapters). Bounding
-		// each lane separately instead would bound every call correctly and the
-		// page not at all — three lanes of six, one of them fanning out six
-		// chapters apiece, is forty-eight requests in flight.
-		const gate = createLimiter(NOTEBOOK_CONCURRENCY);
-
-		// A bookmark carries the title FROZEN at the moment it was saved, so a
-		// title corrected since then left it quoting text that appears nowhere
-		// else on the page. `live` reads the current one — per chapter for books,
-		// the work's own for sermons and biographies, which are single documents.
-		// It returns undefined when the fetch failed, and offline the snapshot is
-		// the only title there is.
-		const bookmarksFor = (
-			list: (Bookmark & { slug: string })[],
-			slug: string,
-			live: (b: Bookmark) => string | undefined
-		) =>
-			list
-				.filter((b) => b.slug === slug)
-				.sort(byPosition)
-				.map((b) => ({ ...b, title: live(b) || b.title }));
-
-		const loadBook = async (slug: string): Promise<BookBlock> => {
-			let book: BookDetail | null = null;
-			try {
-				book = await gate(() => getBook(slug, lang));
-			} catch {
-				/* offline — fall back to slug/order labels */
-			}
-			const chapterTitle = (order: number) => book?.chapters.find((c) => c.order === order)?.title;
-
-			const chapters = await Promise.all(
-				mks
-					.filter((m) => m.slug === slug)
-					.sort((a, b) => a.order - b.order || a.edition.localeCompare(b.edition))
-					.map(async ({ order, edition, marks: ms }): Promise<ChapterBlock> => {
-						let paras: string[] = [];
-						try {
-							// The chapter in THIS group's edition, not the page's. That is
-							// the whole fix: `getChapter(slug, order, 'en-modern')` is how
-							// the reader loads the modern text, and its characters are the
-							// ones these offsets index.
-							const chapter = await gate(() => getChapter(slug, order, edition));
-							paras = paragraphs(chapter.body_html);
-						} catch {
-							/* offline — the highlight still links through, just without its text */
-						}
-						return {
-							order,
-							edition,
-							title: chapterTitle(order) || `${order}`,
-							highlights: groupMarks(paras, ms, edition)
-						};
-					})
-			);
-
-			return {
-				slug,
-				title: book?.title || slug,
-				author: book?.author.name || '',
-				bookmarks: bookmarksFor(bookBms, slug, (b) => chapterTitle(b.order)),
-				chapters
-			};
-		};
-
-		/** Every slug of `kind` that was highlighted or bookmarked, once each. */
-		const slugsOf = (kind: WorkKind, bookmarked: (Bookmark & { slug: string })[]) => [
-			...new Set([
-				...allMarks.filter((m) => m.kind === kind).map((m) => m.slug),
-				...bookmarked.map((b) => b.slug)
-			])
-		];
-		/** Every edition this work was highlighted in, each with its own marks. */
-		const editionsFor = (kind: WorkKind, slug: string): MarkEntry[] =>
-			allMarks
-				.filter((m) => m.kind === kind && m.slug === slug)
-				.sort((a, b) => a.edition.localeCompare(b.edition));
-
-		// Sermon marks and bookmarks (device-local, keyed by sermon slug — no chapters).
-		//
-		// One fetch per EDITION highlighted, so each passage is sliced from the
-		// text it was measured on. A work read in one edition — nearly all of
-		// them — is one fetch, exactly as before; the metadata is taken from the
-		// page's own edition when that is among them, else from whichever
-		// response arrived, so a title is still shown.
-		const loadSermon = async (slug: string): Promise<SermonBlock> => {
-			const editions = editionsFor('sermon', slug);
-			const wanted = editions.length ? editions : [{ edition: lang, marks: [] as Mark[] }];
-			const parts = await Promise.all(
-				wanted.map(async ({ edition, marks: ms }) => {
-					try {
-						const sermon = await gate(() => getSermon(slug, edition));
-						return {
-							edition,
-							title: sermon.title,
-							author: sermon.author_name,
-							highlights: groupMarks(paragraphs(sermon.body_html), ms, edition)
-						};
-					} catch {
-						/* offline — the saved place still links through, just without its text */
-						return { edition, title: '', author: '', highlights: groupMarks([], ms, edition) };
-					}
-				})
-			);
-			const named = parts.find((p) => p.edition === lang && p.title) ?? parts.find((p) => p.title);
-			return {
-				slug,
-				title: named?.title || slug,
-				author: named?.author || '',
-				bookmarks: bookmarksFor(sermonBms, slug, () => named?.title),
-				highlights: parts.flatMap((p) => p.highlights)
-			};
-		};
-
-		// Biographies (kind 'bio'; the slug names the author). Per edition, for
-		// the same reason as sermons above.
-		const loadBio = async (slug: string): Promise<BioBlock> => {
-			const editions = editionsFor('bio', slug);
-			const wanted = editions.length ? editions : [{ edition: lang, marks: [] as Mark[] }];
-			const parts = await Promise.all(
-				wanted.map(async ({ edition, marks: ms }) => {
-					try {
-						const a = await gate(() => getAuthor(slug, edition));
-						return { edition, name: a.name, highlights: groupMarks(paragraphs(a.bio_html), ms, edition) };
-					} catch {
-						/* offline — the saved place still links through, just without its text */
-						return { edition, name: '', highlights: groupMarks([], ms, edition) };
-					}
-				})
-			);
-			const named = parts.find((p) => p.edition === lang && p.name) ?? parts.find((p) => p.name);
-			return {
-				slug,
-				name: named?.name || slug,
-				bookmarks: bookmarksFor(bioBms, slug, () => named?.name),
-				highlights: parts.flatMap((p) => p.highlights)
-			};
-		};
-
-		const [bookBlocks, sermonBlocks, bioBlocks] = await Promise.all([
-			Promise.all(slugs.map(loadBook)),
-			Promise.all(slugsOf('sermon', sermonBms).map(loadSermon)),
-			Promise.all(slugsOf('bio', bioBms).map(loadBio))
-		]);
-
-		books = bookBlocks.sort((a, b) => a.title.localeCompare(b.title));
-		sermons = sermonBlocks.sort((a, b) => a.title.localeCompare(b.title));
-		bios = bioBlocks.sort((a, b) => a.name.localeCompare(b.name));
-
-		loading = false;
-	});
+	const emptyMessage = $derived(t(VIEWS[view].empty));
 </script>
 
 <svelte:head><title>{t('notebook.title')} — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
-{#snippet browseLibrary()}
-	<a class="btn btn-primary inline-block" href={localizeHref('/books')}>{t('notebook.browse')}</a>
-{/snippet}
-
 <div class="page-col px-5 py-10">
-	<header class="mb-8">
-		<p class="eyebrow mb-2 text-accent">Ochorus</p>
-		<h1 class="text-h1">{t('notebook.title')}</h1>
-		<p class="mt-2 text-body text-muted">{t('notebook.subtitle')}</p>
-	</header>
-
-	{#if loading}
-		<p class="text-body text-muted">…</p>
-	{:else if isEmpty}
-		<!-- The empty Notebook is the one place a reader has nothing to act on, so
-		     it is the one place that most needs a way back to the books. -->
-		<EmptyState message={t('notebook.empty')} action={browseLibrary} />
-	{:else}
-		<!-- What to show: all, or just one kind. The dashboard's Highlights / Notes
-		     / Bookmarks tiles deep-link straight to one of these via ?view=…. -->
-		<div class="mb-4 flex flex-wrap items-center gap-2" role="group" aria-label={t('notebook.filterType')}>
-			{#each VIEWS as v (v.id)}
+	<div class="notebook">
+		<!-- The index tabs along the top edge of the page. -->
+		<div class="tabs" role="group" aria-label={t('notebook.filterType')}>
+			{#each TABS as tab (tab.id)}
 				<button
-					class="rounded-full border px-3 py-1 text-small"
-					class:border-accent={view === v.id}
-					class:text-accent={view === v.id}
-					class:border-border={view !== v.id}
-					class:text-muted={view !== v.id}
-					onclick={() => setView(v.id)}
-					aria-pressed={view === v.id}
+					class="tab tab-{tab.id}"
+					class:active={view === tab.id}
+					aria-pressed={view === tab.id}
+					onclick={() => setView(tab.id)}
 				>
-					{v.label}
+					{tab.label}{#if tab.count}<span class="count">{tab.count}</span>{/if}
 				</button>
 			{/each}
 		</div>
-		<div class="mb-6 flex flex-wrap items-center gap-3">
+
+		<div class="paper">
+			<div class="paper-head">
+				<PageHeader title={t('notebook.title')} tagline={t('notebook.subtitle')} />
+				<p class="today text-small">{longDate(today)}</p>
+			</div>
+
+			{#if record && record.answered > 0}
+				<p class="praise">
+					✦ {record.answered === 1 ? t('notebook.praiseOne') : m.notebook_praise_many({ n: String(record.answered) })}
+				</p>
+				<!-- The record at a glance: answered, still praying, how long answers take. -->
+				<dl class="tiles">
+					<div class="tile">
+						<dt>{t('notebook.tabAnswered')}</dt>
+						<dd>{record.answered}</dd>
+					</div>
+					<div class="tile">
+						<dt>{t('notebook.statPraying')}</dt>
+						<dd>{record.praying}</dd>
+					</div>
+					<div class="tile">
+						<dt>{t('notebook.statAvgDays')}</dt>
+						<dd>{record.avgDays ?? '—'}</dd>
+					</div>
+				</dl>
+			{/if}
+
+			{#if view === 'all' || view === 'prayers'}
+				<!-- The daily prayer: a few guided minutes, and the days kept in a row. -->
+				<a class="daily-card" href={localizeHref('/notebook/today')}>
+					<span class="daily-sun" aria-hidden="true">☀</span>
+					<span class="min-w-0 grow">
+						<span class="block font-semibold text-text">{t('notebook.dailyTitle')}</span>
+						<span class="block text-small text-muted">
+							{#if daily.doneToday}✓ {t('notebook.dailyDone')}{:else}{t('notebook.dailyIntro')}{/if}
+						</span>
+					</span>
+					{#if daily.streak}
+						<span class="daily-streak text-small"><span aria-hidden="true" class="me-1">🔥</span>{daily.streak}</span>
+					{/if}
+					<span class="btn btn-sm" class:btn-primary={!daily.doneToday}>
+						{daily.doneToday ? t('notebook.dailyAgain') : t('notebook.dailyBegin')}
+					</span>
+				</a>
+			{/if}
+
 			<input
 				type="search"
 				bind:value={query}
 				placeholder={t('notebook.search')}
 				aria-label={t('notebook.search')}
-				class="field grow"
+				class="field mb-6 w-full"
 			/>
-			<!-- Colours only make sense where highlights show; the bookmarks view has
-			     none, so the swatch row drops out there. -->
-			{#if view !== 'bookmarks'}
-				<div class="flex items-center gap-2" role="group" aria-label={t('notebook.filterColor')}>
-					<button
-						class="rounded-full border px-2.5 py-1 text-small"
-						class:border-accent={colorFilter === ''}
-						class:text-accent={colorFilter === ''}
-						class:border-border={colorFilter !== ''}
-						class:text-muted={colorFilter !== ''}
-						onclick={() => (colorFilter = '')}
-						aria-pressed={colorFilter === ''}
-					>
-						{t('notebook.allColors')}
-					</button>
-					{#each HIGHLIGHT_COLORS as color (color)}
-						<button
-							class="hl-swatch"
-							data-color={color}
-							class:active={colorFilter === color}
-							onclick={() => (colorFilter = colorFilter === color ? '' : color)}
-							aria-pressed={colorFilter === color}
-							aria-label="{t('notebook.filterColor')}: {t(`reader.hl_${color}`)}"
-							title={t(`reader.hl_${color}`)}
-						></button>
-					{/each}
-				</div>
+
+			{#if journalFilter}
+				<section aria-label={t('notebook.myWriting')}>
+					<!-- Keyed on the kind so switching to the Prayers tab starts a prayer. -->
+					{#key `${newKind}:${composerKey}`}
+						<EntryComposer
+							kind={newKind}
+							initial={prefill ? { kind: 'prayer', ...prefill } : undefined}
+							onsave={(d) => {
+								journal.add(d);
+								prefill = undefined;
+							}}
+							oncancel={prefill
+								? () => {
+										prefill = undefined;
+										composerKey += 1;
+									}
+								: undefined}
+						/>
+					{/key}
+
+					{#if view === 'prayers'}
+						<div class="mt-6 flex flex-wrap items-center gap-3">
+							{#if personFilter !== null}
+								<button class="chip" onclick={() => (personFilter = null)}>
+									← {t('notebook.allPeople')}
+								</button>
+								<span class="text-small font-semibold text-text">{personFilter || t('notebook.forAnyone')}</span>
+							{:else}
+								<div class="seg" role="group" aria-label={t('notebook.prayerLayout')}>
+									<button
+										class:active={prayerLayout === 'person'}
+										aria-pressed={prayerLayout === 'person'}
+										onclick={() => (prayerLayout = 'person')}>{t('notebook.byPerson')}</button
+									>
+									<button
+										class:active={prayerLayout === 'date'}
+										aria-pressed={prayerLayout === 'date'}
+										onclick={() => (prayerLayout = 'date')}>{t('notebook.byDate')}</button
+									>
+								</div>
+							{/if}
+						</div>
+					{/if}
+
+					{#if view === 'answered' && stats.answered > 0}
+						<div class="mt-6 flex">
+							<div class="seg" role="group" aria-label={t('notebook.answeredLayout')}>
+								<button
+									class:active={answeredLayout === 'timeline'}
+									aria-pressed={answeredLayout === 'timeline'}
+									onclick={() => (answeredLayout = 'timeline')}>{t('notebook.timeline')}</button
+								>
+								<button
+									class:active={answeredLayout === 'date'}
+									aria-pressed={answeredLayout === 'date'}
+									onclick={() => (answeredLayout = 'date')}>{t('notebook.byDate')}</button
+								>
+							</div>
+						</div>
+					{/if}
+
+					{#if showTimeline && record?.months.length}
+						<FaithfulnessTimeline months={record.months} {locale} />
+					{:else if byPerson && personCards.length}
+						<PrayerList cards={personCards} {locale} onopen={(p) => (personFilter = p)} onpray={prayFor} />
+					{:else if entries.length === 0}
+						<p class="empty">{q ? t('notebook.no_matches') : emptyMessage}</p>
+					{:else}
+						{#each days as d (d.day)}
+							<h2 class="day">{dayLabel(d.day, d.at)}</h2>
+							<div class="entries">
+								{#each d.entries as e (e.id)}
+									<JournalEntryCard entry={e} {locale} />
+								{/each}
+							</div>
+						{/each}
+					{/if}
+				</section>
+			{/if}
+
+			{#if clippingsLoaded}
+				<section class="reading" class:solo={!journalFilter} hidden={!readingView} aria-labelledby="from-reading">
+					<div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+						<h2 id="from-reading" class="text-h2">{t('notebook.fromReading')}</h2>
+						<!-- Colours only make sense where highlights show. -->
+						{#if readingView !== 'bookmarks'}
+							<div class="flex items-center gap-2" role="group" aria-label={t('notebook.filterColor')}>
+								<button
+									class="chip"
+									class:active={colorFilter === ''}
+									onclick={() => (colorFilter = '')}
+									aria-pressed={colorFilter === ''}
+								>
+									{t('notebook.allColors')}
+								</button>
+								{#each HIGHLIGHT_COLORS as color (color)}
+									<button
+										class="hl-swatch"
+										data-color={color}
+										class:active={colorFilter === color}
+										onclick={() => (colorFilter = colorFilter === color ? '' : color)}
+										aria-pressed={colorFilter === color}
+										aria-label="{t('notebook.filterColor')}: {t(`reader.hl_${color}`)}"
+										title={t(`reader.hl_${color}`)}
+									></button>
+								{/each}
+							</div>
+						{/if}
+					</div>
+					<ReadingClippings view={readingView ?? 'all'} {query} {colorFilter} />
+				</section>
 			{/if}
 		</div>
-
-		{#if noMatches}
-			<EmptyState message={t('notebook.no_matches')} />
-		{/if}
-
-		{#each filtered as bk (bk.slug)}
-			<section class="mb-10">
-				<h2 class="text-h2">
-					<a href={localizeHref(`/books/${bk.slug}`)} class="hover:text-accent">{bk.title}</a>
-				</h2>
-				{#if bk.author}<p class="mb-3 text-small text-muted">{bk.author}</p>{/if}
-
-				{#if bk.bookmarks.length}
-					<h3 class="section-label mt-4">
-						🔖 {t('reader.bookmarks')}
-					</h3>
-					<ul class="space-y-2">
-						{#each bk.bookmarks as bm (bm.id)}
-							<li>
-								<a
-									href={localizeHref(`/books/${bk.slug}/${bm.order}?p=${bm.p}`)}
-									class="block rounded-sm border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
-								>
-									<span class="block text-body text-text">{bm.snippet}</span>
-									<span class="block text-small text-muted">{bm.title}</span>
-								</a>
-							</li>
-						{/each}
-					</ul>
-				{/if}
-
-				<!-- Keyed per (chapter, edition): `ch.order` alone is a duplicate key
-				     the moment one chapter carries highlights in two editions. -->
-				{#each bk.chapters as ch (`${ch.order}:${ch.edition}`)}
-					{#if ch.highlights.length}
-						{@const label = editionLabel(ch.edition)}
-						<h3 class="mb-2 mt-5 text-small font-semibold text-text">
-							{chapterLabel(ch.order, ch.title)}{#if label}<span class="ms-2 font-normal text-muted"
-									>· {label}</span
-								>{/if}
-						</h3>
-						<ul class="space-y-2">
-							{#each ch.highlights as hl (hl.id)}
-								<li>
-									<a
-										href={editionHref(`/books/${bk.slug}/${ch.order}?p=${hl.p}`, ch.edition)}
-										class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
-										style="border-inline-start-color: var(--hl-{hl.color})"
-									>
-										{#if hl.text}
-											<span class="block text-body italic text-text">“{hl.text}”</span>
-										{/if}
-										{#if hl.note}
-											<span class="mt-1 block text-small text-muted">📝 {hl.note}</span>
-										{/if}
-									</a>
-								</li>
-							{/each}
-						</ul>
-					{/if}
-				{/each}
-			</section>
-		{/each}
-
-		{#each filteredSermons as sm (sm.slug)}
-			<section class="mb-10">
-				<p class="eyebrow mb-1 text-accent">
-					{t('search.typeSermon')}
-				</p>
-				<h2 class="text-h2">
-					<a href={localizeHref(`/sermons/${sm.slug}`)} class="hover:text-accent">{sm.title}</a>
-				</h2>
-				{#if sm.author}<p class="mb-3 text-small text-muted">{sm.author}</p>{/if}
-
-				{#if sm.bookmarks.length}
-					<h3 class="section-label mt-4">
-						🔖 {t('reader.bookmarks')}
-					</h3>
-					<ul class="mb-4 space-y-2">
-						{#each sm.bookmarks as bm (bm.id)}
-							<li>
-								<a
-									href={localizeHref(`/sermons/${sm.slug}?p=${bm.p}`)}
-									class="block rounded-sm border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
-								>
-									<span class="block text-body text-text">{bm.snippet}</span>
-									<span class="block text-small text-muted">{bm.title}</span>
-								</a>
-							</li>
-						{/each}
-					</ul>
-				{/if}
-
-				<ul class="space-y-2">
-					<!-- Keyed with the edition, and labelled below: two editions'
-					     highlights share this one list. -->
-					{#each sm.highlights as hl (`${hl.edition}:${hl.id}`)}
-						{@const label = editionLabel(hl.edition)}
-						<li>
-							<a
-								href={editionHref(`/sermons/${sm.slug}?p=${hl.p}`, hl.edition)}
-								class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
-								style="border-inline-start-color: var(--hl-{hl.color})"
-							>
-								{#if hl.text}
-									<span class="block text-body italic text-text">“{hl.text}”</span>
-								{/if}
-								{#if hl.note}
-									<span class="mt-1 block text-small text-muted">📝 {hl.note}</span>
-								{/if}
-								{#if label}
-									<span class="mt-1 block text-micro text-muted">{label}</span>
-								{/if}
-							</a>
-						</li>
-					{/each}
-				</ul>
-			</section>
-		{/each}
-
-		{#each filteredBios as b (b.slug)}
-			<section class="mb-10">
-				<p class="eyebrow mb-1 text-accent">
-					{t('bios.eyebrow')}
-				</p>
-				<h2 class="text-h2">
-					<a href={localizeHref(`/authors/${b.slug}`)} class="hover:text-accent">{b.name}</a>
-				</h2>
-
-				{#if b.bookmarks.length}
-					<h3 class="section-label mt-4">
-						🔖 {t('reader.bookmarks')}
-					</h3>
-					<ul class="mb-4 space-y-2">
-						{#each b.bookmarks as bm (bm.id)}
-							<li>
-								<a
-									href={localizeHref(`/authors/${b.slug}?p=${bm.p}`)}
-									class="block rounded-sm border border-border bg-surface px-4 py-2.5 hover:border-accent hover:no-underline"
-								>
-									<span class="block text-body text-text">{bm.snippet}</span>
-									<span class="block text-small text-muted">{bm.title}</span>
-								</a>
-							</li>
-						{/each}
-					</ul>
-				{/if}
-
-				<ul class="mt-3 space-y-2">
-					<!-- Keyed with the edition, and labelled below: two editions'
-					     highlights share this one list. -->
-					{#each b.highlights as hl (`${hl.edition}:${hl.id}`)}
-						{@const label = editionLabel(hl.edition)}
-						<li>
-							<!-- ?p= like the book and sermon highlights above: the biography
-							     renders through the same Reader, which already jumps to the
-							     paragraph on arrival. Without it a biography highlight was the
-							     one kind that dropped the reader at the top of the page. -->
-							<a
-								href={editionHref(`/authors/${b.slug}?p=${hl.p}`, hl.edition)}
-								class="block rounded-sm border-s-2 bg-surface px-4 py-2.5 hover:no-underline"
-								style="border-inline-start-color: var(--hl-{hl.color})"
-							>
-								{#if hl.text}
-									<span class="block text-body italic text-text">“{hl.text}”</span>
-								{/if}
-								{#if hl.note}
-									<span class="mt-1 block text-small text-muted">📝 {hl.note}</span>
-								{/if}
-								{#if label}
-									<span class="mt-1 block text-micro text-muted">{label}</span>
-								{/if}
-							</a>
-						</li>
-					{/each}
-				</ul>
-			</section>
-		{/each}
-	{/if}
+	</div>
 </div>
+
+<style>
+	.notebook {
+		--margin-x: 3.25rem;
+		--rule-gap: 2rem;
+		/* The binding's hole column sits in the gutter before the margin line. */
+		--binding: 1.6rem;
+	}
+
+	/* ---- Index tabs ---------------------------------------------------- */
+	.tabs {
+		display: flex;
+		gap: 0.25rem;
+		padding-inline-start: calc(var(--margin-x) - 0.5rem);
+		overflow-x: auto;
+		scrollbar-width: none;
+		/* Tabs tuck under the paper's top edge by the border's width. */
+		margin-bottom: -1px;
+		position: relative;
+		z-index: 1;
+	}
+	.tabs::-webkit-scrollbar {
+		display: none;
+	}
+	.tab {
+		--tab-hue: var(--accent);
+		flex: none;
+		display: inline-flex;
+		align-items: baseline;
+		gap: 0.35rem;
+		padding: 0.5rem 0.9rem 0.45rem;
+		border: 1px solid var(--border);
+		border-bottom: none;
+		border-top: 3px solid color-mix(in srgb, var(--tab-hue) 55%, transparent);
+		border-radius: 8px 8px 0 0;
+		background: var(--surface-2);
+		color: var(--muted);
+		font-size: var(--fs-small);
+		font-weight: 600;
+		cursor: pointer;
+		transform: translateY(3px);
+		transition:
+			transform var(--duration-fast) ease,
+			color var(--duration-fast) ease;
+	}
+	.tab:hover {
+		color: var(--text);
+		transform: translateY(1px);
+	}
+	.tab.active {
+		background: var(--surface);
+		color: var(--text);
+		border-top-color: var(--tab-hue);
+		transform: none;
+		padding-bottom: calc(0.45rem + 1px);
+	}
+	.tab-prayers {
+		--tab-hue: var(--gold);
+	}
+	.tab-answered {
+		--tab-hue: var(--hl-green);
+	}
+	.tab-highlights {
+		--tab-hue: var(--hl-rose);
+	}
+	.tab-bookmarks {
+		--tab-hue: var(--hl-blue);
+	}
+
+	/* ---- The page ------------------------------------------------------ */
+	.paper {
+		position: relative;
+		padding-block: 2rem 3rem;
+		padding-inline: calc(var(--margin-x) + 1.25rem) 1.5rem;
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: 4px 10px 10px 4px;
+		box-shadow:
+			var(--shadow-card),
+			/* the edges of the pages beneath this one */ 3px 3px 0 -1px var(--surface-2),
+			3px 3px 0 0 var(--border),
+			6px 6px 0 -1px var(--surface-2),
+			6px 6px 0 0 var(--border);
+		min-height: 60vh;
+	}
+	:global([dir='rtl']) .paper {
+		border-radius: 10px 4px 4px 10px;
+	}
+	/* The red margin line. */
+	.paper::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		inset-inline-start: var(--margin-x);
+		width: 0;
+		border-inline-start: 1.5px solid color-mix(in srgb, var(--danger) 45%, transparent);
+		pointer-events: none;
+	}
+	/* Spiral binding: a punched hole in the page for each coil, and the wire
+	   loop itself standing proud of the page's edge. */
+	.paper::before {
+		content: '';
+		position: absolute;
+		top: 1.25rem;
+		bottom: 1.25rem;
+		inset-inline-start: calc(var(--binding) * -0.55);
+		width: calc(var(--binding) * 1.4);
+		background-image:
+			radial-gradient(
+				ellipse 42% 30% at 50% 50%,
+				transparent 62%,
+				color-mix(in srgb, var(--muted) 85%, transparent) 64% 88%,
+				transparent 92%
+			),
+			radial-gradient(circle at 72% 50%, var(--bg) 0 0.22rem, transparent 0.25rem);
+		background-size: 100% 1.5rem;
+		background-repeat: repeat-y;
+		pointer-events: none;
+	}
+
+	.paper-head {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0 1.5rem;
+		align-items: flex-start;
+	}
+	.today {
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--muted);
+		padding-top: 0.6rem;
+	}
+
+	.tiles {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.6rem;
+		margin-bottom: 1.25rem;
+	}
+	.tile {
+		padding: 0.7rem 0.85rem;
+		border-radius: var(--radius-sm);
+		background: var(--surface-2);
+	}
+	.tile dt {
+		font-size: var(--fs-micro);
+		color: var(--muted);
+	}
+	.tile dd {
+		font-family: var(--font-display);
+		font-size: var(--fs-h2);
+		font-weight: 600;
+		line-height: 1.2;
+		color: var(--text);
+	}
+	.praise {
+		margin: 0 0 1.25rem;
+		padding: 0.6rem 0.9rem;
+		border-radius: var(--radius-sm);
+		background: color-mix(in srgb, var(--hl-green) 10%, transparent);
+		color: color-mix(in srgb, var(--hl-green) 65%, var(--text));
+		font-family: var(--font-display);
+		font-style: italic;
+	}
+
+	.daily-card {
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		margin-bottom: 1.25rem;
+		padding: 0.85rem 1rem;
+		border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+		border-radius: var(--radius-sm);
+		background: color-mix(in srgb, var(--gold) 9%, var(--surface));
+		color: inherit;
+	}
+	.daily-card:hover {
+		text-decoration: none;
+		border-color: var(--gold);
+	}
+	.daily-sun {
+		flex: none;
+		font-size: var(--fs-h2);
+		color: var(--gold);
+	}
+	.daily-streak {
+		flex: none;
+		color: var(--warning);
+		font-weight: 700;
+	}
+	.day {
+		margin: 2.25rem 0 0.75rem;
+		font-family: var(--font-display);
+		font-size: var(--fs-small);
+		font-weight: 600;
+		font-style: italic;
+		letter-spacing: 0.02em;
+		color: var(--accent);
+		border-bottom: 1px solid var(--border);
+		padding-bottom: 0.25rem;
+	}
+	.entries {
+		display: grid;
+		gap: 1.75rem;
+	}
+	.empty {
+		margin-top: 1.5rem;
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--muted);
+		line-height: var(--rule-gap);
+	}
+
+	.reading {
+		margin-top: 3.5rem;
+		padding-top: 2rem;
+		/* A perforated tear line between the writing and the pasted-in clippings. */
+		border-top: 2px dashed var(--border-strong);
+	}
+	.reading.solo {
+		margin-top: 0;
+		padding-top: 0;
+		border-top: none;
+	}
+
+	@media (max-width: 640px) {
+		.notebook {
+			--margin-x: 1.75rem;
+			--binding: 1.2rem;
+		}
+		.paper {
+			padding-block: 1.5rem 2.5rem;
+			padding-inline: calc(var(--margin-x) + 0.85rem) 1rem;
+		}
+		.tabs {
+			padding-inline-start: 0.25rem;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.tab {
+			transition: none;
+			transform: none;
+		}
+	}
+</style>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
+	import { coverLayoutFor } from '$lib/coverLayouts';
 	import { scrimStrength } from '$lib/coverScrim';
 	import { coverStyleFor, scriptOf, volumeNumeral } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
@@ -162,6 +163,9 @@
 	const script = $derived(scriptOf(lang));
 	/** This book's place in its series, in its edition's digits; null outside one. */
 	const volume = $derived(volumeNumeral(book.slug, lang));
+	/** The layout a painting is composed in (`coverLayouts.ts`); null for the
+	 *  framed composition, and always null off a painting. */
+	const layout = $derived(isArt ? coverLayoutFor(book.author.slug, script) : null);
 </script>
 
 <!-- The cover's type. Identical over a painting, over a plate file and over the
@@ -239,7 +243,9 @@
 			onload={(e) => onLoaded(e.currentTarget as HTMLImageElement)}
 			onerror={() => (failedUrl = book.cover_url)}
 			use:whenComplete={source}
-			class="absolute inset-0 h-full w-full {needsMat ? 'object-contain' : 'object-cover'}"
+			class="cover-ground absolute inset-0 h-full w-full {needsMat
+				? 'object-contain'
+				: 'object-cover'}"
 		/>
 		{#if needsMat}
 			<!-- The mat: the same cover, cover-filled, blurred and dimmed, behind the
@@ -267,10 +273,17 @@
 			     chosen, because how much darkening a picture needs is a property of
 			     the picture — the library spans 0.30x to 1.00x, and one strength for
 			     all of them has to be the palest one's. -->
+			<!-- A layout's classes ride on the plate, beside the scrim they replace;
+			     `cover-ground` above is how a layout moves the painting into its
+			     window. The order matches `coverPlateMarkup`, which the parity gate
+			     compares against. -->
 			<div
-				class="cover-plate over-file"
-				class:over-art={isArt}
-				class:has-subtitle={!!book.subtitle}
+				class={[
+					'cover-plate over-file',
+					isArt && 'over-art',
+					book.subtitle && 'has-subtitle',
+					layout && ['has-layout', `cover-layout-${layout.layout}`, `cover-hue-${layout.hue}`]
+				]}
 				style={isArt ? `--scrim-strength: ${scrimStrength(book.slug)}` : undefined}
 				role="img"
 				aria-label={label}

@@ -5,12 +5,23 @@ import { bookmarkTarget, clearPending, clearSent, pendingAt, pendingRemovals } f
 import type { PlanState } from './planProgress.svelte';
 import type { SessionSync } from './sessionClock';
 import {
+	cleanStore,
+	fromServer,
+	applyServerJournal,
+	toServer,
+	type JournalEntry,
+	type JournalStore,
+	type ServerJournalEntry
+} from './journal';
+import {
 	PROGRESS_KEY,
 	MARKS_KEY,
 	FAVORITES_KEY,
 	ACTIVITY_KEY,
 	PLANS_KEY,
 	BOOKMARKS_KEY,
+	JOURNAL_KEY,
+	JOURNAL_DIRTY_KEY,
 	LAST_SYNC_KEY,
 	READING_DATA_KEYS,
 	SIGN_OUT_DATA_KEYS,
@@ -89,8 +100,17 @@ interface ServerState {
 	plan_progress?: ServerPlanProgress[];
 	/** The merge applied `removed` (an API with tombstones — see removals.ts). */
 	removed_applied?: boolean;
+	journal?: ServerJournalEntry[];
 }
 
+/**
+ * The most journal the sign-in merge carries, in serialized characters.
+ * Django rejects request bodies over 2.5MB (DATA_UPLOAD_MAX_MEMORY_SIZE) and
+ * that would fail the WHOLE merge — progress, highlights, everything — so the
+ * journal takes at most this share; what doesn't fit stays pending for the
+ * next merge.
+ */
+const MERGE_JOURNAL_CHARS = 1_000_000;
 
 /** A nullable server ISO datetime → epoch ms, or null (unset, or unparseable). */
 function msOrNull(s?: string | null): number | null {
@@ -379,6 +399,52 @@ class ReadingSync {
 		});
 	}
 
+	/** Journal entries the account hasn't confirmed: id → updatedAt written. */
+	#pendingJournal(): Record<string, number> {
+		return readJson<Record<string, number>>(JOURNAL_DIRTY_KEY, {});
+	}
+
+	#setPending(pending: Record<string, number>) {
+		try {
+			localStorage.setItem(JOURNAL_DIRTY_KEY, JSON.stringify(pending));
+		} catch {
+			/* storage full — the entry then just rides a later push again */
+		}
+	}
+
+	/** The account has these versions: stop owing them — unless the entry was
+	 *  edited again since, in which case the newer version is still owed. */
+	#confirmJournal(sent: JournalEntry[]) {
+		const pending = this.#pendingJournal();
+		for (const e of sent) if (pending[e.id] === e.updatedAt) delete pending[e.id];
+		this.#setPending(pending);
+	}
+
+	/**
+	 * Mirror a Notebook entry (a note or prayer, or its tombstone). The whole
+	 * entry rides every PUT and the server keeps the newest by `updatedAt`, so
+	 * debouncing per entry only coalesces keystroke-rapid saves. Every change is
+	 * recorded as owed first — signed out, offline, or a failed PUT — so the
+	 * sign-in merge carries exactly what the account is missing, not the whole
+	 * journal.
+	 */
+	pushJournal(e: JournalEntry) {
+		if (!browser) return;
+		this.#setPending({ ...this.#pendingJournal(), [e.id]: e.updatedAt });
+		if (!this.signedIn) return;
+		this.#debounce(`j:${e.id}`, () => {
+			apiFetch(`/api/reading/journal/${e.id}/`, {
+				method: 'PUT',
+				body: JSON.stringify(toServer(e))
+			})
+				.then(() => {
+					this.#confirmJournal([e]);
+					this.#markSynced();
+				})
+				.catch(() => {});
+		});
+	}
+
 	/** Mirror a plan's progress (started + completed days) to the account. */
 	pushPlan(slug: string, state: PlanState) {
 		if (!this.signedIn || !browser) return;
@@ -408,6 +474,23 @@ class ReadingSync {
 		const localFavorites = readJson<Record<string, number>>(FAVORITES_KEY, {});
 		const localBookmarks = readJson<BookmarksStore>(BOOKMARKS_KEY, {});
 		const localPlans = readJson<Record<string, PlanState>>(PLANS_KEY, {});
+		// Only what the account is owed, newest first, within the journal's share
+		// of the request (see MERGE_JOURNAL_CHARS). Tombstones ride too: a delete
+		// made offline must reach the account.
+		const pending = this.#pendingJournal();
+		const owed = Object.values(cleanStore(readJson<JournalStore>(JOURNAL_KEY, {})))
+			.filter((e) => e.id in pending)
+			.sort((a, b) => b.updatedAt - a.updatedAt);
+		const journalRows: ServerJournalEntry[] = [];
+		const journalSent: JournalEntry[] = [];
+		let journalChars = 0;
+		for (const e of owed) {
+			const row = toServer(e);
+			journalChars += JSON.stringify(row).length;
+			if (journalChars > MERGE_JOURNAL_CHARS && journalRows.length) break;
+			journalRows.push(row);
+			journalSent.push(e);
+		}
 		// Activity is a bare array, so read it directly (readJson spreads onto an
 		// object fallback, which would mangle an array).
 		let localActivity: string[] = [];
@@ -484,7 +567,8 @@ class ReadingSync {
 				plan_slug: slug,
 				started_at: p.startedAt,
 				done: Array.isArray(p.done) ? p.done : []
-			}))
+			})),
+			journal: journalRows
 		};
 
 		try {
@@ -506,6 +590,7 @@ class ReadingSync {
 			const serverRows = [...state.progress, ...state.marks];
 			const serverKnowsKinds = serverRows.some((r) => 'kind' in r);
 			if (sentSermonRows && serverRows.length > 0 && !serverKnowsKinds) return;
+			if (state.journal) this.#confirmJournal(journalSent);
 			this.#writeState(state);
 			this.#markSynced();
 		} catch {
@@ -616,6 +701,21 @@ class ReadingSync {
 				};
 			}
 			localStorage.setItem(PLANS_KEY, JSON.stringify(plans));
+		}
+		if (state.journal) {
+			const server: JournalStore = {};
+			for (const j of state.journal) {
+				const e = fromServer(j);
+				if (e) server[e.id] = e;
+			}
+			// Applied over what's on disk NOW rather than overwriting it: an entry
+			// typed while the request was in flight, or one that didn't fit this
+			// merge, is still owed to the account and keeps its local version.
+			const local = cleanStore(readJson<JournalStore>(JOURNAL_KEY, {}));
+			localStorage.setItem(
+				JOURNAL_KEY,
+				JSON.stringify(applyServerJournal(server, local, this.#pendingJournal()))
+			);
 		}
 		// Let open views know the cache changed underneath them.
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));

@@ -532,6 +532,7 @@ TOPICS = [
             "brave-for-god-4",
             "hurlbuts-life-of-christ",
             "rooted-1",
+            "rooted-2",
         ],
     ),
 ]

@@ -1012,3 +1012,384 @@ rgb(0 0 0 / 0.26) 0%,
 .cover-plate.over-art .brandmark {
 	opacity: 0.95;
 }
+
+/* ═══ LAYOUTS ═════════════════════════════════════════════════════════════════
+   A painting's cover in something other than the framed composition above.
+   WHICH layout, and which hue, is `coverLayouts.ts`; this is how each looks.
+
+   THE PAPER IS DRAWN OVER THE PAINTING, NOT BESIDE IT. Every layout below is
+   the same full-bleed ground as the framed cover with opaque panels laid over
+   it by the scrim's own pseudo-element, which a layout repurposes: the band,
+   the paper, the fade. So the type's legibility never depends on anything but
+   this file — the ink sits on paper this file paints. The one exception is the
+   ground's CROP: a layout that shows a window of the painting moves the image
+   into that window (`:has()` below), so the window shows the picture's centre
+   rather than whichever edge the panel happened to leave uncovered. A browser
+   without `:has()` shows the edge instead; nothing becomes illegible.
+
+   DARK INK, so no scrim. Each hue is a band colour, a paper and an ink, and
+   `coverLayouts.test.ts` holds them to contrast — the ink and the band-coloured
+   byline on paper, and the two layouts whose paper is translucent (`wash`,
+   `duotone`) at their worst case, over black.
+
+   A LAYOUT KEEPS THE AUTHOR'S FACE. The `.style-*` recipes still choose the
+   title's face, weight and size; a layout only moves the blocks and repaints
+   them. Where a layout's column is narrower than the framed one, the title
+   block is scaled with `zoom` rather than resized, so each recipe's own size
+   relationship survives. The recipes' white ornaments are SVGs with the ink
+   baked in, so a layout draws a plain bar in its band colour instead. */
+
+.cover-plate.over-art.has-layout::before {
+	opacity: 1;
+	background: none;
+}
+
+.cover-plate.over-art.has-layout .cover-type {
+	color: var(--c-ink);
+	padding: 0;
+	--mark-h: 9cqw;
+}
+
+.cover-plate.over-art.has-layout .cover-type::before,
+.cover-plate.over-art.has-layout .cover-type::after,
+.cover-plate.over-art.has-layout .cover-type .middle::before,
+.cover-plate.over-art.has-layout .cover-type .subtitle {
+	display: none;
+}
+
+.cover-plate.over-art.has-layout .cover-type .byline {
+	color: var(--c-band);
+	opacity: 1;
+	font-size: 3.4cqw;
+	letter-spacing: 0.22em;
+}
+
+.cover-plate.over-art.has-layout .cover-type .rule {
+	width: 10cqw;
+	height: 0.8cqw;
+	margin: 4cqw auto 0;
+	background: var(--c-band);
+	opacity: 1;
+}
+
+.cover-plate.over-art.has-layout .cover-type .volume {
+	border-color: currentColor;
+}
+
+.cover-plate.over-art.has-layout .cover-type .brandmark {
+	color: var(--c-band);
+	opacity: 1;
+}
+
+.cover-plate.over-art.has-layout .cover-type .brandmark svg {
+	height: var(--mark-h);
+}
+
+/* The mark where it sits on the painting rather than on paper. */
+.cover-plate.over-art.cover-layout-fade .cover-type .brandmark,
+.cover-plate.over-art.cover-layout-diagonal .cover-type .brandmark,
+.cover-plate.over-art.cover-layout-wash .cover-type .brandmark {
+	color: #fff;
+	filter: drop-shadow(0 0 1.2cqw rgb(0 0 0 / 0.55));
+}
+
+/* What several layouts share: the title before the byline (band, box,
+   diagonal — the framed order puts the byline first); the title block hung
+   from the byline with the mark pushed to the foot (fade, duotone, wash); type
+   ranged to the start edge (split, diagonal, duotone); no rule (box, rail). */
+.cover-plate.over-art:is(.cover-layout-band, .cover-layout-box, .cover-layout-diagonal) .cover-type .middle {
+	order: 1;
+	margin: 0;
+}
+.cover-plate.over-art:is(.cover-layout-band, .cover-layout-box, .cover-layout-diagonal) .cover-type .byline {
+	order: 2;
+}
+.cover-plate.over-art:is(.cover-layout-fade, .cover-layout-duotone, .cover-layout-wash) .cover-type .middle {
+	margin: 4cqw 0 auto;
+}
+.cover-plate.over-art:is(.cover-layout-split, .cover-layout-diagonal, .cover-layout-duotone) .cover-type {
+	text-align: start;
+}
+.cover-plate.over-art:is(.cover-layout-split, .cover-layout-diagonal, .cover-layout-duotone) .cover-type .rule {
+	margin: 4cqw 0 0;
+}
+.cover-plate.over-art:is(.cover-layout-box, .cover-layout-rail) .cover-type .rule {
+	display: none;
+}
+
+/* A layout shows its painting unshaded — and several of the grounds carry a
+   thin dark strip at an edge, a scan's border that the framed scrim hid. Cropped
+   a little past it; the frame's `overflow: hidden` (the card's box in the share
+   script) clips the rest, and a panel covers any spill into the paper. */
+.cover-ground:has(~ .cover-plate.has-layout) {
+	scale: 1.06;
+}
+
+/* ── band: a colour band with the mark, the title on paper, the painting below.
+   The band is 20cqw (15% of the 133.3cqw plate), the paper runs to 55%, and a
+   rule of the band colour closes it. */
+.cover-plate.over-art.cover-layout-band::before {
+	background: linear-gradient(
+		180deg,
+		var(--c-band) 0 15%,
+		var(--c-paper) 15% 55%,
+		var(--c-band) 55% 55.9%,
+		transparent 55.9%
+	);
+}
+.cover-ground:has(~ .cover-plate.cover-layout-band) {
+	top: 55.9%;
+	height: 44.1%;
+}
+.cover-plate.over-art.cover-layout-band .cover-type {
+	height: 73.3cqw;
+	padding: 20cqw 8cqw 0;
+	justify-content: center;
+	--mark-h: 11cqw;
+}
+.cover-plate.over-art.cover-layout-band .cover-type .byline {
+	margin-top: 4.5cqw;
+	color: var(--c-ink);
+}
+.cover-plate.over-art.cover-layout-band .cover-type .brandmark {
+	position: absolute;
+	top: 4.5cqw;
+	left: 0;
+	right: 0;
+	color: #fff;
+}
+.cover-plate.over-art.cover-layout-band .cover-type .brandmark svg {
+	margin-inline: auto;
+}
+
+/* ── box: the painting whole and unshaded, the title on a paper panel low on
+   the plate with a band-coloured top edge. */
+.cover-plate.over-art.cover-layout-box .cover-type {
+	inset: auto 8cqw 8cqw;
+	height: auto;
+	padding: 7cqw 6cqw 5.5cqw;
+	background:
+		linear-gradient(var(--c-band) 0 0) top / 100% 1.4cqw no-repeat,
+		var(--c-paper);
+	box-shadow: 0 2cqw 6cqw -2cqw rgb(0 0 0 / 0.4);
+	--mark-h: 7.5cqw;
+}
+.cover-plate.over-art.cover-layout-box .cover-type .middle {
+	zoom: 0.9;
+}
+.cover-plate.over-art.cover-layout-box .cover-type .byline {
+	margin-top: 3.5cqw;
+}
+.cover-plate.over-art.cover-layout-box .cover-type .brandmark {
+	order: 3;
+	margin-top: 4cqw;
+}
+
+/* ── split: the painting on the left, paper on the right, a band between. */
+.cover-plate.over-art.cover-layout-split::before {
+	background: linear-gradient(
+		90deg,
+		transparent 48%,
+		var(--c-band) 48% 49.6%,
+		var(--c-paper) 49.6%
+	);
+}
+.cover-ground:has(~ .cover-plate.cover-layout-split) {
+	right: auto;
+	width: 48%;
+}
+.cover-plate.over-art.cover-layout-split .cover-type {
+	left: 49.6%;
+	padding: 8cqw 5cqw 7cqw 6cqw;
+	--mark-h: 8cqw;
+}
+.cover-plate.over-art.cover-layout-split .cover-type .byline {
+	white-space: normal;
+	font-size: 3cqw;
+	letter-spacing: 0.16em;
+	line-height: 1.5;
+}
+.cover-plate.over-art.cover-layout-split .cover-type .middle {
+	margin: auto 0 0;
+	zoom: 0.78;
+}
+.cover-plate.over-art.cover-layout-split .cover-type .brandmark {
+	margin-block-start: 6cqw;
+	margin-inline: 0 auto;
+}
+
+/* ── fade: the title on open paper, the painting rising out of the page. The
+   paper is solid to 42% — past the foot of a three-line title — and gone by
+   60%. */
+.cover-plate.over-art.cover-layout-fade::before {
+	background: linear-gradient(180deg, var(--c-paper) 0 42%, transparent 60%);
+}
+.cover-ground:has(~ .cover-plate.cover-layout-fade) {
+	top: 30%;
+	height: 70%;
+}
+.cover-plate.over-art.cover-layout-fade .cover-type {
+	padding: 10cqw 8cqw 5cqw;
+}
+.cover-plate.over-art.cover-layout-fade .cover-type .middle {
+	zoom: 0.9;
+}
+
+/* ── diagonal: a slanted paper panel over the painting's lower half, with a
+   band-coloured edge. The gradient's angle is the slant — 14% of the plate's
+   height across its width — and its stops put the edge's midpoint at 45%. */
+.cover-plate.over-art.cover-layout-diagonal::before {
+	background: linear-gradient(
+		169.4deg,
+		transparent 0 45.6%,
+		var(--c-band) 45.6% 47.8%,
+		var(--c-paper) 47.8%
+	);
+}
+.cover-plate.over-art.cover-layout-diagonal .cover-type {
+	padding: 7cqw 8cqw 8cqw;
+}
+.cover-plate.over-art.cover-layout-diagonal .cover-type .brandmark {
+	order: -1;
+	margin-block-end: auto;
+	margin-inline: 0 auto;
+}
+.cover-plate.over-art.cover-layout-diagonal .cover-type .middle {
+	zoom: 0.92;
+}
+.cover-plate.over-art.cover-layout-diagonal .cover-type .byline {
+	margin-top: 4cqw;
+}
+
+/* ── duotone: the painting reprinted pale in the book's colour. A grey,
+   flattened print under a tint of the band — flattened so the tint can be
+   light enough for dark ink over the print's darkest shadow. */
+.cover-plate.over-art.cover-layout-duotone::before {
+	background: color-mix(in srgb, var(--c-band) 30%, var(--c-paper));
+	opacity: 0.62;
+}
+.cover-ground:has(~ .cover-plate.cover-layout-duotone) {
+	filter: grayscale(1) contrast(0.6) brightness(1.25);
+}
+.cover-plate.over-art.cover-layout-duotone .cover-type {
+	padding: 9cqw 8cqw 7cqw;
+}
+.cover-plate.over-art.cover-layout-duotone .cover-type .byline {
+	/* In ink, not the band colour: the tinted print under it is too dark in
+	   its shadows for a band-coloured line of small type. */
+	color: var(--c-ink);
+}
+.cover-plate.over-art.cover-layout-duotone .cover-type .middle {
+	zoom: 1.08;
+}
+.cover-plate.over-art.cover-layout-duotone .cover-type .brandmark {
+	margin-inline: auto 0;
+}
+
+/* ── wash: the painting full bleed, fading to paper at the top so the title
+   is dark ink — the framed scrim turned inside out. The only layout that keeps
+   the subtitle: it has the paper for it. */
+.cover-plate.over-art.cover-layout-wash::before {
+	background: linear-gradient(
+		180deg,
+		color-mix(in srgb, var(--c-paper) 96%, transparent) 0%,
+		color-mix(in srgb, var(--c-paper) 95%, transparent) 30%,
+		color-mix(in srgb, var(--c-paper) 78%, transparent) 55%,
+		color-mix(in srgb, var(--c-paper) 12%, transparent) 88%
+	);
+}
+.cover-plate.over-art.cover-layout-wash .cover-type {
+	padding: 10cqw 9cqw 7cqw;
+}
+.cover-plate.over-art.cover-layout-wash .cover-type .subtitle {
+	display: -webkit-box;
+	opacity: 1;
+}
+
+/* ── rail: a paper rail up the left edge, the title running up it, the
+   painting beside it at full brightness. Latin titles only —
+   `coverLayoutFor` gives a non-Latin edition the box instead. */
+.cover-plate.over-art.cover-layout-rail::before {
+	background: linear-gradient(
+		90deg,
+		var(--c-paper) 0 23%,
+		var(--c-band) 23% 24%,
+		transparent 24%
+	);
+}
+.cover-ground:has(~ .cover-plate.cover-layout-rail) {
+	left: 24%;
+	width: 76%;
+}
+.cover-plate.over-art.cover-layout-rail .cover-type {
+	right: 77%;
+	padding: 6cqw 0 5cqw;
+	align-items: center;
+	--mark-h: 5.5cqw;
+}
+.cover-plate.over-art.cover-layout-rail .cover-type .middle,
+.cover-plate.over-art.cover-layout-rail .cover-type .byline {
+	writing-mode: vertical-rl;
+	transform: rotate(180deg);
+}
+.cover-plate.over-art.cover-layout-rail .cover-type .middle {
+	flex: 1;
+	min-height: 0;
+	margin: 0;
+	zoom: 0.82;
+}
+.cover-plate.over-art.cover-layout-rail .cover-type .byline {
+	margin-top: 4cqw;
+	font-size: 2.8cqw;
+}
+.cover-plate.over-art.cover-layout-rail .cover-type .brandmark {
+	margin-top: 4cqw;
+}
+
+/* ── the hues. A band colour (the byline, the rules, the band itself), the
+   paper the type sits on, and the ink it is set in. */
+.cover-hue-oxblood {
+	--c-band: #8e3527;
+	--c-paper: #f4ece0;
+	--c-ink: #2a1d17;
+}
+.cover-hue-mauve {
+	--c-band: #7a4d6b;
+	--c-paper: #f5eff1;
+	--c-ink: #2b2130;
+}
+.cover-hue-teal {
+	--c-band: #2a6763;
+	--c-paper: #eef2ec;
+	--c-ink: #1c2a28;
+}
+.cover-hue-navy {
+	--c-band: #2f4b82;
+	--c-paper: #eff1f6;
+	--c-ink: #1b2233;
+}
+.cover-hue-ochre {
+	--c-band: #875c12;
+	--c-paper: #f7f0e1;
+	--c-ink: #2b2214;
+}
+.cover-hue-sage {
+	--c-band: #4e6a41;
+	--c-paper: #f1f3ea;
+	--c-ink: #1f2819;
+}
+.cover-hue-indigo {
+	--c-band: #463a88;
+	--c-paper: #f1eff8;
+	--c-ink: #221e33;
+}
+.cover-hue-rust {
+	--c-band: #9a4520;
+	--c-paper: #f8eee6;
+	--c-ink: #2d1c12;
+}
+.cover-hue-slate {
+	--c-band: #445663;
+	--c-paper: #eff2f4;
+	--c-ink: #1d2429;
+}
