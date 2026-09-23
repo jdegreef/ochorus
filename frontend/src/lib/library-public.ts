@@ -48,6 +48,13 @@ export interface BookSummary {
 	source_type: SourceType;
 	cover_color: string;
 	cover_url: string;
+	/**
+	 * This edition's volume in its series — the numeral its cover sets over the
+	 * title. Null outside a series and in an unordered one. Optional for the
+	 * same reason as `updated_at`, and for the resume cache, which holds cards
+	 * stored before the field existed: absent reads as "no numeral".
+	 */
+	series_position?: number | null;
 	chapter_count: number;
 	word_count: number | null;
 	/** Published topics this book belongs to (for the shelf's topic filter). */
@@ -81,6 +88,7 @@ export const COVER_BOOK_KEYS = [
 	'source_type',
 	'cover_color',
 	'cover_url',
+	'series_position',
 	'chapter_count',
 	'word_count'
 ] as const;

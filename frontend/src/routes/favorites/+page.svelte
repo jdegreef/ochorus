@@ -32,6 +32,7 @@
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import Bookshelf from '$lib/components/Bookshelf.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
+	import YearInBooks from '$lib/components/YearInBooks.svelte';
 	import AuthorTile from '$lib/components/AuthorTile.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
@@ -113,10 +114,14 @@
 	const planFavs = $derived(entriesOf('plan'));
 	const articleFavs = $derived(entriesOf('article'));
 	const quoteFavs = $derived(entriesOf('quote'));
-	const shelves = $derived.by(() => {
+	// One read of the reading positions per change, shared by the shelves and
+	// the year in books.
+	const progress = $derived.by(() => {
 		void progressTicks;
-		return buildShelves(Object.values(books), bookFavs, allProgress());
+		return allProgress();
 	});
+	const bookList = $derived(Object.values(books));
+	const shelves = $derived(buildShelves(bookList, bookFavs, progress));
 	const bookCount = $derived(
 		shelves.reading.length + shelves.toRead.length + shelves.finished.length
 	);
@@ -138,6 +143,7 @@
 		[
 			{ id: 'reading', label: t('fav.shelfReading'), count: shelves.reading.length },
 			{ id: 'to-read', label: t('fav.shelfToRead'), count: shelves.toRead.length },
+			{ id: 'year', label: t('year.title'), count: -1 },
 			{ id: 'finished', label: t('fav.shelfFinished'), count: shelves.finished.length },
 			{ id: 'sermons', label: t('fav.groupSermons'), count: sermonFavs.length },
 			{ id: 'authors', label: t('fav.groupAuthors'), count: authorFavs.length },
@@ -145,7 +151,7 @@
 			{ id: 'plans', label: t('fav.groupPlans'), count: planFavs.length },
 			{ id: 'articles', label: t('fav.groupArticles'), count: articleFavs.length },
 			{ id: 'quotes', label: t('fav.groupQuotes'), count: quoteFavs.length }
-		].filter((j, i) => i < 3 || j.count > 0)
+		].filter((j, i) => i < 4 || j.count > 0)
 	);
 
 	// Quotes have no catalog to load up front (there's no "list all quotes"), so
@@ -224,7 +230,8 @@
 		<nav class="-mt-2 mb-2 flex flex-wrap gap-2" aria-label={t('fav.yourFavorites')}>
 			{#each jumps as j (j.id)}
 				<a href="#{j.id}" class="tag hover:no-underline"
-					>{j.label} <span class="text-muted">{j.count}</span></a
+					>{j.label}{#if j.count >= 0}
+						<span class="text-muted">{j.count}</span>{/if}</a
 				>
 			{/each}
 		</nav>
@@ -292,6 +299,7 @@
 				{/each}
 			</div>
 		{/if}
+		<YearInBooks {progress} books={bookList} />
 		<Bookshelf
 			{view}
 			id="finished"
