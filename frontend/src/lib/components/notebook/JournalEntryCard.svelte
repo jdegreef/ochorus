@@ -16,6 +16,7 @@
 	import EntryComposer from './EntryComposer.svelte';
 	import DictateButton from './DictateButton.svelte';
 	import ReminderPicker from './ReminderPicker.svelte';
+	import TestimonyDialog from './TestimonyDialog.svelte';
 	import { appendPhrase } from '$lib/dictation.svelte';
 
 	/**
@@ -41,6 +42,7 @@
 	/** What the card is showing: the entry, or one of its editors (never two at once). */
 	let mode = $state<'view' | 'edit' | 'answer' | 'update' | 'remind'>('view');
 	let answerText = $state('');
+	let sharing = $state(false);
 	let updateText = $state('');
 
 
@@ -245,6 +247,9 @@
 					<button class="btn btn-ghost btn-sm" onclick={() => (mode = 'update')}>+ {t('notebook.addUpdate')}</button>
 					<button class="btn btn-ghost btn-sm" onclick={() => (mode = 'remind')}><span aria-hidden="true" class="me-1">🔔</span>{t('notebook.remindMe')}</button>
 				{:else if entry.answeredAt}
+					<button class="btn btn-sm share-btn" onclick={() => (sharing = true)}
+						><span aria-hidden="true" class="me-1">✦</span>{t('notebook.testimonyShare')}</button
+					>
 					<button class="btn btn-ghost btn-sm" onclick={startAnswer}>{t('notebook.editAnswer')}</button>
 					<button class="btn btn-ghost btn-sm" onclick={() => journal.setAnswered(entry.id, false)}>
 						{t('notebook.stillPraying')}
@@ -255,6 +260,9 @@
 			</div>
 		{/if}
 	</article>
+	{#if sharing}
+		<TestimonyDialog {entry} {locale} onclose={() => (sharing = false)} />
+	{/if}
 {/if}
 
 <style>
@@ -455,6 +463,10 @@
 	.entry:hover .actions,
 	.entry:focus-within .actions {
 		opacity: 1;
+	}
+	.share-btn {
+		border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+		color: var(--warning);
 	}
 	.answer-btn {
 		border: 1px solid color-mix(in srgb, var(--hl-green) 45%, transparent);

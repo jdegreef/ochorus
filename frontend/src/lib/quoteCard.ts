@@ -54,25 +54,27 @@ export const CARD_SERIF =
  */
 export const quoteStyle = (script: string | null) => (script ? '400' : 'italic 600');
 
-const SIZE = 1080;
-const PAPER = '#f7f1e5';
-const INK = '#221c15';
-const MUTED = '#6e6358';
-const GOLD = '#b07d22';
+// The card's fixed paper palette and size — shared by every card Ochorus draws
+// (the quote card here, the testimony card in testimonyCard.ts).
+export const SIZE = 1080;
+export const PAPER = '#f7f1e5';
+export const INK = '#221c15';
+export const MUTED = '#6e6358';
+export const GOLD = '#b07d22';
 
 // Keep a card legible: an over-long selection is trimmed at a word boundary.
 const MAX_CHARS = 300;
 
-function trimQuote(q: string): string {
+export function trimQuote(q: string, max = MAX_CHARS): string {
 	const s = q.replace(/\s+/g, ' ').trim();
-	if (s.length <= MAX_CHARS) return s;
-	const cut = s.slice(0, MAX_CHARS);
+	if (s.length <= max) return s;
+	const cut = s.slice(0, max);
 	const lastSpace = cut.lastIndexOf(' ');
 	return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut).replace(/[,;:.\s]+$/, '') + '…';
 }
 
 /** Greedy word-wrap for the current ctx.font. */
-function wrapLines(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] {
+export function wrapLines(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] {
 	const words = text.split(' ');
 	const lines: string[] = [];
 	let line = '';
@@ -90,21 +92,23 @@ function wrapLines(ctx: CanvasRenderingContext2D, text: string, maxWidth: number
 }
 
 /** Pick the largest quote font size whose wrapped lines fit the target box. */
-function fitQuote(
+export function fitQuote(
 	ctx: CanvasRenderingContext2D,
 	text: string,
 	maxWidth: number,
 	maxHeight: number,
-	style: string
+	style: string,
+	largest = 70,
+	smallest = 30
 ): { lines: string[]; fontSize: number; lineHeight: number } {
-	for (let fs = 70; fs >= 30; fs -= 2) {
+	for (let fs = largest; fs >= smallest; fs -= 2) {
 		ctx.font = `${style} ${fs}px ${CARD_SERIF}`;
 		const lines = wrapLines(ctx, text, maxWidth);
 		const lineHeight = fs * 1.34;
 		if (lines.length * lineHeight <= maxHeight) return { lines, fontSize: fs, lineHeight };
 	}
-	ctx.font = `${style} 30px ${CARD_SERIF}`;
-	return { lines: wrapLines(ctx, text, maxWidth), fontSize: 30, lineHeight: 30 * 1.34 };
+	ctx.font = `${style} ${smallest}px ${CARD_SERIF}`;
+	return { lines: wrapLines(ctx, text, maxWidth), fontSize: smallest, lineHeight: smallest * 1.34 };
 }
 
 /**
@@ -134,7 +138,7 @@ const markPath = (() => {
 	};
 })();
 
-function drawMark(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, color: string) {
+export function drawMark(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, color: string) {
 	ctx.save();
 	ctx.translate(x, y);
 	ctx.fillStyle = color;
@@ -152,7 +156,7 @@ export const SCRIPT_FACE: Record<string, string> = {
 	cyrillic: 'PT Serif'
 };
 
-async function ensureFonts(script: string | null): Promise<void> {
+export async function ensureFonts(script: string | null): Promise<void> {
 	try {
 		const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
 		if (!fonts) return;
@@ -171,6 +175,40 @@ async function ensureFonts(script: string | null): Promise<void> {
 	}
 }
 
+/** The card's paper, and a hairline frame inset from its edge. */
+export function drawPaper(ctx: CanvasRenderingContext2D) {
+	ctx.fillStyle = PAPER;
+	ctx.fillRect(0, 0, SIZE, SIZE);
+	ctx.strokeStyle = 'rgba(34,28,21,0.14)';
+	ctx.lineWidth = 2;
+	ctx.strokeRect(48.5, 48.5, SIZE - 97, SIZE - 97);
+}
+
+/** The card's foot: a gold rule, the mark and wordmark, and the site. */
+export function drawFooter(ctx: CanvasRenderingContext2D, margin: number, site?: string) {
+	const footY = 946;
+	ctx.strokeStyle = 'rgba(176,125,34,0.5)';
+	ctx.lineWidth = 1.5;
+	ctx.beginPath();
+	ctx.moveTo(margin, footY);
+	ctx.lineTo(SIZE - margin, footY);
+	ctx.stroke();
+
+	drawMark(ctx, margin, footY + 16, 40, INK);
+	ctx.fillStyle = INK;
+	ctx.font = `700 30px ${CARD_SERIF}`;
+	ctx.textBaseline = 'alphabetic';
+	ctx.fillText('Ochorus', margin + 54, footY + 47);
+
+	if (site) {
+		ctx.fillStyle = MUTED;
+		ctx.font = '400 26px Georgia, serif';
+		ctx.textAlign = 'right';
+		ctx.fillText(site, SIZE - margin, footY + 47);
+		ctx.textAlign = 'left';
+	}
+}
+
 /** Render the card to a PNG Blob. */
 export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
 	const script = scriptOf(opts.language ?? 'en');
@@ -182,12 +220,7 @@ export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
 	const ctx = canvas.getContext('2d');
 	if (!ctx) throw new Error('canvas 2d unavailable');
 
-	// Background + inset frame.
-	ctx.fillStyle = PAPER;
-	ctx.fillRect(0, 0, SIZE, SIZE);
-	ctx.strokeStyle = 'rgba(34,28,21,0.14)';
-	ctx.lineWidth = 2;
-	ctx.strokeRect(48.5, 48.5, SIZE - 97, SIZE - 97);
+	drawPaper(ctx);
 
 	const margin = 132;
 	const maxWidth = SIZE - margin * 2;
@@ -226,28 +259,7 @@ export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
 		ctx.fillText(opts.source, margin, 910);
 	}
 
-	// Footer: gold rule, mark + wordmark on the left, site on the right.
-	const footY = 946;
-	ctx.strokeStyle = 'rgba(176,125,34,0.5)';
-	ctx.lineWidth = 1.5;
-	ctx.beginPath();
-	ctx.moveTo(margin, footY);
-	ctx.lineTo(SIZE - margin, footY);
-	ctx.stroke();
-
-	drawMark(ctx, margin, footY + 16, 40, INK);
-	ctx.fillStyle = INK;
-	ctx.font = `700 30px ${CARD_SERIF}`;
-	ctx.textBaseline = 'alphabetic';
-	ctx.fillText('Ochorus', margin + 54, footY + 47);
-
-	if (opts.site) {
-		ctx.fillStyle = MUTED;
-		ctx.font = '400 26px Georgia, serif';
-		ctx.textAlign = 'right';
-		ctx.fillText(opts.site, SIZE - margin, footY + 47);
-		ctx.textAlign = 'left';
-	}
+	drawFooter(ctx, margin, opts.site);
 
 	return await new Promise<Blob>((resolve, reject) => {
 		canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error('toBlob failed'))), 'image/png');
@@ -261,16 +273,22 @@ export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
  */
 export async function shareQuoteCard(opts: QuoteCardOptions): Promise<'shared' | 'downloaded'> {
 	const blob = await renderQuoteCard(opts);
-	const file = new File([blob], 'ochorus-quote.png', { type: 'image/png' });
+	return shareCardImage(blob, 'ochorus-quote.png', `"${trimQuote(opts.quote)}" — ${opts.author}`);
+}
+
+/**
+ * Hand a rendered card off: the native share sheet with the image file where
+ * supported (mobile), otherwise a PNG download. Returns 'shared' |
+ * 'downloaded' so the caller can reflect what happened.
+ */
+export async function shareCardImage(blob: Blob, filename: string, text: string): Promise<'shared' | 'downloaded'> {
+	const file = new File([blob], filename, { type: 'image/png' });
 	const nav = navigator as Navigator & {
 		canShare?: (data?: ShareData) => boolean;
 	};
 	if (nav.canShare && nav.canShare({ files: [file] })) {
 		try {
-			await navigator.share({
-				files: [file],
-				text: `"${trimQuote(opts.quote)}" — ${opts.author}`
-			});
+			await navigator.share({ files: [file], text });
 			return 'shared';
 		} catch {
 			/* user dismissed, or share failed — fall through to download */
@@ -279,7 +297,7 @@ export async function shareQuoteCard(opts: QuoteCardOptions): Promise<'shared' |
 	const url = URL.createObjectURL(blob);
 	const a = document.createElement('a');
 	a.href = url;
-	a.download = 'ochorus-quote.png';
+	a.download = filename;
 	document.body.appendChild(a);
 	a.click();
 	a.remove();
