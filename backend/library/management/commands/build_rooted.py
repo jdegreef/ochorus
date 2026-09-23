@@ -1,13 +1,15 @@
-"""Build a volume of *Rooted – 30 Days with God for Youth* from its manuscript.
+"""Build a volume of a house 30-day devotional series from its manuscript.
 
-A house-written devotional series for readers aged 9–12: six books of thirty
-days each, every day a BSB Scripture, a short teaching, "Think about it" /
-"Try this", and a prayer. Each book also has an Introduction and a Conclusion,
-so a volume is 32 chapters: the introduction, Day 1 … Day 30, the conclusion.
+*Rooted – 30 Days with God for Youth* and its sister series for girls,
+*Daughters of the King*: devotionals for readers aged 9–12, every day a BSB
+Scripture, a short teaching, "Think about it" / "Try this", and a prayer. Each
+book also has an Introduction and a Conclusion, so a volume is 32 chapters: the
+introduction, Day 1 … Day 30, the conclusion.
 
-The prose is committed as Markdown under ``data/rooted/rooted-<n>.md`` (Ochorus's
-own writing, nothing fetched) and converted here, so adding Book 2 is a new
-manuscript plus one ``VOLUMES`` entry. The Markdown is a closed subset — the
+The prose is committed as Markdown under ``data/<series>/<series>-<n>.md``
+(Ochorus's own writing, nothing fetched) and converted here, so adding a book is
+a new manuscript plus one entry in that series' volume table in ``SERIES``.
+The Markdown is a closed subset — the
 manuscripts are written to it, so anything else is an error, not a guess:
 
     ## Heading            starts a chapter (its title)
@@ -18,9 +20,11 @@ manuscripts are written to it, so anything else is an error, not a guess:
     # Heading, ---        structure for the manuscript's reader only; dropped
 
 Fixture-driven: ``seed_books`` creates the book on the next deploy from
-``fixtures/content/books/rooted-<n>.en.json``. Idempotent.
+``fixtures/content/books/<series>-<n>.en.json``. Idempotent. The series row
+itself lives in ``fixtures/content/series.json``.
 
     DJANGO_DEBUG=true uv run python manage.py build_rooted 1
+    DJANGO_DEBUG=true uv run python manage.py build_rooted 1 --series daughters-of-the-king
 """
 
 from __future__ import annotations
@@ -38,7 +42,7 @@ from library.ingest import clean_fragment, word_count
 from library.models import Author, Book, Chapter, Series
 from library.quote_marks import convert
 
-DATA_DIR = Path(__file__).resolve().parent / "data" / "rooted"
+DATA_DIR = Path(__file__).resolve().parent / "data"
 AUTHOR_SLUG = "ochorus-originals"
 DAYS = 30
 
@@ -49,7 +53,7 @@ ATTRIBUTION = (
 
 # Per volume: the Book fields. `sort_order` is fixed here rather than taken from
 # the dev DB's max, which holds only what has been built locally.
-VOLUMES: dict[int, dict[str, object]] = {
+ROOTED: dict[int, dict[str, object]] = {
     1: {
         "sort_order": 75,
         "publication_year": 2026,
@@ -451,6 +455,86 @@ VOLUMES: dict[int, dict[str, object]] = {
     },
 }
 
+DAUGHTERS_OF_THE_KING: dict[int, dict[str, object]] = {
+    1: {
+        "sort_order": 81,
+        "publication_year": 2026,
+        "title": "Daughters of the King – 30 Days with God for Girls – Book 1",
+        "subtitle": "Beloved: who you are, whose you are, and the brave girls who went before you",
+        "cover_url": "/covers/daughters-of-the-king-1.svg",
+        "cover_color": covers.ink_safe("#8e3b5a"),  # a deep rose
+        "description": (
+            "Thirty short daily devotions for girls aged 9 to 12 about who they "
+            "are as daughters of the King: worth that comes from God, not from "
+            "looks or popularity; escaping the comparison trap; friendship "
+            "without drama; and the brave girls of the Bible, from Miriam and "
+            "Deborah to Ruth, Abigail and Mary. Each day has a Bible verse, a "
+            "short teaching, a question, something to try and a prayer. The "
+            "first book of Daughters of the King."
+        ),
+        "about_html": (
+            "<p>Daughters of the King is an original Ochorus devotional series for "
+            "girls aged 9 to 12, a sister to our co-ed series Rooted. Its anchor "
+            "is God’s promise in 2 Corinthians 6:18: “I will be a Father to you, "
+            "and you will be My sons and daughters.” This first book is about "
+            "identity: who a girl is, and whose she is, when the world keeps "
+            "telling her she has to be prettier, more popular or more "
+            "impressive.</p>"
+            "<p>The first week hears what God says about her: called by name, "
+            "made to reflect Him, seen at the heart, beautiful with a gentle and "
+            "quiet spirit, His daughter, sung over with joy. The second takes "
+            "apart the comparison trap, with Leah the sister nobody noticed, "
+            "filters and feeds, contentment, and Elizabeth celebrating Mary. The "
+            "third is about friendship and words, from Ruth and Naomi to cliques, "
+            "drama and honey-sweet words. The fourth meets the brave girls of the "
+            "Bible: Miriam, Deborah, Abigail, Rahab, Naaman’s servant girl and "
+            "Mary. The fifth turns to a heart for God with Hannah, Mary of "
+            "Bethany, the woman with the perfume and Lydia.</p>"
+            "<p>Every day follows the same short pattern: a Scripture from the "
+            "Berean Standard Bible, a teaching, a question to think about, one "
+            "thing to try, and a prayer. Each week ends with a true story from "
+            "our Brave for God books: Amy Carmichael, Gladys Aylward, Corrie ten "
+            "Boom, Mary Slessor and Mary Jones. The book builds character and "
+            "faith through the women of Scripture and does not teach adult roles. "
+            "Many girls will enjoy reading it with a mother, grandmother or "
+            "mentor.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Daughters of the King about?",
+                "answer": "It is a devotional series for girls aged 9 to 12. Book 1 helps girls know who they are in God’s eyes: loved, chosen and made on purpose, with worth that comes from Him rather than from looks, popularity or comparison.",
+            },
+            {
+                "question": "How is it different from Rooted?",
+                "answer": "Rooted is for all young readers and covers the foundations of faith. Daughters of the King speaks to things girls often face in their own way, like comparison, appearance and friendship drama, and it tells the stories of women and girls in the Bible and in history who trusted God.",
+            },
+            {
+                "question": "Which women of the Bible does it include?",
+                "answer": "Leah, Elizabeth, Ruth and Naomi, Miriam, Deborah, Abigail, Rahab, the servant girl in Naaman’s house, Mary the mother of Jesus, Hannah, Mary and Martha, the woman who poured perfume on Jesus, and Lydia.",
+            },
+            {
+                "question": "Who are the true stories at the end of each week?",
+                "answer": "Five women from our Brave for God books: Amy Carmichael, Gladys Aylward, Corrie ten Boom, Mary Slessor and Mary Jones. Each short story shows a real woman who trusted God, and the full stories are in the Brave for God series.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+            {
+                "question": "What comes after Book 1?",
+                "answer": "Book 2 is about being brave: facing worry and anxiety, using your voice, serving and leading, and following Jesus like the women who stayed with Him to the cross and the empty tomb.",
+            },
+        ],
+    },
+}
+
+# The series a book can be built into, by `Series.slug`: each one's volumes are
+# `<slug>-<n>`, read from `data/<slug>/<slug>-<n>.md`.
+SERIES: dict[str, dict[int, dict[str, object]]] = {
+    "rooted": ROOTED,
+    "daughters-of-the-king": DAUGHTERS_OF_THE_KING,
+}
+
 _INLINE = [
     (re.compile(r"\*\*(.+?)\*\*"), r"<strong>\1</strong>"),
     (re.compile(r"\*(.+?)\*"), r"<em>\1</em>"),
@@ -560,29 +644,37 @@ def check_shape(titles: list[str]) -> None:
 
 
 class Command(BaseCommand):
-    help = "Build a volume of 'Rooted – 30 Days with God for Youth' from its manuscript (dev DB); then serialize the fixture."
+    help = "Build a volume of a house 30-day devotional series (Rooted by default) from its manuscript (dev DB); then serialize the fixture."
 
     def add_arguments(self, parser):
-        parser.add_argument("volume", type=int, choices=sorted(VOLUMES))
+        parser.add_argument("volume", type=int)
+        parser.add_argument("--series", default="rooted", choices=sorted(SERIES))
 
     @transaction.atomic
     def handle(self, *args, **opts):
-        volume = opts["volume"]
-        meta = VOLUMES[volume]
-        slug = f"rooted-{volume}"
+        series, volume = opts["series"], opts["volume"]
+        if volume not in SERIES[series]:
+            raise CommandError(f"{series} has no volume {volume}; known: {sorted(SERIES[series])}")
+        meta = SERIES[series][volume]
+        slug = f"{series}-{volume}"
         try:
             author = Author.objects.get(slug=AUTHOR_SLUG)
         except Author.DoesNotExist as exc:
             raise CommandError(f"author {AUTHOR_SLUG!r} not found — seed authors.json first.") from exc
 
-        chapters = parse((DATA_DIR / f"{slug}.md").read_text())
+        try:
+            series_row = Series.objects.get(slug=series)
+        except Series.DoesNotExist as exc:
+            raise CommandError(f"series {series!r} not found — load series.json first.") from exc
+
+        chapters = parse((DATA_DIR / series / f"{slug}.md").read_text())
         check_shape([title for title, _ in chapters])
 
         content = {
             "author": author,
             "attribution": ATTRIBUTION,
             "source_url": "",
-            "series": Series.objects.get(slug="rooted"),
+            "series": series_row,
             "series_position": volume,
             **meta,
         }

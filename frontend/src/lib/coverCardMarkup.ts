@@ -57,6 +57,22 @@ export interface CoverCardBook {
 	layout?: { layout: string; hue: string } | null;
 }
 
+/**
+ * Past this many characters a title steps down a size (`.long-title`).
+ *
+ * Every recipe sets its title at one size, tuned so the library's titles fit in
+ * three lines. A longer one ran to four, and the `.middle` block — centred
+ * between the byline and the mark by auto margins — grew up over the byline
+ * and clipped it. Counted in characters rather than measured because both
+ * renderers must decide it identically without a layout pass: the share-card
+ * script builds its markup as a string.
+ */
+export const LONG_TITLE_CHARS = 48;
+
+export function isLongTitle(title: string): boolean {
+	return title.length > LONG_TITLE_CHARS;
+}
+
 /** Escape text for an HTML attribute or a text node. */
 export function escapeHtml(value: string): string {
 	return value
@@ -85,6 +101,7 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	// being the exception is how the exception stops being noticed.
 	const classes = ['cover-type', `style-${escapeHtml(book.style)}`];
 	if (book.script) classes.push(`script-${escapeHtml(book.script)}`);
+	if (isLongTitle(book.title)) classes.push('long-title');
 	const lang = escapeHtml(book.lang);
 	// The byline takes NO `lang`, matching the component: an author's name is
 	// one row for every edition, so it is Latin on an Arabic cover too, and

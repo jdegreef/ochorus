@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-23: NEW English plan — daughters-of-the-king-book-1-30-days ("Daughters
+// of the King: 30 Days with God — Book 1"), a LAUNCH_PLANS entry over daughters-of-the-king-1 reading
+// chapters 2–31 (Day 1–30). English only. /plans re-crawls to bake the new card.
 // prerender refresh 2026-09-23: NEW English plan — school-of-prayer-31-days ("31 Days in the School
 // of Prayer"), a LAUNCH_PLANS entry over school-of-prayer reading chapters 2–32 (Lessons 1–31).
 // English only. /plans re-crawls to bake the new card.

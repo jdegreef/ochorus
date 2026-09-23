@@ -1412,3 +1412,12 @@ rgb(0 0 0 / 0.26) 0%,
 	--c-paper: #eff2f4;
 	--c-ink: #1d2429;
 }
+
+/* A title past `LONG_TITLE_CHARS` (coverCardMarkup.ts) steps down a size, for
+   every recipe and script. The class is doubled on purpose: the most specific
+   title rules above (`.cover-type.script-cyrillic.style-enlightenment .title`)
+   carry four classes, and this must outrank all of them — last in the file only
+   settles ties, and the container query adds no specificity. */
+.cover-type.long-title.long-title .title {
+	font-size: 8cqw;
+}
