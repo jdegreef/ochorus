@@ -378,7 +378,11 @@ def _ui_missing(code: str) -> int | None:
 
     try:
         row = json.loads(CATALOGUE_SUMMARY.read_text("utf-8"))["locales"].get(code)
-        return NO_CATALOGUE if row is None else len(row["missing"])
+        if row is None:
+            return NO_CATALOGUE
+        if not isinstance(row["missing"], list):
+            raise TypeError("missing must be a list of keys")
+        return len(row["missing"])
     except (OSError, ValueError, KeyError, TypeError, AttributeError):
         return None
 
