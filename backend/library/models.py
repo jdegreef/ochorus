@@ -305,6 +305,51 @@ class AuthorTranslation(models.Model):
 SERMON_CARD_DEFER = ("body_html", "body_text", "search_vector")
 
 
+class SeriesManager(models.Manager):
+    def get_by_natural_key(self, slug):
+        return self.get(slug=slug)
+
+
+class Series(models.Model):
+    """A named run of separate works that belong together — *Brave for God*,
+    *Rooted*, *The Key Teachings of …*.
+
+    One row per series, language-agnostic like Author: the identity is shared,
+    and each language's Book rows join it through ``Book.series``, so a language
+    holding two of four volumes has a two-volume series — there is no English
+    fallback here either.
+
+    Not an edition family. The full / teens / children / Modern English forms of
+    ONE work are tied by the slug convention (``serializers.sibling_editions``)
+    and never join a series; a series is DIFFERENT works. Nor an author's shelf:
+    *Key Teachings* spans authors, so a series belongs to no one.
+
+    Whether it is ORDERED is its members' fact, not a flag: a series whose books
+    carry ``series_position`` has a reading order (and a numeral on each cover);
+    one whose books leave it null is a collection. ``tests_fixture`` holds a
+    series to one or the other.
+    """
+
+    slug = models.SlugField(max_length=160, unique=True)
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    sort_order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    objects = SeriesManager()
+
+    class Meta:
+        ordering = ["sort_order", "title"]
+        verbose_name_plural = "series"
+
+    def natural_key(self):
+        return (self.slug,)
+
+    def __str__(self) -> str:
+        return self.title
+
+
 class BookManager(models.Manager):
     def get_by_natural_key(self, slug, language):
         return self.get(slug=slug, language=language)
@@ -364,6 +409,21 @@ class Book(models.Model):
     # there's no cover image.
     cover_color = models.CharField(max_length=9, blank=True)
 
+    # The series this edition belongs to, and its volume in it — the numeral a
+    # cover sets above its title. Per ROW, like cover_url: each language's
+    # edition joins on its own, so a translation that has not shipped yet is
+    # simply not in the series in that language. A null position inside a
+    # series means the series is an unordered collection (see `Series`).
+    # PROTECT: removing a series must be a decision about its books first.
+    series = models.ForeignKey(
+        Series,
+        null=True,
+        blank=True,
+        on_delete=models.PROTECT,
+        related_name="books",
+    )
+    series_position = models.PositiveSmallIntegerField(null=True, blank=True)
+
     sort_order = models.PositiveIntegerField(default=0)
     is_published = models.BooleanField(default=True)
 
@@ -377,6 +437,24 @@ class Book(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_book_slug_language"
+            ),
+            # Two editions of one language cannot both be volume 2. Rows with
+            # no position (a collection, or no series) are exempt: NULLs are
+            # distinct in a unique index. DEFERRED because seed_books saves a
+            # book at a time: renumbering a series (a new volume 1, a swap)
+            # passes through a moment where two rows share a number, and an
+            # immediate check would abort the deploy on it.
+            models.UniqueConstraint(
+                fields=["series", "language", "series_position"],
+                name="uniq_book_series_volume",
+                deferrable=models.Deferrable.DEFERRED,
+            ),
+            # A volume number means nothing outside a series, and counts from 1
+            # (the cover draws no ring for a missing one).
+            models.CheckConstraint(
+                condition=models.Q(series_position__isnull=True)
+                | models.Q(series__isnull=False, series_position__gte=1),
+                name="book_series_position_needs_series",
             ),
         ]
         indexes = [
@@ -395,7 +473,7 @@ class Book(models.Model):
     def natural_key(self):
         return (self.slug, self.language)
 
-    natural_key.dependencies = ["library.author"]
+    natural_key.dependencies = ["library.author", "library.series"]
 
     def __str__(self) -> str:
         return f"{self.title} ({self.language})"

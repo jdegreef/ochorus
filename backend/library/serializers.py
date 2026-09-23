@@ -299,6 +299,9 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "source_type",
             "cover_color",
             "cover_url",
+            # The volume numeral a cover sets over its title; null outside an
+            # ordered series. A column, so it costs the shelf no query.
+            "series_position",
             "chapter_count",
             "word_count",
             "topics",

@@ -19,6 +19,8 @@
   "cover_url": "/covers/art/key-teachings-of-richard-baxter.svg",
   "pdf_url": "",
   "cover_color": "#5b2f2a",
+  "series": ["key-teachings"],
+  "series_position": null,
   "sort_order": 35,
   "is_published": true,
   "created_at": "2026-09-18T04:34:09.977Z",

@@ -57,7 +57,7 @@ from library import english_audit
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, is_front_matter, word_count
 from library.management.commands.import_ochorus import _ends_sentence
-from library.models import Author, Book, Chapter
+from library.models import Author, Book, Chapter, Series
 from library.titlecase import recase_title
 
 DATA_DIR = Path(__file__).resolve().parent / "data" / "key-teachings"
@@ -492,6 +492,8 @@ class Command(BaseCommand):
             "attribution": work.attribution,
             "about_html": work.about_html,
             "cover_color": work.cover_color,
+            # A collection, not a reading order: no volume numeral.
+            "series": Series.objects.get(slug="key-teachings"),
             "cover_url": f"/covers/art/{work.slug}.svg",  # wordless tree ground
         }
         next_order = (Book.objects.aggregate(m=Max("sort_order"))["m"] or 0) + 1

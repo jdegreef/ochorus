@@ -5,6 +5,7 @@ natural-key format (no integer pks — see Stage 1 / ``tests_fixture``):
 
     content/
       authors.json                    all Author rows (low churn, shared)
+      series.json                     all Series rows (books join by natural key)
       books/<slug>.<language>.json    one Book row followed by its Chapters
       sermons/<slug>.<language>.json  one Sermon row
       articles/<slug>.<language>.json one Article row (no author, no chapters)
@@ -16,7 +17,7 @@ translation is one new file, not a 300-line splice into a 50 MB tail).
 
 LOAD ORDER MATTERS. Every FK here is NOT NULL, and Django's forward-reference
 deferral cannot bridge that — so ``ordered_fixture_paths()`` is the one source
-of truth for ordering (authors first, then books, sermons, plans) and
+of truth for ordering (authors and series first, then books, sermons, plans) and
 ``seed_if_empty`` passes ALL files to a single ``loaddata`` call in that order.
 Within a book file the Book row precedes its Chapters; within plans.json each
 Plan precedes its PlanDays.
@@ -34,6 +35,7 @@ from pathlib import Path
 CONTENT_DIR = Path(__file__).resolve().parent / "fixtures" / "content"
 
 AUTHORS_FILE = CONTENT_DIR / "authors.json"
+SERIES_FILE = CONTENT_DIR / "series.json"
 BOOKS_DIR = CONTENT_DIR / "books"
 SERMONS_DIR = CONTENT_DIR / "sermons"
 ARTICLES_DIR = CONTENT_DIR / "articles"
@@ -245,6 +247,10 @@ def ordered_fixture_paths() -> list[Path]:
     paths: list[Path] = []
     if AUTHORS_FILE.exists():
         paths.append(AUTHORS_FILE)
+    # Before books: `Book.series` is nullable, but a natural-key reference to a
+    # row loaddata has not seen yet still fails to resolve.
+    if SERIES_FILE.exists():
+        paths.append(SERIES_FILE)
     # Articles carry no FK, so their position here is free; grouped with the
     # other per-work directories for a reader of this file.
     for d in (BOOKS_DIR, SERMONS_DIR, ARTICLES_DIR):

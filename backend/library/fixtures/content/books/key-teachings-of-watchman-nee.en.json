@@ -19,6 +19,8 @@
   "cover_url": "/covers/art/key-teachings-of-watchman-nee.svg",
   "pdf_url": "",
   "cover_color": "#2a3a5e",
+  "series": ["key-teachings"],
+  "series_position": null,
   "sort_order": 36,
   "is_published": true,
   "created_at": "2026-09-18T04:34:10.398Z",

@@ -45,6 +45,7 @@ from library.content_fixtures import (
     AUTHORS_FILE,
     BOOKS_DIR,
     PLANS_FILE,
+    SERIES_FILE,
     SERMONS_DIR,
     authors_by_slug,
     load_all_rows,
@@ -89,6 +90,7 @@ EXPECTED_MODELS = {
     "library.article",
     "library.plan",
     "library.planday",
+    "library.series",
 }
 
 
@@ -118,7 +120,7 @@ def work_bodies() -> tuple[tuple[str, str], ...]:
     return tuple(
         (path.name, "".join(r["fields"].get("body_html", "") or "" for r in rows))
         for path, rows in files_by_path().items()
-        if path.name not in {"authors.json", "plans.json"}
+        if path.name not in {"authors.json", "series.json", "plans.json"}
     )
 
 
@@ -237,6 +239,7 @@ class FixtureIntegrityTests(SimpleTestCase):
         # silent last-write-wins, so only this check makes it loud.
         checks = {
             "library.author": lambda f: f["slug"],
+            "library.series": lambda f: f["slug"],
             "library.book": lambda f: (f["slug"], f.get("language", "en")),
             "library.sermon": lambda f: (f["slug"], f.get("language", "en")),
             "library.plan": lambda f: (f["slug"], f.get("language", "en")),
@@ -275,9 +278,18 @@ class FixtureIntegrityTests(SimpleTestCase):
             ("library.chapter", "book", book_keys),
             ("library.planday", "plan", plan_keys),
         ]
+        # Nullable, so a book outside every series carries no reference at all.
+        series_keys = {
+            (r["fields"]["slug"],) for r in self.by_model.get("library.series", [])
+        }
+        refs.append(("library.book", "series", series_keys))
         for model, field, valid in refs:
             dangling = sorted(
-                {tuple(r["fields"][field]) for r in self.by_model.get(model, [])}
+                {
+                    tuple(r["fields"][field])
+                    for r in self.by_model.get(model, [])
+                    if r["fields"].get(field) is not None
+                }
                 - valid
             )
             self.assertEqual(
@@ -310,12 +322,16 @@ class FixtureIntegrityTests(SimpleTestCase):
             ("library.chapter", "book", 2),
             ("library.planday", "plan", 2),
         ]
+        shapes.append(("library.book", "series", 1))
+        # Absent or null is a book in no series, which is well-formed.
+        nullable = {("library.book", "series")}
         for model, field, arity in shapes:
+            refs = [r["fields"].get(field) for r in self.by_model.get(model, [])]
+            if (model, field) in nullable:
+                refs = [ref for ref in refs if ref is not None]
             bad = [
-                r["fields"][field]
-                for r in self.by_model.get(model, [])
-                if not (isinstance(r["fields"][field], list)
-                        and len(r["fields"][field]) == arity)
+                ref for ref in refs
+                if not (isinstance(ref, list) and len(ref) == arity)
             ][:3]
             self.assertEqual(
                 bad, [],
@@ -333,6 +349,7 @@ class FixtureIntegrityTests(SimpleTestCase):
             "library.sermon": ("slug", "title", "author", "body_html"),
             "library.plan": ("slug", "title"),
             "library.planday": ("plan", "day", "book_slug", "chapter_order"),
+            "library.series": ("slug", "title"),
         }.items():
             for r in self.by_model.get(model, []):
                 missing = [k for k in required if k not in r["fields"]]
@@ -341,6 +358,75 @@ class FixtureIntegrityTests(SimpleTestCase):
                     f"{model} {r['fields'].get('slug', '?')}: missing required "
                     f"field(s) {missing}",
                 )
+
+
+class SeriesMembershipTests(SimpleTestCase):
+    """What a series means, held where a hand edit to one book file would break it.
+
+    The DB enforces two of these (a volume number is unique per series and
+    language, and needs a series); they are here as well so the break names the
+    file in CI rather than surfacing as an IntegrityError mid-deploy.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.series = {
+            r["fields"]["slug"] for r in all_rows() if r["model"] == "library.series"
+        }
+        cls.members = [
+            r["fields"] for r in all_rows()
+            if r["model"] == "library.book" and r["fields"].get("series")
+        ]
+
+    def test_volume_numbers_count_from_one(self):
+        # The DB's check constraint says the same; this names the file.
+        bad = sorted(
+            f["slug"] for f in self.members
+            if (pos := f.get("series_position")) is not None
+            and not (isinstance(pos, int) and pos >= 1)
+        )
+        self.assertEqual(bad, [], "a volume number must be a whole number from 1")
+
+    def test_a_position_needs_a_series(self):
+        stray = sorted(
+            f["slug"] for r in all_rows()
+            if r["model"] == "library.book"
+            and (f := r["fields"]).get("series_position") is not None
+            and not f.get("series")
+        )
+        self.assertEqual(stray, [], "a volume number outside any series means nothing")
+
+    def test_volume_numbers_are_unique_per_language(self):
+        seen = Counter(
+            (f["series"][0], f.get("language", "en"), f["series_position"])
+            for f in self.members if f.get("series_position") is not None
+        )
+        self.assertEqual(_dupes(seen), [], "two editions claim the same volume")
+
+    def test_a_series_is_ordered_or_not_throughout(self):
+        # Half-numbered is neither a reading order nor a collection: the covers
+        # would set a numeral on some volumes and not their neighbours.
+        kinds: dict[str, set[bool]] = {}
+        for f in self.members:
+            kinds.setdefault(f["series"][0], set()).add(
+                f.get("series_position") is not None
+            )
+        mixed = sorted(slug for slug, k in kinds.items() if len(k) > 1)
+        self.assertEqual(mixed, [], "series with some volumes numbered and some not")
+
+    def test_young_reader_editions_stay_out_of_series(self):
+        # An edition is the same work in another form; it joins its full text's
+        # family through the slug (see CLAUDE.md), never a series of its own.
+        editions = sorted(
+            f["slug"] for f in self.members
+            if f["slug"].endswith(("-children", "-teens"))
+        )
+        self.assertEqual(editions, [])
+
+    def test_every_series_has_a_book(self):
+        used = {f["series"][0] for f in self.members}
+        self.assertEqual(sorted(self.series - used), [], "a series with no books")
 
 
 class SeedFieldCoverageTests(SimpleTestCase):
@@ -363,9 +449,19 @@ class SeedFieldCoverageTests(SimpleTestCase):
         from library.models import Book
 
         expected = self._content_fields(
-            Book, exclude={"id", "author", "slug", "language", "created_at", "updated_at"}
+            Book,
+            exclude={"id", "author", "series", "slug", "language", "created_at", "updated_at"},
         )
         self.assertEqual(set(BOOK_FIELDS), expected)
+
+    def test_series_fields_cover_model(self):
+        from library.management.commands.seed_books import SERIES_FIELDS
+        from library.models import Series
+
+        expected = self._content_fields(
+            Series, exclude={"id", "slug", "created_at", "updated_at"}
+        )
+        self.assertEqual(set(SERIES_FIELDS), expected)
 
     def test_chapter_fields_cover_model(self):
         from library.management.commands.seed_books import CHAPTER_FIELDS
@@ -448,6 +544,10 @@ class FileCoherenceTests(SimpleTestCase):
     def test_authors_file_is_authors_only(self):
         models = {r["model"] for r in self.files.get(AUTHORS_FILE, [])}
         self.assertEqual(models, {"library.author"})
+
+    def test_series_file_is_series_only(self):
+        models = {r["model"] for r in self.files.get(SERIES_FILE, [])}
+        self.assertEqual(models, {"library.series"})
 
     def test_plans_file_shape(self):
         rows = self.files.get(PLANS_FILE, [])
@@ -2073,7 +2173,7 @@ class BodyTextDerivationTests(SimpleTestCase):
     def test_every_body_text_is_derived_from_its_body_html(self):
         stale = []
         for path in ordered_fixture_paths():
-            if path.name in {"authors.json", "plans.json"}:
+            if path.name in {"authors.json", "series.json", "plans.json"}:
                 continue
             for row in json.loads(path.read_text()):
                 fields = row.get("fields", {})
@@ -2163,7 +2263,7 @@ class WordCountDerivationTests(SimpleTestCase):
     def test_every_word_count_is_derived_from_its_body_html(self):
         stale = []
         for path in ordered_fixture_paths():
-            if path.name in {"authors.json", "plans.json"}:
+            if path.name in {"authors.json", "series.json", "plans.json"}:
                 continue
             for row in json.loads(path.read_text()):
                 fields = row.get("fields", {})
@@ -2335,7 +2435,7 @@ def descending() -> tuple[tuple[str, str, str], ...]:
     """
     out: list[tuple[str, str, str]] = []
     for path, rows in rows_by_file().items():
-        if path.name in {"authors.json", "plans.json"}:
+        if path.name in {"authors.json", "series.json", "plans.json"}:
             continue
         for row in rows:
             html = row["fields"].get("body_html") or ""
