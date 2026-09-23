@@ -231,26 +231,26 @@ worker specifics that shipped ~11 editions:
   quotations conservatively in the language's reverent biblical register and
   note that in the PR + issue comment.
 
-**Book chapter top-up** — the English edition grew after a translation shipped
-(an author added chapters; first case: `stepping-stones-2` gained chapters
-40–43 in 2026-09). Its job carries the ordinary title
-`[translation] book:<slug> -> <lang>`, and the `<lang>` file already exists, so
-the double-ship guard would call it done. It isn't. The test is STRUCTURAL,
-never the issue body: **compare the chapter `order`s in `<slug>.en.json` with
-`<slug>.<lang>.json`.** If English has orders the translation lacks, it's a
-top-up:
-- Translate ONLY the missing chapters (same prompt, `<p>`-count validation and
-  scripture handling as a full book) and APPEND them to the existing
-  `<slug>.<lang>.json` — same file, keep its current formatting
-  (`content_fixtures.render_rows` if the file round-trips through it, else
-  match what's there), `body_text`/`word_count` derived as above.
-- Do NOT touch the book row, the existing chapters, `source_type`, or the
-  cover — they already shipped and may have been reviewed. If the edition is
-  already `reviewed`, say in the PR that it now holds unreviewed chapters.
-- The `books/+page.ts` prerender touch is still owed. Close out as usual.
-
-If the orders already match, it's a genuine double-ship — close it as the
-guardrail below says.
+**Book chapter top-up** — the English edition grows after translations
+shipped (an author adds chapters; first case: `stepping-stones-2` gained
+chapters 40–43 in 2026-09, PR #3104). **This is not a queue job.**
+`tests_translation_markup.test_no_translation_is_missing_whole_chapters` fails
+CI the moment English has a chapter any existing translation lacks, and it is
+deliberately unpinnable — so the English chapters cannot merge ahead of their
+translations. Whoever adds the English chapters translates them into EVERY
+existing `<slug>.<lang>.json` in the same PR:
+- Translate only the new chapters (same `system_prompt(<lang>)`, `<p>`-count
+  validation and scripture handling as a full book) and APPEND them to each
+  existing file, keeping its formatting (`content_fixtures.render_rows` if the
+  file round-trips through it, else match what's there) with
+  `body_text`/`word_count` derived as above.
+- Don't touch the book row, existing chapters, `source_type` or the cover. If an
+  edition is already reviewed, say in the PR that it now holds unreviewed
+  chapters.
+- Open `book:<slug> -> <lang>` jobs for languages WITHOUT an edition are
+  unaffected — they translate from the English fixture as it stands.
+- The ordinary double-ship guard still holds for queue jobs: an existing
+  `<slug>.<lang>.json` means shipped.
 
 **Sermon** — same shape, smaller: single body instead of chapters; translate
 `title`, `scripture_ref` (localize the Bible book name, keep chapter:verse),
@@ -633,8 +633,7 @@ archaic spelling and period punctuation are the text, not defects in it.
 - **Never** auto-promote: everything ships `ai_unreviewed`; only the user runs
   `approve_translation`.
 - The double-ship guard is now structural: the target already existing means
-  the job already shipped (except a book whose English has since gained
-  chapters — see **Book chapter top-up**) — before starting, check the type's delivery target
+  the job already shipped — before starting, check the type's delivery target
   on fresh `origin/main`: `content/books/<slug>.<lang>.json` (book) /
   `content/sermons/<slug>.<lang>.json` (sermon) /
   `content/articles/<slug>.<lang>.json` (article) / a `<slug>` key in
