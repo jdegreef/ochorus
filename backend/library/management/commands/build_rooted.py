@@ -35,7 +35,7 @@ from django.db import transaction
 from library import covers, english_audit
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
-from library.models import Author, Book, Chapter
+from library.models import Author, Book, Chapter, Series
 from library.quote_marks import convert
 
 DATA_DIR = Path(__file__).resolve().parent / "data" / "rooted"
@@ -578,7 +578,14 @@ class Command(BaseCommand):
         chapters = parse((DATA_DIR / f"{slug}.md").read_text())
         check_shape([title for title, _ in chapters])
 
-        content = {"author": author, "attribution": ATTRIBUTION, "source_url": "", **meta}
+        content = {
+            "author": author,
+            "attribution": ATTRIBUTION,
+            "source_url": "",
+            "series": Series.objects.get(slug="rooted"),
+            "series_position": volume,
+            **meta,
+        }
         book, created = Book.objects.update_or_create(
             slug=slug,
             language="en",
