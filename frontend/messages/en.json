@@ -926,5 +926,13 @@
   "notebook_stat_praying": "Praying now",
   "notebook_stat_avg_days": "Avg. days prayed",
   "notebook_timeline": "Timeline",
-  "notebook_answered_layout": "Show answered prayers"
+  "notebook_answered_layout": "Show answered prayers",
+  "notebook_otd_title": "On this day",
+  "notebook_otd_hide": "Hide for today",
+  "notebook_otd_month": "One month ago",
+  "notebook_otd_months": "{n} months ago",
+  "notebook_otd_year": "One year ago",
+  "notebook_otd_years": "{n} years ago",
+  "notebook_otd_answered": "God answered",
+  "notebook_otd_wrote": "You wrote"
 }

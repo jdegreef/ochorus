@@ -926,5 +926,13 @@
   "notebook_stat_praying": "Orando ahora",
   "notebook_stat_avg_days": "Días de oración (prom.)",
   "notebook_timeline": "Línea de tiempo",
-  "notebook_answered_layout": "Mostrar oraciones contestadas"
+  "notebook_answered_layout": "Mostrar oraciones contestadas",
+  "notebook_otd_title": "En este día",
+  "notebook_otd_hide": "Ocultar por hoy",
+  "notebook_otd_month": "Hace un mes",
+  "notebook_otd_months": "Hace {n} meses",
+  "notebook_otd_year": "Hace un año",
+  "notebook_otd_years": "Hace {n} años",
+  "notebook_otd_answered": "Dios respondió",
+  "notebook_otd_wrote": "Escribiste"
 }

@@ -926,5 +926,13 @@
   "notebook_stat_praying": "Osabira kati",
   "notebook_stat_avg_days": "Ennaku z'okusaba (wakati)",
   "notebook_timeline": "Olukalala lw'ebiseera",
-  "notebook_answered_layout": "Laga essaala ezaddiddwamu"
+  "notebook_answered_layout": "Laga essaala ezaddiddwamu",
+  "notebook_otd_title": "Ku lunaku nga luno",
+  "notebook_otd_hide": "Kweka olwa leero",
+  "notebook_otd_month": "Omwezi gumu emabega",
+  "notebook_otd_months": "Emyezi {n} emabega",
+  "notebook_otd_year": "Omwaka gumu emabega",
+  "notebook_otd_years": "Emyaka {n} emabega",
+  "notebook_otd_answered": "Katonda yaddamu",
+  "notebook_otd_wrote": "Wawandiika"
 }

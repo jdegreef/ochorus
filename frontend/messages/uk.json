@@ -926,5 +926,13 @@
   "notebook_stat_praying": "Молюся зараз",
   "notebook_stat_avg_days": "Сер. днів молитви",
   "notebook_timeline": "Хронологія",
-  "notebook_answered_layout": "Показати вислухані молитви"
+  "notebook_answered_layout": "Показати вислухані молитви",
+  "notebook_otd_title": "Цього дня",
+  "notebook_otd_hide": "Сховати на сьогодні",
+  "notebook_otd_month": "Місяць тому",
+  "notebook_otd_months": "Місяців тому: {n}",
+  "notebook_otd_year": "Рік тому",
+  "notebook_otd_years": "Років тому: {n}",
+  "notebook_otd_answered": "Бог відповів",
+  "notebook_otd_wrote": "Ви написали"
 }

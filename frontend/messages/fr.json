@@ -926,5 +926,13 @@
   "notebook_stat_praying": "En prière",
   "notebook_stat_avg_days": "Jours de prière (moy.)",
   "notebook_timeline": "Chronologie",
-  "notebook_answered_layout": "Afficher les prières exaucées"
+  "notebook_answered_layout": "Afficher les prières exaucées",
+  "notebook_otd_title": "Ce jour-là",
+  "notebook_otd_hide": "Masquer pour aujourd'hui",
+  "notebook_otd_month": "Il y a un mois",
+  "notebook_otd_months": "Il y a {n} mois",
+  "notebook_otd_year": "Il y a un an",
+  "notebook_otd_years": "Il y a {n} ans",
+  "notebook_otd_answered": "Dieu a exaucé",
+  "notebook_otd_wrote": "Vous avez écrit"
 }

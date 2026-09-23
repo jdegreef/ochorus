@@ -926,5 +926,13 @@
   "notebook_stat_praying": "अभी प्रार्थना में",
   "notebook_stat_avg_days": "प्रार्थना के औसत दिन",
   "notebook_timeline": "समयरेखा",
-  "notebook_answered_layout": "उत्तर मिली प्रार्थनाएँ दिखाएँ"
+  "notebook_answered_layout": "उत्तर मिली प्रार्थनाएँ दिखाएँ",
+  "notebook_otd_title": "इसी दिन",
+  "notebook_otd_hide": "आज के लिए छिपाएँ",
+  "notebook_otd_month": "एक महीने पहले",
+  "notebook_otd_months": "{n} महीने पहले",
+  "notebook_otd_year": "एक साल पहले",
+  "notebook_otd_years": "{n} साल पहले",
+  "notebook_otd_answered": "परमेश्वर ने उत्तर दिया",
+  "notebook_otd_wrote": "आपने लिखा"
 }
