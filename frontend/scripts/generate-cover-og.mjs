@@ -122,6 +122,7 @@ import {
 import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
 import { coverLayoutFor, layoutKey } from '../src/lib/coverLayouts.ts';
+import { groundBar } from '../src/lib/groundBars.ts';
 import { coverStyleFor, scriptOf, volumeNumeral } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 import { baseEdition } from '../src/lib/reading-schema.ts';
@@ -233,6 +234,9 @@ function needTwins() {
 				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script) : null
 			};
 		})
+		// How far a laid-out painting is cropped past its scan border — the
+		// component asks only for a layout, so this does too.
+		.map((b) => ({ ...b, bar: b.layout ? groundBar(b.cover) : 0 }))
 		.filter((b) => hasTwin(b.cover));
 }
 
@@ -445,7 +449,7 @@ function coverPage(book, groundBytes) {
 	// inlined, which is what lets its gradient and emblem paint at any size
 	// without a second file. Neither carries a word.
 	const ground = book.art
-		? `<img class="ground cover-ground" src="data:${book.cover.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg'};base64,${groundBytes.toString('base64')}" alt="">`
+		? `<img class="ground cover-ground"${book.bar ? ` style="--ground-bar: ${book.bar}"` : ''} src="data:${book.cover.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg'};base64,${groundBytes.toString('base64')}" alt="">`
 		: `<div class="ground">${groundBytes.toString('utf8')}</div>`;
 	return `<style>${fontCssFor(book.script)}${COVER_CSS}
 html,body{margin:0}
@@ -549,6 +553,8 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
  *   `layout` — the composition a painting is set in (`coverLayouts.ts`), as
  *              `framed` or `<layout>/<hue>`. Checked by `coverOgManifest.test.ts`
  *              against the table, as `style` is.
+ *   `bar`    — how far a laid-out painting is cropped past its scan border
+ *              (`groundBars.ts`); 0 for a framed one.
  *   `volume` — the series numeral over the title. Written as null outside a
  *              series rather than left out, because the skip is lenient about
  *              an ABSENT field: a book that joined a series would otherwise
@@ -565,7 +571,8 @@ function made(book, groundBytes) {
 		script: scriptKey(book.script),
 		art: book.art,
 		scrim: book.scrim,
-		layout: layoutKey(book.layout)
+		layout: layoutKey(book.layout),
+		bar: book.bar
 	};
 }
 

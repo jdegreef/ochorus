@@ -1110,6 +1110,13 @@ rgb(0 0 0 / 0.26) 0%,
 .cover-plate.over-art:is(.cover-layout-split, .cover-layout-diagonal, .cover-layout-duotone) .cover-type {
 	text-align: start;
 }
+.cover-plate.over-art:is(.cover-layout-split, .cover-layout-diagonal, .cover-layout-duotone)
+	.cover-type
+	.byline {
+	/* The byline is `dir="auto"`, so `start` would be ITS start — left, for a
+	   Latin name on an Arabic cover. It ranges with the cover instead. */
+	text-align: match-parent;
+}
 .cover-plate.over-art:is(.cover-layout-split, .cover-layout-diagonal, .cover-layout-duotone) .cover-type .rule {
 	margin: 4cqw 0 0;
 }
@@ -1117,12 +1124,14 @@ rgb(0 0 0 / 0.26) 0%,
 	display: none;
 }
 
-/* A layout shows its painting unshaded — and several of the grounds carry a
-   thin dark strip at an edge, a scan's border that the framed scrim hid. Cropped
-   a little past it; the frame's `overflow: hidden` (the card's box in the share
-   script) clips the rest, and a panel covers any spill into the paper. */
+/* A layout shows its painting unshaded — and many of the grounds carry a dark
+   strip along an edge, a scan's border that the framed scrim hid. Cropped past
+   it: by the ground's own measured bar where it has one (`--ground-bar`, from
+   `groundBars.ts`), and by 3% a side otherwise. The frame's `overflow: hidden`
+   (the card's box in the share script) clips the rest, and a panel covers any
+   spill into the paper. */
 .cover-ground:has(~ .cover-plate.has-layout) {
-	scale: 1.06;
+	scale: max(1.06, calc(1 / (1 - 2 * var(--ground-bar, 0))));
 }
 
 /* ── band: a colour band with the mark, the title on paper, the painting below.
