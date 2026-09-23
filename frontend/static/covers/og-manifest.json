@@ -21,7 +21,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed",
+			"layout": "box/rust",
 			"bar": 0
 		},
 		"a-hidden-fire": {
@@ -451,7 +451,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed",
+			"layout": "box/rust",
 			"bar": 0
 		},
 		"es/a-hidden-fire": {
@@ -1211,7 +1211,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed",
+			"layout": "band/teal",
 			"bar": 0
 		},
 		"grace-for-grace-2": {
@@ -1491,7 +1491,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "box/rust",
 			"bar": 0
 		},
 		"key-teachings-of-watchman-nee": {
@@ -1951,7 +1951,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed",
+			"layout": "band/teal",
 			"bar": 0
 		},
 		"pilgrims-progress-words-of-one-syllable": {
@@ -2021,7 +2021,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed",
+			"layout": "box/rust",
 			"bar": 0
 		},
 		"pt/absolute-surrender": {
@@ -2831,7 +2831,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed",
+			"layout": "band/teal",
 			"bar": 0
 		},
 		"sw/pilgrims-progress-words-of-one-syllable": {
@@ -3231,8 +3231,8 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed",
-			"bar": 0
+			"layout": "box/rust",
+			"bar": 0.04
 		},
 		"the-way-to-god": {
 			"ground": "b4d69b86a37935f6cd1406238b9a4059058a03a900550f56bb3263413d4b1056",
