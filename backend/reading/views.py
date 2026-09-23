@@ -36,6 +36,7 @@ from .models import (
     ReadingDay,
     ReadingProgress,
     ReadingSession,
+    Removal,
     WorkKind,
 )
 from .serializers import (
@@ -259,6 +260,71 @@ def _now_ms() -> int:
     return int(datetime.now(UTC).timestamp() * 1000)
 
 
+def _is_stale_against(tomb: Removal | None, client_dt: datetime | None) -> bool:
+    """Is an incoming position / heart NOT newer than the reader's removal of it?
+
+    An untimestamped write is stale by definition: it can't show it came after
+    the removal, and the stale device re-uploading what it still holds — the
+    case the tombstone exists for — is exactly the write that carries no newer
+    clock.
+    """
+    return tomb is not None and (client_dt is None or client_dt <= tomb.removed_at)
+
+
+def _tombstone(profile, domain, kind, slug) -> Removal | None:
+    return Removal.objects.filter(profile=profile, domain=domain, kind=kind, slug=slug).first()
+
+
+def _record_removal(profile, domain, kind, slug, removed_at: datetime, *, live: bool) -> bool:
+    """Take a position or heart off the reader's account, and leave a tombstone
+    so a device that still holds it can't merge it back (see ``Removal``).
+
+    A LIVE removal (the DELETE, made now by the reader's own tap) always
+    applies. Its tombstone is stamped no earlier than the row's own client
+    clock, so every stale copy of that row is covered even when the removing
+    device's clock lags the one that last wrote it — otherwise a slow clock
+    would leave the tombstone older than the very position it removed.
+
+    A removal carried up LATE by the merge (made offline) is itself stale if
+    the thing it removes is newer — a position read after it, or a heart saved
+    after it — and is then not applied (False). A heart has no client clock of
+    its own, so its server ``created_at`` stands in there.
+
+    The tombstone keeps the LATEST removal time, so an older removal arriving
+    late can't narrow what a newer one covers.
+    """
+    with transaction.atomic():
+        if domain == Removal.Domain.PROGRESS:
+            rows = ReadingProgress.objects.filter(profile=profile, kind=kind, book_slug=slug)
+            row = rows.first()
+            row_at = row.client_updated_at if row else None
+        else:
+            rows = Favorite.objects.filter(profile=profile, kind=kind, slug=slug)
+            row = rows.first()
+            row_at = row.created_at if row else None
+        if row_at is not None and row_at > removed_at:
+            if not live:
+                return False
+            removed_at = row_at
+        rows.delete()
+        tomb, created = Removal.objects.get_or_create(
+            profile=profile,
+            domain=domain,
+            kind=kind,
+            slug=slug,
+            defaults={"removed_at": removed_at},
+        )
+        if not created and tomb.removed_at < removed_at:
+            tomb.removed_at = removed_at
+            tomb.save(update_fields=["removed_at"])
+    return True
+
+
+def _removed_at(value) -> datetime:
+    """The removing device's clock (epoch ms) for a live DELETE, else now."""
+    return _ms_to_dt(value) or datetime.now(UTC)
+
+
 def _upsert_progress(
     profile,
     kind,
@@ -302,7 +368,18 @@ def _upsert_progress(
     when its position is stale. ``clear_finished`` (an explicit un-finish) is the
     one thing that clears it; like un-favoriting it is a live-only signal the
     merge never carries.
+
+    A position the reader REMOVED from their shelf (a ``Removal`` tombstone) is
+    only re-created by a write newer than the removal — they read it again.
+    Anything older is a stale device re-uploading what it still holds: it is
+    dropped and None comes back. A newer write clears the tombstone.
     """
+    tomb = _tombstone(profile, Removal.Domain.PROGRESS, kind, slug)
+    if tomb is not None:
+        if _is_stale_against(tomb, client_dt):
+            return None
+        tomb.delete()
+
     existing = ReadingProgress.objects.filter(
         profile=profile, kind=kind, book_slug=slug
     ).first()
@@ -463,7 +540,31 @@ class ProgressView(APIView):
             finished_at=_ms_to_dt(data.get("finished_at")),
             clear_finished=bool(data.get("unfinish")),
         )
+        if obj is None:
+            # Removed from the shelf after this position was taken: a stale
+            # push. Not an error — the client's next merge drops it locally.
+            return Response({"removed": True})
         return Response(ReadingProgressSerializer(obj).data)
+
+    def delete(self, request, slug):
+        """Remove this work from the reader's shelf (the Bookshelf's "Remove"):
+        drop the position and leave a tombstone so it stays removed across
+        devices. ``?at=`` is the removing device's clock (epoch ms). 204 either
+        way."""
+        if not _valid_slug(slug):
+            return Response({"detail": "Invalid slug."}, status=400)
+        kind = _kind_or_none(request.query_params.get("kind"))
+        if kind is None:
+            return Response({"detail": "Unknown kind."}, status=400)
+        _record_removal(
+            _profile(request),
+            Removal.Domain.PROGRESS,
+            kind,
+            slug,
+            _removed_at(request.query_params.get("at")),
+            live=True,
+        )
+        return Response(status=204)
 
 
 class MarksView(APIView):
@@ -586,6 +687,10 @@ class FavoriteView(APIView):
         if not _valid_slug(slug):
             return Response({"detail": "Invalid slug."}, status=400)
         profile = _profile(request)
+        # A live heart is always a new act: it lifts any earlier removal.
+        Removal.objects.filter(
+            profile=profile, domain=Removal.Domain.FAVORITE, kind=kind, slug=slug
+        ).delete()
         obj, _ = Favorite.objects.get_or_create(
             profile=profile, kind=kind, slug=slug
         )
@@ -596,8 +701,16 @@ class FavoriteView(APIView):
             return Response({"detail": "Unknown kind."}, status=400)
         if not _valid_slug(slug):
             return Response({"detail": "Invalid slug."}, status=400)
-        profile = _profile(request)
-        Favorite.objects.filter(profile=profile, kind=kind, slug=slug).delete()
+        # Delete AND tombstone, so another device still holding the heart can't
+        # merge it back (see Removal). `?at=` is the device's clock (epoch ms).
+        _record_removal(
+            _profile(request),
+            Removal.Domain.FAVORITE,
+            kind,
+            slug,
+            _removed_at(request.query_params.get("at")),
+            live=True,
+        )
         return Response(status=204)
 
 
@@ -812,6 +925,9 @@ class MergeView(APIView):
         # client writes the returned state back over localStorage, so a partial
         # merge would silently diverge local and server.
         with transaction.atomic():
+            # Removals first: they may be this device's own offline removals,
+            # and the unions below must see their tombstones.
+            self._merge_removals(profile, data.get("removed") or [])
             self._merge_progress(profile, data.get("progress") or [])
             self._merge_marks(profile, data.get("marks") or [])
             self._merge_sermon_marks(profile, data.get("sermon_marks") or [])
@@ -819,7 +935,36 @@ class MergeView(APIView):
             self._merge_bookmarks(profile, data.get("bookmarks") or [])
             self._merge_activity(profile, data.get("activity") or [])
             self._merge_plan_progress(profile, data.get("plan_progress") or [])
-        return Response(_serialize_state(profile))
+        # `removed_applied` tells the client this API honours `removed`, so it
+        # may drop its pending list. An API from before tombstones ignores the
+        # field — without this, the client would clear removals nobody applied.
+        return Response({**_serialize_state(profile), "removed_applied": True})
+
+    def _merge_removals(self, profile, incoming):
+        """Apply removals the device made while its live DELETE couldn't land
+        (offline, or the request failed) — ``[{domain, kind, slug, at}]``. Each
+        goes through the same rule as a live DELETE, so one outdated by newer
+        activity elsewhere is not applied. Malformed rows are skipped; a row
+        with no ``at`` is skipped too (a removal must say when it happened)."""
+        if not isinstance(incoming, list):
+            return
+        for row in incoming[:MAX_MERGE_ROWS]:
+            if not isinstance(row, dict):
+                continue
+            domain, kind, slug = row.get("domain"), row.get("kind"), row.get("slug")
+            removed_at = _ms_to_dt(row.get("at"))
+            if removed_at is None or not _valid_slug(slug):
+                continue
+            if domain == Removal.Domain.PROGRESS:
+                kind = _kind_or_none(kind)
+                if kind is None:
+                    continue
+            elif domain == Removal.Domain.FAVORITE:
+                if kind not in FavoriteKind.values:
+                    continue
+            else:
+                continue
+            _record_removal(profile, domain, kind, slug, removed_at, live=False)
 
     def _merge_plan_progress(self, profile, incoming):
         """Union done days + earliest start (same rule as a live PUT — see
@@ -860,9 +1005,18 @@ class MergeView(APIView):
         """Union: a heart set on either side survives (like marks, nothing a
         reader saved offline is ever dropped). Unknown kinds are skipped; a
         non-list is ignored and non-dict rows skipped, so a malformed bundle
-        can't 500 the sign-in reconciliation."""
+        can't 500 the sign-in reconciliation.
+
+        Except a heart the reader REMOVED elsewhere: one not saved after the
+        removal (``saved_at``, epoch ms; absent on older clients, so stale) is a
+        device re-uploading what it still holds, and is dropped. One saved after
+        it is a real re-heart made offline: it lands and lifts the tombstone."""
         if not isinstance(incoming, list):
             return
+        tombs = {
+            (t.kind, t.slug): t
+            for t in Removal.objects.filter(profile=profile, domain=Removal.Domain.FAVORITE)
+        }
         favorites = {}
         for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
@@ -871,6 +1025,12 @@ class MergeView(APIView):
             slug = row.get("slug")
             if not _valid_slug(slug) or kind not in FavoriteKind.values:
                 continue
+            tomb = tombs.get((kind, slug))
+            if tomb is not None:
+                if _is_stale_against(tomb, _ms_to_dt(row.get("saved_at"))):
+                    continue
+                tomb.delete()
+                del tombs[(kind, slug)]
             favorites[(kind, slug)] = Favorite(profile=profile, kind=kind, slug=slug)
         # One INSERT ... ON CONFLICT DO NOTHING: the unique (profile, kind, slug)
         # constraint skips hearts already saved.
