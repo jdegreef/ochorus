@@ -137,26 +137,28 @@ describe('the translucent papers hold at their thinnest', () => {
 		}
 	});
 
-	it('duotone: the ink, over the print at its darkest', () => {
+	it('duotone: white type, over the print at its brightest', () => {
 		const sel = '.cover-plate.over-art.cover-layout-duotone::before';
-		const tint = number(sel, /var\(--c-band\)\s+(\d+)%/) / 100;
+		const ink = number(sel, /var\(--c-ink\)\s+(\d+)%/) / 100;
 		const alpha = number(sel, /opacity:\s*([\d.]+)/);
 		const ground = '.cover-ground:has(~ .cover-plate.cover-layout-duotone)';
 		const flat = number(ground, /contrast\(([\d.]+)\)/);
 		const lift = number(ground, /brightness\(([\d.]+)\)/);
-		// The darkest a greyscale print gets once `contrast()` and `brightness()`
-		// have flattened it: black, pulled toward mid-grey, then lifted.
-		const floor = ((0 - 0.5) * flat + 0.5) * lift * 255;
-		// The byline is set in the ink here too — the band colour cannot hold
-		// small type over this print — so the ink is the whole check.
-		expect(
-			lastDecl('.cover-plate.over-art.cover-layout-duotone .cover-type .byline', /color:\s*([^;]+)/)
-		).toBe('var(--c-ink)');
+		// The brightest a greyscale print gets once `contrast()` and
+		// `brightness()` have flattened it: white, pulled toward mid-grey, then
+		// dimmed.
+		const top = ((1 - 0.5) * flat + 0.5) * lift * 255;
+		for (const color of ['.byline', '.brandmark']) {
+			expect(
+				lastDecl(`.cover-plate.over-art.cover-layout-duotone .cover-type ${color}`, /color:\s*([^;]+)/),
+				`the duotone ${color} is set in white`
+			).toBe('#fff');
+		}
 		for (const id of COVER_HUE_IDS) {
-			const { band, paper, ink } = hue(id);
-			const wash = over(band, paper, tint);
-			const darkest = over(wash, [floor, floor, floor], alpha);
-			expect(contrast(ink, darkest), id).toBeGreaterThanOrEqual(4.5);
+			const { band, ink: inkColour } = hue(id);
+			const tint = over(inkColour, band, ink);
+			const brightest = over(tint, [top, top, top], alpha);
+			expect(contrast(WHITE, brightest), id).toBeGreaterThanOrEqual(4.5);
 		}
 	});
 });
