@@ -119,7 +119,7 @@ const needTwins = once(() => {
 			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
 			volume: volumeNumeral(f.slug, baseEdition(f.language)),
 			layout: layoutKey(
-				isArtCover(f.cover_url) ? coverLayoutFor(f.slug, scriptOf(f.language || 'en')) : null
+				isArtCover(f.cover_url) ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en')) : null
 			)
 		}));
 });

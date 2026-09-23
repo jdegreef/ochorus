@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 import { channels, contrastRatio as contrast, isArtCover } from './coverArt';
 import {
-	BOOK_LAYOUT,
+	AUTHOR_LAYOUT,
 	COVER_HUE_IDS,
 	COVER_LAYOUT_IDS,
 	coverLayoutFor,
@@ -48,6 +48,20 @@ function number(selector: string, pattern: RegExp): number {
 	return Number(v);
 }
 
+type BookRow = { slug: string; title: string; language: string; author: string[]; cover_url?: string };
+
+const BOOKS = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
+
+/** Every edition's book row in the shipped fixture. */
+const allBooks = (): BookRow[] =>
+	readdirSync(BOOKS)
+		.filter((f) => f.endsWith('.json'))
+		.flatMap((f) => JSON.parse(readFileSync(join(BOOKS, f), 'utf8')))
+		.filter((r: { model: string }) => r.model === 'library.book')
+		.map((r: { fields: BookRow }) => r.fields);
+
+const englishBooks = () => allBooks().filter((b) => b.language === 'en');
+
 describe('the layout table and the stylesheet name the same things', () => {
 	it('draws every layout it names, and names every layout it draws', () => {
 		const drawn = new Set([...COVER_CSS_CODE.matchAll(/\.cover-layout-([a-z]+)/g)].map((m) => m[1]));
@@ -59,39 +73,32 @@ describe('the layout table and the stylesheet name the same things', () => {
 		expect([...drawn].sort()).toEqual([...COVER_HUE_IDS].sort());
 	});
 
-	it('gives a layout only to a work whose English edition wears a painting', () => {
-		const books = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
-		const offenders = Object.keys(BOOK_LAYOUT).filter((slug) => {
-			let cover = '';
-			try {
-				cover = JSON.parse(readFileSync(join(books, `${slug}.en.json`), 'utf8')).find(
-					(r: { model: string }) => r.model === 'library.book'
-				).fields.cover_url;
-			} catch {
-				return true;
-			}
-			return !isArtCover(cover);
-		});
+	it('gives a layout only to an author with a painted book in English', () => {
+		const painted = new Set(
+			englishBooks()
+				.filter((b) => isArtCover(b.cover_url))
+				.map((b) => b.author[0])
+		);
 		expect(
-			offenders,
-			'a layout is drawn only over a painting — a designed cover has its words in ' +
-				'its pixels, and a plate is composed around its emblem'
+			Object.keys(AUTHOR_LAYOUT).filter((author) => !painted.has(author)),
+			'a layout is drawn only over a painting — this author has none, so the ' +
+				'entry changes nothing'
 		).toEqual([]);
 	});
 });
 
 describe('coverLayoutFor', () => {
-	it('leaves a work outside the table framed', () => {
-		expect(coverLayoutFor('no-such-book', null)).toBeNull();
+	it('leaves an author outside the table framed', () => {
+		expect(coverLayoutFor('no-such-author', null)).toBeNull();
 		expect(layoutKey(null)).toBe('framed');
 	});
 
 	it('gives a non-latin edition of a railed work the title box, in its colour', () => {
-		const railed = Object.keys(BOOK_LAYOUT).find((s) => BOOK_LAYOUT[s].layout === 'rail')!;
+		const railed = Object.keys(AUTHOR_LAYOUT).find((a) => AUTHOR_LAYOUT[a].layout === 'rail')!;
 		expect(coverLayoutFor(railed, null)?.layout).toBe('rail');
 		expect(coverLayoutFor(railed, 'arabic')).toEqual({
 			layout: 'box',
-			hue: BOOK_LAYOUT[railed].hue
+			hue: AUTHOR_LAYOUT[railed].hue
 		});
 		expect(coverLayoutFor(railed, 'cyrillic')?.layout).toBe('rail');
 	});
@@ -155,16 +162,13 @@ describe('the translucent papers hold at their thinnest', () => {
 });
 
 describe('the rail', () => {
-	it('is given only titles short enough to run up it', () => {
+	it('is given only authors whose titles are short enough to run up it', () => {
 		// The rail sets its title sideways in a 23cqw column, which holds two
 		// lines of it. A longer title wraps into a third that spills over the
-		// band onto the painting, so anything past this wants another layout.
-		const books = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
-		const long = readdirSync(books)
-			.filter((f) => BOOK_LAYOUT[f.split('.')[0]]?.layout === 'rail')
-			.flatMap((f) => JSON.parse(readFileSync(join(books, f), 'utf8')))
-			.filter((r: { model: string }) => r.model === 'library.book')
-			.map((r: { fields: { title: string } }) => r.fields.title)
+		// band onto the painting, so an author with one wants another layout.
+		const long = allBooks()
+			.filter((b) => AUTHOR_LAYOUT[b.author[0]]?.layout === 'rail' && isArtCover(b.cover_url))
+			.map((b) => b.title)
 			.filter((title) => title.length > 28);
 		expect(long).toEqual([]);
 	});

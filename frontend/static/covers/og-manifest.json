@@ -38,7 +38,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "rail/teal"
 		},
 		"a-serious-call": {
 			"ground": "27f93644f679fdbc7fd669c81b640f27a7a5b1857e3925a9b50a170304811f00",
@@ -56,7 +56,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "band/mauve"
+			"layout": "framed"
 		},
 		"absolute-surrender": {
 			"ground": "0d0bae9493e4aa971d41f42b362110787f97cf65000fda96cdaff8e5f5beeb3f",
@@ -65,7 +65,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "duotone/indigo"
+			"layout": "wash/sage"
 		},
 		"all-of-grace": {
 			"ground": "25d18c1f3133cdd46d916757dc58d064dd8cda9ff6adce9f7edf269c234762d4",
@@ -74,7 +74,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "diagonal/ochre"
+			"layout": "band/oxblood"
 		},
 		"all-things-for-good": {
 			"ground": "686001548fde792b7a761361e43c0d25758f067eb5db6964e7ceb742d7103e8f",
@@ -110,7 +110,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "duotone/indigo"
+			"layout": "wash/sage"
 		},
 		"ar/all-of-grace": {
 			"ground": "1290f6609886d2ba303fded94b0d22d95ceca6a64251f81799a4b1fb6041383a",
@@ -119,7 +119,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "diagonal/ochre"
+			"layout": "band/oxblood"
 		},
 		"ar/all-things-for-good": {
 			"ground": "cfb0fcd4338ec01dd6d9d2fafddea6b242318a44ce991c882256f65a46e79609",
@@ -137,7 +137,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"ar/clothed-with-strength-and-dignity": {
 			"ground": "a3d614670ef190cf2901371852caa6328ad4d4200ae3505d173ffad00d1882a4",
@@ -155,7 +155,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"ar/godliness": {
 			"ground": "024e77389ba1cf97a0b0a196422cc237c010461521fcd05a0f7d457af0b43d4a",
@@ -182,7 +182,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"ar/lord-teach-us-to-pray-2": {
 			"ground": "cdaf454558acbf725ad4de0f324c92d5adb966a5678c9424003b25be9df961f9",
@@ -191,7 +191,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"ar/power-through-prayer": {
 			"ground": "e04c38459dc7643bdd19628cbd9fb4fb149672d267063e1a0494303afd8b44a8",
@@ -200,7 +200,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "duotone/sage"
+			"layout": "split/navy"
 		},
 		"ar/prayer-the-pulse-of-life": {
 			"ground": "02de18cb1bd999fc8e6b030d12c36d647da0f5c6860d703ecf91cccddd8df9c8",
@@ -245,7 +245,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.3,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"ar/the-key-in-my-hand": {
 			"ground": "b550de188ef06f516bec504a3aef45ad011d3d791c4b7af525154f8d7f869963",
@@ -263,7 +263,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"ar/the-unselfishness-of-god": {
 			"ground": "0d81812281102654ad7d38888c8378e7fceb89b0dd55ffb98aced3987aba64f2",
@@ -281,7 +281,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "fade/navy"
+			"layout": "framed"
 		},
 		"ar/waiting-on-god": {
 			"ground": "6e32561293df9b02c11a602d74e2b5234e6f2d792f845f27ddd5013ae95bd0b6",
@@ -290,7 +290,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "box/sage"
+			"layout": "wash/sage"
 		},
 		"around-the-wicket-gate": {
 			"ground": "1711699f1128891de30e5ec7bcc7841e3af5edc7f1e31d0e155435d26ceee6f0",
@@ -299,7 +299,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"brave-for-god": {
 			"ground": "b0c63c0a373f3c4dcebeec3fc4cbe40058d2b154f5a98022314c54d352010eca",
@@ -344,7 +344,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"confessions": {
 			"ground": "65b37fbd511d6d02b343619c9c3cd7e029ec286c7dbf5eaa6c8c295010ed9abd",
@@ -362,7 +362,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"divine-healing": {
 			"ground": "af714b6b1c4dd06581012c8a91eaf12ec964f029929dfed0a9327d179b0a45b2",
@@ -371,7 +371,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"divine-songs-for-children": {
 			"ground": "4f8429f26226286f968ee1fd198d17af7031da8ff035d78f0ac7f2ee6d64e9c1",
@@ -389,7 +389,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed"
+			"layout": "rail/rust"
 		},
 		"epistles-of-ignatius": {
 			"ground": "b259b71e9d1b30cebac05e16d3cd2658956c26a2174dbf900e8cf0667b9362e4",
@@ -425,7 +425,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "band/mauve"
+			"layout": "framed"
 		},
 		"es/all-of-grace": {
 			"ground": "4c27f99f956f15bd728a240afab3cfd7f3848f91e5b7d2a67399ffe15db61411",
@@ -434,7 +434,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "diagonal/ochre"
+			"layout": "band/oxblood"
 		},
 		"es/all-things-for-good": {
 			"ground": "4266c4dd9d8a808664530a89a1d323400af3ae26e11380753c67b62a1aabd658",
@@ -452,7 +452,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"es/baptism-with-the-holy-spirit": {
 			"ground": "65465dc87da4c2b395458f0dfe6337d4a6e99539bec9063df5e6c3ff7dec8cea",
@@ -461,7 +461,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"es/clothed-with-strength-and-dignity": {
 			"ground": "51241c283312c3535049107445396f8972e8af119f511d82da81df92ddbc870b",
@@ -479,7 +479,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed"
+			"layout": "rail/rust"
 		},
 		"es/essentials-of-prayer": {
 			"ground": "706179fb754c8fd90d47cd17780cd9892c98d1bed0f206f4449a0fce88e526b4",
@@ -488,7 +488,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"es/godliness": {
 			"ground": "fa4d2e1e76f39e08d80eba07d3ec53e097f54ccb9bb9e96edf60d8037898af95",
@@ -515,7 +515,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"es/humility-2": {
 			"ground": "d6046be6ce4cb2267982a0dc9b4bd8de643b29595e2d5707d62de5e4cef767ba",
@@ -524,7 +524,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"es/jesus-himself-2": {
 			"ground": "ee20fb7af17075643a06a6e89edd086b3c330c6080fe9e113c814a249b4c402b",
@@ -533,7 +533,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"es/life-experience-gospel-labours": {
 			"ground": "1705cd87178e053c6e4ebd45fa51e33d2d8aba36c8f4edceb52c2d16d274dd6f",
@@ -551,7 +551,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"es/on-loving-god": {
 			"ground": "7f648bacae5086715b891514be89bee7c6f35f4893ccfc5cae2dda3d9fb66772",
@@ -560,7 +560,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "diagonal/indigo"
+			"layout": "framed"
 		},
 		"es/possibilities-of-prayer": {
 			"ground": "8fe3b2647d6276f4fa3e94b217c2fc2f11df805a6a72b1510041949240019d9d",
@@ -569,7 +569,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"es/power-through-prayer": {
 			"ground": "07fee117fcded2bd8af7d47f18714c8064baf4e5515f593ac4b332be1ecd76b7",
@@ -578,7 +578,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "duotone/sage"
+			"layout": "split/navy"
 		},
 		"es/prayer-and-praying-men": {
 			"ground": "bc805bb1ed89244944db01a0ebebf71c7c7e634816f5a2b08691626de6073c1f",
@@ -587,7 +587,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"es/prayer-the-pulse-of-life": {
 			"ground": "07ff36d5465ef33f20173862088a794684cb65b8315b612c52de71e270d3676a",
@@ -623,7 +623,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"es/reality-of-prayer": {
 			"ground": "9804e6b4963da55045d6cb3c082d2e1b57a178d8dee21ccef7f048a64ea85cc2",
@@ -632,7 +632,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"es/separation-and-service": {
 			"ground": "a51bafe3114633c0a1f6c78949aad266e93b04a2f61478572e2c58ed3bab6adb",
@@ -641,7 +641,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "rail/teal"
 		},
 		"es/talks-to-the-farmer": {
 			"ground": "abc63c24446d73ff2a0cca4588c0648360cc1738e42281f67bb9a842dd9454e8",
@@ -650,7 +650,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"es/the-fourfold-gospel": {
 			"ground": "543d1ab7c043ae66c6374ec5cdf3ff6d0e88f653b180980aa101b9aaa2be35f7",
@@ -659,7 +659,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"es/the-god-of-all-comfort": {
 			"ground": "f75ff80c9d051851d4bf7bdb32715dd2341d5f98a7ab1e19894d4375bfad3326",
@@ -677,7 +677,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"es/the-key-in-my-hand": {
 			"ground": "37eb006e66b6e0675bcafd274163dbfddabd009e729f235fa1067b20295e672f",
@@ -695,7 +695,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"es/the-secret-of-guidance": {
 			"ground": "ede183597e4b2fbf740ec87df22eb60429f8838022ea4146af06a9b2a6b8f01f",
@@ -722,7 +722,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "fade/navy"
+			"layout": "framed"
 		},
 		"es/true-vine": {
 			"ground": "12707a4313939e946d4f132f09ee3e1946db2fcfab8555a0f40dc3ee5a3584f1",
@@ -731,7 +731,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "wash/mauve"
+			"layout": "wash/sage"
 		},
 		"es/union-and-communion": {
 			"ground": "4f1f6ff65d4511cf388f1a10b5e9b21c9598716f0d06f9c5fcf6382b2190dcdf",
@@ -740,7 +740,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "rail/teal"
 		},
 		"es/waiting-on-god": {
 			"ground": "46edd6e8c1044dc7480179add60a2403c72ddd960c89fa6dc2f07e9e0099e1a9",
@@ -749,7 +749,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "rail/sage"
+			"layout": "wash/sage"
 		},
 		"essentials-of-prayer": {
 			"ground": "a3a08b7bec07326fc082f318a9e802f90c63c4db8741bf81482c6c748df952d2",
@@ -758,7 +758,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"evening-by-evening": {
 			"ground": "a11948e962d19f4077474d1040d7e3f26d58b21c0a11de74e4987242488e3483",
@@ -785,7 +785,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "duotone/indigo"
+			"layout": "wash/sage"
 		},
 		"fr/all-of-grace": {
 			"ground": "1c9bdb35d02ae3c9fa0d528a870e445629a55f39a200014464be0effca918144",
@@ -794,7 +794,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "diagonal/ochre"
+			"layout": "band/oxblood"
 		},
 		"fr/around-the-wicket-gate": {
 			"ground": "8ee1c35a9c120b72ab5ff4fd435f081168a71c7ec6274758ade9b1356e4a02d8",
@@ -803,7 +803,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"fr/baptism-with-the-holy-spirit": {
 			"ground": "bdeed4127b250e9d7f0f03c5a86ac3b99b8e31904f6ea3e75e23f75e2d5ef88b",
@@ -812,7 +812,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"fr/cheque-book": {
 			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
@@ -821,7 +821,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"fr/clothed-with-strength-and-dignity": {
 			"ground": "e27ae9f4ee85f2ee1a687c0cd91692b0cb15e25687ac97006a167412154bed48",
@@ -839,7 +839,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"fr/feasting-at-the-table": {
 			"ground": "503f76c2507bac0b0b3e4fd3bf320dba927fe3ce6af3b39a4f3bf57637b52e9d",
@@ -857,7 +857,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"fr/godliness": {
 			"ground": "fc2e575fa12936308aec9bd1cdb92f63e5dd7c510c58f227c0fb9a4eee5d0ebf",
@@ -893,7 +893,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"fr/humility-2": {
 			"ground": "b7ebe70a06a8600d5d850fffd7c551de82f033f08f76304260f30eefb4ecf8d7",
@@ -902,7 +902,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"fr/jesus-himself-2": {
 			"ground": "c383dfce70fc191f8ba4a0a7e1224979cb2e5d73a5714c124f05624c889c4661",
@@ -911,7 +911,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"fr/men-and-women-who-gave-everything-2": {
 			"ground": "85cfe9b6bb48cc9900529987d53466e07667c6a79bd8ce4d05647f1350c8eb82",
@@ -929,7 +929,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"fr/prayer-the-pulse-of-life": {
 			"ground": "6c5bc6830807a295441d54775ee22ec5cd828cfa5222bfb36243c44def42432c",
@@ -983,7 +983,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"fr/the-fourfold-gospel": {
 			"ground": "dbf24af7fb97a8cc2629ca2822231404489e73d62633cf11cfcf08115b87fe1a",
@@ -992,7 +992,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"fr/the-god-of-all-comfort": {
 			"ground": "3bc088fdd73df57df3c20bcbabb1ba2dcd8684c5e91bc4aec125b092e2fc2517",
@@ -1010,7 +1010,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"fr/the-inner-chamber": {
 			"ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
@@ -1019,7 +1019,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"fr/the-key-in-my-hand": {
 			"ground": "ba27a94899641bcec2ba008e0202250f5fee68a4e26fa217ea2905ad707834e3",
@@ -1046,7 +1046,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "fade/navy"
+			"layout": "framed"
 		},
 		"fr/true-vine": {
 			"ground": "2ae642dca179a7ded689f75d540d4c5d1a3efb7566068a1a8d2bf878f6aa5185",
@@ -1055,7 +1055,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "wash/mauve"
+			"layout": "wash/sage"
 		},
 		"fr/waiting-on-god": {
 			"ground": "63d84c7528256776f7a0269dbe085ff8d5dbab4a3da7b56c9e25f4c5dc3409ac",
@@ -1064,7 +1064,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "rail/sage"
+			"layout": "wash/sage"
 		},
 		"freedom-of-the-will": {
 			"ground": "4ea3b353acb149bbd8daf7c9bef83437620e1cd2a5acddd1c3d12c35016e92a2",
@@ -1073,7 +1073,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "fade/slate"
 		},
 		"gleanings-among-the-sheaves": {
 			"ground": "2a7832dd2947dbbab338cf7ee15a680886f36c65879ee78bf4e6665628488e77",
@@ -1082,7 +1082,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"grace-abounding": {
 			"ground": "b9a29734b5a2d4efd0ad4c60c44def4907123af14a7a74c0da07cc4a1c4d718a",
@@ -1118,7 +1118,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "diagonal/ochre"
+			"layout": "band/oxblood"
 		},
 		"hi/baptism-with-the-holy-spirit": {
 			"ground": "d697cb65e02626c9bda4961b02124088330a827650dc6ff19f26e1dbe7001839",
@@ -1127,7 +1127,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"hi/clothed-with-strength-and-dignity": {
 			"ground": "a37e2b937513601c765bfc2e1c2159590c1cebbaa38a3a6c3bd4db0193a88297",
@@ -1145,7 +1145,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"hi/godliness": {
 			"ground": "b72ec1d040a6969ecfe8b18f80e0ae3eff7014ca28644597d364c715c4942439",
@@ -1172,7 +1172,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"hi/jesus-himself-2": {
 			"ground": "d18587e048dface851f965577de75c9f60ddbd541364448486cac1396d08b34b",
@@ -1181,7 +1181,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"hi/ministry-of-intercession": {
 			"ground": "ea6803622e2cd17da98b1d994a4ab8a92aaea70d7aaa7830ac92af0061a73a40",
@@ -1190,7 +1190,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"hi/power-through-prayer": {
 			"ground": "54263128fd280791463794320ec4f8598ae2b31dfc4813792080dab41df7aec2",
@@ -1199,7 +1199,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "duotone/sage"
+			"layout": "split/navy"
 		},
 		"hi/prayer-the-pulse-of-life": {
 			"ground": "5e42f8c18c6752e175c3aedda526c0a27d8bcdefbd0c242d7472eade812af0d7",
@@ -1226,7 +1226,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.3,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"hi/the-key-in-my-hand": {
 			"ground": "359bb517fb7e8b2553af2d79df521de67a349eb6f64530c0d3396091c7aa34b2",
@@ -1253,7 +1253,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "fade/navy"
+			"layout": "framed"
 		},
 		"hi/waiting-on-god": {
 			"ground": "c9ecae20e6c796d9a10b26118f9766d40b814f25507e06716c37c393f7514bfa",
@@ -1262,7 +1262,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "box/sage"
+			"layout": "wash/sage"
 		},
 		"holy-in-christ": {
 			"ground": "25e3f970266c7bccd9a7035ca1d534d54c4abeba99b7b6d57c028277bd7904d4",
@@ -1271,7 +1271,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"how-to-bring-men-to-christ": {
 			"ground": "90e959b8dbd59b93bef2f3766b1a9e33981a4f9fdb0357c6eba650a723470ae3",
@@ -1280,7 +1280,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"how-to-succeed-in-the-christian-life": {
 			"ground": "364f5cd67e613b8d6f826481b98eb2877a7f09d10e78af0651ad6c14dab5ca59",
@@ -1289,7 +1289,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"hurlbuts-life-of-christ": {
 			"ground": "3a879eea06afd2cb313183c4ecb0de5bce209c8fc1cfd15b8197c8841be1db62",
@@ -1325,7 +1325,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"key-teachings-of-jonathan-edwards": {
 			"ground": "f0fdd6d0cafe143b685132cd0bb8568a946cb13fbb5fe9c8508d5eccbe01c885",
@@ -1334,7 +1334,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed"
+			"layout": "fade/slate"
 		},
 		"key-teachings-of-richard-baxter": {
 			"ground": "27740ccf4a6a59104867647560f04f21b419ea4200129c5e4d75719acdb270c5",
@@ -1352,7 +1352,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed"
+			"layout": "diagonal/indigo"
 		},
 		"let-us-pray-2": {
 			"ground": "4725e322e9f3052085a3cf616a13b1d6bbb3a9f9efe226aaf09d166fcf8aa6c9",
@@ -1370,7 +1370,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "diagonal/ochre"
+			"layout": "band/oxblood"
 		},
 		"lg/baptism-with-the-holy-spirit": {
 			"ground": "66d2d1831d4726fab85cb54b1b13362256936ec4294a2c822b153f249e76acfe",
@@ -1379,7 +1379,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"lg/brave-for-god": {
 			"ground": "94bc629cd9e6ac21c04f2ffe412987978ffb9877047056d77d975e908a4b4877",
@@ -1424,7 +1424,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"lg/clothed-with-strength-and-dignity": {
 			"ground": "10e69218f80f6e0ebbdcd1fb8a725c558609985f4402cc5f6e03ccda13bff370",
@@ -1442,7 +1442,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"lg/divine-songs-for-children": {
 			"ground": "5ce03748c25875fc64235c075d7ebda09ca8854bcaa8038d758124eadd88c212",
@@ -1496,7 +1496,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"lg/jesus-himself-2": {
 			"ground": "39373921bb43aa04f551a3779743d1c6bc2e7887c52b3f5e1dc4409da6d2981d",
@@ -1505,7 +1505,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"lg/lord-teach-us-to-pray-2": {
 			"ground": "53c97bf5472166aac8de7b3306b551d0603ed2fa0c5c4ea93e7b2398fce99bdb",
@@ -1514,7 +1514,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"lg/pilgrims-progress-words-of-one-syllable": {
 			"ground": "b2c30b8b36f8491df655987b6f3e6202a6fb4c03a68d7f6c4e15bdaff39531eb",
@@ -1577,7 +1577,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"lg/the-fourfold-gospel": {
 			"ground": "5778f6e505366ac3b4b2093eafb48796c420ae4d20ec817653f07a22b5f7e3d8",
@@ -1586,7 +1586,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"lg/the-god-of-all-comfort": {
 			"ground": "a58744f9eb1da94c3ecf3a923ff03801491e24864ee988dd6fcc72c42902cf6b",
@@ -1604,7 +1604,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"lg/the-key-in-my-hand": {
 			"ground": "171afbbc40eb4aac0e8b1c73f0adf8c22d66286ac4d076c30f466ffd4d1f40ec",
@@ -1622,7 +1622,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"lg/the-unselfishness-of-god": {
 			"ground": "7ef203f24c89929d21d87d7605fbd992ff36513860217253475718c8d51cda67",
@@ -1640,7 +1640,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "fade/navy"
+			"layout": "framed"
 		},
 		"lg/waiting-on-god": {
 			"ground": "84626082c3df7eb5d2a5cd11b5d88ad6e267f6b07fcfdafbc281034e8bc0faf7",
@@ -1649,7 +1649,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "rail/sage"
+			"layout": "wash/sage"
 		},
 		"life-and-diary-of-david-brainerd": {
 			"ground": "442fbc2b3e5ed7d8f7277cab5df72e1d099de462f456783a8bb148587be12e80",
@@ -1685,7 +1685,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"morning-by-morning": {
 			"ground": "95aada7485696386dbad2c3738f482ddc807b3fd27ad99c9f64eda721b145096",
@@ -1712,7 +1712,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"on-loving-god": {
 			"ground": "49ca984558d07987a88f7e525dd92b2dedca9120fcd95d30f2b8adf4535d388e",
@@ -1721,7 +1721,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "diagonal/indigo"
+			"layout": "framed"
 		},
 		"on-the-incarnation": {
 			"ground": "256edd288ca5af1ca9bd7c1b4df6aae6fbeff421ab403ad41892505180c3d7fb",
@@ -1757,7 +1757,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "box/teal"
+			"layout": "framed"
 		},
 		"pilgrims-progress-words-of-one-syllable": {
 			"ground": "464a68f328172c2fdd4bb55add7b5da3752793618539d973c72bc6184d347c53",
@@ -1784,7 +1784,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"power-through-prayer": {
 			"ground": "a36c72e5986a60d4832a04bd8371181c6bfe960055ee11cfe775c158ce5be6e9",
@@ -1793,7 +1793,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "duotone/sage"
+			"layout": "split/navy"
 		},
 		"prayer-and-praying-men": {
 			"ground": "908bbf1a6b4d414810ed49d0d2164df6edb094b0a882d3a5285c898d968e64fc",
@@ -1802,7 +1802,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"prevailing-prayer": {
 			"ground": "ab6be6abcbd4950e2d71be21c9d06de9b5e739d14d3415a41ed852a1389a2188",
@@ -1829,7 +1829,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "duotone/indigo"
+			"layout": "wash/sage"
 		},
 		"pt/all-of-grace": {
 			"ground": "21179941fa311850e8b8cf29e4c28f959cb0b3c05ff869161d44a551d263ea4e",
@@ -1838,7 +1838,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "diagonal/ochre"
+			"layout": "band/oxblood"
 		},
 		"pt/all-things-for-good": {
 			"ground": "767a664b42a31f560158f39b7714037e7f125852b2b30893774334ce5df37c4b",
@@ -1856,7 +1856,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"pt/cheque-book": {
 			"ground": "d5b24d6d237dc26380030d5597707659508f5b8ed69c8be8969fb3ebbd82bfce",
@@ -1865,7 +1865,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"pt/clothed-with-strength-and-dignity": {
 			"ground": "45b8ee433a68e652836e8478787470e1897b195fe0230a802835b0cd21d6e878",
@@ -1883,7 +1883,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"pt/gleanings-among-the-sheaves": {
 			"ground": "faff5c2c2ea1a2855af9a50f49b2cbfb760524820994711194fcdb57252c6b45",
@@ -1892,7 +1892,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"pt/godliness": {
 			"ground": "222d108dde31cac64a15af4a17b73d314aed70e731961c38902504ee76576695",
@@ -1919,7 +1919,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"pt/humility-2": {
 			"ground": "e8a405fd835e0b2f3f38ca51a89653fda4f51abea0b4f9f7820c63e2e5ea256b",
@@ -1928,7 +1928,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"pt/jesus-himself-2": {
 			"ground": "ceb0f808a8a3b353fe77220c6f0c662bd9ceab75590179d0fad6199dc2fd9105",
@@ -1937,7 +1937,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"pt/lord-teach-us-to-pray-2": {
 			"ground": "397def9b8982b38f14df95f10721f80ed89838a9baf5187deea2abd21ff5c0b2",
@@ -1946,7 +1946,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"pt/ministry-of-intercession": {
 			"ground": "c1fad63f32eaeb37a2ec11401f9a76c668fcacf130b92e1353ae28eb7eb28231",
@@ -1955,7 +1955,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"pt/power-through-prayer": {
 			"ground": "697f92b1607f5bc979926efdcb7fcdca8b5fd89e78bb08617f001043cedbe71a",
@@ -1964,7 +1964,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "duotone/sage"
+			"layout": "split/navy"
 		},
 		"pt/prayer-the-pulse-of-life": {
 			"ground": "c30d5a2e43720ff023e27178fbe750b0f787860c1ef010c52bc8f4b5dc593635",
@@ -2009,7 +2009,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"pt/stepping-stones-2": {
 			"ground": "3d85ea47242de1c603f2dbbf4e0fed26aff1daa162b96a44e7b5e60f21424ad1",
@@ -2027,7 +2027,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"pt/the-bruised-reed": {
 			"ground": "10586d2aac80ebc4ffa8a6d42cc3f92381df370d688a17e482bdc91bce2f155e",
@@ -2036,7 +2036,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "box/ochre"
+			"layout": "framed"
 		},
 		"pt/the-god-of-all-comfort": {
 			"ground": "9d3aeb380b8125f061f036c872017e2e676b1bf72f111a9bb8f780485f0b2d25",
@@ -2054,7 +2054,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"pt/the-key-in-my-hand": {
 			"ground": "a608bcfd8c026c54e09a47e4c10e542323e872d97624c3b9f757acefb433af8f",
@@ -2072,7 +2072,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"pt/the-person-and-work-of-the-holy-spirit": {
 			"ground": "a9a099b95f1b159f65c56f8fcbeeb176fde48708b793db86829ea0e148460290",
@@ -2081,7 +2081,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"pt/the-unselfishness-of-god": {
 			"ground": "79910f0fe5615fc77c65418d3147f7ee2ac1577de608478af34b80eebb49fd4f",
@@ -2099,7 +2099,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "fade/navy"
+			"layout": "framed"
 		},
 		"pt/true-vine": {
 			"ground": "e9b849994834089443582e21668014b6ba0848f143321f3414809166a9ccccc1",
@@ -2108,7 +2108,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "wash/mauve"
+			"layout": "wash/sage"
 		},
 		"pt/union-and-communion": {
 			"ground": "3f8ea44819a8f7cb408f2cec2a25f4641488ef74731807b40e963e7c13246500",
@@ -2117,7 +2117,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "rail/teal"
 		},
 		"pt/waiting-on-god": {
 			"ground": "07d55db958da7679e0574d8eba397252b1fec242057972760e2b1d35f8f5816d",
@@ -2126,7 +2126,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "rail/sage"
+			"layout": "wash/sage"
 		},
 		"pt/watchman-nee-a-life": {
 			"ground": "7eec5d899fdf20ad8253da371099ae46d4bea27501f7d6d2fb692804314a473a",
@@ -2135,7 +2135,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "diagonal/indigo"
 		},
 		"pt/women-who-moved-heaven-2": {
 			"ground": "2748e79496cc8e3ad1e4bc0180d4450d5607a0a1e07787c5d0168583be62576f",
@@ -2153,7 +2153,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"reality-of-prayer": {
 			"ground": "3ff7e009de2d59ab5a76e18ec46a5100eaaf0141c4d00598d254897c97e0cca9",
@@ -2162,7 +2162,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "split/navy"
 		},
 		"religious-affections": {
 			"ground": "f08da596078f54e62ce2185d38705028382066fe51e4fc47d6bd74151b2399d8",
@@ -2171,7 +2171,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "fade/navy"
+			"layout": "fade/slate"
 		},
 		"religious-experience-and-journal": {
 			"ground": "bc037c161116bc6ef9abfd549261d3a2b8715dedb14046422a0ce2b666c232a9",
@@ -2207,7 +2207,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "fade/slate"
 		},
 		"selected-sermons-whitefield": {
 			"ground": "03dc28985d3a1c3ddf2763466d013b3ad4bfe2d9e8798a82c67ff52cc93a58e7",
@@ -2225,7 +2225,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "rail/teal"
 		},
 		"sermons-on-several-occasions": {
 			"ground": "61d5bb1c857733055d6fad0c2da99d72dcc1d325dce5a9f3da6aed0b692dc3d5",
@@ -2243,7 +2243,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"susanna-wesley-clarke": {
 			"ground": "6951faa8a60fc830729da35de67d522c9460432498c712a38726b10a132065c4",
@@ -2261,7 +2261,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "band/mauve"
+			"layout": "framed"
 		},
 		"sw/absolute-surrender": {
 			"ground": "16a5c3ba386c02cdea3122b541a663237428273dfa88eb02ec5a007988d97c8f",
@@ -2270,7 +2270,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "duotone/indigo"
+			"layout": "wash/sage"
 		},
 		"sw/all-of-grace": {
 			"ground": "50b3863a8086ecc3146d50d119c78a125f34a52703f79f835154b448d9241c76",
@@ -2279,7 +2279,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "diagonal/ochre"
+			"layout": "band/oxblood"
 		},
 		"sw/answers-to-prayer": {
 			"ground": "10a5609700bbccada20e96febebe3beae0da53ad2ac8b08f93626a687562db2a",
@@ -2297,7 +2297,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"sw/baptism-with-the-holy-spirit": {
 			"ground": "0595bacb3a26d2ac35107f6f9ecbd218d0ceabafcb5027c8e2144dbb21b82dce",
@@ -2306,7 +2306,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"sw/brave-for-god": {
 			"ground": "b4cd36e562bb4f654337271d321b68b83a8c216f77e783fded5b9d43a6070b49",
@@ -2351,7 +2351,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"sw/clothed-with-strength-and-dignity": {
 			"ground": "ba9a83614a219bfb49b56247dcb7f9db9042af3333b487cc6b7afa02f809efd2",
@@ -2369,7 +2369,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"sw/divine-healing": {
 			"ground": "687d09bde421adcf1dfc9bfcdd013ce6e4382989a21b4f68d648ca6247ce6f9b",
@@ -2378,7 +2378,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"sw/divine-songs-for-children": {
 			"ground": "ac8dc35cf805df8955ae064bbd3edd823fc988a9bb5d9a3dd9ecab108f9c29ce",
@@ -2405,7 +2405,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"sw/godliness": {
 			"ground": "f8dd5c32fc99eab6102d7c8dabb08e2cd8fd8307ad4bfd74806f01f0925444b8",
@@ -2441,7 +2441,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"sw/humility-2": {
 			"ground": "44c2426eaac73697f27e36b55f5fa883cbc4a3b5259d4abfd44c13aa6bca69e1",
@@ -2450,7 +2450,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"sw/jesus-himself-2": {
 			"ground": "a2af1077321530afdd70bb825ce1e58de550525ccdd93dd343826ab76a7df1a2",
@@ -2459,7 +2459,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"sw/life-and-diary-of-david-brainerd": {
 			"ground": "29c596e666e325cc4a1eaeba34dd185570bf828c97c4d0078c31308ec20386e4",
@@ -2477,7 +2477,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"sw/ministry-of-intercession": {
 			"ground": "13694bae434a8d024e0917d9423260dc4f263b243c4d0e3f9f08d3c175ff8ad1",
@@ -2486,7 +2486,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"sw/on-loving-god": {
 			"ground": "8a31409490afb763bb14900c33a63516cd445e3ffc88d76e31e8ec55c97f4942",
@@ -2495,7 +2495,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "diagonal/indigo"
+			"layout": "framed"
 		},
 		"sw/pilgrims-progress": {
 			"ground": "223802626063a563598e1460af2e3e6fcc71c4cc9434b420bfeafc338dc62867",
@@ -2504,7 +2504,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "box/teal"
+			"layout": "framed"
 		},
 		"sw/pilgrims-progress-words-of-one-syllable": {
 			"ground": "fe7f486faae208e5b336e11c44f97cc62376b1954bd3a4877e18e1400f87f9a5",
@@ -2522,7 +2522,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "duotone/sage"
+			"layout": "split/navy"
 		},
 		"sw/prayer-the-pulse-of-life": {
 			"ground": "6b9f5ca7685a1b7114298f2faf67d94f19d8ce4699d7532802f945db9cf5fa70",
@@ -2567,7 +2567,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"sw/stepping-stones-2": {
 			"ground": "a76e128fd07329d31d457d2ecfbace09f003d08f7650e567d288eae117a005e5",
@@ -2594,7 +2594,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.5,
-			"layout": "framed"
+			"layout": "band/oxblood"
 		},
 		"sw/the-christians-secret-of-a-happy-life-4": {
 			"ground": "4b5368a915ec465da59513f5f23e67b0795107e81589ebcdd1d482f33c8b18b2",
@@ -2612,7 +2612,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"sw/the-god-of-all-comfort": {
 			"ground": "c778f1b2560284cf85d225bb4aa874278a93e14c4710e64882611a6cf52655a1",
@@ -2630,7 +2630,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"sw/the-inner-chamber": {
 			"ground": "f61e809f09f9599943ecc915b7631473eff9c78e20dbdbf35a0c021d057941a6",
@@ -2639,7 +2639,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"sw/the-key-in-my-hand": {
 			"ground": "da21a04dcddb6287d47f52c9abe7ed5d36cf90fc3fe069110a1eb2a589f423a1",
@@ -2657,7 +2657,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "split/oxblood"
 		},
 		"sw/the-masters-indwelling": {
 			"ground": "32d6dc5d1e047b10968d86db3355ba626d9408e91995d39c3bd34e14fa40bd1c",
@@ -2666,7 +2666,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"sw/the-person-and-work-of-the-holy-spirit": {
 			"ground": "b2f73e8fc09b2f749cbd3f6f83df52a889f615c29e747fdeba4b750f639198c4",
@@ -2675,7 +2675,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"sw/the-unselfishness-of-god": {
 			"ground": "575c1467dac9c1da6f6162a5723f67884c1acd93a164d71dfd401803e7fd14d9",
@@ -2693,7 +2693,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "fade/navy"
+			"layout": "framed"
 		},
 		"sw/things-as-they-are": {
 			"ground": "c4e646765ff4b8bbe12bde1d6ff6d08ceb6c233ca7982095bf2d5b78e5fd68c9",
@@ -2711,7 +2711,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "split/oxblood"
+			"layout": "band/oxblood"
 		},
 		"sw/true-vine": {
 			"ground": "b21a2d190081d450028f966856d1b99f90382b464512156ff1a739954a354ca0",
@@ -2720,7 +2720,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "wash/mauve"
+			"layout": "wash/sage"
 		},
 		"sw/union-and-communion": {
 			"ground": "17038fc6723938d8af560cc00cfe3f7f30e240388fbea5ec3eb04695cec0c2af",
@@ -2729,7 +2729,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "rail/teal"
 		},
 		"sw/waiting-on-god": {
 			"ground": "cad80edfa62acfab22521e17a5acd28a21b8d4a1cff96e092aad59aa8254e116",
@@ -2738,7 +2738,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "rail/sage"
+			"layout": "wash/sage"
 		},
 		"sw/watchman-nee-a-life": {
 			"ground": "eb012ea9e64f4c122040e5e734312119320d2fce7c9b94c768665ce278b2ee16",
@@ -2747,7 +2747,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "diagonal/indigo"
 		},
 		"sw/way-into-holiest": {
 			"ground": "ccc23c936cca03954a801237d65e76942d4a3c5ad04ed21c3d0dbd9705d8ee77",
@@ -2801,7 +2801,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "box/ochre"
+			"layout": "framed"
 		},
 		"the-fourfold-gospel": {
 			"ground": "db69f96349627742c737be57da3e78156d0cbc57c92d6ab8efd4dc4b8662a828",
@@ -2810,7 +2810,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"the-fundamental-doctrines-of-the-christian-faith": {
 			"ground": "b907d5f82f421fb3c1be9d0cdb42511d40529e32b45ef252a6bbf98454f1ab25",
@@ -2819,7 +2819,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.95,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"the-gospel-of-healing": {
 			"ground": "05fbf49fb1b67d63712dabaca8c8586877422f76d1165904f7f34c1aa8e54b3c",
@@ -2828,7 +2828,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "framed"
+			"layout": "box/teal"
 		},
 		"the-imitation-of-christ": {
 			"ground": "6a70cd9985a4ad6de6e946a0aacf9740b431aa940bc84cfc49d70b38912fbf8a",
@@ -2837,7 +2837,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "wash/slate"
+			"layout": "framed"
 		},
 		"the-life-of-trust": {
 			"ground": "89b1f3246a70f85e0a65425b7f842156ca97ed3ab1257e1dadc9ec7c710205b6",
@@ -2846,7 +2846,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "split/oxblood"
 		},
 		"the-normal-christian-life": {
 			"ground": "8bb2cd5bfa77bd37b5401ec9e9a3ae51a47520480d88b0b122813c7ce593a0c7",
@@ -2855,7 +2855,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
-			"layout": "band/rust"
+			"layout": "diagonal/indigo"
 		},
 		"the-reformed-pastor": {
 			"ground": "dc2edf59ee8bc58c50ee8181b46c82f50aa02da5601156c5f730f04f1b433de0",
@@ -2873,7 +2873,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "fade/navy"
+			"layout": "framed"
 		},
 		"things-as-they-are": {
 			"ground": "7090f06cc32398199d5011091deb2f02f2a7caa55e4d8a62a1e71beb562023d5",
@@ -2900,7 +2900,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
-			"layout": "split/oxblood"
+			"layout": "band/oxblood"
 		},
 		"treatises-of-cyprian": {
 			"ground": "adf0f653b6f737896e056694d6d40586a1be563a3e2454d1e9a08fe57b77deec",
@@ -2918,7 +2918,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "wash/mauve"
+			"layout": "wash/sage"
 		},
 		"tukutendereza": {
 			"ground": "153daf8655f1057a61a8c46d62ddc21980a1b613d0450ce91d777c2507dd957d",
@@ -2936,7 +2936,7 @@
 			"script": "cyrillic",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "duotone/ochre"
 		},
 		"uk/clothed-with-strength-and-dignity": {
 			"ground": "00ba9532f6717d38be465563dd2a9681fefdcf09304c70fc3425ff8e0f3ea415",
@@ -2972,7 +2972,7 @@
 			"script": "cyrillic",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"uk/the-inner-chamber": {
 			"ground": "fb9325a52995fb69b6b6b5bc819ff6a2ef8d6c7f655b62023089bf7a0879eebd",
@@ -2981,7 +2981,7 @@
 			"script": "cyrillic",
 			"art": true,
 			"scrim": 0.3,
-			"layout": "framed"
+			"layout": "wash/sage"
 		},
 		"uk/the-unselfishness-of-god": {
 			"ground": "88293e22762c4408c14ee417f17fa9cfd5db143be9f8655a631d1da4e0bf3190",
@@ -2999,7 +2999,7 @@
 			"script": "cyrillic",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "rail/sage"
+			"layout": "wash/sage"
 		},
 		"union-and-communion": {
 			"ground": "526cff85d67cbd9bd08c0b5116e2bcfbb07b1b84c81d11f66b5104d0a2245b50",
@@ -3008,7 +3008,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed"
+			"layout": "rail/teal"
 		},
 		"waiting-on-god": {
 			"ground": "4953e3a74672ccc0d17902faaf8abbf55cef0962b5c9939cea1a6504a6b307b9",
@@ -3017,7 +3017,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "rail/sage"
+			"layout": "wash/sage"
 		},
 		"watchman-nee-a-life": {
 			"ground": "f30ea137235a5c8b437bb14f76b35401fe9beead579df070d556d3bf84414386",
@@ -3026,7 +3026,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
-			"layout": "framed"
+			"layout": "diagonal/indigo"
 		},
 		"way-into-holiest": {
 			"ground": "4eb25026c8e1354506a7d9c7f63eb4d6eae92a26393667d351898928b3e38636",

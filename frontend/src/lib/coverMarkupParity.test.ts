@@ -6,6 +6,8 @@ import { afterEach, describe, expect, it } from 'vitest';
 import BookCover from './components/BookCover.svelte';
 import { coverPlateMarkup, coverTypeMarkup, type CoverCardBook } from './coverCardMarkup';
 import { coverLayoutFor } from './coverLayouts';
+import { coverStyleFor } from './coverStyles';
+import { eraOf } from './eras';
 import { scrimStrength } from './coverScrim';
 import type { BookSummary } from '$lib/library-public';
 
@@ -148,22 +150,31 @@ describe('the two cover renderers agree', () => {
 			// `--scrim-strength`, which the skeleton compares as a style attribute.
 			// `waiting-on-god` is a real work with a measured strength, so this is
 			// the case that catches the card and the page disagreeing about it.
-			// It is also railed (`coverLayouts.ts`), so this is the case where the
-			// two disagreeing about a layout's classes would show.
+			// Andrew Murray is also a laid-out author (`coverLayouts.ts`), so this
+			// is the case where the two disagreeing about a layout's classes
+			// would show.
 			{
 				art: true,
 				scrim: scrimStrength('waiting-on-god'),
-				layout: coverLayoutFor('waiting-on-god', null)
+				layout: coverLayoutFor('andrew-murray', null)
 			}
 		],
 		[
 			'a painting in the framed composition',
-			// A work with a painting and no entry in the layout table.
-			{ cover_url: '/covers/art/a-retrospect.jpg', slug: 'a-retrospect' },
-			{ art: true, scrim: scrimStrength('a-retrospect') }
+			// A painting by an author with no entry in the layout table.
+			{
+				cover_url: '/covers/art/a-retrospect.jpg',
+				slug: 'a-retrospect',
+				author: { slug: 'richard-baxter', name: 'Andrew Murray', birth_year: 1828 }
+			},
+			{
+				art: true,
+				scrim: scrimStrength('a-retrospect'),
+				style: coverStyleFor(eraOf(1828), 'richard-baxter', 'a-retrospect')
+			}
 		],
 		[
-			'a railed painting in arabic, which takes the title box',
+			'a laid-out painting in arabic',
 			{ cover_url: ART, language: 'ar', title: 'انتظار الله' },
 			{
 				lang: 'ar',
@@ -171,7 +182,7 @@ describe('the two cover renderers agree', () => {
 				title: 'انتظار الله',
 				art: true,
 				scrim: scrimStrength('waiting-on-god'),
-				layout: coverLayoutFor('waiting-on-god', 'arabic')
+				layout: coverLayoutFor('andrew-murray', 'arabic')
 			}
 		],
 		[

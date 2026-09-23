@@ -165,7 +165,7 @@
 	const volume = $derived(volumeNumeral(book.slug, lang));
 	/** The layout a painting is composed in (`coverLayouts.ts`); null for the
 	 *  framed composition, and always null off a painting. */
-	const layout = $derived(isArt ? coverLayoutFor(book.slug, script) : null);
+	const layout = $derived(isArt ? coverLayoutFor(book.author.slug, script) : null);
 </script>
 
 <!-- The cover's type. Identical over a painting, over a plate file and over the

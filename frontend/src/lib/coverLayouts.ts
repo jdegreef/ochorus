@@ -11,8 +11,8 @@
  * painting can be shown at its own brightness, and neighbouring books stop
  * looking like one another.
  *
- * `framed` is that original composition and stays the default: a book not in
- * the table below looks exactly as it did. Only a PAINTING takes a layout. A
+ * `framed` is that original composition and stays the default: a book whose
+ * author is not in the table below looks exactly as it did. Only a PAINTING takes a layout. A
  * designed cover carries its words in its pixels, and a plate is a flat colour
  * with an emblem that the framed composition was drawn around.
  *
@@ -69,32 +69,30 @@ export interface CoverLayout {
 }
 
 /**
- * The works composed in something other than `framed`, by slug — so every
- * edition of a work wears the same layout, as every edition shares its
- * painting.
+ * The authors whose painted covers are composed in something other than
+ * `framed`, by author slug. KEYED BY AUTHOR, like `coverStyles.AUTHOR_STYLE`:
+ * a reader who has met one Andrew Murray cover should recognise the next, so
+ * every painted book by an author wears one layout in one colour, and every
+ * edition of it too.
  *
- * Chosen for the shelf, not book by book in isolation: the point is variety
- * across a row, so a new entry is worth checking beside its neighbours on
- * /books. `coverLayouts.test.ts` fails when a slug here does not wear a
- * painting in English.
+ * Deliberately not everyone. The framed composition is a look worth keeping,
+ * and a shelf where every author has a layout of their own is as uniform as one
+ * where none does. An author not listed here stays framed.
+ *
+ * `coverLayouts.test.ts` fails when an author here has no painted book in
+ * English, and when a railed author has a title too long for the rail.
  */
-export const BOOK_LAYOUT: Record<string, CoverLayout> = {
-	'a-short-and-easy-method-of-prayer': { layout: 'band', hue: 'mauve' },
-	'absolute-surrender': { layout: 'duotone', hue: 'indigo' },
-	'all-of-grace': { layout: 'diagonal', hue: 'ochre' },
-	'answers-to-prayer': { layout: 'split', hue: 'oxblood' },
-	confessions: { layout: 'rail', hue: 'rust' },
-	'on-loving-god': { layout: 'diagonal', hue: 'indigo' },
-	'pilgrims-progress': { layout: 'box', hue: 'teal' },
-	'power-through-prayer': { layout: 'duotone', hue: 'sage' },
-	'religious-affections': { layout: 'fade', hue: 'navy' },
-	'the-bruised-reed': { layout: 'box', hue: 'ochre' },
-	'the-imitation-of-christ': { layout: 'wash', hue: 'slate' },
-	'the-normal-christian-life': { layout: 'band', hue: 'rust' },
-	'the-way-to-god': { layout: 'fade', hue: 'navy' },
-	'till-he-come': { layout: 'split', hue: 'oxblood' },
-	'true-vine': { layout: 'wash', hue: 'mauve' },
-	'waiting-on-god': { layout: 'rail', hue: 'sage' }
+export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
+	'a-b-simpson': { layout: 'box', hue: 'teal' },
+	'andrew-murray': { layout: 'wash', hue: 'sage' },
+	'augustine-of-hippo': { layout: 'rail', hue: 'rust' },
+	'charles-h-spurgeon': { layout: 'band', hue: 'oxblood' },
+	'e-m-bounds': { layout: 'split', hue: 'navy' },
+	'george-muller': { layout: 'split', hue: 'oxblood' },
+	'hudson-taylor': { layout: 'rail', hue: 'teal' },
+	'jonathan-edwards': { layout: 'fade', hue: 'slate' },
+	'r-a-torrey': { layout: 'duotone', hue: 'ochre' },
+	'watchman-nee': { layout: 'diagonal', hue: 'indigo' }
 };
 
 /** The scripts a title cannot be turned sideways in. */
@@ -106,11 +104,11 @@ const SIDEWAYS_UNSAFE = new Set(['arabic', 'devanagari']);
  * `script` is `coverStyles.scriptOf`'s answer for the edition. The rail sets
  * its title sideways, which suits a Latin or Cyrillic title and mangles an
  * Arabic or Devanagari one — a cursive or hanging script turned on its side —
- * so those editions of a railed work take the title box instead, in the same
- * colour.
+ * so those editions of a railed author's books take the title box instead,
+ * in the same colour.
  */
-export function coverLayoutFor(slug: string, script: string | null): CoverLayout | null {
-	const found = BOOK_LAYOUT[slug];
+export function coverLayoutFor(authorSlug: string, script: string | null): CoverLayout | null {
+	const found = AUTHOR_LAYOUT[authorSlug];
 	if (!found) return null;
 	if (found.layout === 'rail' && SIDEWAYS_UNSAFE.has(script ?? '')) {
 		return { layout: 'box', hue: found.hue };

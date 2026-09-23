@@ -230,7 +230,7 @@ function needTwins() {
 				// painting in the library needs.
 				scrim: scrimStrength(fields.slug),
 				// A painting's composition; a plate takes none.
-				layout: isArtCover(cover) ? coverLayoutFor(fields.slug, script) : null
+				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script) : null
 			};
 		})
 		.filter((b) => hasTwin(b.cover));
@@ -439,11 +439,13 @@ function inputs(book, ground) {
  * longer anything left in here to keep in step by hand.
  */
 function coverPage(book, groundBytes) {
-	// A painting is an <img> so `object-fit` can crop it; a plate is inlined,
-	// which is what lets its gradient and emblem paint at any size without a
-	// second file. Neither carries a word.
+	// A painting is an <img> so `object-fit` can crop it — typed by its file,
+	// since the `key-teachings-*` grounds under `covers/art/` are drawn SVGs, and
+	// one labelled a JPEG rendered as a broken image under the type. A plate is
+	// inlined, which is what lets its gradient and emblem paint at any size
+	// without a second file. Neither carries a word.
 	const ground = book.art
-		? `<img class="ground cover-ground" src="data:image/jpeg;base64,${groundBytes.toString('base64')}" alt="">`
+		? `<img class="ground cover-ground" src="data:${book.cover.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg'};base64,${groundBytes.toString('base64')}" alt="">`
 		: `<div class="ground">${groundBytes.toString('utf8')}</div>`;
 	return `<style>${fontCssFor(book.script)}${COVER_CSS}
 html,body{margin:0}

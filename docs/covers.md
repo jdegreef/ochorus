@@ -60,13 +60,13 @@ The look is `components/cover-type.css`; *which* look is `coverStyles.ts`.
 | series numeral over the title | `SERIES_VOLUME` in `coverStyles.ts` | book |
 | script corrections (Arabic, Devanagari, Cyrillic) | `COVER_SCRIPTS` + the `.script-*` blocks in `cover-type.css` | the edition's language, via `Intl.Locale` |
 | scrim under the type on a painting | `art_scrim.py` / `coverScrim.ts` | work — **measured**, by `tune_art_scrim.py` |
-| layout and hue of a painting (band, box, split, fade, diagonal, duotone, wash, rail; default framed) | `BOOK_LAYOUT` in `coverLayouts.ts`; the `.cover-layout-*` / `.cover-hue-*` blocks in `cover-type.css` | work |
+| layout and hue of a painting (band, box, split, fade, diagonal, duotone, wash, rail; default framed) | `AUTHOR_LAYOUT` in `coverLayouts.ts`; the `.cover-layout-*` / `.cover-hue-*` blocks in `cover-type.css` | author |
 | topic emblem on a plate | `backend/library/data/emblems/topics.json` | the book's first topic |
 
 A **layout** replaces the framed composition on a painting only: paper panels
-drawn over the ground carry dark ink, so a layout needs no scrim. A work not in
-`BOOK_LAYOUT` stays framed. Giving one a layout changes its twins — run
-`npm run og:covers`.
+drawn over the ground carry dark ink, so a layout needs no scrim. It is chosen
+per author, so an author's books look alike; an author not in `AUTHOR_LAYOUT`
+stays framed. Changing one redraws their twins — run `npm run og:covers`.
 
 The eight styles: `inscriptional`, `devotional`, `press`, `enlightenment`,
 `revival`, `house` (by century); `originals` (Ochorus' own imprint);
@@ -122,7 +122,7 @@ The other tools, for jobs `paint_covers` does not cover:
 | `tests_fixture` — twins | an edition that needs a twin has none, or its twin was drawn from an older cover or title |
 | `coverOgManifest.test.ts` | twins drawn with an older stylesheet, markup, style or series number; the manifest is **out of order or has a duplicate entry** |
 | `coverMarkupParity.test.ts` | the app and the share-twin script would draw different trees |
-| `coverLayouts.test.ts` | a layout or hue has no CSS (or CSS names one the table doesn't), a laid-out work doesn't wear a painting in English, or a hue's paper/ink/band drops below contrast |
+| `coverLayouts.test.ts` | a layout or hue has no CSS (or CSS names one the table doesn't), a laid-out author has no painting in English, a railed title is too long for the rail, or a hue's paper/ink/band drops below contrast |
 | `coverStyles.test.ts` | a style has no CSS, names a face nothing loads, asks a face for a weight it lacks, or the young-readers table drifts from the shelf |
 | `coverArt.test.ts` | a published edition's share source is missing, or twin/landscape sizes drift |
 | e2e `smoke.spec.ts` | the built site doesn't serve a book's landscape card as a JPEG |
