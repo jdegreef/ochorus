@@ -19,19 +19,27 @@
 	} from '$lib/library-admin';
 
 	const CATEGORIES = ['language', 'content', 'feature', 'bug', 'other'] as const;
+	const SOURCES = ['menu', 'fab', 'highlight'] as const;
+	const SOURCE_LABEL: Record<string, string> = {
+		menu: 'account menu',
+		fab: 'floating button',
+		highlight: 'highlighted text'
+	};
 	const STATUSES = ['new', ...FEEDBACK_TRIAGE_STATUSES] as const;
 
 	let statusFilter = $state('');
 	let categoryFilter = $state('');
+	let sourceFilter = $state('');
 
 	const queue = adminResource(
 		() =>
 			getFeedbackQueue({
 				status: statusFilter || undefined,
-				category: categoryFilter || undefined
+				category: categoryFilter || undefined,
+				source: sourceFilter || undefined
 			}),
 		"Couldn't load the feedback queue",
-		() => `${statusFilter}|${categoryFilter}`
+		() => `${statusFilter}|${categoryFilter}|${sourceFilter}`
 	);
 
 	// Per-row edit + request state, keyed by item id.
@@ -126,6 +134,12 @@
 						<option value={c}>{c}</option>
 					{/each}
 				</select>
+				<select class="field" bind:value={sourceFilter} aria-label="Filter by source">
+					<option value="">Any source</option>
+					{#each SOURCES as s (s)}
+						<option value={s}>{SOURCE_LABEL[s]}</option>
+					{/each}
+				</select>
 			</div>
 
 			{#if data.items.length === 0}
@@ -151,6 +165,11 @@
 									<span>· {item.content_kind}: {item.content_slug}{item.content_language
 											? ` (${item.content_language})`
 											: ''}{item.chapter_ref ? ` · ch. ${item.chapter_ref}` : ''}</span>
+								{/if}
+								{#if item.similar}
+									<span class="rounded bg-accent-soft px-2 py-0.5 font-medium text-accent"
+										>{item.similar} similar</span
+									>
 								{/if}
 								<span class="ms-auto">{new Date(item.created_at).toLocaleDateString()}</span>
 							</div>

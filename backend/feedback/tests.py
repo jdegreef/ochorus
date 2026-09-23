@@ -230,3 +230,74 @@ class AdminQueueTests(TestCase):
         self.client.force_authenticate(user=self.super, token=VERIFIED)
         resp = self.client.post("/api/admin/feedback/999999/", {"status": "done"}, format="json")
         self.assertEqual(resp.status_code, 404)
+
+    # --- language scoping (Phase 3) ---
+
+    def _lang_admin(self, languages="lg", email="la@ochorus.com"):
+        AdminGrant.objects.create(email=email, capability=C.FEEDBACK, verb=V.ACT, languages=languages)
+        u = User.objects.create(username=f"uid-{email}", email=email)
+        self.client.force_authenticate(user=u, token=VERIFIED)
+        return u
+
+    def _mk(self, lang, body="a note to look at"):
+        return Feedback.objects.create(
+            submitter=_profile(f"{lang or 'none'}-{uuid.uuid4()}@x.com"),
+            content_language=lang,
+            category="language",
+            body=body,
+        )
+
+    def test_language_admin_sees_only_their_languages(self):
+        self._mk("lg")
+        self._mk("en")
+        # self.item is language-less (content_language "").
+        self._lang_admin(languages="lg")
+        data = self.client.get("/api/admin/feedback/").data
+        self.assertEqual({i["content_language"] for i in data["items"]}, {"lg"})
+
+    def test_language_admin_cannot_triage_out_of_scope(self):
+        en_item = self._mk("en")
+        self._lang_admin(languages="lg")
+        resp = self.client.post(
+            f"/api/admin/feedback/{en_item.pk}/", {"status": "planned"}, format="json"
+        )
+        self.assertEqual(resp.status_code, 403)
+
+    def test_super_admin_sees_all_languages_and_language_less(self):
+        self._mk("lg")
+        self._mk("en")
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        langs = {i["content_language"] for i in self.client.get("/api/admin/feedback/").data["items"]}
+        self.assertEqual(langs, {"lg", "en", ""})
+
+    def test_source_filter(self):
+        Feedback.objects.create(
+            submitter=_profile("h@x.com"), category="content", body="from a highlight", source="highlight"
+        )
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        data = self.client.get("/api/admin/feedback/?source=highlight").data
+        self.assertTrue(data["items"] and all(i["source"] == "highlight" for i in data["items"]))
+
+    def test_similar_nudge_counts_same_passage(self):
+        for _ in range(3):
+            self._mk("lg")  # same content: language 'lg', no slug → not clustered
+        a = Feedback.objects.create(
+            submitter=_profile("s1@x.com"), category="content", body="one",
+            content_kind="book", content_slug="humility", chapter_ref="3", content_language="lg",
+        )
+        Feedback.objects.create(
+            submitter=_profile("s2@x.com"), category="content", body="two",
+            content_kind="book", content_slug="humility", chapter_ref="3", content_language="lg",
+        )
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        items = self.client.get("/api/admin/feedback/").data["items"]
+        hit = next(i for i in items if i["id"] == a.id)
+        self.assertEqual(hit["similar"], 1)  # one other row on humility ch.3
+
+    def test_language_admin_preset_opens_scoped_feedback(self):
+        from accounts.admin_roles import apply_grant
+
+        apply_grant("hannah@ochorus.com", role="language_admin", languages="lg")
+        u = User.objects.create(username="uid-hannah", email="hannah@ochorus.com")
+        self.client.force_authenticate(user=u, token=VERIFIED)
+        self.assertEqual(self.client.get("/api/admin/feedback/").status_code, 200)
