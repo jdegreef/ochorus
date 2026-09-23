@@ -6,17 +6,16 @@
 		DAILY_STEPS,
 		UPDATE_MAX,
 		daysWaited,
-		formatRemind,
-		parseRemind,
 		type JournalEntry
 	} from '$lib/journal';
 	import { journal } from '$lib/journal.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { journalSync } from '$lib/journalSyncState.svelte';
 	import { sourceHref } from '$lib/editionHref';
-	import { downloadRemindCalendar, remindLabel, weekdayName } from '$lib/prayerRemind';
+	import { downloadRemindCalendar, remindLabel } from '$lib/prayerRemind';
 	import EntryComposer from './EntryComposer.svelte';
 	import DictateButton from './DictateButton.svelte';
+	import ReminderPicker from './ReminderPicker.svelte';
 	import { appendPhrase } from '$lib/dictation.svelte';
 
 	/**
@@ -34,21 +33,9 @@
 	let mode = $state<'view' | 'edit' | 'answer' | 'update' | 'remind'>('view');
 	let answerText = $state('');
 	let updateText = $state('');
-	let remFreq = $state<'daily' | 'weekly'>('daily');
-	let remDay = $state(0);
-	let remTime = $state('07:00');
 
-	const weekdays = $derived(Array.from({ length: 7 }, (_, d) => weekdayName(d, locale)));
 
-	function startRemind() {
-		const cur = parseRemind(entry.remind);
-		remFreq = cur?.freq ?? 'daily';
-		remDay = cur?.day ?? 0;
-		remTime = cur?.time ?? '07:00';
-		mode = 'remind';
-	}
-	function saveRemind() {
-		const r = formatRemind(remFreq, remDay, remTime);
+	function saveRemind(r: string) {
 		journal.setRemind(entry.id, r);
 		downloadRemindCalendar(entry, r);
 		mode = 'view';
@@ -206,34 +193,18 @@
 				<button type="submit" class="btn btn-primary btn-sm" disabled={!updateText.trim()}>{t('notebook.addUpdate')}</button>
 			</form>
 		{:else if mode === 'remind'}
-			<div class="remind-panel mt-3">
-				<p class="mb-2 text-small font-semibold text-text">{t('notebook.remindTitle')}</p>
-				<div class="flex flex-wrap items-center gap-2">
-					<div class="seg" role="group" aria-label={t('notebook.remindTitle')}>
-						<button type="button" class:active={remFreq === 'daily'} aria-pressed={remFreq === 'daily'} onclick={() => (remFreq = 'daily')}>{t('notebook.remindDaily')}</button>
-						<button type="button" class:active={remFreq === 'weekly'} aria-pressed={remFreq === 'weekly'} onclick={() => (remFreq = 'weekly')}>{t('notebook.remindWeekly')}</button>
-					</div>
-					{#if remFreq === 'weekly'}
-						<select class="field" bind:value={remDay} aria-label={t('notebook.remindDay')}>
-							{#each weekdays as name, d (d)}<option value={d}>{name}</option>{/each}
-						</select>
-					{/if}
-					<input class="field" type="time" bind:value={remTime} aria-label={t('notebook.remindTime')} />
-				</div>
-				<p class="mt-2 text-micro text-muted">{t('notebook.remindHint')}</p>
-				<div class="mt-2 flex flex-wrap justify-end gap-2">
-					{#if entry.remind}
-						<button
-							class="btn btn-ghost btn-sm"
-							onclick={() => {
-								journal.setRemind(entry.id, '');
-								mode = 'view';
-							}}>{t('notebook.remindRemove')}</button
-						>
-					{/if}
-					<button class="btn btn-ghost btn-sm" onclick={() => (mode = 'view')}>{t('common.cancel')}</button>
-					<button class="btn btn-primary btn-sm" onclick={saveRemind} disabled={!remTime}>{t('notebook.remindSave')}</button>
-				</div>
+			<div class="mt-3">
+				<ReminderPicker
+					value={entry.remind}
+					{locale}
+					title={t('notebook.remindTitle')}
+					onsave={saveRemind}
+					onremove={() => {
+						journal.setRemind(entry.id, '');
+						mode = 'view';
+					}}
+					oncancel={() => (mode = 'view')}
+				/>
 			</div>
 		{:else if mode === 'answer'}
 			<div class="mt-3">
@@ -257,7 +228,7 @@
 				{#if entry.kind === 'prayer' && !entry.answeredAt}
 					<button class="btn btn-sm answer-btn" onclick={startAnswer}>✓ {t('notebook.markAnswered')}</button>
 					<button class="btn btn-ghost btn-sm" onclick={() => (mode = 'update')}>+ {t('notebook.addUpdate')}</button>
-					<button class="btn btn-ghost btn-sm" onclick={startRemind}><span aria-hidden="true" class="me-1">🔔</span>{t('notebook.remindMe')}</button>
+					<button class="btn btn-ghost btn-sm" onclick={() => (mode = 'remind')}><span aria-hidden="true" class="me-1">🔔</span>{t('notebook.remindMe')}</button>
 				{:else if entry.answeredAt}
 					<button class="btn btn-ghost btn-sm" onclick={startAnswer}>{t('notebook.editAnswer')}</button>
 					<button class="btn btn-ghost btn-sm" onclick={() => journal.setAnswered(entry.id, false)}>
@@ -394,12 +365,6 @@
 		margin-top: 0.5rem;
 		color: var(--warning);
 		font-weight: 600;
-	}
-	.remind-panel {
-		padding: 0.85rem 1rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-sm);
-		background: var(--surface-2);
 	}
 	.entry-title {
 		margin-top: 0.35rem;

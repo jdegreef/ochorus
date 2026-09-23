@@ -15,7 +15,8 @@
 		cards,
 		locale,
 		onopen,
-		onpray
+		onpray,
+		showGroup = true
 	}: {
 		cards: PersonGroup[];
 		locale: string;
@@ -23,6 +24,8 @@
 		onopen: (person: string) => void;
 		/** Start a new prayer for this person. */
 		onpray: (person: string, group: PersonGroup['group']) => void;
+		/** Off inside a group's own list, where the heading already names it. */
+		showGroup?: boolean;
 	} = $props();
 
 	const t = i18n.t;
@@ -35,7 +38,7 @@
 				<span class="head">
 					<span class="avatar" aria-hidden="true">{c.person ? initials(c.person) : '✦'}</span>
 					<span class="name">{c.person || t('notebook.forAnyone')}</span>
-					{#if c.group}<span class="group">{t(`notebook.group_${c.group}`)}</span>{/if}
+					{#if c.group && showGroup}<span class="group">{t(`notebook.group_${c.group}`)}</span>{/if}
 				</span>
 				<span class="prayers">
 					{#each c.prayers.slice(0, 3) as p (p.id)}

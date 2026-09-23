@@ -611,3 +611,34 @@ export function journalForPrint(store: JournalStore, from: number) {
 	}
 	return { answered: months, answeredCount: answered.length, praying, notes, daily };
 }
+
+/** One prayer list: a group and the people in it, as the "by person" cards. */
+export interface PrayerList {
+	/** '' collects the prayers in no group. */
+	group: PrayerGroup | '';
+	cards: PersonGroup[];
+	/** Open prayers in the list. */
+	count: number;
+}
+
+/**
+ * The prayer lists — Family, Friends, Church, Missions, Work, The world — each
+ * holding its people's still-open prayers, in the order the Notebook offers
+ * the groups; the prayers in no group come last. A person sits in the list of
+ * their card's group (the group their newest prayer gives). Empty lists are
+ * left out.
+ */
+export function prayersByGroup(store: JournalStore, q = ''): PrayerList[] {
+	const lists = new Map<PrayerGroup | '', PersonGroup[]>();
+	for (const card of prayersByPerson(store, q)) {
+		const list = lists.get(card.group) ?? [];
+		list.push(card);
+		lists.set(card.group, list);
+	}
+	return [...PRAYER_GROUPS, '' as const]
+		.filter((g) => lists.has(g))
+		.map((group) => {
+			const cards = lists.get(group)!;
+			return { group, cards, count: cards.reduce((n, c) => n + c.prayers.length, 0) };
+		});
+}

@@ -960,5 +960,12 @@
   "notebook_sync_done": "Усе синхронізовано",
   "notebook_sync_entry_pending": "На цьому пристрої",
   "notebook_sync_entry_pending_hint": "Збережено на цьому пристрої; синхронізується з вашим обліковим записом, щойно буде змога.",
-  "notebook_sync_entry_done": "Синхронізовано з вашим обліковим записом"
+  "notebook_sync_entry_done": "Синхронізовано з вашим обліковим записом",
+  "notebook_by_group": "За групами",
+  "notebook_one_list_prayer": "1 молитва",
+  "notebook_list_prayers": "Молитов: {n}",
+  "notebook_list_remind": "Нагадувати молитися за цей список",
+  "notebook_list_remind_title": "Нагадувати молитися: {group}",
+  "notebook_group_remind_summary": "Помолитися: {group}",
+  "notebook_all_lists": "Усі списки"
 }

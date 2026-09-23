@@ -960,5 +960,12 @@
   "notebook_sync_done": "Byonna bigattiddwa",
   "notebook_sync_entry_pending": "Ku kyuma kino",
   "notebook_sync_entry_pending_hint": "Kiterekeddwa ku kyuma kino; kijja kugattibwa ku akawunti yo nga kisobose.",
-  "notebook_sync_entry_done": "Kigattiddwa ku akawunti yo"
+  "notebook_sync_entry_done": "Kigattiddwa ku akawunti yo",
+  "notebook_by_group": "Ku kibinja",
+  "notebook_one_list_prayer": "Essaala 1",
+  "notebook_list_prayers": "Essaala {n}",
+  "notebook_list_remind": "Nzijukiza okusabira olukalala luno",
+  "notebook_list_remind_title": "Nzijukiza okusabira: {group}",
+  "notebook_group_remind_summary": "Sabira: {group}",
+  "notebook_all_lists": "Enkalala zonna"
 }

@@ -16,6 +16,7 @@ import {
 	toServer,
 	knownPeople,
 	parseRemind,
+	prayersByGroup,
 	prayersByPerson,
 	daysWaited,
 	groupByDay,
@@ -302,5 +303,22 @@ describe('journal entries', () => {
 		expect(year.daily.map((e) => e.id)).toEqual(['d']);
 		expect(journalForPrint(store, 0).notes.map((e) => e.id)).toEqual(['old', 'n0', 'n1']);
 		expect(periodStart('month', new Date('2026-09-23T12:00:00'))).toBe(new Date(2026, 8, 1).getTime());
+	});
+
+	it('gathers the prayer lists by group, in the offered order, ungrouped last', () => {
+		const store = cleanStore({
+			a: entry('a', { kind: 'prayer', person: 'Anna', group: 'family', createdAt: T0 + 3 }),
+			m: entry('m', { kind: 'prayer', person: 'Gulu church', group: 'missions', createdAt: T0 + 2 }),
+			m2: entry('m2', { kind: 'prayer', person: 'Gulu church', group: 'missions', createdAt: T0 + 1 }),
+			x: entry('x', { kind: 'prayer', person: 'Sam', createdAt: T0 + 4 }),
+			done: entry('done', { kind: 'prayer', person: 'Dad', group: 'family', answeredAt: T0 + 5 })
+		});
+		const lists = prayersByGroup(store);
+		expect(lists.map((l) => [l.group, l.count, l.cards.map((c) => c.person)])).toEqual([
+			['family', 1, ['Anna']],
+			['missions', 2, ['Gulu church']],
+			['', 1, ['Sam']]
+		]);
+		expect(prayersByGroup(store, 'gulu').map((l) => l.group)).toEqual(['missions']);
 	});
 });

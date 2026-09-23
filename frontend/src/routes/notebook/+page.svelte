@@ -12,7 +12,9 @@
 		groupByDay,
 		onThisDay,
 		journalStats,
+		prayersByGroup,
 		prayersByPerson,
+		PRAYER_GROUPS,
 		visibleEntries,
 		type PrayerGroup,
 		type JournalFilter,
@@ -26,6 +28,7 @@
 	import JournalEntryCard from '$lib/components/notebook/JournalEntryCard.svelte';
 	import ReadingClippings from '$lib/components/notebook/ReadingClippings.svelte';
 	import PrayerList from '$lib/components/notebook/PrayerList.svelte';
+	import PrayerGroups from '$lib/components/notebook/PrayerGroups.svelte';
 	import FaithfulnessTimeline from '$lib/components/notebook/FaithfulnessTimeline.svelte';
 	import OnThisDay from '$lib/components/notebook/OnThisDay.svelte';
 	import SyncStatus from '$lib/components/notebook/SyncStatus.svelte';
@@ -102,7 +105,16 @@
 
 	// The Prayers tab reads as a prayer list, by person, until the reader opens
 	// one person's prayers (or asks for them by date).
-	let prayerLayout = $state<'person' | 'date'>('person');
+	// A list reminder's calendar event links to ?group=<group>: open that list.
+	const linkedGroup = $page.url.searchParams.get('group');
+	const groupFromLink = PRAYER_GROUPS.includes(linkedGroup as PrayerGroup)
+		? (linkedGroup as PrayerGroup)
+		: linkedGroup === 'other'
+			? ''
+			: null;
+	let prayerLayout = $state<'person' | 'group' | 'date'>(groupFromLink === null ? 'person' : 'group');
+	/** One prayer list, opened from its reminder's link; null = every list. */
+	let listFilter = $state<PrayerGroup | '' | null>(groupFromLink);
 	// The Answered tab opens on the faithfulness timeline; "By date" has the cards.
 	let answeredLayout = $state<'timeline' | 'date'>('timeline');
 	const record = $derived(view === 'answered' ? faithfulness(journal.store, q) : null);
@@ -111,6 +123,12 @@
 	let personFilter = $state<string | null>(null);
 	const byPerson = $derived(view === 'prayers' && prayerLayout === 'person' && personFilter === null);
 	const personCards = $derived(byPerson ? prayersByPerson(journal.store, q) : []);
+	const byGroup = $derived(view === 'prayers' && prayerLayout === 'group' && personFilter === null);
+	const lists = $derived(
+		byGroup
+			? prayersByGroup(journal.store, q).filter((l) => listFilter === null || l.group === listFilter)
+			: []
+	);
 
 	const entries = $derived.by(() => {
 		if (!journalFilter) return [];
@@ -134,6 +152,7 @@
 		view = v;
 		if (VIEWS[v].reading) clippingsLoaded = true;
 		personFilter = null;
+		listFilter = null;
 		prefill = undefined;
 		if (v === 'bookmarks') colorFilter = '';
 		// Keep the view in the URL so it's shareable and survives the reload a
@@ -273,6 +292,11 @@
 										onclick={() => (prayerLayout = 'person')}>{t('notebook.byPerson')}</button
 									>
 									<button
+										class:active={prayerLayout === 'group'}
+										aria-pressed={prayerLayout === 'group'}
+										onclick={() => (prayerLayout = 'group')}>{t('notebook.byGroup')}</button
+									>
+									<button
 										class:active={prayerLayout === 'date'}
 										aria-pressed={prayerLayout === 'date'}
 										onclick={() => (prayerLayout = 'date')}>{t('notebook.byDate')}</button
@@ -301,6 +325,11 @@
 
 					{#if showTimeline && record?.months.length}
 						<FaithfulnessTimeline months={record.months} {locale} />
+					{:else if byGroup && lists.length}
+						{#if listFilter !== null}
+							<button class="chip mt-4" onclick={() => (listFilter = null)}>← {t('notebook.allLists')}</button>
+						{/if}
+						<PrayerGroups {lists} {locale} onopen={(p) => (personFilter = p)} onpray={prayFor} />
 					{:else if byPerson && personCards.length}
 						<PrayerList cards={personCards} {locale} onopen={(p) => (personFilter = p)} onpray={prayFor} />
 					{:else if entries.length === 0}

@@ -960,5 +960,12 @@
   "notebook_sync_done": "Vyote vimesawazishwa",
   "notebook_sync_entry_pending": "Kwenye kifaa hiki",
   "notebook_sync_entry_pending_hint": "Imehifadhiwa kwenye kifaa hiki; itasawazishwa na akaunti yako itakapowezekana.",
-  "notebook_sync_entry_done": "Imesawazishwa na akaunti yako"
+  "notebook_sync_entry_done": "Imesawazishwa na akaunti yako",
+  "notebook_by_group": "Kwa kundi",
+  "notebook_one_list_prayer": "Ombi 1",
+  "notebook_list_prayers": "Maombi {n}",
+  "notebook_list_remind": "Nikumbushe kuombea orodha hii",
+  "notebook_list_remind_title": "Nikumbushe kuombea: {group}",
+  "notebook_group_remind_summary": "Ombea: {group}",
+  "notebook_all_lists": "Orodha zote"
 }

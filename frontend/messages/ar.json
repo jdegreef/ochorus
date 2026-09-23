@@ -960,5 +960,12 @@
   "notebook_sync_done": "تمت مزامنة الكل",
   "notebook_sync_entry_pending": "على هذا الجهاز",
   "notebook_sync_entry_pending_hint": "محفوظ على هذا الجهاز؛ ستتم مزامنته مع حسابك عندما يكون ذلك ممكنًا.",
-  "notebook_sync_entry_done": "تمت المزامنة مع حسابك"
+  "notebook_sync_entry_done": "تمت المزامنة مع حسابك",
+  "notebook_by_group": "حسب المجموعة",
+  "notebook_one_list_prayer": "صلاة واحدة",
+  "notebook_list_prayers": "{n} صلوات",
+  "notebook_list_remind": "ذكّرني بالصلاة لأجل هذه القائمة",
+  "notebook_list_remind_title": "ذكّرني بالصلاة لأجل: {group}",
+  "notebook_group_remind_summary": "صلِّ لأجل: {group}",
+  "notebook_all_lists": "كل القوائم"
 }

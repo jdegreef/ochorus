@@ -960,5 +960,12 @@
   "notebook_sync_done": "Tout est synchronisé",
   "notebook_sync_entry_pending": "Sur cet appareil",
   "notebook_sync_entry_pending_hint": "Enregistré sur cet appareil ; sera synchronisé avec votre compte dès que possible.",
-  "notebook_sync_entry_done": "Synchronisé avec votre compte"
+  "notebook_sync_entry_done": "Synchronisé avec votre compte",
+  "notebook_by_group": "Par groupe",
+  "notebook_one_list_prayer": "1 prière",
+  "notebook_list_prayers": "{n} prières",
+  "notebook_list_remind": "Me rappeler de prier pour cette liste",
+  "notebook_list_remind_title": "Me rappeler de prier pour : {group}",
+  "notebook_group_remind_summary": "Prier pour : {group}",
+  "notebook_all_lists": "Toutes les listes"
 }
