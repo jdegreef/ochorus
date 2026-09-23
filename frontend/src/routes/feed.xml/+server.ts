@@ -22,17 +22,19 @@ export const prerender = true;
 
 const MAX_ITEMS = 40;
 
-// How many of those items an article may take. Articles ship in CURATED BATCHES
-// (75 landed over 2026-09-03..05, another 54 on 09-18), and a plain merge by
-// date would let one batch day evict every book and sermon from a feed titled
-// "New in the Library" — the subscriber would see a wall of essays and no works
-// until the next import. Reserving the balance keeps the feed answering the
-// question it asks. Articles beyond the cap are not lost to crawlers: every one
-// is in sitemap-articles.xml and linked from the /articles/ hub.
-const MAX_ARTICLES = 12;
+// The most slots any ONE kind may take, so a single import day cannot empty the
+// feed of everything else. Content lands in batches — replaying the merge over
+// the fixtures' created_at dates, 2026-09-16 produced a feed of 40 sermons and
+// nothing else, 09-05 was 38 articles, and 09-04 left books at zero. It is not a
+// property of articles, so it is not an articles-only rule: every kind is held
+// to the same share, which also means a fourth kind needs no new judgement.
+// Nothing is lost to crawlers either way — each kind has its own sitemap.
+const MAX_PER_KIND = MAX_ITEMS / 2;
 
 
 interface FeedItem {
+	/** Which shelf this came from — the only thing `MAX_PER_KIND` counts. */
+	kind: 'book' | 'sermon' | 'article';
 	title: string;
 	url: string;
 	authorName: string;
@@ -40,6 +42,10 @@ interface FeedItem {
 	/** ISO timestamp used for ordering and the entry's <updated>/<published>. */
 	date: string;
 }
+
+/** Newest first. Guards rows whose date hasn't been served yet (API deploy
+ *  race): they sort last, so a real date always wins the top. */
+const byNewest = (a: FeedItem, b: FeedItem) => (b.date || '').localeCompare(a.date || '');
 
 function entryXml(it: FeedItem): string {
 	const updated = isoOrEpoch(it.date);
@@ -65,8 +71,9 @@ export async function GET() {
 		listArticles('en').catch(() => [])
 	]);
 
-	const items: FeedItem[] = [
+	const candidates: FeedItem[] = [
 		...books.map((b) => ({
+			kind: 'book' as const,
 			title: b.title,
 			url: `${SITE_URL}/books/${b.slug}/`,
 			authorName: b.author.name,
@@ -74,6 +81,7 @@ export async function GET() {
 			date: b.created_at
 		})),
 		...sermons.map((s) => ({
+			kind: 'sermon' as const,
 			title: s.title,
 			url: `${SITE_URL}/sermons/${s.slug}/`,
 			authorName: s.author.name,
@@ -82,28 +90,32 @@ export async function GET() {
 				: `A sermon by ${s.author.name}, free to read on Ochorus.`,
 			date: s.created_at
 		})),
-		// Newest-first, then capped, BEFORE the merge — so the cap keeps the
-		// newest articles rather than whichever ones the merged sort happens to
-		// leave standing. `h1` is the display headline (the article page's warm
-		// H1), not `meta_title`, which leads with the keyword for the <title>.
-		...articles
-			.slice()
-			.sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''))
-			.slice(0, MAX_ARTICLES)
-			.map((a) => ({
-				title: a.h1,
-				url: `${SITE_URL}/articles/${a.slug}/`,
-				// No per-article author FK — the house name is the byline the page
-				// itself shows and the Article JSON-LD names. See the Article model.
-				authorName: 'Ochorus',
-				summary: a.description || 'An article from Ochorus.',
-				date: a.created_at
-			}))
-	]
-		// Guard against rows whose date hasn't been served yet (API deploy race):
-		// keep them, but sort undated last so a real date always wins the top.
-		.sort((a, b) => (b.date || '').localeCompare(a.date || ''))
-		.slice(0, MAX_ITEMS);
+		// `h1` is the display headline (the article page's warm H1), not
+		// `meta_title`, which leads with the keyword for the <title>.
+		...articles.map((a) => ({
+			kind: 'article' as const,
+			title: a.h1,
+			url: `${SITE_URL}/articles/${a.slug}/`,
+			// No per-article author FK — the house name is the byline the page
+			// itself shows and the Article JSON-LD names. See the Article model.
+			authorName: 'Ochorus',
+			summary: a.description || 'An article from Ochorus.',
+			date: a.created_at
+		}))
+	];
+
+	// Newest first, then take the first MAX_ITEMS that keep every kind within
+	// MAX_PER_KIND. One pass in date order, so the feed stays chronological (and
+	// `updated` below stays the newest entry) while a batch day of one kind spills
+	// into the others instead of taking the lot.
+	const taken: Record<FeedItem['kind'], number> = { book: 0, sermon: 0, article: 0 };
+	const items: FeedItem[] = [];
+	for (const it of candidates.sort(byNewest)) {
+		if (items.length >= MAX_ITEMS) break;
+		if (taken[it.kind] >= MAX_PER_KIND) continue;
+		taken[it.kind]++;
+		items.push(it);
+	}
 
 	// Feed <updated> is the newest entry's timestamp — stable across rebuilds
 	// (no wall-clock), so the feed only changes when the content does.
