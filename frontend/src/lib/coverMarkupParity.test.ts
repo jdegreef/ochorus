@@ -202,13 +202,7 @@ describe('the two cover renderers agree', () => {
 		],
 		[
 			'a series volume, in its own digits',
-			{
-				cover_url: PLATE,
-				slug: 'brave-for-god-2',
-				series_position: 2,
-				language: 'ar',
-				title: 'شجعان لله'
-			},
+			{ cover_url: PLATE, slug: 'brave-for-god-2', language: 'ar', title: 'شجعان لله' },
 			{
 				lang: 'ar',
 				script: 'arabic',

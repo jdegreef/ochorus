@@ -291,7 +291,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 };
 
 /**
- * A book's volume numeral in its edition's own digits, or null outside a series.
+ * Which volume of a series a book is — the numeral a cover sets above its title.
  *
  * The title often says it already ("Book Two"), and at a size a reader can read
  * a title that is enough. It is not enough on a shelf: a cover is mostly seen at
@@ -299,10 +299,26 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
  * like three unrelated books. A numeral in a ring is the one thing that survives
  * there, which is also why it sits outside the container gate.
  *
- * `position` is the book's `series_position` — a field of the Book row, so the
- * component reads it off the API and the share-card script off the fixture, and
- * neither keeps a table. Null for a book in no series, and for a volume of an
- * unordered one (Key Teachings), which has no reading order to number.
+ * A table of slugs rather than a model field, like every other table in this
+ * module: covers are curated by hand, and both renderers read this file. Two
+ * series now (Brave for God, Rooted) — the point to make series and volume
+ * fields on `Book`, which the fixture would then hand both renderers for free.
+ */
+export const SERIES_VOLUME: Record<string, number> = {
+	'brave-for-god': 1,
+	'brave-for-god-2': 2,
+	'brave-for-god-3': 3,
+	'brave-for-god-4': 4,
+	'rooted-1': 1,
+	'rooted-2': 2,
+	'rooted-3': 3,
+	'rooted-4': 4,
+	'rooted-5': 5,
+	'rooted-6': 6
+};
+
+/**
+ * A book's volume numeral in its edition's own digits, or null outside a series.
  *
  * `Intl.NumberFormat` rather than the ASCII digit, so each language gets its
  * locale's DEFAULT numbering system from CLDR — Persian ۲, Marathi २ — without a
@@ -310,14 +326,12 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
  * and Hindi default to Western digits in current data, and that is CLDR's call
  * to make, not this module's. A global, not an import, like `Intl.Locale`.
  */
-export function volumeNumeral(
-	position: number | null | undefined,
-	language: string
-): string | null {
-	if (!position) return null;
+export function volumeNumeral(bookSlug: string, language: string): string | null {
+	const volume = SERIES_VOLUME[bookSlug];
+	if (!volume) return null;
 	try {
-		return new Intl.NumberFormat(language).format(position);
+		return new Intl.NumberFormat(language).format(volume);
 	} catch {
-		return String(position);
+		return String(volume);
 	}
 }

@@ -108,7 +108,6 @@ const needTwins = once(() => {
 					language: string;
 					author: string[];
 					cover_url?: string;
-					series_position?: number | null;
 				}
 		)
 		.filter((f) => isArtCover(f.cover_url) || isPlateCover(f.cover_url))
@@ -118,7 +117,7 @@ const needTwins = once(() => {
 			// exists to catch, one directory up.
 			key: twinUrl(f.slug, f.language).replace('/covers/', '').replace(/\.png$/, ''),
 			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
-			volume: volumeNumeral(f.series_position, baseEdition(f.language)),
+			volume: volumeNumeral(f.slug, baseEdition(f.language)),
 			layout: layoutKey(
 				isArtCover(f.cover_url) ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en')) : null
 			)

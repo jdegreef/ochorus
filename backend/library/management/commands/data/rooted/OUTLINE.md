@@ -48,7 +48,7 @@ DJANGO_DEBUG=true uv run python manage.py build_rooted <n>
 1. Serialize the fixture.
 2. Run `generate_covers`, then `npm run og:covers`.
 3. Add the `LAUNCH_PLANS` entry with span `(2, 31)`.
-4. Add the `BOOK_STYLE` entry in `coverStyles.ts`. (The volume numeral needs nothing: `build_rooted` sets `series` / `series_position`, and the cover reads them.)
+4. Add the `SERIES_VOLUME` / `BOOK_STYLE` entries in `coverStyles.ts`.
 5. Add the book to the For Young Readers shelf in `topic_seed.py`.
 6. Add the prerender touches on `books/` and `plans/`.
 

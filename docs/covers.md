@@ -57,7 +57,7 @@ The look is `components/cover-type.css`; *which* look is `coverStyles.ts`.
 | Decides | Where | Keyed by |
 |---|---|---|
 | house style (face, ornament, arrangement) | `BOOK_STYLE` → `AUTHOR_STYLE` → `ERA_STYLE` in `coverStyles.ts` | book, then author, then century |
-| series numeral over the title | `series_position` on the Book row (fixture), set by `volumeNumeral` in `coverStyles.ts` | book edition |
+| series numeral over the title | `SERIES_VOLUME` in `coverStyles.ts` | book |
 | script corrections (Arabic, Devanagari, Cyrillic) | `COVER_SCRIPTS` + the `.script-*` blocks in `cover-type.css` | the edition's language, via `Intl.Locale` |
 | scrim under the type on a painting | `art_scrim.py` / `coverScrim.ts` | work — **measured**, by `tune_art_scrim.py` |
 | layout and hue of a painting (band, box, split, fade, diagonal, duotone, wash, rail; default framed) | `AUTHOR_LAYOUT` in `coverLayouts.ts`; the `.cover-layout-*` / `.cover-hue-*` blocks in `cover-type.css` | author |
