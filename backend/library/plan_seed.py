@@ -19,7 +19,11 @@ this is the English definition and the structure.
 
 from __future__ import annotations
 
-# (plan slug, source book slug, title, description)
+# (plan slug, source book slug, title, description[, (first, last) chapter order])
+#
+# A plan reads every chapter of its book unless the optional span narrows it —
+# for a devotional whose Introduction and Conclusion bracket numbered days, so
+# that plan day N is the chapter titled "Day N" rather than one off from it.
 LAUNCH_PLANS = [
     (
         "humility-12-days",
@@ -43,6 +47,16 @@ LAUNCH_PLANS = [
         "eighteen days. From discovering your purpose to building a vision for "
         "the future, each day pairs practical counsel with a Scripture, a "
         "reflection, and a prayer.",
+    ),
+    (
+        "rooted-book-1-30-days",
+        "rooted-1",
+        "Rooted: 30 Days with God — Book 1",
+        "Thirty days to plant deep roots, for readers aged 9 to 12: who God is, "
+        "the good news of Jesus, who you are in Christ, how to pray, and how to "
+        "grow. Each day is one short reading with a Bible verse, a question to "
+        "think about, something to try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
     ),
 ]
 

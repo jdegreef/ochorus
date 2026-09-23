@@ -281,7 +281,8 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'brave-for-god-2': 'young',
 	'brave-for-god-3': 'young',
 	'brave-for-god-4': 'young',
-	'hurlbuts-life-of-christ': 'young'
+	'hurlbuts-life-of-christ': 'young',
+	'rooted-1': 'young'
 };
 
 /**
@@ -294,15 +295,16 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
  * there, which is also why it sits outside the container gate.
  *
  * A table of slugs rather than a model field, like every other table in this
- * module: covers are curated by hand, and both renderers read this file. It is
- * one series today; the second is the point to make series and volume fields
- * on `Book`, which the fixture would then hand both renderers for free.
+ * module: covers are curated by hand, and both renderers read this file. Two
+ * series now (Brave for God, Rooted) — the point to make series and volume
+ * fields on `Book`, which the fixture would then hand both renderers for free.
  */
 export const SERIES_VOLUME: Record<string, number> = {
 	'brave-for-god': 1,
 	'brave-for-god-2': 2,
 	'brave-for-god-3': 3,
-	'brave-for-god-4': 4
+	'brave-for-god-4': 4,
+	'rooted-1': 1
 };
 
 /**

@@ -95,7 +95,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **opts):
         created = 0
-        for slug, book_slug, title, description in LAUNCH_PLANS:
+        for slug, book_slug, title, description, *rest in LAUNCH_PLANS:
+            span = rest[0] if rest else None  # (first, last) chapter order
             for book in Book.objects.filter(slug=book_slug, is_published=True):
                 prose = _prose(slug, book.language, title, description)
                 if prose is None:
@@ -104,9 +105,10 @@ class Command(BaseCommand):
                 t, d = prose
                 if self._reconcile_existing(slug, book.language, t, d):
                     continue
-                orders = list(
-                    book.chapters.order_by("order").values_list("order", flat=True)
-                )
+                chapters = book.chapters.order_by("order")
+                if span:
+                    chapters = chapters.filter(order__range=span)
+                orders = list(chapters.values_list("order", flat=True))
                 if not orders:
                     continue
                 # Create the plan and its days as one unit: a crash between the

@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-22: one NEW English book — rooted-1, "Rooted – 30 Days with God for
+// Youth – Book 1", the first volume of a house-written devotional series for ages 9–12 (Ochorus
+// Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture). Rebuilds /books and
+// the For Young Readers shelf so the card and its young-style plate cover (volume 1) appear, and the
+// reader pages bake the chapters. Backs the new rooted-book-1-30-days plan (see plans/+page.ts).
 // prerender refresh 2026-09-21: one NEW Hindi book — power-through-prayer
 // («प्रार्थना के द्वारा सामर्थ्य», E. M. Bounds, #1749), 20 chapters. Rebuilds /hi/books so the card
 // carries its translated title over the shared curated painting, and the reader pages bake the

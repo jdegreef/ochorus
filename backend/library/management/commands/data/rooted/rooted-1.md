@@ -1,0 +1,966 @@
+# Rooted – 30 Days with God for Youth – Book 1
+
+*Planted: knowing God, receiving Jesus, and learning to grow*
+
+Scripture quotations are from the Berean Standard Bible (BSB), public domain.
+
+---
+
+## Introduction: Welcome to Rooted
+
+Have you ever tried to pull a weed out of the garden? Some come right out with one little tug. Others won't budge. You pull and pull until your face turns red, and the weed just sits there like it's laughing at you. What's the difference? **Roots.** A plant with deep roots holds on.
+
+Now think about a giant oak tree. It might be a hundred years old. It has lived through thunderstorms, snowstorms, dry summers and howling winds, and it's still standing. Its secret is hidden underground, where its roots spread out wide and grow down deep.
+
+God wants your life to be like that tree. The Bible says:
+
+> "Therefore, just as you have received Christ Jesus as Lord, continue to walk in Him, rooted and built up in Him, established in the faith as you were taught, and overflowing with thankfulness."
+> — Colossians 2:6–7 (BSB)
+
+That's where this book gets its name. **Rooted** is about growing deep in God, so that when hard days come (and they do come, even when you're 9, 10, 11 or 12), you keep standing.
+
+### What's in this book
+
+This is **Book 1**, and it starts right at the beginning: the roots. Over the next 30 days you'll discover:
+
+- **Week 1 — Who Is God?** What God is like: bigger than the stars, perfectly holy and full of love.
+- **Week 2 — The Best News Ever.** What went wrong in the world, and how Jesus came to make it right.
+- **Week 3 — Who I Am in Christ.** What God says about *you*.
+- **Week 4 — Talking with God.** How to pray, and why God loves to hear you.
+- **Week 5 — Growing Deep.** How the Bible, obeying God, church and worship help your roots grow.
+
+### How each day works
+
+Every day takes about five to ten minutes and has five parts:
+
+1. **The verse.** A short passage from the Bible. Read it slowly, and maybe read it twice.
+2. **The teaching.** A few minutes of reading that explains what the verse means and what it has to do with your life.
+3. **Think about it.** A question to help you think deeper. You can think about it quietly, write your answer down or talk about it with someone.
+4. **Try this.** One small thing to do that day to put what you learned into action.
+5. **The prayer.** A prayer you can pray to God. Feel free to add your own words!
+
+### Tips for growing
+
+- **Pick a time.** Morning, after school or right before bed. Roots grow best with the same water at the same time.
+- **Keep a Bible nearby.** Looking up the verse in your own Bible is a great habit. If you don't have one, ask a parent or someone at church.
+- **Grab a notebook.** Write down your answers, your prayers and anything God shows you. Later you'll love looking back at it.
+- **Read with someone.** A parent, a grandparent, a brother or sister, or a friend. Growing together is more fun.
+- **Missed a day? No problem.** This isn't a test. Just pick up where you left off. God isn't keeping score. He's glad you're here.
+
+One more thing: this book is not magic. Reading it won't make you grow. **God** makes things grow. But when you spend time with Him every day, you're like a tree planted next to a river, soaking up exactly what you need.
+
+So let's get started. Your roots are waiting.
+
+### For parents, grandparents and leaders
+
+*Rooted* is written for readers aged 9 to 12 to read on their own, but it works just as well read aloud together. The "Think about it" questions make good conversation starters around the table or at bedtime. Each day's Scripture is quoted from the Berean Standard Bible. Book 1 lays the foundation: who God is, the gospel of Jesus Christ, a child's identity in Him, prayer and the place of Scripture and church. Day 12 includes a clear, gentle invitation to trust Christ. If your child responds, we'd encourage you to talk it through with them. It may be the most important conversation you ever have.
+
+---
+
+# Week 1 · Who Is God?
+
+---
+
+## Day 1 — Planted
+
+> "Therefore, just as you have received Christ Jesus as Lord, continue to walk in Him, rooted and built up in Him, established in the faith as you were taught, and overflowing with thankfulness."
+> — Colossians 2:6–7 (BSB)
+
+Picture a big tree the morning after a wild storm. All night the wind howled. Branches snapped. Leaves blew across the yard. Maybe a fence even fell over. But the tree is still standing. Why? Because of something you can't even see: its **roots**.
+
+Roots do two big jobs. First, they **hold on**. They grip the ground so tightly that even strong winds can't knock the tree down. Second, they **drink**. Roots soak up water and food from the soil, so the whole tree can grow tall and strong. A tree with shallow roots falls over at the first big storm and dries up in the first hot summer. A tree with deep roots lasts for years and years.
+
+When Paul wrote this letter to Christians in a town called Colossae, he used that same picture. He told them to be "rooted and built up in Him." The word *Him* means Jesus. Paul was saying: *Grow your roots deep down into Jesus. Hold on to Him. Drink from Him. Let Him be where your strength comes from.*
+
+Notice the first part of the verse too: "just as you have received Christ Jesus as Lord." Before a tree can grow roots, it has to be **planted**. The same is true for us. We get planted in God's family by trusting Jesus, and next week you'll learn all about how that happens. Once you are planted, the growing begins.
+
+And here's the good news: roots don't grow in one giant leap. They grow a little bit every day, quietly, underground, when nobody is watching. That's what these 30 days are for. Every time you read God's Word, think about it and talk to Him, your roots go a little deeper.
+
+Paul also says a rooted person is "overflowing with thankfulness." When you really know how good God is, you can't help saying *thank You!*
+
+Storms will come. There will be hard days at school, sad days at home and scary days when you don't know what will happen. But a rooted tree doesn't have to be afraid of the wind.
+
+Let's start growing.
+
+**Think about it:** What do you think "being rooted in Jesus" might look like in the life of someone your age?
+
+**Try this:** Find a tree near your home, or a picture of one. Every time you see it this month, remind yourself: *I'm growing roots.*
+
+*Dear God, thank You for this new beginning. Over these 30 days, please help my roots grow deep in Jesus. Help me hold on to You when things are hard, and learn from You every day. Fill me up so much that I overflow with thankfulness. In Jesus' name, Amen.*
+
+---
+
+## Day 2 — In the Beginning
+
+> "In the beginning God created the heavens and the earth."
+> — Genesis 1:1 (BSB)
+
+Have you ever built something amazing out of building bricks? Maybe a castle, a spaceship or a whole city. It's fun. But think about it: before you could build anything, you needed the bricks. You didn't make the bricks. You just put them together.
+
+God is different. When God made the world, He didn't start with a box of bricks. He started with **nothing at all**. No dirt, no water, no light, no space. Just God. And then God spoke, and everything began.
+
+Read the first four words of the Bible again: "In the beginning God…" Before there was a beginning, God was already there. He didn't have a birthday. Nobody made Him. He has always been, and He always will be. That's hard for our brains to understand! Everything we know has a start: every person, every puppy, every tree. But God has no start and no finish.
+
+Then look at what He made: "the heavens and the earth." That means **everything**. The sun, the moon and every star. The oceans and the mountains. Giraffes and jellyfish and hummingbirds. Snowflakes, where no two are the same. The smell of rain. The color orange. All of it came from God's imagination.
+
+And here's the best part. Later in Genesis 1, God made people, and He made them in His own image. Out of everything He created, people are the only ones made to know Him, talk with Him and love Him back.
+
+So when you look at a sunset or a thunderstorm or a tiny ant carrying a crumb, remember: someone made that. Nothing you see is an accident. And the One who made it all also made **you**.
+
+If God is great enough to make everything out of nothing, is there anything too hard for Him?
+
+**Think about it:** What is your favorite thing God made? What does it tell you about what God is like?
+
+**Try this:** Go outside (or look out a window) and find five things God made. Thank Him for each one by name.
+
+*Dear God, You were there before anything else existed. You made the heavens and the earth and everything in them, and You made me too. Thank You for this amazing world. When I see Your creation, help me remember how great You are. In Jesus' name, Amen.*
+
+---
+
+## Day 3 — Bigger Than the Stars
+
+> "Lift up your eyes on high: Who created all these? He leads forth the starry host by number; He calls each one by name. Because of His great power and mighty strength, not one of them is missing."
+> — Isaiah 40:26 (BSB)
+
+On a clear night, far away from city lights, you can look up and see thousands of stars. But that's only a tiny sliver of them. Scientists think there are more stars in the universe than there are grains of sand on every beach on earth. That's a number so big we can't even imagine it.
+
+Now read Isaiah 40:26 again. God doesn't just know how many stars there are. He "calls each one by name." Every single one! God has never forgotten a star, never lost one and never mixed one up with another. "Not one of them is missing."
+
+That tells us something about how **big** God is. He's bigger than the sky, stronger than the sun and wiser than every scientist who ever lived.
+
+But here's something surprising. Isaiah didn't write these words just to impress people. He wrote them to people who felt forgotten. God's people were going through a hard time, and they were saying, "God doesn't see us. He doesn't care what happens to us." (You can read that in the very next verse, Isaiah 40:27.)
+
+So God said, in effect: *Look up. See all those stars? I know every one of them by name. Do you really think I could forget you?*
+
+Sometimes we think God is too big to notice us. With billions of people and a whole universe to run, why would He care about my test tomorrow or my friend who's being mean? But God's greatness isn't a reason He *can't* care about you. It's the reason He *can*. A God who can keep track of every star has no trouble keeping track of you.
+
+You are not lost in the crowd. God knows your name.
+
+**Think about it:** Have you ever felt like God was too busy to notice you? How does Isaiah 40:26 help with that feeling?
+
+**Try this:** Tonight, go outside and look up at the stars (or find a picture of the night sky). Remember that the God who named every one of them knows your name too.
+
+*Dear God, You are so great! You made every star and You call each one by name. Thank You that You are never too big or too busy to care about me. When I feel forgotten, help me remember that You know my name. In Jesus' name, Amen.*
+
+---
+
+## Day 4 — Holy, Holy, Holy
+
+> "In the year that King Uzziah died, I saw the Lord seated on a throne, high and exalted; and the train of His robe filled the temple. Above Him stood seraphim, each having six wings: With two wings they covered their faces, with two they covered their feet, and with two they were flying. And they were calling out to one another: 'Holy, holy, holy is the LORD of Hosts; all the earth is full of His glory.'"
+> — Isaiah 6:1–3 (BSB)
+
+One day the prophet Isaiah had a vision. He saw God sitting on a high throne, so great that just the edge of His robe filled the whole temple. Around Him flew amazing angel-like beings called **seraphim**. And they were shouting to each other, "Holy, holy, holy!"
+
+Why say it three times? In the Hebrew language, repeating a word is a way of making it as strong as possible. Saying "holy" once means *very holy*. Saying it three times means *the holiest there could ever be*. The Bible never says God is "love, love, love" or "strong, strong, strong." But it does say He is "holy, holy, holy."
+
+So what does **holy** mean? It means *set apart*: completely different from anything else. God is perfectly pure. There is nothing bad in Him at all. Not even a tiny bit. He has never told a lie, never been selfish, never made a mistake. Even the seraphim, who had never sinned, covered their faces in front of Him.
+
+When Isaiah saw how holy God was, he suddenly saw himself clearly too. He cried out, "Woe to me!" He knew he wasn't pure like God. It's like walking into a bright room and suddenly noticing all the mud on your shoes.
+
+But God didn't leave Isaiah there. One of the seraphim flew to him with a burning coal and touched his lips, and said his guilt was taken away. God made Isaiah clean.
+
+That's a sneak peek of what we'll learn next week. God is holy, and we're not. That's a big problem. But God has a way to make us clean, and it's the best news ever.
+
+For now, remember this: God is not just a bigger, stronger version of us. He is holy. He deserves our worship, our respect and our whole hearts.
+
+**Think about it:** Isaiah's first reaction to seeing God was to see his own sin. Why do you think that happened?
+
+**Try this:** Write the word HOLY in your notebook. Underneath, write down three things you learned today about what it means.
+
+*Holy, holy, holy God, You are perfectly good and pure. There is no one like You. I'm sorry for the times I have treated You like You are small. Thank You that You make people clean, like You did for Isaiah. Help me worship You the way You deserve. In Jesus' name, Amen.*
+
+---
+
+## Day 5 — God Is Love
+
+> "This is how God's love was revealed among us: God sent His one and only Son into the world, so that we might live through Him. And love consists in this: not that we loved God, but that He loved us and sent His Son as the atoning sacrifice for our sins."
+> — 1 John 4:9–10 (BSB)
+
+The word *love* gets used for a lot of things. "I love pizza." "I love that song." "I love my dog." "I love summer." Sometimes it means *I really like this*. Sometimes it means *this makes me feel good*.
+
+But just a few verses earlier, in 1 John 4:8, the Bible says something amazing: "God is love." Not just that God *loves*, but that God *is* love. Love is part of who He is, all the way through. Everything He does comes out of love.
+
+So how do we know what real love looks like? John tells us: **look at what God did.** "God sent His one and only Son into the world, so that we might live through Him." God's love isn't just a warm feeling. It's a love that *gives*, and it gave the most precious thing there is.
+
+Then John says something really important: "not that we loved God, but that He loved us." Think about a newborn baby. A baby can't do anything for her parents. She can't cook, clean, say thank you or even say "I love you." She just cries and needs diapers! But her parents love her completely anyway. Their love came first.
+
+God's love is like that, only bigger. He didn't wait for us to love Him first. He didn't wait for us to be good enough. He loved us first, and He sent Jesus to be "the atoning sacrifice for our sins." That big phrase means Jesus gave His life to take away our sins and bring us back to God.
+
+That means God's love for you doesn't go up on your good days and down on your bad days. It doesn't depend on your grades, your looks or how many friends you have. It depends on Him, and He never changes.
+
+When you want to know if God loves you, don't look at how you feel today. Look at the cross.
+
+**Think about it:** What's the difference between loving someone because of what they do for you and loving them first, no matter what?
+
+**Try this:** Show love to someone today who can't pay you back. Help a younger kid, sit with someone alone or do a chore without being asked.
+
+*Dear God, thank You that You are love. Thank You for loving me first, before I ever loved You. Thank You for sending Jesus for me. Help me believe Your love on the days I don't feel it, and help me love others the way You love me. In Jesus' name, Amen.*
+
+---
+
+## Day 6 — The God Who Never Changes
+
+> "Every good and perfect gift is from above, coming down from the Father of the heavenly lights, with whom there is no change or shifting shadow."
+> — James 1:17 (BSB)
+
+Try this experiment on a sunny day. In the morning, stand outside and look at your shadow. It's long and stretched out. At lunchtime, look again. It's short and stubby, right under your feet. In the evening, it's long again, but pointing the other way. Your shadow keeps changing, because the sun keeps moving across the sky.
+
+James calls God "the Father of the heavenly lights." He's the one who made the sun, the moon and the stars. But unlike the lights He made, God has "no change or shifting shadow." He doesn't move around. He doesn't have good moods and bad moods. He is exactly the same yesterday, today and forever.
+
+Think about how much changes in your life. You grow taller every year. You move to a new grade. Friends move away. Maybe your family moves to a new house or a new city. Your favorite show gets canceled. Even your best friend can have a grumpy day.
+
+But God doesn't change. The God who parted the Red Sea for Moses is the same God who is with you today. The God who loved you yesterday will love you tomorrow. His promises in the Bible are just as true now as when they were written.
+
+James also tells us something about what God is like: every good and perfect gift comes from Him. Your family, your friends, a sunny afternoon, a good meal, a funny joke, a cozy bed: all of them are gifts from a good Father. And because He never changes, He never stops being good.
+
+When everything around you is shifting like a shadow, you can hold on to the God who stays the same.
+
+**Think about it:** What is something that has changed in your life recently? How does it help to know that God never changes?
+
+**Try this:** Keep a list today of every good gift you notice, big or small. Before bed, thank God for each one.
+
+*Dear Father, thank You that You never change. When things around me are different and new, help me remember that You are always the same. Thank You for every good gift You give me. Help me see Your goodness today. In Jesus' name, Amen.*
+
+---
+
+# Week 2 · The Best News Ever
+
+---
+
+## Day 7 — Something Went Wrong
+
+> "for all have sinned and fall short of the glory of God, and are justified freely by His grace through the redemption that is in Christ Jesus."
+> — Romans 3:23–24 (BSB)
+
+In the very beginning, everything God made was good. He put the first two people, Adam and Eve, in a beautiful garden. They could walk and talk with God. They had everything they needed. God gave them just one rule: don't eat from one special tree.
+
+But a sneaky serpent came along and asked, "Did God really say that?" He made Eve wonder whether God was really good, and whether God was keeping something from her. Eve ate the fruit and gave some to Adam, and he ate it too.
+
+Right away, everything changed. For the first time, they felt ashamed. When they heard God walking in the garden, they hid. The friendship between people and God was broken.
+
+That's what the Bible calls **sin**: choosing our own way instead of God's way. And since that day, every person has been born with a heart that wants its own way. "All have sinned." Not just really bad people. *All.* That includes the nicest person you know, and it includes you and me.
+
+"Fall short" is like shooting a basketball that doesn't reach the hoop. It doesn't matter if you miss by an inch or by ten feet. A miss is a miss. God's glory is His perfect goodness, and every one of us has missed it. Some sins seem big, like stealing. Some seem small, like being jealous or talking back. But all of them break God's perfect standard.
+
+That sounds like bad news, and it is. But don't stop reading! Look at the very next words: "and are justified freely by His grace through the redemption that is in Christ Jesus."
+
+*Justified* means made right with God. *Freely* means as a gift. *Grace* means kindness we don't deserve. The problem is big, but God's answer is bigger. And His answer has a name: Jesus.
+
+This week, we'll see how God fixes what went wrong.
+
+**Think about it:** Why do you think Adam and Eve hid from God after they sinned? Do people still try to hide from God today?
+
+**Try this:** Take a quiet minute and be honest with God about one way you've gone your own way this week. You don't have to hide.
+
+*Dear God, I know that I have sinned. I have chosen my own way instead of Your way, and I'm sorry. Thank You that You didn't leave the world broken. Thank You for Jesus, who came to make things right. Help me understand Your good news this week. In Jesus' name, Amen.*
+
+---
+
+## Day 8 — A Promise in the Dark
+
+> "For unto us a child is born, unto us a son is given, and the government will be upon His shoulders. And He will be called Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace."
+> — Isaiah 9:6 (BSB)
+
+Have you ever waited for something you were promised? A trip, a birthday party or a visit from someone you love? Waiting is hard. But when you know the promise is coming, it gives you something to hold on to.
+
+After sin broke the world, God didn't leave people without hope. Right there in the garden, He hinted that someday a child would come who would crush the serpent (you can find it in Genesis 3:15). And over hundreds of years, God kept adding more and more to that promise through His prophets.
+
+Isaiah wrote today's verse about 700 years before Jesus was born. It was a dark time for God's people. Their enemies were strong, and many of them had turned away from God. A few verses earlier, Isaiah describes them as "the people walking in darkness." But God gave them a light: a promise that a very special child would be born.
+
+Look at the names this child would be called:
+
+- **Wonderful Counselor.** A counselor gives advice. This child would be the wisest guide ever, one you could always trust.
+- **Mighty God.** This wouldn't be an ordinary baby. He would be God Himself!
+- **Everlasting Father.** He would care for His people forever, like a perfect father.
+- **Prince of Peace.** He would bring peace between people and God, and one day peace to the whole world.
+
+Who could this possibly be? For hundreds of years, people wondered and waited. Then one night in Bethlehem, a baby was born to a young woman named Mary. His name was Jesus, and He was the child God had promised all along.
+
+God always keeps His promises. Sometimes we have to wait. But not one of His promises has ever failed, and not one ever will.
+
+**Think about it:** Which of the four names of Jesus in Isaiah 9:6 means the most to you right now? Why?
+
+**Try this:** Pick one of the four names and use it in your prayer today. For example: "Jesus, my Wonderful Counselor, please guide me with…"
+
+*Dear God, thank You that even when the world was dark, You gave a promise of light. Thank You that Jesus is the Wonderful Counselor, the Mighty God, the Everlasting Father and the Prince of Peace. Thank You that You always keep Your promises. Help me trust You while I wait. In Jesus' name, Amen.*
+
+---
+
+## Day 9 — God with Us
+
+> "She will give birth to a Son, and you are to give Him the name Jesus, because He will save His people from their sins. All this took place to fulfill what the Lord had said through the prophet: 'Behold, the virgin will be with child and will give birth to a son, and they will call Him Immanuel' (which means, 'God with us')."
+> — Matthew 1:21–23 (BSB)
+
+Imagine you're home sick in bed. One friend sends you a text: "Hope you feel better!" That's kind. But another friend knocks on the door, comes in with your favorite snack and sits on the end of your bed to keep you company. Which one feels more like love?
+
+God could have sent a message from far away. And He *did* send lots of messages, through the prophets and the Scriptures. But at just the right time, He did something much bigger. **He came Himself.**
+
+An angel appeared to a man named Joseph in a dream. Joseph was engaged to Mary, and he was confused and worried, because Mary was going to have a baby. The angel explained that this baby came from the Holy Spirit. Then the angel told Joseph what to name Him: **Jesus**. In Hebrew, *Jesus* means "the LORD saves." Why that name? "Because He will save His people from their sins."
+
+Then Matthew tells us this fulfilled a promise God made hundreds of years earlier: the baby would be called **Immanuel**, which means "God with us."
+
+Think about how amazing that is. The God who made the stars, the holy God the seraphim worship, became a tiny baby. He learned to walk. He had a family. He felt hungry and tired. He knew what it's like to be a kid. He didn't stay far away in heaven. He came close, all the way down to where we are.
+
+And He is still "God with us." Jesus is alive today, and He promises to be with everyone who trusts Him, always. On the bus, at the kitchen table, in the doctor's office, at a sleepover: Jesus is Immanuel there too.
+
+**Think about it:** Why do you think God chose to come to earth Himself instead of just sending a message?
+
+**Try this:** Today, whenever you walk into a new place (a classroom, a store, your room), quietly say, "Jesus, You're here with me."
+
+*Dear Jesus, thank You for coming to earth for me. Thank You that You are Immanuel, God with us. Thank You that You came to save people from their sins. Help me remember that You are with me everywhere I go today. In Jesus' name, Amen.*
+
+---
+
+## Day 10 — The Cross
+
+> "For God so loved the world that He gave His one and only Son, that everyone who believes in Him shall not perish but have eternal life."
+> — John 3:16 (BSB)
+>
+> "But God proves His love for us in this: While we were still sinners, Christ died for us."
+> — Romans 5:8 (BSB)
+
+Imagine you're playing baseball in the backyard. You swing hard, *crack!*, and the ball flies straight through your neighbor's big front window. Glass everywhere. The window costs more money than you have ever seen. There's no way you could ever pay for it.
+
+Then your dad walks over, knocks on the neighbor's door and says, "I'll pay for it. All of it." You didn't earn that. You didn't deserve it. He did it because he loves you.
+
+That's a small picture of something much bigger.
+
+On Day 7 we learned that everyone has sinned. We've all done, said and thought things that go against God. And sin isn't like a broken window. It's much more serious, because it breaks our friendship with God. The Bible says the result of sin is death: being separated from God forever. That's what "perish" means in John 3:16. It's a debt none of us could ever pay.
+
+But look at what God did. He "gave His one and only Son." Jesus, who never sinned even once, came to earth and died on a cross. When He died, He took the punishment for our sin, the punishment we deserved. He paid a debt He didn't owe, because we owed a debt we couldn't pay.
+
+Now read Romans 5:8 again: "While we were still sinners, Christ died for us." God didn't wait for us to clean up our act first. He didn't say, "Be good for a while and *then* I'll love you." He loved us at our worst. The cross is the proof.
+
+And John 3:16 tells us what we get instead of perishing: **eternal life**. That means forgiveness now, friendship with God every day and a forever home with Him. How do we receive it? "Everyone who believes in Him." It isn't earned; it's trusted.
+
+So the next time you see a cross, on a church, a necklace or a picture, remember: it isn't just a decoration. It's the biggest "I love you" ever said.
+
+**Think about it:** Romans 5:8 says Jesus died for us "while we were still sinners." Why do you think that matters so much?
+
+**Try this:** Try to say John 3:16 from memory. Then put your own name in it: "For God so loved *[your name]*…"
+
+*Dear God, thank You for loving me so much that You gave Jesus. Thank You that He took the punishment for my sin on the cross, even though He never did anything wrong. I could never pay for my sin, but Jesus paid it all. Help me believe in Him and live every day thankful for what He did. In Jesus' name, Amen.*
+
+---
+
+## Day 11 — The Empty Tomb
+
+> "As the women bowed their faces to the ground in terror, the two men asked them, 'Why do you look for the living among the dead? He is not here; He has risen!'"
+> — Luke 24:5–6 (BSB)
+
+It was very early on Sunday morning, still almost dark. A small group of women walked sadly toward a tomb outside Jerusalem. They were carrying spices, the kind people used to care for someone who had died. Three days earlier, they had watched Jesus die on the cross. They had seen His body placed in a tomb cut out of rock, with a huge stone rolled across the door. Now all they wanted was to take care of His body one last time.
+
+But when they arrived, the stone had been rolled away. They went inside, and the body of Jesus was gone!
+
+While they were standing there confused, two men in shining clothes suddenly appeared next to them. The women were terrified and bowed to the ground. Then the men asked the most wonderful question ever: "Why do you look for the living among the dead? He is not here; He has risen!"
+
+Jesus was **alive**!
+
+Why does this matter so much? Here are three reasons.
+
+**First, it proves Jesus is who He said He is.** Jesus told His friends many times that He would die and rise again on the third day. Anybody can *say* they're God. Only God could do what Jesus did.
+
+**Second, it means death is beaten.** Death is the biggest enemy people have. Everyone who has ever lived has died, but Jesus walked right out of the grave. And He promises that everyone who trusts Him will live forever with Him too.
+
+**Third, it means Jesus is alive right now.** We don't follow a dead hero from a history book. We follow a living Savior. You can talk to Him today. He hears you. He knows you. He is with you.
+
+The cross shows how much God loves us. The empty tomb shows that His love wins.
+
+**Think about it:** How do you think the women felt walking to the tomb? How do you think they felt walking away?
+
+**Try this:** Tell someone today, "Jesus is alive!" and see if you can explain why that matters.
+
+*Dear Jesus, You are alive! Thank You that You rose from the dead just like You said You would. Thank You that death is beaten and that You are with me right now. Help me live every day knowing that my Savior is alive. In Jesus' name, Amen.*
+
+---
+
+## Day 12 — Receiving the Gift
+
+> "For it is by grace you have been saved through faith, and this not from yourselves; it is the gift of God, not by works, so that no one can boast."
+> — Ephesians 2:8–9 (BSB)
+
+Imagine it's your birthday. Your grandma hands you a beautifully wrapped present. You smile, reach into your pocket and say, "Thanks! How much do I owe you?"
+
+That would be strange, right? You'd probably hurt her feelings. A gift isn't something you pay for or work for. A gift is something you **receive**.
+
+This week we've learned the best news ever. We all have sinned, and sin separates us from a holy God. But God loved us so much that He sent Jesus. Jesus died on the cross to take the punishment for our sins, and He rose again. Now He offers us forgiveness and eternal life.
+
+But how do we get it? Many people think, *I need to be good enough. If I go to church, obey my parents, read my Bible and do more good things than bad things, then God will accept me.* But look at what Ephesians says: it's "not by works." You can't earn it. No one could ever be good enough.
+
+Instead, we are saved "by grace…through faith."
+
+**Grace** means God's kindness that we don't deserve. It's God giving us the gift.
+
+**Faith** means trusting. It's like reaching out your hands to take the gift. You believe that Jesus died for *your* sins and rose again, and you trust Him (not yourself) to make you right with God.
+
+And because it's a gift, "no one can boast." Nobody in heaven will say, "I got here because I was so good!" Everyone there will say, "I'm here because of Jesus."
+
+Have you received this gift? Maybe you've heard about Jesus your whole life, but you've never trusted Him for yourself. You can do that today. There are no magic words. God cares about your heart. You could pray something like the prayer below. If you do, please tell a parent, a pastor or another Christian you trust. They will want to celebrate with you!
+
+**Think about it:** Why do you think so many people try to earn God's love instead of receiving it as a gift?
+
+**Try this:** If you have trusted Jesus, write down the day you remember doing it, or write today's date if today is the day. If you're not sure yet, talk to a grown-up you trust about it this week.
+
+*Dear God, I know that I have sinned and that I can't make myself good enough for You. Thank You for loving me anyway. I believe that Jesus died on the cross for my sins and rose again. Right now, I receive Your gift. I trust Jesus to be my Savior, and I want to follow Him as my Lord. Thank You for forgiving me and making me Your child. In Jesus' name, Amen.*
+
+---
+
+# Week 3 · Who I Am in Christ
+
+---
+
+## Day 13 — Made on Purpose
+
+> "For You formed my inmost being; You knit me together in my mother's womb. I praise You, for I am fearfully and wonderfully made. Marvelous are Your works, and I know this very well."
+> — Psalm 139:13–14 (BSB)
+
+Jada scrolled through pictures of kids from her class. One had perfect hair. One had a hundred likes on a dance video. Across town, Marcus sat on the bench watching his team play. The other boys seemed faster, taller and better at everything. Both of them were thinking the same thing: *Why can't I be more like them?*
+
+Have you ever felt that way? It's easy to compare yourself with other kids: your looks, your clothes, your grades, your talents, how many friends you have. But comparing is a game no one ever wins. There will always be someone who seems better at something.
+
+King David, who wrote Psalm 139, had a different way of seeing himself. He said God "knit me together." Think about someone knitting a sweater. They don't do it by accident! They choose every color and make every stitch on purpose. That's how God made you. Your face, your laugh, your personality, the way your brain works, even the things you wish were different: God knew all of it before you were born.
+
+Look at the word **fearfully**. It doesn't mean God was scared when He made you! It means *with awe and great care*. When God made you, He made something amazing.
+
+Notice something else: David didn't say, "I am wonderfully made…once I'm as good as that other kid." He said, "I know this very well." He believed it, deep down.
+
+This doesn't mean you're perfect or that you'll never mess up. It means your worth doesn't come from a mirror, a scoreboard or a screen. It comes from the One who made you and loves you. Nobody else in the whole world was made to be you.
+
+And remember: the kids you compare yourself with were knit together by God too. So instead of competing with them, you can celebrate them.
+
+**Think about it:** When are you most tempted to compare yourself to others? What would change if you really believed Psalm 139:14?
+
+**Try this:** Write "I am fearfully and wonderfully made" on a sticky note and put it on your mirror. Read it out loud every morning this week.
+
+*Dear God, thank You for making me on purpose. When I start comparing myself to others, remind me that You knit me together and that Your works are marvelous. Help me see myself the way You see me. And help me see other people that way too. In Jesus' name, Amen.*
+
+---
+
+## Day 14 — Child of God
+
+> "Behold what manner of love the Father has given to us, that we should be called children of God. And that is what we are! The reason the world does not know us is that it did not know Him."
+> — 1 John 3:1 (BSB)
+
+Some families grow by adoption. A mom and dad choose a child who needs a family, and they go through a long process to make that child theirs forever. On adoption day, a judge makes it official. From then on, the child gets the family's last name. They get a room in the house, a seat at the dinner table and a place in every family photo. They're not a guest or a visitor. They're family.
+
+The Bible says that when you trust Jesus, something like that happens to you. God adopts you into His family. You become a **child of God**.
+
+John was so amazed by this that he started with "Behold!" That's an old way of saying, *Look at this! Don't miss it!* "Behold what manner of love the Father has given to us, that we should be called children of God."
+
+Then he adds four little words that are easy to skip past: "And that is what we are!" It's not just a nice thing to call us. It's true. If you belong to Jesus, God really is your Father, and you really are His child.
+
+What does that mean for you?
+
+- **You belong.** Even if you feel left out at school, you have a place in God's family that nobody can take away.
+- **You're loved.** God doesn't just put up with His children. He delights in them.
+- **You can come to Him anytime.** Kids don't need an appointment to talk to their dad. Neither do you.
+- **You have a huge family.** Every Christian, all over the world, is your brother or sister.
+
+John also says the world "does not know us." Some people won't understand why you follow Jesus. That's okay. They didn't understand Jesus either. What matters most is that your Father knows you.
+
+**Think about it:** How would your day be different if you really believed you are God's child?
+
+**Try this:** Write "I am a child of God" in big letters in your notebook. Underneath, write three things that are true about you because of it.
+
+*Dear Father, thank You for loving me so much that You made me Your child. Thank You that I belong in Your family. When I feel left out or alone, help me remember whose I am. Thank You that I can come to You anytime. In Jesus' name, Amen.*
+
+---
+
+## Day 15 — Forgiven
+
+> "He has not dealt with us according to our sins or repaid us according to our iniquities. For as high as the heavens are above the earth, so great is His loving devotion for those who fear Him. As far as the east is from the west, so far has He removed our transgressions from us."
+> — Psalm 103:10–12 (BSB)
+
+Here's a puzzle. If you start walking north and keep going, eventually you'll reach the North Pole. Then, if you keep walking straight, you'll suddenly be heading *south*. North and south meet at the poles.
+
+But what about east and west? If you start walking east, you can walk around the whole world and never once be walking west. East and west never meet. They go on forever.
+
+That's exactly the picture David used. When God forgives you, He removes your sins "as far as the east is from the west." In other words, He takes them so far away that they will never come back to meet you.
+
+Maybe there's something you did that still makes you feel ashamed. Maybe you lied, or said something cruel, or did something nobody knows about. If you have told God about it and trusted Jesus, then it is **gone**. Jesus paid for it on the cross. God isn't keeping a list. He isn't waiting to bring it up again later.
+
+David also says God "has not dealt with us according to our sins." That means God doesn't give us what we deserve. Instead, He gives us "loving devotion": a love so big it's as high as the sky above the earth.
+
+Sometimes the hardest person to forgive is yourself. You might keep thinking about what you did, even after God has forgiven you. But if God has thrown your sin away, you don't need to keep digging it back up. When you feel guilty about something you've already confessed, remind yourself: *God has taken that as far as the east is from the west.*
+
+Being forgiven doesn't mean sin doesn't matter. It means Jesus took it seriously enough to die for it. And now you're free.
+
+**Think about it:** Is there something you've asked God to forgive that you still feel guilty about? What does Psalm 103:12 say about it?
+
+**Try this:** Write down a sin you've confessed to God on a scrap of paper. Then tear it into tiny pieces and throw it away as a reminder that God has removed it.
+
+*Dear God, thank You for not treating me the way my sins deserve. Thank You for forgiving me and removing my sin as far as the east is from the west. When I feel guilty about things You have already forgiven, help me trust what You say. Thank You, Jesus, for paying for it all. In Jesus' name, Amen.*
+
+---
+
+## Day 16 — Brand New
+
+> "Therefore if anyone is in Christ, he is a new creation. The old has passed away. Behold, the new has come!"
+> — 2 Corinthians 5:17 (BSB)
+
+A caterpillar spends its days crawling around, munching leaves. It's slow and fuzzy, and it can't go very far. Then one day it wraps itself in a chrysalis. Inside, something incredible happens. When it finally comes out, it isn't a caterpillar anymore. It has wings! It can fly! It's been completely changed into something new.
+
+The Bible says something like that happens to everyone who trusts Jesus. "If anyone is in Christ, he is a new creation." Not just a slightly improved version of the old you. **New.**
+
+What changes? When you trust Jesus, God forgives your sins and puts His Holy Spirit inside you (we'll learn more about that on Day 18). He gives you a new heart that wants to love Him and please Him. Things you didn't care about before, like praying or reading the Bible, start to matter to you. Things that used to seem fun, like being mean or telling lies, start to feel wrong.
+
+But wait. If you're brand new, why do you still sometimes lose your temper, or get jealous, or say things you shouldn't? That's a great question. Being a new creation doesn't mean you're perfect yet. It means God has started something new inside you, and He's going to keep working on it. A butterfly still has to learn to fly. A seed still has to grow into a tree.
+
+Here's how to think about it: you used to be someone who *belonged* to sin. Now you belong to Jesus. Sin is no longer your boss. When you mess up, you don't have to stay stuck. You can say sorry, get back up and keep growing, because that's who you really are now.
+
+"The old has passed away. Behold, the new has come!"
+
+**Think about it:** What is one way you've seen God changing you, or someone you know, since they started following Jesus?
+
+**Try this:** Ask a parent or an older Christian how God has changed them. Listen to their story.
+
+*Dear God, thank You that when I trust Jesus, You make me new. Thank You that sin is not my boss anymore. When I mess up, help me remember who I really am in Christ. Keep changing me to be more like Jesus every day. In Jesus' name, Amen.*
+
+---
+
+## Day 17 — Never Alone
+
+> "Keep your lives free from the love of money and be content with what you have, for God has said: 'Never will I leave you, never will I forsake you.' So we say with confidence: 'The Lord is my helper; I will not be afraid. What can man do to me?'"
+> — Hebrews 13:5–6 (BSB)
+
+Think of a time you felt really alone. Maybe it was your first day at a new school, when you didn't know where to sit at lunch. Maybe it was lying awake in the dark after a bad dream. Maybe it was when a friend stopped talking to you, or when someone in your family was sick and nobody would tell you what was going on.
+
+Feeling alone is one of the hardest feelings there is. But today's verse is one of the best promises in the whole Bible. God says, "**Never** will I leave you, **never** will I forsake you."
+
+*Forsake* means to walk away from someone and leave them on their own. God says He will never, ever do that. Not when you're scared. Not when you're sad. Not when you've messed up. Not when nobody else seems to understand.
+
+Notice where this promise comes up. The writer is talking about being content with what you have. Why? Because when you have God, you have what matters most. Money, stuff and popularity can all disappear. But God stays.
+
+Then look at how the writer responds: "So we say with confidence: 'The Lord is my helper; I will not be afraid.'" Because God is always with us, we don't have to be ruled by fear. Scary things might still happen. People might still be unkind. But you never have to face any of it by yourself.
+
+People might let you down, even people who love you. Friends move away. Grown-ups make mistakes. But God keeps His word every single time.
+
+So the next time you feel alone, say it out loud: "The Lord is my helper." It's true on the playground, in the hospital, at a new school and in the middle of the night.
+
+**Think about it:** When do you feel most alone? How could remembering this promise help you in that moment?
+
+**Try this:** Memorize God's promise: "Never will I leave you, never will I forsake you." Say it to yourself tonight as you fall asleep.
+
+*Dear God, thank You for promising that You will never leave me or forsake me. When I feel lonely, help me remember that You are right here. You are my helper, so I don't have to be afraid. Thank You for always keeping Your promises. In Jesus' name, Amen.*
+
+---
+
+## Day 18 — The Helper Inside
+
+> "And I will ask the Father, and He will give you another Advocate to be with you forever—the Spirit of truth. The world cannot receive Him, because it neither sees Him nor knows Him. But you do know Him, for He abides with you and will be in you."
+> — John 14:16–17 (BSB)
+
+It was the night before Jesus died on the cross. He was eating supper with His disciples, and He told them something that made them very sad: He was going away. They had followed Him for three years. How could they keep going without Him?
+
+But Jesus made them an amazing promise. He would ask the Father to send "another Advocate." An **advocate** is someone who stands beside you to help you, like a coach, a guide or someone who speaks up for you. Jesus was talking about the **Holy Spirit**.
+
+Here are some important things to know about the Holy Spirit:
+
+**He is a person, not a force.** The Holy Spirit isn't a feeling or a mysterious power. He is God, just like the Father and the Son. Jesus calls Him "Him," not "it."
+
+**He lives inside everyone who trusts Jesus.** Look at those last words: "He abides with you and will be in you." When the disciples had Jesus, He was *with* them. But the Spirit would be *in* them. That's even closer!
+
+**He helps you understand the Bible.** A few verses later, Jesus said the Spirit "will teach you all things and will remind you of everything I have told you" (John 14:26). When a verse suddenly makes sense, or comes to mind right when you need it, that's the Spirit at work.
+
+**He gives you power to obey.** Remember the fruit we'll talk about in Book 3, like love, joy, peace and self-control? The Spirit grows those in you. You don't have to be good in your own strength.
+
+**He comforts you.** When you're sad or scared, the Spirit is right there with you.
+
+You can't see the Holy Spirit, just like you can't see the wind. But you can see what He does. And if you belong to Jesus, you are never without Him.
+
+**Think about it:** Which of the things the Holy Spirit does are you most thankful for today?
+
+**Try this:** Before you read your Bible or pray today, ask: "Holy Spirit, please help me understand and obey."
+
+*Dear God, thank You for sending the Holy Spirit to live in everyone who trusts Jesus. Holy Spirit, thank You for being my helper. Please teach me the truth, remind me of God's Word, give me strength to obey and comfort me when I'm sad. In Jesus' name, Amen.*
+
+---
+
+# Week 4 · Talking with God
+
+---
+
+## Day 19 — God Is Listening
+
+> "Call to Me, and I will answer and show you great and unsearchable things you do not know."
+> — Jeremiah 33:3 (BSB)
+
+When God spoke these words, the prophet Jeremiah wasn't sitting somewhere peaceful. He was locked up. The king didn't like what Jeremiah was saying about God, so he had him shut away in the courtyard of the guard. Jeremiah couldn't leave. His city was surrounded by enemies. Things looked hopeless.
+
+But right there, in the middle of all that trouble, God said: "Call to Me, and I will answer."
+
+That's what **prayer** is. It's simply talking with God. And here's the amazing part: God *wants* you to. He isn't annoyed when you come to Him. He's not too busy. He invites you: "Call to Me."
+
+Some people think prayer has to sound fancy, with special words like "thee" and "thou." It doesn't. God understands ordinary words. Some people think prayer only counts at church or before dinner. But you can pray anywhere: on the bus, in the shower, walking to class, lying in bed. Some people think they need to close their eyes and fold their hands. That can help you focus, but God hears you with your eyes open too!
+
+You can tell God anything. You can thank Him, ask Him for help, tell Him you're sorry, tell Him you're scared or tell Him about your day. He already knows it all, but He loves to hear it from you, like a parent who loves hearing their kid talk.
+
+And God promises to answer. He also says He will "show you great and unsearchable things you do not know." When you talk with God, you get to know Him better, and He teaches you things you'd never figure out on your own.
+
+This week we're going to learn a lot about prayer. But it all starts here: God is listening. So start talking.
+
+**Think about it:** What makes it hard for you to pray? What does Jeremiah 33:3 say to those reasons?
+
+**Try this:** Go for a "prayer walk" today. Walk around your house, yard or neighborhood, and talk to God about whatever you see.
+
+*Dear God, thank You that You want to hear from me. Thank You that I can call to You anytime and anywhere, and You will answer. Teach me to talk with You every day. Show me great things about You that I don't know yet. In Jesus' name, Amen.*
+
+---
+
+## Day 20 — Our Father
+
+> "Our Father in heaven, hallowed be Your name. Your kingdom come, Your will be done, on earth as it is in heaven."
+> — Matthew 6:9–10 (BSB)
+
+Jesus' disciples watched Him pray all the time. He prayed early in the morning. He prayed all night on a mountain. He prayed before big decisions. No wonder one day they asked Him, "Lord, teach us to pray" (Luke 11:1).
+
+Jesus gave them a pattern to follow, and Matthew records it in Jesus' famous Sermon on the Mount. What He taught has been prayed by Christians all over the world for two thousand years. We call it **the Lord's Prayer**. Let's look at how it begins, because the beginning tells us a lot.
+
+**"Our Father."** Jesus could have told us to start with "Dear Almighty Creator of the Universe." And God *is* that! But Jesus invites us to call God **Father**. If you have trusted Jesus, you're God's child (remember Day 14?), so you can come to Him the way a kid runs to a loving dad. You don't need fancy words. You don't need to be scared.
+
+**"In heaven."** But He's not just any father. He's in heaven, which means He's above everything and can do anything. So we come to God as someone close *and* someone great. He's near enough to hear a whisper and big enough to handle anything.
+
+**"Hallowed be Your name."** "Hallowed" is an old word that means *treated as holy*. We're asking that people everywhere, including us, would honor God's name and see how wonderful He is.
+
+**"Your kingdom come, Your will be done."** This is a brave thing to pray. It means, *God, I want Your way, not just my way.* Before we ask for anything we need, Jesus teaches us to care about what God wants.
+
+Did you notice? The first part of the Lord's Prayer isn't about us at all. It's about God. When we start by remembering who God is, our problems don't disappear, but they shrink to the right size.
+
+Tomorrow we'll look at what comes next: asking for what we need. But today, just practice beginning your prayers by looking up.
+
+**Think about it:** How is praying to God as "Father" different from praying to someone you don't really know?
+
+**Try this:** Pray the Lord's Prayer slowly, one line at a time. After each line, stop and add a sentence in your own words.
+
+*Our Father in heaven, thank You that I can call You Father. You are great and holy, and Your name is wonderful. I want Your kingdom to come and Your will to be done, in my home, at my school and in my heart, just like it is in heaven. In Jesus' name, Amen.*
+
+---
+
+## Day 21 — Daily Bread
+
+> "Give us this day our daily bread."
+> — Matthew 6:11 (BSB)
+
+Yesterday we learned that the Lord's Prayer begins by looking up at God: who He is and what He wants. Today we get to the next part, where Jesus teaches us to ask God for what we need.
+
+"Give us this day our daily bread."
+
+Just a few verses earlier, Jesus said something surprising: "Your Father knows what you need before you ask Him" (Matthew 6:8). So if God already knows, why ask?
+
+Because prayer isn't about giving God information. It's about **trusting Him**. When you ask God for something, you're saying, *I need You. Everything I have comes from You.* It's like a kid asking their parent for dinner. The parent was already planning to make dinner! But the asking shows the child knows where good things come from.
+
+Notice the word **daily**. When God's people were wandering in the desert after leaving Egypt, He fed them with a special food called manna. Every morning it appeared on the ground. But there was a rule: gather only enough for today. If they tried to store extra, it went bad. God wanted them to learn to trust Him one day at a time.
+
+That's what Jesus is teaching here. We don't have to worry about next month or next year. We can trust God for today, and then trust Him again tomorrow.
+
+"Bread" doesn't just mean bread. It means everything we need to live: food, clothes, a home, health, help with homework, courage for a hard conversation, strength to get through a tough day. No need is too small to bring to God. He cares about the big things *and* the little things.
+
+This prayer also says "give **us**," not just "give **me**." When we pray, we can remember other people's needs too, especially people who don't have enough.
+
+**Think about it:** What is something you need today? Have you asked God for it?
+
+**Try this:** Make two lists: "Things I need" and "Things other people need." Pray through both lists today.
+
+*Dear Father, thank You that You know what I need before I ask. Please give me what I need today: [tell Him your needs]. Please also take care of [someone else who has a need]. Help me trust You one day at a time. In Jesus' name, Amen.*
+
+---
+
+## Day 22 — Saying Sorry to God
+
+> "Have mercy on me, O God, according to Your loving devotion; according to Your great compassion, blot out my transgressions. Wash me clean of my iniquity and cleanse me from my sin… Create in me a clean heart, O God, and renew a right spirit within me."
+> — Psalm 51:1–2, 10 (BSB)
+
+King David loved God. He wrote many of the psalms. But one time, David did something terribly wrong. He tried to hide it, and it led to even more wrong things. For a long time he acted like everything was fine.
+
+Then God sent a prophet named Nathan to talk to David. Nathan helped David see what he had done. And David didn't make excuses. He didn't blame anyone else. He said, "I have sinned against the LORD." Then he wrote Psalm 51, a prayer of saying sorry to God.
+
+This kind of prayer has a big name: **confession**. To confess means to agree with God about your sin. You stop hiding, stop pretending and tell God the truth: *I did this, and it was wrong.*
+
+Why confess if God already knows? Because hiding sin is like having a splinter in your finger. If you leave it in, it gets red and sore. You have to take it out before it can heal. When we keep sin hidden, it hurts us on the inside and gets between us and God. When we bring it out into the open, God can heal it.
+
+Look at the words David used. "Blot out." "Wash me clean." "Cleanse me." David knew he couldn't clean himself up. Only God could. And God did forgive him.
+
+Then David asked for something more: "Create in me a clean heart." He didn't just want to be forgiven for the past. He wanted God to change him so he wouldn't keep doing the same thing.
+
+If you have trusted Jesus, you are already God's forgiven child. Confession doesn't make you His child again. It keeps your friendship with Him close and honest, like saying sorry to someone in your family.
+
+Remember Day 15: when God forgives, He removes your sin as far as the east is from the west.
+
+**Think about it:** Why do you think people try to hide their sin instead of confessing it?
+
+**Try this:** Sit quietly for one minute and ask God, "Is there anything I need to say sorry for?" Then tell Him. If you hurt someone, say sorry to them too.
+
+*Dear God, have mercy on me. I'm sorry for [tell Him what you did]. Please wash me clean. Thank You that Jesus died so I could be forgiven. Create in me a clean heart, and help me not to do it again. In Jesus' name, Amen.*
+
+---
+
+## Day 23 — Thank You, God
+
+> "Rejoice at all times. Pray without ceasing. Give thanks in every circumstance, for this is God's will for you in Christ Jesus."
+> — 1 Thessalonians 5:16–18 (BSB)
+
+Have you ever wondered, *What does God want me to do?* Lots of people ask that question. Here's one answer the Bible gives very clearly: "Give thanks in every circumstance, for this is God's will for you."
+
+Notice what it doesn't say. It doesn't say to give thanks *for* every circumstance. You don't have to say, "Thank You, God, that my grandpa is sick," or "Thank You that I failed my test." Those things are hard, and God knows it.
+
+But it does say to give thanks *in* every circumstance. Even on a bad day, there's always something to thank God for. He is still with you. He still loves you. You are still His child. And He is still working, even when you can't see it.
+
+The man who wrote these words was Paul. He wasn't someone who had an easy life. He was beaten, thrown in prison, shipwrecked three times and chased out of town after town. Yet his letters are full of thank-yous. Paul had learned that thankfulness doesn't depend on what's happening around you. It depends on who God is.
+
+Here's a secret: being thankful changes you. When you complain, you notice more things to complain about. When you give thanks, you start noticing more of God's gifts. A grumbly heart is a heavy heart. A thankful heart is a happy one.
+
+Paul also says, "Pray without ceasing." That doesn't mean you have to pray every second of the day. It means keeping a conversation with God going all day long: a quick "thank You" when something good happens, a quick "help me" when something is hard. Thankfulness and prayer go together.
+
+Remember Day 1? A rooted person is "overflowing with thankfulness." The deeper your roots grow, the more thankful you'll be.
+
+**Think about it:** What is something hard in your life right now? What is one thing you can still thank God for in it?
+
+**Try this:** Write a list of ten things you're thankful for. Then say thank you to at least one person on your list.
+
+*Dear God, thank You! Thank You for [name some things]. Even on hard days, help me find reasons to thank You. Teach me to talk with You all day long. Make my heart overflow with thankfulness. In Jesus' name, Amen.*
+
+---
+
+## Day 24 — When God Says "Wait"
+
+> "Still I am certain to see the goodness of the LORD in the land of the living. Wait patiently for the LORD; be strong and courageous. Wait patiently for the LORD!"
+> — Psalm 27:13–14 (BSB)
+
+Waiting is hard. Waiting for Christmas morning. Waiting in a long line. Waiting to hear back about the team tryout. Waiting to grow taller. Sometimes it feels like the whole world is saying, "Not yet."
+
+Sometimes it feels like God says that too. You pray and pray, and nothing seems to happen. Did God not hear? Doesn't He care?
+
+Here's something important to know: God always hears your prayers, and He always answers. But His answer isn't always "yes." Sometimes it's "no," because He knows something better. And sometimes it's "**wait**."
+
+Think about Abraham. God promised Abraham and his wife Sarah that they would have a son. But Abraham was already 75 years old! Then they waited. And waited. And waited. They waited **25 years**. Abraham was 100 years old when their son Isaac was finally born. God kept His promise, right on His own schedule.
+
+David wrote Psalm 27 during a hard and scary time. Look at how he chose to wait. First, he was "certain to see the goodness of the LORD." He trusted that God's goodness was coming, even if he couldn't see it yet.
+
+Second, he said to "be strong and courageous" while waiting. That's interesting, isn't it? Waiting takes courage! It's brave to keep trusting God when nothing seems to be happening. It's brave to keep praying instead of giving up.
+
+Waiting isn't wasted time. While you wait, God is growing something in you: patience, trust and a stronger faith. A seed buried in the ground looks like nothing is happening. But under the soil, roots are growing.
+
+So if you're waiting on God for something, don't give up. Keep praying. Keep trusting. He hasn't forgotten you.
+
+**Think about it:** Is there a prayer you've been waiting on God to answer? How could you be "strong and courageous" while you wait?
+
+**Try this:** Write down a prayer you are waiting on, and today's date. Keep praying about it. When God answers, write down how.
+
+*Dear God, waiting is hard. Help me trust that You hear me and that You know the best time for everything. Make me strong and courageous while I wait. I believe I will see Your goodness. In Jesus' name, Amen.*
+
+---
+
+# Week 5 · Growing Deep
+
+---
+
+## Day 25 — A Lamp for My Feet
+
+> "Your word is a lamp to my feet and a light to my path."
+> — Psalm 119:105 (BSB)
+
+Have you ever gone camping and had to walk through the woods at night? Without a flashlight, it's scary. You can't see the tree roots that might trip you, the rocks in the path or which way the trail goes. But turn on a flashlight, and suddenly you can see where to step.
+
+The Bible says God's Word is like that. "Your word is a lamp to my feet and a light to my path."
+
+In Bible times, people didn't have flashlights. They carried small oil lamps. These lamps didn't light up the whole forest. They only lit up the next few steps in front of you. But that was enough. You'd take a step, and the light would show you the next one.
+
+That's often how the Bible works in our lives. It doesn't tell you exactly what job you'll have, who your friends will be in five years or what's going to happen next week. But it shows you the next step: how to treat your brother or sister today, what to do when you're tempted, what to say when a friend is sad, how to trust God when you're worried.
+
+The world can feel dark and confusing. Everyone has an opinion about what's right and wrong, and the opinions keep changing. But God's Word stays the same, and it always points the right way.
+
+This is why reading the Bible is one of the most important habits you can build. It's not just an old book. It's God speaking to you. The more you read it, the more light you'll have.
+
+If you're not sure where to start, try the Gospel of Mark. It's short and fast-paced, and it's all about Jesus. You could read one chapter a day. In about two weeks, you'd finish a whole book of the Bible!
+
+**Think about it:** What is a situation in your life right now where you need God's light to show you the next step?
+
+**Try this:** Choose a Bible reading time for after these 30 days are finished. Write it down. You might start with Mark 1 tomorrow.
+
+*Dear God, thank You for giving us Your Word. When I don't know which way to go, let the Bible be a lamp to my feet. Help me want to read it every day. Show me the next step, and help me follow it. In Jesus' name, Amen.*
+
+---
+
+## Day 26 — Hiding God's Word
+
+> "How can a young man keep his way pure? By guarding it according to Your word. With all my heart I have sought You; do not let me stray from Your commandments. I have hidden Your word in my heart that I might not sin against You."
+> — Psalm 119:9–11 (BSB)
+
+Look at the question at the start of today's verses: "How can a young man keep his way pure?" That question is for you, whether you're a boy or a girl! How can a young person live in a way that pleases God, especially with so many temptations around?
+
+Here's the answer: "By guarding it according to Your word." And then: "I have hidden Your word in my heart."
+
+**Hiding** God's Word doesn't mean keeping it secret from other people. It means storing it deep inside you, the way you would put a treasure in a safe place. In other words, it means **memorizing** it.
+
+Why memorize the Bible? Because you won't always have one in your hands. When you're at a sleepover and someone suggests watching something you know you shouldn't, you probably won't have a Bible open. When you're lying awake scared at night, you might not be able to look something up. But if you've hidden God's Word in your heart, it's always with you.
+
+Jesus did this. When the devil tempted Jesus in the wilderness, Jesus didn't argue. Every time, He answered by quoting Scripture: "It is written…" God's Word was His weapon, and it can be yours too.
+
+Here are some tips for memorizing:
+
+- **Pick a short verse.** Start with one or two sentences.
+- **Say it out loud** several times a day, including the reference.
+- **Write it down.** Put it on a sticky note, your bathroom mirror or the back of your door.
+- **Make it a song.** Lots of verses are easier to remember with a tune.
+- **Practice with someone.** Take turns saying it to a parent or friend.
+
+You've already met some great verses in this book. How many do you remember?
+
+**Think about it:** When could having a Bible verse in your heart help you most?
+
+**Try this:** Memorize Psalm 119:11 today: "I have hidden Your word in my heart that I might not sin against You." Say it to someone at dinner.
+
+*Dear God, thank You for Your Word. Help me hide it in my heart, so that it's always with me. When I am tempted, bring the right verse to my mind. With all my heart I want to know You and follow You. In Jesus' name, Amen.*
+
+---
+
+## Day 27 — Don't Just Listen — Do
+
+> "Be doers of the word, and not hearers only. Otherwise, you are deceiving yourselves. For anyone who hears the word but does not carry it out is like a man who looks at his face in a mirror, and after observing himself goes away and immediately forgets what he looks like."
+> — James 1:22–24 (BSB)
+
+Imagine you look in the mirror before school and notice a big piece of spinach stuck in your teeth. Would you just walk away and forget about it? Of course not! The whole point of looking in the mirror is to fix what you see.
+
+James says the Bible is like a mirror. When we read it, it shows us what we're really like and what God wants us to do. But if we read it, nod our heads and then walk away without changing anything, it's like seeing that spinach and leaving it there all day.
+
+Over the last 26 days, you've learned a lot. You've learned that God is holy and loving. You've learned the good news about Jesus. You've learned who you are in Christ, how to pray and why the Bible matters. That's great! But James says knowing isn't enough. God wants us to **do** what we learn.
+
+James even says that if you only listen, "you are deceiving yourselves." You could fool yourself into thinking you're growing just because you know a lot of Bible facts. But real growth shows up in how you live.
+
+Jesus told a story about this too. He said the person who hears His words and does them is like a wise builder who builds a house on solid rock. When the storm comes, the house stands.
+
+Doing God's Word isn't always easy. It might mean forgiving someone who hurt you, telling the truth when a lie would be easier, helping out at home without complaining, or being kind to someone nobody likes. But every time you obey, your roots grow a little deeper.
+
+You don't have to do it all at once. Just start with one thing.
+
+**Think about it:** Of everything you've learned in this book, what is one thing you know God wants you to do but you haven't done yet?
+
+**Try this:** Choose one thing from these 27 days and do it today. Then tell someone what you did.
+
+*Dear God, I don't just want to know about You. I want to obey You. Help me be a doer of Your Word, not just a hearer. Show me one thing to do today, and give me the courage to do it. In Jesus' name, Amen.*
+
+---
+
+## Day 28 — Growing Together
+
+> "And let us consider how to spur one another on to love and good deeds. Let us not neglect meeting together, as some have made a habit, but let us encourage one another, and all the more as you see the Day approaching."
+> — Hebrews 10:24–25 (BSB)
+
+The giant redwood trees in California are some of the tallest living things on earth. Some are taller than a 30-story building! You might think trees that big would need incredibly deep roots. But redwood roots are actually quite shallow.
+
+So how do they stay standing in storms? Their roots spread out wide and **tangle together** with the roots of the trees around them. Underground, the whole forest is holding on to each other. One redwood alone could topple over. A forest of redwoods stands strong for thousands of years.
+
+God made His people to be like that. You weren't meant to follow Jesus all by yourself. That's why God gave us the **church**.
+
+The church isn't just a building. It's God's family: people of all ages who belong to Jesus, meeting together to worship, learn and help each other. And you are an important part of it, not just when you're a grown-up, but right now.
+
+Hebrews gives us two jobs to do for each other.
+
+**Spur one another on.** A spur pokes a horse to get it moving. That sounds funny, but it means we help each other keep going: "Come on, you can do it!" When a friend is thinking about giving up on God, you can cheer them on.
+
+**Encourage one another.** Everyone has hard days. When you notice someone sad or struggling, a kind word or a prayer can help more than you know.
+
+The writer also says, "Let us not neglect meeting together." Some people stop going to church because they're busy or bored. But when you pull away from God's family, your roots can dry out. When you stay connected, you grow stronger together.
+
+**Think about it:** Who is someone at your church who helps you grow? Who is someone you could encourage?
+
+**Try this:** This week at church (or with a Christian friend), encourage someone. Tell them something you appreciate about them, or ask how you can pray for them.
+
+*Dear God, thank You for my church family. Thank You that I don't have to grow alone. Help me encourage others and cheer them on to love and good deeds. Help me stay connected to Your people, like roots holding on together. In Jesus' name, Amen.*
+
+---
+
+## Day 29 — Sing to the Lord
+
+> "Come, let us sing for joy to the LORD; let us shout to the Rock of our salvation! Let us enter His presence with thanksgiving; let us make a joyful noise to Him in song. For the LORD is a great God, a great King above all gods."
+> — Psalm 95:1–3 (BSB)
+
+What happens when your favorite team scores the winning goal? People jump up, cheer, clap and shout! Nobody has to tell them to. When something is truly great, celebrating comes naturally.
+
+That's what **worship** is: celebrating how great God is. Psalm 95 invites us: "Come, let us sing for joy to the LORD!" Look at the words: sing, shout, joy, joyful noise. Worship isn't meant to be boring!
+
+Why should we worship God? The psalm tells us: "For the LORD is a great God, a great King above all gods." Think back over everything you've learned in this book. God made the whole universe. He names every star. He is holy, holy, holy. He loved us first and sent Jesus to rescue us. He forgives us, adopts us, never leaves us and hears every prayer. That's a God worth singing about!
+
+The psalm also calls God "the Rock of our salvation." A rock is solid and strong. You can stand on it without it moving. God is the one who saved us, and He's the one we can stand on.
+
+Here's the good news: you don't need to be a great singer to worship God. "Make a joyful noise" means God cares more about your heart than your voice. A kid singing off-key with a heart full of love for God is making beautiful music to Him.
+
+And worship isn't only singing. You can worship God by praying, by giving thanks, by obeying Him and by using your talents for Him. You can even worship Him by doing your homework or chores with a good attitude, because you're doing it for Him. Your whole life can be a song of worship.
+
+But singing is a special gift. When God's people sing together, it's like a little preview of heaven.
+
+**Think about it:** What is one thing about God that makes you want to celebrate Him?
+
+**Try this:** Sing a worship song today, out loud. Or make up your own song to God about something He has done for you.
+
+*Dear God, You are a great God and a great King! You are the Rock of my salvation. I want to sing for joy to You. Thank You for everything You have done for me. Let my whole life be a song of worship to You. In Jesus' name, Amen.*
+
+---
+
+## Day 30 — A Tree by the Water
+
+> "But blessed is the man who trusts in the LORD, whose confidence is in Him. He is like a tree planted by the waters that sends out its roots toward the stream. It does not fear when the heat comes, and its leaves are always green. It does not worry in a year of drought, nor does it cease to produce fruit."
+> — Jeremiah 17:7–8 (BSB)
+
+Picture two plants. The first is a small, scraggly bush in the middle of a hot desert. There's no water anywhere. Its leaves are brown and crispy. When a hot, dry summer comes, it barely survives.
+
+The second is a big, leafy tree growing right next to a river. Its roots stretch down to the water. When the summer heat comes, it doesn't matter. The tree keeps drinking. Its leaves stay green. It keeps growing fruit year after year.
+
+Jeremiah uses these two pictures to describe two kinds of people. Just before today's verses, he describes the person who trusts only in themselves or in other people as that dry bush in the desert. But the person who **trusts in the LORD** is like the tree by the water.
+
+Look at what that tree is like:
+
+- It "sends out its roots toward the stream." It keeps reaching for God.
+- It "does not fear when the heat comes." Hard times still come, but it isn't afraid.
+- "Its leaves are always green." It stays alive and healthy, even when others dry up.
+- It never stops producing fruit. Its life keeps doing good.
+
+That's the kind of person God wants you to be. And over these 30 days, that's exactly what you've been doing: sending out roots toward the stream.
+
+But the most important thing isn't what you learned. It's **who you trust**. "Blessed is the man who trusts in the LORD, whose confidence is in Him." Keep trusting Him. Keep reaching for Him. Your roots will keep growing deeper.
+
+And the adventure isn't over. In Book 2, you're going to meet Jesus up close.
+
+**Think about it:** Which day in this book helped you most? Why?
+
+**Try this:** Flip back through the book or your notebook. Write down your favorite verse and your favorite thing you learned. Then show someone.
+
+*Dear God, thank You for these 30 days. Thank You for everything You taught me. Make me like a tree planted by the water: always reaching for You, not afraid of hard times and always growing fruit. I trust You, Lord. Keep my roots growing deep in You. In Jesus' name, Amen.*
+
+---
+
+## Conclusion: You're Planted — Keep Growing
+
+You did it! Thirty days. Take a moment to look back at how far you've come.
+
+You learned that **God** is bigger than the stars, perfectly holy, full of love and never changing. You learned **the best news ever**: that even though sin broke our friendship with God, Jesus came, died on the cross for us and rose again, so that anyone who trusts Him is forgiven and made new. You learned **who you are**: made on purpose, a child of God, forgiven, never alone. You learned to **talk with God** as your Father. And you learned how to **grow deep** through the Bible, obeying, church and worship.
+
+That's a lot of roots!
+
+But here's the thing about roots: they never stop growing. A tree doesn't say, "Well, I've grown enough. I'm done now." As long as it's alive, it keeps reaching deeper. And that's how it is with you and God. These 30 days weren't a finish line. They were a starting line.
+
+Remember the verse from Day 30?
+
+> "He is like a tree planted by the waters that sends out its roots toward the stream. It does not fear when the heat comes, and its leaves are always green."
+> — Jeremiah 17:8 (BSB)
+
+That's you when you trust God. The heat will come someday: a hard year, a lost friendship, a scary change. But a tree by the water doesn't have to be afraid. Its roots are already reaching toward the stream.
+
+### If you haven't trusted Jesus yet
+
+Maybe you read about the cross and the empty tomb, and you've been thinking about it but haven't trusted Jesus yet. You don't have to wait. You can talk to God right now, in your own words or something like this:
+
+*Dear God, I know I have sinned, and I'm sorry. I believe Jesus died on the cross for my sins and rose again. I want to trust Him as my Savior and follow Him as my Lord. Thank You for forgiving me and making me Your child. Amen.*
+
+If you prayed that, tell someone! Tell a parent, a pastor or a Christian friend. They'll want to celebrate with you and help you grow.
+
+### What's next
+
+In **Book 2**, you'll get to know Jesus up close. You'll walk with Him from the manger in Bethlehem to the empty tomb, watching Him calm storms, feed thousands with one boy's lunch and welcome children when no one else had time for them. You'll even meet Jesus when He was twelve years old.
+
+Until then, keep reading your Bible, keep talking to God and keep growing.
+
+*May the LORD bless you and keep you;*
+*may the LORD cause His face to shine upon you and be gracious to you;*
+*may the LORD lift up His countenance toward you and give you peace.*
+— Numbers 6:24–26 (BSB)
