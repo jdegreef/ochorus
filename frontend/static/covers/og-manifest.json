@@ -241,8 +241,8 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed",
-			"bar": 0
+			"layout": "duotone/indigo",
+			"bar": 0.05
 		},
 		"ar/the-christians-secret-of-a-happy-life-4": {
 			"ground": "6162c6864a9d095720f7695166bc7fb204d1191a2af40338e15f2f9745ce8b21",
@@ -311,7 +311,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed",
+			"layout": "duotone/indigo",
 			"bar": 0
 		},
 		"ar/waiting-on-god": {
@@ -671,8 +671,8 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed",
-			"bar": 0
+			"layout": "duotone/indigo",
+			"bar": 0.05
 		},
 		"es/purity-of-heart": {
 			"ground": "78cab83d60fae8d3c33ebbd4ee5c402fc02717c6de4bd0a77bcdc709b5a27ac6",
@@ -801,7 +801,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed",
+			"layout": "duotone/indigo",
 			"bar": 0
 		},
 		"es/true-vine": {
@@ -1051,8 +1051,8 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed",
-			"bar": 0
+			"layout": "duotone/indigo",
+			"bar": 0.05
 		},
 		"fr/purity-of-heart": {
 			"ground": "1fe8f872cc1054134db78c2b92194f37168a9e5d5c340921e7fd84980a3c12a3",
@@ -1161,7 +1161,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed",
+			"layout": "duotone/indigo",
 			"bar": 0
 		},
 		"fr/true-vine": {
@@ -1391,7 +1391,7 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed",
+			"layout": "duotone/indigo",
 			"bar": 0
 		},
 		"hi/waiting-on-god": {
@@ -1711,8 +1711,8 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed",
-			"bar": 0
+			"layout": "duotone/indigo",
+			"bar": 0.05
 		},
 		"lg/purity-of-heart": {
 			"ground": "3575add9f9c00040342b7ce3bcb3ce2f0ebe9085d6e2d240cf644f79c6b32ffd",
@@ -1821,7 +1821,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed",
+			"layout": "duotone/indigo",
 			"bar": 0
 		},
 		"lg/waiting-on-god": {
@@ -2011,8 +2011,8 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed",
-			"bar": 0
+			"layout": "duotone/indigo",
+			"bar": 0.05
 		},
 		"pt/a-call-to-the-unconverted": {
 			"ground": "dad4dd6b6f8244224cedc3b9e5864c187b55d8e59211d6181448237f31297b25",
@@ -2201,8 +2201,8 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed",
-			"bar": 0
+			"layout": "duotone/indigo",
+			"bar": 0.05
 		},
 		"pt/purity-of-heart": {
 			"ground": "79a17f62ada9ba8452d6615ec56777daea8e0c87401c52c24f3cb69b84b6390a",
@@ -2331,7 +2331,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed",
+			"layout": "duotone/indigo",
 			"bar": 0
 		},
 		"pt/true-vine": {
@@ -2841,8 +2841,8 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.45,
-			"layout": "framed",
-			"bar": 0
+			"layout": "duotone/indigo",
+			"bar": 0.05
 		},
 		"sw/purity-of-heart": {
 			"ground": "909ff447162bf27588623d5fb7bbd8a695a5bd9c87650bb437b0dc77f637b861",
@@ -3011,7 +3011,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed",
+			"layout": "duotone/indigo",
 			"bar": 0
 		},
 		"sw/things-as-they-are": {
@@ -3211,7 +3211,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
-			"layout": "framed",
+			"layout": "duotone/indigo",
 			"bar": 0
 		},
 		"things-as-they-are": {
