@@ -987,5 +987,14 @@
   "notebook_testimony_hint": "Tewali kiva ku kyuma kyo okutuusa ng'ogabanye.",
   "notebook_pin": "Kwata waggulu",
   "notebook_unpin": "Ggyako",
-  "notebook_pinned": "Ebikwatiddwa waggulu"
+  "notebook_pinned": "Ebikwatiddwa waggulu",
+  "notebook_reflect_heading": "Fumiitiriza ku kusoma kwa leero",
+  "notebook_reflect_prompt1": "Katonda akugamba ki mu kusoma kwa leero?",
+  "notebook_reflect_prompt2": "Kiki ekikukwatako, era lwaki?",
+  "notebook_reflect_prompt3": "Kiki ky'onootwala naawe leero?",
+  "notebook_reflect_prompt4": "Waliwo ky'olina okusabira wano?",
+  "notebook_reflect_saved": "Kiterekeddwa mu kitabo kyo",
+  "notebook_reflect_open": "Ggulawo mu kitabo kyo",
+  "notebook_reflect_write": "Wandiika eky'okuddamu kyo",
+  "notebook_reflect_answer_prompt": "Eky'okuddamu kyo…"
 }

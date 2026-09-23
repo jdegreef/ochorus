@@ -987,5 +987,14 @@
   "notebook_testimony_hint": "لا يغادر شيء جهازك حتى تشاركه.",
   "notebook_pin": "تثبيت",
   "notebook_unpin": "إلغاء التثبيت",
-  "notebook_pinned": "المثبّتة"
+  "notebook_pinned": "المثبّتة",
+  "notebook_reflect_heading": "تأمّل في قراءة اليوم",
+  "notebook_reflect_prompt1": "ماذا يقول لك الله في قراءة اليوم؟",
+  "notebook_reflect_prompt2": "ما الذي لفت انتباهك، ولماذا؟",
+  "notebook_reflect_prompt3": "ماذا ستحمل معك اليوم؟",
+  "notebook_reflect_prompt4": "هل هنا ما تصلّي لأجله؟",
+  "notebook_reflect_saved": "محفوظ في دفترك",
+  "notebook_reflect_open": "افتح في دفترك",
+  "notebook_reflect_write": "اكتب إجابتك",
+  "notebook_reflect_answer_prompt": "إجابتك…"
 }

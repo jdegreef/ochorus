@@ -987,5 +987,14 @@
   "notebook_testimony_hint": "जब तक आप साझा न करें, कुछ भी आपके डिवाइस से बाहर नहीं जाता।",
   "notebook_pin": "पिन करें",
   "notebook_unpin": "पिन हटाएँ",
-  "notebook_pinned": "पिन की गई"
+  "notebook_pinned": "पिन की गई",
+  "notebook_reflect_heading": "आज के पठन पर मनन करें",
+  "notebook_reflect_prompt1": "आज के पठन में परमेश्वर आपसे क्या कह रहा है?",
+  "notebook_reflect_prompt2": "किस बात ने आपका ध्यान खींचा, और क्यों?",
+  "notebook_reflect_prompt3": "आज आप अपने साथ क्या ले जाएँगे?",
+  "notebook_reflect_prompt4": "क्या यहाँ प्रार्थना करने लायक कुछ है?",
+  "notebook_reflect_saved": "आपकी नोटबुक में सहेजा गया",
+  "notebook_reflect_open": "अपनी नोटबुक में खोलें",
+  "notebook_reflect_write": "अपना उत्तर लिखें",
+  "notebook_reflect_answer_prompt": "आपका उत्तर…"
 }

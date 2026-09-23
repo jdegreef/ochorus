@@ -987,5 +987,14 @@
   "notebook_testimony_hint": "Rien ne quitte votre appareil tant que vous ne partagez pas.",
   "notebook_pin": "Épingler",
   "notebook_unpin": "Désépingler",
-  "notebook_pinned": "Épinglées"
+  "notebook_pinned": "Épinglées",
+  "notebook_reflect_heading": "Méditer la lecture du jour",
+  "notebook_reflect_prompt1": "Que vous dit Dieu dans la lecture d'aujourd'hui ?",
+  "notebook_reflect_prompt2": "Qu'est-ce qui vous a frappé, et pourquoi ?",
+  "notebook_reflect_prompt3": "Qu'emporterez-vous avec vous aujourd'hui ?",
+  "notebook_reflect_prompt4": "Y a-t-il ici un sujet de prière ?",
+  "notebook_reflect_saved": "Enregistré dans votre carnet",
+  "notebook_reflect_open": "Ouvrir dans votre carnet",
+  "notebook_reflect_write": "Écrire votre réponse",
+  "notebook_reflect_answer_prompt": "Votre réponse…"
 }

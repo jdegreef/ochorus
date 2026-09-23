@@ -987,5 +987,14 @@
   "notebook_testimony_hint": "Nothing leaves your device until you share it.",
   "notebook_pin": "Pin",
   "notebook_unpin": "Unpin",
-  "notebook_pinned": "Pinned"
+  "notebook_pinned": "Pinned",
+  "notebook_reflect_heading": "Reflect on today's reading",
+  "notebook_reflect_prompt1": "What is God saying to you in today's reading?",
+  "notebook_reflect_prompt2": "What stood out to you, and why?",
+  "notebook_reflect_prompt3": "What will you carry with you into today?",
+  "notebook_reflect_prompt4": "Is there something here to pray about?",
+  "notebook_reflect_saved": "Saved in your Notebook",
+  "notebook_reflect_open": "Open in your Notebook",
+  "notebook_reflect_write": "Write your answer",
+  "notebook_reflect_answer_prompt": "Your answer…"
 }

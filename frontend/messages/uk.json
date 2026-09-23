@@ -987,5 +987,14 @@
   "notebook_testimony_hint": "Ніщо не залишає ваш пристрій, доки ви не поділитеся.",
   "notebook_pin": "Закріпити",
   "notebook_unpin": "Відкріпити",
-  "notebook_pinned": "Закріплені"
+  "notebook_pinned": "Закріплені",
+  "notebook_reflect_heading": "Роздуми над сьогоднішнім читанням",
+  "notebook_reflect_prompt1": "Що Бог говорить вам у сьогоднішньому читанні?",
+  "notebook_reflect_prompt2": "Що вас зачепило, і чому?",
+  "notebook_reflect_prompt3": "Що ви візьмете з собою в цей день?",
+  "notebook_reflect_prompt4": "Чи є тут про що помолитися?",
+  "notebook_reflect_saved": "Збережено у вашому записнику",
+  "notebook_reflect_open": "Відкрити у записнику",
+  "notebook_reflect_write": "Напишіть свою відповідь",
+  "notebook_reflect_answer_prompt": "Ваша відповідь…"
 }

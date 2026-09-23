@@ -987,5 +987,14 @@
   "notebook_testimony_hint": "Nada sale de tu dispositivo hasta que lo compartas.",
   "notebook_pin": "Fijar",
   "notebook_unpin": "Desfijar",
-  "notebook_pinned": "Fijadas"
+  "notebook_pinned": "Fijadas",
+  "notebook_reflect_heading": "Reflexiona sobre la lectura de hoy",
+  "notebook_reflect_prompt1": "¿Qué te está diciendo Dios en la lectura de hoy?",
+  "notebook_reflect_prompt2": "¿Qué te llamó la atención, y por qué?",
+  "notebook_reflect_prompt3": "¿Qué llevarás contigo hoy?",
+  "notebook_reflect_prompt4": "¿Hay algo aquí por lo que orar?",
+  "notebook_reflect_saved": "Guardado en tu cuaderno",
+  "notebook_reflect_open": "Abrir en tu cuaderno",
+  "notebook_reflect_write": "Escribe tu respuesta",
+  "notebook_reflect_answer_prompt": "Tu respuesta…"
 }
