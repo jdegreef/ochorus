@@ -289,6 +289,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'rooted-5': 'young',
 	'rooted-6': 'young',
 	'daughters-of-the-king-1': 'young',
+	'daughters-of-the-king-2': 'young',
 	'sons-of-the-king-1': 'young'
 };
 
