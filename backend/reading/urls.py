@@ -4,6 +4,7 @@ from .views import (
     ActivityView,
     BookmarksView,
     FavoriteView,
+    JournalView,
     MarksView,
     MergeView,
     PlanProgressView,
@@ -28,6 +29,7 @@ urlpatterns = [
         BookmarksView.as_view(),
         name="reading-bookmark",
     ),
+    path("journal/<str:entry_id>/", JournalView.as_view(), name="reading-journal"),
     path("progress/<slug:slug>/", ProgressView.as_view(), name="reading-progress"),
     path("plan/<slug:slug>/", PlanProgressView.as_view(), name="reading-plan"),
     path(

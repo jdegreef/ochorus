@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tick } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { segmentsFromSelection } from '$lib/rangeMarks';
 	import { readerProse } from '$lib/listenText';
@@ -7,10 +8,14 @@
 	import { clampPopoverLeft, HEADER_OFFSET } from '$lib/reading';
 	import type { Segment } from '$lib/marks.svelte';
 
-	/** Widest the bar gets (matches its max-width), for the viewport clamp. */
-	const BAR_MAX_WIDTH = 352;
-	/** Room the bar needs above a selection before it has to flip below it. */
-	const BAR_CLEARANCE = 52;
+	/**
+	 * The bar's size before it has ever been drawn — its max-width and two rows.
+	 * Only the first placement uses these: the bar is then measured as drawn
+	 * (`place`), so a language with longer labels, a row that wraps on a phone,
+	 * or a button added later needs no retuning here.
+	 */
+	const FIRST_WIDTH = 448;
+	const FIRST_HEIGHT = 84;
 	/** Keep this much clear of either viewport edge. */
 	const GUTTER = 12;
 
@@ -29,7 +34,8 @@
 		onNote,
 		highlightColor,
 		onDefine,
-		onDefineClose
+		onDefineClose,
+		onJournal
 	}: {
 		container: HTMLElement | undefined;
 		cite: Cite;
@@ -43,10 +49,13 @@
 		onDefine?: (word: string, top: number, left: number) => void;
 		/** Retire a definition opened for a word the selection has since outgrown. */
 		onDefineClose?: () => void;
+		/** Start a Notebook note or prayer about the selected passage. */
+		onJournal?: (kind: 'note' | 'prayer', quote: string, segments: Segment[]) => void;
 	} = $props();
 	const t = i18n.t;
 
 	let visible = $state(false);
+	let bar = $state<HTMLElement>();
 	let top = $state(0);
 	let left = $state(0);
 	/** Bar sits below the selection when there is no room above it. */
@@ -138,15 +147,25 @@
 		segments = segmentsFromSelection(container, sel);
 		const rect = sel.getRangeAt(0).getBoundingClientRect();
 
-		// Selecting the first line of a chapter used to put the bar above the top
-		// of the page (and behind the sticky chrome). Flip it under the selection
-		// when there isn't room, and keep it inside the viewport horizontally —
-		// a selection near either margin ran half off-screen.
-		below = rect.top < HEADER_OFFSET + BAR_CLEARANCE;
-		top = below ? rect.bottom + window.scrollY + 8 : rect.top + window.scrollY - 8;
-		left = clampPopoverLeft(rect.left + rect.width / 2 + window.scrollX, BAR_MAX_WIDTH, GUTTER);
+		place(rect);
 		copied = false;
 		visible = true;
+		// Now that it is drawn with this selection's buttons, place it by its real size.
+		tick().then(() => place(rect));
+	}
+
+	/**
+	 * Selecting the first line of a chapter used to put the bar above the top of
+	 * the page (and behind the sticky chrome). Flip it under the selection when
+	 * there isn't room, and keep it inside the viewport horizontally — a
+	 * selection near either margin ran half off-screen.
+	 */
+	function place(rect: DOMRect) {
+		const width = bar?.offsetWidth || FIRST_WIDTH;
+		const height = bar?.offsetHeight || FIRST_HEIGHT;
+		below = rect.top < HEADER_OFFSET + height + 8;
+		top = below ? rect.bottom + window.scrollY + 8 : rect.top + window.scrollY - 8;
+		left = clampPopoverLeft(rect.left + rect.width / 2 + window.scrollX, width, GUTTER);
 	}
 
 	async function copy() {
@@ -207,6 +226,16 @@
 		update(true);
 	}
 
+	/** Hand the passage to the Notebook — its text cleaned of footnote
+	 *  markers, as the quote card does, since it will be quoted back. */
+	function journal(kind: 'note' | 'prayer') {
+		const sel = window.getSelection();
+		const quote = sel && sel.rangeCount ? readerProse(sel.getRangeAt(0).cloneContents()) : selectedText;
+		onJournal?.(kind, quote || selectedText, segments);
+		sel?.removeAllRanges();
+		visible = false;
+	}
+
 	const activeColor = $derived(
 		highlightColor && segments.length > 0 ? highlightColor(segments) : null
 	);
@@ -230,6 +259,7 @@
 	  Tab doesn't go through mousedown.
 	-->
 	<div
+		bind:this={bar}
 		class="selbar"
 		class:below
 		style="top: {top}px; left: {left}px"
@@ -238,45 +268,55 @@
 		tabindex="-1"
 		onmousedown={(e) => e.preventDefault()}
 	>
-		<button class="selbar-btn" onclick={copy}>
-			{copied ? '✓ ' : ''}{t('reader.copyQuote')}
-		</button>
-		<span class="selbar-sep"></span>
-		<button class="selbar-btn" onclick={share}>{t('reader.share')}</button>
-		<span class="selbar-sep"></span>
-		<button class="selbar-btn" onclick={quoteCard} disabled={cardBusy}>
-			{t('reader.quoteCard')}
-		</button>
-		{#if onHighlight && segments.length > 0}
+		<span class="selbar-main">
+			<button class="selbar-btn" onclick={copy}>
+				{copied ? '✓ ' : ''}{t('reader.copyQuote')}
+			</button>
 			<span class="selbar-sep"></span>
-			<span class="selbar-swatches" role="group" aria-label={t('reader.highlight')}>
-				{#each HIGHLIGHT_COLORS as color (color)}
-					<button
-						class="hl-swatch"
-						data-color={color}
-						class:active={activeColor === color}
-						aria-pressed={activeColor === color}
-						aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
-						title={t(`reader.hl_${color}`)}
-						onclick={() => {
-							onHighlight(segments, color);
-							window.getSelection()?.removeAllRanges();
-							visible = false;
-						}}
-					></button>
-				{/each}
+			<button class="selbar-btn" onclick={share}>{t('reader.share')}</button>
+			<span class="selbar-sep"></span>
+			<button class="selbar-btn" onclick={quoteCard} disabled={cardBusy}>
+				{t('reader.quoteCard')}
+			</button>
+			{#if onHighlight && segments.length > 0}
+				<span class="selbar-sep"></span>
+				<span class="selbar-swatches" role="group" aria-label={t('reader.highlight')}>
+					{#each HIGHLIGHT_COLORS as color (color)}
+						<button
+							class="hl-swatch"
+							data-color={color}
+							class:active={activeColor === color}
+							aria-pressed={activeColor === color}
+							aria-label="{t('reader.highlight')}: {t(`reader.hl_${color}`)}"
+							title={t(`reader.hl_${color}`)}
+							onclick={() => {
+								onHighlight(segments, color);
+								window.getSelection()?.removeAllRanges();
+								visible = false;
+							}}
+						></button>
+					{/each}
+				</span>
+			{/if}
+			{#if onNote && segments.length > 0}
+				<span class="selbar-sep"></span>
+				<button
+					class="selbar-btn"
+					onclick={() => {
+						onNote(segments);
+						window.getSelection()?.removeAllRanges();
+						visible = false;
+					}}>{t('reader.note')}</button
+				>
+			{/if}
+		</span>
+		{#if onJournal && segments.length > 0}
+			<!-- A second row: taking the passage into the Notebook. -->
+			<span class="selbar-row">
+				<button class="selbar-btn" onclick={() => journal('note')}>✎ {t('reader.writeAbout')}</button>
+				<span class="selbar-sep"></span>
+				<button class="selbar-btn" onclick={() => journal('prayer')}>🙏 {t('reader.prayThis')}</button>
 			</span>
-		{/if}
-		{#if onNote && segments.length > 0}
-			<span class="selbar-sep"></span>
-			<button
-				class="selbar-btn"
-				onclick={() => {
-					onNote(segments);
-					window.getSelection()?.removeAllRanges();
-					visible = false;
-				}}>{t('reader.note')}</button
-			>
 		{/if}
 	</div>
 {/if}
@@ -289,13 +329,33 @@
 		align-items: center;
 		gap: 0.25rem;
 		transform: translate(-50%, -100%);
-		max-width: min(22rem, calc(100vw - 1.5rem));
+		max-width: min(28rem, calc(100vw - 1.5rem));
 		padding: 0.25rem;
 		border-radius: var(--radius-sm);
 		background: var(--surface);
 		border: 1px solid var(--border);
 		box-shadow: var(--shadow-popover);
 		white-space: nowrap;
+		flex-direction: column;
+		align-items: stretch;
+		/* Sized by its rows, not by the room between `left` and the container's
+		   edge — an absolutely placed box shrinks to that, and the two-row bar
+		   would otherwise squeeze its first row out past its own border. */
+		width: max-content;
+	}
+	.selbar-main,
+	.selbar-row {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	/* On a phone narrower than the row, wrap it rather than run past the edge. */
+	.selbar-main {
+		flex-wrap: wrap;
+	}
+	.selbar-row {
+		padding-top: 0.25rem;
+		border-top: 1px solid var(--border);
 	}
 	/* Flipped under the selection — see `below` in update(). */
 	.selbar.below {
