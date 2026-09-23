@@ -1030,7 +1030,8 @@ rgb(0 0 0 / 0.26) 0%,
    DARK INK, so no scrim. Each hue is a band colour, a paper and an ink, and
    `coverLayouts.test.ts` holds them to contrast — the ink and the band-coloured
    byline on paper, and the two layouts whose paper is translucent (`wash`,
-   `duotone`) at their worst case, over black.
+   `duotone`) at their worst case: wash over black, duotone's white type over
+   its brightest highlight.
 
    A LAYOUT KEEPS THE AUTHOR'S FACE. The `.style-*` recipes still choose the
    title's face, weight and size; a layout only moves the blocks and repaints
@@ -1272,23 +1273,30 @@ rgb(0 0 0 / 0.26) 0%,
 	margin-top: 4cqw;
 }
 
-/* ── duotone: the painting reprinted pale in the book's colour. A grey,
-   flattened print under a tint of the band — flattened so the tint can be
-   light enough for dark ink over the print's darkest shadow. */
+/* ── duotone: the painting reprinted in the book's colour, deep enough to
+   carry WHITE type. A grey print, softened (`contrast()`) and dimmed
+   (`brightness()`) so its highlights stop short of white, under the band
+   colour deepened with a little of the ink. The type is white, like the framed
+   cover's, but the picture keeps a colour of its own rather than going dark
+   under black. `coverLayouts.test.ts` holds white to 4.5:1 over the print's
+   brightest highlight in every hue. */
 .cover-plate.over-art.cover-layout-duotone::before {
-	background: color-mix(in srgb, var(--c-band) 30%, var(--c-paper));
-	opacity: 0.62;
+	background: color-mix(in srgb, var(--c-band), var(--c-ink) 30%);
+	opacity: 0.7;
 }
 .cover-ground:has(~ .cover-plate.cover-layout-duotone) {
-	filter: grayscale(1) contrast(0.6) brightness(1.25);
+	filter: grayscale(1) contrast(0.65) brightness(0.92);
 }
 .cover-plate.over-art.cover-layout-duotone .cover-type {
 	padding: 9cqw 8cqw 7cqw;
+	color: #fff;
 }
-.cover-plate.over-art.cover-layout-duotone .cover-type .byline {
-	/* In ink, not the band colour: the tinted print under it is too dark in
-	   its shadows for a band-coloured line of small type. */
-	color: var(--c-ink);
+.cover-plate.over-art.cover-layout-duotone .cover-type .byline,
+.cover-plate.over-art.cover-layout-duotone .cover-type .brandmark {
+	color: #fff;
+}
+.cover-plate.over-art.cover-layout-duotone .cover-type .rule {
+	background: #fff;
 }
 .cover-plate.over-art.cover-layout-duotone .cover-type .middle {
 	zoom: 1.08;
