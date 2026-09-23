@@ -450,6 +450,10 @@ class ReadingSession(models.Model):
 class JournalKind(models.TextChoices):
     NOTE = "note", "Note"
     PRAYER = "prayer", "Prayer"
+    # The guided daily prayer (Adore / Confess / Thank / Ask) — the reader's own
+    # words for the day, not a request awaiting an answer, so it carries none of
+    # a prayer's list fields.
+    DAILY = "daily", "Daily prayer"
 
 
 class PrayerGroup(models.TextChoices):

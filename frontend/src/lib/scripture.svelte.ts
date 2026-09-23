@@ -19,6 +19,26 @@ export interface ScriptureResult {
 
 const cache = new Map<string, ScriptureResult | 'none'>();
 
+/**
+ * The verse text for a reference, or null when there is none (cached, like a
+ * hit) or it couldn't be fetched (offline — not cached, so it is retried).
+ * Shared by the tap-a-reference popover and the Notebook's daily prayer.
+ */
+export async function lookupScripture(ref: string): Promise<ScriptureResult | null> {
+	const cached = cache.get(ref);
+	if (cached !== undefined) return cached === 'none' ? null : cached;
+	try {
+		const data = await apiFetch<ScriptureResult>(
+			`/api/library/scripture/?ref=${encodeURIComponent(ref)}`
+		);
+		cache.set(ref, data);
+		return data;
+	} catch (e) {
+		if (e instanceof ApiError && e.status === 404) cache.set(ref, 'none');
+		return null;
+	}
+}
+
 class Scripture {
 	open = $state(false);
 	loading = $state(false);
@@ -40,31 +60,13 @@ class Scripture {
 		this.notFound = false;
 		const token = ++this.#token;
 
-		const cached = cache.get(ref);
-		if (cached !== undefined) {
-			this.loading = false;
-			this.result = cached === 'none' ? null : cached;
-			this.notFound = cached === 'none';
-			return;
-		}
-
-		this.loading = true;
+		this.loading = !cache.has(ref);
 		this.result = null;
-		try {
-			const data = await apiFetch<ScriptureResult>(
-				`/api/library/scripture/?ref=${encodeURIComponent(ref)}`
-			);
-			if (token !== this.#token) return;
-			this.result = data;
-			cache.set(ref, data);
-		} catch (e) {
-			if (token !== this.#token) return;
-			this.result = null;
-			this.notFound = true;
-			if (e instanceof ApiError && e.status === 404) cache.set(ref, 'none');
-		} finally {
-			if (token === this.#token) this.loading = false;
-		}
+		const data = await lookupScripture(ref);
+		if (token !== this.#token) return;
+		this.result = data;
+		this.notFound = data === null;
+		this.loading = false;
 	}
 
 	close() {

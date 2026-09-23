@@ -2454,6 +2454,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"school-of-prayer": {
+			"ground": "1b3e2b92d5a65c604f1dda314acccb1c374a410c54fb5a15a3f735e1e019da5d",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"selected-sermons-edwards": {
 			"ground": "78121e68911d16aba053efc9f3ab6c3a15667b430381e017a9803f1f6a2c4e49",
 			"style": "enlightenment",

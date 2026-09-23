@@ -58,7 +58,7 @@ export interface ExportFavorite {
 }
 /** A Notebook entry — the reader's own note or prayer. */
 export interface ExportJournalEntry {
-	kind: 'note' | 'prayer';
+	kind: 'note' | 'prayer' | 'daily';
 	title: string;
 	body: string;
 	ref: string;
@@ -226,7 +226,14 @@ export function toMarkdown(b: ExportBundle): string {
 	if (b.journal.length) {
 		lines.push('## My Notebook', '');
 		for (const j of b.journal) {
-			const label = j.kind === 'note' ? 'Note' : j.answered_at ? 'Answered prayer' : 'Prayer';
+			const label =
+				j.kind === 'note'
+					? 'Note'
+					: j.kind === 'daily'
+						? 'Daily prayer'
+						: j.answered_at
+							? 'Answered prayer'
+							: 'Prayer';
 			lines.push(`### ${j.title || label} — ${j.written_at.slice(0, 10)}`);
 			const forWhom = j.person ? ` for ${j.person}` : '';
 			lines.push(`_${label}${forWhom}${j.ref ? ` · ${j.ref}` : ''}_`, '');

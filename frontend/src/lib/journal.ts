@@ -12,9 +12,11 @@
  * bring a deleted prayer back (see readingSync).
  */
 
-import { localToday } from './streak';
+import { currentStreak, localToday } from './streak';
 
-export type JournalKind = 'note' | 'prayer';
+/** A note; a prayer (a request that can be answered); or the day's guided
+ *  prayer — the reader's own words for the day, carrying no prayer-list fields. */
+export type JournalKind = 'note' | 'prayer' | 'daily';
 
 /** The prayer-list groups, in the order the Notebook offers them (the server's
  *  reading.models.PrayerGroup holds the same values). */
@@ -132,7 +134,7 @@ export function cleanEntry(v: unknown): JournalEntry | null {
 	if (!v || typeof v !== 'object') return null;
 	const o = v as Record<string, unknown>;
 	if (typeof o.id !== 'string' || !ID_RE.test(o.id)) return null;
-	if (o.kind !== 'note' && o.kind !== 'prayer') return null;
+	if (o.kind !== 'note' && o.kind !== 'prayer' && o.kind !== 'daily') return null;
 	const createdAt = ms(o.createdAt) ?? ms(o.updatedAt) ?? Date.now();
 	const updatedAt = ms(o.updatedAt) ?? createdAt;
 	// A tombstone keeps its identity and clock, never the reader's words — the
@@ -246,6 +248,7 @@ export function journalStats(store: JournalStore): JournalStats {
 	for (const e of Object.values(store)) {
 		if (e.deleted) continue;
 		if (e.kind === 'note') s.notes += 1;
+		else if (e.kind !== 'prayer') continue; // a daily prayer is neither
 		else if (e.answeredAt) s.answered += 1;
 		else s.prayers += 1;
 	}
@@ -415,4 +418,53 @@ export function fromServer(j: ServerJournalEntry): JournalEntry | null {
 		updatedAt: at(j.client_updated_at),
 		deleted: j.deleted
 	});
+}
+
+/** The four movements of the guided daily prayer (ACTS), in order. */
+export const DAILY_STEPS = ['adore', 'confess', 'thanks', 'ask'] as const;
+export type DailyStep = (typeof DAILY_STEPS)[number];
+
+/**
+ * A Scripture to open each movement with — seven apiece, so a week of days
+ * never repeats one. References only: the words come from the Scripture API
+ * (see `$lib/scripture.svelte`), and a reference is language-neutral data.
+ */
+const DAILY_VERSES: Record<DailyStep, readonly string[]> = {
+	adore: ['Psalm 103:1', 'Psalm 145:3', 'Isaiah 6:3', 'Psalm 95:6', 'Revelation 4:11', 'Psalm 34:8', 'Psalm 96:9'],
+	confess: ['1 John 1:9', 'Psalm 51:10', 'Psalm 139:23', 'Proverbs 28:13', 'Psalm 32:5', 'Isaiah 1:18', 'James 5:16'],
+	thanks: ['Psalm 100:4', '1 Thessalonians 5:18', 'Psalm 107:1', 'Colossians 3:15', 'Psalm 136:1', 'James 1:17', 'Lamentations 3:22'],
+	ask: ['Philippians 4:6', 'Matthew 7:7', 'John 14:13', 'Hebrews 4:16', '1 Peter 5:7', 'James 1:5', 'Psalm 5:3']
+};
+
+/** Today's verse for a movement: the same all day, a different one tomorrow. */
+export function dailyVerse(step: DailyStep, today: string): string {
+	const day = Math.floor(Date.parse(`${today}T00:00:00Z`) / DAY);
+	const list = DAILY_VERSES[step];
+	return list[((day % list.length) + list.length) % list.length];
+}
+
+/** The local days the reader prayed the daily prayer. */
+function dailyDays(store: JournalStore): Set<string> {
+	const days = new Set<string>();
+	for (const e of Object.values(store)) {
+		if (!e.deleted && e.kind === 'daily') days.add(localToday(new Date(e.createdAt)));
+	}
+	return days;
+}
+
+/** Days in a row with a daily prayer, and whether today's is done. */
+export function dailyStreak(store: JournalStore, today: string): { streak: number; doneToday: boolean } {
+	const days = dailyDays(store);
+	return { streak: currentStreak(days, today), doneToday: days.has(today) };
+}
+
+/**
+ * The saved daily prayer's text: each movement the reader wrote in, under its
+ * name, in order. Plain text on purpose — it reads the same in the Notebook,
+ * the export and a synced device, and the card sets the names in bold.
+ */
+export function composeDaily(parts: Partial<Record<DailyStep, string>>, names: Record<DailyStep, string>): string {
+	return DAILY_STEPS.filter((s) => parts[s]?.trim())
+		.map((s) => `${names[s]}\n${parts[s]!.trim()}`)
+		.join('\n\n');
 }

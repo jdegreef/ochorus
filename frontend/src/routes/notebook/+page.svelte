@@ -6,6 +6,7 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 	import {
+		dailyStreak,
 		entryTime,
 		groupByDay,
 		journalStats,
@@ -17,6 +18,7 @@
 	} from '$lib/journal';
 	import { journal } from '$lib/journal.svelte';
 	import { localToday, shiftDay } from '$lib/streak';
+	import { localizeHref } from '$lib/href';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EntryComposer from '$lib/components/notebook/EntryComposer.svelte';
 	import JournalEntryCard from '$lib/components/notebook/JournalEntryCard.svelte';
@@ -62,6 +64,7 @@
 	let colorFilter = $state(''); // '' = all colours
 
 	const stats = $derived(journalStats(journal.store));
+	const daily = $derived(dailyStreak(journal.store, localToday()));
 	const TABS = $derived<{ id: NotebookView; label: string; count?: number }[]>([
 		{ id: 'all', label: t('notebook.allColors') },
 		{ id: 'notes', label: t('settings.statNotes'), count: stats.notes },
@@ -163,6 +166,25 @@
 				<p class="praise">
 					✦ {stats.answered === 1 ? t('notebook.praiseOne') : m.notebook_praise_many({ n: String(stats.answered) })}
 				</p>
+			{/if}
+
+			{#if view === 'all' || view === 'prayers'}
+				<!-- The daily prayer: a few guided minutes, and the days kept in a row. -->
+				<a class="daily-card" href={localizeHref('/notebook/today')}>
+					<span class="daily-sun" aria-hidden="true">☀</span>
+					<span class="min-w-0 grow">
+						<span class="block font-semibold text-text">{t('notebook.dailyTitle')}</span>
+						<span class="block text-small text-muted">
+							{#if daily.doneToday}✓ {t('notebook.dailyDone')}{:else}{t('notebook.dailyIntro')}{/if}
+						</span>
+					</span>
+					{#if daily.streak}
+						<span class="daily-streak text-small"><span aria-hidden="true" class="me-1">🔥</span>{daily.streak}</span>
+					{/if}
+					<span class="btn btn-sm" class:btn-primary={!daily.doneToday}>
+						{daily.doneToday ? t('notebook.dailyAgain') : t('notebook.dailyBegin')}
+					</span>
+				</a>
 			{/if}
 
 			<input
@@ -414,6 +436,31 @@
 		font-style: italic;
 	}
 
+	.daily-card {
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		margin-bottom: 1.25rem;
+		padding: 0.85rem 1rem;
+		border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+		border-radius: var(--radius-sm);
+		background: color-mix(in srgb, var(--gold) 9%, var(--surface));
+		color: inherit;
+	}
+	.daily-card:hover {
+		text-decoration: none;
+		border-color: var(--gold);
+	}
+	.daily-sun {
+		flex: none;
+		font-size: var(--fs-h2);
+		color: var(--gold);
+	}
+	.daily-streak {
+		flex: none;
+		color: var(--warning);
+		font-weight: 700;
+	}
 	.day {
 		margin: 2.25rem 0 0.75rem;
 		font-family: var(--font-display);

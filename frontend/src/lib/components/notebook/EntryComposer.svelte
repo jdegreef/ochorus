@@ -104,7 +104,8 @@
 	}}
 >
 	{#if open}
-		<div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+		<!-- A daily prayer stays one; only a note and a prayer trade places. -->
+		<div class="mb-3 flex flex-wrap items-center justify-between gap-2" hidden={kind === 'daily'}>
 			<div class="seg" role="group" aria-label={t('notebook.entryKind')}>
 				<button type="button" class:active={kind === 'note'} aria-pressed={kind === 'note'} onclick={() => (kind = 'note')}>
 					✎ {t('reader.note')}
