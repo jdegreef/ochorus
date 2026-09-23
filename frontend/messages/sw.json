@@ -2,6 +2,8 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Watu katika kitabu hiki",
   "author_appears_in": "Pia anaonekana katika",
+  "author_articles_about": "Makala kuhusu",
+  "author_read_article": "Soma makala",
   "nav_about": "Kutuhusu",
   "nav_home": "Nyumbani",
   "nav_books": "Vitabu",

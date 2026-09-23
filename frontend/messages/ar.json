@@ -2,6 +2,8 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "أشخاص في هذا الكتاب",
   "author_appears_in": "يظهر أيضًا في",
+  "author_articles_about": "مقالات عن",
+  "author_read_article": "اقرأ المقال",
   "nav_about": "من نحن",
   "nav_home": "الرئيسية",
   "nav_books": "الكتب",

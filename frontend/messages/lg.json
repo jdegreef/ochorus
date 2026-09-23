@@ -2,6 +2,8 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Abantu mu kitabo kino",
   "author_appears_in": "Era alabika mu",
+  "author_articles_about": "Ebiwandiiko ku",
+  "author_read_article": "Soma ekiwandiiko",
   "nav_about": "Ebitukwatako",
   "nav_home": "Awaka",
   "nav_books": "Ebitabo",

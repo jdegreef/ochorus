@@ -33,6 +33,7 @@
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
+	import ArticleLinkCard from '$lib/components/ArticleLinkCard.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -323,6 +324,7 @@
 			author.bio_html || author.bio ? { id: 'bio', label: t('articles.kindBiography') } : null,
 			author.books.length ? { id: 'books', label: t('nav.books') } : null,
 			author.sermons.length ? { id: 'sermons', label: t('nav.sermons') } : null,
+			author.articles?.length ? { id: 'articles', label: t('nav.articles') } : null,
 			showFaq ? { id: 'faq', label: 'Questions' } : null
 		].filter((x): x is { id: string; label: string } => x != null)
 	);
@@ -635,6 +637,28 @@
 
 	{#if !author.books.length && !author.sermons.length && !author.appears_in?.length}
 		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
+	{/if}
+
+	<!-- Articles that name this person (the API's `articles` /
+	     articles_for_author, which documents the rule). The mirror of the book
+	     page's Reader's guide: an article reachable only from the /articles hub
+	     sits too deep in the link graph to earn a crawl, and an author page is
+	     crawled far more often. Per-language — an untranslated locale gets an
+	     empty list and no section at all. Below the works, because these are
+	     writing ABOUT this person, not BY them. -->
+	{#if author.articles?.length}
+		<section id="articles" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
+			<h2 class="section-heading">
+				{t('author.articlesAbout')}
+				{author.name}
+				<span class="text-small font-normal count">({author.articles.length})</span>
+			</h2>
+			<ul class="mt-3 flex flex-col gap-3">
+				{#each author.articles as article (article.slug)}
+					<li><ArticleLinkCard {article} cta={t('author.readArticle')} /></li>
+				{/each}
+			</ul>
+		</section>
 	{/if}
 
 	<!-- Frequently asked questions — the editorial set for this author (see `faq`
