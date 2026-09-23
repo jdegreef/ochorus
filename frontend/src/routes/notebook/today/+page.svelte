@@ -8,7 +8,8 @@
 	import { DAILY_DRAFT_KEY } from '$lib/reading-schema';
 	import { localToday } from '$lib/streak';
 	import { lookupScripture, type ScriptureResult } from '$lib/scripture.svelte';
-	import { dictation } from '$lib/dictation.svelte';
+	import { appendPhrase, dictation } from '$lib/dictation.svelte';
+	import DictateButton from '$lib/components/notebook/DictateButton.svelte';
 	import {
 		DAILY_STEPS,
 		composeDaily,
@@ -153,9 +154,6 @@
 					placeholder={t('notebook.dailyPlaceholder')}
 					aria-labelledby="step-q"
 				></textarea>
-				{#if dictation.listening && dictation.interim}
-					<p class="interim">{dictation.interim}</p>
-				{/if}
 
 				{#if step === 'ask' && people.length}
 					<div class="mt-4">
@@ -169,17 +167,12 @@
 				{/if}
 
 				<div class="controls">
-					{#if dictation.supported}
-						<button
-							class="btn btn-ghost btn-sm"
-							class:is-listening={dictation.listening}
-							aria-pressed={dictation.listening}
-							title={t('notebook.dailySpeakHint')}
-							onclick={() => (dictation.listening ? dictation.stop() : dictation.start(locale, append))}
-						>
-							<span aria-hidden="true" class="me-1">🎙</span>{dictation.listening ? t('notebook.dailyListening') : t('notebook.dailySpeak')}
-						</button>
-					{/if}
+					<DictateButton
+						lang={locale}
+						ontext={(said) => {
+							parts[step] = appendPhrase(parts[step] ?? '', said, locale);
+						}}
+					/>
 					<span class="ms-auto"></span>
 					{#if index > 0}
 						<button class="btn btn-ghost btn-sm" onclick={() => go(index - 1)}>{t('notebook.dailyBack')}</button>
@@ -315,20 +308,12 @@
 		color: var(--muted);
 		font-style: italic;
 	}
-	.interim {
-		font-family: var(--font-display);
-		font-style: italic;
-		color: var(--muted);
-	}
 	.controls {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.5rem;
 		margin-top: 1rem;
-	}
-	.is-listening {
-		color: var(--danger);
 	}
 	.amen {
 		padding: 3rem 1rem;

@@ -11,6 +11,8 @@
 		type PrayerGroup
 	} from '$lib/journal';
 	import { journal, type EntryDraft } from '$lib/journal.svelte';
+	import { appendPhrase } from '$lib/dictation.svelte';
+	import DictateButton from './DictateButton.svelte';
 
 	/**
 	 * Writing on the Notebook's page — a new note or prayer, or an edit of one.
@@ -174,6 +176,7 @@
 			{onkeydown}
 		/>
 		<div class="mt-4 flex flex-wrap items-center justify-end gap-2">
+			<DictateButton ontext={(said) => (body = appendPhrase(body, said))} />
 			<span class="me-auto text-micro text-muted">{t('notebook.saveHint')}</span>
 			<button
 				type="button"

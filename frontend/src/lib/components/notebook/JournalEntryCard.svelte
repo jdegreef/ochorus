@@ -16,6 +16,8 @@
 	import { sourceHref } from '$lib/editionHref';
 	import { downloadRemindCalendar, remindLabel, weekdayName } from '$lib/prayerRemind';
 	import EntryComposer from './EntryComposer.svelte';
+	import DictateButton from './DictateButton.svelte';
+	import { appendPhrase } from '$lib/dictation.svelte';
 
 	/**
 	 * One entry on the Notebook's page. A prayer carries its own "answered"
@@ -199,6 +201,7 @@
 					aria-label={t('notebook.addUpdate')}
 					autofocus
 				/>
+				<DictateButton ontext={(said) => (updateText = appendPhrase(updateText, said))} />
 				<button type="button" class="btn btn-ghost btn-sm" onclick={() => (mode = 'view')}>{t('common.cancel')}</button>
 				<button type="submit" class="btn btn-primary btn-sm" disabled={!updateText.trim()}>{t('notebook.addUpdate')}</button>
 			</form>
@@ -243,7 +246,8 @@
 					bind:value={answerText}
 					placeholder={t('notebook.howAnsweredPlaceholder')}
 				></textarea>
-				<div class="mt-2 flex justify-end gap-2">
+				<div class="mt-2 flex flex-wrap items-center justify-end gap-2">
+					<span class="me-auto"><DictateButton ontext={(said) => (answerText = appendPhrase(answerText, said))} /></span>
 					<button class="btn btn-ghost btn-sm" onclick={() => (mode = 'view')}>{t('common.cancel')}</button>
 					<button class="btn btn-primary btn-sm" onclick={confirmAnswer}>{t('notebook.markAnswered')}</button>
 				</div>
