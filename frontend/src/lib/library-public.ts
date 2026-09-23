@@ -238,11 +238,14 @@ export interface BookDetail extends BookSummary {
 	 * a localized page and the section just doesn't render. Optional so an API
 	 * running behind this build omits it cleanly.
 	 */
-	guides?: BookGuide[];
+	guides?: ArticleLink[];
 }
 
-/** A reader's-guide article surfaced on the book page it explains. */
-export interface BookGuide {
+/** An article surfaced on another page that links to it — a reader's guide on
+ *  the book page it explains, or an author's articles on their own page. Both
+ *  sides serve the same three fields (see `guides_for_book` /
+ *  `articles_for_author`) and render through `ArticleLinkCard`. */
+export interface ArticleLink {
 	slug: string;
 	h1: string;
 	description: string;
@@ -584,6 +587,14 @@ export interface AuthorDetail extends AuthorBio {
 	 * running behind this build simply renders no section.
 	 */
 	appears_in?: AppearsInBook[];
+	/**
+	 * Articles ABOUT this person — the guides to their books and the essays whose
+	 * Read-next funnel names them (see `articles_for_author`). The mirror of a
+	 * book's `guides`. English-only, so empty on a localized page and the section
+	 * just doesn't render. Optional so an API running behind this build omits it
+	 * cleanly.
+	 */
+	articles?: ArticleLink[];
 	/** How many REVIEWED quotations this author has; 0 means no quote page. */
 	quote_count?: number;
 	/**

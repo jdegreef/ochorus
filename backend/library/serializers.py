@@ -668,6 +668,24 @@ def resolve_related(related, language: str) -> list[dict]:
     return cards
 
 
+def _first_related_book(related) -> str | None:
+    """The slug of the first book in a Read-next ``related`` list, or ``None``.
+
+    ``related`` is a schema-less hand-authored JSON field, so anything that is
+    not a list of dicts is skipped rather than raising.
+    """
+    if not isinstance(related, list):
+        return None
+    return next(
+        (
+            item.get("slug")
+            for item in related
+            if isinstance(item, dict) and item.get("type") == "book"
+        ),
+        None,
+    )
+
+
 def guides_for_book(book_slug: str, language: str) -> list[dict]:
     """The published articles that are a reader's guide *to* this book — so a
     book page can surface the guide that explains it, the reverse of the
@@ -687,10 +705,8 @@ def guides_for_book(book_slug: str, language: str) -> list[dict]:
 
     Returns ``[{slug, h1, description}, ...]`` in article sort order (normally
     one). English-only in practice: articles are English-only, so a non-English
-    book matches nothing and the caller gates on that anyway. ``related`` is a
-    schema-less hand-authored JSON field, so a malformed entry is skipped rather
-    than raising. One scan of the article table (no bodies), paid on a book
-    DETAIL page only — never a shelf.
+    book matches nothing and the caller gates on that anyway. One scan of the
+    article table (no bodies), paid on a book DETAIL page only — never a shelf.
     """
     rows = (
         Article.objects.filter(
@@ -701,18 +717,70 @@ def guides_for_book(book_slug: str, language: str) -> list[dict]:
     )
     out = []
     for row in rows:
+        if _first_related_book(row["related"]) == book_slug:
+            out.append(
+                {
+                    "slug": row["slug"],
+                    "h1": row["h1"],
+                    "description": row["description"],
+                }
+            )
+    return out
+
+
+def articles_for_author(author_slug: str, language: str) -> list[dict]:
+    """The published articles that send a reader to this person — so an author
+    page can surface them, the reverse of the article→author funnel.
+
+    The counterpart of ``guides_for_book``, and the reason it exists: Search
+    Console reported 131 of 143 article URLs as "Discovered – currently not
+    indexed" (2026-09-23), i.e. Google had the URLs from the sitemap and was
+    declining to spend crawl budget fetching them. Every article sat one hop from
+    a single footer-linked hub that spread its weight across all 143. Author
+    pages are among the site's most-crawled, so linking an author's articles from
+    their page raises those URLs in the link graph.
+
+    Two ways an article belongs here, unioned:
+
+    * it names this person in its Read-next ``related`` — the article funnels
+      the reader to this bio, so the bio may funnel back; or
+    * it is a reader's guide (slug ends ``-guide``, the repo convention — see
+      ``guides_for_book``) whose PRIMARY subject is a book this person wrote.
+      Keying on the first related book, exactly as ``guides_for_book`` does, is
+      what attributes a guide to the one work it is about rather than to every
+      author it happens to mention.
+
+    Returns ``[{slug, h1, description}, ...]`` in article sort order, in the
+    requested language only — articles are per-language rows like everything
+    else, so a locale with translated articles gets them and a locale without
+    gets an empty list rather than the English ones (the no-English-fallback
+    rule). One scan of the article table (no bodies) plus one slug query, paid on
+    an author DETAIL page only — never a shelf.
+    """
+    own_books = set(
+        Book.objects.filter(author__slug=author_slug, is_published=True)
+        .values_list("slug", flat=True)
+        .distinct()
+    )
+    rows = (
+        Article.objects.filter(is_published=True, language=language)
+        .order_by("sort_order", "h1")
+        .values("slug", "h1", "description", "related")
+    )
+    out = []
+    for row in rows:
         related = row["related"]
-        if not isinstance(related, list):
-            continue
-        first_book = next(
-            (
-                item.get("slug")
-                for item in related
-                if isinstance(item, dict) and item.get("type") == "book"
-            ),
-            None,
+        names_author = isinstance(related, list) and any(
+            isinstance(item, dict)
+            and item.get("type") == "author"
+            and item.get("slug") == author_slug
+            for item in related
         )
-        if first_book == book_slug:
+        guides_own_book = (
+            row["slug"].endswith("-guide")
+            and _first_related_book(related) in own_books
+        )
+        if names_author or guides_own_book:
             out.append(
                 {
                     "slug": row["slug"],
@@ -848,6 +916,14 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     # Books this person is FOUND IN but did not write (BookPerson) — the reverse
     # of BookDetailSerializer.featured_people, so a bio can offer "appears in".
     appears_in = serializers.SerializerMethodField()
+    # Articles ABOUT this person — the reader's guides to their books and the
+    # essays whose Read-next funnel names them (see ``articles_for_author``).
+    # The same move as BookDetailSerializer.guides, for the same reason: an
+    # article reached only from the /articles hub sits too deep in the link
+    # graph to earn a crawl. Per-language like the rest of the page, so a locale
+    # with no translated article renders no section. Detail-only: it scans the
+    # article table, nothing a shelf should pay.
+    articles = serializers.SerializerMethodField()
 
     # Present so AuthorDetail honours the AuthorBio contract the list shares;
     # the detail page already has the full sermons array + bio_html, so these
@@ -866,7 +942,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             # an email digest) would have to carry the credit with it.
             "photo_attribution", "photo_source_url", "birth_year",
             "death_year", "book_count", "sermon_count", "has_long_bio",
-            "books", "sermons", "topics", "appears_in",
+            "books", "sermons", "topics", "appears_in", "articles",
             # Authoritative identifiers for the Person markup — see the field.
             # Only the DETAIL serializer carries them: a card never emits
             # Person markup, so shipping them on every book row would be bytes
@@ -916,6 +992,17 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         if not tr or not (tr.bio_html or tr.bio):
             return "public_domain"
         return "ai_reviewed" if tr.reviewed else "ai_unreviewed"
+
+    def get_articles(self, obj) -> list[dict]:
+        # No English-only gate, and deliberately not one: articles are per-language
+        # rows like everything else, and the fixture already carries translated
+        # ones (fr). ``articles_for_author`` filters on the language, so a locale
+        # with translated articles gets them and a locale without gets nothing —
+        # the no-English-fallback rule, rather than an English section on a
+        # French page. (BookDetailSerializer.guides still gates on English and so
+        # hides those same translated guides on a localized book page; left alone
+        # here, as that is its own change.)
+        return articles_for_author(obj.slug, self._language())
 
     def get_sermon_count(self, obj):
         return len(self._sermons(obj))
