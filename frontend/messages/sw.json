@@ -922,5 +922,9 @@
   "notebook_step_q_adore": "Mungu ni nani kwako leo? Msifu kwa jinsi alivyo.",
   "notebook_step_q_confess": "Unahitaji kuleta nini nuruni? Omba msamaha wake.",
   "notebook_step_q_thanks": "Amekupa nini? Taja mambo unayoshukuru kwayo.",
-  "notebook_step_q_ask": "Unahitaji nini, na nani anahitaji msaada wake? Walete kwake."
+  "notebook_step_q_ask": "Unahitaji nini, na nani anahitaji msaada wake? Walete kwake.",
+  "notebook_stat_praying": "Unaombea sasa",
+  "notebook_stat_avg_days": "Wastani wa siku za maombi",
+  "notebook_timeline": "Mfuatano wa matukio",
+  "notebook_answered_layout": "Onyesha maombi yaliyojibiwa"
 }
