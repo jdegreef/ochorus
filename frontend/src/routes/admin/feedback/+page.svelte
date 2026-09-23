@@ -50,6 +50,20 @@
 		return /^https?:\/\//i.test(u) ? u : '';
 	}
 
+	// A deep-link back to the flagged passage in its own language (the reader
+	// route consumes ?p= to jump to the block). Books have a chapter order;
+	// sermons are a single page.
+	function spotHref(item: FeedbackItem): string {
+		if (!item.content_slug) return '';
+		const prefix = item.content_language && item.content_language !== 'en' ? `/${item.content_language}` : '';
+		const at = item.anchor_block != null ? `?p=${item.anchor_block}` : '';
+		if (item.content_kind === 'book' && item.chapter_ref) {
+			return `${prefix}/books/${item.content_slug}/${item.chapter_ref}${at}`;
+		}
+		if (item.content_kind === 'sermon') return `${prefix}/sermons/${item.content_slug}${at}`;
+		return '';
+	}
+
 	async function triage(item: FeedbackItem, body: Parameters<typeof triageFeedback>[1]) {
 		busy[item.id] = true;
 		rowError[item.id] = '';
@@ -142,6 +156,27 @@
 							</div>
 
 							<p class="mb-3 whitespace-pre-wrap text-body">{item.body}</p>
+
+							{#if item.selected_text}
+								<blockquote
+									class="mb-2 border-s-2 border-accent bg-accent-soft px-3 py-1.5 text-small italic text-text"
+									>{item.selected_text}</blockquote
+								>
+								{#if item.suggested_text}
+									<p class="mb-2 text-small">
+										<span class="font-medium text-text">Suggested:</span>
+										<span class="whitespace-pre-wrap">{item.suggested_text}</span>
+									</p>
+								{/if}
+								{#if spotHref(item)}
+									<a
+										class="mb-3 inline-block text-small text-accent"
+										href={spotHref(item)}
+										target="_blank"
+										rel="noopener noreferrer">Open the passage →</a
+									>
+								{/if}
+							{/if}
 
 							{#if safeHref(item.page_url)}
 								<a

@@ -1031,5 +1031,10 @@
   "notebook_reflect_saved": "आपकी नोटबुक में सहेजा गया",
   "notebook_reflect_open": "अपनी नोटबुक में खोलें",
   "notebook_reflect_write": "अपना उत्तर लिखें",
-  "notebook_reflect_answer_prompt": "आपका उत्तर…"
+  "notebook_reflect_answer_prompt": "आपका उत्तर…",
+  "reader_suggest_edit": "Suggest an edit",
+  "feedback_edit_title": "Send feedback on this",
+  "feedback_edit_intro": "Tell us what reads wrong — and, if you like, what it should say.",
+  "feedback_suggested_label": "Suggest a correction (optional)",
+  "feedback_suggested_placeholder": "What should it say?"
 }

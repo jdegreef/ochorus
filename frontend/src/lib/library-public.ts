@@ -1401,6 +1401,12 @@ export interface FeedbackSubmission {
 	content_language?: string;
 	chapter_ref?: string;
 	ui_locale?: string;
+	// Highlight-to-feedback (source: 'highlight'): the exact selected text (the
+	// durable anchor), an optional proposed correction, and the starting block
+	// index for a deep-link back to the spot.
+	selected_text?: string;
+	suggested_text?: string;
+	anchor_block?: number;
 }
 
 /** File a suggestion. Requires a signed-in reader; the endpoint is throttled. */
