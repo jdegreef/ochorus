@@ -85,6 +85,7 @@ export interface CoverLayout {
 export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
 	'a-b-simpson': { layout: 'box', hue: 'teal' },
 	'andrew-murray': { layout: 'wash', hue: 'sage' },
+	'athanasius-of-alexandria': { layout: 'rail', hue: 'indigo' },
 	'augustine-of-hippo': { layout: 'rail', hue: 'rust' },
 	'charles-h-spurgeon': { layout: 'band', hue: 'oxblood' },
 	'dwight-l-moody': { layout: 'duotone', hue: 'indigo' },
@@ -95,7 +96,8 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
 	'john-wesley': { layout: 'split', hue: 'mauve' },
 	'jonathan-edwards': { layout: 'fade', hue: 'slate' },
 	'r-a-torrey': { layout: 'diagonal', hue: 'ochre' },
-	'richard-baxter': { layout: 'box', hue: 'rust' }
+	'richard-baxter': { layout: 'box', hue: 'rust' },
+	'thomas-watson': { layout: 'fade', hue: 'oxblood' }
 };
 
 /** The scripts a title cannot be turned sideways in. */

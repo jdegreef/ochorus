@@ -91,7 +91,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"amanda-smith-autobiography": {
@@ -141,7 +141,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"ar/baptism-with-the-holy-spirit": {
@@ -491,7 +491,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"es/around-the-wicket-gate": {
@@ -1861,7 +1861,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "rail/indigo",
 			"bar": 0
 		},
 		"ministry-of-intercession": {
@@ -1921,7 +1921,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "rail/indigo",
 			"bar": 0
 		},
 		"on-the-priesthood": {
@@ -2051,7 +2051,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"pt/baptism-with-the-holy-spirit": {
@@ -3131,7 +3131,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"the-body-of-christ-a-reality": {
