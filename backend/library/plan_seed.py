@@ -110,6 +110,17 @@ LAUNCH_PLANS = [
         "something to try, and a prayer.",
         (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
     ),
+    (
+        "school-of-prayer-31-days",
+        "school-of-prayer",
+        "31 Days in the School of Prayer",
+        "A month with Andrew Murray at the feet of the only Teacher. Each day "
+        "opens one of Jesus' own words on prayer, from \u201cLord, teach us to "
+        "pray\u201d to the promises of the last night, and ends in a prayer of "
+        "its own. One lesson a day, about ten minutes, building toward "
+        "intercession and a life of prayer.",
+        (2, 32),  # Lesson 1 … Lesson 31, between the Preface and the Müller note
+    ),
 ]
 
 # Curated plans that walk through SEVERAL books in order (each book read in
