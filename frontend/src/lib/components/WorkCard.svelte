@@ -110,8 +110,10 @@
 			</div>
 		{/if}
 		<!-- One line, like the title and author: a translated caption wrapping on a
-		     narrow card would make the card taller than its placeholder. -->
-		<div class="mt-1 truncate text-micro text-muted">
+		     narrow card would make the card taller than its placeholder. The full
+		     text stays reachable in `title` — on /reading a sermon's verse range
+		     is worth the hover. -->
+		<div class="mt-1 truncate text-micro text-muted" title={caption}>
 			{#if complete}<span class="text-gold" aria-hidden="true">✓</span> {/if}{caption}
 		</div>
 	</div>

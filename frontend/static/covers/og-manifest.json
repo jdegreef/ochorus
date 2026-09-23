@@ -21,7 +21,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed",
+			"layout": "box/rust",
 			"bar": 0
 		},
 		"a-hidden-fire": {
@@ -91,7 +91,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"amanda-smith-autobiography": {
@@ -141,7 +141,7 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"ar/baptism-with-the-holy-spirit": {
@@ -451,7 +451,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed",
+			"layout": "box/rust",
 			"bar": 0
 		},
 		"es/a-hidden-fire": {
@@ -491,7 +491,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"es/around-the-wicket-gate": {
@@ -712,6 +712,16 @@
 			"art": true,
 			"scrim": 0.8,
 			"layout": "rail/teal",
+			"bar": 0
+		},
+		"es/stepping-stones-2": {
+			"ground": "cdc9aea6e5229784a719053845bdedcc72064aeb8c5f32141beaa9c81324b827",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
 			"bar": 0
 		},
 		"es/talks-to-the-farmer": {
@@ -1211,7 +1221,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed",
+			"layout": "band/teal",
 			"bar": 0
 		},
 		"grace-for-grace-2": {
@@ -1491,7 +1501,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "box/rust",
 			"bar": 0
 		},
 		"key-teachings-of-watchman-nee": {
@@ -1861,7 +1871,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "rail/indigo",
 			"bar": 0
 		},
 		"ministry-of-intercession": {
@@ -1921,7 +1931,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "rail/indigo",
 			"bar": 0
 		},
 		"on-the-priesthood": {
@@ -1951,7 +1961,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed",
+			"layout": "band/teal",
 			"bar": 0
 		},
 		"pilgrims-progress-words-of-one-syllable": {
@@ -2021,7 +2031,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed",
+			"layout": "box/rust",
 			"bar": 0
 		},
 		"pt/absolute-surrender": {
@@ -2051,7 +2061,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
-			"layout": "framed",
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"pt/baptism-with-the-holy-spirit": {
@@ -2841,7 +2851,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
-			"layout": "framed",
+			"layout": "band/teal",
 			"bar": 0
 		},
 		"sw/pilgrims-progress-words-of-one-syllable": {
@@ -3141,7 +3151,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"the-body-of-christ-a-reality": {
@@ -3241,8 +3251,8 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
-			"layout": "framed",
-			"bar": 0
+			"layout": "box/rust",
+			"bar": 0.04
 		},
 		"the-way-to-god": {
 			"ground": "b4d69b86a37935f6cd1406238b9a4059058a03a900550f56bb3263413d4b1056",

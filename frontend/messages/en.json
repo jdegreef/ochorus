@@ -977,5 +977,15 @@
   "notebook_collection_export": "Export",
   "notebook_collection_remove": "Remove collection",
   "notebook_collection_remove_confirm": "Tap again — entries are kept",
-  "notebook_all_entries": "Everything"
+  "notebook_all_entries": "Everything",
+  "notebook_testimony_share": "Share testimony",
+  "notebook_testimony_title": "Share an answered prayer",
+  "notebook_testimony_prayed": "We prayed",
+  "notebook_testimony_for": "for {person}",
+  "notebook_testimony_include_request": "Include what was prayed",
+  "notebook_testimony_include_person": "Include who it was for ({person})",
+  "notebook_testimony_hint": "Nothing leaves your device until you share it.",
+  "notebook_pin": "Pin",
+  "notebook_unpin": "Unpin",
+  "notebook_pinned": "Pinned"
 }

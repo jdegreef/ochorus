@@ -12,9 +12,15 @@ import PlaceholderHost from '../../test/WorkCardPlaceholderHost.svelte';
  * box of the text column — each carrying the same layout classes as the card's.
  * A line added to, or restyled on, one side and not the other fails here.
  */
-const LAYOUT = /^(flex|flex-1|gap-\S+|border|p-\S+|w-14|aspect-\S+|shrink-0|min-w-0|self-center|mt-\S+|truncate|text-(small|micro)|font-\S+)$/;
+// Every class counts EXCEPT those that cannot move a box: colour, hover and
+// focus states, animation and decoration. Responsive variants (`sm:p-5`) DO
+// count — only state variants are paint. A deny-list, so a new spacing or
+// sizing token (`leading-*`, `py-*`, `h-*`, …) is compared by default — an
+// allow-list missed exactly those.
+const PAINT_ONLY =
+	/^(?:(?:sm:|md:|lg:)?(?:hover|focus|focus-visible|group-hover|active):)|^(?:text-(?:text|muted|accent|gold|white)|border-border|bg-\S+|animate-\S+|opacity-\S+|transition\S*|duration-\S+|shadow\S*|no-underline)$/;
 const layout = (el: Element | null | undefined) =>
-	[...(el?.classList ?? [])].filter((c) => LAYOUT.test(c)).sort();
+	[...(el?.classList ?? [])].filter((c) => !PAINT_ONLY.test(c)).sort();
 
 /** The frame, and the text column's line boxes in order. */
 function anatomy(frame: Element) {
@@ -84,5 +90,15 @@ describe('WorkCard placeholder', () => {
 			'[data-testid="work-card-placeholder"] > div'
 		)!;
 		expect(anatomy(hole)).toEqual(anatomy(real));
+	});
+});
+
+describe('WorkCard caption', () => {
+	it('stays one line but keeps its full text reachable', () => {
+		const card = render(WorkCard, { item: sermon });
+		const caption = [...card.querySelectorAll('.text-micro')].at(-1)!;
+		expect(caption.classList.contains('truncate')).toBe(true);
+		// The verse range survives the ellipsis, on hover and to assistive tech.
+		expect(caption.getAttribute('title')).toContain('James 5:16');
 	});
 });

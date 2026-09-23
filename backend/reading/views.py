@@ -883,6 +883,7 @@ def _journal_source(value) -> dict | None:
 
 _JOURNAL_BLANK = {
     "collection": "",
+    "pinned_at": None,
     "title": "",
     "body": "",
     "answer": "",
@@ -944,6 +945,7 @@ def _journal_fields(data) -> dict | None:
         "ref": text("ref", 200),
         # Whitespace-trimmed, so "Romans " and "Romans" are one collection.
         "collection": text("collection", 200).strip()[:80],
+        "pinned_at": _ms_to_dt(data.get("pinned_at")),
         # Who a prayer is for, its group, reminder and follow-ups are prayer
         # things; a note carries none of them.
         "person": text("person", 80) if prayer else "",

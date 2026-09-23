@@ -36,6 +36,7 @@ class JournalEntrySerializer(serializers.ModelSerializer):
             "answered_at",
             "ref",
             "collection",
+            "pinned_at",
             "person",
             "group",
             "remind",

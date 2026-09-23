@@ -977,5 +977,15 @@
   "notebook_collection_export": "Hamisha",
   "notebook_collection_remove": "Ondoa mkusanyo",
   "notebook_collection_remove_confirm": "Gusa tena — maandiko yanabaki",
-  "notebook_all_entries": "Yote"
+  "notebook_all_entries": "Yote",
+  "notebook_testimony_share": "Shiriki ushuhuda",
+  "notebook_testimony_title": "Shiriki ombi lililojibiwa",
+  "notebook_testimony_prayed": "Tuliomba",
+  "notebook_testimony_for": "kwa ajili ya {person}",
+  "notebook_testimony_include_request": "Jumuisha kilichoombwa",
+  "notebook_testimony_include_person": "Jumuisha aliyeombewa ({person})",
+  "notebook_testimony_hint": "Hakuna kinachotoka kwenye kifaa chako hadi ushiriki.",
+  "notebook_pin": "Bandika",
+  "notebook_unpin": "Ondoa pini",
+  "notebook_pinned": "Zilizobandikwa"
 }

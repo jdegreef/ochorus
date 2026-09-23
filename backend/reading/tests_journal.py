@@ -124,6 +124,15 @@ class JournalTests(TestCase):
         self.put("c1", deleted=True)
         self.assertEqual(JournalEntry.objects.get(entry_id="c1").collection, "")
 
+    def test_pin_round_trips_and_is_dropped_on_delete(self):
+        res = self.put("p1", kind="note", body="Psalm 46:10", pinned_at=5000, client_updated_at=1000)
+        self.assertIsNotNone(res.data["pinned_at"])
+        res = self.put("p1", kind="note", body="Psalm 46:10", pinned_at=None, client_updated_at=2000)
+        self.assertIsNone(res.data["pinned_at"])
+        self.put("p1", kind="note", pinned_at=6000, client_updated_at=3000)
+        self.put("p1", deleted=True)
+        self.assertIsNone(JournalEntry.objects.get(entry_id="p1").pinned_at)
+
     def test_only_a_prayer_is_answered(self):
         self.put("n1", kind="note", body="x", answer="y", answered_at=5000)
         obj = JournalEntry.objects.get(profile=self.profile)

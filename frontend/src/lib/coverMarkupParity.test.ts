@@ -165,12 +165,12 @@ describe('the two cover renderers agree', () => {
 			{
 				cover_url: '/covers/art/a-retrospect.jpg',
 				slug: 'a-retrospect',
-				author: { ...book().author, slug: 'richard-baxter' }
+				author: { ...book().author, slug: 'an-author-with-no-layout' }
 			},
 			{
 				art: true,
 				scrim: scrimStrength('a-retrospect'),
-				style: coverStyleFor(eraOf(1828), 'richard-baxter', 'a-retrospect')
+				style: coverStyleFor(eraOf(1828), 'an-author-with-no-layout', 'a-retrospect')
 			}
 		],
 		[
