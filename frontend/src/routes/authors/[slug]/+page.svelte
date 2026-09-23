@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import Icon from '$lib/components/Icon.svelte';
 	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
@@ -391,6 +392,7 @@
 			<img
 				src={author.photo_url}
 				srcset={portraitSrcset(author.photo_url)}
+				use:hydrateSrc={{ src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
 				sizes="112px"
 				width="112"
 				height="112"

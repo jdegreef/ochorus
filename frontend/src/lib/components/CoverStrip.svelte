@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import type { BookTile } from '$lib/library-public';
 
@@ -24,6 +25,7 @@
 					<img
 						src={cover.cover_url}
 						srcset={coverSrcset(cover.cover_url) || undefined}
+						use:hydrateSrc={{ src: cover.cover_url, srcset: coverSrcset(cover.cover_url) || undefined }}
 						alt=""
 						loading="lazy"
 					/>

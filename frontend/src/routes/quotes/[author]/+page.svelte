@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { QuotePage } from '$lib/library-public';
 	import { groupQuotes, onPhrase, authorTopicHref, citeChapter, quoteCollectionLd } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
@@ -87,6 +88,7 @@
 			{#if page.author.photo_url}
 				<img
 					src={page.author.photo_url}
+					use:hydrateSrc={{ src: page.author.photo_url }}
 					alt="Portrait of {page.author.name}"
 					loading="lazy"
 					width="112"

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Snippet } from 'svelte';
 	import { sermonArt } from '$lib/sermonArt';
 
@@ -74,7 +75,7 @@
 	     nothing reflows when it arrives. -->
 	<span class="emblem-chip" class:portrait-chip={portrait}>
 		{#if portrait}
-			<img src={portrait.src} alt="" loading="lazy" style="object-position: {portrait.pos ?? '50% 0%'}" />
+			<img src={portrait.src} use:hydrateSrc={{ src: portrait.src }} alt="" loading="lazy" style="object-position: {portrait.pos ?? '50% 0%'}" />
 		{:else}
 			{#await import('$lib/components/Emblem.svelte') then Loaded}
 				<Loaded.default name={art.emblem} />
