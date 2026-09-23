@@ -65,6 +65,18 @@ export default defineConfig({
 		 * is unset, which yields '' — Sentry then sends no release rather than a
 		 * wrong one.
 		 */
-		__RELEASE__: JSON.stringify(process.env.RENDER_GIT_COMMIT ?? '')
+		__RELEASE__: JSON.stringify(process.env.RENDER_GIT_COMMIT ?? ''),
+		/**
+		 * The day this bundle was built, counted as `dailyPicks.dayNumber` counts
+		 * days — the seed for anything a prerendered page picks "per deploy".
+		 *
+		 * A universal `load` runs TWICE: once while prerendering and again in the
+		 * browser at hydration. Seeded with the viewer's `dayNumber()`, the second
+		 * run picked a different six books for the home shelf from the day after a
+		 * deploy onward — and Svelte keeps a hydrated `<img>`'s server `src`, so
+		 * cards wore another book's picture under their own title. Baking the day
+		 * in makes both runs agree.
+		 */
+		__BUILD_DAY__: JSON.stringify(Math.floor(Date.now() / 86_400_000))
 	}
 });
