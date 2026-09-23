@@ -104,11 +104,37 @@ describe('resumeBooks', () => {
 		expect(cachedResumeBooks('fr')).toEqual([]); // pruned, not left to linger
 	});
 
-	it("does not draw another deploy's covers and titles", async () => {
+	it('records which in-progress books a language lacks, and forgets once one is opened there', async () => {
+		const { libraryBooks, knownAbsentBooks, rememberResumeBook } = await fresh();
+		progress({ a: {}, swahiliOnly: {} });
+		listBooks.mockResolvedValue([book('a')]);
+		await libraryBooks('en');
+		expect([...knownAbsentBooks('en')]).toEqual(['swahiliOnly']);
+		rememberResumeBook('en', book('swahiliOnly')); // it exists after all
+		expect(knownAbsentBooks('en').size).toBe(0);
+	});
+
+	it('a replaced request failing late does not evict the fresh one', async () => {
+		vi.useFakeTimers();
+		const { libraryBooks } = await fresh();
+		let failOld!: (e: Error) => void;
+		listBooks
+			.mockReturnValueOnce(new Promise((_, reject) => (failOld = reject)))
+			.mockResolvedValue([]);
+		const old = libraryBooks('en').catch(() => {});
+		vi.advanceTimersByTime(11 * 60_000); // expired: the next asker refetches
+		await libraryBooks('en');
+		failOld(new Error('stalled'));
+		await old;
+		await libraryBooks('en'); // still shares the fresh request
+		expect(listBooks).toHaveBeenCalledTimes(2);
+	});
+
+	it('does not draw a cache written against another set of covers', async () => {
 		const { cachedResumeBooks } = await fresh();
 		localStorage.setItem(
 			RESUME_BOOKS_KEY,
-			JSON.stringify({ version: 'an-older-build', books: { en: [book('a')] } })
+			JSON.stringify({ version: 'another-cover-set', books: { en: [book('a')] }, absent: {} })
 		);
 		expect(cachedResumeBooks('en')).toEqual([]);
 	});

@@ -94,8 +94,13 @@ type Classified =
 	| (typeof COVER_BOOK_DROPS)[number]
 	| 'author';
 type Unclassified = Exclude<keyof BookSummary, Classified>;
-/** Fails to compile, naming the field, when `BookSummary` gains an unclassified one. */
-export const everyBookFieldClassified: [Unclassified] extends [never] ? true : Unclassified = true;
+/**
+ * Fails to compile, naming the field, when `BookSummary` gains an unclassified
+ * one ("Type '"blurb"' does not satisfy the constraint 'never'"). Type-only:
+ * nothing of it reaches the bundle.
+ */
+type AssertEveryFieldClassified<T extends never> = T;
+export type EveryBookFieldClassified = AssertEveryFieldClassified<Unclassified>;
 
 /** `obj` with only `keys` — the runtime half of a narrow type built from them. */
 export function pick<T extends object, K extends keyof T>(obj: T, keys: readonly K[]): Pick<T, K> {

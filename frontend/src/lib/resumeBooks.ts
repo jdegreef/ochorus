@@ -1,4 +1,4 @@
-import { browser, version } from '$app/environment';
+import { browser } from '$app/environment';
 import { listBooks, toCoverBook, type BookSummary, type CoverBook } from '$lib/library-public';
 import { allProgress } from '$lib/progress';
 import { RESUME_BOOKS_KEY } from '$lib/reading-schema';
@@ -17,11 +17,17 @@ import { RESUME_BOOKS_KEY } from '$lib/reading-schema';
  *   written the moment a book is OPENED (`rememberResumeBook`, from the chapter
  *   page), not only when home fetches the list: the usual returning reader
  *   arrived on a chapter from search and never saw home that visit.
- * - NO STALE ART. Entries are stamped with the build `version`, and an entry
- *   from an older deploy is not drawn: covers and titles move with deploys, and
- *   drawing last deploy's cover only to swap it a moment later is a flicker.
- *   Where no current entry exists, the strip reserves its cards' space instead
- *   (see ContinueReading), so a miss costs a placeholder, not a shift.
+ * - NO STALE ART. The cache is stamped with `__COVERS_VERSION__`, a
+ *   fingerprint of the set of cover files, and is not drawn once that moves: a
+ *   cover that changed its URL (plate → painting) always adds or removes a file.
+ *   Stamping with the BUILD instead threw the cache away on every one of the
+ *   ~30 deploys a day, almost none of which touch a cover. (A title fix is
+ *   text-only and rare; it refreshes when the list lands.) Where no drawable
+ *   entry exists, the strip reserves its cards' space (see ContinueReading), so
+ *   a miss costs a placeholder, not a shift.
+ * - HONEST PLACEHOLDERS. Each full list also records which in-progress books
+ *   the language does NOT have (`knownAbsent`), so the strip does not reserve a
+ *   card for a book it will skip and then shrink.
  * - ONE REQUEST. The blocks mount at different moments (the signup band waits
  *   for auth), so `apiFetch`'s in-flight dedupe did not always catch the second
  *   ~125 KB request. `libraryBooks` shares one per language — for a few
@@ -38,53 +44,75 @@ export function unfinishedBookSlugs(progress = allProgress()): string[] {
 	return progress.filter((p) => p.kind === 'book' && p.finished_at == null).map((p) => p.slug);
 }
 
-/** Per-language in-progress books, stamped with the build that wrote them. */
+/** Per-language in-progress books (and books known absent there), stamped
+ *  with the cover set they were drawn against. */
 interface Stored {
 	version: string;
 	books: Record<string, CoverBook[]>;
+	absent: Record<string, string[]>;
 }
 
-function readStored(): Stored['books'] {
-	if (!browser) return {};
+const EMPTY = (): Omit<Stored, 'version'> => ({ books: {}, absent: {} });
+
+function readStored(): Omit<Stored, 'version'> {
+	if (!browser) return EMPTY();
 	try {
 		const parsed = JSON.parse(localStorage.getItem(RESUME_BOOKS_KEY) || 'null') as Stored | null;
-		// Another deploy's covers and titles: not drawn (see above).
-		if (!parsed || parsed.version !== version || typeof parsed.books !== 'object') return {};
-		return parsed.books ?? {};
+		// Drawn against another set of covers: not drawn (see above).
+		if (!parsed || parsed.version !== __COVERS_VERSION__ || typeof parsed.books !== 'object') {
+			return EMPTY();
+		}
+		return { books: parsed.books ?? {}, absent: parsed.absent ?? {} };
 	} catch {
-		return {};
+		return EMPTY();
 	}
 }
 
 /**
  * Merge `books` into `lang`'s entry and prune every language to the books
- * still in progress. `replace` swaps the language's entry wholesale (a fresh
- * full list is authoritative); otherwise the books are upserted.
+ * still in progress. A FULL list (`full`) is authoritative: it replaces the
+ * language's entry and records which in-progress books it lacks. A single
+ * opened book is upserted, and is by definition not absent.
  */
-function write(lang: string, books: CoverBook[], replace: boolean): void {
+function write(lang: string, books: CoverBook[], full: boolean): void {
 	if (!browser) return;
 	const inProgress = new Set(unfinishedBookSlugs());
-	const stored = readStored();
-	const current = replace ? [] : (stored[lang] ?? []);
-	const bySlug = new Map(current.map((b) => [b.slug, b]));
+	const { books: stored, absent } = readStored();
+	const bySlug = new Map((full ? [] : (stored[lang] ?? [])).map((b) => [b.slug, b]));
 	for (const b of books) bySlug.set(b.slug, b);
 	stored[lang] = [...bySlug.values()];
-	for (const [code, list] of Object.entries(stored)) {
-		const kept = list.filter((b) => inProgress.has(b.slug));
-		if (kept.length) stored[code] = kept;
-		else delete stored[code];
-	}
+	absent[lang] = full
+		? [...inProgress].filter((slug) => !bySlug.has(slug))
+		: (absent[lang] ?? []).filter((slug) => !bySlug.has(slug));
+	const prune = <T>(map: Record<string, T[]>, keep: (x: T) => boolean) => {
+		for (const [code, list] of Object.entries(map)) {
+			const kept = list.filter(keep);
+			if (kept.length) map[code] = kept;
+			else delete map[code];
+		}
+	};
+	prune(stored, (b) => inProgress.has(b.slug));
+	prune(absent, (slug) => inProgress.has(slug));
 	try {
-		localStorage.setItem(RESUME_BOOKS_KEY, JSON.stringify({ version, books: stored } satisfies Stored));
+		localStorage.setItem(
+			RESUME_BOOKS_KEY,
+			JSON.stringify({ version: __COVERS_VERSION__, books: stored, absent } satisfies Stored)
+		);
 	} catch {
 		/* quota or blocked storage: the cache is a nicety, never a failure */
 	}
 }
 
-/** This build's cached in-progress books for `lang`; [] if none. */
+/** The cached in-progress books for `lang` that are safe to draw; [] if none. */
 export function cachedResumeBooks(lang: string): CoverBook[] {
-	const books = readStored()[lang];
+	const books = readStored().books[lang];
 	return Array.isArray(books) ? books : [];
+}
+
+/** In-progress books the last full list for `lang` did not have. */
+export function knownAbsentBooks(lang: string): Set<string> {
+	const slugs = readStored().absent[lang];
+	return new Set(Array.isArray(slugs) ? slugs : []);
 }
 
 /** Remember one opened book, so the next visit to home can draw it at once. */
@@ -107,7 +135,11 @@ export function libraryBooks(lang: string): Promise<BookSummary[]> {
 		write(lang, books.map(toCoverBook), true);
 		return books;
 	});
-	request.catch(() => shared.delete(lang));
+	// Evict only THIS request: an older one that fails after being replaced
+	// must not take the fresh entry with it.
+	request.catch(() => {
+		if (shared.get(lang)?.request === request) shared.delete(lang);
+	});
 	shared.set(lang, { at: Date.now(), request });
 	return request;
 }
