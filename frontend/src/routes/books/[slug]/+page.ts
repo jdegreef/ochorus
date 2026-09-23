@@ -1,3 +1,9 @@
+// Rebuild marker 2026-09-18: published the four Key Teachings companion books
+// (Simpson, Edwards, Baxter, Nee) via migration 0155. The api publishes on that
+// deploy but a backend-only change skips the web build, so this touch rebuilds
+// the static site once the api is live — baking the new /books/<slug>/ pages and
+// surfacing the books on their deeper-life / the-way-of-holiness / the-preached-word
+// topic shelves. Merge only AFTER the api deploy is confirmed live (content-race).
 // Rebuild marker 2026-09-16: #2459 corrected R. A. Torrey's reversed initials
 // in Men of Prayer's chapter 6 via a data migration (the fixture was already
 // right; seed_books never re-syncs existing chapters). The api is confirmed

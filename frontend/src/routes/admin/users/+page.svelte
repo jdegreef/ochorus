@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { apiFetchRaw } from '$lib/api';
+	import { auth } from '$lib/auth.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
@@ -115,9 +116,14 @@
 	// Emails are PII: masked by default, revealed on demand (per row, or all at once).
 	// Reveals are cleared on every (re)load so a stale row index can't expose a
 	// different account. Server-side access logging is a follow-up (needs an endpoint).
+	//
+	// Revealing is super-admin-only: for a language admin the backend already sends
+	// every address masked (see analytics.mask_email), so there is nothing to
+	// reveal — the toggle and per-row buttons are hidden and the cell is static.
+	const canReveal = $derived(auth.isAdmin);
 	let showAllEmails = $state(false);
 	let revealedRows = $state<Record<number, boolean>>({});
-	const emailShown = (i: number) => showAllEmails || revealedRows[i] === true;
+	const emailShown = (i: number) => canReveal && (showAllEmails || revealedRows[i] === true);
 	const toggleRow = (i: number) => (revealedRows = { ...revealedRows, [i]: !revealedRows[i] });
 	const toggleAllEmails = () => {
 		showAllEmails = !showAllEmails;
@@ -134,7 +140,7 @@
 <svelte:head><title>Admin · Users — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
 {#snippet emailCell(email: string | null | undefined, i: number, cls: string)}
-	{#if email}
+	{#if email && canReveal}
 		<button
 			type="button"
 			class="block max-w-full truncate text-start {cls} hover:text-text focus-visible:text-text"
@@ -142,6 +148,9 @@
 			aria-label={emailShown(i) ? 'Hide email' : 'Reveal email'}
 			onclick={() => toggleRow(i)}
 		>{emailShown(i) ? email : maskEmail(email)}</button>
+	{:else if email}
+		<!-- Language admin: the address is already masked by the server; static. -->
+		<div class="truncate {cls}">{email}</div>
 	{:else}
 		<div class="truncate {cls}">—</div>
 	{/if}
@@ -241,7 +250,7 @@
 					<section class="rounded-card border border-border bg-surface p-5 lg:col-span-2">
 						<div class="mb-3 flex items-center justify-between gap-3">
 							<h2 class="text-h3">Recent sign-ups</h2>
-							{#if d.recent.length}
+							{#if d.recent.length && canReveal}
 								<button
 									type="button"
 									class="text-small text-muted underline-offset-2 hover:text-text hover:underline"

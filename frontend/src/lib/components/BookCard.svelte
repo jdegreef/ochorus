@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { type BookSummary } from '$lib/library-public';
+	import { type CoverBook } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
+	import { splitEdition } from '$lib/edition';
 	import BookCover from './BookCover.svelte';
 
 	let {
@@ -20,12 +21,16 @@
 		 * shelf and carries the `#author-<slug>` target the quick-nav jumps to.
 		 */
 		anchor
-	}: { book: BookSummary; showAuthor?: boolean; priority?: boolean; anchor?: string } = $props();
+	}: { book: CoverBook; showAuthor?: boolean; priority?: boolean; anchor?: string } = $props();
 	const t = i18n.t;
 
 	const chapters = $derived(
 		`${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
 	);
+	// A young-reader edition's "(For Teens)" / "(For Children)" can be clamped off
+	// the title on a narrow card; pull it onto its own line so the two editions
+	// don't look identical. Null for ordinary books.
+	const edition = $derived(splitEdition(book.slug, book.title));
 </script>
 
 <a
@@ -46,8 +51,11 @@
 
 	<div class="mt-2 flex flex-1 flex-col px-0.5">
 		<div class="line-clamp-2 text-small font-medium leading-snug text-text" title={book.title}>
-			{book.title}
+			{edition ? edition.base : book.title}
 		</div>
+		{#if edition}
+			<div class="text-eyebrow font-medium text-accent">{edition.audience}</div>
+		{/if}
 		{#if showAuthor}
 			<div class="truncate text-small text-muted" title={book.author.name}>{book.author.name}</div>
 		{/if}

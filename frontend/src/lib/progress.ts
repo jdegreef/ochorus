@@ -2,7 +2,8 @@ import { browser } from '$app/environment';
 import { readingSync } from './readingSync';
 import { readingActivity } from './readingActivity.svelte';
 import { storageHealth } from './storageHealth.svelte';
-import { undo } from './undo.svelte';
+import { undo, UNDO_MS } from './undo.svelte';
+import { addPending, clearPending } from './removals';
 import {
 	PROGRESS_KEY,
 	ANCHOR_KEY,
@@ -145,6 +146,100 @@ export function offerFinish(slug: string, kind: WorkKind = 'book'): void {
 	if (markFinished(slug, kind)) {
 		undo.offer({ restore: () => unmarkFinished(slug, kind), kind: 'finished' });
 	}
+}
+
+/**
+ * "I've already read this" — finish a book the reader never opened on this
+ * device (read on paper, or before Ochorus), straight from the Bookshelf's To
+ * read shelf. It gets a record at its last chapter, stamped finished, and a
+ * short Undo like any other finish.
+ *
+ * The account only hears about it once the Undo has lapsed. The server can
+ * clear a finish but never forget a position, so pushing at once would make an
+ * Undo leave the book on the Reading shelf at its last chapter, not back where
+ * it was. Held back, an Undo simply deletes the local record and there is
+ * nothing to forget. (A tab closed inside those few seconds leaves the finish
+ * local-only until the next sign-in merge carries it up.)
+ *
+ * A work that already has a record goes through the ordinary `offerFinish`.
+ */
+export function offerFinishUnopened(
+	slug: string,
+	lastOrder: number,
+	language: string,
+	kind: WorkKind = 'book'
+): void {
+	if (!browser) return;
+	const map = read();
+	const key = workSlugKey(kind, slug);
+	if (map[key]) {
+		offerFinish(slug, kind);
+		return;
+	}
+	const now = Date.now();
+	const rec: ProgressRecord = {
+		order: Math.max(1, lastOrder),
+		paragraph_index: 0,
+		language,
+		at: now,
+		finished_at: now
+	};
+	map[key] = rec;
+	write(map);
+	window.dispatchEvent(new CustomEvent('ochorus:sync'));
+	const push = setTimeout(() => readingSync.setFinished(kind, slug, rec, true), UNDO_MS);
+	undo.offer({
+		kind: 'finished',
+		restore: () => {
+			clearTimeout(push);
+			const m = read();
+			delete m[key];
+			write(m);
+			window.dispatchEvent(new CustomEvent('ochorus:sync'));
+		}
+	});
+}
+
+/**
+ * Take a work off the reader's shelf — the Bookshelf's "Remove from shelf" for
+ * a book being read or finished. Drops its position here and on the account,
+ * which keeps a tombstone so another device still holding the position can't
+ * merge it back (reading.models.Removal). Until the account confirms, the
+ * removal waits in removals.ts and rides the next merge.
+ *
+ * Highlights, notes, bookmarks and the reading streak are untouched: this
+ * removes the book from the shelf, not the reading that happened in it.
+ * Returns the removed record, for `restoreWork` (Undo).
+ */
+export function removeWork(slug: string, kind: WorkKind = 'book'): ProgressRecord | null {
+	if (!browser) return null;
+	const map = read();
+	const key = workSlugKey(kind, slug);
+	const rec = map[key];
+	if (!rec) return null;
+	delete map[key];
+	write(map);
+	const at = addPending('progress', kind, slug);
+	readingSync.removeProgress(kind, slug, at);
+	window.dispatchEvent(new CustomEvent('ochorus:sync'));
+	return rec;
+}
+
+/**
+ * Undo `removeWork`: put the record back, stamped NOW. The account may already
+ * hold the tombstone, and it only yields to a write newer than the removal —
+ * so the restored position is re-pushed with a fresh clock (its chapter,
+ * paragraph and any finish carried unchanged), which lifts the tombstone.
+ */
+export function restoreWork(slug: string, rec: ProgressRecord, kind: WorkKind = 'book'): void {
+	if (!browser) return;
+	clearPending('progress', kind, slug);
+	const map = read();
+	const restored: ProgressRecord = { ...rec, at: Date.now() };
+	map[workSlugKey(kind, slug)] = restored;
+	write(map);
+	readingSync.pushProgress(kind, slug, restored);
+	window.dispatchEvent(new CustomEvent('ochorus:sync'));
 }
 
 /** Un-finish a work — an explicit "not done after all" / Undo. Clears the stamp

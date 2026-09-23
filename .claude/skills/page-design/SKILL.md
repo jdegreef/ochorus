@@ -136,6 +136,28 @@ pages: the breadcrumb rule (2), the eyebrow (3), `SourceBadge`, prev/next as
 a `.btn` pair (ghost previous, soft-primary next), and one shared
 `.focus-exit` pill rather than three pasted copies.
 
+Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
+- **Paged mode slices the last line.** `.paged .pager` fills each CSS column
+  with `column-fill: auto`, which starts a line whenever its TOP fits and lets
+  the bottom spill past the content box; `article.paged`'s `overflow: hidden`
+  then clips it into unreadable letter-tops — and that half-line is genuinely
+  lost (multicol assigns it to one column, it does NOT repeat on the next page).
+  Fix = reserve one prose line-height of bottom padding on the pager, sized as
+  `calc(1.18rem * var(--reading-scale,1) * var(--reading-leading,1.85) + …)` so
+  the slack tracks the reader's Size/Spacing. Never a fixed rem/em — `em` on the
+  pager is base 16px, not the reading size.
+- **Scroll mode** slices the same line differently: the fixed translucent
+  `.progress-foot` bar the text scrolls under has a hard top edge. Fix = a short
+  transparent→`--bg` scrim anchored `bottom:100%` of the bar (scroll mode only;
+  paged is handled by the padding above). Spacing above the chapter title cluster
+  is scroll-only too — scope with `article:not(.paged)`, since page mode zeroes
+  the article padding and paginates from the top.
+- **Verifying the reader locally against origin/main:** run the worktree
+  frontend on **port 5180** (the backend's CORS allowlist is 5173/5180 only) vs
+  the local seeded backend on :8000; the prod API blocks CORS from localhost.
+  The browser pane caches the CSP document, so after a `csp.config`/env change
+  navigate with a `?cb=<n>` cache-buster or the old `connect-src` keeps blocking.
+
 Settings and Notebook are app pages: `page-col px-5 py-10`, `<PageHeader>`
 (eyebrow `Ochorus` is not an eyebrow — use the section name or none), sections
 as `h2.text-h2`, sub-sections `h3.text-h3`, every control from the `.btn` /

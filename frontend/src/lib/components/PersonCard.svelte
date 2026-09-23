@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -29,9 +30,11 @@
 	class="card-tint flex items-center gap-3 rounded-card border border-border p-3"
 >
 	{#if person.photo_url}
+		{@const source = { src: person.photo_url, srcset: portraitSrcset(person.photo_url) }}
 		<img
-			src={person.photo_url}
-			srcset={portraitSrcset(person.photo_url)}
+			src={source.src}
+			srcset={source.srcset}
+			use:hydrateSrc={source}
 			sizes="44px"
 			width="44"
 			height="44"

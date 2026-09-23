@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { onMount } from 'svelte';
 	import { type Sermon, type SermonSummary, listSermons } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
@@ -42,6 +43,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
 
 	let { data } = $props();
@@ -351,6 +353,9 @@
 				     labelled save control on book/author/plan pages. Without it the
 				     reader's saved-sermons shelf could never fill. -->
 				<FavoriteButton kind="sermon" slug={sermon.slug} />
+				<!-- Share this sermon — icon-only to match the sibling toggles; the
+				     shared control forwards the per-locale share card the build makes. -->
+				<ShareButton url={canonical} title="{sermon.title} — {sermon.author_name}" />
 				<button
 					class="btn btn-icon btn-ghost"
 					class:text-accent={currentBookmarked}
@@ -451,6 +456,7 @@
 			{#if sermon.author_photo}
 				<img
 					src={sermon.author_photo}
+					use:hydrateSrc={{ src: sermon.author_photo }}
 					alt="{t('a11y.portraitOf')} {sermon.author_name}"
 					class="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
 					style="filter: grayscale(1); object-position: {portraitPosition(sermon.author_slug)}"
@@ -525,7 +531,7 @@
 	     the derivation. -->
 	{#if faqItems.length}
 		<section class="mt-12 border-t border-border pt-6" aria-labelledby="questions-heading">
-			<h2 id="questions-heading" class="text-h3 mb-4">{t('sermon.questionsTitle')}</h2>
+			<h2 id="questions-heading" class="section-heading">{t('sermon.questionsTitle')}</h2>
 			<dl class="space-y-5">
 				{#each faqItems as item (item.q)}
 					<div>
@@ -607,7 +613,7 @@
 
 	{#if related.length}
 		<section class="mt-12 border-t border-border pt-6">
-			<h2 class="section-label">{t('book.related')}</h2>
+			<h2 class="section-heading">{t('book.related')}</h2>
 			<ul class="space-y-2">
 				{#each related as r (r.slug)}
 					<li>

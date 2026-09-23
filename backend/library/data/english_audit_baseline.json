@@ -98,6 +98,12 @@
   "justification-by-grace": {
    "orphan-close-quote": 1
   },
+  "key-teachings-of-a-b-simpson": {
+   "anachronism": 1
+  },
+  "key-teachings-of-jonathan-edwards": {
+   "anachronism": 1
+  },
   "let-us-pray-2": {
    "orphan-close-quote": 1,
    "space-before-punct": 2
@@ -183,6 +189,9 @@
   "revival-lectures": {
    "orphan-close-quote": 1,
    "space-before-punct": 1
+  },
+  "school-of-prayer": {
+   "space-before-punct": 11
   },
   "selected-sermons-whitefield": {
    "hyphen-space": 3,

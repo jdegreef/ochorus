@@ -52,6 +52,9 @@ export interface CoverCardBook {
 	/** How far to scale the scrim over this painting, from `coverScrim`. Only a
 	 *  painting has a scrim to scale, so a plate leaves it undefined. */
 	scrim?: number | null;
+	/** The layout a painting is composed in, from `coverLayouts.coverLayoutFor`;
+	 *  null or absent for the framed composition. Ignored on a plate. */
+	layout?: { layout: string; hue: string } | null;
 }
 
 /** Escape text for an HTML attribute or a text node. */
@@ -87,7 +90,12 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	// one row for every edition, so it is Latin on an Arabic cover too, and
 	// claiming otherwise would tell a screen reader to pronounce "Andrew Murray"
 	// as Arabic.
-	return `<div class="${classes.join(' ')}">
+	// Right-to-left for an Arabic edition, matching the component: the title
+	// sets its own direction (`dir="auto"`), but the byline is a Latin name and
+	// the rule has no text, so without this a layout that ranges its type to the
+	// start edge put the title on the right and everything under it on the left.
+	const dir = book.script === 'arabic' ? ' dir="rtl"' : '';
+	return `<div class="${classes.join(' ')}"${dir}>
 	<div class="byline" dir="auto">${escapeHtml(book.author)}</div>
 	<div class="middle">
 		${book.volume ? `<div class="volume" lang="${lang}">${escapeHtml(book.volume)}</div>` : ''}
@@ -126,6 +134,15 @@ export function coverPlateMarkup(book: CoverCardBook, lockup: string): string {
 	// `.cover-plate.over-art::before`, and a pseudo-element cannot be selected
 	// from a descendant.
 	if (book.subtitle) classes.push('has-subtitle');
+	// A layout repaints the plate — paper, band, the ink — so it is a class here,
+	// where the scrim it replaces is drawn, and not on the type block below.
+	if (book.art && book.layout) {
+		classes.push(
+			'has-layout',
+			`cover-layout-${escapeHtml(book.layout.layout)}`,
+			`cover-hue-${escapeHtml(book.layout.hue)}`
+		);
+	}
 	// Matching the component: the property is set only where there is a scrim to
 	// scale, so a plate's markup is unchanged and the parity gate compares like
 	// with like. A painting without a measured strength takes 1, which is what

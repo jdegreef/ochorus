@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { readJSON, writeJSON } from './persisted';
 import { FAVORITES_KEY as KEY } from './reading-schema';
 import { readingSync } from './readingSync';
+import { addPending, clearPending } from './removals';
 
 /**
  * The reader's favorites: followed authors, saved books, plans, sermons,
@@ -65,6 +66,10 @@ class Favorites {
 		if (active) store[key] = Date.now();
 		else delete store[key];
 		this.#write(store);
+		// An un-heart is remembered until the account confirms it, so another
+		// device's copy can't merge it back (removals.ts); a re-heart lifts it.
+		if (active) clearPending('favorite', kind, slug);
+		else addPending('favorite', kind, slug);
 		readingSync.pushFavorite(kind, slug, active);
 	}
 

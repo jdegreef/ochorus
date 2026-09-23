@@ -19,7 +19,11 @@ this is the English definition and the structure.
 
 from __future__ import annotations
 
-# (plan slug, source book slug, title, description)
+# (plan slug, source book slug, title, description[, (first, last) chapter order])
+#
+# A plan reads every chapter of its book unless the optional span narrows it —
+# for a devotional whose Introduction and Conclusion bracket numbered days, so
+# that plan day N is the chapter titled "Day N" rather than one off from it.
 LAUNCH_PLANS = [
     (
         "humility-12-days",
@@ -43,6 +47,57 @@ LAUNCH_PLANS = [
         "eighteen days. From discovering your purpose to building a vision for "
         "the future, each day pairs practical counsel with a Scripture, a "
         "reflection, and a prayer.",
+    ),
+    (
+        "rooted-book-1-30-days",
+        "rooted-1",
+        "Rooted: 30 Days with God — Book 1",
+        "Thirty days to plant deep roots, for readers aged 9 to 12: who God is, "
+        "the good news of Jesus, who you are in Christ, how to pray, and how to "
+        "grow. Each day is one short reading with a Bible verse, a question to "
+        "think about, something to try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
+    ),
+    (
+        "rooted-book-2-30-days",
+        "rooted-2",
+        "Rooted: 30 Days with God — Book 2",
+        "Thirty days walking with Jesus, for readers aged 9 to 12: from the "
+        "manger in Bethlehem through His miracles and stories to the cross and "
+        "the empty tomb. Each day is one short reading with a Gospel passage, a "
+        "question to think about, something to try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
+    ),
+    (
+        "rooted-book-3-30-days",
+        "rooted-3",
+        "Rooted: 30 Days with God — Book 3",
+        "Thirty days of growing fruit, for readers aged 9 to 12: love, joy, "
+        "peace, patience, kindness and the rest of the fruit of the Spirit, the "
+        "words we say, and the habits of the heart. Each day is one short "
+        "reading with a Bible verse, a question to think about, something to "
+        "try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
+    ),
+    (
+        "rooted-book-4-30-days",
+        "rooted-4",
+        "Rooted: 30 Days with God — Book 4",
+        "Thirty days of standing strong in the storms of life, for readers aged "
+        "9 to 12: when you're afraid, worried or sad, when you're tempted, and "
+        "when life isn't fair. Each day is one short reading with a Bible verse, "
+        "a question to think about, something to try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
+    ),
+    (
+        "rooted-book-5-30-days",
+        "rooted-5",
+        "Rooted: 30 Days with God — Book 5",
+        "Thirty days of branching out in love, for readers aged 9 to 12: family, "
+        "friends, forgiveness, God's family at church, and the whole world. Each "
+        "day is one short reading with a Bible verse, a question to think about, "
+        "something to try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
     ),
 ]
 
@@ -150,6 +205,100 @@ CURATED_PLANS = [
             "the-bruised-reed",
             "mortification-of-sin",
             "all-things-for-good",
+        ],
+    ),
+    (
+        "christ-our-healer",
+        "Christ Our Healer",
+        "Six weeks on Christ as Saviour, Sanctifier, Healer, and Coming King. "
+        "A. B. Simpson lays out the fourfold gospel and its ministry of healing, "
+        "and Andrew Murray closes with a month of meditations on the Lord who "
+        "still heals the body as a pledge of the life to come.",
+        [
+            "the-fourfold-gospel",
+            "the-gospel-of-healing",
+            "divine-healing",
+        ],
+    ),
+    (
+        "pursuit-of-holiness",
+        "The Pursuit of Holiness",
+        "Nine weeks on being wholly the Lord's. Andrew Murray traces our "
+        "holiness to our union with the Holy One, William Law calls us to a life "
+        "devout in every ordinary hour, and John Wesley sets out plainly what "
+        "Christian perfection is — and is not.",
+        [
+            "holy-in-christ",
+            "a-serious-call",
+            "plain-account-christian-perfection",
+        ],
+    ),
+    (
+        "send-the-fire",
+        "Send the Fire: Praying for Revival",
+        "How revival comes, and how to pray it down. Charles Finney's lectures "
+        "on the conditions of revival, R. A. Torrey on the baptism with the Holy "
+        "Spirit that empowers it, and the sermons through which God shook New "
+        "England under Jonathan Edwards.",
+        [
+            "revival-lectures",
+            "baptism-with-the-holy-spirit",
+            "selected-sermons-edwards",
+        ],
+    ),
+    (
+        "the-pilgrims-way",
+        "The Pilgrim's Way",
+        "The road home, in three classics. Charles Spurgeon meets the seeker at "
+        "the wicket gate, John Bunyan's immortal allegory follows the pilgrim "
+        "the whole way to the Celestial City, and Bunyan's own testimony shows "
+        "the grace that abounded to the chief of sinners.",
+        [
+            "around-the-wicket-gate",
+            "pilgrims-progress",
+            "grace-abounding",
+        ],
+    ),
+    (
+        "waiting-on-god-trust",
+        "Waiting on God: A Life of Trust",
+        "Ten weeks in the school of trust. Andrew Murray teaches the daily "
+        "discipline of waiting on God, F. B. Meyer opens the secret of being "
+        "guided by him, and George Müller's astonishing life of faith shows what "
+        "such trust receives.",
+        [
+            "waiting-on-god",
+            "the-secret-of-guidance",
+            "the-life-of-trust",
+        ],
+    ),
+    (
+        "women-of-faith",
+        "Women of Faith",
+        "A longer journey with three remarkable women. Hannah Whitall Smith "
+        "opens the secret of a happy life, and the autobiographies of Amanda "
+        "Berry Smith and Julia A. J. Foote — two Black women who preached the "
+        "gospel across the nineteenth-century world — show that secret lived out "
+        "at great cost.",
+        [
+            "the-christians-secret-of-a-happy-life-4",
+            "amanda-smith-autobiography",
+            "a-brand-plucked-from-the-fire",
+        ],
+    ),
+    (
+        "voices-of-the-early-church",
+        "Voices of the Early Church",
+        "The first Christian centuries in their own words. Clement of Rome "
+        "writes from the church at Rome while the apostles' own generation "
+        "still lived, Ignatius of Antioch sends his letters on the road to "
+        "martyrdom, and Athanasius of Alexandria sets out the heart of the "
+        "faith — why God himself became man — in On the Incarnation. Short "
+        "daily readings over about four months.",
+        [
+            "first-epistle-of-clement",
+            "epistles-of-ignatius",
+            "on-the-incarnation",
         ],
     ),
     (

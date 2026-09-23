@@ -6,6 +6,14 @@ from django.http import HttpResponse
 from django.urls import include, path
 
 from accounts.views import MeView, SignupSourceView, health
+from emails.admin_views import (
+    AdminAudiencePreviewView,
+    AdminBroadcastActionView,
+    AdminBroadcastDetailView,
+    AdminBroadcastsView,
+    AdminEmailMetricsView,
+)
+from feedback.admin_views import AdminFeedbackDetailView, AdminFeedbackListView
 from library.admin_import_views import (
     AdminAuthorCreateView,
     AdminImportLanguagesView,
@@ -29,6 +37,7 @@ from library.admin_views import (
     AdminLanguageDetailView,
     AdminLanguageGoLiveView,
     AdminLanguageHealthView,
+    AdminLanguageManualView,
     AdminLanguageReadinessView,
     AdminLanguageSettingsView,
     AdminLanguageThresholdsView,
@@ -81,6 +90,11 @@ urlpatterns = [
         name="admin-language-health",
     ),
     path("api/admin/manual/", AdminManualView.as_view(), name="admin-manual"),
+    path(
+        "api/admin/language-manual/",
+        AdminLanguageManualView.as_view(),
+        name="admin-language-manual",
+    ),
     path("api/admin/audit/", AdminAuditView.as_view(), name="admin-audit"),
     path(
         "api/admin/audit/dismiss/",
@@ -162,6 +176,33 @@ urlpatterns = [
         name="admin-translation-jobs",
     ),
     path("api/admin/team/", AdminTeamView.as_view(), name="admin-team"),
+    path("api/admin/feedback/", AdminFeedbackListView.as_view(), name="admin-feedback"),
+    path(
+        "api/admin/feedback/<int:pk>/",
+        AdminFeedbackDetailView.as_view(),
+        name="admin-feedback-detail",
+    ),
+    path(
+        "api/admin/email-metrics/",
+        AdminEmailMetricsView.as_view(),
+        name="admin-email-metrics",
+    ),
+    path("api/admin/broadcasts/", AdminBroadcastsView.as_view(), name="admin-broadcasts"),
+    path(
+        "api/admin/broadcasts/audience-preview/",
+        AdminAudiencePreviewView.as_view(),
+        name="admin-audience-preview",
+    ),
+    path(
+        "api/admin/broadcasts/<int:pk>/",
+        AdminBroadcastDetailView.as_view(),
+        name="admin-broadcast-detail",
+    ),
+    path(
+        "api/admin/broadcasts/<int:pk>/action/",
+        AdminBroadcastActionView.as_view(),
+        name="admin-broadcast-action",
+    ),
     path(
         "api/admin/content-edit-jobs/",
         AdminContentEditJobsView.as_view(),
@@ -212,6 +253,8 @@ urlpatterns = [
         AdminLanguageDeployCheckView.as_view(),
         name="admin-language-deploy-check",
     ),
+    path("api/emails/", include("emails.urls")),
+    path("api/feedback/", include("feedback.urls")),
     path("api/library/", include("library.urls")),
     path("api/reading/", include("reading.urls")),
 ]

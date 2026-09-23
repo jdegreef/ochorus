@@ -522,6 +522,48 @@ CORRECTIONS: dict[str, dict] = {
         # the word. Give the clean, consistent title.
         "chapter_titles": {7: "Dealing with Those Who Lack Assurance and with Backsliders"},
     },
+    "school-of-prayer": {
+        # CCEL titles each lesson "First Lesson. ‘Lord, teach us to pray;’ Or,
+        # The Only Teacher" — the reader already numbers the chapter, and the
+        # motto is the verse the lesson opens with. Title each by its own "Or,"
+        # subtitle, as the four-lesson `lord-teach-us-to-pray-2` already does
+        # (CCEL's TOC also misspells "Ninteenth", which this sidesteps). Ch33
+        # is Murray's closing note on Müller, spelled as the library spells him.
+        "chapter_titles": {
+            2: "The Only Teacher",
+            3: "The True Worshippers",
+            4: "Alone with God",
+            5: "The Model Prayer",
+            6: "The Certainty of the Answer to Prayer",
+            7: "The Infinite Fatherliness of God",
+            8: "The All-Comprehensive Gift",
+            9: "The Boldness of God’s Friends",
+            10: "Prayer Provides Labourers",
+            11: "Prayer Must Be Definite",
+            12: "The Faith That Takes",
+            13: "The Secret of Believing Prayer",
+            14: "The Cure of Unbelief",
+            15: "Prayer and Love",
+            16: "The Power of United Prayer",
+            17: "The Power of Persevering Prayer",
+            18: "Prayer in Harmony with the Being of God",
+            19: "Prayer in Harmony with the Destiny of Man",
+            20: "Power for Praying and Working",
+            21: "The Chief End of Prayer",
+            22: "The All-Inclusive Condition",
+            23: "The Word and Prayer",
+            24: "Obedience the Path to Power in Prayer",
+            25: "The All-Prevailing Plea",
+            26: "The Holy Spirit and Prayer",
+            27: "Christ the Intercessor",
+            28: "Christ the High Priest",
+            29: "Christ the Sacrifice",
+            30: "Our Boldness in Prayer",
+            31: "The Ministry of Intercession",
+            32: "A Life of Prayer",
+            33: "George Müller, and the Secret of His Power in Prayer",
+        },
+    },
 }
 
 
@@ -3585,6 +3627,65 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("so much skill and zeal as to awake them!", "Moreover, what skill"),
             ("and to the trouble of the Church?", "What skill is necessary to deal"),
             ("one poor ignorant soul for his conversion!", "O brethren! do you not shrink"),
+        ],
+    },
+    "school-of-prayer": {
+        # Every lesson's body opens by restating its heading as three blocks —
+        # "<h2>FIRST LESSON.</h2>", the motto, and the "Or, …" subtitle — above
+        # the verse the lesson actually begins with. The reader shows the title
+        # already and the verse carries the motto, so the run goes. The
+        # importer's own strip misses it: "First Lesson" is not a CHAPTER
+        # ordinal, and no single block restates the whole TOC title. Also the
+        # Preface's "——0——" ornament, and ch33's heading, which CCEL broke
+        # across an <h2> and a <p> (the chapter title carries it).
+        "replacements": [
+            ("<p>——0——</p> ", ""),
+            ("<h2>GEORGE MULLER, AND THE SECRET OF HIS</h2> <p>POWER IN PRAYER</p> ", ""),
+            # CCEL dates the Preface 1895; the book is 1885, and Murray's own
+            # note (ch33) has Müller, born 1805, "now eighty years of age".
+            ("<p>WELLINGTON, 28<i><sup>th</sup> October</i> 1895 </p>",
+             "<p>WELLINGTON, 28<i><sup>th</sup> October</i> 1885 </p>"),
+            # Ch21's opening verse lost its opening quote (every sibling has it).
+            ("<p>I go unto the Father. And whatsoever", "<p>‘I go unto the Father. And whatsoever"),
+            # Spaces the transcription left before a comma.
+            ("in the Spirit of Christ , the Spirit", "in the Spirit of Christ, the Spirit"),
+            ("<p>‘LORD , TEACH US TO", "<p>‘LORD, TEACH US TO"),
+            ("how to use God’s word , and to trust", "how to use God’s word, and to trust"),
+            ("room for thirty children , and in", "room for thirty children, and in"),
+            # Ch18's NOTE quotes a quotation: the inner mark opens with a
+            # closing curl (‘” where ‘“ is meant).
+            ("<p>‘”<i>God hears prayer</i>.”", "<p>‘“<i>God hears prayer</i>.”"),
+            ("<h2>FIRST LESSON.</h2> <h3>‘Lord, teach us to pray;’</h3> <h3><i>Or, The Only Teacher</i> . </h3>  ", ""),
+            ("<h2>SECOND LESSON.</h2> <h3>‘In spirit and truth.’</h3> <h3>Or, The True Worshippers.</h3> ", ""),
+            ("<h2>THIRD LESSON.</h2> <h3>‘Pray to thy Father, which is in secret;’</h3> <h3><i>Or, Alone with God</i>. </h3>  ", ""),
+            ("<h2>FOURTH LESSON</h2> <h3>‘After this manner pray;’</h3> <h3>Or, The Model Prayer.</h3>  ", ""),
+            ("<h2>FIFTH LESSON.</h2> <h3>'Ask, and it shall be given you'</h3> <h3>Or, The Certainty of the Answer to Prayer.</h3>  ", ""),
+            ("<h2>SIXTH LESSON.</h2> <h3>‘How much more?’</h3> <h3>Or, The Infinite Fatherliness of God.</h3>  ", ""),
+            ("<h2>SEVENTH LESSON.</h2> <h3>‘How much more the Holy Spirit;</h3> <h3>Or, The All-Comprehensive Gift.</h3>  ", ""),
+            ("<h2>EIGHTH LESSON.</h2> <h3>‘Because of his importunity;’</h3> <h3>Or, The Boldness of God’s Friends.</h3>  ", ""),
+            ("<h2>NINTH LESSON.</h2> <h3>‘Pray the Lord of the harvest;’</h3> <h3><i>Or, Prayer provides Labourers</i>. </h3>  ", ""),
+            ("<h2>TENTH LESSON.</h2> <h3>‘What wilt thou?’</h3> <h3>Or, Prayer must be Definite.</h3>  ", ""),
+            ("<h2>ELEVENTH LESSON.</h2> <h3>‘Believe that ye have received;’</h3> <h3>Or, The Faith that Takes.</h3>  ", ""),
+            ("<h2>TWELFTH LESSON.</h2> <h3>‘Have faith in God;’</h3> <h3>Or, The Secret of Believing Prayer.</h3>  ", ""),
+            ("<h2>THIRTEENTH LESSON.</h2> <h3>‘Prayer and fasting;’</h3> <h3><i>Or, The Cure of Unbelief</i>. </h3>  ", ""),
+            ("<h2>FOURTEENTH LESSON.</h2> <h3>‘When ye stand praying, forgive;’</h3> <h3><i>Or, Prayer and Love</i>. </h3>  ", ""),
+            ("<h2>FIFTEENTH LESSON.</h2> <h3>‘If two agree;’</h3> <h3>Or, The Power of United Prayer</h3>  ", ""),
+            ("<h2>SIXTEENTH LESSON.</h2> <h3>‘Speedily, though bearing long;’</h3> <h3>Or, The Power of Persevering Prayer.</h3>  ", ""),
+            ("<h2>SEVENTEENTH LESSON.</h2> <h3>‘I know that Thou hearest me always;’</h3> <h3>Or Prayer in Harmony with the Being of God.</h3>  ", ""),
+            ("<h2>EIGHTEENTH LESSON</h2> <h3>‘Whose is this image?’</h3> <h3><i>Or, Prayer in Harmony with the Destiny of Man</i>. </h3>  ", ""),
+            ("<h2>NINTEENTH LESSON.</h2> <h3>‘I go unto the Father!’</h3> <h3>Or, Power for Praying and Working.</h3>  ", ""),
+            ("<h2>TWENTIETH LESSON.</h2> <h3>‘That the Father may be glorified;’</h3> <h3>Or, The Chief End of Prayer.</h3>  ", ""),
+            ("<h2>TWENTY-FIRST LESSON.</h2> <h3>‘If ye abide in me;’</h3> <h3><i>Or The All-Inclusive Condition</i>. </h3>  ", ""),
+            ("<h2>TWENTY-SECOND LESSON.</h2> <h3>‘My words in you.’</h3> <h3><i>Or, The Word and Prayer</i>. </h3>  ", ""),
+            ("<h2>TWENTY-THIRD LESSON</h2> <h3>‘Bear fruit, that the Father may give what ye ask;’</h3> <h3><i>Or, Obedience the Path to Power in Prayer</i>. </h3>  ", ""),
+            ("<h2>TWENTY-FOURTH LESSON.</h2> <h3> ‘In my Name;’</h3> <h3><i>Or, The All-prevailing Plea</i>. </h3>  ", ""),
+            ("<h2>TWENTY-FIFTH LESSON.</h2> <h3>‘At that day;’</h3> <h3>Or, The Holy Spirit and Prayer.</h3>  ", ""),
+            ("<h2>TWENTY-SIXTH LESSON.</h2> <h3>‘I have prayed for thee;’</h3> <h3>Or, Christ the Intercessor.</h3>  ", ""),
+            ("<h2>TWENTY-SEVENTH LESSON.</h2> <h3>‘Father, I will;’</h3> <h3>Or, Christ the High Priest</h3>  ", ""),
+            ("<h2>TWENTY-EIGHTH LESSON.</h2> <h3>‘Father! Not what I will;’</h3> <h3>Or, Christ the Sacrifice.</h3>  ", ""),
+            ("<h2>TWENTY-NINTH LESSON.</h2> <h3>‘According to His will;</h3> <h3><i>Or, Our Boldness in Prayer</i>. </h3>  ", ""),
+            ("<h2>THIRTIETH LESSON.</h2> <h3>‘An holy priesthood;’</h3> <h3>Or, The Ministry of Intercession.</h3>  ", ""),
+            ("<h2>THIRTY-FIRST LESSON.</h2> <h3>‘Pray without ceasing;’</h3> <h3>Or, A Life of Prayer.</h3>  ", ""),
         ],
     },
 }

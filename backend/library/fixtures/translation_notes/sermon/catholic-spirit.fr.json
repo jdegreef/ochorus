@@ -1,0 +1,34 @@
+{
+ "kind": "sermon",
+ "slug": "catholic-spirit",
+ "language": "fr",
+ "job_issue": 2654,
+ "references": [
+  {
+   "reference": "Jean 13:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Jean 13:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Jean 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jérémie 35:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "2 Rois 10:29",
+   "status": "self_rendered"
+  }
+ ]
+}

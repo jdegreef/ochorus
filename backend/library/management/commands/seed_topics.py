@@ -31,10 +31,11 @@ from library.topic_seed import (
     TOPIC_ARTICLES,
     TOPIC_QA,
     TOPIC_SCRIPTURE,
+    TOPIC_SEO,
     TOPIC_SERMONS,
     TOPICS,
 )
-from library.topic_translations import topic_scripture, topic_translations
+from library.topic_translations import topic_scripture, topic_seo, topic_translations
 
 
 class Command(BaseCommand):
@@ -42,15 +43,22 @@ class Command(BaseCommand):
 
     def handle(self, *args, **opts):
         created = 0
-        prose, scripture = topic_translations(), topic_scripture()
+        prose, scripture, seo = (
+            topic_translations(),
+            topic_scripture(),
+            topic_seo(),
+        )
         for order, (slug, title, description, book_slugs) in enumerate(TOPICS):
             ref, verse = TOPIC_SCRIPTURE.get(slug, ("", ""))
             qa = TOPIC_QA.get(slug, [])
+            seo_title, meta_description = TOPIC_SEO.get(slug, ("", ""))
             topic, was_created = Topic.objects.get_or_create(
                 slug=slug,
                 defaults={
                     "title": title,
                     "description": description,
+                    "seo_title": seo_title,
+                    "meta_description": meta_description,
                     "scripture_ref": ref,
                     "scripture_text": verse,
                     "qa": qa,
@@ -61,9 +69,9 @@ class Command(BaseCommand):
                 created += 1
             else:
                 # Backfill/refresh the fixture-owned English fields on an
-                # already-seeded topic (scripture and qa are researched into
-                # topic_seed and nothing else writes them, so a corrected or
-                # expanded set must reach production on the next deploy).
+                # already-seeded topic (scripture, qa and the SEO overrides are
+                # researched into topic_seed and nothing else writes them, so a
+                # corrected or expanded set must reach production on next deploy).
                 changed = []
                 if (topic.scripture_ref, topic.scripture_text) != (ref, verse):
                     topic.scripture_ref, topic.scripture_text = ref, verse
@@ -71,6 +79,15 @@ class Command(BaseCommand):
                 if topic.qa != qa:
                     topic.qa = qa
                     changed.append("qa")
+                if (topic.seo_title, topic.meta_description) != (
+                    seo_title,
+                    meta_description,
+                ):
+                    topic.seo_title, topic.meta_description = (
+                        seo_title,
+                        meta_description,
+                    )
+                    changed += ["seo_title", "meta_description"]
                 if changed:
                     topic.save(update_fields=changed)
             # Upsert membership each run so new books join existing shelves.
@@ -112,12 +129,15 @@ class Command(BaseCommand):
                 # must blank the stored one on the next deploy, not leave it
                 # rendering forever. So absent scripture writes "", never skips.
                 ref, verse_tr = scripture.get(lang, {}).get(slug, ("", ""))
+                seo_title_tr, meta_tr = seo.get(lang, {}).get(slug, ("", ""))
                 TopicTranslation.objects.update_or_create(
                     topic=topic,
                     language=lang,
                     defaults={
                         "title": tr[0],
                         "description": tr[1],
+                        "seo_title": seo_title_tr,
+                        "meta_description": meta_tr,
                         "scripture_ref": ref,
                         "scripture_text": verse_tr,
                     },

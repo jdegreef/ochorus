@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -50,9 +51,11 @@
 			class="shrink-0 hover:no-underline"
 		>
 			{#if author.photo_url}
+				{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
 				<img
-					src={author.photo_url}
-					srcset={portraitSrcset(author.photo_url)}
+					src={source.src}
+					srcset={source.srcset}
+					use:hydrateSrc={source}
 					sizes="112px"
 					alt="{t('a11y.portraitOf')} {author.name}"
 					loading="lazy"
@@ -161,11 +164,13 @@
 	     a 375px phone, where five covers need 368px — so the rail keeps its
 	     horizontal scroll. It costs nothing at widths that don't overflow (no
 	     scrollbar appears) and holds every row to the same height, which
-	     wrapping would not. `overscroll-x-contain` stops a swipe off the end of
-	     the strip from turning into a browser back-navigation. -->
+	     wrapping would not. The shared `.cover-rail` carries the overflow, the
+	     overscroll-contain that stops a swipe off the end from turning into a
+	     browser back-navigation, and — on a phone — an end-edge fade in place of
+	     a hard clip. -->
 	{#if shelf.length}
 			<div
-			class="mt-4 flex gap-3 overflow-x-auto overscroll-x-contain pb-1"
+			class="cover-rail mt-4 flex gap-3 pb-1"
 			aria-label={t('nav.books')}
 		>
 				{#each shelf.slice(0, SHELF_MAX) as book (book.slug)}

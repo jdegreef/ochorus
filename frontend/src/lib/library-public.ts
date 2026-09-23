@@ -61,6 +61,58 @@ export interface BookSummary {
 	updated_at?: string;
 }
 
+/**
+ * What a book's cover and card draw — a `BookSummary` without the fields they
+ * never read. Two places store or inline it, so its size is not free: the home
+ * page's build-time snapshot (inlined into every locale's front page, see
+ * `$lib/homeShelves`) and the reader's resume cache (`$lib/resumeBooks`). Every
+ * other caller passes a full `BookSummary`, which fits.
+ *
+ * EVERY `BookSummary` field is classified, carried or dropped, and the check
+ * below fails to compile on one that is neither. Both defaults were wrong: a
+ * keep-list silently lost a new field from the home cards, a drop-list silently
+ * inlined a new heavy one into every front page. Classifying makes it a choice.
+ */
+export const COVER_BOOK_KEYS = [
+	'slug',
+	'language',
+	'title',
+	'subtitle',
+	'source_type',
+	'cover_color',
+	'cover_url',
+	'chapter_count',
+	'word_count'
+] as const;
+export const COVER_BOOK_DROPS = ['topics', 'created_at', 'updated_at'] as const;
+export const COVER_AUTHOR_KEYS = ['slug', 'name', 'birth_year'] as const;
+export type CoverBook = Pick<BookSummary, (typeof COVER_BOOK_KEYS)[number]> & {
+	author: Pick<Author, (typeof COVER_AUTHOR_KEYS)[number]>;
+};
+type Classified =
+	| (typeof COVER_BOOK_KEYS)[number]
+	| (typeof COVER_BOOK_DROPS)[number]
+	| 'author';
+type Unclassified = Exclude<keyof BookSummary, Classified>;
+/**
+ * Fails to compile, naming the field, when `BookSummary` gains an unclassified
+ * one ("Type '"blurb"' does not satisfy the constraint 'never'"). Type-only:
+ * nothing of it reaches the bundle.
+ */
+type AssertEveryFieldClassified<T extends never> = T;
+export type EveryBookFieldClassified = AssertEveryFieldClassified<Unclassified>;
+
+/** `obj` with only `keys` — the runtime half of a narrow type built from them. */
+export function pick<T extends object, K extends keyof T>(obj: T, keys: readonly K[]): Pick<T, K> {
+	return Object.fromEntries(keys.map((k) => [k, obj[k]])) as Pick<T, K>;
+}
+
+/** A book (or a `BookDetail`, which extends it) cut down to `CoverBook`. */
+export const toCoverBook = (b: BookSummary): CoverBook => ({
+	...pick(b, COVER_BOOK_KEYS),
+	author: pick(b.author, COVER_AUTHOR_KEYS)
+});
+
 export interface ChapterToc {
 	order: number;
 	title: string;
@@ -468,6 +520,11 @@ export interface AuthorBio {
 	/** A full long-form biography exists (vs. a one-line stub). */
 	has_long_bio: boolean;
 }
+
+/** What `AuthorTile` draws — see `CoverBook`. A field the tile starts reading
+ *  goes in this list, and the home snapshot then carries it too. */
+export const AUTHOR_TILE_KEYS = ['slug', 'name', 'photo_url', 'book_count'] as const;
+export type AuthorTileData = Pick<AuthorBio, (typeof AUTHOR_TILE_KEYS)[number]>;
 
 /** A writer's dates as displayed: "1843–1919", or "b. 1938" when there is no
  * death year — a bare "1938–" reads as a typo rather than as "still living".
@@ -892,6 +949,10 @@ export interface TopicSummary {
 	covers: TopicCover[];
 }
 
+/** What a topic chip draws — see `AuthorTileData`. */
+export const TOPIC_COUNT_KEYS = ['slug', 'title', 'book_count', 'sermon_count'] as const;
+export type TopicCount = Pick<TopicSummary, (typeof TOPIC_COUNT_KEYS)[number]>;
+
 /** An author behind a shelf's works — exactly the shape `PersonCard` renders. */
 export interface TopicAuthor {
 	slug: string;
@@ -904,6 +965,15 @@ export interface TopicAuthor {
 export interface TopicDetail extends TopicSummary {
 	scripture_ref: string;
 	scripture_text: string;
+	/**
+	 * SEO override for the page <title>. The full tag text (already ends in
+	 * "— Ochorus"); "" when the shelf has no override, so the reader falls back
+	 * to `${title} — Ochorus`. English-owned; "" in a locale until localized.
+	 * Optional so an API without the field yet (rolling deploy) reads undefined.
+	 */
+	seo_title?: string;
+	/** SEO override for <meta description>; "" (or absent) → falls back to `description`. */
+	meta_description?: string;
 	/**
 	 * Editorial Questions & Answers about the shelf — hand-authored, grounded in
 	 * the topic, per-language via qa_for (English first). The page shows a
@@ -1290,3 +1360,27 @@ export function quoteCollectionLd(opts: {
 		}
 	};
 }
+
+/** The five kinds a reader can file feedback under — mirrors the backend
+ *  `FeedbackCategory`. */
+export type FeedbackCategory = 'language' | 'content' | 'feature' | 'bug' | 'other';
+
+/** A piece of reader feedback, with whatever page context the client could
+ *  resolve. Signed-in only — the server stamps the submitter and their role. */
+export interface FeedbackSubmission {
+	category: FeedbackCategory;
+	body: string;
+	page_url?: string;
+	content_kind?: string;
+	content_slug?: string;
+	content_language?: string;
+	chapter_ref?: string;
+	ui_locale?: string;
+}
+
+/** File a suggestion. Requires a signed-in reader; the endpoint is throttled. */
+export const submitFeedback = (body: FeedbackSubmission) =>
+	apiFetch<{ id: number; ok: boolean }>('/api/feedback/', {
+		method: 'POST',
+		body: JSON.stringify(body)
+	});

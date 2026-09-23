@@ -3,6 +3,14 @@
 
     uv run python scripts/tune_art_scrim.py --dry-run
     uv run python scripts/tune_art_scrim.py
+    uv run python scripts/tune_art_scrim.py <slug> ...   # re-measure only these
+
+With slugs, the other entries are carried over from the committed table rather
+than re-measured. That changes nothing in the output — each value depends only
+on its own painting and whether its work has a subtitle — and it is the whole
+cost of painting one cover otherwise: every painting in the library, ~2 s each.
+Run it bare to re-measure everything (a crop change touching many works, or to
+drop entries for paintings that are gone).
 
 WHAT THIS IS FOR
 `.cover-plate.over-art` darkens a painting so white type can sit on it, and its
@@ -133,12 +141,23 @@ def main() -> int:
     from PIL import Image
 
     parser = argparse.ArgumentParser()
+    parser.add_argument("slugs", nargs="*", help="Re-measure only these (default: all).")
     parser.add_argument("--dry-run", action="store_true")
     opts = parser.parse_args()
 
     subtitled = works_with_a_subtitle()
     table, unusable = {}, []
-    for path in sorted(ART.glob("*.jpg")):
+    paths = sorted(ART.glob("*.jpg"))
+    if opts.slugs:
+        from library.art_scrim import ART_SCRIM
+
+        table = dict(ART_SCRIM)
+        missing = [s for s in opts.slugs if not (ART / f"{s}.jpg").exists()]
+        if missing:
+            print(f"no painting at covers/art/ for: {', '.join(missing)}", file=sys.stderr)
+            return 1
+        paths = [ART / f"{s}.jpg" for s in sorted(set(opts.slugs))]
+    for path in paths:
         image = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
         strength = needed(image, path.stem in subtitled)
         if strength is None:

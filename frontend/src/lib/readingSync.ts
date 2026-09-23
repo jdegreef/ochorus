@@ -1,8 +1,18 @@
 import { browser } from '$app/environment';
 import { undo } from './undo.svelte';
 import { apiFetch } from './api';
+import { bookmarkTarget, clearPending, clearSent, pendingAt, pendingRemovals } from './removals';
 import type { PlanState } from './planProgress.svelte';
 import type { SessionSync } from './sessionClock';
+import {
+	cleanStore,
+	fromServer,
+	applyServerJournal,
+	toServer,
+	type JournalEntry,
+	type JournalStore,
+	type ServerJournalEntry
+} from './journal';
 import {
 	PROGRESS_KEY,
 	MARKS_KEY,
@@ -10,6 +20,8 @@ import {
 	ACTIVITY_KEY,
 	PLANS_KEY,
 	BOOKMARKS_KEY,
+	JOURNAL_KEY,
+	JOURNAL_DIRTY_KEY,
 	LAST_SYNC_KEY,
 	READING_DATA_KEYS,
 	SIGN_OUT_DATA_KEYS,
@@ -86,8 +98,19 @@ interface ServerState {
 	bookmarks?: ServerBookmark[];
 	activity?: string[];
 	plan_progress?: ServerPlanProgress[];
+	/** The merge applied `removed` (an API with tombstones — see removals.ts). */
+	removed_applied?: boolean;
+	journal?: ServerJournalEntry[];
 }
 
+/**
+ * The most journal the sign-in merge carries, in serialized characters.
+ * Django rejects request bodies over 2.5MB (DATA_UPLOAD_MAX_MEMORY_SIZE) and
+ * that would fail the WHOLE merge — progress, highlights, everything — so the
+ * journal takes at most this share; what doesn't fit stays pending for the
+ * next merge.
+ */
+const MERGE_JOURNAL_CHARS = 1_000_000;
 
 /** A nullable server ISO datetime → epoch ms, or null (unset, or unparseable). */
 function msOrNull(s?: string | null): number | null {
@@ -103,9 +126,20 @@ function readJson<T>(key: string, fallback: T): T {
 	}
 }
 
+/** Fired whenever the set of journal entries owed to the account changes, so
+ *  the Notebook's sync indicator can re-read it (see journalSyncState). */
+export const JOURNAL_PENDING_EVENT = 'ochorus:journal-pending';
+
 class ReadingSync {
 	signedIn = false;
 	#timers = new Map<string, ReturnType<typeof setTimeout>>();
+	#flushing = false;
+
+	constructor() {
+		// Back online: deliver what was written while the connection was down,
+		// instead of waiting for the next sign-in merge to carry it.
+		if (browser) window.addEventListener('online', () => void this.flushJournal());
+	}
 
 	setSignedIn(v: boolean) {
 		this.signedIn = v;
@@ -306,12 +340,41 @@ class ReadingSync {
 	pushFavorite(kind: string, slug: string, active: boolean) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`f:${kind}:${slug}`, () => {
-			apiFetch(`/api/reading/favorites/${kind}/${slug}/`, {
+			// An un-heart carries this device's clock and, once the account has it,
+			// clears its pending entry (see removals.ts); until then the next merge
+			// carries it instead, so an offline un-heart isn't lost.
+			const at = active ? null : pendingAt('favorite', kind, slug);
+			const query = at ? `?at=${at}` : '';
+			apiFetch(`/api/reading/favorites/${kind}/${slug}/${query}`, {
 				method: active ? 'PUT' : 'DELETE'
 			})
-				.then(() => this.#markSynced())
+				.then(() => {
+					if (at) clearPending('favorite', kind, slug, at);
+					this.#markSynced();
+				})
 				.catch(() => {});
 		});
+	}
+
+	/**
+	 * Remove a work from the reader's shelf on the account — the Bookshelf's
+	 * "Remove from shelf". Not debounced (a discrete act), and it cancels any
+	 * position push still queued for the work, which would otherwise land just
+	 * after. The server keeps a tombstone so no device re-merges the position;
+	 * `at` is the removal's pending entry, cleared on success (else the next
+	 * merge carries it).
+	 */
+	removeProgress(kind: WorkKind, slug: string, at: number) {
+		if (!this.signedIn || !browser) return;
+		const key = `p:${workSlugKey(kind, slug)}`;
+		clearTimeout(this.#timers.get(key));
+		this.#timers.delete(key);
+		apiFetch(`/api/reading/progress/${slug}/?kind=${kind}&at=${at}`, { method: 'DELETE' })
+			.then(() => {
+				clearPending('progress', kind, slug, at);
+				this.#markSynced();
+			})
+			.catch(() => {});
 	}
 
 	/** Mirror a saved bookmark to the account (a paragraph the reader saved). */
@@ -331,10 +394,111 @@ class ReadingSync {
 	removeBookmark(kind: WorkKind, slug: string, order: number, p: number) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`bm:${workSlugKey(kind, slug)}:${order}:${p}`, () => {
-			apiFetch(`/api/reading/bookmarks/${kind}/${slug}/${order}/${p}/`, { method: 'DELETE' })
-				.then(() => this.#markSynced())
+			// Like an un-heart: carries this device's clock, and clears its pending
+			// entry once the account has it (else the next merge carries it).
+			const target = bookmarkTarget(slug, order, p);
+			const at = pendingAt('bookmark', kind, target);
+			const query = at ? `?at=${at}` : '';
+			apiFetch(`/api/reading/bookmarks/${kind}/${slug}/${order}/${p}/${query}`, {
+				method: 'DELETE'
+			})
+				.then(() => {
+					if (at) clearPending('bookmark', kind, target, at);
+					this.#markSynced();
+				})
 				.catch(() => {});
 		});
+	}
+
+	/** Journal entries the account hasn't confirmed: id → updatedAt written. */
+	pendingJournal(): Record<string, number> {
+		return this.#pendingJournal();
+	}
+
+	#pendingJournal(): Record<string, number> {
+		return readJson<Record<string, number>>(JOURNAL_DIRTY_KEY, {});
+	}
+
+	#setPending(pending: Record<string, number>) {
+		try {
+			localStorage.setItem(JOURNAL_DIRTY_KEY, JSON.stringify(pending));
+		} catch {
+			/* storage full — the entry then just rides a later push again */
+		}
+		window.dispatchEvent(new CustomEvent(JOURNAL_PENDING_EVENT));
+	}
+
+	/** The account has these versions: stop owing them — unless the entry was
+	 *  edited again since, in which case the newer version is still owed. */
+	#confirmJournal(sent: JournalEntry[]) {
+		const pending = this.#pendingJournal();
+		for (const e of sent) if (pending[e.id] === e.updatedAt) delete pending[e.id];
+		this.#setPending(pending);
+	}
+
+	/**
+	 * Mirror a Notebook entry (a note or prayer, or its tombstone). The whole
+	 * entry rides every PUT and the server keeps the newest by `updatedAt`, so
+	 * debouncing per entry only coalesces keystroke-rapid saves. Every change is
+	 * recorded as owed first — signed out, offline, or a failed PUT — so the
+	 * sign-in merge carries exactly what the account is missing, not the whole
+	 * journal.
+	 */
+	pushJournal(e: JournalEntry) {
+		if (!browser) return;
+		this.#setPending({ ...this.#pendingJournal(), [e.id]: e.updatedAt });
+		if (!this.signedIn) return;
+		this.#debounce(`j:${e.id}`, () => {
+			apiFetch(`/api/reading/journal/${e.id}/`, {
+				method: 'PUT',
+				body: JSON.stringify(toServer(e))
+			})
+				.then(() => {
+					this.#confirmJournal([e]);
+					this.#markSynced();
+				})
+				.catch(() => {});
+		});
+	}
+
+	/**
+	 * Deliver every journal entry the account is still owed, one PUT at a time,
+	 * newest first — on reconnecting, after the sign-in merge (which carries at
+	 * most ~1MB), and from the Notebook's "Sync now". Stops at the first failure:
+	 * that is the connection gone again, and the rest wait for the next chance.
+	 * Resolves whether everything owed was delivered.
+	 */
+	async flushJournal(): Promise<boolean> {
+		if (!browser || !this.signedIn || this.#flushing) return false;
+		this.#flushing = true;
+		try {
+			const pending = this.#pendingJournal();
+			const store = cleanStore(readJson<JournalStore>(JOURNAL_KEY, {}));
+			const owed = Object.values(store)
+				.filter((e) => e.id in pending)
+				.sort((a, b) => b.updatedAt - a.updatedAt);
+			for (const e of owed) {
+				try {
+					await apiFetch(`/api/reading/journal/${e.id}/`, {
+						method: 'PUT',
+						body: JSON.stringify(toServer(e))
+					});
+				} catch {
+					return false;
+				}
+				this.#confirmJournal([e]);
+			}
+			// Owed ids with no entry left on the device (cleared storage) can never
+			// be delivered; stop counting them as waiting.
+			const left = this.#pendingJournal();
+			const onDevice = cleanStore(readJson<JournalStore>(JOURNAL_KEY, {}));
+			for (const id of Object.keys(left)) if (!onDevice[id]) delete left[id];
+			this.#setPending(left);
+			if (owed.length) this.#markSynced();
+			return true;
+		} finally {
+			this.#flushing = false;
+		}
 	}
 
 	/** Mirror a plan's progress (started + completed days) to the account. */
@@ -366,6 +530,23 @@ class ReadingSync {
 		const localFavorites = readJson<Record<string, number>>(FAVORITES_KEY, {});
 		const localBookmarks = readJson<BookmarksStore>(BOOKMARKS_KEY, {});
 		const localPlans = readJson<Record<string, PlanState>>(PLANS_KEY, {});
+		// Only what the account is owed, newest first, within the journal's share
+		// of the request (see MERGE_JOURNAL_CHARS). Tombstones ride too: a delete
+		// made offline must reach the account.
+		const pending = this.#pendingJournal();
+		const owed = Object.values(cleanStore(readJson<JournalStore>(JOURNAL_KEY, {})))
+			.filter((e) => e.id in pending)
+			.sort((a, b) => b.updatedAt - a.updatedAt);
+		const journalRows: ServerJournalEntry[] = [];
+		const journalSent: JournalEntry[] = [];
+		let journalChars = 0;
+		for (const e of owed) {
+			const row = toServer(e);
+			journalChars += JSON.stringify(row).length;
+			if (journalChars > MERGE_JOURNAL_CHARS && journalRows.length) break;
+			journalRows.push(row);
+			journalSent.push(e);
+		}
 		// Activity is a bare array, so read it directly (readJson spreads onto an
 		// object fallback, which would mangle an array).
 		let localActivity: string[] = [];
@@ -376,6 +557,7 @@ class ReadingSync {
 			/* corrupt blob — treat as empty */
 		}
 
+		const removed = pendingRemovals();
 		const payload = {
 			progress: Object.entries(localProgress).map(([key, r]) => {
 				const { kind, slug } = parseWorkSlugKey(key);
@@ -411,10 +593,14 @@ class ReadingSync {
 				})
 				.filter(Boolean),
 			// Favorites are stored as "kind:slug" -> savedAt; kinds never contain ':'.
-			favorites: Object.keys(localFavorites).map((key) => {
+			// `saved_at` lets the server tell a heart re-saved after a removal
+			// elsewhere (keep) from this device's stale copy of it (drop).
+			favorites: Object.entries(localFavorites).map(([key, at]) => {
 				const i = key.indexOf(':');
-				return { kind: key.slice(0, i), slug: key.slice(i + 1) };
+				return { kind: key.slice(0, i), slug: key.slice(i + 1), saved_at: at };
 			}),
+			// Removals whose live DELETE never landed (offline, a failed request).
+			removed,
 			// Bookmarks: a workSlugKey ("book:humility") -> that work's list. Flatten
 			// to one row per saved paragraph; the server unions them by position.
 			bookmarks: Object.entries(localBookmarks).flatMap(([key, list]) => {
@@ -426,7 +612,10 @@ class ReadingSync {
 					paragraph_index: b.p,
 					bm_id: b.id,
 					snippet: b.snippet,
-					title: b.title
+					title: b.title,
+					// Lets the server tell a bookmark re-saved after a removal
+					// elsewhere (keep) from this device's stale copy (drop).
+					saved_at: b.at
 				}));
 			}),
 			activity: localActivity,
@@ -434,7 +623,8 @@ class ReadingSync {
 				plan_slug: slug,
 				started_at: p.startedAt,
 				done: Array.isArray(p.done) ? p.done : []
-			}))
+			})),
+			journal: journalRows
 		};
 
 		try {
@@ -442,6 +632,9 @@ class ReadingSync {
 				method: 'POST',
 				body: JSON.stringify(payload)
 			});
+			// Only an API that says it applied them: one from before tombstones
+			// ignores `removed`, and clearing then would lose them.
+			if (state.removed_applied) clearSent(removed);
 			// Deploy-overlap guard: if we sent sermon rows but the server echoed
 			// rows with no `kind` at all, it's the pre-#10 API — writing its
 			// state back would re-key our sermon entries as books, making every
@@ -453,8 +646,11 @@ class ReadingSync {
 			const serverRows = [...state.progress, ...state.marks];
 			const serverKnowsKinds = serverRows.some((r) => 'kind' in r);
 			if (sentSermonRows && serverRows.length > 0 && !serverKnowsKinds) return;
+			if (state.journal) this.#confirmJournal(journalSent);
 			this.#writeState(state);
 			this.#markSynced();
+			// Whatever didn't fit the merge's share goes now, one entry at a time.
+			if (state.journal) void this.flushJournal();
 		} catch {
 			/* offline or API down — keep the local cache untouched */
 		}
@@ -563,6 +759,21 @@ class ReadingSync {
 				};
 			}
 			localStorage.setItem(PLANS_KEY, JSON.stringify(plans));
+		}
+		if (state.journal) {
+			const server: JournalStore = {};
+			for (const j of state.journal) {
+				const e = fromServer(j);
+				if (e) server[e.id] = e;
+			}
+			// Applied over what's on disk NOW rather than overwriting it: an entry
+			// typed while the request was in flight, or one that didn't fit this
+			// merge, is still owed to the account and keeps its local version.
+			const local = cleanStore(readJson<JournalStore>(JOURNAL_KEY, {}));
+			localStorage.setItem(
+				JOURNAL_KEY,
+				JSON.stringify(applyServerJournal(server, local, this.#pendingJournal()))
+			);
 		}
 		// Let open views know the cache changed underneath them.
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));

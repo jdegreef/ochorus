@@ -113,6 +113,16 @@ export class ReaderText {
 		return this.#o.cite();
 	}
 
+	/** Where the open text is — what a Notebook entry written from it links back to. */
+	get where(): { kind: WorkKind; slug: string; order: number; edition: string } {
+		return {
+			kind: this.#o.kind(),
+			slug: this.#o.slug(),
+			order: this.#o.order(),
+			edition: this.#o.language()
+		};
+	}
+
 	/**
 	 * Read aloud. Starts from the paragraph the surface says you're on, or from
 	 * `from` when given — the chapter roll-over passes 0 to begin the next

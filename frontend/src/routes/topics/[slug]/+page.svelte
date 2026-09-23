@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
 	import type { TopicDetail } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { readJSON, writeJSON } from '$lib/persisted';
@@ -8,6 +9,8 @@
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import BookListRow from '$lib/components/BookListRow.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
@@ -16,12 +19,14 @@
 	import Emblem from '$lib/components/Emblem.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import QandA from '$lib/components/QandA.svelte';
 	import { topicMeta } from '$lib/emblemNames';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { portraitPosition } from '$lib/portraits';
 	import { groupBooksByAuthor } from '$lib/topicBookGroups';
 	import { topicSectionOrder } from '$lib/topicSections';
+	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -51,24 +56,81 @@
 	// there is nothing to group, so the toggle is hidden and it stays flat.
 	const bookGroups = $derived(groupBooksByAuthor(topic.books));
 
-	// How the Books section is laid out. The default is one flat cover grid — the
-	// same dense grid the /books shelf shows — so every topic reads consistently;
-	// an author-clustered topic can switch to per-author sections via the toggle.
-	// Device-local (it describes the reader's preference, not the shelf), and read
-	// after mount so the prerendered HTML is always the flat default. Shared across
-	// topics under one key, mirroring the /books view preference.
-	type BookView = 'all' | 'author';
-	const BOOK_VIEW_KEY = 'ochorus:topic-books-view';
-	let bookView = $state<BookView>('all');
-	// Only the stored 'author' preference overrides the flat default, so a stale or
-	// malformed value can never leave the shelf in a non-existent view.
+	// The Books section's controls. Defaults render one flat cover grid in shelf
+	// order — the same dense grid the /books shelf shows — so a topic reads
+	// consistently with the library; the reader can re-group, re-sort, filter, or
+	// switch to a list. All device-local (they describe the reader, not the shelf)
+	// and read after mount, so the prerendered HTML always ships the flat default.
+	// Same shape and semantics as the /books view preference, under its own key.
+	type Group = 'all' | 'author';
+	type View = 'grid' | 'list';
+	// `-view2`: the key held a bare 'all'|'author' string in the first cut of this
+	// shelf; it now holds a {view, sort, group} bundle, so a fresh key avoids
+	// reading the old string as an object (a harmless one-time preference reset).
+	const PREFS_KEY = 'ochorus:topic-books-view2';
+	// The sort/filter/list controls only earn their space once a shelf is big
+	// enough that scanning it pays off; below this a topic stays the clean grid it
+	// was, with just the group toggle (which is useful at any size).
+	const TOOLBAR_MIN_BOOKS = 12;
+
+	let group = $state<Group>('all');
+	let sort = $state<BookSort>('shelf');
+	let view = $state<View>('grid');
+	// The filter text stays in component state, not the URL: a topic subsection is
+	// not a standalone shelf to deep-link into (unlike /books, whose filters are a
+	// place). SvelteKit reuses this page component across /topics/<slug>
+	// navigations, so the filter would otherwise leak from one topic to the next —
+	// afterNavigate clears it so every topic opens unfiltered.
+	let query = $state('');
+	afterNavigate(() => (query = ''));
 	onMount(() => {
-		if (readJSON<BookView>(BOOK_VIEW_KEY, 'all') === 'author') bookView = 'author';
+		const p = readJSON<{ view?: View; sort?: BookSort; group?: Group }>(PREFS_KEY, {});
+		if (p.view === 'grid' || p.view === 'list') view = p.view;
+		if (p.sort) sort = p.sort;
+		if (p.group === 'all' || p.group === 'author') group = p.group;
 	});
-	const setBookView = (v: BookView) => {
-		bookView = v;
-		writeJSON(BOOK_VIEW_KEY, v);
+	const savePrefs = () => writeJSON(PREFS_KEY, { view, sort, group });
+	const setGroup = (g: Group) => ((group = g), savePrefs());
+	const setView = (v: View) => ((view = v), savePrefs());
+	const onSort = (e: Event) => {
+		sort = (e.currentTarget as HTMLSelectElement).value as BookSort;
+		savePrefs();
 	};
+
+	// The toolbar controls are hidden below the size threshold; when hidden their
+	// (possibly persisted) values must not silently apply a list/longest the reader
+	// can neither see nor undo, so the effective view/sort/query fall back to the
+	// defaults there. The group toggle is exempt — it shows at any size.
+	const showToolbar = $derived(topic.books.length >= TOOLBAR_MIN_BOOKS);
+	const effView = $derived(showToolbar ? view : 'grid');
+	const effSort = $derived(showToolbar ? sort : 'shelf');
+	// Guarded like view/sort: even though afterNavigate clears query per topic, the
+	// guard makes it structurally impossible for a filter to apply where its input
+	// isn't shown (no flash between a reused render and the navigate reset).
+	const effQuery = $derived(showToolbar ? query.trim().toLowerCase() : '');
+
+	// The flat shelf: filtered by the query, then sorted. matchesBookQuery treats
+	// an empty query as "no filter", so this covers the unfiltered case too.
+	const flatBooks = $derived(
+		sortBooks(
+			topic.books.filter((b) => matchesBookQuery(b, effQuery)),
+			effSort
+		)
+	);
+	// The grouped shelf: the original author clusters, each filtered + sorted with
+	// empties dropped — so the author structure stays stable while membership and
+	// order follow the controls.
+	const displayGroups = $derived.by(() => {
+		if (!bookGroups) return null;
+		return bookGroups
+			.map((g) => ({ ...g, items: sortBooks(g.items.filter((b) => matchesBookQuery(b, effQuery)), effSort) }))
+			.filter((g) => g.items.length > 0);
+	});
+	// A filter that matched nothing — distinct from a genuinely empty shelf, which
+	// topicSectionOrder already drops. The grouped and flat views filter the same
+	// partition of topic.books, so flatBooks.length is the match count in both.
+	const noResults = $derived(effQuery !== '' && flatBooks.length === 0);
+	const clearQuery = () => (query = '');
 
 	// Content sections led by the type the topic is mostly made of; empties
 	// dropped. See topicSectionOrder.
@@ -91,6 +153,14 @@
 	// The per-topic share card (npm run og:topics). One value feeds both the
 	// og:image meta tag and the CollectionPage JSON-LD image, as on books/sermons.
 	const ogImage = $derived(absUrl(`/og/topics/${topic.slug}.png`));
+	// The <title> and <meta description> carry the words people search for
+	// ("Books on Prayer — Free Christian Classics"), not just the shelf heading.
+	// A per-shelf override (topic.seo_title / meta_description, English-owned)
+	// wins when present; otherwise fall back to the heading and the shelf blurb,
+	// exactly as before. Localized pages have no override yet, so they keep the
+	// localized-title default until per-locale overrides ship.
+	const titleTag = $derived(topic.seo_title || `${topic.title} — Ochorus`);
+	const metaDescription = $derived(topic.meta_description || topic.description);
 	// One crumb trail feeds both the visible <Breadcrumb> and the JSON-LD.
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },
@@ -130,8 +200,8 @@
 </script>
 
 <Seo
-	title="{topic.title} — Ochorus"
-	description={topic.description}
+	title={titleTag}
+	description={metaDescription}
 	{canonical}
 	{hreflang}
 	{ogImage}
@@ -141,50 +211,55 @@
 <div class="page-col px-5 py-10" style="--topic: {meta.accent}">
 	<Breadcrumb items={crumbs} />
 
+	<!-- Two-column banner: the description and actions run down the main column
+	     while the Scripture epigraph sits beside them, so the shelf clears the fold
+	     sooner. The verse column wraps under the main one on narrow screens. -->
 	<header class="hero mb-8 mt-4">
 		<span class="badge emblem-chip"><Emblem name={meta.emblem} /></span>
-		<div class="min-w-0">
-			<h1 class="text-h1 mb-2">{topic.title}</h1>
-			{#if topic.description}
-				<!-- No measure cap: the hero is already bounded by the page column, and
-				     capping the text at 36rem inside a 64rem card left the whole header
-				     bunched against the left edge with half the card empty. -->
-				<p class="text-body text-muted">{topic.description}</p>
-			{/if}
+		<div class="hero-body">
+			<div class="hero-main min-w-0">
+				<h1 class="text-h1 mb-2">{topic.title}</h1>
+				{#if topic.description}
+					<!-- No measure cap: the main column is already bounded by its flex
+					     basis, so a cap here would strand the text against the left edge. -->
+					<p class="text-body text-muted">{topic.description}</p>
+				{/if}
+				<div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+					<!-- Follow this shelf: it lands in "My Library" and updates as the
+					     topic gains works. -->
+					<FavoriteButton kind="topic" slug={topic.slug} showLabel />
+					<ShareButton url={canonical} title={topic.title} showLabel />
+					<!-- A topic is a shelf, and a shelf you can't search is a list you have
+					     to read end to end. -->
+					{#if topic.books.length || topic.sermons.length}
+						<a
+							href={localizeHref(scopedSearchHref('topic', topic.slug))}
+							class="inline-block text-small font-semibold text-accent hover:underline"
+							>{t('search.inTopic')} →</a
+						>
+					{/if}
+					<span class="text-small text-muted">
+						{topic.books.length}
+						{topic.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
+						{#if topic.sermons.length}
+							· {topic.sermons.length}
+							{topic.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
+						{/if}
+						{#if articles.length}
+							· {articles.length}
+							{articles.length === 1 ? t('common.articleOne') : t('common.articleMany')}
+						{/if}
+					</span>
+				</div>
+			</div>
 			{#if topic.scripture_text}
-				<figure class="verse">
+				<figure class="verse hero-verse">
 					<blockquote>{topic.scripture_text}</blockquote>
 					{#if topic.scripture_ref}
 						<figcaption>— {topic.scripture_ref}</figcaption>
 					{/if}
 				</figure>
 			{/if}
-			<p class="mt-3 text-small text-muted">
-				{topic.books.length}
-				{topic.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
-				{#if topic.sermons.length}
-					· {topic.sermons.length}
-					{topic.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
-				{/if}
-				{#if articles.length}
-					· {articles.length}
-					{articles.length === 1 ? t('common.articleOne') : t('common.articleMany')}
-				{/if}
-			</p>
-			<div class="mt-3 flex flex-wrap items-center gap-3">
-				<!-- Follow this shelf: it lands in "My Library" and updates as the
-				     topic gains works. -->
-				<FavoriteButton kind="topic" slug={topic.slug} showLabel />
-				<!-- A topic is a shelf, and a shelf you can't search is a list you have
-				     to read end to end. -->
-				{#if topic.books.length || topic.sermons.length}
-					<a
-						href={localizeHref(scopedSearchHref('topic', topic.slug))}
-						class="inline-block text-small font-semibold text-accent hover:underline"
-						>{t('search.inTopic')} →</a
-					>
-				{/if}
-			</div>
 		</div>
 	</header>
 
@@ -192,33 +267,78 @@
 		<EmptyState message={t('topics.empty')} />
 	{/if}
 
+	<!-- Filtered the shelf down to nothing: offer to clear the query (mirrors the
+	     /books shelf's no-results action). -->
+	{#snippet clearFiltersAction()}
+		<button class="btn btn-ghost" onclick={clearQuery}>{t('common.clearFilters')}</button>
+	{/snippet}
+
 	{#snippet booksSection()}
 		<section class="mb-10">
-			<!-- The section label rides a row with the layout toggle, so the control
-			     sits with the shelf it governs. The toggle only appears when the topic
-			     is author-clustered enough to be worth grouping (bookGroups != null). -->
-			<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
-				<h2 class="section-label !mb-0">{t('topics.books')}</h2>
-				{#if bookGroups}
-					<div class="seg">
-						<button
-							class:active={bookView === 'all'}
-							onclick={() => setBookView('all')}
-							aria-pressed={bookView === 'all'}>{t('books.groupAll')}</button
-						>
-						<button
-							class:active={bookView === 'author'}
-							onclick={() => setBookView('author')}
-							aria-pressed={bookView === 'author'}>{t('books.groupAuthor')}</button
-						>
-					</div>
-				{/if}
-			</div>
-			{#if bookGroups && bookView === 'author'}
-				<!-- Grouped by author (author-dominated topic). The heading names the
-				     author, so the cards below it don't repeat it. -->
+			<h2 class="section-heading">{t('topics.books')}</h2>
+
+			<!-- Shelf controls: the filter / sort / grid-list toolbar appears only on a
+			     shelf big enough to need it (showToolbar); the By-author / All-books
+			     toggle appears whenever the topic clusters, at any size. The row is
+			     omitted entirely when neither applies, so a small flat topic is just
+			     its grid. Order mirrors the /books shelf: filter · sort · group · view. -->
+			{#if showToolbar || bookGroups}
+				<div class="filter-row mb-6">
+					{#if showToolbar}
+						<input
+							bind:value={query}
+							type="search"
+							class="filter-field grow"
+							placeholder={t('books.filterPlaceholder')}
+							aria-label={t('books.filterPlaceholder')}
+						/>
+						<select value={sort} onchange={onSort} class="filter-field" aria-label={t('common.sort')}>
+							<option value="shelf">{t('common.sortShelf')}</option>
+							<option value="title">{t('common.sortTitle')}</option>
+							<option value="longest">{t('common.sortLongest')}</option>
+							<option value="shortest">{t('common.sortShortest')}</option>
+						</select>
+					{/if}
+					{#if bookGroups}
+						<div class="seg">
+							<button
+								class:active={group === 'all'}
+								onclick={() => setGroup('all')}
+								aria-pressed={group === 'all'}>{t('books.groupAll')}</button
+							>
+							<button
+								class:active={group === 'author'}
+								onclick={() => setGroup('author')}
+								aria-pressed={group === 'author'}>{t('books.groupAuthor')}</button
+							>
+						</div>
+					{/if}
+					{#if showToolbar}
+						<div class="seg">
+							<button
+								class:active={effView === 'grid'}
+								onclick={() => setView('grid')}
+								aria-label={t('books.viewGrid')}
+								aria-pressed={effView === 'grid'}><Icon name="grid" /></button
+							>
+							<button
+								class:active={effView === 'list'}
+								onclick={() => setView('list')}
+								aria-label={t('books.viewList')}
+								aria-pressed={effView === 'list'}><Icon name="list" /></button
+							>
+						</div>
+					{/if}
+				</div>
+			{/if}
+
+			{#if noResults}
+				<EmptyState message={t('books.noResults')} action={clearFiltersAction} />
+			{:else if bookGroups && group === 'author'}
+				<!-- Grouped by author. The heading names the author, so the cards below
+				     it don't repeat it (list rows drop their author for the same reason). -->
 				<div class="flex flex-col gap-8">
-					{#each bookGroups as g (g.slug)}
+					{#each displayGroups ?? [] as g (g.slug)}
 						<div>
 							<GroupHeading
 								as="h3"
@@ -228,12 +348,27 @@
 								portraitPosition={portraitPosition(g.slug)}
 								count={g.items.length}
 							/>
-							<div class="book-grid">
-								{#each g.items as book (book.slug)}
-									<BookCard {book} />
-								{/each}
-							</div>
+							{#if effView === 'list'}
+								<div class="flex flex-col gap-1">
+									{#each g.items as book (book.slug)}
+										<BookListRow {book} showAuthor={false} />
+									{/each}
+								</div>
+							{:else}
+								<div class="book-grid">
+									{#each g.items as book (book.slug)}
+										<BookCard {book} />
+									{/each}
+								</div>
+							{/if}
 						</div>
+					{/each}
+				</div>
+			{:else if effView === 'list'}
+				<!-- One flat list — the author rides each row since no heading names it. -->
+				<div class="flex flex-col gap-1">
+					{#each flatBooks as book (book.slug)}
+						<BookListRow {book} />
 					{/each}
 				</div>
 			{:else}
@@ -241,7 +376,7 @@
 				     /books shelf shows. The author rides each card since no heading
 				     names it. -->
 				<div class="book-grid">
-					{#each topic.books as book (book.slug)}
+					{#each flatBooks as book (book.slug)}
 						<BookCard {book} showAuthor />
 					{/each}
 				</div>
@@ -251,7 +386,7 @@
 
 	{#snippet sermonsSection()}
 		<section class="mb-10">
-			<h2 class="section-label">{t('topics.sermons')}</h2>
+			<h2 class="section-heading">{t('topics.sermons')}</h2>
 			<div class="grid gap-3 sm:grid-cols-2">
 				{#each topic.sermons as sermon (sermon.slug)}
 					<SermonCard {sermon} showAuthor />
@@ -262,7 +397,7 @@
 
 	{#snippet articlesSection()}
 		<section class="mb-10">
-			<h2 class="section-label">{t('topics.articles')}</h2>
+			<h2 class="section-heading">{t('topics.articles')}</h2>
 			<div class="grid gap-3 sm:grid-cols-2">
 				{#each articles as article (article.slug)}
 					<ArticleCard {article} />
@@ -284,7 +419,7 @@
 	     only more of the theme. Distinct writers behind the books and sermons. -->
 	{#if authors.length}
 		<section class="mb-10">
-			<h2 class="section-label">{t('topics.authors')}</h2>
+			<h2 class="section-heading">{t('topics.authors')}</h2>
 			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 				{#each authors as person (person.slug)}
 					<PersonCard {person} />
@@ -296,13 +431,13 @@
 	<!-- Questions and Answers about the shelf. `qa.items` also feeds the FAQPage
 	     JSON-LD in <Seo> via the same pickQa call, so the visible answers and the
 	     structured data stay in lockstep. Shared with the book page. -->
-	<QandA items={qa.items} title={t('qa.sectionTitle')} />
+	<QandA items={qa.items} title={t('qa.sectionTitle')} headingClass="section-heading" />
 
 	<!-- Related topics: the lateral "see also", so a shelf is a junction rather
 	     than a dead end. Sibling shelves that share books, most-shared first. -->
 	{#if relatedTopics.length}
 		<section>
-			<h2 class="section-label">{t('topics.related')}</h2>
+			<h2 class="section-heading">{t('topics.related')}</h2>
 			<nav class="related-topics" aria-label={t('topics.related')}>
 				{#each relatedTopics as rel (rel.slug)}
 					<a href={localizeHref(`/topics/${rel.slug}`)} data-sveltekit-preload-data="hover"
@@ -325,6 +460,31 @@
 		background:
 			radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--topic) 16%, transparent), transparent 55%),
 			color-mix(in srgb, var(--topic) 7%, var(--color-surface));
+	}
+	/* The banner body beside the emblem: the text column and the Scripture column
+	   sit side by side, and the verse wraps under the text when the row can't hold
+	   both at their basis (narrow screens). The gap spaces them in either axis. */
+	.hero-body {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		gap: 1rem 1.75rem;
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+	.hero-main {
+		flex: 1 1 22rem;
+	}
+	/* The verse as the right-hand column. It keeps the `.verse` accent rule but
+	   drops the stacked top margin (the flex gap spaces it now) and is bounded so a
+	   long epigraph wraps to more lines rather than crowding the text column. The
+	   selector is compounded with `.verse` so the `margin` reset outranks `.verse`'s
+	   own `margin` (which is declared later in this block) and the verse top-aligns
+	   with the text column. */
+	.verse.hero-verse {
+		flex: 1 1 15rem;
+		max-width: 26rem;
+		margin: 0;
 	}
 	/* The hero's emblem chip (recipe in app.css) — only size and hue here. */
 	.badge {

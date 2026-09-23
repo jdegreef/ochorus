@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { BookSummary } from '$lib/library-public';
+	import { cachedResumeBooks, libraryBooks, unfinishedBookSlugs } from '$lib/resumeBooks';
+	import { getLang } from '$lib/lang.svelte';
 	import type { ResumeItem } from '$lib/resumeItems';
 	import { auth } from '$lib/auth.svelte';
 	import { localizeHref } from '$lib/href';
@@ -27,12 +28,13 @@
 	 * only client-side once we know the reader is signed out. The reader's place
 	 * comes from the local progress cache, read after mount.
 	 */
-	let { books }: { books: BookSummary[] } = $props();
-
 	const t = i18n.t;
 	const signupHref = $derived(`${localizeHref('/login')}?mode=signup`);
 
 	let decided = $state(false);
+	// Set synchronously when the effect below starts deciding, so a re-run while
+	// the book list is in flight (auth settling) cannot decide twice.
+	let deciding = false;
 	let variant = $state<SignupVariant>('keep');
 	let topBook = $state<ResumeItem | null>(null);
 
@@ -42,16 +44,29 @@
 	// is signed out (so we never attribute or reshuffle for a signed-in visitor),
 	// and re-checks if auth resolves after mount.
 	$effect(() => {
-		if (!auth.enabled || !auth.initialized || auth.user || decided) return;
+		if (!auth.enabled || !auth.initialized || auth.user || decided || deciding) return;
+		deciding = true;
 		const progress = allProgress();
 		const hasProgress = progress.some((p) => p.finished_at == null);
 		variant = chooseVariant(hasProgress);
-		// Reuse the one read above; books only, so the caption never waits on the
-		// sermon list.
-		topBook = hasProgress
-			? (buildResumeItems(books, [], progress).find((i) => !i.finished) ?? null)
-			: null;
-		decided = true;
+		// The caption names the reader's book, and it is drawn ONCE: from the
+		// cached summaries of their in-progress books when those have it, else
+		// after the book list lands — never a generic caption that is then
+		// rewritten in place. Only unfinished BOOK progress needs the list; the
+		// caption never waits on sermons. See `$lib/resumeBooks`.
+		const pick = (books: Parameters<typeof buildResumeItems>[0]) =>
+			buildResumeItems(books, [], progress).find((i) => !i.finished) ?? null;
+		const lang = getLang();
+		const readingABook = unfinishedBookSlugs(progress).length > 0;
+		topBook = readingABook ? pick(cachedResumeBooks(lang)) : null;
+		if (topBook || !readingABook) {
+			decided = true;
+			return;
+		}
+		libraryBooks(lang)
+			.then((books) => (topBook = pick(books)))
+			.catch(() => {})
+			.finally(() => (decided = true));
 	});
 
 	const show = $derived(auth.enabled && auth.initialized && !auth.user && decided);

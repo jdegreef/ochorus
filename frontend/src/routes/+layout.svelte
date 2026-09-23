@@ -18,13 +18,14 @@
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
 	import { initAnalytics } from '$lib/analytics';
-	import { localizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
+	import { localizeHref, deLocalizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
 	import { MEASURE } from '$lib/readerPrefs.svelte';
 	import { pageWidth } from '$lib/pageWidth.svelte';
 	import { isReaderRoute } from '$lib/readerRoutes';
 	import CommandPalette from '$lib/components/CommandPalette.svelte';
+	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
@@ -150,9 +151,51 @@
 	// and just adds mode=signup so the login page opens on its "create account"
 	// form. The caller localizes the path, exactly as the header's sign-in link
 	// does. Only rendered when accounts exist AND the reader is signed out.
-	const signupHref = $derived.by(() => {
-		const base = loginHref($page.url.pathname, $page.url.search);
-		return base.includes('?') ? `${base}&mode=signup` : `${base}?mode=signup`;
+	// ...and not on /login itself, where the form is already the whole page and
+	// a second "Create an account" band under it only competes with it.
+	const onLogin = $derived(deLocalizeHref($page.url.pathname).startsWith('/login'));
+	const withSignup = (href: string) => `${href}${href.includes('?') ? '&' : '?'}mode=signup`;
+	const signupHref = $derived(withSignup(loginHref($page.url.pathname, $page.url.search)));
+
+	// Footer "My Account" column — the reader's own pages. Signed in, the links
+	// go straight there; signed out, they route through /login (via the same
+	// loginHref guard the header's sign-in link uses) carrying a redirect to the
+	// localized target, so a successful sign-in lands the reader on the page they
+	// asked for.
+	const accountLinks = $derived.by(() => {
+		// `signup` opens the form on "create account": a signed-out reader following
+		// Bookshelf / Notebook from here most likely has no account yet, and /login
+		// pitches that destination beside the form (LoginPitch).
+		const dest = (path: string, signup = false) => {
+			const target = localizeHref(path);
+			if (auth.user) return target;
+			const href = localizeHref(loginHref(target));
+			return signup ? withSignup(href) : href;
+		};
+		return [
+			{ href: dest('/favorites', true), labelKey: 'fav.yourFavorites' },
+			{ href: dest('/notebook', true), labelKey: 'notebook.title' },
+			{ href: dest('/settings'), labelKey: 'account.settings' }
+		];
+	});
+
+	// Feedback is a modal, not a page, so it can't ride in accountLinks. Signed
+	// in, the footer entry opens the same FeedbackDialog the account dropdown
+	// does; signed out, it requires sign-up first — routing to /login with a
+	// redirect back to the current page, since there's no feedback page to land
+	// on (they open it from here or the dropdown once signed in).
+	let feedbackOpen = $state(false);
+	const feedbackSignedOutHref = $derived(
+		localizeHref(loginHref($page.url.pathname, $page.url.search))
+	);
+
+	// Footer column count: brand + Explore + mission are always present (3);
+	// Discover adds one for English only, My Account adds one whenever accounts
+	// exist. Every reachable class is spelled as a LITERAL below so Tailwind's
+	// scanner keeps it (the count switches at runtime, not the child list).
+	const footerGridClass = $derived.by(() => {
+		const n = 3 + (lang.current === 'en' ? 1 : 0) + (auth.enabled ? 1 : 0);
+		return n === 5 ? 'lg:grid-cols-5' : n === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
 	});
 
 	// The API is a separate origin in production (api.ochorus.com). Prerendered
@@ -292,7 +335,7 @@
 			     login.createAccountLink), so the band mints no footer-only keys —
 			     the trade is that rewording those at their source also rewords this
 			     band. -->
-			{#if auth.enabled && !auth.user}
+			{#if auth.enabled && !auth.user && !onLogin}
 				<div class="mx-auto max-w-5xl px-5 pt-10 sm:pt-12">
 					<div class="footer-invite">
 						<span class="footer-invite-mark" aria-hidden="true">
@@ -310,13 +353,13 @@
 				</div>
 			{/if}
 
-			<!-- Content columns. English gets four (brand · Explore · Discover ·
-			     mission); every other locale gets three, because the Discover hubs
-			     are English-only (see that block's note). grid-cols-3 and -4 are
-			     BOTH written as literals so Tailwind keeps them; the count switches
-			     on locale, not the child list. -->
+			<!-- Content columns: brand · Explore · [Discover] · [My Account] ·
+			     mission. Discover is English-only (see that block's note) and My
+			     Account shows only where accounts exist, so the count runs 3–5 —
+			     computed once in footerGridClass, which spells every reachable
+			     grid-cols literal out for Tailwind's scanner. -->
 			<div
-				class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 {lang.current === 'en' ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}"
+				class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 {footerGridClass}"
 			>
 				<div class="col-span-2 lg:col-span-1">
 					<a class="inline-block text-text" href={localizeHref('/')} aria-label={t('common.home')}>
@@ -365,7 +408,41 @@
 						</ul>
 					</nav>
 				{/if}
-				<div class="col-span-2 lg:col-span-1">
+				<!-- My Account — the reader's own pages (saved works + notebook). Shown
+				     in every locale, signed in or out: these routes aren't localized
+				     content, they're the reader's own data, and a signed-out reader's
+				     links route through /login with a redirect so they land on the page
+				     after authenticating (see accountLinks). Gated on auth.enabled the
+				     same way the sign-in control and the sign-up invite are — with
+				     accounts disabled at the deployment level there is nowhere to send
+				     anyone, so the column drops rather than offering dead links. The
+				     heading reuses account.title, already translated in every locale. -->
+				{#if auth.enabled}
+					<nav aria-labelledby="footer-account-heading">
+						<h2 id="footer-account-heading" class="footer-heading">{t('account.title')}</h2>
+						<ul class="footer-links">
+							{#each accountLinks as d (d.labelKey)}
+								<li><a href={d.href}>{t(d.labelKey)}</a></li>
+							{/each}
+							<li>
+								<!-- Feedback opens a modal when signed in; signed out it needs an
+								     account first, so it links to /login like the rows above. -->
+								{#if auth.user}
+									<button type="button" onclick={() => (feedbackOpen = true)}
+										>{t('feedback.send')}</button
+									>
+								{:else}
+									<a href={feedbackSignedOutHref}>{t('feedback.send')}</a>
+								{/if}
+							</li>
+						</ul>
+					</nav>
+				{/if}
+				<!-- Mission rides in the grid rather than spanning the row on mobile
+				     (unlike the brand column) so the link columns pair up two-per-row:
+				     with Explore · Discover · My Account it makes an even 2×2 for a
+				     signed-in English reader instead of leaving My Account stranded. -->
+				<div class="lg:col-span-1">
 					<h2 class="footer-heading">{t('footer.ministryHeading')}</h2>
 					<p class="text-small text-muted">
 						{t('footer.mission')}
@@ -482,6 +559,13 @@
 
 <CommandPalette />
 <PwaToasts />
+
+<!-- Feedback modal, opened from the footer's My Account column (the account
+     dropdown mounts its own). FeedbackDialog is signed-in only, and feedbackOpen
+     is only ever set from the signed-in branch above. -->
+{#if feedbackOpen}
+	<FeedbackDialog onClose={() => (feedbackOpen = false)} />
+{/if}
 
 <style>
 	/* The footer's one colourful gesture: an indigo-to-gold hairline along the

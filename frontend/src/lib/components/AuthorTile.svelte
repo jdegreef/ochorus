@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { AuthorBio } from '$lib/library-public';
+	import { hydrateSrc } from '$lib/hydrateSrc';
+	import type { AuthorTileData } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { portraitPosition, portraitSrcset } from '$lib/portraits';
@@ -11,7 +12,7 @@
 	 * logged-out home's author roster and the "My Library" following section,
 	 * which had grown identical inline copies.
 	 */
-	let { author }: { author: AuthorBio } = $props();
+	let { author }: { author: AuthorTileData } = $props();
 	const t = i18n.t;
 </script>
 
@@ -20,9 +21,11 @@
 	class="card-tint flex items-center gap-3 rounded-card border border-border p-4"
 >
 	{#if author.photo_url}
+		{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
 		<img
-			src={author.photo_url}
-			srcset={portraitSrcset(author.photo_url)}
+			src={source.src}
+			srcset={source.srcset}
+			use:hydrateSrc={source}
 			sizes="44px"
 			width="44"
 			height="44"

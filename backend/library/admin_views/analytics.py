@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import requires
+from accounts.permissions import is_admin_user, requires
 
 from ..models import Author, Book, SearchClickLog, Sermon
 from ..views import _language_entry
@@ -486,17 +486,39 @@ def _signup_variant_label(code: str) -> str:
     return SIGNUP_VARIANT_LABELS.get(code, code.replace("_", " ").title())
 
 
-def _profile_summary(p) -> dict:
+def mask_email(email: str) -> str:
+    """Mask an address for a non-super admin — the server-side twin of the
+    frontend's ``maskEmail``: first char of the local part, bullets, then the
+    domain.
+
+    Reader emails are PII. Only the ``ADMIN_EMAILS`` super admins may see them in
+    the clear; a scoped ``USERS`` grantee (a language admin) gets them masked *at
+    the source*, so the raw address never reaches their browser — the client-side
+    "Reveal emails" toggle was cosmetic on its own (a founder decision, 2026-09-21).
+    """
+    at = (email or "").find("@")
+    if at <= 0:
+        return "•••"
+    local = email[:at]
+    return f"{local[:1]}{'•' * max(3, len(local) - 1)}{email[at:]}"
+
+
+def _profile_summary(p, *, reveal: bool) -> dict:
     """The per-account fields shared by the recent-signups list and the user
     directory. One home for the provider→label contract (labelled server-side so
     the frontend keeps no copy of the map — see ``_recent``); the directory adds
     its own rollups on top of this.
+
+    ``reveal`` is the caller's super-admin flag and is REQUIRED (no default): this
+    is the single chokepoint that emits a reader's email, so the caller must state
+    the PII decision every time rather than fall through to cleartext. Emails are
+    masked for everyone but a super admin (see :func:`mask_email`).
     """
     return {
         # The stable handle the per-user detail page is keyed by.
         "uid": str(p.supabase_uid),
         "display_name": p.display_name,
-        "email": p.email,
+        "email": p.email if reveal else mask_email(p.email),
         "providers": [{"code": c, "label": _provider_label(c)} for c in p.provider_list],
         "locale": p.locale,
         "joined_at": p.created_at.isoformat(),
@@ -553,7 +575,7 @@ class AdminUsersView(APIView):
                 "weekly_signups": self._weekly_signups(now),
                 "by_method": self._by_method(),
                 "by_signup_variant": self._by_signup_variant(),
-                "recent": self._recent(),
+                "recent": self._recent(reveal=is_admin_user(request.user, request)),
                 "by_locale": self._by_locale(),
                 **self._geography(),
                 "by_theme": [
@@ -635,12 +657,16 @@ class AdminUsersView(APIView):
             )
         return out
 
-    def _recent(self):
-        """The most recent sign-ups, named — see the class docstring on why."""
+    def _recent(self, *, reveal: bool = False):
+        """The most recent sign-ups, named — see the class docstring on why.
+
+        ``reveal`` is the requester's super-admin flag; it defaults to fail-closed
+        (masked) so a caller that forgets it never leaks cleartext PII. Emails are
+        masked for a scoped ``USERS`` grantee (see :func:`mask_email`)."""
         from accounts.models import UserProfile
 
         rows = UserProfile.objects.order_by("-created_at")[:RECENT_SIGNUPS_LIMIT]
-        return [_profile_summary(p) for p in rows]
+        return [_profile_summary(p, reveal=reveal) for p in rows]
 
     def _by_locale(self):
         from django.db.models import Count

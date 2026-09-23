@@ -4,20 +4,26 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { loginHref as buildLoginHref } from '$lib/loginHref';
-	import { fetchAdminManualUrl } from '$lib/library-admin';
+	import { fetchAdminManualUrl, fetchLanguageAdminManualUrl } from '$lib/library-admin';
+	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 
 	const t = i18n.t;
 
-	// The Admin Manual PDF (super admins only). The endpoint is bearer-gated, so we
-	// fetch the blob and open it in a new tab — opened synchronously on the click so
-	// the popup isn't blocked, then pointed at the PDF once it downloads.
+	// The feedback modal is opened from this menu; the menu closes as it opens.
+	let feedbackOpen = $state(false);
+
+	// The operator manual PDFs (super admins see the whole-console one; language
+	// admins see their own). The endpoints are bearer-gated, so we fetch the blob
+	// and open it in a new tab — opened synchronously on the click so the popup
+	// isn't blocked, then pointed at the PDF once it downloads. One in flight at a
+	// time (`manualLoading`), so the two buttons can't overlap.
 	let manualLoading = $state(false);
-	async function openManual() {
+	async function openManual(fetchUrl: () => Promise<string>) {
 		if (manualLoading) return;
 		const tab = window.open('', '_blank');
 		manualLoading = true;
 		try {
-			const url = await fetchAdminManualUrl();
+			const url = await fetchUrl();
 			if (tab) tab.location.href = url;
 			else window.location.href = url; // popup blocked — fall back to this tab
 		} catch {
@@ -83,15 +89,26 @@
 					</div>
 					<div class="my-1 border-t border-border"></div>
 					{#if auth.hasAdminAccess}
+						<!-- A language admin (any non-super admin) sees "Language Admin";
+						     the super admin keeps "Admin". Same /admin destination. -->
 						<a class="account-item" href={localizeHref('/admin')} onclick={() => (open = false)}
-							>Admin</a
+							>{auth.adminLabel}</a
 						>
 					{/if}
 					{#if auth.isAdmin}
 						<!-- Super admins only (auth.isAdmin is the super-admin flag). The
 						     manual PDF is bearer-gated, so this fetches it and opens the blob. -->
-						<button class="account-item" onclick={openManual} disabled={manualLoading}>
+						<button class="account-item" onclick={() => openManual(fetchAdminManualUrl)} disabled={manualLoading}>
 							{manualLoading ? 'Opening…' : 'Admin Manual PDF'}
+						</button>
+					{:else if auth.isLanguageAdmin && auth.can('reporting')}
+						<!-- The language-admin handbook, sitting right under their access
+						     entry — the twin of the super admin's manual button above. Gated
+						     on `reporting` to match the endpoint (REPORTING/view), so the
+						     button never shows to a grantee whose fetch would 403. Every role
+						     preset holds reporting, so real language admins always see it. -->
+						<button class="account-item" onclick={() => openManual(fetchLanguageAdminManualUrl)} disabled={manualLoading}>
+							{manualLoading ? 'Opening…' : 'Language Admin Manual PDF'}
 						</button>
 					{/if}
 					<a class="account-item" href={localizeHref('/favorites')} onclick={() => (open = false)}
@@ -107,10 +124,20 @@
 						class="account-item"
 						onclick={() => {
 							open = false;
+							feedbackOpen = true;
+						}}>{t('feedback.send')}</button
+					>
+					<button
+						class="account-item"
+						onclick={() => {
+							open = false;
 							auth.signOut();
 						}}>{t('account.signOut')}</button
 					>
 				</div>
+			{/if}
+			{#if feedbackOpen}
+				<FeedbackDialog onClose={() => (feedbackOpen = false)} />
 			{/if}
 		</div>
 	{:else}

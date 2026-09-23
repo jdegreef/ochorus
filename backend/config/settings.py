@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     "corsheaders",
     # Local apps
     "accounts",
+    "emails",
+    "feedback",
     "library",
     "reading",
 ]
@@ -188,6 +190,10 @@ REST_FRAMEWORK = {
         # tables — so it gets a ceiling for parity with the other public
         # endpoints. Sized well above a reader (the shelf resolves once per load).
         "quote-resolve": "120/min",
+        # A signed-in reader filing feedback (FeedbackView). Occasional by
+        # nature — a handful a day at most — so this only catches a script
+        # flooding the queue, never a genuine submitter. Per account.
+        "feedback": "20/hour",
     },
     # Exactly one proxy (Render's) sits in front of the app, so the client
     # address is the LAST entry in X-Forwarded-For. Without this, DRF keys
@@ -261,6 +267,31 @@ RELEASE_COMMIT = os.getenv("RENDER_GIT_COMMIT", "").strip()
 # without it the post-deploy check reports "unknown" instead of guessing.
 PUBLIC_SITE_URL = os.getenv("PUBLIC_SITE_URL", "").strip().rstrip("/")
 GITHUB_TRANSLATION_REPO = os.getenv("GITHUB_TRANSLATION_REPO", "jdegreef/ochorus")
+
+
+# --- Email programme (Resend) -------------------------------------------------
+# Ochorus sends welcome/onboarding, showcase, and update emails through Resend
+# and mirrors every open/click/bounce into its own tables (the `emails` app).
+#
+# EMAIL_ENABLED is the master switch: OFF by default so nothing leaves a dev box
+# or CI. Turn it on in production once the sending domain is verified — with it
+# off, the pipeline runs and records sends as "skipped" without contacting
+# Resend. RESEND_API_KEY and RESEND_WEBHOOK_SECRET are secrets (env only).
+EMAIL_ENABLED = env_bool("EMAIL_ENABLED", False)
+RESEND_API_KEY = os.getenv("RESEND_API_KEY", "").strip()
+RESEND_WEBHOOK_SECRET = os.getenv("RESEND_WEBHOOK_SECRET", "").strip()
+# The From line on outgoing mail, e.g. "Ochorus <hello@news.ochorus.com>". Send
+# from a subdomain with DKIM/SPF/DMARC so the root domain's reputation is safe.
+EMAIL_FROM = os.getenv("EMAIL_FROM", "Ochorus <hello@news.ochorus.com>").strip()
+# This API's own public origin — where unsubscribe/webhook links point. Derived
+# from the Render external hostname when unset (production sets that for free).
+API_PUBLIC_URL = os.getenv("API_PUBLIC_URL", "").strip().rstrip("/") or (
+    f"https://{_external_host}" if _external_host else ""
+)
+# Optional cutoff (ISO datetime): the welcome sweep only mails accounts created
+# on/after it, so a first run never blasts the back catalogue. Unset ⇒ a short
+# recent window (see emails/management/commands/send_welcome_emails.py).
+EMAIL_WELCOME_START = os.getenv("EMAIL_WELCOME_START", "").strip()
 
 
 # --- CORS ---------------------------------------------------------------------

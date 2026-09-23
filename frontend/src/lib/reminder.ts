@@ -13,7 +13,14 @@ export interface ReminderOptions {
 	summary: string;
 	description: string;
 	url: string;
+	/**
+	 * Repeat weekly on this weekday (0 = Sunday … 6 = Saturday) instead of
+	 * daily — a Notebook prayer reminder can be "every Sunday". Omitted = daily.
+	 */
+	weekday?: number;
 }
+
+const BYDAY = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -44,8 +51,15 @@ export function buildReminderICS(hhmm: string, opts: ReminderOptions): string {
 	const [h, m] = hhmm.split(':').map((x) => parseInt(x, 10));
 	const start = new Date(opts.now);
 	start.setHours(h || 0, m || 0, 0, 0);
-	// If today's time has already passed, start tomorrow.
-	if (start.getTime() <= opts.now.getTime()) start.setDate(start.getDate() + 1);
+	const weekly = opts.weekday !== undefined && opts.weekday >= 0 && opts.weekday <= 6;
+	if (weekly) {
+		// The first occurrence is the next such weekday (today, if still ahead).
+		start.setDate(start.getDate() + ((opts.weekday! - start.getDay() + 7) % 7));
+		if (start.getTime() <= opts.now.getTime()) start.setDate(start.getDate() + 7);
+	} else if (start.getTime() <= opts.now.getTime()) {
+		// If today's time has already passed, start tomorrow.
+		start.setDate(start.getDate() + 1);
+	}
 
 	const lines = [
 		'BEGIN:VCALENDAR',
@@ -56,7 +70,7 @@ export function buildReminderICS(hhmm: string, opts: ReminderOptions): string {
 		`UID:${opts.uid}`,
 		`DTSTAMP:${fmtUTC(opts.now)}`,
 		`DTSTART:${fmtLocal(start)}`,
-		'RRULE:FREQ=DAILY',
+		weekly ? `RRULE:FREQ=WEEKLY;BYDAY=${BYDAY[opts.weekday!]}` : 'RRULE:FREQ=DAILY',
 		`SUMMARY:${esc(opts.summary)}`,
 		`DESCRIPTION:${esc(opts.description)}`,
 		`URL:${esc(opts.url)}`,

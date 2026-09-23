@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { QuoteAuthorSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
@@ -96,6 +97,7 @@
 					{#if a.photo_url}
 						<img
 							src={a.photo_url}
+							use:hydrateSrc={{ src: a.photo_url }}
 							alt=""
 							loading="lazy"
 							width="96"

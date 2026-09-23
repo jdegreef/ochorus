@@ -214,13 +214,13 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Set up Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       # Layer cache in GitHub Actions storage, keyed by build context. The base
       # image + `uv sync` layer rarely change, so most builds reuse them and the
       # cold `docker build` (previously every run) becomes near-instant.
       - name: Build production image (layer-cached)
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: backend
           load: true            # load into the local docker so we can run it

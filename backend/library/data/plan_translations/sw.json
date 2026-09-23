@@ -62,5 +62,13 @@
   "growing-in-wisdom-18-days": {
     "title": "Kukua katika Hekima kwa Siku 18",
     "description": "Mwongozo wa James DeGreef kwa wanafunzi — somo moja fupi kila siku kwa siku kumi na nane. Kuanzia kugundua kusudi lako hadi kujenga maono ya wakati ujao, kila siku huunganisha ushauri wa vitendo na Andiko, tafakari, na sala."
+  },
+  "christ-our-healer": {
+    "title": "Kristo Mponyaji Wetu",
+    "description": "Wiki sita juu ya Kristo kama Mwokozi, Mtakasaji, Mponyaji, na Mfalme Ajaye. A. B. Simpson anaeleza injili nne na huduma yake ya uponyaji katika «Injili Nne» na «Injili ya Uponyaji», na Andrew Murray anahitimisha kwa mwezi wa tafakari juu ya Bwana anayeuponya mwili katika «Uponyaji wa Kimungu».",
+    "note": [
+      "The description names the three source books the way their shipped Swahili editions do — «Injili Nne» (the-fourfold-gospel.sw), «Injili ya Uponyaji» (the-gospel-of-healing.sw) and «Uponyaji wa Kimungu» (divine-healing.sw), all fixture titles verbatim — so the plan card and the books it opens agree.",
+      "All three source books are ALREADY published in sw, so seed_plans creates this (christ-our-healer, sw) row on the same deploy that adds the plan — this prose must land in the SAME PR as the English definition or the sw plans page publishes the English card (the #819 defect)."
+    ]
   }
 }

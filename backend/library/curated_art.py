@@ -35,10 +35,13 @@ on a Protestant evangelical classic — the first pass surfaced Barocci's
 *Saint Francis* for a Moody revival book, which is the mismatch in miniature.
 Landscape and architecture carry the subject without claiming a tradition.
 
-NOT EVERY BOOK SHOULD GET ART. Susanna Wesley is deliberately absent: every
-candidate was a period portrait of a different real woman, and a portrait on a
-cover reads as a portrait OF that person. Shipping one would imply an image is
-Susanna Wesley when it isn't. She keeps a generated cover.
+A BIOGRAPHY GETS A LANDSCAPE, NEVER A PORTRAIT. Susanna Wesley was long left on
+a generated cover because every *portrait* candidate was a different real woman,
+and a portrait on a cover reads as a portrait OF the subject — shipping one would
+imply an image is Susanna Wesley when it isn't. The art-direction rule already
+solves this: a wordless landscape claims no likeness, so she now wears a quiet
+wooded Hobbema rather than a plate. The lesson stands for any biography — the
+ground is a place or a mood, never a face.
 """
 
 from __future__ import annotations
@@ -97,10 +100,22 @@ class Artwork(NamedTuple):
     #: the same lesson behind it: framing is most of whether a ground reads as a
     #: picture or as a texture.
     #:
-    #: Nothing detects a crop left stale by a changed `focus` — unlike a derived
-    #: ground, which digests the cover it was cut from, a museum's image has no
-    #: digest recorded here. Change this and re-run `build_curated_covers`.
+    #: A changed `focus` redraws the painting on the next run: each committed
+    #: painting's recipe (object and focus, `crop_recipe`) is recorded in
+    #: `art_sources.py`, and a gate fails a painting whose recipe has moved.
     focus: float = 0.5
+
+
+def crop_recipe(art: Artwork) -> str:
+    """What a committed painting was cut from: the object and the crop.
+
+    Recorded per work in ``library/art_sources.py`` by ``build_curated_covers``
+    when it draws a painting, and compared on every later run. The painting is
+    only KEPT if its recorded recipe is still this entry's — so swapping a work
+    to a different artwork, or moving its ``focus``, redraws it rather than
+    leaving the old picture under the new credit.
+    """
+    return f"{art.source}-{art.object_id}@{art.focus:.2f}"
 
 
 # slug -> artwork. Slugs match Book.slug (shared across languages).
@@ -578,6 +593,23 @@ CURATED: dict[str, Artwork] = {
         "alight. Dupré lays a low marsh under a vast, tender sky — the gentlest "
         "of the Puritans given the gentlest weather.",
     ),
+    # ── Batch 16 · two shelf-mates that were waiting for a source ───────────
+    # Both were held in the deferred set (see Batch 15's note). Carmichael was
+    # waiting for a tropical source the Met and Cleveland couldn't give; the Art
+    # Institute has Church's Andean daybreak, palms and all. Susanna Wesley was
+    # held because every candidate was a PORTRAIT — a landscape retires that
+    # objection (see the module docstring), so her biography gets a wooded home.
+    "susanna-wesley-clarke": Artwork(
+        "aic", 869, "Meindert Hobbema", "The Watermill with the Great Red Roof", "c. 1665",
+        "A working home among dark trees, painted in her own century — the "
+        "Epworth household, not a face the cover would pretend was hers.",
+    ),
+    "things-as-they-are": Artwork(
+        "aic", 76571, "Frederic Edwin Church", "View of Cotopaxi", "1857",
+        "A vast tropical valley at daybreak, palms against the light — the far, "
+        "hot mission field Carmichael gave her life to, seen at first morning.",
+        focus=0.6,
+    ),
 }
 
 
@@ -667,4 +699,81 @@ def credit(slug: str) -> str | None:
     if not a or source is None:
         return None
     return f"{a.artist}, “{a.title}” ({a.year}). {source.institution}."
+
+
+# ── Original grounds ────────────────────────────────────────────────────────
+# The FOURTH shared-ground tier, and the only one whose picture is ours.
+#
+# The three tables above all resolve to a picture SOMEONE ELSE made and a
+# recipe that can draw the file again: `CURATED` and `CURATED_GROUND` re-fetch a
+# museum object and re-verify its licence, `DERIVED_GROUND` re-crops a designed
+# cover and digests what it cut. An Ochorus Original — the `Brave for God`
+# series, and the imprint's own titles after it — has no museum object to fetch
+# and no designed cover to crop: its ground is an illustration drawn FOR the
+# book (`scripts` render a wordless 600x800 scene). So there is no recipe to
+# re-run, and nothing above can redraw the file.
+#
+# That is exactly the shape of a DESIGNED cover — a hand-made raster no tool may
+# rewrite — except wordless, so `BookCover` still sets each language's title
+# over it. `designed_covers.DESIGNED` cannot hold it (that registry is scoped to
+# WORDED rasters a row wears as its cover, and `covers/art/` is deliberately
+# outside it, trusting the other tiers to be re-drawable). So an Original ground
+# is frozen HERE instead, by the same means: the committed file's SHA-256, held
+# up by a gate that re-reads it. Replacing one on purpose is a two-line diff —
+# new file, new digest — as it is for a designed cover.
+#
+# WHY A TABLE, NOT `CURATED` WITH A "local" SOURCE. `CURATED`'s whole invariant
+# is that every row is verifiable museum art under a licence `credit()` can
+# quote; a row we drew has no such receipt, and putting it there would make the
+# one table whose job is provenance lie about a picture with none. `credit()`
+# returns None for these — an Original wears no external attribution — which is
+# why it is not consulted above.
+#
+# LIKE `CURATED` and unlike the two designed-cover tiers, `keeps_english_designed`
+# is FALSE here: an Original has no English designed cover to keep, so every
+# language — English included — wears the illustration.
+
+
+class Original(NamedTuple):
+    """An illustration drawn for one work, frozen by the bytes we committed."""
+
+    #: SHA-256 of the committed `covers/art/<slug>.jpg`. Nothing may redraw it,
+    #: so `test_original_grounds_are_frozen` re-reads the file and compares.
+    sha256: str
+    #: Why this scene, for the reader of this file — the receipt an Original has
+    #: in place of a museum credit.
+    why: str
+
+
+# slug -> the ground we drew. Slugs match Book.slug (shared across languages).
+ORIGINAL_GROUND: dict[str, Original] = {
+    "brave-for-god": Original(
+        "919c1e481e5e5aef9f9d5460bb1cb8491c37443a9a6dc728173b45d76395b713",
+        "A child sets out at first light down a trail toward the horizon — the "
+        "series' shared frame. Book 1 of the storybook set: deep dawn over "
+        "rolling country. Every book holds the frame and changes the sky.",
+    ),
+    "brave-for-god-2": Original(
+        "4e54f05e22beff434205d4c308aa33b75313792a3bd9ea64d22be48ab48ed352",
+        "The same child, the same trail — now a moonlit coast, a small boat on "
+        "the water beyond. Book 2 carries the voyage into “the wide world”.",
+    ),
+    "brave-for-god-3": Original(
+        "0eb8b877adce7e100667c5279644b2d7f3079b787dddb7b1bade43d24d0c6c54",
+        "Dusk over a mountain range, a snow-lit peak at centre. Book 3 — the "
+        "journey climbs.",
+    ),
+    "brave-for-god-4": Original(
+        "83d91d80e6349d938d30432ab7f1a5ae2fee7f233736f881d77df1494ea151eb",
+        "Forest twilight, a line of firs along the horizon. Book 4 closes the "
+        "set where the wide world grows deepest.",
+    ),
+    "growing-in-wisdom": Original(
+        "fe3a7ee388b67085b7aaceab5be296a9a50e20502cb234e5c8f6fc590f34c3b6",
+        "The Teens 'Editorial' system: a lone figure crests a dark ridge toward "
+        "a single dawn breaking over distant mountains, under a starfield — the "
+        "pursuit of wisdom. Deep night-blue with one warm light; the drama is in "
+        "the sky so the figure stays clear of the title.",
+    ),
+}
 

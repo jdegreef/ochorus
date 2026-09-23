@@ -248,6 +248,12 @@
 	--shadow-card: 0 6px 20px -12px rgb(0 0 0 / 0.55);
 	--shadow-popover: 0 10px 30px rgb(0 0 0 / 0.4);
 	--shadow-drawer: -12px 0 40px rgb(0 0 0 / 0.45);
+	/* The Bookshelf page's case: a back wall the covers stand against, and the
+	   plank they stand on (face + the darker lip under it). Wood, not a theme
+	   surface, but it still dims with the lamp — so it lives here. */
+	--shelf-back: #262017;
+	--shelf-wood: #6a4a2f;
+	--shelf-wood-edge: #3b2a1c;
 	/* THE SCRIPTS FRAUNCES DOES NOT COVER. Ochorus reads in eight languages and
 	   three of them are not Latin; Fraunces has no Arabic and no Devanagari, and
 	   Georgia behind it has no Devanagari either. So ~609,000 words of Arabic and
@@ -304,6 +310,9 @@
 	--shadow-card: 0 6px 20px -12px rgb(90 70 40 / 0.35);
 	--shadow-popover: 0 10px 30px rgb(90 70 40 / 0.18);
 	--shadow-drawer: -12px 0 40px rgb(90 70 40 / 0.2);
+	--shelf-back: #f1e8d8;
+	--shelf-wood: #b98a5c;
+	--shelf-wood-edge: #8a6440;
 }
 
 /* "Sepia" = a warm parchment reading tone: like paper but softer on the eyes
@@ -331,6 +340,9 @@
 	--shadow-card: 0 6px 20px -12px rgb(80 60 30 / 0.4);
 	--shadow-popover: 0 10px 30px rgb(80 60 30 / 0.22);
 	--shadow-drawer: -12px 0 40px rgb(80 60 30 / 0.24);
+	--shelf-back: #e8dbbf;
+	--shelf-wood: #a97b4d;
+	--shelf-wood-edge: #7a5634;
 }
 
 @layer base {
@@ -440,7 +452,8 @@
 	font-size: var(--fs-small);
 	line-height: 1.5;
 }
-.footer-links a {
+.footer-links a,
+.footer-links button {
 	/* inline-block + vertical padding grows the tap target without moving the
 	   text: at 14px with a 0.5rem gap the rows were well under the 44px
 	   guideline, and these stack tightest on the phones that need them most. */
@@ -448,7 +461,17 @@
 	padding-block: 0.3rem;
 	color: var(--muted);
 }
-.footer-links a:hover {
+/* The feedback row is a <button> (it opens a modal, not a page) but reads as a
+   link: strip the native chrome so it sits flush with the anchors above it. */
+.footer-links button {
+	border: 0;
+	background: none;
+	cursor: pointer;
+	font: inherit;
+	text-align: start;
+}
+.footer-links a:hover,
+.footer-links button:hover {
 	color: var(--text);
 }
 
@@ -1220,6 +1243,35 @@ nav.appnav .navsearch:hover {
 	color: var(--muted);
 }
 
+/* One heading for every section of a leaf page — the list sections (Contents,
+   More like this) and the prose sections (About, Questions) used to split
+   between `.section-label` (small uppercase sans) and `.text-h3` (serif), so
+   sibling sections read as two different design languages down one page. This
+   is the single family they now share: the display serif at the h2 step, over
+   a hairline rule that groups each section's heading with its content. Card
+   titles stay a step down at `.text-h3`, so the outline still reads
+   heading → section → card. Rolled out page by page (books first). */
+.section-heading {
+	margin-bottom: 1rem;
+	padding-bottom: 0.4rem;
+	border-bottom: 1px solid var(--border);
+	font-family: var(--font-display);
+	font-size: var(--fs-h2);
+	line-height: 1.2;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	color: var(--text);
+}
+/* A quiet count / length trailing the heading text ("Contents · 15 chapters ·
+   34 min"), on the same baseline but demoted to small muted sans. */
+.section-heading .meta {
+	font-family: var(--font-sans);
+	font-size: var(--fs-small);
+	font-weight: 500;
+	letter-spacing: 0;
+	color: var(--muted);
+}
+
 /* A count beside a label or heading — the chip / tab / result / group counts
    that had drifted through opacity-60, opacity-70, text-muted and text-eyebrow.
    Sets only the count-specific bits (tabular figures + muted ink); the call
@@ -1831,6 +1883,37 @@ a.sermon-row-title:hover {
 	/* The scroller runs from the inline-start edge, so the fade belongs on the
 	   END edge — the left under RTL. */
 	[dir='rtl'] .chip-scroller {
+		-webkit-mask-image: linear-gradient(to left, #000 88%, transparent);
+		mask-image: linear-gradient(to left, #000 88%, transparent);
+	}
+}
+
+/* A horizontal shelf of covers (Continue reading, New to the library, an
+   author's book rail). Unlike .chip-scroller it never wraps — a rail always
+   scrolls — so it keeps overflow at every width; but the end-edge fade that
+   signals "more this way" (in place of a hard clip) is only wanted where it
+   actually overflows, i.e. on a phone. So the fade + hidden scrollbar are
+   scoped to <sm, matching .chip-scroller's recipe; a desktop that fits the
+   rail keeps its native scrollbar and no fade. Covers already carry shrink-0. */
+.cover-rail {
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+}
+@media (max-width: 639.98px) {
+	.cover-rail {
+		scrollbar-width: none;
+		-webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
+		mask-image: linear-gradient(to right, #000 88%, transparent);
+	}
+	.cover-rail::-webkit-scrollbar {
+		display: none;
+	}
+	.cover-rail > * {
+		flex-shrink: 0;
+	}
+	/* Runs from the inline-start edge, so the fade is on the END edge — the
+	   left under RTL. */
+	[dir='rtl'] .cover-rail {
 		-webkit-mask-image: linear-gradient(to left, #000 88%, transparent);
 		mask-image: linear-gradient(to left, #000 88%, transparent);
 	}

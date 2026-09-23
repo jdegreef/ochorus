@@ -17,7 +17,7 @@
 	import QandA from '$lib/components/QandA.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { getLang } from '$lib/lang.svelte';
+	import { getLang, localeName } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -25,6 +25,7 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
@@ -277,7 +278,7 @@
 			book.guides?.length ? { id: 'guide', label: 'Reader’s guide' } : null,
 			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
 			{ id: 'contents', label: t('reader.contents') },
-			qa.items.length ? { id: 'questions', label: 'Questions' } : null,
+			qa.items.length ? { id: 'questions', label: t('qa.sectionTitle') } : null,
 			book.related?.length ? { id: 'related', label: t('book.related') } : null
 		].filter((x): x is { id: string; label: string } => x != null)
 	);
@@ -364,7 +365,21 @@
 				</p>
 			{/if}
 
-			<div class="mt-5 flex flex-wrap items-center gap-3">
+			<!-- Provenance / reassurance, up front: the whole work reads here, now,
+			     for nothing and behind no sign-in. Two facts, quiet, above the
+			     actions — the same claim `isAccessibleForFree` makes to a machine,
+			     said to the reader. -->
+			<p class="mt-3 text-small text-muted">
+				<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
+					class="px-1.5 opacity-50">·</span
+				>{t('book.noAccount')}
+			</p>
+
+			<!-- Action tiers: ONE clear read verb (Begin / Continue) with Save beside
+			     it, and every utility — Share, Search inside, Download, the modern
+			     edition — demoted to a quiet `.btn-sm` row beneath, so five equal
+			     buttons no longer compete for the one that matters. -->
+			<div class="mt-4 flex flex-wrap items-center gap-3">
 				{#if resumeOrder && resumeOrder > 1}
 					<a href={readHref(resumeOrder)} class="btn btn-primary">
 						{t('book.continueCh')} {resumeOrder}
@@ -374,23 +389,31 @@
 					<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
 				{/if}
 				<FavoriteButton kind="book" slug={book.slug} showLabel />
+			</div>
+
+			<div class="mt-2.5 flex flex-wrap items-center gap-2">
+				<!-- Share this edition. Opens the OS share sheet on mobile, else a small
+				     Copy link / WhatsApp / Facebook / Email menu; the URL is this page's
+				     per-locale canonical, and its link preview is the edition's own share
+				     card (shareCard/og-manifest). -->
+				<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
 				<!-- Search inside this book. Goes to the real search scoped to the
 				     book rather than a second, weaker search over cached text: the
 				     reader gets the same ranking, snippets and paging they get
 				     everywhere else, and the scope is visible and reversible. -->
 				<a
 					href={localizeHref(scopedSearchHref('book', book.slug))}
-					class="btn btn-ghost">{t('search.inBook')}</a
+					class="btn btn-sm btn-ghost">{t('search.inBook')}</a
 				>
 				<!-- Download for offline: precache every chapter so the whole book
 				     reads with no connection (see lib/offlineBooks). -->
 				{#if downloading}
-					<span class="btn btn-ghost cursor-default">
+					<span class="btn btn-sm btn-ghost cursor-default">
 						{t('offline.downloading')} {Math.round((downloading.done / downloading.total) * 100)}%
 					</span>
 				{:else if savedOffline}
 					<button
-						class="btn btn-ghost"
+						class="btn btn-sm btn-ghost"
 						title={t('offline.remove')}
 						onclick={() => offlineBooks.remove(book.slug, book.language)}
 					>
@@ -398,7 +421,7 @@
 					</button>
 				{:else}
 					<button
-						class="btn btn-ghost"
+						class="btn btn-sm btn-ghost"
 						disabled={!pwa.online}
 						title={pwa.online ? undefined : t('offline.needsConnection')}
 						onclick={() => offlineBooks.download(book)}
@@ -421,13 +444,13 @@
 					{@const readOrder = resumeOrder && resumeOrder > 1 ? resumeOrder : 1}
 					{#if useModern}
 						<!-- Primary CTA already opens modern; offer the original as the alt. -->
-						<a href={localizeHref(`/books/${book.slug}/${readOrder}`)} class="btn btn-ghost">
+						<a href={localizeHref(`/books/${book.slug}/${readOrder}`)} class="btn btn-sm btn-ghost">
 							{t('reader.readOriginal')}
 						</a>
 					{:else}
 						<a
 							href={localizeHref(`/books/${book.slug}/${readOrder}?edition=modern`)}
-							class="btn btn-ghost"
+							class="btn btn-sm btn-ghost"
 						>
 							{t('book.readModern')}
 						</a>
@@ -485,7 +508,7 @@
 	     the editions it is without a per-card badge. -->
 	{#if book.editions?.length}
 		<section id="editions" class="jump-anchor mt-8">
-			<h2 class="section-label">{t('book.otherEditions')}</h2>
+			<h2 class="section-heading">{t('book.otherEditions')}</h2>
 			<div class="book-grid">
 				{#each book.editions as ed (ed.slug)}
 					<BookCard book={ed} />
@@ -503,7 +526,7 @@
 	     handles the rare extra. -->
 	{#if book.guides?.length}
 		<section id="guide" class="jump-anchor mt-8">
-			<h2 class="section-label">Reader’s guide</h2>
+			<h2 class="section-heading">Reader’s guide</h2>
 			<ul class="mt-3 flex flex-col gap-3">
 				{#each book.guides as guide (guide.slug)}
 					<li>
@@ -550,7 +573,7 @@
 	     today rather than waiting for a long-form piece to be written. -->
 	{#if book.about_html}
 		<section id="about" class="jump-anchor about-work mt-8" aria-labelledby="about-work">
-			<h2 id="about-work" class="mb-3 text-h3">{t('book.aboutWork')}</h2>
+			<h2 id="about-work" class="section-heading">{t('book.aboutWork')}</h2>
 			<div class="text-body leading-relaxed" dir="auto">
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				{@html book.about_html}
@@ -558,29 +581,16 @@
 		</section>
 	{:else if book.description}
 		<section id="about" class="jump-anchor mt-8" aria-labelledby="about-work">
-			<h2 id="about-work" class="mb-3 text-h3">{t('book.aboutWork')}</h2>
+			<h2 id="about-work" class="section-heading">{t('book.aboutWork')}</h2>
 			<p class="text-body leading-relaxed" dir="auto">{book.description}</p>
 		</section>
 	{/if}
 
-	{#if book.topics?.length}
-		<nav class="mt-6 flex flex-wrap items-center gap-2" aria-label={t('topics.title')}>
-			<span class="text-small text-muted">{t('topics.title')}:</span>
-			{#each book.topics as topic (topic.slug)}
-				<a
-					href={localizeHref(`/topics/${topic.slug}`)}
-					class="tag"
-				>
-					{topic.title}
-				</a>
-			{/each}
-		</nav>
-	{/if}
-
-	<!-- The first taste of the prose itself. Everything else on this page is
-	     ABOUT the book — cover, chapter list, description, the About section —
-	     and a reader deciding whether to start a fourth-century treatise wants
-	     to know how it reads.
+	<!-- The first taste of the prose itself, right under the summary: everything
+	     else on this page is ABOUT the book — cover, chapter list, description,
+	     the About section — and a reader deciding whether to start a
+	     fourth-century treatise wants to know how it reads, before the metadata
+	     band and the contents below.
 
 	     Named with its chapter, because an unattributed paragraph leaves the
 	     reader unable to tell the opening of the book from something plucked
@@ -601,27 +611,22 @@
 		</figure>
 	{/if}
 
-	<!-- Scripture this book treats. Derived from the book's own chapters rather
-	     than declared, which is why no other edition of the same public-domain
-	     text carries it — and it turns every book page into a way into the
-	     scripture graph, which until now was reachable only from chapter pages
-	     and the sitemap.
-
-	     Chips match the chapter page's scripture row exactly, including its
-	     fallback: a chip links to its scripture page when one exists, and to a
-	     search for the reference when the corpus floor withheld one — never to a
-	     page that was not built. Trailing slashes are load-bearing; the bare
-	     form costs a 301 (see lib/href.test.ts).
-
-	     English editions only; `scripture` is empty elsewhere because the
-	     citations behind it are English. -->
-	{#if book.scripture?.length}
-		<nav
-			class="mt-6 flex flex-wrap items-center gap-2"
-			aria-label={t('book.scriptureTreats')}
-		>
-			<span class="text-small text-muted">{t('book.scriptureTreats')}:</span>
-			{#each book.scripture as entry (entry.reference)}
+	<!-- Explore: one metadata band between the summary and the contents, in place
+	     of the two muted rows (Topics + Scripture this book treats) that used to
+	     sit apart and clutter the run-up to the chapter list. Topic chips link to
+	     their shelves; the scripture chips — derived from the book's own chapters,
+	     so no other edition of the same public-domain text carries them — link to
+	     the scripture page when one was built, else a search for the reference
+	     (the chapter page's exact fallback; trailing slashes are load-bearing,
+	     lib/href.test.ts). Scripture is English-only (its citations are), so a
+	     localized edition shows just its topics. -->
+	{#if book.topics?.length || book.scripture?.length}
+		<nav class="mt-8 flex flex-wrap items-center gap-2" aria-label={t('book.explore')}>
+			<span class="text-small text-muted">{t('book.explore')}</span>
+			{#each book.topics ?? [] as topic (topic.slug)}
+				<a href={localizeHref(`/topics/${topic.slug}`)} class="tag">{topic.title}</a>
+			{/each}
+			{#each book.scripture ?? [] as entry (entry.reference)}
 				<a
 					href={entry.page
 						? `/scripture/${entry.page.book}/${entry.page.chapter}/` +
@@ -646,7 +651,15 @@
 	     is a single resume point — so a check means "before where you are", not a
 	     claim the chapter was finished end to end. -->
 	<section id="contents" class="jump-anchor mt-8">
-		<h2 class="section-label">{t('reader.contents')}</h2>
+		<h2 class="section-heading">
+			{t('reader.contents')}
+			<span class="meta"
+				>· {book.chapter_count}
+				{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(
+					totalWords
+				)}</span
+			>
+		</h2>
 		<ol class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}
 				{@const read = resumeHere != null && ch.order < resumeHere}
@@ -675,7 +688,26 @@
 	     set) also feeds the FAQPage JSON-LD in <Seo> via the same pickQa call, so
 	     the visible answers and the structured data stay in lockstep. The shared
 	     <QandA> section id is `questions`, which the jump-nav above points at. -->
-	<QandA items={qa.items} title={t('qa.sectionTitle')} />
+	<QandA items={qa.items} title={t('qa.sectionTitle')} headingClass="section-heading" />
+
+	<!-- The same work in other languages, made visible to readers — until now it
+	     lived only in the page's hreflang metadata. Books are per-language rows
+	     sharing one slug with no English fallback, so every pill is a real,
+	     published edition; `siblingEditions` is the hreflang alternate set minus
+	     the edition being viewed, and localeName() gives each its autonym.
+	     hreflang/lang on the link announce the target language to the reader and
+	     to assistive tech. -->
+	{#if siblingEditions.length}
+		<section class="mt-12">
+			<h2 class="section-heading">{t('book.readInLanguage')}</h2>
+			<div class="mt-3 flex flex-wrap items-center gap-2">
+				<span class="text-small text-muted">{t('book.availableIn')}</span>
+				{#each siblingEditions as ed (ed.loc)}
+					<a href={ed.href} class="tag" hreflang={ed.loc} lang={ed.loc}>{localeName(ed.loc)}</a>
+				{/each}
+			</div>
+		</section>
+	{/if}
 
 	<!-- People found IN this work who have a bio of their own — an anthology's
 	     subjects, the figures a biography follows. Links to their author pages.
@@ -683,7 +715,7 @@
 	     language is dropped), so every card here is a live link. -->
 	{#if book.featured_people?.length}
 		<section class="mt-12">
-			<h2 class="section-label">{t('book.peopleInBook')}</h2>
+			<h2 class="section-heading">{t('book.peopleInBook')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each book.featured_people as person (person.slug)}
 					<PersonCard {person} />
@@ -694,7 +726,7 @@
 
 	{#if book.related?.length}
 		<section id="related" class="jump-anchor mt-12">
-			<h2 class="section-label">{t('book.related')}</h2>
+			<h2 class="section-heading">{t('book.related')}</h2>
 			<div class="book-grid">
 				{#each book.related as rel (rel.slug)}
 					<BookCard book={rel} showAuthor />

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { QuotePage } from '$lib/library-public';
 	import { groupQuotes, onPhrase, authorTopicHref, citeChapter, quoteCollectionLd } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
@@ -7,6 +8,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { initials, portraitPosition } from '$lib/portraits';
 	import { i18n } from '$lib/i18n.svelte';
@@ -86,6 +88,7 @@
 			{#if page.author.photo_url}
 				<img
 					src={page.author.photo_url}
+					use:hydrateSrc={{ src: page.author.photo_url }}
 					alt="Portrait of {page.author.name}"
 					loading="lazy"
 					width="112"
@@ -112,11 +115,15 @@
 		     the byline sends a reader from the quotations to the life, books and
 		     sermons behind them. Every quote author is sourced from a book or sermon,
 		     so an /authors page always exists to receive it. -->
-		<p class="mt-3 text-small">
+		<div class="mt-3 flex flex-wrap items-center gap-3 text-small">
 			<a class="byline" href={`/authors/${page.author.slug}/`}
 				>{t('quotes.readBio').replace('%name%', page.author.name)}</a
 			>
-		</p>
+			<!-- Share this collection — the same control the other leaf pages carry,
+			     so a reader can forward a writer's quotations the way they share a
+			     book or a sermon. -->
+			<ShareButton url={canonical} title="{page.author.name} — quotes" showLabel />
+		</div>
 	</header>
 
 	<!-- By theme: the author's deepest subjects, each its own page ("… on

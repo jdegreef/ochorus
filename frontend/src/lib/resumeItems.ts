@@ -1,7 +1,7 @@
 import { allProgress } from './progress';
 import { workSlugKey } from './reading-schema';
 import { bookProgressPercent } from './reading';
-import type { BookSummary, SermonSummary } from './library-public';
+import type { CoverBook, SermonSummary } from './library-public';
 
 /**
  * One in-progress (or just-finished) work, resolved against the public catalogs
@@ -28,7 +28,7 @@ export type ResumeItem = {
 	title: string;
 	author: string;
 	/** The full book, for `<BookCover>` to draw its title; absent for sermons. */
-	book?: BookSummary;
+	book?: CoverBook;
 	/** Chapter meter 0–100 for books; null for single-document sermons. */
 	pct: number | null;
 	/** Last-opened chapter and total (books only) — the caption's numbers. */
@@ -55,7 +55,7 @@ export type ResumeItem = {
  * localStorage read + parse + sort.
  */
 export function buildResumeItems(
-	books: BookSummary[],
+	books: CoverBook[],
 	sermons: SermonSummary[],
 	progress: ReturnType<typeof allProgress> = allProgress()
 ): ResumeItem[] {

@@ -4,6 +4,7 @@ import {
 	MARKS_KEY,
 	BOOKMARKS_KEY,
 	FAVORITES_KEY,
+	JOURNAL_KEY,
 	parseWorkSlugKey,
 	parseWorkKey,
 	type ProgressMap,
@@ -11,6 +12,7 @@ import {
 	type BookmarksStore,
 	type WorkKind
 } from './reading-schema';
+import { cleanStore, visibleEntries, type JournalEntry } from './journal';
 import { listBooks, listSermons, listAuthors, listPlans } from './library-public';
 
 /**
@@ -54,11 +56,27 @@ export interface ExportFavorite {
 	title: string;
 	saved_at: string;
 }
+/** A Notebook entry — the reader's own note or prayer. */
+export interface ExportJournalEntry {
+	kind: 'note' | 'prayer' | 'daily';
+	title: string;
+	body: string;
+	ref: string;
+	written_at: string;
+	answered_at: string | null;
+	answer: string;
+	/** Who a prayer is for, and its dated updates. */
+	person: string;
+	updates: { at: string; text: string }[];
+	/** The passage it was written from ("Humility · Chapter 2"), and its words. */
+	source: { title: string; quote: string } | null;
+}
 export interface ExportBundle {
 	app: 'Ochorus';
 	exported_at: string;
 	works: ExportWork[];
 	favorites: ExportFavorite[];
+	journal: ExportJournalEntry[];
 }
 
 type TitleMaps = {
@@ -181,13 +199,53 @@ export async function collectExport(
 		(a, b) => a.kind.localeCompare(b.kind) || a.title.localeCompare(b.title)
 	);
 
-	return { app: 'Ochorus', exported_at: nowISO, works: workList, favorites: favList };
+	// The Notebook's own writing, newest first; tombstones are not the reader's words.
+	const journal: ExportJournalEntry[] = visibleEntries(
+		cleanStore(readJSON<unknown>(JOURNAL_KEY, {}))
+	).map((e) => ({
+		kind: e.kind,
+		title: e.title,
+		body: e.body,
+		ref: e.ref,
+		written_at: new Date(e.createdAt).toISOString(),
+		answered_at: e.answeredAt ? new Date(e.answeredAt).toISOString() : null,
+		answer: e.answer,
+		person: e.person,
+		updates: e.updates.map((u) => ({ at: new Date(u.at).toISOString(), text: u.text })),
+		source: e.source ? { title: e.source.title, quote: e.source.quote } : null
+	}));
+
+	return { app: 'Ochorus', exported_at: nowISO, works: workList, favorites: favList, journal };
 }
 
 /** Render the bundle as a readable Markdown document. */
 export function toMarkdown(b: ExportBundle): string {
 	const lines: string[] = [];
 	lines.push('# My Ochorus reading', '', `_Exported ${b.exported_at.slice(0, 10)}._`, '');
+
+	if (b.journal.length) {
+		lines.push('## My Notebook', '');
+		for (const j of b.journal) {
+			const label =
+				j.kind === 'note'
+					? 'Note'
+					: j.kind === 'daily'
+						? 'Daily prayer'
+						: j.answered_at
+							? 'Answered prayer'
+							: 'Prayer';
+			lines.push(`### ${j.title || label} — ${j.written_at.slice(0, 10)}`);
+			const forWhom = j.person ? ` for ${j.person}` : '';
+			lines.push(`_${label}${forWhom}${j.ref ? ` · ${j.ref}` : ''}_`, '');
+			if (j.source) lines.push(`> ${j.source.quote}`, `> — ${j.source.title}`, '');
+			if (j.body) lines.push(j.body, '');
+			for (const u of j.updates) lines.push(`- ${u.at.slice(0, 10)}: ${u.text}`);
+			if (j.updates.length) lines.push('');
+			if (j.answered_at) {
+				lines.push(`**Answered ${j.answered_at.slice(0, 10)}.**${j.answer ? ` ${j.answer}` : ''}`, '');
+			}
+		}
+	}
 
 	if (b.favorites.length) {
 		lines.push('## Favorites', '');
@@ -235,4 +293,42 @@ export function downloadFile(filename: string, mime: string, content: string) {
 	a.click();
 	a.remove();
 	URL.revokeObjectURL(url);
+}
+
+/**
+ * One collection as a Markdown document — "Notes on Humility" to keep, share
+ * or paste elsewhere: each entry oldest first, under its title (or kind) and
+ * date, with the passage it was written from, its words, and — for a prayer —
+ * its updates and how it was answered.
+ */
+export function collectionMarkdown(name: string, entries: JournalEntry[], exportedAt: string): string {
+	const lines: string[] = [`# ${name}`, '', `_Exported ${exportedAt.slice(0, 10)} from Ochorus._`, ''];
+	const kindLabel = (e: JournalEntry) =>
+		e.kind === 'note' ? 'Note' : e.kind === 'daily' ? 'Daily prayer' : e.answeredAt ? 'Answered prayer' : 'Prayer';
+	for (const e of [...entries].sort((a, b) => a.createdAt - b.createdAt)) {
+		const day = new Date(e.createdAt).toISOString().slice(0, 10);
+		lines.push(`## ${e.title || kindLabel(e)} — ${day}`);
+		const meta = [kindLabel(e), e.person && `for ${e.person}`, e.ref].filter(Boolean).join(' · ');
+		lines.push(`_${meta}_`, '');
+		if (e.source?.quote) lines.push(`> ${e.source.quote}`, `> — ${e.source.title}`, '');
+		if (e.body) lines.push(e.body, '');
+		for (const u of e.updates) lines.push(`- ${new Date(u.at).toISOString().slice(0, 10)}: ${u.text}`);
+		if (e.updates.length) lines.push('');
+		if (e.answeredAt) {
+			const when = new Date(e.answeredAt).toISOString().slice(0, 10);
+			lines.push(`**Answered ${when}.**${e.answer ? ` ${e.answer}` : ''}`, '');
+		}
+	}
+	return lines.join('\n');
+}
+
+/** A collection's name as a download file name ("Notes on Humility" → notes-on-humility.md). */
+export function collectionFileName(name: string): string {
+	const slug = name
+		.normalize('NFKD')
+		.replace(/[̀-ͯ]/g, '')
+		.toLowerCase()
+		.replace(/[^\p{L}\p{N}]+/gu, '-')
+		.replace(/^-+|-+$/g, '');
+	return `${slug || 'collection'}.md`;
 }

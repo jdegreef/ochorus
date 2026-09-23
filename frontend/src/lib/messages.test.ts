@@ -59,6 +59,7 @@ const SAME_AS_ENGLISH_OK = new Set([
 	// (es/pt render them differently, e.g. "Sermones"/"Sermões"), the same
 	// per-locale exemption `a11y_menu` already makes for pt.
 	'author_portrait_credit', // Portrait
+	'notebook_daily_amen', // Amen.
 	'bios_eyebrow', // Biographies
 	'bios_sermons_many', // sermons
 	'bios_sermons_one', // sermon
@@ -129,10 +130,34 @@ const SERMON_EXTRAS_PENDING = ['sermon_questions_title'] as const;
 // exists for the locale, so today the placeholder never reaches a reader anyway.)
 const QA_EXTRAS_PENDING = ['qa_section_title'] as const;
 
+// The reader-feedback button + modal strings. en/es/pt/fr are translated and
+// reviewed; the placeholder locales below hold the English source until a native
+// speaker checks them. Delete these once a locale's feedback strings are
+// translated (they share one pending list across the placeholder locales).
+const FEEDBACK_EXTRAS_PENDING = [
+	'feedback_send',
+	'feedback_title',
+	'feedback_intro',
+	'feedback_type',
+	'feedback_type_language',
+	'feedback_type_content',
+	'feedback_type_feature',
+	'feedback_type_bug',
+	'feedback_type_other',
+	'feedback_placeholder',
+	'feedback_about',
+	'feedback_submit',
+	'feedback_sending',
+	'feedback_thanks_title',
+	'feedback_thanks_body',
+	'feedback_error'
+] as const;
+
 const UI_EXTRAS_PENDING = [
 	...BOOK_EXTRAS_PENDING,
 	...SERMON_EXTRAS_PENDING,
-	...QA_EXTRAS_PENDING
+	...QA_EXTRAS_PENDING,
+	...FEEDBACK_EXTRAS_PENDING
 ];
 
 const PENDING_TRANSLATION: Record<string, readonly string[]> = {

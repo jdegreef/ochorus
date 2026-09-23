@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
+	import { coverLayoutFor } from '$lib/coverLayouts';
+	import { groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
 	import { coverStyleFor, scriptOf, volumeNumeral } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
@@ -8,8 +10,9 @@
 	// script (see its header). Global rather than scoped, like app.css's other
 	// component classes, and namespaced under `.cover-*` so it cannot collide.
 	import './cover-type.css';
-	import type { BookSummary } from '$lib/library-public';
+	import type { CoverBook } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
+	import { hydrateSrc, type ImgSource } from '$lib/hydrateSrc';
 	import BrandMark from './BrandMark.svelte';
 
 	const t = i18n.t;
@@ -68,7 +71,7 @@
 		rounded = 'rounded-card',
 		priority = false
 	}: {
-		book: BookSummary;
+		book: CoverBook;
 		rounded?: string;
 		/** The page's main image (a book's own page): load it eagerly, declare its
 		 * intrinsic size so space is reserved before app.css lands, and skip the
@@ -93,6 +96,35 @@
 	const loaded = $derived(loadedUrl === book.cover_url);
 	const failed = $derived(failedUrl === book.cover_url);
 
+	/** What a cover that has loaded tells us: that it is here (the placeholder
+	 *  can go), and its shape (whether a designed cover needs its mat). */
+	function onLoaded(img: HTMLImageElement) {
+		loadedUrl = book.cover_url;
+		if (img.naturalHeight) {
+			ratio = img.naturalWidth / img.naturalHeight;
+			ratioUrl = book.cover_url;
+		}
+	}
+
+	/**
+	 * Run `onLoaded` for an image that finished BEFORE this component hydrated.
+	 *
+	 * These pages are prerendered, so a cover's `<img>` is in the HTML and the
+	 * browser fetches it long before the scripts arrive — often it has finished,
+	 * and fired its `load` event, before Svelte attaches `onload`. That event is
+	 * gone; nothing replays it. Measured on /books/: the first-row cover loaded
+	 * at 1.0s and was only seen as loaded at 2.3s, when the grid re-rendered.
+	 * So on attach, an image that is already complete is treated as loaded now.
+	 */
+	function whenComplete(img: HTMLImageElement, source: ImgSource) {
+		// Repoint FIRST, in the same action rather than a second one beside it:
+		// a cover prerendered for another book must not be measured as this one's.
+		// Two actions would make that depend on the order Svelte attaches them.
+		const repoint = hydrateSrc(img, source);
+		if (img.complete && img.naturalWidth) onLoaded(img);
+		return repoint;
+	}
+
 	// The two grounds that carry no words and want type over them. A DESIGNED
 	// raster (the ministry titles, `/covers/<slug>.jpg`) is excluded by both:
 	// its words are in the file, and a second set over them would be a mess.
@@ -112,7 +144,9 @@
 	const needsMat = $derived(
 		isDesigned && ratioUrl === book.cover_url && Math.abs(ratio - 3 / 4) > 0.01
 	);
-	const srcset = $derived(coverSrcset(book.cover_url));
+	/** The cover's `src`/`srcset`, stated once for the markup and the action
+	 *  that keeps them on this book (see `$lib/hydrateSrc`). */
+	const source = $derived({ src: book.cover_url, srcset: coverSrcset(book.cover_url) || undefined });
 	const label = $derived(`${t('a11y.coverOf')} ${book.title}`);
 
 	/** The author's house style — a class name; `cover-type.css` holds the rest. */
@@ -130,6 +164,17 @@
 	const script = $derived(scriptOf(lang));
 	/** This book's place in its series, in its edition's digits; null outside one. */
 	const volume = $derived(volumeNumeral(book.slug, lang));
+	/** `dir="rtl"` on an Arabic edition's type block, and NO attribute at all
+	 *  otherwise — a spread rather than `dir={…}`, which Svelte writes as the
+	 *  `dir` property and so leaves `dir=""` behind on every other cover. */
+	const blockDir = $derived(script === 'arabic' ? { dir: 'rtl' as const } : {});
+	/** The layout a painting is composed in (`coverLayouts.ts`); null for the
+	 *  framed composition, and always null off a painting. */
+	const layout = $derived(isArt ? coverLayoutFor(book.author.slug, script) : null);
+	/** How far a laid-out painting is cropped to clear its scan border
+	 *  (`groundBars.ts`). The framed scrim hides the border, so only a layout
+	 *  asks. */
+	const bar = $derived(layout ? groundBar(book.cover_url) : 0);
 </script>
 
 <!-- The cover's type. Identical over a painting, over a plate file and over the
@@ -140,7 +185,14 @@
 	     against three times; a falsy entry is dropped, so a Latin cover emits no
 	     script class at all and the fourth script is a table entry, not an edit
 	     here. -->
-	<div class={['cover-type', `style-${style}`, script && `script-${script}`]}>
+	<!-- Right-to-left for an Arabic edition: the title sets its own direction,
+	     but the Latin byline and the wordless rule take the block's, so a layout
+	     that ranges its type to the start edge would otherwise split them
+	     across both sides. `coverTypeMarkup` does the same. -->
+	<div
+		class={['cover-type', `style-${style}`, script && `script-${script}`]}
+		{...blockDir}
+	>
 		<!-- The byline takes no `lang`: an author's name is one row for every
 		     edition (`Author` has no per-language name), so it is Latin on an
 		     Arabic cover too, and claiming otherwise would tell a screen reader
@@ -185,31 +237,32 @@
 
 <div class="relative aspect-[3/4] w-full overflow-hidden {rounded} shadow-sm">
 	{#if book.cover_url && !failed}
+		<!-- The placeholder sits UNDER the image, not instead of it: an image
+		     paints the moment it decodes and covers it, with no script involved.
+		     It used to be the other way round — every cover held at opacity 0
+		     until an `onload` handler revealed it — which on a prerendered shelf
+		     meant a cover that had arrived at 1.0s stayed invisible until
+		     hydration re-rendered the grid at 2.3s, and the page's LCP waited
+		     with it. `loaded` now only retires the pulse, which would otherwise
+		     animate under every cover forever. -->
 		{#if !loaded && !priority}
 			<div class="absolute inset-0 animate-pulse bg-surface-2"></div>
 		{/if}
 		<img
-			src={book.cover_url}
-			srcset={srcset || undefined}
+			src={source.src}
+			srcset={source.srcset}
 			alt={overFile ? '' : label}
 			loading={priority ? 'eager' : 'lazy'}
 			fetchpriority={priority ? 'high' : undefined}
 			width={priority ? 300 : undefined}
 			height={priority ? 400 : undefined}
-			onload={(e) => {
-				loadedUrl = book.cover_url;
-				const img = e.currentTarget as HTMLImageElement;
-				if (img.naturalHeight) {
-					ratio = img.naturalWidth / img.naturalHeight;
-					ratioUrl = book.cover_url;
-				}
-			}}
+			onload={(e) => onLoaded(e.currentTarget as HTMLImageElement)}
 			onerror={() => (failedUrl = book.cover_url)}
-			class="absolute inset-0 h-full w-full {needsMat
+			use:whenComplete={source}
+			style={bar ? `--ground-bar: ${bar}` : undefined}
+			class="cover-ground absolute inset-0 h-full w-full {needsMat
 				? 'object-contain'
-				: 'object-cover'} transition-opacity duration-[var(--duration-base)]"
-			class:opacity-0={!loaded && !priority}
-			class:opacity-100={loaded || priority}
+				: 'object-cover'}"
 		/>
 		{#if needsMat}
 			<!-- The mat: the same cover, cover-filled, blurred and dimmed, behind the
@@ -220,14 +273,13 @@
 			     already carries the label — and after it in the DOM so the real cover
 			     stays `querySelector('img')`. -->
 			<img
-				src={book.cover_url}
-				srcset={srcset || undefined}
+				src={source.src}
+				srcset={source.srcset}
+				use:hydrateSrc={source}
 				alt=""
 				aria-hidden="true"
 				loading={priority ? 'eager' : 'lazy'}
 				class="absolute inset-0 -z-10 h-full w-full scale-110 object-cover blur-xl brightness-[.82]"
-				class:opacity-0={!loaded && !priority}
-				class:opacity-100={loaded || priority}
 			/>
 		{/if}
 		{#if overFile}
@@ -238,10 +290,17 @@
 			     chosen, because how much darkening a picture needs is a property of
 			     the picture — the library spans 0.30x to 1.00x, and one strength for
 			     all of them has to be the palest one's. -->
+			<!-- A layout's classes ride on the plate, beside the scrim they replace;
+			     `cover-ground` above is how a layout moves the painting into its
+			     window. The order matches `coverPlateMarkup`, which the parity gate
+			     compares against. -->
 			<div
-				class="cover-plate over-file"
-				class:over-art={isArt}
-				class:has-subtitle={!!book.subtitle}
+				class={[
+					'cover-plate over-file',
+					isArt && 'over-art',
+					book.subtitle && 'has-subtitle',
+					layout && ['has-layout', `cover-layout-${layout.layout}`, `cover-hue-${layout.hue}`]
+				]}
 				style={isArt ? `--scrim-strength: ${scrimStrength(book.slug)}` : undefined}
 				role="img"
 				aria-label={label}

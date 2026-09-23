@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-18: added the Key Teachings companion books to their topic shelves —
+// Simpson + Nee → deeper-life, Edwards → the-way-of-holiness, Baxter → the-preached-word. These are
+// Ochorus's own works, currently is_published=False, so they stay hidden until the founder publishes
+// them; the membership is wired now and this rebuild keeps the content-version digest in sync.
 // prerender refresh 2026-09-18: swept the remaining topic Q&A that named copyright-blocked,
 // unpublished books as "included" — Nee's "Let Us Pray"/"The Normal Christian Life", Carmichael's
 // "If", "Grace for Grace", and "The Body of Christ: A Reality" — across prayer, the-way-of-holiness,

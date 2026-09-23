@@ -101,6 +101,14 @@ don't hand-wrap refs in the fixture.
   `article.word_count` raises `AttributeError`. Count with
   `from library.text import word_count; word_count(settled_body)` (a pure regex
   split, no DB needed — runs off `clean_bio_html` output alone).
+- **Count the ≥7 Scripture floor with the REAL detector, not a naive regex or
+  the writer's self-report.** Only refs the site validates become tappable links,
+  and chapter-only ("John 16") or malformed ("Acts 2/10", "Romans 7–8") forms do
+  NOT count. Use `library.scripture.reference_candidates(settled_body)` (the
+  pythonbible-validated candidate finder `annotate_references` runs) —
+  `len(set(str(r) for r in reference_candidates(body)))`. A batch-2 guide
+  self-reported "13+ refs" but the detector saw 3, all chapter-only; the fix was
+  to rewrite them as `Book Chapter:Verse`. Insist writers use verse-level refs.
 - **Don't use `<q>` for quotations — it's not in the allowlist and vanishes.**
   `clean_bio_html` silently strips `<q>…</q>`, leaving the quoted Scripture with
   NO marks at all. Write quotations with literal curly `“ ”` in the body (a
@@ -154,6 +162,24 @@ don't hand-wrap refs in the fixture.
   settles each body through `clean_bio_html` and fails out-of-band on
   word_count, `<7` refs, any straight quote, or a `related` that doesn't lead
   with the book — see the Fan-out notes below.
+- **For a generically-titled book, READ the author from the book row's natural
+  key — never infer it from the title.** `Godliness` is Catherine Booth, not
+  whoever "sounds right"; `Purity of Heart` is William Booth; `An Autobiography`
+  is Amanda Berry Smith; `Days of Heaven Upon Earth` is A. B. Simpson;
+  `The Fundamental Doctrines of the Christian Faith` is R. A. Torrey. The book's
+  `"author": ["<slug>"]` field is the source of truth; a writer that guesses
+  ships a misattributed guide. When fanning out, tell each writer to confirm the
+  author from the fixture first (a batch of 40 guides, 2026-09-18, hit five such
+  generic titles). Also skip a sibling that is `is_published: false` (dead link).
+- **PD-gate the pick — not every un-guided library book is a public-domain
+  classic.** The library also holds modern, in-copyright works (`feasting-at-the-table`
+  is Gareth Evans, 1995) and Ochorus originals (`growing-in-wisdom`). Publishing a
+  study guide that quotes a *living/in-copyright* author's book at length is a
+  rights question, not just an editorial one — so before writing, check the
+  author's `death_year` (roughly <1929 is safely PD) and skip modern/original
+  works and `-2/-3/-4` compilation slugs. When in doubt, surface it to the founder
+  rather than shipping the guide (2026-09-18: caught Feasting at the Table this way
+  and swapped in a PD classic).
 - **Book guides have a home topic: `enduring-classics`.** Its blurb already names
   Augustine, Bunyan and à Kempis. Tag guides there AND to their doctrinal topic.
   Append new slugs at the END of each `TOPIC_ARTICLES` list — order is display

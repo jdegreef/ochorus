@@ -1,3 +1,29 @@
+// prerender refresh 2026-09-23: NEW English plan — rooted-book-5-30-days ("Rooted: 30 Days with
+// God — Book 5"), a LAUNCH_PLANS entry over rooted-5 reading chapters 2–31 (Day 1–30). English only.
+// /plans re-crawls to bake the new card.
+// prerender refresh 2026-09-23: NEW English plan — rooted-book-4-30-days ("Rooted: 30 Days with
+// God — Book 4"), a LAUNCH_PLANS entry over rooted-4 reading chapters 2–31 (Day 1–30). English only.
+// /plans re-crawls to bake the new card.
+// prerender refresh 2026-09-22: NEW English plan — rooted-book-3-30-days ("Rooted: 30 Days with
+// God — Book 3"), a LAUNCH_PLANS entry over rooted-3 reading chapters 2–31 (Day 1–30). English only.
+// /plans re-crawls to bake the new card.
+// prerender refresh 2026-09-22: NEW English plan — rooted-book-2-30-days ("Rooted: 30 Days with
+// God — Book 2"), a LAUNCH_PLANS entry over rooted-2 reading chapters 2–31 (Day 1–30). English only.
+// /plans re-crawls to bake the new card.
+// prerender refresh 2026-09-22: NEW English plan — rooted-book-1-30-days ("Rooted: 30 Days with
+// God — Book 1"), a LAUNCH_PLANS entry over rooted-1 that reads chapters 2–31 (Day 1–30) and skips
+// the book's Introduction and Conclusion, so plan day N is the chapter titled "Day N". English only.
+// /plans re-crawls to bake the new card.
+// prerender refresh 2026-09-21: French plan ACTIVATES — first-steps-for-teens («Premiers pas :
+// la foi pour les adolescents»). Shipping men-and-women-who-gave-everything-2 in French (#2784)
+// completes the plan's two source books (with around-the-wicket-gate, already fr), so seed_plans
+// now creates the (first-steps-for-teens, fr) row from prose already in plan_translations/fr.json.
+// /fr/plans re-crawls to bake the translated card.
+// prerender refresh 2026-09-20: French plan ACTIVATES — christ-our-healer (« Christ notre
+// Guérisseur »). Shipping the-fourfold-gospel and the-gospel-of-healing in French completes the
+// plan's three source books (with divine-healing, already fr), so seed_plans now creates the
+// (christ-our-healer, fr) row from prose added to plan_translations/fr.json in this PR.
+// /fr/plans re-crawls to bake the translated card.
 // prerender refresh 2026-09-18: Spanish plan ACTIVATES — faith-in-the-fire
 // («El Dios de toda consolación: fe en medio del fuego»). Shipping the-god-of-all-comfort (#1453)
 // completes the plan's two source books in es (with he-holds-my-tomorrows, already shipped), so

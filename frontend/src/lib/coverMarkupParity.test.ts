@@ -5,6 +5,9 @@ import { afterEach, describe, expect, it } from 'vitest';
 
 import BookCover from './components/BookCover.svelte';
 import { coverPlateMarkup, coverTypeMarkup, type CoverCardBook } from './coverCardMarkup';
+import { coverLayoutFor } from './coverLayouts';
+import { coverStyleFor } from './coverStyles';
+import { eraOf } from './eras';
 import { scrimStrength } from './coverScrim';
 import type { BookSummary } from '$lib/library-public';
 
@@ -147,7 +150,40 @@ describe('the two cover renderers agree', () => {
 			// `--scrim-strength`, which the skeleton compares as a style attribute.
 			// `waiting-on-god` is a real work with a measured strength, so this is
 			// the case that catches the card and the page disagreeing about it.
-			{ art: true, scrim: scrimStrength('waiting-on-god') }
+			// Andrew Murray is also a laid-out author (`coverLayouts.ts`), so this
+			// is the case where the two disagreeing about a layout's classes
+			// would show.
+			{
+				art: true,
+				scrim: scrimStrength('waiting-on-god'),
+				layout: coverLayoutFor('andrew-murray', null)
+			}
+		],
+		[
+			'a painting in the framed composition',
+			// A painting by an author with no entry in the layout table.
+			{
+				cover_url: '/covers/art/a-retrospect.jpg',
+				slug: 'a-retrospect',
+				author: { ...book().author, slug: 'richard-baxter' }
+			},
+			{
+				art: true,
+				scrim: scrimStrength('a-retrospect'),
+				style: coverStyleFor(eraOf(1828), 'richard-baxter', 'a-retrospect')
+			}
+		],
+		[
+			'a laid-out painting in arabic',
+			{ cover_url: ART, language: 'ar', title: 'انتظار الله' },
+			{
+				lang: 'ar',
+				script: 'arabic',
+				title: 'انتظار الله',
+				art: true,
+				scrim: scrimStrength('waiting-on-god'),
+				layout: coverLayoutFor('andrew-murray', 'arabic')
+			}
 		],
 		[
 			'a plate with a subtitle',

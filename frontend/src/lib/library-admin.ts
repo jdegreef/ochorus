@@ -124,10 +124,19 @@ export const getAdminTeam = () => apiFetch<AdminTeam>('/api/admin/team/');
  * token attached and hand back a `blob:` URL the caller opens in a new tab. The
  * caller owns the URL; revoking it would break the opened tab, so it isn't revoked.
  */
-export const fetchAdminManualUrl = async (): Promise<string> => {
-	const res = await apiFetchRaw('/api/admin/manual/');
+const fetchManualUrl = async (path: string): Promise<string> => {
+	const res = await apiFetchRaw(path);
 	return URL.createObjectURL(await res.blob());
 };
+
+/** The Admin Manual PDF (super admins only). */
+export const fetchAdminManualUrl = () => fetchManualUrl('/api/admin/manual/');
+
+/**
+ * The Language Admin Manual PDF — readable by any admin (super or a scoped grant);
+ * the account menu shows the link only to language admins.
+ */
+export const fetchLanguageAdminManualUrl = () => fetchManualUrl('/api/admin/language-manual/');
 
 /** Grant a role (or a single capability+verb) to an email, scoped to languages. */
 export const grantAdminAccess = (payload: {
@@ -545,6 +554,7 @@ export const createAdminTranslationJob = (body: {
 
 // Translation-coverage matrix: works (rows) × languages (columns). A book cell
 // carries its source_type; sermon/plan cells are "present". Missing = absent.
+// (Articles: see AdminCoverage.articles.)
 
 export interface AdminCoverageRow {
 	slug: string;
@@ -571,6 +581,10 @@ export interface AdminCoverage {
 	// Row = author; the English cell is the original Author.bio_html, translated
 	// cells carry ai_reviewed / ai_unreviewed.
 	bios: AdminCoverageRow[];
+	// Row = article slug, titled by its h1; no author. The English original is
+	// "present", translated cells carry ai_reviewed / ai_unreviewed. Optional
+	// across the deploy window (an SPA ahead of the API).
+	articles?: AdminCoverageRow[];
 }
 
 export const getAdminCoverage = () => apiFetch<AdminCoverage>('/api/admin/coverage/');
@@ -1015,6 +1029,128 @@ export interface AdminEngagement {
 }
 
 export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
+
+// --- Email campaign metrics --------------------------------------------------
+
+export interface EmailMetricRow {
+	sent: number;
+	delivered: number;
+	opens: number;
+	clicks: number;
+	bounces: number;
+	complaints: number;
+	open_rate: number;
+	click_rate: number;
+	bounce_rate: number;
+	complaint_rate: number;
+}
+
+export interface EmailStepRow extends EmailMetricRow {
+	step: string;
+}
+
+export interface EmailBroadcastRow extends EmailMetricRow {
+	id: number;
+	name: string;
+}
+
+export interface AdminEmailMetrics {
+	overview: EmailMetricRow & { failed: number };
+	by_step: EmailStepRow[];
+	by_broadcast: EmailBroadcastRow[];
+	subscribers: {
+		total: number;
+		newsletter_opt_in: number;
+		unsubscribed: number;
+		suppressed: number;
+	};
+}
+
+export const getAdminEmailMetrics = () =>
+	apiFetch<AdminEmailMetrics>('/api/admin/email-metrics/');
+
+// --- Broadcasts (compose / schedule / send) ---------------------------------
+
+export type BroadcastStatus = 'draft' | 'scheduled' | 'sending' | 'sent' | 'canceled';
+
+/** One language's content block for a broadcast (structured, not raw HTML). */
+export interface BroadcastBlock {
+	heading?: string;
+	paragraphs?: string[];
+	cta_label?: string;
+	cta_path?: string;
+	preheader?: string;
+	greeting?: string;
+}
+
+export interface BroadcastAudience {
+	locale?: string;
+	signup_variant?: string;
+	activity?: 'active_7d' | 'active_30d' | 'lapsed_30d' | 'never_seen';
+	has_plan?: boolean;
+}
+
+export interface AdminBroadcast {
+	id: number;
+	name: string;
+	status: BroadcastStatus;
+	subject: Record<string, string>;
+	audience: BroadcastAudience;
+	from_address: string;
+	scheduled_at: string | null;
+	created_at: string;
+	updated_at: string;
+	locales: string[];
+	audience_count: number;
+	// detail only:
+	content?: Record<string, BroadcastBlock>;
+	stats?: EmailMetricRow;
+}
+
+export interface BroadcastPayload {
+	name?: string;
+	subject?: Record<string, string>;
+	content?: Record<string, BroadcastBlock>;
+	audience?: BroadcastAudience;
+	from_address?: string;
+}
+
+export const listBroadcasts = () =>
+	apiFetch<{ broadcasts: AdminBroadcast[] }>('/api/admin/broadcasts/');
+
+export const getBroadcast = (id: number) =>
+	apiFetch<AdminBroadcast>(`/api/admin/broadcasts/${id}/`);
+
+export const createBroadcast = (payload: BroadcastPayload) =>
+	apiFetch<AdminBroadcast>('/api/admin/broadcasts/', {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
+
+export const updateBroadcast = (id: number, payload: BroadcastPayload) =>
+	apiFetch<AdminBroadcast>(`/api/admin/broadcasts/${id}/`, {
+		method: 'PATCH',
+		body: JSON.stringify(payload)
+	});
+
+export const deleteBroadcast = (id: number) =>
+	apiFetch<null>(`/api/admin/broadcasts/${id}/`, { method: 'DELETE' });
+
+export const broadcastAction = (
+	id: number,
+	action: 'send' | 'schedule' | 'cancel' | 'test',
+	extra: { scheduled_at?: string } = {}
+) =>
+	apiFetch<AdminBroadcast & { tally?: Record<string, number>; ok?: boolean; sent_to?: string }>(
+		`/api/admin/broadcasts/${id}/action/`,
+		{ method: 'POST', body: JSON.stringify({ action, ...extra }) }
+	);
+
+export const previewAudience = (audience: BroadcastAudience) =>
+	apiFetch<{ count: number }>('/api/admin/broadcasts/audience-preview/', {
+		method: 'POST',
+		body: JSON.stringify({ audience })
+	});
 
 /** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
  *  by the admin engagement and per-user pages so time reads the same everywhere. */
@@ -1510,3 +1646,64 @@ export const getAdminActivity = (opts: { before?: number | null; target?: string
 	const qs = params.toString();
 	return apiFetch<AdminActivity>(`/api/admin/activity/${qs ? `?${qs}` : ''}`);
 };
+
+// --- Reader feedback queue ---------------------------------------------------
+
+/** One item in the feedback queue — the backend `Feedback`, serialized. */
+export interface FeedbackItem {
+	id: number;
+	category: string;
+	body: string;
+	status: string;
+	submitter_email: string;
+	/** '' for an ordinary reader, else e.g. 'language_admin' / 'super_admin'. */
+	submitter_role: string;
+	page_url: string;
+	content_kind: string;
+	content_slug: string;
+	content_language: string;
+	chapter_ref: string;
+	ui_locale: string;
+	assignee_email: string;
+	admin_note: string;
+	duplicate_of: number | null;
+	created_at: string;
+	updated_at: string;
+}
+
+export interface FeedbackQueue {
+	items: FeedbackItem[];
+	/** Per-status totals, for the filter chips. */
+	counts: Record<string, number>;
+	total: number;
+}
+
+/** The statuses an item can be moved to (NEW is the birth state, never a
+ *  target) — mirrors the backend `TRIAGE_STATUSES`. */
+export const FEEDBACK_TRIAGE_STATUSES = [
+	'triaging',
+	'planned',
+	'in_progress',
+	'done',
+	'declined',
+	'duplicate'
+] as const;
+
+/** GET the feedback queue, optionally filtered by status and category. */
+export const getFeedbackQueue = (p: { status?: string; category?: string } = {}) => {
+	const q = new URLSearchParams();
+	if (p.status) q.set('status', p.status);
+	if (p.category) q.set('category', p.category);
+	const qs = q.toString();
+	return apiFetch<FeedbackQueue>(`/api/admin/feedback/${qs ? `?${qs}` : ''}`);
+};
+
+/** POST a triage change for one item — only the fields present are applied. */
+export const triageFeedback = (
+	id: number,
+	body: { status?: string; assignee_email?: string; admin_note?: string; duplicate_of?: number | null }
+) =>
+	apiFetch<FeedbackItem>(`/api/admin/feedback/${encodeURIComponent(String(id))}/`, {
+		method: 'POST',
+		body: JSON.stringify(body)
+	});

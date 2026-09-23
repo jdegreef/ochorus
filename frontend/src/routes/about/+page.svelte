@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { SITE_URL } from '$lib/config';
 	import { hreflangAll, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -230,6 +231,7 @@
 		</div>
 		<div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
 			{#each field as f (f.img)}
+				{@const src = `/about/${f.img}.jpg`}
 				<figure class={f.span}>
 					<button
 						type="button"
@@ -237,7 +239,8 @@
 						class="group block w-full cursor-zoom-in overflow-hidden rounded-card border border-border bg-surface-2 {f.aspect} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
 					>
 						<img
-							src="/about/{f.img}.jpg"
+							{src}
+							use:hydrateSrc={{ src }}
 							alt={t(f.cap)}
 							loading="lazy"
 							class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100 {f.pos ?? ''}"
@@ -255,13 +258,15 @@
 	<div class="mx-auto grid max-w-5xl items-center gap-10 px-5 py-16 sm:py-20 md:grid-cols-2 md:gap-14">
 		<div class="grid grid-cols-2 gap-4">
 			{#each featureShots as s (s.img)}
+				{@const src = `/about/${s.img}.jpg`}
 				<button
 					type="button"
 					onclick={() => openLightbox(`/about/${s.img}.jpg`, t(s.alt))}
 					class="group block w-full cursor-zoom-in overflow-hidden rounded-card border border-border bg-surface-2 {s.cls} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
 				>
 					<img
-						src="/about/{s.img}.jpg"
+						{src}
+						use:hydrateSrc={{ src }}
 						alt={t(s.alt)}
 						loading="lazy"
 						class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
@@ -370,6 +375,7 @@
 			</button>
 			<img
 				src={lightbox.src}
+				use:hydrateSrc={{ src: lightbox.src }}
 				alt={lightbox.cap}
 				class="max-h-[82vh] w-auto rounded-card"
 			/>

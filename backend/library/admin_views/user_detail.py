@@ -18,10 +18,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import requires
+from accounts.permissions import is_admin_user, requires
 
 from ..views import _language_entry
-from .analytics import THEME_LABELS, _provider_label
+from .analytics import THEME_LABELS, _provider_label, mask_email
 
 # How many rows each capped list returns; the timeline merges several of these.
 LIST_LIMIT = 50
@@ -365,7 +365,11 @@ class AdminUserDetailView(APIView):
                 "profile": {
                     "uid": str(profile.supabase_uid),
                     "display_name": profile.display_name,
-                    "email": profile.email,
+                    # PII: cleartext only for a super admin; masked for a scoped
+                    # USERS grantee (a language admin) — see analytics.mask_email.
+                    "email": profile.email
+                    if is_admin_user(request.user, request)
+                    else mask_email(profile.email),
                     "providers": [
                         {"code": c, "label": _provider_label(c)}
                         for c in profile.provider_list

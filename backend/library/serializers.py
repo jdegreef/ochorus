@@ -1816,6 +1816,8 @@ class TopicDetailSerializer(TopicListSerializer):
     related_topics = serializers.SerializerMethodField()
     scripture_ref = serializers.SerializerMethodField()
     scripture_text = serializers.SerializerMethodField()
+    seo_title = serializers.SerializerMethodField()
+    meta_description = serializers.SerializerMethodField()
     qa = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
 
@@ -1823,6 +1825,8 @@ class TopicDetailSerializer(TopicListSerializer):
         fields = TopicListSerializer.Meta.fields + [
             "scripture_ref",
             "scripture_text",
+            "seo_title",
+            "meta_description",
             "qa",
             "available_languages",
             "books",
@@ -1850,6 +1854,12 @@ class TopicDetailSerializer(TopicListSerializer):
 
     def get_scripture_text(self, obj):
         return obj.scripture_text_for(self._language())
+
+    def get_seo_title(self, obj):
+        return obj.seo_title_for(self._language())
+
+    def get_meta_description(self, obj):
+        return obj.meta_description_for(self._language())
 
     def get_qa(self, obj):
         return obj.qa_for(self._language())

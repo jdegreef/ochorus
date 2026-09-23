@@ -16,7 +16,16 @@ export const MARKS_KEY = 'ochorus:marks';
 export const ANCHOR_KEY = 'ochorus:anchors';
 export const BOOKMARKS_KEY = 'ochorus:bookmarks';
 export const PLANS_KEY = 'ochorus:plans';
+// The Notebook's own writing — notes and prayers (see journal.ts).
+export const JOURNAL_KEY = 'ochorus:journal';
+// Journal entries not yet confirmed by the account: id → the updatedAt last
+// written. Only these ride the sign-in merge (see readingSync).
+export const JOURNAL_DIRTY_KEY = 'ochorus:journal-dirty';
+// The day's guided prayer while it is being written: { day, parts }.
+export const DAILY_DRAFT_KEY = 'ochorus:daily-draft';
 export const FAVORITES_KEY = 'ochorus:favorites';
+/** Removals (un-hearts, shelf removals) the account hasn't confirmed — see removals.ts. */
+export const REMOVALS_KEY = 'ochorus:removals';
 // The reading-streak activity log: a JSON array of local 'YYYY-MM-DD' days the
 // reader read on. Synced (union-merged) with the account like the rest.
 export const ACTIVITY_KEY = 'ochorus:activity';
@@ -31,6 +40,11 @@ export const PACE_KEY = 'ochorus:reading-pace';
 // synced to the account so the admin can see time-on-site. Reader's own data —
 // wiped on sign-out like the rest. See readingTime.svelte.ts.
 export const SESSION_KEY = 'ochorus:reading-session';
+// Device-local, never synced: the summaries of the books the reader has in
+// progress, so "Continue reading" can draw at hydration instead of after a
+// book-list round-trip (see `$lib/resumeBooks`). It says what someone is
+// reading, so it is wiped on sign-out with the rest.
+export const RESUME_BOOKS_KEY = 'ochorus:resume-books';
 // Legacy device-local sermon stores, folded into MARKS_KEY / ANCHOR_KEY under
 // `sermon:`-prefixed keys when sermons joined the synced reading layer
 // (roadmap #10). Kept only so the one-time migrations and the sign-out wipe
@@ -50,11 +64,16 @@ export const READING_DATA_KEYS = [
 	ANCHOR_KEY,
 	BOOKMARKS_KEY,
 	PLANS_KEY,
+	JOURNAL_KEY,
+	JOURNAL_DIRTY_KEY,
+	DAILY_DRAFT_KEY,
 	FAVORITES_KEY,
+	REMOVALS_KEY,
 	ACTIVITY_KEY,
 	LAST_SYNC_KEY,
 	PACE_KEY,
 	SESSION_KEY,
+	RESUME_BOOKS_KEY,
 	LEGACY_SERMON_MARKS_KEY,
 	LEGACY_SERMON_ANCHOR_KEY
 ] as const;

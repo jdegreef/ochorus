@@ -182,6 +182,23 @@ class PlanTests(TestCase):
         # The languages that DO have prose are unaffected.
         self.assertTrue(Plan.objects.filter(slug="humility-12-days", language="en").exists())
 
+    def test_seed_plans_span_skips_the_bracketing_chapters(self):
+        """A devotional's Introduction and Conclusion stay out of its plan, so
+        plan day N is the chapter titled "Day N" rather than one off from it."""
+        book = Book.objects.create(
+            author=Author.objects.get(slug="am"), slug="devotional", language="en", title="D"
+        )
+        for i in range(1, 6):  # intro, three days, conclusion
+            Chapter.objects.create(book=book, order=i, title=f"Ch {i}", body_html="<p>x</p>")
+        launch = [("devotional-plan", "devotional", "D", "d", (2, 4))]
+        with patch("library.management.commands.seed_plans.LAUNCH_PLANS", launch):
+            call_command("seed_plans", verbosity=0)
+
+        days = Plan.objects.get(slug="devotional-plan", language="en").days.all()
+        self.assertEqual(
+            [(d.day, d.chapter_order) for d in days], [(1, 2), (2, 3), (3, 4)]
+        )
+
     def test_seed_plans_leaves_an_existing_untranslated_row_alone(self):
         """A row created before this guard keeps its prose; deleting a published
         plan is a bigger decision than a seed step makes on its own."""

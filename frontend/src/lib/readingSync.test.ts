@@ -6,8 +6,12 @@ import {
 	BOOKMARKS_KEY,
 	PROGRESS_KEY,
 	MARKS_KEY,
-	LAST_SYNC_KEY
+	LAST_SYNC_KEY,
+	FAVORITES_KEY,
+	JOURNAL_KEY,
+	JOURNAL_DIRTY_KEY
 } from './reading-schema';
+import { addPending, bookmarkTarget, pendingAt } from './removals';
 
 beforeEach(() => localStorage.clear());
 
@@ -148,8 +152,8 @@ describe('readingSync.clearOnSignOut', () => {
 	});
 
 	it('pushBookmark PUTs a saved paragraph, removeBookmark DELETEs it', async () => {
-		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
-			new Response('{}', { status: 200 })
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockImplementation(
+			async () => new Response('{}', { status: 200 })
 		);
 		vi.useFakeTimers();
 		try {
@@ -172,14 +176,69 @@ describe('readingSync.clearOnSignOut', () => {
 				title: 'Ch 2'
 			});
 
+			addPending('bookmark', 'book', bookmarkTarget('humility', 2, 5), 555);
 			readingSync.removeBookmark('book', 'humility', 2, 5);
 			await vi.runAllTimersAsync();
 			const [url2, init2] = fetchSpy.mock.calls[1];
-			expect(String(url2)).toContain('/api/reading/bookmarks/book/humility/2/5/');
+			// The removal carries this device's clock, and clears once it lands.
+			expect(String(url2)).toContain('/api/reading/bookmarks/book/humility/2/5/?at=555');
 			expect(init2?.method).toBe('DELETE');
+			await vi.waitFor(() =>
+				expect(pendingAt('bookmark', 'book', bookmarkTarget('humility', 2, 5))).toBeNull()
+			);
 		} finally {
 			fetchSpy.mockRestore();
 			vi.useRealTimers();
+			readingSync.setSignedIn(false);
+		}
+	});
+
+	it('removeProgress DELETEs with the removal clock and clears its pending entry', async () => {
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+			new Response(null, { status: 204 })
+		);
+		try {
+			readingSync.setSignedIn(true);
+			const at = addPending('progress', 'book', 'humility', 777);
+			readingSync.removeProgress('book', 'humility', at);
+			await vi.waitFor(() => expect(pendingAt('progress', 'book', 'humility')).toBeNull());
+			const [url, init] = fetchSpy.mock.calls[0];
+			expect(String(url)).toContain('/api/reading/progress/humility/?kind=book&at=777');
+			expect(init?.method).toBe('DELETE');
+		} finally {
+			fetchSpy.mockRestore();
+			readingSync.setSignedIn(false);
+		}
+	});
+
+	it('the merge carries pending removals and heart times, and clears only when applied', async () => {
+		localStorage.setItem(FAVORITES_KEY, JSON.stringify({ 'book:humility': 42 }));
+		localStorage.setItem(
+			BOOKMARKS_KEY,
+			JSON.stringify({ 'book:humility': [{ id: 'x', order: 2, p: 5, snippet: '', title: '', at: 64 }] })
+		);
+		addPending('favorite', 'author', 'andrew-murray', 99);
+		const reply = (applied: boolean) =>
+			new Response(
+				JSON.stringify({ progress: [], marks: [], favorites: [], ...(applied ? { removed_applied: true } : {}) }),
+				{ status: 200, headers: { 'content-type': 'application/json' } }
+			);
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(reply(false));
+		try {
+			readingSync.setSignedIn(true);
+			await readingSync.mergeOnSignIn();
+			const body = JSON.parse(String(fetchSpy.mock.calls[0][1]?.body));
+			expect(body.favorites).toEqual([{ kind: 'book', slug: 'humility', saved_at: 42 }]);
+			expect(body.bookmarks[0]).toMatchObject({ chapter_order: 2, paragraph_index: 5, saved_at: 64 });
+			expect(body.removed).toEqual([{ domain: 'favorite', kind: 'author', slug: 'andrew-murray', at: 99 }]);
+			// An API from before tombstones ignored them — keep them for next time.
+			expect(pendingAt('favorite', 'author', 'andrew-murray')).toBe(99);
+
+			fetchSpy.mockResolvedValueOnce(reply(true));
+			await readingSync.mergeOnSignIn();
+			expect(pendingAt('favorite', 'author', 'andrew-murray')).toBeNull();
+		} finally {
+			fetchSpy.mockRestore();
 			readingSync.setSignedIn(false);
 		}
 	});
@@ -246,5 +305,60 @@ describe('readingSync.fetchProgress', () => {
 		await expect(readingSync.fetchProgress('book', 'humility')).resolves.toBeNull();
 		vi.stubGlobal('fetch', vi.fn(async () => { throw new TypeError('offline'); }));
 		await expect(readingSync.fetchProgress('book', 'humility')).resolves.toBeNull();
+	});
+});
+
+describe('readingSync.flushJournal', () => {
+	const entry = (id: string, updatedAt: number) => ({
+		id,
+		kind: 'note',
+		title: '',
+		body: id,
+		ref: '',
+		person: '',
+		group: '',
+		remind: '',
+		updates: [],
+		source: null,
+		answer: '',
+		answeredAt: null,
+		createdAt: 1000,
+		updatedAt
+	});
+	const seed = () => {
+		localStorage.setItem(JOURNAL_KEY, JSON.stringify({ a: entry('a', 2000), b: entry('b', 3000) }));
+		localStorage.setItem(JOURNAL_DIRTY_KEY, JSON.stringify({ a: 2000, b: 3000, gone: 5 }));
+	};
+
+	afterEach(() => {
+		vi.restoreAllMocks();
+		readingSync.setSignedIn(false);
+	});
+
+	it('delivers what the account is owed, newest first, and stops owing it', async () => {
+		seed();
+		const fetchSpy = vi
+			.spyOn(globalThis, 'fetch')
+			.mockImplementation(async () => new Response('{}', { status: 200 }));
+		readingSync.setSignedIn(true);
+		await expect(readingSync.flushJournal()).resolves.toBe(true);
+		expect(fetchSpy.mock.calls.map(([url]) => String(url).match(/journal\/(\w+)\//)?.[1])).toEqual(['b', 'a']);
+		// An owed id with no entry left on the device can never be delivered.
+		expect(readingSync.pendingJournal()).toEqual({});
+	});
+
+	it('stops at the first failure and keeps the rest owed', async () => {
+		seed();
+		vi.spyOn(globalThis, 'fetch').mockRejectedValue(new TypeError('offline'));
+		readingSync.setSignedIn(true);
+		await expect(readingSync.flushJournal()).resolves.toBe(false);
+		expect(Object.keys(readingSync.pendingJournal()).sort()).toEqual(['a', 'b', 'gone']);
+	});
+
+	it('does nothing signed out', async () => {
+		seed();
+		const fetchSpy = vi.spyOn(globalThis, 'fetch');
+		await expect(readingSync.flushJournal()).resolves.toBe(false);
+		expect(fetchSpy).not.toHaveBeenCalled();
 	});
 });

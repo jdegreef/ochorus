@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Article, ArticleRelated } from '$lib/library-public';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { SITE_URL } from '$lib/config';
@@ -13,6 +14,7 @@
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -124,6 +126,7 @@
 				<div class="flex shrink-0 items-center gap-2">
 					<!-- Save this article to "My Library". -->
 					<FavoriteButton kind="article" slug={article.slug} />
+					<ShareButton url={canonical} title="{article.h1} — Ochorus" />
 					<ReaderControls />
 				</div>
 			</div>
@@ -154,7 +157,7 @@
 
 		{#if article.related?.length}
 			<aside class="read-next" aria-labelledby="read-next-heading">
-				<h2 id="read-next-heading" class="section-label">{t('articles.readNext')}</h2>
+				<h2 id="read-next-heading" class="section-heading">{t('articles.readNext')}</h2>
 				<ul>
 					{#each article.related as r (r.type + r.slug)}
 						<li>
@@ -163,15 +166,18 @@
 									<img
 										class="rel-cover"
 										src={r.cover_url}
+										use:hydrateSrc={{ src: r.cover_url }}
 										alt=""
 										loading="lazy"
 										style:background={r.cover_color || undefined}
 									/>
 								{:else if r.type === 'author' && r.photo_url}
+									{@const source = { src: r.photo_url, srcset: portraitSrcset(r.photo_url) }}
 									<img
 									class="rel-portrait"
-									src={r.photo_url}
-									srcset={portraitSrcset(r.photo_url)}
+									src={source.src}
+									srcset={source.srcset}
+									use:hydrateSrc={source}
 									sizes="44px"
 									alt=""
 									loading="lazy"

@@ -74,6 +74,14 @@ class Auth {
 	// "Admin" entry link (a scoped grantee isn't a super admin, so `isAdmin`
 	// alone would hide the whole area from them).
 	hasAdminAccess = $derived(hasAnyAdminAccess(this.scopes));
+	// A "Language Admin": has admin access but isn't a super admin. Drives the
+	// role-specific relabelling ("Language Admin" vs "Admin"), the trimmed
+	// dashboard, and the language-admin manual link. UX only — the API enforces
+	// every request regardless (import / queueing / PII are gated server-side).
+	isLanguageAdmin = $derived(this.hasAdminAccess && !this.isAdmin);
+	// The reader-facing name for this user's admin access — one source of truth for
+	// the account-menu link, the nav-rail header and the dashboard heading.
+	adminLabel = $derived(this.isLanguageAdmin ? 'Language Admin' : 'Admin');
 	// True once the initial session has been resolved (or auth is unconfigured),
 	// so callers can wait before making authenticated requests rather than firing
 	// a premature unauthenticated one on a fresh page load.

@@ -14,12 +14,14 @@
 	} from '$lib/progress';
 	import { readerPrefs, MARGIN } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
+	import { nextBarHidden } from '$lib/readerAutohide';
 	import FocusExit from '$lib/components/FocusExit.svelte';
 	import { marks } from '$lib/marks.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
+	import { rememberResumeBook } from '$lib/resumeBooks';
 	import {
 		chapterName,
 		contentLang,
@@ -334,7 +336,12 @@
 		let cancelled = false;
 		getBook(s2, lang)
 			.then((b) => {
-				if (!cancelled) bookForProgress = b;
+				if (cancelled) return;
+				bookForProgress = b;
+				// So the next visit to home can draw this book in "Continue
+				// reading" at once — a reader who arrived here from search may
+				// never have opened home this visit (see `$lib/resumeBooks`).
+				rememberResumeBook(lang, b);
 			})
 			.catch(() => {});
 		return () => {
@@ -1193,6 +1200,7 @@
 	// HEADER_OFFSET was introduced to end.
 	let saveTimer: ReturnType<typeof setTimeout> | undefined;
 	function onScroll() {
+		trackChrome();
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(() => {
 			if (!body) return;
@@ -1251,6 +1259,31 @@
 			}
 		}
 	});
+
+	// --- Auto-hide the top bar on scroll-down (scroll mode) --------------------
+	// More reading area without a mode to discover: the top bar slides away as you
+	// read on and returns the moment you scroll back up (or reach the top). The
+	// bottom progress bar and the 2px progress hairline stay. `barHidden` is the
+	// raw scroll-direction intent; `hideChrome` gates it so the bar is only ever
+	// hidden in plain scroll reading — never in page-turn or focus mode, and never
+	// while a drawer, the text-settings panel, or a focus-peek owns the screen.
+	let barHidden = $state(false);
+	let lastScrollY = 0;
+	function trackChrome() {
+		const y = window.scrollY;
+		barHidden = nextBarHidden(barHidden, y, lastScrollY, window.innerHeight);
+		lastScrollY = y;
+	}
+	const hideChrome = $derived(
+		barHidden && !paged && !readerUi.focus && !readerUi.panelOpen && !reader.open && !showPeek
+	);
+	// A fresh chapter — or leaving focus mode — opens with the bar visible; the
+	// reader's own scrolling re-hides it.
+	$effect(() => {
+		void chapter.order;
+		void readerUi.focus;
+		barHidden = false;
+	});
 </script>
 
 <Seo
@@ -1296,6 +1329,7 @@
 		class:fixed={paged || showPeek}
 		class:sticky={!paged && !showPeek}
 		class:peeking={showPeek}
+		class:autohidden={hideChrome}
 	>
 		<div
 			class="mx-auto flex items-center justify-between gap-3 py-2.5"
@@ -1425,7 +1459,7 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
 <article
 	bind:this={articleEl}
-	class="mx-auto reading-article py-10"
+	class="mx-auto reading-article pt-12 pb-10"
 	class:paged
 	class:focus={readerUi.focus}
 	class:twocol={cols === 2}
@@ -1464,7 +1498,7 @@
 	     mode it is display:contents (no effect); in page mode it becomes the
 	     translated CSS-column content and the surrounding chrome is hidden. -->
 	<div class="pager" class:dragging bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
-		<p class="eyebrow mb-1 text-muted">
+		<p class="eyebrow chapter-kicker mb-1 text-muted">
 			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
 			{#if listen.supported}
 				· {listenTime(chapter.word_count, listen.rate)}
@@ -1639,6 +1673,13 @@
      focus/Listen modes. -->
 {#if !readerUi.focus && listen.status === 'idle'}
 	<div bind:this={footEl} class="progress-foot">
+		<!-- Scroll mode: the footer is a translucent bar the text scrolls under, so
+		     a line landing at its hard top edge is sliced into unreadable letter-tops.
+		     This scrim fades the last line into the bar instead of chopping it. Page
+		     mode clips at the column edge by design, so it is excluded. -->
+		{#if !paged}
+			<div class="foot-fade" aria-hidden="true"></div>
+		{/if}
 		<input
 			class="scrubber"
 			type="range"
@@ -1742,6 +1783,16 @@
 			animation: none;
 		}
 	}
+	/* Auto-hide on scroll-down (scroll mode). The sticky bar slides up off-screen
+	   and back; only a transform, so nothing reflows and the prose stays put. The
+	   bottom progress bar and the top hairline are left pinned. (The global
+	   reduced-motion block near the top of app.css snaps the transition.) */
+	.reader-chrome {
+		transition: transform var(--duration-base) ease;
+	}
+	.reader-chrome.autohidden {
+		transform: translateY(-100%);
+	}
 	/* Touch: give the chrome's icon buttons a full-height tap target (≥44px on
 	   the axis that fits — nine controls can't also be 44px WIDE on a 360px
 	   phone without moving some off the bar, a larger redesign left for later). */
@@ -1772,7 +1823,18 @@
 		height: 100%;
 		max-width: none;
 		box-sizing: border-box;
-		padding: 0.85rem var(--pgpad) 0.5rem;
+		/* The bottom padding is a full line of slack, not a cosmetic gap. With
+		   `column-fill: auto` the browser starts the last line of a column if its
+		   TOP fits, then lets its bottom spill past the content box — and
+		   `article.paged`'s `overflow: hidden` sliced that spill into unreadable
+		   letter-tops at the foot of every page. Reserving one prose line-height
+		   below the fill area keeps that spilled line whole (it lands in the padding,
+		   which the clip does not reach) or reflows it to the next page. The value is
+		   the reading line-height itself — `1.18rem` base size (see app.css `.reading`)
+		   × the reader's Size (`--reading-scale`) × Spacing (`--reading-leading`) —
+		   so the slack tracks the text at every setting, plus a small margin. */
+		padding: 0.85rem var(--pgpad)
+			calc(1.18rem * var(--reading-scale, 1) * var(--reading-leading, 1.85) + 0.4rem);
 		/* Each page window (width --page-w) holds --cols columns. With the gap set
 		   to twice the side padding, the columns land flush inside the page and the
 		   inter-page gutter parks the next column fully off-screen (no sliver). This
@@ -1921,6 +1983,13 @@
 		padding-inline: var(--reading-margin, 1.25rem);
 		padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
 	}
+	/* Scroll mode only: give the chapter title cluster room to breathe under the
+	   breadcrumb, so it reads as the start of the chapter rather than a fourth
+	   header line. Page mode zeroes the article padding and paginates from the
+	   top, so the kicker stays flush there. */
+	article:not(.paged) .chapter-kicker {
+		margin-top: 2.5rem;
+	}
 	.progress-foot {
 		position: fixed;
 		inset-inline: 0;
@@ -1934,6 +2003,18 @@
 		color: var(--muted);
 		background: color-mix(in srgb, var(--bg) 82%, transparent);
 		backdrop-filter: blur(6px);
+	}
+	/* A short fade above the bar so a line of body text scrolling under it
+	   dissolves into the page instead of being sliced at the bar's hard top edge.
+	   Anchored to the footer's top (bottom: 100%), so it tracks the bar's measured
+	   height. Scroll mode only (rendered under {#if !paged}). */
+	.foot-fade {
+		position: absolute;
+		inset-inline: 0;
+		bottom: 100%;
+		height: 2.25rem;
+		background: linear-gradient(to top, var(--bg), transparent);
+		pointer-events: none;
 	}
 	.progress-meta {
 		margin-top: 0.1rem;

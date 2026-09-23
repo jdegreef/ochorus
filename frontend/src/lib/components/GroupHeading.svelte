@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Snippet } from 'svelte';
 	import { PORTRAIT_POSITION_DEFAULT, portraitSrcset } from '$lib/portraits';
 
@@ -59,9 +60,11 @@
 	style={sticky ? 'top: var(--pinned-offset, 0px)' : undefined}
 >
 	{#if portraitUrl}
+		{@const source = { src: portraitUrl, srcset: portraitSrcset(portraitUrl) }}
 		<img
-			src={portraitUrl}
-			srcset={portraitSrcset(portraitUrl)}
+			src={source.src}
+			srcset={source.srcset}
+			use:hydrateSrc={source}
 			sizes="32px"
 			alt=""
 			loading="lazy"

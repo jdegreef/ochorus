@@ -1,3 +1,65 @@
+// prerender refresh 2026-09-23: one NEW English book — rooted-5, "Rooted – 30 Days with God for
+// Youth – Book 5" (Branching Out), the fifth volume of the house-written devotional series for ages
+// 9–12 (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture).
+// Rebuilds /books and the For Young Readers shelf so the card and its young-style plate cover
+// (volume 5) appear, and the reader pages bake the chapters. Backs the new rooted-book-5-30-days plan.
+// prerender refresh 2026-09-23: one NEW English book — rooted-4, "Rooted – 30 Days with God for
+// Youth – Book 4" (Strong in the Storm), the fourth volume of the house-written devotional series
+// for ages 9–12 (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture).
+// Rebuilds /books and the For Young Readers shelf so the card and its young-style plate cover
+// (volume 4) appear, and the reader pages bake the chapters. Backs the new rooted-book-4-30-days plan.
+// prerender refresh 2026-09-23: stepping-stones-2 (Gareth Evans, Stepping Stones) gains four new
+// English chapters, 40–43 (A Tribute to Anne … Lion's Pride), from the author's 2026 edition.
+// prerender refresh 2026-09-22: one NEW English book — rooted-3, "Rooted – 30 Days with God for
+// Youth – Book 3" (Growing Fruit), the third volume of the house-written devotional series for ages
+// 9–12 (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture).
+// Rebuilds /books and the For Young Readers shelf so the card and its young-style plate cover
+// (volume 3) appear, and the reader pages bake the chapters. Backs the new rooted-book-3-30-days plan.
+// prerender refresh 2026-09-22: one NEW English book — rooted-2, "Rooted – 30 Days with God for
+// Youth – Book 2" (Following Jesus), the second volume of the house-written devotional series for
+// ages 9–12 (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture).
+// Rebuilds /books and the For Young Readers shelf so the card and its young-style plate cover
+// (volume 2) appear, and the reader pages bake the chapters. Backs the new rooted-book-2-30-days plan.
+// prerender refresh 2026-09-22: one NEW English book — rooted-1, "Rooted – 30 Days with God for
+// Youth – Book 1", the first volume of a house-written devotional series for ages 9–12 (Ochorus
+// Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture). Rebuilds /books and
+// the For Young Readers shelf so the card and its young-style plate cover (volume 1) appear, and the
+// reader pages bake the chapters. Backs the new rooted-book-1-30-days plan (see plans/+page.ts).
+// prerender refresh 2026-09-21: one NEW Hindi book — power-through-prayer
+// («प्रार्थना के द्वारा सामर्थ्य», E. M. Bounds, #1749), 20 chapters. Rebuilds /hi/books so the card
+// carries its translated title over the shared curated painting, and the reader pages bake the
+// chapters. Backs the praying-men curated plan, which stays INACTIVE in Hindi until its two
+// companion Bounds books are translated too — so no plans/+page.ts touch here.
+// prerender refresh 2026-09-21: one NEW French book — men-and-women-who-gave-everything-2
+// («Des hommes et des femmes qui ont tout donné», #2784), Ochorus Originals, 13 chapters (ten
+// missionary profiles + intro, conclusion and a Scripture appendix). Rebuilds /fr/books so the card
+// carries its translated title over the derived-ground cover, and the reader pages bake the chapters.
+// Backs the first-steps-for-teens plan, which now ACTIVATES in French (see plans/+page.ts).
+// prerender refresh 2026-09-20: five NEW French books — the-fourfold-gospel («L'Évangile
+// quadruple»), the-gospel-of-healing («L'Évangile de la guérison»), around-the-wicket-gate
+// («Autour de la porte étroite»), feasting-at-the-table («Le festin à la table») and
+// soar-like-the-eagle-3 («S'élever comme l'aigle»), from the translation queue (#2908–2913).
+// Rebuilds /fr/books so each card carries its translated title over the shared cover, and the
+// reader pages bake the chapters. the-fourfold-gospel + the-gospel-of-healing back the
+// christ-our-healer curated plan (see plans/+page.ts).
+// prerender refresh 2026-09-18: one NEW Swahili book — the-life-of-trust (#2581), the autobiography
+// and journal of George Müller of Bristol, 28 chapters ("Maisha ya Kumtumaini Mungu"). Rebuilds
+// /sw/books so the card carries its translated title over the shared painting cover, and the reader
+// page bakes the 28 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-18: one NEW Luganda book — brave-for-god-4 ("Abavumu ku lwa Katonda:
+// Ekitabo eky'Okuna"), the fourth Brave for God volume (Paton, Mary Jones, George Liele, C.T.
+// Studd, Lilias Trotter, Ida Scudder). Rebuilds /lg/books so the card carries its translated title
+// over the shared curated painting, and the reader page bakes the six chapters. This completes the
+// Brave for God quartet in Luganda (Books 1–3 already lg). Backs no plan.
+// prerender refresh 2026-09-18: one NEW Swahili book — brave-for-god-4 ("Jasiri kwa ajili ya
+// Mungu: Kitabu cha Nne"), the fourth Brave for God volume (Paton, Mary Jones, George Liele,
+// C.T. Studd, Lilias Trotter, Ida Scudder). Rebuilds /sw/books so the card carries its translated
+// title over the shared curated painting, and the reader page bakes the six chapters. This
+// completes the Brave for God quartet in Swahili (Books 1–3 already sw). Backs no plan.
+// prerender refresh 2026-09-18: one NEW Swahili book — pilgrims-progress (#2586), John Bunyan's
+// allegory (Parts I and II), 22 chapters ("Safari ya Msafiri"). Rebuilds /sw/books so the card
+// carries its translated title over the shared painting cover, and the reader page bakes the 22
+// chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-18: one NEW Swahili book — life-and-diary-of-david-brainerd (#2584),
 // Jonathan Edwards's edition of the missionary's journals, 12 chapters ("Maisha na Shajara ya
 // David Brainerd"). Rebuilds /sw/books so the card carries its translated title over the shared

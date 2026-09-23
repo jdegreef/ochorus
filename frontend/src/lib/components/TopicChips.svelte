@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { TopicSummary } from '$lib/library-public';
+	import type { TopicCount } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
@@ -10,7 +10,7 @@
 	 * a final section wants: on the dashboard this is the last block, on the
 	 * marketing page the mission teaser follows, so it isn't.
 	 */
-	let { topics, lastBlock = false }: { topics: TopicSummary[]; lastBlock?: boolean } = $props();
+	let { topics, lastBlock = false }: { topics: TopicCount[]; lastBlock?: boolean } = $props();
 
 	const t = i18n.t;
 </script>

@@ -18,13 +18,14 @@
 	import FilterSummary from './FilterSummary.svelte';
 	import TopicFilterRow from './TopicFilterRow.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
+	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
 
 	let { books, loadError = false }: { books: BookSummary[]; loadError?: boolean } = $props();
 	const t = i18n.t;
 
 	// --- View preferences (persisted per device) -------------------------------
 	type View = 'grid' | 'list';
-	type Sort = 'shelf' | 'title' | 'longest' | 'shortest';
+	type Sort = BookSort;
 	type Group = 'author' | 'all';
 	type Source = 'all' | 'public_domain' | 'translated';
 	const PREFS_KEY = 'ochorus:books-view2';
@@ -126,28 +127,14 @@
 			if (filters.values.source === 'translated' && !isTranslated(b.source_type)) return false;
 			const topic = filters.values.topic;
 			if (topic && !(b.topics ?? []).some((tc) => tc.slug === topic)) return false;
-			if (!q) return true;
-			return (
-				b.title.toLowerCase().includes(q) ||
-				(b.subtitle ?? '').toLowerCase().includes(q) ||
-				b.author.name.toLowerCase().includes(q)
-			);
+			// Source and topic are shelf-only facets; the title/subtitle/author query
+			// is the shared primitive (also used by the topic shelf). q is already
+			// normalised, and matchesBookQuery treats '' as "no filter".
+			return matchesBookQuery(b, q);
 		});
 	});
 
-	const sorted = $derived.by(() => {
-		const arr = [...filtered];
-		switch (sort) {
-			case 'title':
-				return arr.sort((a, b) => a.title.localeCompare(b.title));
-			case 'longest':
-				return arr.sort((a, b) => (b.word_count ?? 0) - (a.word_count ?? 0));
-			case 'shortest':
-				return arr.sort((a, b) => (a.word_count ?? 0) - (b.word_count ?? 0));
-			default:
-				return arr; // shelf order — the API's sort_order, preserved by filter
-		}
-	});
+	const sorted = $derived(sortBooks(filtered, sort)); // shelf order preserves the API's sort_order
 
 	const groups = $derived.by(() => {
 		if (group === 'all') return null;
@@ -255,7 +242,7 @@
 						</div>
 					</a>
 				{:else}
-					<div class="flex gap-4 overflow-x-auto pb-1">
+					<div class="cover-rail flex gap-4 pb-1">
 						{#each continueBooks as c (c.book.slug)}
 							<a
 								href={localizeHref(`/books/${c.book.slug}/${c.order}`)}
@@ -279,7 +266,7 @@
 				<h2 class="section-label">
 					{t('books.newTitle')}
 				</h2>
-				<div class="flex gap-4 overflow-x-auto pb-1">
+				<div class="cover-rail flex gap-4 pb-1">
 					{#each recent as book (book.slug)}
 						<a
 							href={localizeHref(`/books/${book.slug}`)}

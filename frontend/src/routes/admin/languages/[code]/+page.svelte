@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { ApiError } from '$lib/api';
+	import { auth } from '$lib/auth.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import LanguageSettingsCard from '$lib/components/LanguageSettingsCard.svelte';
@@ -197,6 +198,11 @@
 	let bulkQueueing = $state<TranslationJobType | null>(null);
 	const busy = $derived(queueing !== null || bulkQueueing !== null);
 
+	// Queueing translation work is super-admin-only: a language admin sees this
+	// language's todo lists and any jobs already queued, but files none itself. UX
+	// only — the POST is gated server-side (admin_views/jobs.py).
+	const canQueue = $derived(auth.isAdmin);
+
 	async function queueBulk(type: TranslationJobType, rows: { slug: string }[]) {
 		const pending = rows.filter((r) => !jobFor(type, r.slug));
 		if (!pending.length) return;
@@ -383,7 +389,7 @@
 					>
 						{job.state === 'in_progress' ? 'Translating…' : 'Queued ↗'}
 					</a>
-				{:else}
+				{:else if canQueue}
 					<button
 						class="btn btn-sm btn-ghost shrink-0"
 						disabled={jobsConfigured === false || busy}
@@ -401,7 +407,7 @@
 			     there's nothing left to queue. -->
 			{#snippet bulkQueueControl(type: TranslationJobType, rows: { slug: string }[])}
 				{@const pending = rows.filter((r) => !jobFor(type, r.slug)).length}
-				{#if jobsConfigured !== false && pending > 0}
+				{#if canQueue && jobsConfigured !== false && pending > 0}
 					<button
 						class="shrink-0 text-small font-semibold text-accent hover:underline disabled:opacity-50"
 						disabled={busy}
