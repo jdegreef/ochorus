@@ -922,5 +922,9 @@
   "notebook_step_q_adore": "Quem é Deus para você hoje? Louve-o por quem ele é.",
   "notebook_step_q_confess": "O que você precisa trazer à luz? Peça o perdão dele.",
   "notebook_step_q_thanks": "O que ele lhe deu? Diga as coisas pelas quais você é grato.",
-  "notebook_step_q_ask": "Do que você precisa, e quem precisa da ajuda dele? Leve-os a ele."
+  "notebook_step_q_ask": "Do que você precisa, e quem precisa da ajuda dele? Leve-os a ele.",
+  "notebook_stat_praying": "Orando agora",
+  "notebook_stat_avg_days": "Dias de oração (média)",
+  "notebook_timeline": "Linha do tempo",
+  "notebook_answered_layout": "Mostrar orações respondidas"
 }

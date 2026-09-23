@@ -922,5 +922,9 @@
   "notebook_step_q_adore": "Qui est Dieu pour vous aujourd'hui ? Louez-le pour qui il est.",
   "notebook_step_q_confess": "Que devez-vous mettre en lumière ? Demandez son pardon.",
   "notebook_step_q_thanks": "Que vous a-t-il donné ? Nommez ce pour quoi vous êtes reconnaissant.",
-  "notebook_step_q_ask": "De quoi avez-vous besoin, et qui a besoin de son aide ? Apportez-les-lui."
+  "notebook_step_q_ask": "De quoi avez-vous besoin, et qui a besoin de son aide ? Apportez-les-lui.",
+  "notebook_stat_praying": "En prière",
+  "notebook_stat_avg_days": "Jours de prière (moy.)",
+  "notebook_timeline": "Chronologie",
+  "notebook_answered_layout": "Afficher les prières exaucées"
 }

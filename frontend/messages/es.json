@@ -922,5 +922,9 @@
   "notebook_step_q_adore": "¿Quién es Dios para ti hoy? Alábale por quien es.",
   "notebook_step_q_confess": "¿Qué necesitas sacar a la luz? Pide su perdón.",
   "notebook_step_q_thanks": "¿Qué te ha dado? Nombra aquello por lo que estás agradecido.",
-  "notebook_step_q_ask": "¿Qué necesitas, y quién necesita su ayuda? Llévalos a él."
+  "notebook_step_q_ask": "¿Qué necesitas, y quién necesita su ayuda? Llévalos a él.",
+  "notebook_stat_praying": "Orando ahora",
+  "notebook_stat_avg_days": "Días de oración (prom.)",
+  "notebook_timeline": "Línea de tiempo",
+  "notebook_answered_layout": "Mostrar oraciones contestadas"
 }

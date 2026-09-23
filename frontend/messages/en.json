@@ -922,5 +922,9 @@
   "notebook_step_q_adore": "Who is God to you today? Praise him for who he is.",
   "notebook_step_q_confess": "What do you need to bring into the light? Ask for his forgiveness.",
   "notebook_step_q_thanks": "What has he given you? Name the things you are thankful for.",
-  "notebook_step_q_ask": "What do you need, and who needs his help? Bring them to him."
+  "notebook_step_q_ask": "What do you need, and who needs his help? Bring them to him.",
+  "notebook_stat_praying": "Praying now",
+  "notebook_stat_avg_days": "Avg. days prayed",
+  "notebook_timeline": "Timeline",
+  "notebook_answered_layout": "Show answered prayers"
 }
