@@ -22,7 +22,14 @@ The script verifies its own output before replacing anything: the multiset of
 natural identities and every field value must survive the round trip. Run from
 ``backend/``:
 
-    uv run python scripts/regen_fixture.py
+    uv run python scripts/regen_fixture.py              # byte-stable
+    uv run python scripts/regen_fixture.py --normalize  # canonical rewrite
+
+By default a file whose rows round-trip unchanged keeps its exact bytes, and a
+DEFAULTED_OK field the source never carried is not written — so on a healthy
+fixture the regen is a no-op, and any diff it leaves is real. ``--normalize``
+instead rewrites every file in ``render_rows`` format with those defaults
+materialized (the pre-2026-09 behaviour; expect a diff across most files).
 """
 
 from __future__ import annotations
@@ -264,9 +271,12 @@ def main():
         )
 
     # --- write the layout ----------------------------------------------------
+    normalize = "--normalize" in sys.argv[1:]
     for r in new_rows:
         old = src_by_id[identity(r)]
-        for k in [k for k in r["fields"] if k not in old and (r["model"], k) in DROPPED_IF_ABSENT]:
+        for k in [k for k in r["fields"] if k not in old]:
+            if normalize and (r["model"], k) not in DROPPED_IF_ABSENT:
+                continue
             del r["fields"][k]
     files = split_layout(new_rows)
     assert sum(len(v) for v in files.values()) == len(new_rows)
@@ -275,14 +285,19 @@ def main():
     staging = CONTENT_DIR.with_name("content.regen-tmp")
     if staging.exists():
         shutil.rmtree(staging)
+    rewritten = 0
     for path, rows in files.items():
         target = staging / path.relative_to(CONTENT_DIR)
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(render_rows(rows))
+        if not normalize and path.exists() and json.loads(path.read_text()) == rows:
+            shutil.copy2(path, target)
+        else:
+            target.write_text(render_rows(rows))
+            rewritten += 1
     shutil.rmtree(CONTENT_DIR)
     staging.rename(CONTENT_DIR)
     print(f"✓ regenerated: {len(new_rows)} rows across {len(files)} files "
-          f"in {CONTENT_DIR.relative_to(BACKEND)}")
+          f"in {CONTENT_DIR.relative_to(BACKEND)}; {rewritten} rewritten")
     print("Run `manage.py test library.tests_fixture` to confirm the gate.")
 
 
