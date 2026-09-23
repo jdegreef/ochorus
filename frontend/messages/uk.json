@@ -1022,5 +1022,10 @@
   "notebook_reflect_saved": "Збережено у вашому записнику",
   "notebook_reflect_open": "Відкрити у записнику",
   "notebook_reflect_write": "Напишіть свою відповідь",
-  "notebook_reflect_answer_prompt": "Ваша відповідь…"
+  "notebook_reflect_answer_prompt": "Ваша відповідь…",
+  "notebook_format_label": "Форматування",
+  "notebook_format_bold": "Жирний",
+  "notebook_format_italic": "Курсив",
+  "notebook_format_list": "Список",
+  "notebook_format_quote": "Цитата"
 }

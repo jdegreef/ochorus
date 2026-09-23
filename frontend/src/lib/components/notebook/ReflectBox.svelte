@@ -5,6 +5,7 @@
 	import { reflectionFor, type EntrySource } from '$lib/journal';
 	import { journal } from '$lib/journal.svelte';
 	import EntryComposer from './EntryComposer.svelte';
+	import RichText from './RichText.svelte';
 
 	/**
 	 * A place to answer what the reading asks — a plan day's reflection, a
@@ -54,7 +55,7 @@
 	{#if written}
 		<div class="answer">
 			<p class="label text-micro">✓ {t('notebook.reflectSaved')}</p>
-			<p class="text">{written.body}</p>
+			<div class="text"><RichText text={written.body} /></div>
 			<a class="text-small font-semibold" href={notebookHref}>{t('notebook.reflectOpen')} →</a>
 		</div>
 		{#if children}<div class="mt-3">{@render children()}</div>{/if}
@@ -106,7 +107,6 @@
 		font-family: var(--font-display);
 		line-height: 1.6;
 		color: var(--text);
-		white-space: pre-wrap;
 		display: -webkit-box;
 		-webkit-line-clamp: 6;
 		line-clamp: 6;

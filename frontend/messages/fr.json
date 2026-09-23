@@ -1022,5 +1022,10 @@
   "notebook_reflect_saved": "Enregistré dans votre carnet",
   "notebook_reflect_open": "Ouvrir dans votre carnet",
   "notebook_reflect_write": "Écrire votre réponse",
-  "notebook_reflect_answer_prompt": "Votre réponse…"
+  "notebook_reflect_answer_prompt": "Votre réponse…",
+  "notebook_format_label": "Mise en forme",
+  "notebook_format_bold": "Gras",
+  "notebook_format_italic": "Italique",
+  "notebook_format_list": "Liste à puces",
+  "notebook_format_quote": "Citation"
 }

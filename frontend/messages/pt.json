@@ -1022,5 +1022,10 @@
   "notebook_reflect_saved": "Salvo no seu caderno",
   "notebook_reflect_open": "Abrir no seu caderno",
   "notebook_reflect_write": "Escreva sua resposta",
-  "notebook_reflect_answer_prompt": "Sua resposta…"
+  "notebook_reflect_answer_prompt": "Sua resposta…",
+  "notebook_format_label": "Formatação",
+  "notebook_format_bold": "Negrito",
+  "notebook_format_italic": "Itálico",
+  "notebook_format_list": "Lista",
+  "notebook_format_quote": "Citação"
 }

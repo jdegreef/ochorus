@@ -1022,5 +1022,10 @@
   "notebook_reflect_saved": "محفوظ في دفترك",
   "notebook_reflect_open": "افتح في دفترك",
   "notebook_reflect_write": "اكتب إجابتك",
-  "notebook_reflect_answer_prompt": "إجابتك…"
+  "notebook_reflect_answer_prompt": "إجابتك…",
+  "notebook_format_label": "التنسيق",
+  "notebook_format_bold": "غامق",
+  "notebook_format_italic": "مائل",
+  "notebook_format_list": "قائمة",
+  "notebook_format_quote": "اقتباس"
 }

@@ -1022,5 +1022,10 @@
   "notebook_reflect_saved": "Imehifadhiwa kwenye daftari lako",
   "notebook_reflect_open": "Fungua kwenye daftari lako",
   "notebook_reflect_write": "Andika jibu lako",
-  "notebook_reflect_answer_prompt": "Jibu lako…"
+  "notebook_reflect_answer_prompt": "Jibu lako…",
+  "notebook_format_label": "Mpangilio",
+  "notebook_format_bold": "Herufi nzito",
+  "notebook_format_italic": "Herufi za mlalo",
+  "notebook_format_list": "Orodha",
+  "notebook_format_quote": "Nukuu"
 }

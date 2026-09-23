@@ -1022,5 +1022,10 @@
   "notebook_reflect_saved": "Kiterekeddwa mu kitabo kyo",
   "notebook_reflect_open": "Ggulawo mu kitabo kyo",
   "notebook_reflect_write": "Wandiika eky'okuddamu kyo",
-  "notebook_reflect_answer_prompt": "Eky'okuddamu kyo…"
+  "notebook_reflect_answer_prompt": "Eky'okuddamu kyo…",
+  "notebook_format_label": "Enteekateeka",
+  "notebook_format_bold": "Ennene",
+  "notebook_format_italic": "Ezikoonzeemu",
+  "notebook_format_list": "Olukalala",
+  "notebook_format_quote": "Ekijuliziddwa"
 }

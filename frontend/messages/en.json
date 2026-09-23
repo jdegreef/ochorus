@@ -1022,5 +1022,10 @@
   "notebook_reflect_saved": "Saved in your Notebook",
   "notebook_reflect_open": "Open in your Notebook",
   "notebook_reflect_write": "Write your answer",
-  "notebook_reflect_answer_prompt": "Your answer…"
+  "notebook_reflect_answer_prompt": "Your answer…",
+  "notebook_format_label": "Formatting",
+  "notebook_format_bold": "Bold",
+  "notebook_format_italic": "Italic",
+  "notebook_format_list": "List",
+  "notebook_format_quote": "Quotation"
 }

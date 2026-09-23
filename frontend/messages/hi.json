@@ -1022,5 +1022,10 @@
   "notebook_reflect_saved": "आपकी नोटबुक में सहेजा गया",
   "notebook_reflect_open": "अपनी नोटबुक में खोलें",
   "notebook_reflect_write": "अपना उत्तर लिखें",
-  "notebook_reflect_answer_prompt": "आपका उत्तर…"
+  "notebook_reflect_answer_prompt": "आपका उत्तर…",
+  "notebook_format_label": "स्वरूपण",
+  "notebook_format_bold": "मोटा",
+  "notebook_format_italic": "तिरछा",
+  "notebook_format_list": "सूची",
+  "notebook_format_quote": "उद्धरण"
 }
