@@ -468,3 +468,40 @@ export function composeDaily(parts: Partial<Record<DailyStep, string>>, names: R
 		.map((s) => `${names[s]}\n${parts[s]!.trim()}`)
 		.join('\n\n');
 }
+
+/** One month of the faithfulness timeline: the prayers answered in it, newest first. */
+export interface TimelineMonth {
+	/** 'YYYY-MM' (local), the key. */
+	month: string;
+	/** A time inside the month, for its localized name. */
+	at: number;
+	prayers: JournalEntry[];
+}
+
+/**
+ * The record of answered prayers — "stones of remembrance": how many, how
+ * many are still being prayed, how long an answer took on average, and every
+ * answer by the month it came. `q` searches like the rest of the Notebook.
+ */
+export function faithfulness(
+	store: JournalStore,
+	q = ''
+): { answered: number; praying: number; avgDays: number | null; months: TimelineMonth[] } {
+	const stats = journalStats(store);
+	const answered = visibleEntries(store, 'answered', q);
+	const waits = visibleEntries(store, 'answered').map((e) => daysWaited(e) ?? 0);
+	const months: TimelineMonth[] = [];
+	for (const e of answered) {
+		const at = e.answeredAt!;
+		const month = localToday(new Date(at)).slice(0, 7);
+		const last = months[months.length - 1];
+		if (last && last.month === month) last.prayers.push(e);
+		else months.push({ month, at, prayers: [e] });
+	}
+	return {
+		answered: stats.answered,
+		praying: stats.prayers,
+		avgDays: waits.length ? Math.round(waits.reduce((a, b) => a + b, 0) / waits.length) : null,
+		months
+	};
+}

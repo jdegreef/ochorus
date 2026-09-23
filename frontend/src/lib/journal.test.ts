@@ -5,6 +5,7 @@ import {
 	composeDaily,
 	dailyStreak,
 	dailyVerse,
+	faithfulness,
 	cleanStore,
 	formatRemind,
 	fromServer,
@@ -218,5 +219,25 @@ describe('journal entries', () => {
 			'Adore\nYou are good.\n\nAsk\nAnna — the job'
 		);
 		expect(composeDaily({}, names)).toBe('');
+	});
+
+	it('keeps the record of answered prayers, month by month', () => {
+		const at = (iso: string) => new Date(`${iso}T12:00:00`).getTime();
+		const store = cleanStore({
+			a: entry('a', { kind: 'prayer', createdAt: at('2026-09-01'), answeredAt: at('2026-09-14'), body: 'Dad' }),
+			b: entry('b', { kind: 'prayer', createdAt: at('2026-09-20'), answeredAt: at('2026-09-20'), body: 'books' }),
+			c: entry('c', { kind: 'prayer', createdAt: at('2026-01-01'), answeredAt: at('2026-03-13'), body: 'visa' }),
+			open: entry('open', { kind: 'prayer', body: 'rain' }),
+			gone: tombstone(entry('gone', { kind: 'prayer', answeredAt: at('2026-09-02') }))
+		});
+		const f = faithfulness(store);
+		expect(f).toMatchObject({ answered: 3, praying: 1, avgDays: Math.round((13 + 0 + 71) / 3) });
+		expect(f.months.map((m) => [m.month, m.prayers.map((p) => p.id)])).toEqual([
+			['2026-09', ['b', 'a']],
+			['2026-03', ['c']]
+		]);
+		// A search narrows the timeline, not the totals.
+		expect(faithfulness(store, 'visa').months.map((m) => m.month)).toEqual(['2026-03']);
+		expect(faithfulness(cleanStore({})).avgDays).toBeNull();
 	});
 });

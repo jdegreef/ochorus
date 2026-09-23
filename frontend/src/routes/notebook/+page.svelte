@@ -8,6 +8,7 @@
 	import {
 		dailyStreak,
 		entryTime,
+		faithfulness,
 		groupByDay,
 		journalStats,
 		prayersByPerson,
@@ -24,6 +25,7 @@
 	import JournalEntryCard from '$lib/components/notebook/JournalEntryCard.svelte';
 	import ReadingClippings from '$lib/components/notebook/ReadingClippings.svelte';
 	import PrayerList from '$lib/components/notebook/PrayerList.svelte';
+	import FaithfulnessTimeline from '$lib/components/notebook/FaithfulnessTimeline.svelte';
 
 	const t = i18n.t;
 	const locale = getLang();
@@ -87,6 +89,10 @@
 	// The Prayers tab reads as a prayer list, by person, until the reader opens
 	// one person's prayers (or asks for them by date).
 	let prayerLayout = $state<'person' | 'date'>('person');
+	// The Answered tab opens on the faithfulness timeline; "By date" has the cards.
+	let answeredLayout = $state<'timeline' | 'date'>('timeline');
+	const record = $derived(view === 'answered' ? faithfulness(journal.store, q) : null);
+	const showTimeline = $derived(view === 'answered' && answeredLayout === 'timeline');
 	/** One person's prayers, opened from their card; null = everyone. */
 	let personFilter = $state<string | null>(null);
 	const byPerson = $derived(view === 'prayers' && prayerLayout === 'person' && personFilter === null);
@@ -162,10 +168,25 @@
 				<p class="today text-small">{longDate(today)}</p>
 			</div>
 
-			{#if view === 'answered' && stats.answered > 0}
+			{#if record && record.answered > 0}
 				<p class="praise">
-					✦ {stats.answered === 1 ? t('notebook.praiseOne') : m.notebook_praise_many({ n: String(stats.answered) })}
+					✦ {record.answered === 1 ? t('notebook.praiseOne') : m.notebook_praise_many({ n: String(record.answered) })}
 				</p>
+				<!-- The record at a glance: answered, still praying, how long answers take. -->
+				<dl class="tiles">
+					<div class="tile">
+						<dt>{t('notebook.tabAnswered')}</dt>
+						<dd>{record.answered}</dd>
+					</div>
+					<div class="tile">
+						<dt>{t('notebook.statPraying')}</dt>
+						<dd>{record.praying}</dd>
+					</div>
+					<div class="tile">
+						<dt>{t('notebook.statAvgDays')}</dt>
+						<dd>{record.avgDays ?? '—'}</dd>
+					</div>
+				</dl>
 			{/if}
 
 			{#if view === 'all' || view === 'prayers'}
@@ -239,7 +260,26 @@
 						</div>
 					{/if}
 
-					{#if byPerson && personCards.length}
+					{#if view === 'answered' && stats.answered > 0}
+						<div class="mt-6 flex">
+							<div class="seg" role="group" aria-label={t('notebook.answeredLayout')}>
+								<button
+									class:active={answeredLayout === 'timeline'}
+									aria-pressed={answeredLayout === 'timeline'}
+									onclick={() => (answeredLayout = 'timeline')}>{t('notebook.timeline')}</button
+								>
+								<button
+									class:active={answeredLayout === 'date'}
+									aria-pressed={answeredLayout === 'date'}
+									onclick={() => (answeredLayout = 'date')}>{t('notebook.byDate')}</button
+								>
+							</div>
+						</div>
+					{/if}
+
+					{#if showTimeline && record?.months.length}
+						<FaithfulnessTimeline months={record.months} {locale} />
+					{:else if byPerson && personCards.length}
 						<PrayerList cards={personCards} {locale} onopen={(p) => (personFilter = p)} onpray={prayFor} />
 					{:else if entries.length === 0}
 						<p class="empty">{q ? t('notebook.no_matches') : emptyMessage}</p>
@@ -426,6 +466,28 @@
 		padding-top: 0.6rem;
 	}
 
+	.tiles {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.6rem;
+		margin-bottom: 1.25rem;
+	}
+	.tile {
+		padding: 0.7rem 0.85rem;
+		border-radius: var(--radius-sm);
+		background: var(--surface-2);
+	}
+	.tile dt {
+		font-size: var(--fs-micro);
+		color: var(--muted);
+	}
+	.tile dd {
+		font-family: var(--font-display);
+		font-size: var(--fs-h2);
+		font-weight: 600;
+		line-height: 1.2;
+		color: var(--text);
+	}
 	.praise {
 		margin: 0 0 1.25rem;
 		padding: 0.6rem 0.9rem;
