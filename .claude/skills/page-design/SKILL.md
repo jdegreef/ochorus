@@ -300,7 +300,7 @@ green in CI but never went live because two of its three books were unpublished
     until a reader of that language opens the tab. `messageCatalogues.test.ts`
     now fails any catalogue carrying `· Ochorus`; add the same shape of guard
     when you normalise the next catalogue-borne label. A value-only edit needs
-    no `sync:catalogues` (that snapshot tracks keys, not values).
+    no `sync:catalogues` (that snapshot tracks missing keys, not values).
   - **A NEW key you add to `en.json` needs a value in all eight catalogues
     (parity), and `messages.test.ts` also fails any non-English value that is
     byte-identical to English** — so a bare label with nothing to translate

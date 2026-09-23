@@ -33,11 +33,12 @@ API. Public content routes are prerendered for SEO (`prerender = true` + an
 
 - `{@html}` only for server-sanitized content (chapter / sermon body), with a
   comment saying so. Never for untrusted input.
-- After editing `messages/*.json`, run `npm run sync:catalogues`. It refreshes
-  `backend/library/data/ui_catalogues.json`, which is how the admin's readiness
-  report knows whether a locale's interface is complete — the API image is built
-  from `backend/` alone and cannot see these files. `messageCatalogues.test.ts`
-  fails if you forget.
+- `backend/library/data/ui_catalogues.json` records each locale's *missing*
+  message keys — how the admin's readiness report knows whether a locale's
+  interface is complete (the API image is built from `backend/` alone and cannot
+  see `messages/`). It holds no counts, so adding a key to every catalogue leaves
+  it unchanged. Only when a locale is added or left incomplete does
+  `messageCatalogues.test.ts` fail and ask for `npm run sync:catalogues`.
 - Arabic is a routed locale, so reader-facing markup uses **logical** inline
   spacing (`ms/me`, `ps/pe`, `text-start/end`, `border-s/e`, `start-/end-`),
   never `ml-/mr-/pl-/pr-/text-left/right`. In LTR they render identically, so a
