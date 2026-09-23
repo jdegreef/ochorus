@@ -126,6 +126,9 @@ class FixtureIdentifierTests(SimpleTestCase):
             "blasio-kigozi",
             "william-nagenda",
             "lawrence-barham",
+            # No Wikipedia article (the "Charles S. Price" there is a ship)
+            # and no Wikidata item for the evangelist.
+            "charles-s-price",
         }
         blank = {a["slug"] for a in fixture_authors() if not a.get("same_as")}
         self.assertEqual(
