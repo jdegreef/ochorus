@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-23 (queue job #1650): Gareth Evans's أحجار العبور — the Arabic
+// Stepping Stones (stepping-stones-2), 43 chapters — so the /ar book shelf bakes it.
+// prerender refresh 2026-09-23 (queue job #1680): Gareth Evans's Камінь за каменем — the Ukrainian
+// edition of stepping-stones-2, 43 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-23 (queue job #1454): Gareth Evans's Piedras de paso — the Spanish
 // edition of Stepping Stones (43 chapters), so /es/books bakes the new card and chapter pages.
 // prerender refresh 2026-09-23: one NEW English book — rooted-6, "Rooted – 30 Days with God for

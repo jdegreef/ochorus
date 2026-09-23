@@ -48,6 +48,13 @@ export interface BookSummary {
 	source_type: SourceType;
 	cover_color: string;
 	cover_url: string;
+	/**
+	 * This edition's volume in its series — the numeral its cover sets over the
+	 * title. Null outside a series and in an unordered one. Optional for the
+	 * same reason as `updated_at`, and for the resume cache, which holds cards
+	 * stored before the field existed: absent reads as "no numeral".
+	 */
+	series_position?: number | null;
 	chapter_count: number;
 	word_count: number | null;
 	/** Published topics this book belongs to (for the shelf's topic filter). */
@@ -81,6 +88,7 @@ export const COVER_BOOK_KEYS = [
 	'source_type',
 	'cover_color',
 	'cover_url',
+	'series_position',
 	'chapter_count',
 	'word_count'
 ] as const;
@@ -230,11 +238,14 @@ export interface BookDetail extends BookSummary {
 	 * a localized page and the section just doesn't render. Optional so an API
 	 * running behind this build omits it cleanly.
 	 */
-	guides?: BookGuide[];
+	guides?: ArticleLink[];
 }
 
-/** A reader's-guide article surfaced on the book page it explains. */
-export interface BookGuide {
+/** An article surfaced on another page that links to it — a reader's guide on
+ *  the book page it explains, or an author's articles on their own page. Both
+ *  sides serve the same three fields (see `guides_for_book` /
+ *  `articles_for_author`) and render through `ArticleLinkCard`. */
+export interface ArticleLink {
 	slug: string;
 	h1: string;
 	description: string;
@@ -576,6 +587,14 @@ export interface AuthorDetail extends AuthorBio {
 	 * running behind this build simply renders no section.
 	 */
 	appears_in?: AppearsInBook[];
+	/**
+	 * Articles ABOUT this person — the guides to their books and the essays whose
+	 * Read-next funnel names them (see `articles_for_author`). Per-language like
+	 * the rest of the page, NOT English-only as a book's `guides` still is: a
+	 * locale with translated articles gets those, one without gets `[]` and no
+	 * section. Optional so an API running behind this build omits it cleanly.
+	 */
+	articles?: ArticleLink[];
 	/** How many REVIEWED quotations this author has; 0 means no quote page. */
 	quote_count?: number;
 	/**
@@ -1171,6 +1190,8 @@ export interface QuoteAuthorSummary {
 	count: number;
 	/** The author's shortest reviewed quote — the card's teaser line. "" if none. */
 	teaser: string;
+	/** Distinct works (books + sermons) the author is quoted from. */
+	work_count: number;
 }
 
 export const listQuoteAuthors = () =>

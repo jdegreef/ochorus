@@ -10,6 +10,7 @@ from common.testing import body_of
 from . import language_suggestions
 from .ingest import clean_title
 from .models import (
+    Article,
     Author,
     AuthorTranslation,
     Book,
@@ -1483,7 +1484,20 @@ class BookCardPayloadTests(TestCase):
         # constant lookup for the "also appears in" section, prefetched in the
         # view so it stays a single query whether or not the author appears in
         # anything (an author with appearances pays one more, for the books).
-        with self.assertNumQueries(12):
+        # The 13th is the `articles` field (articles_for_author): ONE scan of the
+        # article table (no bodies). Six matching articles are created here so
+        # the pin also proves that cost is flat rather than per-article — the
+        # page is walked once per author per locale on every prerender, so a
+        # per-article cost would multiply. An earlier draft of the field carried
+        # a second `Book` query; it was measured to select nothing this one
+        # missed and deleted (see articles_for_author).
+        for i in range(6):
+            Article.objects.create(
+                slug=f"a{i}-guide", language="en", h1=f"Guide {i}",
+                description="d", body_html="<p>x</p>", is_published=True,
+                related=[{"type": "author", "slug": "murray"}],
+            )
+        with self.assertNumQueries(13):
             self.client.get("/api/library/authors/murray/?language=en")
 
 

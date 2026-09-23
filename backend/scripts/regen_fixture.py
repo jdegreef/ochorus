@@ -3,14 +3,15 @@
 
 Layout (see ``library/content_fixtures.py``): ``fixtures/content/`` with
 ``authors.json``, one ``books/<slug>.<language>.json`` per book (book row then
-its chapters), one ``sermons/<slug>.<language>.json`` per sermon, and
-``plans.json``. Natural-key format throughout — no integer pks.
+its chapters), one ``sermons/<slug>.<language>.json`` per sermon, one
+``articles/<slug>.<language>.json`` per article, and ``plans.json``.
+Natural-key format throughout — no integer pks.
 
 The pinned recipe (any deviation mutates content relative to the committed
 files):
 
     fresh scratch DB -> migrate -> loaddata (all content fixtures, in order)
-    -> dumpdata of EXACTLY the six content models with
+    -> dumpdata of EXACTLY the content models in MODELS with
     --natural-primary --natural-foreign -> split into the layout
 
 Nothing else may run in between: the seed/backfill commands mutate rows
@@ -33,12 +34,14 @@ import subprocess
 import sys
 import tempfile
 from collections import Counter
+from datetime import datetime
 from pathlib import Path
 
 BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
 
 from library.content_fixtures import (  # noqa: E402  (path set above; no Django needed)
+    ARTICLES_DIR,
     AUTHORS_FILE,
     BOOKS_DIR,
     CONTENT_DIR,
@@ -57,6 +60,7 @@ MODELS = [
     "library.book",
     "library.chapter",
     "library.sermon",
+    "library.article",
     "library.plan",
     "library.planday",
 ]
@@ -77,7 +81,48 @@ DEFAULTED_OK = {
     ("library.sermon", "source_type"),
     ("library.sermon", "body_text"),
     ("library.sermon", "summary"),  # "In brief" TL;DR — blank default, fixture-owned
+    ("library.author", "faq"),
+    ("library.author", "list_in_biographies"),
+    ("library.author", "milestones"),
+    ("library.author", "photo_attribution"),
+    ("library.author", "photo_source_url"),
+    ("library.book", "about_html"),
+    ("library.book", "pdf_url"),
+    ("library.book", "qa"),
+    ("library.sermon", "attribution"),
+    ("library.sermon", "study_questions"),
+    ("library.article", "source_type"),
 }
+
+# (model, field) pairs that dumpdata materializes but whose default is NOT
+# inert in a fixture: a row that carries word_count must carry the one its
+# body_html gives (tests_fixture), and loaddata leaves 0. Absent in the source
+# means absent in the output — backfill_word_count fills them after load.
+DROPPED_IF_ABSENT = {
+    ("library.article", "word_count"),
+}
+
+# Hand-written fixtures spell timestamps their own way ("…00.000Z", or with
+# microseconds); Django's serializer writes "…00Z" and truncates to
+# milliseconds. Same instant, different string — compared as instants, and the
+# source's spelling is kept on write so a regen doesn't churn every such file.
+TIMESTAMP_FIELDS = {"created_at", "updated_at"}
+
+
+def _ms(value: str) -> datetime:
+    dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    return dt.replace(microsecond=dt.microsecond // 1000 * 1000)
+
+
+def same_value(field: str, old, new) -> bool:
+    if old == new:
+        return True
+    if field in TIMESTAMP_FIELDS and isinstance(old, str) and isinstance(new, str):
+        try:
+            return _ms(old) == _ms(new)
+        except ValueError:
+            return False
+    return False
 
 
 def manage(env, *args):
@@ -95,7 +140,7 @@ def identity(row):
     m = row["model"]
     if m in ("library.author", "library.series"):
         return (m, f["slug"])
-    if m in ("library.book", "library.sermon", "library.plan"):
+    if m in ("library.book", "library.sermon", "library.article", "library.plan"):
         return (m, f["slug"], f.get("language", "en"))
     if m == "library.chapter":
         return (m, tuple(f["book"]), f["order"])
@@ -129,6 +174,10 @@ def split_layout(rows: list[dict]) -> dict[Path, list[dict]]:
     for s in by_model.get("library.sermon", []):
         f = s["fields"]
         files[SERMONS_DIR / work_filename(f["slug"], f.get("language", "en"))] = [s]
+
+    for a in by_model.get("library.article", []):
+        f = a["fields"]
+        files[ARTICLES_DIR / work_filename(f["slug"], f.get("language", "en"))] = [a]
 
     days_by_plan: dict[tuple, list[dict]] = {}
     for r in by_model.get("library.planday", []):
@@ -188,8 +237,10 @@ def main():
     for r in new_rows:
         old = src_by_id[identity(r)]
         for k, v in r["fields"].items():
-            if k in old and old[k] != v:
+            if k in old and not same_value(k, old[k], v):
                 drift.append((identity(r), k))
+            elif k in TIMESTAMP_FIELDS and k in old:
+                r["fields"][k] = old[k]
         for k in old:
             if k not in r["fields"]:
                 drift.append((identity(r), "-" + k))
@@ -199,7 +250,8 @@ def main():
         (r["model"], k)
         for r in new_rows
         for k in r["fields"]
-        if k not in src_by_id[identity(r)] and (r["model"], k) not in DEFAULTED_OK
+        if k not in src_by_id[identity(r)]
+        and (r["model"], k) not in DEFAULTED_OK | DROPPED_IF_ABSENT
     )
     if materialized:
         detail = ", ".join(f"{m}.{k}×{n}" for (m, k), n in sorted(materialized.items()))
@@ -212,6 +264,10 @@ def main():
         )
 
     # --- write the layout ----------------------------------------------------
+    for r in new_rows:
+        old = src_by_id[identity(r)]
+        for k in [k for k in r["fields"] if k not in old and (r["model"], k) in DROPPED_IF_ABSENT]:
+            del r["fields"][k]
     files = split_layout(new_rows)
     assert sum(len(v) for v in files.values()) == len(new_rows)
     # Write the full layout to a sibling temp dir, then swap — a crash mid-write

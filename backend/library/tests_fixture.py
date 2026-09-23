@@ -178,13 +178,34 @@ class FixtureIntegrityTests(SimpleTestCase):
         self.assertEqual(
             extra, set(),
             "Unexpected model in the content fixtures — a bare `dumpdata library` from a "
-            "seeded dev DB leaks Topic/translation rows; use the pinned 6-model "
+            "seeded dev DB leaks Topic/translation rows; use the pinned "
             "regen recipe (backend/scripts/regen_fixture.py).",
         )
         self.assertEqual(
             missing, set(),
             "A content model has no rows in the content fixtures — if intentional, "
             "update EXPECTED_MODELS consciously.",
+        )
+
+    def test_regen_dumps_every_content_model(self):
+        # regen_fixture.py dumps a pinned MODELS list, then replaces content/
+        # wholesale. A model the fixture holds but MODELS omits fails its row
+        # count on every run — and were that check ever loosened, the swap
+        # would delete that model's files. Articles went unnoticed this way
+        # until someone ran a regen; this makes it the adding PR's failure.
+        # Read by ast: the script is a CLI, not an importable module.
+        path = settings.BASE_DIR / "scripts" / "regen_fixture.py"
+        models = next(
+            ast.literal_eval(node.value)
+            for node in ast.parse(path.read_text()).body
+            if isinstance(node, ast.Assign)
+            and any(getattr(t, "id", None) == "MODELS" for t in node.targets)
+        )
+        self.assertEqual(
+            set(models), EXPECTED_MODELS,
+            "regen_fixture.MODELS must list exactly the content models — add the "
+            "new model there (with an identity() branch and a split_layout "
+            "destination) when you add it to EXPECTED_MODELS.",
         )
 
     def test_no_integer_pk_rows(self):

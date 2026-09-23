@@ -244,6 +244,16 @@
 			"layout": "duotone/indigo",
 			"bar": 0.05
 		},
+		"ar/stepping-stones-2": {
+			"ground": "cce4179cf707959b03465a20af2259c758e360a66261ff0d41a5ceb637b7d0ec",
+			"style": "house",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ar/the-christians-secret-of-a-happy-life-4": {
 			"ground": "6162c6864a9d095720f7695166bc7fb204d1191a2af40338e15f2f9745ce8b21",
 			"style": "devotional",
@@ -3372,6 +3382,16 @@
 			"art": true,
 			"scrim": 0.65,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"uk/stepping-stones-2": {
+			"ground": "bbd606860f1563477aa132066eb3a20a80b0c0f807f34c241e8d8418be0c0551",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
 			"bar": 0
 		},
 		"uk/the-inner-chamber": {

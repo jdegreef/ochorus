@@ -25,3 +25,17 @@ describe('readingGoal', () => {
 		expect(readingGoal.perWeek).toBe(DEFAULT_GOAL);
 	});
 });
+
+describe('yearly books goal', () => {
+	it('is unset by default, then set per year, clamped, and cleared', () => {
+		expect(readingGoal.booksFor(2026)).toBeNull();
+		readingGoal.setBooks(2026, 12);
+		readingGoal.setBooks(2025, 999);
+		expect(readingGoal.booksFor(2026)).toBe(12);
+		expect(readingGoal.booksFor(2025)).toBe(365);
+		expect(JSON.parse(localStorage.getItem('ochorus:reading-goal-books')!)).toEqual({ '2026': 12, '2025': 365 });
+		readingGoal.setBooks(2026, null);
+		expect(readingGoal.booksFor(2026)).toBeNull();
+		readingGoal.setBooks(2025, null);
+	});
+});

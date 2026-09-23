@@ -23,6 +23,7 @@
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
+	import ArticleLinkCard from '$lib/components/ArticleLinkCard.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
@@ -529,22 +530,7 @@
 			<h2 class="section-heading">Reader’s guide</h2>
 			<ul class="mt-3 flex flex-col gap-3">
 				{#each book.guides as guide (guide.slug)}
-					<li>
-						<!-- Bespoke card (a "Read the guide" CTA, not a reading-time row like
-						     ArticleCard), but it rides the shared `.card-tint` hover recipe
-						     (border→accent, ground→surface-2, no lift) so it warms exactly like
-						     every other row card — see page-design D3/H1. -->
-						<a
-							href={localizeHref(`/articles/${guide.slug}/`)}
-							class="card-tint block rounded-card border border-border bg-surface p-4"
-						>
-							<span class="text-h3">{guide.h1}</span>
-							{#if guide.description}
-								<span class="mt-1 block text-body text-muted">{guide.description}</span>
-							{/if}
-							<span class="mt-2 block text-body text-accent">Read the guide →</span>
-						</a>
-					</li>
+					<li><ArticleLinkCard article={guide} cta="Read the guide" /></li>
 				{/each}
 			</ul>
 		</section>
