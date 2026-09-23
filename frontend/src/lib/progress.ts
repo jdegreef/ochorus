@@ -3,6 +3,7 @@ import { readingSync } from './readingSync';
 import { readingActivity } from './readingActivity.svelte';
 import { storageHealth } from './storageHealth.svelte';
 import { undo, UNDO_MS } from './undo.svelte';
+import { addPending, clearPending } from './removals';
 import {
 	PROGRESS_KEY,
 	ANCHOR_KEY,
@@ -197,6 +198,48 @@ export function offerFinishUnopened(
 			window.dispatchEvent(new CustomEvent('ochorus:sync'));
 		}
 	});
+}
+
+/**
+ * Take a work off the reader's shelf — the Bookshelf's "Remove from shelf" for
+ * a book being read or finished. Drops its position here and on the account,
+ * which keeps a tombstone so another device still holding the position can't
+ * merge it back (reading.models.Removal). Until the account confirms, the
+ * removal waits in removals.ts and rides the next merge.
+ *
+ * Highlights, notes, bookmarks and the reading streak are untouched: this
+ * removes the book from the shelf, not the reading that happened in it.
+ * Returns the removed record, for `restoreWork` (Undo).
+ */
+export function removeWork(slug: string, kind: WorkKind = 'book'): ProgressRecord | null {
+	if (!browser) return null;
+	const map = read();
+	const key = workSlugKey(kind, slug);
+	const rec = map[key];
+	if (!rec) return null;
+	delete map[key];
+	write(map);
+	const at = addPending('progress', kind, slug);
+	readingSync.removeProgress(kind, slug, at);
+	window.dispatchEvent(new CustomEvent('ochorus:sync'));
+	return rec;
+}
+
+/**
+ * Undo `removeWork`: put the record back, stamped NOW. The account may already
+ * hold the tombstone, and it only yields to a write newer than the removal —
+ * so the restored position is re-pushed with a fresh clock (its chapter,
+ * paragraph and any finish carried unchanged), which lifts the tombstone.
+ */
+export function restoreWork(slug: string, rec: ProgressRecord, kind: WorkKind = 'book'): void {
+	if (!browser) return;
+	clearPending('progress', kind, slug);
+	const map = read();
+	const restored: ProgressRecord = { ...rec, at: Date.now() };
+	map[workSlugKey(kind, slug)] = restored;
+	write(map);
+	readingSync.pushProgress(kind, slug, restored);
+	window.dispatchEvent(new CustomEvent('ochorus:sync'));
 }
 
 /** Un-finish a work — an explicit "not done after all" / Undo. Clears the stamp

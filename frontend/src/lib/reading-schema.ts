@@ -17,6 +17,8 @@ export const ANCHOR_KEY = 'ochorus:anchors';
 export const BOOKMARKS_KEY = 'ochorus:bookmarks';
 export const PLANS_KEY = 'ochorus:plans';
 export const FAVORITES_KEY = 'ochorus:favorites';
+/** Removals (un-hearts, shelf removals) the account hasn't confirmed — see removals.ts. */
+export const REMOVALS_KEY = 'ochorus:removals';
 // The reading-streak activity log: a JSON array of local 'YYYY-MM-DD' days the
 // reader read on. Synced (union-merged) with the account like the rest.
 export const ACTIVITY_KEY = 'ochorus:activity';
@@ -56,6 +58,7 @@ export const READING_DATA_KEYS = [
 	BOOKMARKS_KEY,
 	PLANS_KEY,
 	FAVORITES_KEY,
+	REMOVALS_KEY,
 	ACTIVITY_KEY,
 	LAST_SYNC_KEY,
 	PACE_KEY,
