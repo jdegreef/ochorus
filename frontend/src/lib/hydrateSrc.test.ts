@@ -1,3 +1,5 @@
+import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { join, relative } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { hydrateSrc } from './hydrateSrc';
 
@@ -44,5 +46,48 @@ describe('hydrateSrc', () => {
 		expect(img.getAttribute('src')).toBe('/covers/same.jpg');
 		hydrateSrc(img, { src: '' });
 		expect(img.getAttribute('src')).toBe('/covers/same.jpg');
+	});
+});
+
+/**
+ * The action only protects the images that wear it, and forgetting it is
+ * invisible: the page looks right until the data behind a prerendered list
+ * drifts, and then a card shows one item's picture under another's name. So,
+ * like rtl.test.ts, this is a source-text check: every `<img>` whose `src` is
+ * an expression must carry `use:hydrateSrc`.
+ *
+ * One named exception: BookCover's `whenComplete`, which calls `hydrateSrc`
+ * itself — it has to repoint before it measures, in ONE action, so the order
+ * cannot depend on how Svelte attaches two.
+ */
+describe('every data-driven <img> keeps its src on its data', () => {
+	const SRC = join(process.cwd(), 'src');
+	const svelteFiles = (dir: string, out: string[] = []): string[] => {
+		for (const name of readdirSync(dir)) {
+			const path = join(dir, name);
+			if (statSync(path).isDirectory()) {
+				if (name !== 'paraglide') svelteFiles(path, out);
+			} else if (name.endsWith('.svelte')) out.push(path);
+		}
+		return out;
+	};
+
+	it('wears use:hydrateSrc', () => {
+		const missing: string[] = [];
+		for (const path of svelteFiles(SRC)) {
+			const text = readFileSync(path, 'utf8');
+			// `<img ` to its self-closing `/>` — an `=>` inside a handler does not
+			// end the tag, which a bare `>` would; the space skips prose mentions
+			// of `<img>` in comments.
+			for (const m of text.matchAll(/<img\s[\s\S]*?\/>/g)) {
+				const tag = m[0];
+				if (!/\ssrc=\{/.test(tag)) continue; // a literal path is not data
+				if (/use:hydrateSrc\b/.test(tag)) continue;
+				if (path.endsWith('BookCover.svelte') && /use:whenComplete\b/.test(tag)) continue;
+				const line = text.slice(0, m.index).split('\n').length;
+				missing.push(`${relative(SRC, path)}:${line}`);
+			}
+		}
+		expect(missing).toEqual([]);
 	});
 });

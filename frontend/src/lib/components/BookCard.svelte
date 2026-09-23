@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type BookSummary } from '$lib/library-public';
+	import { type CoverBook } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
@@ -21,7 +21,7 @@
 		 * shelf and carries the `#author-<slug>` target the quick-nav jumps to.
 		 */
 		anchor
-	}: { book: BookSummary; showAuthor?: boolean; priority?: boolean; anchor?: string } = $props();
+	}: { book: CoverBook; showAuthor?: boolean; priority?: boolean; anchor?: string } = $props();
 	const t = i18n.t;
 
 	const chapters = $derived(

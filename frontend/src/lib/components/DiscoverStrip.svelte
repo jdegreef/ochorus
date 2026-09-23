@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { BookSummary } from '$lib/library-public';
+	import type { CoverBook } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -12,7 +12,7 @@
 	 * bare heading over an empty grid reads as "Ochorus has no books", where
 	 * showing nothing simply reads as a shorter page.
 	 */
-	let { books }: { books: BookSummary[] } = $props();
+	let { books }: { books: CoverBook[] } = $props();
 
 	const t = i18n.t;
 </script>

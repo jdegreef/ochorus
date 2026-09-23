@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { BookSummary, AuthorBio, TopicSummary } from '$lib/library-public';
+	import type { CoverBook, AuthorTileData, TopicCount } from '$lib/library-public';
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
@@ -26,17 +26,16 @@
 	 * recommendations, favourites) live only on the signed-in dashboard.
 	 */
 	interface HomeData {
-		books: BookSummary[];
-		featured: BookSummary[];
-		authors: AuthorBio[];
-		topics?: TopicSummary[];
+		featured: CoverBook[];
+		authors: AuthorTileData[];
+		topics?: TopicCount[];
 		counts?: { books: number; authors: number; sermons: number };
 	}
 	let { data }: { data: HomeData } = $props();
 
-	const featured = $derived<BookSummary[]>(data.featured);
-	const authors = $derived<AuthorBio[]>(data.authors);
-	const topics = $derived<TopicSummary[]>(data.topics ?? []);
+	const featured = $derived<CoverBook[]>(data.featured);
+	const authors = $derived<AuthorTileData[]>(data.authors);
+	const topics = $derived<TopicCount[]>(data.topics ?? []);
 
 	const t = i18n.t;
 
@@ -157,7 +156,7 @@
 			</div>
 		</div>
 	</section>
-	<div class="personal order-1"><ContinueReading books={data.books} /><ReadingNudge /></div>
+	<div class="personal order-1"><ContinueReading /><ReadingNudge /></div>
 </div>
 
 <!-- Discover Your Next Book — above the plan/sermon blocks -->
@@ -188,7 +187,7 @@
      one component (three A/B arms + a progress-targeted one); it self-gates on
      `auth.enabled`, so it stays hidden where accounts don't work and never bakes
      into the prerendered HTML. See SignupBand. -->
-<SignupBand books={data.books} />
+<SignupBand />
 
 <!-- Sermon of the week — editorial content discovery, not personal. Renders
      nothing when there is no featured sermon in the current language. -->

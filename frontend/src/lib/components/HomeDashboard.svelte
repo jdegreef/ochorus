@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { BookSummary, TopicSummary } from '$lib/library-public';
+	import type { CoverBook, TopicCount } from '$lib/library-public';
 	import * as m from '$lib/paraglide/messages.js';
 	import { auth } from '$lib/auth.svelte';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
@@ -27,14 +27,13 @@
 	// The dashboard never shows the author roster (that lives on the marketing
 	// page), so it takes a narrower slice of the page data than HomeMarketing.
 	interface HomeData {
-		books: BookSummary[];
-		featured: BookSummary[];
-		topics?: TopicSummary[];
+		featured: CoverBook[];
+		topics?: TopicCount[];
 	}
 	let { data }: { data: HomeData } = $props();
 
-	const featured = $derived<BookSummary[]>(data.featured);
-	const topics = $derived<TopicSummary[]>(data.topics ?? []);
+	const featured = $derived<CoverBook[]>(data.featured);
+	const topics = $derived<TopicCount[]>(data.topics ?? []);
 
 	// The display name if the reader set one, else the local part of their email
 	// (never the full address — a greeting is not the place to print it). The
@@ -57,7 +56,7 @@
 
 <!-- Resume first: the one thing a returning reader most likely came back to do.
      Promoted above every other block, full width, with deep-link resume. -->
-<ContinueReading books={data.books} />
+<ContinueReading />
 
 <!-- Streak, weekly goal, reading calendar and totals — self-hides until there's
      activity to show (replaces the compact ReadingNudge on the dashboard). -->
@@ -68,7 +67,7 @@
 <PlansProgress />
 
 <!-- Personalised discovery — self-hides until there is history to score against -->
-<RecommendedNext books={data.books} />
+<RecommendedNext />
 
 <!-- Saved items -->
 <FavoritesShelf />

@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { BookSummary } from '$lib/library-public';
+	import { listBooks } from '$lib/library-public';
+	import { getLang } from '$lib/lang.svelte';
 	import type { ResumeItem } from '$lib/resumeItems';
 	import { auth } from '$lib/auth.svelte';
 	import { localizeHref } from '$lib/href';
@@ -27,8 +28,6 @@
 	 * only client-side once we know the reader is signed out. The reader's place
 	 * comes from the local progress cache, read after mount.
 	 */
-	let { books }: { books: BookSummary[] } = $props();
-
 	const t = i18n.t;
 	const signupHref = $derived(`${localizeHref('/login')}?mode=signup`);
 
@@ -46,12 +45,18 @@
 		const progress = allProgress();
 		const hasProgress = progress.some((p) => p.finished_at == null);
 		variant = chooseVariant(hasProgress);
-		// Reuse the one read above; books only, so the caption never waits on the
-		// sermon list.
-		topBook = hasProgress
-			? (buildResumeItems(books, [], progress).find((i) => !i.finished) ?? null)
-			: null;
 		decided = true;
+		// The caption names the reader's book, so the book list is fetched only
+		// for a reader who has one in progress — and fills the caption in when it
+		// lands, rather than the home page waiting on it to hydrate. Books only,
+		// so the caption never waits on the sermon list either.
+		if (hasProgress) {
+			listBooks(getLang())
+				.then((books) => {
+					topBook = buildResumeItems(books, [], progress).find((i) => !i.finished) ?? null;
+				})
+				.catch(() => {});
+		}
 	});
 
 	const show = $derived(auth.enabled && auth.initialized && !auth.user && decided);

@@ -60,10 +60,11 @@
 	style={sticky ? 'top: var(--pinned-offset, 0px)' : undefined}
 >
 	{#if portraitUrl}
+		{@const source = { src: portraitUrl, srcset: portraitSrcset(portraitUrl) }}
 		<img
-			src={portraitUrl}
-			srcset={portraitSrcset(portraitUrl)}
-			use:hydrateSrc={{ src: portraitUrl, srcset: portraitSrcset(portraitUrl) }}
+			src={source.src}
+			srcset={source.srcset}
+			use:hydrateSrc={source}
 			sizes="32px"
 			alt=""
 			loading="lazy"

@@ -8,9 +8,9 @@
 	// script (see its header). Global rather than scoped, like app.css's other
 	// component classes, and namespaced under `.cover-*` so it cannot collide.
 	import './cover-type.css';
-	import type { BookSummary } from '$lib/library-public';
+	import type { CoverBook } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
-	import { hydrateSrc } from '$lib/hydrateSrc';
+	import { hydrateSrc, type ImgSource } from '$lib/hydrateSrc';
 	import BrandMark from './BrandMark.svelte';
 
 	const t = i18n.t;
@@ -69,7 +69,7 @@
 		rounded = 'rounded-card',
 		priority = false
 	}: {
-		book: BookSummary;
+		book: CoverBook;
 		rounded?: string;
 		/** The page's main image (a book's own page): load it eagerly, declare its
 		 * intrinsic size so space is reserved before app.css lands, and skip the
@@ -114,10 +114,13 @@
 	 * at 1.0s and was only seen as loaded at 2.3s, when the grid re-rendered.
 	 * So on attach, an image that is already complete is treated as loaded now.
 	 */
-	function whenComplete(img: HTMLImageElement) {
-		// `hydrateSrc` runs first (it is attached first), so a cover prerendered
-		// for another book has already been repointed and is not `complete`.
+	function whenComplete(img: HTMLImageElement, source: ImgSource) {
+		// Repoint FIRST, in the same action rather than a second one beside it:
+		// a cover prerendered for another book must not be measured as this one's.
+		// Two actions would make that depend on the order Svelte attaches them.
+		const repoint = hydrateSrc(img, source);
 		if (img.complete && img.naturalWidth) onLoaded(img);
+		return repoint;
 	}
 
 	// The two grounds that carry no words and want type over them. A DESIGNED
@@ -139,7 +142,9 @@
 	const needsMat = $derived(
 		isDesigned && ratioUrl === book.cover_url && Math.abs(ratio - 3 / 4) > 0.01
 	);
-	const srcset = $derived(coverSrcset(book.cover_url));
+	/** The cover's `src`/`srcset`, stated once for the markup and the action
+	 *  that keeps them on this book (see `$lib/hydrateSrc`). */
+	const source = $derived({ src: book.cover_url, srcset: coverSrcset(book.cover_url) || undefined });
 	const label = $derived(`${t('a11y.coverOf')} ${book.title}`);
 
 	/** The author's house style — a class name; `cover-type.css` holds the rest. */
@@ -224,8 +229,8 @@
 			<div class="absolute inset-0 animate-pulse bg-surface-2"></div>
 		{/if}
 		<img
-			src={book.cover_url}
-			srcset={srcset || undefined}
+			src={source.src}
+			srcset={source.srcset}
 			alt={overFile ? '' : label}
 			loading={priority ? 'eager' : 'lazy'}
 			fetchpriority={priority ? 'high' : undefined}
@@ -233,8 +238,7 @@
 			height={priority ? 400 : undefined}
 			onload={(e) => onLoaded(e.currentTarget as HTMLImageElement)}
 			onerror={() => (failedUrl = book.cover_url)}
-			use:hydrateSrc={{ src: book.cover_url, srcset: srcset || undefined }}
-			use:whenComplete
+			use:whenComplete={source}
 			class="absolute inset-0 h-full w-full {needsMat ? 'object-contain' : 'object-cover'}"
 		/>
 		{#if needsMat}
@@ -246,8 +250,9 @@
 			     already carries the label — and after it in the DOM so the real cover
 			     stays `querySelector('img')`. -->
 			<img
-				src={book.cover_url}
-				srcset={srcset || undefined}
+				src={source.src}
+				srcset={source.srcset}
+				use:hydrateSrc={source}
 				alt=""
 				aria-hidden="true"
 				loading={priority ? 'eager' : 'lazy'}

@@ -1,6 +1,13 @@
 import { building } from '$app/environment';
 import { listBooks, listAuthors, listTopics, listSermons } from '$lib/library-public';
-import type { AuthorBio, BookSummary, TopicSummary } from '$lib/library-public';
+import type {
+	AuthorBio,
+	AuthorTileData,
+	BookSummary,
+	CoverBook,
+	TopicCount,
+	TopicSummary
+} from '$lib/library-public';
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { isPlateCover } from '$lib/coverArt';
 
@@ -19,17 +26,22 @@ import { isPlateCover } from '$lib/coverArt';
  * So `routes/home-shelves/[lang].json` serves this at build time, and the home
  * `load` reads it through SvelteKit's `fetch`, which inlines the response into
  * the prerendered page and replays it at hydration. Both runs see the same
- * snapshot, byte for byte. It is small (six books, eight authors, eight topics)
- * — inlining the four full lists the page used to fetch would have added about
- * 86 KB gzipped to a 12 KB front page.
+ * snapshot, byte for byte. It is small: six books, eight authors and eight
+ * topics, each PROJECTED to the fields the page draws (`CoverBook`,
+ * `AuthorTileData`, `TopicCount`) — whole API objects carried every author's
+ * bio and every topic's cover list, and the four full lists would have added
+ * about 86 KB gzipped to a 12 KB front page.
  *
- * The shelves rotate per deploy rather than per calendar day, which is the
- * trade the prerendered HTML already made.
+ * The shelves and counts are the BUILD's, on every home visit — including a
+ * client-side navigation home, which reads the same static file. So a book
+ * published between deploys reaches the home page with the next deploy, as it
+ * reaches the prerendered HTML. That is the trade: a front page that never
+ * disagrees with itself, rotated per deploy rather than per calendar day.
  */
 export interface HomeShelves {
-	featured: BookSummary[];
-	authors: AuthorBio[];
-	topics: TopicSummary[];
+	featured: CoverBook[];
+	authors: AuthorTileData[];
+	topics: TopicCount[];
 	counts: { books: number; authors: number; sermons: number };
 }
 
@@ -62,8 +74,33 @@ const HOME_TOPIC_LIMIT = 8;
  * replaces a page whose chrome, nav and personal blocks all still work with a
  * full-page error. So: loud at build time, degraded at run time.
  */
-export const shelf = <T>(pending: Promise<T[]>): Promise<T[]> =>
+const shelf = <T>(pending: Promise<T[]>): Promise<T[]> =>
 	building ? pending : pending.catch(() => []);
+
+const coverBook = (b: BookSummary): CoverBook => ({
+	slug: b.slug,
+	language: b.language,
+	title: b.title,
+	subtitle: b.subtitle,
+	author: { slug: b.author.slug, name: b.author.name, birth_year: b.author.birth_year },
+	source_type: b.source_type,
+	cover_color: b.cover_color,
+	cover_url: b.cover_url,
+	chapter_count: b.chapter_count,
+	word_count: b.word_count
+});
+const authorTile = (a: AuthorBio): AuthorTileData => ({
+	slug: a.slug,
+	name: a.name,
+	photo_url: a.photo_url,
+	book_count: a.book_count
+});
+const topicCount = (t: TopicSummary): TopicCount => ({
+	slug: t.slug,
+	title: t.title,
+	book_count: t.book_count,
+	sermon_count: t.sermon_count
+});
 
 /** The snapshot's derivation, pure so it can be tested without an API. */
 export function deriveHomeShelves(
@@ -90,13 +127,14 @@ export function deriveHomeShelves(
 			6,
 			day,
 			(b) => b.author.slug
-		),
+		).map(coverBook),
 		// Most-published first (name breaks ties, so the cap is stable across
 		// builds) — if only eight authors fit, they should be the substantial ones.
 		authors: authors
 			.filter((a) => a.book_count > 0)
 			.sort((a, b) => b.book_count - a.book_count || a.name.localeCompare(b.name))
-			.slice(0, AUTHOR_LIMIT),
+			.slice(0, AUTHOR_LIMIT)
+			.map(authorTile),
 		topics: topics
 			.filter((topic) => topic.book_count > 0)
 			.sort(
@@ -104,7 +142,8 @@ export function deriveHomeShelves(
 					b.book_count + b.sermon_count - (a.book_count + a.sermon_count) ||
 					a.title.localeCompare(b.title)
 			)
-			.slice(0, HOME_TOPIC_LIMIT),
+			.slice(0, HOME_TOPIC_LIMIT)
+			.map(topicCount),
 		// Library breadth for the hero's social-proof line. Counts of what this
 		// LANGUAGE actually has (the lists are already per-locale), so a locale
 		// with fewer works advertises its own honest numbers, not English's.
