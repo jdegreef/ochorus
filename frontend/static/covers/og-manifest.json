@@ -714,6 +714,16 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"es/stepping-stones-2": {
+			"ground": "cdc9aea6e5229784a719053845bdedcc72064aeb8c5f32141beaa9c81324b827",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/talks-to-the-farmer": {
 			"ground": "abc63c24446d73ff2a0cca4588c0648360cc1738e42281f67bb9a842dd9454e8",
 			"style": "revival",
