@@ -25,7 +25,16 @@
 	import { unslug } from '$lib/strings';
 	import { topicMeta } from '$lib/emblemNames';
 	import { allProgress } from '$lib/progress';
-	import { buildShelves, shelfHref } from '$lib/bookshelf';
+	import {
+		buildShelves,
+		customShelfItems,
+		shelfHref,
+		sortShelf,
+		SHELF_SORTS,
+		type ShelfSort
+	} from '$lib/bookshelf';
+	import { customShelves } from '$lib/customShelves.svelte';
+	import { undo } from '$lib/undo.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import Icon from '$lib/components/Icon.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -121,7 +130,60 @@
 		return allProgress();
 	});
 	const bookList = $derived(Object.values(books));
-	const shelves = $derived(buildShelves(bookList, bookFavs, progress));
+	const built = $derived(buildShelves(bookList, bookFavs, progress));
+
+	// Sort — one choice for every shelf, remembered on this device like the
+	// covers/spines view. "Recent" keeps each shelf's own order.
+	const SORT_KEY = 'ochorus:shelf-sort';
+	let sort = $state<ShelfSort>(
+		((s) => (SHELF_SORTS.includes(s as ShelfSort) ? (s as ShelfSort) : 'recent'))(
+			readJSON<string>(SORT_KEY, 'recent')
+		)
+	);
+	function setSort(v: ShelfSort) {
+		sort = v;
+		writeJSON(SORT_KEY, v);
+	}
+	const sortLabels: Record<ShelfSort, string> = {
+		recent: t('sort.recent'),
+		title: t('common.sortTitle'),
+		author: t('sort.author'),
+		shortest: t('common.sortShortest'),
+		longest: t('common.sortLongest')
+	};
+	const locale = getLang();
+	const shelves = $derived({
+		...built,
+		reading: sortShelf(built.reading, sort, locale),
+		toRead: sortShelf(built.toRead, sort, locale),
+		finished: sortShelf(built.finished, sort, locale)
+	});
+
+	// The reader's own shelves, each drawn like the built-in ones.
+	const mine = $derived(
+		customShelves.list().map((s) => ({
+			id: s.id,
+			name: s.name,
+			items: sortShelf(
+				customShelfItems(customShelves.books(s.id), bookList, bookFavs, progress),
+				sort,
+				locale
+			)
+		}))
+	);
+	function deleteShelf(id: string) {
+		customShelves.setDeleted(id, true);
+		undo.offer({ restore: () => customShelves.setDeleted(id, false) });
+	}
+	let creating = $state(false);
+	let newShelfName = $state('');
+	function createShelf(e: Event) {
+		e.preventDefault();
+		if (customShelves.create(newShelfName)) {
+			newShelfName = '';
+			creating = false;
+		}
+	}
 	const bookCount = $derived(
 		shelves.reading.length + shelves.toRead.length + shelves.finished.length
 	);
@@ -145,13 +207,14 @@
 			{ id: 'to-read', label: t('fav.shelfToRead'), count: shelves.toRead.length },
 			{ id: 'year', label: t('year.title'), count: -1 },
 			{ id: 'finished', label: t('fav.shelfFinished'), count: shelves.finished.length },
+			...mine.map((m) => ({ id: `shelf-${m.id}`, label: m.name, count: m.items.length })),
 			{ id: 'sermons', label: t('fav.groupSermons'), count: sermonFavs.length },
 			{ id: 'authors', label: t('fav.groupAuthors'), count: authorFavs.length },
 			{ id: 'topics', label: t('fav.groupTopics'), count: topicFavs.length },
 			{ id: 'plans', label: t('fav.groupPlans'), count: planFavs.length },
 			{ id: 'articles', label: t('fav.groupArticles'), count: articleFavs.length },
 			{ id: 'quotes', label: t('fav.groupQuotes'), count: quoteFavs.length }
-		].filter((j, i) => i < 4 || j.count > 0)
+		].filter((j, i) => i < 4 + mine.length || j.count > 0)
 	);
 
 	// Quotes have no catalog to load up front (there's no "list all quotes"), so
@@ -265,7 +328,19 @@
 
 	{#if loaded}
 		{#if bookCount}
-			<div class="-mb-6 mt-8 flex justify-end">
+			<div class="-mb-6 mt-8 flex flex-wrap items-center justify-end gap-3">
+				<label class="flex items-center gap-2 text-small text-muted">
+					{t('common.sort')}
+					<select
+						class="field w-auto"
+						value={sort}
+						onchange={(e) => setSort((e.currentTarget as HTMLSelectElement).value as ShelfSort)}
+					>
+						{#each SHELF_SORTS as s (s)}
+							<option value={s}>{sortLabels[s]}</option>
+						{/each}
+					</select>
+				</label>
 				<div class="view-toggle" role="group" aria-label={t('fav.shelfView')}>
 					<button type="button" aria-pressed={view === 'covers'} onclick={() => setView('covers')}>
 						<Icon name="grid" size={15} />
@@ -307,6 +382,44 @@
 			items={shelves.finished}
 			emptyHint={t('fav.shelfFinishedEmpty')}
 		/>
+		{#each mine as m (m.id)}
+			<Bookshelf
+				{view}
+				id="shelf-{m.id}"
+				shelfId={m.id}
+				title={m.name}
+				items={m.items}
+				emptyHint={t('shelves.empty')}
+				onrename={(name) => customShelves.rename(m.id, name)}
+				ondelete={() => deleteShelf(m.id)}
+			/>
+		{/each}
+		<!-- Make a shelf of your own. -->
+		<div class="mt-8">
+			{#if creating}
+				<form class="flex flex-wrap items-center gap-2" onsubmit={createShelf}>
+					<!-- svelte-ignore a11y_autofocus -->
+					<input
+						class="field min-w-0 flex-1 sm:max-w-sm"
+						maxlength="80"
+						placeholder={t('shelves.namePlaceholder')}
+						aria-label={t('shelves.new')}
+						bind:value={newShelfName}
+						autofocus
+					/>
+					<button type="submit" class="btn btn-sm btn-primary" disabled={!newShelfName.trim()}
+						>{t('shelves.create')}</button
+					>
+					<button type="button" class="btn btn-sm" onclick={() => (creating = false)}
+						>{t('common.cancel')}</button
+					>
+				</form>
+			{:else}
+				<button type="button" class="new-shelf" onclick={() => (creating = true)}>
+					+ {t('shelves.new')}
+				</button>
+			{/if}
+		</div>
 		{#if bookCount === 0 && !hasOthers}
 			<div class="mt-8 text-center">
 				<a href={localizeHref('/books')} class="btn btn-primary hover:no-underline"
@@ -451,6 +564,22 @@
 </div>
 
 <style>
+	.new-shelf {
+		display: block;
+		width: 100%;
+		padding: 1.1rem;
+		border: 1px dashed var(--color-border-strong);
+		border-radius: var(--radius-card);
+		background: transparent;
+		color: var(--color-muted);
+		font-size: var(--fs-small);
+		font-weight: 600;
+		cursor: pointer;
+	}
+	.new-shelf:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
 	.view-toggle {
 		display: inline-flex;
 		padding: 3px;

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildShelves, packRows, shelfHref, spineSize } from './bookshelf';
+import { buildShelves, packRows, shelfHref, spineSize, customShelfItems, sortShelf } from './bookshelf';
 import type { BookSummary } from './library-public';
 
 const book = (slug: string, chapter_count = 10) =>
@@ -90,5 +90,50 @@ describe('spines', () => {
 		expect(packRows([30, 30, 30, 30], 100, 5)).toEqual([[0, 1, 2], [3]]);
 		expect(packRows([200, 10], 100, 5)).toEqual([[0], [1]]);
 		expect(packRows([], 100, 5)).toEqual([]);
+	});
+});
+
+describe('customShelfItems', () => {
+	it('draws a chosen book with its reading status, newest-added first', () => {
+		const items = customShelfItems(
+			new Map([
+				['a', 1],
+				['c', 3],
+				['zz', 9]
+			]),
+			[book('a'), book('b'), book('c')],
+			[{ kind: 'book', slug: 'c', at: 1 }],
+			[{ ...rec('a', 2, 5), finished_at: 7 }]
+		);
+		expect(items.map((i) => [i.book.slug, i.status, i.saved])).toEqual([
+			['c', 'toRead', true],
+			['a', 'finished', false]
+		]);
+	});
+});
+
+describe('sortShelf', () => {
+	const items = customShelfItems(
+		new Map([
+			['b', 1],
+			['a', 2],
+			['c', 3]
+		]),
+		[
+			{ ...book('b'), title: 'Été', word_count: 50_000, author: { name: 'Zed', slug: 'z' } },
+			{ ...book('a'), title: 'apple', word_count: 90_000, author: { name: 'Ann', slug: 'n' } },
+			{ ...book('c'), title: 'Banana', word_count: 10_000, author: { name: 'Ann', slug: 'n' } }
+		] as BookSummary[],
+		[],
+		[]
+	);
+	const order = (mode: Parameters<typeof sortShelf>[1]) => sortShelf(items, mode).map((i) => i.book.slug);
+
+	it('keeps the shelf order for recent', () => expect(order('recent')).toEqual(['c', 'a', 'b']));
+	it('sorts titles case- and accent-insensitively', () => expect(order('title')).toEqual(['a', 'c', 'b']));
+	it('sorts by author, then title', () => expect(order('author')).toEqual(['a', 'c', 'b']));
+	it('sorts by length', () => {
+		expect(order('shortest')).toEqual(['c', 'b', 'a']);
+		expect(order('longest')).toEqual(['a', 'b', 'c']);
 	});
 });

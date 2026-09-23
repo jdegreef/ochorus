@@ -40,7 +40,10 @@
 		title,
 		items,
 		emptyHint,
-		view = 'covers'
+		view = 'covers',
+		shelfId = null,
+		onrename,
+		ondelete
 	}: {
 		id: string;
 		title: string;
@@ -48,7 +51,28 @@
 		view?: 'covers' | 'spines';
 		/** Written on the wall of an empty shelf. */
 		emptyHint: string;
+		/** One of the reader's own shelves: its books' Remove takes them off this
+		 *  shelf, and its header offers Rename / Delete (the two callbacks). */
+		shelfId?: string | null;
+		onrename?: (name: string) => void;
+		ondelete?: () => void;
 	} = $props();
+
+	// The custom shelf's header menu and inline rename.
+	let menuOpen = $state(false);
+	let renaming = $state(false);
+	let draftName = $state('');
+	let headerMenu = $state<HTMLDivElement>();
+	function startRename() {
+		draftName = title;
+		renaming = true;
+		menuOpen = false;
+	}
+	function saveRename(e: Event) {
+		e.preventDefault();
+		if (draftName.trim()) onrename?.(draftName);
+		renaming = false;
+	}
 
 	let width = $state(0);
 	// Cells of at least ~108px on a phone (two across at 375px), ~150px from `sm`
@@ -97,6 +121,13 @@
 <svelte:window
 	onkeydown={(e) => {
 		if (selected && e.key === 'Escape') close();
+		if (e.key === 'Escape') {
+			menuOpen = false;
+			renaming = false;
+		}
+	}}
+	onclick={(e) => {
+		if (menuOpen && headerMenu && !headerMenu.contains(e.target as Node)) menuOpen = false;
 	}}
 />
 
@@ -133,7 +164,7 @@
 			</div>
 		</div>
 		<div class="sm:w-60">
-			<ShelfBookActions {item} onDone={close} />
+			<ShelfBookActions {item} {shelfId} onDone={close} />
 		</div>
 		<button
 			type="button"
@@ -149,10 +180,52 @@
 
 <section {id} class="scroll-mt-24 pt-10" aria-labelledby="{id}-title">
 	<div class="mb-4 flex flex-wrap items-baseline gap-3">
-		<h2 id="{id}-title" class="text-h2">{title}</h2>
+		{#if renaming}
+			<form class="flex items-center gap-2" onsubmit={saveRename}>
+				<!-- svelte-ignore a11y_autofocus -->
+				<input
+					class="field text-body"
+					maxlength="80"
+					aria-label={t('shelves.rename')}
+					bind:value={draftName}
+					autofocus
+				/>
+				<button type="submit" class="btn btn-sm btn-primary">{t('common.save')}</button>
+				<button type="button" class="btn btn-sm" onclick={() => (renaming = false)}
+					>{t('common.cancel')}</button
+				>
+			</form>
+		{:else}
+			<h2 id="{id}-title" class="text-h2">{title}</h2>
+		{/if}
 		<span class="rounded-full bg-surface-2 px-2.5 py-0.5 text-small font-semibold text-muted"
 			>{items.length}</span
 		>
+		{#if shelfId && !renaming}
+			<div class="relative self-center" bind:this={headerMenu}>
+				<button
+					type="button"
+					class="flex h-8 w-8 items-center justify-center rounded-full text-muted hover:bg-surface-2 hover:text-accent"
+					aria-expanded={menuOpen}
+					aria-label="{t('shelves.actions')}: {title}"
+					onclick={() => (menuOpen = !menuOpen)}
+				>
+					<Icon name="more" size={18} />
+				</button>
+				{#if menuOpen}
+					<div class="account-menu menu-start" role="group" aria-label={t('shelves.actions')}>
+						<button class="account-item" onclick={startRename}>{t('shelves.rename')}</button>
+						<button
+							class="account-item danger"
+							onclick={() => {
+								menuOpen = false;
+								ondelete?.();
+							}}>{t('shelves.delete')}</button
+						>
+					</div>
+				{/if}
+			</div>
+		{/if}
 		<ShelfDownloadControl
 			shelf={id}
 			books={items.map((i) => ({ slug: i.book.slug, language: i.book.language }))}
@@ -183,7 +256,7 @@
 		{:else if items.length}
 			<ul class="shelf-rows" style:grid-template-columns="repeat({cols}, minmax(0, 1fr))">
 				{#each items as item (item.book.slug)}
-					<ShelfBook {item} />
+					<ShelfBook {item} {shelfId} />
 				{/each}
 				{#each { length: fillers } as _, i (i)}
 					<ShelfBook item={null} />
@@ -199,6 +272,15 @@
 </section>
 
 <style>
+	/* Scoped (two classes) because .account-menu / .account-item are unlayered:
+	   a Tailwind utility beside them would lose. */
+	.account-menu.menu-start {
+		inset-inline-end: auto;
+		inset-inline-start: 0;
+	}
+	.account-item.danger {
+		color: var(--color-danger);
+	}
 	.shelf-rows {
 		display: grid;
 		column-gap: 0;

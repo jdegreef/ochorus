@@ -9,7 +9,8 @@ import {
 	LAST_SYNC_KEY,
 	FAVORITES_KEY,
 	JOURNAL_KEY,
-	JOURNAL_DIRTY_KEY
+	JOURNAL_DIRTY_KEY,
+	SHELVES_KEY
 } from './reading-schema';
 import { addPending, bookmarkTarget, pendingAt } from './removals';
 
@@ -237,6 +238,42 @@ describe('readingSync.clearOnSignOut', () => {
 			fetchSpy.mockResolvedValueOnce(reply(true));
 			await readingSync.mergeOnSignIn();
 			expect(pendingAt('favorite', 'author', 'andrew-murray')).toBeNull();
+		} finally {
+			fetchSpy.mockRestore();
+			readingSync.setSignedIn(false);
+		}
+	});
+
+	it('the merge sends every shelf and merges the reply into the device copy', async () => {
+		const local = {
+			's-a': { id: 's-a', name: 'Lent', books: [{ slug: 'x', at: 5, removed: false }], deleted: false, created: 1, updated: 1 }
+		};
+		localStorage.setItem(SHELVES_KEY, JSON.stringify(local));
+		const server = {
+			shelf_id: 's-b',
+			name: 'From the phone',
+			books: [],
+			deleted: false,
+			client_created_at: new Date(2).toISOString(),
+			client_updated_at: new Date(2).toISOString()
+		};
+		const reply = (shelves?: unknown[]) =>
+			new Response(JSON.stringify({ progress: [], marks: [], ...(shelves ? { shelves } : {}) }), {
+				status: 200,
+				headers: { 'content-type': 'application/json' }
+			});
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(reply([server]));
+		try {
+			readingSync.setSignedIn(true);
+			await readingSync.mergeOnSignIn();
+			const body = JSON.parse(String(fetchSpy.mock.calls[0][1]?.body));
+			expect(body.shelves.map((s: { shelf_id: string }) => s.shelf_id)).toEqual(['s-a']);
+			expect(Object.keys(JSON.parse(localStorage.getItem(SHELVES_KEY)!)).sort()).toEqual(['s-a', 's-b']);
+
+			// An API from before shelves sends none — the device's are kept.
+			fetchSpy.mockResolvedValueOnce(reply());
+			await readingSync.mergeOnSignIn();
+			expect(Object.keys(JSON.parse(localStorage.getItem(SHELVES_KEY)!)).sort()).toEqual(['s-a', 's-b']);
 		} finally {
 			fetchSpy.mockRestore();
 			readingSync.setSignedIn(false);
