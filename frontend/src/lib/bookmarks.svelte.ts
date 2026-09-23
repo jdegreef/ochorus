@@ -10,6 +10,7 @@ import {
 import { readJSON, writeJSON } from './persisted';
 import { readingSync } from './readingSync';
 import { undo } from './undo.svelte';
+import { addPending, bookmarkTarget, clearPending } from './removals';
 
 /**
  * Explicit bookmarks — places the reader saved on purpose (a paragraph within a
@@ -105,6 +106,8 @@ class Bookmarks {
 		};
 		this.list = [...this.list, bm].sort(byPosition);
 		this.#persist();
+		// Re-saving a spot lifts any removal of it still waiting for the account.
+		clearPending('bookmark', this.#kind, bookmarkTarget(this.#slug, order, p));
 		readingSync.pushBookmark(this.#kind, this.#slug, bm);
 		return true;
 	}
@@ -113,7 +116,11 @@ class Bookmarks {
 		const bm = this.list.find((b) => b.id === id);
 		this.list = this.list.filter((b) => b.id !== id);
 		this.#persist();
-		if (bm) readingSync.removeBookmark(this.#kind, this.#slug, bm.order, bm.p);
+		if (!bm) return;
+		// Remembered until the account confirms it, so another device's copy
+		// can't merge it back (removals.ts) — the same as un-hearting.
+		addPending('bookmark', this.#kind, bookmarkTarget(this.#slug, bm.order, bm.p));
+		readingSync.removeBookmark(this.#kind, this.#slug, bm.order, bm.p);
 	}
 
 	/** Every bookmark across every work, for the notebook. */

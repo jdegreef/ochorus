@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { bookmarks } from './bookmarks.svelte';
 import { readingSync } from './readingSync';
 import { BOOKMARKS_KEY, SERMON_CHAPTER_ORDER } from './reading-schema';
+import { bookmarkTarget, pendingAt } from './removals';
 
 const stored = () => JSON.parse(localStorage.getItem(BOOKMARKS_KEY) || '{}');
 
@@ -135,5 +136,16 @@ describe('the three long-form kinds', () => {
 		expect(bookmarks.list).toHaveLength(1);
 		expect(bookmarks.list[0].snippet).toBe('saved long ago');
 		expect(bookmarks.all()[0].kind).toBe('book');
+	});
+});
+
+describe('un-bookmarking is remembered until the account confirms it', () => {
+	it('records a pending removal for that spot, and re-saving lifts it', () => {
+		bookmarks.toggle(2, 4, 's', 't');
+		bookmarks.toggle(2, 4, 's', 't');
+		expect(pendingAt('bookmark', 'book', bookmarkTarget('inner', 2, 4))).toBeTypeOf('number');
+		expect(pendingAt('bookmark', 'book', bookmarkTarget('inner', 2, 5))).toBeNull();
+		bookmarks.toggle(2, 4, 's', 't');
+		expect(pendingAt('bookmark', 'book', bookmarkTarget('inner', 2, 4))).toBeNull();
 	});
 });
