@@ -934,5 +934,20 @@
   "notebook_otd_year": "Omwaka gumu emabega",
   "notebook_otd_years": "Emyaka {n} emabega",
   "notebook_otd_answered": "Katonda yaddamu",
-  "notebook_otd_wrote": "Wawandiika"
+  "notebook_otd_wrote": "Wawandiika",
+  "notebook_print_title": "Ekitabo ky'essaala",
+  "notebook_print_intro": "Ekitabo kyo nga kitabo ekitono — essaala ezaddiddwamu, z'okyasaba, ebiwandiiko n'essaala za buli lunaku — okukuba mu kyapa oba okukitereka nga PDF.",
+  "notebook_print_period": "Ekiseera",
+  "notebook_print_period_year": "Omwaka guno",
+  "notebook_print_period_last12": "Emyezi 12 egiyise",
+  "notebook_print_period_month": "Omwezi guno",
+  "notebook_print_period_all": "Byonna",
+  "notebook_print_include": "Teekamu",
+  "notebook_print_button": "Kuba mu kyapa oba tereka nga PDF",
+  "notebook_print_hint": "Okutereka kopi, londa “Save as PDF” mu ddirisa ly'okukuba.",
+  "notebook_print_empty": "Tewali ky'okukuba mu kyapa mu kiseera kino.",
+  "notebook_print_until": "Okutuusa",
+  "notebook_print_asked": "Yasabibwa",
+  "notebook_print_epigraph": "“Obwesigwa bwo bungi.” — Okukungubaga 3:23",
+  "notebook_print_link": "Kuba mu kyapa"
 }

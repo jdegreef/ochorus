@@ -178,7 +178,10 @@
 		<div class="paper">
 			<div class="paper-head">
 				<PageHeader title={t('notebook.title')} tagline={t('notebook.subtitle')} />
-				<p class="today text-small">{longDate(today)}</p>
+				<p class="today text-small">
+					{longDate(today)}
+					<a class="print-link" href={localizeHref('/notebook/print')}><span aria-hidden="true" class="me-1">🖨</span>{t('notebook.printLink')}</a>
+				</p>
 			</div>
 
 			{#if record && record.answered > 0}
@@ -475,6 +478,13 @@
 		justify-content: space-between;
 		gap: 0 1.5rem;
 		align-items: flex-start;
+	}
+	.print-link {
+		display: block;
+		margin-top: 0.2rem;
+		font-family: var(--font-sans);
+		font-style: normal;
+		text-align: end;
 	}
 	.today {
 		font-family: var(--font-display);

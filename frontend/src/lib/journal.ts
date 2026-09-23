@@ -570,3 +570,44 @@ export function onThisDay(store: JournalStore, today: string, limit = 3): Memory
 		)
 		.slice(0, limit);
 }
+
+/** Which stretch of the journal to print. */
+export type PrintPeriod = 'all' | 'year' | 'last12' | 'month';
+
+/** The first moment of a period ending at `now`, or 0 for all time. */
+export function periodStart(period: PrintPeriod, now: Date): number {
+	if (period === 'year') return new Date(now.getFullYear(), 0, 1).getTime();
+	if (period === 'month') return new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+	if (period === 'last12') return new Date(now.getFullYear() - 1, now.getMonth(), now.getDate()).getTime();
+	return 0;
+}
+
+/**
+ * The journal as a printed book: each part in reading order (oldest first),
+ * limited to what happened since `from`. An answered prayer belongs to the
+ * period it was ANSWERED in — that is the page it is remembered on; everything
+ * else to when it was written.
+ */
+export function journalForPrint(store: JournalStore, from: number) {
+	const live = Object.values(store).filter((e) => !e.deleted);
+	const oldestFirst = (at: (e: JournalEntry) => number) => (a: JournalEntry, b: JournalEntry) => at(a) - at(b);
+	const answered = live
+		.filter((e) => e.kind === 'prayer' && e.answeredAt && e.answeredAt >= from)
+		.sort(oldestFirst((e) => e.answeredAt!));
+	const inPeriod = (e: JournalEntry) => e.createdAt >= from;
+	const openStore: JournalStore = Object.fromEntries(
+		live.filter((e) => e.kind === 'prayer' && !e.answeredAt && inPeriod(e)).map((e) => [e.id, e])
+	);
+	// Still praying, by person as the prayer list has them; within a person, oldest first.
+	const praying = prayersByPerson(openStore).map((c) => ({ ...c, prayers: [...c.prayers].reverse() }));
+	const notes = live.filter((e) => e.kind === 'note' && inPeriod(e)).sort(oldestFirst((e) => e.createdAt));
+	const daily = live.filter((e) => e.kind === 'daily' && inPeriod(e)).sort(oldestFirst((e) => e.createdAt));
+	const months: TimelineMonth[] = [];
+	for (const e of answered) {
+		const month = localToday(new Date(e.answeredAt!)).slice(0, 7);
+		const last = months[months.length - 1];
+		if (last && last.month === month) last.prayers.push(e);
+		else months.push({ month, at: e.answeredAt!, prayers: [e] });
+	}
+	return { answered: months, answeredCount: answered.length, praying, notes, daily };
+}
