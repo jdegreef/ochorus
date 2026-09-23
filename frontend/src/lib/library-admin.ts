@@ -1671,6 +1671,8 @@ export interface FeedbackItem {
 	selected_text: string;
 	suggested_text: string;
 	anchor_block: number | null;
+	/** How many other shown items flag the same passage (a dedup nudge). */
+	similar?: number;
 	assignee_email: string;
 	admin_note: string;
 	duplicate_of: number | null;
@@ -1697,10 +1699,13 @@ export const FEEDBACK_TRIAGE_STATUSES = [
 ] as const;
 
 /** GET the feedback queue, optionally filtered by status and category. */
-export const getFeedbackQueue = (p: { status?: string; category?: string } = {}) => {
+export const getFeedbackQueue = (
+	p: { status?: string; category?: string; source?: string } = {}
+) => {
 	const q = new URLSearchParams();
 	if (p.status) q.set('status', p.status);
 	if (p.category) q.set('category', p.category);
+	if (p.source) q.set('source', p.source);
 	const qs = q.toString();
 	return apiFetch<FeedbackQueue>(`/api/admin/feedback/${qs ? `?${qs}` : ''}`);
 };
