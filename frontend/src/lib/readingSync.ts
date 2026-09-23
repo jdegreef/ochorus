@@ -126,9 +126,20 @@ function readJson<T>(key: string, fallback: T): T {
 	}
 }
 
+/** Fired whenever the set of journal entries owed to the account changes, so
+ *  the Notebook's sync indicator can re-read it (see journalSyncState). */
+export const JOURNAL_PENDING_EVENT = 'ochorus:journal-pending';
+
 class ReadingSync {
 	signedIn = false;
 	#timers = new Map<string, ReturnType<typeof setTimeout>>();
+	#flushing = false;
+
+	constructor() {
+		// Back online: deliver what was written while the connection was down,
+		// instead of waiting for the next sign-in merge to carry it.
+		if (browser) window.addEventListener('online', () => void this.flushJournal());
+	}
 
 	setSignedIn(v: boolean) {
 		this.signedIn = v;
@@ -400,6 +411,10 @@ class ReadingSync {
 	}
 
 	/** Journal entries the account hasn't confirmed: id → updatedAt written. */
+	pendingJournal(): Record<string, number> {
+		return this.#pendingJournal();
+	}
+
 	#pendingJournal(): Record<string, number> {
 		return readJson<Record<string, number>>(JOURNAL_DIRTY_KEY, {});
 	}
@@ -410,6 +425,7 @@ class ReadingSync {
 		} catch {
 			/* storage full — the entry then just rides a later push again */
 		}
+		window.dispatchEvent(new CustomEvent(JOURNAL_PENDING_EVENT));
 	}
 
 	/** The account has these versions: stop owing them — unless the entry was
@@ -443,6 +459,46 @@ class ReadingSync {
 				})
 				.catch(() => {});
 		});
+	}
+
+	/**
+	 * Deliver every journal entry the account is still owed, one PUT at a time,
+	 * newest first — on reconnecting, after the sign-in merge (which carries at
+	 * most ~1MB), and from the Notebook's "Sync now". Stops at the first failure:
+	 * that is the connection gone again, and the rest wait for the next chance.
+	 * Resolves whether everything owed was delivered.
+	 */
+	async flushJournal(): Promise<boolean> {
+		if (!browser || !this.signedIn || this.#flushing) return false;
+		this.#flushing = true;
+		try {
+			const pending = this.#pendingJournal();
+			const store = cleanStore(readJson<JournalStore>(JOURNAL_KEY, {}));
+			const owed = Object.values(store)
+				.filter((e) => e.id in pending)
+				.sort((a, b) => b.updatedAt - a.updatedAt);
+			for (const e of owed) {
+				try {
+					await apiFetch(`/api/reading/journal/${e.id}/`, {
+						method: 'PUT',
+						body: JSON.stringify(toServer(e))
+					});
+				} catch {
+					return false;
+				}
+				this.#confirmJournal([e]);
+			}
+			// Owed ids with no entry left on the device (cleared storage) can never
+			// be delivered; stop counting them as waiting.
+			const left = this.#pendingJournal();
+			const onDevice = cleanStore(readJson<JournalStore>(JOURNAL_KEY, {}));
+			for (const id of Object.keys(left)) if (!onDevice[id]) delete left[id];
+			this.#setPending(left);
+			if (owed.length) this.#markSynced();
+			return true;
+		} finally {
+			this.#flushing = false;
+		}
 	}
 
 	/** Mirror a plan's progress (started + completed days) to the account. */
@@ -593,6 +649,8 @@ class ReadingSync {
 			if (state.journal) this.#confirmJournal(journalSent);
 			this.#writeState(state);
 			this.#markSynced();
+			// Whatever didn't fit the merge's share goes now, one entry at a time.
+			if (state.journal) void this.flushJournal();
 		} catch {
 			/* offline or API down — keep the local cache untouched */
 		}

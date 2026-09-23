@@ -11,6 +11,8 @@
 		type JournalEntry
 	} from '$lib/journal';
 	import { journal } from '$lib/journal.svelte';
+	import { auth } from '$lib/auth.svelte';
+	import { journalSync } from '$lib/journalSyncState.svelte';
 	import { sourceHref } from '$lib/editionHref';
 	import { downloadRemindCalendar, remindLabel, weekdayName } from '$lib/prayerRemind';
 	import EntryComposer from './EntryComposer.svelte';
@@ -110,6 +112,19 @@
 				{time(entry.createdAt)}
 			</time>
 			{#if entry.ref}<span class="ref text-small">{entry.ref}</span>{/if}
+			<!-- Where this entry is: only here until the account has it. Signed out,
+			     the page says so once instead of on every entry. -->
+			{#if auth.enabled && auth.user}
+				{#if journalSync.isPending(entry.id)}
+					<span class="sync-mark pending text-micro" title={t('notebook.syncEntryPendingHint')}
+						><span aria-hidden="true" class="me-1">📱</span>{t('notebook.syncEntryPending')}</span
+					>
+				{:else}
+					<span class="sync-mark text-micro" title={t('notebook.syncEntryDone')} aria-label={t('notebook.syncEntryDone')}
+						>☁</span
+					>
+				{/if}
+			{/if}
 		</header>
 
 		{#if entry.person || entry.group}
@@ -261,6 +276,16 @@
 		   lamplight, so small "answered" text keeps its contrast in every theme. */
 		--answered-ink: color-mix(in srgb, var(--hl-green) 65%, var(--text));
 		position: relative;
+	}
+	.sync-mark {
+		margin-inline-start: auto;
+		color: var(--muted);
+		opacity: 0.7;
+	}
+	.sync-mark.pending {
+		color: var(--warning);
+		font-weight: 600;
+		opacity: 1;
 	}
 	.kind {
 		color: var(--accent);

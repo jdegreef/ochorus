@@ -949,5 +949,16 @@
   "notebook_print_until": "Até",
   "notebook_print_asked": "Pedida em",
   "notebook_print_epigraph": "“Grande é a tua fidelidade.” — Lamentações 3:23",
-  "notebook_print_link": "Imprimir"
+  "notebook_print_link": "Imprimir",
+  "notebook_sync_device": "Salvo apenas neste dispositivo.",
+  "notebook_sync_sign_in": "Entre para mantê-lo seguro",
+  "notebook_sync_offline": "Você está offline — tudo está salvo neste dispositivo.",
+  "notebook_sync_offline_waiting": "Offline — {n} para sincronizar quando voltar",
+  "notebook_sync_waiting": "{n} aguardando sincronização",
+  "notebook_sync_now": "Sincronizar agora",
+  "notebook_syncing": "Sincronizando…",
+  "notebook_sync_done": "Tudo sincronizado",
+  "notebook_sync_entry_pending": "Neste dispositivo",
+  "notebook_sync_entry_pending_hint": "Salvo neste dispositivo; será sincronizado com sua conta assim que possível.",
+  "notebook_sync_entry_done": "Sincronizado com sua conta"
 }

@@ -949,5 +949,16 @@
   "notebook_print_until": "तक",
   "notebook_print_asked": "माँगी गई",
   "notebook_print_epigraph": "“तेरी सच्चाई महान है।” — विलापगीत 3:23",
-  "notebook_print_link": "छापें"
+  "notebook_print_link": "छापें",
+  "notebook_sync_device": "केवल इसी डिवाइस पर सहेजा गया।",
+  "notebook_sync_sign_in": "इसे सुरक्षित रखने के लिए साइन इन करें",
+  "notebook_sync_offline": "आप ऑफ़लाइन हैं — सब कुछ इसी डिवाइस पर सहेजा गया है।",
+  "notebook_sync_offline_waiting": "ऑफ़लाइन — लौटने पर {n} सिंक होंगे",
+  "notebook_sync_waiting": "{n} सिंक की प्रतीक्षा में",
+  "notebook_sync_now": "अभी सिंक करें",
+  "notebook_syncing": "सिंक हो रहा है…",
+  "notebook_sync_done": "सब सिंक हो गया",
+  "notebook_sync_entry_pending": "इसी डिवाइस पर",
+  "notebook_sync_entry_pending_hint": "इसी डिवाइस पर सहेजा गया; संभव होते ही आपके खाते से सिंक हो जाएगा।",
+  "notebook_sync_entry_done": "आपके खाते से सिंक हो गया"
 }
