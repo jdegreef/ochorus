@@ -5,6 +5,7 @@ import {
 	collectionsOf,
 	inCollection,
 	composeDaily,
+	splitPinned,
 	dailyStreak,
 	dailyVerse,
 	faithfulness,
@@ -41,6 +42,7 @@ function entry(id: string, over: Partial<JournalEntry> = {}): JournalEntry {
 		body: id,
 		ref: '',
 		collection: '',
+		pinnedAt: null,
 		person: '',
 		group: '',
 		remind: '',
@@ -340,5 +342,17 @@ describe('journal entries', () => {
 		expect(inCollection(store.b, 'NOTES ON HUMILITY')).toBe(true);
 		expect(inCollection(store.loose, '')).toBe(false);
 		expect(visibleEntries(store, 'all', 'romans').map((e) => e.id)).toEqual(['r']);
+	});
+
+	it('lifts pinned entries to the top once, most recently pinned first', () => {
+		const list = [
+			entry('a', { pinnedAt: T0 + 1 }),
+			entry('b'),
+			entry('c', { pinnedAt: T0 + 9 }),
+			entry('d')
+		];
+		const { pinned, rest } = splitPinned(list);
+		expect(pinned.map((e) => e.id)).toEqual(['c', 'a']);
+		expect(rest.map((e) => e.id)).toEqual(['b', 'd']);
 	});
 });

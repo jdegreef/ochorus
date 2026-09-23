@@ -979,5 +979,15 @@
   "notebook_collection_export": "Exportar",
   "notebook_collection_remove": "Quitar colección",
   "notebook_collection_remove_confirm": "Toca otra vez — las entradas se conservan",
-  "notebook_all_entries": "Todo"
+  "notebook_all_entries": "Todo",
+  "notebook_testimony_share": "Compartir testimonio",
+  "notebook_testimony_title": "Compartir una oración contestada",
+  "notebook_testimony_prayed": "Oramos",
+  "notebook_testimony_for": "por {person}",
+  "notebook_testimony_include_request": "Incluir lo que se pidió",
+  "notebook_testimony_include_person": "Incluir por quién fue ({person})",
+  "notebook_testimony_hint": "Nada sale de tu dispositivo hasta que lo compartas.",
+  "notebook_pin": "Fijar",
+  "notebook_unpin": "Desfijar",
+  "notebook_pinned": "Fijadas"
 }

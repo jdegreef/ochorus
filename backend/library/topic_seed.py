@@ -536,6 +536,7 @@ TOPICS = [
             "rooted-3",
             "rooted-4",
             "rooted-5",
+            "rooted-6",
         ],
     ),
 ]

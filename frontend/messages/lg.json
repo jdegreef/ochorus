@@ -979,5 +979,15 @@
   "notebook_collection_export": "Fulumya",
   "notebook_collection_remove": "Ggyawo ekibinja",
   "notebook_collection_remove_confirm": "Nyiga nate — ebiwandiiko bisigala",
-  "notebook_all_entries": "Byonna"
+  "notebook_all_entries": "Byonna",
+  "notebook_testimony_share": "Gabana obujulirwa",
+  "notebook_testimony_title": "Gabana essaala eddiddwamu",
+  "notebook_testimony_prayed": "Twasaba",
+  "notebook_testimony_for": "ku lwa {person}",
+  "notebook_testimony_include_request": "Teekamu kye twasaba",
+  "notebook_testimony_include_person": "Teekamu gwe twasabira ({person})",
+  "notebook_testimony_hint": "Tewali kiva ku kyuma kyo okutuusa ng'ogabanye.",
+  "notebook_pin": "Kwata waggulu",
+  "notebook_unpin": "Ggyako",
+  "notebook_pinned": "Ebikwatiddwa waggulu"
 }

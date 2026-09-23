@@ -1,0 +1,180 @@
+{
+ "kind": "book",
+ "slug": "stepping-stones-2",
+ "language": "es",
+ "job_issue": 1454,
+ "references": [
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "a-short-and-easy-method-of-prayer.es.json"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Matthew 16:16",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Matthew 16:17",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Psalms 37:23-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 22:54",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 8:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 13:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 55:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 42:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 10:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 103:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Joel 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Joel 2:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 16:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:58",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 1:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 20:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Esther 4:14",
+   "status": "self_rendered"
+  }
+ ]
+}
