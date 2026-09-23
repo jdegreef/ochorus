@@ -570,9 +570,10 @@ class AdminCoverageView(APIView):
     """Translation-coverage matrices: every canonical work (row) × language
     (column), so gaps across the whole library are visible at a glance.
 
-    Books, sermons, plans and biographies each get their own matrix but share one
-    column set (every language present in any of them, English first). A book cell
-    carries its ``source_type``; a biography's translated cells carry
+    Books, sermons, plans, biographies and articles each get their own matrix but
+    share one column set (every language present in any of them, English first). A
+    book cell carries its ``source_type``; an article's translated cells do too, its
+    English original shown as "present" (see ``_article_rows``); a biography's translated cells carry
     ai_reviewed / ai_unreviewed (from ``AuthorTranslation.reviewed``) with the
     English original shown as "present"; sermon/plan cells are simply "present"
     (those models have no source_type). A missing language is absent from the
@@ -605,6 +606,7 @@ class AdminCoverageView(APIView):
                 "sermons": self._sermon_rows(),
                 "plans": self._plan_rows(),
                 "bios": self._bio_rows(),
+                "articles": self._article_rows(),
             }
         )
 
@@ -628,7 +630,7 @@ class AdminCoverageView(APIView):
 
     def _language_codes(self) -> list[str]:
         codes: set[str] = {"en"}  # bios' English source is Author.bio_html, not a row
-        for model in (Book, Sermon, Plan):
+        for model in (Book, Sermon, Plan, Article):
             codes.update(model.objects.values_list("language", flat=True).distinct())
         codes.update(
             AuthorTranslation.objects.exclude(bio_html="")
@@ -688,6 +690,24 @@ class AdminCoverageView(APIView):
     def _plan_rows(self) -> list[dict]:
         records = Plan.objects.values("slug", "language", "title", "sort_order")
         return self._rows(records, lambda r: "present", with_author=False)
+
+    def _article_rows(self) -> list[dict]:
+        """Articles (row = slug) × language. Authorless, like a plan; the display
+        title is the ``h1`` headline (an article has no ``title`` field).
+
+        A translated cell carries its ``source_type`` (ai_reviewed / ai_unreviewed)
+        like a book. The English original is site writing, not a public-domain
+        work — it only carries ``public_domain`` as the model default — so it
+        reads "present" rather than "PD".
+        """
+        records = Article.objects.annotate(title=F("h1")).values(
+            "slug", "language", "source_type", "title", "sort_order"
+        )
+        return self._rows(
+            records,
+            lambda r: "present" if r["source_type"] == Book.SourceType.PUBLIC_DOMAIN else r["source_type"],
+            with_author=False,
+        )
 
     def _bio_rows(self) -> list[dict]:
         """Author long-form biographies (row = author) × language.
