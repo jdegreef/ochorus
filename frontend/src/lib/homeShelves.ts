@@ -1,12 +1,19 @@
 import { building } from '$app/environment';
-import { listBooks, listAuthors, listTopics, listSermons } from '$lib/library-public';
-import type {
-	AuthorBio,
-	AuthorTileData,
-	BookSummary,
-	CoverBook,
-	TopicCount,
-	TopicSummary
+import {
+	listBooks,
+	listAuthors,
+	listTopics,
+	listSermons,
+	AUTHOR_TILE_KEYS,
+	COVER_AUTHOR_KEYS,
+	COVER_BOOK_DROPS,
+	TOPIC_COUNT_KEYS,
+	type AuthorBio,
+	type AuthorTileData,
+	type BookSummary,
+	type CoverBook,
+	type TopicCount,
+	type TopicSummary
 } from '$lib/library-public';
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { isPlateCover } from '$lib/coverArt';
@@ -77,30 +84,18 @@ const HOME_TOPIC_LIMIT = 8;
 const shelf = <T>(pending: Promise<T[]>): Promise<T[]> =>
 	building ? pending : pending.catch(() => []);
 
-const coverBook = (b: BookSummary): CoverBook => ({
-	slug: b.slug,
-	language: b.language,
-	title: b.title,
-	subtitle: b.subtitle,
-	author: { slug: b.author.slug, name: b.author.name, birth_year: b.author.birth_year },
-	source_type: b.source_type,
-	cover_color: b.cover_color,
-	cover_url: b.cover_url,
-	chapter_count: b.chapter_count,
-	word_count: b.word_count
-});
-const authorTile = (a: AuthorBio): AuthorTileData => ({
-	slug: a.slug,
-	name: a.name,
-	photo_url: a.photo_url,
-	book_count: a.book_count
-});
-const topicCount = (t: TopicSummary): TopicCount => ({
-	slug: t.slug,
-	title: t.title,
-	book_count: t.book_count,
-	sermon_count: t.sermon_count
-});
+/** `obj` with only `keys` — the runtime half of a narrow type built from them. */
+function pick<T extends object, K extends keyof T>(obj: T, keys: readonly K[]): Pick<T, K> {
+	return Object.fromEntries(keys.map((k) => [k, obj[k]])) as Pick<T, K>;
+}
+
+const coverBook = (b: BookSummary): CoverBook => {
+	const book: Record<string, unknown> = { ...b, author: pick(b.author, COVER_AUTHOR_KEYS) };
+	for (const k of COVER_BOOK_DROPS) delete book[k];
+	return book as CoverBook;
+};
+const authorTile = (a: AuthorBio): AuthorTileData => pick(a, AUTHOR_TILE_KEYS);
+const topicCount = (t: TopicSummary): TopicCount => pick(t, TOPIC_COUNT_KEYS);
 
 /** The snapshot's derivation, pure so it can be tested without an API. */
 export function deriveHomeShelves(
