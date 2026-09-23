@@ -33,6 +33,11 @@ three of them gives none of them one.
 
 1. **List** open issues labeled `translation-job` (GitHub MCP `list_issues`,
    oldest first). No issues → report "queue empty" and stop.
+   **Page through ALL of them.** The queue holds several hundred open jobs, and
+   a single capped listing silently drops the rest: `gh issue list --limit 300`
+   returned exactly 300 on 2026-09-22 and hid ten older sw article jobs, so a
+   run reported the article queue empty while it was not. Use `--limit 1000`
+   (or paginate), and if the count equals the limit, you have NOT seen it all.
 2. **Conflict gate.** For every job issue carrying the `in-progress` label:
    - updated **≥ 6 hours ago** → stale claim (a crashed run); comment that
      you're reclaiming it, remove the label, and treat it as queued.
@@ -360,12 +365,20 @@ a single body. The simplest fixture type — like a sermon, but with no author, 
   at read time, exactly like a plan's days — copy it **verbatim**. Copy
   `source_url` and `sort_order` from the English file too. Do **not** author
   `word_count` (derived by `Article.save()`).
-- **Scripture is not yours to write.** Articles quote scripture inline in
-  `<blockquote>…<cite>Reference (VERSION)</cite></blockquote>`. Each quoted verse
-  must come from that language's public-domain Bible (e.g. Reina-Valera for `es`)
-  — never a re-translation of the English quotation — with the reference's book
-  name localized and the version label updated. If you cannot source a verse in
-  the target language, note it for the reviewer rather than inventing one.
+- **Scripture is not yours to write.** Articles quote scripture INLINE —
+  `“…” (John 3:3)`, no version label — and use `<blockquote><cite>` only for
+  people (Müller, Spurgeon…), whose words you translate. Each quoted verse must
+  come from that language's Bible, never a re-translation of the English
+  quotation, with the citation's book name localized (Western digits, tight
+  `C:V`). Where the language's `language_seed.py` Bible answers
+  `library.translation.fetch_verse_text(<bible>, "John 3:3")` AND matches the
+  shipped corpus's tradition (pt `porbrbsl`, lg `lug` — measured 2026-09-22),
+  paste it verbatim. Where it does not (sw: `swhonen` ≠ the corpus's SUV; es:
+  `spa_rv` is archaic RV1909 ≠ the corpus's modern RV), mine the shipped corpus
+  per the sw/es entries below and flag the rest. The English is ESV/NIV-style,
+  so expect clause-level mismatches the target Bible cannot carry — see the
+  article entries under Known failure modes. If you cannot source a verse, note
+  it for the reviewer rather than inventing one.
 - Ship: write **one new file** `backend/library/fixtures/content/articles/<slug>.<lang>.json`
   holding the single translated `library.article` row, natural-key format (**no
   `pk`**, no author FK — `natural_key` is just `(slug, language)`). Set
@@ -373,11 +386,18 @@ a single body. The simplest fixture type — like a sermon, but with no author, 
   book/sermon files above (records at column 0, `indent=1`, trailing newline);
   serialize with Django's serializer, never hand-write JSON. `seed_articles`
   upserts it on deploy.
-- Review badge: the row ships `ai_unreviewed` and wears the "awaiting native
-  review" badge on the article page until a native speaker runs
-  `manage.py approve_article_translation <slug> --language <lang>` (flips it to
-  `ai_reviewed` and persists into the fixture — `source_type` is create-only in
-  the seed).
+- Review state: the row ships `ai_unreviewed` and stays so until the founder
+  runs `manage.py approve_article_translation <slug> --language <lang>` (flips it
+  to `ai_reviewed` and persists into the fixture — `source_type` is create-only
+  in the seed). The state is **admin-only**: readers see no badge (repo
+  `CLAUDE.md`; an earlier version of this line said otherwise and was wrong).
+- **No notes file for articles — yet.** `TranslationNote` kinds are
+  book/sermon/bio only (`ReviewOutcome.Kind`), so `seed_translation_notes` would
+  skip an `articles/` file and the coverage gate does not ask for one. Put the
+  per-quote provenance (verbatim / adapted / self-rendered, and why) in the PR
+  body instead, and say so. `audit_verse_consistency` likewise scans books and
+  sermons only; run `verse_consistency.scan()` over your articles plus the corpus
+  by hand if you want the cross-work check.
 - Verify: `manage.py seed_articles` upserts the `(slug, <lang>)` row;
   `/api/library/articles/<slug>/?language=<lang>` returns 200 with
   `source_type` `ai_unreviewed`; `manage.py test library.tests_articles
@@ -2391,3 +2411,38 @@ archaic spelling and period punctuation are the text, not defects in it.
   check-the-file rule extends: when a range's outputs are absent, `find` the
   whole scratchpad tree before re-dispatching — the work is usually there under a
   near-miss path.
+- **ARTICLES batch well — measured over 30 pt/lg articles in three PRs
+  (#3076/#3077/#3081, 2026-09-22).** An article is ~1,500–2,000 words and one
+  body, so one translator agent per article is the right unit, and a batch of ten
+  fits one wave under the subagent cap. What made it reliable: (1) a per-article
+  **scripture crib** built up front with `fetch_verse_text` on every
+  `pythonbible` reference (skip bare-book hits like "Acts" — they raise), plus a
+  tiny **verse-lookup script** agents can call for UNCITED quotes; (2) an
+  **English→target title map** from the shipped `books/*.en.json` ↔
+  `*.<lang>.json` pairs handed to every agent — without it, one pt batch had
+  seven `<em>` book titles left in English or rendered differently from the
+  shipped edition; (3) an independent byte check after the run: split both
+  bodies on block tags, and for each block whose ENGLISH cites a reference, test
+  every `“…”` span in the translation against the fetched chapter text. Expect
+  ~95% on core articles and ~60% on book GUIDES — the guides quote their author
+  and chapter titles far more than scripture, so a low score there is not a
+  scripture problem; read the misses.
+- **Articles quote modern English (ESV/NIV), so the target Bible disagrees at
+  the CLAUSE level — handle it without putting words in the Bible's mouth.**
+  Seen this round: Bíblia Livre (pt) Job 13:15 follows the Ketiv ("I have no
+  hope"), inverting the article — self-rendered the traditional sense and flagged
+  (OLCB has "in him I have hope", so lg had no issue). OLCB 1 John 3:20 reads
+  "if our heart does NOT condemn us", opposite of the English — quote only the
+  verbatim fragments with "…" and let the article's own sentence carry the
+  point. OLCB 1 Pet 1:23 lacks "not of perishable seed" — keep that clause as
+  prose OUTSIDE the quote marks. OLCB puts "crucified with Christ" at Gal 2:19 —
+  keep the author's citation, note the offset. The rule that generalises: nothing
+  inside quotation marks that the target Bible does not say.
+- **Translators find ENGLISH article errors — and articles are ours to fix.**
+  Unlike a public-domain classic, an article is original site writing, so a
+  factual slip is repaired directly in `articles/<slug>.en.json` AND in every
+  language edition that carries it, in one PR (#3119: five slips, 16 files, one
+  line each). Numeric citation fixes transfer mechanically; a false prose claim
+  is safest DELETED per language rather than rewritten. Edit the raw file text,
+  not a re-serialised copy — several English article files are not in canonical
+  format, and re-rendering them turns a one-word fix into a 60-line diff.
