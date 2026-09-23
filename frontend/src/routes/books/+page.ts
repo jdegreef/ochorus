@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-23: one NEW English book — daughters-of-the-king-2, "Daughters of the
+// King – 30 Days with God for Girls – Book 2" (Brave), volume 2 of the house-written girls' devotional
+// series (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture).
+// Rebuilds /books and the For Young Readers shelf so the card and its young-style plate cover
+// (volume 2) appear, and the reader pages bake the chapters. Backs the new
+// daughters-of-the-king-book-2-30-days plan.
 // prerender refresh 2026-09-23: one NEW English book — sons-of-the-king-1, "Sons of the King – 30
 // Days with God for Guys – Book 1" (Strong), the first volume of a house-written devotional series
 // for boys aged 9–12 and a new Series row (Ochorus Originals; Introduction, Day 1–30, Conclusion =

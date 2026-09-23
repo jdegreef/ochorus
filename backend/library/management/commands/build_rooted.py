@@ -526,6 +526,74 @@ DAUGHTERS_OF_THE_KING: dict[int, dict[str, object]] = {
             },
         ],
     },
+    2: {
+        "sort_order": 83,
+        "publication_year": 2026,
+        "title": "Daughters of the King – 30 Days with God for Girls – Book 2",
+        "subtitle": "Brave: courage for worry, a voice to speak, and hands to serve",
+        "cover_url": "/covers/daughters-of-the-king-2.svg",
+        "cover_color": covers.ink_safe("#6b3f7a"),  # a brave violet
+        "description": (
+            "Thirty short daily devotions for girls aged 9 to 12 about being "
+            "brave: facing worry and fear with God, using your voice to speak up "
+            "and say no, serving like Phoebe, Priscilla and Dorcas, leading like "
+            "Miriam, and following Jesus like the women who stayed at the cross "
+            "and saw the empty tomb. Each day has a Bible verse, a short "
+            "teaching, a question, something to try and a prayer. The second book "
+            "of Daughters of the King."
+        ),
+        "about_html": (
+            "<p>Daughters of the King is an original Ochorus devotional series for "
+            "girls aged 9 to 12. Book 1 taught a girl who she is. Book 2 asks what "
+            "that means for how she lives, and its answer is courage: not being "
+            "fearless, but knowing Someone bigger than her fear. It opens with "
+            "Psalm 27:1: “The LORD is my light and my salvation—whom shall I "
+            "fear?”</p>"
+            "<p>The first week faces worry, from anxious thoughts and sleepless "
+            "nights to worries about appearance and the “what ifs” of tomorrow. "
+            "The second is about using her voice: the five daughters of Zelophehad "
+            "who spoke up and were told they were right, saying no, secrets that "
+            "hurt, asking for help and speaking the truth in love. The third meets "
+            "women who served, including Phoebe, Priscilla, Dorcas and the widow "
+            "of Zarephath. The fourth is about leading, with Miriam, the queen of "
+            "Sheba, Lois and Eunice. The fifth follows the women who followed "
+            "Jesus, to the cross and to the garden where Mary Magdalene heard Him "
+            "say her name.</p>"
+            "<p>Every day follows the same short pattern: a Scripture from the "
+            "Berean Standard Bible, a teaching, a question to think about, one "
+            "thing to try, and a prayer. Each week ends with a true story from "
+            "our Brave for God books: Helen Roseveare, Pandita Ramabai, Ida "
+            "Scudder, Elisabeth Elliot and Lilias Trotter. Day 10 is a simple "
+            "body-safety day about secrets that hurt, and the days on worry "
+            "encourage girls to tell a parent when worry grows big.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 2 of Daughters of the King about?",
+                "answer": "Being brave. Over thirty short daily devotions it helps girls face worry and fear with God, use their voices well, serve others, lead by example, and follow Jesus like the brave women in the Gospels.",
+            },
+            {
+                "question": "Does it help with anxiety and worry?",
+                "answer": "Yes. The first week is about worry, fear, sleep and the ‘what ifs’. It points girls to God’s promises and comfort, and it encourages them to tell a parent or trusted adult if worry becomes very big, saying there is no shame in getting help.",
+            },
+            {
+                "question": "What does it teach about staying safe?",
+                "answer": "Day 10 explains the difference between good surprises and secrets that hurt. It teaches that no one should ask a child to keep a secret about touching, pictures or anything that makes her uncomfortable, that it is never her fault, and that telling a trusted adult is always right.",
+            },
+            {
+                "question": "Which women does it include?",
+                "answer": "From the Bible: the daughters of Zelophehad, Phoebe, Priscilla, Dorcas, the widow of Zarephath, Miriam, the queen of Sheba, Lois and Eunice, Mary Magdalene, Joanna, the woman who touched Jesus’ cloak and the Canaanite mother. From history, in the weekly true stories: Helen Roseveare, Pandita Ramabai, Ida Scudder, Elisabeth Elliot and Lilias Trotter.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+            {
+                "question": "What comes after Book 2?",
+                "answer": "Book 3 is about growing up: feelings and emotions, how God designed a girl’s body and the changes that come as she grows, wise choices, discovering her calling, and finding women who can help her grow.",
+            },
+        ],
+    },
 }
 
 SONS_OF_THE_KING: dict[int, dict[str, object]] = {
