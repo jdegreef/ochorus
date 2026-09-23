@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 import { readingSync } from './readingSync';
 import { readingActivity } from './readingActivity.svelte';
 import { storageHealth } from './storageHealth.svelte';
-import { undo } from './undo.svelte';
+import { undo, UNDO_MS } from './undo.svelte';
 import {
 	PROGRESS_KEY,
 	ANCHOR_KEY,
@@ -145,6 +145,58 @@ export function offerFinish(slug: string, kind: WorkKind = 'book'): void {
 	if (markFinished(slug, kind)) {
 		undo.offer({ restore: () => unmarkFinished(slug, kind), kind: 'finished' });
 	}
+}
+
+/**
+ * "I've already read this" — finish a book the reader never opened on this
+ * device (read on paper, or before Ochorus), straight from the Bookshelf's To
+ * read shelf. It gets a record at its last chapter, stamped finished, and a
+ * short Undo like any other finish.
+ *
+ * The account only hears about it once the Undo has lapsed. The server can
+ * clear a finish but never forget a position, so pushing at once would make an
+ * Undo leave the book on the Reading shelf at its last chapter, not back where
+ * it was. Held back, an Undo simply deletes the local record and there is
+ * nothing to forget. (A tab closed inside those few seconds leaves the finish
+ * local-only until the next sign-in merge carries it up.)
+ *
+ * A work that already has a record goes through the ordinary `offerFinish`.
+ */
+export function offerFinishUnopened(
+	slug: string,
+	lastOrder: number,
+	language: string,
+	kind: WorkKind = 'book'
+): void {
+	if (!browser) return;
+	const map = read();
+	const key = workSlugKey(kind, slug);
+	if (map[key]) {
+		offerFinish(slug, kind);
+		return;
+	}
+	const now = Date.now();
+	const rec: ProgressRecord = {
+		order: Math.max(1, lastOrder),
+		paragraph_index: 0,
+		language,
+		at: now,
+		finished_at: now
+	};
+	map[key] = rec;
+	write(map);
+	window.dispatchEvent(new CustomEvent('ochorus:sync'));
+	const push = setTimeout(() => readingSync.setFinished(kind, slug, rec, true), UNDO_MS);
+	undo.offer({
+		kind: 'finished',
+		restore: () => {
+			clearTimeout(push);
+			const m = read();
+			delete m[key];
+			write(m);
+			window.dispatchEvent(new CustomEvent('ochorus:sync'));
+		}
+	});
 }
 
 /** Un-finish a work — an explicit "not done after all" / Undo. Clears the stamp

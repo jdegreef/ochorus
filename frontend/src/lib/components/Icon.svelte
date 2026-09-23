@@ -33,7 +33,10 @@
 		| 'heart'
 		| 'flame'
 		| 'compass'
-		| 'check';
+		| 'check'
+		| 'more'
+		| 'download'
+		| 'layers';
 
 	let {
 		name,
@@ -151,5 +154,14 @@
 		<path d="m15.6 8.4-2 5.2-5.2 2 2-5.2z" />
 	{:else if name === 'check'}
 		<path d="M5 12.5l4.5 4.5L19 7" />
+	{:else if name === 'more'}
+		<circle cx="5.5" cy="12" r="1.2" />
+		<circle cx="12" cy="12" r="1.2" />
+		<circle cx="18.5" cy="12" r="1.2" />
+	{:else if name === 'download'}
+		<path d="M12 4v11m-5-5 5 5 5-5M5 20h14" />
+	{:else if name === 'layers'}
+		<!-- Book spines side by side: the Bookshelf's spine view. -->
+		<path d="M5 4v16M9.5 4v16M14 6l4 14M3 20h18" />
 	{/if}
 </svg>

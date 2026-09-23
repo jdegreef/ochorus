@@ -248,6 +248,12 @@
 	--shadow-card: 0 6px 20px -12px rgb(0 0 0 / 0.55);
 	--shadow-popover: 0 10px 30px rgb(0 0 0 / 0.4);
 	--shadow-drawer: -12px 0 40px rgb(0 0 0 / 0.45);
+	/* The Bookshelf page's case: a back wall the covers stand against, and the
+	   plank they stand on (face + the darker lip under it). Wood, not a theme
+	   surface, but it still dims with the lamp — so it lives here. */
+	--shelf-back: #262017;
+	--shelf-wood: #6a4a2f;
+	--shelf-wood-edge: #3b2a1c;
 	/* THE SCRIPTS FRAUNCES DOES NOT COVER. Ochorus reads in eight languages and
 	   three of them are not Latin; Fraunces has no Arabic and no Devanagari, and
 	   Georgia behind it has no Devanagari either. So ~609,000 words of Arabic and
@@ -304,6 +310,9 @@
 	--shadow-card: 0 6px 20px -12px rgb(90 70 40 / 0.35);
 	--shadow-popover: 0 10px 30px rgb(90 70 40 / 0.18);
 	--shadow-drawer: -12px 0 40px rgb(90 70 40 / 0.2);
+	--shelf-back: #f1e8d8;
+	--shelf-wood: #b98a5c;
+	--shelf-wood-edge: #8a6440;
 }
 
 /* "Sepia" = a warm parchment reading tone: like paper but softer on the eyes
@@ -331,6 +340,9 @@
 	--shadow-card: 0 6px 20px -12px rgb(80 60 30 / 0.4);
 	--shadow-popover: 0 10px 30px rgb(80 60 30 / 0.22);
 	--shadow-drawer: -12px 0 40px rgb(80 60 30 / 0.24);
+	--shelf-back: #e8dbbf;
+	--shelf-wood: #a97b4d;
+	--shelf-wood-edge: #7a5634;
 }
 
 @layer base {

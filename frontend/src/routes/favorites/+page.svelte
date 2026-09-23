@@ -24,9 +24,14 @@
 	import { localizeHref } from '$lib/href';
 	import { unslug } from '$lib/strings';
 	import { topicMeta } from '$lib/emblemNames';
+	import { allProgress } from '$lib/progress';
+	import { buildShelves, shelfHref } from '$lib/bookshelf';
+	import { readJSON, writeJSON } from '$lib/persisted';
+	import Icon from '$lib/components/Icon.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
-	import LibraryBookCard from '$lib/components/LibraryBookCard.svelte';
+	import Bookshelf from '$lib/components/Bookshelf.svelte';
+	import BookCover from '$lib/components/BookCover.svelte';
 	import AuthorTile from '$lib/components/AuthorTile.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
@@ -34,16 +39,15 @@
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
-	import EmptyState from '$lib/components/EmptyState.svelte';
 
 	/**
-	 * "My Library" — the reader's followed authors and saved works, drawn as
-	 * covers with reading progress, not the bare text pills the old homepage
-	 * shelf showed. Client-only and personal (favorites are device-local first,
-	 * synced when signed in), so it works signed-out too and never prerenders.
+	 * "My Bookshelf" — the reader's books first, drawn as a bookcase with three
+	 * shelves (Currently reading, To read, Finished; see $lib/bookshelf for which
+	 * book goes where), then everything else they've saved. Client-only and
+	 * personal (favorites and progress are device-local first, synced when signed
+	 * in), so it works signed-out too and never prerenders.
 	 *
-	 * Order is people before their works: Authors, then Books, Sermons, Topics,
-	 * Plans, Articles, and saved Quotes.
+	 * Below the books: Sermons, Plans, Authors, Topics, Articles, saved Quotes.
 	 *
 	 * Titles/covers resolve from the public catalogs in the current language; a
 	 * favorite whose work has no row in that language can't be drawn as a cover,
@@ -65,8 +69,18 @@
 	// resolved from exactly the saved slugs (see resolveQuotes).
 	let quotes = $state<Record<string, SavedQuote>>({});
 	let loaded = $state(false);
+	// Reading progress is localStorage, not a rune: re-read it when a finish /
+	// un-finish on this page, or an account sync, announces a change.
+	let progressTicks = $state(0);
 
-	onMount(async () => {
+	onMount(() => {
+		const bump = () => progressTicks++;
+		window.addEventListener('ochorus:sync', bump);
+		void loadCatalogs();
+		return () => window.removeEventListener('ochorus:sync', bump);
+	});
+
+	async function loadCatalogs() {
 		const lang = getLang();
 		const [a, b, p, s, tp, ar] = await Promise.all([
 			listAuthors(lang).catch(() => [] as AuthorBio[]),
@@ -83,7 +97,7 @@
 		topics = Object.fromEntries(tp.map((x) => [x.slug, x]));
 		articles = Object.fromEntries(ar.map((x) => [x.slug, x]));
 		loaded = true;
-	});
+	}
 
 	// favorites.all() is reactive (favorites.ticks) but re-reads and re-sorts
 	// localStorage on each call, so read it once per tick and filter that rather
@@ -99,7 +113,40 @@
 	const planFavs = $derived(entriesOf('plan'));
 	const articleFavs = $derived(entriesOf('article'));
 	const quoteFavs = $derived(entriesOf('quote'));
-	const isEmpty = $derived(allFavs.length === 0);
+	const shelves = $derived.by(() => {
+		void progressTicks;
+		return buildShelves(Object.values(books), bookFavs, allProgress());
+	});
+	const bookCount = $derived(
+		shelves.reading.length + shelves.toRead.length + shelves.finished.length
+	);
+	// Covers or spines — a per-device preference, like the reader's own layout
+	// settings, so it lives in localStorage and isn't synced.
+	const VIEW_KEY = 'ochorus:shelf-view';
+	let view = $state<'covers' | 'spines'>(
+		readJSON<string>(VIEW_KEY, 'covers') === 'spines' ? 'spines' : 'covers'
+	);
+	function setView(v: 'covers' | 'spines') {
+		view = v;
+		writeJSON(VIEW_KEY, v);
+	}
+
+	// The book to pick up: the one most recently read.
+	const current = $derived(shelves.reading[0]);
+	const hasOthers = $derived(allFavs.some((e) => e.kind !== 'book'));
+	const jumps = $derived(
+		[
+			{ id: 'reading', label: t('fav.shelfReading'), count: shelves.reading.length },
+			{ id: 'to-read', label: t('fav.shelfToRead'), count: shelves.toRead.length },
+			{ id: 'finished', label: t('fav.shelfFinished'), count: shelves.finished.length },
+			{ id: 'sermons', label: t('fav.groupSermons'), count: sermonFavs.length },
+			{ id: 'authors', label: t('fav.groupAuthors'), count: authorFavs.length },
+			{ id: 'topics', label: t('fav.groupTopics'), count: topicFavs.length },
+			{ id: 'plans', label: t('fav.groupPlans'), count: planFavs.length },
+			{ id: 'articles', label: t('fav.groupArticles'), count: articleFavs.length },
+			{ id: 'quotes', label: t('fav.groupQuotes'), count: quoteFavs.length }
+		].filter((j, i) => i < 3 || j.count > 0)
+	);
 
 	// Quotes have no catalog to load up front (there's no "list all quotes"), so
 	// the shelf resolves them itself: whenever quoteFavs gains a slug we haven't
@@ -147,17 +194,7 @@
 </svelte:head>
 
 <div class="page-col px-5 py-10">
-	<PageHeader title={t('fav.yourFavorites')} />
-
-	{#if loaded && isEmpty}
-		<EmptyState message={t('fav.empty')}>
-			{#snippet action()}
-				<a href={localizeHref('/books')} class="btn btn-primary hover:no-underline"
-					>{t('home.browseLibrary')}</a
-				>
-			{/snippet}
-		</EmptyState>
-	{/if}
+	<PageHeader title={t('fav.yourFavorites')} tagline={t('fav.tagline')} />
 
 	<!-- A saved favorite whose work has no row in the current language can't draw
 	     a cover; it falls back to this pill so it is never silently lost. Quotes
@@ -181,39 +218,100 @@
 		{/if}
 	{/snippet}
 
-	<!-- Following: hearted authors — the people first -->
-	{#if authorFavs.length}
-		<section class="pt-8">
-			<SectionHeader title={t('fav.groupAuthors')} />
-			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-				{#each authorFavs as e (e.slug)}
-					{#if authors[e.slug]}
-						<AuthorTile author={authors[e.slug]} />
-					{/if}
-				{/each}
-			</div>
-			{@render fallbackPills(authorFavs, authors, 'author')}
-		</section>
+	<!-- Jump links: the three shelves, then whatever else is saved. Only worth
+	     the row once the page runs past the books. -->
+	{#if loaded && hasOthers}
+		<nav class="-mt-2 mb-2 flex flex-wrap gap-2" aria-label={t('fav.yourFavorites')}>
+			{#each jumps as j (j.id)}
+				<a href="#{j.id}" class="tag hover:no-underline"
+					>{j.label} <span class="text-muted">{j.count}</span></a
+				>
+			{/each}
+		</nav>
 	{/if}
 
-	<!-- Books — covers with the reader's own progress -->
-	{#if bookFavs.length}
-		<section class="pt-10">
-			<SectionHeader title={t('fav.groupBooks')} />
-			<div class="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
-				{#each bookFavs as e (e.slug)}
-					{#if books[e.slug]}
-						<LibraryBookCard book={books[e.slug]} />
-					{/if}
-				{/each}
+	{#if loaded && current}
+		{@const b = current.book}
+		<!-- The one book to pick up now: the most recently read. -->
+		<a
+			href={localizeHref(shelfHref(current))}
+			class="card-lift bg-surface mt-6 flex items-center gap-5 rounded-card border border-border p-4 hover:no-underline sm:p-5"
+		>
+			<div class="w-20 shrink-0 sm:w-24">
+				<BookCover book={b} rounded="rounded-sm" />
 			</div>
-			{@render fallbackPills(bookFavs, books, 'book')}
-		</section>
+			<div class="min-w-0 flex-1">
+				<p class="eyebrow mb-1 text-accent">{t('fav.pickUp')}</p>
+				<div class="text-h3 line-clamp-2 font-display text-text">{b.title}</div>
+				<div class="mt-0.5 truncate text-small text-muted">{b.author.name}</div>
+				<div class="mt-3 max-w-sm">
+					<ProgressBar percent={current.pct} label="{b.title}: {current.pct}%" size="md" />
+					<div class="mt-1 text-micro text-muted">
+						{t('continue.chapter')}
+						{current.order} / {b.chapter_count} · {current.pct}%
+					</div>
+				</div>
+				<div class="mt-3 text-small font-semibold text-accent">{t('reader.resume')} →</div>
+			</div>
+		</a>
 	{/if}
 
+	{#if loaded}
+		{#if bookCount}
+			<div class="-mb-6 mt-8 flex justify-end">
+				<div class="view-toggle" role="group" aria-label={t('fav.shelfView')}>
+					<button type="button" aria-pressed={view === 'covers'} onclick={() => setView('covers')}>
+						<Icon name="grid" size={15} />
+						{t('fav.viewCovers')}
+					</button>
+					<button type="button" aria-pressed={view === 'spines'} onclick={() => setView('spines')}>
+						<Icon name="layers" size={15} />
+						{t('fav.viewSpines')}
+					</button>
+				</div>
+			</div>
+		{/if}
+		<Bookshelf
+			{view}
+			id="reading"
+			title={t('fav.shelfReading')}
+			items={shelves.reading}
+			emptyHint={t('fav.shelfReadingEmpty')}
+		/>
+		<Bookshelf
+			{view}
+			id="to-read"
+			title={t('fav.shelfToRead')}
+			items={shelves.toRead}
+			emptyHint={t('fav.shelfToReadEmpty')}
+		/>
+		{#if shelves.unresolved.length}
+			<div class="mt-4 flex flex-wrap gap-2">
+				{#each shelves.unresolved as slug (slug)}
+					<a href={localizeHref(`/books/${slug}`)} class="tag">♥ {unslug(slug)}</a>
+				{/each}
+			</div>
+		{/if}
+		<Bookshelf
+			{view}
+			id="finished"
+			title={t('fav.shelfFinished')}
+			items={shelves.finished}
+			emptyHint={t('fav.shelfFinishedEmpty')}
+		/>
+		{#if bookCount === 0 && !hasOthers}
+			<div class="mt-8 text-center">
+				<a href={localizeHref('/books')} class="btn btn-primary hover:no-underline"
+					>{t('home.browseLibrary')}</a
+				>
+			</div>
+		{/if}
+	{/if}
+
+	<!-- Everything else saved, below the books -->
 	<!-- Saved sermons -->
 	{#if sermonFavs.length}
-		<section class="pt-10">
+		<section id="sermons" class="scroll-mt-24 pt-10">
 			<SectionHeader title={t('fav.groupSermons')} />
 			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 				{#each sermonFavs as e (e.slug)}
@@ -226,9 +324,24 @@
 		</section>
 	{/if}
 
+	<!-- Following: hearted authors — the people first -->
+	{#if authorFavs.length}
+		<section id="authors" class="scroll-mt-24 pt-10">
+			<SectionHeader title={t('fav.groupAuthors')} />
+			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+				{#each authorFavs as e (e.slug)}
+					{#if authors[e.slug]}
+						<AuthorTile author={authors[e.slug]} />
+					{/if}
+				{/each}
+			</div>
+			{@render fallbackPills(authorFavs, authors, 'author')}
+		</section>
+	{/if}
+
 	<!-- Followed topics: the shelves the reader wants to keep an eye on -->
 	{#if topicFavs.length}
-		<section class="pt-10">
+		<section id="topics" class="scroll-mt-24 pt-10">
 			<SectionHeader title={t('fav.groupTopics')} />
 			<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 				{#each topicFavs as e (e.slug)}
@@ -263,7 +376,7 @@
 
 	<!-- Saved reading plans -->
 	{#if planFavs.length}
-		<section class="pt-10">
+		<section id="plans" class="scroll-mt-24 pt-10">
 			<SectionHeader title={t('fav.groupPlans')} />
 			<div class="grid gap-4 sm:grid-cols-2">
 				{#each planFavs as e (e.slug)}
@@ -300,7 +413,7 @@
 
 	<!-- Saved articles -->
 	{#if articleFavs.length}
-		<section class="pt-10">
+		<section id="articles" class="scroll-mt-24 pt-10">
 			<SectionHeader title={t('fav.groupArticles')} />
 			<div class="grid gap-4 sm:grid-cols-2">
 				{#each articleFavs as e (e.slug)}
@@ -315,7 +428,7 @@
 
 	<!-- Saved quotes — each still sourced, and still un-savable by its heart -->
 	{#if quoteFavs.length}
-		<section class="pt-10 pb-4">
+		<section id="quotes" class="scroll-mt-24 pt-10 pb-4">
 			<SectionHeader title={t('fav.groupQuotes')} />
 			<ul class="grid list-none gap-4 p-0 sm:grid-cols-2">
 				{#each quoteFavs as e (e.slug)}
@@ -328,3 +441,31 @@
 		</section>
 	{/if}
 </div>
+
+<style>
+	.view-toggle {
+		display: inline-flex;
+		padding: 3px;
+		gap: 2px;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-surface);
+	}
+	.view-toggle button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.3rem 0.8rem;
+		border: 0;
+		border-radius: 999px;
+		background: transparent;
+		color: var(--color-muted);
+		font-size: var(--fs-small);
+		cursor: pointer;
+	}
+	.view-toggle button[aria-pressed='true'] {
+		background: var(--color-accent-soft);
+		color: var(--color-accent);
+		font-weight: 600;
+	}
+</style>
