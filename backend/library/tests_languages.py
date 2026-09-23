@@ -486,13 +486,13 @@ class ReadinessReportTests(TestCase):
         # missing UI catalogue is not: a live locale with no compiled catalogue
         # cannot build, so its failure is marked unforceable and go-live refuses
         # it even when forced.
-        with mock.patch.object(readiness_module, "_ui_counts", return_value=(0, 120)):
+        with mock.patch.object(readiness_module, "_ui_gap", return_value=(None, 120)):
             ui = readiness_module._ui_check(self.es)
         self.assertEqual(ui.status, "fail")
         self.assertFalse(ui.forceable)
 
     def test_an_incomplete_ui_catalogue_is_also_unforceable(self):
-        with mock.patch.object(readiness_module, "_ui_counts", return_value=(119, 120)):
+        with mock.patch.object(readiness_module, "_ui_gap", return_value=(1, 120)):
             ui = readiness_module._ui_check(self.es)
         self.assertEqual(ui.status, "fail")
         self.assertFalse(ui.forceable)
@@ -506,7 +506,7 @@ class ReadinessReportTests(TestCase):
         self.es.min_plans = 0
         self.es.require_all_topics = False
         self.es.save()
-        with mock.patch.object(readiness_module, "_ui_counts", return_value=(0, 120)):
+        with mock.patch.object(readiness_module, "_ui_gap", return_value=(None, 120)):
             r = self._report(self.es)
         self.assertFalse(r.ready)
         self.assertEqual([c.key for c in r.hard_blockers], ["ui"])
@@ -1204,31 +1204,29 @@ class UiCatalogueCheckTests(TestCase):
         with self._no_frontend():
             check = self._check()
         self.assertEqual(check.status, readiness_module.PASS, check.detail)
-        self.assertEqual(check.current, check.required)
-        self.assertGreater(check.required, 100, "a plausible catalogue size")
 
     def test_an_incomplete_catalogue_fails_with_a_count(self):
-        summary = {"base_keys": 100, "locales": {"ar": {"present": 88, "missing": []}}}
+        summary = {"locales": {"ar": {"missing": [f"k{i}" for i in range(12)]}}}
         with self._no_frontend():
             with mock.patch(
                 "library.readiness.CATALOGUE_SUMMARY", self._summary_file(summary)
             ):
                 check = self._check()
         self.assertEqual(check.status, readiness_module.FAIL)
-        self.assertEqual((check.current, check.required), (88, 100))
+        self.assertFalse(check.forceable)
         self.assertIn("12 string(s)", check.detail)
 
     def test_a_language_absent_from_the_summary_is_absent_not_unknown(self):
         # A language nobody has started an interface for has zero strings — that
         # is a fact, and it should block a launch rather than shrug.
-        summary = {"base_keys": 100, "locales": {"es": {"present": 100, "missing": []}}}
+        summary = {"locales": {"es": {"missing": []}}}
         with self._no_frontend():
             with mock.patch(
                 "library.readiness.CATALOGUE_SUMMARY", self._summary_file(summary)
             ):
                 check = self._check()
         self.assertEqual(check.status, readiness_module.FAIL)
-        self.assertEqual((check.current, check.required), (0, 100))
+        self.assertEqual(check.detail, "No ar catalogue.")
 
     def test_no_source_at_all_is_unknown(self):
         with self._no_frontend():
@@ -1245,7 +1243,7 @@ class UiCatalogueCheckTests(TestCase):
         msgs = Path(tempfile.mkdtemp())
         (msgs / "en.json").write_text(json.dumps({"a": "1", "b": "2"}), "utf-8")
         (msgs / "ar.json").write_text(json.dumps({"a": "١"}), "utf-8")
-        stale = {"base_keys": 999, "locales": {"ar": {"present": 999, "missing": []}}}
+        stale = {"locales": {"ar": {"missing": []}}}
         with mock.patch.object(readiness_module, "_messages_dir", return_value=msgs):
             with mock.patch(
                 "library.readiness.CATALOGUE_SUMMARY", self._summary_file(stale)
@@ -1260,10 +1258,9 @@ class UiCatalogueCheckTests(TestCase):
         # changes — this does.
         data = json.loads(readiness_module.CATALOGUE_SUMMARY.read_text("utf-8"))
         self.assertEqual(data["base_locale"], "en")
-        self.assertGreater(data["base_keys"], 100)
         for code in ("en", "ar", "es", "sw", "lg", "pt"):
             self.assertIn(code, data["locales"], code)
-            self.assertIn("present", data["locales"][code])
+            self.assertIsInstance(data["locales"][code]["missing"], list)
 
 
 class PlanThresholdTests(TestCase):

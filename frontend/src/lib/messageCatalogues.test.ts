@@ -92,10 +92,12 @@ describe('message catalogues', () => {
 	it('the summary the API reads matches the catalogues', () => {
 		// The admin's readiness report says whether a language's interface is
 		// translated, and the deployed API cannot see these files — its image is
-		// built from backend/ alone. So the numbers are handed across as a
-		// committed JSON file, and this is what stops that file from drifting: a
-		// stale summary would report a language ready on the strength of a
-		// catalogue that has since grown, which is worse than reporting nothing.
+		// built from backend/ alone. So each locale's missing keys are handed
+		// across as a committed JSON file, and this is what stops that file from
+		// drifting: a stale summary would report a language ready on the strength
+		// of a catalogue that has since grown, which is worse than reporting
+		// nothing. (It carries no key counts, so adding a string to every
+		// catalogue leaves it untouched — see sync-ui-catalogues.mjs.)
 		const committed = readFileSync(
 			join(process.cwd(), '..', 'backend', 'library', 'data', 'ui_catalogues.json'),
 			'utf-8'
