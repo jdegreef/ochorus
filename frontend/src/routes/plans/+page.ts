@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-22: NEW English plan — rooted-book-1-30-days ("Rooted: 30 Days with
+// God — Book 1"), a LAUNCH_PLANS entry over rooted-1 that reads chapters 2–31 (Day 1–30) and skips
+// the book's Introduction and Conclusion, so plan day N is the chapter titled "Day N". English only.
+// /plans re-crawls to bake the new card.
 // prerender refresh 2026-09-21: French plan ACTIVATES — first-steps-for-teens («Premiers pas :
 // la foi pour les adolescents»). Shipping men-and-women-who-gave-everything-2 in French (#2784)
 // completes the plan's two source books (with around-the-wicket-gate, already fr), so seed_plans
