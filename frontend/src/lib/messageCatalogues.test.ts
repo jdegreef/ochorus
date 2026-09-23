@@ -96,8 +96,7 @@ describe('message catalogues', () => {
 		// across as a committed JSON file, and this is what stops that file from
 		// drifting: a stale summary would report a language ready on the strength
 		// of a catalogue that has since grown, which is worse than reporting
-		// nothing. (It carries no key counts, so adding a string to every
-		// catalogue leaves it untouched — see sync-ui-catalogues.mjs.)
+		// nothing.
 		const committed = readFileSync(
 			join(process.cwd(), '..', 'backend', 'library', 'data', 'ui_catalogues.json'),
 			'utf-8'

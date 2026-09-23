@@ -82,7 +82,8 @@ const serialize = (summary) => `${JSON.stringify(summary, null, '\t')}\n`;
 // Only act when run directly — the test imports `buildSummary` from here so the
 // gate and the generator can never compute completeness differently.
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-	const next = serialize(buildSummary());
+	const summary = buildSummary();
+	const next = serialize(summary);
 	if (process.argv.includes('--check')) {
 		let current = '';
 		try {
@@ -102,7 +103,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
 		console.log('✓ ui catalogues summary is up to date');
 	} else {
 		writeFileSync(OUT, next, 'utf-8');
-		const line = Object.entries(buildSummary().locales)
+		const line = Object.entries(summary.locales)
 			.map(([l, v]) => `${l} ${v.missing.length ? `${v.missing.length} missing` : 'complete'}`)
 			.join(' · ');
 		console.log(`✓ wrote ${OUT}\n  ${line}`);
