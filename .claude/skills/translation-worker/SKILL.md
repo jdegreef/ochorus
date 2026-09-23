@@ -231,6 +231,27 @@ worker specifics that shipped ~11 editions:
   quotations conservatively in the language's reverent biblical register and
   note that in the PR + issue comment.
 
+**Book chapter top-up** — the English edition grew after a translation shipped
+(an author added chapters; first case: `stepping-stones-2` gained chapters
+40–43 in 2026-09). Its job carries the ordinary title
+`[translation] book:<slug> -> <lang>`, and the `<lang>` file already exists, so
+the double-ship guard would call it done. It isn't. The test is STRUCTURAL,
+never the issue body: **compare the chapter `order`s in `<slug>.en.json` with
+`<slug>.<lang>.json`.** If English has orders the translation lacks, it's a
+top-up:
+- Translate ONLY the missing chapters (same prompt, `<p>`-count validation and
+  scripture handling as a full book) and APPEND them to the existing
+  `<slug>.<lang>.json` — same file, keep its current formatting
+  (`content_fixtures.render_rows` if the file round-trips through it, else
+  match what's there), `body_text`/`word_count` derived as above.
+- Do NOT touch the book row, the existing chapters, `source_type`, or the
+  cover — they already shipped and may have been reviewed. If the edition is
+  already `reviewed`, say in the PR that it now holds unreviewed chapters.
+- The `books/+page.ts` prerender touch is still owed. Close out as usual.
+
+If the orders already match, it's a genuine double-ship — close it as the
+guardrail below says.
+
 **Sermon** — same shape, smaller: single body instead of chapters; translate
 `title`, `scripture_ref` (localize the Bible book name, keep chapter:verse),
 and `body_html` (preserve ALL tags 1:1 — blockquote/h2/br/i, hymn stanzas);
@@ -612,7 +633,8 @@ archaic spelling and period punctuation are the text, not defects in it.
 - **Never** auto-promote: everything ships `ai_unreviewed`; only the user runs
   `approve_translation`.
 - The double-ship guard is now structural: the target already existing means
-  the job already shipped — before starting, check the type's delivery target
+  the job already shipped (except a book whose English has since gained
+  chapters — see **Book chapter top-up**) — before starting, check the type's delivery target
   on fresh `origin/main`: `content/books/<slug>.<lang>.json` (book) /
   `content/sermons/<slug>.<lang>.json` (sermon) /
   `content/articles/<slug>.<lang>.json` (article) / a `<slug>` key in
