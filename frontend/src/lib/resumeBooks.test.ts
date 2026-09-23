@@ -142,6 +142,21 @@ describe('resumeBooks', () => {
 		expect(listBooks).toHaveBeenCalledTimes(2);
 	});
 
+	it('skips the storage write when nothing changed', async () => {
+		const { rememberResumeBook } = await fresh();
+		progress({ grace: {} });
+		rememberResumeBook('en', book('grace'));
+		const setItem = vi.spyOn(Storage.prototype, 'setItem');
+		try {
+			rememberResumeBook('en', book('grace')); // the same book again
+			expect(setItem).not.toHaveBeenCalled();
+			rememberResumeBook('en', book('grace', { title: 'Retitled' })); // a real change
+			expect(setItem).toHaveBeenCalledTimes(1);
+		} finally {
+			setItem.mockRestore();
+		}
+	});
+
 	it('ignores a cache of another stored shape', async () => {
 		const { cachedResumeBooks } = await fresh();
 		localStorage.setItem(
