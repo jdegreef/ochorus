@@ -29,7 +29,7 @@
 	 * it: faint until the cell is hovered or the button focused, always there on
 	 * touch.
 	 */
-	let { item }: { item: ShelfBook | null } = $props();
+	let { item, shelfId = null }: { item: ShelfBook | null; shelfId?: string | null } = $props();
 	const t = i18n.t;
 
 	const finishedOn = $derived(
@@ -125,7 +125,7 @@
 						role="group"
 						aria-label="{t('fav.bookActions')}: {book.title}"
 					>
-						<ShelfBookActions {item} onDone={() => (open = false)} />
+						<ShelfBookActions {item} {shelfId} onDone={() => (open = false)} />
 					</div>
 				{/if}
 			</div>

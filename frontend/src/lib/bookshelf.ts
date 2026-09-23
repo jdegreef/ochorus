@@ -105,6 +105,68 @@ export function buildShelves(
 	return shelves;
 }
 
+/**
+ * The books on one of the reader's own shelves (customShelves), drawn with
+ * the same status marks as the built-in shelves: a book with a finished stamp
+ * is Finished, one with a position is Reading, the rest are To read. `added`
+ * is the shelf's book list, `slug -> added-at`; the shelf is ordered by when
+ * each book went on it, newest first (the Sort control can reorder it). A
+ * book with no row in this language is left off, like the built-in shelves'
+ * reading positions.
+ */
+export function customShelfItems(
+	added: Map<string, number>,
+	books: BookSummary[],
+	favs: FavoriteEntry[],
+	progress: ProgressRow[]
+): ShelfBook[] {
+	const bySlug = new Map(books.map((b) => [b.slug, b]));
+	const saved = new Set(favs.filter((f) => f.kind === 'book').map((f) => f.slug));
+	const recOf = new Map(progress.filter((p) => p.kind === 'book').map((p) => [p.slug, p]));
+	const items: ShelfBook[] = [];
+	for (const [slug, at] of added) {
+		const book = bySlug.get(slug);
+		if (!book) continue;
+		const p = recOf.get(slug);
+		const status: ShelfStatus = !p ? 'toRead' : p.finished_at != null ? 'finished' : 'reading';
+		items.push({
+			book,
+			status,
+			saved: saved.has(slug),
+			order: p ? p.order : null,
+			paragraph: p ? p.paragraph_index : 0,
+			pct: !p ? 0 : status === 'finished' ? 100 : bookProgressPercent(p.order, book.chapter_count),
+			at
+		});
+	}
+	return items.sort((a, b) => b.at - a.at);
+}
+
+export type ShelfSort = 'recent' | 'title' | 'author' | 'shortest' | 'longest';
+export const SHELF_SORTS: ShelfSort[] = ['recent', 'title', 'author', 'shortest', 'longest'];
+
+/** A book's length for sorting: its words, else a rough count from chapters. */
+const lengthOf = (b: BookSummary) => b.word_count ?? b.chapter_count * 4000;
+
+/**
+ * Reorder a shelf. `recent` keeps the shelf's own order (each shelf's clock:
+ * last read, saved, finished or added), so it returns the input as is. Title
+ * and author compare in the reader's language (`locale`), so accented and
+ * non-Latin titles sort the way that language does.
+ */
+export function sortShelf(items: ShelfBook[], mode: ShelfSort, locale = 'en'): ShelfBook[] {
+	if (mode === 'recent') return items;
+	const collator = new Intl.Collator(locale, { sensitivity: 'base', numeric: true });
+	const byTitle = (a: ShelfBook, b: ShelfBook) => collator.compare(a.book.title, b.book.title);
+	const sorted = [...items];
+	if (mode === 'title') sorted.sort(byTitle);
+	else if (mode === 'author')
+		sorted.sort((a, b) => collator.compare(a.book.author.name, b.book.author.name) || byTitle(a, b));
+	else if (mode === 'shortest') sorted.sort((a, b) => lengthOf(a.book) - lengthOf(b.book) || byTitle(a, b));
+	else sorted.sort((a, b) => lengthOf(b.book) - lengthOf(a.book) || byTitle(a, b));
+	return sorted;
+}
+
 /** Where a shelf book's link goes: the exact resume point for a book being
  *  read, otherwise the book's own page (to begin, or to revisit). */
 export function shelfHref(item: ShelfBook): string {

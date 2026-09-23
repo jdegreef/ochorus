@@ -1,6 +1,13 @@
 import { browser } from '$app/environment';
 import { undo } from './undo.svelte';
 import { apiFetch } from './api';
+import {
+	mergeServerShelves,
+	toServer as shelfToServer,
+	type CustomShelf,
+	type ServerShelf,
+	type ShelvesStore
+} from './shelvesData';
 import { bookmarkTarget, clearPending, clearSent, pendingAt, pendingRemovals } from './removals';
 import type { PlanState } from './planProgress.svelte';
 import type { SessionSync } from './sessionClock';
@@ -21,6 +28,7 @@ import {
 	PLANS_KEY,
 	BOOKMARKS_KEY,
 	JOURNAL_KEY,
+	SHELVES_KEY,
 	JOURNAL_DIRTY_KEY,
 	LAST_SYNC_KEY,
 	READING_DATA_KEYS,
@@ -101,6 +109,8 @@ interface ServerState {
 	/** The merge applied `removed` (an API with tombstones — see removals.ts). */
 	removed_applied?: boolean;
 	journal?: ServerJournalEntry[];
+	/** Custom Bookshelf shelves, tombstones included (absent on an older API). */
+	shelves?: ServerShelf[];
 }
 
 /**
@@ -501,6 +511,25 @@ class ReadingSync {
 		}
 	}
 
+	/**
+	 * Mirror a custom shelf to the account — the whole shelf; the server merges
+	 * its books per book (see shelvesData). Debounced per shelf, so a run of
+	 * adds becomes one PUT carrying all of them. An offline or failed push is
+	 * carried by the next merge, which sends every shelf.
+	 */
+	pushShelf(shelf: CustomShelf) {
+		if (!this.signedIn || !browser) return;
+		this.#debounce(`sh:${shelf.id}`, () => {
+			const latest = readJson<ShelvesStore>(SHELVES_KEY, {})[shelf.id] ?? shelf;
+			apiFetch(`/api/reading/shelves/${latest.id}/`, {
+				method: 'PUT',
+				body: JSON.stringify(shelfToServer(latest))
+			})
+				.then(() => this.#markSynced())
+				.catch(() => {});
+		});
+	}
+
 	/** Mirror a plan's progress (started + completed days) to the account. */
 	pushPlan(slug: string, state: PlanState) {
 		if (!this.signedIn || !browser) return;
@@ -624,7 +653,11 @@ class ReadingSync {
 				started_at: p.startedAt,
 				done: Array.isArray(p.done) ? p.done : []
 			})),
-			journal: journalRows
+			journal: journalRows,
+			// Every shelf, tombstones too: the server merges per book, so sending
+			// what it already has is harmless, and this is how an offline change
+			// (or a failed push) reaches it.
+			shelves: Object.values(readJson<ShelvesStore>(SHELVES_KEY, {})).map(shelfToServer)
 		};
 
 		try {
@@ -717,6 +750,13 @@ class ReadingSync {
 		}
 		localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
 		localStorage.setItem(MARKS_KEY, JSON.stringify(marks));
+		// Shelves are MERGED into the device's copy, not replaced: an edit made
+		// while the merge was in flight must survive, and an older API that
+		// doesn't send `shelves` must not wipe them.
+		if (Array.isArray(state.shelves)) {
+			const local = readJson<ShelvesStore>(SHELVES_KEY, {});
+			localStorage.setItem(SHELVES_KEY, JSON.stringify(mergeServerShelves(local, state.shelves)));
+		}
 		if (state.favorites) {
 			const favs: Record<string, number> = {};
 			for (const f of state.favorites) {
