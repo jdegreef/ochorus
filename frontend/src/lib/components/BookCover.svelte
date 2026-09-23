@@ -163,7 +163,7 @@
 	 *  Latin. The FACE needs no class — app.css's stacks fall back per glyph. */
 	const script = $derived(scriptOf(lang));
 	/** This book's place in its series, in its edition's digits; null outside one. */
-	const volume = $derived(volumeNumeral(book.slug, lang));
+	const volume = $derived(volumeNumeral(book.series_position, lang));
 	/** `dir="rtl"` on an Arabic edition's type block, and NO attribute at all
 	 *  otherwise — a spread rather than `dir={…}`, which Svelte writes as the
 	 *  `dir` property and so leaves `dir=""` behind on every other cover. */
