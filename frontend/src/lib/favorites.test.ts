@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { favorites } from './favorites.svelte';
+import { pendingAt } from './removals';
 
 beforeEach(() => localStorage.clear());
 
@@ -27,5 +28,15 @@ describe('favorites store', () => {
 		// Slugs containing hyphens survive the "kind:slug" key round-trip.
 		expect(all.map((e) => [e.kind, e.slug])).toContainEqual(['author', 'c-h-spurgeon']);
 		expect(all.map((e) => [e.kind, e.slug])).toContainEqual(['plan', 'school-of-prayer']);
+	});
+});
+
+describe('un-hearting is remembered until the account confirms it', () => {
+	it('records a pending removal, and a re-heart lifts it', () => {
+		favorites.toggle('book', 'humility');
+		favorites.toggle('book', 'humility');
+		expect(pendingAt('favorite', 'book', 'humility')).toBeTypeOf('number');
+		favorites.toggle('book', 'humility');
+		expect(pendingAt('favorite', 'book', 'humility')).toBeNull();
 	});
 });

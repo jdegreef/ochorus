@@ -6,14 +6,22 @@ import {
 	markFinished,
 	unmarkFinished,
 	isFinished,
-	offerFinishUnopened
+	offerFinishUnopened,
+	removeWork,
+	restoreWork
 } from './progress';
+import { pendingAt } from './removals';
 import { undo } from './undo.svelte';
 
 // The account mirror is a no-op in these unit tests — we only assert the local
 // cache the reader resumes from.
 vi.mock('./readingSync', () => ({
-	readingSync: { pushProgress: () => {}, pushActivity: () => {}, setFinished: () => {} }
+	readingSync: {
+		pushProgress: () => {},
+		pushActivity: () => {},
+		setFinished: () => {},
+		removeProgress: () => {}
+	}
 }));
 
 beforeEach(() => localStorage.clear());
@@ -128,5 +136,27 @@ describe('finishing a book never opened here (the Bookshelf "already read")', ()
 		offerFinishUnopened('humility', 12, 'en');
 		expect(getProgressRecord('humility')).toMatchObject({ order: 3 });
 		expect(isFinished('humility')).toBe(true);
+	});
+});
+
+describe('removing a work from the shelf', () => {
+	it('drops the position, remembers the removal, and Undo restores it newer', () => {
+		saveProgress('humility', 3, 'en');
+		markFinished('humility');
+		const before = getProgressRecord('humility')!;
+		const rec = removeWork('humility');
+		expect(getProgressRecord('humility')).toBeNull();
+		expect(pendingAt('progress', 'book', 'humility')).toBeTypeOf('number');
+
+		restoreWork('humility', rec!);
+		const back = getProgressRecord('humility')!;
+		expect(back).toMatchObject({ order: 3, finished_at: before.finished_at });
+		expect(back.at).toBeGreaterThanOrEqual(before.at);
+		expect(pendingAt('progress', 'book', 'humility')).toBeNull();
+	});
+
+	it('is a no-op for a work with no position', () => {
+		expect(removeWork('never-opened')).toBeNull();
+		expect(pendingAt('progress', 'book', 'never-opened')).toBeNull();
 	});
 });

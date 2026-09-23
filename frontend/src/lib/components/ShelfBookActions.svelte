@@ -4,7 +4,13 @@
 	import { favorites } from '$lib/favorites.svelte';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
 	import { getBook } from '$lib/library-public';
-	import { offerFinish, offerFinishUnopened, unmarkFinished } from '$lib/progress';
+	import {
+		offerFinish,
+		offerFinishUnopened,
+		removeWork,
+		restoreWork,
+		unmarkFinished
+	} from '$lib/progress';
 	import { undo } from '$lib/undo.svelte';
 	import { shelfHref, type ShelfBook } from '$lib/bookshelf';
 	import Icon, { type IconName } from './Icon.svelte';
@@ -14,16 +20,15 @@
 	 * rows — the same rows inside the covers view's "⋯" menu and the spines
 	 * view's pulled-out book, so the two views can't offer different things.
 	 *
-	 *   Reading  → Resume · Mark as finished
+	 *   Reading  → Resume · Mark as finished · Remove from shelf
 	 *   To read  → Begin reading · I've already read this · Remove from shelf
-	 *   Finished → Read again · Move back to reading
+	 *   Finished → Read again · Move back to reading · Remove from shelf
 	 *   all      → Download for offline (or its progress / "Saved offline")
 	 *
-	 * "Remove from shelf" is on To read only: that shelf is made of hearts, and
-	 * un-hearting is a clean removal. A book on Reading or Finished is there
-	 * because of a reading position, which the account can't forget (the sync
-	 * clears a finish, never a position) — a remove would come back on the next
-	 * sign-in. Moving a finished book back to Reading is the reversible step.
+	 * "Remove from shelf" takes the book off whichever shelf it is on: it drops
+	 * the reading position (progress.removeWork) and the heart, both of which
+	 * the account tombstones so another device can't merge them back. One Undo
+	 * puts back both. Highlights, notes and bookmarks in the book stay.
 	 *
 	 * Every state change goes through the progress/favorites stores, which bump
 	 * their ticks or dispatch `ochorus:sync`, so the page re-shelves the book
@@ -72,8 +77,15 @@
 
 	function removeFromShelf() {
 		const slug = book.slug;
-		favorites.toggle('book', slug);
-		undo.offer({ restore: () => favorites.has('book', slug) || favorites.toggle('book', slug) });
+		const hearted = favorites.has('book', slug);
+		const rec = removeWork(slug, 'book');
+		if (hearted) favorites.toggle('book', slug);
+		undo.offer({
+			restore: () => {
+				if (rec) restoreWork(slug, rec, 'book');
+				if (hearted && !favorites.has('book', slug)) favorites.toggle('book', slug);
+			}
+		});
 	}
 </script>
 
@@ -120,12 +132,10 @@
 	</button>
 {/if}
 
-{#if item.status === 'toRead'}
-	<div class="my-1 border-t border-border"></div>
-	<button class="account-item danger" onclick={() => act(removeFromShelf)}>
-		{@render row('close', t('fav.removeFromShelf'))}
-	</button>
-{/if}
+<div class="my-1 border-t border-border"></div>
+<button class="account-item danger" onclick={() => act(removeFromShelf)}>
+	{@render row('close', t('fav.removeFromShelf'))}
+</button>
 
 <style>
 	/* Two classes, so these outrank .account-item's own colour. */

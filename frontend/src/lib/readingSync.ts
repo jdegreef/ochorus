@@ -1,6 +1,7 @@
 import { browser } from '$app/environment';
 import { undo } from './undo.svelte';
 import { apiFetch } from './api';
+import { clearPending, clearSent, pendingAt, pendingRemovals } from './removals';
 import type { PlanState } from './planProgress.svelte';
 import type { SessionSync } from './sessionClock';
 import {
@@ -86,6 +87,8 @@ interface ServerState {
 	bookmarks?: ServerBookmark[];
 	activity?: string[];
 	plan_progress?: ServerPlanProgress[];
+	/** The merge applied `removed` (an API with tombstones — see removals.ts). */
+	removed_applied?: boolean;
 }
 
 
@@ -306,12 +309,41 @@ class ReadingSync {
 	pushFavorite(kind: string, slug: string, active: boolean) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`f:${kind}:${slug}`, () => {
-			apiFetch(`/api/reading/favorites/${kind}/${slug}/`, {
+			// An un-heart carries this device's clock and, once the account has it,
+			// clears its pending entry (see removals.ts); until then the next merge
+			// carries it instead, so an offline un-heart isn't lost.
+			const at = active ? null : pendingAt('favorite', kind, slug);
+			const query = at ? `?at=${at}` : '';
+			apiFetch(`/api/reading/favorites/${kind}/${slug}/${query}`, {
 				method: active ? 'PUT' : 'DELETE'
 			})
-				.then(() => this.#markSynced())
+				.then(() => {
+					if (at) clearPending('favorite', kind, slug, at);
+					this.#markSynced();
+				})
 				.catch(() => {});
 		});
+	}
+
+	/**
+	 * Remove a work from the reader's shelf on the account — the Bookshelf's
+	 * "Remove from shelf". Not debounced (a discrete act), and it cancels any
+	 * position push still queued for the work, which would otherwise land just
+	 * after. The server keeps a tombstone so no device re-merges the position;
+	 * `at` is the removal's pending entry, cleared on success (else the next
+	 * merge carries it).
+	 */
+	removeProgress(kind: WorkKind, slug: string, at: number) {
+		if (!this.signedIn || !browser) return;
+		const key = `p:${workSlugKey(kind, slug)}`;
+		clearTimeout(this.#timers.get(key));
+		this.#timers.delete(key);
+		apiFetch(`/api/reading/progress/${slug}/?kind=${kind}&at=${at}`, { method: 'DELETE' })
+			.then(() => {
+				clearPending('progress', kind, slug, at);
+				this.#markSynced();
+			})
+			.catch(() => {});
 	}
 
 	/** Mirror a saved bookmark to the account (a paragraph the reader saved). */
@@ -376,6 +408,7 @@ class ReadingSync {
 			/* corrupt blob — treat as empty */
 		}
 
+		const removed = pendingRemovals();
 		const payload = {
 			progress: Object.entries(localProgress).map(([key, r]) => {
 				const { kind, slug } = parseWorkSlugKey(key);
@@ -411,10 +444,14 @@ class ReadingSync {
 				})
 				.filter(Boolean),
 			// Favorites are stored as "kind:slug" -> savedAt; kinds never contain ':'.
-			favorites: Object.keys(localFavorites).map((key) => {
+			// `saved_at` lets the server tell a heart re-saved after a removal
+			// elsewhere (keep) from this device's stale copy of it (drop).
+			favorites: Object.entries(localFavorites).map(([key, at]) => {
 				const i = key.indexOf(':');
-				return { kind: key.slice(0, i), slug: key.slice(i + 1) };
+				return { kind: key.slice(0, i), slug: key.slice(i + 1), saved_at: at };
 			}),
+			// Removals whose live DELETE never landed (offline, a failed request).
+			removed,
 			// Bookmarks: a workSlugKey ("book:humility") -> that work's list. Flatten
 			// to one row per saved paragraph; the server unions them by position.
 			bookmarks: Object.entries(localBookmarks).flatMap(([key, list]) => {
@@ -442,6 +479,9 @@ class ReadingSync {
 				method: 'POST',
 				body: JSON.stringify(payload)
 			});
+			// Only an API that says it applied them: one from before tombstones
+			// ignores `removed`, and clearing then would lose them.
+			if (state.removed_applied) clearSent(removed);
 			// Deploy-overlap guard: if we sent sermon rows but the server echoed
 			// rows with no `kind` at all, it's the pre-#10 API — writing its
 			// state back would re-key our sermon entries as books, making every

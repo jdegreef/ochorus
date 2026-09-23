@@ -6,8 +6,10 @@ import {
 	BOOKMARKS_KEY,
 	PROGRESS_KEY,
 	MARKS_KEY,
-	LAST_SYNC_KEY
+	LAST_SYNC_KEY,
+	FAVORITES_KEY
 } from './reading-schema';
+import { addPending, pendingAt } from './removals';
 
 beforeEach(() => localStorage.clear());
 
@@ -180,6 +182,51 @@ describe('readingSync.clearOnSignOut', () => {
 		} finally {
 			fetchSpy.mockRestore();
 			vi.useRealTimers();
+			readingSync.setSignedIn(false);
+		}
+	});
+
+	it('removeProgress DELETEs with the removal clock and clears its pending entry', async () => {
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+			new Response(null, { status: 204 })
+		);
+		try {
+			readingSync.setSignedIn(true);
+			const at = addPending('progress', 'book', 'humility', 777);
+			readingSync.removeProgress('book', 'humility', at);
+			await vi.waitFor(() => expect(pendingAt('progress', 'book', 'humility')).toBeNull());
+			const [url, init] = fetchSpy.mock.calls[0];
+			expect(String(url)).toContain('/api/reading/progress/humility/?kind=book&at=777');
+			expect(init?.method).toBe('DELETE');
+		} finally {
+			fetchSpy.mockRestore();
+			readingSync.setSignedIn(false);
+		}
+	});
+
+	it('the merge carries pending removals and heart times, and clears only when applied', async () => {
+		localStorage.setItem(FAVORITES_KEY, JSON.stringify({ 'book:humility': 42 }));
+		addPending('favorite', 'author', 'andrew-murray', 99);
+		const reply = (applied: boolean) =>
+			new Response(
+				JSON.stringify({ progress: [], marks: [], favorites: [], ...(applied ? { removed_applied: true } : {}) }),
+				{ status: 200, headers: { 'content-type': 'application/json' } }
+			);
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(reply(false));
+		try {
+			readingSync.setSignedIn(true);
+			await readingSync.mergeOnSignIn();
+			const body = JSON.parse(String(fetchSpy.mock.calls[0][1]?.body));
+			expect(body.favorites).toEqual([{ kind: 'book', slug: 'humility', saved_at: 42 }]);
+			expect(body.removed).toEqual([{ domain: 'favorite', kind: 'author', slug: 'andrew-murray', at: 99 }]);
+			// An API from before tombstones ignored them — keep them for next time.
+			expect(pendingAt('favorite', 'author', 'andrew-murray')).toBe(99);
+
+			fetchSpy.mockResolvedValueOnce(reply(true));
+			await readingSync.mergeOnSignIn();
+			expect(pendingAt('favorite', 'author', 'andrew-murray')).toBeNull();
+		} finally {
+			fetchSpy.mockRestore();
 			readingSync.setSignedIn(false);
 		}
 	});
