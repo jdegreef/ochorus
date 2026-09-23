@@ -312,6 +312,73 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    5: {
+        "sort_order": 79,
+        "publication_year": 2026,
+        "title": "Rooted – 30 Days with God for Youth – Book 5",
+        "subtitle": "Branching Out: loving your family, your friends, God’s family and the world",
+        "cover_url": "/covers/rooted-5.svg",
+        "cover_color": covers.ink_safe("#8a3b2e"),  # an autumn-leaf red
+        "description": (
+            "Thirty short daily devotions for readers aged 9 to 12 about how God’s "
+            "love reaches out through us: honoring parents and loving siblings, "
+            "being a true friend, forgiving and making peace, belonging to God’s "
+            "family at church, and loving the whole world. Each day has a Bible "
+            "verse, a short teaching, a question, something to try and a prayer. "
+            "The fifth book of Rooted."
+        ),
+        "about_html": (
+            "<p>Rooted is an original Ochorus devotional series for readers aged 9 "
+            "to 12, and this is its fifth book. It begins with the two greatest "
+            "commandments, to love God and to love your neighbor, and pictures "
+            "them as a tree: roots going down to God and branches reaching out to "
+            "people. The earlier books grew the roots. Book 5 is about the "
+            "branches.</p>"
+            "<p>The first week is love at home: honoring parents, brothers and "
+            "sisters, serving one another, hearing a parent’s no, and “as for me "
+            "and my house.” The second is about friends: a friend who loves at all "
+            "times, David and Jonathan, walking with the wise, Hagar and the God "
+            "who sees, and welcoming the one on the edge. The third is about "
+            "forgiveness and peace: seventy-seven times, making things right, "
+            "being a peacemaker, loving enemies and overcoming evil with good. "
+            "The fourth is about God’s family, the church, and the fifth reaches "
+            "out to the world, from every nation and the least of these to "
+            "telling your own story of what Jesus has done.</p>"
+            "<p>Every day follows the same short pattern: a Scripture from the "
+            "Berean Standard Bible, a teaching with a Bible story or a picture "
+            "from everyday life, a question to think about, one thing to try, and "
+            "a prayer. The days on honoring parents, forgiveness and bullies make "
+            "clear that no one should be asked to do something wrong or unsafe, "
+            "that forgiving is not the same as staying where you can be hurt, and "
+            "that a reader who is being bullied should tell a trusted adult.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 5 of Rooted about?",
+                "answer": "How God’s love reaches out through us. Over thirty short daily devotions it looks at loving family, being a true friend, forgiving and making peace, belonging to God’s family at church, and loving people all over the world.",
+            },
+            {
+                "question": "How does it handle bullying?",
+                "answer": "Carefully. Day 17 teaches Jesus’ command to love our enemies, and it makes clear that loving an enemy never means letting them keep hurting you. It tells readers who are being bullied that it is not their fault and to tell a trusted adult until someone helps.",
+            },
+            {
+                "question": "Does forgiving someone mean pretending it didn’t hurt?",
+                "answer": "No. Days 13 and 14 explain that forgiving means letting go of revenge and giving the hurt to God. It does not mean saying the wrong was okay, trusting someone again right away, or staying where you can be hurt.",
+            },
+            {
+                "question": "Who is it for?",
+                "answer": "Readers aged 9 to 12, to read on their own or with a parent, grandparent or leader. Each book of Rooted stands on its own, so it can be read with or without the earlier books.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+            {
+                "question": "What comes after Book 5?",
+                "answer": "Book 6, the last book of Rooted, about bearing fruit: God’s purpose for your life, using your gifts and time well, leading by serving, finishing well, and looking ahead to the day Jesus returns.",
+            },
+        ],
+    },
 }
 
 _INLINE = [
