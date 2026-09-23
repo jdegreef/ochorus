@@ -15,7 +15,6 @@
 	import { localizeHref } from '$lib/href';
 	import { chapterLabel } from '$lib/reading';
 	import {
-		HIGHLIGHT_COLORS,
 		MODERN_EDITION,
 		baseEdition,
 		type Bookmark,
