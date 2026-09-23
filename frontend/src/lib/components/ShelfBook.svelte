@@ -9,6 +9,7 @@
 	import Icon from './Icon.svelte';
 	import ProgressBar from './ProgressBar.svelte';
 	import ShelfBookActions from './ShelfBookActions.svelte';
+	import { offlineBooks } from '$lib/offlineBooks.svelte';
 
 	/**
 	 * One cell of a Bookshelf row: a strip of the case's back wall with the book
@@ -84,6 +85,15 @@
 				<!-- The binding's crease: a soft shade down the spine edge, so a flat
 				     cover reads as a bound book standing on the shelf. -->
 				<span class="spine" aria-hidden="true"></span>
+				{#if offlineBooks.has(book.slug, book.language)}
+					<!-- Saved for offline: a small mark at the foot of the spine edge. -->
+					<span
+						class="absolute bottom-1.5 start-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-surface/90 text-accent shadow"
+						title={t('offline.saved')}
+					>
+						<Icon name="download" size={12} label={t('offline.saved')} />
+					</span>
+				{/if}
 				{#if item.status === 'reading'}
 					<span class="ribbon" aria-hidden="true"></span>
 				{:else if item.status === 'finished'}
