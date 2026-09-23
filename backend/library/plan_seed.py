@@ -121,6 +121,17 @@ LAUNCH_PLANS = [
         "intercession and a life of prayer.",
         (2, 32),  # Lesson 1 … Lesson 31, between the Preface and the Müller note
     ),
+    (
+        "daughters-of-the-king-book-1-30-days",
+        "daughters-of-the-king-1",
+        "Daughters of the King: 30 Days with God — Book 1",
+        "Thirty days for girls aged 9 to 12 on who you are as a daughter of the "
+        "King: worth that comes from God, escaping the comparison trap, "
+        "friendship without drama, and the brave girls of the Bible. Each day is "
+        "one short reading with a Bible verse, a question to think about, "
+        "something to try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
+    ),
 ]
 
 # Curated plans that walk through SEVERAL books in order (each book read in

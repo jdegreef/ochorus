@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-23: one NEW English book — daughters-of-the-king-1, "Daughters of the
+// King – 30 Days with God for Girls – Book 1" (Beloved), the first volume of a house-written devotional
+// series for girls aged 9–12 and a new Series row (Ochorus Originals; Introduction, Day 1–30,
+// Conclusion = 32 chapters; BSB Scripture). Rebuilds /books and the For Young Readers shelf so the
+// card and its young-style plate cover appear, and the reader pages bake the chapters. Backs the new
+// daughters-of-the-king-book-1-30-days plan.
 // prerender refresh 2026-09-23 (queue job #1650): Gareth Evans's أحجار العبور — the Arabic
 // Stepping Stones (stepping-stones-2), 43 chapters — so the /ar book shelf bakes it.
 // prerender refresh 2026-09-23 (queue job #1680): Gareth Evans's Камінь за каменем — the Ukrainian

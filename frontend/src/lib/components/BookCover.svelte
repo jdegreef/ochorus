@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
+	import { isLongTitle } from '$lib/coverCardMarkup';
 	import { coverLayoutFor } from '$lib/coverLayouts';
 	import { groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
@@ -190,7 +191,12 @@
 	     that ranges its type to the start edge would otherwise split them
 	     across both sides. `coverTypeMarkup` does the same. -->
 	<div
-		class={['cover-type', `style-${style}`, script && `script-${script}`]}
+		class={[
+			'cover-type',
+			`style-${style}`,
+			script && `script-${script}`,
+			isLongTitle(book.title) && 'long-title'
+		]}
 		{...blockDir}
 	>
 		<!-- The byline takes no `lang`: an author's name is one row for every

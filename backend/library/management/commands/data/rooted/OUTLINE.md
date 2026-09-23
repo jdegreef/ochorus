@@ -43,7 +43,7 @@ The whole series uses one picture: **a tree**. Colossians 2:6–7 is on Book 1, 
 DJANGO_DEBUG=true uv run python manage.py build_rooted <n>
 ```
 
-`build_rooted.py` converts the manuscript (a closed Markdown subset; its docstring lists the syntax) and runs the English audit. `VOLUMES[n]` holds the book's fields. Then:
+`build_rooted.py` converts the manuscript (a closed Markdown subset; its docstring lists the syntax) and runs the English audit. `ROOTED[n]` (in `SERIES`) holds the book's fields. Then:
 
 1. Serialize the fixture.
 2. Run `generate_covers`, then `npm run og:covers`.
