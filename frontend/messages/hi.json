@@ -984,5 +984,8 @@
   "notebook_testimony_for": "{person} के लिए",
   "notebook_testimony_include_request": "जो माँगा गया उसे शामिल करें",
   "notebook_testimony_include_person": "किसके लिए थी, शामिल करें ({person})",
-  "notebook_testimony_hint": "जब तक आप साझा न करें, कुछ भी आपके डिवाइस से बाहर नहीं जाता।"
+  "notebook_testimony_hint": "जब तक आप साझा न करें, कुछ भी आपके डिवाइस से बाहर नहीं जाता।",
+  "notebook_pin": "पिन करें",
+  "notebook_unpin": "पिन हटाएँ",
+  "notebook_pinned": "पिन की गई"
 }

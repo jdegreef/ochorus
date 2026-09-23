@@ -12,6 +12,7 @@
 		faithfulness,
 		inCollection,
 		sameCollection,
+		splitPinned,
 		groupByDay,
 		onThisDay,
 		journalStats,
@@ -167,7 +168,9 @@
 		composerKey += 1;
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
-	const days = $derived(groupByDay(entries, (e) => entryTime(e, journalFilter ?? 'all')));
+	// Pinned entries sit above the days, once; everything else keeps its day.
+	const split = $derived(splitPinned(entries));
+	const days = $derived(groupByDay(split.rest, (e) => entryTime(e, journalFilter ?? 'all')));
 
 	function setView(v: NotebookView) {
 		view = v;
@@ -374,6 +377,16 @@
 					{:else if entries.length === 0}
 						<p class="empty">{q ? t('notebook.no_matches') : emptyMessage}</p>
 					{:else}
+						{#if split.pinned.length}
+							<section class="pinned-section" aria-labelledby="pinned-h">
+								<h2 id="pinned-h" class="day"><span aria-hidden="true" class="me-1">📌</span>{t('notebook.pinned')}</h2>
+								<div class="entries">
+									{#each split.pinned as e (e.id)}
+										<JournalEntryCard entry={e} {locale} onopencollection={showCollection} />
+									{/each}
+								</div>
+							</section>
+						{/if}
 						{#each days as d (d.day)}
 							<h2 class="day">{dayLabel(d.day, d.at)}</h2>
 							<div class="entries">
@@ -644,6 +657,18 @@
 		color: var(--accent);
 		border-bottom: 1px solid var(--border);
 		padding-bottom: 0.25rem;
+	}
+	/* The pinned entries: a band of the page set slightly apart, like a card
+	   clipped to the front of the notebook. */
+	.pinned-section {
+		margin: 1.5rem -0.75rem 0;
+		padding: 0.25rem 0.75rem 1rem;
+		border-radius: var(--radius-sm);
+		background: color-mix(in srgb, var(--gold) 7%, transparent);
+	}
+	.pinned-section .day {
+		margin-top: 0.75rem;
+		color: var(--warning);
 	}
 	.entries {
 		display: grid;

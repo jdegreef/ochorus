@@ -78,4 +78,14 @@ describe('journal store', () => {
 		expect(names()).toEqual(['', '', 'Other']);
 		expect(only()).toHaveLength(3);
 	});
+
+	it('pins an entry, and takes the pin out', () => {
+		journal.add({ ...draft, kind: 'note', body: 'Be still' });
+		const id = only()[0].id;
+		journal.setPinned(id, true);
+		expect(journal.store[id].pinnedAt).toBeGreaterThan(0);
+		expect(stored()[id].pinnedAt).toBe(journal.store[id].pinnedAt);
+		journal.setPinned(id, false);
+		expect(journal.store[id].pinnedAt).toBeNull();
+	});
 });

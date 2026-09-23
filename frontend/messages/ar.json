@@ -984,5 +984,8 @@
   "notebook_testimony_for": "لأجل {person}",
   "notebook_testimony_include_request": "تضمين ما طُلب",
   "notebook_testimony_include_person": "تضمين من كانت لأجله ({person})",
-  "notebook_testimony_hint": "لا يغادر شيء جهازك حتى تشاركه."
+  "notebook_testimony_hint": "لا يغادر شيء جهازك حتى تشاركه.",
+  "notebook_pin": "تثبيت",
+  "notebook_unpin": "إلغاء التثبيت",
+  "notebook_pinned": "المثبّتة"
 }

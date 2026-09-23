@@ -55,6 +55,8 @@ export interface JournalEntry {
 	ref: string;
 	/** The collection it is filed in ("Notes on Humility"), or ''. */
 	collection: string;
+	/** When it was pinned to the top of the Notebook; null when it isn't. */
+	pinnedAt: number | null;
 	/** Who or what a prayer is for ("Anna", "Gulu church"). Prayers only. */
 	person: string;
 	group: PrayerGroup | '';
@@ -154,6 +156,7 @@ export function cleanEntry(v: unknown): JournalEntry | null {
 		body: str(o.body, BODY_MAX),
 		ref: str(o.ref, REF_MAX),
 		collection: str(o.collection, 200).trim().slice(0, COLLECTION_MAX),
+		pinnedAt: ms(o.pinnedAt),
 		person: prayer ? str(o.person, PERSON_MAX) : '',
 		group: prayer && PRAYER_GROUPS.includes(o.group as PrayerGroup) ? (o.group as PrayerGroup) : '',
 		remind: prayer && typeof o.remind === 'string' && REMIND_RE.test(o.remind) ? o.remind : '',
@@ -168,6 +171,7 @@ export function cleanEntry(v: unknown): JournalEntry | null {
 
 const BLANK = {
 	collection: '',
+	pinnedAt: null,
 	title: '',
 	body: '',
 	ref: '',
@@ -372,6 +376,7 @@ export interface ServerJournalEntry {
 	answered_at: string | number | null;
 	ref: string;
 	collection?: string;
+	pinned_at?: string | number | null;
 	person?: string;
 	group?: string;
 	remind?: string;
@@ -392,6 +397,7 @@ export function toServer(e: JournalEntry): ServerJournalEntry {
 		body: e.body,
 		ref: e.ref,
 		collection: e.collection,
+		pinned_at: e.pinnedAt,
 		person: e.person,
 		group: e.group,
 		remind: e.remind,
@@ -415,6 +421,7 @@ export function fromServer(j: ServerJournalEntry): JournalEntry | null {
 		body: j.body,
 		ref: j.ref,
 		collection: j.collection,
+		pinnedAt: at(j.pinned_at ?? null),
 		person: j.person,
 		group: j.group,
 		remind: j.remind,
@@ -686,4 +693,14 @@ export function collectionsOf(store: JournalStore): Collection[] {
 		} else out.set(key, { name: e.collection, count: 1, updatedAt: e.updatedAt });
 	}
 	return [...out.values()].sort((a, b) => b.updatedAt - a.updatedAt);
+}
+
+/**
+ * A list split for the page: what is pinned, most recently pinned first, and
+ * the rest in the order given — so a pinned entry sits at the top once rather
+ * than twice.
+ */
+export function splitPinned(list: JournalEntry[]): { pinned: JournalEntry[]; rest: JournalEntry[] } {
+	const pinned = list.filter((e) => e.pinnedAt).sort((a, b) => b.pinnedAt! - a.pinnedAt!);
+	return { pinned, rest: list.filter((e) => !e.pinnedAt) };
 }

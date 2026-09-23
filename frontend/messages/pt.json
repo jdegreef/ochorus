@@ -984,5 +984,8 @@
   "notebook_testimony_for": "por {person}",
   "notebook_testimony_include_request": "Incluir o que foi pedido",
   "notebook_testimony_include_person": "Incluir por quem foi ({person})",
-  "notebook_testimony_hint": "Nada sai do seu dispositivo até você compartilhar."
+  "notebook_testimony_hint": "Nada sai do seu dispositivo até você compartilhar.",
+  "notebook_pin": "Fixar",
+  "notebook_unpin": "Desafixar",
+  "notebook_pinned": "Fixadas"
 }

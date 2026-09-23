@@ -80,6 +80,7 @@ class Journal {
 			body: draft.body.trim(),
 			ref: draft.ref.trim(),
 			collection: draft.collection.trim(),
+			pinnedAt: null,
 			person: draft.person.trim(),
 			remind: '',
 			updates: [],
@@ -135,6 +136,11 @@ class Journal {
 		for (const e of Object.values(readAll())) {
 			if (!e.deleted && inCollection(e, from)) this.#mutate(e.id, (cur) => ({ ...cur, collection: name }));
 		}
+	}
+
+	/** Pin an entry to the top of the Notebook, or take the pin out. */
+	setPinned(id: string, pinned: boolean) {
+		this.#mutate(id, (cur) => ({ ...cur, pinnedAt: pinned ? Date.now() : null }));
 	}
 
 	/** Delete, with a few seconds' Undo — a prayer journal is not a place to lose words. */

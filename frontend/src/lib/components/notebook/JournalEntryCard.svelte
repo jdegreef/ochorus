@@ -255,6 +255,9 @@
 						{t('notebook.stillPraying')}
 					</button>
 				{/if}
+				<button class="btn btn-ghost btn-sm" onclick={() => journal.setPinned(entry.id, !entry.pinnedAt)}
+					><span aria-hidden="true" class="me-1">📌</span>{entry.pinnedAt ? t('notebook.unpin') : t('notebook.pin')}</button
+				>
 				<button class="btn btn-ghost btn-sm" onclick={() => (mode = 'edit')}>{t('notebook.edit')}</button>
 				<button class="btn btn-ghost btn-sm" onclick={() => journal.remove(entry.id)}>{t('notebook.delete')}</button>
 			</div>
