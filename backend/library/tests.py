@@ -1484,32 +1484,20 @@ class BookCardPayloadTests(TestCase):
         # constant lookup for the "also appears in" section, prefetched in the
         # view so it stays a single query whether or not the author appears in
         # anything (an author with appearances pays one more, for the books).
-        # 13 and 14 are the `articles` field (articles_for_author): one slug read
-        # for this author's own books and one scan of the article table (no
-        # bodies). Both are CONSTANT — the pair is paid once however many
-        # articles or books match, which is what this guard is for; see the
-        # article-count subtest below.
-        with self.assertNumQueries(14):
-            self.client.get("/api/library/authors/murray/?language=en")
-
-    def test_the_articles_field_costs_the_same_however_many_match(self):
-        """The two queries `articles` adds are flat, not per-article — otherwise
-        the prerender pays them once per author per locale and they multiply.
-
-        Same fixture as the test above (the sermon included, so the pinned number
-        is directly comparable) — the only difference is six matching articles
-        instead of none."""
-        Sermon.objects.create(
-            author=self.author, slug="abide", language="en", title="Abide",
-            body_html="<p>x</p>", body_text="x",
-        )
+        # The 13th is the `articles` field (articles_for_author): ONE scan of the
+        # article table (no bodies). Six matching articles are created here so
+        # the pin also proves that cost is flat rather than per-article — the
+        # page is walked once per author per locale on every prerender, so a
+        # per-article cost would multiply. An earlier draft of the field carried
+        # a second `Book` query; it was measured to select nothing this one
+        # missed and deleted (see articles_for_author).
         for i in range(6):
             Article.objects.create(
                 slug=f"a{i}-guide", language="en", h1=f"Guide {i}",
                 description="d", body_html="<p>x</p>", is_published=True,
                 related=[{"type": "author", "slug": "murray"}],
             )
-        with self.assertNumQueries(14):
+        with self.assertNumQueries(13):
             self.client.get("/api/library/authors/murray/?language=en")
 
 

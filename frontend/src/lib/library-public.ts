@@ -589,10 +589,10 @@ export interface AuthorDetail extends AuthorBio {
 	appears_in?: AppearsInBook[];
 	/**
 	 * Articles ABOUT this person — the guides to their books and the essays whose
-	 * Read-next funnel names them (see `articles_for_author`). The mirror of a
-	 * book's `guides`. English-only, so empty on a localized page and the section
-	 * just doesn't render. Optional so an API running behind this build omits it
-	 * cleanly.
+	 * Read-next funnel names them (see `articles_for_author`). Per-language like
+	 * the rest of the page, NOT English-only as a book's `guides` still is: a
+	 * locale with translated articles gets those, one without gets `[]` and no
+	 * section. Optional so an API running behind this build omits it cleanly.
 	 */
 	articles?: ArticleLink[];
 	/** How many REVIEWED quotations this author has; 0 means no quote page. */

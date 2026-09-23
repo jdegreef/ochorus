@@ -52,6 +52,18 @@ keep new person-lives out of `/articles` entirely.
   (book/sermon/author) that the API resolves to Read-next cards. Point only at
   works that actually exist — pull the live catalogue first
   (`curl .../api/library/books/?language=en`) and confirm the slugs.
+- **`related` is also read BACKWARDS — name every person the article is about.**
+  `articles_for_author` puts an article on the author page of each `type: author`
+  it names, which since 2026-09-23 is the *only* rule feeding that section (an
+  earlier primary-book rule was measured to add nothing and deleted). So an
+  article that names no author is invisible on every author page, however
+  obviously it is about someone. For a book guide that means listing the book's
+  author explicitly alongside the book — all 73 guides in the corpus already do,
+  and the code now leans on it. Naming a person the article merely *discusses*
+  (Monica in a guide to Augustine's *Confessions*) is wanted, not a mistake:
+  bio-only pages are the sparsest on the site and this is how they get content.
+  `guides_for_book` separately needs the guided book to be the **first**
+  `type: book` entry.
 - **Inline `<a>` links in the BODY to detail routes MUST end with a trailing
   slash** — `/books/<slug>/`, `/authors/<slug>/`, `/sermons/<slug>/`. A bare
   `/books/<slug>` fails the frontend built-output guard

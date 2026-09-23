@@ -6,16 +6,15 @@
 </script>
 
 <!-- An article surfaced on a page that is NOT the articles index: the reader's
-     guide on a book page, an author's articles on their own page. Both sides
-     serve the same three fields, so they render through one card and cannot
-     drift apart — the whole point of extracting it.
+     guide on a book page, an author's articles on their own page.
 
-     Deliberately not ArticleCard: that one is the index's row card and owns an
-     <h2>, which here would sit inside a section that already has one and break
-     the heading hierarchy (page-design D1). So the title is a `text-h3` span,
-     and the card rides the shared `.card-tint` hover recipe (border→accent,
-     ground→surface-2, no lift) so it warms exactly like every other row card
-     (page-design D3/H1). -->
+     Deliberately not ArticleCard. That one owns an <h2>, which here would sit
+     inside a section that already has one and break the heading hierarchy
+     (page-design D1) — and it needs `word_count` for its reading time, which
+     the three-field ArticleLink payload does not carry. So the title is a
+     `text-h3` span, and the card rides the shared `.card-tint` hover recipe
+     (border→accent, ground→surface-2, no lift) so it warms exactly like every
+     other row card (page-design D3/H1). -->
 <a
 	href={localizeHref(`/articles/${article.slug}/`)}
 	class="card-tint block rounded-card border border-border bg-surface p-4"

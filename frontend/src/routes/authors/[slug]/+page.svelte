@@ -639,13 +639,11 @@
 		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
 	{/if}
 
-	<!-- Articles about this person: the reader's guides to their books and the
-	     essays whose Read-next funnel names them (the API's `articles` /
-	     articles_for_author). The mirror of the book page's Reader's guide, and
-	     the reason it was built: Search Console had 131 of 143 article URLs as
-	     "Discovered — currently not indexed", every one of them reachable only
-	     from the /articles hub. An author page is crawled far more often, so the
-	     link is worth real weight. Per-language — an untranslated locale gets an
+	<!-- Articles that name this person (the API's `articles` /
+	     articles_for_author, which documents the rule). The mirror of the book
+	     page's Reader's guide: an article reachable only from the /articles hub
+	     sits too deep in the link graph to earn a crawl, and an author page is
+	     crawled far more often. Per-language — an untranslated locale gets an
 	     empty list and no section at all. Below the works, because these are
 	     writing ABOUT this person, not BY them. -->
 	{#if author.articles?.length}
