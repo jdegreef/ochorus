@@ -505,3 +505,109 @@ export function faithfulness(
 		months
 	};
 }
+
+/** How long ago a remembered day was: months (1, 3, 6) or years (1, 2, …). */
+export type Ago = { unit: 'month' | 'year'; n: number };
+
+/** One memory for the "On this day" card. */
+export interface Memory {
+	entry: JournalEntry;
+	ago: Ago;
+	/** 'written' — the reader wrote it that day; 'answered' — God answered it that day. */
+	what: 'written' | 'answered';
+}
+
+const MONTHS_BACK = [1, 3, 6];
+const YEARS_BACK = 10;
+
+/**
+ * The same calendar day `months` months back from `today` ('YYYY-MM-DD'), or
+ * null when that month has no such day (no 31 September) — a memory is kept
+ * for its own date, never moved to a neighbour.
+ */
+export function monthsBack(today: string, months: number): string | null {
+	const [y, m, d] = today.split('-').map(Number);
+	const total = y * 12 + (m - 1) - months;
+	const year = Math.floor(total / 12);
+	const month = (total % 12) + 1;
+	const last = new Date(Date.UTC(year, month, 0)).getUTCDate();
+	if (d > last) return null;
+	return `${year}-${String(month).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+}
+
+/**
+ * What the reader wrote — and what God answered — on this day one, three and
+ * six months ago, and on this date in every past year: the Notebook's "On this
+ * day". Nearest first; within a day, answers before writing (they are the
+ * better news). Daily prayers are included; tombstones never are.
+ */
+export function onThisDay(store: JournalStore, today: string, limit = 3): Memory[] {
+	const anniversaries = new Map<string, Ago>();
+	for (const n of MONTHS_BACK) {
+		const day = monthsBack(today, n);
+		if (day) anniversaries.set(day, { unit: 'month', n });
+	}
+	for (let n = 1; n <= YEARS_BACK; n++) {
+		const day = monthsBack(today, n * 12);
+		if (day) anniversaries.set(day, { unit: 'year', n });
+	}
+	const out: Memory[] = [];
+	for (const e of Object.values(store)) {
+		if (e.deleted) continue;
+		const answered = e.answeredAt ? anniversaries.get(localToday(new Date(e.answeredAt))) : undefined;
+		if (answered) out.push({ entry: e, ago: answered, what: 'answered' });
+		const written = anniversaries.get(localToday(new Date(e.createdAt)));
+		// A prayer both written and answered on remembered days shows once, as the answer.
+		if (written && !answered) out.push({ entry: e, ago: written, what: 'written' });
+	}
+	const months = (a: Ago) => (a.unit === 'month' ? a.n : a.n * 12);
+	return out
+		.sort(
+			(a, b) =>
+				months(a.ago) - months(b.ago) ||
+				Number(b.what === 'answered') - Number(a.what === 'answered') ||
+				b.entry.createdAt - a.entry.createdAt
+		)
+		.slice(0, limit);
+}
+
+/** Which stretch of the journal to print. */
+export type PrintPeriod = 'all' | 'year' | 'last12' | 'month';
+
+/** The first moment of a period ending at `now`, or 0 for all time. */
+export function periodStart(period: PrintPeriod, now: Date): number {
+	if (period === 'year') return new Date(now.getFullYear(), 0, 1).getTime();
+	if (period === 'month') return new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+	if (period === 'last12') return new Date(now.getFullYear() - 1, now.getMonth(), now.getDate()).getTime();
+	return 0;
+}
+
+/**
+ * The journal as a printed book: each part in reading order (oldest first),
+ * limited to what happened since `from`. An answered prayer belongs to the
+ * period it was ANSWERED in — that is the page it is remembered on; everything
+ * else to when it was written.
+ */
+export function journalForPrint(store: JournalStore, from: number) {
+	const live = Object.values(store).filter((e) => !e.deleted);
+	const oldestFirst = (at: (e: JournalEntry) => number) => (a: JournalEntry, b: JournalEntry) => at(a) - at(b);
+	const answered = live
+		.filter((e) => e.kind === 'prayer' && e.answeredAt && e.answeredAt >= from)
+		.sort(oldestFirst((e) => e.answeredAt!));
+	const inPeriod = (e: JournalEntry) => e.createdAt >= from;
+	const openStore: JournalStore = Object.fromEntries(
+		live.filter((e) => e.kind === 'prayer' && !e.answeredAt && inPeriod(e)).map((e) => [e.id, e])
+	);
+	// Still praying, by person as the prayer list has them; within a person, oldest first.
+	const praying = prayersByPerson(openStore).map((c) => ({ ...c, prayers: [...c.prayers].reverse() }));
+	const notes = live.filter((e) => e.kind === 'note' && inPeriod(e)).sort(oldestFirst((e) => e.createdAt));
+	const daily = live.filter((e) => e.kind === 'daily' && inPeriod(e)).sort(oldestFirst((e) => e.createdAt));
+	const months: TimelineMonth[] = [];
+	for (const e of answered) {
+		const month = localToday(new Date(e.answeredAt!)).slice(0, 7);
+		const last = months[months.length - 1];
+		if (last && last.month === month) last.prayers.push(e);
+		else months.push({ month, at: e.answeredAt!, prayers: [e] });
+	}
+	return { answered: months, answeredCount: answered.length, praying, notes, daily };
+}

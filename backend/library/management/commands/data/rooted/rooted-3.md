@@ -1,0 +1,1034 @@
+# Rooted – 30 Days with God for Youth – Book 3
+
+*Growing Fruit: the fruit of the Spirit, the words we say, and the habits of the heart*
+
+Scripture quotations are from the Berean Standard Bible (BSB), public domain.
+
+---
+
+## Introduction: What Is Growing on Your Tree?
+
+Have you ever picked an apple straight off a tree, or a strawberry right out of the garden? It tastes so much better than anything from a store. And here's a funny thing: the tree didn't grunt and strain to make that apple. It didn't try really hard. It just stayed rooted, soaked up water and sunshine, and the fruit grew.
+
+The Bible says God wants your life to grow fruit too. Not apples or strawberries, but something better:
+
+> "But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control. Against such things there is no law."
+> — Galatians 5:22–23 (BSB)
+
+That's a picture of what Jesus is like. And when you belong to Him, His Holy Spirit starts growing those same things in you.
+
+Here's the secret, and it's the most important thing in this whole book: **you can't grow fruit by trying harder.** You grow fruit by staying connected to Jesus. Jesus said, "I am the vine and you are the branches." A branch doesn't make grapes by squeezing. It makes grapes by staying attached to the vine. So as we talk about kindness, patience, honesty and self-control, remember: this isn't a list of rules to earn God's love. It's a picture of what God grows in people He already loves.
+
+### What's in this book
+
+This is **Book 3** of Rooted. (If you haven't read Books 1 and 2, that's okay! You can start right here.)
+
+- **Weeks 1 and 2 — The Fruit of the Spirit.** Love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control and humility, one at a time.
+- **Week 3 — Words.** The tongue is small, but it's powerful. How to use your words to build up, not tear down.
+- **Week 4 — Heart Habits.** Respect, thankfulness, hard work, contentment, generosity and guarding your heart.
+- **Week 5 — Pure and Wise.** Wisdom, clean thoughts, what you watch, who you are when nobody's looking, and what pride does.
+
+### How each day works
+
+Every day takes about five to ten minutes and has five parts:
+
+1. **The verse.** A short passage from the Bible. Read it slowly.
+2. **The teaching.** What the verse means, with a story or a picture from everyday life.
+3. **Think about it.** A question to think about on your own or talk about with someone.
+4. **Try this.** One small way to practice that fruit today.
+5. **The prayer.** A prayer to pray. Add your own words too!
+
+### Tips for growing fruit
+
+- **Be honest.** Some days you'll read about a fruit and think, *I'm not very good at that.* That's okay! Tell God. He loves honest prayers.
+- **Pick one thing.** You can't work on everything at once. Let one "Try this" stick each week.
+- **Notice fruit in others.** When you see someone being patient or kind, tell them. Encouraging others helps everyone grow.
+- **Missed a day? Just keep going.** Fruit grows slowly. So do we.
+
+Fruit doesn't appear overnight. Apple trees take years to grow their first apples. But season by season, God is at work in you. Let's see what He grows.
+
+### For parents, grandparents and leaders
+
+Book 3 of *Rooted* is about character, but it is written to keep character rooted in grace. Every day points young readers aged 9 to 12 back to Jesus and the work of His Spirit rather than to self-improvement. Scripture is quoted from the Berean Standard Bible. Week 3 on words and Day 27 on screens make especially good family conversations. Day 27 also encourages readers to tell a trusted adult if they ever see something online that troubles them.
+
+---
+
+# Week 1 · The Fruit of the Spirit
+
+---
+
+## Day 1 — Branches on the Vine
+
+> "Remain in Me, and I will remain in you. Just as no branch can bear fruit by itself unless it remains in the vine, neither can you bear fruit unless you remain in Me. I am the vine and you are the branches. The one who remains in Me, and I in him, will bear much fruit. For apart from Me you can do nothing."
+> — John 15:4–5 (BSB)
+
+Picture a grapevine. It has a thick, twisty main stem growing up out of the ground. That's the vine. Spreading out from it are lots of branches. And hanging from the branches are big bunches of juicy grapes.
+
+Now imagine you snap one of those branches off and lay it on the ground. What happens? For a little while, it still looks green. But soon its leaves droop. The grapes shrivel up. After a few days, it's dry and brown. A branch can't live on its own. Everything it needs, the water, the food, the life, flows into it from the vine.
+
+On the night before He died, Jesus used this picture to explain how His followers would grow. "I am the vine and you are the branches."
+
+Jesus is the source of everything we need. When we stay connected to Him, His life flows into us, and we "bear much fruit." But He also said something very honest: "Apart from Me you can do nothing."
+
+That changes how we think about being a good person. A lot of people think following Jesus means trying really, really hard to be kind and patient and good. So they grit their teeth and try. And they end up tired, frustrated and grumpy, because it doesn't work!
+
+Jesus says the secret isn't trying harder. It's **remaining** in Him. The word *remain* means to stay, to live, to make your home somewhere. You remain in Jesus by trusting Him, talking with Him, reading His Word and obeying Him, day after day.
+
+Do you know what's in grape juice? Stuff that came up from the roots, through the vine, into the branch, and into the grapes. Fruit is simply what happens when life flows through a branch.
+
+That's what this book is about. Over the next 30 days, we'll look at the fruit Jesus wants to grow in you. But never forget: it all comes from staying connected to the Vine.
+
+**Think about it:** Why do you think trying really hard to be good on your own doesn't work very well?
+
+**Try this:** Draw a vine with branches in your notebook. On the vine, write "Jesus." On one branch, write your name. You'll add fruit to it as you go through this book.
+
+*Dear Jesus, You are the vine and I am a branch. I can't grow good fruit on my own. Help me stay connected to You every day. Let Your life flow into me, and grow Your fruit in me. In Your name, Amen.*
+
+---
+
+## Day 2 — Love
+
+> "Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. Love takes no pleasure in evil, but rejoices in the truth. It bears all things, believes all things, hopes all things, endures all things."
+> — 1 Corinthians 13:4–7 (BSB)
+
+The first fruit on the list is **love**. That makes sense, because Jesus said the greatest commandments are to love God and to love people. All the other fruit grows out of love.
+
+But what is love, really? Movies and songs make it sound like a warm, fuzzy feeling. Feelings are nice, but they come and go. The Bible describes love differently. Look at today's verses. Love is patient. Love is kind. It doesn't brag. It isn't rude. It doesn't keep a list of everything someone did wrong. Almost everything on this list is something love **does**.
+
+That means love isn't only how you feel on a sunny Saturday. It's how you act on a grumpy Tuesday. It's letting your little sister go first. It's not snapping at your mom when she asks you to clean your room. It's being happy for your friend when they win, instead of being jealous.
+
+Here's a way to read these verses that might surprise you. Try putting the word **Jesus** everywhere it says "love." *Jesus is patient. Jesus is kind. Jesus does not boast. Jesus is not rude. Jesus keeps no account of wrongs.* It fits perfectly, doesn't it? That's because God is love, and Jesus shows us exactly what love looks like.
+
+Now try putting your own name in. *Liam is patient. Liam is kind. Liam is not easily angered.* Hmm. That's harder! None of us fits perfectly.
+
+That's exactly why we need the Vine. We can't make this kind of love on our own. But when we remember how much Jesus loves us, patiently and kindly, keeping no record of our wrongs, His love starts to flow through us to other people. We love because He first loved us (1 John 4:19).
+
+**Think about it:** Which part of 1 Corinthians 13:4–7 is hardest for you? Being patient? Not being jealous? Not keeping a list of wrongs?
+
+**Try this:** Pick one phrase from today's verses and "do" it for someone today, especially someone who is hard to love.
+
+*Dear Jesus, thank You for loving me patiently and kindly, and for not keeping a list of my wrongs. I can't love like that on my own. Please fill me with Your love so it overflows to the people around me, even on grumpy days. In Your name, Amen.*
+
+---
+
+## Day 3 — Joy
+
+> "Rejoice in the Lord always. I will say it again: Rejoice!"
+> — Philippians 4:4 (BSB)
+
+Imagine getting a letter from a friend, and it says, "Be joyful! Always! I'll say it again: be joyful!" You might think your friend was having the best week ever. Maybe they'd just won a trip to an amusement park.
+
+But when Paul wrote these words, he was in **prison**. He was chained up, waiting to find out whether he would be set free or put to death. And from that prison, he wrote one of the most joyful letters in the whole Bible.
+
+How could Paul be joyful in a place like that?
+
+It helps to know the difference between happiness and joy. **Happiness** usually depends on what's happening. When things go well, you're happy. When things go badly, you're not. Happiness is like the weather: sunny one day, stormy the next.
+
+**Joy** is deeper. Joy is a gladness that comes from knowing God, and it can stay even when things are hard. Notice what Paul said: "Rejoice **in the Lord**." He didn't say, "Rejoice in your circumstances." He was joyful because of who God is and what Jesus had done for him, and none of that could be locked up in prison.
+
+Think about what you have in Jesus. Your sins are forgiven. God is your Father. Jesus is with you always. Heaven is your forever home. Nobody can take those things away from you. Not a bad grade, not a mean kid, not a canceled birthday party.
+
+This doesn't mean Christians have to smile all the time or pretend they're never sad. Jesus Himself cried. Joy and sadness can live in your heart at the same time. But underneath the sadness, like a river running under the ice, there can still be joy.
+
+And joy is a fruit of the Spirit. That means it's something God grows in you as you stay close to Him.
+
+**Think about it:** What's the difference between being happy and having joy? Can you think of a time you had joy even when things weren't going well?
+
+**Try this:** Make a list called "Things No One Can Take Away from Me." Include things like "God loves me." Read it the next time you have a bad day.
+
+*Dear God, thank You that my joy doesn't have to depend on what's happening around me. Thank You for everything I have in Jesus. Grow real joy in me, the kind that stays even on hard days. Help me rejoice in You always. In Jesus' name, Amen.*
+
+---
+
+## Day 4 — Peace
+
+> "Peace I leave with you; My peace I give to you. I do not give to you as the world gives. Do not let your hearts be troubled; do not be afraid."
+> — John 14:27 (BSB)
+
+Imagine a thunderstorm in the middle of the night. Lightning flashes, thunder booms and rain pounds on the windows. In one room, an older kid lies awake, heart racing. But in the next room, a little baby is sound asleep in her father's arms. The storm is just as loud in both rooms. What's the difference? The baby feels safe, because she's being held.
+
+That's a picture of the peace Jesus gives.
+
+Jesus spoke these words the night before He died. He knew His disciples were about to go through the most frightening days of their lives. He would be arrested and crucified, and they would be scared and confused. So He gave them a gift to carry with them: "My peace I give to you."
+
+Then He said something important: "I do not give to you as the world gives." What kind of peace does the world give? The world's idea of peace usually means *no problems*. No fights, no stress, no bad news. That kind of peace disappears the moment trouble shows up.
+
+But Jesus' peace is different. It doesn't mean the storm goes away. It means you can be calm **in the middle of** the storm, because you know Someone is holding you.
+
+That's what peace really is: a quiet, steady trust that God is in control and that He loves you. It's the opposite of a heart that's twisted up with worry.
+
+Where does this peace come from? Remember, it's a fruit of the Spirit. It grows as you stay close to Jesus. When you're worried, you can tell Him about it. When you're scared, you can remember His promises. And little by little, His peace settles into your heart.
+
+Jesus also said, "Do not let your hearts be troubled." That means we have a part to play. When worries start swirling, we can choose to turn our thoughts back to Jesus instead of letting fear take over.
+
+**Think about it:** What's something that often makes your heart feel troubled or anxious? What would it look like to let Jesus hold you in that "storm"?
+
+**Try this:** Memorize the first sentence of John 14:27: "Peace I leave with you; My peace I give to you." Say it slowly the next time you feel worried.
+
+*Dear Jesus, thank You for giving me Your peace, a peace the world can't give. When storms come and my heart feels troubled, help me remember that You are holding me. Settle my heart and make me calm in You. In Your name, Amen.*
+
+---
+
+## Day 5 — Patience
+
+> "Therefore, as the elect of God, holy and beloved, clothe yourselves with hearts of compassion, kindness, humility, gentleness, and patience."
+> — Colossians 3:12 (BSB)
+
+Where do you most need patience?
+
+Maybe it's waiting: waiting in a long line, waiting for your birthday, waiting for a slow video to load. Maybe it's with people: a little brother who keeps bugging you, a classmate who takes forever, a friend who keeps making the same mistake. Maybe it's with yourself, when you're learning something hard and it's just not clicking.
+
+**Patience** means waiting without getting upset. It means putting up with things, and with people, without blowing up or giving up.
+
+Paul says to "clothe yourselves" with patience. It's like getting dressed in the morning. You don't wake up already wearing your clothes. You choose them and put them on. In the same way, we can put on patience each day.
+
+But look at who Paul is talking to: "the elect of God, holy and beloved." Before he tells us what to put on, he reminds us who we are. *Elect* means chosen. You are chosen by God, set apart for Him and deeply loved. We don't put on patience to become loved. We put it on because we already are.
+
+And here's the thing about patience: God has been incredibly patient with us. Think about how many times you've done the same wrong thing again and again. God didn't give up on you. The Bible says the Lord is patient with us, not wanting anyone to be lost (2 Peter 3:9). He waits for us, forgives us and helps us grow, over and over.
+
+When you remember how patient God is with you, it gets easier to be patient with others. That kid who annoys you? God is patient with them too. And with you.
+
+Patience is a fruit, so it grows slowly (which takes patience!). Don't be discouraged if you lose your patience sometimes. When you do, say sorry, ask God for help and put it back on.
+
+**Think about it:** In what situation do you lose your patience most often? How has God been patient with you?
+
+**Try this:** The next time you feel impatient today, take three slow breaths and silently pray, "God, help me be patient like You."
+
+*Dear God, thank You for being so patient with me. Thank You that I am chosen and loved by You. Help me put on patience today, with people who annoy me, with things that take a long time and with myself. Grow this fruit in me. In Jesus' name, Amen.*
+
+---
+
+## Day 6 — Kindness
+
+> "Be kind and tenderhearted to one another, forgiving each other just as in Christ God forgave you."
+> — Ephesians 4:32 (BSB)
+
+After David became king of Israel, he asked a surprising question: "Is there anyone left from the house of Saul to whom I can show kindness for the sake of Jonathan?" Saul had been David's enemy. He had chased David and tried to kill him. But Saul's son Jonathan had been David's best friend.
+
+David's servants found one person: Jonathan's son, Mephibosheth. He had been injured as a little boy, and he couldn't walk. He was probably terrified when the king sent for him. In those days, a new king often got rid of the old king's family!
+
+But instead, David said, "Do not be afraid, for surely I will show you kindness for the sake of your father Jonathan." David gave him back his family's land. And he told Mephibosheth that from now on, he would eat at the king's table, like one of the king's own sons. (You can read the whole story in 2 Samuel 9.)
+
+That's **kindness**: going out of your way to do good to someone, even when they can't pay you back.
+
+Paul tells us to be "kind and tenderhearted." *Tenderhearted* means having a soft heart, one that notices when someone is hurting and cares about it. The opposite is a hard heart that doesn't notice or doesn't care.
+
+Kindness is different from just being "nice." Nice is not being mean. Kindness is **doing something** good on purpose. It's noticing the new kid and saying hi. It's helping your mom carry groceries without being asked. It's sending a note to a friend who's sad. It's sharing your snack.
+
+And look at the end of the verse: "forgiving each other just as in Christ God forgave you." That's the biggest kindness of all. Like Mephibosheth, we didn't deserve a place at the King's table. But God, in His kindness, invites us to sit with Him forever. Because we've received such kindness, we can show it to others.
+
+**Think about it:** Who is someone around you who needs kindness right now? What could you do for them?
+
+**Try this:** Do one secret act of kindness today, something nice for someone without telling anyone you did it.
+
+*Dear God, thank You for Your amazing kindness to me. Thank You for forgiving me and inviting me to Your table. Give me a tender heart that notices people who are hurting. Help me show kindness on purpose today. In Jesus' name, Amen.*
+
+---
+
+# Week 2 · More Fruit
+
+---
+
+## Day 7 — Goodness
+
+> "Let us not grow weary in well-doing, for in due time we will reap a harvest if we do not give up. Therefore, as we have opportunity, let us do good to everyone, and especially to the family of faith."
+> — Galatians 6:9–10 (BSB)
+
+A farmer plants seeds in the spring. Then he waters them. He pulls weeds. He waters some more. Day after day, week after week, he works in the field. And for a long time, it looks like nothing is happening. But he doesn't give up, because he knows that "in due time" the harvest will come.
+
+Paul says doing good is like that. **Goodness** means doing what is right and helping others, over and over, even when it seems like no one notices and nothing is changing.
+
+Have you ever done something good and felt like it didn't matter? You cleaned up the kitchen, and nobody said thank you. You were kind to a kid at school, and they were still grumpy. You told the truth, and you got in trouble anyway. It's easy to "grow weary," to get tired and think, *Why bother?*
+
+But Paul says, "Don't give up!" Every good thing you do is like a seed. You might not see the harvest right away. But God sees every seed you plant, and "in due time" He brings the harvest. Sometimes you'll see it here. Sometimes you won't see it until heaven. But it's never wasted.
+
+The Bible tells about a woman named Tabitha, also called Dorcas, who was always doing good and helping the poor (Acts 9:36). She made clothes for poor widows. She probably never thought of herself as famous. But when she died, all the widows she had helped gathered around, crying and showing the clothes she had made for them. Her goodness had touched so many lives. (And God did something amazing: He brought her back to life through Peter!)
+
+Paul says to do good "to everyone." Not just to people who are nice to you. Not just to your friends. Everyone. And "especially to the family of faith," your brothers and sisters in Christ.
+
+**Think about it:** Have you ever felt tired of doing good because nobody seemed to notice? What does Galatians 6:9 say to you about that?
+
+**Try this:** Look for an "opportunity" to do good today, and take it. Then remind yourself: "God saw that."
+
+*Dear God, sometimes I get tired of doing good when no one notices. Help me not to give up. Thank You that You see every good thing I do, and that You will bring a harvest in Your time. Help me do good to everyone. In Jesus' name, Amen.*
+
+---
+
+## Day 8 — Faithfulness
+
+> "Whoever is faithful with very little will also be faithful with much, and whoever is dishonest with very little will also be dishonest with much."
+> — Luke 16:10 (BSB)
+
+If you wanted someone to take care of your new puppy for a week, who would you ask? Probably not the friend who forgot to feed their goldfish. You'd ask someone who's shown they can be trusted with small things.
+
+That's what **faithfulness** means: being someone who can be trusted. A faithful person keeps their promises. They do what they said they'd do. They show up. They're reliable.
+
+Jesus said faithfulness starts with little things. "Whoever is faithful with very little will also be faithful with much." Little things matter more than we think! Things like:
+
+- Doing your chores, even when nobody's checking.
+- Finishing your homework on time.
+- Keeping a promise to a friend, even when something more fun comes along.
+- Being where you said you'd be, when you said you'd be there.
+- Taking care of things that belong to other people.
+
+Think about Joseph in the Old Testament. He was sold as a slave and taken to Egypt. He could have been lazy and bitter. Instead, he worked faithfully, and his master put him in charge of the whole house. Later, when he was unfairly thrown in prison, he was faithful there too, and he was put in charge of the other prisoners. Because Joseph was faithful in small places, God eventually put him in charge of all of Egypt!
+
+Jesus also warned the opposite: "whoever is dishonest with very little will also be dishonest with much." Little lies and little cheats grow into big ones. The small choices you make now are building the kind of person you'll be later.
+
+The best news is that **God is faithful**. He has never broken a promise. Not one. When you trust Him, His faithfulness starts to rub off on you.
+
+**Think about it:** What's a "little thing" in your life that you could be more faithful in?
+
+**Try this:** Make one promise today, even a small one like "I'll help you with that after dinner," and keep it.
+
+*Dear God, thank You that You are always faithful and You never break a promise. Help me be faithful in little things: my chores, my homework and my promises. Make me someone people can trust. In Jesus' name, Amen.*
+
+---
+
+## Day 9 — Gentleness
+
+> "A gentle answer turns away wrath, but a harsh word stirs up anger."
+> — Proverbs 15:1 (BSB)
+
+Sofia's brother barged into her room and yelled, "You took my charger AGAIN!" Sofia felt her face get hot. She was ready to yell right back: "I did NOT! Get out of my room!" That would have turned into a screaming match in about three seconds.
+
+But Sofia took a breath and said, "I don't think I did. But I'll help you look for it." Her brother paused. "Oh. Okay." Two minutes later, they found it under the couch.
+
+Proverbs 15:1 is like a rule of physics for arguments. "A gentle answer turns away wrath, but a harsh word stirs up anger." Harsh words are like throwing gasoline on a fire. Gentle words are like pouring water on it.
+
+That's **gentleness**. It means being calm, soft and careful with people instead of rough, loud and pushy. Gentle doesn't mean weak! It actually takes a lot of strength to stay gentle when someone is yelling at you. Jesus was the strongest person who ever lived, and He described Himself as "gentle and humble in heart" (Matthew 11:29).
+
+The Bible gives a great example in the book of Judges. After Gideon won a big battle, the men of Ephraim stormed up to him, furious. "Why didn't you call us to fight with you?" Gideon could have argued back. Instead, he answered gently and praised them for what they had done. And the Bible says that when he said this, their anger calmed down (Judges 8:1–3).
+
+Gentleness also shows up in *how* we treat people. It's being careful with a younger kid. It's speaking softly to someone who is sad. It's correcting a friend kindly instead of making them feel stupid.
+
+You can't always control what other people say to you. But with God's help, you can choose how you answer.
+
+**Think about it:** Think about the last argument you had. How might it have gone differently if you had given a gentle answer?
+
+**Try this:** Next time someone says something harsh to you, try the "Sofia test." Take a breath and give a gentle answer. See what happens.
+
+*Dear Jesus, You are gentle and humble in heart. When people are rough with me, help me not to be rough back. Give me gentle words that turn away anger. Grow the fruit of gentleness in me. In Your name, Amen.*
+
+---
+
+## Day 10 — Self-Control
+
+> "Like a city whose walls are broken down is a man who does not control his temper."
+> — Proverbs 25:28 (BSB)
+
+In Bible times, cities were surrounded by thick, strong walls. The walls kept out enemies, robbers and wild animals. Inside the walls, people could sleep safely at night. But imagine a city whose walls had crumbled into piles of rubble. Anyone could walk right in. The city would be defenseless.
+
+Proverbs says a person without **self-control** is like that city. Self-control is the wall that protects you. Without it, you're open to anything: anger, bad choices and all sorts of trouble walking right in and taking over.
+
+Self-control means being in charge of yourself, instead of letting your feelings or wants be in charge of you. It's saying no to something you want right now, because you know it isn't good.
+
+Where do you need self-control? Maybe:
+
+- **Your temper.** Not blowing up when you're mad.
+- **Your words.** Not saying the mean thing that pops into your head.
+- **Your screens.** Turning off the game when it's time, even though you really want one more round.
+- **Your appetite.** Not eating the whole bag of cookies.
+- **Your body.** Keeping your hands to yourself when you're frustrated.
+
+Here's a little trick for when you feel like you're about to lose control: **Stop. Breathe. Pray.** Stop before you act. Take a deep breath. Then pray a quick prayer: "God, help me!"
+
+Now, here's the surprising part. Self-control is last in the list of the fruit of the Spirit. That means even *self*-control isn't something you do all by yourself! It's a fruit God grows in you. The Holy Spirit gives you the power to say no when you couldn't do it on your own.
+
+So when you fail, and everyone does sometimes, don't just try harder next time. Pray harder. Ask the Spirit to build up your walls.
+
+**Think about it:** In which area of your life is it hardest to have self-control? What happens when your "walls" are down?
+
+**Try this:** Practice "Stop. Breathe. Pray." at least once today when you feel a strong emotion or temptation.
+
+*Dear God, I want to have self-control, but sometimes my feelings take over. Please build strong walls in my life. When I'm angry or tempted, help me stop, breathe and pray. Holy Spirit, grow self-control in me. In Jesus' name, Amen.*
+
+---
+
+## Day 11 — Humility
+
+> "Do nothing out of selfish ambition or empty pride, but in humility consider others more important than yourselves. Each of you should look not only to your own interests, but also to the interests of others. Let this mind be in you which was also in Christ Jesus."
+> — Philippians 2:3–5 (BSB)
+
+**Humility** isn't on the list of the fruit of the Spirit in Galatians 5. But it's like the soil that all the other fruit grows in. It's hard to be patient, kind or gentle if you think you're the most important person in the room!
+
+What is humility? Some people think it means thinking you're terrible, or never admitting you're good at anything. That's not it. Humility means seeing yourself the right way: as someone God made and loves, but not more important than anyone else. It means thinking about yourself less, and about others more.
+
+Paul says to "consider others more important than yourselves." That's the opposite of what comes naturally. Naturally, we want to be first in line, get the biggest slice and have everyone notice how great we are.
+
+Humility looks like:
+
+- Letting someone else go first.
+- Being happy when someone else gets the credit.
+- Admitting when you're wrong and saying sorry.
+- Asking for help when you need it.
+- Noticing what other people need, not just what you want.
+
+Paul says, "Let this mind be in you which was also in Christ Jesus." Then, in the verses that follow, he describes the most humble thing anyone has ever done. Jesus was God, but He didn't hold on to His rights. He came down to earth, became a servant and died on a cross for us. Remember Jesus washing His disciples' feet? The King of the universe knelt down to serve.
+
+If Jesus, who had every right to be served, chose to serve, then we can follow His example.
+
+Here's the funny thing about humility: the more you try to show it off, the more you lose it! Humble people aren't thinking about how humble they are. They're just busy loving others.
+
+**Think about it:** Where is it hardest for you to put others first? At home, at school, on a team, with friends?
+
+**Try this:** Look for a chance today to put someone else's interests before your own. Let them choose the game, the seat or the last snack.
+
+*Dear Jesus, You are God, but You humbled Yourself and became a servant. Help me have the same mind that You have. Help me think about others more and myself less. Take away my pride and make me humble like You. In Your name, Amen.*
+
+---
+
+## Day 12 — Checking Your Fruit
+
+> "But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control. Against such things there is no law… Since we live by the Spirit, let us walk in step with the Spirit."
+> — Galatians 5:22–23, 25 (BSB)
+
+Over the last eleven days, we've looked at each fruit of the Spirit one at a time. Today, let's take a step back and look at the whole tree.
+
+Notice something about the verse: it says "the **fruit** of the Spirit is love, joy, peace…" It doesn't say "fruits." It's one fruit with nine flavors. Think of an orange with nine sections. You don't get to pick just the sections you like! God wants to grow all of them in you together.
+
+That means you might be really good at some of them and still growing in others. Maybe you're naturally kind, but patience is a struggle. Maybe you're faithful and hardworking, but gentleness doesn't come easily. That's normal. God is growing the whole fruit, and every part matters.
+
+So how is your fruit doing? Let's do a check-up. Read through this list slowly, and for each one, ask: "Is this growing in me?"
+
+- **Love:** Do I care about others, even when it's hard?
+- **Joy:** Do I have a gladness in God that goes deeper than my circumstances?
+- **Peace:** Do I trust God instead of worrying?
+- **Patience:** Can I wait and put up with people without getting upset?
+- **Kindness:** Do I go out of my way to do good for others?
+- **Goodness:** Do I keep doing right, even when no one notices?
+- **Faithfulness:** Can people count on me?
+- **Gentleness:** Am I calm and careful with others?
+- **Self-control:** Am I in charge of my actions and words?
+
+Be honest, but don't be discouraged. Remember, fruit grows slowly. And it grows from the Spirit, not from you straining.
+
+Paul ends with a beautiful picture: "Let us walk in step with the Spirit." Imagine walking beside someone and matching their steps. Left, right, left, right. That's what it means to follow the Holy Spirit's lead, day by day, step by step. As you walk with Him, His fruit grows in you.
+
+**Think about it:** Which fruit do you see growing most in your life? Which one do you most want God to grow next?
+
+**Try this:** Go back to the vine you drew on Day 1. Draw nine pieces of fruit on your branch, and color in the ones you see growing. Ask God to help with the rest.
+
+*Dear Holy Spirit, thank You for living in me and growing Your fruit. Thank You for the fruit I can already see. Please keep growing love, joy, peace, patience, kindness, goodness, faithfulness, gentleness and self-control in me. Help me walk in step with You. In Jesus' name, Amen.*
+
+---
+
+# Week 3 · Words
+
+---
+
+## Day 13 — A Tiny Spark
+
+> "When we put bits into the mouths of horses to make them obey us, we can guide the whole animal. Consider ships as well. Although they are so large and are driven by strong winds, they are steered by a very small rudder wherever the pilot is inclined. In the same way, the tongue is a small part of the body, but it boasts of great things. Consider how small a spark sets a great forest ablaze."
+> — James 3:3–5 (BSB)
+
+A horse weighs over a thousand pounds. It's big and strong enough to throw you off its back. But a rider can steer it with a small metal bar in its mouth called a **bit**.
+
+A giant ship might be as long as three football fields. But it's steered by a **rudder**, a small flat piece underneath the back of the ship. Turn the rudder a little bit, and the whole ship changes direction.
+
+And then James gives the scariest example of all. One tiny spark from a campfire can land on some dry leaves and start a forest fire that burns thousands of acres. Something very small can cause something very, very big.
+
+James says your **tongue** is like that. It's one of the smallest parts of your body. But the words that come out of your mouth can change the direction of your whole life. And they can start fires that are really hard to put out.
+
+Think about it. One mean comment can wreck a friendship. One lie can destroy trust. One rumor can spread through a whole school in a single day. And sadly, hurtful words can stick in someone's memory for years.
+
+But it works the other way too! A few kind words can make someone's whole day. One word of encouragement can give a friend the courage to keep going. Words can heal, build up and point people to Jesus.
+
+A little later, James says something that should make us stop and think. "With the tongue we bless our Lord and Father, and with it we curse men, who have been made in God's likeness… this should not be!" It doesn't make sense to sing to God on Sunday and then say cruel things to people He made on Monday.
+
+This week, we're going to look at how to use this small but powerful part of us for good.
+
+**Think about it:** Can you remember a time when someone's words, good or bad, stuck with you for a long time?
+
+**Try this:** Pay attention to every word you say today. Before bed, ask yourself: Did my words start fires or put them out?
+
+*Dear God, my tongue is small, but it's powerful. Forgive me for the times my words have hurt others. Help me use my words to build up, encourage and point people to You. Guard my mouth today. In Jesus' name, Amen.*
+
+---
+
+## Day 14 — Telling the Truth
+
+> "Lying lips are detestable to the LORD, but those who deal faithfully are His delight."
+> — Proverbs 12:22 (BSB)
+
+Ethan was playing catch inside the house, even though he knew he wasn't supposed to. The ball bounced off the wall and knocked over his mom's favorite vase. *Crash!* It broke into pieces.
+
+When his mom came in and asked what happened, Ethan's mind raced. He could blame the dog. He could say it fell over on its own. Or he could tell the truth.
+
+Have you ever been in a moment like that? Lying can seem like the easy way out. It might keep you out of trouble, at least for now. But the Bible is very clear about how God feels about lies: "Lying lips are detestable to the LORD." *Detestable* is a strong word. It means God hates it.
+
+Why does God care so much about honesty? Because God is truth. Jesus called Himself "the truth" (John 14:6). God has never told a single lie. And Jesus called the devil "a liar and the father of lies" (John 8:44). When we lie, we're acting more like the enemy than like our Father.
+
+Lies also cause problems. One lie usually needs another lie to cover it up, and another, and another. Soon you're trapped in a tangled web. And when people find out, it's hard for them to trust you again.
+
+But look at the other half of the verse: "those who deal faithfully are **His delight**." God doesn't just put up with honest people. He delights in them! When you tell the truth, especially when it's hard, you make God glad.
+
+Telling the truth takes courage. It might mean getting in trouble. It might mean admitting you messed up. But being honest leaves you free. You don't have to remember what you said or worry about getting caught.
+
+Ethan took a deep breath and said, "I did it. I was playing catch inside. I'm really sorry." His mom was sad about the vase. But she hugged him and said, "Thank you for telling me the truth."
+
+**Think about it:** Why is it sometimes so tempting to lie? What makes telling the truth worth it?
+
+**Try this:** If there's anything you've lied about recently, go to the person and tell the truth today. It's hard, but you'll feel so much lighter afterward.
+
+*Dear God, You are the God of truth, and You delight in honesty. Forgive me for the times I have lied. Give me courage to tell the truth, even when it's hard and even when I might get in trouble. Make me someone who deals faithfully. In Jesus' name, Amen.*
+
+---
+
+## Day 15 — Words That Build
+
+> "Let no unwholesome talk come out of your mouths, but only what is helpful for building up the one in need and bringing grace to those who listen."
+> — Ephesians 4:29 (BSB)
+
+Have you ever watched a building get knocked down? A huge wrecking ball swings on a chain, and *boom!* A wall that took weeks to build crumbles in seconds. Tearing down is fast and easy. Building up is slow and takes work.
+
+Words can be like a wrecking ball or like a builder's tools. Paul says to use your words for "**building up**."
+
+First, Paul says, "Let no unwholesome talk come out of your mouths." *Unwholesome* means rotten, like spoiled fruit or moldy bread. Rotten words are words that tear people down: insults, put-downs, mean jokes, swearing, making fun of people. Sometimes people say, "I was just joking!" But if a joke makes someone feel small, it's still a wrecking ball.
+
+Instead, Paul says to speak "only what is helpful for building up the one in need." Building words make people stronger. They're like bricks you add to someone's wall. For example:
+
+- "You did a great job on that."
+- "I'm glad you're my friend."
+- "Don't worry, you'll get it next time."
+- "Can I help?"
+- "I'm praying for you."
+
+Notice the words "the one in need." Good builders look around and ask: *Who needs to be built up today?* Maybe a friend who's discouraged. Maybe your mom or dad after a long day. Maybe the kid who always gets picked last.
+
+And look at the last part: "bringing grace to those who listen." *Grace* is a gift you don't deserve. Your words can be a gift to someone, giving them kindness they didn't expect.
+
+This matters online too. It's easy to type something mean in a comment or a group chat, because you can't see the other person's face. But there's a real person on the other side of the screen, made in God's image.
+
+**Think about it:** When was the last time someone built you up with their words? How did it make you feel?
+
+**Try this:** Give at least three "building" words today, to three different people. Make them specific and true.
+
+*Dear God, forgive me for the times I've used my words like a wrecking ball. Help me speak only words that build people up. Show me who needs encouragement today, and give me the right words to say. Let my words be a gift of grace. In Jesus' name, Amen.*
+
+---
+
+## Day 16 — No Grumbling
+
+> "Do everything without complaining or arguing, so that you may be blameless and pure, children of God without fault in a crooked and perverse generation, in which you shine as lights in the world."
+> — Philippians 2:14–15 (BSB)
+
+"Ugh, why do I have to?" "This is so boring." "It's not fair!" "Do we have to go?" "I hate broccoli."
+
+Does any of that sound familiar? Complaining comes easily to all of us. Sometimes we don't even notice we're doing it.
+
+After God rescued the Israelites from slavery in Egypt, He did amazing miracles for them. He parted the Red Sea. He gave them water from a rock. He sent food from heaven, called manna, every single morning. And what did the people do? They **grumbled**. "We're thirsty!" "We're tired of this manna!" "We had better food back in Egypt!" (Numbers 11). They complained so much that it made God angry. They had seen His power and His care with their own eyes, but they still grumbled.
+
+When we complain, we're really saying, *God, I don't like how You're running things.* Grumbling is the opposite of trusting and thanking God.
+
+Paul says to do **everything** without complaining or arguing. Everything! Homework, chores, car rides, dinner, church, even things you really don't like.
+
+Why does it matter so much? Look at the end of the verse: so that "you shine as lights in the world." Most people complain all the time. It's normal. So when a kid does the dishes without grumbling, or goes along with a change of plans without arguing, people notice. It's different. It shines, like a star in a dark sky.
+
+This doesn't mean you can never tell anyone when something is wrong, or share how you really feel. You can always be honest with God and with the grown-ups who care for you. There's a difference between *telling* someone about a problem and *grumbling* about it.
+
+The best cure for grumbling is thankfulness. It's really hard to complain and give thanks at the same time!
+
+**Think about it:** What do you complain about most? What could you thank God for in that situation instead?
+
+**Try this:** Have a "no grumbling" day. Every time you catch yourself complaining, replace it with something you're thankful for.
+
+*Dear God, forgive me for grumbling and complaining so much. You have been so good to me. Help me do everything without complaining or arguing, so that I can shine like a light for You. Fill my mouth with thanks instead. In Jesus' name, Amen.*
+
+---
+
+## Day 17 — Gossip
+
+> "A perverse man spreads dissension, and a gossip divides close friends."
+> — Proverbs 16:28 (BSB)
+>
+> "A gossip reveals a secret, but a trustworthy person keeps a confidence."
+> — Proverbs 11:13 (BSB)
+
+There's an old story about a man who spread a rumor about his neighbor. Later, he felt bad and asked a wise teacher how to make it right. The teacher said, "Take a feather pillow, go to the top of the hill, cut it open and let the feathers blow away in the wind." The man did it. Then the teacher said, "Now go and gather up every single feather." The man said, "That's impossible! They've blown everywhere." And the teacher said, "So it is with your words. Once they're out, you can never get them all back."
+
+That's what **gossip** is like. Gossip is talking about other people behind their backs, especially spreading things that are unkind, private or maybe not even true. It often starts with, "Did you hear about…?" or "Don't tell anyone, but…"
+
+Gossip can feel exciting. Knowing a secret can make you feel important, like you're in on something. But Proverbs tells us what gossip really does: it "divides close friends." It breaks trust, hurts feelings and splits friendships apart. Maybe you've even seen it happen at your school.
+
+The second verse gives us the opposite: "a trustworthy person keeps a confidence." A *confidence* is something someone told you privately. A trustworthy friend doesn't blab it to everyone.
+
+Here are a few questions to ask before you talk about someone who isn't there:
+
+- **Is it true?**
+- **Is it kind?**
+- **Is it necessary?**
+- **Would I say it if they were standing right here?**
+
+If the answer to any of these is no, keep it to yourself.
+
+And what if someone starts gossiping to you? You can change the subject, walk away, or even say something kind about the person being talked about.
+
+One important thing: keeping a confidence doesn't mean keeping secrets that are dangerous. If a friend tells you someone is hurting them, or that they might hurt themselves, you should always tell a trusted adult. That's not gossip. That's love.
+
+**Think about it:** Why do you think gossip is so tempting? How does it feel when someone gossips about you?
+
+**Try this:** The next time you hear gossip, try one of these: change the subject, walk away or say something kind about the person.
+
+*Dear God, forgive me for the times I've gossiped or listened to gossip. Help me be a trustworthy friend who keeps confidences. Before I talk about others, help me ask if it's true, kind and necessary. Guard my friendships. In Jesus' name, Amen.*
+
+---
+
+## Day 18 — Quick to Listen
+
+> "My beloved brothers, understand this: Everyone should be quick to listen, slow to speak, and slow to anger."
+> — James 1:19 (BSB)
+
+Someone once pointed out that God gave us two ears and only one mouth. Maybe that's a hint that we should listen twice as much as we talk!
+
+James gives us three simple instructions that could change almost every conversation you have:
+
+**Be quick to listen.** Really listening means more than waiting for your turn to talk. It means paying attention, looking at the person, and trying to understand what they're saying and how they feel. Have you ever been talking to someone who kept looking at their phone? It doesn't feel good. Listening well tells people, *You matter to me.*
+
+**Be slow to speak.** That doesn't mean never talk. It means think before you speak. Don't interrupt. Don't jump in with the first thing that pops into your head. Sometimes the wisest thing to say is nothing at all.
+
+**Be slow to anger.** When you listen first and think before you speak, you're much less likely to get angry. A lot of fights happen because someone didn't listen, jumped to conclusions and blew up. If you slow down and listen, you might discover you misunderstood!
+
+Think about what happens in an argument. Usually both people are talking and nobody is listening. Each person just gets louder. But if one person stops and says, "Wait, tell me what you mean," everything can change.
+
+Listening is also a way of loving people. When you listen to a friend who's sad, you don't always have to fix their problem. Sometimes just being heard is what they need most.
+
+And listening matters with God too. Prayer isn't only talking to God. It's also being quiet and listening, especially as you read His Word. Samuel, when he was a boy, prayed, "Speak, for Your servant is listening" (1 Samuel 3:10). That's a great prayer for anyone.
+
+**Think about it:** Are you usually a better talker or a better listener? Who in your life is a really good listener?
+
+**Try this:** In every conversation today, try to listen more than you talk. Ask at least one follow-up question, like "What happened next?" or "How did that make you feel?"
+
+*Dear God, help me be quick to listen, slow to speak and slow to anger. Help me really listen to the people around me, so they know they matter. And help me listen to You too. Speak, Lord, for I'm listening. In Jesus' name, Amen.*
+
+---
+
+# Week 4 · Heart Habits
+
+---
+
+## Day 19 — Respect
+
+> "Treat everyone with high regard: Love the brotherhood of believers, fear God, honor the king."
+> — 1 Peter 2:17 (BSB)
+
+What does it mean to **respect** someone? It means treating them as valuable. It's the way you talk to them, the way you listen, the way you act around them. It says, *You matter.*
+
+Peter's list starts with a big word: "**everyone**." Not just people you like. Not just people who are nice to you. Not just people who are older or more important. Everyone deserves to be treated with respect, because every person is made in God's image.
+
+That includes:
+
+- **Your parents.** The Bible tells us to honor our father and mother. That means speaking kindly to them, obeying them and not rolling your eyes!
+- **Teachers, coaches and leaders.** They work hard to help you. Respect means listening, following instructions and not talking back.
+- **Older people.** The Bible says to honor the elderly. They have lived a long time and often have a lot of wisdom to share.
+- **Kids your age.** Even the ones who are different from you, or the ones nobody else seems to like.
+- **People who serve you.** The cafeteria worker, the bus driver, the janitor. They're made in God's image too.
+
+Then Peter says, "honor the king." Here's something interesting: the king at the time Peter wrote this was the Roman emperor, and he was not a friend to Christians. Peter still told believers to show respect to him. Respect doesn't depend on whether someone deserves it. It depends on who **God** is and who made them.
+
+Respect also doesn't mean you have to agree with everyone or do something wrong just because someone tells you to. If anyone ever asks you to do something wrong or unsafe, you should say no and tell a trusted adult. But in everyday life, respect is the way Jesus wants us to treat people.
+
+And notice what's right in the middle of the list: "fear God." That means to respect God most of all: to honor Him, obey Him and take Him seriously. When we respect God, it becomes easier to respect the people He made.
+
+**Think about it:** Who is someone you find hard to respect? What would it look like to treat them "with high regard" anyway?
+
+**Try this:** Show respect to someone today in a way they don't expect. Thank a teacher, bus driver or cafeteria worker, and look them in the eye when you do.
+
+*Dear God, thank You that every person is made in Your image. Help me treat everyone with respect: my parents, my teachers, older people, other kids and people who serve me. Most of all, help me honor You. In Jesus' name, Amen.*
+
+---
+
+## Day 20 — Enter with Thanks
+
+> "Enter His gates with thanksgiving and His courts with praise; give thanks to Him and bless His name. For the LORD is good, and His loving devotion endures forever; His faithfulness continues to all generations."
+> — Psalm 100:4–5 (BSB)
+
+One day, as Jesus was walking into a village, ten men stood far off and called out to Him. They had a terrible skin disease called leprosy. People with leprosy had to live apart from everyone else. They couldn't hug their families or go to the market.
+
+"Jesus, Master, have mercy on us!" they shouted.
+
+Jesus told them to go and show themselves to the priests, which is what people did when they had been healed. And as they went, their skin became clean!
+
+Ten men were healed. But only **one** came back. He ran to Jesus, threw himself at His feet and thanked Him with a loud voice. Jesus asked, "Were not all ten cleansed? Where then are the other nine?" (You can read the story in Luke 17:11–19.)
+
+Nine people got the miracle but forgot to say thank you.
+
+It's easy to be like the nine. God gives us so much every day, but we often forget to thank Him. We ask for help, God answers, and then we move on to the next request.
+
+Psalm 100 says to "enter His gates with thanksgiving." In the Old Testament, God's people went to the temple to worship. As they walked through the gates, they sang songs of thanks and praise. Thankfulness was how they came into God's presence.
+
+That's a great habit for us too. When you pray, start by thanking God before you ask Him for anything.
+
+And why should we thank Him? The psalm tells us: "For the LORD is good, and His loving devotion endures forever." Even on a bad day, God is still good. His love never runs out. His faithfulness goes on and on, through every generation, from your great-great-grandparents all the way to you.
+
+A thankful heart is a happy heart. When you practice thanking God, you start to notice how much He has given you.
+
+**Think about it:** Why do you think only one of the ten men came back to thank Jesus? Are you more like the one or the nine?
+
+**Try this:** Start every prayer today with at least three things you're thankful for. Before bed, write down everything you thanked God for today.
+
+*Dear God, You are good, and Your love lasts forever. Forgive me for the times I've been like the nine who forgot to say thank you. Thank You for [name some things]. Make me a thankful person who comes to You with thanksgiving. In Jesus' name, Amen.*
+
+---
+
+## Day 21 — Work as for the Lord
+
+> "Whatever you do, work at it with your whole being, as for the Lord and not for men, because you know that you will receive an inheritance from the Lord as your reward. It is the Lord Christ you are serving."
+> — Colossians 3:23–24 (BSB)
+
+Let's be honest: nobody jumps out of bed excited to clean the bathroom. Or do long division. Or practice scales on the piano for the hundredth time.
+
+Some work is fun. A lot of work isn't. So how can we do the boring, hard or unnoticed jobs well?
+
+Paul gives us an amazing secret: "Whatever you do, work at it with your whole being, **as for the Lord** and not for men."
+
+Paul first wrote these words to people who did some of the hardest, least appreciated work there was. Their bosses might never thank them. But Paul told them to imagine they weren't working for their earthly boss at all. They were working for Jesus!
+
+Try that with your own work. When you're folding laundry, imagine you're folding Jesus' clothes. When you're doing homework, imagine you're handing it in to Jesus. When you're practicing a sport, imagine Jesus is your coach, cheering you on.
+
+Suddenly, even small jobs matter. Nothing is boring when you're doing it for the King.
+
+Working "with your whole being" means giving your best effort, not doing just enough to get by. It means doing the job right even when nobody's checking. It means not cutting corners or rushing through so you can get back to your game.
+
+This doesn't mean you have to be perfect or be the best at everything. Jesus doesn't expect you to be the top student or the star athlete. He just wants your honest best, done for Him.
+
+And look at the reward: "you will receive an inheritance from the Lord." People might not notice your hard work. Your teacher might not see how long you studied. Your parents might not notice you cleaned under the bed. But Jesus notices. And He promises that nothing done for Him is ever wasted.
+
+"It is the Lord Christ you are serving." That changes everything.
+
+**Think about it:** What job or task do you most dislike? How might it change if you did it "for the Lord"?
+
+**Try this:** Choose one chore or assignment today and do it with your whole heart, as if Jesus Himself were going to see it. Do it without being asked or reminded.
+
+*Dear Jesus, help me remember that whatever I do, I'm really doing it for You. Help me work hard and give my best, even on boring jobs and even when nobody notices. Thank You that You see everything I do for You. In Your name, Amen.*
+
+---
+
+## Day 22 — Content
+
+> "I am not saying this out of need, for I have learned to be content regardless of my circumstances. I know how to live humbly, and I know how to abound. In any and every situation I have learned the secret of being filled and being hungry, of having plenty and having need. I can do all things through Christ who gives me strength."
+> — Philippians 4:11–13 (BSB)
+
+Everywhere you look, someone is trying to convince you that you need something new. A new phone. New shoes. A new game. The latest thing everyone else has. Ads are designed to make you feel like your life will be better if you just have *one more thing*.
+
+And then you get it. And for a little while, it's great. But soon there's another new thing, and you want that too.
+
+Paul had learned something that most people never figure out. He called it a **secret**: how to be **content**. Being content means being satisfied with what you have. It means having peace and gladness whether you have a lot or a little.
+
+Paul had lived both ways. Sometimes he had plenty. Other times he was hungry, cold and in prison. But he said, "I have learned to be content regardless of my circumstances."
+
+Notice the word *learned*. Contentment didn't come naturally, even to Paul. He had to learn it. That means you can learn it too.
+
+So what was Paul's secret? It's in the next verse: "I can do all things through Christ who gives me strength."
+
+You might have heard that verse before, maybe on a sports poster, as if it means you can win any game or do any trick. But look at what Paul was actually talking about! He meant, *Whether I have a lot or a little, Christ gives me the strength to be content.* Paul had Jesus, and Jesus was enough.
+
+When Jesus is your greatest treasure, you don't need the newest thing to be happy. You already have the best thing.
+
+Here are some ways to grow in contentment:
+
+- **Count your blessings.** Thankfulness is the enemy of wanting more.
+- **Stop comparing.** Someone will always have more than you.
+- **Remember what lasts.** Stuff breaks and gets old. Jesus never does.
+
+**Think about it:** Is there something you've been really wanting lately? Would getting it really make you content?
+
+**Try this:** Look around your room and find ten things you're thankful for that you already have. Thank God for each one.
+
+*Dear Jesus, the world keeps telling me I need more. Teach me the secret of being content. Help me see that You are enough, whether I have a lot or a little. Thank You for everything You've already given me. In Your name, Amen.*
+
+---
+
+## Day 23 — More Blessed to Give
+
+> "In everything, I showed you that by this kind of hard work we must help the weak, remembering the words of the Lord Jesus Himself: 'It is more blessed to give than to receive.'"
+> — Acts 20:35 (BSB)
+
+One day, Jesus sat near the offering boxes in the temple, watching people put in their gifts. Rich people came by and dropped in large amounts of money. It probably made a lot of noise as the coins clattered in!
+
+Then a poor widow came along. She put in two tiny copper coins, worth only a few cents.
+
+Jesus called His disciples over and said, "Truly I tell you, this poor widow has put more than all the others into the treasury." How could that be? Jesus explained: the rich people gave out of their extra money. They still had plenty left over. But she gave "all she had to live on" (Mark 12:41–44).
+
+To God, the size of the gift isn't what matters most. What matters is the heart behind it.
+
+In today's verse, Paul reminds us of something Jesus said: "It is more blessed to give than to receive." That sounds backward, doesn't it? Most of us think receiving is the best part! Christmas morning, birthday presents, getting the thing you wanted.
+
+But Jesus says there's even more joy in **giving**. Have you ever made a present for someone and couldn't wait to see their face when they opened it? That feeling is what Jesus is talking about.
+
+When we give, we become more like God. God is the greatest giver of all. He gave us life, the world, every good thing we have, and His own Son. When we give, we reflect His heart.
+
+You might think, *I'm just a kid. I don't have much to give.* But you have more than you think! You can give:
+
+- **Money.** Even a little bit from your allowance or birthday money.
+- **Time.** Helping a neighbor, visiting a grandparent, playing with a younger kid.
+- **Things.** Toys or clothes you don't use anymore, given to someone who needs them.
+- **Talents.** Drawing a card, baking cookies, teaching someone a skill.
+
+Remember the widow. Small gifts given with a big heart are huge to God.
+
+**Think about it:** Why do you think Jesus said it's more blessed to give than to receive? Have you ever experienced that?
+
+**Try this:** Give something away today: some money, a toy, your time or a talent. Notice how it feels.
+
+*Dear God, You are the greatest giver. Thank You for giving me so much, especially Jesus. Make me a generous person who loves to give, not just to receive. Help me give with a joyful heart, like the widow with her two coins. In Jesus' name, Amen.*
+
+---
+
+## Day 24 — Guard Your Heart
+
+> "Guard your heart with all diligence, for from it flow springs of life."
+> — Proverbs 4:23 (BSB)
+
+Imagine a spring high up in the mountains, where clear, fresh water bubbles out of the ground. That water flows down into a stream, then a river, and eventually provides drinking water for a whole town. Now imagine someone dumps garbage and poison into that spring. What happens to the river? What happens to the town?
+
+Everything downstream gets polluted, because it all started at the source.
+
+Proverbs says your **heart** is like that spring. In the Bible, your "heart" doesn't just mean the organ that pumps blood. It means the real, inside you: your thoughts, feelings, desires and choices. And everything in your life flows out of it. Your words, your actions, your attitudes, all of it starts in your heart.
+
+Remember what Jesus said? "Out of the overflow of the heart the mouth speaks" (Luke 6:45). What's inside eventually comes out.
+
+That's why we need to **guard** our hearts "with all diligence." That means very carefully. A guard stands at a gate and decides what can come in and what must stay out. You get to be the guard of your heart.
+
+What gets into your heart? Lots of things:
+
+- The shows, videos and games you watch and play.
+- The music you listen to.
+- The friends you spend time with.
+- The thoughts you let yourself dwell on.
+- What you read and scroll through.
+
+Some things fill your heart with good: God's Word, kind friends, things that are true and lovely. Other things slowly pour in poison: meanness, bad language, jealousy, fear, things that dishonor God.
+
+Guarding your heart doesn't mean you have to be afraid of everything. It means being wise and paying attention to what you're letting in. And it means filling your heart with good things, especially God Himself.
+
+The good news is that when you belong to Jesus, He's guarding your heart too. Philippians 4:7 says God's peace "will guard your hearts and your minds in Christ Jesus."
+
+**Think about it:** What's one thing you let into your heart that might not be good for it? What's one good thing you could let in more?
+
+**Try this:** Be a "heart guard" today. Before you watch, play or listen to something, ask yourself, "Will this help my heart or hurt it?"
+
+*Dear God, help me guard my heart carefully, because everything in my life flows out of it. Give me wisdom to know what to let in and what to keep out. Fill my heart with You and with good things. In Jesus' name, Amen.*
+
+---
+
+# Week 5 · Pure and Wise
+
+---
+
+## Day 25 — Just Ask
+
+> "Now if any of you lacks wisdom, he should ask God, who gives generously to all without finding fault, and it will be given to him."
+> — James 1:5 (BSB)
+
+When Solomon became king of Israel, he was young and felt like he had no idea how to lead a whole nation. One night, God appeared to him in a dream and said something amazing: "Ask, and I will give it to you!"
+
+Imagine that! Solomon could have asked for anything: a mountain of gold, a long life, victory over all his enemies. But Solomon asked for **wisdom**. He asked for an understanding heart so he could lead God's people well and know the difference between right and wrong.
+
+God was so pleased with Solomon's request that He gave him wisdom, and riches and honor too. Solomon became famous as the wisest king who ever lived. (You can read about it in 1 Kings 3.)
+
+What's the difference between wisdom and knowledge? **Knowledge** is knowing facts. **Wisdom** is knowing what to do with them. Knowledge knows that a stove is hot. Wisdom doesn't touch it! You can be really smart and still make foolish choices. Wisdom is seeing life the way God sees it, and making good choices because of it.
+
+Every day you face decisions. Who should I sit with at lunch? How should I handle this argument? Should I watch this? What should I do when my friend asks me to lie for them? You need wisdom!
+
+And here's the great news: James says if you need wisdom, **just ask**. God doesn't only give wisdom to kings or grown-ups or really smart people. He "gives generously to all."
+
+And look at this part: "without finding fault." God won't say, "Ugh, you again? Why don't you know this already?" He's never annoyed when you ask for help. He loves to give wisdom.
+
+God usually gives wisdom through His Word, through wise people like parents and pastors, and through the quiet leading of His Spirit. So when you ask, keep your eyes and ears open.
+
+**Think about it:** What's a decision you're facing right now where you need wisdom?
+
+**Try this:** Before every decision today, big or small, pray a one-sentence prayer: "God, give me wisdom."
+
+*Dear God, I need wisdom. Thank You for promising to give it generously when I ask. Help me see life the way You see it and make good choices. Give me wisdom for [name a decision]. Thank You that You never find fault when I ask. In Jesus' name, Amen.*
+
+---
+
+## Day 26 — Think About Such Things
+
+> "Finally, brothers, whatever is true, whatever is honorable, whatever is right, whatever is pure, whatever is lovely, whatever is admirable—if anything is excellent or praiseworthy—think on these things."
+> — Philippians 4:8 (BSB)
+
+Imagine a big, grassy field. The first time you walk across it, the grass bends a little, but you can hardly tell you were there. But if you walk the same way every day, the grass gets worn down, and soon there's a path. The more you walk it, the deeper it gets, until it's the easiest way to go.
+
+Your **thoughts** work like that. The things you think about over and over become paths in your mind. If you keep thinking worried thoughts, worry becomes an easy path. If you keep thinking angry, jealous or unkind thoughts, those paths get deeper too.
+
+But the good news is you can make new paths! Paul gives us a list of what to "think on," like a filter for your mind:
+
+- **True.** Not lies or rumors, but what's real.
+- **Honorable.** Things that are worthy of respect.
+- **Right.** Things that are fair and good.
+- **Pure.** Things that are clean, not dirty or shameful.
+- **Lovely.** Things that are beautiful and bring peace.
+- **Admirable.** Things worth talking about in a good way.
+- **Excellent or praiseworthy.** The very best things.
+
+You can't always control which thoughts pop into your head. But you can choose which ones you invite to stay. Someone once said: you can't stop birds from flying over your head, but you can stop them from building a nest in your hair!
+
+When a bad thought shows up, try running it through Paul's filter. Is it true? Is it pure? Is it lovely? If not, don't let it build a nest. Replace it with something better. Think about a Bible verse. Thank God for something. Remember something good God has done.
+
+Who fits every word in Paul's list perfectly? Jesus! He is true, honorable, right, pure, lovely, admirable and excellent. The best way to fill your mind with good things is to fill it with Him.
+
+**Think about it:** What kinds of thoughts do you have most often? Do they fit Paul's list?
+
+**Try this:** Write Philippians 4:8 on a card. When a bad thought shows up today, read the card and choose one thing from the list to think about instead.
+
+*Dear God, help me fill my mind with things that are true, honorable, right, pure, lovely and admirable. When bad thoughts come, help me not to let them stay. Fill my thoughts with You, Jesus. In Your name, Amen.*
+
+---
+
+## Day 27 — What My Eyes See
+
+> "I will set no worthless thing before my eyes. I hate the work of those who fall away; it shall not cling to me."
+> — Psalm 101:3 (BSB)
+
+How many hours a day do you spend looking at a screen? Phones, tablets, TVs, computers, video games… for many kids, it adds up to a lot of hours. And screens can be great! You can learn, create things, talk with family far away and laugh at funny videos.
+
+But what we look at shapes who we become. Remember Day 24? What goes into your eyes ends up in your heart.
+
+King David wrote a promise to God: "I will set no worthless thing before my eyes." *Worthless* means something that has no good value, or something that pulls you away from God. David decided ahead of time what he wouldn't look at.
+
+That's a wise thing to do. Here are some questions to help you decide what's worth watching or playing:
+
+- **Would I be comfortable if Jesus were watching this with me?** (He is!)
+- **Does this make me want to be kind, or mean?**
+- **Does this show wrong things as if they're cool or funny?**
+- **Would my parents be okay with this?**
+- **Is this stealing time from better things,** like family, friends, playing outside, reading or sleeping?
+
+Sometimes you might see something online that you didn't go looking for, something scary, violent or inappropriate that makes you feel uncomfortable. That's not your fault. But here's what to do: **turn it off right away, and tell a parent or a trusted adult.** You won't be in trouble. Grown-ups want to help keep you safe, and talking about it helps.
+
+David also said about wrong things, "It shall not cling to me." Some things stick in your mind long after you've seen them, like mud on your shoes. That's why it's worth guarding your eyes in the first place.
+
+This isn't about being afraid of screens or never having fun. It's about being wise. God gave you your eyes as a gift. Use them to look at good things, and most of all, to look to Him.
+
+**Think about it:** Is there anything you watch, play or scroll through that you think God might not want you to? What could you replace it with?
+
+**Try this:** Take a one-day break from one screen activity. Use that time to do something else: read, play outside, build something or spend time with your family.
+
+*Dear God, thank You for my eyes. Help me not to set worthless things in front of them. Give me wisdom about what I watch and play. When I see something that's not good, help me turn away and tell a grown-up. Help me keep my eyes on You. In Jesus' name, Amen.*
+
+---
+
+## Day 28 — The Same in the Dark
+
+> "He who walks in integrity walks securely, but he who perverts his ways will be found out."
+> — Proverbs 10:9 (BSB)
+
+What would you do if you knew for sure that no one would ever find out?
+
+Would you take the extra cookie? Copy your friend's homework? Say something mean about someone behind their back? Look at something you're not supposed to? Keep the extra change the cashier accidentally gave you?
+
+That question shows something important about who we really are. **Integrity** means being the same person whether anyone is watching or not. The word comes from the same root as *integer*, which means a whole number. A person with integrity is whole. They're not one person at church and a different person at school. They're not one person when grown-ups are around and another when they're gone.
+
+Daniel was a man of integrity. He worked for the king of Babylon, and some jealous officials wanted to get him in trouble. They watched him closely, looking for anything he did wrong. But the Bible says "they could find no charge or corruption, because he was trustworthy" (Daniel 6:4). Daniel was the same all the way through.
+
+Proverbs says a person with integrity "walks securely." They don't have to worry about getting caught, because they have nothing to hide. That's a free, peaceful way to live.
+
+But the other kind of person "will be found out." Hidden things have a way of coming to light. And even if no one else ever finds out, God sees everything. Nothing is hidden from Him. Remember Psalm 139? God knows when you sit down and when you get up. He's there in the dark as much as in the light.
+
+That's not meant to scare you. God isn't a spy trying to catch you. He's a loving Father who wants you to be whole. And if you've done things in secret that you're ashamed of, you can bring them into the light by telling God. He forgives completely.
+
+**Think about it:** Is there any area of your life where you act differently when nobody is watching?
+
+**Try this:** Today, when you're alone, do the right thing, even though no one would know. Thank God that He sees you and is proud of you.
+
+*Dear God, You see me all the time, in the light and in the dark. Help me be the same person whether anyone is watching or not. Make me a person of integrity, whole and trustworthy all the way through. Forgive me for the things I've done in secret. In Jesus' name, Amen.*
+
+---
+
+## Day 29 — Pride Before a Fall
+
+> "Pride goes before destruction, and a haughty spirit before a fall."
+> — Proverbs 16:18 (BSB)
+
+On the night Jesus was arrested, He told His disciples that they would all run away and leave Him. Peter couldn't believe it. He puffed out his chest and said, "Even if all fall away on account of You, I never will!" (Matthew 26:33). *The others might, but not me. I'm stronger than that.*
+
+Jesus looked at him and said, "Truly I tell you, this very night, before the rooster crows, you will deny Me three times."
+
+Peter was sure Jesus was wrong. But a few hours later, as Jesus was on trial, people asked Peter if he was one of Jesus' followers. And three times, Peter said, "I don't know Him!" Then the rooster crowed. Peter remembered what Jesus had said, and he went outside and cried bitterly.
+
+Peter fell, and it started with **pride**.
+
+Pride means thinking too highly of yourself. It's thinking you're better than others, that you don't need help or that you can handle everything on your own. A *haughty spirit* is a stuck-up attitude that looks down on other people.
+
+Pride is sneaky. It can look like:
+
+- Bragging about how good you are at something.
+- Refusing to say sorry or admit you were wrong.
+- Thinking, *That would never happen to me.*
+- Looking down on people who aren't as smart, fast or popular.
+- Not asking for help because you don't want to look weak.
+
+Proverbs says pride "goes before destruction." Just like Peter, when we think we're too strong to fall, we stop depending on God, and that's exactly when we fall.
+
+But here's the wonderful ending to Peter's story. After Jesus rose from the dead, He came to Peter and forgave him. He even gave him an important job: "Feed My sheep" (John 21:17). Peter's fall humbled him. He learned that he needed Jesus every moment. And humble Peter became a great leader in the church.
+
+The cure for pride is remembering that everything good we have comes from God, and that we need Him every day.
+
+**Think about it:** Where do you see pride show up in your life? Is there something you've been too proud to admit or ask for help with?
+
+**Try this:** Do something humble today: admit you were wrong about something, ask for help, or praise someone else instead of yourself.
+
+*Dear God, forgive me for my pride. I'm not as strong as I sometimes think, and I need You every day. Keep me humble. When I fall, thank You that You forgive me and lift me up, just like You did for Peter. In Jesus' name, Amen.*
+
+---
+
+## Day 30 — Known by Its Fruit
+
+> "No good tree bears bad fruit, nor does a bad tree bear good fruit. For each tree is known by its own fruit. Indeed, figs are not gathered from thornbushes, nor grapes from brambles. The good man brings good things out of the good treasure of his heart, and the evil man brings evil things out of the evil treasure of his heart. For out of the overflow of the heart the mouth speaks."
+> — Luke 6:43–45 (BSB)
+
+If you saw a tree with apples hanging from its branches, what kind of tree would you say it was? An apple tree, of course! You don't need to see a label. You can tell by the fruit.
+
+Jesus said people are like that. "Each tree is known by its own fruit." You can't grow figs on a thornbush or grapes on a bramble. What grows on the outside shows what's really going on inside.
+
+That's what this whole book has been about. For thirty days, we've looked at the fruit God wants to grow in you: love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control and humility. We've looked at the words that come out of your mouth, and the habits of your heart. We've talked about being wise, pure and honest.
+
+But Jesus points us back to where it all starts: "The good man brings good things out of the good treasure of his **heart**." Fruit shows what kind of tree you are. Words show what's in your heart. If you want to change the fruit, you have to change the tree.
+
+And only God can do that. You can't glue apples onto a thornbush and make it an apple tree! Trying harder to look good on the outside doesn't change what you are on the inside. But God can make you new. When you trust Jesus, He gives you a new heart and puts His Spirit in you. He changes the tree, and then the fruit starts to grow.
+
+That's why we started with Day 1: "I am the vine and you are the branches." Everything comes back to staying connected to Jesus. As His life flows into you, your heart fills with good treasure, and good fruit grows.
+
+It won't all happen at once. Some fruit will grow faster than others. You'll have good seasons and hard seasons. But if you keep your roots in Jesus, people will start to see His fruit in you.
+
+**Think about it:** Look back over this book. What's one fruit you've seen God growing in you? What's one you're still asking Him for?
+
+**Try this:** Go back to the vine you drew on Day 1. Add any new fruit you've seen growing, and write a thank-you note to God next to it.
+
+*Dear Jesus, thank You for these 30 days of learning about the fruit You want to grow in me. I know I can't make good fruit on my own. Please keep changing my heart and filling it with good treasure. Help me stay connected to You, the Vine, so that people will know me by Your fruit. In Your name, Amen.*
+
+---
+
+## Conclusion: A Fruitful Life
+
+Congratulations! You've spent 30 days learning about fruit, not the kind you eat, but the kind God grows in your life.
+
+You started with the most important truth of all: Jesus is the Vine and you are a branch. You can't grow good fruit on your own, but when you stay connected to Him, His life flows into you.
+
+You looked at each part of the fruit of the Spirit: **love** that acts, **joy** that goes deeper than happiness, **peace** in the storm, **patience** that waits, **kindness** that goes out of its way, **goodness** that doesn't give up, **faithfulness** in little things, **gentleness** that turns away anger and **self-control** that guards the walls. You saw how **humility** is the soil they all grow in.
+
+You learned how powerful your words are: to tell the truth, build people up, stop grumbling, refuse gossip and listen well. You practiced heart habits: respect, thankfulness, hard work, contentment, generosity and guarding your heart. And you learned about being wise, pure and honest, even when no one is watching.
+
+That's a lot! And maybe right now you're thinking, *I'm not very good at a lot of those.* That's okay. Nobody is, at least not yet. Remember, fruit grows slowly. An apple tree doesn't produce a full harvest in a month. What matters is that you're connected to the Vine, and that you keep growing.
+
+### If you haven't trusted Jesus yet
+
+If you've never become a branch on the Vine, you can today. You can't make yourself good enough for God. But Jesus died for your sins and rose again, and He offers you a new heart as a gift. You can pray something like this:
+
+*Dear Jesus, I know I have sinned, and I can't change my heart on my own. I believe You died for me and rose again. I trust You as my Savior and I want to follow You as my Lord. Please make me new and help me grow Your fruit. Amen.*
+
+If you prayed that, tell someone who loves Jesus, so they can celebrate with you and help you grow!
+
+### What's next
+
+Here's something every gardener knows: storms come. Wind blows, rain pours, heat beats down. A healthy tree has to be strong enough to stand through all of it.
+
+In **Book 4**, you'll learn how to stand strong in the storms of life: when you're afraid, worried or sad, when you're tempted, and when life doesn't seem fair. You'll meet people like David, Daniel, Joseph and Esther, who stood strong because they trusted God. And you'll discover that nothing can separate you from His love.
+
+Until then, keep your roots deep, stay connected to the Vine and let His fruit grow.
+
+> "And this is my prayer: that your love may abound more and more in knowledge and depth of insight, so that you may be able to test and prove what is best and may be pure and blameless for the day of Christ, filled with the fruit of righteousness that comes through Jesus Christ, to the glory and praise of God."
+> — Philippians 1:9–11 (BSB)

@@ -68,6 +68,17 @@ LAUNCH_PLANS = [
         "question to think about, something to try, and a prayer.",
         (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
     ),
+    (
+        "rooted-book-3-30-days",
+        "rooted-3",
+        "Rooted: 30 Days with God — Book 3",
+        "Thirty days of growing fruit, for readers aged 9 to 12: love, joy, "
+        "peace, patience, kindness and the rest of the fruit of the Spirit, the "
+        "words we say, and the habits of the heart. Each day is one short "
+        "reading with a Bible verse, a question to think about, something to "
+        "try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
+    ),
 ]
 
 # Curated plans that walk through SEVERAL books in order (each book read in
