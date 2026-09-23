@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import type { Snippet } from 'svelte';
 	import { isSermonTile, type TopicCover } from '$lib/library-public';
@@ -55,7 +56,7 @@
 	<div class="shelf-card-band hue-band">
 		<span class="shelf-card-badge emblem-chip">
 			{#if portrait}
-				<img src={portrait} alt="" loading="lazy" />
+				<img src={portrait} use:hydrateSrc={{ src: portrait }} alt="" loading="lazy" />
 			{:else if emblem}
 				<Emblem name={emblem} />
 			{/if}
@@ -77,6 +78,7 @@
 								<img
 									src={cover.cover_url}
 									srcset={coverSrcset(cover.cover_url) || undefined}
+									use:hydrateSrc={{ src: cover.cover_url, srcset: coverSrcset(cover.cover_url) || undefined }}
 									alt=""
 									loading="lazy"
 								/>

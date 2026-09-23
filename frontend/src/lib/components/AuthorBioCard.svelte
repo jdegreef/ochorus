@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -53,6 +54,7 @@
 				<img
 					src={author.photo_url}
 					srcset={portraitSrcset(author.photo_url)}
+					use:hydrateSrc={{ src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
 					sizes="112px"
 					alt="{t('a11y.portraitOf')} {author.name}"
 					loading="lazy"

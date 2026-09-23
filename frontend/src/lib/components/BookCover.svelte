@@ -10,6 +10,7 @@
 	import './cover-type.css';
 	import type { BookSummary } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import BrandMark from './BrandMark.svelte';
 
 	const t = i18n.t;
@@ -114,17 +115,8 @@
 	 * So on attach, an image that is already complete is treated as loaded now.
 	 */
 	function whenComplete(img: HTMLImageElement) {
-		// Hydration keeps the SERVER's `src`/`srcset` — Svelte skips those two
-		// attributes while hydrating, to spare a refetch — but repairs everything
-		// else. So if this cover was prerendered for a different book (the list
-		// behind a shelf changed between the build and this visit), the card got
-		// the new book's title, link and overlay over the old book's picture.
-		// Point the image at this book's cover before trusting `complete`.
-		if (book.cover_url && img.getAttribute('src') !== book.cover_url) {
-			if (srcset) img.srcset = srcset;
-			else img.removeAttribute('srcset');
-			img.src = book.cover_url;
-		}
+		// `hydrateSrc` runs first (it is attached first), so a cover prerendered
+		// for another book has already been repointed and is not `complete`.
 		if (img.complete && img.naturalWidth) onLoaded(img);
 	}
 
@@ -241,6 +233,7 @@
 			height={priority ? 400 : undefined}
 			onload={(e) => onLoaded(e.currentTarget as HTMLImageElement)}
 			onerror={() => (failedUrl = book.cover_url)}
+			use:hydrateSrc={{ src: book.cover_url, srcset: srcset || undefined }}
 			use:whenComplete
 			class="absolute inset-0 h-full w-full {needsMat ? 'object-contain' : 'object-cover'}"
 		/>

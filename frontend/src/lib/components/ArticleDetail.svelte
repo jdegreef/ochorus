@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Article, ArticleRelated } from '$lib/library-public';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { SITE_URL } from '$lib/config';
@@ -165,6 +166,7 @@
 									<img
 										class="rel-cover"
 										src={r.cover_url}
+										use:hydrateSrc={{ src: r.cover_url }}
 										alt=""
 										loading="lazy"
 										style:background={r.cover_color || undefined}
@@ -174,6 +176,7 @@
 									class="rel-portrait"
 									src={r.photo_url}
 									srcset={portraitSrcset(r.photo_url)}
+									use:hydrateSrc={{ src: r.photo_url, srcset: portraitSrcset(r.photo_url) }}
 									sizes="44px"
 									alt=""
 									loading="lazy"

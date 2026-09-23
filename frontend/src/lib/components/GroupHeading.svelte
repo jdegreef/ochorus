@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Snippet } from 'svelte';
 	import { PORTRAIT_POSITION_DEFAULT, portraitSrcset } from '$lib/portraits';
 
@@ -62,6 +63,7 @@
 		<img
 			src={portraitUrl}
 			srcset={portraitSrcset(portraitUrl)}
+			use:hydrateSrc={{ src: portraitUrl, srcset: portraitSrcset(portraitUrl) }}
 			sizes="32px"
 			alt=""
 			loading="lazy"

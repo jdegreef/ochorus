@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -32,6 +33,7 @@
 		<img
 			src={person.photo_url}
 			srcset={portraitSrcset(person.photo_url)}
+			use:hydrateSrc={{ src: person.photo_url, srcset: portraitSrcset(person.photo_url) }}
 			sizes="44px"
 			width="44"
 			height="44"
