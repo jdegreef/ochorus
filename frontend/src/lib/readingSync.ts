@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import { undo } from './undo.svelte';
 import { apiFetch } from './api';
-import { clearPending, clearSent, pendingAt, pendingRemovals } from './removals';
+import { bookmarkTarget, clearPending, clearSent, pendingAt, pendingRemovals } from './removals';
 import type { PlanState } from './planProgress.svelte';
 import type { SessionSync } from './sessionClock';
 import {
@@ -363,8 +363,18 @@ class ReadingSync {
 	removeBookmark(kind: WorkKind, slug: string, order: number, p: number) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`bm:${workSlugKey(kind, slug)}:${order}:${p}`, () => {
-			apiFetch(`/api/reading/bookmarks/${kind}/${slug}/${order}/${p}/`, { method: 'DELETE' })
-				.then(() => this.#markSynced())
+			// Like an un-heart: carries this device's clock, and clears its pending
+			// entry once the account has it (else the next merge carries it).
+			const target = bookmarkTarget(slug, order, p);
+			const at = pendingAt('bookmark', kind, target);
+			const query = at ? `?at=${at}` : '';
+			apiFetch(`/api/reading/bookmarks/${kind}/${slug}/${order}/${p}/${query}`, {
+				method: 'DELETE'
+			})
+				.then(() => {
+					if (at) clearPending('bookmark', kind, target, at);
+					this.#markSynced();
+				})
 				.catch(() => {});
 		});
 	}
@@ -463,7 +473,10 @@ class ReadingSync {
 					paragraph_index: b.p,
 					bm_id: b.id,
 					snippet: b.snippet,
-					title: b.title
+					title: b.title,
+					// Lets the server tell a bookmark re-saved after a removal
+					// elsewhere (keep) from this device's stale copy (drop).
+					saved_at: b.at
 				}));
 			}),
 			activity: localActivity,

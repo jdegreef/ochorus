@@ -9,7 +9,7 @@ import {
 	LAST_SYNC_KEY,
 	FAVORITES_KEY
 } from './reading-schema';
-import { addPending, pendingAt } from './removals';
+import { addPending, bookmarkTarget, pendingAt } from './removals';
 
 beforeEach(() => localStorage.clear());
 
@@ -150,8 +150,8 @@ describe('readingSync.clearOnSignOut', () => {
 	});
 
 	it('pushBookmark PUTs a saved paragraph, removeBookmark DELETEs it', async () => {
-		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
-			new Response('{}', { status: 200 })
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockImplementation(
+			async () => new Response('{}', { status: 200 })
 		);
 		vi.useFakeTimers();
 		try {
@@ -174,11 +174,16 @@ describe('readingSync.clearOnSignOut', () => {
 				title: 'Ch 2'
 			});
 
+			addPending('bookmark', 'book', bookmarkTarget('humility', 2, 5), 555);
 			readingSync.removeBookmark('book', 'humility', 2, 5);
 			await vi.runAllTimersAsync();
 			const [url2, init2] = fetchSpy.mock.calls[1];
-			expect(String(url2)).toContain('/api/reading/bookmarks/book/humility/2/5/');
+			// The removal carries this device's clock, and clears once it lands.
+			expect(String(url2)).toContain('/api/reading/bookmarks/book/humility/2/5/?at=555');
 			expect(init2?.method).toBe('DELETE');
+			await vi.waitFor(() =>
+				expect(pendingAt('bookmark', 'book', bookmarkTarget('humility', 2, 5))).toBeNull()
+			);
 		} finally {
 			fetchSpy.mockRestore();
 			vi.useRealTimers();
@@ -206,6 +211,10 @@ describe('readingSync.clearOnSignOut', () => {
 
 	it('the merge carries pending removals and heart times, and clears only when applied', async () => {
 		localStorage.setItem(FAVORITES_KEY, JSON.stringify({ 'book:humility': 42 }));
+		localStorage.setItem(
+			BOOKMARKS_KEY,
+			JSON.stringify({ 'book:humility': [{ id: 'x', order: 2, p: 5, snippet: '', title: '', at: 64 }] })
+		);
 		addPending('favorite', 'author', 'andrew-murray', 99);
 		const reply = (applied: boolean) =>
 			new Response(
@@ -218,6 +227,7 @@ describe('readingSync.clearOnSignOut', () => {
 			await readingSync.mergeOnSignIn();
 			const body = JSON.parse(String(fetchSpy.mock.calls[0][1]?.body));
 			expect(body.favorites).toEqual([{ kind: 'book', slug: 'humility', saved_at: 42 }]);
+			expect(body.bookmarks[0]).toMatchObject({ chapter_order: 2, paragraph_index: 5, saved_at: 64 });
 			expect(body.removed).toEqual([{ domain: 'favorite', kind: 'author', slug: 'andrew-murray', at: 99 }]);
 			// An API from before tombstones ignored them — keep them for next time.
 			expect(pendingAt('favorite', 'author', 'andrew-murray')).toBe(99);

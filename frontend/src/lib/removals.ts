@@ -2,8 +2,8 @@ import { readJSON, writeJSON } from './persisted';
 import { REMOVALS_KEY } from './reading-schema';
 
 /**
- * Removals the account hasn't confirmed yet — a heart taken off, or a work
- * removed from the Bookshelf — kept until the server has them.
+ * Removals the account hasn't confirmed yet — a heart taken off, a work
+ * removed from the Bookshelf, or a bookmark — kept until the server has them.
  *
  * The server keeps a tombstone per removal (reading.models.Removal), so a
  * device still holding the thing can't merge it back. But a removal only gets
@@ -14,17 +14,26 @@ import { REMOVALS_KEY } from './reading-schema';
  * the server acknowledges applying.
  *
  * `at` is this device's clock at the removal: the server compares it with the
- * incoming positions / hearts to tell a stale copy from a newer act.
- * Stored as `"domain:kind:slug" -> at`; none of the three contain ':'.
+ * incoming positions / hearts / bookmarks to tell a stale copy from a newer
+ * act. Stored as `"domain:kind:target" -> at`. The target is the slug, except
+ * for a bookmark, which is a spot in a work: `bookmarkTarget` makes it
+ * `slug:order:p` (slugs never contain ':'), and the merge row splits it back
+ * into the `chapter_order` / `paragraph_index` the API expects.
  */
-export type RemovalDomain = 'progress' | 'favorite';
+export type RemovalDomain = 'progress' | 'favorite' | 'bookmark';
 
 export interface PendingRemoval {
 	domain: RemovalDomain;
 	kind: string;
 	slug: string;
+	/** Bookmarks only: the spot. */
+	chapter_order?: number;
+	paragraph_index?: number;
 	at: number;
 }
+
+/** The removal target for a bookmark at (order, p) in a work. */
+export const bookmarkTarget = (slug: string, order: number, p: number) => `${slug}:${order}:${p}`;
 
 type Store = Record<string, number>;
 
@@ -59,15 +68,26 @@ export function clearPending(
 }
 
 export function pendingRemovals(): PendingRemoval[] {
-	return Object.entries(read()).flatMap(([key, at]) => {
-		const [domain, kind, ...rest] = key.split(':');
-		const slug = rest.join(':');
-		if ((domain !== 'progress' && domain !== 'favorite') || !kind || !slug) return [];
+	return Object.entries(read()).flatMap(([key, at]): PendingRemoval[] => {
+		const [domain, kind, slug, ...spot] = key.split(':');
+		if (!kind || !slug) return [];
+		if (domain === 'bookmark') {
+			const [order, p] = spot.map(Number);
+			if (spot.length !== 2 || !Number.isInteger(order) || !Number.isInteger(p)) return [];
+			return [{ domain, kind, slug, chapter_order: order, paragraph_index: p, at }];
+		}
+		if ((domain !== 'progress' && domain !== 'favorite') || spot.length) return [];
 		return [{ domain, kind, slug, at }];
 	});
 }
 
 /** Drop the removals a merge just delivered — each only if unchanged since. */
 export function clearSent(sent: PendingRemoval[]): void {
-	for (const r of sent) clearPending(r.domain, r.kind, r.slug, r.at);
+	for (const r of sent) {
+		const target =
+			r.domain === 'bookmark'
+				? bookmarkTarget(r.slug, r.chapter_order ?? 0, r.paragraph_index ?? 0)
+				: r.slug;
+		clearPending(r.domain, r.kind, target, r.at);
+	}
 }
