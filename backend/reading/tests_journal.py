@@ -112,6 +112,12 @@ class JournalTests(TestCase):
         stored = JournalEntry.objects.get().client_updated_at
         self.assertLessEqual(stored, datetime.now(UTC) + timedelta(days=1, minutes=1))
 
+    def test_a_daily_prayer_is_kept_like_a_note(self):
+        res = self.put("d1", kind="daily", title="Today's prayer", body="Adore\nYou are good.",
+                       person="Anna", answered_at=5000)
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual((res.data["kind"], res.data["person"], res.data["answered_at"]), ("daily", "", None))
+
     def test_only_a_prayer_is_answered(self):
         self.put("n1", kind="note", body="x", answer="y", answered_at=5000)
         obj = JournalEntry.objects.get(profile=self.profile)

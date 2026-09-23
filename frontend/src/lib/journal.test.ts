@@ -2,6 +2,9 @@ import { describe, it, expect } from 'vitest';
 import {
 	cleanEntry,
 	cleanSource,
+	composeDaily,
+	dailyStreak,
+	dailyVerse,
 	cleanStore,
 	formatRemind,
 	fromServer,
@@ -179,5 +182,41 @@ describe('journal entries', () => {
 		expect(back).toEqual(e);
 		const gone = fromServer({ ...toServer(e), deleted: true });
 		expect(gone).toMatchObject({ deleted: true, body: '', person: '', answer: '', updates: [] });
+	});
+
+	it('keeps a daily prayer like a note and out of the prayer list', () => {
+		const store = cleanStore({
+			d: entry('d', { kind: 'daily', person: 'Anna', answeredAt: T0 } as Partial<JournalEntry>)
+		});
+		expect(store.d).toMatchObject({ kind: 'daily', person: '', answeredAt: null });
+		expect(journalStats(store)).toEqual({ notes: 0, prayers: 0, answered: 0 });
+		expect(visibleEntries(store, 'prayers')).toEqual([]);
+		expect(visibleEntries(store, 'all').map((e) => e.id)).toEqual(['d']);
+	});
+
+	it('counts daily prayers in a row, and whether today is done', () => {
+		const at = (iso: string) => new Date(`${iso}T09:00:00`).getTime();
+		const store = cleanStore({
+			a: entry('a', { kind: 'daily', createdAt: at('2026-09-20') }),
+			b: entry('b', { kind: 'daily', createdAt: at('2026-09-21') }),
+			n: entry('n', { createdAt: at('2026-09-22') })
+		});
+		expect(dailyStreak(store, '2026-09-22')).toEqual({ streak: 2, doneToday: false });
+		expect(dailyStreak(store, '2026-09-21')).toEqual({ streak: 2, doneToday: true });
+		expect(dailyStreak(store, '2026-09-24')).toEqual({ streak: 0, doneToday: false });
+	});
+
+	it('gives each movement a verse for the day that changes the next day', () => {
+		expect(dailyVerse('adore', '2026-09-22')).toBe(dailyVerse('adore', '2026-09-22'));
+		expect(dailyVerse('adore', '2026-09-22')).not.toBe(dailyVerse('adore', '2026-09-23'));
+		expect(dailyVerse('ask', '2026-09-22')).toMatch(/\d+:\d+$/);
+	});
+
+	it('writes the movements under their names, skipping the empty ones', () => {
+		const names = { adore: 'Adore', confess: 'Confess', thanks: 'Thanks', ask: 'Ask' };
+		expect(composeDaily({ adore: ' You are good. ', confess: '  ', ask: 'Anna — the job' }, names)).toBe(
+			'Adore\nYou are good.\n\nAsk\nAnna — the job'
+		);
+		expect(composeDaily({}, names)).toBe('');
 	});
 });

@@ -3,6 +3,7 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import {
 		ANSWER_MAX,
+		DAILY_STEPS,
 		UPDATE_MAX,
 		daysWaited,
 		formatRemind,
@@ -22,6 +23,8 @@
 	let { entry, locale }: { entry: JournalEntry; locale: string } = $props();
 
 	const t = i18n.t;
+	/** The daily prayer's movement names, to set them apart in its text. */
+	const stepNames = new Set(DAILY_STEPS.map((s) => t(`notebook.step_${s}`)));
 
 	/** What the card is showing: the entry, or one of its editors (never two at once). */
 	let mode = $state<'view' | 'edit' | 'answer' | 'update' | 'remind'>('view');
@@ -101,7 +104,7 @@
 	<article class="entry" class:prayer={entry.kind === 'prayer'} class:answered={!!entry.answeredAt}>
 		<header class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
 			<span class="kind eyebrow">
-				{#if entry.kind === 'note'}✎ {t('reader.note')}{:else if entry.answeredAt}✓ {t('notebook.answeredPrayer')}{:else}🙏 {t('notebook.prayer')}{/if}
+				{#if entry.kind === 'note'}✎ {t('reader.note')}{:else if entry.kind === 'daily'}☀ {t('notebook.dailyKind')}{:else if entry.answeredAt}✓ {t('notebook.answeredPrayer')}{:else}🙏 {t('notebook.prayer')}{/if}
 			</span>
 			<time class="text-micro text-muted" datetime={new Date(entry.createdAt).toISOString()}>
 				{time(entry.createdAt)}
@@ -125,7 +128,14 @@
 		{/if}
 
 		{#if entry.title}<h3 class="entry-title">{entry.title}</h3>{/if}
-		{#if entry.body}<p class="entry-body">{entry.body}</p>{/if}
+		{#if entry.kind === 'daily'}
+			<!-- The daily prayer's movements, each under its name (see composeDaily). -->
+			<div class="entry-body">
+				{#each entry.body.split('\n') as line, i (i)}
+					{#if stepNames.has(line.trim())}<strong class="step-name">{line}</strong>{:else}{line}{/if}{'\n'}
+				{/each}
+			</div>
+		{:else if entry.body}<p class="entry-body">{entry.body}</p>{/if}
 
 		{#if entry.updates.length}
 			<ol class="updates">
@@ -252,6 +262,13 @@
 	}
 	.kind {
 		color: var(--accent);
+	}
+	.step-name {
+		font-family: var(--font-sans);
+		font-size: var(--fs-small);
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--warning);
 	}
 	.prayer .kind {
 		color: var(--warning);
