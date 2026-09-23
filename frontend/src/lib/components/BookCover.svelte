@@ -114,6 +114,17 @@
 	 * So on attach, an image that is already complete is treated as loaded now.
 	 */
 	function whenComplete(img: HTMLImageElement) {
+		// Hydration keeps the SERVER's `src`/`srcset` — Svelte skips those two
+		// attributes while hydrating, to spare a refetch — but repairs everything
+		// else. So if this cover was prerendered for a different book (the list
+		// behind a shelf changed between the build and this visit), the card got
+		// the new book's title, link and overlay over the old book's picture.
+		// Point the image at this book's cover before trusting `complete`.
+		if (book.cover_url && img.getAttribute('src') !== book.cover_url) {
+			if (srcset) img.srcset = srcset;
+			else img.removeAttribute('srcset');
+			img.src = book.cover_url;
+		}
 		if (img.complete && img.naturalWidth) onLoaded(img);
 	}
 

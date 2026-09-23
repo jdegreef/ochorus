@@ -1,6 +1,6 @@
 import { building } from '$app/environment';
 import { listBooks, listAuthors, listTopics, listSermons } from '$lib/library-public';
-import { pickByDay, dayNumber } from '$lib/dailyPicks';
+import { pickByDay } from '$lib/dailyPicks';
 import { isPlateCover } from '$lib/coverArt';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
@@ -67,11 +67,14 @@ export const load: PageLoad = async () => {
 		// the API's own order, which groups by writer — so the front of the
 		// library was routinely three Murrays and three Spurgeons.
 		//
-		// Picked HERE rather than in the component, even though `load` runs at
-		// build time and therefore rotates per deploy rather than per calendar
-		// day: this page is prerendered, so a client-side pick would swap all
-		// six cards at hydration, in view, on the site's front page. A shelf
-		// that changes with each deploy and never clusters is the better trade.
+		// Seeded with the BUILD day, so it rotates per deploy rather than per
+		// calendar day. This `load` runs twice — prerendering, then again in the
+		// browser at hydration — and the two runs must pick the same six: a
+		// client-side pick would swap all six cards in view on the site's front
+		// page. Worse, it did so half-way: Svelte keeps a hydrated `<img>`'s
+		// server `src`, so seeded with the viewer's `dayNumber()` every card
+		// showed the prerendered book's picture under the new book's title. A
+		// shelf that changes with each deploy and never clusters is the trade.
 		//
 		// Only books with real cover art reach this editorial shelf: a generated
 		// flat plate (the `.svg` tier — see `isPlateCover`) reads as half-finished
@@ -83,7 +86,7 @@ export const load: PageLoad = async () => {
 		featured: pickByDay(
 			books.filter((b) => !isPlateCover(b.cover_url)),
 			6,
-			dayNumber(),
+			__BUILD_DAY__,
 			(b) => b.author.slug
 		),
 		// Most-published first (name breaks ties, so the cap is stable across
