@@ -1190,6 +1190,8 @@ export interface QuoteAuthorSummary {
 	count: number;
 	/** The author's shortest reviewed quote — the card's teaser line. "" if none. */
 	teaser: string;
+	/** Distinct works (books + sermons) the author is quoted from. */
+	work_count: number;
 }
 
 export const listQuoteAuthors = () =>

@@ -802,6 +802,8 @@
   "quotes_empty_index": "यहाँ अभी कोई उद्धरण नहीं।",
   "quotes_count_one": "%count% उद्धरण",
   "quotes_count_many": "%count% उद्धरण",
+  "quotes_works_one": "%count% रचना",
+  "quotes_works_many": "%count% रचनाएँ",
   "quotes_author_h1": "%name% — अपने ही शब्दों में",
   "quotes_author_intro_one": "%count% उद्धरण, उस सटीक अनुच्छेद तक खोजा गया जहाँ से यह आता है। इसका अनुसरण करके पूरा पाठ पढ़ें — निःशुल्क, और बिना खाते के।",
   "quotes_author_intro_many": "%count% उद्धरण, हर एक उस सटीक अनुच्छेद तक खोजा गया जहाँ से वह आता है। इनमें से किसी का भी अनुसरण करके पूरा पाठ पढ़ें — निःशुल्क, और बिना खाते के।",

@@ -802,6 +802,8 @@
   "quotes_empty_index": "Pas encore de citations ici.",
   "quotes_count_one": "%count% citation",
   "quotes_count_many": "%count% citations",
+  "quotes_works_one": "%count% œuvre",
+  "quotes_works_many": "%count% œuvres",
   "quotes_author_h1": "%name% — dans ses propres mots",
   "quotes_author_intro_one": "%count% citation, retracée jusqu’au paragraphe exact d’où elle provient. Suivez-la jusqu’au texte complet — gratuit, et sans compte.",
   "quotes_author_intro_many": "%count% citations, chacune retracée jusqu’au paragraphe exact d’où elle provient. Suivez n’importe laquelle jusqu’au texte complet — gratuit, et sans compte.",

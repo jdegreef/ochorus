@@ -802,6 +802,8 @@
   "quotes_empty_index": "Bado hakuna nukuu hapa.",
   "quotes_count_one": "nukuu %count%",
   "quotes_count_many": "nukuu %count%",
+  "quotes_works_one": "kazi %count%",
+  "quotes_works_many": "kazi %count%",
   "quotes_author_h1": "%name% — kwa maneno yake mwenyewe",
   "quotes_author_intro_one": "nukuu %count%, imefuatiliwa hadi aya kamili inayotoka. Ifuate hadi maandishi kamili — bila malipo, na bila akaunti.",
   "quotes_author_intro_many": "nukuu %count%, kila moja imefuatiliwa hadi aya kamili inayotoka. Fuata yoyote kati yazo hadi maandishi kamili — bila malipo, na bila akaunti.",

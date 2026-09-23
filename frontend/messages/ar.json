@@ -802,6 +802,8 @@
   "quotes_empty_index": "لا توجد اقتباسات هنا بعد.",
   "quotes_count_one": "%count% اقتباس",
   "quotes_count_many": "%count% اقتباسات",
+  "quotes_works_one": "%count% عمل",
+  "quotes_works_many": "%count% أعمال",
   "quotes_author_h1": "%name% — بكلماته",
   "quotes_author_intro_one": "%count% اقتباس، مُتتبَّع إلى الفقرة المحددة التي جاء منها. تابعه إلى النص الكامل — مجانًا، ودون حساب.",
   "quotes_author_intro_many": "%count% اقتباسات، كلٌّ منها مُتتبَّع إلى الفقرة المحددة التي جاء منها. تابع أيًّا منها إلى النص الكامل — مجانًا، ودون حساب.",
