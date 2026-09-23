@@ -548,3 +548,47 @@ class JournalEntry(models.Model):
 
     def __str__(self) -> str:
         return f"{self.profile_id}:{self.kind}:{self.entry_id}"
+
+
+class CustomShelf(models.Model):
+    """A shelf the reader made on their Bookshelf — "Lent 2027", "For my small
+    group" — holding books they chose, beside the built-in Reading / To read /
+    Finished.
+
+    Synced like a Notebook entry (see :class:`JournalEntry`): the device PUTs
+    the whole shelf under its own ``shelf_id``, a delete is a tombstone
+    (``deleted=True``) so an offline device can't bring the shelf back, and the
+    name and deleted state are last-write-wins on the writing device's clock
+    (``client_updated_at``).
+
+    The BOOK LIST is merged per book, not replaced: ``books`` is
+    ``[{"slug", "at", "removed"}]`` — one entry per book ever on the shelf, the
+    latest ``at`` (epoch ms, client clock) winning for that book. So a book
+    added on the phone and another added on the laptop both survive, and a
+    removal sticks against a stale copy of the add — which a whole-list
+    last-write-wins would lose. A removed book keeps its entry (the tombstone).
+    """
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="shelves",
+    )
+    shelf_id = models.CharField(max_length=64)
+    name = models.CharField(max_length=80, blank=True)
+    books = models.JSONField(default=list, blank=True)
+    deleted = models.BooleanField(default=False)
+    client_created_at = models.DateTimeField()
+    client_updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["client_created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "shelf_id"], name="uniq_shelf_profile_id"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id}:shelf:{self.shelf_id}"

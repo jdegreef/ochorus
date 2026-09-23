@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import (
     Bookmark,
     ChapterMarks,
+    CustomShelf,
     Favorite,
     JournalEntry,
     PlanProgress,
@@ -97,3 +98,15 @@ class ChapterMarksSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ["updated_at"]
 
+
+class CustomShelfSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomShelf
+        fields = [
+            "shelf_id",
+            "name",
+            "books",
+            "deleted",
+            "client_created_at",
+            "client_updated_at",
+        ]

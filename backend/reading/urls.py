@@ -11,6 +11,7 @@ from .views import (
     ProgressView,
     SermonMarksView,
     SessionsView,
+    ShelfView,
     StateView,
 )
 
@@ -30,6 +31,7 @@ urlpatterns = [
         name="reading-bookmark",
     ),
     path("journal/<str:entry_id>/", JournalView.as_view(), name="reading-journal"),
+    path("shelves/<str:shelf_id>/", ShelfView.as_view(), name="reading-shelf"),
     path("progress/<slug:slug>/", ProgressView.as_view(), name="reading-progress"),
     path("plan/<slug:slug>/", PlanProgressView.as_view(), name="reading-plan"),
     path(

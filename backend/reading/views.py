@@ -31,6 +31,7 @@ from .marks import (
 from .models import (
     Bookmark,
     ChapterMarks,
+    CustomShelf,
     Favorite,
     FavoriteKind,
     JournalEntry,
@@ -46,6 +47,7 @@ from .models import (
 from .serializers import (
     BookmarkSerializer,
     ChapterMarksSerializer,
+    CustomShelfSerializer,
     FavoriteSerializer,
     JournalEntrySerializer,
     PlanProgressSerializer,
@@ -1015,6 +1017,138 @@ def _upsert_journal(profile, entry_id: str, fields: dict) -> JournalEntry | None
     return JournalEntry.objects.get(profile=profile, entry_id=entry_id)
 
 
+
+# --- Custom shelves --------------------------------------------------------------
+
+_SHELF_ID = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
+# Book slugs arrive in a JSON body here, not a URL path, so nothing upstream has
+# held them to the slug shape (`_valid_slug` only checks the length).
+_BOOK_SLUG = re.compile(r"^[-a-zA-Z0-9_]+$")
+MAX_SHELVES = 100
+MAX_SHELF_BOOKS = 500
+MAX_SHELF_NAME = 80
+
+
+def _clean_shelf_books(value) -> list[dict] | None:
+    """``[{"slug", "at", "removed"}]`` with valid slugs and epoch-ms ``at``; one
+    entry per slug (the latest ``at`` if a payload repeats one). None for a
+    non-list, so a malformed body is rejected rather than read as "no books"."""
+    if not isinstance(value, list):
+        return None
+    out: dict[str, dict] = {}
+    for b in value[: MAX_SHELF_BOOKS * 2]:
+        if not isinstance(b, dict):
+            continue
+        slug, at = b.get("slug"), b.get("at")
+        if (
+            not _valid_slug(slug)
+            or not _BOOK_SLUG.match(slug)
+            or not isinstance(at, int)
+            or isinstance(at, bool)
+            or at <= 0
+        ):
+            continue
+        entry = {"slug": slug, "at": at, "removed": bool(b.get("removed"))}
+        if slug not in out or out[slug]["at"] < at:
+            out[slug] = entry
+    return list(out.values())
+
+
+def _merge_shelf_books(server: list, incoming: list) -> list[dict]:
+    """Per book, the entry with the later ``at`` wins; a tie keeps the server's.
+    Over the cap, the oldest removals go first (they only guard against a stale
+    re-add), then the oldest books."""
+    merged = {b["slug"]: b for b in (server or []) if isinstance(b, dict) and "slug" in b}
+    for b in incoming:
+        cur = merged.get(b["slug"])
+        if cur is None or b["at"] > cur.get("at", 0):
+            merged[b["slug"]] = b
+    books = sorted(merged.values(), key=lambda b: b["at"])
+    while len(books) > MAX_SHELF_BOOKS:
+        removed = [b for b in books if b.get("removed")]
+        books.remove(removed[0] if removed else books[0])
+    return books
+
+
+def _shelf_fields(data) -> dict | None:
+    """Validate a shelf body → model fields, or None when unusable."""
+    created = _ms_to_dt(data.get("created_at"))
+    updated = _ms_to_dt(data.get("updated_at"))
+    books = _clean_shelf_books(data.get("books", []))
+    name = data.get("name", "")
+    if created is None or updated is None or books is None or not isinstance(name, str):
+        return None
+    return {
+        "name": name.strip()[:MAX_SHELF_NAME],
+        "deleted": bool(data.get("deleted")),
+        "client_created_at": created,
+        "client_updated_at": updated,
+        "books": books,
+    }
+
+
+def _apply_shelf(obj: CustomShelf, fields: dict) -> None:
+    """Merge a shelf write into the row: books per book, and the name and
+    deleted state only when the write is newer (last-write-wins)."""
+    obj.books = _merge_shelf_books(obj.books, fields["books"])
+    if fields["client_updated_at"] > obj.client_updated_at:
+        obj.name = fields["name"]
+        obj.deleted = fields["deleted"]
+        obj.client_updated_at = fields["client_updated_at"]
+
+
+def _upsert_shelf(profile, shelf_id: str, fields: dict) -> CustomShelf | None:
+    """One shelf, under a row lock (two devices' merges must not drop each
+    other's books). None only when a NEW live shelf would pass the cap."""
+    for _ in range(2):
+        with transaction.atomic():
+            obj = (
+                CustomShelf.objects.select_for_update()
+                .filter(profile=profile, shelf_id=shelf_id)
+                .first()
+            )
+            if obj is not None:
+                _apply_shelf(obj, fields)
+                obj.save()
+                return obj
+            live = CustomShelf.objects.filter(profile=profile, deleted=False).count()
+            if not fields["deleted"] and live >= MAX_SHELVES:
+                return None
+            try:
+                with transaction.atomic():
+                    return CustomShelf.objects.create(
+                        profile=profile,
+                        shelf_id=shelf_id,
+                        **{**fields, "books": _merge_shelf_books([], fields["books"])},
+                    )
+            except IntegrityError:
+                continue  # a concurrent first write won; take the locked path
+    return CustomShelf.objects.get(profile=profile, shelf_id=shelf_id)
+
+
+class ShelfView(APIView):
+    """Save one custom shelf, or tombstone it (PUT with ``deleted: true``).
+
+    The body is the whole shelf — ``{name, deleted, created_at, updated_at,
+    books: [{slug, at, removed}]}`` with epoch-ms times — merged as described
+    on :class:`CustomShelf`; the merged shelf comes back.
+    """
+
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
+
+    def put(self, request, shelf_id):
+        if not _SHELF_ID.match(shelf_id):
+            return Response({"detail": "Invalid shelf id."}, status=400)
+        fields = _shelf_fields(_dict_body(request))
+        if fields is None:
+            return Response({"detail": "Invalid shelf."}, status=400)
+        obj = _upsert_shelf(_profile(request), shelf_id, fields)
+        if obj is None:
+            return Response({"detail": "Too many shelves."}, status=400)
+        return Response(CustomShelfSerializer(obj).data)
+
+
 class JournalView(APIView):
     """Save one Notebook entry (a note or a prayer), or tombstone it.
 
@@ -1199,6 +1333,7 @@ class MergeView(APIView):
             self._merge_activity(profile, data.get("activity") or [])
             self._merge_plan_progress(profile, data.get("plan_progress") or [])
             self._merge_journal(profile, data.get("journal") or [])
+            self._merge_shelves(profile, data.get("shelves") or [])
         # `removed_applied` tells the client this API honours `removed`, so it
         # may drop its pending list. An API from before tombstones ignores the
         # field — without this, the client would clear removals nobody applied.
@@ -1258,6 +1393,19 @@ class MergeView(APIView):
                 continue
             started = _ms_to_dt(row.get("started_at")) or datetime.now(UTC)
             _upsert_plan_progress(profile, slug, _clean_done(row.get("done")), started)
+
+    def _merge_shelves(self, profile, incoming):
+        """The same merge as a live PUT, per shelf (a reader has a handful, so
+        no batching). A non-list is ignored and malformed rows skipped."""
+        if not isinstance(incoming, list):
+            return
+        for row in incoming[:MAX_SHELVES * 2]:
+            if not isinstance(row, dict):
+                continue
+            shelf_id = row.get("shelf_id")
+            fields = _shelf_fields(row)
+            if isinstance(shelf_id, str) and _SHELF_ID.match(shelf_id) and fields is not None:
+                _upsert_shelf(profile, shelf_id, fields)
 
     def _merge_journal(self, profile, incoming):
         """The same last-write-wins rule as a live PUT (``_journal_wins``),
@@ -1521,6 +1669,9 @@ def _serialize_state(profile) -> dict:
         # Tombstones included: a device holding a since-deleted entry learns
         # the delete from them instead of pushing the entry back.
         "journal": JournalEntrySerializer(profile.journal_entries.all(), many=True).data,
+        # Tombstones included, like the journal, so a deleted shelf reaches
+        # every device instead of being pushed back by one.
+        "shelves": CustomShelfSerializer(profile.shelves.all(), many=True).data,
         "plan_progress": PlanProgressSerializer(
             profile.plan_progress.all(), many=True
         ).data,
