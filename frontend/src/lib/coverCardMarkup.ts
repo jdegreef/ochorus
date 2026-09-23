@@ -90,7 +90,12 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	// one row for every edition, so it is Latin on an Arabic cover too, and
 	// claiming otherwise would tell a screen reader to pronounce "Andrew Murray"
 	// as Arabic.
-	return `<div class="${classes.join(' ')}">
+	// Right-to-left for an Arabic edition, matching the component: the title
+	// sets its own direction (`dir="auto"`), but the byline is a Latin name and
+	// the rule has no text, so without this a layout that ranges its type to the
+	// start edge put the title on the right and everything under it on the left.
+	const dir = book.script === 'arabic' ? ' dir="rtl"' : '';
+	return `<div class="${classes.join(' ')}"${dir}>
 	<div class="byline" dir="auto">${escapeHtml(book.author)}</div>
 	<div class="middle">
 		${book.volume ? `<div class="volume" lang="${lang}">${escapeHtml(book.volume)}</div>` : ''}

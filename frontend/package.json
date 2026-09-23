@@ -19,6 +19,7 @@
 		"emblem:hues": "node scripts/generate-emblem-hues.mjs",
 		"emblem:art": "node scripts/generate-emblem-art.mjs",
 		"og:covers": "node scripts/generate-cover-og.mjs",
+		"covers:bars": "node scripts/measure-ground-bars.mjs",
 		"og:pages": "node scripts/generate-og.mjs",
 		"og:sermons": "node scripts/generate-sermon-og.mjs",
 		"og:topics": "node scripts/generate-topic-og.mjs",

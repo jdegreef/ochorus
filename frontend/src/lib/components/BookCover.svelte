@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
 	import { coverLayoutFor } from '$lib/coverLayouts';
+	import { groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
 	import { coverStyleFor, scriptOf, volumeNumeral } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
@@ -163,9 +164,17 @@
 	const script = $derived(scriptOf(lang));
 	/** This book's place in its series, in its edition's digits; null outside one. */
 	const volume = $derived(volumeNumeral(book.slug, lang));
+	/** `dir="rtl"` on an Arabic edition's type block, and NO attribute at all
+	 *  otherwise — a spread rather than `dir={…}`, which Svelte writes as the
+	 *  `dir` property and so leaves `dir=""` behind on every other cover. */
+	const blockDir = $derived(script === 'arabic' ? { dir: 'rtl' as const } : {});
 	/** The layout a painting is composed in (`coverLayouts.ts`); null for the
 	 *  framed composition, and always null off a painting. */
 	const layout = $derived(isArt ? coverLayoutFor(book.author.slug, script) : null);
+	/** How far a laid-out painting is cropped to clear its scan border
+	 *  (`groundBars.ts`). The framed scrim hides the border, so only a layout
+	 *  asks. */
+	const bar = $derived(layout ? groundBar(book.cover_url) : 0);
 </script>
 
 <!-- The cover's type. Identical over a painting, over a plate file and over the
@@ -176,7 +185,14 @@
 	     against three times; a falsy entry is dropped, so a Latin cover emits no
 	     script class at all and the fourth script is a table entry, not an edit
 	     here. -->
-	<div class={['cover-type', `style-${style}`, script && `script-${script}`]}>
+	<!-- Right-to-left for an Arabic edition: the title sets its own direction,
+	     but the Latin byline and the wordless rule take the block's, so a layout
+	     that ranges its type to the start edge would otherwise split them
+	     across both sides. `coverTypeMarkup` does the same. -->
+	<div
+		class={['cover-type', `style-${style}`, script && `script-${script}`]}
+		{...blockDir}
+	>
 		<!-- The byline takes no `lang`: an author's name is one row for every
 		     edition (`Author` has no per-language name), so it is Latin on an
 		     Arabic cover too, and claiming otherwise would tell a screen reader
@@ -243,6 +259,7 @@
 			onload={(e) => onLoaded(e.currentTarget as HTMLImageElement)}
 			onerror={() => (failedUrl = book.cover_url)}
 			use:whenComplete={source}
+			style={bar ? `--ground-bar: ${bar}` : undefined}
 			class="cover-ground absolute inset-0 h-full w-full {needsMat
 				? 'object-contain'
 				: 'object-cover'}"
