@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { tick } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { applyFormat } from '$lib/richText';
 	import {
 		BODY_MAX,
 		PERSON_MAX,
@@ -105,8 +107,29 @@
 		if (!editing) reset();
 	}
 
+	let sheet = $state<HTMLTextAreaElement>();
+
+	/** Bold, italic, a list or a quotation — on the selection, or the line the
+	 *  cursor is on (see applyFormat). */
+	async function format(kind: 'bold' | 'italic' | 'list' | 'quote') {
+		if (!sheet) return;
+		const r = applyFormat(body, sheet.selectionStart, sheet.selectionEnd, kind);
+		body = r.text;
+		await tick();
+		sheet.focus();
+		// Bold and italic keep the words selected (tap again to undo). A list or
+		// quotation leaves the cursor at the end of the line, ready to carry on —
+		// a selected line would be replaced by the next keystroke.
+		if (kind === 'list' || kind === 'quote') sheet.setSelectionRange(r.end, r.end);
+		else sheet.setSelectionRange(r.start, r.end);
+	}
+
 	function onkeydown(e: KeyboardEvent) {
-		if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+		const mod = e.metaKey || e.ctrlKey;
+		if (mod && e.target === sheet && (e.key === 'b' || e.key === 'i')) {
+			e.preventDefault();
+			void format(e.key === 'b' ? 'bold' : 'italic');
+		} else if (e.key === 'Enter' && mod) {
 			e.preventDefault();
 			save();
 		} else if (e.key === 'Escape' && oncancel) {
@@ -149,8 +172,27 @@
 			{onkeydown}
 		/>
 	{/if}
+	{#if open}
+		<!-- Formatting: stored as the marks a reader could type (**bold**, - list),
+		     shown formatted in the Notebook. -->
+		<div class="format" role="toolbar" aria-label={t('notebook.formatLabel')}>
+			<button type="button" onclick={() => format('bold')} title="{t('notebook.formatBold')} (Ctrl/⌘ B)" aria-label={t('notebook.formatBold')}
+				><strong>B</strong></button
+			>
+			<button type="button" onclick={() => format('italic')} title="{t('notebook.formatItalic')} (Ctrl/⌘ I)" aria-label={t('notebook.formatItalic')}
+				><em>I</em></button
+			>
+			<button type="button" onclick={() => format('list')} title={t('notebook.formatList')} aria-label={t('notebook.formatList')}
+				>•&thinsp;≡</button
+			>
+			<button type="button" onclick={() => format('quote')} title={t('notebook.formatQuote')} aria-label={t('notebook.formatQuote')}
+				>❝</button
+			>
+		</div>
+	{/if}
 	<!-- svelte-ignore a11y_autofocus -- an edit opens because the reader asked to write -->
 	<textarea
+		bind:this={sheet}
 		class="ruled"
 		bind:value={body}
 		maxlength={BODY_MAX}
@@ -274,6 +316,23 @@
 	}
 	/* Ruled paper: the line-height is the rule gap, and the background scrolls
 	   with the text (attachment: local), so every line of writing sits on a rule. */
+	.format {
+		display: flex;
+		gap: 0.15rem;
+		margin-bottom: 0.25rem;
+	}
+	.format button {
+		min-width: 2rem;
+		padding: 0.15rem 0.45rem;
+		border-radius: var(--radius-sm);
+		font-family: var(--font-display);
+		color: var(--muted);
+		cursor: pointer;
+	}
+	.format button:hover {
+		background: var(--surface-2);
+		color: var(--text);
+	}
 	.ruled {
 		display: block;
 		width: 100%;

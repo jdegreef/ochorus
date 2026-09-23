@@ -17,6 +17,7 @@
 	import DictateButton from './DictateButton.svelte';
 	import ReminderPicker from './ReminderPicker.svelte';
 	import TestimonyDialog from './TestimonyDialog.svelte';
+	import RichText from './RichText.svelte';
 	import { appendPhrase } from '$lib/dictation.svelte';
 
 	/**
@@ -156,7 +157,7 @@
 					{#if stepNames.has(line.trim())}<strong class="step-name">{line}</strong>{:else}{line}{/if}{'\n'}
 				{/each}
 			</div>
-		{:else if entry.body}<p class="entry-body">{entry.body}</p>{/if}
+		{:else if entry.body}<div class="entry-body rich-body"><RichText text={entry.body} /></div>{/if}
 
 		{#if entry.updates.length}
 			<ol class="updates">
@@ -184,7 +185,7 @@
 				<p class="text-small font-semibold text-text">
 					{date(entry.answeredAt)} · <span class="font-normal text-muted">{waitedLabel}</span>
 				</p>
-				{#if entry.answer}<p class="entry-body answer-body">{entry.answer}</p>{/if}
+				{#if entry.answer}<div class="entry-body answer-body rich-body"><RichText text={entry.answer} /></div>{/if}
 			</div>
 		{/if}
 
@@ -432,6 +433,11 @@
 		border-radius: var(--radius-sm);
 		background: color-mix(in srgb, var(--hl-green) 9%, transparent);
 		border: 1px solid color-mix(in srgb, var(--hl-green) 30%, transparent);
+	}
+	/* Formatted text makes its own line breaks (RichText), so the plain-text
+	   pre-wrap would add stray gaps between its tags. */
+	.rich-body {
+		white-space: normal;
 	}
 	.answer-body {
 		background-image: none;

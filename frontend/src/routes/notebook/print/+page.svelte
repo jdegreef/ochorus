@@ -13,6 +13,7 @@
 		type PrintPeriod
 	} from '$lib/journal';
 	import { journal } from '$lib/journal.svelte';
+	import RichText from '$lib/components/notebook/RichText.svelte';
 
 	/**
 	 * The printable prayer journal: the Notebook set as a small book — a title
@@ -122,7 +123,7 @@
 									{date(p.answeredAt!)}{#if p.person}{` · ${t('notebook.prayingFor')} ${p.person}`}{/if}
 								</p>
 								{#if p.title}<p class="item-title">{p.title}</p>{/if}
-								{#if p.body}<p class="body">{p.body}</p>{/if}
+								{#if p.body}<div class="body rich-body"><RichText text={p.body} /></div>{/if}
 								{#if p.answer}<p class="answer">✓ {p.answer}</p>{/if}
 								<p class="meta">{t('notebook.printAsked')} {date(p.createdAt)} · {waited(p)}</p>
 							</div>
@@ -140,7 +141,7 @@
 							<div class="item">
 								<p class="meta">{date(p.createdAt)}</p>
 								{#if p.title}<p class="item-title">{p.title}</p>{/if}
-								{#if p.body}<p class="body">{p.body}</p>{/if}
+								{#if p.body}<div class="body rich-body"><RichText text={p.body} /></div>{/if}
 								{#each p.updates as u (u.at)}
 									<p class="update"><span class="meta">{date(u.at)}</span> {u.text}</p>
 								{/each}
@@ -160,7 +161,7 @@
 							{#if n.source?.quote}
 								<blockquote class="quote">“{n.source.quote}” <span class="meta">— {n.source.title}</span></blockquote>
 							{/if}
-							{#if n.body}<p class="body">{n.body}</p>{/if}
+							{#if n.body}<div class="body rich-body"><RichText text={n.body} /></div>{/if}
 						</div>
 					{/each}
 				</section>
@@ -290,6 +291,9 @@
 		margin-top: 0.2rem;
 		white-space: pre-wrap;
 		line-height: 1.6;
+	}
+	.rich-body {
+		white-space: normal;
 	}
 	.answer {
 		margin-top: 0.3rem;
