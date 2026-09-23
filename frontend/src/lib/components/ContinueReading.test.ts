@@ -10,7 +10,8 @@ import type { CoverBook } from '$lib/library-public';
 vi.mock('$lib/lang.svelte', () => ({ getLang: () => 'en' }));
 const resume = vi.hoisted(() => ({
 	cachedResumeBooks: vi.fn(),
-	knownAbsentBooks: vi.fn(() => new Set<string>()),
+	knownAbsent: vi.fn(() => new Set<string>()),
+	recordSermonList: vi.fn(),
 	libraryBooks: vi.fn(),
 	unfinishedBookSlugs: vi.fn(() => ['newer', 'grace'])
 }));
@@ -64,7 +65,7 @@ describe('ContinueReading', () => {
 	beforeEach(() => {
 		target = document.body.appendChild(document.createElement('div'));
 		progress.slugs = ['newer', 'grace'];
-		resume.knownAbsentBooks.mockReturnValue(new Set());
+		resume.knownAbsent.mockReturnValue(new Set());
 	});
 	afterEach(() => {
 		if (component) unmount(component);
@@ -88,7 +89,7 @@ describe('ContinueReading', () => {
 
 	it('reserves no slot for a book the language is known not to have', () => {
 		resume.cachedResumeBooks.mockReturnValue([]);
-		resume.knownAbsentBooks.mockReturnValue(new Set(['newer']));
+		resume.knownAbsent.mockReturnValue(new Set(['newer']));
 		resume.libraryBooks.mockReturnValue(new Promise(() => {}));
 		component = mount(ContinueReading, { target });
 		flushSync();

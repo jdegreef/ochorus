@@ -45,8 +45,6 @@ export default defineConfig({
 			{ find: '$lib', replacement: fileURLToPath(new URL('./src/lib', import.meta.url)) }
 		]
 	},
-	// The build-time constants vite.config.ts injects, fixed for tests.
-	define: { __COVERS_VERSION__: JSON.stringify('test-covers') },
 	test: {
 		environment: 'jsdom',
 		include: ['src/**/*.test.ts'],

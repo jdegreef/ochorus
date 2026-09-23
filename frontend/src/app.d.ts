@@ -12,12 +12,6 @@ declare global {
 	 * vite.config.ts. Empty outside a Render build.
 	 */
 	const __RELEASE__: string;
-
-	/**
-	 * A fingerprint of the set of cover file paths — injected by `define` in
-	 * vite.config.ts. Keys the reader's resume cache (`$lib/resumeBooks`).
-	 */
-	const __COVERS_VERSION__: string;
 }
 
 export {};
