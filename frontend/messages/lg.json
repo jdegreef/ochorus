@@ -735,6 +735,8 @@
   "quotes_empty_index": "Tewali bijuliziddwa wano nnaba.",
   "quotes_count_one": "ekijuliziddwa %count%",
   "quotes_count_many": "ebijuliziddwa %count%",
+  "quotes_works_one": "omulimu %count%",
+  "quotes_works_many": "emirimu %count%",
   "quotes_author_h1": "%name% — mu bigambo bye ye",
   "quotes_author_intro_one": "ekijuliziddwa %count%, ekigobereddwa okutuuka ku katundu k’ebigambo kye kiva. Kigoberere okutuuka ku bigambo byonna — kya bwereere, era nga tolina kkawunti.",
   "quotes_author_intro_many": "ebijuliziddwa %count%, buli kimu kigobereddwa okutuuka ku katundu k’ebigambo kye kiva. Goberera kyonna ku byo okutuuka ku bigambo byonna — kya bwereere, era nga tolina kkawunti.",

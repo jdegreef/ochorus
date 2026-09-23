@@ -1136,28 +1136,34 @@ class QuoteAuthorsView(APIView):
             .values("id", "slug", "name", "birth_year", "photo_url", "n")
         )
 
-        # A teaser line per author, so the index card is something to browse
-        # rather than a bare directory entry. It comes from ONE pass over the
-        # reviewed quotes — a few hundred rows on a page that prerenders, so a
-        # grouped query beats a per-author subquery and stays trivially testable.
-        # The teaser is the author's SHORTEST quote: the punchiest line, and the
-        # one that fits the card's two lines without truncation. Ties break
-        # lexicographically so the pick is stable across deploys. The quote text
-        # is English (as on the author pages), so it is content the card prints
-        # as-is, not a localized string.
+        # A teaser line and a "works" count per author, so the index card is
+        # something to browse rather than a bare directory entry. Both come from
+        # ONE pass over the reviewed quotes — a few hundred rows on a page that
+        # prerenders, so a grouped query beats a per-author subquery and stays
+        # trivially testable. The teaser is the author's SHORTEST quote: the
+        # punchiest line, and the one that fits the card's two lines without
+        # truncation. Ties break lexicographically so the pick is stable across
+        # deploys. The quote text is English (as on the author pages), so it is
+        # content the card prints as-is, not a localized string. A quote is
+        # sourced from exactly one of chapter/sermon, so the (book, sermon) id
+        # pair — one side always null — is itself the work's distinct identity,
+        # and a set of those pairs counts the distinct works.
         teaser: dict[int, str] = {}
-        for author_id, text in Quote.objects.filter(reviewed=True).values_list(
-            "author_id", "text"
-        ):
+        works: dict[int, set] = {}
+        for author_id, text, book_id, sermon_id in Quote.objects.filter(
+            reviewed=True
+        ).values_list("author_id", "text", "chapter__book_id", "sermon_id"):
             best = teaser.get(author_id)
             if best is None or (len(text), text) < (len(best), best):
                 teaser[author_id] = text
+            works.setdefault(author_id, set()).add((book_id, sermon_id))
 
         return Response(
             [
                 {"slug": r["slug"], "name": r["name"],
                  "birth_year": r["birth_year"], "photo_url": r["photo_url"],
-                 "count": r["n"], "teaser": teaser.get(r["id"], "")}
+                 "count": r["n"], "teaser": teaser.get(r["id"], ""),
+                 "work_count": len(works.get(r["id"], ()))}
                 for r in rows
             ]
         )

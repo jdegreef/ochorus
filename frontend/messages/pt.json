@@ -735,6 +735,8 @@
   "quotes_empty_index": "Ainda não há citações aqui.",
   "quotes_count_one": "%count% citação",
   "quotes_count_many": "%count% citações",
+  "quotes_works_one": "%count% obra",
+  "quotes_works_many": "%count% obras",
   "quotes_author_h1": "%name% — em suas próprias palavras",
   "quotes_author_intro_one": "%count% citação, rastreada até o parágrafo exato de onde vem. Siga-a até o texto completo — grátis e sem conta.",
   "quotes_author_intro_many": "%count% citações, cada uma rastreada até o parágrafo exato de onde vem. Siga qualquer uma delas até o texto completo — grátis e sem conta.",

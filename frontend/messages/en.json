@@ -735,6 +735,8 @@
   "quotes_empty_index": "No quotations here yet.",
   "quotes_count_one": "%count% quotation",
   "quotes_count_many": "%count% quotations",
+  "quotes_works_one": "%count% work",
+  "quotes_works_many": "%count% works",
   "quotes_author_h1": "%name% — in their own words",
   "quotes_author_intro_one": "%count% quotation, traced to the exact paragraph it comes from. Follow it into the full text — free, and without an account.",
   "quotes_author_intro_many": "%count% quotations, each traced to the exact paragraph it comes from. Follow any of them into the full text — free, and without an account.",
