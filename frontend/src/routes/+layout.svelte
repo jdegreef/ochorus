@@ -18,7 +18,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
 	import { initAnalytics } from '$lib/analytics';
-	import { localizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
+	import { localizeHref, deLocalizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
 	import { MEASURE } from '$lib/readerPrefs.svelte';
@@ -151,10 +151,11 @@
 	// and just adds mode=signup so the login page opens on its "create account"
 	// form. The caller localizes the path, exactly as the header's sign-in link
 	// does. Only rendered when accounts exist AND the reader is signed out.
-	const signupHref = $derived.by(() => {
-		const base = loginHref($page.url.pathname, $page.url.search);
-		return base.includes('?') ? `${base}&mode=signup` : `${base}?mode=signup`;
-	});
+	// ...and not on /login itself, where the form is already the whole page and
+	// a second "Create an account" band under it only competes with it.
+	const onLogin = $derived(deLocalizeHref($page.url.pathname).startsWith('/login'));
+	const withSignup = (href: string) => `${href}${href.includes('?') ? '&' : '?'}mode=signup`;
+	const signupHref = $derived(withSignup(loginHref($page.url.pathname, $page.url.search)));
 
 	// Footer "My Account" column — the reader's own pages. Signed in, the links
 	// go straight there; signed out, they route through /login (via the same
@@ -162,13 +163,18 @@
 	// localized target, so a successful sign-in lands the reader on the page they
 	// asked for.
 	const accountLinks = $derived.by(() => {
-		const dest = (path: string) => {
+		// `signup` opens the form on "create account": a signed-out reader following
+		// Bookshelf / Notebook from here most likely has no account yet, and /login
+		// pitches that destination beside the form (LoginPitch).
+		const dest = (path: string, signup = false) => {
 			const target = localizeHref(path);
-			return auth.user ? target : localizeHref(loginHref(target));
+			if (auth.user) return target;
+			const href = localizeHref(loginHref(target));
+			return signup ? withSignup(href) : href;
 		};
 		return [
-			{ href: dest('/favorites'), labelKey: 'fav.yourFavorites' },
-			{ href: dest('/notebook'), labelKey: 'notebook.title' },
+			{ href: dest('/favorites', true), labelKey: 'fav.yourFavorites' },
+			{ href: dest('/notebook', true), labelKey: 'notebook.title' },
 			{ href: dest('/settings'), labelKey: 'account.settings' }
 		];
 	});
@@ -329,7 +335,7 @@
 			     login.createAccountLink), so the band mints no footer-only keys —
 			     the trade is that rewording those at their source also rewords this
 			     band. -->
-			{#if auth.enabled && !auth.user}
+			{#if auth.enabled && !auth.user && !onLogin}
 				<div class="mx-auto max-w-5xl px-5 pt-10 sm:pt-12">
 					<div class="footer-invite">
 						<span class="footer-invite-mark" aria-hidden="true">
