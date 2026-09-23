@@ -3,7 +3,7 @@
  "slug": "stepping-stones-2",
  "language": "uk",
  "job_issue": 1680,
- "pull_request": null,
+ "pull_request": 3137,
  "note": [
   "Scripture is Kulish (ukr1871), fetched from the ebible mirror (gracious-tech/fetch_collection, bibles/ukr_pan/usfm), all 66 books / 31,082 verses. Every span marked mined was pasted with a script and then re-verified mechanically: the whole quoted span is a byte substring of the cited Kulish verse (case-folded).",
   "block_index is chapter-local (the chapter is named at the start of each why); titles carry no block_index.",
