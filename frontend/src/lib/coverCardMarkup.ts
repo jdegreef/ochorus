@@ -134,8 +134,8 @@ export function coverPlateMarkup(book: CoverCardBook, lockup: string): string {
 	if (book.art && book.layout) {
 		classes.push(
 			'has-layout',
-			`layout-${escapeHtml(book.layout.layout)}`,
-			`hue-${escapeHtml(book.layout.hue)}`
+			`cover-layout-${escapeHtml(book.layout.layout)}`,
+			`cover-hue-${escapeHtml(book.layout.hue)}`
 		);
 	}
 	// Matching the component: the property is set only where there is a scrim to

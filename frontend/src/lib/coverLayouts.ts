@@ -17,7 +17,7 @@
  * with an emblem that the framed composition was drawn around.
  *
  * THE DRAWING IS NOT HERE, as with `coverStyles.ts`. Each layout is a
- * `.layout-<id>` block and each hue a `.hue-<id>` block in
+ * `.cover-layout-<id>` block and each hue a `.cover-hue-<id>` block in
  * `components/cover-type.css`, the one file both renderers read (the component,
  * and the share-card script). `coverLayouts.test.ts` fails when an id here has
  * no block there, and holds each hue's colours to contrast.
@@ -27,7 +27,7 @@
  */
 
 /**
- * The compositions. Each id is a class, `.layout-<id>`. The original — the
+ * The compositions. Each id is a class, `.cover-layout-<id>`. The original — the
  * painting full bleed under a scrim — is not among them: it is the base
  * composition, which the manifest records as `framed`.
  */
@@ -45,7 +45,7 @@ export const COVER_LAYOUT_IDS = [
 export type CoverLayoutId = (typeof COVER_LAYOUT_IDS)[number];
 
 /**
- * The colours a layout is drawn in. Each id is a class, `.hue-<id>`, declaring
+ * The colours a layout is drawn in. Each id is a class, `.cover-hue-<id>`, declaring
  * a band colour, a paper and an ink. Nine, so that a shelf of six rarely
  * repeats one.
  */

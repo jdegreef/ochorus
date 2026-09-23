@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
@@ -34,8 +34,8 @@ const WHITE: Rgb = [255, 255, 255];
 
 function hue(id: string): { band: Rgb; paper: Rgb; ink: Rgb } {
 	const get = (prop: string) => {
-		const v = lastDecl(`.hue-${id}`, new RegExp(`${prop}:\\s*(#[0-9a-f]{6})`));
-		expect(v, `.hue-${id} declares no ${prop}`).not.toBeNull();
+		const v = lastDecl(`.cover-hue-${id}`, new RegExp(`${prop}:\\s*(#[0-9a-f]{6})`));
+		expect(v, `.cover-hue-${id} declares no ${prop}`).not.toBeNull();
 		return channels(v!);
 	};
 	return { band: get('--c-band'), paper: get('--c-paper'), ink: get('--c-ink') };
@@ -50,12 +50,12 @@ function number(selector: string, pattern: RegExp): number {
 
 describe('the layout table and the stylesheet name the same things', () => {
 	it('draws every layout it names, and names every layout it draws', () => {
-		const drawn = new Set([...COVER_CSS_CODE.matchAll(/\.layout-([a-z]+)/g)].map((m) => m[1]));
+		const drawn = new Set([...COVER_CSS_CODE.matchAll(/\.cover-layout-([a-z]+)/g)].map((m) => m[1]));
 		expect([...drawn].sort()).toEqual([...COVER_LAYOUT_IDS].sort());
 	});
 
 	it('draws every hue it names, and names every hue it draws', () => {
-		const drawn = new Set([...COVER_CSS_CODE.matchAll(/\.hue-([a-z]+)\s*\{/g)].map((m) => m[1]));
+		const drawn = new Set([...COVER_CSS_CODE.matchAll(/\.cover-hue-([a-z]+)\s*\{/g)].map((m) => m[1]));
 		expect([...drawn].sort()).toEqual([...COVER_HUE_IDS].sort());
 	});
 
@@ -110,33 +110,62 @@ describe('every hue carries its type', () => {
 
 describe('the translucent papers hold at their thinnest', () => {
 	it('wash: the title and byline, over a black painting', () => {
-		// The title block ends before the 55% stop, so that stop is the thinnest
-		// paper it sits on; the byline sits above the 30% stop.
-		const block = blocksFor('.cover-plate.over-art.layout-wash::before')[0][1];
-		const alphas = [...block.matchAll(/var\(--c-paper\)\s+(\d+)%/g)].map((m) => Number(m[1]) / 100);
-		expect(alphas.length).toBe(4);
+		// The paper's alpha at each stop, keyed by the stop's position. The title
+		// block ends before the 55% stop, so that is the thinnest paper it sits
+		// on; the byline sits above the 30% stop.
+		const block = blocksFor('.cover-plate.over-art.cover-layout-wash::before')[0][1];
+		const stops = new Map(
+			[...block.matchAll(/var\(--c-paper\)\s+(\d+)%,\s*transparent\)\s+(\d+)%/g)].map((m) => [
+				Number(m[2]),
+				Number(m[1]) / 100
+			])
+		);
+		expect(stops.has(30) && stops.has(55), 'the wash lost its 30% or 55% stop').toBe(true);
 		for (const id of COVER_HUE_IDS) {
 			const { band, paper, ink } = hue(id);
-			expect(contrast(ink, over(paper, BLACK, alphas[2])), `${id} title`).toBeGreaterThanOrEqual(4.5);
-			expect(contrast(band, over(paper, BLACK, alphas[1])), `${id} byline`).toBeGreaterThanOrEqual(3);
+			const title = contrast(ink, over(paper, BLACK, stops.get(55)!));
+			const byline = contrast(band, over(paper, BLACK, stops.get(30)!));
+			expect(title, `${id} title`).toBeGreaterThanOrEqual(4.5);
+			expect(byline, `${id} byline`).toBeGreaterThanOrEqual(4.5);
 		}
 	});
 
 	it('duotone: the ink, over the print at its darkest', () => {
-		const sel = '.cover-plate.over-art.layout-duotone::before';
+		const sel = '.cover-plate.over-art.cover-layout-duotone::before';
 		const tint = number(sel, /var\(--c-band\)\s+(\d+)%/) / 100;
 		const alpha = number(sel, /opacity:\s*([\d.]+)/);
-		const ground = '.cover-ground:has(~ .cover-plate.layout-duotone)';
+		const ground = '.cover-ground:has(~ .cover-plate.cover-layout-duotone)';
 		const flat = number(ground, /contrast\(([\d.]+)\)/);
 		const lift = number(ground, /brightness\(([\d.]+)\)/);
 		// The darkest a greyscale print gets once `contrast()` and `brightness()`
 		// have flattened it: black, pulled toward mid-grey, then lifted.
 		const floor = ((0 - 0.5) * flat + 0.5) * lift * 255;
+		// The byline is set in the ink here too — the band colour cannot hold
+		// small type over this print — so the ink is the whole check.
+		expect(
+			lastDecl('.cover-plate.over-art.cover-layout-duotone .cover-type .byline', /color:\s*([^;]+)/)
+		).toBe('var(--c-ink)');
 		for (const id of COVER_HUE_IDS) {
 			const { band, paper, ink } = hue(id);
 			const wash = over(band, paper, tint);
 			const darkest = over(wash, [floor, floor, floor], alpha);
 			expect(contrast(ink, darkest), id).toBeGreaterThanOrEqual(4.5);
 		}
+	});
+});
+
+describe('the rail', () => {
+	it('is given only titles short enough to run up it', () => {
+		// The rail sets its title sideways in a 23cqw column, which holds two
+		// lines of it. A longer title wraps into a third that spills over the
+		// band onto the painting, so anything past this wants another layout.
+		const books = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
+		const long = readdirSync(books)
+			.filter((f) => BOOK_LAYOUT[f.split('.')[0]]?.layout === 'rail')
+			.flatMap((f) => JSON.parse(readFileSync(join(books, f), 'utf8')))
+			.filter((r: { model: string }) => r.model === 'library.book')
+			.map((r: { fields: { title: string } }) => r.fields.title)
+			.filter((title) => title.length > 28);
+		expect(long).toEqual([]);
 	});
 });

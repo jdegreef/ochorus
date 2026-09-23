@@ -196,6 +196,7 @@ function needTwins() {
 				birth_year: null
 			};
 			const cover = fields.cover_url || '';
+			const script = scriptOf(fields.language || 'en');
 			return {
 				slug: fields.slug,
 				title: fields.title,
@@ -215,7 +216,7 @@ function needTwins() {
 				// edition gets one, it is set in its own face rather than silently
 				// in Latin.
 				language: fields.language || 'en',
-				script: scriptOf(fields.language || 'en'),
+				script,
 				// Where this edition's card lives, and what names it in the manifest.
 				// English keeps the historic root path so cards already shared do not
 				// 404; every other language sits under its own directory. The same

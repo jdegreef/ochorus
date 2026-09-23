@@ -60,7 +60,7 @@ The look is `components/cover-type.css`; *which* look is `coverStyles.ts`.
 | series numeral over the title | `SERIES_VOLUME` in `coverStyles.ts` | book |
 | script corrections (Arabic, Devanagari, Cyrillic) | `COVER_SCRIPTS` + the `.script-*` blocks in `cover-type.css` | the edition's language, via `Intl.Locale` |
 | scrim under the type on a painting | `art_scrim.py` / `coverScrim.ts` | work — **measured**, by `tune_art_scrim.py` |
-| layout and hue of a painting (band, box, split, fade, diagonal, duotone, wash, rail; default framed) | `BOOK_LAYOUT` in `coverLayouts.ts`; the `.layout-*` / `.hue-*` blocks in `cover-type.css` | work |
+| layout and hue of a painting (band, box, split, fade, diagonal, duotone, wash, rail; default framed) | `BOOK_LAYOUT` in `coverLayouts.ts`; the `.cover-layout-*` / `.cover-hue-*` blocks in `cover-type.css` | work |
 | topic emblem on a plate | `backend/library/data/emblems/topics.json` | the book's first topic |
 
 A **layout** replaces the framed composition on a painting only: paper panels

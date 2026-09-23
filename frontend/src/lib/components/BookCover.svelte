@@ -282,7 +282,7 @@
 					'cover-plate over-file',
 					isArt && 'over-art',
 					book.subtitle && 'has-subtitle',
-					layout && ['has-layout', `layout-${layout.layout}`, `hue-${layout.hue}`]
+					layout && ['has-layout', `cover-layout-${layout.layout}`, `cover-hue-${layout.hue}`]
 				]}
 				style={isArt ? `--scrim-strength: ${scrimStrength(book.slug)}` : undefined}
 				role="img"
