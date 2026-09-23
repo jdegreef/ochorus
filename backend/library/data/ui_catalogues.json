@@ -4,11 +4,8 @@
 	"base_keys": 990,
 	"locales": {
 		"ar": {
-			"present": 988,
-			"missing": [
-				"quotes_works_many",
-				"quotes_works_one"
-			]
+			"present": 990,
+			"missing": []
 		},
 		"en": {
 			"present": 990,
@@ -19,18 +16,12 @@
 			"missing": []
 		},
 		"fr": {
-			"present": 988,
-			"missing": [
-				"quotes_works_many",
-				"quotes_works_one"
-			]
+			"present": 990,
+			"missing": []
 		},
 		"hi": {
-			"present": 988,
-			"missing": [
-				"quotes_works_many",
-				"quotes_works_one"
-			]
+			"present": 990,
+			"missing": []
 		},
 		"lg": {
 			"present": 990,
@@ -45,11 +36,8 @@
 			"missing": []
 		},
 		"uk": {
-			"present": 988,
-			"missing": [
-				"quotes_works_many",
-				"quotes_works_one"
-			]
+			"present": 990,
+			"missing": []
 		}
 	}
 }
