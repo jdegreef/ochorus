@@ -5,8 +5,8 @@ import {
 	listTopics,
 	listSermons,
 	AUTHOR_TILE_KEYS,
-	COVER_AUTHOR_KEYS,
-	COVER_BOOK_DROPS,
+	pick,
+	toCoverBook,
 	TOPIC_COUNT_KEYS,
 	type AuthorBio,
 	type AuthorTileData,
@@ -84,16 +84,6 @@ const HOME_TOPIC_LIMIT = 8;
 const shelf = <T>(pending: Promise<T[]>): Promise<T[]> =>
 	building ? pending : pending.catch(() => []);
 
-/** `obj` with only `keys` — the runtime half of a narrow type built from them. */
-function pick<T extends object, K extends keyof T>(obj: T, keys: readonly K[]): Pick<T, K> {
-	return Object.fromEntries(keys.map((k) => [k, obj[k]])) as Pick<T, K>;
-}
-
-const coverBook = (b: BookSummary): CoverBook => {
-	const book: Record<string, unknown> = { ...b, author: pick(b.author, COVER_AUTHOR_KEYS) };
-	for (const k of COVER_BOOK_DROPS) delete book[k];
-	return book as CoverBook;
-};
 const authorTile = (a: AuthorBio): AuthorTileData => pick(a, AUTHOR_TILE_KEYS);
 const topicCount = (t: TopicSummary): TopicCount => pick(t, TOPIC_COUNT_KEYS);
 
@@ -122,7 +112,7 @@ export function deriveHomeShelves(
 			6,
 			day,
 			(b) => b.author.slug
-		).map(coverBook),
+		).map(toCoverBook),
 		// Most-published first (name breaks ties, so the cap is stable across
 		// builds) — if only eight authors fit, they should be the substantial ones.
 		authors: authors

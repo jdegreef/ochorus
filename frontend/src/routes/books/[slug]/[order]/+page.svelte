@@ -21,6 +21,7 @@
 	import { bookmarks } from '$lib/bookmarks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
+	import { rememberResumeBook } from '$lib/resumeBooks';
 	import {
 		chapterName,
 		contentLang,
@@ -335,7 +336,12 @@
 		let cancelled = false;
 		getBook(s2, lang)
 			.then((b) => {
-				if (!cancelled) bookForProgress = b;
+				if (cancelled) return;
+				bookForProgress = b;
+				// So the next visit to home can draw this book in "Continue
+				// reading" at once — a reader who arrived here from search may
+				// never have opened home this visit (see `$lib/resumeBooks`).
+				rememberResumeBook(lang, b);
 			})
 			.catch(() => {});
 		return () => {
