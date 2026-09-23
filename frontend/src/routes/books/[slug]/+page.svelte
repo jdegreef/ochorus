@@ -276,7 +276,7 @@
 			// English-only label, like the FAQ aside: the guide section only renders
 			// for English books (the API returns no guides otherwise), so it never
 			// appears on a localized page that would want a translated label.
-			book.guides?.length ? { id: 'guide', label: 'Reader’s guide' } : null,
+			book.guides?.length ? { id: 'guide', label: t('book.readersGuide') } : null,
 			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
 			{ id: 'contents', label: t('reader.contents') },
 			qa.items.length ? { id: 'questions', label: t('qa.sectionTitle') } : null,
@@ -522,15 +522,15 @@
 	     article's Read-next funnel (see the API's `guides` / guides_for_book). Placed
 	     high in the body, above "About", so a reader new to a hard classic finds the
 	     orientation before they start, and so the guide earns an internal link from a
-	     high-value page. English only (articles are), so absent on localized editions
-	     and the section simply doesn't render. Usually exactly one guide; a list
+	     high-value page. Per-language: a localized edition shows its OWN translated
+	     guide, or none — never the English one. Usually exactly one guide; a list
 	     handles the rare extra. -->
 	{#if book.guides?.length}
 		<section id="guide" class="jump-anchor mt-8">
-			<h2 class="section-heading">Reader’s guide</h2>
+			<h2 class="section-heading">{t('book.readersGuide')}</h2>
 			<ul class="mt-3 flex flex-col gap-3">
 				{#each book.guides as guide (guide.slug)}
-					<li><ArticleLinkCard article={guide} cta="Read the guide" /></li>
+					<li><ArticleLinkCard article={guide} cta={t('book.readTheGuide')} /></li>
 				{/each}
 			</ul>
 		</section>

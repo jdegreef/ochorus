@@ -686,8 +686,11 @@ def guides_for_book(book_slug: str, language: str) -> list[dict]:
       to the one work it is about, not to every book it mentions.
 
     Returns ``[{slug, h1, description}, ...]`` in article sort order (normally
-    one). English-only in practice: articles are English-only, so a non-English
-    book matches nothing and the caller gates on that anyway. ``related`` is a
+    one), in the requested language only — articles are per-language rows like
+    everything else, so a localized edition gets its own guide or none, never the
+    English one (the no-English-fallback rule). A translated guide therefore
+    surfaces only where the BOOK also has an edition in that language: of the 13
+    translated guide rows today, 2 have one (both lg). ``related`` is a
     schema-less hand-authored JSON field, so a malformed entry is skipped rather
     than raising. One scan of the article table (no bodies), paid on a book
     DETAIL page only — never a shelf.
@@ -1220,8 +1223,10 @@ class BookDetailSerializer(BookListSerializer):
     guides = serializers.SerializerMethodField()
 
     def get_guides(self, obj) -> list[dict]:
-        if obj.language != "en":
-            return []
+        # No language gate: guides_for_book already filters on this edition's
+        # language, and translated guide rows exist (10 lg, 3 fr). The gate
+        # predated them and suppressed every one — the same per-language rule
+        # articles_for_author follows, now on both sides.
         return guides_for_book(obj.slug, obj.language)
 
     def get_author_same_as(self, obj):
