@@ -81,7 +81,7 @@
 			{:else}
 				<div class="float page-card">
 					<span class="k">{t('login.pitchSampleBook')}</span>
-					<p class="passage">{quote.pre}<mark>{quote.mark}</mark>{quote.post}</p>
+					<p class="passage">{quote.pre}{#if quote.mark}<mark>{quote.mark}</mark>{/if}{quote.post}</p>
 					<span class="line"></span>
 				</div>
 				<div class="float note">

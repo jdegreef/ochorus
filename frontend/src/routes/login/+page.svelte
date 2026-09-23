@@ -76,21 +76,19 @@
 	// any handler running: a "that email and password don't match" from the
 	// sign-in form would otherwise sit (with aria-invalid) over the reset form.
 	let lastMode: Mode | null = null;
+	let pitch = $state<PitchKind | null>(null);
 	$effect(() => {
 		const raw = $page.url.searchParams.get('mode') ?? '';
 		const next = (MODES as string[]).includes(raw) ? (raw as Mode) : 'signin';
 		if (lastMode !== null && next !== lastMode) error = null;
 		lastMode = next;
 		mode = next;
-	});
 
-	// Headed for My Bookshelf or My Notebook? Then the page sells that
-	// destination beside the form (LoginPitch) instead of a bare "Welcome back".
-	// Same prerender rule as `mode`: read the query in an effect, so the baked
-	// HTML is the plain form. The redirect carries its locale prefix, hence the
-	// de-localize before matching.
-	let pitch = $state<PitchKind | null>(null);
-	$effect(() => {
+		// Headed for My Bookshelf or My Notebook? Then the page sells that
+		// destination beside the form (LoginPitch) instead of a bare "Welcome
+		// back". Read here for the same prerender reason as `mode`, so the baked
+		// HTML is the plain form. The redirect carries its locale prefix, hence
+		// the de-localize before matching.
 		const dest = safeRedirect($page.url.searchParams.get('redirect'));
 		const path = dest ? deLocalizeHref(dest).split(/[?#]/)[0] : '';
 		pitch = path === '/favorites' ? 'shelf' : path === '/notebook' ? 'notebook' : null;

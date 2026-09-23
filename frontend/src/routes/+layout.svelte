@@ -154,10 +154,8 @@
 	// ...and not on /login itself, where the form is already the whole page and
 	// a second "Create an account" band under it only competes with it.
 	const onLogin = $derived(deLocalizeHref($page.url.pathname).startsWith('/login'));
-	const signupHref = $derived.by(() => {
-		const base = loginHref($page.url.pathname, $page.url.search);
-		return base.includes('?') ? `${base}&mode=signup` : `${base}?mode=signup`;
-	});
+	const withSignup = (href: string) => `${href}${href.includes('?') ? '&' : '?'}mode=signup`;
+	const signupHref = $derived(withSignup(loginHref($page.url.pathname, $page.url.search)));
 
 	// Footer "My Account" column — the reader's own pages. Signed in, the links
 	// go straight there; signed out, they route through /login (via the same
@@ -172,7 +170,7 @@
 			const target = localizeHref(path);
 			if (auth.user) return target;
 			const href = localizeHref(loginHref(target));
-			return signup ? `${href}&mode=signup` : href;
+			return signup ? withSignup(href) : href;
 		};
 		return [
 			{ href: dest('/favorites', true), labelKey: 'fav.yourFavorites' },
