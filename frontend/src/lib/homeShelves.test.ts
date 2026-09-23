@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { deriveHomeShelves } from './homeShelves';
+import { COVER_BOOK_KEYS } from './library-public';
 import type { AuthorBio, BookSummary, TopicSummary } from './library-public';
 
 const book = (slug: string, author: string, cover = `/covers/art/${slug}.jpg`) =>
@@ -56,12 +57,12 @@ describe('deriveHomeShelves', () => {
 		expect(Object.keys(topics[0]).sort()).toEqual(['book_count', 'sermon_count', 'slug', 'title']);
 	});
 
-	it('passes a field added to BookSummary through to the home cards by default', () => {
-		// The book projection lists what to DROP, so a new field reaches the
-		// cards without anyone remembering the home page projects.
-		const withNew = lists({ books: books.map((b) => ({ ...b, edition_label: 'x' })) });
-		const [first] = deriveHomeShelves(withNew, 20000).featured;
-		expect((first as unknown as { edition_label: string }).edition_label).toBe('x');
+	it('carries exactly the classified book fields — nothing unlisted rides along', () => {
+		// Which fields ride is a compile-time choice (`everyBookFieldClassified`
+		// in library-public); at runtime, an unlisted extra is never inlined.
+		const withExtra = lists({ books: books.map((b) => ({ ...b, blurb: 'a long blurb' })) });
+		const [first] = deriveHomeShelves(withExtra, 20000).featured;
+		expect(Object.keys(first).sort()).toEqual([...COVER_BOOK_KEYS, 'author'].sort());
 	});
 
 	it("counts the language's whole library, not the capped shelves", () => {

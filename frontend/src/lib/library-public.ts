@@ -63,21 +63,50 @@ export interface BookSummary {
 
 /**
  * What a book's cover and card draw — a `BookSummary` without the fields they
- * never read. The home page's build-time snapshot is inlined into its HTML
- * (`$lib/homeShelves`), so it carries exactly this and no more; every other
- * caller passes a full `BookSummary`, which fits.
+ * never read. Two places store or inline it, so its size is not free: the home
+ * page's build-time snapshot (inlined into every locale's front page, see
+ * `$lib/homeShelves`) and the reader's resume cache (`$lib/resumeBooks`). Every
+ * other caller passes a full `BookSummary`, which fits.
  *
- * Each narrow type here is derived from a KEY LIST that the snapshot's runtime
- * projection also reads, so the two cannot disagree. This one lists what to
- * DROP rather than what to keep: a field later added to `BookSummary` reaches
- * the home cards by default, instead of being silently left out of the one
- * shelf that projects.
+ * EVERY `BookSummary` field is classified, carried or dropped, and the check
+ * below fails to compile on one that is neither. Both defaults were wrong: a
+ * keep-list silently lost a new field from the home cards, a drop-list silently
+ * inlined a new heavy one into every front page. Classifying makes it a choice.
  */
+export const COVER_BOOK_KEYS = [
+	'slug',
+	'language',
+	'title',
+	'subtitle',
+	'source_type',
+	'cover_color',
+	'cover_url',
+	'chapter_count',
+	'word_count'
+] as const;
 export const COVER_BOOK_DROPS = ['topics', 'created_at', 'updated_at'] as const;
 export const COVER_AUTHOR_KEYS = ['slug', 'name', 'birth_year'] as const;
-export type CoverBook = Omit<BookSummary, 'author' | (typeof COVER_BOOK_DROPS)[number]> & {
+export type CoverBook = Pick<BookSummary, (typeof COVER_BOOK_KEYS)[number]> & {
 	author: Pick<Author, (typeof COVER_AUTHOR_KEYS)[number]>;
 };
+type Classified =
+	| (typeof COVER_BOOK_KEYS)[number]
+	| (typeof COVER_BOOK_DROPS)[number]
+	| 'author';
+type Unclassified = Exclude<keyof BookSummary, Classified>;
+/** Fails to compile, naming the field, when `BookSummary` gains an unclassified one. */
+export const everyBookFieldClassified: [Unclassified] extends [never] ? true : Unclassified = true;
+
+/** `obj` with only `keys` — the runtime half of a narrow type built from them. */
+export function pick<T extends object, K extends keyof T>(obj: T, keys: readonly K[]): Pick<T, K> {
+	return Object.fromEntries(keys.map((k) => [k, obj[k]])) as Pick<T, K>;
+}
+
+/** A book (or a `BookDetail`, which extends it) cut down to `CoverBook`. */
+export const toCoverBook = (b: BookSummary): CoverBook => ({
+	...pick(b, COVER_BOOK_KEYS),
+	author: pick(b.author, COVER_AUTHOR_KEYS)
+});
 
 export interface ChapterToc {
 	order: number;
