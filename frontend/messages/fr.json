@@ -977,5 +977,12 @@
   "notebook_collection_export": "Exporter",
   "notebook_collection_remove": "Retirer le recueil",
   "notebook_collection_remove_confirm": "Touchez encore — les entrées sont conservées",
-  "notebook_all_entries": "Tout"
+  "notebook_all_entries": "Tout",
+  "notebook_testimony_share": "Partager un témoignage",
+  "notebook_testimony_title": "Partager une prière exaucée",
+  "notebook_testimony_prayed": "Nous avons prié",
+  "notebook_testimony_for": "pour {person}",
+  "notebook_testimony_include_request": "Inclure ce qui a été demandé",
+  "notebook_testimony_include_person": "Inclure pour qui c'était ({person})",
+  "notebook_testimony_hint": "Rien ne quitte votre appareil tant que vous ne partagez pas."
 }

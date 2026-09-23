@@ -977,5 +977,12 @@
   "notebook_collection_export": "تصدير",
   "notebook_collection_remove": "إزالة المجموعة",
   "notebook_collection_remove_confirm": "اضغط مرة أخرى — تبقى المُدخلات",
-  "notebook_all_entries": "الكل"
+  "notebook_all_entries": "الكل",
+  "notebook_testimony_share": "شارك شهادة",
+  "notebook_testimony_title": "شارك صلاة مستجابة",
+  "notebook_testimony_prayed": "صلّينا",
+  "notebook_testimony_for": "لأجل {person}",
+  "notebook_testimony_include_request": "تضمين ما طُلب",
+  "notebook_testimony_include_person": "تضمين من كانت لأجله ({person})",
+  "notebook_testimony_hint": "لا يغادر شيء جهازك حتى تشاركه."
 }

@@ -977,5 +977,12 @@
   "notebook_collection_export": "Експортувати",
   "notebook_collection_remove": "Прибрати збірку",
   "notebook_collection_remove_confirm": "Торкніться ще раз — записи залишаться",
-  "notebook_all_entries": "Усе"
+  "notebook_all_entries": "Усе",
+  "notebook_testimony_share": "Поділитися свідченням",
+  "notebook_testimony_title": "Поділитися вислуханою молитвою",
+  "notebook_testimony_prayed": "Ми молилися",
+  "notebook_testimony_for": "за {person}",
+  "notebook_testimony_include_request": "Включити, про що молилися",
+  "notebook_testimony_include_person": "Включити, за кого ({person})",
+  "notebook_testimony_hint": "Ніщо не залишає ваш пристрій, доки ви не поділитеся."
 }
