@@ -40,10 +40,13 @@ export const PACE_KEY = 'ochorus:reading-pace';
 // synced to the account so the admin can see time-on-site. Reader's own data —
 // wiped on sign-out like the rest. See readingTime.svelte.ts.
 export const SESSION_KEY = 'ochorus:reading-session';
-// Device-local, never synced: the summaries of the books the reader has in
-// progress, so "Continue reading" can draw at hydration instead of after a
-// book-list round-trip (see `$lib/resumeBooks`). It says what someone is
-// reading, so it is wiped on sign-out with the rest.
+// Device-local, never synced: what "Continue reading" needs to draw at
+// hydration instead of after a round-trip (see `$lib/resumeBooks`) — the
+// summaries of the books the reader has in progress, AND which in-progress
+// books and sermons each language lacks. Named for books, its first contents;
+// kept rather than renamed, since a new key would orphan every reader's copy
+// of this one outside the sign-out wipe. It says what someone is reading, so
+// it is wiped on sign-out with the rest.
 export const RESUME_BOOKS_KEY = 'ochorus:resume-books';
 // Legacy device-local sermon stores, folded into MARKS_KEY / ANCHOR_KEY under
 // `sermon:`-prefixed keys when sermons joined the synced reading layer

@@ -5,7 +5,11 @@ import { RESUME_BOOKS_KEY, workSlugKey } from '$lib/reading-schema';
 
 /**
  * The book list the home page's personal blocks (Continue reading, Recommended
- * next, the signup band) draw from — fetched once, shared, and remembered.
+ * next, the signup band) draw from — fetched once, shared, and remembered —
+ * and the resume cache behind "Continue reading": the reader's in-progress
+ * books, plus which in-progress books AND SERMONS each language lacks
+ * (`knownAbsent`, `recordSermonList`). Sermon availability is cached here too,
+ * not in a module of its own; look here first.
  *
  * These blocks used to receive the list from the home `load`, which made the
  * prerendered front page wait on a live API call to hydrate. Fetching it in
@@ -98,7 +102,10 @@ function update(change: (store: Store, inProgress: Set<string>) => void): void {
 	prune(store.books, (b) => inProgress.has(workSlugKey('book', b.slug)));
 	prune(store.absent, (key) => inProgress.has(key));
 	try {
-		localStorage.setItem(RESUME_BOOKS_KEY, JSON.stringify({ schema: SCHEMA, ...store } satisfies Stored));
+		const next = JSON.stringify({ schema: SCHEMA, ...store } satisfies Stored);
+		// Most calls change nothing (the same books, the same absences): skip
+		// the synchronous write when the stored copy already says this.
+		if (localStorage.getItem(RESUME_BOOKS_KEY) !== next) localStorage.setItem(RESUME_BOOKS_KEY, next);
 	} catch {
 		/* quota or blocked storage: the cache is a nicety, never a failure */
 	}
