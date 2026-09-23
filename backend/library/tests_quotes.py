@@ -543,8 +543,42 @@ class QuotePageApiTests(TestCase):
             listing,
             [{"slug": "w", "name": "A Writer", "birth_year": None,
               "photo_url": "", "count": 1,
-              "teaser": "A memorable sentence about grace."}],
+              "teaser": "A memorable sentence about grace.", "work_count": 1}],
         )
+
+    def test_the_index_work_count_is_distinct_books_and_sermons(self):
+        # The card's "N works" is how many distinct sources the author is quoted
+        # from — a book (via its chapter) or a sermon — counted once each, and
+        # only from published quotes.
+        self.quote.reviewed = True  # sources book "b" (via chapter)
+        self.quote.save()
+        book2 = Book.objects.create(
+            author=self.author, slug="b2", language="en", title="Second Work"
+        )
+        ch2 = Chapter.objects.create(book=book2, order=1, title="One", body_html="<p>x</p>")
+        sermon = Sermon.objects.create(
+            author=self.author, slug="s", language="en", title="A Sermon",
+            body_html="<p>x</p>",
+        )
+        # A second quote from the SAME book must not double-count it.
+        Quote.objects.create(
+            slug="w-b1b", author=self.author, text="Another from the first book.",
+            chapter=self.chapter, paragraph=6, reviewed=True,
+        )
+        Quote.objects.create(
+            slug="w-b2", author=self.author, text="One from the second book.",
+            chapter=ch2, paragraph=1, reviewed=True,
+        )
+        Quote.objects.create(
+            slug="w-serm", author=self.author, text="One from a sermon.",
+            sermon=sermon, paragraph=1, reviewed=True,
+        )
+        Quote.objects.create(  # a fourth source, but unreviewed — not counted
+            slug="w-unrev", author=self.author, text="From a book nobody approved.",
+            chapter=ch2, paragraph=2,
+        )
+        row = self.client.get("/api/library/quotes/").data[0]
+        self.assertEqual(row["work_count"], 3)  # book b, book b2, sermon s
 
     def test_the_index_teaser_is_the_authors_shortest_reviewed_quote(self):
         # The card teaser is the shortest line, and only ever a published one.

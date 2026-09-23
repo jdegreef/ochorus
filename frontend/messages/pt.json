@@ -2,6 +2,8 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Pessoas neste livro",
   "author_appears_in": "Também aparece em",
+  "author_articles_about": "Artigos sobre",
+  "author_read_article": "Ler o artigo",
   "nav_about": "Sobre nós",
   "nav_home": "Início",
   "nav_books": "Livros",
@@ -807,6 +809,8 @@
   "quotes_empty_index": "Ainda não há citações aqui.",
   "quotes_count_one": "%count% citação",
   "quotes_count_many": "%count% citações",
+  "quotes_works_one": "%count% obra",
+  "quotes_works_many": "%count% obras",
   "quotes_author_h1": "%name% — em suas próprias palavras",
   "quotes_author_intro_one": "%count% citação, rastreada até o parágrafo exato de onde vem. Siga-a até o texto completo — grátis e sem conta.",
   "quotes_author_intro_many": "%count% citações, cada uma rastreada até o parágrafo exato de onde vem. Siga qualquer uma delas até o texto completo — grátis e sem conta.",
@@ -1016,5 +1020,14 @@
   "notebook_testimony_hint": "Nada sai do seu dispositivo até você compartilhar.",
   "notebook_pin": "Fixar",
   "notebook_unpin": "Desafixar",
-  "notebook_pinned": "Fixadas"
+  "notebook_pinned": "Fixadas",
+  "notebook_reflect_heading": "Reflita sobre a leitura de hoje",
+  "notebook_reflect_prompt1": "O que Deus está lhe dizendo na leitura de hoje?",
+  "notebook_reflect_prompt2": "O que chamou sua atenção, e por quê?",
+  "notebook_reflect_prompt3": "O que você levará consigo hoje?",
+  "notebook_reflect_prompt4": "Há algo aqui pelo que orar?",
+  "notebook_reflect_saved": "Salvo no seu caderno",
+  "notebook_reflect_open": "Abrir no seu caderno",
+  "notebook_reflect_write": "Escreva sua resposta",
+  "notebook_reflect_answer_prompt": "Sua resposta…"
 }

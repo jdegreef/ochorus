@@ -304,7 +304,7 @@
 					{#key `${newKind}:${composerKey}:${collectionFilter}`}
 						<EntryComposer
 							kind={newKind}
-							collectionDefault={openCollection?.name ?? ''}
+							defaults={{ collection: openCollection?.name ?? '' }}
 							initial={prefill ? { kind: 'prayer', ...prefill } : undefined}
 							onsave={(d) => {
 								journal.add(d);

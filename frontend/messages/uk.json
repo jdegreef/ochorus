@@ -2,6 +2,8 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Люди в цій книзі",
   "author_appears_in": "Також з'являється в",
+  "author_articles_about": "Статті про",
+  "author_read_article": "Читати статтю",
   "nav_about": "Про нас",
   "nav_home": "Головна",
   "nav_books": "Книги",
@@ -807,6 +809,8 @@
   "quotes_empty_index": "Тут поки немає цитат.",
   "quotes_count_one": "%count% цитата",
   "quotes_count_many": "%count% цитат",
+  "quotes_works_one": "%count% твір",
+  "quotes_works_many": "%count% творів",
   "quotes_author_h1": "%name% — його власними словами",
   "quotes_author_intro_one": "%count% цитата, простежена до точного абзацу, звідки вона походить. Перейдіть за нею до повного тексту — безкоштовно й без облікового запису.",
   "quotes_author_intro_many": "%count% цитат, кожну простежено до точного абзацу, звідки вона походить. Перейдіть за будь-якою з них до повного тексту — безкоштовно й без облікового запису.",
@@ -1016,5 +1020,14 @@
   "notebook_testimony_hint": "Ніщо не залишає ваш пристрій, доки ви не поділитеся.",
   "notebook_pin": "Закріпити",
   "notebook_unpin": "Відкріпити",
-  "notebook_pinned": "Закріплені"
+  "notebook_pinned": "Закріплені",
+  "notebook_reflect_heading": "Роздуми над сьогоднішнім читанням",
+  "notebook_reflect_prompt1": "Що Бог говорить вам у сьогоднішньому читанні?",
+  "notebook_reflect_prompt2": "Що вас зачепило, і чому?",
+  "notebook_reflect_prompt3": "Що ви візьмете з собою в цей день?",
+  "notebook_reflect_prompt4": "Чи є тут про що помолитися?",
+  "notebook_reflect_saved": "Збережено у вашому записнику",
+  "notebook_reflect_open": "Відкрити у записнику",
+  "notebook_reflect_write": "Напишіть свою відповідь",
+  "notebook_reflect_answer_prompt": "Ваша відповідь…"
 }

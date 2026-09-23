@@ -20,6 +20,8 @@ import {
 	knownPeople,
 	parseRemind,
 	prayersByGroup,
+	reflectPrompt,
+	reflectionFor,
 	prayersByPerson,
 	daysWaited,
 	groupByDay,
@@ -354,5 +356,24 @@ describe('journal entries', () => {
 		const { pinned, rest } = splitPinned(list);
 		expect(pinned.map((e) => e.id)).toEqual(['c', 'a']);
 		expect(rest.map((e) => e.id)).toEqual(['b', 'd']);
+	});
+
+	it('finds the reflection written on a place, by its title', () => {
+		const src = (slug: string, order = 1) => ({ kind: 'sermon' as const, slug, order, p: 0, edition: 'en', title: 't', quote: '' });
+		const store = cleanStore({
+			a: entry('a', { title: 'Why did he weep?', source: src('the-blood'), createdAt: T0 }),
+			b: entry('b', { title: 'Why did he weep?', source: src('the-blood'), createdAt: T0 + 5 }),
+			other: entry('other', { title: 'What is grace?', source: src('the-blood') }),
+			elsewhere: entry('elsewhere', { title: 'Why did he weep?', source: src('another') }),
+			gone: tombstone(entry('gone', { title: 'Why did he weep?', source: src('the-blood'), createdAt: T0 + 9 }))
+		});
+		const place = { kind: 'sermon' as const, slug: 'the-blood', order: 1 };
+		expect(reflectionFor(store, place, ' Why did he weep? ')?.id).toBe('b');
+		expect(reflectionFor(store, place, 'What is grace?')?.id).toBe('other');
+		expect(reflectionFor(store, place, 'Unasked')).toBeUndefined();
+	});
+
+	it('takes the reflection prompts in turn', () => {
+		expect([1, 2, 3, 4, 5, 8, 9].map(reflectPrompt)).toEqual([1, 2, 3, 4, 1, 4, 1]);
 	});
 });

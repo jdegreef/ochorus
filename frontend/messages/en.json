@@ -2,6 +2,8 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "People in this book",
   "author_appears_in": "Also appears in",
+  "author_articles_about": "Articles about",
+  "author_read_article": "Read the article",
   "nav_about": "About Us",
   "nav_home": "Home",
   "nav_books": "Books",
@@ -807,6 +809,8 @@
   "quotes_empty_index": "No quotations here yet.",
   "quotes_count_one": "%count% quotation",
   "quotes_count_many": "%count% quotations",
+  "quotes_works_one": "%count% work",
+  "quotes_works_many": "%count% works",
   "quotes_author_h1": "%name% — in their own words",
   "quotes_author_intro_one": "%count% quotation, traced to the exact paragraph it comes from. Follow it into the full text — free, and without an account.",
   "quotes_author_intro_many": "%count% quotations, each traced to the exact paragraph it comes from. Follow any of them into the full text — free, and without an account.",
@@ -1016,5 +1020,14 @@
   "notebook_testimony_hint": "Nothing leaves your device until you share it.",
   "notebook_pin": "Pin",
   "notebook_unpin": "Unpin",
-  "notebook_pinned": "Pinned"
+  "notebook_pinned": "Pinned",
+  "notebook_reflect_heading": "Reflect on today's reading",
+  "notebook_reflect_prompt1": "What is God saying to you in today's reading?",
+  "notebook_reflect_prompt2": "What stood out to you, and why?",
+  "notebook_reflect_prompt3": "What will you carry with you into today?",
+  "notebook_reflect_prompt4": "Is there something here to pray about?",
+  "notebook_reflect_saved": "Saved in your Notebook",
+  "notebook_reflect_open": "Open in your Notebook",
+  "notebook_reflect_write": "Write your answer",
+  "notebook_reflect_answer_prompt": "Your answer…"
 }

@@ -2,6 +2,8 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Watu katika kitabu hiki",
   "author_appears_in": "Pia anaonekana katika",
+  "author_articles_about": "Makala kuhusu",
+  "author_read_article": "Soma makala",
   "nav_about": "Kutuhusu",
   "nav_home": "Nyumbani",
   "nav_books": "Vitabu",
@@ -807,6 +809,8 @@
   "quotes_empty_index": "Bado hakuna nukuu hapa.",
   "quotes_count_one": "nukuu %count%",
   "quotes_count_many": "nukuu %count%",
+  "quotes_works_one": "kazi %count%",
+  "quotes_works_many": "kazi %count%",
   "quotes_author_h1": "%name% — kwa maneno yake mwenyewe",
   "quotes_author_intro_one": "nukuu %count%, imefuatiliwa hadi aya kamili inayotoka. Ifuate hadi maandishi kamili — bila malipo, na bila akaunti.",
   "quotes_author_intro_many": "nukuu %count%, kila moja imefuatiliwa hadi aya kamili inayotoka. Fuata yoyote kati yazo hadi maandishi kamili — bila malipo, na bila akaunti.",
@@ -1016,5 +1020,14 @@
   "notebook_testimony_hint": "Hakuna kinachotoka kwenye kifaa chako hadi ushiriki.",
   "notebook_pin": "Bandika",
   "notebook_unpin": "Ondoa pini",
-  "notebook_pinned": "Zilizobandikwa"
+  "notebook_pinned": "Zilizobandikwa",
+  "notebook_reflect_heading": "Tafakari usomaji wa leo",
+  "notebook_reflect_prompt1": "Mungu anakuambia nini katika usomaji wa leo?",
+  "notebook_reflect_prompt2": "Nini kimekugusa, na kwa nini?",
+  "notebook_reflect_prompt3": "Utabeba nini pamoja nawe leo?",
+  "notebook_reflect_prompt4": "Je, kuna jambo hapa la kuombea?",
+  "notebook_reflect_saved": "Imehifadhiwa kwenye daftari lako",
+  "notebook_reflect_open": "Fungua kwenye daftari lako",
+  "notebook_reflect_write": "Andika jibu lako",
+  "notebook_reflect_answer_prompt": "Jibu lako…"
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { hydrateSrc } from '$lib/hydrateSrc';
-	import { onMount } from 'svelte';
+	import { onMount, type Component } from 'svelte';
 	import { type Sermon, type SermonSummary, listSermons } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -287,6 +287,17 @@
 	);
 	const faqLd = $derived(faqItems.length ? faqPage(faqItems) : '');
 
+	// Each study question can be answered into the reader's Notebook. The box
+	// loads on the client once the page is up — the questions themselves are
+	// prerendered for search, and the journal store is for the reader alone.
+	let ReflectBox = $state<Component<Record<string, unknown>> | null>(null);
+	onMount(() => {
+		if (!faqItems.length) return;
+		import('$lib/components/notebook/ReflectBox.svelte').then(
+			(mod) => (ReflectBox = mod.default as unknown as Component<Record<string, unknown>>)
+		);
+	});
+
 	// Selecting text offers copy-quote / share (with attribution), highlight and
 	// note; a single word opens the dictionary — same as the chapter reader.
 	const cite = $derived({
@@ -537,6 +548,25 @@
 					<div>
 						<dt class="text-body font-semibold text-text">{item.q}</dt>
 						<dd class="mt-1 text-body leading-relaxed text-muted">{item.a}</dd>
+						{#if ReflectBox}
+							<dd class="mt-2">
+								<ReflectBox
+									compact
+									prompt={t('notebook.reflectAnswerPrompt')}
+									title={item.q}
+									collection={sermon.title}
+									source={{
+										kind: 'sermon',
+										slug: sermon.slug,
+										order: 1,
+										p: 0,
+										edition: sermon.language,
+										title: sermon.title,
+										quote: ''
+									}}
+								/>
+							</dd>
+						{/if}
 					</div>
 				{/each}
 			</dl>

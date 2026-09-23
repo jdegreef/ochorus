@@ -114,9 +114,16 @@
 					{/if}
 					<span class="min-w-0 flex-1">
 						<span class="block text-h3 text-text">{a.name}</span>
-						<span class="text-small text-muted"
-							>{(a.count === 1 ? t('quotes.countOne') : t('quotes.countMany')).replace('%count%', String(a.count))}</span
-						>
+						<span class="text-small text-muted">
+							{(a.count === 1 ? t('quotes.countOne') : t('quotes.countMany')).replace(
+								'%count%',
+								String(a.count)
+							)}{#if a.work_count > 0}
+								· {(a.work_count === 1 ? t('quotes.worksOne') : t('quotes.worksMany')).replace(
+									'%count%',
+									String(a.work_count)
+								)}{/if}
+						</span>
 						{#if a.teaser}
 							<!-- A representative line — the author's shortest quote — turns
 							     the directory into something to browse. It is the quotation

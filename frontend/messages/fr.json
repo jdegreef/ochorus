@@ -2,6 +2,8 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Personnages de ce livre",
   "author_appears_in": "Apparaît aussi dans",
+  "author_articles_about": "Articles sur",
+  "author_read_article": "Lire l'article",
   "nav_about": "À propos",
   "nav_home": "Accueil",
   "nav_books": "Livres",
@@ -807,6 +809,8 @@
   "quotes_empty_index": "Pas encore de citations ici.",
   "quotes_count_one": "%count% citation",
   "quotes_count_many": "%count% citations",
+  "quotes_works_one": "%count% œuvre",
+  "quotes_works_many": "%count% œuvres",
   "quotes_author_h1": "%name% — dans ses propres mots",
   "quotes_author_intro_one": "%count% citation, retracée jusqu’au paragraphe exact d’où elle provient. Suivez-la jusqu’au texte complet — gratuit, et sans compte.",
   "quotes_author_intro_many": "%count% citations, chacune retracée jusqu’au paragraphe exact d’où elle provient. Suivez n’importe laquelle jusqu’au texte complet — gratuit, et sans compte.",
@@ -1016,5 +1020,14 @@
   "notebook_testimony_hint": "Rien ne quitte votre appareil tant que vous ne partagez pas.",
   "notebook_pin": "Épingler",
   "notebook_unpin": "Désépingler",
-  "notebook_pinned": "Épinglées"
+  "notebook_pinned": "Épinglées",
+  "notebook_reflect_heading": "Méditer la lecture du jour",
+  "notebook_reflect_prompt1": "Que vous dit Dieu dans la lecture d'aujourd'hui ?",
+  "notebook_reflect_prompt2": "Qu'est-ce qui vous a frappé, et pourquoi ?",
+  "notebook_reflect_prompt3": "Qu'emporterez-vous avec vous aujourd'hui ?",
+  "notebook_reflect_prompt4": "Y a-t-il ici un sujet de prière ?",
+  "notebook_reflect_saved": "Enregistré dans votre carnet",
+  "notebook_reflect_open": "Ouvrir dans votre carnet",
+  "notebook_reflect_write": "Écrire votre réponse",
+  "notebook_reflect_answer_prompt": "Votre réponse…"
 }

@@ -27,7 +27,8 @@
 		initial,
 		kind: startKind = 'note',
 		editing = false,
-		collectionDefault = '',
+		defaults = {},
+		placeholder: placeholderOverride,
 		onsave,
 		oncancel
 	}: {
@@ -36,9 +37,15 @@
 		/** Which kind a NEW entry starts as (the open tab decides). */
 		kind?: JournalKind;
 		editing?: boolean;
-		/** File a new entry in this collection unless the reader changes it —
-		 *  the collection that is open. Does not open the composer by itself. */
-		collectionDefault?: string;
+		/**
+		 * What a NEW entry starts with unless the reader changes it — the open
+		 * collection; a reflection's title and collection. Unlike `initial`, this
+		 * does not open the composer by itself.
+		 */
+		defaults?: Partial<EntryDraft>;
+		/** The line that invites writing, when the caller has a better one (a
+		 *  reflection's prompt) than "Write a note…". */
+		placeholder?: string;
 		onsave: (draft: EntryDraft) => void;
 		oncancel?: () => void;
 	} = $props();
@@ -55,7 +62,8 @@
 			ref: '',
 			person: '',
 			group: '' as PrayerGroup | '',
-			collection: collectionDefault,
+			collection: '',
+			...defaults,
 			...initial
 		},
 		// A new entry opens as one line and unfolds when the reader starts writing
@@ -78,13 +86,14 @@
 	const people = $derived(knownPeople(journal.store));
 	const listId = `people-${Math.random().toString(36).slice(2, 8)}`;
 
+	/** Back to a fresh entry — with the caller's defaults, not blanks. */
 	function reset() {
-		title = '';
+		title = defaults.title ?? '';
 		body = '';
-		ref = '';
-		person = '';
-		group = '';
-		collection = seed.draft.collection;
+		ref = defaults.ref ?? '';
+		person = defaults.person ?? '';
+		group = defaults.group ?? '';
+		collection = defaults.collection ?? '';
 		open = false;
 	}
 
@@ -105,7 +114,9 @@
 		}
 	}
 
-	const placeholder = $derived(kind === 'prayer' ? t('notebook.prayerPlaceholder') : t('notebook.notePlaceholder'));
+	const placeholder = $derived(
+		placeholderOverride ?? (kind === 'prayer' ? t('notebook.prayerPlaceholder') : t('notebook.notePlaceholder'))
+	);
 </script>
 
 <form

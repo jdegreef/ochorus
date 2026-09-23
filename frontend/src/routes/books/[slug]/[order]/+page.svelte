@@ -5,6 +5,7 @@
 	import { goto, invalidateAll } from '$app/navigation';
 	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
+	import { reflectPrompt } from '$lib/journal';
 	import {
 		saveProgress,
 		getScrollAnchor,
@@ -1513,6 +1514,36 @@
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<div class="reading" bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
 	</div>
+
+	<!-- A plan day's reflection: what the reader takes from today's reading,
+	     written straight into their Notebook — filed in a collection named for
+	     the plan, so a whole plan's reflections gather in one place. Loaded on
+	     demand: it brings the journal store, which a plain chapter never needs. -->
+	{#if plan && planDay}
+		<section class="plan-reflect mt-12 border-t border-border pt-6" aria-labelledby="reflect-heading">
+			<h2 id="reflect-heading" class="section-heading">{t('notebook.reflectHeading')}</h2>
+			{#await import('$lib/components/notebook/ReflectBox.svelte') then { default: ReflectBox }}
+				<ReflectBox
+					prompt={t(`notebook.reflectPrompt${reflectPrompt(planDay)}`)}
+					title={`${t('plans.day')} ${planDay}: ${chapterName(chapter.order, chapter.title)}`}
+					collection={plan.title}
+					source={{
+						kind: 'book',
+						slug,
+						order: chapter.order,
+						p: 0,
+						edition: language,
+						title: `${chapter.book_title} · ${chapterName(chapter.order, chapter.title)}`,
+						quote: ''
+					}}
+				>
+					{#if !planProgress.isDone(plan.slug, planDay)}
+						<button class="btn btn-sm btn-primary" onclick={completePlanDay}>{t('plans.markDone')}</button>
+					{/if}
+				</ReflectBox>
+			{/await}
+		</section>
+	{/if}
 
 	<!-- Scripture index: the passages this chapter treats. Placed here — after
 	     the text, before the next-chapter nav — to match the sermon page, which

@@ -723,6 +723,64 @@ def guides_for_book(book_slug: str, language: str) -> list[dict]:
     return out
 
 
+def articles_for_author(author_slug: str, language: str) -> list[dict]:
+    """The published articles that name this person — so an author page can
+    surface them, the reverse of the article→author funnel.
+
+    The counterpart of ``guides_for_book``, and the reason it exists: an article
+    reached only from the /articles hub sits too deep in the link graph to earn a
+    crawl, while author pages are among the most-crawled on the site.
+
+    ONE rule: the article names this person in its Read-next ``related``. That is
+    an editorial judgement made when the article is written — a reader's guide
+    names the author of the book it explains, an essay names whoever it leans on
+    — so it deliberately includes a person the article DISCUSSES without their
+    having written anything (the guide to Augustine's *Confessions* names Monica,
+    and lands on her page). That is wanted: those bio-only pages are the sparsest
+    on the site and the article genuinely talks about them.
+
+    There is deliberately no second rule keying on the guided book's author. It
+    was written, measured against the whole corpus, and deleted: all 73 ``-guide``
+    articles already name their book's author here, so it selected a strict subset
+    of this rule while costing a ``Book`` query on all 891 author pages a build
+    renders. It also could not do what a second rule in a UNION can never do —
+    narrow. The authoring invariant it relied on is now written down in the
+    ``write-article`` skill instead.
+
+    Returns ``[{slug, h1, description}, ...]`` in article sort order, in the
+    requested language only — articles are per-language rows like everything
+    else, so a locale with translated articles gets them and a locale without
+    gets an empty list rather than the English ones (the no-English-fallback
+    rule). ``related`` is schema-less hand-authored JSON, so a malformed entry is
+    skipped rather than raising. One scan of the article table (no bodies), paid
+    on an author DETAIL page only — never a shelf.
+    """
+    rows = (
+        Article.objects.filter(is_published=True, language=language)
+        .order_by("sort_order", "h1")
+        .values("slug", "h1", "description", "related")
+    )
+    out = []
+    for row in rows:
+        related = row["related"]
+        if not isinstance(related, list):
+            continue
+        if any(
+            isinstance(item, dict)
+            and item.get("type") == "author"
+            and item.get("slug") == author_slug
+            for item in related
+        ):
+            out.append(
+                {
+                    "slug": row["slug"],
+                    "h1": row["h1"],
+                    "description": row["description"],
+                }
+            )
+    return out
+
+
 class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """An article card — enough for the /articles index (no body).
 
@@ -848,6 +906,11 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     # Books this person is FOUND IN but did not write (BookPerson) — the reverse
     # of BookDetailSerializer.featured_people, so a bio can offer "appears in".
     appears_in = serializers.SerializerMethodField()
+    # Articles that name this person — see ``articles_for_author`` for the rule
+    # and why it is the only one. Per-language like the rest of the page, so a
+    # locale with no translated article renders no section. Detail-only: it
+    # scans the article table, nothing a shelf should pay.
+    articles = serializers.SerializerMethodField()
 
     # Present so AuthorDetail honours the AuthorBio contract the list shares;
     # the detail page already has the full sermons array + bio_html, so these
@@ -866,7 +929,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             # an email digest) would have to carry the credit with it.
             "photo_attribution", "photo_source_url", "birth_year",
             "death_year", "book_count", "sermon_count", "has_long_bio",
-            "books", "sermons", "topics", "appears_in",
+            "books", "sermons", "topics", "appears_in", "articles",
             # Authoritative identifiers for the Person markup — see the field.
             # Only the DETAIL serializer carries them: a card never emits
             # Person markup, so shipping them on every book row would be bytes
@@ -916,6 +979,13 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         if not tr or not (tr.bio_html or tr.bio):
             return "public_domain"
         return "ai_reviewed" if tr.reviewed else "ai_unreviewed"
+
+    def get_articles(self, obj) -> list[dict]:
+        # No English-only gate, deliberately — translated article rows exist, so
+        # the language filter is the whole rule. BookDetailSerializer.guides
+        # still gates on English and hides 13 already-translated guides on
+        # localized book pages; that is a real bug, but its own change.
+        return articles_for_author(obj.slug, self._language())
 
     def get_sermon_count(self, obj):
         return len(self._sermons(obj))

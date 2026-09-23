@@ -704,3 +704,31 @@ export function splitPinned(list: JournalEntry[]): { pinned: JournalEntry[]; res
 	const pinned = list.filter((e) => e.pinnedAt).sort((a, b) => b.pinnedAt! - a.pinnedAt!);
 	return { pinned, rest: list.filter((e) => !e.pinnedAt) };
 }
+
+/**
+ * The reader's reflection on one place — a plan day's chapter, a sermon's
+ * study question — if they have written one: the newest live entry written
+ * from that work (and chapter) under that title. The title is the question
+ * or the day, so one sermon's several questions each find their own answer.
+ */
+export function reflectionFor(
+	store: JournalStore,
+	place: { kind: EntrySource['kind']; slug: string; order: number },
+	title: string
+): JournalEntry | undefined {
+	const want = title.trim();
+	let found: JournalEntry | undefined;
+	for (const e of Object.values(store)) {
+		const s = e.source;
+		if (e.deleted || !s || s.kind !== place.kind || s.slug !== place.slug || s.order !== place.order) continue;
+		if (e.title.trim() !== want) continue;
+		if (!found || e.createdAt > found.createdAt) found = e;
+	}
+	return found;
+}
+
+/** Which of the plan reflection prompts a day asks — they take turns, day by day. */
+export const REFLECT_PROMPTS = 4;
+export function reflectPrompt(day: number): number {
+	return (((day - 1) % REFLECT_PROMPTS) + REFLECT_PROMPTS) % REFLECT_PROMPTS + 1;
+}
