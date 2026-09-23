@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "इस पुस्तक के लोग",
+  "book_readers_guide": "पाठक मार्गदर्शिका",
+  "book_read_guide": "मार्गदर्शिका पढ़ें",
   "author_appears_in": "इन पुस्तकों में भी",
   "author_articles_about": "इनके बारे में लेख",
   "author_read_article": "लेख पढ़ें",

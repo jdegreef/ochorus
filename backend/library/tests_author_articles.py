@@ -6,10 +6,9 @@ page when it names them in its Read-next `related`. These tests pin that rule
 and, just as importantly, its two edges — the breadth (authorship is NOT
 required, so an article lands on the page of everyone it names) and the cost (a
 guide that names no author is invisible here). Plus the publish gate, the
-malformed-JSON guard, and the per-language rule, which is where this helper
-deliberately differs from `guides_for_book`: articles are per-language rows and
-translated ones exist, so a locale gets its own articles or none, never English
-fallback.
+malformed-JSON guard, and the per-language rule it shares with
+`guides_for_book`: articles are per-language rows and translated ones exist, so
+a locale gets its own articles or none, never English fallback.
 
 An earlier draft carried a second rule keying on the guided book's author. It
 was measured against the whole corpus, selected a strict subset of this one, and
@@ -137,7 +136,7 @@ class ArticlesForAuthorTests(TestCase):
     # --- per-language ------------------------------------------------------
 
     def test_each_language_gets_its_own_articles_and_no_english_fallback(self):
-        """Where `guides_for_book` gates on English, this does not: translated
+        """Translated
         article rows exist (the fixture carries fr, lg, es, pt, sw), so a French
         page gets French articles and a language with none gets an empty list —
         never the English ones."""

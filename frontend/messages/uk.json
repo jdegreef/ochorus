@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Люди в цій книзі",
+  "book_readers_guide": "Путівник читача",
+  "book_read_guide": "Читати путівник",
   "author_appears_in": "Також з'являється в",
   "author_articles_about": "Статті про",
   "author_read_article": "Читати статтю",

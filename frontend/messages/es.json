@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Personas en este libro",
+  "book_readers_guide": "Guía de lectura",
+  "book_read_guide": "Leer la guía",
   "author_appears_in": "También aparece en",
   "author_articles_about": "Artículos sobre",
   "author_read_article": "Leer el artículo",

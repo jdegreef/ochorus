@@ -234,9 +234,10 @@ export interface BookDetail extends BookSummary {
 	/**
 	 * The reader's guide(s) for this work — the articles that explain it, linked
 	 * back from a "Reader's guide" section (the reverse of an article's Read-next
-	 * funnel; see library/serializers.guides_for_book). English-only, so empty on
-	 * a localized page and the section just doesn't render. Optional so an API
-	 * running behind this build omits it cleanly.
+	 * funnel; see library/serializers.guides_for_book). Per-language, matching
+	 * `AuthorDetail.articles`: a localized edition gets its own translated guide
+	 * or `[]`, never the English one. Optional so an API running behind this
+	 * build omits it cleanly.
 	 */
 	guides?: ArticleLink[];
 }
@@ -590,9 +591,9 @@ export interface AuthorDetail extends AuthorBio {
 	/**
 	 * Articles ABOUT this person — the guides to their books and the essays whose
 	 * Read-next funnel names them (see `articles_for_author`). Per-language like
-	 * the rest of the page, NOT English-only as a book's `guides` still is: a
-	 * locale with translated articles gets those, one without gets `[]` and no
-	 * section. Optional so an API running behind this build omits it cleanly.
+	 * the rest of the page, as a book's `guides` is: a locale with translated
+	 * articles gets those, one without gets `[]` and no section. Optional so an
+	 * API running behind this build omits it cleanly.
 	 */
 	articles?: ArticleLink[];
 	/** How many REVIEWED quotations this author has; 0 means no quote page. */
@@ -749,7 +750,8 @@ export const getSermon = async (slug: string, language = 'en') =>
 
 // --- Articles ----------------------------------------------------------------
 // Original devotional/theological writing — no author, no chapters. Per-language
-// rows like everything else (English only for now). See backend Article model.
+// rows like everything else, and translations exist (fr, lg, es, pt, sw) — do
+// not assume English. See backend Article model.
 
 export interface ArticleSummary {
 	slug: string;
