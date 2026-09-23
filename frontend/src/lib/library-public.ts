@@ -61,6 +61,16 @@ export interface BookSummary {
 	updated_at?: string;
 }
 
+/**
+ * What a book's cover and card draw — a `BookSummary` without the fields they
+ * never read. The home page's build-time snapshot is inlined into its HTML
+ * (`$lib/homeShelves`), so it carries exactly this and no more; every other
+ * caller passes a full `BookSummary`, which fits.
+ */
+export type CoverBook = Omit<BookSummary, 'author' | 'topics' | 'created_at' | 'updated_at'> & {
+	author: Pick<Author, 'slug' | 'name' | 'birth_year'>;
+};
+
 export interface ChapterToc {
 	order: number;
 	title: string;
@@ -468,6 +478,9 @@ export interface AuthorBio {
 	/** A full long-form biography exists (vs. a one-line stub). */
 	has_long_bio: boolean;
 }
+
+/** What `AuthorTile` draws — see `CoverBook` for why this is narrowed. */
+export type AuthorTileData = Pick<AuthorBio, 'slug' | 'name' | 'photo_url' | 'book_count'>;
 
 /** A writer's dates as displayed: "1843–1919", or "b. 1938" when there is no
  * death year — a bare "1938–" reads as a typo rather than as "still living".
@@ -891,6 +904,9 @@ export interface TopicSummary {
 	sermon_count: number;
 	covers: TopicCover[];
 }
+
+/** What a topic chip draws — see `CoverBook` for why this is narrowed. */
+export type TopicCount = Pick<TopicSummary, 'slug' | 'title' | 'book_count' | 'sermon_count'>;
 
 /** An author behind a shelf's works — exactly the shape `PersonCard` renders. */
 export interface TopicAuthor {

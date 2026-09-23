@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { SITE_URL } from '$lib/config';
 	import { hreflangAll, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -370,6 +371,7 @@
 			</button>
 			<img
 				src={lightbox.src}
+				use:hydrateSrc={{ src: lightbox.src }}
 				alt={lightbox.cap}
 				class="max-h-[82vh] w-auto rounded-card"
 			/>

@@ -389,10 +389,11 @@
 	     a phone. -->
 	<header class="mx-auto max-w-[40rem] text-center">
 		{#if author.photo_url}
+			{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
 			<img
-				src={author.photo_url}
-				srcset={portraitSrcset(author.photo_url)}
-				use:hydrateSrc={{ src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
+				src={source.src}
+				srcset={source.srcset}
+				use:hydrateSrc={source}
 				sizes="112px"
 				width="112"
 				height="112"

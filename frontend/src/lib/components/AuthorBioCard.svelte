@@ -51,10 +51,11 @@
 			class="shrink-0 hover:no-underline"
 		>
 			{#if author.photo_url}
+				{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
 				<img
-					src={author.photo_url}
-					srcset={portraitSrcset(author.photo_url)}
-					use:hydrateSrc={{ src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
+					src={source.src}
+					srcset={source.srcset}
+					use:hydrateSrc={source}
 					sizes="112px"
 					alt="{t('a11y.portraitOf')} {author.name}"
 					loading="lazy"

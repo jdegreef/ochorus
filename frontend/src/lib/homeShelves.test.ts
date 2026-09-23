@@ -40,6 +40,22 @@ describe('deriveHomeShelves', () => {
 		expect(topics.map((t) => t.title)).toEqual(['t11', 't10', 't9', 't8', 't7', 't6', 't5', 't4']);
 	});
 
+	it('carries only the fields the home page draws', () => {
+		// The snapshot is inlined into every locale's front page, so a bio or a
+		// topic's cover list riding along is weight on the critical path.
+		const withExtras = lists({
+			books: books.map((b) => ({ ...b, topics: [], created_at: 'x', author: { ...b.author, bio: 'long' } })),
+			authors: lists().authors.map((a) => ({ ...a, bio: 'long', has_long_bio: true })),
+			topics: lists().topics.map((t) => ({ ...t, description: 'long', covers: [] }))
+		});
+		const { featured, authors, topics } = deriveHomeShelves(withExtras, 20000);
+		expect(Object.keys(featured[0])).not.toContain('topics');
+		expect(Object.keys(featured[0])).not.toContain('created_at');
+		expect(Object.keys(featured[0].author)).not.toContain('bio');
+		expect(Object.keys(authors[0]).sort()).toEqual(['book_count', 'name', 'photo_url', 'slug']);
+		expect(Object.keys(topics[0]).sort()).toEqual(['book_count', 'sermon_count', 'slug', 'title']);
+	});
+
 	it("counts the language's whole library, not the capped shelves", () => {
 		expect(deriveHomeShelves(lists(), 20000).counts).toEqual({ books: 20, authors: 12, sermons: 3 });
 	});

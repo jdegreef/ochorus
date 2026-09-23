@@ -172,11 +172,12 @@
 										style:background={r.cover_color || undefined}
 									/>
 								{:else if r.type === 'author' && r.photo_url}
+									{@const source = { src: r.photo_url, srcset: portraitSrcset(r.photo_url) }}
 									<img
 									class="rel-portrait"
-									src={r.photo_url}
-									srcset={portraitSrcset(r.photo_url)}
-									use:hydrateSrc={{ src: r.photo_url, srcset: portraitSrcset(r.photo_url) }}
+									src={source.src}
+									srcset={source.srcset}
+									use:hydrateSrc={source}
 									sizes="44px"
 									alt=""
 									loading="lazy"

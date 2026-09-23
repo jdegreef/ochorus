@@ -75,10 +75,11 @@
 					{:else}
 						<div class="cover">
 							{#if cover.cover_url}
+								{@const source = { src: cover.cover_url, srcset: coverSrcset(cover.cover_url) || undefined }}
 								<img
-									src={cover.cover_url}
-									srcset={coverSrcset(cover.cover_url) || undefined}
-									use:hydrateSrc={{ src: cover.cover_url, srcset: coverSrcset(cover.cover_url) || undefined }}
+									src={source.src}
+									srcset={source.srcset}
+									use:hydrateSrc={source}
 									alt=""
 									loading="lazy"
 								/>

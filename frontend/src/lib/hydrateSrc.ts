@@ -19,8 +19,13 @@
  * `srcset` goes first: with a stale `srcset` still present, the browser picks
  * its candidate over the new `src` and the old picture stays.
  *
- * Usage: `<img src={url} srcset={set} use:hydrateSrc={{ src: url, srcset: set }} />`.
+ * Usage — define the source once, so the attributes and the action cannot drift:
+ *
+ *   {@const source = { src: url, srcset: coverSrcset(url) || undefined }}
+ *   <img src={source.src} srcset={source.srcset} use:hydrateSrc={source} />
+ *
  * Keep the plain attributes too — they are what the prerendered HTML carries.
+ * `hydrateSrc.test.ts` fails the build on a data-driven `<img>` without this.
  * An empty `src` is left alone: the markup decides what a missing image means.
  */
 export interface ImgSource {

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import Icon from '$lib/components/Icon.svelte';
 	import { coverSrcset } from '$lib/coverArt';
 	import { onMount } from 'svelte';
@@ -686,13 +687,15 @@
 	focus?: string;
 })}
 	{#if row.image}
+		{@const source = { src: row.image, srcset: coverSrcset(row.image) || undefined }}
 		{@const boxStyle = [
 			row.color ? `background-color:${row.color}` : '',
 			row.focus ? `object-position:${row.focus}` : ''
 		].filter(Boolean).join(';')}
 		<img
-			src={row.image}
-			srcset={coverSrcset(row.image) || undefined}
+			src={source.src}
+			srcset={source.srcset}
+			use:hydrateSrc={source}
 			alt=""
 			loading="lazy"
 			decoding="async"
