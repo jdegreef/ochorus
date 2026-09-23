@@ -1013,5 +1013,14 @@
   "notebook_testimony_hint": "Hakuna kinachotoka kwenye kifaa chako hadi ushiriki.",
   "notebook_pin": "Bandika",
   "notebook_unpin": "Ondoa pini",
-  "notebook_pinned": "Zilizobandikwa"
+  "notebook_pinned": "Zilizobandikwa",
+  "notebook_reflect_heading": "Tafakari usomaji wa leo",
+  "notebook_reflect_prompt1": "Mungu anakuambia nini katika usomaji wa leo?",
+  "notebook_reflect_prompt2": "Nini kimekugusa, na kwa nini?",
+  "notebook_reflect_prompt3": "Utabeba nini pamoja nawe leo?",
+  "notebook_reflect_prompt4": "Je, kuna jambo hapa la kuombea?",
+  "notebook_reflect_saved": "Imehifadhiwa kwenye daftari lako",
+  "notebook_reflect_open": "Fungua kwenye daftari lako",
+  "notebook_reflect_write": "Andika jibu lako",
+  "notebook_reflect_answer_prompt": "Jibu lako…"
 }
