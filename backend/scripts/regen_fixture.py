@@ -43,6 +43,7 @@ from library.content_fixtures import (  # noqa: E402  (path set above; no Django
     BOOKS_DIR,
     CONTENT_DIR,
     PLANS_FILE,
+    SERIES_FILE,
     SERMONS_DIR,
     load_all_rows,
     ordered_fixture_paths,
@@ -52,6 +53,7 @@ from library.content_fixtures import (  # noqa: E402  (path set above; no Django
 
 MODELS = [
     "library.author",
+    "library.series",
     "library.book",
     "library.chapter",
     "library.sermon",
@@ -68,6 +70,9 @@ DEFAULTED_OK = {
     ("library.book", "publication_year"),
     ("library.book", "attribution"),
     ("library.book", "source_type"),
+    # Null for every book outside a series — hand-written rows omit them.
+    ("library.book", "series"),
+    ("library.book", "series_position"),
     ("library.chapter", "body_text"),
     ("library.sermon", "source_type"),
     ("library.sermon", "body_text"),
@@ -88,7 +93,7 @@ def manage(env, *args):
 def identity(row):
     f = row["fields"]
     m = row["model"]
-    if m == "library.author":
+    if m in ("library.author", "library.series"):
         return (m, f["slug"])
     if m in ("library.book", "library.sermon", "library.plan"):
         return (m, f["slug"], f.get("language", "en"))
@@ -105,7 +110,10 @@ def split_layout(rows: list[dict]) -> dict[Path, list[dict]]:
     for r in rows:
         by_model.setdefault(r["model"], []).append(r)
 
-    files: dict[Path, list[dict]] = {AUTHORS_FILE: by_model.get("library.author", [])}
+    files: dict[Path, list[dict]] = {
+        AUTHORS_FILE: by_model.get("library.author", []),
+        SERIES_FILE: by_model.get("library.series", []),
+    }
 
     chapters_by_book: dict[tuple, list[dict]] = {}
     for r in by_model.get("library.chapter", []):
@@ -154,7 +162,7 @@ def main():
         manage(env, "migrate", "--verbosity", "0")
         print(f"→ loaddata ({len(load_args)} fixture file(s), ordered)")
         manage(env, "loaddata", *load_args, "--verbosity", "0")
-        print("→ dumpdata (6 models, natural keys)")
+        print(f"→ dumpdata ({len(MODELS)} models, natural keys)")
         out = td + "/dump-nk.json"
         manage(env, "dumpdata", *MODELS,
                "--natural-primary", "--natural-foreign", "--indent", "1",

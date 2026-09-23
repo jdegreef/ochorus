@@ -13,6 +13,12 @@ field needed a hand-written data migration to reach prod — and forgetting one
 made the change invisible in production while looking fine locally (PR #355:
 18 covers set by ``generate_covers`` never shipped).
 
+SERIES ride along: ``series.json`` is upserted first (every field — nothing
+owns a series after creation), then each book's ``series`` / ``series_position``
+like any other field. A book row WITHOUT a ``series`` key is out of every series:
+membership is the fixture's fact, and reading absence as "leave it" would strand
+a book the fixture had taken out.
+
 SCOPE: the Book row only. An existing book's CHAPTERS are still left alone.
 Chapter ``order`` is a public contract — ``PlanDay.chapter_order``, readers'
 saved positions, prerendered URLs — so silently replacing a chapter set on
@@ -33,9 +39,14 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from library.author_sync import sync_all_authors
-from library.content_fixtures import AUTHORS_FILE, authors_by_slug, iter_work_files
+from library.content_fixtures import (
+    AUTHORS_FILE,
+    SERIES_FILE,
+    authors_by_slug,
+    iter_work_files,
+)
 from library.corrections import settled_chapter_body
-from library.models import Author, Book, Chapter
+from library.models import Author, Book, Chapter, Series
 
 BOOK_FIELDS = (
     "title",
@@ -50,9 +61,12 @@ BOOK_FIELDS = (
     "cover_url",
     "pdf_url",
     "cover_color",
+    "series_position",
     "sort_order",
     "is_published",
 )
+# Every Series field the fixture owns (all of them — see the module docstring).
+SERIES_FIELDS = ("title", "description", "sort_order")
 # No `word_count`: `Chapter.save()` derives it from body_html, so passing the
 # fixture's copy here would be discarded. See seed_sermons.SERMON_FIELDS, where
 # the same entry also cost a re-write on every deploy.
@@ -65,6 +79,43 @@ CHAPTER_FIELDS = ("order", "title", "body_html")
 # it out; a fixture that re-asserted either would walk the decision back.
 CREATE_ONLY_FIELDS = frozenset({"source_type", "is_published"})
 UPDATE_FIELDS = tuple(f for f in BOOK_FIELDS if f not in CREATE_ONLY_FIELDS)
+
+
+def sync_series(stdout) -> dict[str, Series]:
+    """Upsert every ``series.json`` row; return the series keyed by slug.
+
+    A series the fixture no longer lists is left in the DB: ``Book.series`` is
+    PROTECT, and a series still holding live books is not this seed's to drop.
+    """
+    rows = json.loads(SERIES_FILE.read_text()) if SERIES_FILE.exists() else []
+    require_natural_format(rows, "seed_books")
+    by_slug: dict[str, Series] = {}
+    for row in rows:
+        f = row["fields"]
+        values = {k: f[k] for k in SERIES_FIELDS if k in f}
+        series, created = Series.objects.get_or_create(slug=f["slug"], defaults=values)
+        if created:
+            stdout.write(f"  + series {series.slug}")
+        elif changed := [k for k, v in values.items() if getattr(series, k) != v]:
+            for k in changed:
+                setattr(series, k, values[k])
+            series.save()
+            stdout.write(f"  ~ series {series.slug} ({', '.join(changed)})")
+        by_slug[series.slug] = series
+    return by_slug
+
+
+def series_of(f: dict, series: dict[str, Series]) -> Series | None:
+    """The Series a fixture book row names, or None; raises on a dangling one."""
+    ref = f.get("series")
+    if not ref:
+        return None
+    try:
+        return series[ref[0]]
+    except KeyError:
+        raise CommandError(
+            f"seed_books: book {f['slug']!r} references missing series {ref[0]!r}"
+        ) from None
 
 
 def chapter_drift_reason(book, fixture_chapters) -> str | None:
@@ -207,6 +258,7 @@ class Command(BaseCommand):
         require_natural_format(author_rows, "seed_books")
         # Natural-key joins: an author is referenced as ["slug"] — self-describing.
         authors = authors_by_slug(author_rows)
+        series = sync_series(self.stdout)
 
         created = updated = 0
         # Stream one work file at a time — books/<slug>.<lang>.json holds one Book
@@ -262,10 +314,12 @@ class Command(BaseCommand):
                 )
                 language = f.get("language", "en")
                 book = Book.objects.filter(slug=f["slug"], language=language).first()
+                book_series = series_of(f, series)
 
                 if book is None:
                     book = Book.objects.create(
                         author=author,
+                        series=book_series,
                         slug=f["slug"],
                         language=language,
                         # Omit fields the fixture row doesn't carry so the model
@@ -304,6 +358,14 @@ class Command(BaseCommand):
                 if book.author_id != author.id:
                     book.author = author
                     changed.append("author")
+                if book.series_id != (book_series and book_series.id):
+                    book.series = book_series
+                    changed.append("series")
+                if book_series is None and book.series_position is not None:
+                    # Out of the series, so out of its numbering too — the
+                    # check constraint forbids a position without one.
+                    book.series_position = None
+                    changed.append("series_position")
                 if changed:
                     # save(), never queryset.update(): Book.save()'s hook ripples
                     # a changed title/language/author into its chapters' stored

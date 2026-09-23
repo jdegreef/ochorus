@@ -10,7 +10,6 @@ import {
 	COVER_STYLE_IDS,
 	CURSIVE_SCRIPTS,
 	ERA_STYLE,
-	SERIES_VOLUME,
 	coverStyleFor,
 	scriptOf,
 	volumeNumeral
@@ -200,27 +199,29 @@ describe('cover styles', () => {
 		expect(young).toEqual(shelf);
 	});
 
-	it('names only books that exist in the book and series tables', () => {
+	it('names only books that exist in the book table', () => {
 		// A misspelt slug is not an error anywhere else — it simply never
 		// matches, and the book it was meant for keeps its old cover.
 		const books = new Set(
 			readdirSync(join(CONTENT, 'books')).map((f) => f.split('.')[0])
 		);
-		for (const slug of [...Object.keys(BOOK_STYLE), ...Object.keys(SERIES_VOLUME)]) {
-			expect(books.has(slug), `${slug} is styled or numbered but is not a book`).toBe(true);
+		for (const slug of Object.keys(BOOK_STYLE)) {
+			expect(books.has(slug), `${slug} is styled but is not a book`).toBe(true);
 		}
 	});
 
 	it("numbers a series volume in the edition's own digits", () => {
-		expect(volumeNumeral('brave-for-god-2', 'en')).toBe('2');
+		expect(volumeNumeral(2, 'en')).toBe('2');
 		// The locale's own default numbering system, from CLDR — not a table of
 		// ours. Arabic and Hindi default to Western digits in current data, and
 		// Persian and Marathi do not, so those two show the call is honoured.
-		expect(volumeNumeral('brave-for-god-2', 'fa')).toBe('۲');
-		expect(volumeNumeral('brave-for-god-2', 'mr')).toBe('२');
-		expect(volumeNumeral('waiting-on-god', 'en')).toBeNull();
+		expect(volumeNumeral(2, 'fa')).toBe('۲');
+		expect(volumeNumeral(2, 'mr')).toBe('२');
+		// No series, or a series with no reading order: no ring at all.
+		expect(volumeNumeral(null, 'en')).toBeNull();
+		expect(volumeNumeral(undefined, 'en')).toBeNull();
 		// A tag no browser has heard of still gets a numeral, never a blank ring.
-		expect(volumeNumeral('brave-for-god-3', 'not a tag')).toBe('3');
+		expect(volumeNumeral(3, 'not a tag')).toBe('3');
 	});
 });
 

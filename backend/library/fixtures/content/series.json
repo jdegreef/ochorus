@@ -1,0 +1,35 @@
+[
+{
+ "model": "library.series",
+ "fields": {
+  "slug": "key-teachings",
+  "title": "The Key Teachings",
+  "description": "Short, faithful guides by Ochorus to the heart of one classic author's teaching — each chapter ending in questions and a prayer, and pointing the reader on to the author's own books.",
+  "sort_order": 10,
+  "created_at": "2026-09-23T00:00:00Z",
+  "updated_at": "2026-09-23T00:00:00Z"
+ }
+},
+{
+ "model": "library.series",
+ "fields": {
+  "slug": "brave-for-god",
+  "title": "Brave for God",
+  "description": "True stories of faith for young readers: ordinary people from every part of the world who trusted God and were made brave.",
+  "sort_order": 20,
+  "created_at": "2026-09-23T00:00:00Z",
+  "updated_at": "2026-09-23T00:00:00Z"
+ }
+},
+{
+ "model": "library.series",
+ "fields": {
+  "slug": "rooted",
+  "title": "Rooted – 30 Days with God for Youth",
+  "description": "Thirty-day devotionals for readers aged 9 to 12, one book at a time: a verse, what it means, a question to think about, something to try, and a prayer.",
+  "sort_order": 30,
+  "created_at": "2026-09-23T00:00:00Z",
+  "updated_at": "2026-09-23T00:00:00Z"
+ }
+}
+]

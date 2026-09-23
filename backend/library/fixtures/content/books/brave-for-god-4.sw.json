@@ -18,6 +18,8 @@
   "cover_url": "/covers/art/brave-for-god-4.jpg",
   "pdf_url": "",
   "cover_color": "#2f5a8a",
+  "series": ["brave-for-god"],
+  "series_position": 4,
   "sort_order": 74,
   "is_published": true,
   "created_at": "2026-09-17T00:00:00Z",

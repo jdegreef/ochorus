@@ -439,6 +439,55 @@ class SeedBooksUpsertTests(TestCase):
             list(Author.objects.order_by("slug").values_list(*fields)), before
         )
 
+    def test_series_membership_reaches_the_db(self):
+        # The numeral on a cover reads `series_position`; the table it replaced
+        # (coverStyles.SERIES_VOLUME) numbered these volumes, so they must land.
+        def membership(slug, language):
+            return (
+                Book.objects.filter(slug=slug, language=language)
+                .values_list("series__slug", "series_position")
+                .get()
+            )
+
+        self.assertEqual(membership("rooted-3", "en"), ("rooted", 3))
+        self.assertEqual(membership("brave-for-god-2", "sw"), ("brave-for-god", 2))
+        # A collection: in the series, with no reading order to number.
+        self.assertEqual(
+            membership("key-teachings-of-watchman-nee", "en"), ("key-teachings", None)
+        )
+        self.assertEqual(membership("the-way-to-god", "en"), (None, None))
+
+    def test_a_series_edit_reaches_an_existing_db_and_a_rerun_touches_nothing(self):
+        from django.core.management import call_command
+
+        from library.models import Series
+
+        Series.objects.filter(slug="rooted").update(title="stale", sort_order=999)
+        call_command("seed_books", verbosity=0)  # the next deploy
+        rooted = Series.objects.get(slug="rooted")
+        self.assertNotEqual(rooted.title, "stale")
+        self.assertNotEqual(rooted.sort_order, 999)
+
+        stamps = dict(Series.objects.values_list("pk", "updated_at"))
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(dict(Series.objects.values_list("pk", "updated_at")), stamps)
+
+    def test_a_book_the_fixture_takes_out_of_a_series_leaves_it(self):
+        # Membership is the fixture's fact: a row with no `series` key is in no
+        # series, not "leave whatever the DB has".
+        from django.core.management import call_command
+
+        from library.models import Series
+
+        book = Book.objects.get(slug="the-way-to-god", language="en")
+        Book.objects.filter(pk=book.pk).update(
+            series=Series.objects.get(slug="brave-for-god"), series_position=99
+        )
+        call_command("seed_books", verbosity=0)  # the next deploy
+        book.refresh_from_db()
+        self.assertIsNone(book.series)
+        self.assertIsNone(book.series_position)
+
     def _fixture_fields(self, slug, language):
         """The fixture's Book row for one work — its own file's first record.
 

@@ -22,7 +22,7 @@ from django.db.models import Max
 from library import covers, english_audit
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
-from library.models import Author, Book, Chapter
+from library.models import Author, Book, Chapter, Series
 
 SLUG = "brave-for-god"
 TITLE = "Brave for God"
@@ -289,6 +289,8 @@ class Command(BaseCommand):
             "description": DESCRIPTION,
             "attribution": ATTRIBUTION,
             "cover_color": COVER_COLOR,
+            "series": Series.objects.get(slug="brave-for-god"),
+            "series_position": 1,
             "source_url": "",
         }
         next_order = (Book.objects.aggregate(m=Max("sort_order"))["m"] or 0) + 1
