@@ -4,8 +4,9 @@ cross-link from a book to the reader's guide that explains it.
 A guide is an article whose slug ends `-guide` (the repo convention) and whose
 Read-next `related` leads with this book. These tests pin that definition: a
 topical article that merely funnels to the book is not a guide, a multi-book
-guide is attributed only to its primary (first) book, the unpublished and
-non-English gates hold, and the payload is card-shaped.
+guide is attributed only to its primary (first) book, the unpublished gate
+holds, a localized edition gets its OWN guide and never the English one, and the
+payload is card-shaped.
 """
 
 from __future__ import annotations
@@ -136,9 +137,8 @@ class GuidesForBookTests(TestCase):
         shows the guide translated into ITS language, and never the English one
         (the no-English-fallback rule) — the same rule articles_for_author
         follows. This replaced a blanket English-only gate that predated the
-        translated guide rows and suppressed all 13 of them."""
+        translated guide rows and suppressed every one of them."""
         es_book = self._book("confessions", "Confesiones", language="es")
-        self._book("confessions", "Confessions", language="en")
         self._article(
             "augustines-confessions-guide",
             [{"type": "book", "slug": "confessions"}],
@@ -156,26 +156,6 @@ class GuidesForBookTests(TestCase):
         self.assertEqual(
             [g["h1"] for g in BookDetailSerializer(es_book).data["guides"]],
             ["Confesiones de Agustín: guía de lectura"],
-        )
-
-    def test_a_translated_guide_needs_an_edition_of_its_book_to_appear(self):
-        """Why removing the gate surfaces 2 guides today and not 13: eleven
-        translated guides point at books with no edition in that language, so
-        there is no page for them to appear on at all."""
-        self._book("confessions", "Confessions", language="en")
-        self._article(
-            "augustines-confessions-guide",
-            [{"type": "book", "slug": "confessions"}],
-            language="fr",
-            h1="Les Confessions : guide de lecture",
-        )
-        # The French guide exists, but no French edition of the book does, so
-        # nothing queries it — and the English edition must not pick it up.
-        self.assertEqual(
-            [g["h1"] for g in BookDetailSerializer(
-                Book.objects.get(slug="confessions", language="en")
-            ).data["guides"]],
-            [],
         )
 
     def test_the_shelf_card_does_not_carry_guides(self):

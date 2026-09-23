@@ -273,9 +273,7 @@
 	const navItems = $derived(
 		[
 			book.editions?.length ? { id: 'editions', label: t('book.otherEditions') } : null,
-			// English-only label, like the FAQ aside: the guide section only renders
-			// for English books (the API returns no guides otherwise), so it never
-			// appears on a localized page that would want a translated label.
+			// Shares the heading's key: the pill and the <h2> are the same words.
 			book.guides?.length ? { id: 'guide', label: t('book.readersGuide') } : null,
 			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
 			{ id: 'contents', label: t('reader.contents') },
@@ -530,7 +528,7 @@
 			<h2 class="section-heading">{t('book.readersGuide')}</h2>
 			<ul class="mt-3 flex flex-col gap-3">
 				{#each book.guides as guide (guide.slug)}
-					<li><ArticleLinkCard article={guide} cta={t('book.readTheGuide')} /></li>
+					<li><ArticleLinkCard article={guide} cta={t('book.readGuide')} /></li>
 				{/each}
 			</ul>
 		</section>
