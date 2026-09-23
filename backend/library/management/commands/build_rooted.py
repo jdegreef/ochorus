@@ -180,6 +180,72 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    3: {
+        "sort_order": 77,
+        "publication_year": 2026,
+        "title": "Rooted – 30 Days with God for Youth – Book 3",
+        "subtitle": "Growing Fruit: the fruit of the Spirit, the words we say, and the habits of the heart",
+        "cover_url": "/covers/rooted-3.svg",
+        "cover_color": covers.ink_safe("#5a3a6e"),  # a ripe-grape purple
+        "description": (
+            "Thirty short daily devotions for readers aged 9 to 12 about the "
+            "fruit God grows in those who stay connected to Jesus, the Vine: "
+            "love, joy, peace, patience, kindness and more, the words we say, the "
+            "habits of the heart, and being wise and honest. Each day has a Bible "
+            "verse, a short teaching, a question, something to try and a prayer. "
+            "The third book of Rooted."
+        ),
+        "about_html": (
+            "<p>Rooted is an original Ochorus devotional series for readers aged 9 "
+            "to 12, and this is its third book. Book 1 planted the roots and Book "
+            "2 walked with Jesus through His life. Book 3 asks what grows on a "
+            "tree that is rooted in Him, and its answer begins where Jesus did: "
+            "“I am the vine and you are the branches.” Good fruit is not glued on "
+            "by trying harder. It grows from staying connected to the Vine.</p>"
+            "<p>The first two weeks take the fruit of the Spirit one at a time, "
+            "from love, joy and peace to gentleness and self-control, with a day "
+            "on humility as the soil the rest grow in. The third week is about "
+            "words: the tiny spark of the tongue, telling the truth, words that "
+            "build, grumbling, gossip and listening. The fourth turns to habits of "
+            "the heart: respect, thankfulness, working as for the Lord, "
+            "contentment, generosity and guarding the heart. The fifth is about "
+            "being pure and wise: asking for wisdom, what we think about and "
+            "watch, integrity when no one is looking, and the fall that pride "
+            "brings.</p>"
+            "<p>Every day follows the same short pattern: a Scripture from the "
+            "Berean Standard Bible, a teaching with a Bible story or a picture "
+            "from everyday life, a question to think about, one thing to try, and "
+            "a prayer. It is written to keep character rooted in grace, pointing "
+            "young readers back to Jesus and His Spirit rather than to "
+            "self-improvement, and it can be read alone or aloud together.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 3 of Rooted about?",
+                "answer": "Growing fruit. Over thirty short daily devotions it looks at the fruit of the Spirit, the words we say, the habits of the heart, and being wise and honest, always starting from Jesus’ words: “I am the vine and you are the branches.”",
+            },
+            {
+                "question": "Is it just a list of rules for being good?",
+                "answer": "No. Its main point is that you cannot grow good fruit by trying harder on your own. Fruit grows by staying connected to Jesus, as His Spirit works in you. Every day points back to Him.",
+            },
+            {
+                "question": "Who is it for?",
+                "answer": "Readers aged 9 to 12, to read on their own or with a parent, grandparent or leader. The week on words and the day on screens make especially good family conversations.",
+            },
+            {
+                "question": "Do I need to read Books 1 and 2 first?",
+                "answer": "No. Each book stands on its own, and the introduction explains how each day works. The earlier books lay the foundation and walk through the life of Jesus, so reading them first helps, but you can start here.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+            {
+                "question": "What comes after Book 3?",
+                "answer": "Book 4, about standing strong in the storms of life: fear, worry, sadness, temptation and unfairness, with Bible heroes like David, Daniel, Joseph and Esther, and the promise that nothing can separate us from God’s love.",
+            },
+        ],
+    },
 }
 
 _INLINE = [
