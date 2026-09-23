@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-22: one NEW English book — rooted-3, "Rooted – 30 Days with God for
+// Youth – Book 3" (Growing Fruit), the third volume of the house-written devotional series for ages
+// 9–12 (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture).
+// Rebuilds /books and the For Young Readers shelf so the card and its young-style plate cover
+// (volume 3) appear, and the reader pages bake the chapters. Backs the new rooted-book-3-30-days plan.
 // prerender refresh 2026-09-22: one NEW English book — rooted-2, "Rooted – 30 Days with God for
 // Youth – Book 2" (Following Jesus), the second volume of the house-written devotional series for
 // ages 9–12 (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture).

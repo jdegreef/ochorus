@@ -533,6 +533,7 @@ TOPICS = [
             "hurlbuts-life-of-christ",
             "rooted-1",
             "rooted-2",
+            "rooted-3",
         ],
     ),
 ]
