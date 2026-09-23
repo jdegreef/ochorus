@@ -293,13 +293,23 @@ def _is_stale_against(tomb: Removal | None, client_dt: datetime | None) -> bool:
     return tomb is not None and (client_dt is None or client_dt <= tomb.removed_at)
 
 
-def _tombstone(profile, domain, kind, slug) -> Removal | None:
-    return Removal.objects.filter(profile=profile, domain=domain, kind=kind, slug=slug).first()
+def _tombstone(profile, domain, kind, slug, order=0, p=0) -> Removal | None:
+    return Removal.objects.filter(
+        profile=profile,
+        domain=domain,
+        kind=kind,
+        slug=slug,
+        chapter_order=order,
+        paragraph_index=p,
+    ).first()
 
 
-def _record_removal(profile, domain, kind, slug, removed_at: datetime, *, live: bool) -> bool:
-    """Take a position or heart off the reader's account, and leave a tombstone
-    so a device that still holds it can't merge it back (see ``Removal``).
+def _record_removal(
+    profile, domain, kind, slug, removed_at: datetime, *, live: bool, order=0, p=0
+) -> bool:
+    """Take a position, heart or bookmark off the reader's account, and leave a
+    tombstone so a device that still holds it can't merge it back (see
+    ``Removal``). ``order`` / ``p`` locate a bookmark; 0 for the others.
 
     A LIVE removal (the DELETE, made now by the reader's own tap) always
     applies. Its tombstone is stamped no earlier than the row's own client
@@ -309,8 +319,8 @@ def _record_removal(profile, domain, kind, slug, removed_at: datetime, *, live: 
 
     A removal carried up LATE by the merge (made offline) is itself stale if
     the thing it removes is newer — a position read after it, or a heart saved
-    after it — and is then not applied (False). A heart has no client clock of
-    its own, so its server ``created_at`` stands in there.
+    after it — and is then not applied (False). A heart or a bookmark has no
+    client clock of its own on the server, so its ``created_at`` stands in.
 
     The tombstone keeps the LATEST removal time, so an older removal arriving
     late can't narrow what a newer one covers.
@@ -320,6 +330,12 @@ def _record_removal(profile, domain, kind, slug, removed_at: datetime, *, live: 
             rows = ReadingProgress.objects.filter(profile=profile, kind=kind, book_slug=slug)
             row = rows.first()
             row_at = row.client_updated_at if row else None
+        elif domain == Removal.Domain.BOOKMARK:
+            rows = Bookmark.objects.filter(
+                profile=profile, kind=kind, book_slug=slug, chapter_order=order, paragraph_index=p
+            )
+            row = rows.first()
+            row_at = row.created_at if row else None
         else:
             rows = Favorite.objects.filter(profile=profile, kind=kind, slug=slug)
             row = rows.first()
@@ -334,6 +350,8 @@ def _record_removal(profile, domain, kind, slug, removed_at: datetime, *, live: 
             domain=domain,
             kind=kind,
             slug=slug,
+            chapter_order=order,
+            paragraph_index=p,
             defaults={"removed_at": removed_at},
         )
         if not created and tomb.removed_at < removed_at:
@@ -749,8 +767,10 @@ class BookmarksView(APIView):
     """Save / unsave one bookmark — a paragraph the reader saved on purpose.
 
     Add/remove like :class:`FavoriteView`: PUT the position to save it (with its
-    cached snippet/title), DELETE to remove it. Identity is the position, so
-    saving the same paragraph twice keeps one row (its display text refreshed).
+    cached snippet/title), DELETE to remove it — which, like un-hearting, leaves
+    a tombstone so the removal sticks across devices. Identity is the position,
+    so saving the same paragraph twice keeps one row (its display text
+    refreshed).
     """
 
     permission_classes = [IsAuthenticated]
@@ -762,6 +782,15 @@ class BookmarksView(APIView):
             return Response({"detail": "Invalid bookmark."}, status=400)
         k, o, pi = loc
         profile = _profile(request)
+        # A live save is always a new act: it lifts any earlier removal.
+        Removal.objects.filter(
+            profile=profile,
+            domain=Removal.Domain.BOOKMARK,
+            kind=k,
+            slug=slug,
+            chapter_order=o,
+            paragraph_index=pi,
+        ).delete()
         obj, _ = Bookmark.objects.update_or_create(
             profile=profile,
             kind=k,
@@ -777,10 +806,18 @@ class BookmarksView(APIView):
         if loc is None:
             return Response({"detail": "Invalid bookmark."}, status=400)
         k, o, pi = loc
-        profile = _profile(request)
-        Bookmark.objects.filter(
-            profile=profile, kind=k, book_slug=slug, chapter_order=o, paragraph_index=pi
-        ).delete()
+        # Delete AND tombstone the spot, so another device still holding the
+        # bookmark can't merge it back (see Removal). `?at=` is the device's clock.
+        _record_removal(
+            _profile(request),
+            Removal.Domain.BOOKMARK,
+            k,
+            slug,
+            _removed_at(request.query_params.get("at")),
+            live=True,
+            order=o,
+            p=pi,
+        )
         return Response(status=204)
 
 
@@ -1164,7 +1201,8 @@ class MergeView(APIView):
 
     def _merge_removals(self, profile, incoming):
         """Apply removals the device made while its live DELETE couldn't land
-        (offline, or the request failed) — ``[{domain, kind, slug, at}]``. Each
+        (offline, or the request failed) — ``[{domain, kind, slug, at}]``, plus
+        ``chapter_order`` / ``paragraph_index`` for a bookmark. Each
         goes through the same rule as a live DELETE, so one outdated by newer
         activity elsewhere is not applied. Malformed rows are skipped; a row
         with no ``at`` is skipped too (a removal must say when it happened)."""
@@ -1184,6 +1222,19 @@ class MergeView(APIView):
             elif domain == Removal.Domain.FAVORITE:
                 if kind not in FavoriteKind.values:
                     continue
+            elif domain == Removal.Domain.BOOKMARK:
+                kind = _kind_or_none(kind)
+                order = _valid_order(row.get("chapter_order"))
+                p = row.get("paragraph_index")
+                if (
+                    kind is None
+                    or order is None
+                    or not isinstance(p, int)
+                    or not 0 <= p <= MAX_CHAPTER_ORDER
+                ):
+                    continue
+                _record_removal(profile, domain, kind, slug, removed_at, live=False, order=order, p=p)
+                continue
             else:
                 continue
             _record_removal(profile, domain, kind, slug, removed_at, live=False)
@@ -1344,9 +1395,17 @@ class MergeView(APIView):
         idempotent (the unique position constraint skips ones already saved),
         like ``_merge_favorites``. A non-list is ignored and non-dict / malformed
         rows are skipped so a bad bundle can't 500 the reconcile; ``p`` is bounded
-        like the other integer columns to keep an out-of-range value off the DB."""
+        like the other integer columns to keep an out-of-range value off the DB.
+
+        A bookmark REMOVED elsewhere is dropped unless it was saved after the
+        removal (``saved_at``, epoch ms; absent on older clients, so stale) — the
+        same rule as ``_merge_favorites``."""
         if not isinstance(incoming, list):
             return
+        tombs = {
+            (t.kind, t.slug, t.chapter_order, t.paragraph_index): t
+            for t in Removal.objects.filter(profile=profile, domain=Removal.Domain.BOOKMARK)
+        }
         rows = {}
         for row in incoming[:MAX_MERGE_ROWS]:
             if not isinstance(row, dict):
@@ -1363,7 +1422,14 @@ class MergeView(APIView):
                 or not 0 <= p <= MAX_CHAPTER_ORDER
             ):
                 continue
-            rows[(kind, slug, order, p)] = Bookmark(
+            spot = (kind, slug, order, p)
+            tomb = tombs.get(spot)
+            if tomb is not None:
+                if _is_stale_against(tomb, _ms_to_dt(row.get("saved_at"))):
+                    continue
+                tomb.delete()
+                del tombs[spot]
+            rows[spot] = Bookmark(
                 profile=profile,
                 kind=kind,
                 book_slug=slug,

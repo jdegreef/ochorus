@@ -13,7 +13,7 @@ from rest_framework.test import APIClient
 
 from accounts.models import UserProfile
 
-from .models import Favorite, ReadingProgress, Removal
+from .models import Bookmark, Favorite, ReadingProgress, Removal
 
 User = get_user_model()
 
@@ -204,3 +204,79 @@ class LiveRemovalClockTests(RemovalTestBase):
 class MergeAcknowledgementTests(RemovalTestBase):
     def test_merge_says_it_applied_removals(self):
         self.assertIs(self.merge()["removed_applied"], True)
+
+
+class BookmarkRemovalTests(RemovalTestBase):
+    URL = "/api/reading/bookmarks/book/humility/2/5/"
+
+    def saved_ms(self):
+        return int(Bookmark.objects.get().created_at.timestamp() * 1000)
+
+    def merge_row(self, **extra):
+        return {"kind": "book", "book_slug": "humility", "chapter_order": 2, "paragraph_index": 5, **extra}
+
+    def spots(self, state):
+        return {(b["book_slug"], b["chapter_order"], b["paragraph_index"]) for b in state["bookmarks"]}
+
+    def test_unbookmarking_survives_another_devices_merge(self):
+        self.client.put(self.URL, {"bm_id": "a"}, format="json")
+        saved = self.saved_ms()
+        self.client.delete(f"{self.URL}?at={saved + HOUR}")
+        self.assertFalse(Bookmark.objects.exists())
+        # Old client (no saved_at), and one whose bookmark predates the removal.
+        state = self.merge(bookmarks=[self.merge_row(), self.merge_row(saved_at=saved)])
+        self.assertEqual(self.spots(state), set())
+
+    def test_only_that_spot_is_tombstoned(self):
+        self.client.put(self.URL, {"bm_id": "a"}, format="json")
+        self.client.delete(self.URL)
+        state = self.merge(bookmarks=[self.merge_row(paragraph_index=6)])
+        self.assertEqual(self.spots(state), {("humility", 2, 6)})
+
+    def test_a_bookmark_saved_after_the_removal_lands(self):
+        self.client.put(self.URL, {"bm_id": "a"}, format="json")
+        removed = self.saved_ms() + HOUR
+        self.client.delete(f"{self.URL}?at={removed}")
+        state = self.merge(bookmarks=[self.merge_row(saved_at=removed + HOUR)])
+        self.assertEqual(self.spots(state), {("humility", 2, 5)})
+        self.assertFalse(Removal.objects.exists())
+
+    def test_a_live_rebookmark_lifts_the_tombstone(self):
+        self.client.put(self.URL, {"bm_id": "a"}, format="json")
+        self.client.delete(self.URL)
+        self.client.put(self.URL, {"bm_id": "b"}, format="json")
+        self.assertFalse(Removal.objects.exists())
+        state = self.merge(bookmarks=[self.merge_row()])
+        self.assertEqual(self.spots(state), {("humility", 2, 5)})
+
+    def test_merge_carries_an_offline_unbookmark(self):
+        self.client.put(self.URL, {"bm_id": "a"}, format="json")
+        state = self.merge(
+            removed=[
+                {
+                    "domain": "bookmark",
+                    "kind": "book",
+                    "slug": "humility",
+                    "chapter_order": 2,
+                    "paragraph_index": 5,
+                    "at": self.saved_ms() + HOUR,
+                }
+            ]
+        )
+        self.assertEqual(self.spots(state), set())
+
+    def test_malformed_bookmark_removals_are_skipped(self):
+        self.merge(
+            removed=[
+                {"domain": "bookmark", "kind": "book", "slug": "humility", "at": T0},  # no spot
+                {"domain": "bookmark", "kind": "book", "slug": "humility", "chapter_order": 2, "paragraph_index": -1, "at": T0},
+                {"domain": "bookmark", "kind": "galaxy", "slug": "humility", "chapter_order": 2, "paragraph_index": 5, "at": T0},
+            ]
+        )
+        self.assertFalse(Removal.objects.exists())
+
+    def test_a_position_and_a_heart_for_the_same_slug_keep_separate_tombstones(self):
+        self.client.delete(f"/api/reading/progress/humility/?kind=book&at={T0}")
+        self.client.delete(f"/api/reading/favorites/book/humility/?at={T0}")
+        self.client.delete(f"{self.URL}?at={T0}")
+        self.assertEqual(Removal.objects.count(), 3)
