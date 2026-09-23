@@ -3374,6 +3374,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"uk/stepping-stones-2": {
+			"ground": "bbd606860f1563477aa132066eb3a20a80b0c0f807f34c241e8d8418be0c0551",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/the-inner-chamber": {
 			"ground": "fb9325a52995fb69b6b6b5bc819ff6a2ef8d6c7f655b62023089bf7a0879eebd",
 			"style": "devotional",
