@@ -109,6 +109,7 @@ The other tools, for jobs `paint_covers` does not cover:
 | `scripts/build_derived_grounds.py` | cut a translation ground from a designed cover |
 | `scripts/localize_covers.py` | give translated editions their own cover (plate or shared ground) |
 | `manage.py generate_covers` | draw plate grounds into the DB (admin imports) |
+| `npm run covers:bars` | re-measure the scan borders a laid-out painting is cropped past (`groundBars.ts`); after a ground is added or redrawn |
 | `scripts/build_portrait_assets.py` | author portraits and their variants |
 | `npm run emblem:art`, `emblem:hues` | emblem drawings and accents (see `topic-emblems`) |
 
@@ -123,6 +124,7 @@ The other tools, for jobs `paint_covers` does not cover:
 | `coverOgManifest.test.ts` | twins drawn with an older stylesheet, markup, style or series number; the manifest is **out of order or has a duplicate entry** |
 | `coverMarkupParity.test.ts` | the app and the share-twin script would draw different trees |
 | `coverLayouts.test.ts` | a layout or hue has no CSS (or CSS names one the table doesn't), a laid-out author has no painting in English, a railed title is too long for the rail, or a hue's paper/ink/band drops below contrast |
+| `groundBars.test.ts` | `groundBars.ts` no longer matches the grounds on disk (run `npm run covers:bars`) |
 | `coverStyles.test.ts` | a style has no CSS, names a face nothing loads, asks a face for a weight it lacks, or the young-readers table drifts from the shelf |
 | `coverArt.test.ts` | a published edition's share source is missing, or twin/landscape sizes drift |
 | e2e `smoke.spec.ts` | the built site doesn't serve a book's landscape card as a JPEG |

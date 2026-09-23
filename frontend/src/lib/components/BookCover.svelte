@@ -167,7 +167,7 @@
 	/** `dir="rtl"` on an Arabic edition's type block, and NO attribute at all
 	 *  otherwise — a spread rather than `dir={…}`, which Svelte writes as the
 	 *  `dir` property and so leaves `dir=""` behind on every other cover. */
-	const blockDir = $derived(script === 'arabic' ? { dir: 'rtl' } : {});
+	const blockDir = $derived(script === 'arabic' ? { dir: 'rtl' as const } : {});
 	/** The layout a painting is composed in (`coverLayouts.ts`); null for the
 	 *  framed composition, and always null off a painting. */
 	const layout = $derived(isArt ? coverLayoutFor(book.author.slug, script) : null);

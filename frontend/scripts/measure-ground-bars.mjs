@@ -39,6 +39,9 @@ const FLAT = 12;
 const CAP = 0.1;
 /** Bars thinner than this are left to the layouts' baseline crop. */
 const FLOOR = 0.02;
+/** Past the measured bar: a scan border fades out over a few rows of dark
+ *  texture after its last flat row, and those rows are a stripe too. */
+const SLACK = 0.01;
 
 async function measure(file) {
 	const { data, info } = await sharp(file).greyscale().raw().toBuffer({ resolveWithObject: true });
@@ -76,7 +79,9 @@ async function table() {
 		.sort()) {
 		const bar = await measure(resolve(ART, file));
 		// Rounded UP to the half-percent, so the crop always clears the bar.
-		if (bar >= FLOOR) rows.push([file.replace(/\.jpg$/, ''), Math.ceil(bar * 200) / 200]);
+		if (bar >= FLOOR) {
+			rows.push([file.replace(/\.jpg$/, ''), Math.ceil((bar + SLACK) * 200) / 200]);
+		}
 	}
 	return rows;
 }

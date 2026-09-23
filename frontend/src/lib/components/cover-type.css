@@ -1111,11 +1111,13 @@ rgb(0 0 0 / 0.26) 0%,
 	text-align: start;
 }
 .cover-plate.over-art:is(.cover-layout-split, .cover-layout-diagonal, .cover-layout-duotone)
-	.cover-type
+	.cover-type[dir='rtl']
 	.byline {
-	/* The byline is `dir="auto"`, so `start` would be ITS start — left, for a
-	   Latin name on an Arabic cover. It ranges with the cover instead. */
-	text-align: match-parent;
+	/* The byline is `dir="auto"`, so `start` is ITS start — left, for a Latin
+	   name on an Arabic cover. Right, then, with the rest of the block. Said
+	   physically because `match-parent`, which says it logically, is not in
+	   Chromium, and Chromium is what draws the share cards. */
+	text-align: right;
 }
 .cover-plate.over-art:is(.cover-layout-split, .cover-layout-diagonal, .cover-layout-duotone) .cover-type .rule {
 	margin: 4cqw 0 0;

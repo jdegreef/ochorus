@@ -6,25 +6,25 @@
 // no longer matches the files: run `npm run covers:bars`.
 
 export const GROUND_BARS: Record<string, number> = {
-	'answers-to-prayer': 0.095,
-	'brave-for-god': 0.070,
-	'divine-healing': 0.040,
-	'essentials-of-prayer': 0.030,
-	'growing-in-wisdom': 0.100,
-	'holy-in-christ': 0.035,
-	'how-to-bring-men-to-christ': 0.045,
-	'lord-teach-us-to-pray-2': 0.100,
-	'necessity-of-prayer': 0.040,
-	'power-through-prayer': 0.030,
-	'prevailing-prayer': 0.040,
-	'religious-affections': 0.025,
-	'revival-lectures': 0.080,
-	'spurgeon-on-prayer': 0.030,
-	'the-reformed-pastor': 0.030,
-	'the-unselfishness-of-god': 0.100,
-	'till-he-come': 0.030,
-	'watchman-nee-a-life': 0.030,
-	'women-who-moved-heaven-2': 0.100
+	'answers-to-prayer': 0.105,
+	'brave-for-god': 0.080,
+	'divine-healing': 0.050,
+	'essentials-of-prayer': 0.040,
+	'growing-in-wisdom': 0.110,
+	'holy-in-christ': 0.045,
+	'how-to-bring-men-to-christ': 0.055,
+	'lord-teach-us-to-pray-2': 0.110,
+	'necessity-of-prayer': 0.050,
+	'power-through-prayer': 0.040,
+	'prevailing-prayer': 0.050,
+	'religious-affections': 0.035,
+	'revival-lectures': 0.090,
+	'spurgeon-on-prayer': 0.040,
+	'the-reformed-pastor': 0.040,
+	'the-unselfishness-of-god': 0.110,
+	'till-he-come': 0.040,
+	'watchman-nee-a-life': 0.040,
+	'women-who-moved-heaven-2': 0.110
 };
 
 /** The bar to crop past for a painted ground's url; 0 for anything else. */
