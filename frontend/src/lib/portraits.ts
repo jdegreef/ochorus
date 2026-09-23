@@ -37,6 +37,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'bernard-of-clairvaux': '50% 0%', // painting cropped to a bust; face at ~42%, near-square so nearly inert
 	'bill-bright': '50% 5%', // 1980 bust photo; face at ~34% of a 0.75 plate
 	'billy-graham': '50% 0%', // 1966 press photo; face high at ~23% of a 0.80 plate
+	'billy-sunday': '50% 0%', // 1921 LoC studio bust; face at ~33% of a 0.70 plate — 0% is the highest the crop goes
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
 	'charles-finney': '50% 0%',
@@ -50,6 +51,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'dietrich-bonhoeffer': '50% 0%', // 1939 standing figure; head high at ~15% of a 0.63 plate
 	'dwight-l-moody': '50% 5%',
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
+	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
 	'festo-kivengere': '50% 10%', // bishop photo; face at ~37% of a 0.70 plate
 	'frederick-brotherton-meyer': '50% 0%',
 	'gareth-evans': '50% 45%', // square source
@@ -69,8 +71,10 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'john-calvin': '50% 0%', // c.1550 capped portrait; face at ~29% of a 0.72 plate
 	'john-cassian': '50% 0%', // icon: standing figure, head at ~20% of a 0.70 plate
 	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
+	'john-g-lake': '50% 0%', // c.1900–05 profile bust; face at ~25% of a 0.62 plate
 	'john-newton': '50% 27%', // portrait; face at ~40% of a 0.72 plate
 	'john-owen': '50% 0%', // Greenhill portrait; face at ~31% of a 0.81 plate
+	'john-r-mott': '50% 0%', // 1910 Review of Reviews bust; face at ~28% of a 0.81 plate
 	'john-stott': '50% 0%', // photograph, bust; face at ~25% of a 0.73 plate
 	'john-wesley': '50% 0%',
 	'jonathan-edwards': '50% 0%',
@@ -88,6 +92,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'richard-sibbes': '50% 0%', // labelled portrait; face at ~28% of a 0.72 plate
 	'robert-murray-mcheyne': '50% 2%', // engraving; side profile, head high at ~32% of a 0.78 plate
 	'samuel-ajayi-crowther': '50% 45%',
+	'smith-wigglesworth': '50% 0%', // 1920 preaching photo cropped to a bust; face at ~25% of a 0.77 plate
 	'susanna-wesley': '50% 21%',
 	'teresa-of-avila': '50% 0%', // cropped to the bust; face at ~25% of a 0.58 plate
 	'thomas-a-kempis': '50% 0%',
