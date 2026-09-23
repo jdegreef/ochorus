@@ -344,6 +344,34 @@ class AdminCoverageTests(TestCase):
         # Rows sorted by author name.
         self.assertEqual([b["slug"] for b in res.data["bios"]], ["am", "cb"])
 
+    @override_settings(DEBUG=True)
+    def test_articles_matrix(self):
+        # Row = article slug, titled by the English h1. The English original is
+        # site writing, so it reads "present" (not PD); a translated cell carries
+        # its review state. An article-only language still becomes a column.
+        Article.objects.create(slug="trust", language="en", h1="How to Trust God", body_html="<p>t</p>", sort_order=1)
+        Article.objects.create(
+            slug="trust", language="fr", h1="Comment faire confiance", body_html="<p>t</p>",
+            source_type=Book.SourceType.AI_UNREVIEWED, sort_order=1,
+        )
+        Article.objects.create(
+            slug="abide", language="en", h1="Abiding in Christ", body_html="<p>a</p>", sort_order=0,
+        )
+        Article.objects.create(
+            slug="abide", language="es", h1="Permanecer", body_html="<p>a</p>",
+            source_type=Book.SourceType.AI_REVIEWED, sort_order=0,
+        )
+
+        res = self.client.get("/api/admin/coverage/")
+        self.assertIn("fr", [lang["code"] for lang in res.data["languages"]])
+        articles = res.data["articles"]
+        self.assertEqual([a["slug"] for a in articles], ["abide", "trust"])  # sort_order
+        by_slug = {a["slug"]: a for a in articles}
+        self.assertEqual(by_slug["trust"]["title"], "How to Trust God")
+        self.assertNotIn("author", by_slug["trust"])
+        self.assertEqual(by_slug["trust"]["cells"], {"en": "present", "fr": "ai_unreviewed"})
+        self.assertEqual(by_slug["abide"]["cells"], {"en": "present", "es": "ai_reviewed"})
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
         res = self.client.get("/api/admin/coverage/")

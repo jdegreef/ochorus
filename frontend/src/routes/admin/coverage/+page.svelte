@@ -28,14 +28,15 @@
 	// — the POST is gated server-side too (see admin_views/jobs.py).
 	const canQueue = $derived(auth.isAdmin);
 
-	type Tab = 'books' | 'sermons' | 'plans' | 'bios';
+	type Tab = 'books' | 'sermons' | 'plans' | 'bios' | 'articles';
 	let tab = $state<Tab>('books');
 
 	const TABS: { key: Tab; label: string }[] = [
 		{ key: 'books', label: 'Books' },
 		{ key: 'sermons', label: 'Sermons' },
 		{ key: 'plans', label: 'Plans' },
-		{ key: 'bios', label: 'Biographies' }
+		{ key: 'bios', label: 'Biographies' },
+		{ key: 'articles', label: 'Articles' }
 	];
 
 	// Each tab is one job type (the queue's singular names).
@@ -43,20 +44,22 @@
 		books: 'book',
 		sermons: 'sermon',
 		plans: 'plan',
-		bios: 'bio'
+		bios: 'bio',
+		articles: 'article'
 	};
 
 	// `?? []` guards the deploy window where the SPA carries a new tab before the
 	// API's payload does: a missing `cov[tab]` must render empty, not throw.
 	const rows = $derived<AdminCoverageRow[]>(cov?.[tab] ?? []);
 	const langs = $derived(cov?.languages ?? []);
-	// Books link to their admin detail page; sermons/plans/bios (no admin detail
-	// yet) link to their live pages — a biography row is an author.
+	// Books link to their admin detail page; sermons/plans/bios/articles (no admin
+	// detail yet) link to their live pages — a biography row is an author.
 	const ROW_HREF_BASE: Record<Tab, string> = {
 		books: '/admin/books',
 		sermons: '/sermons',
 		plans: '/plans',
-		bios: '/authors'
+		bios: '/authors',
+		articles: '/articles'
 	};
 	const rowHref = (slug: string) => `${ROW_HREF_BASE[tab]}/${slug}`;
 
@@ -279,7 +282,7 @@
 				{#if tab === 'books'}
 					<span><span class="text-text">PD</span> public domain</span>
 				{/if}
-				{#if tab === 'books' || tab === 'bios'}
+				{#if tab === 'books' || tab === 'bios' || tab === 'articles'}
 					<span><span class="text-accent">AI✓</span> reviewed</span>
 					<span><span class="text-warning">AI·</span> unreviewed</span>
 				{/if}

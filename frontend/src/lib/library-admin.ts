@@ -554,6 +554,7 @@ export const createAdminTranslationJob = (body: {
 
 // Translation-coverage matrix: works (rows) × languages (columns). A book cell
 // carries its source_type; sermon/plan cells are "present". Missing = absent.
+// (Articles: see AdminCoverage.articles.)
 
 export interface AdminCoverageRow {
 	slug: string;
@@ -580,6 +581,10 @@ export interface AdminCoverage {
 	// Row = author; the English cell is the original Author.bio_html, translated
 	// cells carry ai_reviewed / ai_unreviewed.
 	bios: AdminCoverageRow[];
+	// Row = article slug, titled by its h1; no author. The English original is
+	// "present", translated cells carry ai_reviewed / ai_unreviewed. Optional
+	// across the deploy window (an SPA ahead of the API).
+	articles?: AdminCoverageRow[];
 }
 
 export const getAdminCoverage = () => apiFetch<AdminCoverage>('/api/admin/coverage/');
