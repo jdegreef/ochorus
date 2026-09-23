@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Personas en este libro",
+  "book_readers_guide": "Guía de lectura",
+  "book_read_guide": "Leer la guía",
   "author_appears_in": "También aparece en",
   "author_articles_about": "Artículos sobre",
   "author_read_article": "Leer el artículo",
@@ -587,6 +589,13 @@
   "fav_view_covers": "Portadas",
   "fav_view_spines": "Lomos",
   "fav_close_book": "Devolver",
+  "shelf_download": "Descargar estante",
+  "shelf_downloading": "Descargando %n% de %t%",
+  "shelf_stop": "Detener",
+  "shelf_all_saved": "Todo guardado sin conexión",
+  "shelf_remove_downloads": "Quitar descargas",
+  "shelf_failed": "%n% no se pudieron descargar",
+  "shelf_retry": "Reintentar",
   "year_title": "Tu año en libros",
   "year_choose": "Año",
   "year_goal": "Meta de lectura",
@@ -1027,5 +1036,10 @@
   "notebook_format_bold": "Negrita",
   "notebook_format_italic": "Cursiva",
   "notebook_format_list": "Lista",
-  "notebook_format_quote": "Cita"
+  "notebook_format_quote": "Cita",
+  "reader_suggest_edit": "Sugerir una corrección",
+  "feedback_edit_title": "Envía comentarios sobre esto",
+  "feedback_edit_intro": "Dinos qué se lee mal y, si quieres, qué debería decir.",
+  "feedback_suggested_label": "Sugiere una corrección (opcional)",
+  "feedback_suggested_placeholder": "¿Qué debería decir?"
 }

@@ -1654,6 +1654,8 @@ export interface FeedbackItem {
 	id: number;
 	category: string;
 	body: string;
+	/** Which surface it came from: 'menu' | 'fab' | 'highlight'. */
+	source: string;
 	status: string;
 	submitter_email: string;
 	/** '' for an ordinary reader, else e.g. 'language_admin' / 'super_admin'. */
@@ -1664,6 +1666,11 @@ export interface FeedbackItem {
 	content_language: string;
 	chapter_ref: string;
 	ui_locale: string;
+	/** Highlight-to-feedback: the quoted selection, an optional proposed
+	 *  correction, and the block index for a deep-link back to the spot. */
+	selected_text: string;
+	suggested_text: string;
+	anchor_block: number | null;
 	assignee_email: string;
 	admin_note: string;
 	duplicate_of: number | null;

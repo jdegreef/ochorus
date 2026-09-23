@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "أشخاص في هذا الكتاب",
+  "book_readers_guide": "دليل القارئ",
+  "book_read_guide": "اقرأ الدليل",
   "author_appears_in": "يظهر أيضًا في",
   "author_articles_about": "مقالات عن",
   "author_read_article": "اقرأ المقال",
@@ -587,6 +589,13 @@
   "fav_view_covers": "الأغلفة",
   "fav_view_spines": "الكعوب",
   "fav_close_book": "أعِده",
+  "shelf_download": "نزّل الرف",
+  "shelf_downloading": "جارٍ تنزيل %n% من %t%",
+  "shelf_stop": "إيقاف",
+  "shelf_all_saved": "تم حفظ الكل دون اتصال",
+  "shelf_remove_downloads": "إزالة التنزيلات",
+  "shelf_failed": "تعذّر تنزيل %n%",
+  "shelf_retry": "أعد المحاولة",
   "year_title": "عامك في الكتب",
   "year_choose": "السنة",
   "year_goal": "هدف القراءة",
@@ -1027,5 +1036,10 @@
   "notebook_format_bold": "غامق",
   "notebook_format_italic": "مائل",
   "notebook_format_list": "قائمة",
-  "notebook_format_quote": "اقتباس"
+  "notebook_format_quote": "اقتباس",
+  "reader_suggest_edit": "Suggest an edit",
+  "feedback_edit_title": "Send feedback on this",
+  "feedback_edit_intro": "Tell us what reads wrong — and, if you like, what it should say.",
+  "feedback_suggested_label": "Suggest a correction (optional)",
+  "feedback_suggested_placeholder": "What should it say?"
 }

@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Abantu mu kitabo kino",
+  "book_readers_guide": "Obulagirizi bw'omusomi",
+  "book_read_guide": "Soma obulagirizi",
   "author_appears_in": "Era alabika mu",
   "author_articles_about": "Ebiwandiiko ku",
   "author_read_article": "Soma ekiwandiiko",
@@ -587,6 +589,13 @@
   "fav_view_covers": "Ebibikka",
   "fav_view_spines": "Emigongo",
   "fav_close_book": "Kizzeeyo",
+  "shelf_download": "Tikka etterekero",
+  "shelf_downloading": "Kitikka %n% ku %t%",
+  "shelf_stop": "Yimiriza",
+  "shelf_all_saved": "Byonna biterekeddwa awatali yintaneti",
+  "shelf_remove_downloads": "Ggyawo ebitikkiddwa",
+  "shelf_failed": "%n% tebisobodde kutikkibwa",
+  "shelf_retry": "Gezaako nate",
   "year_title": "Omwaka gwo mu bitabo",
   "year_choose": "Omwaka",
   "year_goal": "Ekigendererwa ky'okusoma",
@@ -1027,5 +1036,10 @@
   "notebook_format_bold": "Ennene",
   "notebook_format_italic": "Ezikoonzeemu",
   "notebook_format_list": "Olukalala",
-  "notebook_format_quote": "Ekijuliziddwa"
+  "notebook_format_quote": "Ekijuliziddwa",
+  "reader_suggest_edit": "Suggest an edit",
+  "feedback_edit_title": "Send feedback on this",
+  "feedback_edit_intro": "Tell us what reads wrong — and, if you like, what it should say.",
+  "feedback_suggested_label": "Suggest a correction (optional)",
+  "feedback_suggested_placeholder": "What should it say?"
 }

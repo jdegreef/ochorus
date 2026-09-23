@@ -35,7 +35,8 @@
 		highlightColor,
 		onDefine,
 		onDefineClose,
-		onJournal
+		onJournal,
+		onSuggestEdit
 	}: {
 		container: HTMLElement | undefined;
 		cite: Cite;
@@ -51,6 +52,8 @@
 		onDefineClose?: () => void;
 		/** Start a Notebook note or prayer about the selected passage. */
 		onJournal?: (kind: 'note' | 'prayer', quote: string, segments: Segment[]) => void;
+		/** Send feedback / suggest an edit on the selected passage. */
+		onSuggestEdit?: (quote: string, segments: Segment[]) => void;
 	} = $props();
 	const t = i18n.t;
 
@@ -236,6 +239,15 @@
 		visible = false;
 	}
 
+	/** Send feedback on the selected passage — same quote-cleaning as above. */
+	function suggestEdit() {
+		const sel = window.getSelection();
+		const quote = sel && sel.rangeCount ? readerProse(sel.getRangeAt(0).cloneContents()) : selectedText;
+		onSuggestEdit?.(quote || selectedText, segments);
+		sel?.removeAllRanges();
+		visible = false;
+	}
+
 	const activeColor = $derived(
 		highlightColor && segments.length > 0 ? highlightColor(segments) : null
 	);
@@ -316,6 +328,12 @@
 				<button class="selbar-btn" onclick={() => journal('note')}>✎ {t('reader.writeAbout')}</button>
 				<span class="selbar-sep"></span>
 				<button class="selbar-btn" onclick={() => journal('prayer')}>🙏 {t('reader.prayThis')}</button>
+			</span>
+		{/if}
+		{#if onSuggestEdit && segments.length > 0}
+			<!-- Feedback on the passage — a suggested edit, into the admin queue. -->
+			<span class="selbar-row">
+				<button class="selbar-btn" onclick={suggestEdit}>{t('reader.suggestEdit')}</button>
 			</span>
 		{/if}
 	</div>

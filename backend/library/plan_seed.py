@@ -132,6 +132,17 @@ LAUNCH_PLANS = [
         "something to try, and a prayer.",
         (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
     ),
+    (
+        "sons-of-the-king-book-1-30-days",
+        "sons-of-the-king-1",
+        "Sons of the King: 30 Days with God — Book 1",
+        "Thirty days for boys aged 9 to 12 on who you are as a son of the King: "
+        "worth that comes from God, strength under control, friends who make you "
+        "better, and courage from the men of the Bible. Each day is one short "
+        "reading with a Bible verse, a question to think about, something to "
+        "try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
+    ),
 ]
 
 # Curated plans that walk through SEVERAL books in order (each book read in

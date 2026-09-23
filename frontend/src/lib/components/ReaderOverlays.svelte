@@ -13,11 +13,13 @@
 -->
 <script lang="ts">
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
+	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import ListenBar from '$lib/components/ListenBar.svelte';
 	import NoteDialog from '$lib/components/NoteDialog.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
+	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { localizeHref } from '$lib/href';
@@ -80,6 +82,29 @@
 		clearTimeout(savedTimer);
 		savedTimer = setTimeout(() => (saved = false), 5000);
 	}
+
+	// Highlight-to-feedback: the selection the reader is sending feedback on.
+	// The quote is the durable anchor; the block index gives a deep-link back.
+	let suggesting = $state<{
+		text: string;
+		anchorBlock?: number;
+		contentKind: string;
+		contentSlug: string;
+		chapterRef: string;
+		contentLanguage: string;
+	} | null>(null);
+
+	function startSuggestEdit(quote: string, segments: Segment[]) {
+		const { where } = reader;
+		suggesting = {
+			text: quote.slice(0, 2000),
+			anchorBlock: segments.length ? Math.min(...segments.map((s) => s.p)) : undefined,
+			contentKind: where.kind,
+			contentSlug: where.slug,
+			chapterRef: where.kind === 'book' ? String(where.order) : '',
+			contentLanguage: language
+		};
+	}
 </script>
 
 <SelectionBar
@@ -92,6 +117,7 @@
 	onDefine={reader.onDefine}
 	onDefineClose={reader.onDefineClose}
 	onJournal={startJournal}
+	onSuggestEdit={auth.user ? startSuggestEdit : undefined}
 />
 
 <ScripturePopover />
@@ -141,6 +167,10 @@
 		onRemove={reader.removeMark}
 		onClose={reader.close}
 	/>
+{/if}
+
+{#if suggesting}
+	<FeedbackDialog source="highlight" selection={suggesting} onClose={() => (suggesting = null)} />
 {/if}
 
 <style>

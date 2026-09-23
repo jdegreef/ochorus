@@ -12,12 +12,28 @@
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { getLang } from '$lib/lang.svelte';
 	import { feedbackContext } from '$lib/feedbackContext';
-	import { submitFeedback, type FeedbackCategory } from '$lib/library-public';
+	import { submitFeedback, type FeedbackCategory, type FeedbackSource } from '$lib/library-public';
+
+	/** When the dialog is opened from a text selection (highlight-to-feedback):
+	 *  the quote to comment on, plus the work context the reader gives us
+	 *  authoritatively (so we don't re-parse the URL). */
+	interface SelectionInfo {
+		text: string;
+		anchorBlock?: number;
+		contentKind?: string;
+		contentSlug?: string;
+		chapterRef?: string;
+		contentLanguage?: string;
+	}
 
 	interface Props {
 		onClose: () => void;
+		/** Which surface opened the dialog — recorded with the submission. */
+		source?: FeedbackSource;
+		/** Present when opened from a highlighted selection. */
+		selection?: SelectionInfo;
 	}
-	let { onClose }: Props = $props();
+	let { onClose, source = 'menu', selection }: Props = $props();
 
 	const t = i18n.t;
 
@@ -31,13 +47,20 @@
 
 	let category = $state<FeedbackCategory>('language');
 	let body = $state('');
+	let suggested = $state('');
 	let saving = $state(false);
 	let sent = $state(false);
 	let error = $state('');
 
-	// Resolve the work from the path once, when the dialog opens.
-	const context = feedbackContext(
-		typeof window === 'undefined' ? '' : window.location.pathname
+	// Prefer the context the selection gives us; otherwise resolve it from the path.
+	const context = $derived(
+		selection
+			? {
+					content_kind: selection.contentKind,
+					content_slug: selection.contentSlug,
+					chapter_ref: selection.chapterRef
+				}
+			: feedbackContext(typeof window === 'undefined' ? '' : window.location.pathname)
 	);
 
 	const canSubmit = $derived(body.trim().length >= 10 && !saving);
@@ -51,10 +74,18 @@
 			await submitFeedback({
 				category,
 				body: body.trim(),
+				source,
 				page_url: typeof window === 'undefined' ? '' : window.location.href,
-				content_language: getLang(),
+				content_language: selection?.contentLanguage || getLang(),
 				ui_locale: getLang(),
-				...context
+				...context,
+				...(selection
+					? {
+							selected_text: selection.text,
+							suggested_text: suggested.trim() || undefined,
+							anchor_block: selection.anchorBlock
+						}
+					: {})
 			});
 			sent = true;
 		} catch {
@@ -81,8 +112,14 @@
 			</div>
 		{:else}
 			<form onsubmit={submit}>
-				<h2 class="mb-1 text-h3">{t('feedback.title')}</h2>
-				<p class="mb-4 text-small text-muted">{t('feedback.intro')}</p>
+				<h2 class="mb-1 text-h3">{selection ? t('feedback.editTitle') : t('feedback.title')}</h2>
+				<p class="mb-4 text-small text-muted">
+					{selection ? t('feedback.editIntro') : t('feedback.intro')}
+				</p>
+
+				{#if selection}
+					<blockquote class="fb-quote">{selection.text}</blockquote>
+				{/if}
 
 				<label class="mb-3 block">
 					<span class="mb-1 block text-small text-muted">{t('feedback.type')}</span>
@@ -95,11 +132,23 @@
 
 				<textarea
 					bind:value={body}
-					rows="5"
+					rows={selection ? 3 : 5}
 					class="field w-full"
 					aria-label={t('feedback.title')}
 					placeholder={t('feedback.placeholder')}
 				></textarea>
+
+				{#if selection}
+					<label class="mt-3 block">
+						<span class="mb-1 block text-small text-muted">{t('feedback.suggestedLabel')}</span>
+						<textarea
+							bind:value={suggested}
+							rows="2"
+							class="field w-full"
+							placeholder={t('feedback.suggestedPlaceholder')}
+						></textarea>
+					</label>
+				{/if}
 
 				{#if context.content_slug}
 					<p class="mt-2 text-small text-muted">
@@ -145,5 +194,17 @@
 		background: var(--surface);
 		padding: 1.25rem;
 		box-shadow: var(--shadow-popover);
+	}
+	.fb-quote {
+		margin: 0 0 0.75rem;
+		max-height: 8rem;
+		overflow-y: auto;
+		border-inline-start: 3px solid var(--accent);
+		background: var(--accent-soft);
+		padding: 0.5rem 0.75rem;
+		border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+		font-style: italic;
+		color: var(--text);
+		font-size: 0.95em;
 	}
 </style>

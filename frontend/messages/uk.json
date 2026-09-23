@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Люди в цій книзі",
+  "book_readers_guide": "Путівник читача",
+  "book_read_guide": "Читати путівник",
   "author_appears_in": "Також з'являється в",
   "author_articles_about": "Статті про",
   "author_read_article": "Читати статтю",
@@ -587,6 +589,13 @@
   "fav_view_covers": "Обкладинки",
   "fav_view_spines": "Корінці",
   "fav_close_book": "Поставити назад",
+  "shelf_download": "Завантажити полицю",
+  "shelf_downloading": "Завантаження %n% з %t%",
+  "shelf_stop": "Зупинити",
+  "shelf_all_saved": "Усе збережено офлайн",
+  "shelf_remove_downloads": "Прибрати завантаження",
+  "shelf_failed": "Не вдалося завантажити: %n%",
+  "shelf_retry": "Спробувати ще",
   "year_title": "Ваш рік у книжках",
   "year_choose": "Рік",
   "year_goal": "Мета читання",
@@ -1027,5 +1036,10 @@
   "notebook_format_bold": "Жирний",
   "notebook_format_italic": "Курсив",
   "notebook_format_list": "Список",
-  "notebook_format_quote": "Цитата"
+  "notebook_format_quote": "Цитата",
+  "reader_suggest_edit": "Suggest an edit",
+  "feedback_edit_title": "Send feedback on this",
+  "feedback_edit_intro": "Tell us what reads wrong — and, if you like, what it should say.",
+  "feedback_suggested_label": "Suggest a correction (optional)",
+  "feedback_suggested_placeholder": "What should it say?"
 }

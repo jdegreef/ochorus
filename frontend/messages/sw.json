@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "Watu katika kitabu hiki",
+  "book_readers_guide": "Mwongozo wa msomaji",
+  "book_read_guide": "Soma mwongozo",
   "author_appears_in": "Pia anaonekana katika",
   "author_articles_about": "Makala kuhusu",
   "author_read_article": "Soma makala",
@@ -587,6 +589,13 @@
   "fav_view_covers": "Majalada",
   "fav_view_spines": "Migongo",
   "fav_close_book": "Rudisha",
+  "shelf_download": "Pakua rafu",
+  "shelf_downloading": "Inapakua %n% kati ya %t%",
+  "shelf_stop": "Simamisha",
+  "shelf_all_saved": "Vyote vimehifadhiwa nje ya mtandao",
+  "shelf_remove_downloads": "Ondoa upakuaji",
+  "shelf_failed": "%n% havikuweza kupakuliwa",
+  "shelf_retry": "Jaribu tena",
   "year_title": "Mwaka wako katika vitabu",
   "year_choose": "Mwaka",
   "year_goal": "Lengo la kusoma",
@@ -1027,5 +1036,10 @@
   "notebook_format_bold": "Herufi nzito",
   "notebook_format_italic": "Herufi za mlalo",
   "notebook_format_list": "Orodha",
-  "notebook_format_quote": "Nukuu"
+  "notebook_format_quote": "Nukuu",
+  "reader_suggest_edit": "Suggest an edit",
+  "feedback_edit_title": "Send feedback on this",
+  "feedback_edit_intro": "Tell us what reads wrong — and, if you like, what it should say.",
+  "feedback_suggested_label": "Suggest a correction (optional)",
+  "feedback_suggested_placeholder": "What should it say?"
 }

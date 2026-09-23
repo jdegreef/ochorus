@@ -19,7 +19,7 @@ from accounts.models import AdminGrant, UserProfile
 from accounts.permissions import is_admin_user
 from common.throttling import ScopedCacheThrottle
 
-from .models import Feedback, FeedbackCategory
+from .models import Feedback, FeedbackCategory, FeedbackSource
 
 #: Lower/upper bounds on the body. A blank or one-word "feedback" is noise; the
 #: cap stops a single row from being used as unbounded storage.
@@ -69,6 +69,14 @@ def _clip(value, limit: int) -> str:
     return str(value or "").strip()[:limit]
 
 
+def _anchor_block(value) -> int | None:
+    """A non-negative block index, or None. Rejects bools (an int subclass) and
+    anything non-integral or negative."""
+    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+        return None
+    return value
+
+
 def _clip_url(value, limit: int) -> str:
     """Like _clip, but only keep an http(s) URL — the admin queue renders this as
     a clickable link, so a ``javascript:``/``data:`` scheme would be stored XSS."""
@@ -97,6 +105,10 @@ class FeedbackView(APIView):
         if category not in FeedbackCategory.values:
             category = FeedbackCategory.OTHER
 
+        source = str(data.get("source") or "").strip()
+        if source not in FeedbackSource.values:
+            source = FeedbackSource.MENU
+
         profile = _profile(request)
         email = (profile.email or request.user.email or "").strip().lower()
 
@@ -106,11 +118,15 @@ class FeedbackView(APIView):
             submitter_role=submitter_role(request, email),
             category=category,
             body=body,
+            source=source,
             page_url=_clip_url(data.get("page_url"), 2000),
             content_kind=_clip(data.get("content_kind"), 20),
             content_slug=_clip(data.get("content_slug"), 200),
             content_language=_clip(data.get("content_language"), 20),
             chapter_ref=_clip(data.get("chapter_ref"), 100),
             ui_locale=_clip(data.get("ui_locale"), 20),
+            selected_text=_clip(data.get("selected_text"), 2000),
+            suggested_text=_clip(data.get("suggested_text"), 2000),
+            anchor_block=_anchor_block(data.get("anchor_block")),
         )
         return Response({"id": feedback.id, "ok": True}, status=201)

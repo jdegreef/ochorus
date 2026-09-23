@@ -1,6 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "इस पुस्तक के लोग",
+  "book_readers_guide": "पाठक मार्गदर्शिका",
+  "book_read_guide": "मार्गदर्शिका पढ़ें",
   "author_appears_in": "इन पुस्तकों में भी",
   "author_articles_about": "इनके बारे में लेख",
   "author_read_article": "लेख पढ़ें",
@@ -587,6 +589,13 @@
   "fav_view_covers": "आवरण",
   "fav_view_spines": "जिल्द",
   "fav_close_book": "वापस रखें",
+  "shelf_download": "शेल्फ़ डाउनलोड करें",
+  "shelf_downloading": "%t% में से %n% डाउनलोड हो रहा है",
+  "shelf_stop": "रोकें",
+  "shelf_all_saved": "सब ऑफ़लाइन सहेजा गया",
+  "shelf_remove_downloads": "डाउनलोड हटाएँ",
+  "shelf_failed": "%n% डाउनलोड नहीं हो सकीं",
+  "shelf_retry": "फिर कोशिश करें",
   "year_title": "आपका साल, पुस्तकों में",
   "year_choose": "वर्ष",
   "year_goal": "पढ़ने का लक्ष्य",
@@ -1027,5 +1036,10 @@
   "notebook_format_bold": "मोटा",
   "notebook_format_italic": "तिरछा",
   "notebook_format_list": "सूची",
-  "notebook_format_quote": "उद्धरण"
+  "notebook_format_quote": "उद्धरण",
+  "reader_suggest_edit": "Suggest an edit",
+  "feedback_edit_title": "Send feedback on this",
+  "feedback_edit_intro": "Tell us what reads wrong — and, if you like, what it should say.",
+  "feedback_suggested_label": "Suggest a correction (optional)",
+  "feedback_suggested_placeholder": "What should it say?"
 }
