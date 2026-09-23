@@ -87,9 +87,11 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
 	'andrew-murray': { layout: 'wash', hue: 'sage' },
 	'augustine-of-hippo': { layout: 'rail', hue: 'rust' },
 	'charles-h-spurgeon': { layout: 'band', hue: 'oxblood' },
+	'dwight-l-moody': { layout: 'duotone', hue: 'indigo' },
 	'e-m-bounds': { layout: 'split', hue: 'navy' },
 	'george-muller': { layout: 'split', hue: 'oxblood' },
 	'hudson-taylor': { layout: 'rail', hue: 'teal' },
+	'john-wesley': { layout: 'split', hue: 'mauve' },
 	'jonathan-edwards': { layout: 'fade', hue: 'slate' },
 	'r-a-torrey': { layout: 'diagonal', hue: 'ochre' }
 };
