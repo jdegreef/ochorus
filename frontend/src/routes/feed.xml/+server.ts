@@ -1,6 +1,6 @@
 import { SITE_URL } from '$lib/config';
 import { FEED_EPOCH, isoOrEpoch } from '$lib/feedDate';
-import { listBooks, listSermons } from '$lib/library-public';
+import { listArticles, listBooks, listSermons } from '$lib/library-public';
 import { xmlEscape as xml } from '$lib/xml';
 
 export const prerender = true;
@@ -14,8 +14,22 @@ export const prerender = true;
 // NOT by the work's original date, which for public-domain classics is a
 // century old and would never change. Books carry created_at directly;
 // sermons gained it on their list serializer for this feed.
+//
+// Articles ride along for the same reason the sitemap lists them on their own
+// line: they are the discovery layer, and until now the one syndication surface
+// the site has did not mention them at all. English only, like the feed and
+// like the articles themselves.
 
 const MAX_ITEMS = 40;
+
+// How many of those items an article may take. Articles ship in CURATED BATCHES
+// (75 landed over 2026-09-03..05, another 54 on 09-18), and a plain merge by
+// date would let one batch day evict every book and sermon from a feed titled
+// "New in the Library" — the subscriber would see a wall of essays and no works
+// until the next import. Reserving the balance keeps the feed answering the
+// question it asks. Articles beyond the cap are not lost to crawlers: every one
+// is in sitemap-articles.xml and linked from the /articles/ hub.
+const MAX_ARTICLES = 12;
 
 
 interface FeedItem {
@@ -45,9 +59,10 @@ function entryXml(it: FeedItem): string {
 export async function GET() {
 	// A down endpoint degrades to an empty slice rather than failing the whole
 	// prerender (mirrors the sitemap).
-	const [books, sermons] = await Promise.all([
+	const [books, sermons, articles] = await Promise.all([
 		listBooks('en').catch(() => []),
-		listSermons('en').catch(() => [])
+		listSermons('en').catch(() => []),
+		listArticles('en').catch(() => [])
 	]);
 
 	const items: FeedItem[] = [
@@ -66,7 +81,24 @@ export async function GET() {
 				? `${s.author.name} on ${s.scripture_ref}.`
 				: `A sermon by ${s.author.name}, free to read on Ochorus.`,
 			date: s.created_at
-		}))
+		})),
+		// Newest-first, then capped, BEFORE the merge — so the cap keeps the
+		// newest articles rather than whichever ones the merged sort happens to
+		// leave standing. `h1` is the display headline (the article page's warm
+		// H1), not `meta_title`, which leads with the keyword for the <title>.
+		...articles
+			.slice()
+			.sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''))
+			.slice(0, MAX_ARTICLES)
+			.map((a) => ({
+				title: a.h1,
+				url: `${SITE_URL}/articles/${a.slug}/`,
+				// No per-article author FK — the house name is the byline the page
+				// itself shows and the Article JSON-LD names. See the Article model.
+				authorName: 'Ochorus',
+				summary: a.description || 'An article from Ochorus.',
+				date: a.created_at
+			}))
 	]
 		// Guard against rows whose date hasn't been served yet (API deploy race):
 		// keep them, but sort undated last so a real date always wins the top.
@@ -81,7 +113,7 @@ export async function GET() {
 		'<?xml version="1.0" encoding="utf-8"?>',
 		'<feed xmlns="http://www.w3.org/2005/Atom">',
 		'  <title>Ochorus — New in the Library</title>',
-		'  <subtitle>Free public-domain Christian classics: books and sermons.</subtitle>',
+		'  <subtitle>Free public-domain Christian classics: books, sermons and articles.</subtitle>',
 		`  <link href="${SITE_URL}/feed.xml" rel="self"/>`,
 		`  <link href="${SITE_URL}/"/>`,
 		`  <id>${SITE_URL}/</id>`,
