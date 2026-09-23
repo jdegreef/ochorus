@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { listBooks, type BookSummary } from '$lib/library-public';
+	import type { BookSummary } from '$lib/library-public';
+	import { libraryBooks } from '$lib/resumeBooks';
 	import { allProgress } from '$lib/progress';
 	import { favorites } from '$lib/favorites.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -20,23 +21,13 @@
 
 	const LIMIT = 4;
 
-	let {
-		/**
-		 * The shelf, when the page already has it. The homepage is prerendered
-		 * WITH the book list baked in, so fetching it again on hydration was a
-		 * second copy of data already on the page — the same reason
-		 * ContinueReading takes it as a prop.
-		 */
-		books = undefined
-	}: { books?: BookSummary[] } = $props();
-
-	let fetched = $state<BookSummary[]>([]);
-	const catalog = $derived(books ?? fetched);
+	// The shared request (`$lib/resumeBooks`): on the dashboard this block and
+	// Continue reading mount together and want the same list.
+	let catalog = $state<BookSummary[]>([]);
 
 	onMount(async () => {
-		if (books) return; // already have it — no request
 		try {
-			fetched = await listBooks(getLang());
+			catalog = await libraryBooks(getLang());
 		} catch {
 			/* recommendations are a bonus block — never break the homepage */
 		}

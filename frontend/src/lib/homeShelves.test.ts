@@ -56,6 +56,14 @@ describe('deriveHomeShelves', () => {
 		expect(Object.keys(topics[0]).sort()).toEqual(['book_count', 'sermon_count', 'slug', 'title']);
 	});
 
+	it('passes a field added to BookSummary through to the home cards by default', () => {
+		// The book projection lists what to DROP, so a new field reaches the
+		// cards without anyone remembering the home page projects.
+		const withNew = lists({ books: books.map((b) => ({ ...b, edition_label: 'x' })) });
+		const [first] = deriveHomeShelves(withNew, 20000).featured;
+		expect((first as unknown as { edition_label: string }).edition_label).toBe('x');
+	});
+
 	it("counts the language's whole library, not the capped shelves", () => {
 		expect(deriveHomeShelves(lists(), 20000).counts).toEqual({ books: 20, authors: 12, sermons: 3 });
 	});

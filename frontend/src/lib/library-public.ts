@@ -66,9 +66,17 @@ export interface BookSummary {
  * never read. The home page's build-time snapshot is inlined into its HTML
  * (`$lib/homeShelves`), so it carries exactly this and no more; every other
  * caller passes a full `BookSummary`, which fits.
+ *
+ * Each narrow type here is derived from a KEY LIST that the snapshot's runtime
+ * projection also reads, so the two cannot disagree. This one lists what to
+ * DROP rather than what to keep: a field later added to `BookSummary` reaches
+ * the home cards by default, instead of being silently left out of the one
+ * shelf that projects.
  */
-export type CoverBook = Omit<BookSummary, 'author' | 'topics' | 'created_at' | 'updated_at'> & {
-	author: Pick<Author, 'slug' | 'name' | 'birth_year'>;
+export const COVER_BOOK_DROPS = ['topics', 'created_at', 'updated_at'] as const;
+export const COVER_AUTHOR_KEYS = ['slug', 'name', 'birth_year'] as const;
+export type CoverBook = Omit<BookSummary, 'author' | (typeof COVER_BOOK_DROPS)[number]> & {
+	author: Pick<Author, (typeof COVER_AUTHOR_KEYS)[number]>;
 };
 
 export interface ChapterToc {
@@ -479,8 +487,10 @@ export interface AuthorBio {
 	has_long_bio: boolean;
 }
 
-/** What `AuthorTile` draws — see `CoverBook` for why this is narrowed. */
-export type AuthorTileData = Pick<AuthorBio, 'slug' | 'name' | 'photo_url' | 'book_count'>;
+/** What `AuthorTile` draws — see `CoverBook`. A field the tile starts reading
+ *  goes in this list, and the home snapshot then carries it too. */
+export const AUTHOR_TILE_KEYS = ['slug', 'name', 'photo_url', 'book_count'] as const;
+export type AuthorTileData = Pick<AuthorBio, (typeof AUTHOR_TILE_KEYS)[number]>;
 
 /** A writer's dates as displayed: "1843–1919", or "b. 1938" when there is no
  * death year — a bare "1938–" reads as a typo rather than as "still living".
@@ -905,8 +915,9 @@ export interface TopicSummary {
 	covers: TopicCover[];
 }
 
-/** What a topic chip draws — see `CoverBook` for why this is narrowed. */
-export type TopicCount = Pick<TopicSummary, 'slug' | 'title' | 'book_count' | 'sermon_count'>;
+/** What a topic chip draws — see `AuthorTileData`. */
+export const TOPIC_COUNT_KEYS = ['slug', 'title', 'book_count', 'sermon_count'] as const;
+export type TopicCount = Pick<TopicSummary, (typeof TOPIC_COUNT_KEYS)[number]>;
 
 /** An author behind a shelf's works — exactly the shape `PersonCard` renders. */
 export interface TopicAuthor {

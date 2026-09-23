@@ -53,8 +53,9 @@ describe('hydrateSrc', () => {
  * The action only protects the images that wear it, and forgetting it is
  * invisible: the page looks right until the data behind a prerendered list
  * drifts, and then a card shows one item's picture under another's name. So,
- * like rtl.test.ts, this is a source-text check: every `<img>` whose `src` is
- * an expression must carry `use:hydrateSrc`.
+ * like rtl.test.ts, this is a source-text check: every `<img>` whose source
+ * comes from data — an expression, an interpolated string or a spread — must
+ * carry `use:hydrateSrc`.
  *
  * One named exception: BookCover's `whenComplete`, which calls `hydrateSrc`
  * itself — it has to repoint before it measures, in ONE action, so the order
@@ -81,7 +82,15 @@ describe('every data-driven <img> keeps its src on its data', () => {
 			// of `<img>` in comments.
 			for (const m of text.matchAll(/<img\s[\s\S]*?\/>/g)) {
 				const tag = m[0];
-				if (!/\ssrc=\{/.test(tag)) continue; // a literal path is not data
+				// Data-driven in any spelling: `src={x}`, the `{src}` shorthand, an
+				// interpolated string (`src="/covers/{slug}.jpg"`), or attributes
+				// spread in whole. Only a literal path with no `{` in it is exempt.
+				const dataDriven =
+					/\s(?:src|srcset)=\{/.test(tag) ||
+					/\s\{(?:src|srcset)\}/.test(tag) ||
+					/\s(?:src|srcset)="[^"]*\{/.test(tag) ||
+					/\{\s*\.\.\./.test(tag);
+				if (!dataDriven) continue;
 				if (/use:hydrateSrc\b/.test(tag)) continue;
 				if (path.endsWith('BookCover.svelte') && /use:whenComplete\b/.test(tag)) continue;
 				const line = text.slice(0, m.index).split('\n').length;
