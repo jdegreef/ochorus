@@ -922,5 +922,9 @@
   "notebook_step_q_adore": "Katonda y'ani gy'oli leero? Mutendereze olw'ebyo by'ali.",
   "notebook_step_q_confess": "Kiki ky'olina okuleeta mu kitangaala? Saba okusonyiyibwa kwe.",
   "notebook_step_q_thanks": "Akuwadde ki? Yogera ebintu by'omwebaza.",
-  "notebook_step_q_ask": "Weetaaga ki, era ani yeetaaga obuyambi bwe? Baleete gy'ali."
+  "notebook_step_q_ask": "Weetaaga ki, era ani yeetaaga obuyambi bwe? Baleete gy'ali.",
+  "notebook_stat_praying": "Osabira kati",
+  "notebook_stat_avg_days": "Ennaku z'okusaba (wakati)",
+  "notebook_timeline": "Olukalala lw'ebiseera",
+  "notebook_answered_layout": "Laga essaala ezaddiddwamu"
 }

@@ -922,5 +922,9 @@
   "notebook_step_q_adore": "من هو الله بالنسبة لك اليوم؟ سبِّحه لأجل من هو.",
   "notebook_step_q_confess": "ما الذي تحتاج أن تُخرجه إلى النور؟ اطلب غفرانه.",
   "notebook_step_q_thanks": "ماذا أعطاك؟ اذكر ما أنت شاكر لأجله.",
-  "notebook_step_q_ask": "ما الذي تحتاجه، ومن يحتاج إلى معونته؟ أحضرهم إليه."
+  "notebook_step_q_ask": "ما الذي تحتاجه، ومن يحتاج إلى معونته؟ أحضرهم إليه.",
+  "notebook_stat_praying": "قيد الصلاة الآن",
+  "notebook_stat_avg_days": "متوسط أيام الصلاة",
+  "notebook_timeline": "الخط الزمني",
+  "notebook_answered_layout": "عرض الصلوات المستجابة"
 }
