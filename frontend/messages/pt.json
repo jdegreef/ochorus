@@ -967,5 +967,15 @@
   "notebook_list_remind": "Lembrar-me de orar por esta lista",
   "notebook_list_remind_title": "Lembrar-me de orar por: {group}",
   "notebook_group_remind_summary": "Orar por: {group}",
-  "notebook_all_lists": "Todas as listas"
+  "notebook_all_lists": "Todas as listas",
+  "notebook_collections": "Coleções",
+  "notebook_collection_label": "Coleção",
+  "notebook_collection_placeholder": "Coleção (opcional), ex.: Estudo de Romanos",
+  "notebook_collection_one": "1 registro",
+  "notebook_collection_many": "{n} registros",
+  "notebook_collection_rename": "Renomear",
+  "notebook_collection_export": "Exportar",
+  "notebook_collection_remove": "Remover coleção",
+  "notebook_collection_remove_confirm": "Toque de novo — os registros são mantidos",
+  "notebook_all_entries": "Tudo"
 }

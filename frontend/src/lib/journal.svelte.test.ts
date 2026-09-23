@@ -5,7 +5,7 @@ import { JOURNAL_DIRTY_KEY, JOURNAL_KEY } from './reading-schema';
 
 const stored = () => JSON.parse(localStorage.getItem(JOURNAL_KEY) || '{}');
 const owed = () => JSON.parse(localStorage.getItem(JOURNAL_DIRTY_KEY) || '{}');
-const draft = { title: '', body: 'For Anna', ref: '', person: 'Anna', group: 'family' as const };
+const draft = { title: '', body: 'For Anna', ref: '', person: 'Anna', group: 'family' as const, collection: '' };
 const only = () => Object.values(journal.store).filter((e) => !e.deleted);
 
 beforeEach(() => {
@@ -65,5 +65,17 @@ describe('journal store', () => {
 		journal.update(a, { body: 'one, edited' });
 		expect(journal.store[a].body).toBe('one, edited');
 		expect(journal.store[b]).toBe(before);
+	});
+
+	it('renames a collection across its entries, and takes it apart keeping them', () => {
+		journal.add({ ...draft, kind: 'note', body: 'one', collection: 'Romans' });
+		journal.add({ ...draft, kind: 'note', body: 'two', collection: 'romans' });
+		journal.add({ ...draft, kind: 'note', body: 'three', collection: 'Other' });
+		journal.renameCollection('ROMANS', 'Romans study');
+		const names = () => only().map((e) => e.collection).sort();
+		expect(names()).toEqual(['Other', 'Romans study', 'Romans study']);
+		journal.renameCollection('Romans study', '');
+		expect(names()).toEqual(['', '', 'Other']);
+		expect(only()).toHaveLength(3);
 	});
 });

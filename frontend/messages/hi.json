@@ -967,5 +967,15 @@
   "notebook_list_remind": "इस सूची के लिए प्रार्थना करना याद दिलाएँ",
   "notebook_list_remind_title": "इनके लिए प्रार्थना याद दिलाएँ: {group}",
   "notebook_group_remind_summary": "इनके लिए प्रार्थना करें: {group}",
-  "notebook_all_lists": "सभी सूचियाँ"
+  "notebook_all_lists": "सभी सूचियाँ",
+  "notebook_collections": "संग्रह",
+  "notebook_collection_label": "संग्रह",
+  "notebook_collection_placeholder": "संग्रह (वैकल्पिक), जैसे रोमियों का अध्ययन",
+  "notebook_collection_one": "1 प्रविष्टि",
+  "notebook_collection_many": "{n} प्रविष्टियाँ",
+  "notebook_collection_rename": "नाम बदलें",
+  "notebook_collection_export": "निर्यात करें",
+  "notebook_collection_remove": "संग्रह हटाएँ",
+  "notebook_collection_remove_confirm": "फिर से टैप करें — प्रविष्टियाँ बनी रहेंगी",
+  "notebook_all_entries": "सब"
 }

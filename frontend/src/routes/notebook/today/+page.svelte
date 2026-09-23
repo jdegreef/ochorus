@@ -92,7 +92,15 @@
 		dictation.stop();
 		const body = composeDaily(parts, names);
 		if (body) {
-			journal.add({ kind: 'daily', title: t('notebook.dailyTitle'), body, ref: '', person: '', group: '' });
+			journal.add({
+				kind: 'daily',
+				title: t('notebook.dailyTitle'),
+				body,
+				ref: '',
+				person: '',
+				group: '',
+				collection: ''
+			});
 		}
 		finished = true;
 		writeJSON(DAILY_DRAFT_KEY, null);

@@ -4,6 +4,8 @@ import { readJSON, writeJSON } from './persisted';
 import { readingSync } from './readingSync';
 import { undo } from './undo.svelte';
 import {
+	COLLECTION_MAX,
+	inCollection,
 	cleanEntry,
 	cleanStore,
 	newEntryId,
@@ -28,7 +30,10 @@ import {
 
 const readAll = (): JournalStore => cleanStore(readJSON<unknown>(JOURNAL_KEY, {}));
 
-export type EntryDraft = Pick<JournalEntry, 'kind' | 'title' | 'body' | 'ref' | 'person' | 'group'>;
+export type EntryDraft = Pick<
+	JournalEntry,
+	'kind' | 'title' | 'body' | 'ref' | 'person' | 'group' | 'collection'
+>;
 
 class Journal {
 	/** Every entry, tombstones included — views filter through `visibleEntries`. */
@@ -74,6 +79,7 @@ class Journal {
 			title: draft.title.trim(),
 			body: draft.body.trim(),
 			ref: draft.ref.trim(),
+			collection: draft.collection.trim(),
 			person: draft.person.trim(),
 			remind: '',
 			updates: [],
@@ -118,6 +124,17 @@ class Journal {
 			}),
 			true
 		);
+	}
+
+	/**
+	 * Rename a collection — every entry filed under it takes the new name. An
+	 * empty name takes them out of it; the entries themselves are kept.
+	 */
+	renameCollection(from: string, to: string) {
+		const name = to.trim().slice(0, COLLECTION_MAX);
+		for (const e of Object.values(readAll())) {
+			if (!e.deleted && inCollection(e, from)) this.#mutate(e.id, (cur) => ({ ...cur, collection: name }));
+		}
 	}
 
 	/** Delete, with a few seconds' Undo — a prayer journal is not a place to lose words. */

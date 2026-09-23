@@ -967,5 +967,15 @@
   "notebook_list_remind": "Remind me to pray through this list",
   "notebook_list_remind_title": "Remind me to pray for {group}",
   "notebook_group_remind_summary": "Pray for: {group}",
-  "notebook_all_lists": "All lists"
+  "notebook_all_lists": "All lists",
+  "notebook_collections": "Collections",
+  "notebook_collection_label": "Collection",
+  "notebook_collection_placeholder": "Collection (optional), e.g. Romans study",
+  "notebook_collection_one": "1 entry",
+  "notebook_collection_many": "{n} entries",
+  "notebook_collection_rename": "Rename",
+  "notebook_collection_export": "Export",
+  "notebook_collection_remove": "Remove collection",
+  "notebook_collection_remove_confirm": "Tap again — entries are kept",
+  "notebook_all_entries": "Everything"
 }

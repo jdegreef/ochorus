@@ -967,5 +967,15 @@
   "notebook_list_remind": "Нагадувати молитися за цей список",
   "notebook_list_remind_title": "Нагадувати молитися: {group}",
   "notebook_group_remind_summary": "Помолитися: {group}",
-  "notebook_all_lists": "Усі списки"
+  "notebook_all_lists": "Усі списки",
+  "notebook_collections": "Збірки",
+  "notebook_collection_label": "Збірка",
+  "notebook_collection_placeholder": "Збірка (необов'язково), напр. Вивчення Римлян",
+  "notebook_collection_one": "1 запис",
+  "notebook_collection_many": "Записів: {n}",
+  "notebook_collection_rename": "Перейменувати",
+  "notebook_collection_export": "Експортувати",
+  "notebook_collection_remove": "Прибрати збірку",
+  "notebook_collection_remove_confirm": "Торкніться ще раз — записи залишаться",
+  "notebook_all_entries": "Усе"
 }

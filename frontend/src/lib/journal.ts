@@ -53,6 +53,8 @@ export interface JournalEntry {
 	body: string;
 	/** Optional Scripture / passage the entry is about ("Psalm 23"). */
 	ref: string;
+	/** The collection it is filed in ("Notes on Humility"), or ''. */
+	collection: string;
 	/** Who or what a prayer is for ("Anna", "Gulu church"). Prayers only. */
 	person: string;
 	group: PrayerGroup | '';
@@ -79,6 +81,7 @@ export const BODY_MAX = 20_000;
 export const ANSWER_MAX = 10_000;
 export const REF_MAX = 200;
 export const PERSON_MAX = 80;
+export const COLLECTION_MAX = 80;
 export const UPDATE_MAX = 2_000;
 const MAX_UPDATES = 50;
 
@@ -150,6 +153,7 @@ export function cleanEntry(v: unknown): JournalEntry | null {
 		title: str(o.title, TITLE_MAX),
 		body: str(o.body, BODY_MAX),
 		ref: str(o.ref, REF_MAX),
+		collection: str(o.collection, 200).trim().slice(0, COLLECTION_MAX),
 		person: prayer ? str(o.person, PERSON_MAX) : '',
 		group: prayer && PRAYER_GROUPS.includes(o.group as PrayerGroup) ? (o.group as PrayerGroup) : '',
 		remind: prayer && typeof o.remind === 'string' && REMIND_RE.test(o.remind) ? o.remind : '',
@@ -163,6 +167,7 @@ export function cleanEntry(v: unknown): JournalEntry | null {
 }
 
 const BLANK = {
+	collection: '',
 	title: '',
 	body: '',
 	ref: '',
@@ -211,7 +216,7 @@ function matchesQuery(e: JournalEntry, q: string): boolean {
 	if (!q) return true;
 	let hay = searchText.get(e);
 	if (hay === undefined) {
-		hay = [e.title, e.body, e.ref, e.answer, e.person, e.source?.quote ?? '', ...e.updates.map((u) => u.text)]
+		hay = [e.title, e.body, e.ref, e.collection, e.answer, e.person, e.source?.quote ?? '', ...e.updates.map((u) => u.text)]
 			.join('\n')
 			.toLowerCase();
 		searchText.set(e, hay);
@@ -366,6 +371,7 @@ export interface ServerJournalEntry {
 	answer: string;
 	answered_at: string | number | null;
 	ref: string;
+	collection?: string;
 	person?: string;
 	group?: string;
 	remind?: string;
@@ -385,6 +391,7 @@ export function toServer(e: JournalEntry): ServerJournalEntry {
 		title: e.title,
 		body: e.body,
 		ref: e.ref,
+		collection: e.collection,
 		person: e.person,
 		group: e.group,
 		remind: e.remind,
@@ -407,6 +414,7 @@ export function fromServer(j: ServerJournalEntry): JournalEntry | null {
 		title: j.title,
 		body: j.body,
 		ref: j.ref,
+		collection: j.collection,
 		person: j.person,
 		group: j.group,
 		remind: j.remind,
@@ -641,4 +649,41 @@ export function prayersByGroup(store: JournalStore, q = ''): PrayerList[] {
 			const cards = lists.get(group)!;
 			return { group, cards, count: cards.reduce((n, c) => n + c.prayers.length, 0) };
 		});
+}
+
+/** A collection: the entries filed under one name. */
+export interface Collection {
+	name: string;
+	count: number;
+	/** When something in it was last written or changed. */
+	updatedAt: number;
+}
+
+/** Collection names match whatever their case: "romans" and "Romans" are one. */
+const collectionKey = (name: string) => name.trim().toLocaleLowerCase();
+
+export function sameCollection(a: string, b: string): boolean {
+	return !!a && collectionKey(a) === collectionKey(b);
+}
+
+export function inCollection(e: JournalEntry, name: string): boolean {
+	return sameCollection(e.collection, name);
+}
+
+/**
+ * Every collection the reader has, most recently used first — the name as it
+ * was first written, and how many live entries are in it.
+ */
+export function collectionsOf(store: JournalStore): Collection[] {
+	const out = new Map<string, Collection>();
+	for (const e of Object.values(store)) {
+		if (e.deleted || !e.collection) continue;
+		const key = collectionKey(e.collection);
+		const c = out.get(key);
+		if (c) {
+			c.count += 1;
+			c.updatedAt = Math.max(c.updatedAt, e.updatedAt);
+		} else out.set(key, { name: e.collection, count: 1, updatedAt: e.updatedAt });
+	}
+	return [...out.values()].sort((a, b) => b.updatedAt - a.updatedAt);
 }

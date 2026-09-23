@@ -23,7 +23,16 @@
 	 * flow: mark it answered, say how (optional), and it gains the stamp and
 	 * the time it was prayed for — the request and the answer stay one entry.
 	 */
-	let { entry, locale }: { entry: JournalEntry; locale: string } = $props();
+	let {
+		entry,
+		locale,
+		onopencollection
+	}: {
+		entry: JournalEntry;
+		locale: string;
+		/** Show every entry in this entry's collection. */
+		onopencollection?: (name: string) => void;
+	} = $props();
 
 	const t = i18n.t;
 	/** The daily prayer's movement names, to set them apart in its text. */
@@ -83,7 +92,8 @@
 			body: entry.body,
 			ref: entry.ref,
 			person: entry.person,
-			group: entry.group
+			group: entry.group,
+			collection: entry.collection
 		}}
 		onsave={(d) => {
 			journal.update(entry.id, d);
@@ -101,6 +111,11 @@
 				{time(entry.createdAt)}
 			</time>
 			{#if entry.ref}<span class="ref text-small">{entry.ref}</span>{/if}
+			{#if entry.collection}
+				<button class="collection text-micro" onclick={() => onopencollection?.(entry.collection)}>
+					<span aria-hidden="true" class="me-1">📁</span>{entry.collection}
+				</button>
+			{/if}
 			<!-- Where this entry is: only here until the account has it. Signed out,
 			     the page says so once instead of on every entry. -->
 			{#if auth.enabled && auth.user}
@@ -277,6 +292,17 @@
 	}
 	.answered .kind {
 		color: var(--answered-ink);
+	}
+	.collection {
+		padding: 0 0.5rem;
+		border: 1px solid var(--border-strong);
+		border-radius: 999px;
+		color: var(--muted);
+		cursor: pointer;
+	}
+	.collection:hover {
+		color: var(--accent);
+		border-color: var(--accent);
 	}
 	.ref {
 		font-family: var(--font-display);

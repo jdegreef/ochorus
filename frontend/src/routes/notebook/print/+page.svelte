@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import { localizeHref } from '$lib/href';
 	import {
 		daysWaited,
+		inCollection,
 		journalForPrint,
 		periodStart,
 		type JournalEntry,
@@ -22,7 +24,10 @@
 	const t = i18n.t;
 	const locale = getLang();
 
-	let period = $state<PrintPeriod>('year');
+	// One collection ("Notes on Humility") printed as its own book: all of it,
+	// whenever written, under its own name.
+	const collection = $page.url.searchParams.get('collection')?.trim() || null;
+	let period = $state<PrintPeriod>(collection ? 'all' : 'year');
 	let showAnswered = $state(true);
 	let showPraying = $state(true);
 	let showNotes = $state(true);
@@ -30,7 +35,13 @@
 
 	const now = new Date();
 	const from = $derived(periodStart(period, now));
-	const book = $derived(journalForPrint(journal.store, from));
+	const source = $derived(
+		collection
+			? Object.fromEntries(Object.entries(journal.store).filter(([, e]) => inCollection(e, collection)))
+			: journal.store
+	);
+	const book = $derived(journalForPrint(source, from));
+	const bookTitle = collection ?? t('notebook.printTitle');
 	const prayingCount = $derived(book.praying.reduce((n, c) => n + c.prayers.length, 0));
 	const empty = $derived(
 		!(showAnswered && book.answeredCount) &&
@@ -60,7 +71,7 @@
 	<!-- On screen only: what to print. -->
 	<div class="controls">
 		<a class="back text-small" href={localizeHref('/notebook')}>← {t('notebook.title')}</a>
-		<h1 class="text-h1 mt-2">{t('notebook.printTitle')}</h1>
+		<h1 class="text-h1 mt-2">{bookTitle}</h1>
 		<p class="mt-1 text-body text-muted">{t('notebook.printIntro')}</p>
 
 		<div class="mt-5 flex flex-wrap items-center gap-2" role="group" aria-label={t('notebook.printPeriod')}>
@@ -90,7 +101,7 @@
 		<article class="book" lang={locale}>
 			<section class="title-page">
 				<p class="kicker">Ochorus</p>
-				<h2 class="book-title">{t('notebook.printTitle')}</h2>
+				<h2 class="book-title">{bookTitle}</h2>
 				<p class="range">{range}</p>
 				<p class="totals">
 					{#if showAnswered && book.answeredCount}<span>{t('notebook.tabAnswered')}: {book.answeredCount}</span>{/if}
