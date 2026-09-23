@@ -74,7 +74,7 @@
 				{#if kind === 'book'}
 					<div class="mt-2"><ProgressBar percent={0} label="" /></div>
 				{/if}
-				<div class="mt-1 text-micro">&nbsp;</div>
+				<div class="mt-1 truncate text-micro">&nbsp;</div>
 			</div>
 		</div>
 	</div>
@@ -109,7 +109,9 @@
 				<ProgressBar percent={item.pct} label="{item.title}: {caption}" />
 			</div>
 		{/if}
-		<div class="mt-1 text-micro text-muted">
+		<!-- One line, like the title and author: a translated caption wrapping on a
+		     narrow card would make the card taller than its placeholder. -->
+		<div class="mt-1 truncate text-micro text-muted">
 			{#if complete}<span class="text-gold" aria-hidden="true">✓</span> {/if}{caption}
 		</div>
 	</div>

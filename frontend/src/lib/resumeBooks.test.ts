@@ -105,13 +105,25 @@ describe('resumeBooks', () => {
 	});
 
 	it('records which in-progress books a language lacks, and forgets once one is opened there', async () => {
-		const { libraryBooks, knownAbsentBooks, rememberResumeBook } = await fresh();
+		const { libraryBooks, knownAbsent, rememberResumeBook } = await fresh();
 		progress({ a: {}, swahiliOnly: {} });
 		listBooks.mockResolvedValue([book('a')]);
 		await libraryBooks('en');
-		expect([...knownAbsentBooks('en')]).toEqual(['swahiliOnly']);
+		expect([...knownAbsent('en')]).toEqual(['swahiliOnly']);
 		rememberResumeBook('en', book('swahiliOnly')); // it exists after all
-		expect(knownAbsentBooks('en').size).toBe(0);
+		expect(knownAbsent('en').size).toBe(0);
+	});
+
+	it('records absent SERMONS too, and each kind leaves the other kind\u2019s marks alone', async () => {
+		const { libraryBooks, knownAbsent, recordSermonList } = await fresh();
+		progress({ grace: {}, 'sermon:s1': {}, 'sermon:s2': {} });
+		recordSermonList('sw', [{ slug: 's1' }]);
+		expect([...knownAbsent('sw')]).toEqual(['sermon:s2']);
+		listBooks.mockResolvedValue([]); // the Swahili list lacks the book too
+		await libraryBooks('sw');
+		expect([...knownAbsent('sw')].sort()).toEqual(['grace', 'sermon:s2']);
+		recordSermonList('sw', [{ slug: 's1' }, { slug: 's2' }]); // s2 translated since
+		expect([...knownAbsent('sw')]).toEqual(['grace']);
 	});
 
 	it('a replaced request failing late does not evict the fresh one', async () => {
@@ -130,13 +142,21 @@ describe('resumeBooks', () => {
 		expect(listBooks).toHaveBeenCalledTimes(2);
 	});
 
-	it('does not draw a cache written against another set of covers', async () => {
+	it('ignores a cache of another stored shape', async () => {
 		const { cachedResumeBooks } = await fresh();
 		localStorage.setItem(
 			RESUME_BOOKS_KEY,
-			JSON.stringify({ version: 'another-cover-set', books: { en: [book('a')] }, absent: {} })
+			JSON.stringify({ version: 'an-older-format', books: { en: [book('a')] } })
 		);
 		expect(cachedResumeBooks('en')).toEqual([]);
+	});
+
+	it('survives a deploy: the cache is not keyed to the build or the cover files', async () => {
+		// Resetting on either put placeholders in front of every returning
+		// reader on most deploys. The same module, reloaded, still draws it.
+		progress({ a: {} });
+		(await fresh()).rememberResumeBook('en', book('a'));
+		expect((await fresh()).cachedResumeBooks('en').map((b) => b.slug)).toEqual(['a']);
 	});
 
 	it('is wiped on sign-out with the rest of the reader’s data', () => {

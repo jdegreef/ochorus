@@ -3,8 +3,9 @@
 	import { listSermons, type CoverBook, type SermonSummary } from '$lib/library-public';
 	import {
 		cachedResumeBooks,
-		knownAbsentBooks,
+		knownAbsent,
 		libraryBooks,
+		recordSermonList,
 		unfinishedBookSlugs
 	} from '$lib/resumeBooks';
 	import { workSlugKey } from '$lib/reading-schema';
@@ -29,8 +30,8 @@
 	 * drawable yet — a cache miss, a changed cover set, a sermon — holds its
 	 * card's space AND its place with a placeholder until its list lands: the
 	 * strip is drawn as slots in recency order, so a card never moves under the
-	 * reader's thumb when a newer work fills in ahead of it. A book the
-	 * language's last list did not have gets no slot at all. Works
+	 * reader's thumb when a newer work fills in ahead of it. A book or sermon
+	 * the language's last list did not have gets no slot at all. Works
 	 * unknown in this language are skipped. A FINISHED work leaves this strip for
 	 * the finished shelf (/reading#finished); the rest age off naturally as newer
 	 * reads push them past the limit. Renders nothing when there's nothing in
@@ -48,24 +49,38 @@
 	// Lists still in flight — while one is, its works get placeholders.
 	let loadingBooks = $state(false);
 	let loadingSermons = $state(false);
+	// Works this language's last lists lacked (see `$lib/resumeBooks`). Read
+	// from storage here, once per fetch and once per landed list — not inside
+	// the derived below, which would re-parse it on every recompute.
+	let absent = $state<Set<string>>(new Set());
 
 	function fetchListsIfNeeded() {
 		const progress = allProgress();
+		const lang = getLang();
+		absent = knownAbsent(lang);
 		if (unfinishedBookSlugs(progress).length) {
-			const lang = getLang();
 			if (!bookList.length) bookList = cachedResumeBooks(lang);
 			loadingBooks = true;
 			libraryBooks(lang)
 				.then((l) => (bookList = l))
 				.catch(() => {})
-				.finally(() => (loadingBooks = false));
+				.finally(() => {
+					absent = knownAbsent(lang);
+					loadingBooks = false;
+				});
 		}
 		if (sermonList === null && progress.some((p) => p.kind === 'sermon' && p.finished_at == null)) {
 			loadingSermons = true;
-			listSermons(getLang())
-				.then((l) => (sermonList = l))
+			listSermons(lang)
+				.then((l) => {
+					sermonList = l;
+					recordSermonList(lang, l);
+				})
 				.catch(() => {})
-				.finally(() => (loadingSermons = false));
+				.finally(() => {
+					absent = knownAbsent(lang);
+					loadingSermons = false;
+				});
 		}
 	}
 
@@ -100,12 +115,12 @@
 			return drawable.slice(0, limit).map((item) => ({ key: item.key, item }));
 		}
 		const byKey = new Map(drawable.map((i) => [i.key, i]));
-		const absent = knownAbsentBooks(getLang());
 		return allProgress()
 			.filter(
 				(p) =>
 					p.finished_at == null &&
-					(p.kind === 'sermon' || (p.kind === 'book' && !absent.has(p.slug)))
+					(p.kind === 'book' || p.kind === 'sermon') &&
+					!absent.has(workSlugKey(p.kind, p.slug))
 			)
 			.slice(0, limit)
 			.map((p) => {
