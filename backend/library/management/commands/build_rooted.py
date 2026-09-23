@@ -246,6 +246,72 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    4: {
+        "sort_order": 78,
+        "publication_year": 2026,
+        "title": "Rooted – 30 Days with God for Youth – Book 4",
+        "subtitle": "Strong in the Storm: courage for when you’re afraid, sad, tempted or treated unfairly",
+        "cover_url": "/covers/rooted-4.svg",
+        "cover_color": covers.ink_safe("#34495e"),  # a storm-cloud slate
+        "description": (
+            "Thirty short daily devotions for readers aged 9 to 12 about standing "
+            "strong in the storms of life: fear, worry, sadness and grief, "
+            "temptation, and times when life isn’t fair. With David, Joseph, "
+            "Daniel, his three friends and Esther, and the armor of God. Each day "
+            "has a Bible verse, a short teaching, a question, something to try "
+            "and a prayer. The fourth book of Rooted."
+        ),
+        "about_html": (
+            "<p>Rooted is an original Ochorus devotional series for readers aged 9 "
+            "to 12, and this is its fourth book. It begins with Jesus’ story of "
+            "two builders: the storm hit both houses, and the one on the rock "
+            "stood. Storms come to everyone, and Book 4 is about the foundation "
+            "that holds when they do.</p>"
+            "<p>The first week is about fear, with David’s trust, the Shepherd "
+            "of Psalm 23, Joshua’s courage, Goliath, and sleeping in peace. The "
+            "second is about worry and sadness: casting cares on God, praying "
+            "instead of worrying, Jesus weeping, grieving with hope when someone "
+            "dies, and God as Father when home is hard. The third faces "
+            "temptation with Joseph and Daniel, and teaches how to get back up "
+            "after a fall. The fourth puts on the armor of God and stands with "
+            "Shadrach, Meshach and Abednego, Daniel in the lions’ den, and "
+            "Esther. The fifth holds on to hope: Joseph’s “God intended it for "
+            "good,” God’s higher ways, wings like eagles, grace that is enough, "
+            "and the love nothing can separate us from.</p>"
+            "<p>Every day follows the same short pattern: a Scripture from the "
+            "Berean Standard Bible, a teaching, a question to think about, one "
+            "thing to try, and a prayer. The days on grief and on a hard home "
+            "are written gently and point readers to a trusted adult, and "
+            "several days remind them to tell a trusted adult if anyone is "
+            "hurting them.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 4 of Rooted about?",
+                "answer": "Standing strong in the storms of life. Over thirty short daily devotions it helps young readers face fear, worry, sadness, temptation and unfairness by trusting God, with stories of David, Joseph, Daniel, his three friends and Esther.",
+            },
+            {
+                "question": "Does it talk about hard things like death or trouble at home?",
+                "answer": "Yes, gently. Day 10 is about grieving with hope when someone dies, and Day 11 is about when home is hard. Both encourage readers to talk with a trusted adult, and parents may want to read those days together with their child.",
+            },
+            {
+                "question": "Who is it for?",
+                "answer": "Readers aged 9 to 12, to read on their own or with a parent, grandparent or leader. It is especially helpful for a child who is going through something scary or sad.",
+            },
+            {
+                "question": "Do I need to read the earlier books first?",
+                "answer": "No. Each book of Rooted stands on its own, and the introduction explains how each day works. The earlier books help, but you can start here.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+            {
+                "question": "What comes after Book 4?",
+                "answer": "Book 5, about how God’s love reaches out through us: loving family, being a true friend, forgiving, belonging to God’s family at church, and caring about people all over the world.",
+            },
+        ],
+    },
 }
 
 _INLINE = [
