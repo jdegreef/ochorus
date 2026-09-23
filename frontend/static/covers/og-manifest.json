@@ -2574,6 +2574,16 @@
 			"layout": "split/mauve",
 			"bar": 0
 		},
+		"sons-of-the-king-1": {
+			"ground": "a94eeaa265258a81933aa47ea7c235ba9e1d3b6035d7fe534a6c778157f20cb3",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"spurgeon-on-prayer": {
 			"ground": "ca182666c92fe4b62928fa74cacacdf3495b0906d51a09507a0a5b96b32dc06f",
 			"style": "revival",
