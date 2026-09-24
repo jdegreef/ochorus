@@ -13,5 +13,12 @@
       "Job #791. Names follow the shipped uk corpus: Мюррей (17×), Муді (44×). Hannah Buyinza has no uk precedent; transliterated Ганна Буїнза.",
       "The row appears only once all three source books (lord-teach-us-to-pray-2, prevailing-prayer, prayer-the-pulse-of-life) exist in uk — none do yet."
     ]
+  },
+  "humility-12-days": {
+    "title": "Смирення за 12 днів",
+    "description": "Класична праця Ендрю Мюррея про корінь усякої чесноти — один короткий розділ щодня впродовж дванадцяти днів.",
+    "note": [
+      "Job #811 (with plan jobs #803 / #890): ships in the same PR as humility-2.uk, the plan's single source book, so the uk plans page never shows an English card. Title opens with the book's shipped uk title «Смирення»."
+    ]
   }
 }

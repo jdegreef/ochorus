@@ -1,0 +1,726 @@
+{
+ "kind": "book",
+ "slug": "humility-2",
+ "language": "uk",
+ "job_issue": 811,
+ "pull_request": 3245,
+ "references": [
+  {
+   "reference": "Revelation 4:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Philippians 2:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Colossians 2:7a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Philippians 2:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Philippians 2:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 16:24b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 22:27b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 23:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 38
+  },
+  {
+   "reference": "Philippians 2:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 39
+  },
+  {
+   "reference": "John 5:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "John 5:30",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "John 5:41",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 44
+  },
+  {
+   "reference": "John 6:38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "John 7:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "John 7:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "John 8:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "John 8:42",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "John 8:50",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 47
+  },
+  {
+   "reference": "John 14:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 47
+  },
+  {
+   "reference": "John 14:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Matthew 11:29b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 20:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 20:28a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 61
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 61
+  },
+  {
+   "reference": "Matthew 11:29b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 65
+  },
+  {
+   "reference": "Matthew 18:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Matthew 18:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Luke 9:48a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Luke 9:48b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 67
+  },
+  {
+   "reference": "Matthew 20:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 68
+  },
+  {
+   "reference": "Matthew 20:28a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 68
+  },
+  {
+   "reference": "Matthew 23:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 69
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 70
+  },
+  {
+   "reference": "Luke 18:14b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 71
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 72
+  },
+  {
+   "reference": "Luke 22:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 72
+  },
+  {
+   "reference": "Luke 22:27b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 72
+  },
+  {
+   "reference": "Luke 22:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 72
+  },
+  {
+   "reference": "Luke 22:27b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 72
+  },
+  {
+   "reference": "Luke 22:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 80
+  },
+  {
+   "reference": "Luke 5:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 82
+  },
+  {
+   "reference": "Matthew 11:29a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 87
+  },
+  {
+   "reference": "Matthew 20:28a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 87
+  },
+  {
+   "reference": "Luke 22:27b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 87
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "self_rendered",
+   "block_index": 91,
+   "why": "Both fragments are verbatim Kulish; Murray's own interjection 'even in the heart' splits the verse, so the body string is not one contiguous substring. Initial letter capitalised at sentence start."
+  },
+  {
+   "reference": "1 John 4:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 96
+  },
+  {
+   "reference": "Romans 12:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "Romans 12:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "Proverbs 3:7a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "1 Corinthians 13:4a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "1 Corinthians 13:4b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Galatians 5:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 103
+  },
+  {
+   "reference": "Ephesians 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 103
+  },
+  {
+   "reference": "Ephesians 5:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 103
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 104
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 104
+  },
+  {
+   "reference": "Philippians 2:7a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 104
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Colossians 3:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 107
+  },
+  {
+   "reference": "2 Corinthians 12:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 110
+  },
+  {
+   "reference": "Colossians 3:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 110
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "Murray's phrase 'a heart of humility' has no Kulish equivalent (Kulish: 'милость милосердя ... смирність'); short allusion rendered in prose case"
+  },
+  {
+   "reference": "Isaiah 65:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 119
+  },
+  {
+   "reference": "Job 1:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 123
+  },
+  {
+   "reference": "Luke 18:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 123
+  },
+  {
+   "reference": "Luke 18:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 123
+  },
+  {
+   "reference": "Isaiah 65:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 126
+  },
+  {
+   "reference": "Luke 18:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 128
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 128
+  },
+  {
+   "reference": "Isaiah 65:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 131
+  },
+  {
+   "reference": "1 Timothy 1:15b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 135
+  },
+  {
+   "reference": "1 Corinthians 15:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "1 Corinthians 15:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "1 Timothy 1:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "1 Timothy 1:15b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "1 Thessalonians 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 142
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 142
+  },
+  {
+   "reference": "Romans 7:18a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 145
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 145
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 147
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "self_rendered",
+   "block_index": 148,
+   "why": "Murray quotes the phrase 'heart of humility'; Kulish Col 3:12 has only 'смирність' (no 'heart'), so the two-word phrase is rendered conservatively."
+  },
+  {
+   "reference": "Isaiah 2:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 150
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 152
+  },
+  {
+   "reference": "John 5:44a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 152
+  },
+  {
+   "reference": "Matthew 8:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 157
+  },
+  {
+   "reference": "Matthew 8:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 157
+  },
+  {
+   "reference": "Matthew 15:28b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 157
+  },
+  {
+   "reference": "Matthew 15:27b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 157
+  },
+  {
+   "reference": "John 5:44a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 164
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 166
+  },
+  {
+   "reference": "Romans 6:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 180
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 181
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 185
+  },
+  {
+   "reference": "2 Corinthians 12:9b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 192
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 193
+  },
+  {
+   "reference": "2 Corinthians 12:9-10",
+   "status": "self_rendered",
+   "block_index": 196,
+   "why": "Murray's loose first-person paraphrase ('Most gladly do I glory in weakness, I take pleasure in whatever humbles me'); Kulish has no such wording, rendered in modern Ukrainian echoing Kulish's 'любо менї'."
+  },
+  {
+   "reference": "2 Corinthians 12:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 204
+  },
+  {
+   "reference": "2 Corinthians 12:9b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 206
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 207
+  },
+  {
+   "reference": "2 Corinthians 12:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 207
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 207
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 213
+  },
+  {
+   "reference": "James 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 214
+  },
+  {
+   "reference": "1 Peter 5:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 215
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 219
+  },
+  {
+   "reference": "James 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 224
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 226
+  },
+  {
+   "reference": "1 Peter 4:14b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 227
+  },
+  {
+   "reference": "2 Corinthians 12:9b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 228
+  },
+  {
+   "reference": "Isaiah 57:15b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 230
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 232
+  }
+ ],
+ "note": [
+  "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “. Hebrews would be cited as Євреїв, not Kulish's Жидів (none quoted here)."
+ ]
+}

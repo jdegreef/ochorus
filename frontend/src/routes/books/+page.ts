@@ -4,6 +4,19 @@
 // reader page bakes the 33 chapters. No plans/+page.ts touch owed — holy-in-christ backs the
 // curated pursuit-of-holiness plan, but its other source books (a-serious-call,
 // plain-account-christian-perfection) have no es edition yet, so seed_plans creates no es plan row.
+// prerender refresh 2026-09-24 (queue job #811, PR #3245): Andrew Murray's Смирення — the Ukrainian
+// edition of humility-2, 12 chapters — bakes into the /uk/books shelf.
+// prerender refresh 2026-09-24: one NEW Swahili book — revival-lectures (#2580), Charles Finney's
+// 1835 "Lectures on Revivals of Religion", 24 chapters ("Mihadhara juu ya Uamsho wa Dini").
+// Rebuilds /sw/books so the card carries its translated title over the shared painting cover, and
+// the reader page bakes the 24 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no
+// plans/+page.ts touch owed.
+// prerender refresh 2026-09-23: one NEW English book — daughters-of-the-king-3, "Daughters of the
+// King – 30 Days with God for Girls – Book 3" (Growing Up), volume 3 of the house-written girls'
+// devotional series (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB
+// Scripture). Rebuilds /books and the For Young Readers shelf so the card and its young-style plate
+// cover (volume 3) appear, and the reader pages bake the chapters. Backs the new
+// daughters-of-the-king-book-3-30-days plan.
 // prerender refresh 2026-09-24 (queue job #812): Gareth Evans's Ключ у моїй руці — the Ukrainian
 // edition of the-key-in-my-hand, 15 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-23: one NEW English book — sons-of-the-king-2, "Sons of the King – 30
@@ -366,6 +379,8 @@
 // edition — so seed_plans creates no uk plan row and plans/+page.ts has
 // nothing new to bake. Whoever ships that second book DOES owe the plans
 // touch, because it completes the set.
+// prerender refresh 2026-09-24 (queue job #1755): वॉचमैन नी — the Hindi edition of
+// watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
