@@ -1,0 +1,304 @@
+{
+ "kind": "book",
+ "slug": "women-who-moved-heaven-2",
+ "language": "es",
+ "job_issue": 1783,
+ "references": [
+  {
+   "reference": "Joel 2:28-29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 16:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 16:23-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colosenses 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 18:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 56:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timoteo 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lamentaciones 2:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 126:5",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Salmos 126:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 46:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corintios 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 15:5",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Proverbios 22:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 119:147",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremías 29:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 18:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Josué 24:15b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 4:11-12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 15:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 43:2",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Filipenses 4:7",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "2 Corintios 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 2:20",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Lucas 10:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 41:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 9:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:28",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Filipenses 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 23:4",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "1 Pedro 5:7",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Romanos 8:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 40:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 9:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 12:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 1:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 10:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corintios 5:14",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json"
+  },
+  {
+   "reference": "Josué 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 6:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zacarías 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 11:33-34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 121:1-2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 9:23",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json"
+  },
+  {
+   "reference": "Proverbios 3:5-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corintios 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 18:19-20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 5:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 2:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremías 29:13",
+   "status": "mined",
+   "source_file": "ministry-of-intercession.es.json"
+  },
+  {
+   "reference": "Mateo 7:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 7:8",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Salmo 56:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timoteo 2:1-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 126:5-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 46:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Josué 24:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 4:6-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:38-39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 9:37-38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 10:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corintios 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 121:1-2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 9:23",
+   "status": "self_rendered"
+  }
+ ]
+}

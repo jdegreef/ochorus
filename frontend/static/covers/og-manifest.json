@@ -974,6 +974,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"es/women-who-moved-heaven-2": {
+			"ground": "625af6cd81769aadc439ccec0cdf4e2c69543bcc64a2cd34dfb875ccf2822812",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"essentials-of-prayer": {
 			"ground": "a3a08b7bec07326fc082f318a9e802f90c63c4db8741bf81482c6c748df952d2",
 			"style": "devotional",
