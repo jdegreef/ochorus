@@ -109,7 +109,7 @@
 			<circle cx="17" cy="18" r="2.6" />
 			<path d="M8.3 10.9 14.7 7.2M8.3 13.1l6.4 3.7" />
 		</svg>
-		{#if showLabel}<span>{t('reader.share')}</span>{/if}
+		{#if showLabel}<span class="btn-label">{t('reader.share')}</span>{/if}
 	</button>
 
 	{#if open}
