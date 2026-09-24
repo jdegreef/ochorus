@@ -1,0 +1,45 @@
+{
+ "kind": "sermon",
+ "slug": "every-mans-need-of-a-refuge",
+ "language": "fr",
+ "job_issue": 2997,
+ "references": [
+  {
+   "reference": "Isaiah 32:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 17:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "self_rendered"
+  }
+ ]
+}
