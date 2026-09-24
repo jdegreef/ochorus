@@ -25,10 +25,13 @@ export const entries: EntryGenerator = async () => {
 // never have been built), read from the same list the entry generator uses.
 type ScriptureNav = { href: string; label: string } | null;
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
 	const chapter = Number(params.chapter);
 	const [page, all] = await Promise.all([
-		orNotFound(() => getScripturePage(params.book, chapter)),
+		orNotFound(() => getScripturePage(params.book, chapter, undefined, fetch)),
+		// Global fetch on purpose: the whole ~155 KB index just for prev/next
+		// would be inlined into every chapter page. Hydration fetches it (and
+		// the browser can cache it across chapters); a failure only drops the nav.
 		listScripturePages().catch(() => [])
 	]);
 	const chapters = all

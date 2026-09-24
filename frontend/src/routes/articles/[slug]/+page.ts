@@ -33,7 +33,7 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
 	// Common path: a real article. getLang() (not a hardcoded 'en') is
 	// intentional — the detail page is already built translation-ready
 	// (self-referential canonical + hreflang from available_languages) while the
@@ -41,7 +41,7 @@ export const load: PageLoad = async ({ params }) => {
 	// back to English on a 404, so a localized URL degrades to the English
 	// original rather than 404ing.
 	try {
-		const article = await getArticle(params.slug, getLang());
+		const article = await getArticle(params.slug, getLang(), fetch);
 		return { kind: 'article' as const, article };
 	} catch (e) {
 		// ONLY a 404 means "not an article, maybe a topic". Any other failure (a
@@ -53,7 +53,7 @@ export const load: PageLoad = async ({ params }) => {
 	// Not an article — is the slug a published topic that tags ≥1 article? The
 	// index list carries each article's topic chips, so its union is exactly the
 	// set entries() prerenders and the only set that can render a non-empty shelf.
-	const articles = await listArticles('en');
+	const articles = await listArticles('en', fetch);
 	const tab = articles.flatMap((a) => a.topics ?? []).find((tc) => tc.slug === params.slug);
 	if (!tab) throw error(404, 'Not found');
 	return { kind: 'topic' as const, topicSlug: tab.slug, topicTitle: tab.title, articles };

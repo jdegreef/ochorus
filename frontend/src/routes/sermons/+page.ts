@@ -313,7 +313,7 @@ import type { PageLoad } from './$types';
  * per the #741 note above Render would otherwise SKIP the web build and the
  * fr shelf would keep serving English titles while the API serves French.
 */
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listSermons(getLang()));
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listSermons(getLang(), fetch));
 	return { sermons: items, loadError };
 };

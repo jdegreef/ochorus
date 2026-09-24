@@ -419,11 +419,11 @@ export const entries: EntryGenerator = async () => {
 // Bonhoeffer, John Stott, Timothy Keller, Loren Cunningham).
 //
 // Prerender refresh 2026-09-23 (queue job #2563): sw Elisabeth Elliot bio.
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
 	// The RESOLVED language, not the requested one: getAuthor falls back to
 	// English on a 404, and the reader labels the bio's prose with this.
 	const { data: author, language } = await orNotFound(() =>
-		getAuthorWithLang(params.slug, getLang())
+		getAuthorWithLang(params.slug, getLang(), fetch)
 	);
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
 	// them so the page renders instead of throwing during prerender.

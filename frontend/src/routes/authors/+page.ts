@@ -12,8 +12,8 @@ import type { PageLoad } from './$types';
  * birth years, both language-independent, and asking per-locale would make this
  * page's completeness depend on which bios happen to be translated.
  */
-export const load: PageLoad = async () => {
-	const authors = await listAuthors();
+export const load: PageLoad = async ({ fetch }) => {
+	const authors = await listAuthors('en', fetch);
 	// Only eras that actually contain a writer, matching the era route's own
 	// `entries()` — prerendering an empty era would bake a page the sitemap
 	// never advertises.

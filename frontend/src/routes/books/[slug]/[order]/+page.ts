@@ -54,7 +54,7 @@ export const entries: EntryGenerator = async () => {
 	);
 };
 
-export const load: PageLoad = async ({ params, url }) => {
+export const load: PageLoad = async ({ params, url, fetch }) => {
 	// ?edition=modern reads the Modern English edition (en-modern) instead of the
 	// locale copy. Query params don't exist at prerender time (touching
 	// url.searchParams here would fail the build), so the static HTML is always
@@ -72,7 +72,7 @@ export const load: PageLoad = async ({ params, url }) => {
 	// nothing — a wrong value actively misleads where a missing one abstains.
 	const requested = modern ? MODERN_EDITION : getLang();
 	const { data: chapter, language } = await orNotFound(() =>
-		getChapterWithLang(params.slug, Number(params.order), requested)
+		getChapterWithLang(params.slug, Number(params.order), requested, fetch)
 	);
 	return { chapter, slug: params.slug, language, edition: modern ? 'modern' : null };
 };

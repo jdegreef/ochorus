@@ -9,7 +9,7 @@ export const trailingSlash = 'always';
 // English works. The list comes from the same endpoint the topic-page entry
 // generator and the sitemap read, so all three advertise exactly the themes deep
 // enough to have earned a page.
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listQuoteTopics());
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listQuoteTopics(fetch));
 	return { topics: items, loadError };
 };

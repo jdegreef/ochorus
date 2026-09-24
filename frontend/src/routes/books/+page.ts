@@ -749,7 +749,7 @@ import type { PageLoad } from './$types';
  * already shipped, so plans/+page.ts is refreshed in the same PR — the two
  * plans go live the moment these books do.
  */
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listBooks(getLang()));
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listBooks(getLang(), fetch));
 	return { books: items, loadError };
 };

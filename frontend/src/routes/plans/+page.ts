@@ -232,7 +232,7 @@ import type { PageLoad } from './$types';
  * seed_plans creates humility-12-days in uk as Смирення за 12 днів and /uk/plans
  * re-crawls to bake the new card.
  */
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listPlans(getLang()));
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listPlans(getLang(), fetch));
 	return { plans: items, loadError };
 };
