@@ -459,7 +459,7 @@
 				{#if book.epub_url || book.pdf_url}
 					<span class="inline-flex items-center gap-1">
 						<Icon name="download" size={16} class="text-muted" />
-						<span class="sr-only sm:not-sr-only text-small text-muted"
+						<span class="text-small text-muted"
 							>{t('book.freeDownload')}</span
 						>
 						{#if book.epub_url}
