@@ -4,33 +4,7 @@
 	"locales": {
 		"ar": {
 			"missing": [],
-			"pending": [
-				"book_also_on",
-				"book_more_by",
-				"feedback_about",
-				"feedback_edit_intro",
-				"feedback_edit_title",
-				"feedback_error",
-				"feedback_intro",
-				"feedback_placeholder",
-				"feedback_send",
-				"feedback_sending",
-				"feedback_submit",
-				"feedback_suggested_label",
-				"feedback_suggested_placeholder",
-				"feedback_thanks_body",
-				"feedback_thanks_title",
-				"feedback_title",
-				"feedback_type",
-				"feedback_type_bug",
-				"feedback_type_content",
-				"feedback_type_feature",
-				"feedback_type_language",
-				"feedback_type_other",
-				"qa_section_title",
-				"reader_suggest_edit",
-				"sermon_questions_title"
-			]
+			"pending": []
 		},
 		"en": {
 			"missing": [],
@@ -46,63 +20,11 @@
 		},
 		"hi": {
 			"missing": [],
-			"pending": [
-				"book_also_on",
-				"book_more_by",
-				"feedback_about",
-				"feedback_edit_intro",
-				"feedback_edit_title",
-				"feedback_error",
-				"feedback_intro",
-				"feedback_placeholder",
-				"feedback_send",
-				"feedback_sending",
-				"feedback_submit",
-				"feedback_suggested_label",
-				"feedback_suggested_placeholder",
-				"feedback_thanks_body",
-				"feedback_thanks_title",
-				"feedback_title",
-				"feedback_type",
-				"feedback_type_bug",
-				"feedback_type_content",
-				"feedback_type_feature",
-				"feedback_type_language",
-				"feedback_type_other",
-				"qa_section_title",
-				"reader_suggest_edit",
-				"sermon_questions_title"
-			]
+			"pending": []
 		},
 		"lg": {
 			"missing": [],
-			"pending": [
-				"book_also_on",
-				"book_more_by",
-				"feedback_about",
-				"feedback_edit_intro",
-				"feedback_edit_title",
-				"feedback_error",
-				"feedback_intro",
-				"feedback_placeholder",
-				"feedback_send",
-				"feedback_sending",
-				"feedback_submit",
-				"feedback_suggested_label",
-				"feedback_suggested_placeholder",
-				"feedback_thanks_body",
-				"feedback_thanks_title",
-				"feedback_title",
-				"feedback_type",
-				"feedback_type_bug",
-				"feedback_type_content",
-				"feedback_type_feature",
-				"feedback_type_language",
-				"feedback_type_other",
-				"qa_section_title",
-				"reader_suggest_edit",
-				"sermon_questions_title"
-			]
+			"pending": []
 		},
 		"pt": {
 			"missing": [],
@@ -110,63 +32,11 @@
 		},
 		"sw": {
 			"missing": [],
-			"pending": [
-				"book_also_on",
-				"book_more_by",
-				"feedback_about",
-				"feedback_edit_intro",
-				"feedback_edit_title",
-				"feedback_error",
-				"feedback_intro",
-				"feedback_placeholder",
-				"feedback_send",
-				"feedback_sending",
-				"feedback_submit",
-				"feedback_suggested_label",
-				"feedback_suggested_placeholder",
-				"feedback_thanks_body",
-				"feedback_thanks_title",
-				"feedback_title",
-				"feedback_type",
-				"feedback_type_bug",
-				"feedback_type_content",
-				"feedback_type_feature",
-				"feedback_type_language",
-				"feedback_type_other",
-				"qa_section_title",
-				"reader_suggest_edit",
-				"sermon_questions_title"
-			]
+			"pending": []
 		},
 		"uk": {
 			"missing": [],
-			"pending": [
-				"book_also_on",
-				"book_more_by",
-				"feedback_about",
-				"feedback_edit_intro",
-				"feedback_edit_title",
-				"feedback_error",
-				"feedback_intro",
-				"feedback_placeholder",
-				"feedback_send",
-				"feedback_sending",
-				"feedback_submit",
-				"feedback_suggested_label",
-				"feedback_suggested_placeholder",
-				"feedback_thanks_body",
-				"feedback_thanks_title",
-				"feedback_title",
-				"feedback_type",
-				"feedback_type_bug",
-				"feedback_type_content",
-				"feedback_type_feature",
-				"feedback_type_language",
-				"feedback_type_other",
-				"qa_section_title",
-				"reader_suggest_edit",
-				"sermon_questions_title"
-			]
+			"pending": []
 		}
 	}
 }
