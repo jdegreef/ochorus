@@ -1147,6 +1147,297 @@ Should not dishearten thee."<br>
                     self.assertEqual(display_line(inner), "")
 
 
+class BrainerdRestoredBlocksMatchImporterTests(SimpleTestCase):
+    """Every English `restored_blocks` line for PG 65066 is what the importer emits.
+
+    See the `life-and-diary-of-david-brainerd` entry in `corrections.py`. The
+    guard in `restore_dropped_blocks` is a string match on the block, so a
+    re-import must produce the correction's block byte for byte, in front of
+    the same paragraph — or the body carries both. EDITION is every chapter
+    heading and every restored display line of the edition, verbatim (its
+    page numbers and `htmlonly`/`epubonly` correction spans included), with
+    each following paragraph cut to its opening. FILLER stands for the rest of
+    that paragraph: `extract_chapters` folds a section under 300 words into
+    the one before it, so a cut-down chapter has to be long enough to count.
+    """
+
+    EDITION = """<html><body>
+<div class="chapter">
+<h2 class="c010">FROM <br> <span class="large">PRESIDENT EDWARDS’ PREFACE.</span></h2>
+</div>
+<p class="c001">the interest of religion.” FILLER</p>
+<div class="c012">JONATHAN EDWARDS.</div>
+<div class="chapter">
+<h2 class="c014">CHAPTER I.</h2>
+</div>
+<p class="c015"><i>From his birth to the time when he began to study for the
+Ministry—containing his own narrative of his conversion,
+his connection with Yale-College, and the grounds of his
+expulsion.</i></p>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div>April 20, 1718-Feb. 1741.</div>
+</div>
+</div>
+<p class="c001">David Brainerd was born April FILLER</p>
+<div class="chapter">
+<h2 class="c010">CHAPTER II.</h2>
+</div>
+<p class="c015"><i>From about the time when he began the study of Theology,
+till he was licensed to preach.</i></p>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div>April 1, 1742-July 29, 1742.</div>
+</div>
+</div>
+<p class="c001">In the spring of 1742 Brainerd FILLER</p>
+<div class="lg-container-b c017">
+<div class="linegroup">
+<div class="group">
+<div class="line">“Farewell, vain world; my soul can bid Adieu</div>
+<div class="line">“My <span class="sc">Savior</span> taught me to abandon you.</div>
+<div class="line">“Your charms may gratify a <span class="fss">SENSUAL</span> <a id="corr38.29"></a><span class="htmlonly"><ins class="correction" title="mind">mind;</ins></span><span class="epubonly"><a href="#c_38.29" class="pginternal"><ins class="correction" title="mind">mind;</ins></a></span></div>
+<div class="line">“But cannot please a soul for <span class="sc">God</span> design’d.</div>
+<div class="line">“Forbear t’ entice; cease then my soul to call;</div>
+<div class="line">“’Tis fixed through grace; my God shall be my <span class="fss">ALL</span>.</div>
+<div class="line">“While he thus lets me heavenly glories view,</div>
+<div class="line">“Your beauties fade, my heart’s no room for you.”</div>
+</div>
+</div>
+</div>
+<p class="c001">“The Lord refreshed my soul FILLER</p>
+<div class="lg-container-b c017">
+<div class="linegroup">
+<div class="group">
+<div class="line">“Lord, I’m a stranger here alone;</div>
+<div class="line">“Earth no true comforts can afford;</div>
+<div class="line">“Yet, absent from my dearest one,</div>
+<div class="line">“My soul delights to cry ‘My Lord!’</div>
+<div class="line">“<span class="sc">Jesus</span>, my Lord, my only love,</div>
+<div class="line">“Possess my soul, nor thence depart:</div>
+<div class="line">“Grant me kind visits, heavenly Dove;</div>
+<div class="line">“My God shall then have all my heart.”</div>
+</div>
+</div>
+</div>
+<p class="c001"><i>April 27.</i> “I arose FILLER</p>
+<div class="chapter">
+<h2 class="c010">CHAPTER III.</h2>
+</div>
+<p class="c015"><i>From his being licensed to preach, till he was commissioned as a
+Missionary.</i></p>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div>July 30.-Nov. 25, 1742.</div>
+</div>
+</div>
+<p class="c001"><i>July 30, 1742.</i>—“Rode FILLER</p>
+<div class="chapter">
+<h2 class="c010">CHAPTER IV.</h2>
+</div>
+<p class="c015"><i>From his appointment as a Missionary, to his commencing his
+Mission among the Indians at Kaunaumeek, in New-York.</i></p>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div>Nov. 26, 1742.—March 31, 1743.</div>
+</div>
+</div>
+<p class="c001"><i>Nov. 26, 1742.</i>—“Had FILLER</p>
+<div class="chapter">
+<h2 class="c010">CHAPTER V.</h2>
+</div>
+<p class="c015"><i>His labors for nearly a year among the Indians at Kaunaumeek—temporal
+deprivations and sufferings—establishes a school—confession
+offered to the faculty of Yale College—days of fasting—methods
+of instructing the Indians—visit to New-Jersey
+and Connecticut—commencement of labor among the Indians
+at the Forks of the Delaware—Ordination.</i></p>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div>April 1, 1743.—June 12, 1744.</div>
+</div>
+</div>
+<p class="c001"><i>April 1, 1743.</i> “I rode FILLER</p>
+<div class="lg-container-b c017">
+<div class="linegroup">
+<div class="group">
+<div class="line">“Come death, shake hands; I’ll kiss thy bands;</div>
+<div class="line">“’Tis happiness for me to die.—</div>
+<div class="line">“What!—dost thou think that I will shrink?</div>
+<div class="line">“I’ll go to immortality.”</div>
+</div>
+</div>
+</div>
+<p class="c001">“In evening prayer, God was FILLER</p>
+<div class="chapter">
+<h2 class="c010">CHAPTER VI.</h2>
+</div>
+<p class="c015"><i>Labors for the Indians at and near the Forks of Delaware—idolatrous
+feast and dance—journey through the wilderness to Opeholhaupung
+or the Susquehanna—erects a cottage at Forks of the
+Delaware—some evidences of a work of the Spirit among the
+Indians—journey to New-England to obtain money to support
+a colleague—visit to the Indians on the Susquehanna—journey
+to Crossweeksung in New-Jersey.</i></p>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div>June 13, 1744.—June 18, 1745.</div>
+</div>
+</div>
+<p class="c001"><i>June 13, 1744.</i> [At Elizabeth FILLER</p>
+<div class="chapter">
+<h2 class="c010">CHAPTER VII.</h2>
+</div>
+<p class="c015"><i>Being part 1st of his public journal of “the Rise and Progress of
+a remarkable work of grace among the Indians in New-Jersey
+and Pennsylvania, kept by order of the Society in Scotland for
+propagating Christian knowledge.”—Commencement of his labors
+at Crossweeksung.—Renewal of labor at the Forks of
+Delaware.—Conversion of his Interpreter.—Return to Crossweeksung.—Outpouring
+of the spirit.—Visit to the Forks of
+Delaware and the Susquehanna.—A Powaw.—A Conjurer.—Renewal
+of labor at Crossweeksung.—Remarks on the works of
+Divine Grace.</i></p>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div>June 19.—Nov. 5, 1745.</div>
+</div>
+</div>
+<p class="c001">[We are now come to that part FILLER</p>
+<div class="nf-center-c0">
+<div class="nf-center">
+<div>“<i>Crossweeksung, in New-Jersey, June 17, 1745.</i></div>
+</div>
+</div>
+<p class="c001"><i>June 19.</i>—“I had spent FILLER</p>
+<div class="nf-center-c0">
+<div class="nf-center">
+<div><i>Forks of Delaware, in Pennsylvania, July, 1745.</i></div>
+</div>
+</div>
+<p class="c001"><i>Lord’s day, July 14.</i>—“Discoursed FILLER</p>
+<div class="c012"><i>Forks of Delaware, in Pennsylvania, Sept. 1745.</i></div>
+<p class="c001"><i>Lord’s day, Sept. 1.</i>—“Preached FILLER</p>
+<div class="c012"><span class="pageno" id="Page_167">167</span><i>Shaumoking, Sept. 1745.</i></div>
+<p class="c001"><i>Sept. 13.</i>—“After having FILLER</p>
+<div class="c012"><i>Juncauta, Sept. 1745.</i></div>
+<p class="c001"><i>Sept. 19.</i>—“Visited an FILLER</p>
+<div class="c012"><i>Forks of Delaware, Oct. 1745.</i></div>
+<p class="c001"><i>Oct. 1.</i>—“Discoursed FILLER</p>
+<div class="c012"><i>Crossweeksung, Oct. 1745.</i></div>
+<p class="c001"><i>Oct. 5.</i>—“Preached FILLER</p>
+<div class="chapter">
+<h2 class="c014">CHAPTER VIII.</h2>
+</div>
+<p class="c015"><i>Being part 2d of his public journal of “the Continuance and
+Progress of a remarkable work of grace among the Indians in
+New-Jersey and Pennsylvania kept by order of the Society in
+Scotland for propagating Christian knowledge.”—Renewal of
+labor at Crossweeksung—outpouring of the spirit—remarkable
+case—signal displays of divine power—a convert—a number of
+Christian Indians accompany him to the Forks of Delaware—striking
+conversion at Crossweeksung—day of fasting—Lord’s
+supper—conversion of a Conjurer—general remarks on the preceding
+narrative.</i></p>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div>Nov. 5, 1745.—June 19, 1746.</div>
+</div>
+</div>
+<div class="c012"><i>Crossweeksung, New-Jersey, 1745.</i></div>
+<p class="c001"><i>Lord’s day, Nov. 24.</i>—“Preached FILLER</p>
+<div class="c012"><i>Forks of Delaware, February, 1746.</i></div>
+<p class="c001"><i>Lord’s day, Feb. 16.</i>—“Knowing FILLER</p>
+<div class="c012"><i>Crossweeksung, March, 1746.</i></div>
+<p class="c001"><i>March 1.</i>—“Catechised FILLER</p>
+<div class="lg-container-b c017">
+<div class="linegroup">
+<div class="group">
+<div class="line">If God to build the house deny &amp;c.</div>
+</div>
+</div>
+</div>
+<p class="c001">and having recommended them FILLER</p>
+<div class="chapter">
+<h2 class="c010">GENERAL REMARKS<br> ON THE PRECEDING NARRATIVE.</h2>
+</div>
+<p class="c001">FILLER</p>
+<div class="chapter">
+<h2 class="c010">CHAPTER IX.</h2>
+</div>
+<p class="c015"><i>From the close of his Public Journal, June 19, 1746, to his death—continuance
+of labor at Crossweeksung and Cranberry—journey
+with six Christian Indians to the Susquehanna, and
+labors there—return to Crossweeksung—compelled by prostration
+of health to have the Indians—confinement by sickness at
+Elizabethtown—farewell visit to the Indians—his brother John
+succeeds him as a Missionary—arrival among his friends in
+Connecticut—visit to President Edwards in Northampton—journey
+to Boston, where he is brought near to death—usefulness
+in Boston—returns to Northampton—triumphs of grace
+in his last sickness—death.</i></p>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div>[June 19, 1746—October 9, 1747.]</div>
+</div>
+</div>
+<p class="c001"><i>Lord’s day, June 29, 1746.</i> FILLER</p>
+<div class="chapter">
+<h2 class="c014">CHAPTER X.</h2>
+</div>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div><i>Reflections on the preceding Memoirs.</i></div>
+</div>
+</div>
+<h3 class="c020">REFLECTION I.</h3>
+<p class="c001">In the life of Brainerd we may see FILLER</p>
+</body></html>"""
+
+    SLUG = "life-and-diary-of-david-brainerd"
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from library.management.commands.import_gutenberg import extract_chapters
+
+        cls.chapters = [body for _, body in extract_chapters(cls.EDITION.replace("FILLER", " word" * 300))]
+
+    def _english_pairs(self):
+        import json
+
+        from library.content_fixtures import book_fixture_path
+        from library.corrections import BODY_CORRECTIONS
+
+        rows = json.loads(book_fixture_path(self.SLUG, "en").read_text())
+        english = [r["fields"]["body_html"] for r in rows if "body_html" in r["fields"]]
+        pairs = [
+            (anchor, block)
+            for anchor, block in BODY_CORRECTIONS[self.SLUG]["restored_blocks"]
+            if any(anchor in body for body in english)
+        ]
+        return english, pairs
+
+    def test_every_restored_english_block_is_emitted_before_its_anchor(self):
+        english, pairs = self._english_pairs()
+        self.assertEqual(len(pairs), 24)
+        self.assertEqual(len(self.chapters), len(english))
+        for i, (anchor, block) in enumerate(pairs):
+            # Blocks sharing an anchor are inserted in list order, each right
+            # in front of the anchor; the importer emits them run together.
+            run = [b for a, b in pairs[i:] if a == anchor]
+            with self.subTest(block=block):
+                order = next(n for n, body in enumerate(english) if anchor in body)
+                self.assertEqual(self.chapters[order].count(block), 1)
+                self.assertIn("".join(run) + anchor, self.chapters[order])
+
+    def test_the_signature_ends_its_chapter(self):
+        """Why `<h3>JONATHAN EDWARDS.</h3>` is not restored: it is the last
+        block of the preface, and `restore_dropped_blocks` only inserts in
+        front of a following block."""
+        self.assertTrue(self.chapters[0].endswith("<h3>JONATHAN EDWARDS.</h3>"))
+
+
 class CcelAbortOnFetchFailureTests(TestCase):
     """A transient section-fetch failure mid-crawl must abort the whole book, not
     ship a partial one — a dropped section renumbers every later chapter, breaking

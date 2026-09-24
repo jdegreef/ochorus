@@ -1215,6 +1215,57 @@ class RibbandOfBlueDisplayLineTests(SimpleTestCase):
                 self.assertEqual(corrections.settled_sermon_body(slug, settled), settled)
 
 
+class BrainerdDisplayLineTests(SimpleTestCase):
+    """Gutenberg #65066's dropped display lines — see that entry in `corrections.py`.
+
+    Asserted per edition, like the #23438 repair above: a Swahili pair that
+    silently stops matching would leave the sw rows damaged while the English
+    passes. The entry lists the 24 English pairs, then the 24 Swahili ones.
+    """
+
+    SLUG = "life-and-diary-of-david-brainerd"
+    LINES_PER_CHAPTER = {2: 1, 3: 3, 4: 1, 5: 1, 6: 2, 7: 1, 8: 8, 9: 5, 11: 1, 12: 1}
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from library.content_fixtures import book_fixture_path
+
+        pairs = corrections.BODY_CORRECTIONS[cls.SLUG]["restored_blocks"]
+        cls.blocks = {"en": [b for _, b in pairs[:24]], "sw": [b for _, b in pairs[24:]]}
+        cls.editions = {
+            lang: {
+                row["fields"]["order"]: row["fields"]["body_html"]
+                for row in json.loads(book_fixture_path(cls.SLUG, lang).read_text())
+                if "body_html" in row["fields"]
+            }
+            for lang in cls.blocks
+        }
+
+    def test_every_edition_carries_every_line(self):
+        self.assertEqual(sum(self.LINES_PER_CHAPTER.values()), 24)
+        for lang, chapters in self.editions.items():
+            self.assertEqual(len(self.blocks[lang]), 24)
+            for order, body in chapters.items():
+                with self.subTest(language=lang, chapter=order):
+                    self.assertEqual(
+                        sum(b in body for b in self.blocks[lang]),
+                        self.LINES_PER_CHAPTER.get(order, 0),
+                    )
+
+    def test_the_correction_is_what_restores_them(self):
+        """Strip them all back out and the correction must put every one back."""
+        for lang, chapters in self.editions.items():
+            for order, settled in chapters.items():
+                with self.subTest(language=lang, chapter=order):
+                    damaged = settled
+                    for block in self.blocks[lang]:
+                        damaged = damaged.replace(f"{block} ", "", 1)
+                    self.assertFalse([b for b in self.blocks[lang] if b in damaged])
+                    self.assertEqual(corrections.settled_chapter_body(self.SLUG, order, damaged), settled)
+                    self.assertEqual(corrections.settled_chapter_body(self.SLUG, order, settled), settled)
+
+
 class DroppedBlockRestorationTests(SimpleTestCase):
     """`restore_dropped_blocks` — the sanitizer's OTHER victim.
 
