@@ -3602,6 +3602,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/confessions": {
+			"ground": "e85834978d772da2d056975aaed9218e24079aa22bdd86db0c759bc547616005",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"uk/godliness": {
 			"ground": "4b0eed929b41661595df83a94a4b365e06855b93e6b1aca0f84b3007f25d19a9",
 			"style": "revival",
