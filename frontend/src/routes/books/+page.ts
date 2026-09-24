@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-24 (queue job #3148): Swahili book — school-of-prayer, Andrew Murray's
+// thirty-three lessons on prayer built on the words of Jesus ("Pamoja na Kristo katika Shule ya
+// Maombi"), 33 chapters. Book pages are prerendered per locale, so /sw/books and the shelf rebuild
+// with the translated title over the plate cover and the reader page bakes the 33 chapters. Backs the
+// LAUNCH plan school-of-prayer-31-days, whose sw row now activates — sw plan prose added in
+// data/plan_translations/sw.json with a plans/+page.ts touch.
 // prerender refresh 2026-09-24 (queue job #3178): Portuguese book — pilgrims-progress, John Bunyan's
 // allegory of Christian's journey to the Celestial City ("O Peregrino"), 22 chapters. Book pages are
 // prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the shared
