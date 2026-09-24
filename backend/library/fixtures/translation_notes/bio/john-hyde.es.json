@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "john-hyde",
+ "language": "es",
+ "job_issue": 2951,
+ "references": [
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/books/women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Revelation 12:10",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "library/fixtures/content/sermons/consolation-in-the-furnace.es.json"
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "william-carey",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Isaiah 54:2",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "library/fixtures/content/books/women-who-moved-heaven-2.es.json"
+  }
+ ]
+}
