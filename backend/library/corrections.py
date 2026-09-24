@@ -4828,6 +4828,20 @@ BODY_CORRECTIONS.setdefault("a-retrospect", {}).setdefault("replacements", []).e
     ("chï fu mu</i>“ ", "chï fu mu</i>” "),
     ("convenience!</i>“ ", "convenience!</i>” "),
 ])
+# Gutenberg #26744 sets "The Missionary Call" in ch12 as a score image (title and
+# verse 1) with its own note under it offering MIDI files; the image was dropped
+# and the note shipped between the chapter's last paragraph and verse 2, links
+# gone ("by clicking here for an organ version"). The es edition translated it.
+# Mid-chapter, so a pair rather than a back-matter seam, anchored on the `</p>`
+# before it and the verse after it.
+BODY_CORRECTIONS["a-retrospect"]["replacements"].extend([
+    ("</p> [<i>Transcriber's Note: You can listen to this music (MIDI file) by clicking</i>"
+     " here for an <br/>organ version or here for a piano version.]  2. Why live I here?",
+     "</p> 2. Why live I here?"),
+    ("</p> [<i>Nota del transcriptor: Puede escuchar esta música (archivo MIDI) haciendo clic</i>"
+     " aquí para una <br/>versión de órgano o aquí para una versión de piano.]  2. ¿Por qué vivo aquí?",
+     "</p> 2. ¿Por qué vivo aquí?"),
+])
 # absolute-surrender: “…love“? (en, and the sw that mirrors it).
 BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
     ("Spirit is love<i>“?", "Spirit is love<i>”?"),
