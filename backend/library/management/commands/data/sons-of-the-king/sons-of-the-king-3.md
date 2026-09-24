@@ -671,12 +671,14 @@ There are lots of good adventures to be had: climbing, camping, building things,
 
 ---
 
-## Day 18 — Pure in Heart
+## Day 18 — Pure, as He Is Pure
 
-> "Blessed are the pure in heart, for they will see God."
-> — Matthew 5:8 (BSB)
+> "Beloved, we are now children of God, and what we will be has not yet been revealed. We know that when Christ appears, we will be like Him, for we will see Him as He is. And everyone who has this hope in Him purifies himself, just as Christ is pure."
+> — 1 John 3:2–3 (BSB)
 
-In His most famous sermon, Jesus described the kind of people who are truly **blessed**, truly happy in God's eyes. And one of them is: "Blessed are **the pure in heart**, for **they will see God**."
+The apostle John was an old man when he wrote these words. He had walked with Jesus, eaten with Him and seen Him alive after He rose from the dead. And he wrote about the greatest day still to come: the day Jesus returns. "**We will see Him as He is.**" And when we do, "**we will be like Him**."
+
+Then John says what that hope does to a person right now: "Everyone who has this hope in Him **purifies himself**, just as Christ is pure."
 
 What does it mean to be pure in heart?
 
@@ -691,7 +693,7 @@ For a guy your age, a pure heart might look like:
 - **Having real reasons** for what you do: doing good things to please God, not just to look good.
 - **Loving God more than anything else:** more than games, sports, money or popularity.
 
-And here's the amazing promise: the pure in heart "**will see God**." When your heart is clean, you see God more clearly. You notice Him in your life. You hear Him in His Word. You know Him better. And one day, you'll see Him face to face.
+And here's the amazing part: purity isn't about earning your way to God. You're already His son: "we are now children of God." It's about getting ready to see your Father. When your heart is clean, you see God more clearly now. You notice Him in your life. You hear Him in His Word. You know Him better. And one day, you'll see Him face to face.
 
 Nobody has a perfectly pure heart. We all mess up. But Jesus came to make us clean. When we confess our sins, He forgives us and washes our hearts. And His Spirit helps us grow purer day by day.
 
@@ -1104,16 +1106,16 @@ Every day you choose to follow Jesus is a step toward finishing well.
 
 ## Day 30 — Finish the Race
 
-> "I have fought the good fight, I have finished the race, I have kept the faith."
-> — 2 Timothy 4:7 (BSB)
+> "But I consider my life of no value to me, if only I may finish my course and complete the ministry I have received from the Lord Jesus—the ministry of testifying to the good news of God's grace."
+> — Acts 20:24 (BSB)
 
 Here we are at the last day of this book, and the last day of the *Sons of the King* series!
 
-Paul wrote today's verse near the very end of his life. He was an old man, sitting in a prison cell in Rome, and he knew he would soon be put to death for following Jesus. But he wasn't afraid. He wasn't bitter. He looked back over his life and said:
+Paul spoke today's words to a group of church leaders he loved, on a beach near the city of Ephesus. He was heading to Jerusalem, and the Holy Spirit had warned him that chains and hard times were waiting for him there. His friends were crying. They knew they might never see him again.
 
-"I have **fought the good fight**. I have **finished the race**. I have **kept the faith**."
+But Paul wasn't afraid. He had one goal bigger than staying safe or comfortable: "**if only I may finish my course**." A *course* is the track a runner runs on. Paul pictured his whole life as a race that Jesus had marked out for him, and all he wanted was to run it to the finish line, telling people about "the good news of God's grace" the whole way.
 
-That's how a son of the King wants to finish his life. Not perfect: Paul had made plenty of mistakes. But faithful to the end.
+That's how a son of the King wants to run his life. Not perfect: Paul had made plenty of mistakes. But faithful to the finish.
 
 That's what these three books have been about.
 
@@ -1125,7 +1127,7 @@ And in **Book 3**, you learned about **growing up**: handling your feelings, und
 
 Through it all, one truth stays the same: **you are a son of the King.** Your body will change. Your feelings will go up and down. Your friends will come and go. Your plans might change. But your Father never changes, and His love for you never fades.
 
-Now it's your turn to run the race. Fight the good fight. Keep the faith. And finish well.
+Now it's your turn to run your course. Run it with Jesus. Run it all the way. And finish well.
 
 **A true story:** Simeon Nsibambi was a respected man in Uganda, with a good job, fine clothes and a comfortable home. But he was hungry for more of God. One day he met a young English doctor named Joe Church, who felt exactly the same hunger. The two men spent a whole weekend together with nothing but a Bible, reading and praying and asking God to fill them with His Spirit. And God met them. Something caught fire in Simeon's heart that never went out. He gave up his job and walked the roads of Uganda telling everyone about Jesus. Others caught the fire from him, and then others caught it from them, and it spread from village to village and country to country, until hundreds of thousands of lives were changed. It all started with two men seeking God together, and then passing it on. You can read his whole story in *Brave for God*.
 
@@ -1133,7 +1135,7 @@ Now it's your turn to run the race. Fight the good fight. Keep the faith. And fi
 
 **Try this:** Write a letter to your future self, maybe to open when you're 18. Tell him who he is in God's eyes, and what kind of man you hope he'll be.
 
-*Dear God, thank You for making me Your son. As I grow up, help me fight the good fight, finish the race and keep the faith. Help me grow in wisdom, courage and love, and follow You my whole life, all the way home. In Jesus' name, Amen.*
+*Dear God, thank You for making me Your son. As I grow up, help me run the course You've marked out for me and finish it well. Help me grow in wisdom, courage and love, and follow You my whole life, all the way home. In Jesus' name, Amen.*
 
 ---
 
