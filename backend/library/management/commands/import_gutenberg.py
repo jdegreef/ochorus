@@ -12,6 +12,7 @@ level (h2..h5) that occurs most often. Front matter before the first chapter
 from __future__ import annotations
 
 import re
+from html import escape
 
 import requests
 from django.core.management.base import BaseCommand, CommandError
@@ -23,6 +24,7 @@ from library.ingest import (
     clean_html,
     clean_title,
     display_line,
+    drop_furniture,
     is_front_matter,
     soup,
     upsert_book,
@@ -208,12 +210,20 @@ def split_by_heading(root, tag) -> list[tuple[str, str]]:
                     # breaks (stanzas separated by a blank line).
                     classes = " ".join(el.get("class", []))
                     if _POEM.search(classes) and el.find_parent(class_=_POEM) is None:
+                        # Read a copy with the furniture gone, as the sanitizer
+                        # would: PG 65066 sets every correction twice (an
+                        # `htmlonly` and an `epubonly` copy), which read
+                        # "SENSUAL mind; mind;". And join a line's text as
+                        # written — a separator puts a space inside
+                        # "<span>ALL</span>." wherever markup meets a stop.
+                        poem = soup(str(el)).find("div")
+                        drop_furniture(poem)
                         stanzas = []
-                        for st in el.select("[class*=stanza], div.group") or [el]:
+                        for st in poem.select("[class*=stanza], div.group") or [poem]:
                             lines = [
-                                d.get_text(" ", strip=True)
+                                escape(" ".join(d.get_text().split()), quote=False)
                                 for d in st.find_all("div", recursive=False)
-                            ] or [st.get_text(" ", strip=True)]
+                            ] or [escape(" ".join(st.get_text().split()), quote=False)]
                             stanzas.append("<br/>".join(line for line in lines if line))
                         parts.append(
                             "<blockquote>"

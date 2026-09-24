@@ -1092,6 +1092,8 @@ Should not dishearten thee."<br>
     <div class="group">
       <div class="line">“Farewell, vain world; my soul can bid Adieu</div>
       <div class="line in2">“My Savior taught me to abandon you.</div>
+      <div class="line">“Your charms may gratify a <span class="fss">SENSUAL</span> <a id="corr38.29"></a><span class="htmlonly"><ins class="correction" title="mind">mind;</ins></span><span class="epubonly"><a href="#c_38.29" class="pginternal"><ins class="correction" title="mind">mind;</ins></a></span></div>
+      <div class="line">“’Tis fixed through grace; my God shall be my <span class="fss">ALL</span>.</div>
     </div>
   </div>
 </div>
@@ -1110,9 +1112,13 @@ Should not dishearten thee."<br>
             body,
             "<p>April 20, 1718-Feb. 1741.</p>"
             "<p>David Brainerd was born April 20, 1718, at Haddam.</p>"
-            # One blockquote for the poem, not a <p> per line.
+            # One blockquote for the poem, not a <p> per line; the edition's
+            # epub twin of a correction is furniture, and a stop set after
+            # markup keeps its place ("ALL.", not "ALL .").
             "<blockquote>“Farewell, vain world; my soul can bid Adieu<br/>"
-            "“My Savior taught me to abandon you.</blockquote>",
+            "“My Savior taught me to abandon you.<br/>"
+            "“Your charms may gratify a SENSUAL mind;<br/>"
+            "“’Tis fixed through grace; my God shall be my ALL.</blockquote>",
         )
 
     def test_a_page_number_inside_a_line_is_not_read_as_text(self):
