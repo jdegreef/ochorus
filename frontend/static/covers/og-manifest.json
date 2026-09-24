@@ -824,6 +824,16 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"es/spurgeon-on-prayer": {
+			"ground": "0a7c45d0b711e3bcc04eafdfd275c8d78dc6f5ea3229fd670315f1b1b4e4fa2c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "band/oxblood",
+			"bar": 0.04
+		},
 		"es/stepping-stones-2": {
 			"ground": "749d6f5a833786c7e87f8fbbbf1356d49edf7cca167ce6770ae7855b20d99cb8",
 			"style": "lettered",

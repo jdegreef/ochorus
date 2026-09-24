@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #1790): Spanish book — spurgeon-on-prayer, twelve of
+// Spurgeon's sermons on prayer plus an introduction ("Gran poder en la oración"), 13 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
+// the shared painting ground and the reader page bakes the 13 chapters. Backs no
+// LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #1754): Spanish book — watchman-nee-a-life, the biography
 // of Watchman Nee ("Watchman Nee"), 21 chapters. Book pages are prerendered per locale, so /es/books
 // and the shelf rebuild with the title over the shared painting ground and the reader page bakes the
