@@ -1,0 +1,668 @@
+{
+ "kind": "book",
+ "slug": "pilgrims-progress",
+ "language": "es",
+ "job_issue": 3174,
+ "references": [
+  {
+   "reference": "Mateo 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 12:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 10:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 12:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 20:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 13:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 7:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 3:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 7:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 16:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corintios 4:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 10:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Miqueas 7:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremías 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 116:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 71:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 23:4",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Amós 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 12:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 29:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colosenses 3:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 7:24",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json"
+  },
+  {
+   "reference": "Proverbios 15:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 16:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 3:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 23:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 4:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 13:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 12:47",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 119:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timoteo 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 22:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Pedro 2:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 13:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 4:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 6:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 9:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipsis 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 12:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremías 17:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 14:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 20:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipsis 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 4:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Eclesiastés 11:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 5:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 119:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 23:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 3:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 10:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Génesis 34:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 17:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Génesis 13:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 65:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipsis 22:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremías 31:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 7:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éxodo 20:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 21:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 26:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Eclesiastés 10:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Génesis 25:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 41:26-29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 39:19-25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 6:16",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Proverbios 29:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 17:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipsis 3:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 19:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tesalonicenses 5:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Eclesiastés 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 64:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 2:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 17:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Habacuc 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 16:31",
+   "status": "mined",
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "2 Corintios 12:9",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Juan 6:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 6:37",
+   "status": "mined",
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "1 Timoteo 1:15",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Proverbios 13:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 28:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 3:10-12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Génesis 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Génesis 8:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 12:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 9:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 7:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 29:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 62:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 62:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 62:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cantares 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cantares 7:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 73:4-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 43:2",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Hebreos 12:22-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipsis 21:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 57:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipsis 19:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipsis 22:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 26:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 25:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Apocalipsis 5:13",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Lucas 18:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 126:5",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Salmos 126:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 1:45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jonás 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 24:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremías 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 21:28-29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 30:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 30:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rut 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cantares 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 5:19",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Proverbios 13:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremías 44:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 15:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 11:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 120:3-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 33:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Eclesiastés 9:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 5:5",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Isaías 66:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 14:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 50:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 53:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 7:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 12:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 11:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 13:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "3 Juan 5-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 40:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezequiel 34:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezequiel 34:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 11:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 25:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 11:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 37:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 27:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 23:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 28:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timoteo 6:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 1:47",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Eclesiastés 12:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Eclesiastés 12:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Eclesiastés 12:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 15:55",
+   "status": "self_rendered"
+  }
+ ]
+}

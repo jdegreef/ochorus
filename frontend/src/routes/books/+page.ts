@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-24 (queue job #3174): Spanish book — pilgrims-progress, John Bunyan's
+// allegory of Christian's (and Christiana's) journey to the Celestial City ("El progreso del
+// peregrino"), 22 chapters. Book pages are prerendered per locale, so /es/books and the shelf rebuild
+// with the translated title over the shared painting ground and the reader page bakes the 22 chapters.
+// Backs the CURATED plan the-pilgrims-way, but grace-abounding is not yet in es, so no es plan row
+// activates and no plan prose is owed.
 // prerender refresh 2026-09-24 (queue job #3148): Swahili book — school-of-prayer, Andrew Murray's
 // thirty-three lessons on prayer built on the words of Jesus ("Pamoja na Kristo katika Shule ya
 // Maombi"), 33 chapters. Book pages are prerendered per locale, so /sw/books and the shelf rebuild
