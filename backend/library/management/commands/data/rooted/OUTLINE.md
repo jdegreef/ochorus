@@ -56,7 +56,7 @@ Check every verse against the BSB, including short quotes inside the teachings.
 
 ## Future
 
-- A separate series of devotionals for girls and for guys is planned, as distinct books rather than editions of these.
+- The gender-specific follow-ups shipped as distinct books rather than editions of these: *Daughters of the King* (`../daughters-of-the-king/OUTLINE.md`) and *Sons of the King* (`../sons-of-the-king/OUTLINE.md`), three books each.
 - Other languages would go through the normal translation pipeline (`ai_unreviewed`).
 
 ---
