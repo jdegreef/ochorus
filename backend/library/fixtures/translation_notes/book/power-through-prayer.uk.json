@@ -1,0 +1,354 @@
+{
+ "kind": "book",
+ "slug": "power-through-prayer",
+ "language": "uk",
+ "job_issue": 1752,
+ "pull_request": 3269,
+ "note": [
+  "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “ and the modifier-letter apostrophe ʼ to ’. Bounds quotes scripture without citations, so references were identified by the translator; unquoted allusions are not enumerated. Hebrews would be cited as Євреїв, not Kulish's Жидів (no book names are cited in this work)."
+ ],
+ "references": [
+  {
+   "reference": "John 1:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 9:6a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "2 Chronicles 16:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 2:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Exodus 28:36b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthians 2:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Corinthians 3:5b-6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 6:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 28
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 28
+  },
+  {
+   "reference": "Luke 6:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "1 Corinthians 13:1b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Ephesians 6:18a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Ephesians 6:18b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "James 5:17-18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Matthew 11:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Psalm 63:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 67
+  },
+  {
+   "reference": "Psalm 5:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 67
+  },
+  {
+   "reference": "Ephesians 3:19b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 74
+  },
+  {
+   "reference": "Colossians 4:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 74
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 74
+  },
+  {
+   "reference": "Hebrews 11:4b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 85
+  },
+  {
+   "reference": "Proverbs 23:26a",
+   "status": "self_rendered",
+   "why": "Bounds omits 'my son'; Kulish words kept minus «мій сину»",
+   "block_index": 105
+  },
+  {
+   "reference": "John 11:35",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Luke 24:32a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "James 1:27a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "Acts 26:25b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "Isaiah 25:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 111
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "self_rendered",
+   "why": "Kulish is first person (пробувати мем); Bounds reports it in third person, so verb moved and put in infinitive",
+   "block_index": 144
+  },
+  {
+   "reference": "Acts 6:4a",
+   "status": "self_rendered",
+   "why": "Bounds's short paraphrase 'give themselves to it'; Kulish verb adapted to refer to prayer",
+   "block_index": 144
+  },
+  {
+   "reference": "1 Thessalonians 3:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 145
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "self_rendered",
+   "why": "Bounds quotes only the prayer half; Kulish words kept but 'і в служенню слова' omitted mid-verse",
+   "block_index": 145
+  },
+  {
+   "reference": "Ephesians 3:19b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Ephesians 3:14",
+   "status": "self_rendered",
+   "why": "Bounds turns Paul's first person into third person; Kulish wording kept with verb/pronoun changed",
+   "block_index": 148
+  },
+  {
+   "reference": "Colossians 4:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 155
+  },
+  {
+   "reference": "Romans 15:30",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "Ephesians 6:18-19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "Colossians 4:3-4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "2 Corinthians 1:11a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "2 Thessalonians 3:1-2a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 164
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 164
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "1 Kings 17:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "1 Thessalonians 3:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 172
+  },
+  {
+   "reference": "Isaiah 64:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 174
+  },
+  {
+   "reference": "Luke 6:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 174
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "self_rendered",
+   "why": "Kulish's 'у молитві і в служенню слова пробувати мем' is not contiguous for Bounds's 'gave themselves to prayer' and does not fit the sentence",
+   "block_index": 174
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "self_rendered",
+   "why": "Bounds re-applies the Acts 6:4 phrase 'give themselves' to laymen; no contiguous Kulish wording fits",
+   "block_index": 174
+  },
+  {
+   "reference": "John 14:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 183
+  }
+ ]
+}

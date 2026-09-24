@@ -1260,7 +1260,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -1567,6 +1567,16 @@
 		"hi/prayer-the-pulse-of-life": {
 			"ground": "5e42f8c18c6752e175c3aedda526c0a27d8bcdefbd0c242d7472eade812af0d7",
 			"style": "house",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/soar-like-the-eagle-3": {
+			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
+			"style": "lettered",
 			"volume": null,
 			"script": "devanagari",
 			"art": true,
@@ -3160,9 +3170,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.85,
-			"layout": "framed",
-			"bar": 0
+			"scrim": 0.85
 		},
 		"sw/soar-like-the-eagle-3": {
 			"ground": "d41e103913bb9fd8438d06ef577164ec7977017017bd69a9226f0cf9822a3285",
@@ -3643,6 +3651,16 @@
 			"scrim": 0.65,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"uk/power-through-prayer": {
+			"ground": "c4078282762f68c4e9e8d9492fe6c9c5f8015e905f51a9f5ceaf97a9e13f1f6e",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "split/navy",
+			"bar": 0.04
 		},
 		"uk/rise-up-men-of-god-2": {
 			"ground": "237fd6138cff47600a34b0ba36897467876a5621b625ea9504cd095eec7f2733",
