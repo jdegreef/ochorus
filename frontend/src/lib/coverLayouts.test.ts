@@ -7,6 +7,7 @@ import {
 	AUTHOR_LAYOUT,
 	BOOK_LAYOUT,
 	COVER_HUE_IDS,
+	TYPE_TOP,
 	COVER_LAYOUT_IDS,
 	coverLayoutFor,
 	layoutKey
@@ -138,10 +139,12 @@ describe('the Key Teachings wear one series look', () => {
 		expect(volumes.length).toBeGreaterThan(0);
 	});
 
-	it.each(volumes)('%s is framed and set in the imprint face', (slug) => {
+	it.each(volumes)('%s is framed, set from the top, in the imprint face', (slug) => {
 		expect(slug in BOOK_LAYOUT, `${slug}: add it to coverLayouts.BOOK_LAYOUT`).toBe(true);
 		expect(BOOK_LAYOUT[slug]).toBeNull();
 		expect(BOOK_STYLE[slug], `${slug}: add it to coverStyles.BOOK_STYLE`).toBe('originals');
+		// Framed with the words above the tree, not centred on it.
+		expect(TYPE_TOP.has(slug), `${slug}: add it to coverLayouts.TYPE_TOP`).toBe(true);
 	});
 });
 

@@ -122,6 +122,30 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'key-teachings-of-watchman-nee': null
 };
 
+/**
+ * Framed books whose type is set from the TOP, under the byline, rather than
+ * centred on the cover.
+ *
+ * The framed composition centres its title block between the byline and the
+ * mark, which suits a painting whose subject is the whole canvas. The Key
+ * Teachings' trees stand in the lower part of the ground, so a centred block
+ * lands on the tree — and the longer the title, the lower its subtitle falls
+ * (Edwards' four-line title put the subtitle across the crown). Set from the
+ * top, the words keep the sky and the tree keeps the ground, on every volume
+ * alike. Only meaningful framed: a layout places its own type.
+ */
+export const TYPE_TOP: ReadonlySet<string> = new Set([
+	'key-teachings-of-a-b-simpson',
+	'key-teachings-of-jonathan-edwards',
+	'key-teachings-of-richard-baxter',
+	'key-teachings-of-watchman-nee'
+]);
+
+/** Is this painted book's type set from the top? Never under a layout. */
+export function typeTopFor(bookSlug: string, layout: CoverLayout | null): boolean {
+	return !layout && TYPE_TOP.has(bookSlug);
+}
+
 /** The scripts a title cannot be turned sideways in. */
 const SIDEWAYS_UNSAFE = new Set(['arabic', 'devanagari']);
 
@@ -149,7 +173,8 @@ export function coverLayoutFor(
 	return found;
 }
 
-/** How the share-card manifest records a layout: `framed`, or `<layout>/<hue>`. */
-export function layoutKey(layout: CoverLayout | null): string {
-	return layout ? `${layout.layout}/${layout.hue}` : 'framed';
+/** How the share-card manifest records a layout: `framed` (or `framed-top`
+ *  when its type is set from the top), or `<layout>/<hue>`. */
+export function layoutKey(layout: CoverLayout | null, top = false): string {
+	return layout ? `${layout.layout}/${layout.hue}` : top ? 'framed-top' : 'framed';
 }
