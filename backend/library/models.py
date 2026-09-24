@@ -349,21 +349,27 @@ class Series(models.Model):
     def __str__(self) -> str:
         return self.title
 
-    def title_for(self, language: str) -> str:
-        """The series' name in ``language``; ``""`` when it has none there.
+    def _localized(self, field: str, language: str) -> str:
+        """A translated field in ``language``; ``""`` when it has none there.
 
         No English fallback — the rule every translated field here follows (see
         ``Topic._localized``). A reader on a Swahili edition who meets an
         English series name has been told the series is not in their language,
-        so an untranslated series shows no series line at all instead.
+        so an untranslated series shows no series line and has no page there.
 
         Reads ``self.translations.all()`` so a caller that prefetched pays no
         query.
         """
         if not language or language == "en":
-            return self.title
+            return getattr(self, field)
         tr = next((t for t in self.translations.all() if t.language == language), None)
-        return tr.title if tr else ""
+        return getattr(tr, field) if tr else ""
+
+    def title_for(self, language: str) -> str:
+        return self._localized("title", language)
+
+    def description_for(self, language: str) -> str:
+        return self._localized("description", language)
 
 
 class SeriesTranslationManager(models.Manager):
