@@ -778,10 +778,9 @@ class CorrectionsHygieneTests(SimpleTestCase):
                 # Dead means BOTH are gone: the paragraph this titles was
                 # edited or renumbered out from under the entry.
                 *entry.get("restored_blocks", ()),
-                # A back-matter cut is spelled as its first block (not yet
-                # applied) and the author's last line it cuts after (applied,
-                # and still present). Dead means the ending was edited away.
-                *((first, last) for last, first in entry.get("back_matter", ())),
+                # A back-matter cut: its first block (not yet applied) and the
+                # ending it cuts after (applied). Dead means both are gone.
+                *entry.get("back_matter", ()),
             )
             if old not in corpus and new not in corpus
         ]
@@ -1375,54 +1374,35 @@ class ShippedBackMatterTests(SimpleTestCase):
     Driven by the declarations, so a new entry is covered without a new test.
     """
 
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        books = Path(__file__).resolve().parent / "fixtures" / "content" / "books"
-        cls.cases = []
-        for slug, entry in corrections.BODY_CORRECTIONS.items():
-            seams = entry.get("back_matter", ())
-            if not seams:
-                continue
-            for path in sorted(books.glob(f"{slug}.*.json")):
-                chapters = [
-                    row["fields"] for row in json.loads(path.read_text(encoding="utf-8"))
-                    if row["model"] == "library.chapter"
-                ]
-                last = max(chapters, key=lambda f: f["order"])
-                cls.cases.append((slug, path.name, last, seams))
+    def test_each_edition_ships_cut_and_the_correction_is_what_cuts_it(self):
+        """The settled fixture must end on a declared ending — a translation that
+        carried the back matter with no seam of its own fails here — and putting
+        the back matter back must be cut again: the fixture alone passes with
+        the entry deleted, while production rows still carry the tail."""
+        from library.content_fixtures import BOOKS_DIR
 
-    def test_every_edition_ends_on_a_declared_ending(self):
-        """Each edition of the work ships cut — and a translation that carried
-        the back matter but has no seam of its own would fail here."""
-        self.assertTrue(self.cases)
-        for _slug, name, last, seams in self.cases:
-            with self.subTest(fixture=name):
-                self.assertTrue(
-                    any(last["body_html"].endswith(end) for end, _ in seams),
-                    f"{name} ch{last['order']} does not end on a declared ending",
+        declared = {
+            slug: entry["back_matter"]
+            for slug, entry in corrections.BODY_CORRECTIONS.items()
+            if entry.get("back_matter")
+        }
+        self.assertTrue(declared)
+        for slug, seams in declared.items():
+            for path in sorted(BOOKS_DIR.glob(f"{slug}.*.json")):
+                last = max(
+                    (row["fields"] for row in json.loads(path.read_text(encoding="utf-8"))
+                     if row["model"] == "library.chapter"),
+                    key=lambda f: f["order"],
                 )
-
-    def test_the_correction_is_what_cuts_the_back_matter(self):
-        """Put the back matter's first block back and the correction must cut it.
-
-        The settled fixture passes the test above with the entry deleted;
-        production rows still carry the tail, and `apply_body_corrections` on
-        deploy is the only thing that removes it.
-        """
-        for slug, name, last, seams in self.cases:
-            settled = last["body_html"]
-            end, first = next((e, f) for e, f in seams if settled.endswith(e))
-            with self.subTest(fixture=name):
-                damaged = f"{settled}{first}<p>The next advertised title.</p>"
-                self.assertEqual(
-                    corrections.settled_chapter_body(slug, last["order"], damaged),
-                    settled,
-                )
-                self.assertEqual(
-                    corrections.settled_chapter_body(slug, last["order"], settled),
-                    settled,
-                )
+                settled = last["body_html"]
+                with self.subTest(fixture=path.name):
+                    seam = next(((e, f) for e, f in seams if settled.endswith(e)), None)
+                    self.assertIsNotNone(seam, f"ch{last['order']} does not end on a declared ending")
+                    damaged = f"{settled}{seam[1]}<p>The next advertised title.</p>"
+                    for body in (damaged, settled):
+                        self.assertEqual(
+                            corrections.settled_chapter_body(slug, last["order"], body), settled
+                        )
 
 
 class BruisedReedRepairTests(SimpleTestCase):

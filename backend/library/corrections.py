@@ -4351,6 +4351,24 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
     ("definida y prevaleciente.</p>",
      "<p><i>Impreso en los Estados Unidos de América</i></p>"),
 ]
+# Gutenberg #29426 ends ch35 on the printer's imprint, "LONDON: MORGAN AND
+# SCOTT", then its own "Transcriber's Notes" (`div.tnote`: punctuation repaired,
+# page 146 taken from the 1903 edition). Both shipped as the chapter's tail, and
+# the sw edition translated the notes. The book ends on "you will pray more."
+BODY_CORRECTIONS["things-as-they-are"]["back_matter"] = [
+    ("you will pray more.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+    ("mtaomba zaidi.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+]
+# Gutenberg #65066 follows "…revival of true religion! Amen." with the ATS
+# donors' line and the transcriber's `tnotes` endnote. The note's heading was
+# never collected, so its three paragraphs read as Edwards's own last words —
+# and the sw edition translated them as such.
+BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter"] = [
+    ("true religion! <i>Amen.</i></p>",
+     "<p>The frequent dated quotations from Brainerd’s diaries"),
+    ("dini ya kweli! <i>Amina.</i></p>",
+     "<p>Manukuu ya mara kwa mara yenye tarehe kutoka shajara za Brainerd"),
+]
 # Gutenberg #51931 follows Torrey's last paragraph with a page break and the
 # Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
 # Stalker and Kempis blurbs survived), and then a sub-300-word "Transcriber's
@@ -4635,23 +4653,15 @@ def restore_dropped_blocks(body_html: str, blocks: Sequence[tuple[str, str]]) ->
 def strip_back_matter(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
     """Cut the publisher's or transcriber's back matter off a work's last chapter.
 
-    Each seam is `(last, first)`: the closing block of the author's text — its
-    tail, ending on `</p>` — and the opening block of what the importer carried
-    in after it (a colophon, a publisher's catalogue, a transcriber's note).
-    Where the two stand together, everything after `last` goes. Ads and
-    errata tables are not the work, and a translator renders what is there:
-    `reality-of-prayer`'s Revell catalogue reached the es edition as sixty
-    translated blocks of reviewer blurbs.
+    Each seam is `(last, first)`: the closing block of the author's text (ending
+    on `</p>`) and the opening block of what the importer carried in after it —
+    a colophon, a catalogue, a transcriber's note. Only where the two stand
+    together does everything after `last` go, so it cannot fire anywhere but
+    the one place it was written for, and it is idempotent because the cut
+    removes `first`.
 
-    A seam, not a marker, so it cannot fire anywhere but the one place it was
-    written for — `apply_body_corrections` runs a slug's entry against every
-    chapter of every edition — and it is idempotent because the cut removes
-    `first`, so the seam never matches again. The applied state keeps `last`,
-    which is what `test_no_replacement_pair_is_dead` looks for.
-
-    `body_html` ONLY: both halves carry block tags, which the derived, tagless
-    `body_text` never holds, and `Chapter.save()` re-derives that field (and
-    `word_count`) from the HTML this has already cut.
+    `body_html` ONLY: both halves carry block tags, which the tagless
+    `body_text` never holds; `Chapter.save()` re-derives it from the cut HTML.
     """
     for last, first in seams:
         at = _re.search(_re.escape(last) + r"\s*" + _re.escape(first), body_html)
@@ -5626,3 +5636,14 @@ BODY_CORRECTIONS.setdefault("a-call-to-the-unconverted", {}).setdefault("replace
     [(f"</p>{page}<p>", "</p> <p>") for page in _CALL_PAGES_BETWEEN_BLOCKS]
     + [(defective, _unpage(defective)) for defective in _CALL_PAGES_IN_PROSE]
 )
+
+# Spacing slips in the Ochorus-original collection, found translating it to French
+# (#2776): a stray space inside the compound "Golden-Mouthed" (ch02) and before the
+# punctuation that follows four unmarked book titles (ch04, ch06, ch10).
+BODY_CORRECTIONS.setdefault("men-who-tended-the-flock-2", {}).setdefault("replacements", []).extend([
+    ("Golden- Mouthed", "Golden-Mouthed"),
+    ("The Temple , published", "The Temple, published"),
+    ("Surprising Work of God , ", "Surprising Work of God, "),
+    ("The Cost of Discipleship . The", "The Cost of Discipleship. The"),
+    ("Papers from Prison , ", "Papers from Prison, "),
+])

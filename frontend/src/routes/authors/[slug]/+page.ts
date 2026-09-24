@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Arabic bios — jeanne-guyon (#925), christmas-evans (#1653),
+// john-newton (#1654), e-m-bounds (#1655), j-c-ryle (#1665), alexander-maclaren (#1666),
+// robert-murray-mcheyne (#1667), charles-finney (#1668). Rebuilds /ar/authors/<slug> with the bio.
 // prerender refresh 2026-09-24: #3324 made English bio/bio_html fixture-wins, and its deploy
 // shipped 29 authors' stuck fixes (#1920's trimmed card bios, #1855's "Holy Spirit"). That PR
 // was backend-only, so this touch re-prerenders the author pages and /biographies cards.

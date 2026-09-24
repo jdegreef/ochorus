@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-24: Arabic sermons — fall-and-recovery-of-man (#1658),
+// enduring-persecution-for-christ (#1659), pauls-praise-of-christian-love (#1660),
+// against-eutropius (#1661), gods-love-for-a-sinning-world (#1662), salvation-by-faith (#1663),
+// the-joy-of-the-lord (#1664). Rebuilds /ar/sermons so each card and its page bake the Arabic title.
 // prerender refresh 2026-09-24: Swahili sermon — the-way-of-salvation (#2589, PR #3337). Sermon
 // pages are prerendered per locale, so /sw/sermons must rebuild so the card and its
 // /sw/sermons/the-way-of-salvation page bake the translated title and "In brief" summary.
