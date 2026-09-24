@@ -119,7 +119,8 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    Any dropdown (trigger + menu) closes via `use:dismissable={{ open,
    onDismiss }}` (`$lib/actions/dismissable`) on the wrapper — click-away,
    Escape, focus back to the trigger. Don't hand-roll a `<svelte:window>`
-   handler; a full overlay uses `focusTrap` instead.
+   handler, and don't `stopPropagation` on the trigger (it stops opening one
+   menu from closing another); a full overlay uses `focusTrap` instead.
 5. **Summary** — `h2.text-h3` + prose (`About this book`). One treatment, not a
    heading here and a bordered "In brief" callout there.
 6. **Sections** — `h2.section-label` above a *list* (contents, quotes, passages);
