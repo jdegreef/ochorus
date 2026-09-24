@@ -661,7 +661,10 @@
 		.action-strip {
 			display: grid;
 			grid-auto-flow: column;
-			grid-auto-columns: minmax(0, 1fr);
+			/* Each column at least as wide as its label, the rest shared out:
+			   equal fifths clipped a long one ("Завантажити" on a phone) while
+			   "Пошук" beside it had room to spare. */
+			grid-auto-columns: minmax(min-content, 1fr);
 			gap: 0;
 			padding-top: 0.6rem;
 			border-top: 1px solid var(--border);
@@ -690,6 +693,14 @@
 		.action-strip .label-long,
 		.action-strip .shelf-count {
 			display: none;
+		}
+	}
+	/* The smallest phones (~320px) leave the strip ~240px: tighten the labels
+	   to tab-bar size so a long one (uk "Завантажити") still fits its column. */
+	@container action-host (max-width: 279.98px) {
+		.action-strip .btn:not(.account-menu *) {
+			padding-inline: 0;
+			font-size: 10px;
 		}
 	}
 	/* In the row: icon-only buttons lose their `.btn-label` (aria-label/title
