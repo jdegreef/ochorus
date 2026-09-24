@@ -1474,6 +1474,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"hi/watchman-nee-a-life": {
+			"ground": "c7d945e39f17203ede67a42faa150bbef3e83c4470dae832c3a22913b64cf24c",
+			"style": "house",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0
+		},
 		"holy-in-christ": {
 			"ground": "25e3f970266c7bccd9a7035ca1d534d54c4abeba99b7b6d57c028277bd7904d4",
 			"style": "devotional",

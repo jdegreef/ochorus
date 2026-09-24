@@ -373,6 +373,8 @@
 // edition — so seed_plans creates no uk plan row and plans/+page.ts has
 // nothing new to bake. Whoever ships that second book DOES owe the plans
 // touch, because it completes the set.
+// prerender refresh 2026-09-24 (queue job #1755): वॉचमैन नी — the Hindi edition of
+// watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
