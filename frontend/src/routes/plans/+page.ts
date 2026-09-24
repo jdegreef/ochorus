@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-24 (queue job #3148): sw plan prose — school-of-prayer-31-days ("Siku 31
+// katika Shule ya Maombi"), the LAUNCH_PLANS single-book plan backed by the newly-shipped sw edition
+// of school-of-prayer, so seed_plans now creates the plan row in sw. /sw/plans re-crawls to bake the
+// translated card.
 // prerender refresh 2026-09-23: NEW English plan — sons-of-the-king-book-3-30-days ("Sons of the
 // King: 30 Days with God — Book 3"), a LAUNCH_PLANS entry over sons-of-the-king-3 reading chapters
 // 2–31 (Day 1–30). English only. /plans re-crawls to bake the new card.
