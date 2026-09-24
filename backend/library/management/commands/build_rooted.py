@@ -806,6 +806,15 @@ SONS_OF_THE_KING: dict[int, dict[str, object]] = {
     },
 }
 
+# The title each series' covers set in place of the full one — the series
+# numeral and the subtitle already carry "Book N" and the volume's theme, so the
+# full "<Series> – 30 Days with God for … – Book N" only crowds the cover.
+COVER_TITLE = {
+    "rooted": "Rooted",
+    "daughters-of-the-king": "Daughters of the King",
+    "sons-of-the-king": "Sons of the King",
+}
+
 # The series a book can be built into, by `Series.slug`: each one's volumes are
 # `<slug>-<n>`, read from `data/<slug>/<slug>-<n>.md`.
 SERIES: dict[str, dict[int, dict[str, object]]] = {
@@ -955,6 +964,7 @@ class Command(BaseCommand):
             "source_url": "",
             "series": series_row,
             "series_position": volume,
+            "cover_title": COVER_TITLE[series],
             **meta,
         }
         book, created = Book.objects.update_or_create(

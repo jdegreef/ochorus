@@ -85,6 +85,7 @@ class Command(BaseCommand):
                     "author": source.author,
                     "title": source.title,
                     "subtitle": source.subtitle,
+                    "cover_title": source.cover_title,
                     "description": source.description,
                     "source_type": Book.SourceType.AI_UNREVIEWED,
                     "source_url": source.source_url,
