@@ -541,6 +541,7 @@ TOPICS = [
             "daughters-of-the-king-2",
             "sons-of-the-king-1",
             "sons-of-the-king-2",
+            "daughters-of-the-king-3",
         ],
     ),
 ]
