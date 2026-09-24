@@ -45,13 +45,9 @@ _TINY_SECTION_WORDS = 300
 # The outermost verse container, for the fallback walk. Not `ingest._VERSE_CLASS`:
 # that also matches a stanza, which is a poem's part, not a poem.
 _POEM = re.compile(r"poem|poetry|lg-container")
-# The class PGDP transcribers put on the box holding their notes, as a whole
-# class TOKEN. A substring won't do: `*=tnote` is inside every `footnote`, and
-# footnotes are the author's. Across the library's 27 Gutenberg sources the
-# three spellings mark 11 boxes and every one is a transcriber's note (errata,
-# cover credit, "larger version of this map"); #65066's `tnotes` endnote shipped
-# as Edwards's closing paragraphs because its heading was a centred div the
-# importer never collected, and the sw edition translated it as his.
+# A transcriber's-note box, matched as a whole class TOKEN: `*=tnote` is inside
+# every `footnote`, and footnotes are the author's. In the library's 27
+# Gutenberg sources these three spellings mark 11 boxes, all transcriber's notes.
 _TRANSCRIBER_NOTE = re.compile(r"^(?:tnotes?|transnote)$")
 # Catalogued Gutenberg books whose layout this importer can't chapter, built by
 # their own command instead. Skipped here so a stray run can't re-chapter them.
@@ -298,12 +294,10 @@ def _catalogue_start(sections: list[tuple[str, str]]) -> int | None:
     return None
 
 
-# The printer's colophon, standing alone as a block. What follows it in the LAST
-# section is the back of the printed book, not the work: #73032 ran Bounds's
-# final paragraph straight into it and then nine pages of Revell's catalogue,
-# which `_catalogue_start` never sees because no heading divides them from the
-# chapter. The whole block must be the colophon, so a sentence that merely
-# mentions where a book was printed can't truncate anything.
+# A standalone colophon block: what follows it in the LAST section is the back
+# of the printed book (#73032's Revell catalogue, which no heading divides from
+# the chapter, so `_catalogue_start` never sees it). The whole block must match,
+# so a sentence that mentions where a book was printed truncates nothing.
 _COLOPHON = re.compile(
     r"<p>(?:<[bi]>)?\s*Printed in (?:the )?(?:United States(?: of America)?|U\.\s?S\.\s?A\.)"
     r"\.?\s*(?:</[bi]>)?</p>",

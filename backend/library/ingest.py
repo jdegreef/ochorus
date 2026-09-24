@@ -257,6 +257,8 @@ def chapter_title(raw: str) -> str:
 
 
 def is_front_matter(title: str) -> bool:
+    """A section that is apparatus, not the work: front matter, indexes, and the
+    back of the book (a publisher's catalogue, a transcriber's notes)."""
     t = title.strip().lower().rstrip(".")
     if t.startswith("index"):  # "Index", "Indexes", "Index of Bible Verses Used"
         return True

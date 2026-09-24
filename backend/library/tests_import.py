@@ -12,7 +12,8 @@ from rest_framework.test import APIClient
 
 from library import upload_import as ui
 from library.catalog import AUTHORS, BOOKS
-from library.ingest import upsert_book
+from library.ingest import is_front_matter, upsert_book
+from library.management.commands.import_gutenberg import content_root, extract_chapters
 from library.models import Author, Book, Sermon
 
 # --- fixtures: build real PDF / DOCX bytes in-memory ------------------------
@@ -2161,34 +2162,25 @@ class GutenbergBackMatterTests(SimpleTestCase):
     PROSE = " ".join(["The word of the Lord endureth for ever."] * 60)
 
     def _page(self, *sections):
-        """A book whose chapters are `sections`, after an opening chapter of
-        prose — `pick_heading_tag` wants three headings or more.
-
-        Each heading sits alone in its own container, as in #65066, so the
-        importer walks the elements between headings one by one. That walk is
-        how the note's paragraphs escaped: handed over whole, a `tnotes` box
-        falls to the sanitizer's `[class*=note i]`, but walked, its `<p>`s
-        arrive loose.
-        """
-        sections = (("Of Prayer", f"<p>{self.PROSE}</p>"), *sections)
+        """A book whose LAST chapters are `sections`, after two chapters of prose
+        (`pick_heading_tag` wants three headings). Each heading sits alone in its
+        container, as in #65066, so the importer walks the elements between them
+        one by one — the path the note's paragraphs escaped by."""
+        sections = (
+            ("Of Prayer", f"<p>{self.PROSE}</p>"), ("Of Faith", f"<p>{self.PROSE}</p>"), *sections
+        )
         body = "".join(
             f'<div class="chapter"><h2 class="c1">{title}</h2></div>{html}'
             for title, html in sections
         )
         return f"<html><body>{body}</body></html>"
 
-    def _chapters(self, html):
-        from library.management.commands.import_gutenberg import extract_chapters
-
-        return extract_chapters(html)
-
     def test_a_transcribers_note_box_is_dropped(self):
         """#65066: the note's heading is a centred div the importer never
         collects, so without this its paragraphs read as Edwards's last words."""
-        chapters = self._chapters(self._page(
-            ("Of Faith", f"<p>{self.PROSE}</p>"),
+        chapters = extract_chapters(self._page(
             ("Of Hope", f"<p>{self.PROSE}</p><p>true religion! <i>Amen.</i></p>"
-                    '<div class="tnotes"><div class="nf-center"><div>Transcriber’s Note</div></div>'
+                     '<div class="tnotes"><div class="nf-center"><div>Transcriber’s Note</div></div>'
                     "<p>Punctuation is restored where the text obviously has an appropriate space.</p></div>"),
         ))
         self.assertTrue(chapters[-1][1].endswith("<i>Amen.</i></p>"))
@@ -2198,8 +2190,6 @@ class GutenbergBackMatterTests(SimpleTestCase):
         """The precision case: `*=tnote` is a substring of every `footnote`,
         and a footnote is the author's. (What the sanitizer later does with a
         footnote block is its own business; this rule must not take it.)"""
-        from library.management.commands.import_gutenberg import content_root
-
         root = content_root(
             '<html><body><div class="footnote"><p>Weighing more than one cwt.</p></div>'
             '<div class="tnotes covernote"><p>The cover image was created by the transcriber.</p></div>'
@@ -2210,19 +2200,17 @@ class GutenbergBackMatterTests(SimpleTestCase):
 
     def test_a_transcribers_notes_section_is_dropped_not_merged(self):
         """#51931: under 300 words, the section was merged into ch13 as an <h3>."""
-        chapters = self._chapters(self._page(
-            ("Of Faith", f"<p>{self.PROSE}</p>"),
+        chapters = extract_chapters(self._page(
             ("Of Hope", f"<p>{self.PROSE}</p><p>before God can use them.</p>"),
             ("Transcriber’s Notes", "<p>Missing periods have been silently added.</p>"),
         ))
-        self.assertEqual(len(chapters), 3)
+        self.assertEqual(len(chapters), 3)  # the note section is not a fourth
         self.assertTrue(chapters[-1][1].endswith("before God can use them.</p>"))
 
     def test_the_last_section_ends_at_a_colophon(self):
         """#73032: the catalogue has no heading of its own, so `_catalogue_start`
         never sees it; the colophon before it is the signal."""
-        chapters = self._chapters(self._page(
-            ("Of Faith", f"<p>{self.PROSE}</p>"),
+        chapters = extract_chapters(self._page(
             ("Of Hope", f"<p>{self.PROSE}</p><p>definite, prevailing prayer.</p>"
                     '<p class="c003"><i>Printed in the United States of America</i></p>'
                     "<p><i>NEWELL DWIGHT HILLIS, D.D.</i></p><p>The Great Refusal</p>"),
@@ -2231,20 +2219,18 @@ class GutenbergBackMatterTests(SimpleTestCase):
 
     def test_a_sentence_about_printing_is_not_a_colophon(self):
         body = f"<p>{self.PROSE}</p><p>The tract was printed in the United States of America in 1880.</p>"
-        chapters = self._chapters(self._page(("Of Faith", f"<p>{self.PROSE}</p>"), ("Of Hope", body)))
+        chapters = extract_chapters(self._page(("Of Hope", body)))
         self.assertIn("printed in the United States of America in 1880.", chapters[-1][1])
 
     def test_a_colophon_before_the_last_section_cuts_nothing(self):
         """A copyright-page colophon that survived into an earlier chapter must
         not truncate it — only the back of the book is back matter."""
         first = f"<p><i>Printed in the United States of America</i></p><p>{self.PROSE}</p>"
-        chapters = self._chapters(self._page(("Of Faith", first), ("Of Hope", f"<p>{self.PROSE}</p>")))
-        self.assertIn("Printed in the United States of America", chapters[1][1])
-        self.assertIn(self.PROSE, chapters[1][1])
+        chapters = extract_chapters(self._page(("Of Hope", first), ("Of Love", f"<p>{self.PROSE}</p>")))
+        self.assertIn("Printed in the United States of America", chapters[2][1])
+        self.assertIn(self.PROSE, chapters[2][1])
 
     def test_is_front_matter_knows_the_transcribers_note(self):
-        from library.ingest import is_front_matter
-
         for title in ("Transcriber’s Notes", "Transcriber's Note:", "TRANSCRIBER'S NOTE."):
             with self.subTest(title=title):
                 self.assertTrue(is_front_matter(title))
