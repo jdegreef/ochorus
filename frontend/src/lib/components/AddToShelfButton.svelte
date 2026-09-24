@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
 	import { customShelves } from '$lib/customShelves.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 	import Icon from './Icon.svelte';
 	import ShelfPicker from './ShelfPicker.svelte';
 
@@ -15,7 +16,9 @@
 	 * (localStorage), so on the prerendered page it starts as a plain button
 	 * and fills in on hydration.
 	 */
-	let { slug }: { slug: string } = $props();
+	// `shortLabel` gives the book page's phone icon strip a one-word label
+	// ("Shelf") below `sm`, where "Add to a shelf" can't fit a fifth of a row.
+	let { slug, shortLabel = false }: { slug: string; shortLabel?: boolean } = $props();
 	const t = i18n.t;
 
 	let open = $state(false);
@@ -41,16 +44,11 @@
 	const onCount = $derived(customShelves.list().filter((s) => customShelves.has(s.id, slug)).length);
 </script>
 
-<svelte:window
-	onclick={(e) => {
-		if (open && root && !root.contains(e.target as Node)) open = false;
-	}}
-	onkeydown={(e) => {
-		if (open && e.key === 'Escape') open = false;
-	}}
-/>
-
-<div class="relative" bind:this={root}>
+<div
+	class="relative"
+	bind:this={root}
+	use:dismissable={{ open, onDismiss: () => (open = false) }}
+>
 	<button
 		type="button"
 		class="btn btn-sm btn-ghost"
@@ -58,7 +56,13 @@
 		onclick={toggle}
 	>
 		<Icon name="layers" size={15} />
-		{t('shelves.addTo')}
+		{#if shortLabel}
+			<span class="hidden sm:inline">{t('shelves.addTo')}</span><span class="sm:hidden"
+				>{t('shelves.short')}</span
+			>
+		{:else}
+			{t('shelves.addTo')}
+		{/if}
 		{#if onCount}
 			<span class="shelf-count" aria-hidden="true">✓ {onCount}</span>
 		{/if}
@@ -77,6 +81,12 @@
 </div>
 
 <style>
+	/* The icon strip has no room for the count. */
+	@media (max-width: 639.98px) {
+		:global(.action-strip) .shelf-count {
+			display: none;
+		}
+	}
 	.shelf-count {
 		margin-inline-start: 0.15rem;
 		font-size: var(--fs-eyebrow);

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { authorPath } from '$lib/originals';
 	import {
 		listAuthors,
 		listBooks,
@@ -27,7 +28,7 @@
 	const t = i18n.t;
 
 	const HREF: Record<string, (slug: string) => string> = {
-		author: (s) => `/authors/${s}`,
+		author: (s) => authorPath(s),
 		book: (s) => `/books/${s}`,
 		plan: (s) => `/plans/${s}`,
 		sermon: (s) => `/sermons/${s}`

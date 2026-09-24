@@ -59,7 +59,8 @@ coexist). Three kinds share the queue:
   the **`clean_bio_html`** sanitiser profile (bios carry `<aside class="prayer">`,
   `<cite>` and internal links — the chapter profile would strip them):
   - **English (`en`):** set the `Author` row's `bio` (short plain text) + `bio_html`
-    (long-form HTML). Ships in `authors.json`; add a data migration to reach the prod row.
+    (long-form HTML). Ships in `authors.json` alone — `author_sync` makes both fixture-wins
+    on deploy (since 2026-09-23); no migration.
   - **Translated:** an `AuthorTranslation` ships as files under
     `migrations/data/author_bios_<lang>/` (`<slug>.short.txt` + `<slug>.html`);
     `seed_author_translations` upserts unreviewed rows on deploy — no per-batch migration,

@@ -92,6 +92,23 @@ def _print_pdf(edition, path: Path) -> None:
         raise CommandError("Contents page numbers moved between passes.")
 
 
+def _bundle_cover(book, stdout) -> None:
+    """Refresh the committed copy of the edition's cover (see
+    ``book_export.BUNDLED_COVERS``) from the file the site serves, so every
+    export also leaves the API image a cover it can use without the network."""
+    dest = book_export.bundled_cover_path(book)
+    if dest is None:
+        return
+    src = book_export.site_cover_file(book)
+    if not src.is_file():
+        raise CommandError(f"No cover file at {src} to bundle for the export.")
+    if dest.is_file() and dest.read_bytes() == src.read_bytes():
+        return
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(src, dest)
+    stdout.write(f"Bundled cover {dest.name}")
+
+
 class Command(BaseCommand):
     help = "Export a book edition as EPUB, print HTML, or PDF."
 
@@ -110,6 +127,7 @@ class Command(BaseCommand):
             raise CommandError(
                 f"{slug} ({language}) is not exportable — see library/export_policy.py."
             )
+        _bundle_cover(book, self.stdout)
         edition = book_export.build_edition(book)
 
         if format == "epub":
