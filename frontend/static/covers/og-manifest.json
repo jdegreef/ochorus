@@ -3792,6 +3792,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"uk/women-who-moved-heaven-2": {
+			"ground": "83417b405e014d2eb9c2de78346df806e851e55e9d61bb47b92407b5e436e337",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"union-and-communion": {
 			"ground": "526cff85d67cbd9bd08c0b5116e2bcfbb07b1b84c81d11f66b5104d0a2245b50",
 			"style": "revival",
