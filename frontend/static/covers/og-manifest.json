@@ -644,6 +644,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"es/grace-for-grace-2": {
+			"ground": "f3a2424977200447b90488211dd5a87d8c81543da7531c61f723308ef70957a0",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/he-holds-my-tomorrows": {
 			"ground": "24edaf7af3dbc0d5fe0c66fc1d2bb664ba517d2bdbe338079d8698ff230b1090",
 			"style": "lettered",
@@ -812,6 +822,16 @@
 			"art": true,
 			"scrim": 0.8,
 			"layout": "split/navy",
+			"bar": 0
+		},
+		"es/school-of-prayer": {
+			"ground": "196f3e17c03c0a1e6dbcc611eb8f180deae35c459c8df41c8a4ed1e0f342eaea",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"es/separation-and-service": {
@@ -3662,6 +3682,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/growing-in-wisdom": {
+			"ground": "7172353c562c63453d90a20312ea7d626ae75691ee689b15b9bc03b4544d2640",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/he-holds-my-tomorrows": {
 			"ground": "1092a9ce5ad6587cbb4c2945824280ce8b44eac20499a302901eb6e3a76616d8",
 			"style": "lettered",
@@ -3732,6 +3762,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/spurgeon-on-prayer": {
+			"ground": "1bed501f567056b8f26c09a2ba5ec0074fe69ea21432e686996043cb5fb346d9",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "band/oxblood",
+			"bar": 0.04
+		},
 		"uk/stepping-stones-2": {
 			"ground": "c41017037413da4a9543d13901c454d70ac7d67c41d8e5596813d50df3be38fe",
 			"style": "lettered",
@@ -3762,6 +3802,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/the-masters-indwelling": {
+			"ground": "a143f7aa42dbf8a4a522110450bba6c5688089ebd2c75e5b6ac3b032fc0b4ef7",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"uk/the-secret-of-guidance": {
 			"ground": "14d0a0bed902850f5227c95108b074283c14e7e29099b858f67675249932de31",
 			"style": "devotional",
@@ -3779,6 +3829,16 @@
 			"script": "cyrillic",
 			"art": true,
 			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
+		"uk/thoughts-for-the-quiet-hour": {
+			"ground": "b815bfd651c5813ceee753d73914a8813455081672a64b0d017180803fe3bc1b",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"art": false,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},

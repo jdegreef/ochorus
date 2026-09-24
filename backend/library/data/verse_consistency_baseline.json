@@ -58,7 +58,7 @@
   "es\t1 Corintios 1:30": 3,
   "es\t1 Corintios 2:14": 2,
   "es\t1 Juan 1:7": 3,
-  "es\t1 Juan 1:9": 4,
+  "es\t1 Juan 1:9": 5,
   "es\t1 Juan 2:14": 3,
   "es\t1 Juan 3:2": 3,
   "es\t1 Pedro 2:5": 2,
@@ -114,12 +114,13 @@
   "es\tMateo 6:10": 2,
   "es\tRomanos 10:17": 2,
   "es\tRomanos 13:14": 2,
-  "es\tRomanos 6:6": 3,
-  "es\tRomanos 7:18": 2,
+  "es\tRomanos 6:13": 3,
+  "es\tRomanos 6:6": 4,
+  "es\tRomanos 7:18": 3,
   "es\tRomanos 7:19": 2,
   "es\tRomanos 8:13": 3,
   "es\tRomanos 8:19": 2,
-  "es\tRomanos 8:2": 2,
+  "es\tRomanos 8:2": 3,
   "es\tRomanos 8:37": 2,
   "es\tRut 2:14": 6,
   "es\tSal 27:1": 2,
@@ -411,6 +412,7 @@
   "sw\tZaburi 62:5": 2,
   "sw\tZaburi 78:19": 2,
   "sw\tZaburi 78:22": 2,
+  "uk\t2 Коринтян 12:9": 3,
   "uk\tІсаїї 53:5": 2
  }
 }
