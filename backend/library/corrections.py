@@ -4343,6 +4343,14 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
     ("definida y prevaleciente.</p>",
      "<p><i>Impreso en los Estados Unidos de América</i></p>"),
 ]
+# Gutenberg #51931 follows Torrey's last paragraph with a page break and the
+# Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
+# Stalker and Kempis blurbs survived), and then a sub-300-word "Transcriber's
+# Notes" section that the importer merged into ch13 as an <h3> and its errata.
+BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
+    ("before God can use them.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+]
 BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
     # "Betelguese" -> "Betelgeuse".
     ("Betelguese", "Betelgeuse"),
