@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-24 (queue job #3185): one NEW Swahili book — the-secret-of-guidance,
+// F. B. Meyer's devotional on discerning God's guidance, 9 chapters ("Siri ya Uongozi"). Rebuilds
+// /sw/books so the card carries its translated title over the shared derived-ground painting, and
+// the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-24 (queue job #3147): Portuguese book — school-of-prayer, Andrew Murray's
 // thirty-one lessons on prayer ("Com Cristo na Escola de Oração"), 33 chapters. Book pages are
 // prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the
