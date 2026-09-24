@@ -37,6 +37,19 @@ const load = (locale: string): Record<string, string> =>
 const keysOf = (catalogue: Record<string, string>): Set<string> =>
 	new Set(Object.keys(catalogue).filter((k) => !k.startsWith('$')));
 
+/**
+ * Each locale's key set, parsed once. The completeness checks test every
+ * English key against a catalogue, so calling `keysOf(load(locale))` inside
+ * that loop re-read and re-parsed the file once per key — thousands of parses
+ * per locale, which walked the suite into vitest's 5s timeout.
+ */
+const keyCache = new Map<string, Set<string>>();
+const keysFor = (locale: string): Set<string> => {
+	let keys = keyCache.get(locale);
+	if (!keys) keyCache.set(locale, (keys = keysOf(load(locale))));
+	return keys;
+};
+
 const catalogueLocales = (): string[] =>
 	readdirSync(MESSAGES_DIR)
 		.filter((f) => f.endsWith('.json'))
@@ -44,7 +57,7 @@ const catalogueLocales = (): string[] =>
 		.sort();
 
 describe('message catalogues', () => {
-	const base = keysOf(load('en'));
+	const base = keysFor('en');
 
 	it('has a non-trivial English catalogue to compare against', () => {
 		// Guards the guard: a glob or path change that silently loaded {} would
@@ -68,7 +81,8 @@ describe('message catalogues', () => {
 
 	for (const locale of ADVERTISED_LOCALES.filter((l) => l !== 'en')) {
 		it(`${locale} is complete — it is advertised, so readers are invited into it`, () => {
-			const missing = [...base].filter((k) => !keysOf(load(locale)).has(k));
+			const keys = keysFor(locale);
+			const missing = [...base].filter((k) => !keys.has(k));
 			expect(
 				missing,
 				`${locale}.json is missing ${missing.length} key(s), which would render in ` +
@@ -82,7 +96,7 @@ describe('message catalogues', () => {
 		// A stale key is dead weight and usually means a rename landed in one
 		// catalogue but not the rest.
 		for (const locale of catalogueLocales()) {
-			const extra = [...keysOf(load(locale))].filter((k) => !base.has(k));
+			const extra = [...keysFor(locale)].filter((k) => !base.has(k));
 			expect(extra, `${locale}.json has keys absent from en.json: ${extra.join(', ')}`).toEqual(
 				[]
 			);
@@ -116,7 +130,8 @@ describe('message catalogues', () => {
 			(l) => !(ADVERTISED_LOCALES as readonly string[]).includes(l)
 		);
 		for (const locale of unadvertised) {
-			const present = [...base].filter((k) => keysOf(load(locale)).has(k)).length;
+			const keys = keysFor(locale);
+			const present = [...base].filter((k) => keys.has(k)).length;
 			const pct = Math.round((present / base.size) * 100);
 			console.info(`  ${locale}: ${present}/${base.size} interface strings (${pct}%)`);
 			expect(pct).toBeGreaterThanOrEqual(0);
