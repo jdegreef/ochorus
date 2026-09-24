@@ -18,7 +18,7 @@ import type { PageLoad } from './$types';
 // the-preached-word) seeded — the same-deploy web build can prerender
 // before seed_topics runs, so this trailing touch forces the rebuild that
 // actually sees them.
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listTopics(getLang()));
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listTopics(getLang(), fetch));
 	return { topics: items, loadError };
 };

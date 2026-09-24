@@ -16,6 +16,6 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params }) => ({
-	page: await orNotFound(() => getQuoteTopicPage(params.topic))
+export const load: PageLoad = async ({ params, fetch }) => ({
+	page: await orNotFound(() => getQuoteTopicPage(params.topic, fetch))
 });

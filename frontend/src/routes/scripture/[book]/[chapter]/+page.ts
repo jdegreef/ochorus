@@ -25,11 +25,11 @@ export const entries: EntryGenerator = async () => {
 // never have been built), read from the same list the entry generator uses.
 type ScriptureNav = { href: string; label: string } | null;
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
 	const chapter = Number(params.chapter);
 	const [page, all] = await Promise.all([
-		orNotFound(() => getScripturePage(params.book, chapter)),
-		listScripturePages().catch(() => [])
+		orNotFound(() => getScripturePage(params.book, chapter, undefined, fetch)),
+		listScripturePages(fetch).catch(() => [])
 	]);
 	const chapters = all
 		.filter((p) => p.verse === null)

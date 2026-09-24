@@ -65,11 +65,11 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
 	// orNotFound turns the API's 404 into SvelteKit's, so an unpublished or
 	// mistyped slug gets the not-found page (with its daily picks) instead of the
 	// generic "something went wrong — try again" shell, which offers a retry for
 	// a page that will never exist. Books, chapters, sermons and authors have
 	// always done this; topics and plans were the two that missed it.
-	return { topic: await orNotFound(() => getTopic(params.slug, getLang())) };
+	return { topic: await orNotFound(() => getTopic(params.slug, getLang(), fetch)) };
 };

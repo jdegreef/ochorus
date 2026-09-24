@@ -35,6 +35,25 @@ async function errorBody(res: Response): Promise<unknown> {
 }
 
 /**
+ * The `fetch` a SvelteKit load() receives. Pass it through (the optional last
+ * argument of `apiFetch` and the public loaders) from every page load.
+ *
+ * Why: public pages are prerendered, then HYDRATE by running load() again in the
+ * browser. With the global `fetch` that second run calls the API — a round-trip
+ * before the page is live, egress for every visit, and a hard dependency on the
+ * API answering. Googlebot's renderer is where that bit: when it could not reach
+ * the API (robots.txt, 2026-09), the load threw, the page hydrated into
+ * +error.svelte, and Google indexed its noindex. SvelteKit's own `fetch` instead
+ * inlines each response into the prerendered HTML (`<script
+ * data-sveltekit-fetched>`) and replays it on hydration, so the API is not asked
+ * at all. A request that does not match what the prerender recorded (a signed-in
+ * reader's Authorization header, a different language) just goes to the network
+ * as before. Build-side CORS for these fetches: see `handleFetch` in
+ * hooks.server.ts.
+ */
+export type Fetch = typeof fetch;
+
+/**
  * Supplies the current Supabase access token, if any. The auth store registers
  * this (via `setAuthTokenProvider`) so we avoid an import cycle: api ↔ auth.
  */
@@ -61,13 +80,13 @@ const BUILD_RETRY_DELAYS_MS = [1000, 4000, 10000];
 const isIdempotent = (init: RequestInit) =>
 	!init.method || ['GET', 'HEAD'].includes(init.method.toUpperCase());
 
-async function robustFetch(url: string, init: RequestInit): Promise<Response> {
-	if (!building || !isIdempotent(init)) return fetch(url, init);
+async function robustFetch(url: string, init: RequestInit, f: Fetch = fetch): Promise<Response> {
+	if (!building || !isIdempotent(init)) return f(url, init);
 	for (let attempt = 0; ; attempt++) {
 		const outOfRetries = attempt >= BUILD_RETRY_DELAYS_MS.length;
 		let failure: string;
 		try {
-			const res = await fetch(url, init);
+			const res = await f(url, init);
 			if (res.status < 500 || outOfRetries) return res;
 			failure = `${res.status}`;
 		} catch (err) {
@@ -85,7 +104,7 @@ async function robustFetch(url: string, init: RequestInit): Promise<Response> {
  * user is signed in we attach their Supabase Bearer token so authenticated
  * endpoints (e.g. /api/auth/me) work.
  */
-async function requestJSON<T>(path: string, init: RequestInit): Promise<T> {
+async function requestJSON<T>(path: string, init: RequestInit, f?: Fetch): Promise<T> {
 	const headers = new Headers(init.headers);
 	if (init.body && !headers.has('Content-Type')) {
 		headers.set('Content-Type', 'application/json');
@@ -95,11 +114,11 @@ async function requestJSON<T>(path: string, init: RequestInit): Promise<T> {
 		headers.set('Authorization', `Bearer ${token}`);
 	}
 
-	const res = await robustFetch(`${API_BASE_URL}${path}`, {
-		...init,
-		headers,
-		signal: withTimeout(init.signal)
-	});
+	const res = await robustFetch(
+		`${API_BASE_URL}${path}`,
+		{ ...init, headers, signal: withTimeout(init.signal) },
+		f
+	);
 	if (!res.ok) {
 		throw new ApiError(res.status, await errorBody(res));
 	}
@@ -184,7 +203,12 @@ function withTimeout(caller: AbortSignal | null | undefined): AbortSignal | unde
  */
 const inFlight = new Map<string, Promise<unknown>>();
 
-export function apiFetch<T = unknown>(path: string, init: RequestInit = {}): Promise<T> {
+export function apiFetch<T = unknown>(path: string, init: RequestInit = {}, f?: Fetch): Promise<T> {
+	// A load()'s own `fetch` bypasses the in-flight map: each page's fetch has to
+	// SEE its own request to inline the response (see {@link Fetch}), and a
+	// promise borrowed from another page's load — concurrent prerendering shares
+	// this module — would leave this page hydrating from the network again.
+	if (f) return requestJSON<T>(path, init, f);
 	const method = (init.method ?? 'GET').toUpperCase();
 	// Only GETs. A POST is an action, not a question — two of them are two
 	// intentions, and collapsing them would drop one.

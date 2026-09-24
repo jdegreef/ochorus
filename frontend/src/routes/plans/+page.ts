@@ -227,7 +227,7 @@ import type { PageLoad } from './$types';
  * plan_translations/pt.json, so seed_plans now creates both (slug, pt) rows and
  * /pt/plans re-crawls to bake the two new cards.
  */
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listPlans(getLang()));
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listPlans(getLang(), fetch));
 	return { plans: items, loadError };
 };

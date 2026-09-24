@@ -26,8 +26,8 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
 	// See the note in topics/[slug]: an unknown slug must reach the not-found
 	// page, not the generic retry shell.
-	return { plan: await orNotFound(() => getPlan(params.slug, getLang())) };
+	return { plan: await orNotFound(() => getPlan(params.slug, getLang(), fetch)) };
 };
