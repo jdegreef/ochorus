@@ -7,7 +7,7 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 import logging
 
 from django.core.cache import cache
-from django.db.models import Count, Exists, OuterRef, Prefetch, Q
+from django.db.models import Count, Exists, F, OuterRef, Prefetch, Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
@@ -18,6 +18,7 @@ from rest_framework.views import APIView
 from common.throttling import ScopedCacheThrottle
 
 from . import languages as languages_module
+from .contemporize import MODERN_LANGUAGE
 from .http_cache import PublicContentCacheMixin
 from .languages import entry as language_entry
 from .localization import language_from_request
@@ -31,6 +32,7 @@ from .models import (
     Plan,
     SearchClickLog,
     SearchQueryLog,
+    Series,
     Sermon,
     Topic,
 )
@@ -466,6 +468,85 @@ def _attach_articles(topics, language):
             if e.article_slug in by_slug
         ]
     return topics
+
+
+def _series_books(series, language: str) -> list:
+    """A series' published books in ``language``, as cards, in reading order.
+
+    Volume order where the series has one; a collection (no positions) falls
+    back to the library's own sort order, as a shelf would.
+    """
+    return list(
+        Book.objects.filter(series=series, language=language, is_published=True)
+        .select_related("author")
+        .prefetch_related("author__translations")
+        .annotate(**BOOK_CARD_ANNOTATIONS)
+        .order_by(F("series_position").asc(nulls_last=True), "sort_order", "title")
+    )
+
+
+def _series_languages(series) -> list[str]:
+    """The languages ``series`` has a page in: a name there and a published
+    book there. Feeds hreflang, which must not advertise a page that 404s."""
+    named = {"en"} | {t.language for t in series.translations.all()}
+    held = set(
+        Book.objects.filter(series=series, is_published=True)
+        .exclude(language=MODERN_LANGUAGE)
+        .values_list("language", flat=True)
+    )
+    return sorted(named & held)
+
+
+class SeriesListView(PublicContentCacheMixin, APIView):
+    """Every series with a page in the requested language — for the prerender's
+    entries and the sitemap. A series needs a name here and at least one
+    published book here; one that has neither in a language doesn't exist in it
+    (the no-English-fallback rule, as for topics)."""
+
+    def get(self, request):
+        language = _language(request)
+        rows = []
+        for series in Series.objects.prefetch_related("translations"):
+            title = series.title_for(language)
+            if not title:
+                continue
+            count = Book.objects.filter(
+                series=series, language=language, is_published=True
+            ).count()
+            if count:
+                rows.append({"slug": series.slug, "title": title, "book_count": count})
+        return Response(rows)
+
+
+class SeriesDetailView(PublicContentCacheMixin, APIView):
+    """One series page: its name and description in the requested language, and
+    its books there in reading order. 404 where the series has no name or no
+    book in that language, so the reader gets the not-found page rather than an
+    empty or English-named one."""
+
+    def get(self, request, slug):
+        language = _language(request)
+        series = get_object_or_404(Series.objects.prefetch_related("translations"), slug=slug)
+        title = series.title_for(language)
+        books = _series_books(series, language) if title else []
+        if not books:
+            raise Http404("No series in this language")
+        ordered = any(b.series_position is not None for b in books)
+        return Response(
+            {
+                "slug": series.slug,
+                "title": title,
+                "description": series.description_for(language),
+                "ordered": ordered,
+                "books": BookListSerializer(
+                    books,
+                    many=True,
+                    # No topic chips on these cards: skip building the map.
+                    context={"request": request, "language": language, "book_topics": {}},
+                ).data,
+                "available_languages": _series_languages(series),
+            }
+        )
 
 
 class TopicListView(PublicContentCacheMixin, generics.ListAPIView):
