@@ -778,6 +778,10 @@ class CorrectionsHygieneTests(SimpleTestCase):
                 # Dead means BOTH are gone: the paragraph this titles was
                 # edited or renumbered out from under the entry.
                 *entry.get("restored_blocks", ()),
+                # A back-matter cut is spelled as its first block (not yet
+                # applied) and the author's last line it cuts after (applied,
+                # and still present). Dead means the ending was edited away.
+                *((first, last) for last, first in entry.get("back_matter", ())),
             )
             if old not in corpus and new not in corpus
         ]
@@ -1234,6 +1238,104 @@ class DroppedBlockRestorationTests(SimpleTestCase):
         repair must not scatter copies through the chapter."""
         doubled = "<p>Just this day I met her.</p> <p>Just this day I met her.</p>"
         self.assertEqual(self._restore(doubled).count("<h4>"), 1)
+
+
+class BackMatterTests(SimpleTestCase):
+    """`strip_back_matter` — the publisher's and transcriber's pages after the end.
+
+    Gutenberg texts fold the back of the printed book into the last chapter's
+    section: a colophon and a priced catalogue, a transcriber's errata note. It
+    shipped, and a translator renders what is there, so it reached the
+    translations too.
+    """
+
+    SEAMS = (("prevailing prayer.</p>", "<p><i>Printed in the United States of America</i></p>"),)
+    ENDING = "<p>by earnest, definite, prevailing prayer.</p>"
+    TAIL = "<p><i>Printed in the United States of America</i></p><p><i>R. A. TORREY</i></p>"
+
+    def _strip(self, html):
+        return corrections.strip_back_matter(html, self.SEAMS)
+
+    def test_cuts_everything_after_the_ending(self):
+        self.assertEqual(self._strip(self.ENDING + self.TAIL), self.ENDING)
+
+    def test_tolerates_the_block_separator(self):
+        self.assertEqual(self._strip(f"{self.ENDING} \n{self.TAIL}"), self.ENDING)
+
+    def test_is_idempotent(self):
+        once = self._strip(self.ENDING + self.TAIL)
+        self.assertEqual(self._strip(once), once)
+
+    def test_the_ending_alone_is_not_a_seam(self):
+        """Every entry runs against every chapter of its slug: an ending phrase
+        that recurs mid-book must not truncate it."""
+        body = self.ENDING + "<p>The next paragraph.</p>"
+        self.assertEqual(self._strip(body), body)
+
+    def test_the_first_block_alone_is_not_a_seam(self):
+        """Nor may a colophon quoted somewhere else cut the book there."""
+        body = "<p>Earlier.</p>" + self.TAIL
+        self.assertEqual(self._strip(body), body)
+
+    def test_no_op_on_a_stripped_body(self):
+        text = "by earnest, definite, prevailing prayer. Printed in the United States of America"
+        self.assertEqual(self._strip(text), text)
+
+
+class ShippedBackMatterTests(SimpleTestCase):
+    """Every declared `back_matter` seam, against every edition of its work.
+
+    Driven by the declarations, so a new entry is covered without a new test.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        books = Path(__file__).resolve().parent / "fixtures" / "content" / "books"
+        cls.cases = []
+        for slug, entry in corrections.BODY_CORRECTIONS.items():
+            seams = entry.get("back_matter", ())
+            if not seams:
+                continue
+            for path in sorted(books.glob(f"{slug}.*.json")):
+                chapters = [
+                    row["fields"] for row in json.loads(path.read_text(encoding="utf-8"))
+                    if row["model"] == "library.chapter"
+                ]
+                last = max(chapters, key=lambda f: f["order"])
+                cls.cases.append((slug, path.name, last, seams))
+
+    def test_every_edition_ends_on_a_declared_ending(self):
+        """Each edition of the work ships cut — and a translation that carried
+        the back matter but has no seam of its own would fail here."""
+        self.assertTrue(self.cases)
+        for slug, name, last, seams in self.cases:
+            with self.subTest(fixture=name):
+                self.assertTrue(
+                    any(last["body_html"].endswith(end) for end, _ in seams),
+                    f"{name} ch{last['order']} does not end on a declared ending",
+                )
+
+    def test_the_correction_is_what_cuts_the_back_matter(self):
+        """Put the back matter's first block back and the correction must cut it.
+
+        The settled fixture passes the test above with the entry deleted;
+        production rows still carry the tail, and `apply_body_corrections` on
+        deploy is the only thing that removes it.
+        """
+        for slug, name, last, seams in self.cases:
+            settled = last["body_html"]
+            end, first = next((e, f) for e, f in seams if settled.endswith(e))
+            with self.subTest(fixture=name):
+                damaged = f"{settled}{first}<p>The next advertised title.</p>"
+                self.assertEqual(
+                    corrections.settled_chapter_body(slug, last["order"], damaged),
+                    settled,
+                )
+                self.assertEqual(
+                    corrections.settled_chapter_body(slug, last["order"], settled),
+                    settled,
+                )
 
 
 class BruisedReedRepairTests(SimpleTestCase):
