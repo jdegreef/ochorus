@@ -65,6 +65,14 @@
       "All three Bounds books are ALREADY published in es, so seed_plans creates this (praying-men, es) row on the same deploy that adds the plan — this prose must land in the SAME PR as the English definition or the es plans page publishes the English card (the #819 defect)."
     ]
   },
+  "christ-our-healer": {
+    "title": "Cristo, nuestro Sanador",
+    "description": "Seis semanas sobre Cristo como Salvador, Santificador, Sanador y Rey que viene. A. B. Simpson expone «El evangelio cuádruple» y su ministerio de sanidad, y Andrew Murray cierra con un mes de meditaciones sobre el Señor que todavía sana el cuerpo como prenda de la vida venidera.",
+    "note": [
+      "Queue job #2543 (this PR): the-gospel-of-healing.es («El Evangelio de la sanidad») completes the curated christ-our-healer set, so seed_plans now creates the (christ-our-healer, es) row and needs this prose. The other two source books were already Spanish: the-fourfold-gospel.es («El evangelio cuádruple») and divine-healing.es («La Sanidad Divina»).",
+      "The description echoes the shipped title «El evangelio cuádruple» verbatim, so the plan card and the book it opens agree."
+    ]
+  },
   "school-of-prayer-31-days": {
     "title": "31 días en la escuela de oración",
     "description": "Un mes con Andrew Murray a los pies del único Maestro. Cada día abre una de las propias palabras de Jesús sobre la oración, desde «Señor, enséñanos a orar» hasta las promesas de la última noche, y termina en una oración. Una lección al día, unos diez minutos, avanzando hacia la intercesión y una vida de oración.",

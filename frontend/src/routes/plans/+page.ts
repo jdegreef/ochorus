@@ -1,6 +1,11 @@
 // prerender refresh 2026-09-24 (queue job #3185): sw plan prose — waiting-on-god-trust ("Kumngojea
 // Mungu: Maisha ya Kumtumaini"), the CURATED plan whose third source book, the-secret-of-guidance,
 // now ships in sw, so seed_plans creates the plan row in sw. /sw/plans re-crawls to bake the card.
+// prerender refresh 2026-09-24 (queue job #2543): Spanish plan ACTIVATED — christ-our-healer
+// ("Cristo, nuestro Sanador"), a CURATED_PLANS entry over the-fourfold-gospel, the-gospel-of-healing
+// and divine-healing. Shipping the-gospel-of-healing.es completes the es set, so seed_plans creates
+// the (christ-our-healer, es) row; /plans is prerendered per locale, so /es/plans re-crawls to bake
+// the new card with its translated title and description.
 // prerender refresh 2026-09-24 (queue job #3148): sw plan prose — school-of-prayer-31-days ("Siku 31
 // katika Shule ya Maombi"), the LAUNCH_PLANS single-book plan backed by the newly-shipped sw edition
 // of school-of-prayer, so seed_plans now creates the plan row in sw. /sw/plans re-crawls to bake the

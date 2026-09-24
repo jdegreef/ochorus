@@ -904,6 +904,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+			"es/the-gospel-of-healing": {
+				"ground": "90ec84e201074d75daf2716fafe3eb8afb304c01043f7c303bb46adeee56b955",
+				"style": "revival",
+				"volume": null,
+				"script": "latin",
+				"art": true,
+				"scrim": 0.55,
+				"layout": "box/teal",
+				"bar": 0
+			},
 		"es/the-inner-chamber": {
 			"ground": "336703e5a3b031ffc4533590d4d4a6024e164a09540a43bc18546d77db4c3e7d",
 			"style": "devotional",
