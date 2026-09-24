@@ -21,9 +21,10 @@ export interface UndoOffer {
 	 * What happened, for the wording. Default: a generic "Removed". `'note'` is a
 	 * cleared note; `'finished'` is a work just marked finished (its restore
 	 * un-finishes it) — the one offer that undoes an ADD rather than a removal,
-	 * but the mechanism is identical: a short-lived "take it back".
+	 * but the mechanism is identical: a short-lived "take it back". `'moved'` is
+	 * a book moved between Bookshelf shelves (see shelfMoves).
 	 */
-	kind?: 'note' | 'finished';
+	kind?: 'note' | 'finished' | 'moved';
 	/**
 	 * Show the offer INSIDE the surface that made it rather than as a corner
 	 * toast. Needed when that surface is a modal dialog (the contents drawer):
