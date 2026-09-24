@@ -964,6 +964,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"es/watchman-nee-a-life": {
+			"ground": "fe21de76349faf939f8875a9dcebe4ec6c6436b5db62721bc7ba7a79a618472b",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0
+		},
 		"essentials-of-prayer": {
 			"ground": "a3a08b7bec07326fc082f318a9e802f90c63c4db8741bf81482c6c748df952d2",
 			"style": "devotional",
