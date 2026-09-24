@@ -4,11 +4,13 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 (default "en"). All endpoints are public (AllowAny via the project default).
 """
 
+import hashlib
 import logging
 
+from django.conf import settings
 from django.core.cache import cache
 from django.db.models import Count, Exists, F, OuterRef, Prefetch, Q
-from django.http import Http404
+from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.parsers import JSONParser
@@ -17,9 +19,16 @@ from rest_framework.views import APIView
 
 from common.throttling import ScopedCacheThrottle
 
+from . import book_export
 from . import languages as languages_module
 from .contemporize import MODERN_LANGUAGE
-from .http_cache import PublicContentCacheMixin
+from .export_policy import is_exportable
+from .http_cache import (
+    CACHE_CONTROL,
+    PublicContentCacheMixin,
+    _if_none_match,
+    content_etag,
+)
 from .languages import entry as language_entry
 from .localization import language_from_request
 from .models import (
@@ -247,6 +256,56 @@ class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             book=book,
             order=self.kwargs["order"],
         )
+
+
+class _BookDownloadThrottle(ScopedCacheThrottle):
+    """A download builds a whole book, so it gets its own ceiling — far above a
+    reader (nobody downloads 30 books a minute) and well below a scraper."""
+
+    scope = "book-download"
+
+
+class BookEpubView(APIView):
+    """A book as an EPUB file, built per request from the live chapters.
+
+    See ``library/book_export.py``. 404 for anything not exportable
+    (``export_policy``), so a guessed URL can't pull an edition we haven't
+    vetted.
+
+    Not ``PublicContentCacheMixin``: its tag moves with the content, but the
+    renderer (book_export.py) is deliberately not a content root, so a deploy
+    that changes the FILE FORMAT would keep answering 304. The tag here is the
+    shared content tag plus the release commit, still checked before the book
+    is built.
+    """
+
+    throttle_classes = [_BookDownloadThrottle]
+
+    def get(self, request, slug):
+        etag = _epub_etag(request)
+        if _if_none_match(request, etag):
+            response = HttpResponseNotModified()
+        else:
+            book = get_object_or_404(
+                Book.objects.select_related("author"),
+                slug=slug,
+                language=_language(request),
+            )
+            if not is_exportable(book):
+                raise Http404
+            data = book_export.render_epub(book_export.build_edition(book))
+            response = HttpResponse(data, content_type="application/epub+zip")
+            response["Content-Disposition"] = (
+                f'attachment; filename="{book_export.export_filename(book, "epub")}"'
+            )
+        response["ETag"] = etag
+        response["Cache-Control"] = CACHE_CONTROL
+        return response
+
+
+def _epub_etag(request) -> str:
+    material = f"{content_etag(request)}|{settings.RELEASE_COMMIT}"
+    return 'W/"' + hashlib.sha256(material.encode()).hexdigest()[:16] + '"'
 
 
 class SermonListView(PublicContentCacheMixin, generics.ListAPIView):

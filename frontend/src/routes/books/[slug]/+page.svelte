@@ -4,7 +4,7 @@
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { chapterName, contentLang, readingMinutes, readingTime } from '$lib/reading';
-	import { SITE_URL } from '$lib/config';
+	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import {
 		absUrl,
 		jsonLd,
@@ -450,16 +450,31 @@
 						{t('offline.download')}
 					</button>
 				{/if}
-				<!-- PDF download withdrawn (2026-07-26). 33 of the 34 books carrying a
-				     pdf_url pointed at /pdfs/<slug>.pdf, and only soar-like-the-eagle.pdf
-				     was ever committed to static/pdfs — every other button 404'd. The
-				     rows were repointed off ochorus.com's WordPress media without the
-				     files coming with them, and the earlier rel="external" was added to
-				     stop the prerender crawler failing the build on exactly those missing
-				     files, which hid the breakage rather than surfacing it.
-				     pdf_url is left intact in the data; restore this block once the files
-				     are actually hosted (and drop rel="external" then, so a missing file
-				     fails the build loudly instead of shipping a dead button). -->
+				<!-- Free downloads. EPUB is built per request by the API
+				     (library/book_export.py; `epub_url` is "" outside the pilot).
+				     The PDF is a static file under /pdfs/, printed off-server by
+				     `manage.py export_book` — no rel="external", so a pdf_url whose
+				     file is missing fails the prerender crawl instead of shipping a
+				     dead button (the 2026-07-26 withdrawal). -->
+				{#if book.epub_url || book.pdf_url}
+					<span class="inline-flex items-center gap-1">
+						<Icon name="download" size={16} class="text-muted" />
+						<span class="sr-only sm:not-sr-only text-small text-muted"
+							>{t('book.freeDownload')}</span
+						>
+						{#if book.epub_url}
+							<a
+								href={`${API_BASE_URL}${book.epub_url}`}
+								class="btn btn-sm btn-ghost"
+								download
+								rel="nofollow">EPUB</a
+							>
+						{/if}
+						{#if book.pdf_url}
+							<a href={book.pdf_url} class="btn btn-sm btn-ghost" download>PDF</a>
+						{/if}
+					</span>
+				{/if}
 
 				{#if book.has_modern_edition}
 					{@const readOrder = resumeOrder && resumeOrder > 1 ? resumeOrder : 1}

@@ -194,6 +194,8 @@ REST_FRAMEWORK = {
         # nature — a handful a day at most — so this only catches a script
         # flooding the queue, never a genuine submitter. Per account.
         "feedback": "20/hour",
+        # Whole-book downloads (BookEpubView): each builds an entire book.
+        "book-download": "30/min",
     },
     # Exactly one proxy (Render's) sits in front of the app, so the client
     # address is the LAST entry in X-Forwarded-For. Without this, DRF keys
