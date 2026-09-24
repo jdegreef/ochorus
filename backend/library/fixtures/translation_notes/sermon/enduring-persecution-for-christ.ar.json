@@ -1,0 +1,181 @@
+{
+  "kind": "sermon",
+  "slug": "enduring-persecution-for-christ",
+  "language": "ar",
+  "job_issue": 1659,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Hebrews 13:13",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "1 Thessalonians 3:3",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Romans 8:29",
+      "status": "self_rendered",
+      "block_index": 12
+    },
+    {
+      "reference": "Acts 5:41",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "1 Peter 4:15-16",
+      "status": "self_rendered",
+      "block_index": 16
+    },
+    {
+      "reference": "1 Peter 1:7",
+      "status": "self_rendered",
+      "block_index": 17
+    },
+    {
+      "reference": "John 21:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 19
+    },
+    {
+      "reference": "John 21:18",
+      "status": "self_rendered",
+      "block_index": 37
+    },
+    {
+      "reference": "2 Timothy 2:11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 20
+    },
+    {
+      "reference": "Matthew 5:10a",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 21
+    },
+    {
+      "reference": "Matthew 10:32",
+      "status": "self_rendered",
+      "block_index": 22
+    },
+    {
+      "reference": "Luke 12:8",
+      "status": "self_rendered",
+      "block_index": 22
+    },
+    {
+      "reference": "Matthew 10:28",
+      "status": "self_rendered",
+      "block_index": 23
+    },
+    {
+      "reference": "Luke 12:5",
+      "status": "self_rendered",
+      "block_index": 23
+    },
+    {
+      "reference": "Matthew 10:33",
+      "status": "self_rendered",
+      "block_index": 23
+    },
+    {
+      "reference": "Hebrews 10:27",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 23
+    },
+    {
+      "reference": "Psalms 129:1",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 25
+    },
+    {
+      "reference": "Psalms 129:3",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 25
+    },
+    {
+      "reference": "Romans 8:36b",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 25
+    },
+    {
+      "reference": "Psalms 129:4b",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 26
+    },
+    {
+      "reference": "Psalms 125:3",
+      "status": "self_rendered",
+      "block_index": 26
+    },
+    {
+      "reference": "Psalms 7:15",
+      "status": "self_rendered",
+      "block_index": 27
+    },
+    {
+      "reference": "2 Corinthians 4:8-10",
+      "status": "self_rendered",
+      "block_index": 27
+    },
+    {
+      "reference": "Hebrews 12:1",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 28
+    },
+    {
+      "reference": "Hebrews 11:35-38",
+      "status": "self_rendered",
+      "block_index": 28
+    },
+    {
+      "reference": "Matthew 7:6",
+      "status": "self_rendered",
+      "block_index": 32
+    },
+    {
+      "reference": "Luke 21:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 35
+    },
+    {
+      "reference": "Matthew 24:44",
+      "status": "self_rendered",
+      "block_index": 37
+    },
+    {
+      "reference": "Luke 21:18",
+      "status": "self_rendered",
+      "block_index": 38
+    },
+    {
+      "reference": "Psalms 116:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 40
+    },
+    {
+      "reference": "Isaiah 26:21",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 40
+    },
+    {
+      "reference": "Zechariah 2:8",
+      "status": "self_rendered",
+      "block_index": 41
+    }
+  ]
+}
