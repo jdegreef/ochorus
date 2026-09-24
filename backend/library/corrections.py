@@ -4351,6 +4351,14 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
     ("definida y prevaleciente.</p>",
      "<p><i>Impreso en los Estados Unidos de América</i></p>"),
 ]
+# Gutenberg #29426 ends ch35 on the printer's imprint, "LONDON: MORGAN AND
+# SCOTT", then its own "Transcriber's Notes" (`div.tnote`: punctuation repaired,
+# page 146 taken from the 1903 edition). Both shipped as the chapter's tail, and
+# the sw edition translated the notes. The book ends on "you will pray more."
+BODY_CORRECTIONS["things-as-they-are"]["back_matter"] = [
+    ("you will pray more.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+    ("mtaomba zaidi.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+]
 # Gutenberg #65066 follows "…revival of true religion! Amen." with the ATS
 # donors' line and the transcriber's `tnotes` endnote. The note's heading was
 # never collected, so its three paragraphs read as Edwards's own last words —
