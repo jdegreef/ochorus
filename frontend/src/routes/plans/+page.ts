@@ -226,6 +226,11 @@ import type { PageLoad } from './$types';
  * (A Vida Mais Profunda: Cristo em Vós). The pt prose already lived in
  * plan_translations/pt.json, so seed_plans now creates both (slug, pt) rows and
  * /pt/plans re-crawls to bake the two new cards.
+ *
+ * Prerender refresh 2026-09-24 (queue job #811, PR #3245, the plan side-effect):
+ * Andrew Murray's Humility shipped in Ukrainian with its plan prose, so
+ * seed_plans creates humility-12-days in uk as Смирення за 12 днів and /uk/plans
+ * re-crawls to bake the new card.
  */
 export const load: PageLoad = async () => {
 	const { items, loadError } = await loadShelf(listPlans(getLang()));

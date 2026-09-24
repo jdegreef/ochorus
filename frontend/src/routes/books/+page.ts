@@ -1,5 +1,5 @@
-// prerender refresh 2026-09-24 (queue job #1755): वॉचमैन नी — the Hindi edition of
-// watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-24 (queue job #811, PR #3245): Andrew Murray's Смирення — the Ukrainian
+// edition of humility-2, 12 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-24: one NEW Swahili book — revival-lectures (#2580), Charles Finney's
 // 1835 "Lectures on Revivals of Religion", 24 chapters ("Mihadhara juu ya Uamsho wa Dini").
 // Rebuilds /sw/books so the card carries its translated title over the shared painting cover, and
@@ -373,6 +373,8 @@
 // edition — so seed_plans creates no uk plan row and plans/+page.ts has
 // nothing new to bake. Whoever ships that second book DOES owe the plans
 // touch, because it completes the set.
+// prerender refresh 2026-09-24 (queue job #1755): वॉचमैन नी — the Hindi edition of
+// watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
