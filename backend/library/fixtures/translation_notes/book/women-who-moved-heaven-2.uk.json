@@ -3,7 +3,7 @@
  "slug": "women-who-moved-heaven-2",
  "language": "uk",
  "job_issue": 1788,
- "pull_request": null,
+ "pull_request": 3303,
  "note": [
   "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “, U+02BC to ’. NIV/NLT/KJV version labels dropped from citations since every quotation is Kulish; the appendix preface says so. Hebrews cited as Євреїв, not Kulish's Жидів.",
   "Galatians 2:20 is split across two paragraphs in the English (ch. 6), so it is recorded as 2:20a / 2:20b."
