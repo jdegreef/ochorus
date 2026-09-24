@@ -156,7 +156,7 @@ describe('the two cover renderers agree', () => {
 			{
 				art: true,
 				scrim: scrimStrength('waiting-on-god'),
-				layout: coverLayoutFor('andrew-murray', null)
+				layout: coverLayoutFor('andrew-murray', null, 'waiting-on-god')
 			}
 		],
 		[
@@ -182,7 +182,7 @@ describe('the two cover renderers agree', () => {
 				title: 'انتظار الله',
 				art: true,
 				scrim: scrimStrength('waiting-on-god'),
-				layout: coverLayoutFor('andrew-murray', 'arabic')
+				layout: coverLayoutFor('andrew-murray', 'arabic', 'waiting-on-god')
 			}
 		],
 		[
