@@ -279,6 +279,10 @@
 	// throttled scroll handler that saves the position anchor.
 	let chapterFrac = $state(0);
 	let bookForProgress = $state<BookDetail | null>(null);
+	/** On the last chapter, the series' next volume in this language, if any.
+	 *  Rides the book fetch above, so it appears once that lands (the button
+	 *  falls back to "Back to contents" until then, and for good offline). */
+	const nextInSeries = $derived(chapter.next ? null : (bookForProgress?.series?.next ?? null));
 
 	// Reset the scroll fraction when the CHAPTER changes — a fresh chapter opens
 	// at the top until the per-chapter effect below restores the saved position.
@@ -1609,13 +1613,28 @@
 					{/if}{#if nextPreview}<span class="italic">{nextPreview}…</span>{/if}
 				</span>
 			</a>
+		{:else if nextInSeries}
+			<!-- The end of a volume is where a series loses its reader: point at the
+			     next one (in this language — the API skips a volume not translated
+			     yet) instead of back at the contents of a book just finished. To its
+			     page, not its first chapter: a devotional opens with an introduction
+			     and a reader deciding to go on wants to see what they are starting. -->
+			<a
+				href={localizeHref(`/books/${nextInSeries.slug}`)}
+				class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
+				class:celebrate
+				aria-label="{t('book.seriesNext')}: {nextInSeries.title}"
+			>
+				<span class="eyebrow opacity-75">{t('book.seriesNext')}</span>
+				<span class="text-small" dir="auto">{nextInSeries.title}</span>
+			</a>
 		{:else}
 			<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center" class:celebrate>{t('reader.backToContents')}</a>
 		{/if}
 	</nav>
-	<!-- A way to the contents even mid-book: the "back to contents" button above
-	     only appears once the last chapter has nothing to point forward to. -->
-	{#if chapter.next}
+	<!-- A way to the contents whenever the button above points somewhere else:
+	     mid-book, and at the end of a volume that has a next one. -->
+	{#if chapter.next || nextInSeries}
 		<p class="mt-3 text-center">
 			<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">{t('reader.contents')}</a>
 		</p>

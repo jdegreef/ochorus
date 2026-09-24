@@ -154,6 +154,26 @@ export interface FeaturedPerson {
 /** Relative reading-difficulty badge, computed server-side; null = unjudged. */
 export type Difficulty = 'accessible' | 'moderate' | 'advanced' | null;
 
+/** A neighbouring volume of a series, as `BookSeries` links to it. */
+export interface SeriesVolume {
+	slug: string;
+	title: string;
+}
+
+/** `BookDetail.series` — see `series_block` in the API's serializers. */
+export interface BookSeries {
+	slug: string;
+	/** The series' name in this edition's language. */
+	title: string;
+	/** This volume's number; null in an unordered series (a collection). */
+	position: number | null;
+	/** Volume numbers the series has (ordered), or books in it here (a collection). */
+	total: number;
+	/** The nearest published volumes IN THIS LANGUAGE; always null in a collection. */
+	previous: SeriesVolume | null;
+	next: SeriesVolume | null;
+}
+
 export interface BookDetail extends BookSummary {
 	description: string;
 	source_url: string;
@@ -170,6 +190,13 @@ export interface BookDetail extends BookSummary {
 	 * on `is_published`, so an unpublished edition never appears here.
 	 */
 	editions: BookSummary[];
+	/**
+	 * Where this edition sits in its series — the book page's series line and
+	 * the last chapter's "next in series". Null outside a series, and also when
+	 * the series has no name in this edition's language (no English fallback).
+	 * Optional: an API behind this build omits it, and nothing is drawn.
+	 */
+	series?: BookSeries | null;
 	difficulty: Difficulty;
 	/**
 	 * The author's authoritative identifiers (Wikipedia, Wikidata), for the
