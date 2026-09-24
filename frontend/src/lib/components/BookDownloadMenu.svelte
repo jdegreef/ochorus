@@ -4,6 +4,7 @@
 	import type { BookDetail } from '$lib/library-public';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
 	import { pwa } from '$lib/pwa.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 	import Icon from './Icon.svelte';
 
 	/**
@@ -30,25 +31,9 @@
 	const pct = $derived(downloading?.total ? Math.round((downloading.done / downloading.total) * 100) : 0);
 
 	let open = $state(false);
-	let root = $state<HTMLDivElement>();
-	$effect(() => {
-		if (!open) return;
-		const onClickAway = (e: MouseEvent) => {
-			if (root && !root.contains(e.target as Node)) open = false;
-		};
-		const onKey = (e: KeyboardEvent) => {
-			if (e.key === 'Escape') open = false;
-		};
-		document.addEventListener('click', onClickAway);
-		document.addEventListener('keydown', onKey);
-		return () => {
-			document.removeEventListener('click', onClickAway);
-			document.removeEventListener('keydown', onKey);
-		};
-	});
 </script>
 
-<div class="relative" bind:this={root}>
+<div class="relative" use:dismissable={{ open, onDismiss: () => (open = false) }}>
 	<button
 		type="button"
 		class="btn btn-sm btn-ghost"
