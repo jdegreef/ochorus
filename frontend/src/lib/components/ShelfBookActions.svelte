@@ -15,6 +15,7 @@
 	import { shelfHref, type ShelfBook } from '$lib/bookshelf';
 	import { customShelves } from '$lib/customShelves.svelte';
 	import Icon, { type IconName } from './Icon.svelte';
+	import ShelfPicker from './ShelfPicker.svelte';
 
 	/**
 	 * What you can do with a book on the Bookshelf, as a list of `.account-item`
@@ -65,15 +66,8 @@
 	);
 	let failed = $state(false);
 
-	// "Add to a shelf": the reader's own shelves, each a toggle, and a field to
-	// make a new one with this book already on it.
+	// "Add to a shelf": the ShelfPicker, folded under one row.
 	let shelvesOpen = $state(false);
-	let newName = $state('');
-	const myShelves = $derived(customShelves.list());
-	function createShelf(e: Event) {
-		e.preventDefault();
-		if (customShelves.create(newName, book.slug)) newName = '';
-	}
 	function removeFromThisShelf() {
 		if (!shelfId) return;
 		const id = shelfId;
@@ -171,34 +165,8 @@
 	{@render row('layers', t('shelves.addTo'))}
 </button>
 {#if shelvesOpen}
-	<div class="ms-7 mb-1" role="group" aria-label={t('shelves.addTo')}>
-		{#each myShelves as s (s.id)}
-			{@const on = customShelves.has(s.id, book.slug)}
-			<button
-				class="account-item shelf-toggle"
-				aria-pressed={on}
-				onclick={(e) => {
-					e.stopPropagation();
-					customShelves.setBook(s.id, book.slug, !on);
-				}}
-			>
-				<span class="check" aria-hidden="true">{on ? '✓' : ''}</span>
-				<span class="truncate">{s.name}</span>
-			</button>
-		{/each}
-		<form class="flex gap-1.5 px-2 py-1" onsubmit={createShelf}>
-			<input
-				class="field min-w-0 flex-1 py-1"
-				maxlength="80"
-				placeholder={t('shelves.new')}
-				aria-label={t('shelves.namePlaceholder')}
-				bind:value={newName}
-				onclick={(e) => e.stopPropagation()}
-			/>
-			<button class="btn btn-sm" type="submit" disabled={!newName.trim()}
-				>{t('shelves.create')}</button
-			>
-		</form>
+	<div class="ms-7 mb-1">
+		<ShelfPicker slug={book.slug} />
 	</div>
 {/if}
 
@@ -224,17 +192,5 @@
 	}
 	.account-item.muted:hover {
 		background: transparent;
-	}
-	.shelf-toggle {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding-block: 0.35rem;
-	}
-	.shelf-toggle .check {
-		width: 1rem;
-		flex: none;
-		color: var(--color-accent);
-		font-weight: 700;
 	}
 </style>
