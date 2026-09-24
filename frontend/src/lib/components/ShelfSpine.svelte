@@ -41,6 +41,7 @@
 	type="button"
 	class="spine"
 	class:selected
+	class:paused={item.paused}
 	style:width="{width}px"
 	style:height="{height}px"
 	style:background-color={item.book.cover_color || 'var(--shelf-wood-edge)'}
@@ -64,6 +65,11 @@
 </button>
 
 <style>
+	/* A paused book (unopened for weeks) rests quieter on the shelf. */
+	.spine.paused {
+		filter: grayscale(0.55);
+		opacity: 0.8;
+	}
 	.spine {
 		position: relative;
 		flex: none;

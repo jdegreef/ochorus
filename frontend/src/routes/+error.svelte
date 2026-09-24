@@ -61,10 +61,15 @@
 
 <svelte:head>
 	<title>{title} — Ochorus</title>
-	<!-- Never index error/not-found pages. The static adapter serves 200.html for
+	<!-- Never index not-found pages. The static adapter serves 200.html for
 	     unknown paths, so without this a mistyped or stale URL could be indexed as
-	     a soft-404 duplicate of the app shell. -->
-	<meta name="robots" content="noindex" />
+	     a soft-404 duplicate of the app shell.
+	     ONLY a 404, though. A prerendered page re-runs load() on hydration, so an
+	     API hiccup (a cold dyno, a deploy, a blocked fetch under Googlebot's
+	     renderer) swaps a real page for this one — and noindex there tells Google
+	     to DROP the page, a slow recovery. Without it, a transient failure is at
+	     worst a soft 404 that Google retries. -->
+	{#if isNotFound}<meta name="robots" content="noindex" />{/if}
 </svelte:head>
 
 <div class="page-col px-5 pb-24">

@@ -91,3 +91,69 @@ class SeriesBlockTests(TestCase):
     def test_the_detail_payload_carries_it(self):
         book = self._book("bfg-1", 1)
         self.assertEqual(BookDetailSerializer(book).data["series"]["position"], 1)
+
+
+class SeriesViewTests(TestCase):
+    """`/api/library/series/` and `/api/library/series/<slug>/` — the series page."""
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="ochorus-originals", name="Ochorus")
+        self.series = Series.objects.create(
+            slug="brave-for-god", title="Brave for God", description="True stories."
+        )
+
+    def _book(self, slug, position, *, language="en", published=True, series=None):
+        return Book.objects.create(
+            author=self.author, slug=slug, language=language, title=f"{slug} [{language}]",
+            series=series or self.series, series_position=position,
+            is_published=published,
+        )
+
+    def _get(self, path, language="en"):
+        return self.client.get(f"/api/library/{path}?language={language}", HTTP_HOST="localhost")
+
+    def test_the_page_lists_its_books_in_volume_order(self):
+        for n in (3, 1, 2):
+            self._book(f"bfg-{n}", n)
+        body = self._get("series/brave-for-god/").json()
+        self.assertEqual([b["slug"] for b in body["books"]], ["bfg-1", "bfg-2", "bfg-3"])
+        self.assertEqual(
+            (body["title"], body["description"], body["ordered"], body["available_languages"]),
+            ("Brave for God", "True stories.", True, ["en"]),
+        )
+        self.assertEqual(body["books"][0]["series_position"], 1)
+
+    def test_a_language_without_a_name_or_a_book_has_no_page(self):
+        self._book("bfg-1", 1)
+        self._book("bfg-1", 1, language="sw")
+        self.assertEqual(self._get("series/brave-for-god/", "sw").status_code, 404)  # no name
+        SeriesTranslation.objects.create(series=self.series, language="lg", title="Abavumu")
+        self.assertEqual(self._get("series/brave-for-god/", "lg").status_code, 404)  # no book
+        SeriesTranslation.objects.create(series=self.series, language="sw", title="Jasiri")
+        sw = self._get("series/brave-for-god/", "sw").json()
+        self.assertEqual((sw["title"], sw["description"]), ("Jasiri", ""))
+        # hreflang: only where the page exists — sw now, lg still not.
+        self.assertEqual(sw["available_languages"], ["en", "sw"])
+
+    def test_unpublished_books_are_left_out(self):
+        self._book("bfg-1", 1)
+        self._book("bfg-2", 2, published=False)
+        body = self._get("series/brave-for-god/").json()
+        self.assertEqual([b["slug"] for b in body["books"]], ["bfg-1"])
+
+    def test_a_collection_is_unordered_and_keeps_the_shelf_order(self):
+        kt = Series.objects.create(slug="key-teachings", title="The Key Teachings")
+        self._book("kt-nee", None, series=kt)
+        self._book("kt-baxter", None, series=kt)
+        body = self._get("series/key-teachings/").json()
+        self.assertFalse(body["ordered"])
+        self.assertEqual(sorted(b["slug"] for b in body["books"]), ["kt-baxter", "kt-nee"])
+
+    def test_the_list_holds_only_series_with_a_page_in_the_language(self):
+        self._book("bfg-1", 1)
+        Series.objects.create(slug="empty", title="Empty")
+        self.assertEqual(
+            self._get("series/").json(),
+            [{"slug": "brave-for-god", "title": "Brave for God", "book_count": 1}],
+        )
+        self.assertEqual(self._get("series/", "sw").json(), [])

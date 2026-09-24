@@ -164,6 +164,38 @@ DESIGNED: dict[str, str] = {
 }
 
 
+class Erase(NamedTuple):
+    """A box of lettering to paint out of a designed cover before it is cropped.
+
+    Fractions of the designed cover, like ``Ground``'s band. Only the INK in the
+    box is repainted — pixels darker (or lighter) than their neighbourhood —
+    from the picture around it, so a sky keeps its gradient and a stone its
+    edge. That makes it an eraser for thin type over a quiet ground — a
+    subtitle, a ministry URL, a hairline — and not for a title set over a
+    subject: ``localize_covers`` learned that a scrim cannot hide one, and a
+    repaint of a subject is a guess about what was behind it.
+
+    It exists because a band is a rectangle and type is not. The eagle on
+    ``soar-like-the-eagle-3`` flies between the lines of its own title, so no
+    rectangle holds the bird without letters; erasing the letters around it is
+    the only crop in which the translations keep the book's picture.
+    """
+
+    x0: float
+    y0: float
+    x1: float
+    y1: float
+    #: "dark" for ink darker than what it is set on, "light" for lighter, "any"
+    #: for a mark drawn in both — the Ochorus lockup prints white on a dark
+    #: photograph and grey on a pale one.
+    ink: str = "dark"
+    #: Erase only type-thin ink (the default), leaving any broad shape the
+    #: contrast test also catches — a branch, the bright side of a page edge.
+    #: False erases everything it finds, for a hairline that touches such a
+    #: shape and would otherwise be kept as part of it.
+    thin: bool = True
+
+
 class Ground(NamedTuple):
     """How one designed cover is cropped into a wordless ground.
 
@@ -181,7 +213,8 @@ class Ground(NamedTuple):
 
     #: The words-free band, as fractions of the designed cover's height. Every
     #: one of these excludes the byline, the title, any rule, and the Ochorus or
-    #: garethevansministries.org mark at the foot.
+    #: garethevansministries.org mark at the foot — or ``erase`` paints the
+    #: lettering it cannot exclude out of it first.
     top: float
     bottom: float
     #: How far in from each side, clearing the designed cover's own hairline
@@ -193,11 +226,25 @@ class Ground(NamedTuple):
     #: alone. The curated tier needs none because a museum landscape is
     #: daylight; these are ministry photographs chosen to be moody.
     lift: float
+    #: The brightest a pixel may come out, out of 255. The lift cannot help a
+    #: blown highlight — a gamma leaves 255 at 255 — so a ground whose sun or
+    #: bare white key sits where the title goes needs its top end brought down
+    #: before any scrim strength the stylesheet can draw will carry white type.
+    peak: int = 255
     #: How much of the band's top the out-of-focus extension is built from. The
     #: default suits a photograph whose top is already background; a silhouette
     #: against a sunset wants less, or its subject blurs upward into the sky it
     #: was cut out of.
     sky: float = 0.35
+    #: How much of the plate's height, at the foot, continues the band's bottom
+    #: out of focus instead of showing it. `BookCover` centres the title and
+    #: sets the Ochorus mark at the foot, so a band that ends on its subject —
+    #: two walkers, a key in a hand — puts the mark on top of it. A foot lifts
+    #: the subject into the clear space between the two.
+    foot: float = 0.0
+    #: Lettering painted out before the crop (see ``Erase``), which is what
+    #: lets a band reach past a subtitle or a URL instead of stopping at it.
+    erase: tuple[Erase, ...] = ()
     #: The ``DESIGNED`` digest of the cover this ground was actually cut from.
     #:
     #: WHY A GROUND RECORDS ITS SOURCE. Replacing a hand-made cover is meant to
@@ -234,24 +281,48 @@ class Ground(NamedTuple):
 #: ``designed_url(slug)``, derived from ``DESIGNED`` above, so replacing one of
 #: those files with a different extension stays the two-line diff this module
 #: advertises rather than quietly needing a third edit here.
+#
+#: WHERE A SUBJECT SHOULD LAND DEPENDS ON THE AUTHOR'S LAYOUT
+#: (``coverLayouts.AUTHOR_LAYOUT``), not only on the framed composition. Framed:
+#: clear of the centred title and of the mark at ~0.9. R. A. Torrey's
+#: ``diagonal`` shows only the top ~40% of the ground, so his doves are lifted
+#: there with a large ``foot``. Andrew Murray's ``wash`` fades the top into
+#: paper, so his subjects stay LOW. Spurgeon's ``band`` shows the lower half.
+#: Render the real cover before trusting a crop (see the level-up-cover skill).
+#:
+#: The Ochorus mark at a designed cover's foot is erased with one box —
+#: ``Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False)`` — rather than cropped
+#: above: the lockup's quill reaches up to ~0.83, and it prints white on a dark
+#: photograph and grey on a pale one.
 DERIVED_GROUND: dict[str, Ground] = {
-    "baptism-with-the-holy-spirit": Ground(0.42, 0.83, 0.11, 1.15,
+    "baptism-with-the-holy-spirit": Ground(0.41, 0.84, 0.11, 1.15, foot=0.40,
         source="d7a50b3b4aef331a353c928d60f5a0a4db8328429a9e024e80dab6f11a8d9667",
     ),
-    "clothed-with-strength-and-dignity": Ground(0.40, 0.78, 0.10, 1.45,
+    "clothed-with-strength-and-dignity": Ground(0.41, 0.83, 0.10, 1.45, foot=0.10,
         source="818722e5ec6ae8ad955eb88481552b54c8822084238e62af8957274f18a54fe4",
     ),
-    # The words-free band is the open Bible on the wooden table below the title
-    # and its rule (which end by ~0.58) and above the Ochorus mark at the foot
-    # (~0.90). The coffee cup and steam sit up in the title's band, so the crop
-    # takes the page spread instead — the richest wordless picture on the cover.
-    "feasting-at-the-table": Ground(0.60, 0.83, 0.07, 1.15, sky=0.25,
+    # The open Bible on the wooden table, from just under the lower title rule
+    # (~0.455) to just above the frame's foot (~0.945). The designed cover's own
+    # hairline frame (x ~0.08 and ~0.92) and its Ochorus mark (~0.80-0.87) sit
+    # INSIDE that band, and cropping around them — the old 0.07 inset and 0.83
+    # foot — left a stripe of the frame down the left edge and the top of the
+    # mark along the bottom. Erased instead, the crop takes the whole spread
+    # full-bleed, at the least magnification this cover allows.
+    "feasting-at-the-table": Ground(0.47, 0.93, 0.02, 1.15, sky=0.25, erase=(
+        Erase(0.06, 0.45, 0.10, 0.95, "light", thin=False),
+        Erase(0.90, 0.45, 0.94, 0.95, "light", thin=False),
+        Erase(0.36, 0.79, 0.64, 0.885, "light"),
+    ),
         source="75428579274b21090f44604464e1608fa54321307892f01791ac7b1f46a28713",
     ),
-    "godliness": Ground(0.44, 0.75, 0.09, 1.85,
+    "godliness": Ground(0.36, 0.84, 0.09, 1.85, foot=0.08,
         source="50b72ef83e3f24780d1274148d034ea55317bb5c2d36c1b339d2213c80593dd1",
     ),
-    "he-holds-my-tomorrows": Ground(0.46, 0.88, 0.02, 1.10, sky=0.20,
+    # Two walkers climbing a dune, from under the subtitle (~0.395) to their
+    # footprints above the URL (~0.925). The band used to stop at their feet,
+    # which put `BookCover`'s Ochorus mark on top of them; a small foot lifts
+    # them into the gap between the title and the mark.
+    "he-holds-my-tomorrows": Ground(0.40, 0.915, 0.02, 1.10, sky=0.20, foot=0.04,
         source="ecc94170eec003af3df0a6cd7de73321f752a18120abba82b96f6e77c8eaf433",
     ),
     "humility-2": Ground(0.38, 0.80, 0.11, 1.20,
@@ -276,36 +347,55 @@ DERIVED_GROUND: dict[str, Ground] = {
     ),
     # A photograph of hands on an open Bible, a finger following the text. The
     # title fills the upper third and the "Volume 2 …" subtitle ends by ~0.65;
-    # the words-free picture is the open page spread below it and above the
-    # Ochorus mark at the foot (~0.88) — the richest wordless band on the cover,
-    # the same shape as feasting-at-the-table's open book.
-    "men-and-women-who-gave-everything-2": Ground(0.66, 0.86, 0.06, 1.12, sky=0.22,
+    # the words-free picture is the open page spread below it, taken past the
+    # Ochorus mark (erased) to the frame's foot so the spread is not a sliver.
+    "men-and-women-who-gave-everything-2": Ground(0.62, 0.93, 0.08, 1.12, sky=0.22,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="40ae45aab2c1e92e509dc5b655d7ca07c53f42988a3a0907581f2e4591807bca",
     ),
-    "purity-of-heart": Ground(0.55, 0.79, 0.12, 2.00,
+    "purity-of-heart": Ground(0.54, 0.93, 0.09, 2.00,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="f3659ad885cb95c3bf8f0d954d45c078c709674407fd560fcc4cf96d1bd60554",
     ),
-    # Full-bleed at 0.02 took the whole stream and, being a 3:4 crop of a 3:4
-    # cover, came out three parts blurred extension to one part water. Cropping
-    # IN to the centre 40% makes the band taller than the plate, so every pixel
-    # is photograph: the stones and the current are sharp instead of a wash.
-    "stepping-stones-2": Ground(0.28, 0.63, 0.30, 1.15,
+    # The whole stream between the title (~0.20) and the URL (~0.93), with the
+    # "Walking by Faith" subtitle painted out of the water. The last recipe
+    # cropped IN to the centre 40% to avoid a blurred extension, which cost a
+    # 3.3x enlargement of a 443px source — every stone came out soft. This one
+    # is 1.4x and still needs no extension. 0.03 clears the rounded corners.
+    "stepping-stones-2": Ground(0.21, 0.92, 0.03, 1.15,
+        erase=(Erase(0.18, 0.63, 0.80, 0.73, "light"),),
         source="f3564c524858961bbe55d4a7b900f70b88589a349ca8ad56f9b94ef92bce15da",
     ),
-    "talks-to-the-farmer": Ground(0.46, 0.78, 0.09, 1.45,
+    "talks-to-the-farmer": Ground(0.48, 0.93, 0.09, 1.45,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="120ca61d19bce6c692bc1bc8c9eecc38543224945496fbb427f0c1ecdbf6ed48",
     ),
-    # A golden sunset: the eagle silhouette sits IN the title band and can't be
-    # cropped free of the type, so the words-free band is the lower sky — the
-    # sun's glow and the tree silhouettes — below the subtitle (~0.58) and above
-    # the garethevansministries.org mark (~0.88). Bright already, so no lift.
-    "soar-like-the-eagle-3": Ground(0.70, 0.86, 0.04, 1.0, sky=0.4,
+    # A golden sunset with an eagle. The bird flies between the lines of the
+    # title, so the old crop settled for the sky below the subtitle — and the
+    # translations of "Soar Like the Eagle" had no eagle. The ends of "LIKE
+    # THE" and "EAGLE" and the subtitle are erased instead, and the band starts
+    # just above the bird so it flies ABOVE the translated title, not behind
+    # it; the foot continues the haze under the mark. The sun sits where the
+    # title goes, so its top end is brought down (`peak`).
+    "soar-like-the-eagle-3": Ground(
+        0.217, 0.87, 0.07, 1.0, sky=0.4, foot=0.19, peak=240, erase=(
+        Erase(0.33, 0.215, 0.66, 0.315),
+        Erase(0.375, 0.325, 0.62, 0.435),
+        Erase(0.19, 0.56, 0.79, 0.63),
+        ),
         source="2db8925dd6782464cd895d241508324b7955d9678acf8f6afd33d4c4a5d2c107",
     ),
-    "the-god-of-all-comfort": Ground(0.50, 0.78, 0.11, 1.10,
+    "the-god-of-all-comfort": Ground(0.51, 0.93, 0.15, 1.10,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="d2917c2f827ac26b0570ef7995dfe2c7bc0560ad81e4ccf1937dbc265b1a9dcd",
     ),
-    "the-key-in-my-hand": Ground(0.26, 0.60, 0.02, 1.05,
+    # A key held out in two hands, from under the title (~0.21) to above the
+    # URL (~0.93), with "Opening Heaven" painted out of the sleeve. The old band
+    # was a third of that height and came out a pink wash with the key under
+    # the Ochorus mark; the foot lifts the key's bow into the space above the
+    # translated title. A pale photograph, so its top end comes down (`peak`).
+    "the-key-in-my-hand": Ground(0.22, 0.915, 0.02, 1.05, foot=0.11, peak=240,
+        erase=(Erase(0.25, 0.72, 0.80, 0.80),),
         source="3e1a5e8c26072334f96a3a1039808ab24d0e749aad148613c23948c987fb1b62",
     ),
     # A dusk seascape: the band between the lower title rule (~0.57) and the
@@ -323,7 +413,7 @@ DERIVED_GROUND: dict[str, Ground] = {
     "the-christians-secret-of-a-happy-life-4": Ground(0.56, 0.82, 0.06, 1.15, sky=0.22,
         source="d9b9836cb2eaa1cd8d669cb3f2fc880ed884c0ab020e13afb7fde2e6ea2685e5",
     ),
-    "the-person-and-work-of-the-holy-spirit": Ground(0.41, 0.82, 0.10, 1.00,
+    "the-person-and-work-of-the-holy-spirit": Ground(0.41, 0.82, 0.10, 1.00, foot=0.45,
         source="854342772afb4da0ac470fdc3b92b253794051942e82bde23a3681388c7bab60",
     ),
     # The staircase and title fill the middle; the words-free picture is the
@@ -335,14 +425,16 @@ DERIVED_GROUND: dict[str, Ground] = {
     "the-secret-of-guidance": Ground(0.05, 0.26, 0.10, 0.5, sky=0.28,
         source="a990801a9928f654ed2da0760f6d7c0a64d974e24d72d3ff9485fc05ac4ddfc6",
     ),
-    "the-unselfishness-of-god": Ground(0.44, 0.80, 0.09, 1.15, sky=0.15,
+    "the-unselfishness-of-god": Ground(0.44, 0.74, 0.09, 1.15, sky=0.15,
+        erase=(Erase(0.15, 0.30, 0.85, 0.47),),
         source="da76ca7d2a047bac2463d0ab58af54f40d987ce0bf5127001d102d553f8f4078",
     ),
     # The title, byline and subtitle fill the top half over a darkened worship
     # scene; the words-free picture is the band BELOW the subtitle (~0.58) and
     # above the Ochorus wordmark at the foot (~0.88) — the praying women with
     # hands raised. Indoor scene, so no sky extension.
-    "women-who-moved-heaven-2": Ground(0.60, 0.87, 0.08, 1.20,
+    "women-who-moved-heaven-2": Ground(0.59, 0.93, 0.10, 1.20,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="471f2e18290bd563bab4220c6664aea4adebbcc06e1c07749f9843ef805cad0f",
     ),
 }

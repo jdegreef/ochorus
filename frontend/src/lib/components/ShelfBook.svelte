@@ -37,6 +37,16 @@
 			? new Intl.DateTimeFormat(getLang(), { month: 'short', year: 'numeric' }).format(item.at)
 			: ''
 	);
+	// A paused book says when it was last opened, instead of leaving the reader
+	// to wonder why it moved.
+	const lastRead = $derived(
+		item?.paused && item.lastRead
+			? t('fav.lastRead').replace(
+					'%d%',
+					new Intl.DateTimeFormat(getLang(), { month: 'short', year: 'numeric' }).format(item.lastRead)
+				)
+			: ''
+	);
 	const meter = $derived(
 		item?.order
 			? `${t('continue.chapter')} ${item.order} / ${item.book.chapter_count} · ${item.pct}%`
@@ -79,6 +89,7 @@
 			<a
 				href={localizeHref(shelfHref(item))}
 				class="book block hover:no-underline"
+				class:paused={item.paused}
 				aria-label={item.status === 'reading' ? `${book.title} — ${t('reader.resume')}` : book.title}
 			>
 				<BookCover {book} rounded="rounded-[3px]" />
@@ -145,7 +156,7 @@
 			<div class="mt-1.5">
 				{#if item.status === 'reading'}
 					<ProgressBar percent={item.pct} label="{book.title}: {meter}" />
-					<div class="mt-1 text-micro text-muted">{meter}</div>
+					<div class="mt-1 text-micro text-muted">{lastRead || meter}</div>
 				{:else if item.status === 'finished'}
 					<div class="text-micro text-muted">
 						<span class="text-gold" aria-hidden="true">✓</span>
@@ -172,6 +183,12 @@
 {/if}
 
 <style>
+	/* Resting, not gone: a paused book (unopened for weeks) is drawn quieter
+	   until it's picked back up. */
+	.book.paused {
+		filter: grayscale(0.55);
+		opacity: 0.8;
+	}
 	.cell {
 		display: flex;
 		flex-direction: column;

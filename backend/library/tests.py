@@ -837,7 +837,7 @@ class ContentQAFixesTests(TestCase):
     def test_susanna_damaged_guillemets_reach_a_deployed_database(self):
         """#1132 repaired these in the fixture, which no running database reads.
 
-        `seed_books` never rewrites an existing book's chapters, so the ten
+        `seed_books` did not rewrite an existing book's chapters then, so the ten
         OCR-damaged guillemets it found stayed on the site until they were
         declared here — `apply_body_corrections` runs on every deploy. The two
         CORRUPTED LETTERS are the reason this matters most: they read as a stray

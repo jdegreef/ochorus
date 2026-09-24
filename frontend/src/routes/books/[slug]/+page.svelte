@@ -352,7 +352,10 @@
 			     Numbers in the edition's digits, as the cover's ring sets them. -->
 			{#if book.series}
 				<p class="mt-2 text-small text-muted" dir="auto">
-					<span class="font-medium">{seriesLabel(book.series, contentLang(book.language))}</span
+					<a
+						href={localizeHref(`/series/${book.series.slug}`)}
+						class="font-medium hover:text-text hover:underline"
+						>{seriesLabel(book.series, contentLang(book.language))}</a
 					>{#if book.series.next}<span class="px-1.5 opacity-50">·</span><a
 							href={localizeHref(`/books/${book.series.next.slug}`)}
 							class="text-accent hover:underline"
@@ -699,14 +702,18 @@
 	     published edition; `siblingEditions` is the hreflang alternate set minus
 	     the edition being viewed, and localeName() gives each its autonym.
 	     hreflang/lang on the link announce the target language to the reader and
-	     to assistive tech. -->
+	     to assistive tech.
+	     data-sveltekit-reload forces a full load: the locale comes from the URL
+	     via Paraglide, and a client-side nav reroutes /es/books/x/ to the SAME
+	     route and params while getLang() still reads the old URL — so the reader
+	     landed on the English edition under a Spanish address. -->
 	{#if siblingEditions.length}
 		<section class="mt-12">
 			<h2 class="section-heading">{t('book.readInLanguage')}</h2>
 			<div class="mt-3 flex flex-wrap items-center gap-2">
 				<span class="text-small text-muted">{t('book.availableIn')}</span>
 				{#each siblingEditions as ed (ed.loc)}
-					<a href={ed.href} class="tag" hreflang={ed.loc} lang={ed.loc}>{localeName(ed.loc)}</a>
+					<a href={ed.href} class="tag" hreflang={ed.loc} lang={ed.loc} data-sveltekit-reload>{localeName(ed.loc)}</a>
 				{/each}
 			</div>
 		</section>

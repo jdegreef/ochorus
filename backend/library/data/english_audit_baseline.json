@@ -6,8 +6,7 @@
    "space-before-punct": 2
   },
   "a-retrospect": {
-   "space-before-punct": 8,
-   "word-fusion": 2
+   "space-before-punct": 8
   },
   "a-serious-call": {
    "space-before-punct": 9
@@ -56,6 +55,10 @@
   },
   "first-epistle-of-clement": {
    "lost-paragraphing": 1
+  },
+  "foxes-book-of-martyrs": {
+   "hyphen-space": 1,
+   "word-fusion": 1
   },
   "free-grace": {
    "orphan-close-quote": 1
@@ -204,7 +207,7 @@
    "orphan-close-quote": 47,
    "run-together": 2,
    "welded-footnote": 48,
-   "word-fusion": 2
+   "word-fusion": 1
   },
   "soar-like-the-eagle-3": {
    "orphan-close-quote": 2
@@ -216,7 +219,7 @@
   "stepping-stones-2": {
    "hyphen-space": 2,
    "misspelling": 4,
-   "orphan-close-quote": 4,
+   "orphan-close-quote": 3,
    "run-together": 1,
    "space-before-punct": 10,
    "title-case-vs-body": 1
@@ -227,8 +230,7 @@
   },
   "ten-commandments": {
    "orphan-close-quote": 1,
-   "space-before-punct": 8,
-   "word-fusion": 1
+   "space-before-punct": 8
   },
   "the-appearing-of-the-grace-of-god": {
    "space-before-punct": 4

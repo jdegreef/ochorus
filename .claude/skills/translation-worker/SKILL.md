@@ -256,6 +256,12 @@ existing `<slug>.<lang>.json` in the same PR:
   unaffected — they translate from the English fixture as it stands.
 - The ordinary double-ship guard still holds for queue jobs: an existing
   `<slug>.<lang>.json` means shipped.
+- **Reaching prod:** `seed_books` appends the new chapters to each existing
+  edition on deploy (since 2026-09-23; #3104 predated that and needed migration
+  0162). The fixture change triggers the web build, but it can race the API
+  release — if the prerendered contents list is stale after deploy, force a
+  rebuild with a frontend touch. Verify by chapter count on the live API
+  (`/api/library/books/<slug>/?language=<lang>`), not the fixture.
 
 **Sermon** — same shape, smaller: single body instead of chapters; translate
 `title`, `scripture_ref` (localize the Bible book name, keep chapter:verse),

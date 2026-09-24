@@ -40,6 +40,7 @@
 		title,
 		items,
 		emptyHint,
+		note = '',
 		view = 'covers',
 		shelfId = null,
 		onrename,
@@ -51,6 +52,8 @@
 		view?: 'covers' | 'spines';
 		/** Written on the wall of an empty shelf. */
 		emptyHint: string;
+		/** A line under the title saying what the shelf is (the Paused shelf). */
+		note?: string;
 		/** One of the reader's own shelves: its books' Remove takes them off this
 		 *  shelf, and its header offers Rename / Delete (the two callbacks). */
 		shelfId?: string | null;
@@ -232,6 +235,9 @@
 		/>
 	</div>
 
+	{#if note}
+		<p class="-mt-2 mb-4 max-w-prose text-small text-muted">{note}</p>
+	{/if}
 	<div bind:clientWidth={width}>
 		{#if items.length && view === 'spines'}
 			{#each rows as row, r (r)}

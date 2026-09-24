@@ -30,6 +30,7 @@
 		customShelfItems,
 		shelfHref,
 		sortShelf,
+		PAUSE_AFTER_DAYS,
 		SHELF_SORTS,
 		type ShelfSort
 	} from '$lib/bookshelf';
@@ -155,6 +156,7 @@
 	const shelves = $derived({
 		...built,
 		reading: sortShelf(built.reading, sort, locale),
+		paused: sortShelf(built.paused, sort, locale),
 		toRead: sortShelf(built.toRead, sort, locale),
 		finished: sortShelf(built.finished, sort, locale)
 	});
@@ -199,11 +201,16 @@
 	}
 
 	// The book to pick up: the one most recently read.
-	const current = $derived(shelves.reading[0]);
+	// Nothing on Currently reading but a book resting on Paused? Offer that one:
+	// the nudge the shelf exists for. (Newest-first regardless of the Sort.)
+	const current = $derived(built.reading[0] ?? built.paused[0]);
 	const hasOthers = $derived(allFavs.some((e) => e.kind !== 'book'));
 	const jumps = $derived(
 		[
 			{ id: 'reading', label: t('fav.shelfReading'), count: shelves.reading.length },
+			...(shelves.paused.length
+				? [{ id: 'paused', label: t('fav.shelfPaused'), count: shelves.paused.length }]
+				: []),
 			{ id: 'to-read', label: t('fav.shelfToRead'), count: shelves.toRead.length },
 			{ id: 'year', label: t('year.title'), count: -1 },
 			{ id: 'finished', label: t('fav.shelfFinished'), count: shelves.finished.length },
@@ -214,7 +221,14 @@
 			{ id: 'plans', label: t('fav.groupPlans'), count: planFavs.length },
 			{ id: 'articles', label: t('fav.groupArticles'), count: articleFavs.length },
 			{ id: 'quotes', label: t('fav.groupQuotes'), count: quoteFavs.length }
-		].filter((j, i) => i < 4 + mine.length || j.count > 0)
+			// The built-in shelves, the year and the reader's own shelves always
+			// show (even at 0); the other saved groups only when they have some.
+		].filter(
+			(j) =>
+				j.count !== 0 ||
+				['reading', 'to-read', 'year', 'finished'].includes(j.id) ||
+				j.id.startsWith('shelf-')
+		)
 	);
 
 	// Quotes have no catalog to load up front (there's no "list all quotes"), so
@@ -360,6 +374,16 @@
 			items={shelves.reading}
 			emptyHint={t('fav.shelfReadingEmpty')}
 		/>
+		{#if shelves.paused.length}
+			<Bookshelf
+				{view}
+				id="paused"
+				title={t('fav.shelfPaused')}
+				note={t('fav.shelfPausedNote').replace('%n%', String(PAUSE_AFTER_DAYS))}
+				items={shelves.paused}
+				emptyHint=""
+			/>
+		{/if}
 		<Bookshelf
 			{view}
 			id="to-read"
