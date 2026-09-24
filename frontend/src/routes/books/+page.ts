@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-24 (queue jobs #1752, #3152, #2797): three more Ukrainian books —
+// power-through-prayer («Сила через молитву», 20 ch), school-of-prayer («З Христом у школі молитви»,
+// 33 ch) and rise-up-men-of-god-2 («Устаньте, мужі Божі», 14 ch) — bake into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #813): Ukrainian book — prayer-the-pulse-of-life, Hannah
+// Buyinza ("Молитва — пульс життя"), 12 chapters. Book pages are prerendered per locale, so /uk/books
+// and the shelf rebuild with the translated title over the shared derived ground.
 // prerender refresh 2026-09-24 (queue job #1790): Spanish book — spurgeon-on-prayer, twelve of
 // Spurgeon's sermons on prayer plus an introduction ("Gran poder en la oración"), 13 chapters. Book
 // pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
@@ -427,6 +433,8 @@
 // touch, because it completes the set.
 // prerender refresh 2026-09-24 (queue job #1755): वॉचमैन नी — the Hindi edition of
 // watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-24 (queue job #1780): उकाब के समान ऊँचे उड़ो — the Hindi edition
+// of soar-like-the-eagle-3, 12 chapters — bakes into the /hi/books shelf (hi is still draft).
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';

@@ -1204,6 +1204,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/lord-teach-us-to-pray-2": {
+			"ground": "fcfddb409924e03d3dfee80e17d9dee3b0e9a0e334d08896fea40cc0adb75718",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "wash/sage",
+			"bar": 0.11
+		},
 		"fr/men-and-women-who-gave-everything-2": {
 			"ground": "37d20d2cce16372fa2f81a04a1bae2174eaebd10eb84c19602c67d7bf718b711",
 			"style": "originals",
@@ -1354,6 +1364,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"fr/the-masters-indwelling": {
+			"ground": "4ea35dbbe5b79b54f3020dfb4b150136119a2802c5753945488bee54a06be5b7",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"fr/the-secret-of-guidance": {
 			"ground": "33fd3482db54613b285864550cb2c83d65bd10d3c89507ea5d4e91c7bf811008",
 			"style": "devotional",
@@ -1402,6 +1422,16 @@
 			"art": true,
 			"scrim": 0.85,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"fr/union-and-communion": {
+			"ground": "30ebb37ff6e65a8339bc0f4f1d64ce5cbb4c4d3c7fef81fc751f00be5b4688b3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "rail/teal",
 			"bar": 0
 		},
 		"fr/waiting-on-god": {
@@ -1567,6 +1597,16 @@
 		"hi/prayer-the-pulse-of-life": {
 			"ground": "5e42f8c18c6752e175c3aedda526c0a27d8bcdefbd0c242d7472eade812af0d7",
 			"style": "house",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/soar-like-the-eagle-3": {
+			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
+			"style": "lettered",
 			"volume": null,
 			"script": "devanagari",
 			"art": true,
@@ -3640,6 +3680,46 @@
 			"art": true,
 			"scrim": 0.65,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"uk/power-through-prayer": {
+			"ground": "c4078282762f68c4e9e8d9492fe6c9c5f8015e905f51a9f5ceaf97a9e13f1f6e",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "split/navy",
+			"bar": 0.04
+		},
+		"uk/prayer-the-pulse-of-life": {
+			"ground": "4f925469360dc20067dfcb2a32a40be25c40fb7873c09f5624eff4954258f033",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
+		"uk/rise-up-men-of-god-2": {
+			"ground": "237fd6138cff47600a34b0ba36897467876a5621b625ea9504cd095eec7f2733",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
+		"uk/school-of-prayer": {
+			"ground": "ac43acd2d8f0f3482428b7f0081fadf3501ca6ccc2e3c582406e6e5dd4f879a1",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"uk/stepping-stones-2": {
