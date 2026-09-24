@@ -505,16 +505,14 @@ class SeriesListView(PublicContentCacheMixin, APIView):
 
     def get(self, request):
         language = _language(request)
+        here = Q(books__language=language, books__is_published=True)
         rows = []
-        for series in Series.objects.prefetch_related("translations"):
+        for series in Series.objects.prefetch_related("translations").annotate(
+            book_count=Count("books", filter=here)
+        ):
             title = series.title_for(language)
-            if not title:
-                continue
-            count = Book.objects.filter(
-                series=series, language=language, is_published=True
-            ).count()
-            if count:
-                rows.append({"slug": series.slug, "title": title, "book_count": count})
+            if title and series.book_count:
+                rows.append({"slug": series.slug, "title": title, "book_count": series.book_count})
         return Response(rows)
 
 
