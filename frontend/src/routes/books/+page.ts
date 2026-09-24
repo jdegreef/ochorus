@@ -2,6 +2,22 @@
 // F. B. Meyer's devotional on discerning God's guidance, 9 chapters ("Siri ya Uongozi"). Rebuilds
 // /sw/books so the card carries its translated title over the shared derived-ground painting, and
 // the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-24 (queue job #3193): Portuguese book — brave-for-god, six true stories
+// of faith told for young readers ("Corajosos por Deus"), 6 chapters. Book pages are prerendered per
+// locale, so /pt/books and the shelf rebuild with the translated title over the shared painting ground
+// and the reader page bakes the 6 chapters. Backs the CURATED plan brave-for-god-24-true-stories, but
+// brave-for-god-2/-3/-4 are not yet in pt, so no pt plan row activates and no plan prose is owed.
+// prerender refresh 2026-09-24 (queue job #3178): Portuguese book — pilgrims-progress, John Bunyan's
+// allegory of Christian's journey to the Celestial City ("O Peregrino"), 22 chapters. Book pages are
+// prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the shared
+// painting ground and the reader page bakes the 22 chapters. Backs the CURATED plan the-pilgrims-way,
+// but around-the-wicket-gate and grace-abounding are not yet in pt, so no pt plan row activates and no
+// plan prose is owed.
+// prerender refresh 2026-09-24 (queue job #3170): Portuguese book — grace-for-grace-2, Watchman Nee's
+// teaching on grace through the parables and Gospel scenes ("Graça sobre Graça"), 9 chapters. Book
+// pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title over
+// the designed plate cover and the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
+// entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #3147): Portuguese book — school-of-prayer, Andrew Murray's
 // thirty-one lessons on prayer ("Com Cristo na Escola de Oração"), 33 chapters. Book pages are
 // prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the
@@ -86,6 +102,11 @@
 // Rebuilds /sw/books so the card carries its translated title over the shared painting cover, and
 // the reader page bakes the 24 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no
 // plans/+page.ts touch owed.
+// prerender refresh 2026-09-23: one NEW English book — sons-of-the-king-3, "Sons of the King – 30
+// Days with God for Guys – Book 3" (Growing Up), volume 3 of the house-written boys' devotional series
+// (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture). Rebuilds
+// /books and the For Young Readers shelf so the card and its young-style plate cover (volume 3)
+// appear, and the reader pages bake the chapters. Backs the new sons-of-the-king-book-3-30-days plan.
 // prerender refresh 2026-09-23: one NEW English book — daughters-of-the-king-3, "Daughters of the
 // King – 30 Days with God for Girls – Book 3" (Growing Up), volume 3 of the house-written girls'
 // devotional series (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB
@@ -460,6 +481,10 @@
 // of soar-like-the-eagle-3, 12 chapters — bakes into the /hi/books shelf (hi is still draft).
 // prerender refresh 2026-09-24 (queue job #2827, PR #3323): Зростати в мудрості — the Ukrainian
 // edition of growing-in-wisdom, 18 chapters — bakes into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #1795, PR #3321): Могутня сила молитви — the Ukrainian
+// edition of spurgeon-on-prayer, 13 chapters — bakes into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #814, PR #3343): Божественне зцілення — the Ukrainian
+// edition of divine-healing, 32 chapters — bakes into the /uk/books shelf.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';

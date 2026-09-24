@@ -36,6 +36,12 @@ in `backend/library/book_export.py`, in this order:
   `bio`. Other languages: an `AuthorTranslation` with `bio` (see
   `write-biography` / `approve_author_translation`). Without one the book simply
   has no About-the-Author page — decide if that's acceptable.
+- **Is the book actually public domain?** A living author's book (Gareth Evans,
+  Growing in Wisdom) still carries `source_type=public_domain` — the schema has no
+  licensed value — so the colophon would CLAIM public domain. Give every edition an
+  `attribution` opening with "©" (e.g. "© Gareth Evans. Shared free on Ochorus with
+  the author's permission."); `book_export.is_in_copyright` then prints that line
+  instead of the public-domain one. The wording is the founder's call — ask.
 - A translation still `ai_unreviewed` exports with the "awaiting review" notice
   in its colophon. That's correct; don't strip it.
 
@@ -49,7 +55,13 @@ in `backend/library/book_export.py`, in this order:
    more, author_title, full_bio, ochorus_title, ochorus_html) — Ochorus's own
    prose, no English fallback. `PilotTests` fails otherwise.
 3. Set the edition's fixture `pdf_url` to `/pdfs/<export_filename>` —
-   `<slug>.pdf` for English, `<slug>.<lang>.pdf` otherwise.
+   `<slug>.pdf` for English, `<slug>.<lang>.pdf` otherwise. Some fixture rows
+   have NO `pdf_url` key at all (older serializer) — insert it after `cover_url`
+   rather than assuming a replace will hit. `PilotTests` fails when an exportable
+   edition has no `pdf_url` or its file is missing.
+   Non-English back matter lives in `backend/library/export_strings.json`
+   (merged into `STRINGS`); its vision line is the site catalogue's
+   `about_vision_quote`.
 
 ## 3. Generate (in your worktree)
 
@@ -57,6 +69,7 @@ in `backend/library/book_export.py`, in this order:
 cd backend
 cp ../../ochorus/backend/.env .env           # sqlite dev DB; no prod creds needed
 uv run python manage.py migrate -v0 && uv run python manage.py seed_books -v0
+uv run python manage.py seed_author_translations -v0   # else translations get NO bio page
 PUBLIC_SITE_URL=https://ochorus.com uv run python manage.py export_book <slug> --language <lang> --format pdf
 PUBLIC_SITE_URL=https://ochorus.com uv run python manage.py export_book <slug> --language <lang> --format epub --out /tmp/<slug>.epub
 ```
@@ -113,4 +126,13 @@ fresh copy to see a fix.
   it has no title. `cover_image_url` handles it; keep it that way.
 - **Page order is asserted** (`test_a_short_biography_follows_about_ochorus`);
   moving a page means updating that test deliberately.
+- **RTL (Arabic).** English runs inside an RTL paragraph — the © line, URLs —
+  get their "©", full stop and trailing "/" flung to the wrong end by bidi. The
+  export marks the © line `dir="auto"` and every link `dir="ltr"`; keep that on
+  anything new, and LOOK at an Arabic colophon (text extraction reorders RTL, so
+  a grep "failure" there can be a false alarm — render the page).
+- **Batch runs.** Loop `export_book` over editions with an OK/FAIL log (≈10 s per
+  PDF); then check every colophon: `© …` present and no public-domain phrase in
+  any language.
+- **Repo weight.** Each PDF is ~1–2 MB committed; 38 of Gareth's added ~64 MB.
 - **Life dates** print `1847–1929`; a living author prints `1938–`.

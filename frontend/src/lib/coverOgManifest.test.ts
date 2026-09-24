@@ -3,7 +3,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { coverLayoutFor, layoutKey } from './coverLayouts';
+import { coverLayoutFor, layoutKey, typeTopFor } from './coverLayouts';
 import { coverStyleFor, scriptOf, volumeNumeral } from './coverStyles';
 import { baseEdition } from './reading-schema';
 import { eraOf } from './eras';
@@ -119,9 +119,11 @@ const needTwins = once(() => {
 			key: twinUrl(f.slug, f.language).replace('/covers/', '').replace(/\.png$/, ''),
 			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
 			volume: volumeNumeral(f.series_position, baseEdition(f.language)),
-			layout: layoutKey(
-				isArtCover(f.cover_url) ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en')) : null
-			)
+			layout: (() => {
+				const art = isArtCover(f.cover_url);
+				const layout = art ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en'), f.slug) : null;
+				return layoutKey(layout, art && typeTopFor(f.slug, layout));
+			})()
 		}));
 });
 

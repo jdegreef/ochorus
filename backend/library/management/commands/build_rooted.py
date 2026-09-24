@@ -804,6 +804,86 @@ SONS_OF_THE_KING: dict[int, dict[str, object]] = {
             },
         ],
     },
+    3: {
+        "sort_order": 86,
+        "publication_year": 2026,
+        "title": "Sons of the King – 30 Days with God for Guys – Book 3",
+        "subtitle": "Growing Up: your feelings, your changing body, wise choices, and God’s calling",
+        "cover_url": "/covers/sons-of-the-king-3.svg",
+        "cover_color": covers.ink_safe("#7a4a2a"),  # a workshop oak brown
+        "description": (
+            "Thirty short daily devotions for boys aged 9 to 12 about growing up: "
+            "handling anger, sadness, pressure and grief with God, understanding "
+            "the changes of puberty as His good design, making wise choices about "
+            "crushes, money, the crowd and danger, discovering his gifts and "
+            "calling, and learning from Elijah and Elisha, Paul and Timothy, and "
+            "Caleb. Each day has a Bible verse, a short teaching, a question, "
+            "something to try and a prayer. The third and final book of Sons of "
+            "the King."
+        ),
+        "about_html": (
+            "<p>Sons of the King is an original Ochorus devotional series for boys "
+            "aged 9 to 12. Book 1 taught a boy who he is, and Book 2 how to be "
+            "faithful. Book 3 walks with him into growing up, and it opens with 1 "
+            "John 2:14: “I have written to you, young men, because you are strong, "
+            "and the word of God abides in you, and you have overcome the evil "
+            "one.”</p>"
+            "<p>The first week is about feelings, starting with the anger and "
+            "sorrow Jesus Himself felt, then anger, feeling down, pressure, "
+            "talking about what is inside, and grief. The second speaks openly and "
+            "simply about puberty: growth spurts, the voice changing, body and "
+            "facial hair, the private parts growing, erections and wet dreams, "
+            "hygiene, and hormones and strength, all as part of God’s good design. "
+            "It leaves questions about sex and reproduction to parents, and every "
+            "day sends a boy back to his father or a man he trusts. The third week "
+            "is about wise choices: crushes, money, the crowd, dares and danger, "
+            "and a pure heart. The fourth is about calling, with Jeremiah, "
+            "Bezalel the craftsman and Nehemiah the builder. The fifth is about "
+            "mentors and finishing well, with Elijah and Elisha, Paul and Timothy, "
+            "and Caleb at eighty-five.</p>"
+            "<p>Every day follows the same short pattern: a Scripture from the "
+            "Berean Standard Bible, a teaching, a question to think about, one "
+            "thing to try, and a prayer. Each week ends with a true story from "
+            "our Brave for God books: John Paton, Eric Liddell, Jim Elliot, "
+            "George Liele and Simeon Nsibambi. A note for parents recommends "
+            "reading the growing-up week together.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 3 of Sons of the King about?",
+                "answer": "Growing up. Over thirty short daily devotions it helps boys handle their feelings, understand how their bodies change, make wise choices, discover their gifts and calling, and learn from older men who walk with God.",
+            },
+            {
+                "question": "Does it talk about puberty?",
+                "answer": "Yes. Week 2 explains simply and accurately how a boy’s body changes: growth spurts, the voice deepening, body and facial hair, the private parts growing, erections and wet dreams, hygiene, and hormones. It presents all of it as God’s good design, nothing to be ashamed of, and encourages him to ask his father or a trusted man his questions. Sex and reproduction are left for parents to discuss.",
+            },
+            {
+                "question": "Should parents read it with their son?",
+                "answer": "We recommend it, especially for Week 2 and Day 10. A note for parents at the start explains exactly what that week covers, and each day of it ends by pointing a boy to his father or another man he trusts.",
+            },
+            {
+                "question": "Does it say it’s okay for boys to have feelings?",
+                "answer": "Yes. Week 1 begins with Jesus, who felt anger and sorrow, and teaches boys to name their feelings, cool down before acting in anger, rest and talk when they feel low, and grieve with hope. It encourages them to tell a parent or trusted adult if sadness lasts or grows big.",
+            },
+            {
+                "question": "Which men does it include?",
+                "answer": "From the Bible: Jesus, Elijah and Elisha, Zacchaeus, Jeremiah, Bezalel, Nehemiah, David, Paul and Timothy, and Caleb. From history, in the weekly true stories: John Paton, Eric Liddell, Jim Elliot, George Liele and Simeon Nsibambi.",
+            },
+            {
+                "question": "Is this the last book in the series?",
+                "answer": "Yes. Sons of the King has three books: Strong, Faithful and Growing Up. Its companion series for girls is Daughters of the King, and our Rooted series is for all young readers.",
+            },
+        ],
+    },
+}
+
+# The title each series' covers set in place of the full one — the series
+# numeral and the subtitle already carry "Book N" and the volume's theme, so the
+# full "<Series> – 30 Days with God for … – Book N" only crowds the cover.
+COVER_TITLE = {
+    "rooted": "Rooted",
+    "daughters-of-the-king": "Daughters of the King",
+    "sons-of-the-king": "Sons of the King",
 }
 
 # The series a book can be built into, by `Series.slug`: each one's volumes are
@@ -955,6 +1035,7 @@ class Command(BaseCommand):
             "source_url": "",
             "series": series_row,
             "series_position": volume,
+            "cover_title": COVER_TITLE[series],
             **meta,
         }
         book, created = Book.objects.update_or_create(

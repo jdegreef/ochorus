@@ -14,7 +14,7 @@
    "reference": "Psalms 37:7",
    "status": "mined",
    "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
-   "block_index": 0
+   "block_index": 2
   },
   {
    "reference": "Psalms 73:11",
@@ -24,7 +24,7 @@
    "reference": "Psalms 1:3",
    "status": "mined",
    "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
-   "block_index": 26
+   "block_index": 34
   },
   {
    "reference": "Psalms 1:1",
@@ -38,7 +38,7 @@
    "reference": "John 12:32",
    "status": "mined",
    "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
-   "block_index": 12
+   "block_index": 17
   },
   {
    "reference": "Hebrews 7:26",
@@ -48,31 +48,31 @@
    "reference": "2 Corinthians 6:14",
    "status": "mined",
    "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
-   "block_index": 12
+   "block_index": 17
   },
   {
    "reference": "2 Corinthians 6:16",
    "status": "mined",
    "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
-   "block_index": 12
+   "block_index": 17
   },
   {
    "reference": "2 Corinthians 6:17",
    "status": "mined",
    "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
-   "block_index": 12
+   "block_index": 17
   },
   {
    "reference": "2 Corinthians 6:18",
    "status": "mined",
    "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
-   "block_index": 12
+   "block_index": 17
   },
   {
    "reference": "Psalms 1:2",
    "status": "mined",
    "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
-   "block_index": 15
+   "block_index": 22
   },
   {
    "reference": "Matthew 12:34",
@@ -82,13 +82,13 @@
    "reference": "Psalms 119:165",
    "status": "mined",
    "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
-   "block_index": 20
+   "block_index": 27
   },
   {
    "reference": "Matthew 11:26",
    "status": "mined",
    "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
-   "block_index": 39
+   "block_index": 47
   }
  ]
 }

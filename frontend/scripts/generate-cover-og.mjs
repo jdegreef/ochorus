@@ -120,8 +120,9 @@ import {
 // `script-` class, no `lang` and no `dir`: an Arabic preview would have been
 // set in the Latin face and laid out left-to-right.
 import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
+import { coverTitle } from '../src/lib/coverTitle.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
-import { coverLayoutFor, layoutKey } from '../src/lib/coverLayouts.ts';
+import { coverLayoutFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
 import { groundBar } from '../src/lib/groundBars.ts';
 import { coverStyleFor, scriptOf, volumeNumeral } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
@@ -200,7 +201,9 @@ function needTwins() {
 			const script = scriptOf(fields.language || 'en');
 			return {
 				slug: fields.slug,
-				title: fields.title,
+				// The title the cover SETS, as the component chooses it — and so the
+				// one the manifest digests, which `tests_fixture` recomputes.
+				title: coverTitle(fields),
 				subtitle: fields.subtitle || '',
 				author: author.name,
 				// The card is set in the style the cover is set in — one table, read
@@ -231,12 +234,14 @@ function needTwins() {
 				// painting in the library needs.
 				scrim: scrimStrength(fields.slug),
 				// A painting's composition; a plate takes none.
-				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script) : null
+				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script, fields.slug) : null
 			};
 		})
 		// How far a laid-out painting is cropped past its scan border — the
 		// component asks only for a layout, so this does too.
 		.map((b) => ({ ...b, bar: b.layout ? groundBar(b.cover) : 0 }))
+		// Framed type set from the top (the Key Teachings) — the component's call.
+		.map((b) => ({ ...b, top: b.art && typeTopFor(b.slug, b.layout) }))
 		.filter((b) => hasTwin(b.cover));
 }
 
@@ -475,7 +480,8 @@ html,body{margin:0}
 			lang: book.language,
 			art: book.art,
 			scrim: book.scrim,
-			layout: book.layout
+			layout: book.layout,
+			top: book.top
 		},
 		LOCKUP
 	)}
@@ -571,7 +577,7 @@ function made(book, groundBytes) {
 		script: scriptKey(book.script),
 		art: book.art,
 		scrim: book.scrim,
-		layout: layoutKey(book.layout),
+		layout: layoutKey(book.layout, book.top),
 		bar: book.bar
 	};
 }
