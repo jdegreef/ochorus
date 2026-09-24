@@ -3424,6 +3424,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/humility-2": {
+			"ground": "3776c476b16e83499be0f93a07195446f5eaf5ad73de3efe6663a813d4c5d951",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"uk/jesus-himself-2": {
 			"ground": "710c241435936b4738451cb91d3ac0cbb0311ad64850ba085c24205e1e856d4a",
 			"style": "devotional",
