@@ -668,6 +668,75 @@ SONS_OF_THE_KING: dict[int, dict[str, object]] = {
             },
         ],
     },
+    2: {
+        "sort_order": 84,
+        "publication_year": 2026,
+        "title": "Sons of the King – 30 Days with God for Guys – Book 2",
+        "subtitle": "Faithful: integrity, screens, temptation, sports, and following Jesus all the way",
+        "cover_url": "/covers/sons-of-the-king-2.svg",
+        "cover_color": covers.ink_safe("#2f5d50"),  # a steady forest green
+        "description": (
+            "Thirty short daily devotions for boys aged 9 to 12 about being "
+            "faithful: integrity when no one is watching, staying the boss of "
+            "screens and gaming, fighting temptation with God’s help and good "
+            "friends, winning and losing well, and following Jesus like Andrew, "
+            "Thomas, John and Peter. Each day has a Bible verse, a short teaching, "
+            "a question, something to try and a prayer. The second book of Sons "
+            "of the King."
+        ),
+        "about_html": (
+            "<p>Sons of the King is an original Ochorus devotional series for boys "
+            "aged 9 to 12. Book 1 taught a boy who he is and what real strength "
+            "looks like. Book 2 is about being faithful, taking its lead from 1 "
+            "Corinthians 4:2: “Now it is required of stewards that they be found "
+            "faithful.” God has trusted a boy with his time, his gifts, his body "
+            "and his friendships, and faithfulness is what He asks in return.</p>"
+            "<p>The first week is about integrity: being real all the way through, "
+            "honest scales in games and tests, what God sees when no one else is "
+            "watching, and Achan’s treasure hidden in the tent. The second is "
+            "about screens and gaming: who is the boss, numbering our days, rage "
+            "quitting, staying innocent about evil, not disappearing from real "
+            "life, and meeting God first. The third is about temptation, from how "
+            "it worked in the garden to Esau’s bowl of stew and the help Jesus "
+            "gives in the moment. The fourth is about winning and losing well. "
+            "The fifth follows four men who followed Jesus: Andrew the bringer, "
+            "Thomas who asked, John the Son of Thunder who learned to love, and "
+            "Peter, who failed and was restored.</p>"
+            "<p>Every day follows the same short pattern: a Scripture from the "
+            "Berean Standard Bible, a teaching, a question to think about, one "
+            "thing to try, and a prayer. Each week ends with a true story from "
+            "our Brave for God books: George Müller, Adoniram Judson, Sundar "
+            "Singh, David Livingstone and Hudson Taylor. The book encourages boys "
+            "to find a trusted friend or mentor to help them stay accountable, "
+            "and to tell a parent about anything online that troubles them.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 2 of Sons of the King about?",
+                "answer": "Being faithful. Over thirty short daily devotions it looks at integrity, screens and gaming, temptation, winning and losing, and following Jesus like the disciples did.",
+            },
+            {
+                "question": "Does it talk about video games and screens?",
+                "answer": "Yes. Week 2 is about staying the boss of screens: setting limits, using time wisely, handling anger while gaming, staying away from harmful content, not disappearing from real life, and giving God the first part of the day.",
+            },
+            {
+                "question": "How does it help with temptation?",
+                "answer": "Week 3 shows how temptation works, starting in the garden of Eden, and teaches boys to watch and pray, run from wrong and chase what is good, get help from a trusted friend or mentor, and run straight to Jesus in the moment.",
+            },
+            {
+                "question": "Who are the true stories at the end of each week?",
+                "answer": "Five men from our Brave for God books: George Müller, Adoniram Judson, Sundar Singh, David Livingstone and Hudson Taylor. Each short story shows a real man who stayed faithful to God.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+            {
+                "question": "What comes after Book 2?",
+                "answer": "Book 3 is about growing up: handling emotions, how God designed a boy’s body and the changes that come as he grows, responsibility, discovering his calling, and finding men who can help him grow.",
+            },
+        ],
+    },
 }
 
 # The series a book can be built into, by `Series.slug`: each one's volumes are
