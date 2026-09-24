@@ -1,0 +1,452 @@
+{
+ "kind": "book",
+ "slug": "grace-for-grace-2",
+ "language": "sw",
+ "job_issue": 3171,
+ "references": [
+  {
+   "reference": "Luka 5:27-30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 5:31-39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 9:16-17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marko 2:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wagalatia 3:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 5:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 18:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 5:34-35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 9:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 5:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 9:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 3:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matendo 13:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 8:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 7:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wagalatia 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 5:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 15:11-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 15:17-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 15:25-32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 15:17-19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 15:20-22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 10:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 15:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 15:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 15:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 43:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mwanzo 4:8-11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 12:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 5:6-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 27:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mambo ya Walawi 16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 6:11-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 6:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 6:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 7:17-18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 7:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wakolosai 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yakobo 1:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wagalatia 5:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matendo 22:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 6:3-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 9:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mambo ya Walawi 6:1-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 32:1-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mithali 28:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 5:23-26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 3:7-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 3:10-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zaburi 32:3-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hesabu 32:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yakobo 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Kutoka 25:10-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Kutoka 25:17-22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Kutoka 25:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waefeso 2:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mambo ya Walawi 16:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekieli 9:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 9:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mambo ya Walawi 25:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 22:37-38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 2:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 4:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 5:2-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 14:21-23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 14:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Wafalme 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 15:9-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 8:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 2:9-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yakobo 1:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 21:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 14:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 10:37-38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wagalatia 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waefeso 5:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Warumi 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Yohana 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luka 7:47",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Wakorintho 16:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waefeso 6:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Petro 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 20:1-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 20:11-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 20:17-18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 1:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 1:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 20:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 16:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 17:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 20:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 26:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 20:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wimbo Ulio Bora 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 20:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 20:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Yohana 20:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mathayo 28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Waebrania 2:9-10",
+   "status": "self_rendered"
+  }
+ ]
+}

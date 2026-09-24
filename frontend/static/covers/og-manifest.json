@@ -3084,6 +3084,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"sw/grace-for-grace-2": {
+			"ground": "df78a1b7905600188925702b4584f5052f827c07599f561f0f7ec5e35ddd1c63",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/growing-in-wisdom": {
 			"ground": "2ba31897414b044c561f714f4dc2a2a2f711c4fa614d995ac88fe86e62f09c74",
 			"style": "originals",
