@@ -3455,8 +3455,8 @@
 			"bar": 0
 		},
 		"uk/the-key-in-my-hand": {
-			"ground": "4148f351b5c9efd70e24d6a384955cd3bc283146ce4fa47105860daf63083bc5",
-			"style": "house",
+			"ground": "d12053e024800d4b7f3030b4e65ecce65e385afc4759ac0ff9e26bae3c14e47b",
+			"style": "lettered",
 			"volume": null,
 			"script": "cyrillic",
 			"art": true,
