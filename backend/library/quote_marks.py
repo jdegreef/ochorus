@@ -6,8 +6,8 @@ need the identical decision and the decision is subtle:
 * `scripts/normalize_quotes.py` sweeps the committed fixture, and
 * migration `0084` repairs the rows already in a deployed database.
 
-`seed_books` deliberately never rewrites an existing book's chapters, so a
-fixture sweep reaches a fresh build and never a running one. Two
+`seed_books` did not rewrite an existing book's chapters until 2026-09-23, so
+a fixture sweep then reached a fresh build and never a running one. Two
 implementations of a context-sensitive converter would drift, and the drift
 would show as one edition quoted two ways depending on when its row was
 written — so there is one.
