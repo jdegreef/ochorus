@@ -3804,6 +3804,16 @@
 			"layout": "wash/sage",
 			"bar": 0.11
 		},
+		"uk/men-who-tended-the-flock-2": {
+			"ground": "16abef75054bd92064da50283b3357e260fc5ef6507837c37f43e5965f3abd26",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/pilgrims-progress": {
 			"ground": "3a15ca7b869df47ff721b290a360bc2a19c6d2e1e668e7eda915e727264a74e1",
 			"style": "press",
