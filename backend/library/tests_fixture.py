@@ -40,6 +40,7 @@ from pathlib import Path
 from django.conf import settings
 from django.test import SimpleTestCase
 
+from library.contemporize import MODERN_LANGUAGE
 from library.content_fixtures import (
     ARTICLES_DIR,
     AUTHORS_FILE,
@@ -146,6 +147,11 @@ def _cover(fields: dict) -> str:
 def _cover_color(fields: dict) -> str:
     """A book row's cover_color, absent-or-null normalised to ''."""
     return fields.get("cover_color") or ""
+
+
+def _cover_title(fields: dict) -> str:
+    """The title a book row's cover sets — the twin of ``coverTitle.ts``."""
+    return fields.get("cover_title") or fields["title"]
 
 
 class FixtureIntegrityTests(SimpleTestCase):
@@ -1093,6 +1099,38 @@ class CoverAssetTests(SimpleTestCase):
             "`uv run python scripts/localize_covers.py` to draw and repoint it",
         )
 
+    def test_translated_editions_set_their_own_cover_title(self):
+        """A translated edition never sets another language's words on its
+        cover — which an edition written by copying the English file would."""
+        english = {
+            f["slug"]: f.get("cover_title") for f in self.books if f["language"] == "en"
+        }
+        copied = sorted(
+            f"{f['slug']}.{f['language']}: {f['cover_title']!r}"
+            for f in self.books
+            if f["language"] not in ("en", MODERN_LANGUAGE)
+            and f.get("cover_title")
+            and f["cover_title"] == english.get(f["slug"])
+        )
+        self.assertEqual(
+            copied, [], "translated edition sets the English cover title — translate it or blank it"
+        )
+
+    def test_cover_title_is_trimmed_and_shorter_than_the_title(self):
+        """It exists to be shorter; one that is not is a typo in the wrong field.
+        Trimmed here rather than at render, so ``coverTitle.ts`` and
+        ``_cover_title`` need not agree on what counts as whitespace."""
+        bad = sorted(
+            f"{f['slug']}.{f['language']}"
+            for f in self.books
+            if f.get("cover_title")
+            and (
+                f["cover_title"] != f["cover_title"].strip()
+                or len(f["cover_title"]) >= len(f["title"])
+            )
+        )
+        self.assertEqual(bad, [], "cover_title should be trimmed and shorter than title")
+
     def test_plate_colours_can_carry_white_type(self):
         """Every stored `cover_color` must be dark enough for the white byline.
 
@@ -1311,7 +1349,7 @@ class CoverAssetTests(SimpleTestCase):
             # part of what the card was made from.
             author = names.get(fields["author"][0], {}).get("name", fields["author"][0])
             blob = source.read_bytes() + "\0{}\0{}\0{}".format(
-                fields["title"], fields.get("subtitle") or "", author
+                _cover_title(fields), fields.get("subtitle") or "", author
             ).encode()
             if hashlib.sha256(blob).hexdigest() != recorded[key].get("ground"):
                 stale.append(key)

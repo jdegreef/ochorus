@@ -1,0 +1,1503 @@
+{
+ "kind": "book",
+ "slug": "divine-healing",
+ "language": "uk",
+ "job_issue": 814,
+ "pull_request": 3343,
+ "references": [
+  {
+   "reference": "Matthew 9:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Psalms 103:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalms 103:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 33:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 11:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 11:5b",
+   "status": "self_rendered",
+   "block_index": 2,
+   "why": "Kulish reads 'вбогі проповідують благовістє' (the poor preach), which inverts Murray's 'the poor have the Gospel preached to them'"
+  },
+  {
+   "reference": "Matthew 9:2b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 9:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "1 John 3:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalms 103:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalms 103:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 17:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 17:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 10:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 17:20a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 17:20a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Mark 5:34a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Mark 5:28",
+   "status": "self_rendered",
+   "block_index": 22,
+   "why": "Murray's 'I will be healed' is a free adaptation of the woman's words, spoken by the reader; Kulish 'спасу ся' does not carry it"
+  },
+  {
+   "reference": "Psalms 25:3a",
+   "status": "self_rendered",
+   "block_index": 22,
+   "why": "Murray re-persons the verse (thee → Him) and uses 'wait on'; Kulish 'всї, що покладаються на тебе, не осоромляться' cannot be pasted verbatim"
+  },
+  {
+   "reference": "Acts 3:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Acts 3:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Acts 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Acts 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Acts 4:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Acts 4:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Mark 5:34",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "Acts 3:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Acts 3:12",
+   "status": "self_rendered",
+   "block_index": 31,
+   "why": "Murray's refrain re-persons Acts 3:12 (\"by our own power or holiness\" as a first-person disavowal) and uses 'holiness' where Kulish has 'побожністю'; rendered in modern Ukrainian."
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "Acts 3:12",
+   "status": "self_rendered",
+   "block_index": 31,
+   "why": "Murray's refrain re-persons Acts 3:12 (\"by our own power or holiness\" as a first-person disavowal) and uses 'holiness' where Kulish has 'побожністю'; rendered in modern Ukrainian."
+  },
+  {
+   "reference": "Psalms 115:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "1 Corinthians 15:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Acts 3:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 8:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Matthew 8:13a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "John 7:39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 39
+  },
+  {
+   "reference": "Romans 4:20",
+   "status": "self_rendered",
+   "block_index": 40,
+   "why": "Kulish has a past-tense narrative about Abraham (покріпшав вірою, давши славу Богові); Murray re-casts it as an exhortation for the sick one, so rendered in modern Ukrainian."
+  },
+  {
+   "reference": "Matthew 8:13a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Mark 9:22b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "Mark 9:23a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "self_rendered",
+   "block_index": 45,
+   "why": "Murray quotes the Revised Version reading (\"If thou canst!\" as an exclamation), which Kulish's wording (\"Коли можеш у те вірувати\") does not carry."
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "Psalms 103:1-3",
+   "status": "self_rendered",
+   "block_index": 45,
+   "why": "Murray re-persons v.3 (\"thy diseases\" -> \"my diseases\") and joins two verses with an ellipsis; Kulish has \"недуги твої\"."
+  },
+  {
+   "reference": "Mark 9:24b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Matthew 8:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Psalms 30:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Mark 9:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "1 Corinthians 6:19a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "Genesis 2:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 50
+  },
+  {
+   "reference": "Genesis 2:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 50
+  },
+  {
+   "reference": "1 John 3:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "1 Corinthians 10:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "1 Corinthians 6:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "1 Corinthians 6:19a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 58,
+   "why": "Murray quotes the verse's second clause in isolation; Kulish (Тїло ж не про перелюб, а про Господа) wraps it in a contrast Murray omits, so a short rendering matching the chapter title is used."
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 58,
+   "why": "Murray quotes the verse's second clause in isolation; Kulish (Тїло ж не про перелюб, а про Господа) wraps it in a contrast Murray omits, so a short rendering matching the chapter title is used."
+  },
+  {
+   "reference": "1 Corinthians 6:13a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 59
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 58,
+   "why": "Murray quotes the verse's second clause in isolation; Kulish (Тїло ж не про перелюб, а про Господа) wraps it in a contrast Murray omits, so a short rendering matching the chapter title is used."
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 58,
+   "why": "Murray quotes the verse's second clause in isolation; Kulish (Тїло ж не про перелюб, а про Господа) wraps it in a contrast Murray omits, so a short rendering matching the chapter title is used."
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 58,
+   "why": "Murray quotes the verse's second clause in isolation; Kulish (Тїло ж не про перелюб, а про Господа) wraps it in a contrast Murray omits, so a short rendering matching the chapter title is used."
+  },
+  {
+   "reference": "1 Corinthians 6:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 62
+  },
+  {
+   "reference": "Romans 8:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 62
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 62
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 58,
+   "why": "Murray quotes the verse's second clause in isolation; Kulish (Тїло ж не про перелюб, а про Господа) wraps it in a contrast Murray omits, so a short rendering matching the chapter title is used."
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 63,
+   "why": "Kulish's «Тїло ж … про Господа, а Господь про тїло» uses archaic «про» (= for), which a modern reader takes as «about»; rendered «для» to keep Murray's point and match the fixed chapter titles 09/10."
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 63,
+   "why": "Kulish's «Тїло ж … про Господа, а Господь про тїло» uses archaic «про» (= for), which a modern reader takes as «about»; rendered «для» to keep Murray's point and match the fixed chapter titles 09/10."
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 63,
+   "why": "Kulish's «Тїло ж … про Господа, а Господь про тїло» uses archaic «про» (= for), which a modern reader takes as «about»; rendered «для» to keep Murray's point and match the fixed chapter titles 09/10."
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 64,
+   "why": "Murray's own expansion of the verse (adds «Lord Jesus, our Savior»); not Kulish wording."
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 63,
+   "why": "Kulish's «Тїло ж … про Господа, а Господь про тїло» uses archaic «про» (= for), which a modern reader takes as «about»; rendered «для» to keep Murray's point and match the fixed chapter titles 09/10."
+  },
+  {
+   "reference": "Psalms 18:32a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 65
+  },
+  {
+   "reference": "Psalms 18:33a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 65
+  },
+  {
+   "reference": "Psalms 18:34",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 65
+  },
+  {
+   "reference": "Psalms 27:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 65
+  },
+  {
+   "reference": "Isaiah 40:31a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 65
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 63,
+   "why": "Kulish's «Тїло ж … про Господа, а Господь про тїло» uses archaic «про» (= for), which a modern reader takes as «about»; rendered «для» to keep Murray's point and match the fixed chapter titles 09/10."
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 63,
+   "why": "Kulish's «Тїло ж … про Господа, а Господь про тїло» uses archaic «про» (= for), which a modern reader takes as «about»; rendered «для» to keep Murray's point and match the fixed chapter titles 09/10."
+  },
+  {
+   "reference": "Matthew 6:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 73
+  },
+  {
+   "reference": "Matthew 6:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 73
+  },
+  {
+   "reference": "Hebrews 12:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Titus 3:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 76
+  },
+  {
+   "reference": "Exodus 7:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 77
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 78
+  },
+  {
+   "reference": "Hebrews 12:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "self_rendered",
+   "block_index": 79,
+   "why": "Kulish's 'потрібною владицї' is feminine singular agreeing with 'посудиною'; Murray applies it to 'we' (plural), so rendered to fit."
+  },
+  {
+   "reference": "Hebrews 12:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Hebrews 12:10, 11",
+   "status": "self_rendered",
+   "block_index": 82,
+   "why": "Murray quotes the R.V. with an elision; Kulish 12:11 ends 'тим, що нею навчені правди', losing 'the fruit of righteousness' which Murray's next sentence picks up."
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "self_rendered",
+   "block_index": 83,
+   "why": "Applied to God's children (plural); Kulish's feminine singular 'осьвяченою і потрібною владицї' agrees with 'посудиною' and cannot carry it."
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 84
+  },
+  {
+   "reference": "Psalms 112:4a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 86
+  },
+  {
+   "reference": "1 Thessalonians 4:14",
+   "status": "self_rendered",
+   "block_index": 88,
+   "why": "Murray's loose paraphrase ('fall asleep in Jesus Christ', no citation) as an infinitive phrase; Kulish 'поснули в Ісусї' is a past-tense relative clause that cannot carry the construction."
+  },
+  {
+   "reference": "Ephesians 6:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 88
+  },
+  {
+   "reference": "Matthew 8:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 88
+  },
+  {
+   "reference": "Psalms 91:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 88
+  },
+  {
+   "reference": "Psalms 92:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 88
+  },
+  {
+   "reference": "Ephesians 4:4a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 90
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 92
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 92
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 100
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "Luke 18:8a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "Psalms 103:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 108
+  },
+  {
+   "reference": "Psalms 103:3b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 108
+  },
+  {
+   "reference": "Acts 4:29b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "Acts 4:30a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 112
+  },
+  {
+   "reference": "Mark 16:17a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 112
+  },
+  {
+   "reference": "Mark 16:18b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 112
+  },
+  {
+   "reference": "Acts 4:31b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 113
+  },
+  {
+   "reference": "Acts 5:12a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 113
+  },
+  {
+   "reference": "Acts 5:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 113
+  },
+  {
+   "reference": "Isaiah 51:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 115
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 116
+  },
+  {
+   "reference": "James 5:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 116
+  },
+  {
+   "reference": "Ephesians 4:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 119
+  },
+  {
+   "reference": "James 5:15b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 116
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "self_rendered",
+   "block_index": 122,
+   "why": "Kulish reads «взяв болестї й недуги наші на себе» (took upon himself); the chapter's argument turns on the verb «to bear» recurring in vv. 4 and 12, so rendered with «поніс» to keep the parallel Murray draws (R.V. margin reading)."
+  },
+  {
+   "reference": "Isaiah 53:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 122
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "self_rendered",
+   "block_index": 122,
+   "why": "Kulish reads «хоч він приймив на себе гріхи многих» (although … received) — a different conjunction and verb; Murray's «because … he bare» carries the chapter's argument, so rendered afresh."
+  },
+  {
+   "reference": "Isaiah 53:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 122
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "self_rendered",
+   "block_index": 122,
+   "why": "Kulish reads «хоч він приймив на себе гріхи многих» (although … received) — a different conjunction and verb; Murray's «because … he bare» carries the chapter's argument, so rendered afresh."
+  },
+  {
+   "reference": "Matthew 8:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 128
+  },
+  {
+   "reference": "Psalms 27:1",
+   "status": "self_rendered",
+   "block_index": 128,
+   "why": "Re-personed by Murray («the strength of her life»); Kulish «твердиня життя мого» is first person, so rendered in third person."
+  },
+  {
+   "reference": "1 Corinthians 11:30",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 129
+  },
+  {
+   "reference": "1 Corinthians 11:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 129
+  },
+  {
+   "reference": "1 Corinthians 11:32",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 129
+  },
+  {
+   "reference": "1 Corinthians 11:32a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 129
+  },
+  {
+   "reference": "1 Corinthians 11:32b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 129
+  },
+  {
+   "reference": "Lamentations 3:33",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 131
+  },
+  {
+   "reference": "John 5:14b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 131
+  },
+  {
+   "reference": "John 9:2b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 131
+  },
+  {
+   "reference": "John 9:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 131
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 135
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 135
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 135
+  },
+  {
+   "reference": "James 5:13a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "James 5:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 135
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 135
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 141
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "self_rendered",
+   "block_index": 142,
+   "why": "Kulish reads «я бо Господь, Бог твій, що виздоровлює тебе»; the short divine name Murray repeats is rendered to match the fixed chapter title"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 143
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 143
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "self_rendered",
+   "block_index": 143,
+   "why": "Kulish reads «я бо Господь, Бог твій, що виздоровлює тебе»; the short divine name Murray repeats is rendered to match the fixed chapter title"
+  },
+  {
+   "reference": "Romans 6:5",
+   "status": "self_rendered",
+   "block_index": 144,
+   "why": "Murray cites the French version ('one plant with him'); Kulish's «зʼєднані (з Ним) подобиєм» does not carry the image"
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "self_rendered",
+   "block_index": 143,
+   "why": "Kulish reads «я бо Господь, Бог твій, що виздоровлює тебе»; the short divine name Murray repeats is rendered to match the fixed chapter title"
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "self_rendered",
+   "block_index": 143,
+   "why": "Kulish reads «я бо Господь, Бог твій, що виздоровлює тебе»; the short divine name Murray repeats is rendered to match the fixed chapter title"
+  },
+  {
+   "reference": "John 11:40",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 144
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "self_rendered",
+   "block_index": 143,
+   "why": "Kulish reads «я бо Господь, Бог твій, що виздоровлює тебе»; the short divine name Murray repeats is rendered to match the fixed chapter title"
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "self_rendered",
+   "block_index": 144,
+   "why": "Murray re-persons the verse as the believer's reply ('healeth me')"
+  },
+  {
+   "reference": "Matthew 8:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 145
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 145
+  },
+  {
+   "reference": "Matthew 8:17a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 145
+  },
+  {
+   "reference": "Matthew 4:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 4:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 9:35",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 10:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 11:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 12:15b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 14:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 14:35b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 14:36",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 15:30b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 15:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 19:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 8:17a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 145
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 150
+  },
+  {
+   "reference": "James 5:17a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 150
+  },
+  {
+   "reference": "James 5:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 150
+  },
+  {
+   "reference": "James 5:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 150
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 150
+  },
+  {
+   "reference": "James 5:17a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 150
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 153
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "block_index": 153,
+   "why": "Murray cites the R.V. 'believe that ye have received them' (past) and builds on it ('receives beforehand'); Kulish has future 'віруйте, що одержите', which cannot carry the point."
+  },
+  {
+   "reference": "James 4:2b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 155
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 155
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 5:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 5:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 5:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "1 John 3:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 161
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 161
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "block_index": 161,
+   "why": "Kulish reads «Много бо може»; the fragment is reordered (particle бо dropped) to fit Murray's sentence."
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "Matthew 6:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 163
+  },
+  {
+   "reference": "James 4:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 163
+  },
+  {
+   "reference": "Matthew 6:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 163
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 167
+  },
+  {
+   "reference": "1 Thessalonians 4:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "Exodus 15:25b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Exodus 15:26a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Exodus 23:25a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 171
+  },
+  {
+   "reference": "Exodus 23:25b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 171
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered",
+   "block_index": 172,
+   "why": "Murray paraphrases: he repeats 'if thou wilt' before each clause and changes the promise to 'I will not send any sickness upon thee', so Kulish's continuous wording cannot carry his emphasis"
+  },
+  {
+   "reference": "Exodus 15:26a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Exodus 15:26a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Job 2:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 177
+  },
+  {
+   "reference": "Job 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 182
+  },
+  {
+   "reference": "Job 42:6",
+   "status": "self_rendered",
+   "block_index": 182,
+   "why": "Kulish reads «Тим то я зрекаюсь слова мого» (I retract my word); Murray's point rests on the KJV «I abhor myself», so the verse is rendered from the English."
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 185
+  },
+  {
+   "reference": "Psalms 77:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 190
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 192
+  },
+  {
+   "reference": "James 5:14b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 192
+  },
+  {
+   "reference": "Exodus 30:29",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "Murray applies 'most holy' to the anointing oil (Ex. 30:22–32); Kulish's 'пресьвятими' (v29) is plural and refers to the anointed vessels, so the single word is rendered in modern Ukrainian to agree with 'олію'."
+  },
+  {
+   "reference": "Mark 6:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 195
+  },
+  {
+   "reference": "Matthew 10:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 195
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 196
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 196
+  },
+  {
+   "reference": "1 John 2:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 196
+  },
+  {
+   "reference": "Exodus 15:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 199
+  },
+  {
+   "reference": "Luke 15:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Luke 15:31a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "Murray conflates Heb 10:19 (boldness to enter) with 6:19 (within the veil); no single Kulish verse carries it"
+  },
+  {
+   "reference": "Psalms 27:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Psalms 91:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Luke 15:31a",
+   "status": "self_rendered",
+   "block_index": 210,
+   "why": "re-personed as the believer's prayer to God ('Ever with Thee')"
+  },
+  {
+   "reference": "Luke 15:31b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "Luke 15:31",
+   "status": "self_rendered",
+   "block_index": 211,
+   "why": "Murray's expanded paraphrase of the father's reply"
+  },
+  {
+   "reference": "Luke 15:31b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "Luke 15:29",
+   "status": "self_rendered",
+   "block_index": 212,
+   "why": "re-personed paraphrase ('never had a kid') of the elder son's complaint"
+  },
+  {
+   "reference": "Isaiah 60:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 214
+  },
+  {
+   "reference": "Jude 1:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 214
+  },
+  {
+   "reference": "Luke 15:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 215
+  },
+  {
+   "reference": "Matthew 3:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 220
+  },
+  {
+   "reference": "Luke 15:31a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "Luke 15:31b",
+   "status": "self_rendered",
+   "block_index": 221,
+   "why": "Murray's shortened paraphrase 'All is thine'"
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 222
+  },
+  {
+   "reference": "John 15:8a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 233
+  },
+  {
+   "reference": "John 15:1",
+   "status": "self_rendered",
+   "block_index": 233,
+   "why": "Murray paraphrases John 15:1 and adds a clause (\"who has charge of Me and you\") not in the verse; Kulish's «Я правдива виноградина, а Отець мій виноградар» cannot carry it"
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 222
+  },
+  {
+   "reference": "John 15:2b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 237
+  },
+  {
+   "reference": "John 15:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 237
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 246
+  }
+ ]
+}

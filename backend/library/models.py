@@ -432,6 +432,14 @@ class Book(models.Model):
 
     title = models.CharField(max_length=300)
     subtitle = models.CharField(max_length=300, blank=True)
+    # The title the COVER sets, when the full one is too long to leave the
+    # cover room for anything else ("Rooted" for "Rooted – 30 Days with God for
+    # Youth – Book 1": the series numeral and the subtitle already say the
+    # rest). Blank = the cover sets `title`. Cover-only: the book page, search,
+    # the shelf's text and the cover's accessible name all keep `title`.
+    # Per-language like every other row field; `translate_book` leaves it blank,
+    # so a translation sets its own full title until someone gives it a short one.
+    cover_title = models.CharField(max_length=120, blank=True)
     # Short summary (a few sentences) — used on cards, lists and SEO meta.
     description = models.TextField(blank=True)
     # Long-form "About this work" as cleaned HTML, the twin of Author.bio_html
