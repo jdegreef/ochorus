@@ -19,21 +19,31 @@ from __future__ import annotations
 import re as _re
 from collections.abc import Sequence
 
-# Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
-# want in the library). An explicit `import_ochorus <slug>` still imports them.
-EXCLUDED_SLUGS: set[str] = {
-    # Teens edition of "The Person and Work of the Holy Spirit"; we keep the
-    # adult original (the-person-and-work-of-the-holy-spirit).
-    "the-person-and-work-of-the-holy-spirit-2",
-    # NOT public domain (copyright audit 2026-07-10) — unpublished in migration
-    # 0020 and kept out of re-import. Watchman Nee's English editions (1957–1983,
-    # Kinnear/CLC/CFP) and Amy Carmichael's "If" (1938, URAA-restored).
+# NOT public domain (copyright audit 2026-07-10), and no permission: Watchman
+# Nee's English editions (1957–1983, Kinnear/CLC/CFP) and Amy Carmichael's "If"
+# (1938, URAA-restored). Every edition in EVERY language stays unpublished — a
+# translation of these is a derivative of the protected English. Migration 0022
+# unpublished the rows that existed in July; translations filed later slipped
+# through and went live (grace-for-grace-2 es/fr/pt, 2026-09-24), so this set is
+# now enforced in CI (tests_fixture), by the admin translation-job filer, and
+# by migration 0164. Remove a slug only with the rights holder's permission.
+COPYRIGHT_BLOCKED_SLUGS: frozenset[str] = frozenset({
     "the-normal-christian-life",
     "grace-for-grace-2",
     "the-body-of-christ-a-reality",
     "the-body-of-christ-teens",
     "let-us-pray-2",
     "if",
+})
+
+# Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
+# want in the library). An explicit `import_ochorus <slug>` still imports them.
+EXCLUDED_SLUGS: set[str] = {
+    # Teens edition of "The Person and Work of the Holy Spirit"; we keep the
+    # adult original (the-person-and-work-of-the-holy-spirit).
+    "the-person-and-work-of-the-holy-spirit-2",
+    # Kept out of re-import too.
+    *COPYRIGHT_BLOCKED_SLUGS,
 }
 
 CORRECTIONS: dict[str, dict] = {
@@ -4321,6 +4331,16 @@ BODY_CORRECTIONS.setdefault("reality-of-prayer", {}).setdefault("replacements", 
     # "preadventure" -> "peradventure".
     ("preadventure", "peradventure"),
 ])
+# Gutenberg #73032 prints the Revell colophon and a nine-page "EVANGELISTIC WORK"
+# catalogue (Hillis, Torrey, Sundar Singh … "Hartford Courant.") after Bounds's
+# last paragraph, inside ch16's section, and the es edition translated all sixty
+# blocks of it. The book ends on "prevailing prayer." in the 1924 printing.
+BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
+    ("definite, prevailing prayer.</p>",
+     "<p><i>Printed in the United States of America</i></p>"),
+    ("definida y prevaleciente.</p>",
+     "<p><i>Impreso en los Estados Unidos de América</i></p>"),
+]
 BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
     # "Betelguese" -> "Betelgeuse".
     ("Betelguese", "Betelgeuse"),
@@ -4594,6 +4614,34 @@ def restore_dropped_blocks(body_html: str, blocks: Sequence[tuple[str, str]]) ->
     return body_html
 
 
+def strip_back_matter(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
+    """Cut the publisher's or transcriber's back matter off a work's last chapter.
+
+    Each seam is `(last, first)`: the closing block of the author's text — its
+    tail, ending on `</p>` — and the opening block of what the importer carried
+    in after it (a colophon, a publisher's catalogue, a transcriber's note).
+    Where the two stand together, everything after `last` goes. Ads and
+    errata tables are not the work, and a translator renders what is there:
+    `reality-of-prayer`'s Revell catalogue reached the es edition as sixty
+    translated blocks of reviewer blurbs.
+
+    A seam, not a marker, so it cannot fire anywhere but the one place it was
+    written for — `apply_body_corrections` runs a slug's entry against every
+    chapter of every edition — and it is idempotent because the cut removes
+    `first`, so the seam never matches again. The applied state keeps `last`,
+    which is what `test_no_replacement_pair_is_dead` looks for.
+
+    `body_html` ONLY: both halves carry block tags, which the derived, tagless
+    `body_text` never holds, and `Chapter.save()` re-derives that field (and
+    `word_count`) from the HTML this has already cut.
+    """
+    for last, first in seams:
+        at = _re.search(_re.escape(last) + r"\s*" + _re.escape(first), body_html)
+        if at:
+            body_html = body_html[: at.start() + len(last)]
+    return body_html
+
+
 def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     """Apply a work's body corrections to one chapter's HTML. Idempotent.
 
@@ -4623,6 +4671,7 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
             body_html = body_html.replace(old, new)
         body_html = restore_paragraph_breaks(body_html, entry.get("paragraph_breaks", ()))
         body_html = restore_dropped_blocks(body_html, entry.get("restored_blocks", ()))
+        body_html = strip_back_matter(body_html, entry.get("back_matter", ()))
         if entry.get("strip_transcription_footnotes"):
             body_html = strip_transcription_footnotes(body_html)
     body_html = rejoin_linebreak_hyphens(body_html)

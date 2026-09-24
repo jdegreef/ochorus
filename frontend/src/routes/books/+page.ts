@@ -3,6 +3,23 @@
 // ("Mawazo kwa Saa ya Utulivu"). Book pages are prerendered per locale, so /sw/books and the shelf
 // rebuild with the translated title over the plate cover and the reader page bakes the 12 chapters.
 // Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue job #2543): Spanish book — the-gospel-of-healing, A. B.
+// Simpson's treatise on divine healing ("El Evangelio de la sanidad"), 7 chapters. Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title over the
+// shared painting ground and the reader page bakes the 7 chapters. Completes the es christ-our-healer
+// curated plan (see plans/+page.ts).
+// prerender refresh 2026-09-24 (queue job #3148): Swahili book — school-of-prayer, Andrew Murray's
+// thirty-three lessons on prayer built on the words of Jesus ("Pamoja na Kristo katika Shule ya
+// Maombi"), 33 chapters. Book pages are prerendered per locale, so /sw/books and the shelf rebuild
+// with the translated title over the plate cover and the reader page bakes the 33 chapters. Backs the
+// LAUNCH plan school-of-prayer-31-days, whose sw row now activates — sw plan prose added in
+// data/plan_translations/sw.json with a plans/+page.ts touch.
+// prerender refresh 2026-09-24 (queue job #3184): Portuguese book — the-secret-of-guidance, F. B.
+// Meyer's nine devotional chapters on discerning God's will ("O Segredo da Orientação Divina"), 9
+// chapters. Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
+// translated title over the shared derived ground and the reader page bakes the 9 chapters. Backs the
+// CURATED plan waiting-on-god-trust, but the-life-of-trust is not yet in pt, so no pt plan row
+// activates and no plan prose is owed.
 // prerender refresh 2026-09-24 (queue job #3193): Portuguese book — brave-for-god, six true stories
 // of faith told for young readers ("Corajosos por Deus"), 6 chapters. Book pages are prerendered per
 // locale, so /pt/books and the shelf rebuild with the translated title over the shared painting ground

@@ -904,6 +904,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+			"es/the-gospel-of-healing": {
+				"ground": "90ec84e201074d75daf2716fafe3eb8afb304c01043f7c303bb46adeee56b955",
+				"style": "revival",
+				"volume": null,
+				"script": "latin",
+				"art": true,
+				"scrim": 0.55,
+				"layout": "box/teal",
+				"bar": 0
+			},
 		"es/the-inner-chamber": {
 			"ground": "336703e5a3b031ffc4533590d4d4a6024e164a09540a43bc18546d77db4c3e7d",
 			"style": "devotional",
@@ -1701,6 +1711,16 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/women-who-moved-heaven-2": {
+			"ground": "d7a6168e68b0ebabc4164a67a2d9eee38a12b713c25ccb6354ea996357aced95",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2654,6 +2674,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
+		"pt/the-secret-of-guidance": {
+			"ground": "f3af40eb8611ef08eb13f1698ec3e7523a33f6155067304e85ab824f10b935fa",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/the-unselfishness-of-god": {
 			"ground": "aa1f4883a2743e9eaf6f84e33f4664e50b1e946d39bfa1aa47f4740e96acf6df",
 			"style": "devotional",
@@ -3271,6 +3301,16 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0
+		},
+		"sw/school-of-prayer": {
+			"ground": "ae25f57f0e6b20b646e7db804e8565913fe333f2784b03f15b8e0b7f9b1e125a",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},

@@ -261,6 +261,11 @@ def is_front_matter(title: str) -> bool:
     # "PUBLISHED BY" catalogue-cut in import_gutenberg does not catch.
     if t in {"book catalogue", "book catalog"}:
         return True
+    # "Transcriber's Note(s)" is the etext's errata apparatus. Under 300 words it
+    # would otherwise be MERGED into the chapter before it as an <h3> — how
+    # #51931's notes ended How to Bring Men to Christ.
+    if t.startswith(("transcriber's note", "transcriber’s note")):
+        return True
     return t in {"contents", "table of contents", "title", "title page", "prefatory note"}
 
 
