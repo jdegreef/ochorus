@@ -2,6 +2,12 @@
 // F. B. Meyer's devotional on discerning God's guidance, 9 chapters ("Siri ya Uongozi"). Rebuilds
 // /sw/books so the card carries its translated title over the shared derived-ground painting, and
 // the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-24 (queue job #3184): Portuguese book — the-secret-of-guidance, F. B.
+// Meyer's nine devotional chapters on discerning God's will ("O Segredo da Orientação Divina"), 9
+// chapters. Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
+// translated title over the shared derived ground and the reader page bakes the 9 chapters. Backs the
+// CURATED plan waiting-on-god-trust, but the-life-of-trust is not yet in pt, so no pt plan row
+// activates and no plan prose is owed.
 // prerender refresh 2026-09-24 (queue job #3193): Portuguese book — brave-for-god, six true stories
 // of faith told for young readers ("Corajosos por Deus"), 6 chapters. Book pages are prerendered per
 // locale, so /pt/books and the shelf rebuild with the translated title over the shared painting ground

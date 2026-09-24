@@ -592,6 +592,39 @@ class SeedFieldCoverageTests(SimpleTestCase):
         self.assertFalse(set(FIXTURE_WINS_TEXT) & set(FILL_ONLY_FIELDS))
 
 
+
+class CopyrightBlockedTests(SimpleTestCase):
+    """No edition of a copyright-blocked work may be published, in any language.
+
+    `seed_books` treats `is_published` as create-only, so a fixture that ships
+    `true` publishes the row the moment it is created, and nothing afterwards
+    walks it back. That is how *Grace for Grace*'s es/fr/pt translations went
+    live on 2026-09-24, derivatives of a protected English compilation, months
+    after migration 0022 unpublished the English. A translation fixture of one
+    of these works fails here instead.
+    """
+
+    def test_no_blocked_work_is_published_in_any_language(self):
+        from library.corrections import COPYRIGHT_BLOCKED_SLUGS
+
+        published = []
+        for path, rows in files_by_path().items():
+            for row in rows:
+                f = row.get("fields", {})
+                if (
+                    row.get("model") == "library.book"
+                    and f.get("slug") in COPYRIGHT_BLOCKED_SLUGS
+                    and f.get("is_published", True)
+                ):
+                    published.append(path.name)
+        self.assertEqual(
+            published,
+            [],
+            "these editions of a copyright-blocked work are published — set "
+            "is_published: false (corrections.COPYRIGHT_BLOCKED_SLUGS; no "
+            "translation of these may ship without the rights holder's permission)",
+        )
+
 class FileCoherenceTests(SimpleTestCase):
     """Each file must contain exactly what its name and role promise.
 
