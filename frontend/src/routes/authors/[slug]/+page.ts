@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Luganda author bios — alexander-maclaren (#1694),
+// j-c-ryle (#1695). Author pages are prerendered PER AUTHOR, so each /lg/authors/<slug> page
+// must rebuild for the translated bio and its <blockquote> pull-quotes and prayer callouts.
 // prerender refresh 2026-09-24: Swahili author bio billy-graham (#2568). Author pages are
 // prerendered PER AUTHOR, so /sw/authors/billy-graham must rebuild with the translated bio.
 // prerender refresh 2026-09-24: Swahili author bio anselm-of-canterbury (#2566). Author pages are

@@ -1,0 +1,84 @@
+{
+  "kind": "sermon",
+  "slug": "gods-love-for-a-sinning-world",
+  "language": "lg",
+  "job_issue": 1699,
+  "pull_request": 3251,
+  "references": [
+    {
+      "reference": "John 3:16a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 3:16b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 3:16",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Jude 1:6",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Hebrews 2:11",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Romans 10:10a",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "2 Corinthians 8:9b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Corinthians 1:30",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 21:38b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 19:15",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Job 21:14",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Jeremiah 44:4",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 26:15",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Galatians 6:17",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Isaiah 6:8b",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    }
+  ],
+  "note": "Base text John 3:16. Every quoted verse pasted verbatim from the OLCB (mined); scripture is quoted inline (partial clauses), so only the matching OLCB words are inserted. A few John 3:16 echoes are the author's commentary ON the words, rendered as prose (self). 2 Corinthians 8:9 kept OLCB's 2nd-person wording though Finney loosely says 'we'. The hymn is the author's verse, not scripture."
+}
