@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildShelves, packRows, shelfHref, spineSize, customShelfItems, sortShelf } from './bookshelf';
+import { PAUSE_AFTER_DAYS, buildShelves, packRows, shelfHref, spineSize, customShelfItems, sortShelf } from './bookshelf';
 import type { BookSummary } from './library-public';
 
 const book = (slug: string, chapter_count = 10) =>
@@ -28,12 +28,16 @@ const fav = (slug: string, at: number, kind: 'book' | 'author' = 'book') => ({
 
 describe('buildShelves', () => {
 	const catalog = [book('a'), book('b'), book('c'), book('d')];
+	// "Now" for these: just after their tiny timestamps, so nothing is old
+	// enough to pause (the Paused shelf has its own tests below).
+	const T = 1_000;
 
 	it('puts each book on exactly one shelf, reading state outranking the heart', () => {
 		const s = buildShelves(
 			catalog,
 			[fav('a', 1), fav('b', 2), fav('c', 3)],
-			[rec('a', 4, 10), rec('b', 10, 11, 20)]
+			[rec('a', 4, 10), rec('b', 10, 11, 20)],
+			T
 		);
 		expect(s.reading.map((x) => x.book.slug)).toEqual(['a']);
 		expect(s.finished.map((x) => x.book.slug)).toEqual(['b']);
@@ -42,7 +46,7 @@ describe('buildShelves', () => {
 	});
 
 	it('shelves a started book that was never hearted', () => {
-		const s = buildShelves(catalog, [], [rec('d', 2, 5)]);
+		const s = buildShelves(catalog, [], [rec('d', 2, 5)], T);
 		expect(s.reading).toHaveLength(1);
 		expect(s.reading[0].saved).toBe(false);
 	});
@@ -51,7 +55,8 @@ describe('buildShelves', () => {
 		const s = buildShelves(
 			catalog,
 			[fav('c', 1), fav('d', 9)],
-			[rec('a', 2, 5, 50), rec('b', 2, 40, 30)]
+			[rec('a', 2, 5, 50), rec('b', 2, 40, 30)],
+			T
 		);
 		expect(s.toRead.map((x) => x.book.slug)).toEqual(['d', 'c']);
 		// finished by finished_at, not last-read
@@ -60,14 +65,14 @@ describe('buildShelves', () => {
 	});
 
 	it('reports hearted books missing in this language, drops unhearted ones', () => {
-		const s = buildShelves(catalog, [fav('zz', 1), fav('a', 1, 'author')], [rec('yy', 2, 5)]);
+		const s = buildShelves(catalog, [fav('zz', 1), fav('a', 1, 'author')], [rec('yy', 2, 5)], T);
 		expect(s.unresolved).toEqual(['zz']);
 		expect(s.reading).toEqual([]);
 		expect(s.toRead).toEqual([]);
 	});
 
 	it('links a book being read to its exact resume point', () => {
-		const s = buildShelves(catalog, [fav('c', 1)], [{ ...rec('a', 3, 1), paragraph_index: 7 }]);
+		const s = buildShelves(catalog, [fav('c', 1)], [{ ...rec('a', 3, 1), paragraph_index: 7 }], T);
 		expect(shelfHref(s.reading[0])).toBe('/books/a/3?p=7');
 		expect(shelfHref(s.toRead[0])).toBe('/books/c');
 	});
@@ -135,5 +140,37 @@ describe('sortShelf', () => {
 	it('sorts by length', () => {
 		expect(order('shortest')).toEqual(['c', 'b', 'a']);
 		expect(order('longest')).toEqual(['a', 'b', 'c']);
+	});
+});
+
+describe('the Paused shelf', () => {
+	const DAY = 86_400_000;
+	const NOW = 1_800_000_000_000;
+
+	it('rests a book being read but unopened for PAUSE_AFTER_DAYS', () => {
+		const s = buildShelves(
+			[book('a'), book('b'), book('c')],
+			[],
+			[
+				rec('a', 3, NOW - 5 * DAY),
+				rec('b', 3, NOW - (PAUSE_AFTER_DAYS + 1) * DAY),
+				rec('c', 3, NOW - 400 * DAY, NOW - 400 * DAY) // finished long ago: not paused
+			],
+			NOW
+		);
+		expect(s.reading.map((x) => x.book.slug)).toEqual(['a']);
+		expect(s.paused.map((x) => x.book.slug)).toEqual(['b']);
+		expect(s.paused[0]).toMatchObject({ status: 'reading', paused: true, lastRead: NOW - (PAUSE_AFTER_DAYS + 1) * DAY });
+		expect(s.finished.map((x) => x.book.slug)).toEqual(['c']);
+	});
+
+	it('keeps a book read exactly at the threshold on Currently reading', () => {
+		const s = buildShelves([book('a')], [], [rec('a', 3, NOW - PAUSE_AFTER_DAYS * DAY)], NOW);
+		expect(s.paused).toEqual([]);
+	});
+
+	it('marks a quiet book as paused on a custom shelf too', () => {
+		const items = customShelfItems(new Map([['a', 1]]), [book('a')], [], [rec('a', 2, NOW - 90 * DAY)], NOW);
+		expect(items[0].paused).toBe(true);
 	});
 });

@@ -36,10 +36,27 @@ export type ShelfBook = {
 	pct: number;
 	/** The shelf's sort key: finished_at, last-read, or saved-at (ms). */
 	at: number;
+	/** A book being read that hasn't been opened in PAUSE_AFTER_DAYS — it rests
+	 *  on the Paused shelf (and looks it, wherever it's drawn). */
+	paused?: boolean;
+	/** When it was last read (ms) — the paused book's "Last read" line. */
+	lastRead?: number;
 };
+
+/**
+ * A book being read goes quiet on the Paused shelf after this many days
+ * unopened, so Currently reading stays the books actually in hand. Nothing is
+ * stored: it's the position's own last-read time (synced, so every device
+ * agrees), and opening the book again moves it straight back.
+ */
+export const PAUSE_AFTER_DAYS = 60;
+const PAUSE_MS = PAUSE_AFTER_DAYS * 86_400_000;
+const isPaused = (lastRead: number, now: number) => now - lastRead > PAUSE_MS;
 
 export type Shelves = {
 	reading: ShelfBook[];
+	/** Being read, but not opened in PAUSE_AFTER_DAYS. */
+	paused: ShelfBook[];
 	toRead: ShelfBook[];
 	finished: ShelfBook[];
 	/** Hearted book slugs with no row in the current language. */
@@ -51,12 +68,14 @@ type ProgressRow = ProgressRecord & { slug: string; kind: WorkKind };
 export function buildShelves(
 	books: BookSummary[],
 	favs: FavoriteEntry[],
-	progress: ProgressRow[]
+	progress: ProgressRow[],
+	now = Date.now()
 ): Shelves {
 	const bySlug = new Map(books.map((b) => [b.slug, b]));
 	const savedAt = new Map(favs.filter((f) => f.kind === 'book').map((f) => [f.slug, f.at]));
 	const shelves: Shelves = {
 		reading: [],
+		paused: [],
 		toRead: [],
 		finished: [],
 		unresolved: []
@@ -69,14 +88,17 @@ export function buildShelves(
 		if (!book) continue;
 		placed.add(p.slug);
 		const finished = p.finished_at != null;
-		(finished ? shelves.finished : shelves.reading).push({
+		const paused = !finished && isPaused(p.at, now);
+		(finished ? shelves.finished : paused ? shelves.paused : shelves.reading).push({
 			book,
 			status: finished ? 'finished' : 'reading',
 			saved: savedAt.has(p.slug),
 			order: p.order,
 			paragraph: p.paragraph_index,
 			pct: finished ? 100 : bookProgressPercent(p.order, book.chapter_count),
-			at: (finished ? p.finished_at : p.at) ?? p.at
+			at: (finished ? p.finished_at : p.at) ?? p.at,
+			paused,
+			lastRead: p.at
 		});
 	}
 
@@ -100,6 +122,7 @@ export function buildShelves(
 
 	const newestFirst = (a: ShelfBook, b: ShelfBook) => b.at - a.at;
 	shelves.reading.sort(newestFirst);
+	shelves.paused.sort(newestFirst);
 	shelves.toRead.sort(newestFirst);
 	shelves.finished.sort(newestFirst);
 	return shelves;
@@ -118,7 +141,8 @@ export function customShelfItems(
 	added: Map<string, number>,
 	books: BookSummary[],
 	favs: FavoriteEntry[],
-	progress: ProgressRow[]
+	progress: ProgressRow[],
+	now = Date.now()
 ): ShelfBook[] {
 	const bySlug = new Map(books.map((b) => [b.slug, b]));
 	const saved = new Set(favs.filter((f) => f.kind === 'book').map((f) => f.slug));
@@ -136,7 +160,9 @@ export function customShelfItems(
 			order: p ? p.order : null,
 			paragraph: p ? p.paragraph_index : 0,
 			pct: !p ? 0 : status === 'finished' ? 100 : bookProgressPercent(p.order, book.chapter_count),
-			at
+			at,
+			paused: status === 'reading' && !!p && isPaused(p.at, now),
+			lastRead: p?.at
 		});
 	}
 	return items.sort((a, b) => b.at - a.at);
