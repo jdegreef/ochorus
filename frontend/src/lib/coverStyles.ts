@@ -298,6 +298,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'sons-of-the-king-1': 'young',
 	'sons-of-the-king-2': 'young',
 	'daughters-of-the-king-3': 'young',
+	'sons-of-the-king-3': 'young',
 	// A series, not an audience: the Key Teachings are Ochorus' own companions,
 	// so all four wear the imprint's face rather than each writer's century
 	// (see coverLayouts.BOOK_LAYOUT for the other half of the series look).
