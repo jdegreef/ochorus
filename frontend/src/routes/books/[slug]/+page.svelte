@@ -451,20 +451,20 @@
 					</button>
 				{/if}
 				<!-- Free downloads. EPUB is built per request by the API
-				     (library/book_export.py; `epub_available` gates it to the pilot).
+				     (library/book_export.py; `epub_url` is "" outside the pilot).
 				     The PDF is a static file under /pdfs/, printed off-server by
 				     `manage.py export_book` — no rel="external", so a pdf_url whose
 				     file is missing fails the prerender crawl instead of shipping a
 				     dead button (the 2026-07-26 withdrawal). -->
-				{#if book.epub_available || book.pdf_url}
+				{#if book.epub_url || book.pdf_url}
 					<span class="inline-flex items-center gap-1">
 						<Icon name="download" size={16} class="text-base-content/60" />
 						<span class="sr-only sm:not-sr-only text-sm text-base-content/70"
 							>{t('book.freeDownload')}:</span
 						>
-						{#if book.epub_available}
+						{#if book.epub_url}
 							<a
-								href={`${API_BASE_URL}/api/library/books/${book.slug}/download.epub?language=${book.language}`}
+								href={`${API_BASE_URL}${book.epub_url}`}
 								class="btn btn-sm btn-ghost"
 								download
 								rel="nofollow">EPUB</a

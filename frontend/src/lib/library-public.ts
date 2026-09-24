@@ -180,11 +180,10 @@ export interface BookDetail extends BookSummary {
 	/** A static PDF under /pdfs/ ("" = none). See library/book_export.py. */
 	pdf_url: string;
 	/**
-	 * Whether the API serves this edition as EPUB at
-	 * /api/library/books/<slug>/download.epub. Optional: an API behind this
-	 * build omits it, and no button is drawn.
+	 * API path of this edition's EPUB ("" = not downloadable). Optional: an
+	 * API behind this build omits it, and no button is drawn.
 	 */
-	epub_available?: boolean;
+	epub_url?: string;
 	chapters: ChapterToc[];
 	topics: TopicChip[];
 	related: BookSummary[];

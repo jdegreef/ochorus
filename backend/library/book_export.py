@@ -7,24 +7,23 @@ from the database, so a download always matches what the reader serves,
 including fixes that reached production by data migration rather than fixture.
 
 EPUB is built on request by ``BookEpubView``: a book is a few hundred KB of
-zipped XHTML and takes milliseconds. The zip is deterministic (fixed
-timestamps, fixed member order), so the same content always yields the same
-bytes and the view can tag it with an ETag.
+zipped XHTML and takes milliseconds. The view's ETag is the shared content
+version (``http_cache``), checked before anything is built; the zip itself is
+deterministic (fixed timestamps and member order), so equal content is equal
+bytes.
 
 PDF is NOT built on the API: that needs a browser engine for page layout and
 for Arabic/Devanagari shaping, and the API image has none. ``export_book``
 renders the print HTML below and prints it with headless Chrome off-server; the
 file ships as a static asset at ``/pdfs/<slug>.pdf`` via ``Book.pdf_url``.
 
-PILOT: only the editions in ``EXPORT_PILOT`` are exportable while the format is
-proven on real e-readers. Widening it is a one-line change here — plus a
-colophon in ``STRINGS`` for any new language, because the back matter is
+Which editions are exportable is decided in ``library/export_policy.py``. A new
+language also needs its back matter in ``STRINGS`` below, because that is
 Ochorus's own prose and there is no English fallback.
 """
 
 from __future__ import annotations
 
-import hashlib
 import html
 import io
 import logging
@@ -40,12 +39,10 @@ from lxml import etree
 from lxml import html as lxml_html
 
 from .languages import entry as language_entry
+from .localization import DEFAULT_LANGUAGE
 from .models import Book
 
 log = logging.getLogger(__name__)
-
-#: (slug, language) editions that may be downloaded. See the module docstring.
-EXPORT_PILOT = frozenset({("the-secret-of-guidance", "en")})
 
 #: The back-matter prose, per language. A language without an entry cannot be
 #: exported: this is Ochorus's own writing, and there is no English fallback.
@@ -102,19 +99,11 @@ _EPOCH = (1980, 1, 1, 0, 0, 0)
 _UUID_NS = uuid.UUID("5d0b6a52-0f1c-4a6e-9f0e-6b1f0c6a7d31")
 
 
-def is_exportable(book: Book) -> bool:
-    return (
-        book.is_published
-        and (book.slug, book.language) in EXPORT_PILOT
-        and book.language in STRINGS
-    )
-
-
 # --- parts ------------------------------------------------------------------
 
 
 @dataclass(frozen=True)
-class Chapter:
+class ExportChapter:
     order: int
     title: str
     body: str  # well-formed XHTML fragment
@@ -135,7 +124,7 @@ class Edition:
     rtl: bool
     strings: dict
     about: str  # XHTML fragment, may be empty
-    chapters: list[Chapter]
+    chapters: list[ExportChapter]
     cover: Cover | None
     url: str  # the book's page on the reader, "" when the site URL is unknown
 
@@ -159,52 +148,67 @@ def _site_url() -> str:
     return getattr(settings, "PUBLIC_SITE_URL", "") or ""
 
 
+def _site_link(site: str) -> str:
+    return f'<a href="{_e(site)}/">{_e(site.split("//")[-1])}</a>'
+
+
 def book_url(book: Book) -> str:
     site = _site_url()
     if not site:
         return ""
-    prefix = "" if book.language == "en" else f"/{book.language}"
+    prefix = "" if book.language == DEFAULT_LANGUAGE else f"/{book.language}"
     return f"{site}{prefix}/books/{book.slug}/"
+
+
+def export_filename(book: Book, ext: str) -> str:
+    """``<slug>.<ext>``, or ``<slug>.<lang>.<ext>`` outside the default language
+    — the one naming rule for a downloaded file and for ``static/pdfs/``."""
+    lang = "" if book.language == DEFAULT_LANGUAGE else f".{book.language}"
+    return f"{book.slug}{lang}.{ext}"
 
 
 # No webp: EPUB 3.2 core media types don't include it, and older readers can't show it.
 _MEDIA = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"}
 
 
-@lru_cache(maxsize=64)
 def load_cover(cover_url: str) -> Cover | None:
     """The cover raster behind ``cover_url``, or None (the EPUB then has none).
 
     A repo checkout reads it from ``frontend/static``; the API image, which is
-    built from ``backend/`` alone, fetches it from the public site.
+    built from ``backend/`` alone, fetches it from the public site. A failure
+    is NOT cached — the next download tries again rather than the worker
+    serving cover-less books until it restarts.
     """
     ext = Path(cover_url.split("?")[0]).suffix.lower()
     if not cover_url or ext not in _MEDIA:
         return None
-    data = None
+    try:
+        data = _cover_bytes(cover_url)
+    except (OSError, requests.RequestException) as e:
+        log.warning("book_export: no cover for %s: %s", cover_url, e)
+        return None
+    return Cover(data=data, media_type=_MEDIA[ext], ext=ext.replace(".jpeg", ".jpg"))
+
+
+@lru_cache(maxsize=16)
+def _cover_bytes(cover_url: str) -> bytes:
+    """Raises on failure, so lru_cache only ever holds a success."""
     if cover_url.startswith("/"):
         local = Path(settings.BASE_DIR).parent / "frontend" / "static" / cover_url.lstrip("/")
         if local.is_file():
-            data = local.read_bytes()
-        elif _site_url():
-            cover_url = _site_url() + cover_url
-    if data is None and cover_url.startswith("http"):
-        try:
-            res = requests.get(cover_url, timeout=10)
-            res.raise_for_status()
-            data = res.content
-        except requests.RequestException as e:
-            log.warning("book_export: cover fetch failed for %s: %s", cover_url, e)
-            return None
-    if data is None:
-        return None
-    return Cover(data=data, media_type=_MEDIA[ext], ext=ext.replace(".jpeg", ".jpg"))
+            return local.read_bytes()
+        if not _site_url():
+            raise FileNotFoundError(cover_url)
+        cover_url = _site_url() + cover_url
+    res = requests.get(cover_url, timeout=10)
+    res.raise_for_status()
+    return res.content
 
 
 def build_edition(book: Book) -> Edition:
     strings = STRINGS[book.language]
     chapters = [
-        Chapter(
+        ExportChapter(
             order=order,
             title=title or strings["chapter"].format(n=order),
             body=to_xhtml(body),
@@ -251,13 +255,12 @@ def _colophon(ed: Edition) -> str:
     if ed.url:
         parts.append(f'<p>{_e(s["read_online"])} <a href="{_e(ed.url)}">{_e(ed.url)}</a></p>')
     if site:
-        parts.append(f'<p>{_e(s["more"])} <a href="{_e(site)}/">{_e(site.split("//")[-1])}</a></p>')
+        parts.append(f'<p>{_e(s["more"])} {_site_link(site)}</p>')
     return "".join(parts)
 
 
 def _ochorus_page(ed: Edition) -> str:
-    site = _site_url() or "https://ochorus.com"
-    link = f'<a href="{_e(site)}/">{_e(site.split("//")[-1])}</a>'
+    link = _site_link(_site_url() or "https://ochorus.com")
     return f'<h1>{_e(ed.strings["ochorus_title"])}</h1>' + ed.strings["ochorus_html"].replace(
         "{site}", link
     )
@@ -359,7 +362,7 @@ def render_epub(ed: Edition) -> bytes:
         + "</navMap></ncx>\n"
     )
 
-    modified = b.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ") if b.updated_at else "2026-01-01T00:00:00Z"
+    modified = b.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ")
     manifest = [
         '<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>',
         '<item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>',
@@ -419,14 +422,6 @@ def render_epub(ed: Edition) -> bytes:
         for _, href, _, doc in docs:
             put(f"OEBPS/{href}", doc)
     return buf.getvalue()
-
-
-def epub_filename(book: Book) -> str:
-    return f"{book.slug}.epub" if book.language == "en" else f"{book.slug}.{book.language}.epub"
-
-
-def etag_for(data: bytes) -> str:
-    return '"' + hashlib.sha256(data).hexdigest()[:32] + '"'
 
 
 # --- print HTML (→ PDF) ------------------------------------------------------

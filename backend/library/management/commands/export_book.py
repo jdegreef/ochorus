@@ -20,6 +20,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
 from library import book_export
+from library.export_policy import is_exportable
 from library.models import Book
 
 _CHROME_CANDIDATES = [
@@ -62,6 +63,35 @@ def _anchor_pages(pdf: Path) -> dict[str, int]:
     }
 
 
+_STATIC_PDFS = Path(settings.BASE_DIR).parent / "frontend" / "static" / "pdfs"
+
+
+def _write_print_html(edition, folder: Path, pages=None) -> Path:
+    """The print page (and its cover) in ``folder``; returns the page path."""
+    folder.mkdir(parents=True, exist_ok=True)
+    cover_src = None
+    if edition.cover:
+        cover_src = f"cover{edition.cover.ext}"
+        (folder / cover_src).write_bytes(edition.cover.data)
+    page = folder / "book.html"
+    page.write_text(
+        book_export.render_print_html(edition, cover_src, pages), encoding="utf-8"
+    )
+    return page
+
+
+def _print_pdf(edition, path: Path) -> None:
+    """Two passes for the contents page numbers (see render_print_html): print,
+    read where each anchor landed from Chrome's named destinations, print again."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        _print(_write_print_html(edition, Path(tmp)), path)
+        pages = _anchor_pages(path)
+        _print(_write_print_html(edition, Path(tmp), pages), path)
+    if _anchor_pages(path) != pages:
+        raise CommandError("Contents page numbers moved between passes.")
+
+
 class Command(BaseCommand):
     help = "Export a book edition as EPUB, print HTML, or PDF."
 
@@ -76,49 +106,19 @@ class Command(BaseCommand):
             book = Book.objects.select_related("author").get(slug=slug, language=language)
         except Book.DoesNotExist as e:
             raise CommandError(f"No book {slug} ({language}).") from e
-        if not book_export.is_exportable(book):
+        if not is_exportable(book):
             raise CommandError(
-                f"{slug} ({language}) is not exportable — see EXPORT_PILOT / STRINGS "
-                "in library/book_export.py."
+                f"{slug} ({language}) is not exportable — see library/export_policy.py."
             )
         edition = book_export.build_edition(book)
-        suffix = "" if language == "en" else f".{language}"
 
         if format == "epub":
-            path = Path(out or f"{slug}{suffix}.epub")
+            path = Path(out or book_export.export_filename(book, "epub"))
             path.write_bytes(book_export.render_epub(edition))
+        elif format == "html":
+            path = Path(out or f"{slug}-print")
+            _write_print_html(edition, path)
         else:
-            with tempfile.TemporaryDirectory() as tmp:
-                cover_src = None
-                if edition.cover:
-                    cover_src = f"cover{edition.cover.ext}"
-                    (Path(tmp) / cover_src).write_bytes(edition.cover.data)
-                page = Path(tmp) / "book.html"
-
-                def write_page(pages=None):
-                    page.write_text(
-                        book_export.render_print_html(edition, cover_src, pages),
-                        encoding="utf-8",
-                    )
-
-                write_page()
-                if format == "html":
-                    path = Path(out or f"{slug}{suffix}-print")
-                    shutil.copytree(tmp, path, dirs_exist_ok=True)
-                else:
-                    default = (
-                        Path(settings.BASE_DIR).parent / "frontend" / "static" / "pdfs"
-                        / f"{slug}{suffix}.pdf"
-                    )
-                    path = Path(out) if out else default
-                    path.parent.mkdir(parents=True, exist_ok=True)
-                    # Two passes for the contents page numbers (see
-                    # render_print_html): print, read where each anchor landed
-                    # from Chrome's named destinations, print again.
-                    _print(page, path)
-                    pages = _anchor_pages(path)
-                    write_page(pages)
-                    _print(page, path)
-                    if _anchor_pages(path) != pages:
-                        raise CommandError("Contents page numbers moved between passes.")
+            path = Path(out) if out else _STATIC_PDFS / book_export.export_filename(book, "pdf")
+            _print_pdf(edition, path)
         self.stdout.write(self.style.SUCCESS(f"Wrote {path}"))

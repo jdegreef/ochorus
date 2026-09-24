@@ -16,14 +16,14 @@ from unittest import mock
 from django.test import TestCase, override_settings
 from lxml import etree
 
-from . import book_export
+from . import book_export, export_policy
 from .models import Author, Book, Chapter
 
 PILOT = frozenset({("pilot-book", "en")})
 
 
 @override_settings(PUBLIC_SITE_URL="https://ochorus.test")
-@mock.patch.object(book_export, "EXPORT_PILOT", PILOT)
+@mock.patch.object(export_policy, "EXPORT_PILOT", PILOT)
 @mock.patch.object(book_export, "load_cover", lambda url: None)
 class EpubTests(TestCase):
     def setUp(self):
@@ -89,6 +89,7 @@ class EpubTests(TestCase):
         self.assertEqual(first.content, self._get().content)
         again = self._get(HTTP_IF_NONE_MATCH=first["ETag"])
         self.assertEqual(again.status_code, 304)
+        self.assertEqual(again.content, b"")
 
     def test_not_in_the_pilot_is_404(self):
         Book.objects.create(author=self.book.author, slug="other", language="en", title="O")
@@ -106,9 +107,12 @@ class EpubTests(TestCase):
     def test_detail_payload_flags_it(self):
         from .serializers import BookDetailSerializer
 
-        self.assertTrue(BookDetailSerializer(self.book).data["epub_available"])
+        self.assertEqual(
+            BookDetailSerializer(self.book).data["epub_url"],
+            "/api/library/books/pilot-book/download.epub?language=en",
+        )
         other = Book.objects.create(author=self.book.author, slug="other", language="en", title="O")
-        self.assertFalse(BookDetailSerializer(other).data["epub_available"])
+        self.assertEqual(BookDetailSerializer(other).data["epub_url"], "")
 
     def test_print_html_carries_every_chapter(self):
         html = book_export.render_print_html(book_export.build_edition(self.book))
@@ -128,5 +132,5 @@ class EpubTests(TestCase):
 
 class PilotTests(TestCase):
     def test_every_pilot_language_has_back_matter(self):
-        for _slug, lang in book_export.EXPORT_PILOT:
+        for _slug, lang in export_policy.EXPORT_PILOT:
             self.assertIn(lang, book_export.STRINGS)

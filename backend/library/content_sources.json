@@ -34,7 +34,7 @@
     "library/opening.py",
     "library/readability.py",
     "library/serializers.py",
-    "library/book_export.py"
+    "library/export_policy.py"
   ],
   "_reader_exempt_note": [
     "Modules the serializers import that carry NO reader prose, so a change to",
