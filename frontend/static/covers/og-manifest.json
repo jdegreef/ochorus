@@ -1574,6 +1574,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/soar-like-the-eagle-3": {
+			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
+			"style": "lettered",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/stepping-stones-2": {
 			"ground": "a709e7762f009d72e1f65041bf925ceaa7f9d1a35eb6a536cfaca98f5f15afbb",
 			"style": "lettered",
