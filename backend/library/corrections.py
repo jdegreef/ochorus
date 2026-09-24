@@ -4351,6 +4351,16 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
     ("definida y prevaleciente.</p>",
      "<p><i>Impreso en los Estados Unidos de América</i></p>"),
 ]
+# Gutenberg #65066 follows "…revival of true religion! Amen." with the ATS
+# donors' line and the transcriber's `tnotes` endnote. The note's heading was
+# never collected, so its three paragraphs read as Edwards's own last words —
+# and the sw edition translated them as such.
+BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter"] = [
+    ("true religion! <i>Amen.</i></p>",
+     "<p>The frequent dated quotations from Brainerd’s diaries"),
+    ("dini ya kweli! <i>Amina.</i></p>",
+     "<p>Manukuu ya mara kwa mara yenye tarehe kutoka shajara za Brainerd"),
+]
 # Gutenberg #51931 follows Torrey's last paragraph with a page break and the
 # Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
 # Stalker and Kempis blurbs survived), and then a sub-300-word "Transcriber's
