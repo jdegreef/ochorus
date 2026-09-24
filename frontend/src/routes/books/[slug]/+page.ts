@@ -1,3 +1,9 @@
+// Rebuild marker 2026-09-23: #3221 (migration 0162) carried Stepping Stones'
+// chapters 40–43 to the live DB for en/fr/hi/lg/pt/sw — #3104 had put them in
+// the fixtures only, and seed_books never adds chapters to an existing book.
+// That PR was backend-only, so the web build was skipped and the prerendered
+// contents list still ended at 39. This touch re-prerenders against the
+// migrated api.
 // Rebuild marker 2026-09-18: published the four Key Teachings companion books
 // (Simpson, Edwards, Baxter, Nee) via migration 0155. The api publishes on that
 // deploy but a backend-only change skips the web build, so this touch rebuilds
