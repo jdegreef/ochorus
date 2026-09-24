@@ -574,6 +574,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.085
 		},
+		"es/cheque-book": {
+			"ground": "08eb4ae5ced77e25d0ceafe8a898c3f227080904bf35e965c9fbd0f3cee89700",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"es/clothed-with-strength-and-dignity": {
 			"ground": "039b1da6a59b53bcbf1d793f048281927c6444fd1346360d8add701b47d6b606",
 			"style": "originals",
@@ -633,6 +643,16 @@
 			"scrim": 0.6,
 			"layout": "framed",
 			"bar": 0
+		},
+		"es/holy-in-christ": {
+			"ground": "880e110e550cae6889d381d66ea533aee70f5bea76c2da83e84019dca5efb7ab",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.045
 		},
 		"es/how-to-succeed-in-the-christian-life": {
 			"ground": "ce12a3dec2a82f99c8561a1a213e498d3d7a7a7d9ca86b1a319565b2f819dd1d",
@@ -994,6 +1014,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.085
 		},
+		"fr/brave-for-god": {
+			"ground": "90bc7cf058e4c088bcf84f6c2da4c5abf66e9e13d5506326454b2f5fb007b3da",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/cheque-book": {
 			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
 			"style": "revival",
@@ -1051,6 +1081,16 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
+		"fr/grace-for-grace-2": {
+			"ground": "2818fc059923a6cc6bd2c93b4c8c966462141451205ecfefa5180fe84c19d924",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},
