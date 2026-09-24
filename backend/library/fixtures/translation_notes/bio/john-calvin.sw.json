@@ -3,6 +3,7 @@
  "slug": "john-calvin",
  "language": "sw",
  "job_issue": 2565,
+ "pull_request": 3207,
  "note": [
   "The only scripture is the psalmist's cry 'How long, O Lord' (Psalm 13:1), quoted in the closing paragraph and echoed by the final <h2>. The body quotes 'Ee BWANA, hata lini' verbatim from the Swahili Union rendering of Psalm 13:1 already shipped in watchman-nee-a-life.sw.json; the heading 'Ee Bwana, Hata Lini' is the same words title-cased for a heading.",
   "Calvin's motto, his account of his sudden conversion (preface to the Psalms commentary), the closing lecture-prayer and the letter to Viret are his own words, translated as prose, not scripture. The conversion sentence follows the wording of the already-shipped sw FAQ for this author."
