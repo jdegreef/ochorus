@@ -47,6 +47,11 @@ _TINY_SECTION_WORDS = 300
 # as Edwards's closing paragraphs because its heading was a centred div the
 # importer never collected, and the sw edition translated it as his.
 _TRANSCRIBER_NOTE = re.compile(r"^(?:tnotes?|transnote)$")
+# Catalogued Gutenberg books whose layout this importer can't chapter, built by
+# their own command instead. Skipped here so a stray run can't re-chapter them.
+BUILT_ELSEWHERE = {
+    "george-muller-of-bristol": "build_george_muller_of_bristol",
+}
 
 
 def fetch_html(book_id: str) -> str:
@@ -368,6 +373,9 @@ class Command(BaseCommand):
                 raise CommandError(f"Not Gutenberg-sourced: {', '.join(sorted(wrong))}")
 
         for entry in entries:
+            if entry.slug in BUILT_ELSEWHERE:
+                self.stdout.write(f"→ {entry.title}: skipped — built by `{BUILT_ELSEWHERE[entry.slug]}`")
+                continue
             self._import_one(entry)
 
     def _import_one(self, entry: BookEntry):
