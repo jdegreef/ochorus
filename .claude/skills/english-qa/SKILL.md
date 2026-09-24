@@ -470,9 +470,12 @@ Reported, not fixed
   with `content_fixtures.render_rows`, and a test strips the block back out and
   asserts the correction replaces it (asserting the settled fixture alone passes
   with the correction deleted, while the live rows silently revert).
-  **`holy-in-christ` ch33's seven `NOTE A.`–`NOTE G.` headings are still
-  damaged.** Watch `quote_seed` when repairing: it anchors a quote by 0-indexed
-  BLOCK position, so inserting a paragraph shifts every anchor below it.
+  **`holy-in-christ` is DONE too** — ch33's seven `NOTE A.`–`NOTE G.` headings
+  and ch5's `NOTE.` were restored the same way (PR #1929, test
+  `test_a_stripped_note_heading_comes_back`), and the es/fr/pt/sw editions were
+  translated from the repaired English, so they carry them already. Watch
+  `quote_seed` on any such repair: it anchors a quote by 0-indexed BLOCK
+  position, so inserting a paragraph shifts every anchor below it.
   ```bash
   grep -c ' ()' backend/library/fixtures/content/books/*.json
   ```
