@@ -3812,6 +3812,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/thoughts-for-the-quiet-hour": {
+			"ground": "b815bfd651c5813ceee753d73914a8813455081672a64b0d017180803fe3bc1b",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/waiting-on-god": {
 			"ground": "2a48ba8503d4f5b382e666f943146d9ee15fa6320016a0663c1827f77c7cd8ae",
 			"style": "devotional",
