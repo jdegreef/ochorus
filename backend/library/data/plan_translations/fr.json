@@ -75,5 +75,12 @@
   "note": [
    "Job #2642. Source books: around-the-wicket-gate (French edition shipped, « Autour de la porte etroite ») and men-and-women-who-gave-everything-2 (French edition shipped in #2784, « Des hommes et des femmes qui ont tout donné »). Both are now in French, so seed_plans creates the (first-steps-for-teens, fr) row. Title/description quote the shipped French book titles."
   ]
+ },
+ "school-of-prayer-31-days": {
+  "title": "31 jours à l'école de la prière",
+  "description": "Un mois avec Andrew Murray aux pieds du seul Maître. Chaque jour s'ouvre sur une parole de Jésus au sujet de la prière, depuis « Seigneur, enseigne-nous à prier » jusqu'aux promesses de la dernière nuit, et s'achève par une prière. Une leçon par jour, environ dix minutes, cheminant vers l'intercession et une vie de prière.",
+  "note": [
+   "Job #3146. Source book school-of-prayer now has a French edition, so seed_plans creates a French row for this single-book plan; prose here keeps it from publishing English-titled. Title/description mirror the French book À l’école de la prière avec Christ."
+  ]
  }
 }

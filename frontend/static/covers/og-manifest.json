@@ -1204,6 +1204,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"fr/school-of-prayer": {
+			"ground": "17ad06529ae87b3aa4518147a5748b1b49e6f7b8fa199ce44784f6b375b2a6b5",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/soar-like-the-eagle-3": {
 			"ground": "435c30f8b3718898f75827d153543c59923e778221872f61a6f615d7dd32a004",
 			"style": "lettered",
