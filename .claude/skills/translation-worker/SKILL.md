@@ -163,7 +163,7 @@ worker specifics that shipped ~11 editions:
   hand-write pks, never `json.dumps`. **Write it in the canonical fixture
   format** — records at column 0, `indent=1`, trailing newline, i.e.
   `"[\n" + ",\n".join(json.dumps(r, indent=1, ensure_ascii=False) for r in rows) + "\n]\n"`
-  (`scripts/regen_fixture.py:render()`). The serializer hands you one long line,
+  (`library.content_fixtures.render_rows`). The serializer hands you one long line,
   so this step is yours; improvising it is how 43 translation fixtures ended up
   in three different near-miss formats (measured 2026-08-28 — harmless, since
   the prose textconv hides whitespace, but don't add a 44th).

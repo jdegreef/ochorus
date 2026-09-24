@@ -218,8 +218,11 @@ rule. Two more traps this book hit, both worth internalising:
    assuming they're wrong: here `lg` had already rendered the correct `batasaba`
    ("never pray") and needed no change.
 5. **Apply**, then re-run the audit for that slug and confirm the class is gone.
-6. **Regenerate the fixture** (`uv run python scripts/regen_fixture.py`) — the
-   fixture is what a fresh build loads and what the ratchet measures.
+6. **Settle the fixture** with the three commands above (`normalize_english_fixture`,
+   `rederive_body_text`, `rederive_word_count`, each `--write`) — the fixture is
+   what a fresh build loads and what the ratchet measures. NOT
+   `regen_fixture.py`: it round-trips the committed files and never reads the
+   DB, so it cannot carry a repair into them.
 7. **Re-pin the baseline**: `manage.py audit_english --update-baseline`, and say
    in the commit message *what you fixed*, not just that the number moved.
    `tests_english_audit.py` fails if the baseline is stale in either direction.
