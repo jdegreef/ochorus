@@ -534,6 +534,9 @@
 // prerender refresh 2026-09-24 (queue job #1791): Hindi book — spurgeon-on-prayer, Spurgeon's twelve
 // sermons on prayer ("प्रार्थना में महान सामर्थ्य"), 13 chapters. Book pages are prerendered per locale,
 // so /hi/books and the shelf rebuild with the translated title over the curated painting.
+// prerender refresh 2026-09-24 (queue job #2115): Hindi book — gleanings-among-the-sheaves, Spurgeon's
+// short readings under twenty themes ("पूलों के बीच बीनी हुई बालें"), 20 chapters. Book pages are
+// prerendered per locale, so /hi/books and the shelf rebuild with the translated title.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
