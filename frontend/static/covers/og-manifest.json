@@ -1224,6 +1224,16 @@
 			"layout": "duotone/indigo",
 			"bar": 0
 		},
+		"fr/thoughts-for-the-quiet-hour": {
+			"ground": "dd9ccaf26f57ab5cde3eab6b4c885244008b08a3b2b831c7f0a0f5fcc7deeb08",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/true-vine": {
 			"ground": "2ae642dca179a7ded689f75d540d4c5d1a3efb7566068a1a8d2bf878f6aa5185",
 			"style": "devotional",
