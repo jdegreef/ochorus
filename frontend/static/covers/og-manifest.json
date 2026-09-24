@@ -3672,6 +3672,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/school-of-prayer": {
+			"ground": "ac43acd2d8f0f3482428b7f0081fadf3501ca6ccc2e3c582406e6e5dd4f879a1",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/stepping-stones-2": {
 			"ground": "c41017037413da4a9543d13901c454d70ac7d67c41d8e5596813d50df3be38fe",
 			"style": "lettered",
