@@ -5026,6 +5026,19 @@ BODY_CORRECTIONS.setdefault("divine-songs-for-children", {}).setdefault("replace
     ("hawachezi kamwe", "hawaombi kamwe"),
 ])
 
+# Christmas Evans, "The Triumph of Calvary": two slips in the Gutenberg text.
+# "the devil arid his legions" is an OCR misreading of "and". "the Son of
+# Righteousness shall shine" misquotes Malachi 4:2, paired with "the bright and
+# Morning Star" as the sun rising after the star, so the intended word is "Sun".
+# The editions AGREE: es ("el Sol de justicia" / "el diablo y sus legiones"), fr
+# ("le soleil de la justice" / "le diable et ses légions") and sw ("Jua la Haki" /
+# "Ibilisi na majeshi yake") all render the corrected reading. Found while
+# translating into Swahili (#2594).
+BODY_CORRECTIONS.setdefault("the-triumph-of-calvary", {}).setdefault("replacements", []).extend([
+    ("the devil arid his legions", "the devil and his legions"),
+    ("“the Son of Righteousness” shall shine", "“the Sun of Righteousness” shall shine"),
+])
+
 # Finney, Lectures on Revivals of Religion — the print edition's page numbers,
 # 414 of them (pp. 4-445), left in the running text by OCR. Two shapes:
 #
