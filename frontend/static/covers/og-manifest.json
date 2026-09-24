@@ -3762,6 +3762,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/the-secret-of-guidance": {
+			"ground": "14d0a0bed902850f5227c95108b074283c14e7e29099b858f67675249932de31",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/the-unselfishness-of-god": {
 			"ground": "95fe19ef48b34586d2861076c5261dab1f0d84c88dac081f83b51e50390faa5a",
 			"style": "devotional",
