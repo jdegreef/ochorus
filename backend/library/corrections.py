@@ -4870,6 +4870,12 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     Declared paragraph breaks run with the replacements, ahead of the rule, for
     the same reason: a seam is exact prose, and the rule could move a hyphen
     inside one out from under it.
+
+    The structural keys run after the replacements, so a replacement must not
+    reach into text one of them rewrites: anchor a deletion on what comes
+    BEFORE it, or `test_no_replacement_pair_is_dead` finds neither side (the
+    a-retrospect MIDI note). Back matter is cut before `wrapped_blocks` wraps,
+    so a wrap can never run on into a tail that is about to go.
     """
     entry = BODY_CORRECTIONS.get(slug)
     if entry:
@@ -6014,11 +6020,12 @@ BODY_CORRECTIONS.setdefault("hurlbuts-life-of-christ", {})["wrapped_blocks"] = [
 # (the drop-cap "THE following account…"), every journal dateline as a
 # `<div class="right">` ("<i>January 10th.</i>"), and each displayed verse as a
 # single `<div class="poem">` — the importer handed those divs to the
-# sanitizer, which unwrapped them, and they shipped as 48 loose runs across the
-# 20 chapters. Where a poem's div also held the prose line after it ("seemed
-# particularly appropriate…", "To be absent from the body!…", "but also that
-# when we fail…"), or ch12's transcriber's note ran into the hymn's verses,
-# the importer now emits two blocks, and the second head splits the run.
+# sanitizer, which unwrapped them, and they shipped as 47 loose runs across the
+# 20 chapters (a 48th, ch12's MIDI transcriber's note, is cut by a
+# `replacements` pair above instead). Where a poem's div also held the prose
+# line after it ("seemed particularly appropriate…", "To be absent from the
+# body!…", "but also that when we fail…"), the importer now emits two blocks,
+# and the second head splits the run.
 # `ingest.display_line` keeps these (PR #3355); `wrap_loose_blocks` puts each
 # back in the block the importer emits, byte for byte but for the quotation
 # marks, curled in the fixture since (`tests_english_audit` checks every
@@ -6026,7 +6033,7 @@ BODY_CORRECTIONS.setdefault("hurlbuts-life-of-christ", {})["wrapped_blocks"] = [
 # "[3]" footnote marker, which the importer does not carry.
 #
 # Every edition at once — `tests_translation_markup` pins the tag sequence.
-# The es edition carries the same 48 runs in the same places, so its entries
+# The es edition carries the same 47 runs in the same places, so its entries
 # follow the English one for one, each headed by the Spanish run's own opening.
 # Left loose: ch20's back matter "or" / "or to" between the mission addresses
 # (a two-letter head would split every other run it occurs in) and the map

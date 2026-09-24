@@ -213,7 +213,7 @@ def extract(html: str) -> tuple[str, str, datetime.date | None]:
             preceding = ref_block.find_all_previous("p")
             if preceding:
                 last = preceding[0]
-                if last.get_text(" ", strip=True).startswith(("“", '"', "‘", "'")):
+                if last.get_text(" ", strip=True).startswith(QUOTES):
                     quote_html = f"<blockquote>{last.decode_contents()}</blockquote>"
                 boundary = paragraphs.index(last)
             else:

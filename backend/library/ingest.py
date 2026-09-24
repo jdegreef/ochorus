@@ -14,7 +14,11 @@ from bs4 import BeautifulSoup
 from django.db import transaction
 
 from library.catalog import AUTHORS, BOOKS, BookEntry
-from library.corrections import chapter_title_overrides, settled_chapter_body
+from library.corrections import (
+    _EDGE_BREAKS,
+    chapter_title_overrides,
+    settled_chapter_body,
+)
 from library.models import Author, Book, Chapter
 
 # Re-exported so `from library.ingest import clean_fragment` keeps working —
@@ -31,7 +35,7 @@ from library.sanitize import (  # noqa: F401
 
 # Same again for the word-count pair, which moved to library/text.py to sit
 # beside the other derivation from body_html.
-from library.text import text_of, word_count  # noqa: F401
+from library.text import html_to_text, text_of, word_count  # noqa: F401
 
 # The sanitizer and its allowlists now live in library/sanitize.py — the trust
 # boundary is security-critical enough to own a module, and models/commands need
@@ -520,8 +524,6 @@ _FIGURE_CLASS = re.compile(r"^(?:fig|caption)")
 # Opening quotation marks. A line in capitals that opens with one finishes a
 # sentence (`"RIBBAND OF BLUE."`); it is not a heading.
 QUOTES = ("“", '"', "‘", "'")
-_EDGE_BREAKS = re.compile(r"^(?:\s|<br\s*/?>)+|(?:\s|<br\s*/?>)+$")
-_BR = re.compile(r"<br\s*/?>", re.I)
 
 
 def display_line(div) -> str:
@@ -568,7 +570,7 @@ def display_line(div) -> str:
     line = soup(str(div)).find("div")
     drop_furniture(line)
     # A <br> separates words: "THE NEGATIVE<br>CONDITIONS" is two of them.
-    text = " ".join(soup(_BR.sub(" ", line.decode_contents())).get_text().split())
+    text = html_to_text(line.decode_contents())
     if not text or _BARE_CHAPTER.match(text):
         return ""
     if text.isupper() and not text.startswith(QUOTES):
