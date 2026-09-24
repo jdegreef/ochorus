@@ -1134,6 +1134,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"fr/rise-up-men-of-god-2": {
+			"ground": "f20d79d322eb36b5e5888b6b377d432edf2599bd277bff2b1048b24cdfd8da34",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/soar-like-the-eagle-3": {
 			"ground": "435c30f8b3718898f75827d153543c59923e778221872f61a6f615d7dd32a004",
 			"style": "lettered",

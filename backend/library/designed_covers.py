@@ -357,6 +357,15 @@ DERIVED_GROUND: dict[str, Ground] = {
         erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="f3659ad885cb95c3bf8f0d954d45c078c709674407fd560fcc4cf96d1bd60554",
     ),
+    # Four men in silhouette, arms raised against a sea sunset — the words-free
+    # band from just under the title (~0.46) to the frame's foot. A silhouette
+    # against a bright sky wants a low sky so the men don't blur upward into it,
+    # and a small foot lifts them clear of the Ochorus mark BookCover sets at the
+    # plate's foot. The ministry lockup sits at the lower right, painted out.
+    "rise-up-men-of-god-2": Ground(0.46, 0.93, 0.08, 1.10, sky=0.20, foot=0.05,
+        erase=(Erase(0.37, 0.865, 0.63, 0.96, "any", thin=False),),
+        source="183c80450cd76f8c3522bdae6a8ca1490896ba71656cefbd645b741387237d31",
+    ),
     # The whole stream between the title (~0.20) and the URL (~0.93), with the
     # "Walking by Faith" subtitle painted out of the water. The last recipe
     # cropped IN to the centre 40% to avoid a blurred extension, which cost a
