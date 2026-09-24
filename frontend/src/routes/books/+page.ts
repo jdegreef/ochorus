@@ -456,6 +456,8 @@
 // of soar-like-the-eagle-3, 12 chapters — bakes into the /hi/books shelf (hi is still draft).
 // prerender refresh 2026-09-24 (queue job #2827, PR #3323): Зростати в мудрості — the Ukrainian
 // edition of growing-in-wisdom, 18 chapters — bakes into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #1795, PR #3321): Могутня сила молитви — the Ukrainian
+// edition of spurgeon-on-prayer, 13 chapters — bakes into the /uk/books shelf.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
