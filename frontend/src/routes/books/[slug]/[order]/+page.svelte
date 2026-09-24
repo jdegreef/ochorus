@@ -877,6 +877,11 @@
 			(async () => {
 				await tick();
 				measureScrollPages();
+				// A newly chosen face is still downloading at this point: the
+				// measure above ran on fallback metrics and triggered the fetch.
+				// Count again once it lands, or the total stays stale.
+				await document.fonts?.ready;
+				measureScrollPages();
 			})();
 		});
 	});
@@ -893,6 +898,9 @@
 		untrack(() => {
 			(async () => {
 				await tick();
+				measurePages();
+				// Again once a newly chosen face has loaded (see the scroll effect).
+				await document.fonts?.ready;
 				measurePages();
 			})();
 		});

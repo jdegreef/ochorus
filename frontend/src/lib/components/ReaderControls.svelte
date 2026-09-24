@@ -2,11 +2,13 @@
 	import {
 		readerPrefs,
 		cssAlign,
+		fontLabel,
+		FONT_STACK,
+		READER_FONTS,
 		type Align,
 		type Leading,
 		type Margin,
-		type Measure,
-		type ReaderFont
+		type Measure
 	} from '$lib/readerPrefs.svelte';
 	import { onDestroy } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -101,11 +103,11 @@
 		{ v: 'normal', k: 'margin.normal' },
 		{ v: 'generous', k: 'margin.generous' }
 	];
-	const FONTS: { v: ReaderFont; k: string }[] = [
-		{ v: 'serif', k: 'font.serif' },
-		{ v: 'sans', k: 'font.sans' },
-		{ v: 'dyslexic', k: 'font.dyslexic' }
-	];
+	const FONT_KINDS = {
+		serif: t('font.serif'),
+		sans: t('font.sans'),
+		dyslexic: t('font.dyslexic')
+	};
 	const ALIGNMENTS: { v: Align; k: string }[] = [
 		{ v: 'left', k: 'align.left' },
 		{ v: 'justify', k: 'align.justify' }
@@ -248,16 +250,20 @@
 			<!-- Typeface -->
 			<div>
 				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.typeface')}</span>
-				<div class="grid grid-cols-3 gap-1">
-					{#each FONTS as o (o.v)}
+				<!-- Each option is set in its own face: a typeface is chosen by looking
+				     at it. That fetches each face's latin file the first time the panel
+				     opens (nothing before), which is the price of a preview. -->
+				<div class="grid grid-cols-2 gap-1">
+					{#each READER_FONTS as v (v)}
 						<button
-							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
-							class:border-accent={readerPrefs.font === o.v}
-							class:text-accent={readerPrefs.font === o.v}
-							class:border-border-strong={readerPrefs.font !== o.v}
-							class:text-muted={readerPrefs.font !== o.v}
-							onclick={() => readerPrefs.setFont(o.v)}
-							aria-pressed={readerPrefs.font === o.v}>{t(o.k)}</button
+							class="rc-opt truncate rounded-sm border px-2 py-1.5 text-small"
+							class:border-accent={readerPrefs.font === v}
+							class:text-accent={readerPrefs.font === v}
+							class:border-border-strong={readerPrefs.font !== v}
+							class:text-muted={readerPrefs.font !== v}
+							style:font-family={FONT_STACK[v]}
+							onclick={() => readerPrefs.setFont(v)}
+							aria-pressed={readerPrefs.font === v}>{fontLabel(v, FONT_KINDS)}</button
 						>
 					{/each}
 				</div>

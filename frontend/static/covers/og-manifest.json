@@ -2935,7 +2935,7 @@
 			"bar": 0
 		},
 		"sons-of-the-king-3": {
-			"ground": "70b8fbb5632d420fde12b38cb9cd8e042c3d91dfdd6e75d1464f74ef95374f48",
+			"ground": "7e1e676301ad05a49ff03d967fa6bb8601425eb0599a7815638ad62552edd96c",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
@@ -3491,6 +3491,16 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0
+		},
+		"sw/thoughts-for-the-quiet-hour": {
+			"ground": "aa269abc4263ee0867779ed3c726222c1b13a4e5fa61c43a7916cb8398e91e8d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},

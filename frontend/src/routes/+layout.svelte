@@ -7,6 +7,7 @@
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { paletteUi } from '$lib/paletteUi.svelte';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
+	import { siteFont } from '$lib/siteFont.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { browser } from '$app/environment';
 	import { API_BASE_URL } from '$lib/config';
@@ -50,6 +51,7 @@
 
 	onMount(() => {
 		theme.init();
+		siteFont.init();
 		readerPrefs.init();
 		pageWidth.init();
 		auth.init();
