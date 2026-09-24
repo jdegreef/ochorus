@@ -1,3 +1,10 @@
+// prerender refresh 2026-09-24 (queue job #3145): Spanish book — school-of-prayer, Andrew Murray's
+// thirty-one lessons on prayer ("Con Cristo en la escuela de oración"), 33 chapters. Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title over the
+// designed plate cover and the reader page bakes the 33 chapters. Activates the es row of the
+// single-book plan school-of-prayer-31-days (es plan prose added in data/plan_translations/es.json;
+// the /es/plans/school-of-prayer-31-days page rebuilds from that content root — no plans/+page.ts
+// touch owed).
 // prerender refresh 2026-09-24 (queue job #1790): Spanish book — spurgeon-on-prayer, twelve of
 // Spurgeon's sermons on prayer plus an introduction ("Gran poder en la oración"), 13 chapters. Book
 // pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
