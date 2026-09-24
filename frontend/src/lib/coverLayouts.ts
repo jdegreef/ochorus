@@ -100,6 +100,52 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
 	'thomas-watson': { layout: 'fade', hue: 'oxblood' }
 };
 
+/**
+ * Books whose layout is set by their SERIES, not their author — `null` holds a
+ * book to the framed composition.
+ *
+ * Checked before `AUTHOR_LAYOUT`. The author table exists so one writer's
+ * covers look alike; a series needs its volumes to look alike across writers,
+ * and the two can disagree. The Key Teachings did: four companions sharing one
+ * motif (a gilt tree on a dark ground, `curated_art.ORIGINAL_SVG_GROUND`) came
+ * out in three layouts, and the paper box Simpson's and Baxter's authors wear
+ * covered their tree entirely. Framed is the composition that shows the whole
+ * ground, so it is the series look.
+ *
+ * `coverLayouts.test.ts` fails when a Key Teachings book is missing here, so a
+ * new volume cannot slip back into its author's layout.
+ */
+export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
+	'key-teachings-of-a-b-simpson': null,
+	'key-teachings-of-jonathan-edwards': null,
+	'key-teachings-of-richard-baxter': null,
+	'key-teachings-of-watchman-nee': null
+};
+
+/**
+ * Framed books whose type is set from the TOP, under the byline, rather than
+ * centred on the cover.
+ *
+ * The framed composition centres its title block between the byline and the
+ * mark, which suits a painting whose subject is the whole canvas. The Key
+ * Teachings' trees stand in the lower part of the ground, so a centred block
+ * lands on the tree — and the longer the title, the lower its subtitle falls
+ * (Edwards' four-line title put the subtitle across the crown). Set from the
+ * top, the words keep the sky and the tree keeps the ground, on every volume
+ * alike. Only meaningful framed: a layout places its own type.
+ */
+export const TYPE_TOP: ReadonlySet<string> = new Set([
+	'key-teachings-of-a-b-simpson',
+	'key-teachings-of-jonathan-edwards',
+	'key-teachings-of-richard-baxter',
+	'key-teachings-of-watchman-nee'
+]);
+
+/** Is this painted book's type set from the top? Never under a layout. */
+export function typeTopFor(bookSlug: string, layout: CoverLayout | null): boolean {
+	return !layout && TYPE_TOP.has(bookSlug);
+}
+
 /** The scripts a title cannot be turned sideways in. */
 const SIDEWAYS_UNSAFE = new Set(['arabic', 'devanagari']);
 
@@ -111,9 +157,15 @@ const SIDEWAYS_UNSAFE = new Set(['arabic', 'devanagari']);
  * Arabic or Devanagari one — a cursive or hanging script turned on its side —
  * so those editions of a railed author's books take the title box instead,
  * in the same colour.
+ *
+ * `bookSlug` first consults `BOOK_LAYOUT`, where a series overrides the author.
  */
-export function coverLayoutFor(authorSlug: string, script: string | null): CoverLayout | null {
-	const found = AUTHOR_LAYOUT[authorSlug];
+export function coverLayoutFor(
+	authorSlug: string,
+	script: string | null,
+	bookSlug: string
+): CoverLayout | null {
+	const found = bookSlug in BOOK_LAYOUT ? BOOK_LAYOUT[bookSlug] : AUTHOR_LAYOUT[authorSlug];
 	if (!found) return null;
 	if (found.layout === 'rail' && SIDEWAYS_UNSAFE.has(script ?? '')) {
 		return { layout: 'box', hue: found.hue };
@@ -121,7 +173,8 @@ export function coverLayoutFor(authorSlug: string, script: string | null): Cover
 	return found;
 }
 
-/** How the share-card manifest records a layout: `framed`, or `<layout>/<hue>`. */
-export function layoutKey(layout: CoverLayout | null): string {
-	return layout ? `${layout.layout}/${layout.hue}` : 'framed';
+/** How the share-card manifest records a layout: `framed` (or `framed-top`
+ *  when its type is set from the top), or `<layout>/<hue>`. */
+export function layoutKey(layout: CoverLayout | null, top = false): string {
+	return layout ? `${layout.layout}/${layout.hue}` : top ? 'framed-top' : 'framed';
 }

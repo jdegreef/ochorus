@@ -2,15 +2,21 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { FONT_STACK } from './readerPrefs.svelte';
+import { FONT_STACK, READER_FONTS } from './readerPrefs.svelte';
+import { SITE_FONTS } from './siteFont.svelte';
 
 /** app.css with comments stripped: the prose in this file says `--font-display:`
  *  more than once, and a scan that counts those finds a declaration whose value
  *  is a paragraph. */
-const APP_CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8').replace(
-	/\/\*[\s\S]*?\*\//g,
-	''
-);
+const stripComments = (css: string) => css.replace(/\/\*[\s\S]*?\*\//g, '');
+const APP_CSS = stripComments(readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8'));
+/** The site styles. Their own file, so nothing reading app.css's declarations
+ *  as THE house stack (the share-card script, the gates here) sees a style. */
+const SITE_CSS = stripComments(readFileSync(join(process.cwd(), 'src/lib/site-fonts.css'), 'utf-8'));
+/** Every `@import '@fontsource…'` in app.css, as written. */
+const IMPORTS = [...APP_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].map(([, i]) => i);
+/** The quoted family names in a font-family value, in order. */
+const familiesIn = (value: string) => [...value.matchAll(/'([^']+)'/g)].map(([, f]) => f);
 
 /**
  * The app's own type, in the scripts it is read in.
@@ -188,41 +194,115 @@ describe('font stacks', () => {
 		}
 	});
 
+	/** Every family a font-family value can reach: its quoted names, then the
+	 *  families of any token it names. The house tokens are the root's capture
+	 *  of --font-display / --font-sans (site-fonts.css), so they resolve to
+	 *  those stacks. */
+	const resolved = (value: string): string[] => [
+		...familiesIn(value),
+		...[...value.matchAll(/var\(--(font|house)-(display|sans)\)/g)].flatMap(([, , kind]) =>
+			stackOf(`font-${kind}`)
+		)
+	];
+
 	it('never lets a reader preference resolve to a bare generic', () => {
-		// `--reading-font` is ALWAYS set from FONT_STACK, so `.reading`'s
-		// `var(--reading-font, var(--font-display))` fallback never fires and these
-		// three strings are the whole of what the app's most-read surface is set in.
-		//
-		// Resolved THROUGH the indirection, not read off the literal: two of them
-		// name a token now, and a gate that only counted quoted families would have
-		// called that a regression when it is the fix.
-		const resolved = (value: string): string[] => [
-			...[...value.matchAll(/'([^']+)'/g)].map(([, f]) => f),
-			...[...value.matchAll(/var\((--font-[a-z-]+)\)/g)].flatMap(([, t]) =>
-				stackOf(t.slice(2))
-			)
-		];
-
-		expect(FONT_STACK.serif, 'the serif preference should name the token').toBe(
-			'var(--font-display)'
+		// `--reading-font` is ALWAYS set from FONT_STACK, so these strings are the
+		// whole of what the app's most-read surface is set in. Resolved through
+		// their tokens; the house ones, because --font-* follow the site style.
+		expect(FONT_STACK.serif, 'the serif preference should name the house token').toBe(
+			'var(--house-display)'
 		);
-		expect(FONT_STACK.sans, 'the sans preference should name the token').toBe('var(--font-sans)');
+		expect(FONT_STACK.sans, 'the sans preference should name the house token').toBe(
+			'var(--house-sans)'
+		);
 
-		// `sans` is IN this loop now. It was excluded, with a note saying so, for
-		// as long as `--font-sans` named one Latin family and three generics — a
-		// reader who picked it in Arabic or Hindi got whatever the device chose.
-		// The token gained Noto Sans Arabic, Noto Sans Devanagari and PT Sans, and
-		// this is the gate that was written to hold it the day it did.
-		for (const pref of ['serif', 'sans', 'dyslexic'] as const) {
-			for (const script of ['arabic', 'devanagari']) {
+		for (const pref of READER_FONTS) {
+			expect(
+				FONT_STACK[pref],
+				`the ${pref} preference names --font-display / --font-sans, which follow the site style`
+			).not.toMatch(/var\(--font-/);
+			for (const script of ['arabic', 'devanagari', 'cyrillic']) {
 				const face = resolved(FONT_STACK[pref]).find((f) => subsetsOf(f).has(script));
 				expect(
 					face,
-					`the ${pref} preference resolves to no ${script} face, so an ${script} ` +
+					`the ${pref} preference resolves to no ${script} face, so a ${script} ` +
 						`reader who picks it gets a generic and whatever the device substitutes`
 				).toBeTruthy();
 			}
 		}
+	});
+
+	it('imports every reader face, upright and italic', () => {
+		// A face named in FONT_STACK and never @imported is not a fallback, it is a
+		// no-op: the stack skips straight to its tail and the reader's choice
+		// silently does nothing. Italic too — these set whole books, and prose has
+		// emphasis; without the file the browser synthesises a slant.
+		// OpenDyslexic ships no italic; serif and sans name only a house token.
+		const named = READER_FONTS.filter((f) => f !== 'dyslexic' && familiesIn(FONT_STACK[f]).length);
+		for (const pref of named) {
+			const [family] = familiesIn(FONT_STACK[pref]);
+			const [scope, up, it] = isVariable(family)
+				? ['@fontsource-variable', 'wght', 'wght-italic']
+				: ['@fontsource', '400', '400-italic'];
+			const pkg = `${scope}/${pkgSlug(family)}`;
+			expect(IMPORTS, `${family} (${pref}) is never imported upright`).toContain(`${pkg}/${up}.css`);
+			expect(IMPORTS, `${family} (${pref}) is never imported in italic`).toContain(`${pkg}/${it}.css`);
+		}
+	});
+
+	describe('site styles', () => {
+		/** Each `selector { … }` block in site-fonts.css. */
+		const blocks = [...SITE_CSS.matchAll(/([^{}]+)\{([^}]*)\}/g)].map(([, sel, body]) => ({
+			sel: sel.trim(),
+			body
+		}));
+		const styles = blocks.filter((b) => /data-site-font='[a-z]+'/.test(b.sel));
+
+		it('declares the styles the store offers', () => {
+			const declared = styles.map((b) => /data-site-font='([a-z]+)'/.exec(b.sel)![1]);
+			expect(new Set(declared)).toEqual(new Set(SITE_FONTS.filter((f) => f !== 'house')));
+		});
+
+		it('captures the house stacks on the root and applies a style below it', () => {
+			// The whole mechanism. The capture resolves on the root against the house
+			// stack; a style declared ON the root would be captured instead, and the
+			// reader's "Serif" would follow the menus.
+			const root = blocks.find((b) => b.sel === ':root');
+			expect(root?.body).toMatch(/--house-display:\s*var\(--font-display\)/);
+			expect(root?.body).toMatch(/--house-sans:\s*var\(--font-sans\)/);
+			for (const b of blocks.filter((b) => /--font-(display|sans):/.test(b.body))) {
+				expect(b.sel, `${b.sel} re-points a font token on the root itself`).toMatch(
+					/\s(body|:is\(.+\))$/
+				);
+			}
+		});
+
+		it('keeps covers in the house faces', () => {
+			// A cover's byline is the one constant line across the shelf; it must not
+			// change with the menus.
+			const pin = blocks.find((b) => b.sel.includes('.cover-type'));
+			expect(pin?.sel).toContain('.cover-plate');
+			expect(pin?.body).toMatch(/--font-display:\s*var\(--house-display\)/);
+			expect(pin?.body).toMatch(/--font-sans:\s*var\(--house-sans\)/);
+		});
+
+		it('gives every style a face for every script, and imports its lead face', () => {
+			for (const { sel, body } of styles) {
+				for (const [, token, value] of body.matchAll(/--(font-display|font-sans):([^;]+);/g)) {
+					const stack = resolved(value);
+					for (const script of ['latin', 'arabic', 'devanagari', 'cyrillic']) {
+						expect(
+							stack.find((f) => subsetsOf(f).has(script)),
+							`${sel} sets --${token} with no ${script} face`
+						).toBeTruthy();
+					}
+					expect(
+						IMPORTS.some((i) => i.includes(`/${pkgSlug(stack[0])}/`)),
+						`${sel}: ${stack[0]} is never imported`
+					).toBe(true);
+				}
+			}
+		});
 	});
 
 	it('imports every weight the prose actually sets', () => {
@@ -237,9 +317,7 @@ describe('font stacks', () => {
 		// headings that use --font-display go bolder, but those are Latin-first and
 		// land on Fraunces, which is variable.
 		const imported = new Set(
-			[...APP_CSS.matchAll(/@import '@fontsource[^']*\/([a-z-]+)\/(\d{3})\.css'/g)].map(
-				([, pkg, weight]) => `${pkg}/${weight}`
-			)
+			IMPORTS.flatMap((i) => /\/([a-z-]+)\/(\d{3})\.css$/.exec(i)?.slice(1).join('/') ?? [])
 		);
 		for (const family of [...stackOf('font-display'), ...stackOf('font-sans')]) {
 			const slug = pkgSlug(family);

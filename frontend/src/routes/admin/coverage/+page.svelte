@@ -69,6 +69,11 @@
 	let q = $state('');
 	let sortMode = $state<'default' | 'least' | 'most'>('default');
 	let unreviewedOnly = $state(false);
+	// Books only: narrow the matrix to one series, in volume order. With a series
+	// chosen, a column's "queue all" files every missing volume of it in that
+	// language — "translate the whole series into Swahili" is one press.
+	let seriesFilter = $state('');
+	const seriesOptions = $derived(cov?.series ?? []);
 	// How many languages a work is present in — the completeness sort key.
 	const completeness = (r: AdminCoverageRow) =>
 		langs.reduce((n, l) => n + (r.cells[l.code] ? 1 : 0), 0);
@@ -84,6 +89,11 @@
 					r.title.toLowerCase().includes(term) || (r.author ?? '').toLowerCase().includes(term)
 			);
 		if (unreviewedOnly) out = out.filter(hasUnreviewed);
+		if (tab === 'books' && seriesFilter) {
+			out = out
+				.filter((r) => r.series === seriesFilter)
+				.sort((a, b) => (a.series_position ?? 0) - (b.series_position ?? 0));
+		}
 		if (sortMode !== 'default')
 			out = [...out].sort((a, b) =>
 				sortMode === 'least'
@@ -275,6 +285,14 @@
 					<input type="checkbox" bind:checked={unreviewedOnly} />
 					Only unreviewed AI
 				</label>
+				{#if tab === 'books' && seriesOptions.length}
+					<select bind:value={seriesFilter} aria-label="Narrow to a series" class="field text-small">
+						<option value="">All books</option>
+						{#each seriesOptions as s (s.slug)}
+							<option value={s.slug}>Series: {s.title}</option>
+						{/each}
+					</select>
+				{/if}
 			</div>
 
 			<!-- Legend -->

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { authorPath } from '$lib/originals';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
@@ -7,7 +8,16 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { theme } from '$lib/theme.svelte';
 	import { lang, localeName } from '$lib/lang.svelte';
-	import { readerPrefs, FONT_STACK, MEASURE, type ReaderFont, type Measure } from '$lib/readerPrefs.svelte';
+	import {
+		readerPrefs,
+		fontLabel,
+		FONT_STACK,
+		MEASURE,
+		READER_FONTS,
+		type ReaderFont,
+		type Measure
+	} from '$lib/readerPrefs.svelte';
+	import { siteFont, SITE_FONTS, type SiteFont } from '$lib/siteFont.svelte';
 	import { listen, RATE_MIN, RATE_MAX } from '$lib/listen.svelte';
 	import { readingSync } from '$lib/readingSync';
 	import { SITE_URL } from '$lib/config';
@@ -47,11 +57,19 @@
 		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
 	}
 
-	const FONTS: { id: ReaderFont; label: string }[] = [
-		{ id: 'serif', label: t('settings.fontSerif') },
-		{ id: 'sans', label: t('settings.fontSans') },
-		{ id: 'dyslexic', label: t('settings.fontDyslexic') }
-	];
+	const FONTS = READER_FONTS.map((id) => ({
+		id,
+		label: fontLabel(id, {
+			serif: t('settings.fontSerif'),
+			sans: t('settings.fontSans'),
+			dyslexic: t('settings.fontDyslexic')
+		})
+	}));
+	const SITE_FONT_LABEL: Record<SiteFont, string> = {
+		house: t('settings.siteFontHouse'),
+		classic: t('settings.siteFontClassic'),
+		hyperlegible: t('settings.siteFontHyperlegible')
+	};
 	const WIDTHS = Object.keys(MEASURE) as Measure[];
 
 	// Export my data — assemble the bundle (fetches catalogs for titles) then hand
@@ -154,7 +172,7 @@
 		h.kind === 'sermon'
 			? localizeHref(`/sermons/${h.slug}`)
 			: h.kind === 'bio'
-				? localizeHref(`/authors/${h.slug}`)
+				? localizeHref(authorPath(h.slug))
 				: localizeHref(`/books/${h.slug}/${h.order}`);
 
 	// Daily reminder — a time the reader picks, emitted as a repeating .ics event
@@ -232,6 +250,7 @@
 		resetConfirm = false;
 		readerPrefs.reset();
 		theme.set('system');
+		siteFont.set('house');
 	}
 
 	// The device's TTS voices load asynchronously; init the store so they populate,
@@ -540,6 +559,21 @@
 					</div>
 				</div>
 
+				<!-- Site style — the interface's typeface, not the book text's. -->
+				<div class="setting-row">
+					<div>
+						<div class="setting-label">{t('settings.siteFont')}</div>
+						<div class="setting-sub">{t('settings.siteFontSub')}</div>
+					</div>
+					<div class="seg">
+						{#each SITE_FONTS as f (f)}
+							<button class:active={siteFont.current === f} onclick={() => siteFont.set(f)}
+								>{SITE_FONT_LABEL[f]}</button
+							>
+						{/each}
+					</div>
+				</div>
+
 				<!-- Reading font -->
 				<div class="setting-row">
 					<div>
@@ -703,6 +737,12 @@
 		gap: 1rem;
 		padding: 0.9rem 0;
 		border-top: 1px solid var(--color-border);
+	}
+	/* The label wraps; the control must not shrink. Flex shrinks both, and
+	   `.seg` clips (overflow: hidden), so a long sub-line cut off the last
+	   segment's label rather than wrapping itself. */
+	.setting-row > .seg {
+		flex-shrink: 0;
 	}
 	.setting-row:first-of-type {
 		border-top: none;

@@ -1,0 +1,210 @@
+{
+ "kind": "book",
+ "slug": "lord-teach-us-to-pray-2",
+ "language": "uk",
+ "job_issue": 2920,
+ "pull_request": 3344,
+ "references": [
+  {
+   "reference": "Luke 11:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered",
+   "block_index": 7,
+   "why": "Kulish has the singular «чоловік подобний нам страстями» (of Elijah); the author re-applies it in the plural to believers today, so it is adapted in modern spelling."
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Job 36:22",
+   "status": "self_rendered",
+   "block_index": 13,
+   "why": "KJV 'who teacheth like him?'; Kulish reads «де такий, як він, законодавець?», which cannot carry the author's point about teaching."
+  },
+  {
+   "reference": "Romans 4:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "John 4:23-24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "John 4:22a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "John 4:22b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "John 4:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "John 4:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Galatians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 31,
+   "why": "Kulish splits the phrase with a parenthesis («(… яко Єдинородного від Отця), повне благодати і правди») and its case/gender agree with «Слово»; the author re-applies it to Jesus as predicate, so the Kulish words were re-cased in the nominative."
+  },
+  {
+   "reference": "John 1:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 38
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 6:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Psalm 103:13",
+   "status": "self_rendered",
+   "block_index": 47,
+   "why": "Author re-persons the verse (\"so the Lord pities you\") in unquoted prose; Kulish ends \"над тими, що бояться його\", so rendered in modern prose."
+  },
+  {
+   "reference": "Hebrews 11:6b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 50
+  },
+  {
+   "reference": "1 John 5:15b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 53,
+   "why": "Author adapts the verse into his own sentence (\"your God will supply it according to His riches...\"); Kulish \"сповнить усяку потріб вашу\" cannot carry the adapted syntax, so rendered in modern prose."
+  },
+  {
+   "reference": "Matthew 6:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 57
+  },
+  {
+   "reference": "Matthew 6:9b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 61
+  },
+  {
+   "reference": "Ezekiel 36:23a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Matthew 6:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 64
+  },
+  {
+   "reference": "Matthew 6:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 65
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 67
+  },
+  {
+   "reference": "Matthew 6:13a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 70
+  },
+  {
+   "reference": "Matthew 6:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 71
+  },
+  {
+   "reference": "Matthew 11:27b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 74
+  },
+  {
+   "reference": "John 17:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 74
+  }
+ ],
+ "note": [
+  "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “. Hebrews is cited as Євреїв, not Kulish's Жидів (the Жидів in John 4:22 is the verse's own wording, pasted verbatim). The Luke 11:1 request «Господи, навчи нас молитись» is the uk title and is used verbatim at every recurrence."
+ ]
+}

@@ -1,3 +1,16 @@
+// prerender refresh 2026-09-24: Arabic sermons — fall-and-recovery-of-man (#1658),
+// enduring-persecution-for-christ (#1659), pauls-praise-of-christian-love (#1660),
+// against-eutropius (#1661), gods-love-for-a-sinning-world (#1662), salvation-by-faith (#1663),
+// the-joy-of-the-lord (#1664). Rebuilds /ar/sermons so each card and its page bake the Arabic title.
+// prerender refresh 2026-09-24: Swahili sermon — the-way-of-salvation (#2589, PR #3337). Sermon
+// pages are prerendered per locale, so /sw/sermons must rebuild so the card and its
+// /sw/sermons/the-way-of-salvation page bake the translated title and "In brief" summary.
+// prerender refresh 2026-09-24: Swahili sermon — aggressive-christianity (#2591, PR #3351). Rebuilds
+// /sw/sermons so the card and its /sw/sermons/aggressive-christianity page bake the translated
+// title (Ukristo wa Kushambulia) and "In brief" summary.
+// prerender refresh 2026-09-24: Swahili sermon — against-eutropius (#2592, PR #3342). Rebuilds
+// /sw/sermons so the card and its /sw/sermons/against-eutropius page bake the translated title
+// (Dhidi ya Eutropius) and "In brief" summary.
 // prerender refresh 2026-09-24: Luganda sermon — against-eutropius (#1700). Sermon pages are
 // prerendered per locale, so /lg/sermons must rebuild so the card and its /lg/sermons/against-eutropius
 // page bake the translated title and "In brief" summary.

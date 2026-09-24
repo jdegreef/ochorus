@@ -560,6 +560,9 @@ export interface AdminCoverageRow {
 	slug: string;
 	title: string;
 	author?: string;
+	/** Books only: the series this work belongs to, and its volume. */
+	series?: string;
+	series_position?: number | null;
 	cells: Record<string, SourceType | 'present'>;
 }
 
@@ -585,6 +588,9 @@ export interface AdminCoverage {
 	// "present", translated cells carry ai_reviewed / ai_unreviewed. Optional
 	// across the deploy window (an SPA ahead of the API).
 	articles?: AdminCoverageRow[];
+	// The series the Books matrix can be narrowed to. Optional across the
+	// deploy window, like `articles`.
+	series?: { slug: string; title: string }[];
 }
 
 export const getAdminCoverage = () => apiFetch<AdminCoverage>('/api/admin/coverage/');

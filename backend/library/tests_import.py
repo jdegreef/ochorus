@@ -956,6 +956,24 @@ class GutenbergDisplayLineTests(SimpleTestCase):
             "<p>GOD would have all His people wear a badge.</p>",
         )
 
+    def test_a_source_heading_still_ends_the_epigraph_search(self):
+        """PG 57109 opens on an <h1>, then an <h2> byline, then John 4:10 as a
+        plain `<p>` — which every stored edition of `unfailing-springs` keeps.
+        Only a display-line subtitle may be skipped to reach the epigraph."""
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = """<html><body>
+<h1>Unfailing Springs</h1>
+<h2>J. Hudson Taylor</h2>
+<p><i>"JESUS answered and said unto her, If thou knewest the gift of GOD.</i></p>
+<h2>Unfailing Springs</h2>
+<p>THE best evidence of Christianity is a Christ-like life.</p>
+</body></html>"""
+        # The level the catalog imports 57109 at (`section_level`).
+        self.assertTrue(extract_gutenberg_section(page, "Unfailing Springs", "h1").startswith(
+            '<h2>J. Hudson Taylor</h2><p><i>"JESUS answered'
+        ))
+
     def test_a_subtitle_does_not_hide_the_epigraph(self):
         body = self._extract("Under the Shepherd's Care.")
         self.assertTrue(body.startswith(
@@ -965,6 +983,30 @@ class GutenbergDisplayLineTests(SimpleTestCase):
         # The study's own <h3> and the next study's wrapper div are not content.
         self.assertNotIn("Self-Denial", body)
         self.assertEqual(body.count("<blockquote>"), 1)
+
+    def test_furniture_divs_are_dropped_not_kept_as_lines(self):
+        """A display line loses the div's class, so the sanitizer's drop-by-class
+        policy has to be asked about the div first — or a page number or a
+        stranded footnote ships as a paragraph."""
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = (
+            "<html><body><h3>Sermon</h3><p>Body.</p>"
+            '<div class="footnote">[1] A note text.</div>'
+            '<div class="pagenum">[12]</div>'
+            "<h3>Next</h3></body></html>"
+        )
+        self.assertEqual(extract_gutenberg_section(page, "Sermon"), "<p>Body.</p>")
+
+    def test_a_line_break_separates_heading_words(self):
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = (
+            "<html><body><h3>Sermon</h3><p>Body.</p>"
+            "<div>THE NEGATIVE<br>CONDITIONS</div>"
+            "<h3>Next</h3></body></html>"
+        )
+        self.assertIn("<h3>THE NEGATIVE CONDITIONS</h3>", extract_gutenberg_section(page, "Sermon"))
 
     def test_the_restored_english_blocks_are_what_the_importer_emits(self):
         """The `restored_blocks` guard is a string match on the block, so a
@@ -1438,6 +1480,137 @@ in his last sickness—death.</i></p>
         self.assertTrue(self.chapters[0].endswith("<h3>JONATHAN EDWARDS.</h3>"))
 
 
+class GutenbergRestoredBlocksMatchImporterTests(SimpleTestCase):
+    """Every English `restored_blocks` line for #23438 is what the importer emits.
+
+    The guard in `restore_dropped_blocks` is a string match on the block, so a
+    re-import must produce the correction's block byte for byte — or the body
+    carries both. EDITION is every display line of the six studies, verbatim
+    from PG 23438, with the prose paragraphs between them stubbed out.
+    """
+
+    EDITION = """<html><body>
+<div class="c1">
+<h3> <a id="BProsp">Blessed Prosperity</a></h3>
+</div>
+<div class="c1">Meditations On The First Psalm.</div>
+<div class="c1"><strong><small>INTRODUCTORY.</small></strong></div>
+<p>Paragraph 1.</p>
+<div class="c1"><small>THE NEGATIVE CONDITIONS OF BLESSING</small></div>
+<div class="c1"><em>"Blessed is the man that walketh not in the counsel of the ungodly."</em></div>
+<p>Paragraph 2.</p>
+<div class="c1"><em>Standeth not in the way of sinners.</em></div>
+<p>Paragraph 3.</p>
+<div class="c1"><em>"Nor sitteth in the seat of the scornful."</em></div>
+<p>Paragraph 4.</p>
+<div class="c1"><small>THE POSITIVE CONDITIONS OF BLESSING.</small></div>
+<p>Paragraph 5.</p>
+<div class="c1"><small>THE OUTCOME IN BLESSING.</small></div>
+<p>Paragraph 6.</p>
+<div class="c1"><small>THE CONTRAST.</small></div>
+<div class="c1"><em>"The ungodly are not so."</em></div>
+<p>Paragraph 7.</p>
+<div class="c1">
+<h3> <a id="badverse">Blessed Adversity.</a></h3>
+</div>
+<div class="c1"><small><strong>INTRODUCTORY.</strong></small></div>
+<p>Paragraph 1.</p>
+<div class="c1"><small>GOD'S TESTIMONY AND CHALLENGE.</small></div>
+<div class="c1"><em>"The L<small>ORD</small> gave, and the L<small>ORD</small> hath taken away; blessed be the Name of the L<small>ORD</small></em>."--Job i.21.</div>
+<p>Paragraph 2.</p>
+<div class="c1"><small>THE UNSEEN HEDGE</small>.</div>
+<p>Paragraph 3.</p>
+<div class="c1"><small>THE TESTING OF JOB</small></div>
+<p>Paragraph 4.</p>
+<div class="c1"><small>SATAN'S MALIGNITY.</small></div>
+<p>Paragraph 5.</p>
+<div class="c1"><small>GRACE SUFFICIENT.</small></div>
+<p>Paragraph 6.</p>
+<div class="c1"><small>DEEPER TRIALS.</small></div>
+<p>Paragraph 7.</p>
+<div class="c1"><small>THE LOVING-KINDNESS OF THE LORD.</small></div>
+<p>Paragraph 8.</p>
+<div class="c1">
+<h3> <a id="Coming">Coming to the King.</a></h3>
+</div>
+<div class="c1"><em>"And King Solomon gave unto the Queen of Sheba all her desire, whatsoever she asked, beside that which Solomon gave her of his royal bounty."</em>--1 Kings x. 13.</div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="Full">A Full Reward.</a></h3>
+</div>
+<div class="c1"><em>"It hath fully been shewed me, all that thou hast done ... and how thou hast left they father and thy mother, and the land of thy nativity, and art come unto a people which thou knewest not heretofore. The L<small>ORD</small> recompense thy work, and a full reward be given thee of the L<small>ORD</small> G<small>OD</small> of Israel, under whose wings thou art come to trust" (Ruth ii. 11, 12).</em></div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="shepherd">Under the Shepherd's Care.</a></h3>
+</div>
+<div class="c1"><strong><small>A NEW YEAR'S ADDRESS.</small></strong></div>
+<div class="c1"><em>"For ye were as sheep going astray; but are now returned unto the Shepherd and Bishop of your souls."</em>--1 Peter ii. 25.</div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="denial">Self-Denial versus Self-Assertion.</a></h3>
+</div>
+<div class="c1"><em>"If any man will come after Me, let him deny himself, and take up his cross daily, and follow Me.</em>--L<small>UKE</small> ix. 23.</div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="Sufficiency">All Sufficiency</a></h3>
+</div>
+<div class="c1"><em>"The L<small>ORD</small> G<small>OD</small> is a Sun and Shield:<br>
+the L<small>ORD</small> will give grace and glory:<br>
+"No good thing will He withhold from them<br>
+that walk uprightly."<br></em>--P<small>SALM LXXXIV</small>. 11.</div>
+<p>Paragraph 1.</p>
+</body></html>"""
+
+    SLUGS = (
+        "blessed-prosperity",
+        "blessed-adversity",
+        "a-full-reward",
+        "self-denial-versus-self-assertion",
+        "all-sufficiency",
+        "under-the-shepherds-care",
+    )
+
+    def test_every_restored_english_block_is_emitted(self):
+        import json
+
+        from library.content_fixtures import SERMONS_DIR
+        from library.corrections import BODY_CORRECTIONS
+        from library.management.commands.import_sermons import extract_gutenberg_section
+        from library.sermon_catalog import SERMONS
+
+        sections = {e.slug: e.section for e in SERMONS}
+        for slug in self.SLUGS:
+            english = json.loads((SERMONS_DIR / f"{slug}.en.json").read_text())[0]["fields"]["body_html"]
+            blocks = [
+                block for _, block in BODY_CORRECTIONS[slug]["restored_blocks"] if block in english
+            ]
+            self.assertTrue(blocks)
+            extracted = extract_gutenberg_section(self.EDITION, sections[slug])
+            for block in blocks:
+                with self.subTest(slug=slug, block=block):
+                    self.assertIn(block, extracted)
+
+    def test_pg_57109s_text_line_is_the_restored_english_block(self):
+        """*Unfailing Springs* sets its text as a `div.center` under the <h2>."""
+        from library.corrections import BODY_CORRECTIONS
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = """<html><body>
+<h1>Unfailing Springs</h1>
+<h2>J. Hudson Taylor</h2>
+<p><i>"JESUS answered and said unto her, If thou knewest the gift of GOD.</i></p>
+<h2>Unfailing Springs</h2>
+<div class="center">"Whosoever will, let him take the water of life freely"<br>
+ (Rev. 22:17)</div>
+<p>THE best evidence of Christianity is a Christ-like life.</p>
+</body></html>"""
+        _, english = BODY_CORRECTIONS["unfailing-springs"]["restored_blocks"][0]
+        self.assertIn(
+            f"<h2>Unfailing Springs</h2>{english}<p>THE best",
+            extract_gutenberg_section(page, "Unfailing Springs", "h1"),
+        )
+
+
 class CcelAbortOnFetchFailureTests(TestCase):
     """A transient section-fetch failure mid-crawl must abort the whole book, not
     ship a partial one — a dropped section renumbers every later chapter, breaking
@@ -1762,3 +1935,228 @@ class CcelVolumeFurnitureTests(TestCase):
         # body gives it away.
         self.assertTrue(is_contents_body("<p>Life of Antony.</p><p>Table of Contents.</p>"))
         self.assertFalse(is_contents_body("<p>1. Antony was by descent an Egyptian.</p>"))
+
+
+# Cut-down copies of the four Gutenberg editions the sermon catalog reads, each
+# keeping the heading shape that matters: which levels repeat the section's
+# name, and what sits between them.
+_PG_START = "<p>*** START OF THE PROJECT GUTENBERG EBOOK X ***</p>"
+_PG_END = "<p>*** END OF THE PROJECT GUTENBERG EBOOK X ***</p><h2>LICENSE</h2>"
+
+# A Ribband of Blue (PG 23438): the volume's <h1> shares its name with the
+# first study's <h3>.
+_PG_23438 = (
+    "<html><body>" + _PG_START
+    + '<h1>A Ribband of Blue</h1><div class="c1">AND<br>OTHER BIBLE STUDIES</div>'
+    + '<div class="c1"><h3>Contents</h3></div>'
+    + '<div class="pg_body_wrapper"><a href="#Ribband">A Ribband Of Blue</a></div>'
+    + '<div class="c1"><h3> <a id="Ribband">A Ribband Of Blue.</a></h3></div>'
+    + "<p>We would draw the attention of beloved friends to Numbers fifteen.</p>"
+    + "<p>Blue is the colour of heaven.</p>"
+    + '<div class="c1"><h3> <a id="BProsp">Blessed Prosperity</a></h3></div>'
+    + "<p>The First Psalm is an introduction to the whole book.</p>"
+    + _PG_END + "</body></html>"
+)
+
+# Unfailing Springs (PG 57109): the sermon's <h1>, a byline <h2>, the John 4
+# epigraph, then the title again as <h2>.
+_PG_57109 = (
+    "<html><body>" + _PG_START
+    + "<h1>Unfailing Springs</h1><h2>J. Hudson Taylor</h2>"
+    + '<div class="poem"><p><i>"JESUS answered and said unto her, If thou'
+    + " knewest the gift of GOD.</i></p><p><i>John 4:10, 14, RV.</i></p></div>"
+    + "<h2>Unfailing Springs</h2>"
+    + "<p>THE best evidence of Christianity is a Christ-like life.</p>"
+    + _PG_END + "</body></html>"
+)
+
+# Moody's Sermons (PG 33520): one <h1> per sermon, a curly-quoted epigraph.
+_PG_33520 = (
+    "<html><body>" + _PG_START
+    + "<h1>CHRIST’S BOUNDLESS<br>COMPASSION</h1>"
+    + "<p>“And Jesus went forth, and saw a great multitude.”</p>"
+    + "<p>I suppose there is no one here who has not compassion.</p>"
+    + "<h1> <a id='birth'>THE NEW BIRTH</a></h1>"
+    + "<p>“Except a man be born again.”</p><p>Much less inherit it.</p>"
+    + _PG_END + "</body></html>"
+)
+
+# The Overcoming Life (PG 33015): one <h1> per address, with h2–h4 inside.
+_PG_33015 = (
+    "<html><body>" + _PG_START
+    + "<h1> <a id='humility'>HUMILITY.</a></h1><p>There is no harder lesson.</p>"
+    + "<h1> <a id='rest'>REST.</a></h1><h2>PART I.</h2><h3>REST FOR THE WEARY.</h3>"
+    + "<p>There are many people who think the invitation is to sinners only.</p>"
+    + "<h4>Rest in Service.</h4><p>Take my yoke upon you.</p>"
+    + "<h1> <a id='seven'>SEVEN “I WILLS” OF CHRIST.</a></h1><p>Next.</p>"
+    + _PG_END + "</body></html>"
+)
+
+
+class GutenbergSectionHeadingTests(SimpleTestCase):
+    """Which heading `extract_gutenberg_section` starts from, per edition."""
+
+    def _extract(self, html, section, level=""):
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        return extract_gutenberg_section(html, section, level)
+
+    def test_a_ribband_of_blue_is_the_study_not_the_volume(self):
+        out = self._extract(_PG_23438, "A Ribband of Blue", "h3")
+        self.assertEqual(
+            out,
+            "<p>We would draw the attention of beloved friends to Numbers fifteen.</p>"
+            "<p>Blue is the colour of heaven.</p>",
+        )
+
+    def test_unfailing_springs_starts_at_its_h1_to_keep_the_epigraph(self):
+        out = self._extract(_PG_57109, "Unfailing Springs", "h1")
+        # The stored body opens the same way: byline, epigraph, then the <h2>.
+        self.assertTrue(out.startswith("<h2>J. Hudson Taylor</h2>"), out)
+        self.assertIn("If thou knewest the gift of GOD", out)
+        self.assertIn("<h2>Unfailing Springs</h2>", out)
+        self.assertIn("THE best evidence of Christianity", out)
+
+    def test_an_unresolved_tie_raises_rather_than_guessing(self):
+        from library.management.commands.import_sermons import AmbiguousSectionError
+
+        # Neither "first" nor "deepest" is right for both editions (the first
+        # is 23438's volume; the deepest drops 57109's epigraph), so the
+        # catalog must say which.
+        for html, section in (
+            (_PG_23438, "A Ribband of Blue"),
+            (_PG_57109, "Unfailing Springs"),
+        ):
+            with self.subTest(section), self.assertRaises(AmbiguousSectionError):
+                self._extract(html, section)
+
+    def test_a_single_match_needs_no_level(self):
+        self.assertEqual(
+            self._extract(_PG_23438, "Blessed Prosperity"),
+            "<p>The First Psalm is an introduction to the whole book.</p>",
+        )
+        self.assertEqual(
+            self._extract(_PG_33520, "CHRIST'S BOUNDLESS COMPASSION"),
+            "<blockquote>“And Jesus went forth, and saw a great multitude.”</blockquote>"
+            "<p>I suppose there is no one here who has not compassion.</p>",
+        )
+        out = self._extract(_PG_33015, "REST")
+        self.assertIn("There are many people", out)
+        self.assertIn("Take my yoke upon you.", out)  # past the inner h2–h4
+        self.assertNotIn("SEVEN", out)
+
+    def test_a_level_that_matches_nothing_returns_nothing(self):
+        self.assertEqual(self._extract(_PG_33520, "THE NEW BIRTH", "h3"), "")
+
+    def test_catalog_levels_are_heading_tags_on_gutenberg_entries(self):
+        from library.management.commands.import_sermons import _HEADINGS
+        from library.sermon_catalog import SERMONS
+
+        for e in SERMONS:
+            if e.section_level:
+                with self.subTest(e.slug):
+                    self.assertEqual(e.source, "gutenberg")
+                    self.assertIn(e.section_level, _HEADINGS)
+
+
+class GutenbergBackMatterTests(SimpleTestCase):
+    """`import_gutenberg` leaves the back of the printed book behind.
+
+    Three shipped works carried it in their last chapter and two translations
+    rendered it: #73032's colophon and Revell catalogue, #51931's
+    "Transcriber's Notes" section, #65066's `tnotes` endnote. Each rule below
+    was measured over the library's 27 Gutenberg sources: 4 works change and
+    every removed span is back matter. The markup is the editions' own, cut down.
+    """
+
+    PROSE = " ".join(["The word of the Lord endureth for ever."] * 60)
+
+    def _page(self, *sections):
+        """A book whose chapters are `sections`, after an opening chapter of
+        prose — `pick_heading_tag` wants three headings or more.
+
+        Each heading sits alone in its own container, as in #65066, so the
+        importer walks the elements between headings one by one. That walk is
+        how the note's paragraphs escaped: handed over whole, a `tnotes` box
+        falls to the sanitizer's `[class*=note i]`, but walked, its `<p>`s
+        arrive loose.
+        """
+        sections = (("Of Prayer", f"<p>{self.PROSE}</p>"), *sections)
+        body = "".join(
+            f'<div class="chapter"><h2 class="c1">{title}</h2></div>{html}'
+            for title, html in sections
+        )
+        return f"<html><body>{body}</body></html>"
+
+    def _chapters(self, html):
+        from library.management.commands.import_gutenberg import extract_chapters
+
+        return extract_chapters(html)
+
+    def test_a_transcribers_note_box_is_dropped(self):
+        """#65066: the note's heading is a centred div the importer never
+        collects, so without this its paragraphs read as Edwards's last words."""
+        chapters = self._chapters(self._page(
+            ("Of Faith", f"<p>{self.PROSE}</p>"),
+            ("Of Hope", f"<p>{self.PROSE}</p><p>true religion! <i>Amen.</i></p>"
+                    '<div class="tnotes"><div class="nf-center"><div>Transcriber’s Note</div></div>'
+                    "<p>Punctuation is restored where the text obviously has an appropriate space.</p></div>"),
+        ))
+        self.assertTrue(chapters[-1][1].endswith("<i>Amen.</i></p>"))
+        self.assertNotIn("Punctuation is restored", chapters[-1][1])
+
+    def test_a_footnote_is_not_a_transcribers_note(self):
+        """The precision case: `*=tnote` is a substring of every `footnote`,
+        and a footnote is the author's. (What the sanitizer later does with a
+        footnote block is its own business; this rule must not take it.)"""
+        from library.management.commands.import_gutenberg import content_root
+
+        root = content_root(
+            '<html><body><div class="footnote"><p>Weighing more than one cwt.</p></div>'
+            '<div class="tnotes covernote"><p>The cover image was created by the transcriber.</p></div>'
+            "</body></html>"
+        )
+        self.assertIsNotNone(root.find(class_="footnote"))
+        self.assertIsNone(root.find(class_="covernote"))
+
+    def test_a_transcribers_notes_section_is_dropped_not_merged(self):
+        """#51931: under 300 words, the section was merged into ch13 as an <h3>."""
+        chapters = self._chapters(self._page(
+            ("Of Faith", f"<p>{self.PROSE}</p>"),
+            ("Of Hope", f"<p>{self.PROSE}</p><p>before God can use them.</p>"),
+            ("Transcriber’s Notes", "<p>Missing periods have been silently added.</p>"),
+        ))
+        self.assertEqual(len(chapters), 3)
+        self.assertTrue(chapters[-1][1].endswith("before God can use them.</p>"))
+
+    def test_the_last_section_ends_at_a_colophon(self):
+        """#73032: the catalogue has no heading of its own, so `_catalogue_start`
+        never sees it; the colophon before it is the signal."""
+        chapters = self._chapters(self._page(
+            ("Of Faith", f"<p>{self.PROSE}</p>"),
+            ("Of Hope", f"<p>{self.PROSE}</p><p>definite, prevailing prayer.</p>"
+                    '<p class="c003"><i>Printed in the United States of America</i></p>'
+                    "<p><i>NEWELL DWIGHT HILLIS, D.D.</i></p><p>The Great Refusal</p>"),
+        ))
+        self.assertTrue(chapters[-1][1].endswith("definite, prevailing prayer.</p>"))
+
+    def test_a_sentence_about_printing_is_not_a_colophon(self):
+        body = f"<p>{self.PROSE}</p><p>The tract was printed in the United States of America in 1880.</p>"
+        chapters = self._chapters(self._page(("Of Faith", f"<p>{self.PROSE}</p>"), ("Of Hope", body)))
+        self.assertIn("printed in the United States of America in 1880.", chapters[-1][1])
+
+    def test_a_colophon_before_the_last_section_cuts_nothing(self):
+        """A copyright-page colophon that survived into an earlier chapter must
+        not truncate it — only the back of the book is back matter."""
+        first = f"<p><i>Printed in the United States of America</i></p><p>{self.PROSE}</p>"
+        chapters = self._chapters(self._page(("Of Faith", first), ("Of Hope", f"<p>{self.PROSE}</p>")))
+        self.assertIn("Printed in the United States of America", chapters[1][1])
+        self.assertIn(self.PROSE, chapters[1][1])
+
+    def test_is_front_matter_knows_the_transcribers_note(self):
+        from library.ingest import is_front_matter
+
+        for title in ("Transcriber’s Notes", "Transcriber's Note:", "TRANSCRIBER'S NOTE."):
+            with self.subTest(title=title):
+                self.assertTrue(is_front_matter(title))
+        self.assertFalse(is_front_matter("The Transcriber of the Law"))

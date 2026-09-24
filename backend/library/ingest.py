@@ -262,6 +262,11 @@ def is_front_matter(title: str) -> bool:
     # "PUBLISHED BY" catalogue-cut in import_gutenberg does not catch.
     if t in {"book catalogue", "book catalog"}:
         return True
+    # "Transcriber's Note(s)" is the etext's errata apparatus. Under 300 words it
+    # would otherwise be MERGED into the chapter before it as an <h3> — how
+    # #51931's notes ended How to Bring Men to Christ.
+    if t.startswith(("transcriber's note", "transcriber’s note")):
+        return True
     return t in {"contents", "table of contents", "title", "title page", "prefatory note"}
 
 
@@ -516,6 +521,7 @@ _FIGURE_CLASS = re.compile(r"^(?:fig|caption)")
 # sentence (`"RIBBAND OF BLUE."`); it is not a heading.
 QUOTES = ("“", '"', "‘", "'")
 _EDGE_BREAKS = re.compile(r"^(?:\s|<br\s*/?>)+|(?:\s|<br\s*/?>)+$")
+_BR = re.compile(r"<br\s*/?>", re.I)
 
 
 def display_line(div) -> str:
@@ -538,9 +544,10 @@ def display_line(div) -> str:
 
     Returns "" for anything that is not a display line, and the caller keeps
     whatever it did before: a wrapper, Gutenberg's own `pg_body_wrapper`
-    furniture (page numbers, spacers, PG 57109's "9,000 in print"), one line
-    of a poem, a figure or caption, a bare chapter counter ("CHAPTER 1" under the
-    chapter's own heading — the reader numbers chapters), an empty line.
+    furniture (page numbers, spacers, PG 57109's "9,000 in print"), anything
+    the sanitizer would drop, one line of a poem, a figure or caption, a bare
+    chapter counter ("CHAPTER 1" under the chapter's own heading — the reader
+    numbers chapters), an empty line.
     Shared by `import_gutenberg` and `import_sermons`.
     """
     classes = " ".join(div.get("class") or [])
@@ -551,11 +558,17 @@ def display_line(div) -> str:
         or div.find_parent(class_=_VERSE_CLASS) is not None
     ):
         return ""
+    # The block built below carries no class, so the sanitizer would no longer
+    # recognise furniture it drops by class (`[class*=pagenum]`, a footnote):
+    # ask it about the div itself while the div still has one.
+    if not clean_fragment(str(div)).strip():
+        return ""
     # Read a copy with the page numbers gone: PG 65066 sets one inside a line
     # ("<span class="pageno">9</span><b>LIFE</b>" reads "9LIFE").
     line = soup(str(div)).find("div")
     drop_furniture(line)
-    text = " ".join(line.get_text().split())
+    # A <br> separates words: "THE NEGATIVE<br>CONDITIONS" is two of them.
+    text = " ".join(soup(_BR.sub(" ", line.decode_contents())).get_text().split())
     if not text or _BARE_CHAPTER.match(text):
         return ""
     if text.isupper() and not text.startswith(QUOTES):

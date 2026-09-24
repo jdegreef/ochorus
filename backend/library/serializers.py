@@ -354,6 +354,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "language",
             "title",
             "subtitle",
+            "cover_title",
             "author",
             "source_type",
             "cover_color",

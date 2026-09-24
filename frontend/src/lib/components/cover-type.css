@@ -320,6 +320,20 @@ rgb(0 0 0 / 0.26) 0%,
 .cover-type .middle {
 	margin: auto 0;
 }
+/* Framed type set from the TOP (`coverLayouts.TYPE_TOP`): the block sits just
+   under the byline and the leftover space falls below it, over the ground's
+   subject — the Key Teachings' trees stand in the lower part of theirs. */
+.cover-type.type-top .middle {
+	margin: 7cqw 0 auto;
+}
+/* And one title size for the set, a step under the imprint's own, so every
+   volume's title holds to three lines above the tree — Edwards' ran to four at
+   the imprint size and put the subtitle on the crown. Doubled class to outrank
+   `.style-*` recipes; `.long-title` (later in the file, same weight) still
+   steps a genuinely long title down past this. */
+.cover-type.type-top.type-top .title {
+	font-size: 8.6cqw;
+}
 
 /* The one element the author's house style owns. The recipes are the
    `.style-*` blocks at the foot of this file; this is everything they share. */

@@ -1,0 +1,51 @@
+/* The site styles — the interface's typeface choice (see $lib/siteFont.svelte).
+
+   A style re-points --font-display and --font-sans, and everything that names
+   them follows: headings, the chrome, and the `font-display` / `font-sans`
+   utilities (which is why app.css declares those two in a plain @theme, not
+   the inline one). Three things must NOT follow, and this file pins them:
+
+   * The house stacks themselves, which the reader's "Serif" and "Sans" and
+     every other reader face's script tail are built from (FONT_STACK). They
+     are captured on the ROOT as --house-display / --house-sans, and a style is
+     applied to BODY — one element down (the attribute sits on the root, where
+     app.html's boot script can reach it before <body> exists; the selectors
+     below aim the declarations at body). A custom property inherits its
+     COMPUTED value, so the var() in the capture resolves once, on the root,
+     against the house stack, and a style set below it cannot reach back up and
+     change it. That ordering is the whole mechanism; set a style on :root and
+     the capture would resolve to the style.
+   * Covers. A cover is artwork: its byline and subtitle are set in the house
+     serif on purpose, the one constant line across the shelf (cover-type.css).
+     They are pinned back here rather than in cover-type.css because the share
+     card script inlines that file and declares no --house-* tokens.
+   * The reading prose, which is set from --reading-font and never from these.
+
+   The styles name ONE face and then a house token, so the scripts stay
+   covered by the stacks app.css already gates: an Arabic page in "Classic"
+   still reaches Amiri. Garamond covers Cyrillic itself; Atkinson Hyperlegible
+   Next does not and falls to the sans tail's PT Sans. fontStacks.test.ts
+   checks every style for script coverage and imports. */
+
+:root {
+	--house-display: var(--font-display);
+	--house-sans: var(--font-sans);
+}
+
+/* The book-face serif for headings; the chrome keeps Hanken. */
+:root[data-site-font='classic'] body {
+	--font-display: 'EB Garamond Variable', var(--house-display);
+}
+
+/* One highly legible sans for everything, headings included — the style
+   guide's "never set headings in the sans" yields to a reader who asked for
+   legibility over voice. */
+:root[data-site-font='hyperlegible'] body {
+	--font-display: 'Atkinson Hyperlegible Next Variable', var(--house-sans);
+	--font-sans: 'Atkinson Hyperlegible Next Variable', var(--house-sans);
+}
+
+:root[data-site-font] :is(.cover-type, .cover-plate) {
+	--font-display: var(--house-display);
+	--font-sans: var(--house-sans);
+}
