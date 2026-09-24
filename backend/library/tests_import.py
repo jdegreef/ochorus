@@ -7,7 +7,7 @@ import zipfile
 from unittest import mock
 
 import fitz  # PyMuPDF
-from django.test import TestCase, override_settings
+from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
 from library import upload_import as ui
@@ -1218,3 +1218,125 @@ class CcelVolumeFurnitureTests(TestCase):
         # body gives it away.
         self.assertTrue(is_contents_body("<p>Life of Antony.</p><p>Table of Contents.</p>"))
         self.assertFalse(is_contents_body("<p>1. Antony was by descent an Egyptian.</p>"))
+
+
+# Cut-down copies of the four Gutenberg editions the sermon catalog reads, each
+# keeping the heading shape that matters: which levels repeat the section's
+# name, and what sits between them.
+_PG_START = "<p>*** START OF THE PROJECT GUTENBERG EBOOK X ***</p>"
+_PG_END = "<p>*** END OF THE PROJECT GUTENBERG EBOOK X ***</p><h2>LICENSE</h2>"
+
+# A Ribband of Blue (PG 23438): the volume's <h1> shares its name with the
+# first study's <h3>.
+_PG_23438 = (
+    "<html><body>" + _PG_START
+    + '<h1>A Ribband of Blue</h1><div class="c1">AND<br>OTHER BIBLE STUDIES</div>'
+    + '<div class="c1"><h3>Contents</h3></div>'
+    + '<div class="pg_body_wrapper"><a href="#Ribband">A Ribband Of Blue</a></div>'
+    + '<div class="c1"><h3> <a id="Ribband">A Ribband Of Blue.</a></h3></div>'
+    + "<p>We would draw the attention of beloved friends to Numbers fifteen.</p>"
+    + "<p>Blue is the colour of heaven.</p>"
+    + '<div class="c1"><h3> <a id="BProsp">Blessed Prosperity</a></h3></div>'
+    + "<p>The First Psalm is an introduction to the whole book.</p>"
+    + _PG_END + "</body></html>"
+)
+
+# Unfailing Springs (PG 57109): the sermon's <h1>, a byline <h2>, the John 4
+# epigraph, then the title again as <h2>.
+_PG_57109 = (
+    "<html><body>" + _PG_START
+    + "<h1>Unfailing Springs</h1><h2>J. Hudson Taylor</h2>"
+    + '<div class="poem"><p><i>"JESUS answered and said unto her, If thou'
+    + " knewest the gift of GOD.</i></p><p><i>John 4:10, 14, RV.</i></p></div>"
+    + "<h2>Unfailing Springs</h2>"
+    + "<p>THE best evidence of Christianity is a Christ-like life.</p>"
+    + _PG_END + "</body></html>"
+)
+
+# Moody's Sermons (PG 33520): one <h1> per sermon, a curly-quoted epigraph.
+_PG_33520 = (
+    "<html><body>" + _PG_START
+    + "<h1>CHRIST’S BOUNDLESS<br>COMPASSION</h1>"
+    + "<p>“And Jesus went forth, and saw a great multitude.”</p>"
+    + "<p>I suppose there is no one here who has not compassion.</p>"
+    + "<h1> <a id='birth'>THE NEW BIRTH</a></h1>"
+    + "<p>“Except a man be born again.”</p><p>Much less inherit it.</p>"
+    + _PG_END + "</body></html>"
+)
+
+# The Overcoming Life (PG 33015): one <h1> per address, with h2–h4 inside.
+_PG_33015 = (
+    "<html><body>" + _PG_START
+    + "<h1> <a id='humility'>HUMILITY.</a></h1><p>There is no harder lesson.</p>"
+    + "<h1> <a id='rest'>REST.</a></h1><h2>PART I.</h2><h3>REST FOR THE WEARY.</h3>"
+    + "<p>There are many people who think the invitation is to sinners only.</p>"
+    + "<h4>Rest in Service.</h4><p>Take my yoke upon you.</p>"
+    + "<h1> <a id='seven'>SEVEN “I WILLS” OF CHRIST.</a></h1><p>Next.</p>"
+    + _PG_END + "</body></html>"
+)
+
+
+class GutenbergSectionHeadingTests(SimpleTestCase):
+    """Which heading `extract_gutenberg_section` starts from, per edition."""
+
+    def _extract(self, html, section, level=""):
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        return extract_gutenberg_section(html, section, level)
+
+    def test_a_ribband_of_blue_is_the_study_not_the_volume(self):
+        out = self._extract(_PG_23438, "A Ribband of Blue", "h3")
+        self.assertEqual(
+            out,
+            "<p>We would draw the attention of beloved friends to Numbers fifteen.</p>"
+            "<p>Blue is the colour of heaven.</p>",
+        )
+
+    def test_unfailing_springs_starts_at_its_h1_to_keep_the_epigraph(self):
+        out = self._extract(_PG_57109, "Unfailing Springs", "h1")
+        # The stored body opens the same way: byline, epigraph, then the <h2>.
+        self.assertTrue(out.startswith("<h2>J. Hudson Taylor</h2>"), out)
+        self.assertIn("If thou knewest the gift of GOD", out)
+        self.assertIn("<h2>Unfailing Springs</h2>", out)
+        self.assertIn("THE best evidence of Christianity", out)
+
+    def test_an_unresolved_tie_raises_rather_than_guessing(self):
+        from library.management.commands.import_sermons import AmbiguousSectionError
+
+        # Neither "first" nor "deepest" is right for both editions (the first
+        # is 23438's volume; the deepest drops 57109's epigraph), so the
+        # catalog must say which.
+        for html, section in (
+            (_PG_23438, "A Ribband of Blue"),
+            (_PG_57109, "Unfailing Springs"),
+        ):
+            with self.subTest(section), self.assertRaises(AmbiguousSectionError):
+                self._extract(html, section)
+
+    def test_a_single_match_needs_no_level(self):
+        self.assertEqual(
+            self._extract(_PG_23438, "Blessed Prosperity"),
+            "<p>The First Psalm is an introduction to the whole book.</p>",
+        )
+        self.assertEqual(
+            self._extract(_PG_33520, "CHRIST'S BOUNDLESS COMPASSION"),
+            "<blockquote>“And Jesus went forth, and saw a great multitude.”</blockquote>"
+            "<p>I suppose there is no one here who has not compassion.</p>",
+        )
+        out = self._extract(_PG_33015, "REST")
+        self.assertIn("There are many people", out)
+        self.assertIn("Take my yoke upon you.", out)  # past the inner h2–h4
+        self.assertNotIn("SEVEN", out)
+
+    def test_a_level_that_matches_nothing_returns_nothing(self):
+        self.assertEqual(self._extract(_PG_33520, "THE NEW BIRTH", "h3"), "")
+
+    def test_catalog_levels_are_heading_tags_on_gutenberg_entries(self):
+        from library.management.commands.import_sermons import _HEADINGS
+        from library.sermon_catalog import SERMONS
+
+        for e in SERMONS:
+            if e.section_level:
+                with self.subTest(e.slug):
+                    self.assertEqual(e.source, "gutenberg")
+                    self.assertIn(e.section_level, _HEADINGS)
