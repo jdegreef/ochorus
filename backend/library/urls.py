@@ -10,6 +10,7 @@ from .views import (
     BookListView,
     ChapterDetailView,
     LanguageListView,
+    OriginalsView,
     PlanDetailView,
     PlanListView,
     PopularSearchesView,
@@ -36,6 +37,7 @@ from .views import (
 urlpatterns = [
     path("authors/", AuthorListView.as_view(), name="author-list"),
     path("authors/<slug:slug>/", AuthorDetailView.as_view(), name="author-detail"),
+    path("originals/", OriginalsView.as_view(), name="originals"),
     path("books/", BookListView.as_view(), name="book-list"),
     path("sermons/", SermonListView.as_view(), name="sermon-list"),
     path("languages/", LanguageListView.as_view(), name="language-list"),

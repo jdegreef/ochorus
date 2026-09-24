@@ -389,4 +389,62 @@ CURATED_PLANS = [
             "men-and-women-who-gave-everything-2",
         ],
     ),
+    # Whole-series plans: a series read end to end, one chapter a day, its
+    # volumes in their order (a collection in the order its writers lived).
+    (
+        "brave-for-god-24-true-stories",
+        "Brave for God: 24 True Stories",
+        "Three and a half weeks of true stories for young readers, one each day: "
+        "all four books of Brave for God, twenty-four ordinary people from every "
+        "part of the world who trusted God and were made brave.",
+        [
+            "brave-for-god",
+            "brave-for-god-2",
+            "brave-for-god-3",
+            "brave-for-god-4",
+        ],
+    ),
+    (
+        "the-key-teachings-four-teachers",
+        "The Key Teachings: Four Teachers",
+        "Twelve weeks with four teachers, one short chapter a day, each ending in "
+        "questions and a prayer: Richard Baxter on the saints' everlasting rest, "
+        "Jonathan Edwards on the beauty of God and true religion, A. B. Simpson "
+        "on Christ our Saviour, Sanctifier, Healer and Coming King, and Watchman "
+        "Nee on the normal Christian life.",
+        [
+            "key-teachings-of-richard-baxter",
+            "key-teachings-of-jonathan-edwards",
+            "key-teachings-of-a-b-simpson",
+            "key-teachings-of-watchman-nee",
+        ],
+    ),
+    (
+        "rooted-six-months-with-god",
+        "Rooted: Six Months with God",
+        "Half a year with God for readers aged 9 to 12: all six books of Rooted, "
+        "from Planted to Bearing Fruit, one short devotion a day — a verse, what "
+        "it means, something to think about and something to try, and a prayer.",
+        [
+            "rooted-1",
+            "rooted-2",
+            "rooted-3",
+            "rooted-4",
+            "rooted-5",
+            "rooted-6",
+        ],
+    ),
+    (
+        "daughters-of-the-king-three-months",
+        "Daughters of the King: Three Months with God",
+        "Three months with God for girls aged 9 to 12: all three books of "
+        "Daughters of the King — Beloved, Brave and Growing Up — one short "
+        "devotion a day on who you are in Christ, courage to speak and serve, "
+        "and growing up with wisdom.",
+        [
+            "daughters-of-the-king-1",
+            "daughters-of-the-king-2",
+            "daughters-of-the-king-3",
+        ],
+    ),
 ]

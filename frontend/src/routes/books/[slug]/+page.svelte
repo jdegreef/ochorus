@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { shareCard, shareImage } from '$lib/coverArt';
+	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -193,9 +194,10 @@
 			// book on this shelf; without these the page answers to one name only.
 			alternateName: book.alternate_titles?.length ? book.alternate_titles : undefined,
 			author: {
-				'@type': 'Person',
+				// The imprint is a publisher, not a person (see $lib/originals).
+				'@type': authorLdType(book.author.slug),
 				name: book.author.name,
-				url: absUrl(localizeHref(`/authors/${book.author.slug}`)),
+				url: absUrl(localizeHref(authorPath(book.author.slug))),
 				// The identifiers the author page asserts. Without them this Person
 				// is a bare name and the book inherits none of the entity work done
 				// on /authors — the two say "Athanasius" and hope a search engine
@@ -226,6 +228,17 @@
 			// still read for topical relevance, drawn from the one source so the two
 			// can't disagree.
 			keywords: book.topics?.length ? book.topics.map((t) => t.title).join(', ') : undefined,
+			// The series this edition belongs to, and which volume — the other half
+			// of the series page's BookSeries `hasPart`, so the two point at each
+			// other. `position` only in an ordered series; a collection has none.
+			isPartOf: book.series
+				? {
+						'@type': 'BookSeries',
+						name: book.series.title,
+						url: absUrl(localizeHref(`/series/${book.series.slug}/`))
+					}
+				: undefined,
+			position: book.series?.position ?? undefined,
 			// `isAccessibleForFree` states the fact; this is its verb. The whole
 			// book can be read here, now, without an account, and a ReadAction is
 			// how that is expressed to a machine rather than implied.
@@ -390,7 +403,7 @@
 			     sits at an {#if} boundary and gets compiler-trimmed, which rendered
 			     "Booth· 1829" with the space missing. -->
 			<p class="mt-2 text-body">
-				<a href={localizeHref(`/authors/${book.author.slug}`)} class="text-accent hover:underline"
+				<a href={localizeHref(authorPath(book.author.slug))} class="text-accent hover:underline"
 					>{book.author.name}</a
 				>{#if years}<span class="text-muted">{` · ${years}`}</span>{/if}
 			</p>

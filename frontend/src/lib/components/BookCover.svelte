@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
 	import { isLongTitle } from '$lib/coverCardMarkup';
+	import { coverTitle } from '$lib/coverTitle';
 	import { coverLayoutFor } from '$lib/coverLayouts';
 	import { groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
@@ -149,6 +150,7 @@
 	 *  that keeps them on this book (see `$lib/hydrateSrc`). */
 	const source = $derived({ src: book.cover_url, srcset: coverSrcset(book.cover_url) || undefined });
 	const label = $derived(`${t('a11y.coverOf')} ${book.title}`);
+	const setTitle = $derived(coverTitle(book));
 
 	/** The author's house style — a class name; `cover-type.css` holds the rest. */
 	const style = $derived(
@@ -195,7 +197,7 @@
 			'cover-type',
 			`style-${style}`,
 			script && `script-${script}`,
-			isLongTitle(book.title) && 'long-title'
+			isLongTitle(setTitle) && 'long-title'
 		]}
 		{...blockDir}
 	>
@@ -218,7 +220,7 @@
 			     reaches these nodes and reads the label instead. The metrics come
 			     from the class above, which the LANGUAGE decides — never the
 			     characters (see `scriptOf`). -->
-			<div class="title" {lang} dir="auto">{book.title}</div>
+			<div class="title" {lang} dir="auto">{setTitle}</div>
 			<div class="rule"></div>
 			{#if book.subtitle}<div class="subtitle" {lang} dir="auto">
 				{book.subtitle}
