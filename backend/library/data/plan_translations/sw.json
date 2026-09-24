@@ -85,5 +85,12 @@
       "The title joins the sw titles of two of its three books — «Kumngojea Mungu» (waiting-on-god, and the corpus's settled verb: 80 uses of «kumngojea Mungu» against 12 of «kumngoja») and «Maisha ya Kumtumaini Mungu» (the-life-of-trust) — so the card and the books agree.",
       "«siri ya kuongozwa» echoes «Siri ya Uongozi», the sw title of the-secret-of-guidance; «shule» follows the Shule ya Maombi card."
     ]
+  },
+  "school-of-prayer-31-days": {
+    "title": "Siku 31 katika Shule ya Maombi",
+    "description": "Mwezi mzima pamoja na Andrew Murray miguuni pa Mwalimu pekee. Kila siku hufungua moja ya maneno ya Yesu mwenyewe kuhusu maombi, kuanzia “Bwana, utufundishe kuomba” hadi ahadi za usiku ule wa mwisho, nayo huishia katika sala yake yenyewe. Somo moja kwa siku, kama dakika kumi, likijenga kuelekea maombezi na maisha ya maombi.",
+    "note": [
+      "Single-book plan backed by the sw edition of school-of-prayer (book title “Pamoja na Kristo katika Shule ya Maombi”); the card phrase “Shule ya Maombi” matches the shipped book title, and “Bwana, utufundishe kuomba” is the SUV Luke 11:1 wording the book uses. Added by the book:school-of-prayer -> sw job (#3148), which makes this LAUNCH plan creatable in sw."
+    ]
   }
 }
