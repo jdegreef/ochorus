@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import type { SeriesDetail } from '$lib/library-public';
 	import { getProgress, isFinished } from '$lib/progress';
@@ -32,7 +33,7 @@
 	// the prerendered HTML must not bake one visitor's place into every page.
 	// Until then the action is the plain "start with the first book".
 	let progressed = $state(false);
-	$effect(() => {
+	onMount(() => {
 		progressed = true;
 	});
 	const next = $derived(
