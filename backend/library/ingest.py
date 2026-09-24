@@ -256,6 +256,13 @@ def chapter_title(raw: str) -> str:
     return "" if _BARE_CHAPTER.match(t) else t
 
 
+# "Transcriber's Note(s)", "Transcribers' Notes", "Transcriber Note",
+# "Note by the Transcriber" — and not "Transcriber's Notebook".
+_TRANSCRIBERS_NOTE = re.compile(
+    r"^(?:transcribers?['’]?s?['’]? notes?|notes? (?:by|from) the transcriber)\b"
+)
+
+
 def is_front_matter(title: str) -> bool:
     """A section that is apparatus, not the work: front matter, indexes, and the
     back of the book (a publisher's catalogue, a transcriber's notes)."""
@@ -277,7 +284,7 @@ def is_front_matter(title: str) -> bool:
     # "Transcriber's Note(s)" is the etext's errata apparatus. Under 300 words it
     # would otherwise be MERGED into the chapter before it as an <h3> — how
     # #51931's notes ended How to Bring Men to Christ.
-    if t.startswith(("transcriber's note", "transcriber’s note")):
+    if _TRANSCRIBERS_NOTE.match(t):
         return True
     return t in {"contents", "table of contents", "title", "title page", "prefatory note"}
 

@@ -2230,8 +2230,28 @@ class GutenbergBackMatterTests(SimpleTestCase):
         self.assertIn("Printed in the United States of America", chapters[2][1])
         self.assertIn(self.PROSE, chapters[2][1])
 
+    def test_a_colophon_at_the_head_of_the_last_section_cuts_nothing(self):
+        """A reprinted title page opening the section: cutting there would ship
+        an empty chapter."""
+        body = f"<p><i>Printed in the United States of America</i></p><p>{self.PROSE}</p>"
+        chapters = extract_chapters(self._page(("Of Hope", body)))
+        self.assertIn(self.PROSE, chapters[-1][1])
+
+    def test_an_inline_correction_is_not_a_note_box(self):
+        """PGDP also marks a corrected word inline; that word is the author's."""
+        root = content_root(
+            '<html><body><p>the <span class="transnote" title="Original: teh">the</span> end</p>'
+            "</body></html>"
+        )
+        self.assertIsNotNone(root.find(class_="transnote"))
+
     def test_is_front_matter_knows_the_transcribers_note(self):
-        for title in ("Transcriber’s Notes", "Transcriber's Note:", "TRANSCRIBER'S NOTE."):
+        for title in (
+            "Transcriber’s Notes", "Transcriber's Note:", "TRANSCRIBER'S NOTE.",
+            "Transcribers' Notes", "Transcriber Note", "Note by the Transcriber",
+        ):
             with self.subTest(title=title):
                 self.assertTrue(is_front_matter(title))
-        self.assertFalse(is_front_matter("The Transcriber of the Law"))
+        for title in ("The Transcriber of the Law", "Transcriber's Notebook"):
+            with self.subTest(title=title):
+                self.assertFalse(is_front_matter(title))

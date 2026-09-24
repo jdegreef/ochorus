@@ -97,7 +97,9 @@ def content_root(html: str):
         el.decompose()
     # The transcriber's own notes — errata, "missing periods silently added" —
     # are the etext's apparatus, not the work. See _TRANSCRIBER_NOTE.
-    for el in s.find_all(class_=_TRANSCRIBER_NOTE):
+    # Boxes only: an inline `<span class="transnote">` can carry a corrected
+    # word of the author's sentence.
+    for el in s.find_all("div", class_=_TRANSCRIBER_NOTE):
         el.decompose()
     # Gutenberg wraps the work in a body or a single content div.
     return s.body or s
@@ -306,9 +308,22 @@ _COLOPHON = re.compile(
 
 
 def _cut_at_colophon(body: str) -> str:
-    """The last section's body up to a standalone colophon block, if it has one."""
+    """The last section's body up to a standalone colophon block, if it has one.
+
+    Only where a chapter's worth of prose precedes it: a colophon at the head of
+    the section is a reprinted title page, and cutting there would empty it.
+    """
     m = _COLOPHON.search(body)
-    return body[: m.start()].rstrip() if m else body
+    if m and word_count(body[: m.start()]) >= _TINY_SECTION_WORDS:
+        return body[: m.start()].rstrip()
+    return body
+
+
+def _cut_last_at_colophon(sections: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    if not sections:
+        return sections
+    title, body = sections[-1]
+    return [*sections[:-1], (title, _cut_at_colophon(body))]
 
 
 _MONTHS = (
@@ -348,7 +363,7 @@ def extract_chapters(html: str) -> list[tuple[str, str]]:
     if len(sections) > 80:
         daily = sum(1 for t, _ in sections if _MONTH_DAY.match(t.strip()))
         if daily > len(sections) * 0.8:
-            return group_daily_entries(sections)
+            return _cut_last_at_colophon(group_daily_entries(sections))
     # Tiny sections are not chapters: interleaved hymns/poems join the chapter
     # they follow (title kept as an <h3>); tiny sections BEFORE any chapter
     # (prefatory notes, epigraph poems) are front matter and dropped.
@@ -364,12 +379,7 @@ def extract_chapters(html: str) -> list[tuple[str, str]]:
     # both when there is none and at index 0 — a whole work is never a catalogue,
     # so 0 means leave it be, never slice the book to nothing.
     cut = _catalogue_start(merged)
-    if cut:
-        merged = merged[:cut]
-    if merged:
-        title, body = merged[-1]
-        merged[-1] = (title, _cut_at_colophon(body))
-    return merged
+    return _cut_last_at_colophon(merged[:cut] if cut else merged)
 
 
 class Command(BaseCommand):
