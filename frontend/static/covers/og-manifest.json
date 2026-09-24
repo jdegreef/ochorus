@@ -3742,6 +3742,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/spurgeon-on-prayer": {
+			"ground": "1bed501f567056b8f26c09a2ba5ec0074fe69ea21432e686996043cb5fb346d9",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "band/oxblood",
+			"bar": 0.04
+		},
 		"uk/stepping-stones-2": {
 			"ground": "c41017037413da4a9543d13901c454d70ac7d67c41d8e5596813d50df3be38fe",
 			"style": "lettered",
