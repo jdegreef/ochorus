@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-24 (queue job #2788): sw plan ACTIVATED — first-steps-for-teens ("Hatua
+// za Kwanza: Imani kwa Vijana"), backed by around-the-wicket-gate and men-and-women-who-gave-
+// everything-2. Shipping men-and-women-who-gave-everything-2.sw completes the sw source-book set, so
+// seed_plans creates the (first-steps-for-teens, sw) row; /sw/plans re-crawls to bake the new card.
 // prerender refresh 2026-09-24 (queue job #2543): Spanish plan ACTIVATED — christ-our-healer
 // ("Cristo, nuestro Sanador"), a CURATED_PLANS entry over the-fourfold-gospel, the-gospel-of-healing
 // and divine-healing. Shipping the-gospel-of-healing.es completes the es set, so seed_plans creates

@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #2788): Swahili book — men-and-women-who-gave-everything-2,
+// an Ochorus Originals devotional on ten missionaries who gave everything, 13 chapters ("Wanaume na
+// Wanawake Waliotoa Yote"). Book pages are prerendered per locale, so /sw/books and the shelf rebuild
+// with the translated title over the shared derived-ground painting and the reader page bakes the 13
+// chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #2543): Spanish book — the-gospel-of-healing, A. B.
 // Simpson's treatise on divine healing ("El Evangelio de la sanidad"), 7 chapters. Book pages are
 // prerendered per locale, so /es/books and the shelf rebuild with the translated title over the
