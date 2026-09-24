@@ -401,6 +401,32 @@ class TopicTests(TestCase):
             ).exists()
         )
 
+    def test_seed_topics_removes_a_member_topic_seed_dropped(self):
+        # Membership used to be add-only: #2872 took the copyright-blocked
+        # grace-for-grace-2 off two shelves, and its rows stayed live.
+        call_command("seed_topics", verbosity=0)
+        topic = Topic.objects.get(slug="prayer")
+        TopicBook.objects.create(topic=topic, book_slug="dropped-book", sort_order=99)
+        TopicSermon.objects.create(topic=topic, sermon_slug="dropped-sermon")
+        call_command("seed_topics", verbosity=0)
+        self.assertFalse(TopicBook.objects.filter(book_slug="dropped-book").exists())
+        self.assertFalse(TopicSermon.objects.filter(sermon_slug="dropped-sermon").exists())
+        # ...while every member topic_seed still lists survives.
+        self.assertTrue(
+            TopicBook.objects.filter(topic=topic, book_slug="the-inner-chamber").exists()
+        )
+
+    def test_seed_topics_refreshes_the_english_title_and_description(self):
+        call_command("seed_topics", verbosity=0)
+        topic = Topic.objects.get(slug="prayer")
+        want = (topic.title, topic.description, topic.sort_order)
+        Topic.objects.filter(pk=topic.pk).update(
+            title="Stale", description="Stale blurb.", sort_order=999
+        )
+        call_command("seed_topics", verbosity=0)
+        topic.refresh_from_db()
+        self.assertEqual((topic.title, topic.description, topic.sort_order), want)
+
     def test_every_translated_language_covers_every_topic(self):
         """A translated language must cover every topic that isn't translation-pending.
 
