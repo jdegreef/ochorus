@@ -1,0 +1,2886 @@
+{
+ "kind": "book",
+ "slug": "spurgeon-on-prayer",
+ "language": "uk",
+ "job_issue": 1795,
+ "pull_request": null,
+ "note": [
+  "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “. Hebrews cited as Євреїв, not Kulish's Жидів. Spurgeon re-persons verses constantly (thy/thee); every re-personed or paraphrased quotation is self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "block_index": 11,
+   "why": "nominative form of Kulish 'престола благодати' (Spurgeon quotes the phrase alone)"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "block_index": 11,
+   "why": "nominative form of Kulish 'престола благодати' (Spurgeon quotes the phrase alone)"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 6:9-10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Job 15:15; Job 4:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "self_rendered",
+   "block_index": 24,
+   "why": "re-personed I→we, inside a hypothetical prayer"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Genesis 41:43",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Psalm 95:6-7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Psalm 96:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "self_rendered",
+   "block_index": 40,
+   "why": "Kulish has a parenthetical insertion '(щирі) слова'; rendered plainly as Spurgeon quotes it"
+  },
+  {
+   "reference": "Hosea 14:2,4",
+   "status": "self_rendered",
+   "block_index": 40,
+   "why": "merged 2 verses and paraphrase (KJV 14:2 'receive us graciously' + 14:4 'love them freely' re-personed to 'us')"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "block_index": 37,
+   "why": "phrase in nominative, matching the sermon title (Kulish has genitive 'престола благодати')"
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "block_index": 37,
+   "why": "phrase in nominative, matching the sermon title (Kulish has genitive 'престола благодати')"
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "Ezekiel 1:22",
+   "status": "self_rendered",
+   "block_index": 47,
+   "why": "Kulish 'пречудного кришталю' loses Spurgeon's 'terrible'; rendered to fit his point"
+  },
+  {
+   "reference": "Romans 9:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 47
+  },
+  {
+   "reference": "Romans 9:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 47
+  },
+  {
+   "reference": "Romans 9:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 47
+  },
+  {
+   "reference": "Malachi 3:17",
+   "status": "self_rendered",
+   "block_index": 47,
+   "why": "paraphrase inside Spurgeon's own speech put in God's mouth"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "block_index": 23,
+   "why": "phrase inflected (instrumental) to fit the sentence; modern spelling"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Isaiah 25:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Jonah 1:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 74
+  },
+  {
+   "reference": "Luke 15:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 74
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Psalm 55:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 77
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Exodus 20:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 79
+  },
+  {
+   "reference": "Exodus 20:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 79
+  },
+  {
+   "reference": "Psalm 50:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 80
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "self_rendered",
+   "block_index": 80,
+   "why": "fragments of the verse joined (народе + виливайте …) as Spurgeon quotes it"
+  },
+  {
+   "reference": "Isaiah 55:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "block_index": 81,
+   "why": "re-personed let us come → come (imperative)"
+  },
+  {
+   "reference": "James 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "2 Samuel 5:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 84
+  },
+  {
+   "reference": "Romans 8:32a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 89
+  },
+  {
+   "reference": "Romans 8:32b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 89
+  },
+  {
+   "reference": "Psalm 50:15",
+   "status": "self_rendered",
+   "block_index": 92,
+   "why": "paraphrase: Spurgeon has 'answer' for KJV 'deliver'"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "block_index": 92,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 92
+  },
+  {
+   "reference": "James 1:6-7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 93
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 97
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Daniel 2:17-18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 103
+  },
+  {
+   "reference": "Revelation 5:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 104
+  },
+  {
+   "reference": "Proverbs 2:3-5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "block_index": 108,
+   "why": "alternative English version of the verse (fortified); Kulish wording does not fit"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "block_index": 108,
+   "why": "alternative English version of the verse (reserved); Kulish wording does not fit"
+  },
+  {
+   "reference": "Hosea 12:3-4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 110
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Lamentations 3:57-58",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 112
+  },
+  {
+   "reference": "Psalm 118:5, 21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 112
+  },
+  {
+   "reference": "Psalm 107:6-7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 113
+  },
+  {
+   "reference": "2 Kings 4:1",
+   "status": "self_rendered",
+   "block_index": 113,
+   "why": "paraphrase (Spurgeon drops 'thy servant')"
+  },
+  {
+   "reference": "2 Kings 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 113
+  },
+  {
+   "reference": "2 Kings 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 86
+  },
+  {
+   "reference": "2 Kings 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 113
+  },
+  {
+   "reference": "John 6:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 114,
+   "why": "deliberate popular misquotation Spurgeon corrects"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 117
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "block_index": 122,
+   "why": "re-personed you→me, past tense, in the mother's words"
+  },
+  {
+   "reference": "Ruth 2:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 123
+  },
+  {
+   "reference": "Ruth 2:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 123
+  },
+  {
+   "reference": "Job 42:7-8, 10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 123
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Luke 7:47-48",
+   "status": "self_rendered",
+   "block_index": 125,
+   "why": "paraphrase merging 2 verses"
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 127
+  },
+  {
+   "reference": "Job 23:4",
+   "status": "self_rendered",
+   "block_index": 127,
+   "why": "Kulish 'оправдуваннєм' does not fit the sermon's point (arguments/доводи); rendered to match"
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "self_rendered",
+   "block_index": 128,
+   "why": "expanded by Spurgeon (HIM—who is my God)"
+  },
+  {
+   "reference": "Psalm 91:9",
+   "status": "self_rendered",
+   "block_index": 128,
+   "why": "paraphrase re-personed to third person"
+  },
+  {
+   "reference": "Job 16:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 128
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "self_rendered",
+   "block_index": 128,
+   "why": "paraphrase: 'my God' substituted for 'him'"
+  },
+  {
+   "reference": "Jeremiah 17:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 128
+  },
+  {
+   "reference": "Jeremiah 17:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 128
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 129
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 129
+  },
+  {
+   "reference": "Song of Solomon 3:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 129
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 129
+  },
+  {
+   "reference": "Job 23:4",
+   "status": "self_rendered",
+   "block_index": 127,
+   "why": "Kulish 'оправдуваннєм' does not fit the sermon's point (arguments/доводи); rendered to match"
+  },
+  {
+   "reference": "Psalm 5:3",
+   "status": "self_rendered",
+   "block_index": 135,
+   "why": "KJV 'direct my prayer…look up' (Spurgeon expounds it as aiming an arrow); Kulish wording does not carry this"
+  },
+  {
+   "reference": "Psalm 5:3",
+   "status": "self_rendered",
+   "block_index": 135,
+   "why": "KJV 'I will look up'; Kulish wording does not carry this"
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 136
+  },
+  {
+   "reference": "Genesis 17:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "Genesis 17:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 138
+  },
+  {
+   "reference": "Genesis 18:24-25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 143
+  },
+  {
+   "reference": "Genesis 32:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 144
+  },
+  {
+   "reference": "Genesis 32:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 144
+  },
+  {
+   "reference": "Genesis 32:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 144
+  },
+  {
+   "reference": "2 Samuel 7:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 144
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "self_rendered",
+   "block_index": 144,
+   "why": "Kulish verse has bracketed editorial insertions '(нехай буде)' and 'омана' does not fit as a clean quote"
+  },
+  {
+   "reference": "Joshua 23:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 144
+  },
+  {
+   "reference": "Joshua 7:9; Numbers 14:16",
+   "status": "self_rendered",
+   "block_index": 145,
+   "why": "merged 2 verses (Josh 7:9 + Num 14:16/Exod 32:12), paraphrase"
+  },
+  {
+   "reference": "Psalm 35:21; Psalm 42:10",
+   "status": "self_rendered",
+   "block_index": 145,
+   "why": "merged 2 verses, re-personed thy→your"
+  },
+  {
+   "reference": "Joshua 7:9",
+   "status": "self_rendered",
+   "block_index": 145,
+   "why": "kept consistent with the earlier self-rendered form of the same plea; Kulish has 'тодї' tied to its context"
+  },
+  {
+   "reference": "Job 5:19",
+   "status": "self_rendered",
+   "block_index": 145,
+   "why": "paraphrase, re-personed into God's first person"
+  },
+  {
+   "reference": "2 Kings 18:34; 19:13; 18:30",
+   "status": "self_rendered",
+   "block_index": 145,
+   "why": "merged and paraphrased several verses"
+  },
+  {
+   "reference": "Lamentations 4:7-8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 146
+  },
+  {
+   "reference": "Lamentations 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 146
+  },
+  {
+   "reference": "Psalm 27:9",
+   "status": "self_rendered",
+   "block_index": 147,
+   "why": "Kulish lacks the clause 'thou hast been my help'; built around Kulish 'не цурайся і не опусти мене'"
+  },
+  {
+   "reference": "Psalm 71:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 147
+  },
+  {
+   "reference": "Numbers 14:13",
+   "status": "self_rendered",
+   "block_index": 147,
+   "why": "paraphrase of Moses' plea, re-personed to direct address"
+  },
+  {
+   "reference": "Judges 14:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Psalm 25:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Isaiah 42:3",
+   "status": "self_rendered",
+   "block_index": 148,
+   "why": "allusion re-personed into first-person prayer"
+  },
+  {
+   "reference": "1 Samuel 24:14",
+   "status": "self_rendered",
+   "block_index": 148,
+   "why": "grammar adapted into Spurgeon's question (Kulish 1sa 24:15: 'Здохлого пса, одну блоху')"
+  },
+  {
+   "reference": "1 Kings 18:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 149
+  },
+  {
+   "reference": "1 Kings 18:34",
+   "status": "self_rendered",
+   "block_index": 149,
+   "why": "paraphrase with Spurgeon's expansion"
+  },
+  {
+   "reference": "1 Kings 18:34",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 149
+  },
+  {
+   "reference": "1 Kings 18:34",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 149
+  },
+  {
+   "reference": "1 Kings 18:36",
+   "status": "self_rendered",
+   "block_index": 149,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "John 14:14",
+   "status": "self_rendered",
+   "block_index": 150,
+   "why": "merged John 14:14 / 16:23 as Spurgeon quotes it"
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "block_index": 153,
+   "why": "Kulish omits 'wide', on which the illustration turns"
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "block_index": 153,
+   "why": "Spurgeon's adaptation of the text"
+  },
+  {
+   "reference": "James 4:2-3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:2",
+   "status": "self_rendered",
+   "block_index": 162,
+   "why": "re-personed you→they"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 165
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "Psalm 34:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 166
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "Psalm 37:8, 10-11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 175
+  },
+  {
+   "reference": "James 4:2",
+   "status": "self_rendered",
+   "block_index": 177,
+   "why": "re-personed you→they; Kulish 'завидуєте' does not fit Spurgeon's 'desire to have'"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "self_rendered",
+   "block_index": 160,
+   "why": "re-personed you→they (Churches)"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 182
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "James 4:2-3",
+   "status": "self_rendered",
+   "block_index": 186,
+   "why": "merged 2 verses"
+  },
+  {
+   "reference": "James 4:2-3",
+   "status": "self_rendered",
+   "block_index": 187,
+   "why": "re-personed you→we, merged 2 verses"
+  },
+  {
+   "reference": "James 4:2-3",
+   "status": "self_rendered",
+   "block_index": 188,
+   "why": "merged 2 verses"
+  },
+  {
+   "reference": "John 16:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 190
+  },
+  {
+   "reference": "Psalm 2:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 191
+  },
+  {
+   "reference": "John 3:8",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "re-personed: wind/Spirit rendered as He"
+  },
+  {
+   "reference": "Psalm 107:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "Psalm 107:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "Psalm 107:27-28",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "Matthew 11:27a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 202
+  },
+  {
+   "reference": "1 Corinthians 3:22-23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 202
+  },
+  {
+   "reference": "Psalm 66:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 202
+  },
+  {
+   "reference": "Hosea 12:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 202
+  },
+  {
+   "reference": "Hebrews 13:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 202
+  },
+  {
+   "reference": "Joshua 1:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 202
+  },
+  {
+   "reference": "2 Peter 1:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 203
+  },
+  {
+   "reference": "1 Kings 3:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 203
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 203
+  },
+  {
+   "reference": "Proverbs 3:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 203
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 203
+  },
+  {
+   "reference": "Genesis 17:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 204
+  },
+  {
+   "reference": "Psalm 21:4",
+   "status": "self_rendered",
+   "block_index": 205,
+   "why": "re-personed he→the king; abridged"
+  },
+  {
+   "reference": "Mark 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 205
+  },
+  {
+   "reference": "Luke 23:42",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 206
+  },
+  {
+   "reference": "Luke 23:43",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 206
+  },
+  {
+   "reference": "Luke 15:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 207
+  },
+  {
+   "reference": "Luke 15:24, 22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 207
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 207,
+   "why": "Spurgeon's deliberate misquotation"
+  },
+  {
+   "reference": "Revelation 8:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 208
+  },
+  {
+   "reference": "Revelation 8:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Revelation 8:3b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Revelation 8:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Revelation 8:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 210
+  },
+  {
+   "reference": "Revelation 8:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 210
+  },
+  {
+   "reference": "1 John 3:22-24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 212
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 212
+  },
+  {
+   "reference": "Isaiah 1:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 213
+  },
+  {
+   "reference": "Isaiah 1:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 213
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "Judges 10:13-14",
+   "status": "self_rendered",
+   "block_index": 219,
+   "why": "abridged/adapted: Kulish 10:14 lacks 'cry unto'; God's pronouns capitalised"
+  },
+  {
+   "reference": "Psalm 81:13-16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 221
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "self_rendered",
+   "block_index": 221,
+   "why": "abridged: 'believing' omitted, as in the English"
+  },
+  {
+   "reference": "Leviticus 26:23-24; Psalm 18:26",
+   "status": "self_rendered",
+   "block_index": 222,
+   "why": "merged 2 passages, paraphrase; Kulish Ps 18:26 wording differs in sense"
+  },
+  {
+   "reference": "Psalm 26:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 222
+  },
+  {
+   "reference": "1 John 3:22b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 225
+  },
+  {
+   "reference": "1 John 3:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "Matthew 9:29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 226
+  },
+  {
+   "reference": "James 1:5-7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 226
+  },
+  {
+   "reference": "John 14:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 227
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 233
+  },
+  {
+   "reference": "Psalm 37:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 234
+  },
+  {
+   "reference": "1 John 3:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 235
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 235
+  },
+  {
+   "reference": "1 John 3:24a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 238
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 240
+  },
+  {
+   "reference": "1 John 3:24b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "John 11:42",
+   "status": "self_rendered",
+   "block_index": 242,
+   "why": "re-tensed (knew→know) and applied to the believer; Kulish 'Я ж знав, що всякого часу мене чуєш' does not fit"
+  },
+  {
+   "reference": "1 John 3:21-22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 246
+  },
+  {
+   "reference": "Isaiah 42:3",
+   "status": "self_rendered",
+   "block_index": 247,
+   "why": "re-personed he→I (Spurgeon's 'I will not quench the smoking flax')"
+  },
+  {
+   "reference": "1 John 3:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "Matthew 13:30",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 262
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "self_rendered",
+   "block_index": 260,
+   "why": "Kulish wording ('Бог бачений') doesn't fit Spurgeon's KJV-based 'Thou God seest me'; addressed form"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 264
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 265,
+   "why": "participle \"praying\" adjusted to running grammar"
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "self_rendered",
+   "block_index": 266,
+   "why": "paraphrase (\"Let others do as they will\")"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 265,
+   "why": "participle \"praying\" adjusted to running grammar"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 265,
+   "why": "participle \"praying\" adjusted to running grammar"
+  },
+  {
+   "reference": "Jude 1:21a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 268
+  },
+  {
+   "reference": "Jude 1:21b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 269
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 272,
+   "why": "fragment \"in the Holy Spirit\" fitted to running grammar"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 265,
+   "why": "participle \"praying\" adjusted to running grammar"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 281
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 265,
+   "why": "participle \"praying\" adjusted to running grammar"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 265,
+   "why": "participle \"praying\" adjusted to running grammar"
+  },
+  {
+   "reference": "Psalm 103:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 284
+  },
+  {
+   "reference": "Psalm 103:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 284
+  },
+  {
+   "reference": "Psalm 34:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 285
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 265,
+   "why": "participle phrase; Kulish has the imperative (молїть ся)"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 264
+  },
+  {
+   "reference": "John 4:23-24",
+   "status": "self_rendered",
+   "block_index": 300,
+   "why": "merged 2 verses, paraphrased into indirect speech"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "self_rendered",
+   "block_index": 303,
+   "why": "Kulish wording ('Не пущу; мусиш благословити мене') lacks the addressed object Spurgeon's form uses; rendered to fit"
+  },
+  {
+   "reference": "Malachi 1:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 304
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "Kulish has imperative 'молїть ся'; Spurgeon uses it as a noun phrase"
+  },
+  {
+   "reference": "Judges 5:23",
+   "status": "self_rendered",
+   "block_index": 318,
+   "why": "paraphrase: 'said the Lord' for 'angel of the Lord', middle clause omitted, 'against the mighty'"
+  },
+  {
+   "reference": "Isaiah 45:19",
+   "status": "self_rendered",
+   "block_index": 321,
+   "why": "paraphrase merging Isa 45:19 with 'seek my face' wording; Kulish line ('Шкода вам шуката мене') differs and has a typo"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 324
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "block_index": 324,
+   "why": "paraphrase ('Always pray') of the verse as the apostle's implied answer"
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "1 Thessalonians 5:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 324
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "Exodus 14:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 327
+  },
+  {
+   "reference": "Acts 17:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 329
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 356
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 361
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "Psalms 127:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 364
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 364
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 374
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 374
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 374
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 374
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 374
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 374
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "block_index": 377,
+   "why": "tense contrast (\"ye do receive\"), not in Kulish wording"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 374
+  },
+  {
+   "reference": "Esther 5:6",
+   "status": "self_rendered",
+   "block_index": 378,
+   "why": "paraphrase merging Esther 5:6 / 7:2, reworded by Spurgeon"
+  },
+  {
+   "reference": "Luke 17:5",
+   "status": "self_rendered",
+   "block_index": 379,
+   "why": "paraphrase (\"Lord increase it\", of faith)"
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "self_rendered",
+   "block_index": 379,
+   "why": "re-personed prayer paraphrase"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 381
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 381
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 381
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 381
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 382
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 381
+  },
+  {
+   "reference": "1 John 5:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 382
+  },
+  {
+   "reference": "Daniel 10:12-14",
+   "status": "self_rendered",
+   "block_index": 383,
+   "why": "paraphrase of the angel's words, retold by Spurgeon"
+  },
+  {
+   "reference": "Habakkuk 2:1",
+   "status": "self_rendered",
+   "block_index": 383,
+   "why": "paraphrase, re-personed and expanded"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 381
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 374
+  },
+  {
+   "reference": "Jeremiah 48:11",
+   "status": "self_rendered",
+   "block_index": 385,
+   "why": "stock prayer-meeting cliche loosely drawn from the verse, quoted as misused"
+  },
+  {
+   "reference": "Jeremiah 8:6",
+   "status": "self_rendered",
+   "block_index": 385,
+   "why": "Kulish wording inflected to accusative to fit the sentence; stock prayer cliche"
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "self_rendered",
+   "block_index": 385,
+   "why": "deliberately misquoted form (Spurgeon calls it a mangled text), re-personed to address God"
+  },
+  {
+   "reference": "Psalm 27:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 388
+  },
+  {
+   "reference": "Isaiah 45:19",
+   "status": "self_rendered",
+   "block_index": 388,
+   "why": "Kulish wording (Шкода вам шуката мене, with a typo) doesn't fit Spurgeon's phrasing"
+  },
+  {
+   "reference": "Isaiah 45:11",
+   "status": "self_rendered",
+   "block_index": 388,
+   "why": "paraphrase (adds daughters); Kulish renders the verse as a rebuke, not the KJV invitation"
+  },
+  {
+   "reference": "Luke 11:5",
+   "status": "self_rendered",
+   "block_index": 388,
+   "why": "paraphrase give vs lend (Kulish позич)"
+  },
+  {
+   "reference": "Luke 11:5",
+   "status": "self_rendered",
+   "block_index": 388,
+   "why": "paraphrase give vs lend, repeated within Augustine's paraphrase"
+  },
+  {
+   "reference": "Psalm 25:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 390
+  },
+  {
+   "reference": "Hosea 14:2,4",
+   "status": "self_rendered",
+   "block_index": 390,
+   "why": "merged 2 verses and re-personed them→us; Kulish numbering offset and wording differs"
+  },
+  {
+   "reference": "Psalm 141:5",
+   "status": "self_rendered",
+   "block_index": 391,
+   "why": "Kulish reads 'за лихі їх вчинки' (their evil deeds); Spurgeon's exposition rests on the KJV 'in their calamities'"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 395
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 398
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 399
+  },
+  {
+   "reference": "Ephesians 3:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 401
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 408
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "status": "self_rendered",
+   "block_index": 408,
+   "why": "re-personed I→He"
+  },
+  {
+   "reference": "Psalm 51:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 410
+  },
+  {
+   "reference": "Isaiah 62:6",
+   "status": "self_rendered",
+   "block_index": 410,
+   "why": "allusion to the KJV margin 'remembrancers'; not in Kulish wording"
+  },
+  {
+   "reference": "2 Kings 4:13",
+   "status": "self_rendered",
+   "block_index": 414,
+   "why": "re-personed (wouldest thou → I would) and applied to the heavenly King"
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 414
+  },
+  {
+   "reference": "Psalm 139:23-24",
+   "status": "self_rendered",
+   "block_index": 421,
+   "why": "paraphrase (Spurgeon's 'know my ways', 'see if there is any wicked way'); merged 2 verses, leaning on Kulish vocabulary"
+  },
+  {
+   "reference": "Ezra 7:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 422
+  },
+  {
+   "reference": "Psalm 141:5",
+   "status": "self_rendered",
+   "block_index": 426,
+   "why": "Kulish reads 'за лихі їх вчинки' (evil deeds), which does not fit Spurgeon's point about 'calamities'"
+  },
+  {
+   "reference": "Psalm 141:5",
+   "status": "self_rendered",
+   "block_index": 431,
+   "why": "Kulish reads 'за лихі їх вчинки' (evil deeds), not 'calamities', which Spurgeon's point depends on; rendered from the KJV sense"
+  },
+  {
+   "reference": "Revelation 3:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 433
+  },
+  {
+   "reference": "Job 38:11",
+   "status": "self_rendered",
+   "block_index": 439,
+   "why": "re-addressed to the grace of God; paraphrase"
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 447
+  },
+  {
+   "reference": "2 Corinthians 1:11-12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "2 Corinthians 1:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 449
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 449
+  },
+  {
+   "reference": "2 Corinthians 1:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 450
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 451
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 451
+  },
+  {
+   "reference": "2 Corinthians 1:11a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "2 Corinthians 1:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "Ezekiel 36:37",
+   "status": "self_rendered",
+   "block_index": 456,
+   "why": "Kulish wording (\"покажу ласку\") does not carry the \"inquired of\" sense Spurgeon relies on"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 458
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 458
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 458
+  },
+  {
+   "reference": "Acts 2:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 462
+  },
+  {
+   "reference": "Genesis 43:3",
+   "status": "self_rendered",
+   "block_index": 462,
+   "why": "paraphrase applied to God, re-personed, expanded"
+  },
+  {
+   "reference": "Hebrews 10:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 468
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 469
+  },
+  {
+   "reference": "1 Kings 22:31",
+   "status": "self_rendered",
+   "block_index": 469,
+   "why": "adapted: \"the king of Israel\" replaced by \"the ministers of God\""
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "Numbers 23:23",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "Kulish's Num 23:23 is a verse paraphrase that lacks the phrase 'What hath God wrought'"
+  },
+  {
+   "reference": "1 Samuel 4:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 479
+  },
+  {
+   "reference": "2 Corinthians 1:11a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "Psalm 34:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 482
+  },
+  {
+   "reference": "Psalm 34:3,6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 482
+  },
+  {
+   "reference": "2 Corinthians 1:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "Amos 8:11",
+   "status": "self_rendered",
+   "block_index": 495,
+   "why": "paraphrase inside a prayer; Kulish wording does not fit"
+  },
+  {
+   "reference": "2 Timothy 4:21",
+   "status": "self_rendered",
+   "block_index": 500,
+   "why": "re-personed thy→your (plural), adds 'again'"
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:6a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:6a",
+   "status": "self_rendered",
+   "block_index": 517,
+   "why": "Spurgeon's deliberate 'care-full' respelling of the verse to bring out its meaning"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:6b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 522
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 522
+  },
+  {
+   "reference": "Job 10:2",
+   "status": "self_rendered",
+   "block_index": 522,
+   "why": "re-personed as a prayer, KJV 'shew me wherefore thou contendest with me'; Kulish wording differs"
+  },
+  {
+   "reference": "Psalm 37:3",
+   "status": "self_rendered",
+   "block_index": 523,
+   "why": "re-personed thou→you, KJV wording differs from Kulish"
+  },
+  {
+   "reference": "Philippians 4:6b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:5-6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 529
+  },
+  {
+   "reference": "Philippians 4:5-6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 529
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Luke 12:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 532
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 543
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 543
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 549
+  },
+  {
+   "reference": "Philippians 4:1",
+   "status": "self_rendered",
+   "block_index": 549,
+   "why": "single word, case changed to fit sentence"
+  },
+  {
+   "reference": "Philippians 4:1",
+   "status": "self_rendered",
+   "block_index": 549,
+   "why": "single word, recast as verb for Spurgeon's paraphrase"
+  },
+  {
+   "reference": "Philippians 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 549
+  },
+  {
+   "reference": "Philippians 4:1",
+   "status": "self_rendered",
+   "block_index": 549,
+   "why": "single word, case changed to fit sentence"
+  },
+  {
+   "reference": "Philippians 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 549
+  },
+  {
+   "reference": "Philippians 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 550
+  },
+  {
+   "reference": "Philippians 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 522
+  },
+  {
+   "reference": "Philippians 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 550
+  },
+  {
+   "reference": "Philippians 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 550
+  },
+  {
+   "reference": "Philippians 4:2",
+   "status": "self_rendered",
+   "block_index": 550,
+   "why": "recast as direct imperative to the hearers"
+  },
+  {
+   "reference": "Philippians 4:2",
+   "status": "self_rendered",
+   "block_index": 550,
+   "why": "recast as direct imperative to the hearers"
+  },
+  {
+   "reference": "Philippians 4:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 551
+  },
+  {
+   "reference": "Philippians 4:3",
+   "status": "self_rendered",
+   "block_index": 551,
+   "why": "case changed (vocative to nominative)"
+  },
+  {
+   "reference": "Philippians 4:3",
+   "status": "self_rendered",
+   "block_index": 551,
+   "why": "case changed to fit sentence"
+  },
+  {
+   "reference": "Philippians 4:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 551
+  },
+  {
+   "reference": "Philippians 4:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 551
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 553
+  },
+  {
+   "reference": "Philippians 4:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 554
+  },
+  {
+   "reference": "Philippians 4:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 554
+  },
+  {
+   "reference": "Philippians 4:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 554
+  },
+  {
+   "reference": "Philippians 4:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 554
+  },
+  {
+   "reference": "Philippians 4:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 529
+  },
+  {
+   "reference": "Philippians 4:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 529
+  },
+  {
+   "reference": "Philippians 4:6a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 556
+  },
+  {
+   "reference": "Philippians 4:6-8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 558
+  },
+  {
+   "reference": "Philippians 4:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 559
+  },
+  {
+   "reference": "Philippians 4:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 559
+  },
+  {
+   "reference": "Philippians 4:9b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 560
+  },
+  {
+   "reference": "Philippians 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 561
+  },
+  {
+   "reference": "Philippians 4:10",
+   "status": "self_rendered",
+   "block_index": 561,
+   "why": "paraphrase of the verse in Paul's voice"
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 562
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 562
+  },
+  {
+   "reference": "Philippians 4:12a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 563
+  },
+  {
+   "reference": "Philippians 4:12a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 563
+  },
+  {
+   "reference": "Philippians 4:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 564
+  },
+  {
+   "reference": "Philippians 4:13a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 565
+  },
+  {
+   "reference": "Philippians 4:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 566
+  },
+  {
+   "reference": "Philippians 4:14-17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 567
+  },
+  {
+   "reference": "Philippians 4:18-19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 568
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 568
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 568,
+   "why": "Spurgeon's interpolation inside the verse"
+  },
+  {
+   "reference": "Philippians 4:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 569
+  },
+  {
+   "reference": "Philippians 4:21a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 570
+  },
+  {
+   "reference": "Philippians 4:21a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 570
+  },
+  {
+   "reference": "Philippians 4:21b-22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 571
+  },
+  {
+   "reference": "Philippians 4:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 572
+  },
+  {
+   "reference": "Psalm 147:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 573
+  },
+  {
+   "reference": "Luke 12:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 578
+  },
+  {
+   "reference": "Psalm 77:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 581
+  },
+  {
+   "reference": "Esther 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 582
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 582
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 586
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 598
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 602
+  },
+  {
+   "reference": "Micah 7:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 606
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 606
+  },
+  {
+   "reference": "Romans 10:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 609
+  },
+  {
+   "reference": "Psalm 50:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 609
+  },
+  {
+   "reference": "Mark 16:15-16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 609
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 609
+  },
+  {
+   "reference": "Acts 2:38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 609
+  },
+  {
+   "reference": "Hosea 14:2,4",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "re-personed us/them→you; merged Hosea 14:2 and 14:4 (KJV)"
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "re-personed our→your; paraphrase of KJV 'render the calves of our lips'"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 598
+  },
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 613
+  },
+  {
+   "reference": "Psalm 118:11-12",
+   "status": "self_rendered",
+   "block_index": 615,
+   "why": "merged and rearranged Psalm 118:11-12"
+  },
+  {
+   "reference": "Proverbs 15:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 616
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 598
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "block_index": 619,
+   "why": "paraphrase: Spurgeon adapts the verse as Christ's intercession with an added phrase"
+  },
+  {
+   "reference": "1 Kings 18:43",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "paraphrase/condensed"
+  },
+  {
+   "reference": "Psalms 27:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 628
+  },
+  {
+   "reference": "Exodus 14:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 628
+  },
+  {
+   "reference": "Isaiah 49:8",
+   "status": "self_rendered",
+   "block_index": 628,
+   "why": "paraphrase (Spurgeon's wording differs from the verse)"
+  },
+  {
+   "reference": "Isaiah 44:22",
+   "status": "self_rendered",
+   "block_index": 628,
+   "why": "KJV wording (blotted out) differs from Kulish; rendered from the English"
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 628
+  },
+  {
+   "reference": "John 3:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 637
+  },
+  {
+   "reference": "John 6:47",
+   "status": "self_rendered",
+   "block_index": 637,
+   "why": "shortened: omits 'in me'"
+  },
+  {
+   "reference": "John 3:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 637
+  },
+  {
+   "reference": "1 John 5:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 640
+  }
+ ]
+}
