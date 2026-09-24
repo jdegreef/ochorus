@@ -1041,6 +1041,35 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ),
         ],
     },
+    "a-ribband-of-blue": {
+        # The sermon's own title line was lost, and with it the end of a
+        # sentence: the body read "…to introduce the wearing of the" and then
+        # moved on to "GOD would have all His people wear a badge." Gutenberg
+        # #23438 sets the missing words as a centred display line,
+        # `<div class="c1"><small>"RIBBAND OF BLUE."</small></div>`, and
+        # `import_sermons.extract_gutenberg_section` collects only headings, `<p>` and
+        # `<blockquote>` — so a `div` is skipped outright, not sanitized away.
+        # Restored as its own `<p>`, the block it would be had the importer
+        # kept it, with the small caps flattened as everywhere else in the body.
+        #
+        # One pair PER EDITION, each anchored on that language's next paragraph
+        # so it can only bite its own row: the fr and sw translations were made
+        # from the damaged English and carry the same truncation at the same
+        # block. All three move together or `tests_translation_markup`'s tag
+        # parity breaks. The fr follows its title ("Un cordon bleu"); the sw
+        # follows its title ("Uzi wa Rangi ya Samawi", Union Version wording).
+        # The sw translation notes' `block_index` values after the new block
+        # shifted by one in the same commit; the one quote anchored in this
+        # sermon (`quote_seed`, paragraph 6) sits above it.
+        "restored_blocks": [
+            ("<p>GOD would have all His people wear a badge.",
+             '<p>"RIBBAND OF BLUE."</p>'),
+            ("<p>Dieu voulait que tout son peuple portât un signe.",
+             "<p>« CORDON BLEU ».</p>"),
+            ("<p>MUNGU alitaka watu wake wote wavae alama.",
+             '<p>"UZI WA RANGI YA SAMAWI."</p>'),
+        ],
+    },
     "essentials-of-prayer": {
         # A quoted hymn line broke across a line and rejoined with a space
         # before the comma ("He has said He will , If we but trust"). Restore
