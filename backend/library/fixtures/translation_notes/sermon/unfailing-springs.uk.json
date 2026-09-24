@@ -20,40 +20,34 @@
     {
       "reference": "John 4:17",
       "status": "self_rendered",
-      "block_index": 7
+      "block_index": 8
     },
     {
       "reference": "John 4:10",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 9
+      "block_index": 10
     },
     {
       "reference": "John 3:16",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 9
+      "block_index": 10
     },
     {
       "reference": "Matthew 28:20",
       "status": "self_rendered",
-      "block_index": 9
+      "block_index": 10
     },
     {
       "reference": "Psalms 18:30",
       "status": "self_rendered",
-      "block_index": 9
+      "block_index": 10
     },
     {
       "reference": "John 4:13",
       "status": "self_rendered",
-      "block_index": 10
-    },
-    {
-      "reference": "John 4:14",
-      "status": "mined",
-      "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 10
+      "block_index": 11
     },
     {
       "reference": "John 4:14",
@@ -68,36 +62,42 @@
       "block_index": 12
     },
     {
-      "reference": "John 6:35",
+      "reference": "John 4:14",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
       "block_index": 13
     },
     {
+      "reference": "John 6:35",
+      "status": "mined",
+      "source_file": "Kulish (ukr-kul) Bible text",
+      "block_index": 14
+    },
+    {
       "reference": "John 1:18",
       "status": "self_rendered",
-      "block_index": 13
+      "block_index": 14
     },
     {
       "reference": "John 7:37",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 13
+      "block_index": 14
     },
     {
       "reference": "1 Corinthians 1:30",
       "status": "self_rendered",
-      "block_index": 14
+      "block_index": 15
     },
     {
       "reference": "John 4:14",
       "status": "self_rendered",
-      "block_index": 19
+      "block_index": 20
     },
     {
       "reference": "2 Kings 19:14",
       "status": "self_rendered",
-      "block_index": 19
+      "block_index": 20
     }
   ]
 }
