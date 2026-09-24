@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "christmas-evans",
+ "language": "ar",
+ "job_issue": 1653,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Revelation 1:16",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text — ebible arb_vdv, public domain"
+  },
+  {
+   "reference": "1 Timothy 6:8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text — ebible arb_vdv, public domain"
+  },
+  {
+   "reference": "Acts 3:19",
+   "status": "self_rendered"
+  }
+ ]
+}
