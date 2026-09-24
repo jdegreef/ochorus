@@ -5798,3 +5798,18 @@ BODY_CORRECTIONS.setdefault("hurlbuts-life-of-christ", {})["wrapped_blocks"] = [
     # ch104
     ('SOON AFTER the appearance of', 'p'),
 ]
+
+# --- ministry-of-intercession: a display line flattened to loose text ---------
+# Gutenberg #29296 closes the opening poem with its author, "F. R. Havergal.",
+# set as a `<div class="rt">`. The importer handed the div to the sanitizer,
+# which unwrapped it, so the name shipped run into the poem's last line. The
+# importer keeps it now (`ingest.display_line`, PR #3355) as its own `<p>` —
+# the poem above it stays loose text either way — and `wrap_loose_blocks` puts
+# it back in that block, byte for byte (`tests_english_audit` checks it
+# against the importer). Every edition at once: `tests_translation_markup` pins
+# the tag sequence. The name is the same string in en, es, fr, pt and sw, so
+# one entry serves all five; hi spells it in Devanagari.
+BODY_CORRECTIONS.setdefault("ministry-of-intercession", {})["wrapped_blocks"] = [
+    ("F. R. Havergal.", "p"),  # en es fr pt sw
+    ("एफ़. आर. हैवरगल।", "p"),  # hi
+]
