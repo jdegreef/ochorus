@@ -592,6 +592,9 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 #     paragraph into the one before it, and the break is put back between these
 #     two exact strings ("…their own experience." / "Alas!"). Not a
 #     `replacements` pair; `restore_paragraph_breaks` says why.
+#   wrapped_blocks: [(head, tag)] — the sanitizer UNWRAPPED a display line to
+#     loose text; the run opening with `head` goes back into `<tag>`. See
+#     `wrap_loose_blocks`.
 #   restored_blocks: [(anchor, block)] — the sanitizer DELETED a whole block
 #     (see `restore_dropped_blocks`), and it goes back in front of the block
 #     that followed it, identified by that block's opening. Not a
@@ -4533,6 +4536,70 @@ def restore_dropped_blocks(body_html: str, blocks: Sequence[tuple[str, str]]) ->
     return body_html
 
 
+# A block's opening or closing tag, for `wrap_loose_blocks`: where a loose run
+# ends, and whether a position already sits inside a block.
+_EDGE_BREAKS = _re.compile(r"^(?:\s|<br\s*/?>)+|(?:\s|<br\s*/?>)+$")
+_LEAD_BREAKS = _re.compile(r"^(?:\s|<br\s*/?>)+")
+_BLOCK_EDGE = _re.compile(r"<(/?)(?:p|h[1-6]|blockquote|ul|ol|li|table|hr)\b[^>]*>", _re.I)
+
+
+def wrap_loose_blocks(body_html: str, blocks: Sequence[tuple[str, ...]]) -> str:
+    """Give a flattened display line back its block: `(head, tag)` wraps the
+    loose run that opens with `head` in `<tag>…</tag>`.
+
+    The Gutenberg importer once handed a centred display line — a `<div>`
+    heading, dateline, signature, or a whole paragraph set as a drop-cap div —
+    to the sanitizer, which unwrapped it. The text shipped, but as loose text
+    between blocks: an opening paragraph with no `<p>`, a heading as an
+    unmarked run. `ingest.display_line` keeps them now; this repairs the rows
+    imported before it, which are never re-imported.
+
+    Not `restored_blocks`: nothing is missing, so inserting would say it twice.
+    Not a `replacements` pair either: the run is often a whole paragraph, and
+    a pair would have to quote all of it. `head` names where the line starts;
+    it ends where the next block begins, where another of the work's heads
+    begins (two lines flattened into one run: "MARY'S SONG" and the song under
+    it), or — given a third element, `(head, tag, tail)` — right after `tail`,
+    for a line that ran into loose text which is NOT a display line (an
+    illustration's caption). A `<br>` at the line's edge goes, as
+    `display_line` drops it; an `<h3>` holds plain text, as `display_line`
+    writes it. So each wrap is exactly the block a re-import emits, which is
+    what `tests_english_audit` checks, entry by entry, against the importer.
+
+    Idempotent by GUARD, like `restore_dropped_blocks`: a `head` that already
+    sits inside a block is skipped — the settled form, and a future re-import
+    that emits the block itself. `body_html` ONLY: the wrap adds tags.
+    """
+    if "<" not in body_html:
+        return body_html  # tagless: `body_text`, which must never gain tags
+    heads = [entry[0] for entry in blocks]
+    for head, tag, *tail in blocks:
+        start = 0
+        while (i := body_html.find(head, start)) >= 0:
+            start = i + len(head)
+            edges = list(_BLOCK_EDGE.finditer(body_html, 0, i))
+            if edges and not edges[-1].group(1) and not edges[-1].group(0).lower().startswith("<hr"):
+                continue  # inside a block: already wrapped
+            m = _BLOCK_EDGE.search(body_html, i)
+            end = m.start() if m else len(body_html)
+            for other in heads:
+                j = body_html.find(other, i + 1, end)
+                if other != head and j >= 0:
+                    end = j
+            if tail:
+                j = body_html.find(tail[0], i, end)
+                if j < 0:
+                    break  # the line is not what this entry describes
+                end = j + len(tail[0])
+            text = _EDGE_BREAKS.sub("", body_html[i:end])
+            if tag == "h3":
+                text = " ".join(_re.sub(r"<[^>]+>", " ", text).split())
+            rest = _LEAD_BREAKS.sub("", body_html[end:])
+            body_html = f"{body_html[:i]}<{tag}>{text}</{tag}> {rest}".rstrip()
+            break
+    return body_html
+
+
 def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     """Apply a work's body corrections to one chapter's HTML. Idempotent.
 
@@ -4562,6 +4629,7 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
             body_html = body_html.replace(old, new)
         body_html = restore_paragraph_breaks(body_html, entry.get("paragraph_breaks", ()))
         body_html = restore_dropped_blocks(body_html, entry.get("restored_blocks", ()))
+        body_html = wrap_loose_blocks(body_html, entry.get("wrapped_blocks", ()))
         if entry.get("strip_transcription_footnotes"):
             body_html = strip_transcription_footnotes(body_html)
     body_html = rejoin_linebreak_hyphens(body_html)
@@ -5383,3 +5451,239 @@ BODY_CORRECTIONS.setdefault("revival-lectures", {}).setdefault("replacements", [
     [(f"</p>{page}<p>", "</p> <p>") for page in _REVIVAL_PAGES_BETWEEN_BLOCKS]
     + [(defective, _unpage(defective)) for defective in _REVIVAL_PAGES_IN_PROSE]
 )
+
+# --- hurlbuts-life-of-christ: display lines flattened to loose text ------------
+# Gutenberg #40460 sets each chapter's drop-cap opening paragraph as a
+# `<div class="cap">`, and its centred headings ("MARY'S SONG", the title
+# over the cross) and displayed verse as divs too. The importer handed those
+# divs to the sanitizer, which unwrapped them: the text shipped, but as loose
+# runs between blocks — 118 of them, in 103 of the 104 chapters. The importer
+# keeps them now (`ingest.display_line`, PR #3355); these rows are never
+# re-imported, so `wrap_loose_blocks` puts each back in the block the
+# importer now emits, byte for byte (`tests_english_audit` checks every
+# entry against the importer). English only: there is no translation.
+# A third element ends a line that ran into an illustration's caption, which
+# is not a display line and stays as it was.
+BODY_CORRECTIONS.setdefault("hurlbuts-life-of-christ", {})["wrapped_blocks"] = [
+    # ch1
+    ('THERE HAVE been many famous', 'p'),
+    ('"In the shipyard stood the', 'p'),
+    # ch2
+    ('FIRST OF ALL, let us take a', 'p'),
+    # ch3
+    ('NEARLY ALL the people living', 'p'),
+    # ch4
+    ('IN THE land of Palestine one', 'p'),
+    ('"If I forget thee, O', 'p'),
+    # ch5
+    ('FOR OUR next story we visit', 'p'),
+    # ch6
+    ('AFTER THE visit of the angel', 'p'),
+    ("MARY'S SONG", 'h3'),
+    ('My soul beholds the greatness', 'p'),
+    # ch7
+    ("NOT LONG after Mary's visit,", 'p'),
+    ('"And you, O child, shall be', 'p', 'the tender mercy of God."'),
+    # ch8
+    ('FOR A FEW months after their', 'p'),
+    ('"Glory to God in the highest,', 'p'),
+    # ch9
+    ('ALTHOUGH JESUS was born in a', 'p'),
+    ('"Now, Lord, thou mayest let', 'p'),
+    # ch10
+    ('WHILE JOSEPH and Mary with', 'p'),
+    # ch11
+    ('ON THE night after their', 'p'),
+    # ch12
+    ('THE LITTLE Jesus must have', 'p'),
+    # ch13
+    ('JESUS STAYED at the school in', 'p'),
+    # ch14
+    ('FOR EIGHTEEN years after the', 'p'),
+    # ch15
+    ('WHILE JESUS was still living', 'p'),
+    # ch16
+    ('AFTER SOME months the news', 'p', 'for baptizing the people.'),
+    # ch17
+    ('AFTER HIS baptism Jesus felt', 'p'),
+    # ch18
+    ('AFTER HIS forty days in the', 'p'),
+    # ch19
+    ('SOON AFTER Jesus met the men', 'p'),
+    # ch20
+    ('THE SPRING-TIME of the year', 'p'),
+    # ch21
+    ('AFTER THE Passover, Jesus', 'p'),
+    # ch23
+    ('SOON AFTER the visit to Cana,', 'p'),
+    ('"The Spirit of the Lord is', 'p'),
+    # ch24
+    ('THE PLACE which Jesus chose', 'p'),
+    # ch25
+    ('THE STORY of the great catch', 'p'),
+    # ch26
+    ('FROM THE city of Capernaum', 'p'),
+    # ch27
+    ('SO GREAT were the crowds', 'p'),
+    # ch28
+    ('THE TIME came for another', 'p'),
+    # ch29
+    ('THE QUESTION whether Jesus', 'p'),
+    # ch30
+    ('ABOUT TWELVE miles southwest', 'p'),
+    # ch31
+    ('AT CAPERNAUM there was an', 'p'),
+    # ch32
+    ('JESUS WENT on a journey for', 'p'),
+    # ch33
+    ('WHILE JESUS was passing through southern', 'p'),
+    # ch34
+    ('AFTER HIS journey through', 'p'),
+    # ch35
+    ('SOON AFTER his journey', 'p'),
+    # ch36
+    ('HERE IS another parable story', 'p'),
+    # ch37
+    ('AFTER THE day of teaching in', 'p'),
+    # ch38
+    ('A GREAT CROWD of people were', 'p'),
+    # ch39
+    ('AS JESUS was coming out of', 'p'),
+    # ch40
+    ('JESUS HAD now preached in', 'p'),
+    # ch41
+    ('DURING NEARLY all the year of', 'p'),
+    # ch42
+    ('THE NEWS that King Herod had', 'p'),
+    # ch43
+    ('ON THE night after the multitude was fed', 'p'),
+    # ch44
+    ('ON THE morning after the day', 'p'),
+    # ch45
+    ('WITH HIS sermon on "The Bread', 'p'),
+    # ch46
+    ('JESUS SOON found that if he', 'p'),
+    # ch47
+    ('FROM THE land of the Ten', 'p'),
+    # ch48
+    ('FROM BETHSAIDA by the Sea of', 'p'),
+    # ch49
+    ('AT ONE time while Jesus was', 'p'),
+    # ch50
+    ('WHEN JESUS and his three', 'p'),
+    # ch51
+    ('WHILE JESUS was passing through Galilee for', 'p'),
+    # ch52
+    ('WHILE JESUS was still in', 'p'),
+    # ch53
+    ('AFTER MOST of those who were', 'p'),
+    # ch54
+    ('WHILE JESUS was on his way to', 'p'),
+    # ch55
+    ('AT THE TIME when Jesus came', 'p'),
+    # ch56
+    ('AFTER THE Feast of Tents', 'p'),
+    # ch57
+    ('ON A SABBATH morning, which', 'p'),
+    # ch58
+    ('AT THE SIDE of the Temple', 'p'),
+    # ch59
+    ('AFTER LEAVING Jerusalem, at', 'p'),
+    # ch60
+    ('WHILE JESUS was still at', 'p'),
+    # ch61
+    ('JESUS DID not stay long in', 'p'),
+    # ch62
+    ('WHILE JESUS was in Perea, on', 'p'),
+    # ch63
+    ('AT THIS TIME while Jesus was', 'p'),
+    # ch64
+    ('THE PHARISEES were very', 'p'),
+    ('The Ninety and Nine', 'p'),
+    ('There were ninety and nine', 'p'),
+    # ch65
+    ('YOU REMEMBER that the enemies', 'p'),
+    # ch66
+    ('AT THIS TIME Jesus gave to', 'p'),
+    # ch67
+    ('JESUS KNEW that the', 'p'),
+    # ch68
+    ('JESUS TOLD his disciples a', 'p'),
+    # ch69
+    ('WHILE JESUS was still passing', 'p'),
+    # ch70
+    ('JESUS EXPLAINED by a parable', 'p'),
+    # ch71
+    ('JESUS HAD now ended his work', 'p'),
+    # ch72
+    ('BUT BLIND Bartimeus was not', 'p'),
+    # ch73
+    ('FROM JERICHO to Jerusalem was', 'p'),
+    # ch74
+    ('THE NEWS that Jesus was at', 'p'),
+    # ch75
+    ('AFTER THE royal coming of', 'p'),
+    # ch76
+    ('AGAIN ON Tuesday morning of', 'p'),
+    # ch77
+    ('IMMEDIATELY after answering', 'p'),
+    ('"The stone which the builders', 'p'),
+    # ch78
+    ('THE ENEMIES of Jesus thought', 'p', 'they could destroy Jesus.'),
+    # ch79
+    ('WE HAVE heard much in the', 'p'),
+    # ch80
+    ('WHILE JESUS was talking in', 'p'),
+    ('"The Lord said to my Lord,', 'p'),
+    # ch81
+    ('THE ROOM in the Temple where', 'p'),
+    # ch82
+    ('JESUS WALKED across the Court', 'p'),
+    # ch83
+    ('AT THE CLOSE of a long talk', 'p', ' of the Ten Bridesmaids."'),
+    # ch84
+    ('THE SECOND of the three', 'p'),
+    # ch85
+    ('AFTER THE two parables of', 'p'),
+    # ch86
+    ('TUESDAY HAD been a busy day', 'p'),
+    # ch87
+    ('WHILE THEY were eating the', 'p'),
+    # ch88
+    ('JESUS SAW that his disciples', 'p'),
+    # ch89
+    ('JESUS WENT on giving his last', 'p'),
+    # ch90
+    ('DURING THE week of the', 'p'),
+    # ch91
+    ('THE MEN who took Jesus as', 'p'),
+    # ch92
+    ('THE HIGH PRIEST Caiaphas,', 'p'),
+    # ch93
+    ('ALTHOUGH the high council of', 'p'),
+    # ch94
+    ('HEROD, to whom Jesus had been', 'p'),
+    # ch95
+    ('WHEN PILATE sent Jesus to', 'p'),
+    # ch96
+    ('IN OUR TIME, and in all', 'p'),
+    # ch97
+    ('IT WAS the custom of the', 'p'),
+    ('THIS IS JESUS OF NAZARETH', 'h3'),
+    ('"They shared my garments', 'p'),
+    ('"In my thirst they gave me', 'p'),
+    # ch98
+    ('YOU REMEMBER that from the', 'p'),
+    # ch99
+    ('IT WAS FRIDAY evening at', 'p'),
+    # ch100
+    ('All THE FOUR gospels agree in', 'p'),
+    # ch101
+    ('WHEN JESUS was seen after he', 'p'),
+    # ch102
+    ('THE MEETING place of all who', 'p'),
+    # ch103
+    ('ON THE NIGHT before the death', 'p'),
+    # ch104
+    ('SOON AFTER the appearance of', 'p'),
+]

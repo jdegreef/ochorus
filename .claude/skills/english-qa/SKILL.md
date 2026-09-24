@@ -363,6 +363,15 @@ Reported, not fixed
   means. Anchor each on its `<p>` so it cannot touch `body_text`, and add the
   key to `test_no_replacement_pair_is_dead` or nothing will notice when the
   paragraph it titles is edited out from under it.
+- **A display line UNWRAPPED to loose text is `wrapped_blocks`, not
+  `restored_blocks`.** The Gutenberg importer once handed centred `<div>` lines
+  (headings, datelines, drop-cap opening paragraphs) to the sanitizer, which
+  kept the text and dropped the tags. Nothing is missing, so inserting would say
+  it twice. `wrap_loose_blocks` takes `(head, tag)` (or `(head, tag, tail)` when
+  the line ran into a loose caption) and wraps the run exactly as
+  `ingest.display_line` would emit it, guarded so it disarms on a re-import.
+  Check every entry against the importer's own output from the edition's
+  markup (`HurlbutDisplayLineTests` shows how), and do every edition at once.
 - **A STRUCTURAL repair must land in every edition at once.**
   `tests_translation_markup` pins a translation's ordered TAG SEQUENCE against
   its English, so adding six headings to the English alone fails it — and that

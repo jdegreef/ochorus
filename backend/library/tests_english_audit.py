@@ -778,6 +778,9 @@ class CorrectionsHygieneTests(SimpleTestCase):
                 # Dead means BOTH are gone: the paragraph this titles was
                 # edited or renumbered out from under the entry.
                 *entry.get("restored_blocks", ()),
+                # A wrapped display line keeps its text, so its head is present
+                # either way; dead means the run it names was edited away.
+                *((head, f"<{tag}>{head}") for head, tag, *_ in entry.get("wrapped_blocks", ())),
             )
             if old not in corpus and new not in corpus
         ]
@@ -1282,6 +1285,205 @@ class DroppedBlockRestorationTests(SimpleTestCase):
         repair must not scatter copies through the chapter."""
         doubled = "<p>Just this day I met her.</p> <p>Just this day I met her.</p>"
         self.assertEqual(self._restore(doubled).count("<h4>"), 1)
+
+
+class LooseBlockWrapTests(SimpleTestCase):
+    """`wrap_loose_blocks` — a display line the sanitizer UNWRAPPED.
+
+    The sibling of `restore_dropped_blocks`: there the block was deleted, here
+    only its tags were, so the text shipped as a loose run between blocks.
+    """
+
+    def _wrap(self, html, *blocks):
+        return corrections.wrap_loose_blocks(html, blocks)
+
+    def test_wraps_the_run_up_to_the_next_block(self):
+        self.assertEqual(
+            self._wrap("FIRST OF ALL, let us go. <p>We will enter.</p>", ("FIRST OF ALL", "p")),
+            "<p>FIRST OF ALL, let us go.</p> <p>We will enter.</p>",
+        )
+
+    def test_is_idempotent_and_disarms_on_a_reimport(self):
+        """A re-import emits the block itself; the guard sees the head inside
+        a block and leaves it, as it does the settled form."""
+        once = self._wrap("FIRST OF ALL, let us go. <p>We will.</p>", ("FIRST OF ALL", "p"))
+        self.assertEqual(self._wrap(once, ("FIRST OF ALL", "p")), once)
+
+    def test_a_heading_holds_plain_text_and_edge_breaks_go(self):
+        """As `display_line` writes them, so the guard recognises a re-import."""
+        self.assertEqual(
+            self._wrap(
+                "<p>should be</p> THIS IS JESUS OF NAZARETH<br/> THE KING OF THE JEWS.<br/> <p>It was</p>",
+                ("THIS IS JESUS", "h3"),
+            ),
+            "<p>should be</p> <h3>THIS IS JESUS OF NAZARETH THE KING OF THE JEWS.</h3> <p>It was</p>",
+        )
+
+    def test_two_lines_flattened_into_one_run_are_split_at_the_second_head(self):
+        self.assertEqual(
+            self._wrap(
+                "<p>We give it here.</p> MARY'S SONG My soul beholds<br/> the Lord.<br/> <p>For three</p>",
+                ("MARY'S SONG", "h3"),
+                ("My soul beholds", "p"),
+            ),
+            "<p>We give it here.</p> <h3>MARY'S SONG</h3> <p>My soul beholds<br/> the Lord.</p> <p>For three</p>",
+        )
+
+    def test_a_tail_leaves_a_caption_loose(self):
+        """An illustration's caption is not a display line: it stays as it was."""
+        self.assertEqual(
+            self._wrap(
+                "AFTER SOME months, for baptizing the people. The Jordan. <p>Bethabara</p>",
+                ("AFTER SOME months", "p", "for baptizing the people."),
+            ),
+            "<p>AFTER SOME months, for baptizing the people.</p> The Jordan. <p>Bethabara</p>",
+        )
+
+    def test_a_head_inside_a_block_is_left_alone(self):
+        body = "<p>He said FIRST OF ALL, let us go.</p>"
+        self.assertEqual(self._wrap(body, ("FIRST OF ALL", "p")), body)
+
+    def test_no_op_on_a_tagless_body(self):
+        """A head is bare text, so it WOULD match `body_text`; tags must never
+        reach that field."""
+        text = "FIRST OF ALL, let us go. We will enter."
+        self.assertEqual(self._wrap(text, ("FIRST OF ALL", "p")), text)
+
+
+class HurlbutDisplayLineTests(SimpleTestCase):
+    """`hurlbuts-life-of-christ`: 118 display lines shipped as loose text.
+
+    See its `wrapped_blocks` entry in `corrections.py`. Asserted against the
+    SHIPPED fixture, and — the part that matters for a future re-import —
+    against what the importer emits from the edition's own markup.
+    """
+
+    SLUG = "hurlbuts-life-of-christ"
+
+    def _chapters(self):
+        import json
+
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, "en").read_text(encoding="utf-8"))
+        return {
+            r["fields"]["title"]: r["fields"]["body_html"]
+            for r in rows
+            if r["model"] == "library.chapter"
+        }
+
+    def _entries(self):
+        return corrections.BODY_CORRECTIONS[self.SLUG]["wrapped_blocks"]
+
+    def test_every_line_ships_in_its_block(self):
+        corpus = "".join(self._chapters().values())
+        for head, tag, *_ in self._entries():
+            with self.subTest(head=head):
+                self.assertTrue(f"<{tag}>{head}" in corpus, head)
+
+    def test_the_correction_wraps_the_flattened_rows(self):
+        """Strip every wrapped line back to loose text; the correction must
+        restore the shipped body exactly. (Asserting the fixture alone passes
+        with the entry deleted, while the live rows stay flat.)"""
+        heads = [head for head, *_ in self._entries()]
+        for title, body in self._chapters().items():
+            flat = body
+            for head in heads:
+                flat = re.sub(
+                    rf"<(p|h3)>({re.escape(head)}.*?)</\1>", r"\2", flat, count=1, flags=re.S
+                )
+            if flat == body:
+                continue
+            with self.subTest(chapter=title):
+                self.assertEqual(corrections.settled_chapter_body(self.SLUG, None, flat), body)
+
+    # PG 40460's own markup, cut down to whole blocks: a drop-cap opening paragraph, a centred
+    # heading over a poem set as one div, an opening paragraph that runs into
+    # an illustration, and a heading set on two lines.
+    PAGE = """<html><body>
+<h2>A Young Girl's Journey</h2>
+<p>We give it here.</p>
+<div class="center">MARY'S SONG</div>
+<div class="poem">
+My soul beholds the greatness of the Lord,<br>
+And my spirit hath rejoiced in God my Saviour.<br>
+For he hath looked upon his servant in my lowly state;<br>
+And from this time people in all ages shall call me blessed.<br>
+<br>
+For he that is mighty hath done to me great things;<br>
+And holy is his name.<br>
+And his mercy is from age to age<br>
+On those who fear him.<br>
+<br>
+He hath showed strength with his arm;<br>
+He hath scattered the proud in the vain thoughts of their heart.<br>
+He hath put down princes from their thrones,<br>
+And hath lifted up those of humble state.<br>
+<br>
+The hungry he hath filled with good things;<br>
+And the rich he hath sent empty away.<br>
+He hath given help to Israel his servant<br>
+That he might remember mercy<br>
+As he spoke to our fathers,<br>
+Toward Abraham and his children forever.<br>
+</div>
+<p>For three months Mary stayed with Elizabeth.</p>
+<h2>The Carpenter Leaves His Shop</h2>
+<div class="chaptertitle">CHAPTER 15</div>
+<div class="cap">AFTER SOME months the news was brought to
+Nazareth that John the Baptist had come up the
+river Jordan and was now preaching at a place
+about twelve miles south of the Sea of Galilee. The
+place where John was preaching had two names. It
+was called "Bethany beyond Jordan," there being
+another Bethany quite near Jerusalem; and it was also
+called "Bethabara," a word which means "the place
+where one can walk across the river"; for there the river
+Jordan was so shallow that people waded across it.
+John had chosen this place because the sloping shore
+beside the river was fitted for the crowds to listen to
+his preaching, and the shallow water was near at hand
+for baptizing the people.</div>
+<div class="figright" style="width: 300px;" role="figure">
+<img alt="painting" height="285" src="images/illus-116.jpg" width="300">
+<span class="caption">The Jordan. At the supposed place of
+Christ's baptism.</span>
+</div>
+<p>Bethabara or Bethany was about twenty-five miles from Nazareth.</p>
+<h2>Jesus on the Cross</h2>
+<div class="chaptertitle">CHAPTER 96</div>
+<div class="cap">IT WAS the custom of the Romans when they put to
+death any man upon the cross, to place on the cross
+above his head a writing, telling what the man's
+crime was. Pilate commanded that the writing above the
+head of Jesus should be</div>
+<div class="center">
+THIS IS JESUS OF NAZARETH<br>
+THE KING OF THE JEWS.<br>
+</div>
+<p>It was written in the language of three different peoples.</p>
+</body></html>"""
+
+    def test_the_importer_emits_the_blocks_the_correction_wraps(self):
+        """The guard is a string match, so the importer and the correction must
+        agree byte for byte, or a re-import carries a line twice."""
+        from library.ingest import soup
+        from library.management.commands.import_gutenberg import (
+            content_root,
+            split_by_heading,
+        )
+
+        chapters = self._chapters()
+        emitted = 0
+        for title, body in split_by_heading(content_root(self.PAGE), "h2"):
+            for block in soup(body).body.find_all(["p", "h3"], recursive=False):
+                block = str(block)
+                if not any(block.startswith(f"<{tag}>{head}") for head, tag, *_ in self._entries()):
+                    continue  # prose the importer always kept
+                with self.subTest(chapter=title, block=block[:40]):
+                    self.assertTrue(block in chapters[title], block)
+                    emitted += 1
+        self.assertEqual(emitted, 5)
 
 
 class BruisedReedRepairTests(SimpleTestCase):
