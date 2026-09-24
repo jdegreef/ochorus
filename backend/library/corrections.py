@@ -902,15 +902,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # both printings above spell "(see 'Sixth Day')".
         #
         # NOT `source_fixes`: the parentheses are what the extractor made of a
-        # link, not what Murray printed. English-only edition, so nothing to
-        # settle by hand in a translation.
+        # link, not what Murray printed. These pairs are English-only: the es,
+        # fr, pt and sw editions were all translated after #1929 from the
+        # repaired English, so they shipped with the references and the ch33
+        # headings in their own words and need no pairs of their own.
         #
         # ch33 (Notes) lost all seven of its `NOTE A.`–`NOTE G.` headings to a
         # DIFFERENT selector: `[class*=note i]`, written for CCEL's footnote
         # apparatus, also matched Gutenberg's own `class="note"`. That selector
         # is FIXED at the source now (`sanitize._is_gutenberg_note_content`), so
         # no future import loses them — but these rows are never re-imported, so
-        # ch33 on the shelf is still seven bare `<hr/>`s with no headings.
+        # ch33 shipped as seven bare `<hr/>`s with no headings until #1929.
         #
         # They go back via `restored_blocks`, the mechanism
         # `ministry-of-intercession` uses for byte-identical damage from the
@@ -4349,6 +4351,14 @@ BODY_CORRECTIONS["things-as-they-are"]["back_matter"] = [
     ("you will pray more.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
     ("mtaomba zaidi.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
 ]
+# Gutenberg #51931 follows Torrey's last paragraph with a page break and the
+# Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
+# Stalker and Kempis blurbs survived), and then a sub-300-word "Transcriber's
+# Notes" section that the importer merged into ch13 as an <h3> and its errata.
+BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
+    ("before God can use them.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+]
 BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
     # "Betelguese" -> "Betelgeuse".
     ("Betelguese", "Betelgeuse"),
@@ -4825,6 +4835,20 @@ BODY_CORRECTIONS.setdefault('god-glorified-in-mans-dependence', {}).setdefault("
 BODY_CORRECTIONS.setdefault("a-retrospect", {}).setdefault("replacements", []).extend([
     ("chï fu mu</i>“ ", "chï fu mu</i>” "),
     ("convenience!</i>“ ", "convenience!</i>” "),
+])
+# Gutenberg #26744 sets "The Missionary Call" in ch12 as a score image (title and
+# verse 1) with its own note under it offering MIDI files; the image was dropped
+# and the note shipped between the chapter's last paragraph and verse 2, links
+# gone ("by clicking here for an organ version"). The es edition translated it.
+# Mid-chapter, so a pair rather than a back-matter seam, anchored on the `</p>`
+# before it and the verse after it.
+BODY_CORRECTIONS["a-retrospect"]["replacements"].extend([
+    ("</p> [<i>Transcriber's Note: You can listen to this music (MIDI file) by clicking</i>"
+     " here for an <br/>organ version or here for a piano version.]  2. Why live I here?",
+     "</p> 2. Why live I here?"),
+    ("</p> [<i>Nota del transcriptor: Puede escuchar esta música (archivo MIDI) haciendo clic</i>"
+     " aquí para una <br/>versión de órgano o aquí para una versión de piano.]  2. ¿Por qué vivo aquí?",
+     "</p> 2. ¿Por qué vivo aquí?"),
 ])
 # absolute-surrender: “…love“? (en, and the sw that mirrors it).
 BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
@@ -5499,11 +5523,12 @@ _REVIVAL_PAGES_IN_PROSE = (
 
 
 def _unpage(defective: str) -> str:
-    """Drop the one page number from a `_REVIVAL_PAGES_IN_PROSE` string."""
+    """Drop the one page number from a declared _*_PAGES_IN_PROSE string."""
     # One space survives if the number had one on either side: "the 10excitability"
-    # -> "the excitability", "</p>414 <p>" -> "</p> <p>", "</i>387<i>" -> "</i><i>".
+    # -> "the excitability", "</p>414 <p>" -> "</p> <p>", "</i>387<i>" -> "</i><i>",
+    # "had 36 been" -> "had been", "word.”—66And" -> "word.”—And".
     return _re.sub(
-        r"(\s?)(?<=[\s>])\d{1,3}(\s?)(?=[A-Za-z<])",
+        r"(\s?)(?<=[\s>—])\d{1,3}(\s?)(?=[^\s\d])",
         lambda m: " " if m[1] or m[2] else "",
         defective,
         count=1,
@@ -5513,4 +5538,49 @@ def _unpage(defective: str) -> str:
 BODY_CORRECTIONS.setdefault("revival-lectures", {}).setdefault("replacements", []).extend(
     [(f"</p>{page}<p>", "</p> <p>") for page in _REVIVAL_PAGES_BETWEEN_BLOCKS]
     + [(defective, _unpage(defective)) for defective in _REVIVAL_PAGES_IN_PROSE]
+)
+
+# Baxter, A Call to the Unconverted — the same OCR residue as revival-lectures
+# above, 124 page numbers (pp. 30-156, chapters 3-6): fused ("the 50world"),
+# spaced mid-sentence ("had 36 been"), or bare between blocks ("</p>32<p>").
+# Proved by the same count up the book; pp. 60, 104 and 123 are absent from the
+# OCR. Left alone: the ordinals "the 18th of Ezekiel" and "from the 20th to the
+# end", and chapter 2's run of verse numbers, which also counts up but is
+# scripture citation ("Isa. lv. 1, 2, 3."). The es and pt editions never carried
+# the numbers, so this bites the English only.
+_CALL_PAGES_BETWEEN_BLOCKS = (
+    32, 53, 65, 75, 76, 81, 87, 91, 99, 110, 114, 138,
+)
+_CALL_PAGES_IN_PROSE = (
+    "the 30work", "if 31we", "law. 33Few", "please 34 God.”—“Now", "believe. 35For",
+    "had 36 been", "and 37 sustenation,", "them, 38if", "guilty 39 of",
+    "forgetfulness 40 or", "not 41 wicked,", "disposition 42of", "amiss: 43 and",
+    "rebels, 44on", "so 45neither", "health, 46and", "religion, 47 and",
+    "religious, 48yet", "must 49needs", "the 50world,", "trade 51that", "and 52set",
+    "will 54shortly", "to 55seeing;", "condemned? 56 It", "praise? 57And",
+    "many 58thousands,", "to 59 betake", "magnify 61his", "neither 62of", "not 63 to",
+    "unto 64himself", "word.”—66And,", "save 67none", "another 68should", "of 69its",
+    "man, 70I", "manifesting 71 his", "life, 72which", "in 73meat,", "thou 74did",
+    "God: 77He", "and 78persuade", "they 79will", "disobey 80God,", "well, 82and",
+    "them, 83what", "renounce 84the", "his 85displeasure", "But 86Christ", "yet 88art",
+    "turn: 89 He", "that 90will", "in 92 rioting", "How 93many", "of 94Christianity,",
+    "where 95thou", "it? 96It", "know 97my", "to 98doubt", "myself.—100I",
+    "ungodly, 101and", "God 102saith,", "confess 103 that", "any 105reason",
+    "for 106the", "durst 107not", "that 108you", "but 109wide", "foolishness 111 with",
+    "God 112 to", "praise 113 the", "not 115turn,", "reason 116that", "rather 117 die",
+    "in 118your", "that 119 hath", "excellency 120 of", "thoughts 121of", "what 122is",
+    "He 124hath", "delay?” 125Life", "forced 126you", "stand 127over", "5. 128“Hear,",
+    "you 129put", "upon 130you,", "themselves, 131that", "darkness. 132 What!",
+    "died 133for", "the 134Lord;", "assign 135each", "and 136therefore", "your 137own",
+    "to 139 sin)", "you, 140and", "most 141 highly", "strait; 142 and", "all 143their",
+    "not 144hear", "do 145 that", "you 146had", "heaven, 147 if",
+    "habitually 148willing,", "it, 149(though", "little 150before", "work 151against",
+    "everlasting 152 glory,", "before 153 God,", "of 154earnest", "over 155 your",
+    "are 156reading,",
+)
+
+
+BODY_CORRECTIONS.setdefault("a-call-to-the-unconverted", {}).setdefault("replacements", []).extend(
+    [(f"</p>{page}<p>", "</p> <p>") for page in _CALL_PAGES_BETWEEN_BLOCKS]
+    + [(defective, _unpage(defective)) for defective in _CALL_PAGES_IN_PROSE]
 )

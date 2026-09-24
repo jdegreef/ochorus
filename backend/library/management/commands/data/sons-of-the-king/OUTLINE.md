@@ -26,7 +26,7 @@ The anchor is 2 Corinthians 6:18: "I will be a Father to you, and you will be My
 - **Each week** ends with "**A true story:**", a short spotlight on a man from the *Brave for God* books. In Book 1, the fifth spotlight falls on Day 29.
 - **Each book:** an Introduction, Day 1–30 and a Conclusion, so 32 chapters. The reading plan reads chapters 2–31 (span `(2, 31)` in `LAUNCH_PLANS`).
 - **Every introduction** ends with a short note "For parents, grandparents and leaders". Every conclusion includes a gentle invitation to trust Jesus. Books 1 and 2 preview the next book, and Book 3 closes the series.
-- **Key verses** should not repeat a key verse from Rooted or from earlier books in either series. Check verse ranges too. Two known overlaps shipped in Book 3: Day 18 (Matthew 5:8) falls inside Rooted Book 2, Day 19 (Matthew 5:3–9), and Day 30 (2 Timothy 4:7) falls inside Rooted Book 6, Day 29 (2 Timothy 4:6–8).
+- **Key verses** don't repeat a key verse from Rooted or from earlier books in either series. Check verse ranges too, not only exact references: Book 3 first shipped Matthew 5:8 and 2 Timothy 4:7, which fall inside Rooted's Matthew 5:3–9 and 2 Timothy 4:6–8, and those two days were later given 1 John 3:2–3 and Acts 20:24.
 
 ## Sensitive days and how they were handled
 
@@ -223,7 +223,7 @@ Introduction: Growing Up
 | 15 | Save Some | Proverbs 21:20 |  |
 | 16 | Don't Follow the Crowd | Exodus 23:2 |  |
 | 17 | Dares and Danger | Proverbs 22:3 |  |
-| 18 | Pure in Heart | Matthew 5:8 | Jim Elliot |
+| 18 | Pure, as He Is Pure | 1 John 3:2–3 | Jim Elliot |
 
 **Week 4 · Calling**
 
@@ -245,7 +245,7 @@ Introduction: Growing Up
 | 27 | A Double Portion | 2 Kings 2:9 |  |
 | 28 | Pass It On | 2 Timothy 2:2 |  |
 | 29 | Strong at Eighty-Five | Joshua 14:10–11 |  |
-| 30 | Finish the Race | 2 Timothy 4:7 | Simeon Nsibambi |
+| 30 | Finish the Race | Acts 20:24 | Simeon Nsibambi |
 
 Conclusion: A Son Growing Up
 
