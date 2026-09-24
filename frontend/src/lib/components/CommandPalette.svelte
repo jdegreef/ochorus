@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { search, scripturePageHref, type SearchHit } from '$lib/library-public';
-	import { PRIMARY_NAV, ENGLISH_HUBS } from '$lib/contentNav';
+	import { authorPath } from '$lib/originals';
+	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -30,6 +31,7 @@
 		...(getLang() === 'en'
 			? ENGLISH_HUBS.map((d) => ({ href: d.href, label: t(d.labelKey) }))
 			: []),
+		{ href: ORIGINALS_DEST.href, label: t(ORIGINALS_DEST.labelKey) },
 		{ href: '/notebook', label: t('notebook.title') },
 		{ href: '/settings', label: t('settings.title') },
 		{ href: '/about', label: t('nav.about') },
@@ -41,7 +43,7 @@
 	function hitItem(h: SearchHit): Item {
 		switch (h.type) {
 			case 'author':
-				return { key: 'author:' + h.author_slug, kind: 'hit', label: t('search.typeAuthor'), title: h.author_name, meta: '', href: `/authors/${h.author_slug}` };
+				return { key: 'author:' + h.author_slug, kind: 'hit', label: t('search.typeAuthor'), title: h.author_name, meta: '', href: authorPath(h.author_slug) };
 			case 'book':
 				return { key: 'book:' + h.book_slug, kind: 'hit', label: t('search.typeBook'), title: h.book_title, meta: h.author_name, href: `/books/${h.book_slug}` };
 			case 'topic':

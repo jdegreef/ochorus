@@ -706,6 +706,26 @@ export const listBooks = (language = 'en') =>
 export const listAuthors = (language = 'en') =>
 	apiFetch<AuthorBio[]>(`/api/library/authors/?language=${language}`);
 
+/** A series the house imprint's books run in, named in the requested language;
+ * `books` holds their slugs in volume order. */
+export interface OriginalsSeries {
+	slug: string;
+	title: string;
+	description: string;
+	books: string[];
+}
+
+/** The /originals shelf: Ochorus' own books in one language, the series they
+ * run in, and how many the imprint has in each language (most first). */
+export interface OriginalsShelf {
+	books: BookSummary[];
+	series: OriginalsSeries[];
+	languages: { code: string; count: number }[];
+}
+
+export const getOriginals = (language = 'en') =>
+	apiFetch<OriginalsShelf>(`/api/library/originals/?language=${language}`);
+
 export const getAuthor = (slug: string, language = 'en') =>
 	localized<AuthorDetail>((l) => `/api/library/authors/${slug}/?language=${l}`, language);
 

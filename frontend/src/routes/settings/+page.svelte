@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { authorPath } from '$lib/originals';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
@@ -154,7 +155,7 @@
 		h.kind === 'sermon'
 			? localizeHref(`/sermons/${h.slug}`)
 			: h.kind === 'bio'
-				? localizeHref(`/authors/${h.slug}`)
+				? localizeHref(authorPath(h.slug))
 				: localizeHref(`/books/${h.slug}/${h.order}`);
 
 	// Daily reminder — a time the reader picks, emitted as a repeating .ics event
