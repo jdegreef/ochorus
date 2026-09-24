@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-24 (queue job #812): Gareth Evans's Ключ у моїй руці — the Ukrainian
+// edition of the-key-in-my-hand, 15 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-23: one NEW English book — sons-of-the-king-2, "Sons of the King – 30
 // Days with God for Guys – Book 2" (Faithful), volume 2 of the house-written boys' devotional series
 // (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture). Rebuilds
