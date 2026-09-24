@@ -4001,6 +4001,10 @@ BODY_CORRECTIONS.setdefault("essentials-of-prayer", {}).setdefault("replacements
     # Stray scan page-markers left mid-line inside two hymn stanzas.
     ("breasts [Pg 104]<br/>", "breasts<br/>"),
     ("give, [Pg 58]<br/>", "give,<br/>"),
+    # The Spanish edition was translated before the pairs above landed and
+    # carried both markers over; the es fixture is settled by hand to match.
+    ("compasivos [Pg 104]<br/>", "compasivos<br/>"),
+    ("que dar, [Pg 58]<br/>", "que dar,<br/>"),
 ])
 BODY_CORRECTIONS.setdefault("purpose-in-prayer", {}).setdefault("replacements", []).extend([
     # "sifts" -> "gifts" (s/g misread): "They are God's gifts."
