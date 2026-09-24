@@ -77,5 +77,12 @@
     "note": [
       "AI-drafted; awaiting native review. The series name is quoted verbatim from the shipped Swahili book titles (\"Jasiri kwa ajili ya Mungu\", Kitabu cha Pili/Tatu/Nne)."
     ]
+  },
+  "school-of-prayer-31-days": {
+    "title": "Siku 31 katika Shule ya Maombi",
+    "description": "Mwezi mzima pamoja na Andrew Murray miguuni pa Mwalimu pekee. Kila siku hufungua moja ya maneno ya Yesu mwenyewe kuhusu maombi, kuanzia “Bwana, utufundishe kuomba” hadi ahadi za usiku ule wa mwisho, nayo huishia katika sala yake yenyewe. Somo moja kwa siku, kama dakika kumi, likijenga kuelekea maombezi na maisha ya maombi.",
+    "note": [
+      "Single-book plan backed by the sw edition of school-of-prayer (book title “Pamoja na Kristo katika Shule ya Maombi”); the card phrase “Shule ya Maombi” matches the shipped book title, and “Bwana, utufundishe kuomba” is the SUV Luke 11:1 wording the book uses. Added by the book:school-of-prayer -> sw job (#3148), which makes this LAUNCH plan creatable in sw."
+    ]
   }
 }
