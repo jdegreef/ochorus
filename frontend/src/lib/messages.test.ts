@@ -37,72 +37,12 @@ const keysOf = (l: string) => Object.keys(data[l]).filter((k) => k !== '$schema'
  * list that only ever grows is how "temporary" becomes permanent — same
  * two-way ratchet the English-audit baseline uses, for the same reason.
  */
-// The book page's "more like this" reason labels. The keys ship to every
-// catalogue for parity, but only en/es/pt/fr are translated and reviewed; the
-// book page renders these only in those locales (its REVIEWED_LOCALES set), so
-// the English placeholders below never reach a reader. Awaiting native review —
-// when a locale's are translated, delete it here and add it to REVIEWED_LOCALES.
-// (The old derived-FAQ keys were removed when books went editorial-only.)
-const BOOK_EXTRAS_PENDING = ['book_more_by', 'book_also_on'] as const;
-
-// The sermon page's "Questions for reflection" heading. Same story as
-// BOOK_EXTRAS_PENDING: en/es/pt/fr are translated and reviewed (the sermon
-// page's REVIEWED_LOCALES), the rest hold the English source as a gated-off
-// placeholder that never reaches a reader. Delete a locale's entry and add it to
-// REVIEWED_LOCALES once a native speaker checks the heading.
-const SERMON_EXTRAS_PENDING = ['sermon_questions_title'] as const;
-
-// The book/topic Q&A section heading ("Questions and Answers"). Same story again:
-// en/es/pt/fr are translated and reviewed, the rest hold the English source as a
-// placeholder until a native speaker checks it. Delete a locale's entry once its
-// heading is translated. (The Q&A section only renders where per-row Q&A content
-// exists for the locale, so today the placeholder never reaches a reader anyway.)
-const QA_EXTRAS_PENDING = ['qa_section_title'] as const;
-
-// The reader-feedback button + modal strings. en/es/pt/fr are translated and
-// reviewed; the placeholder locales below hold the English source until a native
-// speaker checks them. Delete these once a locale's feedback strings are
-// translated (they share one pending list across the placeholder locales).
-const FEEDBACK_EXTRAS_PENDING = [
-	'feedback_send',
-	'feedback_title',
-	'feedback_intro',
-	'feedback_type',
-	'feedback_type_language',
-	'feedback_type_content',
-	'feedback_type_feature',
-	'feedback_type_bug',
-	'feedback_type_other',
-	'feedback_placeholder',
-	'feedback_about',
-	'feedback_submit',
-	'feedback_sending',
-	'feedback_thanks_title',
-	'feedback_thanks_body',
-	'feedback_error',
-	'reader_suggest_edit',
-	'feedback_edit_title',
-	'feedback_edit_intro',
-	'feedback_suggested_label',
-	'feedback_suggested_placeholder'
-] as const;
-
-const UI_EXTRAS_PENDING = [
-	...BOOK_EXTRAS_PENDING,
-	...SERMON_EXTRAS_PENDING,
-	...QA_EXTRAS_PENDING,
-	...FEEDBACK_EXTRAS_PENDING
-];
-
 const PENDING_TRANSLATION: Record<string, readonly string[]> = {
-	// A blocked/awaiting-review string is declared here and ratcheted (asserted
-	// exactly, both directions) rather than quietly allowlisted forever. uk's four
-	// Scripture strings once lived here until the Kulish text could be sourced.
-	sw: UI_EXTRAS_PENDING,
-	lg: UI_EXTRAS_PENDING,
-	hi: UI_EXTRAS_PENDING,
-	ar: UI_EXTRAS_PENDING,
-	uk: UI_EXTRAS_PENDING
+	// A blocked/awaiting-translation string is declared here and ratcheted
+	// (asserted exactly, both directions) rather than quietly allowlisted
+	// forever. Empty since the ar/hi/lg/sw/uk feedback, Q&A and "more like this"
+	// placeholders were translated (2026-09-23); uk's four Scripture strings
+	// lived here once too, until the Kulish text could be sourced.
 };
 
 const toSnake = (key: string) =>
