@@ -3444,6 +3444,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"sw/thoughts-for-the-quiet-hour": {
+			"ground": "aa269abc4263ee0867779ed3c726222c1b13a4e5fa61c43a7916cb8398e91e8d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/till-he-come": {
 			"ground": "a3055051836f3acb228877c9eba9aa2ac60092c1dae375f14658610239b4cccf",
 			"style": "revival",

@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #2817): Swahili book — thoughts-for-the-quiet-hour, D. L.
+// Moody's daily devotional (a Scripture and comment for every day of the year), 12 monthly chapters
+// ("Mawazo kwa Saa ya Utulivu"). Book pages are prerendered per locale, so /sw/books and the shelf
+// rebuild with the translated title over the plate cover and the reader page bakes the 12 chapters.
+// Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #3193): Portuguese book — brave-for-god, six true stories
 // of faith told for young readers ("Corajosos por Deus"), 6 chapters. Book pages are prerendered per
 // locale, so /pt/books and the shelf rebuild with the translated title over the shared painting ground
