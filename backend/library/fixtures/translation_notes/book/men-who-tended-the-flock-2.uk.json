@@ -456,9 +456,15 @@
    "block_index": 130
   },
   {
-   "reference": "1 Peter 5:2",
-   "status": "self_rendered",
-   "why": "Kulish's contiguous span interposes 'not for filthy lucre' (absent from the quoted NIV) and lacks 'as God wants you to be'; the author's closing 'He was willing' hangs on NIV's 'willing'",
+   "reference": "1 Peter 5:2a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 131
+  },
+  {
+   "reference": "1 Peter 5:2b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
    "block_index": 131
   },
   {
