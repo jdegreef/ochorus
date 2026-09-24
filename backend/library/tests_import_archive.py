@@ -14,7 +14,9 @@ from django.test import SimpleTestCase
 from library.management.commands.import_archive import (
     MIN_PRINTING_YEAR,
     PD_THROUGH_YEAR,
+    _marker_value,
     _roman,
+    _to_roman,
     chapterize,
     drop_contents_run,
     printing_year,
@@ -130,6 +132,27 @@ class ChapterMarkerTests(SimpleTestCase):
             ["The Text opened and divided", "Those that Christ hath to do withal"],
         )
         self.assertIn("poor thing", secs[0][1])
+
+    def test_the_last_chapter_stops_at_the_end(self):
+        # Finney's 1876 Memoirs: nine pages of hymnal advertisements follow.
+        text = "\n".join([
+            "CHAPTER I.", "Work at Home", "He died in 1875.", "THE    END.",
+            "Manuals for Worship.", "SONGS FOR THE SANCTUARY. The most popular.",
+        ])
+        body = chapterize(text)[0][1]
+        self.assertIn("died in 1875", body)
+        self.assertNotIn("Sanctuary", body)
+
+    def test_a_header_with_lowercased_letters_is_still_a_header(self):
+        # The scanner lowercases a letter or two inside a caps running header.
+        text = "\n".join([
+            "CHAPTER I.", "Birth", "I was born in", "8 MEMOIRS or CHARLES G. Fli^NEY.",
+            "Connecticut. EARLY in the year 1826, 1 went on.",
+        ])
+        body = chapterize(text)[0][1]
+        self.assertNotIn("MEMOIRS", body)
+        self.assertIn("born in Connecticut.", body)
+        self.assertIn("EARLY in the year 1826", body)
 
     def test_the_contents_list_does_not_become_the_chapters(self):
         text = "\n".join(
@@ -300,6 +323,35 @@ class MangledMarkerTests(SimpleTestCase):
     def test_a_numeral_that_is_still_not_roman_is_rejected(self):
         self.assertIsNone(_roman("XVIL"))
         self.assertIsNone(_roman("ZZ"))
+
+    def test_stacked_is_fused_into_one_letter_still_parse(self):
+        # Finney's 1876 Memoirs: "Vm." for VIII, "Xn." / "Xin." for XII / XIII.
+        self.assertEqual(_roman("Vm"), 8)
+        self.assertEqual(_roman("Xn"), 12)
+        self.assertEqual(_roman("Xin"), 13)
+        # A capital N or M is not a numeral.
+        self.assertIsNone(_roman("XN"))
+
+    def test_the_c_of_the_word_read_as_o_still_marks_a_chapter(self):
+        text = "OHAPTEE II.\nA title\nSome body text here.\n"
+        self.assertEqual([t for t, _ in chapterize(text)], ["A title"])
+
+    def test_a_final_l_is_read_as_i_when_that_continues_the_sequence(self):
+        # "CHAPTEE XXL" for XXI (Finney), "CHAPTER XL" for XI (Foote). XXL is
+        # no numeral and XL is forty, so either way chapter XXI merged into XX.
+        for mangled, before in (("XL", 10), ("XXL", 20), ("XIIL", 12)):
+            marks = [f"{_to_roman(n)}." for n in range(1, before + 1)]
+            marks += [mangled, f"{_to_roman(before + 2)}."]
+            text = "\n".join(f"CHAPTER {m}\nTitle {m}\nBody {m}." for m in marks)
+            titles = [t for t, _ in chapterize(text)]
+            self.assertEqual(len(titles), before + 2, mangled)
+            self.assertEqual(titles[before], f"Title {mangled}", mangled)
+
+    def test_a_genuine_fortieth_chapter_still_reads_forty(self):
+        self.assertEqual(_marker_value("XL", "XXXIX"), 40)
+        self.assertEqual(_marker_value("XL", "X"), 11)
+        self.assertEqual(_marker_value("XXL", "XX"), 21)
+        self.assertEqual(_marker_value("XL", None), 40)
 
 
 class WrappedHeadingTests(SimpleTestCase):
