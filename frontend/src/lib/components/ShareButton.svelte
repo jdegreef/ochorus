@@ -27,6 +27,7 @@
 	}
 	let { url, title, showLabel = false }: Props = $props();
 	const t = i18n.t;
+	const menuId = $props.id();
 
 	let open = $state(false);
 	let copied = $state(false);
@@ -69,7 +70,7 @@
 		type="button"
 		class="btn btn-ghost {showLabel ? 'btn-sm' : 'btn-icon'}"
 		onclick={onClick}
-		aria-haspopup="menu"
+		aria-controls={open ? menuId : undefined}
 		aria-expanded={open}
 		aria-label={t('reader.share')}
 		title={t('reader.share')}
@@ -94,13 +95,15 @@
 	</button>
 
 	{#if open}
-		<div class="share-menu" role="menu" aria-label={t('reader.share')}>
-			<button type="button" class="share-opt text-small" role="menuitem" onclick={copyLink}>
+		<!-- A labelled group, not a menu role: that promises arrow-key
+		     navigation between menu items, and these are plain links and buttons
+		     reached with Tab — the same treatment as AccountMenu/QuickSettings. -->
+		<div id={menuId} class="share-menu" role="group" aria-label={t('reader.share')}>
+			<button type="button" class="share-opt text-small" onclick={copyLink}>
 				{copied ? t('share.linkCopied') : t('share.copyLink')}
 			</button>
 			<a
 				class="share-opt text-small"
-				role="menuitem"
 				href={waHref}
 				target="_blank"
 				rel="noopener"
@@ -108,13 +111,12 @@
 			>
 			<a
 				class="share-opt text-small"
-				role="menuitem"
 				href={fbHref}
 				target="_blank"
 				rel="noopener"
 				onclick={() => (open = false)}>Facebook</a
 			>
-			<a class="share-opt text-small" role="menuitem" href={mailHref} onclick={() => (open = false)}
+			<a class="share-opt text-small" href={mailHref} onclick={() => (open = false)}
 				>{t('login.email')}</a
 			>
 		</div>
