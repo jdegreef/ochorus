@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Swahili sermon — the-circumcision-of-the-heart (#2593, PR #3347).
+// Rebuilds /sw/sermons so the card and its /sw/sermons/the-circumcision-of-the-heart page bake the
+// translated title (Tohara ya Moyo) and "In brief" summary.
 // prerender refresh 2026-09-24: Swahili sermon — against-eutropius (#2592, PR #3342). Rebuilds
 // /sw/sermons so the card and its /sw/sermons/against-eutropius page bake the translated title
 // (Dhidi ya Eutropius) and "In brief" summary.
