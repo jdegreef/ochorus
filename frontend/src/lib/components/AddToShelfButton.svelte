@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { dismissable } from '$lib/actions/dismissable';
 	import { i18n } from '$lib/i18n.svelte';
 	import { customShelves } from '$lib/customShelves.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 	import Icon from './Icon.svelte';
 	import ShelfPicker from './ShelfPicker.svelte';
 

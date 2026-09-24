@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { dismissable } from '$lib/actions/dismissable';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
@@ -11,6 +10,7 @@
 	import ProgressBar from './ProgressBar.svelte';
 	import ShelfBookActions from './ShelfBookActions.svelte';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 
 	/**
 	 * One cell of a Bookshelf row: a strip of the case's back wall with the book
@@ -65,8 +65,7 @@
 		const r = menu.getBoundingClientRect();
 		if (r.left < 8 || r.right > window.innerWidth - 8) flip = true;
 	});
-	function toggle(e: MouseEvent) {
-		e.stopPropagation();
+	function toggle() {
 		flip = false;
 		open = !open;
 	}
@@ -107,7 +106,8 @@
 					</span>
 				{/if}
 			</a>
-			<div class="absolute end-2.5 top-3.5 {open ? 'z-30' : 'z-10'}"
+			<div
+				class="absolute end-2.5 top-3.5 {open ? 'z-30' : 'z-10'}"
 				use:dismissable={{ open, onDismiss: () => (open = false) }}
 			>
 				<button

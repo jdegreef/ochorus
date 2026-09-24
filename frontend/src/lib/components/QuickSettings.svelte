@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { dismissable } from '$lib/actions/dismissable';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { theme } from '$lib/theme.svelte';
@@ -7,6 +6,7 @@
 	import { isReaderRoute } from '$lib/readerRoutes';
 	import { i18n } from '$lib/i18n.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 
 	// Take Root's quick-settings popover: the gear opens a small menu with a
 	// theme toggle and a page-width stepper — no navigation to the Settings
@@ -36,10 +36,7 @@
 		aria-controls={open ? 'quick-settings' : undefined}
 		aria-label={t('settings.title')}
 		title={t('settings.title')}
-		onclick={(e) => {
-			e.stopPropagation();
-			open = !open;
-		}}
+		onclick={() => (open = !open)}
 	>
 		<Icon name="gear" size={19} />
 	</button>

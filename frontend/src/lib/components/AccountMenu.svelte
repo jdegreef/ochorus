@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { dismissable } from '$lib/actions/dismissable';
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -7,6 +6,7 @@
 	import { loginHref as buildLoginHref } from '$lib/loginHref';
 	import { fetchAdminManualUrl, fetchLanguageAdminManualUrl } from '$lib/library-admin';
 	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 
 	const t = i18n.t;
 
@@ -56,10 +56,7 @@
 				aria-expanded={open}
 				aria-controls={open ? 'account-menu' : undefined}
 				aria-label={t('account.title')}
-				onclick={(e) => {
-					e.stopPropagation();
-					open = !open;
-				}}
+				onclick={() => (open = !open)}
 			>
 				{initials}
 			</button>

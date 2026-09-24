@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { dismissable } from '$lib/actions/dismissable';
 	import { i18n } from '$lib/i18n.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 
 	/**
 	 * The one share control for a leaf page (book / sermon / article / author /
@@ -62,7 +62,6 @@
 			// the reader can copy the address from the location bar instead.
 		}
 	}
-
 </script>
 
 <div class="share-wrap" use:dismissable={{ open, onDismiss: () => (open = false) }}>

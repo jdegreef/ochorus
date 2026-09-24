@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { dismissable } from '$lib/actions/dismissable';
 	import { tick } from 'svelte';
 	import { packRows, spineSize, type ShelfBook as ShelfBookItem } from '$lib/bookshelf';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime } from '$lib/reading';
+	import { dismissable } from '$lib/actions/dismissable';
 	import BookCover from './BookCover.svelte';
 	import Icon from './Icon.svelte';
 	import ProgressBar from './ProgressBar.svelte';

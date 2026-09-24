@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { dismissable } from '$lib/actions/dismissable';
 	import { i18n } from '$lib/i18n.svelte';
 	import { API_BASE_URL } from '$lib/config';
 	import type { BookDetail } from '$lib/library-public';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
 	import { pwa } from '$lib/pwa.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 	import Icon from './Icon.svelte';
 
 	/**

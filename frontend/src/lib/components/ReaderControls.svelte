@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { dismissable } from '$lib/actions/dismissable';
 	import {
 		readerPrefs,
 		cssAlign,
@@ -13,6 +12,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { theme } from '$lib/theme.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 
 	let {
 		/**
@@ -112,7 +112,10 @@
 	];
 </script>
 
-<div class="relative" use:dismissable={{ open: open.value, onDismiss: () => (open.value = false) }}>
+<div
+	class="relative"
+	use:dismissable={{ open: open.value, onDismiss: () => (open.value = false) }}
+>
 	<button
 		class="btn btn-sm btn-ghost"
 		onclick={() => (open.value = !open.value)}
