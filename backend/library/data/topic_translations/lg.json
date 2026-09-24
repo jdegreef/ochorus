@@ -1,7 +1,23 @@
 {
+  "abiding-in-christ": {
+    "title": "Okubeera mu Kristo",
+    "description": "Ettabi mu Muzabbibu — okwegatta n'obumu ne Mukama waffe Yesu, n'obulamu obutava mu nsibuko yonna endala wabula mu kubeera okumpi naye.",
+    "scripture": {
+      "reference": "Yokaana 15:4",
+      "text": "mubeere mu Nze era nange mbeere mu mmwe. Ng'ettabi bwe litayinza kubala bibala ku bwalyo nga teriri ku muzabbibu, bwe mutyo nammwe temuyinza kubala bibala bwe mutabeera mu Nze."
+    }
+  },
   "christ-and-the-cross": {
     "title": "Kristo n'omusaalaba",
     "description": "Omuntu n'omulimu gw'Omulokozi — Omwana gw'Endiga eyattibwa, ensonyi n'obuwanguzi bw'omusaalaba, obulungi bwa Kristo, n'entaana enkalu."
+  },
+  "day-by-day": {
+    "title": "Buli Lunaku",
+    "description": "Ekisomebwa eky'oku makya n'eky'akawungeezi — emmere eya buli lunaku okuliisa emmeeme, okuva mu bitabo bya Spurgeon ebyagalwa ennyo okutuuka ku bitabo eby'essaawa ey'akasirise.",
+    "scripture": {
+      "reference": "Okukungubaga 3:22–23",
+      "text": "Olw'okwagala kwa Mukama okutaggwaawo, tetulimalibwawo, kubanga ekisa kye tekiggwaawo. Buli lukya ekisa kyo kiba kiggya; n'obwesigwa bwo bwa lubeerera."
+    }
   },
   "deeper-life": {
     "title": "Obulamu Obw'obuziba",
@@ -63,8 +79,32 @@
     "title": "Ekigambo Ekibuulirwa",
     "description": "Okubuulira okw'amaanyi ku lupapula — Whitefield ne Wesley mu ddoboozi eryonna, Spurgeon mu balimi be — n'ekiragiro kya Baxter eri buli musumba w'emyoyo."
   },
+  "the-puritans": {
+    "title": "Abapuritani",
+    "description": "Enjigiriza ya Katonda ey'olwatu era ekebera ey'Abapuritani — Bunyan n'omutambuze we, Owen ku kibi eky'omunda, Watson n'ebbugumu lye, ne Edwards n'omuliro gwe — enjigiriza etuusibwa ddala ku mutima.",
+    "scripture": {
+      "reference": "Abaebbulaniya 4:12",
+      "text": "Ekigambo kya Katonda kiramu era kikola. Kisala okusinga ekitala eky'obwogi obubiri, era kiyitamu ne kituukira ddala ku mmeeme n'omwoyo, n'ennyingo n'obusomyo, era kyawula ebirowoozo n'okufumiitiriza kw'omutima."
+    }
+  },
   "the-way-of-holiness": {
     "title": "Ekkubo ery'Obutukuvu",
     "description": "Okwawulibwa ku lwa Katonda — amateeka nga gakebejjebwa, obutuukirivu nga bunoonyezebwa n'obwesimbu, n'okwagala kw'omutima nga kugezesebwa ne kulabika nga kwa mazima."
+  },
+  "voices-of-the-early-church": {
+    "title": "Amaloboozi g'Ekkanisa ey'Edda",
+    "description": "Okukkiriza kw'ebyasa ebyasooka mu bigambo byakwo bennyini — omutima gwa Awugusitino nga gwanjuluddwa, Asanasiyo ku Kigambo ekyafuuka omubiri, n'ebbaluwa z'abaafiira okukkiriza n'abasumba.",
+    "scripture": {
+      "reference": "Abaebbulaniya 12:1",
+      "text": "Kale nga bwe tulina ekibiina ekinene eky'abajulirwa ekyenkana awo, twambulengamu buli ekizitowa, awamu n'ekibi ekitwesibako amangu, tuddukenga n'okugumiikiriza embiro ez'empaka ezatutegekerwa,"
+    }
+  },
+  "women-of-faith": {
+    "title": "Abakazi ab'Okukkiriza",
+    "description": "Bamaama, ababaka b'enjiri, n'abasaba ab'omunda — okukkiriza kw'abakazi abaasaba, ne babonaabona, ne baguma, okuva mu kkomera lya Guyon okutuuka ku kituuti ky'omuddu eyasumululwa.",
+    "scripture": {
+      "reference": "Engero 31:30",
+      "text": "Obubalagavu bulimba n'endabika ennungi teriiko kyegasa, naye omukazi atya Mukama anaatenderezebwanga."
+    }
   }
 }
