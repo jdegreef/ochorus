@@ -4275,6 +4275,14 @@ BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacemen
     # "know th Master's" -> "know the Master's".
     ("know th Master's", "know the Master's"),
 ])
+# Gutenberg #26384 closes ch4 on the printed "THE END." and then its own
+# transcriber's note (a `div.tn`, "Mismatched and inconsistent punctuation has
+# been retained…"), which shipped as the chapter's last block and the es edition
+# translated. The book ends on "THE END."
+BODY_CORRECTIONS["separation-and-service"]["back_matter"] = [
+    ("crucified for us.</p> <p>THE END.</p>", "<p>Transcriber's Note:<br/>"),
+    ("crucificado por nosotros.</p> <p>FIN.</p>", "<p>Nota del transcriptor:<br/>"),
+]
 BODY_CORRECTIONS.setdefault("the-fourfold-gospel", {}).setdefault("replacements", []).extend([
     # "lie will lead" -> "He will lead" (l/H, ie/e misread).
     ("and lie will lead you", "and He will lead you"),
