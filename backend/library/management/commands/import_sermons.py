@@ -24,6 +24,7 @@ import datetime
 import re
 import time
 from functools import lru_cache
+from html import escape
 
 import requests
 from django.core.management.base import BaseCommand, CommandError
@@ -55,6 +56,48 @@ _HEAD_WINDOW = 20
 # extract_gutenberg_section.
 _HEADINGS = ["h1", "h2", "h3", "h4"]
 
+# A `<div>` holding any of these is a wrapper, not a display line: the edition
+# wraps each study's own <h3> in one, and those must not be read as content.
+_BLOCKS = [*_HEADINGS, "p", "blockquote", "div", "table", "ul", "ol"]
+_QUOTES = ("“", '"', "‘", "'")
+_BR = re.compile(r"<br\s*/?>", re.I)
+
+
+def _display_line(div) -> str:
+    """A Gutenberg centred display line (`<div class="c1">`) as a body block.
+
+    PG 23438 (*A Ribband of Blue*) sets its in-study section headings,
+    displayed verses and epigraphs this way, and the collector once dropped
+    them all; `corrections.py` ("The rest of Gutenberg #23438") has the damage.
+
+    A line wholly in capitals is an `<h3>`, text verbatim (the source's own
+    small caps and stops) — unless it opens with a quotation mark:
+    `"RIBBAND OF BLUE."` finishes a sentence. Anything else is a `<p>`, markup
+    kept. These are exactly the blocks `BODY_CORRECTIONS` restores into rows
+    imported before this existed, so a re-import leaves those corrections
+    nothing to do. Returns "" for a wrapper, for Gutenberg's own
+    `pg_body_wrapper` furniture (page numbers, spacers, PG 57109's "9,000 in
+    print"), for anything the sanitizer would drop, and for an empty line.
+    """
+    if "pg_body_wrapper" in (div.get("class") or []) or div.find(_BLOCKS) is not None:
+        return ""
+    # The block built below carries no class, so the sanitizer would no longer
+    # recognise furniture it drops by class (`[class*=pagenum]`, a footnote):
+    # ask it about the div itself while the div still has one.
+    if not clean_fragment(str(div)).strip():
+        return ""
+    # A <br> separates words: "THE NEGATIVE<br>CONDITIONS" is two of them.
+    text = " ".join(soup(_BR.sub(" ", div.decode_contents())).get_text().split())
+    if not text:
+        return ""
+    if text.isupper() and not text.startswith(_QUOTES):
+        return f"<h3>{escape(text, quote=False)}</h3>"
+    return f"<p>{div.decode_contents()}</p>"
+
+
+class AmbiguousSectionError(ValueError):
+    """A Gutenberg `section` names several headings and no level picks one."""
+
 
 # Cached by URL: one Gutenberg ebook can back many sermons (33520 carries six,
 # and this book has eight studies), and without this each one re-downloads the
@@ -76,7 +119,7 @@ def _norm_heading(text: str) -> str:
     ).replace("”", '"').casefold()
 
 
-def extract_gutenberg_section(html: str, section: str) -> str:
+def extract_gutenberg_section(html: str, section: str, level: str = "") -> str:
     """Return the body of one heading-delimited sermon from a Gutenberg edition.
 
     Collects paragraph-level elements between the matching heading and the next
@@ -90,31 +133,58 @@ def extract_gutenberg_section(html: str, section: str) -> str:
     the volume the <h1> and each study an <h3> (Taylor's *A Ribband of Blue*,
     PG 23438) — so searching h1 only found nothing at all. Hence: match any
     level, delimit on the same tag.
+
+    Both editions also repeat their title at a second level, and they need
+    opposite ones. 57109 wants the <h1>: its John 4 epigraph sits between it
+    and a repeated <h2>Unfailing Springs</h2>. 23438's <h1>A Ribband of Blue</h1>
+    is the VOLUME, and the study is <h3>A Ribband Of Blue.</h3> — the <h1> runs
+    to the end of the book, front matter and all eight studies. Neither "first"
+    nor "deepest" nor "last" suits both, so when several headings match, the
+    catalog entry names the level (``SermonEntry.section_level``) and an
+    unresolved tie raises rather than guessing.
     """
     s = content_root(html)
 
     wanted = _norm_heading(section)
-    start = next(
-        (h for h in s.find_all(_HEADINGS) if _norm_heading(h.get_text(" ")) == wanted),
-        None,
-    )
-    if start is None:
+    matches = [
+        h for h in s.find_all(_HEADINGS) if _norm_heading(h.get_text(" ")) == wanted
+    ]
+    if level:
+        matches = [h for h in matches if h.name == level]
+    if not matches:
         return ""
+    if len(matches) > 1:
+        raise AmbiguousSectionError(
+            f"{section!r} matches {len(matches)} headings "
+            f"({', '.join(h.name for h in matches)}); set section_level"
+        )
+    start = matches[0]
 
     parts: list[str] = []
-    for el in start.find_all_next([*_HEADINGS, "p", "blockquote"]):
+    subtitles = 0  # leading display-line headings, e.g. "A NEW YEAR'S ADDRESS."
+    for el in start.find_all_next([*_HEADINGS, "p", "blockquote", "div"]):
         if el.name == start.name:
             break
         if el.find_parent("blockquote") is not None:
             continue  # already inside a collected blockquote
+        if el.name == "div":
+            if line := _display_line(el):
+                if len(parts) == subtitles and line.startswith("<h"):
+                    subtitles += 1
+                parts.append(line)
+            continue
         parts.append(str(el))
 
-    # The first paragraph is usually the scripture epigraph in quotes.
-    if parts:
-        first_text = re.sub(r"<[^>]+>", "", parts[0]).strip()
-        if first_text.startswith(("\u201c", '"', "\u2018", "'")):
-            inner = re.sub(r"^<p[^>]*>|</p>$", "", parts[0].strip())
-            parts[0] = f"<blockquote>{inner}</blockquote>"
+    # The first paragraph is usually the scripture epigraph in quotes — after
+    # any display-line subtitle. Only those: a real heading in the source still
+    # ends the search, as PG 57109's `<h2>J. Hudson Taylor</h2>` byline does,
+    # so its John 4:10 text stays the `<p>` every edition shipped with.
+    first = subtitles
+    if first < len(parts) and parts[first].startswith("<p"):
+        first_text = re.sub(r"<[^>]+>", "", parts[first]).strip()
+        if first_text.startswith(_QUOTES):
+            inner = re.sub(r"^<p[^>]*>|</p>$", "", parts[first].strip())
+            parts[first] = f"<blockquote>{inner}</blockquote>"
     return clean_fragment("".join(parts))
 
 
@@ -395,7 +465,9 @@ class Command(BaseCommand):
                     "https://www.gutenberg.org/cache/epub/"
                     f"{entry.source_ref}/pg{entry.source_ref}-images.html"
                 )
-                body = extract_gutenberg_section(fetch(url), entry.section)
+                body = extract_gutenberg_section(
+                    fetch(url), entry.section, entry.section_level
+                )
                 scripture_ref, preached_on = "", None
             elif entry.source == "web":
                 body = extract_web_sermon(
@@ -409,6 +481,9 @@ class Command(BaseCommand):
                 body, scripture_ref, preached_on = extract(fetch(entry.source_ref))
         except requests.RequestException as exc:
             self.stderr.write(self.style.ERROR(f"  fetch failed: {exc}"))
+            return
+        except AmbiguousSectionError as exc:
+            self.stderr.write(self.style.ERROR(f"  {exc}"))
             return
         if word_count(body) < 300:
             self.stderr.write(

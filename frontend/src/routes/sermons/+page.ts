@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Swahili sermon — against-eutropius (#2592, PR #3342). Rebuilds
+// /sw/sermons so the card and its /sw/sermons/against-eutropius page bake the translated title
+// (Dhidi ya Eutropius) and "In brief" summary.
 // prerender refresh 2026-09-24: Luganda sermon — against-eutropius (#1700). Sermon pages are
 // prerendered per locale, so /lg/sermons must rebuild so the card and its /lg/sermons/against-eutropius
 // page bake the translated title and "In brief" summary.
