@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-24 (queue job #1598): Spanish book — ministry-of-intercession, Andrew
+// Murray's plea for a life of intercession ("El Ministerio de la Intercesión"), 18 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
+// the shared painting ground and the reader page bakes the 18 chapters. Backs no
 // prerender refresh 2026-09-24 (queue job #1457): Spanish book — gleanings-among-the-sheaves,
 // Spurgeon's harvest of short devotional readings ("Espigas entre las Gavillas"), 20 chapters. Book
 // pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
