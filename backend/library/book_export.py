@@ -1,7 +1,8 @@
 """Downloadable editions of a book: EPUB (built per request) and print HTML.
 
 Both formats are assembled from the same parts — a cover, a title page, "About
-this work", the chapters, and a colophon — so an EPUB and a PDF of one edition
+Ochorus", a short biography of the author, "About this work", the chapters, and
+a colophon — so an EPUB and a PDF of one edition
 can never disagree about what the book contains. The chapters come straight
 from the database, so a download always matches what the reader serves,
 including fixes that reached production by data migration rather than fixture.
@@ -67,6 +68,9 @@ STRINGS = {
             "speaker. It is not the author's original text."
         ),
         "read_online": "Read it online, free, at",
+        # The short-biography page after "About Ochorus", before the contents.
+        "author_title": "About the Author",
+        "full_bio": "Read the full biography at",
         "more": "More free classics at",
         # The "About Ochorus" page before the contents. Trusted markup, written
         # here (drawn from the site's About page, messages/en.json about_*);
@@ -132,6 +136,7 @@ class Edition:
     about: str  # XHTML fragment, may be empty
     chapters: list[ExportChapter]
     cover: Cover | None
+    bio: str  # the author's short biography as XHTML paragraphs; "" for none
     url: str  # the book's page on the reader, "" when the site URL is unknown
 
     @property
@@ -256,6 +261,36 @@ def _cover_bytes(cover_url: str) -> bytes:
     return res.content
 
 
+def author_bio(book: Book) -> str:
+    """The author's SHORT biography in the edition's language, or "".
+
+    ``Author.bio`` is English; another language reads its ``AuthorTranslation``.
+    No English fallback — the same rule as the site, which shows a translated
+    edition's author page in that language or not at all — so a language with
+    no translated bio simply has no biography page. An imprint (Ochorus
+    Originals) is a publisher, not a person, and gets none either.
+    """
+    author = book.author
+    if author.is_imprint:
+        return ""
+    if book.language == DEFAULT_LANGUAGE:
+        return author.bio.strip()
+    tr = author.translations.filter(language=book.language).only("bio").first()
+    return tr.bio.strip() if tr else ""
+
+
+def _bio_paragraphs(text: str) -> str:
+    return "".join(f"<p>{_e(p.strip())}</p>" for p in text.split("\n\n") if p.strip())
+
+
+def author_url(book: Book) -> str:
+    site = _site_url()
+    if not site:
+        return ""
+    prefix = "" if book.language == DEFAULT_LANGUAGE else f"/{book.language}"
+    return f"{site}{prefix}/authors/{book.author.slug}/"
+
+
 def build_edition(book: Book) -> Edition:
     strings = STRINGS[book.language]
     chapters = [
@@ -280,6 +315,7 @@ def build_edition(book: Book) -> Edition:
         about=about,
         chapters=chapters,
         cover=edition_cover(book),
+        bio=_bio_paragraphs(author_bio(book)),
         url=book_url(book),
     )
 
@@ -322,6 +358,19 @@ def _ochorus_page(ed: Edition) -> str:
     )
 
 
+def _author_page(ed: Edition) -> str:
+    """The short biography: name, life dates, the bio, and where to read more."""
+    a = ed.book.author
+    parts = [f'<h1>{_e(ed.strings["author_title"])}</h1>', f'<p class="name">{_e(ed.author)}</p>']
+    if a.birth_year:
+        parts.append(f'<p class="dates">{a.birth_year}–{a.death_year or ""}</p>')
+    parts.append(ed.bio)
+    link = author_url(ed.book)
+    if link:
+        parts.append(f'<p class="more">{_e(ed.strings["full_bio"])} <a href="{_e(link)}">{_e(link)}</a></p>')
+    return "".join(parts)
+
+
 def _title_page(ed: Edition) -> str:
     b = ed.book
     parts = [f'<h1 class="book-title">{_e(b.title)}</h1>']
@@ -357,6 +406,10 @@ blockquote p { text-indent: 0; }
 .ochorus .vision, .ochorus .verse { font-style: italic; text-align: center; }
 .ochorus .verse span { display: block; font-style: normal; font-size: 0.85em; }
 .ochorus li { margin-bottom: 0.3em; }
+.author-page p { text-indent: 0; text-align: left; margin-bottom: 0.8em; }
+.author-page .name { text-align: center; font-size: 1.15em; margin-bottom: 0.2em; }
+.author-page .dates { text-align: center; font-size: 0.9em; margin-bottom: 1.5em; }
+.author-page .more { font-size: 0.9em; margin-top: 1.5em; }
 .cover { margin: 0; padding: 0; text-align: center; }
 .cover img { max-width: 100%; max-height: 100%; }
 nav ol { list-style: none; padding: 0; }
@@ -388,6 +441,8 @@ def render_epub(ed: Edition) -> bytes:
         ))
     docs.append(("titlepage", "title.xhtml", None, _xhtml(ed, b.title, _title_page(ed), body_class="titlepage")))
     docs.append(("ochorus", "about-ochorus.xhtml", None, _xhtml(ed, s["ochorus_title"], _ochorus_page(ed), body_class="ochorus")))
+    if ed.bio:
+        docs.append(("author", "about-author.xhtml", None, _xhtml(ed, s["author_title"], _author_page(ed), body_class="author-page")))
     if ed.about:
         docs.append(("about", "about.xhtml", s["about"], _xhtml(ed, s["about"], f"<h1>{_e(s['about'])}</h1>{ed.about}")))
     for ch in ed.chapters:
@@ -508,6 +563,13 @@ body { margin: 0; }
 .ochorus a { color: inherit; }
 .ochorus .verse { font-style: italic; text-align: center; margin-top: 6mm; }
 .ochorus .verse span { display: block; font-style: normal; font-size: 9pt; color: #555; margin-top: 1mm; }
+.author-page { page: front; break-after: page; font-size: 10.5pt; }
+.author-page h1 { font-size: 17pt; font-weight: 600; text-align: center; margin: 8mm 0 6mm; }
+.author-page p { text-indent: 0; text-align: left; margin: 0 0 2.5mm; }
+.author-page .name { text-align: center; font-size: 13pt; margin: 0 0 1mm; }
+.author-page .dates { text-align: center; font-size: 10pt; color: #555; margin: 0 0 6mm; }
+.author-page .more { font-size: 9.5pt; margin-top: 6mm; }
+.author-page a { color: inherit; }
 .contents { page: front; break-after: page; }
 .contents ol { list-style: none; padding: 0; margin: 0; }
 .contents li { margin: 0 0 2.2mm; }
@@ -552,6 +614,8 @@ def render_print_html(
         parts.append(f'<div class="cover"><img src="{_e(cover_src)}" alt=""/></div>')
     parts.append(f'<div class="titlepage">{_title_page(ed)}</div>')
     parts.append(f'<div class="ochorus">{_ochorus_page(ed)}</div>')
+    if ed.bio:
+        parts.append(f'<div class="author-page">{_author_page(ed)}</div>')
     toc = []
     if ed.about:
         toc.append(("about", s["about"]))
