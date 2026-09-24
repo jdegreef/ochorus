@@ -1,0 +1,50 @@
+{
+ "kind": "sermon",
+ "slug": "against-eutropius",
+ "language": "sw",
+ "job_issue": 2592,
+ "references": [
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "mined",
+   "source_file": "union-and-communion.sw.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Proverbs 27:6",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json",
+   "block_index": 3
+  },
+  {
+   "reference": "1 Peter 1:24",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 37:2",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 102:3",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Hosea 6:6",
+   "status": "self_rendered",
+   "block_index": 5
+  }
+ ]
+}

@@ -120,6 +120,7 @@ import {
 // `script-` class, no `lang` and no `dir`: an Arabic preview would have been
 // set in the Latin face and laid out left-to-right.
 import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
+import { coverTitle } from '../src/lib/coverTitle.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
 import { coverLayoutFor, layoutKey } from '../src/lib/coverLayouts.ts';
 import { groundBar } from '../src/lib/groundBars.ts';
@@ -200,7 +201,9 @@ function needTwins() {
 			const script = scriptOf(fields.language || 'en');
 			return {
 				slug: fields.slug,
-				title: fields.title,
+				// The title the cover SETS, as the component chooses it — and so the
+				// one the manifest digests, which `tests_fixture` recomputes.
+				title: coverTitle(fields),
 				subtitle: fields.subtitle || '',
 				author: author.name,
 				// The card is set in the style the cover is set in — one table, read
