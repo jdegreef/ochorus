@@ -4341,13 +4341,10 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
     ("definida y prevaleciente.</p>",
      "<p><i>Impreso en los Estados Unidos de América</i></p>"),
 ]
-# Gutenberg #65066 closes Edwards's Reflections on "…revival of true religion!
-# Amen." and then carries the ATS donors' line (a centred div the importer
-# never collected) and the transcriber's `div.tnotes` endnote: three
-# paragraphs on the diary's quotation marks and restored punctuation,
-# introducing an errata table that was dropped. Its heading is a centred
-# `nf-center` div, which was not collected either, so the note reads as
-# Edwards's own closing words — and the sw edition translated it as such.
+# Gutenberg #65066 follows "…revival of true religion! Amen." with the ATS
+# donors' line and the transcriber's `tnotes` endnote. The note's heading was
+# never collected, so its three paragraphs read as Edwards's own last words —
+# and the sw edition translated them as such.
 BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter"] = [
     ("true religion! <i>Amen.</i></p>",
      "<p>The frequent dated quotations from Brainerd’s diaries"),
