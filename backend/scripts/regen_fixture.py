@@ -64,6 +64,7 @@ from library.content_fixtures import (  # noqa: E402  (path set above; no Django
 MODELS = [
     "library.author",
     "library.series",
+    "library.seriestranslation",
     "library.book",
     "library.chapter",
     "library.sermon",
@@ -149,6 +150,8 @@ def identity(row):
         return (m, f["slug"])
     if m in ("library.book", "library.sermon", "library.article", "library.plan"):
         return (m, f["slug"], f.get("language", "en"))
+    if m == "library.seriestranslation":
+        return (m, tuple(f["series"]), f["language"])
     if m == "library.chapter":
         return (m, tuple(f["book"]), f["order"])
     if m == "library.planday":
@@ -164,7 +167,8 @@ def split_layout(rows: list[dict]) -> dict[Path, list[dict]]:
 
     files: dict[Path, list[dict]] = {
         AUTHORS_FILE: by_model.get("library.author", []),
-        SERIES_FILE: by_model.get("library.series", []),
+        SERIES_FILE: by_model.get("library.series", [])
+        + by_model.get("library.seriestranslation", []),
     }
 
     chapters_by_book: dict[tuple, list[dict]] = {}

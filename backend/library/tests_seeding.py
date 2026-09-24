@@ -472,6 +472,25 @@ class SeedBooksUpsertTests(TestCase):
         call_command("seed_books", verbosity=0)
         self.assertEqual(dict(Series.objects.values_list("pk", "updated_at")), stamps)
 
+    def test_series_names_are_the_fixtures_own(self):
+        # Seeded, corrected on the next deploy, and a name the fixture no
+        # longer carries is removed rather than left on every page.
+        from django.core.management import call_command
+
+        from library.models import Series, SeriesTranslation
+
+        sw = SeriesTranslation.objects.get(series__slug="brave-for-god", language="sw")
+        SeriesTranslation.objects.filter(pk=sw.pk).update(title="stale")
+        SeriesTranslation.objects.create(
+            series=Series.objects.get(slug="rooted"), language="fr", title="withdrawn"
+        )
+        call_command("seed_books", verbosity=0)  # the next deploy
+        sw.refresh_from_db()
+        self.assertEqual(sw.title, "Jasiri kwa ajili ya Mungu")
+        self.assertFalse(
+            SeriesTranslation.objects.filter(series__slug="rooted", language="fr").exists()
+        )
+
     def test_a_book_the_fixture_takes_out_of_a_series_leaves_it(self):
         # Membership is the fixture's fact: a row with no `series` key is in no
         # series, not "leave whatever the DB has".

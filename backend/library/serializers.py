@@ -17,6 +17,7 @@ from .models import (
     Chapter,
     Plan,
     PlanDay,
+    Series,
     Sermon,
     Topic,
     TopicBook,
@@ -112,6 +113,65 @@ def sibling_editions(book):
         .annotate(**BOOK_CARD_ANNOTATIONS)
     )
     return sorted(rows, key=lambda b: rank[b.slug])
+
+
+def series_block(book) -> dict | None:
+    """Where ``book`` sits in its series, for the book page's series line and
+    the last chapter's "next in series" — or None.
+
+    None when the book is in no series, and ALSO when the series has no name in
+    the edition's language: there is no English fallback (``Series.title_for``),
+    so a Swahili edition of an unnamed series shows no series line at all.
+
+    ``total`` counts the series' published volume NUMBERS across every
+    language, not this language's editions: "Book 4 of 4" stays true of the
+    series on a Luganda page that lacks volume 3, where a count of Luganda rows
+    would say "Book 4 of 3". ``previous`` / ``next`` are the nearest published
+    volumes IN THIS LANGUAGE, so they skip a volume that isn't translated yet
+    rather than linking to a page that doesn't exist. An unordered series (a
+    collection, no positions) has neither — there is no "next" in a collection.
+    """
+    if book.series_id is None:
+        return None
+    series = Series.objects.prefetch_related("translations").get(pk=book.series_id)
+    title = series.title_for(book.language)
+    if not title:
+        return None
+    siblings = Book.objects.filter(series_id=series.pk, is_published=True)
+    position = book.series_position
+    if position is None:
+        return {
+            "slug": series.slug,
+            "title": title,
+            "position": None,
+            "total": siblings.filter(language=book.language).count(),
+            "previous": None,
+            "next": None,
+        }
+    here = siblings.filter(language=book.language).exclude(pk=book.pk)
+    previous = (
+        here.filter(series_position__lt=position)
+        .order_by("-series_position")
+        .values("slug", "title")
+        .first()
+    )
+    following = (
+        here.filter(series_position__gt=position)
+        .order_by("series_position")
+        .values("slug", "title")
+        .first()
+    )
+    return {
+        "slug": series.slug,
+        "title": title,
+        "position": position,
+        "total": siblings.exclude(series_position=None)
+        .values("series_position")
+        .distinct()
+        .count(),
+        "previous": previous,
+        "next": following,
+    }
 
 
 def _available_languages(model, slug: str) -> list[str]:
@@ -1183,6 +1243,8 @@ class BookDetailSerializer(BookListSerializer):
     # ways. Detail only, like related: it is one extra query, nothing on a page
     # and 130× nothing a shelf shouldn't pay.
     editions = serializers.SerializerMethodField()
+    # Where this edition sits in its series (see `series_block`); null outside one.
+    series = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
     artwork_credit = serializers.SerializerMethodField()
     # The author's authoritative identifiers, for the Person inside this page's
@@ -1314,7 +1376,7 @@ class BookDetailSerializer(BookListSerializer):
             "difficulty", "is_modern_edition", "has_modern_edition",
             "editions", "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "qa", "scripture", "opening",
-            "featured_people", "author_quote_count", "guides",
+            "featured_people", "author_quote_count", "guides", "series",
         ]
 
     def get_editions(self, obj):
@@ -1333,6 +1395,9 @@ class BookDetailSerializer(BookListSerializer):
 
     def get_available_languages(self, obj):
         return _available_languages(Book, obj.slug)
+
+    def get_series(self, obj):
+        return series_block(obj)
 
     def get_artwork_credit(self, obj) -> str | None:
         """Who painted the cover art, for the books that wear a real painting.

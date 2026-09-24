@@ -91,6 +91,7 @@ EXPECTED_MODELS = {
     "library.plan",
     "library.planday",
     "library.series",
+    "library.seriestranslation",
 }
 
 
@@ -261,6 +262,7 @@ class FixtureIntegrityTests(SimpleTestCase):
         checks = {
             "library.author": lambda f: f["slug"],
             "library.series": lambda f: f["slug"],
+            "library.seriestranslation": lambda f: (tuple(f["series"]), f["language"]),
             "library.book": lambda f: (f["slug"], f.get("language", "en")),
             "library.sermon": lambda f: (f["slug"], f.get("language", "en")),
             "library.plan": lambda f: (f["slug"], f.get("language", "en")),
@@ -304,6 +306,7 @@ class FixtureIntegrityTests(SimpleTestCase):
             (r["fields"]["slug"],) for r in self.by_model.get("library.series", [])
         }
         refs.append(("library.book", "series", series_keys))
+        refs.append(("library.seriestranslation", "series", series_keys))
         for model, field, valid in refs:
             dangling = sorted(
                 {
@@ -344,6 +347,7 @@ class FixtureIntegrityTests(SimpleTestCase):
             ("library.planday", "plan", 2),
         ]
         shapes.append(("library.book", "series", 1))
+        shapes.append(("library.seriestranslation", "series", 1))
         # Absent or null is a book in no series, which is well-formed.
         nullable = {("library.book", "series")}
         for model, field, arity in shapes:
@@ -371,6 +375,7 @@ class FixtureIntegrityTests(SimpleTestCase):
             "library.plan": ("slug", "title"),
             "library.planday": ("plan", "day", "book_slug", "chapter_order"),
             "library.series": ("slug", "title"),
+            "library.seriestranslation": ("series", "language", "title"),
         }.items():
             for r in self.by_model.get(model, []):
                 missing = [k for k in required if k not in r["fields"]]
@@ -445,6 +450,19 @@ class SeriesMembershipTests(SimpleTestCase):
         )
         self.assertEqual(editions, [])
 
+    def test_every_language_holding_a_volume_can_name_its_series(self):
+        # The series line on a book page shows only where the series has a name
+        # in the edition's language (no English fallback), so a missing
+        # translation silently drops the line from a whole language.
+        named = {(s, "en") for s in self.series} | {
+            (r["fields"]["series"][0], r["fields"]["language"])
+            for r in all_rows() if r["model"] == "library.seriestranslation"
+        }
+        unnamed = sorted(
+            {(f["series"][0], f.get("language", "en")) for f in self.members} - named
+        )
+        self.assertEqual(unnamed, [], "series with volumes in a language it has no name in")
+
     def test_every_series_has_a_book(self):
         used = {f["series"][0] for f in self.members}
         self.assertEqual(sorted(self.series - used), [], "a series with no books")
@@ -476,13 +494,21 @@ class SeedFieldCoverageTests(SimpleTestCase):
         self.assertEqual(set(BOOK_FIELDS), expected)
 
     def test_series_fields_cover_model(self):
-        from library.management.commands.seed_books import SERIES_FIELDS
-        from library.models import Series
+        from library.management.commands.seed_books import (
+            SERIES_FIELDS,
+            SERIES_TRANSLATION_FIELDS,
+        )
+        from library.models import Series, SeriesTranslation
 
         expected = self._content_fields(
             Series, exclude={"id", "slug", "created_at", "updated_at"}
         )
         self.assertEqual(set(SERIES_FIELDS), expected)
+        expected = self._content_fields(
+            SeriesTranslation,
+            exclude={"id", "series", "language", "created_at", "updated_at"},
+        )
+        self.assertEqual(set(SERIES_TRANSLATION_FIELDS), expected)
 
     def test_chapter_fields_cover_model(self):
         from library.management.commands.seed_books import CHAPTER_FIELDS
@@ -567,8 +593,22 @@ class FileCoherenceTests(SimpleTestCase):
         self.assertEqual(models, {"library.author"})
 
     def test_series_file_is_series_only(self):
-        models = {r["model"] for r in self.files.get(SERIES_FILE, [])}
-        self.assertEqual(models, {"library.series"})
+        rows = self.files.get(SERIES_FILE, [])
+        self.assertEqual(
+            {r["model"] for r in rows}, {"library.series", "library.seriestranslation"}
+        )
+        # A translation after its series: seed_books and loaddata both read the
+        # file in order, and a natural key to a row not yet seen won't resolve.
+        seen = set()
+        for r in rows:
+            f = r["fields"]
+            if r["model"] == "library.series":
+                seen.add(f["slug"])
+            else:
+                self.assertIn(
+                    f["series"][0], seen,
+                    f"series translation {f['series']} [{f['language']}] precedes its series",
+                )
 
     def test_plans_file_shape(self):
         rows = self.files.get(PLANS_FILE, [])
