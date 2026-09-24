@@ -3,8 +3,14 @@
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
-	import { chapterName, contentLang, readingMinutes, readingTime } from '$lib/reading';
-	import { API_BASE_URL, SITE_URL } from '$lib/config';
+	import {
+		bookTimeLeft,
+		chapterName,
+		contentLang,
+		readingMinutes,
+		readingTime
+	} from '$lib/reading';
+	import { SITE_URL } from '$lib/config';
 	import {
 		absUrl,
 		jsonLd,
@@ -31,23 +37,12 @@
 	import AddToShelfButton from '$lib/components/AddToShelfButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import { offlineBooks } from '$lib/offlineBooks.svelte';
-	import { pwa } from '$lib/pwa.svelte';
+	import BookDownloadMenu from '$lib/components/BookDownloadMenu.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	let { data } = $props();
 	const t = i18n.t;
 	const book = $derived<BookDetail>(data.book);
-
-	// Download-for-offline state for THIS EDITION. `book.language` is the
-	// language the API actually served (getBook falls back to English for a book
-	// with no copy in this locale), so it is what was cached and what must be
-	// asked for — not the UI locale.
-	const savedOffline = $derived(offlineBooks.has(book.slug, book.language));
-	const downloading = $derived(
-		offlineBooks.active?.slug === book.slug && offlineBooks.active?.language === book.language
-			? offlineBooks.active
-			: null
-	);
 
 	let resumeOrder = $state<number | null>(null);
 	$effect(() => {
@@ -69,6 +64,31 @@
 	);
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
+
+	// The read card: the chapter the reader is in, how far through the book
+	// that is (by words, so a long chapter counts for more), and the time left
+	// from the start of it at the reader's pace.
+	const resumeChapter = $derived(book.chapters.find((c) => c.order === resumeHere));
+	const wordsLeft = $derived(
+		resumeHere == null
+			? 0
+			: book.chapters.filter((c) => c.order >= resumeHere).reduce((n, c) => n + c.word_count, 0)
+	);
+	const minutesLeft = $derived(wordsLeft ? readingMinutes(wordsLeft) : 0);
+	const percentRead = $derived(totalWords ? ((totalWords - wordsLeft) / totalWords) * 100 : 0);
+
+	// Whether the read card has scrolled out of view — the sticky section bar
+	// shows its own Continue only then.
+	let readCard = $state<HTMLElement>();
+	let cardGone = $state(false);
+	$effect(() => {
+		if (!readCard) return;
+		const io = new IntersectionObserver(([e]) => {
+			cardGone = !e.isIntersecting && e.boundingClientRect.top < 0;
+		});
+		io.observe(readCard);
+		return () => io.disconnect();
+	});
 
 	// "Prefer Modern English" (settings): when it's on and this book has a modern
 	// edition, the read CTAs open that edition by carrying ?edition=modern. The
@@ -383,115 +403,87 @@
 				</p>
 			{/if}
 
-			<!-- Provenance / reassurance, up front: the whole work reads here, now,
-			     for nothing and behind no sign-in. Two facts, quiet, above the
-			     actions — the same claim `isAccessibleForFree` makes to a machine,
-			     said to the reader. -->
-			<p class="mt-3 text-small text-muted">
-				<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
-					class="px-1.5 opacity-50">·</span
-				>{t('book.noAccount')}
-			</p>
-
-			<!-- Action tiers: ONE clear read verb (Begin / Continue) with Save beside
-			     it, and every utility — Share, Search inside, Download, the modern
-			     edition — demoted to a quiet `.btn-sm` row beneath, so five equal
-			     buttons no longer compete for the one that matters. -->
-			<div class="mt-4 flex flex-wrap items-center gap-3">
-				{#if resumeOrder && resumeOrder > 1}
-					<a href={readHref(resumeOrder)} class="btn btn-primary">
-						{t('book.continueCh')} {resumeOrder}
-					</a>
-					<a href={readHref(1)} class="btn btn-ghost">{t('book.startOver')}</a>
-				{:else}
-					<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
-				{/if}
-				<FavoriteButton kind="book" slug={book.slug} showLabel />
+			<!-- Design D: the header's one job for a returning reader is to put them
+			     back where they were, so the read verb sits in a card that NAMES the
+			     chapter they're on, with the book's progress and the time left — a
+			     reason to press Continue, not just a number. A first-time reader (and
+			     the prerendered HTML, since the saved place is client-only) gets the
+			     same card offering chapter 1, carrying the "Free to read · No account
+			     needed" reassurance that used to sit on a row of its own. Start over
+			     is a quiet link: it discards the place, so it shouldn't look like a
+			     second main action. -->
+			<div class="read-card mt-4" bind:this={readCard}>
+				<div class="min-w-0 flex-1">
+					{#if resumeHere != null && resumeHere > 1}
+						<p class="text-small text-muted">
+							{t('book.onChapter')
+								.replace('%n%', String(resumeHere))
+								.replace('%t%', String(book.chapter_count))}{#if minutesLeft}{` · ${bookTimeLeft(minutesLeft)}`}{/if}
+						</p>
+						<p class="read-card-title" dir="auto">{chapterName(resumeHere, resumeChapter?.title)}</p>
+						<div class="mt-2">
+							<ProgressBar percent={percentRead} label="{book.title}: {t('progress.through')}" />
+						</div>
+					{:else}
+						<p class="text-small">
+							<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
+								class="px-1.5 opacity-50">·</span
+							><span class="text-muted">{t('book.noAccount')}</span>
+						</p>
+						{#if book.chapters[0]}
+							<p class="read-card-title" dir="auto">
+								{chapterName(book.chapters[0].order, book.chapters[0].title)}
+							</p>
+						{/if}
+					{/if}
+				</div>
+				<div class="read-card-cta">
+					{#if resumeHere != null && resumeHere > 1}
+						<a href={readHref(resumeHere)} class="btn btn-primary">{t('plans.continue')}</a>
+						<a href={readHref(1)} class="text-small text-muted underline hover:text-text"
+							>{t('book.startOver')}</a
+						>
+					{:else}
+						<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
+					{/if}
+					{#if book.has_modern_edition}
+						{@const readOrder = resumeHere && resumeHere > 1 ? resumeHere : 1}
+						<!-- The primary CTA follows the Modern English preference; this
+						     offers the other edition. -->
+						<a
+							href={localizeHref(
+								`/books/${book.slug}/${readOrder}${useModern ? '' : '?edition=modern'}`
+							)}
+							class="text-small text-accent hover:underline"
+							>{useModern ? t('reader.readOriginal') : t('book.readModern')}</a
+						>
+					{/if}
+				</div>
 			</div>
 
-			<div class="mt-2.5 flex flex-wrap items-center gap-2">
-				<!-- Share this edition. Opens the OS share sheet on mobile, else a small
-				     Copy link / WhatsApp / Facebook / Email menu; the URL is this page's
-				     per-locale canonical, and its link preview is the edition's own share
-				     card (shareCard/og-manifest). -->
-				<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
-				<!-- Put the book on the reader's own Bookshelf shelves (see
-				     customShelves) — the way to shelve a book not already there. -->
-				<AddToShelfButton slug={book.slug} />
-				<!-- Search inside this book. Goes to the real search scoped to the
-				     book rather than a second, weaker search over cached text: the
-				     reader gets the same ranking, snippets and paging they get
-				     everywhere else, and the scope is visible and reversible. -->
+			<!-- Everything else is one quiet row of five: keep it (Save, a shelf),
+			     take it away (one Download menu for offline / EPUB / PDF), pass it on
+			     (Share) and look inside (Search). Share and Search are icon-only on
+			     desktop. Below `sm` the same five become design B's labelled icon
+			     strip — equal columns, icon over a one-word label — so every action
+			     stays one tap away without wrapping onto three lines. -->
+			<div class="book-actions mt-3">
+				<FavoriteButton kind="book" slug={book.slug} showLabel />
+				<AddToShelfButton slug={book.slug} shortLabel />
+				<BookDownloadMenu {book} />
+				<div class="desk-icon">
+					<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
+				</div>
+				<!-- Search inside this book: the real search, scoped to the book. -->
 				<a
 					href={localizeHref(scopedSearchHref('book', book.slug))}
-					class="btn btn-sm btn-ghost">{t('search.inBook')}</a
+					class="btn btn-sm btn-ghost desk-icon"
+					aria-label={t('search.inBook')}
+					title={t('search.inBook')}
 				>
-				<!-- Download for offline: precache every chapter so the whole book
-				     reads with no connection (see lib/offlineBooks). -->
-				{#if downloading}
-					<span class="btn btn-sm btn-ghost cursor-default">
-						{t('offline.downloading')} {Math.round((downloading.done / downloading.total) * 100)}%
-					</span>
-				{:else if savedOffline}
-					<button
-						class="btn btn-sm btn-ghost"
-						title={t('offline.remove')}
-						onclick={() => offlineBooks.remove(book.slug, book.language)}
-					>
-						✓ {t('offline.saved')}
-					</button>
-				{:else}
-					<button
-						class="btn btn-sm btn-ghost"
-						disabled={!pwa.online}
-						title={pwa.online ? undefined : t('offline.needsConnection')}
-						onclick={() => offlineBooks.download(book)}
-					>
-						{t('offline.download')}
-					</button>
-				{/if}
-				<!-- Free downloads. EPUB is built per request by the API
-				     (library/book_export.py; `epub_url` is "" outside the pilot).
-				     The PDF is a static file under /pdfs/, printed off-server by
-				     `manage.py export_book` — no rel="external", so a pdf_url whose
-				     file is missing fails the prerender crawl instead of shipping a
-				     dead button (the 2026-07-26 withdrawal). -->
-				{#if book.epub_url || book.pdf_url}
-					<span class="inline-flex items-center gap-1">
-						<Icon name="download" size={16} class="text-muted" />
-						<span class="sr-only sm:not-sr-only text-small text-muted"
-							>{t('book.freeDownload')}</span
-						>
-						{#if book.epub_url}
-							<a
-								href={`${API_BASE_URL}${book.epub_url}`}
-								class="btn btn-sm btn-ghost"
-								download
-								rel="nofollow">EPUB</a
-							>
-						{/if}
-						{#if book.pdf_url}
-							<a href={book.pdf_url} class="btn btn-sm btn-ghost" download>PDF</a>
-						{/if}
-					</span>
-				{/if}
-
-				{#if book.has_modern_edition}
-					{@const readOrder = resumeOrder && resumeOrder > 1 ? resumeOrder : 1}
-					{#if useModern}
-						<!-- Primary CTA already opens modern; offer the original as the alt. -->
-						<a href={localizeHref(`/books/${book.slug}/${readOrder}`)} class="btn btn-sm btn-ghost">
-							{t('reader.readOriginal')}
-						</a>
-					{:else}
-						<a
-							href={localizeHref(`/books/${book.slug}/${readOrder}?edition=modern`)}
-							class="btn btn-sm btn-ghost"
-						>
-							{t('book.readModern')}
-						</a>
-					{/if}
-				{/if}
+					<Icon name="search" size={16} />
+					<span>{t('nav.search')}</span>
+				</a>
 			</div>
 		</div>
 	</header>
@@ -521,14 +513,19 @@
 					</li>
 				{/each}
 			</ul>
-			{#if resumeOrder && resumeOrder > 1}
-				<a href={readHref(resumeOrder)} class="btn btn-primary subnav-cta shrink-0"
-					>{t('book.continueCh')} {resumeOrder}</a
-				>
-			{:else}
-				<a href={readHref(1)} class="btn btn-primary subnav-cta shrink-0"
-					>{t('book.beginReading')}</a
-				>
+			<!-- The read verb lives in the hero card; repeating it here while that
+			     card is on screen put two "Continue" buttons in view. It appears
+			     only once the card has scrolled away. -->
+			{#if cardGone}
+				{#if resumeHere != null && resumeHere > 1}
+					<a href={readHref(resumeHere)} class="btn btn-primary subnav-cta shrink-0"
+						>{t('book.continueCh')} {resumeHere}</a
+					>
+				{:else}
+					<a href={readHref(1)} class="btn btn-primary subnav-cta shrink-0"
+						>{t('book.beginReading')}</a
+					>
+				{/if}
 			{/if}
 		</nav>
 	{/if}
@@ -805,6 +802,93 @@
 			var(--surface-2) 1px,
 			var(--border) 1.5px
 		);
+	}
+
+	/* Design D's read card: the chapter you're on, the book's progress, and
+	   the one read verb. A tinted surface, not a bordered box, so it reads as
+	   the head of the hero rather than a separate widget. Stacks on a phone
+	   with a full-width CTA (design B). */
+	.read-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding: 0.85rem 1rem;
+		border-radius: var(--radius-card);
+		background: var(--surface-2);
+	}
+	.read-card-title {
+		margin-top: 0.15rem;
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1.25;
+	}
+	.read-card-cta {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.4rem;
+		text-align: center;
+	}
+	@media (min-width: 640px) {
+		.read-card {
+			flex-direction: row;
+			align-items: center;
+			gap: 1.25rem;
+		}
+		.read-card-cta {
+			align-items: center;
+			flex-shrink: 0;
+		}
+	}
+
+	/* The secondary actions. Desktop: one quiet wrapping row, with Share and
+	   Search as icons (their labels kept for the phone strip, and as the
+	   accessible name via aria-label/title). */
+	.book-actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	@media (min-width: 640px) {
+		.book-actions .desk-icon :global(span),
+		.book-actions a.desk-icon > span {
+			display: none;
+		}
+	}
+	/* Phone: design B's strip — five equal columns under a hairline, each an
+	   icon over a one-word label. The children are other components' buttons,
+	   hence :global. */
+	@media (max-width: 639.98px) {
+		.book-actions {
+			display: grid;
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+			gap: 0;
+			padding-top: 0.6rem;
+			border-top: 1px solid var(--border);
+		}
+		.book-actions > :global(*) {
+			display: flex;
+			justify-content: center;
+			min-width: 0;
+		}
+		.book-actions :global(.btn) {
+			flex-direction: column;
+			gap: 0.2rem;
+			width: 100%;
+			padding: 0.4rem 0.1rem;
+			border-color: transparent;
+			font-size: var(--fs-eyebrow);
+			font-weight: 500;
+			white-space: nowrap;
+		}
+		.book-actions :global(.btn svg) {
+			width: 20px;
+			height: 20px;
+		}
+		.book-actions :global(.shelf-count) {
+			display: none;
+		}
 	}
 
 	/* A3: jump-nav. Anchored sections clear both pinned bars via `--pinned-offset`

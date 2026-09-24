@@ -15,7 +15,9 @@
 	 * (localStorage), so on the prerendered page it starts as a plain button
 	 * and fills in on hydration.
 	 */
-	let { slug }: { slug: string } = $props();
+	// `shortLabel` gives the book page's phone icon strip a one-word label
+	// ("Shelf") below `sm`, where "Add to a shelf" can't fit a fifth of a row.
+	let { slug, shortLabel = false }: { slug: string; shortLabel?: boolean } = $props();
 	const t = i18n.t;
 
 	let open = $state(false);
@@ -58,7 +60,13 @@
 		onclick={toggle}
 	>
 		<Icon name="layers" size={15} />
-		{t('shelves.addTo')}
+		{#if shortLabel}
+			<span class="hidden sm:inline">{t('shelves.addTo')}</span><span class="sm:hidden"
+				>{t('shelves.short')}</span
+			>
+		{:else}
+			{t('shelves.addTo')}
+		{/if}
 		{#if onCount}
 			<span class="shelf-count" aria-hidden="true">✓ {onCount}</span>
 		{/if}
