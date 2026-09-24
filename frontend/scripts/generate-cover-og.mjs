@@ -234,7 +234,7 @@ function needTwins() {
 				// painting in the library needs.
 				scrim: scrimStrength(fields.slug),
 				// A painting's composition; a plate takes none.
-				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script) : null
+				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script, fields.slug) : null
 			};
 		})
 		// How far a laid-out painting is cropped past its scan border — the

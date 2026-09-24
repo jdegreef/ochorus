@@ -68,7 +68,12 @@ from library.covers import (
     twin_path,
     variant_url,
 )
-from library.curated_art import CURATED, CURATED_GROUND, ORIGINAL_GROUND
+from library.curated_art import (
+    CURATED,
+    CURATED_GROUND,
+    ORIGINAL_GROUND,
+    ORIGINAL_SVG_GROUND,
+)
 from library.designed_covers import (
     DERIVED_GROUND,
     DESIGNED,
@@ -1464,6 +1469,37 @@ class CoverAssetTests(SimpleTestCase):
             "not — nothing may redraw one of these. If you replaced the artwork "
             "on purpose, update its digest in curated_art.ORIGINAL_GROUND in the "
             "same commit",
+        )
+
+    def test_original_svg_grounds_are_frozen(self):
+        """The SVG Originals under `covers/art/` are frozen like the raster ones.
+
+        The two gates around this one glob `*.jpg` only, so a hand-drawn SVG
+        ground — the Key Teachings trees — was pinned by nothing: a script or a
+        tidy-up could redraw it and CI would stay green. Every SVG there must be
+        registered in `curated_art.ORIGINAL_SVG_GROUND`, and its bytes must
+        still match the digest recorded beside it.
+        """
+        art = STATIC_DIR / "covers" / "art"
+        present = {p.stem for p in art.glob("*.svg")}
+        self.assertEqual(
+            sorted(present - set(ORIGINAL_SVG_GROUND)), [],
+            "an SVG ground under covers/art/ is unregistered — add it to "
+            "curated_art.ORIGINAL_SVG_GROUND with its sha256",
+        )
+        self.assertEqual(
+            sorted(set(ORIGINAL_SVG_GROUND) - present), [],
+            "an ORIGINAL_SVG_GROUND names a file that is not in covers/art/",
+        )
+        changed = sorted(
+            slug for slug, original in ORIGINAL_SVG_GROUND.items()
+            if digest(art / f"{slug}.svg") != original.sha256
+        )
+        self.assertEqual(
+            changed, [],
+            "an SVG Original changed but its recorded sha256 did not — nothing "
+            "may redraw one. If you replaced it on purpose, update its digest in "
+            "curated_art.ORIGINAL_SVG_GROUND in the same commit",
         )
 
     def test_every_art_file_belongs_to_a_tier(self):

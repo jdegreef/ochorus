@@ -173,7 +173,7 @@
 	const blockDir = $derived(script === 'arabic' ? { dir: 'rtl' as const } : {});
 	/** The layout a painting is composed in (`coverLayouts.ts`); null for the
 	 *  framed composition, and always null off a painting. */
-	const layout = $derived(isArt ? coverLayoutFor(book.author.slug, script) : null);
+	const layout = $derived(isArt ? coverLayoutFor(book.author.slug, script, book.slug) : null);
 	/** How far a laid-out painting is cropped to clear its scan border
 	 *  (`groundBars.ts`). The framed scrim hides the border, so only a layout
 	 *  asks. */
