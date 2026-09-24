@@ -22,6 +22,7 @@ from library.ingest import (
     clean_fragment,
     clean_html,
     clean_title,
+    display_line,
     is_front_matter,
     soup,
     upsert_book,
@@ -37,6 +38,9 @@ _ROMAN_OR_NUM = re.compile(r"^(?:chapter\s+)?[IVXLCDM\d]+\.?$", re.I)
 # dropped as front matter (prefatory notes, epigraph poems). Real chapters
 # in the library run 1,300+ words; the longest hymn coda is ~250.
 _TINY_SECTION_WORDS = 300
+# The outermost verse container, for the fallback walk. Not `ingest._VERSE_CLASS`:
+# that also matches a stanza, which is a poem's part, not a poem.
+_POEM = re.compile(r"poem|poetry|lg-container")
 
 
 def fetch_html(book_id: str) -> str:
@@ -174,7 +178,11 @@ def split_by_heading(root, tag) -> list[tuple[str, str]]:
                 break
             if consumed is not None and sib is consumed:
                 continue  # folded into the title; don't repeat it in the body
-            parts.append(str(sib))
+            # A centred display line would reach clean_fragment as a bare div
+            # and be unwrapped to loose text; give it its block. Wrappers and
+            # furniture pass through as before.
+            line = display_line(sib) if getattr(sib, "name", None) == "div" else ""
+            parts.append(line or str(sib))
         out.append((title, clean_fragment("".join(parts))))
 
     # Some books wrap each chapter in its own container, so a heading has NO
@@ -196,15 +204,12 @@ def split_by_heading(root, tag) -> list[tuple[str, str]]:
                         break
                     continue
                 if el.name == "div":
-                    # Only poems: verse-line divs become a blockquote with line
-                    # breaks (stanzas separated by a blank line); every other
-                    # div is just a container. Matches poem/poetry(-container).
+                    # A poem's verse-line divs become a blockquote with line
+                    # breaks (stanzas separated by a blank line).
                     classes = " ".join(el.get("class", []))
-                    if re.search(r"poem|poetry", classes) and el.find_parent(
-                        class_=re.compile("poem|poetry")
-                    ) is None:
+                    if _POEM.search(classes) and el.find_parent(class_=_POEM) is None:
                         stanzas = []
-                        for st in el.select("[class*=stanza]") or [el]:
+                        for st in el.select("[class*=stanza], div.group") or [el]:
                             lines = [
                                 d.get_text(" ", strip=True)
                                 for d in st.find_all("div", recursive=False)
@@ -215,12 +220,20 @@ def split_by_heading(root, tag) -> list[tuple[str, str]]:
                             + "<br/><br/>".join(s for s in stanzas if s)
                             + "</blockquote>"
                         )
+                    # Any other div is a container (its blocks arrive on their
+                    # own) or a centred display line, kept as its block — unless
+                    # something already collected carries it.
+                    elif el is not consumed and el.find_parent(
+                        ["blockquote", "ul", "ol", "table"]
+                    ) is None and el.find_parent(class_=_POEM) is None:
+                        if line := display_line(el):
+                            parts.append(line)
                     continue
                 if el is consumed or el.find_parent("blockquote") is not None:
                     continue
                 if el.find_parent(["ul", "ol"]) is not None:
                     continue  # list items arrive via their list
-                if el.find_parent(class_=re.compile("poem|poetry")) is not None:
+                if el.find_parent(class_=_POEM) is not None:
                     continue  # already captured via its poem div
                 parts.append(str(el))
             out.append((title, clean_fragment("".join(parts))))

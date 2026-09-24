@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from html import escape
 
 from bs4 import BeautifulSoup
 from django.db import transaction
@@ -495,3 +496,68 @@ def upsert_book(entry: BookEntry, sections: list[tuple[str, str]], language: str
 
 def soup(html: str) -> BeautifulSoup:
     return BeautifulSoup(html, "lxml")
+
+
+# A `<div>` holding any of these is a wrapper, not a display line: editions wrap
+# a chapter's or study's own heading in one, and those must not be read as content.
+_DISPLAY_LINE_WRAPS = ["h1", "h2", "h3", "h4", "h5", "h6", "p", "blockquote",
+                       "div", "table", "ul", "ol"]
+# A div INSIDE verse is one line of a poem, not a line of its own; the
+# importer's poem handling (or the sanitizer's unwrap) owns it. Gutenberg's
+# hand-made editions say poem/poetry/stanza, ebookmaker's say lg-container /
+# linegroup, the TEI ones tei-lg. A poem set as ONE div, its lines split by
+# <br>, is a display line like any other (PG 57109's "LORD JESUS, make
+# Thyself to me" in `unfailing-springs`).
+_VERSE_CLASS = re.compile(r"poem|poetry|stanza|linegroup|lg-container|tei-lg")
+# An illustration and its caption. The image doesn't survive the sanitizer, and
+# a caption alone ("A saddled camel") is not the author's text.
+_FIGURE_CLASS = re.compile(r"^(?:fig|caption)")
+# Opening quotation marks. A line in capitals that opens with one finishes a
+# sentence (`"RIBBAND OF BLUE."`); it is not a heading.
+QUOTES = ("“", '"', "‘", "'")
+_EDGE_BREAKS = re.compile(r"^(?:\s|<br\s*/?>)+|(?:\s|<br\s*/?>)+$")
+
+
+def display_line(div) -> str:
+    """A Gutenberg centred display line (`<div class="c1">`) as a body block.
+
+    Gutenberg editions set in-text section headings, displayed verses,
+    epigraphs, datelines and signatures as a bare `<div>` — and some set whole
+    paragraphs that way (a drop-cap opening, `<div class="cap">`). The
+    sanitizer unwraps a div, so without this the line reaches the body as
+    loose text between paragraphs — a heading becomes an unmarked run — or,
+    where a collector walks only known block tags, vanishes. PG 23438 (*A
+    Ribband of Blue*) lost them all; `corrections.py` ("The rest of Gutenberg
+    #23438") has the damage.
+
+    A line wholly in capitals is an `<h3>`, text verbatim (the source's own
+    small caps and stops) — unless it opens with a quotation mark. Anything else
+    is a `<p>`, markup kept. `BODY_CORRECTIONS`' `restored_blocks` insert exactly
+    these blocks into rows imported before this existed, so a re-import leaves
+    those corrections nothing to do.
+
+    Returns "" for anything that is not a display line, and the caller keeps
+    whatever it did before: a wrapper, Gutenberg's own `pg_body_wrapper`
+    furniture (page numbers, spacers, PG 57109's "9,000 in print"), one line
+    of a poem, a figure or caption, a bare chapter counter ("CHAPTER 1" under the
+    chapter's own heading — the reader numbers chapters), an empty line.
+    Shared by `import_gutenberg` and `import_sermons`.
+    """
+    classes = " ".join(div.get("class") or [])
+    if (
+        "pg_body_wrapper" in classes
+        or _FIGURE_CLASS.match(classes)
+        or div.find(_DISPLAY_LINE_WRAPS) is not None
+        or div.find_parent(class_=_VERSE_CLASS) is not None
+    ):
+        return ""
+    # Read a copy with the page numbers gone: PG 65066 sets one inside a line
+    # ("<span class="pageno">9</span><b>LIFE</b>" reads "9LIFE").
+    line = soup(str(div)).find("div")
+    drop_furniture(line)
+    text = " ".join(line.get_text().split())
+    if not text or _BARE_CHAPTER.match(text):
+        return ""
+    if text.isupper() and not text.startswith(QUOTES):
+        return f"<h3>{escape(text, quote=False)}</h3>"
+    return f"<p>{_EDGE_BREAKS.sub('', line.decode_contents())}</p>"

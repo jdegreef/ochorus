@@ -1083,7 +1083,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # sinners."; `blessed-adversity` block 14 answers "in the words which we
     # have already quoted" with a Job 1:21 that was never on the page.
     #
-    # The importer keeps these lines now (`import_sermons._display_line`), and
+    # The importer keeps these lines now (`ingest.display_line`), and
     # every English block below is spelled EXACTLY as it emits them: a line set
     # wholly in capitals is an `<h3>` with the source's own wording and stops;
     # anything else is a `<p>`; a leading quotation is the epigraph

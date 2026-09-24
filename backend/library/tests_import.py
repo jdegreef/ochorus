@@ -897,7 +897,7 @@ class SermonReimportCreateOnlyTests(TestCase):
 class GutenbergDisplayLineTests(SimpleTestCase):
     """`extract_gutenberg_section` keeps PG 23438's centred display lines.
 
-    See `import_sermons._display_line`. The markup below is the edition's own,
+    See `ingest.display_line`. The markup below is the edition's own,
     cut down.
     """
 
@@ -976,6 +976,169 @@ class GutenbergDisplayLineTests(SimpleTestCase):
         for block in self.ADVERSITY_LINES:
             with self.subTest(block=block):
                 self.assertIn(block, restored)
+
+
+class GutenbergBookDisplayLineTests(SimpleTestCase):
+    """`import_gutenberg.split_by_heading` keeps display lines too, on both of
+    its paths — the same `ingest.display_line` rule as the sermon importer.
+
+    Each page is one edition's own markup, cut down. Before the shared rule the
+    sibling path handed these divs to the sanitizer, which unwrapped them into
+    loose text (A Retrospect, Hurlbut), and the fallback walk dropped them
+    outright (Brainerd, The Reality of Prayer).
+    """
+
+    def _split(self, page, tag="h2"):
+        from library.management.commands.import_gutenberg import (
+            content_root,
+            split_by_heading,
+        )
+
+        return split_by_heading(content_root(page), tag)
+
+    # PG 40460, Hurlbut's Life of Christ: the counter under the heading, a
+    # drop-cap opening paragraph set as a div, an illustration with its caption.
+    HURLBUT = """<html><body>
+<h2>The Lord's Land</h2>
+<div class="chaptertitle">CHAPTER 1</div>
+<div class="cap">FIRST OF ALL, let us take a journey to the land
+where Jesus lived.</div>
+<p>These foothills of the Shephelah are not many miles wide.</p>
+<div class="figcenter" style="width: 295px;" role="figure">
+<img alt="camel" height="285" src="images/illus-029.jpg" width="295">
+<span class="caption">A saddled camel</span>
+</div>
+<p>The plain is rich and fertile.</p>
+<div class="center">MARY'S SONG</div>
+<p>And Mary said.</p>
+<h2>The People</h2>
+<p>NEARLY ALL the people living in Palestine were Jews.</p>
+</body></html>"""
+
+    def test_sibling_path_gives_each_line_its_block(self):
+        (title, body), _ = self._split(self.HURLBUT)
+        self.assertEqual(title, "The Lord's Land")
+        self.assertEqual(
+            body,
+            # The counter is the reader's to show (it passes through as before,
+            # and the sanitizer drops it); a caption without its image is not
+            # the author's text, and passes through as before too.
+            "<p>FIRST OF ALL, let us take a journey to the land where Jesus lived.</p> "
+            "<p>These foothills of the Shephelah are not many miles wide.</p>"
+            " A saddled camel "
+            "<p>The plain is rich and fertile.</p> "
+            "<h3>MARY'S SONG</h3> "
+            "<p>And Mary said.</p>",
+        )
+
+    # PG 26744, A Retrospect: a dateline set right, a poem set as one div, and
+    # PG 29296's attribution under a poem whose lines are divs of a stanza.
+    RETROSPECT = """<html><body>
+<h2>Arrival</h2>
+<div class="right">
+<i>Thursday, April 26th, 1855.</i><br>
+</div>
+<p>After breakfast we commended ourselves to God.</p>
+<div class="poem">
+"The perils of the sea, the perils of the land,<br>
+Should not dishearten thee."<br>
+</div>
+<div class="main"><div class="stanza">
+<div class="indent">Some feeble prayer of ours,</div>
+<div>Transmuted into wealth unpriced,</div>
+</div></div>
+<div class="rt"><span class="smc">F. R. Havergal</span>.</div>
+<h2>Ningpo</h2>
+<p>Next.</p>
+<h2>Home</h2>
+<p>Last.</p>
+</body></html>"""
+
+    def test_a_dateline_a_poem_and_an_attribution_become_paragraphs(self):
+        (_, body), *_ = self._split(self.RETROSPECT)
+        self.assertEqual(
+            body,
+            # The edge <br> goes: it was only the edition's line end.
+            "<p><i>Thursday, April 26th, 1855.</i></p> "
+            "<p>After breakfast we commended ourselves to God.</p>"
+            # A poem set as one div is one display line, its <br>s kept...
+            ' <p>"The perils of the sea, the perils of the land,<br/> Should not'
+            ' dishearten thee."</p>'
+            # ...but a line of a stanza is the poem's, not a line of its own:
+            # the sibling path has no poem handling, so it passes through
+            # exactly as before.
+            " Some feeble prayer of ours, Transmuted into wealth unpriced, "
+            "<p>F. R. Havergal.</p>",
+        )
+
+    # PG 65066, Brainerd: every chapter heading in its own wrapper, so the
+    # fallback walk runs. A signature, a date-range subtitle and ebookmaker
+    # verse (`lg-container`).
+    BRAINERD = """<html><body>
+<div class="chapter"><h2 class="c010">FROM <br> PRESIDENT EDWARDS’ PREFACE.</h2></div>
+<p class="c001">the interest of religion.”</p>
+<div class="c012">JONATHAN EDWARDS.</div>
+<div class="pbb"><hr class="pb c000"></div>
+<div class="chapter"><h2 class="c014">CHAPTER I.</h2></div>
+<p class="c015"><i>From his birth to the time when he began to study.</i></p>
+<div class="nf-center-c0">
+<div class="nf-center c005">
+<div>April 20, 1718-Feb. 1741.</div>
+</div>
+</div>
+<p class="c001">David Brainerd was born April 20, 1718, at Haddam.</p>
+<div class="lg-container-b c004">
+  <div class="linegroup">
+    <div class="group">
+      <div class="line">“Farewell, vain world; my soul can bid Adieu</div>
+      <div class="line in2">“My Savior taught me to abandon you.</div>
+    </div>
+  </div>
+</div>
+<div class="chapter"><h2 class="c010">CHAPTER II.</h2></div>
+<p class="c001">Next.</p>
+</body></html>"""
+
+    def test_fallback_walk_keeps_display_lines_and_ebookmaker_verse(self):
+        (_, preface), (title, body), _ = self._split(self.BRAINERD)
+        self.assertEqual(title, "From his birth to the time when he began to study")
+        self.assertEqual(
+            preface,
+            "<p>the interest of religion.”</p><h3>JONATHAN EDWARDS.</h3>",
+        )
+        self.assertEqual(
+            body,
+            "<p>April 20, 1718-Feb. 1741.</p>"
+            "<p>David Brainerd was born April 20, 1718, at Haddam.</p>"
+            # One blockquote for the poem, not a <p> per line.
+            "<blockquote>“Farewell, vain world; my soul can bid Adieu<br/>"
+            "“My Savior taught me to abandon you.</blockquote>",
+        )
+
+    def test_a_page_number_inside_a_line_is_not_read_as_text(self):
+        from library.ingest import display_line, soup
+
+        # PG 65066's half-title reads "9LIFE" with its page number left in.
+        div = soup('<div><span class="pageno" id="Page_9">9</span><b>LIFE</b></div>').find("div")
+        self.assertEqual(display_line(div), "<h3>LIFE</h3>")
+
+    def test_display_line_declines_what_is_not_one(self):
+        from library.ingest import display_line, soup
+
+        for markup in (
+            '<div class="pg_body_wrapper"><span class="pagenum">88</span></div>',
+            '<div class="c1"><h3>Blessed Adversity.</h3></div>',  # a wrapper
+            '<div class="chaptertitle">CHAPTER 1</div>',
+            '<div class="caption">A saddled camel</div>',
+            '<div class="stanza"><div class="indent">Some feeble prayer</div></div>',
+            '<div class="nf-center"><span class="pageno">9</span></div>',
+            '<div class="c1"> </div>',
+        ):
+            with self.subTest(markup=markup):
+                div = soup(markup).find("div")
+                self.assertEqual(display_line(div), "")
+                for inner in div.find_all("div"):
+                    self.assertEqual(display_line(inner), "")
 
 
 class CcelAbortOnFetchFailureTests(TestCase):
