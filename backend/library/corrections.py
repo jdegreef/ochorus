@@ -1222,6 +1222,27 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>Sasa twaendelea", "<h3>MATOKEO KATIKA BARAKA.</h3>"),
             ("<p>Si lazima kukaa kwa urefu", "<h3>TOFAUTI.</h3>"),
             ("<p>Si lazima kukaa kwa urefu", '<p><em>"Sivyo walivyo wasio haki."</em></p>'),
+            # ar
+            ("<p>ثمّة نجاح لا بركة فيه: فهو لا يأتي ",
+             "<p>تأمّلات في المزمور الأول.</p>"),
+            ("<p>ثمّة نجاح لا بركة فيه: فهو لا يأتي ",
+             "<h3>تمهيد.</h3>"),
+            ("<p>وبترجمة أكثر حرفية: يا لبركات الرجل، يا ",
+             "<h3>الشروط السلبية للبركة</h3>"),
+            ("<p>وبترجمة أكثر حرفية: يا لبركات الرجل، يا ",
+             "<p><em>«طُوبَى لِلرَّجُلِ ٱلَّذِي لَمْ يَسْلُكْ فِي مَشُورَةِ ٱلْأَشْرَارِ».</em></p>"),
+            ("<p>إنّ الطيور على أشكالها تقع؛ فطري",
+             "<p><em>وَفِي طَرِيقِ ٱلْخُطَاةِ لَمْ يَقِفْ.</em></p>"),
+            ("<p>إنّ مجلس المستهزئين من الأخطار ا",
+             "<p><em>«وَفِي مَجْلِسِ ٱلْمُسْتَهْزِئِينَ لَمْ يَجْلِسْ».</em></p>"),
+            ("<p>لقد تأمّلنا في الأمور التي يتج",
+             "<h3>الشروط الإيجابية للبركة.</h3>"),
+            ("<p>ننتقل بعد ذلك إلى ملاحظة المواعيد",
+             "<h3>ثمرة البركة.</h3>"),
+            ("<p>لا حاجة إلى الإطالة في الكلام ",
+             "<h3>المقابلة.</h3>"),
+            ("<p>لا حاجة إلى الإطالة في الكلام ",
+             "<p><em>«لَيْسَ كَذَلِكَ ٱلْأَشْرَارُ».</em></p>"),
         ],
     },
     "a-full-reward": {
@@ -1238,6 +1259,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # sw
             ("<p>Katika simulizi hii yenye",
              '<blockquote><em>"Nimeelezwa kikamilifu yote uliyoyatenda ... na jinsi ulivyomwacha baba yako na mama yako, na nchi ulikozaliwa, ukaja kwa watu usiowajua tangu hapo. Bwana na akulipe kwa kazi yako, nawe upewe thawabu kamili na Bwana, Mungu wa Israeli, ambaye chini ya mbawa zake umekuja kutumainia" (Ruthu 2:11, 12).</em></blockquote>'),
+            # ar
+            ("<p>في هذه القصة الشائقة مثال آخر على الط",
+             "<blockquote><em>«إِنَّنِي قَدْ أُخْبِرْتُ بِكُلِّ مَا فَعَلْتِ ... حَتَّى تَرَكْتِ أَبَاكِ وَأُمَّكِ وَأَرْضَ مَوْلِدِكِ وَسِرْتِ إِلَى شَعْبٍ لَمْ تَعْرِفِيهِ مِنْ قَبْلُ. لِيُكَافِئِ ٱلرَّبُّ عَمَلَكِ، وَلْيَكُنْ أَجْرُكِ كَامِلًا مِنْ عِنْدِ ٱلرَّبِّ إِلَهِ إِسْرَائِيلَ ٱلَّذِي جِئْتِ لِكَيْ تَحْتَمِيَ تَحْتَ جَنَاحَيْهِ» (راعوث 2:11-12).</em></blockquote>"),
         ],
     },
     "self-denial-versus-self-assertion": {
