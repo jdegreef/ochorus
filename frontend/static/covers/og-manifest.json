@@ -3692,6 +3692,16 @@
 			"layout": "split/navy",
 			"bar": 0.04
 		},
+		"uk/prayer-the-pulse-of-life": {
+			"ground": "4f925469360dc20067dfcb2a32a40be25c40fb7873c09f5624eff4954258f033",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/school-of-prayer": {
 			"ground": "ac43acd2d8f0f3482428b7f0081fadf3501ca6ccc2e3c582406e6e5dd4f879a1",
 			"style": "devotional",
