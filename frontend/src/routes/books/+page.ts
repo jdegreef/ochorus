@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #3190): Spanish book — brave-for-god, six true stories of
+// faith told for young readers ("Valientes por Dios"), 6 chapters. Book pages are prerendered per
+// locale, so /es/books and the shelf rebuild with the translated title over the shared painting ground
+// and the reader page bakes the 6 chapters. Backs the CURATED plan brave-for-god-24-true-stories, but
+// brave-for-god-2/-3/-4 are not yet in es, so no es plan row activates and no plan prose is owed.
 // prerender refresh 2026-09-24 (queue job #2796): Swahili book — rise-up-men-of-god-2, an Ochorus
 // Originals call to men's spiritual leadership, 14 chapters ("Inukeni, Enyi Wanaume wa Mungu"). Book
 // pages are prerendered per locale, so /sw/books and the shelf rebuild with the translated title over
