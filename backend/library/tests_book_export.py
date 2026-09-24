@@ -27,7 +27,10 @@ PILOT = frozenset({("pilot-book", "en")})
 @mock.patch.object(book_export, "load_cover", lambda url: None)
 class EpubTests(TestCase):
     def setUp(self):
-        author = Author.objects.create(slug="a-writer", name="A. Writer")
+        author = Author.objects.create(
+            slug="a-writer", name="A. Writer", birth_year=1847, death_year=1929,
+            bio="A. Writer was a pastor.\n\nHe wrote books.",
+        )
         self.book = Book.objects.create(
             author=author, slug="pilot-book", language="en", title="Pilot & Book",
             publication_year=1890, about_html="<p>Why it matters.</p>",
@@ -133,6 +136,34 @@ class EpubTests(TestCase):
         self.assertIn("Why it matters.", html)
         # "About Ochorus" sits between the title page and the contents.
         self.assertLess(html.index('class="ochorus"'), html.index('class="contents"'))
+
+    def test_a_short_biography_follows_about_ochorus(self):
+        z = self._zip(self._get())
+        bio = z.read("OEBPS/about-author.xhtml").decode()
+        self.assertIn("About the Author", bio)
+        self.assertIn("1847–1929", bio)
+        self.assertIn("<p>A. Writer was a pastor.</p><p>He wrote books.</p>", bio)
+        self.assertIn('href="https://ochorus.test/authors/a-writer/"', bio)
+        opf = z.read("OEBPS/content.opf").decode()
+        # Reading order: About Ochorus, then the author, then the work itself.
+        self.assertLess(opf.index('idref="ochorus"'), opf.index('idref="author"'))
+        self.assertLess(opf.index('idref="author"'), opf.index('idref="about"'))
+        html = book_export.render_print_html(book_export.build_edition(self.book))
+        self.assertLess(html.index('class="ochorus"'), html.index('class="author-page"'))
+        self.assertLess(html.index('class="author-page"'), html.index('class="contents"'))
+
+    def test_a_translation_reads_the_translated_bio_and_never_falls_back(self):
+        from .models import AuthorTranslation
+
+        es = Book.objects.create(author=self.book.author, slug="pilot-book", language="es", title="Libro")
+        self.assertEqual(book_export.author_bio(es), "")  # no English fallback
+        AuthorTranslation.objects.create(author=self.book.author, language="es", bio="Fue pastor.")
+        self.assertEqual(book_export.author_bio(es), "Fue pastor.")
+
+    def test_an_imprint_has_no_biography_page(self):
+        self.book.author.is_imprint = True
+        self.book.author.save()
+        self.assertNotIn("OEBPS/about-author.xhtml", self._zip(self._get()).namelist())
 
     def test_print_contents_carries_page_numbers_when_given(self):
         ed = book_export.build_edition(self.book)
