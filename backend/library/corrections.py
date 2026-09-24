@@ -3931,6 +3931,17 @@ BODY_CORRECTIONS.setdefault("true-vine", {}).setdefault("replacements", []).exte
 
 # OCR/extraction slips found while translating batch 3 to Spanish. All are
 # unambiguous letter/dittography damage with a single reading.
+# Transcription slips in CCEL's files of Fox's Book of Martyrs (Forbush ed.).
+BODY_CORRECTIONS.setdefault("foxes-book-of-martyrs", {}).setdefault("replacements", []).extend([
+    # A pound sign mis-encoded as &#156; (cp1252 "œ"): Sands's sureties were
+    # "each one bound in £500".
+    ("each one bound in œ500,", "each one bound in £500,"),
+    # Missing spaces.
+    ("was only alarmed thathis Savior's", "was only alarmed that his Savior's"),
+    ("articles of faith.With him suffered", "articles of faith. With him suffered"),
+    # Stray space before a comma.
+    ("on pain of death , to throw", "on pain of death, to throw"),
+])
 BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacements", []).extend([
     # "know th Master's" -> "know the Master's".
     ("know th Master's", "know the Master's"),
