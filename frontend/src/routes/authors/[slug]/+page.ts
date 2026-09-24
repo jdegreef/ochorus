@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Luganda author bios — a-w-tozer (#2745), martyn-lloyd-jones
+// (#2746), corrie-ten-boom (#2747), elisabeth-elliot (#2748). Author pages are prerendered PER
+// AUTHOR, so each /lg/authors/<slug> page must rebuild for the translated bio and its callouts.
 // prerender refresh 2026-09-24: Luganda author bios — alexander-maclaren (#1694),
 // j-c-ryle (#1695). Author pages are prerendered PER AUTHOR, so each /lg/authors/<slug> page
 // must rebuild for the translated bio and its <blockquote> pull-quotes and prayer callouts.

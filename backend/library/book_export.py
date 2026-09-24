@@ -38,6 +38,7 @@ from django.conf import settings
 from lxml import etree
 from lxml import html as lxml_html
 
+from .covers import twin_path
 from .languages import entry as language_entry
 from .localization import DEFAULT_LANGUAGE
 from .models import Book
@@ -195,6 +196,50 @@ def load_cover(cover_url: str) -> Cover | None:
     return Cover(data=data, media_type=_MEDIA[ext], ext=ext.replace(".jpeg", ".jpg"))
 
 
+#: A committed copy of each exportable edition's cover, beside this module.
+#: The API image is built from ``backend/`` alone, so it has no
+#: ``frontend/static``, and its fetch of the cover from the public site failed
+#: in production — every EPUB shipped without one and e-readers drew their own.
+#: A file in the image cannot fail that way. ``export_book`` writes it, and
+#: ``tests_book_export.CoverTests`` fails when one is missing or stale.
+BUNDLED_COVERS = Path(__file__).resolve().parent / "export_covers"
+
+
+def cover_image_url(book) -> str:
+    """The raster that shows this edition's cover the way Ochorus draws it.
+
+    A designed cover is its own image — its title is in its pixels. A painting
+    or a plate is a wordless GROUND that the site sets the title over in the
+    browser, so the image of it WITH its title is the edition's og twin — the
+    same rule as ``coverArt.shareImage`` on the frontend.
+    """
+    url = book.cover_url or ""
+    if url.startswith("/covers/art/") or (url.startswith("/covers/") and url.endswith(".svg")):
+        return twin_path(book.slug, book.language)[0]
+    return url
+
+
+def bundled_cover_path(book) -> Path | None:
+    """Where this edition's committed cover lives, or None if it can have none."""
+    ext = Path(cover_image_url(book).split("?")[0]).suffix.lower()
+    if ext not in _MEDIA:
+        return None
+    return BUNDLED_COVERS / f"{book.slug}.{book.language}{ext.replace('.jpeg', '.jpg')}"
+
+
+def edition_cover(book) -> Cover | None:
+    """The cover for an export: the committed copy, else found as ``load_cover`` does."""
+    bundled = bundled_cover_path(book)
+    if bundled is not None and bundled.is_file():
+        return Cover(data=bundled.read_bytes(), media_type=_MEDIA[bundled.suffix], ext=bundled.suffix)
+    return load_cover(cover_image_url(book))
+
+
+def site_cover_file(book) -> Path:
+    """The file the site serves for ``cover_image_url`` — in a repo checkout."""
+    return Path(settings.BASE_DIR).parent / "frontend" / "static" / cover_image_url(book).lstrip("/")
+
+
 @lru_cache(maxsize=16)
 def _cover_bytes(cover_url: str) -> bytes:
     """Raises on failure, so lru_cache only ever holds a success."""
@@ -234,7 +279,7 @@ def build_edition(book: Book) -> Edition:
         strings=strings,
         about=about,
         chapters=chapters,
-        cover=load_cover(book.cover_url),
+        cover=edition_cover(book),
         url=book_url(book),
     )
 
