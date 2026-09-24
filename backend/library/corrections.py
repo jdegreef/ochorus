@@ -5798,3 +5798,167 @@ BODY_CORRECTIONS.setdefault("hurlbuts-life-of-christ", {})["wrapped_blocks"] = [
     # ch104
     ('SOON AFTER the appearance of', 'p'),
 ]
+
+# --- a-retrospect: display lines flattened to loose text ----------------------
+# Gutenberg #26744 sets each chapter's opening paragraph as a centred `<div>`
+# (the drop-cap "THE following account…"), every journal dateline as a
+# `<div class="right">` ("<i>January 10th.</i>"), and each displayed verse as a
+# single `<div class="poem">` — the importer handed those divs to the
+# sanitizer, which unwrapped them, and they shipped as 48 loose runs across the
+# 20 chapters. Where a poem's div also held the prose line after it ("seemed
+# particularly appropriate…", "To be absent from the body!…", "but also that
+# when we fail…"), or ch12's transcriber's note ran into the hymn's verses,
+# the importer now emits two blocks, and the second head splits the run.
+# `ingest.display_line` keeps these (PR #3355); `wrap_loose_blocks` puts each
+# back in the block the importer emits, byte for byte but for the quotation
+# marks, curled in the fixture since (`tests_english_audit` checks every
+# English entry against the importer). ch18's opener keeps the fixture's
+# "[3]" footnote marker, which the importer does not carry.
+#
+# Every edition at once — `tests_translation_markup` pins the tag sequence.
+# The es edition carries the same 48 runs in the same places, so its entries
+# follow the English one for one, each headed by the Spanish run's own opening.
+# Left loose: ch20's back matter "or" / "or to" between the mission addresses
+# (a two-letter head would split every other run it occurs in) and the map
+# caption, whose line is `<b>MAP OF CHINA</b>` — the importer's `<h3>` there is
+# not a wrap of loose text.
+BODY_CORRECTIONS.setdefault("a-retrospect", {})["wrapped_blocks"] = [
+    # --- en ---
+    # ch1
+    ('THE following account', 'p'),
+    # ch2
+    ('THE first joys of conversion', 'p'),
+    # ch3
+    ('HAVING now the twofold', 'p'),
+    # ch4
+    ('THE remarkable and gracious', 'p'),
+    # ch5
+    ('I MUST not now attempt', 'p'),
+    # ch6
+    ('ONE day the doctor coming', 'p'),
+    # ch7
+    ('RETURNING to London when', 'p'),
+    # ch8
+    ('SOON after this the time', 'p'),
+    ('Hearken, O daughter,', 'p'),
+    # ch9
+    ('ON landing in Shanghai', 'p'),
+    # ch10
+    ('A JOURNEY taken in the', 'p'),
+    ('<i>Thursday, April 26th,', 'p'),
+    ('“The perils of the sea,', 'p'),
+    ('seemed particularly appropriate', 'p'),
+    ('“We speak of the realms', 'p'),
+    ('To be absent from the', 'p'),
+    # ch11
+    ('AFTER the retaking of', 'p'),
+    ('<i>January 8th, 1856.</i>', 'p'),
+    ('<i>January 10th.</i>', 'p'),
+    ('<i>January 11th.</i>', 'p'),
+    ('<i>January 12th.</i>', 'p'),
+    ('“He that dwelleth in', 'p'),
+    ('<i>Sunday, January 13th.</i>', 'p'),
+    ('<i>Monday, January 14th.</i>', 'p'),
+    ('“Ill that God blesses', 'p'),
+    # ch12
+    ('HAVING to leave the neighbourhood', 'p'),
+    ('“O Lord, how happy should', 'p'),
+    ('“And I will go!', 'p'),
+    ("[<i>Transcriber's Note:", 'p'),
+    ('2. Why live I here? the', 'p'),
+    # ch13
+    ('IT is interesting to', 'p'),
+    ('<i>August 4th, 1856.</i>', 'p'),
+    ('<i>August 5th.</i>', 'p'),
+    ('<i>August 6th.</i>', 'p'),
+    ('<i>August 7th.</i>', 'p'),
+    # ch14
+    ('IT now seemed very clear', 'p'),
+    ('Through midnight gloom', 'p'),
+    # ch15
+    ('THE autumn of 1856 was', 'p'),
+    ('“They who trust Him wholly', 'p'),
+    ('but also that when we', 'p'),
+    ('“Sufficient is His arm', 'p'),
+    # ch16
+    ('NOT infrequently our', 'p'),
+    ('<i>November 18th, 1857.</i>', 'p'),
+    # ch17
+    ('A SOMEWHAT different', 'p'),
+    # ch18
+    ('“My thoughts are not your', 'p'),
+    ('“Blind unbelief is <i>sure</i>', 'p'),
+    # ch19
+    ('IT was thus that in the', 'p'),
+    # ch20
+    ('THE events sketched in', 'p'),
+    # --- es ---
+    # ch1
+    ('EL siguiente relato', 'p'),
+    # ch2
+    ('LOS primeros gozos de', 'p'),
+    # ch3
+    ('Teniendo ahora el doble', 'p'),
+    # ch4
+    ('El notable y bondadoso', 'p'),
+    # ch5
+    ('No debo intentar ahora', 'p'),
+    # ch6
+    ('UN día, al entrar el', 'p'),
+    # ch7
+    ('AL REGRESAR a Londres,', 'p'),
+    # ch8
+    ('POCO después de esto', 'p'),
+    ('Oye, hija, y considera,', 'p'),
+    # ch9
+    ('AL desembarcar en Shanghái', 'p'),
+    # ch10
+    ('Un viaje realizado en', 'p'),
+    ('<i>Jueves, 26 de abril', 'p'),
+    ('«Los peligros del mar,', 'p'),
+    ('parecía particularmente', 'p'),
+    ('«Hablamos de las mansiones', 'p'),
+    ('¡Estar ausentes del', 'p'),
+    # ch11
+    ('DESPUÉS de la reconquista', 'p'),
+    ('<i>8 de enero de 1856.</i>', 'p'),
+    ('<i>10 de enero.</i>', 'p'),
+    ('<i>11 de enero.</i>', 'p'),
+    ('<i>12 de enero.</i>', 'p'),
+    ('«El que habita al abrigo', 'p'),
+    ('<i>Domingo 13 de enero.</i>', 'p'),
+    ('<i>Lunes 14 de enero.</i>', 'p'),
+    ('«El mal que Dios bendice', 'p'),
+    # ch12
+    ('TENER que dejar así,', 'p'),
+    ('«¡Oh Señor, cuán felices', 'p'),
+    ('«¡Y yo iré!', 'p'),
+    ('[<i>Nota del transcriptor:', 'p'),
+    ('2. ¿Por qué vivo aquí?', 'p'),
+    # ch13
+    ('Es interesante observar', 'p'),
+    ('<i>4 de agosto de 1856.</i>', 'p'),
+    ('<i>5 de agosto.</i>', 'p'),
+    ('<i>6 de agosto.</i>', 'p'),
+    ('<i>7 de agosto.</i>', 'p'),
+    # ch14
+    ('Ahora parecía muy claro', 'p'),
+    ('Desde Macedonia, entre', 'p'),
+    # ch15
+    ('El otoño de 1856 estaba', 'p'),
+    ('«Los que en Él confían', 'p'),
+    ('sino también de que,', 'p'),
+    ('«Suficiente es Su brazo', 'p'),
+    # ch16
+    ('No pocas veces nuestro', 'p'),
+    ('<i>18 de noviembre de', 'p'),
+    # ch17
+    ('A comienzos del año', 'p'),
+    # ch18
+    ('«Mis pensamientos no', 'p'),
+    ('«La ciega incredulidad', 'p'),
+    # ch19
+    ('Fue así como, en el año', 'p'),
+    # ch20
+    ('LOS acontecimientos esbozados', 'p'),
+]

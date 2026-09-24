@@ -1537,6 +1537,125 @@ THE KING OF THE JEWS.<br>
         self.assertEqual(emitted, 5)
 
 
+class RetrospectDisplayLineTests(SimpleTestCase):
+    """`a-retrospect`: 48 display lines shipped as loose text, in en and es.
+
+    See its `wrapped_blocks` entry in `corrections.py`: the 48 English entries,
+    then the 48 Spanish ones. Asserted per edition against the SHIPPED fixture,
+    and the English against what the importer emits from PG 26744's own markup.
+    """
+
+    SLUG = "a-retrospect"
+    LINES = 48
+
+    def _chapters(self, lang):
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, lang).read_text(encoding="utf-8"))
+        return {
+            r["fields"]["title"]: r["fields"]["body_html"]
+            for r in rows
+            if r["model"] == "library.chapter"
+        }
+
+    def _entries(self, lang):
+        entries = corrections.BODY_CORRECTIONS[self.SLUG]["wrapped_blocks"]
+        self.assertEqual(len(entries), 2 * self.LINES)
+        return entries[: self.LINES] if lang == "en" else entries[self.LINES :]
+
+    def test_every_line_ships_in_its_block(self):
+        for lang in ("en", "es"):
+            corpus = "".join(self._chapters(lang).values())
+            for head, tag, *_ in self._entries(lang):
+                with self.subTest(language=lang, head=head):
+                    self.assertEqual(corpus.count(f"<{tag}>{head}"), 1)
+
+    def test_the_correction_wraps_the_flattened_rows(self):
+        """Strip every wrapped line back to loose text; the correction must
+        restore the shipped body exactly."""
+        for lang in ("en", "es"):
+            heads = [head for head, *_ in self._entries(lang)]
+            for title, body in self._chapters(lang).items():
+                flat = body
+                for head in heads:
+                    flat = re.sub(
+                        rf"<p>({re.escape(head)}.*?)</p>", r"\1", flat, count=1, flags=re.S
+                    )
+                if flat == body:
+                    continue
+                with self.subTest(language=lang, chapter=title):
+                    self.assertEqual(corrections.settled_chapter_body(self.SLUG, None, flat), body)
+
+    # PG 26744's own markup, whole blocks, prose cut short: a chapter opener set
+    # as a drop-cap div, a journal dateline in a right-set div, and two poems
+    # each followed by the prose line the edition sets as a div of its own.
+    PAGE = """<html><body>
+<h2>CHAPTER X</h2>
+<h3>FIRST EVANGELISTIC EFFORTS</h3>
+<div class="cap">A JOURNEY taken in the spring of 1855 with the
+Rev. J. S. Burden of the Church Missionary Society
+(now the Bishop of Victoria, Hong-kong) was attended with
+some serious dangers.</div>
+<p>From thence we went on to T'ung-chau.</p>
+<div class="right">
+<i>Thursday, April 26th, 1855.</i><br>
+</div>
+<p>After breakfast we commended ourselves to the care of
+our Heavenly <span class="smcap">Father</span>.</p>
+<p>That verse—</p>
+<div class="poem">
+"The perils of the sea, the perils of the land,<br>
+Should not dishearten thee: thy <span class="smcap">Lord</span> is nigh at hand.<br>
+But should thy courage fail, when tried and sore oppressed,<br>
+His promise shall avail, and set thy soul at rest."<br>
+</div>
+<div class="unindent">seemed particularly appropriate to our circumstances, and
+was very comforting to me.</div>
+<p>On our way we passed through one small town.</p>
+<h2>CHAPTER XV</h2>
+<h3>SETTLEMENT IN NINGPO</h3>
+<p>How glad one is now, not only to know, with dear Miss Havergal,
+that——</p>
+<div class="poem">
+"They who trust Him wholly<br>
+<span style="margin-left: 2em;">Find Him wholly true,"</span><br>
+</div>
+<div class="unindent">but also that when we fail to trust fully He still remains
+unchangingly faithful. He <i>is</i> wholly true whether
+we trust or not. "If we believe not, He abideth faithful;
+He cannot deny Himself." But oh, how we dishonour
+our <span class="smcap">Lord</span> whenever we fail to trust Him, and what peace,
+blessing, and triumph we lose in thus sinning against the
+Faithful One! May we never again presume in anything
+to doubt Him!</div>
+<p>The year 1857 was a troublous time.</p>
+</body></html>"""
+
+    def test_the_importer_emits_the_blocks_the_correction_wraps(self):
+        """The guard is a string match, so the importer and the correction must
+        agree byte for byte — here once the fixture's curled quotation marks
+        are folded back to the edition's straight ones."""
+        from library.ingest import soup
+        from library.management.commands.import_gutenberg import (
+            content_root,
+            split_by_heading,
+        )
+
+        straight = str.maketrans("“”‘’", "\"\"''")
+        chapters = {t: b.translate(straight) for t, b in self._chapters("en").items()}
+        heads = [head.translate(straight) for head, *_ in self._entries("en")]
+        emitted = 0
+        for title, body in split_by_heading(content_root(self.PAGE), "h2"):
+            for block in soup(body).body.find_all("p", recursive=False):
+                block = str(block)
+                if not any(block.startswith(f"<p>{head}") for head in heads):
+                    continue  # prose the importer always kept
+                with self.subTest(chapter=title, block=block[:40]):
+                    self.assertIn(block, chapters[title])
+                    emitted += 1
+        self.assertEqual(emitted, 6)
+
+
 class BruisedReedRepairTests(SimpleTestCase):
     """What only `the-bruised-reed` needs pinning; its string repairs are in
     `ShelfRepairTests.REPAIRS` with the rest of the shelf's."""
