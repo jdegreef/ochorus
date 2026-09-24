@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #2796): Swahili book — rise-up-men-of-god-2, an Ochorus
+// Originals call to men's spiritual leadership, 14 chapters ("Inukeni, Enyi Wanaume wa Mungu"). Book
+// pages are prerendered per locale, so /sw/books and the shelf rebuild with the translated title over
+// the shared derived-ground painting and the reader page bakes the 14 chapters. Backs no
+// LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #3148): Swahili book — school-of-prayer, Andrew Murray's
 // thirty-three lessons on prayer built on the words of Jesus ("Pamoja na Kristo katika Shule ya
 // Maombi"), 33 chapters. Book pages are prerendered per locale, so /sw/books and the shelf rebuild

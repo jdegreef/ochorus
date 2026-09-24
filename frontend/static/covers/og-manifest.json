@@ -3284,6 +3284,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"sw/rise-up-men-of-god-2": {
+			"ground": "61b65d666372ec206c41d01259932e46b374092cac8440ef8f4183aca18ff52c",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/school-of-prayer": {
 			"ground": "ae25f57f0e6b20b646e7db804e8565913fe333f2784b03f15b8e0b7f9b1e125a",
 			"style": "devotional",
