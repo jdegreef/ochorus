@@ -2414,6 +2414,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"pt/grace-for-grace-2": {
+			"ground": "aa32b31a87dc2cd77445d5bdf2988042e4a2ba517c799b3ee323db6238723e4f",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/he-holds-my-tomorrows": {
 			"ground": "1c8435f7eeba4cd7f8841e5bd680a0dbf348f227a43bf78950419fb0eb7f1dd5",
 			"style": "lettered",
