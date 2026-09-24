@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Arabic sermons — caleb-a-different-spirit (#2958), a-full-reward (#2966),
+// blessed-prosperity (#2974), witnessing-for-christ (#2981), filled-with-the-spirit (#2987),
+// every-mans-need-of-a-refuge (#2995), behold-the-lamb-of-god (#3003). Rebuilds /ar/sermons.
 // prerender refresh 2026-09-24: Arabic sermons — fall-and-recovery-of-man (#1658),
 // enduring-persecution-for-christ (#1659), pauls-praise-of-christian-love (#1660),
 // against-eutropius (#1661), gods-love-for-a-sinning-world (#1662), salvation-by-faith (#1663),

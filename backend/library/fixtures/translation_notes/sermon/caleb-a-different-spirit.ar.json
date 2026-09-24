@@ -1,0 +1,218 @@
+{
+  "kind": "sermon",
+  "slug": "caleb-a-different-spirit",
+  "language": "ar",
+  "job_issue": 2958,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Philippians 2:1-11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 1
+    },
+    {
+      "reference": "Philippians 2:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 1
+    },
+    {
+      "reference": "Philippians 2:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 3
+    },
+    {
+      "reference": "Philippians 2:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 43
+    },
+    {
+      "reference": "Exodus 14:13a",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 7
+    },
+    {
+      "reference": "Numbers 14:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 16
+    },
+    {
+      "reference": "Numbers 14:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 17
+    },
+    {
+      "reference": "Numbers 14:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 32
+    },
+    {
+      "reference": "Numbers 14:23",
+      "status": "self_rendered",
+      "block_index": 16
+    },
+    {
+      "reference": "Numbers 14:23",
+      "status": "self_rendered",
+      "block_index": 17
+    },
+    {
+      "reference": "Numbers 14:23",
+      "status": "self_rendered",
+      "block_index": 32
+    },
+    {
+      "reference": "Lamentations 3:23b",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 19
+    },
+    {
+      "reference": "Joshua 14:6-14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 27
+    },
+    {
+      "reference": "1 Timothy 4:12a",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 28
+    },
+    {
+      "reference": "Joshua 14:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 27
+    },
+    {
+      "reference": "Joshua 14:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 29
+    },
+    {
+      "reference": "Joshua 14:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 30
+    },
+    {
+      "reference": "John 4:23",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 37
+    },
+    {
+      "reference": "Ephesians 5:18",
+      "status": "self_rendered",
+      "block_index": 38
+    },
+    {
+      "reference": "Ephesians 5:19",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 38
+    },
+    {
+      "reference": "Joshua 14:8b",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 27
+    },
+    {
+      "reference": "Joshua 14:8b",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 40
+    },
+    {
+      "reference": "Matthew 5:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 41
+    },
+    {
+      "reference": "John 1:27",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 52
+    },
+    {
+      "reference": "John 1:29",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 52
+    },
+    {
+      "reference": "Psalms 103:5",
+      "status": "self_rendered",
+      "block_index": 57
+    },
+    {
+      "reference": "Psalms 103:5",
+      "status": "self_rendered",
+      "block_index": 58
+    },
+    {
+      "reference": "Psalms 103:5",
+      "status": "self_rendered",
+      "block_index": 59
+    },
+    {
+      "reference": "Psalms 103:5",
+      "status": "self_rendered",
+      "block_index": 76
+    },
+    {
+      "reference": "Isaiah 40:31a",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 57
+    },
+    {
+      "reference": "John 15:4",
+      "status": "self_rendered",
+      "block_index": 58
+    },
+    {
+      "reference": "Hebrews 4:6",
+      "status": "self_rendered",
+      "block_index": 73
+    },
+    {
+      "reference": "Hebrews 4:9",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 73
+    },
+    {
+      "reference": "Hebrews 4:7",
+      "status": "self_rendered",
+      "block_index": 73
+    },
+    {
+      "reference": "Hebrews 4:11",
+      "status": "self_rendered",
+      "block_index": 73
+    },
+    {
+      "reference": "Matthew 16:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 75
+    },
+    {
+      "reference": "Genesis 2:2",
+      "status": "self_rendered",
+      "block_index": 75
+    }
+  ]
+}

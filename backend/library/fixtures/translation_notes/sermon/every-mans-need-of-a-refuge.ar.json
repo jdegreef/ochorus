@@ -1,0 +1,71 @@
+{
+  "kind": "sermon",
+  "slug": "every-mans-need-of-a-refuge",
+  "language": "ar",
+  "job_issue": 2995,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Isaiah 32:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 0
+    },
+    {
+      "reference": "Isaiah 32:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 1
+    },
+    {
+      "reference": "Isaiah 32:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 35
+    },
+    {
+      "reference": "1 Peter 5:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 32
+    },
+    {
+      "reference": "Ephesians 6:11-12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 32
+    },
+    {
+      "reference": "Acts 17:31",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 33
+    },
+    {
+      "reference": "Romans 2:5",
+      "status": "self_rendered",
+      "block_index": 33
+    },
+    {
+      "reference": "Matthew 3:7",
+      "status": "self_rendered",
+      "block_index": 33
+    },
+    {
+      "reference": "Matthew 3:7",
+      "status": "self_rendered",
+      "block_index": 34
+    },
+    {
+      "reference": "Romans 3:23",
+      "status": "self_rendered",
+      "block_index": 34
+    },
+    {
+      "reference": "Isaiah 53:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 35
+    }
+  ]
+}

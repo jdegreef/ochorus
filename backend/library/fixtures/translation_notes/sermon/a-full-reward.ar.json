@@ -1,0 +1,114 @@
+{
+  "kind": "sermon",
+  "slug": "a-full-reward",
+  "language": "ar",
+  "job_issue": 2966,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Ruth 2:11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 0
+    },
+    {
+      "reference": "Ruth 2:11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 5
+    },
+    {
+      "reference": "Ruth 2:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 0
+    },
+    {
+      "reference": "Ruth 2:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 9
+    },
+    {
+      "reference": "Ruth 2:12",
+      "status": "self_rendered",
+      "block_index": 1
+    },
+    {
+      "reference": "Matthew 28:19",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 2
+    },
+    {
+      "reference": "Matthew 28:19",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 7
+    },
+    {
+      "reference": "Mark 16:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 2
+    },
+    {
+      "reference": "Ephesians 2:12",
+      "status": "self_rendered",
+      "block_index": 3
+    },
+    {
+      "reference": "Ruth 1:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 4
+    },
+    {
+      "reference": "Matthew 28:19-20",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 4
+    },
+    {
+      "reference": "Ruth 2:4",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 5
+    },
+    {
+      "reference": "Ruth 2:10",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 5
+    },
+    {
+      "reference": "Revelation 2:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 6
+    },
+    {
+      "reference": "Revelation 1:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 6
+    },
+    {
+      "reference": "1 John 2:28",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 6
+    },
+    {
+      "reference": "Hebrews 11:6a",
+      "status": "self_rendered",
+      "block_index": 8
+    },
+    {
+      "reference": "Psalms 62:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 9
+    }
+  ]
+}
