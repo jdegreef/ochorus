@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Swahili sermon — a-ribband-of-blue (#2590, PR #3213). Rebuilds
+// /sw/sermons so the card and its /sw/sermons/a-ribband-of-blue page bake the translated title
+// and "In brief" summary.
 // prerender refresh 2026-09-24: Swahili sermon — pauls-first-prayer (#2588, PR #3215). Rebuilds
 // /sw/sermons so the card and its /sw/sermons/pauls-first-prayer page bake the translated title
 // and "In brief" summary.
