@@ -2974,6 +2974,14 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"sw/revival-lectures": {
+			"ground": "26ff9dff8abe93ca52c12099dd0e26aabb0a3da5aad22a6f29570d3db3433b43",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85
+		},
 		"sw/soar-like-the-eagle-3": {
 			"ground": "d41e103913bb9fd8438d06ef577164ec7977017017bd69a9226f0cf9822a3285",
 			"style": "lettered",
