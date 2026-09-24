@@ -5576,3 +5576,14 @@ BODY_CORRECTIONS.setdefault("a-call-to-the-unconverted", {}).setdefault("replace
     [(f"</p>{page}<p>", "</p> <p>") for page in _CALL_PAGES_BETWEEN_BLOCKS]
     + [(defective, _unpage(defective)) for defective in _CALL_PAGES_IN_PROSE]
 )
+
+# Spacing slips in the Ochorus-original collection, found translating it to French
+# (#2776): a stray space inside the compound "Golden-Mouthed" (ch02) and before the
+# punctuation that follows four unmarked book titles (ch04, ch06, ch10).
+BODY_CORRECTIONS.setdefault("men-who-tended-the-flock-2", {}).setdefault("replacements", []).extend([
+    ("Golden- Mouthed", "Golden-Mouthed"),
+    ("The Temple , published", "The Temple, published"),
+    ("Surprising Work of God , ", "Surprising Work of God, "),
+    ("The Cost of Discipleship . The", "The Cost of Discipleship. The"),
+    ("Papers from Prison , ", "Papers from Prison, "),
+])

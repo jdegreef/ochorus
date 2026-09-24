@@ -1254,6 +1254,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"fr/men-who-tended-the-flock-2": {
+			"ground": "06979d4b4751b07fb21ca8d23defe218c8a7677c4eb778eabb69e15fe96e4f43",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/ministry-of-intercession": {
 			"ground": "96b187e084613b3d51091d14819fca905ed98f1b9ca4dec88a1155a84e8cd88a",
 			"style": "devotional",
