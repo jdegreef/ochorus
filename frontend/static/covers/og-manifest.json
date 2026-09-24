@@ -3672,6 +3672,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/the-masters-indwelling": {
+			"ground": "a143f7aa42dbf8a4a522110450bba6c5688089ebd2c75e5b6ac3b032fc0b4ef7",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"uk/the-unselfishness-of-god": {
 			"ground": "95fe19ef48b34586d2861076c5261dab1f0d84c88dac081f83b51e50390faa5a",
 			"style": "devotional",
