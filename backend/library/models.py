@@ -1522,8 +1522,9 @@ class Language(models.Model):
     # Topic prose has no English fallback, so an untranslated shelf is hidden
     # rather than English — requiring all of them keeps the shelf page whole.
     require_all_topics = models.BooleanField(default=True)
-    # The UI catalogue must be complete: a missing message key renders in
-    # English, which is the least visible way English leaks into a locale.
+    # The UI catalogue must be complete and translated: a missing message key or
+    # a declared English placeholder renders in English, which is the least
+    # visible way English leaks into a locale.
     require_complete_ui = models.BooleanField(default=True)
     went_live_at = models.DateTimeField(null=True, blank=True)
     notes = models.TextField(blank=True)

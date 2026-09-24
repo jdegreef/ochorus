@@ -95,7 +95,9 @@ string is a fixed lifecycle, or `frontend/src/lib/messages.test.ts` fails the bu
    `npm run test`.
 
 A Q&A section only renders where per-row Q&A content exists for the locale, so an
-English placeholder heading never actually reaches a reader.
+English placeholder heading never actually reaches a reader. The admin readiness
+report still counts it: each placeholder locale's Interface check is a
+(forceable) FAIL until the key is translated.
 
 ## Editorial-only vs. a derived tier
 

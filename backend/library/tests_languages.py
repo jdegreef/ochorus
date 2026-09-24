@@ -587,6 +587,9 @@ class AdminLanguageReadinessEndpointTests(TestCase):
                     "min_plans": 0,
                     "min_sermons": 0,
                     "require_all_topics": False,
+                    # Arabic's declared English placeholders are a (forceable)
+                    # interface fail, and that bar is editable too.
+                    "require_complete_ui": False,
                 },
                 format="json",
             )
@@ -1194,10 +1197,14 @@ class UiCatalogueCheckTests(TestCase):
             return readiness_module._ui_check(self.lang)
 
     def test_the_committed_summary_answers(self):
-        # Arabic has every key, so this is the case that used to report "unknown"
-        # in production and now reports the truth — including its placeholders.
+        # The case that used to report "unknown" in production. Arabic has every
+        # key, so whatever its translation state (placeholders are a forceable
+        # fail, see below), the committed summary answers and nothing is a hard
+        # blocker. Deliberately not pinned to PASS/FAIL: that moves as
+        # placeholders are added and translated.
         check = readiness_module._ui_check(self.lang)
-        self.assertEqual(check.status, readiness_module.PASS, check.detail)
+        self.assertNotEqual(check.status, readiness_module.UNKNOWN, check.detail)
+        self.assertTrue(check.forceable, check.detail)
 
     def test_an_incomplete_catalogue_fails_with_a_count(self):
         summary = {"locales": {"ar": {"missing": [f"k{i}" for i in range(12)], "pending": []}}}
@@ -1206,15 +1213,15 @@ class UiCatalogueCheckTests(TestCase):
         self.assertFalse(check.forceable)
         self.assertIn("12 string(s)", check.detail)
 
-    def test_pending_placeholders_pass_but_are_not_called_translated(self):
-        # Every key present, some still the English source: the build accepts it
-        # (declared debt), so it doesn't block — but "All translated." would be a
-        # lie, which is the whole reason the summary carries pending keys.
+    def test_pending_placeholders_fail_but_can_be_forced(self):
+        # Every key present, some still the English source. Readers can see
+        # those, so it fails the bar — but the build accepts declared debt, so
+        # it's a judgement `force` may override, not a hard blocker.
         summary = {"locales": {"ar": {"missing": [], "pending": ["a", "b", "c"]}}}
         check = self._check_with(summary)
-        self.assertEqual(check.status, readiness_module.PASS)
-        self.assertIn("3 still English placeholder(s)", check.detail)
-        self.assertNotIn("All translated", check.detail)
+        self.assertEqual(check.status, readiness_module.FAIL)
+        self.assertTrue(check.forceable)
+        self.assertIn("3 string(s) still in English as a placeholder", check.detail)
 
     def test_a_fully_translated_catalogue_says_so(self):
         check = self._check_with({"locales": {"ar": {"missing": [], "pending": []}}})
