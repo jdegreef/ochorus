@@ -5,7 +5,8 @@ The 33 PDFs below were previously hotlinked from the old WordPress site
 (`ochorus.com/wp-content/uploads/…`), which stopped serving them when the domain
 moved to the app.
 
-**These 33 books currently have `pdf_url` blanked in the fixture**, so no download
+**These books have `pdf_url` blanked in the fixture** (all but the one marked
+✅ generated below), so no download
 button renders for them — a hidden button beats one that 404s. To restore a
 download: add the file here under the exact `<slug>.pdf` name (the original
 WordPress filename is kept for provenance), set that book's `pdf_url` back to

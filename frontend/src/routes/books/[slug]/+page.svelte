@@ -458,9 +458,9 @@
 				     dead button (the 2026-07-26 withdrawal). -->
 				{#if book.epub_url || book.pdf_url}
 					<span class="inline-flex items-center gap-1">
-						<Icon name="download" size={16} class="text-base-content/60" />
-						<span class="sr-only sm:not-sr-only text-sm text-base-content/70"
-							>{t('book.freeDownload')}:</span
+						<Icon name="download" size={16} class="text-muted" />
+						<span class="sr-only sm:not-sr-only text-small text-muted"
+							>{t('book.freeDownload')}</span
 						>
 						{#if book.epub_url}
 							<a

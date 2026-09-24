@@ -81,8 +81,13 @@ class EpubTests(TestCase):
     def test_an_unreviewed_translation_says_so(self):
         self.book.source_type = Book.SourceType.AI_UNREVIEWED
         self.book.save()
-        colophon = self._zip(self._get()).read("OEBPS/colophon.xhtml").decode()
+        z = self._zip(self._get())
+        colophon = z.read("OEBPS/colophon.xhtml").decode()
         self.assertIn("awaiting review", colophon)
+        # Its words are new: only the original is public domain.
+        self.assertIn("original text of this book is in the public domain", colophon)
+        self.assertNotIn("The text of this book is in the public domain", colophon)
+        self.assertIn("This translation was prepared", z.read("OEBPS/content.opf").decode())
 
     def test_same_content_same_bytes_and_a_304(self):
         first = self._get()
@@ -90,6 +95,13 @@ class EpubTests(TestCase):
         again = self._get(HTTP_IF_NONE_MATCH=first["ETag"])
         self.assertEqual(again.status_code, 304)
         self.assertEqual(again.content, b"")
+
+    def test_a_new_release_changes_the_tag(self):
+        tag = self._get()["ETag"]
+        with override_settings(RELEASE_COMMIT="abc123"):
+            again = self._get(HTTP_IF_NONE_MATCH=tag)
+        self.assertEqual(again.status_code, 200)
+        self.assertNotEqual(again["ETag"], tag)
 
     def test_not_in_the_pilot_is_404(self):
         Book.objects.create(author=self.book.author, slug="other", language="en", title="O")
@@ -134,3 +146,25 @@ class PilotTests(TestCase):
     def test_every_pilot_language_has_back_matter(self):
         for _slug, lang in export_policy.EXPORT_PILOT:
             self.assertIn(lang, book_export.STRINGS)
+
+
+class CoverTests(TestCase):
+    def setUp(self):
+        book_export._cover_bytes.cache_clear()
+
+    @override_settings(PUBLIC_SITE_URL="https://ochorus.test")
+    def test_a_failed_fetch_is_not_cached(self):
+        import requests
+
+        ok = mock.Mock(content=b"jpeg", raise_for_status=lambda: None)
+        with mock.patch.object(book_export.Path, "is_file", return_value=False), mock.patch.object(
+            book_export.requests, "get", side_effect=[requests.ConnectionError("down"), ok]
+        ) as get:
+            self.assertIsNone(book_export.load_cover("/covers/x.jpg"))
+            cover = book_export.load_cover("/covers/x.jpg")
+        self.assertEqual(cover.data, b"jpeg")
+        self.assertEqual(get.call_args.args[0], "https://ochorus.test/covers/x.jpg")
+
+    def test_webp_and_blank_have_no_cover(self):
+        self.assertIsNone(book_export.load_cover(""))
+        self.assertIsNone(book_export.load_cover("/covers/x.webp"))

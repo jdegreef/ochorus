@@ -56,6 +56,11 @@ STRINGS = {
             "The text of this book is in the public domain. This edition was "
             "prepared by Ochorus, a free library of Christian classics."
         ),
+        "translation_rights": (
+            "The original text of this book is in the public domain. This "
+            "translation was prepared by Ochorus, a free library of Christian "
+            "classics."
+        ),
         "ai_unreviewed": (
             "This is an AI translation that is awaiting review by a native "
             "speaker. It is not the author's original text."
@@ -200,7 +205,8 @@ def _cover_bytes(cover_url: str) -> bytes:
         if not _site_url():
             raise FileNotFoundError(cover_url)
         cover_url = _site_url() + cover_url
-    res = requests.get(cover_url, timeout=10)
+    # (connect, read): a slow site must not hold a sync worker for long.
+    res = requests.get(cover_url, timeout=(3, 5))
     res.raise_for_status()
     return res.content
 
@@ -237,12 +243,17 @@ def _e(text) -> str:
     return html.escape(str(text), quote=True)
 
 
+def _rights_key(book: Book) -> str:
+    # A translation's words are new, so only its ORIGINAL is public domain.
+    return "public_domain" if book.source_type == Book.SourceType.PUBLIC_DOMAIN else "translation_rights"
+
+
 def _rights(ed: Edition) -> str:
     s = ed.strings
     parts = []
     if ed.book.source_type == Book.SourceType.AI_UNREVIEWED:
         parts.append(f'<p class="notice">{_e(s["ai_unreviewed"])}</p>')
-    parts.append(f"<p>{_e(s['public_domain'])}</p>")
+    parts.append(f"<p>{_e(s[_rights_key(ed.book)])}</p>")
     if ed.book.attribution:
         parts.append(f"<p>{_e(ed.book.attribution)}</p>")
     return "".join(parts)
@@ -385,7 +396,7 @@ def render_epub(ed: Edition) -> bytes:
         f"<dc:creator>{_e(ed.author)}</dc:creator>"
         f"<dc:language>{ed.lang}</dc:language>"
         "<dc:publisher>Ochorus</dc:publisher>"
-        f"<dc:rights>{_e(s['public_domain'])}</dc:rights>"
+        f"<dc:rights>{_e(s[_rights_key(b)])}</dc:rights>"
         + (f"<dc:description>{_e(b.description)}</dc:description>" if b.description else "")
         + (f"<dc:source>{_e(ed.url)}</dc:source>" if ed.url else "")
         + f'<meta property="dcterms:modified">{modified}</meta>'
