@@ -52,6 +52,7 @@ const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'era', file: 'routes/biographies/era/[era]/+page.svelte' },
 	{ label: 'topic', file: 'routes/topics/[slug]/+page.svelte' },
 	{ label: 'plan', file: 'routes/plans/[slug]/+page.svelte' },
+	{ label: 'series', file: 'routes/series/[slug]/+page.svelte' },
 	{ label: 'quotes author', file: 'routes/quotes/[author]/+page.svelte' },
 	// The [slug] route is a thin switch (article reader vs topic shelf); the
 	// reader's shell lives in its component, so the invariant is checked there.

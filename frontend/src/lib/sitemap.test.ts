@@ -34,6 +34,7 @@ vi.mock('$lib/library-public', () => {
 		listQuoteAuthors: empty,
 		listQuoteTopics: empty,
 		listQuoteTopicPages: empty,
+		listSeries: empty,
 		listSermons: empty,
 		listTopics: empty,
 		listScripturePages: async () => [
