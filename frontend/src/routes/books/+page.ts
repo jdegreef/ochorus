@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #3170): Portuguese book — grace-for-grace-2, Watchman Nee's
+// teaching on grace through the parables and Gospel scenes ("Graça sobre Graça"), 9 chapters. Book
+// pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title over
+// the designed plate cover and the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
+// entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #3145): Spanish book — school-of-prayer, Andrew Murray's
 // thirty-one lessons on prayer ("Con Cristo en la escuela de oración"), 33 chapters. Book pages are
 // prerendered per locale, so /es/books and the shelf rebuild with the translated title over the
