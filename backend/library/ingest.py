@@ -526,7 +526,7 @@ _FIGURE_CLASS = re.compile(r"^(?:fig|caption)")
 QUOTES = ("“", '"', "‘", "'")
 
 
-def display_line(div) -> str:
+def display_line(div, *, verse_lines: bool = False) -> str:
     """A Gutenberg centred display line (`<div class="c1">`) as a body block.
 
     Gutenberg editions set in-text section headings, displayed verses,
@@ -551,13 +551,16 @@ def display_line(div) -> str:
     chapter counter ("CHAPTER 1" under the chapter's own heading — the reader
     numbers chapters), an empty line.
     Shared by `import_gutenberg` and `import_sermons`.
+
+    `verse_lines=True` keeps a line of a poem as its own `<p>`: the sermon
+    collector has no poem handling, so declining it there loses the poem.
     """
     classes = " ".join(div.get("class") or [])
     if (
         "pg_body_wrapper" in classes
-        or _FIGURE_CLASS.match(classes)
+        or any(_FIGURE_CLASS.match(c) for c in classes.split())
         or div.find(_DISPLAY_LINE_WRAPS) is not None
-        or div.find_parent(class_=_VERSE_CLASS) is not None
+        or (not verse_lines and div.find_parent(class_=_VERSE_CLASS) is not None)
     ):
         return ""
     # The block built below carries no class, so the sanitizer would no longer

@@ -18,6 +18,9 @@ from __future__ import annotations
 
 import re as _re
 from collections.abc import Sequence
+from html import escape as _escape
+
+from library.text import html_to_text
 
 # NOT public domain (copyright audit 2026-07-10), and no permission: Watchman
 # Nee's English editions (1957–1983, Kinnear/CLC/CFP) and Amy Carmichael's "If"
@@ -4821,7 +4824,9 @@ def wrap_loose_blocks(body_html: str, blocks: Sequence[tuple[str, ...]]) -> str:
                 end = j + len(tail[0])
             text = _EDGE_BREAKS.sub("", body_html[i:end])
             if tag == "h3":
-                text = " ".join(_re.sub(r"<[^>]+>", " ", text).split())
+                # The same text rule as `display_line`: a space at each <br>,
+                # other markup joined ("<span>ALL</span>." is "ALL.").
+                text = _escape(html_to_text(text), quote=False)
             rest = _LEAD_BREAKS.sub("", body_html[end:])
             body_html = f"{body_html[:i]}<{tag}>{text}</{tag}> {rest}".rstrip()
             break

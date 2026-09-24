@@ -1008,6 +1008,25 @@ class GutenbergDisplayLineTests(SimpleTestCase):
         )
         self.assertIn("<h3>THE NEGATIVE CONDITIONS</h3>", extract_gutenberg_section(page, "Sermon"))
 
+    def test_a_poem_s_lines_are_kept(self):
+        """The sermon collector has no poem handling of its own: each line div
+        of a verse container comes through as its own block. `display_line`
+        declines verse lines for the BOOK importer, which gathers the poem
+        whole, so the sermon collector must ask it with `verse_lines=True` or
+        the hymn vanishes."""
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = (
+            "<html><body><h3>Sermon</h3><p>Body.</p>"
+            '<div class="poem"><div class="stanza">'
+            "<div>Rock of Ages, cleft for me,</div><div>Let me hide myself in Thee;</div>"
+            "</div></div>"
+            "<p>After.</p><h3>Next</h3></body></html>"
+        )
+        body = extract_gutenberg_section(page, "Sermon")
+        self.assertIn("<p>Rock of Ages, cleft for me,</p>", body)
+        self.assertIn("<p>Let me hide myself in Thee;</p>", body)
+
     def test_the_restored_english_blocks_are_what_the_importer_emits(self):
         """The `restored_blocks` guard is a string match on the block, so a
         re-import has to produce exactly what the correction inserted — or the

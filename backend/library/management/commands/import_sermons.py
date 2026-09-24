@@ -129,7 +129,9 @@ def extract_gutenberg_section(html: str, section: str, level: str = "") -> str:
         if el.find_parent("blockquote") is not None:
             continue  # already inside a collected blockquote
         if el.name == "div":
-            if line := display_line(el):
+            # No poem handling here, so a verse line comes through as its own
+            # block, as it always did.
+            if line := display_line(el, verse_lines=True):
                 if len(parts) == subtitles and line.startswith("<h"):
                     subtitles += 1
                 parts.append(line)
