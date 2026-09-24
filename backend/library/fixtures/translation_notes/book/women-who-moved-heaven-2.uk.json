@@ -1,0 +1,673 @@
+{
+ "kind": "book",
+ "slug": "women-who-moved-heaven-2",
+ "language": "uk",
+ "job_issue": 1788,
+ "pull_request": null,
+ "note": [
+  "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “, U+02BC to ’. NIV/NLT/KJV version labels dropped from citations since every quotation is Kulish; the appendix preface says so. Hebrews cited as Євреїв, not Kulish's Жидів.",
+  "Galatians 2:20 is split across two paragraphs in the English (ch. 6), so it is recorded as 2:20a / 2:20b."
+ ],
+ "references": [
+  {
+   "reference": "Joel 2:28-29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 1:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 16:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "John 16:23-24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Psalm 56:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Timothy 2:1-4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Lamentations 2:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Psalm 126:5-6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 28
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Proverbs 22:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Psalm 119:147",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Jeremiah 29:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 44
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 46
+  },
+  {
+   "reference": "Philippians 4:11-12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 54
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 55
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 56
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 57
+  },
+  {
+   "reference": "2 Corinthians 3:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 58
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 66
+  },
+  {
+   "reference": "Galatians 2:20b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 67
+  },
+  {
+   "reference": "Luke 10:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 69
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 70
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 72
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 73
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 80
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 82
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 84
+  },
+  {
+   "reference": "Romans 8:38-39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 86
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 87
+  },
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 95
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 96
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 97
+  },
+  {
+   "reference": "Romans 10:14-15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 98
+  },
+  {
+   "reference": "2 Corinthians 5:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 107
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 108
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "Matthew 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 110
+  },
+  {
+   "reference": "Hebrews 11:33-34",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 111
+  },
+  {
+   "reference": "Jeremiah 29:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 119
+  },
+  {
+   "reference": "Psalm 121:1-2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 120
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 121
+  },
+  {
+   "reference": "Proverbs 3:5-6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 122
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 123
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 132
+  },
+  {
+   "reference": "Matthew 18:19-20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 133
+  },
+  {
+   "reference": "1 John 5:14-15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 134
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 136
+  },
+  {
+   "reference": "Acts 2:42",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 138
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 147
+  },
+  {
+   "reference": "Matthew 7:7-8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 150
+  },
+  {
+   "reference": "Joel 2:28-29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 157
+  },
+  {
+   "reference": "Acts 16:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 158
+  },
+  {
+   "reference": "John 16:23-24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 159
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 162
+  },
+  {
+   "reference": "Psalm 56:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 163
+  },
+  {
+   "reference": "1 Timothy 2:1-4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 163
+  },
+  {
+   "reference": "Lamentations 2:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 164
+  },
+  {
+   "reference": "Psalm 126:5-6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 165
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 167
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 169
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Proverbs 22:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 172
+  },
+  {
+   "reference": "Psalm 119:147",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 173
+  },
+  {
+   "reference": "Jeremiah 29:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 174
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 175
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 176
+  },
+  {
+   "reference": "Philippians 4:11-12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 178
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 179
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 180
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 181
+  },
+  {
+   "reference": "2 Corinthians 3:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 182
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 184
+  },
+  {
+   "reference": "Luke 10:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 185
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 186
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 187
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 188
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 190
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 191
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 192
+  },
+  {
+   "reference": "Romans 8:38-39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 193
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 194
+  },
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 196
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 197
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 198
+  },
+  {
+   "reference": "Romans 10:14-15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 199
+  },
+  {
+   "reference": "2 Corinthians 5:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 202
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 203
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 204
+  },
+  {
+   "reference": "Matthew 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 205
+  },
+  {
+   "reference": "Hebrews 11:33-34",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 206
+  },
+  {
+   "reference": "Psalm 121:1-2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 210
+  },
+  {
+   "reference": "Proverbs 3:5-6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 211
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 212
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 214
+  },
+  {
+   "reference": "Matthew 18:19-20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 215
+  },
+  {
+   "reference": "1 John 5:14-15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 216
+  },
+  {
+   "reference": "Acts 2:42",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 218
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 219
+  }
+ ]
+}
