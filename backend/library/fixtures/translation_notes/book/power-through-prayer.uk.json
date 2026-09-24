@@ -3,7 +3,7 @@
  "slug": "power-through-prayer",
  "language": "uk",
  "job_issue": 1752,
- "pull_request": null,
+ "pull_request": 3269,
  "note": [
   "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “ and the modifier-letter apostrophe ʼ to ’. Bounds quotes scripture without citations, so references were identified by the translator; unquoted allusions are not enumerated. Hebrews would be cited as Євреїв, not Kulish's Жидів (no book names are cited in this work)."
  ],
