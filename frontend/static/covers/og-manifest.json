@@ -3944,6 +3944,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"uk/watchman-nee-a-life": {
+			"ground": "8b5055e4d060c67d9139746f7b103963cf6836538093964ea24c6539cef49fb6",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/women-who-moved-heaven-2": {
 			"ground": "83417b405e014d2eb9c2de78346df806e851e55e9d61bb47b92407b5e436e337",
 			"style": "originals",
