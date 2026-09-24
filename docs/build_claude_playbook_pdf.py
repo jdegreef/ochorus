@@ -533,7 +533,7 @@ P5 = r"""
     <table>
       <tr><th style="width:26%">Repo</th><th>Run before you even think about a PR</th></tr>
       <tr><td class="k">Ochorus<br><span style="font-weight:400;color:var(--muted)">frontend</span></td>
-          <td><code>npm run check</code> &middot; <code>npm run build</code> &middot; <code>npm run sync:catalogues</code> when a locale is added or left incomplete</td></tr>
+          <td><code>npm run check</code> &middot; <code>npm run build</code> &middot; <code>npm run sync:catalogues</code> when a locale or an English placeholder is added or removed</td></tr>
       <tr><td class="k">Ochorus<br><span style="font-weight:400;color:var(--muted)">backend</span></td>
           <td><code>makemigrations --check</code> &middot; tests &middot; the fixture gates (pk rows, dangling refs, cover digests)</td></tr>
       <tr><td class="k">Take Root</td>
