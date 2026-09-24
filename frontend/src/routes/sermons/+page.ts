@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Swahili sermon — abiding-in-christ (#2587, PR #3214). Rebuilds
+// /sw/sermons so the card and its /sw/sermons/abiding-in-christ page bake the translated title
+// (Kukaa Ndani ya Kristo) and "In brief" summary.
 // prerender refresh 2026-09-24: Swahili sermon — a-ribband-of-blue (#2590, PR #3213). Rebuilds
 // /sw/sermons so the card and its /sw/sermons/a-ribband-of-blue page bake the translated title
 // and "In brief" summary.
