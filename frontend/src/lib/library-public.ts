@@ -1048,6 +1048,34 @@ export const listTopics = (language = 'en') =>
 export const getTopic = (slug: string, language = 'en') =>
 	apiFetch<TopicDetail>(`/api/library/topics/${slug}/?language=${language}`);
 
+/** A series with a page in the requested language — the prerender and sitemap list. */
+export interface SeriesSummary {
+	slug: string;
+	title: string;
+	book_count: number;
+}
+
+/** One series page: see `SeriesDetailView` in the API. */
+export interface SeriesDetail {
+	slug: string;
+	/** Name and description in the requested language (no English fallback). */
+	title: string;
+	description: string;
+	/** False for a collection (no volume numbers, no reading order). */
+	ordered: boolean;
+	/** Its published books in this language, in volume order. */
+	books: BookSummary[];
+	/** Languages the series has a page in — for hreflang. */
+	available_languages: string[];
+}
+
+export const listSeries = (language = 'en') =>
+	apiFetch<SeriesSummary[]>(`/api/library/series/?language=${language}`);
+
+/** No English fallback, like `getTopic`: a series with no page here 404s. */
+export const getSeries = (slug: string, language = 'en') =>
+	apiFetch<SeriesDetail>(`/api/library/series/${slug}/?language=${language}`);
+
 // --- The scripture graph ------------------------------------------------------
 // Which passages in the library treat a given verse — the reverse of the
 // reader's cross-reference popover, and the one thing here that has no locale

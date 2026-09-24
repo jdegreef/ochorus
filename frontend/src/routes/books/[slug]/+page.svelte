@@ -352,7 +352,10 @@
 			     Numbers in the edition's digits, as the cover's ring sets them. -->
 			{#if book.series}
 				<p class="mt-2 text-small text-muted" dir="auto">
-					<span class="font-medium">{seriesLabel(book.series, contentLang(book.language))}</span
+					<a
+						href={localizeHref(`/series/${book.series.slug}`)}
+						class="font-medium hover:text-text hover:underline"
+						>{seriesLabel(book.series, contentLang(book.language))}</a
 					>{#if book.series.next}<span class="px-1.5 opacity-50">·</span><a
 							href={localizeHref(`/books/${book.series.next.slug}`)}
 							class="text-accent hover:underline"
