@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "john-calvin",
+ "language": "es",
+ "job_issue": 2947,
+ "references": [
+  {
+   "reference": "Psalm 13:1",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "library/fixtures/content/books/watchman-nee-a-life.es.json"
+  }
+ ]
+}

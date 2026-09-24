@@ -580,6 +580,16 @@ BOOKS: list[BookEntry] = [
     BookEntry("revival-lectures", "Lectures on Revivals of Religion", "charles-finney",
               "ccel", "finney/revivals",
               subtitle="How Revival Comes", cover_color="#a61e4d"),
+    # The ORIGINAL 1876 Barnes/Oberlin edition only — the 1989 "complete restored
+    # text" (Rosell & Dupuis) is in copyright. Of the four 1876 scans this one
+    # keeps its end-of-line hyphens, so every wrapped word rejoins exactly;
+    # `memoirsofrevchar00finnuoft` drops them (~600 "meas ures" splits, plus the
+    # invisible both-halves-are-words kind), and the two Google scans are worse.
+    # Its own OCR slip — v read as y ("haye", "conyerted") — is repaired in
+    # `corrections.py`. 36 chapters, per the book's Contents.
+    BookEntry("finney-memoirs", "Memoirs of Rev. Charles G. Finney", "charles-finney",
+              "archive", "memoirsofrevchar1876finn",
+              subtitle="Written by Himself", cover_color="#364fc7"),
     BookEntry("life-and-diary-of-david-brainerd", "The Life and Diary of David Brainerd",
               "david-brainerd", "gutenberg", "65066",
               subtitle="Edited by Jonathan Edwards", cover_color="#5f3dc4"),

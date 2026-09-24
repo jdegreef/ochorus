@@ -77,6 +77,7 @@ _NUMBERED_BOOKS = frozenset(
 # apostrophes in contractions/possessives (God's, Paul's) are preserved.
 _DQUOTE = re.compile(r"[“”„‟«»″‶\"]")
 _SQUOTE = re.compile(r"(?<![A-Za-z])'|'(?![A-Za-z])")
+_PLURAL_POSSESSIVE = re.compile(r"[a-z]s' [a-z]", re.I)
 # CCEL headings are often ALL-CAPS with a roman-numeral prefix ("II. THE DIGNITY
 # OF CHRIST"); the rest of the library is Title Case. A roman-numeral prefix and
 # a set of lowercase-in-title connector words for the caps→title-case pass.
@@ -207,7 +208,12 @@ def clean_title(raw: str) -> str:
     t = strip_numbering_prefix(t)
     # Remove quotation marks; tidy stray wrapping punctuation and spacing.
     t = _DQUOTE.sub("", t)
-    t = _SQUOTE.sub("", t)
+    # A plural possessive ("Revival at Evans' Mills") is an apostrophe with a
+    # space after it, which `_SQUOTE` reads as a closing quote. When it is the
+    # title's ONLY single quote there is nothing for it to close, so keep it.
+    if t.count("'") == 1 and _PLURAL_POSSESSIVE.search(t):
+        t = t.replace("'", "\x00")
+    t = _SQUOTE.sub("", t).replace("\x00", "'")
     t = re.sub(r"^[\s`~]+|[\s`~]+$", "", t)
     t = _WS.sub(" ", t).strip()
     # A single trailing full stop is typographic noise in a title ("Adoration.",
