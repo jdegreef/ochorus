@@ -1,7 +1,8 @@
 """Downloadable editions of a book: EPUB (built per request) and print HTML.
 
 Both formats are assembled from the same parts — a cover, a title page, "About
-this work", the chapters, and a colophon — so an EPUB and a PDF of one edition
+Ochorus", a short biography of the author, "About this work", the chapters, and
+a colophon — so an EPUB and a PDF of one edition
 can never disagree about what the book contains. The chapters come straight
 from the database, so a download always matches what the reader serves,
 including fixes that reached production by data migration rather than fixture.
@@ -38,6 +39,7 @@ from django.conf import settings
 from lxml import etree
 from lxml import html as lxml_html
 
+from .covers import twin_path
 from .languages import entry as language_entry
 from .localization import DEFAULT_LANGUAGE
 from .models import Book
@@ -66,6 +68,9 @@ STRINGS = {
             "speaker. It is not the author's original text."
         ),
         "read_online": "Read it online, free, at",
+        # The short-biography page after "About Ochorus", before the contents.
+        "author_title": "About the Author",
+        "full_bio": "Read the full biography at",
         "more": "More free classics at",
         # The "About Ochorus" page before the contents. Trusted markup, written
         # here (drawn from the site's About page, messages/en.json about_*);
@@ -131,6 +136,7 @@ class Edition:
     about: str  # XHTML fragment, may be empty
     chapters: list[ExportChapter]
     cover: Cover | None
+    bio: str  # the author's short biography as XHTML paragraphs; "" for none
     url: str  # the book's page on the reader, "" when the site URL is unknown
 
     @property
@@ -195,6 +201,50 @@ def load_cover(cover_url: str) -> Cover | None:
     return Cover(data=data, media_type=_MEDIA[ext], ext=ext.replace(".jpeg", ".jpg"))
 
 
+#: A committed copy of each exportable edition's cover, beside this module.
+#: The API image is built from ``backend/`` alone, so it has no
+#: ``frontend/static``, and its fetch of the cover from the public site failed
+#: in production — every EPUB shipped without one and e-readers drew their own.
+#: A file in the image cannot fail that way. ``export_book`` writes it, and
+#: ``tests_book_export.CoverTests`` fails when one is missing or stale.
+BUNDLED_COVERS = Path(__file__).resolve().parent / "export_covers"
+
+
+def cover_image_url(book) -> str:
+    """The raster that shows this edition's cover the way Ochorus draws it.
+
+    A designed cover is its own image — its title is in its pixels. A painting
+    or a plate is a wordless GROUND that the site sets the title over in the
+    browser, so the image of it WITH its title is the edition's og twin — the
+    same rule as ``coverArt.shareImage`` on the frontend.
+    """
+    url = book.cover_url or ""
+    if url.startswith("/covers/art/") or (url.startswith("/covers/") and url.endswith(".svg")):
+        return twin_path(book.slug, book.language)[0]
+    return url
+
+
+def bundled_cover_path(book) -> Path | None:
+    """Where this edition's committed cover lives, or None if it can have none."""
+    ext = Path(cover_image_url(book).split("?")[0]).suffix.lower()
+    if ext not in _MEDIA:
+        return None
+    return BUNDLED_COVERS / f"{book.slug}.{book.language}{ext.replace('.jpeg', '.jpg')}"
+
+
+def edition_cover(book) -> Cover | None:
+    """The cover for an export: the committed copy, else found as ``load_cover`` does."""
+    bundled = bundled_cover_path(book)
+    if bundled is not None and bundled.is_file():
+        return Cover(data=bundled.read_bytes(), media_type=_MEDIA[bundled.suffix], ext=bundled.suffix)
+    return load_cover(cover_image_url(book))
+
+
+def site_cover_file(book) -> Path:
+    """The file the site serves for ``cover_image_url`` — in a repo checkout."""
+    return Path(settings.BASE_DIR).parent / "frontend" / "static" / cover_image_url(book).lstrip("/")
+
+
 @lru_cache(maxsize=16)
 def _cover_bytes(cover_url: str) -> bytes:
     """Raises on failure, so lru_cache only ever holds a success."""
@@ -209,6 +259,36 @@ def _cover_bytes(cover_url: str) -> bytes:
     res = requests.get(cover_url, timeout=(3, 5))
     res.raise_for_status()
     return res.content
+
+
+def author_bio(book: Book) -> str:
+    """The author's SHORT biography in the edition's language, or "".
+
+    ``Author.bio`` is English; another language reads its ``AuthorTranslation``.
+    No English fallback — the same rule as the site, which shows a translated
+    edition's author page in that language or not at all — so a language with
+    no translated bio simply has no biography page. An imprint (Ochorus
+    Originals) is a publisher, not a person, and gets none either.
+    """
+    author = book.author
+    if author.is_imprint:
+        return ""
+    if book.language == DEFAULT_LANGUAGE:
+        return author.bio.strip()
+    tr = author.translations.filter(language=book.language).only("bio").first()
+    return tr.bio.strip() if tr else ""
+
+
+def _bio_paragraphs(text: str) -> str:
+    return "".join(f"<p>{_e(p.strip())}</p>" for p in text.split("\n\n") if p.strip())
+
+
+def author_url(book: Book) -> str:
+    site = _site_url()
+    if not site:
+        return ""
+    prefix = "" if book.language == DEFAULT_LANGUAGE else f"/{book.language}"
+    return f"{site}{prefix}/authors/{book.author.slug}/"
 
 
 def build_edition(book: Book) -> Edition:
@@ -234,7 +314,8 @@ def build_edition(book: Book) -> Edition:
         strings=strings,
         about=about,
         chapters=chapters,
-        cover=load_cover(book.cover_url),
+        cover=edition_cover(book),
+        bio=_bio_paragraphs(author_bio(book)),
         url=book_url(book),
     )
 
@@ -277,6 +358,19 @@ def _ochorus_page(ed: Edition) -> str:
     )
 
 
+def _author_page(ed: Edition) -> str:
+    """The short biography: name, life dates, the bio, and where to read more."""
+    a = ed.book.author
+    parts = [f'<h1>{_e(ed.strings["author_title"])}</h1>', f'<p class="name">{_e(ed.author)}</p>']
+    if a.birth_year:
+        parts.append(f'<p class="dates">{a.birth_year}–{a.death_year or ""}</p>')
+    parts.append(ed.bio)
+    link = author_url(ed.book)
+    if link:
+        parts.append(f'<p class="more">{_e(ed.strings["full_bio"])} <a href="{_e(link)}">{_e(link)}</a></p>')
+    return "".join(parts)
+
+
 def _title_page(ed: Edition) -> str:
     b = ed.book
     parts = [f'<h1 class="book-title">{_e(b.title)}</h1>']
@@ -312,6 +406,10 @@ blockquote p { text-indent: 0; }
 .ochorus .vision, .ochorus .verse { font-style: italic; text-align: center; }
 .ochorus .verse span { display: block; font-style: normal; font-size: 0.85em; }
 .ochorus li { margin-bottom: 0.3em; }
+.author-page p { text-indent: 0; text-align: left; margin-bottom: 0.8em; }
+.author-page .name { text-align: center; font-size: 1.15em; margin-bottom: 0.2em; }
+.author-page .dates { text-align: center; font-size: 0.9em; margin-bottom: 1.5em; }
+.author-page .more { font-size: 0.9em; margin-top: 1.5em; }
 .cover { margin: 0; padding: 0; text-align: center; }
 .cover img { max-width: 100%; max-height: 100%; }
 nav ol { list-style: none; padding: 0; }
@@ -343,6 +441,8 @@ def render_epub(ed: Edition) -> bytes:
         ))
     docs.append(("titlepage", "title.xhtml", None, _xhtml(ed, b.title, _title_page(ed), body_class="titlepage")))
     docs.append(("ochorus", "about-ochorus.xhtml", None, _xhtml(ed, s["ochorus_title"], _ochorus_page(ed), body_class="ochorus")))
+    if ed.bio:
+        docs.append(("author", "about-author.xhtml", None, _xhtml(ed, s["author_title"], _author_page(ed), body_class="author-page")))
     if ed.about:
         docs.append(("about", "about.xhtml", s["about"], _xhtml(ed, s["about"], f"<h1>{_e(s['about'])}</h1>{ed.about}")))
     for ch in ed.chapters:
@@ -463,6 +563,13 @@ body { margin: 0; }
 .ochorus a { color: inherit; }
 .ochorus .verse { font-style: italic; text-align: center; margin-top: 6mm; }
 .ochorus .verse span { display: block; font-style: normal; font-size: 9pt; color: #555; margin-top: 1mm; }
+.author-page { page: front; break-after: page; font-size: 10.5pt; }
+.author-page h1 { font-size: 17pt; font-weight: 600; text-align: center; margin: 8mm 0 6mm; }
+.author-page p { text-indent: 0; text-align: left; margin: 0 0 2.5mm; }
+.author-page .name { text-align: center; font-size: 13pt; margin: 0 0 1mm; }
+.author-page .dates { text-align: center; font-size: 10pt; color: #555; margin: 0 0 6mm; }
+.author-page .more { font-size: 9.5pt; margin-top: 6mm; }
+.author-page a { color: inherit; }
 .contents { page: front; break-after: page; }
 .contents ol { list-style: none; padding: 0; margin: 0; }
 .contents li { margin: 0 0 2.2mm; }
@@ -507,6 +614,8 @@ def render_print_html(
         parts.append(f'<div class="cover"><img src="{_e(cover_src)}" alt=""/></div>')
     parts.append(f'<div class="titlepage">{_title_page(ed)}</div>')
     parts.append(f'<div class="ochorus">{_ochorus_page(ed)}</div>')
+    if ed.bio:
+        parts.append(f'<div class="author-page">{_author_page(ed)}</div>')
     toc = []
     if ed.about:
         toc.append(("about", s["about"]))
