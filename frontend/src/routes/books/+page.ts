@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-24 (queue job #1754): Spanish book — watchman-nee-a-life, the biography
+// of Watchman Nee ("Watchman Nee"), 21 chapters. Book pages are prerendered per locale, so /es/books
+// and the shelf rebuild with the title over the shared painting ground and the reader page bakes the
+// 21 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #1457): Spanish book — gleanings-among-the-sheaves,
 // Spurgeon's harvest of short devotional readings ("Espigas entre las Gavillas"), 20 chapters. Book
 // pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
