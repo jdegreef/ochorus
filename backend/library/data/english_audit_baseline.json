@@ -216,7 +216,7 @@
   "stepping-stones-2": {
    "hyphen-space": 2,
    "misspelling": 4,
-   "orphan-close-quote": 4,
+   "orphan-close-quote": 3,
    "run-together": 1,
    "space-before-punct": 10,
    "title-case-vs-body": 1
