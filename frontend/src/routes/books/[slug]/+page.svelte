@@ -361,7 +361,9 @@
 			<BookCover {book} priority />
 		</div>
 
-		<div class="flex-1">
+		<!-- The action row's container (`.action-host`): it picks strip vs row by
+		     this column's width. -->
+		<div class="action-host min-w-0 flex-1">
 			<p class="eyebrow mb-1 text-muted">
 				{t('search.typeBook')} · {book.chapter_count}
 				{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(
@@ -477,19 +479,19 @@
 			<!-- Everything else is one quiet row of five: keep it (Save, a shelf),
 			     take it away (one Download menu for offline / EPUB / PDF), pass it on
 			     (Share) and look inside (Search). Share and Search are icon-only on
-			     desktop (`.icon-sm`); below `sm` the `.action-strip` becomes design
+			     desktop (`.icon-in-row`); when narrow the `.action-strip` becomes design
 			     B's labelled icon strip. -->
 			<div class="action-strip mt-3">
 				<FavoriteButton kind="book" slug={book.slug} showLabel />
 				<AddToShelfButton slug={book.slug} shortLabel />
 				<BookDownloadMenu {book} />
-				<div class="icon-sm">
+				<div class="icon-in-row">
 					<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
 				</div>
 				<!-- Search inside this book: the real search, scoped to the book. -->
 				<a
 					href={localizeHref(scopedSearchHref('book', book.slug))}
-					class="btn btn-sm btn-ghost icon-sm"
+					class="btn btn-sm btn-ghost icon-in-row"
 					aria-label={t('search.inBook')}
 					title={t('search.inBook')}
 				>
