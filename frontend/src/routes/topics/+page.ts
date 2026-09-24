@@ -3,6 +3,12 @@ import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
+// Prerender refresh 2026-09-24 (queue jobs #2601-#2622): the remaining 22 Swahili topic-shelf
+// translations land in data/topic_translations/sw.json, completing sw coverage of all 33 shelves
+// (the-puritans, abiding-in-christ, women-of-faith, for-teens, for-young-readers, …). Topic prose has
+// no English fallback, so these shelves were hidden in sw until now; seed_topics titles them in
+// Swahili on deploy, and this touch re-bakes /sw/topics and their /sw/topics/<slug> pages so the
+// localized titles and descriptions appear.
 // Prerender refresh 2026-09-18: French topic translations for for-teens
 // (« Pour les adolescents ») and for-young-readers (« Pour les jeunes
 // lecteurs ») land in data/topic_translations/fr.json (#2502, #2503), so
