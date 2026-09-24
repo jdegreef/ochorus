@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-24 (queue job #3178): Portuguese book — pilgrims-progress, John Bunyan's
+// allegory of Christian's journey to the Celestial City ("O Peregrino"), 22 chapters. Book pages are
+// prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the shared
+// painting ground and the reader page bakes the 22 chapters. Backs the CURATED plan the-pilgrims-way,
+// but around-the-wicket-gate and grace-abounding are not yet in pt, so no pt plan row activates and no
+// plan prose is owed.
 // prerender refresh 2026-09-24 (queue job #3170): Portuguese book — grace-for-grace-2, Watchman Nee's
 // teaching on grace through the parables and Gospel scenes ("Graça sobre Graça"), 9 chapters. Book
 // pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title over

@@ -2484,6 +2484,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"pt/pilgrims-progress": {
+			"ground": "e51826a893bc398df857ac4c8ab4bca31cb623a1bd0c7171854592c0a31f0439",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"pt/power-through-prayer": {
 			"ground": "697f92b1607f5bc979926efdcb7fcdca8b5fd89e78bb08617f001043cedbe71a",
 			"style": "devotional",
