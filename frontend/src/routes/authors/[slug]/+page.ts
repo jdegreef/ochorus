@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-24: Swahili author bio a-w-tozer (#2560, PR #3196). Author pages are
+// prerendered PER AUTHOR, so /sw/authors/a-w-tozer must rebuild for the translated bio.
 // prerender refresh 2026-09-24: Swahili author bio isaac-watts (#2564). Author pages are
 // prerendered PER AUTHOR, so /sw/authors/isaac-watts must rebuild with the translated bio.
 // prerender refresh 2026-09-21: six Hindi author bios — a-w-tozer (#2929), billy-graham (#2934),
