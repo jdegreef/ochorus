@@ -1,0 +1,238 @@
+{
+ "kind": "book",
+ "slug": "a-retrospect",
+ "language": "es",
+ "job_issue": 1368,
+ "references": [
+  {
+   "reference": "Juan 19:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 6:9a",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "2 Timoteo 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 5:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 19:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 17:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 63:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Oseas 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 126:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 45:10-11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Génesis 42:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Josué 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 4:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 9:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 91:1",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Salmo 91:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 91:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 91:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 91:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 91:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 91:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 91:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 119:114",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 6:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 53:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corintios 11:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:28",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Hechos 17:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 28:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 5:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Samuel 12:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Génesis 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corintios 5:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 24:11-12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 46:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corintios 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 7:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Génesis 22:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 34:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 34:8",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Salmos 34:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 34:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 6:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 54:10",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Proverbios 18:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 50:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 3:20",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Isaías 55:8-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 138:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 6:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 9:6",
+   "status": "self_rendered"
+  }
+ ]
+}

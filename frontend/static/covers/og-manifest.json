@@ -504,6 +504,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"es/a-retrospect": {
+			"ground": "7f0ee0a58a9f7485e372b76b524cf13ce7f440fca5970d5a4a0062529f2ef21b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"es/a-short-and-easy-method-of-prayer": {
 			"ground": "c75f9e14f8a2a0e87fcbe1018606942b7134b37ce232ff3de18a78afd4693e99",
 			"style": "devotional",
@@ -512,6 +522,16 @@
 			"art": true,
 			"scrim": 0.8,
 			"layout": "framed",
+			"bar": 0
+		},
+		"es/absolute-surrender": {
+			"ground": "f13df3518a6dbf80aec789a4cc3a4617e7d40b704b6ce274f7bf068edf24a300",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "wash/sage",
 			"bar": 0
 		},
 		"es/all-of-grace": {
@@ -1131,6 +1151,16 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0
+		},
+		"fr/rise-up-men-of-god-2": {
+			"ground": "f20d79d322eb36b5e5888b6b377d432edf2599bd277bff2b1048b24cdfd8da34",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},
