@@ -694,6 +694,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"es/ministry-of-intercession": {
+			"ground": "d8b8c9d1f61b6b25ba9ac9e640e54155b7579b2eab4e7f376d3afb491ab3272c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"es/necessity-of-prayer": {
 			"ground": "3df1bade5a5b97226ca4291390c2dc77ecd451f13fc040a9e3b56ad5ff8723f4",
 			"style": "devotional",
@@ -1210,6 +1220,16 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"fr/school-of-prayer": {
+			"ground": "17ad06529ae87b3aa4518147a5748b1b49e6f7b8fa199ce44784f6b375b2a6b5",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
 			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
