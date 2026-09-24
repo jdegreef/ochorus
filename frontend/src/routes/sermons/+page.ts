@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Swahili sermon — the-triumph-of-calvary (#2594, PR #3356). Rebuilds
+// /sw/sermons so the card and its /sw/sermons/the-triumph-of-calvary page bake the translated
+// title (Ushindi wa Kalvari) and "In brief" summary.
 // prerender refresh 2026-09-24: Swahili sermon — aggressive-christianity (#2591, PR #3351). Rebuilds
 // /sw/sermons so the card and its /sw/sermons/aggressive-christianity page bake the translated
 // title (Ukristo wa Kushambulia) and "In brief" summary.
