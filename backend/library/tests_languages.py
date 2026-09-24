@@ -486,13 +486,13 @@ class ReadinessReportTests(TestCase):
         # missing UI catalogue is not: a live locale with no compiled catalogue
         # cannot build, so its failure is marked unforceable and go-live refuses
         # it even when forced.
-        with mock.patch.object(readiness_module, "_ui_missing", return_value=readiness_module.NO_CATALOGUE):
+        with mock.patch.object(readiness_module, "_ui_gaps", return_value=(readiness_module.NO_CATALOGUE, 0)):
             ui = readiness_module._ui_check(self.es)
         self.assertEqual(ui.status, "fail")
         self.assertFalse(ui.forceable)
 
     def test_an_incomplete_ui_catalogue_is_also_unforceable(self):
-        with mock.patch.object(readiness_module, "_ui_missing", return_value=1):
+        with mock.patch.object(readiness_module, "_ui_gaps", return_value=(1, 0)):
             ui = readiness_module._ui_check(self.es)
         self.assertEqual(ui.status, "fail")
         self.assertFalse(ui.forceable)
@@ -506,7 +506,7 @@ class ReadinessReportTests(TestCase):
         self.es.min_plans = 0
         self.es.require_all_topics = False
         self.es.save()
-        with mock.patch.object(readiness_module, "_ui_missing", return_value=readiness_module.NO_CATALOGUE):
+        with mock.patch.object(readiness_module, "_ui_gaps", return_value=(readiness_module.NO_CATALOGUE, 0)):
             r = self._report(self.es)
         self.assertFalse(r.ready)
         self.assertEqual([c.key for c in r.hard_blockers], ["ui"])
@@ -1180,77 +1180,61 @@ class UiCatalogueCheckTests(TestCase):
     This check used to be permanently `unknown` in production — the catalogues
     live in frontend/messages/ and the API image is built from backend/ alone —
     so the deployed admin could never say whether a language's interface was
-    done. The frontend now generates a summary into backend/, and a dev checkout
-    still prefers the real files.
+    done. The frontend now generates a summary into backend/ (missing and
+    pending keys per locale), and that summary is the check's one source.
     """
 
     def setUp(self):
         self.lang = Language.objects.get(code="ar")
 
-    def _check(self):
-        return readiness_module._ui_check(self.lang)
-
-    def _no_frontend(self):
-        return mock.patch.object(readiness_module, "_messages_dir", return_value=None)
-
-    def _summary_file(self, payload: dict) -> Path:
+    def _check_with(self, summary: dict):
         path = Path(tempfile.mkdtemp()) / "ui_catalogues.json"
-        path.write_text(json.dumps(payload), "utf-8")
-        return path
+        path.write_text(json.dumps(summary), "utf-8")
+        with mock.patch("library.readiness.CATALOGUE_SUMMARY", path):
+            return readiness_module._ui_check(self.lang)
 
-    def test_the_committed_summary_answers_when_the_frontend_is_not_visible(self):
-        # i.e. the deployed API. Arabic's catalogue is complete, so this is the
-        # case that used to report "unknown" and now reports the truth.
-        with self._no_frontend():
-            check = self._check()
+    def test_the_committed_summary_answers(self):
+        # Arabic has every key, so this is the case that used to report "unknown"
+        # in production and now reports the truth — including its placeholders.
+        check = readiness_module._ui_check(self.lang)
         self.assertEqual(check.status, readiness_module.PASS, check.detail)
 
     def test_an_incomplete_catalogue_fails_with_a_count(self):
-        summary = {"locales": {"ar": {"missing": [f"k{i}" for i in range(12)]}}}
-        with self._no_frontend():
-            with mock.patch(
-                "library.readiness.CATALOGUE_SUMMARY", self._summary_file(summary)
-            ):
-                check = self._check()
+        summary = {"locales": {"ar": {"missing": [f"k{i}" for i in range(12)], "pending": []}}}
+        check = self._check_with(summary)
         self.assertEqual(check.status, readiness_module.FAIL)
         self.assertFalse(check.forceable)
         self.assertIn("12 string(s)", check.detail)
 
+    def test_pending_placeholders_pass_but_are_not_called_translated(self):
+        # Every key present, some still the English source: the build accepts it
+        # (declared debt), so it doesn't block — but "All translated." would be a
+        # lie, which is the whole reason the summary carries pending keys.
+        summary = {"locales": {"ar": {"missing": [], "pending": ["a", "b", "c"]}}}
+        check = self._check_with(summary)
+        self.assertEqual(check.status, readiness_module.PASS)
+        self.assertIn("3 still English placeholder(s)", check.detail)
+        self.assertNotIn("All translated", check.detail)
+
+    def test_a_fully_translated_catalogue_says_so(self):
+        check = self._check_with({"locales": {"ar": {"missing": [], "pending": []}}})
+        self.assertEqual((check.status, check.detail), (readiness_module.PASS, "All translated."))
+
     def test_a_language_absent_from_the_summary_is_absent_not_unknown(self):
         # A language nobody has started an interface for has zero strings — that
         # is a fact, and it should block a launch rather than shrug.
-        summary = {"locales": {"es": {"missing": []}}}
-        with self._no_frontend():
-            with mock.patch(
-                "library.readiness.CATALOGUE_SUMMARY", self._summary_file(summary)
-            ):
-                check = self._check()
+        check = self._check_with({"locales": {"es": {"missing": [], "pending": []}}})
         self.assertEqual(check.status, readiness_module.FAIL)
         self.assertEqual(check.detail, "No ar catalogue.")
 
-    def test_no_source_at_all_is_unknown(self):
-        with self._no_frontend():
-            with mock.patch(
-                "library.readiness.CATALOGUE_SUMMARY", Path("/nonexistent/x.json")
-            ):
-                check = self._check()
+    def test_no_summary_is_unknown(self):
+        with mock.patch("library.readiness.CATALOGUE_SUMMARY", Path("/nonexistent/x.json")):
+            check = readiness_module._ui_check(self.lang)
         self.assertEqual(check.status, readiness_module.UNKNOWN)
 
-    def test_a_dev_checkout_prefers_the_real_catalogues(self):
-        # The summary is a courier, not an authority: where the files themselves
-        # are readable they win, so a developer mid-edit sees their own state
-        # rather than whatever was last committed.
-        msgs = Path(tempfile.mkdtemp())
-        (msgs / "en.json").write_text(json.dumps({"a": "1", "b": "2"}), "utf-8")
-        (msgs / "ar.json").write_text(json.dumps({"a": "١"}), "utf-8")
-        stale = {"locales": {"ar": {"missing": []}}}
-        with mock.patch.object(readiness_module, "_messages_dir", return_value=msgs):
-            with mock.patch(
-                "library.readiness.CATALOGUE_SUMMARY", self._summary_file(stale)
-            ):
-                check = self._check()
-        self.assertEqual(check.status, readiness_module.FAIL)
-        self.assertIn("1 string(s)", check.detail)
+    def test_a_malformed_row_is_unknown_not_a_count(self):
+        check = self._check_with({"locales": {"ar": {"missing": "", "pending": []}}})
+        self.assertEqual(check.status, readiness_module.UNKNOWN)
 
     def test_the_committed_summary_is_shaped_the_way_the_reader_expects(self):
         # Guards the courier itself: the file is generated by an npm script in
@@ -1260,7 +1244,9 @@ class UiCatalogueCheckTests(TestCase):
         self.assertEqual(data["base_locale"], "en")
         for code in ("en", "ar", "es", "sw", "lg", "pt"):
             self.assertIn(code, data["locales"], code)
-            self.assertIsInstance(data["locales"][code]["missing"], list)
+            for field in ("missing", "pending"):
+                self.assertIsInstance(data["locales"][code][field], list, (code, field))
+        self.assertEqual(data["locales"]["en"]["pending"], [], "English can't be pending")
 
 
 class PlanThresholdTests(TestCase):

@@ -11,7 +11,7 @@
  *
  * So the frontend hands the fact across the wall as data. This produces a small
  * JSON file inside `backend/`, which the image then contains, and which
- * `library/readiness.py` reads when it cannot see the catalogues themselves.
+ * `library/readiness.py` reads.
  *
  * COMMITTED, and kept honest by `messageCatalogues.test.ts`: that test computes
  * the same summary on every CI run and fails if this file disagrees. A stale
@@ -24,8 +24,17 @@
  * per-locale `present`, every such PR rewrote the same lines and parallel PRs
  * merge-conflicted on it, and a conflict resolved by keeping either side left a
  * stale copy that broke main's CI (2026-09-23, #3124). A missing-keys list does
- * not move when a key lands in every catalogue — which parity requires — so the
- * file now changes only when a locale is added or genuinely falls behind.
+ * not move when a key lands in every catalogue — which parity requires — so
+ * adding a translated string leaves the file untouched.
+ *
+ * It also records each locale's PENDING keys — present, but still holding the
+ * English source as a placeholder (value identical to English and not in
+ * `SAME_AS_ENGLISH_OK`). "Every key present" is not "translated": those
+ * placeholders are what `messages.test.ts` declares in PENDING_TRANSLATION, and
+ * without them the readiness report said "All translated." for a locale that
+ * still shows readers English. A pending list moves only when a placeholder is
+ * added or translated, and sorted one-key-per-line insertions from parallel PRs
+ * merge cleanly unless they land on adjacent lines.
  *
  *   npm run sync:catalogues          rewrite the file
  *   npm run sync:catalogues -- --check   fail if it is out of date (CI)
@@ -34,6 +43,7 @@
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SAME_AS_ENGLISH_OK } from './same-as-english.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const MESSAGES = join(HERE, '..', 'messages');
@@ -42,12 +52,15 @@ const OUT = join(HERE, '..', '..', 'backend', 'library', 'data', 'ui_catalogues.
 const BASE_LOCALE = 'en';
 
 /**
- * Real message keys — `$schema` is metadata, not a string a reader ever sees.
+ * A catalogue's real messages — `$schema` is metadata, not a string a reader
+ * ever sees.
  * @param {string} file
- * @returns {string[]}
+ * @returns {Record<string, unknown>}
  */
-const keysOf = (file) =>
-	Object.keys(JSON.parse(readFileSync(file, 'utf-8'))).filter((k) => !k.startsWith('$'));
+const messagesOf = (file) =>
+	Object.fromEntries(
+		Object.entries(JSON.parse(readFileSync(file, 'utf-8'))).filter(([k]) => !k.startsWith('$'))
+	);
 
 /** @param {string} [messagesDir] */
 export function buildSummary(messagesDir = MESSAGES) {
@@ -56,15 +69,24 @@ export function buildSummary(messagesDir = MESSAGES) {
 		.map((f) => f.replace(/\.json$/, ''))
 		.sort();
 
-	const base = keysOf(join(messagesDir, `${BASE_LOCALE}.json`));
+	const base = messagesOf(join(messagesDir, `${BASE_LOCALE}.json`));
+	const baseKeys = Object.keys(base);
 
-	/** @type {Record<string, { missing: string[] }>} */
+	/** @type {Record<string, { missing: string[]; pending: string[] }>} */
 	const out = {};
 	for (const locale of locales) {
-		const have = new Set(keysOf(join(messagesDir, `${locale}.json`)));
+		const have = messagesOf(join(messagesDir, `${locale}.json`));
 		// Sorted so the file is stable across machines and the --check diff is
 		// about content, not key order.
-		out[locale] = { missing: base.filter((k) => !have.has(k)).sort() };
+		out[locale] = {
+			missing: baseKeys.filter((k) => !(k in have)).sort(),
+			pending:
+				locale === BASE_LOCALE
+					? []
+					: baseKeys
+							.filter((k) => k in have && have[k] === base[k] && !SAME_AS_ENGLISH_OK.has(k))
+							.sort()
+		};
 	}
 
 	return {
@@ -104,7 +126,11 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
 	} else {
 		writeFileSync(OUT, next, 'utf-8');
 		const line = Object.entries(summary.locales)
-			.map(([l, v]) => `${l} ${v.missing.length ? `${v.missing.length} missing` : 'complete'}`)
+			.map(
+				([l, v]) =>
+					`${l} ${v.missing.length ? `${v.missing.length} missing` : 'complete'}` +
+					(v.pending.length ? ` (${v.pending.length} pending)` : '')
+			)
 			.join(' · ');
 		console.log(`✓ wrote ${OUT}\n  ${line}`);
 	}

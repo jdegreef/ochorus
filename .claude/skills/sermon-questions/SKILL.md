@@ -90,9 +90,9 @@ string is a fixed lifecycle, or `frontend/src/lib/messages.test.ts` fails the bu
    as a placeholder for **ar/hi/lg/sw/uk**, AND declare that key in
    `PENDING_TRANSLATION` (a two-way ratchet — an undeclared English placeholder
    fails, and so does leaving a now-translated key listed).
-3. `npm run check` + `npm run test`. (No `sync:catalogues` needed: with the key in
-   all catalogues, `backend/library/data/ui_catalogues.json` — which lists only
-   *missing* keys — doesn't change.)
+3. `npm run sync:catalogues` (the new placeholders join each locale's *pending*
+   list in `backend/library/data/ui_catalogues.json`), then `npm run check` +
+   `npm run test`.
 
 A Q&A section only renders where per-row Q&A content exists for the locale, so an
 English placeholder heading never actually reaches a reader.
