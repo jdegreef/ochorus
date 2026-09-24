@@ -5,6 +5,9 @@
 // single-book plan school-of-prayer-31-days (es plan prose added in data/plan_translations/es.json;
 // the /es/plans/school-of-prayer-31-days page rebuilds from that content root — no plans/+page.ts
 // touch owed).
+// prerender refresh 2026-09-24 (queue jobs #1752, #3152, #2797): three more Ukrainian books —
+// power-through-prayer («Сила через молитву», 20 ch), school-of-prayer («З Христом у школі молитви»,
+// 33 ch) and rise-up-men-of-god-2 («Устаньте, мужі Божі», 14 ch) — bake into the /uk/books shelf.
 // prerender refresh 2026-09-24 (queue job #813): Ukrainian book — prayer-the-pulse-of-life, Hannah
 // Buyinza ("Молитва — пульс життя"), 12 chapters. Book pages are prerendered per locale, so /uk/books
 // and the shelf rebuild with the translated title over the shared derived ground.
