@@ -1594,6 +1594,16 @@
 			"layout": "wash/sage",
 			"bar": 0.05
 		},
+		"hi/gleanings-among-the-sheaves": {
+			"ground": "b7094bcdc0675614f85fcac8c38932f134c5fd115f2f8c9f508904b772d3b742",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"hi/godliness": {
 			"ground": "035dc12c45d929561e497d18a33ce1eafe23bb915f639209822d73a4429ebe59",
 			"style": "revival",
