@@ -904,6 +904,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"foxes-book-of-martyrs": {
+			"ground": "ba45e6224419b841da45cf049959fd4b1917187e358fbaa24c72ec848b4c3cff",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/absolute-surrender": {
 			"ground": "27a4490e3504475ccb2a4dd793a34abd482bed06f8c4a6cd605541518d1bb793",
 			"style": "devotional",

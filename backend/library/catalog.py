@@ -430,6 +430,19 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Bible for the young in plain, vivid language."
         ),
     ),
+    # Arrives with Fox's Book of Martyrs, which is built by
+    # `build_foxes_book_of_martyrs` (no BookEntry — see that command).
+    "john-foxe": AuthorEntry(
+        slug="john-foxe",
+        name="John Foxe",
+        birth_year=1516,
+        death_year=1587,
+        bio=(
+            "English Protestant historian and preacher whose Actes and Monuments "
+            "(1563), known as Foxe's Book of Martyrs, told the sufferings of the "
+            "martyrs from the early church to the burnings under Queen Mary."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
