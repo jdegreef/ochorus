@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "billy-graham",
+ "language": "es",
+ "job_issue": 2933,
+ "references": [
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "library/fixtures/content/books/the-way-to-god.es.json"
+  }
+ ]
+}
