@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Swahili sermon — marks-of-a-true-conversion (#2595, PR #3352). Rebuilds
+// /sw/sermons so the card and its /sw/sermons/marks-of-a-true-conversion page bake the translated title
+// (Alama za Kuongoka kwa Kweli) and "In brief" summary.
 // prerender refresh 2026-09-24: Swahili sermon — against-eutropius (#2592, PR #3342). Rebuilds
 // /sw/sermons so the card and its /sw/sermons/against-eutropius page bake the translated title
 // (Dhidi ya Eutropius) and "In brief" summary.
