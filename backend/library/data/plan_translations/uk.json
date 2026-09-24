@@ -20,5 +20,12 @@
     "note": [
       "Job #811 (with plan jobs #803 / #890): ships in the same PR as humility-2.uk, the plan's single source book, so the uk plans page never shows an English card. Title opens with the book's shipped uk title «Смирення»."
     ]
+  },
+  "school-of-prayer-31-days": {
+    "title": "31 день у школі молитви",
+    "description": "Місяць з Ендрю Мюрреєм біля ніг єдиного Учителя. Кожен день розкриває одне з власних слів Ісуса про молитву — від «Господи, навчи нас молитись» до обітниць останньої ночі — і завершується власною молитвою. Один урок на день, близько десяти хвилин, крок за кроком до заступництва й життя молитви.",
+    "note": [
+      "Job #3152. Quotes the shipped uk book title «З Христом у школі молитви» (school-of-prayer.uk) and its Kulish Luke 11:1 wording «Господи, навчи нас молитись» as the book's Lesson 1 renders it. Kept distinct from the curated three-book plan «Школа молитви» (key school-of-prayer)."
+    ]
   }
 }
