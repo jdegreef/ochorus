@@ -574,6 +574,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.085
 		},
+		"es/cheque-book": {
+			"ground": "08eb4ae5ced77e25d0ceafe8a898c3f227080904bf35e965c9fbd0f3cee89700",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"es/clothed-with-strength-and-dignity": {
 			"ground": "039b1da6a59b53bcbf1d793f048281927c6444fd1346360d8add701b47d6b606",
 			"style": "originals",
