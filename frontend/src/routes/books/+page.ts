@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #3166): Spanish book — grace-for-grace-2, Watchman Nee's
+// teaching on grace through the parables and Gospel scenes ("Gracia sobre gracia"), 9 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
+// the designed plate cover and the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
+// entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #813): Ukrainian book — prayer-the-pulse-of-life, Hannah
 // Buyinza ("Молитва — пульс життя"), 12 chapters. Book pages are prerendered per locale, so /uk/books
 // and the shelf rebuild with the translated title over the shared derived ground.
