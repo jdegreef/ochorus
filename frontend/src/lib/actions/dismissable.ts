@@ -21,8 +21,12 @@ export interface DismissableOptions {
 }
 
 export function dismissable(node: HTMLElement, options: DismissableOptions) {
+	// The event's path, not `node.contains(target)`: a menu item that swaps
+	// itself out when clicked ("Saved offline" → "Download for offline") is
+	// already detached by the time the click bubbles here, so `contains` would
+	// call it an outside click and shut the menu under the reader's cursor.
 	function onClick(e: MouseEvent) {
-		if (!node.contains(e.target as Node)) options.onDismiss();
+		if (!e.composedPath().includes(node)) options.onDismiss();
 	}
 	function onKeydown(e: KeyboardEvent) {
 		if (e.key !== 'Escape') return;

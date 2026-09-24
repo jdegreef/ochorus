@@ -27,6 +27,17 @@ describe('dismissable action', () => {
 		expect(onDismiss).toHaveBeenCalledOnce();
 	});
 
+	it('treats a click on an item that detaches itself as inside', () => {
+		const { root, item } = setup();
+		const onDismiss = vi.fn();
+		dismissable(root, { open: true, onDismiss });
+		// The item's own handler re-renders it away before the click reaches
+		// the document, as a {#if} branch swap does.
+		item.addEventListener('click', () => item.remove());
+		item.click();
+		expect(onDismiss).not.toHaveBeenCalled();
+	});
+
 	it('does nothing while closed', () => {
 		const { root, outside } = setup();
 		const onDismiss = vi.fn();
