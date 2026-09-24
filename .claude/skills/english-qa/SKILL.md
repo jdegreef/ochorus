@@ -534,6 +534,26 @@ Reported, not fixed
   `word_count`, and assert all three columns equal the committed fixture and
   that a second pass is a no-op. That is the whole deploy path in ten lines, per
   language, and it is what turns "the tests pass" into "production converges".
+- **Back matter shipped as the last chapter's closing paragraphs** (2026-09-24,
+  found measuring #3355). Gutenberg texts fold the back of the printed book into
+  the final section: `reality-of-prayer` ch16 ran Bounds's last line into
+  "Printed in the United States of America" and 60 blocks of Revell's catalogue;
+  `how-to-bring-men-to-christ` ch13 ended on Meyer ad blurbs and a merged
+  "Transcriber's Notes" `<h3>`; `life-and-diary-of-david-brainerd` ch12 on the
+  transcriber's errata note, headless, reading as Edwards's own words. The
+  audit sees none of it, and the es and sw editions TRANSLATED it. Repair with
+  the `back_matter` key: `(last, first)` seams, one per edition, where `last`
+  is the author's closing block (ending `</p>`) and `first` opens what follows.
+  `strip_back_matter` cuts only where the two stand together, so it cannot fire
+  in another chapter; `ShippedBackMatterTests` checks every declared edition
+  from the declarations alone. Find more with a grep of every body for
+  `transcriber|printed in the united states|\b\d{1,2}mo\b` — and remember a
+  note whose heading was dropped won't say "transcriber" (Brainerd's didn't).
+  `import_gutenberg` now drops note boxes, "Transcriber's Note" sections and a
+  last-section colophon's tail (#3377). **Still shipped, not yet repaired:**
+  `separation-and-service` ch4 and `things-as-they-are` ch35 (a transcriber's
+  note, the latter after a "LONDON: MORGAN AND SCOTT" imprint), and the inline
+  MIDI note in `a-retrospect` ch12.
 - **A defect class the audit CANNOT see: the stored "English" is a modern AI
   PARAPHRASE, not the author's public-domain text** (2026-09-06). Some books
   stored `source_type=public_domain` were run through a modernization pass that
