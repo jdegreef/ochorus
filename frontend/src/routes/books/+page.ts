@@ -3,6 +3,10 @@
 // prerendered per locale, so /es/books and the shelf rebuild with the translated title and the
 // reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts
 // touch owed.
+// prerender refresh 2026-09-24 (queue job #1368): Spanish book — a-retrospect, Hudson Taylor's
+// autobiography, 20 chapters ("Una Retrospectiva"). Book pages are prerendered per locale, so
+// /es/books and the shelf rebuild with the translated title and the reader page bakes the 20
+// chapters. No plans/+page.ts touch owed — a-retrospect backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-24 (queue job #811, PR #3245): Andrew Murray's Смирення — the Ukrainian
 // edition of humility-2, 12 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-24: one NEW Swahili book — revival-lectures (#2580), Charles Finney's
