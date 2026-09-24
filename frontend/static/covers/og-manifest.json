@@ -824,6 +824,16 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"es/soar-like-the-eagle-3": {
+			"ground": "0532b87d005ca4dd1e912727269e616c01a184d6f42554a789ac7c0df619f1b8",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/spurgeon-on-prayer": {
 			"ground": "0a7c45d0b711e3bcc04eafdfd275c8d78dc6f5ea3229fd670315f1b1b4e4fa2c",
 			"style": "revival",
