@@ -185,7 +185,9 @@ class Erase(NamedTuple):
     y0: float
     x1: float
     y1: float
-    #: "dark" for ink darker than what it is set on, "light" for lighter.
+    #: "dark" for ink darker than what it is set on, "light" for lighter, "any"
+    #: for a mark drawn in both — the Ochorus lockup prints white on a dark
+    #: photograph and grey on a pale one.
     ink: str = "dark"
     #: Erase only type-thin ink (the default), leaving any broad shape the
     #: contrast test also catches — a branch, the bright side of a page edge.
@@ -279,11 +281,24 @@ class Ground(NamedTuple):
 #: ``designed_url(slug)``, derived from ``DESIGNED`` above, so replacing one of
 #: those files with a different extension stays the two-line diff this module
 #: advertises rather than quietly needing a third edit here.
+#
+#: WHERE A SUBJECT SHOULD LAND DEPENDS ON THE AUTHOR'S LAYOUT
+#: (``coverLayouts.AUTHOR_LAYOUT``), not only on the framed composition. Framed:
+#: clear of the centred title and of the mark at ~0.9. R. A. Torrey's
+#: ``diagonal`` shows only the top ~40% of the ground, so his doves are lifted
+#: there with a large ``foot``. Andrew Murray's ``wash`` fades the top into
+#: paper, so his subjects stay LOW. Spurgeon's ``band`` shows the lower half.
+#: Render the real cover before trusting a crop (see the level-up-cover skill).
+#:
+#: The Ochorus mark at a designed cover's foot is erased with one box —
+#: ``Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False)`` — rather than cropped
+#: above: the lockup's quill reaches up to ~0.83, and it prints white on a dark
+#: photograph and grey on a pale one.
 DERIVED_GROUND: dict[str, Ground] = {
-    "baptism-with-the-holy-spirit": Ground(0.42, 0.83, 0.11, 1.15,
+    "baptism-with-the-holy-spirit": Ground(0.41, 0.84, 0.11, 1.15, foot=0.40,
         source="d7a50b3b4aef331a353c928d60f5a0a4db8328429a9e024e80dab6f11a8d9667",
     ),
-    "clothed-with-strength-and-dignity": Ground(0.40, 0.78, 0.10, 1.45,
+    "clothed-with-strength-and-dignity": Ground(0.41, 0.83, 0.10, 1.45, foot=0.10,
         source="818722e5ec6ae8ad955eb88481552b54c8822084238e62af8957274f18a54fe4",
     ),
     # The open Bible on the wooden table, from just under the lower title rule
@@ -300,7 +315,7 @@ DERIVED_GROUND: dict[str, Ground] = {
     ),
         source="75428579274b21090f44604464e1608fa54321307892f01791ac7b1f46a28713",
     ),
-    "godliness": Ground(0.44, 0.75, 0.09, 1.85,
+    "godliness": Ground(0.36, 0.84, 0.09, 1.85, foot=0.08,
         source="50b72ef83e3f24780d1274148d034ea55317bb5c2d36c1b339d2213c80593dd1",
     ),
     # Two walkers climbing a dune, from under the subtitle (~0.395) to their
@@ -332,13 +347,14 @@ DERIVED_GROUND: dict[str, Ground] = {
     ),
     # A photograph of hands on an open Bible, a finger following the text. The
     # title fills the upper third and the "Volume 2 …" subtitle ends by ~0.65;
-    # the words-free picture is the open page spread below it and above the
-    # Ochorus mark at the foot (~0.88) — the richest wordless band on the cover,
-    # the same shape as feasting-at-the-table's open book.
-    "men-and-women-who-gave-everything-2": Ground(0.66, 0.86, 0.06, 1.12, sky=0.22,
+    # the words-free picture is the open page spread below it, taken past the
+    # Ochorus mark (erased) to the frame's foot so the spread is not a sliver.
+    "men-and-women-who-gave-everything-2": Ground(0.62, 0.93, 0.08, 1.12, sky=0.22,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="40ae45aab2c1e92e509dc5b655d7ca07c53f42988a3a0907581f2e4591807bca",
     ),
-    "purity-of-heart": Ground(0.55, 0.79, 0.12, 2.00,
+    "purity-of-heart": Ground(0.54, 0.93, 0.09, 2.00,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="f3659ad885cb95c3bf8f0d954d45c078c709674407fd560fcc4cf96d1bd60554",
     ),
     # The whole stream between the title (~0.20) and the URL (~0.93), with the
@@ -350,7 +366,8 @@ DERIVED_GROUND: dict[str, Ground] = {
         erase=(Erase(0.18, 0.63, 0.80, 0.73, "light"),),
         source="f3564c524858961bbe55d4a7b900f70b88589a349ca8ad56f9b94ef92bce15da",
     ),
-    "talks-to-the-farmer": Ground(0.46, 0.78, 0.09, 1.45,
+    "talks-to-the-farmer": Ground(0.48, 0.93, 0.09, 1.45,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="120ca61d19bce6c692bc1bc8c9eecc38543224945496fbb427f0c1ecdbf6ed48",
     ),
     # A golden sunset with an eagle. The bird flies between the lines of the
@@ -368,7 +385,8 @@ DERIVED_GROUND: dict[str, Ground] = {
         ),
         source="2db8925dd6782464cd895d241508324b7955d9678acf8f6afd33d4c4a5d2c107",
     ),
-    "the-god-of-all-comfort": Ground(0.50, 0.78, 0.11, 1.10,
+    "the-god-of-all-comfort": Ground(0.51, 0.93, 0.15, 1.10,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="d2917c2f827ac26b0570ef7995dfe2c7bc0560ad81e4ccf1937dbc265b1a9dcd",
     ),
     # A key held out in two hands, from under the title (~0.21) to above the
@@ -395,7 +413,7 @@ DERIVED_GROUND: dict[str, Ground] = {
     "the-christians-secret-of-a-happy-life-4": Ground(0.56, 0.82, 0.06, 1.15, sky=0.22,
         source="d9b9836cb2eaa1cd8d669cb3f2fc880ed884c0ab020e13afb7fde2e6ea2685e5",
     ),
-    "the-person-and-work-of-the-holy-spirit": Ground(0.41, 0.82, 0.10, 1.00,
+    "the-person-and-work-of-the-holy-spirit": Ground(0.41, 0.82, 0.10, 1.00, foot=0.45,
         source="854342772afb4da0ac470fdc3b92b253794051942e82bde23a3681388c7bab60",
     ),
     # The staircase and title fill the middle; the words-free picture is the
@@ -407,14 +425,16 @@ DERIVED_GROUND: dict[str, Ground] = {
     "the-secret-of-guidance": Ground(0.05, 0.26, 0.10, 0.5, sky=0.28,
         source="a990801a9928f654ed2da0760f6d7c0a64d974e24d72d3ff9485fc05ac4ddfc6",
     ),
-    "the-unselfishness-of-god": Ground(0.44, 0.80, 0.09, 1.15, sky=0.15,
+    "the-unselfishness-of-god": Ground(0.44, 0.74, 0.09, 1.15, sky=0.15,
+        erase=(Erase(0.15, 0.30, 0.85, 0.47),),
         source="da76ca7d2a047bac2463d0ab58af54f40d987ce0bf5127001d102d553f8f4078",
     ),
     # The title, byline and subtitle fill the top half over a darkened worship
     # scene; the words-free picture is the band BELOW the subtitle (~0.58) and
     # above the Ochorus wordmark at the foot (~0.88) — the praying women with
     # hands raised. Indoor scene, so no sky extension.
-    "women-who-moved-heaven-2": Ground(0.60, 0.87, 0.08, 1.20,
+    "women-who-moved-heaven-2": Ground(0.59, 0.93, 0.10, 1.20,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="471f2e18290bd563bab4220c6664aea4adebbcc06e1c07749f9843ef805cad0f",
     ),
 }
