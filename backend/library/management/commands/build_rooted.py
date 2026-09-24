@@ -594,6 +594,73 @@ DAUGHTERS_OF_THE_KING: dict[int, dict[str, object]] = {
             },
         ],
     },
+    3: {
+        "sort_order": 85,
+        "publication_year": 2026,
+        "title": "Daughters of the King – 30 Days with God for Girls – Book 3",
+        "subtitle": "Growing Up: your feelings, your changing body, wise choices, and God’s calling",
+        "cover_url": "/covers/daughters-of-the-king-3.svg",
+        "cover_color": covers.ink_safe("#2f6b5e"),  # a deep, growing green
+        "description": (
+            "Thirty short daily devotions for girls aged 9 to 12 about growing "
+            "up: handling big feelings with God, understanding the changes of "
+            "puberty as His good design, making wise choices about crushes, "
+            "money, time and life online, discovering her gifts and calling, and "
+            "learning from older women like Naomi, Elizabeth and Anna. Each day "
+            "has a Bible verse, a short teaching, a question, something to try "
+            "and a prayer. The third and final book of Daughters of the King."
+        ),
+        "about_html": (
+            "<p>Daughters of the King is an original Ochorus devotional series for "
+            "girls aged 9 to 12. Book 1 taught a girl who she is, and Book 2 how "
+            "to be brave. Book 3 walks with her into growing up, and it opens "
+            "with a prayer from Psalm 144:12 that daughters would be “like corner "
+            "pillars carved to adorn a palace”: strong, and shaped with care.</p>"
+            "<p>The first week is about feelings: anger, sadness, embarrassment, "
+            "moody days, and taking every thought captive. The second speaks "
+            "openly and simply about puberty: growth and body shape, breast "
+            "development and body hair, periods, hygiene, and hormones and "
+            "changing moods, all as part of God’s good design. It leaves questions "
+            "about sex and reproduction to parents, and every day sends a girl "
+            "back to her mother or a woman she trusts. The third week is about "
+            "wise choices: crushes, money, time, being careful online and a pure "
+            "heart. The fourth is about calling: gifts, dreams, and God pouring out "
+            "His Spirit on His daughters. The fifth is about mentors and "
+            "finishing well, with Naomi, Elizabeth and Anna.</p>"
+            "<p>Every day follows the same short pattern: a Scripture from the "
+            "Berean Standard Bible, a teaching, a question to think about, one "
+            "thing to try, and a prayer. Each week ends with a true story from "
+            "our Brave for God books: Amy Carmichael, Ida Scudder, Gladys "
+            "Aylward, Lottie Moon and Mary Slessor. A note for parents recommends "
+            "reading the growing-up week together.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 3 of Daughters of the King about?",
+                "answer": "Growing up. Over thirty short daily devotions it helps girls handle big feelings, understand how their bodies change, make wise choices, discover their gifts and calling, and learn from older women who love God.",
+            },
+            {
+                "question": "Does it talk about puberty and periods?",
+                "answer": "Yes. Week 2 explains simply and accurately how a girl’s body changes: growing taller, body shape, breast development, body hair, periods, hygiene and changing moods. It presents all of it as God’s good design, nothing to be ashamed of, and encourages her to ask her mother or a trusted woman her questions. Sex and reproduction are left for parents to discuss.",
+            },
+            {
+                "question": "Should parents read it with their daughter?",
+                "answer": "We recommend it, especially for Week 2. A note for parents at the start explains exactly what that week covers, and each day of it ends by pointing a girl to her mother or another woman she trusts.",
+            },
+            {
+                "question": "What does it say about crushes and dating?",
+                "answer": "Day 14 uses Song of Songs 2:7, “Do not arouse or awaken love until the time is right.” It tells girls that crushes are normal, that there is no need to rush into dating, that their worth does not depend on whether a boy likes them, and to talk openly with their parents.",
+            },
+            {
+                "question": "Which women does it include?",
+                "answer": "From the Bible: Ruth and Naomi, Mary and Elizabeth, and Anna the prophetess, among others. From history, in the weekly true stories: Amy Carmichael, Ida Scudder, Gladys Aylward, Lottie Moon and Mary Slessor.",
+            },
+            {
+                "question": "Is this the last book in the series?",
+                "answer": "Yes. Daughters of the King has three books: Beloved, Brave and Growing Up. Its companion series for boys is Sons of the King, and our Rooted series is for all young readers.",
+            },
+        ],
+    },
 }
 
 SONS_OF_THE_KING: dict[int, dict[str, object]] = {

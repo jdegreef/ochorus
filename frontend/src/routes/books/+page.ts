@@ -1,5 +1,11 @@
 // prerender refresh 2026-09-24 (queue job #1755): वॉचमैन नी — the Hindi edition of
 // watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-23: one NEW English book — daughters-of-the-king-3, "Daughters of the
+// King – 30 Days with God for Girls – Book 3" (Growing Up), volume 3 of the house-written girls'
+// devotional series (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB
+// Scripture). Rebuilds /books and the For Young Readers shelf so the card and its young-style plate
+// cover (volume 3) appear, and the reader pages bake the chapters. Backs the new
+// daughters-of-the-king-book-3-30-days plan.
 // prerender refresh 2026-09-24 (queue job #812): Gareth Evans's Ключ у моїй руці — the Ukrainian
 // edition of the-key-in-my-hand, 15 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-23: one NEW English book — sons-of-the-king-2, "Sons of the King – 30

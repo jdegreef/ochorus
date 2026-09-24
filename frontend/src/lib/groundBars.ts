@@ -7,6 +7,7 @@
 
 export const GROUND_BARS: Record<string, number> = {
 	'answers-to-prayer': 0.105,
+	'baptism-with-the-holy-spirit': 0.085,
 	'brave-for-god': 0.080,
 	'divine-healing': 0.050,
 	'essentials-of-prayer': 0.040,
@@ -14,6 +15,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'holy-in-christ': 0.045,
 	'how-to-bring-men-to-christ': 0.055,
 	'lord-teach-us-to-pray-2': 0.110,
+	'men-and-women-who-gave-everything-2': 0.110,
 	'necessity-of-prayer': 0.050,
 	'power-through-prayer': 0.040,
 	'prevailing-prayer': 0.050,
@@ -23,8 +25,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'the-reformed-pastor': 0.040,
 	'the-unselfishness-of-god': 0.110,
 	'till-he-come': 0.040,
-	'watchman-nee-a-life': 0.040,
-	'women-who-moved-heaven-2': 0.110
+	'watchman-nee-a-life': 0.040
 };
 
 /** The bar to crop past for a painted ground's url; 0 for anything else. */
