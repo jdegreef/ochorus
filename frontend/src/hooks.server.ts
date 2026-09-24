@@ -29,9 +29,10 @@ export const handle: Handle = ({ event, resolve }) =>
 // fetches and throws unless the response carries an Access-Control-Allow-Origin
 // matching the page's origin. The build's request carries no `Origin` header, so
 // django-cors-headers (rightly) sends none back, and the prerender origin is not
-// a real one to allow-list anyway. This hook only ever runs at build time — the
-// site is static, there is no server — so stamping the header here grants no
-// browser anything: at runtime the browser does real CORS against the API.
+// a real one to allow-list anyway. This hook runs only server-side — the
+// prerender, and `vite dev` SSR; the deployed site is static, with no server —
+// and the header is read only by SvelteKit's own server-side CORS check, so
+// stamping it grants no browser anything: browsers do real CORS against the API.
 const apiOrigin = API_BASE_URL ? new URL(API_BASE_URL).origin : null;
 
 export const handleFetch: HandleFetch = async ({ event, request, fetch }) => {

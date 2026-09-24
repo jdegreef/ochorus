@@ -120,7 +120,14 @@ async function requestJSON<T>(path: string, init: RequestInit, f?: Fetch): Promi
 		f
 	);
 	if (!res.ok) {
-		throw new ApiError(res.status, await errorBody(res));
+		// A 5xx that outlasted the build's retries must not be READ through a
+		// load's fetch: reading is what inlines a response, and an inlined 503
+		// would replay on every visitor's hydration — the shelf stuck on its
+		// error panel instead of recovering from the live API on first visit
+		// (see loadShelf). Unread, hydration fetches it fresh. A 404 is still
+		// read: it's a real answer, and localizedWithLang's fallback keys on it.
+		const body = building && f && res.status >= 500 ? null : await errorBody(res);
+		throw new ApiError(res.status, body);
 	}
 	if (res.status === 204) return null as T;
 	return (await res.json()) as T;
