@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-24: Swahili author bio bill-bright (#2567). Author pages are
+// prerendered PER AUTHOR, so /sw/authors/bill-bright must rebuild with the translated bio.
 // prerender refresh 2026-09-24: Swahili author bio anselm-of-canterbury (#2566). Author pages are
 // prerendered PER AUTHOR, so /sw/authors/anselm-of-canterbury must rebuild with the translated bio.
 // prerender refresh 2026-09-24: Swahili author bio john-calvin (#2565). Author pages are
