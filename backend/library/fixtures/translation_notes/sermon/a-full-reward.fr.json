@@ -1,0 +1,85 @@
+{
+ "kind": "sermon",
+ "slug": "a-full-reward",
+ "language": "fr",
+ "job_issue": 2968,
+ "references": [
+  {
+   "reference": "Matthew 28:19a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 16:15a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 2:12a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ruth 1:16b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ruth 2:4a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ruth 2:4b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ruth 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ruth 2:11a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 2:2a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 1:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 2:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 3:6-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ruth 2:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
