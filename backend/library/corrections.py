@@ -1192,6 +1192,117 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('<blockquote>"For ye were as', "<h3>A NEW YEAR'S ADDRESS.</h3>"),
         ],
     },
+    # --- Gutenberg #65066, "The Life and Diary of David Brainerd" ------------
+    # The same kind of loss in a BOOK. Every chapter heading of this edition
+    # sits in its own `<div class="chapter">`, so `import_gutenberg.
+    # split_by_heading` fell back to its tree walk, and that walk dropped every
+    # div that was not hand-made poem markup. What the edition sets in divs is
+    # exactly what went: the date range centred under each chapter heading
+    # ("April 20, 1718-Feb. 1741."), the datelines heading each letter-journal
+    # section ("Forks of Delaware, Oct. 1745."), chapter X's subtitle, and four
+    # verse passages set as ebookmaker `lg-container` line groups — two of
+    # which the prose around them introduces ("Those lines turned in my mind
+    # with pleasure," / "Dr. Watts' Psalm,") and then never shows.
+    #
+    # The importer keeps these now (`ingest.display_line`, and a line group
+    # becomes one `<blockquote>` with `<br/>` between its lines), and every
+    # English block below is spelled EXACTLY as `extract_chapters` emits it —
+    # pinned by `tests_import.BrainerdRestoredBlocksMatchImporterTests` — so a
+    # re-import finds each present and the guard skips it. The stray “ opening
+    # the June 17 dateline is the edition's own. In ch9 two lines precede the
+    # same paragraph; `restore_dropped_blocks` inserts each directly before
+    # the anchor, so list order is reading order.
+    #
+    # NOT restored: the preface's signature `<h3>JONATHAN EDWARDS.</h3>`. It
+    # is the last block of ch1, so there is no following block to anchor on,
+    # and this mechanism only inserts in front of one. Nor the front and back
+    # matter the importer now also emits (the "LIFE / OF / REV. DAVID
+    # BRAINERD." half-title, the donors' imprint, the transcriber's note).
+    #
+    # The Swahili edition runs in lockstep with the English (same tags, same
+    # indices in every chapter), so each line goes in at the same position,
+    # anchored on that edition's own following paragraph. Months and places
+    # are spelled as its body already spells them (Okt., Februari, Machi;
+    # "Forks of Delaware, huko Pennsylvania"; its own surviving dateline
+    # "Crossweeksung, (New-Jersey,) Agosti, 1745."); chapter X's subtitle
+    # follows its REFLECTION IV ("kumbukumbu zilizotangulia"), the death verse
+    # its own lead-in ("mauti na kutokufa"), and the Watts line Psalm 127:1 as
+    # the Swahili Bible has it ("kuijenga nyumba"). No quote or translation
+    # note in this book is anchored by block position.
+    "life-and-diary-of-david-brainerd": {
+        "restored_blocks": [
+            # en
+            ("<p>David Brainerd was born April", "<p>April 20, 1718-Feb. 1741.</p>"),
+            ("<p>In the spring of 1742 Brainerd", "<p>April 1, 1742-July 29, 1742.</p>"),
+            ("<p>“The Lord refreshed my soul",
+             "<blockquote>“Farewell, vain world; my soul can bid Adieu<br/>“My Savior taught me to abandon you.<br/>“Your charms may gratify a SENSUAL mind;<br/>“But cannot please a soul for God design’d.<br/>“Forbear t’ entice; cease then my soul to call;<br/>“’Tis fixed through grace; my God shall be my ALL.<br/>“While he thus lets me heavenly glories view,<br/>“Your beauties fade, my heart’s no room for you.”</blockquote>"),
+            ("<p><i>April 27.</i> “I arose",
+             "<blockquote>“Lord, I’m a stranger here alone;<br/>“Earth no true comforts can afford;<br/>“Yet, absent from my dearest one,<br/>“My soul delights to cry ‘My Lord!’<br/>“Jesus, my Lord, my only love,<br/>“Possess my soul, nor thence depart:<br/>“Grant me kind visits, heavenly Dove;<br/>“My God shall then have all my heart.”</blockquote>"),
+            ("<p><i>July 30, 1742.</i>—“Rode", "<p>July 30.-Nov. 25, 1742.</p>"),
+            ("<p><i>Nov. 26, 1742.</i>—“Had", "<p>Nov. 26, 1742.—March 31, 1743.</p>"),
+            ("<p><i>April 1, 1743.</i> “I rode", "<p>April 1, 1743.—June 12, 1744.</p>"),
+            ("<p>“In evening prayer, God was",
+             "<blockquote>“Come death, shake hands; I’ll kiss thy bands;<br/>“’Tis happiness for me to die.—<br/>“What!—dost thou think that I will shrink?<br/>“I’ll go to immortality.”</blockquote>"),
+            ("<p><i>June 13, 1744.</i> [At Elizabeth", "<p>June 13, 1744.—June 18, 1745.</p>"),
+            ("<p>[We are now come to that part", "<p>June 19.—Nov. 5, 1745.</p>"),
+            ("<p><i>June 19.</i>—“I had spent",
+             "<p>“<i>Crossweeksung, in New-Jersey, June 17, 1745.</i></p>"),
+            ("<p><i>Lord’s day, July 14.</i>—“Discoursed",
+             "<p><i>Forks of Delaware, in Pennsylvania, July, 1745.</i></p>"),
+            ("<p><i>Lord’s day, Sept. 1.</i>—“Preached",
+             "<p><i>Forks of Delaware, in Pennsylvania, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 13.</i>—“After having", "<p><i>Shaumoking, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 19.</i>—“Visited an", "<p><i>Juncauta, Sept. 1745.</i></p>"),
+            ("<p><i>Oct. 1.</i>—“Discoursed", "<p><i>Forks of Delaware, Oct. 1745.</i></p>"),
+            ("<p><i>Oct. 5.</i>—“Preached", "<p><i>Crossweeksung, Oct. 1745.</i></p>"),
+            ("<p><i>Lord’s day, Nov. 24.</i>—“Preached", "<p>Nov. 5, 1745.—June 19, 1746.</p>"),
+            ("<p><i>Lord’s day, Nov. 24.</i>—“Preached",
+             "<p><i>Crossweeksung, New-Jersey, 1745.</i></p>"),
+            ("<p><i>Lord’s day, Feb. 16.</i>—“Knowing",
+             "<p><i>Forks of Delaware, February, 1746.</i></p>"),
+            ("<p><i>March 1.</i>—“Catechised", "<p><i>Crossweeksung, March, 1746.</i></p>"),
+            ("<p>and having recommended them",
+             "<blockquote>If God to build the house deny &amp;c.</blockquote>"),
+            ("<p><i>Lord’s day, June 29, 1746.</i>", "<p>[June 19, 1746—October 9, 1747.]</p>"),
+            ("<p>In the life of Brainerd we may see",
+             "<p><i>Reflections on the preceding Memoirs.</i></p>"),
+            # sw
+            ("<p>David Brainerd alizaliwa Aprili", "<p>Aprili 20, 1718-Feb. 1741.</p>"),
+            ("<p>Katika masika ya mwaka 1742", "<p>Aprili 1, 1742-Julai 29, 1742.</p>"),
+            ("<p>“Bwana aliiburudisha nafsi yangu",
+             "<blockquote>“Kwaheri, ulimwengu wa ubatili; nafsi yangu yaweza kukuaga<br/>“Mwokozi wangu alinifundisha kukuacha.<br/>“Mvuto wako waweza kuiridhisha nia ya KIMWILI;<br/>“Lakini hauwezi kuipendeza nafsi iliyokusudiwa kwa Mungu.<br/>“Acha kunishawishi; basi, koma kuiita nafsi yangu;<br/>“Imethibitika kwa neema; Mungu wangu atakuwa YOTE kwangu.<br/>“Maadamu ananijalia hivi kuutazama utukufu wa mbinguni,<br/>“Uzuri wako wafifia, moyo wangu hauna nafasi kwako.”</blockquote>"),
+            ("<p><i>Aprili 27.</i> “Niliamka",
+             "<blockquote>“Bwana, mimi ni mgeni hapa peke yangu;<br/>“Dunia haiwezi kutoa faraja ya kweli;<br/>“Lakini, nikiwa mbali na mpenzi wangu mkuu,<br/>“Nafsi yangu hufurahi kulia ‘Bwana wangu!’<br/>“Yesu, Bwana wangu, pendo langu pekee,<br/>“Uimiliki nafsi yangu, wala usiondoke humo:<br/>“Unijalie ziara za upole, Hua wa mbinguni;<br/>“Ndipo Mungu wangu atakapokuwa na moyo wangu wote.”</blockquote>"),
+            ("<p><i>Julai 30, 1742.</i>—“Nilikwenda", "<p>Julai 30.-Nov. 25, 1742.</p>"),
+            ("<p><i>Novemba 26, 1742.</i>—“Bado", "<p>Nov. 26, 1742.—Machi 31, 1743.</p>"),
+            ("<p><i>Aprili 1, 1743.</i> “Nilipanda", "<p>Aprili 1, 1743.—Juni 12, 1744.</p>"),
+            ("<p>“Katika maombi ya jioni, Mungu",
+             "<blockquote>“Njoo, mauti, tushikane mikono; nitabusu vifungo vyako;<br/>“Ni furaha kwangu kufa.—<br/>“Nini!—wadhani kwamba nitarudi nyuma?<br/>“Nitakwenda kwenye kutokufa.”</blockquote>"),
+            ("<p><i>Juni 13, 1744.</i> [Huko Elizabeth", "<p>Juni 13, 1744.—Juni 18, 1745.</p>"),
+            ("<p>[Sasa tumefika sehemu ile", "<p>Juni 19.—Nov. 5, 1745.</p>"),
+            ("<p><i>Juni 19.</i>—“Nimetumia",
+             "<p>“<i>Crossweeksung, huko New-Jersey, Juni 17, 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Julai 14.</i>—“Niliwazungumzia",
+             "<p><i>Forks of Delaware, huko Pennsylvania, Julai, 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Sept. 1.</i>—“Niliwahubiria",
+             "<p><i>Forks of Delaware, huko Pennsylvania, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 13.</i>—“Baada ya", "<p><i>Shaumoking, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 19.</i>—“Nilitembelea", "<p><i>Juncauta, Sept. 1745.</i></p>"),
+            ("<p><i>Okt. 1.</i>—“Niliwazungumzia", "<p><i>Forks of Delaware, Okt. 1745.</i></p>"),
+            ("<p><i>Okt. 5.</i>—“Niliwahubiria", "<p><i>Crossweeksung, Okt. 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Nov. 24.</i>—“Nilihubiri", "<p>Nov. 5, 1745.—Juni 19, 1746.</p>"),
+            ("<p><i>Siku ya Bwana, Nov. 24.</i>—“Nilihubiri",
+             "<p><i>Crossweeksung, New-Jersey, 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Feb. 16.</i>—“Kwa kujua",
+             "<p><i>Forks of Delaware, Februari, 1746.</i></p>"),
+            ("<p><i>Machi 1.</i>—“Nilifundisha", "<p><i>Crossweeksung, Machi, 1746.</i></p>"),
+            ("<p>na baada ya kuwakabidhi wao",
+             "<blockquote>Mungu akikataa kuijenga nyumba n.k.</blockquote>"),
+            ("<p><i>Siku ya Bwana, Juni 29, 1746.</i>", "<p>[Juni 19, 1746—Oktoba 9, 1747.]</p>"),
+            ("<p>Katika maisha ya Brainerd twaweza",
+             "<p><i>Tafakari juu ya Kumbukumbu Zilizotangulia.</i></p>"),
+        ],
+    },
     "essentials-of-prayer": {
         # A quoted hymn line broke across a line and rejoined with a space
         # before the comma ("He has said He will , If we but trust"). Restore
