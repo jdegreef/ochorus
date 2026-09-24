@@ -1198,9 +1198,12 @@ class UiCatalogueCheckTests(TestCase):
 
     def test_the_committed_summary_answers(self):
         # The case that used to report "unknown" in production. Arabic has every
-        # key but still holds declared English placeholders: a forceable fail.
+        # key, so whatever its translation state (placeholders are a forceable
+        # fail, see below), the committed summary answers and nothing is a hard
+        # blocker. Deliberately not pinned to PASS/FAIL: that moves as
+        # placeholders are added and translated.
         check = readiness_module._ui_check(self.lang)
-        self.assertEqual(check.status, readiness_module.FAIL, check.detail)
+        self.assertNotEqual(check.status, readiness_module.UNKNOWN, check.detail)
         self.assertTrue(check.forceable, check.detail)
 
     def test_an_incomplete_catalogue_fails_with_a_count(self):
