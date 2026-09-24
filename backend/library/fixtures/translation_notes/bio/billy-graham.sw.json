@@ -1,0 +1,11 @@
+{
+ "kind": "bio",
+ "slug": "billy-graham",
+ "language": "sw",
+ "job_issue": 2568,
+ "note": [
+  "The English bio cites John 14:6 (the reference on Graham's grave marker) but quotes no verse text, and the Swahili keeps the citation as 'Yohana 14:6' without quoting it either — so there is no scripture wording to verify. Zero parenthetical (Book C:V) citations in both editions.",
+  "The pull-quotes are Graham's own words (the epitaph, a 2011 Christianity Today interview, the 2002 apology) and one line of Charlotte Elliott's hymn — reported speech, not scripture. The two Graham quotations reuse the Swahili already shipped in author_bios_sw/billy-graham.faq.json; the epitaph, which the FAQ leaves in English, is translated here."
+ ],
+ "references": []
+}
