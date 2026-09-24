@@ -3454,6 +3454,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"uk/the-key-in-my-hand": {
+			"ground": "4148f351b5c9efd70e24d6a384955cd3bc283146ce4fa47105860daf63083bc5",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/the-unselfishness-of-god": {
 			"ground": "88293e22762c4408c14ee417f17fa9cfd5db143be9f8655a631d1da4e0bf3190",
 			"style": "devotional",
