@@ -141,6 +141,7 @@ def extract_gutenberg_section(html: str, section: str) -> str:
         return ""
 
     parts: list[str] = []
+    subtitles = 0  # leading display-line headings, e.g. "A NEW YEAR'S ADDRESS."
     for el in start.find_all_next([*_HEADINGS, "p", "blockquote", "div"]):
         if el.name == start.name:
             break
@@ -148,14 +149,18 @@ def extract_gutenberg_section(html: str, section: str) -> str:
             continue  # already inside a collected blockquote
         if el.name == "div":
             if line := _display_line(el):
+                if len(parts) == subtitles and line.startswith("<h"):
+                    subtitles += 1
                 parts.append(line)
             continue
         parts.append(str(el))
 
     # The first paragraph is usually the scripture epigraph in quotes — after
-    # any subtitle heading ("A NEW YEAR'S ADDRESS." sits above one).
-    first = next((i for i, p in enumerate(parts) if not p.startswith("<h")), None)
-    if first is not None and parts[first].startswith("<p"):
+    # any display-line subtitle. Only those: a real heading in the source still
+    # ends the search, as PG 57109's `<h2>J. Hudson Taylor</h2>` byline does,
+    # so its John 4:10 text stays the `<p>` every edition shipped with.
+    first = subtitles
+    if first < len(parts) and parts[first].startswith("<p"):
         first_text = re.sub(r"<[^>]+>", "", parts[first]).strip()
         if first_text.startswith(_QUOTES):
             inner = re.sub(r"^<p[^>]*>|</p>$", "", parts[first].strip())

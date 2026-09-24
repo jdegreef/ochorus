@@ -956,6 +956,23 @@ class GutenbergDisplayLineTests(SimpleTestCase):
             "<p>GOD would have all His people wear a badge.</p>",
         )
 
+    def test_a_source_heading_still_ends_the_epigraph_search(self):
+        """PG 57109 opens on an <h1>, then an <h2> byline, then John 4:10 as a
+        plain `<p>` — which every stored edition of `unfailing-springs` keeps.
+        Only a display-line subtitle may be skipped to reach the epigraph."""
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = """<html><body>
+<h1>Unfailing Springs</h1>
+<h2>J. Hudson Taylor</h2>
+<p><i>"JESUS answered and said unto her, If thou knewest the gift of GOD.</i></p>
+<h2>Unfailing Springs</h2>
+<p>THE best evidence of Christianity is a Christ-like life.</p>
+</body></html>"""
+        self.assertTrue(extract_gutenberg_section(page, "Unfailing Springs").startswith(
+            '<h2>J. Hudson Taylor</h2><p><i>"JESUS answered'
+        ))
+
     def test_a_subtitle_does_not_hide_the_epigraph(self):
         body = self._extract("Under the Shepherd's Care.")
         self.assertTrue(body.startswith(
