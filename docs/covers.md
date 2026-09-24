@@ -57,6 +57,7 @@ The look is `components/cover-type.css`; *which* look is `coverStyles.ts`.
 | Decides | Where | Keyed by |
 |---|---|---|
 | house style (face, ornament, arrangement) | `BOOK_STYLE` → `AUTHOR_STYLE` → `ERA_STYLE` in `coverStyles.ts` | book, then author, then century |
+| the words set as the title — `cover_title` when a book has one ("Rooted"), else `title`; cover-only, the aria-label and every other surface keep `title` | `coverTitle.ts`, used by both renderers; `build_rooted.COVER_TITLE` for the house devotional series | book edition |
 | series numeral over the title | `series_position` on the Book row (fixture), set by `volumeNumeral` in `coverStyles.ts` | book edition |
 | script corrections (Arabic, Devanagari, Cyrillic) | `COVER_SCRIPTS` + the `.script-*` blocks in `cover-type.css` | the edition's language, via `Intl.Locale` |
 | scrim under the type on a painting | `art_scrim.py` / `coverScrim.ts` | work — **measured**, by `tune_art_scrim.py` |

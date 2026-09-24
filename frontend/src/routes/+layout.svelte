@@ -30,7 +30,9 @@
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
-	import { PRIMARY_NAV, ENGLISH_HUBS } from '$lib/contentNav';
+	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
+	// The slash-correct builder: /originals prerenders to originals/index.html.
+	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import BrandSprite from '$lib/components/BrandSprite.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
@@ -370,9 +372,11 @@
 						{#each PRIMARY_NAV as d (d.href)}
 							<li><a href={localizeHref(d.href)}>{t(d.labelKey)}</a></li>
 						{/each}
-						<!-- Non-English readers have no Discover column, so RSS — the one
-						     language-neutral destination — rides in Explore for them. -->
+						<!-- Non-English readers have no Discover column, so the two links that
+						     serve every language — Originals (its books are translated) and
+						     RSS — ride in Explore for them. -->
 						{#if lang.current !== 'en'}
+							<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
 							<li><a href="/feed.xml">RSS</a></li>
 						{/if}
 					</ul>
@@ -393,6 +397,7 @@
 							{#each ENGLISH_HUBS as d (d.href)}
 								<li><a href="{d.href}/">{t(d.labelKey)}</a></li>
 							{/each}
+							<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
 							<li><a href="/feed.xml">RSS</a></li>
 						</ul>
 					</nav>
