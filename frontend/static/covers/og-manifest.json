@@ -3642,6 +3642,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"uk/prayer-the-pulse-of-life": {
+			"ground": "4f925469360dc20067dfcb2a32a40be25c40fb7873c09f5624eff4954258f033",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/stepping-stones-2": {
 			"ground": "c41017037413da4a9543d13901c454d70ac7d67c41d8e5596813d50df3be38fe",
 			"style": "lettered",
