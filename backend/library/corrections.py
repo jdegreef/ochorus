@@ -19,21 +19,31 @@ from __future__ import annotations
 import re as _re
 from collections.abc import Sequence
 
-# Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
-# want in the library). An explicit `import_ochorus <slug>` still imports them.
-EXCLUDED_SLUGS: set[str] = {
-    # Teens edition of "The Person and Work of the Holy Spirit"; we keep the
-    # adult original (the-person-and-work-of-the-holy-spirit).
-    "the-person-and-work-of-the-holy-spirit-2",
-    # NOT public domain (copyright audit 2026-07-10) — unpublished in migration
-    # 0020 and kept out of re-import. Watchman Nee's English editions (1957–1983,
-    # Kinnear/CLC/CFP) and Amy Carmichael's "If" (1938, URAA-restored).
+# NOT public domain (copyright audit 2026-07-10), and no permission: Watchman
+# Nee's English editions (1957–1983, Kinnear/CLC/CFP) and Amy Carmichael's "If"
+# (1938, URAA-restored). Every edition in EVERY language stays unpublished — a
+# translation of these is a derivative of the protected English. Migration 0022
+# unpublished the rows that existed in July; translations filed later slipped
+# through and went live (grace-for-grace-2 es/fr/pt, 2026-09-24), so this set is
+# now enforced in CI (tests_fixture), by the admin translation-job filer, and
+# by migration 0164. Remove a slug only with the rights holder's permission.
+COPYRIGHT_BLOCKED_SLUGS: frozenset[str] = frozenset({
     "the-normal-christian-life",
     "grace-for-grace-2",
     "the-body-of-christ-a-reality",
     "the-body-of-christ-teens",
     "let-us-pray-2",
     "if",
+})
+
+# Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
+# want in the library). An explicit `import_ochorus <slug>` still imports them.
+EXCLUDED_SLUGS: set[str] = {
+    # Teens edition of "The Person and Work of the Holy Spirit"; we keep the
+    # adult original (the-person-and-work-of-the-holy-spirit).
+    "the-person-and-work-of-the-holy-spirit-2",
+    # Kept out of re-import too.
+    *COPYRIGHT_BLOCKED_SLUGS,
 }
 
 CORRECTIONS: dict[str, dict] = {
