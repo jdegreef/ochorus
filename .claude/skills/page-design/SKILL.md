@@ -112,9 +112,11 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    (chapter name + `ProgressBar` + one `.btn-primary`; Start over is a text
    link), and every other action is ONE quiet `.book-actions` row — Save,
    shelf, a single Download menu (`BookDownloadMenu`, never separate
-   offline/EPUB/PDF buttons), Share/Search icon-only on desktop. Below `sm` the
-   same DOM becomes a 5-column icon-over-label strip via CSS (no second
-   markup). A sticky sub-nav CTA shows only once the hero CTA has scrolled
+   offline/EPUB/PDF buttons), Share/Search icon-only on desktop. When its
+   host column (`.action-host`, a CSS container) is under 560px the same DOM
+   becomes a 5-column icon-over-label strip (no second markup) — a container
+   query, not a viewport breakpoint, because the column beside the cover on a
+   tablet and long translations run out of room long before `md`. A sticky sub-nav CTA shows only once the hero CTA has scrolled
    away (IntersectionObserver), never two primaries on screen.
    Any dropdown (trigger + menu) closes via `use:dismissable={{ open,
    onDismiss }}` (`$lib/actions/dismissable`) on the wrapper — click-away,

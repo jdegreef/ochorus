@@ -642,16 +642,22 @@
 		padding: 0.4rem;
 		line-height: 1;
 	}
-	/* A row of secondary actions. A plain wrapping row from sm up; on a phone,
-	   equal columns of icon-over-label buttons under a hairline, so every action
-	   stays one tap away instead of wrapping onto three lines (the book page). */
+	/* A row of secondary actions (the book page). Sized by the room it actually
+	   has, not the viewport: its host column is a container, and below 560px —
+	   a phone, a tablet's column beside the cover, a narrow page-width setting,
+	   or a long translation — it becomes equal columns of icon-over-label
+	   buttons under a hairline, so every action stays one tap away instead of
+	   wrapping. From 560px it is a plain row, which fits every locale's labels. */
+	.action-host {
+		container: action-host / inline-size;
+	}
 	.action-strip {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.5rem;
 	}
-	@media (max-width: 639.98px) {
+	@container action-host (max-width: 559.98px) {
 		.action-strip {
 			display: grid;
 			grid-auto-flow: column;
@@ -681,11 +687,17 @@
 			width: 20px;
 			height: 20px;
 		}
+		.action-strip .label-long,
+		.action-strip .shelf-count {
+			display: none;
+		}
 	}
-	/* Icon-only from sm up: the button's `.btn-label` gives way, its
-	   aria-label/title stays the accessible name. */
-	@media (min-width: 640px) {
-		.icon-sm .btn-label {
+	/* In the row: icon-only buttons lose their `.btn-label` (aria-label/title
+	   stays the accessible name), and a button with a short and a long label
+	   shows the long one. */
+	@container action-host (min-width: 560px) {
+		.action-strip .icon-in-row .btn-label,
+		.action-strip .label-short {
 			display: none;
 		}
 	}
