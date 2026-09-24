@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-24 (queue job #1458): Spanish book — cheque-book, Spurgeon's daily
+// devotional "The Cheque Book of the Bank of Faith" ("El Talonario del Banco de la Fe"), 13 chapters
+// (Preface + the twelve months = a reading for every day of the year). Book pages are prerendered per
+// locale, so /es/books and the shelf rebuild with the translated title over the shared painting ground
+// and the reader page bakes the 13 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no
+// plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #1455): Spanish book — holy-in-christ, Andrew Murray's
 // month of daily meditations on holiness, 33 chapters ("Santo en Cristo"). Book pages are
 // prerendered per locale, so /es/books and the shelf rebuild with the translated title and the
