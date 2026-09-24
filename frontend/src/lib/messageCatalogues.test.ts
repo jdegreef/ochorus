@@ -92,7 +92,7 @@ describe('message catalogues', () => {
 	it('the summary the API reads matches the catalogues', () => {
 		// The admin's readiness report says whether a language's interface is
 		// translated, and the deployed API cannot see these files — its image is
-		// built from backend/ alone. So each locale's missing keys are handed
+		// built from backend/ alone. So each locale's missing and pending keys are handed
 		// across as a committed JSON file, and this is what stops that file from
 		// drifting: a stale summary would report a language ready on the strength
 		// of a catalogue that has since grown, which is worse than reporting

@@ -1187,9 +1187,7 @@ class UiCatalogueCheckTests(TestCase):
     def setUp(self):
         self.lang = Language.objects.get(code="ar")
 
-    def _check_with(self, summary: dict | None = None):
-        if summary is None:
-            return readiness_module._ui_check(self.lang)
+    def _check_with(self, summary: dict):
         path = Path(tempfile.mkdtemp()) / "ui_catalogues.json"
         path.write_text(json.dumps(summary), "utf-8")
         with mock.patch("library.readiness.CATALOGUE_SUMMARY", path):
@@ -1198,7 +1196,7 @@ class UiCatalogueCheckTests(TestCase):
     def test_the_committed_summary_answers(self):
         # Arabic has every key, so this is the case that used to report "unknown"
         # in production and now reports the truth — including its placeholders.
-        check = self._check_with()
+        check = readiness_module._ui_check(self.lang)
         self.assertEqual(check.status, readiness_module.PASS, check.detail)
 
     def test_an_incomplete_catalogue_fails_with_a_count(self):
