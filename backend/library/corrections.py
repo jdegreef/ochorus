@@ -1166,6 +1166,19 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>इस विरोधाभास पर अधिक विस्तार", "<h3>विरोधाभास।</h3>"),
             ("<p>इस विरोधाभास पर अधिक विस्तार",
              '<p><em>"दुष्ट लोग ऐसे नहीं होते।"</em></p>'),
+            # sw
+            ("<p>Kuna ustawi usiobarikiwa:", "<p>Tafakari Juu ya Zaburi ya Kwanza.</p>"),
+            ("<p>Kuna ustawi usiobarikiwa:", "<h3>UTANGULIZI.</h3>"),
+            ("<p>Kwa kufuata maneno yenyewe", "<h3>MASHARTI HASI YA BARAKA</h3>"),
+            ("<p>Kwa kufuata maneno yenyewe",
+             '<p><em>"Heri mtu yule asiyekwenda katika shauri la wasio haki."</em></p>'),
+            ("<p>Ndege wanaofanana huruka", "<p><em>Hakusimama katika njia ya wakosaji.</em></p>"),
+            ("<p>Baraza la wenye mizaha ni",
+             '<p><em>"Wala hakuketi barazani pa wenye mizaha."</em></p>'),
+            ("<p>Tumeyafikiria mambo ambayo", "<h3>MASHARTI CHANYA YA BARAKA.</h3>"),
+            ("<p>Sasa twaendelea", "<h3>MATOKEO KATIKA BARAKA.</h3>"),
+            ("<p>Si lazima kukaa kwa urefu", "<h3>TOFAUTI.</h3>"),
+            ("<p>Si lazima kukaa kwa urefu", '<p><em>"Sivyo walivyo wasio haki."</em></p>'),
         ],
     },
     "a-full-reward": {
@@ -1179,6 +1192,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # hi
             ("<p>इस रोचक वृत्तान्त में हमें",
              '<blockquote><em>"जो कुछ तूने ... किया है, और तू किस प्रकार अपने माता पिता और जन्म-भूमि को छोड़कर ऐसे लोगों में आई है जिनको पहले तू न जानती थी, यह सब मुझे विस्तार के साथ बताया गया है। यहोवा तेरी करनी का फल दे, और इस्राएल का परमेश्वर यहोवा जिसके पंखों के तले तू शरण लेने आई है, तुझे पूरा प्रतिफल दे" (रूत 2:11, 12)।</em></blockquote>'),
+            # sw
+            ("<p>Katika simulizi hii yenye",
+             '<blockquote><em>"Nimeelezwa kikamilifu yote uliyoyatenda ... na jinsi ulivyomwacha baba yako na mama yako, na nchi ulikozaliwa, ukaja kwa watu usiowajua tangu hapo. Bwana na akulipe kwa kazi yako, nawe upewe thawabu kamili na Bwana, Mungu wa Israeli, ambaye chini ya mbawa zake umekuja kutumainia" (Ruthu 2:11, 12).</em></blockquote>'),
         ],
     },
     "self-denial-versus-self-assertion": {
