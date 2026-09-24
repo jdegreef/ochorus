@@ -27,6 +27,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
+	import AddToShelfButton from '$lib/components/AddToShelfButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
@@ -396,6 +397,9 @@
 				     per-locale canonical, and its link preview is the edition's own share
 				     card (shareCard/og-manifest). -->
 				<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
+				<!-- Put the book on the reader's own Bookshelf shelves (see
+				     customShelves) — the way to shelve a book not already there. -->
+				<AddToShelfButton slug={book.slug} />
 				<!-- Search inside this book. Goes to the real search scoped to the
 				     book rather than a second, weaker search over cached text: the
 				     reader gets the same ranking, snippets and paging they get
