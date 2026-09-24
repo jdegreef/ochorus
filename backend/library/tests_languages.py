@@ -1200,7 +1200,7 @@ class UiCatalogueCheckTests(TestCase):
         # The case that used to report "unknown" in production. Arabic has every
         # key but still holds declared English placeholders: a forceable fail.
         check = readiness_module._ui_check(self.lang)
-        self.assertNotEqual(check.status, readiness_module.UNKNOWN, check.detail)
+        self.assertEqual(check.status, readiness_module.FAIL, check.detail)
         self.assertTrue(check.forceable, check.detail)
 
     def test_an_incomplete_catalogue_fails_with_a_count(self):
