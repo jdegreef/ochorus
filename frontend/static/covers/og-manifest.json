@@ -3494,6 +3494,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
+		"sw/the-secret-of-guidance": {
+			"ground": "09361a66fd1589c9f38319df13c095ca1b66e66425fa7893f8b044e6cc50fdbf",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/the-unselfishness-of-god": {
 			"ground": "a2b03348659bb6bef512cf64c28bd49a981636895b3f5fbfdaa9e11c41682d49",
 			"style": "devotional",
