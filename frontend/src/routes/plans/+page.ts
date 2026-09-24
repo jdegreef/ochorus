@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-23: NEW English plan — daughters-of-the-king-book-3-30-days ("Daughters
+// of the King: 30 Days with God — Book 3"), a LAUNCH_PLANS entry over daughters-of-the-king-3 reading
+// chapters 2–31 (Day 1–30). English only. /plans re-crawls to bake the new card.
 // prerender refresh 2026-09-23: NEW English plan — sons-of-the-king-book-2-30-days ("Sons of the
 // King: 30 Days with God — Book 2"), a LAUNCH_PLANS entry over sons-of-the-king-2 reading chapters
 // 2–31 (Day 1–30). English only. /plans re-crawls to bake the new card.
@@ -223,6 +226,11 @@ import type { PageLoad } from './$types';
  * (A Vida Mais Profunda: Cristo em Vós). The pt prose already lived in
  * plan_translations/pt.json, so seed_plans now creates both (slug, pt) rows and
  * /pt/plans re-crawls to bake the two new cards.
+ *
+ * Prerender refresh 2026-09-24 (queue job #811, PR #3245, the plan side-effect):
+ * Andrew Murray's Humility shipped in Ukrainian with its plan prose, so
+ * seed_plans creates humility-12-days in uk as Смирення за 12 днів and /uk/plans
+ * re-crawls to bake the new card.
  */
 export const load: PageLoad = async () => {
 	const { items, loadError } = await loadShelf(listPlans(getLang()));
