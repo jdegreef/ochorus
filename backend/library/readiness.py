@@ -384,18 +384,19 @@ def _ui_check(lang: Language) -> Check:
             ),
         )
     missing, pending = gaps
+    if missing == 0 and not pending:
+        return Check("ui", "Interface strings", PASS, "All translated.")
+    # English placeholders (declared in messages.test.ts's PENDING_TRANSLATION)
+    # fail the bar — some of them, like the feedback form, do reach readers in
+    # English — but FORCEABLY: the build accepts declared debt, so launching past
+    # it is a judgement ("good enough to open"), not a guaranteed red deploy.
     if missing == 0:
-        # Pending placeholders don't block: the build accepts them (declared in
-        # messages.test.ts's PENDING_TRANSLATION), so this is translation debt to
-        # see, not a launch gate. But it must not read "All translated." — some
-        # of those strings do reach readers in English.
-        if pending:
-            detail = (
-                f"All present; {pending} still English placeholder(s), awaiting translation."
-            )
-        else:
-            detail = "All translated."
-        return Check("ui", "Interface strings", PASS, detail)
+        return Check(
+            "ui",
+            "Interface strings",
+            FAIL,
+            f"{pending} string(s) still an English placeholder, awaiting translation.",
+        )
     # A live locale with no (or an incomplete) UI catalogue cannot ship: the
     # reader is a static build that fails on it — `fetch-live-locales.mjs` when a
     # live locale isn't a compiled UI locale at all, `messageCatalogues.test.ts`
