@@ -1,0 +1,16 @@
+{
+  "kind": "bio",
+  "slug": "j-c-ryle",
+  "language": "lg",
+  "job_issue": 1695,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Ephesians 2:8",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "why": "Quoted verbatim twice — in Ryle's conversion account (read with emphatic pauses; OLCB wording kept, em-dash pauses preserved) and on his gravestone (first clause). OLCB: «Mwalokolebwa lwa kisa olw'okukkiriza…»."
+    }
+  ],
+  "note": "The only chapter:verse scripture is Ephesians 2:8, quoted verbatim twice and pasted from the OLCB. 'Ephesians 2' as a bare citation is localized (Abaefeso 2). Ryle's own quoted words and the two blockquote maxims are prose (self)."
+}

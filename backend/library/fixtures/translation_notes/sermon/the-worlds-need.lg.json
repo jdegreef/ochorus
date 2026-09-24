@@ -1,0 +1,60 @@
+{
+  "kind": "sermon",
+  "slug": "the-worlds-need",
+  "language": "lg",
+  "job_issue": 1697,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Acts 8:30",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Jeremiah 2:2",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Jeremiah 2:3",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Psalm 69:9",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Ephesians 6:18",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Jude 1:20",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 10:34",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "John 10:35",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Colossians 1:24",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 21:28",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    }
+  ],
+  "note": "Base text Matthew 21:28 & Luke 14:23. Every quoted verse pasted verbatim from the OLCB (mined); no crib misses. Quote style mirrors the source (straight, incl. its typewriter backtick openers). Found in the English, flagged: a stray closing quote with no opener (block 17) and a stray apostrophe (block 14), both mirrored, not fixed."
+}
