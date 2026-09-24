@@ -1,3 +1,14 @@
+// prerender refresh 2026-09-24 (queue job #3184): Portuguese book — the-secret-of-guidance, F. B.
+// Meyer's nine devotional chapters on discerning God's will ("O Segredo da Orientação Divina"), 9
+// chapters. Book pages are prerendered per locale, so /pt/books and the shelf rebuild with the
+// translated title over the shared derived ground and the reader page bakes the 9 chapters. Backs the
+// CURATED plan waiting-on-god-trust, but the-life-of-trust is not yet in pt, so no pt plan row
+// activates and no plan prose is owed.
+// prerender refresh 2026-09-24 (queue job #3193): Portuguese book — brave-for-god, six true stories
+// of faith told for young readers ("Corajosos por Deus"), 6 chapters. Book pages are prerendered per
+// locale, so /pt/books and the shelf rebuild with the translated title over the shared painting ground
+// and the reader page bakes the 6 chapters. Backs the CURATED plan brave-for-god-24-true-stories, but
+// brave-for-god-2/-3/-4 are not yet in pt, so no pt plan row activates and no plan prose is owed.
 // prerender refresh 2026-09-24 (queue job #3178): Portuguese book — pilgrims-progress, John Bunyan's
 // allegory of Christian's journey to the Celestial City ("O Peregrino"), 22 chapters. Book pages are
 // prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the shared
@@ -474,6 +485,8 @@
 // edition of growing-in-wisdom, 18 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-24 (queue job #1795, PR #3321): Могутня сила молитви — the Ukrainian
 // edition of spurgeon-on-prayer, 13 chapters — bakes into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #814, PR #3343): Божественне зцілення — the Ukrainian
+// edition of divine-healing, 32 chapters — bakes into the /uk/books shelf.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';

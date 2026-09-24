@@ -2,7 +2,7 @@
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
 	import { isLongTitle } from '$lib/coverCardMarkup';
 	import { coverTitle } from '$lib/coverTitle';
-	import { coverLayoutFor } from '$lib/coverLayouts';
+	import { coverLayoutFor, typeTopFor } from '$lib/coverLayouts';
 	import { groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
 	import { coverStyleFor, scriptOf, volumeNumeral } from '$lib/coverStyles';
@@ -173,7 +173,7 @@
 	const blockDir = $derived(script === 'arabic' ? { dir: 'rtl' as const } : {});
 	/** The layout a painting is composed in (`coverLayouts.ts`); null for the
 	 *  framed composition, and always null off a painting. */
-	const layout = $derived(isArt ? coverLayoutFor(book.author.slug, script) : null);
+	const layout = $derived(isArt ? coverLayoutFor(book.author.slug, script, book.slug) : null);
 	/** How far a laid-out painting is cropped to clear its scan border
 	 *  (`groundBars.ts`). The framed scrim hides the border, so only a layout
 	 *  asks. */
@@ -197,7 +197,8 @@
 			'cover-type',
 			`style-${style}`,
 			script && `script-${script}`,
-			isLongTitle(setTitle) && 'long-title'
+			isLongTitle(setTitle) && 'long-title',
+			isArt && typeTopFor(book.slug, layout) && 'type-top'
 		]}
 		{...blockDir}
 	>

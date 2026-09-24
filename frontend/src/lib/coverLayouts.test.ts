@@ -5,11 +5,14 @@ import { describe, expect, it } from 'vitest';
 import { channels, contrastRatio as contrast, isArtCover } from './coverArt';
 import {
 	AUTHOR_LAYOUT,
+	BOOK_LAYOUT,
 	COVER_HUE_IDS,
+	TYPE_TOP,
 	COVER_LAYOUT_IDS,
 	coverLayoutFor,
 	layoutKey
 } from './coverLayouts';
+import { BOOK_STYLE } from './coverStyles';
 import { COVER_CSS_CODE, blocksFor, lastDecl } from '../test/coverCss';
 
 /**
@@ -48,7 +51,14 @@ function number(selector: string, pattern: RegExp): number {
 	return Number(v);
 }
 
-type BookRow = { slug: string; title: string; language: string; author: string[]; cover_url?: string };
+type BookRow = {
+	slug: string;
+	title: string;
+	language: string;
+	author: string[];
+	cover_url?: string;
+	series?: string[] | null;
+};
 
 const BOOKS = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
 
@@ -89,18 +99,52 @@ describe('the layout table and the stylesheet name the same things', () => {
 
 describe('coverLayoutFor', () => {
 	it('leaves an author outside the table framed', () => {
-		expect(coverLayoutFor('no-such-author', null)).toBeNull();
+		expect(coverLayoutFor('no-such-author', null, 'no-such-book')).toBeNull();
 		expect(layoutKey(null)).toBe('framed');
 	});
 
 	it('gives a non-latin edition of a railed work the title box, in its colour', () => {
 		const railed = Object.keys(AUTHOR_LAYOUT).find((a) => AUTHOR_LAYOUT[a].layout === 'rail')!;
-		expect(coverLayoutFor(railed, null)?.layout).toBe('rail');
-		expect(coverLayoutFor(railed, 'arabic')).toEqual({
+		expect(coverLayoutFor(railed, null, 'a-railed-book')?.layout).toBe('rail');
+		expect(coverLayoutFor(railed, 'arabic', 'a-railed-book')).toEqual({
 			layout: 'box',
 			hue: AUTHOR_LAYOUT[railed].hue
 		});
-		expect(coverLayoutFor(railed, 'cyrillic')?.layout).toBe('rail');
+		expect(coverLayoutFor(railed, 'cyrillic', 'a-railed-book')?.layout).toBe('rail');
+	});
+
+	it('lets a series hold its books framed over their authors\' layouts', () => {
+		// Baxter's own layout is the paper box; his Key Teachings volume is framed.
+		expect(AUTHOR_LAYOUT['richard-baxter']).toBeTruthy();
+		expect(coverLayoutFor('richard-baxter', null, 'key-teachings-of-richard-baxter')).toBeNull();
+		expect(coverLayoutFor('richard-baxter', null, 'the-reformed-pastor')).toEqual(
+			AUTHOR_LAYOUT['richard-baxter']
+		);
+	});
+});
+
+describe('the Key Teachings wear one series look', () => {
+	// Keyed by book in two tables, so a new volume must be added to both — or it
+	// silently takes its author's layout and century, which is how the first four
+	// came out in three layouts and three faces.
+	const volumes = [
+		...new Set(
+			allBooks()
+				.filter((b) => b.series?.[0] === 'key-teachings')
+				.map((b) => b.slug)
+		)
+	];
+
+	it('finds the series in the fixture', () => {
+		expect(volumes.length).toBeGreaterThan(0);
+	});
+
+	it.each(volumes)('%s is framed, set from the top, in the imprint face', (slug) => {
+		expect(slug in BOOK_LAYOUT, `${slug}: add it to coverLayouts.BOOK_LAYOUT`).toBe(true);
+		expect(BOOK_LAYOUT[slug]).toBeNull();
+		expect(BOOK_STYLE[slug], `${slug}: add it to coverStyles.BOOK_STYLE`).toBe('originals');
+		// Framed with the words above the tree, not centred on it.
+		expect(TYPE_TOP.has(slug), `${slug}: add it to coverLayouts.TYPE_TOP`).toBe(true);
 	});
 });
 
