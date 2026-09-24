@@ -1260,7 +1260,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -3160,7 +3160,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.85
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0
 		},
 		"sw/soar-like-the-eagle-3": {
 			"ground": "d41e103913bb9fd8438d06ef577164ec7977017017bd69a9226f0cf9822a3285",
@@ -3640,6 +3642,16 @@
 			"art": true,
 			"scrim": 0.65,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"uk/rise-up-men-of-god-2": {
+			"ground": "237fd6138cff47600a34b0ba36897467876a5621b625ea9504cd095eec7f2733",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
 			"bar": 0
 		},
 		"uk/stepping-stones-2": {
