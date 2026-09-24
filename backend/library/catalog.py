@@ -159,6 +159,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "without ever asking anyone but God for money."
         ),
     ),
+    "arthur-t-pierson": AuthorEntry(
+        slug="arthur-t-pierson",
+        name="Arthur T. Pierson",
+        birth_year=1837,
+        death_year=1911,
+        bio=(
+            "American Presbyterian pastor, missions advocate and Bible teacher "
+            "who wrote more than fifty books, including the authorized life of "
+            "his friend George Müller."
+        ),
+    ),
     "bernard-of-clairvaux": AuthorEntry(
         slug="bernard-of-clairvaux",
         name="Bernard of Clairvaux",
@@ -522,6 +533,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-life-of-trust", "The Life of Trust", "george-muller",
               "gutenberg", "27288",
               subtitle="The Lord's Dealings with George Müller", cover_color="#1e3a5f"),
+    # Pierson's authorised life of Müller (1899, Gutenberg #26522), written from
+    # Müller's journals with the help of his son-in-law James Wright — a
+    # biography ABOUT Müller, so it is shelved under Pierson and links Müller
+    # as its subject (book_people_seed).
+    BookEntry("george-muller-of-bristol", "George Müller of Bristol",
+              "arthur-t-pierson", "gutenberg", "26522",
+              subtitle="And His Witness to a Prayer-Hearing God",
+              cover_color="#5b3a29"),
     BookEntry("on-loving-god", "On Loving God", "bernard-of-clairvaux",
               "archive", "saintbernardlove00bernuoft",
               part="A LITTLE WORK BY ST. BERNARD",

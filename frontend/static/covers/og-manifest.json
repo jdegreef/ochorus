@@ -1484,6 +1484,16 @@
 			"layout": "fade/slate",
 			"bar": 0
 		},
+		"george-muller-of-bristol": {
+			"ground": "37e9e681f682ec1d67dc8457aec8e73fed30e3c9bdf3ef2a38f4997c1ee7c5f7",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"gleanings-among-the-sheaves": {
 			"ground": "2a7832dd2947dbbab338cf7ee15a680886f36c65879ee78bf4e6665628488e77",
 			"style": "revival",
@@ -3301,6 +3311,16 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0
+		},
+		"sw/rise-up-men-of-god-2": {
+			"ground": "61b65d666372ec206c41d01259932e46b374092cac8440ef8f4183aca18ff52c",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
