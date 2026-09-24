@@ -42,6 +42,19 @@ is what the photograph was doing where the extension begins, so sky stays sky
 and `the-unselfishness-of-god`'s hill does not bloom into a dark dome over its
 own sunset.
 
+A REPAINT ONLY WHERE A CROP CANNOT REACH. Some pictures share their band with
+thin lettering — a subtitle across a river, a ministry URL, the designed
+cover's own hairline frame — or, on `soar-like-the-eagle-3`, have their subject
+flying between the lines of the title. `Ground.erase` names those boxes, and the
+ink in them (pixels darker or lighter than their neighbourhood) is filled from
+the picture around it before the crop. It is an eraser for thin type over a
+quiet ground, not for a title set over a subject.
+
+A FOOT, WHEN THE SUBJECT SITS LOW. `BookCover` puts the Ochorus mark at the foot
+of every cover, so a band ending on its subject puts the mark on top of it.
+`Ground.foot` continues the band's bottom out of focus below it, the sky
+extension pointed the other way, and the subject rises into the clear space.
+
 WHY A LIFT, AND WHY PER WORK
 `cover-type.css`'s `.cover-plate.over-art` lays 36-64% black over an art cover.
 The curated tier survives it because a museum landscape is daylight; these are
@@ -69,7 +82,7 @@ from pathlib import Path
 BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
 
-from PIL import Image, ImageFilter, ImageOps  # noqa: E402
+from PIL import Image, ImageChops, ImageFilter, ImageMath, ImageOps  # noqa: E402
 
 # `H`/`W` are the plate's canvas — imported rather than restated, because every
 # other cover tool derives its geometry from that pair and a private copy here
@@ -85,6 +98,89 @@ from library.designed_covers import (  # noqa: E402
 ROOT = BACKEND.parent
 STATIC = ROOT / "frontend" / "static"
 
+def _ink_mask(im, boxes):
+    """Where the lettering in `boxes` is, as an L mask (255 = paint out).
+
+    Ink is measured against a median of its neighbourhood rather than a fixed
+    threshold: a median of 21px ignores a stroke a few pixels wide and keeps
+    the gradient the stroke was set on, so the same box finds dark type on a
+    sunset and on a pale sleeve alike.
+    """
+    w, h = im.size
+    lum = im.convert("L")
+    mask = Image.new("L", im.size, 0)
+    for box in boxes:
+        x0, y0 = int(w * box.x0), int(h * box.y0)
+        x1, y1 = int(w * box.x1), int(h * box.y1)
+        m = 12  # a margin, so the median sees ground on every side of the box
+        area = (max(0, x0 - m), max(0, y0 - m), min(w, x1 + m), min(h, y1 + m))
+        patch = lum.crop(area)
+        ground = patch.filter(ImageFilter.MedianFilter(21))
+        diff = (ImageChops.subtract(ground, patch) if box.ink == "dark"
+                else ImageChops.subtract(patch, ground))
+        found = diff.point(lambda v: 255 if v > 14 else 0)
+        # Strokes only. The bright side of a real edge — a page, a branch —
+        # also clears the median test, but it is BROAD, and an opening (erode,
+        # then grow back) keeps exactly the broad parts; what it removes is
+        # type-thin. So the mask is what the opening took away.
+        if box.thin:
+            broad = found.filter(ImageFilter.MinFilter(7)).filter(ImageFilter.MaxFilter(7))
+            found = ImageChops.subtract(found, broad)
+        # Then grown by a few pixels: a stroke's antialiased edge is ink too,
+        # and a halo of it left behind reads as a ghost of the word.
+        found = found.filter(ImageFilter.MaxFilter(5))
+        keep = Image.new("L", patch.size, 0)
+        keep.paste(255, (x0 - area[0], y0 - area[1], x1 - area[0], y1 - area[1]))
+        mask.paste(ImageChops.multiply(found, keep), area[:2], ImageChops.multiply(found, keep))
+    return mask
+
+
+def _repaint(im, hole):
+    """`im` with `hole` filled from the pixels around it.
+
+    Normalised convolution at widening radii: each pass fills whatever a blur
+    of that radius can see known pixels from, so a thin stroke is filled from
+    its immediate neighbours and only a wide one reaches further. No numpy —
+    Pillow is this script's only dependency, and a dev-group one at that.
+    """
+    known = ImageOps.invert(hole)
+    src = Image.composite(Image.new("RGB", im.size), im, hole)
+    out = im.copy()
+    todo = hole
+    for radius in (2, 4, 8, 16, 32, 64):
+        weight = known.filter(ImageFilter.GaussianBlur(radius))
+        denom = weight.point(lambda v: max(v, 1))
+        blurred = src.filter(ImageFilter.GaussianBlur(radius))
+        est = Image.merge("RGB", [
+            ImageMath.lambda_eval(
+                lambda a: a["n"] * 255 / a["d"], n=band, d=denom
+            ).convert("L")
+            for band in blurred.split()
+        ])
+        take = ImageChops.multiply(todo, weight.point(lambda v: 255 if v >= 40 else 0))
+        out.paste(est, (0, 0), take)
+        todo = ImageChops.subtract(todo, take)
+    if todo.getbbox():
+        # A box whose ink is too wide for the widest pass to reach across —
+        # which is lettering this eraser was not made for. Shipping the ground
+        # with the word half in it would be silent; saying so is not.
+        raise SystemExit(f"erase left ink it could not repaint at {todo.getbbox()}")
+    # Softened across the repaint only, so the join does not show as a seam.
+    edge = hole.filter(ImageFilter.GaussianBlur(2))
+    return Image.composite(out.filter(ImageFilter.GaussianBlur(1)), out, edge)
+
+
+def _feathered(bh, feather, at_top):
+    """A band's paste mask: opaque, fading out over `feather` px at one edge."""
+    mask = Image.new("L", (W, bh), 255)
+    ramp = Image.linear_gradient("L").resize((W, feather))
+    if at_top:
+        mask.paste(ramp, (0, 0))
+    else:
+        mask.paste(ImageOps.flip(ramp), (0, bh - feather))
+    return mask
+
+
 def derived_ground(source: Path, cut: Ground):
     """The wordless ground for one work, as a 600x800 image.
 
@@ -92,6 +188,8 @@ def derived_ground(source: Path, cut: Ground):
     Different input, different output, same subsystem — hence the name.
     """
     im = Image.open(source).convert("RGB")
+    if cut.erase:
+        im = _repaint(im, _ink_mask(im, cut.erase))
     w, h = im.size
     band = im.crop((
         int(w * cut.inset),
@@ -108,6 +206,19 @@ def derived_ground(source: Path, cut: Ground):
         # the highlights the photographs were chosen for.
         lut = [min(255, round(255 * (v / 255) ** (1 / cut.lift))) for v in range(256)]
         band = band.point(lut * 3)
+    if cut.peak != 255:
+        band = band.point(lambda v: v * cut.peak // 255)
+
+    if cut.foot:
+        # The band's own bottom, continued out of focus below it — the same
+        # move as the sky extension, pointed the other way.
+        foot = round(H * cut.foot)
+        slice_h = max(8, int(bh * 0.12))
+        below = ImageOps.fit(
+            band.crop((0, bh - slice_h, W, bh)), (W, bh + foot), Image.LANCZOS
+        ).filter(ImageFilter.GaussianBlur(radius=30))
+        below.paste(band, (0, 0), _feathered(bh, min(90, bh // 3), at_top=False))
+        band, bh = below, bh + foot
 
     if bh >= H:
         y = (bh - H) // 2
@@ -119,9 +230,7 @@ def derived_ground(source: Path, cut: Ground):
         band.crop((0, 0, W, slice_h)), (W, H), Image.LANCZOS
     ).filter(ImageFilter.GaussianBlur(radius=46))
     # Feathered in rather than pasted: the join has to read as depth of field.
-    mask = Image.new("L", (W, bh), 255)
-    mask.paste(Image.linear_gradient("L").resize((W, min(120, bh // 2))), (0, 0))
-    ground.paste(band, (0, seam), mask)
+    ground.paste(band, (0, seam), _feathered(bh, min(120, bh // 2), at_top=True))
     return ground
 
 

@@ -58,6 +58,7 @@ export const COVER_STYLE_IDS = [
 	'enlightenment', // Baskerville, the Wesleys' century
 	'revival', // a Victorian display face
 	'house', // Fraunces, what the rest of the site is set in
+	'lettered', // hand-lettered small caps, for a living author whose own covers use them
 	'originals', // Ochorus' own imprint, in the house face
 	'young' // the site's sans, for books written or retold for children
 ] as const;
@@ -121,7 +122,11 @@ export const AUTHOR_STYLE: Record<string, CoverStyleId> = {
 	// Ochorus' own books. Their author has no birth year, so they fell to the
 	// house voice with every other living writer — and a publisher's imprint
 	// that looks like everyone else's books is not an imprint.
-	'ochorus-originals': 'originals'
+	'ochorus-originals': 'originals',
+	// His English editions wear the covers his ministry designed, all set in
+	// hand-lettered small caps; without this his translations were the only
+	// editions of those books in a different voice.
+	'gareth-evans': 'lettered'
 };
 
 /**

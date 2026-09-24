@@ -665,6 +665,17 @@ rgb(0 0 0 / 0.26) 0%,
 	opacity: 0.9;
 }
 
+/* LETTERED — the arrangement of the covers it borrows its face from, which
+   draw no rule under the title and set the line beneath it upright. The
+   subtitle stays in the house serif like every other style's. */
+.cover-type.style-lettered .rule {
+	display: none;
+}
+.cover-type.style-lettered .subtitle {
+	margin-top: 2.6cqw;
+	font-style: normal;
+}
+
 /* THE SERIES NUMERAL, for any style: a numeral in a ring above the title, part
    of the title block so the two are centred together. Outside the container
    gate like the ornaments, and for the same reason — at shelf size a two-line
@@ -804,6 +815,17 @@ rgb(0 0 0 / 0.26) 0%,
 	.cover-type.style-house .title {
 		font-family: var(--cover-face-house);
 		font-weight: 600;
+	}
+	/* Hand-lettered small caps — Amatic SC, the face Gareth Evans' own covers
+	   are set in, so a translation of one of his books looks like the English
+	   edition beside it. A tall, narrow, thin face: set large and at its one
+	   bold weight, or it vanishes into a photograph. */
+	.cover-type.style-lettered .title {
+		font-family: var(--cover-face-lettered);
+		font-weight: 700;
+		font-size: 14cqw;
+		line-height: 1;
+		letter-spacing: 0.02em;
 	}
 	/* The imprint in the house face, set heavier and tighter than the house
 	   recipe — the same voice as the app that publishes it, speaking louder. */

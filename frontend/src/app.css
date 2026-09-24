@@ -20,6 +20,10 @@
 @import '@fontsource-variable/playfair-display/wght.css';
 @import '@fontsource/im-fell-english/400.css';
 @import '@fontsource/libre-baskerville/400.css';
+/* Amatic SC: the hand-lettered small caps Gareth Evans' own covers are set in
+   (see `lettered` in coverStyles.ts). One weight — the 700 a thin face needs
+   to hold up over a photograph. It ships Cyrillic of its own. */
+@import '@fontsource/amatic-sc/700.css';
 
 /* The same recipes in the scripts the Latin faces do not cover. Ochorus reads
    in eight languages and five of them are Latin; the other three had NO cover
@@ -199,6 +203,8 @@
 	--cover-face-press: 'IM Fell English', 'Amiri', 'Tiro Devanagari Hindi', 'Old Standard TT', var(--font-display);
 	--cover-face-enlightenment: 'Libre Baskerville', 'Amiri', 'Tiro Devanagari Hindi', 'Old Standard TT', var(--font-display);
 	--cover-face-revival: 'Playfair Display Variable', 'Amiri', 'Martel', var(--font-display);
+	/* Amatic SC ships its own Cyrillic, so no fourth face. */
+	--cover-face-lettered: 'Amatic SC', 'Amiri', 'Tiro Devanagari Hindi', var(--font-display);
 	/* `devotional` and `revival` name no Cyrillic face because EB Garamond and
 	   Playfair ship one already. Fraunces does not, so Ukrainian's contemporary
 	   recipe is PT Serif — and this token names Fraunces itself rather than
