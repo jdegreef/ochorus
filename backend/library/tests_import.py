@@ -969,7 +969,8 @@ class GutenbergDisplayLineTests(SimpleTestCase):
 <h2>Unfailing Springs</h2>
 <p>THE best evidence of Christianity is a Christ-like life.</p>
 </body></html>"""
-        self.assertTrue(extract_gutenberg_section(page, "Unfailing Springs").startswith(
+        # The level the catalog imports 57109 at (`section_level`).
+        self.assertTrue(extract_gutenberg_section(page, "Unfailing Springs", "h1").startswith(
             '<h2>J. Hudson Taylor</h2><p><i>"JESUS answered'
         ))
 
