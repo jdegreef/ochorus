@@ -20,5 +20,12 @@
     "note": [
       "Job #811 (with plan jobs #803 / #890): ships in the same PR as humility-2.uk, the plan's single source book, so the uk plans page never shows an English card. Title opens with the book's shipped uk title «Смирення»."
     ]
+  },
+  "growing-in-wisdom-18-days": {
+    "title": "Зростати в мудрості за 18 днів",
+    "description": "Путівник Джеймса Деґріфа для учнів — одне коротке читання щодня впродовж вісімнадцяти днів. Від відкриття свого призначення до бачення майбутнього: щодня практична порада поєднується з віршем Писання, роздумом і молитвою.",
+    "note": [
+      "Job #2827: ships in the same PR as growing-in-wisdom.uk, the plan's single source book, so the uk plans page never shows an English card. Title opens with the book's shipped uk title «Зростати в мудрості»."
+    ]
   }
 }

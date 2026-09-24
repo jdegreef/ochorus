@@ -3612,6 +3612,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/growing-in-wisdom": {
+			"ground": "7172353c562c63453d90a20312ea7d626ae75691ee689b15b9bc03b4544d2640",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/he-holds-my-tomorrows": {
 			"ground": "1092a9ce5ad6587cbb4c2945824280ce8b44eac20499a302901eb6e3a76616d8",
 			"style": "lettered",

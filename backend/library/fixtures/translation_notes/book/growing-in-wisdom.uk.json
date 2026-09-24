@@ -1,0 +1,678 @@
+{
+ "kind": "book",
+ "slug": "growing-in-wisdom",
+ "language": "uk",
+ "job_issue": 2827,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Jeremiah 29:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Proverbs 2:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Jeremiah 1:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Psalm 25:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Luke 16:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "1 Samuel 17:37a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Habakkuk 2:2b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 38
+  },
+  {
+   "reference": "Matthew 23:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "Proverbs 21:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 53
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "self_rendered",
+   "why": "Kulish renders the verse's key word as «кара» (punishment/chastisement); the chapter's argument is about self-discipline, so «дисципліна» is needed to carry the author's point.",
+   "block_index": 57
+  },
+  {
+   "reference": "Proverbs 6:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Proverbs 6:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Proverbs 6:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Proverbs 14:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Proverbs 6:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 78
+  },
+  {
+   "reference": "Proverbs 6:11a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 78
+  },
+  {
+   "reference": "Daniel 1:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 85
+  },
+  {
+   "reference": "Proverbs 9:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 95
+  },
+  {
+   "reference": "1 Kings 3:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 98
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "Daniel 1:17a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 104
+  },
+  {
+   "reference": "Proverbs 19:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 110
+  },
+  {
+   "reference": "Colossians 3:23a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 118
+  },
+  {
+   "reference": "Proverbs 22:29a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 121
+  },
+  {
+   "reference": "John 14:26a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 129
+  },
+  {
+   "reference": "Proverbs 10:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 136
+  },
+  {
+   "reference": "Proverbs 6:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 144
+  },
+  {
+   "reference": "Ecclesiastes 11:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 149
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 153
+  },
+  {
+   "reference": "Proverbs 12:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 158
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 167
+  },
+  {
+   "reference": "Proverbs 11:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 173
+  },
+  {
+   "reference": "1 Samuel 16:7b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 177
+  },
+  {
+   "reference": "Genesis 39:9b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 180
+  },
+  {
+   "reference": "Proverbs 20:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 185
+  },
+  {
+   "reference": "Psalm 15:1b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 192
+  },
+  {
+   "reference": "Psalm 15:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 192
+  },
+  {
+   "reference": "Luke 16:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 195
+  },
+  {
+   "reference": "Proverbs 13:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 202
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 206
+  },
+  {
+   "reference": "John 15:15b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 210
+  },
+  {
+   "reference": "Romans 12:2a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 214
+  },
+  {
+   "reference": "1 Corinthians 15:33",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 217
+  },
+  {
+   "reference": "Proverbs 18:24",
+   "status": "self_rendered",
+   "why": "Kulish's first half («Хто хоче приятелїв мати, мусить і самий приязним бути») carries a different sense from the NIV warning about many companions leading to ruin, which is the author's point about choosing friends.",
+   "block_index": 220
+  },
+  {
+   "reference": "Psalm 1:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 227
+  },
+  {
+   "reference": "Psalm 1:3b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 227
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 234
+  },
+  {
+   "reference": "Proverbs 16:32",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 238
+  },
+  {
+   "reference": "Luke 22:42b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 240
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 245
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 249
+  },
+  {
+   "reference": "Mark 4:39b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 255
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 262
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 266
+  },
+  {
+   "reference": "Joshua 1:8a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 277
+  },
+  {
+   "reference": "Joshua 1:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 277
+  },
+  {
+   "reference": "Psalm 119:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 281
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 292
+  },
+  {
+   "reference": "Mark 8:36",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 295
+  },
+  {
+   "reference": "Proverbs 16:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 299
+  },
+  {
+   "reference": "Deuteronomy 8:18a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 308
+  },
+  {
+   "reference": "Matthew 25:21b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 313
+  },
+  {
+   "reference": "Proverbs 24:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 321
+  },
+  {
+   "reference": "Psalm 145:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 329
+  },
+  {
+   "reference": "Philippians 3:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 340
+  },
+  {
+   "reference": "Philippians 3:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 340
+  },
+  {
+   "reference": "Matthew 23:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 351
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 354
+  },
+  {
+   "reference": "Romans 12:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 358
+  },
+  {
+   "reference": "Philippians 2:3b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 368
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 368
+  },
+  {
+   "reference": "1 Corinthians 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 375
+  },
+  {
+   "reference": "Psalm 24:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 378
+  },
+  {
+   "reference": "Ecclesiastes 3:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 382
+  },
+  {
+   "reference": "Proverbs 21:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 385
+  },
+  {
+   "reference": "1 Peter 4:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 389
+  },
+  {
+   "reference": "Psalm 119:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 399
+  },
+  {
+   "reference": "1 Thessalonians 4:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 402
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 405
+  },
+  {
+   "reference": "1 Corinthians 6:19a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 411
+  },
+  {
+   "reference": "Habakkuk 2:2b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 420
+  },
+  {
+   "reference": "Proverbs 19:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 425
+  },
+  {
+   "reference": "Ephesians 2:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 434
+  },
+  {
+   "reference": "Psalm 5:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 445
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 450
+  },
+  {
+   "reference": "Mark 10:43b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 457
+  },
+  {
+   "reference": "Proverbs 10:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 460
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 465
+  },
+  {
+   "reference": "Galatians 6:9b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 470
+  },
+  {
+   "reference": "Ephesians 3:20a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 473
+  },
+  {
+   "reference": "Matthew 5:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 475
+  },
+  {
+   "reference": "Matthew 5:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 475
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 479
+  },
+  {
+   "reference": "Proverbs 3:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 479
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 484
+  },
+  {
+   "reference": "Jeremiah 29:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 489
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 494
+  },
+  {
+   "reference": "Joshua 1:8a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 499
+  },
+  {
+   "reference": "Joshua 1:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 499
+  },
+  {
+   "reference": "Proverbs 1:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 504
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 509
+  },
+  {
+   "reference": "Psalm 119:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 514
+  },
+  {
+   "reference": "Romans 12:2a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 519
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 524
+  },
+  {
+   "reference": "Psalm 119:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 529
+  }
+ ],
+ "note": [
+  "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “. The English quotes the NIV; where Kulish's wording could not carry the author's point the verse is self_rendered with a reason. Hebrews is cited as Євреїв, not Kulish's Жидів."
+ ]
+}
