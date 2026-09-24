@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Luganda sermon — against-eutropius (#1700). Sermon pages are
+// prerendered per locale, so /lg/sermons must rebuild so the card and its /lg/sermons/against-eutropius
+// page bake the translated title and "In brief" summary.
 // prerender refresh 2026-09-24: Luganda sermons — the-worlds-need (#1697),
 // consolation-in-the-furnace (#1698), gods-love-for-a-sinning-world (#1699). Sermon pages are
 // prerendered per locale, so /lg/sermons must rebuild so each card and its /lg/sermons/<slug>
