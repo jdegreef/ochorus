@@ -6,19 +6,24 @@ from ``catalog.py`` forever, and writing their real biography into the fixture
 afterwards never reached the live site. See the book-import skill for the full
 history (and which migrations had to paper over it).
 
-THE RULE. Blind-syncing the fixture would close that gap and also silently
-revert reviewed prose, so this only replaces text we know we generated: a
-``bio`` that is empty or still a verbatim catalog stub. Anything else — a hand
-edit, an approved translation, a newer deploy — wins. Everything in
-``FILL_ONLY_FIELDS`` moves ``""``/``None`` to the fixture's value and never
-overwrites. Re-runs are no-ops, so this is safe on every deploy.
+THE RULE. The fixture is the source of truth for the English prose: a
+non-empty ``bio`` or ``bio_html`` that differs from the live row replaces it
+(``FIXTURE_WINS_TEXT``). Until 2026-09-23 both were fill-only — replaced only
+when empty or a catalog stub, to protect hand edits in /superepic/ — and 29
+authors' fixture fixes never shipped (#1920's card trims, #1855's "Holy
+Spirit"). Edit a bio in ``authors.json``, never in the admin: the next deploy
+writes the fixture back. A fixture that omits or empties either field leaves
+the row alone (the seeds never blank prose). ``FILL_ONLY_FIELDS`` still move
+``""``/``None`` to the fixture's value and never overwrite. Re-runs are
+no-ops, so this is safe on every deploy.
 """
 
 from __future__ import annotations
 
-from functools import cache
+# Fixture-wins when the fixture carries text; never blanked (see THE RULE).
+FIXTURE_WINS_TEXT = ("bio", "bio_html")
 
-# Fill-only. `bio` has its own rule above.
+# Fill-only.
 #
 # CAVEAT: "empty" is treated as "never set", but an admin CLEARING a field in
 # /superepic/ is also a decision — pull a portrait after a rights complaint and
@@ -32,7 +37,7 @@ from functools import cache
 # `upsert_book` does update it, and imports never run on a deploy, so a name
 # correction in the fixture still needs a migration. It is excluded because a
 # rename is a decision the catalog side owns.
-FILL_ONLY_FIELDS = ("bio_html", "photo_url", "birth_year", "death_year")
+FILL_ONLY_FIELDS = ("photo_url", "birth_year", "death_year")
 
 # Fixture-wins, unlike everything above, and the difference is deliberate.
 #
@@ -54,44 +59,6 @@ FILL_ONLY_FIELDS = ("bio_html", "photo_url", "birth_year", "death_year")
 # list onto the ~85 authors without a set. If an admin Q&A editor is ever added,
 # revisit this the way the fill-only caveat above describes.
 SYNCED_FIELDS = ("same_as", "faq")
-
-# Stub wordings that USED to be in the catalogs. A live row still carrying one
-# is just as much a placeholder as a current stub — but string equality can't
-# know that, so rewording a stub would strand every row holding the old text,
-# permanently (nothing else upgrades a non-empty bio). Retiring a stub means
-# moving its exact text here, not deleting it.
-RETIRED_STUBS = (
-    # sermon_catalog carried its own copies until they were aliased to
-    # catalog.AUTHORS; these three are what `import_sermons` planted before that.
-    "Canadian-born preacher and founder of the Christian and Missionary "
-    'Alliance, whose "Fourfold Gospel" called readers past every '
-    "blessing to Christ Himself.",
-    "English Baptist preacher, the “Prince of Preachers,” whose sermons "
-    "and devotional writings have been read by millions.",
-    "American evangelist whose plain, warm gospel addresses reached "
-    "millions across America and Britain; founder of the Moody Bible "
-    "Institute.",
-)
-
-
-@cache
-def catalog_stubs() -> frozenset[str]:
-    """Every one-line bio the catalogs can plant on a newly created author."""
-    # Imported lazily: `library.catalog` pulls in the whole book shelf, and this
-    # module is imported by the seeds at deploy time.
-    from library.catalog import AUTHORS
-    from library.sermon_catalog import SERMON_AUTHORS
-
-    return frozenset(
-        text.strip()
-        for text in (
-            *(e.bio for e in AUTHORS.values()),
-            *(e.bio for e in SERMON_AUTHORS.values()),
-            *RETIRED_STUBS,
-        )
-        if text.strip()
-    )
-
 
 def mark_translations_stale(author) -> list[str]:
     """Flag this author's short-bio translations as describing superseded text.
@@ -141,15 +108,11 @@ def sync_author(author, fields: dict) -> tuple[list[str], list[str]]:
     """
     changed: list[str] = []
 
-    fixture_bio = (fields.get("bio") or "").strip()
-    live_bio = (author.bio or "").strip()
-    # Kept nested (not one combined `and`): the outer test is "a new bio exists",
-    # the inner is "the live bio is ours to replace" — two distinct concerns.
-    if fixture_bio and fixture_bio != live_bio:  # noqa: SIM102
-        # Empty, or still the placeholder an import planted — ours to replace.
-        if not live_bio or live_bio in catalog_stubs():
-            author.bio = fixture_bio
-            changed.append("bio")
+    for field in FIXTURE_WINS_TEXT:
+        value = (fields.get(field) or "").strip()
+        if value and value != (getattr(author, field, None) or "").strip():
+            setattr(author, field, value)
+            changed.append(field)
 
     for field in FILL_ONLY_FIELDS:
         value = fields.get(field)

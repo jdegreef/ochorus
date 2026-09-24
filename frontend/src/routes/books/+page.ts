@@ -1,3 +1,33 @@
+// prerender refresh 2026-09-24 (queue job #3170): Portuguese book — grace-for-grace-2, Watchman Nee's
+// teaching on grace through the parables and Gospel scenes ("Graça sobre Graça"), 9 chapters. Book
+// pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title over
+// the designed plate cover and the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
+// entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue job #3147): Portuguese book — school-of-prayer, Andrew Murray's
+// thirty-one lessons on prayer ("Com Cristo na Escola de Oração"), 33 chapters. Book pages are
+// prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the
+// designed plate cover and the reader page bakes the 33 chapters. Activates the pt row of the
+// single-book plan school-of-prayer-31-days (pt plan prose added in data/plan_translations/pt.json;
+// the /pt/plans/school-of-prayer-31-days page rebuilds from that content root — no plans/+page.ts
+// touch owed).
+// prerender refresh 2026-09-24 (queue job #3145): Spanish book — school-of-prayer, Andrew Murray's
+// thirty-one lessons on prayer ("Con Cristo en la escuela de oración"), 33 chapters. Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title over the
+// designed plate cover and the reader page bakes the 33 chapters. Activates the es row of the
+// single-book plan school-of-prayer-31-days (es plan prose added in data/plan_translations/es.json;
+// the /es/plans/school-of-prayer-31-days page rebuilds from that content root — no plans/+page.ts
+// touch owed).
+// prerender refresh 2026-09-24 (queue job #3166): Spanish book — grace-for-grace-2, Watchman Nee's
+// teaching on grace through the parables and Gospel scenes ("Gracia sobre gracia"), 9 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
+// the designed plate cover and the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
+// entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue jobs #1752, #3152, #2797): three more Ukrainian books —
+// power-through-prayer («Сила через молитву», 20 ch), school-of-prayer («З Христом у школі молитви»,
+// 33 ch) and rise-up-men-of-god-2 («Устаньте, мужі Божі», 14 ch) — bake into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #813): Ukrainian book — prayer-the-pulse-of-life, Hannah
+// Buyinza ("Молитва — пульс життя"), 12 chapters. Book pages are prerendered per locale, so /uk/books
+// and the shelf rebuild with the translated title over the shared derived ground.
 // prerender refresh 2026-09-24 (queue job #1790): Spanish book — spurgeon-on-prayer, twelve of
 // Spurgeon's sermons on prayer plus an introduction ("Gran poder en la oración"), 13 chapters. Book
 // pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
@@ -427,6 +457,12 @@
 // touch, because it completes the set.
 // prerender refresh 2026-09-24 (queue job #1755): वॉचमैन नी — the Hindi edition of
 // watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-24 (queue job #1780): उकाब के समान ऊँचे उड़ो — the Hindi edition
+// of soar-like-the-eagle-3, 12 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-24 (queue job #2827, PR #3323): Зростати в мудрості — the Ukrainian
+// edition of growing-in-wisdom, 18 chapters — bakes into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #1795, PR #3321): Могутня сила молитви — the Ukrainian
+// edition of spurgeon-on-prayer, 13 chapters — bakes into the /uk/books shelf.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';

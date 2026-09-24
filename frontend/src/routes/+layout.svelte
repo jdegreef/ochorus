@@ -30,9 +30,12 @@
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
-	import { PRIMARY_NAV, ENGLISH_HUBS } from '$lib/contentNav';
+	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
+	// The slash-correct builder: /originals prerenders to originals/index.html.
+	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import BrandSprite from '$lib/components/BrandSprite.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 	// Preload the primary Latin subsets of the two brand fonts (display + body).
 	// @fontsource already ships them font-display:swap; preloading fetches them on
 	// the critical path so the hero/headings (Fraunces) and body copy (Hanken)
@@ -220,17 +223,6 @@
 	<link rel="alternate" type="application/atom+xml" title="Ochorus — New in the Library" href="/feed.xml" />
 </svelte:head>
 
-<svelte:window
-	onkeydown={(e) => {
-		if (e.key === 'Escape') navOpen = false;
-	}}
-	onclick={(e) => {
-		// Same dismissal the account and settings menus in this bar already use.
-		// The toggle stops propagation, so opening never immediately re-closes.
-		if (navOpen && navEl && !navEl.contains(e.target as Node)) navOpen = false;
-	}}
-/>
-
 <div
 	class="flex min-h-screen flex-col"
 	style="--reading-scale: {readerPrefs.scale}; --reading-measure: {MEASURE[
@@ -246,6 +238,7 @@
 			class:appnav-static={inReader}
 			aria-label={t('a11y.mainNav')}
 			bind:this={navEl}
+			use:dismissable={{ open: navOpen, onDismiss: () => (navOpen = false) }}
 		>
 			<div class="appnav-inner">
 			<!-- No separate wordmark: the logo carries "Ochorus" in the artwork. -->
@@ -254,10 +247,7 @@
 				class="navtoggle"
 				aria-label={t('a11y.menu')}
 				aria-expanded={navOpen}
-				onclick={(e) => {
-					e.stopPropagation();
-					navOpen = !navOpen;
-				}}
+				onclick={() => (navOpen = !navOpen)}
 			>
 				{#if navOpen}
 					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
@@ -382,9 +372,11 @@
 						{#each PRIMARY_NAV as d (d.href)}
 							<li><a href={localizeHref(d.href)}>{t(d.labelKey)}</a></li>
 						{/each}
-						<!-- Non-English readers have no Discover column, so RSS — the one
-						     language-neutral destination — rides in Explore for them. -->
+						<!-- Non-English readers have no Discover column, so the two links that
+						     serve every language — Originals (its books are translated) and
+						     RSS — ride in Explore for them. -->
 						{#if lang.current !== 'en'}
+							<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
 							<li><a href="/feed.xml">RSS</a></li>
 						{/if}
 					</ul>
@@ -405,6 +397,7 @@
 							{#each ENGLISH_HUBS as d (d.href)}
 								<li><a href="{d.href}/">{t(d.labelKey)}</a></li>
 							{/each}
+							<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
 							<li><a href="/feed.xml">RSS</a></li>
 						</ul>
 					</nav>
