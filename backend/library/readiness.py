@@ -396,7 +396,7 @@ def _ui_check(lang: Language) -> Check:
             "ui",
             "Interface strings",
             FAIL,
-            f"{pending} string(s) still an English placeholder, awaiting translation.",
+            f"{pending} string(s) still in English as a placeholder, awaiting translation.",
         )
     # A live locale with no (or an incomplete) UI catalogue cannot ship: the
     # reader is a static build that fails on it — `fetch-live-locales.mjs` when a

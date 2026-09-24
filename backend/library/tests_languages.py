@@ -1218,7 +1218,7 @@ class UiCatalogueCheckTests(TestCase):
         check = self._check_with(summary)
         self.assertEqual(check.status, readiness_module.FAIL)
         self.assertTrue(check.forceable)
-        self.assertIn("3 string(s) still an English placeholder", check.detail)
+        self.assertIn("3 string(s) still in English as a placeholder", check.detail)
 
     def test_a_fully_translated_catalogue_says_so(self):
         check = self._check_with({"locales": {"ar": {"missing": [], "pending": []}}})
