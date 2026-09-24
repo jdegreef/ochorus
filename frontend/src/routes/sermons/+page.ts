@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Swahili sermons — caleb-a-different-spirit (#2964), a-full-reward (#2972),
+// blessed-prosperity (#2979), witnessing-for-christ (#2985), filled-with-the-spirit (#2993),
+// every-mans-need-of-a-refuge (#3001), behold-the-lamb-of-god (#3009). Rebuilds /sw/sermons so each card and its page bake the Swahili title.
 // prerender refresh 2026-09-24: Arabic sermons — fall-and-recovery-of-man (#1658),
 // enduring-persecution-for-christ (#1659), pauls-praise-of-christian-love (#1660),
 // against-eutropius (#1661), gods-love-for-a-sinning-world (#1662), salvation-by-faith (#1663),
