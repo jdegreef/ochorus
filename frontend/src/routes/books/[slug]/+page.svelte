@@ -3,7 +3,7 @@
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
-	import { chapterName, readingMinutes, readingTime } from '$lib/reading';
+	import { chapterName, contentLang, readingMinutes, readingTime } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
 	import {
 		absUrl,
@@ -19,6 +19,7 @@
 	import { localizeHref } from '$lib/href';
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
+	import { seriesLabel } from '$lib/series';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
@@ -334,6 +335,20 @@
 			</p>
 			<h1 class="text-h1" dir="auto">{book.title}</h1>
 			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
+			<!-- Where this book sits in its series, and the way on to the next
+			     volume in this language. Absent outside a series and where the series
+			     has no name in this edition's language (the API's no-fallback rule).
+			     Numbers in the edition's digits, as the cover's ring sets them. -->
+			{#if book.series}
+				<p class="mt-2 text-small text-muted" dir="auto">
+					<span class="font-medium">{seriesLabel(book.series, contentLang(book.language))}</span
+					>{#if book.series.next}<span class="px-1.5 opacity-50">·</span><a
+							href={localizeHref(`/books/${book.series.next.slug}`)}
+							class="text-accent hover:underline"
+							>{t('book.seriesNext')}: {book.series.next.title} →</a
+						>{/if}
+				</p>
+			{/if}
 			<!-- The names this work is also published under. Shown, not merely marked
 			     up: a reader who searched "A Divine Cordial" and landed on a page
 			     headed "All Things for Good" needs to see, on arrival, that they are
