@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-24 (queue job #1790): Spanish book — spurgeon-on-prayer, twelve of
+// Spurgeon's sermons on prayer plus an introduction ("Gran poder en la oración"), 13 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
+// the shared painting ground and the reader page bakes the 13 chapters. Backs no
 // prerender refresh 2026-09-24 (queue job #1783): Spanish book — women-who-moved-heaven-2, an
 // Ochorus-original devotional on ten praying women ("Mujeres que conmovieron el cielo"), 13 chapters.
 // Book pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title
