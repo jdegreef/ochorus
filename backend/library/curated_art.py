@@ -777,3 +777,55 @@ ORIGINAL_GROUND: dict[str, Original] = {
     ),
 }
 
+
+# slug -> a ground we drew as SVG. The same promise as ORIGINAL_GROUND — an
+# illustration made for the work, with no museum to re-fetch and no designed
+# cover to re-crop — for the files that are vector rather than raster. Kept
+# apart because every raster path (`art_url`, the webp variants, the scrim
+# measure) assumes `covers/art/<slug>.jpg`; these four are served as they are.
+#
+# The Key Teachings share one motif: a single gilt tree on a dark ground in the
+# book's own colour, a different tree for each writer. That motif IS the series
+# look, which is why their type is also held to one series layout
+# (`coverLayouts.BOOK_LAYOUT`) rather than each author's own.
+ORIGINAL_SVG_GROUND: dict[str, Original] = {
+    "key-teachings-of-a-b-simpson": Original(
+        "620bcb654910fd3474e0541459f873737ad331b16f202e1050713a15475589d9",
+        "A palm on teal: the missionary reach of the Christian and Missionary "
+        "Alliance he founded.",
+    ),
+    "key-teachings-of-jonathan-edwards": Original(
+        "f266baacb08968960586aba2e405ef3bf268c21e26f6c48a56a190a1170c81af",
+        "A broad, full-crowned tree on forest green: New England, and the "
+        "beauty of holiness he wrote of.",
+    ),
+    "key-teachings-of-richard-baxter": Original(
+        "1a139874ce9b7005424df79a720bea10a4b0f6f9e4c46cb89763689f823c7a7a",
+        "A tiered tree on oxblood, rising in layers: the ordered, patient "
+        "pastoral life of The Reformed Pastor.",
+    ),
+    "key-teachings-of-watchman-nee": Original(
+        "c95c85ac19f4fe92ba4cc1ca9c7f3f64c34c5bbf22c7c66644283cadfea55cfa",
+        "A tree whose roots reach down into water, on night blue: abiding in "
+        "Christ as the life of the normal Christian life.",
+    ),
+}
+
+
+# slug -> the scrim each SVG Original needs, MEASURED — carried into
+# `art_scrim.ART_SCRIM` by `scripts/tune_art_scrim.py` on every run, because
+# that script reads rasters and cannot open these. Measured the tuner's way
+# (its compositing model, its AA bars plus MARGIN, its 0.30 floor) but at the
+# words' real positions: these covers set their type from the top
+# (`coverLayouts.TYPE_TOP`), so the tuner's centred INK_REGIONS would measure
+# rows no word crosses. Each ground was rasterised in Chromium at 600x800, the
+# text bands found on its og twin, and the strength walked up from 0.30. All
+# four clear at the floor. The digest in ORIGINAL_SVG_GROUND pins the input: a
+# replaced tree fails that gate first, which is the cue to re-measure this.
+ORIGINAL_SVG_SCRIM: dict[str, float] = {
+    "key-teachings-of-a-b-simpson": 0.30,
+    "key-teachings-of-jonathan-edwards": 0.30,
+    "key-teachings-of-richard-baxter": 0.30,
+    "key-teachings-of-watchman-nee": 0.30,
+}
+

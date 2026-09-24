@@ -969,6 +969,7 @@ class GutenbergDisplayLineTests(SimpleTestCase):
 <h2>Unfailing Springs</h2>
 <p>THE best evidence of Christianity is a Christ-like life.</p>
 </body></html>"""
+        # The level the catalog imports 57109 at (`section_level`).
         self.assertTrue(extract_gutenberg_section(page, "Unfailing Springs", "h1").startswith(
             '<h2>J. Hudson Taylor</h2><p><i>"JESUS answered'
         ))
@@ -1117,6 +1118,26 @@ that walk uprightly."<br></em>--P<small>SALM LXXXIV</small>. 11.</div>
             for block in blocks:
                 with self.subTest(slug=slug, block=block):
                     self.assertIn(block, extracted)
+
+    def test_pg_57109s_text_line_is_the_restored_english_block(self):
+        """*Unfailing Springs* sets its text as a `div.center` under the <h2>."""
+        from library.corrections import BODY_CORRECTIONS
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = """<html><body>
+<h1>Unfailing Springs</h1>
+<h2>J. Hudson Taylor</h2>
+<p><i>"JESUS answered and said unto her, If thou knewest the gift of GOD.</i></p>
+<h2>Unfailing Springs</h2>
+<div class="center">"Whosoever will, let him take the water of life freely"<br>
+ (Rev. 22:17)</div>
+<p>THE best evidence of Christianity is a Christ-like life.</p>
+</body></html>"""
+        _, english = BODY_CORRECTIONS["unfailing-springs"]["restored_blocks"][0]
+        self.assertIn(
+            f"<h2>Unfailing Springs</h2>{english}<p>THE best",
+            extract_gutenberg_section(page, "Unfailing Springs", "h1"),
+        )
 
 
 class CcelAbortOnFetchFailureTests(TestCase):
