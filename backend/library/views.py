@@ -8,7 +8,7 @@ import logging
 
 from django.core.cache import cache
 from django.db.models import Count, Exists, F, OuterRef, Prefetch, Q
-from django.http import Http404
+from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.parsers import JSONParser
@@ -17,6 +17,7 @@ from rest_framework.views import APIView
 
 from common.throttling import ScopedCacheThrottle
 
+from . import book_export
 from . import languages as languages_module
 from .contemporize import MODERN_LANGUAGE
 from .http_cache import PublicContentCacheMixin
@@ -247,6 +248,45 @@ class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             book=book,
             order=self.kwargs["order"],
         )
+
+
+class _BookDownloadThrottle(ScopedCacheThrottle):
+    """A download builds a whole book, so it gets its own ceiling — far above a
+    reader (nobody downloads 30 books a minute) and well below a scraper."""
+
+    scope = "book-download"
+
+
+class BookEpubView(APIView):
+    """A book as an EPUB file, built per request from the live chapters.
+
+    See ``library/book_export.py``. 404 for anything not exportable (the pilot
+    allowlist), so a guessed URL can't pull an edition we haven't vetted.
+    """
+
+    throttle_classes = [_BookDownloadThrottle]
+
+    def get(self, request, slug):
+        book = get_object_or_404(
+            Book.objects.select_related("author"),
+            slug=slug,
+            language=_language(request),
+            is_published=True,
+        )
+        if not book_export.is_exportable(book):
+            raise Http404
+        data = book_export.render_epub(book_export.build_edition(book))
+        etag = book_export.etag_for(data)
+        if etag in request.META.get("HTTP_IF_NONE_MATCH", ""):
+            response = HttpResponseNotModified()
+        else:
+            response = HttpResponse(data, content_type="application/epub+zip")
+            response["Content-Disposition"] = (
+                f'attachment; filename="{book_export.epub_filename(book)}"'
+            )
+        response["ETag"] = etag
+        response["Cache-Control"] = "public, max-age=3600"
+        return response
 
 
 class SermonListView(PublicContentCacheMixin, generics.ListAPIView):

@@ -177,7 +177,14 @@ export interface BookSeries {
 export interface BookDetail extends BookSummary {
 	description: string;
 	source_url: string;
+	/** A static PDF under /pdfs/ ("" = none). See library/book_export.py. */
 	pdf_url: string;
+	/**
+	 * Whether the API serves this edition as EPUB at
+	 * /api/library/books/<slug>/download.epub. Optional: an API behind this
+	 * build omits it, and no button is drawn.
+	 */
+	epub_available?: boolean;
 	chapters: ChapterToc[];
 	topics: TopicChip[];
 	related: BookSummary[];

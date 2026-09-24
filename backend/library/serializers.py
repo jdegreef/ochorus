@@ -4,6 +4,7 @@ from django.db.models import Count, Sum
 from django.utils.text import slugify
 from rest_framework import serializers
 
+from . import book_export
 from .alternate_titles import alternate_titles
 from .contemporize import MODERN_LANGUAGE
 from .curated_art import credit
@@ -1255,6 +1256,9 @@ class BookDetailSerializer(BookListSerializer):
     # author_same_as: a card has no room to show them and no markup to carry
     # them, so a shelf would ship the strings 130 times over for nothing.
     alternate_titles = serializers.SerializerMethodField()
+    # Whether GET books/<slug>/download.epub serves this edition (see
+    # library/book_export.py). The PDF needs no flag: it is ``pdf_url``.
+    epub_available = serializers.SerializerMethodField()
     # The passages this book keeps returning to, derived from its own text —
     # see library/scripture_graph.treated_passages. Detail only: it costs two
     # queries, which is nothing on one page and 130 times nothing on a shelf.
@@ -1374,7 +1378,11 @@ class BookDetailSerializer(BookListSerializer):
             "editions", "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "qa", "scripture", "opening",
             "featured_people", "author_quote_count", "guides", "series",
+            "epub_available",
         ]
+
+    def get_epub_available(self, obj) -> bool:
+        return book_export.is_exportable(obj)
 
     def get_editions(self, obj):
         """Sibling audience editions (full ⇄ teens ⇄ children) as cover cards,
