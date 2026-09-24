@@ -63,30 +63,27 @@ _QUOTES = ("“", '"', "‘", "'")
 
 
 def _display_line(div) -> str:
-    """One Gutenberg centred display line (`<div class="c1">`) as a body block.
+    """A Gutenberg centred display line (`<div class="c1">`) as a body block.
 
-    PG 23438 (*A Ribband of Blue*) sets every in-study section heading this way
-    — `<div class="c1"><small>THE UNSEEN HEDGE</small>.</div>` — and every
-    displayed scripture line and opening epigraph too. The collector used to
-    take only headings, `<p>` and `<blockquote>`, so all of them were dropped
-    without a trace: two dozen lines across seven studies, among them the end
-    of a sentence ("Further, the truly blessed man--" / "Standeth not in the way
-    of sinners.") and the verse a later paragraph calls "the words which we
-    have already quoted".
+    PG 23438 (*A Ribband of Blue*) sets its in-study section headings,
+    displayed verses and epigraphs this way, and the collector once dropped
+    them all; `corrections.py` ("The rest of Gutenberg #23438") has the damage.
 
-    A line set wholly in capitals is a heading, and becomes `<h3>` with its
-    text verbatim (the source's own small caps and trailing stops). One opening
-    with a quotation mark is not, however it is cased — `"RIBBAND OF BLUE."`
-    finishes a sentence. Everything else is a paragraph, markup kept, so an
-    italic verse line reads like the verse paragraphs the edition set as `<p>`.
-    These are exactly the forms `corrections.BODY_CORRECTIONS` restores into the
-    rows imported before this existed, so each of those corrections finds its
-    block already present on a re-import and does nothing.
+    A line wholly in capitals is an `<h3>`, text verbatim (the source's own
+    small caps and stops) — unless it opens with a quotation mark:
+    `"RIBBAND OF BLUE."` finishes a sentence. Anything else is a `<p>`, markup
+    kept. These are exactly the blocks `BODY_CORRECTIONS` restores into rows
+    imported before this existed, so a re-import leaves those corrections
+    nothing to do. Returns "" for a wrapper, for Gutenberg's own
+    `pg_body_wrapper` furniture (page numbers, spacers, PG 57109's "9,000 in
+    print") and for an empty line.
     """
-    text = re.sub(r"\s+", " ", div.get_text()).strip()
+    if "pg_body_wrapper" in (div.get("class") or []) or div.find(_BLOCKS) is not None:
+        return ""
+    text = " ".join(div.get_text().split())
     if not text:
         return ""
-    if not text.startswith(_QUOTES) and text == text.upper() and re.search(r"[A-Z]", text):
+    if text.isupper() and not text.startswith(_QUOTES):
         return f"<h3>{escape(text, quote=False)}</h3>"
     return f"<p>{div.decode_contents()}</p>"
 
@@ -143,13 +140,7 @@ def extract_gutenberg_section(html: str, section: str) -> str:
         if el.find_parent("blockquote") is not None:
             continue  # already inside a collected blockquote
         if el.name == "div":
-            # `pg_body_wrapper` is Gutenberg's own furniture — page numbers,
-            # spacers, and in PG 57109 a "9,000 in print" printing note.
-            if (
-                "pg_body_wrapper" not in (el.get("class") or [])
-                and el.find(_BLOCKS) is None
-                and (line := _display_line(el))
-            ):
+            if line := _display_line(el):
                 parts.append(line)
             continue
         parts.append(str(el))

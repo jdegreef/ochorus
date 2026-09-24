@@ -1168,13 +1168,10 @@ class RibbandOfBlueTitleLineTests(SimpleTestCase):
 
 
 class RibbandOfBlueDisplayLineTests(SimpleTestCase):
-    """The rest of Gutenberg #23438: section headings, verses and epigraphs.
+    """The rest of Gutenberg #23438 — see that entry in `corrections.py`.
 
-    Six studies lost every `<div class="c1">` display line the edition set —
-    see "The rest of Gutenberg #23438" in `corrections.py`. Every edition of
-    each carries the repair; asserted per edition because a translation pair
-    that silently stops matching leaves that language's prod rows damaged
-    while the English passes.
+    Asserted per edition: a translation pair that silently stops matching
+    leaves that language's prod rows damaged while the English passes.
     """
 
     SLUGS = {
@@ -1186,30 +1183,36 @@ class RibbandOfBlueDisplayLineTests(SimpleTestCase):
         "under-the-shepherds-care": 1,
     }
 
-    def _editions(self, slug):
-        sermons = Path(__file__).resolve().parent / "fixtures" / "content" / "sermons"
-        for path in sorted(sermons.glob(f"{slug}.*.json")):
-            yield path.name.split(".")[1], json.loads(path.read_text())[0]["fields"]["body_html"]
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from library.content_fixtures import SERMONS_DIR
+
+        cls.editions = {
+            (slug, path.stem.rsplit(".", 1)[1]): json.loads(path.read_text())[0]["fields"]["body_html"]
+            for slug in cls.SLUGS
+            for path in sorted(SERMONS_DIR.glob(f"{slug}.*.json"))
+        }
+
+    @staticmethod
+    def _blocks(slug):
+        return [block for _, block in corrections.BODY_CORRECTIONS[slug]["restored_blocks"]]
 
     def test_every_edition_carries_every_line(self):
-        for slug, count in self.SLUGS.items():
-            blocks = [b for _, b in corrections.BODY_CORRECTIONS[slug]["restored_blocks"]]
-            for lang, body in self._editions(slug):
-                with self.subTest(slug=slug, language=lang):
-                    self.assertEqual(sum(b in body for b in blocks), count)
+        for (slug, lang), body in self.editions.items():
+            with self.subTest(slug=slug, language=lang):
+                self.assertEqual(sum(b in body for b in self._blocks(slug)), self.SLUGS[slug])
 
     def test_the_correction_is_what_restores_them(self):
         """Strip them all back out and the correction must put every one back."""
-        for slug in self.SLUGS:
-            blocks = [b for _, b in corrections.BODY_CORRECTIONS[slug]["restored_blocks"]]
-            for lang, settled in self._editions(slug):
-                with self.subTest(slug=slug, language=lang):
-                    damaged = settled
-                    for block in blocks:
-                        damaged = damaged.replace(f"{block} ", "", 1)
-                    self.assertNotIn("<h3>", damaged)
-                    self.assertEqual(corrections.settled_sermon_body(slug, damaged), settled)
-                    self.assertEqual(corrections.settled_sermon_body(slug, settled), settled)
+        for (slug, lang), settled in self.editions.items():
+            with self.subTest(slug=slug, language=lang):
+                damaged = settled
+                for block in self._blocks(slug):
+                    damaged = damaged.replace(f"{block} ", "", 1)
+                self.assertNotIn("<h3>", damaged)
+                self.assertEqual(corrections.settled_sermon_body(slug, damaged), settled)
+                self.assertEqual(corrections.settled_sermon_body(slug, settled), settled)
 
 
 class DroppedBlockRestorationTests(SimpleTestCase):

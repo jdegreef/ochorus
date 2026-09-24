@@ -897,11 +897,19 @@ class SermonReimportCreateOnlyTests(TestCase):
 class GutenbergDisplayLineTests(SimpleTestCase):
     """`extract_gutenberg_section` keeps PG 23438's centred display lines.
 
-    *A Ribband of Blue* sets its section headings, displayed verses and
-    epigraphs as `<div class="c1">`, and the collector once took only headings,
-    `<p>` and `<blockquote>` — two dozen lines lost across seven studies. The
-    markup below is the edition's own, cut down.
+    See `import_sermons._display_line`. The markup below is the edition's own,
+    cut down.
     """
+
+    # Display lines the edition set in "Blessed Adversity", as the importer
+    # must emit them — and as `BODY_CORRECTIONS` restores them.
+    ADVERSITY_LINES = (
+        "<h3>INTRODUCTORY.</h3>",
+        "<h3>GOD'S TESTIMONY AND CHALLENGE.</h3>",
+        '<p><em>"The LORD gave, and the LORD hath taken away; blessed be the '
+        'Name of the LORD</em>."--Job i.21.</p>',
+        "<h3>THE UNSEEN HEDGE.</h3>",
+    )
 
     PAGE = """<html><body>
 <div class="c1">
@@ -936,17 +944,13 @@ class GutenbergDisplayLineTests(SimpleTestCase):
         return extract_gutenberg_section(self.PAGE, section)
 
     def test_display_lines_are_kept_in_reading_order(self):
+        intro, testimony, job, hedge = self.ADVERSITY_LINES
         self.assertEqual(
             self._extract("Blessed Adversity"),
-            "<h3>INTRODUCTORY.</h3>"
-            "<p>The history of Job is full of instruction.</p>"
-            "<h3>GOD'S TESTIMONY AND CHALLENGE.</h3>"
-            '<p><em>"The LORD gave, and the LORD hath taken away; blessed be the '
-            'Name of the LORD</em>."--Job i.21.</p>'
-            "<p>In the 8th verse of the 1st chapter.</p>"
+            f"{intro}<p>The history of Job is full of instruction.</p>"
+            f"{testimony}{job}<p>In the 8th verse of the 1st chapter.</p>"
             # The stop sits outside the small caps in the source; kept.
-            "<h3>THE UNSEEN HEDGE.</h3>"
-            "<p>The reply of Satan is noteworthy.</p>"
+            f"{hedge}<p>The reply of Satan is noteworthy.</p>"
             # Capitals, but opening with a quotation mark: it ends a sentence.
             '<p>"RIBBAND OF BLUE."</p>'
             "<p>GOD would have all His people wear a badge.</p>",
@@ -965,21 +969,13 @@ class GutenbergDisplayLineTests(SimpleTestCase):
     def test_the_restored_english_blocks_are_what_the_importer_emits(self):
         """The `restored_blocks` guard is a string match on the block, so a
         re-import has to produce exactly what the correction inserted — or the
-        body carries both."""
+        body carries both. The test above pins the importer's side."""
         from library.corrections import BODY_CORRECTIONS
 
-        body = self._extract("Blessed Adversity")
         restored = {block for _, block in BODY_CORRECTIONS["blessed-adversity"]["restored_blocks"]}
-        for block in (
-            "<h3>INTRODUCTORY.</h3>",
-            "<h3>GOD'S TESTIMONY AND CHALLENGE.</h3>",
-            '<p><em>"The LORD gave, and the LORD hath taken away; blessed be the '
-            'Name of the LORD</em>."--Job i.21.</p>',
-            "<h3>THE UNSEEN HEDGE.</h3>",
-        ):
+        for block in self.ADVERSITY_LINES:
             with self.subTest(block=block):
                 self.assertIn(block, restored)
-                self.assertIn(block, body)
 
 
 class CcelAbortOnFetchFailureTests(TestCase):
