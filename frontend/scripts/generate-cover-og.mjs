@@ -122,7 +122,7 @@ import {
 import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
 import { coverTitle } from '../src/lib/coverTitle.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
-import { coverLayoutFor, layoutKey } from '../src/lib/coverLayouts.ts';
+import { coverLayoutFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
 import { groundBar } from '../src/lib/groundBars.ts';
 import { coverStyleFor, scriptOf, volumeNumeral } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
@@ -234,12 +234,14 @@ function needTwins() {
 				// painting in the library needs.
 				scrim: scrimStrength(fields.slug),
 				// A painting's composition; a plate takes none.
-				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script) : null
+				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script, fields.slug) : null
 			};
 		})
 		// How far a laid-out painting is cropped past its scan border — the
 		// component asks only for a layout, so this does too.
 		.map((b) => ({ ...b, bar: b.layout ? groundBar(b.cover) : 0 }))
+		// Framed type set from the top (the Key Teachings) — the component's call.
+		.map((b) => ({ ...b, top: b.art && typeTopFor(b.slug, b.layout) }))
 		.filter((b) => hasTwin(b.cover));
 }
 
@@ -478,7 +480,8 @@ html,body{margin:0}
 			lang: book.language,
 			art: book.art,
 			scrim: book.scrim,
-			layout: book.layout
+			layout: book.layout,
+			top: book.top
 		},
 		LOCKUP
 	)}
@@ -574,7 +577,7 @@ function made(book, groundBytes) {
 		script: scriptKey(book.script),
 		art: book.art,
 		scrim: book.scrim,
-		layout: layoutKey(book.layout),
+		layout: layoutKey(book.layout, book.top),
 		bar: book.bar
 	};
 }

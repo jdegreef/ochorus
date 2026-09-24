@@ -1047,8 +1047,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # moved on to "GOD would have all His people wear a badge." Gutenberg
         # #23438 sets the missing words as a centred display line,
         # `<div class="c1"><small>"RIBBAND OF BLUE."</small></div>`, and
-        # `import_sermons.extract_gutenberg_section` collects only headings, `<p>` and
-        # `<blockquote>` — so a `div` is skipped outright, not sanitized away.
+        # `import_sermons.extract_gutenberg_section` collected only headings,
+        # `<p>` and `<blockquote>` — so a `div` was skipped outright, not
+        # sanitized away. It keeps display lines now, as exactly this `<p>`.
         # Restored as its own `<p>`, the block it would be had the importer
         # kept it, with the small caps flattened as everywhere else in the body.
         #
@@ -1068,6 +1069,166 @@ BODY_CORRECTIONS: dict[str, dict] = {
              "<p>« CORDON BLEU ».</p>"),
             ("<p>MUNGU alitaka watu wake wote wavae alama.",
              '<p>"UZI WA RANGI YA SAMAWI."</p>'),
+        ],
+    },
+    # --- The rest of Gutenberg #23438, "A Ribband of Blue" --------------------
+    # The same root cause as the entry above, at scale. The edition sets every
+    # in-study section heading as a centred small-caps display line —
+    # `<div class="c1"><small>THE UNSEEN HEDGE</small>.</div>` — and every
+    # displayed scripture line and opening epigraph the same way, and
+    # `import_sermons.extract_gutenberg_section` collected none of them: 23 lines
+    # across six studies. Two losses were text, not typography:
+    # `blessed-prosperity` block 10 ends "Further, the truly blessed man--" and
+    # its sentence finished on the lost line "Standeth not in the way of
+    # sinners."; `blessed-adversity` block 14 answers "in the words which we
+    # have already quoted" with a Job 1:21 that was never on the page.
+    #
+    # The importer keeps these lines now (`import_sermons._display_line`), and
+    # every English block below is spelled EXACTLY as it emits them: a line set
+    # wholly in capitals is an `<h3>` with the source's own wording and stops;
+    # anything else is a `<p>`; a leading quotation is the epigraph
+    # `<blockquote>`. So a re-import finds each one present and the guard
+    # skips it. `coming-to-the-king` lost nothing.
+    #
+    # Translations were made from the damaged English, so each edition carries
+    # its own pairs, anchored on that language's following paragraph, and all
+    # move together or `tests_translation_markup`'s tag parity breaks. The
+    # verse lines take each edition's own wording where its body already
+    # quotes the verse (Job 1:21 in every `blessed-adversity`, Ruth 2:12 in
+    # `a-full-reward`), and the language's registry Bible otherwise; the fr and
+    # hi "seat of the scornful" follow their block 13, which names it a SEAT
+    # ("banc", "आसन"), rather than Segond's "compagnie" / IRV's "मण्डली".
+    # Quote anchors (`quote_seed`) and translation-note `block_index` values
+    # below each insertion shifted in the same commit. The English epigraph of
+    # `a-full-reward` keeps Gutenberg's "they father" (for "thy") — reported,
+    # not fixed: unchecked against a printing.
+    "blessed-prosperity": {
+        "restored_blocks": [
+            # en
+            ("<p>There is a prosperity which",
+             "<p>Meditations On The First Psalm.</p>"),
+            ("<p>There is a prosperity which", "<h3>INTRODUCTORY.</h3>"),
+            ("<p>More literally, O the blessings,",
+             "<h3>THE NEGATIVE CONDITIONS OF BLESSING</h3>"),
+            ("<p>More literally, O the blessings,",
+             '<p><em>"Blessed is the man that walketh not in the counsel of the ungodly."</em></p>'),
+            ("<p>Birds of a feather flock",
+             "<p><em>Standeth not in the way of sinners.</em></p>"),
+            ("<p>The seat of the scornful",
+             '<p><em>"Nor sitteth in the seat of the scornful."</em></p>'),
+            ("<p>We have considered the",
+             "<h3>THE POSITIVE CONDITIONS OF BLESSING.</h3>"),
+            ("<p>We next proceed to notice", "<h3>THE OUTCOME IN BLESSING.</h3>"),
+            ("<p>It is not necessary to", "<h3>THE CONTRAST.</h3>"),
+            ("<p>It is not necessary to", '<p><em>"The ungodly are not so."</em></p>'),
+            # fr
+            ("<p>Il existe une prospérité",
+             "<p>Méditations sur le premier Psaume.</p>"),
+            ("<p>Il existe une prospérité", "<h3>INTRODUCTION.</h3>"),
+            ("<p>Plus littéralement : ô",
+             "<h3>LES CONDITIONS NÉGATIVES DE LA BÉNÉDICTION</h3>"),
+            ("<p>Plus littéralement : ô",
+             "<p><em>« Heureux l’homme qui ne marche pas selon le conseil des méchants. »</em></p>"),
+            ("<p>Qui se ressemble s’assemble",
+             "<p><em>Qui ne s’arrête pas sur la voie des pécheurs.</em></p>"),
+            ("<p>Le banc des moqueurs est",
+             "<p><em>« Et qui ne s’assied pas au banc des moqueurs. »</em></p>"),
+            ("<p>Nous avons considéré les",
+             "<h3>LES CONDITIONS POSITIVES DE LA BÉNÉDICTION.</h3>"),
+            ("<p>Nous en venons ensuite", "<h3>L’ISSUE EN BÉNÉDICTION.</h3>"),
+            ("<p>Il n’est pas nécessaire", "<h3>LE CONTRASTE.</h3>"),
+            ("<p>Il n’est pas nécessaire",
+             "<p><em>« Il n’en est pas ainsi des méchants. »</em></p>"),
+            # hi
+            ("<p>एक ऐसी समृद्धि है जो धन्य", "<p>पहले भजन पर मनन।</p>"),
+            ("<p>एक ऐसी समृद्धि है जो धन्य", "<h3>भूमिका।</h3>"),
+            ("<p>और भी अक्षरशः कहें तो,", "<h3>आशीष की निषेधात्मक शर्तें</h3>"),
+            ("<p>और भी अक्षरशः कहें तो,",
+             '<p><em>"क्या ही धन्य है वह मनुष्य जो दुष्टों की योजना पर नहीं चलता।"</em></p>'),
+            ("<p>एक ही जाति के पक्षी एक",
+             "<p><em>न पापियों के मार्ग में खड़ा होता।</em></p>"),
+            ("<p>ठट्ठा करनेवालों का आसन",
+             '<p><em>"और न ठट्ठा करनेवालों के आसन पर बैठता है।"</em></p>'),
+            ("<p>हमने उन बातों पर विचार", "<h3>आशीष की सकारात्मक शर्तें।</h3>"),
+            ("<p>अब हम इस भजन के तीसरे पद", "<h3>आशीष का परिणाम।</h3>"),
+            ("<p>इस विरोधाभास पर अधिक विस्तार", "<h3>विरोधाभास।</h3>"),
+            ("<p>इस विरोधाभास पर अधिक विस्तार",
+             '<p><em>"दुष्ट लोग ऐसे नहीं होते।"</em></p>'),
+        ],
+    },
+    "a-full-reward": {
+        "restored_blocks": [
+            # en
+            ("<p>In this interesting narrative",
+             '<blockquote><em>"It hath fully been shewed me, all that thou hast done ... and how thou hast left they father and thy mother, and the land of thy nativity, and art come unto a people which thou knewest not heretofore. The LORD recompense thy work, and a full reward be given thee of the LORD GOD of Israel, under whose wings thou art come to trust" (Ruth ii. 11, 12).</em></blockquote>'),
+            # fr
+            ("<p>Dans ce récit plein d’intérêt,",
+             "<blockquote><em>« On m’a rapporté tout ce que tu as fait ... et comment tu as quitté ton père et ta mère et le pays de ta naissance, pour aller vers un peuple que tu ne connaissais point auparavant. Que l’Éternel te rende ce que tu as fait, et que ta récompense soit entière de la part de l’Éternel, le Dieu d’Israël, sous les ailes duquel tu es venue te réfugier » (Ruth 2:11, 12).</em></blockquote>"),
+            # hi
+            ("<p>इस रोचक वृत्तान्त में हमें",
+             '<blockquote><em>"जो कुछ तूने ... किया है, और तू किस प्रकार अपने माता पिता और जन्म-भूमि को छोड़कर ऐसे लोगों में आई है जिनको पहले तू न जानती थी, यह सब मुझे विस्तार के साथ बताया गया है। यहोवा तेरी करनी का फल दे, और इस्राएल का परमेश्वर यहोवा जिसके पंखों के तले तू शरण लेने आई है, तुझे पूरा प्रतिफल दे" (रूत 2:11, 12)।</em></blockquote>'),
+        ],
+    },
+    "self-denial-versus-self-assertion": {
+        "restored_blocks": [
+            # en
+            ("<p>We might naturally have",
+             '<blockquote><em>"If any man will come after Me, let him deny himself, and take up his cross daily, and follow Me.</em>--LUKE ix. 23.</blockquote>'),
+        ],
+    },
+    "all-sufficiency": {
+        "restored_blocks": [
+            # en
+            ("<p>How pleasant to the heart",
+             '<blockquote><em>"The LORD GOD is a Sun and Shield:<br/> the LORD will give grace and glory:<br/> "No good thing will He withhold from them<br/> that walk uprightly."<br/></em>--PSALM LXXXIV. 11.</blockquote>'),
+        ],
+    },
+    "under-the-shepherds-care": {
+        "restored_blocks": [
+            # en
+            ('<blockquote>"For ye were as', "<h3>A NEW YEAR'S ADDRESS.</h3>"),
+        ],
+    },
+    # Gutenberg #57109 (Hudson Taylor, *Unfailing Springs*) sets the address's
+    # text as a centred display line directly under its <h2> —
+    # `<div class="center">"Whosoever will, let him take the water of life
+    # freely"<br> (Rev. 22:17)</div>` — and the importer dropped it for the
+    # same reason as "The rest of Gutenberg #23438" above. The English block is
+    # spelled exactly as `import_sermons._display_line` now emits it. Each
+    # translation takes its registry Bible's wording of the clause (Arabic
+    # without the Van Dyck vowel marks, as this edition quotes John 4:10; the
+    # Luganda apostrophe straight, as this edition writes it), its own quotation
+    # marks and its corpus's name for the book. `quote_seed` anchors and the uk
+    # translation notes' `block_index` values below it shifted by one.
+    "unfailing-springs": {
+        "restored_blocks": [
+            # en
+            ("<p>THE best evidence of Christianity",
+             '<p>"Whosoever will, let him take the water of life freely"<br/> (Rev. 22:17)</p>'),
+            # ar
+            ("<p>إنّ خير برهان على المسيحية",
+             "<p>«من يرد فليأخذ ماء حياة مجانًا»<br/> (رؤيا 22:17)</p>"),
+            # es
+            ("<p>La mejor evidencia del cristianismo",
+             "<p>«El que quiere, tome del agua de la vida de balde»<br/> (Apocalipsis 22:17)</p>"),
+            # fr
+            ("<p>LA meilleure preuve du christianisme",
+             "<p>« Que celui qui veut, prenne de l’eau de la vie, gratuitement »<br/> (Apocalypse 22:17)</p>"),
+            # hi
+            ("<p>मसीही विश्वास का सबसे उत्तम प्रमाण",
+             '<p>"जो कोई चाहे वह जीवन का जल सेंत-मेंत ले"<br/> (प्रकाशितवाक्य 22:17)</p>'),
+            # lg
+            ("<p>Obujulizi obusinga obulungi",
+             "<p>\"Buli ayagala ajje anywe ku mazzi ag'obulamu ag'obuwa\"<br/> (Okubikkulirwa 22:17)</p>"),
+            # pt
+            ("<p>A MELHOR evidência do cristianismo",
+             '<p>"Quem quiser beba de graça da água da vida"<br/> (Apocalipse 22:17)</p>'),
+            # sw
+            ("<p>Ushahidi bora wa Ukristo",
+             '<p>"Kila anayetaka na anywe maji ya uzima bure"<br/> (Ufunuo 22:17)</p>'),
+            # uk
+            ("<p>Найкращий доказ християнства",
+             "<p>«Хто хоче, нехай приймає воду життя дармо»<br/> (Одкриттє 22:17)</p>"),
         ],
     },
     "essentials-of-prayer": {
@@ -1548,6 +1709,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # xiii. The "lob" in the same sentence is a separate OCR slip in the
             # quoted text and is left for the English pass, which owns wording.
             ("(Job xiii. 8)", "(Job xlii. 8)"),
+            # ar ch6 rendered Rev. 22:17 itself; take the registry Bible's
+            # (Van Dyck) wording, as `unfailing-springs` does, so the language
+            # quotes the verse one way (`tests_verse_consistency`).
+            ("مَن يشأ فليأخذ من ماء الحياة مجانًا", "من يرد فليأخذ ماء حياة مجانًا"),
         ],
     },
     "the-bruised-reed": {
@@ -3302,6 +3467,118 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("SHEPERD", "SHEPHERD"),
             ("days of prosperity aso", "days of prosperity also"),
         ],
+        # Its eight section headings and the Job 1:21 display line, in all nine
+        # editions — see "The rest of Gutenberg #23438" above.
+        "restored_blocks": [
+            # en
+            ("<p>In our meditations on the", "<h3>INTRODUCTORY.</h3>"),
+            ("<p>In the 8th verse of the", "<h3>GOD'S TESTIMONY AND CHALLENGE.</h3>"),
+            ("<p>In the 8th verse of the",
+             '<p><em>"The LORD gave, and the LORD hath taken away; blessed be the Name of the LORD</em>."--Job i.21.</p>'),
+            ("<p>The reply of Satan is noteworthy.", "<h3>THE UNSEEN HEDGE.</h3>"),
+            ("<p>Reverting to the history", "<h3>THE TESTING OF JOB</h3>"),
+            ("<p>And soon Satan showed the", "<h3>SATAN'S MALIGNITY.</h3>"),
+            ("<p>But He who sent the trial", "<h3>GRACE SUFFICIENT.</h3>"),
+            ("<p>Job's trial, however, was", "<h3>DEEPER TRIALS.</h3>"),
+            ("<p>Nor was the blessing GOD",
+             "<h3>THE LOVING-KINDNESS OF THE LORD.</h3>"),
+            # fr
+            ("<p>Dans nos méditations sur", "<h3>INTRODUCTION.</h3>"),
+            ("<p>Au huitième verset du premier",
+             "<h3>LE TÉMOIGNAGE ET LE DÉFI DE DIEU.</h3>"),
+            ("<p>Au huitième verset du premier",
+             "<p><em>« L’ÉTERNEL a donné, et l’ÉTERNEL a ôté ; que le nom de l’ÉTERNEL soit béni</em> ! » — Job 1:21.</p>"),
+            ("<p>La réponse de Satan est", "<h3>LA HAIE INVISIBLE.</h3>"),
+            ("<p>Pour en revenir à l’histoire", "<h3>L’ÉPREUVE DE JOB</h3>"),
+            ("<p>Et bientôt Satan montra", "<h3>LA MALIGNITÉ DE SATAN.</h3>"),
+            ("<p>Mais Celui qui envoya l’épreuve", "<h3>LA GRÂCE SUFFISANTE.</h3>"),
+            ("<p>L’épreuve de Job, cependant,",
+             "<h3>DES ÉPREUVES PLUS PROFONDES.</h3>"),
+            ("<p>La bénédiction que DIEU", "<h3>LA BONTÉ DU SEIGNEUR.</h3>"),
+            # es
+            ("<p>En nuestras meditaciones", "<h3>INTRODUCCIÓN.</h3>"),
+            ("<p>En el versículo 8 del capítulo",
+             "<h3>EL TESTIMONIO Y EL DESAFÍO DE DIOS.</h3>"),
+            ("<p>En el versículo 8 del capítulo",
+             '<p><em>"El SEÑOR dio, y el SEÑOR quitó; sea el Nombre del SEÑOR bendito</em>."—Job 1:21.</p>'),
+            ("<p>La respuesta de Satanás", "<h3>EL VALLADO INVISIBLE.</h3>"),
+            ("<p>Volviendo a la historia", "<h3>LA PRUEBA DE JOB</h3>"),
+            ("<p>Y pronto mostró Satanás", "<h3>LA MALIGNIDAD DE SATANÁS.</h3>"),
+            ("<p>Pero Aquel que envió la", "<h3>GRACIA SUFICIENTE.</h3>"),
+            ("<p>La prueba de Job, sin embargo,", "<h3>PRUEBAS MÁS PROFUNDAS.</h3>"),
+            ("<p>Ni fue pequeña la bendición", "<h3>LA MISERICORDIA DEL SEÑOR.</h3>"),
+            # pt
+            ("<p>Em nossas meditações sobre", "<h3>INTRODUÇÃO.</h3>"),
+            ("<p>No versículo 8 do capítulo",
+             "<h3>O TESTEMUNHO E O DESAFIO DE DEUS.</h3>"),
+            ("<p>No versículo 8 do capítulo",
+             '<p><em>"O SENHOR deu, e o SENHOR tomou; bendito seja o Nome do SENHOR</em>."—Jó 1:21.</p>'),
+            ("<p>A resposta de Satanás é", "<h3>A SEBE INVISÍVEL.</h3>"),
+            ("<p>Voltando à história de", "<h3>A PROVAÇÃO DE JÓ</h3>"),
+            ("<p>E logo Satanás mostrou", "<h3>A MALIGNIDADE DE SATANÁS.</h3>"),
+            ("<p>Mas Aquele que enviou a", "<h3>GRAÇA SUFICIENTE.</h3>"),
+            ("<p>A provação de Jó, contudo,", "<h3>PROVAÇÕES MAIS PROFUNDAS.</h3>"),
+            ("<p>Nem foi pequena a bênção", "<h3>A BENIGNIDADE DO SENHOR.</h3>"),
+            # sw
+            ("<p>Katika tafakari zetu juu", "<h3>UTANGULIZI.</h3>"),
+            ("<p>Katika mstari wa 8 wa sura",
+             "<h3>USHUHUDA NA CHANGAMOTO YA MUNGU.</h3>"),
+            ("<p>Katika mstari wa 8 wa sura",
+             '<p><em>"BWANA alitoa, na BWANA ametwaa; jina la BWANA na lihimidiwe</em>."--Ayubu 1:21.</p>'),
+            ("<p>Jibu la Shetani lastahili", "<h3>BOMA LISILOONEKANA.</h3>"),
+            ("<p>Kurudi katika historia", "<h3>KUJARIBIWA KWA AYUBU</h3>"),
+            ("<p>Na mara Shetani alionyesha", "<h3>UBAYA WA SHETANI.</h3>"),
+            ("<p>Lakini yeye aliyepeleka", "<h3>NEEMA YA KUTOSHA.</h3>"),
+            ("<p>Lakini jaribu la Ayubu,", "<h3>MAJARIBU MAZITO ZAIDI.</h3>"),
+            ("<p>Wala baraka ambayo MUNGU", "<h3>FADHILI ZA BWANA.</h3>"),
+            # lg
+            ("<p>Mu kufumiitiriza kwaffe", "<h3>ENNYANJULA.</h3>"),
+            ("<p>Mu lunyiriri olw’omunaana",
+             "<h3>OBUJULIZI N’OKUSOOMOOZA KWA KATONDA.</h3>"),
+            ("<p>Mu lunyiriri olw’omunaana",
+             '<p><em>"Mukama ye yawa era Mukama y’aggyeewo, erinnya lya Mukama Katonda lyebazibwe</em>."—Yobu 1:21.</p>'),
+            ("<p>Okuddamu kwa Setaani kwa", "<h3>OLUKOMERA OLUTALABIKA.</h3>"),
+            ("<p>Nga tudda ku byafaayo bya", "<h3>OKUGEZESEBWA KWA YOBU</h3>"),
+            ("<p>Amangu ago Setaani yalaga", "<h3>OBUKYAYI BWA SETAANI.</h3>"),
+            ("<p>Naye oyo eyaweereza okugezesebwa", "<h3>EKISA EKIMALA.</h3>"),
+            ("<p>Naye okugezesebwa kwa Yobu",
+             "<h3>OKUGEZESEBWA OKUSINGAWO OBUZITO.</h3>"),
+            ("<p>So n’omukisa Katonda gwe",
+             "<h3>OKWAGALA OKUTAGGWAAWO OKWA MUKAMA.</h3>"),
+            # uk
+            ("<p>У наших роздумах над першою", "<h3>ВСТУП.</h3>"),
+            ("<p>У 8-му вірші 1-го роздїлу", "<h3>БОЖЕ СВІДОЦТВО Й ВИКЛИК.</h3>"),
+            ("<p>У 8-му вірші 1-го роздїлу",
+             "<p><em>«Господь дав, Господь і взяв; нехай буде імя Господнє благословенне</em>!» — Йов 1:21.</p>"),
+            ("<p>Відповідь Сатани прикметна.", "<h3>НЕВИДИМА ЗАГОРОДА.</h3>"),
+            ("<p>Вертаючись до історії Йова:", "<h3>ПРОБА ЙОВОВА</h3>"),
+            ("<p>І скоро Сатана виявив злобу", "<h3>ЗЛОБА САТАНИ.</h3>"),
+            ("<p>Але Той, хто послав пробу,", "<h3>ДОСИТЬ БЛАГОДАТИ.</h3>"),
+            ("<p>Одначе проба Йовова не", "<h3>ГЛИБШІ ПРОБИ.</h3>"),
+            ("<p>І благословеннє, яке Бог", "<h3>МИЛОСТЬ ГОСПОДНЯ.</h3>"),
+            # hi
+            ("<p>पहले भजन पर अपने मनन में", "<h3>भूमिका।</h3>"),
+            ("<p>पहले अध्याय के आठवें पद", "<h3>परमेश्वर की साक्षी और चुनौती।</h3>"),
+            ("<p>पहले अध्याय के आठवें पद",
+             '<p><em>"यहोवा ने दिया और यहोवा ही ने लिया; यहोवा का नाम धन्य है</em>।"—अय्यूब 1:21।</p>'),
+            ("<p>शैतान का उत्तर ध्यान देने", "<h3>अदृश्य बाड़ा।</h3>"),
+            ("<p>अय्यूब के वृत्तान्त पर", "<h3>अय्यूब की परीक्षा</h3>"),
+            ("<p>और शीघ्र ही शैतान ने उस", "<h3>शैतान की दुष्टता।</h3>"),
+            ("<p>परन्तु जिसने परीक्षा भेजी", "<h3>पर्याप्त अनुग्रह।</h3>"),
+            ("<p>तथापि, जैसा हमने देखा,", "<h3>और गहरी परीक्षाएँ।</h3>"),
+            ("<p>और न ही परमेश्वर ने अपने", "<h3>प्रभु की करुणा।</h3>"),
+            # ar
+            ("<p>في تأمّلاتنا في المزمور", "<h3>مقدّمة.</h3>"),
+            ("<p>في العدد الثامن من الأصحاح", "<h3>شهادة الله وتحدّيه.</h3>"),
+            ("<p>في العدد الثامن من الأصحاح",
+             "<p><em>«الربّ أعطى والربّ أخذ، فليكن اسم الربّ مباركًا</em>». — أيّوب 1:21.</p>"),
+            ("<p>وجواب الشيطان جديرٌ بالملاحظة.", "<h3>السياج غير المنظور.</h3>"),
+            ("<p>ونعود إلى تاريخ أيّوب:", "<h3>امتحان أيّوب</h3>"),
+            ("<p>وسرعان ما أظهر الشيطان", "<h3>خبث الشيطان.</h3>"),
+            ("<p>ولكنّ الذي أرسل التجربة", "<h3>نعمة كافية.</h3>"),
+            ("<p>على أنّ تجربة أيّوب لم", "<h3>تجارب أعمق.</h3>"),
+            ("<p>ولم تكن البركة التي أعطاها", "<h3>رحمة الربّ.</h3>"),
+        ],
     },
     # --- Drop caps that lost the space after them -----------------------------
     # An oversized first letter is a separate text run in the PDF, and where the
@@ -3875,6 +4152,17 @@ BODY_CORRECTIONS.setdefault("marks-of-a-true-conversion", {}).setdefault("replac
     ("resurrection and the live", "resurrection and the life"),
     # "to see and know" — "se" is a dropped letter.
     ("thee to se and know", "thee to see and know"),
+    # sw job #2595. Goodwin's Paul "sits nearest the God-man ... in glory"; "fits"
+    # is the long-s/f misread (es "se sienta", fr "siège").
+    ("fits nearest the God-man", "sits nearest the God-man"),
+    # to "put up" a prayer, as the same sermon says three times; "put us" is a
+    # one-letter slip (es "elevabais", fr "faisant monter").
+    ("when ye put us these prayers", "when ye put up these prayers"),
+    # dropped "of": "to the honor of Christianity" (pt/es/fr all render it so).
+    ("to the honor Christianity", "to the honor of Christianity"),
+    # two possessives that lost their "s" ("God's sake" is spelled out 3x here).
+    ("sitting on Christ' right hand", "sitting on Christ's right hand"),
+    ("creatures for God' sake", "creatures for God's sake"),
 ])
 BODY_CORRECTIONS.setdefault("a-divine-and-supernatural-light", {}).setdefault("replacements", []).extend([
     # "concerned" — "concemed" is the classic rn->m scan error; not a word.
@@ -5024,6 +5312,19 @@ BODY_CORRECTIONS.setdefault("how-to-forgive", {}).setdefault("replacements", [])
 BODY_CORRECTIONS.setdefault("divine-songs-for-children", {}).setdefault("replacements", []).extend([
     ("but never play;", "but never pray;"),
     ("hawachezi kamwe", "hawaombi kamwe"),
+])
+
+# Christmas Evans, "The Triumph of Calvary": two slips in the Gutenberg text.
+# "the devil arid his legions" is an OCR misreading of "and". "the Son of
+# Righteousness shall shine" misquotes Malachi 4:2, paired with "the bright and
+# Morning Star" as the sun rising after the star, so the intended word is "Sun".
+# The editions AGREE: es ("el Sol de justicia" / "el diablo y sus legiones"), fr
+# ("le soleil de la justice" / "le diable et ses légions") and sw ("Jua la Haki" /
+# "Ibilisi na majeshi yake") all render the corrected reading. Found while
+# translating into Swahili (#2594).
+BODY_CORRECTIONS.setdefault("the-triumph-of-calvary", {}).setdefault("replacements", []).extend([
+    ("the devil arid his legions", "the devil and his legions"),
+    ("“the Son of Righteousness” shall shine", "“the Sun of Righteousness” shall shine"),
 ])
 
 # Finney, Lectures on Revivals of Religion — the print edition's page numbers,

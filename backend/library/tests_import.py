@@ -894,6 +894,252 @@ class SermonReimportCreateOnlyTests(TestCase):
         self.assertFalse(sermon.is_published)  # NOT resurrected
 
 
+class GutenbergDisplayLineTests(SimpleTestCase):
+    """`extract_gutenberg_section` keeps PG 23438's centred display lines.
+
+    See `import_sermons._display_line`. The markup below is the edition's own,
+    cut down.
+    """
+
+    # Display lines the edition set in "Blessed Adversity", as the importer
+    # must emit them — and as `BODY_CORRECTIONS` restores them.
+    ADVERSITY_LINES = (
+        "<h3>INTRODUCTORY.</h3>",
+        "<h3>GOD'S TESTIMONY AND CHALLENGE.</h3>",
+        '<p><em>"The LORD gave, and the LORD hath taken away; blessed be the '
+        'Name of the LORD</em>."--Job i.21.</p>',
+        "<h3>THE UNSEEN HEDGE.</h3>",
+    )
+
+    PAGE = """<html><body>
+<div class="c1">
+<h3> <a id="badverse">Blessed Adversity.</a></h3>
+</div>
+<div class="c1"><small><strong>INTRODUCTORY.</strong></small></div>
+<p>The history of Job is full of instruction.</p>
+<div class="pg_body_wrapper"><br></div>
+<div class="c1"><small>GOD'S TESTIMONY AND CHALLENGE.</small></div>
+<div class="c1"><em>"The L<small>ORD</small> gave, and the L<small>ORD</small> hath taken away; blessed be the Name of the L<small>ORD</small></em>."--Job i.21.</div>
+<p>In the 8th verse of the 1st chapter.</p>
+<div class="c1"><small>THE UNSEEN HEDGE</small>.</div>
+<p>The reply of Satan is noteworthy.</p>
+<div class="c1"><small>"RIBBAND OF BLUE."</small></div>
+<p>GOD would have all His people wear a badge.</p>
+<div class="pg_body_wrapper"><a class="pagenum" title="88" id="page_88"></a></div>
+<div class="c1">
+<h3> <a id="shepherd">Under the Shepherd's Care.</a></h3>
+</div>
+<div class="c1"><strong><small>A NEW YEAR'S ADDRESS.</small></strong></div>
+<div class="pg_body_wrapper"><br></div>
+<div class="c1"><em>"For ye were as sheep going astray; but are now returned unto the Shepherd and Bishop of your souls."</em>--1 Peter ii. 25.</div>
+<p>"Ye were as sheep going astray." This is evidently addressed to believers.</p>
+<div class="c1">
+<h3> <a id="denial">Self-Denial versus Self-Assertion.</a></h3>
+</div>
+</body></html>"""
+
+    def _extract(self, section):
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        return extract_gutenberg_section(self.PAGE, section)
+
+    def test_display_lines_are_kept_in_reading_order(self):
+        intro, testimony, job, hedge = self.ADVERSITY_LINES
+        self.assertEqual(
+            self._extract("Blessed Adversity"),
+            f"{intro}<p>The history of Job is full of instruction.</p>"
+            f"{testimony}{job}<p>In the 8th verse of the 1st chapter.</p>"
+            # The stop sits outside the small caps in the source; kept.
+            f"{hedge}<p>The reply of Satan is noteworthy.</p>"
+            # Capitals, but opening with a quotation mark: it ends a sentence.
+            '<p>"RIBBAND OF BLUE."</p>'
+            "<p>GOD would have all His people wear a badge.</p>",
+        )
+
+    def test_a_source_heading_still_ends_the_epigraph_search(self):
+        """PG 57109 opens on an <h1>, then an <h2> byline, then John 4:10 as a
+        plain `<p>` — which every stored edition of `unfailing-springs` keeps.
+        Only a display-line subtitle may be skipped to reach the epigraph."""
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = """<html><body>
+<h1>Unfailing Springs</h1>
+<h2>J. Hudson Taylor</h2>
+<p><i>"JESUS answered and said unto her, If thou knewest the gift of GOD.</i></p>
+<h2>Unfailing Springs</h2>
+<p>THE best evidence of Christianity is a Christ-like life.</p>
+</body></html>"""
+        # The level the catalog imports 57109 at (`section_level`).
+        self.assertTrue(extract_gutenberg_section(page, "Unfailing Springs", "h1").startswith(
+            '<h2>J. Hudson Taylor</h2><p><i>"JESUS answered'
+        ))
+
+    def test_a_subtitle_does_not_hide_the_epigraph(self):
+        body = self._extract("Under the Shepherd's Care.")
+        self.assertTrue(body.startswith(
+            "<h3>A NEW YEAR'S ADDRESS.</h3>"
+            '<blockquote><em>"For ye were as sheep going astray;'
+        ))
+        # The study's own <h3> and the next study's wrapper div are not content.
+        self.assertNotIn("Self-Denial", body)
+        self.assertEqual(body.count("<blockquote>"), 1)
+
+    def test_furniture_divs_are_dropped_not_kept_as_lines(self):
+        """A display line loses the div's class, so the sanitizer's drop-by-class
+        policy has to be asked about the div first — or a page number or a
+        stranded footnote ships as a paragraph."""
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = (
+            "<html><body><h3>Sermon</h3><p>Body.</p>"
+            '<div class="footnote">[1] A note text.</div>'
+            '<div class="pagenum">[12]</div>'
+            "<h3>Next</h3></body></html>"
+        )
+        self.assertEqual(extract_gutenberg_section(page, "Sermon"), "<p>Body.</p>")
+
+    def test_a_line_break_separates_heading_words(self):
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = (
+            "<html><body><h3>Sermon</h3><p>Body.</p>"
+            "<div>THE NEGATIVE<br>CONDITIONS</div>"
+            "<h3>Next</h3></body></html>"
+        )
+        self.assertIn("<h3>THE NEGATIVE CONDITIONS</h3>", extract_gutenberg_section(page, "Sermon"))
+
+
+class GutenbergRestoredBlocksMatchImporterTests(SimpleTestCase):
+    """Every English `restored_blocks` line for #23438 is what the importer emits.
+
+    The guard in `restore_dropped_blocks` is a string match on the block, so a
+    re-import must produce the correction's block byte for byte — or the body
+    carries both. EDITION is every display line of the six studies, verbatim
+    from PG 23438, with the prose paragraphs between them stubbed out.
+    """
+
+    EDITION = """<html><body>
+<div class="c1">
+<h3> <a id="BProsp">Blessed Prosperity</a></h3>
+</div>
+<div class="c1">Meditations On The First Psalm.</div>
+<div class="c1"><strong><small>INTRODUCTORY.</small></strong></div>
+<p>Paragraph 1.</p>
+<div class="c1"><small>THE NEGATIVE CONDITIONS OF BLESSING</small></div>
+<div class="c1"><em>"Blessed is the man that walketh not in the counsel of the ungodly."</em></div>
+<p>Paragraph 2.</p>
+<div class="c1"><em>Standeth not in the way of sinners.</em></div>
+<p>Paragraph 3.</p>
+<div class="c1"><em>"Nor sitteth in the seat of the scornful."</em></div>
+<p>Paragraph 4.</p>
+<div class="c1"><small>THE POSITIVE CONDITIONS OF BLESSING.</small></div>
+<p>Paragraph 5.</p>
+<div class="c1"><small>THE OUTCOME IN BLESSING.</small></div>
+<p>Paragraph 6.</p>
+<div class="c1"><small>THE CONTRAST.</small></div>
+<div class="c1"><em>"The ungodly are not so."</em></div>
+<p>Paragraph 7.</p>
+<div class="c1">
+<h3> <a id="badverse">Blessed Adversity.</a></h3>
+</div>
+<div class="c1"><small><strong>INTRODUCTORY.</strong></small></div>
+<p>Paragraph 1.</p>
+<div class="c1"><small>GOD'S TESTIMONY AND CHALLENGE.</small></div>
+<div class="c1"><em>"The L<small>ORD</small> gave, and the L<small>ORD</small> hath taken away; blessed be the Name of the L<small>ORD</small></em>."--Job i.21.</div>
+<p>Paragraph 2.</p>
+<div class="c1"><small>THE UNSEEN HEDGE</small>.</div>
+<p>Paragraph 3.</p>
+<div class="c1"><small>THE TESTING OF JOB</small></div>
+<p>Paragraph 4.</p>
+<div class="c1"><small>SATAN'S MALIGNITY.</small></div>
+<p>Paragraph 5.</p>
+<div class="c1"><small>GRACE SUFFICIENT.</small></div>
+<p>Paragraph 6.</p>
+<div class="c1"><small>DEEPER TRIALS.</small></div>
+<p>Paragraph 7.</p>
+<div class="c1"><small>THE LOVING-KINDNESS OF THE LORD.</small></div>
+<p>Paragraph 8.</p>
+<div class="c1">
+<h3> <a id="Coming">Coming to the King.</a></h3>
+</div>
+<div class="c1"><em>"And King Solomon gave unto the Queen of Sheba all her desire, whatsoever she asked, beside that which Solomon gave her of his royal bounty."</em>--1 Kings x. 13.</div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="Full">A Full Reward.</a></h3>
+</div>
+<div class="c1"><em>"It hath fully been shewed me, all that thou hast done ... and how thou hast left they father and thy mother, and the land of thy nativity, and art come unto a people which thou knewest not heretofore. The L<small>ORD</small> recompense thy work, and a full reward be given thee of the L<small>ORD</small> G<small>OD</small> of Israel, under whose wings thou art come to trust" (Ruth ii. 11, 12).</em></div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="shepherd">Under the Shepherd's Care.</a></h3>
+</div>
+<div class="c1"><strong><small>A NEW YEAR'S ADDRESS.</small></strong></div>
+<div class="c1"><em>"For ye were as sheep going astray; but are now returned unto the Shepherd and Bishop of your souls."</em>--1 Peter ii. 25.</div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="denial">Self-Denial versus Self-Assertion.</a></h3>
+</div>
+<div class="c1"><em>"If any man will come after Me, let him deny himself, and take up his cross daily, and follow Me.</em>--L<small>UKE</small> ix. 23.</div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="Sufficiency">All Sufficiency</a></h3>
+</div>
+<div class="c1"><em>"The L<small>ORD</small> G<small>OD</small> is a Sun and Shield:<br>
+the L<small>ORD</small> will give grace and glory:<br>
+"No good thing will He withhold from them<br>
+that walk uprightly."<br></em>--P<small>SALM LXXXIV</small>. 11.</div>
+<p>Paragraph 1.</p>
+</body></html>"""
+
+    SLUGS = (
+        "blessed-prosperity",
+        "blessed-adversity",
+        "a-full-reward",
+        "self-denial-versus-self-assertion",
+        "all-sufficiency",
+        "under-the-shepherds-care",
+    )
+
+    def test_every_restored_english_block_is_emitted(self):
+        import json
+
+        from library.content_fixtures import SERMONS_DIR
+        from library.corrections import BODY_CORRECTIONS
+        from library.management.commands.import_sermons import extract_gutenberg_section
+        from library.sermon_catalog import SERMONS
+
+        sections = {e.slug: e.section for e in SERMONS}
+        for slug in self.SLUGS:
+            english = json.loads((SERMONS_DIR / f"{slug}.en.json").read_text())[0]["fields"]["body_html"]
+            blocks = [
+                block for _, block in BODY_CORRECTIONS[slug]["restored_blocks"] if block in english
+            ]
+            self.assertTrue(blocks)
+            extracted = extract_gutenberg_section(self.EDITION, sections[slug])
+            for block in blocks:
+                with self.subTest(slug=slug, block=block):
+                    self.assertIn(block, extracted)
+
+    def test_pg_57109s_text_line_is_the_restored_english_block(self):
+        """*Unfailing Springs* sets its text as a `div.center` under the <h2>."""
+        from library.corrections import BODY_CORRECTIONS
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = """<html><body>
+<h1>Unfailing Springs</h1>
+<h2>J. Hudson Taylor</h2>
+<p><i>"JESUS answered and said unto her, If thou knewest the gift of GOD.</i></p>
+<h2>Unfailing Springs</h2>
+<div class="center">"Whosoever will, let him take the water of life freely"<br>
+ (Rev. 22:17)</div>
+<p>THE best evidence of Christianity is a Christ-like life.</p>
+</body></html>"""
+        _, english = BODY_CORRECTIONS["unfailing-springs"]["restored_blocks"][0]
+        self.assertIn(
+            f"<h2>Unfailing Springs</h2>{english}<p>THE best",
+            extract_gutenberg_section(page, "Unfailing Springs", "h1"),
+        )
+
+
 class CcelAbortOnFetchFailureTests(TestCase):
     """A transient section-fetch failure mid-crawl must abort the whole book, not
     ship a partial one — a dropped section renumbers every later chapter, breaking
