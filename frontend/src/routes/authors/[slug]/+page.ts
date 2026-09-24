@@ -433,6 +433,10 @@ export const entries: EntryGenerator = async () => {
 // Bonhoeffer, John Stott, Timothy Keller, Loren Cunningham).
 //
 // Prerender refresh 2026-09-23 (queue job #2563): sw Elisabeth Elliot bio.
+//
+// Prerender refresh 2026-09-24 (queue jobs #2933/#2941/#2947/#2951): es bios for
+// Billy Graham, C. T. Studd, John Calvin, John Hyde, plus Rees Howells, William
+// Carey, Corrie ten Boom and A. W. Tozer.
 export const load: PageLoad = async ({ params, fetch }) => {
 	// Old links and bookmarks to the imprint's author page land on its shelf.
 	// (render.yaml 301s the English URL; this covers the localized ones.)

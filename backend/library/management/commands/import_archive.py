@@ -62,7 +62,12 @@ _CHAPTER = re.compile(
     #   the LEADING JUNK — "\ CHAP. XXVI.", a stray rule-mark the scanner kept.
     #     Capped at two characters so it cannot reach into prose; the numeral is
     #     still validated by `_roman`.
-    r"^\s*[\\/|]{0,2}\s*\[?\s*chap\w*[.,]*\s+([IVXLCYil|]+)[\s.,:;]*"
+    #   the FIRST LETTER — "OHAPTEE XXXIV." (Finney's 1876 Memoirs): a display
+    #     face's C read as O. No English word opens "ohap".
+    #   STACKED I's — "Vm." / "Xn." / "Xin." for VIII / XII / XIII (Finney):
+    #     two or three I's fused into one lowercase letter; `_STACKED_I` undoes
+    #     it. A capital N or M is not a numeral, and `_roman` still rejects it.
+    r"^\s*[\\/|]{0,2}\s*\[?\s*[co]hap\w*[.,]*\s+([IVXLCYilnm|]+)[\s.,:;]*"
     r"(?:[\u2014\u2013-]\s*(.*?))?\s*\]?$", re.I
 )
 #: A bracketed marker whose OPENING was eaten by the scanner. Grosart's chapter
@@ -77,8 +82,14 @@ _CHAPTER_SALVAGE = re.compile(
 
 #: Letter-for-letter confusions a page scanner makes inside a roman numeral.
 _NUMERAL_OCR = str.maketrans({"Y": "V", "y": "v", "l": "I", "|": "I"})
+#: Runs of I's the scanner fused into ONE lowercase letter (see `_CHAPTER`).
+_STACKED_I = str.maketrans({"n": "II", "m": "III"})
 _ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
 _BARE_NUM = re.compile(r"^\s*\d{1,4}\s*$")
+#: The printer's own last line. What follows it is the publisher's catalogue
+#: and the library's date-due card (Finney's 1876 Memoirs: nine pages of
+#: hymnal advertisements), which would otherwise run on as the last chapter.
+_THE_END = re.compile(r"^\s*THE\s+END\.?\s*$")
 _HYPHEN_EOL = re.compile(r"([A-Za-z])-$")
 _HYPHEN_SPACE = re.compile(r"([a-z])-\s+([a-z])")  # OCR split a compound: "fifty- four"
 _WS = re.compile(r"\s+")
@@ -99,6 +110,10 @@ _BAR_RULE = re.compile(r"(?<!\S)\|+(?!\S)|\|+(?=\s*$)")
 #: Dropping it also lets the hyphen-join close a word the scan split on the
 #: same mark ("con-" / "‘ceits").
 _RULE_QUOTE = re.compile(r"^[‘“](?=[A-Za-z])")
+#: A running header with OCR-lowercased letters (see `_is_header`): long enough
+#: that a share is meaningful, and still at least this share capitals.
+_HEADER_MIN_LETTERS = 12
+_HEADER_CAPS_SHARE = 0.8
 #: How far below a work's title its first chapter may sit and still count as
 #: that title's text (rather than a half-title page or a running header).
 _PART_HEADING_GAP = 30
@@ -118,11 +133,23 @@ def _is_header(line: str) -> bool:
     number distinguishes it from a letter's signature ("SUSANNA WESLEY.", no
     number, kept as prose) and from an all-caps opening line (has lowercase, so
     its letters-only core is not upper). Tolerates OCR-mangled page digits
-    (leading '‘€•*] junk) since those are exactly what break a naive regex."""
+    (leading '‘€•*] junk) since those are exactly what break a naive regex.
+
+    Also tolerates a letter or two the scanner LOWERCASED inside the caps —
+    Finney's 1876 Memoirs reads "BIRTH AND EARLY EDUCATIOlf. 3" and "8 MEMOIRS
+    or CHARLES G. Fli^NEY.", and a strict `isupper()` left hundreds of them in
+    the prose. A long line that is still overwhelmingly capitals is a header;
+    a small-caps prose opener ("EARLY in the autumn of 1826") is mostly
+    lowercase and stays prose."""
     if not _DIGIT.search(line):
         return False
     letters = _NON_LETTER.sub("", line)  # str.isupper() ignores the dropped chars
-    return bool(letters) and letters.isupper()
+    if not letters:
+        return False
+    if letters.isupper():
+        return True
+    upper = sum(c.isupper() for c in letters)
+    return len(letters) >= _HEADER_MIN_LETTERS and upper / len(letters) >= _HEADER_CAPS_SHARE
 
 
 _ROMAN_CANON = [
@@ -150,7 +177,7 @@ def _roman(numeral: str) -> int | None:
     contents list starting over, so 16 of Sibbes' 26 chapters were discarded.
     Re-rendering and comparing rejects the mangled numeral instead.
     """
-    numeral = numeral.translate(_NUMERAL_OCR).upper()
+    numeral = numeral.translate(_STACKED_I).translate(_NUMERAL_OCR).upper()
     total = prev = 0
     for ch in reversed(numeral):
         if ch not in _ROMAN:
@@ -161,6 +188,30 @@ def _roman(numeral: str) -> int | None:
     if not total or _to_roman(total) != numeral:
         return None
     return total
+
+
+def _marker_value(numeral: str, prev: str | None) -> int | None:
+    """A chapter marker's number, reading a final "L" as the "I." it may be.
+
+    The scanner often reads a numeral's last I and its period as one "L":
+    Finney's 1876 Memoirs heads chapters "CHAPTEE XXL", "VIIL", "XXXIIL", and
+    Foote's *Brand Plucked* has "CHAPTER XL" for XI. Most of those are not
+    well-formed numerals, so they were dropped and two chapters silently
+    merged; "XL" is well-formed and read as 40. Both readings are tried and the
+    one that CONTINUES the sequence from ``prev`` wins — so a genuine fortieth
+    chapter after XXXIX still reads 40, and a marker that neither reading
+    continues keeps its literal value, exactly as before.
+    """
+    readings = [numeral]
+    if numeral.endswith("L"):
+        readings.append(numeral[:-1] + "I")
+    values = [v for v in map(_roman, readings) if v is not None]
+    if not values:
+        return None
+    after = _roman(prev) if prev else None
+    if after is not None and after + 1 in values:
+        return after + 1
+    return values[0]
 
 
 #: A contents line trails dot leaders and a page number ("... . . . 1", ". .113").
@@ -234,6 +285,14 @@ def _find_part_start(lines: list[str], markers: list[tuple[int, str, str]], part
         if any(j in first_markers for j in range(i + 1, i + 1 + _PART_HEADING_GAP)):
             best = i
     return best
+
+
+def _book_end(lines: list[str], after: int) -> int:
+    """Where the last chapter stops: a "THE END." line, else the end of the scan."""
+    for i in range(after + 1, len(lines)):
+        if _THE_END.match(lines[i]):
+            return i
+    return len(lines)
 
 
 def _find_heading(lines: list[str], heading: str, *, after: int) -> int | None:
@@ -431,7 +490,8 @@ def chapterize(text: str, part: str = "", part_end: str = "") -> list[tuple[str,
     for i, line in enumerate(lines):
         stripped = line.strip()
         m = _CHAPTER.match(stripped) or _CHAPTER_SALVAGE.match(stripped)
-        if m and _roman(m.group(1)) is not None:
+        value = _marker_value(m.group(1), markers[-1][1] if markers else None) if m else None
+        if value is not None:
             # A bracketed heading that has not closed by the end of its line
             # continues onto the next: "[CHAPTER I. — The Text opened and
             # divided. What the Reed is, and what" / "the Bruising.]". Take the
@@ -452,7 +512,9 @@ def chapterize(text: str, part: str = "", part_end: str = "") -> list[tuple[str,
                     spans = j - i
                     if nxt.endswith("]"):
                         break
-            markers.append((i + spans, m.group(1), _WS.sub(" ", title).strip()))
+            # The CANONICAL numeral, so every later `_roman` call agrees with
+            # the reading `_marker_value` chose.
+            markers.append((i + spans, _to_roman(value), _WS.sub(" ", title).strip()))
     if part:
         # Scope to one work first: a volume's other treatises have their own
         # chapter I, which the contents-run rule below would read as a restart.
@@ -475,7 +537,7 @@ def chapterize(text: str, part: str = "", part_end: str = "") -> list[tuple[str,
 
     sections: list[tuple[str, str]] = []
     for n, (start, numeral, inline_title) in enumerate(markers):
-        end = markers[n + 1][0] if n + 1 < len(markers) else (part_limit or len(lines))
+        end = markers[n + 1][0] if n + 1 < len(markers) else (part_limit or _book_end(lines, start))
         block = lines[start + 1 : end]
         if inline_title:
             # "Chap. IV. — Signs of one truly bruised": the title is on the

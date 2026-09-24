@@ -1,3 +1,14 @@
+// prerender refresh 2026-09-24 (queue job #2780): Swahili book — men-who-tended-the-flock-2, an
+// Ochorus Originals devotional on ten faithful pastors across church history plus a Scripture
+// appendix, 13 chapters ("Wanaume Waliolichunga Kundi"). Book pages are prerendered per locale, so
+// /sw/books and the shelf rebuild with the translated title over the shared derived-ground painting
+// and the reader page bakes the 13 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no
+// plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue job #2788): Swahili book — men-and-women-who-gave-everything-2,
+// an Ochorus Originals devotional on ten missionaries who gave everything, 13 chapters ("Wanaume na
+// Wanawake Waliotoa Yote"). Book pages are prerendered per locale, so /sw/books and the shelf rebuild
+// with the translated title over the shared derived-ground painting and the reader page bakes the 13
+// chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #3185): one NEW Swahili book — the-secret-of-guidance,
 // F. B. Meyer's devotional on discerning God's guidance, 9 chapters ("Siri ya Uongozi"). Rebuilds
 // /sw/books so the card carries its translated title over the shared derived-ground painting, and
@@ -520,6 +531,9 @@
 // prerender refresh 2026-09-24 (queue job #1784): Hindi book — women-who-moved-heaven-2, Ochorus
 // Originals ("स्वर्ग को हिला देने वाली महिलाएँ"), 13 chapters. Book pages are prerendered per locale,
 // so /hi/books and the shelf rebuild with the translated title over the shared derived ground.
+// prerender refresh 2026-09-24 (queue job #1791): Hindi book — spurgeon-on-prayer, Spurgeon's twelve
+// sermons on prayer ("प्रार्थना में महान सामर्थ्य"), 13 chapters. Book pages are prerendered per locale,
+// so /hi/books and the shelf rebuild with the translated title over the curated painting.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';

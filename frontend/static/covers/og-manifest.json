@@ -1044,6 +1044,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"finney-memoirs": {
+			"ground": "0d0b8d2c55d10b6c8fe90e5fc67c89601a6faa13d21817842442bb80fdc0fddd",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"first-epistle-of-clement": {
 			"ground": "137cdb7e6283d0991777a24feef91bed0afaf15652c2248870f789f239e635b4",
 			"style": "inscriptional",
@@ -3243,6 +3253,26 @@
 			"scrim": 0.6,
 			"layout": "wash/sage",
 			"bar": 0.11
+		},
+		"sw/men-and-women-who-gave-everything-2": {
+			"ground": "f750a654defcb6fc6fb00b709dc878442c9cbb31346960958f7abe4edc40374e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
+		"sw/men-who-tended-the-flock-2": {
+			"ground": "3edc58175be637bec74b4a6d6a06214a76886b11f94aa1c574ea62750a3d1386",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
 		},
 		"sw/ministry-of-intercession": {
 			"ground": "13694bae434a8d024e0917d9423260dc4f263b243c4d0e3f9f08d3c175ff8ad1",
