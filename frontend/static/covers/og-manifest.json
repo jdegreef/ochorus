@@ -3712,6 +3712,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/rise-up-men-of-god-2": {
+			"ground": "237fd6138cff47600a34b0ba36897467876a5621b625ea9504cd095eec7f2733",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/school-of-prayer": {
 			"ground": "ac43acd2d8f0f3482428b7f0081fadf3501ca6ccc2e3c582406e6e5dd4f879a1",
 			"style": "devotional",

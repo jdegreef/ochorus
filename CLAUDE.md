@@ -126,4 +126,5 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
 - **in-repo `.claude/skills/`**: `translation-worker`, `content-edit-worker`
   (the admin book page's "Fix title" queue), `book-import`, `english-qa`,
   `contemporize-book`, `write-biography`, `quote-extraction`, `write-article`,
-  `page-design` (page anatomy + the design-consistency backlog).
+  `page-design` (page anatomy + the design-consistency backlog), `book-export`
+  (a book's free PDF + EPUB downloads).
