@@ -5,5 +5,13 @@
     "note": [
       "«Внутрішня кімната» is the uk title of the book itself."
     ]
+  },
+  "school-of-prayer": {
+    "title": "Школа молитви",
+    "description": "Чотири тижні в школі молитви з трьома провідниками: Ендрю Мюррей — про те, як сам Господь навчає нас молитися, Д. Л. Муді — про переможну молитву, і Ганна Буїнза — про молитву як щоденний пульс християнського життя.",
+    "note": [
+      "Job #791. Names follow the shipped uk corpus: Мюррей (17×), Муді (44×). Hannah Buyinza has no uk precedent; transliterated Ганна Буїнза.",
+      "The row appears only once all three source books (lord-teach-us-to-pray-2, prevailing-prayer, prayer-the-pulse-of-life) exist in uk — none do yet."
+    ]
   }
 }
