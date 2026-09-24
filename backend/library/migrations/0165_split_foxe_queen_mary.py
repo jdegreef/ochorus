@@ -37,6 +37,7 @@ from library.content_fixtures import book_fixture_path
 
 SLUG = "foxes-book-of-martyrs"
 OLD_CHAPTERS = 22
+OLD_QUEEN_MARY_TITLE = "Persecutions in England During the Reign of Queen Mary"
 
 # (old_order, first_p, last_p, new_order, p_delta)
 RANGES = [
@@ -132,72 +133,141 @@ def rebuild(apps, schema_editor):
 
 
 def move_readers(apps):
+    """Move every saved position on this book, and fence off the old ones.
+
+    The server rows are remapped in place. Readers' devices also cache these
+    positions and sync by union / client timestamp, so a stale device could
+    push an old spot back under the new numbering. Three guards stop that:
+    moved progress and notebook rows get a fresh ``client_updated_at`` so the
+    server copy wins the merge; each bookmark's vacated spot gets a removal
+    tombstone (unless a moved bookmark now lives there); and each mark moved to
+    another chapter is tombstoned, by id, in its old chapter's row. A mark that
+    stays in its chapter with a shifted paragraph can't be fenced this way (same
+    row, same id); those are the few tails of rejoined headings.
+    """
+    from django.utils import timezone
+
     ReadingProgress = apps.get_model("reading", "ReadingProgress")
     Bookmark = apps.get_model("reading", "Bookmark")
     Removal = apps.get_model("reading", "Removal")
     ChapterMarks = apps.get_model("reading", "ChapterMarks")
     JournalEntry = apps.get_model("reading", "JournalEntry")
+    Chapter = apps.get_model("library", "Chapter")
+
+    now = timezone.now()
+    now_ms = int(now.timestamp() * 1000)
+    titles = dict(
+        Chapter.objects.filter(book__slug=SLUG, book__language="en").values_list("order", "title")
+    )
+
+    known_titles = set(titles.values()) | {OLD_QUEEN_MARY_TITLE}
 
     for row in ReadingProgress.objects.filter(kind="book", book_slug=SLUG):
-        row.chapter_order, row.paragraph_index = remap(row.chapter_order, row.paragraph_index)
-        row.save(update_fields=["chapter_order", "paragraph_index"])
+        moved = remap(row.chapter_order, row.paragraph_index)
+        if moved == (row.chapter_order, row.paragraph_index):
+            continue
+        row.chapter_order, row.paragraph_index = moved
+        row.client_updated_at = now
+        row.save(update_fields=["chapter_order", "paragraph_index", "client_updated_at", "updated_at"])
 
-    # Unique per spot: rebuild the set, dropping a second bookmark that lands
-    # on the same paragraph (the two halves of a rejoined heading).
-    for model, filt in (
-        (Bookmark, {"kind": "book", "book_slug": SLUG}),
-        (Removal, {"domain": "bookmark", "kind": "book", "slug": SLUG}),
-    ):
-        rows = list(model.objects.filter(**filt))
-        model.objects.filter(pk__in=[r.pk for r in rows]).delete()
-        seen = set()
-        for r in rows:
-            r.chapter_order, r.paragraph_index = remap(r.chapter_order, r.paragraph_index)
-            key = (r.profile_id, r.chapter_order, r.paragraph_index)
-            if key in seen:
-                continue
-            seen.add(key)
-            r.pk = None
-            r.save()
+    # Existing bookmark tombstones move with the numbering, like the bookmarks.
+    rems = list(Removal.objects.filter(domain="bookmark", kind="book", slug=SLUG))
+    for r in rems:
+        Removal.objects.filter(pk=r.pk).update(chapter_order=r.chapter_order + 10_000)
+    seen = set()
+    for r in rems:
+        order, p = remap(r.chapter_order, r.paragraph_index)
+        key = (r.profile_id, order, p)
+        clash = Removal.objects.filter(
+            profile_id=r.profile_id, domain="bookmark", kind="book", slug=SLUG,
+            chapter_order=order, paragraph_index=p,
+        ).exists()
+        if key in seen or clash:
+            Removal.objects.filter(pk=r.pk).delete()
+            continue
+        seen.add(key)
+        Removal.objects.filter(pk=r.pk).update(chapter_order=order, paragraph_index=p)
+
+    # Bookmarks move IN PLACE (a re-insert would reset created_at). The spot is
+    # unique, so park every row on a temporary order first, then set the final
+    # one; a second bookmark landing on the same paragraph (the two halves of a
+    # rejoined heading) is dropped.
+    rows = list(Bookmark.objects.filter(kind="book", book_slug=SLUG))
+    old_spots = {r.pk: (r.chapter_order, r.paragraph_index) for r in rows}
+    for r in rows:
+        Bookmark.objects.filter(pk=r.pk).update(chapter_order=r.chapter_order + 10_000)
+    taken = set()
+    for r in rows:
+        order, p = remap(*old_spots[r.pk])
+        key = (r.profile_id, order, p)
+        if key in taken:
+            Bookmark.objects.filter(pk=r.pk).delete()
+            continue
+        taken.add(key)
+        fields = {"chapter_order": order, "paragraph_index": p}
+        if r.title in known_titles:  # cached chapter title: follow the move
+            fields["title"] = titles.get(order, r.title)
+        Bookmark.objects.filter(pk=r.pk).update(**fields)
+    for r in rows:
+        spot = old_spots[r.pk]
+        if remap(*spot) == spot or (r.profile_id, *spot) in taken:
+            continue
+        Removal.objects.get_or_create(
+            profile_id=r.profile_id,
+            domain="bookmark",
+            kind="book",
+            slug=SLUG,
+            chapter_order=spot[0],
+            paragraph_index=spot[1],
+            defaults={"removed_at": now},
+        )
 
     # One marks row per (reader, chapter): a chapter-16 row fans out across the
-    # eight parts; its tombstones go with every part (they are keyed by id).
+    # eight parts, and its tombstones go to every part it spans.
     rows = list(ChapterMarks.objects.filter(kind="book", book_slug=SLUG))
     ChapterMarks.objects.filter(pk__in=[r.pk for r in rows]).delete()
     merged: dict[tuple, dict] = {}
+
+    def slot(profile_id, language, order):
+        return merged.setdefault((profile_id, language, order), {"marks": [], "deleted": {}})
+
     for r in rows:
+        spans = {remap(r.chapter_order, 0)[0], remap(r.chapter_order, 10_000)[0]}
+        if r.chapter_order == 16:
+            spans = set(range(16, 24))
+        for order in spans:
+            slot(r.profile_id, r.language, order)["deleted"].update(r.deleted or {})
         for m in r.marks or []:
             new_order, new_p = remap(r.chapter_order, int(m.get("p", 0)))
-            key = (r.profile_id, r.language, new_order)
-            slot = merged.setdefault(key, {"marks": [], "deleted": {}})
-            slot["marks"].append({**m, "p": new_p})
-            slot["deleted"].update(r.deleted or {})
-        if not r.marks and r.deleted:
-            new_order, _ = remap(r.chapter_order, 0)
-            key = (r.profile_id, r.language, new_order)
-            merged.setdefault(key, {"marks": [], "deleted": {}})["deleted"].update(r.deleted)
-    for (profile_id, language, order), slot in merged.items():
+            slot(r.profile_id, r.language, new_order)["marks"].append({**m, "p": new_p})
+            if new_order != r.chapter_order and m.get("id"):
+                slot(r.profile_id, r.language, r.chapter_order)["deleted"][m["id"]] = now_ms
+    for (profile_id, language, order), s in merged.items():
+        if not s["marks"] and not s["deleted"]:
+            continue
         ChapterMarks.objects.create(
             profile_id=profile_id,
             kind="book",
             book_slug=SLUG,
             language=language,
             chapter_order=order,
-            marks=slot["marks"],
-            deleted=slot["deleted"],
+            marks=s["marks"],
+            deleted=s["deleted"],
         )
 
-    for e in JournalEntry.objects.filter(source__isnull=False):
+    for e in JournalEntry.objects.filter(source__kind="book", source__slug=SLUG):
         s = e.source
-        if not isinstance(s, dict) or s.get("kind") != "book" or s.get("slug") != SLUG:
-            continue
         try:
             order, p = int(s.get("order", 1)), int(s.get("p", 0))
         except (TypeError, ValueError):
             continue
-        s["order"], s["p"] = remap(order, p)
+        moved = remap(order, p)
+        if moved == (order, p):
+            continue
+        s["order"], s["p"] = moved
         e.source = s
-        e.save(update_fields=["source"])
+        e.client_updated_at = now
+        e.save(update_fields=["source", "client_updated_at", "updated_at"])
 
 
 def noop(apps, schema_editor):

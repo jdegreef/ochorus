@@ -164,6 +164,8 @@ SPLITS: dict[str, list[tuple[str, str | None]]] = {
     ],
 }
 
+_WRAPS_AFTER_PERIOD = ("and Reader of St.", "R. Wright and W.")
+
 # A line of dialogue the source set as a heading (Julius Palmer's examination).
 _DEMOTED = {'Sir Richard: "How may that be?"'}
 
@@ -223,7 +225,7 @@ def _join_wrapped_headings(s) -> None:
     CCEL set a long section title one printed line per heading ("John Rogers,
     Vicar of St. Sepulchre's, and Reader of St." / "Paul's, London"), so the
     reader showed two headings where the book has one. A heading that ends
-    without terminal punctuation (or in an abbreviation or initial) continues
+    without terminal punctuation (or in one of `_WRAPS_AFTER_PERIOD`) continues
     into the same-level heading after it — unless that next "heading" is a full
     sentence (ch. XXI sets "This was
     known at Nismes on the thirteenth of April, 1814." under a title), which is
@@ -239,11 +241,11 @@ def _join_wrapped_headings(s) -> None:
             nxt = _next_block(h)
             if nxt is None or getattr(nxt, "name", None) != h.name:
                 break
-            # "…Reader of St." / "…R. Wright and W." end in an abbreviation or
-            # an initial, not a sentence — those still continue.
-            if re.search(r"[.!?:;\"”]$", _heading_text(h)) and not re.search(
-                r"\b[A-Z][a-z]?\.$", _heading_text(h)
-            ):
+            # Two titles break after an abbreviation or an initial, which
+            # reads as a sentence end; they are named, not inferred, so a
+            # future title ending in "Dr." or "I." is never glued to the next.
+            text_so_far = _heading_text(h)
+            if re.search(r"[.!?:;\"”]$", text_so_far) and not text_so_far.endswith(_WRAPS_AFTER_PERIOD):
                 break
             text = _heading_text(nxt)
             if text.endswith(".") and len(text.split()) > 8:
