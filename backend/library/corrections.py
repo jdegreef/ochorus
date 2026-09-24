@@ -902,15 +902,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # both printings above spell "(see 'Sixth Day')".
         #
         # NOT `source_fixes`: the parentheses are what the extractor made of a
-        # link, not what Murray printed. English-only edition, so nothing to
-        # settle by hand in a translation.
+        # link, not what Murray printed. These pairs are English-only: the es,
+        # fr, pt and sw editions were all translated after #1929 from the
+        # repaired English, so they shipped with the references and the ch33
+        # headings in their own words and need no pairs of their own.
         #
         # ch33 (Notes) lost all seven of its `NOTE A.`–`NOTE G.` headings to a
         # DIFFERENT selector: `[class*=note i]`, written for CCEL's footnote
         # apparatus, also matched Gutenberg's own `class="note"`. That selector
         # is FIXED at the source now (`sanitize._is_gutenberg_note_content`), so
         # no future import loses them — but these rows are never re-imported, so
-        # ch33 on the shelf is still seven bare `<hr/>`s with no headings.
+        # ch33 shipped as seven bare `<hr/>`s with no headings until #1929.
         #
         # They go back via `restored_blocks`, the mechanism
         # `ministry-of-intercession` uses for byte-identical damage from the
