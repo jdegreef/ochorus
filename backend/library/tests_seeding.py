@@ -645,27 +645,6 @@ class SeedBooksChapterDriftTests(TestCase):
             chapter.refresh_from_db()
             self.assertEqual(chapter.body_html, corrected)  # …nor reverted
 
-    def test_drift_check_failure_never_aborts_the_seed(self):
-        # The drift pass runs inside seed_books' @transaction.atomic handle(),
-        # so a bug in this diagnostics-only code must not roll back a good seed
-        # or fail the deploy — it's caught and reported, and the command still
-        # succeeds (creating a book that was missing).
-
-        from django.core.management import call_command
-
-        self.book.delete()  # so this run has real work to commit
-        out = StringIO()
-        with patch(
-            "library.management.commands.seed_books.chapter_drift_reason",
-            side_effect=RuntimeError("boom"),
-        ):
-            call_command("seed_books", stdout=out, stderr=out)
-        self.assertIn("Chapter-drift check skipped", out.getvalue())
-        # The seed itself committed despite the diagnostics blowing up.
-        self.assertTrue(
-            Book.objects.filter(slug=self.book.slug, language="en").exists()
-        )
-
 
 class SeedSermonsTests(TestCase):
     def test_creates_missing_authors_from_fixture(self):

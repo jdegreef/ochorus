@@ -258,8 +258,9 @@ existing `<slug>.<lang>.json` in the same PR:
   `<slug>.<lang>.json` means shipped.
 - **Reaching prod:** `seed_books` appends the new chapters to each existing
   edition on deploy (since 2026-09-23; #3104 predated that and needed migration
-  0162). Put a frontend touch in the PR or a follow-up so the prerendered
-  contents list rebuilds, and verify by chapter count on the live API
+  0162). The fixture change triggers the web build, but it can race the API
+  release — if the prerendered contents list is stale after deploy, force a
+  rebuild with a frontend touch. Verify by chapter count on the live API
   (`/api/library/books/<slug>/?language=<lang>`), not the fixture.
 
 **Sermon** — same shape, smaller: single body instead of chapters; translate

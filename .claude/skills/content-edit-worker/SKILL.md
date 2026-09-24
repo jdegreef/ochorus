@@ -91,8 +91,9 @@ same claim → worktree → edit → verify → ship loop, with the per-kind edi
    your edit: it should log `~ <slug> [<lang>] chapters: 0 added, 1 updated`,
    the chapter reads the new title, and a search for a distinctive word of it
    finds it. `manage.py content_diff` renders the fixture change as one line.
-   After deploy, the job is backend-only — force a web rebuild (frontend touch)
-   so the prerendered page picks it up.
+   A fixture change triggers the web build too (render.yaml `buildFilter`), but
+   it races the API release and can prerender the OLD title — after deploy,
+   check the static page and, if stale, force a rebuild with a frontend touch.
 7. **Ship.** Open a PR (`/simplify` + `/code-review high` if anything is
    logic-bearing; a plain retitle usually isn't). Reference the issue. On green,
    squash-merge (the user's standing instruction), then **close the issue**.

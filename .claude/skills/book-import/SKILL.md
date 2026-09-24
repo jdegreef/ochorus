@@ -725,9 +725,11 @@ dropped; chapters under 120 words are dropped as stubs.
     but never deletes or renumbers (chapter `order` is a public contract). Before
     that it synced nothing and 379 fixture-only fixes sat unshipped. So a
     re-chapterize that drops/merges chapters still ships a migration (see
-    `ship-content-fix`; `0134` is the model); anything else doesn't. A backend-only
-    PR skips the web build — force a prerender with a frontend touch after it
-    deploys. Verify on the live BOOK body, not just the API. *(2026-09)*
+    `ship-content-fix`; `0134` is the model); anything else doesn't — and a
+    chapter migration WITHOUT the fixture edit is reverted by `seed_books` in the
+    same release. A fixture change triggers the web build, but it can race the
+    API release and prerender the old text; check the static page, and force a
+    rebuild with a frontend touch if stale. *(2026-09)*
 - **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
   The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
   parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted
