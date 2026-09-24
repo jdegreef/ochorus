@@ -624,6 +624,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"es/holy-in-christ": {
+			"ground": "880e110e550cae6889d381d66ea533aee70f5bea76c2da83e84019dca5efb7ab",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.045
+		},
 		"es/how-to-succeed-in-the-christian-life": {
 			"ground": "ce12a3dec2a82f99c8561a1a213e498d3d7a7a7d9ca86b1a319565b2f819dd1d",
 			"style": "revival",

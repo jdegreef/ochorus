@@ -1,3 +1,9 @@
+// prerender refresh 2026-09-24 (queue job #1455): Spanish book — holy-in-christ, Andrew Murray's
+// month of daily meditations on holiness, 33 chapters ("Santo en Cristo"). Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title and the
+// reader page bakes the 33 chapters. No plans/+page.ts touch owed — holy-in-christ backs the
+// curated pursuit-of-holiness plan, but its other source books (a-serious-call,
+// plain-account-christian-perfection) have no es edition yet, so seed_plans creates no es plan row.
 // prerender refresh 2026-09-24: Spanish book — absolute-surrender (#1596), Andrew Murray's
 // Keswick addresses on yielding wholly to God ("Entrega absoluta"), 9 chapters. Book pages are
 // prerendered per locale, so /es/books and the shelf rebuild with the translated title and the
