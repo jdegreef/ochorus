@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #2788): Swahili book — men-and-women-who-gave-everything-2,
+// an Ochorus Originals devotional on ten missionaries who gave everything, 13 chapters ("Wanaume na
+// Wanawake Waliotoa Yote"). Book pages are prerendered per locale, so /sw/books and the shelf rebuild
+// with the translated title over the shared derived-ground painting and the reader page bakes the 13
+// chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #3185): one NEW Swahili book — the-secret-of-guidance,
 // F. B. Meyer's devotional on discerning God's guidance, 9 chapters ("Siri ya Uongozi"). Rebuilds
 // /sw/books so the card carries its translated title over the shared derived-ground painting, and

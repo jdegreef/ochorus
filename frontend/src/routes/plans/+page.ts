@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-24 (queue job #2788): sw plan ACTIVATED — first-steps-for-teens ("Hatua
+// za Kwanza: Imani kwa Vijana"), backed by around-the-wicket-gate and men-and-women-who-gave-
+// everything-2. Shipping men-and-women-who-gave-everything-2.sw completes the sw source-book set, so
+// seed_plans creates the (first-steps-for-teens, sw) row; /sw/plans re-crawls to bake the new card.
 // prerender refresh 2026-09-24 (queue job #3185): sw plan prose — waiting-on-god-trust ("Kumngojea
 // Mungu: Maisha ya Kumtumaini"), the CURATED plan whose third source book, the-secret-of-guidance,
 // now ships in sw, so seed_plans creates the plan row in sw. /sw/plans re-crawls to bake the card.

@@ -92,5 +92,12 @@
     "note": [
       "Single-book plan backed by the sw edition of school-of-prayer (book title “Pamoja na Kristo katika Shule ya Maombi”); the card phrase “Shule ya Maombi” matches the shipped book title, and “Bwana, utufundishe kuomba” is the SUV Luke 11:1 wording the book uses. Added by the book:school-of-prayer -> sw job (#3148), which makes this LAUNCH plan creatable in sw."
     ]
+  },
+  "first-steps-for-teens": {
+    "title": "Hatua za Kwanza: Imani kwa Vijana",
+    "description": "Matembezi ya kwanza pamoja na Yesu, kwa wasomaji vijana. Charles Spurgeon anakukaribisha langoni kwa msaada ulio rahisi kabisa kwa yeyote anayetafuta njia yake kwa Kristo; kisha hadithi za kweli za wanaume na wanawake waliomtolea Yeye yote zinaonyesha jinsi maisha hayo yanavyokuwa — vitabu viwili vifupi kwa muda wa takribani wiki tatu.",
+    "note": [
+      "Job #2788. Source books: around-the-wicket-gate (Swahili edition shipped, «Karibu na Lango Jembamba») and men-and-women-who-gave-everything-2 (Swahili edition shipped in THIS PR, «Wanaume na Wanawake Waliotoa Yote»). With men-and-women now in sw, both source books are published in Swahili, so seed_plans creates the (first-steps-for-teens, sw) row — hence the prose must ship in this same PR. Title/description echo the shipped Swahili book titles («langoni» for the wicket gate, «wanaume na wanawake waliomtolea Yeye yote» for the biographies)."
+    ]
   }
 }
