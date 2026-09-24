@@ -1,0 +1,274 @@
+{
+ "kind": "book",
+ "slug": "soar-like-the-eagle-3",
+ "language": "es",
+ "job_issue": 1779,
+ "references": [
+  {
+   "reference": "Isaías 40:28-31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 103:1-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corintios 5:17",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.es.json"
+  },
+  {
+   "reference": "1 Corintios 15:53",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tesalonicenses 5:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corintios 6:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 12:1",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Cantares 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 22:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 4:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 11:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 12:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 12:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 4:7-11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 12:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timoteo 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Reyes 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 6:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Números 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 17:20-23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 13:3-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éxodo 3:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éxodo 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 13:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 17:15-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 21:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 1:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 16:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Reyes 6:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Reyes 6:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 3:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 121:1-2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 11:28-30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 16:18",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Gálatas 6:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 23:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 25:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 4:11-13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 12:21",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "1 Corintios 12:4-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 12:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 4:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timoteo 1:6-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 4:18-19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 11:3",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Mateo 11:4-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 20:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 24:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 5:18",
+   "status": "mined",
+   "source_file": "ministry-of-intercession.es.json"
+  },
+  {
+   "reference": "2 Timoteo 4:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 12:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 40:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colosenses 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 12:19",
+   "status": "self_rendered"
+  }
+ ]
+}
