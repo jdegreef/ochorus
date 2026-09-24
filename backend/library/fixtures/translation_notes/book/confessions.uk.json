@@ -1,0 +1,5505 @@
+{
+ "kind": "book",
+ "slug": "confessions",
+ "language": "uk",
+ "job_issue": 2805,
+ "pull_request": 3281,
+ "references": [
+  {
+   "reference": "Psalm 145:3",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 147:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Peter 5:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalm 22:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "paraphrase woven into Augustine's sentence"
+  },
+  {
+   "reference": "Psalm 139:8",
+   "status": "self_rendered",
+   "block_index": 3,
+   "why": "Latin reading (hell) differs from Kulish; re-personed"
+  },
+  {
+   "reference": "Romans 11:36",
+   "status": "self_rendered",
+   "block_index": 3,
+   "why": "adapted into relative clause addressed to God"
+  },
+  {
+   "reference": "Jeremiah 23:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Psalm 18:31",
+   "status": "self_rendered",
+   "block_index": 7,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 35:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 35:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 27:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 19:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 19:13",
+   "status": "self_rendered",
+   "block_index": 10,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 116:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 32:5",
+   "status": "self_rendered",
+   "block_index": 10,
+   "why": "re-personed into a question addressed to God"
+  },
+  {
+   "reference": "Psalm 27:12",
+   "status": "self_rendered",
+   "block_index": 10,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 130:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "self_rendered",
+   "block_index": 12,
+   "why": "abbreviated, applied to Augustine"
+  },
+  {
+   "reference": "Jeremiah 12:15",
+   "status": "self_rendered",
+   "block_index": 12,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 15,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 102:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Exodus 16:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Job 14:4",
+   "status": "self_rendered",
+   "block_index": 17,
+   "why": "LXX/Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 92:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 51:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 22:2",
+   "status": "self_rendered",
+   "block_index": 22,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Galatians 4:26",
+   "status": "self_rendered",
+   "block_index": 27,
+   "why": "brief allusion applied to the Church"
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "self_rendered",
+   "block_index": 30,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 78:39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "James 4:4",
+   "status": "self_rendered",
+   "block_index": 33,
+   "why": "adapted: fornication for enmity, addressed to God"
+  },
+  {
+   "reference": "Psalm 61:1",
+   "status": "self_rendered",
+   "block_index": 38,
+   "why": "Latin reading; abbreviated with vocative"
+  },
+  {
+   "reference": "Psalm 84:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 38
+  },
+  {
+   "reference": "Psalm 86:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 56
+  },
+  {
+   "reference": "Isaiah 42:14",
+   "status": "self_rendered",
+   "block_index": 56,
+   "why": "Latin reading differs from Kulish; turned into a question"
+  },
+  {
+   "reference": "Psalm 27:8",
+   "status": "self_rendered",
+   "block_index": 56,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Luke 15:13",
+   "status": "self_rendered",
+   "block_index": 56,
+   "why": "paraphrase woven into sentence"
+  },
+  {
+   "reference": "Psalm 31:22",
+   "status": "self_rendered",
+   "block_index": 58,
+   "why": "Latin reading; re-personed"
+  },
+  {
+   "reference": "Matthew 19:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 58
+  },
+  {
+   "reference": "Daniel 10:8",
+   "status": "self_rendered",
+   "block_index": 61,
+   "why": "Latin reading (contabuit species mea) differs from Kulish"
+  },
+  {
+   "reference": "1 Corinthians 7:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 64
+  },
+  {
+   "reference": "1 Corinthians 7:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 64
+  },
+  {
+   "reference": "1 Corinthians 7:32",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 64
+  },
+  {
+   "reference": "1 Corinthians 7:33",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 64
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 65
+  },
+  {
+   "reference": "Psalm 94:20",
+   "status": "self_rendered",
+   "block_index": 65,
+   "why": "Latin reading (fingis dolorem in praecepto) differs from Kulish"
+  },
+  {
+   "reference": "Deuteronomy 32:39",
+   "status": "self_rendered",
+   "block_index": 65,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 130:1",
+   "status": "self_rendered",
+   "block_index": 67,
+   "why": "paraphrase woven into sentence"
+  },
+  {
+   "reference": "1 Corinthians 3:9",
+   "status": "self_rendered",
+   "block_index": 67,
+   "why": "allusion re-shaped into address"
+  },
+  {
+   "reference": "Romans 1:25",
+   "status": "self_rendered",
+   "block_index": 68,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Philippians 2:12",
+   "status": "self_rendered",
+   "block_index": 68,
+   "why": "stock phrase fitted to narrative"
+  },
+  {
+   "reference": "Jeremiah 2:27",
+   "status": "self_rendered",
+   "block_index": 68,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "status": "self_rendered",
+   "block_index": 69,
+   "why": "re-personed; grammar of the sentence"
+  },
+  {
+   "reference": "Jeremiah 51:6",
+   "status": "self_rendered",
+   "block_index": 70,
+   "why": "paraphrase in narrative"
+  },
+  {
+   "reference": "Psalm 73:7",
+   "status": "self_rendered",
+   "block_index": 70,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Romans 2:15",
+   "status": "self_rendered",
+   "block_index": 72,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 64:10",
+   "status": "self_rendered",
+   "block_index": 74,
+   "why": "Latin reading, re-shaped"
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "self_rendered",
+   "block_index": 78,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 73:27",
+   "status": "self_rendered",
+   "block_index": 79,
+   "why": "Latin reading (fornicatur abs te) differs from Kulish"
+  },
+  {
+   "reference": "Job 7:2",
+   "status": "self_rendered",
+   "block_index": 79,
+   "why": "Latin reading differs, adapted"
+  },
+  {
+   "reference": "Psalm 116:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Romans 6:21",
+   "status": "self_rendered",
+   "block_index": 83,
+   "why": "re-personed into first person"
+  },
+  {
+   "reference": "Psalm 19:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 85
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "self_rendered",
+   "block_index": 87,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "2 Corinthians 2:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 92
+  },
+  {
+   "reference": "Psalm 119:176",
+   "status": "self_rendered",
+   "block_index": 93,
+   "why": "allusion re-shaped into Augustine's sentence"
+  },
+  {
+   "reference": "Psalm 144:2",
+   "status": "self_rendered",
+   "block_index": 95,
+   "why": "re-personed into address to God; Latin reading"
+  },
+  {
+   "reference": "Job 12:13",
+   "status": "self_rendered",
+   "block_index": 99,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Colossians 2:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "James 1:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 103
+  },
+  {
+   "reference": "John 5:26",
+   "status": "self_rendered",
+   "block_index": 103,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Luke 15:16",
+   "status": "self_rendered",
+   "block_index": 104,
+   "why": "allusion woven into Augustine's sentence"
+  },
+  {
+   "reference": "Proverbs 9:13",
+   "status": "self_rendered",
+   "block_index": 104,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Proverbs 9:17",
+   "status": "self_rendered",
+   "block_index": 104,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "self_rendered",
+   "block_index": 106,
+   "why": "paraphrase in indirect speech"
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "self_rendered",
+   "block_index": 106,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Job 14:1",
+   "status": "self_rendered",
+   "block_index": 107,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "self_rendered",
+   "block_index": 110,
+   "why": "recast into third person, rhetorical question"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "self_rendered",
+   "block_index": 110,
+   "why": "recast into third person"
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "Augustine's variant: pride of life read as lust of rule"
+  },
+  {
+   "reference": "Psalm 144:9",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "allusion, applied to the Commandments"
+  },
+  {
+   "reference": "Acts 26:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 111
+  },
+  {
+   "reference": "Psalm 36:9",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "vocative title of God"
+  },
+  {
+   "reference": "Psalm 102:20",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 75:5",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "allusion re-shaped"
+  },
+  {
+   "reference": "Psalm 144:7",
+   "status": "self_rendered",
+   "block_index": 117,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 40:2",
+   "status": "self_rendered",
+   "block_index": 118,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 88:2",
+   "status": "self_rendered",
+   "block_index": 118,
+   "why": "Latin reading, recast into third person"
+  },
+  {
+   "reference": "Psalm 116:17",
+   "status": "self_rendered",
+   "block_index": 122,
+   "why": "re-personed into infinitive of Augustine's prayer"
+  },
+  {
+   "reference": "John 6:27",
+   "status": "self_rendered",
+   "block_index": 122,
+   "why": "paraphrase applied to God"
+  },
+  {
+   "reference": "Psalm 74:21",
+   "status": "self_rendered",
+   "block_index": 122,
+   "why": "Latin reading (confiteantur), re-personed"
+  },
+  {
+   "reference": "Psalm 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 124
+  },
+  {
+   "reference": "Psalm 73:27",
+   "status": "self_rendered",
+   "block_index": 125,
+   "why": "Latin reading (fornicatur abs te) differs from Kulish"
+  },
+  {
+   "reference": "Hosea 12:1",
+   "status": "self_rendered",
+   "block_index": 125,
+   "why": "Latin reading (pascit ventos) differs from Kulish"
+  },
+  {
+   "reference": "Hosea 12:1",
+   "status": "self_rendered",
+   "block_index": 125,
+   "why": "Latin reading (pascit ventos), second occurrence"
+  },
+  {
+   "reference": "Psalm 41:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 127
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 127
+  },
+  {
+   "reference": "Romans 2:6",
+   "status": "self_rendered",
+   "block_index": 127,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 127
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 128,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 131
+  },
+  {
+   "reference": "Psalm 106:2",
+   "status": "self_rendered",
+   "block_index": 132,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 11:33",
+   "status": "self_rendered",
+   "block_index": 132,
+   "why": "re-personed; spliced with Ps 36:6 'great deep'"
+  },
+  {
+   "reference": "Psalm 42:5a",
+   "status": "self_rendered",
+   "block_index": 133,
+   "why": "indirect speech"
+  },
+  {
+   "reference": "Psalm 42:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 133
+  },
+  {
+   "reference": "Psalm 25:15",
+   "status": "self_rendered",
+   "block_index": 137,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Jeremiah 23:24",
+   "status": "self_rendered",
+   "block_index": 143,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 119:142",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 143
+  },
+  {
+   "reference": "Psalm 80:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 145
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 148,
+   "why": "re-cast into passive future address to the soul"
+  },
+  {
+   "reference": "Isaiah 46:8",
+   "status": "self_rendered",
+   "block_index": 151,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 19:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 152
+  },
+  {
+   "reference": "Psalm 19:5b",
+   "status": "self_rendered",
+   "block_index": 152,
+   "why": "Latin/LXX reading differs from Kulish (giant)"
+  },
+  {
+   "reference": "John 1:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 152
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 152
+  },
+  {
+   "reference": "Psalm 41:4",
+   "status": "self_rendered",
+   "block_index": 152,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Psalm 4:2",
+   "status": "self_rendered",
+   "block_index": 152,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 73:9",
+   "status": "self_rendered",
+   "block_index": 152,
+   "why": "re-personed into second person"
+  },
+  {
+   "reference": "Psalm 84:6",
+   "status": "self_rendered",
+   "block_index": 152,
+   "why": "Latin reading, fragment"
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "self_rendered",
+   "block_index": 157,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 10:29",
+   "status": "self_rendered",
+   "block_index": 157,
+   "why": "paraphrase, re-personed"
+  },
+  {
+   "reference": "Ephesians 4:14",
+   "status": "self_rendered",
+   "block_index": 158,
+   "why": "paraphrase, first person"
+  },
+  {
+   "reference": "Psalm 72:18",
+   "status": "self_rendered",
+   "block_index": 160,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "Psalm 18:28",
+   "status": "self_rendered",
+   "block_index": 161,
+   "why": "Latin reading, all in second person"
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 161,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 1:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 161
+  },
+  {
+   "reference": "James 1:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 161
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 162,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 78:39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 162
+  },
+  {
+   "reference": "John 3:29",
+   "status": "self_rendered",
+   "block_index": 163,
+   "why": "recast as infinitive in first person"
+  },
+  {
+   "reference": "Psalm 51:8",
+   "status": "self_rendered",
+   "block_index": 163,
+   "why": "negated and Latin reading (humbled)"
+  },
+  {
+   "reference": "Genesis 3:18",
+   "status": "self_rendered",
+   "block_index": 166,
+   "why": "re-personed, first person"
+  },
+  {
+   "reference": "Genesis 3:19",
+   "status": "self_rendered",
+   "block_index": 166,
+   "why": "re-personed, first person"
+  },
+  {
+   "reference": "Psalm 59:9",
+   "status": "self_rendered",
+   "block_index": 167,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Luke 15:13",
+   "status": "self_rendered",
+   "block_index": 167,
+   "why": "paraphrase, first person"
+  },
+  {
+   "reference": "Psalm 36:7",
+   "status": "self_rendered",
+   "block_index": 168,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "self_rendered",
+   "block_index": 168,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 119:108",
+   "status": "self_rendered",
+   "block_index": 170,
+   "why": "paraphrase of the freewill offerings of my mouth"
+  },
+  {
+   "reference": "Psalm 6:2",
+   "status": "self_rendered",
+   "block_index": 170,
+   "why": "spliced with Ps 35:10, imperative addressed to God"
+  },
+  {
+   "reference": "Psalm 35:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Psalm 19:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "self_rendered",
+   "block_index": 172,
+   "why": "re-personed into question about the wicked"
+  },
+  {
+   "reference": "Revelation 21:4",
+   "status": "self_rendered",
+   "block_index": 172,
+   "why": "allusion re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 138:6",
+   "status": "self_rendered",
+   "block_index": 174,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "self_rendered",
+   "block_index": 174,
+   "why": "re-personed; Latin reading"
+  },
+  {
+   "reference": "Psalm 8:8",
+   "status": "self_rendered",
+   "block_index": 175,
+   "why": "woven into Augustine's image"
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "self_rendered",
+   "block_index": 175,
+   "why": "appositive; modernised spelling of two-word phrase"
+  },
+  {
+   "reference": "Psalm 147:5",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "abbreviated (omits 'from God')"
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 176
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "present tense in Augustine's sentence"
+  },
+  {
+   "reference": "Romans 1:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 176
+  },
+  {
+   "reference": "Romans 1:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 176
+  },
+  {
+   "reference": "Romans 1:25",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "re-personed into address to God, present tense"
+  },
+  {
+   "reference": "Psalm 31:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 179
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "self_rendered",
+   "block_index": 179,
+   "why": "re-personed, singular"
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "self_rendered",
+   "block_index": 179,
+   "why": "adapted to singular subject"
+  },
+  {
+   "reference": "Job 28:28",
+   "status": "self_rendered",
+   "block_index": 181,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 182
+  },
+  {
+   "reference": "Ephesians 4:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 182
+  },
+  {
+   "reference": "Psalm 50:21",
+   "status": "self_rendered",
+   "block_index": 185,
+   "why": "paraphrase, re-personed"
+  },
+  {
+   "reference": "Psalm 18:5",
+   "status": "self_rendered",
+   "block_index": 188,
+   "why": "allusion, singular"
+  },
+  {
+   "reference": "Psalm 37:23a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 188
+  },
+  {
+   "reference": "Psalm 37:23b",
+   "status": "self_rendered",
+   "block_index": 188,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 142:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 190
+  },
+  {
+   "reference": "Genesis 3:16",
+   "status": "self_rendered",
+   "block_index": 191,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 193
+  },
+  {
+   "reference": "Ephesians 2:16",
+   "status": "self_rendered",
+   "block_index": 193,
+   "why": "paraphrase woven into narrative"
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "re-cast as rhetorical question to God"
+  },
+  {
+   "reference": "1 Timothy 4:7",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "two-word allusion in Augustine's syntax"
+  },
+  {
+   "reference": "Psalm 136:1",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "status": "self_rendered",
+   "block_index": 196,
+   "why": "re-cased into Augustine's sentence"
+  },
+  {
+   "reference": "Psalm 41:4",
+   "status": "self_rendered",
+   "block_index": 196,
+   "why": "re-personed, third person soul"
+  },
+  {
+   "reference": "Psalm 141:3",
+   "status": "self_rendered",
+   "block_index": 196,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 141:4",
+   "status": "self_rendered",
+   "block_index": 196,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 197
+  },
+  {
+   "reference": "Psalm 139:22",
+   "status": "self_rendered",
+   "block_index": 202,
+   "why": "negated allusion in Augustine's syntax"
+  },
+  {
+   "reference": "Psalm 73:27",
+   "status": "self_rendered",
+   "block_index": 202,
+   "why": "Latin reading (fornicantur abs te)"
+  },
+  {
+   "reference": "Psalm 147:14",
+   "status": "self_rendered",
+   "block_index": 204,
+   "why": "Latin reading (adeps frumenti), re-personed"
+  },
+  {
+   "reference": "Psalm 119:155",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 204
+  },
+  {
+   "reference": "2 Corinthians 3:6",
+   "status": "self_rendered",
+   "block_index": 206,
+   "why": "paraphrase of 'the letter killeth'"
+  },
+  {
+   "reference": "Psalm 71:5",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Job 35:11",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "paraphrase woven into address"
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Luke 7:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Luke 7:15",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Galatians 4:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "self_rendered",
+   "block_index": 211,
+   "why": "fragment woven into sentence"
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "self_rendered",
+   "block_index": 214,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "self_rendered",
+   "block_index": 214,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "self_rendered",
+   "block_index": 214,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "2 Corinthians 3:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 217
+  },
+  {
+   "reference": "Matthew 7:13",
+   "status": "self_rendered",
+   "block_index": 220,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 63:8",
+   "status": "self_rendered",
+   "block_index": 222,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 51:8",
+   "status": "self_rendered",
+   "block_index": 222,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Proverbs 9:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 226
+  },
+  {
+   "reference": "Psalm 107:8",
+   "status": "self_rendered",
+   "block_index": 226,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 233
+  },
+  {
+   "reference": "Luke 16:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 233
+  },
+  {
+   "reference": "Luke 16:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 233
+  },
+  {
+   "reference": "Psalm 145:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 234
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 236,
+   "why": "two words woven into Augustine's question"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 238,
+   "why": "allusion re-cast as first person"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "block_index": 238,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Isaiah 28:15",
+   "status": "self_rendered",
+   "block_index": 241,
+   "why": "paraphrase fitted to the sentence"
+  },
+  {
+   "reference": "Proverbs 19:21",
+   "status": "self_rendered",
+   "block_index": 245,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Psalm 33:11",
+   "status": "self_rendered",
+   "block_index": 245,
+   "why": "re-personed into address to God; Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 145:15",
+   "status": "self_rendered",
+   "block_index": 245,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Psalm 145:16",
+   "status": "self_rendered",
+   "block_index": 245,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Matthew 7:13",
+   "status": "self_rendered",
+   "block_index": 245,
+   "why": "allusion adapted to the sentence"
+  },
+  {
+   "reference": "Psalm 69:14",
+   "status": "self_rendered",
+   "block_index": 249,
+   "why": "re-personed into third-person description of God's hand"
+  },
+  {
+   "reference": "Psalm 51:2",
+   "status": "self_rendered",
+   "block_index": 249,
+   "why": "prayer turned into description"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "self_rendered",
+   "block_index": 250,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 18:28",
+   "status": "self_rendered",
+   "block_index": 253,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 6:5",
+   "status": "self_rendered",
+   "block_index": 258,
+   "why": "paraphrase, Latin reading"
+  },
+  {
+   "reference": "Psalm 107:8",
+   "status": "self_rendered",
+   "block_index": 264,
+   "why": "Latin reading differs from Kulish, re-personed"
+  },
+  {
+   "reference": "Psalm 38:8",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "re-personed into past narrative, Latin reading"
+  },
+  {
+   "reference": "Psalm 38:9",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "re-personed into past narrative"
+  },
+  {
+   "reference": "Psalm 38:10",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "re-personed into past narrative"
+  },
+  {
+   "reference": "Job 15:26",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "re-personed into first person"
+  },
+  {
+   "reference": "Psalm 89:10",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 102:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 270
+  },
+  {
+   "reference": "Psalm 85:5",
+   "status": "self_rendered",
+   "block_index": 270,
+   "why": "paraphrase of a question into statement"
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 272,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 272,
+   "why": "Latin reading, re-personed"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:4a",
+   "status": "self_rendered",
+   "block_index": 272,
+   "why": "Latin punctuation of John 1:3-4 differs from Kulish"
+  },
+  {
+   "reference": "John 1:4b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:8",
+   "status": "self_rendered",
+   "block_index": 272,
+   "why": "applied to the soul of man, paraphrase"
+  },
+  {
+   "reference": "John 1:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:13",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "Latin reading, word order differs"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:9a",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "Latin reading adds from the dead"
+  },
+  {
+   "reference": "Philippians 2:9b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Psalm 25:9",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 25:18",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Romans 1:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Romans 1:23",
+   "status": "self_rendered",
+   "block_index": 274,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 106:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 274
+  },
+  {
+   "reference": "Romans 9:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 274
+  },
+  {
+   "reference": "Psalm 79:1",
+   "status": "self_rendered",
+   "block_index": 274,
+   "why": "allusion, re-personed"
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "self_rendered",
+   "block_index": 274,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 1:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 274
+  },
+  {
+   "reference": "Psalm 30:10",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "re-personed into address to God; Latin reading"
+  },
+  {
+   "reference": "Psalm 39:11",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Exodus 3:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 276
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "paraphrase applied to Truth"
+  },
+  {
+   "reference": "Psalm 73:28",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "Latin reading (adhaerere) differs from Kulish"
+  },
+  {
+   "reference": "Psalm 16:2",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 73:28",
+   "status": "self_rendered",
+   "block_index": 278,
+   "why": "Latin reading (adhaerere) differs from Kulish"
+  },
+  {
+   "reference": "Psalm 16:2",
+   "status": "self_rendered",
+   "block_index": 278,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 280,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 148:7",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "re-cast into Augustine's sentence"
+  },
+  {
+   "reference": "Psalm 148:8",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "Latin reading; re-personed"
+  },
+  {
+   "reference": "Psalm 148:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 282
+  },
+  {
+   "reference": "Psalm 148:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 282
+  },
+  {
+   "reference": "Psalm 148:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 282
+  },
+  {
+   "reference": "Psalm 148:12",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "Latin reading; re-personed"
+  },
+  {
+   "reference": "Psalm 148:1",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 148:2",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 148:3",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "Latin reading"
+  },
+  {
+   "reference": "Psalm 148:4",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "re-cast into Augustine's sentence"
+  },
+  {
+   "reference": "Psalm 119:37",
+   "status": "self_rendered",
+   "block_index": 284,
+   "why": "re-personed into narrative"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 290
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 290,
+   "why": "re-personed, abbreviated"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "self_rendered",
+   "block_index": 292,
+   "why": "case adapted to sentence"
+  },
+  {
+   "reference": "Romans 9:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 292
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 292
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 292
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 294
+  },
+  {
+   "reference": "1 Corinthians 11:19",
+   "status": "self_rendered",
+   "block_index": 294,
+   "why": "Latin reading adds 'among the weak'"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 296,
+   "why": "re-personed, abbreviated"
+  },
+  {
+   "reference": "1 Corinthians 8:1",
+   "status": "self_rendered",
+   "block_index": 296,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 3:11",
+   "status": "self_rendered",
+   "block_index": 296,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 2:11",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "grammar adapted (first person narrative)"
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed to third person"
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed to third person"
+  },
+  {
+   "reference": "Romans 7:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 298
+  },
+  {
+   "reference": "Psalm 32:4",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed, plural"
+  },
+  {
+   "reference": "John 8:44",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed to third person"
+  },
+  {
+   "reference": "Romans 7:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 298
+  },
+  {
+   "reference": "Proverbs 8:22",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "John 14:30",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 298
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 298
+  },
+  {
+   "reference": "2 Corinthians 5:5",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "allusive phrase in a list"
+  },
+  {
+   "reference": "Psalm 62:1",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 62:2",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 298
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 298
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 298
+  },
+  {
+   "reference": "1 Corinthians 15:9",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 35:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 300
+  },
+  {
+   "reference": "Psalm 116:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 300
+  },
+  {
+   "reference": "Psalm 116:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 300
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 300
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 300,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 26:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 301
+  },
+  {
+   "reference": "1 Corinthians 7:7",
+   "status": "self_rendered",
+   "block_index": 301,
+   "why": "re-personed into third-person narrative"
+  },
+  {
+   "reference": "Matthew 19:12a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 301
+  },
+  {
+   "reference": "Matthew 19:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 301
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 301
+  },
+  {
+   "reference": "Psalm 18:35",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 301
+  },
+  {
+   "reference": "Job 28:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 301
+  },
+  {
+   "reference": "Proverbs 3:7",
+   "status": "self_rendered",
+   "block_index": 301,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Romans 1:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 301
+  },
+  {
+   "reference": "Matthew 13:46",
+   "status": "self_rendered",
+   "block_index": 301,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Colossians 2:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 303
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered",
+   "block_index": 303,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 144:5",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 29:5",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "allusion woven into sentence"
+  },
+  {
+   "reference": "Luke 12:9",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 112:10",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 40:4",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Luke 15:7",
+   "status": "self_rendered",
+   "block_index": 311,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Luke 15:5",
+   "status": "self_rendered",
+   "block_index": 311,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Luke 15:9",
+   "status": "self_rendered",
+   "block_index": 311,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 311
+  },
+  {
+   "reference": "Luke 15:32",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 313
+  },
+  {
+   "reference": "John 1:12",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 1:28",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 12:29",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "allusion woven into sentence"
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 315
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered",
+   "block_index": 318,
+   "why": "Kulish's bracketed wording does not fit the sentence"
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 318
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "self_rendered",
+   "block_index": 318,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 7:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 318
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 318
+  },
+  {
+   "reference": "Romans 7:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 318
+  },
+  {
+   "reference": "Psalm 19:14",
+   "status": "self_rendered",
+   "block_index": 320,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 322
+  },
+  {
+   "reference": "Luke 14:28",
+   "status": "self_rendered",
+   "block_index": 322,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Matthew 19:27",
+   "status": "self_rendered",
+   "block_index": 322,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Luke 24:29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 322
+  },
+  {
+   "reference": "Psalm 36:2",
+   "status": "self_rendered",
+   "block_index": 324,
+   "why": "adapted into first person; Latin reading"
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "self_rendered",
+   "block_index": 328,
+   "why": "allusion, paraphrase"
+  },
+  {
+   "reference": "Psalm 35:10",
+   "status": "self_rendered",
+   "block_index": 328,
+   "why": "adapted into narrative"
+  },
+  {
+   "reference": "Psalm 68:2",
+   "status": "self_rendered",
+   "block_index": 333,
+   "why": "re-personed into address to God; Latin reading"
+  },
+  {
+   "reference": "Titus 1:10",
+   "status": "self_rendered",
+   "block_index": 333,
+   "why": "echo adapted into sentence"
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 333
+  },
+  {
+   "reference": "John 1:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 333
+  },
+  {
+   "reference": "Psalm 34:5",
+   "status": "self_rendered",
+   "block_index": 333,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Romans 7:17",
+   "status": "self_rendered",
+   "block_index": 333,
+   "why": "tense adapted to narrative past"
+  },
+  {
+   "reference": "Psalm 113:9",
+   "status": "self_rendered",
+   "block_index": 339,
+   "why": "paraphrase, adapted to Continence"
+  },
+  {
+   "reference": "Colossians 3:5",
+   "status": "self_rendered",
+   "block_index": 339,
+   "why": "re-personed, paraphrase"
+  },
+  {
+   "reference": "Psalm 119:85",
+   "status": "self_rendered",
+   "block_index": 339,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "self_rendered",
+   "block_index": 341,
+   "why": "allusion, paraphrase"
+  },
+  {
+   "reference": "Psalm 6:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 341
+  },
+  {
+   "reference": "Psalm 79:5",
+   "status": "self_rendered",
+   "block_index": 341,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 79:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 341
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 342
+  },
+  {
+   "reference": "Romans 13:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 342
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 342
+  },
+  {
+   "reference": "Romans 14:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 343
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 343
+  },
+  {
+   "reference": "Psalm 30:11",
+   "status": "self_rendered",
+   "block_index": 343,
+   "why": "re-personed (her mourning)"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 345
+  },
+  {
+   "reference": "Psalm 116:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 345
+  },
+  {
+   "reference": "Psalm 35:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 345
+  },
+  {
+   "reference": "Psalm 35:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 345
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 345,
+   "why": "re-personed into address to Christ"
+  },
+  {
+   "reference": "Psalm 84:6",
+   "status": "self_rendered",
+   "block_index": 347,
+   "why": "Latin 'valley of tears'; Kulish construction differs"
+  },
+  {
+   "reference": "Psalm 120:4",
+   "status": "self_rendered",
+   "block_index": 347,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Romans 14:16",
+   "status": "self_rendered",
+   "block_index": 348,
+   "why": "re-personed, folded into sentence"
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "self_rendered",
+   "block_index": 349,
+   "why": "Latin 'vacate et videte' re-personed"
+  },
+  {
+   "reference": "Luke 14:14",
+   "status": "self_rendered",
+   "block_index": 351,
+   "why": "allusion folded into address"
+  },
+  {
+   "reference": "Psalm 68:15",
+   "status": "self_rendered",
+   "block_index": 351,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Luke 16:22",
+   "status": "self_rendered",
+   "block_index": 352,
+   "why": "phrase allusion"
+  },
+  {
+   "reference": "Psalm 27:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 352
+  },
+  {
+   "reference": "Luke 3:5",
+   "status": "self_rendered",
+   "block_index": 354,
+   "why": "re-personed paraphrase"
+  },
+  {
+   "reference": "Psalm 29:5",
+   "status": "self_rendered",
+   "block_index": 354,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 19:6",
+   "status": "self_rendered",
+   "block_index": 355,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 4:1",
+   "status": "self_rendered",
+   "block_index": 355,
+   "why": "Latin reading (past indicative) differs from Kulish"
+  },
+  {
+   "reference": "Psalm 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 355
+  },
+  {
+   "reference": "Psalm 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 356
+  },
+  {
+   "reference": "Psalm 4:3",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "re-personed; Latin 'sanctum suum' vs Kulish 'праведника'"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "spliced with Luke 24:49"
+  },
+  {
+   "reference": "John 7:39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 356
+  },
+  {
+   "reference": "Psalm 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 356
+  },
+  {
+   "reference": "Psalm 4:3",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "Latin 'sanctum suum' differs from Kulish 'праведника'"
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Psalm 4:4",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Romans 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 357
+  },
+  {
+   "reference": "Psalm 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 357
+  },
+  {
+   "reference": "Psalm 4:6",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "Latin 'signatum est' reading differs from Kulish"
+  },
+  {
+   "reference": "John 1:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 357
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 357
+  },
+  {
+   "reference": "Psalm 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 357
+  },
+  {
+   "reference": "Psalm 4:7",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "Latin/LXX reading (adds oil) differs from Kulish"
+  },
+  {
+   "reference": "Psalm 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 358
+  },
+  {
+   "reference": "1 Corinthians 15:54",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 358
+  },
+  {
+   "reference": "Psalm 4:8",
+   "status": "self_rendered",
+   "block_index": 358,
+   "why": "Latin reading 'in spe' differs from Kulish"
+  },
+  {
+   "reference": "Psalm 119:139",
+   "status": "self_rendered",
+   "block_index": 358,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "self_rendered",
+   "block_index": 366,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Song of Solomon 1:4",
+   "status": "self_rendered",
+   "block_index": 366,
+   "why": "spliced with Song 1:3, negated paraphrase (Kulish numbers this verse 1:3)"
+  },
+  {
+   "reference": "Isaiah 40:6",
+   "status": "self_rendered",
+   "block_index": 366,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 68:6",
+   "status": "self_rendered",
+   "block_index": 368,
+   "why": "Latin/LXX 'unius moris' differs from Kulish"
+  },
+  {
+   "reference": "1 Peter 3:1",
+   "status": "self_rendered",
+   "block_index": 371,
+   "why": "paraphrase woven into narrative"
+  },
+  {
+   "reference": "1 Timothy 5:9",
+   "status": "self_rendered",
+   "block_index": 374,
+   "why": "paraphrase in narrative"
+  },
+  {
+   "reference": "1 Timothy 5:10",
+   "status": "self_rendered",
+   "block_index": 374,
+   "why": "paraphrase in narrative"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 374,
+   "why": "allusion adapted to Monica"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 376
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 376
+  },
+  {
+   "reference": "Psalm 36:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 376
+  },
+  {
+   "reference": "Psalm 80:1",
+   "status": "self_rendered",
+   "block_index": 377,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "self_rendered",
+   "block_index": 377,
+   "why": "two-word phrase in Augustine's syntax"
+  },
+  {
+   "reference": "Psalm 100:3",
+   "status": "self_rendered",
+   "block_index": 378,
+   "why": "spliced with 'abideth for ever'; Latin reading"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 378
+  },
+  {
+   "reference": "1 Corinthians 15:51",
+   "status": "self_rendered",
+   "block_index": 378,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 384
+  },
+  {
+   "reference": "Psalm 101:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 386
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "block_index": 387,
+   "why": "abbreviated, vocative address to God"
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "status": "self_rendered",
+   "block_index": 398,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Matthew 5:22",
+   "status": "self_rendered",
+   "block_index": 398,
+   "why": "abbreviated; Latin wording"
+  },
+  {
+   "reference": "Psalm 130:3",
+   "status": "self_rendered",
+   "block_index": 398,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "2 Corinthians 10:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 398
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "adapted to Monica"
+  },
+  {
+   "reference": "Psalm 143:2",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "adapted: 'with her' for 'thy servant'"
+  },
+  {
+   "reference": "James 2:13",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "re-personed prayer"
+  },
+  {
+   "reference": "Matthew 5:7",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 9:15",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 119:108",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 400
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "paraphrase, passive"
+  },
+  {
+   "reference": "John 14:30",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 91:13",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "Latin/LXX reading (lion and dragon)"
+  },
+  {
+   "reference": "Luke 8:15",
+   "status": "self_rendered",
+   "block_index": 401,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "block_index": 403,
+   "why": "re-personed into prayer"
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 403
+  },
+  {
+   "reference": "Psalm 116:10",
+   "status": "self_rendered",
+   "block_index": 403,
+   "why": "adapted: hope in place of belief"
+  },
+  {
+   "reference": "Psalm 51:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 403
+  },
+  {
+   "reference": "John 3:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 403
+  },
+  {
+   "reference": "Psalm 5:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 405
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 405,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 407,
+   "why": "re-personed, first person"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 407
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 407
+  },
+  {
+   "reference": "Psalm 32:1",
+   "status": "self_rendered",
+   "block_index": 408,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "self_rendered",
+   "block_index": 408,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 144:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 410
+  },
+  {
+   "reference": "Psalm 51:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 410
+  },
+  {
+   "reference": "Psalm 2:11",
+   "status": "self_rendered",
+   "block_index": 411,
+   "why": "paraphrase, noun form"
+  },
+  {
+   "reference": "Psalm 17:8",
+   "status": "self_rendered",
+   "block_index": 411,
+   "why": "allusion, abbreviated"
+  },
+  {
+   "reference": "1 Corinthians 4:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 411
+  },
+  {
+   "reference": "1 Corinthians 4:4",
+   "status": "self_rendered",
+   "block_index": 413,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 413
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "self_rendered",
+   "block_index": 413,
+   "why": "grammar adapted to first-person sentence"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 413
+  },
+  {
+   "reference": "2 Corinthians 5:6",
+   "status": "self_rendered",
+   "block_index": 413,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 413,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Isaiah 58:10",
+   "status": "self_rendered",
+   "block_index": 413,
+   "why": "re-personed, first person"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 415
+  },
+  {
+   "reference": "Romans 9:15",
+   "status": "self_rendered",
+   "block_index": 415,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 100:3",
+   "status": "self_rendered",
+   "block_index": 416,
+   "why": "abbreviated"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 417
+  },
+  {
+   "reference": "Psalm 32:9",
+   "status": "self_rendered",
+   "block_index": 419,
+   "why": "grammar adapted"
+  },
+  {
+   "reference": "Genesis 3:19",
+   "status": "self_rendered",
+   "block_index": 442,
+   "why": "allusion to the curse of toil, re-applied to himself"
+  },
+  {
+   "reference": "Job 35:11",
+   "status": "self_rendered",
+   "block_index": 444,
+   "why": "re-personed into first person"
+  },
+  {
+   "reference": "Luke 15:8",
+   "status": "self_rendered",
+   "block_index": 446,
+   "why": "paraphrase of the parable"
+  },
+  {
+   "reference": "Isaiah 55:3",
+   "status": "self_rendered",
+   "block_index": 450,
+   "why": "re-personed into first person"
+  },
+  {
+   "reference": "Romans 8:24",
+   "status": "self_rendered",
+   "block_index": 450,
+   "why": "allusion, Latin 'beati in spe'"
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "status": "self_rendered",
+   "block_index": 450,
+   "why": "paraphrase woven into sentence"
+  },
+  {
+   "reference": "Isaiah 48:22",
+   "status": "self_rendered",
+   "block_index": 455,
+   "why": "Latin reading (no joy) differs from Kulish (no peace)"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 27:1",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 43:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 457
+  },
+  {
+   "reference": "John 12:35",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Galatians 4:16",
+   "status": "self_rendered",
+   "block_index": 458,
+   "why": "paraphrase in third person"
+  },
+  {
+   "reference": "Job 7:1",
+   "status": "self_rendered",
+   "block_index": 468,
+   "why": "Latin reading (tentatio) differs from Kulish"
+  },
+  {
+   "reference": "Job 7:1",
+   "status": "self_rendered",
+   "block_index": 468,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered",
+   "block_index": 472,
+   "why": "bent into genitive; 'ambition of the world' differs"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 473,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 2:11",
+   "status": "self_rendered",
+   "block_index": 473,
+   "why": "participial paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 15:54",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 473
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "self_rendered",
+   "block_index": 475,
+   "why": "allusion reworded"
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "self_rendered",
+   "block_index": 475,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "self_rendered",
+   "block_index": 475,
+   "why": "re-personed paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "self_rendered",
+   "block_index": 475,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Luke 21:34",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 477
+  },
+  {
+   "reference": "1 Corinthians 8:8",
+   "status": "self_rendered",
+   "block_index": 477,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 477
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 477
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 477
+  },
+  {
+   "reference": "Psalm 103:14",
+   "status": "self_rendered",
+   "block_index": 477,
+   "why": "turned into petition"
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 477
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 477,
+   "why": "Latin wording (in eo), interrupted by 'saith he'"
+  },
+  {
+   "reference": "1 Corinthians 1:31",
+   "status": "self_rendered",
+   "block_index": 477,
+   "why": "recast in third person"
+  },
+  {
+   "reference": "Titus 1:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 478
+  },
+  {
+   "reference": "Romans 14:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 478
+  },
+  {
+   "reference": "1 Timothy 4:4",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 8:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 478
+  },
+  {
+   "reference": "Colossians 2:16",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "person changed (us)"
+  },
+  {
+   "reference": "Romans 14:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 478
+  },
+  {
+   "reference": "Luke 5:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 479
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 479,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "John 16:33",
+   "status": "self_rendered",
+   "block_index": 479,
+   "why": "third-person paraphrase"
+  },
+  {
+   "reference": "Psalm 139:16",
+   "status": "self_rendered",
+   "block_index": 479,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Job 7:1",
+   "status": "self_rendered",
+   "block_index": 481,
+   "why": "Latin reading, allusive"
+  },
+  {
+   "reference": "Psalm 6:2",
+   "status": "self_rendered",
+   "block_index": 484,
+   "why": "re-personed, spliced with Ps 80:14"
+  },
+  {
+   "reference": "2 Corinthians 5:2",
+   "status": "self_rendered",
+   "block_index": 486,
+   "why": "first person singular paraphrase"
+  },
+  {
+   "reference": "Psalm 25:15",
+   "status": "self_rendered",
+   "block_index": 487,
+   "why": "turned into petition"
+  },
+  {
+   "reference": "Psalm 121:4",
+   "status": "self_rendered",
+   "block_index": 487,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 59:9",
+   "status": "self_rendered",
+   "block_index": 488,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 26:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 488
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered",
+   "block_index": 490,
+   "why": "two-word tag phrase, too short to mine; Kulish vocabulary in modern spelling"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 495,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 103:4",
+   "status": "self_rendered",
+   "block_index": 495,
+   "why": "re-personed; Latin reading (corruption)"
+  },
+  {
+   "reference": "Psalm 103:5",
+   "status": "self_rendered",
+   "block_index": 495,
+   "why": "re-personed; Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 495,
+   "why": "allusion woven into first person"
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 18:7",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "tense changed, woven into sentence"
+  },
+  {
+   "reference": "Isaiah 14:13",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Luke 12:32",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 17:8",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "paraphrase, plural"
+  },
+  {
+   "reference": "Psalm 10:3",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Proverbs 27:21",
+   "status": "self_rendered",
+   "block_index": 498,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 19:12",
+   "status": "self_rendered",
+   "block_index": 498,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "1 John 1:6",
+   "status": "self_rendered",
+   "block_index": 500,
+   "why": "first person, woven into sentence"
+  },
+  {
+   "reference": "Psalm 141:5",
+   "status": "self_rendered",
+   "block_index": 500,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 109:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 500
+  },
+  {
+   "reference": "Job 28:8",
+   "status": "self_rendered",
+   "block_index": 500,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 31:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 508
+  },
+  {
+   "reference": "Ephesians 2:2",
+   "status": "self_rendered",
+   "block_index": 510,
+   "why": "paraphrase, plural"
+  },
+  {
+   "reference": "2 Corinthians 11:14",
+   "status": "self_rendered",
+   "block_index": 510,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered",
+   "block_index": 510,
+   "why": "allusion"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 510
+  },
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 510
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 512
+  },
+  {
+   "reference": "Romans 8:6",
+   "status": "self_rendered",
+   "block_index": 512,
+   "why": "paraphrase in parallel with Rom 6:23"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "self_rendered",
+   "block_index": 512,
+   "why": "allusion"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 513
+  },
+  {
+   "reference": "Psalm 88:5",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "John 10:18",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "third person, abbreviated"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "negated conditional paraphrase"
+  },
+  {
+   "reference": "2 Corinthians 5:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 514
+  },
+  {
+   "reference": "Psalm 55:22",
+   "status": "self_rendered",
+   "block_index": 514,
+   "why": "re-personed; Latin reading"
+  },
+  {
+   "reference": "Psalm 119:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 514
+  },
+  {
+   "reference": "Psalm 69:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 514
+  },
+  {
+   "reference": "Colossians 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 514
+  },
+  {
+   "reference": "Psalm 119:122",
+   "status": "self_rendered",
+   "block_index": 514,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 22:26a",
+   "status": "self_rendered",
+   "block_index": 514,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 22:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 514
+  },
+  {
+   "reference": "Psalm 145:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 516
+  },
+  {
+   "reference": "Matthew 6:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 516
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "self_rendered",
+   "block_index": 516,
+   "why": "Beatitudes (Matt 5:3-9) compressed into a list"
+  },
+  {
+   "reference": "Psalm 118:1",
+   "status": "self_rendered",
+   "block_index": 516,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 86:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 519
+  },
+  {
+   "reference": "Romans 10:12",
+   "status": "self_rendered",
+   "block_index": 519,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 130:1",
+   "status": "self_rendered",
+   "block_index": 519,
+   "why": "re-personed; the soul crying"
+  },
+  {
+   "reference": "Psalm 74:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 519
+  },
+  {
+   "reference": "Psalm 26:7",
+   "status": "self_rendered",
+   "block_index": 519,
+   "why": "abbreviated, infinitive construction"
+  },
+  {
+   "reference": "Psalm 119:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 519
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "re-personed; third person"
+  },
+  {
+   "reference": "Psalm 119:85",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 80:17",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "bent into apposition, re-personed"
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Colossians 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 520
+  },
+  {
+   "reference": "John 5:46",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 522,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 33:9",
+   "status": "self_rendered",
+   "block_index": 526,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 17:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 528
+  },
+  {
+   "reference": "Isaiah 40:8",
+   "status": "self_rendered",
+   "block_index": 528,
+   "why": "Latin reading, first person"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "self_rendered",
+   "block_index": 530,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 8:25",
+   "status": "self_rendered",
+   "block_index": 532,
+   "why": "Latin reading (principium qui et loquor vobis) differs from Kulish"
+  },
+  {
+   "reference": "John 3:29",
+   "status": "self_rendered",
+   "block_index": 532,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 103:4",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 103:5",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "re-personed; Latin reading"
+  },
+  {
+   "reference": "Romans 8:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 534
+  },
+  {
+   "reference": "Romans 8:25",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "bent: object made 'Thy promises'"
+  },
+  {
+   "reference": "Psalm 31:10",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 104:24",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "Latin reading (magnificata) differs from Kulish"
+  },
+  {
+   "reference": "Psalm 104:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 534
+  },
+  {
+   "reference": "Psalm 102:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 543
+  },
+  {
+   "reference": "Psalm 2:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 543
+  },
+  {
+   "reference": "Psalm 139:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 558
+  },
+  {
+   "reference": "Matthew 7:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 564
+  },
+  {
+   "reference": "Psalm 73:16",
+   "status": "self_rendered",
+   "block_index": 564,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 116:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 564
+  },
+  {
+   "reference": "Psalm 27:4",
+   "status": "self_rendered",
+   "block_index": 564,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 39:5",
+   "status": "self_rendered",
+   "block_index": 564,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:14",
+   "status": "self_rendered",
+   "block_index": 566,
+   "why": "Latin reading, word order differs"
+  },
+  {
+   "reference": "Joshua 10:13",
+   "status": "self_rendered",
+   "block_index": 567,
+   "why": "paraphrase of the narrative"
+  },
+  {
+   "reference": "Galatians 1:20",
+   "status": "self_rendered",
+   "block_index": 571,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 18:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 571
+  },
+  {
+   "reference": "Psalm 18:28",
+   "status": "self_rendered",
+   "block_index": 571,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "self_rendered",
+   "block_index": 575,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 100:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 575
+  },
+  {
+   "reference": "Psalm 63:3",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "Latin reading (plural lives)"
+  },
+  {
+   "reference": "Psalm 63:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 582
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "spliced with Augustine's own words"
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 582
+  },
+  {
+   "reference": "Psalm 26:7",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 31:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 582
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "self_rendered",
+   "block_index": 584,
+   "why": "re-personed, third person plural"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 586,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 138:6",
+   "status": "self_rendered",
+   "block_index": 586,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 146:8",
+   "status": "self_rendered",
+   "block_index": 586,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 8:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 588
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 588
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 588
+  },
+  {
+   "reference": "Psalm 115:16",
+   "status": "self_rendered",
+   "block_index": 590,
+   "why": "Latin 'caelum caeli' reading differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 592,
+   "why": "Latin 'invisibilis et incomposita' differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 592
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 594,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Revelation 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 600
+  },
+  {
+   "reference": "Psalm 115:16",
+   "status": "self_rendered",
+   "block_index": 602,
+   "why": "re-personed into address to God; Latin reading"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 602,
+   "why": "Latin reading differs; paraphrase"
+  },
+  {
+   "reference": "Genesis 1:6",
+   "status": "self_rendered",
+   "block_index": 602,
+   "why": "re-personed into address to God; abbreviated"
+  },
+  {
+   "reference": "Genesis 1:8",
+   "status": "self_rendered",
+   "block_index": 602,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 602,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 602,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 604,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Timothy 6:16",
+   "status": "self_rendered",
+   "block_index": 608,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 42:3",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "re-personed to third person (the soul)"
+  },
+  {
+   "reference": "Psalm 42:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 610
+  },
+  {
+   "reference": "Psalm 27:4",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "re-personed into address to God; Latin reading"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "paraphrase woven into sentence"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 613,
+   "why": "allusive paraphrase"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 613,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 613,
+   "why": "Latin reading differs from Kulish in first clause"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 615
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 615,
+   "why": "Latin reading differs from Kulish in first clause"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "block_index": 615,
+   "why": "paraphrase applied to angelic knowledge"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 615
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 617,
+   "why": "allusion bent into prayer"
+  },
+  {
+   "reference": "Psalm 148:6",
+   "status": "self_rendered",
+   "block_index": 619,
+   "why": "re-personed into address to God; singular object"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 620
+  },
+  {
+   "reference": "Galatians 4:26",
+   "status": "self_rendered",
+   "block_index": 620,
+   "why": "paraphrase woven into sentence"
+  },
+  {
+   "reference": "Psalm 26:8",
+   "status": "self_rendered",
+   "block_index": 621,
+   "why": "addressed to the house; Latin reading"
+  },
+  {
+   "reference": "Psalm 119:176",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 621
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 622
+  },
+  {
+   "reference": "Psalm 28:1",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "Latin reading; abbreviated"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "re-personed to first person"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "re-personed to first person"
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "re-personed to first person"
+  },
+  {
+   "reference": "Psalm 59:17",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "Latin 'Deus meus, misericordia mea' differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 626
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 626,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 628
+  },
+  {
+   "reference": "2 Timothy 2:14",
+   "status": "self_rendered",
+   "block_index": 630,
+   "why": "modern spelling; bent into first person"
+  },
+  {
+   "reference": "1 Timothy 1:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 630
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 630
+  },
+  {
+   "reference": "Matthew 22:40",
+   "status": "self_rendered",
+   "block_index": 630,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 11:36",
+   "status": "self_rendered",
+   "block_index": 632,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 634
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 634
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 634
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 634
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 634
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 636,
+   "why": "LXX/Latin reading 'invisible and without form' differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 636,
+   "why": "LXX/Latin reading 'invisible and without form' differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 636,
+   "why": "LXX/Latin reading 'invisible and without form' differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 636,
+   "why": "LXX/Latin reading 'invisible and without form' differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 636,
+   "why": "LXX/Latin reading 'invisible and without form' differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 638
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "LXX/Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 638
+  },
+  {
+   "reference": "Romans 11:36",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Colossians 1:16",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "list without Kulish's disjunctions"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "recast as relative clause"
+  },
+  {
+   "reference": "Genesis 1:9",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 50:14",
+   "status": "self_rendered",
+   "block_index": 642,
+   "why": "re-personed; Latin 'sacrifice of confession'"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 642
+  },
+  {
+   "reference": "John 8:44",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 644
+  },
+  {
+   "reference": "1 Corinthians 4:6",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "re-personed; wording differs from Kulish"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "1 John 1:10",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "paraphrase; Kulish text lacks the clause"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "self_rendered",
+   "block_index": 647,
+   "why": "bent into indirect command"
+  },
+  {
+   "reference": "Romans 9:21",
+   "status": "self_rendered",
+   "block_index": 647,
+   "why": "allusion bent into Augustine's sentence"
+  },
+  {
+   "reference": "Psalm 8:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 647
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "self_rendered",
+   "block_index": 649,
+   "why": "generalised fiat formula"
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "status": "self_rendered",
+   "block_index": 649,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 652
+  },
+  {
+   "reference": "John 8:25",
+   "status": "self_rendered",
+   "block_index": 652,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "1 Timothy 1:8",
+   "status": "self_rendered",
+   "block_index": 656,
+   "why": "re-personed"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "status": "self_rendered",
+   "block_index": 656,
+   "why": "abridged"
+  },
+  {
+   "reference": "Psalm 143:10",
+   "status": "self_rendered",
+   "block_index": 660,
+   "why": "Latin reading 'land of uprightness' differs from Kulish"
+  },
+  {
+   "reference": "Psalm 36:6a",
+   "status": "self_rendered",
+   "block_index": 665,
+   "why": "Latin reading ('mountains of God') differs from Kulish"
+  },
+  {
+   "reference": "Psalm 36:6b",
+   "status": "self_rendered",
+   "block_index": 665,
+   "why": "re-personed into first person"
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 667
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 669,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "status": "self_rendered",
+   "block_index": 669,
+   "why": "paraphrase in third person"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 671
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 671,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "block_index": 675,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 12:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 675
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "self_rendered",
+   "block_index": 675,
+   "why": "Latin reading differs; paraphrase"
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 677
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "self_rendered",
+   "block_index": 677,
+   "why": "adapted to the heaven of heavens"
+  },
+  {
+   "reference": "Psalm 18:28",
+   "status": "self_rendered",
+   "block_index": 677,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Isaiah 58:10",
+   "status": "self_rendered",
+   "block_index": 677,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Psalm 31:20",
+   "status": "self_rendered",
+   "block_index": 677,
+   "why": "Latin reading; paraphrase"
+  },
+  {
+   "reference": "Psalm 143:10",
+   "status": "self_rendered",
+   "block_index": 679,
+   "why": "short phrase woven into sentence"
+  },
+  {
+   "reference": "Psalm 9:13",
+   "status": "self_rendered",
+   "block_index": 679,
+   "why": "Latin reading; woven into sentence"
+  },
+  {
+   "reference": "Psalm 84:5",
+   "status": "self_rendered",
+   "block_index": 679,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 122:6",
+   "status": "self_rendered",
+   "block_index": 679,
+   "why": "allusive phrase"
+  },
+  {
+   "reference": "Psalm 122:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 679
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 681
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "self_rendered",
+   "block_index": 681,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "John 1:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 681
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 685
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 39:11",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 36:6",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "past tense, adapted"
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "abbreviated, spliced with Matthew 3:2"
+  },
+  {
+   "reference": "Matthew 3:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 685
+  },
+  {
+   "reference": "Psalm 42:6",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "Latin reading; re-personed"
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 685
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 687
+  },
+  {
+   "reference": "Romans 8:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 687
+  },
+  {
+   "reference": "Psalm 42:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 687
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 687
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "third person"
+  },
+  {
+   "reference": "2 Corinthians 5:4",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "third person"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "third person; spliced with Ps 42:1"
+  },
+  {
+   "reference": "Psalm 42:1",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "Latin reading; abbreviated"
+  },
+  {
+   "reference": "2 Corinthians 5:2",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "third person"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 687
+  },
+  {
+   "reference": "1 Corinthians 14:20",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "Latin word order differs from Kulish"
+  },
+  {
+   "reference": "Galatians 3:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 687
+  },
+  {
+   "reference": "Ephesians 4:8",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 46:4",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "third person singular"
+  },
+  {
+   "reference": "2 Corinthians 11:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 687
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 687
+  },
+  {
+   "reference": "Psalm 42:3",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "Latin reading; woven into sentence"
+  },
+  {
+   "reference": "Psalm 42:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 689
+  },
+  {
+   "reference": "Psalm 42:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 689
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "re-personed to the soul"
+  },
+  {
+   "reference": "Romans 8:10",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Song of Solomon 2:17",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 5:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 689
+  },
+  {
+   "reference": "Psalm 5:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 689
+  },
+  {
+   "reference": "Psalm 42:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 689
+  },
+  {
+   "reference": "Romans 8:11",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "first person plural"
+  },
+  {
+   "reference": "1 Thessalonians 5:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 689
+  },
+  {
+   "reference": "Genesis 1:5",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 9:21",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Isaiah 34:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 691
+  },
+  {
+   "reference": "Genesis 3:21",
+   "status": "self_rendered",
+   "block_index": 691,
+   "why": "re-personed; Kulish key gen 3:20"
+  },
+  {
+   "reference": "Psalm 104:2",
+   "status": "self_rendered",
+   "block_index": 691,
+   "why": "Latin reading ('like a skin') differs from Kulish"
+  },
+  {
+   "reference": "Psalm 8:3",
+   "status": "self_rendered",
+   "block_index": 692,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 19:7",
+   "status": "self_rendered",
+   "block_index": 692,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 8:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 692
+  },
+  {
+   "reference": "Matthew 18:10",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "adapted to address to God"
+  },
+  {
+   "reference": "Psalm 36:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 693
+  },
+  {
+   "reference": "Matthew 24:35",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 693
+  },
+  {
+   "reference": "Isaiah 34:4",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "abbreviated"
+  },
+  {
+   "reference": "Isaiah 40:8",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "re-personed; Latin reading"
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 693
+  },
+  {
+   "reference": "Song of Solomon 2:9",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "allegorised paraphrase"
+  },
+  {
+   "reference": "Song of Solomon 1:3",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 693
+  },
+  {
+   "reference": "Psalm 143:6",
+   "status": "self_rendered",
+   "block_index": 695,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 695
+  },
+  {
+   "reference": "Psalm 36:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 695
+  },
+  {
+   "reference": "Genesis 1:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 697
+  },
+  {
+   "reference": "Psalm 95:5",
+   "status": "self_rendered",
+   "block_index": 697,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "block_index": 698,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:11",
+   "status": "self_rendered",
+   "block_index": 698,
+   "why": "paraphrase woven into allegory"
+  },
+  {
+   "reference": "Psalm 85:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "Isaiah 58:7",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Isaiah 58:8",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Philippians 2:15",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "re-personed; first person"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "Romans 13:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "Romans 13:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "Psalm 65:11",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "Latin reading (benedictio) differs from Kulish"
+  },
+  {
+   "reference": "John 4:38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "Psalm 102:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 12:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 12:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 2:6",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "third person paraphrase"
+  },
+  {
+   "reference": "Isaiah 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 702
+  },
+  {
+   "reference": "Isaiah 1:16",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Isaiah 1:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 702
+  },
+  {
+   "reference": "Isaiah 1:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 702
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 702
+  },
+  {
+   "reference": "Matthew 19:17",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "indirect speech"
+  },
+  {
+   "reference": "Ephesians 4:31",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "Latin reading; paraphrase"
+  },
+  {
+   "reference": "Matthew 19:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 702
+  },
+  {
+   "reference": "Matthew 19:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 702
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 702
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 702
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 702
+  },
+  {
+   "reference": "Matthew 6:21",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "inverted paraphrase"
+  },
+  {
+   "reference": "Matthew 13:7",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "spliced with Matthew 13:22"
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "vocative, too short to mine"
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 19:1",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "purpose clause"
+  },
+  {
+   "reference": "Psalm 19:2",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "Latin/LXX reading differs from Kulish; glossed"
+  },
+  {
+   "reference": "Genesis 1:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 703
+  },
+  {
+   "reference": "Acts 2:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 703
+  },
+  {
+   "reference": "Acts 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 703
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 703
+  },
+  {
+   "reference": "Matthew 5:15",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "re-personed"
+  },
+  {
+   "reference": "Genesis 1:20",
+   "status": "self_rendered",
+   "block_index": 705,
+   "why": "Latin reading; keeps Augustine's contrast with 'living soul'"
+  },
+  {
+   "reference": "Jeremiah 15:19",
+   "status": "self_rendered",
+   "block_index": 705,
+   "why": "participial paraphrase"
+  },
+  {
+   "reference": "Psalm 19:3",
+   "status": "self_rendered",
+   "block_index": 705,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Psalm 19:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 705
+  },
+  {
+   "reference": "Genesis 1:24",
+   "status": "self_rendered",
+   "block_index": 709,
+   "why": "allusive paraphrase"
+  },
+  {
+   "reference": "John 4:48",
+   "status": "self_rendered",
+   "block_index": 709,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "1 Corinthians 14:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 709
+  },
+  {
+   "reference": "Psalm 23:5",
+   "status": "self_rendered",
+   "block_index": 709,
+   "why": "Augustine's bent reading"
+  },
+  {
+   "reference": "1 Timothy 5:6",
+   "status": "self_rendered",
+   "block_index": 709,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Genesis 3:8",
+   "status": "self_rendered",
+   "block_index": 710,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 69:32",
+   "status": "self_rendered",
+   "block_index": 710,
+   "why": "Latin reading differs from Kulish"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 710
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 711
+  },
+  {
+   "reference": "Galatians 4:12",
+   "status": "self_rendered",
+   "block_index": 711,
+   "why": "interrupted by 'saith he'"
+  },
+  {
+   "reference": "1 Corinthians 8:8",
+   "status": "self_rendered",
+   "block_index": 711,
+   "why": "Latin reading; paraphrase"
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered",
+   "block_index": 711,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 711,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 713
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 713
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 713
+  },
+  {
+   "reference": "1 Thessalonians 2:7",
+   "status": "self_rendered",
+   "block_index": 713,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 713
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 713
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 713
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 713
+  },
+  {
+   "reference": "1 Corinthians 2:15",
+   "status": "self_rendered",
+   "block_index": 713,
+   "why": "with Augustine's parenthesis"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 715
+  },
+  {
+   "reference": "1 Corinthians 2:14",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "positive paraphrase"
+  },
+  {
+   "reference": "Psalm 49:20",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "reordered"
+  },
+  {
+   "reference": "James 4:11",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Matthew 7:20",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "purpose clause"
+  },
+  {
+   "reference": "1 Corinthians 5:12",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "re-personed"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "self_rendered",
+   "block_index": 716,
+   "why": "Latin reading (includes 'all the earth')"
+  },
+  {
+   "reference": "Genesis 1:28",
+   "status": "self_rendered",
+   "block_index": 718,
+   "why": "indirect speech"
+  },
+  {
+   "reference": "Genesis 1:22",
+   "status": "self_rendered",
+   "block_index": 718,
+   "why": "indirect speech"
+  },
+  {
+   "reference": "Genesis 1:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 718
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 719
+  },
+  {
+   "reference": "Genesis 1:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 720
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "Kulish 'омана' wording does not fit; unmarked echo"
+  },
+  {
+   "reference": "John 8:44",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 722
+  },
+  {
+   "reference": "Genesis 1:29",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:30",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "paraphrase woven into Augustine's sentence"
+  },
+  {
+   "reference": "2 Timothy 1:16",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "2 Corinthians 11:9",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "2 Timothy 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 722
+  },
+  {
+   "reference": "Psalm 19:4",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Philippians 3:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 724
+  },
+  {
+   "reference": "Philippians 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 724
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 724
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 724
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 724,
+   "why": "Latin reads 'in Him', Kulish names Christ"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "self_rendered",
+   "block_index": 725,
+   "why": "re-personed into address to Paul"
+  },
+  {
+   "reference": "Philippians 4:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 725
+  },
+  {
+   "reference": "Psalm 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 725
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 725,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Philippians 4:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 725
+  },
+  {
+   "reference": "Philippians 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 725
+  },
+  {
+   "reference": "Philippians 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 726
+  },
+  {
+   "reference": "Philippians 4:17",
+   "status": "self_rendered",
+   "block_index": 726,
+   "why": "kept 'плід' for the gift/fruit distinction the paragraph argues (Kulish 'овощ')"
+  },
+  {
+   "reference": "Matthew 10:41",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 726
+  },
+  {
+   "reference": "Matthew 10:42",
+   "status": "self_rendered",
+   "block_index": 726,
+   "why": "split by Augustine's commentary"
+  },
+  {
+   "reference": "Matthew 10:42",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 726
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 730,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 736
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 736
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 736
+  },
+  {
+   "reference": "Matthew 10:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 736
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 736
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "self_rendered",
+   "block_index": 738,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 145:10",
+   "status": "self_rendered",
+   "block_index": 740,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 742,
+   "why": "allegorical re-application, re-personed"
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 742,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Philippians 2:16",
+   "status": "self_rendered",
+   "block_index": 742,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "self_rendered",
+   "block_index": 742,
+   "why": "re-personed, spliced with Gen 1:26"
+  },
+  {
+   "reference": "Isaiah 26:12",
+   "status": "self_rendered",
+   "block_index": 744,
+   "why": "Latin/LXX reading differs from Kulish"
+  },
+  {
+   "reference": "Genesis 2:3",
+   "status": "self_rendered",
+   "block_index": 746,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 2:2",
+   "status": "self_rendered",
+   "block_index": 746,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 750,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "self_rendered",
+   "block_index": 750,
+   "why": "paraphrase"
+  }
+ ]
+}

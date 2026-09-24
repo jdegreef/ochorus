@@ -1,0 +1,45 @@
+{
+  "kind": "sermon",
+  "slug": "against-eutropius",
+  "language": "lg",
+  "job_issue": 1700,
+  "pull_request": 3268,
+  "references": [
+    {
+      "reference": "Ecclesiastes 1:2",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "1 Peter 1:24",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Psalm 37:2",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Psalm 102:3",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Luke 23:34",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Matthew 6:12",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    },
+    {
+      "reference": "Hosea 6:6",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+    }
+  ],
+  "note": "Base text Ecclesiastes 1:2 ('Vanity of vanities'). Every quoted verse pasted verbatim from the OLCB (mined); Chrysostom quotes Ecclesiastes, the Psalms, Luke 23:34, Matthew 6:12 and Hosea 6:6. Two flags for the reviewer: 'like smoke are his days' was matched to Psalm 102:3 (whose OLCB reads 'my days') for the smoke image, pasted verbatim; and 'All flesh is grass' was matched to 1 Peter 1:24 rather than Isaiah 40:6-7. Chrysostom's own words to Eutropius are prose, not scripture."
+}

@@ -559,6 +559,15 @@ services:
       - type: redirect
         source: /articles/samuel-crowther-from-captive-to-bishop/
         destination: /authors/samuel-ajayi-crowther/
+      # Ochorus Originals is the house imprint, not a person: its books moved
+      # from an author page to their own shelf. Localized /<lang>/authors/
+      # ochorus-originals/ URLs are redirected by the page's own load.
+      - type: redirect
+        source: /authors/ochorus-originals
+        destination: /originals/
+      - type: redirect
+        source: /authors/ochorus-originals/
+        destination: /originals/
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.
       #

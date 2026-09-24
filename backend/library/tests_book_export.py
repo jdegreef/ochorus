@@ -27,7 +27,10 @@ PILOT = frozenset({("pilot-book", "en")})
 @mock.patch.object(book_export, "load_cover", lambda url: None)
 class EpubTests(TestCase):
     def setUp(self):
-        author = Author.objects.create(slug="a-writer", name="A. Writer")
+        author = Author.objects.create(
+            slug="a-writer", name="A. Writer", birth_year=1847, death_year=1929,
+            bio="A. Writer was a pastor.\n\nHe wrote books.",
+        )
         self.book = Book.objects.create(
             author=author, slug="pilot-book", language="en", title="Pilot & Book",
             publication_year=1890, about_html="<p>Why it matters.</p>",
@@ -134,6 +137,34 @@ class EpubTests(TestCase):
         # "About Ochorus" sits between the title page and the contents.
         self.assertLess(html.index('class="ochorus"'), html.index('class="contents"'))
 
+    def test_a_short_biography_follows_about_ochorus(self):
+        z = self._zip(self._get())
+        bio = z.read("OEBPS/about-author.xhtml").decode()
+        self.assertIn("About the Author", bio)
+        self.assertIn("1847–1929", bio)
+        self.assertIn("<p>A. Writer was a pastor.</p><p>He wrote books.</p>", bio)
+        self.assertIn('href="https://ochorus.test/authors/a-writer/"', bio)
+        opf = z.read("OEBPS/content.opf").decode()
+        # Reading order: About Ochorus, then the author, then the work itself.
+        self.assertLess(opf.index('idref="ochorus"'), opf.index('idref="author"'))
+        self.assertLess(opf.index('idref="author"'), opf.index('idref="about"'))
+        html = book_export.render_print_html(book_export.build_edition(self.book))
+        self.assertLess(html.index('class="ochorus"'), html.index('class="author-page"'))
+        self.assertLess(html.index('class="author-page"'), html.index('class="contents"'))
+
+    def test_a_translation_reads_the_translated_bio_and_never_falls_back(self):
+        from .models import AuthorTranslation
+
+        es = Book.objects.create(author=self.book.author, slug="pilot-book", language="es", title="Libro")
+        self.assertEqual(book_export.author_bio(es), "")  # no English fallback
+        AuthorTranslation.objects.create(author=self.book.author, language="es", bio="Fue pastor.")
+        self.assertEqual(book_export.author_bio(es), "Fue pastor.")
+
+    def test_an_imprint_has_no_biography_page(self):
+        self.book.author.is_imprint = True
+        self.book.author.save()
+        self.assertNotIn("OEBPS/about-author.xhtml", self._zip(self._get()).namelist())
+
     def test_print_contents_carries_page_numbers_when_given(self):
         ed = book_export.build_edition(self.book)
         numbered = book_export.render_print_html(ed, pages={"about": 4, "ch1": 5, "ch2": 9})
@@ -168,3 +199,45 @@ class CoverTests(TestCase):
     def test_webp_and_blank_have_no_cover(self):
         self.assertIsNone(book_export.load_cover(""))
         self.assertIsNone(book_export.load_cover("/covers/x.webp"))
+
+    def test_a_wordless_ground_exports_its_twin(self):
+        # A painting or plate has no title in its pixels; the site draws one
+        # over it. The image of the cover as the site shows it is the twin.
+        def edition(url, lang="es"):
+            return mock.Mock(slug="x", language=lang, cover_url=url)
+
+        self.assertEqual(book_export.cover_image_url(edition("/covers/art/x.jpg")), "/covers/es/x.png")
+        self.assertEqual(book_export.cover_image_url(edition("/covers/x.svg", "en")), "/covers/x.png")
+        self.assertEqual(book_export.cover_image_url(edition("/covers/x.jpg", "en")), "/covers/x.jpg")
+
+    def test_a_bundled_cover_needs_no_network(self):
+        slug, lang = next(iter(export_policy.EXPORT_PILOT))
+        book = mock.Mock(slug=slug, language=lang, cover_url=_fixture_cover_url(slug, lang))
+        with mock.patch.object(book_export, "load_cover", side_effect=AssertionError("fetched")):
+            cover = book_export.edition_cover(book)
+        self.assertIsNotNone(cover)
+
+    def test_every_pilot_edition_bundles_the_cover_the_site_shows(self):
+        # The API image has no frontend/static, and fetching the cover from the
+        # site failed in production — so each exportable edition carries a
+        # committed copy, and it must be the file the site serves today.
+        for slug, lang in sorted(export_policy.EXPORT_PILOT):
+            book = mock.Mock(slug=slug, language=lang, cover_url=_fixture_cover_url(slug, lang))
+            bundled = book_export.bundled_cover_path(book)
+            self.assertIsNotNone(bundled, f"{slug} ({lang}) has no raster cover to bundle")
+            fix = f"run: manage.py export_book {slug} --language {lang}"
+            self.assertTrue(bundled.is_file(), f"{bundled.name} is missing — {fix}")
+            self.assertEqual(
+                bundled.read_bytes(),
+                book_export.site_cover_file(book).read_bytes(),
+                f"{bundled.name} is stale — {fix}",
+            )
+
+
+def _fixture_cover_url(slug: str, language: str) -> str:
+    import json
+
+    from .content_fixtures import book_fixture_path
+
+    rows = json.loads(book_fixture_path(slug, language).read_text(encoding="utf-8"))
+    return rows[0]["fields"]["cover_url"]
