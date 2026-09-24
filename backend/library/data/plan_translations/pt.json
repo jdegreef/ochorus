@@ -33,6 +33,13 @@
   "title": "Uma Escola de Oração",
   "description": "Quatro semanas na escola da oração com três guias: Andrew Murray sobre como o próprio Senhor nos ensina a orar, D. L. Moody sobre a oração perseverante e Hannah Buyinza sobre a oração como o pulso diário da vida cristã."
  },
+ "school-of-prayer-31-days": {
+  "title": "31 Dias na Escola de Oração",
+  "description": "Um mês com Andrew Murray aos pés do único Mestre. Cada dia abre com uma das próprias palavras de Jesus sobre a oração, de “Senhor, ensina-nos a orar” até as promessas da última noite, e termina numa oração própria. Uma lição por dia, cerca de dez minutos, rumo à intercessão e a uma vida de oração.",
+  "note": [
+   "Prosa apenas (job #3147). O livro-fonte único (school-of-prayer) é adicionado em pt nesta mesma PR, portanto seed_plans cria a linha do plano em pt neste deploy."
+  ]
+ },
  "the-inner-chamber-month": {
   "title": "Um Mês na Câmara Interior",
   "description": "Construa o hábito diário da oração e da Palavra: trinta e seis manhãs com Andrew Murray, um capítulo a cada dia."

@@ -64,5 +64,12 @@
       "The description names the three source books the way their shipped Spanish editions do — «Poder a través de la oración» (power-through-prayer.es), «Propósito en la oración» (purpose-in-prayer.es) and «La necesidad de la oración» (necessity-of-prayer.es), all fixture titles verbatim — so the plan card and the books it opens agree.",
       "All three Bounds books are ALREADY published in es, so seed_plans creates this (praying-men, es) row on the same deploy that adds the plan — this prose must land in the SAME PR as the English definition or the es plans page publishes the English card (the #819 defect)."
     ]
+  },
+  "school-of-prayer-31-days": {
+    "title": "31 días en la escuela de oración",
+    "description": "Un mes con Andrew Murray a los pies del único Maestro. Cada día abre una de las propias palabras de Jesús sobre la oración, desde «Señor, enséñanos a orar» hasta las promesas de la última noche, y termina en una oración. Una lección al día, unos diez minutos, avanzando hacia la intercesión y una vida de oración.",
+    "note": [
+      "Queue job #3145. El libro fuente school-of-prayer ahora tiene edición en español, así que seed_plans crea una fila en español para este plan de un solo libro; esta prosa evita que se publique con título en inglés. El título y la descripción reflejan la edición española «Con Cristo en la escuela de oración»."
+    ]
   }
 }

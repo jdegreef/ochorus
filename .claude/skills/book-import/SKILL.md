@@ -811,29 +811,19 @@ dropped; chapters under 120 words are dropped as stubs.
   pasted-in bios were shortened back, and
   `AuthorBioDataIntegrityTests.test_catalog_bios_stay_short_stubs`
   (tests_fixture.py) caps catalog bio length so the trap can't be re-set by
-  hand. Since 2026-07-26 `seed_books` / `seed_sermons` also **upgrade** a stub:
-  on every deploy they sync an existing author from `authors.json`, replacing a
-  `bio` that is empty or still a verbatim catalog stub (see
-  `library/author_sync.py`). Reviewed prose always wins, and `bio_html` /
-  `photo_url` / years are fill-only, and every author in the fixture is synced —
-  not just those with a book, since 9 of 36 are biography-only. So a **short
-  `bio`** written into `authors.json` now reaches prod on its own, where
-  0049/0051 needed a hand-written migration. Two things it still does NOT cover:
-  **`bio_html`** is fill-only, so REPLACING a long-form biography on a live row
-  still ships as a migration with a digest anchor (the 0052 pattern); and a
-  **brand-new author with no book or sermon** is never CREATED by either seed
-  (only updated), so adding one still needs a migration the way 0053 did.
+  hand. Since 2026-07-26 `seed_books` / `seed_sermons` sync an existing
+  author from `authors.json` on every deploy (`library/author_sync.py`), for
+  every author in the fixture, not just those with a book. Since 2026-09-23
+  `bio` and `bio_html` are **fixture-wins** (a non-empty fixture value replaces a
+  differing live one; never blanked), so a stub is upgraded and a long-form bio
+  replaced with no migration; `photo_url` / years stay fill-only. What it still
+  does NOT cover: a **brand-new author with no book or sermon** is never CREATED
+  by either seed (only updated), so adding one still needs a migration the way
+  0053 did.
   Prerender caveat: author pages bake the bio at BUILD time, so the sync lands
   on the API first and the public page only picks it up on the next frontend
   deploy. *(hit amy-carmichael,
   f-b-meyer, susanna-wesley, george-muller, andrew-murray before the fix)*
-- **Editing the WORDING of an existing catalog stub? Move the old text into
-  `author_sync.RETIRED_STUBS`, don't just overwrite it.** A stub is recognised
-  by exact string match, so the old wording is how the sync knows a live row is
-  still a placeholder. Delete it and every prod row carrying that text is
-  stranded on the stub forever — nothing else upgrades a non-empty bio, and
-  there is no error to notice. Only matters for authors whose row was created
-  by an import rather than from `authors.json`. *(2026-07)*
 - **`chapter_title_overrides` now applies in `upsert_book`** (was only in
   `import_ochorus`), so per-book title corrections work for every source. Apply
   `clean_title` to the override in BOTH paths so the same correction yields the

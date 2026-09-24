@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
+	import { authorPath } from '$lib/originals';
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
 	import { SITE_URL } from '$lib/config';
@@ -224,7 +225,7 @@
 				<div class="tile col-span-2 sm:col-span-1">
 					<dt>{t('year.statAuthor')}</dt>
 					<dd class="name">
-						<a href={localizeHref(`/authors/${stats.topAuthor.slug}`)}>{stats.topAuthor.name}</a>
+						<a href={localizeHref(authorPath(stats.topAuthor.slug))}>{stats.topAuthor.name}</a>
 					</dd>
 				</div>
 			{/if}

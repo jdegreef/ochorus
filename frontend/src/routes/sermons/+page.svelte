@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { authorPath } from '$lib/originals';
 	import type { SermonSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { collectionPage, breadcrumbLd, hreflangAll } from '$lib/seo';
@@ -380,7 +381,7 @@
 			>
 				<GroupHeading
 					name={g.name}
-					href={localizeHref(`/authors/${g.slug}`)}
+					href={localizeHref(authorPath(g.slug))}
 					portraitUrl={g.photo_url}
 					portraitPosition={portraitPosition(g.slug)}
 					count={g.items.length}

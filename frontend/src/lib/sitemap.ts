@@ -45,6 +45,7 @@ import { ERAS, eraOf } from '$lib/eras';
 import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
+import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
 
 /** Locale-prefixed absolute URL ('' prefix for the default locale, en). */
 export const loc = (locale: string, path: string) =>
@@ -296,6 +297,13 @@ async function build(): Promise<SitemapData> {
 	// theme has actually earned a page, so the hub is never advertised empty.
 	if (quoteTopics.length) pages.push({ byLocale: new Map([['en', '/quotes/topics/']]) });
 
+	// The house imprint's shelf, in each advertised locale that has one of its
+	// books (no English fallback, so an empty locale has no page to list).
+	const originalsIn = advertisedSlices
+		.filter((x) => x.books.some((b) => b.author.slug === ORIGINALS_SLUG))
+		.map((x) => [x.locale, `${ORIGINALS_PATH}/`] as [string, string]);
+	if (originalsIn.length) pages.push({ byLocale: new Map(originalsIn) });
+
 	// Articles: original English writing, no translations yet — the hub, each
 	// article, and each topic-filtered shelf. Its OWN sitemap child (see
 	// `articleEntries` below and the `articles` section), not folded into `pages`,
@@ -323,6 +331,8 @@ async function build(): Promise<SitemapData> {
 	// Author pages prerender for every locale (the bio falls back to English).
 	const authorSlugs = new Set<string>(authors.map((a) => a.slug));
 	for (const { books } of perLocale) for (const b of books) authorSlugs.add(b.author.slug);
+	// The imprint is not a person and has no author page — /originals above.
+	authorSlugs.delete(ORIGINALS_SLUG);
 	// The portrait is the same image in every locale — an author is one row.
 	const portraits = new Map(authors.filter((a) => a.photo_url).map((a) => [a.slug, a.photo_url]));
 	const authorEntries: Entry[] = [...authorSlugs].map((slug) => {
