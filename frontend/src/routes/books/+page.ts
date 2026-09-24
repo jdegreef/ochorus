@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #1779): Spanish book — soar-like-the-eagle-3, Gareth
+// Evans's teaching/testimony on reaching one's spiritual potential ("Remontarse como el águila"), 12
+// chapters. Book pages are prerendered per locale, so /es/books and the shelf rebuild with the
+// translated title over the shared painting ground and the reader page bakes the 12 chapters. Backs no
+// LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #1598): Spanish book — ministry-of-intercession, Andrew
 // Murray's plea for a life of intercession ("El Ministerio de la Intercesión"), 18 chapters. Book
 // pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
