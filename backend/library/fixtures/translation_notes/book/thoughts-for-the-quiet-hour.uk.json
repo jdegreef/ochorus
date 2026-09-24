@@ -3,6 +3,7 @@
  "slug": "thoughts-for-the-quiet-hour",
  "language": "uk",
  "job_issue": 2818,
+ "pull_request": 3320,
  "note": [
   "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “. Hebrews cited as Євреїв, not Kulish's Жидів. Citations keep the author's (English) verse numbers; where Kulish numbers a verse differently (e.g. Genesis 3 runs one verse behind) the row's `why` says so."
  ],
