@@ -1709,6 +1709,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # xiii. The "lob" in the same sentence is a separate OCR slip in the
             # quoted text and is left for the English pass, which owns wording.
             ("(Job xiii. 8)", "(Job xlii. 8)"),
+            # ar ch6 rendered Rev. 22:17 itself; take the registry Bible's
+            # (Van Dyck) wording, as `unfailing-springs` does, so the language
+            # quotes the verse one way (`tests_verse_consistency`).
+            ("مَن يشأ فليأخذ من ماء الحياة مجانًا", "من يرد فليأخذ ماء حياة مجانًا"),
         ],
     },
     "the-bruised-reed": {
