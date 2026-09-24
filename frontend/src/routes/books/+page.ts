@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24: Spanish book — absolute-surrender (#1596), Andrew Murray's
+// Keswick addresses on yielding wholly to God ("Entrega absoluta"), 9 chapters. Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title and the
+// reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts
+// touch owed.
 // prerender refresh 2026-09-24 (queue job #812): Gareth Evans's Ключ у моїй руці — the Ukrainian
 // edition of the-key-in-my-hand, 15 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-23: one NEW English book — sons-of-the-king-2, "Sons of the King – 30
