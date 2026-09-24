@@ -13,11 +13,10 @@ Same queue-over-GitHub design as the translation queue (see ``jobs.py``), and fo
 the same reason: a chapter title/body and an author bio are **fixture-owned prose**
 (see ``backend/CLAUDE.md``), so an in-admin edit cannot be a live DB write. A live
 edit would move no content digest — the prerendered reader page would never
-rebuild — and ``seed_books`` deliberately never syncs an existing book's chapters,
-so it would also drift from the fixture and be walked back on a fresh install. The
-correct shape is a PR that edits the fixture *and* migrates the live rows; prod
-holds no credentials to author that, so the admin files a job and a worker ships
-it. State is derived, not stored: queued = open issue, done = the worker closed
+rebuild — and ``seed_books`` syncs every chapter to the fixture on deploy, so the
+next deploy would walk it back. The correct shape is a PR that edits the fixture
+(``seed_books`` carries it to the live rows); prod holds no credentials to author
+that, so the admin files a job and a worker ships it. State is derived, not stored: queued = open issue, done = the worker closed
 it. The per-kind worker instructions live in the ``content-edit-worker`` skill.
 
 The GitHub plumbing is intentionally a small local copy of ``jobs.py``'s rather

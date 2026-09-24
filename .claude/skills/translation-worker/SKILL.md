@@ -256,13 +256,10 @@ existing `<slug>.<lang>.json` in the same PR:
   unaffected — they translate from the English fixture as it stands.
 - The ordinary double-ship guard still holds for queue jobs: an existing
   `<slug>.<lang>.json` means shipped.
-- **The fixture edit alone never reaches prod.** `seed_books` never touches an
-  existing book's chapters, so #3104 left prod at 39 chapters in every edition
-  it topped up. Ship a data migration in the SAME PR that upserts the edition's
-  chapters by `order` from its fixture (create missing, update drifted, never
-  delete) — copy `0162_sync_stepping_stones_chapters` (#3221). Then force a web
-  rebuild in a follow-up PR once it deploys, so the prerendered contents list
-  updates. Verify by chapter count on the live API
+- **Reaching prod:** `seed_books` appends the new chapters to each existing
+  edition on deploy (since 2026-09-23; #3104 predated that and needed migration
+  0162). Put a frontend touch in the PR or a follow-up so the prerendered
+  contents list rebuilds, and verify by chapter count on the live API
   (`/api/library/books/<slug>/?language=<lang>`), not the fixture.
 
 **Sermon** — same shape, smaller: single body instead of chapters; translate

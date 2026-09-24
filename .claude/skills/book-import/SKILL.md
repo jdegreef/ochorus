@@ -718,15 +718,16 @@ dropped; chapters under 120 words are dropped as stubs.
     open with the chapter title or "chapter n" — so a future CCEL re-flow fails
     the build loudly instead of silently shipping a chapter that repeats its own
     heading. `build_serious_call` is the model. *(a-serious-call, 2026-09)*
-  - **Fixing the bodies of an ALREADY-SHIPPED book needs a data migration, not
-    just a fixture edit.** `seed_books` never re-syncs the chapters of a book it
-    has already created (chapter `order` is a public contract), so a re-chapterize
-    or body fix that only lands in the fixture reaches fresh installs but SKIPS
-    prod — the deploy logs a `chapter_drift` warning and the live pages stay
-    wrong. Ship the migration half too (see the `ship-content-fix` skill;
-    migration `0103` strips the Enchiridion's doubled titles, `0092` is the other
-    model — both re-derive `body_text`/`word_count` and NULL `search_vector`).
-    And verify the fix on the live BOOK body, not just the API. *(2026-09)*
+  - **Fixing an ALREADY-SHIPPED book: a title/body fix is just a fixture edit;
+    a chapter set that SHRINKS or RENUMBERS still needs a data migration.** Since
+    2026-09-23 `seed_books` syncs an existing book's chapters by `order` on every
+    deploy — updates drifted titles/bodies (settled form), appends new orders —
+    but never deletes or renumbers (chapter `order` is a public contract). Before
+    that it synced nothing and 379 fixture-only fixes sat unshipped. So a
+    re-chapterize that drops/merges chapters still ships a migration (see
+    `ship-content-fix`; `0134` is the model); anything else doesn't. A backend-only
+    PR skips the web build — force a prerender with a frontend touch after it
+    deploys. Verify on the live BOOK body, not just the API. *(2026-09)*
 - **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
   The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
   parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted
@@ -1041,7 +1042,7 @@ dropped; chapters under 120 words are dropped as stubs.
   number. **Before adding any strip, count what it hits corpus-wide** — the
   arabic rule hit 245 stored titles across waiting-on-god (×6 languages) and
   selected-sermons-whitefield, all of which still read doubled until a migration
-  rewrites them; `seed_books` never re-syncs an existing book's chapters.
+  rewrites them (now `seed_books` itself syncs titles on deploy).
   *(2026-08)*
 - **A chapter may legitimately have NO title.** Bounds's *Purpose in Prayer* is
   thirteen untitled chapters (CCEL lists them "Chapter I" … and the pages carry
@@ -1623,9 +1624,11 @@ The whole book is ONE page; hazards worth knowing before reusing it:
   - Quote style: docsouth is uniformly STRAIGHT-quoted, which `QuoteStyleTests`
     (consistency, not curly) leaves alone — so keep titles/descriptions straight
     too rather than normalising.
-  - **Fixing an ALREADY-SHIPPED book with an importer change does NOT reach
-    prod.** The importer + fixture fix only helps fresh installs — `seed_books`
-    never rewrites an existing book's chapters (backend/CLAUDE.md). The Allen
+  - **Fixing an ALREADY-SHIPPED book with an importer change reaches prod only
+    through the fixture.** An importer fix alone helps nothing already imported;
+    regenerate the fixture and `seed_books` syncs the chapter on deploy (since
+    2026-09-23 — before that it never rewrote existing chapters, hence what
+    follows). The Allen
     footer-nav fix (#1330: importer + fixture) deployed and left the live last
     chapter unchanged; it took a one-time `BODY_CORRECTIONS` replacement (#1336)
     to backfill the stale prod row. Prefer a correction over a hand-written

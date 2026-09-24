@@ -19,16 +19,18 @@ like any other field. A book row WITHOUT a ``series`` key is out of every series
 membership is the fixture's fact, and reading absence as "leave it" would strand
 a book the fixture had taken out.
 
-SCOPE: the Book row only. An existing book's CHAPTERS are still left alone.
-Chapter ``order`` is a public contract — ``PlanDay.chapter_order``, readers'
-saved positions, prerendered URLs — so silently replacing a chapter set on
-every deploy could shift all three library-wide (see migration 0009, which
-excluded a book from re-chapterization for exactly that reason). Chapter
-changes keep shipping as data migrations, or as ``apply_body_corrections``
-entries for body repairs. That makes chapters the one thing this command does
-NOT keep in sync, so it also emits a report-only ``chapter_drift`` warning
-(never a failure) when a book's stored chapters have diverged from the fixture
-— the signal that a live-DB transform needs a fixture regen.
+CHAPTERS sync by ``order``, additively. Chapter ``order`` is a public contract
+— ``PlanDay.chapter_order``, readers' saved positions, prerendered URLs — so
+this command never deletes or renumbers a chapter (see migration 0009, which
+excluded a book from re-chapterization for exactly that reason). Within that
+rule the fixture is the truth: a chapter whose title or settled body differs is
+updated in place, and an order the DB lacks is created. Until 2026-09-23 it did
+neither, so every fixture-only chapter fix silently skipped prod — 379 chapters
+across 60 editions (straight quotes, OCR slips, a whole index page), plus
+Stepping Stones' four new chapters, which needed migration 0162. A chapter
+set that must shrink or renumber still ships as a data migration; the
+report-only ``chapter_drift`` warning names any book whose DB still disagrees
+after the sync (in practice: a DB chapter the fixture no longer has).
 """
 
 from __future__ import annotations
@@ -170,20 +172,66 @@ def series_of(f: dict, series: dict[str, Series]) -> Series | None:
         ) from None
 
 
+def sync_chapters(book, fixture_chapters) -> tuple[int, int]:
+    """Bring an existing ``book``'s chapters up to its fixture; return
+    ``(added, updated)``.
+
+    Additive by ``order`` (see the module docstring): an order the DB lacks is
+    created, one whose title or settled body differs is updated in place, and
+    nothing is ever deleted or renumbered — a DB chapter the fixture lacks is
+    left for ``chapter_drift`` to report. Bodies are compared and written in
+    their SETTLED form, the state ``apply_body_corrections`` (which runs just
+    before this seed) leaves them in, so a corrected chapter is not reverted and
+    a converged library costs no writes. Settling is computed only for a
+    chapter whose raw body already disagrees, as in ``chapter_drift_reason``.
+    """
+    db = {
+        c.order: c
+        for c in book.chapters.only("id", "book_id", "order", "title", "body_html")
+    }
+    added = updated = 0
+    for fc in sorted(fixture_chapters, key=lambda c: c["order"]):
+        order = fc["order"]
+        title = fc.get("title") or ""
+        body = fc.get("body_html") or ""
+        chapter = db.get(order)
+        if chapter is None:
+            # .create() runs save(), which derives body_text / word_count and
+            # builds the search vector.
+            Chapter.objects.create(
+                book=book,
+                order=order,
+                title=title,
+                body_html=settled_chapter_body(book.slug, order, body),
+            )
+            added += 1
+            continue
+        changed = []
+        if (chapter.title or "") != title:
+            chapter.title = title
+            changed.append("title")
+        if body != chapter.body_html:
+            body = settled_chapter_body(book.slug, order, body)
+            if body != chapter.body_html:
+                chapter.body_html = body
+                changed.append("body_html")
+        if changed:
+            # save(), not .update(): the hook re-derives body_text/word_count,
+            # clears the citation stamp and refreshes the search vector.
+            chapter.save(update_fields=changed)
+            updated += 1
+    return added, updated
+
+
 def chapter_drift_reason(book, fixture_chapters) -> str | None:
     """Report-only: why ``book``'s stored chapters differ from the fixture, or
     ``None`` when they agree.
 
-    seed_books upserts the Book ROW but deliberately never touches an existing
-    book's chapters (chapter ``order`` is a public contract — see the module
-    docstring). That leaves one silent gap: a chapter-transform data migration,
-    or a correction applied to the live DB, can diverge prod chapters from the
-    fixture with nothing to detect it — ``regen_fixture`` rebuilds the fixture
-    *from* the fixture, so neither side notices. Book metadata now auto-syncs,
-    which makes chapters the lone exception, exactly the shape that gets
-    forgotten. This surfaces the gap as a deploy-log warning; the fix is a
-    fixture regen (or a migration), decided by a human. It only READS — never
-    mutates a chapter or fails the deploy.
+    ``sync_chapters`` runs first and converges every chapter it may touch, so
+    what is left is what it may not: a DB chapter the fixture no longer has
+    (sync never deletes or renumbers — see the module docstring). This surfaces
+    that as a deploy-log warning; the fix is a data migration, decided by a
+    human. It only READS — never mutates a chapter or fails the deploy.
 
     ``fixture_chapters`` is the list of chapter ``fields`` from this book's own
     fixture file (one work per file), so the whole-corpus ``chapters_by_book``
@@ -312,7 +360,7 @@ class Command(BaseCommand):
         authors = authors_by_slug(author_rows)
         series = sync_series(self.stdout)
 
-        created = updated = 0
+        created = updated = chapters_synced = 0
         # Stream one work file at a time — books/<slug>.<lang>.json holds one Book
         # and its Chapters — so peak memory is a single file, not the whole
         # ~170 MB fixture parsed at once (the preDeploy allocation that grows
@@ -400,6 +448,16 @@ class Command(BaseCommand):
                     )
                     continue
 
+                added, retouched = sync_chapters(
+                    book, chapters_by_book.get((f["slug"], language), [])
+                )
+                if added or retouched:
+                    chapters_synced += 1
+                    self.stdout.write(
+                        f"  ~ {book.slug} [{language}] chapters: "
+                        f"{added} added, {retouched} updated"
+                    )
+
                 # A field absent from the fixture row (an older serialization
                 # predating it) is not "changed to the default" — leave it be.
                 changed = [
@@ -430,9 +488,12 @@ class Command(BaseCommand):
                         f"  ~ {book.slug} [{language}] ({', '.join(changed)})"
                     )
 
-        if created or updated:
+        if created or updated or chapters_synced:
             self.stdout.write(
-                self.style.SUCCESS(f"Books: {created} created, {updated} updated.")
+                self.style.SUCCESS(
+                    f"Books: {created} created, {updated} updated, "
+                    f"{chapters_synced} with chapters synced."
+                )
             )
         else:
             self.stdout.write("Books already up to date.")
@@ -442,9 +503,9 @@ class Command(BaseCommand):
         for line in sync_all_authors(Author, author_rows):
             self.stdout.write(line)
 
-        # Report-only: warn if any existing book's chapters have diverged from
-        # the fixture (a live-DB transform that never got a fixture regen — the
-        # fix is a fixture regen or a migration, decided by a human). Streams one
+        # Report-only: warn if any existing book's chapters still differ from
+        # the fixture after the sync — a DB chapter the fixture lacks, which
+        # only a data migration may remove. Streams one
         # work file at a time and reads only the columns it compares. This is
         # diagnostics inside an @transaction.atomic handle(), so a bug in it must
         # NOT roll back a good seed — its reads are swallowed (only reads, so the
@@ -460,9 +521,9 @@ class Command(BaseCommand):
             self.stdout.write(
                 self.style.WARNING(
                     f"⚠ Chapter drift: {len(drifted)} book(s) differ from the "
-                    "fixture. seed_books does not sync chapters — regenerate the "
-                    "fixture (scripts/regen_fixture.py) or ship a data migration "
-                    "(see the ship-content-fix skill)."
+                    "fixture after the chapter sync, which never deletes or "
+                    "renumbers — ship a data migration (see the ship-content-fix "
+                    "skill)."
                 )
             )
             for book, reason in drifted:

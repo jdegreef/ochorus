@@ -2261,9 +2261,8 @@ class RestatedChapterHeadingTests(SimpleTestCase):
     with its own title prints it twice — `all-of-grace` chapter 1 is titled "To
     You" and its prose began "<h2>TO YOU</h2>". Migration 0092 has the census
     and the judgement calls; this is the watch. The importer's rule reaches no
-    fixture edited by hand, and `seed_books` never re-syncs the chapters of a
-    book it has already created, so a restated heading committed here would
-    ship and then be beyond the reach of any deploy.
+    fixture edited by hand, so a restated heading committed here would ship to
+    every edition's reader.
 
     A translated heading that PARAPHRASES its title rather than repeating it
     reads as clean here and is not this test's to catch — 0092 decides those by
@@ -2356,9 +2355,8 @@ class ChapterTitleNumberingTests(SimpleTestCase):
 
     `clean_title` strips the prefix on import now, and migration 0090 stripped
     the rows already in the database. This is what keeps them from coming back:
-    the importer's rule is not applied to a fixture edited by hand, and
-    `seed_books` never re-syncs the chapters of a book it has already created,
-    so a numbered title committed here would ship and then be unreachable.
+    the importer's rule is not applied to a fixture edited by hand, so a
+    numbered title committed here would ship straight to the reader.
 
     Every title in the corpus, not just chapters — a numeral in front of a book
     or sermon name is the same source artefact, and today there are none.

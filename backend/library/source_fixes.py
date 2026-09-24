@@ -11,10 +11,10 @@ Two callers must agree, so the logic lives here and not in either of them:
 * `scripts/` / the fixture, so a fresh database is built clean;
 * migration 0058, so the rows already in production are repaired.
 
-`seed_books` only creates chapters for a book it has never seen — it never
-rewrites an existing book's chapter bodies (it reports the drift and moves on).
-So a fixture edit alone would leave production exactly as wrong as it is now.
-That is why the migration exists, and why editing these functions after they
+`seed_books` only created chapters for a book it had never seen until
+2026-09-23 — it never rewrote an existing book's chapter bodies. So a fixture
+edit alone would have left production exactly as wrong as it was. That is why
+the migration exists, and why editing these functions after they
 have shipped changes nothing on its own.
 
 Keyed by `(slug, order)` and applied to a chapter body in ANY language: each
