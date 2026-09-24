@@ -2364,6 +2364,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.085
 		},
+		"pt/brave-for-god": {
+			"ground": "df8d14e628626548ad8fa57182d50f00e4a61af6b04b736afce6da159adbcb2c",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/cheque-book": {
 			"ground": "d5b24d6d237dc26380030d5597707659508f5b8ed69c8be8969fb3ebbd82bfce",
 			"style": "revival",

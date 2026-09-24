@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #3193): Portuguese book — brave-for-god, six true stories
+// of faith told for young readers ("Corajosos por Deus"), 6 chapters. Book pages are prerendered per
+// locale, so /pt/books and the shelf rebuild with the translated title over the shared painting ground
+// and the reader page bakes the 6 chapters. Backs the CURATED plan brave-for-god-24-true-stories, but
+// brave-for-god-2/-3/-4 are not yet in pt, so no pt plan row activates and no plan prose is owed.
 // prerender refresh 2026-09-24 (queue job #3178): Portuguese book — pilgrims-progress, John Bunyan's
 // allegory of Christian's journey to the Celestial City ("O Peregrino"), 22 chapters. Book pages are
 // prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the shared
