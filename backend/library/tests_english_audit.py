@@ -19,6 +19,7 @@ Two jobs:
 from __future__ import annotations
 
 import json
+import re
 from functools import lru_cache
 from pathlib import Path
 
@@ -1110,6 +1111,59 @@ class EdwardsSermonTextTests(SimpleTestCase):
                     corrections.settled_chapter_body(
                         "selected-sermons-edwards", order, body),
                     body,
+                )
+
+
+class RibbandOfBlueTitleLineTests(SimpleTestCase):
+    """`a-ribband-of-blue` lost the display line that ends a sentence.
+
+    Gutenberg #23438 runs "…to introduce the wearing of the" straight into a
+    centred `<div class="c1">"RIBBAND OF BLUE."</div>`, which the sermon
+    importer never collected. The fr and sw editions were translated from the
+    damaged English, so all three carry the repair, at the same block index.
+    """
+
+    RESTORED = {
+        "en": '<p>"RIBBAND OF BLUE."</p>',
+        "fr": "<p>« CORDON BLEU ».</p>",
+        "sw": '<p>"UZI WA RANGI YA SAMAWI."</p>',
+    }
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        sermons = Path(__file__).resolve().parent / "fixtures" / "content" / "sermons"
+        cls.bodies = {
+            lang: json.loads(
+                (sermons / f"a-ribband-of-blue.{lang}.json").read_text()
+            )[0]["fields"]["body_html"]
+            for lang in cls.RESTORED
+        }
+
+    def test_the_line_follows_the_truncated_sentence_in_every_edition(self):
+        for lang, block in self.RESTORED.items():
+            with self.subTest(language=lang):
+                blocks = re.findall(r"<p>.*?</p>", self.bodies[lang])
+                self.assertEqual(blocks.index(block), 10)
+
+    def test_the_correction_is_what_restores_the_line(self):
+        """Strip it back out and the correction must put it back.
+
+        Production rows are damaged; `apply_body_corrections` on deploy is what
+        repairs them, so this fails if the entry is dropped or mis-keyed.
+        """
+        for lang, block in self.RESTORED.items():
+            with self.subTest(language=lang):
+                settled = self.bodies[lang]
+                damaged = settled.replace(f"{block} ", "", 1)
+                self.assertNotIn(block, damaged)
+                self.assertEqual(
+                    corrections.settled_sermon_body("a-ribband-of-blue", damaged),
+                    settled,
+                )
+                self.assertEqual(
+                    corrections.settled_sermon_body("a-ribband-of-blue", settled),
+                    settled,
                 )
 
 
