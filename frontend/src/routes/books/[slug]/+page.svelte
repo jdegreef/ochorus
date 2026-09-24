@@ -335,6 +335,17 @@
 			</p>
 			<h1 class="text-h1" dir="auto">{book.title}</h1>
 			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
+			<!-- The names this work is also published under. Shown, not merely marked
+			     up: a reader who searched "A Divine Cordial" and landed on a page
+			     headed "All Things for Good" needs to see, on arrival, that they are
+			     in the right place. Held to one line — it is confirmation, not a
+			     second title, and it sits above the author so it reads as part of
+			     naming the work rather than as a fact about it. -->
+			{#if otherTitles.length}
+				<p class="mt-1 text-small text-muted" dir="auto">
+					{t('book.otherTitles')}: {otherTitles.join(' · ')}
+				</p>
+			{/if}
 			<!-- Where this book sits in its series, and the way on to the next
 			     volume in this language. Absent outside a series and where the series
 			     has no name in this edition's language (the API's no-fallback rule).
@@ -347,17 +358,6 @@
 							class="text-accent hover:underline"
 							>{t('book.seriesNext')}: {book.series.next.title} →</a
 						>{/if}
-				</p>
-			{/if}
-			<!-- The names this work is also published under. Shown, not merely marked
-			     up: a reader who searched "A Divine Cordial" and landed on a page
-			     headed "All Things for Good" needs to see, on arrival, that they are
-			     in the right place. Held to one line — it is confirmation, not a
-			     second title, and it sits above the author so it reads as part of
-			     naming the work rather than as a fact about it. -->
-			{#if otherTitles.length}
-				<p class="mt-1 text-small text-muted" dir="auto">
-					{t('book.otherTitles')}: {otherTitles.join(' · ')}
 				</p>
 			{/if}
 			<!-- Separator as an expression, not literal text: the span's leading space
