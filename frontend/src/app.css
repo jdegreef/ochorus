@@ -642,6 +642,51 @@
 		padding: 0.4rem;
 		line-height: 1;
 	}
+	/* A row of secondary actions. A plain wrapping row from sm up; on a phone,
+	   equal columns of icon-over-label buttons under a hairline, so every action
+	   stays one tap away instead of wrapping onto three lines (the book page). */
+	.action-strip {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	@media (max-width: 639.98px) {
+		.action-strip {
+			display: grid;
+			grid-auto-flow: column;
+			grid-auto-columns: minmax(0, 1fr);
+			gap: 0;
+			padding-top: 0.6rem;
+			border-top: 1px solid var(--border);
+		}
+		.action-strip > * {
+			display: flex;
+			justify-content: center;
+			min-width: 0;
+		}
+		.action-strip .btn {
+			flex-direction: column;
+			gap: 0.2rem;
+			width: 100%;
+			padding: 0.4rem 0.1rem;
+			border-color: transparent;
+			font-size: var(--fs-eyebrow);
+			font-weight: 500;
+			white-space: nowrap;
+		}
+		.action-strip .btn svg {
+			width: 20px;
+			height: 20px;
+		}
+	}
+	/* Icon-only from sm up: the button's `.btn-label` gives way, its
+	   aria-label/title stays the accessible name. */
+	@media (min-width: 640px) {
+		.icon-sm .btn-label {
+			display: none;
+		}
+	}
 	/* A dashboard stat's number. Display face, one step above the page title,
 	   set solid so a row of tiles aligns on the digits. */
 	.stat-number {

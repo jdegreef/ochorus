@@ -26,7 +26,7 @@
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import { seriesLabel } from '$lib/series';
-	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, jumpToSection, elementVisible } from '$lib/scrollSpy.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
@@ -65,6 +65,10 @@
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
 
+	// A saved place past chapter 1: the read verb is Continue, not Begin.
+	const resuming = $derived(resumeHere != null && resumeHere > 1);
+	const readOrder = $derived(resuming && resumeHere != null ? resumeHere : 1);
+
 	// The read card: the chapter the reader is in, how far through the book
 	// that is (by words, so a long chapter counts for more), and the time left
 	// from the start of it at the reader's pace.
@@ -78,17 +82,10 @@
 	const percentRead = $derived(totalWords ? ((totalWords - wordsLeft) / totalWords) * 100 : 0);
 
 	// Whether the read card has scrolled out of view — the sticky section bar
-	// shows its own Continue only then.
+	// shows its own read verb only then. (The card sits in the hero, so off
+	// screen means scrolled past.)
 	let readCard = $state<HTMLElement>();
-	let cardGone = $state(false);
-	$effect(() => {
-		if (!readCard) return;
-		const io = new IntersectionObserver(([e]) => {
-			cardGone = !e.isIntersecting && e.boundingClientRect.top < 0;
-		});
-		io.observe(readCard);
-		return () => io.disconnect();
-	});
+	const cardSeen = elementVisible(() => readCard, { initial: true });
 
 	// "Prefer Modern English" (settings): when it's on and this book has a modern
 	// edition, the read CTAs open that edition by carrying ?edition=modern. The
@@ -414,13 +411,13 @@
 			     second main action. -->
 			<div class="read-card mt-4" bind:this={readCard}>
 				<div class="min-w-0 flex-1">
-					{#if resumeHere != null && resumeHere > 1}
+					{#if resuming}
 						<p class="text-small text-muted">
 							{t('book.onChapter')
-								.replace('%n%', String(resumeHere))
+								.replace('%n%', String(readOrder))
 								.replace('%t%', String(book.chapter_count))}{#if minutesLeft}{` · ${bookTimeLeft(minutesLeft)}`}{/if}
 						</p>
-						<p class="read-card-title" dir="auto">{chapterName(resumeHere, resumeChapter?.title)}</p>
+						<p class="read-card-title" dir="auto">{chapterName(readOrder, resumeChapter?.title)}</p>
 						<div class="mt-2">
 							<ProgressBar percent={percentRead} label="{book.title}: {t('progress.through')}" />
 						</div>
@@ -438,16 +435,15 @@
 					{/if}
 				</div>
 				<div class="read-card-cta">
-					{#if resumeHere != null && resumeHere > 1}
-						<a href={readHref(resumeHere)} class="btn btn-primary">{t('plans.continue')}</a>
+					<a href={readHref(readOrder)} class="btn btn-primary"
+						>{resuming ? t('plans.continue') : t('book.beginReading')}</a
+					>
+					{#if resuming}
 						<a href={readHref(1)} class="text-small text-muted underline hover:text-text"
 							>{t('book.startOver')}</a
 						>
-					{:else}
-						<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
 					{/if}
 					{#if book.has_modern_edition}
-						{@const readOrder = resumeHere && resumeHere > 1 ? resumeHere : 1}
 						<!-- The primary CTA follows the Modern English preference; this
 						     offers the other edition. -->
 						<a
@@ -464,25 +460,24 @@
 			<!-- Everything else is one quiet row of five: keep it (Save, a shelf),
 			     take it away (one Download menu for offline / EPUB / PDF), pass it on
 			     (Share) and look inside (Search). Share and Search are icon-only on
-			     desktop. Below `sm` the same five become design B's labelled icon
-			     strip — equal columns, icon over a one-word label — so every action
-			     stays one tap away without wrapping onto three lines. -->
-			<div class="book-actions mt-3">
+			     desktop (`.icon-sm`); below `sm` the `.action-strip` becomes design
+			     B's labelled icon strip. -->
+			<div class="action-strip mt-3">
 				<FavoriteButton kind="book" slug={book.slug} showLabel />
 				<AddToShelfButton slug={book.slug} shortLabel />
 				<BookDownloadMenu {book} />
-				<div class="desk-icon">
+				<div class="icon-sm">
 					<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
 				</div>
 				<!-- Search inside this book: the real search, scoped to the book. -->
 				<a
 					href={localizeHref(scopedSearchHref('book', book.slug))}
-					class="btn btn-sm btn-ghost desk-icon"
+					class="btn btn-sm btn-ghost icon-sm"
 					aria-label={t('search.inBook')}
 					title={t('search.inBook')}
 				>
 					<Icon name="search" size={16} />
-					<span>{t('nav.search')}</span>
+					<span class="btn-label">{t('nav.search')}</span>
 				</a>
 			</div>
 		</div>
@@ -516,16 +511,10 @@
 			<!-- The read verb lives in the hero card; repeating it here while that
 			     card is on screen put two "Continue" buttons in view. It appears
 			     only once the card has scrolled away. -->
-			{#if cardGone}
-				{#if resumeHere != null && resumeHere > 1}
-					<a href={readHref(resumeHere)} class="btn btn-primary subnav-cta shrink-0"
-						>{t('book.continueCh')} {resumeHere}</a
-					>
-				{:else}
-					<a href={readHref(1)} class="btn btn-primary subnav-cta shrink-0"
-						>{t('book.beginReading')}</a
-					>
-				{/if}
+			{#if !cardSeen.visible}
+				<a href={readHref(readOrder)} class="btn btn-primary subnav-cta shrink-0"
+					>{resuming ? `${t('book.continueCh')} ${readOrder}` : t('book.beginReading')}</a
+				>
 			{/if}
 		</nav>
 	{/if}
@@ -838,56 +827,6 @@
 		.read-card-cta {
 			align-items: center;
 			flex-shrink: 0;
-		}
-	}
-
-	/* The secondary actions. Desktop: one quiet wrapping row, with Share and
-	   Search as icons (their labels kept for the phone strip, and as the
-	   accessible name via aria-label/title). */
-	.book-actions {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 0.5rem;
-	}
-	@media (min-width: 640px) {
-		.book-actions .desk-icon :global(span),
-		.book-actions a.desk-icon > span {
-			display: none;
-		}
-	}
-	/* Phone: design B's strip — five equal columns under a hairline, each an
-	   icon over a one-word label. The children are other components' buttons,
-	   hence :global. */
-	@media (max-width: 639.98px) {
-		.book-actions {
-			display: grid;
-			grid-template-columns: repeat(5, minmax(0, 1fr));
-			gap: 0;
-			padding-top: 0.6rem;
-			border-top: 1px solid var(--border);
-		}
-		.book-actions > :global(*) {
-			display: flex;
-			justify-content: center;
-			min-width: 0;
-		}
-		.book-actions :global(.btn) {
-			flex-direction: column;
-			gap: 0.2rem;
-			width: 100%;
-			padding: 0.4rem 0.1rem;
-			border-color: transparent;
-			font-size: var(--fs-eyebrow);
-			font-weight: 500;
-			white-space: nowrap;
-		}
-		.book-actions :global(.btn svg) {
-			width: 20px;
-			height: 20px;
-		}
-		.book-actions :global(.shelf-count) {
-			display: none;
 		}
 	}
 

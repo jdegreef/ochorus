@@ -7,12 +7,10 @@
 	import Icon from './Icon.svelte';
 
 	/**
-	 * The book page's one "Download" control. Three ways to take a book away —
-	 * save it for offline reading in the app, an EPUB for an e-reader, a PDF to
-	 * print — used to be three buttons plus a "Free download:" label in the
-	 * action row, each as loud as Share. They are one verb, so they are one
-	 * button with a menu, each option carrying a word on what it is FOR (most
-	 * readers don't know what an EPUB is).
+	 * The book page's one "Download" control: offline reading in the app, an
+	 * EPUB for an e-reader, a PDF to print. One verb, so one button with a menu,
+	 * each option saying what it is FOR (most readers don't know what an EPUB
+	 * is).
 	 *
 	 * Offline state is per EDITION: `book.language` is the language the API
 	 * served, so it is what was cached and what must be asked for. EPUB is built

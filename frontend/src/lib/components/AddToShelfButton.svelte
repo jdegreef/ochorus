@@ -85,6 +85,12 @@
 </div>
 
 <style>
+	/* The icon strip has no room for the count. */
+	@media (max-width: 639.98px) {
+		:global(.action-strip) .shelf-count {
+			display: none;
+		}
+	}
 	.shelf-count {
 		margin-inline-start: 0.15rem;
 		font-size: var(--fs-eyebrow);
