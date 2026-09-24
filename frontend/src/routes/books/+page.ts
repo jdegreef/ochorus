@@ -430,6 +430,8 @@
 // touch, because it completes the set.
 // prerender refresh 2026-09-24 (queue job #1755): वॉचमैन नी — the Hindi edition of
 // watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-24 (queue job #1780): उकाब के समान ऊँचे उड़ो — the Hindi edition
+// of soar-like-the-eagle-3, 12 chapters — bakes into the /hi/books shelf (hi is still draft).
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';

@@ -1574,6 +1574,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/soar-like-the-eagle-3": {
+			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
+			"style": "lettered",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/stepping-stones-2": {
 			"ground": "a709e7762f009d72e1f65041bf925ceaa7f9d1a35eb6a536cfaca98f5f15afbb",
 			"style": "lettered",
@@ -3641,6 +3651,16 @@
 			"scrim": 0.65,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"uk/power-through-prayer": {
+			"ground": "c4078282762f68c4e9e8d9492fe6c9c5f8015e905f51a9f5ceaf97a9e13f1f6e",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "split/navy",
+			"bar": 0.04
 		},
 		"uk/prayer-the-pulse-of-life": {
 			"ground": "4f925469360dc20067dfcb2a32a40be25c40fb7873c09f5624eff4954258f033",
