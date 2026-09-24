@@ -5605,5 +5605,24 @@
       "bio_html": "<p>John Foxe was born at Boston, in Lincolnshire, about 1516, and was elected a fellow of Magdalen College, Oxford, which he resigned in 1545 over his Protestant convictions. When Mary came to the throne he fled to the Continent, and at Strasbourg and Basel he gathered the accounts of those who were dying for the Reformed faith in England.</p><p>Returning under Elizabeth, he was ordained by Bishop Grindal and published his Actes and Monuments in 1563 — the book the world calls Foxe's Book of Martyrs. He enlarged it through several editions, preached at St Paul's Cross, and pleaded for mercy even for those whose beliefs he opposed. He died in London in April 1587 and was buried at St Giles, Cripplegate.</p>",
       "created_at": "2026-09-23T00:00:00Z"
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "arthur-t-pierson",
+      "name": "Arthur T. Pierson",
+      "birth_year": 1837,
+      "death_year": 1911,
+      "photo_url": "",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Arthur_Tappan_Pierson",
+        "https://www.wikidata.org/wiki/Q4800431"
+      ],
+      "original_language": "en",
+      "is_imprint": false,
+      "bio": "Arthur Tappan Pierson (1837–1911) was an American Presbyterian pastor, Bible teacher and tireless advocate of world missions, who preached on both sides of the Atlantic and wrote more than fifty books. A friend of D. L. Moody, C. H. Spurgeon and George Müller, he filled Spurgeon's pulpit at the Metropolitan Tabernacle in London from 1891 to 1893 and was a consulting editor of the Scofield Reference Bible. His George Müller of Bristol (1899) became the authorized memoir of his friend's life of faith.",
+      "bio_html": "",
+      "created_at": "2026-09-23T00:00:00Z"
+    }
   }
 ]

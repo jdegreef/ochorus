@@ -4275,6 +4275,14 @@ BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacemen
     # "know th Master's" -> "know the Master's".
     ("know th Master's", "know the Master's"),
 ])
+# Gutenberg #26384 closes ch4 on the printed "THE END." and then its own
+# transcriber's note (a `div.tn`, "Mismatched and inconsistent punctuation has
+# been retained…"), which shipped as the chapter's last block and the es edition
+# translated. The book ends on "THE END."
+BODY_CORRECTIONS["separation-and-service"]["back_matter"] = [
+    ("crucified for us.</p> <p>THE END.</p>", "<p>Transcriber's Note:<br/>"),
+    ("crucificado por nosotros.</p> <p>FIN.</p>", "<p>Nota del transcriptor:<br/>"),
+]
 BODY_CORRECTIONS.setdefault("the-fourfold-gospel", {}).setdefault("replacements", []).extend([
     # "lie will lead" -> "He will lead" (l/H, ie/e misread).
     ("and lie will lead you", "and He will lead you"),
@@ -4350,6 +4358,16 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
 BODY_CORRECTIONS["things-as-they-are"]["back_matter"] = [
     ("you will pray more.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
     ("mtaomba zaidi.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+]
+# Gutenberg #65066 follows "…revival of true religion! Amen." with the ATS
+# donors' line and the transcriber's `tnotes` endnote. The note's heading was
+# never collected, so its three paragraphs read as Edwards's own last words —
+# and the sw edition translated them as such.
+BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter"] = [
+    ("true religion! <i>Amen.</i></p>",
+     "<p>The frequent dated quotations from Brainerd’s diaries"),
+    ("dini ya kweli! <i>Amina.</i></p>",
+     "<p>Manukuu ya mara kwa mara yenye tarehe kutoka shajara za Brainerd"),
 ]
 # Gutenberg #51931 follows Torrey's last paragraph with a page break and the
 # Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
@@ -4799,6 +4817,48 @@ BODY_CORRECTIONS.setdefault('god-glorified-in-mans-dependence', {}).setdefault("
     ('Eph. 1:33. This', 'Eph. 1:13. This'),
     # "in making the soul" — leading "in" clipped to a bare "m".
     ('perfection, m making the soul', 'perfection, in making the soul'),
+])
+# OCR slips found while translating Wesley's sermon to Swahili (#2593). CCEL and
+# the Wesley Center share one bad transcription, so each pair is checked against
+# two independent printings of Sermons on Several Occasions (archive.org
+# sermonsonseveral0001revj, 1825, and sermonsonseveral0001wesl, 1852), which
+# agree on every reading. Their period spacing ("obscurity ?", "him ;”") stays.
+BODY_CORRECTIONS.setdefault('the-circumcision-of-the-heart', {}).setdefault("replacements", []).extend([
+    ('a liar form the beginning', 'a liar from the beginning'),
+    ('world; thought he would choose', 'world; though he would choose'),
+    # Eph 1:19-20 ("the exceeding greatness of his power ... when he raised
+    # Christ"); the hyphen welded "to quicken", and Rom 8:11's opening quote
+    # was printed as a closer.
+    ('the exceeding greatness of this power,” who, as he raise up Christ from the dead, so is able to-quicken us, dead in sin,” by his',
+     'the exceeding greatness of his power,” who, as he raised up Christ from the dead, so is able to quicken us, dead in sin, “by his'),
+    # Eccl 9:10.
+    ('“whatever his findeth to do', '“whatever his hand findeth to do'),
+    ('which is no subject to the law', 'which is not subject to the law'),
+    ('the sole End, us well as Source', 'the sole End, as well as Source'),
+    ('Have no end, to ultimate end', 'Have no end, no ultimate end'),
+    ('“whereby be is very far gone', '“whereby he is very far gone'),
+    # 2 Cor 4:18.
+    ('the things that arc seen, which are temporal, but at the things that arc not seen',
+     'the things that are seen, which are temporal, but at the things that are not seen'),
+    ('the Inspirer an Perfecter', 'the Inspirer and Perfecter'),
+    ('learn, that it none is truly', 'learn, that none is truly'),
+    ('a view to own happiness ! Nay', 'a view to our own happiness! Nay'),
+    ('one who v. as “conceived', 'one who was “conceived'),
+    ('them to perform ? — as if', 'them to perform? — as if'),
+    ('nor grace was sufficient for them.?</p>', 'nor his grace was sufficient for them?</p>'),
+    ('without taking any pains at all. Vain hope !', 'without taking any pains at all. Vain hope!'),
+    ('<p>8. What lees than this', '<p>8. What less than this'),
+    # 2 Cor 6:4-5 ("in afflictions ... in distresses"); 1 Cor 13:3.
+    ('living “ill infirmities', 'living “in infirmities'),
+    ('and have not love, it profit me nothing', 'and have not love, it profiteth me nothing'),
+    # 1 Cor 9:26: the closing quote and "By" were lost, fusing the verse into
+    # Wesley's next clause.
+    ('one that beateth the air which he plainly teaches', 'one that beateth the air:” By which he plainly teaches'),
+    ('Let it be continual offered up', 'Let it be continually offered up'),
+    ('This is the way where in those', 'This is the way wherein those'),
+    ('<p>5. this is that lowliness', '<p>5. This is that lowliness'),
+    ('No man I say, has A title', 'No man, I say, has a title'),
+    ('the world, the one who follow him not', 'the world, the men who follow him not'),
 ])
 
 
