@@ -3742,6 +3742,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"uk/men-and-women-who-gave-everything-2": {
+			"ground": "d7e1f724111b761fef365a4da807cf2d26ab458a0f5aea29b2334234a3e287d8",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/power-through-prayer": {
 			"ground": "c4078282762f68c4e9e8d9492fe6c9c5f8015e905f51a9f5ceaf97a9e13f1f6e",
 			"style": "devotional",
