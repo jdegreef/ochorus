@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
 	import { customShelves } from '$lib/customShelves.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 	import Icon from './Icon.svelte';
 	import ShelfPicker from './ShelfPicker.svelte';
 
@@ -43,16 +44,11 @@
 	const onCount = $derived(customShelves.list().filter((s) => customShelves.has(s.id, slug)).length);
 </script>
 
-<svelte:window
-	onclick={(e) => {
-		if (open && root && !root.contains(e.target as Node)) open = false;
-	}}
-	onkeydown={(e) => {
-		if (open && e.key === 'Escape') open = false;
-	}}
-/>
-
-<div class="relative" bind:this={root}>
+<div
+	class="relative"
+	bind:this={root}
+	use:dismissable={{ open, onDismiss: () => (open = false) }}
+>
 	<button
 		type="button"
 		class="btn btn-sm btn-ghost"

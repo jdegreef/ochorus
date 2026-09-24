@@ -236,6 +236,11 @@ import type { PageLoad } from './$types';
  * Andrew Murray's With Christ in the School of Prayer shipped in Ukrainian with
  * its plan prose, so seed_plans creates school-of-prayer-31-days in uk as
  * «31 день у школі молитви» and /uk/plans re-crawls to bake the new card.
+ *
+ * Prerender refresh 2026-09-24 (queue job #2827, PR #3323, the plan side-effect):
+ * Growing in Wisdom shipped in Ukrainian with its plan prose, so seed_plans
+ * creates growing-in-wisdom-18-days in uk as «Зростати в мудрості за 18 днів»
+ * and /uk/plans re-crawls to bake the new card.
  */
 export const load: PageLoad = async ({ fetch }) => {
 	const { items, loadError } = await loadShelf(listPlans(getLang(), fetch));

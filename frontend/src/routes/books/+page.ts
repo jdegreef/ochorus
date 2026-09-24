@@ -3,6 +3,13 @@
 // pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title over
 // the designed plate cover and the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
 // entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue job #3147): Portuguese book — school-of-prayer, Andrew Murray's
+// thirty-one lessons on prayer ("Com Cristo na Escola de Oração"), 33 chapters. Book pages are
+// prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the
+// designed plate cover and the reader page bakes the 33 chapters. Activates the pt row of the
+// single-book plan school-of-prayer-31-days (pt plan prose added in data/plan_translations/pt.json;
+// the /pt/plans/school-of-prayer-31-days page rebuilds from that content root — no plans/+page.ts
+// touch owed).
 // prerender refresh 2026-09-24 (queue job #3145): Spanish book — school-of-prayer, Andrew Murray's
 // thirty-one lessons on prayer ("Con Cristo en la escuela de oración"), 33 chapters. Book pages are
 // prerendered per locale, so /es/books and the shelf rebuild with the translated title over the
@@ -452,6 +459,8 @@
 // watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
 // prerender refresh 2026-09-24 (queue job #1780): उकाब के समान ऊँचे उड़ो — the Hindi edition
 // of soar-like-the-eagle-3, 12 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-24 (queue job #2827, PR #3323): Зростати в мудрості — the Ukrainian
+// edition of growing-in-wisdom, 18 chapters — bakes into the /uk/books shelf.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
