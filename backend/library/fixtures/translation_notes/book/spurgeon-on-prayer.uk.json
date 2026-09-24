@@ -3,7 +3,7 @@
  "slug": "spurgeon-on-prayer",
  "language": "uk",
  "job_issue": 1795,
- "pull_request": null,
+ "pull_request": 3321,
  "note": [
   "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “. Hebrews cited as Євреїв, not Kulish's Жидів. Spurgeon re-persons verses constantly (thy/thee); every re-personed or paraphrased quotation is self_rendered."
  ],
