@@ -349,6 +349,63 @@ class Series(models.Model):
     def __str__(self) -> str:
         return self.title
 
+    def title_for(self, language: str) -> str:
+        """The series' name in ``language``; ``""`` when it has none there.
+
+        No English fallback — the rule every translated field here follows (see
+        ``Topic._localized``). A reader on a Swahili edition who meets an
+        English series name has been told the series is not in their language,
+        so an untranslated series shows no series line at all instead.
+
+        Reads ``self.translations.all()`` so a caller that prefetched pays no
+        query.
+        """
+        if not language or language == "en":
+            return self.title
+        tr = next((t for t in self.translations.all() if t.language == language), None)
+        return tr.title if tr else ""
+
+
+class SeriesTranslationManager(models.Manager):
+    def get_by_natural_key(self, series_slug, language):
+        return self.get(series__slug=series_slug, language=language)
+
+
+class SeriesTranslation(models.Model):
+    """A series' name (and description) in one language.
+
+    A side-table, like ``TopicTranslation``, because a series is one identity
+    across languages. Its rows ship in ``content/series.json`` after the series
+    they name, and seed_books upserts them with the rest of that file.
+    """
+
+    series = models.ForeignKey(
+        Series, on_delete=models.CASCADE, related_name="translations"
+    )
+    language = models.CharField(max_length=10)
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    objects = SeriesTranslationManager()
+
+    class Meta:
+        ordering = ["series", "language"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["series", "language"], name="uniq_series_translation"
+            ),
+        ]
+
+    def natural_key(self):
+        return (*self.series.natural_key(), self.language)
+
+    natural_key.dependencies = ["library.series"]
+
+    def __str__(self) -> str:
+        return f"{self.series.slug} [{self.language}]"
+
 
 class BookManager(models.Manager):
     def get_by_natural_key(self, slug, language):

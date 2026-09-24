@@ -46,7 +46,7 @@ from library.content_fixtures import (
     iter_work_files,
 )
 from library.corrections import settled_chapter_body
-from library.models import Author, Book, Chapter, Series
+from library.models import Author, Book, Chapter, Series, SeriesTranslation
 
 BOOK_FIELDS = (
     "title",
@@ -67,6 +67,7 @@ BOOK_FIELDS = (
 )
 # Every Series field the fixture owns (all of them — see the module docstring).
 SERIES_FIELDS = ("title", "description", "sort_order")
+SERIES_TRANSLATION_FIELDS = ("title", "description")
 # No `word_count`: `Chapter.save()` derives it from body_html, so passing the
 # fixture's copy here would be discarded. See seed_sermons.SERMON_FIELDS, where
 # the same entry also cost a re-write on every deploy.
@@ -81,27 +82,73 @@ CREATE_ONLY_FIELDS = frozenset({"source_type", "is_published"})
 UPDATE_FIELDS = tuple(f for f in BOOK_FIELDS if f not in CREATE_ONLY_FIELDS)
 
 
+def _upsert(model, lookup: dict, values: dict, label: str, stdout):
+    """get_or_create ``model`` by ``lookup``, then bring ``values`` up to date.
+
+    Saves (and so moves ``updated_at``) only when a value really changed, so a
+    no-op deploy leaves every row untouched."""
+    row, created = model.objects.get_or_create(**lookup, defaults=values)
+    if created:
+        stdout.write(f"  + {label}")
+    elif changed := [k for k, v in values.items() if getattr(row, k) != v]:
+        for k in changed:
+            setattr(row, k, values[k])
+        row.save()
+        stdout.write(f"  ~ {label} ({', '.join(changed)})")
+    return row
+
+
 def sync_series(stdout) -> dict[str, Series]:
     """Upsert every ``series.json`` row; return the series keyed by slug.
 
     A series the fixture no longer lists is left in the DB: ``Book.series`` is
     PROTECT, and a series still holding live books is not this seed's to drop.
+    Its translations are the fixture's outright, though — one the file no
+    longer carries is deleted, or a withdrawn name would stay on every page.
     """
-    rows = json.loads(SERIES_FILE.read_text()) if SERIES_FILE.exists() else []
+    if not SERIES_FILE.exists():
+        # Not an empty file: this function deletes the names the file doesn't
+        # carry, so reading "missing" as "empty" would wipe every series name.
+        raise CommandError(f"seed_books: {SERIES_FILE.name} is missing")
+    rows = json.loads(SERIES_FILE.read_text())
     require_natural_format(rows, "seed_books")
     by_slug: dict[str, Series] = {}
     for row in rows:
+        if row["model"] != "library.series":
+            continue
         f = row["fields"]
-        values = {k: f[k] for k in SERIES_FIELDS if k in f}
-        series, created = Series.objects.get_or_create(slug=f["slug"], defaults=values)
-        if created:
-            stdout.write(f"  + series {series.slug}")
-        elif changed := [k for k, v in values.items() if getattr(series, k) != v]:
-            for k in changed:
-                setattr(series, k, values[k])
-            series.save()
-            stdout.write(f"  ~ series {series.slug} ({', '.join(changed)})")
-        by_slug[series.slug] = series
+        by_slug[f["slug"]] = _upsert(
+            Series,
+            {"slug": f["slug"]},
+            {k: f[k] for k in SERIES_FIELDS if k in f},
+            f"series {f['slug']}",
+            stdout,
+        )
+    kept = set()
+    for row in rows:
+        if row["model"] != "library.seriestranslation":
+            continue
+        f = row["fields"]
+        try:
+            series = by_slug[f["series"][0]]
+        except KeyError:
+            raise CommandError(
+                f"seed_books: series translation {f['series']} [{f['language']}] "
+                "names a series series.json does not define"
+            ) from None
+        kept.add(
+            _upsert(
+                SeriesTranslation,
+                {"series": series, "language": f["language"]},
+                {k: f[k] for k in SERIES_TRANSLATION_FIELDS if k in f},
+                f"series {series.slug} [{f['language']}]",
+                stdout,
+            ).pk
+        )
+    stale = SeriesTranslation.objects.exclude(pk__in=kept)
+    for tr in stale.select_related("series"):
+        stdout.write(f"  - series {tr.series.slug} [{tr.language}]")
+    stale.delete()
     return by_slug
 
 
