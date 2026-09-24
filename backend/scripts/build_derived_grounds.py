@@ -115,9 +115,15 @@ def _ink_mask(im, boxes):
         m = 12  # a margin, so the median sees ground on every side of the box
         area = (max(0, x0 - m), max(0, y0 - m), min(w, x1 + m), min(h, y1 + m))
         patch = lum.crop(area)
-        ground = patch.filter(ImageFilter.MedianFilter(21))
-        diff = (ImageChops.subtract(ground, patch) if box.ink == "dark"
-                else ImageChops.subtract(patch, ground))
+        # A broad mark (the lockup's quill) fills a 21px window on its own and
+        # becomes its own median, so a box erasing everything looks wider.
+        ground = patch.filter(ImageFilter.MedianFilter(21 if box.thin else 41))
+        if box.ink == "dark":
+            diff = ImageChops.subtract(ground, patch)
+        elif box.ink == "light":
+            diff = ImageChops.subtract(patch, ground)
+        else:
+            diff = ImageChops.difference(ground, patch)
         found = diff.point(lambda v: 255 if v > 14 else 0)
         # Strokes only. The bright side of a real edge — a page, a branch —
         # also clears the median test, but it is BROAD, and an opening (erode,

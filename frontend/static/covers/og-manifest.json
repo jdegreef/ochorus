@@ -145,17 +145,17 @@
 			"bar": 0
 		},
 		"ar/baptism-with-the-holy-spirit": {
-			"ground": "f3517f80debc53e0c4b004a6725bc0c96640214170412d88cf906ba1d563824e",
+			"ground": "6a4ac8ef05e96a4e1debfc36c06dab49aa21c86ba0d9eb8a41d84ceea7e990c8",
 			"style": "revival",
 			"volume": null,
 			"script": "arabic",
 			"art": true,
-			"scrim": 0.85,
+			"scrim": 1,
 			"layout": "diagonal/ochre",
-			"bar": 0
+			"bar": 0.085
 		},
 		"ar/clothed-with-strength-and-dignity": {
-			"ground": "a3d614670ef190cf2901371852caa6328ad4d4200ae3505d173ffad00d1882a4",
+			"ground": "db8850dce12ff5a187d3d3a94eae8a673f10347b142850b04ea6d07fa4ff7ef3",
 			"style": "originals",
 			"volume": null,
 			"script": "arabic",
@@ -175,7 +175,7 @@
 			"bar": 0.05
 		},
 		"ar/godliness": {
-			"ground": "024e77389ba1cf97a0b0a196422cc237c010461521fcd05a0f7d457af0b43d4a",
+			"ground": "c926ed08e44cc75afcd1516677092d528e3f0487f529c4165357e1ac47caa462",
 			"style": "revival",
 			"volume": null,
 			"script": "arabic",
@@ -265,7 +265,7 @@
 			"bar": 0
 		},
 		"ar/the-god-of-all-comfort": {
-			"ground": "2c07d298564b2cfa5fa2c960d8e229fa556be600618520e5add3c585c09a4e54",
+			"ground": "2bc5ec2f48864b1abe6148e3ee7ff8966a6fe4f434511b32c238549241ff9505",
 			"style": "devotional",
 			"volume": null,
 			"script": "arabic",
@@ -295,17 +295,17 @@
 			"bar": 0
 		},
 		"ar/the-person-and-work-of-the-holy-spirit": {
-			"ground": "e283dad6fbffe602e8b7350fe7df95702be0d42c568d4a49352e2484506ef755",
+			"ground": "3844a0168e4c7b85c75f603bed212951fa96dc3ed2e5ba8d9b36acf6c72797a7",
 			"style": "revival",
 			"volume": null,
 			"script": "arabic",
 			"art": true,
-			"scrim": 0.9,
+			"scrim": 0.95,
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
 		"ar/the-unselfishness-of-god": {
-			"ground": "0d81812281102654ad7d38888c8378e7fceb89b0dd55ffb98aced3987aba64f2",
+			"ground": "a3997ee5d2b6773339ab203a11dc6c5a523f74ef87c29cf40fac53fa3e50f315",
 			"style": "devotional",
 			"volume": null,
 			"script": "arabic",
@@ -418,6 +418,16 @@
 			"ground": "f49659b2b595d72a7ccf377e26bc1e3453330c87d157b560c07aeb9acca9bcd4",
 			"style": "young",
 			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"daughters-of-the-king-3": {
+			"ground": "3b492dc158011ef6d551d3b88ceba76052b152731dd6e0804c7db6c3da7b357f",
+			"style": "young",
+			"volume": "3",
 			"script": "latin",
 			"art": false,
 			"scrim": 1,
@@ -545,17 +555,17 @@
 			"bar": 0
 		},
 		"es/baptism-with-the-holy-spirit": {
-			"ground": "65465dc87da4c2b395458f0dfe6337d4a6e99539bec9063df5e6c3ff7dec8cea",
+			"ground": "95004c144cd2fec09fd0248fa3ac90f9d9cd93c3e5ed29a3b99a6c5bff57ea28",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.85,
+			"scrim": 1,
 			"layout": "diagonal/ochre",
-			"bar": 0
+			"bar": 0.085
 		},
 		"es/clothed-with-strength-and-dignity": {
-			"ground": "51241c283312c3535049107445396f8972e8af119f511d82da81df92ddbc870b",
+			"ground": "039b1da6a59b53bcbf1d793f048281927c6444fd1346360d8add701b47d6b606",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -585,7 +595,7 @@
 			"bar": 0.04
 		},
 		"es/godliness": {
-			"ground": "fa4d2e1e76f39e08d80eba07d3ec53e097f54ccb9bb9e96edf60d8037898af95",
+			"ground": "5887fafb8010c840830a678570c47c7ac4af5caea4881b11f833cb7f8c0e46c9",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -715,12 +725,12 @@
 			"bar": 0.05
 		},
 		"es/purity-of-heart": {
-			"ground": "78cab83d60fae8d3c33ebbd4ee5c402fc02717c6de4bd0a77bcdc709b5a27ac6",
+			"ground": "f54d78471ea6f5e6f45de79e42791614bdcef9be5949422624d35cfb75e71003",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.35,
+			"scrim": 0.55,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -765,12 +775,12 @@
 			"bar": 0
 		},
 		"es/talks-to-the-farmer": {
-			"ground": "abc63c24446d73ff2a0cca4588c0648360cc1738e42281f67bb9a842dd9454e8",
+			"ground": "94e7fca9ce3b815c6b0b04be89d4593d01fdcdad9c16e62b07a1a385a04b794b",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.6,
 			"layout": "band/oxblood",
 			"bar": 0
 		},
@@ -785,7 +795,7 @@
 			"bar": 0
 		},
 		"es/the-god-of-all-comfort": {
-			"ground": "f75ff80c9d051851d4bf7bdb32715dd2341d5f98a7ab1e19894d4375bfad3326",
+			"ground": "582097ba8a4394fa0cb338971250642bc4cd65dbdd9e8de25bda19b9bf577f63",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -815,12 +825,12 @@
 			"bar": 0
 		},
 		"es/the-person-and-work-of-the-holy-spirit": {
-			"ground": "4cd0ef0e6cc1bf5770be46660d39d38fa9f616c269b1220a4b5502e70a5888d8",
+			"ground": "e807a73d1ad911ae8ad70695feb2c9ffc7651d91dedd1c73a7d112425c4d4446",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.9,
+			"scrim": 0.95,
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
@@ -835,7 +845,7 @@
 			"bar": 0
 		},
 		"es/the-unselfishness-of-god": {
-			"ground": "690fca3ab95f66162b4d1cabb073b7948ef104f6d7f3c77a76da3876ae47b60d",
+			"ground": "1153af677c138c412c620604ee5457be80c8fea0e99ebf84ea9e8b8d35ab6f81",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -955,14 +965,14 @@
 			"bar": 0
 		},
 		"fr/baptism-with-the-holy-spirit": {
-			"ground": "bdeed4127b250e9d7f0f03c5a86ac3b99b8e31904f6ea3e75e23f75e2d5ef88b",
+			"ground": "cd16ebc85eb23aaaa57375b11b440e23a74ba2a42d88b6a1b5b6b4c6239354a0",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.85,
+			"scrim": 1,
 			"layout": "diagonal/ochre",
-			"bar": 0
+			"bar": 0.085
 		},
 		"fr/cheque-book": {
 			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
@@ -975,7 +985,7 @@
 			"bar": 0
 		},
 		"fr/clothed-with-strength-and-dignity": {
-			"ground": "e27ae9f4ee85f2ee1a687c0cd91692b0cb15e25687ac97006a167412154bed48",
+			"ground": "aa54b674e8f9e790f3bb243a81e61feb54d91cbc9722df2138a2a107f0a1fd5d",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -1015,7 +1025,7 @@
 			"bar": 0
 		},
 		"fr/godliness": {
-			"ground": "fc2e575fa12936308aec9bd1cdb92f63e5dd7c510c58f227c0fb9a4eee5d0ebf",
+			"ground": "d7014aad204e8f726c864f81774915d63fc3a78e7caeebc06fcc45f29fb828d9",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -1075,7 +1085,7 @@
 			"bar": 0
 		},
 		"fr/men-and-women-who-gave-everything-2": {
-			"ground": "85cfe9b6bb48cc9900529987d53466e07667c6a79bd8ce4d05647f1350c8eb82",
+			"ground": "37d20d2cce16372fa2f81a04a1bae2174eaebd10eb84c19602c67d7bf718b711",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -1115,12 +1125,12 @@
 			"bar": 0.05
 		},
 		"fr/purity-of-heart": {
-			"ground": "1fe8f872cc1054134db78c2b92194f37168a9e5d5c340921e7fd84980a3c12a3",
+			"ground": "ae26fcf18431b38027c3f3696a783eef0d8d68d3708056eb0451df6cfb38c2c2",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.35,
+			"scrim": 0.55,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -1145,12 +1155,12 @@
 			"bar": 0
 		},
 		"fr/talks-to-the-farmer": {
-			"ground": "a98d8c68fcb55e7ccb5e9d72ce6a63dfc2841f307454c6c43b08dfde23348420",
+			"ground": "3d5eef9c6799c4f00b44ded7ff13f9707736ee09604b2485d233d5918b4d2675",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.6,
 			"layout": "band/oxblood",
 			"bar": 0
 		},
@@ -1165,7 +1175,7 @@
 			"bar": 0
 		},
 		"fr/the-god-of-all-comfort": {
-			"ground": "3bc088fdd73df57df3c20bcbabb1ba2dcd8684c5e91bc4aec125b092e2fc2517",
+			"ground": "757e8cf0938a2e727242bfa386985a84dbf9b31044501b51da76905135703e6a",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -1205,7 +1215,7 @@
 			"bar": 0
 		},
 		"fr/the-unselfishness-of-god": {
-			"ground": "a31312fc937e606b12ff6c9d53fd1d8e26ac1a6e4d337740c32b2a836c3d1534",
+			"ground": "0308e223ae5be6442659563f6c51304a45dda1457dab15671358fe879f3deb57",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -1305,17 +1315,17 @@
 			"bar": 0
 		},
 		"hi/baptism-with-the-holy-spirit": {
-			"ground": "d697cb65e02626c9bda4961b02124088330a827650dc6ff19f26e1dbe7001839",
+			"ground": "0c5fe91208eaec515e305a28adfcfa81a8cb6ee66c31ccc78ebcabb065e37589",
 			"style": "revival",
 			"volume": null,
 			"script": "devanagari",
 			"art": true,
-			"scrim": 0.85,
+			"scrim": 1,
 			"layout": "diagonal/ochre",
-			"bar": 0
+			"bar": 0.085
 		},
 		"hi/clothed-with-strength-and-dignity": {
-			"ground": "a37e2b937513601c765bfc2e1c2159590c1cebbaa38a3a6c3bd4db0193a88297",
+			"ground": "102d67368c39c095854b0d8d07943e3913d599acc751d776a4fc5f273fb4bf35",
 			"style": "originals",
 			"volume": null,
 			"script": "devanagari",
@@ -1335,7 +1345,7 @@
 			"bar": 0.05
 		},
 		"hi/godliness": {
-			"ground": "b72ec1d040a6969ecfe8b18f80e0ae3eff7014ca28644597d364c715c4942439",
+			"ground": "035dc12c45d929561e497d18a33ce1eafe23bb915f639209822d73a4429ebe59",
 			"style": "revival",
 			"volume": null,
 			"script": "devanagari",
@@ -1435,7 +1445,7 @@
 			"bar": 0
 		},
 		"hi/the-unselfishness-of-god": {
-			"ground": "a60bc7c0d3fcf3a90f08797ded6d62b7c3bb106eb7d30cb514d1cdeaf029c265",
+			"ground": "b0529c180177ae3ea8c546392028bff3b2890e4d2d1b5fc15e85d6cf4793953f",
 			"style": "devotional",
 			"volume": null,
 			"script": "devanagari",
@@ -1585,14 +1595,14 @@
 			"bar": 0
 		},
 		"lg/baptism-with-the-holy-spirit": {
-			"ground": "66d2d1831d4726fab85cb54b1b13362256936ec4294a2c822b153f249e76acfe",
+			"ground": "335163a94dfa80d3cda69ccb2a2f9304da48185e905bb7ae7ee608f509c5fa9a",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.85,
+			"scrim": 1,
 			"layout": "diagonal/ochre",
-			"bar": 0
+			"bar": 0.085
 		},
 		"lg/brave-for-god": {
 			"ground": "94bc629cd9e6ac21c04f2ffe412987978ffb9877047056d77d975e908a4b4877",
@@ -1645,7 +1655,7 @@
 			"bar": 0
 		},
 		"lg/clothed-with-strength-and-dignity": {
-			"ground": "10e69218f80f6e0ebbdcd1fb8a725c558609985f4402cc5f6e03ccda13bff370",
+			"ground": "f55d2475712ef9931e92f5e73a0528b8f46119073634f9e454fa9028e2a57f97",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -1685,7 +1695,7 @@
 			"bar": 0
 		},
 		"lg/godliness": {
-			"ground": "4cb31b3a75b03bc37af1168039c51491e522f747ac27006e966557043d9ea11e",
+			"ground": "df110b27971ad38b8175630c9701c9997e462f053cb465193554865f1c798d17",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -1775,12 +1785,12 @@
 			"bar": 0.05
 		},
 		"lg/purity-of-heart": {
-			"ground": "3575add9f9c00040342b7ce3bcb3ce2f0ebe9085d6e2d240cf644f79c6b32ffd",
+			"ground": "5aea5a0b52e9d69fbc098b24ce606c123ecb088ec6bbe69a05d2d931590c8eba",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.35,
+			"scrim": 0.55,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -1805,12 +1815,12 @@
 			"bar": 0
 		},
 		"lg/talks-to-the-farmer": {
-			"ground": "b9a3d455452c54730fa20337231b2b21a94b89d6da68de1785faa03510d95281",
+			"ground": "f37087a5e829f7bfd852b17b4991bd6845399519f6cbee43431e137e78dd707b",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.6,
 			"layout": "band/oxblood",
 			"bar": 0
 		},
@@ -1825,7 +1835,7 @@
 			"bar": 0
 		},
 		"lg/the-god-of-all-comfort": {
-			"ground": "a58744f9eb1da94c3ecf3a923ff03801491e24864ee988dd6fcc72c42902cf6b",
+			"ground": "70ba7399a04d13242c5b6782e43771a63964faec65c6cad29493b9e72fab2fa7",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -1855,17 +1865,17 @@
 			"bar": 0
 		},
 		"lg/the-person-and-work-of-the-holy-spirit": {
-			"ground": "c3c458b2fd9bd8fbb2cad38d045d6d6ce29741223e0e2b7b74016a3703db5c77",
+			"ground": "ca447ef8f25785d55775c5b69ad438ca8437778d2e3f8d0fa10047354f2667f1",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.9,
+			"scrim": 0.95,
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
 		"lg/the-unselfishness-of-god": {
-			"ground": "7ef203f24c89929d21d87d7605fbd992ff36513860217253475718c8d51cda67",
+			"ground": "d02ccccef11fc0ed5d436fdacbf9d2a15ad729a89996048f15c9a3190b938ad0",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -2115,14 +2125,14 @@
 			"bar": 0
 		},
 		"pt/baptism-with-the-holy-spirit": {
-			"ground": "c3c7eb75b165428995460d77ad651bd299f9dbeab08596e7e2dfd068dbcd597b",
+			"ground": "dd1ca172911e6482077dfdb3e5f2e02dfe726ad7d977f86d0f5d5e900cb05f52",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.85,
+			"scrim": 1,
 			"layout": "diagonal/ochre",
-			"bar": 0
+			"bar": 0.085
 		},
 		"pt/cheque-book": {
 			"ground": "d5b24d6d237dc26380030d5597707659508f5b8ed69c8be8969fb3ebbd82bfce",
@@ -2135,7 +2145,7 @@
 			"bar": 0
 		},
 		"pt/clothed-with-strength-and-dignity": {
-			"ground": "45b8ee433a68e652836e8478787470e1897b195fe0230a802835b0cd21d6e878",
+			"ground": "65ca57cac4a33270c66ebe26935c556ffd0c348bbd2b3e928ec2a9f985e1c5f3",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -2165,7 +2175,7 @@
 			"bar": 0
 		},
 		"pt/godliness": {
-			"ground": "222d108dde31cac64a15af4a17b73d314aed70e731961c38902504ee76576695",
+			"ground": "5ae6a581e96d5a51589894ccbf64c1e3e3306b3d5f709f0ec7b613d3cf1d433a",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -2265,12 +2275,12 @@
 			"bar": 0.05
 		},
 		"pt/purity-of-heart": {
-			"ground": "79a17f62ada9ba8452d6615ec56777daea8e0c87401c52c24f3cb69b84b6390a",
+			"ground": "542e3055c80e0cf8f6f62638fb3bc1c975df78ebf4f188405f08258d29463758",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.35,
+			"scrim": 0.55,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2305,12 +2315,12 @@
 			"bar": 0
 		},
 		"pt/talks-to-the-farmer": {
-			"ground": "86bc723d98a44075b00f6219e5a67cb99cb04c82427e51231106b8de1a1ac025",
+			"ground": "ea913d3930b8d1d665f27cac6fd9fe3260015a46eb0b77f78ea522a4e8990685",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.6,
 			"layout": "band/oxblood",
 			"bar": 0
 		},
@@ -2325,7 +2335,7 @@
 			"bar": 0
 		},
 		"pt/the-god-of-all-comfort": {
-			"ground": "9d3aeb380b8125f061f036c872017e2e676b1bf72f111a9bb8f780485f0b2d25",
+			"ground": "6acda451a5ad0cbba52ecf8dcaa14625cbcaaf820f9ba7c3067b991f76ad8b3a",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -2365,17 +2375,17 @@
 			"bar": 0
 		},
 		"pt/the-person-and-work-of-the-holy-spirit": {
-			"ground": "a9a099b95f1b159f65c56f8fcbeeb176fde48708b793db86829ea0e148460290",
+			"ground": "64e1a13efcfd7bc334abcfd36b9329e8f6fe158ee8e98b52664f8364a0a50938",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.9,
+			"scrim": 0.95,
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
 		"pt/the-unselfishness-of-god": {
-			"ground": "79910f0fe5615fc77c65418d3147f7ee2ac1577de608478af34b80eebb49fd4f",
+			"ground": "aa1f4883a2743e9eaf6f84e33f4664e50b1e946d39bfa1aa47f4740e96acf6df",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -2435,7 +2445,7 @@
 			"bar": 0
 		},
 		"pt/women-who-moved-heaven-2": {
-			"ground": "2748e79496cc8e3ad1e4bc0180d4450d5607a0a1e07787c5d0168583be62576f",
+			"ground": "834aec67f11799a631b842b941f565b853c7aca838a35314eb2a1f65ace7e31e",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -2695,14 +2705,14 @@
 			"bar": 0
 		},
 		"sw/baptism-with-the-holy-spirit": {
-			"ground": "0595bacb3a26d2ac35107f6f9ecbd218d0ceabafcb5027c8e2144dbb21b82dce",
+			"ground": "93f3eee1cd33427f4e3df13f9a3256783af0034421e097a862dc1f41fc1b0330",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.85,
+			"scrim": 1,
 			"layout": "diagonal/ochre",
-			"bar": 0
+			"bar": 0.085
 		},
 		"sw/brave-for-god": {
 			"ground": "b4cd36e562bb4f654337271d321b68b83a8c216f77e783fded5b9d43a6070b49",
@@ -2755,7 +2765,7 @@
 			"bar": 0
 		},
 		"sw/clothed-with-strength-and-dignity": {
-			"ground": "ba9a83614a219bfb49b56247dcb7f9db9042af3333b487cc6b7afa02f809efd2",
+			"ground": "4ab22d22d60b60380eb6afa04fa500e79ce7f98934189ecd3dbbbccc63beb6e4",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -2815,7 +2825,7 @@
 			"bar": 0
 		},
 		"sw/godliness": {
-			"ground": "f8dd5c32fc99eab6102d7c8dabb08e2cd8fd8307ad4bfd74806f01f0925444b8",
+			"ground": "87ca3afb9cf2ef981ab591dd03a9be65025c5506410a38ae0a6d0649c855db34",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -2965,12 +2975,12 @@
 			"bar": 0.05
 		},
 		"sw/purity-of-heart": {
-			"ground": "909ff447162bf27588623d5fb7bbd8a695a5bd9c87650bb437b0dc77f637b861",
+			"ground": "f5207ff085fe81d0c6f702d4fae41fd0bc42622f04fec383812d7d02432c446c",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.35,
+			"scrim": 0.55,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -3015,12 +3025,12 @@
 			"bar": 0
 		},
 		"sw/talks-to-the-farmer": {
-			"ground": "aef70956828f33655198d8cf50574cd15dad62a3886a77f1e369cd485937773f",
+			"ground": "731f330abedc89b5a4af1b0d2371895a54787c62db440e9df2d90ca4fbb6b947",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.6,
 			"layout": "band/oxblood",
 			"bar": 0
 		},
@@ -3045,7 +3055,7 @@
 			"bar": 0
 		},
 		"sw/the-god-of-all-comfort": {
-			"ground": "c778f1b2560284cf85d225bb4aa874278a93e14c4710e64882611a6cf52655a1",
+			"ground": "1111c61893741196ad45cb91ac13c528652f569305a7cf812c18ebb082b83f26",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -3105,17 +3115,17 @@
 			"bar": 0
 		},
 		"sw/the-person-and-work-of-the-holy-spirit": {
-			"ground": "b2f73e8fc09b2f749cbd3f6f83df52a889f615c29e747fdeba4b750f639198c4",
+			"ground": "50a12b7e721e694e7fafd724acd5382769653c42097240811d03a85120f6bb50",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.9,
+			"scrim": 0.95,
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
 		"sw/the-unselfishness-of-god": {
-			"ground": "575c1467dac9c1da6f6162a5723f67884c1acd93a164d71dfd401803e7fd14d9",
+			"ground": "a2b03348659bb6bef512cf64c28bd49a981636895b3f5fbfdaa9e11c41682d49",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -3205,7 +3215,7 @@
 			"bar": 0
 		},
 		"sw/women-who-moved-heaven-2": {
-			"ground": "9025d1ea25113562a8cd8f636b61229829042ee0656eae8fde2bd309b2a0e1ed",
+			"ground": "9f4fd476ebd29efea0aec59d0d79943427fbf6ce8d5381bfd11f5ab69bac81c7",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -3395,17 +3405,17 @@
 			"bar": 0
 		},
 		"uk/baptism-with-the-holy-spirit": {
-			"ground": "c37eea644e4e24407c58d34ead9e43f85fe22462f71bf8d7ec86c3bc626a1943",
+			"ground": "a562b4836e2431fd420dac71ef9e83d726ec511d479f56384cb88672a0dcc8b9",
 			"style": "revival",
 			"volume": null,
 			"script": "cyrillic",
 			"art": true,
-			"scrim": 0.85,
+			"scrim": 1,
 			"layout": "diagonal/ochre",
-			"bar": 0
+			"bar": 0.085
 		},
 		"uk/clothed-with-strength-and-dignity": {
-			"ground": "00ba9532f6717d38be465563dd2a9681fefdcf09304c70fc3425ff8e0f3ea415",
+			"ground": "73c5d08a9d575054d8815b03d5a9d15c9a2bc371df277d91ff6569377a92c7bb",
 			"style": "originals",
 			"volume": null,
 			"script": "cyrillic",
@@ -3415,7 +3425,7 @@
 			"bar": 0
 		},
 		"uk/godliness": {
-			"ground": "8334836bfa20e614f8f9f082f520525eae0dd14839d3d5f33ba3e032329d1869",
+			"ground": "4b0eed929b41661595df83a94a4b365e06855b93e6b1aca0f84b3007f25d19a9",
 			"style": "revival",
 			"volume": null,
 			"script": "cyrillic",
@@ -3475,7 +3485,7 @@
 			"bar": 0
 		},
 		"uk/the-unselfishness-of-god": {
-			"ground": "88293e22762c4408c14ee417f17fa9cfd5db143be9f8655a631d1da4e0bf3190",
+			"ground": "95fe19ef48b34586d2861076c5261dab1f0d84c88dac081f83b51e50390faa5a",
 			"style": "devotional",
 			"volume": null,
 			"script": "cyrillic",
