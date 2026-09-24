@@ -7,7 +7,7 @@ import zipfile
 from unittest import mock
 
 import fitz  # PyMuPDF
-from django.test import TestCase, override_settings
+from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
 from library import upload_import as ui
@@ -892,6 +892,94 @@ class SermonReimportCreateOnlyTests(TestCase):
 
         sermon.refresh_from_db()
         self.assertFalse(sermon.is_published)  # NOT resurrected
+
+
+class GutenbergDisplayLineTests(SimpleTestCase):
+    """`extract_gutenberg_section` keeps PG 23438's centred display lines.
+
+    *A Ribband of Blue* sets its section headings, displayed verses and
+    epigraphs as `<div class="c1">`, and the collector once took only headings,
+    `<p>` and `<blockquote>` — two dozen lines lost across seven studies. The
+    markup below is the edition's own, cut down.
+    """
+
+    PAGE = """<html><body>
+<div class="c1">
+<h3> <a id="badverse">Blessed Adversity.</a></h3>
+</div>
+<div class="c1"><small><strong>INTRODUCTORY.</strong></small></div>
+<p>The history of Job is full of instruction.</p>
+<div class="pg_body_wrapper"><br></div>
+<div class="c1"><small>GOD'S TESTIMONY AND CHALLENGE.</small></div>
+<div class="c1"><em>"The L<small>ORD</small> gave, and the L<small>ORD</small> hath taken away; blessed be the Name of the L<small>ORD</small></em>."--Job i.21.</div>
+<p>In the 8th verse of the 1st chapter.</p>
+<div class="c1"><small>THE UNSEEN HEDGE</small>.</div>
+<p>The reply of Satan is noteworthy.</p>
+<div class="c1"><small>"RIBBAND OF BLUE."</small></div>
+<p>GOD would have all His people wear a badge.</p>
+<div class="pg_body_wrapper"><a class="pagenum" title="88" id="page_88"></a></div>
+<div class="c1">
+<h3> <a id="shepherd">Under the Shepherd's Care.</a></h3>
+</div>
+<div class="c1"><strong><small>A NEW YEAR'S ADDRESS.</small></strong></div>
+<div class="pg_body_wrapper"><br></div>
+<div class="c1"><em>"For ye were as sheep going astray; but are now returned unto the Shepherd and Bishop of your souls."</em>--1 Peter ii. 25.</div>
+<p>"Ye were as sheep going astray." This is evidently addressed to believers.</p>
+<div class="c1">
+<h3> <a id="denial">Self-Denial versus Self-Assertion.</a></h3>
+</div>
+</body></html>"""
+
+    def _extract(self, section):
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        return extract_gutenberg_section(self.PAGE, section)
+
+    def test_display_lines_are_kept_in_reading_order(self):
+        self.assertEqual(
+            self._extract("Blessed Adversity"),
+            "<h3>INTRODUCTORY.</h3>"
+            "<p>The history of Job is full of instruction.</p>"
+            "<h3>GOD'S TESTIMONY AND CHALLENGE.</h3>"
+            '<p><em>"The LORD gave, and the LORD hath taken away; blessed be the '
+            'Name of the LORD</em>."--Job i.21.</p>'
+            "<p>In the 8th verse of the 1st chapter.</p>"
+            # The stop sits outside the small caps in the source; kept.
+            "<h3>THE UNSEEN HEDGE.</h3>"
+            "<p>The reply of Satan is noteworthy.</p>"
+            # Capitals, but opening with a quotation mark: it ends a sentence.
+            '<p>"RIBBAND OF BLUE."</p>'
+            "<p>GOD would have all His people wear a badge.</p>",
+        )
+
+    def test_a_subtitle_does_not_hide_the_epigraph(self):
+        body = self._extract("Under the Shepherd's Care.")
+        self.assertTrue(body.startswith(
+            "<h3>A NEW YEAR'S ADDRESS.</h3>"
+            '<blockquote><em>"For ye were as sheep going astray;'
+        ))
+        # The study's own <h3> and the next study's wrapper div are not content.
+        self.assertNotIn("Self-Denial", body)
+        self.assertEqual(body.count("<blockquote>"), 1)
+
+    def test_the_restored_english_blocks_are_what_the_importer_emits(self):
+        """The `restored_blocks` guard is a string match on the block, so a
+        re-import has to produce exactly what the correction inserted — or the
+        body carries both."""
+        from library.corrections import BODY_CORRECTIONS
+
+        body = self._extract("Blessed Adversity")
+        restored = {block for _, block in BODY_CORRECTIONS["blessed-adversity"]["restored_blocks"]}
+        for block in (
+            "<h3>INTRODUCTORY.</h3>",
+            "<h3>GOD'S TESTIMONY AND CHALLENGE.</h3>",
+            '<p><em>"The LORD gave, and the LORD hath taken away; blessed be the '
+            'Name of the LORD</em>."--Job i.21.</p>',
+            "<h3>THE UNSEEN HEDGE.</h3>",
+        ):
+            with self.subTest(block=block):
+                self.assertIn(block, restored)
+                self.assertIn(block, body)
 
 
 class CcelAbortOnFetchFailureTests(TestCase):

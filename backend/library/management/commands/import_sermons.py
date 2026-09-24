@@ -24,6 +24,7 @@ import datetime
 import re
 import time
 from functools import lru_cache
+from html import escape
 
 import requests
 from django.core.management.base import BaseCommand, CommandError
@@ -54,6 +55,40 @@ _HEAD_WINDOW = 20
 # Sermon headings appear at whatever level the edition chose; see
 # extract_gutenberg_section.
 _HEADINGS = ["h1", "h2", "h3", "h4"]
+
+# A `<div>` holding any of these is a wrapper, not a display line: the edition
+# wraps each study's own <h3> in one, and those must not be read as content.
+_BLOCKS = [*_HEADINGS, "p", "blockquote", "div", "table", "ul", "ol"]
+_QUOTES = ("“", '"', "‘", "'")
+
+
+def _display_line(div) -> str:
+    """One Gutenberg centred display line (`<div class="c1">`) as a body block.
+
+    PG 23438 (*A Ribband of Blue*) sets every in-study section heading this way
+    — `<div class="c1"><small>THE UNSEEN HEDGE</small>.</div>` — and every
+    displayed scripture line and opening epigraph too. The collector used to
+    take only headings, `<p>` and `<blockquote>`, so all of them were dropped
+    without a trace: two dozen lines across seven studies, among them the end
+    of a sentence ("Further, the truly blessed man--" / "Standeth not in the way
+    of sinners.") and the verse a later paragraph calls "the words which we
+    have already quoted".
+
+    A line set wholly in capitals is a heading, and becomes `<h3>` with its
+    text verbatim (the source's own small caps and trailing stops). One opening
+    with a quotation mark is not, however it is cased — `"RIBBAND OF BLUE."`
+    finishes a sentence. Everything else is a paragraph, markup kept, so an
+    italic verse line reads like the verse paragraphs the edition set as `<p>`.
+    These are exactly the forms `corrections.BODY_CORRECTIONS` restores into the
+    rows imported before this existed, so each of those corrections finds its
+    block already present on a re-import and does nothing.
+    """
+    text = re.sub(r"\s+", " ", div.get_text()).strip()
+    if not text:
+        return ""
+    if not text.startswith(_QUOTES) and text == text.upper() and re.search(r"[A-Z]", text):
+        return f"<h3>{escape(text, quote=False)}</h3>"
+    return f"<p>{div.decode_contents()}</p>"
 
 
 # Cached by URL: one Gutenberg ebook can back many sermons (33520 carries six,
@@ -102,19 +137,31 @@ def extract_gutenberg_section(html: str, section: str) -> str:
         return ""
 
     parts: list[str] = []
-    for el in start.find_all_next([*_HEADINGS, "p", "blockquote"]):
+    for el in start.find_all_next([*_HEADINGS, "p", "blockquote", "div"]):
         if el.name == start.name:
             break
         if el.find_parent("blockquote") is not None:
             continue  # already inside a collected blockquote
+        if el.name == "div":
+            # `pg_body_wrapper` is Gutenberg's own furniture — page numbers,
+            # spacers, and in PG 57109 a "9,000 in print" printing note.
+            if (
+                "pg_body_wrapper" not in (el.get("class") or [])
+                and el.find(_BLOCKS) is None
+                and (line := _display_line(el))
+            ):
+                parts.append(line)
+            continue
         parts.append(str(el))
 
-    # The first paragraph is usually the scripture epigraph in quotes.
-    if parts:
-        first_text = re.sub(r"<[^>]+>", "", parts[0]).strip()
-        if first_text.startswith(("\u201c", '"', "\u2018", "'")):
-            inner = re.sub(r"^<p[^>]*>|</p>$", "", parts[0].strip())
-            parts[0] = f"<blockquote>{inner}</blockquote>"
+    # The first paragraph is usually the scripture epigraph in quotes — after
+    # any subtitle heading ("A NEW YEAR'S ADDRESS." sits above one).
+    first = next((i for i, p in enumerate(parts) if not p.startswith("<h")), None)
+    if first is not None and parts[first].startswith("<p"):
+        first_text = re.sub(r"<[^>]+>", "", parts[first]).strip()
+        if first_text.startswith(_QUOTES):
+            inner = re.sub(r"^<p[^>]*>|</p>$", "", parts[first].strip())
+            parts[first] = f"<blockquote>{inner}</blockquote>"
     return clean_fragment("".join(parts))
 
 

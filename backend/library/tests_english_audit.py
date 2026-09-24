@@ -1167,6 +1167,51 @@ class RibbandOfBlueTitleLineTests(SimpleTestCase):
                 )
 
 
+class RibbandOfBlueDisplayLineTests(SimpleTestCase):
+    """The rest of Gutenberg #23438: section headings, verses and epigraphs.
+
+    Six studies lost every `<div class="c1">` display line the edition set —
+    see "The rest of Gutenberg #23438" in `corrections.py`. Every edition of
+    each carries the repair; asserted per edition because a translation pair
+    that silently stops matching leaves that language's prod rows damaged
+    while the English passes.
+    """
+
+    SLUGS = {
+        "blessed-prosperity": 10,
+        "blessed-adversity": 9,
+        "a-full-reward": 1,
+        "self-denial-versus-self-assertion": 1,
+        "all-sufficiency": 1,
+        "under-the-shepherds-care": 1,
+    }
+
+    def _editions(self, slug):
+        sermons = Path(__file__).resolve().parent / "fixtures" / "content" / "sermons"
+        for path in sorted(sermons.glob(f"{slug}.*.json")):
+            yield path.name.split(".")[1], json.loads(path.read_text())[0]["fields"]["body_html"]
+
+    def test_every_edition_carries_every_line(self):
+        for slug, count in self.SLUGS.items():
+            blocks = [b for _, b in corrections.BODY_CORRECTIONS[slug]["restored_blocks"]]
+            for lang, body in self._editions(slug):
+                with self.subTest(slug=slug, language=lang):
+                    self.assertEqual(sum(b in body for b in blocks), count)
+
+    def test_the_correction_is_what_restores_them(self):
+        """Strip them all back out and the correction must put every one back."""
+        for slug in self.SLUGS:
+            blocks = [b for _, b in corrections.BODY_CORRECTIONS[slug]["restored_blocks"]]
+            for lang, settled in self._editions(slug):
+                with self.subTest(slug=slug, language=lang):
+                    damaged = settled
+                    for block in blocks:
+                        damaged = damaged.replace(f"{block} ", "", 1)
+                    self.assertNotIn("<h3>", damaged)
+                    self.assertEqual(corrections.settled_sermon_body(slug, damaged), settled)
+                    self.assertEqual(corrections.settled_sermon_body(slug, settled), settled)
+
+
 class DroppedBlockRestorationTests(SimpleTestCase):
     """`restore_dropped_blocks` — the sanitizer's OTHER victim.
 
