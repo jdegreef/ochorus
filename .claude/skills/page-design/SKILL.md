@@ -108,6 +108,14 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    not a `btn-icon` heart), `.btn.btn-ghost` for `Search in this …`. All the
    same size. A finished/complete state is a muted status line, not a `<p>`
    wearing `.btn`.
+   **Book is the model (#3277):** the read verb lives in a *read card*
+   (chapter name + `ProgressBar` + one `.btn-primary`; Start over is a text
+   link), and every other action is ONE quiet `.book-actions` row — Save,
+   shelf, a single Download menu (`BookDownloadMenu`, never separate
+   offline/EPUB/PDF buttons), Share/Search icon-only on desktop. Below `sm` the
+   same DOM becomes a 5-column icon-over-label strip via CSS (no second
+   markup). A sticky sub-nav CTA shows only once the hero CTA has scrolled
+   away (IntersectionObserver), never two primaries on screen.
 5. **Summary** — `h2.text-h3` + prose (`About this book`). One treatment, not a
    heading here and a bordered "In brief" callout there.
 6. **Sections** — `h2.section-label` above a *list* (contents, quotes, passages);
