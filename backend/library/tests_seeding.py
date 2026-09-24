@@ -362,34 +362,40 @@ class SeedBooksUpsertTests(TestCase):
         self.assertTrue(es.reviewed)
         self.assertFalse(es.source_stale)
 
-    def test_a_retired_stub_wording_is_still_upgraded(self):
-        # Recognition is by string equality, so rewording a stub would strand
-        # every live row still carrying the old text — nothing else can upgrade
-        # a non-empty bio. RETIRED_STUBS keeps those wordings recognisable; this
-        # fails if one is ever deleted rather than retired.
-        from library.author_sync import RETIRED_STUBS
-
-        Author.objects.filter(slug="andrew-murray").update(bio=RETIRED_STUBS[0])
-
+    def test_an_older_bio_is_replaced_by_the_fixture(self):
+        # #1920 trimmed 23 card bios in authors.json and none reached prod,
+        # because a non-stub live bio used to win. The fixture wins now.
+        Author.objects.filter(slug="andrew-murray").update(
+            bio="An older, longer bio that ran past four card lines."
+        )
         call_command("seed_books", verbosity=0)
-
         self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
+
+    def test_an_older_bio_html_is_replaced_by_the_fixture(self):
+        # #1855's "Holy Ghost" -> "Holy Spirit" sat unshipped in six bio_htmls.
+        author = self._author()
+        Author.objects.filter(pk=author.pk).update(
+            bio_html=author.bio_html + "<p>Stale paragraph.</p>"
+        )
+        call_command("seed_books", verbosity=0)
+        self.assertNotIn("Stale paragraph", self._author().bio_html)
 
     def test_an_empty_bio_is_filled(self):
         Author.objects.filter(slug="andrew-murray").update(bio="")
         call_command("seed_books", verbosity=0)
         self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
 
-    def test_reviewed_prose_is_never_overwritten(self):
-        # THE constraint. Blind-syncing the fixture would close the gap and also
-        # silently revert a hand edit or an approved translation — so anything
-        # that isn't empty or a verbatim catalog stub wins over the fixture.
-        edited = "A biography a human rewrote in the admin, after review."
-        Author.objects.filter(slug="andrew-murray").update(bio=edited)
+    def test_a_fixture_without_a_bio_never_blanks_the_row(self):
+        # Fixture-wins covers text the fixture HAS; an omitted or empty field
+        # leaves the live prose alone.
+        from library.author_sync import sync_author
 
-        call_command("seed_books", verbosity=0)
-
-        self.assertEqual(self._author().bio, edited)
+        author = self._author()
+        live = author.bio
+        changed, _ = sync_author(author, {"bio": "", "bio_html": ""})
+        author.refresh_from_db()
+        self.assertEqual(author.bio, live)
+        self.assertEqual(changed, [])
 
     def test_fill_only_fields_are_filled_but_not_overwritten(self):
         Author.objects.filter(slug="andrew-murray").update(photo_url="")

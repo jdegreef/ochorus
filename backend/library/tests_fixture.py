@@ -561,17 +561,23 @@ class SeedFieldCoverageTests(SimpleTestCase):
         # reads each name off the fixture row with .get(), so a typo'd or
         # renamed entry yields None, the truthiness check skips it, and that
         # field simply never syncs again — no error, on any deploy, ever.
-        from library.author_sync import FILL_ONLY_FIELDS, SYNCED_FIELDS
+        from library.author_sync import (
+            FILL_ONLY_FIELDS,
+            FIXTURE_WINS_TEXT,
+            SYNCED_FIELDS,
+        )
         from library.models import Author
 
         model_fields = {f.name for f in Author._meta.concrete_fields}
         self.assertTrue(set(FILL_ONLY_FIELDS) <= model_fields)
+        self.assertTrue(set(FIXTURE_WINS_TEXT) <= model_fields)
         # SYNCED_FIELDS (`same_as`, `faq`) reads off the row the same way, so the
         # same typo silently stops the sync — guard them too.
         self.assertTrue(set(SYNCED_FIELDS) <= model_fields)
         self.assertFalse(set(FILL_ONLY_FIELDS) & set(SYNCED_FIELDS))
-        # `bio` has its own rule (empty-or-stub); it must not be fill-only too.
-        self.assertNotIn("bio", FILL_ONLY_FIELDS)
+        # The prose fields are fixture-wins; listing one as fill-only too would
+        # read as "protected" and mislead the next reader.
+        self.assertFalse(set(FIXTURE_WINS_TEXT) & set(FILL_ONLY_FIELDS))
 
 
 class FileCoherenceTests(SimpleTestCase):
@@ -3288,15 +3294,11 @@ class ReleaseProseSourceCoverageTests(SimpleTestCase):
     NOT_READER_PROSE = {
         # One-line author stubs planted only when an IMPORT creates a new author
         # (the import_* commands are not in the release chain). The real bio
-        # comes from the fixture, and author_sync exists to recognise a stub and
-        # replace it — so editing one changes nothing a reader sees on a deploy.
+        # comes from the fixture, which author_sync writes over it on the next
+        # deploy — so editing one changes nothing a reader sees.
         "library/catalog.py": "import-time author stubs; the fixture supersedes them",
-        # Sermon import config: titles/scripture reach the reader through the
-        # sermon FIXTURES (what seed_sermons upserts), not this module; its own
-        # strings are body_starts anchors and dev comments. Same as catalog.py.
-        "library/sermon_catalog.py": "import-time sermon config; the fixture supersedes it",
-        # Reads catalog stubs to DETECT them; writes bios from the fixture.
-        "library/author_sync.py": "stub detection, not a source of prose",
+        # Writes bios from the fixture; holds no prose of its own.
+        "library/author_sync.py": "copies fixture prose, holds none",
         # bible_licence / attribution text. Admin-facing (AddLanguageForm) — it
         # is not in the public serializers and reaches no prerendered page.
         "library/language_seed.py": "admin-facing licence text, not reader prose",

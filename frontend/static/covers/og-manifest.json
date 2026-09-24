@@ -644,6 +644,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"es/grace-for-grace-2": {
+			"ground": "f3a2424977200447b90488211dd5a87d8c81543da7531c61f723308ef70957a0",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/he-holds-my-tomorrows": {
 			"ground": "24edaf7af3dbc0d5fe0c66fc1d2bb664ba517d2bdbe338079d8698ff230b1090",
 			"style": "lettered",
@@ -812,6 +822,16 @@
 			"art": true,
 			"scrim": 0.8,
 			"layout": "split/navy",
+			"bar": 0
+		},
+		"es/school-of-prayer": {
+			"ground": "196f3e17c03c0a1e6dbcc611eb8f180deae35c459c8df41c8a4ed1e0f342eaea",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"es/separation-and-service": {
@@ -1204,6 +1224,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/lord-teach-us-to-pray-2": {
+			"ground": "fcfddb409924e03d3dfee80e17d9dee3b0e9a0e334d08896fea40cc0adb75718",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "wash/sage",
+			"bar": 0.11
+		},
 		"fr/men-and-women-who-gave-everything-2": {
 			"ground": "37d20d2cce16372fa2f81a04a1bae2174eaebd10eb84c19602c67d7bf718b711",
 			"style": "originals",
@@ -1354,6 +1384,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"fr/the-masters-indwelling": {
+			"ground": "4ea35dbbe5b79b54f3020dfb4b150136119a2802c5753945488bee54a06be5b7",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"fr/the-secret-of-guidance": {
 			"ground": "33fd3482db54613b285864550cb2c83d65bd10d3c89507ea5d4e91c7bf811008",
 			"style": "devotional",
@@ -1402,6 +1442,16 @@
 			"art": true,
 			"scrim": 0.85,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"fr/union-and-communion": {
+			"ground": "30ebb37ff6e65a8339bc0f4f1d64ce5cbb4c4d3c7fef81fc751f00be5b4688b3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "rail/teal",
 			"bar": 0
 		},
 		"fr/waiting-on-god": {
@@ -1567,6 +1617,16 @@
 		"hi/prayer-the-pulse-of-life": {
 			"ground": "5e42f8c18c6752e175c3aedda526c0a27d8bcdefbd0c242d7472eade812af0d7",
 			"style": "house",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/soar-like-the-eagle-3": {
+			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
+			"style": "lettered",
 			"volume": null,
 			"script": "devanagari",
 			"art": true,
@@ -2354,6 +2414,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"pt/grace-for-grace-2": {
+			"ground": "aa32b31a87dc2cd77445d5bdf2988042e4a2ba517c799b3ee323db6238723e4f",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/he-holds-my-tomorrows": {
 			"ground": "1c8435f7eeba4cd7f8841e5bd680a0dbf348f227a43bf78950419fb0eb7f1dd5",
 			"style": "lettered",
@@ -2451,6 +2521,16 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0
+		},
+		"pt/school-of-prayer": {
+			"ground": "9c3b96dce4b493bb2df6ef2ecafcf2ac685a7384cd45c433fc998a08cf32489e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -3582,6 +3662,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/absolute-surrender": {
+			"ground": "07423bc1c748e3f49b1230c73018e4b8ec98914aa74016f2125d5653fa95f5ea",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"uk/baptism-with-the-holy-spirit": {
 			"ground": "a562b4836e2431fd420dac71ef9e83d726ec511d479f56384cb88672a0dcc8b9",
 			"style": "revival",
@@ -3602,6 +3692,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/confessions": {
+			"ground": "e85834978d772da2d056975aaed9218e24079aa22bdd86db0c759bc547616005",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"uk/divine-healing": {
 			"ground": "1d2453716cb3bf0d448c92ecef2f279a845c359cb266db9c872072182dd2fc65",
 			"style": "devotional",
@@ -3619,6 +3719,16 @@
 			"script": "cyrillic",
 			"art": true,
 			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
+		"uk/growing-in-wisdom": {
+			"ground": "7172353c562c63453d90a20312ea7d626ae75691ee689b15b9bc03b4544d2640",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -3652,6 +3762,56 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"uk/power-through-prayer": {
+			"ground": "c4078282762f68c4e9e8d9492fe6c9c5f8015e905f51a9f5ceaf97a9e13f1f6e",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "split/navy",
+			"bar": 0.04
+		},
+		"uk/prayer-the-pulse-of-life": {
+			"ground": "4f925469360dc20067dfcb2a32a40be25c40fb7873c09f5624eff4954258f033",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
+		"uk/rise-up-men-of-god-2": {
+			"ground": "237fd6138cff47600a34b0ba36897467876a5621b625ea9504cd095eec7f2733",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
+		"uk/school-of-prayer": {
+			"ground": "ac43acd2d8f0f3482428b7f0081fadf3501ca6ccc2e3c582406e6e5dd4f879a1",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"uk/spurgeon-on-prayer": {
+			"ground": "1bed501f567056b8f26c09a2ba5ec0074fe69ea21432e686996043cb5fb346d9",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "band/oxblood",
+			"bar": 0.04
+		},
 		"uk/stepping-stones-2": {
 			"ground": "c41017037413da4a9543d13901c454d70ac7d67c41d8e5596813d50df3be38fe",
 			"style": "lettered",
@@ -3682,6 +3842,26 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/the-masters-indwelling": {
+			"ground": "a143f7aa42dbf8a4a522110450bba6c5688089ebd2c75e5b6ac3b032fc0b4ef7",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "wash/sage",
+			"bar": 0
+		},
+		"uk/the-secret-of-guidance": {
+			"ground": "14d0a0bed902850f5227c95108b074283c14e7e29099b858f67675249932de31",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0
+		},
 		"uk/the-unselfishness-of-god": {
 			"ground": "95fe19ef48b34586d2861076c5261dab1f0d84c88dac081f83b51e50390faa5a",
 			"style": "devotional",
@@ -3689,6 +3869,16 @@
 			"script": "cyrillic",
 			"art": true,
 			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
+		"uk/thoughts-for-the-quiet-hour": {
+			"ground": "b815bfd651c5813ceee753d73914a8813455081672a64b0d017180803fe3bc1b",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"art": false,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -3700,6 +3890,16 @@
 			"art": true,
 			"scrim": 0.6,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"uk/women-who-moved-heaven-2": {
+			"ground": "83417b405e014d2eb9c2de78346df806e851e55e9d61bb47b92407b5e436e337",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
 			"bar": 0
 		},
 		"union-and-communion": {

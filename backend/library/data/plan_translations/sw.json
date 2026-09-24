@@ -70,5 +70,12 @@
       "The description names the three source books the way their shipped Swahili editions do — «Injili Nne» (the-fourfold-gospel.sw), «Injili ya Uponyaji» (the-gospel-of-healing.sw) and «Uponyaji wa Kimungu» (divine-healing.sw), all fixture titles verbatim — so the plan card and the books it opens agree.",
       "All three source books are ALREADY published in sw, so seed_plans creates this (christ-our-healer, sw) row on the same deploy that adds the plan — this prose must land in the SAME PR as the English definition or the sw plans page publishes the English card (the #819 defect)."
     ]
+  },
+  "brave-for-god-24-true-stories": {
+    "title": "Jasiri kwa ajili ya Mungu: Hadithi 24 za Kweli",
+    "description": "Majuma matatu na nusu ya hadithi za kweli kwa wasomaji wadogo, moja kila siku: vitabu vyote vinne vya Jasiri kwa ajili ya Mungu — watu ishirini na wanne wa kawaida kutoka kila pembe ya dunia waliomtumaini Mungu wakafanywa jasiri.",
+    "note": [
+      "AI-drafted; awaiting native review. The series name is quoted verbatim from the shipped Swahili book titles (\"Jasiri kwa ajili ya Mungu\", Kitabu cha Pili/Tatu/Nne)."
+    ]
   }
 }

@@ -56,6 +56,10 @@ export const SAME_AS_ENGLISH_OK = new Set([
 	'fav_group_plans', // Plans
 	'fav_group_sermons', // Sermons
 	'nav_articles', // Articles
+	'nav_originals', // Originals — the imprint's name, kept as-is in sw/lg
+	'originals_eyebrow', // Ochorus Originals — the imprint, a proper noun
+	'originals_series_heading', // Series (es)
+	'originals_series_many', // series (es)
 	'nav_biographies', // Biographies
 	'nav_contact', // Contact
 	'nav_plans', // Plans

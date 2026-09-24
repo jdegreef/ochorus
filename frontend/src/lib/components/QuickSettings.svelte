@@ -6,6 +6,7 @@
 	import { isReaderRoute } from '$lib/readerRoutes';
 	import { i18n } from '$lib/i18n.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 
 	// Take Root's quick-settings popover: the gear opens a small menu with a
 	// theme toggle and a page-width stepper — no navigation to the Settings
@@ -13,7 +14,6 @@
 	// surface (`.page-col`) resizes together and the choice persists.
 	const t = i18n.t;
 	let open = $state(false);
-	let root = $state<HTMLDivElement>();
 
 	// A chapter and a sermon size their column from `--reading-measure`, which
 	// their own `A a` popover owns — `.page-col` isn't on those pages at all. The
@@ -24,20 +24,9 @@
 	const inReader = $derived(isReaderRoute($page.route.id));
 
 	onMount(() => pageWidth.init());
-
-	function onWindowClick(e: MouseEvent) {
-		if (open && root && !root.contains(e.target as Node)) open = false;
-	}
 </script>
 
-<svelte:window
-	onclick={onWindowClick}
-	onkeydown={(e) => {
-		if (e.key === 'Escape') open = false;
-	}}
-/>
-
-<div class="prefs" bind:this={root}>
+<div class="prefs" use:dismissable={{ open, onDismiss: () => (open = false) }}>
 	<!-- aria-controls only while the panel exists: it is rendered by {#if open},
 	     and an IDREF pointing at nothing is worse than none. aria-expanded stays
 	     on both states — that IS the closed state's information. -->
@@ -47,10 +36,7 @@
 		aria-controls={open ? 'quick-settings' : undefined}
 		aria-label={t('settings.title')}
 		title={t('settings.title')}
-		onclick={(e) => {
-			e.stopPropagation();
-			open = !open;
-		}}
+		onclick={() => (open = !open)}
 	>
 		<Icon name="gear" size={19} />
 	</button>

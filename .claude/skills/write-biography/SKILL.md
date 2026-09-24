@@ -132,19 +132,18 @@ force if every paragraph is a box.
    ```
    Same trap, same fix, for a translated bio's `.html` file under
    `library/migrations/data/author_bios_<lang>/`.
-5. **If the author ALREADY EXISTS on prod:** the short `bio` now ships from the
-   fixture on its own; `bio_html` and `photo_url` still don't.
+5. **If the author ALREADY EXISTS on prod:** `bio` and `bio_html` ship from
+   the fixture on their own. Every deploy runs `author_sync.sync_all_authors`
+   (from `seed_books` / `seed_sermons`) over EVERY author in `authors.json`,
+   including the biography-only ones, and since 2026-09-23 a non-empty fixture `bio`/`bio_html` REPLACES a live one
+   that differs. Before that both were fill-only/stub-only, and 29 authors'
+   fixture fixes (#1920 card trims, #1855 "Holy Spirit") sat unshipped. So:
+   **edit a bio in `authors.json`, never in /superepic/** — the next deploy
+   writes the fixture back. The fixture never BLANKS a bio (empty/omitted =
+   leave alone).
 
-   Since 2026-07-26 every deploy runs `author_sync.sync_all_authors` (from
-   `seed_books` / `seed_sermons`) over EVERY author in `authors.json`, including
-   the biography-only ones. It replaces a `bio` that is empty **or still a
-   verbatim `catalog.py` stub** — so writing the real short bio into the fixture
-   is now enough, and 0049/0051-style short-bio migrations are obsolete. It will
-   NOT touch a bio that is anything else: reviewed prose, a hand edit and a
-   translated-then-approved value all win.
-
-   `bio_html` and `photo_url` are **fill-only** — they move `""` to the fixture's
-   value and never overwrite. REPLACING either on a live row still needs a
+   `photo_url` and the years are still **fill-only** — they move `""` to the
+   fixture's value and never overwrite; REPLACING a live portrait still needs a
    migration (step below). Two more traps that still hold:
 
    - **A CC portrait's credit fields sync by NOTHING.** `photo_attribution` /
@@ -184,18 +183,11 @@ force if every paragraph is a box.
    silently. That bug was written, measured doing exactly this, and replaced
    with the separate `source_stale` flag; the two facts are independent.
 
-   To REPLACE non-empty `bio_html`/`photo_url`, write a data migration that
-   reads `content/authors.json` and updates the row, with fill-only or
-   anchored semantics so it can't clobber later prose. Model:
-   `0051_torrey_biography.py` —
-   ```python
-   Author.objects.filter(slug=SLUG, bio_html="").update(bio_html=bio_html)
-   # replacing NON-empty prose: anchor on the exact previous text, so a hand
-   # edit or a later deploy's wording always wins
-   Author.objects.filter(slug=SLUG, bio=PREVIOUS_TEXT).update(bio=bio)
-   ```
-   Verify all four paths before shipping: fresh-DB seed, prod-shaped row,
-   idempotent re-run, and a hand-edited value surviving the migration.
+   To REPLACE a non-empty `photo_url`, write a data migration anchored on the
+   exact previous value (`Author.objects.filter(slug=SLUG,
+   photo_url=OLD).update(photo_url=NEW)`), and set it in `authors.json` too.
+   Bios need no migration — and a bio migration WITHOUT the fixture edit is
+   reverted by `author_sync` later in the same release.
 
    Only a brand-new author arriving with its own works can skip this — a new
    book (`seed_books`) OR a new sermon (`seed_sermons`) creates the author from

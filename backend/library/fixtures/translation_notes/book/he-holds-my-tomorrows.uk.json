@@ -211,9 +211,9 @@
   },
   {
    "reference": "Luke 9:23",
-   "status": "self_rendered",
-   "block_index": 236,
-   "why": "Re-inflected to an infinitive to sit inside the author's sentence (Kulish: «бере хрест свій що-дня»)."
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 236
   },
   {
    "reference": "Hebrews 10:19, 22-24",

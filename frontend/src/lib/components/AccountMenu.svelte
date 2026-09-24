@@ -6,6 +6,7 @@
 	import { loginHref as buildLoginHref } from '$lib/loginHref';
 	import { fetchAdminManualUrl, fetchLanguageAdminManualUrl } from '$lib/library-admin';
 	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 
 	const t = i18n.t;
 
@@ -37,7 +38,6 @@
 	// Matches Take Root's account control: a round initials avatar that opens a
 	// small dropdown (email + account + sign out); a soft button when signed out.
 	let open = $state(false);
-	let root = $state<HTMLDivElement>();
 
 	const initials = $derived(
 		((auth.displayName || auth.user?.email)?.[0] ?? '?').toUpperCase()
@@ -46,31 +46,17 @@
 	// Preserve where the user was, so sign-in returns them there. The locale
 	// handling is subtle enough to be worth testing — see $lib/loginHref.
 	const loginHref = $derived(buildLoginHref($page.url.pathname, $page.url.search));
-
-	function onWindowClick(e: MouseEvent) {
-		if (open && root && !root.contains(e.target as Node)) open = false;
-	}
 </script>
-
-<svelte:window
-	onclick={onWindowClick}
-	onkeydown={(e) => {
-		if (e.key === 'Escape') open = false;
-	}}
-/>
 
 {#if auth.enabled}
 	{#if auth.user}
-		<div class="account" bind:this={root}>
+		<div class="account" use:dismissable={{ open, onDismiss: () => (open = false) }}>
 			<button
 				class="account-btn"
 				aria-expanded={open}
 				aria-controls={open ? 'account-menu' : undefined}
 				aria-label={t('account.title')}
-				onclick={(e) => {
-					e.stopPropagation();
-					open = !open;
-				}}
+				onclick={() => (open = !open)}
 			>
 				{initials}
 			</button>
