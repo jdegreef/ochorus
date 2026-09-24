@@ -1,0 +1,17 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="presentation">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#364fc7"/>
+      <stop offset="1" stop-color="#1d2b6d"/>
+    </linearGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.42" r="0.78">
+      <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.34"/>
+    </radialGradient>
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="1.5" height="4" fill="black" opacity="0.11"/></pattern>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#grain) none"/>
+  <rect width="600" height="800" fill="url(#vig)"/>
+  
+</svg>

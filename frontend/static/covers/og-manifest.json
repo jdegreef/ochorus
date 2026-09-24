@@ -1044,6 +1044,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"finney-memoirs": {
+			"ground": "0d0b8d2c55d10b6c8fe90e5fc67c89601a6faa13d21817842442bb80fdc0fddd",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"first-epistle-of-clement": {
 			"ground": "137cdb7e6283d0991777a24feef91bed0afaf15652c2248870f789f239e635b4",
 			"style": "inscriptional",

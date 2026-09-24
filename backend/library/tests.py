@@ -38,6 +38,13 @@ class CleanTitleTests(TestCase):
             "Christ's Merciful and Faithful Help",
         )
 
+    def test_preserves_a_plural_possessive(self):
+        # Finney's "Revival at Evans' Mills" came out "Evans Mills".
+        self.assertEqual(clean_title("Revival at Evans' Mills"), "Revival at Evans' Mills")
+        self.assertEqual(clean_title("REVIVAL AT EVANS' MILLS"), "Revival at Evans' Mills")
+        # A quoted phrase still loses its quotes.
+        self.assertEqual(clean_title("'Lo here' and 'lo there'"), "Lo here and lo there")
+
     def test_strips_roman_prefix_only_from_allcaps_heading(self):
         # ALL-CAPS CCEL heading: the redundant numeral is dropped.
         self.assertEqual(clean_title("IV. DRIFTING"), "Drifting")
