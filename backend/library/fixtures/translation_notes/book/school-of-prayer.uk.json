@@ -3,7 +3,7 @@
   "slug": "school-of-prayer",
   "language": "uk",
   "job_issue": 3152,
-  "pull_request": null,
+  "pull_request": 3272,
   "note": [
     "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “. Hebrews is cited as Євреїв, not Kulish's Жидів."
   ],
