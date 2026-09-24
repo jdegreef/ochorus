@@ -811,3 +811,21 @@ ORIGINAL_SVG_GROUND: dict[str, Original] = {
     ),
 }
 
+
+# slug -> the scrim each SVG Original needs, MEASURED — carried into
+# `art_scrim.ART_SCRIM` by `scripts/tune_art_scrim.py` on every run, because
+# that script reads rasters and cannot open these. Measured the tuner's way
+# (its compositing model, its AA bars plus MARGIN, its 0.30 floor) but at the
+# words' real positions: these covers set their type from the top
+# (`coverLayouts.TYPE_TOP`), so the tuner's centred INK_REGIONS would measure
+# rows no word crosses. Each ground was rasterised in Chromium at 600x800, the
+# text bands found on its og twin, and the strength walked up from 0.30. All
+# four clear at the floor. The digest in ORIGINAL_SVG_GROUND pins the input: a
+# replaced tree fails that gate first, which is the cue to re-measure this.
+ORIGINAL_SVG_SCRIM: dict[str, float] = {
+    "key-teachings-of-a-b-simpson": 0.30,
+    "key-teachings-of-jonathan-edwards": 0.30,
+    "key-teachings-of-richard-baxter": 0.30,
+    "key-teachings-of-watchman-nee": 0.30,
+}
+

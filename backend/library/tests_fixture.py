@@ -73,6 +73,7 @@ from library.curated_art import (
     CURATED_GROUND,
     ORIGINAL_GROUND,
     ORIGINAL_SVG_GROUND,
+    ORIGINAL_SVG_SCRIM,
 )
 from library.designed_covers import (
     DERIVED_GROUND,
@@ -1500,6 +1501,30 @@ class CoverAssetTests(SimpleTestCase):
             "an SVG Original changed but its recorded sha256 did not — nothing "
             "may redraw one. If you replaced it on purpose, update its digest in "
             "curated_art.ORIGINAL_SVG_GROUND in the same commit",
+        )
+
+    def test_original_svg_grounds_carry_their_measured_scrim(self):
+        """Each SVG Original has a measured scrim, and the table ships it as-is.
+
+        The raster gate below re-measures every `.jpg` against `ART_SCRIM`; it
+        cannot open an SVG, so these are measured outside it (see
+        `curated_art.ORIGINAL_SVG_SCRIM`) and pinned by the digest above. What
+        this holds is the join: no SVG Original without a measurement, and the
+        generated table carrying exactly that value — so a hand edit to
+        `art_scrim.py` can't quietly darken or lighten one.
+        """
+        from library.art_scrim import ART_SCRIM
+
+        self.assertEqual(sorted(ORIGINAL_SVG_SCRIM), sorted(ORIGINAL_SVG_GROUND))
+        drift = {
+            slug: (ART_SCRIM.get(slug), k)
+            for slug, k in ORIGINAL_SVG_SCRIM.items()
+            if ART_SCRIM.get(slug) != k
+        }
+        self.assertEqual(
+            drift, {},
+            "art_scrim.ART_SCRIM disagrees with curated_art.ORIGINAL_SVG_SCRIM — "
+            "re-run scripts/tune_art_scrim.py, which carries these in",
         )
 
     def test_every_art_file_belongs_to_a_tier(self):
