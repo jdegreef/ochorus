@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-24 (queue job #811, PR #3245): Andrew Murray's Смирення — the Ukrainian
+// edition of humility-2, 12 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-24: one NEW Swahili book — revival-lectures (#2580), Charles Finney's
 // 1835 "Lectures on Revivals of Religion", 24 chapters ("Mihadhara juu ya Uamsho wa Dini").
 // Rebuilds /sw/books so the card carries its translated title over the shared painting cover, and
