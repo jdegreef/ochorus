@@ -424,6 +424,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"daughters-of-the-king-3": {
+			"ground": "3b492dc158011ef6d551d3b88ceba76052b152731dd6e0804c7db6c3da7b357f",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"days-of-heaven-upon-earth": {
 			"ground": "b1a664f1d52598c64e23cbbd9266dffed4668a23693b0be5fbadb3a98f33e4be",
 			"style": "revival",

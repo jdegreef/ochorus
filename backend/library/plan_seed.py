@@ -143,6 +143,17 @@ LAUNCH_PLANS = [
         (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
     ),
     (
+        "daughters-of-the-king-book-3-30-days",
+        "daughters-of-the-king-3",
+        "Daughters of the King: 30 Days with God — Book 3",
+        "Thirty days on growing up for girls aged 9 to 12: big feelings, the "
+        "changes of puberty as God's good design, wise choices, discovering "
+        "your calling, and learning from older women who love God. Each day is "
+        "one short reading with a Bible verse, a question to think about, "
+        "something to try, and a prayer.",
+        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
+    ),
+    (
         "sons-of-the-king-book-1-30-days",
         "sons-of-the-king-1",
         "Sons of the King: 30 Days with God — Book 1",
