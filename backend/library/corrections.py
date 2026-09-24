@@ -902,15 +902,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # both printings above spell "(see 'Sixth Day')".
         #
         # NOT `source_fixes`: the parentheses are what the extractor made of a
-        # link, not what Murray printed. English-only edition, so nothing to
-        # settle by hand in a translation.
+        # link, not what Murray printed. These pairs are English-only: the es,
+        # fr, pt and sw editions were all translated after #1929 from the
+        # repaired English, so they shipped with the references and the ch33
+        # headings in their own words and need no pairs of their own.
         #
         # ch33 (Notes) lost all seven of its `NOTE A.`–`NOTE G.` headings to a
         # DIFFERENT selector: `[class*=note i]`, written for CCEL's footnote
         # apparatus, also matched Gutenberg's own `class="note"`. That selector
         # is FIXED at the source now (`sanitize._is_gutenberg_note_content`), so
         # no future import loses them — but these rows are never re-imported, so
-        # ch33 on the shelf is still seven bare `<hr/>`s with no headings.
+        # ch33 shipped as seven bare `<hr/>`s with no headings until #1929.
         #
         # They go back via `restored_blocks`, the mechanism
         # `ministry-of-intercession` uses for byte-identical damage from the
@@ -4350,6 +4352,14 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
      "<p>The frequent dated quotations from Brainerd’s diaries"),
     ("dini ya kweli! <i>Amina.</i></p>",
      "<p>Manukuu ya mara kwa mara yenye tarehe kutoka shajara za Brainerd"),
+]
+# Gutenberg #51931 follows Torrey's last paragraph with a page break and the
+# Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
+# Stalker and Kempis blurbs survived), and then a sub-300-word "Transcriber's
+# Notes" section that the importer merged into ch13 as an <h3> and its errata.
+BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
+    ("before God can use them.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
 BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
     # "Betelguese" -> "Betelgeuse".
