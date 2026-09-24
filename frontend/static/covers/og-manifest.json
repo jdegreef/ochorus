@@ -594,6 +594,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"es/divine-healing": {
+			"ground": "37de9f451b8fd717a6469972bdd412bc2cde4e42e526a156cea45195eaa10da5",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "wash/sage",
+			"bar": 0.05
+		},
 		"es/enchiridion": {
 			"ground": "df59230d258f73037f971ae5dfc34730d68177dce50b66576d572227ecd26a62",
 			"style": "inscriptional",
