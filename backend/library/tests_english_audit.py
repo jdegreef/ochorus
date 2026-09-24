@@ -1309,7 +1309,7 @@ class ShippedBackMatterTests(SimpleTestCase):
         """Each edition of the work ships cut — and a translation that carried
         the back matter but has no seam of its own would fail here."""
         self.assertTrue(self.cases)
-        for slug, name, last, seams in self.cases:
+        for _slug, name, last, seams in self.cases:
             with self.subTest(fixture=name):
                 self.assertTrue(
                     any(last["body_html"].endswith(end) for end, _ in seams),
