@@ -3,7 +3,7 @@
  "slug": "rise-up-men-of-god-2",
  "language": "uk",
  "job_issue": 2797,
- "pull_request": null,
+ "pull_request": 3271,
  "note": [
   "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “ and U+02BC to ’. Hebrews cited as Євреїв, not Kulish's Жидів. English references and numbering kept (Kulish Genesis 3 runs one behind from ~3:15)."
  ],
