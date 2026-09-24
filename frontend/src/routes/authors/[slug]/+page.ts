@@ -1,3 +1,14 @@
+// prerender refresh 2026-09-24: #3324 made English bio/bio_html fixture-wins, and its deploy
+// shipped 29 authors' stuck fixes (#1920's trimmed card bios, #1855's "Holy Spirit"). That PR
+// was backend-only, so this touch re-prerenders the author pages and /biographies cards.
+// prerender refresh 2026-09-24: Luganda author bios — a-w-tozer (#2745), martyn-lloyd-jones
+// (#2746), corrie-ten-boom (#2747), elisabeth-elliot (#2748). Author pages are prerendered PER
+// AUTHOR, so each /lg/authors/<slug> page must rebuild for the translated bio and its callouts.
+// prerender refresh 2026-09-24: Luganda author bios — alexander-maclaren (#1694),
+// j-c-ryle (#1695). Author pages are prerendered PER AUTHOR, so each /lg/authors/<slug> page
+// must rebuild for the translated bio and its <blockquote> pull-quotes and prayer callouts.
+// prerender refresh 2026-09-24: Swahili author bio billy-graham (#2568). Author pages are
+// prerendered PER AUTHOR, so /sw/authors/billy-graham must rebuild with the translated bio.
 // prerender refresh 2026-09-24: Swahili author bio anselm-of-canterbury (#2566). Author pages are
 // prerendered PER AUTHOR, so /sw/authors/anselm-of-canterbury must rebuild with the translated bio.
 // prerender refresh 2026-09-24: Swahili author bio john-calvin (#2565). Author pages are
@@ -419,14 +430,14 @@ export const entries: EntryGenerator = async () => {
 // Bonhoeffer, John Stott, Timothy Keller, Loren Cunningham).
 //
 // Prerender refresh 2026-09-23 (queue job #2563): sw Elisabeth Elliot bio.
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
 	// Old links and bookmarks to the imprint's author page land on its shelf.
 	// (render.yaml 301s the English URL; this covers the localized ones.)
 	if (params.slug === ORIGINALS_SLUG) redirect(308, localizeHref(ORIGINALS_PATH));
 	// The RESOLVED language, not the requested one: getAuthor falls back to
 	// English on a 404, and the reader labels the bio's prose with this.
 	const { data: author, language } = await orNotFound(() =>
-		getAuthorWithLang(params.slug, getLang())
+		getAuthorWithLang(params.slug, getLang(), fetch)
 	);
 	// A mid-deploy API (before the sermon fields ship) may omit these; default
 	// them so the page renders instead of throwing during prerender.

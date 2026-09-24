@@ -23,8 +23,8 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params }) => ({
+export const load: PageLoad = async ({ params, fetch }) => ({
 	page: await orNotFound(() =>
-		getScripturePage(params.book, Number(params.chapter), Number(params.verse))
+		getScripturePage(params.book, Number(params.chapter), Number(params.verse), fetch)
 	)
 });

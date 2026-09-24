@@ -1,3 +1,88 @@
+// prerender refresh 2026-09-24 (queue job #3145): Spanish book — school-of-prayer, Andrew Murray's
+// thirty-one lessons on prayer ("Con Cristo en la escuela de oración"), 33 chapters. Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title over the
+// designed plate cover and the reader page bakes the 33 chapters. Activates the es row of the
+// single-book plan school-of-prayer-31-days (es plan prose added in data/plan_translations/es.json;
+// the /es/plans/school-of-prayer-31-days page rebuilds from that content root — no plans/+page.ts
+// touch owed).
+// prerender refresh 2026-09-24 (queue job #3166): Spanish book — grace-for-grace-2, Watchman Nee's
+// teaching on grace through the parables and Gospel scenes ("Gracia sobre gracia"), 9 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
+// the designed plate cover and the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
+// entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue jobs #1752, #3152, #2797): three more Ukrainian books —
+// power-through-prayer («Сила через молитву», 20 ch), school-of-prayer («З Христом у школі молитви»,
+// 33 ch) and rise-up-men-of-god-2 («Устаньте, мужі Божі», 14 ch) — bake into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #813): Ukrainian book — prayer-the-pulse-of-life, Hannah
+// Buyinza ("Молитва — пульс життя"), 12 chapters. Book pages are prerendered per locale, so /uk/books
+// and the shelf rebuild with the translated title over the shared derived ground.
+// prerender refresh 2026-09-24 (queue job #1790): Spanish book — spurgeon-on-prayer, twelve of
+// Spurgeon's sermons on prayer plus an introduction ("Gran poder en la oración"), 13 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
+// the shared painting ground and the reader page bakes the 13 chapters. Backs no
+// prerender refresh 2026-09-24 (queue job #1783): Spanish book — women-who-moved-heaven-2, an
+// Ochorus-original devotional on ten praying women ("Mujeres que conmovieron el cielo"), 13 chapters.
+// Book pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title
+// over the shared painting ground and the reader page bakes the 13 chapters. Backs no
+// prerender refresh 2026-09-24 (queue job #1779): Spanish book — soar-like-the-eagle-3, Gareth
+// Evans's teaching/testimony on reaching one's spiritual potential ("Remontarse como el águila"), 12
+// chapters. Book pages are prerendered per locale, so /es/books and the shelf rebuild with the
+// translated title over the shared painting ground and the reader page bakes the 12 chapters. Backs no
+// LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue job #1754): Spanish book — watchman-nee-a-life, the biography
+// of Watchman Nee ("Watchman Nee"), 21 chapters. Book pages are prerendered per locale, so /es/books
+// and the shelf rebuild with the title over the shared painting ground and the reader page bakes the
+// 21 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue job #1597): Spanish book — divine-healing, Andrew Murray's
+// meditations on divine healing ("La Sanidad Divina"), 32 chapters. Book pages are prerendered per
+// locale, so /es/books and the shelf rebuild with the translated title over the shared painting
+// ground and the reader page bakes the 32 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no
+// plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue job #1598): Spanish book — ministry-of-intercession, Andrew
+// Murray's plea for a life of intercession ("El Ministerio de la Intercesión"), 18 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
+// the shared painting ground and the reader page bakes the 18 chapters. Backs no
+// prerender refresh 2026-09-24 (queue job #1457): Spanish book — gleanings-among-the-sheaves,
+// Spurgeon's harvest of short devotional readings ("Espigas entre las Gavillas"), 20 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
+// the shared painting ground and the reader page bakes the 20 chapters. Backs no
+// LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue job #1458): Spanish book — cheque-book, Spurgeon's daily
+// devotional "The Cheque Book of the Bank of Faith" ("El Talonario del Banco de la Fe"), 13 chapters
+// (Preface + the twelve months = a reading for every day of the year). Book pages are prerendered per
+// locale, so /es/books and the shelf rebuild with the translated title over the shared painting ground
+// and the reader page bakes the 13 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no
+// plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue job #1455): Spanish book — holy-in-christ, Andrew Murray's
+// month of daily meditations on holiness, 33 chapters ("Santo en Cristo"). Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title and the
+// reader page bakes the 33 chapters. No plans/+page.ts touch owed — holy-in-christ backs the
+// curated pursuit-of-holiness plan, but its other source books (a-serious-call,
+// plain-account-christian-perfection) have no es edition yet, so seed_plans creates no es plan row.
+// prerender refresh 2026-09-24: Spanish book — absolute-surrender (#1596), Andrew Murray's
+// Keswick addresses on yielding wholly to God ("Entrega absoluta"), 9 chapters. Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title and the
+// reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts
+// touch owed.
+// prerender refresh 2026-09-24 (queue job #1368): Spanish book — a-retrospect, Hudson Taylor's
+// autobiography, 20 chapters ("Una Retrospectiva"). Book pages are prerendered per locale, so
+// /es/books and the shelf rebuild with the translated title and the reader page bakes the 20
+// chapters. No plans/+page.ts touch owed — a-retrospect backs no LAUNCH_PLANS/CURATED_PLANS entry.
+// prerender refresh 2026-09-24 (queue job #811, PR #3245): Andrew Murray's Смирення — the Ukrainian
+// edition of humility-2, 12 chapters — bakes into the /uk/books shelf.
+// prerender refresh 2026-09-24: one NEW Swahili book — revival-lectures (#2580), Charles Finney's
+// 1835 "Lectures on Revivals of Religion", 24 chapters ("Mihadhara juu ya Uamsho wa Dini").
+// Rebuilds /sw/books so the card carries its translated title over the shared painting cover, and
+// the reader page bakes the 24 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no
+// plans/+page.ts touch owed.
+// prerender refresh 2026-09-23: one NEW English book — daughters-of-the-king-3, "Daughters of the
+// King – 30 Days with God for Girls – Book 3" (Growing Up), volume 3 of the house-written girls'
+// devotional series (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB
+// Scripture). Rebuilds /books and the For Young Readers shelf so the card and its young-style plate
+// cover (volume 3) appear, and the reader pages bake the chapters. Backs the new
+// daughters-of-the-king-book-3-30-days plan.
+// prerender refresh 2026-09-24 (queue job #812): Gareth Evans's Ключ у моїй руці — the Ukrainian
+// edition of the-key-in-my-hand, 15 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-23: one NEW English book — sons-of-the-king-2, "Sons of the King – 30
 // Days with God for Guys – Book 2" (Faithful), volume 2 of the house-written boys' devotional series
 // (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture). Rebuilds
@@ -358,6 +443,12 @@
 // edition — so seed_plans creates no uk plan row and plans/+page.ts has
 // nothing new to bake. Whoever ships that second book DOES owe the plans
 // touch, because it completes the set.
+// prerender refresh 2026-09-24 (queue job #1755): वॉचमैन नी — the Hindi edition of
+// watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-24 (queue job #1780): उकाब के समान ऊँचे उड़ो — the Hindi edition
+// of soar-like-the-eagle-3, 12 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-24 (queue job #2827, PR #3323): Зростати в мудрості — the Ukrainian
+// edition of growing-in-wisdom, 18 chapters — bakes into the /uk/books shelf.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
@@ -680,7 +771,7 @@ import type { PageLoad } from './$types';
  * already shipped, so plans/+page.ts is refreshed in the same PR — the two
  * plans go live the moment these books do.
  */
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listBooks(getLang()));
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listBooks(getLang(), fetch));
 	return { books: items, loadError };
 };

@@ -6,6 +6,7 @@
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import ReadingNudge from '$lib/components/ReadingNudge.svelte';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
+	import HomeArticles from '$lib/components/HomeArticles.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
 	import AuthorTile from '$lib/components/AuthorTile.svelte';
@@ -192,6 +193,10 @@
 <!-- Sermon of the week — editorial content discovery, not personal. Renders
      nothing when there is no featured sermon in the current language. -->
 <SermonOfTheWeek />
+
+<!-- Eight articles for today — turns over daily; renders nothing in a language
+     with fewer than eight articles. -->
+<HomeArticles />
 
 <!-- Browse by topic -->
 <TopicChips {topics} />

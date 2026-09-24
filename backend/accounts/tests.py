@@ -260,16 +260,16 @@ class IsAdminUserTests(TestCase):
 
 
 class RobotsTxtTests(TestCase):
-    """/robots.txt on the API host tells crawlers to stay off — the corpus is on
-    the prerendered reader, and every bot request here is Supabase egress."""
+    """/robots.txt on the API host keeps crawlers off everything EXCEPT the
+    public library endpoints, which Googlebot's renderer must fetch to hydrate
+    the prerendered pages (blocking them hydrates into a noindex error page)."""
 
-    def test_it_disallows_everything(self):
+    def test_it_allows_only_the_public_library(self):
         res = APIClient().get("/robots.txt")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res["Content-Type"], "text/plain")
-        body = res.content.decode()
-        self.assertIn("User-agent: *", body)
-        self.assertIn("Disallow: /", body)
+        lines = res.content.decode().splitlines()
+        self.assertEqual(lines, ["User-agent: *", "Allow: /api/library/", "Disallow: /"])
 
 
 class HealthEndpointTests(TestCase):

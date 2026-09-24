@@ -718,15 +718,18 @@ dropped; chapters under 120 words are dropped as stubs.
     open with the chapter title or "chapter n" — so a future CCEL re-flow fails
     the build loudly instead of silently shipping a chapter that repeats its own
     heading. `build_serious_call` is the model. *(a-serious-call, 2026-09)*
-  - **Fixing the bodies of an ALREADY-SHIPPED book needs a data migration, not
-    just a fixture edit.** `seed_books` never re-syncs the chapters of a book it
-    has already created (chapter `order` is a public contract), so a re-chapterize
-    or body fix that only lands in the fixture reaches fresh installs but SKIPS
-    prod — the deploy logs a `chapter_drift` warning and the live pages stay
-    wrong. Ship the migration half too (see the `ship-content-fix` skill;
-    migration `0103` strips the Enchiridion's doubled titles, `0092` is the other
-    model — both re-derive `body_text`/`word_count` and NULL `search_vector`).
-    And verify the fix on the live BOOK body, not just the API. *(2026-09)*
+  - **Fixing an ALREADY-SHIPPED book: a title/body fix is just a fixture edit;
+    a chapter set that SHRINKS or RENUMBERS still needs a data migration.** Since
+    2026-09-23 `seed_books` syncs an existing book's chapters by `order` on every
+    deploy — updates drifted titles/bodies (settled form), appends new orders —
+    but never deletes or renumbers (chapter `order` is a public contract). Before
+    that it synced nothing and 379 fixture-only fixes sat unshipped. So a
+    re-chapterize that drops/merges chapters still ships a migration (see
+    `ship-content-fix`; `0134` is the model); anything else doesn't — and a
+    chapter migration WITHOUT the fixture edit is reverted by `seed_books` in the
+    same release. A fixture change triggers the web build, but it can race the
+    API release and prerender the old text; check the static page, and force a
+    rebuild with a frontend touch if stale. *(2026-09)*
 - **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
   The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
   parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted
@@ -808,29 +811,19 @@ dropped; chapters under 120 words are dropped as stubs.
   pasted-in bios were shortened back, and
   `AuthorBioDataIntegrityTests.test_catalog_bios_stay_short_stubs`
   (tests_fixture.py) caps catalog bio length so the trap can't be re-set by
-  hand. Since 2026-07-26 `seed_books` / `seed_sermons` also **upgrade** a stub:
-  on every deploy they sync an existing author from `authors.json`, replacing a
-  `bio` that is empty or still a verbatim catalog stub (see
-  `library/author_sync.py`). Reviewed prose always wins, and `bio_html` /
-  `photo_url` / years are fill-only, and every author in the fixture is synced —
-  not just those with a book, since 9 of 36 are biography-only. So a **short
-  `bio`** written into `authors.json` now reaches prod on its own, where
-  0049/0051 needed a hand-written migration. Two things it still does NOT cover:
-  **`bio_html`** is fill-only, so REPLACING a long-form biography on a live row
-  still ships as a migration with a digest anchor (the 0052 pattern); and a
-  **brand-new author with no book or sermon** is never CREATED by either seed
-  (only updated), so adding one still needs a migration the way 0053 did.
+  hand. Since 2026-07-26 `seed_books` / `seed_sermons` sync an existing
+  author from `authors.json` on every deploy (`library/author_sync.py`), for
+  every author in the fixture, not just those with a book. Since 2026-09-23
+  `bio` and `bio_html` are **fixture-wins** (a non-empty fixture value replaces a
+  differing live one; never blanked), so a stub is upgraded and a long-form bio
+  replaced with no migration; `photo_url` / years stay fill-only. What it still
+  does NOT cover: a **brand-new author with no book or sermon** is never CREATED
+  by either seed (only updated), so adding one still needs a migration the way
+  0053 did.
   Prerender caveat: author pages bake the bio at BUILD time, so the sync lands
   on the API first and the public page only picks it up on the next frontend
   deploy. *(hit amy-carmichael,
   f-b-meyer, susanna-wesley, george-muller, andrew-murray before the fix)*
-- **Editing the WORDING of an existing catalog stub? Move the old text into
-  `author_sync.RETIRED_STUBS`, don't just overwrite it.** A stub is recognised
-  by exact string match, so the old wording is how the sync knows a live row is
-  still a placeholder. Delete it and every prod row carrying that text is
-  stranded on the stub forever — nothing else upgrades a non-empty bio, and
-  there is no error to notice. Only matters for authors whose row was created
-  by an import rather than from `authors.json`. *(2026-07)*
 - **`chapter_title_overrides` now applies in `upsert_book`** (was only in
   `import_ochorus`), so per-book title corrections work for every source. Apply
   `clean_title` to the override in BOTH paths so the same correction yields the
@@ -1041,7 +1034,7 @@ dropped; chapters under 120 words are dropped as stubs.
   number. **Before adding any strip, count what it hits corpus-wide** — the
   arabic rule hit 245 stored titles across waiting-on-god (×6 languages) and
   selected-sermons-whitefield, all of which still read doubled until a migration
-  rewrites them; `seed_books` never re-syncs an existing book's chapters.
+  rewrites them (now `seed_books` itself syncs titles on deploy).
   *(2026-08)*
 - **A chapter may legitimately have NO title.** Bounds's *Purpose in Prayer* is
   thirteen untitled chapters (CCEL lists them "Chapter I" … and the pages carry
@@ -1623,9 +1616,11 @@ The whole book is ONE page; hazards worth knowing before reusing it:
   - Quote style: docsouth is uniformly STRAIGHT-quoted, which `QuoteStyleTests`
     (consistency, not curly) leaves alone — so keep titles/descriptions straight
     too rather than normalising.
-  - **Fixing an ALREADY-SHIPPED book with an importer change does NOT reach
-    prod.** The importer + fixture fix only helps fresh installs — `seed_books`
-    never rewrites an existing book's chapters (backend/CLAUDE.md). The Allen
+  - **Fixing an ALREADY-SHIPPED book with an importer change reaches prod only
+    through the fixture.** An importer fix alone helps nothing already imported;
+    regenerate the fixture and `seed_books` syncs the chapter on deploy (since
+    2026-09-23 — before that it never rewrote existing chapters, hence what
+    follows). The Allen
     footer-nav fix (#1330: importer + fixture) deployed and left the live last
     chapter unchanged; it took a one-time `BODY_CORRECTIONS` replacement (#1336)
     to backfill the stale prod row. Prefer a correction over a hand-written

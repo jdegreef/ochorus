@@ -27,6 +27,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pillow>=12.3.0",
+    "pypdf>=6.19.0",
     "ruff>=0.15",
 ]
 

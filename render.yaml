@@ -233,6 +233,10 @@ services:
         # most only change a query shape, so this trades some needless rebuilds
         # for never shipping a field the static pages do not have.
         - backend/library/serializers.py
+        # `epub_url` (the book page's EPUB button) is read from this module's
+        # EXPORT_PILOT at serialize time, so widening the pilot adds a button
+        # to pages already on disk while touching no fixture or frontend.
+        - backend/library/export_policy.py
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer

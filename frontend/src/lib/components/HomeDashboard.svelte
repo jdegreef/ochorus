@@ -10,6 +10,7 @@
 	import RecommendedNext from '$lib/components/RecommendedNext.svelte';
 	import FavoritesShelf from '$lib/components/FavoritesShelf.svelte';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
+	import HomeArticles from '$lib/components/HomeArticles.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
 
@@ -77,6 +78,10 @@
 <DiscoverStrip books={featured} />
 
 <SermonOfTheWeek />
+
+<!-- Eight articles for today — turns over daily; renders nothing in a language
+     with fewer than eight articles. -->
+<HomeArticles />
 
 <!-- Browse by topic — the last block on the dashboard, so it carries the
      trailing bottom padding. -->

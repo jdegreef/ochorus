@@ -1041,6 +1041,35 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ),
         ],
     },
+    "a-ribband-of-blue": {
+        # The sermon's own title line was lost, and with it the end of a
+        # sentence: the body read "…to introduce the wearing of the" and then
+        # moved on to "GOD would have all His people wear a badge." Gutenberg
+        # #23438 sets the missing words as a centred display line,
+        # `<div class="c1"><small>"RIBBAND OF BLUE."</small></div>`, and
+        # `import_sermons.extract_gutenberg_section` collects only headings, `<p>` and
+        # `<blockquote>` — so a `div` is skipped outright, not sanitized away.
+        # Restored as its own `<p>`, the block it would be had the importer
+        # kept it, with the small caps flattened as everywhere else in the body.
+        #
+        # One pair PER EDITION, each anchored on that language's next paragraph
+        # so it can only bite its own row: the fr and sw translations were made
+        # from the damaged English and carry the same truncation at the same
+        # block. All three move together or `tests_translation_markup`'s tag
+        # parity breaks. The fr follows its title ("Un cordon bleu"); the sw
+        # follows its title ("Uzi wa Rangi ya Samawi", Union Version wording).
+        # The sw translation notes' `block_index` values after the new block
+        # shifted by one in the same commit; the one quote anchored in this
+        # sermon (`quote_seed`, paragraph 6) sits above it.
+        "restored_blocks": [
+            ("<p>GOD would have all His people wear a badge.",
+             '<p>"RIBBAND OF BLUE."</p>'),
+            ("<p>Dieu voulait que tout son peuple portât un signe.",
+             "<p>« CORDON BLEU ».</p>"),
+            ("<p>MUNGU alitaka watu wake wote wavae alama.",
+             '<p>"UZI WA RANGI YA SAMAWI."</p>'),
+        ],
+    },
     "essentials-of-prayer": {
         # A quoted hymn line broke across a line and rejoined with a space
         # before the comma ("He has said He will , If we but trust"). Restore
@@ -4996,3 +5025,130 @@ BODY_CORRECTIONS.setdefault("divine-songs-for-children", {}).setdefault("replace
     ("but never play;", "but never pray;"),
     ("hawachezi kamwe", "hawaombi kamwe"),
 ])
+
+# Finney, Lectures on Revivals of Religion — the print edition's page numbers,
+# 414 of them (pp. 4-445), left in the running text by OCR. Two shapes:
+#
+# * BETWEEN blocks, a bare "</p>16<p>" where a page broke at a paragraph end.
+#   Listed by page number: the shape is anchored on markup, so it can never
+#   match the tagless body_text.
+# * IN PROSE, usually fused to the next word ("the 10excitability", "object.
+#   19Even"), a handful spaced or wedged between tags ("encouraged, 336
+#   <i>before", "</i>387<i>in", "ghost.</p> 92 <p>There"). Listed as the defective string, each unique
+#   across the whole book; `_unpage` deletes the number and nothing else.
+#
+# Not a corpus rule. A digit welded to a word is also an ordinal ("a 7th of
+# Romans experience", "the 15th Psalm" — both in this book), and what proved
+# each of these a page number is that together they count up the book one page
+# at a time, with only the unnumbered chapter-opening pages missing. That is
+# evidence about one edition, not a pattern safe to run over every work.
+_REVIVAL_PAGES_BETWEEN_BLOCKS = (
+    4, 16, 26, 42, 51, 59, 68, 74, 77, 81, 84, 89, 103, 116, 117, 123, 125, 126,
+    131, 132, 146, 164, 165, 170, 173, 177, 182, 198, 216, 219, 245, 253, 258,
+    274, 278, 279, 291, 302, 305, 318, 320, 327, 330, 331, 337, 347, 359, 362,
+    366, 371, 379, 384, 386, 395, 417, 423, 430, 431, 438
+)
+_REVIVAL_PAGES_IN_PROSE = (
+    "texts, 5and", "the 10excitability", "reasoning 11may", "done 12in", "among 13its",
+    "that 14there", "backslidden 15state,", "clearness 17in", "requested 18to",
+    "object. 19Even", "own 20agency", "of 21missions,", "proportion 23to", "of 24such",
+    "there 25is", "the 27wicked", "salvation 28of", "minister 29put", "come 30without",
+    "church 31all", "confession 32of", "not 33mean", "city; 34and", "the 36heart,",
+    "on 37any", "and 38write", "was 39still", "Look 40round", "religion, 41and",
+    "deception 43is", "have 44weakened", "will 45recollect", "up 46a", "as 47it",
+    "Spirit 49of", "expect 50to", "comforted. 52He", "or 53importunity", "pray 54for",
+    "prevailing 55prayer,", "I 56have", "God, 57whose", "fellow 58creatures,",
+    "nothing 60but", "exceptions 61about", "plunge, 62and", "is 63often", "hope 64of",
+    "prayers 65more", "persevere 66in", "necessary 69to", "bread 70to", "come 71in",
+    "ought 72to", "not 73understand", "not 75stand", "I 76sent", "and 78asked",
+    "parable 79of", "And 80it", "converted? 82One", "of 85sinners", "been 86amazed",
+    "willing 87to", "I 88do", "any 90feeling", "selfishness. 91The",
+    "ghost.</p> 92 <p>There", "all 93saints,", "receive 94it", "as 95in",
+    "considered 96rather", "minds 97to", "I 98want", "God, 99and", "I 100have",
+    "his 102influences", "If 104they", "conscience 105gripping", "controversy 106with",
+    "conviction. 107In", "is 108great,", "the 109best", "his 110body", "know 111how",
+    "ministers 113and", "to 114use", "my 115own", "in 119prayer.", "I 120began",
+    "mock 121God,", "would 122naturally", "confidence 124in", "any 127thing",
+    "young 128converts", "say 129they", "confess 130their", "sectional 133prayer",
+    "sort 135of", "he 136knows", "you 137believed", "a 138full", "children 139that",
+    "that 140they", "East, 141who", "man 142always", "and 143paid",
+    "are 144determined", "sinners 145would", "It 147says,", "churches 148could",
+    "the 150man", "be 151dormant,", "another, 152and", "work, 153which",
+    "many 154people", "disappointment, 155or", "took 156his", "individual, 157and",
+    "golden 158rule", "they 159have", "the 160work", "proceeded, 161her",
+    "that 163the", "efforts 167that", "requires 168more", "and 169run", "out 171and",
+    "manner, 172I", "them 174again", "skillfully 175adapt", "should 176do.",
+    "Christ, 178without", "be 179such,", "educated 180on", "bless 181a", "age 183and",
+    "seminary, 184to", "overlooked 186the", "shall 187plunge", "heart 188is",
+    "go 189to", "regulate 190practice.", "hunt 191them", "little 192else", "by 193and",
+    "impassioned, 194the", "preaching, 195another", "predestination, 196free-agency,",
+    "his 197mind", "people 199do", "ancient 200history,", "audience, 201and",
+    "feel 202what", "Christian 203religion.", "Christ 204pleaded", "medicine 205to",
+    "as 206to", "is 207only", "writing, 208is", "them, 209and", "fiction, 210should",
+    "down 211the", "so 212sure", "if 214they", "take 215open", "it, 217and",
+    "church 218openly,", "a 220revival,", "so 221proper,", "for 222their",
+    "for 223you", "they 224are", "whole 225souls", "became 226depressed",
+    "own 227house", "wasting 228his", "meeting. 229If", "to 230watch",
+    "</i> 231<i>doing", "amount 232of", "their 233minister", "raise 234them",
+    "I 235have", "pay 236this", "never 237succeed,", "the 239dark",
+    "soldiers. 240They", "in 241the", "hardly 242worship", "a 243time,",
+    "Presbyterian 244church,", "years, 246female", "tear 247off", "of 248divinity,",
+    "they 249were", "the 250A", "doubtless 251be", "Otherwise 252Christians",
+    "heart 254is", "were 255anxious", "When 256he", "now 257built,",
+    "them 259complain", "men 260in", "power 261and", "order.” 262We",
+    "and 264distract", "Lord. 265If", "hundred 266years", "members 267have",
+    "a 268great", "of 269residence", "work, 270unless", "opposition, 271and",
+    "on 272any", "their 273minds.", "deplore. 275To", "them, 276and", "itself 277put",
+    "they 280have", "revivals.” 281And", "consented. 283They", "circulated, 284and",
+    "I 285know", "exclude 286persons", "Every 287body", "us 288on", "It 289is",
+    "better. 290I", "vain 292to", "that 293the", "the 295object.", "in 296to",
+    "children, 297even", "attend 298to", "accordingly, 299so", "prevailing 300prayer,",
+    "influences 301are", "individuals 303agree", "</i> 304<i>sinners</i>.",
+    "the 306members", "thwart 307each", "praying 308for", "meaning, 309as",
+    "for 310the", "then 311undo", "united 312may", "promoting 313revivals",
+    "understand 314all", "duty; 315let", "Multitudes 316of", "a 319precise",
+    "And 321therefore", "has 322always", "as 323Nicodemus", "distressed, 324for",
+    "his 325distress.", "converted, 326for", "church 328uses", "delighted 329with",
+    "conviction 332so", "may 333be", "your 334son", "all 335his",
+    "encouraged, 336 <i>before</i>", "benefited 338by", "Christ. 339Just",
+    "are 340unwilling", "different 341sense", "friends 342had", "conflict 343with",
+    "them 344with", "gone, 346they", "various 348as", "there 349has", "and 350obliged",
+    "believer, 351and", "common 352life,", "Maker, 353and", "he 354leave",
+    "meant 355by", "their 356hands.", "not 357in", "a 358Christian.", "you,” 360and",
+    "and 361plainly", "the 363soul,", "thou 365me", "and 367make", "up. 368They",
+    "whenever 369they", "government, 370or", "themselves 372up",
+    "respecting 373individuals", "that, 374with", "months. 375Where",
+    "experience, 376if", "he 377shall", "<i>re-converted</i>, 378and",
+    "<i>presumption</i>, 380that", "judgment, 381so", "not 382mean", "for 383the",
+    "Instead 385of", "</i>387<i>in", "of 388the", "go 389with", "when 390they",
+    "that 391money,", "to 393religion,", "are 394not", "give 396just",
+    "understand 397 <i>what", "living 398generally.", "hypocritical 399face",
+    "are 400young", "some 401of", "should 402be", "converts, 403and", "her 404young",
+    "of 405such", "after 406a", "like 407the", "of 408young", "untaught, 409useless",
+    "young 410converts.", "sinners. 411And", "stereotyped 413formal",
+    "</p>414 <p>“Reason", "but 415conviction", "the 416poor,", "regarded 418as",
+    "condemnation. 419He", "encouraged 420us", "I 421fear,", "is 422particular",
+    "fall 424into", "anxieties 425are", "world 426are", "No 427longer", "with 429God",
+    "of 432one", "confusion, 433and", "with 434him.", "may 435become",
+    "complaints 436of", "and 437body", "and 439less", "monomaniacs, 440and",
+    "endure 441the", "men 442have", "Christian 443intelligence.", "of 444heart",
+    "been 445converted.",
+)
+
+
+def _unpage(defective: str) -> str:
+    """Drop the one page number from a `_REVIVAL_PAGES_IN_PROSE` string."""
+    # One space survives if the number had one on either side: "the 10excitability"
+    # -> "the excitability", "</p>414 <p>" -> "</p> <p>", "</i>387<i>" -> "</i><i>".
+    return _re.sub(
+        r"(\s?)(?<=[\s>])\d{1,3}(\s?)(?=[A-Za-z<])",
+        lambda m: " " if m[1] or m[2] else "",
+        defective,
+        count=1,
+    )
+
+
+BODY_CORRECTIONS.setdefault("revival-lectures", {}).setdefault("replacements", []).extend(
+    [(f"</p>{page}<p>", "</p> <p>") for page in _REVIVAL_PAGES_BETWEEN_BLOCKS]
+    + [(defective, _unpage(defective)) for defective in _REVIVAL_PAGES_IN_PROSE]
+)

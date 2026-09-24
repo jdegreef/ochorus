@@ -26,18 +26,18 @@ export const entries: EntryGenerator = async () => {
 // Prerender refresh 2026-09-07: migration 0127's 13 new portraits bake into
 // these era shelves too (each card's photo_url and schema.org image). Force a
 // rebuild AFTER the API migration lands so the era pages show them.
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
 	const era = eraById(params.era);
 	if (!era) throw error(404, 'Unknown era');
 	const lang = getLang();
 	// A failed author fetch is REPORTED (loadShelf) so the page offers Try again
 	// rather than crashing to the 500 route (this loader was unguarded).
-	const { items: authors, loadError } = await loadShelf(listAuthors(lang));
+	const { items: authors, loadError } = await loadShelf(listAuthors(lang, fetch));
 	// Books power the per-writer cover strips; degrade to none if unavailable so
 	// the page still renders.
 	let books: BookSummary[] = [];
 	try {
-		books = await listBooks(lang);
+		books = await listBooks(lang, fetch);
 	} catch {
 		books = [];
 	}

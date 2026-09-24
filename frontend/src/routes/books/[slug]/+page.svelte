@@ -4,7 +4,13 @@
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
-	import { chapterName, contentLang, readingMinutes, readingTime } from '$lib/reading';
+	import {
+		bookTimeLeft,
+		chapterName,
+		contentLang,
+		readingMinutes,
+		readingTime
+	} from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
 	import {
 		absUrl,
@@ -21,7 +27,7 @@
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import { seriesLabel } from '$lib/series';
-	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, jumpToSection, elementVisible } from '$lib/scrollSpy.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
@@ -32,23 +38,12 @@
 	import AddToShelfButton from '$lib/components/AddToShelfButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import { offlineBooks } from '$lib/offlineBooks.svelte';
-	import { pwa } from '$lib/pwa.svelte';
+	import BookDownloadMenu from '$lib/components/BookDownloadMenu.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	let { data } = $props();
 	const t = i18n.t;
 	const book = $derived<BookDetail>(data.book);
-
-	// Download-for-offline state for THIS EDITION. `book.language` is the
-	// language the API actually served (getBook falls back to English for a book
-	// with no copy in this locale), so it is what was cached and what must be
-	// asked for — not the UI locale.
-	const savedOffline = $derived(offlineBooks.has(book.slug, book.language));
-	const downloading = $derived(
-		offlineBooks.active?.slug === book.slug && offlineBooks.active?.language === book.language
-			? offlineBooks.active
-			: null
-	);
 
 	let resumeOrder = $state<number | null>(null);
 	$effect(() => {
@@ -70,6 +65,34 @@
 	);
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
+
+	// A saved place past chapter 1: the read verb is Continue, not Begin.
+	const resuming = $derived(resumeHere != null && resumeHere > 1);
+	const firstOrder = $derived(book.chapters[0]?.order ?? 1);
+	const readOrder = $derived(resuming && resumeHere != null ? resumeHere : firstOrder);
+
+	// The read card: the chapter the reader is in, how far through the book
+	// that is (by words, so a long chapter counts for more), and the time left
+	// from the start of it at the reader's pace.
+	const resumeChapter = $derived(book.chapters.find((c) => c.order === resumeHere));
+	const wordsLeft = $derived(
+		resumeHere == null
+			? 0
+			: book.chapters.filter((c) => c.order >= resumeHere).reduce((n, c) => n + c.word_count, 0)
+	);
+	const minutesLeft = $derived(wordsLeft ? readingMinutes(wordsLeft) : 0);
+	const onChapter = $derived(
+		t('book.onChapter')
+			.replace('%n%', String(readOrder))
+			.replace('%t%', String(book.chapter_count))
+	);
+	const percentRead = $derived(totalWords ? ((totalWords - wordsLeft) / totalWords) * 100 : 0);
+
+	// Whether the read card has scrolled out of view — the sticky section bar
+	// shows its own read verb only then. (The card sits in the hero, so off
+	// screen means scrolled past.)
+	let readCard = $state<HTMLElement>();
+	const cardSeen = elementVisible(() => readCard, { initial: true });
 
 	// "Prefer Modern English" (settings): when it's on and this book has a modern
 	// edition, the read CTAs open that edition by carrying ?edition=modern. The
@@ -354,7 +377,10 @@
 			     Numbers in the edition's digits, as the cover's ring sets them. -->
 			{#if book.series}
 				<p class="mt-2 text-small text-muted" dir="auto">
-					<span class="font-medium">{seriesLabel(book.series, contentLang(book.language))}</span
+					<a
+						href={localizeHref(`/series/${book.series.slug}`)}
+						class="font-medium hover:text-text hover:underline"
+						>{seriesLabel(book.series, contentLang(book.language))}</a
 					>{#if book.series.next}<span class="px-1.5 opacity-50">·</span><a
 							href={localizeHref(`/books/${book.series.next.slug}`)}
 							class="text-accent hover:underline"
@@ -382,100 +408,83 @@
 				</p>
 			{/if}
 
-			<!-- Provenance / reassurance, up front: the whole work reads here, now,
-			     for nothing and behind no sign-in. Two facts, quiet, above the
-			     actions — the same claim `isAccessibleForFree` makes to a machine,
-			     said to the reader. -->
-			<p class="mt-3 text-small text-muted">
-				<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
-					class="px-1.5 opacity-50">·</span
-				>{t('book.noAccount')}
-			</p>
-
-			<!-- Action tiers: ONE clear read verb (Begin / Continue) with Save beside
-			     it, and every utility — Share, Search inside, Download, the modern
-			     edition — demoted to a quiet `.btn-sm` row beneath, so five equal
-			     buttons no longer compete for the one that matters. -->
-			<div class="mt-4 flex flex-wrap items-center gap-3">
-				{#if resumeOrder && resumeOrder > 1}
-					<a href={readHref(resumeOrder)} class="btn btn-primary">
-						{t('book.continueCh')} {resumeOrder}
-					</a>
-					<a href={readHref(1)} class="btn btn-ghost">{t('book.startOver')}</a>
-				{:else}
-					<a href={readHref(1)} class="btn btn-primary">{t('book.beginReading')}</a>
-				{/if}
-				<FavoriteButton kind="book" slug={book.slug} showLabel />
+			<!-- Design D: the header's one job for a returning reader is to put them
+			     back where they were, so the read verb sits in a card that NAMES the
+			     chapter they're on, with the book's progress and the time left — a
+			     reason to press Continue, not just a number. A first-time reader (and
+			     the prerendered HTML, since the saved place is client-only) gets the
+			     same card offering chapter 1, carrying the "Free to read · No account
+			     needed" reassurance that used to sit on a row of its own. Start over
+			     is a quiet link: it discards the place, so it shouldn't look like a
+			     second main action. -->
+			<div class="read-card mt-4" bind:this={readCard}>
+				<div class="min-w-0 flex-1">
+					{#if resuming}
+						<p class="text-small text-muted">
+							{onChapter}{#if minutesLeft}{` · ${bookTimeLeft(minutesLeft)}`}{/if}
+						</p>
+						<p class="read-card-title" dir="auto">{chapterName(readOrder, resumeChapter?.title)}</p>
+						<div class="mt-2">
+							<ProgressBar percent={percentRead} label="{book.title}: {onChapter}" />
+						</div>
+					{:else}
+						<p class="text-small">
+							<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
+								class="px-1.5 opacity-50">·</span
+							><span class="text-muted">{t('book.noAccount')}</span>
+						</p>
+						{#if book.chapters[0]}
+							<p class="read-card-title" dir="auto">
+								{chapterName(firstOrder, book.chapters[0].title)}
+							</p>
+						{/if}
+					{/if}
+				</div>
+				<div class="read-card-cta">
+					<a href={readHref(readOrder)} class="btn btn-primary"
+						>{resuming ? t('book.continue') : t('book.beginReading')}</a
+					>
+					{#if resuming}
+						<a href={readHref(firstOrder)} class="text-small text-muted underline hover:text-text"
+							>{t('book.startOver')}</a
+						>
+					{/if}
+					{#if book.has_modern_edition}
+						<!-- The primary CTA follows the Modern English preference; this
+						     offers the other edition. -->
+						<a
+							href={localizeHref(
+								`/books/${book.slug}/${readOrder}${useModern ? '' : '?edition=modern'}`
+							)}
+							class="text-small text-accent hover:underline"
+							>{useModern ? t('reader.readOriginal') : t('book.readModern')}</a
+						>
+					{/if}
+				</div>
 			</div>
 
-			<div class="mt-2.5 flex flex-wrap items-center gap-2">
-				<!-- Share this edition. Opens the OS share sheet on mobile, else a small
-				     Copy link / WhatsApp / Facebook / Email menu; the URL is this page's
-				     per-locale canonical, and its link preview is the edition's own share
-				     card (shareCard/og-manifest). -->
-				<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
-				<!-- Put the book on the reader's own Bookshelf shelves (see
-				     customShelves) — the way to shelve a book not already there. -->
-				<AddToShelfButton slug={book.slug} />
-				<!-- Search inside this book. Goes to the real search scoped to the
-				     book rather than a second, weaker search over cached text: the
-				     reader gets the same ranking, snippets and paging they get
-				     everywhere else, and the scope is visible and reversible. -->
+			<!-- Everything else is one quiet row of five: keep it (Save, a shelf),
+			     take it away (one Download menu for offline / EPUB / PDF), pass it on
+			     (Share) and look inside (Search). Share and Search are icon-only on
+			     desktop (`.icon-sm`); below `sm` the `.action-strip` becomes design
+			     B's labelled icon strip. -->
+			<div class="action-strip mt-3">
+				<FavoriteButton kind="book" slug={book.slug} showLabel />
+				<AddToShelfButton slug={book.slug} shortLabel />
+				<BookDownloadMenu {book} />
+				<div class="icon-sm">
+					<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
+				</div>
+				<!-- Search inside this book: the real search, scoped to the book. -->
 				<a
 					href={localizeHref(scopedSearchHref('book', book.slug))}
-					class="btn btn-sm btn-ghost">{t('search.inBook')}</a
+					class="btn btn-sm btn-ghost icon-sm"
+					aria-label={t('search.inBook')}
+					title={t('search.inBook')}
 				>
-				<!-- Download for offline: precache every chapter so the whole book
-				     reads with no connection (see lib/offlineBooks). -->
-				{#if downloading}
-					<span class="btn btn-sm btn-ghost cursor-default">
-						{t('offline.downloading')} {Math.round((downloading.done / downloading.total) * 100)}%
-					</span>
-				{:else if savedOffline}
-					<button
-						class="btn btn-sm btn-ghost"
-						title={t('offline.remove')}
-						onclick={() => offlineBooks.remove(book.slug, book.language)}
-					>
-						✓ {t('offline.saved')}
-					</button>
-				{:else}
-					<button
-						class="btn btn-sm btn-ghost"
-						disabled={!pwa.online}
-						title={pwa.online ? undefined : t('offline.needsConnection')}
-						onclick={() => offlineBooks.download(book)}
-					>
-						{t('offline.download')}
-					</button>
-				{/if}
-				<!-- PDF download withdrawn (2026-07-26). 33 of the 34 books carrying a
-				     pdf_url pointed at /pdfs/<slug>.pdf, and only soar-like-the-eagle.pdf
-				     was ever committed to static/pdfs — every other button 404'd. The
-				     rows were repointed off ochorus.com's WordPress media without the
-				     files coming with them, and the earlier rel="external" was added to
-				     stop the prerender crawler failing the build on exactly those missing
-				     files, which hid the breakage rather than surfacing it.
-				     pdf_url is left intact in the data; restore this block once the files
-				     are actually hosted (and drop rel="external" then, so a missing file
-				     fails the build loudly instead of shipping a dead button). -->
-
-				{#if book.has_modern_edition}
-					{@const readOrder = resumeOrder && resumeOrder > 1 ? resumeOrder : 1}
-					{#if useModern}
-						<!-- Primary CTA already opens modern; offer the original as the alt. -->
-						<a href={localizeHref(`/books/${book.slug}/${readOrder}`)} class="btn btn-sm btn-ghost">
-							{t('reader.readOriginal')}
-						</a>
-					{:else}
-						<a
-							href={localizeHref(`/books/${book.slug}/${readOrder}?edition=modern`)}
-							class="btn btn-sm btn-ghost"
-						>
-							{t('book.readModern')}
-						</a>
-					{/if}
-				{/if}
+					<Icon name="search" size={16} />
+					<span class="btn-label">{t('nav.search')}</span>
+				</a>
 			</div>
 		</div>
 	</header>
@@ -505,13 +514,12 @@
 					</li>
 				{/each}
 			</ul>
-			{#if resumeOrder && resumeOrder > 1}
-				<a href={readHref(resumeOrder)} class="btn btn-primary subnav-cta shrink-0"
-					>{t('book.continueCh')} {resumeOrder}</a
-				>
-			{:else}
-				<a href={readHref(1)} class="btn btn-primary subnav-cta shrink-0"
-					>{t('book.beginReading')}</a
+			<!-- The read verb lives in the hero card; repeating it here while that
+			     card is on screen put two "Continue" buttons in view. It appears
+			     only once the card has scrolled away. -->
+			{#if !cardSeen.visible}
+				<a href={readHref(readOrder)} class="btn btn-primary subnav-cta shrink-0"
+					>{resuming ? `${t('book.continueCh')} ${readOrder}` : t('book.beginReading')}</a
 				>
 			{/if}
 		</nav>
@@ -789,6 +797,43 @@
 			var(--surface-2) 1px,
 			var(--border) 1.5px
 		);
+	}
+
+	/* Design D's read card: the chapter you're on, the book's progress, and
+	   the one read verb. A tinted surface, not a bordered box, so it reads as
+	   the head of the hero rather than a separate widget. Stacks on a phone
+	   with a full-width CTA (design B). */
+	.read-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding: 0.85rem 1rem;
+		border-radius: var(--radius-card);
+		background: var(--surface-2);
+	}
+	.read-card-title {
+		margin-top: 0.15rem;
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1.25;
+	}
+	.read-card-cta {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.4rem;
+		text-align: center;
+	}
+	@media (min-width: 640px) {
+		.read-card {
+			flex-direction: row;
+			align-items: center;
+			gap: 1.25rem;
+		}
+		.read-card-cta {
+			align-items: center;
+			flex-shrink: 0;
+		}
 	}
 
 	/* A3: jump-nav. Anchored sections clear both pinned bars via `--pinned-offset`

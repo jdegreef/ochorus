@@ -12,8 +12,8 @@ A trailing NAME limits the run to files whose name contains it.
 
 The decision itself lives in `library.ingest.strip_restated_heading`, because
 migration 0092 makes the same repair to rows already in a deployed database —
-`seed_books` never re-syncs an existing book's chapters, so this sweep reaches a
-fresh build and never a running one. Same shape as `normalize_quotes.py` beside
+`seed_books` did not re-sync an existing book's chapters until 2026-09-23, so
+this sweep then reached a fresh build and never a running one. Same shape as `normalize_quotes.py` beside
 migration 0084.
 
 ENGLISH DECIDES. A translated chapter is judged by its English twin (same slug

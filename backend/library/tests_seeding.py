@@ -362,34 +362,40 @@ class SeedBooksUpsertTests(TestCase):
         self.assertTrue(es.reviewed)
         self.assertFalse(es.source_stale)
 
-    def test_a_retired_stub_wording_is_still_upgraded(self):
-        # Recognition is by string equality, so rewording a stub would strand
-        # every live row still carrying the old text — nothing else can upgrade
-        # a non-empty bio. RETIRED_STUBS keeps those wordings recognisable; this
-        # fails if one is ever deleted rather than retired.
-        from library.author_sync import RETIRED_STUBS
-
-        Author.objects.filter(slug="andrew-murray").update(bio=RETIRED_STUBS[0])
-
+    def test_an_older_bio_is_replaced_by_the_fixture(self):
+        # #1920 trimmed 23 card bios in authors.json and none reached prod,
+        # because a non-stub live bio used to win. The fixture wins now.
+        Author.objects.filter(slug="andrew-murray").update(
+            bio="An older, longer bio that ran past four card lines."
+        )
         call_command("seed_books", verbosity=0)
-
         self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
+
+    def test_an_older_bio_html_is_replaced_by_the_fixture(self):
+        # #1855's "Holy Ghost" -> "Holy Spirit" sat unshipped in six bio_htmls.
+        author = self._author()
+        Author.objects.filter(pk=author.pk).update(
+            bio_html=author.bio_html + "<p>Stale paragraph.</p>"
+        )
+        call_command("seed_books", verbosity=0)
+        self.assertNotIn("Stale paragraph", self._author().bio_html)
 
     def test_an_empty_bio_is_filled(self):
         Author.objects.filter(slug="andrew-murray").update(bio="")
         call_command("seed_books", verbosity=0)
         self.assertEqual(self._author().bio, self._fixture_bio("andrew-murray"))
 
-    def test_reviewed_prose_is_never_overwritten(self):
-        # THE constraint. Blind-syncing the fixture would close the gap and also
-        # silently revert a hand edit or an approved translation — so anything
-        # that isn't empty or a verbatim catalog stub wins over the fixture.
-        edited = "A biography a human rewrote in the admin, after review."
-        Author.objects.filter(slug="andrew-murray").update(bio=edited)
+    def test_a_fixture_without_a_bio_never_blanks_the_row(self):
+        # Fixture-wins covers text the fixture HAS; an omitted or empty field
+        # leaves the live prose alone.
+        from library.author_sync import sync_author
 
-        call_command("seed_books", verbosity=0)
-
-        self.assertEqual(self._author().bio, edited)
+        author = self._author()
+        live = author.bio
+        changed, _ = sync_author(author, {"bio": "", "bio_html": ""})
+        author.refresh_from_db()
+        self.assertEqual(author.bio, live)
+        self.assertEqual(changed, [])
 
     def test_fill_only_fields_are_filled_but_not_overwritten(self):
         Author.objects.filter(slug="andrew-murray").update(photo_url="")
@@ -522,10 +528,10 @@ class SeedBooksUpsertTests(TestCase):
 
 
 class SeedBooksChapterDriftTests(TestCase):
-    """seed_books syncs the Book row but not its chapters, so it emits a
-    report-only warning when a book's stored chapters diverge from the fixture
-    (a live-DB transform that never got a fixture regen). It must never mutate
-    a chapter or fail — the deploy just gets a heads-up."""
+    """seed_books syncs an existing book's chapters by order — creating missing
+    ones and updating drifted ones, never deleting or renumbering — then emits a
+    report-only warning for whatever still differs. The warning must never
+    mutate a chapter or fail the deploy."""
 
     @classmethod
     def setUpTestData(cls):
@@ -567,19 +573,53 @@ class SeedBooksChapterDriftTests(TestCase):
         self.assertIn("order(s)", reason)
         self.assertIn(str(last.order + 100), reason)
 
-    def test_warning_is_report_only_and_never_mutates_chapters(self):
-        from django.core.management import call_command
-
+    def test_seed_restores_a_drifted_chapter_to_the_fixture(self):
+        # A fixture-only chapter fix used to skip prod forever (seed_books left
+        # existing chapters alone); now the seed converges title and body.
         c = self.book.chapters.first()
-        Chapter.objects.filter(pk=c.pk).update(body_html="<p>tampered</p>")
+        title, body = c.title, c.body_html
+        Chapter.objects.filter(pk=c.pk).update(
+            title="mangled", body_html="<p>tampered</p>", body_text="tampered"
+        )
         out = StringIO()
         call_command("seed_books", stdout=out, stderr=out)
-        # It warned…
-        self.assertIn("Chapter drift", out.getvalue())
-        self.assertIn(self.book.slug, out.getvalue())
-        # …but did not "fix" the divergent chapter back to the fixture.
         c.refresh_from_db()
-        self.assertEqual(c.body_html, "<p>tampered</p>")
+        self.assertEqual((c.title, c.body_html), (title, body))
+        self.assertNotIn("tampered", c.body_text)  # save() re-derived it
+        self.assertIn("chapters: 0 added, 1 updated", out.getvalue())
+        self.assertEqual(self._drift(), {})
+
+    def test_seed_appends_a_chapter_the_db_lacks(self):
+        # Stepping Stones: the author added chapters 40–43 to an existing book.
+        last = self.book.chapters.order_by("-order").first()
+        order, pk = last.order, self.book.chapters.first().pk
+        last.delete()
+        call_command("seed_books", stdout=StringIO())
+        added = self.book.chapters.get(order=order)
+        self.assertGreater(added.word_count, 0)
+        # Existing rows are updated in place, never recreated: saved positions,
+        # quotes and citations hang off the chapter's pk.
+        self.assertTrue(Chapter.objects.filter(pk=pk).exists())
+        self.assertEqual(self._drift(), {})
+
+    def test_seed_never_deletes_or_renumbers_a_chapter(self):
+        # Order is a public contract; a DB chapter the fixture lacks is left in
+        # place and reported, for a human to retire with a migration.
+        last = self.book.chapters.order_by("-order").first()
+        extra = Chapter.objects.create(
+            book=self.book, order=last.order + 1, title="Extra", body_html="<p>x</p>"
+        )
+        out = StringIO()
+        call_command("seed_books", stdout=out, stderr=out)
+        self.assertTrue(Chapter.objects.filter(pk=extra.pk).exists())
+        self.assertIn("Chapter drift", out.getvalue())
+        self.assertIn("chapter(s) in DB", self._drift()[self.book.slug])
+
+    def test_a_converged_library_writes_no_chapters(self):
+        out = StringIO()
+        with patch.object(Chapter, "save", side_effect=AssertionError("wrote")):
+            call_command("seed_books", stdout=out, stderr=out)
+        self.assertNotIn("chapters:", out.getvalue())
 
     def test_a_corrected_chapter_is_not_drift(self):
         # apply_body_corrections runs over every stored chapter immediately
@@ -607,27 +647,9 @@ class SeedBooksChapterDriftTests(TestCase):
             chapter.refresh_from_db()
             self.assertEqual(chapter.body_html, corrected)  # …it was corrected…
             self.assertEqual(self._drift(), {})  # …and that is not drift either
-
-    def test_drift_check_failure_never_aborts_the_seed(self):
-        # The drift pass runs inside seed_books' @transaction.atomic handle(),
-        # so a bug in this diagnostics-only code must not roll back a good seed
-        # or fail the deploy — it's caught and reported, and the command still
-        # succeeds (creating a book that was missing).
-
-        from django.core.management import call_command
-
-        self.book.delete()  # so this run has real work to commit
-        out = StringIO()
-        with patch(
-            "library.management.commands.seed_books.chapter_drift_reason",
-            side_effect=RuntimeError("boom"),
-        ):
-            call_command("seed_books", stdout=out, stderr=out)
-        self.assertIn("Chapter-drift check skipped", out.getvalue())
-        # The seed itself committed despite the diagnostics blowing up.
-        self.assertTrue(
-            Book.objects.filter(slug=self.book.slug, language="en").exists()
-        )
+            call_command("seed_books", stdout=StringIO())
+            chapter.refresh_from_db()
+            self.assertEqual(chapter.body_html, corrected)  # …nor reverted
 
 
 class SeedSermonsTests(TestCase):

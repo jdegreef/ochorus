@@ -115,6 +115,24 @@ prerendered pages reference it.
 
 ## Gotchas (each has bitten a run)
 
+- **DERIVED grounds (translations of a DESIGNED cover) are tuned in
+  `designed_covers.DERIVED_GROUND`, not here** (#3233, Gareth Evans). Knobs beyond
+  the crop: `erase=(Erase(x0,y0,x1,y1,"dark"|"light"),…)` paints thin lettering out
+  so a band can reach past a subtitle/URL/frame (strokes-only by default;
+  `thin=False` for a hairline touching a bright shape); `foot=` lifts a low subject
+  clear of the Ochorus mark (BookCover centres the title, mark at ~0.9 — a foot
+  pushes the subject UP); `peak=` caps blown whites. **`tune_art_scrim` can answer
+  >1.0 but `coverScrim.test.ts` forbids it** — gamma `lift` can't touch 255, so
+  bring highlights down with `peak≈240`, re-draw, re-tune. Preview the REAL cover
+  by cloning `scripts/generate-cover-og.mjs` into a scratch script that filters
+  to your slugs and screenshots `coverPage()` to a dir (no API/dev server needed);
+  delete it before committing.
+- **A `cover-type.css`/font change makes `npm run og:covers` redraw EVERY twin**
+  (the manifest's global `css`/`fonts` digests move) — ~350 PNGs of sub-1-level
+  re-encode noise. Keep the manifest + your slugs' twins and `git checkout` the
+  rest. A new `COVER_STYLE_IDS` recipe also needs a non-`.title` rule OUTSIDE the
+  container gate (`coverComposition.test.ts`) and must not give the subtitle a face.
+
 - **F · the og "ground" digest hashes the BYLINE, not just the painting** — it is
   `sha256(cover_bytes + "\0" + title + "\0" + subtitle + "\0" + author_name)`
   (`tests_fixture.test_every_twin_was_made_from_the_cover_it_stands_in_for`). So a

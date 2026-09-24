@@ -12,9 +12,9 @@ export const trailingSlash = 'always';
 // Caught rather than thrown, as loadShelf does, so a web build that runs ahead
 // of the API release bakes the error panel instead of failing — and the panel's
 // Try again re-runs this against the live API.
-export const load: PageLoad = async () => {
+export const load: PageLoad = async ({ fetch }) => {
 	try {
-		return { shelf: await getOriginals(getLang()), loadError: false };
+		return { shelf: await getOriginals(getLang(), fetch), loadError: false };
 	} catch {
 		return { shelf: { books: [], series: [], languages: [] }, loadError: true };
 	}

@@ -1,3 +1,13 @@
+// prerender refresh 2026-09-24: Luganda sermon — against-eutropius (#1700). Sermon pages are
+// prerendered per locale, so /lg/sermons must rebuild so the card and its /lg/sermons/against-eutropius
+// page bake the translated title and "In brief" summary.
+// prerender refresh 2026-09-24: Luganda sermons — the-worlds-need (#1697),
+// consolation-in-the-furnace (#1698), gods-love-for-a-sinning-world (#1699). Sermon pages are
+// prerendered per locale, so /lg/sermons must rebuild so each card and its /lg/sermons/<slug>
+// page bake the translated title and "In brief" summary.
+// prerender refresh 2026-09-24: Swahili sermon — abiding-in-christ (#2587, PR #3214). Rebuilds
+// /sw/sermons so the card and its /sw/sermons/abiding-in-christ page bake the translated title
+// (Kukaa Ndani ya Kristo) and "In brief" summary.
 // prerender refresh 2026-09-24: Swahili sermon — a-ribband-of-blue (#2590, PR #3213). Rebuilds
 // /sw/sermons so the card and its /sw/sermons/a-ribband-of-blue page bake the translated title
 // and "In brief" summary.
@@ -306,7 +316,7 @@ import type { PageLoad } from './$types';
  * per the #741 note above Render would otherwise SKIP the web build and the
  * fr shelf would keep serving English titles while the API serves French.
 */
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listSermons(getLang()));
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listSermons(getLang(), fetch));
 	return { sermons: items, loadError };
 };

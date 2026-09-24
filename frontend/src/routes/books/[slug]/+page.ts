@@ -1,3 +1,7 @@
+// Rebuild marker 2026-09-23: #3237 made seed_books sync existing books'
+// chapters to the fixture, and its first deploy carried ~380 fixture-only
+// chapter fixes (quote marks, OCR slips, the Tukutendereza ch5 title) to the
+// API. That PR was backend-only, so this touch re-prerenders against it.
 // Rebuild marker 2026-09-23: #3221 (migration 0162) carried Stepping Stones'
 // chapters 40–43 to the live DB for en/fr/hi/lg/pt/sw — #3104 had put them in
 // the fixtures only, and seed_books never adds chapters to an existing book.
@@ -88,8 +92,8 @@ export const entries: EntryGenerator = async () => {
 	return books.map((b) => ({ slug: b.slug }));
 };
 
-export const load: PageLoad = async ({ params }) => {
-	const book = await orNotFound(() => getBook(params.slug, getLang()));
+export const load: PageLoad = async ({ params, fetch }) => {
+	const book = await orNotFound(() => getBook(params.slug, getLang(), fetch));
 	return { book };
 };
 

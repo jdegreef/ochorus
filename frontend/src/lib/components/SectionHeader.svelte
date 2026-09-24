@@ -17,9 +17,12 @@
 	let {
 		title,
 		href = '',
-		linkText = ''
+		linkText = '',
+		subtitle = ''
 	}: {
 		title: string;
+		/** Optional one-line standfirst under the title (kept with it when the link wraps). */
+		subtitle?: string;
 		/** Omit for a heading with no link. */
 		href?: string;
 		/** Link label; the arrow is added here so every one of them matches. */
@@ -28,7 +31,14 @@
 </script>
 
 <div class="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-1">
-	<h2 class="text-h2">{title}</h2>
+	{#if subtitle}
+		<div>
+			<h2 class="text-h2">{title}</h2>
+			<p class="mt-1 text-small text-muted">{subtitle}</p>
+		</div>
+	{:else}
+		<h2 class="text-h2">{title}</h2>
+	{/if}
 	{#if href && linkText}
 		<a {href} class="whitespace-nowrap text-small font-semibold text-accent">{linkText} →</a>
 	{/if}

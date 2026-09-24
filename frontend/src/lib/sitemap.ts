@@ -35,6 +35,7 @@ import {
 	listQuoteTopics,
 	listQuoteTopicPages,
 	listScripturePages,
+	listSeries,
 	listSermons,
 	listTopics
 } from '$lib/library-public';
@@ -114,7 +115,7 @@ export function urlsetXml(entries: Entry[], only?: string): string {
 }
 
 export interface SitemapData {
-	/** Static app pages, era landings, topics and plans — the small tail. */
+	/** Static app pages, era landings, topics, plans and series — the small tail. */
 	pages: Entry[];
 	/** The scripture graph. English only, so these entries carry one locale. */
 	scripture: Entry[];
@@ -205,7 +206,8 @@ async function build(): Promise<SitemapData> {
 			books: await listBooks(l).catch(() => []),
 			sermons: await listSermons(l).catch(() => []),
 			topics: await listTopics(l).catch(() => []),
-			plans: await listPlans(l).catch(() => [])
+			plans: await listPlans(l).catch(() => []),
+			series: await listSeries(l).catch(() => [])
 		}))
 	);
 	const authors = await listAuthors().catch(() => []);
@@ -361,7 +363,7 @@ async function build(): Promise<SitemapData> {
 	// actually handed — a books-only `imageOf` passed for sermons is a type
 	// error rather than an unchecked cast.
 	type Slice = (typeof advertisedSlices)[number];
-	const collect = <K extends 'books' | 'sermons' | 'topics' | 'plans'>(
+	const collect = <K extends 'books' | 'sermons' | 'topics' | 'plans' | 'series'>(
 		kind: K,
 		pathOf: (slug: string) => string,
 		lastmodOf?: (item: Slice[K][number]) => string | undefined,
@@ -405,6 +407,9 @@ async function build(): Promise<SitemapData> {
 	const sermons = collect('sermons', (s) => `/sermons/${s}/`, (s) => s.updated_at);
 	pages.push(...collect('topics', (s) => `/topics/${s}/`));
 	pages.push(...collect('plans', (s) => `/plans/${s}/`));
+	// A series has a page only where it has a name and a book (no English
+	// fallback), which is exactly what each locale's list holds.
+	pages.push(...collect('series', (s) => `/series/${s}/`));
 
 	// Scripture pages carry ONE locale, not the advertised set: citations parse
 	// only against English book names, so there is no localized version of these

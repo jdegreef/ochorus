@@ -4,11 +4,13 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 (default "en"). All endpoints are public (AllowAny via the project default).
 """
 
+import hashlib
 import logging
 
+from django.conf import settings
 from django.core.cache import cache
-from django.db.models import Count, Exists, OuterRef, Prefetch, Q
-from django.http import Http404
+from django.db.models import Count, Exists, F, OuterRef, Prefetch, Q
+from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.parsers import JSONParser
@@ -17,8 +19,16 @@ from rest_framework.views import APIView
 
 from common.throttling import ScopedCacheThrottle
 
+from . import book_export
 from . import languages as languages_module
-from .http_cache import PublicContentCacheMixin
+from .contemporize import MODERN_LANGUAGE
+from .export_policy import is_exportable
+from .http_cache import (
+    CACHE_CONTROL,
+    PublicContentCacheMixin,
+    _if_none_match,
+    content_etag,
+)
 from .languages import entry as language_entry
 from .localization import language_from_request
 from .models import (
@@ -224,16 +234,11 @@ class OriginalsView(PublicContentCacheMixin, APIView):
                 (b for b in books if b.series_id == s.pk),
                 key=lambda b: b.series_position or 0,
             )
-            if lang == "en":
-                description = s.description
-            else:
-                tr = next((t for t in s.translations.all() if t.language == lang), None)
-                description = tr.description if tr else ""
             series.append(
                 {
                     "slug": s.slug,
                     "title": title,
-                    "description": description,
+                    "description": s.description_for(lang),
                     "books": [b.slug for b in members],
                 }
             )
@@ -316,6 +321,56 @@ class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             book=book,
             order=self.kwargs["order"],
         )
+
+
+class _BookDownloadThrottle(ScopedCacheThrottle):
+    """A download builds a whole book, so it gets its own ceiling — far above a
+    reader (nobody downloads 30 books a minute) and well below a scraper."""
+
+    scope = "book-download"
+
+
+class BookEpubView(APIView):
+    """A book as an EPUB file, built per request from the live chapters.
+
+    See ``library/book_export.py``. 404 for anything not exportable
+    (``export_policy``), so a guessed URL can't pull an edition we haven't
+    vetted.
+
+    Not ``PublicContentCacheMixin``: its tag moves with the content, but the
+    renderer (book_export.py) is deliberately not a content root, so a deploy
+    that changes the FILE FORMAT would keep answering 304. The tag here is the
+    shared content tag plus the release commit, still checked before the book
+    is built.
+    """
+
+    throttle_classes = [_BookDownloadThrottle]
+
+    def get(self, request, slug):
+        etag = _epub_etag(request)
+        if _if_none_match(request, etag):
+            response = HttpResponseNotModified()
+        else:
+            book = get_object_or_404(
+                Book.objects.select_related("author"),
+                slug=slug,
+                language=_language(request),
+            )
+            if not is_exportable(book):
+                raise Http404
+            data = book_export.render_epub(book_export.build_edition(book))
+            response = HttpResponse(data, content_type="application/epub+zip")
+            response["Content-Disposition"] = (
+                f'attachment; filename="{book_export.export_filename(book, "epub")}"'
+            )
+        response["ETag"] = etag
+        response["Cache-Control"] = CACHE_CONTROL
+        return response
+
+
+def _epub_etag(request) -> str:
+    material = f"{content_etag(request)}|{settings.RELEASE_COMMIT}"
+    return 'W/"' + hashlib.sha256(material.encode()).hexdigest()[:16] + '"'
 
 
 class SermonListView(PublicContentCacheMixin, generics.ListAPIView):
@@ -537,6 +592,83 @@ def _attach_articles(topics, language):
             if e.article_slug in by_slug
         ]
     return topics
+
+
+def _series_books(series, language: str) -> list:
+    """A series' published books in ``language``, as cards, in reading order.
+
+    Volume order where the series has one; a collection (no positions) falls
+    back to the library's own sort order, as a shelf would.
+    """
+    return list(
+        Book.objects.filter(series=series, language=language, is_published=True)
+        .select_related("author")
+        .prefetch_related("author__translations")
+        .annotate(**BOOK_CARD_ANNOTATIONS)
+        .order_by(F("series_position").asc(nulls_last=True), "sort_order", "title")
+    )
+
+
+def _series_languages(series) -> list[str]:
+    """The languages ``series`` has a page in: a name there and a published
+    book there. Feeds hreflang, which must not advertise a page that 404s."""
+    named = {"en"} | {t.language for t in series.translations.all()}
+    held = set(
+        Book.objects.filter(series=series, is_published=True)
+        .exclude(language=MODERN_LANGUAGE)
+        .values_list("language", flat=True)
+    )
+    return sorted(named & held)
+
+
+class SeriesListView(PublicContentCacheMixin, APIView):
+    """Every series with a page in the requested language — for the prerender's
+    entries and the sitemap. A series needs a name here and at least one
+    published book here; one that has neither in a language doesn't exist in it
+    (the no-English-fallback rule, as for topics)."""
+
+    def get(self, request):
+        language = _language(request)
+        here = Q(books__language=language, books__is_published=True)
+        rows = []
+        for series in Series.objects.prefetch_related("translations").annotate(
+            book_count=Count("books", filter=here)
+        ):
+            title = series.title_for(language)
+            if title and series.book_count:
+                rows.append({"slug": series.slug, "title": title, "book_count": series.book_count})
+        return Response(rows)
+
+
+class SeriesDetailView(PublicContentCacheMixin, APIView):
+    """One series page: its name and description in the requested language, and
+    its books there in reading order. 404 where the series has no name or no
+    book in that language, so the reader gets the not-found page rather than an
+    empty or English-named one."""
+
+    def get(self, request, slug):
+        language = _language(request)
+        series = get_object_or_404(Series.objects.prefetch_related("translations"), slug=slug)
+        title = series.title_for(language)
+        books = _series_books(series, language) if title else []
+        if not books:
+            raise Http404("No series in this language")
+        ordered = any(b.series_position is not None for b in books)
+        return Response(
+            {
+                "slug": series.slug,
+                "title": title,
+                "description": series.description_for(language),
+                "ordered": ordered,
+                "books": BookListSerializer(
+                    books,
+                    many=True,
+                    # No topic chips on these cards: skip building the map.
+                    context={"request": request, "language": language, "book_topics": {}},
+                ).data,
+                "available_languages": _series_languages(series),
+            }
+        )
 
 
 class TopicListView(PublicContentCacheMixin, generics.ListAPIView):

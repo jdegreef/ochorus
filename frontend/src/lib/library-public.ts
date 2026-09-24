@@ -1,4 +1,4 @@
-import { apiFetch, ApiError } from './api';
+import { apiFetch, ApiError, type Fetch } from './api';
 import { SITE_URL } from './config';
 import { absUrl } from './seo';
 import {
@@ -177,7 +177,13 @@ export interface BookSeries {
 export interface BookDetail extends BookSummary {
 	description: string;
 	source_url: string;
+	/** A static PDF under /pdfs/ ("" = none). See library/book_export.py. */
 	pdf_url: string;
+	/**
+	 * API path of this edition's EPUB ("" = not downloadable). Optional: an
+	 * API behind this build omits it, and no button is drawn.
+	 */
+	epub_url?: string;
 	chapters: ChapterToc[];
 	topics: TopicChip[];
 	related: BookSummary[];
@@ -671,8 +677,12 @@ export interface Milestone {
  * throw — otherwise a reader whose language has no copy of a book gets a raw
  * 500 on the page load instead of readable text.
  */
-async function localized<T>(path: (lang: string) => string, language: string): Promise<T> {
-	return (await localizedWithLang<T>(path, language)).data;
+async function localized<T>(
+	path: (lang: string) => string,
+	language: string,
+	f?: Fetch
+): Promise<T> {
+	return (await localizedWithLang<T>(path, language, f)).data;
 }
 
 /**
@@ -688,23 +698,24 @@ async function localized<T>(path: (lang: string) => string, language: string): P
  */
 export async function localizedWithLang<T>(
 	path: (lang: string) => string,
-	language: string
+	language: string,
+	f?: Fetch
 ): Promise<{ data: T; language: string }> {
 	try {
-		return { data: await apiFetch<T>(path(language)), language };
+		return { data: await apiFetch<T>(path(language), {}, f), language };
 	} catch (e) {
 		if (language !== 'en' && e instanceof ApiError && e.status === 404) {
-			return { data: await apiFetch<T>(path('en')), language: 'en' };
+			return { data: await apiFetch<T>(path('en'), {}, f), language: 'en' };
 		}
 		throw e;
 	}
 }
 
-export const listBooks = (language = 'en') =>
-	apiFetch<BookSummary[]>(`/api/library/books/?language=${language}`);
+export const listBooks = (language = 'en', f?: Fetch) =>
+	apiFetch<BookSummary[]>(`/api/library/books/?language=${language}`, {}, f);
 
-export const listAuthors = (language = 'en') =>
-	apiFetch<AuthorBio[]>(`/api/library/authors/?language=${language}`);
+export const listAuthors = (language = 'en', f?: Fetch) =>
+	apiFetch<AuthorBio[]>(`/api/library/authors/?language=${language}`, {}, f);
 
 /** A series the house imprint's books run in, named in the requested language;
  * `books` holds their slugs in volume order. */
@@ -723,20 +734,24 @@ export interface OriginalsShelf {
 	languages: { code: string; count: number }[];
 }
 
-export const getOriginals = (language = 'en') =>
-	apiFetch<OriginalsShelf>(`/api/library/originals/?language=${language}`);
+export const getOriginals = (language = 'en', f?: Fetch) =>
+	apiFetch<OriginalsShelf>(`/api/library/originals/?language=${language}`, {}, f);
 
 export const getAuthor = (slug: string, language = 'en') =>
 	localized<AuthorDetail>((l) => `/api/library/authors/${slug}/?language=${l}`, language);
 
 /** An author plus the language their biography is actually in — see getChapterWithLang. */
-export const getAuthorWithLang = (slug: string, language = 'en') =>
-	localizedWithLang<AuthorDetail>((l) => `/api/library/authors/${slug}/?language=${l}`, language);
+export const getAuthorWithLang = (slug: string, language = 'en', f?: Fetch) =>
+	localizedWithLang<AuthorDetail>(
+		(l) => `/api/library/authors/${slug}/?language=${l}`,
+		language,
+		f
+	);
 
-export const getBook = async (slug: string, language = 'en') =>
+export const getBook = async (slug: string, language = 'en', f?: Fetch) =>
 	requireFields<BookDetail>(
 		`book ${slug}`,
-		await localized<BookDetail>((l) => `/api/library/books/${slug}/?language=${l}`, language),
+		await localized<BookDetail>((l) => `/api/library/books/${slug}/?language=${l}`, language, f),
 		BOOK_FIELDS
 	);
 
@@ -755,13 +770,19 @@ export const getChapter = async (slug: string, order: number, language = 'en') =
  * carries no language of its own, and the reader needs the real one for the
  * prose's `lang` attribute — see localizedWithLang.
  */
-export const getChapterWithLang = async (slug: string, order: number, language = 'en') => {
+export const getChapterWithLang = async (
+	slug: string,
+	order: number,
+	language = 'en',
+	f?: Fetch
+) => {
 	// The route the chapter reader actually takes, so this is where the guard
 	// has to be: `getChapter` above is the notebook's and the search drawer's
 	// path, and guarding only that would leave the reader itself unchecked.
 	const res = await localizedWithLang<Chapter>(
 		(l) => `/api/library/books/${slug}/chapters/${order}/?language=${l}`,
-		language
+		language,
+		f
 	);
 	return { ...res, data: requireFields<Chapter>(`chapter ${slug}/${order}`, res.data, CHAPTER_FIELDS) };
 };
@@ -771,8 +792,8 @@ export const getChapterWithLang = async (slug: string, order: number, language =
 export const getPopularSearches = (language = 'en') =>
 	apiFetch<{ queries: string[] }>(`/api/library/popular-searches/?language=${language}`);
 
-export const listSermons = (language = 'en') =>
-	apiFetch<SermonSummary[]>(`/api/library/sermons/?language=${language}`);
+export const listSermons = (language = 'en', f?: Fetch) =>
+	apiFetch<SermonSummary[]>(`/api/library/sermons/?language=${language}`, {}, f);
 
 // Every language the library supports publishing in — not just ones that
 // already have content — so the admin import picker can start a new language.
@@ -788,10 +809,10 @@ export const createAuthor = (name: string) =>
 // filters by (slug, language), so a language-switch on a sermon page or a shared
 // /lg/sermons/<slug> link to an untranslated sermon would otherwise dead-end at
 // the not-found page instead of degrading to the readable English original.
-export const getSermon = async (slug: string, language = 'en') =>
+export const getSermon = async (slug: string, language = 'en', f?: Fetch) =>
 	requireFields<Sermon>(
 		`sermon ${slug}`,
-		await localized<Sermon>((l) => `/api/library/sermons/${slug}/?language=${l}`, language),
+		await localized<Sermon>((l) => `/api/library/sermons/${slug}/?language=${l}`, language, f),
 		SERMON_FIELDS
 	);
 
@@ -857,16 +878,16 @@ export interface Article extends ArticleSummary {
 	available_languages: string[];
 }
 
-export const listArticles = (language = 'en') =>
-	apiFetch<ArticleSummary[]>(`/api/library/articles/?language=${language}`);
+export const listArticles = (language = 'en', f?: Fetch) =>
+	apiFetch<ArticleSummary[]>(`/api/library/articles/?language=${language}`, {}, f);
 
 // Falls back to English on a 404, like getSermon: an article detail filters by
 // (slug, language), so a language switch or a shared /lg link to an
 // untranslated article degrades to the English original rather than a 404.
-export const getArticle = async (slug: string, language = 'en') =>
+export const getArticle = async (slug: string, language = 'en', f?: Fetch) =>
 	requireFields<Article>(
 		`article ${slug}`,
-		await localized<Article>((l) => `/api/library/articles/${slug}/?language=${l}`, language),
+		await localized<Article>((l) => `/api/library/articles/${slug}/?language=${l}`, language, f),
 		ARTICLE_FIELDS
 	);
 
@@ -957,14 +978,14 @@ export interface PlanDetail extends PlanSummary {
 	authors?: { slug: string; name: string }[];
 }
 
-export const listPlans = (language = 'en') =>
-	apiFetch<PlanSummary[]>(`/api/library/plans/?language=${language}`);
+export const listPlans = (language = 'en', f?: Fetch) =>
+	apiFetch<PlanSummary[]>(`/api/library/plans/?language=${language}`, {}, f);
 
 // English fallback on 404, same reasoning as getSermon: a plan detail view
 // filters by (slug, language), so an untranslated plan opened under a locale
 // prefix should degrade to English rather than 404.
-export const getPlan = (slug: string, language = 'en') =>
-	localized<PlanDetail>((l) => `/api/library/plans/${slug}/?language=${l}`, language);
+export const getPlan = (slug: string, language = 'en', f?: Fetch) =>
+	localized<PlanDetail>((l) => `/api/library/plans/${slug}/?language=${l}`, language, f);
 
 /**
  * A book in one of the small fanned strips — a plan's, or a topic's.
@@ -1062,11 +1083,39 @@ export interface TopicDetail extends TopicSummary {
 	related_topics?: TopicChip[];
 }
 
-export const listTopics = (language = 'en') =>
-	apiFetch<TopicSummary[]>(`/api/library/topics/?language=${language}`);
+export const listTopics = (language = 'en', f?: Fetch) =>
+	apiFetch<TopicSummary[]>(`/api/library/topics/?language=${language}`, {}, f);
 
-export const getTopic = (slug: string, language = 'en') =>
-	apiFetch<TopicDetail>(`/api/library/topics/${slug}/?language=${language}`);
+export const getTopic = (slug: string, language = 'en', f?: Fetch) =>
+	apiFetch<TopicDetail>(`/api/library/topics/${slug}/?language=${language}`, {}, f);
+
+/** A series with a page in the requested language — the prerender and sitemap list. */
+export interface SeriesSummary {
+	slug: string;
+	title: string;
+	book_count: number;
+}
+
+/** One series page: see `SeriesDetailView` in the API. */
+export interface SeriesDetail {
+	slug: string;
+	/** Name and description in the requested language (no English fallback). */
+	title: string;
+	description: string;
+	/** False for a collection (no volume numbers, no reading order). */
+	ordered: boolean;
+	/** Its published books in this language, in volume order. */
+	books: BookSummary[];
+	/** Languages the series has a page in — for hreflang. */
+	available_languages: string[];
+}
+
+export const listSeries = (language = 'en') =>
+	apiFetch<SeriesSummary[]>(`/api/library/series/?language=${language}`);
+
+/** No English fallback, like `getTopic`: a series with no page here 404s. */
+export const getSeries = (slug: string, language = 'en') =>
+	apiFetch<SeriesDetail>(`/api/library/series/${slug}/?language=${language}`);
 
 // --- The scripture graph ------------------------------------------------------
 // Which passages in the library treat a given verse — the reverse of the
@@ -1122,12 +1171,14 @@ export interface ScripturePage {
 	verses?: { number: number; text: string; citing_count: number; has_page: boolean }[];
 }
 
-export const listScripturePages = () =>
-	apiFetch<ScripturePageEntry[]>('/api/library/scripture/pages/');
+export const listScripturePages = (f?: Fetch) =>
+	apiFetch<ScripturePageEntry[]>('/api/library/scripture/pages/', {}, f);
 
-export const getScripturePage = (book: string, chapter: number, verse?: number) =>
+export const getScripturePage = (book: string, chapter: number, verse?: number, f?: Fetch) =>
 	apiFetch<ScripturePage>(
-		`/api/library/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '')
+		`/api/library/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : ''),
+		{},
+		f
 	);
 
 /**
@@ -1243,11 +1294,11 @@ export interface QuoteAuthorSummary {
 	work_count: number;
 }
 
-export const listQuoteAuthors = () =>
-	apiFetch<QuoteAuthorSummary[]>('/api/library/quotes/');
+export const listQuoteAuthors = (f?: Fetch) =>
+	apiFetch<QuoteAuthorSummary[]>('/api/library/quotes/', {}, f);
 
-export const getQuotePage = (author: string) =>
-	apiFetch<QuotePage>(`/api/library/quotes/${author}/`);
+export const getQuotePage = (author: string, f?: Fetch) =>
+	apiFetch<QuotePage>(`/api/library/quotes/${author}/`, {}, f);
 
 /** A saved quote as the favorites shelf shows it: the quote plus the author it
  *  belongs to, since that shelf mixes authors and each card must name its own. */
@@ -1369,17 +1420,18 @@ export interface QuoteAuthorTopicPage {
 }
 
 /** Themes deep enough to earn a page — the /quotes/topics index and its prerender list. */
-export const listQuoteTopics = () => apiFetch<QuoteTopicSummary[]>('/api/library/quote-topics/');
+export const listQuoteTopics = (f?: Fetch) =>
+	apiFetch<QuoteTopicSummary[]>('/api/library/quote-topics/', {}, f);
 
-export const getQuoteTopicPage = (topic: string) =>
-	apiFetch<QuoteTopicPage>(`/api/library/quote-topics/${topic}/`);
+export const getQuoteTopicPage = (topic: string, f?: Fetch) =>
+	apiFetch<QuoteTopicPage>(`/api/library/quote-topics/${topic}/`, {}, f);
 
 /** Every (author, theme) pair deep enough to earn a page — the prerender list. */
 export const listQuoteTopicPages = () =>
 	apiFetch<{ author: string; topic: string }[]>('/api/library/quote-topics/pages/');
 
-export const getQuoteAuthorTopicPage = (author: string, topic: string) =>
-	apiFetch<QuoteAuthorTopicPage>(`/api/library/quotes/${author}/${topic}/`);
+export const getQuoteAuthorTopicPage = (author: string, topic: string, f?: Fetch) =>
+	apiFetch<QuoteAuthorTopicPage>(`/api/library/quotes/${author}/${topic}/`, {}, f);
 
 /**
  * The `CollectionPage` → `ItemList` of `Quotation`s that both single-author

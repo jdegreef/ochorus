@@ -1,0 +1,531 @@
+{
+ "kind": "book",
+ "slug": "divine-healing",
+ "language": "es",
+ "job_issue": 1597,
+ "references": [
+  {
+   "reference": "Mateo 9:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 103:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 33:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 11:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 9:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 9:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 3:8",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Mateo 17:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 17:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 10:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 5:34",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Salmo 25:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 4:12",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.es.json"
+  },
+  {
+   "reference": "Lucas 18:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 3:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 5:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 115:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 15:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 8:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 7:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 4:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 9:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 9:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 9:23a",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json"
+  },
+  {
+   "reference": "Marcos 9:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 103:1-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 9:24b",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json"
+  },
+  {
+   "reference": "Éxodo 15:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 8:17a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 30:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 9:26b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 6:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Génesis 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colosenses 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 2:24",
+   "status": "mined",
+   "source_file": "around-the-wicket-gate.es.json"
+  },
+  {
+   "reference": "1 Corintios 10:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 6:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 6:13a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 6:13b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tesalonicenses 5:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 18:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 18:33-34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 27:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 40:31",
+   "status": "mined",
+   "source_file": "how-to-succeed-in-the-christian-life.es.json"
+  },
+  {
+   "reference": "Mateo 6:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timoteo 2:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éxodo 7:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tito 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 12:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 5:15a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 112:4a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 6:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 91:16a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 92:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 10:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 21:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 18:7-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 103:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 4:29-31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 4:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 5:12-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 51:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 53:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 53:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 53:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 8:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 11:30-32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lamentaciones 3:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 9:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 9:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 5:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 5:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 28:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 11:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 8:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 4:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 9:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 10:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 12:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 14:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 14:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 15:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 15:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 19:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 5:16-18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 11:24",
+   "status": "mined",
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "Santiago 5:15b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 3:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tesalonicenses 4:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éxodo 15:25-26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éxodo 23:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 42:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 77:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éxodo 30:22-32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 61:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 15:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 10:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 27:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 91:1",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Lucas 15:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaías 60:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judas 24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 15:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 15:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 15:8",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json"
+  },
+  {
+   "reference": "Juan 15:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 15:4",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  }
+ ]
+}

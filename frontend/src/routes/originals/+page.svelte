@@ -166,7 +166,9 @@
 					{#each shelved.series as s (s.slug)}
 						<div class="series-row">
 							<div>
-								<h3 class="text-h3 font-display font-semibold text-balance">{s.title}</h3>
+								<h3 class="text-h3 font-display font-semibold text-balance">
+									<a class="hover:text-accent" href={localizeHref(`/series/${s.slug}`)}>{s.title}</a>
+								</h3>
 								{#if s.description}
 									<p class="mt-1 text-small text-muted">{s.description}</p>
 								{/if}

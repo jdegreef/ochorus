@@ -12,6 +12,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { theme } from '$lib/theme.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 
 	let {
 		/**
@@ -68,7 +69,6 @@
 			readerUi.panelOpen = v;
 		}
 	};
-	let wrap = $state<HTMLDivElement>();
 	const t = i18n.t;
 
 	// The flag lives on a module singleton so the reader's key handler can see
@@ -110,18 +110,12 @@
 		{ v: 'left', k: 'align.left' },
 		{ v: 'justify', k: 'align.justify' }
 	];
-
-	function onWindowClick(e: MouseEvent) {
-		if (open.value && wrap && !wrap.contains(e.target as Node)) open.value = false;
-	}
-	function onKey(e: KeyboardEvent) {
-		if (e.key === 'Escape') open.value = false;
-	}
 </script>
 
-<svelte:window onclick={onWindowClick} onkeydown={onKey} />
-
-<div class="relative" bind:this={wrap}>
+<div
+	class="relative"
+	use:dismissable={{ open: open.value, onDismiss: () => (open.value = false) }}
+>
 	<button
 		class="btn btn-sm btn-ghost"
 		onclick={() => (open.value = !open.value)}
