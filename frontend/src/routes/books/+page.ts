@@ -1,3 +1,7 @@
+// prerender refresh 2026-09-24 (queue job #1368): Spanish book — a-retrospect, Hudson Taylor's
+// autobiography, 20 chapters ("Una Retrospectiva"). Book pages are prerendered per locale, so
+// /es/books and the shelf rebuild with the translated title and the reader page bakes the 20
+// chapters. No plans/+page.ts touch owed — a-retrospect backs no LAUNCH_PLANS/CURATED_PLANS entry.
 // prerender refresh 2026-09-24 (queue job #812): Gareth Evans's Ключ у моїй руці — the Ukrainian
 // edition of the-key-in-my-hand, 15 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-23: one NEW English book — sons-of-the-king-2, "Sons of the King – 30
