@@ -3875,6 +3875,17 @@ BODY_CORRECTIONS.setdefault("marks-of-a-true-conversion", {}).setdefault("replac
     ("resurrection and the live", "resurrection and the life"),
     # "to see and know" — "se" is a dropped letter.
     ("thee to se and know", "thee to see and know"),
+    # sw job #2595. Goodwin's Paul "sits nearest the God-man ... in glory"; "fits"
+    # is the long-s/f misread (es "se sienta", fr "siège").
+    ("fits nearest the God-man", "sits nearest the God-man"),
+    # to "put up" a prayer, as the same sermon says three times; "put us" is a
+    # one-letter slip (es "elevabais", fr "faisant monter").
+    ("when ye put us these prayers", "when ye put up these prayers"),
+    # dropped "of": "to the honor of Christianity" (pt/es/fr all render it so).
+    ("to the honor Christianity", "to the honor of Christianity"),
+    # two possessives that lost their "s" ("God's sake" is spelled out 3x here).
+    ("sitting on Christ' right hand", "sitting on Christ's right hand"),
+    ("creatures for God' sake", "creatures for God's sake"),
 ])
 BODY_CORRECTIONS.setdefault("a-divine-and-supernatural-light", {}).setdefault("replacements", []).extend([
     # "concerned" — "concemed" is the classic rn->m scan error; not a word.
