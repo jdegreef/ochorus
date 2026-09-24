@@ -966,16 +966,140 @@ class GutenbergDisplayLineTests(SimpleTestCase):
         self.assertNotIn("Self-Denial", body)
         self.assertEqual(body.count("<blockquote>"), 1)
 
-    def test_the_restored_english_blocks_are_what_the_importer_emits(self):
-        """The `restored_blocks` guard is a string match on the block, so a
-        re-import has to produce exactly what the correction inserted — or the
-        body carries both. The test above pins the importer's side."""
-        from library.corrections import BODY_CORRECTIONS
+    def test_furniture_divs_are_dropped_not_kept_as_lines(self):
+        """A display line loses the div's class, so the sanitizer's drop-by-class
+        policy has to be asked about the div first — or a page number or a
+        stranded footnote ships as a paragraph."""
+        from library.management.commands.import_sermons import extract_gutenberg_section
 
-        restored = {block for _, block in BODY_CORRECTIONS["blessed-adversity"]["restored_blocks"]}
-        for block in self.ADVERSITY_LINES:
-            with self.subTest(block=block):
-                self.assertIn(block, restored)
+        page = (
+            "<html><body><h3>Sermon</h3><p>Body.</p>"
+            '<div class="footnote">[1] A note text.</div>'
+            '<div class="pagenum">[12]</div>'
+            "<h3>Next</h3></body></html>"
+        )
+        self.assertEqual(extract_gutenberg_section(page, "Sermon"), "<p>Body.</p>")
+
+    def test_a_line_break_separates_heading_words(self):
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = (
+            "<html><body><h3>Sermon</h3><p>Body.</p>"
+            "<div>THE NEGATIVE<br>CONDITIONS</div>"
+            "<h3>Next</h3></body></html>"
+        )
+        self.assertIn("<h3>THE NEGATIVE CONDITIONS</h3>", extract_gutenberg_section(page, "Sermon"))
+
+
+class GutenbergRestoredBlocksMatchImporterTests(SimpleTestCase):
+    """Every English `restored_blocks` line for #23438 is what the importer emits.
+
+    The guard in `restore_dropped_blocks` is a string match on the block, so a
+    re-import must produce the correction's block byte for byte — or the body
+    carries both. EDITION is every display line of the six studies, verbatim
+    from PG 23438, with the prose paragraphs between them stubbed out.
+    """
+
+    EDITION = """<html><body>
+<div class="c1">
+<h3> <a id="BProsp">Blessed Prosperity</a></h3>
+</div>
+<div class="c1">Meditations On The First Psalm.</div>
+<div class="c1"><strong><small>INTRODUCTORY.</small></strong></div>
+<p>Paragraph 1.</p>
+<div class="c1"><small>THE NEGATIVE CONDITIONS OF BLESSING</small></div>
+<div class="c1"><em>"Blessed is the man that walketh not in the counsel of the ungodly."</em></div>
+<p>Paragraph 2.</p>
+<div class="c1"><em>Standeth not in the way of sinners.</em></div>
+<p>Paragraph 3.</p>
+<div class="c1"><em>"Nor sitteth in the seat of the scornful."</em></div>
+<p>Paragraph 4.</p>
+<div class="c1"><small>THE POSITIVE CONDITIONS OF BLESSING.</small></div>
+<p>Paragraph 5.</p>
+<div class="c1"><small>THE OUTCOME IN BLESSING.</small></div>
+<p>Paragraph 6.</p>
+<div class="c1"><small>THE CONTRAST.</small></div>
+<div class="c1"><em>"The ungodly are not so."</em></div>
+<p>Paragraph 7.</p>
+<div class="c1">
+<h3> <a id="badverse">Blessed Adversity.</a></h3>
+</div>
+<div class="c1"><small><strong>INTRODUCTORY.</strong></small></div>
+<p>Paragraph 1.</p>
+<div class="c1"><small>GOD'S TESTIMONY AND CHALLENGE.</small></div>
+<div class="c1"><em>"The L<small>ORD</small> gave, and the L<small>ORD</small> hath taken away; blessed be the Name of the L<small>ORD</small></em>."--Job i.21.</div>
+<p>Paragraph 2.</p>
+<div class="c1"><small>THE UNSEEN HEDGE</small>.</div>
+<p>Paragraph 3.</p>
+<div class="c1"><small>THE TESTING OF JOB</small></div>
+<p>Paragraph 4.</p>
+<div class="c1"><small>SATAN'S MALIGNITY.</small></div>
+<p>Paragraph 5.</p>
+<div class="c1"><small>GRACE SUFFICIENT.</small></div>
+<p>Paragraph 6.</p>
+<div class="c1"><small>DEEPER TRIALS.</small></div>
+<p>Paragraph 7.</p>
+<div class="c1"><small>THE LOVING-KINDNESS OF THE LORD.</small></div>
+<p>Paragraph 8.</p>
+<div class="c1">
+<h3> <a id="Coming">Coming to the King.</a></h3>
+</div>
+<div class="c1"><em>"And King Solomon gave unto the Queen of Sheba all her desire, whatsoever she asked, beside that which Solomon gave her of his royal bounty."</em>--1 Kings x. 13.</div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="Full">A Full Reward.</a></h3>
+</div>
+<div class="c1"><em>"It hath fully been shewed me, all that thou hast done ... and how thou hast left they father and thy mother, and the land of thy nativity, and art come unto a people which thou knewest not heretofore. The L<small>ORD</small> recompense thy work, and a full reward be given thee of the L<small>ORD</small> G<small>OD</small> of Israel, under whose wings thou art come to trust" (Ruth ii. 11, 12).</em></div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="shepherd">Under the Shepherd's Care.</a></h3>
+</div>
+<div class="c1"><strong><small>A NEW YEAR'S ADDRESS.</small></strong></div>
+<div class="c1"><em>"For ye were as sheep going astray; but are now returned unto the Shepherd and Bishop of your souls."</em>--1 Peter ii. 25.</div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="denial">Self-Denial versus Self-Assertion.</a></h3>
+</div>
+<div class="c1"><em>"If any man will come after Me, let him deny himself, and take up his cross daily, and follow Me.</em>--L<small>UKE</small> ix. 23.</div>
+<p>Paragraph 1.</p>
+<div class="c1">
+<h3> <a id="Sufficiency">All Sufficiency</a></h3>
+</div>
+<div class="c1"><em>"The L<small>ORD</small> G<small>OD</small> is a Sun and Shield:<br>
+the L<small>ORD</small> will give grace and glory:<br>
+"No good thing will He withhold from them<br>
+that walk uprightly."<br></em>--P<small>SALM LXXXIV</small>. 11.</div>
+<p>Paragraph 1.</p>
+</body></html>"""
+
+    SLUGS = (
+        "blessed-prosperity",
+        "blessed-adversity",
+        "a-full-reward",
+        "self-denial-versus-self-assertion",
+        "all-sufficiency",
+        "under-the-shepherds-care",
+    )
+
+    def test_every_restored_english_block_is_emitted(self):
+        import json
+
+        from library.content_fixtures import SERMONS_DIR
+        from library.corrections import BODY_CORRECTIONS
+        from library.management.commands.import_sermons import extract_gutenberg_section
+        from library.sermon_catalog import SERMONS
+
+        sections = {e.slug: e.section for e in SERMONS}
+        for slug in self.SLUGS:
+            english = json.loads((SERMONS_DIR / f"{slug}.en.json").read_text())[0]["fields"]["body_html"]
+            blocks = [
+                block for _, block in BODY_CORRECTIONS[slug]["restored_blocks"] if block in english
+            ]
+            self.assertTrue(blocks)
+            extracted = extract_gutenberg_section(self.EDITION, sections[slug])
+            for block in blocks:
+                with self.subTest(slug=slug, block=block):
+                    self.assertIn(block, extracted)
 
 
 class CcelAbortOnFetchFailureTests(TestCase):

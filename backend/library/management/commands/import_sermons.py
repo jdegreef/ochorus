@@ -60,6 +60,7 @@ _HEADINGS = ["h1", "h2", "h3", "h4"]
 # wraps each study's own <h3> in one, and those must not be read as content.
 _BLOCKS = [*_HEADINGS, "p", "blockquote", "div", "table", "ul", "ol"]
 _QUOTES = ("“", '"', "‘", "'")
+_BR = re.compile(r"<br\s*/?>", re.I)
 
 
 def _display_line(div) -> str:
@@ -76,11 +77,17 @@ def _display_line(div) -> str:
     imported before this existed, so a re-import leaves those corrections
     nothing to do. Returns "" for a wrapper, for Gutenberg's own
     `pg_body_wrapper` furniture (page numbers, spacers, PG 57109's "9,000 in
-    print") and for an empty line.
+    print"), for anything the sanitizer would drop, and for an empty line.
     """
     if "pg_body_wrapper" in (div.get("class") or []) or div.find(_BLOCKS) is not None:
         return ""
-    text = " ".join(div.get_text().split())
+    # The block built below carries no class, so the sanitizer would no longer
+    # recognise furniture it drops by class (`[class*=pagenum]`, a footnote):
+    # ask it about the div itself while the div still has one.
+    if not clean_fragment(str(div)).strip():
+        return ""
+    # A <br> separates words: "THE NEGATIVE<br>CONDITIONS" is two of them.
+    text = " ".join(soup(_BR.sub(" ", div.decode_contents())).get_text().split())
     if not text:
         return ""
     if text.isupper() and not text.startswith(_QUOTES):
