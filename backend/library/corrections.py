@@ -5515,11 +5515,12 @@ _REVIVAL_PAGES_IN_PROSE = (
 
 
 def _unpage(defective: str) -> str:
-    """Drop the one page number from a `_REVIVAL_PAGES_IN_PROSE` string."""
+    """Drop the one page number from a declared _*_PAGES_IN_PROSE string."""
     # One space survives if the number had one on either side: "the 10excitability"
-    # -> "the excitability", "</p>414 <p>" -> "</p> <p>", "</i>387<i>" -> "</i><i>".
+    # -> "the excitability", "</p>414 <p>" -> "</p> <p>", "</i>387<i>" -> "</i><i>",
+    # "had 36 been" -> "had been", "word.”—66And" -> "word.”—And".
     return _re.sub(
-        r"(\s?)(?<=[\s>])\d{1,3}(\s?)(?=[A-Za-z<])",
+        r"(\s?)(?<=[\s>—])\d{1,3}(\s?)(?=[^\s\d])",
         lambda m: " " if m[1] or m[2] else "",
         defective,
         count=1,
@@ -5529,4 +5530,49 @@ def _unpage(defective: str) -> str:
 BODY_CORRECTIONS.setdefault("revival-lectures", {}).setdefault("replacements", []).extend(
     [(f"</p>{page}<p>", "</p> <p>") for page in _REVIVAL_PAGES_BETWEEN_BLOCKS]
     + [(defective, _unpage(defective)) for defective in _REVIVAL_PAGES_IN_PROSE]
+)
+
+# Baxter, A Call to the Unconverted — the same OCR residue as revival-lectures
+# above, 124 page numbers (pp. 30-156, chapters 3-6): fused ("the 50world"),
+# spaced mid-sentence ("had 36 been"), or bare between blocks ("</p>32<p>").
+# Proved by the same count up the book; pp. 60, 104 and 123 are absent from the
+# OCR. Left alone: the ordinals "the 18th of Ezekiel" and "from the 20th to the
+# end", and chapter 2's run of verse numbers, which also counts up but is
+# scripture citation ("Isa. lv. 1, 2, 3."). The es and pt editions never carried
+# the numbers, so this bites the English only.
+_CALL_PAGES_BETWEEN_BLOCKS = (
+    32, 53, 65, 75, 76, 81, 87, 91, 99, 110, 114, 138,
+)
+_CALL_PAGES_IN_PROSE = (
+    "the 30work", "if 31we", "law. 33Few", "please 34 God.”—“Now", "believe. 35For",
+    "had 36 been", "and 37 sustenation,", "them, 38if", "guilty 39 of",
+    "forgetfulness 40 or", "not 41 wicked,", "disposition 42of", "amiss: 43 and",
+    "rebels, 44on", "so 45neither", "health, 46and", "religion, 47 and",
+    "religious, 48yet", "must 49needs", "the 50world,", "trade 51that", "and 52set",
+    "will 54shortly", "to 55seeing;", "condemned? 56 It", "praise? 57And",
+    "many 58thousands,", "to 59 betake", "magnify 61his", "neither 62of", "not 63 to",
+    "unto 64himself", "word.”—66And,", "save 67none", "another 68should", "of 69its",
+    "man, 70I", "manifesting 71 his", "life, 72which", "in 73meat,", "thou 74did",
+    "God: 77He", "and 78persuade", "they 79will", "disobey 80God,", "well, 82and",
+    "them, 83what", "renounce 84the", "his 85displeasure", "But 86Christ", "yet 88art",
+    "turn: 89 He", "that 90will", "in 92 rioting", "How 93many", "of 94Christianity,",
+    "where 95thou", "it? 96It", "know 97my", "to 98doubt", "myself.—100I",
+    "ungodly, 101and", "God 102saith,", "confess 103 that", "any 105reason",
+    "for 106the", "durst 107not", "that 108you", "but 109wide", "foolishness 111 with",
+    "God 112 to", "praise 113 the", "not 115turn,", "reason 116that", "rather 117 die",
+    "in 118your", "that 119 hath", "excellency 120 of", "thoughts 121of", "what 122is",
+    "He 124hath", "delay?” 125Life", "forced 126you", "stand 127over", "5. 128“Hear,",
+    "you 129put", "upon 130you,", "themselves, 131that", "darkness. 132 What!",
+    "died 133for", "the 134Lord;", "assign 135each", "and 136therefore", "your 137own",
+    "to 139 sin)", "you, 140and", "most 141 highly", "strait; 142 and", "all 143their",
+    "not 144hear", "do 145 that", "you 146had", "heaven, 147 if",
+    "habitually 148willing,", "it, 149(though", "little 150before", "work 151against",
+    "everlasting 152 glory,", "before 153 God,", "of 154earnest", "over 155 your",
+    "are 156reading,",
+)
+
+
+BODY_CORRECTIONS.setdefault("a-call-to-the-unconverted", {}).setdefault("replacements", []).extend(
+    [(f"</p>{page}<p>", "</p> <p>") for page in _CALL_PAGES_BETWEEN_BLOCKS]
+    + [(defective, _unpage(defective)) for defective in _CALL_PAGES_IN_PROSE]
 )
