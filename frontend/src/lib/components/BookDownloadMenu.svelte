@@ -21,6 +21,7 @@
 	 */
 	let { book }: { book: BookDetail } = $props();
 	const t = i18n.t;
+	const menuId = $props.id();
 
 	const savedOffline = $derived(offlineBooks.has(book.slug, book.language));
 	const downloading = $derived(
@@ -37,7 +38,7 @@
 	<button
 		type="button"
 		class="btn btn-sm btn-ghost"
-		aria-haspopup="menu"
+		aria-controls={open ? menuId : undefined}
 		aria-expanded={open}
 		onclick={() => (open = !open)}
 	>
@@ -45,9 +46,12 @@
 		<span>{downloading ? `${pct}%` : t('book.download')}</span>
 	</button>
 	{#if open}
-		<div class="account-menu" role="menu" aria-label={t('book.download')}>
+		<!-- A labelled group, not a menu role: that promises arrow-key
+		     navigation between menu items, and these are plain links and buttons
+		     reached with Tab — the same treatment as AccountMenu/QuickSettings. -->
+		<div id={menuId} class="account-menu" role="group" aria-label={t('book.download')}>
 			{#if downloading}
-				<span class="account-item dl-item text-muted" role="menuitem" aria-disabled="true">
+				<span class="account-item dl-item text-muted">
 					<Icon name="download" size={15} />
 					{t('offline.downloading')} {pct}%
 				</span>
@@ -55,7 +59,6 @@
 				<button
 					type="button"
 					class="account-item dl-item"
-					role="menuitem"
 					title={t('offline.remove')}
 					onclick={() => offlineBooks.remove(book.slug, book.language)}
 				>
@@ -67,7 +70,6 @@
 				<button
 					type="button"
 					class="account-item dl-item"
-					role="menuitem"
 					disabled={!pwa.online}
 					title={pwa.online ? undefined : t('offline.needsConnection')}
 					onclick={() => {
@@ -83,7 +85,6 @@
 				<a
 					href={`${API_BASE_URL}${book.epub_url}`}
 					class="account-item dl-item"
-					role="menuitem"
 					download
 					rel="nofollow"
 					onclick={() => (open = false)}
@@ -97,7 +98,6 @@
 				<a
 					href={book.pdf_url}
 					class="account-item dl-item"
-					role="menuitem"
 					download
 					onclick={() => (open = false)}
 				>
