@@ -75,12 +75,14 @@ book preserves its `sort_order`.
    diff after; restore any regressed book from its `fixtures/content/books/<slug>.<lang>.json` (delete
    its chapters, recreate from the fixture entries).
 
-6. **Regenerate the fixture and commit:**
-   ```bash
-   uv run python scripts/regen_fixture.py   # pinned 6-model natural-key regen; NEVER bare `dumpdata library`
-   ```
-   If it aborts with `N unexpected new field(s)`, that's not your import — see
-   the fixture-regen entry under Known failure modes.
+6. **Write the book's fixture file and commit.** `regen_fixture.py` does NOT
+   pick up a new import (it round-trips the committed fixtures and never reads
+   your dev DB) — serialize the book to `books/<slug>.<lang>.json` yourself; see
+   "`regen_fixture.py` will NOT pick your new book up" below. NEVER bare
+   `dumpdata library`. A regen afterwards is an optional check: it is
+   byte-stable, so on a healthy fixture it leaves `git status` clean. If it
+   aborts with `N unexpected new field(s)`, that's not your import — see the
+   fixture-regen entry under Known failure modes.
 
 7. **Ship it to prod (two gotchas — see DEPLOYMENT.md).** A book-data change
    doesn't reach the live site by pushing alone:
@@ -1015,11 +1017,18 @@ dropped; chapters under 120 words are dropped as stubs.
   dumpdata now materializes it on every older row while the committed fixtures
   lack it. The abort names the culprit as `model.field×count`. Decide per field:
   a semantically-inert default (optional text, a flag) goes in the script's
-  `DEFAULTED_OK` as a `(model, field)` pair; anything load-bearing should be
-  excluded from the dump instead. Then re-run — the first regen after the fix
-  legitimately rewrites every affected file, so diff-check that the only change
-  is the new key. (Fields declared `serialize=False`, like `search_vector`,
-  never dump and are never the cause.) *(Sermon.summary, 61 sermons, 2026-07)*
+  `DEFAULTED_OK` as a `(model, field)` pair; a default that would be WRONG in a
+  fixture (e.g. a derived `word_count` that loaddata leaves at 0, which
+  `tests_fixture` rejects) goes in `DROPPED_IF_ABSENT`. Then re-run — the regen
+  is byte-stable, so it writes neither kind into rows that lacked them and
+  should leave `git status` clean; only `--normalize` materializes the inert
+  defaults across the corpus. (Fields declared `serialize=False`, like
+  `search_vector`, never dump and are never the cause.) *(Sermon.summary, 61
+  sermons, 2026-07; ten author/book/sermon fields + Article, 2026-09)*
+- **`regen_fixture.py` aborts with `ROW COUNT CHANGED`** — a content model is
+  missing from the script's `MODELS` (articles were, until #3135). Add it there
+  with an `identity()` branch and a `split_layout` destination;
+  `tests_fixture.test_regen_dumps_every_content_model` now catches this in CI.
 - **THE READER PRINTS THE CHAPTER NUMBER ITSELF, so any numbering left in a
   stored title renders twice.** `TocDrawer.svelte`, `SearchDrawer.svelte` and
   `notebook/+page.svelte` all render `{ch.order}. {ch.title}`, so a title of
@@ -1891,12 +1900,11 @@ Do NOT `json.loads` → `pop('pk')` → `json.dumps(indent=1)`: re-dumping inden
 the top-level list items and `dumpdata` does not, so that path commits a file
 that differs from every other fixture (the reason the old snippet then ran a
 full regen). `serializers.serialize` with natural keys already omits `pk` and
-formats it right — one file, no regen. **Prefer this over `regen_fixture.py` for
-a single new book**: the full regen reformats the ~43 drifted translation
-fixtures too, burying a one-file addition in a corpus-wide diff. (Reserve the
-full regen for the deliberate corpus-regen job; if it aborts with `N unexpected
-new field(s)`, that is pre-existing field drift, not your import — see that
-entry above.) *(verified byte-identical to committed fixtures, 2026-09)*
+formats it right — one file, no regen. (The regen is byte-stable since #3161,
+so running it afterwards is a harmless check that should leave `git status`
+clean; `--normalize` is the deliberate corpus-wide reformat. If it aborts with
+`N unexpected new field(s)`, that is pre-existing field drift, not your import —
+see that entry above.) *(verified byte-identical to committed fixtures, 2026-09)*
 
 **Write the fixture file BEFORE `npm run og:covers`.** The og twin generator
 enumerates books from the COMMITTED `content/books/*.json` files, not the DB, so

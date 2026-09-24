@@ -82,7 +82,12 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   sessions cannot collide. New authors are appended to `authors.json`.
 - CI (`tests_fixture`) rejects pk rows, duplicate identities, dangling refs,
   and files whose name/contents disagree; the seeds hard-fail on old-format
-  rows. Full regens only via `backend/scripts/regen_fixture.py`.
+  rows. Full regens only via `backend/scripts/regen_fixture.py` — a
+  fixture→fixture round trip (it never reads your dev DB, so it can't ship a
+  new work; write the file). It is **byte-stable**: on a healthy fixture it
+  changes nothing, so any diff it leaves is real. `--normalize` does the old
+  full reformat (~every file). Adding a content model means adding it to the
+  script's `MODELS` too — `tests_fixture` fails until you do.
 - Because seeds re-upsert every deploy, any field a workflow owns after creation
   (review state, hand-edits) must be **create-only** in the seed — else a deploy
   reverts it. See `backend/CLAUDE.md`.
