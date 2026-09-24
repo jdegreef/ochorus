@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dismissable } from '$lib/actions/dismissable';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
@@ -54,7 +55,6 @@
 	);
 
 	let open = $state(false);
-	let root = $state<HTMLDivElement>();
 	let menu = $state<HTMLDivElement>();
 	// The menu hangs from the button's end edge; in a shelf's first column on a
 	// phone that runs it off the start of the screen. Measure once it's drawn
@@ -71,15 +71,6 @@
 		open = !open;
 	}
 </script>
-
-<svelte:window
-	onclick={(e) => {
-		if (open && root && !root.contains(e.target as Node)) open = false;
-	}}
-	onkeydown={(e) => {
-		if (open && e.key === 'Escape') open = false;
-	}}
-/>
 
 {#if item}
 	{@const book = item.book}
@@ -116,7 +107,9 @@
 					</span>
 				{/if}
 			</a>
-			<div class="absolute end-2.5 top-3.5 {open ? 'z-30' : 'z-10'}" bind:this={root}>
+			<div class="absolute end-2.5 top-3.5 {open ? 'z-30' : 'z-10'}"
+				use:dismissable={{ open, onDismiss: () => (open = false) }}
+			>
 				<button
 					type="button"
 					onclick={toggle}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dismissable } from '$lib/actions/dismissable';
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -37,7 +38,6 @@
 	// Matches Take Root's account control: a round initials avatar that opens a
 	// small dropdown (email + account + sign out); a soft button when signed out.
 	let open = $state(false);
-	let root = $state<HTMLDivElement>();
 
 	const initials = $derived(
 		((auth.displayName || auth.user?.email)?.[0] ?? '?').toUpperCase()
@@ -46,22 +46,11 @@
 	// Preserve where the user was, so sign-in returns them there. The locale
 	// handling is subtle enough to be worth testing — see $lib/loginHref.
 	const loginHref = $derived(buildLoginHref($page.url.pathname, $page.url.search));
-
-	function onWindowClick(e: MouseEvent) {
-		if (open && root && !root.contains(e.target as Node)) open = false;
-	}
 </script>
-
-<svelte:window
-	onclick={onWindowClick}
-	onkeydown={(e) => {
-		if (e.key === 'Escape') open = false;
-	}}
-/>
 
 {#if auth.enabled}
 	{#if auth.user}
-		<div class="account" bind:this={root}>
+		<div class="account" use:dismissable={{ open, onDismiss: () => (open = false) }}>
 			<button
 				class="account-btn"
 				aria-expanded={open}

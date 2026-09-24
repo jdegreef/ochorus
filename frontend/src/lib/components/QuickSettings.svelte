@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dismissable } from '$lib/actions/dismissable';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { theme } from '$lib/theme.svelte';
@@ -13,7 +14,6 @@
 	// surface (`.page-col`) resizes together and the choice persists.
 	const t = i18n.t;
 	let open = $state(false);
-	let root = $state<HTMLDivElement>();
 
 	// A chapter and a sermon size their column from `--reading-measure`, which
 	// their own `A a` popover owns — `.page-col` isn't on those pages at all. The
@@ -24,20 +24,9 @@
 	const inReader = $derived(isReaderRoute($page.route.id));
 
 	onMount(() => pageWidth.init());
-
-	function onWindowClick(e: MouseEvent) {
-		if (open && root && !root.contains(e.target as Node)) open = false;
-	}
 </script>
 
-<svelte:window
-	onclick={onWindowClick}
-	onkeydown={(e) => {
-		if (e.key === 'Escape') open = false;
-	}}
-/>
-
-<div class="prefs" bind:this={root}>
+<div class="prefs" use:dismissable={{ open, onDismiss: () => (open = false) }}>
 	<!-- aria-controls only while the panel exists: it is rendered by {#if open},
 	     and an IDREF pointing at nothing is worse than none. aria-expanded stays
 	     on both states — that IS the closed state's information. -->

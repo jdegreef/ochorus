@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dismissable } from '$lib/actions/dismissable';
 	import { tick } from 'svelte';
 	import { packRows, spineSize, type ShelfBook as ShelfBookItem } from '$lib/bookshelf';
 	import { i18n } from '$lib/i18n.svelte';
@@ -65,7 +66,6 @@
 	let menuOpen = $state(false);
 	let renaming = $state(false);
 	let draftName = $state('');
-	let headerMenu = $state<HTMLDivElement>();
 	function startRename() {
 		draftName = title;
 		renaming = true;
@@ -124,13 +124,7 @@
 <svelte:window
 	onkeydown={(e) => {
 		if (selected && e.key === 'Escape') close();
-		if (e.key === 'Escape') {
-			menuOpen = false;
-			renaming = false;
-		}
-	}}
-	onclick={(e) => {
-		if (menuOpen && headerMenu && !headerMenu.contains(e.target as Node)) menuOpen = false;
+		if (e.key === 'Escape') renaming = false;
 	}}
 />
 
@@ -205,7 +199,10 @@
 			>{items.length}</span
 		>
 		{#if shelfId && !renaming}
-			<div class="relative self-center" bind:this={headerMenu}>
+			<div
+				class="relative self-center"
+				use:dismissable={{ open: menuOpen, onDismiss: () => (menuOpen = false) }}
+			>
 				<button
 					type="button"
 					class="flex h-8 w-8 items-center justify-center rounded-full text-muted hover:bg-surface-2 hover:text-accent"

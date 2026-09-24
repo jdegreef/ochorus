@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dismissable } from '$lib/actions/dismissable';
 	import { i18n } from '$lib/i18n.svelte';
 
 	/**
@@ -29,7 +30,6 @@
 
 	let open = $state(false);
 	let copied = $state(false);
-	let root = $state<HTMLElement>();
 
 	const enc = encodeURIComponent;
 	// Service names (WhatsApp, Facebook) are proper nouns — not localized, like
@@ -63,27 +63,9 @@
 		}
 	}
 
-	// While the menu is open, close it on an outside click or Escape. Both live
-	// on the document (gated by `open`), so the wrapper stays a plain element
-	// with no keyboard handler of its own.
-	$effect(() => {
-		if (!open) return;
-		const onClickAway = (e: MouseEvent) => {
-			if (root && !root.contains(e.target as Node)) open = false;
-		};
-		const onKey = (e: KeyboardEvent) => {
-			if (e.key === 'Escape') open = false;
-		};
-		document.addEventListener('click', onClickAway);
-		document.addEventListener('keydown', onKey);
-		return () => {
-			document.removeEventListener('click', onClickAway);
-			document.removeEventListener('keydown', onKey);
-		};
-	});
 </script>
 
-<div class="share-wrap" bind:this={root}>
+<div class="share-wrap" use:dismissable={{ open, onDismiss: () => (open = false) }}>
 	<button
 		type="button"
 		class="btn btn-ghost {showLabel ? 'btn-sm' : 'btn-icon'}"
