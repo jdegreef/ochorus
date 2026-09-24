@@ -1,0 +1,986 @@
+{
+ "kind": "book",
+ "slug": "the-gospel-of-healing",
+ "language": "es",
+ "job_issue": 2543,
+ "references": [
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Jude 3",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 15:25",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 10:11",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 105:37",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Psalm 103:2",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Psalm 103:12",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "2 Chronicles 16:12",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 8
+  },
+  {
+   "reference": "Mark 6:56",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Luke 9:11",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 14:12",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json",
+   "block_index": 15
+  },
+  {
+   "reference": "Acts 15:19",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "3 John 2",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ephesians 5:30",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 8:11",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "John 5:25",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Corinthians 4:10",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Corinthians 4:15",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "1 Corinthians 11:31",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "block_index": 34
+  },
+  {
+   "reference": "Hebrews 10:22",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 35
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 35
+  },
+  {
+   "reference": "Lamentations 3:40",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Lamentations 3:33",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:15",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "John 5:8",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Matthew 14:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Deuteronomy 32:11",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "3 John 1:2",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Mark 8:35",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 44
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 1:2",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Corinthians 10:11",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Acts 2:17",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Joel 2:31",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Acts 1:1",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "John 14:12",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Revelation 16:14",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Mark 16:17",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Hebrews 2:4",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Matthew 8:16",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 51
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 11:30",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "3 John 1:2",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "2 Thessalonians 1:11",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Psalm 34:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 5:13",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 54
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 54
+  },
+  {
+   "reference": "Romans 8:17",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "John 16:33",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "John 12:27",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "John 11:42",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "John 17:24",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 55:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 5:26",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Romans 3:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Genesis 18:14",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Acts 8:9",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Matthew 7:15",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Malachi 3:18",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Romans 5:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 9:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 70
+  },
+  {
+   "reference": "Matthew 8:3",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 1:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 5:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:56",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:57",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Hebrews 11:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "block_index": 168
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 20:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:62",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "John 6:63",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 17:20",
+   "status": "mined",
+   "source_file": "divine-healing.es.json"
+  },
+  {
+   "reference": "John 20:29",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Genesis 17:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 17:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 15:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "3 John 2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 4:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:5",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 11:36",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Job 42:5",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Job 3:25",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "Job 2:7",
+   "status": "mined",
+   "source_file": "divine-healing.es.json"
+  },
+  {
+   "reference": "Numbers 21:8",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "2 Kings 20:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:48",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:50",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "John 4:52",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "Luke 4:39",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Mark 1:41",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Mark 2:5",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "Mark 2:10",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "John 5:7",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "John 5:6",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "John 5:14",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 5:21",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "John 5:25",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "Matthew 12:13",
+   "status": "self_rendered",
+   "block_index": 125
+  },
+  {
+   "reference": "Proverbs 30:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 3:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 13:11",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Luke 13:12",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Luke 13:16",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Mark 10:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json",
+   "block_index": 145
+  },
+  {
+   "reference": "Mark 5:28",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Luke 8:48",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Matthew 9:27",
+   "status": "self_rendered",
+   "block_index": 140
+  },
+  {
+   "reference": "Matthew 9:28",
+   "status": "self_rendered",
+   "block_index": 140
+  },
+  {
+   "reference": "Matthew 9:29",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "block_index": 140
+  },
+  {
+   "reference": "Matthew 15:26",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Matthew 15:28",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Mark 9:22",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json",
+   "block_index": 145
+  },
+  {
+   "reference": "Mark 8:24",
+   "status": "self_rendered",
+   "block_index": 147
+  },
+  {
+   "reference": "Mark 8:25",
+   "status": "self_rendered",
+   "block_index": 147
+  },
+  {
+   "reference": "Luke 18:38",
+   "status": "self_rendered",
+   "block_index": 151
+  },
+  {
+   "reference": "Luke 18:41",
+   "status": "self_rendered",
+   "block_index": 151
+  },
+  {
+   "reference": "Matthew 21:21",
+   "status": "self_rendered",
+   "block_index": 153
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "self_rendered",
+   "block_index": 154
+  },
+  {
+   "reference": "Acts 3:16",
+   "status": "self_rendered",
+   "block_index": 158
+  },
+  {
+   "reference": "Acts 4:14",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "Acts 9:34",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "Acts 9:35",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "Acts 14:9",
+   "status": "self_rendered",
+   "block_index": 165
+  },
+  {
+   "reference": "Acts 14:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 14:20",
+   "status": "self_rendered",
+   "block_index": 167
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "self_rendered",
+   "block_index": 168
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "block_index": 168
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "John 6:57",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json",
+   "block_index": 175
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 10:38",
+   "status": "self_rendered",
+   "block_index": 192
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "self_rendered",
+   "block_index": 201
+  },
+  {
+   "reference": "Judges 14:6",
+   "status": "self_rendered",
+   "block_index": 202
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "self_rendered",
+   "block_index": 202
+  },
+  {
+   "reference": "1 Corinthians 6:15",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 202
+  },
+  {
+   "reference": "Ephesians 5:30",
+   "status": "self_rendered",
+   "block_index": 202
+  },
+  {
+   "reference": "John 21:7",
+   "status": "self_rendered",
+   "block_index": 183
+  },
+  {
+   "reference": "Psalm 103:2",
+   "status": "self_rendered",
+   "block_index": 214
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "divine-healing.es.json"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "self_rendered",
+   "block_index": 222
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 224
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 227
+  },
+  {
+   "reference": "1 John 4:2",
+   "status": "self_rendered",
+   "block_index": 233
+  },
+  {
+   "reference": "1 John 5:1",
+   "status": "self_rendered",
+   "block_index": 233
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 13:22",
+   "status": "self_rendered"
+  }
+ ]
+}

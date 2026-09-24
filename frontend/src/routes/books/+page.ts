@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #2543): Spanish book — the-gospel-of-healing, A. B.
+// Simpson's treatise on divine healing ("El Evangelio de la sanidad"), 7 chapters. Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title over the
+// shared painting ground and the reader page bakes the 7 chapters. Completes the es christ-our-healer
+// curated plan (see plans/+page.ts).
 // prerender refresh 2026-09-24 (queue job #1790): Spanish book — spurgeon-on-prayer, twelve of
 // Spurgeon's sermons on prayer plus an introduction ("Gran poder en la oración"), 13 chapters. Book
 // pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over

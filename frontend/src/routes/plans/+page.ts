@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24 (queue job #2543): Spanish plan ACTIVATED — christ-our-healer
+// ("Cristo, nuestro Sanador"), a CURATED_PLANS entry over the-fourfold-gospel, the-gospel-of-healing
+// and divine-healing. Shipping the-gospel-of-healing.es completes the es set, so seed_plans creates
+// the (christ-our-healer, es) row; /plans is prerendered per locale, so /es/plans re-crawls to bake
+// the new card with its translated title and description.
 // prerender refresh 2026-09-23: NEW English plan — daughters-of-the-king-book-3-30-days ("Daughters
 // of the King: 30 Days with God — Book 3"), a LAUNCH_PLANS entry over daughters-of-the-king-3 reading
 // chapters 2–31 (Day 1–30). English only. /plans re-crawls to bake the new card.
