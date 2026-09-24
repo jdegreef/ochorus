@@ -1,0 +1,2316 @@
+{
+  "kind": "book",
+  "slug": "school-of-prayer",
+  "language": "uk",
+  "job_issue": 3152,
+  "pull_request": null,
+  "note": [
+    "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror and substring-checked per chapter; U+201F normalised to “. Hebrews is cited as Євреїв, not Kulish's Жидів."
+  ],
+  "references": [
+    {
+      "reference": "John 15:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 0
+    },
+    {
+      "reference": "Philippians 3:12",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 0
+    },
+    {
+      "reference": "John 15:7a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 0
+    },
+    {
+      "reference": "John 15:7b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 0
+    },
+    {
+      "reference": "Revelation 5:10",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 2
+    },
+    {
+      "reference": "Hebrews 7:25",
+      "status": "self_rendered",
+      "block_index": 2,
+      "why": "Murray italicises 'He is able' and 'because' and argues from the causal link; Kulish's participle 'будучи вічно жив' has no 'because' to carry the emphasis, so rendered close to Kulish with 'бо'."
+    },
+    {
+      "reference": "1 Corinthians 2:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 4
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 9
+    },
+    {
+      "reference": "Romans 8:26",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 16
+    },
+    {
+      "reference": "Job 36:22",
+      "status": "self_rendered",
+      "block_index": 17,
+      "why": "Murray quotes the KJV wording 'Who teacheth like Him?'; Kulish reads 'де такий, як він, законодавець?', which cannot carry Murray's point about teaching."
+    },
+    {
+      "reference": "John 4:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 24
+    },
+    {
+      "reference": "John 4:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 24
+    },
+    {
+      "reference": "John 4:22a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 26
+    },
+    {
+      "reference": "John 4:22b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 26
+    },
+    {
+      "reference": "John 4:21",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 29
+    },
+    {
+      "reference": "Galatians 4:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 30
+    },
+    {
+      "reference": "John 1:14",
+      "status": "self_rendered",
+      "block_index": 32,
+      "why": "Murray joins two separated phrases of the verse into one predicate of Jesus; Kulish's parenthesis, genitive and neuter 'повне' (agreeing with Слово) cannot carry it."
+    },
+    {
+      "reference": "John 1:17",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 32
+    },
+    {
+      "reference": "John 14:6",
+      "status": "self_rendered",
+      "block_index": 32,
+      "why": "Murray omits 'the way'; Kulish's 'Я дорога й правда, й життє' is not contiguous without it."
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 34
+    },
+    {
+      "reference": "Matthew 6:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 37
+    },
+    {
+      "reference": "Matthew 6:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 43
+    },
+    {
+      "reference": "Psalms 103:13",
+      "status": "self_rendered",
+      "block_index": 41,
+      "why": "Murray re-persons the verse to 'so the Lord pitieth you'; Kulish wording kept up to 'Господь', ending adapted to 'над тобою'."
+    },
+    {
+      "reference": "Hebrews 11:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 42
+    },
+    {
+      "reference": "1 John 5:15",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 43
+    },
+    {
+      "reference": "Philippians 4:19",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 44
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 45
+    },
+    {
+      "reference": "Matthew 6:9a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 49
+    },
+    {
+      "reference": "Matthew 6:9b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 52
+    },
+    {
+      "reference": "Matthew 6:10a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 55
+    },
+    {
+      "reference": "Matthew 6:10b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 56
+    },
+    {
+      "reference": "Matthew 6:11",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 57
+    },
+    {
+      "reference": "Matthew 6:12",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 58
+    },
+    {
+      "reference": "Matthew 6:13a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 59
+    },
+    {
+      "reference": "Matthew 6:13b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 60
+    },
+    {
+      "reference": "Ezekiel 36:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 54
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 61
+    },
+    {
+      "reference": "Matthew 11:27",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 63
+    },
+    {
+      "reference": "John 17:26",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 63
+    },
+    {
+      "reference": "Matthew 6:10",
+      "status": "self_rendered",
+      "block_index": 63,
+      "why": "Murray's own condensation of the first petitions ('Our Father, Thy Name, Thy Kingdom, Thy Will') — built from Kulish's words of Matt 6:9-10 but not a contiguous quotation."
+    },
+    {
+      "reference": "Matthew 7:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 65
+    },
+    {
+      "reference": "Matthew 7:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 65
+    },
+    {
+      "reference": "James 4:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 66
+    },
+    {
+      "reference": "Matthew 7:7",
+      "status": "self_rendered",
+      "block_index": 67,
+      "why": "Murray's own summary of the three promises ('Ye shall receive, ye shall find, it shall be opened unto you'), blending Matt 7:7-8 and shifting 'given' to 'receive'; Kulish's wording cannot carry the three emphasised 'shall's."
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 76
+    },
+    {
+      "reference": "John 16:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 75
+    },
+    {
+      "reference": "Matthew 7:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 80
+    },
+    {
+      "reference": "Matthew 7:10",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 80
+    },
+    {
+      "reference": "Matthew 7:11",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 80
+    },
+    {
+      "reference": "Matthew 7:7a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 82
+    },
+    {
+      "reference": "Romans 8:14",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 83
+    },
+    {
+      "reference": "John 16:24b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 84
+    },
+    {
+      "reference": "Matthew 5:9b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 84
+    },
+    {
+      "reference": "Matthew 5:16",
+      "status": "self_rendered",
+      "block_index": 84,
+      "why": "Murray abridges the verse (omits 'see your good works'); Kulish's wording kept, the omitted clause dropped as in the English."
+    },
+    {
+      "reference": "Matthew 5:45a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 84
+    },
+    {
+      "reference": "Matthew 5:48",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 84
+    },
+    {
+      "reference": "Matthew 6:18",
+      "status": "self_rendered",
+      "block_index": 84,
+      "why": "Murray's 'before your Father which seeth in secret' needs the instrumental after 'перед'; Kulish's 'Отець твій, що бачить потайне' re-cased."
+    },
+    {
+      "reference": "Matthew 6:14",
+      "status": "self_rendered",
+      "block_index": 84,
+      "why": "Murray's paraphrase ('forgive even as your Father forgiveth you') of 6:14-15, not the verse's wording; rendered close to Kulish's 'Отець ваш небесний прощати ме вам'."
+    },
+    {
+      "reference": "Matthew 6:33",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 84
+    },
+    {
+      "reference": "Matthew 7:21",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 84
+    },
+    {
+      "reference": "Romans 8:15",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 87
+    },
+    {
+      "reference": "Matthew 6:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 87
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 88
+    },
+    {
+      "reference": "Luke 11:13",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 97
+    },
+    {
+      "reference": "Acts 1:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 99
+    },
+    {
+      "reference": "Galatians 4:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 100
+    },
+    {
+      "reference": "Isaiah 44:3",
+      "status": "self_rendered",
+      "block_index": 103,
+      "why": "Murray blends Isa 44:3 / Joel 2:28 with 'abundantly' (Titus 3:6), a word no single verse carries and on which he builds his point; rendered in Kulish register from Isa 44:3 'вилию духа мого' + 'щедро'."
+    },
+    {
+      "reference": "Ephesians 5:18",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 103
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 106
+    },
+    {
+      "reference": "Luke 11:5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 110
+    },
+    {
+      "reference": "Luke 11:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 110
+    },
+    {
+      "reference": "Luke 11:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 110
+    },
+    {
+      "reference": "Luke 11:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 110
+    },
+    {
+      "reference": "John 15:14",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 116
+    },
+    {
+      "reference": "James 2:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 116
+    },
+    {
+      "reference": "James 2:23",
+      "status": "self_rendered",
+      "block_index": 116,
+      "why": "Kulish wording verbatim, but Murray (like the English) omits the middle clause «й полїчено йому (те) за праведність», so the quotation is elided with an ellipsis and is not one contiguous substring; both halves are Kulish verbatim."
+    },
+    {
+      "reference": "Romans 8:16",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 116
+    },
+    {
+      "reference": "Romans 8:26",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 116
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 120
+    },
+    {
+      "reference": "Matthew 9:37",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 124
+    },
+    {
+      "reference": "Matthew 9:38",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 124
+    },
+    {
+      "reference": "Matthew 9:36",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 127
+    },
+    {
+      "reference": "Luke 11:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 131
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 133
+    },
+    {
+      "reference": "Mark 10:51",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 136
+    },
+    {
+      "reference": "Luke 18:41",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 136
+    },
+    {
+      "reference": "Mark 10:48",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 137
+    },
+    {
+      "reference": "Matthew 6:7b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 141
+    },
+    {
+      "reference": "Matthew 9:28",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 143
+    },
+    {
+      "reference": "Matthew 15:28",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 143
+    },
+    {
+      "reference": "John 15:7b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 144
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 145
+    },
+    {
+      "reference": "Mark 11:24",
+      "status": "self_rendered",
+      "block_index": 148,
+      "why": "Kulish verbatim except 'одержите' (future) → 'одержали': Murray's whole chapter turns on the past tense 'have received', which Kulish's future cannot carry."
+    },
+    {
+      "reference": "2 Chronicles 6:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 149
+    },
+    {
+      "reference": "Mark 9:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 150
+    },
+    {
+      "reference": "Matthew 17:20",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 150
+    },
+    {
+      "reference": "Matthew 21:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 150
+    },
+    {
+      "reference": "Mark 11:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 152
+    },
+    {
+      "reference": "1 John 5:15",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 153
+    },
+    {
+      "reference": "Hebrews 6:12",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 154
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 156
+    },
+    {
+      "reference": "Mark 11:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 159
+    },
+    {
+      "reference": "Mark 11:23a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 159
+    },
+    {
+      "reference": "Mark 11:23b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 159
+    },
+    {
+      "reference": "Mark 11:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 159
+    },
+    {
+      "reference": "Hebrews 11:27b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 163
+    },
+    {
+      "reference": "Genesis 15:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 167
+    },
+    {
+      "reference": "Genesis 15:5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 167
+    },
+    {
+      "reference": "Genesis 15:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 167
+    },
+    {
+      "reference": "Genesis 17:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 167
+    },
+    {
+      "reference": "Genesis 17:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 167
+    },
+    {
+      "reference": "Genesis 17:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 167
+    },
+    {
+      "reference": "2 Thessalonians 1:11",
+      "status": "self_rendered",
+      "block_index": 167,
+      "why": "Murray blends 2 Thess 1:11 with Eph 1:5 ('good pleasure of His will') and re-persons it into his own sentence; rendered in modern spelling in his prose."
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 170
+    },
+    {
+      "reference": "Matthew 17:19",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 174
+    },
+    {
+      "reference": "Matthew 17:20a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 174
+    },
+    {
+      "reference": "Matthew 17:20b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 174
+    },
+    {
+      "reference": "Matthew 17:21",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 174
+    },
+    {
+      "reference": "Matthew 17:16",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 175
+    },
+    {
+      "reference": "Luke 9:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 175
+    },
+    {
+      "reference": "2 Thessalonians 1:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 178
+    },
+    {
+      "reference": "Matthew 9:29",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 178
+    },
+    {
+      "reference": "Mark 11:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 180
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 185
+    },
+    {
+      "reference": "Mark 11:25",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 190
+    },
+    {
+      "reference": "Mark 11:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 191
+    },
+    {
+      "reference": "Mark 11:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 191
+    },
+    {
+      "reference": "Matthew 5:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 192
+    },
+    {
+      "reference": "Matthew 5:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 192
+    },
+    {
+      "reference": "Matthew 6:12",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 192
+    },
+    {
+      "reference": "Matthew 6:15",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 192
+    },
+    {
+      "reference": "Matthew 18:35",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 192
+    },
+    {
+      "reference": "Ephesians 4:32",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 193
+    },
+    {
+      "reference": "Colossians 3:13",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 193
+    },
+    {
+      "reference": "1 John 3:18",
+      "status": "self_rendered",
+      "block_index": 195,
+      "why": "Murray condenses 'not in word … but in deed and truth' to the positive 'Let us love in deed and truth'; Kulish's words kept"
+    },
+    {
+      "reference": "1 John 3:19",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 195
+    },
+    {
+      "reference": "1 John 3:21",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 195
+    },
+    {
+      "reference": "1 John 3:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 195
+    },
+    {
+      "reference": "James 4:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 197
+    },
+    {
+      "reference": "Matthew 5:7",
+      "status": "self_rendered",
+      "block_index": 197,
+      "why": "Murray's unmarked allusion drops 'Blessed … for they'; Kulish's words kept"
+    },
+    {
+      "reference": "Matthew 5:5",
+      "status": "self_rendered",
+      "block_index": 197,
+      "why": "Murray's unmarked allusion drops 'Blessed … for they'; Kulish's words kept"
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 198
+    },
+    {
+      "reference": "Matthew 18:19",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 201
+    },
+    {
+      "reference": "Matthew 18:20",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 201
+    },
+    {
+      "reference": "Matthew 6:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 203
+    },
+    {
+      "reference": "Proverbs 18:10",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 205
+    },
+    {
+      "reference": "Romans 15:30",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 208
+    },
+    {
+      "reference": "2 Corinthians 1:10b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 208
+    },
+    {
+      "reference": "2 Corinthians 1:11a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 208
+    },
+    {
+      "reference": "Ephesians 6:18a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 208
+    },
+    {
+      "reference": "Ephesians 6:18b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 208
+    },
+    {
+      "reference": "Ephesians 6:19a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 208
+    },
+    {
+      "reference": "Philippians 1:19b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 208
+    },
+    {
+      "reference": "Colossians 4:3a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 208
+    },
+    {
+      "reference": "2 Thessalonians 3:1a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 208
+    },
+    {
+      "reference": "2 Thessalonians 3:2a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 208
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 211
+    },
+    {
+      "reference": "Luke 18:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 215
+    },
+    {
+      "reference": "Luke 18:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 215
+    },
+    {
+      "reference": "Luke 18:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 215
+    },
+    {
+      "reference": "Luke 18:8a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 215
+    },
+    {
+      "reference": "Romans 4:18",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 217
+    },
+    {
+      "reference": "Hebrews 6:12",
+      "status": "self_rendered",
+      "block_index": 217,
+      "why": "Murray blends Heb 6:12 (Kulish: наслїдують обітницї вірою і довготерпіннєм) with 6:15 (одержав обітницю) and applies it to Abraham in the past singular; Kulish words kept, re-personed and reordered"
+    },
+    {
+      "reference": "James 5:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 220
+    },
+    {
+      "reference": "Galatians 2:20",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 228
+    },
+    {
+      "reference": "Luke 11:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 231
+    },
+    {
+      "reference": "John 11:41",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 235
+    },
+    {
+      "reference": "John 11:42",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 235
+    },
+    {
+      "reference": "Psalms 2:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 236
+    },
+    {
+      "reference": "Psalms 2:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 236
+    },
+    {
+      "reference": "1 Corinthians 12:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 237
+    },
+    {
+      "reference": "1 Corinthians 12:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 237
+    },
+    {
+      "reference": "Romans 11:33",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 237
+    },
+    {
+      "reference": "Colossians 1:16",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 241
+    },
+    {
+      "reference": "Colossians 1:17",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 241
+    },
+    {
+      "reference": "Ephesians 2:18",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 244
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 245
+    },
+    {
+      "reference": "Matthew 7:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 250
+    },
+    {
+      "reference": "Psalms 27:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 251
+    },
+    {
+      "reference": "Matthew 22:20",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 253
+    },
+    {
+      "reference": "Genesis 1:26",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 254
+    },
+    {
+      "reference": "John 15:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 261
+    },
+    {
+      "reference": "Luke 18:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 262
+    },
+    {
+      "reference": "Romans 8:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 262
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 263
+    },
+    {
+      "reference": "Psalms 8:4a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 264
+    },
+    {
+      "reference": "Psalms 8:4b",
+      "status": "self_rendered",
+      "block_index": 264,
+      "why": "Kulish's Ps 8:4 has only the first clause; Murray's KJV second clause ('the son of man, that Thou visitest him') has no Kulish wording, so rendered in Kulish's register."
+    },
+    {
+      "reference": "Psalms 8:5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 264
+    },
+    {
+      "reference": "Psalms 8:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 264
+    },
+    {
+      "reference": "Psalms 8:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 264
+    },
+    {
+      "reference": "John 14:12",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 267
+    },
+    {
+      "reference": "John 14:13",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 267
+    },
+    {
+      "reference": "John 14:12b",
+      "status": "self_rendered",
+      "block_index": 271,
+      "why": "Murray compresses and re-words 14:12 ('he shall do greater works, because I go to the Father'), dropping 'my'; rendered in Kulish's wording as closely as his condensed form allows."
+    },
+    {
+      "reference": "John 14:13a",
+      "status": "self_rendered",
+      "block_index": 269,
+      "why": "Murray splices the end of 14:12 onto 14:13 and interrupts it to comment on the word 'and'; built from Kulish's words but not a contiguous Kulish substring."
+    },
+    {
+      "reference": "John 14:14",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 273
+    },
+    {
+      "reference": "John 15:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 273
+    },
+    {
+      "reference": "John 16:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 273
+    },
+    {
+      "reference": "Matthew 13:12",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 274
+    },
+    {
+      "reference": "Luke 16:10",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 274
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 277
+    },
+    {
+      "reference": "John 14:12b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 282
+    },
+    {
+      "reference": "John 14:13",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 282
+    },
+    {
+      "reference": "John 8:50a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 284
+    },
+    {
+      "reference": "John 7:18",
+      "status": "self_rendered",
+      "block_index": 284,
+      "why": "Murray blends John 8:50 with 7:18 and puts it in the first person ('I seek the honour of Him that sent me'); Kulish 7:18 is third-person ('хто ж шукає слави Пославшого Його'), so re-personed."
+    },
+    {
+      "reference": "John 17:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 284
+    },
+    {
+      "reference": "John 17:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 284
+    },
+    {
+      "reference": "John 17:5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 284
+    },
+    {
+      "reference": "1 Corinthians 10:31",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 286
+    },
+    {
+      "reference": "John 14:14",
+      "status": "self_rendered",
+      "block_index": 287,
+      "why": "Murray quotes 'Whatsoever ye shall ask, I will do it', omitting 'in my Name'; Kulish words kept but elided, so not a contiguous substring."
+    },
+    {
+      "reference": "John 5:44",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 290
+    },
+    {
+      "reference": "John 15:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 299
+    },
+    {
+      "reference": "James 4:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 300
+    },
+    {
+      "reference": "John 15:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 307
+    },
+    {
+      "reference": "John 15:10",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 304
+    },
+    {
+      "reference": "John 14:15",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 306
+    },
+    {
+      "reference": "John 14:20",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 306
+    },
+    {
+      "reference": "Philippians 3:12",
+      "status": "self_rendered",
+      "block_index": 310,
+      "why": "Murray omits the middle clause ('either were already perfect'); Kulish wording kept with that clause dropped, so not one contiguous substring."
+    },
+    {
+      "reference": "Revelation 3:14",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 316
+    },
+    {
+      "reference": "1 Corinthians 2:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 316
+    },
+    {
+      "reference": "2 Samuel 14:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 318
+    },
+    {
+      "reference": "John 16:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 320
+    },
+    {
+      "reference": "John 16:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 320
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 312
+    },
+    {
+      "reference": "John 15:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 321
+    },
+    {
+      "reference": "2 Kings 19:16",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 322
+    },
+    {
+      "reference": "Isaiah 51:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 322
+    },
+    {
+      "reference": "Jeremiah 7:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 322
+    },
+    {
+      "reference": "John 15:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 323
+    },
+    {
+      "reference": "John 15:4",
+      "status": "self_rendered",
+      "block_index": 323,
+      "why": "Murray's own reformulation ('Ye in me and I in you') of John 15:4, not a verbatim verse; kept close to Kulish wording."
+    },
+    {
+      "reference": "John 15:7",
+      "status": "self_rendered",
+      "block_index": 323,
+      "why": "Murray's condensed reformulation of John 15:7 ('Ye in me and my words in you'); Kulish wording of 15:7 kept for the shared words."
+    },
+    {
+      "reference": "John 6:63",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 325
+    },
+    {
+      "reference": "2 Samuel 7:25",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 330
+    },
+    {
+      "reference": "2 Samuel 7:29",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 330
+    },
+    {
+      "reference": "Psalms 119:41",
+      "status": "self_rendered",
+      "block_index": 330,
+      "why": "Murray's 'According to Thy promise' (RV-style wording of a Ps 119 formula); Kulish has only 'по слову твому' / 'після слова твого', which is used for the next phrase, so this one is rendered in a Kulish-like register."
+    },
+    {
+      "reference": "Psalms 119:25",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 330
+    },
+    {
+      "reference": "Genesis 12:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 330
+    },
+    {
+      "reference": "1 John 2:17",
+      "status": "self_rendered",
+      "block_index": 332,
+      "why": "Murray paraphrases unquoted ('All that is of the world passeth away'), which differs from the verse ('the world passeth away, and the lust thereof'); rendered as prose."
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 333
+    },
+    {
+      "reference": "James 1:19",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 336
+    },
+    {
+      "reference": "Ecclesiastes 5:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 336
+    },
+    {
+      "reference": "Numbers 7:89",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 337
+    },
+    {
+      "reference": "John 15:16",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 338
+    },
+    {
+      "reference": "James 5:16b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 339
+    },
+    {
+      "reference": "John 15:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 340
+    },
+    {
+      "reference": "John 15:2",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 340
+    },
+    {
+      "reference": "John 15:5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 340
+    },
+    {
+      "reference": "1 John 3:18",
+      "status": "self_rendered",
+      "block_index": 341,
+      "why": "Murray abridges the verse to 'Let us love in deed and truth'; Kulish's 'не любім словом, анї язиком, а дїлом і правдою' re-cast as the positive exhortation Murray quotes, keeping Kulish words."
+    },
+    {
+      "reference": "1 John 3:19",
+      "status": "self_rendered",
+      "block_index": 341,
+      "why": "Murray skips the middle clause ('that we are of the truth') and uses future 'shall we assure'; built from Kulish's 'по сьому … перед Ним втихомирюєм серця наші' with the verb in future."
+    },
+    {
+      "reference": "1 John 3:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 341
+    },
+    {
+      "reference": "1 John 3:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 341
+    },
+    {
+      "reference": "Psalms 18:20",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 341
+    },
+    {
+      "reference": "Psalms 18:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 341
+    },
+    {
+      "reference": "Psalms 18:24a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 341
+    },
+    {
+      "reference": "John 15:10a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 341
+    },
+    {
+      "reference": "John 15:14",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 341
+    },
+    {
+      "reference": "John 14:15",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 343
+    },
+    {
+      "reference": "John 14:21a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 343
+    },
+    {
+      "reference": "John 14:23a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 343
+    },
+    {
+      "reference": "John 14:23b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 343
+    },
+    {
+      "reference": "John 15:15a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 346
+    },
+    {
+      "reference": "John 15:15b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 346
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 348
+    },
+    {
+      "reference": "John 14:13",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 352
+    },
+    {
+      "reference": "John 14:14",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 352
+    },
+    {
+      "reference": "John 15:16",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 352
+    },
+    {
+      "reference": "John 16:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 352
+    },
+    {
+      "reference": "John 16:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 352
+    },
+    {
+      "reference": "John 16:26",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 352
+    },
+    {
+      "reference": "Matthew 18:20",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 353
+    },
+    {
+      "reference": "John 15:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 353
+    },
+    {
+      "reference": "Colossians 3:17",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 361
+    },
+    {
+      "reference": "Micah 4:5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 361
+    },
+    {
+      "reference": "Acts 15:26",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 361
+    },
+    {
+      "reference": "Acts 21:13",
+      "status": "self_rendered",
+      "block_index": 361,
+      "why": "Murray quotes only 'ready to die for the Name of the Lord Jesus'; Kulish's 'не то звязаним бути готов, а й умерти в Єрусалимі за ймя Господа Ісуса' is not contiguous for that phrase, so it is built from Kulish's own words minus the intervening clause."
+    },
+    {
+      "reference": "John 14:26",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 367
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 364
+    },
+    {
+      "reference": "John 16:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 373
+    },
+    {
+      "reference": "John 16:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 373
+    },
+    {
+      "reference": "John 16:26",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 373
+    },
+    {
+      "reference": "John 16:27a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 373
+    },
+    {
+      "reference": "Jude 1:20",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 374
+    },
+    {
+      "reference": "Jude 1:21",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 374
+    },
+    {
+      "reference": "Matthew 17:21",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 376
+    },
+    {
+      "reference": "Luke 18:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 376
+    },
+    {
+      "reference": "John 15:15",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 376
+    },
+    {
+      "reference": "John 15:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 376
+    },
+    {
+      "reference": "John 7:39",
+      "status": "self_rendered",
+      "block_index": 379,
+      "why": "Kulish inserts '(на них)' and names Ісус; Murray's point rests on the literal 'the Holy Spirit was not yet, for Christ was not yet glorified', so the bracket is dropped and 'Christ' kept as he quotes it; otherwise Kulish's words."
+    },
+    {
+      "reference": "Ephesians 6:18",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 381
+    },
+    {
+      "reference": "Luke 22:32",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 390
+    },
+    {
+      "reference": "John 16:26",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 391
+    },
+    {
+      "reference": "Hebrews 7:25",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 392
+    },
+    {
+      "reference": "Romans 8:34",
+      "status": "self_rendered",
+      "block_index": 395,
+      "why": "Murray's KJV quote skips 'risen again' ('yea rather, that is risen again') and puts his italic 'yea more' before the session at God's right hand; Kulish's 'ба й воскрес' cannot carry that, so the opening is rendered and the rest kept in Kulish's words."
+    },
+    {
+      "reference": "Hebrews 7:25",
+      "status": "self_rendered",
+      "block_index": 395,
+      "why": "Murray italicises 'He is able' and 'because' and argues from the causal link; Kulish's participle 'будучи вічно жив' has no 'because', so rendered close to Kulish with 'бо' (same as earlier chapters)."
+    },
+    {
+      "reference": "1 Corinthians 12:21",
+      "status": "self_rendered",
+      "block_index": 396,
+      "why": "Murray quotes only the head/feet half with 'thee'; Kulish's verse splits 'Не може ж' from 'голова ногам' across the eye/hand clause, so the half-verse is reassembled from Kulish's words."
+    },
+    {
+      "reference": "John 17:22",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 396
+    },
+    {
+      "reference": "Colossians 3:4",
+      "status": "self_rendered",
+      "block_index": 397,
+      "why": "Murray re-persons 'Christ, who is your life' to 'Christ is our life'; Kulish has 'життє ваше'."
+    },
+    {
+      "reference": "Galatians 2:20",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 397
+    },
+    {
+      "reference": "Revelation 8:3a",
+      "status": "self_rendered",
+      "block_index": 397,
+      "why": "Kulish 'дано йому багато пахощів' with the word order shifted and ЙОМУ capitalised to keep Murray's emphatic 'UNTO HIM'."
+    },
+    {
+      "reference": "Revelation 8:3b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 397
+    },
+    {
+      "reference": "Psalms 2:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 398
+    },
+    {
+      "reference": "John 15:7a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 399
+    },
+    {
+      "reference": "John 15:7b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 399
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 402
+    },
+    {
+      "reference": "John 16:27",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 407
+    },
+    {
+      "reference": "John 14:16",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 407
+    },
+    {
+      "reference": "John 17:23",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 407
+    },
+    {
+      "reference": "Matthew 6:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 408
+    },
+    {
+      "reference": "John 16:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 408
+    },
+    {
+      "reference": "John 17:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 409
+    },
+    {
+      "reference": "John 17:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 412
+    },
+    {
+      "reference": "John 17:5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 412
+    },
+    {
+      "reference": "John 17:14",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 415
+    },
+    {
+      "reference": "John 17:11",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 415
+    },
+    {
+      "reference": "John 17:17",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 415
+    },
+    {
+      "reference": "John 15:7",
+      "status": "self_rendered",
+      "block_index": 415,
+      "why": "Murray condenses John 15:7 to 'What ye will shall be done unto you' and later italicises 'Whatsoever ye will'; built from Kulish's words (чого схочете … станеть ся) but not a contiguous Kulish substring."
+    },
+    {
+      "reference": "John 17:20",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 416
+    },
+    {
+      "reference": "John 17:26",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 416
+    },
+    {
+      "reference": "John 17:24a",
+      "status": "self_rendered",
+      "block_index": 418,
+      "why": "Murray extracts the two words 'Father, I will' from 17:24 as a watchword; Kulish's Отче … хочу are separated by a clause, so the pair is not a contiguous substring."
+    },
+    {
+      "reference": "Psalms 2:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 418
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 420
+    },
+    {
+      "reference": "Mark 14:36",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 424
+    },
+    {
+      "reference": "John 17:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 425
+    },
+    {
+      "reference": "John 17:24",
+      "status": "self_rendered",
+      "block_index": 425,
+      "why": "Murray condenses John 17:24 to 'Father, I will' (and grafts it onto 17:1); Kulish's 'Отче, которих дав єси менї, хочу' is not contiguous, so the two Kulish words are joined; used consistently as «Отче! Хочу» throughout."
+    },
+    {
+      "reference": "Matthew 26:39a",
+      "status": "self_rendered",
+      "block_index": 425,
+      "why": "Murray blends Matt 26:39 'My Father' with Mark 14:36 'not what I will'; built from the two Kulish phrases ('Отче мій' + 'не що я хочу')."
+    },
+    {
+      "reference": "John 14:13",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 426
+    },
+    {
+      "reference": "John 18:11",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 427
+    },
+    {
+      "reference": "Matthew 26:39",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 427
+    },
+    {
+      "reference": "Matthew 26:39b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 436
+    },
+    {
+      "reference": "Matthew 26:42",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 427
+    },
+    {
+      "reference": "John 15:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 428
+    },
+    {
+      "reference": "John 15:7a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 430
+    },
+    {
+      "reference": "John 15:7b",
+      "status": "self_rendered",
+      "block_index": 430,
+      "why": "Murray omits the middle clause of John 15:7 ('and my words abide in you'); Kulish's words kept but the verse is not contiguous."
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 434
+    },
+    {
+      "reference": "1 John 5:14",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 439
+    },
+    {
+      "reference": "1 John 5:15",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 439
+    },
+    {
+      "reference": "Mark 11:23b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 442
+    },
+    {
+      "reference": "1 John 5:16a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 443
+    },
+    {
+      "reference": "James 4:3a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 446
+    },
+    {
+      "reference": "Psalms 149:9b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 454
+    },
+    {
+      "reference": "1 Peter 2:5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 456
+    },
+    {
+      "reference": "Isaiah 61:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 457
+    },
+    {
+      "reference": "Isaiah 61:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 458
+    },
+    {
+      "reference": "Psalms 133:2",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 458
+    },
+    {
+      "reference": "Hebrews 7:25",
+      "status": "self_rendered",
+      "block_index": 458,
+      "why": "Murray alters the verse ('ever liveth to make intercession' → 'ever liveth to pray') and fits it into a relative clause; Kulish's participial 'будучи вічно жив, щоб посередникувати за них' cannot carry his wording."
+    },
+    {
+      "reference": "Hebrews 5:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 458
+    },
+    {
+      "reference": "Deuteronomy 10:8a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 458
+    },
+    {
+      "reference": "Deuteronomy 10:8b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 458
+    },
+    {
+      "reference": "Psalms 149:9",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 459
+    },
+    {
+      "reference": "Revelation 3:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 462
+    },
+    {
+      "reference": "Ephesians 5:27",
+      "status": "self_rendered",
+      "block_index": 463,
+      "why": "Murray's 'without spot or blemish' is not Eph 5:27's wording (closer to 1 Pet 1:19) and is fitted into his sentence; Kulish 'не має скази або пороку' cannot serve the phrase, so rendered with Kulish's vocabulary."
+    },
+    {
+      "reference": "2 Timothy 3:17",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 463
+    },
+    {
+      "reference": "James 1:4",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 463
+    },
+    {
+      "reference": "Hebrews 10:2",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 466
+    },
+    {
+      "reference": "John 15:7",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 468
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 469
+    },
+    {
+      "reference": "Revelation 1:5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 477
+    },
+    {
+      "reference": "Revelation 1:6a",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 477
+    },
+    {
+      "reference": "Revelation 1:6b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 477
+    },
+    {
+      "reference": "1 Thessalonians 5:16",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 478
+    },
+    {
+      "reference": "1 Thessalonians 5:17",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 478
+    },
+    {
+      "reference": "1 Thessalonians 5:18",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 478
+    },
+    {
+      "reference": "Luke 18:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 479
+    },
+    {
+      "reference": "Ephesians 6:18",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 480
+    },
+    {
+      "reference": "Ephesians 6:18b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 480
+    },
+    {
+      "reference": "Ephesians 6:19",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 480
+    },
+    {
+      "reference": "Colossians 4:2",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 480
+    },
+    {
+      "reference": "Colossians 4:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 480
+    },
+    {
+      "reference": "John 16:24",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 481
+    },
+    {
+      "reference": "Luke 11:1",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 485
+    },
+    {
+      "reference": "1 Timothy 4:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 492
+    },
+    {
+      "reference": "John 7:17",
+      "status": "self_rendered",
+      "block_index": 499,
+      "why": "Müller re-persons the verse into his own first-person vow («I will do His will»); Kulish has third person «хоче волю Його чинити»"
+    },
+    {
+      "reference": "John 7:17b",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 499
+    },
+    {
+      "reference": "Matthew 5:39",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 499
+    },
+    {
+      "reference": "Matthew 5:40",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 499
+    },
+    {
+      "reference": "Matthew 5:41",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 499
+    },
+    {
+      "reference": "Matthew 5:42",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 499
+    },
+    {
+      "reference": "Matthew 5:44",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 499
+    },
+    {
+      "reference": "Luke 12:33",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 499
+    },
+    {
+      "reference": "Romans 13:8",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 499
+    },
+    {
+      "reference": "Matthew 25:21",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 504
+    },
+    {
+      "reference": "Proverbs 3:5",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 525
+    },
+    {
+      "reference": "Proverbs 3:6",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 525
+    },
+    {
+      "reference": "Proverbs 11:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 525
+    },
+    {
+      "reference": "Proverbs 16:3",
+      "status": "mined",
+      "source_file": "Kulish (ukr1871) Bible text",
+      "block_index": 525
+    }
+  ]
+}
