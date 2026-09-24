@@ -83,12 +83,12 @@ three of them gives none of them one.
    EMPTY (`{}`) purely as its input — nothing reads them, nothing may be
    added to them (see `migrations/data/README.md`).
 
-   **One thing still conflicts across every book/sermon job: the prerender
-   refresh.** Two concurrent sermon jobs both touch
-   `frontend/src/routes/sermons/+page.ts` with a dated comment, so the second
-   PR sees a conflict on a line that carries no meaning. Resolve it by keeping
-   both dates (or just yours — the touch only has to change the file); never
-   let it make you think the content collided. It doesn't.
+   **There is no prerender-refresh touch any more, so nothing collides on
+   it.** Jobs used to add a dated comment to a shared `+page.ts`. On 2026-09-24
+   that line conflicted between nearly every pair of parallel PRs (#3219,
+   #3275, #3361, #3379, #3381), and it did nothing (see "Reaching the static
+   pages" below). If an older branch still carries one, resolve the conflict by
+   dropping yours. The content didn't collide.
 3. **Claim** the oldest queued job that this gate lets you take — skipping a
    blocked one is normal, and say on the issue you skipped why. **Re-read that
    issue's labels immediately before you write the claim**, not from the listing
@@ -125,10 +125,34 @@ three of them gives none of them one.
 5. **Execute** (see per-type recipes below). Work on branch
    `claude/ochorus-dev-261l92` reset from `origin/main`; commit; push
    (force-with-lease); open a **draft PR**; wait for CI; on green mark ready
-   and **squash-merge**; then do the standard **prerender-refresh follow-up**
-   (dated comment touch on `frontend/src/routes/books/+page.ts` or
-   `sermons/+page.ts`, second PR, merge on green) so the localized static
-   pages bake the new title.
+   and **squash-merge**. **No prerender-refresh touch and no follow-up PR.**
+   The content PR's own web build rebakes every localized page (see
+   "Reaching the static pages" below). Don't edit a `+page.ts` to trigger it.
+
+   **Reaching the static pages.** Every file a job ships (book/sermon/article
+   fixtures under `fixtures/content/`, `data/plan_translations/`,
+   `data/topic_translations/`, bio files under `migrations/data/`) is a root in
+   `backend/library/content_sources.json`. So:
+   - render.yaml's `ochorus-web` `buildFilter` rebuilds the reader for it with
+     no `frontend/` change (e.g. #3356, a fixture-only sermon, got its own web
+     build).
+   - The build can't bake the old API. `prebuild` runs
+     `frontend/scripts/await-api-release.mjs`, which holds the build until
+     `/api/health/`'s `content_version` equals this checkout's content digest.
+     That happens only after the new API image is live, i.e. after
+     `preDeployCommand: release` has seeded it. Checked 2026-09-24: web builds
+     take ~22 min and API deploys ~2.5 min. The one sampled build that started
+     before its API (`d2084235`, 4 min early) ran ~4 min longer than the
+     others, which is the gate waiting. `/sw/sermons/the-triumph-of-calvary/`,
+     `/sw/books/school-of-prayer/` and `/uk/books/men-and-women-who-gave-everything-2/`,
+     plus their `/sw|uk/` indexes, all baked the new content. None had a
+     follow-up touch.
+   - A build rebuilds EVERY route. Which `+page.ts` got touched never mattered,
+     so "books AND plans touches" was never two rebuilds.
+   After the deploy, check the raw HTML once (trailing-slash URL, `curl`). Only
+   if it's stale, add a marker per `frontend/prerender-refresh/README.md`: ONE
+   NEW uniquely named file, which can't conflict. Never add a line to a shared
+   file.
 6. **Close out:** comment the PR link(s) on the issue, remove `in-progress`,
    close the issue. Report to the user: what shipped, the caveats (scripture
    register, `ai_unreviewed`), and that live verification needs their browser
@@ -268,8 +292,8 @@ existing `<slug>.<lang>.json` in the same PR:
 - **Reaching prod:** `seed_books` appends the new chapters to each existing
   edition on deploy (since 2026-09-23; #3104 predated that and needed migration
   0162). The fixture change triggers the web build, but it can race the API
-  release — if the prerendered contents list is stale after deploy, force a
-  rebuild with a frontend touch. Verify by chapter count on the live API
+  release — if the prerendered contents list is stale after deploy, add a
+  marker file (`frontend/prerender-refresh/README.md`). Verify by chapter count on the live API
   (`/api/library/books/<slug>/?language=<lang>`), not the fixture.
 
 **Sermon** — same shape, smaller: single body instead of chapters; translate
@@ -302,7 +326,8 @@ duplicate the days**.
   `book_slug`s against `content/books/<slug>.<lang>.json`.
 - Verify: `seed_plans` locally creates/updates the `(slug, <lang>)` row with
   the translated prose; `manage.py test library.tests.PlanTests`.
-- Prerender refresh: `frontend/src/routes/plans/+page.ts`.
+- Prerender refresh: none. `data/plan_translations/` is a content root (see
+  "Reaching the static pages").
 
 **Bio** — a long-form author biography. `AuthorTranslation` is **not** a
 fixture model; translations ship as files, upserted (unreviewed) by
@@ -326,9 +351,8 @@ fixture model; translations ship as files, upserted (unreviewed) by
   don't blank anything.
 - Verify: `seed_author_translations` locally upserts the `(author, <lang>)`
   row with non-empty `bio_html`/`bio`; the author page renders the callouts.
-- Prerender refresh: the author pages are per-author prerendered — touch
-  `frontend/src/routes/authors/[slug]/+page.ts` so the localized static page
-  rebuilds with the translated bio.
+- Prerender refresh: none. `migrations/data/` is a content root, so the bio
+  PR's own web build rebakes the author page (see "Reaching the static pages").
 
 **Topic** — a topical shelf's label. Small job, but the stakes differ from every
 other type: **topic prose has NO English fallback**, so an untranslated shelf is
@@ -361,9 +385,8 @@ pinning full per-language coverage, so a partial block fails CI.
   `/api/library/topics/?language=<lang>` lists the shelf with its translated
   title, and `/api/library/topics/<slug>/?language=<lang>` returns 200 (it 404s
   while untranslated).
-- Prerender refresh: topic pages are per-topic prerendered — touch
-  `frontend/src/routes/topics/[slug]/+page.ts` so the localized static page
-  rebuilds.
+- Prerender refresh: none. `data/topic_translations/` is a content root (see
+  "Reaching the static pages").
 
 **Article** — a devotional / SEO article: original site writing, **authorless**,
 a single body. The simplest fixture type — like a sermon, but with no author, no
@@ -417,11 +440,11 @@ a single body. The simplest fixture type — like a sermon, but with no author, 
   `/api/library/articles/<slug>/?language=<lang>` returns 200 with
   `source_type` `ai_unreviewed`; `manage.py test library.tests_articles
   library.tests_fixture library.tests_sanitize`.
-- **Prerender refresh: none.** Unlike books/sermons, the localized `/xx/articles`
-  index is deliberately English-only for now (see `articles/+page.ts`), so there
-  is no per-locale shelf to rebake — the translation is reachable at its
-  localized detail URL `/<lang>/articles/<slug>/` and via its `available_languages`
-  hreflang alternates. (When the localized index ships, add its `+page.ts` here.)
+- **Prerender refresh: none**, as for every type. Also note that the localized
+  `/xx/articles` index is deliberately English-only for now (see
+  `articles/+page.ts`). The translation is reachable at its localized detail
+  URL `/<lang>/articles/<slug>/` and through its `available_languages` hreflang
+  alternates.
 
 ## Emit the review notes — every job, no exceptions
 
@@ -714,8 +737,8 @@ archaic spelling and period punctuation are the text, not defects in it.
   for the `(slug, lang)` row before translating anything. If it exists:
   validate the shipped rows (per-chapter `<p>` counts vs the English source,
   non-empty titles/`body_text`, `ai_unreviewed`), do whatever follow-ups are
-  missing (typically the prerender refresh — check whether any frontend
-  commit landed after the content merge), then close out normally citing the
+  missing (typically the notes file; the prerender refresh is no longer a
+  follow-up), then close out normally citing the
   existing PR. Don't re-translate; the fixture guard would reject it anyway.
 - **A job can be shipped by another session WHILE you are running it, and a
   rebase will absorb it silently** (job #728, 2026-08-05). The double-ship guard
@@ -754,11 +777,9 @@ archaic spelling and period punctuation are the text, not defects in it.
   check whether its slug appears in `LAUNCH_PLANS` or `CURATED_PLANS`, and if it
   does, add the plan prose in the SAME PR.** Verify by running `seed_plans` on a
   clean DB twice — once with your entry and once without — and reading the row.
-  Such a book job then needs **two** prerender refreshes, not the usual one:
-  `books/+page.ts` for the book shelf *and* `plans/+page.ts`, because the plans
-  pages are prerendered per locale and will otherwise keep serving the card they
-  were built with. Shipping the prose without the second touch fixes the DB and
-  leaves the live page unchanged, which reads as the fix not working.
+  (This paragraph used to require a second `plans/+page.ts` touch. It doesn't:
+  the book PR's own web build rebakes every route, plans pages included, after
+  the API has seeded the plan row.)
   **`CURATED_PLANS` is the easier half to miss.** A launch plan has one source
   book, so the coupling is visible from the slug. A curated plan needs *every*
   source book in that language, so it stays invisible until the book that
@@ -1451,7 +1472,7 @@ archaic spelling and period punctuation are the text, not defects in it.
   every job ships a notes file. Batch PR #942 shipped ten jobs and shipped none:
   12 files, 8 of them content, zero under `translation_notes/`. For *Humildad*
   (#520) everything else was right — 12 chapters tag-exact, the
-  plan-prose couple in the same PR, both prerender refreshes, #519/#520
+  plan-prose couple in the same PR, #519/#520
   closed — and its 106-site unverified queue existed only in the PR body, which
   is the one place that section exists to stop using. The miss is invisible from
   every angle a reviewer checks: the issue reads done, the PR is merged, the
@@ -1471,8 +1492,7 @@ archaic spelling and period punctuation are the text, not defects in it.
   So **treat the notes file as a delivery target, not a write-up**: add it to
   the double-ship guard's list, confirm it exists before closing an issue, and
   when validating an already-shipped job (the #170 path above) count a missing
-  notes file among "whatever follow-ups are missing" — on current evidence it is
-  likelier to be the gap than the prerender refresh is.
+  notes file among "whatever follow-ups are missing".
 - **A LICENSED Bible can still be the right choice — the licence binds the text,
   not the library, and a verifiable licensed text beats an unverifiable PD one**
   (the first hi batch). The skill's standing preference for public-domain texts
@@ -1566,16 +1586,14 @@ archaic spelling and period punctuation are the text, not defects in it.
   publishing an English-titled card (#819). The mirror image also exists and is
   easy to miss because nothing is broken while you wait: the plan prose
   already held pt prose for `humility-12-days`, and the missing half was the
-  BOOK. Shipping it ACTIVATES the plan — `seed_plans` creates the row on that
-  deploy — so the book PR owes a `plans/+page.ts` touch exactly as if it had
-  written the prose itself. Before shipping any book, check both directions:
+  BOOK. Shipping it ACTIVATES the plan: `seed_plans` creates the row on that
+  deploy, and that deploy's web build bakes it (no touch needed). Before shipping any book, check both directions:
   does its slug back a plan, and does that plan already have prose in this
   language?
-- **A prerender touch is worth making for a DRAFT language too.** hi seeds
-  `status=draft`, so its pages are built but not advertised (zero `/hi/` URLs in
-  the sitemap against 1,339 `/pt/`). Touching the loaders anyway means launching
-  the language from the admin is a switch, rather than a switch plus a deploy
-  nobody remembers is needed. Verify the draft state deliberately — build the
+- **A DRAFT language's pages are baked too.** hi seeds `status=draft`, so its
+  pages are built but not advertised (zero `/hi/` URLs in the sitemap against
+  1,339 `/pt/`). The content PR's own build bakes them like any other locale, so
+  launching the language from the admin is just a switch. Verify the draft state deliberately — build the
   pages, confirm they render, confirm the sitemap does NOT carry them.
 - **`prerenderCoverage.test.ts` fails against a STALE `build/`, and it looks
   like your bug.** Running the frontend suite after a previous batch's build
