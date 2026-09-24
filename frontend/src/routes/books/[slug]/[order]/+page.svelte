@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
+	import { authorLdType, authorPath } from '$lib/originals';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { goto, invalidateAll } from '$app/navigation';
@@ -129,9 +130,9 @@
 			// its own in the graph rather than being an unsized fragment of the book.
 			wordCount: chapter.word_count || undefined,
 			author: {
-				'@type': 'Person',
+				'@type': authorLdType(chapter.author_slug),
 				name: chapter.author_name,
-				url: `${SITE_URL}${localizeHref(`/authors/${chapter.author_slug}/`)}`
+				url: `${SITE_URL}${localizeHref(authorPath(chapter.author_slug))}`
 			},
 			publisher: { '@type': 'Organization', name: 'Ochorus' }
 		})
@@ -1646,7 +1647,7 @@
 	<p class="mt-8 text-center text-small text-muted">
 		<a href={localizeHref(`/books/${slug}`)} class="hover:text-text">{chapter.book_title}</a>
 		<span aria-hidden="true"> · </span>
-		<a href={localizeHref(`/authors/${chapter.author_slug}`)} class="hover:text-text"
+		<a href={localizeHref(authorPath(chapter.author_slug))} class="hover:text-text"
 			>{chapter.author_name}</a
 		>
 	</p>
