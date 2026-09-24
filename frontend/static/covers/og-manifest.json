@@ -3704,6 +3704,16 @@
 			"layout": "rail/rust",
 			"bar": 0
 		},
+		"uk/divine-healing": {
+			"ground": "1d2453716cb3bf0d448c92ecef2f279a845c359cb266db9c872072182dd2fc65",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "wash/sage",
+			"bar": 0.05
+		},
 		"uk/godliness": {
 			"ground": "4b0eed929b41661595df83a94a4b365e06855b93e6b1aca0f84b3007f25d19a9",
 			"style": "revival",
