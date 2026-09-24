@@ -3441,7 +3441,7 @@ HUDSON_TAYLOR = [
         "slug": "hudson-taylor-d8fd45a2",
         "text": "If we are faithful to God in little things, we shall gain experience and strength that will be helpful to us in the more serious trials of life.",
         "chapter": ("a-retrospect", 3),
-        "paragraph": 11,
+        "paragraph": 12,
     },
     {
         "slug": "hudson-taylor-4d77cbd9",
@@ -3465,7 +3465,7 @@ HUDSON_TAYLOR = [
         "slug": "hudson-taylor-cdcd2da5",
         "text": "If the whole resources of the Church of God were well utilised, how much more might be accomplished!",
         "chapter": ("a-retrospect", 2),
-        "paragraph": 12,
+        "paragraph": 13,
     },
     {
         "slug": "hudson-taylor-a2017a32",
