@@ -3,6 +3,12 @@
 // locale, so /es/books and the shelf rebuild with the translated title over the shared painting ground
 // and the reader page bakes the 6 chapters. Backs the CURATED plan brave-for-god-24-true-stories, but
 // brave-for-god-2/-3/-4 are not yet in es, so no es plan row activates and no plan prose is owed.
+// prerender refresh 2026-09-24 (queue job #2780): Swahili book — men-who-tended-the-flock-2, an
+// Ochorus Originals devotional on ten faithful pastors across church history plus a Scripture
+// appendix, 13 chapters ("Wanaume Waliolichunga Kundi"). Book pages are prerendered per locale, so
+// /sw/books and the shelf rebuild with the translated title over the shared derived-ground painting
+// and the reader page bakes the 13 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no
+// plans/+page.ts touch owed.
 // prerender refresh 2026-09-24 (queue job #2788): Swahili book — men-and-women-who-gave-everything-2,
 // an Ochorus Originals devotional on ten missionaries who gave everything, 13 chapters ("Wanaume na
 // Wanawake Waliotoa Yote"). Book pages are prerendered per locale, so /sw/books and the shelf rebuild
