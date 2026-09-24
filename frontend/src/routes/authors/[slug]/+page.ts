@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: #3324 made English bio/bio_html fixture-wins, and its deploy
+// shipped 29 authors' stuck fixes (#1920's trimmed card bios, #1855's "Holy Spirit"). That PR
+// was backend-only, so this touch re-prerenders the author pages and /biographies cards.
 // prerender refresh 2026-09-24: Luganda author bios — a-w-tozer (#2745), martyn-lloyd-jones
 // (#2746), corrie-ten-boom (#2747), elisabeth-elliot (#2748). Author pages are prerendered PER
 // AUTHOR, so each /lg/authors/<slug> page must rebuild for the translated bio and its callouts.
