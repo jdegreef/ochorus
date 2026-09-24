@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "john-calvin",
+ "language": "ar",
+ "job_issue": 2946,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Psalm 13:1",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text — ebible arb_vdv, public domain"
+  }
+ ]
+}
