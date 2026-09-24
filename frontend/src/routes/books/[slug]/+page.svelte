@@ -226,6 +226,17 @@
 			// still read for topical relevance, drawn from the one source so the two
 			// can't disagree.
 			keywords: book.topics?.length ? book.topics.map((t) => t.title).join(', ') : undefined,
+			// The series this edition belongs to, and which volume — the other half
+			// of the series page's BookSeries `hasPart`, so the two point at each
+			// other. `position` only in an ordered series; a collection has none.
+			isPartOf: book.series
+				? {
+						'@type': 'BookSeries',
+						name: book.series.title,
+						url: absUrl(localizeHref(`/series/${book.series.slug}/`))
+					}
+				: undefined,
+			position: book.series?.position ?? undefined,
 			// `isAccessibleForFree` states the fact; this is its verb. The whole
 			// book can be read here, now, without an account, and a ReadAction is
 			// how that is expressed to a machine rather than implied.
