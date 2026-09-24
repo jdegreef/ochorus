@@ -3642,6 +3642,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"uk/absolute-surrender": {
+			"ground": "07423bc1c748e3f49b1230c73018e4b8ec98914aa74016f2125d5653fa95f5ea",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"uk/baptism-with-the-holy-spirit": {
 			"ground": "a562b4836e2431fd420dac71ef9e83d726ec511d479f56384cb88672a0dcc8b9",
 			"style": "revival",
