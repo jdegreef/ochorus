@@ -78,6 +78,14 @@
       "AI-drafted; awaiting native review. The series name is quoted verbatim from the shipped Swahili book titles (\"Jasiri kwa ajili ya Mungu\", Kitabu cha Pili/Tatu/Nne)."
     ]
   },
+  "waiting-on-god-trust": {
+    "title": "Kumngojea Mungu: Maisha ya Kumtumaini",
+    "description": "Wiki kumi katika shule ya kumtumaini Mungu. Andrew Murray anafundisha nidhamu ya kila siku ya kumngojea Mungu, F. B. Meyer anafunua siri ya kuongozwa naye, na maisha ya ajabu ya imani ya George Müller yanaonyesha kile ambacho tumaini la namna hiyo hupokea.",
+    "note": [
+      "The title joins the sw titles of two of its three books — «Kumngojea Mungu» (waiting-on-god, and the corpus's settled verb: 80 uses of «kumngojea Mungu» against 12 of «kumngoja») and «Maisha ya Kumtumaini Mungu» (the-life-of-trust) — so the card and the books agree.",
+      "«siri ya kuongozwa» echoes «Siri ya Uongozi», the sw title of the-secret-of-guidance; «shule» follows the Shule ya Maombi card."
+    ]
+  },
   "school-of-prayer-31-days": {
     "title": "Siku 31 katika Shule ya Maombi",
     "description": "Mwezi mzima pamoja na Andrew Murray miguuni pa Mwalimu pekee. Kila siku hufungua moja ya maneno ya Yesu mwenyewe kuhusu maombi, kuanzia “Bwana, utufundishe kuomba” hadi ahadi za usiku ule wa mwisho, nayo huishia katika sala yake yenyewe. Somo moja kwa siku, kama dakika kumi, likijenga kuelekea maombezi na maisha ya maombi.",

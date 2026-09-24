@@ -101,7 +101,8 @@ low-emphasis button compete with the primary one beside it.
 
 ## 2. Typography
 
-Two typefaces, loaded as variable woff2 (plus OpenDyslexic as a reader option):
+Two house typefaces, loaded as variable woff2. Readers can swap either one out
+(see **Reader and site typefaces** below):
 
 - **Fraunces** (`--font-display`) — the serif. Headings, the wordmark, and the
   **reading prose itself**. Warm, literary, devotional.
@@ -135,6 +136,17 @@ when `--fs-eyebrow` has been tried and does not fit.
   leaded generously. Typeface, size, leading, and measure are reader-controllable
   (see `readerPrefs`) via `--reading-font / --reading-scale / --reading-leading /
   --reading-measure` — components read those custom properties, never hardcode.
+- **Reader and site typefaces.** The reader offers ten faces (`FONT_STACK` in
+  `readerPrefs`): the house serif and sans, Literata, EB Garamond, Source Serif,
+  Lora, Baskerville, Merriweather, Atkinson Hyperlegible and OpenDyslexic. The
+  site offers three styles (`siteFont`, `site-fonts.css`): Default, Classic
+  (Garamond headings) and Hyperlegible (Atkinson for everything). A style
+  re-points `--font-display` / `--font-sans`, so components keep naming those
+  tokens and follow it. Two surfaces are pinned to the house faces:
+  covers, and the reader's own "Serif"/"Sans", which use `--house-display` /
+  `--house-sans`. Every new face names one family and then a house token, so
+  Arabic, Devanagari and Cyrillic still reach a real face. `fontStacks.test.ts`
+  enforces this.
 - **Eyebrows/kickers** (e.g. "CHAPTER 1 · 7 MIN READ") use **`.eyebrow`**:
   `0.75rem`, 600, uppercase, `letter-spacing 0.08em`. The class does not set a
   colour — an eyebrow is accent above a page title, muted in a popover, white on

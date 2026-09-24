@@ -902,15 +902,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # both printings above spell "(see 'Sixth Day')".
         #
         # NOT `source_fixes`: the parentheses are what the extractor made of a
-        # link, not what Murray printed. English-only edition, so nothing to
-        # settle by hand in a translation.
+        # link, not what Murray printed. These pairs are English-only: the es,
+        # fr, pt and sw editions were all translated after #1929 from the
+        # repaired English, so they shipped with the references and the ch33
+        # headings in their own words and need no pairs of their own.
         #
         # ch33 (Notes) lost all seven of its `NOTE A.`–`NOTE G.` headings to a
         # DIFFERENT selector: `[class*=note i]`, written for CCEL's footnote
         # apparatus, also matched Gutenberg's own `class="note"`. That selector
         # is FIXED at the source now (`sanitize._is_gutenberg_note_content`), so
         # no future import loses them — but these rows are never re-imported, so
-        # ch33 on the shelf is still seven bare `<hr/>`s with no headings.
+        # ch33 shipped as seven bare `<hr/>`s with no headings until #1929.
         #
         # They go back via `restored_blocks`, the mechanism
         # `ministry-of-intercession` uses for byte-identical damage from the
@@ -4273,6 +4275,14 @@ BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacemen
     # "know th Master's" -> "know the Master's".
     ("know th Master's", "know the Master's"),
 ])
+# Gutenberg #26384 closes ch4 on the printed "THE END." and then its own
+# transcriber's note (a `div.tn`, "Mismatched and inconsistent punctuation has
+# been retained…"), which shipped as the chapter's last block and the es edition
+# translated. The book ends on "THE END."
+BODY_CORRECTIONS["separation-and-service"]["back_matter"] = [
+    ("crucified for us.</p> <p>THE END.</p>", "<p>Transcriber's Note:<br/>"),
+    ("crucificado por nosotros.</p> <p>FIN.</p>", "<p>Nota del transcriptor:<br/>"),
+]
 BODY_CORRECTIONS.setdefault("the-fourfold-gospel", {}).setdefault("replacements", []).extend([
     # "lie will lead" -> "He will lead" (l/H, ie/e misread).
     ("and lie will lead you", "and He will lead you"),
@@ -4340,6 +4350,32 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
      "<p><i>Printed in the United States of America</i></p>"),
     ("definida y prevaleciente.</p>",
      "<p><i>Impreso en los Estados Unidos de América</i></p>"),
+]
+# Gutenberg #29426 ends ch35 on the printer's imprint, "LONDON: MORGAN AND
+# SCOTT", then its own "Transcriber's Notes" (`div.tnote`: punctuation repaired,
+# page 146 taken from the 1903 edition). Both shipped as the chapter's tail, and
+# the sw edition translated the notes. The book ends on "you will pray more."
+BODY_CORRECTIONS["things-as-they-are"]["back_matter"] = [
+    ("you will pray more.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+    ("mtaomba zaidi.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+]
+# Gutenberg #65066 follows "…revival of true religion! Amen." with the ATS
+# donors' line and the transcriber's `tnotes` endnote. The note's heading was
+# never collected, so its three paragraphs read as Edwards's own last words —
+# and the sw edition translated them as such.
+BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter"] = [
+    ("true religion! <i>Amen.</i></p>",
+     "<p>The frequent dated quotations from Brainerd’s diaries"),
+    ("dini ya kweli! <i>Amina.</i></p>",
+     "<p>Manukuu ya mara kwa mara yenye tarehe kutoka shajara za Brainerd"),
+]
+# Gutenberg #51931 follows Torrey's last paragraph with a page break and the
+# Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
+# Stalker and Kempis blurbs survived), and then a sub-300-word "Transcriber's
+# Notes" section that the importer merged into ch13 as an <h3> and its errata.
+BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
+    ("before God can use them.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
 BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
     # "Betelguese" -> "Betelgeuse".
@@ -4617,23 +4653,15 @@ def restore_dropped_blocks(body_html: str, blocks: Sequence[tuple[str, str]]) ->
 def strip_back_matter(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
     """Cut the publisher's or transcriber's back matter off a work's last chapter.
 
-    Each seam is `(last, first)`: the closing block of the author's text — its
-    tail, ending on `</p>` — and the opening block of what the importer carried
-    in after it (a colophon, a publisher's catalogue, a transcriber's note).
-    Where the two stand together, everything after `last` goes. Ads and
-    errata tables are not the work, and a translator renders what is there:
-    `reality-of-prayer`'s Revell catalogue reached the es edition as sixty
-    translated blocks of reviewer blurbs.
+    Each seam is `(last, first)`: the closing block of the author's text (ending
+    on `</p>`) and the opening block of what the importer carried in after it —
+    a colophon, a catalogue, a transcriber's note. Only where the two stand
+    together does everything after `last` go, so it cannot fire anywhere but
+    the one place it was written for, and it is idempotent because the cut
+    removes `first`.
 
-    A seam, not a marker, so it cannot fire anywhere but the one place it was
-    written for — `apply_body_corrections` runs a slug's entry against every
-    chapter of every edition — and it is idempotent because the cut removes
-    `first`, so the seam never matches again. The applied state keeps `last`,
-    which is what `test_no_replacement_pair_is_dead` looks for.
-
-    `body_html` ONLY: both halves carry block tags, which the derived, tagless
-    `body_text` never holds, and `Chapter.save()` re-derives that field (and
-    `word_count`) from the HTML this has already cut.
+    `body_html` ONLY: both halves carry block tags, which the tagless
+    `body_text` never holds; `Chapter.save()` re-derives it from the cut HTML.
     """
     for last, first in seams:
         at = _re.search(_re.escape(last) + r"\s*" + _re.escape(first), body_html)
@@ -4782,6 +4810,48 @@ BODY_CORRECTIONS.setdefault('god-glorified-in-mans-dependence', {}).setdefault("
     # "in making the soul" — leading "in" clipped to a bare "m".
     ('perfection, m making the soul', 'perfection, in making the soul'),
 ])
+# OCR slips found while translating Wesley's sermon to Swahili (#2593). CCEL and
+# the Wesley Center share one bad transcription, so each pair is checked against
+# two independent printings of Sermons on Several Occasions (archive.org
+# sermonsonseveral0001revj, 1825, and sermonsonseveral0001wesl, 1852), which
+# agree on every reading. Their period spacing ("obscurity ?", "him ;”") stays.
+BODY_CORRECTIONS.setdefault('the-circumcision-of-the-heart', {}).setdefault("replacements", []).extend([
+    ('a liar form the beginning', 'a liar from the beginning'),
+    ('world; thought he would choose', 'world; though he would choose'),
+    # Eph 1:19-20 ("the exceeding greatness of his power ... when he raised
+    # Christ"); the hyphen welded "to quicken", and Rom 8:11's opening quote
+    # was printed as a closer.
+    ('the exceeding greatness of this power,” who, as he raise up Christ from the dead, so is able to-quicken us, dead in sin,” by his',
+     'the exceeding greatness of his power,” who, as he raised up Christ from the dead, so is able to quicken us, dead in sin, “by his'),
+    # Eccl 9:10.
+    ('“whatever his findeth to do', '“whatever his hand findeth to do'),
+    ('which is no subject to the law', 'which is not subject to the law'),
+    ('the sole End, us well as Source', 'the sole End, as well as Source'),
+    ('Have no end, to ultimate end', 'Have no end, no ultimate end'),
+    ('“whereby be is very far gone', '“whereby he is very far gone'),
+    # 2 Cor 4:18.
+    ('the things that arc seen, which are temporal, but at the things that arc not seen',
+     'the things that are seen, which are temporal, but at the things that are not seen'),
+    ('the Inspirer an Perfecter', 'the Inspirer and Perfecter'),
+    ('learn, that it none is truly', 'learn, that none is truly'),
+    ('a view to own happiness ! Nay', 'a view to our own happiness! Nay'),
+    ('one who v. as “conceived', 'one who was “conceived'),
+    ('them to perform ? — as if', 'them to perform? — as if'),
+    ('nor grace was sufficient for them.?</p>', 'nor his grace was sufficient for them?</p>'),
+    ('without taking any pains at all. Vain hope !', 'without taking any pains at all. Vain hope!'),
+    ('<p>8. What lees than this', '<p>8. What less than this'),
+    # 2 Cor 6:4-5 ("in afflictions ... in distresses"); 1 Cor 13:3.
+    ('living “ill infirmities', 'living “in infirmities'),
+    ('and have not love, it profit me nothing', 'and have not love, it profiteth me nothing'),
+    # 1 Cor 9:26: the closing quote and "By" were lost, fusing the verse into
+    # Wesley's next clause.
+    ('one that beateth the air which he plainly teaches', 'one that beateth the air:” By which he plainly teaches'),
+    ('Let it be continual offered up', 'Let it be continually offered up'),
+    ('This is the way where in those', 'This is the way wherein those'),
+    ('<p>5. this is that lowliness', '<p>5. This is that lowliness'),
+    ('No man I say, has A title', 'No man, I say, has a title'),
+    ('the world, the one who follow him not', 'the world, the men who follow him not'),
+])
 
 
 # --- Quotation marks closed with the wrong mark (2026-09-11) -----------------
@@ -4817,6 +4887,20 @@ BODY_CORRECTIONS.setdefault('god-glorified-in-mans-dependence', {}).setdefault("
 BODY_CORRECTIONS.setdefault("a-retrospect", {}).setdefault("replacements", []).extend([
     ("chï fu mu</i>“ ", "chï fu mu</i>” "),
     ("convenience!</i>“ ", "convenience!</i>” "),
+])
+# Gutenberg #26744 sets "The Missionary Call" in ch12 as a score image (title and
+# verse 1) with its own note under it offering MIDI files; the image was dropped
+# and the note shipped between the chapter's last paragraph and verse 2, links
+# gone ("by clicking here for an organ version"). The es edition translated it.
+# Mid-chapter, so a pair rather than a back-matter seam, anchored on the `</p>`
+# before it and the verse after it.
+BODY_CORRECTIONS["a-retrospect"]["replacements"].extend([
+    ("</p> [<i>Transcriber's Note: You can listen to this music (MIDI file) by clicking</i>"
+     " here for an <br/>organ version or here for a piano version.]  2. Why live I here?",
+     "</p> 2. Why live I here?"),
+    ("</p> [<i>Nota del transcriptor: Puede escuchar esta música (archivo MIDI) haciendo clic</i>"
+     " aquí para una <br/>versión de órgano o aquí para una versión de piano.]  2. ¿Por qué vivo aquí?",
+     "</p> 2. ¿Por qué vivo aquí?"),
 ])
 # absolute-surrender: “…love“? (en, and the sw that mirrors it).
 BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
@@ -5491,11 +5575,12 @@ _REVIVAL_PAGES_IN_PROSE = (
 
 
 def _unpage(defective: str) -> str:
-    """Drop the one page number from a `_REVIVAL_PAGES_IN_PROSE` string."""
+    """Drop the one page number from a declared _*_PAGES_IN_PROSE string."""
     # One space survives if the number had one on either side: "the 10excitability"
-    # -> "the excitability", "</p>414 <p>" -> "</p> <p>", "</i>387<i>" -> "</i><i>".
+    # -> "the excitability", "</p>414 <p>" -> "</p> <p>", "</i>387<i>" -> "</i><i>",
+    # "had 36 been" -> "had been", "word.”—66And" -> "word.”—And".
     return _re.sub(
-        r"(\s?)(?<=[\s>])\d{1,3}(\s?)(?=[A-Za-z<])",
+        r"(\s?)(?<=[\s>—])\d{1,3}(\s?)(?=[^\s\d])",
         lambda m: " " if m[1] or m[2] else "",
         defective,
         count=1,
@@ -5506,3 +5591,59 @@ BODY_CORRECTIONS.setdefault("revival-lectures", {}).setdefault("replacements", [
     [(f"</p>{page}<p>", "</p> <p>") for page in _REVIVAL_PAGES_BETWEEN_BLOCKS]
     + [(defective, _unpage(defective)) for defective in _REVIVAL_PAGES_IN_PROSE]
 )
+
+# Baxter, A Call to the Unconverted — the same OCR residue as revival-lectures
+# above, 124 page numbers (pp. 30-156, chapters 3-6): fused ("the 50world"),
+# spaced mid-sentence ("had 36 been"), or bare between blocks ("</p>32<p>").
+# Proved by the same count up the book; pp. 60, 104 and 123 are absent from the
+# OCR. Left alone: the ordinals "the 18th of Ezekiel" and "from the 20th to the
+# end", and chapter 2's run of verse numbers, which also counts up but is
+# scripture citation ("Isa. lv. 1, 2, 3."). The es and pt editions never carried
+# the numbers, so this bites the English only.
+_CALL_PAGES_BETWEEN_BLOCKS = (
+    32, 53, 65, 75, 76, 81, 87, 91, 99, 110, 114, 138,
+)
+_CALL_PAGES_IN_PROSE = (
+    "the 30work", "if 31we", "law. 33Few", "please 34 God.”—“Now", "believe. 35For",
+    "had 36 been", "and 37 sustenation,", "them, 38if", "guilty 39 of",
+    "forgetfulness 40 or", "not 41 wicked,", "disposition 42of", "amiss: 43 and",
+    "rebels, 44on", "so 45neither", "health, 46and", "religion, 47 and",
+    "religious, 48yet", "must 49needs", "the 50world,", "trade 51that", "and 52set",
+    "will 54shortly", "to 55seeing;", "condemned? 56 It", "praise? 57And",
+    "many 58thousands,", "to 59 betake", "magnify 61his", "neither 62of", "not 63 to",
+    "unto 64himself", "word.”—66And,", "save 67none", "another 68should", "of 69its",
+    "man, 70I", "manifesting 71 his", "life, 72which", "in 73meat,", "thou 74did",
+    "God: 77He", "and 78persuade", "they 79will", "disobey 80God,", "well, 82and",
+    "them, 83what", "renounce 84the", "his 85displeasure", "But 86Christ", "yet 88art",
+    "turn: 89 He", "that 90will", "in 92 rioting", "How 93many", "of 94Christianity,",
+    "where 95thou", "it? 96It", "know 97my", "to 98doubt", "myself.—100I",
+    "ungodly, 101and", "God 102saith,", "confess 103 that", "any 105reason",
+    "for 106the", "durst 107not", "that 108you", "but 109wide", "foolishness 111 with",
+    "God 112 to", "praise 113 the", "not 115turn,", "reason 116that", "rather 117 die",
+    "in 118your", "that 119 hath", "excellency 120 of", "thoughts 121of", "what 122is",
+    "He 124hath", "delay?” 125Life", "forced 126you", "stand 127over", "5. 128“Hear,",
+    "you 129put", "upon 130you,", "themselves, 131that", "darkness. 132 What!",
+    "died 133for", "the 134Lord;", "assign 135each", "and 136therefore", "your 137own",
+    "to 139 sin)", "you, 140and", "most 141 highly", "strait; 142 and", "all 143their",
+    "not 144hear", "do 145 that", "you 146had", "heaven, 147 if",
+    "habitually 148willing,", "it, 149(though", "little 150before", "work 151against",
+    "everlasting 152 glory,", "before 153 God,", "of 154earnest", "over 155 your",
+    "are 156reading,",
+)
+
+
+BODY_CORRECTIONS.setdefault("a-call-to-the-unconverted", {}).setdefault("replacements", []).extend(
+    [(f"</p>{page}<p>", "</p> <p>") for page in _CALL_PAGES_BETWEEN_BLOCKS]
+    + [(defective, _unpage(defective)) for defective in _CALL_PAGES_IN_PROSE]
+)
+
+# Spacing slips in the Ochorus-original collection, found translating it to French
+# (#2776): a stray space inside the compound "Golden-Mouthed" (ch02) and before the
+# punctuation that follows four unmarked book titles (ch04, ch06, ch10).
+BODY_CORRECTIONS.setdefault("men-who-tended-the-flock-2", {}).setdefault("replacements", []).extend([
+    ("Golden- Mouthed", "Golden-Mouthed"),
+    ("The Temple , published", "The Temple, published"),
+    ("Surprising Work of God , ", "Surprising Work of God, "),
+    ("The Cost of Discipleship . The", "The Cost of Discipleship. The"),
+    ("Papers from Prison , ", "Papers from Prison, "),
+])

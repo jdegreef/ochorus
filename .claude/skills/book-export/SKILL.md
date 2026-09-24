@@ -103,19 +103,37 @@ PUBLIC_SITE_URL=https://ochorus.com uv run python manage.py export_book <slug> -
 ## 5. Ship + verify live
 
 PR (diff = export_policy line, fixture `pdf_url`, the PDF, the bundled cover,
-any STRINGS) → merge on green → **two deploys**: the API (EPUB) lands in ~2–3
-min, the web build (PDF file + "Free download: EPUB · PDF" row) ~20–40 min.
+any STRINGS) → merge on green → **two deploys**, and they land far apart:
+
+- **API** (~2–3 min): the EPUB endpoint, and the book API's `pdf_url`/`epub_url`.
+- **Web** (~20–40 min, longer if queued): the PDF file under `/pdfs/` and the
+  book page. The web service builds ONE deploy at a time — if a build is already
+  running when you merge, yours waits for it (#3378: PDFs 404'd for ~35 min while
+  EPUBs already worked). Check before worrying:
+  `gh api repos/jdegreef/ochorus/deployments --jq '.[:6][]|.sha[:8]+" "+.environment'`
+  — no `ochorus-web` row for your merge commit yet = still queued, not broken.
 
 ```bash
+# EPUB (API)
 curl -s -o /tmp/e.epub "https://api.ochorus.com/api/library/books/<slug>/download.epub?language=<lang>"
 unzip -l /tmp/e.epub | grep -E "cover|about-author"
-curl -s -o /dev/null -w "%{http_code} %{content_type}\n" https://ochorus.com/pdfs/<file>.pdf
-curl -s https://ochorus.com/<lang-prefix>/books/<slug>/ | grep -oE 'href="[^"]*(download\.epub|\.pdf)[^"]*"'
+# PDF file (web) — compare bytes to what merged, not just the status code
+curl -s https://ochorus.com/pdfs/<file>.pdf | md5; git show origin/main:frontend/static/pdfs/<file>.pdf | md5
+# Book page (web): the links live in the page's INLINED DATA, not its markup
+curl -s https://ochorus.com/<lang-prefix>/books/<slug>/ | grep -c 'download.epub?language=<lang>'
+curl -s https://ochorus.com/<lang-prefix>/books/<slug>/ | grep -o 'pdf_url[^,]*'
 ```
 
-Grep for the **hrefs**, not the word "epub" — `datePublished` contains it and
-once produced a false "live". Apple Books caches a book's cover: re-download a
-fresh copy to see a fix.
+**The download links are NOT in the page's HTML.** Since #3277 they sit in the
+book header's **Download** menu (`BookDownloadMenu`: Download for offline ·
+EPUB — For e-readers · PDF — For printing), which renders its links only when
+opened. A grep for `href="…download.epub"` / `href="…/pdfs/…"` in the page
+therefore finds nothing even when everything works — it reported "0 links" on
+all of Gareth's pages while they were fine. Check `pdf_url`/`epub_url` in the
+inlined `data-sveltekit-fetched` JSON (above), and for a final look open the
+menu in a browser. Likewise never grep the word "epub": `datePublished`
+contains it. Apple Books caches a book's cover: re-download a fresh copy to see
+a fix.
 
 ## Gotchas
 

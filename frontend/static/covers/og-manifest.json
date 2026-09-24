@@ -914,6 +914,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+			"es/the-gospel-of-healing": {
+				"ground": "90ec84e201074d75daf2716fafe3eb8afb304c01043f7c303bb46adeee56b955",
+				"style": "revival",
+				"volume": null,
+				"script": "latin",
+				"art": true,
+				"scrim": 0.55,
+				"layout": "box/teal",
+				"bar": 0
+			},
 		"es/the-inner-chamber": {
 			"ground": "336703e5a3b031ffc4533590d4d4a6024e164a09540a43bc18546d77db4c3e7d",
 			"style": "devotional",
@@ -1254,6 +1264,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"fr/men-who-tended-the-flock-2": {
+			"ground": "06979d4b4751b07fb21ca8d23defe218c8a7677c4eb778eabb69e15fe96e4f43",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/ministry-of-intercession": {
 			"ground": "96b187e084613b3d51091d14819fca905ed98f1b9ca4dec88a1155a84e8cd88a",
 			"style": "devotional",
@@ -1484,6 +1504,16 @@
 			"layout": "fade/slate",
 			"bar": 0
 		},
+		"george-muller-of-bristol": {
+			"ground": "37e9e681f682ec1d67dc8457aec8e73fed30e3c9bdf3ef2a38f4997c1ee7c5f7",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"gleanings-among-the-sheaves": {
 			"ground": "2a7832dd2947dbbab338cf7ee15a680886f36c65879ee78bf4e6665628488e77",
 			"style": "revival",
@@ -1644,6 +1674,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/spurgeon-on-prayer": {
+			"ground": "ef3a333a0110ddd4c0266a7b4de0b0461ff4f41b3b7692e5e86203ebe207465e",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "band/oxblood",
+			"bar": 0.04
+		},
 		"hi/stepping-stones-2": {
 			"ground": "a709e7762f009d72e1f65041bf925ceaa7f9d1a35eb6a536cfaca98f5f15afbb",
 			"style": "lettered",
@@ -1711,6 +1751,16 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/women-who-moved-heaven-2": {
+			"ground": "d7a6168e68b0ebabc4164a67a2d9eee38a12b713c25ccb6354ea996357aced95",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2925,7 +2975,7 @@
 			"bar": 0
 		},
 		"sons-of-the-king-3": {
-			"ground": "70b8fbb5632d420fde12b38cb9cd8e042c3d91dfdd6e75d1464f74ef95374f48",
+			"ground": "7e1e676301ad05a49ff03d967fa6bb8601425eb0599a7815638ad62552edd96c",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
@@ -3294,6 +3344,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"sw/rise-up-men-of-god-2": {
+			"ground": "61b65d666372ec206c41d01259932e46b374092cac8440ef8f4183aca18ff52c",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/school-of-prayer": {
 			"ground": "ae25f57f0e6b20b646e7db804e8565913fe333f2784b03f15b8e0b7f9b1e125a",
 			"style": "devotional",
@@ -3444,6 +3504,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
+		"sw/the-secret-of-guidance": {
+			"ground": "09361a66fd1589c9f38319df13c095ca1b66e66425fa7893f8b044e6cc50fdbf",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/the-unselfishness-of-god": {
 			"ground": "a2b03348659bb6bef512cf64c28bd49a981636895b3f5fbfdaa9e11c41682d49",
 			"style": "devotional",
@@ -3471,6 +3541,16 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0
+		},
+		"sw/thoughts-for-the-quiet-hour": {
+			"ground": "aa269abc4263ee0867779ed3c726222c1b13a4e5fa61c43a7916cb8398e91e8d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},
