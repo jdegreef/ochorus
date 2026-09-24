@@ -969,7 +969,8 @@ class GutenbergDisplayLineTests(SimpleTestCase):
 <h2>Unfailing Springs</h2>
 <p>THE best evidence of Christianity is a Christ-like life.</p>
 </body></html>"""
-        self.assertTrue(extract_gutenberg_section(page, "Unfailing Springs").startswith(
+        # The level the catalog imports 57109 at (`section_level`).
+        self.assertTrue(extract_gutenberg_section(page, "Unfailing Springs", "h1").startswith(
             '<h2>J. Hudson Taylor</h2><p><i>"JESUS answered'
         ))
 
@@ -1135,7 +1136,7 @@ that walk uprightly."<br></em>--P<small>SALM LXXXIV</small>. 11.</div>
         _, english = BODY_CORRECTIONS["unfailing-springs"]["restored_blocks"][0]
         self.assertIn(
             f"<h2>Unfailing Springs</h2>{english}<p>THE best",
-            extract_gutenberg_section(page, "Unfailing Springs"),
+            extract_gutenberg_section(page, "Unfailing Springs", "h1"),
         )
 
 
