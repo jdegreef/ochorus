@@ -1,0 +1,21 @@
+{
+ "kind": "bio",
+ "slug": "elisabeth-elliot",
+ "language": "sw",
+ "job_issue": 2563,
+ "references": [
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 7,
+   "why": "Elliot's radio sign-on, 'You are loved with an everlasting love', quoted at blocks 7, 24 and 25. It is her second-person, passive re-wording of the verse (SUV: 'nimekupenda kwa upendo wa milele'), so it cannot be verbatim: rendered «Umependwa kwa upendo wa milele», keeping the verse's own phrase «kwa upendo wa milele» (the corpus's wording, e.g. days-of-heaven-upon-earth.sw.json) and matching the already-shipped sw Q&A for this author."
+  },
+  {
+   "reference": "Deuteronomy 33:27b",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json",
+   "block_index": 7,
+   "why": "'underneath are the everlasting arms' — the clause «na mikono ya milele i chini yako» is taken verbatim from the shipped corpus's Deut 33:27 quotation, and used identically at blocks 7, 24 and 25. (The shipped sw Q&A has the looser «chini yako pana mikono ya milele»; the bio follows the Bible wording.)"
+  }
+ ]
+}

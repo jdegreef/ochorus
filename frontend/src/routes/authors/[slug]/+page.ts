@@ -408,6 +408,8 @@ export const entries: EntryGenerator = async () => {
 // line appear (Gregory the Great, Monica of Hippo, Luther, Calvin, Teresa of
 // Ávila, Billy Graham, Corrie ten Boom, William Law, Alexander Maclaren,
 // Bonhoeffer, John Stott, Timothy Keller, Loren Cunningham).
+//
+// Prerender refresh 2026-09-23 (queue job #2563): sw Elisabeth Elliot bio.
 export const load: PageLoad = async ({ params }) => {
 	// The RESOLVED language, not the requested one: getAuthor falls back to
 	// English on a 404, and the reader labels the bio's prose with this.
