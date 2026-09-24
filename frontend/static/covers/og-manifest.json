@@ -604,6 +604,16 @@
 			"layout": "split/navy",
 			"bar": 0.04
 		},
+		"es/gleanings-among-the-sheaves": {
+			"ground": "902071ea52ec0e6e93ae212780f8436c2b6614b0c2b18de5fea89a6ecca8fad4",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"es/godliness": {
 			"ground": "5887fafb8010c840830a678570c47c7ac4af5caea4881b11f833cb7f8c0e46c9",
 			"style": "revival",
