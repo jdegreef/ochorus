@@ -649,6 +649,10 @@
 				"content": "8fdd6b587f903b727698700a01ee2afbd5852d8478ce2d46005a252bea226cf4",
 				"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 			},
+			"a-full-reward": {
+				"content": "8d7fa95bcfd94a89ce89e1d84bdadb25b450c444aae1631b5961913ffe657d3f",
+				"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+			},
 			"a-ribband-of-blue": {
 				"content": "145d73259f52e070233fe67e330481b71bd70577e2063392e6abbc2f46325a0b",
 				"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
@@ -664,6 +668,10 @@
 			"aggressive-christianity": {
 				"content": "69eddc7ecaa42f49a39593d80fed85ad8e9b616c288ae05b6d4237d066c4cdae",
 				"art": "763d491efd44377e13af092f384c6ba95a99dd8d00e0374d28ec4073bd34415b"
+			},
+			"behold-the-lamb-of-god": {
+				"content": "5e4f723f298f2e6920d91cf8241a0fb25c6e078be6112fbf9fc501e894e0f350",
+				"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 			},
 			"blessed-adversity": {
 				"content": "ea505c2c3b913b7686e7a21900a6f71f94cafc5dd2dbf87cc04deefa00a1e280",
@@ -701,9 +709,17 @@
 				"content": "3c7882309e5ff59d58252eee29248a5da628d2f354582c886395a7ec13e501f6",
 				"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 			},
+			"every-mans-need-of-a-refuge": {
+				"content": "74a4cffa27c500eb55e61d3a21cfee3e32bc47f9cdf0a5ee65c6a684caff89a4",
+				"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+			},
 			"fall-and-recovery-of-man": {
 				"content": "f25f6eb68c1d3c38a92107b8c28de885f76e6345b05b7d812ec142508f4180dc",
 				"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
+			},
+			"filled-with-the-spirit": {
+				"content": "3087d567247783930389920abe49777b1a8ebfe3c76bdf6b0fd8d1d2b548206b",
+				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 			},
 			"free-grace": {
 				"content": "6a5a731c671f9b1e2d4978df1b92d28ea0372fe7954abb289f9253f6fc723583",
