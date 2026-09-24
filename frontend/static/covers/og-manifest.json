@@ -285,7 +285,7 @@
 			"bar": 0
 		},
 		"ar/the-key-in-my-hand": {
-			"ground": "b181b8a456ec1861a879c7df69f3f4f74f5ab2315dc9396a3117b2f90e08b0c9",
+			"ground": "9a44c82b413ac96de16fb03bad7940493d8ea06e129d661154608624a941a86d",
 			"style": "lettered",
 			"volume": null,
 			"script": "arabic",
@@ -795,7 +795,7 @@
 			"bar": 0
 		},
 		"es/the-key-in-my-hand": {
-			"ground": "cf5876af5b7e4d36315b5ceef59620f0dcb2fc14c659a6c1fc0adde99ccc78b2",
+			"ground": "7c455c0ae6f78bc5833e9d5984683c28f963cc2290a21bb2e15c147254d62771",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -1115,7 +1115,7 @@
 			"bar": 0
 		},
 		"fr/soar-like-the-eagle-3": {
-			"ground": "ec28b7ca5e1c9bb3a4017d31a14aa05d26293adf56ca645f65debddb3f043365",
+			"ground": "435c30f8b3718898f75827d153543c59923e778221872f61a6f615d7dd32a004",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -1185,7 +1185,7 @@
 			"bar": 0
 		},
 		"fr/the-key-in-my-hand": {
-			"ground": "fc081419217f8fffe2ba7ed626d7c61df61b9f49a72923cb18f5bdaa5c1821f9",
+			"ground": "4e5282f62e27419fcd43863c4611a219b502e5ffbf79c5d754fe9f92460a16e5",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -1415,7 +1415,7 @@
 			"bar": 0
 		},
 		"hi/the-key-in-my-hand": {
-			"ground": "1e0dad1b4d6a499c63639d54922babc1865fcb802fefd074b774fa5d322b45e2",
+			"ground": "5262675cb2761ddb9a7c15bc89827d314b0eb3c4b14a06aad0488f407238df3b",
 			"style": "lettered",
 			"volume": null,
 			"script": "devanagari",
@@ -1775,7 +1775,7 @@
 			"bar": 0
 		},
 		"lg/soar-like-the-eagle-3": {
-			"ground": "3b5573d921f2e65fb15149efda0ecd461c94d445d642eda33f5221b234a37237",
+			"ground": "c687af707ddb1610c2aea34d3b97362913cc107235488a0d9b03980d0537c802",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -1835,7 +1835,7 @@
 			"bar": 0
 		},
 		"lg/the-key-in-my-hand": {
-			"ground": "e5eb484cb185d5d1d65218f5246ea7a895ff21dd1bd94cfa3acade33a3bc311c",
+			"ground": "7996c4285dad6dbefe365dc87351e7dff1750d57373192802ab1aed5958a97d9",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -2265,7 +2265,7 @@
 			"bar": 0
 		},
 		"pt/soar-like-the-eagle-3": {
-			"ground": "ff512f1fbfff9e2ba18e7555c3e8434b645d8d670352a8eba7fdbd2ea3291e08",
+			"ground": "8a3110c6fd5be22387fdc80125b06ffd6d4c53c9683dc27fcb540b6ccce17949",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -2335,7 +2335,7 @@
 			"bar": 0
 		},
 		"pt/the-key-in-my-hand": {
-			"ground": "9fa621ce767aa5d1ffe475478a9c9ce10827690fe44467b1a03c08b6899f12e9",
+			"ground": "056334b16e3f90bf950cfc9e426e116c47e2bf87936403f01f02be03d584e263",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -2965,7 +2965,7 @@
 			"bar": 0
 		},
 		"sw/soar-like-the-eagle-3": {
-			"ground": "c478c4af551421a0a0dd78a8ceaab11c5f147ea86fb5e792f2196ee9123558d4",
+			"ground": "d41e103913bb9fd8438d06ef577164ec7977017017bd69a9226f0cf9822a3285",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -3065,7 +3065,7 @@
 			"bar": 0
 		},
 		"sw/the-key-in-my-hand": {
-			"ground": "bf40980163ebb8a56e5f919ef1a456f3563e69a465ac539e84f43616844106a1",
+			"ground": "e69451fdae62a7aa5771c2bec54b3702967d1db6ac7fd1c26dcfcda09f2dd3b1",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",

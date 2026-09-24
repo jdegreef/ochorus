@@ -187,6 +187,11 @@ class Erase(NamedTuple):
     y1: float
     #: "dark" for ink darker than what it is set on, "light" for lighter.
     ink: str = "dark"
+    #: Erase only type-thin ink (the default), leaving any broad shape the
+    #: contrast test also catches — a branch, the bright side of a page edge.
+    #: False erases everything it finds, for a hairline that touches such a
+    #: shape and would otherwise be kept as part of it.
+    thin: bool = True
 
 
 class Ground(NamedTuple):
@@ -289,8 +294,8 @@ DERIVED_GROUND: dict[str, Ground] = {
     # mark along the bottom. Erased instead, the crop takes the whole spread
     # full-bleed, at the least magnification this cover allows.
     "feasting-at-the-table": Ground(0.47, 0.93, 0.02, 1.15, sky=0.25, erase=(
-        Erase(0.06, 0.45, 0.10, 0.95, "light"),
-        Erase(0.90, 0.45, 0.94, 0.95, "light"),
+        Erase(0.06, 0.45, 0.10, 0.95, "light", thin=False),
+        Erase(0.90, 0.45, 0.94, 0.95, "light", thin=False),
         Erase(0.36, 0.79, 0.64, 0.885, "light"),
     ),
         source="75428579274b21090f44604464e1608fa54321307892f01791ac7b1f46a28713",
@@ -359,7 +364,7 @@ DERIVED_GROUND: dict[str, Ground] = {
         0.217, 0.87, 0.07, 1.0, sky=0.4, foot=0.19, peak=240, erase=(
         Erase(0.33, 0.215, 0.66, 0.315),
         Erase(0.375, 0.325, 0.62, 0.435),
-        Erase(0.19, 0.56, 0.76, 0.63),
+        Erase(0.19, 0.56, 0.79, 0.63),
         ),
         source="2db8925dd6782464cd895d241508324b7955d9678acf8f6afd33d4c4a5d2c107",
     ),

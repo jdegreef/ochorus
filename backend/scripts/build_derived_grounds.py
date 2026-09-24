@@ -118,9 +118,17 @@ def _ink_mask(im, boxes):
         ground = patch.filter(ImageFilter.MedianFilter(21))
         diff = (ImageChops.subtract(ground, patch) if box.ink == "dark"
                 else ImageChops.subtract(patch, ground))
-        # Grown by a few pixels: a stroke's antialiased edge is ink too, and a
-        # halo of it left behind reads as a ghost of the word.
-        found = diff.point(lambda v: 255 if v > 14 else 0).filter(ImageFilter.MaxFilter(5))
+        found = diff.point(lambda v: 255 if v > 14 else 0)
+        # Strokes only. The bright side of a real edge — a page, a branch —
+        # also clears the median test, but it is BROAD, and an opening (erode,
+        # then grow back) keeps exactly the broad parts; what it removes is
+        # type-thin. So the mask is what the opening took away.
+        if box.thin:
+            broad = found.filter(ImageFilter.MinFilter(7)).filter(ImageFilter.MaxFilter(7))
+            found = ImageChops.subtract(found, broad)
+        # Then grown by a few pixels: a stroke's antialiased edge is ink too,
+        # and a halo of it left behind reads as a ghost of the word.
+        found = found.filter(ImageFilter.MaxFilter(5))
         keep = Image.new("L", patch.size, 0)
         keep.paste(255, (x0 - area[0], y0 - area[1], x1 - area[0], y1 - area[1]))
         mask.paste(ImageChops.multiply(found, keep), area[:2], ImageChops.multiply(found, keep))
@@ -152,6 +160,11 @@ def _repaint(im, hole):
         take = ImageChops.multiply(todo, weight.point(lambda v: 255 if v >= 40 else 0))
         out.paste(est, (0, 0), take)
         todo = ImageChops.subtract(todo, take)
+    if todo.getbbox():
+        # A box whose ink is too wide for the widest pass to reach across —
+        # which is lettering this eraser was not made for. Shipping the ground
+        # with the word half in it would be silent; saying so is not.
+        raise SystemExit(f"erase left ink it could not repaint at {todo.getbbox()}")
     # Softened across the repaint only, so the join does not show as a seam.
     edge = hole.filter(ImageFilter.GaussianBlur(2))
     return Image.composite(out.filter(ImageFilter.GaussianBlur(1)), out, edge)
