@@ -1,6 +1,3 @@
-// prerender refresh 2026-09-24 (queue job #1784): Hindi book — women-who-moved-heaven-2, Ochorus
-// Originals ("स्वर्ग को हिला देने वाली महिलाएँ"), 13 chapters. Book pages are prerendered per locale,
-// so /hi/books and the shelf rebuild with the translated title over the shared derived ground.
 // prerender refresh 2026-09-24 (queue job #2796): Swahili book — rise-up-men-of-god-2, an Ochorus
 // Originals call to men's spiritual leadership, 14 chapters ("Inukeni, Enyi Wanaume wa Mungu"). Book
 // pages are prerendered per locale, so /sw/books and the shelf rebuild with the translated title over
@@ -511,6 +508,9 @@
 // edition of spurgeon-on-prayer, 13 chapters — bakes into the /uk/books shelf.
 // prerender refresh 2026-09-24 (queue job #814, PR #3343): Божественне зцілення — the Ukrainian
 // edition of divine-healing, 32 chapters — bakes into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #1784): Hindi book — women-who-moved-heaven-2, Ochorus
+// Originals ("स्वर्ग को हिला देने वाली महिलाएँ"), 13 chapters. Book pages are prerendered per locale,
+// so /hi/books and the shelf rebuild with the translated title over the shared derived ground.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
