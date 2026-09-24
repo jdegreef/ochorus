@@ -57,3 +57,6 @@ API. Public content routes are prerendered for SEO (`prerender = true` + an
 - Verify user-visible changes in the browser (`verify-local` skill). Beware the
   localized-page trap: a persistent session's stored `en` preference
   de-localizes `/lg` URLs — wipe storage or use `curl` for ground truth.
+- Never add a "prerender refresh" / "rebuild marker" comment to a route file.
+  Content PRs rebuild the reader on their own. When a rebuild really is owed,
+  add one new file under `prerender-refresh/` (see its README).
