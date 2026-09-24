@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24 (queue job #1784): Hindi book — women-who-moved-heaven-2, Ochorus
+// Originals ("स्वर्ग को हिला देने वाली महिलाएँ"), 13 chapters. Book pages are prerendered per locale,
+// so /hi/books and the shelf rebuild with the translated title over the shared derived ground.
 // prerender refresh 2026-09-24 (queue job #3148): Swahili book — school-of-prayer, Andrew Murray's
 // thirty-three lessons on prayer built on the words of Jesus ("Pamoja na Kristo katika Shule ya
 // Maombi"), 33 chapters. Book pages are prerendered per locale, so /sw/books and the shelf rebuild
