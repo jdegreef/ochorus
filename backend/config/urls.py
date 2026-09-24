@@ -60,12 +60,19 @@ from library.admin_views import (
 
 
 def robots_txt(_request):
-    # Served on the API host (api.ochorus.com). Nothing under the API is for
-    # crawlers — the whole library is on the prerendered reader (ochorus.com);
-    # this host serves only JSON. Disallow everything so a well-behaved bot never
-    # spends a request, or our Supabase egress, here. Bad bots ignore it — that's
-    # the CDN's job (docs/egress-cloudflare.md).
-    return HttpResponse("User-agent: *\nDisallow: /\n", content_type="text/plain")
+    # Served on the API host (api.ochorus.com). Nothing here is for crawlers to
+    # INDEX — the library lives on the prerendered reader (ochorus.com) — but the
+    # public library endpoints must stay FETCHABLE. Every prerendered page
+    # re-runs its load() on hydration and calls /api/library/ from the browser,
+    # and Googlebot's renderer obeys robots.txt for those requests too. A blanket
+    # `Disallow: /` (#1946) made that fetch fail under Google's render, so the
+    # page hydrated into +error.svelte and Google read its noindex — articles
+    # were reported "Excluded by 'noindex' tag". Everything else (admin, auth,
+    # reading) stays disallowed. Bad bots ignore this either way — that's the
+    # CDN's job (docs/egress-cloudflare.md).
+    return HttpResponse(
+        "User-agent: *\nAllow: /api/library/\nDisallow: /\n", content_type="text/plain"
+    )
 
 
 urlpatterns = [
