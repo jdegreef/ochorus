@@ -665,7 +665,9 @@
 			justify-content: center;
 			min-width: 0;
 		}
-		.action-strip .btn {
+		/* Only the strip's own buttons — not a .btn inside one of their menus
+		   (the shelf picker's Create). */
+		.action-strip .btn:not(.account-menu *) {
 			flex-direction: column;
 			gap: 0.2rem;
 			width: 100%;
@@ -675,7 +677,7 @@
 			font-weight: 500;
 			white-space: nowrap;
 		}
-		.action-strip .btn svg {
+		.action-strip .btn:not(.account-menu *) svg {
 			width: 20px;
 			height: 20px;
 		}

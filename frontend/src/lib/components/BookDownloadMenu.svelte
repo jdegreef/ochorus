@@ -27,7 +27,7 @@
 			? offlineBooks.active
 			: null
 	);
-	const pct = $derived(downloading ? Math.round((downloading.done / downloading.total) * 100) : 0);
+	const pct = $derived(downloading?.total ? Math.round((downloading.done / downloading.total) * 100) : 0);
 
 	let open = $state(false);
 	let root = $state<HTMLDivElement>();

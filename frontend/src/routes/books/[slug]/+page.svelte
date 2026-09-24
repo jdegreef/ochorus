@@ -67,7 +67,8 @@
 
 	// A saved place past chapter 1: the read verb is Continue, not Begin.
 	const resuming = $derived(resumeHere != null && resumeHere > 1);
-	const readOrder = $derived(resuming && resumeHere != null ? resumeHere : 1);
+	const firstOrder = $derived(book.chapters[0]?.order ?? 1);
+	const readOrder = $derived(resuming && resumeHere != null ? resumeHere : firstOrder);
 
 	// The read card: the chapter the reader is in, how far through the book
 	// that is (by words, so a long chapter counts for more), and the time left
@@ -79,6 +80,11 @@
 			: book.chapters.filter((c) => c.order >= resumeHere).reduce((n, c) => n + c.word_count, 0)
 	);
 	const minutesLeft = $derived(wordsLeft ? readingMinutes(wordsLeft) : 0);
+	const onChapter = $derived(
+		t('book.onChapter')
+			.replace('%n%', String(readOrder))
+			.replace('%t%', String(book.chapter_count))
+	);
 	const percentRead = $derived(totalWords ? ((totalWords - wordsLeft) / totalWords) * 100 : 0);
 
 	// Whether the read card has scrolled out of view — the sticky section bar
@@ -413,13 +419,11 @@
 				<div class="min-w-0 flex-1">
 					{#if resuming}
 						<p class="text-small text-muted">
-							{t('book.onChapter')
-								.replace('%n%', String(readOrder))
-								.replace('%t%', String(book.chapter_count))}{#if minutesLeft}{` · ${bookTimeLeft(minutesLeft)}`}{/if}
+							{onChapter}{#if minutesLeft}{` · ${bookTimeLeft(minutesLeft)}`}{/if}
 						</p>
 						<p class="read-card-title" dir="auto">{chapterName(readOrder, resumeChapter?.title)}</p>
 						<div class="mt-2">
-							<ProgressBar percent={percentRead} label="{book.title}: {t('progress.through')}" />
+							<ProgressBar percent={percentRead} label="{book.title}: {onChapter}" />
 						</div>
 					{:else}
 						<p class="text-small">
@@ -429,17 +433,17 @@
 						</p>
 						{#if book.chapters[0]}
 							<p class="read-card-title" dir="auto">
-								{chapterName(book.chapters[0].order, book.chapters[0].title)}
+								{chapterName(firstOrder, book.chapters[0].title)}
 							</p>
 						{/if}
 					{/if}
 				</div>
 				<div class="read-card-cta">
 					<a href={readHref(readOrder)} class="btn btn-primary"
-						>{resuming ? t('plans.continue') : t('book.beginReading')}</a
+						>{resuming ? t('book.continue') : t('book.beginReading')}</a
 					>
 					{#if resuming}
-						<a href={readHref(1)} class="text-small text-muted underline hover:text-text"
+						<a href={readHref(firstOrder)} class="text-small text-muted underline hover:text-text"
 							>{t('book.startOver')}</a
 						>
 					{/if}

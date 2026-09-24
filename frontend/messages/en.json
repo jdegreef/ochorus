@@ -891,6 +891,7 @@
   "book_pdf_hint": "For printing",
   "shelves_short": "Shelf",
   "book_on_chapter": "You’re on chapter %n% of %t%",
+  "book_continue": "Continue",
   "book_explore": "Explore",
   "book_read_in_language": "Read in your language",
   "book_available_in": "This book is also available in:",
