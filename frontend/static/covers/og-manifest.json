@@ -405,7 +405,7 @@
 			"bar": 0
 		},
 		"daughters-of-the-king-1": {
-			"ground": "edbde79fb47eacccac0619d17eea47be38d898e915543421a5bbd3fa91c910ea",
+			"ground": "e1fcc77b8452ea55f86252de44f4c637a256a57f0e221048b78759c535f55ce9",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
@@ -415,7 +415,7 @@
 			"bar": 0
 		},
 		"daughters-of-the-king-2": {
-			"ground": "f49659b2b595d72a7ccf377e26bc1e3453330c87d157b560c07aeb9acca9bcd4",
+			"ground": "2f1841597f1b400bb974d03e96a704e40ba0999cb5faefe7f5938c80535f84bd",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
@@ -425,7 +425,7 @@
 			"bar": 0
 		},
 		"daughters-of-the-king-3": {
-			"ground": "3b492dc158011ef6d551d3b88ceba76052b152731dd6e0804c7db6c3da7b357f",
+			"ground": "c5324f455fca57d79d8fe1c59327680e066335ae5c924e96f905dcea2523c230",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
@@ -1290,7 +1290,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2755,7 +2755,7 @@
 			"bar": 0
 		},
 		"rooted-1": {
-			"ground": "70ea454b56e1efd2bf03a2c31d41b820a6e1599bbcabcfbde6fd369f72937159",
+			"ground": "97e9f8992f826991979d0630161e1a006a7f916c603edd26e2cd2a82d21efe11",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
@@ -2765,7 +2765,7 @@
 			"bar": 0
 		},
 		"rooted-2": {
-			"ground": "c56aca341d5ec5a0a4450872155c921a28637ec38fc259a538b0a3d1dfb68463",
+			"ground": "5d2819773d48f10f68bddf0d327adecb8b42553acdf2cd73098bb62a64cf457e",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
@@ -2775,7 +2775,7 @@
 			"bar": 0
 		},
 		"rooted-3": {
-			"ground": "348dd3734a09d46a1ee8f26479cf0c0e3fe5389f14e1a74ac4cdeec6858d97d5",
+			"ground": "3e6056d04b57d0e5da3681eeb03fcffae707e49e2b135c5f8bf7801b2df9c9cf",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
@@ -2785,7 +2785,7 @@
 			"bar": 0
 		},
 		"rooted-4": {
-			"ground": "d30a39e633b5f1830591bdc8ac03e48e5a919d108e805e9ac334e5708ce60b69",
+			"ground": "af996ba084ed7ce7319186e1932c3945b19948a44e3374f48f2e17c1cf48643f",
 			"style": "young",
 			"volume": "4",
 			"script": "latin",
@@ -2795,7 +2795,7 @@
 			"bar": 0
 		},
 		"rooted-5": {
-			"ground": "a9d32527e1e8a2f34f2d31dd96cb14f17b834f58a583154ce1f32b0dc9b2f3ef",
+			"ground": "2807e99ada0413aa2d0be97c929ed9e6e0e141dc0d673ed125e1ad54754af3de",
 			"style": "young",
 			"volume": "5",
 			"script": "latin",
@@ -2805,7 +2805,7 @@
 			"bar": 0
 		},
 		"rooted-6": {
-			"ground": "517e88c22d06c19c2a1636e4a9c36eb160a56d09da09dbc0d4be08dd178d0388",
+			"ground": "9ba6a9c5b37a2fbb22097dc0961bfb8337d6fe5d18b8dfd935c623444b4b7920",
 			"style": "young",
 			"volume": "6",
 			"script": "latin",
@@ -2865,7 +2865,7 @@
 			"bar": 0
 		},
 		"sons-of-the-king-1": {
-			"ground": "a94eeaa265258a81933aa47ea7c235ba9e1d3b6035d7fe534a6c778157f20cb3",
+			"ground": "baf572e974cdd6cc5b1557d022829a63971836fa83d4565fd931820ce424cac2",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
@@ -2875,7 +2875,7 @@
 			"bar": 0
 		},
 		"sons-of-the-king-2": {
-			"ground": "5af42312322c9ac54dc42f7300c4856bb187400eb9b47aaf34c6018a7ab364b7",
+			"ground": "ea7d9c51ec360a2844fbfd6a2fef061d2af9472ad6d60e52b29f20a4ce9e28d4",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
@@ -3240,7 +3240,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.85
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0
 		},
 		"sw/soar-like-the-eagle-3": {
 			"ground": "d41e103913bb9fd8438d06ef577164ec7977017017bd69a9226f0cf9822a3285",

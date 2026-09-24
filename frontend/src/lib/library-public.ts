@@ -44,6 +44,9 @@ export interface BookSummary {
 	language: string;
 	title: string;
 	subtitle: string;
+	/** The short title a cover sets in place of `title`; read through
+	 *  `coverTitle`. Optional for the same reason as `series_position`. */
+	cover_title?: string;
 	author: Author;
 	source_type: SourceType;
 	cover_color: string;
@@ -85,6 +88,7 @@ export const COVER_BOOK_KEYS = [
 	'language',
 	'title',
 	'subtitle',
+	'cover_title',
 	'source_type',
 	'cover_color',
 	'cover_url',
