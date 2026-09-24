@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24: one NEW Swahili book — revival-lectures (#2580), Charles Finney's
+// 1835 "Lectures on Revivals of Religion", 24 chapters ("Mihadhara juu ya Uamsho wa Dini").
+// Rebuilds /sw/books so the card carries its translated title over the shared painting cover, and
+// the reader page bakes the 24 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no
+// plans/+page.ts touch owed.
 // prerender refresh 2026-09-23: one NEW English book — daughters-of-the-king-3, "Daughters of the
 // King – 30 Days with God for Girls – Book 3" (Growing Up), volume 3 of the house-written girls'
 // devotional series (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB
