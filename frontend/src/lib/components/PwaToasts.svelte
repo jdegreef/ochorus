@@ -42,7 +42,9 @@
 				>{t(
 					undo.current.kind === 'finished'
 						? 'undo.finished'
-						: undo.current.kind === 'note'
+						: undo.current.kind === 'moved'
+							? 'undo.moved'
+							: undo.current.kind === 'note'
 							? 'undo.noteCleared'
 							: 'undo.removed'
 				)}</span

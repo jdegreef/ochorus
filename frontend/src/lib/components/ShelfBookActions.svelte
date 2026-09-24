@@ -16,6 +16,7 @@
 	import { customShelves } from '$lib/customShelves.svelte';
 	import Icon, { type IconName } from './Icon.svelte';
 	import ShelfPicker from './ShelfPicker.svelte';
+	import { moveBetweenShelves, moveToToRead } from '$lib/shelfMoves';
 
 	/**
 	 * What you can do with a book on the Bookshelf, as a list of `.account-item`
@@ -68,6 +69,11 @@
 
 	// "Add to a shelf": the ShelfPicker, folded under one row.
 	let shelvesOpen = $state(false);
+	// "Move to another shelf": the reader's other shelves, on one of their own.
+	let moveOpen = $state(false);
+	const otherShelves = $derived(
+		shelfId ? customShelves.list().filter((s) => s.id !== shelfId) : []
+	);
 	function removeFromThisShelf() {
 		if (!shelfId) return;
 		const id = shelfId;
@@ -138,6 +144,38 @@
 	<button class="account-item" onclick={() => act(() => unmarkFinished(book.slug, 'book'))}>
 		{@render row('bookmark', t('settings.unfinish'))}
 	</button>
+{/if}
+{#if item.status !== 'toRead'}
+	<!-- Back to To read: gives up the reading position (and a finish) — see
+	     shelfMoves. The other moves between the built-in shelves are the
+	     actions above. -->
+	<button class="account-item" onclick={() => act(() => moveToToRead(book.slug))}>
+		{@render row('list', t('shelves.moveToRead'))}
+	</button>
+{/if}
+{#if shelfId && otherShelves.length}
+	<button
+		class="account-item"
+		aria-expanded={moveOpen}
+		onclick={(e) => {
+			e.stopPropagation();
+			moveOpen = !moveOpen;
+		}}
+	>
+		{@render row('chevron-right', t('shelves.moveTo'))}
+	</button>
+	{#if moveOpen}
+		<div class="ms-7 mb-1" role="group" aria-label={t('shelves.moveTo')}>
+			{#each otherShelves as s (s.id)}
+				<button
+					class="account-item py-1.5"
+					onclick={() => act(() => moveBetweenShelves(shelfId, s.id, book.slug))}
+				>
+					<span class="truncate">{s.name}</span>
+				</button>
+			{/each}
+		</div>
+	{/if}
 {/if}
 
 {#if saved}
