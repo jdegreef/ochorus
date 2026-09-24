@@ -176,6 +176,13 @@ def main() -> int:
         )
         return 1
 
+    # The SVG Originals are measured outside this script (it reads rasters) and
+    # carried in on every run, bare or not, so re-tuning never drops them. See
+    # `curated_art.ORIGINAL_SVG_SCRIM`.
+    from library.curated_art import ORIGINAL_SVG_SCRIM
+
+    table.update(ORIGINAL_SVG_SCRIM)
+
     span = sorted(table.values())
     print(f"\n{len(table)} paintings, {span[0]:.2f}x .. {span[-1]:.2f}x")
     if opts.dry_run:

@@ -1189,6 +1189,48 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('<blockquote>"For ye were as', "<h3>A NEW YEAR'S ADDRESS.</h3>"),
         ],
     },
+    # Gutenberg #57109 (Hudson Taylor, *Unfailing Springs*) sets the address's
+    # text as a centred display line directly under its <h2> —
+    # `<div class="center">"Whosoever will, let him take the water of life
+    # freely"<br> (Rev. 22:17)</div>` — and the importer dropped it for the
+    # same reason as "The rest of Gutenberg #23438" above. The English block is
+    # spelled exactly as `import_sermons._display_line` now emits it. Each
+    # translation takes its registry Bible's wording of the clause (Arabic
+    # without the Van Dyck vowel marks, as this edition quotes John 4:10; the
+    # Luganda apostrophe straight, as this edition writes it), its own quotation
+    # marks and its corpus's name for the book. `quote_seed` anchors and the uk
+    # translation notes' `block_index` values below it shifted by one.
+    "unfailing-springs": {
+        "restored_blocks": [
+            # en
+            ("<p>THE best evidence of Christianity",
+             '<p>"Whosoever will, let him take the water of life freely"<br/> (Rev. 22:17)</p>'),
+            # ar
+            ("<p>إنّ خير برهان على المسيحية",
+             "<p>«من يرد فليأخذ ماء حياة مجانًا»<br/> (رؤيا 22:17)</p>"),
+            # es
+            ("<p>La mejor evidencia del cristianismo",
+             "<p>«El que quiere, tome del agua de la vida de balde»<br/> (Apocalipsis 22:17)</p>"),
+            # fr
+            ("<p>LA meilleure preuve du christianisme",
+             "<p>« Que celui qui veut, prenne de l’eau de la vie, gratuitement »<br/> (Apocalypse 22:17)</p>"),
+            # hi
+            ("<p>मसीही विश्वास का सबसे उत्तम प्रमाण",
+             '<p>"जो कोई चाहे वह जीवन का जल सेंत-मेंत ले"<br/> (प्रकाशितवाक्य 22:17)</p>'),
+            # lg
+            ("<p>Obujulizi obusinga obulungi",
+             "<p>\"Buli ayagala ajje anywe ku mazzi ag'obulamu ag'obuwa\"<br/> (Okubikkulirwa 22:17)</p>"),
+            # pt
+            ("<p>A MELHOR evidência do cristianismo",
+             '<p>"Quem quiser beba de graça da água da vida"<br/> (Apocalipse 22:17)</p>'),
+            # sw
+            ("<p>Ushahidi bora wa Ukristo",
+             '<p>"Kila anayetaka na anywe maji ya uzima bure"<br/> (Ufunuo 22:17)</p>'),
+            # uk
+            ("<p>Найкращий доказ християнства",
+             "<p>«Хто хоче, нехай приймає воду життя дармо»<br/> (Одкриттє 22:17)</p>"),
+        ],
+    },
     "essentials-of-prayer": {
         # A quoted hymn line broke across a line and rejoined with a space
         # before the comma ("He has said He will , If we but trust"). Restore
@@ -1667,6 +1709,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # xiii. The "lob" in the same sentence is a separate OCR slip in the
             # quoted text and is left for the English pass, which owns wording.
             ("(Job xiii. 8)", "(Job xlii. 8)"),
+            # ar ch6 rendered Rev. 22:17 itself; take the registry Bible's
+            # (Van Dyck) wording, as `unfailing-springs` does, so the language
+            # quotes the verse one way (`tests_verse_consistency`).
+            ("مَن يشأ فليأخذ من ماء الحياة مجانًا", "من يرد فليأخذ ماء حياة مجانًا"),
         ],
     },
     "the-bruised-reed": {
@@ -5266,6 +5312,19 @@ BODY_CORRECTIONS.setdefault("how-to-forgive", {}).setdefault("replacements", [])
 BODY_CORRECTIONS.setdefault("divine-songs-for-children", {}).setdefault("replacements", []).extend([
     ("but never play;", "but never pray;"),
     ("hawachezi kamwe", "hawaombi kamwe"),
+])
+
+# Christmas Evans, "The Triumph of Calvary": two slips in the Gutenberg text.
+# "the devil arid his legions" is an OCR misreading of "and". "the Son of
+# Righteousness shall shine" misquotes Malachi 4:2, paired with "the bright and
+# Morning Star" as the sun rising after the star, so the intended word is "Sun".
+# The editions AGREE: es ("el Sol de justicia" / "el diablo y sus legiones"), fr
+# ("le soleil de la justice" / "le diable et ses légions") and sw ("Jua la Haki" /
+# "Ibilisi na majeshi yake") all render the corrected reading. Found while
+# translating into Swahili (#2594).
+BODY_CORRECTIONS.setdefault("the-triumph-of-calvary", {}).setdefault("replacements", []).extend([
+    ("the devil arid his legions", "the devil and his legions"),
+    ("“the Son of Righteousness” shall shine", "“the Sun of Righteousness” shall shine"),
 ])
 
 # Finney, Lectures on Revivals of Religion — the print edition's page numbers,

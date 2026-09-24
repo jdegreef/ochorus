@@ -3453,13 +3453,13 @@ HUDSON_TAYLOR = [
         "slug": "hudson-taylor-a0b9c9a7",
         "text": "The habit of coming in faith to Him is incompatible with unmet hunger and thirst.",
         "sermon": "unfailing-springs",
-        "paragraph": 12,
+        "paragraph": 13,
     },
     {
         "slug": "hudson-taylor-8f87ae30",
         "text": "GOD'S overflow more than supplies the lack of individual capacity.",
         "sermon": "unfailing-springs",
-        "paragraph": 13,
+        "paragraph": 14,
     },
     {
         "slug": "hudson-taylor-cdcd2da5",
