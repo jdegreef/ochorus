@@ -24,8 +24,8 @@
  * per-locale `present`, every such PR rewrote the same lines and parallel PRs
  * merge-conflicted on it, and a conflict resolved by keeping either side left a
  * stale copy that broke main's CI (2026-09-23, #3124). A missing-keys list does
- * not move when a key lands in every catalogue — which parity requires — so the
- * file now changes only when a locale is added or genuinely falls behind.
+ * not move when a key lands in every catalogue — which parity requires — so
+ * adding a translated string leaves the file untouched.
  *
  * It also records each locale's PENDING keys — present, but still holding the
  * English source as a placeholder (value identical to English and not in
@@ -116,7 +116,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
 		if (current !== next) {
 			console.error(
 				'\n✗ backend/library/data/ui_catalogues.json is out of date.\n' +
-					"  The admin readiness report reads it to say whether a language's\n" +
+					'  The admin readiness report reads it to say whether a language\'s\n' +
 					'  interface is translated, so a stale copy reports the wrong answer.\n' +
 					'  Fix: cd frontend && npm run sync:catalogues\n'
 			);

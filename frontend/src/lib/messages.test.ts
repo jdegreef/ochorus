@@ -29,8 +29,8 @@ const keysOf = (l: string) => Object.keys(data[l]).filter((k) => k !== '$schema'
 /**
  * Strings a locale has NOT translated yet — declared, rather than hidden.
  *
- * Different in kind from SAME_AS_ENGLISH_OK (scripts/same-as-english.mjs), which is "identical to
- * English forever, and correctly so". This is debt, with a reason and a way out.
+ * Different in kind from SAME_AS_ENGLISH_OK (scripts/same-as-english.mjs),
+ * which is "identical to English forever, and correctly so". This is debt, with a reason and a way out.
  *
  * Asserted EXACTLY, in both directions: a fifth untranslated string fails, and
  * so does fixing one of these four without deleting it from here. A pending
@@ -122,7 +122,7 @@ function usedKeys(): Set<string> {
 				if (!p.includes('paraglide')) walk(p);
 			} else if (/\.(svelte|ts)$/.test(name) && !name.endsWith('.test.ts')) {
 				const src = fs.readFileSync(p, 'utf8');
-				for (let m; (m = re.exec(src));) out.add(toSnake(m[1]));
+				for (let m; (m = re.exec(src)); ) out.add(toSnake(m[1]));
 			}
 		}
 	};
@@ -137,11 +137,7 @@ describe('i18n messages', () => {
 			const here = new Set(keysOf(l));
 			const missing = [...base].filter((k) => !here.has(k));
 			const extra = [...here].filter((k) => !base.has(k));
-			expect({ locale: l, missing, extra }).toEqual({
-				locale: l,
-				missing: [],
-				extra: []
-			});
+			expect({ locale: l, missing, extra }).toEqual({ locale: l, missing: [], extra: [] });
 		}
 	});
 
@@ -166,10 +162,7 @@ describe('i18n messages', () => {
 					'Translate them, or — if they are blocked on something (a Bible text, a ' +
 					'reviewer) — add them there with the reason. If a listed key is now ' +
 					'translated, delete it from PENDING_TRANSLATION.'
-			).toEqual({
-				locale: l,
-				untranslated: [...(PENDING_TRANSLATION[l] ?? [])].sort()
-			});
+			).toEqual({ locale: l, untranslated: [...(PENDING_TRANSLATION[l] ?? [])].sort() });
 		}
 	});
 });

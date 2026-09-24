@@ -390,7 +390,9 @@ def _ui_check(lang: Language) -> Check:
         # see, not a launch gate. But it must not read "All translated." — some
         # of those strings do reach readers in English.
         if pending:
-            detail = f"All present; {pending} still an English placeholder, awaiting translation."
+            detail = (
+                f"All present; {pending} still English placeholder(s), awaiting translation."
+            )
         else:
             detail = "All translated."
         return Check("ui", "Interface strings", PASS, detail)
