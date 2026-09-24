@@ -40,6 +40,7 @@ from pathlib import Path
 from django.conf import settings
 from django.test import SimpleTestCase
 
+from library.contemporize import MODERN_LANGUAGE
 from library.content_fixtures import (
     ARTICLES_DIR,
     AUTHORS_FILE,
@@ -67,7 +68,13 @@ from library.covers import (
     twin_path,
     variant_url,
 )
-from library.curated_art import CURATED, CURATED_GROUND, ORIGINAL_GROUND
+from library.curated_art import (
+    CURATED,
+    CURATED_GROUND,
+    ORIGINAL_GROUND,
+    ORIGINAL_SVG_GROUND,
+    ORIGINAL_SVG_SCRIM,
+)
 from library.designed_covers import (
     DERIVED_GROUND,
     DESIGNED,
@@ -146,6 +153,11 @@ def _cover(fields: dict) -> str:
 def _cover_color(fields: dict) -> str:
     """A book row's cover_color, absent-or-null normalised to ''."""
     return fields.get("cover_color") or ""
+
+
+def _cover_title(fields: dict) -> str:
+    """The title a book row's cover sets — the twin of ``coverTitle.ts``."""
+    return fields.get("cover_title") or fields["title"]
 
 
 class FixtureIntegrityTests(SimpleTestCase):
@@ -561,17 +573,23 @@ class SeedFieldCoverageTests(SimpleTestCase):
         # reads each name off the fixture row with .get(), so a typo'd or
         # renamed entry yields None, the truthiness check skips it, and that
         # field simply never syncs again — no error, on any deploy, ever.
-        from library.author_sync import FILL_ONLY_FIELDS, SYNCED_FIELDS
+        from library.author_sync import (
+            FILL_ONLY_FIELDS,
+            FIXTURE_WINS_TEXT,
+            SYNCED_FIELDS,
+        )
         from library.models import Author
 
         model_fields = {f.name for f in Author._meta.concrete_fields}
         self.assertTrue(set(FILL_ONLY_FIELDS) <= model_fields)
+        self.assertTrue(set(FIXTURE_WINS_TEXT) <= model_fields)
         # SYNCED_FIELDS (`same_as`, `faq`) reads off the row the same way, so the
         # same typo silently stops the sync — guard them too.
         self.assertTrue(set(SYNCED_FIELDS) <= model_fields)
         self.assertFalse(set(FILL_ONLY_FIELDS) & set(SYNCED_FIELDS))
-        # `bio` has its own rule (empty-or-stub); it must not be fill-only too.
-        self.assertNotIn("bio", FILL_ONLY_FIELDS)
+        # The prose fields are fixture-wins; listing one as fill-only too would
+        # read as "protected" and mislead the next reader.
+        self.assertFalse(set(FIXTURE_WINS_TEXT) & set(FILL_ONLY_FIELDS))
 
 
 class FileCoherenceTests(SimpleTestCase):
@@ -1087,6 +1105,38 @@ class CoverAssetTests(SimpleTestCase):
             "`uv run python scripts/localize_covers.py` to draw and repoint it",
         )
 
+    def test_translated_editions_set_their_own_cover_title(self):
+        """A translated edition never sets another language's words on its
+        cover — which an edition written by copying the English file would."""
+        english = {
+            f["slug"]: f.get("cover_title") for f in self.books if f["language"] == "en"
+        }
+        copied = sorted(
+            f"{f['slug']}.{f['language']}: {f['cover_title']!r}"
+            for f in self.books
+            if f["language"] not in ("en", MODERN_LANGUAGE)
+            and f.get("cover_title")
+            and f["cover_title"] == english.get(f["slug"])
+        )
+        self.assertEqual(
+            copied, [], "translated edition sets the English cover title — translate it or blank it"
+        )
+
+    def test_cover_title_is_trimmed_and_shorter_than_the_title(self):
+        """It exists to be shorter; one that is not is a typo in the wrong field.
+        Trimmed here rather than at render, so ``coverTitle.ts`` and
+        ``_cover_title`` need not agree on what counts as whitespace."""
+        bad = sorted(
+            f"{f['slug']}.{f['language']}"
+            for f in self.books
+            if f.get("cover_title")
+            and (
+                f["cover_title"] != f["cover_title"].strip()
+                or len(f["cover_title"]) >= len(f["title"])
+            )
+        )
+        self.assertEqual(bad, [], "cover_title should be trimmed and shorter than title")
+
     def test_plate_colours_can_carry_white_type(self):
         """Every stored `cover_color` must be dark enough for the white byline.
 
@@ -1305,7 +1355,7 @@ class CoverAssetTests(SimpleTestCase):
             # part of what the card was made from.
             author = names.get(fields["author"][0], {}).get("name", fields["author"][0])
             blob = source.read_bytes() + "\0{}\0{}\0{}".format(
-                fields["title"], fields.get("subtitle") or "", author
+                _cover_title(fields), fields.get("subtitle") or "", author
             ).encode()
             if hashlib.sha256(blob).hexdigest() != recorded[key].get("ground"):
                 stale.append(key)
@@ -1420,6 +1470,61 @@ class CoverAssetTests(SimpleTestCase):
             "not — nothing may redraw one of these. If you replaced the artwork "
             "on purpose, update its digest in curated_art.ORIGINAL_GROUND in the "
             "same commit",
+        )
+
+    def test_original_svg_grounds_are_frozen(self):
+        """The SVG Originals under `covers/art/` are frozen like the raster ones.
+
+        The two gates around this one glob `*.jpg` only, so a hand-drawn SVG
+        ground — the Key Teachings trees — was pinned by nothing: a script or a
+        tidy-up could redraw it and CI would stay green. Every SVG there must be
+        registered in `curated_art.ORIGINAL_SVG_GROUND`, and its bytes must
+        still match the digest recorded beside it.
+        """
+        art = STATIC_DIR / "covers" / "art"
+        present = {p.stem for p in art.glob("*.svg")}
+        self.assertEqual(
+            sorted(present - set(ORIGINAL_SVG_GROUND)), [],
+            "an SVG ground under covers/art/ is unregistered — add it to "
+            "curated_art.ORIGINAL_SVG_GROUND with its sha256",
+        )
+        self.assertEqual(
+            sorted(set(ORIGINAL_SVG_GROUND) - present), [],
+            "an ORIGINAL_SVG_GROUND names a file that is not in covers/art/",
+        )
+        changed = sorted(
+            slug for slug, original in ORIGINAL_SVG_GROUND.items()
+            if digest(art / f"{slug}.svg") != original.sha256
+        )
+        self.assertEqual(
+            changed, [],
+            "an SVG Original changed but its recorded sha256 did not — nothing "
+            "may redraw one. If you replaced it on purpose, update its digest in "
+            "curated_art.ORIGINAL_SVG_GROUND in the same commit",
+        )
+
+    def test_original_svg_grounds_carry_their_measured_scrim(self):
+        """Each SVG Original has a measured scrim, and the table ships it as-is.
+
+        The raster gate below re-measures every `.jpg` against `ART_SCRIM`; it
+        cannot open an SVG, so these are measured outside it (see
+        `curated_art.ORIGINAL_SVG_SCRIM`) and pinned by the digest above. What
+        this holds is the join: no SVG Original without a measurement, and the
+        generated table carrying exactly that value — so a hand edit to
+        `art_scrim.py` can't quietly darken or lighten one.
+        """
+        from library.art_scrim import ART_SCRIM
+
+        self.assertEqual(sorted(ORIGINAL_SVG_SCRIM), sorted(ORIGINAL_SVG_GROUND))
+        drift = {
+            slug: (ART_SCRIM.get(slug), k)
+            for slug, k in ORIGINAL_SVG_SCRIM.items()
+            if ART_SCRIM.get(slug) != k
+        }
+        self.assertEqual(
+            drift, {},
+            "art_scrim.ART_SCRIM disagrees with curated_art.ORIGINAL_SVG_SCRIM — "
+            "re-run scripts/tune_art_scrim.py, which carries these in",
         )
 
     def test_every_art_file_belongs_to_a_tier(self):
@@ -3288,15 +3393,11 @@ class ReleaseProseSourceCoverageTests(SimpleTestCase):
     NOT_READER_PROSE = {
         # One-line author stubs planted only when an IMPORT creates a new author
         # (the import_* commands are not in the release chain). The real bio
-        # comes from the fixture, and author_sync exists to recognise a stub and
-        # replace it — so editing one changes nothing a reader sees on a deploy.
+        # comes from the fixture, which author_sync writes over it on the next
+        # deploy — so editing one changes nothing a reader sees.
         "library/catalog.py": "import-time author stubs; the fixture supersedes them",
-        # Sermon import config: titles/scripture reach the reader through the
-        # sermon FIXTURES (what seed_sermons upserts), not this module; its own
-        # strings are body_starts anchors and dev comments. Same as catalog.py.
-        "library/sermon_catalog.py": "import-time sermon config; the fixture supersedes it",
-        # Reads catalog stubs to DETECT them; writes bios from the fixture.
-        "library/author_sync.py": "stub detection, not a source of prose",
+        # Writes bios from the fixture; holds no prose of its own.
+        "library/author_sync.py": "copies fixture prose, holds none",
         # bible_licence / attribution text. Admin-facing (AddLanguageForm) — it
         # is not in the public serializers and reaches no prerendered page.
         "library/language_seed.py": "admin-facing licence text, not reader prose",

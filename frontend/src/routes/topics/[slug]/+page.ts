@@ -52,6 +52,14 @@ export const trailingSlash = 'always';
 // status=draft, so they stay out of the sitemap until the language is
 // switched live.
 //
+// Prerender refresh 2026-09-24 (queue jobs #2749 #2750 #2751 #2752 #2753): the
+// first five Luganda pending-shelf translations — the-puritans, abiding-in-christ,
+// women-of-faith, voices-of-the-early-church, day-by-day. Topic prose has no
+// English fallback, so each /lg/topics/<slug> page 404'd before this and now
+// renders; the built pages have to be re-baked. These five stay in
+// TRANSLATION_PENDING (partial coverage across languages is allowed) until every
+// language covers them.
+//
 // Prerender one page per topic — the slug list comes from the API at build
 // time. The topics endpoint may lag on a fresh deploy (api + web build
 // together), so degrade to no topic pages rather than fail the whole build;
@@ -65,11 +73,11 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
 	// orNotFound turns the API's 404 into SvelteKit's, so an unpublished or
 	// mistyped slug gets the not-found page (with its daily picks) instead of the
 	// generic "something went wrong — try again" shell, which offers a retry for
 	// a page that will never exist. Books, chapters, sermons and authors have
 	// always done this; topics and plans were the two that missed it.
-	return { topic: await orNotFound(() => getTopic(params.slug, getLang())) };
+	return { topic: await orNotFound(() => getTopic(params.slug, getLang(), fetch)) };
 };

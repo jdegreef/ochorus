@@ -1,12 +1,14 @@
 import re
 
 from django.db.models import Count, Sum
+from django.urls import reverse
 from django.utils.text import slugify
 from rest_framework import serializers
 
 from .alternate_titles import alternate_titles
 from .contemporize import MODERN_LANGUAGE
 from .curated_art import credit
+from .export_policy import is_exportable
 from .localization import language_from_request
 from .models import (
     SERMON_CARD_DEFER,
@@ -352,6 +354,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "language",
             "title",
             "subtitle",
+            "cover_title",
             "author",
             "source_type",
             "cover_color",
@@ -1255,6 +1258,9 @@ class BookDetailSerializer(BookListSerializer):
     # author_same_as: a card has no room to show them and no markup to carry
     # them, so a shelf would ship the strings 130 times over for nothing.
     alternate_titles = serializers.SerializerMethodField()
+    # The API path of this edition's EPUB ("" = not downloadable), the twin of
+    # ``pdf_url`` — see library/export_policy.py and library/book_export.py.
+    epub_url = serializers.SerializerMethodField()
     # The passages this book keeps returning to, derived from its own text —
     # see library/scripture_graph.treated_passages. Detail only: it costs two
     # queries, which is nothing on one page and 130 times nothing on a shelf.
@@ -1374,7 +1380,13 @@ class BookDetailSerializer(BookListSerializer):
             "editions", "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "qa", "scripture", "opening",
             "featured_people", "author_quote_count", "guides", "series",
+            "epub_url",
         ]
+
+    def get_epub_url(self, obj) -> str:
+        if not is_exportable(obj):
+            return ""
+        return f"{reverse('book-epub', args=[obj.slug])}?language={obj.language}"
 
     def get_editions(self, obj):
         """Sibling audience editions (full ⇄ teens ⇄ children) as cover cards,

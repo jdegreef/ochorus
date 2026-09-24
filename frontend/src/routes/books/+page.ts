@@ -3,6 +3,42 @@
 // prerendered per locale, so /es/books and the shelf rebuild with the translated title over the
 // shared painting ground and the reader page bakes the 7 chapters. Completes the es christ-our-healer
 // curated plan (see plans/+page.ts).
+// prerender refresh 2026-09-24 (queue job #3178): Portuguese book — pilgrims-progress, John Bunyan's
+// allegory of Christian's journey to the Celestial City ("O Peregrino"), 22 chapters. Book pages are
+// prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the shared
+// painting ground and the reader page bakes the 22 chapters. Backs the CURATED plan the-pilgrims-way,
+// but around-the-wicket-gate and grace-abounding are not yet in pt, so no pt plan row activates and no
+// plan prose is owed.
+// prerender refresh 2026-09-24 (queue job #3170): Portuguese book — grace-for-grace-2, Watchman Nee's
+// teaching on grace through the parables and Gospel scenes ("Graça sobre Graça"), 9 chapters. Book
+// pages are prerendered per locale, so /pt/books and the shelf rebuild with the translated title over
+// the designed plate cover and the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
+// entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue job #3147): Portuguese book — school-of-prayer, Andrew Murray's
+// thirty-one lessons on prayer ("Com Cristo na Escola de Oração"), 33 chapters. Book pages are
+// prerendered per locale, so /pt/books and the shelf rebuild with the translated title over the
+// designed plate cover and the reader page bakes the 33 chapters. Activates the pt row of the
+// single-book plan school-of-prayer-31-days (pt plan prose added in data/plan_translations/pt.json;
+// the /pt/plans/school-of-prayer-31-days page rebuilds from that content root — no plans/+page.ts
+// touch owed).
+// prerender refresh 2026-09-24 (queue job #3145): Spanish book — school-of-prayer, Andrew Murray's
+// thirty-one lessons on prayer ("Con Cristo en la escuela de oración"), 33 chapters. Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title over the
+// designed plate cover and the reader page bakes the 33 chapters. Activates the es row of the
+// single-book plan school-of-prayer-31-days (es plan prose added in data/plan_translations/es.json;
+// the /es/plans/school-of-prayer-31-days page rebuilds from that content root — no plans/+page.ts
+// touch owed).
+// prerender refresh 2026-09-24 (queue job #3166): Spanish book — grace-for-grace-2, Watchman Nee's
+// teaching on grace through the parables and Gospel scenes ("Gracia sobre gracia"), 9 chapters. Book
+// pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
+// the designed plate cover and the reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS
+// entry, so no plans/+page.ts touch owed.
+// prerender refresh 2026-09-24 (queue jobs #1752, #3152, #2797): three more Ukrainian books —
+// power-through-prayer («Сила через молитву», 20 ch), school-of-prayer («З Христом у школі молитви»,
+// 33 ch) and rise-up-men-of-god-2 («Устаньте, мужі Божі», 14 ch) — bake into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #813): Ukrainian book — prayer-the-pulse-of-life, Hannah
+// Buyinza ("Молитва — пульс життя"), 12 chapters. Book pages are prerendered per locale, so /uk/books
+// and the shelf rebuild with the translated title over the shared derived ground.
 // prerender refresh 2026-09-24 (queue job #1790): Spanish book — spurgeon-on-prayer, twelve of
 // Spurgeon's sermons on prayer plus an introduction ("Gran poder en la oración"), 13 chapters. Book
 // pages are prerendered per locale, so /es/books and the shelf rebuild with the translated title over
@@ -62,6 +98,11 @@
 // Rebuilds /sw/books so the card carries its translated title over the shared painting cover, and
 // the reader page bakes the 24 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no
 // plans/+page.ts touch owed.
+// prerender refresh 2026-09-23: one NEW English book — sons-of-the-king-3, "Sons of the King – 30
+// Days with God for Guys – Book 3" (Growing Up), volume 3 of the house-written boys' devotional series
+// (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB Scripture). Rebuilds
+// /books and the For Young Readers shelf so the card and its young-style plate cover (volume 3)
+// appear, and the reader pages bake the chapters. Backs the new sons-of-the-king-book-3-30-days plan.
 // prerender refresh 2026-09-23: one NEW English book — daughters-of-the-king-3, "Daughters of the
 // King – 30 Days with God for Girls – Book 3" (Growing Up), volume 3 of the house-written girls'
 // devotional series (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32 chapters; BSB
@@ -432,6 +473,14 @@
 // touch, because it completes the set.
 // prerender refresh 2026-09-24 (queue job #1755): वॉचमैन नी — the Hindi edition of
 // watchman-nee-a-life, 21 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-24 (queue job #1780): उकाब के समान ऊँचे उड़ो — the Hindi edition
+// of soar-like-the-eagle-3, 12 chapters — bakes into the /hi/books shelf (hi is still draft).
+// prerender refresh 2026-09-24 (queue job #2827, PR #3323): Зростати в мудрості — the Ukrainian
+// edition of growing-in-wisdom, 18 chapters — bakes into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #1795, PR #3321): Могутня сила молитви — the Ukrainian
+// edition of spurgeon-on-prayer, 13 chapters — bakes into the /uk/books shelf.
+// prerender refresh 2026-09-24 (queue job #814, PR #3343): Божественне зцілення — the Ukrainian
+// edition of divine-healing, 32 chapters — bakes into the /uk/books shelf.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
@@ -754,7 +803,7 @@ import type { PageLoad } from './$types';
  * already shipped, so plans/+page.ts is refreshed in the same PR — the two
  * plans go live the moment these books do.
  */
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listBooks(getLang()));
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listBooks(getLang(), fetch));
 	return { books: items, loadError };
 };

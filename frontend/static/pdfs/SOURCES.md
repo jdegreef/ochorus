@@ -5,7 +5,8 @@ The 33 PDFs below were previously hotlinked from the old WordPress site
 (`ochorus.com/wp-content/uploads/…`), which stopped serving them when the domain
 moved to the app.
 
-**These 33 books currently have `pdf_url` blanked in the fixture**, so no download
+**These books have `pdf_url` blanked in the fixture** (all but the one marked
+✅ generated below), so no download
 button renders for them — a hidden button beats one that 404s. To restore a
 download: add the file here under the exact `<slug>.pdf` name (the original
 WordPress filename is kept for provenance), set that book's `pdf_url` back to
@@ -13,8 +14,12 @@ WordPress filename is kept for provenance), set that book's `pdf_url` back to
 commit both together. `pdf_url` is an updatable seed field, so the next deploy
 picks it up.
 
-Only `soar-like-the-eagle.pdf` is present today, and it is the one book that keeps
-a live download link.
+Only `soar-like-the-eagle.pdf` and `the-secret-of-guidance.pdf` are present today.
+The second is not the WordPress file: it is GENERATED from the live chapters by
+`uv run python manage.py export_book the-secret-of-guidance --format pdf` (run with
+`PUBLIC_SITE_URL=https://ochorus.com` so the colophon links resolve) — the pilot for
+free EPUB/PDF downloads, see `backend/library/book_export.py`. Re-run the command
+after a text fix to that book, or the PDF drifts from what the reader serves.
 
 The original URLs below are not dead ends: `render.yaml` 301s each one to its book
 page, so an inbound link or a search result lands on the work itself rather than on
@@ -53,6 +58,6 @@ beside the rules, to be added when those books go live.
 | `the-masters-indwelling.pdf` | https://ochorus.com/wp-content/uploads/2025/08/THE-MASTERS-INDWELLING-ANDREW-MURRAY.pdf |
 | `the-normal-christian-life.pdf` | https://ochorus.com/wp-content/uploads/2025/08/The-Normal-Christian-Life-Watchman-Nee-2.pdf |
 | `the-person-and-work-of-the-holy-spirit.pdf` | https://ochorus.com/wp-content/uploads/2025/09/The-Person-and-Work-of-the-Holy-Spirit-BB.pdf |
-| `the-secret-of-guidance.pdf` | https://ochorus.com/wp-content/uploads/2025/08/The-secret-of-guidance-by-Frederick-Brotherton-Meyer-2.pdf |
+| `the-secret-of-guidance.pdf` ✅ generated | https://ochorus.com/wp-content/uploads/2025/08/The-secret-of-guidance-by-Frederick-Brotherton-Meyer-2.pdf |
 | `the-unselfishness-of-god.pdf` | https://ochorus.com/wp-content/uploads/2026/06/The-Unselfishness-of-God-by-Hannah-Whitall-Smith.pdf |
 | `women-who-moved-heaven-2.pdf` | https://ochorus.com/wp-content/uploads/2026/06/WOMEN-WHO-MOVED-HEAVEN-BY-OCHORUS-MINISTRIES.pdf |

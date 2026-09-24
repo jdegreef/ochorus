@@ -10,7 +10,7 @@ export const trailingSlash = 'always';
 // and the sitemap read, so all three advertise exactly the same set. A lagging
 // API is REPORTED (loadShelf) so the page can offer Try again, rather than
 // baking a false "no articles yet".
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listArticles('en'));
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listArticles('en', fetch));
 	return { articles: items, loadError };
 };

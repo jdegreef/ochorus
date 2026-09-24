@@ -1,0 +1,470 @@
+{
+ "kind": "book",
+ "slug": "grace-for-grace-2",
+ "language": "es",
+ "job_issue": 3166,
+ "references": [
+  {
+   "reference": "Lucas 5:27-30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 5:31-39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 9:16-17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 2:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 3:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 5:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 18:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 5:34-35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 9:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 5:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 19:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 3:16",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Mateo 9:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 3:18",
+   "status": "mined",
+   "source_file": "how-to-succeed-in-the-christian-life.es.json"
+  },
+  {
+   "reference": "Hechos 13:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Romanos 7:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 5:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 15:11-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 15:17-24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 15:25-32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 15:17-19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 15:20-22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 10:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 15:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 15:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 43:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 15:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Génesis 4:8-11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 12:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 5:6-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 27:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:11",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Romanos 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:14",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Romanos 7:17",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json"
+  },
+  {
+   "reference": "Romanos 7:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colosenses 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 1:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 5:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hechos 22:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 6:3-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 9:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 6:1-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmo 32:1-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbios 28:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 5:23-26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 3:7-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 3:10-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 2:2",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Salmo 32:3-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Números 32:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éxodo 25:10-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éxodo 25:17-22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Éxodo 25:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 2:22",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Levítico 16:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezequiel 9:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 9:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Levítico 25:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 22:37-38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 2:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Juan 4:20",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json"
+  },
+  {
+   "reference": "1 Juan 5:2-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 14:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 14:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 14:21b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Reyes 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 15:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 15:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 8:28",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "1 Corintios 2:9",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "1 Corintios 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Santiago 1:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 21:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 14:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 10:37-38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 5:25",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Romanos 5:8",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "1 Juan 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 7:47",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corintios 16:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efesios 6:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 20:1-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 20:11-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 20:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 20:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 20:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 20:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 20:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 20:17-18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 1:29",
+   "status": "mined",
+   "source_file": "stepping-stones-2.es.json"
+  },
+  {
+   "reference": "Juan 1:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 16:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 17:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 20:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateo 26:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cantares 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreos 2:9-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juan 1:9",
+   "status": "self_rendered"
+  }
+ ]
+}

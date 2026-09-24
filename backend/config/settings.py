@@ -116,6 +116,14 @@ else:
         }
     }
 
+# models.W038: "SQLite does not support deferrable unique constraints."
+# `Book`'s one-volume-per-language constraint is DEFERRED so a series can be
+# renumbered inside one seed transaction (see the model). Postgres — CI and
+# prod — builds it and never raises this; SQLite, the local dev fallback, simply
+# skips the constraint and warned about it on every manage.py command. The
+# fixture gate (tests_fixture.SeriesMembershipTests) holds the same rule there.
+SILENCED_SYSTEM_CHECKS = ["models.W038"]
+
 
 # --- Auth / passwords ---------------------------------------------------------
 # Auth is handled by Supabase (see accounts/authentication.py). Django's own
@@ -194,6 +202,8 @@ REST_FRAMEWORK = {
         # nature — a handful a day at most — so this only catches a script
         # flooding the queue, never a genuine submitter. Per account.
         "feedback": "20/hour",
+        # Whole-book downloads (BookEpubView): each builds an entire book.
+        "book-download": "30/min",
     },
     # Exactly one proxy (Render's) sits in front of the app, so the client
     # address is the LAST entry in X-Forwarded-For. Without this, DRF keys

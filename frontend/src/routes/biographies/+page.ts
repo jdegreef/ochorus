@@ -17,16 +17,16 @@ import type { PageLoad } from './$types';
 // this shelf bakes each card's photo_url (and its schema.org image). Force a
 // rebuild AFTER the API migration lands so the cards show the new portraits
 // instead of the initials avatar.
-export const load: PageLoad = async () => {
+export const load: PageLoad = async ({ fetch }) => {
 	const lang = getLang();
 	// The authors are the shelf: a failed fetch is REPORTED so the page can
 	// offer Try again, rather than crashing to the 500 route (it was unguarded).
-	const { items: authors, loadError } = await loadShelf(listAuthors(lang));
+	const { items: authors, loadError } = await loadShelf(listAuthors(lang, fetch));
 	// Books power the per-writer cover strip; degrade to no strips if unavailable
 	// so the biographies still render.
 	let books: BookSummary[] = [];
 	try {
-		books = await listBooks(lang);
+		books = await listBooks(lang, fetch);
 	} catch {
 		books = [];
 	}

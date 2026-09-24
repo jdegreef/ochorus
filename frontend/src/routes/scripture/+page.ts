@@ -8,10 +8,10 @@ import type { PageLoad } from './$types';
 export const prerender = true;
 export const trailingSlash = 'always';
 
-export const load: PageLoad = async () => {
+export const load: PageLoad = async ({ fetch }) => {
 	// A lagging API is REPORTED (loadShelf), not silently baked as an empty
 	// index that reads "still being built": the page shows Try again instead,
 	// and a later rebuild picks the pages up. Same treatment as /topics.
-	const { items, loadError } = await loadShelf(listScripturePages());
+	const { items, loadError } = await loadShelf(listScripturePages(fetch));
 	return { pages: items, loadError };
 };

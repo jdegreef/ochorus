@@ -3423,7 +3423,7 @@ HUDSON_TAYLOR = [
         "slug": "hudson-taylor-59c25747",
         "text": "The GOD of the Bible is a GOD who punishes sin, and cannot pardon without atonement.",
         "sermon": "under-the-shepherds-care",
-        "paragraph": 1,
+        "paragraph": 2,
     },
     {
         "slug": "hudson-taylor-f8d18af3",
@@ -3435,7 +3435,7 @@ HUDSON_TAYLOR = [
         "slug": "hudson-taylor-9e37f8aa",
         "text": "Sometimes we have trials which we cannot put into prayer; the LORD knows the secrets of our heart.",
         "sermon": "under-the-shepherds-care",
-        "paragraph": 12,
+        "paragraph": 13,
     },
     {
         "slug": "hudson-taylor-d8fd45a2",
@@ -3447,7 +3447,7 @@ HUDSON_TAYLOR = [
         "slug": "hudson-taylor-4d77cbd9",
         "text": "The peace, which we can neither make nor keep, will itself, as a garrison, keep and protect us, and the cares and worries will strive to enter in vain.",
         "sermon": "blessed-adversity",
-        "paragraph": 9,
+        "paragraph": 13,
     },
     {
         "slug": "hudson-taylor-a0b9c9a7",
@@ -3501,7 +3501,7 @@ HUDSON_TAYLOR = [
         "slug": "hudson-taylor-d414362d",
         "text": "Dangers seen sometimes appal us, or appal those who love us: but they are not more real than many we never dream of.",
         "sermon": "all-sufficiency",
-        "paragraph": 3,
+        "paragraph": 4,
     },
     {
         "slug": "hudson-taylor-938e0682",
@@ -3513,25 +3513,25 @@ HUDSON_TAYLOR = [
         "slug": "hudson-taylor-14428932",
         "text": "Self-will is unmingled folly, and can only end in injury and loss.",
         "sermon": "all-sufficiency",
-        "paragraph": 2,
+        "paragraph": 3,
     },
     {
         "slug": "hudson-taylor-a1d67b37",
         "text": "Self-denial surely means something far greater than some slight insignificant lessening of our self-indulgences!",
         "sermon": "self-denial-versus-self-assertion",
-        "paragraph": 2,
+        "paragraph": 3,
     },
     {
         "slug": "hudson-taylor-6356623c",
         "text": "Every true minister of GOD, every true missionary, every true Sunday-school teacher and Christian worker is a faith-worker.",
         "sermon": "a-full-reward",
-        "paragraph": 7,
+        "paragraph": 8,
     },
     {
         "slug": "hudson-taylor-b6346059",
         "text": "The child of GOD has no need of the counsel of the ungodly; if he love and study GOD'S Word it will make him wiser than all such counsellors.",
         "sermon": "blessed-prosperity",
-        "paragraph": 7,
+        "paragraph": 11,
     },
 ]
 

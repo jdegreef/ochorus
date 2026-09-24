@@ -3,6 +3,9 @@
 // and divine-healing. Shipping the-gospel-of-healing.es completes the es set, so seed_plans creates
 // the (christ-our-healer, es) row; /plans is prerendered per locale, so /es/plans re-crawls to bake
 // the new card with its translated title and description.
+// prerender refresh 2026-09-23: NEW English plan — sons-of-the-king-book-3-30-days ("Sons of the
+// King: 30 Days with God — Book 3"), a LAUNCH_PLANS entry over sons-of-the-king-3 reading chapters
+// 2–31 (Day 1–30). English only. /plans re-crawls to bake the new card.
 // prerender refresh 2026-09-23: NEW English plan — daughters-of-the-king-book-3-30-days ("Daughters
 // of the King: 30 Days with God — Book 3"), a LAUNCH_PLANS entry over daughters-of-the-king-3 reading
 // chapters 2–31 (Day 1–30). English only. /plans re-crawls to bake the new card.
@@ -236,8 +239,18 @@ import type { PageLoad } from './$types';
  * Andrew Murray's Humility shipped in Ukrainian with its plan prose, so
  * seed_plans creates humility-12-days in uk as Смирення за 12 днів and /uk/plans
  * re-crawls to bake the new card.
+ *
+ * Prerender refresh 2026-09-24 (queue job #3152, PR #3272, the plan side-effect):
+ * Andrew Murray's With Christ in the School of Prayer shipped in Ukrainian with
+ * its plan prose, so seed_plans creates school-of-prayer-31-days in uk as
+ * «31 день у школі молитви» and /uk/plans re-crawls to bake the new card.
+ *
+ * Prerender refresh 2026-09-24 (queue job #2827, PR #3323, the plan side-effect):
+ * Growing in Wisdom shipped in Ukrainian with its plan prose, so seed_plans
+ * creates growing-in-wisdom-18-days in uk as «Зростати в мудрості за 18 днів»
+ * and /uk/plans re-crawls to bake the new card.
  */
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listPlans(getLang()));
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listPlans(getLang(), fetch));
 	return { plans: items, loadError };
 };

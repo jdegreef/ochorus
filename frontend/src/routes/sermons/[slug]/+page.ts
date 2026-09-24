@@ -28,8 +28,8 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params }) => {
-	const sermon = await orNotFound(() => getSermon(params.slug, getLang()));
+export const load: PageLoad = async ({ params, fetch }) => {
+	const sermon = await orNotFound(() => getSermon(params.slug, getLang(), fetch));
 	return { sermon };
 };
 

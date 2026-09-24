@@ -92,8 +92,8 @@ export const entries: EntryGenerator = async () => {
 	return books.map((b) => ({ slug: b.slug }));
 };
 
-export const load: PageLoad = async ({ params }) => {
-	const book = await orNotFound(() => getBook(params.slug, getLang()));
+export const load: PageLoad = async ({ params, fetch }) => {
+	const book = await orNotFound(() => getBook(params.slug, getLang(), fetch));
 	return { book };
 };
 

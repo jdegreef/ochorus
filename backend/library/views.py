@@ -4,11 +4,13 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 (default "en"). All endpoints are public (AllowAny via the project default).
 """
 
+import hashlib
 import logging
 
+from django.conf import settings
 from django.core.cache import cache
 from django.db.models import Count, Exists, F, OuterRef, Prefetch, Q
-from django.http import Http404
+from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.parsers import JSONParser
@@ -17,9 +19,16 @@ from rest_framework.views import APIView
 
 from common.throttling import ScopedCacheThrottle
 
+from . import book_export
 from . import languages as languages_module
 from .contemporize import MODERN_LANGUAGE
-from .http_cache import PublicContentCacheMixin
+from .export_policy import is_exportable
+from .http_cache import (
+    CACHE_CONTROL,
+    PublicContentCacheMixin,
+    _if_none_match,
+    content_etag,
+)
 from .languages import entry as language_entry
 from .localization import language_from_request
 from .models import (
@@ -182,19 +191,84 @@ class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         return ctx
 
 
+def _book_shelf(language: str):
+    """Published books in ``language``, shaped for ``BookListSerializer`` cards
+    and in shelf order — shared so every shelf gets the same prefetches and
+    annotations (``BookCardPayloadTests`` budgets them)."""
+    return (
+        Book.objects.filter(is_published=True, language=language)
+        .select_related("author")
+        .prefetch_related("author__translations")
+        .annotate(**BOOK_CARD_ANNOTATIONS)
+        .order_by("sort_order", "title")
+    )
+
+
+class OriginalsView(PublicContentCacheMixin, APIView):
+    """The house imprint's own shelf, for the /originals page.
+
+    Ochorus Originals is a byline, not a person (``Author.is_imprint``), so it
+    gets a publisher's page rather than an author page: its books in the
+    requested language, the series they run in, and how many it has in each
+    language so the page can point readers at their own.
+
+    A series groups only when it has a name in this language — the no-fallback
+    rule ``Series.title_for`` keeps — so an unnamed one's volumes simply stand
+    alone on the shelf rather than sitting under an English heading.
+    """
+
+    def get(self, request):
+        lang = _language(request)
+        imprint = Q(author__is_imprint=True, is_published=True)
+        books = list(_book_shelf(lang).filter(author__is_imprint=True))
+        series_rows = Series.objects.filter(
+            pk__in={b.series_id for b in books if b.series_id}
+        ).prefetch_related("translations")
+        series = []
+        for s in series_rows:
+            title = s.title_for(lang)
+            if not title:
+                continue
+            # Stable sort: ties keep the shelf order the queryset gave them.
+            members = sorted(
+                (b for b in books if b.series_id == s.pk),
+                key=lambda b: b.series_position or 0,
+            )
+            series.append(
+                {
+                    "slug": s.slug,
+                    "title": title,
+                    "description": s.description_for(lang),
+                    "books": [b.slug for b in members],
+                }
+            )
+        languages = (
+            Book.objects.filter(imprint)
+            .values("language")
+            .annotate(count=Count("pk"))
+            .order_by("-count", "language")
+        )
+        # No topic chips: nothing on this page filters or shows them, and the
+        # map is a walk over every topic in the library.
+        ctx = {"request": request, "language": lang, "book_topics": {}}
+        return Response(
+            {
+                "books": BookListSerializer(books, many=True, context=ctx).data,
+                "series": series,
+                "languages": [
+                    {"code": row["language"], "count": row["count"]} for row in languages
+                ],
+            }
+        )
+
+
 class BookListView(PublicContentCacheMixin, generics.ListAPIView):
     """All published books for a language, ordered for the shelf."""
 
     serializer_class = BookListSerializer
 
     def get_queryset(self):
-        return (
-            Book.objects.filter(is_published=True, language=_language(self.request))
-            .select_related("author")
-            .prefetch_related("author__translations")
-            .annotate(**BOOK_CARD_ANNOTATIONS)
-            .order_by("sort_order", "title")
-        )
+        return _book_shelf(_language(self.request))
 
     def get_serializer_context(self):
         """Attach a ``book_slug -> [topic chip]`` map so each book's topics
@@ -247,6 +321,56 @@ class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             book=book,
             order=self.kwargs["order"],
         )
+
+
+class _BookDownloadThrottle(ScopedCacheThrottle):
+    """A download builds a whole book, so it gets its own ceiling — far above a
+    reader (nobody downloads 30 books a minute) and well below a scraper."""
+
+    scope = "book-download"
+
+
+class BookEpubView(APIView):
+    """A book as an EPUB file, built per request from the live chapters.
+
+    See ``library/book_export.py``. 404 for anything not exportable
+    (``export_policy``), so a guessed URL can't pull an edition we haven't
+    vetted.
+
+    Not ``PublicContentCacheMixin``: its tag moves with the content, but the
+    renderer (book_export.py) is deliberately not a content root, so a deploy
+    that changes the FILE FORMAT would keep answering 304. The tag here is the
+    shared content tag plus the release commit, still checked before the book
+    is built.
+    """
+
+    throttle_classes = [_BookDownloadThrottle]
+
+    def get(self, request, slug):
+        etag = _epub_etag(request)
+        if _if_none_match(request, etag):
+            response = HttpResponseNotModified()
+        else:
+            book = get_object_or_404(
+                Book.objects.select_related("author"),
+                slug=slug,
+                language=_language(request),
+            )
+            if not is_exportable(book):
+                raise Http404
+            data = book_export.render_epub(book_export.build_edition(book))
+            response = HttpResponse(data, content_type="application/epub+zip")
+            response["Content-Disposition"] = (
+                f'attachment; filename="{book_export.export_filename(book, "epub")}"'
+            )
+        response["ETag"] = etag
+        response["Cache-Control"] = CACHE_CONTROL
+        return response
+
+
+def _epub_etag(request) -> str:
+    material = f"{content_etag(request)}|{settings.RELEASE_COMMIT}"
+    return 'W/"' + hashlib.sha256(material.encode()).hexdigest()[:16] + '"'
 
 
 class SermonListView(PublicContentCacheMixin, generics.ListAPIView):

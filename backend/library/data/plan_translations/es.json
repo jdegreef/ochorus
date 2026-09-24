@@ -72,5 +72,12 @@
       "Queue job #2543 (this PR): the-gospel-of-healing.es («El Evangelio de la sanidad») completes the curated christ-our-healer set, so seed_plans now creates the (christ-our-healer, es) row and needs this prose. The other two source books were already Spanish: the-fourfold-gospel.es («El evangelio cuádruple») and divine-healing.es («La Sanidad Divina»).",
       "The description echoes the shipped title «El evangelio cuádruple» verbatim, so the plan card and the book it opens agree."
     ]
+  },
+  "school-of-prayer-31-days": {
+    "title": "31 días en la escuela de oración",
+    "description": "Un mes con Andrew Murray a los pies del único Maestro. Cada día abre una de las propias palabras de Jesús sobre la oración, desde «Señor, enséñanos a orar» hasta las promesas de la última noche, y termina en una oración. Una lección al día, unos diez minutos, avanzando hacia la intercesión y una vida de oración.",
+    "note": [
+      "Queue job #3145. El libro fuente school-of-prayer ahora tiene edición en español, así que seed_plans crea una fila en español para este plan de un solo libro; esta prosa evita que se publique con título en inglés. El título y la descripción reflejan la edición española «Con Cristo en la escuela de oración»."
+    ]
   }
 }

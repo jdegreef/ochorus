@@ -64,6 +64,22 @@ describe('in-flight GET dedupe', () => {
 		expect(c).toBe(a);
 	});
 
+	it("uses a load's own fetch, and never shares its request", async () => {
+		// A load's fetch must SEE its own request — that is what inlines the
+		// response into the prerendered page — so it can't borrow a promise from
+		// an in-flight global request (or another page's load) for the same path.
+		const load = deferredFetch();
+		const all = Promise.all([
+			apiFetch('/library/plans/'),
+			apiFetch('/library/plans/', {}, load.mock as typeof fetch)
+		]);
+		expect(fetchMock).toHaveBeenCalledTimes(1);
+		expect(load.mock).toHaveBeenCalledTimes(1);
+		settleAll();
+		load.settleAll();
+		await all;
+	});
+
 	it('does not collapse different paths', async () => {
 		const all = Promise.all([apiFetch('/library/plans/'), apiFetch('/library/books/')]);
 		expect(fetchMock).toHaveBeenCalledTimes(2);

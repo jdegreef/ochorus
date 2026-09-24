@@ -1,4 +1,5 @@
-import type { Handle } from '@sveltejs/kit';
+import type { Handle, HandleFetch } from '@sveltejs/kit';
+import { API_BASE_URL } from '$lib/config';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { getTextDirection } from '$lib/paraglide/runtime';
 
@@ -21,3 +22,27 @@ export const handle: Handle = ({ event, resolve }) =>
 					.replace('%paraglide.dir%', getTextDirection(locale))
 		});
 	});
+
+// Build-side CORS for the API calls load() makes with its own `fetch` (which is
+// what inlines each response into the prerendered page — see `Fetch` in
+// $lib/api.ts). SvelteKit replays browser CORS rules on those server-side
+// fetches and throws unless the response carries an Access-Control-Allow-Origin
+// matching the page's origin. The build's request carries no `Origin` header, so
+// django-cors-headers (rightly) sends none back, and the prerender origin is not
+// a real one to allow-list anyway. This hook runs only server-side — the
+// prerender, and `vite dev` SSR; the deployed site is static, with no server —
+// and the header is read only by SvelteKit's own server-side CORS check, so
+// stamping it grants no browser anything: browsers do real CORS against the API.
+const apiOrigin = API_BASE_URL ? new URL(API_BASE_URL).origin : null;
+
+export const handleFetch: HandleFetch = async ({ event, request, fetch }) => {
+	const response = await fetch(request);
+	if (!apiOrigin || new URL(request.url).origin !== apiOrigin) return response;
+	const headers = new Headers(response.headers);
+	headers.set('access-control-allow-origin', event.url.origin);
+	return new Response(response.body, {
+		status: response.status,
+		statusText: response.statusText,
+		headers
+	});
+};

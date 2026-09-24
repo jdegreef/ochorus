@@ -9,7 +9,7 @@ export const trailingSlash = 'always';
 // lifted from the English works, so there is no translated index to serve. The
 // list comes from the same endpoint the author-page entry generator and the
 // sitemap read, so all three advertise exactly the reviewed set.
-export const load: PageLoad = async () => {
-	const { items, loadError } = await loadShelf(listQuoteAuthors());
+export const load: PageLoad = async ({ fetch }) => {
+	const { items, loadError } = await loadShelf(listQuoteAuthors(fetch));
 	return { authors: items, loadError };
 };

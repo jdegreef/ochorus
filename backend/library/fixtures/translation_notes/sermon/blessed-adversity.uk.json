@@ -9,162 +9,162 @@
       "reference": "Psalms 23:6",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 0
+      "block_index": 1
     },
     {
       "reference": "Romans 8:28",
       "status": "self_rendered",
-      "block_index": 1
+      "block_index": 2
     },
     {
       "reference": "Romans 5:3",
       "status": "self_rendered",
-      "block_index": 1
+      "block_index": 2
     },
     {
       "reference": "Romans 5:4",
       "status": "self_rendered",
-      "block_index": 1
+      "block_index": 2
     },
     {
       "reference": "Romans 5:5",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 1
+      "block_index": 2
     },
     {
       "reference": "Job 1:8",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 3
+      "block_index": 6
     },
     {
       "reference": "Job 2:3",
       "status": "self_rendered",
-      "block_index": 3
+      "block_index": 6
     },
     {
       "reference": "Philippians 4:4",
       "status": "self_rendered",
-      "block_index": 8
+      "block_index": 12
     },
     {
       "reference": "Philippians 4:5",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 8
+      "block_index": 12
     },
     {
       "reference": "Philippians 4:6",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 8
+      "block_index": 12
     },
     {
       "reference": "Philippians 4:7",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 8
+      "block_index": 12
     },
     {
       "reference": "Job 1:9",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 10
+      "block_index": 15
     },
     {
       "reference": "Job 1:12",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 11
+      "block_index": 16
     },
     {
       "reference": "Job 2:9",
       "status": "self_rendered",
-      "block_index": 13
+      "block_index": 19
     },
     {
       "reference": "Job 1:21",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 14
+      "block_index": 21
     },
     {
       "reference": "Job 1:11",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 15
+      "block_index": 22
     },
     {
       "reference": "Job 2:5",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 15
+      "block_index": 22
     },
     {
       "reference": "Romans 8:28",
       "status": "self_rendered",
-      "block_index": 18
+      "block_index": 25
     },
     {
       "reference": "Job 2:3",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 19
+      "block_index": 27
     },
     {
       "reference": "Job 2:4",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 19
+      "block_index": 27
     },
     {
       "reference": "Job 19:17",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 21
+      "block_index": 29
     },
     {
       "reference": "Job 42:5",
       "status": "self_rendered",
-      "block_index": 23
+      "block_index": 32
     },
     {
       "reference": "Job 42:6",
       "status": "self_rendered",
-      "block_index": 23
+      "block_index": 32
     },
     {
       "reference": "Job 42:16",
       "status": "self_rendered",
-      "block_index": 24
+      "block_index": 33
     },
     {
       "reference": "Psalms 30:5",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 25
+      "block_index": 34
     },
     {
       "reference": "Genesis 1:5",
       "status": "mined",
       "source_file": "Kulish (ukr-kul) Bible text",
-      "block_index": 25
+      "block_index": 34
     },
     {
       "reference": "Ephesians 6:12",
       "status": "self_rendered",
-      "block_index": 26
+      "block_index": 35
     },
     {
       "reference": "Romans 8:31",
       "status": "self_rendered",
-      "block_index": 27
+      "block_index": 36
     },
     {
       "reference": "Romans 8:37",
       "status": "self_rendered",
-      "block_index": 27
+      "block_index": 36
     }
   ]
 }
