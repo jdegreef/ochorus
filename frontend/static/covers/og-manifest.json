@@ -1674,6 +1674,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/spurgeon-on-prayer": {
+			"ground": "ef3a333a0110ddd4c0266a7b4de0b0461ff4f41b3b7692e5e86203ebe207465e",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "band/oxblood",
+			"bar": 0.04
+		},
 		"hi/stepping-stones-2": {
 			"ground": "a709e7762f009d72e1f65041bf925ceaa7f9d1a35eb6a536cfaca98f5f15afbb",
 			"style": "lettered",
@@ -3244,6 +3254,16 @@
 			"layout": "wash/sage",
 			"bar": 0.11
 		},
+		"sw/men-and-women-who-gave-everything-2": {
+			"ground": "f750a654defcb6fc6fb00b709dc878442c9cbb31346960958f7abe4edc40374e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/ministry-of-intercession": {
 			"ground": "13694bae434a8d024e0917d9423260dc4f263b243c4d0e3f9f08d3c175ff8ad1",
 			"style": "devotional",
@@ -3492,6 +3512,16 @@
 			"art": true,
 			"scrim": 0.95,
 			"layout": "diagonal/ochre",
+			"bar": 0
+		},
+		"sw/the-secret-of-guidance": {
+			"ground": "09361a66fd1589c9f38319df13c095ca1b66e66425fa7893f8b044e6cc50fdbf",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
 			"bar": 0
 		},
 		"sw/the-unselfishness-of-god": {
