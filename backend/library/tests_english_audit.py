@@ -1167,6 +1167,54 @@ class RibbandOfBlueTitleLineTests(SimpleTestCase):
                 )
 
 
+class RibbandOfBlueDisplayLineTests(SimpleTestCase):
+    """The rest of Gutenberg #23438 — see that entry in `corrections.py`.
+
+    Asserted per edition: a translation pair that silently stops matching
+    leaves that language's prod rows damaged while the English passes.
+    """
+
+    SLUGS = {
+        "blessed-prosperity": 10,
+        "blessed-adversity": 9,
+        "a-full-reward": 1,
+        "self-denial-versus-self-assertion": 1,
+        "all-sufficiency": 1,
+        "under-the-shepherds-care": 1,
+    }
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from library.content_fixtures import SERMONS_DIR
+
+        cls.editions = {
+            (slug, path.stem.rsplit(".", 1)[1]): json.loads(path.read_text())[0]["fields"]["body_html"]
+            for slug in cls.SLUGS
+            for path in sorted(SERMONS_DIR.glob(f"{slug}.*.json"))
+        }
+
+    @staticmethod
+    def _blocks(slug):
+        return [block for _, block in corrections.BODY_CORRECTIONS[slug]["restored_blocks"]]
+
+    def test_every_edition_carries_every_line(self):
+        for (slug, lang), body in self.editions.items():
+            with self.subTest(slug=slug, language=lang):
+                self.assertEqual(sum(b in body for b in self._blocks(slug)), self.SLUGS[slug])
+
+    def test_the_correction_is_what_restores_them(self):
+        """Strip them all back out and the correction must put every one back."""
+        for (slug, lang), settled in self.editions.items():
+            with self.subTest(slug=slug, language=lang):
+                damaged = settled
+                for block in self._blocks(slug):
+                    damaged = damaged.replace(f"{block} ", "", 1)
+                self.assertNotIn("<h3>", damaged)
+                self.assertEqual(corrections.settled_sermon_body(slug, damaged), settled)
+                self.assertEqual(corrections.settled_sermon_body(slug, settled), settled)
+
+
 class DroppedBlockRestorationTests(SimpleTestCase):
     """`restore_dropped_blocks` — the sanitizer's OTHER victim.
 
