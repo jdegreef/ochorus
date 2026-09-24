@@ -33,7 +33,8 @@
     "library/scripture_graph.py",
     "library/opening.py",
     "library/readability.py",
-    "library/serializers.py"
+    "library/serializers.py",
+    "library/book_export.py"
   ],
   "_reader_exempt_note": [
     "Modules the serializers import that carry NO reader prose, so a change to",
