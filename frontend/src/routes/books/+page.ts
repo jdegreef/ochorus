@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-24: Spanish book — absolute-surrender (#1596), Andrew Murray's
+// Keswick addresses on yielding wholly to God ("Entrega absoluta"), 9 chapters. Book pages are
+// prerendered per locale, so /es/books and the shelf rebuild with the translated title and the
+// reader page bakes the 9 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts
+// touch owed.
 // prerender refresh 2026-09-24 (queue job #1368): Spanish book — a-retrospect, Hudson Taylor's
 // autobiography, 20 chapters ("Una Retrospectiva"). Book pages are prerendered per locale, so
 // /es/books and the shelf rebuild with the translated title and the reader page bakes the 20
