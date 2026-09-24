@@ -106,7 +106,11 @@ def sync_series(stdout) -> dict[str, Series]:
     Its translations are the fixture's outright, though — one the file no
     longer carries is deleted, or a withdrawn name would stay on every page.
     """
-    rows = json.loads(SERIES_FILE.read_text()) if SERIES_FILE.exists() else []
+    if not SERIES_FILE.exists():
+        # Not an empty file: this function deletes the names the file doesn't
+        # carry, so reading "missing" as "empty" would wipe every series name.
+        raise CommandError(f"seed_books: {SERIES_FILE.name} is missing")
+    rows = json.loads(SERIES_FILE.read_text())
     require_natural_format(rows, "seed_books")
     by_slug: dict[str, Series] = {}
     for row in rows:

@@ -137,40 +137,37 @@ def series_block(book) -> dict | None:
     title = series.title_for(book.language)
     if not title:
         return None
-    siblings = Book.objects.filter(series_id=series.pk, is_published=True)
+    # The series' published rows in every language — a handful — read once;
+    # previous / next / total are then picked out here rather than queried.
+    rows = list(
+        Book.objects.filter(series_id=series.pk, is_published=True).values_list(
+            "slug", "title", "language", "series_position"
+        )
+    )
+    here = [r for r in rows if r[2] == book.language and r[0] != book.slug]
     position = book.series_position
     if position is None:
         return {
             "slug": series.slug,
             "title": title,
             "position": None,
-            "total": siblings.filter(language=book.language).count(),
+            "total": len(here) + 1,
             "previous": None,
             "next": None,
         }
-    here = siblings.filter(language=book.language).exclude(pk=book.pk)
-    previous = (
-        here.filter(series_position__lt=position)
-        .order_by("-series_position")
-        .values("slug", "title")
-        .first()
-    )
-    following = (
-        here.filter(series_position__gt=position)
-        .order_by("series_position")
-        .values("slug", "title")
-        .first()
-    )
+
+    def volume(candidates, pick):
+        found = pick(candidates, key=lambda r: r[3], default=None)
+        return {"slug": found[0], "title": found[1]} if found else None
+
+    numbered = [r for r in here if r[3] is not None]
     return {
         "slug": series.slug,
         "title": title,
         "position": position,
-        "total": siblings.exclude(series_position=None)
-        .values("series_position")
-        .distinct()
-        .count(),
-        "previous": previous,
-        "next": following,
+        "total": len({r[3] for r in rows if r[3] is not None} | {position}),
+        "previous": volume([r for r in numbered if r[3] < position], max),
+        "next": volume([r for r in numbered if r[3] > position], min),
     }
 
 
