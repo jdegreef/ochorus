@@ -1,0 +1,389 @@
+{
+ "kind": "book",
+ "slug": "school-of-prayer",
+ "language": "fr",
+ "job_issue": 3146,
+ "references": [
+  {
+   "reference": "1 John 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:12-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 4:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Thessalonians 5:16-17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Chronicles 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Thessalonians 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 10:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 33:12-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 10:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 5:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 5:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 50:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 61:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 1:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 1:6-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 11:41-42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 14:12-13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 14:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 14:13-14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 14:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:16-17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 16:23-26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 16:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 16:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 17:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 17:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 1:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:23-24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 7:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jude 20:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Leviticus 11:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Leviticus 21:17-21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 11:5-8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 11:9-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 12:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 18:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 21:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 22:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Malachi 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 10:51",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 11:22-24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 11:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 14:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 17:19-21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 18:19-20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 21:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:23-24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 5:3-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:39-44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 5:7-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 7:7-8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:9-11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 11:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 16:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 3:5-6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 18:20-26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 2:7-8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 7:3-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 12:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 13:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
