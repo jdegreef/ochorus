@@ -238,8 +238,11 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
         )
     # Only authors who actually have something published to read in this language,
     # mirroring the biographies roster (no ghost authors from unpublished drafts).
+    # Imprints are excluded as the roster excludes them: a house byline is not a
+    # person, and its books are still found as books (its shelf is /originals).
     authors = (
-        Author.objects.filter(
+        Author.objects.filter(is_imprint=False)
+        .filter(
             Q(books__is_published=True, books__language=language)
             | Q(sermons__is_published=True, sermons__language=language)
         )
