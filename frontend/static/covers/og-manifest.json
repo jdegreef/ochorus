@@ -1834,6 +1834,16 @@
 			"layout": "wash/sage",
 			"bar": 0.11
 		},
+		"hi/men-and-women-who-gave-everything-2": {
+			"ground": "dc160e297099fb056bc9e44e5e63fa3f5d7fdc3ff9db7d7ef50c4eacac7e121e",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/men-who-tended-the-flock-2": {
 			"ground": "56d062fddade2b7dedfbb74c169e7b7d1cbb55dd4a5d0675194e8ab4678ca2ea",
 			"style": "originals",
