@@ -304,6 +304,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"ar/school-of-prayer": {
+			"ground": "8534d3537a0cc5b7eb9bf140e856cbcaf35d82f85a04f7fe05ddfc10deabcdab",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ar/stepping-stones-2": {
 			"ground": "0f4d1d9dafbc823a70beff8be4112fbbcb26574bbc4c545843bd670e30897b1d",
 			"style": "lettered",
