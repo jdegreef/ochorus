@@ -5167,6 +5167,14 @@ BODY_CORRECTIONS.setdefault('the-circumcision-of-the-heart', {}).setdefault("rep
     ('<p>5. this is that lowliness', '<p>5. This is that lowliness'),
     ('No man I say, has A title', 'No man, I say, has a title'),
     ('the world, the one who follow him not', 'the world, the men who follow him not'),
+    # Orphaned quotation marks, each settled by the same printings: Rom 2:4's
+    # opener was lost (and "he", the Christian, capitalized as if God); Rom
+    # 8:14's opener read as a comma; Eccl 1:7 lost its closer; and the opener
+    # of the closing exhortation was printed as a closer.
+    ('nor does He despise the riches of his goodness.”', 'nor does he “despise the riches of his goodness.”'),
+    ('And, as many as are thus led by the Spirit', 'And “as many as are thus led by the Spirit'),
+    ('all the rivers came thither let them flow', 'all the rivers came,” thither let them flow'),
+    ('still speak to us:” Desire not to live', 'still speak to us: “Desire not to live'),
 ])
 
 
