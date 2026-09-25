@@ -893,6 +893,7 @@
   "share_link_copied": "लिंक कॉपी हो गया",
   "book_free_to_read": "मुफ़्त में पढ़ें",
   "book_no_account": "किसी खाते की ज़रूरत नहीं",
+  "book_contents_show_all": "सभी %n% अध्याय दिखाएँ",
   "book_download": "डाउनलोड",
   "book_epub_hint": "ई-रीडर के लिए",
   "book_pdf_hint": "प्रिंट के लिए",
