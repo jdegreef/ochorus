@@ -1714,6 +1714,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.085
 		},
+		"hi/brave-for-god": {
+			"ground": "52a02a15ff168c72781171579afcf0fa84018a1d83dd5e95fada16d48ab3937c",
+			"style": "young",
+			"volume": "1",
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/clothed-with-strength-and-dignity": {
 			"ground": "102d67368c39c095854b0d8d07943e3913d599acc751d776a4fc5f273fb4bf35",
 			"style": "originals",
