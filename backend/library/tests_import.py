@@ -1182,6 +1182,76 @@ Should not dishearten thee."<br>
             "“’Tis fixed through grace; my God shall be my ALL.</blockquote>",
         )
 
+    # PG 73032, The Reality of Prayer: every chapter heading in its own
+    # wrapper, so the fallback walk runs, and verse set as ebookmaker line
+    # groups. The two poems of the edition's own chapters, verbatim, with the
+    # prose around them cut down.
+    REALITY = """<html><body>
+<div class="chapter">
+  <span class="pageno" id="Page_46">46</span>
+  <h2 class="c009" id="chap05"><abbr title="five">V</abbr> <br> JESUS CHRIST, THE DIVINE TEACHER OF PRAYER</h2>
+</div>
+<p class="c003">It is his first step, and his first breath, which
+is to colour and to form all his after life. Blessed
+are the poor ones, for they only can pray.</p>
+
+<div class="lg-container-b c004">
+  <div class="linegroup">
+    <div class="group">
+      <div class="line">Prayer is the Christian’s vital breath,</div>
+      <div class="line in4">The Christian’s native air;</div>
+      <div class="line">His watchword at the gates of death;</div>
+      <div class="line in4">He enters Heaven with prayer.</div>
+    </div>
+  </div>
+</div>
+
+<p class="c005">From praying Christ eliminates all self-sufficiency,
+all pride, and all spiritual values.</p>
+<div class="chapter">
+  <span class="pageno" id="Page_148">148</span>
+  <h2 class="c009" id="chap16"><abbr title="sixteen">XVI</abbr> <br> PRAYER AND THE HOLY GHOST DISPENSATION</h2>
+</div>
+<p class="c003">It passes us from the darkness of
+sin, doubt and inward misgiving into the marvelous
+light, where we see clearly and know fully our
+personal relations to God.</p>
+
+<div class="lg-container-b c004">
+  <div class="linegroup">
+    <div class="group">
+      <div class="line">“The things unknown to feeble sense,</div>
+      <div class="line in2">Unseen by reason’s glimmering ray,</div>
+      <div class="line">With strong, commanding confidence,</div>
+      <div class="line in2">Their heavenly origin display.”</div>
+    </div>
+  </div>
+</div>
+
+<p class="c005"><span class="pageno" id="Page_155">155</span>Two things may be said just here in concluding
+this part of our study upon this subject.</p>
+</body></html>"""
+
+    def test_the_restored_reality_of_prayer_verse_is_what_the_importer_emits(self):
+        """`BODY_CORRECTIONS["reality-of-prayer"]` restores both poems into the
+        rows imported before the fallback walk kept ebookmaker verse. Its guard
+        is a string match, so a re-import must emit each block byte for byte —
+        or the body carries the poem twice."""
+        from library.corrections import BODY_CORRECTIONS
+
+        (_, ch5), (_, ch16) = self._split(self.REALITY)
+        english = [
+            (anchor, block)
+            for anchor, block in BODY_CORRECTIONS["reality-of-prayer"]["restored_blocks"]
+            if block.startswith(("<blockquote>Prayer", "<blockquote>“The things"))
+        ]
+        self.assertEqual(len(english), 2)
+        for body, (anchor, block) in zip((ch5, ch16), english, strict=True):
+            with self.subTest(block=block):
+                # In the correction's place: immediately before its anchor.
+                self.assertIn(f"</p>{block}{anchor}", body)
+                self.assertEqual(body.count("<blockquote>"), 1)
+
     def test_a_page_number_inside_a_line_is_not_read_as_text(self):
         from library.ingest import display_line, soup
 

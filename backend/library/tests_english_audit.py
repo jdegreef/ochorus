@@ -1311,6 +1311,64 @@ class UnfailingSpringsDisplayLineTests(SimpleTestCase):
                 self.assertEqual(corrections.settled_sermon_body(self.SLUG, settled), settled)
 
 
+class RealityOfPrayerVerseTests(SimpleTestCase):
+    """The two poems `reality-of-prayer` lost at import — see its
+    `restored_blocks` in `corrections.py`.
+
+    Asserted per edition, and in the chapter and block position the source
+    sets them: a translation pair that silently stops matching leaves that
+    language's prod rows damaged while the English passes.
+    """
+
+    SLUG = "reality-of-prayer"
+    # chapter order -> 0-indexed block the poem occupies, in every edition
+    POSITIONS = {5: 15, 16: 21}
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from library.content_fixtures import BOOKS_DIR
+
+        cls.editions = {
+            path.stem.rsplit(".", 1)[1]: {
+                row["fields"]["order"]: row["fields"]["body_html"]
+                for row in json.loads(path.read_text())
+                if row["model"] == "library.chapter"
+            }
+            for path in sorted(BOOKS_DIR.glob(f"{cls.SLUG}.*.json"))
+        }
+
+    def _blocks(self):
+        return [block for _, block in corrections.BODY_CORRECTIONS[self.SLUG]["restored_blocks"]]
+
+    def test_each_edition_carries_both_poems_in_place(self):
+        self.assertEqual(set(self.editions), {"en", "es"})
+        for lang, chapters in self.editions.items():
+            for order, index in self.POSITIONS.items():
+                with self.subTest(language=lang, chapter=order):
+                    blocks = [
+                        m.group(0)
+                        for m in re.finditer(r"<(p|blockquote|h\d)>.*?</\1>", chapters[order])
+                    ]
+                    self.assertIn(blocks[index], self._blocks())
+                    self.assertEqual(chapters[order].count("<blockquote>"), 1)
+
+    def test_the_correction_is_what_restores_them(self):
+        """Strip them back out and the correction must put each one back."""
+        for lang, chapters in self.editions.items():
+            for order in self.POSITIONS:
+                with self.subTest(language=lang, chapter=order):
+                    settled = chapters[order]
+                    damaged = settled
+                    for block in self._blocks():
+                        damaged = damaged.replace(f"{block} ", "", 1)
+                    self.assertNotIn("<blockquote>", damaged)
+                    self.assertEqual(
+                        corrections.settled_chapter_body(self.SLUG, order, damaged), settled)
+                    self.assertEqual(
+                        corrections.settled_chapter_body(self.SLUG, order, settled), settled)
+
+
 class DroppedBlockRestorationTests(SimpleTestCase):
     """`restore_dropped_blocks` — the sanitizer's OTHER victim.
 
