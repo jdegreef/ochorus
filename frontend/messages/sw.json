@@ -197,6 +197,8 @@
   "plans_complete": "imekamilika",
   "plans_days_left": "Siku %n% zimebaki",
   "plans_min_left": "Dakika %n% zimebaki",
+  "plans_hr_left": "Saa %h% zimebaki",
+  "plans_hr_min_left": "Saa %h% dakika %m% zimebaki",
   "plans_today": "Leo",
   "plans_mark_done": "Weka siku imekamilika",
   "plans_day_done": "Siku imekamilika",

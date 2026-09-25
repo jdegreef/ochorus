@@ -812,43 +812,6 @@
 		);
 	}
 
-	/* Design D's read card: the chapter you're on, the book's progress, and
-	   the one read verb. A tinted surface, not a bordered box, so it reads as
-	   the head of the hero rather than a separate widget. Stacks on a phone
-	   with a full-width CTA (design B). */
-	.read-card {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-		padding: 0.85rem 1rem;
-		border-radius: var(--radius-card);
-		background: var(--surface-2);
-	}
-	.read-card-title {
-		margin-top: 0.15rem;
-		font-family: var(--font-display);
-		font-size: var(--fs-h3);
-		line-height: 1.25;
-	}
-	.read-card-cta {
-		display: flex;
-		flex-direction: column;
-		align-items: stretch;
-		gap: 0.4rem;
-		text-align: center;
-	}
-	@media (min-width: 640px) {
-		.read-card {
-			flex-direction: row;
-			align-items: center;
-			gap: 1.25rem;
-		}
-		.read-card-cta {
-			align-items: center;
-			flex-shrink: 0;
-		}
-	}
-
 	/* A3: jump-nav. Anchored sections clear both pinned bars via `--pinned-offset`
 	   (app nav + this sticky bar, published on the page column) — the same
 	   contract the author sub-nav uses. Links are quiet tabs; the active one wears

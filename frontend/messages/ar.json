@@ -197,6 +197,8 @@
   "plans_complete": "مكتمل",
   "plans_days_left": "تبقّى %n% يوم",
   "plans_min_left": "تبقّى %n% دقيقة",
+  "plans_hr_left": "تبقّى %h% س",
+  "plans_hr_min_left": "تبقّى %h% س %m% د",
   "plans_today": "اليوم",
   "plans_mark_done": "علِّم اليوم كمكتمل",
   "plans_day_done": "اكتمل اليوم",

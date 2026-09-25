@@ -197,6 +197,8 @@
   "plans_complete": "terminé",
   "plans_days_left": "%n% jours restants",
   "plans_min_left": "%n% min restantes",
+  "plans_hr_left": "%h% h restantes",
+  "plans_hr_min_left": "%h% h %m% min restantes",
   "plans_today": "Aujourd’hui",
   "plans_mark_done": "Marquer le jour comme lu",
   "plans_day_done": "Jour terminé",
