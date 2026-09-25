@@ -267,3 +267,6 @@ export const load: PageLoad = async ({ fetch }) => {
 	const { items, loadError } = await loadShelf(listPlans(getLang(), fetch));
 	return { plans: items, loadError };
 };
+// prerender refresh 2026-09-25: Arabic growing-in-wisdom completes growing-in-wisdom-18-days' source,
+// so seed_plans creates its ar row on this deploy; rebuild /ar/plans.
+// prerender refresh 2026-09-25: Arabic school-of-prayer activates school-of-prayer-31-days; rebuild /ar/plans.

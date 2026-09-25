@@ -133,6 +133,24 @@ prerendered pages reference it.
   rest. A new `COVER_STYLE_IDS` recipe also needs a non-`.title` rule OUTSIDE the
   container gate (`coverComposition.test.ts`) and must not give the subtitle a face.
 
+- **The `fonts` digest also moves with local `node_modules`** (a fontsource version
+  differing from the last committer's), same symptom: every twin redrawn. Same cure —
+  keep the manifest (its new `fonts` value, so the NEXT run doesn't repeat it) + your
+  slugs' twins, `git checkout origin/main --` the rest. Confirm with a second plain
+  `og:covers`: "wrote 0". (Moody, 2026-09-25.)
+- **Swapping an ALREADY-curated painting also needs `npm run covers:bars`** —
+  `paint_covers` doesn't run it, and `groundBars.test.ts` fails ("groundBars.ts is
+  stale"). Run it BEFORE `og:covers`: a laid-out cover crops past the measured scan
+  bar, so twins drawn with the old ground's bar are mis-cropped. Order slipped? `rm`
+  those slugs' twin PNGs and re-run `og:covers`.
+- **Met image CDN needs a User-Agent**: `curl` without `-A "Mozilla/5.0"` on
+  `images.metmuseum.org` saves a ~1.3 KB error body named `.jpg`.
+- **A cover that looks bad may be the AUTHOR LAYOUT, not the art.** Check
+  `coverLayouts.AUTHOR_LAYOUT` first: `duotone` (grayscale + 0.65 contrast + a 70%
+  tint) turned Moody's two dark paintings into identical purple slabs (→ `wash`). And
+  `wash` is the one layout that SHOWS the subtitle, so switching to it surfaces
+  untranslated subtitles (Moody's ar edition carried English) — check every edition's
+  `subtitle` (it is upserted, so a fixture fix reaches prod).
 - **F · the og "ground" digest hashes the BYLINE, not just the painting** — it is
   `sha256(cover_bytes + "\0" + title + "\0" + subtitle + "\0" + author_name)`
   (`tests_fixture.test_every_twin_was_made_from_the_cover_it_stands_in_for`). So a
@@ -207,6 +225,8 @@ them in order and union-resolve the `curated_art`/scrim/manifest overlap on reba
 
 ## Done so far
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
+Moody (2026-09-25; Kensett ×2 — `prevailing-prayer` re-picked from a Rubens,
+`thoughts-for-the-quiet-hour` from its plate; layout duotone/indigo → wash/ochre),
 Athanasius #2409 (2 — Huguet/Cole; also OPENED the `aic` source, see §1),
 Wesley #2414 (2 — Constable/Inness), Hudson Taylor #2416 (2 — Chen Hongshou ink/Gifford),
 Simpson #2419 (2 — Church/Daubigny, +lg/sw). Batch 16 #2891 (2 — both AIC):

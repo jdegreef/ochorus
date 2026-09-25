@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "anselm-of-canterbury",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Psalm 14:1",
+   "status": "self_rendered",
+   "block_index": 20
+  }
+ ]
+}

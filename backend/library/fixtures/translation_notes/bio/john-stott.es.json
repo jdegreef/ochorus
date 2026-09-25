@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "john-stott",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "1 Corinthians 2:2",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "library/fixtures/content/books/watchman-nee-a-life.es.json"
+  }
+ ]
+}

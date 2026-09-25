@@ -18,7 +18,6 @@ export const GROUND_BARS: Record<string, number> = {
 	'men-and-women-who-gave-everything-2': 0.110,
 	'necessity-of-prayer': 0.050,
 	'power-through-prayer': 0.040,
-	'prevailing-prayer': 0.050,
 	'religious-affections': 0.035,
 	'revival-lectures': 0.090,
 	'rise-up-men-of-god-2': 0.110,
