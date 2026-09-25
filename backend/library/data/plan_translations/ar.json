@@ -29,6 +29,13 @@
       "«كل شيء من النعمة» for Spurgeon's All of Grace is provisional — that book has no Arabic edition yet. When it ships, harmonise this description with its actual shipped title (the card-quotes-the-book rule), as was done for the opening title here."
     ]
   },
+  "growing-in-wisdom-18-days": {
+    "title": "النمو في الحكمة في 18 يومًا",
+    "description": "دليل جيمس ديغريف للطلاب — قراءة قصيرة كل يوم على مدى ثمانية عشر يومًا. من اكتشاف غايتك إلى بناء رؤية للمستقبل، يجمع كل يوم بين نصيحة عملية ونص من الكتاب المقدس وتأمل وصلاة.",
+    "note": [
+      "Written alongside growing-in-wisdom → ar (job #2820), which activates this single-book plan. The title opens with «النمو في الحكمة», the Arabic edition's title verbatim; the author is spelled جيمس ديغريف as in that book's conventions (no earlier Arabic form in the corpus)."
+    ]
+  },
   "humility-12-days": {
     "title": "التواضع في اثني عشر يومًا",
     "description": "كتاب أندرو موراي الكلاسيكيّ عن أصل كلّ فضيلة: فصلٌ قصيرٌ واحد كلّ يوم، على مدى اثني عشر يومًا."
@@ -43,6 +50,10 @@
     "note": [
       "The three guides are named with the exact Arabic titles their books ship under, so the plan and the library agree."
     ]
+  },
+  "school-of-prayer-31-days": {
+    "title": "واحد وثلاثون يومًا في مدرسة الصلاة",
+    "description": "شهرٌ مع أندرو موراي عند قدمَي المعلّم الوحيد. كلّ يوم يفتح كلمة من كلمات يسوع نفسه عن الصلاة، من «يا رب، علّمنا أن نصلّي» إلى مواعيد الليلة الأخيرة، ويُختَم بصلاة خاصّة به. درسٌ واحد كلّ يوم، نحو عشر دقائق، يتدرّج نحو الشفاعة وحياة الصلاة."
   },
   "the-inner-chamber-month": {
     "title": "شهر في المخدع",

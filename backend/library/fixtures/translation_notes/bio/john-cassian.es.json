@@ -1,0 +1,29 @@
+{
+ "kind": "bio",
+ "slug": "john-cassian",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Psalm 70:1",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "library/fixtures/content/sermons/prevailing-prayer.es.json"
+  },
+  {
+   "reference": "Luke 7:47",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 70:1",
+   "status": "self_rendered",
+   "block_index": 24
+  }
+ ]
+}

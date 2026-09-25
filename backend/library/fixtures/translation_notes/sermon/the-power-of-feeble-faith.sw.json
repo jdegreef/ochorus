@@ -1,0 +1,135 @@
+{
+ "kind": "sermon",
+ "slug": "the-power-of-feeble-faith",
+ "language": "sw",
+ "job_issue": 3476,
+ "pull_request": 3487,
+ "references": [
+  {
+   "reference": "Mark 5:25a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 5:27",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 5:28",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 5:23",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalms 145:15a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 14:9",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "the-gospel-of-healing.sw.json"
+  },
+  {
+   "reference": "Mark 5:28",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Galatians 5:6",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Matthew 14:30",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "the-secret-of-guidance.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Isaiah 42:3b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Matthew 9:29",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Ephesians 4:7",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Psalms 81:10",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "answers-to-prayer.sw.json"
+  },
+  {
+   "reference": "Matthew 15:28",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Luke 8:45",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Mark 5:30",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Mark 5:34",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Mark 5:26",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "divine-healing.sw.json"
+  }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "kind": "sermon",
+ "slug": "the-atonement-of-jesus-christ",
+ "language": "sw",
+ "job_issue": 3532,
+ "pull_request": 3539,
+ "references": [
+  {
+   "reference": "Titus 2:11",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 2:9b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Matthew 25:46",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 3:26b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Revelation 17:14b",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Isaiah 53:3a",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "Romans 8:28a",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Acts 10:35",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "the-unselfishness-of-god.sw.json"
+  },
+  {
+   "reference": "John 14:16",
+   "status": "mined",
+   "block_index": 66,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "John 14:17a",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "Revelation 7:9a",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Revelation 7:14b",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "holy-in-christ.sw.json"
+  }
+ ]
+}
