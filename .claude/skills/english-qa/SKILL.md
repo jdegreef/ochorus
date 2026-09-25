@@ -267,8 +267,10 @@ Reported, not fixed
   the fixture-vs-prod note above) — a title already corrected in the fixture can
   still be wrong on prod, so verify those against the LIVE API, not just the file.
   The fix is the same metadata migration (Torrey `men-of-prayer-2` ch.6, #2459 →
-  `0152`, model on `0121_recase_chapter_titles`) plus a frontend touch to
-  re-prerender the page. 2026-09-16 sweep found no other cases.
+  `0152`, model on `0121_recase_chapter_titles`). A migration under
+  `migrations/` is not a content root, so after the API deploy is live, add a
+  follow-up marker per `frontend/prerender-refresh/README.md` to re-prerender
+  the page. 2026-09-16 sweep found no other cases.
 - **Verifying a split-word sweep with a stranded-LETTER scan, or with the
   audit.** A pervasive-spacing repair (`feasting-at-the-table`, PRs #1356/#1370)
   is a hand-built list, and the audit is no safety net: `audit_english` has no
@@ -363,6 +365,34 @@ Reported, not fixed
   means. Anchor each on its `<p>` so it cannot touch `body_text`, and add the
   key to `test_no_replacement_pair_is_dead` or nothing will notice when the
   paragraph it titles is edited out from under it.
+- **A display line UNWRAPPED to loose text is `wrapped_blocks`, not
+  `restored_blocks`.** The Gutenberg importer once handed centred `<div>` lines
+  (headings, datelines, drop-cap opening paragraphs) to the sanitizer, which
+  kept the text and dropped the tags. Nothing is missing, so inserting would say
+  it twice. `wrap_loose_blocks` takes `(head, tag)` (or `(head, tag, tail)` when
+  the line ran into a loose caption) and wraps the run exactly as
+  `ingest.display_line` would emit it, guarded so it disarms on a re-import.
+  Check every entry against the importer's own output from the edition's
+  markup (`HurlbutDisplayLineTests` shows how), and do every edition at once.
+- **Two keys on one book can defeat each other, and neither PR's tests see
+  it until both land** (`a-retrospect`, 2026-09-24: #3401 cut ch12's MIDI
+  transcriber's note with a `replacements` pair while #3404 wrapped that same
+  note and the verse after it in `wrapped_blocks`). `apply_body_corrections`
+  runs `replacements` → `paragraph_breaks` → `restored_blocks` → `back_matter`
+  → `wrapped_blocks`, and two failures follow from that order:
+  - A pair whose OLD or NEW ends on a line that a later wrap gives a `<p>` is
+    dead in the settled fixture ("</p> 2. Why live" becomes "</p> <p>2. Why
+    live"). Anchor it on the text BEFORE the cut instead ("other spheres.</p>
+    [<i>Transcriber's…] " → "other spheres.</p>").
+  - A wrap entry for a line another key CUTS names nothing. The cut wins
+    (apparatus is not the author's text), so drop the wrap entry and lower its
+    test's per-edition line count.
+  When a merge conflicts inside a book fixture, don't pick a side. Run both
+  sides' chapter through the MERGED `settled_chapter_body`. If they settle to
+  the same text, write that text (re-derive `body_text`/`word_count` from it,
+  as `Chapter.save()` does). If they don't, the difference is one of these
+  interactions. Then check that the text production holds (the fixture before
+  either PR) settles to exactly what you wrote.
 - **A STRUCTURAL repair must land in every edition at once.**
   `tests_translation_markup` pins a translation's ordered TAG SEQUENCE against
   its English, so adding six headings to the English alone fails it — and that

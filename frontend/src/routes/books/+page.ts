@@ -1,8 +1,8 @@
-// prerender refresh 2026-09-25 (queue job #2804): Swahili book — confessions, Augustine of Hippo's
-// autobiography-as-prayer, 13 books ("Maungamo"). Book pages are prerendered per locale, so /sw/books
-// and the shelf rebuild with the translated title over the shared curated painting and the reader
-// page bakes the 13 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch
-// owed.
+// prerender refresh 2026-09-24 (queue job #3190): Spanish book — brave-for-god, six true stories of
+// faith told for young readers ("Valientes por Dios"), 6 chapters. Book pages are prerendered per
+// locale, so /es/books and the shelf rebuild with the translated title over the shared painting ground
+// and the reader page bakes the 6 chapters. Backs the CURATED plan brave-for-god-24-true-stories, but
+// brave-for-god-2/-3/-4 are not yet in es, so no es plan row activates and no plan prose is owed.
 // prerender refresh 2026-09-24 (queue job #2780): Swahili book — men-who-tended-the-flock-2, an
 // Ochorus Originals devotional on ten faithful pastors across church history plus a Scripture
 // appendix, 13 chapters ("Wanaume Waliolichunga Kundi"). Book pages are prerendered per locale, so
@@ -539,6 +539,9 @@
 // prerender refresh 2026-09-24 (queue job #1791): Hindi book — spurgeon-on-prayer, Spurgeon's twelve
 // sermons on prayer ("प्रार्थना में महान सामर्थ्य"), 13 chapters. Book pages are prerendered per locale,
 // so /hi/books and the shelf rebuild with the translated title over the curated painting.
+// prerender refresh 2026-09-24 (queue job #2115): Hindi book — gleanings-among-the-sheaves, Spurgeon's
+// short readings under twenty themes ("पूलों के बीच बीनी हुई बालें"), 20 chapters. Book pages are
+// prerendered per locale, so /hi/books and the shelf rebuild with the translated title.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';

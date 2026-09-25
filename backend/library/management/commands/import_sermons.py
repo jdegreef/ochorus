@@ -24,14 +24,13 @@ import datetime
 import re
 import time
 from functools import lru_cache
-from html import escape
 
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
 from library import english_audit
 from library.corrections import settled_sermon_body
-from library.ingest import clean_fragment, soup, word_count
+from library.ingest import QUOTES, clean_fragment, display_line, soup, word_count
 from library.management.commands.import_gutenberg import content_root
 from library.management.commands.import_web import NAV_TARGET
 from library.management.commands.import_web import extract_page as extract_web_page
@@ -55,44 +54,6 @@ _HEAD_WINDOW = 20
 # Sermon headings appear at whatever level the edition chose; see
 # extract_gutenberg_section.
 _HEADINGS = ["h1", "h2", "h3", "h4"]
-
-# A `<div>` holding any of these is a wrapper, not a display line: the edition
-# wraps each study's own <h3> in one, and those must not be read as content.
-_BLOCKS = [*_HEADINGS, "p", "blockquote", "div", "table", "ul", "ol"]
-_QUOTES = ("“", '"', "‘", "'")
-_BR = re.compile(r"<br\s*/?>", re.I)
-
-
-def _display_line(div) -> str:
-    """A Gutenberg centred display line (`<div class="c1">`) as a body block.
-
-    PG 23438 (*A Ribband of Blue*) sets its in-study section headings,
-    displayed verses and epigraphs this way, and the collector once dropped
-    them all; `corrections.py` ("The rest of Gutenberg #23438") has the damage.
-
-    A line wholly in capitals is an `<h3>`, text verbatim (the source's own
-    small caps and stops) — unless it opens with a quotation mark:
-    `"RIBBAND OF BLUE."` finishes a sentence. Anything else is a `<p>`, markup
-    kept. These are exactly the blocks `BODY_CORRECTIONS` restores into rows
-    imported before this existed, so a re-import leaves those corrections
-    nothing to do. Returns "" for a wrapper, for Gutenberg's own
-    `pg_body_wrapper` furniture (page numbers, spacers, PG 57109's "9,000 in
-    print"), for anything the sanitizer would drop, and for an empty line.
-    """
-    if "pg_body_wrapper" in (div.get("class") or []) or div.find(_BLOCKS) is not None:
-        return ""
-    # The block built below carries no class, so the sanitizer would no longer
-    # recognise furniture it drops by class (`[class*=pagenum]`, a footnote):
-    # ask it about the div itself while the div still has one.
-    if not clean_fragment(str(div)).strip():
-        return ""
-    # A <br> separates words: "THE NEGATIVE<br>CONDITIONS" is two of them.
-    text = " ".join(soup(_BR.sub(" ", div.decode_contents())).get_text().split())
-    if not text:
-        return ""
-    if text.isupper() and not text.startswith(_QUOTES):
-        return f"<h3>{escape(text, quote=False)}</h3>"
-    return f"<p>{div.decode_contents()}</p>"
 
 
 class AmbiguousSectionError(ValueError):
@@ -168,7 +129,9 @@ def extract_gutenberg_section(html: str, section: str, level: str = "") -> str:
         if el.find_parent("blockquote") is not None:
             continue  # already inside a collected blockquote
         if el.name == "div":
-            if line := _display_line(el):
+            # No poem handling here, so a verse line comes through as its own
+            # block, as it always did.
+            if line := display_line(el, verse_lines=True):
                 if len(parts) == subtitles and line.startswith("<h"):
                     subtitles += 1
                 parts.append(line)
@@ -182,7 +145,7 @@ def extract_gutenberg_section(html: str, section: str, level: str = "") -> str:
     first = subtitles
     if first < len(parts) and parts[first].startswith("<p"):
         first_text = re.sub(r"<[^>]+>", "", parts[first]).strip()
-        if first_text.startswith(_QUOTES):
+        if first_text.startswith(QUOTES):
             inner = re.sub(r"^<p[^>]*>|</p>$", "", parts[first].strip())
             parts[first] = f"<blockquote>{inner}</blockquote>"
     return clean_fragment("".join(parts))
@@ -252,7 +215,7 @@ def extract(html: str) -> tuple[str, str, datetime.date | None]:
             preceding = ref_block.find_all_previous("p")
             if preceding:
                 last = preceding[0]
-                if last.get_text(" ", strip=True).startswith(("“", '"', "‘", "'")):
+                if last.get_text(" ", strip=True).startswith(QUOTES):
                     quote_html = f"<blockquote>{last.decode_contents()}</blockquote>"
                 boundary = paragraphs.index(last)
             else:

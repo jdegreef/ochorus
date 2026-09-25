@@ -727,9 +727,10 @@ dropped; chapters under 120 words are dropped as stubs.
     re-chapterize that drops/merges chapters still ships a migration (see
     `ship-content-fix`; `0134` is the model); anything else doesn't — and a
     chapter migration WITHOUT the fixture edit is reverted by `seed_books` in the
-    same release. A fixture change triggers the web build, but it can race the
-    API release and prerender the old text; check the static page, and force a
-    rebuild with a frontend touch if stale. *(2026-09)*
+    same release. A fixture change triggers the web build, and the prebuild
+    gate waits for the API to hold it. Still check the static page once. If it's
+    stale, add a marker per `frontend/prerender-refresh/README.md` (a new file,
+    never a comment in a shared `+page.ts`). *(2026-09)*
 - **CCEL two-level section numbering** (`<work>.i.ii.html` = part i, chapter ii).
   The `toc_sections` pattern matched only single-segment `<work>.iii.html`, so a
   parts-divided work imported as 1 chapter. Regex now allows one-or-more dotted
