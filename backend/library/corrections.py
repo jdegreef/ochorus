@@ -5167,6 +5167,14 @@ BODY_CORRECTIONS.setdefault('the-circumcision-of-the-heart', {}).setdefault("rep
     ('<p>5. this is that lowliness', '<p>5. This is that lowliness'),
     ('No man I say, has A title', 'No man, I say, has a title'),
     ('the world, the one who follow him not', 'the world, the men who follow him not'),
+    # Orphaned quotation marks, each settled by the same printings: Rom 2:4's
+    # opener was lost (and "he", the Christian, capitalized as if God); Rom
+    # 8:14's opener read as a comma; Eccl 1:7 lost its closer; and the opener
+    # of the closing exhortation was printed as a closer.
+    ('nor does He despise the riches of his goodness.”', 'nor does he “despise the riches of his goodness.”'),
+    ('And, as many as are thus led by the Spirit', 'And “as many as are thus led by the Spirit'),
+    ('all the rivers came thither let them flow', 'all the rivers came,” thither let them flow'),
+    ('still speak to us:” Desire not to live', 'still speak to us: “Desire not to live'),
 ])
 
 
@@ -8422,7 +8430,34 @@ _FINNEY_MEMOIRS_PAIRS: list[tuple[str, str]] = [
     ('life, a^ an', 'life, as an'),
     ('and jfchajworld, — ^Pe set', 'and the world. To set'),
 ]
-BODY_CORRECTIONS["finney-memoirs"] = {"replacements": _FINNEY_MEMOIRS_WORDS + _FINNEY_MEMOIRS_PAIRS}
+# english-qa pass (2026-09-25): real-word OCR slips the audit can't see, found by
+# aligning the stored text against the Toronto scan (memoirsofrevchar00finnuoft)
+# and by scanning for lone-letter garbles and gutter letters. Each reading is the
+# Toronto scan's where it has one; the last two are the 1876 PRINTER's own errors
+# (both scans carry them) — a dropped "t" and a doubled "have" — corrected as
+# plain misprints, not as changes to Finney's wording.
+_FINNEY_MEMOIRS_QA = [
+    ("such a things had", "such a thing had"),
+    ("richly dressed, t had", "richly dressed. I had"),
+    ("arrived there m the afternoon", "arrived there in the afternoon"),
+    ("as it is done m heaven", "as it is done in heaven"),
+    ("inquired of her m regard", "inquired of her in regard"),
+    ("a hearing oh the question", "a hearing on the question"),
+    ("from night ta night", "from night to night"),
+    ("communing with au absent", "communing with an absent"),
+    ("get in bo the infant", "get into the infant"),
+    ("revival work w at the", "revival work at the"),
+    ("been called j so powerful", "been called so powerful"),
+    ("let out my r voice", "let out my voice"),
+    ("and non e among", "and none among"),
+    ("calmly that j ", "calmly that "),
+    ("prejudices of the y community", "prejudices of the community"),
+    ("fall back f rom a", "fall back from a"),
+    ("that that was .1 passage", "that that was a passage"),
+    ("pressure upon he people", "pressure upon the people"),
+    ("of which I have have spoken", "of which I have spoken"),
+]
+BODY_CORRECTIONS["finney-memoirs"] = {"replacements": _FINNEY_MEMOIRS_WORDS + _FINNEY_MEMOIRS_PAIRS + _FINNEY_MEMOIRS_QA}
 
 # Baxter, A Call to the Unconverted — the same OCR residue as revival-lectures
 # above, 124 page numbers (pp. 30-156, chapters 3-6): fused ("the 50world"),
