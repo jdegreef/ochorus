@@ -1884,6 +1884,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"hi/the-god-of-all-comfort": {
+			"ground": "62853c4d1c1bb49a274203abde9a9e12f269287f82b0ec2f2d3dd3521b7527cb",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/the-inner-chamber": {
 			"ground": "ab87508dcc75a253086b0a2fd380975eb0de8bff35bdc9fb0804777e4aaf106e",
 			"style": "devotional",
