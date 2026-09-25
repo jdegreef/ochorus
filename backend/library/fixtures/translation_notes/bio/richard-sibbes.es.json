@@ -1,0 +1,30 @@
+{
+ "kind": "bio",
+ "slug": "richard-sibbes",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Matthew 12:20",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "library/fixtures/content/sermons/sweet-comfort-for-feeble-saints.es.json"
+  },
+  {
+   "reference": "Psalm 42:5",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 42:5",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 14:1",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  }
+ ]
+}

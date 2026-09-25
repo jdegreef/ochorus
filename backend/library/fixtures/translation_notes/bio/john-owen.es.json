@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "john-owen",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Matthew 8:26",
+   "status": "self_rendered",
+   "block_index": 5
+  }
+ ]
+}

@@ -58,5 +58,24 @@
    "seed_plans creates NO row today: he-holds-my-tomorrows.hi is shipped but the-god-of-all-comfort is not, so this curated plan's set is incomplete. Dormant on purpose. NOTE for whoever ships the-god-of-all-comfort in Hindi: that book COMPLETES this plan and will flip a five-week plan live on its deploy — it needs the plans/+page.ts prerender touch in the same PR, the #756 shape.",
    "हन्ना व्हिटॉल स्मिथ is the form set by her Hindi bio in this same PR — हन्ना is the IRV's own form for Hannah (and runs 400 to 16 against हन्नाह in shipped Hindi content), व्हिटॉल takes its व्ह from the corpus's व्हाइटफ़ील्ड. गैरेथ इवांस is from gareth-evans.html."
   ]
+ },
+ "power-from-on-high": {
+  "title": "ऊपर से सामर्थ्य: पवित्र आत्मा",
+  "description": "आत्मा से भरे जीवन पर आर. ए. टॉरे के साथ चार सप्ताह: पहले पवित्र आत्मा से बपतिस्मा और वह सामर्थ्य जो वह सेवा के लिये देता है, फिर उस आत्मा के व्यक्तित्व और कार्य का गहरा अध्ययन जो हर विश्वासी में वास करता है।",
+  "note": [
+   "Queue job #2141. Of this curated plan's two source books, only baptism-with-the-holy-spirit has a Hindi edition; the-person-and-work-of-the-holy-spirit does not. seed_plans needs every source book present, so it creates NO row today — this prose lands DORMANT on purpose, so that the second book cannot publish an English-titled card in Hindi (#819). NOTE for whoever ships the-person-and-work-of-the-holy-spirit in Hindi: that book COMPLETES this plan and will flip it live on its deploy.",
+   "«पवित्र आत्मा से बपतिस्मा» is the shipped edition's own title verbatim (baptism-with-the-holy-spirit.hi.json), quoted so the plan card and the book on the shelf agree.",
+   "The title «ऊपर से सामर्थ्य» renders 'power from on high' — the phrase of Luke 24:49. It is NOT claimed as a fetched verse (Take Root was unreachable this session); सामर्थ्य is the corpus's settled word for power and ऊपर से for 'from on high'. Confirm against the IRV when the second book lands.",
+   "आर. ए. टॉरे is the shipped Hindi form of the author's name (r-a-torrey short bio: रूबेन आर्चर टॉरे). वास is the corpus verb for the Spirit's indwelling (भीतर वास, 35 occurrences), here में वास करता है."
+  ]
+ },
+ "everything-for-christ": {
+  "title": "मसीह के लिये सब कुछ: उंडेला हुआ जीवन",
+  "description": "पूरे मन का समर्पण किस मूल्य पर होता है, और उससे क्या मिलता है? डेविड ब्रेनर्ड की खोजपूर्ण मिशनरी डायरी, और उसके बाद उन स्त्री-पुरुषों की कहानियाँ जिन्होंने सुसमाचार के लिये अपना सब कुछ दे दिया — समर्पण का वह आह्वान, जो उत्तर देनेवाले जीवनों के द्वारा सुनाया गया है।",
+  "note": [
+   "Queue job #2142. NEITHER source book (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) has a Hindi edition, so seed_plans creates NO row today — this prose lands DORMANT on purpose, so that whichever book lands last cannot publish an English-titled card in Hindi (#819).",
+   "डेविड ब्रेनर्ड is the settled Hindi form of the name (34 occurrences in the shipped Hindi corpus). समर्पण is the corpus word for surrender/consecration, सुसमाचार for the gospel.",
+   "The title is the plan's own name, not a book title, so nothing is quoted: «उंडेला हुआ जीवन» renders 'a life poured out' with the drink-offering image of 2 Tim 4:6 (उंडेला जाना). Whoever translates men-and-women-who-gave-everything-2 into Hindi should either harmonise its title with this card or adjust this entry in the same PR."
+  ]
  }
 }

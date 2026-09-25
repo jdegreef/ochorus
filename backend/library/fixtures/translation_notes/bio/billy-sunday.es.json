@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "billy-sunday",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "library/fixtures/content/sermons/the-almost-christian.es.json"
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "library/fixtures/content/books/the-way-to-god.es.json"
+  }
+ ]
+}
