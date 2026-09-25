@@ -547,6 +547,8 @@
 // prerender refresh 2026-09-25 (queue job #2116): Hindi book — absolute-surrender, Andrew Murray's nine
 // addresses ("पूर्ण समर्पण"), 9 chapters. Book pages are prerendered per locale, so /hi/books and the
 // shelf rebuild with the translated title.
+// prerender refresh 2026-09-25 (queue job #2117): Hindi book — true-vine, Andrew Murray ("सच्ची दाखलता"), 32 chapters. Book pages are
+// prerendered per locale, so /hi/books and the shelf rebuild with the translated title.
 import { listBooks } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
