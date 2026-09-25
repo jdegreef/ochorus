@@ -144,6 +144,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"am/he-holds-my-tomorrows": {
+			"ground": "a17f159d24def9ce4f19bf26bdb7f72e8fd2b936bcc4feb49fbddcefa3cdf764",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/the-inner-chamber": {
 			"ground": "df4f1775ddb1ebf270d95fdcfa8f01bf2c23f7f241f47c2e095085533218008b",
 			"style": "devotional",
