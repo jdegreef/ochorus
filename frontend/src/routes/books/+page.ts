@@ -875,3 +875,5 @@ export const load: PageLoad = async ({ fetch }) => {
 };
 // prerender refresh 2026-09-25: Arabic books — brave-for-god (#3189), growing-in-wisdom (#2820),
 // women-who-moved-heaven-2 (#1782), men-and-women-who-gave-everything-2 (#2782). Rebuilds /ar/books.
+// prerender refresh 2026-09-25: Arabic books — the-secret-of-guidance (#3180), men-who-tended-the-flock-2 (#2774),
+// rise-up-men-of-god-2 (#2790), thoughts-for-the-quiet-hour (#2811). Rebuilds /ar/books.
