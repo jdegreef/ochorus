@@ -8725,15 +8725,18 @@ BODY_CORRECTIONS.setdefault("things-as-they-are", {})["wrapped_blocks"] = [
 # Gutenberg #29426. The old importer unwrapped it to loose text like the lines
 # above, and PR #172's preface rebuild (migration 0039) then set it as
 # `<p>— Eugene Stock</p>`: a dash and a casing the source never printed. The
-# importer emits `<h3>EUGENE STOCK.</h3>` now (`ingest.display_line`), so the
-# row takes that block byte for byte (`tests_english_audit` checks it against
-# the importer). A swap, not `restored_blocks`: the line is there, only
-# restyled, and inserting would sign the preface twice. Nothing moves, so no
-# block position shifts either. The sw edition carries the same `<p>` at the
-# same place and keeps the name as printed, so one pair serves both editions
-# and their tag sequences stay in step.
+# same rebuild dropped the `<hr>` the edition sets between the preface and the
+# Glossary. The importer emits `<h3>EUGENE STOCK.</h3> <hr/>` now
+# (`ingest.display_line`), so the row takes both blocks byte for byte
+# (`tests_english_audit` checks them against the importer). A swap, not
+# `restored_blocks`: the line is there, only restyled, and inserting would sign
+# the preface twice. The `<hr/>` rides on the same pair: alone it has nothing
+# to guard on, and the swap is what makes it land once. The sw
+# edition carries the same `<p>` at the same place and keeps the name as
+# printed, so one pair serves both editions and their tag sequences stay in
+# step. No quote anchor or translation-note `block_index` sits in this book.
 BODY_CORRECTIONS["things-as-they-are"]["replacements"].append(
-    ("<p>— Eugene Stock</p>", "<h3>EUGENE STOCK.</h3>"),
+    ("<p>— Eugene Stock</p>", "<h3>EUGENE STOCK.</h3><hr/>"),
 )
 
 # --- ministry-of-intercession: a display line flattened to loose text ---------

@@ -2119,14 +2119,16 @@ class ThingsAsTheyArePrefaceSignatureTests(SimpleTestCase):
     """`things-as-they-are` ch2: the preface's "EUGENE STOCK." signature.
 
     The rows carried it as `<p>— Eugene Stock</p>`, a restyling from PR #172's
-    preface rebuild; see the pair after the book's `wrapped_blocks` in
-    `corrections.py`. Asserted per edition against the SHIPPED fixture, and the
-    block against what the importer emits from PG 29426's own markup.
+    preface rebuild, which also dropped the `<hr>` before the Glossary; see the
+    pair after the book's `wrapped_blocks` in `corrections.py`. Asserted per
+    edition against the SHIPPED fixture, and the blocks against what the
+    importer emits from PG 29426's own markup.
     """
 
     SLUG = "things-as-they-are"
     OLD = "<p>— Eugene Stock</p>"
     BLOCK = "<h3>EUGENE STOCK.</h3>"
+    NEW = f"{BLOCK}<hr/>"
 
     def _preface(self, lang):
         from library.content_fixtures import book_fixture_path
@@ -2145,7 +2147,7 @@ class ThingsAsTheyArePrefaceSignatureTests(SimpleTestCase):
             with self.subTest(language=lang):
                 self.assertNotIn(self.OLD, body)
                 self.assertEqual(body.count(self.BLOCK), 1)
-                self.assertIn(f"</p>{self.BLOCK}<h3>", body)
+                self.assertIn(f"</p>{self.NEW}<h3>", body)
 
     def test_the_correction_restores_the_restyled_rows(self):
         """Put the old `<p>` back; the correction must give the shipped body
@@ -2154,7 +2156,7 @@ class ThingsAsTheyArePrefaceSignatureTests(SimpleTestCase):
         for lang in ("en", "sw"):
             body = self._preface(lang)
             with self.subTest(language=lang):
-                old = body.replace(self.BLOCK, self.OLD)
+                old = body.replace(self.NEW, self.OLD)
                 self.assertNotEqual(old, body)
                 self.assertEqual(corrections.settled_chapter_body(self.SLUG, 2, old), body)
 
@@ -2218,15 +2220,15 @@ EUGENE STOCK.<br></div>
 </tbody></table></div>
 </body></html>"""
 
-    def test_the_importer_emits_the_block_the_correction_writes(self):
-        """The pair's new side must be the importer's block byte for byte, and
+    def test_the_importer_emits_the_blocks_the_correction_writes(self):
+        """The pair's new side must be the importer's blocks byte for byte, and
         end the preface's prose, or a re-import and the rows disagree."""
         from library.management.commands.import_gutenberg import extract_chapters
 
-        pair = (self.OLD, self.BLOCK)
+        pair = (self.OLD, self.NEW)
         self.assertIn(pair, corrections.BODY_CORRECTIONS[self.SLUG]["replacements"])
         (title, body), *_ = extract_chapters(self.PAGE)
         self.assertEqual(title, "Preface")
         self.assertEqual(body.count(self.BLOCK), 1)
-        self.assertIn(f"even to evangelise it.</p> {self.BLOCK} <hr/>", body)
+        self.assertIn(f"even to evangelise it.</p> {self.BLOCK} <hr/><h3>Glossary</h3>", body)
         self.assertNotIn(self.OLD, body)
