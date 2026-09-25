@@ -1,0 +1,197 @@
+{
+ "kind": "sermon",
+ "slug": "the-way-of-salvation-made-plain",
+ "language": "sw",
+ "job_issue": 3477,
+ "references": [
+  {
+   "reference": "Acts 16:29",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 16:30b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-right-kind-of-faith.sw.json"
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Acts 10:43",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "John 8:34",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 8:36",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 14:11",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "John 14:10b",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "the-unselfishness-of-god.sw.json"
+  },
+  {
+   "reference": "John 15:14",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "christ-all-in-all.sw.json"
+  },
+  {
+   "reference": "John 13:13",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "John 20:28b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-right-kind-of-faith.sw.json"
+  },
+  {
+   "reference": "John 20:29",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 7:48",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 7:50",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 15:1",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 15:2",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:3",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:4",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "Matthew 28:18b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Luke 6:46",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "John 8:12b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "Romans 10:9",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "salvation-by-faith.sw.json"
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Matthew 12:34b",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "blessed-prosperity.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:17b",
+   "status": "self_rendered",
+   "block_index": 28
+  }
+ ]
+}
