@@ -1784,6 +1784,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/prevailing-prayer": {
+			"ground": "45da333681f0f67d6b871673bbe95228ba816766934526283fc6665fb962fe9c",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "duotone/indigo",
+			"bar": 0.05
+		},
 		"hi/soar-like-the-eagle-3": {
 			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
 			"style": "lettered",
