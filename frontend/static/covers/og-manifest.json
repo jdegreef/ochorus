@@ -204,6 +204,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"ar/jesus-himself-2": {
+			"ground": "3d2db2c6df3eea5ab5a1dd1113e2adbae98a0afa1adc549e7cb869a8ca54b704",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"ar/lord-teach-us-to-pray-2": {
 			"ground": "cdaf454558acbf725ad4de0f324c92d5adb966a5678c9424003b25be9df961f9",
 			"style": "devotional",
@@ -294,6 +304,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"ar/the-masters-indwelling": {
+			"ground": "45b1af0b52f595f73eedad08ffde0d4fb2577a13207fa6560f685d4c3a54bde5",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"ar/the-person-and-work-of-the-holy-spirit": {
 			"ground": "3844a0168e4c7b85c75f603bed212951fa96dc3ed2e5ba8d9b36acf6c72797a7",
 			"style": "revival",
@@ -322,6 +342,16 @@
 			"art": true,
 			"scrim": 0.6,
 			"layout": "duotone/indigo",
+			"bar": 0
+		},
+		"ar/union-and-communion": {
+			"ground": "689326febad4304a18305f45444b48172aad1552d9a10ab74fd78b6fccb9b400",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "box/teal",
 			"bar": 0
 		},
 		"ar/waiting-on-god": {
