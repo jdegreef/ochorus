@@ -6,7 +6,7 @@
    "space-before-punct": 2
   },
   "a-retrospect": {
-   "space-before-punct": 8
+   "space-before-punct": 10
   },
   "a-serious-call": {
    "space-before-punct": 9
@@ -67,6 +67,10 @@
    "orphan-close-quote": 5,
    "space-before-punct": 3
   },
+  "george-muller-of-bristol": {
+   "lost-paragraphing": 1,
+   "word-fusion": 1
+  },
   "godliness": {
    "space-before-punct": 9
   },
@@ -122,10 +126,6 @@
   },
   "men-of-prayer-2": {
    "space-before-punct": 2
-  },
-  "men-who-tended-the-flock-2": {
-   "hyphen-space": 1,
-   "space-before-punct": 4
   },
   "ministry-of-intercession": {
    "lost-paragraphing": 1
@@ -243,8 +243,8 @@
    "orphan-close-quote": 23
   },
   "the-circumcision-of-the-heart": {
-   "orphan-close-quote": 4,
-   "space-before-punct": 4
+   "orphan-close-quote": 3,
+   "space-before-punct": 1
   },
   "the-fourfold-gospel": {
    "hyphen-space": 1

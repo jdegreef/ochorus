@@ -1,0 +1,142 @@
+{
+ "kind": "sermon",
+ "slug": "caleb-a-different-spirit",
+ "language": "sw",
+ "job_issue": 2964,
+ "pull_request": 3434,
+ "references": [
+  {
+   "reference": "Philippians 2:1-5",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:6-8",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "Philippians 2:9-11",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 14:13a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Exodus 14:13b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Lamentations 3:23b",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Joshua 14:6-14",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Timothy 4:12a",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Ezekiel 22:30",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "John 4:23",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Ephesians 5:19b",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "John 1:27",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "John 1:29a",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Psalm 103:5b",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Isaiah 40:31a",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "John 15:4a",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Hebrews 4:6",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "block_index": 73,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Hebrews 4:7",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Hebrews 4:11a",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Matthew 16:18b",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Genesis 2:2",
+   "status": "self_rendered",
+   "block_index": 75
+  }
+ ]
+}

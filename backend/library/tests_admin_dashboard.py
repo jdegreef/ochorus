@@ -24,6 +24,7 @@ from .models import (
     Plan,
     PlanDay,
     SearchQueryLog,
+    Series,
     Sermon,
 )
 
@@ -343,6 +344,28 @@ class AdminCoverageTests(TestCase):
         self.assertEqual(bios["cb"]["cells"], {"en": "present"})
         # Rows sorted by author name.
         self.assertEqual([b["slug"] for b in res.data["bios"]], ["am", "cb"])
+
+    @override_settings(DEBUG=True)
+    def test_book_rows_carry_their_series(self):
+        # The Books matrix narrows to one series (the admin's "queue the whole
+        # series into Swahili"), so each book row names its series and volume,
+        # and the payload lists the series to choose from.
+        author = Author.objects.create(slug="oo", name="Ochorus")
+        rooted = Series.objects.create(slug="rooted", title="Rooted")
+        for n in (1, 2):
+            Book.objects.create(
+                author=author, slug=f"rooted-{n}", language="en", title=f"Rooted {n}",
+                series=rooted, series_position=n,
+            )
+        Book.objects.create(author=author, slug="solo", language="en", title="Solo")
+
+        res = self.client.get("/api/admin/coverage/")
+        by_slug = {b["slug"]: b for b in res.data["books"]}
+        self.assertEqual(
+            (by_slug["rooted-2"]["series"], by_slug["rooted-2"]["series_position"]), ("rooted", 2)
+        )
+        self.assertNotIn("series", by_slug["solo"])
+        self.assertIn({"slug": "rooted", "title": "Rooted"}, res.data["series"])
 
     @override_settings(DEBUG=True)
     def test_articles_matrix(self):

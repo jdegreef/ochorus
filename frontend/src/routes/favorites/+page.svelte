@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { authorPath } from '$lib/originals';
 	import {
 		listAuthors,
 		listBooks,
@@ -257,7 +258,7 @@
 	// Fallback link for a favorite whose catalog row is missing in this language.
 	// Quotes are absent on purpose — they have no slug-addressable page.
 	const HREF: Record<Exclude<FavoriteEntry['kind'], 'quote'>, (slug: string) => string> = {
-		author: (s) => `/authors/${s}`,
+		author: (s) => authorPath(s),
 		book: (s) => `/books/${s}`,
 		plan: (s) => `/plans/${s}`,
 		sermon: (s) => `/sermons/${s}`,

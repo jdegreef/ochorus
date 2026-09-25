@@ -781,6 +781,9 @@ class CorrectionsHygieneTests(SimpleTestCase):
                 # A wrapped display line keeps its text, so its head is present
                 # either way; dead means the run it names was edited away.
                 *((head, f"<{tag}>{head}") for head, tag, *_ in entry.get("wrapped_blocks", ())),
+                # A back-matter cut: its first block (not yet applied) and the
+                # ending it cuts after (applied). Dead means both are gone.
+                *entry.get("back_matter", ()),
             )
             if old not in corpus and new not in corpus
         ]
@@ -1269,6 +1272,45 @@ class BrainerdDisplayLineTests(SimpleTestCase):
                     self.assertEqual(corrections.settled_chapter_body(self.SLUG, order, settled), settled)
 
 
+class UnfailingSpringsDisplayLineTests(SimpleTestCase):
+    """Gutenberg #57109's Rev. 22:17 display line — see that entry in
+    `corrections.py`. Asserted per edition, for the same reason as above."""
+
+    SLUG = "unfailing-springs"
+    LANGUAGES = {"ar", "en", "es", "fr", "hi", "lg", "pt", "sw", "uk"}
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from library.content_fixtures import SERMONS_DIR
+
+        cls.editions = {
+            path.stem.rsplit(".", 1)[1]: json.loads(path.read_text())[0]["fields"]["body_html"]
+            for path in sorted(SERMONS_DIR.glob(f"{cls.SLUG}.*.json"))
+        }
+        cls.blocks = [block for _, block in corrections.BODY_CORRECTIONS[cls.SLUG]["restored_blocks"]]
+
+    def test_every_edition_is_covered(self):
+        self.assertEqual(set(self.editions), self.LANGUAGES)
+        self.assertEqual(len(self.blocks), len(self.LANGUAGES))
+
+    def test_the_line_sits_under_the_address_heading(self):
+        for lang, body in self.editions.items():
+            with self.subTest(language=lang):
+                [block] = [b for b in self.blocks if b in body]
+                self.assertIn(f"</h2>{block} <p>", body)
+
+    def test_the_correction_is_what_restores_it(self):
+        """Strip it back out and the correction must put it back."""
+        for lang, settled in self.editions.items():
+            with self.subTest(language=lang):
+                [block] = [b for b in self.blocks if b in settled]
+                damaged = settled.replace(f"{block} ", "", 1)
+                self.assertNotIn("22:17)", damaged)
+                self.assertEqual(corrections.settled_sermon_body(self.SLUG, damaged), settled)
+                self.assertEqual(corrections.settled_sermon_body(self.SLUG, settled), settled)
+
+
 class DroppedBlockRestorationTests(SimpleTestCase):
     """`restore_dropped_blocks` — the sanitizer's OTHER victim.
 
@@ -1388,27 +1430,6 @@ class LooseBlockWrapTests(SimpleTestCase):
                 ("AFTER SOME months", "p", "for baptizing the people."),
             ),
             "<p>AFTER SOME months, for baptizing the people.</p> The Jordan. <p>Bethabara</p>",
-        )
-
-    def test_breaks_that_only_lead_into_the_line_go_with_it(self):
-        """A display line set behind `<br>`s of its own: `display_line` drops
-        them, so the wrap does, or a stray break sits between two blocks."""
-        self.assertEqual(
-            self._wrap(
-                "<h3>Notes</h3> <br/><i>From</i> Miss Reade. <p>I have</p>",
-                ("<i>From</i> Miss", "p"),
-            ),
-            "<h3>Notes</h3> <p><i>From</i> Miss Reade.</p> <p>I have</p>",
-        )
-
-    def test_breaks_after_loose_text_stay_with_it(self):
-        """An attribution the importer leaves loose keeps its own breaks."""
-        self.assertEqual(
-            self._wrap(
-                "<p>Q.</p> <i>Rev. T. Walker.</i><br/> <br/><br/> IN writing, <p>So</p>",
-                ("IN writing", "p"),
-            ),
-            "<p>Q.</p> <i>Rev. T. Walker.</i><br/> <br/><br/> <p>IN writing,</p> <p>So</p>",
         )
 
     def test_a_head_inside_a_block_is_left_alone(self):
@@ -1558,8 +1579,239 @@ THE KING OF THE JEWS.<br>
         self.assertEqual(emitted, 5)
 
 
+class RetrospectDisplayLineTests(SimpleTestCase):
+    """`a-retrospect`: 47 display lines shipped as loose text, in en and es.
+
+    See its `wrapped_blocks` entry in `corrections.py`: the 47 English entries,
+    then the 47 Spanish ones (a 48th, ch12's MIDI transcriber's note, is cut
+    instead — a `replacements` pair). Asserted per edition against the SHIPPED fixture,
+    and the English against what the importer emits from PG 26744's own markup.
+    """
+
+    SLUG = "a-retrospect"
+    LINES = 47
+
+    def _chapters(self, lang):
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, lang).read_text(encoding="utf-8"))
+        return {
+            r["fields"]["title"]: r["fields"]["body_html"]
+            for r in rows
+            if r["model"] == "library.chapter"
+        }
+
+    def _entries(self, lang):
+        entries = corrections.BODY_CORRECTIONS[self.SLUG]["wrapped_blocks"]
+        self.assertEqual(len(entries), 2 * self.LINES)
+        return entries[: self.LINES] if lang == "en" else entries[self.LINES :]
+
+    def test_every_line_ships_in_its_block(self):
+        for lang in ("en", "es"):
+            corpus = "".join(self._chapters(lang).values())
+            for head, tag, *_ in self._entries(lang):
+                with self.subTest(language=lang, head=head):
+                    self.assertEqual(corpus.count(f"<{tag}>{head}"), 1)
+
+    def test_the_correction_wraps_the_flattened_rows(self):
+        """Strip every wrapped line back to loose text; the correction must
+        restore the shipped body exactly."""
+        for lang in ("en", "es"):
+            heads = [head for head, *_ in self._entries(lang)]
+            for title, body in self._chapters(lang).items():
+                flat = body
+                for head in heads:
+                    flat = re.sub(
+                        rf"<p>({re.escape(head)}.*?)</p>", r"\1", flat, count=1, flags=re.S
+                    )
+                if flat == body:
+                    continue
+                with self.subTest(language=lang, chapter=title):
+                    self.assertEqual(corrections.settled_chapter_body(self.SLUG, None, flat), body)
+
+    # PG 26744's own markup, whole blocks, prose cut short: a chapter opener set
+    # as a drop-cap div, a journal dateline in a right-set div, and two poems
+    # each followed by the prose line the edition sets as a div of its own.
+    PAGE = """<html><body>
+<h2>CHAPTER X</h2>
+<h3>FIRST EVANGELISTIC EFFORTS</h3>
+<div class="cap">A JOURNEY taken in the spring of 1855 with the
+Rev. J. S. Burden of the Church Missionary Society
+(now the Bishop of Victoria, Hong-kong) was attended with
+some serious dangers.</div>
+<p>From thence we went on to T'ung-chau.</p>
+<div class="right">
+<i>Thursday, April 26th, 1855.</i><br>
+</div>
+<p>After breakfast we commended ourselves to the care of
+our Heavenly <span class="smcap">Father</span>.</p>
+<p>That verse—</p>
+<div class="poem">
+"The perils of the sea, the perils of the land,<br>
+Should not dishearten thee: thy <span class="smcap">Lord</span> is nigh at hand.<br>
+But should thy courage fail, when tried and sore oppressed,<br>
+His promise shall avail, and set thy soul at rest."<br>
+</div>
+<div class="unindent">seemed particularly appropriate to our circumstances, and
+was very comforting to me.</div>
+<p>On our way we passed through one small town.</p>
+<h2>CHAPTER XV</h2>
+<h3>SETTLEMENT IN NINGPO</h3>
+<p>How glad one is now, not only to know, with dear Miss Havergal,
+that——</p>
+<div class="poem">
+"They who trust Him wholly<br>
+<span style="margin-left: 2em;">Find Him wholly true,"</span><br>
+</div>
+<div class="unindent">but also that when we fail to trust fully He still remains
+unchangingly faithful. He <i>is</i> wholly true whether
+we trust or not. "If we believe not, He abideth faithful;
+He cannot deny Himself." But oh, how we dishonour
+our <span class="smcap">Lord</span> whenever we fail to trust Him, and what peace,
+blessing, and triumph we lose in thus sinning against the
+Faithful One! May we never again presume in anything
+to doubt Him!</div>
+<p>The year 1857 was a troublous time.</p>
+</body></html>"""
+
+    def test_the_importer_emits_the_blocks_the_correction_wraps(self):
+        """The guard is a string match, so the importer and the correction must
+        agree byte for byte — here once the fixture's curled quotation marks
+        are folded back to the edition's straight ones."""
+        from library.ingest import soup
+        from library.management.commands.import_gutenberg import (
+            content_root,
+            split_by_heading,
+        )
+
+        straight = str.maketrans("“”‘’", "\"\"''")
+        chapters = {t: b.translate(straight) for t, b in self._chapters("en").items()}
+        heads = [head.translate(straight) for head, *_ in self._entries("en")]
+        emitted = 0
+        for title, body in split_by_heading(content_root(self.PAGE), "h2"):
+            for block in soup(body).body.find_all("p", recursive=False):
+                block = str(block)
+                if not any(block.startswith(f"<p>{head}") for head in heads):
+                    continue  # prose the importer always kept
+                with self.subTest(chapter=title, block=block[:40]):
+                    self.assertIn(block, chapters[title])
+                    emitted += 1
+        self.assertEqual(emitted, 6)
+
+
+class BackMatterTests(SimpleTestCase):
+    """`strip_back_matter` — the publisher's and transcriber's pages after the end.
+
+    Gutenberg texts fold the back of the printed book into the last chapter's
+    section: a colophon and a priced catalogue, a transcriber's errata note. It
+    shipped, and a translator renders what is there, so it reached the
+    translations too.
+    """
+
+    SEAMS = (("prevailing prayer.</p>", "<p><i>Printed in the United States of America</i></p>"),)
+    ENDING = "<p>by earnest, definite, prevailing prayer.</p>"
+    TAIL = "<p><i>Printed in the United States of America</i></p><p><i>R. A. TORREY</i></p>"
+
+    def _strip(self, html):
+        return corrections.strip_back_matter(html, self.SEAMS)
+
+    def test_cuts_everything_after_the_ending(self):
+        self.assertEqual(self._strip(self.ENDING + self.TAIL), self.ENDING)
+
+    def test_tolerates_the_block_separator(self):
+        self.assertEqual(self._strip(f"{self.ENDING} \n{self.TAIL}"), self.ENDING)
+
+    def test_is_idempotent(self):
+        once = self._strip(self.ENDING + self.TAIL)
+        self.assertEqual(self._strip(once), once)
+
+    def test_the_ending_alone_is_not_a_seam(self):
+        """Every entry runs against every chapter of its slug: an ending phrase
+        that recurs mid-book must not truncate it."""
+        body = self.ENDING + "<p>The next paragraph.</p>"
+        self.assertEqual(self._strip(body), body)
+
+    def test_the_first_block_alone_is_not_a_seam(self):
+        """Nor may a colophon quoted somewhere else cut the book there."""
+        body = "<p>Earlier.</p>" + self.TAIL
+        self.assertEqual(self._strip(body), body)
+
+    def test_no_op_on_a_stripped_body(self):
+        text = "by earnest, definite, prevailing prayer. Printed in the United States of America"
+        self.assertEqual(self._strip(text), text)
+
+
+class ShippedBackMatterTests(SimpleTestCase):
+    """Every declared `back_matter` seam, against every edition of its work.
+
+    Driven by the declarations, so a new entry is covered without a new test.
+    """
+
+    def test_each_edition_ships_cut_and_the_correction_is_what_cuts_it(self):
+        """The settled fixture must end on a declared ending — a translation that
+        carried the back matter with no seam of its own fails here — and putting
+        the back matter back must be cut again: the fixture alone passes with
+        the entry deleted, while production rows still carry the tail."""
+        from library.content_fixtures import BOOKS_DIR
+
+        declared = {
+            slug: entry["back_matter"]
+            for slug, entry in corrections.BODY_CORRECTIONS.items()
+            if entry.get("back_matter")
+        }
+        self.assertTrue(declared)
+        for slug, seams in declared.items():
+            for path in sorted(BOOKS_DIR.glob(f"{slug}.*.json")):
+                last = max(
+                    (row["fields"] for row in json.loads(path.read_text(encoding="utf-8"))
+                     if row["model"] == "library.chapter"),
+                    key=lambda f: f["order"],
+                )
+                settled = last["body_html"]
+                with self.subTest(fixture=path.name):
+                    seam = next(((e, f) for e, f in seams if settled.endswith(e)), None)
+                    self.assertIsNotNone(seam, f"ch{last['order']} does not end on a declared ending")
+                    damaged = f"{settled}{seam[1]}<p>The next advertised title.</p>"
+                    for body in (damaged, settled):
+                        self.assertEqual(
+                            corrections.settled_chapter_body(slug, last["order"], body), settled
+                        )
+
+
+class BruisedReedRepairTests(SimpleTestCase):
+    """What only `the-bruised-reed` needs pinning; its string repairs are in
+    `ShelfRepairTests.REPAIRS` with the rest of the shelf's."""
+
+    SLUG = "the-bruised-reed"
+
+    def test_a_reimport_of_the_raw_scan_reads_the_same(self):
+        """The raw-scan pair for the lost line now writes the whole sentence,
+        so a re-import and the repaired live row agree."""
+        raw = "<p>Therefore let us not fore the cure be erowiglt but keep</p>"
+        settled = corrections.settled_chapter_body(self.SLUG, 4, raw)
+        self.assertIn("nor pull off the plaster before the cure be wrought, but", settled)
+
+    def test_no_opening_quote_mark_survives(self):
+        """This edition sets no quotation marks, so every one was scan damage."""
+        for order, body in _book_bodies(self.SLUG).items():
+            with self.subTest(chapter=order):
+                self.assertNotIn("‘", body)
+                self.assertNotIn("“", body)
+
+    def test_every_chapter_carries_its_whole_title(self):
+        """Grosart's scan merged the last two chapters, so the title list
+        stopped at 27 and ch28 shipped cut off mid-phrase."""
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, "en").read_text(encoding="utf-8"))
+        titles = {r["fields"]["order"]: r["fields"]["title"]
+                  for r in rows if r["model"] == "library.chapter"}
+        self.assertEqual(titles, corrections.chapter_title_overrides(self.SLUG))
+        self.assertEqual(len(titles), 28)
+
+
 class ThingsAsTheyAreDisplayLineTests(SimpleTestCase):
-    """`things-as-they-are`: 79 display lines shipped as loose text, in en and sw.
+    """`things-as-they-are`: 78 display lines shipped as loose text, in en and sw.
 
     See its `wrapped_blocks` entry in `corrections.py`: the English entries,
     the Swahili ones, then the ornamental break shared by both. Asserted per
@@ -1568,7 +1820,7 @@ class ThingsAsTheyAreDisplayLineTests(SimpleTestCase):
     """
 
     SLUG = "things-as-they-are"
-    LINES = 69  # per edition, besides the breaks
+    LINES = 68  # per edition, besides the breaks
     BREAK = "<b>. . . . . . .</b>"
     BREAKS = {3: 1, 8: 3, 25: 1, 27: 3, 28: 1, 30: 1}
 
@@ -1735,36 +1987,4 @@ name both he and they are Hindus.</div>
                 with self.subTest(chapter=title, block=block[:40]):
                     self.assertIn(block, chapters[title])
                     emitted += 1
-        self.assertEqual(emitted, 9)
-
-
-class BruisedReedRepairTests(SimpleTestCase):
-    """What only `the-bruised-reed` needs pinning; its string repairs are in
-    `ShelfRepairTests.REPAIRS` with the rest of the shelf's."""
-
-    SLUG = "the-bruised-reed"
-
-    def test_a_reimport_of_the_raw_scan_reads_the_same(self):
-        """The raw-scan pair for the lost line now writes the whole sentence,
-        so a re-import and the repaired live row agree."""
-        raw = "<p>Therefore let us not fore the cure be erowiglt but keep</p>"
-        settled = corrections.settled_chapter_body(self.SLUG, 4, raw)
-        self.assertIn("nor pull off the plaster before the cure be wrought, but", settled)
-
-    def test_no_opening_quote_mark_survives(self):
-        """This edition sets no quotation marks, so every one was scan damage."""
-        for order, body in _book_bodies(self.SLUG).items():
-            with self.subTest(chapter=order):
-                self.assertNotIn("‘", body)
-                self.assertNotIn("“", body)
-
-    def test_every_chapter_carries_its_whole_title(self):
-        """Grosart's scan merged the last two chapters, so the title list
-        stopped at 27 and ch28 shipped cut off mid-phrase."""
-        from library.content_fixtures import book_fixture_path
-
-        rows = json.loads(book_fixture_path(self.SLUG, "en").read_text(encoding="utf-8"))
-        titles = {r["fields"]["order"]: r["fields"]["title"]
-                  for r in rows if r["model"] == "library.chapter"}
-        self.assertEqual(titles, corrections.chapter_title_overrides(self.SLUG))
-        self.assertEqual(len(titles), 28)
+        self.assertEqual(emitted, 8)

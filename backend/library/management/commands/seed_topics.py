@@ -1,8 +1,12 @@
 """Create the curated topical shelves from books already in the library.
 
-Idempotent: a topic is created only if its slug doesn't exist yet, and its
-membership is upserted each run (new books added to existing topics as the
-library grows). Members are soft slug-references — a slug that isn't present in
+Idempotent: a topic is created only if its slug doesn't exist yet. After that
+``topic_seed`` is the truth for everything it owns: the English title,
+description and sort order are re-asserted, and membership is SYNCED each run —
+new members added, removed members deleted. Until 2026-09-24 membership was
+add-only, so a book taken off a shelf in ``topic_seed`` stayed on it live (the
+copyright-blocked *Grace for Grace* sat on two shelves in es/fr/pt that way).
+Nothing else writes these rows, so there is no live edit to protect. Members are soft slug-references — a slug that isn't present in
 a given language simply doesn't appear on that language's shelf, so a topic can
 be seeded ahead of a book landing. Run on deploy (see release.py).
 
@@ -68,11 +72,22 @@ class Command(BaseCommand):
             if was_created:
                 created += 1
             else:
-                # Backfill/refresh the fixture-owned English fields on an
-                # already-seeded topic (scripture, qa and the SEO overrides are
-                # researched into topic_seed and nothing else writes them, so a
-                # corrected or expanded set must reach production on next deploy).
+                # Refresh the fixture-owned English fields on an already-seeded
+                # topic: nothing else writes them, so a corrected title, blurb,
+                # order, scripture, Q&A or SEO override must reach production on
+                # the next deploy. (is_published stays create-only.)
                 changed = []
+                if (topic.title, topic.description, topic.sort_order) != (
+                    title,
+                    description,
+                    order,
+                ):
+                    topic.title, topic.description, topic.sort_order = (
+                        title,
+                        description,
+                        order,
+                    )
+                    changed += ["title", "description", "sort_order"]
                 if (topic.scripture_ref, topic.scripture_text) != (ref, verse):
                     topic.scripture_ref, topic.scripture_text = ref, verse
                     changed += ["scripture_ref", "scripture_text"]
@@ -118,6 +133,19 @@ class Command(BaseCommand):
                 )
                 if entry_created:
                     added += 1
+            # ...and delete whatever topic_seed no longer lists, so a removal
+            # reaches production too.
+            removed = 0
+            for model, field, wanted in (
+                (TopicBook, "book_slug", book_slugs),
+                (TopicSermon, "sermon_slug", TOPIC_SERMONS.get(slug, [])),
+                (TopicArticle, "article_slug", TOPIC_ARTICLES.get(slug, [])),
+            ):
+                removed += (
+                    model.objects.filter(topic=topic)
+                    .exclude(**{f"{field}__in": wanted})
+                    .delete()[0]
+                )
             # Upsert per-language prose each run so an edited/added translation
             # reaches an already-seeded topic on the next deploy.
             for lang in set(prose) | set(scripture):
@@ -148,8 +176,10 @@ class Command(BaseCommand):
                         f"Created topic {slug} with {len(book_slugs)} members."
                     )
                 )
-            elif added:
-                self.stdout.write(f"Topic {slug}: added {added} new member(s).")
+            elif added or removed:
+                self.stdout.write(
+                    f"Topic {slug}: added {added}, removed {removed} member(s)."
+                )
 
         if not created:
             self.stdout.write("Topics already seeded.")

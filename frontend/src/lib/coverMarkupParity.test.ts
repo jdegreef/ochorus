@@ -156,7 +156,7 @@ describe('the two cover renderers agree', () => {
 			{
 				art: true,
 				scrim: scrimStrength('waiting-on-god'),
-				layout: coverLayoutFor('andrew-murray', null)
+				layout: coverLayoutFor('andrew-murray', null, 'waiting-on-god')
 			}
 		],
 		[
@@ -182,13 +182,24 @@ describe('the two cover renderers agree', () => {
 				title: 'انتظار الله',
 				art: true,
 				scrim: scrimStrength('waiting-on-god'),
-				layout: coverLayoutFor('andrew-murray', 'arabic')
+				layout: coverLayoutFor('andrew-murray', 'arabic', 'waiting-on-god')
 			}
 		],
 		[
 			'a plate with a subtitle',
 			{ cover_url: PLATE, subtitle: 'Thoughts on the Nearness of God' },
 			{ subtitle: 'Thoughts on the Nearness of God' }
+		],
+		[
+			// The script hands the card `coverTitle(fields)`, so the card side is
+			// the short title — and, being short, drops the long title's step-down.
+			'a short cover title over a long title',
+			{
+				cover_url: PLATE,
+				title: 'Rooted – 30 Days with God for Youth – Book 1 of the Series',
+				cover_title: 'Rooted'
+			},
+			{ title: 'Rooted' }
 		],
 		[
 			'arabic',

@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import html
 import io
+import json
 import logging
 import uuid
 import zipfile
@@ -62,6 +63,12 @@ STRINGS = {
             "The original text of this book is in the public domain. This "
             "translation was prepared by Ochorus, a free library of Christian "
             "classics."
+        ),
+        # An in-copyright original (see ``is_in_copyright``): its © line comes
+        # from the book row; these say who made this edition.
+        "edition": "This edition was prepared by Ochorus, a free library of Christian classics.",
+        "translation_edition": (
+            "This translation was prepared by Ochorus, a free library of Christian classics."
         ),
         "ai_unreviewed": (
             "This is an AI translation that is awaiting review by a native "
@@ -103,6 +110,14 @@ STRINGS = {
         ),
     },
 }
+
+# Every other language's back matter, keyed exactly like STRINGS["en"] — kept as
+# data so the prose in nine languages doesn't bury this module. The vision line
+# is each language's ``about_vision_quote`` from the site's own catalogue.
+# ``PilotTests`` holds every key present for every exported language.
+STRINGS.update(
+    json.loads((Path(__file__).resolve().parent / "export_strings.json").read_text(encoding="utf-8"))
+)
 
 #: Fixed zip timestamp, so identical content always zips to identical bytes.
 _EPOCH = (1980, 1, 1, 0, 0, 0)
@@ -160,7 +175,7 @@ def _site_url() -> str:
 
 
 def _site_link(site: str) -> str:
-    return f'<a href="{_e(site)}/">{_e(site.split("//")[-1])}</a>'
+    return f'<a dir="ltr" href="{_e(site)}/">{_e(site.split("//")[-1])}</a>'
 
 
 def book_url(book: Book) -> str:
@@ -324,9 +339,30 @@ def _e(text) -> str:
     return html.escape(str(text), quote=True)
 
 
+def is_in_copyright(book: Book) -> bool:
+    """A living author's own work, shared with permission — NOT public domain.
+
+    ``source_type`` can't say so (it has no licensed value; these rows carry
+    ``public_domain`` like Growing in Wisdom), so the signal is the rights line
+    they carry instead: an ``attribution`` that opens with "©". Every other
+    attribution in the library is a credit on a public-domain text.
+    """
+    return (book.attribution or "").lstrip().startswith("©")
+
+
 def _rights_key(book: Book) -> str:
-    # A translation's words are new, so only its ORIGINAL is public domain.
+    # A translation's words are new, so only its ORIGINAL is public domain —
+    # and an in-copyright original isn't public domain at all.
+    if is_in_copyright(book):
+        return "edition" if book.source_type == Book.SourceType.PUBLIC_DOMAIN else "translation_edition"
     return "public_domain" if book.source_type == Book.SourceType.PUBLIC_DOMAIN else "translation_rights"
+
+
+def _rights_text(book: Book, strings: dict) -> str:
+    """The one-line rights statement (also the EPUB's dc:rights)."""
+    if is_in_copyright(book):
+        return f"{book.attribution.strip()} {strings[_rights_key(book)]}"
+    return strings[_rights_key(book)]
 
 
 def _rights(ed: Edition) -> str:
@@ -334,9 +370,16 @@ def _rights(ed: Edition) -> str:
     parts = []
     if ed.book.source_type == Book.SourceType.AI_UNREVIEWED:
         parts.append(f'<p class="notice">{_e(s["ai_unreviewed"])}</p>')
-    parts.append(f"<p>{_e(s[_rights_key(ed.book)])}</p>")
-    if ed.book.attribution:
-        parts.append(f"<p>{_e(ed.book.attribution)}</p>")
+    if is_in_copyright(ed.book):
+        # The © line IS the rights statement; the edition line follows it.
+        # dir="auto": the © line is usually English inside an RTL edition,
+        # where bidi would otherwise move its "©" and full stop to the wrong ends.
+        parts.append(f'<p dir="auto">{_e(ed.book.attribution.strip())}</p>')
+        parts.append(f"<p>{_e(s[_rights_key(ed.book)])}</p>")
+    else:
+        parts.append(f"<p>{_e(s[_rights_key(ed.book)])}</p>")
+        if ed.book.attribution:
+            parts.append(f'<p dir="auto">{_e(ed.book.attribution)}</p>')
     return "".join(parts)
 
 
@@ -345,7 +388,7 @@ def _colophon(ed: Edition) -> str:
     site = _site_url()
     parts = [_rights(ed)]
     if ed.url:
-        parts.append(f'<p>{_e(s["read_online"])} <a href="{_e(ed.url)}">{_e(ed.url)}</a></p>')
+        parts.append(f'<p>{_e(s["read_online"])} <a dir="ltr" href="{_e(ed.url)}">{_e(ed.url)}</a></p>')
     if site:
         parts.append(f'<p>{_e(s["more"])} {_site_link(site)}</p>')
     return "".join(parts)
@@ -367,7 +410,7 @@ def _author_page(ed: Edition) -> str:
     parts.append(ed.bio)
     link = author_url(ed.book)
     if link:
-        parts.append(f'<p class="more">{_e(ed.strings["full_bio"])} <a href="{_e(link)}">{_e(link)}</a></p>')
+        parts.append(f'<p class="more">{_e(ed.strings["full_bio"])} <a dir="ltr" href="{_e(link)}">{_e(link)}</a></p>')
     return "".join(parts)
 
 
@@ -496,7 +539,7 @@ def render_epub(ed: Edition) -> bytes:
         f"<dc:creator>{_e(ed.author)}</dc:creator>"
         f"<dc:language>{ed.lang}</dc:language>"
         "<dc:publisher>Ochorus</dc:publisher>"
-        f"<dc:rights>{_e(s[_rights_key(b)])}</dc:rights>"
+        f"<dc:rights>{_e(_rights_text(b, s))}</dc:rights>"
         + (f"<dc:description>{_e(b.description)}</dc:description>" if b.description else "")
         + (f"<dc:source>{_e(ed.url)}</dc:source>" if ed.url else "")
         + f'<meta property="dcterms:modified">{modified}</meta>'

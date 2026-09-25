@@ -14,7 +14,11 @@ from bs4 import BeautifulSoup
 from django.db import transaction
 
 from library.catalog import AUTHORS, BOOKS, BookEntry
-from library.corrections import chapter_title_overrides, settled_chapter_body
+from library.corrections import (
+    _EDGE_BREAKS,
+    chapter_title_overrides,
+    settled_chapter_body,
+)
 from library.models import Author, Book, Chapter
 
 # Re-exported so `from library.ingest import clean_fragment` keeps working —
@@ -31,7 +35,7 @@ from library.sanitize import (  # noqa: F401
 
 # Same again for the word-count pair, which moved to library/text.py to sit
 # beside the other derivation from body_html.
-from library.text import text_of, word_count  # noqa: F401
+from library.text import html_to_text, text_of, word_count  # noqa: F401
 
 # The sanitizer and its allowlists now live in library/sanitize.py — the trust
 # boundary is security-critical enough to own a module, and models/commands need
@@ -73,6 +77,7 @@ _NUMBERED_BOOKS = frozenset(
 # apostrophes in contractions/possessives (God's, Paul's) are preserved.
 _DQUOTE = re.compile(r"[“”„‟«»″‶\"]")
 _SQUOTE = re.compile(r"(?<![A-Za-z])'|'(?![A-Za-z])")
+_PLURAL_POSSESSIVE = re.compile(r"[a-z]s' [a-z]", re.I)
 # CCEL headings are often ALL-CAPS with a roman-numeral prefix ("II. THE DIGNITY
 # OF CHRIST"); the rest of the library is Title Case. A roman-numeral prefix and
 # a set of lowercase-in-title connector words for the caps→title-case pass.
@@ -203,7 +208,12 @@ def clean_title(raw: str) -> str:
     t = strip_numbering_prefix(t)
     # Remove quotation marks; tidy stray wrapping punctuation and spacing.
     t = _DQUOTE.sub("", t)
-    t = _SQUOTE.sub("", t)
+    # A plural possessive ("Revival at Evans' Mills") is an apostrophe with a
+    # space after it, which `_SQUOTE` reads as a closing quote. When it is the
+    # title's ONLY single quote there is nothing for it to close, so keep it.
+    if t.count("'") == 1 and _PLURAL_POSSESSIVE.search(t):
+        t = t.replace("'", "\x00")
+    t = _SQUOTE.sub("", t).replace("\x00", "'")
     t = re.sub(r"^[\s`~]+|[\s`~]+$", "", t)
     t = _WS.sub(" ", t).strip()
     # A single trailing full stop is typographic noise in a title ("Adoration.",
@@ -261,6 +271,11 @@ def is_front_matter(title: str) -> bool:
     # ad list) — never the work, and its imprint is "WORKS BY <name>", which the
     # "PUBLISHED BY" catalogue-cut in import_gutenberg does not catch.
     if t in {"book catalogue", "book catalog"}:
+        return True
+    # "Transcriber's Note(s)" is the etext's errata apparatus. Under 300 words it
+    # would otherwise be MERGED into the chapter before it as an <h3> — how
+    # #51931's notes ended How to Bring Men to Christ.
+    if t.startswith(("transcriber's note", "transcriber’s note")):
         return True
     return t in {"contents", "table of contents", "title", "title page", "prefatory note"}
 
@@ -515,10 +530,9 @@ _FIGURE_CLASS = re.compile(r"^(?:fig|caption)")
 # Opening quotation marks. A line in capitals that opens with one finishes a
 # sentence (`"RIBBAND OF BLUE."`); it is not a heading.
 QUOTES = ("“", '"', "‘", "'")
-_EDGE_BREAKS = re.compile(r"^(?:\s|<br\s*/?>)+|(?:\s|<br\s*/?>)+$")
 
 
-def display_line(div) -> str:
+def display_line(div, *, verse_lines: bool = False) -> str:
     """A Gutenberg centred display line (`<div class="c1">`) as a body block.
 
     Gutenberg editions set in-text section headings, displayed verses,
@@ -538,24 +552,34 @@ def display_line(div) -> str:
 
     Returns "" for anything that is not a display line, and the caller keeps
     whatever it did before: a wrapper, Gutenberg's own `pg_body_wrapper`
-    furniture (page numbers, spacers, PG 57109's "9,000 in print"), one line
-    of a poem, a figure or caption, a bare chapter counter ("CHAPTER 1" under the
-    chapter's own heading — the reader numbers chapters), an empty line.
+    furniture (page numbers, spacers, PG 57109's "9,000 in print"), anything
+    the sanitizer would drop, one line of a poem, a figure or caption, a bare
+    chapter counter ("CHAPTER 1" under the chapter's own heading — the reader
+    numbers chapters), an empty line.
     Shared by `import_gutenberg` and `import_sermons`.
+
+    `verse_lines=True` keeps a line of a poem as its own `<p>`: the sermon
+    collector has no poem handling, so declining it there loses the poem.
     """
     classes = " ".join(div.get("class") or [])
     if (
         "pg_body_wrapper" in classes
-        or _FIGURE_CLASS.match(classes)
+        or any(_FIGURE_CLASS.match(c) for c in classes.split())
         or div.find(_DISPLAY_LINE_WRAPS) is not None
-        or div.find_parent(class_=_VERSE_CLASS) is not None
+        or (not verse_lines and div.find_parent(class_=_VERSE_CLASS) is not None)
     ):
+        return ""
+    # The block built below carries no class, so the sanitizer would no longer
+    # recognise furniture it drops by class (`[class*=pagenum]`, a footnote):
+    # ask it about the div itself while the div still has one.
+    if not clean_fragment(str(div)).strip():
         return ""
     # Read a copy with the page numbers gone: PG 65066 sets one inside a line
     # ("<span class="pageno">9</span><b>LIFE</b>" reads "9LIFE").
     line = soup(str(div)).find("div")
     drop_furniture(line)
-    text = " ".join(line.get_text().split())
+    # A <br> separates words: "THE NEGATIVE<br>CONDITIONS" is two of them.
+    text = html_to_text(line.decode_contents())
     if not text or _BARE_CHAPTER.match(text):
         return ""
     if text.isupper() and not text.startswith(QUOTES):

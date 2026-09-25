@@ -47,6 +47,9 @@ from __future__ import annotations
 # shape and roles.
 BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     ("a-hidden-fire", [("simeon-nsibambi", "subject")]),
+    # Pierson's authorised memoir of Müller — like A Hidden Fire, a single
+    # biography, so its subject is its lone member.
+    ("george-muller-of-bristol", [("george-muller", "subject")]),
     (
         "men-and-women-who-gave-everything-2",
         [

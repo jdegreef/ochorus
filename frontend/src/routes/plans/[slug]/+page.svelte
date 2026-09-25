@@ -3,6 +3,7 @@
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
+	import { authorPath } from '$lib/originals';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
@@ -182,7 +183,7 @@
 			<h2 class="section-heading">{t('search.groupAuthors')}</h2>
 			<p class="text-body">
 				{#each plan.authors as a, i (a.slug)}<a
-						href={localizeHref(`/authors/${a.slug}`)}
+						href={localizeHref(authorPath(a.slug))}
 						class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
 					>{i < plan.authors.length - 1 ? ' · ' : ''}{/each}
 			</p>

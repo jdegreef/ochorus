@@ -3,6 +3,7 @@
 	import { formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { authorPath } from '$lib/originals';
 	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
 
 	// A compact person card: portrait (or initials), name and lifespan, linking
@@ -25,7 +26,7 @@
 </script>
 
 <a
-	href={localizeHref(`/authors/${person.slug}`)}
+	href={localizeHref(authorPath(person.slug))}
 	data-sveltekit-preload-data="hover"
 	class="card-tint flex items-center gap-3 rounded-card border border-border p-3"
 >

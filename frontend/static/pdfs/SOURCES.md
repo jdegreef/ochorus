@@ -14,7 +14,15 @@ WordPress filename is kept for provenance), set that book's `pdf_url` back to
 commit both together. `pdf_url` is an updatable seed field, so the next deploy
 picks it up.
 
-Only `soar-like-the-eagle.pdf` and `the-secret-of-guidance.pdf` are present today.
+GENERATED PDFs (by `export_book`, one per exportable edition in
+`backend/library/export_policy.py`): `the-secret-of-guidance.pdf` and every edition
+of Gareth Evans' five books — `<slug>.pdf` for English, `<slug>.<lang>.pdf` for a
+translation. `soar-like-the-eagle.pdf` is the one surviving WordPress file; the
+English *Soar Like the Eagle* now links the generated `soar-like-the-eagle-3.pdf`
+instead, and the old file stays only so inbound links to it keep working.
+
+Only `soar-like-the-eagle.pdf` and `the-secret-of-guidance.pdf` were present before
+the Gareth Evans export.
 The second is not the WordPress file: it is GENERATED from the live chapters by
 `uv run python manage.py export_book the-secret-of-guidance --format pdf` (run with
 `PUBLIC_SITE_URL=https://ochorus.com` so the colophon links resolve) — the pilot for

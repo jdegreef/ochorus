@@ -247,6 +247,23 @@ class SearchTests(TestCase):
         slugs = {r.get("author_slug") for r in self.search("Humility")}
         self.assertNotIn("ghost", slugs)
 
+    def test_imprint_is_not_an_author_hit_but_its_books_are_found(self):
+        # A house byline is not a person: no "Author" row for it, while its
+        # books stay searchable (the imprint's own shelf is /originals).
+        imprint = Author.objects.create(
+            slug="ochorus-originals", name="Ochorus Originals", is_imprint=True
+        )
+        book = Book.objects.create(
+            author=imprint, slug="a-hidden-fire", language="en", title="A Hidden Fire"
+        )
+        Chapter.objects.create(book=book, order=1, title="One", body_html="<p>Kampala</p>")
+        self.assertNotIn(
+            "ochorus-originals",
+            {r.get("author_slug") for r in self.search("Ochorus") if r["type"] == "author"},
+        )
+        books = [r for r in self.search("Hidden Fire") if r["type"] == "book"]
+        self.assertEqual([b["book_slug"] for b in books], ["a-hidden-fire"])
+
     def _raw(self, q, language="en"):
         res = self.client.get("/api/library/search/", {"q": q, "language": language})
         self.assertEqual(res.status_code, 200)
