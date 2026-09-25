@@ -1933,3 +1933,183 @@ class IntercessionDisplayLineTests(SimpleTestCase):
         block = "<p>F. R. Havergal.</p> <p><i>September 1877.</i></p>"
         self.assertIn(block, body)
         self.assertIn(block, self._opening("en"))
+
+
+class ThingsAsTheyAreDisplayLineTests(SimpleTestCase):
+    """`things-as-they-are`: 78 display lines shipped as loose text, in en and sw.
+
+    See its `wrapped_blocks` entry in `corrections.py`: the English entries,
+    the Swahili ones, then the ornamental break shared by both. Asserted per
+    edition against the SHIPPED fixture, and the English against what the
+    importer emits from PG 29426's own markup.
+    """
+
+    SLUG = "things-as-they-are"
+    LINES = 68  # per edition, besides the breaks
+    BREAK = "<b>. . . . . . .</b>"
+    BREAKS = {3: 1, 8: 3, 25: 1, 27: 3, 28: 1, 30: 1}
+
+    def _chapters(self, lang):
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, lang).read_text(encoding="utf-8"))
+        return {
+            r["fields"]["order"]: (r["fields"]["title"], r["fields"]["body_html"])
+            for r in rows
+            if r["model"] == "library.chapter"
+        }
+
+    def _entries(self, lang):
+        entries = corrections.BODY_CORRECTIONS[self.SLUG]["wrapped_blocks"]
+        self.assertEqual(len(entries), 2 * self.LINES + 3)
+        return entries[: self.LINES] if lang == "en" else entries[self.LINES : 2 * self.LINES]
+
+    def test_every_line_ships_in_its_block(self):
+        for lang in ("en", "sw"):
+            chapters = self._chapters(lang)
+            corpus = "".join(body for _, body in chapters.values())
+            for head, tag, *_ in self._entries(lang):
+                with self.subTest(language=lang, head=head):
+                    self.assertEqual(corpus.count(f"<{tag}>{head}"), 1)
+            for order, (_, body) in chapters.items():
+                with self.subTest(language=lang, chapter=order):
+                    self.assertEqual(body.count(self.BREAK), self.BREAKS.get(order, 0))
+                    self.assertEqual(
+                        body.count(f"<p>{self.BREAK}</p>"), self.BREAKS.get(order, 0)
+                    )
+
+    def test_the_correction_wraps_the_flattened_rows(self):
+        """Strip every wrapped line back to loose text — with the `<br/>` the
+        rows carried in front of a "From" line or the imprint — and the
+        correction must restore the shipped body exactly."""
+        for lang in ("en", "sw"):
+            heads = [head for head, *_ in self._entries(lang)]
+            for order, (_, body) in self._chapters(lang).items():
+                flat = body.replace(f"<p>{self.BREAK}</p>", self.BREAK)
+                for head in heads:
+                    lead = "<br/>" if head.startswith(("<i>", "LONDON")) else ""
+                    flat = re.sub(
+                        rf"<(p|h3)>({re.escape(head)}.*?)</\1>",
+                        lambda m, lead=lead: lead + m.group(2),
+                        flat,
+                        count=1,
+                        flags=re.S,
+                    )
+                if flat == body:
+                    continue
+                with self.subTest(language=lang, chapter=order):
+                    self.assertEqual(corrections.settled_chapter_body(self.SLUG, order, flat), body)
+
+    # PG 29426's own markup, whole display lines, prose cut short: the Note's
+    # drop-cap opener, its signature and the first "From" line behind its own
+    # <br>; a poem broken by the ornament and run into a caption; an opener
+    # after an epigraph's attribution; the imprint behind four breaks.
+    PAGE = """<html><body>
+<h2>Note</h2>
+<div class="cap">WITHIN a few weeks of the publication of <i>Things as They Are</i>,
+letters were received from missionaries working in different parts
+of India, confirming its truth. But some in England doubt it.
+And so it was proposed that if a fourth edition were called for, a few confirmatory
+notes, written by experienced South Indian missionaries, other
+than those of the district described, would be helpful. Several such notes
+are appended. The Indian view of one of the chief facts set forth in the
+book is expressed in the note written by one who, better than any missionary,
+and surely better even than any onlooker at home, has the right
+to be heard in this matter—<i>and the right to be believed</i>.</div>
+<p>And now at His feet, who can use the least, we lay this book again; for
+"to the Mighty One," as the Tamil proverb says, "even the blade of
+grass is a weapon." May it be used for His Name's sake, to win more
+prayer for India—and all dark lands—the prayer that prevails.</p>
+<div class="sig">
+<span class="smcap">Amy Wilson-Carmichael</span>,<br>
+</div>
+<div class="unindent">
+<span style="margin-left: 2em;">Dohnavur, Tinnevelly District,</span><br>
+<span style="margin-left: 6em;">S. India.</span><br>
+</div>
+<h3><br>Confirmatory Notes</h3>
+<div class="center"><br><i>From</i> Rev. <span class="smcap">D. Downie</span>, D.D., American Baptist Mission,
+Nizam's Dominions, S. India.</div>
+<p>I have felt for many years that we missionaries were far too prone.</p>
+<h2>CHAPTER I</h2>
+<h3>About the Book</h3>
+<p>But in touching the Dust we touch the outworkings.</p>
+<div class="poem">
+"God! fight we not within a cursèd world,<br>
+<span style="margin-left: 0.5em;">Whose very air teems thick with leaguèd fiends—</span><br>
+<span style="margin-left: 0.5em;">Each word we speak has infinite effects—</span><br>
+<span style="margin-left: 0.5em;">Each soul we pass must go to heaven or hell—</span><br>
+<span style="margin-left: 0.5em;">And this our one chance through eternity</span><br>
+<span style="margin-left: 0.5em;">To drop and die, like dead leaves in the brake!</span><br>
+</div>
+<div class="center"><b>.        .        .        .        .        .        .</b></div>
+<div class="poem">
+<span style="margin-left: 0.5em;">Be earnest, earnest, earnest; mad if thou wilt:</span><br>
+<span style="margin-left: 0.5em;">Do what thou dost as if the stake were heaven,</span><br>
+<span style="margin-left: 0.5em;">And that thy last deed ere the judgment day."</span><br>
+<br><br></div>
+<div class="figcenter" style="width: 550px;" role="figure" aria-labelledby="ebm_caption3">
+<img alt="This is our bullock-bandy. The water was up to the top of the bank when we crossed last. The palms are cocoanuts." height="324" src="images/illus-024.jpg" title="" width="550" id="img_images_illus-024.jpg">
+<span class="caption" id="ebm_caption3">This is our bullock-bandy. The water was up to the top of the bank when we crossed last. The palms are cocoanuts.</span>
+<h2>CHAPTER X</h2>
+<h3>The Creed Chasm</h3>
+<div class="blockquot"><p>"I have had to deal in the same afternoon's work, on the one
+hand with men of keen powers of intellect, whose subtle
+reasoning made one look to the foundations of one's own faith;
+and on the other hand with ignorant crowds, whose conception
+of sin was that of a cubit measure, and to whom the terms
+'faith' and 'love' were as absolutely unknown as though they
+had been born and bred in some undeveloped race of Anthropoids."</p>
+<div class="sig">
+<i>Rev. T. Walker, India.</i><br>
+</div><br><br></div>
+<div class="cap">IN writing about the Classes and the Masses of South
+India, one great difference which does not exist at
+home should be explained. In England a prince
+and a peasant may be divided by outward things—social
+position, style of life, and the duty of life—but in all
+inward things they may be one—one in faith, one in
+purpose, one in hope. The difference which divides them
+is only accidental, external; and the peasant, perhaps
+being in advance of the prince in these verities of
+existence, may be regarded by the prince as nobler than
+himself: there is no spiritual chasm between them. It
+is the same in the realm of scholarship. All true
+Christians, however learned or however unlearned, hold
+one and the same faith. But in India it is not so.
+The scholar would smile at the faith of the simple
+villagers, he would even teach them to believe that which
+he did not believe himself, holding that it was more<span class="pagenum"><a id="Page_92">[92]</a></span>
+suitable for them, and he would marvel at your ignorance
+if you confounded his creed with theirs; and yet in
+name both he and they are Hindus.</div>
+<h2>APPENDIX</h2>
+<h3>Some Indian Saints</h3>
+<p>They have no desire to hide things.</p>
+<div class="center"><br><br><br><br>
+<small>LONDON: MORGAN AND SCOTT</small><br>
+</div>
+<hr style="width: 65%;">
+</body></html>"""
+
+    def test_the_importer_emits_the_blocks_the_correction_wraps(self):
+        """The guard is a string match, so the importer and the correction must
+        agree byte for byte, or a re-import carries a line twice."""
+        from library.ingest import soup
+        from library.management.commands.import_gutenberg import (
+            content_root,
+            split_by_heading,
+        )
+
+        chapters = dict(self._chapters("en").values())
+        heads = [head for head, *_ in self._entries("en")] + [self.BREAK]
+        emitted = 0
+        for title, body in split_by_heading(content_root(self.PAGE), "h2"):
+            for block in soup(body).body.find_all(["p", "h3"], recursive=False):
+                block = str(block)
+                if not any(block.startswith((f"<p>{h}", f"<h3>{h}")) for h in heads):
+                    continue  # prose the importer always kept
+                with self.subTest(chapter=title, block=block[:40]):
+                    self.assertIn(block, chapters[title])
+                    emitted += 1
+        self.assertEqual(emitted, 8)

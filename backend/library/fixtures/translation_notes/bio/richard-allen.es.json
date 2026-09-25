@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "richard-allen",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Daniel 5:27",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "library/fixtures/content/books/life-experience-gospel-labours.es.json"
+  }
+ ]
+}

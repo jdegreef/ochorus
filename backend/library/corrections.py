@@ -4909,8 +4909,9 @@ def wrap_loose_blocks(body_html: str, blocks: Sequence[tuple[str, ...]]) -> str:
     it), or — given a third element, `(head, tag, tail)` — right after `tail`,
     for a line that ran into loose text which is NOT a display line (an
     illustration's caption). A `<br>` at the line's edge goes, as
-    `display_line` drops it; an `<h3>` holds plain text, as `display_line`
-    writes it. So each wrap is exactly the block a re-import emits, which is
+    `display_line` drops it — at its start too, when nothing but breaks
+    separates it from the block before; an `<h3>` holds plain text, as
+    `display_line` writes it. So each wrap is exactly the block a re-import emits, which is
     what `tests_english_audit` checks, entry by entry, against the importer.
 
     Idempotent by GUARD, like `restore_dropped_blocks`: a `head` that already
@@ -4944,7 +4945,16 @@ def wrap_loose_blocks(body_html: str, blocks: Sequence[tuple[str, ...]]) -> str:
                 # other markup joined ("<span>ALL</span>." is "ALL.").
                 text = _escape(html_to_text(text), quote=False)
             rest = _LEAD_BREAKS.sub("", body_html[end:])
-            body_html = f"{body_html[:i]}<{tag}>{text}</{tag}> {rest}".rstrip()
+            head_at = i
+            lead = body_html[edges[-1].end() if edges else 0 : i]
+            if "<br" in lead.lower() and not _LEAD_BREAKS.sub("", lead):
+                # Nothing but breaks since the last block: the line's own
+                # leading edge, which `display_line` drops with the rest.
+                head_at = i - len(lead)
+            before = body_html[:head_at]
+            if head_at != i and before:
+                before += " "
+            body_html = f"{before}<{tag}>{text}</{tag}> {rest}".rstrip()
             break
     return body_html
 
@@ -8469,6 +8479,248 @@ BODY_CORRECTIONS.setdefault("men-who-tended-the-flock-2", {}).setdefault("replac
     ("The Cost of Discipleship . The", "The Cost of Discipleship. The"),
     ("Papers from Prison , ", "Papers from Prison, "),
 ])
+
+# --- things-as-they-are: display lines flattened to loose text ----------------
+# Gutenberg #29426 sets each chapter's drop-cap opening paragraph as a
+# `<div class="cap">`, the Confirmatory Notes' "From …" testimonial lines and
+# the preface signature as centred divs, each displayed poem as one
+# `<div class="poem">`, and the ornamental break as `<div><b>. . . . . . .</b></div>`.
+# (The imprint "LONDON: MORGAN AND SCOTT" sat in a centred div too, but it is
+# back matter: `back_matter` above cuts it, before any wrap runs.) The importer handed those
+# divs to the sanitizer, which unwrapped them: the text shipped as loose runs,
+# 78 in the English. `ingest.display_line` keeps them now (PR #3355);
+# `wrap_loose_blocks` puts each back in the block the importer emits, byte
+# for byte (`tests_english_audit` checks every English entry against it).
+#
+# Most openers share their run with the chapter's last epigraph attribution
+# ("<i>Rev. T. Walker, India.</i><br/>"), which the importer leaves loose too,
+# so the head splits the run there. A third element ends a line that ran into
+# an illustration's caption, which is not a display line and stays loose. The
+# "From" lines sit behind `<br>`s of their own, which
+# `display_line` drops and the wrap drops with them.
+#
+# Every edition at once — `tests_translation_markup` pins the tag sequence.
+# The sw edition carries the same runs in the same places, so its entries
+# follow the English one for one, each headed by the Swahili run's own opening
+# and, where it has one, ended on its own words before the caption. The
+# ornamental break is the same markup in both and occurs up to three times a
+# chapter, so it is listed once per occurrence, for both. Not here: the
+# preface's "EUGENE STOCK." signature, which the rows lost outright (the
+# importer ends ch2 with it) — a `restored_blocks` job, not a wrap.
+BODY_CORRECTIONS.setdefault("things-as-they-are", {})["wrapped_blocks"] = [
+    # --- en ---
+    # ch1
+    ('WITHIN a few weeks of', 'p'),
+    ('Amy Wilson-Carmichael,', 'p'),
+    ('Dohnavur, Tinnevelly', 'p'),
+    ('<i>From</i> Rev. D. Downie,', 'p'),
+    ('<i>From</i> Rev. T. Stewart,', 'p'),
+    ('<i>From</i> Dr. A. W.', 'p'),
+    ('<i>From</i> Rev. C. W.', 'p'),
+    ('<i>From</i> Krishna Ran,', 'p'),
+    ('<i>From</i> Miss Reade,', 'p'),
+    ('<i>Extract from</i> a', 'p'),
+    ('<i>From</i> Pandita Ramabai.', 'p'),
+    ('<i>From</i> Miss L. Trotter.', 'p'),
+    # ch2
+    ('THE writer of these thrilling', 'p'),
+    # ch3
+    ('THREE friends sat Native', 'p'),
+    ('"God! fight we not within', 'p'),
+    ('Be earnest, earnest,', 'p', 'the judgment day."'),
+    # ch4
+    ('THE Western Ghauts sweep', 'p'),
+    ('"Oh, might some sweet', 'p'),
+    # ch5
+    ('THERE have been times', 'p'),
+    # ch6
+    ('BEFORE putting this chapter', 'p'),
+    ('"All that is left of', 'p'),
+    ('The day we took her photo', 'p', 'on her way home.'),
+    # ch7
+    ("THE devil's favourite", 'p'),
+    # ch8
+    ('THE tom-toms thumped', 'p'),
+    # ch9
+    ('WE have just come back', 'p'),
+    # ch10
+    ('"AMMA, you are getting', 'p'),
+    ('"I am an emptiness for', 'p'),
+    # ch11
+    ('PERHAPS it would help', 'p'),
+    # ch12
+    ('IN writing about the', 'p'),
+    ('"<i>Cling thou to that', 'p'),
+    ('He knew Sanscrit, and', 'p'),
+    # ch13
+    ('THE division of the Tamil', 'p'),
+    # ch14
+    ('IT was very hot, and', 'p'),
+    # ch15
+    ('THE lamps were being', 'p', 'carefully covered.'),
+    # ch16
+    ('THERE is another ancient', 'p', 'of possibilities.'),
+    ('"Tears and blood have', 'p'),
+    # ch17
+    ('THERE are worse things', 'p'),
+    # ch18
+    ('IN one of the addresses', 'p', 'transmigrations."'),
+    # ch19
+    ('IT was only a common', 'p'),
+    # ch20
+    ('WE got this photograph', 'p', 'hardening rapidly.'),
+    # ch21
+    ('WE have now left Dohnavur,', 'p', 'child was brought.'),
+    ('"As restless as a nest-deserted', 'p'),
+    # ch22
+    ('PEARL-EYES, otherwise', 'p'),
+    # ch23
+    ('EXCUSE the title of this', 'p'),
+    # ch24
+    ('EVERY missionary who', 'p', 'were turned out.'),
+    # ch25
+    ('"PARTLY founded upon', 'p'),
+    ('"Gods, we vainly do adjure', 'p'),
+    ('"Gods bereavëd, gods', 'p'),
+    ('There were withered wreaths', 'p'),
+    ('"\'Twas the hour when', 'p'),
+    # ch26
+    ('LEAVE this chapter if', 'p'),
+    # ch27
+    ('I HAVE been to the Great', 'p'),
+    ('"What,<br/> No blush', 'p'),
+    # ch28
+    ('I AM sitting in the north-west', 'p'),
+    # ch29
+    ('THE sensation you experience', 'p'),
+    ('"O Being hard to reach,', 'p'),
+    # ch30
+    ('I HAVE come home from', 'p'),
+    ('"My God! can such things', 'p'),
+    ('Hoarse, horrible; and', 'p'),
+    # ch31
+    ('SHE picked up her water-vessel,', 'p'),
+    ('"Only like souls I see', 'p'),
+    ('"Let every kindred, every', 'p'),
+    ('What is the point of', 'p'),
+    # ch32
+    ('TWO of our boys are safe.', 'p'),
+    # ch33
+    ('THESE letters have been', 'p'),
+    # ch34
+    ('WE are all familiar with', 'p'),
+    ('"I was flushed with praise,', 'p'),
+    # ch35
+    ('THERE was one—he has', 'p'),
+    # --- sw ---
+    # ch1
+    ('NDANI ya majuma machache', 'p'),
+    ('Amy Wilson-Carmichael,', 'p'),
+    ('Dohnavur, Wilaya ya', 'p'),
+    ('<i>Kutoka kwa</i> Mch. D.', 'p'),
+    ('<i>Kutoka kwa</i> Mch. T.', 'p'),
+    ('<i>Kutoka kwa</i> Dkt.', 'p'),
+    ('<i>Kutoka kwa</i> Mch. C.', 'p'),
+    ('<i>Kutoka kwa</i> Krishna', 'p'),
+    ('<i>Kutoka kwa</i> Bi. Reade,', 'p'),
+    ('<i>Dondoo kutoka</i>', 'p'),
+    ('<i>Kutoka kwa</i> Pandita', 'p'),
+    ('<i>Kutoka kwa</i> Bi. L.', 'p'),
+    # ch2
+    ('MWANDISHI wa sura hizi', 'p'),
+    # ch3
+    ('MARAFIKI watatu waliketi', 'p'),
+    ('"Mungu! Je, hatupigani', 'p'),
+    ('Uwe na bidii, bidii,', 'p', 'siku ya hukumu."'),
+    # ch4
+    ('MILIMA ya Western Ghauts', 'p'),
+    ('"Laiti wimbo mtamu midomo', 'p'),
+    # ch5
+    ('SIKU hizi kumekuwa na', 'p'),
+    # ch6
+    ('KABLA ya kuiweka pamoja', 'p'),
+    ('"Kilichobaki chake', 'p'),
+    ('Siku tuliyopiga picha', 'p', 'njiani kurudi nyumbani.'),
+    # ch7
+    ('MBINU anayoipenda zaidi', 'p'),
+    # ch8
+    ('NGOMA za tom-tom zilidunda', 'p'),
+    # ch9
+    ('TUMETOKA kurudi tu kutoka', 'p'),
+    # ch10
+    ('"AMMA, wewe unazidi kuzeeka."', 'p'),
+    ('"Mimi ni utupu ili Wewe', 'p'),
+    # ch11
+    ('YAWEZEKANA ingesaidia', 'p'),
+    # ch12
+    ('NIKIANDIKA kuhusu Tabaka', 'p'),
+    ('"<i>Shikamana na kile', 'p'),
+    ('Alijua Kisanskrit, akanisomea', 'p'),
+    # ch13
+    ('MGAWANYO wa watu wa Kitamil,', 'p'),
+    # ch14
+    ('KULIKUWA na joto kali', 'p'),
+    # ch15
+    ('TAA zilikuwa zikiwashwa,', 'p', 'kifunikwe kwa uangalifu kiasi gani.'),
+    # ch16
+    ('KUNA mji mwingine wa', 'p', 'uso uliojaa uwezekano.'),
+    ('"Machozi na damu vina', 'p'),
+    # ch17
+    ('KUNA mambo mabaya kuliko', 'p'),
+    # ch18
+    ('Katika mojawapo ya hotuba', 'p', 'katika kuzaliwa upya mara nyingi."'),
+    # ch19
+    ('LILIKUWA jambo la kawaida', 'p'),
+    # ch20
+    ('TULIPATA picha hii siku', 'p', 'au wakikakamaa kwa haraka.'),
+    # ch21
+    ('SASA tumeondoka Dohnavur,', 'p', 'mtoto mdogo aliletwa.'),
+    ('"Kama ndege asiyetulia', 'p'),
+    # ch22
+    ('PEARL-EYES, ama Elf,', 'p'),
+    # ch23
+    ('SAMEHENI kichwa cha sura', 'p'),
+    # ch24
+    ('KILA mmishonari ambaye', 'p', 'na hivyo tukafukuzwa.'),
+    # ch25
+    ('"IMEEGEMEZWA kwa sehemu', 'p'),
+    ('"Enyi miungu, twawasihi', 'p'),
+    ('"Enyi miungu iliyofiwa,', 'p'),
+    ('Palikuwa na taji za maua', 'p'),
+    ('"Ilikuwa saa ile Yule', 'p'),
+    # ch26
+    ('ACHA sura hii ikiwa', 'p'),
+    # ch27
+    ('NIMEKWENDA katika Kijiji', 'p'),
+    ('"Nini,<br/> Hakuna', 'p'),
+    # ch28
+    ('NIMEKETI katika kona', 'p'),
+    # ch29
+    ('HISIA unazozipata ni', 'p'),
+    ('"Ewe Uliye mgumu kufikiwa,', 'p'),
+    # ch30
+    ('NIMERUDI nyumbani baada', 'p'),
+    ('"Mungu wangu! je, mambo', 'p'),
+    ('Kwa sauti nzito, ya', 'p'),
+    # ch31
+    ('ALIINUA chombo chake', 'p'),
+    ('"Kama nafsi tu nawaona', 'p'),
+    ('"Kila jamaa, kila kabila,', 'p'),
+    ('Kuna faida gani ya kuwaambia', 'p'),
+    # ch32
+    ('WAVULANA wawili kati', 'p'),
+    # ch33
+    ('BARUA hizi zimekusanywa', 'p'),
+    # ch34
+    ('SISI sote tunazifahamu', 'p'),
+    ('"Nilifurika kwa sifa,', 'p'),
+    # ch35
+    ('ALIKUWAPO mmoja—sasa', 'p'),
+    # --- both editions: the ornamental break, up to three a chapter ---
+    ('<b>. . . . . . .</b>', 'p'),
+    ('<b>. . . . . . .</b>', 'p'),
+    ('<b>. . . . . . .</b>', 'p'),
+]
 
 # --- ministry-of-intercession: a display line flattened to loose text ---------
 # Gutenberg #29296 closes the opening poem with its author, "F. R. Havergal.",
