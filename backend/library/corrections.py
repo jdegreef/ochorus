@@ -8505,8 +8505,8 @@ BODY_CORRECTIONS.setdefault("men-who-tended-the-flock-2", {}).setdefault("replac
 # and, where it has one, ended on its own words before the caption. The
 # ornamental break is the same markup in both and occurs up to three times a
 # chapter, so it is listed once per occurrence, for both. Not here: the
-# preface's "EUGENE STOCK." signature, which the rows lost outright (the
-# importer ends ch2 with it) — a `restored_blocks` job, not a wrap.
+# preface's "EUGENE STOCK." signature, which the rows carry reworded, not
+# loose — see the pair after this list.
 BODY_CORRECTIONS.setdefault("things-as-they-are", {})["wrapped_blocks"] = [
     # --- en ---
     # ch1
@@ -8721,6 +8721,20 @@ BODY_CORRECTIONS.setdefault("things-as-they-are", {})["wrapped_blocks"] = [
     ('<b>. . . . . . .</b>', 'p'),
     ('<b>. . . . . . .</b>', 'p'),
 ]
+# The preface's signature, `<div class="sig">EUGENE STOCK.<br></div>` in
+# Gutenberg #29426. The old importer unwrapped it to loose text like the lines
+# above, and PR #172's preface rebuild (migration 0039) then set it as
+# `<p>— Eugene Stock</p>`: a dash and a casing the source never printed. The
+# importer emits `<h3>EUGENE STOCK.</h3>` now (`ingest.display_line`), so the
+# row takes that block byte for byte (`tests_english_audit` checks it against
+# the importer). A swap, not `restored_blocks`: the line is there, only
+# restyled, and inserting would sign the preface twice. Nothing moves, so no
+# block position shifts either. The sw edition carries the same `<p>` at the
+# same place and keeps the name as printed, so one pair serves both editions
+# and their tag sequences stay in step.
+BODY_CORRECTIONS["things-as-they-are"]["replacements"].append(
+    ("<p>— Eugene Stock</p>", "<h3>EUGENE STOCK.</h3>"),
+)
 
 # --- ministry-of-intercession: a display line flattened to loose text ---------
 # Gutenberg #29296 closes the opening poem with its author, "F. R. Havergal.",
