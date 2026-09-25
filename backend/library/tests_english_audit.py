@@ -1866,3 +1866,70 @@ class BruisedReedRepairTests(SimpleTestCase):
                   for r in rows if r["model"] == "library.chapter"}
         self.assertEqual(titles, corrections.chapter_title_overrides(self.SLUG))
         self.assertEqual(len(titles), 28)
+
+
+class IntercessionDisplayLineTests(SimpleTestCase):
+    """`ministry-of-intercession`: the opening poem's signature, in all six
+    editions. See its `wrapped_blocks` entry in `corrections.py`."""
+
+    SLUG = "ministry-of-intercession"
+    HEADS = {
+        "en": "F. R. Havergal.",
+        "es": "F. R. Havergal.",
+        "fr": "F. R. Havergal.",
+        "hi": "एफ़. आर. हैवरगल।",
+        "pt": "F. R. Havergal.",
+        "sw": "F. R. Havergal.",
+    }
+
+    def _opening(self, lang):
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, lang).read_text(encoding="utf-8"))
+        return next(
+            r["fields"]["body_html"]
+            for r in rows
+            if r["model"] == "library.chapter" and r["fields"]["order"] == 1
+        )
+
+    def test_every_edition_ships_the_line_in_its_block(self):
+        for lang, head in self.HEADS.items():
+            with self.subTest(language=lang):
+                self.assertIn(f"<p>{head}</p>", self._opening(lang))
+
+    def test_the_correction_wraps_the_flattened_rows(self):
+        for lang, head in self.HEADS.items():
+            body = self._opening(lang)
+            with self.subTest(language=lang):
+                flat = body.replace(f"<p>{head}</p>", head, 1)
+                self.assertNotEqual(flat, body)
+                self.assertEqual(corrections.settled_chapter_body(self.SLUG, 1, flat), body)
+
+    # PG 29296's own markup: the opening section, its poem cut to the last
+    # stanza, and the signature under it.
+    PAGE = """<html><body>
+<h2 class="chap top4"><a id="Page_ix"></a><span class="ns">[p</span><span class="pgmark">ix</span><span class="ns">] </span>
+<a id="THE_MINISTRY_OF_INTERCESSION"></a>THE MINISTRY OF INTERCESSION<br><small class="toclink"><a href="#toc" class="pginternal">Contents</a></small></h2>
+<hr class="chap">
+<div class="poem"><div class="stanza">
+<div>Transmuted into wealth unpriced,</div>
+<div class="indent">By Him who giveth thus</div>
+<div>The glory all to Jesus Christ,</div>
+<div class="indent">The gladness all to us!</div>
+</div></div>
+<div class="rt"><span class="smc">F. R. Havergal</span>.</div>
+<p class="pgbrk lt"><i>September 1877.</i></p>
+</body></html>"""
+
+    def test_the_importer_emits_the_block_the_correction_wraps(self):
+        """The guard is a string match: the importer's block, byte for byte,
+        and followed by the same dateline."""
+        from library.management.commands.import_gutenberg import (
+            content_root,
+            split_by_heading,
+        )
+
+        [(_, body)] = split_by_heading(content_root(self.PAGE), "h2")
+        block = "<p>F. R. Havergal.</p> <p><i>September 1877.</i></p>"
+        self.assertIn(block, body)
+        self.assertIn(block, self._opening("en"))
