@@ -28,6 +28,7 @@
 	import { scopedSearchHref } from '$lib/searchState';
 	import { seriesLabel } from '$lib/series';
 	import { scrollSpy, jumpToSection, elementVisible } from '$lib/scrollSpy.svelte';
+	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
@@ -87,6 +88,27 @@
 			.replace('%t%', String(book.chapter_count))
 	);
 	const percentRead = $derived(totalWords ? ((totalWords - wordsLeft) / totalWords) * 100 : 0);
+
+	// A long table of contents collapses to the first and last chapters and the
+	// reader's place (see contentsWindow). Hidden rows stay in the HTML — the
+	// prerendered page links every chapter — and "⋯ N chapters" gaps mark them.
+	let showAllChapters = $state(false);
+	const visibleOrders = $derived(
+		showAllChapters ? null : contentsWindow(book.chapters.map((c) => c.order), resumeHere)
+	);
+	// How many hidden chapters precede each visible one (the gap row above it).
+	const gapBefore = $derived.by(() => {
+		const gaps = new Map<number, number>();
+		if (!visibleOrders) return gaps;
+		let run = 0;
+		for (const c of book.chapters) {
+			if (visibleOrders.has(c.order)) {
+				if (run) gaps.set(c.order, run);
+				run = 0;
+			} else run++;
+		}
+		return gaps;
+	});
 
 	// Whether the read card has scrolled out of view — the sticky section bar
 	// shows its own read verb only then. (The card sits in the hero, so off
@@ -686,13 +708,27 @@
 				)}</span
 			>
 		</h2>
-		<ol class="divide-y divide-border">
+		<ol id="contents-list" class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}
 				{@const read = resumeHere != null && ch.order < resumeHere}
 				{@const current = ch.order === resumeHere}
 				{@const numCls = current ? 'text-accent' : 'text-muted'}
 				{@const titleCls = current ? 'text-accent font-medium' : 'text-text'}
-				<li>
+				{@const gap = gapBefore.get(ch.order)}
+				{#if gap}
+					<li>
+						<button
+							type="button"
+							class="contents-gap"
+							aria-controls="contents-list"
+							aria-expanded="false"
+							onclick={() => (showAllChapters = true)}
+						>
+							⋯ {gap} {gap === 1 ? t('book.chapterOne') : t('book.chaptersMany')}
+						</button>
+					</li>
+				{/if}
+				<li class:hidden={visibleOrders != null && !visibleOrders.has(ch.order)}>
 					<a
 						href={localizeHref(`/books/${book.slug}/${ch.order}`)}
 						class="flex items-baseline gap-3 py-2.5 hover:no-underline"
@@ -708,6 +744,19 @@
 				</li>
 			{/each}
 		</ol>
+		{#if book.chapters.length > CONTENTS_COLLAPSE_AT}
+			<button
+				type="button"
+				class="btn btn-sm btn-ghost mt-2"
+				aria-controls="contents-list"
+				aria-expanded={showAllChapters}
+				onclick={() => (showAllChapters = !showAllChapters)}
+			>
+				{showAllChapters
+					? t('search.showLess')
+					: t('book.contentsShowAll').replace('%n%', String(book.chapters.length))}
+			</button>
+		{/if}
 	</section>
 
 	<!-- Questions and Answers. `qa.items` (editorial if present, else the derived
@@ -847,6 +896,24 @@
 			align-items: center;
 			flex-shrink: 0;
 		}
+	}
+
+	/* The "⋯ N chapters" row standing in for a collapsed run: quiet, indented to
+	   the title column, and a way to open the full list. */
+	.contents-gap {
+		display: block;
+		width: 100%;
+		padding-block: 0.35rem;
+		padding-inline: 2.25rem 0;
+		border: 0;
+		background: transparent;
+		text-align: start;
+		font-size: var(--fs-small);
+		color: var(--muted);
+		cursor: pointer;
+	}
+	.contents-gap:hover {
+		color: var(--text);
 	}
 
 	/* A3: jump-nav. Anchored sections clear both pinned bars via `--pinned-offset`

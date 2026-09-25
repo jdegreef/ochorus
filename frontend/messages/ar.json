@@ -891,6 +891,7 @@
   "share_link_copied": "تم نسخ الرابط",
   "book_free_to_read": "قراءة مجانية",
   "book_no_account": "لا حاجة إلى حساب",
+  "book_contents_show_all": "عرض كل الفصول (%n%)",
   "book_download": "تنزيل",
   "book_epub_hint": "لأجهزة القراءة الإلكترونية",
   "book_pdf_hint": "للطباعة",
