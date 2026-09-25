@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-25 (queue job #2804): Swahili book — confessions, Augustine of Hippo's
+// autobiography-as-prayer, 13 books ("Maungamo"). Book pages are prerendered per locale, so /sw/books
+// and the shelf rebuild with the translated title over the shared curated painting and the reader
+// page bakes the 13 chapters. Backs no LAUNCH_PLANS/CURATED_PLANS entry, so no plans/+page.ts touch
+// owed.
 // prerender refresh 2026-09-24 (queue job #2780): Swahili book — men-who-tended-the-flock-2, an
 // Ochorus Originals devotional on ten faithful pastors across church history plus a Scripture
 // appendix, 13 chapters ("Wanaume Waliolichunga Kundi"). Book pages are prerendered per locale, so
