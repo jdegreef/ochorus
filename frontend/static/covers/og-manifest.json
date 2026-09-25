@@ -1684,6 +1684,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/holy-in-christ": {
+			"ground": "c26687c7756e66f5ca776166793172d7bcdf2e7bf350f42df5dcd5c0a83bcc0e",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.045
+		},
 		"hi/humility-2": {
 			"ground": "929c516319eb3d18570bfabb3230d1de3bac5cdc736d7710508a71ccd9866a98",
 			"style": "devotional",
