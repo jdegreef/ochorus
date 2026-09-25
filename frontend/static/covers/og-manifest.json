@@ -104,6 +104,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"am/godliness": {
+			"ground": "a70d2918d0e43468fb244b1027e51d575d4b19c2e0fe0849de8c389b1e80af49",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"amanda-smith-autobiography": {
 			"ground": "aa4cc11c5427d667a4a86ff334ec4bc11d306a55e8dd70f6631e589785737d50",
 			"style": "revival",
