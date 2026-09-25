@@ -191,19 +191,84 @@ class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         return ctx
 
 
+def _book_shelf(language: str):
+    """Published books in ``language``, shaped for ``BookListSerializer`` cards
+    and in shelf order — shared so every shelf gets the same prefetches and
+    annotations (``BookCardPayloadTests`` budgets them)."""
+    return (
+        Book.objects.filter(is_published=True, language=language)
+        .select_related("author")
+        .prefetch_related("author__translations")
+        .annotate(**BOOK_CARD_ANNOTATIONS)
+        .order_by("sort_order", "title")
+    )
+
+
+class OriginalsView(PublicContentCacheMixin, APIView):
+    """The house imprint's own shelf, for the /originals page.
+
+    Ochorus Originals is a byline, not a person (``Author.is_imprint``), so it
+    gets a publisher's page rather than an author page: its books in the
+    requested language, the series they run in, and how many it has in each
+    language so the page can point readers at their own.
+
+    A series groups only when it has a name in this language — the no-fallback
+    rule ``Series.title_for`` keeps — so an unnamed one's volumes simply stand
+    alone on the shelf rather than sitting under an English heading.
+    """
+
+    def get(self, request):
+        lang = _language(request)
+        imprint = Q(author__is_imprint=True, is_published=True)
+        books = list(_book_shelf(lang).filter(author__is_imprint=True))
+        series_rows = Series.objects.filter(
+            pk__in={b.series_id for b in books if b.series_id}
+        ).prefetch_related("translations")
+        series = []
+        for s in series_rows:
+            title = s.title_for(lang)
+            if not title:
+                continue
+            # Stable sort: ties keep the shelf order the queryset gave them.
+            members = sorted(
+                (b for b in books if b.series_id == s.pk),
+                key=lambda b: b.series_position or 0,
+            )
+            series.append(
+                {
+                    "slug": s.slug,
+                    "title": title,
+                    "description": s.description_for(lang),
+                    "books": [b.slug for b in members],
+                }
+            )
+        languages = (
+            Book.objects.filter(imprint)
+            .values("language")
+            .annotate(count=Count("pk"))
+            .order_by("-count", "language")
+        )
+        # No topic chips: nothing on this page filters or shows them, and the
+        # map is a walk over every topic in the library.
+        ctx = {"request": request, "language": lang, "book_topics": {}}
+        return Response(
+            {
+                "books": BookListSerializer(books, many=True, context=ctx).data,
+                "series": series,
+                "languages": [
+                    {"code": row["language"], "count": row["count"]} for row in languages
+                ],
+            }
+        )
+
+
 class BookListView(PublicContentCacheMixin, generics.ListAPIView):
     """All published books for a language, ordered for the shelf."""
 
     serializer_class = BookListSerializer
 
     def get_queryset(self):
-        return (
-            Book.objects.filter(is_published=True, language=_language(self.request))
-            .select_related("author")
-            .prefetch_related("author__translations")
-            .annotate(**BOOK_CARD_ANNOTATIONS)
-            .order_by("sort_order", "title")
-        )
+        return _book_shelf(_language(self.request))
 
     def get_serializer_context(self):
         """Attach a ``book_slug -> [topic chip]`` map so each book's topics

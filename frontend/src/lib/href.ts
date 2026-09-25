@@ -21,11 +21,16 @@ import { localizeHref as paraglideLocalizeHref, locales } from '$lib/paraglide/r
  * links get it right by default. A Render-level 301 (see render.yaml) is the
  * safety net for URLs already in search indexes.
  *
- * Only these six shapes are touched. Index pages (`/books`) resolve either way
+ * Only these six shapes (plus the few `SLASHED_PAGES`) are touched. Index pages (`/books`) resolve either way
  * via explicit Render rewrites, and client-only routes (`/admin`, `/settings`)
  * are never crawled — widening the rule would churn them for no gain.
  */
 const DETAIL_SECTIONS = new Set(['books', 'authors', 'topics', 'sermons', 'plans']);
+
+/** Single-segment pages that also prerender to `<page>/index.html` (their
+ * route exports `trailingSlash = 'always'`) and are localized, so their links
+ * go through here too rather than relying on a Render rewrite per locale. */
+const SLASHED_PAGES = new Set(['originals']);
 
 /** Append the trailing slash to a detail-page path, preserving ?query and #hash. */
 export function withTrailingSlash(href: string): string {
@@ -42,6 +47,7 @@ export function withTrailingSlash(href: string): string {
 		? segments.slice(1)
 		: segments;
 
+	if (body.length === 1 && SLASHED_PAGES.has(body[0])) return `${path}/${rest ?? ''}`;
 	// `/books/<slug>` and `/books/<slug>/<chapter>` — nothing shallower (that is
 	// an index page) and nothing deeper.
 	if (body.length < 2 || body.length > 3) return href;

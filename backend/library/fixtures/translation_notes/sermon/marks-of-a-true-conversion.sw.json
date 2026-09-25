@@ -1,0 +1,313 @@
+{
+ "kind": "sermon",
+ "slug": "marks-of-a-true-conversion",
+ "language": "sw",
+ "job_issue": 2595,
+ "references": [
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Hebrews 9:27",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Jude 1:13",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 7:20",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalms 73:4",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Micah 6:8",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 25:12",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 3:5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 18:1",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+   "block_index": 9
+  },
+  {
+   "reference": "Habakkuk 2:2",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Psalms 51:5",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Jeremiah 17:9",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 3:12",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 2:3",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 John 2:12",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Luke 12:32",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Acts 9:15",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 1:47",
+   "status": "mined",
+   "source_file": "pilgrims-progress.sw.json",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Daniel 6:8",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 11:15",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 33:14",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalms 139:23",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalms 73:25",
+   "status": "mined",
+   "source_file": "life-and-diary-of-david-brainerd.sw.json",
+   "block_index": 14
+  },
+  {
+   "reference": "Job 33:24",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Deuteronomy 6:5",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Thessalonians 2:12",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Peter 2:2",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalms 103:13",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Song of Solomon 1:6",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 12:7",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Hebrews 12:8",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Isaiah 63:9",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 10:37",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 15:17",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 16:25",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Genesis 45:24",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 7:6",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 15:26",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Genesis 3:24",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Mark 9:48",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Proverbs 28:13",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Jeremiah 31:18",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 15:25",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Jeremiah 9:1",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 22:12",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 11:25",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "block_index": 20
+  }
+ ],
+ "note": "Keyless in-session translation. The declared swhonen Bible is a different edition from the shipped sw corpus (Swahili Union tradition), so verses were mined from shipped *.sw.json files where a verbatim rendering exists (4) and otherwise self-rendered in SUV register (the rest). Whitefield quotes almost entirely without Book C:V citations and often adapts the wording (re-personed or conflated); those adaptations are self_rendered."
+}

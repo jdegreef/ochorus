@@ -14,6 +14,7 @@
  * counting is the half that has been wrong twice.
  */
 import { portraitPosition } from '$lib/portraits';
+import { authorPath } from './originals';
 import { scripturePageHref } from '$lib/library-public';
 import type { ChapterHit, SearchHit, SearchType } from '$lib/library-public';
 import { chapterName } from './reading';
@@ -62,7 +63,7 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 			return {
 				key: 'author:' + hit.author_slug,
 				label: ctx.label('author'),
-				href: `/authors/${hit.author_slug}`,
+				href: authorPath(hit.author_slug),
 				title: hit.author_name,
 				meta: '',
 				snippet: hit.snippet,

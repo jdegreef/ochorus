@@ -1,3 +1,22 @@
+// prerender refresh 2026-09-24 (queue job #2788): sw plan ACTIVATED — first-steps-for-teens ("Hatua
+// za Kwanza: Imani kwa Vijana"), backed by around-the-wicket-gate and men-and-women-who-gave-
+// everything-2. Shipping men-and-women-who-gave-everything-2.sw completes the sw source-book set, so
+// seed_plans creates the (first-steps-for-teens, sw) row; /sw/plans re-crawls to bake the new card.
+// prerender refresh 2026-09-24 (queue job #3185): sw plan prose — waiting-on-god-trust ("Kumngojea
+// Mungu: Maisha ya Kumtumaini"), the CURATED plan whose third source book, the-secret-of-guidance,
+// now ships in sw, so seed_plans creates the plan row in sw. /sw/plans re-crawls to bake the card.
+// prerender refresh 2026-09-24 (queue job #2543): Spanish plan ACTIVATED — christ-our-healer
+// ("Cristo, nuestro Sanador"), a CURATED_PLANS entry over the-fourfold-gospel, the-gospel-of-healing
+// and divine-healing. Shipping the-gospel-of-healing.es completes the es set, so seed_plans creates
+// the (christ-our-healer, es) row; /plans is prerendered per locale, so /es/plans re-crawls to bake
+// the new card with its translated title and description.
+// prerender refresh 2026-09-24 (queue job #3148): sw plan prose — school-of-prayer-31-days ("Siku 31
+// katika Shule ya Maombi"), the LAUNCH_PLANS single-book plan backed by the newly-shipped sw edition
+// of school-of-prayer, so seed_plans now creates the plan row in sw. /sw/plans re-crawls to bake the
+// translated card.
+// prerender refresh 2026-09-23: NEW English plan — sons-of-the-king-book-3-30-days ("Sons of the
+// King: 30 Days with God — Book 3"), a LAUNCH_PLANS entry over sons-of-the-king-3 reading chapters
+// 2–31 (Day 1–30). English only. /plans re-crawls to bake the new card.
 // prerender refresh 2026-09-23: NEW English plan — daughters-of-the-king-book-3-30-days ("Daughters
 // of the King: 30 Days with God — Book 3"), a LAUNCH_PLANS entry over daughters-of-the-king-3 reading
 // chapters 2–31 (Day 1–30). English only. /plans re-crawls to bake the new card.

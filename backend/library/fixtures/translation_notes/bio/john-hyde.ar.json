@@ -1,0 +1,21 @@
+{
+ "kind": "bio",
+ "slug": "john-hyde",
+ "language": "ar",
+ "job_issue": 2950,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 4:10",
+   "status": "self_rendered"
+  }
+ ]
+}

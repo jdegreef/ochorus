@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "j-c-ryle",
+ "language": "ar",
+ "job_issue": 1665,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text — ebible arb_vdv, public domain"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text — ebible arb_vdv, public domain"
+  }
+ ]
+}

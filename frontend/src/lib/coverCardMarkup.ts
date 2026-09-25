@@ -55,6 +55,8 @@ export interface CoverCardBook {
 	/** The layout a painting is composed in, from `coverLayouts.coverLayoutFor`;
 	 *  null or absent for the framed composition. Ignored on a plate. */
 	layout?: { layout: string; hue: string } | null;
+	/** Framed type set from the top, from `coverLayouts.typeTopFor`. Painting only. */
+	top?: boolean;
 }
 
 /**
@@ -102,6 +104,7 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	const classes = ['cover-type', `style-${escapeHtml(book.style)}`];
 	if (book.script) classes.push(`script-${escapeHtml(book.script)}`);
 	if (isLongTitle(book.title)) classes.push('long-title');
+	if (book.art && book.top) classes.push('type-top');
 	const lang = escapeHtml(book.lang);
 	// The byline takes NO `lang`, matching the component: an author's name is
 	// one row for every edition, so it is Latin on an Arabic cover too, and

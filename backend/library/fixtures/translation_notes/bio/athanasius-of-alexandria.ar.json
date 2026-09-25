@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "athanasius-of-alexandria",
+ "language": "ar",
+ "job_issue": 2931,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Psalm 136:1",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text — ebible arb_vdv, public domain"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered"
+  }
+ ]
+}

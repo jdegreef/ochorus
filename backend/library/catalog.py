@@ -159,6 +159,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "without ever asking anyone but God for money."
         ),
     ),
+    "arthur-t-pierson": AuthorEntry(
+        slug="arthur-t-pierson",
+        name="Arthur T. Pierson",
+        birth_year=1837,
+        death_year=1911,
+        bio=(
+            "American Presbyterian pastor, missions advocate and Bible teacher "
+            "who wrote more than fifty books, including the authorized life of "
+            "his friend George Müller."
+        ),
+    ),
     "bernard-of-clairvaux": AuthorEntry(
         slug="bernard-of-clairvaux",
         name="Bernard of Clairvaux",
@@ -522,6 +533,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-life-of-trust", "The Life of Trust", "george-muller",
               "gutenberg", "27288",
               subtitle="The Lord's Dealings with George Müller", cover_color="#1e3a5f"),
+    # Pierson's authorised life of Müller (1899, Gutenberg #26522), written from
+    # Müller's journals with the help of his son-in-law James Wright — a
+    # biography ABOUT Müller, so it is shelved under Pierson and links Müller
+    # as its subject (book_people_seed).
+    BookEntry("george-muller-of-bristol", "George Müller of Bristol",
+              "arthur-t-pierson", "gutenberg", "26522",
+              subtitle="And His Witness to a Prayer-Hearing God",
+              cover_color="#5b3a29"),
     BookEntry("on-loving-god", "On Loving God", "bernard-of-clairvaux",
               "archive", "saintbernardlove00bernuoft",
               part="A LITTLE WORK BY ST. BERNARD",
@@ -561,6 +580,16 @@ BOOKS: list[BookEntry] = [
     BookEntry("revival-lectures", "Lectures on Revivals of Religion", "charles-finney",
               "ccel", "finney/revivals",
               subtitle="How Revival Comes", cover_color="#a61e4d"),
+    # The ORIGINAL 1876 Barnes/Oberlin edition only — the 1989 "complete restored
+    # text" (Rosell & Dupuis) is in copyright. Of the four 1876 scans this one
+    # keeps its end-of-line hyphens, so every wrapped word rejoins exactly;
+    # `memoirsofrevchar00finnuoft` drops them (~600 "meas ures" splits, plus the
+    # invisible both-halves-are-words kind), and the two Google scans are worse.
+    # Its own OCR slip — v read as y ("haye", "conyerted") — is repaired in
+    # `corrections.py`. 36 chapters, per the book's Contents.
+    BookEntry("finney-memoirs", "Memoirs of Rev. Charles G. Finney", "charles-finney",
+              "archive", "memoirsofrevchar1876finn",
+              subtitle="Written by Himself", cover_color="#364fc7"),
     BookEntry("life-and-diary-of-david-brainerd", "The Life and Diary of David Brainerd",
               "david-brainerd", "gutenberg", "65066",
               subtitle="Edited by Jonathan Edwards", cover_color="#5f3dc4"),

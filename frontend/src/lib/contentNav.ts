@@ -1,4 +1,5 @@
 import type { IconName } from '$lib/components/Icon.svelte';
+import { ORIGINALS_PATH } from '$lib/originals';
 
 /**
  * The one ordered source for the reader-facing content-type lists.
@@ -50,3 +51,9 @@ export const ENGLISH_HUBS: HubDest[] = [
 	{ href: '/scripture', labelKey: 'reader.scripture' },
 	{ href: '/quotes', labelKey: 'nav.quotes' }
 ];
+
+/** Ochorus Originals — the house imprint's shelf. Not an English-only hub: its
+ *  books are translated, so the footer and the palette offer it in every
+ *  locale (the page lists only that language's books). Sits after the hubs, so
+ *  English readers meet Articles · Scripture · Quotes · Originals · RSS. */
+export const ORIGINALS_DEST: HubDest = { href: ORIGINALS_PATH, labelKey: 'nav.originals' };

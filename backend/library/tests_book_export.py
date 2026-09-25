@@ -92,6 +92,26 @@ class EpubTests(TestCase):
         self.assertNotIn("The text of this book is in the public domain", colophon)
         self.assertIn("This translation was prepared", z.read("OEBPS/content.opf").decode())
 
+    def test_an_in_copyright_book_never_claims_public_domain(self):
+        # A living author's book shared with permission carries its © line as
+        # the rights statement — never the public-domain one (Gareth Evans).
+        self.book.attribution = "© A. Writer. Shared free on Ochorus with the author's permission."
+        self.book.save()
+        z = self._zip(self._get())
+        colophon = z.read("OEBPS/colophon.xhtml").decode()
+        opf = z.read("OEBPS/content.opf").decode()
+        self.assertNotIn("public domain", colophon)
+        self.assertNotIn("public domain", opf)
+        self.assertIn("© A. Writer.", colophon)
+        self.assertIn("This edition was prepared by Ochorus", colophon)
+        self.assertIn("<dc:rights>© A. Writer.", opf)
+        # And its translation: new words, still not public domain.
+        self.book.source_type = Book.SourceType.AI_UNREVIEWED
+        self.book.save()
+        colophon = self._zip(self._get()).read("OEBPS/colophon.xhtml").decode()
+        self.assertNotIn("public domain", colophon)
+        self.assertIn("This translation was prepared by Ochorus", colophon)
+
     def test_same_content_same_bytes_and_a_304(self):
         first = self._get()
         self.assertEqual(first.content, self._get().content)
@@ -175,8 +195,24 @@ class EpubTests(TestCase):
 
 class PilotTests(TestCase):
     def test_every_pilot_language_has_back_matter(self):
+        keys = set(book_export.STRINGS["en"])
         for _slug, lang in export_policy.EXPORT_PILOT:
             self.assertIn(lang, book_export.STRINGS)
+            self.assertEqual(set(book_export.STRINGS[lang]), keys, f"{lang} back matter is incomplete")
+
+    def test_every_pilot_edition_has_its_pdf(self):
+        # The book page links pdf_url, and the prerender fails on a missing file
+        # — but that's the web build; this catches it in CI first.
+        import json
+
+        from .content_fixtures import book_fixture_path
+
+        static = book_export.Path(book_export.settings.BASE_DIR).parent / "frontend" / "static"
+        for slug, lang in sorted(export_policy.EXPORT_PILOT):
+            fields = json.loads(book_fixture_path(slug, lang).read_text(encoding="utf-8"))[0]["fields"]
+            pdf = fields.get("pdf_url", "")
+            self.assertTrue(pdf, f"{slug} ({lang}) is exportable but has no pdf_url")
+            self.assertTrue((static / pdf.lstrip("/")).is_file(), f"{pdf} is missing — run export_book")
 
 
 class CoverTests(TestCase):

@@ -349,6 +349,15 @@ DERIVED_GROUND: dict[str, Ground] = {
     # title fills the upper third and the "Volume 2 …" subtitle ends by ~0.65;
     # the words-free picture is the open page spread below it, taken past the
     # Ochorus mark (erased) to the frame's foot so the spread is not a sliver.
+    # Two shepherds walking their flock through dust at sunset. The words-free
+    # band runs from under the "10 Mighty Christian Pastors" subtitle (~0.51)
+    # to the frame's foot (~0.935); the 0.09 inset crops inside the white
+    # hairline frame (x ~0.08 / ~0.92) instead of erasing it over pale sheep.
+    # The Ochorus lockup sits on the dust between the sheep, painted out.
+    "men-who-tended-the-flock-2": Ground(0.52, 0.93, 0.09, 1.10, sky=0.25, foot=0.05,
+        erase=(Erase(0.40, 0.82, 0.60, 0.90, "light"),),
+        source="e051d1a0e83eb33f8254ef9a68fbe79c2cc6f0ba3b271a0a10de15a77a5eb1b5",
+    ),
     "men-and-women-who-gave-everything-2": Ground(0.62, 0.93, 0.08, 1.12, sky=0.22,
         erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="40ae45aab2c1e92e509dc5b655d7ca07c53f42988a3a0907581f2e4591807bca",

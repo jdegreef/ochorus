@@ -48,5 +48,12 @@
   "growing-in-wisdom-18-days": {
     "title": "Okukula mu Magezi mu Nnaku 18",
     "description": "Obulagirizi bwa James DeGreef eri abayizi — okusoma okumu okutono buli lunaku okumala ennaku kkumi na munaana. Okuva ku kuzuula ekigendererwa kyo okutuuka ku kuzimba okulaba amaaso g'omu maaso, buli lunaku lugatta amagezi ag'omugaso n'Ekyawandiikibwa, okulowooza, n'okusaba."
+  },
+  "brave-for-god-24-true-stories": {
+    "title": "Abavumu ku lwa Katonda: Emboozi 24 Ez'amazima",
+    "description": "Wiiki ssatu n'ekitundu ez'emboozi ez'amazima eri abasomi abato, emu buli lunaku: ebitabo byonna ebina ebya Abavumu ku lwa Katonda — abantu abaabulijjo amakumi abiri mu bana okuva mu buli nsonda y'ensi abeesiga Katonda ne bafuulibwa abavumu.",
+    "note": [
+      "AI-drafted; awaiting native review. The shipped Luganda volumes spell the series three ways (Obuvumu / Abavumu / Omuzira ku lwa Katonda); this follows the series name in series.json (\"Abavumu ku lwa Katonda\") so the plan agrees with the book pages' series line. Change all three together once a native reviewer settles one."
+    ]
   }
 }

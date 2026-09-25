@@ -25,6 +25,7 @@ from ..models import (
     Chapter,
     Language,
     Plan,
+    Series,
     Sermon,
     Topic,
     TopicTranslation,
@@ -607,6 +608,10 @@ class AdminCoverageView(APIView):
                 "plans": self._plan_rows(),
                 "bios": self._bio_rows(),
                 "articles": self._article_rows(),
+                # The series the Books matrix can be narrowed to (each book row
+                # carries its `series`), so a whole series' gaps in one language
+                # queue as that column's "queue all".
+                "series": list(Series.objects.values("slug", "title")),
             }
         )
 
@@ -679,7 +684,20 @@ class AdminCoverageView(APIView):
         records = Book.objects.select_related("author").values(
             "slug", "language", "source_type", "title", "author__name", "sort_order"
         )
-        return self._rows(records, lambda r: r["source_type"], with_author=True)
+        rows = self._rows(records, lambda r: r["source_type"], with_author=True)
+        # A row is a work across languages, and series membership is per edition
+        # row — so take it from any edition that carries it (they agree; the
+        # fixture gates hold a series to its volumes). A book in no series gets
+        # neither key.
+        membership = {
+            slug: (series, position)
+            for slug, series, position in Book.objects.filter(series__isnull=False)
+            .values_list("slug", "series__slug", "series_position")
+        }
+        for row in rows:
+            if found := membership.get(row["slug"]):
+                row["series"], row["series_position"] = found
+        return rows
 
     def _sermon_rows(self) -> list[dict]:
         records = Sermon.objects.select_related("author").values(
