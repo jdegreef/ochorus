@@ -1,0 +1,98 @@
+{
+ "kind": "sermon",
+ "slug": "where-will-you-spend-eternity",
+ "language": "sw",
+ "job_issue": 3447,
+ "references": [
+  {
+   "reference": "John 16:5b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 16:5a",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Philippians 1:21b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Philippians 1:23b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "2 Timothy 4:7-8a",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "baptism-with-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "2 Timothy 4:8b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 8:24a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 8:24b",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "John 8:21",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "John 1:1",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "John 7:46",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Ephesians 1:21a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Ephesians 1:21b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "John 3:36",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "2 Thessalonians 1:7-9",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "the-way-to-god.sw.json"
+  }
+ ]
+}

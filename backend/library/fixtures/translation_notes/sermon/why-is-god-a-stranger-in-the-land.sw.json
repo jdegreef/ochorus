@@ -1,0 +1,120 @@
+{
+ "kind": "sermon",
+ "slug": "why-is-god-a-stranger-in-the-land",
+ "language": "sw",
+ "job_issue": 3445,
+ "references": [
+  {
+   "reference": "Jeremiah 14:8-9",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Song of Solomon 1:2",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "Isaiah 48:4b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 3:9",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Jeremiah 8:11",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Jude 1:23a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Philippians 3:18",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:11a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 116:10a",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "the-possibilities-of-faith.sw.json"
+  },
+  {
+   "reference": "Galatians 4:19b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Genesis 49:4a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 4:31b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Isaiah 5:6b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Malachi 3:10b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Song of Solomon 5:10b",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "christs-boundless-compassion.sw.json"
+  },
+  {
+   "reference": "Song of Solomon 5:16b",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "christs-boundless-compassion.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:2b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 58:4-5",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 72:6a",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Acts 3:19b",
+   "status": "self_rendered",
+   "block_index": 18
+  }
+ ]
+}

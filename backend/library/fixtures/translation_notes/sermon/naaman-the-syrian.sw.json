@@ -1,0 +1,101 @@
+{
+ "kind": "sermon",
+ "slug": "naaman-the-syrian",
+ "language": "sw",
+ "job_issue": 3449,
+ "references": [
+  {
+   "reference": "2 Kings 5:1b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "2 Kings 5:3",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-new-birth.sw.json"
+  },
+  {
+   "reference": "2 Kings 5:7",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Kings 5:10",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Kings 5:12",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Kings 5:11",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "2 Kings 5:13",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "1 Samuel 15:22b",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "2 Kings 5:15",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Psalm 51:5",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:5b",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "Hebrews 2:3",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "the-way-to-god.sw.json"
+  }
+ ]
+}
