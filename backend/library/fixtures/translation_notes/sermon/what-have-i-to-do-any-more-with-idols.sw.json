@@ -1,0 +1,173 @@
+{
+ "kind": "sermon",
+ "slug": "what-have-i-to-do-any-more-with-idols",
+ "language": "sw",
+ "job_issue": 3458,
+ "references": [
+  {
+   "reference": "Hosea 14:8a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Hosea 14:5a",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Isaiah 54:5a",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 14:16a",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "John 16:7b",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Isaiah 27:2-3",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Exodus 20:5b",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "John 2:14-15",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 10:37b",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "2 Chronicles 31:1",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 5:30a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Corinthians 6:14a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 7:39b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 7:29",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Thessalonians 5:13a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 13:17",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 12:15a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 4:15a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "2 Timothy 3:4b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Revelation 18:2",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Proverbs 3:16",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Proverbs 3:17a",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Proverbs 19:17a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 25:40b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-unselfishness-of-god.sw.json"
+  },
+  {
+   "reference": "Isaiah 51:12b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Isaiah 41:14a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Psalm 118:27b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Peter 4:3a",
+   "status": "self_rendered",
+   "block_index": 12
+  }
+ ]
+}

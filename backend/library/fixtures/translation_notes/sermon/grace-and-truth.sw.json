@@ -1,0 +1,61 @@
+{
+ "kind": "sermon",
+ "slug": "grace-and-truth",
+ "language": "sw",
+ "job_issue": 3460,
+ "references": [
+  {
+   "reference": "John 1:17",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "John 1:17a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "John 1:17",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 23:4",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Titus 2:11",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Galatians 3:24",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Isaiah 25:9a",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "waiting-on-god.sw.json"
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Galatians 3:21",
+   "status": "self_rendered",
+   "block_index": 22
+  }
+ ]
+}

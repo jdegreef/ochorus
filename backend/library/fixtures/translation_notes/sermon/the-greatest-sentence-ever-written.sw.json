@@ -1,0 +1,77 @@
+{
+ "kind": "sermon",
+ "slug": "the-greatest-sentence-ever-written",
+ "language": "sw",
+ "job_issue": 3464,
+ "references": [
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Isaiah 55:7",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 12:6",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:6a",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Isaiah 63:9a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "1 John 3:1a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  }
+ ]
+}
