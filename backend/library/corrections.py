@@ -18,6 +18,9 @@ from __future__ import annotations
 
 import re as _re
 from collections.abc import Sequence
+from html import escape as _escape
+
+from library.text import html_to_text
 
 # NOT public domain (copyright audit 2026-07-10), and no permission: Watchman
 # Nee's English editions (1957–1983, Kinnear/CLC/CFP) and Amy Carmichael's "If"
@@ -645,6 +648,9 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 #     paragraph into the one before it, and the break is put back between these
 #     two exact strings ("…their own experience." / "Alas!"). Not a
 #     `replacements` pair; `restore_paragraph_breaks` says why.
+#   wrapped_blocks: [(head, tag)] — the sanitizer UNWRAPPED a display line to
+#     loose text; the run opening with `head` goes back into `<tag>`. See
+#     `wrap_loose_blocks`.
 #   restored_blocks: [(anchor, block)] — the sanitizer DELETED a whole block
 #     (see `restore_dropped_blocks`), and it goes back in front of the block
 #     that followed it, identified by that block's opening. Not a
@@ -1138,7 +1144,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # sinners."; `blessed-adversity` block 14 answers "in the words which we
     # have already quoted" with a Job 1:21 that was never on the page.
     #
-    # The importer keeps these lines now (`import_sermons._display_line`), and
+    # The importer keeps these lines now (`ingest.display_line`), and
     # every English block below is spelled EXACTLY as it emits them: a line set
     # wholly in capitals is an `<h3>` with the source's own wording and stops;
     # anything else is a `<p>`; a leading quotation is the epigraph
@@ -1268,12 +1274,123 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('<blockquote>"For ye were as', "<h3>A NEW YEAR'S ADDRESS.</h3>"),
         ],
     },
+    # --- Gutenberg #65066, "The Life and Diary of David Brainerd" ------------
+    # The same kind of loss in a BOOK. Every chapter heading of this edition
+    # sits in its own `<div class="chapter">`, so `import_gutenberg.
+    # split_by_heading` fell back to its tree walk, and that walk dropped every
+    # div that was not hand-made poem markup. What the edition sets in divs is
+    # exactly what went: the date range centred under each chapter heading
+    # ("April 20, 1718-Feb. 1741."), the datelines heading each letter-journal
+    # section ("Forks of Delaware, Oct. 1745."), chapter X's subtitle, and four
+    # verse passages set as ebookmaker `lg-container` line groups — two of
+    # which the prose around them introduces ("Those lines turned in my mind
+    # with pleasure," / "Dr. Watts' Psalm,") and then never shows.
+    #
+    # The importer keeps these now (`ingest.display_line`, and a line group
+    # becomes one `<blockquote>` with `<br/>` between its lines), and every
+    # English block below is spelled EXACTLY as `extract_chapters` emits it —
+    # pinned by `tests_import.BrainerdRestoredBlocksMatchImporterTests` — so a
+    # re-import finds each present and the guard skips it. The stray “ opening
+    # the June 17 dateline is the edition's own. In ch9 two lines precede the
+    # same paragraph; `restore_dropped_blocks` inserts each directly before
+    # the anchor, so list order is reading order.
+    #
+    # NOT restored: the preface's signature `<h3>JONATHAN EDWARDS.</h3>`. It
+    # is the last block of ch1, so there is no following block to anchor on,
+    # and this mechanism only inserts in front of one. Nor the front and back
+    # matter the importer now also emits (the "LIFE / OF / REV. DAVID
+    # BRAINERD." half-title, the donors' imprint, the transcriber's note).
+    #
+    # The Swahili edition runs in lockstep with the English (same tags, same
+    # indices in every chapter), so each line goes in at the same position,
+    # anchored on that edition's own following paragraph. Months and places
+    # are spelled as its body already spells them (Okt., Februari, Machi;
+    # "Forks of Delaware, huko Pennsylvania"; its own surviving dateline
+    # "Crossweeksung, (New-Jersey,) Agosti, 1745."); chapter X's subtitle
+    # follows its REFLECTION IV ("kumbukumbu zilizotangulia"), the death verse
+    # its own lead-in ("mauti na kutokufa"), and the Watts line Psalm 127:1 as
+    # the Swahili Bible has it ("kuijenga nyumba"). No quote or translation
+    # note in this book is anchored by block position.
+    "life-and-diary-of-david-brainerd": {
+        "restored_blocks": [
+            # en
+            ("<p>David Brainerd was born April", "<p>April 20, 1718-Feb. 1741.</p>"),
+            ("<p>In the spring of 1742 Brainerd", "<p>April 1, 1742-July 29, 1742.</p>"),
+            ("<p>“The Lord refreshed my soul",
+             "<blockquote>“Farewell, vain world; my soul can bid Adieu<br/>“My Savior taught me to abandon you.<br/>“Your charms may gratify a SENSUAL mind;<br/>“But cannot please a soul for God design’d.<br/>“Forbear t’ entice; cease then my soul to call;<br/>“’Tis fixed through grace; my God shall be my ALL.<br/>“While he thus lets me heavenly glories view,<br/>“Your beauties fade, my heart’s no room for you.”</blockquote>"),
+            ("<p><i>April 27.</i> “I arose",
+             "<blockquote>“Lord, I’m a stranger here alone;<br/>“Earth no true comforts can afford;<br/>“Yet, absent from my dearest one,<br/>“My soul delights to cry ‘My Lord!’<br/>“Jesus, my Lord, my only love,<br/>“Possess my soul, nor thence depart:<br/>“Grant me kind visits, heavenly Dove;<br/>“My God shall then have all my heart.”</blockquote>"),
+            ("<p><i>July 30, 1742.</i>—“Rode", "<p>July 30.-Nov. 25, 1742.</p>"),
+            ("<p><i>Nov. 26, 1742.</i>—“Had", "<p>Nov. 26, 1742.—March 31, 1743.</p>"),
+            ("<p><i>April 1, 1743.</i> “I rode", "<p>April 1, 1743.—June 12, 1744.</p>"),
+            ("<p>“In evening prayer, God was",
+             "<blockquote>“Come death, shake hands; I’ll kiss thy bands;<br/>“’Tis happiness for me to die.—<br/>“What!—dost thou think that I will shrink?<br/>“I’ll go to immortality.”</blockquote>"),
+            ("<p><i>June 13, 1744.</i> [At Elizabeth", "<p>June 13, 1744.—June 18, 1745.</p>"),
+            ("<p>[We are now come to that part", "<p>June 19.—Nov. 5, 1745.</p>"),
+            ("<p><i>June 19.</i>—“I had spent",
+             "<p>“<i>Crossweeksung, in New-Jersey, June 17, 1745.</i></p>"),
+            ("<p><i>Lord’s day, July 14.</i>—“Discoursed",
+             "<p><i>Forks of Delaware, in Pennsylvania, July, 1745.</i></p>"),
+            ("<p><i>Lord’s day, Sept. 1.</i>—“Preached",
+             "<p><i>Forks of Delaware, in Pennsylvania, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 13.</i>—“After having", "<p><i>Shaumoking, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 19.</i>—“Visited an", "<p><i>Juncauta, Sept. 1745.</i></p>"),
+            ("<p><i>Oct. 1.</i>—“Discoursed", "<p><i>Forks of Delaware, Oct. 1745.</i></p>"),
+            ("<p><i>Oct. 5.</i>—“Preached", "<p><i>Crossweeksung, Oct. 1745.</i></p>"),
+            ("<p><i>Lord’s day, Nov. 24.</i>—“Preached", "<p>Nov. 5, 1745.—June 19, 1746.</p>"),
+            ("<p><i>Lord’s day, Nov. 24.</i>—“Preached",
+             "<p><i>Crossweeksung, New-Jersey, 1745.</i></p>"),
+            ("<p><i>Lord’s day, Feb. 16.</i>—“Knowing",
+             "<p><i>Forks of Delaware, February, 1746.</i></p>"),
+            ("<p><i>March 1.</i>—“Catechised", "<p><i>Crossweeksung, March, 1746.</i></p>"),
+            ("<p>and having recommended them",
+             "<blockquote>If God to build the house deny &amp;c.</blockquote>"),
+            ("<p><i>Lord’s day, June 29, 1746.</i>", "<p>[June 19, 1746—October 9, 1747.]</p>"),
+            ("<p>In the life of Brainerd we may see",
+             "<p><i>Reflections on the preceding Memoirs.</i></p>"),
+            # sw
+            ("<p>David Brainerd alizaliwa Aprili", "<p>Aprili 20, 1718-Feb. 1741.</p>"),
+            ("<p>Katika masika ya mwaka 1742", "<p>Aprili 1, 1742-Julai 29, 1742.</p>"),
+            ("<p>“Bwana aliiburudisha nafsi yangu",
+             "<blockquote>“Kwaheri, ulimwengu wa ubatili; nafsi yangu yaweza kukuaga<br/>“Mwokozi wangu alinifundisha kukuacha.<br/>“Mvuto wako waweza kuiridhisha nia ya KIMWILI;<br/>“Lakini hauwezi kuipendeza nafsi iliyokusudiwa kwa Mungu.<br/>“Acha kunishawishi; basi, koma kuiita nafsi yangu;<br/>“Imethibitika kwa neema; Mungu wangu atakuwa YOTE kwangu.<br/>“Maadamu ananijalia hivi kuutazama utukufu wa mbinguni,<br/>“Uzuri wako wafifia, moyo wangu hauna nafasi kwako.”</blockquote>"),
+            ("<p><i>Aprili 27.</i> “Niliamka",
+             "<blockquote>“Bwana, mimi ni mgeni hapa peke yangu;<br/>“Dunia haiwezi kutoa faraja ya kweli;<br/>“Lakini, nikiwa mbali na mpenzi wangu mkuu,<br/>“Nafsi yangu hufurahi kulia ‘Bwana wangu!’<br/>“Yesu, Bwana wangu, pendo langu pekee,<br/>“Uimiliki nafsi yangu, wala usiondoke humo:<br/>“Unijalie ziara za upole, Hua wa mbinguni;<br/>“Ndipo Mungu wangu atakapokuwa na moyo wangu wote.”</blockquote>"),
+            ("<p><i>Julai 30, 1742.</i>—“Nilikwenda", "<p>Julai 30.-Nov. 25, 1742.</p>"),
+            ("<p><i>Novemba 26, 1742.</i>—“Bado", "<p>Nov. 26, 1742.—Machi 31, 1743.</p>"),
+            ("<p><i>Aprili 1, 1743.</i> “Nilipanda", "<p>Aprili 1, 1743.—Juni 12, 1744.</p>"),
+            ("<p>“Katika maombi ya jioni, Mungu",
+             "<blockquote>“Njoo, mauti, tushikane mikono; nitabusu vifungo vyako;<br/>“Ni furaha kwangu kufa.—<br/>“Nini!—wadhani kwamba nitarudi nyuma?<br/>“Nitakwenda kwenye kutokufa.”</blockquote>"),
+            ("<p><i>Juni 13, 1744.</i> [Huko Elizabeth", "<p>Juni 13, 1744.—Juni 18, 1745.</p>"),
+            ("<p>[Sasa tumefika sehemu ile", "<p>Juni 19.—Nov. 5, 1745.</p>"),
+            ("<p><i>Juni 19.</i>—“Nimetumia",
+             "<p>“<i>Crossweeksung, huko New-Jersey, Juni 17, 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Julai 14.</i>—“Niliwazungumzia",
+             "<p><i>Forks of Delaware, huko Pennsylvania, Julai, 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Sept. 1.</i>—“Niliwahubiria",
+             "<p><i>Forks of Delaware, huko Pennsylvania, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 13.</i>—“Baada ya", "<p><i>Shaumoking, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 19.</i>—“Nilitembelea", "<p><i>Juncauta, Sept. 1745.</i></p>"),
+            ("<p><i>Okt. 1.</i>—“Niliwazungumzia", "<p><i>Forks of Delaware, Okt. 1745.</i></p>"),
+            ("<p><i>Okt. 5.</i>—“Niliwahubiria", "<p><i>Crossweeksung, Okt. 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Nov. 24.</i>—“Nilihubiri", "<p>Nov. 5, 1745.—Juni 19, 1746.</p>"),
+            ("<p><i>Siku ya Bwana, Nov. 24.</i>—“Nilihubiri",
+             "<p><i>Crossweeksung, New-Jersey, 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Feb. 16.</i>—“Kwa kujua",
+             "<p><i>Forks of Delaware, Februari, 1746.</i></p>"),
+            ("<p><i>Machi 1.</i>—“Nilifundisha", "<p><i>Crossweeksung, Machi, 1746.</i></p>"),
+            ("<p>na baada ya kuwakabidhi wao",
+             "<blockquote>Mungu akikataa kuijenga nyumba n.k.</blockquote>"),
+            ("<p><i>Siku ya Bwana, Juni 29, 1746.</i>", "<p>[Juni 19, 1746—Oktoba 9, 1747.]</p>"),
+            ("<p>Katika maisha ya Brainerd twaweza",
+             "<p><i>Tafakari juu ya Kumbukumbu Zilizotangulia.</i></p>"),
+        ],
+    },
     # Gutenberg #57109 (Hudson Taylor, *Unfailing Springs*) sets the address's
     # text as a centred display line directly under its <h2> —
     # `<div class="center">"Whosoever will, let him take the water of life
     # freely"<br> (Rev. 22:17)</div>` — and the importer dropped it for the
     # same reason as "The rest of Gutenberg #23438" above. The English block is
-    # spelled exactly as `import_sermons._display_line` now emits it. Each
+    # spelled exactly as `ingest.display_line` now emits it. Each
     # translation takes its registry Bible's wording of the clause (Arabic
     # without the Van Dyck vowel marks, as this edition quotes John 4:10; the
     # Luganda apostrophe straight, as this edition writes it), its own quotation
@@ -4717,6 +4834,72 @@ def restore_dropped_blocks(body_html: str, blocks: Sequence[tuple[str, str]]) ->
     return body_html
 
 
+# A block's opening or closing tag, for `wrap_loose_blocks`: where a loose run
+# ends, and whether a position already sits inside a block.
+_EDGE_BREAKS = _re.compile(r"^(?:\s|<br\s*/?>)+|(?:\s|<br\s*/?>)+$")
+_LEAD_BREAKS = _re.compile(r"^(?:\s|<br\s*/?>)+")
+_BLOCK_EDGE = _re.compile(r"<(/?)(?:p|h[1-6]|blockquote|ul|ol|li|table|hr)\b[^>]*>", _re.I)
+
+
+def wrap_loose_blocks(body_html: str, blocks: Sequence[tuple[str, ...]]) -> str:
+    """Give a flattened display line back its block: `(head, tag)` wraps the
+    loose run that opens with `head` in `<tag>…</tag>`.
+
+    The Gutenberg importer once handed a centred display line — a `<div>`
+    heading, dateline, signature, or a whole paragraph set as a drop-cap div —
+    to the sanitizer, which unwrapped it. The text shipped, but as loose text
+    between blocks: an opening paragraph with no `<p>`, a heading as an
+    unmarked run. `ingest.display_line` keeps them now; this repairs the rows
+    imported before it, which are never re-imported.
+
+    Not `restored_blocks`: nothing is missing, so inserting would say it twice.
+    Not a `replacements` pair either: the run is often a whole paragraph, and
+    a pair would have to quote all of it. `head` names where the line starts;
+    it ends where the next block begins, where another of the work's heads
+    begins (two lines flattened into one run: "MARY'S SONG" and the song under
+    it), or — given a third element, `(head, tag, tail)` — right after `tail`,
+    for a line that ran into loose text which is NOT a display line (an
+    illustration's caption). A `<br>` at the line's edge goes, as
+    `display_line` drops it; an `<h3>` holds plain text, as `display_line`
+    writes it. So each wrap is exactly the block a re-import emits, which is
+    what `tests_english_audit` checks, entry by entry, against the importer.
+
+    Idempotent by GUARD, like `restore_dropped_blocks`: a `head` that already
+    sits inside a block is skipped — the settled form, and a future re-import
+    that emits the block itself. `body_html` ONLY: the wrap adds tags.
+    """
+    if "<" not in body_html:
+        return body_html  # tagless: `body_text`, which must never gain tags
+    heads = [entry[0] for entry in blocks]
+    for head, tag, *tail in blocks:
+        start = 0
+        while (i := body_html.find(head, start)) >= 0:
+            start = i + len(head)
+            edges = list(_BLOCK_EDGE.finditer(body_html, 0, i))
+            if edges and not edges[-1].group(1) and not edges[-1].group(0).lower().startswith("<hr"):
+                continue  # inside a block: already wrapped
+            m = _BLOCK_EDGE.search(body_html, i)
+            end = m.start() if m else len(body_html)
+            for other in heads:
+                j = body_html.find(other, i + 1, end)
+                if other != head and j >= 0:
+                    end = j
+            if tail:
+                j = body_html.find(tail[0], i, end)
+                if j < 0:
+                    break  # the line is not what this entry describes
+                end = j + len(tail[0])
+            text = _EDGE_BREAKS.sub("", body_html[i:end])
+            if tag == "h3":
+                # The same text rule as `display_line`: a space at each <br>,
+                # other markup joined ("<span>ALL</span>." is "ALL.").
+                text = _escape(html_to_text(text), quote=False)
+            rest = _LEAD_BREAKS.sub("", body_html[end:])
+            body_html = f"{body_html[:i]}<{tag}>{text}</{tag}> {rest}".rstrip()
+            break
+    return body_html
+
+
 def strip_back_matter(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
     """Cut the publisher's or transcriber's back matter off a work's last chapter.
 
@@ -4759,6 +4942,12 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     Declared paragraph breaks run with the replacements, ahead of the rule, for
     the same reason: a seam is exact prose, and the rule could move a hyphen
     inside one out from under it.
+
+    The structural keys run after the replacements, so a replacement must not
+    reach into text one of them rewrites: anchor a deletion on what comes
+    BEFORE it, or `test_no_replacement_pair_is_dead` finds neither side (the
+    a-retrospect MIDI note). Back matter is cut before `wrapped_blocks` wraps,
+    so a wrap can never run on into a tail that is about to go.
     """
     entry = BODY_CORRECTIONS.get(slug)
     if entry:
@@ -4767,6 +4956,7 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
         body_html = restore_paragraph_breaks(body_html, entry.get("paragraph_breaks", ()))
         body_html = restore_dropped_blocks(body_html, entry.get("restored_blocks", ()))
         body_html = strip_back_matter(body_html, entry.get("back_matter", ()))
+        body_html = wrap_loose_blocks(body_html, entry.get("wrapped_blocks", ()))
         if entry.get("strip_transcription_footnotes"):
             body_html = strip_transcription_footnotes(body_html)
     body_html = rejoin_linebreak_hyphens(body_html)
@@ -4959,15 +5149,17 @@ BODY_CORRECTIONS.setdefault("a-retrospect", {}).setdefault("replacements", []).e
 # verse 1) with its own note under it offering MIDI files; the image was dropped
 # and the note shipped between the chapter's last paragraph and verse 2, links
 # gone ("by clicking here for an organ version"). The es edition translated it.
-# Mid-chapter, so a pair rather than a back-matter seam, anchored on the `</p>`
-# before it and the verse after it.
+# Mid-chapter, so a pair rather than a back-matter seam, anchored on the
+# paragraph before it. Not on the verse after it: `wrapped_blocks` below gives
+# that verse its `<p>`, so a pair ending "</p> 2. Why live" would leave nothing
+# in the settled text for `test_no_replacement_pair_is_dead` to find.
 BODY_CORRECTIONS["a-retrospect"]["replacements"].extend([
-    ("</p> [<i>Transcriber's Note: You can listen to this music (MIDI file) by clicking</i>"
-     " here for an <br/>organ version or here for a piano version.]  2. Why live I here?",
-     "</p> 2. Why live I here?"),
-    ("</p> [<i>Nota del transcriptor: Puede escuchar esta música (archivo MIDI) haciendo clic</i>"
-     " aquí para una <br/>versión de órgano o aquí para una versión de piano.]  2. ¿Por qué vivo aquí?",
-     "</p> 2. ¿Por qué vivo aquí?"),
+    ("other spheres.</p> [<i>Transcriber's Note: You can listen to this music (MIDI file) by"
+     " clicking</i> here for an <br/>organ version or here for a piano version.] ",
+     "other spheres.</p>"),
+    ("otras esferas.</p> [<i>Nota del transcriptor: Puede escuchar esta música (archivo MIDI)"
+     " haciendo clic</i> aquí para una <br/>versión de órgano o aquí para una versión de piano.] ",
+     "otras esferas.</p>"),
 ])
 # absolute-surrender: “…love“? (en, and the sw that mirrors it).
 BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
@@ -5659,6 +5851,404 @@ BODY_CORRECTIONS.setdefault("revival-lectures", {}).setdefault("replacements", [
     + [(defective, _unpage(defective)) for defective in _REVIVAL_PAGES_IN_PROSE]
 )
 
+# --- hurlbuts-life-of-christ: display lines flattened to loose text ------------
+# Gutenberg #40460 sets each chapter's drop-cap opening paragraph as a
+# `<div class="cap">`, and its centred headings ("MARY'S SONG", the title
+# over the cross) and displayed verse as divs too. The importer handed those
+# divs to the sanitizer, which unwrapped them: the text shipped, but as loose
+# runs between blocks — 118 of them, in 103 of the 104 chapters. The importer
+# keeps them now (`ingest.display_line`, PR #3355); these rows are never
+# re-imported, so `wrap_loose_blocks` puts each back in the block the
+# importer now emits, byte for byte (`tests_english_audit` checks every
+# entry against the importer). English only: there is no translation.
+# A third element ends a line that ran into an illustration's caption, which
+# is not a display line and stays as it was.
+BODY_CORRECTIONS.setdefault("hurlbuts-life-of-christ", {})["wrapped_blocks"] = [
+    # ch1
+    ('THERE HAVE been many famous', 'p'),
+    ('"In the shipyard stood the', 'p'),
+    # ch2
+    ('FIRST OF ALL, let us take a', 'p'),
+    # ch3
+    ('NEARLY ALL the people living', 'p'),
+    # ch4
+    ('IN THE land of Palestine one', 'p'),
+    ('"If I forget thee, O', 'p'),
+    # ch5
+    ('FOR OUR next story we visit', 'p'),
+    # ch6
+    ('AFTER THE visit of the angel', 'p'),
+    ("MARY'S SONG", 'h3'),
+    ('My soul beholds the greatness', 'p'),
+    # ch7
+    ("NOT LONG after Mary's visit,", 'p'),
+    ('"And you, O child, shall be', 'p', 'the tender mercy of God."'),
+    # ch8
+    ('FOR A FEW months after their', 'p'),
+    ('"Glory to God in the highest,', 'p'),
+    # ch9
+    ('ALTHOUGH JESUS was born in a', 'p'),
+    ('"Now, Lord, thou mayest let', 'p'),
+    # ch10
+    ('WHILE JOSEPH and Mary with', 'p'),
+    # ch11
+    ('ON THE night after their', 'p'),
+    # ch12
+    ('THE LITTLE Jesus must have', 'p'),
+    # ch13
+    ('JESUS STAYED at the school in', 'p'),
+    # ch14
+    ('FOR EIGHTEEN years after the', 'p'),
+    # ch15
+    ('WHILE JESUS was still living', 'p'),
+    # ch16
+    ('AFTER SOME months the news', 'p', 'for baptizing the people.'),
+    # ch17
+    ('AFTER HIS baptism Jesus felt', 'p'),
+    # ch18
+    ('AFTER HIS forty days in the', 'p'),
+    # ch19
+    ('SOON AFTER Jesus met the men', 'p'),
+    # ch20
+    ('THE SPRING-TIME of the year', 'p'),
+    # ch21
+    ('AFTER THE Passover, Jesus', 'p'),
+    # ch23
+    ('SOON AFTER the visit to Cana,', 'p'),
+    ('"The Spirit of the Lord is', 'p'),
+    # ch24
+    ('THE PLACE which Jesus chose', 'p'),
+    # ch25
+    ('THE STORY of the great catch', 'p'),
+    # ch26
+    ('FROM THE city of Capernaum', 'p'),
+    # ch27
+    ('SO GREAT were the crowds', 'p'),
+    # ch28
+    ('THE TIME came for another', 'p'),
+    # ch29
+    ('THE QUESTION whether Jesus', 'p'),
+    # ch30
+    ('ABOUT TWELVE miles southwest', 'p'),
+    # ch31
+    ('AT CAPERNAUM there was an', 'p'),
+    # ch32
+    ('JESUS WENT on a journey for', 'p'),
+    # ch33
+    ('WHILE JESUS was passing through southern', 'p'),
+    # ch34
+    ('AFTER HIS journey through', 'p'),
+    # ch35
+    ('SOON AFTER his journey', 'p'),
+    # ch36
+    ('HERE IS another parable story', 'p'),
+    # ch37
+    ('AFTER THE day of teaching in', 'p'),
+    # ch38
+    ('A GREAT CROWD of people were', 'p'),
+    # ch39
+    ('AS JESUS was coming out of', 'p'),
+    # ch40
+    ('JESUS HAD now preached in', 'p'),
+    # ch41
+    ('DURING NEARLY all the year of', 'p'),
+    # ch42
+    ('THE NEWS that King Herod had', 'p'),
+    # ch43
+    ('ON THE night after the multitude was fed', 'p'),
+    # ch44
+    ('ON THE morning after the day', 'p'),
+    # ch45
+    ('WITH HIS sermon on "The Bread', 'p'),
+    # ch46
+    ('JESUS SOON found that if he', 'p'),
+    # ch47
+    ('FROM THE land of the Ten', 'p'),
+    # ch48
+    ('FROM BETHSAIDA by the Sea of', 'p'),
+    # ch49
+    ('AT ONE time while Jesus was', 'p'),
+    # ch50
+    ('WHEN JESUS and his three', 'p'),
+    # ch51
+    ('WHILE JESUS was passing through Galilee for', 'p'),
+    # ch52
+    ('WHILE JESUS was still in', 'p'),
+    # ch53
+    ('AFTER MOST of those who were', 'p'),
+    # ch54
+    ('WHILE JESUS was on his way to', 'p'),
+    # ch55
+    ('AT THE TIME when Jesus came', 'p'),
+    # ch56
+    ('AFTER THE Feast of Tents', 'p'),
+    # ch57
+    ('ON A SABBATH morning, which', 'p'),
+    # ch58
+    ('AT THE SIDE of the Temple', 'p'),
+    # ch59
+    ('AFTER LEAVING Jerusalem, at', 'p'),
+    # ch60
+    ('WHILE JESUS was still at', 'p'),
+    # ch61
+    ('JESUS DID not stay long in', 'p'),
+    # ch62
+    ('WHILE JESUS was in Perea, on', 'p'),
+    # ch63
+    ('AT THIS TIME while Jesus was', 'p'),
+    # ch64
+    ('THE PHARISEES were very', 'p'),
+    ('The Ninety and Nine', 'p'),
+    ('There were ninety and nine', 'p'),
+    # ch65
+    ('YOU REMEMBER that the enemies', 'p'),
+    # ch66
+    ('AT THIS TIME Jesus gave to', 'p'),
+    # ch67
+    ('JESUS KNEW that the', 'p'),
+    # ch68
+    ('JESUS TOLD his disciples a', 'p'),
+    # ch69
+    ('WHILE JESUS was still passing', 'p'),
+    # ch70
+    ('JESUS EXPLAINED by a parable', 'p'),
+    # ch71
+    ('JESUS HAD now ended his work', 'p'),
+    # ch72
+    ('BUT BLIND Bartimeus was not', 'p'),
+    # ch73
+    ('FROM JERICHO to Jerusalem was', 'p'),
+    # ch74
+    ('THE NEWS that Jesus was at', 'p'),
+    # ch75
+    ('AFTER THE royal coming of', 'p'),
+    # ch76
+    ('AGAIN ON Tuesday morning of', 'p'),
+    # ch77
+    ('IMMEDIATELY after answering', 'p'),
+    ('"The stone which the builders', 'p'),
+    # ch78
+    ('THE ENEMIES of Jesus thought', 'p', 'they could destroy Jesus.'),
+    # ch79
+    ('WE HAVE heard much in the', 'p'),
+    # ch80
+    ('WHILE JESUS was talking in', 'p'),
+    ('"The Lord said to my Lord,', 'p'),
+    # ch81
+    ('THE ROOM in the Temple where', 'p'),
+    # ch82
+    ('JESUS WALKED across the Court', 'p'),
+    # ch83
+    ('AT THE CLOSE of a long talk', 'p', ' of the Ten Bridesmaids."'),
+    # ch84
+    ('THE SECOND of the three', 'p'),
+    # ch85
+    ('AFTER THE two parables of', 'p'),
+    # ch86
+    ('TUESDAY HAD been a busy day', 'p'),
+    # ch87
+    ('WHILE THEY were eating the', 'p'),
+    # ch88
+    ('JESUS SAW that his disciples', 'p'),
+    # ch89
+    ('JESUS WENT on giving his last', 'p'),
+    # ch90
+    ('DURING THE week of the', 'p'),
+    # ch91
+    ('THE MEN who took Jesus as', 'p'),
+    # ch92
+    ('THE HIGH PRIEST Caiaphas,', 'p'),
+    # ch93
+    ('ALTHOUGH the high council of', 'p'),
+    # ch94
+    ('HEROD, to whom Jesus had been', 'p'),
+    # ch95
+    ('WHEN PILATE sent Jesus to', 'p'),
+    # ch96
+    ('IN OUR TIME, and in all', 'p'),
+    # ch97
+    ('IT WAS the custom of the', 'p'),
+    ('THIS IS JESUS OF NAZARETH', 'h3'),
+    ('"They shared my garments', 'p'),
+    ('"In my thirst they gave me', 'p'),
+    # ch98
+    ('YOU REMEMBER that from the', 'p'),
+    # ch99
+    ('IT WAS FRIDAY evening at', 'p'),
+    # ch100
+    ('All THE FOUR gospels agree in', 'p'),
+    # ch101
+    ('WHEN JESUS was seen after he', 'p'),
+    # ch102
+    ('THE MEETING place of all who', 'p'),
+    # ch103
+    ('ON THE NIGHT before the death', 'p'),
+    # ch104
+    ('SOON AFTER the appearance of', 'p'),
+]
+
+# --- a-retrospect: display lines flattened to loose text ----------------------
+# Gutenberg #26744 sets each chapter's opening paragraph as a centred `<div>`
+# (the drop-cap "THE following account…"), every journal dateline as a
+# `<div class="right">` ("<i>January 10th.</i>"), and each displayed verse as a
+# single `<div class="poem">` — the importer handed those divs to the
+# sanitizer, which unwrapped them, and they shipped as 47 loose runs across the
+# 20 chapters (a 48th, ch12's MIDI transcriber's note, is cut by a
+# `replacements` pair above instead). Where a poem's div also held the prose
+# line after it ("seemed particularly appropriate…", "To be absent from the
+# body!…", "but also that when we fail…"), the importer now emits two blocks,
+# and the second head splits the run.
+# `ingest.display_line` keeps these (PR #3355); `wrap_loose_blocks` puts each
+# back in the block the importer emits, byte for byte but for the quotation
+# marks, curled in the fixture since (`tests_english_audit` checks every
+# English entry against the importer). ch18's opener keeps the fixture's
+# "[3]" footnote marker, which the importer does not carry.
+#
+# Every edition at once — `tests_translation_markup` pins the tag sequence.
+# The es edition carries the same 47 runs in the same places, so its entries
+# follow the English one for one, each headed by the Spanish run's own opening.
+# Left loose: ch20's back matter "or" / "or to" between the mission addresses
+# (a two-letter head would split every other run it occurs in) and the map
+# caption, whose line is `<b>MAP OF CHINA</b>` — the importer's `<h3>` there is
+# not a wrap of loose text.
+BODY_CORRECTIONS.setdefault("a-retrospect", {})["wrapped_blocks"] = [
+    # --- en ---
+    # ch1
+    ('THE following account', 'p'),
+    # ch2
+    ('THE first joys of conversion', 'p'),
+    # ch3
+    ('HAVING now the twofold', 'p'),
+    # ch4
+    ('THE remarkable and gracious', 'p'),
+    # ch5
+    ('I MUST not now attempt', 'p'),
+    # ch6
+    ('ONE day the doctor coming', 'p'),
+    # ch7
+    ('RETURNING to London when', 'p'),
+    # ch8
+    ('SOON after this the time', 'p'),
+    ('Hearken, O daughter,', 'p'),
+    # ch9
+    ('ON landing in Shanghai', 'p'),
+    # ch10
+    ('A JOURNEY taken in the', 'p'),
+    ('<i>Thursday, April 26th,', 'p'),
+    ('“The perils of the sea,', 'p'),
+    ('seemed particularly appropriate', 'p'),
+    ('“We speak of the realms', 'p'),
+    ('To be absent from the', 'p'),
+    # ch11
+    ('AFTER the retaking of', 'p'),
+    ('<i>January 8th, 1856.</i>', 'p'),
+    ('<i>January 10th.</i>', 'p'),
+    ('<i>January 11th.</i>', 'p'),
+    ('<i>January 12th.</i>', 'p'),
+    ('“He that dwelleth in', 'p'),
+    ('<i>Sunday, January 13th.</i>', 'p'),
+    ('<i>Monday, January 14th.</i>', 'p'),
+    ('“Ill that God blesses', 'p'),
+    # ch12
+    ('HAVING to leave the neighbourhood', 'p'),
+    ('“O Lord, how happy should', 'p'),
+    ('“And I will go!', 'p'),
+    ('2. Why live I here? the', 'p'),
+    # ch13
+    ('IT is interesting to', 'p'),
+    ('<i>August 4th, 1856.</i>', 'p'),
+    ('<i>August 5th.</i>', 'p'),
+    ('<i>August 6th.</i>', 'p'),
+    ('<i>August 7th.</i>', 'p'),
+    # ch14
+    ('IT now seemed very clear', 'p'),
+    ('Through midnight gloom', 'p'),
+    # ch15
+    ('THE autumn of 1856 was', 'p'),
+    ('“They who trust Him wholly', 'p'),
+    ('but also that when we', 'p'),
+    ('“Sufficient is His arm', 'p'),
+    # ch16
+    ('NOT infrequently our', 'p'),
+    ('<i>November 18th, 1857.</i>', 'p'),
+    # ch17
+    ('A SOMEWHAT different', 'p'),
+    # ch18
+    ('“My thoughts are not your', 'p'),
+    ('“Blind unbelief is <i>sure</i>', 'p'),
+    # ch19
+    ('IT was thus that in the', 'p'),
+    # ch20
+    ('THE events sketched in', 'p'),
+    # --- es ---
+    # ch1
+    ('EL siguiente relato', 'p'),
+    # ch2
+    ('LOS primeros gozos de', 'p'),
+    # ch3
+    ('Teniendo ahora el doble', 'p'),
+    # ch4
+    ('El notable y bondadoso', 'p'),
+    # ch5
+    ('No debo intentar ahora', 'p'),
+    # ch6
+    ('UN día, al entrar el', 'p'),
+    # ch7
+    ('AL REGRESAR a Londres,', 'p'),
+    # ch8
+    ('POCO después de esto', 'p'),
+    ('Oye, hija, y considera,', 'p'),
+    # ch9
+    ('AL desembarcar en Shanghái', 'p'),
+    # ch10
+    ('Un viaje realizado en', 'p'),
+    ('<i>Jueves, 26 de abril', 'p'),
+    ('«Los peligros del mar,', 'p'),
+    ('parecía particularmente', 'p'),
+    ('«Hablamos de las mansiones', 'p'),
+    ('¡Estar ausentes del', 'p'),
+    # ch11
+    ('DESPUÉS de la reconquista', 'p'),
+    ('<i>8 de enero de 1856.</i>', 'p'),
+    ('<i>10 de enero.</i>', 'p'),
+    ('<i>11 de enero.</i>', 'p'),
+    ('<i>12 de enero.</i>', 'p'),
+    ('«El que habita al abrigo', 'p'),
+    ('<i>Domingo 13 de enero.</i>', 'p'),
+    ('<i>Lunes 14 de enero.</i>', 'p'),
+    ('«El mal que Dios bendice', 'p'),
+    # ch12
+    ('TENER que dejar así,', 'p'),
+    ('«¡Oh Señor, cuán felices', 'p'),
+    ('«¡Y yo iré!', 'p'),
+    ('2. ¿Por qué vivo aquí?', 'p'),
+    # ch13
+    ('Es interesante observar', 'p'),
+    ('<i>4 de agosto de 1856.</i>', 'p'),
+    ('<i>5 de agosto.</i>', 'p'),
+    ('<i>6 de agosto.</i>', 'p'),
+    ('<i>7 de agosto.</i>', 'p'),
+    # ch14
+    ('Ahora parecía muy claro', 'p'),
+    ('Desde Macedonia, entre', 'p'),
+    # ch15
+    ('El otoño de 1856 estaba', 'p'),
+    ('«Los que en Él confían', 'p'),
+    ('sino también de que,', 'p'),
+    ('«Suficiente es Su brazo', 'p'),
+    # ch16
+    ('No pocas veces nuestro', 'p'),
+    ('<i>18 de noviembre de', 'p'),
+    # ch17
+    ('A comienzos del año', 'p'),
+    # ch18
+    ('«Mis pensamientos no', 'p'),
+    ('«La ciega incredulidad', 'p'),
+    # ch19
+    ('Fue así como, en el año', 'p'),
+    # ch20
+    ('LOS acontecimientos esbozados', 'p'),
+]
 
 # --- finney-memoirs: the 1876 Barnes/Oberlin scan, repaired against a second ---
 #
