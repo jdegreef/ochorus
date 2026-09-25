@@ -451,6 +451,9 @@ export const entries: EntryGenerator = async () => {
 // Prerender refresh 2026-09-25: es bios for Martyn Lloyd-Jones, Richard Sibbes,
 // Monica of Hippo, Anselm, George Herbert, Helen Roseveare, Derek Prince and
 // Samuel Ajayi Crowther.
+//
+// Prerender refresh 2026-09-25: es bios for Lemuel Haynes, Julia Foote, John
+// Cassian, John R. Mott, Billy Sunday, Bill Bright, Isaac Watts and John Foxe.
 export const load: PageLoad = async ({ params, fetch }) => {
 	// Old links and bookmarks to the imprint's author page land on its shelf.
 	// (render.yaml 301s the English URL; this covers the localized ones.)
