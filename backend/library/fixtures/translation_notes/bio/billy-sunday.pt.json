@@ -1,0 +1,16 @@
+{
+ "kind": "bio",
+ "slug": "billy-sunday",
+ "language": "pt",
+ "job_issue": 3318,
+ "references": [
+  {
+   "reference": "Lucas 18:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 16:30",
+   "status": "self_rendered"
+  }
+ ]
+}
