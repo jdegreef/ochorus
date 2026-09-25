@@ -267,8 +267,10 @@ Reported, not fixed
   the fixture-vs-prod note above) — a title already corrected in the fixture can
   still be wrong on prod, so verify those against the LIVE API, not just the file.
   The fix is the same metadata migration (Torrey `men-of-prayer-2` ch.6, #2459 →
-  `0152`, model on `0121_recase_chapter_titles`) plus a frontend touch to
-  re-prerender the page. 2026-09-16 sweep found no other cases.
+  `0152`, model on `0121_recase_chapter_titles`). A migration under
+  `migrations/` is not a content root, so after the API deploy is live, add a
+  follow-up marker per `frontend/prerender-refresh/README.md` to re-prerender
+  the page. 2026-09-16 sweep found no other cases.
 - **Verifying a split-word sweep with a stranded-LETTER scan, or with the
   audit.** A pervasive-spacing repair (`feasting-at-the-table`, PRs #1356/#1370)
   is a hand-built list, and the audit is no safety net: `audit_english` has no
