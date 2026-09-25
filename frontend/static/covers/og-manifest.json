@@ -1804,6 +1804,16 @@
 			"layout": "duotone/indigo",
 			"bar": 0
 		},
+		"hi/true-vine": {
+			"ground": "b9a35e392b1c945f7e5b2b59cf0ab102d80a04d95a952449fbebdf90fdeefa52",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"hi/waiting-on-god": {
 			"ground": "c9ecae20e6c796d9a10b26118f9766d40b814f25507e06716c37c393f7514bfa",
 			"style": "devotional",

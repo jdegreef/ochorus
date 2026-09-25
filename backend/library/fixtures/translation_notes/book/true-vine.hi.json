@@ -1,0 +1,1165 @@
+{
+ "kind": "book",
+ "slug": "true-vine",
+ "language": "hi",
+ "job_issue": 2117,
+ "pull_request": null,
+ "note": [
+  "Scripture source: the Indian Revised Version (IRV Hindi, CC BY-SA 4.0), fetched as USX from the ebible mirror (gracious-tech/fetch_collection, bibles/hin_irv/usx), all 66 books. Every mined span was sliced from that text by script, never typed. Each meditation opens with its John 15 verse; translators were told to use the IRV text of JHN 15:1-16 verbatim every time, so a verse reads identically wherever it recurs.",
+  "Translated from the English as the fixture carries it, which already includes this slug's BODY_CORRECTIONS.",
+  "Derived by measurement: a row is mined only when the translator reported the quotation verbatim AND the measurement confirms it (a 6+ character quoted segment of that block, or an 8+ character phrase in the chapter, is a byte substring of the cited IRV verse). adapted/self rows and 2 unconfirmed verbatim claims (John 15:1 ch19, Eph 3:19 ch20) are self_rendered. Unquoted echoes are not recorded.",
+  "KJV/IRV divergences an editor should see: John 15:2 IRV छाँटता ('prunes') where Murray's English has 'cleanseth' — the verse is IRV, and Murray's own sentences render cleansing as शुद्ध करना so his argument that pruning is cleansing survives; John 15:1 IRV includes सच्ची where Murray quotes 'I am the vine'; Isa 27:2-3 'सुन्दर दाख की बारी' for 'a vineyard of red wine'; Phil 4:13 no 'Christ'; Heb 10:9 has no 'O God' in the IRV (ch23 builds 'I come to do thy will, O God' from Heb 10:7 fragments, recorded adapted); John 15:8 Murray reverses its halves, the IRV order is kept.",
+  "Adapted quotations (IRV wording with person/grammar changed, recorded self_rendered): 2 Cor 4:10 adds प्रभु as the KJV has it (ch07); Rev 3:17 I→we (ch06); Col 3:3 your→our (ch10); Ps 43:4 my→our (ch24); several John 15 fragments trimmed where Murray trims them.",
+  "Conventions: curly quotation marks mirror the English per chapter; Christ referred to in the singular (वह/उसका, IRV style) throughout — two translators first used the honorific plural and switched to match the rest; the reader is addressed as तुम, Christ in prayer as तू; 'surrender' समर्पण, 'consecration' अर्पण; chapter titles pinned to IRV wording (the two 'The Vine' chapters carry their verse: दाखलता (यूहन्ना 15:1) / (यूहन्ना 15:5)).",
+  "ENGLISH SOURCE items NOT repaired (the Hindi renders the evident sense or mirrors, as noted): ch08 'The Word of God's pruning knife' (probably 'The Word is God's pruning knife'; rendered as that); ch30 block 4 'Yea, Lord, but I chose You!' reads as contradicting the chapter — the Hindi uses Christ's IRV words परन्तु मैंने तुम्हें चुना है, so it reads as the reader repeating His words; check against Murray's original; ch20 'speaks plainly out of the Father' (odd, rendered cautiously); ch26 block 2 missing subject; ch16 stray capital 'The Whole place'; ch10 'rise and walk' paired with Acts 3 (the IRV Acts 3:6 has no 'rise', Matt 9:5 used)."
+ ],
+ "references": [
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Song of Solomon 2:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 2
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 2
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 2
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 2
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Romans 11:36",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 5:19",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 14:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Isaiah 27:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Isaiah 27:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Corinthians 3:9",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 6,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 7,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Romans 2:29",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Colossians 2:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Corinthians 4:10",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Corinthians 1:29",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 7
+  },
+  {
+   "reference": "John 15:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 8
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 15:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Revelation 1:16",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Ephesians 4:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 14:20",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "2 Chronicles 25:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 119:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 9:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 15:4-5",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 6,
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Colossians 1:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 5:19",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 15:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 15:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 16
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 16
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 16
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 7,
+   "chapter_order": 16
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 15:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "1 Peter 4:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 18
+  },
+  {
+   "reference": "John 15:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 18
+  },
+  {
+   "reference": "1 Peter 4:11",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 18
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 18
+  },
+  {
+   "reference": "John 15:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 18
+  },
+  {
+   "reference": "John 15:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 19
+  },
+  {
+   "reference": "John 15:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 19
+  },
+  {
+   "reference": "John 15:1",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 19
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 20
+  },
+  {
+   "reference": "John 15:9",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 20
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 20
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 20
+  },
+  {
+   "reference": "John 10:17",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 20
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 6,
+   "chapter_order": 20
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 21
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 21
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 21
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 6,
+   "chapter_order": 21
+  },
+  {
+   "reference": "John 15:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 22
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 22
+  },
+  {
+   "reference": "John 15:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 22
+  },
+  {
+   "reference": "John 15:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 22
+  },
+  {
+   "reference": "John 15:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Hebrews 10:7",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 23
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 24
+  },
+  {
+   "reference": "John 15:11",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 24
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 24
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 24
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Psalm 43:4",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 24
+  },
+  {
+   "reference": "John 15:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 25
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 25
+  },
+  {
+   "reference": "John 15:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 25
+  },
+  {
+   "reference": "John 13:35",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 25
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 7,
+   "chapter_order": 25
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 8,
+   "chapter_order": 25
+  },
+  {
+   "reference": "John 15:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 26
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 26
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 26
+  },
+  {
+   "reference": "John 15:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 27
+  },
+  {
+   "reference": "John 15:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 27
+  },
+  {
+   "reference": "John 17:3",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 27
+  },
+  {
+   "reference": "John 15:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 3,
+   "chapter_order": 27
+  },
+  {
+   "reference": "John 15:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 6,
+   "chapter_order": 27
+  },
+  {
+   "reference": "John 15:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 28
+  },
+  {
+   "reference": "John 15:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 28
+  },
+  {
+   "reference": "John 15:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 28
+  },
+  {
+   "reference": "John 15:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 28
+  },
+  {
+   "reference": "John 15:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 28
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 29
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 29
+  },
+  {
+   "reference": "John 5:20",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 29
+  },
+  {
+   "reference": "John 15:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 29
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 29
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 29
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 30
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Romans 11:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 30
+  },
+  {
+   "reference": "2 Thessalonians 2:13",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 30
+  },
+  {
+   "reference": "1 Peter 1:2",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 30
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 4,
+   "chapter_order": 30
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 30
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 31
+  },
+  {
+   "reference": "1 Corinthians 2:4-5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 1,
+   "chapter_order": 31
+  },
+  {
+   "reference": "John 15:16",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 31
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 32
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 2,
+   "chapter_order": 32
+  },
+  {
+   "reference": "John 15:16",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 32
+  },
+  {
+   "reference": "John 15:16",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 32
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 32
+  },
+  {
+   "reference": "John 16:26-27",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 5,
+   "chapter_order": 32
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 6,
+   "chapter_order": 32
+  }
+ ]
+}
