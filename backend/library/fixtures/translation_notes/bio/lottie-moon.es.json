@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "lottie-moon",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "library/fixtures/content/books/women-who-moved-heaven-2.es.json"
+  }
+ ]
+}
