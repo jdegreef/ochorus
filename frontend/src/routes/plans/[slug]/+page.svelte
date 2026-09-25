@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PlanDetail } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
-	import { readingMinutes, readingTime } from '$lib/reading';
+	import { planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { authorPath } from '$lib/originals';
 	import { SITE_URL } from '$lib/config';
@@ -83,12 +83,12 @@
 	);
 
 	const nextDay = $derived(next === null ? undefined : plan.days.find((d) => d.day === next));
-	// "Day 5 of 31 · 27 days left · 4 hr 10 min left" — the read card's eyebrow.
+	// "Day 5 of 31 · 27 days left · 4 hr 11 min left" — the read card's eyebrow.
 	const progressLine = $derived(
 		[
 			`${t('plans.day')} ${next} ${t('plans.of')} ${plan.day_count}`,
 			t('plans.daysLeft').replace('%n%', String(daysLeft)),
-			wordsLeft ? t('plans.minLeft').replace('%n%', String(readingMinutes(wordsLeft))) : ''
+			wordsLeft ? planTimeLeft(readingMinutes(wordsLeft)) : ''
 		]
 			.filter(Boolean)
 			.join(' · ')
