@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-25: Arabic jesus-himself-2, the-masters-indwelling and union-and-communion complete
+// deeper-life-in-christ's source set, so seed_plans creates its ar row on this deploy; rebuild /ar/plans.
 // prerender refresh 2026-09-24 (queue job #2788): sw plan ACTIVATED — first-steps-for-teens ("Hatua
 // za Kwanza: Imani kwa Vijana"), backed by around-the-wicket-gate and men-and-women-who-gave-
 // everything-2. Shipping men-and-women-who-gave-everything-2.sw completes the sw source-book set, so

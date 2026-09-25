@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-25: Arabic books — jesus-himself-2 (#832), the-masters-indwelling (#2922),
+// union-and-communion. Rebuilds /ar/books so the three new editions and their covers are baked.
 // prerender refresh 2026-09-24 (queue job #3190): Spanish book — brave-for-god, six true stories of
 // faith told for young readers ("Valientes por Dios"), 6 chapters. Book pages are prerendered per
 // locale, so /es/books and the shelf rebuild with the translated title over the shared painting ground

@@ -4,7 +4,16 @@
     "description": "لا مزيدًا من الجهد، بل شخصٌ: سرُّ الحياة الأعمق هو المسيح نفسه حيًّا في الداخل. يفتتح أندرو موراي بعجب يسوع نفسه، ثم يبسط حياة السكنى الداخلية، ويختم هدسون تايلور في راحة الاتحاد والشركة مع الحبيب.",
     "note": [
       "Queue job #649. NONE of this curated plan's three source books (jesus-himself-2, the-masters-indwelling, union-and-communion) has an Arabic edition yet, so seed_plans will not create the row today — this prose lands dormant and the plan appears the moment the third book ships.",
-      "The title renders the motif, not a shipped book title; whoever translates the books should harmonise titles with this card."
+      "The title renders the motif, not a shipped book title; whoever translates the books should harmonise titles with this card.",
+      "2026-09-25: all three source books now ship in Arabic in one PR — يسوع نفسه (jesus-himself-2, #832), سُكنى السيد (the-masters-indwelling, #2922), الاتحاد والشركة (union-and-communion) — so the row goes live on that deploy. The card's motifs (يسوع نفسه، السكنى، الاتحاد والشركة) match the book titles."
+    ]
+  },
+  "everything-for-christ": {
+    "title": "كل شيء للمسيح: حياة مسكوبة",
+    "description": "ماذا يكلّف التسليم الكامل من كل القلب، وماذا يثمر؟ يوميات ديفيد برينرد الإرسالية الفاحصة، تليها سِيَر رجال ونساء بذلوا كل شيء من أجل الإنجيل — دعوة إلى التكريس تُروى من خلال حيوات لبّت النداء.",
+    "note": [
+      "Queue job #1657. Neither source book (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) has an Arabic edition yet, so seed_plans will not create the row until both ship; this prose lands dormant.",
+      "«التسليم» follows the ar glossary for 'surrender'; Brainerd is ديفيد برينرد, the corpus's only form (6 uses). Whoever ships the two books should harmonise their titles with this card."
     ]
   },
   "faith-in-the-fire": {
