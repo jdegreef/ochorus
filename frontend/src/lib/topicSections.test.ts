@@ -20,9 +20,23 @@ describe('topicSectionOrder', () => {
 		expect(topicSectionOrder({ books: 11, sermons: 0, articles: 0 })).toEqual(['books']);
 	});
 
-	it('breaks ties in the canonical books → sermons → articles order', () => {
+	it('breaks a books/sermons tie with books first', () => {
 		expect(topicSectionOrder({ books: 5, sermons: 5, articles: 0 })).toEqual(['books', 'sermons']);
 		expect(topicSectionOrder({ books: 0, sermons: 3, articles: 3 })).toEqual(['sermons', 'articles']);
+	});
+
+	it('puts articles last however many there are (On Prayer 10/7/17, Enduring Classics 8/0/61)', () => {
+		expect(topicSectionOrder({ books: 10, sermons: 7, articles: 17 })).toEqual([
+			'books', 'sermons', 'articles'
+		]);
+		expect(topicSectionOrder({ books: 8, sermons: 0, articles: 61 })).toEqual(['books', 'articles']);
+		expect(topicSectionOrder({ books: 4, sermons: 25, articles: 26 })).toEqual([
+			'sermons', 'books', 'articles'
+		]);
+	});
+
+	it('shows articles alone for an articles-only topic', () => {
+		expect(topicSectionOrder({ books: 0, sermons: 0, articles: 4 })).toEqual(['articles']);
 	});
 
 	it('is empty when the topic has no content', () => {
