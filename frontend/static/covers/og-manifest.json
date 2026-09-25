@@ -94,6 +94,16 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"am/absolute-surrender": {
+			"ground": "2a0f32685685d7df4d90c87b0edda285679aaae65118ebe638abb6fdeca59638",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"am/baptism-with-the-holy-spirit": {
 			"ground": "3bd9f33bc25ded7576456c963215aaa56491e8f52d9c5d9875da69a99879b7dd",
 			"style": "revival",
