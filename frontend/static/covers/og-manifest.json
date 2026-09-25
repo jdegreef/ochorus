@@ -404,6 +404,16 @@
 			"layout": "duotone/indigo",
 			"bar": 0
 		},
+		"ar/thoughts-for-the-quiet-hour": {
+			"ground": "f30f223c3344bf93e199b4eaa3492c656948960aa0e0b93b64c4376373c3d281",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ar/union-and-communion": {
 			"ground": "689326febad4304a18305f45444b48172aad1552d9a10ab74fd78b6fccb9b400",
 			"style": "revival",
