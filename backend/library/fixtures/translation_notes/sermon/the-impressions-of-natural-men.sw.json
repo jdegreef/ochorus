@@ -1,0 +1,147 @@
+{
+ "kind": "sermon",
+ "slug": "the-impressions-of-natural-men",
+ "language": "sw",
+ "job_issue": 3457,
+ "pull_request": 3470,
+ "references": [
+  {
+   "reference": "Hosea 6:4",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Hosea 6:5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Exodus 15:2a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Psalm 106:12b-13a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Mark 10:17b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 24:25b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 26:28b",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "the-almost-christian.sw.json"
+  },
+  {
+   "reference": "Matthew 7:14b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Corinthians 1:21b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Jeremiah 50:4-5",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Song of Solomon 3:3b",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "Malachi 2:7",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 12:44b",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "2 Peter 2:22",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 12:45",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Zechariah 12:10b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Song of Solomon 3:2",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Isaiah 6:5a",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Job 40:4a",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Jeremiah 32:40b",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Mark 3:5a",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Hebrews 10:26b",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Jeremiah 8:20",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 9:18a",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 17:32",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Genesis 19:17b",
+   "status": "self_rendered",
+   "block_index": 36
+  }
+ ]
+}

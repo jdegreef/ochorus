@@ -1,0 +1,303 @@
+{
+ "kind": "sermon",
+ "slug": "the-resurrection-of-jesus",
+ "language": "sw",
+ "job_issue": 3463,
+ "pull_request": 3470,
+ "references": [
+  {
+   "reference": "Matthew 28:6",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Daniel 3:25",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-triumph-of-calvary.sw.json"
+  },
+  {
+   "reference": "Luke 24:5",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 24:6",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 24:7",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 24:8",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 28:11b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 28:2",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 28:3",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 28:4b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 10:39",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 10:40",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 10:41",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 10:42",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 1:3",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 5:9a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Mark 16:20",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Acts 2:22",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 2:23",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 2:24",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 1:4",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Revelation 1:18a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Revelation 22:16b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 27:60",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Corinthians 15:14",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Corinthians 15:17b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Corinthians 15:1",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Corinthians 15:2",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Corinthians 15:3",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Corinthians 15:4",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Ephesians 1:20a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Ephesians 1:21",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Ephesians 1:22",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "John 14:19b",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Philippians 3:21a",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Isaiah 26:19",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "the-triumph-of-calvary.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:42b",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Corinthians 15:43",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Corinthians 15:44a",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:54b",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:10b",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "John 11:25a",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Isaiah 33:17b",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 17:2",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Daniel 12:3",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 28:7",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Matthew 28:8",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "2 Corinthians 6:2",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}
