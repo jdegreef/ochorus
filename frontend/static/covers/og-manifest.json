@@ -1774,6 +1774,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/talks-to-the-farmer": {
+			"ground": "62daf65bd80882f64c95b7b19f2509750c02bd8029e8a20bcd6eae1e0f425c03",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"hi/the-inner-chamber": {
 			"ground": "ab87508dcc75a253086b0a2fd380975eb0de8bff35bdc9fb0804777e4aaf106e",
 			"style": "devotional",
