@@ -1865,7 +1865,7 @@ class ThingsAsTheyAreDisplayLineTests(SimpleTestCase):
                     lead = "<br/>" if head.startswith(("<i>", "LONDON")) else ""
                     flat = re.sub(
                         rf"<(p|h3)>({re.escape(head)}.*?)</\1>",
-                        lambda m: lead + m.group(2),
+                        lambda m, lead=lead: lead + m.group(2),
                         flat,
                         count=1,
                         flags=re.S,
@@ -1976,7 +1976,7 @@ name both he and they are Hindus.</div>
             split_by_heading,
         )
 
-        chapters = {title: body for title, body in self._chapters("en").values()}
+        chapters = dict(self._chapters("en").values())
         heads = [head for head, *_ in self._entries("en")] + [self.BREAK]
         emitted = 0
         for title, body in split_by_heading(content_root(self.PAGE), "h2"):
