@@ -36,6 +36,8 @@
 	// served by an API instance that predates it (a rolling-deploy skew) renders
 	// without an Articles section rather than throwing.
 	const articles = $derived(topic.articles ?? []);
+	const ARTICLES_SHOWN = 6;
+	let showAllArticles = $state(false);
 	// Newer facets than books/sermons; default so an API without them (a
 	// rolling-deploy skew) renders those sections away rather than throwing.
 	const authors = $derived(topic.authors ?? []);
@@ -399,17 +401,36 @@
 	{#snippet articlesSection()}
 		<section class="mb-10">
 			<h2 class="section-heading">{t('topics.articles')}</h2>
-			<div class="grid gap-3 sm:grid-cols-2">
-				{#each articles as article (article.slug)}
-					<ArticleCard {article} />
+			<!-- The first few, then "Show N more": a big topic has dozens (Enduring
+			     Classics: 61), and they are companions to the shelves above, not the
+			     shelf. The rest stay in the HTML (display:none) so the prerendered
+			     page still links every article. -->
+			<div id="topic-articles" class="grid gap-3 sm:grid-cols-2">
+				{#each articles as article, i (article.slug)}
+					<div class:hidden={!showAllArticles && i >= ARTICLES_SHOWN}>
+						<ArticleCard {article} heading="h3" />
+					</div>
 				{/each}
 			</div>
+			{#if articles.length > ARTICLES_SHOWN}
+				<button
+					type="button"
+					class="btn btn-sm btn-ghost mt-3"
+					aria-controls="topic-articles"
+					aria-expanded={showAllArticles}
+					onclick={() => (showAllArticles = !showAllArticles)}
+				>
+					{showAllArticles
+						? t('search.showLess')
+						: t('bios.showMore').replace('%n%', String(articles.length - ARTICLES_SHOWN))}
+				</button>
+			{/if}
 		</section>
 	{/snippet}
 
-	<!-- Content sections in prominence order: a topic leads with the type it is
-	     mostly made of (a sermon-heavy topic surfaces its sermons first), empty
-	     types dropped. See topicSectionOrder. -->
+	<!-- Content sections in prominence order: books and sermons lead with the
+	     type the topic is mostly made of, articles always come last, empty types
+	     dropped. See topicSectionOrder. -->
 	{#each sectionOrder as kind (kind)}
 		{#if kind === 'books'}{@render booksSection()}
 		{:else if kind === 'sermons'}{@render sermonsSection()}
