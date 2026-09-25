@@ -94,6 +94,16 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"am/baptism-with-the-holy-spirit": {
+			"ground": "3bd9f33bc25ded7576456c963215aaa56491e8f52d9c5d9875da69a99879b7dd",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0.085
+		},
 		"am/gleanings-among-the-sheaves": {
 			"ground": "cfafa5fc46542ce19b864735e56443c918ecf220c3cb57b9286416e5bb66132d",
 			"style": "revival",
