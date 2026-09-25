@@ -1,0 +1,10 @@
+{
+ "the-inner-chamber-month": {
+  "title": "የውስጥ እልፍኝ፦ የአንድ ወር ጉዞ",
+  "description": "የጸሎትንና የቃሉን የዕለት ልማድ ገንባ፦ ከአንድሪው መሪ ጋር ሠላሳ ስድስት ማለዳዎች፣ በየቀኑ አንድ ምዕራፍ።",
+  "note": [
+   "Amharic's FIRST plan prose, shipping with the-inner-chamber.am (queue job #3556), the sole source book of this launch plan; without it seed_plans would create the am plan row with no prose, which PlanTranslationCoverageTests fails on. No am job was filed for this plan, so it rides with its book.",
+   "The title opens with the shipped edition's own title verbatim (የውስጥ እልፍኝ), so the plan card and the book on the shelf agree. The reader is addressed in the singular (ገንባ), the am house style."
+  ]
+ }
+}

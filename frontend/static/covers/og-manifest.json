@@ -114,6 +114,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"am/the-inner-chamber": {
+			"ground": "df4f1775ddb1ebf270d95fdcfa8f01bf2c23f7f241f47c2e095085533218008b",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"amanda-smith-autobiography": {
 			"ground": "aa4cc11c5427d667a4a86ff334ec4bc11d306a55e8dd70f6631e589785737d50",
 			"style": "revival",
