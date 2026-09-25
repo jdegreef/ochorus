@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-25: school-of-prayer (ar, #3538) and cheque-book (hi, #3541) — both web builds ran
+// before the API deploy, so their book pages shipped as empty shells. Re-crawl now the API has them.
 // prerender refresh 2026-09-25: Arabic books — jesus-himself-2 (#832), the-masters-indwelling (#2922),
 // union-and-communion. Rebuilds /ar/books so the three new editions and their covers are baked.
 // prerender refresh 2026-09-24 (queue job #3190): Spanish book — brave-for-god, six true stories of

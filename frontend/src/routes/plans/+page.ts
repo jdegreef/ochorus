@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-25: school-of-prayer-31-days (ar) — #3538's web build ran before the API had the
+// Arabic plan, so /ar/plans/school-of-prayer-31-days/ shipped as an empty shell. Re-crawl now the API has it.
 // prerender refresh 2026-09-25: Arabic jesus-himself-2, the-masters-indwelling and union-and-communion complete
 // deeper-life-in-christ's source set, so seed_plans creates its ar row on this deploy; rebuild /ar/plans.
 // prerender refresh 2026-09-24 (queue job #2788): sw plan ACTIVATED — first-steps-for-teens ("Hatua
