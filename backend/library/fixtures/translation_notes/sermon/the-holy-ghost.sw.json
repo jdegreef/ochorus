@@ -1,0 +1,158 @@
+{
+ "kind": "sermon",
+ "slug": "the-holy-ghost",
+ "language": "sw",
+ "job_issue": 3526,
+ "references": [
+  {
+   "reference": "Hebrews 4:12",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "power-through-prayer.sw.json"
+  },
+  {
+   "reference": "Acts 1:8a",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Luke 24:49b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 21:15",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 7:54",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Zechariah 4:6b",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Hosea 8:14",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Corinthians 2:4",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "lord-teach-us-to-pray-2.sw.json"
+  },
+  {
+   "reference": "Mark 16:7",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Mark 14:50",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 26:40",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Revelation 2:5",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "pauls-praise-of-christian-love.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 3:12",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Matthew 25:24",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Matthew 25:26a",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Luke 19:22a",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Acts 26:19",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 2:19",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Matthew 25:31",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Acts 24:16",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  }
+ ]
+}

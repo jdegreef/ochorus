@@ -1,0 +1,86 @@
+{
+ "kind": "sermon",
+ "slug": "the-uplifted-christ",
+ "language": "sw",
+ "job_issue": 3528,
+ "references": [
+  {
+   "reference": "John 12:32",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 12:21",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "John 12:33",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Peter 2:1",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Corinthians 1:23",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Romans 3:22b-23",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "John 16:8-9",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "1 John 3:16a",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:5a",
+   "status": "self_rendered",
+   "block_index": 30
+  }
+ ]
+}

@@ -1,0 +1,190 @@
+{
+ "kind": "sermon",
+ "slug": "the-death-of-self",
+ "language": "sw",
+ "job_issue": 3533,
+ "references": [
+  {
+   "reference": "Galatians 2:20a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "feasting-at-the-table.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "feasting-at-the-table.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "feasting-at-the-table.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20b",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "feasting-at-the-table.sw.json"
+  },
+  {
+   "reference": "John 15:14",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Samuel 15:22b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Samuel 15:23",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Acts 13:22b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Luke 22:42b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Matthew 26:33",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Daniel 4:30a",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Daniel 4:31b-32",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Genesis 3:5a",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "the-possibilities-of-faith.sw.json"
+  },
+  {
+   "reference": "Exodus 20:3",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:13b",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:2b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:3",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Romans 12:10b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Proverbs 28:26a",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Proverbs 14:12",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "1 Corinthians 15:28",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:21",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Ephesians 2:21",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Philippians 4:3",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "1 Chronicles 12:38",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "2 Corinthians 5:14b-15",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Luke 11:22",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Job 42:5b-6",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "the-gospel-of-healing.sw.json"
+  },
+  {
+   "reference": "Philippians 2:10",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "caleb-a-different-spirit.sw.json"
+  },
+  {
+   "reference": "Song of Solomon 2:16a",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "Song of Solomon 6:3a",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "union-and-communion.sw.json"
+  }
+ ]
+}
