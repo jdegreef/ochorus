@@ -458,6 +458,7 @@ TOPICS = [
             "waiting-on-god",
             "cheque-book",
             "days-of-heaven-upon-earth",
+            "ever-increasing-faith",
         ],
     ),
     (

@@ -1194,6 +1194,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"ever-increasing-faith": {
+			"ground": "93e56f9ada3df1cd429e853672e85efac93753cfa55227b875b8caa006a59fc6",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"finney-memoirs": {
 			"ground": "0d0b8d2c55d10b6c8fe90e5fc67c89601a6faa13d21817842442bb80fdc0fddd",
 			"style": "revival",
