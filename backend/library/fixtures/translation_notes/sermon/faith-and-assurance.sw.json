@@ -1,0 +1,107 @@
+{
+ "kind": "sermon",
+ "slug": "faith-and-assurance",
+ "language": "sw",
+ "job_issue": 3444,
+ "pull_request": 3452,
+ "references": [
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "Romans 10:11",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Acts 7:56",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 23:42a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Job 19:25a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Job 13:15a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Matthew 14:30b",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Acts 4:11",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Acts 4:12",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Mark 9:24b",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Romans 8:33a",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Romans 8:34a",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "2 Timothy 4:8a",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Deuteronomy 11:21b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Habakkuk 2:3b",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "cheque-book.sw.json"
+  }
+ ]
+}
