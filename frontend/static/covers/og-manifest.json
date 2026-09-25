@@ -1194,8 +1194,28 @@
 			"layout": "split/navy",
 			"bar": 0.04
 		},
+		"evangelization-of-the-world": {
+			"ground": "13488ad5fd773eeb88fc948aaf135f512ad4bb0a7bfce8bad45d5aab20e6fb4f",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"evening-by-evening": {
 			"ground": "a11948e962d19f4077474d1040d7e3f26d58b21c0a11de74e4987242488e3483",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"ever-increasing-faith": {
+			"ground": "93e56f9ada3df1cd429e853672e85efac93753cfa55227b875b8caa006a59fc6",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",

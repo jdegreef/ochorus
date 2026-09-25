@@ -103,6 +103,7 @@ TOPICS = [
             "women-who-moved-heaven-2",
             "union-and-communion",
             "men-who-moved-heaven",
+            "evangelization-of-the-world",
         ],
     ),
     (
@@ -459,6 +460,7 @@ TOPICS = [
             "waiting-on-god",
             "cheque-book",
             "days-of-heaven-upon-earth",
+            "ever-increasing-faith",
         ],
     ),
     (

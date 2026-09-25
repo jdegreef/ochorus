@@ -1277,7 +1277,7 @@ class UnfailingSpringsDisplayLineTests(SimpleTestCase):
     `corrections.py`. Asserted per edition, for the same reason as above."""
 
     SLUG = "unfailing-springs"
-    LANGUAGES = {"ar", "en", "es", "fr", "hi", "lg", "pt", "sw", "uk"}
+    LANGUAGES = {"am", "ar", "en", "es", "fr", "hi", "lg", "pt", "sw", "uk"}
 
     @classmethod
     def setUpClass(cls):
