@@ -1,47 +1,110 @@
 {
+ "christ-our-healer": {
+  "description": "Seis semanas sobre Cristo como Salvador, Santificador, Curador e Rei que há de vir. A. B. Simpson expõe o evangelho quádruplo e o seu ministério de cura, e Andrew Murray encerra com um mês de meditações sobre o Senhor que ainda cura o corpo como penhor da vida vindoura.",
+  "note": [
+   "Prosa apenas (job #3294). Dos três livros-fonte, apenas divine-healing existe em pt; the-fourfold-gospel e the-gospel-of-healing ainda não, portanto seed_plans só criará a linha do plano em pt quando todos os três existirem."
+  ],
+  "title": "Cristo, o Nosso Curador"
+ },
+ "daughters-of-the-king-book-1-30-days": {
+  "description": "Trinta dias para meninas de 9 a 12 anos sobre quem você é como filha do Rei: o valor que vem de Deus, como escapar da armadilha da comparação, amizade sem confusão e as meninas corajosas da Bíblia. Cada dia traz uma leitura curta com um versículo da Bíblia, uma pergunta para refletir, algo para praticar e uma oração.",
+  "note": [
+   "Prosa apenas (job #3295). O livro-fonte único (daughters-of-the-king-1) ainda não foi traduzido para pt, portanto seed_plans só criará a linha do plano em pt quando ele existir."
+  ],
+  "title": "Filhas do Rei: 30 Dias com Deus — Livro 1"
+ },
+ "daughters-of-the-king-book-2-30-days": {
+  "description": "Trinta dias de coragem para meninas de 9 a 12 anos: enfrentar a preocupação com Deus, usar a sua voz, servir e liderar, e seguir Jesus como as mulheres corajosas dos Evangelhos. Cada dia traz uma leitura curta com um versículo da Bíblia, uma pergunta para refletir, algo para praticar e uma oração.",
+  "note": [
+   "Prosa apenas (job #3296). O livro-fonte único (daughters-of-the-king-2) ainda não foi traduzido para pt, portanto seed_plans só criará a linha do plano em pt quando ele existir."
+  ],
+  "title": "Filhas do Rei: 30 Dias com Deus — Livro 2"
+ },
+ "daughters-of-the-king-book-3-30-days": {
+  "description": "Trinta dias sobre crescer, para meninas de 9 a 12 anos: os sentimentos intensos, as mudanças da puberdade como o bom projeto de Deus, escolhas sábias, descobrir o seu chamado e aprender com mulheres mais velhas que amam a Deus. Cada dia traz uma leitura curta com um versículo da Bíblia, uma pergunta para refletir, algo para praticar e uma oração.",
+  "note": [
+   "Prosa apenas (job #3297). O livro-fonte único (daughters-of-the-king-3) ainda não foi traduzido para pt, portanto seed_plans só criará a linha do plano em pt quando ele existir."
+  ],
+  "title": "Filhas do Rei: 30 Dias com Deus — Livro 3"
+ },
  "deeper-life-in-christ": {
-  "title": "A Vida Mais Profunda: Cristo em Vós",
-  "description": "Não mais esforço, mas uma Pessoa: o segredo da vida mais profunda é o próprio Cristo vivendo em nós. Andrew Murray começa com a maravilha de Jesus mesmo, depois desdobra a vida que habita no interior, e Hudson Taylor conclui no repouso da união e comunhão com o Amado."
+  "description": "Não mais esforço, mas uma Pessoa: o segredo da vida mais profunda é o próprio Cristo vivendo em nós. Andrew Murray começa com a maravilha de Jesus mesmo, depois desdobra a vida que habita no interior, e Hudson Taylor conclui no repouso da união e comunhão com o Amado.",
+  "title": "A Vida Mais Profunda: Cristo em Vós"
  },
  "everything-for-christ": {
-  "title": "Tudo por Cristo: Uma Vida Derramada",
   "description": "Quanto custa a entrega de todo o coração, e o que ela produz? O comovente diário missionário de David Brainerd, seguido das histórias de homens e mulheres que deram tudo por amor ao evangelho — um chamado à consagração contado através de vidas que o atenderam.",
   "note": [
    "Prosa apenas (job #1489). Os dois livros-fonte (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) ainda não estão em pt; seed_plans criará a linha do plano em pt somente quando ambos existirem."
-  ]
+  ],
+  "title": "Tudo por Cristo: Uma Vida Derramada"
  },
  "faith-in-the-fire": {
-  "title": "O Deus de Toda Consolação: Fé em Meio ao Fogo",
   "description": "Para os dias em que é difícil orar. Hannah Whitall Smith sobre o Deus de toda consolação, e Gareth Evans sobre confiar Naquele que sustém os nossos amanhãs — uma caminhada de cinco semanas rumo a uma paz firme quando a vida é incerta.",
   "note": [
    "Prosa apenas (job #1487). Os dois livros-fonte (the-god-of-all-comfort, he-holds-my-tomorrows) ainda não foram traduzidos para pt, portanto seed_plans só criará a linha do plano em pt quando ambos existirem."
-  ]
+  ],
+  "title": "O Deus de Toda Consolação: Fé em Meio ao Fogo"
  },
  "grace-for-every-sinner": {
-  "title": "O Caminho para Deus: Graça para Todo Pecador",
-  "description": "Um mês sobre as boas-novas mais antigas que existem. O terno chamado de Richard Baxter aos não convertidos, D. L. Moody sobre o caminho para Deus, e o Tudo pela Graça de Charles Spurgeon — os mais simples dos guias sobre como um pecador é salvo, e como sabê-lo."
+  "description": "Um mês sobre as boas-novas mais antigas que existem. O terno chamado de Richard Baxter aos não convertidos, D. L. Moody sobre o caminho para Deus, e o Tudo pela Graça de Charles Spurgeon — os mais simples dos guias sobre como um pecador é salvo, e como sabê-lo.",
+  "title": "O Caminho para Deus: Graça para Todo Pecador"
  },
  "humility-12-days": {
-  "title": "Humildade em 12 Dias",
-  "description": "O clássico de Andrew Murray sobre a raiz de toda virtude — um capítulo curto por dia durante doze dias."
+  "description": "O clássico de Andrew Murray sobre a raiz de toda virtude — um capítulo curto por dia durante doze dias.",
+  "title": "Humildade em 12 Dias"
  },
  "power-from-on-high": {
-  "title": "Poder do Alto: O Espírito Santo",
-  "description": "Quatro semanas com R. A. Torrey sobre a vida cheia do Espírito: primeiro o batismo com o Espírito Santo e o poder que ele traz para o serviço, e depois o estudo mais pleno da Pessoa e da obra do Espírito que habita em todo crente."
+  "description": "Quatro semanas com R. A. Torrey sobre a vida cheia do Espírito: primeiro o batismo com o Espírito Santo e o poder que ele traz para o serviço, e depois o estudo mais pleno da Pessoa e da obra do Espírito que habita em todo crente.",
+  "title": "Poder do Alto: O Espírito Santo"
+ },
+ "praying-men": {
+  "description": "Sete semanas na fornalha da intercessão com o grande apóstolo da oração. E. M. Bounds começa pela própria necessidade de poder do pregador, depois desdobra o propósito que faz a oração prevalecer e a necessidade que a torna o ofício inteiro da vida cristã.",
+  "note": [
+   "Prosa apenas (job #3298). Dos três livros-fonte, apenas power-through-prayer existe em pt; purpose-in-prayer e necessity-of-prayer ainda não, portanto seed_plans só criará a linha do plano em pt quando todos os três existirem."
+  ],
+  "title": "Homens de Oração: Uma Escola de Oração com E. M. Bounds"
+ },
+ "rooted-book-1-30-days": {
+  "description": "Trinta dias para lançar raízes profundas, para leitores de 9 a 12 anos: quem Deus é, as boas-novas de Jesus, quem você é em Cristo, como orar e como crescer. Cada dia traz uma leitura curta com um versículo da Bíblia, uma pergunta para refletir, algo para praticar e uma oração.",
+  "note": [
+   "Prosa apenas (job #3299). O livro-fonte único (rooted-1) ainda não foi traduzido para pt, portanto seed_plans só criará a linha do plano em pt quando ele existir."
+  ],
+  "title": "Enraizados: 30 Dias com Deus — Livro 1"
+ },
+ "rooted-book-2-30-days": {
+  "description": "Trinta dias caminhando com Jesus, para leitores de 9 a 12 anos: da manjedoura em Belém, passando pelos seus milagres e parábolas, até a cruz e o túmulo vazio. Cada dia traz uma leitura curta com uma passagem dos Evangelhos, uma pergunta para refletir, algo para praticar e uma oração.",
+  "note": [
+   "Prosa apenas (job #3300). O livro-fonte único (rooted-2) ainda não foi traduzido para pt, portanto seed_plans só criará a linha do plano em pt quando ele existir."
+  ],
+  "title": "Enraizados: 30 Dias com Deus — Livro 2"
+ },
+ "rooted-book-3-30-days": {
+  "description": "Trinta dias para cultivar o fruto do Espírito, para leitores de 9 a 12 anos: amor, alegria, paz, paciência, bondade e o restante do fruto do Espírito, as palavras que dizemos e os hábitos do coração. Cada dia traz uma leitura curta com um versículo da Bíblia, uma pergunta para refletir, algo para praticar e uma oração.",
+  "note": [
+   "Prosa apenas (job #3301). O livro-fonte único (rooted-3) ainda não foi traduzido para pt, portanto seed_plans só criará a linha do plano em pt quando ele existir."
+  ],
+  "title": "Enraizados: 30 Dias com Deus — Livro 3"
+ },
+ "rooted-book-4-30-days": {
+  "description": "Trinta dias para permanecer firme nas tempestades da vida, para leitores de 9 a 12 anos: quando você tem medo, está preocupado ou triste, quando é tentado e quando a vida é injusta. Cada dia traz uma leitura curta com um versículo da Bíblia, uma pergunta para refletir, algo para praticar e uma oração.",
+  "note": [
+   "Prosa apenas (job #3302). O livro-fonte único (rooted-4) ainda não foi traduzido para pt, portanto seed_plans só criará a linha do plano em pt quando ele existir."
+  ],
+  "title": "Enraizados: 30 Dias com Deus — Livro 4"
  },
  "school-of-prayer": {
-  "title": "Uma Escola de Oração",
-  "description": "Quatro semanas na escola da oração com três guias: Andrew Murray sobre como o próprio Senhor nos ensina a orar, D. L. Moody sobre a oração perseverante e Hannah Buyinza sobre a oração como o pulso diário da vida cristã."
+  "description": "Quatro semanas na escola da oração com três guias: Andrew Murray sobre como o próprio Senhor nos ensina a orar, D. L. Moody sobre a oração perseverante e Hannah Buyinza sobre a oração como o pulso diário da vida cristã.",
+  "title": "Uma Escola de Oração"
  },
  "school-of-prayer-31-days": {
-  "title": "31 Dias na Escola de Oração",
   "description": "Um mês com Andrew Murray aos pés do único Mestre. Cada dia abre com uma das próprias palavras de Jesus sobre a oração, de “Senhor, ensina-nos a orar” até as promessas da última noite, e termina numa oração própria. Uma lição por dia, cerca de dez minutos, rumo à intercessão e a uma vida de oração.",
   "note": [
    "Prosa apenas (job #3147). O livro-fonte único (school-of-prayer) é adicionado em pt nesta mesma PR, portanto seed_plans cria a linha do plano em pt neste deploy."
-  ]
+  ],
+  "title": "31 Dias na Escola de Oração"
  },
  "the-inner-chamber-month": {
-  "title": "Um Mês na Câmara Interior",
-  "description": "Construa o hábito diário da oração e da Palavra: trinta e seis manhãs com Andrew Murray, um capítulo a cada dia."
+  "description": "Construa o hábito diário da oração e da Palavra: trinta e seis manhãs com Andrew Murray, um capítulo a cada dia.",
+  "title": "Um Mês na Câmara Interior"
  }
 }
