@@ -4577,6 +4577,39 @@ BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
     ("before God can use them.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
+# Two stanzas of verse lost at import (Gutenberg #73032). Every chapter heading
+# sits in its own wrapper div, so `import_gutenberg.split_by_heading` takes its
+# fallback walk, and that walk dropped every div that was not hand-made poem
+# markup. This edition sets verse as ebookmaker line groups —
+# `<div class="lg-container-b"><div class="linegroup"><div class="group">
+# <div class="line">…` — so both poems vanished and the prose closed up over
+# them: Montgomery's "Prayer is the Christian's vital breath" in ch5 (ch3
+# quotes its first line in prose), and an unattributed quatrain closing the
+# "I know" argument in ch16.
+#
+# The fallback walk keeps ebookmaker verse now (PR #3355), as exactly these
+# blockquotes — so the English blocks below are spelled byte for byte as it
+# emits them, and a re-import finds each present and the guard skips it.
+#
+# The es edition was translated from the damaged English and runs in lockstep
+# with it (identical tag sequence, chapter by chapter), so it carries its own
+# pair at the same block, anchored on its own following paragraph, or
+# `tests_translation_markup`'s tag parity breaks. Its first line reuses the
+# wording es ch3 already gives the quoted line; "Heaven" follows the edition's
+# lowercase "cielo". No quote anchor (`quote_seed`) or translation-note
+# `block_index` sits below either insertion, so nothing else shifts.
+BODY_CORRECTIONS["reality-of-prayer"]["restored_blocks"] = [
+    # en
+    ("<p>From praying Christ elimina",
+     "<blockquote>Prayer is the Christian’s vital breath,<br/>The Christian’s native air;<br/>His watchword at the gates of death;<br/>He enters Heaven with prayer.</blockquote>"),
+    ("<p>Two things may be said just",
+     "<blockquote>“The things unknown to feeble sense,<br/>Unseen by reason’s glimmering ray,<br/>With strong, commanding confidence,<br/>Their heavenly origin display.”</blockquote>"),
+    # es
+    ("<p>De la oración Cristo elimina",
+     "<blockquote>La oración es el aliento vital del cristiano,<br/>el aire nativo del cristiano;<br/>su santo y seña a las puertas de la muerte;<br/>con la oración entra en el cielo.</blockquote>"),
+    ("<p>Dos cosas pueden decirse aquí",
+     "<blockquote>“Las cosas que ignora el débil sentido,<br/>ocultas al tenue rayo de la razón,<br/>con firme y soberana confianza<br/>muestran su origen celestial.”</blockquote>"),
+]
 BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
     # "Betelguese" -> "Betelgeuse".
     ("Betelguese", "Betelgeuse"),
@@ -8687,4 +8720,19 @@ BODY_CORRECTIONS.setdefault("things-as-they-are", {})["wrapped_blocks"] = [
     ('<b>. . . . . . .</b>', 'p'),
     ('<b>. . . . . . .</b>', 'p'),
     ('<b>. . . . . . .</b>', 'p'),
+]
+
+# --- ministry-of-intercession: a display line flattened to loose text ---------
+# Gutenberg #29296 closes the opening poem with its author, "F. R. Havergal.",
+# set as a `<div class="rt">`. The importer handed the div to the sanitizer,
+# which unwrapped it, so the name shipped run into the poem's last line. The
+# importer keeps it now (`ingest.display_line`, PR #3355) as its own `<p>` —
+# the poem above it stays loose text either way — and `wrap_loose_blocks` puts
+# it back in that block, byte for byte (`tests_english_audit` checks it
+# against the importer). Every edition at once: `tests_translation_markup` pins
+# the tag sequence. The name is the same string in en, es, fr, pt and sw, so
+# one entry serves all five; hi spells it in Devanagari.
+BODY_CORRECTIONS.setdefault("ministry-of-intercession", {})["wrapped_blocks"] = [
+    ("F. R. Havergal.", "p"),  # en es fr pt sw
+    ("एफ़. आर. हैवरगल।", "p"),  # hi
 ]
