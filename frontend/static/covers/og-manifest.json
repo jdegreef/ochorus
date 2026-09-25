@@ -1574,6 +1574,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/absolute-surrender": {
+			"ground": "450a82d88d926b869f771cd08e1fa6c105facc09e8ed11152e22d532ba5688cb",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"hi/all-of-grace": {
 			"ground": "78fae5e14193a81d07daeff0d5f7a217d67ae78bc7b6ca5b3c773a1b75b87f23",
 			"style": "revival",
