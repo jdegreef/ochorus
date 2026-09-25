@@ -754,6 +754,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"es/pilgrims-progress": {
+			"ground": "3bc426aabc4fe55ad7e13551bb0f3e69fe020e5623a79d38219bd4b92a14f39c",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"es/possibilities-of-prayer": {
 			"ground": "8fe3b2647d6276f4fa3e94b217c2fc2f11df805a6a72b1510041949240019d9d",
 			"style": "devotional",
