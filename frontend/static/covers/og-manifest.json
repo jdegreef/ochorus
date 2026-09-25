@@ -254,6 +254,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"ar/men-who-tended-the-flock-2": {
+			"ground": "72895d05f4c94b5f689bf986a21e3b831e1c8cadb627b7645a0ef0bbd2a550de",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ar/power-through-prayer": {
 			"ground": "e04c38459dc7643bdd19628cbd9fb4fb149672d267063e1a0494303afd8b44a8",
 			"style": "devotional",
@@ -283,6 +293,16 @@
 			"scrim": 0.45,
 			"layout": "duotone/indigo",
 			"bar": 0.05
+		},
+		"ar/rise-up-men-of-god-2": {
+			"ground": "fccef2e782dd899e510d91e8c007ded6f397cbf3fe1dd2da56c771895ebd3809",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
 		},
 		"ar/stepping-stones-2": {
 			"ground": "0f4d1d9dafbc823a70beff8be4112fbbcb26574bbc4c545843bd670e30897b1d",
@@ -352,6 +372,16 @@
 			"art": true,
 			"scrim": 0.95,
 			"layout": "diagonal/ochre",
+			"bar": 0
+		},
+		"ar/the-secret-of-guidance": {
+			"ground": "2ed8745f175f68bee49d4f200a797d58cb36555e574afee3066ee061c3936144",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
 			"bar": 0
 		},
 		"ar/the-unselfishness-of-god": {
