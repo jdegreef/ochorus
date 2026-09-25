@@ -3164,6 +3164,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"sw/confessions": {
+			"ground": "d9e0aeb612ff52306a0f6e387f7af8121ddbd73e4bd0844f4991c74d7772d8be",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"sw/days-of-heaven-upon-earth": {
 			"ground": "ce0c94b9e37f6cd7dc116c1e640202290b71f0033cd5a175a7711cd964749611",
 			"style": "revival",
