@@ -36,6 +36,12 @@ in `backend/library/book_export.py`, in this order:
   `bio`. Other languages: an `AuthorTranslation` with `bio` (see
   `write-biography` / `approve_author_translation`). Without one the book simply
   has no About-the-Author page — decide if that's acceptable.
+- **Is the book actually public domain?** A living author's book (Gareth Evans,
+  Growing in Wisdom) still carries `source_type=public_domain` — the schema has no
+  licensed value — so the colophon would CLAIM public domain. Give every edition an
+  `attribution` opening with "©" (e.g. "© Gareth Evans. Shared free on Ochorus with
+  the author's permission."); `book_export.is_in_copyright` then prints that line
+  instead of the public-domain one. The wording is the founder's call — ask.
 - A translation still `ai_unreviewed` exports with the "awaiting review" notice
   in its colophon. That's correct; don't strip it.
 
@@ -49,7 +55,13 @@ in `backend/library/book_export.py`, in this order:
    more, author_title, full_bio, ochorus_title, ochorus_html) — Ochorus's own
    prose, no English fallback. `PilotTests` fails otherwise.
 3. Set the edition's fixture `pdf_url` to `/pdfs/<export_filename>` —
-   `<slug>.pdf` for English, `<slug>.<lang>.pdf` otherwise.
+   `<slug>.pdf` for English, `<slug>.<lang>.pdf` otherwise. Some fixture rows
+   have NO `pdf_url` key at all (older serializer) — insert it after `cover_url`
+   rather than assuming a replace will hit. `PilotTests` fails when an exportable
+   edition has no `pdf_url` or its file is missing.
+   Non-English back matter lives in `backend/library/export_strings.json`
+   (merged into `STRINGS`); its vision line is the site catalogue's
+   `about_vision_quote`.
 
 ## 3. Generate (in your worktree)
 
@@ -57,6 +69,7 @@ in `backend/library/book_export.py`, in this order:
 cd backend
 cp ../../ochorus/backend/.env .env           # sqlite dev DB; no prod creds needed
 uv run python manage.py migrate -v0 && uv run python manage.py seed_books -v0
+uv run python manage.py seed_author_translations -v0   # else translations get NO bio page
 PUBLIC_SITE_URL=https://ochorus.com uv run python manage.py export_book <slug> --language <lang> --format pdf
 PUBLIC_SITE_URL=https://ochorus.com uv run python manage.py export_book <slug> --language <lang> --format epub --out /tmp/<slug>.epub
 ```
@@ -90,19 +103,37 @@ PUBLIC_SITE_URL=https://ochorus.com uv run python manage.py export_book <slug> -
 ## 5. Ship + verify live
 
 PR (diff = export_policy line, fixture `pdf_url`, the PDF, the bundled cover,
-any STRINGS) → merge on green → **two deploys**: the API (EPUB) lands in ~2–3
-min, the web build (PDF file + "Free download: EPUB · PDF" row) ~20–40 min.
+any STRINGS) → merge on green → **two deploys**, and they land far apart:
+
+- **API** (~2–3 min): the EPUB endpoint, and the book API's `pdf_url`/`epub_url`.
+- **Web** (~20–40 min, longer if queued): the PDF file under `/pdfs/` and the
+  book page. The web service builds ONE deploy at a time — if a build is already
+  running when you merge, yours waits for it (#3378: PDFs 404'd for ~35 min while
+  EPUBs already worked). Check before worrying:
+  `gh api repos/jdegreef/ochorus/deployments --jq '.[:6][]|.sha[:8]+" "+.environment'`
+  — no `ochorus-web` row for your merge commit yet = still queued, not broken.
 
 ```bash
+# EPUB (API)
 curl -s -o /tmp/e.epub "https://api.ochorus.com/api/library/books/<slug>/download.epub?language=<lang>"
 unzip -l /tmp/e.epub | grep -E "cover|about-author"
-curl -s -o /dev/null -w "%{http_code} %{content_type}\n" https://ochorus.com/pdfs/<file>.pdf
-curl -s https://ochorus.com/<lang-prefix>/books/<slug>/ | grep -oE 'href="[^"]*(download\.epub|\.pdf)[^"]*"'
+# PDF file (web) — compare bytes to what merged, not just the status code
+curl -s https://ochorus.com/pdfs/<file>.pdf | md5; git show origin/main:frontend/static/pdfs/<file>.pdf | md5
+# Book page (web): the links live in the page's INLINED DATA, not its markup
+curl -s https://ochorus.com/<lang-prefix>/books/<slug>/ | grep -c 'download.epub?language=<lang>'
+curl -s https://ochorus.com/<lang-prefix>/books/<slug>/ | grep -o 'pdf_url[^,]*'
 ```
 
-Grep for the **hrefs**, not the word "epub" — `datePublished` contains it and
-once produced a false "live". Apple Books caches a book's cover: re-download a
-fresh copy to see a fix.
+**The download links are NOT in the page's HTML.** Since #3277 they sit in the
+book header's **Download** menu (`BookDownloadMenu`: Download for offline ·
+EPUB — For e-readers · PDF — For printing), which renders its links only when
+opened. A grep for `href="…download.epub"` / `href="…/pdfs/…"` in the page
+therefore finds nothing even when everything works — it reported "0 links" on
+all of Gareth's pages while they were fine. Check `pdf_url`/`epub_url` in the
+inlined `data-sveltekit-fetched` JSON (above), and for a final look open the
+menu in a browser. Likewise never grep the word "epub": `datePublished`
+contains it. Apple Books caches a book's cover: re-download a fresh copy to see
+a fix.
 
 ## Gotchas
 
@@ -113,4 +144,13 @@ fresh copy to see a fix.
   it has no title. `cover_image_url` handles it; keep it that way.
 - **Page order is asserted** (`test_a_short_biography_follows_about_ochorus`);
   moving a page means updating that test deliberately.
+- **RTL (Arabic).** English runs inside an RTL paragraph — the © line, URLs —
+  get their "©", full stop and trailing "/" flung to the wrong end by bidi. The
+  export marks the © line `dir="auto"` and every link `dir="ltr"`; keep that on
+  anything new, and LOOK at an Arabic colophon (text extraction reorders RTL, so
+  a grep "failure" there can be a false alarm — render the page).
+- **Batch runs.** Loop `export_book` over editions with an OK/FAIL log (≈10 s per
+  PDF); then check every colophon: `© …` present and no public-domain phrase in
+  any language.
+- **Repo weight.** Each PDF is ~1–2 MB committed; 38 of Gareth's added ~64 MB.
 - **Life dates** print `1847–1929`; a living author prints `1938–`.

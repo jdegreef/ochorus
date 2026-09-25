@@ -3441,7 +3441,7 @@ HUDSON_TAYLOR = [
         "slug": "hudson-taylor-d8fd45a2",
         "text": "If we are faithful to God in little things, we shall gain experience and strength that will be helpful to us in the more serious trials of life.",
         "chapter": ("a-retrospect", 3),
-        "paragraph": 11,
+        "paragraph": 12,
     },
     {
         "slug": "hudson-taylor-4d77cbd9",
@@ -3453,19 +3453,19 @@ HUDSON_TAYLOR = [
         "slug": "hudson-taylor-a0b9c9a7",
         "text": "The habit of coming in faith to Him is incompatible with unmet hunger and thirst.",
         "sermon": "unfailing-springs",
-        "paragraph": 12,
+        "paragraph": 13,
     },
     {
         "slug": "hudson-taylor-8f87ae30",
         "text": "GOD'S overflow more than supplies the lack of individual capacity.",
         "sermon": "unfailing-springs",
-        "paragraph": 13,
+        "paragraph": 14,
     },
     {
         "slug": "hudson-taylor-cdcd2da5",
         "text": "If the whole resources of the Church of God were well utilised, how much more might be accomplished!",
         "chapter": ("a-retrospect", 2),
-        "paragraph": 12,
+        "paragraph": 13,
     },
     {
         "slug": "hudson-taylor-a2017a32",

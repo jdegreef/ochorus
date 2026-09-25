@@ -53,6 +53,7 @@ from library.models import Author, Book, Chapter, Series, SeriesTranslation
 BOOK_FIELDS = (
     "title",
     "subtitle",
+    "cover_title",
     "description",
     "about_html",
     "qa",

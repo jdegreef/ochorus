@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-24: Arabic bios — jeanne-guyon (#925), christmas-evans (#1653),
+// john-newton (#1654), e-m-bounds (#1655), j-c-ryle (#1665), alexander-maclaren (#1666),
+// robert-murray-mcheyne (#1667), charles-finney (#1668). Rebuilds /ar/authors/<slug> with the bio.
 // prerender refresh 2026-09-24: #3324 made English bio/bio_html fixture-wins, and its deploy
 // shipped 29 authors' stuck fixes (#1920's trimmed card bios, #1855's "Holy Spirit"). That PR
 // was backend-only, so this touch re-prerenders the author pages and /biographies cards.
@@ -221,6 +224,9 @@
 import { getAuthorWithLang, listAuthors, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
+import { localizeHref } from '$lib/href';
+import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
+import { redirect } from '@sveltejs/kit';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // Trailing-slash canonical -> prerenders to authors/<slug>/index.html, which the
@@ -234,6 +240,8 @@ export const entries: EntryGenerator = async () => {
 	const slugs = new Set<string>();
 	for (const b of books) slugs.add(b.author.slug);
 	for (const a of authors) slugs.add(a.slug);
+	// The house imprint is not a person: its shelf is /originals, not a page here.
+	slugs.delete(ORIGINALS_SLUG);
 	return [...slugs].map((slug) => ({ slug }));
 };
 
@@ -425,7 +433,14 @@ export const entries: EntryGenerator = async () => {
 // Bonhoeffer, John Stott, Timothy Keller, Loren Cunningham).
 //
 // Prerender refresh 2026-09-23 (queue job #2563): sw Elisabeth Elliot bio.
+//
+// Prerender refresh 2026-09-24 (queue jobs #2933/#2941/#2947/#2951): es bios for
+// Billy Graham, C. T. Studd, John Calvin, John Hyde, plus Rees Howells, William
+// Carey, Corrie ten Boom and A. W. Tozer.
 export const load: PageLoad = async ({ params, fetch }) => {
+	// Old links and bookmarks to the imprint's author page land on its shelf.
+	// (render.yaml 301s the English URL; this covers the localized ones.)
+	if (params.slug === ORIGINALS_SLUG) redirect(308, localizeHref(ORIGINALS_PATH));
 	// The RESOLVED language, not the requested one: getAuthor falls back to
 	// English on a 404, and the reader labels the bio's prose with this.
 	const { data: author, language } = await orNotFound(() =>

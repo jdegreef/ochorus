@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "john-newton",
+ "language": "ar",
+ "job_issue": 1654,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "1 Corinthians 15:10",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text — ebible arb_vdv, public domain"
+  }
+ ]
+}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { shareCard, shareImage } from '$lib/coverArt';
+	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgress } from '$lib/progress';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -193,9 +194,10 @@
 			// book on this shelf; without these the page answers to one name only.
 			alternateName: book.alternate_titles?.length ? book.alternate_titles : undefined,
 			author: {
-				'@type': 'Person',
+				// The imprint is a publisher, not a person (see $lib/originals).
+				'@type': authorLdType(book.author.slug),
 				name: book.author.name,
-				url: absUrl(localizeHref(`/authors/${book.author.slug}`)),
+				url: absUrl(localizeHref(authorPath(book.author.slug))),
 				// The identifiers the author page asserts. Without them this Person
 				// is a bare name and the book inherits none of the entity work done
 				// on /authors — the two say "Athanasius" and hope a search engine
@@ -359,7 +361,9 @@
 			<BookCover {book} priority />
 		</div>
 
-		<div class="flex-1">
+		<!-- The action row's container (`.action-host`): it picks strip vs row by
+		     this column's width. -->
+		<div class="action-host min-w-0 flex-1">
 			<p class="eyebrow mb-1 text-muted">
 				{t('search.typeBook')} · {book.chapter_count}
 				{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(
@@ -401,7 +405,7 @@
 			     sits at an {#if} boundary and gets compiler-trimmed, which rendered
 			     "Booth· 1829" with the space missing. -->
 			<p class="mt-2 text-body">
-				<a href={localizeHref(`/authors/${book.author.slug}`)} class="text-accent hover:underline"
+				<a href={localizeHref(authorPath(book.author.slug))} class="text-accent hover:underline"
 					>{book.author.name}</a
 				>{#if years}<span class="text-muted">{` · ${years}`}</span>{/if}
 			</p>
@@ -475,19 +479,19 @@
 			<!-- Everything else is one quiet row of five: keep it (Save, a shelf),
 			     take it away (one Download menu for offline / EPUB / PDF), pass it on
 			     (Share) and look inside (Search). Share and Search are icon-only on
-			     desktop (`.icon-sm`); below `sm` the `.action-strip` becomes design
+			     desktop (`.icon-in-row`); when narrow the `.action-strip` becomes design
 			     B's labelled icon strip. -->
 			<div class="action-strip mt-3">
 				<FavoriteButton kind="book" slug={book.slug} showLabel />
 				<AddToShelfButton slug={book.slug} shortLabel />
 				<BookDownloadMenu {book} />
-				<div class="icon-sm">
+				<div class="icon-in-row">
 					<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
 				</div>
 				<!-- Search inside this book: the real search, scoped to the book. -->
 				<a
 					href={localizeHref(scopedSearchHref('book', book.slug))}
-					class="btn btn-sm btn-ghost icon-sm"
+					class="btn btn-sm btn-ghost icon-in-row"
 					aria-label={t('search.inBook')}
 					title={t('search.inBook')}
 				>

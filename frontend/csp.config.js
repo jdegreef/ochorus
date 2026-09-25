@@ -42,7 +42,7 @@ export const cspDirectives = {
 		// build-invariant) and guarded by csp.test.ts, which fails the build if
 		// app.html changes and this is not updated — rather than silently blocking
 		// the theme boot in production.
-		'sha256-HQdut0h5rb1BYpIJJaag+S8//ECV5oveF+g3DNlsnYY=',
+		'sha256-DtEq9iS9eaAu4vsACfAB1Cm79UkCl9ze+bvjSv19/U0=',
 		// SvelteKit injects onload/onerror="this.__e=event" inline event handlers
 		// to replay pre-hydration load/error events. CSP hashes don't cover
 		// event-handler ATTRIBUTES — 'unsafe-hashes' does — and this admits exactly

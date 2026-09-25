@@ -34,6 +34,9 @@ class SermonEntry:
     source: str  # "ccel" | "gutenberg" | "web" | "sermonindex"
     source_ref: str  # ccel/web/sermonindex: full URL of the page; gutenberg: ebook id
     section: str = ""  # gutenberg: the heading text of the sermon, at any level
+    # gutenberg: the heading tag ("h1".."h4") to match, when `section` names
+    # more than one heading (a volume titled after one of its studies).
+    section_level: str = ""
     scripture_ref: str = ""  # override; parsed from the page when empty
     preached_on: str = ""  # ISO date override; parsed from the page when empty
     body_starts: str = ""  # web: literal text the sermon's first paragraph starts with
@@ -274,6 +277,7 @@ SERMONS: list[SermonEntry] = [
         "gutenberg",
         "57109",
         section="Unfailing Springs",
+        section_level="h1",  # not the <h2> repeat: the epigraph sits between
         scripture_ref="John 4:14",
     ),
     # From "A Ribband of Blue" (1899), a collection of eight self-contained
@@ -297,6 +301,7 @@ SERMONS: list[SermonEntry] = [
         "gutenberg",
         "23438",
         section="A Ribband of Blue",
+        section_level="h3",  # the <h1> of that name is the whole volume
         scripture_ref="Numbers 15:38-39",
     ),
     SermonEntry(

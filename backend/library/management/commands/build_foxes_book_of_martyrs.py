@@ -138,6 +138,37 @@ CHAPTERS: list[tuple[str, str, str]] = [
      "fox122", "Samuel J. Mills, when a student in Williams College"),
 ]
 
+# Chapter XVI, Queen Mary's reign, is ~46,000 words — a book in itself, and
+# far past a day's reading. It is split at its own section headings into eight
+# parts of ~5–7k words, each opening where one martyr's account begins, so the
+# reader's chapter list names who each part is about. (heading text after
+# `_join_wrapped_headings`; None = the top of the chapter.)
+SPLITS: dict[str, list[tuple[str, str | None]]] = {
+    "fox116": [
+        ("Under Queen Mary: Lady Jane Grey, John Rogers, Lawrence Saunders and John Hooper",
+         None),
+        ("Under Queen Mary: Rowland Taylor, Robert Farrar, Rawlins White and Others",
+         "The Life and Conduct of Dr. Rowland Taylor of Hadley"),
+        ("Under Queen Mary: John Bradford, Bishops Ridley and Latimer, and John Philpot",
+         "Rev. John Bradford, and John Leaf, an Apprentice"),
+        ("Under Queen Mary: Archbishop Cranmer",
+         "Archbishop Cranmer"),
+        ("Under Queen Mary: Julius Palmer, Joan Waste, Joyce Lewes and Others",
+         "Hugh Laverick and John Aprice"),
+        ("Under Queen Mary: Cicely Ormes, John Rough, Cuthbert Symson and Roger Holland",
+         "Mrs. Cicely Ormes"),
+        ("Under Queen Mary: Mrs. Prest and Others",
+         "Mrs. Prest"),
+        ("Under Queen Mary: Dr. Sands, the Princess Elizabeth, and God's Judgments",
+         "Deliverance of Dr. Sands"),
+    ],
+}
+
+_WRAPS_AFTER_PERIOD = ("and Reader of St.", "R. Wright and W.")
+
+# A line of dialogue the source set as a heading (Julius Palmer's examination).
+_DEMOTED = {'Sir Richard: "How may that be?"'}
+
 # The trailing "Chapter N" / "Back to Index of the Book" links.
 _NAV = re.compile(r'<a\s+href="(?:fox1\d\d\.htm|index\.html)"', re.I)
 
@@ -173,7 +204,82 @@ def _normalise(html: str) -> str:
         c.name = "i"
     for a in s.find_all("address"):
         a.name = "blockquote"
+    _join_wrapped_headings(s)
     return str(s)
+
+
+def _heading_text(el) -> str:
+    return re.sub(r"\s+", " ", el.get_text(" ", strip=True)).strip()
+
+
+def _next_block(el):
+    sib = el.next_sibling
+    while sib is not None and not getattr(sib, "name", None) and not str(sib).strip():
+        sib = sib.next_sibling
+    return sib
+
+
+def _join_wrapped_headings(s) -> None:
+    """Rejoin a title the source broke across headings.
+
+    CCEL set a long section title one printed line per heading ("John Rogers,
+    Vicar of St. Sepulchre's, and Reader of St." / "Paul's, London"), so the
+    reader showed two headings where the book has one. A heading that ends
+    without terminal punctuation (or in one of `_WRAPS_AFTER_PERIOD`) continues
+    into the same-level heading after it — unless that next "heading" is a full
+    sentence (ch. XXI sets "This was
+    known at Nismes on the thirteenth of April, 1814." under a title), which is
+    body prose and becomes a paragraph.
+    """
+    for h in list(s.find_all(["h3", "h4"])):
+        if h.parent is None:
+            continue  # already merged into its predecessor
+        if _heading_text(h) in _DEMOTED:
+            h.name = "p"
+            continue
+        while True:
+            nxt = _next_block(h)
+            if nxt is None or getattr(nxt, "name", None) != h.name:
+                break
+            # Two titles break after an abbreviation or an initial, which
+            # reads as a sentence end; they are named, not inferred, so a
+            # future title ending in "Dr." or "I." is never glued to the next.
+            text_so_far = _heading_text(h)
+            if re.search(r"[.!?:;\"”]$", text_so_far) and not text_so_far.endswith(_WRAPS_AFTER_PERIOD):
+                break
+            text = _heading_text(nxt)
+            if text.endswith(".") and len(text.split()) > 8:
+                nxt.name = "p"
+                break
+            h.append(" ")
+            for child in list(nxt.contents):
+                h.append(child)
+            nxt.decompose()
+
+
+def _split(body: str, parts: list[tuple[str, str | None]]) -> list[tuple[str, str]]:
+    """Cut one chapter body at the named section headings."""
+    s = BeautifulSoup(body, "html.parser")
+    blocks = [b for b in s.contents if getattr(b, "name", None) or str(b).strip()]
+    starts = {}
+    for i, b in enumerate(blocks):
+        if getattr(b, "name", None) in ("h3", "h4"):
+            starts.setdefault(_heading_text(b), i)
+    cuts = []
+    for _title, heading in parts:
+        if heading is None:
+            cuts.append(0)
+        elif heading in starts:
+            cuts.append(starts[heading])
+        else:
+            raise CommandError(f"split heading {heading!r} not found — the page changed.")
+    if cuts != sorted(cuts) or len(set(cuts)) != len(cuts):
+        raise CommandError("split headings are out of order.")
+    out = []
+    for n, (title, _) in enumerate(parts):
+        end = cuts[n + 1] if n + 1 < len(cuts) else len(blocks)
+        out.append((title, "".join(str(b) for b in blocks[cuts[n]:end])))
+    return out
 
 
 def _chapters() -> list[tuple[str, str]]:
@@ -181,7 +287,11 @@ def _chapters() -> list[tuple[str, str]]:
     for title, name, starts in CHAPTERS:
         raw = fetch(f"{FILES_URL}{name}.htm")
         body = clean_fragment(_normalise(_cut(raw, starts)))
-        out.append((title, re.sub(r"(?:\s*<hr/>)+\s*$", "", body)))  # the closing rule
+        body = re.sub(r"(?:\s*<hr/>)+\s*$", "", body)  # the closing rule
+        if name in SPLITS:
+            out.extend(_split(body, SPLITS[name]))
+        else:
+            out.append((title, body))
     return out
 
 

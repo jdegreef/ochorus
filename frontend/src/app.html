@@ -48,6 +48,14 @@
 					tcs[i].setAttribute('content', colors[applied] || '#faf6ef');
 				}
 			} catch (e) {}
+			try {
+				// The site style, likewise before first paint — its own try, so a
+				// theme failure above cannot skip it. Mirrors $lib/siteFont.svelte.ts;
+				// the CSS is $lib/site-fonts.css.
+				var sf = localStorage.getItem('ochorus:site-font');
+				if (sf === 'classic' || sf === 'hyperlegible')
+					document.documentElement.setAttribute('data-site-font', sf);
+			} catch (e) {}
 		</script>
 		%sveltekit.head%
 	</head>

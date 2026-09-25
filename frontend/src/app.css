@@ -104,6 +104,28 @@
 @import '@fontsource/pt-sans/400.css';
 @import '@fontsource/pt-sans/700.css';
 
+/* The reader's other faces (FONT_STACK in readerPrefs), upright and italic —
+   they set whole books, and prose has emphasis. Fetched only once chosen, like
+   the covers. EB Garamond's upright is already imported above. */
+@import '@fontsource-variable/eb-garamond/wght-italic.css';
+@import '@fontsource-variable/literata/wght.css';
+@import '@fontsource-variable/literata/wght-italic.css';
+@import '@fontsource-variable/source-serif-4/wght.css';
+@import '@fontsource-variable/source-serif-4/wght-italic.css';
+@import '@fontsource-variable/lora/wght.css';
+@import '@fontsource-variable/lora/wght-italic.css';
+@import '@fontsource-variable/merriweather/wght.css';
+@import '@fontsource-variable/merriweather/wght-italic.css';
+@import '@fontsource-variable/atkinson-hyperlegible-next/wght.css';
+@import '@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css';
+@import '@fontsource/libre-baskerville/400-italic.css';
+@import '@fontsource/libre-baskerville/700.css';
+
+/* The site styles. Their own file so the share-card script and the stack
+   gates, which read this file's --font-* declarations as the house stack,
+   never mistake a style for it. */
+@import './lib/site-fonts.css';
+
 /* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
    text-text border-border` respond to the runtime [data-theme] switch. */
 @theme inline {
@@ -123,10 +145,6 @@
 	--color-warning: var(--warning);
 	--radius-card: 12px;
 	--radius-sm: 9px;
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', Georgia,
-		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari',
-		'PT Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
 	/* The type scale, as Tailwind utilities. Without this the scale existed only
 	   as --fs-* custom properties, so `text-small` / `text-body` / `text-h1..h3`
@@ -163,6 +181,18 @@
 	--fs-h2: 1.563rem;
 	--fs-h1: 1.953rem;
 	--fs-display: clamp(2rem, 5vw, 2.75rem);
+}
+
+/* The two font tokens, in a PLAIN @theme rather than the `inline` one above.
+   `inline` bakes the literal stack into the `font-display` / `font-sans`
+   utilities, so the ~100 elements that use them could never follow a site
+   style (site-fonts.css) — only the ones that say var(--font-display) would.
+   Plain, the utilities emit `var(--font-display)` and follow the token. */
+@theme {
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', Georgia,
+		'Times New Roman', serif;
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari',
+		'PT Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 /* The cover faces, named once — beside the @import that loads them, so adding
@@ -373,12 +403,14 @@
 		color-scheme: light;
 	}
 	html {
-		font-family: var(--font-sans);
 		font-optical-sizing: auto;
 		-webkit-font-smoothing: antialiased;
 		text-rendering: optimizeLegibility;
 	}
+	/* On body, not html: a site style re-points --font-sans on body
+	   (site-fonts.css), and html would compute it against the house stack. */
 	body {
+		font-family: var(--font-sans);
 		background: var(--bg);
 		color: var(--text);
 		min-height: 100%;
@@ -642,20 +674,29 @@
 		padding: 0.4rem;
 		line-height: 1;
 	}
-	/* A row of secondary actions. A plain wrapping row from sm up; on a phone,
-	   equal columns of icon-over-label buttons under a hairline, so every action
-	   stays one tap away instead of wrapping onto three lines (the book page). */
+	/* A row of secondary actions (the book page). Sized by the room it actually
+	   has, not the viewport: its host column is a container, and below 560px —
+	   a phone, a tablet's column beside the cover, a narrow page-width setting,
+	   or a long translation — it becomes equal columns of icon-over-label
+	   buttons under a hairline, so every action stays one tap away instead of
+	   wrapping. From 560px it is a plain row, which fits every locale's labels. */
+	.action-host {
+		container: action-host / inline-size;
+	}
 	.action-strip {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.5rem;
 	}
-	@media (max-width: 639.98px) {
+	@container action-host (max-width: 559.98px) {
 		.action-strip {
 			display: grid;
 			grid-auto-flow: column;
-			grid-auto-columns: minmax(0, 1fr);
+			/* Each column at least as wide as its label, the rest shared out:
+			   equal fifths clipped a long one ("Завантажити" on a phone) while
+			   "Пошук" beside it had room to spare. */
+			grid-auto-columns: minmax(min-content, 1fr);
 			gap: 0;
 			padding-top: 0.6rem;
 			border-top: 1px solid var(--border);
@@ -681,11 +722,30 @@
 			width: 20px;
 			height: 20px;
 		}
+		.action-strip .label-long,
+		.action-strip .shelf-count {
+			display: none;
+		}
 	}
-	/* Icon-only from sm up: the button's `.btn-label` gives way, its
-	   aria-label/title stays the accessible name. */
-	@media (min-width: 640px) {
-		.icon-sm .btn-label {
+	/* The smallest phones (~320px) leave the strip ~240px, short of five long
+	   single-word labels (fr "Enregistrer · Télécharger · Rechercher"). There
+	   the strip borrows the page gutter (`.page-col`'s px-5), full-bleed like a
+	   tab bar, and its labels drop to the micro step. */
+	@container action-host (max-width: 279.98px) {
+		.action-strip {
+			margin-inline: -1.25rem;
+		}
+		.action-strip .btn:not(.account-menu *) {
+			padding-inline: 0;
+			font-size: var(--fs-micro);
+		}
+	}
+	/* In the row: icon-only buttons lose their `.btn-label` (aria-label/title
+	   stays the accessible name), and a button with a short and a long label
+	   shows the long one. */
+	@container action-host (min-width: 560px) {
+		.action-strip .icon-in-row .btn-label,
+		.action-strip .label-short {
 			display: none;
 		}
 	}
@@ -779,7 +839,9 @@
      real paragraph, and no later paragraph gets one. */
 article:not(.paged) .reading > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
 	float: inline-start;
-	font-family: var(--font-display);
+	/* The house serif, not --font-display: that follows the site style
+	   (site-fonts.css), and an initial is part of the page, not the chrome. */
+	font-family: var(--house-display);
 	font-size: 3.1em;
 	line-height: 0.86;
 	font-weight: 600;
@@ -826,7 +888,7 @@ article:not(.paged) .reading > p:first-of-type:not(:lang(ar)):not(:lang(hi))::fi
 }
 .reading h2,
 .reading h3 {
-	font-family: var(--font-display);
+	font-family: var(--house-display); /* see the initial above */
 	margin: 1.8em 0 0.7em;
 	line-height: 1.25;
 }

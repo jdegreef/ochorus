@@ -16,8 +16,10 @@
 	 * (localStorage), so on the prerendered page it starts as a plain button
 	 * and fills in on hydration.
 	 */
-	// `shortLabel` gives the book page's phone icon strip a one-word label
-	// ("Shelf") below `sm`, where "Add to a shelf" can't fit a fifth of a row.
+	// `shortLabel` renders both labels: the `.action-strip` shows "Shelf" when it
+	// is an icon strip (no room for "Add to a shelf" in a fifth of it) and the
+	// long label when it is a row. Without an .action-strip, CSS shows both, so
+	// only pass it inside one.
 	let { slug, shortLabel = false }: { slug: string; shortLabel?: boolean } = $props();
 	const t = i18n.t;
 
@@ -57,7 +59,7 @@
 	>
 		<Icon name="layers" size={15} />
 		{#if shortLabel}
-			<span class="hidden sm:inline">{t('shelves.addTo')}</span><span class="sm:hidden"
+			<span class="label-long">{t('shelves.addTo')}</span><span class="label-short"
 				>{t('shelves.short')}</span
 			>
 		{:else}
@@ -81,12 +83,6 @@
 </div>
 
 <style>
-	/* The icon strip has no room for the count. */
-	@media (max-width: 639.98px) {
-		:global(.action-strip) .shelf-count {
-			display: none;
-		}
-	}
 	.shelf-count {
 		margin-inline-start: 0.15rem;
 		font-size: var(--fs-eyebrow);

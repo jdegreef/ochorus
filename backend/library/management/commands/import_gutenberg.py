@@ -3,7 +3,9 @@
 Gutenberg HTML structure varies per book, so we pick the dominant chapter
 divider empirically: a ``div.chapter`` wrapper if present, else the heading
 level (h2..h5) that occurs most often. Front matter before the first chapter
-(title page, contents) is dropped. PG license boilerplate is stripped.
+(title page, contents) is dropped. PG license boilerplate is stripped, and so
+is the back of the book: transcriber's notes, and everything after a closing
+colophon or a publisher's catalogue imprint.
 
     python manage.py import_gutenberg                 # all Gutenberg books
     python manage.py import_gutenberg humility        # one book by slug
@@ -43,6 +45,19 @@ _TINY_SECTION_WORDS = 300
 # The outermost verse container, for the fallback walk. Not `ingest._VERSE_CLASS`:
 # that also matches a stanza, which is a poem's part, not a poem.
 _POEM = re.compile(r"poem|poetry|lg-container")
+# The class PGDP transcribers put on the box holding their notes, as a whole
+# class TOKEN. A substring won't do: `*=tnote` is inside every `footnote`, and
+# footnotes are the author's. Across the library's 27 Gutenberg sources the
+# three spellings mark 11 boxes and every one is a transcriber's note (errata,
+# cover credit, "larger version of this map"); #65066's `tnotes` endnote shipped
+# as Edwards's closing paragraphs because its heading was a centred div the
+# importer never collected, and the sw edition translated it as his.
+_TRANSCRIBER_NOTE = re.compile(r"^(?:tnotes?|transnote)$")
+# Catalogued Gutenberg books whose layout this importer can't chapter, built by
+# their own command instead. Skipped here so a stray run can't re-chapter them.
+BUILT_ELSEWHERE = {
+    "george-muller-of-bristol": "build_george_muller_of_bristol",
+}
 
 
 def fetch_html(book_id: str) -> str:
@@ -83,6 +98,10 @@ def content_root(html: str):
         html = after[1]
     s = soup(html)
     for el in s.select("[class*=pg-boilerplate], [class*=pgheader], [class*=pg-footer]"):
+        el.decompose()
+    # The transcriber's own notes — errata, "missing periods silently added" —
+    # are the etext's apparatus, not the work. See _TRANSCRIBER_NOTE.
+    for el in s.find_all(class_=_TRANSCRIBER_NOTE):
         el.decompose()
     # Gutenberg wraps the work in a body or a single content div.
     return s.body or s
@@ -279,6 +298,25 @@ def _catalogue_start(sections: list[tuple[str, str]]) -> int | None:
     return None
 
 
+# The printer's colophon, standing alone as a block. What follows it in the LAST
+# section is the back of the printed book, not the work: #73032 ran Bounds's
+# final paragraph straight into it and then nine pages of Revell's catalogue,
+# which `_catalogue_start` never sees because no heading divides them from the
+# chapter. The whole block must be the colophon, so a sentence that merely
+# mentions where a book was printed can't truncate anything.
+_COLOPHON = re.compile(
+    r"<p>(?:<[bi]>)?\s*Printed in (?:the )?(?:United States(?: of America)?|U\.\s?S\.\s?A\.)"
+    r"\.?\s*(?:</[bi]>)?</p>",
+    re.I,
+)
+
+
+def _cut_at_colophon(body: str) -> str:
+    """The last section's body up to a standalone colophon block, if it has one."""
+    m = _COLOPHON.search(body)
+    return body[: m.start()].rstrip() if m else body
+
+
 _MONTHS = (
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
@@ -332,7 +370,12 @@ def extract_chapters(html: str) -> list[tuple[str, str]]:
     # both when there is none and at index 0 — a whole work is never a catalogue,
     # so 0 means leave it be, never slice the book to nothing.
     cut = _catalogue_start(merged)
-    return merged[:cut] if cut else merged
+    if cut:
+        merged = merged[:cut]
+    if merged:
+        title, body = merged[-1]
+        merged[-1] = (title, _cut_at_colophon(body))
+    return merged
 
 
 class Command(BaseCommand):
@@ -353,6 +396,9 @@ class Command(BaseCommand):
                 raise CommandError(f"Not Gutenberg-sourced: {', '.join(sorted(wrong))}")
 
         for entry in entries:
+            if entry.slug in BUILT_ELSEWHERE:
+                self.stdout.write(f"→ {entry.title}: skipped — built by `{BUILT_ELSEWHERE[entry.slug]}`")
+                continue
             self._import_one(entry)
 
     def _import_one(self, entry: BookEntry):

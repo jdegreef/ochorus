@@ -267,8 +267,10 @@ Reported, not fixed
   the fixture-vs-prod note above) — a title already corrected in the fixture can
   still be wrong on prod, so verify those against the LIVE API, not just the file.
   The fix is the same metadata migration (Torrey `men-of-prayer-2` ch.6, #2459 →
-  `0152`, model on `0121_recase_chapter_titles`) plus a frontend touch to
-  re-prerender the page. 2026-09-16 sweep found no other cases.
+  `0152`, model on `0121_recase_chapter_titles`). A migration under
+  `migrations/` is not a content root, so after the API deploy is live, add a
+  follow-up marker per `frontend/prerender-refresh/README.md` to re-prerender
+  the page. 2026-09-16 sweep found no other cases.
 - **Verifying a split-word sweep with a stranded-LETTER scan, or with the
   audit.** A pervasive-spacing repair (`feasting-at-the-table`, PRs #1356/#1370)
   is a hand-built list, and the audit is no safety net: `audit_english` has no
@@ -363,6 +365,34 @@ Reported, not fixed
   means. Anchor each on its `<p>` so it cannot touch `body_text`, and add the
   key to `test_no_replacement_pair_is_dead` or nothing will notice when the
   paragraph it titles is edited out from under it.
+- **A display line UNWRAPPED to loose text is `wrapped_blocks`, not
+  `restored_blocks`.** The Gutenberg importer once handed centred `<div>` lines
+  (headings, datelines, drop-cap opening paragraphs) to the sanitizer, which
+  kept the text and dropped the tags. Nothing is missing, so inserting would say
+  it twice. `wrap_loose_blocks` takes `(head, tag)` (or `(head, tag, tail)` when
+  the line ran into a loose caption) and wraps the run exactly as
+  `ingest.display_line` would emit it, guarded so it disarms on a re-import.
+  Check every entry against the importer's own output from the edition's
+  markup (`HurlbutDisplayLineTests` shows how), and do every edition at once.
+- **Two keys on one book can defeat each other, and neither PR's tests see
+  it until both land** (`a-retrospect`, 2026-09-24: #3401 cut ch12's MIDI
+  transcriber's note with a `replacements` pair while #3404 wrapped that same
+  note and the verse after it in `wrapped_blocks`). `apply_body_corrections`
+  runs `replacements` → `paragraph_breaks` → `restored_blocks` → `back_matter`
+  → `wrapped_blocks`, and two failures follow from that order:
+  - A pair whose OLD or NEW ends on a line that a later wrap gives a `<p>` is
+    dead in the settled fixture ("</p> 2. Why live" becomes "</p> <p>2. Why
+    live"). Anchor it on the text BEFORE the cut instead ("other spheres.</p>
+    [<i>Transcriber's…] " → "other spheres.</p>").
+  - A wrap entry for a line another key CUTS names nothing. The cut wins
+    (apparatus is not the author's text), so drop the wrap entry and lower its
+    test's per-edition line count.
+  When a merge conflicts inside a book fixture, don't pick a side. Run both
+  sides' chapter through the MERGED `settled_chapter_body`. If they settle to
+  the same text, write that text (re-derive `body_text`/`word_count` from it,
+  as `Chapter.save()` does). If they don't, the difference is one of these
+  interactions. Then check that the text production holds (the fixture before
+  either PR) settles to exactly what you wrote.
 - **A STRUCTURAL repair must land in every edition at once.**
   `tests_translation_markup` pins a translation's ordered TAG SEQUENCE against
   its English, so adding six headings to the English alone fails it — and that
@@ -470,9 +500,12 @@ Reported, not fixed
   with `content_fixtures.render_rows`, and a test strips the block back out and
   asserts the correction replaces it (asserting the settled fixture alone passes
   with the correction deleted, while the live rows silently revert).
-  **`holy-in-christ` ch33's seven `NOTE A.`–`NOTE G.` headings are still
-  damaged.** Watch `quote_seed` when repairing: it anchors a quote by 0-indexed
-  BLOCK position, so inserting a paragraph shifts every anchor below it.
+  **`holy-in-christ` is DONE too** — ch33's seven `NOTE A.`–`NOTE G.` headings
+  and ch5's `NOTE.` were restored the same way (PR #1929, test
+  `test_a_stripped_note_heading_comes_back`), and the es/fr/pt/sw editions were
+  translated from the repaired English, so they carry them already. Watch
+  `quote_seed` on any such repair: it anchors a quote by 0-indexed BLOCK
+  position, so inserting a paragraph shifts every anchor below it.
   ```bash
   grep -c ' ()' backend/library/fixtures/content/books/*.json
   ```
@@ -534,6 +567,26 @@ Reported, not fixed
   `word_count`, and assert all three columns equal the committed fixture and
   that a second pass is a no-op. That is the whole deploy path in ten lines, per
   language, and it is what turns "the tests pass" into "production converges".
+- **Back matter shipped as the last chapter's closing paragraphs** (2026-09-24,
+  found measuring #3355). Gutenberg texts fold the back of the printed book into
+  the final section: `reality-of-prayer` ch16 ran Bounds's last line into
+  "Printed in the United States of America" and 60 blocks of Revell's catalogue;
+  `how-to-bring-men-to-christ` ch13 ended on Meyer ad blurbs and a merged
+  "Transcriber's Notes" `<h3>`; `life-and-diary-of-david-brainerd` ch12 on the
+  transcriber's errata note, headless, reading as Edwards's own words. The
+  audit sees none of it, and the es and sw editions TRANSLATED it. Repair with
+  the `back_matter` key: `(last, first)` seams, one per edition, where `last`
+  is the author's closing block (ending `</p>`) and `first` opens what follows.
+  `strip_back_matter` cuts only where the two stand together, so it cannot fire
+  in another chapter; `ShippedBackMatterTests` checks every declared edition
+  from the declarations alone. Find more with a grep of every body for
+  `transcriber|printed in the united states|\b\d{1,2}mo\b` — and remember a
+  note whose heading was dropped won't say "transcriber" (Brainerd's didn't).
+  `import_gutenberg` now drops note boxes, "Transcriber's Note" sections and a
+  last-section colophon's tail (#3377). **Still shipped, not yet repaired:**
+  `separation-and-service` ch4 and `things-as-they-are` ch35 (a transcriber's
+  note, the latter after a "LONDON: MORGAN AND SCOTT" imprint), and the inline
+  MIDI note in `a-retrospect` ch12.
 - **A defect class the audit CANNOT see: the stored "English" is a modern AI
   PARAPHRASE, not the author's public-domain text** (2026-09-06). Some books
   stored `source_type=public_domain` were run through a modernization pass that

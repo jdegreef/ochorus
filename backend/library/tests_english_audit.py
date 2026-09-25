@@ -778,6 +778,12 @@ class CorrectionsHygieneTests(SimpleTestCase):
                 # Dead means BOTH are gone: the paragraph this titles was
                 # edited or renumbered out from under the entry.
                 *entry.get("restored_blocks", ()),
+                # A wrapped display line keeps its text, so its head is present
+                # either way; dead means the run it names was edited away.
+                *((head, f"<{tag}>{head}") for head, tag, *_ in entry.get("wrapped_blocks", ())),
+                # A back-matter cut: its first block (not yet applied) and the
+                # ending it cuts after (applied). Dead means both are gone.
+                *entry.get("back_matter", ()),
             )
             if old not in corpus and new not in corpus
         ]
@@ -1215,6 +1221,96 @@ class RibbandOfBlueDisplayLineTests(SimpleTestCase):
                 self.assertEqual(corrections.settled_sermon_body(slug, settled), settled)
 
 
+class BrainerdDisplayLineTests(SimpleTestCase):
+    """Gutenberg #65066's dropped display lines — see that entry in `corrections.py`.
+
+    Asserted per edition, like the #23438 repair above: a Swahili pair that
+    silently stops matching would leave the sw rows damaged while the English
+    passes. The entry lists the 24 English pairs, then the 24 Swahili ones.
+    """
+
+    SLUG = "life-and-diary-of-david-brainerd"
+    LINES_PER_CHAPTER = {2: 1, 3: 3, 4: 1, 5: 1, 6: 2, 7: 1, 8: 8, 9: 5, 11: 1, 12: 1}
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from library.content_fixtures import book_fixture_path
+
+        pairs = corrections.BODY_CORRECTIONS[cls.SLUG]["restored_blocks"]
+        cls.blocks = {"en": [b for _, b in pairs[:24]], "sw": [b for _, b in pairs[24:]]}
+        cls.editions = {
+            lang: {
+                row["fields"]["order"]: row["fields"]["body_html"]
+                for row in json.loads(book_fixture_path(cls.SLUG, lang).read_text())
+                if "body_html" in row["fields"]
+            }
+            for lang in cls.blocks
+        }
+
+    def test_every_edition_carries_every_line(self):
+        self.assertEqual(sum(self.LINES_PER_CHAPTER.values()), 24)
+        for lang, chapters in self.editions.items():
+            self.assertEqual(len(self.blocks[lang]), 24)
+            for order, body in chapters.items():
+                with self.subTest(language=lang, chapter=order):
+                    self.assertEqual(
+                        sum(b in body for b in self.blocks[lang]),
+                        self.LINES_PER_CHAPTER.get(order, 0),
+                    )
+
+    def test_the_correction_is_what_restores_them(self):
+        """Strip them all back out and the correction must put every one back."""
+        for lang, chapters in self.editions.items():
+            for order, settled in chapters.items():
+                with self.subTest(language=lang, chapter=order):
+                    damaged = settled
+                    for block in self.blocks[lang]:
+                        damaged = damaged.replace(f"{block} ", "", 1)
+                    self.assertFalse([b for b in self.blocks[lang] if b in damaged])
+                    self.assertEqual(corrections.settled_chapter_body(self.SLUG, order, damaged), settled)
+                    self.assertEqual(corrections.settled_chapter_body(self.SLUG, order, settled), settled)
+
+
+class UnfailingSpringsDisplayLineTests(SimpleTestCase):
+    """Gutenberg #57109's Rev. 22:17 display line — see that entry in
+    `corrections.py`. Asserted per edition, for the same reason as above."""
+
+    SLUG = "unfailing-springs"
+    LANGUAGES = {"ar", "en", "es", "fr", "hi", "lg", "pt", "sw", "uk"}
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        from library.content_fixtures import SERMONS_DIR
+
+        cls.editions = {
+            path.stem.rsplit(".", 1)[1]: json.loads(path.read_text())[0]["fields"]["body_html"]
+            for path in sorted(SERMONS_DIR.glob(f"{cls.SLUG}.*.json"))
+        }
+        cls.blocks = [block for _, block in corrections.BODY_CORRECTIONS[cls.SLUG]["restored_blocks"]]
+
+    def test_every_edition_is_covered(self):
+        self.assertEqual(set(self.editions), self.LANGUAGES)
+        self.assertEqual(len(self.blocks), len(self.LANGUAGES))
+
+    def test_the_line_sits_under_the_address_heading(self):
+        for lang, body in self.editions.items():
+            with self.subTest(language=lang):
+                [block] = [b for b in self.blocks if b in body]
+                self.assertIn(f"</h2>{block} <p>", body)
+
+    def test_the_correction_is_what_restores_it(self):
+        """Strip it back out and the correction must put it back."""
+        for lang, settled in self.editions.items():
+            with self.subTest(language=lang):
+                [block] = [b for b in self.blocks if b in settled]
+                damaged = settled.replace(f"{block} ", "", 1)
+                self.assertNotIn("22:17)", damaged)
+                self.assertEqual(corrections.settled_sermon_body(self.SLUG, damaged), settled)
+                self.assertEqual(corrections.settled_sermon_body(self.SLUG, settled), settled)
+
+
 class RealityOfPrayerVerseTests(SimpleTestCase):
     """The two poems `reality-of-prayer` lost at import — see its
     `restored_blocks` in `corrections.py`.
@@ -1340,6 +1436,404 @@ class DroppedBlockRestorationTests(SimpleTestCase):
         repair must not scatter copies through the chapter."""
         doubled = "<p>Just this day I met her.</p> <p>Just this day I met her.</p>"
         self.assertEqual(self._restore(doubled).count("<h4>"), 1)
+
+
+class LooseBlockWrapTests(SimpleTestCase):
+    """`wrap_loose_blocks` — a display line the sanitizer UNWRAPPED.
+
+    The sibling of `restore_dropped_blocks`: there the block was deleted, here
+    only its tags were, so the text shipped as a loose run between blocks.
+    """
+
+    def _wrap(self, html, *blocks):
+        return corrections.wrap_loose_blocks(html, blocks)
+
+    def test_wraps_the_run_up_to_the_next_block(self):
+        self.assertEqual(
+            self._wrap("FIRST OF ALL, let us go. <p>We will enter.</p>", ("FIRST OF ALL", "p")),
+            "<p>FIRST OF ALL, let us go.</p> <p>We will enter.</p>",
+        )
+
+    def test_is_idempotent_and_disarms_on_a_reimport(self):
+        """A re-import emits the block itself; the guard sees the head inside
+        a block and leaves it, as it does the settled form."""
+        once = self._wrap("FIRST OF ALL, let us go. <p>We will.</p>", ("FIRST OF ALL", "p"))
+        self.assertEqual(self._wrap(once, ("FIRST OF ALL", "p")), once)
+
+    def test_a_heading_holds_plain_text_and_edge_breaks_go(self):
+        """As `display_line` writes them, so the guard recognises a re-import."""
+        self.assertEqual(
+            self._wrap(
+                "<p>should be</p> THIS IS JESUS OF NAZARETH<br/> THE KING OF THE JEWS.<br/> <p>It was</p>",
+                ("THIS IS JESUS", "h3"),
+            ),
+            "<p>should be</p> <h3>THIS IS JESUS OF NAZARETH THE KING OF THE JEWS.</h3> <p>It was</p>",
+        )
+
+    def test_two_lines_flattened_into_one_run_are_split_at_the_second_head(self):
+        self.assertEqual(
+            self._wrap(
+                "<p>We give it here.</p> MARY'S SONG My soul beholds<br/> the Lord.<br/> <p>For three</p>",
+                ("MARY'S SONG", "h3"),
+                ("My soul beholds", "p"),
+            ),
+            "<p>We give it here.</p> <h3>MARY'S SONG</h3> <p>My soul beholds<br/> the Lord.</p> <p>For three</p>",
+        )
+
+    def test_a_tail_leaves_a_caption_loose(self):
+        """An illustration's caption is not a display line: it stays as it was."""
+        self.assertEqual(
+            self._wrap(
+                "AFTER SOME months, for baptizing the people. The Jordan. <p>Bethabara</p>",
+                ("AFTER SOME months", "p", "for baptizing the people."),
+            ),
+            "<p>AFTER SOME months, for baptizing the people.</p> The Jordan. <p>Bethabara</p>",
+        )
+
+    def test_a_head_inside_a_block_is_left_alone(self):
+        body = "<p>He said FIRST OF ALL, let us go.</p>"
+        self.assertEqual(self._wrap(body, ("FIRST OF ALL", "p")), body)
+
+    def test_no_op_on_a_tagless_body(self):
+        """A head is bare text, so it WOULD match `body_text`; tags must never
+        reach that field."""
+        text = "FIRST OF ALL, let us go. We will enter."
+        self.assertEqual(self._wrap(text, ("FIRST OF ALL", "p")), text)
+
+
+class HurlbutDisplayLineTests(SimpleTestCase):
+    """`hurlbuts-life-of-christ`: 118 display lines shipped as loose text.
+
+    See its `wrapped_blocks` entry in `corrections.py`. Asserted against the
+    SHIPPED fixture, and — the part that matters for a future re-import —
+    against what the importer emits from the edition's own markup.
+    """
+
+    SLUG = "hurlbuts-life-of-christ"
+
+    def _chapters(self):
+        import json
+
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, "en").read_text(encoding="utf-8"))
+        return {
+            r["fields"]["title"]: r["fields"]["body_html"]
+            for r in rows
+            if r["model"] == "library.chapter"
+        }
+
+    def _entries(self):
+        return corrections.BODY_CORRECTIONS[self.SLUG]["wrapped_blocks"]
+
+    def test_every_line_ships_in_its_block(self):
+        corpus = "".join(self._chapters().values())
+        for head, tag, *_ in self._entries():
+            with self.subTest(head=head):
+                self.assertTrue(f"<{tag}>{head}" in corpus, head)
+
+    def test_the_correction_wraps_the_flattened_rows(self):
+        """Strip every wrapped line back to loose text; the correction must
+        restore the shipped body exactly. (Asserting the fixture alone passes
+        with the entry deleted, while the live rows stay flat.)"""
+        heads = [head for head, *_ in self._entries()]
+        for title, body in self._chapters().items():
+            flat = body
+            for head in heads:
+                flat = re.sub(
+                    rf"<(p|h3)>({re.escape(head)}.*?)</\1>", r"\2", flat, count=1, flags=re.S
+                )
+            if flat == body:
+                continue
+            with self.subTest(chapter=title):
+                self.assertEqual(corrections.settled_chapter_body(self.SLUG, None, flat), body)
+
+    # PG 40460's own markup, cut down to whole blocks: a drop-cap opening paragraph, a centred
+    # heading over a poem set as one div, an opening paragraph that runs into
+    # an illustration, and a heading set on two lines.
+    PAGE = """<html><body>
+<h2>A Young Girl's Journey</h2>
+<p>We give it here.</p>
+<div class="center">MARY'S SONG</div>
+<div class="poem">
+My soul beholds the greatness of the Lord,<br>
+And my spirit hath rejoiced in God my Saviour.<br>
+For he hath looked upon his servant in my lowly state;<br>
+And from this time people in all ages shall call me blessed.<br>
+<br>
+For he that is mighty hath done to me great things;<br>
+And holy is his name.<br>
+And his mercy is from age to age<br>
+On those who fear him.<br>
+<br>
+He hath showed strength with his arm;<br>
+He hath scattered the proud in the vain thoughts of their heart.<br>
+He hath put down princes from their thrones,<br>
+And hath lifted up those of humble state.<br>
+<br>
+The hungry he hath filled with good things;<br>
+And the rich he hath sent empty away.<br>
+He hath given help to Israel his servant<br>
+That he might remember mercy<br>
+As he spoke to our fathers,<br>
+Toward Abraham and his children forever.<br>
+</div>
+<p>For three months Mary stayed with Elizabeth.</p>
+<h2>The Carpenter Leaves His Shop</h2>
+<div class="chaptertitle">CHAPTER 15</div>
+<div class="cap">AFTER SOME months the news was brought to
+Nazareth that John the Baptist had come up the
+river Jordan and was now preaching at a place
+about twelve miles south of the Sea of Galilee. The
+place where John was preaching had two names. It
+was called "Bethany beyond Jordan," there being
+another Bethany quite near Jerusalem; and it was also
+called "Bethabara," a word which means "the place
+where one can walk across the river"; for there the river
+Jordan was so shallow that people waded across it.
+John had chosen this place because the sloping shore
+beside the river was fitted for the crowds to listen to
+his preaching, and the shallow water was near at hand
+for baptizing the people.</div>
+<div class="figright" style="width: 300px;" role="figure">
+<img alt="painting" height="285" src="images/illus-116.jpg" width="300">
+<span class="caption">The Jordan. At the supposed place of
+Christ's baptism.</span>
+</div>
+<p>Bethabara or Bethany was about twenty-five miles from Nazareth.</p>
+<h2>Jesus on the Cross</h2>
+<div class="chaptertitle">CHAPTER 96</div>
+<div class="cap">IT WAS the custom of the Romans when they put to
+death any man upon the cross, to place on the cross
+above his head a writing, telling what the man's
+crime was. Pilate commanded that the writing above the
+head of Jesus should be</div>
+<div class="center">
+THIS IS JESUS OF NAZARETH<br>
+THE KING OF THE JEWS.<br>
+</div>
+<p>It was written in the language of three different peoples.</p>
+</body></html>"""
+
+    def test_the_importer_emits_the_blocks_the_correction_wraps(self):
+        """The guard is a string match, so the importer and the correction must
+        agree byte for byte, or a re-import carries a line twice."""
+        from library.ingest import soup
+        from library.management.commands.import_gutenberg import (
+            content_root,
+            split_by_heading,
+        )
+
+        chapters = self._chapters()
+        emitted = 0
+        for title, body in split_by_heading(content_root(self.PAGE), "h2"):
+            for block in soup(body).body.find_all(["p", "h3"], recursive=False):
+                block = str(block)
+                if not any(block.startswith(f"<{tag}>{head}") for head, tag, *_ in self._entries()):
+                    continue  # prose the importer always kept
+                with self.subTest(chapter=title, block=block[:40]):
+                    self.assertTrue(block in chapters[title], block)
+                    emitted += 1
+        self.assertEqual(emitted, 5)
+
+
+class RetrospectDisplayLineTests(SimpleTestCase):
+    """`a-retrospect`: 47 display lines shipped as loose text, in en and es.
+
+    See its `wrapped_blocks` entry in `corrections.py`: the 47 English entries,
+    then the 47 Spanish ones (a 48th, ch12's MIDI transcriber's note, is cut
+    instead — a `replacements` pair). Asserted per edition against the SHIPPED fixture,
+    and the English against what the importer emits from PG 26744's own markup.
+    """
+
+    SLUG = "a-retrospect"
+    LINES = 47
+
+    def _chapters(self, lang):
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, lang).read_text(encoding="utf-8"))
+        return {
+            r["fields"]["title"]: r["fields"]["body_html"]
+            for r in rows
+            if r["model"] == "library.chapter"
+        }
+
+    def _entries(self, lang):
+        entries = corrections.BODY_CORRECTIONS[self.SLUG]["wrapped_blocks"]
+        self.assertEqual(len(entries), 2 * self.LINES)
+        return entries[: self.LINES] if lang == "en" else entries[self.LINES :]
+
+    def test_every_line_ships_in_its_block(self):
+        for lang in ("en", "es"):
+            corpus = "".join(self._chapters(lang).values())
+            for head, tag, *_ in self._entries(lang):
+                with self.subTest(language=lang, head=head):
+                    self.assertEqual(corpus.count(f"<{tag}>{head}"), 1)
+
+    def test_the_correction_wraps_the_flattened_rows(self):
+        """Strip every wrapped line back to loose text; the correction must
+        restore the shipped body exactly."""
+        for lang in ("en", "es"):
+            heads = [head for head, *_ in self._entries(lang)]
+            for title, body in self._chapters(lang).items():
+                flat = body
+                for head in heads:
+                    flat = re.sub(
+                        rf"<p>({re.escape(head)}.*?)</p>", r"\1", flat, count=1, flags=re.S
+                    )
+                if flat == body:
+                    continue
+                with self.subTest(language=lang, chapter=title):
+                    self.assertEqual(corrections.settled_chapter_body(self.SLUG, None, flat), body)
+
+    # PG 26744's own markup, whole blocks, prose cut short: a chapter opener set
+    # as a drop-cap div, a journal dateline in a right-set div, and two poems
+    # each followed by the prose line the edition sets as a div of its own.
+    PAGE = """<html><body>
+<h2>CHAPTER X</h2>
+<h3>FIRST EVANGELISTIC EFFORTS</h3>
+<div class="cap">A JOURNEY taken in the spring of 1855 with the
+Rev. J. S. Burden of the Church Missionary Society
+(now the Bishop of Victoria, Hong-kong) was attended with
+some serious dangers.</div>
+<p>From thence we went on to T'ung-chau.</p>
+<div class="right">
+<i>Thursday, April 26th, 1855.</i><br>
+</div>
+<p>After breakfast we commended ourselves to the care of
+our Heavenly <span class="smcap">Father</span>.</p>
+<p>That verse—</p>
+<div class="poem">
+"The perils of the sea, the perils of the land,<br>
+Should not dishearten thee: thy <span class="smcap">Lord</span> is nigh at hand.<br>
+But should thy courage fail, when tried and sore oppressed,<br>
+His promise shall avail, and set thy soul at rest."<br>
+</div>
+<div class="unindent">seemed particularly appropriate to our circumstances, and
+was very comforting to me.</div>
+<p>On our way we passed through one small town.</p>
+<h2>CHAPTER XV</h2>
+<h3>SETTLEMENT IN NINGPO</h3>
+<p>How glad one is now, not only to know, with dear Miss Havergal,
+that——</p>
+<div class="poem">
+"They who trust Him wholly<br>
+<span style="margin-left: 2em;">Find Him wholly true,"</span><br>
+</div>
+<div class="unindent">but also that when we fail to trust fully He still remains
+unchangingly faithful. He <i>is</i> wholly true whether
+we trust or not. "If we believe not, He abideth faithful;
+He cannot deny Himself." But oh, how we dishonour
+our <span class="smcap">Lord</span> whenever we fail to trust Him, and what peace,
+blessing, and triumph we lose in thus sinning against the
+Faithful One! May we never again presume in anything
+to doubt Him!</div>
+<p>The year 1857 was a troublous time.</p>
+</body></html>"""
+
+    def test_the_importer_emits_the_blocks_the_correction_wraps(self):
+        """The guard is a string match, so the importer and the correction must
+        agree byte for byte — here once the fixture's curled quotation marks
+        are folded back to the edition's straight ones."""
+        from library.ingest import soup
+        from library.management.commands.import_gutenberg import (
+            content_root,
+            split_by_heading,
+        )
+
+        straight = str.maketrans("“”‘’", "\"\"''")
+        chapters = {t: b.translate(straight) for t, b in self._chapters("en").items()}
+        heads = [head.translate(straight) for head, *_ in self._entries("en")]
+        emitted = 0
+        for title, body in split_by_heading(content_root(self.PAGE), "h2"):
+            for block in soup(body).body.find_all("p", recursive=False):
+                block = str(block)
+                if not any(block.startswith(f"<p>{head}") for head in heads):
+                    continue  # prose the importer always kept
+                with self.subTest(chapter=title, block=block[:40]):
+                    self.assertIn(block, chapters[title])
+                    emitted += 1
+        self.assertEqual(emitted, 6)
+
+
+class BackMatterTests(SimpleTestCase):
+    """`strip_back_matter` — the publisher's and transcriber's pages after the end.
+
+    Gutenberg texts fold the back of the printed book into the last chapter's
+    section: a colophon and a priced catalogue, a transcriber's errata note. It
+    shipped, and a translator renders what is there, so it reached the
+    translations too.
+    """
+
+    SEAMS = (("prevailing prayer.</p>", "<p><i>Printed in the United States of America</i></p>"),)
+    ENDING = "<p>by earnest, definite, prevailing prayer.</p>"
+    TAIL = "<p><i>Printed in the United States of America</i></p><p><i>R. A. TORREY</i></p>"
+
+    def _strip(self, html):
+        return corrections.strip_back_matter(html, self.SEAMS)
+
+    def test_cuts_everything_after_the_ending(self):
+        self.assertEqual(self._strip(self.ENDING + self.TAIL), self.ENDING)
+
+    def test_tolerates_the_block_separator(self):
+        self.assertEqual(self._strip(f"{self.ENDING} \n{self.TAIL}"), self.ENDING)
+
+    def test_is_idempotent(self):
+        once = self._strip(self.ENDING + self.TAIL)
+        self.assertEqual(self._strip(once), once)
+
+    def test_the_ending_alone_is_not_a_seam(self):
+        """Every entry runs against every chapter of its slug: an ending phrase
+        that recurs mid-book must not truncate it."""
+        body = self.ENDING + "<p>The next paragraph.</p>"
+        self.assertEqual(self._strip(body), body)
+
+    def test_the_first_block_alone_is_not_a_seam(self):
+        """Nor may a colophon quoted somewhere else cut the book there."""
+        body = "<p>Earlier.</p>" + self.TAIL
+        self.assertEqual(self._strip(body), body)
+
+    def test_no_op_on_a_stripped_body(self):
+        text = "by earnest, definite, prevailing prayer. Printed in the United States of America"
+        self.assertEqual(self._strip(text), text)
+
+
+class ShippedBackMatterTests(SimpleTestCase):
+    """Every declared `back_matter` seam, against every edition of its work.
+
+    Driven by the declarations, so a new entry is covered without a new test.
+    """
+
+    def test_each_edition_ships_cut_and_the_correction_is_what_cuts_it(self):
+        """The settled fixture must end on a declared ending — a translation that
+        carried the back matter with no seam of its own fails here — and putting
+        the back matter back must be cut again: the fixture alone passes with
+        the entry deleted, while production rows still carry the tail."""
+        from library.content_fixtures import BOOKS_DIR
+
+        declared = {
+            slug: entry["back_matter"]
+            for slug, entry in corrections.BODY_CORRECTIONS.items()
+            if entry.get("back_matter")
+        }
+        self.assertTrue(declared)
+        for slug, seams in declared.items():
+            for path in sorted(BOOKS_DIR.glob(f"{slug}.*.json")):
+                last = max(
+                    (row["fields"] for row in json.loads(path.read_text(encoding="utf-8"))
+                     if row["model"] == "library.chapter"),
+                    key=lambda f: f["order"],
+                )
+                settled = last["body_html"]
+                with self.subTest(fixture=path.name):
+                    seam = next(((e, f) for e, f in seams if settled.endswith(e)), None)
+                    self.assertIsNotNone(seam, f"ch{last['order']} does not end on a declared ending")
+                    damaged = f"{settled}{seam[1]}<p>The next advertised title.</p>"
+                    for body in (damaged, settled):
+                        self.assertEqual(
+                            corrections.settled_chapter_body(slug, last["order"], body), settled
+                        )
 
 
 class BruisedReedRepairTests(SimpleTestCase):

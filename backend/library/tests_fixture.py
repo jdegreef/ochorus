@@ -40,6 +40,7 @@ from pathlib import Path
 from django.conf import settings
 from django.test import SimpleTestCase
 
+from library.contemporize import MODERN_LANGUAGE
 from library.content_fixtures import (
     ARTICLES_DIR,
     AUTHORS_FILE,
@@ -67,7 +68,13 @@ from library.covers import (
     twin_path,
     variant_url,
 )
-from library.curated_art import CURATED, CURATED_GROUND, ORIGINAL_GROUND
+from library.curated_art import (
+    CURATED,
+    CURATED_GROUND,
+    ORIGINAL_GROUND,
+    ORIGINAL_SVG_GROUND,
+    ORIGINAL_SVG_SCRIM,
+)
 from library.designed_covers import (
     DERIVED_GROUND,
     DESIGNED,
@@ -146,6 +153,11 @@ def _cover(fields: dict) -> str:
 def _cover_color(fields: dict) -> str:
     """A book row's cover_color, absent-or-null normalised to ''."""
     return fields.get("cover_color") or ""
+
+
+def _cover_title(fields: dict) -> str:
+    """The title a book row's cover sets — the twin of ``coverTitle.ts``."""
+    return fields.get("cover_title") or fields["title"]
 
 
 class FixtureIntegrityTests(SimpleTestCase):
@@ -579,6 +591,39 @@ class SeedFieldCoverageTests(SimpleTestCase):
         # read as "protected" and mislead the next reader.
         self.assertFalse(set(FIXTURE_WINS_TEXT) & set(FILL_ONLY_FIELDS))
 
+
+
+class CopyrightBlockedTests(SimpleTestCase):
+    """No edition of a copyright-blocked work may be published, in any language.
+
+    `seed_books` treats `is_published` as create-only, so a fixture that ships
+    `true` publishes the row the moment it is created, and nothing afterwards
+    walks it back. That is how *Grace for Grace*'s es/fr/pt translations went
+    live on 2026-09-24, derivatives of a protected English compilation, months
+    after migration 0022 unpublished the English. A translation fixture of one
+    of these works fails here instead.
+    """
+
+    def test_no_blocked_work_is_published_in_any_language(self):
+        from library.corrections import COPYRIGHT_BLOCKED_SLUGS
+
+        published = []
+        for path, rows in files_by_path().items():
+            for row in rows:
+                f = row.get("fields", {})
+                if (
+                    row.get("model") == "library.book"
+                    and f.get("slug") in COPYRIGHT_BLOCKED_SLUGS
+                    and f.get("is_published", True)
+                ):
+                    published.append(path.name)
+        self.assertEqual(
+            published,
+            [],
+            "these editions of a copyright-blocked work are published — set "
+            "is_published: false (corrections.COPYRIGHT_BLOCKED_SLUGS; no "
+            "translation of these may ship without the rights holder's permission)",
+        )
 
 class FileCoherenceTests(SimpleTestCase):
     """Each file must contain exactly what its name and role promise.
@@ -1093,6 +1138,38 @@ class CoverAssetTests(SimpleTestCase):
             "`uv run python scripts/localize_covers.py` to draw and repoint it",
         )
 
+    def test_translated_editions_set_their_own_cover_title(self):
+        """A translated edition never sets another language's words on its
+        cover — which an edition written by copying the English file would."""
+        english = {
+            f["slug"]: f.get("cover_title") for f in self.books if f["language"] == "en"
+        }
+        copied = sorted(
+            f"{f['slug']}.{f['language']}: {f['cover_title']!r}"
+            for f in self.books
+            if f["language"] not in ("en", MODERN_LANGUAGE)
+            and f.get("cover_title")
+            and f["cover_title"] == english.get(f["slug"])
+        )
+        self.assertEqual(
+            copied, [], "translated edition sets the English cover title — translate it or blank it"
+        )
+
+    def test_cover_title_is_trimmed_and_shorter_than_the_title(self):
+        """It exists to be shorter; one that is not is a typo in the wrong field.
+        Trimmed here rather than at render, so ``coverTitle.ts`` and
+        ``_cover_title`` need not agree on what counts as whitespace."""
+        bad = sorted(
+            f"{f['slug']}.{f['language']}"
+            for f in self.books
+            if f.get("cover_title")
+            and (
+                f["cover_title"] != f["cover_title"].strip()
+                or len(f["cover_title"]) >= len(f["title"])
+            )
+        )
+        self.assertEqual(bad, [], "cover_title should be trimmed and shorter than title")
+
     def test_plate_colours_can_carry_white_type(self):
         """Every stored `cover_color` must be dark enough for the white byline.
 
@@ -1311,7 +1388,7 @@ class CoverAssetTests(SimpleTestCase):
             # part of what the card was made from.
             author = names.get(fields["author"][0], {}).get("name", fields["author"][0])
             blob = source.read_bytes() + "\0{}\0{}\0{}".format(
-                fields["title"], fields.get("subtitle") or "", author
+                _cover_title(fields), fields.get("subtitle") or "", author
             ).encode()
             if hashlib.sha256(blob).hexdigest() != recorded[key].get("ground"):
                 stale.append(key)
@@ -1426,6 +1503,61 @@ class CoverAssetTests(SimpleTestCase):
             "not — nothing may redraw one of these. If you replaced the artwork "
             "on purpose, update its digest in curated_art.ORIGINAL_GROUND in the "
             "same commit",
+        )
+
+    def test_original_svg_grounds_are_frozen(self):
+        """The SVG Originals under `covers/art/` are frozen like the raster ones.
+
+        The two gates around this one glob `*.jpg` only, so a hand-drawn SVG
+        ground — the Key Teachings trees — was pinned by nothing: a script or a
+        tidy-up could redraw it and CI would stay green. Every SVG there must be
+        registered in `curated_art.ORIGINAL_SVG_GROUND`, and its bytes must
+        still match the digest recorded beside it.
+        """
+        art = STATIC_DIR / "covers" / "art"
+        present = {p.stem for p in art.glob("*.svg")}
+        self.assertEqual(
+            sorted(present - set(ORIGINAL_SVG_GROUND)), [],
+            "an SVG ground under covers/art/ is unregistered — add it to "
+            "curated_art.ORIGINAL_SVG_GROUND with its sha256",
+        )
+        self.assertEqual(
+            sorted(set(ORIGINAL_SVG_GROUND) - present), [],
+            "an ORIGINAL_SVG_GROUND names a file that is not in covers/art/",
+        )
+        changed = sorted(
+            slug for slug, original in ORIGINAL_SVG_GROUND.items()
+            if digest(art / f"{slug}.svg") != original.sha256
+        )
+        self.assertEqual(
+            changed, [],
+            "an SVG Original changed but its recorded sha256 did not — nothing "
+            "may redraw one. If you replaced it on purpose, update its digest in "
+            "curated_art.ORIGINAL_SVG_GROUND in the same commit",
+        )
+
+    def test_original_svg_grounds_carry_their_measured_scrim(self):
+        """Each SVG Original has a measured scrim, and the table ships it as-is.
+
+        The raster gate below re-measures every `.jpg` against `ART_SCRIM`; it
+        cannot open an SVG, so these are measured outside it (see
+        `curated_art.ORIGINAL_SVG_SCRIM`) and pinned by the digest above. What
+        this holds is the join: no SVG Original without a measurement, and the
+        generated table carrying exactly that value — so a hand edit to
+        `art_scrim.py` can't quietly darken or lighten one.
+        """
+        from library.art_scrim import ART_SCRIM
+
+        self.assertEqual(sorted(ORIGINAL_SVG_SCRIM), sorted(ORIGINAL_SVG_GROUND))
+        drift = {
+            slug: (ART_SCRIM.get(slug), k)
+            for slug, k in ORIGINAL_SVG_SCRIM.items()
+            if ART_SCRIM.get(slug) != k
+        }
+        self.assertEqual(
+            drift, {},
+            "art_scrim.ART_SCRIM disagrees with curated_art.ORIGINAL_SVG_SCRIM — "
+            "re-run scripts/tune_art_scrim.py, which carries these in",
         )
 
     def test_every_art_file_belongs_to_a_tier(self):

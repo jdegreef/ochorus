@@ -15,6 +15,18 @@ const stored = () => JSON.parse(localStorage.getItem(KEY) || '{}');
 beforeEach(() => localStorage.clear());
 
 describe('readerPrefs store', () => {
+	it('keeps a stored face this build offers and drops one it does not', () => {
+		localStorage.setItem(KEY, JSON.stringify({ font: 'lora' }));
+		expect(load().font).toBe('lora');
+		// A face removed in a later build, or a hand-edited value, lands on the
+		// default rather than on an --reading-font nothing defines.
+		localStorage.setItem(KEY, JSON.stringify({ font: 'comic-neue' }));
+		expect(load().font).toBe('serif');
+		// `in` would walk the prototype and accept this.
+		localStorage.setItem(KEY, JSON.stringify({ font: 'constructor' }));
+		expect(load().font).toBe('serif');
+	});
+
 	it('clamps font scale to the supported range', () => {
 		readerPrefs.setScale(5);
 		expect(readerPrefs.scale).toBe(1.6);

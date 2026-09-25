@@ -13,7 +13,17 @@ import { readJSON, writeJSON } from './persisted';
 
 export type Leading = 'compact' | 'normal' | 'relaxed';
 export type Measure = 'narrow' | 'normal' | 'wide' | 'xwide';
-export type ReaderFont = 'serif' | 'sans' | 'dyslexic';
+export type ReaderFont =
+	| 'serif'
+	| 'sans'
+	| 'literata'
+	| 'garamond'
+	| 'sourceSerif'
+	| 'lora'
+	| 'baskerville'
+	| 'merriweather'
+	| 'hyperlegible'
+	| 'dyslexic';
 export type Align = 'left' | 'justify';
 export type Margin = 'narrow' | 'normal' | 'generous';
 
@@ -91,37 +101,51 @@ export function defaultMeasureFor(innerWidth: number): Measure {
 // purely the prose column inside a chapter.
 
 /**
- * The three faces a reader can choose, as CSS `font-family` values.
+ * The faces a reader can choose, as CSS `font-family` values, in picker order.
  *
- * TWO OF THESE NAME A TOKEN RATHER THAN A STACK, and that is the point. They
- * used to spell Fraunces and Hanken out here, which made this a third copy of
- * a list `app.css` already declares twice — and copies drift silently, because
- * nothing renders both. The reader is the app's most-read surface, so the copy
- * that drifted was the one that mattered: `--font-display` grew Arabic,
- * Devanagari and Cyrillic faces and the READER did not, since
- * `--reading-font` is always set from here and the `var(--reading-font,
- * var(--font-display))` fallback in `.reading` therefore never fires.
- *
- * A `var()` is legal here: these land in a custom property on the reading
- * article, and substitution is token-level, so `--reading-font:var(--font-display)`
- * resolves exactly as the literal stack would.
- *
- * DYSLEXIC NAMES ONE LITERAL AND THEN THE TOKEN, because only OpenDyslexic
- * itself has no token — the tail does. It is the one preference this change
- * cannot honour outside Latin: OpenDyslexic is Latin-only and no Arabic or
- * Devanagari equivalent exists, so an Arabic reader who asked for it was
- * getting `cursive`, a generic that matches every glyph and hands the script to
- * whatever the device felt like. Ending at `var(--font-display)` puts that
- * reader on Amiri or Tiro instead — the same text they would get without the
- * preference rather than something worse — and, unlike spelling those three
- * families out here, it cannot drift from the stack they are named in. What the
- * setting SHOULD do for those readers is a product question, not a CSS one.
+ * Each names at most one family and then a HOUSE token, never a spelled-out
+ * stack and never --font-display / --font-sans: the tail is where the Arabic,
+ * Devanagari and Cyrillic faces live, and the house tokens are the ones a site
+ * style cannot move (site-fonts.css explains the mechanism). A `var()` is legal
+ * here because these land in a custom property on the reading article.
+ * `fontStacks.test.ts` gates every entry for script coverage and imports.
  */
 export const FONT_STACK: Record<ReaderFont, string> = {
-	serif: 'var(--font-display)',
-	sans: 'var(--font-sans)',
-	dyslexic: "'OpenDyslexic', 'Comic Sans MS', var(--font-display)"
+	serif: 'var(--house-display)',
+	sans: 'var(--house-sans)',
+	literata: "'Literata Variable', var(--house-display)",
+	garamond: "'EB Garamond Variable', var(--house-display)",
+	sourceSerif: "'Source Serif 4 Variable', var(--house-display)",
+	lora: "'Lora Variable', var(--house-display)",
+	baskerville: "'Libre Baskerville', var(--house-display)",
+	merriweather: "'Merriweather Variable', var(--house-display)",
+	hyperlegible: "'Atkinson Hyperlegible Next Variable', var(--house-sans)",
+	dyslexic: "'OpenDyslexic', 'Comic Sans MS', var(--house-display)"
 };
+
+/** The faces that describe a kind rather than name a family; each picker
+ *  translates these in its own words. */
+export type FontKind = 'serif' | 'sans' | 'dyslexic';
+
+/** Display names of the named faces. Proper nouns, so not in the message
+ *  catalogues — a typeface is called Lora in every language. */
+const FONT_NAME: Record<Exclude<ReaderFont, FontKind>, string> = {
+	literata: 'Literata',
+	garamond: 'EB Garamond',
+	sourceSerif: 'Source Serif',
+	lora: 'Lora',
+	baskerville: 'Baskerville',
+	merriweather: 'Merriweather',
+	hyperlegible: 'Atkinson Hyperlegible'
+};
+
+/** A picker label: the face's own name, or the caller's word for its kind. */
+export function fontLabel(v: ReaderFont, kinds: Record<FontKind, string>): string {
+	return Object.hasOwn(FONT_NAME, v) ? FONT_NAME[v as keyof typeof FONT_NAME] : kinds[v as FontKind];
+}
+
+/** Every reader face, in picker order. */
+export const READER_FONTS = Object.keys(FONT_STACK) as ReaderFont[];
 
 const SCALE_MIN = 0.8;
 const SCALE_MAX = 1.6;
@@ -191,7 +215,9 @@ export function load(): Stored {
 				: browser
 					? defaultMeasureFor(window.innerWidth)
 					: DEFAULTS.measure,
-		font: (raw.font as ReaderFont) in FONT_STACK ? (raw.font as ReaderFont) : DEFAULTS.font,
+		// hasOwn for the reason `margin` gives below. A face this build no longer
+		// ships lands on the default rather than on an unset --reading-font.
+		font: Object.hasOwn(FONT_STACK, String(raw.font)) ? (raw.font as ReaderFont) : DEFAULTS.font,
 		align: ALIGNS.includes(raw.align as Align) ? (raw.align as Align) : DEFAULTS.align,
 		alignChosen:
 			typeof raw.alignChosen === 'boolean' ? raw.alignChosen : DEFAULTS.alignChosen,

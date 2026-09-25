@@ -18,6 +18,26 @@ from __future__ import annotations
 
 import re as _re
 from collections.abc import Sequence
+from html import escape as _escape
+
+from library.text import html_to_text
+
+# NOT public domain (copyright audit 2026-07-10), and no permission: Watchman
+# Nee's English editions (1957–1983, Kinnear/CLC/CFP) and Amy Carmichael's "If"
+# (1938, URAA-restored). Every edition in EVERY language stays unpublished — a
+# translation of these is a derivative of the protected English. Migration 0022
+# unpublished the rows that existed in July; translations filed later slipped
+# through and went live (grace-for-grace-2 es/fr/pt, 2026-09-24), so this set is
+# now enforced in CI (tests_fixture), by the admin translation-job filer, and
+# by migration 0164. Remove a slug only with the rights holder's permission.
+COPYRIGHT_BLOCKED_SLUGS: frozenset[str] = frozenset({
+    "the-normal-christian-life",
+    "grace-for-grace-2",
+    "the-body-of-christ-a-reality",
+    "the-body-of-christ-teens",
+    "let-us-pray-2",
+    "if",
+})
 
 # Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
 # want in the library). An explicit `import_ochorus <slug>` still imports them.
@@ -25,15 +45,8 @@ EXCLUDED_SLUGS: set[str] = {
     # Teens edition of "The Person and Work of the Holy Spirit"; we keep the
     # adult original (the-person-and-work-of-the-holy-spirit).
     "the-person-and-work-of-the-holy-spirit-2",
-    # NOT public domain (copyright audit 2026-07-10) — unpublished in migration
-    # 0020 and kept out of re-import. Watchman Nee's English editions (1957–1983,
-    # Kinnear/CLC/CFP) and Amy Carmichael's "If" (1938, URAA-restored).
-    "the-normal-christian-life",
-    "grace-for-grace-2",
-    "the-body-of-christ-a-reality",
-    "the-body-of-christ-teens",
-    "let-us-pray-2",
-    "if",
+    # Kept out of re-import too.
+    *COPYRIGHT_BLOCKED_SLUGS,
 }
 
 CORRECTIONS: dict[str, dict] = {
@@ -564,6 +577,49 @@ CORRECTIONS: dict[str, dict] = {
             33: "George Müller, and the Secret of His Power in Prayer",
         },
     },
+    "finney-memoirs": {
+        # The 1876 scan's decorative chapter-title lines OCR to garbage ("BIETH
+        # AiN© EAELT EDUCATION", "REVIVAL AX WESTER]<r"), so every title is
+        # taken from the book's own Contents, in its wording.
+        "chapter_titles": {
+            1: 'Birth and Early Education',
+            2: 'Conversion to Christ',
+            3: 'Beginning of His Work',
+            4: 'His Doctrinal Education and Other Experiences at Adams',
+            5: 'Preaching as a Missionary',
+            6: "Revival at Evans' Mills and Its Results",
+            7: 'Remarks upon Ministerial Education',
+            8: 'Revival at Antwerp',
+            9: "Return to Evans' Mills",
+            10: 'Revival at Gouverneur',
+            11: 'Revival at De Kalb',
+            12: 'Revival at Western',
+            13: 'Revival at Rome',
+            14: 'Revival at Utica',
+            15: 'Revival at Auburn in 1826',
+            16: 'Revival at Troy, and at New Lebanon',
+            17: 'Revival in Stephentown',
+            18: 'Revivals at Wilmington and Philadelphia',
+            19: 'Revival at Reading, Pennsylvania',
+            20: 'Revival in Columbia, and in New York City',
+            21: 'Revival in Rochester, 1830',
+            22: 'Revivals in Auburn, Buffalo, Providence, and Boston',
+            23: 'Labors in New York City in 1832, and Onward',
+            24: 'Early Labors in Oberlin',
+            25: 'Labors in Boston and Providence',
+            26: 'The Revival in Rochester in 1842',
+            27: 'Another Winter in Boston',
+            28: 'First Visit to England',
+            29: 'Labors in the Tabernacle, Moorfields, London',
+            30: 'Labors in Hartford and in Syracuse',
+            31: 'Labors in Western and in Rome, 1854-5',
+            32: 'Revival in Rochester in 1855',
+            33: 'Revivals in Boston in 1856-57-58',
+            34: 'Second Visit to England',
+            35: 'Labors in England and Scotland',
+            36: 'Work at Home',
+        },
+    },
 }
 
 
@@ -592,6 +648,9 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 #     paragraph into the one before it, and the break is put back between these
 #     two exact strings ("…their own experience." / "Alas!"). Not a
 #     `replacements` pair; `restore_paragraph_breaks` says why.
+#   wrapped_blocks: [(head, tag)] — the sanitizer UNWRAPPED a display line to
+#     loose text; the run opening with `head` goes back into `<tag>`. See
+#     `wrap_loose_blocks`.
 #   restored_blocks: [(anchor, block)] — the sanitizer DELETED a whole block
 #     (see `restore_dropped_blocks`), and it goes back in front of the block
 #     that followed it, identified by that block's opening. Not a
@@ -892,15 +951,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # both printings above spell "(see 'Sixth Day')".
         #
         # NOT `source_fixes`: the parentheses are what the extractor made of a
-        # link, not what Murray printed. English-only edition, so nothing to
-        # settle by hand in a translation.
+        # link, not what Murray printed. These pairs are English-only: the es,
+        # fr, pt and sw editions were all translated after #1929 from the
+        # repaired English, so they shipped with the references and the ch33
+        # headings in their own words and need no pairs of their own.
         #
         # ch33 (Notes) lost all seven of its `NOTE A.`–`NOTE G.` headings to a
         # DIFFERENT selector: `[class*=note i]`, written for CCEL's footnote
         # apparatus, also matched Gutenberg's own `class="note"`. That selector
         # is FIXED at the source now (`sanitize._is_gutenberg_note_content`), so
         # no future import loses them — but these rows are never re-imported, so
-        # ch33 on the shelf is still seven bare `<hr/>`s with no headings.
+        # ch33 shipped as seven bare `<hr/>`s with no headings until #1929.
         #
         # They go back via `restored_blocks`, the mechanism
         # `ministry-of-intercession` uses for byte-identical damage from the
@@ -1154,6 +1215,27 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>इस विरोधाभास पर अधिक विस्तार", "<h3>विरोधाभास।</h3>"),
             ("<p>इस विरोधाभास पर अधिक विस्तार",
              '<p><em>"दुष्ट लोग ऐसे नहीं होते।"</em></p>'),
+            # ar
+            ("<p>ثمّة نجاح لا بركة فيه: فهو لا يأتي ",
+             "<p>تأمّلات في المزمور الأول.</p>"),
+            ("<p>ثمّة نجاح لا بركة فيه: فهو لا يأتي ",
+             "<h3>تمهيد.</h3>"),
+            ("<p>وبترجمة أكثر حرفية: يا لبركات الرجل، يا ",
+             "<h3>الشروط السلبية للبركة</h3>"),
+            ("<p>وبترجمة أكثر حرفية: يا لبركات الرجل، يا ",
+             "<p><em>«طُوبَى لِلرَّجُلِ ٱلَّذِي لَمْ يَسْلُكْ فِي مَشُورَةِ ٱلْأَشْرَارِ».</em></p>"),
+            ("<p>إنّ الطيور على أشكالها تقع؛ فطري",
+             "<p><em>وَفِي طَرِيقِ ٱلْخُطَاةِ لَمْ يَقِفْ.</em></p>"),
+            ("<p>إنّ مجلس المستهزئين من الأخطار ا",
+             "<p><em>«وَفِي مَجْلِسِ ٱلْمُسْتَهْزِئِينَ لَمْ يَجْلِسْ».</em></p>"),
+            ("<p>لقد تأمّلنا في الأمور التي يتج",
+             "<h3>الشروط الإيجابية للبركة.</h3>"),
+            ("<p>ننتقل بعد ذلك إلى ملاحظة المواعيد",
+             "<h3>ثمرة البركة.</h3>"),
+            ("<p>لا حاجة إلى الإطالة في الكلام ",
+             "<h3>المقابلة.</h3>"),
+            ("<p>لا حاجة إلى الإطالة في الكلام ",
+             "<p><em>«لَيْسَ كَذَلِكَ ٱلْأَشْرَارُ».</em></p>"),
         ],
     },
     "a-full-reward": {
@@ -1167,6 +1249,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # hi
             ("<p>इस रोचक वृत्तान्त में हमें",
              '<blockquote><em>"जो कुछ तूने ... किया है, और तू किस प्रकार अपने माता पिता और जन्म-भूमि को छोड़कर ऐसे लोगों में आई है जिनको पहले तू न जानती थी, यह सब मुझे विस्तार के साथ बताया गया है। यहोवा तेरी करनी का फल दे, और इस्राएल का परमेश्वर यहोवा जिसके पंखों के तले तू शरण लेने आई है, तुझे पूरा प्रतिफल दे" (रूत 2:11, 12)।</em></blockquote>'),
+            # ar
+            ("<p>في هذه القصة الشائقة مثال آخر على الط",
+             "<blockquote><em>«إِنَّنِي قَدْ أُخْبِرْتُ بِكُلِّ مَا فَعَلْتِ ... حَتَّى تَرَكْتِ أَبَاكِ وَأُمَّكِ وَأَرْضَ مَوْلِدِكِ وَسِرْتِ إِلَى شَعْبٍ لَمْ تَعْرِفِيهِ مِنْ قَبْلُ. لِيُكَافِئِ ٱلرَّبُّ عَمَلَكِ، وَلْيَكُنْ أَجْرُكِ كَامِلًا مِنْ عِنْدِ ٱلرَّبِّ إِلَهِ إِسْرَائِيلَ ٱلَّذِي جِئْتِ لِكَيْ تَحْتَمِيَ تَحْتَ جَنَاحَيْهِ» (راعوث 2:11-12).</em></blockquote>"),
         ],
     },
     "self-denial-versus-self-assertion": {
@@ -1187,6 +1272,159 @@ BODY_CORRECTIONS: dict[str, dict] = {
         "restored_blocks": [
             # en
             ('<blockquote>"For ye were as', "<h3>A NEW YEAR'S ADDRESS.</h3>"),
+        ],
+    },
+    # --- Gutenberg #65066, "The Life and Diary of David Brainerd" ------------
+    # The same kind of loss in a BOOK. Every chapter heading of this edition
+    # sits in its own `<div class="chapter">`, so `import_gutenberg.
+    # split_by_heading` fell back to its tree walk, and that walk dropped every
+    # div that was not hand-made poem markup. What the edition sets in divs is
+    # exactly what went: the date range centred under each chapter heading
+    # ("April 20, 1718-Feb. 1741."), the datelines heading each letter-journal
+    # section ("Forks of Delaware, Oct. 1745."), chapter X's subtitle, and four
+    # verse passages set as ebookmaker `lg-container` line groups — two of
+    # which the prose around them introduces ("Those lines turned in my mind
+    # with pleasure," / "Dr. Watts' Psalm,") and then never shows.
+    #
+    # The importer keeps these now (`ingest.display_line`, and a line group
+    # becomes one `<blockquote>` with `<br/>` between its lines), and every
+    # English block below is spelled EXACTLY as `extract_chapters` emits it —
+    # pinned by `tests_import.BrainerdRestoredBlocksMatchImporterTests` — so a
+    # re-import finds each present and the guard skips it. The stray “ opening
+    # the June 17 dateline is the edition's own. In ch9 two lines precede the
+    # same paragraph; `restore_dropped_blocks` inserts each directly before
+    # the anchor, so list order is reading order.
+    #
+    # NOT restored: the preface's signature `<h3>JONATHAN EDWARDS.</h3>`. It
+    # is the last block of ch1, so there is no following block to anchor on,
+    # and this mechanism only inserts in front of one. Nor the front and back
+    # matter the importer now also emits (the "LIFE / OF / REV. DAVID
+    # BRAINERD." half-title, the donors' imprint, the transcriber's note).
+    #
+    # The Swahili edition runs in lockstep with the English (same tags, same
+    # indices in every chapter), so each line goes in at the same position,
+    # anchored on that edition's own following paragraph. Months and places
+    # are spelled as its body already spells them (Okt., Februari, Machi;
+    # "Forks of Delaware, huko Pennsylvania"; its own surviving dateline
+    # "Crossweeksung, (New-Jersey,) Agosti, 1745."); chapter X's subtitle
+    # follows its REFLECTION IV ("kumbukumbu zilizotangulia"), the death verse
+    # its own lead-in ("mauti na kutokufa"), and the Watts line Psalm 127:1 as
+    # the Swahili Bible has it ("kuijenga nyumba"). No quote or translation
+    # note in this book is anchored by block position.
+    "life-and-diary-of-david-brainerd": {
+        "restored_blocks": [
+            # en
+            ("<p>David Brainerd was born April", "<p>April 20, 1718-Feb. 1741.</p>"),
+            ("<p>In the spring of 1742 Brainerd", "<p>April 1, 1742-July 29, 1742.</p>"),
+            ("<p>“The Lord refreshed my soul",
+             "<blockquote>“Farewell, vain world; my soul can bid Adieu<br/>“My Savior taught me to abandon you.<br/>“Your charms may gratify a SENSUAL mind;<br/>“But cannot please a soul for God design’d.<br/>“Forbear t’ entice; cease then my soul to call;<br/>“’Tis fixed through grace; my God shall be my ALL.<br/>“While he thus lets me heavenly glories view,<br/>“Your beauties fade, my heart’s no room for you.”</blockquote>"),
+            ("<p><i>April 27.</i> “I arose",
+             "<blockquote>“Lord, I’m a stranger here alone;<br/>“Earth no true comforts can afford;<br/>“Yet, absent from my dearest one,<br/>“My soul delights to cry ‘My Lord!’<br/>“Jesus, my Lord, my only love,<br/>“Possess my soul, nor thence depart:<br/>“Grant me kind visits, heavenly Dove;<br/>“My God shall then have all my heart.”</blockquote>"),
+            ("<p><i>July 30, 1742.</i>—“Rode", "<p>July 30.-Nov. 25, 1742.</p>"),
+            ("<p><i>Nov. 26, 1742.</i>—“Had", "<p>Nov. 26, 1742.—March 31, 1743.</p>"),
+            ("<p><i>April 1, 1743.</i> “I rode", "<p>April 1, 1743.—June 12, 1744.</p>"),
+            ("<p>“In evening prayer, God was",
+             "<blockquote>“Come death, shake hands; I’ll kiss thy bands;<br/>“’Tis happiness for me to die.—<br/>“What!—dost thou think that I will shrink?<br/>“I’ll go to immortality.”</blockquote>"),
+            ("<p><i>June 13, 1744.</i> [At Elizabeth", "<p>June 13, 1744.—June 18, 1745.</p>"),
+            ("<p>[We are now come to that part", "<p>June 19.—Nov. 5, 1745.</p>"),
+            ("<p><i>June 19.</i>—“I had spent",
+             "<p>“<i>Crossweeksung, in New-Jersey, June 17, 1745.</i></p>"),
+            ("<p><i>Lord’s day, July 14.</i>—“Discoursed",
+             "<p><i>Forks of Delaware, in Pennsylvania, July, 1745.</i></p>"),
+            ("<p><i>Lord’s day, Sept. 1.</i>—“Preached",
+             "<p><i>Forks of Delaware, in Pennsylvania, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 13.</i>—“After having", "<p><i>Shaumoking, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 19.</i>—“Visited an", "<p><i>Juncauta, Sept. 1745.</i></p>"),
+            ("<p><i>Oct. 1.</i>—“Discoursed", "<p><i>Forks of Delaware, Oct. 1745.</i></p>"),
+            ("<p><i>Oct. 5.</i>—“Preached", "<p><i>Crossweeksung, Oct. 1745.</i></p>"),
+            ("<p><i>Lord’s day, Nov. 24.</i>—“Preached", "<p>Nov. 5, 1745.—June 19, 1746.</p>"),
+            ("<p><i>Lord’s day, Nov. 24.</i>—“Preached",
+             "<p><i>Crossweeksung, New-Jersey, 1745.</i></p>"),
+            ("<p><i>Lord’s day, Feb. 16.</i>—“Knowing",
+             "<p><i>Forks of Delaware, February, 1746.</i></p>"),
+            ("<p><i>March 1.</i>—“Catechised", "<p><i>Crossweeksung, March, 1746.</i></p>"),
+            ("<p>and having recommended them",
+             "<blockquote>If God to build the house deny &amp;c.</blockquote>"),
+            ("<p><i>Lord’s day, June 29, 1746.</i>", "<p>[June 19, 1746—October 9, 1747.]</p>"),
+            ("<p>In the life of Brainerd we may see",
+             "<p><i>Reflections on the preceding Memoirs.</i></p>"),
+            # sw
+            ("<p>David Brainerd alizaliwa Aprili", "<p>Aprili 20, 1718-Feb. 1741.</p>"),
+            ("<p>Katika masika ya mwaka 1742", "<p>Aprili 1, 1742-Julai 29, 1742.</p>"),
+            ("<p>“Bwana aliiburudisha nafsi yangu",
+             "<blockquote>“Kwaheri, ulimwengu wa ubatili; nafsi yangu yaweza kukuaga<br/>“Mwokozi wangu alinifundisha kukuacha.<br/>“Mvuto wako waweza kuiridhisha nia ya KIMWILI;<br/>“Lakini hauwezi kuipendeza nafsi iliyokusudiwa kwa Mungu.<br/>“Acha kunishawishi; basi, koma kuiita nafsi yangu;<br/>“Imethibitika kwa neema; Mungu wangu atakuwa YOTE kwangu.<br/>“Maadamu ananijalia hivi kuutazama utukufu wa mbinguni,<br/>“Uzuri wako wafifia, moyo wangu hauna nafasi kwako.”</blockquote>"),
+            ("<p><i>Aprili 27.</i> “Niliamka",
+             "<blockquote>“Bwana, mimi ni mgeni hapa peke yangu;<br/>“Dunia haiwezi kutoa faraja ya kweli;<br/>“Lakini, nikiwa mbali na mpenzi wangu mkuu,<br/>“Nafsi yangu hufurahi kulia ‘Bwana wangu!’<br/>“Yesu, Bwana wangu, pendo langu pekee,<br/>“Uimiliki nafsi yangu, wala usiondoke humo:<br/>“Unijalie ziara za upole, Hua wa mbinguni;<br/>“Ndipo Mungu wangu atakapokuwa na moyo wangu wote.”</blockquote>"),
+            ("<p><i>Julai 30, 1742.</i>—“Nilikwenda", "<p>Julai 30.-Nov. 25, 1742.</p>"),
+            ("<p><i>Novemba 26, 1742.</i>—“Bado", "<p>Nov. 26, 1742.—Machi 31, 1743.</p>"),
+            ("<p><i>Aprili 1, 1743.</i> “Nilipanda", "<p>Aprili 1, 1743.—Juni 12, 1744.</p>"),
+            ("<p>“Katika maombi ya jioni, Mungu",
+             "<blockquote>“Njoo, mauti, tushikane mikono; nitabusu vifungo vyako;<br/>“Ni furaha kwangu kufa.—<br/>“Nini!—wadhani kwamba nitarudi nyuma?<br/>“Nitakwenda kwenye kutokufa.”</blockquote>"),
+            ("<p><i>Juni 13, 1744.</i> [Huko Elizabeth", "<p>Juni 13, 1744.—Juni 18, 1745.</p>"),
+            ("<p>[Sasa tumefika sehemu ile", "<p>Juni 19.—Nov. 5, 1745.</p>"),
+            ("<p><i>Juni 19.</i>—“Nimetumia",
+             "<p>“<i>Crossweeksung, huko New-Jersey, Juni 17, 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Julai 14.</i>—“Niliwazungumzia",
+             "<p><i>Forks of Delaware, huko Pennsylvania, Julai, 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Sept. 1.</i>—“Niliwahubiria",
+             "<p><i>Forks of Delaware, huko Pennsylvania, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 13.</i>—“Baada ya", "<p><i>Shaumoking, Sept. 1745.</i></p>"),
+            ("<p><i>Sept. 19.</i>—“Nilitembelea", "<p><i>Juncauta, Sept. 1745.</i></p>"),
+            ("<p><i>Okt. 1.</i>—“Niliwazungumzia", "<p><i>Forks of Delaware, Okt. 1745.</i></p>"),
+            ("<p><i>Okt. 5.</i>—“Niliwahubiria", "<p><i>Crossweeksung, Okt. 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Nov. 24.</i>—“Nilihubiri", "<p>Nov. 5, 1745.—Juni 19, 1746.</p>"),
+            ("<p><i>Siku ya Bwana, Nov. 24.</i>—“Nilihubiri",
+             "<p><i>Crossweeksung, New-Jersey, 1745.</i></p>"),
+            ("<p><i>Siku ya Bwana, Feb. 16.</i>—“Kwa kujua",
+             "<p><i>Forks of Delaware, Februari, 1746.</i></p>"),
+            ("<p><i>Machi 1.</i>—“Nilifundisha", "<p><i>Crossweeksung, Machi, 1746.</i></p>"),
+            ("<p>na baada ya kuwakabidhi wao",
+             "<blockquote>Mungu akikataa kuijenga nyumba n.k.</blockquote>"),
+            ("<p><i>Siku ya Bwana, Juni 29, 1746.</i>", "<p>[Juni 19, 1746—Oktoba 9, 1747.]</p>"),
+            ("<p>Katika maisha ya Brainerd twaweza",
+             "<p><i>Tafakari juu ya Kumbukumbu Zilizotangulia.</i></p>"),
+        ],
+    },
+    # Gutenberg #57109 (Hudson Taylor, *Unfailing Springs*) sets the address's
+    # text as a centred display line directly under its <h2> —
+    # `<div class="center">"Whosoever will, let him take the water of life
+    # freely"<br> (Rev. 22:17)</div>` — and the importer dropped it for the
+    # same reason as "The rest of Gutenberg #23438" above. The English block is
+    # spelled exactly as `ingest.display_line` now emits it. Each
+    # translation takes its registry Bible's wording of the clause (Arabic
+    # without the Van Dyck vowel marks, as this edition quotes John 4:10; the
+    # Luganda apostrophe straight, as this edition writes it), its own quotation
+    # marks and its corpus's name for the book. `quote_seed` anchors and the uk
+    # translation notes' `block_index` values below it shifted by one.
+    "unfailing-springs": {
+        "restored_blocks": [
+            # en
+            ("<p>THE best evidence of Christianity",
+             '<p>"Whosoever will, let him take the water of life freely"<br/> (Rev. 22:17)</p>'),
+            # ar
+            ("<p>إنّ خير برهان على المسيحية",
+             "<p>«من يرد فليأخذ ماء حياة مجانًا»<br/> (رؤيا 22:17)</p>"),
+            # es
+            ("<p>La mejor evidencia del cristianismo",
+             "<p>«El que quiere, tome del agua de la vida de balde»<br/> (Apocalipsis 22:17)</p>"),
+            # fr
+            ("<p>LA meilleure preuve du christianisme",
+             "<p>« Que celui qui veut, prenne de l’eau de la vie, gratuitement »<br/> (Apocalypse 22:17)</p>"),
+            # hi
+            ("<p>मसीही विश्वास का सबसे उत्तम प्रमाण",
+             '<p>"जो कोई चाहे वह जीवन का जल सेंत-मेंत ले"<br/> (प्रकाशितवाक्य 22:17)</p>'),
+            # lg
+            ("<p>Obujulizi obusinga obulungi",
+             "<p>\"Buli ayagala ajje anywe ku mazzi ag'obulamu ag'obuwa\"<br/> (Okubikkulirwa 22:17)</p>"),
+            # pt
+            ("<p>A MELHOR evidência do cristianismo",
+             '<p>"Quem quiser beba de graça da água da vida"<br/> (Apocalipse 22:17)</p>'),
+            # sw
+            ("<p>Ushahidi bora wa Ukristo",
+             '<p>"Kila anayetaka na anywe maji ya uzima bure"<br/> (Ufunuo 22:17)</p>'),
+            # uk
+            ("<p>Найкращий доказ християнства",
+             "<p>«Хто хоче, нехай приймає воду життя дармо»<br/> (Одкриттє 22:17)</p>"),
         ],
     },
     "essentials-of-prayer": {
@@ -1667,6 +1905,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # xiii. The "lob" in the same sentence is a separate OCR slip in the
             # quoted text and is left for the English pass, which owns wording.
             ("(Job xiii. 8)", "(Job xlii. 8)"),
+            # ar ch6 rendered Rev. 22:17 itself; take the registry Bible's
+            # (Van Dyck) wording, as `unfailing-springs` does, so the language
+            # quotes the verse one way (`tests_verse_consistency`).
+            ("مَن يشأ فليأخذ من ماء الحياة مجانًا", "من يرد فليأخذ ماء حياة مجانًا"),
         ],
     },
     "the-bruised-reed": {
@@ -4106,6 +4348,17 @@ BODY_CORRECTIONS.setdefault("marks-of-a-true-conversion", {}).setdefault("replac
     ("resurrection and the live", "resurrection and the life"),
     # "to see and know" — "se" is a dropped letter.
     ("thee to se and know", "thee to see and know"),
+    # sw job #2595. Goodwin's Paul "sits nearest the God-man ... in glory"; "fits"
+    # is the long-s/f misread (es "se sienta", fr "siège").
+    ("fits nearest the God-man", "sits nearest the God-man"),
+    # to "put up" a prayer, as the same sermon says three times; "put us" is a
+    # one-letter slip (es "elevabais", fr "faisant monter").
+    ("when ye put us these prayers", "when ye put up these prayers"),
+    # dropped "of": "to the honor of Christianity" (pt/es/fr all render it so).
+    ("to the honor Christianity", "to the honor of Christianity"),
+    # two possessives that lost their "s" ("God's sake" is spelled out 3x here).
+    ("sitting on Christ' right hand", "sitting on Christ's right hand"),
+    ("creatures for God' sake", "creatures for God's sake"),
 ])
 BODY_CORRECTIONS.setdefault("a-divine-and-supernatural-light", {}).setdefault("replacements", []).extend([
     # "concerned" — "concemed" is the classic rn->m scan error; not a word.
@@ -4206,6 +4459,14 @@ BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacemen
     # "know th Master's" -> "know the Master's".
     ("know th Master's", "know the Master's"),
 ])
+# Gutenberg #26384 closes ch4 on the printed "THE END." and then its own
+# transcriber's note (a `div.tn`, "Mismatched and inconsistent punctuation has
+# been retained…"), which shipped as the chapter's last block and the es edition
+# translated. The book ends on "THE END."
+BODY_CORRECTIONS["separation-and-service"]["back_matter"] = [
+    ("crucified for us.</p> <p>THE END.</p>", "<p>Transcriber's Note:<br/>"),
+    ("crucificado por nosotros.</p> <p>FIN.</p>", "<p>Nota del transcriptor:<br/>"),
+]
 BODY_CORRECTIONS.setdefault("the-fourfold-gospel", {}).setdefault("replacements", []).extend([
     # "lie will lead" -> "He will lead" (l/H, ie/e misread).
     ("and lie will lead you", "and He will lead you"),
@@ -4232,6 +4493,10 @@ BODY_CORRECTIONS.setdefault("essentials-of-prayer", {}).setdefault("replacements
     # Stray scan page-markers left mid-line inside two hymn stanzas.
     ("breasts [Pg 104]<br/>", "breasts<br/>"),
     ("give, [Pg 58]<br/>", "give,<br/>"),
+    # The Spanish edition was translated before the pairs above landed and
+    # carried both markers over; the es fixture is settled by hand to match.
+    ("compasivos [Pg 104]<br/>", "compasivos<br/>"),
+    ("que dar, [Pg 58]<br/>", "que dar,<br/>"),
 ])
 BODY_CORRECTIONS.setdefault("purpose-in-prayer", {}).setdefault("replacements", []).extend([
     # "sifts" -> "gifts" (s/g misread): "They are God's gifts."
@@ -4260,6 +4525,42 @@ BODY_CORRECTIONS.setdefault("reality-of-prayer", {}).setdefault("replacements", 
     # "preadventure" -> "peradventure".
     ("preadventure", "peradventure"),
 ])
+# Gutenberg #73032 prints the Revell colophon and a nine-page "EVANGELISTIC WORK"
+# catalogue (Hillis, Torrey, Sundar Singh … "Hartford Courant.") after Bounds's
+# last paragraph, inside ch16's section, and the es edition translated all sixty
+# blocks of it. The book ends on "prevailing prayer." in the 1924 printing.
+BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
+    ("definite, prevailing prayer.</p>",
+     "<p><i>Printed in the United States of America</i></p>"),
+    ("definida y prevaleciente.</p>",
+     "<p><i>Impreso en los Estados Unidos de América</i></p>"),
+]
+# Gutenberg #29426 ends ch35 on the printer's imprint, "LONDON: MORGAN AND
+# SCOTT", then its own "Transcriber's Notes" (`div.tnote`: punctuation repaired,
+# page 146 taken from the 1903 edition). Both shipped as the chapter's tail, and
+# the sw edition translated the notes. The book ends on "you will pray more."
+BODY_CORRECTIONS["things-as-they-are"]["back_matter"] = [
+    ("you will pray more.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+    ("mtaomba zaidi.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+]
+# Gutenberg #65066 follows "…revival of true religion! Amen." with the ATS
+# donors' line and the transcriber's `tnotes` endnote. The note's heading was
+# never collected, so its three paragraphs read as Edwards's own last words —
+# and the sw edition translated them as such.
+BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter"] = [
+    ("true religion! <i>Amen.</i></p>",
+     "<p>The frequent dated quotations from Brainerd’s diaries"),
+    ("dini ya kweli! <i>Amina.</i></p>",
+     "<p>Manukuu ya mara kwa mara yenye tarehe kutoka shajara za Brainerd"),
+]
+# Gutenberg #51931 follows Torrey's last paragraph with a page break and the
+# Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
+# Stalker and Kempis blurbs survived), and then a sub-300-word "Transcriber's
+# Notes" section that the importer merged into ch13 as an <h3> and its errata.
+BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
+    ("before God can use them.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+]
 # Two stanzas of verse lost at import (Gutenberg #73032). Every chapter heading
 # sits in its own wrapper div, so `import_gutenberg.split_by_heading` takes its
 # fallback walk, and that walk dropped every div that was not hand-made poem
@@ -4566,6 +4867,92 @@ def restore_dropped_blocks(body_html: str, blocks: Sequence[tuple[str, str]]) ->
     return body_html
 
 
+# A block's opening or closing tag, for `wrap_loose_blocks`: where a loose run
+# ends, and whether a position already sits inside a block.
+_EDGE_BREAKS = _re.compile(r"^(?:\s|<br\s*/?>)+|(?:\s|<br\s*/?>)+$")
+_LEAD_BREAKS = _re.compile(r"^(?:\s|<br\s*/?>)+")
+_BLOCK_EDGE = _re.compile(r"<(/?)(?:p|h[1-6]|blockquote|ul|ol|li|table|hr)\b[^>]*>", _re.I)
+
+
+def wrap_loose_blocks(body_html: str, blocks: Sequence[tuple[str, ...]]) -> str:
+    """Give a flattened display line back its block: `(head, tag)` wraps the
+    loose run that opens with `head` in `<tag>…</tag>`.
+
+    The Gutenberg importer once handed a centred display line — a `<div>`
+    heading, dateline, signature, or a whole paragraph set as a drop-cap div —
+    to the sanitizer, which unwrapped it. The text shipped, but as loose text
+    between blocks: an opening paragraph with no `<p>`, a heading as an
+    unmarked run. `ingest.display_line` keeps them now; this repairs the rows
+    imported before it, which are never re-imported.
+
+    Not `restored_blocks`: nothing is missing, so inserting would say it twice.
+    Not a `replacements` pair either: the run is often a whole paragraph, and
+    a pair would have to quote all of it. `head` names where the line starts;
+    it ends where the next block begins, where another of the work's heads
+    begins (two lines flattened into one run: "MARY'S SONG" and the song under
+    it), or — given a third element, `(head, tag, tail)` — right after `tail`,
+    for a line that ran into loose text which is NOT a display line (an
+    illustration's caption). A `<br>` at the line's edge goes, as
+    `display_line` drops it; an `<h3>` holds plain text, as `display_line`
+    writes it. So each wrap is exactly the block a re-import emits, which is
+    what `tests_english_audit` checks, entry by entry, against the importer.
+
+    Idempotent by GUARD, like `restore_dropped_blocks`: a `head` that already
+    sits inside a block is skipped — the settled form, and a future re-import
+    that emits the block itself. `body_html` ONLY: the wrap adds tags.
+    """
+    if "<" not in body_html:
+        return body_html  # tagless: `body_text`, which must never gain tags
+    heads = [entry[0] for entry in blocks]
+    for head, tag, *tail in blocks:
+        start = 0
+        while (i := body_html.find(head, start)) >= 0:
+            start = i + len(head)
+            edges = list(_BLOCK_EDGE.finditer(body_html, 0, i))
+            if edges and not edges[-1].group(1) and not edges[-1].group(0).lower().startswith("<hr"):
+                continue  # inside a block: already wrapped
+            m = _BLOCK_EDGE.search(body_html, i)
+            end = m.start() if m else len(body_html)
+            for other in heads:
+                j = body_html.find(other, i + 1, end)
+                if other != head and j >= 0:
+                    end = j
+            if tail:
+                j = body_html.find(tail[0], i, end)
+                if j < 0:
+                    break  # the line is not what this entry describes
+                end = j + len(tail[0])
+            text = _EDGE_BREAKS.sub("", body_html[i:end])
+            if tag == "h3":
+                # The same text rule as `display_line`: a space at each <br>,
+                # other markup joined ("<span>ALL</span>." is "ALL.").
+                text = _escape(html_to_text(text), quote=False)
+            rest = _LEAD_BREAKS.sub("", body_html[end:])
+            body_html = f"{body_html[:i]}<{tag}>{text}</{tag}> {rest}".rstrip()
+            break
+    return body_html
+
+
+def strip_back_matter(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
+    """Cut the publisher's or transcriber's back matter off a work's last chapter.
+
+    Each seam is `(last, first)`: the closing block of the author's text (ending
+    on `</p>`) and the opening block of what the importer carried in after it —
+    a colophon, a catalogue, a transcriber's note. Only where the two stand
+    together does everything after `last` go, so it cannot fire anywhere but
+    the one place it was written for, and it is idempotent because the cut
+    removes `first`.
+
+    `body_html` ONLY: both halves carry block tags, which the tagless
+    `body_text` never holds; `Chapter.save()` re-derives it from the cut HTML.
+    """
+    for last, first in seams:
+        at = _re.search(_re.escape(last) + r"\s*" + _re.escape(first), body_html)
+        if at:
+            body_html = body_html[: at.start() + len(last)]
+    return body_html
+
+
 def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     """Apply a work's body corrections to one chapter's HTML. Idempotent.
 
@@ -4588,6 +4975,12 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     Declared paragraph breaks run with the replacements, ahead of the rule, for
     the same reason: a seam is exact prose, and the rule could move a hyphen
     inside one out from under it.
+
+    The structural keys run after the replacements, so a replacement must not
+    reach into text one of them rewrites: anchor a deletion on what comes
+    BEFORE it, or `test_no_replacement_pair_is_dead` finds neither side (the
+    a-retrospect MIDI note). Back matter is cut before `wrapped_blocks` wraps,
+    so a wrap can never run on into a tail that is about to go.
     """
     entry = BODY_CORRECTIONS.get(slug)
     if entry:
@@ -4595,6 +4988,8 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
             body_html = body_html.replace(old, new)
         body_html = restore_paragraph_breaks(body_html, entry.get("paragraph_breaks", ()))
         body_html = restore_dropped_blocks(body_html, entry.get("restored_blocks", ()))
+        body_html = strip_back_matter(body_html, entry.get("back_matter", ()))
+        body_html = wrap_loose_blocks(body_html, entry.get("wrapped_blocks", ()))
         if entry.get("strip_transcription_footnotes"):
             body_html = strip_transcription_footnotes(body_html)
     body_html = rejoin_linebreak_hyphens(body_html)
@@ -4705,6 +5100,48 @@ BODY_CORRECTIONS.setdefault('god-glorified-in-mans-dependence', {}).setdefault("
     # "in making the soul" — leading "in" clipped to a bare "m".
     ('perfection, m making the soul', 'perfection, in making the soul'),
 ])
+# OCR slips found while translating Wesley's sermon to Swahili (#2593). CCEL and
+# the Wesley Center share one bad transcription, so each pair is checked against
+# two independent printings of Sermons on Several Occasions (archive.org
+# sermonsonseveral0001revj, 1825, and sermonsonseveral0001wesl, 1852), which
+# agree on every reading. Their period spacing ("obscurity ?", "him ;”") stays.
+BODY_CORRECTIONS.setdefault('the-circumcision-of-the-heart', {}).setdefault("replacements", []).extend([
+    ('a liar form the beginning', 'a liar from the beginning'),
+    ('world; thought he would choose', 'world; though he would choose'),
+    # Eph 1:19-20 ("the exceeding greatness of his power ... when he raised
+    # Christ"); the hyphen welded "to quicken", and Rom 8:11's opening quote
+    # was printed as a closer.
+    ('the exceeding greatness of this power,” who, as he raise up Christ from the dead, so is able to-quicken us, dead in sin,” by his',
+     'the exceeding greatness of his power,” who, as he raised up Christ from the dead, so is able to quicken us, dead in sin, “by his'),
+    # Eccl 9:10.
+    ('“whatever his findeth to do', '“whatever his hand findeth to do'),
+    ('which is no subject to the law', 'which is not subject to the law'),
+    ('the sole End, us well as Source', 'the sole End, as well as Source'),
+    ('Have no end, to ultimate end', 'Have no end, no ultimate end'),
+    ('“whereby be is very far gone', '“whereby he is very far gone'),
+    # 2 Cor 4:18.
+    ('the things that arc seen, which are temporal, but at the things that arc not seen',
+     'the things that are seen, which are temporal, but at the things that are not seen'),
+    ('the Inspirer an Perfecter', 'the Inspirer and Perfecter'),
+    ('learn, that it none is truly', 'learn, that none is truly'),
+    ('a view to own happiness ! Nay', 'a view to our own happiness! Nay'),
+    ('one who v. as “conceived', 'one who was “conceived'),
+    ('them to perform ? — as if', 'them to perform? — as if'),
+    ('nor grace was sufficient for them.?</p>', 'nor his grace was sufficient for them?</p>'),
+    ('without taking any pains at all. Vain hope !', 'without taking any pains at all. Vain hope!'),
+    ('<p>8. What lees than this', '<p>8. What less than this'),
+    # 2 Cor 6:4-5 ("in afflictions ... in distresses"); 1 Cor 13:3.
+    ('living “ill infirmities', 'living “in infirmities'),
+    ('and have not love, it profit me nothing', 'and have not love, it profiteth me nothing'),
+    # 1 Cor 9:26: the closing quote and "By" were lost, fusing the verse into
+    # Wesley's next clause.
+    ('one that beateth the air which he plainly teaches', 'one that beateth the air:” By which he plainly teaches'),
+    ('Let it be continual offered up', 'Let it be continually offered up'),
+    ('This is the way where in those', 'This is the way wherein those'),
+    ('<p>5. this is that lowliness', '<p>5. This is that lowliness'),
+    ('No man I say, has A title', 'No man, I say, has a title'),
+    ('the world, the one who follow him not', 'the world, the men who follow him not'),
+])
 
 
 # --- Quotation marks closed with the wrong mark (2026-09-11) -----------------
@@ -4740,6 +5177,22 @@ BODY_CORRECTIONS.setdefault('god-glorified-in-mans-dependence', {}).setdefault("
 BODY_CORRECTIONS.setdefault("a-retrospect", {}).setdefault("replacements", []).extend([
     ("chï fu mu</i>“ ", "chï fu mu</i>” "),
     ("convenience!</i>“ ", "convenience!</i>” "),
+])
+# Gutenberg #26744 sets "The Missionary Call" in ch12 as a score image (title and
+# verse 1) with its own note under it offering MIDI files; the image was dropped
+# and the note shipped between the chapter's last paragraph and verse 2, links
+# gone ("by clicking here for an organ version"). The es edition translated it.
+# Mid-chapter, so a pair rather than a back-matter seam, anchored on the
+# paragraph before it. Not on the verse after it: `wrapped_blocks` below gives
+# that verse its `<p>`, so a pair ending "</p> 2. Why live" would leave nothing
+# in the settled text for `test_no_replacement_pair_is_dead` to find.
+BODY_CORRECTIONS["a-retrospect"]["replacements"].extend([
+    ("other spheres.</p> [<i>Transcriber's Note: You can listen to this music (MIDI file) by"
+     " clicking</i> here for an <br/>organ version or here for a piano version.] ",
+     "other spheres.</p>"),
+    ("otras esferas.</p> [<i>Nota del transcriptor: Puede escuchar esta música (archivo MIDI)"
+     " haciendo clic</i> aquí para una <br/>versión de órgano o aquí para una versión de piano.] ",
+     "otras esferas.</p>"),
 ])
 # absolute-surrender: “…love“? (en, and the sw that mirrors it).
 BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
@@ -5290,6 +5743,19 @@ BODY_CORRECTIONS.setdefault("divine-songs-for-children", {}).setdefault("replace
     ("hawachezi kamwe", "hawaombi kamwe"),
 ])
 
+# Christmas Evans, "The Triumph of Calvary": two slips in the Gutenberg text.
+# "the devil arid his legions" is an OCR misreading of "and". "the Son of
+# Righteousness shall shine" misquotes Malachi 4:2, paired with "the bright and
+# Morning Star" as the sun rising after the star, so the intended word is "Sun".
+# The editions AGREE: es ("el Sol de justicia" / "el diablo y sus legiones"), fr
+# ("le soleil de la justice" / "le diable et ses légions") and sw ("Jua la Haki" /
+# "Ibilisi na majeshi yake") all render the corrected reading. Found while
+# translating into Swahili (#2594).
+BODY_CORRECTIONS.setdefault("the-triumph-of-calvary", {}).setdefault("replacements", []).extend([
+    ("the devil arid his legions", "the devil and his legions"),
+    ("“the Son of Righteousness” shall shine", "“the Sun of Righteousness” shall shine"),
+])
+
 # Finney, Lectures on Revivals of Religion — the print edition's page numbers,
 # 414 of them (pp. 4-445), left in the running text by OCR. Two shapes:
 #
@@ -5401,11 +5867,12 @@ _REVIVAL_PAGES_IN_PROSE = (
 
 
 def _unpage(defective: str) -> str:
-    """Drop the one page number from a `_REVIVAL_PAGES_IN_PROSE` string."""
+    """Drop the one page number from a declared _*_PAGES_IN_PROSE string."""
     # One space survives if the number had one on either side: "the 10excitability"
-    # -> "the excitability", "</p>414 <p>" -> "</p> <p>", "</i>387<i>" -> "</i><i>".
+    # -> "the excitability", "</p>414 <p>" -> "</p> <p>", "</i>387<i>" -> "</i><i>",
+    # "had 36 been" -> "had been", "word.”—66And" -> "word.”—And".
     return _re.sub(
-        r"(\s?)(?<=[\s>])\d{1,3}(\s?)(?=[A-Za-z<])",
+        r"(\s?)(?<=[\s>—])\d{1,3}(\s?)(?=[^\s\d])",
         lambda m: " " if m[1] or m[2] else "",
         defective,
         count=1,
@@ -5416,3 +5883,2222 @@ BODY_CORRECTIONS.setdefault("revival-lectures", {}).setdefault("replacements", [
     [(f"</p>{page}<p>", "</p> <p>") for page in _REVIVAL_PAGES_BETWEEN_BLOCKS]
     + [(defective, _unpage(defective)) for defective in _REVIVAL_PAGES_IN_PROSE]
 )
+
+# --- hurlbuts-life-of-christ: display lines flattened to loose text ------------
+# Gutenberg #40460 sets each chapter's drop-cap opening paragraph as a
+# `<div class="cap">`, and its centred headings ("MARY'S SONG", the title
+# over the cross) and displayed verse as divs too. The importer handed those
+# divs to the sanitizer, which unwrapped them: the text shipped, but as loose
+# runs between blocks — 118 of them, in 103 of the 104 chapters. The importer
+# keeps them now (`ingest.display_line`, PR #3355); these rows are never
+# re-imported, so `wrap_loose_blocks` puts each back in the block the
+# importer now emits, byte for byte (`tests_english_audit` checks every
+# entry against the importer). English only: there is no translation.
+# A third element ends a line that ran into an illustration's caption, which
+# is not a display line and stays as it was.
+BODY_CORRECTIONS.setdefault("hurlbuts-life-of-christ", {})["wrapped_blocks"] = [
+    # ch1
+    ('THERE HAVE been many famous', 'p'),
+    ('"In the shipyard stood the', 'p'),
+    # ch2
+    ('FIRST OF ALL, let us take a', 'p'),
+    # ch3
+    ('NEARLY ALL the people living', 'p'),
+    # ch4
+    ('IN THE land of Palestine one', 'p'),
+    ('"If I forget thee, O', 'p'),
+    # ch5
+    ('FOR OUR next story we visit', 'p'),
+    # ch6
+    ('AFTER THE visit of the angel', 'p'),
+    ("MARY'S SONG", 'h3'),
+    ('My soul beholds the greatness', 'p'),
+    # ch7
+    ("NOT LONG after Mary's visit,", 'p'),
+    ('"And you, O child, shall be', 'p', 'the tender mercy of God."'),
+    # ch8
+    ('FOR A FEW months after their', 'p'),
+    ('"Glory to God in the highest,', 'p'),
+    # ch9
+    ('ALTHOUGH JESUS was born in a', 'p'),
+    ('"Now, Lord, thou mayest let', 'p'),
+    # ch10
+    ('WHILE JOSEPH and Mary with', 'p'),
+    # ch11
+    ('ON THE night after their', 'p'),
+    # ch12
+    ('THE LITTLE Jesus must have', 'p'),
+    # ch13
+    ('JESUS STAYED at the school in', 'p'),
+    # ch14
+    ('FOR EIGHTEEN years after the', 'p'),
+    # ch15
+    ('WHILE JESUS was still living', 'p'),
+    # ch16
+    ('AFTER SOME months the news', 'p', 'for baptizing the people.'),
+    # ch17
+    ('AFTER HIS baptism Jesus felt', 'p'),
+    # ch18
+    ('AFTER HIS forty days in the', 'p'),
+    # ch19
+    ('SOON AFTER Jesus met the men', 'p'),
+    # ch20
+    ('THE SPRING-TIME of the year', 'p'),
+    # ch21
+    ('AFTER THE Passover, Jesus', 'p'),
+    # ch23
+    ('SOON AFTER the visit to Cana,', 'p'),
+    ('"The Spirit of the Lord is', 'p'),
+    # ch24
+    ('THE PLACE which Jesus chose', 'p'),
+    # ch25
+    ('THE STORY of the great catch', 'p'),
+    # ch26
+    ('FROM THE city of Capernaum', 'p'),
+    # ch27
+    ('SO GREAT were the crowds', 'p'),
+    # ch28
+    ('THE TIME came for another', 'p'),
+    # ch29
+    ('THE QUESTION whether Jesus', 'p'),
+    # ch30
+    ('ABOUT TWELVE miles southwest', 'p'),
+    # ch31
+    ('AT CAPERNAUM there was an', 'p'),
+    # ch32
+    ('JESUS WENT on a journey for', 'p'),
+    # ch33
+    ('WHILE JESUS was passing through southern', 'p'),
+    # ch34
+    ('AFTER HIS journey through', 'p'),
+    # ch35
+    ('SOON AFTER his journey', 'p'),
+    # ch36
+    ('HERE IS another parable story', 'p'),
+    # ch37
+    ('AFTER THE day of teaching in', 'p'),
+    # ch38
+    ('A GREAT CROWD of people were', 'p'),
+    # ch39
+    ('AS JESUS was coming out of', 'p'),
+    # ch40
+    ('JESUS HAD now preached in', 'p'),
+    # ch41
+    ('DURING NEARLY all the year of', 'p'),
+    # ch42
+    ('THE NEWS that King Herod had', 'p'),
+    # ch43
+    ('ON THE night after the multitude was fed', 'p'),
+    # ch44
+    ('ON THE morning after the day', 'p'),
+    # ch45
+    ('WITH HIS sermon on "The Bread', 'p'),
+    # ch46
+    ('JESUS SOON found that if he', 'p'),
+    # ch47
+    ('FROM THE land of the Ten', 'p'),
+    # ch48
+    ('FROM BETHSAIDA by the Sea of', 'p'),
+    # ch49
+    ('AT ONE time while Jesus was', 'p'),
+    # ch50
+    ('WHEN JESUS and his three', 'p'),
+    # ch51
+    ('WHILE JESUS was passing through Galilee for', 'p'),
+    # ch52
+    ('WHILE JESUS was still in', 'p'),
+    # ch53
+    ('AFTER MOST of those who were', 'p'),
+    # ch54
+    ('WHILE JESUS was on his way to', 'p'),
+    # ch55
+    ('AT THE TIME when Jesus came', 'p'),
+    # ch56
+    ('AFTER THE Feast of Tents', 'p'),
+    # ch57
+    ('ON A SABBATH morning, which', 'p'),
+    # ch58
+    ('AT THE SIDE of the Temple', 'p'),
+    # ch59
+    ('AFTER LEAVING Jerusalem, at', 'p'),
+    # ch60
+    ('WHILE JESUS was still at', 'p'),
+    # ch61
+    ('JESUS DID not stay long in', 'p'),
+    # ch62
+    ('WHILE JESUS was in Perea, on', 'p'),
+    # ch63
+    ('AT THIS TIME while Jesus was', 'p'),
+    # ch64
+    ('THE PHARISEES were very', 'p'),
+    ('The Ninety and Nine', 'p'),
+    ('There were ninety and nine', 'p'),
+    # ch65
+    ('YOU REMEMBER that the enemies', 'p'),
+    # ch66
+    ('AT THIS TIME Jesus gave to', 'p'),
+    # ch67
+    ('JESUS KNEW that the', 'p'),
+    # ch68
+    ('JESUS TOLD his disciples a', 'p'),
+    # ch69
+    ('WHILE JESUS was still passing', 'p'),
+    # ch70
+    ('JESUS EXPLAINED by a parable', 'p'),
+    # ch71
+    ('JESUS HAD now ended his work', 'p'),
+    # ch72
+    ('BUT BLIND Bartimeus was not', 'p'),
+    # ch73
+    ('FROM JERICHO to Jerusalem was', 'p'),
+    # ch74
+    ('THE NEWS that Jesus was at', 'p'),
+    # ch75
+    ('AFTER THE royal coming of', 'p'),
+    # ch76
+    ('AGAIN ON Tuesday morning of', 'p'),
+    # ch77
+    ('IMMEDIATELY after answering', 'p'),
+    ('"The stone which the builders', 'p'),
+    # ch78
+    ('THE ENEMIES of Jesus thought', 'p', 'they could destroy Jesus.'),
+    # ch79
+    ('WE HAVE heard much in the', 'p'),
+    # ch80
+    ('WHILE JESUS was talking in', 'p'),
+    ('"The Lord said to my Lord,', 'p'),
+    # ch81
+    ('THE ROOM in the Temple where', 'p'),
+    # ch82
+    ('JESUS WALKED across the Court', 'p'),
+    # ch83
+    ('AT THE CLOSE of a long talk', 'p', ' of the Ten Bridesmaids."'),
+    # ch84
+    ('THE SECOND of the three', 'p'),
+    # ch85
+    ('AFTER THE two parables of', 'p'),
+    # ch86
+    ('TUESDAY HAD been a busy day', 'p'),
+    # ch87
+    ('WHILE THEY were eating the', 'p'),
+    # ch88
+    ('JESUS SAW that his disciples', 'p'),
+    # ch89
+    ('JESUS WENT on giving his last', 'p'),
+    # ch90
+    ('DURING THE week of the', 'p'),
+    # ch91
+    ('THE MEN who took Jesus as', 'p'),
+    # ch92
+    ('THE HIGH PRIEST Caiaphas,', 'p'),
+    # ch93
+    ('ALTHOUGH the high council of', 'p'),
+    # ch94
+    ('HEROD, to whom Jesus had been', 'p'),
+    # ch95
+    ('WHEN PILATE sent Jesus to', 'p'),
+    # ch96
+    ('IN OUR TIME, and in all', 'p'),
+    # ch97
+    ('IT WAS the custom of the', 'p'),
+    ('THIS IS JESUS OF NAZARETH', 'h3'),
+    ('"They shared my garments', 'p'),
+    ('"In my thirst they gave me', 'p'),
+    # ch98
+    ('YOU REMEMBER that from the', 'p'),
+    # ch99
+    ('IT WAS FRIDAY evening at', 'p'),
+    # ch100
+    ('All THE FOUR gospels agree in', 'p'),
+    # ch101
+    ('WHEN JESUS was seen after he', 'p'),
+    # ch102
+    ('THE MEETING place of all who', 'p'),
+    # ch103
+    ('ON THE NIGHT before the death', 'p'),
+    # ch104
+    ('SOON AFTER the appearance of', 'p'),
+]
+
+# --- a-retrospect: display lines flattened to loose text ----------------------
+# Gutenberg #26744 sets each chapter's opening paragraph as a centred `<div>`
+# (the drop-cap "THE following account…"), every journal dateline as a
+# `<div class="right">` ("<i>January 10th.</i>"), and each displayed verse as a
+# single `<div class="poem">` — the importer handed those divs to the
+# sanitizer, which unwrapped them, and they shipped as 47 loose runs across the
+# 20 chapters (a 48th, ch12's MIDI transcriber's note, is cut by a
+# `replacements` pair above instead). Where a poem's div also held the prose
+# line after it ("seemed particularly appropriate…", "To be absent from the
+# body!…", "but also that when we fail…"), the importer now emits two blocks,
+# and the second head splits the run.
+# `ingest.display_line` keeps these (PR #3355); `wrap_loose_blocks` puts each
+# back in the block the importer emits, byte for byte but for the quotation
+# marks, curled in the fixture since (`tests_english_audit` checks every
+# English entry against the importer). ch18's opener keeps the fixture's
+# "[3]" footnote marker, which the importer does not carry.
+#
+# Every edition at once — `tests_translation_markup` pins the tag sequence.
+# The es edition carries the same 47 runs in the same places, so its entries
+# follow the English one for one, each headed by the Spanish run's own opening.
+# Left loose: ch20's back matter "or" / "or to" between the mission addresses
+# (a two-letter head would split every other run it occurs in) and the map
+# caption, whose line is `<b>MAP OF CHINA</b>` — the importer's `<h3>` there is
+# not a wrap of loose text.
+BODY_CORRECTIONS.setdefault("a-retrospect", {})["wrapped_blocks"] = [
+    # --- en ---
+    # ch1
+    ('THE following account', 'p'),
+    # ch2
+    ('THE first joys of conversion', 'p'),
+    # ch3
+    ('HAVING now the twofold', 'p'),
+    # ch4
+    ('THE remarkable and gracious', 'p'),
+    # ch5
+    ('I MUST not now attempt', 'p'),
+    # ch6
+    ('ONE day the doctor coming', 'p'),
+    # ch7
+    ('RETURNING to London when', 'p'),
+    # ch8
+    ('SOON after this the time', 'p'),
+    ('Hearken, O daughter,', 'p'),
+    # ch9
+    ('ON landing in Shanghai', 'p'),
+    # ch10
+    ('A JOURNEY taken in the', 'p'),
+    ('<i>Thursday, April 26th,', 'p'),
+    ('“The perils of the sea,', 'p'),
+    ('seemed particularly appropriate', 'p'),
+    ('“We speak of the realms', 'p'),
+    ('To be absent from the', 'p'),
+    # ch11
+    ('AFTER the retaking of', 'p'),
+    ('<i>January 8th, 1856.</i>', 'p'),
+    ('<i>January 10th.</i>', 'p'),
+    ('<i>January 11th.</i>', 'p'),
+    ('<i>January 12th.</i>', 'p'),
+    ('“He that dwelleth in', 'p'),
+    ('<i>Sunday, January 13th.</i>', 'p'),
+    ('<i>Monday, January 14th.</i>', 'p'),
+    ('“Ill that God blesses', 'p'),
+    # ch12
+    ('HAVING to leave the neighbourhood', 'p'),
+    ('“O Lord, how happy should', 'p'),
+    ('“And I will go!', 'p'),
+    ('2. Why live I here? the', 'p'),
+    # ch13
+    ('IT is interesting to', 'p'),
+    ('<i>August 4th, 1856.</i>', 'p'),
+    ('<i>August 5th.</i>', 'p'),
+    ('<i>August 6th.</i>', 'p'),
+    ('<i>August 7th.</i>', 'p'),
+    # ch14
+    ('IT now seemed very clear', 'p'),
+    ('Through midnight gloom', 'p'),
+    # ch15
+    ('THE autumn of 1856 was', 'p'),
+    ('“They who trust Him wholly', 'p'),
+    ('but also that when we', 'p'),
+    ('“Sufficient is His arm', 'p'),
+    # ch16
+    ('NOT infrequently our', 'p'),
+    ('<i>November 18th, 1857.</i>', 'p'),
+    # ch17
+    ('A SOMEWHAT different', 'p'),
+    # ch18
+    ('“My thoughts are not your', 'p'),
+    ('“Blind unbelief is <i>sure</i>', 'p'),
+    # ch19
+    ('IT was thus that in the', 'p'),
+    # ch20
+    ('THE events sketched in', 'p'),
+    # --- es ---
+    # ch1
+    ('EL siguiente relato', 'p'),
+    # ch2
+    ('LOS primeros gozos de', 'p'),
+    # ch3
+    ('Teniendo ahora el doble', 'p'),
+    # ch4
+    ('El notable y bondadoso', 'p'),
+    # ch5
+    ('No debo intentar ahora', 'p'),
+    # ch6
+    ('UN día, al entrar el', 'p'),
+    # ch7
+    ('AL REGRESAR a Londres,', 'p'),
+    # ch8
+    ('POCO después de esto', 'p'),
+    ('Oye, hija, y considera,', 'p'),
+    # ch9
+    ('AL desembarcar en Shanghái', 'p'),
+    # ch10
+    ('Un viaje realizado en', 'p'),
+    ('<i>Jueves, 26 de abril', 'p'),
+    ('«Los peligros del mar,', 'p'),
+    ('parecía particularmente', 'p'),
+    ('«Hablamos de las mansiones', 'p'),
+    ('¡Estar ausentes del', 'p'),
+    # ch11
+    ('DESPUÉS de la reconquista', 'p'),
+    ('<i>8 de enero de 1856.</i>', 'p'),
+    ('<i>10 de enero.</i>', 'p'),
+    ('<i>11 de enero.</i>', 'p'),
+    ('<i>12 de enero.</i>', 'p'),
+    ('«El que habita al abrigo', 'p'),
+    ('<i>Domingo 13 de enero.</i>', 'p'),
+    ('<i>Lunes 14 de enero.</i>', 'p'),
+    ('«El mal que Dios bendice', 'p'),
+    # ch12
+    ('TENER que dejar así,', 'p'),
+    ('«¡Oh Señor, cuán felices', 'p'),
+    ('«¡Y yo iré!', 'p'),
+    ('2. ¿Por qué vivo aquí?', 'p'),
+    # ch13
+    ('Es interesante observar', 'p'),
+    ('<i>4 de agosto de 1856.</i>', 'p'),
+    ('<i>5 de agosto.</i>', 'p'),
+    ('<i>6 de agosto.</i>', 'p'),
+    ('<i>7 de agosto.</i>', 'p'),
+    # ch14
+    ('Ahora parecía muy claro', 'p'),
+    ('Desde Macedonia, entre', 'p'),
+    # ch15
+    ('El otoño de 1856 estaba', 'p'),
+    ('«Los que en Él confían', 'p'),
+    ('sino también de que,', 'p'),
+    ('«Suficiente es Su brazo', 'p'),
+    # ch16
+    ('No pocas veces nuestro', 'p'),
+    ('<i>18 de noviembre de', 'p'),
+    # ch17
+    ('A comienzos del año', 'p'),
+    # ch18
+    ('«Mis pensamientos no', 'p'),
+    ('«La ciega incredulidad', 'p'),
+    # ch19
+    ('Fue así como, en el año', 'p'),
+    # ch20
+    ('LOS acontecimientos esbozados', 'p'),
+]
+
+# --- finney-memoirs: the 1876 Barnes/Oberlin scan, repaired against a second ---
+#
+# `memoirsofrevchar1876finn` is the base text (it keeps its end-of-line hyphens,
+# so every wrapped word rejoins exactly), but its OCR is damaged throughout: v
+# read as y ("conyerted"), R as E ("Eome", "Eev."), N as IST, G as Gr / G-,
+# h as li, opening quotes as ^^, stray gutter marks, decorative drop caps
+# ("'TTT'HEN"), printer's signature marks ("3*"), and the facsimile of a
+# handwritten sermon outline read as text. Every pair below was settled
+# against a SECOND scan of the same 1876 printing (`memoirsofrevchar00finnuoft`):
+# a word was replaced only where this scan reads a non-word and the witness a
+# word, or by hand where both read words and the context decides ("hurst" /
+# "burst", "Prom" / "From", "lie" / "he"). Nothing is reworded. The witness
+# also supplies pages 94-95, which this scan lost (the pair ending
+# "cannot remember."). Each `old` is unique in the book unless every
+# occurrence takes the same repair; the whole list is proved by re-deriving the
+# stored text from the raw scan (settled twice, identical).
+_FINNEY_MEMOIRS_PAIRS: list[tuple[str, str]] = [
+    ('pleased G-od in', 'pleased God in'),
+    ('extensive moyement of', 'extensive movement of'),
+    ('to reviyals of', 'to revivals of'),
+    ('this moyement inyolved, to', 'this movement involved, to'),
+    ('the \\ church', 'the church'),
+    ('language. * I', 'language. I'),
+    ('and sach cases', 'and such cases'),
+    ('doctrines •preached, so', 'doctrines preached, so'),
+    ('necessary tliat I', 'necessary that I'),
+    ('doctrinal yiews which', 'doctrinal views which'),
+    ('school \\ I', 'school I'),
+    ('<p>^ Up', '<p>Up'),
+    ('had neyer enjoyed', 'had never enjoyed'),
+    ('ministry. Eev. G-eorge W.', 'ministry. Rev. George W.'),
+    ('the old^school type', 'the old school type'),
+    ('the subject, r^ I', 'the subject. I'),
+    ('said, ^* Ask,', 'said, " Ask,'),
+    ('continually con1* fess, substantially,', 'continually confess, substantially,'),
+    ('drive me-into scepticism.', 'drive me into scepticism.'),
+    ('were \\^ before', 'were before'),
+    ("your leanness.'^ I", 'your leanness. " I'),
+    ('did not^ 1 pray', 'did not pray'),
+    ('to giye them the', 'to give them the'),
+    ('in tbe autumn', 'in the autumn'),
+    ('and giye me', 'and give me'),
+    ("me, '^ What", 'me, " What'),
+    ('to Grod ?', 'to God ?'),
+    ('<p>j Just', '<p>Just'),
+    ('of G-ospel salvation \\ opened', 'of Gospel salvation opened'),
+    ('my part^ was4a.get™my-0W]i.CGBsent to', 'my part, was to get my own consent to'),
+    ('give up,my sins,', 'give up my sins,'),
+    ('be wrQu^t out^by my', 'be wrought out, by my'),
+    ('me asL.my God', 'me as my God'),
+    ("to haye said, '' I will", 'to have said, " I will'),
+    ('— ^^ I', '— " I'),
+    ('to G-od before', 'to God before'),
+    ('my 1 \\ \\ I promise,', 'my promise,'),
+    ('me. ^^What!" I', 'me. "What!" I'),
+    ("state. r'was~~as conscious", 'state. I was as conscious'),
+    ('as 1 was', 'as I was'),
+    ('The Sj)irit seemed', 'The Spirit seemed'),
+    ("text, ^' When", 'text, " When'),
+    ("your heart. *' The", 'your heart." The'),
+    ('of G-od who', 'of God who'),
+    ('to G-od while', 'to God while'),
+    ('? 1 tried', '? I tried'),
+    ('put np my', 'put up my'),
+    ('was, ^^ I', 'was, " I'),
+    ('I \\ saw', 'I saw'),
+    ("out, '* I shall", 'out, "I shall'),
+    ('to COl^^VERSION TO CHRIST. Zl pass', 'to pass'),
+    ('I said^, ^^ Lord,', 'I said, " Lord,'),
+    ("mind, '^ Why did", 'mind, "Why did'),
+    ('of G-od that', 'of God that'),
+    ('before.</p><p>returned', 'before. returned'),
+    ("me, ^' Will", 'me, " Will'),
+    ('cried, ^^ :N"o !', 'cried, " :No !'),
+    ('of G-od had', 'of God had'),
+    ('soul. ^^-. --_-- - In', 'soul. In'),
+    ('the d^c^jme^ofjustification by', 'the doctrine of justification by'),
+    ('present experiejice^_\\That doctrine', 'present experience. That doctrine'),
+    ('justification.</p><p>\\</p>', 'justification.</p>'),
+    ("said, '' What", 'said, " What'),
+    ('that G-od wanted', 'that God wanted'),
+    ('of G-od and', 'of God and'),
+    ('put m competition', 'put in competition'),
+    ('to conyerse with any', 'to converse with any'),
+    ("said, '^ Mr.", 'said, " Mr.'),
+    ('<p>• I', '<p>I'),
+    ('of Grod made', 'of God made'),
+    ('an unconyerted girl', 'an unconverted girl'),
+    ('I haye spoken, a', 'I have spoken, a'),
+    ('what 1 had', 'what I had'),
+    ('had lone for', 'had done for'),
+    ('very much-Jiardened. And', 'very much hardened. And'),
+    ('a Mr. 0 , who had', 'a Mr. C , who had'),
+    ('that ifc was', 'that it was'),
+    ('from Cod. I', 'from God. I'),
+    ('he, ^* there', 'he, " there'),
+    ('had neyer made', 'had never made'),
+    ('that eyening ;', 'that evening ;'),
+    ('every eyening for', 'every evening for'),
+    ('their conyersion ;', 'their conversion ;'),
+    ('a yery wonderful', 'a very wonderful'),
+    ('were conyerted one', 'were converted one'),
+    ('the yillage in', 'the village in'),
+    ('to haye meat', 'to have meat'),
+    ('the loye of', 'the love of'),
+    ('an unconyerted man ;', 'an unconverted man ;'),
+    ('and haye .left', 'and have .left'),
+    ('I neyer heard a', 'I never heard a'),
+    ('dropped liis head,', 'dropped his head,'),
+    ('greatly moyed ;', 'greatly moved ;'),
+    ('hopefully conyerted. I', 'hopefully converted. I'),
+    ('attended, ^nd therefore', 'attended, and therefore'),
+    ('pray. Yery soon', 'pray. Very soon'),
+    ('sinner neyer will', 'sinner never will'),
+    ('came, ^^ Squire W', 'came, "Squire W'),
+    (': ^^I went', ': "I went'),
+    ('shout, ^ I', 'shout, I'),
+    ('would haye a', 'would have a'),
+    ('of Grod shone', 'of God shone'),
+    ('worshipped Grod except', 'worshipped God except'),
+    (';</p><p>and the', '; and the'),
+    ('calm. ^ I', 'calm. I'),
+    ('praying ^^ without', 'praying without'),
+    ('let Mm lead', 'let him lead'),
+    ('in tlie highest', 'in the highest'),
+    ('through tlie same', 'through the same'),
+    ('time T tried', 'time I tried'),
+    ("replied, '^ Brother W", 'replied, "Brother W'),
+    ("me, '' Why,", 'me, " Why,'),
+    ('present the^ase before', 'present the case before'),
+    ('to Grod ;', 'to God ;'),
+    ('<p>ADAMS.</p><p>', '<p>'),
+    ('was conyerted I', 'was converted I'),
+    ('for the~6teet-attdr available', 'for the elect and available'),
+    ('conversation iastM^nearlylialF "^a"day. He', 'conversation lasted nearly half a day. He'),
+    ('for jbhemj* We', 'for them ? We'),
+    ("theology. ~' He", 'theology. He'),
+    ("of, ^' A revival", 'of, "A revival'),
+    ('revival. {~ ~And here,', 'revival. And here,'),
+    ('would giye what', 'would give what'),
+    ('of beingable to', 'of being able to'),
+    ('<p>He~held also', '<p>He held also'),
+    ('to haye many', 'to have many'),
+    ("myself, '' I", 'myself, " I'),
+    ('I cgjinot believe', 'I can not believe'),
+    ('higher doctrines^ OLL,Qalvinism. ^Nevertheless, as', 'higher doctrines of Calvinism. Nevertheless, as'),
+    ('endless punish^ ment.^ He', 'endless punish ment. He'),
+    ('right yiew of', 'right view of'),
+    ('purpose." *\'Well," said', 'purpose." "Well," said'),
+    ('; ^ that', '; that'),
+    ('as \'^Father ]N"ash." He', 'as "Father Nash." He'),
+    ('to Grod. Of', 'to God. Of'),
+    ('knees oyer my', 'knees over my'),
+    ('an indispensable-qualification of', 'an indispensable qualification of'),
+    ('in pr§a.cMa^~ili&,^Gofpel./ The', 'in preaching the Gospel. The'),
+    ('what L have', 'what I have'),
+    ('First, lie maintained', 'First, he maintained'),
+    ('that tlie guilt', 'that the guilt'),
+    ('sin 3* \\ imputed', 'sin imputed'),
+    ('elect haye first', 'elect have first'),
+    ('accepted tjo^j^^sbyterian confession', 'accepted the Presbyterian confession'),
+    ('unambiguous teachings" of-the\' confession', 'unambiguous teachings of the confession'),
+    ('hesitate tojdemolish them,', 'hesitate to demolish them,'),
+    ('of G-od ;', 'of God ;'),
+    ('him \\ preach.', 'him preach.'),
+    ("was ' \\ then", 'was then'),
+    ('perfect \\ strait-jacket', 'perfect strait-jacket'),
+    ('his / people', 'his people'),
+    ('to / believe', 'to believe'),
+    ('must be^sure to', 'must be sure to'),
+    ('their ma-y^ ture was', 'their nature was'),
+    ('northern part^ of', 'northern part of'),
+    ("my labors^¥E vans' Mills,", "my labors at Evans' Mills,"),
+    ('that 1 might', 'that I might'),
+    ('as vou admit', 'as you admit'),
+    (": '' You", ': " You'),
+    ('said, ^ We', "said, ' We"),
+    ("us.' *' This", "us.' This"),
+    ('and yery weak', 'and very weak'),
+    ('serve Grod ;', 'serve God ;'),
+    ('reject Ohrist and', 'reject Christ and'),
+    ('to tlie village.', 'to the village.'),
+    ('lodgings, 1 accepted', 'lodgings, I accepted'),
+    ('presented, tliat like', 'presented, that like'),
+    ('swept dier away', 'swept her away'),
+    (': ^^ Suffer', ': " Suffer'),
+    ('I haye yet', 'I have yet'),
+    ('hand, said, ^^Mr. Finney, I', 'hand, said, "Mr. Finney, I'),
+    ('my difiBculties. ISTow I', 'my difficulties. Now I'),
+    ('that ^he had', 'that she had'),
+    ('a Universalis t, and', 'a Universalist, and'),
+    ('because h^ feared', 'because he feared'),
+    ("would ^'^kill Finney.^^ As", 'would "kill Finney." As'),
+    ('a stranger-to me.', 'a stranger to me.'),
+    ('Mr. 0 .', 'Mr. C .'),
+    ('And,"</p><p>said', 'And," said'),
+    ("; ^' I", '; " I'),
+    ('prayer. Ho had', 'prayer. He had'),
+    ('whom lie made', 'whom he made'),
+    ("as '^ a hard", 'as "a hard'),
+    (': ^^ Without holiness', ': "Without holiness'),
+    ('could neyer be', 'could never be'),
+    ('and bQ accepted', 'and be accepted'),
+    ('to giye instruction', 'to give instruction'),
+    ('unwell." \'^ Yes," she', 'unwell." "Yes," she'),
+    ("replied, ^' I", 'replied, " I'),
+    ('pray;</p><p>and', 'pray; and'),
+    ("said, '^ God", 'said, " God'),
+    ('with loye —', 'with love —'),
+    ('indispensable condi- • tion of', 'indispensable condition of'),
+    ('few ^ years', 'few years'),
+    ('a reviyal of', 'a revival of'),
+    ("must '' take", 'must " take'),
+    ("substance: ^' I", 'substance: " I'),
+    ('for Grod. Thus', 'for God. Thus'),
+    ("say, ^^ Why don't", 'say, "Why don\'t'),
+    ('style oi oratory', 'style of oratory'),
+    ('work 4* w', 'work w'),
+    ('after onr recess', 'after our recess'),
+    ('I / should', 'I should'),
+    ('ministerial \\ profession', 'ministerial profession'),
+    ("said ^^you/' instead", 'said "you," instead'),
+    ("saying '^ they", 'saying " they'),
+    ("said '' hell/' and", 'said " hell," and'),
+    ('said, *^ Show me', 'said, "Show me'),
+    ('this ;^oint. They', 'this point. They'),
+    ('subject. \'^ Ministers,"', 'subject. " Ministers,"'),
+    ('toward mybrethren for', 'toward my brethren for'),
+    ('the G-ospel should', 'the Gospel should'),
+    ('absent. This_yQung man', 'absent. This young man'),
+    ('time ;</p><p>and I', 'time ; and I'),
+    ('his yiews are', 'his views are'),
+    ('unless lie addresses', 'unless he addresses'),
+    ('different ,^tand-point, and', 'different stand-point, and'),
+    ('<p>1 could', '<p>I could'),
+    ('<p>r^^^SolTalways is', '<p>So it always is'),
+    ('common exf horter will', 'common exhorter will'),
+    ('in LohdDn-went home', 'in London went home'),
+    ('I haye heard', 'I have heard'),
+    ('again. ^\' Why ! " they', 'again. "Why!" they'),
+    ("say, ^' anybody could", 'say, "anybody could'),
+    ('the Grospel instead', 'the Gospel instead'),
+    ('and jou will', 'and you will'),
+    ('that eyen in', 'that even in'),
+    ('be faithf al to', 'be faithful to'),
+    ('<p>see', "<p>I have been a pastor now for many years — indeed, ever since 1832 ; and I have never heard any complaint that I did not instruct the people. I do not believe it is true that my people are not as well instructed, so far as pulpit instruction is concerned, as those people are who sit under the preaching of written sermons. It is true that a man may write his sermons without studying much ; as it is true that he may preach extemporaneously without much study or thought. Many written sermons, that I have heard, manifested anything but profound, accurate thought.</p><p>My habit has always been to study the Gospel, and the best application of it, all the time. I do not confine myself to hours and days of writing my sermons ; but my mind is always pondering the truths of the Gospel, and the best ways of using them. I go among the people and learn their wants. Then, in the light of the Holy Spirit, I take a subject that I think will meet their present necessities. I think intensely on it, and pray much over the subject on Sabbath morning, for example, and get my mind full of it, and then go and pour it out to the people. Whereas one great difficulty with a written sermon is, that a man after he has written it, needs to think but little of the subject. He needs to pray but little. He perhaps reads over his manuscript Saturday evening, or Sabbath morning ; but he does not feel the necessity of being powerfully anointed, that his mouth may be opened and filled with arguments, and that he may be enabled to preach out of a full heart. He is quite at ease. He has only to use his eyes and his voice, and he can preach, in his way. It may be a sermon that has been written for years ; it may be a sermon that he has written, every word of it, within the week. But on Sabbath-day there is no freshness in it. It does not come necessarily new and fresh, and as an anointed message from God to his heart, and through his heart to the people.</p><p>I am prepared to say, most solemnly, that I think I have studied all the more for not having written my sermons. I have been obliged to make the subjects upon which I preached familiar to my thoughts, to fill my mind with them, and then go and talk them off to the people. I simply note the heads upon which I wish to dwell in the briefest possible manner, and in language not a word of which I use, perhaps, in preaching. I simply jot down the order of my propositions, and the positions which I propose to take ; and in a word, sketch an outline of the remarks and inferences with which I conclude.</p><p>But unless men will try it, unless they will begin and talk to the people, as best they can, keeping their hearts full of truth and full of the Holy Ghost, they will never make extemporaneous preachers. I believe that half an hour's earnest talk to the people from week to week, if the talk be pointed, direct, earnest, logical, will really instruct them more than the two labored sermons that those who write, get off to their people on the Sabbath. I believe the people would remember more of what is said, be more interested in it, and would carry it away with them to be pondered, vastly more than they do what they get from the labored written sermons.</p><p>I have spoken of my method of preparing for the pulpit in more recent years. When I first began to preach, and for some twelve years of my earliest ministry, I wrote not a word ; and was most commonly obliged to preach without any preparation whatever, except what I got in prayer. Oftentimes I went into the pulpit without knowing upon what text I should speak, or a word that I should say. I depended on the occasion and the Holy Spirit to suggest the text, and to open up the whole subject to my mind ; and certainly in no part of my ministry have I preached with greater success and power. If I did not preach from inspiration, I don't know how I did preach. It was a common experience with me, and has been during all my ministerial life, that the subject would open up to my mind in a manner that was surprising to myself. It seemed that I could see"),
+    ('of Grod had', 'of God had'),
+    ('<p>Irtell this,', '<p>I tell this,'),
+    ('have 7.^^. fee kxi^ tx^um^^^i^ ito<JuM> .</p><p>I. i/SixI HKUUi/) CkAjIu CWtyn-Cj tf(ju>tijU> , y/WKU/.t^t^nu (o/c/- &t/ e(^xx^ UuA>>.. Ujhj<^ Ivur^ruMcL .</p><p>II. m^ Cut ijirvtL kUfUr^ (^ l^.fli\\^j^ - a', 'have a'),
+    ("to '' preach", 'to " preach'),
+    ("said, '' If", 'said, " If'),
+    ("that ^' God", 'that " God'),
+    ('a Mr. 0 , who kept tlie village', 'a Mr. C , who kept the village'),
+    ('Deacon E ,', 'Deacon R ,'),
+    ('Mrs. 0 , the', 'Mrs. C , the'),
+    ('Mrs. E ,', 'Mrs. R ,'),
+    ('Mr. 0 , the', 'Mr. C , the'),
+    ('and loye upon', 'and love upon'),
+    ('place. Howeyei ■, the', 'place. However the'),
+    ("said: '^Up, get", 'said: "Up, get'),
+    ('of jfche Lord', 'of the Lord'),
+    ("<p>^'^ I", '<p>I'),
+    ('for tliey no', 'for they no'),
+    ('I haye not been m that', 'I have not been in that'),
+    ('he, "I^was then', 'he, "I was then'),
+    ('his 5* carriage.', 'his carriage.'),
+    ('When tlie revival', 'When the revival'),
+    ('Deacon E wanted', 'Deacon R wanted'),
+    ('Deacon E sitting', 'Deacon R sitting'),
+    (": '^ Ye", ': " Ye'),
+    ('Deacon E was', 'Deacon R was'),
+    ('to ]<:eep out', 'to keep out'),
+    ('to satisfy the', 'to the doctrine the'),
+    ('believes in the doctrine of', 'believes in that doctrine of'),
+    ('because if he', 'because God he'),
+    ('on ■=ibe__doctrine of', 'on the doctrine of'),
+    ('of Grod ;', 'of God ;'),
+    ('and concluded with remarks.', 'and feelings. with remarks.'),
+    ('themselves. I never', 'themselves. have never'),
+    ('a word said', 'a feelings." said'),
+    ('While T was', 'While I was'),
+    ('After the close of the meeting,', 'After the "I the meeting,'),
+    ('I haye not injured', 'I have not injured'),
+    ('she, ^^ I resisted', 'she, " I resisted'),
+    ('he had brought', 'he went brought'),
+    ('soon made everybody', 'soon Revivals everybody'),
+    ('is tliat a', 'is that a'),
+    ("he continned, '^ forced the conyiction upon", 'he continued, "forced the conviction upon'),
+    ("he, '^ after", 'he, " after'),
+    ('good. 1 might', 'good. I might'),
+    ('Le Eayville, a', 'Le Ray ville, a'),
+    (';</p><p>and in', '; and in'),
+    ('of G-od made', 'of God made'),
+    ('from G-od to', 'from God to'),
+    ('were conyerted ; and', 'were converted ; and'),
+    ('Judge 0 ,', 'Judge C ,'),
+    ('Judge 0 and', 'Judge C and'),
+    ('where Eutland joins', 'where Rutland joins'),
+    ("earnestly, '^ Did", 'earnestly, " Did'),
+    ('of Gouyerneur came', 'of Gouverneur came'),
+    ('to me/^Go to', 'to me, "Go to'),
+    ('returned tlie next', 'returned the next'),
+    ('again, ill time', 'again, in time'),
+    ('Mr. Einney ?', 'Mr. Finney ?'),
+    ('he tad but', 'he had but'),
+    ('him, ^^ Doctor,', 'him, " Doctor,'),
+    ('the matter?" \'^Nothing," was', 'the matter? " "Nothing," was'),
+    ("him, '^ Doctor, have", 'him, "Doctor, have'),
+    ('really t<) make', 'really to make'),
+    ('of the course they', 'of " Now, course they'),
+    ('them, ^^Now, mark', 'them, "Now, mark'),
+    ('he knew just', 'he repulsive just'),
+    ('say, beforehand.</p><p>and lie could', 'say, beforehand, and he could'),
+    ('and I shall be', 'and wife shall be'),
+    ("him, '' Mr.", 'him, " Mr.'),
+    ('that he is infinitely', 'that us is infinitely'),
+    ('given ua certain', 'given us certain'),
+    ('"Yes." "Well, we agree,', '"Yes." "What, we agree,'),
+    ('"Yes," J said. ^^What, according', '"Yes," I said. "What, according'),
+    ('God." \'\'Yes/\' I', 'God." "Yes," I'),
+    ('with ft sinful nature, or that', 'with a sinful certain pre established that'),
+    ('no need of that,"', 'no believe of that,"'),
+    ('not belieye any', 'not believe any'),
+    ('such a thing,', 'such convictions thing,'),
+    ('repent, but at', 'repent, believe, at'),
+    ('cannot, I will', 'cannot, "Mr. will'),
+    ("<p>'^Mr. S", '<p>"Mr. S'),
+    ('meeting • and', 'meeting and'),
+    ('meeting commenced, Mr.', 'meeting around, Mr.'),
+    ('as I did, or', 'as "as or'),
+    ('he, •" as', 'he, " as'),
+    ('it farther. I', 'it God." I'),
+    ('interview first with a', 'interview him, "Now a'),
+    ("to liim, '^Now you", 'to him, "Now you'),
+    ('oppose tha work', 'oppose the work'),
+    ('been converted." If', 'been " If'),
+    ('revival. ^^ Now,"', 'revival. " Now,"'),
+    ('not 6* know', 'not know'),
+    ('going through with', 'going " Mr. with'),
+    ('and said, ^^Mr. Finney, I', 'and said, "Mr. Finney, I'),
+    ('very mellow ;', 'very God ;'),
+    ('which G-od makes', 'which God makes'),
+    ('their hearts, adopted', 'their that, adopted'),
+    ('and she had never', 'and had never'),
+    ('faith _ and', 'faith and'),
+    ('fell into despair,', 'fell been despair,'),
+    ('M , who', 'M Nash, who'),
+    ('good.</p><p>\\</p>', 'good.</p>'),
+    ('FROM Gouyerneur I', 'FROM Gouverneur I'),
+    ('call, "Eallingunderjfche power', 'call, "Falling under the power'),
+    ('arisen, between, thelg^hodists and', 'arisen, between the Methodists and'),
+    ('the Presbyterians^ the', 'the Presbyterians ; the'),
+    ('a Eoman Catholic,', 'a Roman Catholic,'),
+    (", *^'How did", ', " How did'),
+    ('have ;</p><p>and I', 'have ; and I'),
+    ('the Eoman Catholic tailor,', 'the Roman Catholic tailor,'),
+    ('a Eoman Catholic ;', 'a Roman Catholic ;'),
+    ("he, ^'^ I", 'he, " I'),
+    ('down to-the synod', 'down to the synod'),
+    ('me.</p><p>aud how', 'me. and how'),
+    ('Western Eevivals." So', 'Western Revivals. " So'),
+    ('Oneida Associa tion," who,', 'Oneida Association," who,'),
+    ('revivals. Bu fc we', 'revivals. But we'),
+    ('could haye originated', 'could have originated'),
+    ('whole, reviyals of', 'whole, revivals of'),
+    ('Mr. G-ale had', 'Mr. Gale had'),
+    ('the conyersion of', 'the conversion of'),
+    ('Mr. G-ale invited', 'Mr. Gale invited'),
+    ('that 9-f ternoon, and', 'that afternoon, and'),
+    ('showed tliem up,', 'showed them up,'),
+    ("and XJoilE^iJiJ' t, th^_spii±LiiLp3:ay©r-w jng^especially among^the^emal^-members-^oi-the church:", 'and I found that the spirit of prayer was prevailing, especially among the female members of the church:'),
+    ("exclaimed, '^ Brother", 'exclaimed, " Brother'),
+    ('of Eome and', 'of Rome and'),
+    ('from Eome and from', 'from Rome and from'),
+    ('the reyival at', 'the revival at'),
+    ('I haye already', 'I have already'),
+    ('of unconyerted children.', 'of unconverted children.'),
+    ('a yery amiable family', 'a very amiable family'),
+    ('to conyerse with her', 'to converse with her'),
+    ('to belieye that she', 'to believe that she'),
+    ('was yery difficult', 'was very difficult'),
+    ('to conyict her', 'to convict her'),
+    ('a yery amiable girl', 'a very amiable girl'),
+    ('; bat she', '; but she'),
+    ("me, '^ Mr.", 'me, " Mr.'),
+    ('Her con victions were', 'Her convictions were'),
+    ('meantime, 0 ,', 'meantime, C ,'),
+    ('see 0 come', 'see C come'),
+    ('replied, ^^Mr. Finney,', 'replied, " Mr. Finney,'),
+    ('what 0— — had', 'what C had'),
+    ('that 0 must', 'that C must'),
+    ('upon 0 afresh.', 'upon C afresh.'),
+    ('said, ^^Yes, on', 'said, "Yes, on'),
+    ('said. " We used-to have ; but', 'said. "We used to have; but'),
+    ('daughter." ^^ Yes,"', 'daughter." " Yes,"'),
+    ('repent. 1 do', 'repent. I do'),
+    ("dead ?'^ I", 'dead ?" I'),
+    ('and illdesert clearly', 'and ill desert clearly'),
+    ('to \\ expect', 'to expect'),
+    ('to conyert them.', 'to convert them.'),
+    (': ^^ G-o and', ': " Go and'),
+    ("gentleman, '' he", 'gentleman, " he'),
+    ('I belieye there', 'I believe there'),
+    ('I haye often', 'I have often'),
+    ('in reyivals of', 'in revivals of'),
+    ('I haye found that', 'I have found that'),
+    ('a reyiyal of religion,', 'a revival of religion,'),
+    ('I haye frequently', 'I have frequently'),
+    ('<p>I haye said that', '<p>I have said that'),
+    ("from Eome and Wright's", "from Rome and Wright's"),
+    ('them np to', 'them up to'),
+    ("me, ^'Brother Pinney, it", 'me, "Brother Finney, it'),
+    ('to Eome and', 'to Rome and'),
+    (": '^ The", ': " The'),
+    ('against G-od ;', 'against God ;'),
+    ('meeting. _I_have said', 'meeting. I have said'),
+    ('meet forinstruction, suited', 'meet for instruction, suited'),
+    ('the -^ means', 'the means'),
+    ('rose v>^^ suddenly', 'rose suddenly'),
+    ('said, ^^ Now', 'said, " Now'),
+    ('so fall of', 'so full of'),
+    ('Mr. Grillett said,', 'Mr. Gillett said,'),
+    ('madness." ISTevertheless the', 'madness." Nevertheless the'),
+    (';</p><p>and both', '; and both'),
+    ('known, Grod did', 'known, God did'),
+    ('ridicule fche work', 'ridicule the work'),
+    ('remarked, ^^ Gentlemen,', 'remarked, " Gentlemen,'),
+    ('he, ^^ there', 'he, " there'),
+    ('at Eome ;', 'at Rome ;'),
+    ('for Mm to', 'for him to'),
+    ('that lie was glad', 'that he was glad'),
+    ('at Eome again.', 'at Rome again.'),
+    ('with lio instance', 'with no instance'),
+    ('at Eome at', 'at Rome at'),
+    ('remark. ^^ I', 'remark. " I'),
+    ('prayer * of', 'prayer of'),
+    ('spent the-night. It', 'spent the night. It'),
+    ('hope in- Christ,', 'hope in Christ,'),
+    ('exclaiming, "0 Mr.', 'exclaiming, "O Mr.'),
+    ('I haye found the', 'I have found the'),
+    ('the Sayiour !', 'the Saviour !'),
+    ('my conyersion ?', 'my conversion ?'),
+    ('I haye found when', 'I have found when'),
+    ('to giye them up.', 'to give them up.'),
+    ('to giye my', 'to give my'),
+    ('said, ^^I was', 'said, "I was'),
+    ('and 0 !', 'and O !'),
+    ("she, '' I wonder", 'she, " I wonder'),
+    ('at Eome about', 'at Rome about'),
+    ('of V V the', 'of the'),
+    ('a Yery prominent', 'a very prominent'),
+    ('a Yery useful', 'a very useful'),
+    ('I obseryed Mr.', 'I observed Mr.'),
+    ('I obseryed that', 'I observed that'),
+    ('said, ^^ My', 'said, " My'),
+    ('and giye up sin,', 'and give up sin,'),
+    ('and giye up yourself', 'and give up yourself'),
+    ("accept '^now, and", 'accept "now, and'),
+    ('became conyerted ;', 'became converted ;'),
+    ('were conyerted there.', 'were converted there.'),
+    ('and conyerted before', 'and converted before'),
+    ('whole conyersation in', 'whole conversation in'),
+    ('an unconyerted man.', 'an unconverted man.'),
+    ('That eyening he', 'That evening he'),
+    ('was yery much', 'was very much'),
+    ('a conyerted man. And', 'a converted man. And'),
+    ('the 8* people', 'the people'),
+    ('own place^ tliat when', 'own place, that when'),
+    ('a yery prominent citizen,', 'a very prominent citizen,'),
+    ('occurred. _^- I', 'occurred. I'),
+    ('fact Grod was', 'fact God was'),
+    ('congregation. Eevivals were', 'congregation. Revivals were'),
+    ('as tliey afterwards', 'as they afterwards'),
+    ('T ^ naming', 'T , naming'),
+    ('at fche machinery,', 'at the machinery,'),
+    ('scarcely eyer attended.', 'scarcely ever attended.'),
+    ('The reyiyal went', 'The revival went'),
+    ('were hopefully conyerted.</p><p>As', 'were hopefully converted.</p><p>As'),
+    ('hopeful conyersion of', 'hopeful conversion of'),
+    ('to giye a', 'to give a'),
+    ('Mrs. 0 , Hying', 'Mrs. C , living'),
+    ('a yery praying,', 'a very praying,'),
+    ('a yery prominent place', 'a very prominent place'),
+    ('a yery great', 'a very great'),
+    ('became yery much excited,', 'became very much excited,'),
+    ('became yery anxious', 'became very anxious'),
+    ('would nut go', 'would not go'),
+    ('Mrs. 0 came', 'Mrs. C came'),
+    ('of TJtica was', 'of Utica was'),
+    (": '' One", ': " One'),
+    ('confession lie could.', 'confession he could.'),
+    ('the Eev. Mr.', 'the Rev. Mr.'),
+    ('county, Eev. John', 'county, Rev. John'),
+    ('from Eome and Utica,', 'from Rome and Utica,'),
+    ('should \\ remain', 'should remain'),
+    ('to saye them', 'to save them'),
+    ('away, find when', 'away, and when'),
+    ('were conyerted ; that', 'were converted ; that'),
+    ('as eyidence that', 'as evidence that'),
+    ('were conyerted.</p>', 'were converted.</p>'),
+    ('I haye eyer done', 'I have ever done'),
+    ('became yery common', 'became very common'),
+    ('sudden conyersions were', 'sudden conversions were'),
+    ('and proye not', 'and prove not'),
+    ('soundly conyerted. But', 'soundly converted. But'),
+    ('the eyent proyed, that', 'the event proved, that'),
+    ('that eyer haye been', 'that ever have been'),
+    ('ministry. I haye said that', 'ministry. I have said that'),
+    ('those reyiyals were', 'those revivals were'),
+    ('letter, lie asserted', 'letter, he asserted'),
+    ('those reyiyals prevailed,', 'those revivals prevailed,'),
+    ("<p>npvE. LA^N'SIlSTGr, pastor", '<p>DR. LANSING, pastor'),
+    ('of tlie First', 'of the First'),
+    ('Presbyterian Churcli ■^-^ at', 'Presbyterian Church at'),
+    ('the reyiyal tbere, and', 'the revival there, and'),
+    ('me. T said', 'me. I said'),
+    ("it, '' put", 'it, " put'),
+    (': "0 Lord,', ': "O Lord,'),
+    ('But 0 Lord', 'But O Lord'),
+    ('William E. Weeks,', 'William R. Weeks,'),
+    ('The reyival soon', 'The revival soon'),
+    ('a yery timid', 'a very timid'),
+    ("out, '' Name", 'out, " Name'),
+    ('<p>j There', '<p>There'),
+    ("<p>— Thei'e'^rere several", '<p>There were several'),
+    ("manner, '' Mr.", 'manner, " Mr.'),
+    ('excellent _^,..^-~^>astor.</p>', 'excellent pastor.</p>'),
+    ('a confes\\ sion was', 'a confession was'),
+    ('narrative 9*</p>', 'narrative</p>'),
+    ('1826, 1 accepted', '1826, I accepted'),
+    ('the reviyal of', 'the revival of'),
+    ('evening, Jie manifested', 'evening, he manifested'),
+    ('that ho was', 'that he was'),
+    ('gone, Eev. Horatio', 'gone, Rev. Horatio'),
+    ("said, ^' Pray", 'said, " Pray'),
+    ('wealthy, unconyerted man.', 'wealthy, unconverted man.'),
+    ('a Dr.W ,', 'a Dr. W ,'),
+    ("text, '^ The", 'text, " The'),
+    ('Mr.</p><p>0 .', 'Mr. C .'),
+    ('Mr. 0 was', 'Mr. C was'),
+    ('before tbe convention', 'before the convention'),
+    ('of ns were', 'of us were'),
+    ('College, Eev. Justin', 'College, Rev. Justin'),
+    ('Mr. Grillett of', 'Mr. Gillett of'),
+    (': ^^ We', ': " We'),
+    ('Mr. ISTettleton came', 'Mr. Nettleton came'),
+    ('Mr. ISTettleton and', 'Mr. Nettleton and'),
+    ("West, '' We", 'West, " We'),
+    ('those reyivals ;', 'those revivals ;'),
+    ('this conyention justifies,', 'this convention justifies,'),
+    ("said, '^ Of", 'said, " Of'),
+    ('page 101^ I', 'page 101, I'),
+    ('says, ^^A careful', 'says, " A careful'),
+    ('those reyiyals —', 'those revivals —'),
+    ('have belieyed that', 'have believed that'),
+    ('must haye wholly', 'must have wholly'),
+    ('still belieyed those', 'still believed those'),
+    ('the reyiyals ?', 'the revivals ?'),
+    ('would haye been', 'would have been'),
+    ('still belieyed it', 'still believed it'),
+    ('he *^ would', 'he " would'),
+    ('not haye had', 'not have had'),
+    ('to belieye that the', 'to believe that the'),
+    ('those reyiyals occurred,', 'those revivals occurred,'),
+    ('be belieyed in', 'be believed in'),
+    ('must haye been', 'must have been'),
+    ('Mr. ]N"ettleton, much', 'Mr. Nettleton, much'),
+    ('I neyer heard the', 'I never heard the'),
+    ('<p>Eevivals should', '<p>Revivals should'),
+    ('that 1 was', 'that I was'),
+    ("Dr. Beecher's biography reopened", 'Dr. Beech ers biography reopened'),
+    ('as Eev. Dr.', 'as Rev. Dr.'),
+    ('Aiken, Eev. John Prost, Eev. Moses', 'Aiken, Rev. John Frost, Rev. Moses'),
+    ('Gillett, Eev. Mr.', 'Gillett, Rev. Mr.'),
+    (': ^^ In', ': " In'),
+    ('days. 10*</p>', 'days.</p>'),
+    ('horse ? " "0 yes ! "', 'horse ? " "O yes ! "'),
+    ('replied, ^^ perfectly', 'replied, " perfectly'),
+    ('text, *^ God', 'text, " God'),
+    ('Zebulon E. Shipherd,', 'Zebulon R. Shipherd,'),
+    ('of the^ revival', 'of the revival'),
+    ('of sm as', 'of sin as'),
+    ('been receiying yotes, precisely', 'been receiving votes, precisely'),
+    ('<p>^" As', '<p>As'),
+    ('</p><p>\\*v..</p>', '</p>'),
+    ('preceding VV summer, Eev. Mr.', 'preceding summer, Rev. Mr.'),
+    ('any effort^^legiLihey-should I take', 'any effort, lest they should take'),
+    ('of theTiands of', 'of the hands of'),
+    ('immediate repent1 ance, and', 'immediate repentance, and'),
+    ('interested. NaL^unfraquently, when', 'interested. Not unfrequently, when'),
+    ('<p>in the^meantime, Mr.', '<p>In the meantime, Mr.'),
+    ('replied, *^Mrs. Gilbert,', 'replied, "Mrs. Gilbert,'),
+    ('replied, -^Well, it', 'replied, "Well, it'),
+    ('deserve." ^~ Just', 'deserve." Just'),
+    ('many af Mr.', 'many of Mr.'),
+    ('<p>Eev. James', '<p>Rev. James'),
+    ('all KEVIVAL AT PHILADELPHIA. Ml occasions,', 'all occasions,'),
+    ('peculiar yiews of', 'peculiar views of'),
+    ('at __jdl,_£xcept to', 'at all, except to'),
+    ('duty 1 to', 'duty to'),
+    ('the 1 opportunity', 'the opportunity'),
+    ('she 1 must', 'she must'),
+    ('it with• \\__ojflt neglecting', 'it with out neglecting'),
+    ('to 1/ meeting,', 'to meeting,'),
+    ('years. "^ But', 'years. But'),
+    (';</p><p>and now', '; and now'),
+    ('that G-od had', 'that God had'),
+    ("her, '' Catharine,", 'her, " Catharine,'),
+    ('to belieye that God', 'to believe that God'),
+    ('good." "0 yes!"', 'good." "O yes!"'),
+    ('that." \'^ Well,', 'that." " Well,'),
+    ("and peace.</p><p>\\\\'i^ and", 'and peace, and'),
+    ('that G-od might', 'that God might'),
+    ("language, ''Yes !", 'language, "Yes !'),
+    ("she, '' I will", 'she, " I will'),
+    ('burst into-tears as', 'burst into tears as'),
+    ('soul. "]N"ow," said', 'soul. "Now," said'),
+    ('and 11* she', 'and she'),
+    ('would rum her', 'would ruin her'),
+    ("many '^ the", 'many " the'),
+    ('the reyival began', 'the revival began'),
+    ('of G-od revealed', 'of God revealed'),
+    ('hear liim preach', 'hear him preach'),
+    ('of che Presbjterianchurch, and', 'of the Presbyterian church, and'),
+    ('were .almost uniyersally embraced^ I', 'were almost universally embraced, I'),
+    ('do. Grod commands liim to', 'do. God commands him to'),
+    ('the Eev. Baptist', 'the Rev. Baptist'),
+    ('of 1829-30,„I went to. Eeadingp^K5it3^ about', 'of 1829-30, I went to Reading, a city about'),
+    ('In Eeading there', 'In Reading there'),
+    ('the Eev. Dr.', 'the Rev. Dr.'),
+    ('of jthe church,', 'of the church,'),
+    ('present • and', 'present ; and'),
+    ('them, ^^I cannot', 'them, "I cannot'),
+    ('tried tc strip', 'tried to strip'),
+    ('that rere heard', 'that were heard'),
+    ("had '* cared", 'had " cared'),
+    ("me, '' 0, Mr.", 'me, " O, Mr.'),
+    ("exclaimed, '^ If this", 'exclaimed, "If this'),
+    ('?" "0," said ne, "we', '?" "O," said he, "we'),
+    ("heart. '' 0 yes", 'heart. " O yes'),
+    ('said, ^^ 0 yes', 'said, " O yes'),
+    ('spot. *^0h!" he', 'spot. "Oh!" he'),
+    ('said, ^^ if', 'said, " if'),
+    ('large 266 MEMOIRS or chaeles g. fiknet.</p><p>scale,', 'large scale,'),
+    ('into tlie business.', 'into the business.'),
+    ("once, '^ I", 'once, " I'),
+    ("me, '^Do you", 'me, " Do you'),
+    ("know him ?^' I", 'know him?" I'),
+    ("said, '^ Yes,", 'said, " Yes,'),
+    ('people, 1 applied', 'people, I applied'),
+    ("said, '* If I", 'said, "If I'),
+    ('in Eeading until', 'in Reading until'),
+    ('many yery striking conyersions ;', 'many very striking conversions ;'),
+    ('I haye never', 'I have never'),
+    ('From Eeading I', 'From Reading I'),
+    ('when lie was', 'when he was'),
+    ('a conyerted man. But', 'a converted man. But'),
+    ('consulted Eev.</p><p>Dr. 0 , an', 'consulted Rev. Dr. C , an'),
+    ('Dr. 0 , in yiew of', 'Dr. C , in view of'),
+    ('were yery deep.', 'were very deep.'),
+    ('the Sayiour ;', 'the Saviour ;'),
+    ('a yery solemn', 'a very solemn'),
+    ('Dr. 0 was', 'Dr. C was'),
+    ('give bis heart', 'give his heart'),
+    ('would oyer have,', 'would ever have,'),
+    ('However, 1 did', 'However, I did'),
+    ('as 1 had', 'as I had'),
+    ('the you ig man', 'the young man'),
+    ('in it^ and', 'in it, and'),
+    ('town, ^nd-fion versed with', 'town, and conversed with'),
+    ('day 12* during', 'day during'),
+    ('" There-is now', '" There is now'),
+    ('Then • the', 'Then the'),
+    ('made \\^<Qhristians.</p>', 'made Christians.</p>'),
+    ('nap at-night, to', 'nap at night, to'),
+    ('<p><e Do', '<p>" Do'),
+    ('all f orgiye you', 'all forgive you'),
+    ('" 0 yes', '" O yes'),
+    ('turned around, went', 'turned " went'),
+    ('passed. \'^ Well,"', 'passed. " Well,"'),
+    ('since ? " "0 yes ! "', 'since ? " "O yes ! "'),
+    ('with lier hair', 'with her hair'),
+    ('indicated that she', 'indicated Finney, she'),
+    ("deranged. Said I, '' My", 'deranged. have I, " My'),
+    ('I haye stolen', 'I have stolen'),
+    ('humility, a deep', 'humility, delightful deep'),
+    ('to Mr. Phelps, and', 'to have Phelps, and'),
+    ('I haye not seen', 'I have not seen'),
+    ('not since I', 'not "Did I'),
+    ('alluded to. I then', 'alluded "Well, then'),
+    ('that young woman ? " "0 yes ! "', 'that " woman ? " "O yes ! "'),
+    ("family. ^' Well,", 'family. " Well,'),
+    ('I. \'^ 0," said', 'I. " O," said'),
+    ('character?" "0 yes!"', 'character?" "O yes!"'),
+    ('already referred to.', 'already Finney to.'),
+    ('Mr. Einney are', 'Mr. Finney are'),
+    ('know that these', 'know Rev. these'),
+    ('utterly unreliable." Lewis, not doubting that', 'utterly "W that'),
+    ('to Eev.</p>', 'to Rev.</p>'),
+    ('— • — had', '— — had'),
+    ('and the Unitarians', 'and praying Unitarians'),
+    ('new measures for the conversion', 'new measures New the conversion'),
+    ('was then pastor of the', 'was then Free of the'),
+    ('at Eochester were', 'at Rochester were'),
+    ('the subject^ nntil I', 'the subject, until I'),
+    (': ^^ Ah !', ': "Ah !'),
+    ('going. 1 felt', 'going. I felt'),
+    ('that Eochester was', 'that Rochester was'),
+    ('in Eochester early', 'in Rochester early'),
+    ('and cliurclies, and', 'and churches, and'),
+    ('overcome /V^ was', 'overcome was'),
+    ('them [to_ others', 'them to others'),
+    ('the anx^ ious seat,', 'the anxious seat,'),
+    ('morning T recollect', 'morning I recollect'),
+    ('B ■ found', 'B found'),
+    ('to Grod." \'\' What', 'to God." \' \' What'),
+    ('said, ^^I am', 'said, "I am'),
+    ('that lie was unable', 'that he was unable'),
+    ('women, 13* the', 'women, the'),
+    ('with ajawyer, who', 'with a lawyer, who'),
+    ('him, ** Do you', 'him, "Do you'),
+    ('God ? " "0 yes ! "', 'God ? " "O yes ! "'),
+    ('atheist." ^^Well, do', 'atheist." "Well, do'),
+    ('" ^^0 yes', '" "O yes'),
+    ("answered, ''I cannot", 'answered, "I cannot'),
+    ('"after 1 left', '"after I left'),
+    ('throughout, sev eral states,', 'throughout, several states,'),
+    ('greatest reyiyal of', 'greatest revival of'),
+    ('that tlie world', 'that the world'),
+    ('has eyer seen^ in', 'has ever seen, in'),
+    ("remarked, ^' were", 'remarked, " were'),
+    ("said, '^ is", 'said, " is'),
+    ('a reyiyal of religion.', 'a revival of religion.'),
+    ('I haye spoken, open', 'I have spoken, open'),
+    ('to reyiyals of', 'to revivals of'),
+    ('high, reyiyals had', 'high, revivals had'),
+    ('the conyersions sound,', 'the conversions sound,'),
+    ('the conyiction became', 'the conviction became'),
+    ('<p>BOSTON.</p><p>DUEING the', '<p>DURING the'),
+    ('in Eochester at', 'in Rochester at'),
+    ('close, Eev. Dr.', 'close, Rev. Dr.'),
+    ('at Eochester ;', 'at Rochester ;'),
+    ('in Eochester had', 'in Rochester had'),
+    ("said, ^'Mr. Finney,", 'said, "Mr. Finney,'),
+    ('were hopefully conyerted.</p><p>The', 'were hopefully converted.</p><p>The'),
+    ('of Eev. Dr.', 'of Rev. Dr.'),
+    ('sinner\'s ^\'cannot" is', 'sinner\'s "cannot" is'),
+    ('his \'^will not,"', 'his " will not,"'),
+    ("called ^' the", 'called " the'),
+    (';</p><p>that', '; that'),
+    ('was, *^^Lord, do', 'was, "Lord, do'),
+    ('which Eev. Dr.', 'which Rev. Dr.'),
+    (';</p><p>and several', '; and several'),
+    ('Josiah Ohapin ;', 'Josiah Chapin ;'),
+    ('me, ** Mr.', 'me, " Mr.'),
+    ('she, ^^ I see', 'she, " I see'),
+    ('giving he?</p><p>as', 'giving her as'),
+    ('ministers, ^^to spy', 'ministers, " to spy'),
+    ('me. 1 had', 'me. I had'),
+    ('?" \'^ If', '?" " If'),
+    ('triumph oyer us,', 'triumph over us,'),
+    ('retain tliem, lie simply', 'retain them, he simply'),
+    ('Holy Grhost the', 'Holy Ghost the'),
+    ('that Grod has', 'that God has'),
+    ('it np for', 'it up for'),
+    ('and w^«nen~woul4 underta.ke this', 'and women would undertake this'),
+    ('work. WhenTwe wished', 'work. When we wished'),
+    ('be filled^ ^ny evening', 'be filled, any evening'),
+    ('about. 14* It', 'about. It'),
+    ('fitted np for', 'fitted up for'),
+    ('happened, lie sat', 'happened, he sat'),
+    ('it, ^^he held', 'it, "he held'),
+    ('the cliurclies, and', 'the elm relies, and'),
+    ('with ns, and', 'with us, and'),
+    ('Judge Piatt found', 'Judge Platt found'),
+    ('as tliey then', 'as they then'),
+    ('on Eevivals." Twelve', 'on Revivals." Twelve'),
+    ('lectures. 1 recollect', 'lectures. I recollect'),
+    ('before 1 had', 'before I had'),
+    ('1835, Eev. John', '1835, Rev. John'),
+    ('and Eev. Asa', 'and Rev. Asa'),
+    ('interested lin the', 'interested in the'),
+    ('it immedi/ ately.</p>', 'it immediately.</p>'),
+    ("acted *' over", 'acted " over'),
+    ('I said^ therefore,', 'I said, therefore,'),
+    ('arrived inOherlin at', 'arrived in Oberlin at'),
+    ('in yery large', 'in very large'),
+    ('of tlie institution', 'of the institution'),
+    ('Christians. ^ Many', 'Christians. Many'),
+    ('human con- ~ science and', 'human conscience and'),
+    ('great 340 memoies of CHARLES G. fi:njsey.</p><p>■weakness of', 'great weakness of'),
+    ('a reviYaL \\ state,', 'a revival state,'),
+    ('in plieTevival in', 'in the revival in'),
+    ('a largo place,', 'a large place,'),
+    ('of ** pastoral theology', 'of "pastoral theology'),
+    ("of ''~Hu4son, and", 'of Hudson, and'),
+    ('say, thatthe weapons', 'say, that the weapons'),
+    ('thus / formed', 'thus formed'),
+    ('sessions. XxecollectJiearing it', 'sessions. I recollect hearing it'),
+    ('said, J3y_one-of-tl;ie ministers', 'said, by one of the ministers'),
+    ('those S^f Eoman Catholicism.', 'those of Roman Catholicism.'),
+    ('upon tlie principles', 'upon the principles'),
+    ('college 15* in', 'college in'),
+    ('of Grod has', 'of God has'),
+    ('ride. "0," she', 'ride. "O," she'),
+    ("? ^' I", '? " I'),
+    ('me as^she could', 'me as she could'),
+    ('would Just \\ as', 'would just as'),
+    ('; — ^Mr. Willard', '; Mr. Willard'),
+    ('we disabused the', 'we dis abused the'),
+    ("preserved '^ the", 'preserved " the'),
+    ('the stateof public', 'the state of public'),
+    ('mentioned 1 that', 'mentioned that'),
+    ('in >; the', 'in the'),
+    ('mind. This.^lace became', 'mind. This place became'),
+    ('points ^n "the', 'points on "the'),
+    ("underground _railxoady^' as", 'underground railroad," as'),
+    ('slavery. SlaveI catchers found', 'slavery. Slave-catchers found'),
+    ('Josiah Ohapin and', 'Josiah Chapin and'),
+    ('Mr. Ohapin for', 'Mr. Chapin for'),
+    ('many strikingcases of', 'many striking cases of'),
+    ('part oi the', 'part of the'),
+    ('<p>at Beside,', '<p>Beside,'),
+    ('Dr. 0 .', 'Dr. C .'),
+    ('Dr. 0 , as', 'Dr. C , as'),
+    ('emotion, ^^ I', 'emotion, " I'),
+    ("to heayen I ''</p>", 'to heaven I "</p>'),
+    ("question: '* Do we", 'question: "Do we'),
+    ('Mr. Pinney, I', 'Mr. Finney, I'),
+    ("remarking, ^' I", 'remarking, " I'),
+    ('<p>f He', '<p>He'),
+    ('not _go^ farther', 'not go farther'),
+    ('<p>Tlie measures', '<p>The measures'),
+    ('God wastrying to', 'God was trying to'),
+    ('expressly, ^ that', 'expressly, that'),
+    ('always in-your public', 'always in your public'),
+    ('discourses \\ carry', 'discourses carry'),
+    ('some conversa-~ tions I', 'some conversations I'),
+    ('of 1 truth.', 'of truth.'),
+    ('in EoI Chester, in', 'in Rochester, in'),
+    ('to meny^tix>.n-other instances', 'to mention other instances'),
+    ('a Eoman Catholic priest.', 'a Roman Catholic priest.'),
+    ('in tlie Eoman Catholic', 'in the Roman Catholic'),
+    ('of Eoman Catholics.', 'of Roman Catholics.'),
+    ('the Eoman Catholics,', 'the Roman Catholics,'),
+    ('room, wheEi -, they', 'room, when they'),
+    ('<p>— ^Fery many', '<p>Very many'),
+    ('embodied \\ in', 'embodied in'),
+    ('studies, • as', 'studies, as'),
+    ('to 1 apprehend', 'to apprehend'),
+    ('to con\\ viction, and', 'to conviction, and'),
+    ('deal \\ with,', 'deal with,'),
+    ('<p>r T! have', '<p>I have'),
+    ('of hyper/ Calvinism have', 'of hyper-Calvinism have'),
+    ('indeed alLfoxms-olfun^amental error,', 'indeed all forms of fundamental error,'),
+    ('the f allofJ^43, I', 'the fall of 1843, I'),
+    ('detected. / U?he last', 'detected. The last'),
+    ('was \\ inculcating', 'was inculcating'),
+    ('personally, 1 and', 'personally, and'),
+    ('of Grod. I then', 'of God. I then'),
+    ('not belieye that.', 'not believe that.'),
+    ('inquired, r^s it', 'inquired, "Is it'),
+    ('intended, \\ instead', 'intended, instead'),
+    ('to any-pui:pQse^ When', 'to any purpose. When'),
+    ('to in^^-^^-M^v-JUmiey,^ -you-cannot labor', 'to me, "Mr. Finney, you cannot labor'),
+    (": '' Now", ': " Now'),
+    ('as Chris fcians.</p>', 'as Christians.</p>'),
+    ('accepted liis will,', 'accepted his will,'),
+    ("great struggle'^out giving", 'great struggle about giving'),
+    ('<p>^^ This', '<p>This'),
+    ('that 1 had', 'that I had'),
+    ('willing.</p><p>to', 'willing. to'),
+    ('disposed ol according', 'disposed of according'),
+    ('soul, 1 should', 'soul, I should'),
+    ('"But jcanjb^ send', '"But can he send'),
+    ('was yery sure', 'was very sure'),
+    ('he ^^ is', 'he " is'),
+    ('the testimonjJ:hat I', 'the testimony that I'),
+    ('of tlie pulpit,', 'of the pulpit,'),
+    ("replied, ''I do", 'replied, "I do'),
+    ('to haye those', 'to have those'),
+    ('to ma that', 'to me that'),
+    ('in tlie midst', 'in the midst'),
+    ('heaven, 1 seemed', 'heaven, I seemed'),
+    ('of Grod. I could', 'of God. I could'),
+    ('of tlie Gospel', 'of the Gospel'),
+    ('to jayo-souls. They', 'to save souls. They'),
+    ('visit .England, and', 'visit England, and'),
+    ('in tlie^Lutumn of', 'in the autumn of'),
+    ('<p>^ *Mr.', '<p>*Mr.'),
+    ('dismissed. Eev. James', 'dismissed. Rev. James'),
+    ('still tliey did', 'still they did'),
+    ('in tlie village', 'in the village'),
+    ('Mr. Eoe requested', 'Mr. Roe requested'),
+    ('saying, *^ What', 'saying, " What'),
+    ('Mrs. Einney to', 'Mrs. Finney to'),
+    ('fatigued, W6 excused', 'fatigued, we excused'),
+    ('my Systemati c Theology,', 'my Systematic Theology,'),
+    ('at pur lodgings. 17* • He', 'at our lodgings. He'),
+    ('Dr. Eedford would', 'Dr. Redford would'),
+    ('Dr. Eedford wished', 'Dr. Redford wished'),
+    ('Dr. Eedford said,', 'Dr. Redford said,'),
+    ("frankly, *' Brother James,", 'frankly, "Brother James,'),
+    ('Dr. Eedford remained', 'Dr. Redford remained'),
+    ('give themI selves up', 'give themselves up'),
+    ('Dr. Bedford was the', 'Dr. Redford was the'),
+    ('Dr. Bedford was greatly', 'Dr. Redford was greatly'),
+    ('Campbell was-also at', 'Campbell was also at'),
+    ('to con trovers v. To', 'to controversy. To'),
+    ("to '' pitching", 'to " pitching'),
+    ('" 0," I', '" O," I'),
+    ('said, *^ there is', 'said, "there is'),
+    ('it?" "O/\'said he,', 'it?" "O," said he,'),
+    ('hour. I* preached', 'hour. I preached'),
+    ('furthermore, tliat those', 'furthermore, that those'),
+    ('people. *^Why," said', 'people. "Why," said'),
+    ("this, ^^I don't", 'this, "I don\'t'),
+    ('that (lod^coinniandstMni, now', 'that God commands them, now'),
+    ('will illus trate what', 'will illustrate what'),
+    ('became yery much engaged,', 'became very much engaged,'),
+    ('what Gfod did', 'what God did'),
+    ('said thejhad had', 'said they had had'),
+    ('; bufcjthey couldLjee no', '; but they could see no'),
+    ('this ^shalF have', 'this I shall have'),
+    ("said, ^' This", "said, ' ' This"),
+    ('at Qberlin inMay,.1851j and', 'at Oberlin in May, 1851, and'),
+    ('usual V-V — -jabOfsoE tlie summer, we-_left ^in -the autumn', 'usual labors of the summer, we left in the autumn'),
+    ('York citji_expecting to', 'York city, expecting to'),
+    ('in Eev. Dr.', 'in Rev. Dr.'),
+    ('an invitation, to„gGLjta,Hartfoxd, and', 'an invitation to go to Hartford, and'),
+    ('by Eev. William', 'by Rev. William'),
+    ('evening T had', 'evening I had'),
+    ('about tliat work', 'about that work'),
+    (': ^^I have', ': "I have'),
+    ('The 18* young', 'The young'),
+    ('" What_shallwe do withthese young', '" What shall we do with these young'),
+    ('been." How^yer^s^jinderstood^ the', 'been." However, as I understood, the'),
+    ('for Eev. Henry', 'for Rev. Henry'),
+    ('This conciliated the', 'This con ciliated the'),
+    ('numbers. ^^ The', 'numbers. The'),
+    ('mouth ifc was', 'mouth it was'),
+    ("occasion, '^ Brother", 'occasion, " Brother'),
+    ('believing tliat some', 'believing that some'),
+    ('that *^ neither', 'that " neither'),
+    ('of tlie room', 'of the room'),
+    ("him, '' My", 'him, " My'),
+    ('" "0," said he, \'^ I have', '" "O," said he, "I have'),
+    ("replied, '^ What makes", 'replied, "What makes'),
+    ('?" \'*0," said', '?" "O," said'),
+    ('he, *^I know', 'he, "I know'),
+    ('called, ^ The', "called, ' The"),
+    ('replied, \'\' No."', 'replied, " No."'),
+    ('it. Ho replied', 'it. He replied'),
+    ("said, '' We", 'said, " We'),
+    (": ^'Mr. Finney,", ': "Mr. Finney,'),
+    ('if 1 had', 'if I had'),
+    ('soul. ^^My child,"', 'soul. " My child,"'),
+    ('to Grod in', 'to God in'),
+    ('in Eome heard', 'in Rome heard'),
+    ('at Eome the', 'at Rome the'),
+    ('<p>1^ the', '<p>IN the'),
+    ("autumn oiXS65^Me'~wmQ~jC£dled. again", 'autumn of 1855, we were called again'),
+    ('city ^^gcJiejSterto labor', 'city of Rochester to labor'),
+    (": '' Commending", ': " Commending'),
+    ('until T felt', 'until I felt'),
+    ('hope. But_as yet^Ihadnot_presented Christ,', 'hope. But as yet I had not presented Christ,'),
+    ('and sentenced\'\'" To^etefnaT^eath.^ This,', 'and sentenced to eternal death. This,'),
+    ('prepared theway f ora cordial', 'prepared the way for a cordial'),
+    ('the G-ospel as', 'the Gospel as'),
+    ('proportion o^f_them were', 'proportion of them were'),
+    ('in tlie street', 'in the street'),
+    ('and every wbere, the', 'and everywhere, the'),
+    ('in Eochester have', 'in Rochester have'),
+    ('Holy Grhost into', 'Holy Ghost into'),
+    ('and tte pastor', 'and the pastor'),
+    ('highly cal19* \\ culated to', 'highly calculated to'),
+    ('a I "^"sry great', 'a very great'),
+    ('be reniemberM^s the. ±im« ^ when', 'be remembered as the time when'),
+    ('single week^ This^revivan^d some', 'single week. This revival had some'),
+    ('were establishe4jhroughout the', 'were established throughout the'),
+    ('breadth ^oftheNorthern states._ J recollect', 'breadth of the Northern states. I recollect'),
+    ('of G-od poured', 'of God poured'),
+    ('that 1 could', 'that I could'),
+    ('mental struggles^ surrounded,as,.s]iais, bx snob.- tem^taMog^ J^^SKorldliHess. But', 'mental struggles, surrounded as she is by such temptations to worldliness. But'),
+    ('of Cod attending', 'of God attending'),
+    ('<p>"TTT"!] sailed', '<p>WE sailed'),
+    ('in V V December,', 'in December,'),
+    ('weeks. Smce thnt time', 'weeks. Since that time'),
+    ('In treatSecond visit to ei^tgland. 451 ing upon', 'In treating upon'),
+    ('Dr. Eedford insisted', 'Dr. Redford insisted'),
+    ('But tlie people', 'But the people'),
+    ("say, ^' they", 'say, " they'),
+    (';</p><p>but', '; but'),
+    ('invited V V yery urgently', 'invited very urgently'),
+    ('by tlie Scotch', 'by the Scotch'),
+    ('the yiews of', 'the views of'),
+    ('that T was', 'that I was'),
+    ('J BHe belonged', 'J B . He belonged'),
+    ('piety, yery unsectarian', 'piety, very unsectarian'),
+    ("replied, '^ I", 'replied, " I'),
+    ('Mr. Bcame into', 'Mr. B came into'),
+    ('remarks. J did', 'remarks. I did'),
+    ('tried ito impress', 'tried to impress'),
+    ('if per-^ mitted, to', 'if permitted, to'),
+    ('— ■ still', '— still'),
+    ('act under standingly in', 'act understandingly in'),
+    ('the lad;^ 20* again', 'the lady again'),
+    ("said, '* Yes, I", 'said, "Yes, I'),
+    ('damned. 1 was', 'damned. I was'),
+    (': ^^But seek', ': " But seek'),
+    ('" rU go', '" I\'ll go'),
+    ('grief, T heard', 'grief, I heard'),
+    ('and Congregation alists ;', 'and Congregationalists ;'),
+    ('the Congregation alists themselves.', 'the Congregationalists themselves.'),
+    ('number myseK that', 'number myself that'),
+    ('inquiry. Wo continued', 'inquiry. We continued'),
+    ('and I"thought myself,', 'and I thought myself,'),
+    ('and V V a', 'and a'),
+    ('labors, ami preach', 'labors, and preach'),
+    ('<p>^ iTwas found', '<p>It was found'),
+    ('gradually ifc ceased.', 'gradually it ceased.'),
+    ('during onr long', 'during our long'),
+    ('for tbe conversion', 'for the conversion'),
+    ('spring. ThusJ have', 'spring. Thus I have'),
+    ("Holy Grhost. At^tHe'cIose of", 'Holy Ghost. At the close of'),
+    ('usefulness. Thfijiarrative, conipletod with', 'usefulness. The narrative, completed with'),
+    ('still pastor_of jfche First', 'still pastor of the First'),
+    ('he con tinued-t^ sustain,', 'he continued to sustain,'),
+    ('in 1^2^, but', 'in 1872, but'),
+    ('of lecturesTn July', 'of lectures in July'),
+    ('days before^ hTs~iieath7\'~"He^ preached,', 'days before his death. He preached,'),
+    ('a yoimg man^ retained', 'a young man, retained'),
+    ('.tha en^ the', '.tha end the'),
+    ('and imagination,which always', 'and imagination, which always'),
+    ('quiet CONCLUSIOiq". 477 power', 'quiet power'),
+    ('of liis life', 'of his life'),
+    ('character. Itjpxose^ts^ him', 'character. It presents him'),
+    ('life, a^ an', 'life, as an'),
+    ('and jfchajworld, — ^Pe set', 'and the world. To set'),
+    ('"Grive', '"Give'),
+    ('"TT\'T\'HILE', 'WHILE'),
+    ('"TTT\'HEN', 'WHEN'),
+    ('"am', 'and'),
+    ('"v^s', 'was'),
+    ("''But", '"But'),
+    ("''Has", '"Has'),
+    ("''If", '"If'),
+    ("''My", '"My'),
+    ("''if", '"if'),
+    ("''we", '"we'),
+    ("'MVell", "'Well"),
+    ("'T'TT'HILE", 'WHILE'),
+    ("'TTT'E", 'WE'),
+    ("'YTT'E", 'WE'),
+    ("'^Brother", '"Brother'),
+    ("'^How", '"How'),
+    ("'^The", '"The'),
+    ("'^^he", '"he'),
+    ("'^how", '"how'),
+    ("'^my", '"my'),
+    ("'^sl", '"sl'),
+    ("'^the", '"the'),
+    ("'lieart", "'heart"),
+    ("'or", 'or'),
+    (')0werfully', ')powerfully'),
+    ("*'The", '"The'),
+    ("*'hear", '"hear'),
+    ("*'tliey", '"they'),
+    ('**And', '"And'),
+    ('*^But', '"But'),
+    ('*^It', '"It'),
+    ('*^if', '"if'),
+    ('*^now', '"now'),
+    ('*lo', "'lo"),
+    ('*remove', 'remove'),
+    ('.^This', 'This'),
+    ('/are', 'are'),
+    ('/state', 'state'),
+    ('/the', 'the'),
+    ('5ure', 'sure'),
+    ('AFTEE', 'AFTER'),
+    ('A\\^ilson', 'Wilson'),
+    ('Avas', 'was'),
+    ('Avays', 'ways'),
+    ('Avhich', 'which'),
+    ('Avilling', 'willing'),
+    ('Avith', 'with'),
+    ('Avords,', 'words,'),
+    ('BEFOEE', 'BEFORE'),
+    ('BEOTHER', 'BROTHER'),
+    ("Bedford's", "Redford's"),
+    ('Bedford.', 'Redford.'),
+    ("Biblei'", 'Bible.'),
+    ('Bince', 'Since'),
+    ('Bmall,', 'small,'),
+    ('Bnt', 'But'),
+    ('Briatin.', 'Britain.'),
+    ('BushnelFs', "Bushnell's"),
+    ("But/'", 'But,"'),
+    ("CampbeH's", "Campbell's"),
+    ("Christ.'^", 'Christ."'),
+    ('Christian^', 'Christians'),
+    ('Christiana,', 'Christians,'),
+    ("Christians.*'", 'Christians."'),
+    ('Cod."', 'God."'),
+    ('Counecticut,', 'Connecticut,'),
+    ('Crtica,', 'Utica,'),
+    ("E'ash,", 'Nash,'),
+    ('Eace', 'Race'),
+    ('Ealls,', 'Falls,'),
+    ('Eather', 'Father'),
+    ('Eay.', 'Ray.'),
+    ('Eayville.', 'Rayville.'),
+    ('Eeading,', 'Reading,'),
+    ('Eedford,', 'Redford,'),
+    ('Eeligion', 'Religion'),
+    ('Eemember', 'Remember'),
+    ('Eepent', 'Repent'),
+    ('Eeport,', 'Report,'),
+    ('Eeserve', 'Reserve'),
+    ('Eev,', 'Rev.,'),
+    ('Eey.', 'Rev.'),
+    ('Einney,', 'Finney,'),
+    ('Einngy,', 'Finney,'),
+    ('Eiore', 'more'),
+    ('Eirst', 'First'),
+    ('Eljrria,', 'Elyria,'),
+    ('Enghind,', 'England,'),
+    ('Ens^land.', 'England.'),
+    ('Eoad', 'Road'),
+    ('Eochester,', 'Rochester,'),
+    ('Eochester.', 'Rochester.'),
+    ("Eoe's,", "Roe's,"),
+    ('Eoe,', 'Roe,'),
+    ('Eoe.', 'Roe.'),
+    ('Eome,', 'Rome,'),
+    ('Eome.', 'Rome.'),
+    ('Eome^', 'Rome,'),
+    ('Eor', 'For'),
+    ('Eriends', 'Friends'),
+    ('Erom', 'From'),
+    ('Erost,', 'Frost,'),
+    ('Eutland,', 'Rutland,'),
+    ('Eutland.', 'Rutland.'),
+    ("Eyans'", "Evans'"),
+    ('FEOM', 'FROM'),
+    ("Fi'ost,", 'Frost,'),
+    ('Firsfc', 'First'),
+    ("G-ale's", "Gale's"),
+    ('G-ale,', 'Gale,'),
+    ('G-erman', 'German'),
+    ('G-host,', 'Ghost,'),
+    ('G-illett', 'Gillett'),
+    ("G-od's", "God's"),
+    ('G-od,', 'God,'),
+    ('G-od.', 'God.'),
+    ('G-ood', 'Good'),
+    ('G-ospel,', 'Gospel,'),
+    ('G-ospel.', 'Gospel.'),
+    ('G-ouverneur,', 'Gouverneur,'),
+    ('G-reat', 'Great'),
+    ('Gale^', 'Gale,'),
+    ('Gfod."', 'God."'),
+    ('Gillefct', 'Gillett'),
+    ("God.*'", 'God."'),
+    ('GosjdcI', 'Gospel'),
+    ('Gouyerneur,', 'Gouverneur,'),
+    ('Gouyerneur.', 'Gouverneur.'),
+    ('Grenesis', 'Genesis'),
+    ('Grerman', 'German'),
+    ('Grillett,', 'Gillett,'),
+    ("Grod's", "God's"),
+    ('Grod,', 'God,'),
+    ('Grod;', 'God;'),
+    ('Grospel.', 'Gospel.'),
+    ('HAVING-', 'HAVING'),
+    ('Hayen,', 'Haven,'),
+    ('Hougliton,', 'Houghton,'),
+    ('However^', 'However,'),
+    ('Hying', 'living'),
+    ('IFas', 'was'),
+    ('IJtica,', 'Utica,'),
+    ('ISTash,', 'Nash,'),
+    ('ISTettleton,', 'Nettleton,'),
+    ('ISTevertheless,', 'Nevertheless,'),
+    ('ISTew', 'New'),
+    ('ISTor', 'Nor'),
+    ('ISth', '13th'),
+    ('Ifc', 'It'),
+    ('Ijord', 'Lord'),
+    ('Indeed^', 'Indeed,'),
+    ('Ito', 'to'),
+    ('Ivas^', 'was'),
+    ('JSTettleton', 'Nettleton'),
+    ('JSTone', 'None'),
+    ('JSTow', 'Now'),
+    ('JSToyember,', 'November,'),
+    ('J^otwithstanding', 'Notwithstanding'),
+    ('Jblessedness.', 'blessedness.'),
+    ('Jeflerson', 'Jefferson'),
+    ('Jhe', 'the'),
+    ('Jipld', 'hold'),
+    ('K"o', 'No'),
+    ('Kave', 'have'),
+    ('Kev.', 'Rev.'),
+    ('Kew', 'New'),
+    ('Key.', 'Rev.'),
+    ('Koad', 'Road'),
+    ('Kochester,', 'Rochester,'),
+    ('Kome', 'Rome'),
+    ('Kovember.', 'November.'),
+    ("LEAVIN'Gr", 'LEAVING'),
+    ('Lowyille', 'Lowville'),
+    ('McO', 'McC'),
+    ('N\'ow,"', 'Now,"'),
+    ('N^)', 'No'),
+    ('Nefctleton', 'Nettleton'),
+    ('OYerflowing', 'overflowing'),
+    ('Oalvinistic', 'Calvinistic'),
+    ('Oanandaigua', 'Canandaigua'),
+    ('Ohapin,', 'Chapin,'),
+    ('Ohurcb.', 'Church'),
+    ('Olary.', 'Clary.'),
+    ('Omalia,', 'Omaha,'),
+    ('Ooe', 'Coe'),
+    ('Oongregationalist,', 'Congregationalist,'),
+    ('Oongregationalists', 'Congregationalists'),
+    ('Oonseciuently', 'Consequently'),
+    ('Oowper', 'Cowper'),
+    ('Pai-is,', 'Paris,'),
+    ('Pattersou,', 'Patterson,'),
+    ('Piatt,', 'Platt,'),
+    ('Pinney^', 'Finney,'),
+    ('Por', 'For'),
+    ('Pree', 'Free'),
+    ('Prom', 'From'),
+    ('Proyidence,', 'Providence,'),
+    ('Reyiyals', 'Revivals'),
+    ('Sayiour.', 'Saviour.'),
+    ('Scriptares.', 'Scriptures.'),
+    ('Siaid,', 'said,'),
+    ('Sj)irit,', 'Spirit,'),
+    ('Spirit^', 'Spirit,'),
+    ('TJ.', 'U.'),
+    ('TJnitarianism,', 'Unitarianism,'),
+    ('TJniversalism.', 'Universalism.'),
+    ('TJniversalist,', 'Universalist,'),
+    ('TJniversalists', 'Universalists'),
+    ('TJtica,', 'Utica,'),
+    ('TJtica.', 'Utica.'),
+    ('Tecovery,', 'recovery,'),
+    ('Thev', 'They'),
+    ('Tillage,', 'village,'),
+    ('Tlieology.', 'Theology.'),
+    ('Tliere', 'There'),
+    ('Ufcica', 'Utica'),
+    ('UnioR', 'Union'),
+    ('Universahsm', 'Universalism'),
+    ('Uniyersalist,', 'Universalist,'),
+    ('Uniyersalist.', 'Universalist.'),
+    ('Vreyolution', 'revolution'),
+    ('Weeks*', "Weeks'"),
+    ('Whitesboro\\', "Whitesboro'"),
+    ("Why,''", 'Why,"'),
+    ('Wliifcestown', 'Whitestown'),
+    ('XJ.', 'U.'),
+    ('XJniversalist', 'Universalist'),
+    ('XJpon^', 'Upon'),
+    ('XJtica,', 'Utica,'),
+    ("Xettleton's", "Nettleton's"),
+    ('Xew', 'New'),
+    ('Yoice', 'voice'),
+    ('Yol-k,', 'York,'),
+    ('[or', 'for'),
+    ('\\ave', 'have'),
+    ('\\where', 'where'),
+    (']3articularly', 'particularly'),
+    (']N"ew', 'New'),
+    (']^ettleton', 'Nettleton'),
+    (']iot', 'not'),
+    ("^'Did", '"Did'),
+    ("^'His", '"His'),
+    ("^'I", '"I'),
+    ("^'Why", '"Why'),
+    ("^'^old", '"old'),
+    ("^*'I", '"I'),
+    ('^*From', '"From'),
+    ('^*This', '"This'),
+    ('^*You', '"You'),
+    ('^-been', 'been'),
+    ('^;he', 'the'),
+    ('^NTo', 'No'),
+    ('^^Do', '"Do'),
+    ('^^He', '"He'),
+    ('^^Is', '"Is'),
+    ('^^One', 'One'),
+    ('^^You', '"You'),
+    ('^^my', '"my'),
+    ('^^u', 'you'),
+    ('^^with', 'with'),
+    ('^because', 'because'),
+    ('^days', 'days'),
+    ('^fe', 'wife'),
+    ('^hey', 'They'),
+    ('^lly', 'fully'),
+    ('^oly', 'Holy'),
+    ('^pectable', 'respectable'),
+    ('^that', 'that'),
+    ('^voice', 'voice'),
+    ('^wHerever', 'wherever'),
+    ('_.Qiir', 'our'),
+    ('_Now', 'Now'),
+    ('_and', 'and'),
+    ('_finally', 'finally'),
+    ('_my', 'my'),
+    ('absu:fdities', 'absurdities'),
+    ('acte(i.', 'acted.'),
+    ('ada|tt', 'adapt'),
+    ('adyanced.', 'advanced.'),
+    ('adyised', 'advised'),
+    ('again^', 'again,'),
+    ('ahgut', 'about'),
+    ('aifected', 'affected'),
+    ('akd', 'and'),
+    ('almo&t', 'almost'),
+    ('always^', 'always'),
+    ('and*', 'and'),
+    ('anoiher.', 'another.'),
+    ('aoout', 'about'),
+    ('apj^eared', 'appeared'),
+    ('aronnd,', 'around,'),
+    ('arriyed,', 'arrived,'),
+    ('ar§', 'are'),
+    ('asc^tained', 'ascertained'),
+    ('asnect', 'aspect'),
+    ('assen^ble', 'assemble'),
+    ('at*^', 'at'),
+    ('atmosj)here', 'atmosphere'),
+    ('atmosjohere', 'atmosphere'),
+    ('atonei^ent,', 'atonement,'),
+    ("away/'", 'away,"'),
+    ('ayoided,', 'avoided,'),
+    ("b^'", 'by'),
+    ("bar/'", 'bar,"'),
+    ('ba|)tism', 'baptism'),
+    ("befoi'e", 'before'),
+    ('beheve', 'believe'),
+    ('belieye,', 'believe,'),
+    ('belieyed.', 'believed.'),
+    ('bencYolent', 'benevolent'),
+    ('biii', 'but'),
+    ('biograpliy', 'biography'),
+    ('bnt', 'but'),
+    ('boolc,', 'book,'),
+    ("calc'ulated", 'calculated'),
+    ('candid^', 'candid'),
+    ('cgming', 'coming'),
+    ('changmg', 'changing'),
+    ('childreu,', 'children,'),
+    ('churchy', 'church,'),
+    ('cii^stom', 'custom'),
+    ('cities^', 'cities,'),
+    ('cliurch', 'church'),
+    ('cliurcli,', 'church,'),
+    ('closecommunion', 'close-communion'),
+    ('coald', 'could'),
+    ('commjipds', 'commands'),
+    ('comp]ained,', 'complained,'),
+    ('comphed', 'complied'),
+    ('conVoider.', 'consider.'),
+    ('conYersion,', 'conversion,'),
+    ('con^yersions', 'conversions'),
+    ('conceiye', 'conceive'),
+    ('congi^egation,', 'congregation,'),
+    ('conld', 'could'),
+    ('continaed', 'continued'),
+    ('conyention,', 'convention,'),
+    ('conyersation,', 'conversation,'),
+    ('conyersed', 'conversed'),
+    ('conyersion,', 'conversion,'),
+    ('conyersions,', 'conversions,'),
+    ('conyerted,', 'converted,'),
+    ('conyerts', 'converts'),
+    ('conyicted', 'convicted'),
+    ('conyiction,', 'conviction,'),
+    ('conyictions', 'convictions'),
+    ('conyinced', 'convinced'),
+    ('couYerted,', 'converted,'),
+    ('day^', 'day,'),
+    ('days^', 'days,'),
+    ('deceiyed', 'deceived'),
+    ('delighlEful', 'delightful'),
+    ('desired^', 'desired,'),
+    ('deyelopments', 'developments'),
+    ('deyil', 'devil'),
+    ('diJSerent', 'different'),
+    ("diffei'ence", 'difference'),
+    ('difiSculty', 'difficulty'),
+    ('difiiculties', 'difficulties'),
+    ('difl&culty', 'difficulty'),
+    ('dimbed', 'climbed'),
+    ('diyided', 'divided'),
+    ('diyine', 'divine'),
+    ('diyision', 'division'),
+    ('doAvn,', 'down,'),
+    ('doctriue', 'doctrine'),
+    ("dollars.*'", 'dollars."'),
+    ('eSect.', 'effect.'),
+    ('earnest^', 'earnest'),
+    ('efSciency,', 'efficiency,'),
+    ("effoi't", 'effort'),
+    ('efl&ciency', 'efficiency'),
+    ('eldershi^D', 'eldership'),
+    ('end^', 'end.'),
+    ('enipKatically', 'emphatically'),
+    ('enlighteniing', 'enlightening'),
+    ('eonld', 'could'),
+    ('era^', 'era,'),
+    ('exjDressed', 'expressed'),
+    ('exjoerience,', 'experience,'),
+    ('explaims', 'explains'),
+    ('extensiye,', 'extensive,'),
+    ('eyening.', 'evening.'),
+    ('eyenings', 'evenings'),
+    ('eyery', 'every'),
+    ('eyidence,', 'evidence,'),
+    ('eyils', 'evils'),
+    ('face^', 'face,'),
+    ('faqe', 'face'),
+    ('fchem', 'them'),
+    ('fchey', 'they'),
+    ('fco', 'to'),
+    ('feeHngs."', 'feelings."'),
+    ('feehngs.', 'feelings.'),
+    ('fhe', 'the'),
+    ('fiiere', 'There'),
+    ('fo*', 'for'),
+    ("forwai'd,", 'forward,'),
+    ("gafchei'ed", 'gathered'),
+    ('gaye', 'gave'),
+    ('ghort,', 'short,'),
+    ("gi'eat", 'great'),
+    ('giying', 'giving'),
+    ("glo^'y", 'glory'),
+    ('goyernments', 'governments'),
+    ('grieyed', 'grieved'),
+    ('grieying', 'grieving'),
+    ('groye', 'grove'),
+    ('h-aving', 'having'),
+    ('h^Quae', 'house'),
+    ('hajre', 'have'),
+    ('haying', 'having'),
+    ('heart,-', 'heart'),
+    ('heayen,"', 'heaven,"'),
+    ('heayen.', 'heaven.'),
+    ('heayily', 'heavily'),
+    ('hidingplaces.', 'hiding-places.'),
+    ('hillj,', 'hill,'),
+    ('himseK', 'himself'),
+    ('hinu', 'him'),
+    ('hiui,', 'him,'),
+    ('hody', 'body'),
+    ('howeyer,', 'however,'),
+    ('hurst', 'burst'),
+    ('i:)ersisted', 'persisted'),
+    ('i:hat', 'that'),
+    ('iDecome', 'become'),
+    ('iDresence', 'presence'),
+    ('i^of', 'of'),
+    ('iar^', 'in'),
+    ('ifc,', 'it,'),
+    ('iheir', 'their'),
+    ('ihink,', 'think,'),
+    ('iiew', 'new'),
+    ('iiis', 'his'),
+    ('iime', 'time'),
+    ('iiot', 'not'),
+    ('iiundreds', 'hundreds'),
+    ('im]3ortance.', 'importance.'),
+    ('immejdiately', 'immediately'),
+    ('indiyidual,', 'individual,'),
+    ('indiyiduals', 'individuals'),
+    ('ineflBcient', 'inefficient'),
+    ('injQluential', 'influential'),
+    ('inquiiy,', 'inquiry,'),
+    ('int6', 'into'),
+    ("intei'view.", 'interview.'),
+    ('interyiew', 'interview'),
+    ('intp', 'into'),
+    ('inyitation', 'invitation'),
+    ("it/'", 'it,"'),
+    ('ithat', 'that'),
+    ('itruth', 'truth'),
+    ('j)eople.', 'people.'),
+    ('j)ower', 'power'),
+    ('j3onverts,', 'converts,'),
+    ('jOf', 'of'),
+    ('jOhrist', 'Christ'),
+    ('jaction', 'action'),
+    ('jast', 'just'),
+    ('joI^', 'of'),
+    ('journaJ', 'journal'),
+    ('joy\\M^', 'joyful'),
+    ('jprojects', 'projects'),
+    ('jud^e', 'judge'),
+    ('jyhat', 'what'),
+    ('jzeyiyal.', 'revival.'),
+    ('knevN^', 'knew'),
+    ('knoAV', 'know'),
+    ('l;is', 'his'),
+    ('l^ettleton,', 'Nettleton,'),
+    ('laanner', 'manner'),
+    ('largo.', 'large.'),
+    ('lasF', 'last'),
+    ('leach', 'each'),
+    ('leaye', 'leave'),
+    ('lectureroom,', 'lecture-room,'),
+    ("letter/''", 'letter,"'),
+    ('liad', 'had'),
+    ('lias', 'has'),
+    ('liave', 'have'),
+    ('liglit', 'light'),
+    ('limitedatonement', 'limited-atonement'),
+    ('liow', 'how'),
+    ('liyed,', 'lived,'),
+    ('load^', 'made'),
+    ('man*', 'man.'),
+    ('man-', 'man.'),
+    ('manX', 'man'),
+    ('mattei*,', 'matter,'),
+    ('meeting-honse', 'meeting-house'),
+    ('men^', 'men,'),
+    ('mile^', 'miles'),
+    ('millenninm', 'millennium'),
+    ('mmd,"', 'mind,"'),
+    ('mncli', 'much'),
+    ('mnst', 'must'),
+    ('montli,', 'month,'),
+    ('moyed.', 'moved.'),
+    ('mstead', 'instead'),
+    ('mu.ch', 'much'),
+    ('mucli', 'much'),
+    ('mvself', 'myself'),
+    ('my^', 'my'),
+    ('myseK.', 'myself.'),
+    ('necessaiy', 'necessary'),
+    ('newschool', 'new-school'),
+    ("neyer'", 'never'),
+    ('nieeting', 'meeting'),
+    ('nnable', 'unable'),
+    ('nnder', 'under'),
+    ('noAv', 'now'),
+    ('notj', 'not'),
+    ('npon', 'upon'),
+    ('objectipn', 'objection'),
+    ('obseryed,', 'observed,'),
+    ('occuj^ied,', 'occupied,'),
+    ('offcen', 'often'),
+    ('offensiYe', 'offensive'),
+    ('ofl', 'off'),
+    ('oif,', 'off,'),
+    ('onethird', 'one-third'),
+    ('op230sition', 'opposition'),
+    ('ortliodox', 'orthodox'),
+    ('otlier', 'other'),
+    ('ourselyes', 'ourselves'),
+    ('own^', 'own'),
+    ('oyercome', 'overcome'),
+    ('oyercoming', 'overcoming'),
+    ('oyerdone', 'overdone'),
+    ('oyerflowing.', 'overflowing.'),
+    ('pOberlin', 'Oberlin'),
+    ('papng', 'paying'),
+    ('particu\\lars', 'particulars'),
+    ('pdnt', 'point'),
+    ('peo]3le', 'people'),
+    ('peo^Dle', 'people'),
+    ('peoj)le', 'people'),
+    ('peo|)le', 'people'),
+    ('peryade', 'pervade'),
+    ('pi-each', 'preach'),
+    ('pi-inted', 'printed'),
+    ('pjesence', 'presence'),
+    ('pra^yer.', 'prayer.'),
+    ('prajdng', 'praying'),
+    ('prayilig', 'praying'),
+    ('preachmg', 'preaching'),
+    ('preacli,', 'preach,'),
+    ('preacliod', 'preached'),
+    ('preyail.', 'prevail.'),
+    ('preyailed', 'prevailed'),
+    ('preyiously', 'previously'),
+    ('priyately', 'privately'),
+    ('progress^', 'progress,'),
+    ('prosent,', 'present,'),
+    ('prosj)er', 'prosper'),
+    ('pulj^it,', 'pulpit,'),
+    ('qnit-claim', 'quit-claim'),
+    ('rFormerly', 'Formerly'),
+    ('rajoidity', 'rapidity'),
+    ('receiyed', 'received'),
+    ('religion^', 'religion,'),
+    ('religions', 'religious'),
+    ('relinquisli', 'relinquish'),
+    ('remoyed,', 'removed,'),
+    ('remoying', 'removing'),
+    ('repentance^', 'repentance,'),
+    ('repulsiye', 'repulsive'),
+    ('requirjes.', 'requires.'),
+    ('res23ect', 'respect'),
+    ('resjDect', 'respect'),
+    ('resohitions', 'resolutions'),
+    ('resolyed', 'resolved'),
+    ('revivalo', 'revivals'),
+    ('reviyals,', 'revivals,'),
+    ('reyealed', 'revealed'),
+    ('reyealing', 'revealing'),
+    ('reyival,', 'revival,'),
+    ('reyivals.', 'revivals.'),
+    ('reyiyal,', 'revival,'),
+    ('reyiyal.', 'revival.'),
+    ('reyiyals,', 'revivals,'),
+    ('reyiyals.', 'revivals.'),
+    ('riear', 'near'),
+    ('roiind', 'round'),
+    ('room^', 'room,'),
+    ('rould', 'could'),
+    ('salyation', 'salvation'),
+    ('sanctifioation', 'sanctification'),
+    ('sapng', 'saying'),
+    ('sav/', 'saw'),
+    ('sayed', 'saved'),
+    ('schoolhouses,', 'school-houses,'),
+    ('seK-examination', 'self-examination'),
+    ('selfregeneration', 'self-regeneration'),
+    ('selfrighteously', 'self-righteously'),
+    ('seryice.', 'service.'),
+    ('seyeral', 'several'),
+    ('she^', 'she,'),
+    ('shp,', 'slip,'),
+    ('siibject', 'subject'),
+    ('sim]3licity', 'simplicity'),
+    ('slayery.', 'slavery.'),
+    ('sleejo.', 'sleep.'),
+    ('slie', 'she'),
+    ('smiliiig', 'smiling'),
+    ('sonl.', 'soul.'),
+    ('souls.,„^', 'souls.'),
+    ('souls^', 'souls.'),
+    ('stopjoed', 'stopped'),
+    ('st«od', 'stood'),
+    ('submission^__', 'submission,'),
+    ('sucn', 'such'),
+    ('suj)port', 'support'),
+    ('supiDose', 'suppose'),
+    ('suppHcation,', 'supplication,'),
+    ('su|)posed,', 'supposed,'),
+    ('sveak', 'speak'),
+    ('svery', 'every'),
+    ("t'dke", 'take'),
+    ('t?iat', 'that'),
+    ('tMs', 'this'),
+    ('taK:e', 'take'),
+    ('tbat', 'that'),
+    ('teacli', 'teach'),
+    ('telHng', 'telling'),
+    ('temperance*"', 'temperance."'),
+    ("th'e", 'the'),
+    ('th^it', 'that'),
+    ('tha.t', 'that'),
+    ('thafc', 'that'),
+    ('that^', 'that'),
+    ("the'f", 'the'),
+    ("the'refore", 'therefore'),
+    ('thems^elves', 'themselves'),
+    ('themselyes', 'themselves'),
+    ('then!', 'them'),
+    ('thenL', 'them.'),
+    ('thenji.', 'them.'),
+    ('theopes', 'theories'),
+    ('thern,', 'them,'),
+    ('thetn', 'them'),
+    ('thiat', 'that'),
+    ('thiese', 'these'),
+    ('thom', 'them'),
+    ('thonght', 'thought'),
+    ("thousand/'", 'thousand,"'),
+    ('tiling', 'thing'),
+    ('tjiat', 'that'),
+    ('tliG', 'the'),
+    ('tliat,', 'that,'),
+    ('tlieir', 'their'),
+    ('tliis', 'this'),
+    ('tliither', 'thither'),
+    ('tlionght', 'thought'),
+    ('tliorougli', 'thorough'),
+    ('tlirough', 'through'),
+    ('tlirougliout', 'throughout'),
+    ('tnat', 'that'),
+    ('to*', 'to'),
+    ('traYail', 'travail'),
+    ('tvjing', 'trying'),
+    ('ujd,', 'up,'),
+    ('unconyerted.', 'unconverted.'),
+    ('uniyersal,', 'universal,'),
+    ('upoij', 'upon'),
+    ('upoji', 'upon'),
+    ('urged^', 'urged,'),
+    ('verv', 'very'),
+    ('view^', 'view,'),
+    ('vijews', 'views'),
+    ('w^as', 'was'),
+    ('w^hat', 'what'),
+    ('w^ork', 'work'),
+    ('w^re', 'were'),
+    ('waa', 'was'),
+    ('was*^', 'was'),
+    ('wath', 'with'),
+    ('weelc,', 'week,'),
+    ("wei'e", 'were'),
+    ('whatcA^er', 'whatever'),
+    ('whateyer,', 'whatever,'),
+    ('whea', 'when'),
+    ("whei'e", 'where'),
+    ('wheneyer', 'whenever'),
+    ('whick', 'which'),
+    ('who]^', 'whole'),
+    ('whorr', 'whom'),
+    ('wiffe,', 'wife,'),
+    ('wisnt', 'went'),
+    ('witli', 'with'),
+    ('witnes?', 'witness?'),
+    ('witti', 'with'),
+    ('wjth', 'with'),
+    ('wkh', 'with'),
+    ('wliat', 'what'),
+    ('wliich', 'which'),
+    ('wliom', 'whom'),
+    ('wonld', 'would'),
+    ('work^', 'work,'),
+    ('worldlymindedness', 'worldly-mindedness'),
+    ('xiutiTmn', 'autumn'),
+    ('yain', 'vain'),
+    ('yau', 'you'),
+    ('yehemence,', 'vehemence,'),
+    ('yery,', 'very,'),
+    ('yexed,', 'vexed,'),
+    ('yiews,', 'views,'),
+    ('yillage,', 'village,'),
+    ('yisited', 'visited'),
+    ('yituperation', 'vituperation'),
+    ('yoice', 'voice'),
+    ('yoii', 'you'),
+    ('yoimj', 'young'),
+    ('yonrself."', 'yourself."'),
+    ('yow.', 'vow.'),
+    ('yruin', 'ruin'),
+    ('~"^There', 'There'),
+    ('~You', 'You'),
+    ('~~Dne', 'One'),
+    ('•taking', 'taking'),
+]
+BODY_CORRECTIONS["finney-memoirs"] = {"replacements": _FINNEY_MEMOIRS_PAIRS}
+
+# Baxter, A Call to the Unconverted — the same OCR residue as revival-lectures
+# above, 124 page numbers (pp. 30-156, chapters 3-6): fused ("the 50world"),
+# spaced mid-sentence ("had 36 been"), or bare between blocks ("</p>32<p>").
+# Proved by the same count up the book; pp. 60, 104 and 123 are absent from the
+# OCR. Left alone: the ordinals "the 18th of Ezekiel" and "from the 20th to the
+# end", and chapter 2's run of verse numbers, which also counts up but is
+# scripture citation ("Isa. lv. 1, 2, 3."). The es and pt editions never carried
+# the numbers, so this bites the English only.
+_CALL_PAGES_BETWEEN_BLOCKS = (
+    32, 53, 65, 75, 76, 81, 87, 91, 99, 110, 114, 138,
+)
+_CALL_PAGES_IN_PROSE = (
+    "the 30work", "if 31we", "law. 33Few", "please 34 God.”—“Now", "believe. 35For",
+    "had 36 been", "and 37 sustenation,", "them, 38if", "guilty 39 of",
+    "forgetfulness 40 or", "not 41 wicked,", "disposition 42of", "amiss: 43 and",
+    "rebels, 44on", "so 45neither", "health, 46and", "religion, 47 and",
+    "religious, 48yet", "must 49needs", "the 50world,", "trade 51that", "and 52set",
+    "will 54shortly", "to 55seeing;", "condemned? 56 It", "praise? 57And",
+    "many 58thousands,", "to 59 betake", "magnify 61his", "neither 62of", "not 63 to",
+    "unto 64himself", "word.”—66And,", "save 67none", "another 68should", "of 69its",
+    "man, 70I", "manifesting 71 his", "life, 72which", "in 73meat,", "thou 74did",
+    "God: 77He", "and 78persuade", "they 79will", "disobey 80God,", "well, 82and",
+    "them, 83what", "renounce 84the", "his 85displeasure", "But 86Christ", "yet 88art",
+    "turn: 89 He", "that 90will", "in 92 rioting", "How 93many", "of 94Christianity,",
+    "where 95thou", "it? 96It", "know 97my", "to 98doubt", "myself.—100I",
+    "ungodly, 101and", "God 102saith,", "confess 103 that", "any 105reason",
+    "for 106the", "durst 107not", "that 108you", "but 109wide", "foolishness 111 with",
+    "God 112 to", "praise 113 the", "not 115turn,", "reason 116that", "rather 117 die",
+    "in 118your", "that 119 hath", "excellency 120 of", "thoughts 121of", "what 122is",
+    "He 124hath", "delay?” 125Life", "forced 126you", "stand 127over", "5. 128“Hear,",
+    "you 129put", "upon 130you,", "themselves, 131that", "darkness. 132 What!",
+    "died 133for", "the 134Lord;", "assign 135each", "and 136therefore", "your 137own",
+    "to 139 sin)", "you, 140and", "most 141 highly", "strait; 142 and", "all 143their",
+    "not 144hear", "do 145 that", "you 146had", "heaven, 147 if",
+    "habitually 148willing,", "it, 149(though", "little 150before", "work 151against",
+    "everlasting 152 glory,", "before 153 God,", "of 154earnest", "over 155 your",
+    "are 156reading,",
+)
+
+
+BODY_CORRECTIONS.setdefault("a-call-to-the-unconverted", {}).setdefault("replacements", []).extend(
+    [(f"</p>{page}<p>", "</p> <p>") for page in _CALL_PAGES_BETWEEN_BLOCKS]
+    + [(defective, _unpage(defective)) for defective in _CALL_PAGES_IN_PROSE]
+)
+
+# Spacing slips in the Ochorus-original collection, found translating it to French
+# (#2776): a stray space inside the compound "Golden-Mouthed" (ch02) and before the
+# punctuation that follows four unmarked book titles (ch04, ch06, ch10).
+BODY_CORRECTIONS.setdefault("men-who-tended-the-flock-2", {}).setdefault("replacements", []).extend([
+    ("Golden- Mouthed", "Golden-Mouthed"),
+    ("The Temple , published", "The Temple, published"),
+    ("Surprising Work of God , ", "Surprising Work of God, "),
+    ("The Cost of Discipleship . The", "The Cost of Discipleship. The"),
+    ("Papers from Prison , ", "Papers from Prison, "),
+])

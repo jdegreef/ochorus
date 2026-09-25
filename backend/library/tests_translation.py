@@ -267,6 +267,21 @@ class AdminTranslationJobsTests(TestCase):
                 self.assertEqual(res.status_code, expected, body)
 
     @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_refuses_a_copyright_blocked_book(self):
+        # grace-for-grace-2 was queued in eight languages on 2026-09-24 and three
+        # translations of the protected English shipped live. No issue is filed.
+        from unittest.mock import patch
+
+        with patch("library.admin_views.jobs.requests") as gh:
+            res = self.client.post(
+                "/api/admin/translation-jobs/",
+                {"type": "book", "slug": "grace-for-grace-2", "language": "es"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 451)
+        gh.post.assert_not_called()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
     def test_post_creates_issue(self):
         from unittest.mock import MagicMock, patch
 
