@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-24: Arabic bios — a-w-tozer (#2928), athanasius-of-alexandria (#2931),
+// billy-graham (#2932), corrie-ten-boom (#2937), c-t-studd (#2940), john-calvin (#2946), john-hyde (#2950).
 // prerender refresh 2026-09-24: Arabic bios — jeanne-guyon (#925), christmas-evans (#1653),
 // john-newton (#1654), e-m-bounds (#1655), j-c-ryle (#1665), alexander-maclaren (#1666),
 // robert-murray-mcheyne (#1667), charles-finney (#1668). Rebuilds /ar/authors/<slug> with the bio.
