@@ -1714,6 +1714,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"hi/lord-teach-us-to-pray-2": {
+			"ground": "1c240ea4c83ea2979c5f656a6238328328c342ba2823b2b0eee6c03151836e21",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "wash/sage",
+			"bar": 0.11
+		},
 		"hi/ministry-of-intercession": {
 			"ground": "ea6803622e2cd17da98b1d994a4ab8a92aaea70d7aaa7830ac92af0061a73a40",
 			"style": "devotional",
