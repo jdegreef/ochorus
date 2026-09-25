@@ -197,6 +197,8 @@
   "plans_complete": "виконано",
   "plans_days_left": "Залишилося %n% днів",
   "plans_min_left": "Залишилося %n% хв",
+  "plans_hr_left": "Залишилося %h% год",
+  "plans_hr_min_left": "Залишилося %h% год %m% хв",
   "plans_today": "Сьогодні",
   "plans_mark_done": "Позначити день як прочитаний",
   "plans_day_done": "День завершено",
