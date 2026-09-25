@@ -880,3 +880,4 @@ export const load: PageLoad = async ({ fetch }) => {
 // prerender refresh 2026-09-25: Arabic books — the-secret-of-guidance (#3180), men-who-tended-the-flock-2 (#2774),
 // rise-up-men-of-god-2 (#2790), thoughts-for-the-quiet-hour (#2811). Rebuilds /ar/books.
 // prerender refresh 2026-09-25: Arabic school-of-prayer (#3150). Rebuilds /ar/books.
+// prerender refresh 2026-09-25: Arabic pilgrims-progress (#3173). Rebuilds /ar/books.
