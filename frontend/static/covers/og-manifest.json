@@ -1884,6 +1884,16 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"hi/purity-of-heart": {
+			"ground": "5792bba46052576c0b67dca7beebbe0799ee976dfd307ba89475806b38815a23",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/soar-like-the-eagle-3": {
 			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
 			"style": "lettered",
