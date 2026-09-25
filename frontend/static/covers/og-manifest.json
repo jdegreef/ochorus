@@ -154,6 +154,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"am/school-of-prayer": {
+			"ground": "3000639f6bf3e5771aa35ecb382b9f35d2b62b7c8d468849d913c6200e381fa1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/the-inner-chamber": {
 			"ground": "df4f1775ddb1ebf270d95fdcfa8f01bf2c23f7f241f47c2e095085533218008b",
 			"style": "devotional",
