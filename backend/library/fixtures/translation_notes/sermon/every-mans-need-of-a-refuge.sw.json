@@ -1,0 +1,52 @@
+{
+ "kind": "sermon",
+ "slug": "every-mans-need-of-a-refuge",
+ "language": "sw",
+ "job_issue": 3001,
+ "pull_request": 3434,
+ "references": [
+  {
+   "reference": "Isaiah 32:2",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Peter 5:8b",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "Acts 17:31a",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 2:5b",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}

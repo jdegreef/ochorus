@@ -1,0 +1,106 @@
+{
+ "kind": "sermon",
+ "slug": "a-full-reward",
+ "language": "sw",
+ "job_issue": 2972,
+ "pull_request": 3434,
+ "references": [
+  {
+   "reference": "Ruth 2:11a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Ruth 2:11b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Ruth 2:12",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Matthew 28:19a",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Mark 16:15a",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Ruth 1:16b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Ruth 2:4a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Ruth 2:4b",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Ruth 2:10b",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Revelation 2:2a",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Revelation 1:14b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 John 2:28",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Hebrews 11:6a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 3:6",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Peter 3:11b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Thessalonians 4:17b",
+   "status": "self_rendered",
+   "block_index": 10
+  }
+ ]
+}
