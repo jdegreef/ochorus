@@ -122,6 +122,7 @@ TOPICS = [
             "the-fourfold-gospel",
             "soar-like-the-eagle-3",
             "waiting-on-god",
+            "christ-the-healer",
         ],
     ),
     (
