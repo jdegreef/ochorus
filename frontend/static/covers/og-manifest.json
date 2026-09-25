@@ -154,6 +154,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.085
 		},
+		"ar/brave-for-god": {
+			"ground": "2c835c0afcaf41d9ed649176e41e44deef42f24424b076e2b79cbe92e551a46c",
+			"style": "young",
+			"volume": "1",
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ar/clothed-with-strength-and-dignity": {
 			"ground": "db8850dce12ff5a187d3d3a94eae8a673f10347b142850b04ea6d07fa4ff7ef3",
 			"style": "originals",
@@ -181,6 +191,16 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
+		"ar/growing-in-wisdom": {
+			"ground": "d60c1539e72a35847ab4fdc9e058e2f76a4e69fcc405b6928f3f54076d552177",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -223,6 +243,16 @@
 			"scrim": 0.6,
 			"layout": "wash/sage",
 			"bar": 0.11
+		},
+		"ar/men-and-women-who-gave-everything-2": {
+			"ground": "99b3ff7e6dc401abeaee314716602abc474dc00a2fe496844cd5baefcb120463",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
 		},
 		"ar/power-through-prayer": {
 			"ground": "e04c38459dc7643bdd19628cbd9fb4fb149672d267063e1a0494303afd8b44a8",
@@ -362,6 +392,16 @@
 			"art": true,
 			"scrim": 0.6,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"ar/women-who-moved-heaven-2": {
+			"ground": "ea361a999c34a9a4918ee556302e4bd5d97f248abd15c9d5b2f156f0da42cb6a",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
 			"bar": 0
 		},
 		"around-the-wicket-gate": {

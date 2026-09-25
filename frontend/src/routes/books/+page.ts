@@ -873,3 +873,5 @@ export const load: PageLoad = async ({ fetch }) => {
 	const { items, loadError } = await loadShelf(listBooks(getLang(), fetch));
 	return { books: items, loadError };
 };
+// prerender refresh 2026-09-25: Arabic books — brave-for-god (#3189), growing-in-wisdom (#2820),
+// women-who-moved-heaven-2 (#1782), men-and-women-who-gave-everything-2 (#2782). Rebuilds /ar/books.
