@@ -31,6 +31,9 @@
   "christ-precious-to-believers": {
    "space-before-punct": 1
   },
+  "christ-the-healer": {
+   "orphan-close-quote": 3
+  },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },

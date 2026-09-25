@@ -524,6 +524,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"christ-the-healer": {
+			"ground": "3665cd4c0242c1b979140b0a7b44edab0c188531f31c9c8789533fe477c2e61d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"confessions": {
 			"ground": "65b37fbd511d6d02b343619c9c3cd7e029ec286c7dbf5eaa6c8c295010ed9abd",
 			"style": "inscriptional",

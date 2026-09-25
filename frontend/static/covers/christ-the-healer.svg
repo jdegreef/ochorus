@@ -1,0 +1,23 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="presentation">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#7a3b2e"/>
+      <stop offset="1" stop-color="#432019"/>
+    </linearGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.42" r="0.78">
+      <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.34"/>
+    </radialGradient>
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="1.5" height="4" fill="black" opacity="0.11"/></pattern>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#grain) none"/>
+  <rect width="600" height="800" fill="url(#vig)"/>
+  <g transform="translate(240 520) scale(2.50000)">
+		<circle cx="24" cy="24" r="17" fill="#fdfaf3" stroke="#2d4a80" stroke-width="2.6"/>
+		<path d="M24 9v3M24 36v3M9 24h3M36 24h3" stroke="#2d4a80" stroke-width="2" stroke-linecap="round"/>
+		<path d="M24 12.5l4.6 11.5h-9.2z" fill="#d95f43"/>
+		<path d="M19.4 24h9.2L24 35.5z" fill="#6b7f8f"/>
+		<circle cx="24" cy="24" r="2.6" fill="#d9a441"/>
+		<path d="M33.5 12l1 2.4 2.4 1-2.4 1-1 2.4-1-2.4-2.4-1 2.4-1z" fill="#d9a441"/></g>
+</svg>
