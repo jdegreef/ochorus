@@ -1714,6 +1714,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"hi/men-who-tended-the-flock-2": {
+			"ground": "56d062fddade2b7dedfbb74c169e7b7d1cbb55dd4a5d0675194e8ab4678ca2ea",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/ministry-of-intercession": {
 			"ground": "ea6803622e2cd17da98b1d994a4ab8a92aaea70d7aaa7830ac92af0061a73a40",
 			"style": "devotional",
