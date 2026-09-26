@@ -2064,6 +2064,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/rise-up-men-of-god-2": {
+			"ground": "eaf5c07b9d4d5091dd33bd0936f1635a1113cfe0002c51f513959ddafab33728",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/soar-like-the-eagle-3": {
 			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
 			"style": "lettered",
