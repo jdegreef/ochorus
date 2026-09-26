@@ -2024,6 +2024,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"hi/pilgrims-progress": {
+			"ground": "259bde2c330daffad57056e6d50bb86d54898414a3a4bdf86f7266a8ce2b2a75",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"hi/power-through-prayer": {
 			"ground": "54263128fd280791463794320ec4f8598ae2b31dfc4813792080dab41df7aec2",
 			"style": "devotional",
@@ -2061,6 +2071,16 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/rise-up-men-of-god-2": {
+			"ground": "eaf5c07b9d4d5091dd33bd0936f1635a1113cfe0002c51f513959ddafab33728",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2922,6 +2942,16 @@
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
+			"bar": 0
+		},
+		"pt/days-of-heaven-upon-earth": {
+			"ground": "95d7464227be056bd368c48c94511d8aa30b9f30465bfd728feb33da0c176b3b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "box/teal",
 			"bar": 0
 		},
 		"pt/divine-healing": {
