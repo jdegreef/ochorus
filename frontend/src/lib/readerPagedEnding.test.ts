@@ -30,7 +30,7 @@ function pagerMarkup(): string {
 describe('the chapter ending lives inside the pager', () => {
 	it('puts the plan strip, chapter nav and colophon inside the pager', () => {
 		const pager = pagerMarkup();
-		expect(pager, 'Mark day done must be reachable in page mode').toContain('completePlanDay');
+		expect(pager, 'Mark day done must be reachable in page mode').toContain('markDayDone(');
 		expect(pager, 'the chapter-end block must be paginated').toContain('class="chapter-end"');
 		expect(pager, 'Next / Next in series must be paginated').toContain('book.seriesNext');
 		expect(pager, 'the colophon must be paginated').toContain('authorPath(chapter.author_slug)');
