@@ -3044,6 +3044,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"pt/growing-in-wisdom": {
+			"ground": "ce911ea714bec2b07ac2a98c440fafbf6cda93788ea28a111a9ff27aa63062db",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/he-holds-my-tomorrows": {
 			"ground": "1c8435f7eeba4cd7f8841e5bd680a0dbf348f227a43bf78950419fb0eb7f1dd5",
 			"style": "lettered",
