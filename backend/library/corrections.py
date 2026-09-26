@@ -1132,6 +1132,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
              '<p>"UZI WA RANGI YA SAMAWI."</p>'),
             # pt
             ("<p>Deus queria que todo o seu povo usasse u", '<p>"FITA AZUL."</p>'),
+            # es
+            ("<p>DIOS quería que todo Su pueblo llevar", '<p>"CORDÓN DE AZUL."</p>'),
         ],
     },
     # --- The rest of Gutenberg #23438, "A Ribband of Blue" --------------------
