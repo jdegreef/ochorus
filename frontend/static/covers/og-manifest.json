@@ -3224,6 +3224,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"pt/the-fourfold-gospel": {
+			"ground": "b7db50941d5dda93d3557754e89add6e61fcd05f8a89270149a36e3a94257590",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "box/teal",
+			"bar": 0
+		},
 		"pt/the-god-of-all-comfort": {
 			"ground": "6acda451a5ad0cbba52ecf8dcaa14625cbcaaf820f9ba7c3067b991f76ad8b3a",
 			"style": "devotional",
