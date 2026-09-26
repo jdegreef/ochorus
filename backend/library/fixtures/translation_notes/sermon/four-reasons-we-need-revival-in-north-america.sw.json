@@ -1,0 +1,113 @@
+{
+ "kind": "sermon",
+ "slug": "four-reasons-we-need-revival-in-north-america",
+ "language": "sw",
+ "job_issue": 4024,
+ "references": [
+  {
+   "reference": "Exodus 14:13",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Exodus 33:20",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Hebrews 4:11a",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Isaiah 9:8",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 9:9",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 9:10",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 9:11",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 9:12a",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Luke 21:28",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "2 Kings 6:17a",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "Revelation 4:11a",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Romans 8:31b",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "2 Chronicles 7:12",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "2 Chronicles 7:13",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "2 Chronicles 7:14a",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "2 Chronicles 7:14b",
+   "status": "self_rendered",
+   "block_index": 52
+  }
+ ]
+}

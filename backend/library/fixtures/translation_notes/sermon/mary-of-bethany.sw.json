@@ -1,0 +1,42 @@
+{
+ "kind": "sermon",
+ "slug": "mary-of-bethany",
+ "language": "sw",
+ "job_issue": 4029,
+ "references": [
+  {
+   "reference": "John 11:9-10",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 11:20b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 11:21",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "John 11:25a",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "John 11:32",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "John 11:35",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "the-key-in-my-hand.sw.json"
+  }
+ ]
+}

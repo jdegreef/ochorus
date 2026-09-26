@@ -1,0 +1,230 @@
+{
+ "kind": "sermon",
+ "slug": "the-gift-of-faith",
+ "language": "sw",
+ "job_issue": 4030,
+ "references": [
+  {
+   "reference": "Ephesians 1:15",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Ephesians 1:16",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Ephesians 1:17",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Ephesians 1:18a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 5:1",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 5:2",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "James 2:18",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "James 2:20",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:9",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Mark 16:16a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 10:9",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Hebrews 10:23",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "James 2:19b",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Hebrews 11:6a",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Thessalonians 5:8",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "stepping-stones-2.sw.json"
+  },
+  {
+   "reference": "Galatians 5:19a",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Psalm 1:3a",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "1 Corinthians 12:7",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 12:8",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 12:9a",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Matthew 7:20",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Matthew 8:10",
+   "status": "self_rendered",
+   "block_index": 61
+  },
+  {
+   "reference": "Mark 5:28",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Mark 5:34a",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Matthew 15:26",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "Matthew 15:27",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "Mark 10:47",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Luke 7:44",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Luke 17:19",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 16:13",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Matthew 16:16",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Matthew 16:17",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Matthew 16:18b",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "Matthew 5:5a",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 84
+  }
+ ]
+}
