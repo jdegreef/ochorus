@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "john-g-lake",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "library/fixtures/content/books/divine-healing.es.json"
+  }
+ ]
+}

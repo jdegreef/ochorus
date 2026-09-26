@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "charles-s-price",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "1 Corinthians 2:2",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Kings 19:12",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "library/fixtures/content/sermons/the-power-of-stillness.es.json"
+  }
+ ]
+}
