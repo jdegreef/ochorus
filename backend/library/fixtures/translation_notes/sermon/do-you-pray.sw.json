@@ -1,0 +1,307 @@
+{
+ "kind": "sermon",
+ "slug": "do-you-pray",
+ "language": "sw",
+ "job_issue": 3979,
+ "pull_request": 3991,
+ "references": [
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:17",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 14:4",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Acts 9:11",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Hosea 6:4",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Isaiah 40:4",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Matthew 7:7-8",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "John 14:13-14",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Exodus 32:10a",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Proverbs 14:14",
+   "status": "mined",
+   "block_index": 59,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Psalm 50:15",
+   "status": "mined",
+   "block_index": 70,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalm 55:22",
+   "status": "mined",
+   "block_index": 70,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "mined",
+   "block_index": 70,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "James 5:13",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Isaiah 30:21",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Psalm 55:17",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Isaiah 55:6b",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Hosea 14:2a",
+   "status": "mined",
+   "block_index": 83,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Acts 8:22a",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Matthew 25:11",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Revelation 6:16",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "mined",
+   "block_index": 89,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "mined",
+   "block_index": 91,
+   "source_file": "free-grace.sw.json"
+  },
+  {
+   "reference": "Habakkuk 2:3",
+   "status": "mined",
+   "block_index": 94,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Romans 7:21",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Psalm 119:113",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Genesis 28:17",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "mined",
+   "block_index": 98,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Ecclesiastes 5:2",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Job 40:4",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Colossians 4:2a",
+   "status": "mined",
+   "block_index": 101,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "block_index": 101,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "block_index": 102,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Daniel 9:19",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "block_index": 103,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalm 119:25",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Exodus 32:12",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Joshua 7:9b",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "James 4:2b",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "mined",
+   "block_index": 106,
+   "source_file": "answers-to-prayer.sw.json"
+  },
+  {
+   "reference": "Philippians 4:6b",
+   "status": "mined",
+   "block_index": 70,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "self_rendered",
+   "block_index": 109
+  }
+ ]
+}

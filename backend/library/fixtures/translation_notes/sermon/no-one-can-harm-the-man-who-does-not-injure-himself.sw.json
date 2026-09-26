@@ -1,0 +1,100 @@
+{
+ "kind": "sermon",
+ "slug": "no-one-can-harm-the-man-who-does-not-injure-himself",
+ "language": "sw",
+ "job_issue": 3980,
+ "pull_request": 3991,
+ "references": [
+  {
+   "reference": "Job 1:21a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "1 Timothy 6:7",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 6:26a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 6:22-23",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "2 Corinthians 4:16b",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Colossians 1:24a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 5:3a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Proverbs 27:7a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalms 81:16b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 12:6",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalms 105:37",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-gospel-of-healing.sw.json"
+  },
+  {
+   "reference": "Jonah 3:4b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Jonah 3:10a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Jonah 1:2b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Jonah 3:10",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Prayer of Azariah 1:15",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Daniel 1:10",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Daniel 3:16-18",
+   "status": "self_rendered",
+   "block_index": 22
+  }
+ ]
+}

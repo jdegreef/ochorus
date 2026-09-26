@@ -1,0 +1,118 @@
+{
+ "kind": "sermon",
+ "slug": "the-spirit-of-prayer",
+ "language": "sw",
+ "job_issue": 3985,
+ "pull_request": 3991,
+ "references": [
+  {
+   "reference": "Romans 8:26-27",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Romans 8:26a",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Romans 8:26a",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Romans 8:13-16",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Romans 8:26a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Jeremiah 49:11a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 John 4:1",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "1 John 4:2-3",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Romans 8:26-27",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 11:23-24",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "self_rendered",
+   "block_index": 74
+  }
+ ]
+}
