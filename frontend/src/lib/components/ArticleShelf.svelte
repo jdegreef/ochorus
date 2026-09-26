@@ -1,30 +1,61 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { ArticleSummary } from '$lib/library-public';
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
+	import BookCover from '$lib/components/BookCover.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import {
+		ARTICLE_SORTS,
+		isGuide,
+		matchesQuery,
+		ofKind,
+		sortArticles,
+		type ArticleKind,
+		type ArticleSort
+	} from '$lib/articleIndex';
 	import { articleHasTopic } from '$lib/articleTopics';
+	import { queryChip, type FilterChip } from '$lib/filterChips';
+	import { readJSON, writeJSON } from '$lib/persisted';
+	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
 
 	/**
-	 * The topic-filter row + the article card list, shared by the /articles index
-	 * and each /articles/<topic>/ shelf.
+	 * The article shelf shared by the /articles index and each /articles/<topic>/
+	 * page: the controls (free text · sort · Questions / Book guides), the
+	 * topic-filter row, the FilterSummary, and the list itself.
 	 *
-	 * The chips are real links, not a client-side filter: each topic view is its
-	 * own crawlable URL (`/articles/<slug>/`) with its own H1 and canonical, which
-	 * is the whole point of the clean path — a `?topic=` query gave one indexable
-	 * page for the lot. "All" is the bare index. Articles are English-only, so the
-	 * hrefs are plain (no locale prefix), matching the index's English literals.
+	 * The topic chips are real links, not a client-side filter: each topic view
+	 * is its own crawlable URL (`/articles/<slug>/`) with its own H1 and
+	 * canonical, which is the whole point of the clean path — a `?topic=` query
+	 * gave one indexable page for the lot. "All" is the bare index. Articles are
+	 * English-only, so the hrefs are plain (no locale prefix).
+	 *
+	 * The text query and the kind DO live in the query string, through the
+	 * page's `urlFilters()` (passed in, so the page can hide its secondary
+	 * sections while the reader filters). Sort is the reader's own preference
+	 * and lives in localStorage, like the Books and Sermons shelves.
 	 */
 	let {
 		articles,
-		activeTopic = ''
+		activeTopic = '',
+		filters,
+		heading = 'h2'
 	}: {
 		/** The full shelf — tabs and their counts are derived from it. */
 		articles: ArticleSummary[];
 		/** The topic slug this view is filtered to; '' is the unfiltered index. */
 		activeTopic?: string;
+		/** The page's `urlFilters({ defaults: { q: '', kind: '' } })`. */
+		filters: {
+			values: { q: string; kind: string };
+			active: boolean;
+			reset: () => void;
+		};
+		/** Card title level: h3 when the page heads the list with its own h2. */
+		heading?: 'h2' | 'h3';
 	} = $props();
 
 	// Distinct topics present on the shelf, alphabetical, each with a count for
@@ -43,14 +74,117 @@
 		return [...bySlug.values()].sort((x, y) => x.title.localeCompare(y.title));
 	});
 
-	const shown = $derived(
+	/** The shelf this view starts from: the whole index, or one topic's set. */
+	const base = $derived(
 		activeTopic ? articles.filter((a) => articleHasTopic(a, activeTopic)) : articles
 	);
+
+	// The Questions / Book guides switch only earns its place when the view
+	// holds both kinds.
+	const guideCount = $derived(base.filter(isGuide).length);
+	const showKinds = $derived(guideCount > 0 && guideCount < base.length);
+
+	const KIND_LABEL: Record<ArticleKind, string> = {
+		questions: 'articles.kindQuestions',
+		guides: 'articles.kindGuides'
+	};
+	const SORT_LABEL: Record<ArticleSort, string> = {
+		featured: 'common.sortShelf',
+		newest: 'search.sortNewest',
+		shortest: 'common.sortShortest',
+		title: 'common.sortTitle'
+	};
+
+	// --- Arrangement (persisted per device, like the Books/Sermons shelves) ----
+	const PREFS_KEY = 'ochorus:articles-view';
+	let sort = $state<ArticleSort>('featured');
+	// Hydrated after mount: the page is prerendered, so reading localStorage
+	// while rendering would desync the static HTML from the client.
+	onMount(() => {
+		const p = readJSON<{ sort?: ArticleSort }>(PREFS_KEY, {});
+		if (p.sort && (ARTICLE_SORTS as readonly string[]).includes(p.sort)) sort = p.sort;
+	});
+	const save = () => writeJSON(PREFS_KEY, { sort });
+
+	const filtered = $derived(
+		base.filter((a) => ofKind(a, filters.values.kind) && matchesQuery(a, filters.values.q))
+	);
+	const shown = $derived(sortArticles(filtered, sort));
+
+	// The guides view is a shelf of covers — each guide is ABOUT one book, so
+	// the book is the thing to recognise. Everything else is a list of rows.
+	const asCovers = $derived(filters.values.kind === 'guides');
+
+	const activeChips = $derived.by(() => {
+		const c: FilterChip[] = [];
+		const q = queryChip(filters);
+		if (q) c.push(q);
+		const k = filters.values.kind as ArticleKind;
+		if (k)
+			c.push({ kind: 'kind', label: t(KIND_LABEL[k]), onRemove: () => (filters.values.kind = '') });
+		return c;
+	});
+
+	// --- Show more -----------------------------------------------------------
+	// A page at a time, so the index is not 130 rows deep on arrival. The count
+	// belongs to one filter state: change the filters and it starts over. Kept
+	// as (key, count) rather than reset in an effect — an $effect that writes
+	// state is a $derived in disguise (frontend/CLAUDE.md).
+	const PAGE = 24;
+	const viewKey = $derived(`${activeTopic}|${filters.values.kind}|${filters.values.q}|${sort}`);
+	let expanded = $state({ key: '', count: PAGE });
+	const limit = $derived(expanded.key === viewKey ? expanded.count : PAGE);
+	const visible = $derived(shown.slice(0, limit));
+	const remaining = $derived(shown.length - visible.length);
+	const showMore = () => (expanded = { key: viewKey, count: limit + PAGE });
 </script>
 
+<div class="filter-row mb-4">
+	<input
+		bind:value={filters.values.q}
+		type="search"
+		autocomplete="off"
+		placeholder={t('articles.filterPlaceholder')}
+		aria-label={t('articles.filterPlaceholder')}
+		class="filter-field grow"
+	/>
+	<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+		{#each ARTICLE_SORTS as s (s)}
+			<option value={s}>{t(SORT_LABEL[s])}</option>
+		{/each}
+	</select>
+	{#if showKinds}
+		<div class="seg">
+			<button
+				class:active={filters.values.kind === ''}
+				aria-pressed={filters.values.kind === ''}
+				onclick={() => (filters.values.kind = '')}
+				>{t('search.filterAll')} <span class="count">{base.length}</span></button
+			>
+			<button
+				class:active={filters.values.kind === 'questions'}
+				aria-pressed={filters.values.kind === 'questions'}
+				onclick={() => (filters.values.kind = 'questions')}
+				>{t('articles.kindQuestions')} <span class="count">{base.length - guideCount}</span></button
+			>
+			<button
+				class:active={filters.values.kind === 'guides'}
+				aria-pressed={filters.values.kind === 'guides'}
+				onclick={() => (filters.values.kind = 'guides')}
+				>{t('articles.kindGuides')} <span class="count">{guideCount}</span></button
+			>
+		</div>
+	{/if}
+</div>
+
 {#if topicTabs.length > 1}
-	<nav class="filter-row mb-6" aria-label={t('articles.filterByTopic')}>
-		<a class="chip" class:active={activeTopic === ''} aria-current={activeTopic === '' ? 'page' : undefined} href="/articles/">
+	<nav class="chip-scroller mb-6" aria-label={t('articles.filterByTopic')}>
+		<a
+			class="chip"
+			class:active={activeTopic === ''}
+			aria-current={activeTopic === '' ? 'page' : undefined}
+			href="/articles/"
+		>
 			{t('search.filterAll')}<span class="count">{articles.length}</span>
 		</a>
 		{#each topicTabs as tab (tab.slug)}
@@ -66,14 +200,57 @@
 	</nav>
 {/if}
 
-{#if shown.length}
-	<div class="flex flex-col gap-3">
-		{#each shown as a (a.slug)}
-			<ArticleCard article={a} />
+{#if filters.active}
+	<FilterSummary
+		shown={filtered.length}
+		total={base.length}
+		template={t('articles.showing')}
+		onClear={() => filters.reset()}
+		chips={activeChips}
+		class="mb-6"
+	/>
+{/if}
+
+{#if shown.length === 0}
+	<!-- Filtered to nothing, or (only via a stale/hand-edited topic slug — a
+	     live chip always has ≥1 article) an empty topic. -->
+	<EmptyState message={filters.active ? t('articles.noMatches') : t('articles.emptyTopic')} />
+{:else if asCovers}
+	<div class="book-grid">
+		{#each visible as a (a.slug)}
+			<a href="/articles/{a.slug}/" class="book-card card-lift group">
+				{#if a.lead_book}
+					<BookCover book={a.lead_book} />
+				{/if}
+				<div class="mt-2 flex flex-1 flex-col px-0.5">
+					<svelte:element
+						this={heading}
+						class="line-clamp-2 text-small font-medium leading-snug text-text"
+					>
+						{a.lead_book?.title ?? a.h1}
+					</svelte:element>
+					{#if a.lead_book}
+						<p class="truncate text-small text-muted">{a.lead_book.author.name}</p>
+					{/if}
+					<p class="mt-auto pt-0.5 text-eyebrow text-muted">
+						{t('book.readersGuide')}<span class="opacity-50">{' · '}</span>{readingTime(a.word_count)}
+					</p>
+				</div>
+			</a>
 		{/each}
 	</div>
 {:else}
-	<!-- Reachable only via a stale/hand-edited topic slug (a live chip always has
-	     ≥1 article) — show a way back rather than a blank page. -->
-	<EmptyState message={t('articles.emptyTopic')} />
+	<div class="flex flex-col gap-3">
+		{#each visible as a (a.slug)}
+			<ArticleCard article={a} {heading} />
+		{/each}
+	</div>
+{/if}
+
+{#if remaining > 0}
+	<div class="mt-8 flex justify-center">
+		<button class="btn btn-ghost" onclick={showMore}>
+			{t('bios.showMore').replace('%n%', String(Math.min(PAGE, remaining)))}
+		</button>
+	</div>
 {/if}

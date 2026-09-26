@@ -6,20 +6,25 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import ArticleShelf from '$lib/components/ArticleShelf.svelte';
+	import BookCover from '$lib/components/BookCover.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
+	import { ARTICLE_KINDS, featuredArticles, isGuide, topicGroups } from '$lib/articleIndex';
+	import { urlFilters } from '$lib/urlFilters.svelte';
+	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 
 	// English literals, as on /quotes and /scripture: this index is not localized
-	// because what it lists is not (articles are English-only for now).
+	// because what it lists is not (articles are English-only for now). Chrome
+	// goes through t() all the same (page-design F3).
 	let { data } = $props();
 	const articles = $derived<ArticleSummary[]>(data.articles);
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
 
-	// The topic filter is now a real path — the chips in <ArticleShelf> link to
+	// The topic filter is a real path — the chips in <ArticleShelf> link to
 	// `/articles/<slug>/`. Old shared links carrying the retired `?topic=<slug>`
 	// query are forwarded to the clean URL so they don't silently show "All".
 	// An $effect only runs in the browser, so this never touches the query string
@@ -31,6 +36,22 @@
 		const known = articles.some((a) => articleHasTopic(a, wanted));
 		goto(known ? `/articles/${wanted}/` : '/articles/', { replaceState: true });
 	});
+
+	// What narrows the shelf — shareable, reloadable, Back-able — lives in the
+	// URL (the same helper Books, Sermons and Biographies use). Owned here rather
+	// than in <ArticleShelf> so the page can step its secondary sections aside
+	// while the reader is filtering (page-design, browse-shelf step 4).
+	const filters = urlFilters({
+		defaults: { q: '', kind: '' },
+		allowed: { kind: ARTICLE_KINDS },
+		url: () => $page.url
+	});
+
+	const guides = $derived(articles.filter(isGuide));
+	const featured = $derived(featuredArticles(articles));
+	const groups = $derived(topicGroups(articles));
+	/** The guides rail: the first few, in curated order, that have a cover. */
+	const guideRail = $derived(guides.filter((g) => g.lead_book).slice(0, 10));
 
 	const path = '/articles/';
 	const canonical = `${SITE_URL}${path}`;
@@ -50,6 +71,11 @@
 	// A CollectionPage listing each article, so the set reads as one entity to a
 	// crawler rather than a handful of unrelated URLs.
 	const listLd = $derived(articleCollectionLd('Articles', description, canonical, articles));
+
+	function showGuides() {
+		filters.values.kind = 'guides';
+		document.getElementById('all-articles')?.scrollIntoView({ block: 'start' });
+	}
 </script>
 
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, listLd]} />
@@ -62,15 +88,131 @@
 	<PageHeader
 		title={t('nav.articles')}
 		tagline={t('articles.tagline')}
+		meta={articles.length ? counts : undefined}
 	/>
+	<!-- "130 articles · 73 book guides" — the shelf's size, and how much of it is
+	     guides (the switch below splits them). -->
+	{#snippet counts()}
+		{articles.length}
+		{articles.length === 1 ? t('common.articleOne') : t('common.articleMany')}
+		{#if guides.length}
+			<span class="opacity-50">·</span>
+			{guides.length}
+			{guides.length === 1 ? t('articles.guideOne') : t('articles.guideMany')}
+		{/if}
+	{/snippet}
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if articles.length}
-		<ArticleShelf {articles} activeTopic="" />
+		<!-- The secondary sections step aside while the reader filters: they
+		     answer "where do I begin?", and a reader who has typed has begun. -->
+		{#if !filters.active}
+			{#if featured.length}
+				<section class="mb-10" aria-labelledby="start-here">
+					<h2 id="start-here" class="section-label">{t('articles.startHere')}</h2>
+					<div class="grid gap-4 md:grid-cols-3">
+						{#each featured as a (a.slug)}
+							<a
+								href="/articles/{a.slug}/"
+								class="featured card-lift flex gap-4 border border-border bg-surface p-5"
+							>
+								{#if a.lead_book}
+									<div class="w-16 shrink-0" aria-hidden="true">
+										<BookCover book={a.lead_book} />
+									</div>
+								{/if}
+								<div class="flex min-w-0 flex-col gap-1.5">
+									<p class="eyebrow text-accent">
+										{#if a.topics?.[0]}{a.topics[0].title}<span class="opacity-50">{' · '}</span>{/if}{readingTime(a.word_count)}
+									</p>
+									<h3 class="text-h3 text-text">{a.h1}</h3>
+									{#if a.lead_book}
+										<p class="mt-auto text-small text-muted">
+											{t('articles.leadsTo').replace('%title%', a.lead_book.title)}
+										</p>
+									{/if}
+								</div>
+							</a>
+						{/each}
+					</div>
+				</section>
+			{/if}
+
+			{#if groups.length > 1}
+				<section class="mb-10" aria-labelledby="by-topic">
+					<h2 id="by-topic" class="section-label">{t('home.browseTopic')}</h2>
+					<div class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+						{#each groups as g (g.slug)}
+							<div class="topic-card flex flex-col gap-2 border border-border bg-surface p-4 sm:p-5">
+								<h3 class="flex flex-col gap-1 text-h3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+									<a href="/articles/{g.slug}/" class="text-text hover:text-accent">{g.title}</a>
+									<span class="count text-small font-normal">{g.count}</span>
+								</h3>
+								<!-- The previews need a column's width; on a phone the card is the
+								     topic's name and size, a door rather than a list. -->
+								<ul class="hidden flex-col gap-1.5 sm:flex">
+									{#each g.items as a (a.slug)}
+										<li><a href="/articles/{a.slug}/" class="text-body">{a.h1}</a></li>
+									{/each}
+								</ul>
+								<a
+									href="/articles/{g.slug}/"
+									class="mt-auto hidden pt-1 text-small font-semibold text-muted hover:text-accent sm:block"
+									>{t('articles.seeAll').replace('%n%', String(g.count))}</a
+								>
+							</div>
+						{/each}
+					</div>
+				</section>
+			{/if}
+
+			{#if guideRail.length > 2}
+				<section class="mb-10" aria-labelledby="guides-rail">
+					<div class="flex items-baseline justify-between gap-4">
+						<h2 id="guides-rail" class="section-label">{t('articles.kindGuides')}</h2>
+						<button class="btn btn-ghost btn-sm" onclick={showGuides}>
+							{t('articles.allGuides').replace('%n%', String(guides.length))}
+						</button>
+					</div>
+					<div class="cover-rail flex gap-4 pb-1">
+						{#each guideRail as g (g.slug)}
+							{#if g.lead_book}
+								<a href="/articles/{g.slug}/" class="w-20 shrink-0 hover:no-underline sm:w-24">
+									<BookCover book={g.lead_book} />
+									<div class="mt-1.5 line-clamp-2 text-eyebrow font-medium text-text">
+										{g.lead_book.title}
+									</div>
+									<div class="truncate text-eyebrow text-muted">{g.lead_book.author.name}</div>
+								</a>
+							{/if}
+						{/each}
+					</div>
+				</section>
+			{/if}
+		{/if}
+		<h2 id="all-articles" class="section-label">{t('home.allArticles')}</h2>
+		<ArticleShelf {articles} activeTopic="" {filters} heading="h3" />
 	{:else}
 		<EmptyState message={t('articles.emptyIndex')} />
 	{/if}
 
 	<AccountCta />
 </div>
+
+<style>
+	/* The "Start here" and topic cards share the row cards' radius; the start
+	   cards lift (banded), the topic cards stay put — they hold links of their
+	   own, so the card itself is not one (page-design D3). */
+	.featured,
+	.topic-card {
+		border-radius: var(--radius-card);
+		color: inherit;
+	}
+	.featured:hover {
+		text-decoration: none;
+	}
+	#all-articles {
+		scroll-margin-top: calc(var(--appnav-h, 0px) + 1rem);
+	}
+</style>

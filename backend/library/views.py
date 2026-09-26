@@ -72,6 +72,7 @@ from .serializers import (
     SermonListSerializer,
     TopicDetailSerializer,
     TopicListSerializer,
+    article_lead_book_map,
     article_topic_map,
     book_topic_map,
     plan_book_index,
@@ -429,7 +430,10 @@ class ArticleListView(PublicContentCacheMixin, generics.ListAPIView):
         # (the index's filter tabs) cost a fixed handful of queries, not one per
         # article. Mirrors BookListView. See ArticleListSerializer.get_topics.
         ctx = super().get_serializer_context()
-        ctx["article_topics"] = article_topic_map(_language(self.request))
+        language = _language(self.request)
+        ctx["article_topics"] = article_topic_map(language)
+        # Same for each card's lead-book cover: one map for the shelf.
+        ctx["article_lead_books"] = article_lead_book_map(language)
         return ctx
 
 
