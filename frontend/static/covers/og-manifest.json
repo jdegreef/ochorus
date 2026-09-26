@@ -2094,6 +2094,26 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/rooted-1": {
+			"ground": "c055b863f3683399738c92836f7f89327ed42da2acccfb35e1a097e0381f13dd",
+			"style": "young",
+			"volume": "1",
+			"script": "devanagari",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/rooted-2": {
+			"ground": "ffe071348772a44144af132c25cbdf70c450631f3dfa48bf7f1d843df5edacb2",
+			"style": "young",
+			"volume": "2",
+			"script": "devanagari",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/soar-like-the-eagle-3": {
 			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
 			"style": "lettered",
