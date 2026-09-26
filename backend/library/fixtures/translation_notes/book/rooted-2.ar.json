@@ -1,0 +1,657 @@
+{
+  "kind": "book",
+  "slug": "rooted-2",
+  "language": "ar",
+  "job_issue": 3601,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "John 20:31",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 1:1",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 1:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Genesis 1:1",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 2:6-7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 2:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "2 Corinthians 8:9",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Luke 2:10-11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 2:10",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 2:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 2:10-11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 2:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 2:10",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 2:11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 2:48",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 2:49",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 2:52",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 3:16-17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 3:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 3:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 4:1-4",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 4:3",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 4:4",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Hebrews 4:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 1:16-18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 1:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 1:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 2:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 2:11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 2:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 2:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 3:1-3",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 3:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 3:3",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 3:4",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 3:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 4:13-14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 4:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 4:9",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 4:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 4:29",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 4:39-41",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 4:35",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 4:38",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 4:39",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 4:40",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 4:41",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 6:9-11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 6:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 6:9",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 6:11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 14:29-31",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 14:26",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 14:27",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 14:28",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 14:29",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 14:30",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 10:51",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 10:52",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 10:47",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 10:48",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 10:49",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Mark 10:13",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 10:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 11:25",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 11:26",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 11:3",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 11:21",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 11:35",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 11:43",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:3",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:4",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:9",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:13",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 6:26",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 6:27",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 6:33",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:4",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:20",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:13",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:19",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 15:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 10:36-37",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Leviticus 19:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 10:29",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 10:33",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 10:35",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 10:36",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 10:37a",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 10:37b",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 19:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 19:10",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 19:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 19:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 19:9",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 21:9",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 21:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 13:14-15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 13:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 13:8a",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 13:8b",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 13:13",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 13:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 19:30",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 19:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 23:34",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 28:5-6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 28:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 28:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 28:19-20",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 28:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 28:19",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 28:20",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 16:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 16:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 15:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "book",
+  "slug": "brave-for-god-2",
+  "language": "ar",
+  "job_issue": 3595,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Luke 23:34",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "1 Samuel 2:30",
+      "status": "self_rendered"
+    }
+  ]
+}

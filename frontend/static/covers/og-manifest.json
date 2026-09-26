@@ -294,6 +294,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"ar/brave-for-god-2": {
+			"ground": "ba5a1f2c0262538dd7f0dcb159221c56bbec58421a9098bae7f1b034db86a279",
+			"style": "young",
+			"volume": "2",
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ar/clothed-with-strength-and-dignity": {
 			"ground": "db8850dce12ff5a187d3d3a94eae8a673f10347b142850b04ea6d07fa4ff7ef3",
 			"style": "originals",
@@ -461,6 +471,26 @@
 			"script": "arabic",
 			"art": true,
 			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
+		"ar/rooted-1": {
+			"ground": "dc1c03b86db79da5529d0936c4510567c6d2ac86d1c4fd59a556f7eebb8a2214",
+			"style": "young",
+			"volume": "1",
+			"script": "arabic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"ar/rooted-2": {
+			"ground": "e06a0b740e32dcc374557d33bdb3cc5d22c7f05f5f2df388af825a39398129c5",
+			"style": "young",
+			"volume": "2",
+			"script": "arabic",
+			"art": false,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},
