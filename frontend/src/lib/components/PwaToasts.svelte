@@ -68,8 +68,12 @@
 		inset-inline-end: 1rem;
 		/* Clear the audio player when one is up (it publishes --listenbar-h) and
 		   the home-indicator strip below it. Listening offline used to put the
-		   "reading from your device" pill straight over the transport controls. */
-		bottom: calc(1rem + env(safe-area-inset-bottom) + var(--listenbar-h, 0px));
+		   "reading from your device" pill straight over the transport controls.
+		   The phone tab bar (--tabbar-h, safe area included) never shows with the
+		   Listen bar, so clear whichever is up. */
+		bottom: calc(
+			1rem + max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px))
+		);
 		z-index: 60;
 		display: flex;
 		flex-direction: column;

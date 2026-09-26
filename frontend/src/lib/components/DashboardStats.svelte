@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import GoalPips from '$lib/components/GoalPips.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { lang } from '$lib/lang.svelte';
@@ -94,11 +95,7 @@
 							{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
 						{/if}
 					</div>
-					<div class="flex gap-1.5">
-						{#each Array(goal) as _, i (i)}
-							<span class="h-2 w-6 rounded-full {i < weekCount ? 'bg-gold' : 'bg-border'}"></span>
-						{/each}
-					</div>
+					<GoalPips {goal} {weekCount} />
 				</div>
 			</div>
 

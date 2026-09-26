@@ -13,7 +13,7 @@
 	import { API_BASE_URL } from '$lib/config';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
-	import { loginHref } from '$lib/loginHref';
+	import { loginHref, withSignup } from '$lib/loginHref';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
@@ -30,6 +30,8 @@
 	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import UnsyncedSignOutDialog from '$lib/components/UnsyncedSignOutDialog.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
+	import TabBar from '$lib/components/TabBar.svelte';
+	import { ACCOUNT_NAV, accountHref } from '$lib/accountNav';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
@@ -111,6 +113,12 @@
 
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
 	const inReader = $derived(isReaderRoute($page.route.id));
+	// The phone tab bar (TabBar; phones only, by its CSS). Not on the reading
+	// surfaces, whose own bottom bar holds that edge; not in focus mode; not
+	// while the Listen bar holds it. Where it shows (TabBar publishes
+	// --tabbar-h), the top bar sheds its hamburger, gear and sign-in button —
+	// they live in its "More" sheet (app.css); a signed-in avatar stays.
+	const withTabBar = $derived(!inReader && !readerUi.focus && listen.status === 'idle');
 
 	// Publish the bar's RENDERED height so the handful of pages with their own
 	// sticky sub-bar (search filters, the biographies index) can sit below it
@@ -169,30 +177,17 @@
 	// ...and not on /login itself, where the form is already the whole page and
 	// a second "Create an account" band under it only competes with it.
 	const onLogin = $derived(deLocalizeHref($page.url.pathname).startsWith('/login'));
-	const withSignup = (href: string) => `${href}${href.includes('?') ? '&' : '?'}mode=signup`;
 	const signupHref = $derived(withSignup(loginHref($page.url.pathname, $page.url.search)));
 
-	// Footer "My Account" column — the reader's own pages. Signed in, the links
-	// go straight there; signed out, they route through /login (via the same
-	// loginHref guard the header's sign-in link uses) carrying a redirect to the
-	// localized target, so a successful sign-in lands the reader on the page they
-	// asked for.
-	const accountLinks = $derived.by(() => {
-		// `signup` opens the form on "create account": a signed-out reader following
-		// Bookshelf / Notebook from here most likely has no account yet, and /login
-		// pitches that destination beside the form (LoginPitch).
-		const dest = (path: string, signup = false) => {
-			const target = localizeHref(path);
-			if (auth.user) return target;
-			const href = localizeHref(loginHref(target));
-			return signup ? withSignup(href) : href;
-		};
-		return [
-			{ href: dest('/favorites', true), labelKey: 'fav.yourFavorites' },
-			{ href: dest('/notebook', true), labelKey: 'notebook.title' },
-			{ href: dest('/settings'), labelKey: 'account.settings' }
-		];
-	});
+	// Footer "My Account" column — the reader's own pages (ACCOUNT_NAV, shared
+	// with the phone "More" sheet; accountHref routes a signed-out reader
+	// through /login with a redirect back).
+	const accountLinks = $derived(
+		ACCOUNT_NAV.map((d) => ({
+			href: accountHref(d.path, !!auth.user, d.signup),
+			labelKey: d.labelKey
+		}))
+	);
 
 	// Feedback is a modal, not a page, so it can't ride in accountLinks. Signed
 	// in, the footer entry opens the same FeedbackDialog the account dropdown
@@ -238,7 +233,7 @@
 	class="flex min-h-screen flex-col"
 	style="--reading-scale: {readerPrefs.scale}; --reading-measure: {MEASURE[
 		readerPrefs.measure
-	]}; --pw: {pageWidth.rem}rem; --appnav-h: {readerUi.focus ? 0 : navH}px"
+	]}; --pw: {pageWidth.rem}rem; --appnav-h: {readerUi.focus ? 0 : navH}px; padding-bottom: var(--tabbar-h, 0px)"
 >
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
 	<!-- Defines the Ochorus wordmark <symbol> once; every BrandMark <use>s it. -->
@@ -562,6 +557,9 @@
 	{/if}
 </div>
 
+{#if withTabBar}
+	<TabBar />
+{/if}
 <CommandPalette />
 <PwaToasts />
 

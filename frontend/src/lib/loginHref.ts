@@ -23,3 +23,7 @@ export function loginHref(pathname: string, search = ''): string {
 	// away the query the reader came from.
 	return `/login?redirect=${encodeURIComponent(pathname + search)}`;
 }
+
+/** Open the login page on its "create account" form. */
+export const withSignup = (href: string): string =>
+	`${href}${href.includes('?') ? '&' : '?'}mode=signup`;

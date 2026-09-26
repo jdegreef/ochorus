@@ -8,9 +8,9 @@
 
 	/**
 	 * A compact author card — grayscale portrait (or initials fallback) beside
-	 * the name and book count, linking to the author page. Shared by the
-	 * logged-out home's author roster and the "My Library" following section,
-	 * which had grown identical inline copies.
+	 * the name and book count (stacked above them on a phone), linking to the
+	 * author page. Shared by the logged-out home's author roster and the "My
+	 * Library" following section, which had grown identical inline copies.
 	 */
 	let { author }: { author: AuthorTileData } = $props();
 	const t = i18n.t;
@@ -18,7 +18,7 @@
 
 <a
 	href={localizeHref(`/authors/${author.slug}`)}
-	class="card-tint flex items-center gap-3 rounded-card border border-border p-4"
+	class="card-tint flex flex-col items-center gap-2 rounded-card border border-border p-4 text-center sm:flex-row sm:gap-3 sm:text-start"
 >
 	{#if author.photo_url}
 		{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
@@ -42,7 +42,9 @@
 		</span>
 	{/if}
 	<span class="min-w-0">
-		<span class="block truncate text-small font-semibold text-text">{author.name}</span>
+		<!-- Two lines on a phone, where the tile is ~150px wide: truncating to one
+		     cut "Andrew Murray" to "Andre…". -->
+		<span class="line-clamp-2 text-small font-semibold text-text sm:block sm:truncate">{author.name}</span>
 		{#if author.book_count}
 			<span class="block text-small text-muted">
 				{author.book_count}
