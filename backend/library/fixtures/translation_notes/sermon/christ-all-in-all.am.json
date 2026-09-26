@@ -1,0 +1,205 @@
+{
+ "kind": "sermon",
+ "slug": "christ-all-in-all",
+ "language": "am",
+ "job_issue": 3670,
+ "pull_request": null,
+ "note": [
+  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
+  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
+  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 2:11",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 4
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 2:11",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 2:14",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 49:24",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Isaiah 49:25",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalms 116:8",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 33:24",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 33:25",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 33:26",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 33:28",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 33:24",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 22
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 24
+  },
+  {
+   "reference": "Nehemiah 9:15",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Isaiah 41:13",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "2 Corinthians 3:2",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 45
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 60
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 61
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 62
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "John 3:2",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 63
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 70
+  },
+  {
+   "reference": "Psalms 23:1",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "Psalms 23:1",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Colossians 3:2",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "Colossians 3:11",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 100
+  }
+ ]
+}

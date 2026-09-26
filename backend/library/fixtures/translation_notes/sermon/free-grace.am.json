@@ -1,0 +1,187 @@
+{
+ "kind": "sermon",
+ "slug": "free-grace",
+ "language": "am",
+ "job_issue": 3669,
+ "pull_request": null,
+ "note": [
+  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
+  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
+  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Galatians 4:30",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 1
+  },
+  {
+   "reference": "Ezekiel 36:24",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ezekiel 36:25",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 2:16",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 11:26",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 11:26",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 9
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 20
+  },
+  {
+   "reference": "Galatians 1:1",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 1:13",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Romans 13:4",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 28
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 29
+  },
+  {
+   "reference": "Luke 5:31",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 1:5",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Revelation 1:6",
+   "status": "self_rendered",
+   "block_index": 34
+  }
+ ]
+}
