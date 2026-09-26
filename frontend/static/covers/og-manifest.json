@@ -2124,6 +2124,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/the-secret-of-guidance": {
+			"ground": "5962fc9d7b582cc0a99075a8626fc7cc1150417a5b2f701a3bce2c8c6252cce5",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/the-unselfishness-of-god": {
 			"ground": "b0529c180177ae3ea8c546392028bff3b2890e4d2d1b5fc15e85d6cf4793953f",
 			"style": "devotional",
