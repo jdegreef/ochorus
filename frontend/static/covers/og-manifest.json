@@ -2094,6 +2094,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"hi/the-fourfold-gospel": {
+			"ground": "888a8e7124236aa4159b9a7e7cde429eaf84a796378ff3f856c5ea3b2d774388",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "box/teal",
+			"bar": 0
+		},
 		"hi/the-god-of-all-comfort": {
 			"ground": "62853c4d1c1bb49a274203abde9a9e12f269287f82b0ec2f2d3dd3521b7527cb",
 			"style": "devotional",
