@@ -1794,6 +1794,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/the-masters-indwelling": {
+			"ground": "816c7f25929f98aa0a7a3c8c0ee6b3823ea55cea58cf5aed7f04375ccf6e4e9b",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"hi/the-unselfishness-of-god": {
 			"ground": "b0529c180177ae3ea8c546392028bff3b2890e4d2d1b5fc15e85d6cf4793953f",
 			"style": "devotional",
