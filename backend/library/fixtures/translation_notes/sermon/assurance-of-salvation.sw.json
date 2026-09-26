@@ -1,0 +1,246 @@
+{
+ "kind": "sermon",
+ "slug": "assurance-of-salvation",
+ "language": "sw",
+ "job_issue": 3635,
+ "pull_request": 3642,
+ "references": [
+  {
+   "reference": "Romans 7:4",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 8:21",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:1a",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "the-gospel-of-healing.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 2:11a",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 John 5:10a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "1 Corinthians 15:56a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 4:23",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 3:8",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 1:21",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Hosea 2:19-20",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "Revelation 3:18",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Job 16:2b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Acts 10:34",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 14:23",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Galatians 5:6",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Ezekiel 13:10",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 6:22b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Romans 7:4b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 4:3",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Luke 4:8",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "1 John 5:18b",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 John 2:14",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Luke 4:8",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Genesis 3:1",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Job 13:15a",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Genesis 18:25b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Psalm 91:11a",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 2:11",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Psalm 35:3",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Isaiah 12:2",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Luke 10:19",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 Timothy 6:12",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Psalm 51:12",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 John 2:20",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Psalm 119:99",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Malachi 3:1",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "power-through-prayer.sw.json"
+  }
+ ]
+}

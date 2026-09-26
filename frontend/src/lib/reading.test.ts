@@ -7,7 +7,8 @@ import {
 	readingMinutes,
 	readingTime,
 	listenMinutes,
-	listenTime
+	listenTime,
+	planTimeLeft
 } from './reading';
 
 describe('readingMinutes', () => {
@@ -56,6 +57,14 @@ describe('readingTime', () => {
 	it('labels hours and minutes together', () => {
 		expect(readingTime(200 * 65)).toBe('1 hr 5 min read');
 		expect(readingTime(200 * 130)).toBe('2 hr 10 min read');
+	});
+});
+
+describe('planTimeLeft', () => {
+	it('reads in minutes under the hour, hours and minutes past it', () => {
+		expect(planTimeLeft(45)).toBe('45 min left');
+		expect(planTimeLeft(60)).toBe('1 hr left');
+		expect(planTimeLeft(251)).toBe('4 hr 11 min left');
 	});
 });
 

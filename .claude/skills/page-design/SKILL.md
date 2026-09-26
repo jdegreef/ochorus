@@ -109,8 +109,9 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    same size. A finished/complete state is a muted status line, not a `<p>`
    wearing `.btn`.
    **Book is the model (#3277):** the read verb lives in a *read card*
-   (chapter name + `ProgressBar` + one `.btn-primary`; Start over is a text
-   link), and every other action is ONE quiet `.book-actions` row — Save,
+   (shared `.read-card` in app.css — the plan page uses it too for "Day N of M
+   · today's reading"; chapter name + `ProgressBar` + one `.btn-primary`; Start over is a text
+   link), and every other action is ONE quiet `.action-strip` row — Save,
    shelf, a single Download menu (`BookDownloadMenu`, never separate
    offline/EPUB/PDF buttons), Share/Search icon-only on desktop. When its
    host column (`.action-host`, a CSS container) is under 560px the same DOM

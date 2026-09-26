@@ -31,6 +31,9 @@
   "christ-precious-to-believers": {
    "space-before-punct": 1
   },
+  "christ-the-healer": {
+   "orphan-close-quote": 3
+  },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
@@ -46,6 +49,9 @@
   },
   "essentials-of-prayer": {
    "orphan-close-quote": 1
+  },
+  "ever-increasing-faith": {
+   "orphan-close-quote": 2
   },
   "faith-and-assurance": {
    "space-before-punct": 2
@@ -243,7 +249,6 @@
    "orphan-close-quote": 23
   },
   "the-circumcision-of-the-heart": {
-   "orphan-close-quote": 3,
    "space-before-punct": 1
   },
   "the-fourfold-gospel": {

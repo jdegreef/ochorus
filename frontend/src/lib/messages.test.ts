@@ -14,7 +14,7 @@ import { buildSummary } from '../../scripts/sync-ui-catalogues.mjs';
  *     apart from a small allowlist of borrowed / proper-noun terms.
  */
 
-const LOCALES = ['en', 'es', 'sw', 'lg', 'pt', 'ar', 'hi', 'uk', 'fr'] as const;
+const LOCALES = ['en', 'es', 'sw', 'lg', 'pt', 'ar', 'hi', 'uk', 'fr', 'am'] as const;
 const BASE = 'en';
 const MSG_DIR = path.resolve('messages');
 
@@ -43,6 +43,13 @@ const PENDING_TRANSLATION: Record<string, readonly string[]> = {
 	// forever. Empty since the ar/hi/lg/sw/uk feedback, Q&A and "more like this"
 	// placeholders were translated (2026-09-23); uk's four Scripture strings
 	// lived here once too, until the Kulish text could be sourced.
+	//
+	// Amharic quotes the 1962 UBS Bible (NT revised 2003). Its New Testament is
+	// on the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh), so
+	// Matthew 25:36, Colossians 3:16 and John 1:5 are verbatim; the mirror
+	// carries no Old Testament, so Isaiah 55:11 waits for a 1962 OT source.
+	// Do not paraphrase it.
+	am: ['about_scripture1']
 };
 
 const toSnake = (key: string) =>

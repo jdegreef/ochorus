@@ -1,0 +1,157 @@
+{
+ "kind": "sermon",
+ "slug": "christs-boundless-compassion",
+ "language": "am",
+ "job_issue": 3566,
+ "pull_request": null,
+ "note": [
+  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
+  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
+  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 14:14",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 14:14",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 12:20",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 2
+  },
+  {
+   "reference": "Leviticus 13:45",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 8:2",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 8:3",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 7:14",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 8:11",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 15
+  },
+  {
+   "reference": "Luke 15:12",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 15:18",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 23:37",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 23
+  },
+  {
+   "reference": "John 1:29",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 26:75",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 26
+  },
+  {
+   "reference": "Acts 9:4",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 28
+  },
+  {
+   "reference": "Acts 9:5",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 28
+  },
+  {
+   "reference": "Acts 9:6",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 28
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Revelation 5:12",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 32
+  },
+  {
+   "reference": "Song of Solomon 5:10",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Song of Solomon 5:16",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 34
+  },
+  {
+   "reference": "John 11:44",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Luke 7:50",
+   "status": "self_rendered",
+   "block_index": 41
+  }
+ ]
+}

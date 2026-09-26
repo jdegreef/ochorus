@@ -1,0 +1,169 @@
+{
+ "kind": "sermon",
+ "slug": "faith",
+ "language": "sw",
+ "job_issue": 3638,
+ "pull_request": 3642,
+ "references": [
+  {
+   "reference": "Hebrews 11:6a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:6a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:6a",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "a-full-reward.sw.json"
+  },
+  {
+   "reference": "Leviticus 2:13b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Genesis 4:4-5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 10:14b",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Romans 10:14c",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Romans 10:15a",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "John 5:39",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Peter 3:16b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Hebrews 11:4a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:5a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:7a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:8a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:9a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:11a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:17a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:24-26",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:20a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:21a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:22a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:29a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:30a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:31a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:32",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "1 Samuel 26:21a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Revelation 3:7b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Ezekiel 33:11b",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "pauls-first-prayer.sw.json"
+  }
+ ]
+}

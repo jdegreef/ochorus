@@ -1,3 +1,5 @@
+// prerender refresh 2026-09-25: school-of-prayer (ar, #3538) and cheque-book (hi, #3541) — both web builds ran
+// before the API deploy, so their book pages shipped as empty shells. Re-crawl now the API has them.
 // prerender refresh 2026-09-25: Arabic books — jesus-himself-2 (#832), the-masters-indwelling (#2922),
 // union-and-communion. Rebuilds /ar/books so the three new editions and their covers are baked.
 // prerender refresh 2026-09-24 (queue job #3190): Spanish book — brave-for-god, six true stories of
@@ -873,3 +875,10 @@ export const load: PageLoad = async ({ fetch }) => {
 	const { items, loadError } = await loadShelf(listBooks(getLang(), fetch));
 	return { books: items, loadError };
 };
+// prerender refresh 2026-09-25: Arabic books — brave-for-god (#3189), growing-in-wisdom (#2820),
+// women-who-moved-heaven-2 (#1782), men-and-women-who-gave-everything-2 (#2782). Rebuilds /ar/books.
+// prerender refresh 2026-09-25: Arabic books — the-secret-of-guidance (#3180), men-who-tended-the-flock-2 (#2774),
+// rise-up-men-of-god-2 (#2790), thoughts-for-the-quiet-hour (#2811). Rebuilds /ar/books.
+// prerender refresh 2026-09-25: Arabic school-of-prayer (#3150). Rebuilds /ar/books.
+// prerender refresh 2026-09-25: Arabic pilgrims-progress (#3173). Rebuilds /ar/books.
+// prerender refresh 2026-09-26: Arabic confessions (#2798). Rebuilds /ar/books.

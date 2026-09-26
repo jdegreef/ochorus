@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PlanDetail } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
-	import { readingMinutes, readingTime } from '$lib/reading';
+	import { planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { authorPath } from '$lib/originals';
 	import { SITE_URL } from '$lib/config';
@@ -82,6 +82,18 @@
 		plan.days.filter((d) => !doneSet.has(d.day)).reduce((s, d) => s + (d.word_count || 0), 0)
 	);
 
+	const nextDay = $derived(next === null ? undefined : plan.days.find((d) => d.day === next));
+	// "Day 5 of 31 · 27 days left · 4 hr 11 min left" — the read card's eyebrow.
+	const progressLine = $derived(
+		[
+			`${t('plans.day')} ${next} ${t('plans.of')} ${plan.day_count}`,
+			t('plans.daysLeft').replace('%n%', String(daysLeft)),
+			wordsLeft ? planTimeLeft(readingMinutes(wordsLeft)) : ''
+		]
+			.filter(Boolean)
+			.join(' · ')
+	);
+
 	const dayHref = (day: number) => {
 		const d = plan.days.find((x) => x.day === day);
 		return d ? localizeHref(`/books/${d.book_slug}/${d.chapter_order}?plan=${plan.slug}&day=${day}`) : '#';
@@ -116,40 +128,59 @@
 		{/if}
 	</div>
 
-	<div class="flex flex-wrap items-center gap-3">
-		{#if next !== null}
-			<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
-				{started ? t('plans.continue') : t('plans.start')} — {t('plans.day')}
-				{next} {t('plans.of')} {plan.day_count}
-			</a>
-		{:else}
-			<!-- A status line, not a control: a finished plan has no action, so it
-			     must not wear a button's chrome (it read as a disabled button). -->
-			<p class="text-small font-medium text-muted">✓ {t('plans.finished')}</p>
-		{/if}
+	<!-- The read card, as on the book page: the reading that's next, named —
+	     its book and length, and for a started plan how far through you are —
+	     with the one read verb. A first visit (and the prerender, since plan
+	     progress is client-only) gets Day 1 with the "Free to read · No account
+	     needed" reassurance. Save and Share sit quietly beneath. -->
+	{#if next !== null}
+		<div class="read-card">
+			<div class="min-w-0 flex-1">
+				{#if started}
+					<p class="text-small text-muted">{progressLine}</p>
+				{:else}
+					<p class="text-small">
+						<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
+							class="px-1.5 opacity-50">·</span
+						><span class="text-muted">{t('book.noAccount')}</span>
+					</p>
+				{/if}
+				{#if nextDay}
+					<p class="read-card-title" dir="auto">
+						{nextDay.chapter_title || `${t('plans.day')} ${nextDay.day}`}
+					</p>
+					<p class="text-small text-muted" dir="auto">
+						<!-- The separator as an expression: literal spaces at an {#if}
+						     boundary are compiler-trimmed ("Prayer·9 min"). -->
+						{nextDay.book_title}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
+							>{readingMinutes(nextDay.word_count)} {t('common.min')}{/if}
+					</p>
+				{/if}
+				{#if started}
+					<div class="mt-2">
+						<ProgressBar
+							percent={pct}
+							label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
+						/>
+					</div>
+				{/if}
+			</div>
+			<div class="read-card-cta">
+				<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
+					{started ? t('plans.continue') : t('plans.start')}
+				</a>
+			</div>
+		</div>
+	{:else}
+		<!-- A status line, not a control: a finished plan has no action, so it
+		     must not wear a button's chrome (it read as a disabled button). -->
+		<p class="text-small font-medium text-muted">✓ {t('plans.finished')}</p>
+	{/if}
+
+	<div class="mt-3 flex flex-wrap items-center gap-2">
 		<FavoriteButton kind="plan" slug={plan.slug} showLabel />
 		<ShareButton url={canonical} title={plan.title} showLabel />
 	</div>
-
-	{#if started && next !== null}
-		<div class="mt-6 max-w-md">
-			<div class="mb-2 flex items-baseline justify-between gap-3 text-small">
-				<span class="font-semibold text-text">{pct}% {t('plans.complete')}</span>
-				<span class="text-muted">
-					{t('plans.daysLeft').replace('%n%', String(daysLeft))}{#if wordsLeft}
-						<span class="opacity-60"> · </span>{t('plans.minLeft').replace(
-							'%n%',
-							String(readingMinutes(wordsLeft))
-						)}{/if}
-				</span>
-			</div>
-			<ProgressBar
-				percent={pct}
-				size="md"
-				label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
-			/>
-		</div>
-	{/if}
 
 	<!-- Preview: the works this plan reads through, in order, with day spans —
 	     so a reader sees the whole journey before starting. Multi-book plans

@@ -69,7 +69,8 @@ describe('font stacks', () => {
 		latin: 0x0041, // A
 		cyrillic: 0x0411, // Б — base block, not the extension
 		arabic: 0x0627, // ا
-		devanagari: 0x0915 // क
+		devanagari: 0x0915, // क
+		ethiopic: 0x1200 // ሀ
 	};
 	const SUBSETS = Object.keys(PROBE);
 
@@ -116,7 +117,7 @@ describe('font stacks', () => {
 		// from the files each package ships, so a family covering only an extension
 		// block cannot satisfy this by name.
 		const stack = stackOf('font-sans');
-		for (const script of ['arabic', 'devanagari', 'cyrillic']) {
+		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic']) {
 			const face = stack.find((f) => subsetsOf(f).has(script));
 			expect(
 				face,
@@ -138,7 +139,7 @@ describe('font stacks', () => {
 		// something reasonable — it degrades to Georgia, which has no Arabic
 		// either, and then to whatever the device picked.
 		const stack = stackOf('font-display');
-		for (const script of ['arabic', 'devanagari', 'cyrillic']) {
+		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic']) {
 			const face = stack.find((f) => subsetsOf(f).has(script));
 			expect(
 				face,
