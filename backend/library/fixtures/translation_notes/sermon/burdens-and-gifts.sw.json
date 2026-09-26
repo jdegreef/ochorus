@@ -1,0 +1,143 @@
+{
+ "kind": "sermon",
+ "slug": "burdens-and-gifts",
+ "language": "sw",
+ "job_issue": 4023,
+ "pull_request": 4037,
+ "references": [
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "Isaiah 40:30",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 11:29a",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "2 Kings 4:2a",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "2 Kings 4:2b",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Romans 8:9b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Corinthians 12:11b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Ephesians 4:12a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "John 4:20",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Samuel 4:9",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "1 Samuel 4:21a",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "1 Samuel 8:5b",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Judges 21:25",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Numbers 4:15",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "John 17:5",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "John 17:15",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "John 17:20",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "John 17:21",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "John 17:23",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "1 John 1:9b",
+   "status": "self_rendered",
+   "block_index": 62
+  }
+ ]
+}
