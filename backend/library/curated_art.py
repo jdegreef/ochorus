@@ -289,11 +289,19 @@ CURATED: dict[str, Artwork] = {
         focus=0.4,
     ),
     "holy-in-christ": Artwork(
-        "met", 436535, "Vincent van Gogh", "Wheat Field with Cypresses", "1889",
-        "Field and trees straining up toward a radiant sky — holiness as a life "
-        "drawn into the light rather than scrubbed of fault. Van Gogh, a Reformed "
-        "pastor's son, and Murray's exact decade.",
-        focus=0.6,
+        "aic", 39554, "Gustave Courbet", "An Alpine Scene", "1874",
+        "Snow peaks set apart above the tree line, over a plain working chalet — "
+        "the calling to be holy lived out from an ordinary house. It replaced a "
+        "second 1889 Van Gogh cypress, which read as `absolute-surrender`'s twin "
+        "on the shelf.",
+        focus=0.55,
+    ),
+    "school-of-prayer": Artwork(
+        "met", 436329, "François-Louis Français", "Gathering Olives at Tivoli", "1868",
+        "An olive grove at first light: the garden the disciples learned to pray "
+        "in, without a figure of Christ to claim a likeness. Upright on the "
+        "canvas, so the tree and the pickers both survive the 3:4 crop.",
+        focus=0.55,
     ),
     "true-vine": Artwork(
         "met", 435809, "Pieter Bruegel the Elder", "The Harvesters", "1565",
