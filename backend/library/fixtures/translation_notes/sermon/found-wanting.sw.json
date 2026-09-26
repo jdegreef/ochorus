@@ -1,0 +1,184 @@
+{
+ "kind": "sermon",
+ "slug": "found-wanting",
+ "language": "sw",
+ "job_issue": 3636,
+ "references": [
+  {
+   "reference": "Daniel 5:27",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Daniel 5:4b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Daniel 5:6",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Daniel 5:7a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Daniel 5:10b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Daniel 5:11a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Daniel 5:12b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Daniel 5:14",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Daniel 5:16",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Daniel 5:17",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Daniel 5:22b-23",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Daniel 5:24",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Daniel 5:25",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Daniel 5:26",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Daniel 5:28",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Daniel 5:30",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 16:15b",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Exodus 20:3",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Exodus 20:4-6",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Exodus 20:7",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Exodus 20:8-10a",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Exodus 20:10-11",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Exodus 20:12",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Exodus 20:13",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "pilgrims-progress-words-of-one-syllable.sw.json"
+  },
+  {
+   "reference": "Exodus 20:14",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Exodus 20:15",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Exodus 20:16",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Exodus 20:17",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Matthew 6:9-13",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 5:28",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Matthew 22:37-38",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "John 3:3b",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  }
+ ]
+}
