@@ -1,0 +1,79 @@
+{
+ "kind": "sermon",
+ "slug": "a-ribband-of-blue",
+ "language": "es",
+ "job_issue": 2536,
+ "references": [
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "library/fixtures/content/books/watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Numbers 15:31",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "library/fixtures/content/books/watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 7:51",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Thessalonians 5:19",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Numbers 15:38",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Ephesians 5:1-2",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "library/fixtures/content/books/watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "library/fixtures/content/articles/a-serious-call-guide.es.json"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "library/fixtures/content/articles/a-serious-call-guide.es.json"
+  },
+  {
+   "reference": "Numbers 15:38",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Numbers 15:39",
+   "status": "self_rendered",
+   "block_index": 17
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "kind": "sermon",
+ "slug": "against-eutropius",
+ "language": "es",
+ "job_issue": 2537,
+ "references": [
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "library/fixtures/content/books/union-and-communion.es.json"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "library/fixtures/content/books/godliness.es.json"
+  },
+  {
+   "reference": "1 Peter 1:24",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 37:2",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 102:3",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 9:13",
+   "status": "self_rendered",
+   "block_index": 5
+  }
+ ]
+}

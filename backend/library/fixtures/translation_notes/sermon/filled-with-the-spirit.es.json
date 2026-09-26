@@ -1,0 +1,192 @@
+{
+ "kind": "sermon",
+ "slug": "filled-with-the-spirit",
+ "language": "es",
+ "job_issue": 2988,
+ "references": [
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "library/fixtures/content/articles/how-to-find-gods-will-for-your-life.es.json"
+  },
+  {
+   "reference": "John 7:38",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "library/fixtures/content/sermons/unfailing-springs.es.json"
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/articles/what-is-the-baptism-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/articles/what-does-it-mean-to-abide-in-christ.es.json"
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/books/divine-healing.es.json"
+  },
+  {
+   "reference": "John 1:16-17",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 10:4",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/sermons/the-triumph-of-calvary.es.json"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/articles/what-is-the-gospel.es.json"
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/books/humility-2.es.json"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 10:27",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 13:34",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/books/watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "John 16:13",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalms 138:8",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/books/cheque-book.es.json"
+  },
+  {
+   "reference": "Deuteronomy 33:13-16",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "library/fixtures/content/sermons/prevailing-prayer.es.json"
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "library/fixtures/content/sermons/the-joy-of-the-lord.es.json"
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "library/fixtures/content/books/necessity-of-prayer.es.json"
+  },
+  {
+   "reference": "Deuteronomy 33:23",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 1:53",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "library/fixtures/content/books/holy-in-christ.es.json"
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "library/fixtures/content/books/holy-in-christ.es.json"
+  },
+  {
+   "reference": "Deuteronomy 6:23",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Kings 3:16-17",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Psalms 81:10",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "library/fixtures/content/books/spurgeon-on-prayer.es.json"
+  },
+  {
+   "reference": "Matthew 23:37",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "library/fixtures/content/sermons/come-thou-into-the-ark.es.json"
+  },
+  {
+   "reference": "John 7:37-38",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "library/fixtures/content/sermons/unfailing-springs.es.json"
+  }
+ ]
+}

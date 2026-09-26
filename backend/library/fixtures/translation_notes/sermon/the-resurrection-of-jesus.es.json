@@ -1,0 +1,230 @@
+{
+ "kind": "sermon",
+ "slug": "the-resurrection-of-jesus",
+ "language": "es",
+ "job_issue": 2540,
+ "references": [
+  {
+   "reference": "Matthew 28:6",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Daniel 3:25",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 28:6",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 24:5",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "library/fixtures/content/books/jesus-himself-2.es.json"
+  },
+  {
+   "reference": "Luke 24:6-8",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 28:11",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 28:2-4",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 10:39-42",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 1:3",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 5:9",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "library/fixtures/content/books/the-way-to-god.es.json"
+  },
+  {
+   "reference": "Mark 16:20",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Acts 2:22-24",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 1:4",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "library/fixtures/content/books/holy-in-christ.es.json"
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "library/fixtures/content/books/the-way-to-god.es.json"
+  },
+  {
+   "reference": "Revelation 22:16",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "library/fixtures/content/books/cheque-book.es.json"
+  },
+  {
+   "reference": "Mark 15:46",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Corinthians 15:14",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Corinthians 15:17",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Corinthians 15:1-2",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Corinthians 15:3-4",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "library/fixtures/content/articles/what-is-the-gospel.es.json"
+  },
+  {
+   "reference": "Ephesians 1:19-20",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "library/fixtures/content/books/watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Ephesians 1:20",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "library/fixtures/content/books/watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Ephesians 1:21",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "library/fixtures/content/books/the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Ephesians 1:22",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "library/fixtures/content/books/watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "John 14:19",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Philippians 3:21",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "library/fixtures/content/books/cheque-book.es.json"
+  },
+  {
+   "reference": "Isaiah 26:19",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Corinthians 15:42-44",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Corinthians 15:53-54",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "library/fixtures/content/books/pilgrims-progress.es.json"
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "library/fixtures/content/sermons/salvation-by-faith.es.json"
+  },
+  {
+   "reference": "2 Timothy 1:10",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "library/fixtures/content/books/humility-2.es.json"
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "library/fixtures/content/books/the-way-to-god.es.json"
+  },
+  {
+   "reference": "Isaiah 33:17",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Daniel 12:3",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "library/fixtures/content/books/cheque-book.es.json"
+  },
+  {
+   "reference": "Matthew 28:7-8",
+   "status": "self_rendered",
+   "block_index": 33
+  }
+ ]
+}

@@ -1,0 +1,136 @@
+{
+ "kind": "sermon",
+ "slug": "caleb-a-different-spirit",
+ "language": "es",
+ "job_issue": 2959,
+ "references": [
+  {
+   "reference": "Philippians 2:1-11",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "library/fixtures/content/books/humility-2.es.json"
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Numbers 14:23-24",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Joshua 14:6-14",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "John 4:23",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Ephesians 5:19",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "library/fixtures/content/books/the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Joshua 14:14",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "library/fixtures/content/books/cheque-book.es.json"
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "library/fixtures/content/books/humility-2.es.json"
+  },
+  {
+   "reference": "John 1:27",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Psalm 103:5",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "library/fixtures/content/books/women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Hebrews 4:6",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "block_index": 73,
+   "source_file": "library/fixtures/content/books/cheque-book.es.json"
+  },
+  {
+   "reference": "Hebrews 4:7",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Hebrews 4:11",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "library/fixtures/content/books/he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Hebrews 4:10",
+   "status": "self_rendered",
+   "block_index": 75
+  }
+ ]
+}

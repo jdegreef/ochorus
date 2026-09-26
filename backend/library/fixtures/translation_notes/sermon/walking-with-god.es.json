@@ -1,0 +1,266 @@
+{
+ "kind": "sermon",
+ "slug": "walking-with-god",
+ "language": "es",
+ "job_issue": 2541,
+ "references": [
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 25:24",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 11:5",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "library/fixtures/content/books/he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Jude 1:14-15",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Genesis 3:12",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 7:21",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Amos 3:3",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "library/fixtures/content/books/the-secret-of-guidance.es.json"
+  },
+  {
+   "reference": "2 Timothy 1:14",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 14:17",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "library/fixtures/content/articles/what-does-it-mean-to-abide-in-christ.es.json"
+  },
+  {
+   "reference": "Psalm 84:7",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "library/fixtures/content/articles/who-is-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "1 Timothy 4:15",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "library/fixtures/content/books/the-way-to-god.es.json"
+  },
+  {
+   "reference": "John 5:39",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "library/fixtures/content/sermons/faith.es.json"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "1 Timothy 4:13",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Joshua 1:8",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "1 Samuel 21:9",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Peter 1:18-19",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "library/fixtures/content/articles/what-is-intercessory-prayer.es.json"
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "library/fixtures/content/sermons/the-golden-key-of-prayer.es.json"
+  },
+  {
+   "reference": "Psalm 39:3",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "library/fixtures/content/sermons/salvation-by-faith.es.json"
+  },
+  {
+   "reference": "Matthew 10:29-30",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "library/fixtures/content/books/possibilities-of-prayer.es.json"
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "library/fixtures/content/books/a-short-and-easy-method-of-prayer.es.json"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "library/fixtures/content/sermons/the-circumcision-of-the-heart.es.json"
+  },
+  {
+   "reference": "Luke 1:6",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "library/fixtures/content/books/ministry-of-intercession.es.json"
+  },
+  {
+   "reference": "Psalm 122:1",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 16:3",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Esther 5:11-12",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Esther 6:6",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Esther 6:8-9",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "library/fixtures/content/books/the-way-to-god.es.json"
+  },
+  {
+   "reference": "Psalm 84:10",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Proverbs 3:17",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Acts 9:2",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 5:11-12",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "library/fixtures/content/books/how-to-succeed-in-the-christian-life.es.json"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "library/fixtures/content/books/necessity-of-prayer.es.json"
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "library/fixtures/content/books/holy-in-christ.es.json"
+  },
+  {
+   "reference": "Isaiah 66:2",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "Revelation 3:16",
+   "status": "self_rendered",
+   "block_index": 26
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "kind": "sermon",
+ "slug": "the-worlds-need",
+ "language": "es",
+ "job_issue": 2539,
+ "references": [
+  {
+   "reference": "Acts 8:30",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Jeremiah 2:2-3",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalms 69:9",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "library/fixtures/content/articles/what-is-intercessory-prayer.es.json"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "library/fixtures/content/books/the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "John 10:34-35",
+   "status": "self_rendered",
+   "block_index": 20
+  }
+ ]
+}

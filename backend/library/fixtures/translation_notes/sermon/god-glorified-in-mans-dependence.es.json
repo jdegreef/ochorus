@@ -1,0 +1,280 @@
+{
+ "kind": "sermon",
+ "slug": "god-glorified-in-mans-dependence",
+ "language": "es",
+ "job_issue": 2542,
+ "references": [
+  {
+   "reference": "1 Corinthians 1:29-31",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 1:22",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 1:27-28",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 1:29",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 1:29",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 1:31",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "library/fixtures/content/books/enchiridion.es.json"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "library/fixtures/content/articles/what-is-the-gospel.es.json"
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "library/fixtures/content/books/watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "library/fixtures/content/books/enchiridion.es.json"
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Colossians 2:12-13",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "library/fixtures/content/sermons/free-grace.es.json"
+  },
+  {
+   "reference": "Luke 11:21-22",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Hebrews 7:27",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Hebrews 9:26",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "library/fixtures/content/articles/what-is-the-gospel.es.json"
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Revelation 22:1",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "library/fixtures/content/books/pilgrims-progress.es.json"
+  },
+  {
+   "reference": "Revelation 2:7",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "library/fixtures/content/books/cheque-book.es.json"
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Hebrews 12:10",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 7:38-39",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "library/fixtures/content/articles/what-is-the-baptism-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Revelation 22:1",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Psalm 36:8",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "library/fixtures/content/books/prevailing-prayer.es.json"
+  },
+  {
+   "reference": "2 Corinthians 1:22",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "2 Corinthians 5:5",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "library/fixtures/content/books/the-gospel-of-healing.es.json"
+  },
+  {
+   "reference": "Ephesians 1:13-14",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 7:11",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "library/fixtures/content/books/school-of-prayer.es.json"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "library/fixtures/content/articles/what-is-the-baptism-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Galatians 3:13-14",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "library/fixtures/content/books/the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Ephesians 1:13",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "library/fixtures/content/books/the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "library/fixtures/content/books/the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Romans 11:36",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "1 Corinthians 1:29",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Mark 10:15",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "library/fixtures/content/books/reality-of-prayer.es.json"
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "library/fixtures/content/books/divine-healing.es.json"
+  },
+  {
+   "reference": "1 Corinthians 1:31",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "library/fixtures/content/books/enchiridion.es.json"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "library/fixtures/content/books/enchiridion.es.json"
+  }
+ ]
+}
