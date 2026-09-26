@@ -51,7 +51,7 @@
 	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, hreflangFor, truncateMeta } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, truncateMeta } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
@@ -61,7 +61,7 @@
 	import SearchDrawer from '$lib/components/SearchDrawer.svelte';
 	import NotesDrawer from '$lib/components/NotesDrawer.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
-	import { languageFallback } from '$lib/languageFallback';
+	import { editionSeo, languageFallback } from '$lib/languageFallback';
 
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
@@ -77,16 +77,12 @@
 	// only the locales this book actually exists in (chapter counts match across
 	// a book's translations, so the same order URL resolves in each).
 	const seoPath = $derived(`/books/${slug}/${chapter.order}/`);
-	const hreflang = $derived(hreflangFor(seoPath, chapter.available_languages));
-	// No copy in the URL's language, so +page.ts fell back to English: say so on
-	// the page, point the canonical at the edition actually shown, and keep this
-	// URL out of the index. Not for the Modern English edition, which the reader
-	// chose.
+	// A missing edition renders the English one (see languageFallback) — except
+	// under ?edition=modern, where English is what the reader asked for.
 	const fallback = $derived(edition ? null : languageFallback(getLang(), language));
-	const canonical = $derived(
-		(fallback && hreflang.alternates.find((a) => a.loc === fallback.shown)?.href) ||
-			`${SITE_URL}${localizeHref(seoPath)}`
-	);
+	const seo = $derived(editionSeo(seoPath, chapter.available_languages, fallback));
+	const hreflang = $derived(seo.hreflang);
+	const canonical = $derived(seo.canonical);
 
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (the reader
 	// had a hand-rolled nav Books › Author › Book and no BreadcrumbList at all).
@@ -135,7 +131,7 @@
 			},
 			url: canonical,
 			isAccessibleForFree: true,
-			inLanguage: fallback?.shown ?? getLang(),
+			inLanguage: contentLang(language),
 			// The chapter's own measure and its author as an entity (not just a name
 			// buried in isPartOf), plus the publisher — so the chapter node stands on
 			// its own in the graph rather than being an unsized fragment of the book.
@@ -1067,7 +1063,7 @@
 	$effect(() => {
 		if (!paged || typeof ResizeObserver === 'undefined' || !chapterEndEl) return;
 		const end = chapterEndEl;
-		const strip = leadEl;
+		const lead = leadEl;
 		const heights = new WeakMap<Element, number>();
 		const ro = new ResizeObserver((entries) => {
 			let grew = false;
@@ -1079,7 +1075,7 @@
 			}
 			if (grew) scheduleMeasure();
 		});
-		if (strip) ro.observe(strip);
+		if (lead) ro.observe(lead);
 		for (const el of end.children) ro.observe(el);
 		// A block appearing or leaving (the plan's reflection) re-flows too.
 		const mo = new MutationObserver((records) => {
@@ -1511,7 +1507,6 @@
 	description={metaText}
 	{canonical}
 	{hreflang}
-	noindex={!!fallback}
 	ogType="article"
 	structuredData={[chapterLd, crumbsLd]}
 />
@@ -1778,9 +1773,7 @@
 	     readerPagedEnding.test.ts. -->
 	<div class="pager" class:dragging bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
 		<div bind:this={leadEl}>
-			{#if fallback}
-				<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
-			{/if}
+			<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" class="mb-6" />
 			{#if plan && planDay}
 				<div
 					class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-2 px-4 py-3"

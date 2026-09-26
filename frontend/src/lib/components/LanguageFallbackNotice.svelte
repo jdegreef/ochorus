@@ -4,38 +4,36 @@
 	import { localizeHref } from '$lib/href';
 	import type { LanguageFallback } from '$lib/languageFallback';
 	import type { Hreflang } from '$lib/seo';
+	import Icon from '$lib/components/Icon.svelte';
 
 	/**
-	 * "Not yet available in हिन्दी — you're reading the English edition."
-	 *
-	 * Shown when a page renders another language's edition than its URL asks for
-	 * (see languageFallback). It offers the editions that do exist — the same
-	 * hreflang set the book page's "Read in your language" pills use — and a way
-	 * to what IS available in the reader's language.
-	 *
-	 * Dismissable for the rest of this view only: the next page that falls back
-	 * says so again, because each one is a different work.
+	 * "Not yet available in हिन्दी — you're reading the English edition", with
+	 * the editions that do exist and a way to what is available in the reader's
+	 * language. Renders nothing when the page shows its own language. Dismissed
+	 * for this view only: the next page that falls back is another work.
 	 */
 	let {
 		fallback,
 		alternates,
-		browsePath
+		browsePath,
+		class: cls = 'mt-5'
 	}: {
-		fallback: LanguageFallback;
+		fallback: LanguageFallback | null;
 		/** The work's published editions, as hreflangFor builds them. */
 		alternates: Hreflang['alternates'];
-		/** The shelf for this kind of work (/books, /sermons, /plans). */
+		/** The shelf for this kind of work (/books, /sermons, /plans, /articles). */
 		browsePath: string;
+		class?: string;
 	} = $props();
 
 	const t = i18n.t;
 	let dismissed = $state(false);
-	const want = $derived(localeName(fallback.requested));
 </script>
 
-{#if !dismissed}
+{#if fallback && !dismissed}
+	{@const want = localeName(fallback.requested)}
 	<section
-		class="fallback-notice relative mb-6 rounded-card border border-border bg-surface-2 px-4 py-3 pe-12"
+		class="fallback-notice relative rounded-card border border-border bg-surface-2 px-4 py-3 pe-12 {cls}"
 		role="status"
 		aria-labelledby="fallback-title"
 	>
@@ -66,12 +64,10 @@
 			{t('fallback.browse').replace('%lang%', want)}
 		</a>
 		<button
-			class="btn-icon absolute end-2 top-2"
+			class="btn btn-icon btn-ghost absolute end-2 top-2"
 			aria-label={t('a11y.close')}
-			onclick={() => (dismissed = true)}
+			onclick={() => (dismissed = true)}><Icon name="close" /></button
 		>
-			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
-		</button>
 	</section>
 {/if}
 

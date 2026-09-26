@@ -26,8 +26,7 @@
 		ogImageAlt = '',
 		ogImageWidth,
 		ogImageHeight,
-		structuredData = [],
-		noindex = false
+		structuredData = []
 	}: {
 		/** The full <title> text (routes append " — Ochorus" themselves). */
 		title: string;
@@ -52,9 +51,6 @@
 		/** Ready-to-inject <script type="application/ld+json"> strings — build them
 		 *  with jsonLd() so `<` is escaped before it reaches {@html}. */
 		structuredData?: string[];
-		/** Keep this URL out of the index — a page showing another language's
-		 *  edition than its URL names (see languageFallback). */
-		noindex?: boolean;
 	} = $props();
 
 	// Resolve the card image once. The default is a 1200×630 house raster, so it
@@ -69,9 +65,6 @@
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={canonical} />
-	{#if noindex}
-		<meta name="robots" content="noindex" />
-	{/if}
 	{#each hreflang.alternates as a (a.loc)}
 		<link rel="alternate" hreflang={a.loc} href={a.href} />
 	{/each}

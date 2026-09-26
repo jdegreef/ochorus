@@ -1,19 +1,14 @@
+import { SITE_URL } from './config';
+import { localizeHref } from './href';
+import { isLocale } from './paraglide/runtime';
 import { baseEdition } from './reading-schema';
+import { hreflangFor, type Hreflang } from './seo';
 
 /**
- * When a page is showing another language's edition than the one its URL asks
- * for.
- *
- * Books, sermons and plans are per-language rows with no English fallback in
- * the API, but the client's `localized()` retries a 404 in English so a missing
- * edition still renders something readable. That is the right call for the
- * text and the wrong one for everything that describes it: /hi/books/x/ used
- * to show English prose under Hindi chrome with no word about it, a canonical
- * claiming it was the Hindi page, and nothing stopping it being indexed as one.
- *
- * `requested` is the URL's locale; `shown` is the language the payload is
- * actually in. The Modern English edition counts as English — reading it under
- * /en is not a fallback.
+ * A page showing another language's edition than its URL names: the loaders
+ * retry a 404 in English, so /hi/books/x/ can render the English book.
+ * `requested` is the URL's locale, `shown` the language the payload is in; the
+ * Modern English edition counts as English.
  */
 export interface LanguageFallback {
 	requested: string;
@@ -24,4 +19,22 @@ export function languageFallback(requested: string, shown: string): LanguageFall
 	const want = baseEdition(requested);
 	const got = baseEdition(shown);
 	return want === got ? null : { requested: want, shown: got };
+}
+
+/**
+ * The head for a per-language work (book, chapter, sermon, plan, article):
+ * hreflang over the editions that exist, and a canonical that is the page
+ * itself — or, when it is showing another edition, that edition's URL, so the
+ * localized address is consolidated into the real one instead of indexed as
+ * a copy of it.
+ */
+export function editionSeo(
+	path: string,
+	available: string[],
+	fallback: LanguageFallback | null
+): { hreflang: Hreflang; canonical: string } {
+	return {
+		hreflang: hreflangFor(path, available),
+		canonical: `${SITE_URL}${localizeHref(path, fallback && isLocale(fallback.shown) ? { locale: fallback.shown } : undefined)}`
+	};
 }
