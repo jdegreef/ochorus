@@ -16,6 +16,14 @@
    "The three guides are named by AUTHOR, not by book title, because none of the three books ships in Hindi yet — there is no shipped title to quote. When they arrive, whoever translates them should either harmonise their titles with this card or adjust this entry in the same PR, exactly as the Arabic and Spanish notes ask."
   ]
  },
+ "school-of-prayer-31-days": {
+  "title": "प्रार्थना की पाठशाला में 31 दिन",
+  "description": "एकमात्र गुरु के चरणों में एंड्रयू मरे के साथ एक महीना। हर दिन प्रार्थना पर यीशु के अपने ही वचनों में से एक को खोलता है — ‘हे प्रभु, हमें प्रार्थना करना सिखा’ से लेकर उस अन्तिम रात की प्रतिज्ञाओं तक — और अपनी ही एक प्रार्थना में समाप्त होता है। प्रतिदिन एक पाठ, लगभग दस मिनट, जो मध्यस्थता और प्रार्थना के जीवन की ओर ले जाता है।",
+  "note": [
+   "Single-book plan backed by the hi edition of school-of-prayer (book title “प्रार्थना की पाठशाला में मसीह के साथ”); the card phrase “प्रार्थना की पाठशाला” matches the shipped book title, and ‘हे प्रभु, हमें प्रार्थना करना सिखा’ is the Luke 11:1 wording the hi book uses throughout. Added by the book:school-of-prayer -> hi job (#3151), which makes this LAUNCH plan creatable in hi — without this entry seed_plans would publish an English-titled card in Hindi (the #819 defect). Distinct from the curated multi-book \"school-of-prayer\" plan above, which stays dormant until its three source books ship in hi.",
+   "एंड्रयू मरे follows the shipped Hindi corpus (also used in the school-of-prayer.hi book and the school-of-prayer curated entry above)."
+  ]
+ },
  "deeper-life-in-christ": {
   "title": "गहरा जीवन: मसीह तुम में",
   "description": "अधिक परिश्रम नहीं, परन्तु एक व्यक्ति: गहरे जीवन का भेद यह है कि स्वयं मसीह भीतर वास करता है। एंड्रयू मरे “स्वयं यीशु” के अचम्भे से आरम्भ करते हैं, फिर भीतर वास करनेवाले जीवन को खोलते हैं, और हडसन टेलर प्रियतम के साथ मिलन और संगति के विश्राम में समाप्त करते हैं।",

@@ -2124,6 +2124,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/school-of-prayer": {
+			"ground": "46d7b90b72f8801959f1089efa97498866a92426cf59694027135d787ab853dc",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/soar-like-the-eagle-3": {
 			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
 			"style": "lettered",
