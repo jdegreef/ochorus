@@ -194,6 +194,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/the-key-in-my-hand": {
+			"ground": "80e88468b434a06f64bf03fdd75f255ff47bc76256b260a8d71010ad0a2549d1",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/the-unselfishness-of-god": {
 			"ground": "08dcc7f118edbc6f069f0f3d5132f838b0b7037d572fa6f044cb917aea5e7019",
 			"style": "devotional",
