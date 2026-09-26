@@ -26,6 +26,7 @@
 	import { rememberResumeBook } from '$lib/resumeBooks';
 	import {
 		chapterName,
+		chapterNameIn,
 		contentLang,
 		editionLang,
 		readingTime,
@@ -393,13 +394,9 @@
 	const editionLabel = $derived(
 		edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')
 	);
-	// The phone bar's second line. A single-work volume names its only chapter
-	// after the book ("Absolute Surrender" / "Absolute Surrender"), so say which
-	// chapter instead of repeating the title.
-	const phoneChapterLine = $derived.by(() => {
-		const chap = chapterName(chapter.order, chapter.title);
-		return chap === chapter.book_title ? `${t('settings.chapterN')} ${chapter.order}` : chap;
-	});
+	// The phone bar's second line — the chapter, in words that don't repeat the
+	// book title above it.
+	const phoneChapterLine = $derived(chapterNameIn(chapter.order, chapter.title, chapter.book_title));
 	// One clamped read-fraction for the whole-book figures below, so "% through"
 	// and "time left in book" always agree on how far into the open chapter the
 	// reader is (chapterFrac is already [0,1] at every writer, but sharing the

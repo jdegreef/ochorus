@@ -7,6 +7,7 @@
 	import {
 		bookTimeLeft,
 		chapterName,
+		chapterNameIn,
 		contentLang,
 		readingMinutes,
 		readingTime
@@ -29,6 +30,7 @@
 	import { scopedSearchHref } from '$lib/searchState';
 	import { seriesLabel } from '$lib/series';
 	import { scrollSpy, jumpToSection, elementVisible } from '$lib/scrollSpy.svelte';
+	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
@@ -165,6 +167,15 @@
 	// as absolute URLs) for the Book-level translation links below.
 	const enEdition = $derived(hreflang.alternates.find((a) => a.loc === 'en'));
 	const siblingEditions = $derived(hreflang.alternates.filter((a) => a.loc !== book.language));
+	// The hero's "also in" pill: up to three autonyms, the rest as "+N". It jumps
+	// to the full list further down rather than switching language itself — a
+	// reader arriving on the wrong edition needs to see, near the top, that
+	// theirs exists (that list sits below Q&A, several screens down on a phone).
+	const PILL_LANGS = 3;
+	const editionsPill = $derived({
+		names: siblingEditions.slice(0, PILL_LANGS).map((a) => ({ loc: a.loc, name: localeName(a.loc) })),
+		more: Math.max(0, siblingEditions.length - PILL_LANGS)
+	});
 	// The <title> carries the words people actually type. It was
 	// "{title} — {author} — Ochorus", which names the book and says nothing about
 	// what you can do with it; the query patterns this page competes for are
@@ -348,10 +359,12 @@
 	const showSubnav = $derived(navItems.length >= 2);
 	let subnavH = $state(0);
 	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
-	function jumpTo(e: MouseEvent, id: string) {
+	/** `track: false` for a target that isn't a tab (the hero's language chip),
+	 *  so the bar isn't left with no tab highlighted. */
+	function jumpTo(e: MouseEvent, id: string, track = true) {
 		e.preventDefault();
 		history.replaceState(history.state, '', `#${id}`);
-		spy.set(id);
+		if (track) spy.set(id);
 		jumpToSection(id);
 	}
 </script>
@@ -375,7 +388,11 @@
 
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
 
-	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
+	<!-- A grid, so on a phone the cover sits BESIDE the title (a 9rem cover
+	     alone on its row left the right half of the first screen empty) while
+	     the read card and actions take the full width beneath. From sm it is the
+	     original layout: cover down the left, everything else in one column. -->
+	<header class="book-hero mt-5">
 		<!-- One component decides what a cover is. This page used to branch on
 		     cover_url itself and paint its own gradient box in the else, so the
 		     same cover-less book looked one way on a shelf and another here — and
@@ -385,19 +402,17 @@
 		     drop-shadow that hugs the cover's rounded shape (via `filter`, so it
 		     follows any cover — painting, plate or designed raster — without a fake
 		     spine drawn over the artwork) and a slim page-edge on the fore-edge. -->
-		<div class="hero-cover w-36 shrink-0 sm:w-44">
+		<div class="hero-cover book-hero-cover">
 			<BookCover {book} priority />
 		</div>
 
-		<!-- The action row's container (`.action-host`): it picks strip vs row by
-		     this column's width. -->
-		<div class="action-host min-w-0 flex-1">
+		<div class="book-hero-head min-w-0">
+			<!-- Each part held whole, so a narrow column breaks BETWEEN them. -->
 			<p class="eyebrow mb-1 text-muted">
-				{t('search.typeBook')} · {book.chapter_count}
-				{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(
-					totalWords
-				)}{#if book.difficulty}&nbsp;·
-					<span title={t('reader.difficulty')}>{t(`reader.difficulty_${book.difficulty}`)}</span>{/if}
+				<span class="whitespace-nowrap">{t('search.typeBook')}</span> · <span class="whitespace-nowrap"
+					>{book.chapter_count}
+					{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
+				> · <span class="whitespace-nowrap">{readingTime(totalWords)}</span>
 			</p>
 			<h1 class="text-h1" dir="auto">{book.title}</h1>
 			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
@@ -429,13 +444,14 @@
 						>{/if}
 				</p>
 			{/if}
-			<!-- Separator as an expression, not literal text: the span's leading space
-			     sits at an {#if} boundary and gets compiler-trimmed, which rendered
-			     "Booth· 1829" with the space missing. -->
+			<!-- The space as an expression, not literal text: at an {#if} boundary a
+			     literal one gets compiler-trimmed ("Booth· 1829"). And OUTSIDE the
+			     nowrap span, so a narrow column breaks between the name and its dates
+			     — never inside the name or the dates. -->
 			<p class="mt-2 text-body">
 				<a href={localizeHref(authorPath(book.author.slug))} class="text-accent hover:underline"
 					>{book.author.name}</a
-				>{#if years}<span class="text-muted">{` · ${years}`}</span>{/if}
+				>{#if years}{' '}<span class="whitespace-nowrap text-muted">{`· ${years}`}</span>{/if}
 			</p>
 
 			<!-- The author's memorable lines: a bridge from the book to their quote
@@ -448,6 +464,44 @@
 					>
 				</p>
 			{/if}
+
+			{#if book.difficulty || (siblingEditions.length && !fallback)}
+				<div class="mt-3 flex flex-wrap items-center gap-2">
+					{#if book.difficulty}
+						<!-- One inner span: the chip is inline-flex, so label and value
+						     would otherwise wrap as two columns, not a sentence. -->
+						<span class="hero-chip"
+							><span
+								>{t('reader.difficulty')}: <span class="font-semibold text-text"
+									>{t(`reader.difficulty_${book.difficulty}`)}</span
+								></span
+							></span
+						>
+					{/if}
+					<!-- Not on a fallback page: the notice above lists the editions, and
+					     the section this jumps to is hidden there. -->
+					{#if siblingEditions.length && !fallback}
+						<a
+							href="#languages"
+							class="hero-chip hero-chip-link"
+							onclick={(e) => jumpTo(e, 'languages', false)}
+							><Icon name="globe" size={15} class="shrink-0" /><span class="min-w-0"
+								><!-- A hidden prefix, not aria-label: the accessible name must keep
+								     the visible language names (label-in-name). --><span
+									class="sr-only">{`${t('book.readInLanguage')}: `}</span
+								>{#each editionsPill.names as n, i (n.loc)}{#if i}{', '}{/if}<span lang={n.loc}
+										>{n.name}</span
+									>{/each}{#if editionsPill.more}{` +${editionsPill.more}`}{/if}</span
+							></a
+						>
+					{/if}
+				</div>
+			{/if}
+		</div>
+
+		<!-- The action row's container (`.action-host`): it picks strip vs row by
+		     this block's width — the full page width on a phone. -->
+		<div class="action-host book-hero-actions min-w-0">
 
 			<!-- Design D: the header's one job for a returning reader is to put them
 			     back where they were, so the read verb sits in a card that NAMES the
@@ -464,7 +518,7 @@
 						<p class="text-small text-muted">
 							{onChapter}{#if minutesLeft}{` · ${bookTimeLeft(minutesLeft)}`}{/if}
 						</p>
-						<p class="read-card-title" dir="auto">{chapterName(readOrder, resumeChapter?.title)}</p>
+						<p class="read-card-title" dir="auto">{chapterNameIn(readOrder, resumeChapter?.title, book.title)}</p>
 						<div class="mt-2">
 							<ProgressBar percent={percentRead} label="{book.title}: {onChapter}" />
 						</div>
@@ -476,7 +530,7 @@
 						</p>
 						{#if book.chapters[0]}
 							<p class="read-card-title" dir="auto">
-								{chapterName(firstOrder, book.chapters[0].title)}
+								{chapterNameIn(firstOrder, book.chapters[0].title, book.title)}
 							</p>
 						{/if}
 					{/if}
@@ -542,7 +596,7 @@
 			style="top: var(--appnav-h, 0px)"
 			aria-label={t('a11y.pageSections')}
 		>
-			<ul class="flex flex-1 gap-1 overflow-x-auto">
+			<ul class="tab-strip flex flex-1 gap-1" use:tabStrip={spy.active}>
 				{#each navItems as item (item.id)}
 					<li>
 						<a
@@ -708,10 +762,10 @@
 		<h2 class="section-heading">
 			{t('reader.contents')}
 			<span class="meta"
-				>· {book.chapter_count}
-				{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')} · {readingTime(
-					totalWords
-				)}</span
+				>· <span class="whitespace-nowrap"
+					>{book.chapter_count}
+					{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
+				> · <span class="whitespace-nowrap">{readingTime(totalWords)}</span></span
 			>
 		</h2>
 		<ol id="contents-list" class="divide-y divide-border">
@@ -784,7 +838,7 @@
 	     landed on the English edition under a Spanish address. -->
 	<!-- On a fallback page the notice above already lists these. -->
 	{#if siblingEditions.length && !fallback}
-		<section class="mt-12">
+		<section id="languages" class="jump-anchor mt-12">
 			<h2 class="section-heading">{t('book.readInLanguage')}</h2>
 			<div class="mt-3 flex flex-wrap items-center gap-2">
 				<span class="text-small text-muted">{t('book.availableIn')}</span>
@@ -866,6 +920,56 @@
 			var(--surface-2) 1px,
 			var(--border) 1.5px
 		);
+	}
+
+	/* Row gap 0: the read card carries its own mt-4, as it did in the title's
+	   column. */
+	.book-hero {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		column-gap: 1rem;
+		align-items: start;
+	}
+	.book-hero-cover {
+		width: 7rem;
+	}
+	.book-hero-actions {
+		grid-column: 1 / -1;
+	}
+	@media (min-width: 640px) {
+		.book-hero {
+			column-gap: 1.25rem;
+		}
+		.book-hero-cover {
+			grid-row: 1 / span 2;
+			width: 11rem;
+		}
+		.book-hero-actions {
+			grid-column: 2;
+		}
+	}
+	/* Difficulty and the "also in" languages: quiet chips under the byline. */
+	.hero-chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		max-width: 100%;
+		min-height: 2rem;
+		padding: 0.2rem 0.7rem;
+		/* Not a pill radius: in the narrow title column a chip may wrap to two
+		   lines, and a 999px radius turns that into a lozenge. */
+		border-radius: 1rem;
+		background: var(--surface-2);
+		font-size: var(--fs-small);
+		color: var(--muted);
+	}
+	.hero-chip-link {
+		color: var(--text);
+		text-decoration: none;
+	}
+	.hero-chip-link:hover {
+		background: var(--accent-soft);
+		text-decoration: none;
 	}
 
 	/* The "⋯ N chapters" row standing in for a collapsed run: quiet, indented to

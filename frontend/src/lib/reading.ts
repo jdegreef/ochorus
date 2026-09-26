@@ -139,6 +139,21 @@ export function chapterName(order: number, title: string | null | undefined): st
 }
 
 /**
+ * A chapter's name where the book's title is already on screen (the reader's
+ * phone bar, the book page's read card). A single-work volume names its only
+ * chapter after the book, so "Absolute Surrender" under "Absolute Surrender"
+ * says nothing — there it is "Chapter 1".
+ */
+export function chapterNameIn(
+	order: number,
+	title: string | null | undefined,
+	bookTitle: string
+): string {
+	const name = chapterName(order, title);
+	return name === bookTitle ? `${i18n.t('settings.chapterN')} ${order}` : name;
+}
+
+/**
  * How a chapter is named in a LIST: "3. The Letter Killeth".
  *
  * When there is no title the number is already inside the name, so it must not

@@ -336,6 +336,13 @@ green in CI but never went live because two of its three books were unpublished
 
 ## Copy conventions
 
+- **Dotted meta lines (`KIND · N UNITS · TIME`, `Name · 1828–1917`) break
+  between items, never inside one.** Wrap each item in `whitespace-nowrap`
+  and keep the separating SPACE outside the span (`{' '}` expression — a
+  literal space at an `{#if}` boundary is compiler-trimmed). A space inside
+  the nowrap span removes the only break point, so the line splits inside
+  the name instead ("Andrew / Murray · 1828–1917"). Phone columns beside a
+  cover are ~180px, where "2 HR 55 MIN / READ" orphans were routine.
 - `<title>`: `{Page} — Ochorus` — em dash with spaces, everywhere. Leaf pages
   `{Title} — {Author} — Ochorus`. Not `· Ochorus`.
   - **A copy fix to a string that lives in a catalogue must touch all eight
