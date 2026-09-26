@@ -16,6 +16,14 @@
    "The three guides are named by AUTHOR, not by book title, because none of the three books ships in Hindi yet — there is no shipped title to quote. When they arrive, whoever translates them should either harmonise their titles with this card or adjust this entry in the same PR, exactly as the Arabic and Spanish notes ask."
   ]
  },
+ "school-of-prayer-31-days": {
+  "title": "प्रार्थना की पाठशाला में 31 दिन",
+  "description": "एकमात्र गुरु के चरणों में एंड्रयू मरे के साथ एक महीना। हर दिन प्रार्थना पर यीशु के अपने ही वचनों में से एक को खोलता है — ‘हे प्रभु, हमें प्रार्थना करना सिखा’ से लेकर उस अन्तिम रात की प्रतिज्ञाओं तक — और अपनी ही एक प्रार्थना में समाप्त होता है। प्रतिदिन एक पाठ, लगभग दस मिनट, जो मध्यस्थता और प्रार्थना के जीवन की ओर ले जाता है।",
+  "note": [
+   "Single-book plan backed by the hi edition of school-of-prayer (book title “प्रार्थना की पाठशाला में मसीह के साथ”); the card phrase “प्रार्थना की पाठशाला” matches the shipped book title, and ‘हे प्रभु, हमें प्रार्थना करना सिखा’ is the Luke 11:1 wording the hi book uses throughout. Added by the book:school-of-prayer -> hi job (#3151), which makes this LAUNCH plan creatable in hi — without this entry seed_plans would publish an English-titled card in Hindi (the #819 defect). Distinct from the curated multi-book \"school-of-prayer\" plan above, which stays dormant until its three source books ship in hi.",
+   "एंड्रयू मरे follows the shipped Hindi corpus (also used in the school-of-prayer.hi book and the school-of-prayer curated entry above)."
+  ]
+ },
  "deeper-life-in-christ": {
   "title": "गहरा जीवन: मसीह तुम में",
   "description": "अधिक परिश्रम नहीं, परन्तु एक व्यक्ति: गहरे जीवन का भेद यह है कि स्वयं मसीह भीतर वास करता है। एंड्रयू मरे “स्वयं यीशु” के अचम्भे से आरम्भ करते हैं, फिर भीतर वास करनेवाले जीवन को खोलते हैं, और हडसन टेलर प्रियतम के साथ मिलन और संगति के विश्राम में समाप्त करते हैं।",
@@ -57,6 +65,33 @@
    "The second half echoes the shipped title of he-holds-my-tomorrows.hi, वह मेरा कल थामे हुए है, recast as जो हमारा कल थामे हुए है so the card's clause and the book's title agree.",
    "seed_plans creates NO row today: he-holds-my-tomorrows.hi is shipped but the-god-of-all-comfort is not, so this curated plan's set is incomplete. Dormant on purpose. NOTE for whoever ships the-god-of-all-comfort in Hindi: that book COMPLETES this plan and will flip a five-week plan live on its deploy — it needs the plans/+page.ts prerender touch in the same PR, the #756 shape.",
    "हन्ना व्हिटॉल स्मिथ is the form set by her Hindi bio in this same PR — हन्ना is the IRV's own form for Hannah (and runs 400 to 16 against हन्नाह in shipped Hindi content), व्हिटॉल takes its व्ह from the corpus's व्हाइटफ़ील्ड. गैरेथ इवांस is from gareth-evans.html."
+  ]
+ },
+ "power-from-on-high": {
+  "title": "ऊपर से सामर्थ्य: पवित्र आत्मा",
+  "description": "आत्मा से भरे जीवन पर आर. ए. टॉरे के साथ चार सप्ताह: पहले पवित्र आत्मा से बपतिस्मा और वह सामर्थ्य जो वह सेवा के लिये देता है, फिर उस आत्मा के व्यक्तित्व और कार्य का गहरा अध्ययन जो हर विश्वासी में वास करता है।",
+  "note": [
+   "Queue job #2141. Of this curated plan's two source books, only baptism-with-the-holy-spirit has a Hindi edition; the-person-and-work-of-the-holy-spirit does not. seed_plans needs every source book present, so it creates NO row today — this prose lands DORMANT on purpose, so that the second book cannot publish an English-titled card in Hindi (#819). NOTE for whoever ships the-person-and-work-of-the-holy-spirit in Hindi: that book COMPLETES this plan and will flip it live on its deploy.",
+   "«पवित्र आत्मा से बपतिस्मा» is the shipped edition's own title verbatim (baptism-with-the-holy-spirit.hi.json), quoted so the plan card and the book on the shelf agree.",
+   "The title «ऊपर से सामर्थ्य» renders 'power from on high' — the phrase of Luke 24:49. It is NOT claimed as a fetched verse (Take Root was unreachable this session); सामर्थ्य is the corpus's settled word for power and ऊपर से for 'from on high'. Confirm against the IRV when the second book lands.",
+   "आर. ए. टॉरे is the shipped Hindi form of the author's name (r-a-torrey short bio: रूबेन आर्चर टॉरे). वास is the corpus verb for the Spirit's indwelling (भीतर वास, 35 occurrences), here में वास करता है."
+  ]
+ },
+ "everything-for-christ": {
+  "title": "मसीह के लिये सब कुछ: उंडेला हुआ जीवन",
+  "description": "पूरे मन का समर्पण किस मूल्य पर होता है, और उससे क्या मिलता है? डेविड ब्रेनर्ड की खोजपूर्ण मिशनरी डायरी, और उसके बाद उन स्त्री-पुरुषों की कहानियाँ जिन्होंने सुसमाचार के लिये अपना सब कुछ दे दिया — समर्पण का वह आह्वान, जो उत्तर देनेवाले जीवनों के द्वारा सुनाया गया है।",
+  "note": [
+   "Queue job #2142. NEITHER source book (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) has a Hindi edition, so seed_plans creates NO row today — this prose lands DORMANT on purpose, so that whichever book lands last cannot publish an English-titled card in Hindi (#819).",
+   "डेविड ब्रेनर्ड is the settled Hindi form of the name (34 occurrences in the shipped Hindi corpus). समर्पण is the corpus word for surrender/consecration, सुसमाचार for the gospel.",
+   "The title is the plan's own name, not a book title, so nothing is quoted: «उंडेला हुआ जीवन» renders 'a life poured out' with the drink-offering image of 2 Tim 4:6 (उंडेला जाना). Whoever translates men-and-women-who-gave-everything-2 into Hindi should either harmonise its title with this card or adjust this entry in the same PR."
+  ]
+ },
+ "growing-in-wisdom-18-days": {
+  "title": "18 दिनों में बुद्धि में बढ़ना",
+  "description": "विद्यार्थियों के लिये जेम्स डीग्रीफ़ की मार्गदर्शिका — अठारह दिनों तक हर दिन एक छोटा पाठ। अपने उद्देश्य को खोजने से लेकर भविष्य का दर्शन गढ़ने तक, हर दिन व्यावहारिक सलाह के साथ पवित्रशास्त्र का एक वचन, एक मनन और एक प्रार्थना देता है।",
+  "note": [
+   "Single-book LAUNCH plan backed by growing-in-wisdom.hi (job #2823), which makes it creatable in hi. The title takes the book's own hi title, «बुद्धि में बढ़ना»; «पवित्रशास्त्र», «मनन» and «प्रार्थना» are the book's settled words for Scripture, reflection and prayer.",
+   "«जेम्स डीग्रीफ़» is a fresh transliteration — the hi corpus had not spelled the author's name before. AI-drafted; awaiting native review."
   ]
  }
 }

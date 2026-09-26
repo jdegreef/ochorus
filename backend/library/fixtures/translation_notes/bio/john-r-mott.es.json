@@ -1,0 +1,30 @@
+{
+ "kind": "bio",
+ "slug": "john-r-mott",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Jeremiah 45:5",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "library/fixtures/content/books/a-retrospect.es.json"
+  },
+  {
+   "reference": "John 20:28",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "library/fixtures/content/books/cheque-book.es.json"
+  },
+  {
+   "reference": "Mark 10:43-44",
+   "status": "self_rendered",
+   "block_index": 25
+  }
+ ]
+}

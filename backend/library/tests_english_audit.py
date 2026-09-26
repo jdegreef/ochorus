@@ -1277,7 +1277,7 @@ class UnfailingSpringsDisplayLineTests(SimpleTestCase):
     `corrections.py`. Asserted per edition, for the same reason as above."""
 
     SLUG = "unfailing-springs"
-    LANGUAGES = {"ar", "en", "es", "fr", "hi", "lg", "pt", "sw", "uk"}
+    LANGUAGES = {"am", "ar", "en", "es", "fr", "hi", "lg", "pt", "sw", "uk"}
 
     @classmethod
     def setUpClass(cls):
@@ -2113,3 +2113,122 @@ name both he and they are Hindus.</div>
                     self.assertIn(block, chapters[title])
                     emitted += 1
         self.assertEqual(emitted, 8)
+
+
+class ThingsAsTheyArePrefaceSignatureTests(SimpleTestCase):
+    """`things-as-they-are` ch2: the preface's "EUGENE STOCK." signature.
+
+    The rows carried it as `<p>— Eugene Stock</p>`, a restyling from PR #172's
+    preface rebuild, which also dropped the `<hr>` before the Glossary; see the
+    pair after the book's `wrapped_blocks` in `corrections.py`. Asserted per
+    edition against the SHIPPED fixture, and the blocks against what the
+    importer emits from PG 29426's own markup.
+    """
+
+    SLUG = "things-as-they-are"
+    OLD = "<p>— Eugene Stock</p>"
+    BLOCK = "<h3>EUGENE STOCK.</h3>"
+    NEW = f"{BLOCK}<hr/>"
+
+    def _preface(self, lang):
+        from library.content_fixtures import book_fixture_path
+
+        rows = json.loads(book_fixture_path(self.SLUG, lang).read_text(encoding="utf-8"))
+        (body,) = (
+            r["fields"]["body_html"]
+            for r in rows
+            if r["model"] == "library.chapter" and r["fields"]["order"] == 2
+        )
+        return body
+
+    def test_the_signature_ships_as_the_importer_block(self):
+        for lang in ("en", "sw"):
+            body = self._preface(lang)
+            with self.subTest(language=lang):
+                self.assertNotIn(self.OLD, body)
+                self.assertEqual(body.count(self.BLOCK), 1)
+                self.assertIn(f"</p>{self.NEW}<h3>", body)
+
+    def test_the_correction_restores_the_restyled_rows(self):
+        """Put the old `<p>` back; the correction must give the shipped body
+        exactly. (Asserting the fixture alone passes with the pair deleted,
+        while the live rows keep the restyled line.)"""
+        for lang in ("en", "sw"):
+            body = self._preface(lang)
+            with self.subTest(language=lang):
+                old = body.replace(self.NEW, self.OLD)
+                self.assertNotEqual(old, body)
+                self.assertEqual(corrections.settled_chapter_body(self.SLUG, 2, old), body)
+
+    # PG 29426's own markup, prose cut short: enough of the preface to make it
+    # a chapter, its signature, and the Contents and Glossary behind it.
+    PAGE = """<html><body>
+<h2>Preface</h2>
+<div class="cap">THE writer of these thrilling chapters is a Keswick
+missionary, well known to many friends as the
+adopted daughter of Mr. Robert Wilson, the much-respected
+chairman of the Keswick Convention. She
+worked for a time with the Rev. Barclay Buxton in
+Japan; and for the last few years she has been with the
+Rev. T. Walker (also a C.M.S. Missionary) in Tinnevelly,
+and is on the staff of the Church of England Zenana
+Society.</div>
+<p>I do not think the realities of Hindu life have ever
+been portrayed with greater vividness than in this book;
+and I know that the authoress's accuracy can be fully
+relied upon. The picture is drawn without prejudice,
+with all sympathy, with full recognition of what is
+good, and yet with an unswerving determination to
+tell the truth and let the facts be known,—that is, so
+far as she dares to tell them. What she says is the
+truth, and nothing but the truth; but it is not the
+whole truth—<i>that</i> she could not tell. If she wrote it,
+it could not be printed. If it were printed, it could not
+be read. But if we read between the lines, we do just
+catch glimpses of what she calls "the Actual."</p>
+<p>It is evident that the authoress deeply felt the responsibility
+of writing such a book; and I too feel the<span class="pagenum"><a id="Page_x">[x]</a></span>
+responsibility of recommending it. I do so with the
+prayer of my heart that God will use it to move many.
+It is not a book to be read with a lazy kind of sentimental
+"interest." It is a book to send the reader to
+his knees—still more to <i>her</i> knees.</p>
+<p>But the larger part of this book is a revelation—so
+far as is possible—of the "Actual" of Hinduism and
+Caste. God grant that its terrible facts and its burning
+words may sink into the hearts of its readers! Perhaps,
+when they have read it, they will at last agree that
+we have used no sensational and exaggerated language
+when we have said that the Church is only playing at
+missions! Service, and self-denial, and prayer, must be
+on a different scale indeed if we are ever—I do not say
+to convert the world—but even to evangelise it.</p>
+<div class="sig">
+EUGENE STOCK.<br></div>
+<hr style="width: 65%;"><p><span class="pagenum"><a id="Page_xiii">[xiii]</a></span></p>
+<h2>Contents</h2>
+<div class="center">
+<table style="border-spacing: 0px;padding: 0px;border-width: 0px;" data-summary="Contents">
+<tbody><tr><td colspan="2" style="text-align: left;"><small>CHAPTER</small></td><td style="text-align: right;"><small>PAGE</small></td></tr>
+<tr><td style="text-align: right;">I. </td><td style="text-align: left;"><span class="smcap">About the Book</span></td><td style="text-align: right;"><a href="#Page_1" class="pginternal">1</a></td></tr>
+</tbody></table></div>
+<hr style="width: 65%;"><p><span class="pagenum"><a id="Page_xv">[xv]</a></span></p>
+<h2>Glossary</h2>
+<div class="center">
+<table style="border-spacing: 0px;padding: 4px;border-width: 0px;" data-summary="Glossary">
+<tbody><tr><td style="vertical-align: top;text-align: left;"><span class="smcap">Agni</span></td><td style="text-align: left;">God of Fire.</td></tr>
+</tbody></table></div>
+</body></html>"""
+
+    def test_the_importer_emits_the_blocks_the_correction_writes(self):
+        """The pair's new side must be the importer's blocks byte for byte, and
+        end the preface's prose, or a re-import and the rows disagree."""
+        from library.management.commands.import_gutenberg import extract_chapters
+
+        pair = (self.OLD, self.NEW)
+        self.assertIn(pair, corrections.BODY_CORRECTIONS[self.SLUG]["replacements"])
+        (title, body), *_ = extract_chapters(self.PAGE)
+        self.assertEqual(title, "Preface")
+        self.assertEqual(body.count(self.BLOCK), 1)
+        self.assertIn(f"even to evangelise it.</p> {self.BLOCK} <hr/><h3>Glossary</h3>", body)
+        self.assertNotIn(self.OLD, body)

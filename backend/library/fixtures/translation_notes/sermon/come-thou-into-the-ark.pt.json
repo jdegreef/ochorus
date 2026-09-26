@@ -1,0 +1,38 @@
+{
+ "kind": "sermon",
+ "slug": "come-thou-into-the-ark",
+ "language": "pt",
+ "job_issue": 2703,
+ "references": [
+  {
+   "reference": "Gênesis 7:1",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "s Gn 7:1",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Gênesis 6:5-6",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Mateus 23:37",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "2 Samuel 18:33",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Marcos 10:14",
+   "status": "self_rendered",
+   "block_index": 81
+  }
+ ]
+}

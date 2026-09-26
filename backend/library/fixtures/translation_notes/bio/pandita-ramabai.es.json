@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "pandita-ramabai",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Malachi 3:10",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "library/fixtures/content/books/possibilities-of-prayer.es.json"
+  }
+ ]
+}

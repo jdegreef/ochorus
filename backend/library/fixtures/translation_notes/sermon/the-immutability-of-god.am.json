@@ -1,0 +1,249 @@
+{
+ "kind": "sermon",
+ "slug": "the-immutability-of-god",
+ "language": "am",
+ "job_issue": 3565,
+ "pull_request": null,
+ "note": [
+  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
+  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
+  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Job 8:9",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "James 1:17",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 7
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 14:30",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 6:18",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 1:18",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Corinthians 3:12",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 14
+  },
+  {
+   "reference": "Mark 16:16",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Peter 2:7",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 15
+  },
+  {
+   "reference": "Luke 16:28",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Hebrews 10:31",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 15
+  },
+  {
+   "reference": "Numbers 23:19",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 14:31",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 38:1",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 38:5",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "2 Kings 20:5",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Romans 9:13",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 9:11",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 9:12",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "John 1:12",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 36
+  },
+  {
+   "reference": "Revelation 22:14",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 36
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Exodus 33:11",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Genesis 42:36",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Lamentations 3:1",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Ecclesiastes 3:1",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Revelation 21:8",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 41
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "John 3:18",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Isaiah 25:6",
+   "status": "self_rendered",
+   "block_index": 43
+  }
+ ]
+}

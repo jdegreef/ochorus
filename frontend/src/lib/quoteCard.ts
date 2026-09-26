@@ -41,7 +41,7 @@ export interface QuoteCardOptions {
  * device chose, on the one surface built to leave the site.
  */
 export const CARD_SERIF =
-	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', Georgia, 'Times New Roman', serif";
+	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', Georgia, 'Times New Roman', serif";
 
 /**
  * How the quote itself is set, per script.
@@ -153,7 +153,8 @@ export function drawMark(ctx: CanvasRenderingContext2D, x: number, y: number, si
 export const SCRIPT_FACE: Record<string, string> = {
 	arabic: 'Amiri',
 	devanagari: 'Tiro Devanagari Hindi',
-	cyrillic: 'PT Serif'
+	cyrillic: 'PT Serif',
+	ethiopic: 'Noto Serif Ethiopic'
 };
 
 export async function ensureFonts(script: string | null): Promise<void> {

@@ -1,0 +1,81 @@
+{
+ "kind": "sermon",
+ "slug": "the-drama-of-life-in-three-acts",
+ "language": "sw",
+ "job_issue": 3474,
+ "pull_request": 3487,
+ "references": [
+  {
+   "reference": "Luke 15:11",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 15:12b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 15:14b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 15:16a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Luke 15:16b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Isaiah 57:21",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:25",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Luke 15:15-16",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 15:17",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Luke 15:18-19",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Luke 15:20a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Luke 15:21",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Luke 15:22-24",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Ephesians 6:15b",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "watchman-nee-a-life.sw.json"
+  }
+ ]
+}

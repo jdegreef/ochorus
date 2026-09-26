@@ -1,0 +1,253 @@
+{
+ "kind": "sermon",
+ "slug": "walking-with-god",
+ "language": "pt",
+ "job_issue": 2707,
+ "references": [
+  {
+   "reference": "Gênesis 5:24",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Mateus 25:24",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Gênesis 5:24",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Judas 1:14",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Hebreus 11:5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "s Hb 11:5",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Gênesis 3:12",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Romanos 7:21",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Amós 3:3",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "1 João 2:6",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Gênesis 5:24",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Salmos 84:7",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "2 Coríntios 3:18",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Timóteo 4:15",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "s 4:15",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Gênesis 5:24",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "João 5:39",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Salmos 119:105",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Salmos 1:2",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Timóteo 4:13",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Josué 1:8",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Mateus 4:4",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Efésios 6:17",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Samuel 21:9",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Pedro 1:18",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Pedro 1:19",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Efésios 6:18",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "s 6:18",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Salmos 39:3",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Timóteo 3:16",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Mateus 10:29",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 João 5:21",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Provérbios 23:26",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Romanos 8:14",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Lucas 1:6",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Isaías 2:3",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Salmos 16:3",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Provérbios 27:17",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Ester 5:11",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ester 6:6",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ester 6:8",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "João 15:15",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Salmos 84:10",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Provérbios 3:17",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Mateus 5:11",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Mateus 5:12",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Salmos 42:2",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Isaías 57:15",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Apocalipse 3:16",
+   "status": "self_rendered",
+   "block_index": 27
+  }
+ ]
+}

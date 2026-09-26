@@ -1,0 +1,118 @@
+{
+ "kind": "sermon",
+ "slug": "the-good-way-of-coming-before-the-lord",
+ "language": "pt",
+ "job_issue": 2709,
+ "references": [
+  {
+   "reference": "Miqueias 6:6-8",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "only Miqueias 7:19",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Êxodo 5:2",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Jó 21:14",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Mateus 18:10",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Salmos 42:1-2",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Isaías 6:1-5",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "had Isaías 6:8",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Jó 42:6",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Lucas 10:42",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Amós 4:12",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Pedro 4:18",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Zacarias 3:4",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "had Zacarias 3:2",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Romanos 5:19",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "João 5:14",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "João 8:11",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Gênesis 18:25",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "had Gênesis 18:17",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Provérbios 20:14",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "crib had 20:30",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Filipenses 4:19",
+   "status": "self_rendered",
+   "block_index": 20
+  }
+ ]
+}

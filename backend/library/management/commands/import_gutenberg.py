@@ -45,13 +45,9 @@ _TINY_SECTION_WORDS = 300
 # The outermost verse container, for the fallback walk. Not `ingest._VERSE_CLASS`:
 # that also matches a stanza, which is a poem's part, not a poem.
 _POEM = re.compile(r"poem|poetry|lg-container")
-# The class PGDP transcribers put on the box holding their notes, as a whole
-# class TOKEN. A substring won't do: `*=tnote` is inside every `footnote`, and
-# footnotes are the author's. Across the library's 27 Gutenberg sources the
-# three spellings mark 11 boxes and every one is a transcriber's note (errata,
-# cover credit, "larger version of this map"); #65066's `tnotes` endnote shipped
-# as Edwards's closing paragraphs because its heading was a centred div the
-# importer never collected, and the sw edition translated it as his.
+# A transcriber's-note box, matched as a whole class TOKEN: `*=tnote` is inside
+# every `footnote`, and footnotes are the author's. In the library's 27
+# Gutenberg sources these three spellings mark 11 boxes, all transcriber's notes.
 _TRANSCRIBER_NOTE = re.compile(r"^(?:tnotes?|transnote)$")
 # Catalogued Gutenberg books whose layout this importer can't chapter, built by
 # their own command instead. Skipped here so a stray run can't re-chapter them.
@@ -101,7 +97,9 @@ def content_root(html: str):
         el.decompose()
     # The transcriber's own notes — errata, "missing periods silently added" —
     # are the etext's apparatus, not the work. See _TRANSCRIBER_NOTE.
-    for el in s.find_all(class_=_TRANSCRIBER_NOTE):
+    # Boxes only: an inline `<span class="transnote">` can carry a corrected
+    # word of the author's sentence.
+    for el in s.find_all("div", class_=_TRANSCRIBER_NOTE):
         el.decompose()
     # Gutenberg wraps the work in a body or a single content div.
     return s.body or s
@@ -298,12 +296,10 @@ def _catalogue_start(sections: list[tuple[str, str]]) -> int | None:
     return None
 
 
-# The printer's colophon, standing alone as a block. What follows it in the LAST
-# section is the back of the printed book, not the work: #73032 ran Bounds's
-# final paragraph straight into it and then nine pages of Revell's catalogue,
-# which `_catalogue_start` never sees because no heading divides them from the
-# chapter. The whole block must be the colophon, so a sentence that merely
-# mentions where a book was printed can't truncate anything.
+# A standalone colophon block: what follows it in the LAST section is the back
+# of the printed book (#73032's Revell catalogue, which no heading divides from
+# the chapter, so `_catalogue_start` never sees it). The whole block must match,
+# so a sentence that mentions where a book was printed truncates nothing.
 _COLOPHON = re.compile(
     r"<p>(?:<[bi]>)?\s*Printed in (?:the )?(?:United States(?: of America)?|U\.\s?S\.\s?A\.)"
     r"\.?\s*(?:</[bi]>)?</p>",
@@ -312,9 +308,22 @@ _COLOPHON = re.compile(
 
 
 def _cut_at_colophon(body: str) -> str:
-    """The last section's body up to a standalone colophon block, if it has one."""
+    """The last section's body up to a standalone colophon block, if it has one.
+
+    Only where a chapter's worth of prose precedes it: a colophon at the head of
+    the section is a reprinted title page, and cutting there would empty it.
+    """
     m = _COLOPHON.search(body)
-    return body[: m.start()].rstrip() if m else body
+    if m and word_count(body[: m.start()]) >= _TINY_SECTION_WORDS:
+        return body[: m.start()].rstrip()
+    return body
+
+
+def _cut_last_at_colophon(sections: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    if not sections:
+        return sections
+    title, body = sections[-1]
+    return [*sections[:-1], (title, _cut_at_colophon(body))]
 
 
 _MONTHS = (
@@ -354,7 +363,7 @@ def extract_chapters(html: str) -> list[tuple[str, str]]:
     if len(sections) > 80:
         daily = sum(1 for t, _ in sections if _MONTH_DAY.match(t.strip()))
         if daily > len(sections) * 0.8:
-            return group_daily_entries(sections)
+            return _cut_last_at_colophon(group_daily_entries(sections))
     # Tiny sections are not chapters: interleaved hymns/poems join the chapter
     # they follow (title kept as an <h3>); tiny sections BEFORE any chapter
     # (prefatory notes, epigraph poems) are front matter and dropped.
@@ -370,12 +379,7 @@ def extract_chapters(html: str) -> list[tuple[str, str]]:
     # both when there is none and at index 0 — a whole work is never a catalogue,
     # so 0 means leave it be, never slice the book to nothing.
     cut = _catalogue_start(merged)
-    if cut:
-        merged = merged[:cut]
-    if merged:
-        title, body = merged[-1]
-        merged[-1] = (title, _cut_at_colophon(body))
-    return merged
+    return _cut_last_at_colophon(merged[:cut] if cut else merged)
 
 
 class Command(BaseCommand):

@@ -137,8 +137,11 @@ CURATED: dict[str, Artwork] = {
         "Light breaking through cloud; grace as something given, not achieved.",
     ),
     "prevailing-prayer": Artwork(
-        "met", 437526, "Peter Paul Rubens", "A Forest at Dawn with a Deer Hunt", "ca. 1635",
-        "Dark wood at first light — prayer that persists until morning.",
+        "met", 11328, "John Frederick Kensett",
+        "Twilight in the Cedars at Darien, Connecticut", "1872",
+        "Light burning low through a dark wood — prayer that holds on through "
+        "the night. Moody's own country and decade; it replaced a Rubens deer "
+        "hunt that said the same thing darker and with a hound in it.",
     ),
     "the-fourfold-gospel": Artwork(
         "met", 283081, "Roger Fenton", "Salisbury Cathedral - The Nave, from the South Transept", "1858",
@@ -238,6 +241,14 @@ CURATED: dict[str, Artwork] = {
         "A road ARRIVING somewhere, deliberately paired with the Hobbema on "
         "`a-call-to-the-unconverted`, which is a road leaving. Baxter summons a "
         "reader to set out; Moody tells him where the road goes.",
+    ),
+    "thoughts-for-the-quiet-hour": Artwork(
+        "met", 11329, "John Frederick Kensett",
+        "Twilight on the Sound, Darien, Connecticut", "1872",
+        "One figure in a boat on still water at dusk: the quiet hour itself. "
+        "The same year and shore as the Kensett on `prevailing-prayer`, so "
+        "Moody's two devotional books read as a pair.",
+        focus=0.47,
     ),
     "revival-lectures": Artwork(
         "cma", 93014, "Thomas Cole",

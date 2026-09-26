@@ -60,6 +60,19 @@
   "series": [
    "brave-for-god"
   ],
+  "language": "ar",
+  "title": "شجعان من أجل الله",
+  "description": "قصص حقيقية عن الإيمان للقرّاء الصغار: أناس عاديون من كل أنحاء العالم وثقوا بالله فصاروا شجعانًا.",
+  "created_at": "2026-09-25T00:00:00Z",
+  "updated_at": "2026-09-25T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
   "language": "lg",
   "title": "Abavumu ku lwa Katonda",
   "description": "",
@@ -91,6 +104,19 @@
   "description": "Правдиві історії віри для юних читачів: звичайні люди з усіх куточків світу, які довіряли Богові й стали відважними.",
   "created_at": "2026-09-24T00:00:00Z",
   "updated_at": "2026-09-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "hi",
+  "title": "परमेश्वर के लिये साहसी",
+  "description": "युवा पाठकों के लिये विश्वास की सच्ची कहानियाँ: संसार के हर कोने के साधारण लोग जिन्होंने परमेश्वर पर भरोसा रखा और साहसी बनाए गए।",
+  "created_at": "2026-09-25T00:00:00Z",
+  "updated_at": "2026-09-25T00:00:00Z"
  }
 }
 ]
