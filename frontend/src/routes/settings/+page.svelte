@@ -344,7 +344,9 @@
 							{syncing ? t('settings.syncing') : t('settings.syncNow')}
 						</button>
 					</div>
-					<button class="btn btn-ghost mt-5" onclick={() => auth.signOut()}>{t('account.signOut')}</button>
+					<button class="btn btn-ghost mt-5" disabled={auth.signingOut} onclick={() => auth.signOut()}
+						>{auth.signingOut ? t('settings.syncing') : t('account.signOut')}</button
+					>
 				{:else if auth.enabled}
 					<p class="text-body text-muted">{t('account.signedOutNote')}</p>
 				{:else}

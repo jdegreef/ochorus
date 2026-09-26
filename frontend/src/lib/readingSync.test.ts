@@ -10,7 +10,9 @@ import {
 	FAVORITES_KEY,
 	JOURNAL_KEY,
 	JOURNAL_DIRTY_KEY,
-	SHELVES_KEY
+	SHELVES_KEY,
+	SYNC_OWED_KEY,
+	SYNC_STASH_KEY
 } from './reading-schema';
 import { addPending, bookmarkTarget, pendingAt } from './removals';
 
@@ -397,5 +399,132 @@ describe('readingSync.flushJournal', () => {
 		const fetchSpy = vi.spyOn(globalThis, 'fetch');
 		await expect(readingSync.flushJournal()).resolves.toBe(false);
 		expect(fetchSpy).not.toHaveBeenCalled();
+	});
+});
+
+describe('readingSync — nothing lost at sign-out', () => {
+	const ok = () => new Response('{}', { status: 200 });
+	const mergeReply = (marks: unknown[] = []) =>
+		new Response(JSON.stringify({ progress: [], marks, favorites: [] }), {
+			status: 200,
+			headers: { 'content-type': 'application/json' }
+		});
+	const rec = { order: 3, paragraph_index: 5, language: 'en', at: 1 };
+
+	afterEach(() => {
+		vi.restoreAllMocks();
+		readingSync.setSignedIn(false);
+	});
+
+	it('settle sends a push still waiting on its debounce, and resolves true', async () => {
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(ok());
+		readingSync.setSignedIn(true);
+		readingSync.pushProgress('book', 'humility', rec);
+		expect(readingSync.hasUnsynced()).toBe(true);
+		await expect(readingSync.settle()).resolves.toBe(true);
+		expect(String(fetchSpy.mock.calls[0][0])).toContain('/api/reading/progress/humility/');
+		expect(readingSync.hasUnsynced()).toBe(false);
+	});
+
+	it('a failed push is owed; settle merges to recover it', async () => {
+		const fetchSpy = vi
+			.spyOn(globalThis, 'fetch')
+			.mockRejectedValueOnce(new TypeError('offline'))
+			.mockResolvedValueOnce(mergeReply());
+		readingSync.setSignedIn(true);
+		readingSync.pushProgress('book', 'humility', rec);
+		await expect(readingSync.settle()).resolves.toBe(true);
+		expect(String(fetchSpy.mock.calls[1][0])).toContain('/api/reading/merge/');
+		expect(localStorage.getItem(SYNC_OWED_KEY)).toBeNull();
+	});
+
+	it('settle resolves false while the account still cannot be reached', async () => {
+		vi.spyOn(globalThis, 'fetch').mockRejectedValue(new TypeError('offline'));
+		readingSync.setSignedIn(true);
+		readingSync.pushProgress('book', 'humility', rec);
+		await expect(readingSync.settle()).resolves.toBe(false);
+		expect(localStorage.getItem(SYNC_OWED_KEY)).not.toBeNull();
+	});
+
+	it('a merge keeps a highlight made while it was in flight', async () => {
+		const before = { 'humility:1': { m: [] } };
+		const during = { 'humility:1': { m: [{ id: 'new', s: [[0, 0, 4]], c: 'y' }] } };
+		localStorage.setItem(MARKS_KEY, JSON.stringify(before));
+		vi.spyOn(globalThis, 'fetch').mockImplementation(async () => {
+			// The reader highlights while the request is out.
+			localStorage.setItem(MARKS_KEY, JSON.stringify(during));
+			return mergeReply([{ kind: 'book', book_slug: 'humility', chapter_order: 1, marks: [] }]);
+		});
+		readingSync.setSignedIn(true);
+		await readingSync.mergeOnSignIn();
+		expect(JSON.parse(localStorage.getItem(MARKS_KEY)!)['humility:1']).toEqual(during['humility:1']);
+	});
+
+	it('an involuntary session end sets unsynced data aside for the same account only', () => {
+		localStorage.setItem(MARKS_KEY, JSON.stringify({ 'humility:1': { m: [] } }));
+		localStorage.setItem(SYNC_OWED_KEY, '1');
+		readingSync.endSession('a@example.com');
+		// Wiped like any sign-out…
+		expect(localStorage.getItem(MARKS_KEY)).toBeNull();
+		expect(localStorage.getItem(SYNC_STASH_KEY)).not.toBeNull();
+		// …and handed back only to the account it came from.
+		readingSync.restoreStash('someone-else@example.com');
+		expect(localStorage.getItem(MARKS_KEY)).toBeNull();
+		expect(localStorage.getItem(SYNC_STASH_KEY)).toBeNull();
+	});
+
+	it('restoreStash gives the data back to the same account', () => {
+		localStorage.setItem(MARKS_KEY, JSON.stringify({ 'humility:1': { m: [] } }));
+		localStorage.setItem(SYNC_OWED_KEY, '1');
+		readingSync.endSession('a@example.com');
+		readingSync.restoreStash('a@example.com');
+		expect(JSON.parse(localStorage.getItem(MARKS_KEY)!)).toEqual({ 'humility:1': { m: [] } });
+		expect(localStorage.getItem(SYNC_STASH_KEY)).toBeNull();
+	});
+
+	it('settle waits for a push already on the wire', async () => {
+		let release!: (r: Response) => void;
+		vi.spyOn(globalThis, 'fetch').mockImplementation(() => new Promise((r) => (release = r)));
+		readingSync.setSignedIn(true);
+		readingSync.pushSessionsNow([{ client_id: 's1', started_at: 1, ended_at: 2, seconds: 1 } as never]);
+		expect(readingSync.hasUnsynced()).toBe(true);
+		const settled = readingSync.settle();
+		release(ok());
+		await expect(settled).resolves.toBe(true);
+	});
+
+	it('a merge keeps a heart toggled while it was in flight', async () => {
+		localStorage.setItem(FAVORITES_KEY, JSON.stringify({}));
+		vi.spyOn(globalThis, 'fetch').mockImplementation(async () => {
+			localStorage.setItem(FAVORITES_KEY, JSON.stringify({ 'book:humility': 7 }));
+			return mergeReply();
+		});
+		readingSync.setSignedIn(true);
+		await readingSync.mergeOnSignIn();
+		expect(JSON.parse(localStorage.getItem(FAVORITES_KEY)!)).toEqual({ 'book:humility': 7 });
+	});
+
+	it('a removal whose DELETE never landed counts as unsynced', () => {
+		addPending('favorite', 'book', 'humility', 5);
+		expect(readingSync.hasUnsynced()).toBe(true);
+	});
+
+	it('a stash is folded under what the device wrote since, not dropped', () => {
+		localStorage.setItem(MARKS_KEY, JSON.stringify({ 'humility:1': { m: [] } }));
+		localStorage.setItem(SYNC_OWED_KEY, '1');
+		readingSync.endSession('a@example.com');
+		// Read (and highlight) signed-out before signing back in.
+		localStorage.setItem(MARKS_KEY, JSON.stringify({ 'humility:2': { m: [] } }));
+		readingSync.restoreStash('a@example.com');
+		expect(Object.keys(JSON.parse(localStorage.getItem(MARKS_KEY)!)).sort()).toEqual([
+			'humility:1',
+			'humility:2'
+		]);
+	});
+
+	it('nothing is stashed when the account already has everything', () => {
+		localStorage.setItem(MARKS_KEY, JSON.stringify({ 'humility:1': { m: [] } }));
+		readingSync.endSession('a@example.com');
+		expect(localStorage.getItem(SYNC_STASH_KEY)).toBeNull();
 	});
 });

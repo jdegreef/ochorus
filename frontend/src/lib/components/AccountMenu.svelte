@@ -115,10 +115,11 @@
 					>
 					<button
 						class="account-item"
-						onclick={() => {
+						disabled={auth.signingOut}
+						onclick={async () => {
+							await auth.signOut();
 							open = false;
-							auth.signOut();
-						}}>{t('account.signOut')}</button
+						}}>{auth.signingOut ? t('settings.syncing') : t('account.signOut')}</button
 					>
 				</div>
 			{/if}

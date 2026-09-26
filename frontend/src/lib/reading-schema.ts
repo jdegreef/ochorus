@@ -56,6 +56,16 @@ export const RESUME_BOOKS_KEY = 'ochorus:resume-books';
 // can still find stragglers.
 export const LEGACY_SERMON_MARKS_KEY = 'ochorus:sermon-marks';
 export const LEGACY_SERMON_ANCHOR_KEY = 'ochorus:sermon-anchor';
+// Set when a push to the account failed (offline, a server error): the device
+// holds changes the account doesn't. Cleared by the next successful merge,
+// which uploads the whole cache. Tied to the session, so wiped with it.
+export const SYNC_OWED_KEY = 'ochorus:sync-owed';
+// Unsynced reading data set aside when a session ended without the reader
+// choosing to (token expiry or revocation), for the SAME account to get back
+// at its next sign-in; discarded if anyone else signs in. Deliberately not in
+// SIGN_OUT_DATA_KEYS — the sign-out wipe is what writes it — but erased by the
+// settings "clear reading data" control. See readingSync.endSession.
+export const SYNC_STASH_KEY = 'ochorus:sync-stash';
 
 /**
  * Every key holding the *reader's own data* (positions, highlights, notes,
@@ -81,7 +91,8 @@ export const READING_DATA_KEYS = [
 	SESSION_KEY,
 	RESUME_BOOKS_KEY,
 	LEGACY_SERMON_MARKS_KEY,
-	LEGACY_SERMON_ANCHOR_KEY
+	LEGACY_SERMON_ANCHOR_KEY,
+	SYNC_OWED_KEY
 ] as const;
 
 /**
