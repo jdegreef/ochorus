@@ -364,6 +364,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"ar/pilgrims-progress": {
+			"ground": "9e0a4426d01ec0414ece972b8d364cf3de899d5eabe0454eb42ab30f468d8fe7",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"ar/power-through-prayer": {
 			"ground": "e04c38459dc7643bdd19628cbd9fb4fb149672d267063e1a0494303afd8b44a8",
 			"style": "devotional",
