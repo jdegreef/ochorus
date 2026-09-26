@@ -1,4 +1,11 @@
 {
+  "brave-for-god-24-true-stories": {
+    "title": "شجعان من أجل الله: 24 قصة حقيقية",
+    "description": "ثلاثة أسابيع ونصف من القصص الحقيقية للقرّاء الصغار، قصة كل يوم: الكتب الأربعة من «شجعان من أجل الله»، أربعة وعشرون شخصًا عاديًا من كل أنحاء العالم وثقوا بالله فصاروا شجعانًا.",
+    "note": [
+      "Four-book plan backed by the ar editions of brave-for-god 1–4 (series row «شجعان من أجل الله»). Added by the book:brave-for-god-3/-4 -> ar jobs (#4052, #4053), which complete the set and make this plan creatable in ar."
+    ]
+  },
   "deeper-life-in-christ": {
     "title": "الحياة الأعمق: المسيح فيكم",
     "description": "لا مزيدًا من الجهد، بل شخصٌ: سرُّ الحياة الأعمق هو المسيح نفسه حيًّا في الداخل. يفتتح أندرو موراي بعجب يسوع نفسه، ثم يبسط حياة السكنى الداخلية، ويختم هدسون تايلور في راحة الاتحاد والشركة مع الحبيب.",
@@ -56,6 +63,41 @@
     "description": "ثلاثون يومًا تسير فيها مع يسوع، للقرّاء من سنّ التاسعة إلى الثانية عشرة: من المذود في بيت لحم، مرورًا بمعجزاته وأمثاله، إلى الصليب والقبر الفارغ. كل يوم قراءة قصيرة واحدة: مقطع من الأناجيل، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
     "note": [
       "Single-book plan backed by the ar edition of rooted-2 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 2»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-2 -> ar job (#3601), which makes this LAUNCH plan creatable in ar."
+    ]
+  },
+  "rooted-book-3-30-days": {
+    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 3",
+    "description": "ثلاثون يومًا لإنماء الثمر، للقرّاء من سنّ التاسعة إلى الثانية عشرة: المحبة والفرح والسلام والصبر واللطف وبقية ثمر الروح، والكلام الذي نقوله، وعادات القلب. كل يوم قراءة قصيرة واحدة: آية من الكتاب المقدس، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
+    "note": [
+      "Single-book plan backed by the ar edition of rooted-3 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 3»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-3 -> ar job (#4048), which makes this LAUNCH plan creatable in ar."
+    ]
+  },
+  "rooted-book-4-30-days": {
+    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 4",
+    "description": "ثلاثون يومًا للثبات في عواصف الحياة، للقرّاء من سنّ التاسعة إلى الثانية عشرة: حين تخاف أو تقلق أو تحزن، وحين تُجرَّب، وحين تبدو الحياة غير عادلة. كل يوم قراءة قصيرة واحدة: آية من الكتاب المقدس، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
+    "note": [
+      "Single-book plan backed by the ar edition of rooted-4 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 4»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-4 -> ar job (#4049), which makes this LAUNCH plan creatable in ar."
+    ]
+  },
+  "rooted-book-5-30-days": {
+    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 5",
+    "description": "ثلاثون يومًا لتمتدّ أغصانك بالمحبة، للقرّاء من سنّ التاسعة إلى الثانية عشرة: العائلة، والأصدقاء، والغفران، وعائلة الله في الكنيسة، والعالم كله. كل يوم قراءة قصيرة واحدة: آية من الكتاب المقدس، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
+    "note": [
+      "Single-book plan backed by the ar edition of rooted-5 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 5»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-5 -> ar job (#4050), which makes this LAUNCH plan creatable in ar."
+    ]
+  },
+  "rooted-book-6-30-days": {
+    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 6",
+    "description": "ثلاثون يومًا عن قصد الله لحياتك، للقرّاء من سنّ التاسعة إلى الثانية عشرة: مختارون ومخلوقون لأعمال صالحة، واستخدام مواهبك ووقتك لله، والخدمة والدفاع عن الحق، والتطلّع إلى مجيء يسوع. كل يوم قراءة قصيرة واحدة: آية من الكتاب المقدس، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
+    "note": [
+      "Single-book plan backed by the ar edition of rooted-6 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 6»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-6 -> ar job (#4051), which makes this LAUNCH plan creatable in ar."
+    ]
+  },
+  "rooted-six-months-with-god": {
+    "title": "متأصّلون: ستة أشهر مع الله",
+    "description": "نصف سنة مع الله للقرّاء من سنّ التاسعة إلى الثانية عشرة: الكتب الستة من «متأصّلون»، من «مغروسون» إلى «حاملون ثمرًا»، تأمّل قصير كل يوم — آية، وما تعنيه، وأمر للتفكير، وأمر للتجربة، وصلاة.",
+    "note": [
+      "Six-book plan backed by the ar editions of rooted-1 … rooted-6 (series row «متأصّلون – 30 يومًا مع الله للناشئين»); book names are the ar subtitles of Book 1 (مغروسون) and Book 6 (حاملون ثمرًا). Added by the book:rooted-5/-6 -> ar jobs (#4050, #4051), which complete the set."
     ]
   },
   "school-of-prayer": {

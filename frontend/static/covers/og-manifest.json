@@ -334,6 +334,26 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"ar/brave-for-god-3": {
+			"ground": "2f72c983a4a2583700e826bde577401ed1ce7e9a14710fd9296ad2d397991490",
+			"style": "young",
+			"volume": "3",
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
+		"ar/brave-for-god-4": {
+			"ground": "ddd842f99c3263e6b658def6f3413dfe556c61d90aef020787c99ffcadd6ecdc",
+			"style": "young",
+			"volume": "4",
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ar/clothed-with-strength-and-dignity": {
 			"ground": "db8850dce12ff5a187d3d3a94eae8a673f10347b142850b04ea6d07fa4ff7ef3",
 			"style": "originals",
@@ -518,6 +538,46 @@
 			"ground": "e06a0b740e32dcc374557d33bdb3cc5d22c7f05f5f2df388af825a39398129c5",
 			"style": "young",
 			"volume": "2",
+			"script": "arabic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"ar/rooted-3": {
+			"ground": "bb719039b3e0b05717253b424d5517ddc606bec641927cba3ec211bd842193d6",
+			"style": "young",
+			"volume": "3",
+			"script": "arabic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"ar/rooted-4": {
+			"ground": "4d9c389a9576fed6b912b0fc061c0bedad915894d07ae3048a0d07f560ff2e31",
+			"style": "young",
+			"volume": "4",
+			"script": "arabic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"ar/rooted-5": {
+			"ground": "47c8bd0b77f415a17fa68e7b3406d8c4056e71d02d0cb046aa3899d4abc4fcfc",
+			"style": "young",
+			"volume": "5",
+			"script": "arabic",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"ar/rooted-6": {
+			"ground": "f60f199ad8229c82431d05f6e7f2af811af27d669df7fbf617d24f595d86875f",
+			"style": "young",
+			"volume": "6",
 			"script": "arabic",
 			"art": false,
 			"scrim": 1,
