@@ -168,6 +168,23 @@ Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
   paged is handled by the padding above). Spacing above the chapter title cluster
   is scroll-only too — scope with `article:not(.paged)`, since page mode zeroes
   the article padding and paginates from the top.
+- **Phone reader chrome (below `sm`) is its own layout.** Top: Back · book/
+  chapter · Contents · "⋯"; footer `.foot-actions`: Previous · Listen · Aa ·
+  Next (folds with `hideChrome`). Three traps: (1) nothing `position: fixed`
+  can live inside `.reader-chrome` — its `backdrop-blur` makes it the
+  containing block, so the text-settings **sheet** (`<ReaderControls sheet>`)
+  mounts at page root; (2) the popover and the sheet share
+  `readerUi.panelOpen`, so mount only ONE (`isPhone` matchMedia) — a hidden
+  popover's `dismissable` closes the visible sheet on every tap; (3) a scoped
+  `display:` in `<style>` out-ranks a Tailwind `sm:hidden` and leaks onto
+  desktop — put phone-only `display` inside `@media (max-width: 639.98px)`.
+  (4) Folding must not change LAYOUT: `--foot-h` holds the unfolded height.
+  Letting the article's padding shrink with the fold clamped scrollY at a
+  chapter's end, which read as a scroll-up and unfolded it — a flicker loop.
+  (5) Use a `$state`+`$effect` phone flag, not `svelte/reactivity`'s
+  `MediaQuery` — it reads matchMedia during hydration and mismatches the
+  prerendered `{#if}`s. Verify with headless Playwright if the browser pane
+  is hidden: ResizeObserver/scroll handlers don't run in a hidden pane.
 - **Verifying the reader locally against origin/main:** run the worktree
   frontend on **port 5180** (the backend's CORS allowlist is 5173/5180 only) vs
   the local seeded backend on :8000; the prod API blocks CORS from localhost.

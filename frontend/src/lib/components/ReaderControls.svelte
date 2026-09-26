@@ -15,6 +15,7 @@
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { theme } from '$lib/theme.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
+	import DrawerShell from '$lib/components/DrawerShell.svelte';
 
 	let {
 		/**
@@ -56,8 +57,20 @@
 		 * page when paged mode is justifying by default. Clicking still records an
 		 * explicit choice via `setAlign`.
 		 */
-		align = undefined
-	}: { layout?: boolean; margins?: boolean; sample?: string; align?: Align } = $props();
+		align = undefined,
+		/**
+		 * A phone bottom sheet instead of the "Aa" popover. It has no trigger:
+		 * the opener sets `readerUi.panelOpen`. Mount it outside the reader's
+		 * top bar (page-design skill: "Phone reader chrome").
+		 */
+		sheet = false
+	}: {
+		layout?: boolean;
+		margins?: boolean;
+		sample?: string;
+		align?: Align;
+		sheet?: boolean;
+	} = $props();
 
 	const activeAlign = $derived(align ?? readerPrefs.align);
 
@@ -114,225 +127,238 @@
 	];
 </script>
 
-<div
-	class="relative"
-	use:dismissable={{ open: open.value, onDismiss: () => (open.value = false) }}
->
-	<button
-		class="btn btn-sm btn-ghost"
-		onclick={() => (open.value = !open.value)}
-		aria-haspopup="dialog"
-		aria-expanded={open.value}
-		aria-label={t('reader.textSettings')}
-	>
-		<span class="font-display">A</span><span class="text-small">a</span>
-	</button>
-
-	{#if open.value}
-		<div
-			class="absolute end-0 z-30 mt-2 max-h-[70vh] w-64 overflow-y-auto rounded-card border border-border bg-surface p-4 shadow-lg"
-			role="dialog"
-			aria-label={t('reader.textSettings')}
-		>
-			<!-- Live preview: the chapter's own opening line, restyled as the
-			     controls change, so a size/spacing/typeface choice shows its
-			     effect on the real prose before you close the panel. -->
-			{#if sample}
-				<!-- `reading` supplies the face/size/leading from the same custom
-				     properties the article consumes (one definition, in app.css);
-				     `dir="auto"` because this is content prose inside localized
-				     chrome — see readerDirection.test.ts. -->
-				<!-- Kept on one source line: readerDirection.test.ts matches
-				     `rc-preview mb-3` and dir="auto" on the same line. -->
-				<div class="reading rc-preview mb-3" style="{readerPrefs.style}; text-align: {cssAlign(activeAlign)}" dir="auto" aria-hidden="true">
-					{sample}
-				</div>
-			{/if}
-
-			<!-- Font size -->
-			<div class="mb-3 flex items-center justify-between">
-				<span class="text-small font-semibold text-text">{t('reader.size')}</span>
-				<div class="flex items-center gap-1">
-					<button
-						class="btn btn-sm btn-ghost"
-						onclick={() => readerPrefs.bumpScale(-0.1)}
-						aria-label={t('a11y.smallerText')}>A−</button
-					>
-					<span class="w-10 text-center text-small text-muted"
-						>{Math.round(readerPrefs.scale * 100)}%</span
-					>
-					<button
-						class="btn btn-sm btn-ghost text-body"
-						onclick={() => readerPrefs.bumpScale(0.1)}
-						aria-label={t('a11y.largerText')}>A+</button
-					>
-				</div>
-			</div>
-
-			<!-- Theme -->
-			<div class="mb-3">
-				<span class="mb-1.5 block text-small font-semibold text-text">{t('nav.theme')}</span>
-				<div class="grid grid-cols-3 gap-1">
-					{#each THEMES as o (o.v)}
-						<button
-							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
-							class:border-accent={theme.current === o.v}
-							class:text-accent={theme.current === o.v}
-							class:border-border-strong={theme.current !== o.v}
-							class:text-muted={theme.current !== o.v}
-							onclick={() => theme.set(o.v)}
-							aria-pressed={theme.current === o.v}>{t(o.k)}</button
-						>
-					{/each}
-				</div>
-			</div>
-
-			<!-- Leading -->
-			<div class="mb-3">
-				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.spacing')}</span>
-				<div class="grid grid-cols-3 gap-1">
-					{#each LEADINGS as o (o.v)}
-						<button
-							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
-							class:border-accent={readerPrefs.leading === o.v}
-							class:text-accent={readerPrefs.leading === o.v}
-							class:border-border-strong={readerPrefs.leading !== o.v}
-							class:text-muted={readerPrefs.leading !== o.v}
-							onclick={() => readerPrefs.setLeading(o.v)}
-							aria-pressed={readerPrefs.leading === o.v}>{t(o.k)}</button
-						>
-					{/each}
-				</div>
-			</div>
-
-			<!-- Measure / width -->
-			<div class="mb-3">
-				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.width')}</span>
-				<div class="grid grid-cols-2 gap-1">
-					{#each MEASURES as o (o.v)}
-						<button
-							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
-							class:border-accent={readerPrefs.measure === o.v}
-							class:text-accent={readerPrefs.measure === o.v}
-							class:border-border-strong={readerPrefs.measure !== o.v}
-							class:text-muted={readerPrefs.measure !== o.v}
-							onclick={() => readerPrefs.setMeasure(o.v)}
-							aria-pressed={readerPrefs.measure === o.v}>{t(o.k)}</button
-						>
-					{/each}
-				</div>
-			</div>
-
-			<!-- Margins: the column's side gutters in scroll mode. Width sets how
-			     wide the text runs; this is the space between it and the screen
-			     edge — the knob a tablet reader reaches for when the column floats.
-			     Only where the surface honours it (`margins`), and not in page
-			     mode, which zeroes the article padding and keeps its own gutters. -->
-			{#if margins && !readerPrefs.paged}
-			<div class="mb-3">
-				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.margins')}</span>
-				<div class="grid grid-cols-3 gap-1">
-					{#each MARGINS as o (o.v)}
-						<button
-							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
-							class:border-accent={readerPrefs.margin === o.v}
-							class:text-accent={readerPrefs.margin === o.v}
-							class:border-border-strong={readerPrefs.margin !== o.v}
-							class:text-muted={readerPrefs.margin !== o.v}
-							onclick={() => readerPrefs.setMargin(o.v)}
-							aria-pressed={readerPrefs.margin === o.v}>{t(o.k)}</button
-						>
-					{/each}
-				</div>
-			</div>
-			{/if}
-
-			<!-- Typeface -->
-			<div>
-				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.typeface')}</span>
-				<!-- Each option is set in its own face: a typeface is chosen by looking
-				     at it. That fetches each face's latin file the first time the panel
-				     opens (nothing before), which is the price of a preview. -->
-				<div class="grid grid-cols-2 gap-1">
-					{#each READER_FONTS as v (v)}
-						<button
-							class="rc-opt truncate rounded-sm border px-2 py-1.5 text-small"
-							class:border-accent={readerPrefs.font === v}
-							class:text-accent={readerPrefs.font === v}
-							class:border-border-strong={readerPrefs.font !== v}
-							class:text-muted={readerPrefs.font !== v}
-							style:font-family={FONT_STACK[v]}
-							onclick={() => readerPrefs.setFont(v)}
-							aria-pressed={readerPrefs.font === v}>{fontLabel(v, FONT_KINDS)}</button
-						>
-					{/each}
-				</div>
-			</div>
-
-			<!-- Text alignment -->
-			<div class="mt-3">
-				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.alignment')}</span>
-				<div class="grid grid-cols-2 gap-1">
-					{#each ALIGNMENTS as o (o.v)}
-						<button
-							class="rc-opt rounded-sm border px-2 py-1.5 text-small"
-							class:border-accent={activeAlign === o.v}
-							class:text-accent={activeAlign === o.v}
-							class:border-border-strong={activeAlign !== o.v}
-							class:text-muted={activeAlign !== o.v}
-							onclick={() => readerPrefs.setAlign(o.v)}
-							aria-pressed={activeAlign === o.v}>{t(o.k)}</button
-						>
-					{/each}
-				</div>
-			</div>
-
-			<!-- Layout: continuous scroll vs. paged (page-turn) reading. Below the
-			     type controls — it's a mode switch, changed far less often than size
-			     or spacing. Listening (voice + speed) lives in Settings → Reading.
-			     Only rendered where the surface actually implements paged mode. -->
-			{#if layout}
-			<div class="mt-3 border-t border-border pt-3">
-				<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.layout')}</span>
-				<div class="grid grid-cols-2 gap-1">
-					<button
-						class="rc-opt rounded-sm border px-2 py-1.5 text-small"
-						class:border-accent={!readerPrefs.paged}
-						class:text-accent={!readerPrefs.paged}
-						class:border-border-strong={readerPrefs.paged}
-						class:text-muted={readerPrefs.paged}
-						onclick={() => readerPrefs.setPaged(false)}
-						aria-pressed={!readerPrefs.paged}>{t('reader.layoutScroll')}</button
-					>
-					<button
-						class="rc-opt rounded-sm border px-2 py-1.5 text-small"
-						class:border-accent={readerPrefs.paged}
-						class:text-accent={readerPrefs.paged}
-						class:border-border-strong={!readerPrefs.paged}
-						class:text-muted={!readerPrefs.paged}
-						onclick={() => readerPrefs.setPaged(true)}
-						aria-pressed={readerPrefs.paged}>{t('reader.layoutPage')}</button
-					>
-				</div>
-				<!-- Scroll-mode only: page mode already turns on a tap (left/right).
-				     A single opt-in toggle, off by default — tapping the lower screen
-				     scrolls down a page. -->
-				{#if !readerPrefs.paged}
-					<button
-						class="rc-opt mt-1.5 w-full rounded-sm border px-2 py-1.5 text-small"
-						class:border-accent={readerPrefs.tapToScroll}
-						class:text-accent={readerPrefs.tapToScroll}
-						class:border-border-strong={!readerPrefs.tapToScroll}
-						class:text-muted={!readerPrefs.tapToScroll}
-						onclick={() => readerPrefs.setTapToScroll(!readerPrefs.tapToScroll)}
-						aria-pressed={readerPrefs.tapToScroll}>{t('reader.tapScroll')}</button
-					>
-				{/if}
-			</div>
-			{/if}
+{#snippet panelBody()}
+	<!-- Live preview: the chapter's own opening line, restyled as the
+	     controls change, so a size/spacing/typeface choice shows its
+	     effect on the real prose before you close the panel. -->
+	{#if sample}
+		<!-- `reading` supplies the face/size/leading from the same custom
+		     properties the article consumes (one definition, in app.css);
+		     `dir="auto"` because this is content prose inside localized
+		     chrome — see readerDirection.test.ts. -->
+		<!-- Kept on one source line: readerDirection.test.ts matches
+		     `rc-preview mb-3` and dir="auto" on the same line. -->
+		<div class="reading rc-preview mb-3" style="{readerPrefs.style}; text-align: {cssAlign(activeAlign)}" dir="auto" aria-hidden="true">
+			{sample}
 		</div>
 	{/if}
-</div>
+
+	<!-- Font size -->
+	<div class="mb-3 flex items-center justify-between">
+		<span class="text-small font-semibold text-text">{t('reader.size')}</span>
+		<div class="flex items-center gap-1">
+			<button
+				class="btn btn-sm btn-ghost"
+				onclick={() => readerPrefs.bumpScale(-0.1)}
+				aria-label={t('a11y.smallerText')}>A−</button
+			>
+			<span class="w-10 text-center text-small text-muted"
+				>{Math.round(readerPrefs.scale * 100)}%</span
+			>
+			<button
+				class="btn btn-sm btn-ghost text-body"
+				onclick={() => readerPrefs.bumpScale(0.1)}
+				aria-label={t('a11y.largerText')}>A+</button
+			>
+		</div>
+	</div>
+
+	<!-- Theme -->
+	<div class="mb-3">
+		<span class="mb-1.5 block text-small font-semibold text-text">{t('nav.theme')}</span>
+		<div class="grid grid-cols-3 gap-1">
+			{#each THEMES as o (o.v)}
+				<button
+					class="rc-opt rounded-sm border px-2 py-1.5 text-small"
+					class:border-accent={theme.current === o.v}
+					class:text-accent={theme.current === o.v}
+					class:border-border-strong={theme.current !== o.v}
+					class:text-muted={theme.current !== o.v}
+					onclick={() => theme.set(o.v)}
+					aria-pressed={theme.current === o.v}>{t(o.k)}</button
+				>
+			{/each}
+		</div>
+	</div>
+
+	<!-- Leading -->
+	<div class="mb-3">
+		<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.spacing')}</span>
+		<div class="grid grid-cols-3 gap-1">
+			{#each LEADINGS as o (o.v)}
+				<button
+					class="rc-opt rounded-sm border px-2 py-1.5 text-small"
+					class:border-accent={readerPrefs.leading === o.v}
+					class:text-accent={readerPrefs.leading === o.v}
+					class:border-border-strong={readerPrefs.leading !== o.v}
+					class:text-muted={readerPrefs.leading !== o.v}
+					onclick={() => readerPrefs.setLeading(o.v)}
+					aria-pressed={readerPrefs.leading === o.v}>{t(o.k)}</button
+				>
+			{/each}
+		</div>
+	</div>
+
+	<!-- Measure / width. Not in the phone sheet: every measure is wider than a
+	     phone there, so all four choices would render the same column. -->
+	{#if !sheet}
+	<div class="mb-3">
+		<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.width')}</span>
+		<div class="grid grid-cols-2 gap-1">
+			{#each MEASURES as o (o.v)}
+				<button
+					class="rc-opt rounded-sm border px-2 py-1.5 text-small"
+					class:border-accent={readerPrefs.measure === o.v}
+					class:text-accent={readerPrefs.measure === o.v}
+					class:border-border-strong={readerPrefs.measure !== o.v}
+					class:text-muted={readerPrefs.measure !== o.v}
+					onclick={() => readerPrefs.setMeasure(o.v)}
+					aria-pressed={readerPrefs.measure === o.v}>{t(o.k)}</button
+				>
+			{/each}
+		</div>
+	</div>
+	{/if}
+
+	<!-- Margins: the column's side gutters in scroll mode. Width sets how
+	     wide the text runs; this is the space between it and the screen
+	     edge — the knob a tablet reader reaches for when the column floats.
+	     Only where the surface honours it (`margins`), and not in page
+	     mode, which zeroes the article padding and keeps its own gutters. -->
+	{#if margins && !readerPrefs.paged}
+	<div class="mb-3">
+		<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.margins')}</span>
+		<div class="grid grid-cols-3 gap-1">
+			{#each MARGINS as o (o.v)}
+				<button
+					class="rc-opt rounded-sm border px-2 py-1.5 text-small"
+					class:border-accent={readerPrefs.margin === o.v}
+					class:text-accent={readerPrefs.margin === o.v}
+					class:border-border-strong={readerPrefs.margin !== o.v}
+					class:text-muted={readerPrefs.margin !== o.v}
+					onclick={() => readerPrefs.setMargin(o.v)}
+					aria-pressed={readerPrefs.margin === o.v}>{t(o.k)}</button
+				>
+			{/each}
+		</div>
+	</div>
+	{/if}
+
+	<!-- Typeface -->
+	<div>
+		<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.typeface')}</span>
+		<!-- Each option is set in its own face: a typeface is chosen by looking
+		     at it. That fetches each face's latin file the first time the panel
+		     opens (nothing before), which is the price of a preview. -->
+		<div class="grid grid-cols-2 gap-1">
+			{#each READER_FONTS as v (v)}
+				<button
+					class="rc-opt truncate rounded-sm border px-2 py-1.5 text-small"
+					class:border-accent={readerPrefs.font === v}
+					class:text-accent={readerPrefs.font === v}
+					class:border-border-strong={readerPrefs.font !== v}
+					class:text-muted={readerPrefs.font !== v}
+					style:font-family={FONT_STACK[v]}
+					onclick={() => readerPrefs.setFont(v)}
+					aria-pressed={readerPrefs.font === v}>{fontLabel(v, FONT_KINDS)}</button
+				>
+			{/each}
+		</div>
+	</div>
+
+	<!-- Text alignment -->
+	<div class="mt-3">
+		<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.alignment')}</span>
+		<div class="grid grid-cols-2 gap-1">
+			{#each ALIGNMENTS as o (o.v)}
+				<button
+					class="rc-opt rounded-sm border px-2 py-1.5 text-small"
+					class:border-accent={activeAlign === o.v}
+					class:text-accent={activeAlign === o.v}
+					class:border-border-strong={activeAlign !== o.v}
+					class:text-muted={activeAlign !== o.v}
+					onclick={() => readerPrefs.setAlign(o.v)}
+					aria-pressed={activeAlign === o.v}>{t(o.k)}</button
+				>
+			{/each}
+		</div>
+	</div>
+
+	<!-- Layout: continuous scroll vs. paged (page-turn) reading. Below the
+	     type controls — it's a mode switch, changed far less often than size
+	     or spacing. Listening (voice + speed) lives in Settings → Reading.
+	     Only rendered where the surface actually implements paged mode. -->
+	{#if layout}
+	<div class="mt-3 border-t border-border pt-3">
+		<span class="mb-1.5 block text-small font-semibold text-text">{t('reader.layout')}</span>
+		<div class="grid grid-cols-2 gap-1">
+			<button
+				class="rc-opt rounded-sm border px-2 py-1.5 text-small"
+				class:border-accent={!readerPrefs.paged}
+				class:text-accent={!readerPrefs.paged}
+				class:border-border-strong={readerPrefs.paged}
+				class:text-muted={readerPrefs.paged}
+				onclick={() => readerPrefs.setPaged(false)}
+				aria-pressed={!readerPrefs.paged}>{t('reader.layoutScroll')}</button
+			>
+			<button
+				class="rc-opt rounded-sm border px-2 py-1.5 text-small"
+				class:border-accent={readerPrefs.paged}
+				class:text-accent={readerPrefs.paged}
+				class:border-border-strong={!readerPrefs.paged}
+				class:text-muted={!readerPrefs.paged}
+				onclick={() => readerPrefs.setPaged(true)}
+				aria-pressed={readerPrefs.paged}>{t('reader.layoutPage')}</button
+			>
+		</div>
+		<!-- Scroll-mode only: page mode already turns on a tap (left/right).
+		     A single opt-in toggle, off by default — tapping the lower screen
+		     scrolls down a page. -->
+		{#if !readerPrefs.paged}
+			<button
+				class="rc-opt mt-1.5 w-full rounded-sm border px-2 py-1.5 text-small"
+				class:border-accent={readerPrefs.tapToScroll}
+				class:text-accent={readerPrefs.tapToScroll}
+				class:border-border-strong={!readerPrefs.tapToScroll}
+				class:text-muted={!readerPrefs.tapToScroll}
+				onclick={() => readerPrefs.setTapToScroll(!readerPrefs.tapToScroll)}
+				aria-pressed={readerPrefs.tapToScroll}>{t('reader.tapScroll')}</button
+			>
+		{/if}
+	</div>
+	{/if}
+{/snippet}
+
+{#if sheet}
+	<DrawerShell bind:open={readerUi.panelOpen} title={t('reader.textSettings')} placement="bottom">
+		<div class="rc-sheet">{@render panelBody()}</div>
+	</DrawerShell>
+{:else}
+	<div
+		class="relative"
+		use:dismissable={{ open: open.value, onDismiss: () => (open.value = false) }}
+	>
+		<button
+			class="btn btn-sm btn-ghost"
+			onclick={() => (open.value = !open.value)}
+			aria-haspopup="dialog"
+			aria-expanded={open.value}
+			aria-label={t('reader.textSettings')}
+		>
+			<span class="font-display">A</span><span class="text-small">a</span>
+		</button>
+
+		{#if open.value}
+			<div
+				class="absolute end-0 z-30 mt-2 max-h-[70vh] w-64 overflow-y-auto rounded-card border border-border bg-surface p-4 shadow-lg"
+				role="dialog"
+				aria-label={t('reader.textSettings')}
+			>
+				{@render panelBody()}
+			</div>
+		{/if}
+	</div>
+{/if}
 
 <style>
 	/* Face, size and leading come from the global `.reading` (app.css) — the one
@@ -349,5 +375,25 @@
 		padding: 0.35rem 0.5rem;
 		border-radius: var(--radius-sm);
 		background: var(--surface-2);
+	}
+
+	/* --- Phone bottom sheet (`sheet`): the body inside DrawerShell. ------- */
+	.rc-sheet {
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		padding: 1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
+	}
+	/* Thumb-sized choices: the popover's compact rows are ~30px, under the
+	   44px a finger needs. */
+	.rc-sheet .rc-opt,
+	.rc-sheet .btn {
+		min-height: 2.75rem;
+	}
+	/* Wrap, don't truncate: the popover's `truncate` cut "Atkinson Hyperlegible"
+	   — the very face offered for readers who struggle with letterforms. */
+	.rc-sheet .rc-opt {
+		font-size: var(--fs-body);
+		line-height: 1.2;
+		white-space: normal;
 	}
 </style>

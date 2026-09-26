@@ -23,6 +23,7 @@
 		ariaLabel = title,
 		width,
 		autoFocus = true,
+		placement = 'end',
 		titleArea,
 		headerExtra,
 		children
@@ -41,6 +42,12 @@
 		width?: string;
 		/** Skip auto-focus-in when the drawer focuses a field of its own. */
 		autoFocus?: boolean;
+		/**
+		 * `end` slides in from the reading-direction end (the default);
+		 * `bottom` is a phone bottom sheet — full width, rounded top, a grab
+		 * handle, capped at 85vh with its body scrolling.
+		 */
+		placement?: 'end' | 'bottom';
 		/** Custom title block (e.g. title + subtitle), replacing `title`. */
 		titleArea?: Snippet;
 		/** Extra header content below the title row (e.g. a search field). */
@@ -76,12 +83,16 @@
 	     on close, and handles Escape while focus is inside. -->
 	<div
 		class="drawer-panel"
+		class:bottom={placement === 'bottom'}
 		role="dialog"
 		aria-modal="true"
 		aria-label={ariaLabel}
 		style={width ? `--drawer-width: ${width}` : undefined}
 		use:focusTrap={{ onEscape: close, autoFocus }}
 	>
+		{#if placement === 'bottom'}
+			<div class="drawer-handle" aria-hidden="true"></div>
+		{/if}
 		<header class="border-b border-border px-5 py-4">
 			<div class="flex items-center justify-between gap-3">
 				{#if titleArea}
@@ -126,6 +137,30 @@
 	:global([dir='rtl']) .drawer-panel {
 		box-shadow: 12px 0 40px rgb(0 0 0 / 0.25);
 		--drawer-slide-from: -1.5rem;
+	}
+	.drawer-panel.bottom {
+		top: auto;
+		inset-inline: 0;
+		width: auto;
+		max-height: 85vh;
+		border-inline-start: 0;
+		border-top: 1px solid var(--border);
+		border-radius: 1.25rem 1.25rem 0 0;
+		box-shadow: 0 -12px 40px rgb(0 0 0 / 0.25);
+		animation-name: sheet-in;
+	}
+	.drawer-handle {
+		width: 2.4rem;
+		height: 0.25rem;
+		margin: 0.5rem auto 0;
+		border-radius: 999px;
+		background: var(--border-strong);
+	}
+	@keyframes sheet-in {
+		from {
+			transform: translateY(2rem);
+			opacity: 0;
+		}
 	}
 	@keyframes drawer-in {
 		from {
