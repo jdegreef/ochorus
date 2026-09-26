@@ -2,11 +2,13 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Article, ArticleRelated } from '$lib/library-public';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
-	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/href';
 	import { locales } from '$lib/paraglide/runtime';
 	import { portraitSrcset } from '$lib/portraits';
-	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
+	import { jsonLd, breadcrumbLd } from '$lib/seo';
+	import { getLang } from '$lib/lang.svelte';
+	import { editionSeo, languageFallback } from '$lib/languageFallback';
+	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { readingTime } from '$lib/reading';
 	import Seo from '$lib/components/Seo.svelte';
@@ -47,8 +49,11 @@
 	// translated article would deindex it. Articles are per-language rows with no
 	// English fallback, so hreflang lists only the locales this article exists in.
 	const path = $derived(`/articles/${article.slug}/`);
-	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	const hreflang = $derived(hreflangFor(path, article.available_languages));
+	// A missing edition renders the English one (see languageFallback).
+	const fallback = $derived(languageFallback(getLang(), article.language));
+	const seo = $derived(editionSeo(path, article.available_languages, fallback));
+	const hreflang = $derived(seo.hreflang);
+	const canonical = $derived(seo.canonical);
 
 	// A real description from the standfirst, falling back to the opening prose.
 	const metaDescription = $derived(
@@ -109,6 +114,7 @@
 
 <div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
+	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/articles" />
 
 	<!-- The prose column answers to the reader's text settings (the A a popover:
 	     measure, size, face, leading), exactly as the sermon page and the author

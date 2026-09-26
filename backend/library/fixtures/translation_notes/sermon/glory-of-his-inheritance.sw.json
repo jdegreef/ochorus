@@ -1,0 +1,245 @@
+{
+ "kind": "sermon",
+ "slug": "glory-of-his-inheritance",
+ "language": "sw",
+ "job_issue": 4025,
+ "pull_request": 4037,
+ "references": [
+  {
+   "reference": "Ephesians 1:15",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Ephesians 1:16",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Ephesians 1:17",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Ephesians 1:18a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Ephesians 1:18b",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "1 John 2:13a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 2:14b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 2:49",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Hebrews 11:26",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Philippians 2:9-11",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Luke 10:17",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Revelation 1:18b",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:8",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 17:5",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Psalm 110:1",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Hebrews 1:1",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Hebrews 1:2",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "Revelation 4:11",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Revelation 5:1",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Revelation 5:4",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Revelation 5:5",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Revelation 5:6",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Revelation 5:9-10",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Revelation 5:12",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Exodus 20:3",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Hebrews 1:9",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Jude 1:24",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Romans 8:17",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Peter 1:3",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Peter 1:4a",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:4b",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Revelation 21:7",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Hebrews 1:14",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Colossians 1:12",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "self_rendered",
+   "block_index": 43
+  }
+ ]
+}

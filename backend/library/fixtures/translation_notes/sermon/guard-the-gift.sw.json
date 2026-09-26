@@ -1,0 +1,144 @@
+{
+ "kind": "sermon",
+ "slug": "guard-the-gift",
+ "language": "sw",
+ "job_issue": 4027,
+ "pull_request": 4037,
+ "references": [
+  {
+   "reference": "Isaiah 40:28-31",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Isaiah 40:31b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "Psalm 103:1-4",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "Psalm 103:5",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Matthew 11:28a",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:12a",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Numbers 4:15b",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "2 Kings 4:1-2",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "2 Kings 4:3-7",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Psalm 121:1",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Matthew 4:19b",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Ephesians 4:9-10",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Ephesians 4:11",
+   "status": "mined",
+   "block_index": 59,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "Romans 12:3b",
+   "status": "self_rendered",
+   "block_index": 61
+  },
+  {
+   "reference": "Romans 12:4-5",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Romans 12:6a",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "Romans 12:6b-8",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Romans 12:9a",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "1 Corinthians 12:4-6",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "1 Corinthians 12:7",
+   "status": "mined",
+   "block_index": 63,
+   "source_file": "baptism-with-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 12:8-10a",
+   "status": "self_rendered",
+   "block_index": 63
+  }
+ ]
+}

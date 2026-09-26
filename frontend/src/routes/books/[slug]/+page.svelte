@@ -17,11 +17,12 @@
 		jsonLd,
 		breadcrumbLd,
 		pickQa,
-		hreflangFor,
 		truncateMeta,
 		topicThings
 	} from '$lib/seo';
 	import QandA from '$lib/components/QandA.svelte';
+	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
+	import { editionSeo, languageFallback } from '$lib/languageFallback';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { getLang, localeName } from '$lib/lang.svelte';
@@ -131,8 +132,11 @@
 	// rows with no English fallback, so hreflang lists only the locales this book
 	// actually exists in — see hreflangFor.
 	const path = $derived(`/books/${book.slug}/`);
-	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	const hreflang = $derived(hreflangFor(path, book.available_languages));
+	// A missing edition renders the English one (see languageFallback).
+	const fallback = $derived(languageFallback(getLang(), book.language));
+	const seo = $derived(editionSeo(path, book.available_languages, fallback));
+	const hreflang = $derived(seo.hreflang);
+	const canonical = $derived(seo.canonical);
 	// Localized fallback, not an English literal: this page prerenders per locale,
 	// so a work without a description was shipping an English <meta description>
 	// and og:description at its /sw, /ar, … URL. Mirrors author.metaFallback.
@@ -368,6 +372,8 @@
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
 	<Breadcrumb items={crumbs} />
+
+	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
 		<!-- One component decides what a cover is. This page used to branch on
@@ -776,7 +782,8 @@
 	     via Paraglide, and a client-side nav reroutes /es/books/x/ to the SAME
 	     route and params while getLang() still reads the old URL — so the reader
 	     landed on the English edition under a Spanish address. -->
-	{#if siblingEditions.length}
+	<!-- On a fallback page the notice above already lists these. -->
+	{#if siblingEditions.length && !fallback}
 		<section class="mt-12">
 			<h2 class="section-heading">{t('book.readInLanguage')}</h2>
 			<div class="mt-3 flex flex-wrap items-center gap-2">

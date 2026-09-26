@@ -1,0 +1,91 @@
+{
+ "kind": "sermon",
+ "slug": "guard-the-fire",
+ "language": "sw",
+ "job_issue": 4026,
+ "pull_request": 4037,
+ "references": [
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 20:25",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 24:39",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 20:21",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "John 20:22",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Exodus 3:7",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Exodus 32:10b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Exodus 33:2a",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "Exodus 33:20a",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Acts 6:3",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "self_rendered",
+   "block_index": 57
+  }
+ ]
+}
