@@ -272,6 +272,13 @@ describe('marks.anchorLegacy', () => {
 		expect(marks.list[0].q).toBe('Grace');
 	});
 
+	it('leaves an untagged (pre-edition) mark alone — its edition is unknown', () => {
+		localStorage.setItem('ochorus:marks', JSON.stringify({ 'humility:1': { m: [{ id: 'old', p: 0, s: 0, e: 5 }] } }));
+		marks.load('humility', 1, 'es', 'book');
+		marks.anchorLegacy('humility:1', 'es', ['Gracia sobre gracia.']);
+		expect(marks.list[0].q).toBeUndefined();
+	});
+
 	it("ignores text from a chapter or edition it hasn't loaded", () => {
 		marks.load('humility', 1, 'en', 'book');
 		marks.add([{ p: 0, s: 0, e: 5 }]);

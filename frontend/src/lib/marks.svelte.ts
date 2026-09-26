@@ -200,7 +200,9 @@ class Marks {
 		if (key !== this.key || language !== this.#language) return false;
 		let changed = false;
 		const next = this.list.map((m) => {
-			if (m.q) return m;
+			// Only a mark tagged with this edition: an untagged (pre-edition) one
+			// is shown in every edition, so its words can't be taken from this one.
+			if (m.q || m.lang !== language) return m;
 			const q = quoteOf(paras[m.p] ?? '', m.s, m.e);
 			if (!q.trim()) return m;
 			changed = true;

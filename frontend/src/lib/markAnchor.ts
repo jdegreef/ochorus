@@ -11,9 +11,14 @@ import type { Mark } from './reading-schema';
  * the mark's identity in the server's merge — so this runs per render.
  */
 
-/** How much of a highlight's text is kept to find it again: enough to be
- *  unambiguous in a chapter, little enough not to bloat every sync. */
-export const QUOTE_MAX = 64;
+/** How much of a highlight's text is kept to find it again — the whole of a
+ *  typical highlight, so an edit anywhere in it is noticed, capped so a long
+ *  one doesn't bloat every sync. */
+export const QUOTE_MAX = 200;
+
+/** An anchor shorter than this (a word or two) is too common to look for
+ *  beyond its own block: another 'grace' two paragraphs on is not it. */
+const SHORT_ANCHOR = 12;
 
 /** Blocks either side of the stored one searched, nearest first — a split or
  *  merged paragraph shifts indices by a few, not dozens. */
@@ -36,7 +41,7 @@ export function quoteOf(text: string, s: number, e: number): string {
  */
 export function resolveMark(paras: string[], m: Mark): Mark | null {
 	if (!m.q || paras[m.p]?.startsWith(m.q, m.s)) return m;
-	for (const d of SEARCH_ORDER) {
+	for (const d of m.q.length < SHORT_ANCHOR ? [0] : SEARCH_ORDER) {
 		const text = paras[m.p + d];
 		if (text === undefined) continue;
 		let best = -1;

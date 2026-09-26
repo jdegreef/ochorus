@@ -26,8 +26,8 @@ describe('resolveMark', () => {
 
 	it('follows its words into a neighbouring block when a paragraph was split', () => {
 		const split = ['In the beginning', 'was the Word.', paras[1]];
-		const m = mark(1, 22, 25, 'God'); // block 1 was "And the Word…"; now block 2
-		expect(resolveMark(split, m)).toMatchObject({ p: 2, s: 22, e: 25 });
+		const m = mark(1, 13, 25, 'was with God'); // block 1 was "And the Word…"; now block 2
+		expect(resolveMark(split, m)).toMatchObject({ p: 2, s: 13, e: 25 });
 	});
 
 	it('prefers the occurrence nearest its old offset', () => {
@@ -40,6 +40,11 @@ describe('resolveMark', () => {
 	it('detaches a mark whose words are gone rather than painting other text', () => {
 		const rewritten = ['Something else entirely.', 'Nothing here either.'];
 		expect(resolveMark(rewritten, mark(1, 8, 12, 'Word'))).toBeNull();
+	});
+
+	it('looks for a short anchor only in its own block', () => {
+		const repaired = ['Nothing here.', 'But Word is here.'];
+		expect(resolveMark(repaired, mark(0, 4, 8, 'Word'))).toBeNull();
 	});
 
 	it('keeps a to-the-end mark to the end', () => {
