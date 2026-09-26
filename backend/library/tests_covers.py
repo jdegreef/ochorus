@@ -425,6 +425,25 @@ class CuratedArtTests(TestCase):
             with self.subTest(slug=slug):
                 self.assertIn(art.source, FETCHERS, f"no fetcher for {art.source!r}")
 
+    def test_no_painting_is_given_to_two_works(self):
+        """One museum object, one work. A painting is chosen for what it says
+        about ONE book, and two books wearing it read as the same book on a
+        shelf. It happened once and stood unnoticed for weeks: #1771 gave
+        `spurgeon-on-prayer` the Achenbach `till-he-come` had worn since #1027,
+        on the same author's shelf, and every gate stayed green."""
+        from library.curated_art import CURATED, CURATED_GROUND
+
+        seen: dict[tuple[str, int], str] = {}
+        for slug, art in {**CURATED, **CURATED_GROUND}.items():
+            key = (art.source, art.object_id)
+            with self.subTest(slug=slug):
+                self.assertIsNone(
+                    seen.get(key),
+                    f"{art.source} {art.object_id} ({art.title}) is already "
+                    f"`{seen.get(key)}`'s painting — pick another",
+                )
+            seen.setdefault(key, slug)
+
 
     def test_the_three_cover_tiers_answer_the_two_questions_differently(self):
         """The tier predicates, exercised on a member of each.

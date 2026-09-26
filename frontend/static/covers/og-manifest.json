@@ -1125,14 +1125,14 @@
 			"bar": 0
 		},
 		"es/spurgeon-on-prayer": {
-			"ground": "0a7c45d0b711e3bcc04eafdfd275c8d78dc6f5ea3229fd670315f1b1b4e4fa2c",
+			"ground": "f80164604cd7572716dd06d9c11004d97cf4ac199d0e4e33b63b1f38fe29a405",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.85,
 			"layout": "band/oxblood",
-			"bar": 0.04
+			"bar": 0
 		},
 		"es/stepping-stones-2": {
 			"ground": "749d6f5a833786c7e87f8fbbbf1356d49edf7cca167ce6770ae7855b20d99cb8",
@@ -1315,13 +1315,13 @@
 			"bar": 0
 		},
 		"evening-by-evening": {
-			"ground": "a11948e962d19f4077474d1040d7e3f26d58b21c0a11de74e4987242488e3483",
+			"ground": "461b50ae35f5fd23fdb2874c96967f0d670aaabce700b584ee11c26a3047bc47",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"ever-increasing-faith": {
@@ -2145,14 +2145,14 @@
 			"bar": 0
 		},
 		"hi/spurgeon-on-prayer": {
-			"ground": "ef3a333a0110ddd4c0266a7b4de0b0461ff4f41b3b7692e5e86203ebe207465e",
+			"ground": "7e3a4b668e9938d553592b7161fbd6f7381ac0f88803c806fe8a7795e1e88b41",
 			"style": "revival",
 			"volume": null,
 			"script": "devanagari",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.85,
 			"layout": "band/oxblood",
-			"bar": 0.04
+			"bar": 0
 		},
 		"hi/stepping-stones-2": {
 			"ground": "a709e7762f009d72e1f65041bf925ceaa7f9d1a35eb6a536cfaca98f5f15afbb",
@@ -2775,13 +2775,13 @@
 			"bar": 0
 		},
 		"morning-by-morning": {
-			"ground": "95aada7485696386dbad2c3738f482ddc807b3fd27ad99c9f64eda721b145096",
+			"ground": "6f8840b6efce1b41471ff2cb8cee16d32f9eb35926cf3886158827cb493500e6",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"mortification-of-sin": {
@@ -3185,14 +3185,14 @@
 			"bar": 0
 		},
 		"pt/spurgeon-on-prayer": {
-			"ground": "45e72f90b2c861c4a31aad5059cfe51bb0d8486cd59bc34954390a9e7cb3d6fe",
+			"ground": "ba81fd6cdb6f6bd4442d918b93eb2ee397ea0a5c161cccc1bf81b2dbf4b600cf",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.85,
 			"layout": "band/oxblood",
-			"bar": 0.04
+			"bar": 0
 		},
 		"pt/stepping-stones-2": {
 			"ground": "b0ee0420ec8fe0487b27924192738b7b4b5313b1963d17a0e6f3979363639f7d",
@@ -3565,14 +3565,14 @@
 			"bar": 0
 		},
 		"spurgeon-on-prayer": {
-			"ground": "ca182666c92fe4b62928fa74cacacdf3495b0906d51a09507a0a5b96b32dc06f",
+			"ground": "01c102b43a408ef9cac58d20bcde892a01d65cfab95db7a96caaad057f3b7f21",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.85,
 			"layout": "band/oxblood",
-			"bar": 0.04
+			"bar": 0
 		},
 		"susanna-wesley-clarke": {
 			"ground": "6951faa8a60fc830729da35de67d522c9460432498c712a38726b10a132065c4",
@@ -3985,14 +3985,14 @@
 			"bar": 0
 		},
 		"sw/spurgeon-on-prayer": {
-			"ground": "aa77124cfcc5364def9847e26a949210b8d06fafae811e3ba73a83e6a2ea18ab",
+			"ground": "9803c4dd95e386962c83afe050deecf557bd156761e37a46b69986a3478b5de9",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.85,
 			"layout": "band/oxblood",
-			"bar": 0.04
+			"bar": 0
 		},
 		"sw/stepping-stones-2": {
 			"ground": "127f1ecf4732c67f04f5493e944a456f4550e0842b0aa07b149606675d3b1367",
@@ -4605,14 +4605,14 @@
 			"bar": 0
 		},
 		"uk/spurgeon-on-prayer": {
-			"ground": "1bed501f567056b8f26c09a2ba5ec0074fe69ea21432e686996043cb5fb346d9",
+			"ground": "0ef593b96a92e9f254924a55f2a53d6d74d6dd9b178722f179e5d11a988e0325",
 			"style": "revival",
 			"volume": null,
 			"script": "cyrillic",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.85,
 			"layout": "band/oxblood",
-			"bar": 0.04
+			"bar": 0
 		},
 		"uk/stepping-stones-2": {
 			"ground": "c41017037413da4a9543d13901c454d70ac7d67c41d8e5596813d50df3be38fe",
