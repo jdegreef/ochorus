@@ -164,6 +164,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/true-vine": {
+			"ground": "2287250c00d7070c14685a5591b74a48f314bedf2a288561463a236fbe5f907e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"amanda-smith-autobiography": {
 			"ground": "aa4cc11c5427d667a4a86ff334ec4bc11d306a55e8dd70f6631e589785737d50",
 			"style": "revival",
