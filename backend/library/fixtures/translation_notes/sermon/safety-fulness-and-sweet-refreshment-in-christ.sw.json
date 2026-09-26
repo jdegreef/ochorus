@@ -1,0 +1,243 @@
+{
+ "kind": "sermon",
+ "slug": "safety-fulness-and-sweet-refreshment-in-christ",
+ "language": "sw",
+ "job_issue": 3981,
+ "references": [
+  {
+   "reference": "Isaiah 32:2",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "every-mans-need-of-a-refuge.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:11-12",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Isaiah 32:2a",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Isaiah 32:2a",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 32:2b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "every-mans-need-of-a-refuge.sw.json"
+  },
+  {
+   "reference": "Isaiah 32:2b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "every-mans-need-of-a-refuge.sw.json"
+  },
+  {
+   "reference": "Isaiah 32:2a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Psalm 125:2",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Genesis 2:17b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Genesis 2:17",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Deuteronomy 33:26-27a",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Psalm 56:3",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalm 56:4",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Psalm 63:1",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Psalm 143:6",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Psalm 4:6",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Proverbs 30:15",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Isaiah 55:2",
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "John 7:37b",
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Ephesians 2:13",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Ephesians 2:18",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Ephesians 2:19",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "John 10:9",
+   "status": "mined",
+   "block_index": 53,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 7:37",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Psalm 55:6-8",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "Song of Solomon 2:3b",
+   "status": "mined",
+   "block_index": 64,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "Romans 10:6a",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Romans 10:6b-8",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "Isaiah 61:1a",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Isaiah 61:1b",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Genesis 3:15a",
+   "status": "mined",
+   "block_index": 72,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalm 22:12-13",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Galatians 3:27",
+   "status": "mined",
+   "block_index": 82,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "John 6:48-51",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Psalm 90:1",
+   "status": "mined",
+   "block_index": 84,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Colossians 3:11",
+   "status": "self_rendered",
+   "block_index": 85
+  }
+ ]
+}

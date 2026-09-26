@@ -1,0 +1,165 @@
+{
+ "kind": "sermon",
+ "slug": "the-training-of-children",
+ "language": "sw",
+ "job_issue": 3986,
+ "references": [
+  {
+   "reference": "Psalms 127:3a",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Ephesians 6:4b",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "baptism-with-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Proverbs 29:15b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Jeremiah 13:23",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "1 Samuel 3:13b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Hosea 8:7a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Genesis 18:19a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Genesis 18:19b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Psalms 58:3",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Proverbs 28:13a",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Numbers 32:23b",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:15b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Acts 2:39a",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "1 Corinthians 12:6a",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Mark 10:14b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 19:14b",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "John 6:68a",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:15a",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Matthew 6:32a",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Matthew 6:33a",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Acts 17:26b",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Psalms 47:4a",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Galatians 6:7a",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Galatians 6:8a",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "1 Timothy 6:10a",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Genesis 42:38b",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Ephesians 5:11a",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Proverbs 20:1a",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Proverbs 5:5b",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "1 Timothy 6:6",
+   "status": "self_rendered",
+   "block_index": 48
+  }
+ ]
+}

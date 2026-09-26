@@ -1,0 +1,240 @@
+{
+ "kind": "sermon",
+ "slug": "the-sinners-friend",
+ "language": "sw",
+ "job_issue": 3984,
+ "references": [
+  {
+   "reference": "Matthew 11:19b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 15:24b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 40:2a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "waiting-on-god.sw.json"
+  },
+  {
+   "reference": "Matthew 8:17b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 4:29",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 19:5b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 23:37",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 15:24b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 23:13a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "Matthew 12:31a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 2:11b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 22:44b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:20",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 23:34a",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:9a",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Isaiah 53:12b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 John 4:10a",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 5:8b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 5:6b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 15:13",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Romans 4:25b",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 24:7",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 68:18a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 68:18b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Acts 5:31b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hosea 13:9",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Luke 9:56a",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "John 3:17b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 20:28b",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Luke 13:7b",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Luke 13:8-9",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 Corinthians 9:16b",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Acts 9:15a",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Luke 7:42a",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Isaiah 1:18b",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Matthew 25:21b",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Hebrews 13:5b",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Isaiah 41:10a",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Jeremiah 31:3b",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Revelation 15:2a",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "1 Timothy 1:15b",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "self_rendered",
+   "block_index": 59
+  }
+ ]
+}
