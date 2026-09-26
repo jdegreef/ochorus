@@ -482,6 +482,33 @@ describe('readingSync — nothing lost at sign-out', () => {
 		expect(localStorage.getItem(SYNC_STASH_KEY)).toBeNull();
 	});
 
+	it('settle waits for a push already on the wire', async () => {
+		let release!: (r: Response) => void;
+		vi.spyOn(globalThis, 'fetch').mockImplementation(() => new Promise((r) => (release = r)));
+		readingSync.setSignedIn(true);
+		readingSync.pushSessionsNow([{ client_id: 's1', started_at: 1, ended_at: 2, seconds: 1 } as never]);
+		expect(readingSync.hasUnsynced()).toBe(true);
+		const settled = readingSync.settle();
+		release(ok());
+		await expect(settled).resolves.toBe(true);
+	});
+
+	it('a merge keeps a heart toggled while it was in flight', async () => {
+		localStorage.setItem(FAVORITES_KEY, JSON.stringify({}));
+		vi.spyOn(globalThis, 'fetch').mockImplementation(async () => {
+			localStorage.setItem(FAVORITES_KEY, JSON.stringify({ 'book:humility': 7 }));
+			return mergeReply();
+		});
+		readingSync.setSignedIn(true);
+		await readingSync.mergeOnSignIn();
+		expect(JSON.parse(localStorage.getItem(FAVORITES_KEY)!)).toEqual({ 'book:humility': 7 });
+	});
+
+	it('a removal whose DELETE never landed counts as unsynced', () => {
+		addPending('favorite', 'book', 'humility', 5);
+		expect(readingSync.hasUnsynced()).toBe(true);
+	});
+
 	it('nothing is stashed when the account already has everything', () => {
 		localStorage.setItem(MARKS_KEY, JSON.stringify({ 'humility:1': { m: [] } }));
 		readingSync.endSession('a@example.com');

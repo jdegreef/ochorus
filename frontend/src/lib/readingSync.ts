@@ -1,6 +1,7 @@
 import { browser } from '$app/environment';
 import { undo } from './undo.svelte';
 import { apiFetch } from './api';
+import { writeJSON } from './persisted';
 import {
 	mergeServerShelves,
 	toServer as shelfToServer,
@@ -144,9 +145,15 @@ export const JOURNAL_PENDING_EVENT = 'ochorus:journal-pending';
 
 class ReadingSync {
 	signedIn = false;
-	#timers = new Map<string, ReturnType<typeof setTimeout>>();
-	/** The push each pending timer will run, so a sign-out can run it now. */
-	#queued = new Map<string, () => unknown>();
+	/** Pushes waiting on their debounce: the timer, and the push it will run —
+	 *  kept so a sign-out can run it now instead. */
+	#queue = new Map<string, { timer: ReturnType<typeof setTimeout>; fn: () => unknown }>();
+	/** Pushes on the wire. A sign-out waits for these too: one that then fails
+	 *  would record what it owed after the device was already wiped. */
+	#inflight = new Set<Promise<unknown>>();
+	/** The one merge in progress, shared by every caller (sign-in, settle, the
+	 *  online listener) so the whole cache isn't uploaded twice at once. */
+	#merging: Promise<void> | null = null;
 	#flushing = false;
 
 	constructor() {
@@ -161,42 +168,65 @@ class ReadingSync {
 			});
 	}
 
+	/** Track a push until it settles. Every push goes through here. */
+	#track(p: unknown) {
+		if (!(p instanceof Promise)) return;
+		this.#inflight.add(p);
+		void p.finally(() => this.#inflight.delete(p));
+	}
+
 	/** A push failed: the device now holds changes the account doesn't. */
 	#owe() {
-		try {
-			localStorage.setItem(SYNC_OWED_KEY, String(Date.now()));
-		} catch {
-			/* storage full — the next merge still uploads everything */
-		}
+		if (!this.#owed()) writeJSON(SYNC_OWED_KEY, Date.now());
 	}
 
 	#owed(): boolean {
 		return browser && !!localStorage.getItem(SYNC_OWED_KEY);
 	}
 
-	/** Changes on this device the account doesn't have yet: a push still
-	 *  waiting on its debounce, one that failed, or journal entries owed. */
+	/** Changes on this device the account doesn't have yet: a push queued or on
+	 *  the wire, one that failed, journal entries owed, or removals whose DELETE
+	 *  never landed. */
 	hasUnsynced(): boolean {
 		if (!browser) return false;
-		return this.#timers.size > 0 || this.#owed() || Object.keys(this.#pendingJournal()).length > 0;
+		return (
+			this.#queue.size > 0 ||
+			this.#inflight.size > 0 ||
+			this.#owed() ||
+			Object.keys(this.#pendingJournal()).length > 0 ||
+			pendingRemovals().length > 0
+		);
 	}
 
 	/**
 	 * Get everything on this device to the account before the session ends:
-	 * run the pending pushes now instead of on their timers, and if anything is
+	 * run the queued pushes now, wait for those already sent, and if anything is
 	 * still owed, merge (which uploads the whole cache). Resolves true when the
 	 * account has it all — false means signing out now would lose changes.
 	 */
 	async settle(): Promise<boolean> {
-		if (!browser) return true;
-		if (!this.signedIn) return !this.hasUnsynced();
-		const queued = [...this.#queued.values()];
-		for (const timer of this.#timers.values()) clearTimeout(timer);
-		this.#timers.clear();
-		this.#queued.clear();
-		await Promise.all(queued.map((fn) => fn()));
-		if (this.hasUnsynced()) await this.mergeOnSignIn();
+		if (!browser || !this.signedIn) return !this.hasUnsynced();
+		for (const fn of this.#cancelAll()) this.#track(fn());
+		await Promise.allSettled([...this.#inflight]);
+		// Offline, a merge can only fail too — ask the reader straight away.
+		if (this.hasUnsynced() && navigator.onLine !== false) await this.mergeOnSignIn();
 		return !this.hasUnsynced();
+	}
+
+	/** Drop one queued push (a later write supersedes it). */
+	#cancel(key: string) {
+		clearTimeout(this.#queue.get(key)?.timer);
+		this.#queue.delete(key);
+	}
+
+	/** Drop every queued push, handing back what they would have run. */
+	#cancelAll(): (() => unknown)[] {
+		const fns = [...this.#queue.values()].map((q) => {
+			clearTimeout(q.timer);
+			return q.fn;
+		});
+		this.#queue.clear();
+		return fns;
 	}
 
 	setSignedIn(v: boolean) {
@@ -234,16 +264,12 @@ class ReadingSync {
 
 	/** Debounce a push, coalescing rapid updates to the same resource. */
 	#debounce(key: string, fn: () => unknown, ms = 800) {
-		clearTimeout(this.#timers.get(key));
-		this.#queued.set(key, fn);
-		this.#timers.set(
-			key,
-			setTimeout(() => {
-				this.#timers.delete(key);
-				this.#queued.delete(key);
-				fn();
-			}, ms)
-		);
+		this.#cancel(key);
+		const timer = setTimeout(() => {
+			this.#queue.delete(key);
+			this.#track(fn());
+		}, ms);
+		this.#queue.set(key, { timer, fn });
 	}
 
 	/** `?kind=` only for non-book works: book URLs stay byte-identical to the
@@ -296,12 +322,12 @@ class ReadingSync {
 	setFinished(kind: WorkKind, slug: string, rec: ProgressRecord, finished: boolean) {
 		if (!this.signedIn || !browser) return;
 		const key = `p:${workSlugKey(kind, slug)}`;
-		clearTimeout(this.#timers.get(key));
-		this.#timers.delete(key);
-		this.#queued.delete(key);
+		this.#cancel(key);
 		// Finishing sends the stamp (server unions it); un-finishing sends the
 		// explicit clear signal instead — the one thing that clears it.
-		this.#putProgress(kind, slug, rec, finished ? { finished_at: rec.finished_at } : { unfinish: true });
+		this.#track(
+			this.#putProgress(kind, slug, rec, finished ? { finished_at: rec.finished_at } : { unfinish: true })
+		);
 	}
 
 	/**
@@ -388,13 +414,15 @@ class ReadingSync {
 	 *  the final, unflushed seconds of every sitting were lost. */
 	pushSessionsNow(sessions: SessionSync[]) {
 		if (!this.signedIn || !browser || !sessions.length) return;
-		apiFetch('/api/reading/sessions/', {
-			method: 'PUT',
-			body: JSON.stringify({ sessions }),
-			keepalive: true
-		})
-			.then(() => this.#markSynced())
-			.catch(() => this.#owe());
+		this.#track(
+			apiFetch('/api/reading/sessions/', {
+				method: 'PUT',
+				body: JSON.stringify({ sessions }),
+				keepalive: true
+			})
+				.then(() => this.#markSynced())
+				.catch(() => this.#owe())
+		);
 	}
 
 	/** Mirror a heart toggle (kind: author | book | plan | sermon). */
@@ -428,15 +456,13 @@ class ReadingSync {
 	removeProgress(kind: WorkKind, slug: string, at: number) {
 		if (!this.signedIn || !browser) return;
 		const key = `p:${workSlugKey(kind, slug)}`;
-		clearTimeout(this.#timers.get(key));
-		this.#timers.delete(key);
-		this.#queued.delete(key);
-		apiFetch(`/api/reading/progress/${slug}/?kind=${kind}&at=${at}`, { method: 'DELETE' })
+		this.#cancel(key);
+		this.#track(apiFetch(`/api/reading/progress/${slug}/?kind=${kind}&at=${at}`, { method: 'DELETE' })
 			.then(() => {
 				clearPending('progress', kind, slug, at);
 				this.#markSynced();
 			})
-			.catch(() => this.#owe());
+			.catch(() => this.#owe()));
 	}
 
 	/** Mirror a saved bookmark to the account (a paragraph the reader saved). */
@@ -599,8 +625,15 @@ class ReadingSync {
 	 * First-sign-in reconciliation. Sends the local cache to the merge endpoint,
 	 * then overwrites the cache with the merged server truth so both sides agree.
 	 */
-	async mergeOnSignIn() {
-		if (!browser) return;
+	mergeOnSignIn(): Promise<void> {
+		if (!browser) return Promise.resolve();
+		return (this.#merging ??= this.#merge().finally(() => (this.#merging = null)));
+	}
+
+	async #merge() {
+		// Only a failure from before this merge is settled by it: one that lands
+		// while it is out may not be in its payload.
+		const owedAtStart = localStorage.getItem(SYNC_OWED_KEY);
 		// Fold any legacy sermon state in BEFORE building the payload: a merge
 		// that read the cache pre-fold would upload without those marks, and
 		// its response would then overwrite the folded cache — destroying
@@ -732,9 +765,15 @@ class ReadingSync {
 			const serverKnowsKinds = serverRows.some((r) => 'kind' in r);
 			if (sentSermonRows && serverRows.length > 0 && !serverKnowsKinds) return;
 			if (state.journal) this.#confirmJournal(journalSent);
-			this.#writeState(state, localMarks);
+			this.#writeState(state, {
+				[PROGRESS_KEY]: localProgress,
+				[MARKS_KEY]: localMarks,
+				[FAVORITES_KEY]: localFavorites,
+				[BOOKMARKS_KEY]: localBookmarks,
+				[PLANS_KEY]: localPlans
+			});
 			// The account now holds everything this device sent.
-			localStorage.removeItem(SYNC_OWED_KEY);
+			if (localStorage.getItem(SYNC_OWED_KEY) === owedAtStart) localStorage.removeItem(SYNC_OWED_KEY);
 			this.#markSynced();
 			// Whatever didn't fit the merge's share goes now, one entry at a time.
 			if (state.journal) void this.flushJournal();
@@ -760,9 +799,8 @@ class ReadingSync {
 
 	/**
 	 * Wipe ALL of the reader's own data from this device — the settings "clear
-	 * reading data" control. Same set as the sign-out teardown now that every
-	 * store syncs; kept distinct so an intentional erase reads clearly at the call
-	 * site. Device preferences (theme, font, language) survive.
+	 * reading data" control: the sign-out set, plus any stash a session end set
+	 * aside. Device preferences (theme, font, language) survive.
 	 */
 	clearDeviceData() {
 		this.#wipe(READING_DATA_KEYS);
@@ -777,21 +815,17 @@ class ReadingSync {
 	 * merged into anyone else's: a different account signing in discards it.
 	 */
 	endSession(email: string) {
+		const data: Record<string, string> = {};
 		if (browser && email && this.hasUnsynced()) {
-			const data: Record<string, string> = {};
 			for (const key of SIGN_OUT_DATA_KEYS) {
 				const v = localStorage.getItem(key);
 				if (v !== null) data[key] = v;
 			}
-			this.clearOnSignOut();
-			try {
-				localStorage.setItem(SYNC_STASH_KEY, JSON.stringify({ email, at: Date.now(), data }));
-			} catch {
-				/* storage full — the data is lost, as it was before the stash */
-			}
-			return;
 		}
 		this.clearOnSignOut();
+		// After the wipe, so the stash has the room the data had. writeJSON
+		// warns the reader if even that fails.
+		if (Object.keys(data).length) writeJSON(SYNC_STASH_KEY, { email, at: Date.now(), data });
 	}
 
 	/**
@@ -819,20 +853,35 @@ class ReadingSync {
 		// A pending Undo must not resurrect what was just deliberately erased.
 		undo.dismiss();
 		if (!browser) return;
-		for (const timer of this.#timers.values()) clearTimeout(timer);
-		this.#timers.clear();
-		this.#queued.clear();
+		this.#cancelAll();
 		for (const key of keys) localStorage.removeItem(key);
 		// Let open views (reader marks, continue-reading cards, plan pages) know
 		// the cache was emptied underneath them.
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));
 	}
 
-	/** Overwrite the local cache with server state (used after a merge/pull).
-	 *  `sentMarks` is the marks cache as it was sent: a chapter whose marks
-	 *  changed since (a highlight made while the merge was in flight) keeps its
-	 *  local version, which its own queued push carries to the account. */
-	#writeState(state: ServerState, sentMarks: MarksStore = {}) {
+	/**
+	 * Server state for one keyed store, keeping what changed on this device
+	 * while the merge was out: an entry that differs from what was sent (a
+	 * highlight made, a heart toggled, a plan day ticked) keeps its local value,
+	 * one removed since stays removed. That change's own push carries it up.
+	 */
+	#keepLocalEdits<T>(key: string, server: Record<string, T>, sent: Record<string, T>): Record<string, T> {
+		const now = readJson<Record<string, T>>(key, {});
+		if (JSON.stringify(now) === JSON.stringify(sent)) return server;
+		const out = { ...server };
+		for (const k of new Set([...Object.keys(now), ...Object.keys(sent)])) {
+			if (JSON.stringify(now[k]) === JSON.stringify(sent[k])) continue;
+			if (now[k] === undefined) delete out[k];
+			else out[k] = now[k];
+		}
+		return out;
+	}
+
+	/** Overwrite the local cache with server state (used after a merge/pull),
+	 *  keeping edits made while it was in flight (`sent` is each keyed store as
+	 *  the merge sent it — see #keepLocalEdits). */
+	#writeState(state: ServerState, sent: Record<string, Record<string, unknown>>) {
 		if (!browser) return;
 		const progress: ProgressMap = {};
 		for (const p of state.progress) {
@@ -851,11 +900,10 @@ class ReadingSync {
 		for (const m of state.marks) {
 			marks[workKey(m.kind ?? 'book', m.book_slug, m.chapter_order)] = { m: m.marks ?? [] };
 		}
-		for (const [key, entry] of Object.entries(readJson<MarksStore>(MARKS_KEY, {}))) {
-			if (JSON.stringify(entry) !== JSON.stringify(sentMarks[key])) marks[key] = entry;
-		}
-		localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
-		localStorage.setItem(MARKS_KEY, JSON.stringify(marks));
+		const keep = <T>(key: string, server: Record<string, T>) =>
+			JSON.stringify(this.#keepLocalEdits(key, server, (sent[key] ?? {}) as Record<string, T>));
+		localStorage.setItem(PROGRESS_KEY, keep(PROGRESS_KEY, progress));
+		localStorage.setItem(MARKS_KEY, keep(MARKS_KEY, marks));
 		// Shelves are MERGED into the device's copy, not replaced: an edit made
 		// while the merge was in flight must survive, and an older API that
 		// doesn't send `shelves` must not wipe them.
@@ -868,7 +916,7 @@ class ReadingSync {
 			for (const f of state.favorites) {
 				favs[`${f.kind}:${f.slug}`] = Date.parse(f.created_at) || Date.now();
 			}
-			localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
+			localStorage.setItem(FAVORITES_KEY, keep(FAVORITES_KEY, favs));
 		}
 		if (state.bookmarks) {
 			// Regroup the flat server list back into workSlugKey -> Bookmark[], the
@@ -888,7 +936,7 @@ class ReadingSync {
 				};
 				(store[key] ??= []).push(bm);
 			}
-			localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(store));
+			localStorage.setItem(BOOKMARKS_KEY, keep(BOOKMARKS_KEY, store));
 		}
 		if (state.activity) {
 			localStorage.setItem(
@@ -904,7 +952,7 @@ class ReadingSync {
 					done: Array.isArray(p.done) ? p.done : []
 				};
 			}
-			localStorage.setItem(PLANS_KEY, JSON.stringify(plans));
+			localStorage.setItem(PLANS_KEY, keep(PLANS_KEY, plans));
 		}
 		if (state.journal) {
 			const server: JournalStore = {};

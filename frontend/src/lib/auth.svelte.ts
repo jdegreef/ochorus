@@ -77,9 +77,6 @@ class Auth {
 	// Sign-out was asked for while changes on this device hadn't reached the
 	// account (offline, a failed push). The layout shows UnsyncedSignOutDialog.
 	signOutBlocked = $state(false);
-	// Set around an explicit signOut(), so the auth listener that fires during
-	// it wipes rather than stashing what the reader chose to discard.
-	#signingOut = false;
 	// A "Language Admin": has admin access but isn't a super admin. Drives the
 	// role-specific relabelling ("Language Admin" vs "Admin"), the trimmed
 	// dashboard, and the language-admin manual link. UX only — the API enforces
@@ -159,9 +156,10 @@ class Auth {
 				this.isAdmin = false;
 				this.scopes = [];
 				// Not chosen by the reader (expiry, revocation, another tab): what
-				// the account doesn't have yet is set aside for it, not lost.
-				if (this.#signingOut) readingSync.clearOnSignOut();
-				else readingSync.endSession(endingEmail);
+				// the account doesn't have yet is set aside for it, not lost. After
+				// an explicit signOut() the device is already wiped, so this is a
+				// plain second wipe.
+				readingSync.endSession(endingEmail);
 			}
 		});
 	}
@@ -279,24 +277,19 @@ class Auth {
 			return false;
 		}
 		this.signOutBlocked = false;
-		// Held until the wipe below is done: the auth listener can fire late,
-		// and must not stash what the reader just chose to discard.
-		this.#signingOut = true;
-		try {
-			// Cancel a pending prefs push — it would fire after the token is gone.
-			clearTimeout(this.#pushTimer);
-			await (await supabase())?.auth.signOut();
-			this.user = null;
-			this.#token = null;
-			this.isAdmin = false;
-			this.scopes = [];
-			this.displayName = '';
-			// Wipe this user's reading data from the device: on a shared browser it
-			// would otherwise be merged into the next account that signs in.
-			readingSync.clearOnSignOut();
-		} finally {
-			queueMicrotask(() => (this.#signingOut = false));
-		}
+		// Cancel a pending prefs push — it would fire after the token is gone.
+		clearTimeout(this.#pushTimer);
+		// Wipe this user's reading data from the device (on a shared browser it
+		// would otherwise be merged into the next account that signs in) BEFORE
+		// the session ends: the auth listener that fires then finds nothing
+		// unsynced, so it can't stash what the reader chose to discard.
+		readingSync.clearOnSignOut();
+		await (await supabase())?.auth.signOut();
+		this.user = null;
+		this.#token = null;
+		this.isAdmin = false;
+		this.scopes = [];
+		this.displayName = '';
 		return true;
 	}
 
@@ -434,7 +427,8 @@ class Auth {
 		} catch {
 			return false;
 		}
-		await this.signOut();
+		// The account is gone, so nothing can sync to it: don't ask.
+		await this.signOut({ force: true });
 		return true;
 	}
 }
