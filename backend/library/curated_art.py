@@ -375,9 +375,25 @@ CURATED: dict[str, Artwork] = {
         "from the harvest, by the painter of the gleaners.",
     ),
     "spurgeon-on-prayer": Artwork(
-        "met", 437975, "Andreas Achenbach", "Sunset after a Storm on the Coast of Sicily", "1853",
-        "A sea still heaving as the storm clears — mighty power spent and answered, "
-        "which is what the twelve sermons are about.",
+        "aic", 109938, "Joseph Mallord William Turner",
+        "Valley of Aosta: Snowstorm, Avalanche, and Thunderstorm", "1836–37",
+        "Power on the scale the title claims, by an English painter of Spurgeon's "
+        "own century. It replaced the Achenbach, which `till-he-come` had worn "
+        "first — the one painting the library ever gave two books.",
+        focus=0.45,
+    ),
+    # Spurgeon's paired devotionals, one painter's morning and evening, so the
+    # two read as a pair on the shelf. Both late Inness, both whole in the band.
+    "morning-by-morning": Artwork(
+        "aic", 110561, "George Inness", "A Silver Morning", "1886",
+        "Sun coming through mist over a stream: the first light a morning reading "
+        "is taken in.",
+    ),
+    "evening-by-evening": Artwork(
+        "aic", 64740, "George Inness", "Landscape, Sunset", "1887–89",
+        "The last red of the day held in water under dark trees — the companion "
+        "to `morning-by-morning`'s silver morning, by the same hand.",
+        focus=0.45,
     ),
     # ── Batch 7 · R. A. Torrey's plate books ───────────────────────────────
     # Moody's man, three books on three works of the faith — winning others,

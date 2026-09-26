@@ -143,6 +143,19 @@ prerendered pages reference it.
   stale"). Run it BEFORE `og:covers`: a laid-out cover crops past the measured scan
   bar, so twins drawn with the old ground's bar are mis-cropped. Order slipped? `rm`
   those slugs' twin PNGs and re-run `og:covers`.
+- **One painting, one work — now a gate.** `test_no_painting_is_given_to_two_works`
+  fails a `(source, object_id)` already in `CURATED`/`CURATED_GROUND`. Before a pick,
+  `grep -n '<object id>' backend/library/curated_art.py`; searches return used works
+  (the Met hands back replaced ones too). #1771 re-used `till-he-come`'s Achenbach on
+  the same author's shelf and it stood for weeks until the gate (Spurgeon, 2026-09-26).
+- **The Met API 403s after a few dozen object fetches in a burst.** Throttle (~1/s) or
+  switch to AIC (`api.artic.edu/api/v1/artworks/search?q=…&fields=id,title,
+  artist_title,date_display,image_id,is_public_domain,classification_title`; IIIF image
+  at `www.artic.edu/iiif/2/<image_id>/full/1686,/0/default.jpg` with a `Referer:
+  https://www.artic.edu/` header).
+- **`band` shows only the vertical MIDDLE ~44% of the ground** (a strip at y≈28–72% of
+  the 3:4 crop). A subject at the top or foot is cropped out — `cheque-book`'s rainbow
+  is. For a band author, preview `ground.crop((0, 223, 600, 577))` before picking.
 - **Met image CDN needs a User-Agent**: `curl` without `-A "Mozilla/5.0"` on
   `images.metmuseum.org` saves a ~1.3 KB error body named `.jpg`.
 - **A cover that looks bad may be the AUTHOR LAYOUT, not the art.** Check
@@ -225,6 +238,8 @@ them in order and union-resolve the `curated_art`/scrim/manifest overlap on reba
 
 ## Done so far
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
+Spurgeon (2026-09-26; `spurgeon-on-prayer` de-duplicated → Turner, AIC; Morning/Evening
+plates → an Inness pair, AIC; band/oxblood kept),
 Moody (2026-09-25; Kensett ×2 — `prevailing-prayer` re-picked from a Rubens,
 `thoughts-for-the-quiet-hour` from its plate; layout duotone/indigo → wash/ochre),
 Athanasius #2409 (2 — Huguet/Cole; also OPENED the `aic` source, see §1),

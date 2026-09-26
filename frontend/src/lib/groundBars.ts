@@ -21,7 +21,6 @@ export const GROUND_BARS: Record<string, number> = {
 	'religious-affections': 0.035,
 	'revival-lectures': 0.090,
 	'rise-up-men-of-god-2': 0.110,
-	'spurgeon-on-prayer': 0.040,
 	'the-reformed-pastor': 0.040,
 	'the-unselfishness-of-god': 0.110,
 	'till-he-come': 0.040,
