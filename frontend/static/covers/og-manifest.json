@@ -2104,6 +2104,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"hi/the-fourfold-gospel": {
+			"ground": "888a8e7124236aa4159b9a7e7cde429eaf84a796378ff3f856c5ea3b2d774388",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "box/teal",
+			"bar": 0
+		},
 		"hi/the-god-of-all-comfort": {
 			"ground": "62853c4d1c1bb49a274203abde9a9e12f269287f82b0ec2f2d3dd3521b7527cb",
 			"style": "devotional",
@@ -2132,6 +2142,16 @@
 			"art": true,
 			"scrim": 0.95,
 			"layout": "framed",
+			"bar": 0
+		},
+		"hi/the-masters-indwelling": {
+			"ground": "816c7f25929f98aa0a7a3c8c0ee6b3823ea55cea58cf5aed7f04375ccf6e4e9b",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "wash/sage",
 			"bar": 0
 		},
 		"hi/the-secret-of-guidance": {
@@ -3181,6 +3201,16 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
+		"pt/thoughts-for-the-quiet-hour": {
+			"ground": "3e0fd296495b83c76d9c42f85a07a6567bc5acfd76549ac1e0faeb23ea2eeb74",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
 			"layout": "wash/ochre",
 			"bar": 0
 		},
