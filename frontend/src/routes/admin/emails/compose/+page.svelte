@@ -26,7 +26,8 @@
 		{ code: 'lg', label: 'Luganda' },
 		{ code: 'ar', label: 'العربية' },
 		{ code: 'hi', label: 'हिन्दी' },
-		{ code: 'uk', label: 'Українська' }
+		{ code: 'uk', label: 'Українська' },
+		{ code: 'am', label: 'አማርኛ' }
 	];
 	const localeLabel = (code: string) =>
 		LOCALES.find((l) => l.code === code)?.label ?? code;
