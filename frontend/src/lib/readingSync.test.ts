@@ -509,6 +509,19 @@ describe('readingSync — nothing lost at sign-out', () => {
 		expect(readingSync.hasUnsynced()).toBe(true);
 	});
 
+	it('a stash is folded under what the device wrote since, not dropped', () => {
+		localStorage.setItem(MARKS_KEY, JSON.stringify({ 'humility:1': { m: [] } }));
+		localStorage.setItem(SYNC_OWED_KEY, '1');
+		readingSync.endSession('a@example.com');
+		// Read (and highlight) signed-out before signing back in.
+		localStorage.setItem(MARKS_KEY, JSON.stringify({ 'humility:2': { m: [] } }));
+		readingSync.restoreStash('a@example.com');
+		expect(Object.keys(JSON.parse(localStorage.getItem(MARKS_KEY)!)).sort()).toEqual([
+			'humility:1',
+			'humility:2'
+		]);
+	});
+
 	it('nothing is stashed when the account already has everything', () => {
 		localStorage.setItem(MARKS_KEY, JSON.stringify({ 'humility:1': { m: [] } }));
 		readingSync.endSession('a@example.com');

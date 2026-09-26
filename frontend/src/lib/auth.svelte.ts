@@ -77,6 +77,9 @@ class Auth {
 	// Sign-out was asked for while changes on this device hadn't reached the
 	// account (offline, a failed push). The layout shows UnsyncedSignOutDialog.
 	signOutBlocked = $state(false);
+	// A sign-out is getting this device's changes to the account first — the
+	// sign-out buttons say so instead of doing nothing for a slow request.
+	signingOut = $state(false);
 	// A "Language Admin": has admin access but isn't a super admin. Drives the
 	// role-specific relabelling ("Language Admin" vs "Admin"), the trimmed
 	// dashboard, and the language-admin manual link. UX only — the API enforces
@@ -272,9 +275,13 @@ class Auth {
 	 * discarding them. Resolves true once signed out.
 	 */
 	async signOut({ force = false }: { force?: boolean } = {}): Promise<boolean> {
-		if (!force && !(await readingSync.settle())) {
-			this.signOutBlocked = true;
-			return false;
+		if (!force) {
+			this.signingOut = true;
+			const settled = await readingSync.settle().finally(() => (this.signingOut = false));
+			if (!settled) {
+				this.signOutBlocked = true;
+				return false;
+			}
 		}
 		this.signOutBlocked = false;
 		// Cancel a pending prefs push — it would fire after the token is gone.

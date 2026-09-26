@@ -143,6 +143,28 @@ function readJson<T>(key: string, fallback: T): T {
  *  the Notebook's sync indicator can re-read it (see journalSyncState). */
 export const JOURNAL_PENDING_EVENT = 'ochorus:journal-pending';
 
+/**
+ * A stashed store folded under what the device has written since: keyed
+ * stores keep both (the device's entry wins a shared key), lists are unioned,
+ * anything else keeps the device's value when it has one.
+ */
+function combineStored(stashed: string, current: string | null): string {
+	if (current === null) return stashed;
+	try {
+		const a: unknown = JSON.parse(stashed);
+		const b: unknown = JSON.parse(current);
+		if (Array.isArray(a) && Array.isArray(b)) {
+			const seen = new Set(b.map((x) => JSON.stringify(x)));
+			return JSON.stringify([...b, ...a.filter((x) => !seen.has(JSON.stringify(x)))]);
+		}
+		const isMap = (v: unknown) => !!v && typeof v === 'object' && !Array.isArray(v);
+		if (isMap(a) && isMap(b)) return JSON.stringify({ ...(a as object), ...(b as object) });
+	} catch {
+		/* not JSON — keep the device's value */
+	}
+	return current;
+}
+
 class ReadingSync {
 	signedIn = false;
 	/** Pushes waiting on their debounce: the timer, and the push it will run —
@@ -177,7 +199,10 @@ class ReadingSync {
 
 	/** A push failed: the device now holds changes the account doesn't. */
 	#owe() {
-		if (!this.#owed()) writeJSON(SYNC_OWED_KEY, Date.now());
+		// A fresh stamp every time: a merge clears the flag only if it is still
+		// the value it started with (see #merge). Not once signed out — a push
+		// failing after the wipe has nothing left on the device to owe.
+		if (this.signedIn) writeJSON(SYNC_OWED_KEY, Date.now());
 	}
 
 	#owed(): boolean {
@@ -776,7 +801,7 @@ class ReadingSync {
 			if (localStorage.getItem(SYNC_OWED_KEY) === owedAtStart) localStorage.removeItem(SYNC_OWED_KEY);
 			this.#markSynced();
 			// Whatever didn't fit the merge's share goes now, one entry at a time.
-			if (state.journal) void this.flushJournal();
+			if (state.journal) await this.flushJournal();
 		} catch {
 			/* offline or API down — keep the local cache untouched */
 		}
@@ -843,7 +868,7 @@ class ReadingSync {
 		const fresh = Date.now() - (stash.at ?? 0) < 30 * 24 * 60 * 60 * 1000;
 		if (!email || stash.email !== email || !fresh || !stash.data) return;
 		for (const [key, value] of Object.entries(stash.data)) {
-			if (localStorage.getItem(key) === null) localStorage.setItem(key, value);
+			localStorage.setItem(key, combineStored(value, localStorage.getItem(key)));
 		}
 	}
 
