@@ -174,6 +174,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/ministry-of-intercession": {
+			"ground": "b70587fb53d7a63885c0fee427df77a462ae3b18f949c656bc7c517e07c7bbf6",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"am/prayer-the-pulse-of-life": {
 			"ground": "2a1409b1f11373ce3d3418f8d47947f72edc2532a5411043298aa0e57ca55abe",
 			"style": "house",
