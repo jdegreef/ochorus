@@ -728,6 +728,101 @@ def resolve_related(related, language: str) -> list[dict]:
     return cards
 
 
+# A reader's guide is an article whose slug ends ``-guide`` — the repo's
+# convention (the ``write-article`` playbook's book guides). There is no typed
+# flag on Article, so the suffix IS the definition; everything that asks "is
+# this a guide?" reads it from here.
+GUIDE_SLUG_SUFFIX = "-guide"
+
+
+def is_guide_slug(slug: str) -> bool:
+    return slug.endswith(GUIDE_SLUG_SUFFIX)
+
+
+def first_book_slug(related) -> str | None:
+    """The article's PRIMARY book: the first ``book`` entry in its Read-next
+    ``related`` (see ``guides_for_book`` for why the first one is the subject).
+    ``related`` is schema-less hand-authored JSON, so anything malformed is
+    skipped rather than raising, and an article with no book gets ``None``."""
+    if not isinstance(related, list):
+        return None
+    return next(
+        (
+            item.get("slug")
+            for item in related
+            if isinstance(item, dict) and item.get("type") == "book" and item.get("slug")
+        ),
+        None,
+    )
+
+
+class CoverAuthorSerializer(serializers.ModelSerializer):
+    """The author fields a book COVER draws — the frontend's ``CoverBook.author``
+    (``COVER_AUTHOR_KEYS``), and nothing else: no bio, no portrait."""
+
+    class Meta:
+        model = Author
+        fields = ["slug", "name", "birth_year"]
+
+
+class CoverBookSerializer(BookListSerializer):
+    """A book cut down to what its cover and card draw — the frontend's
+    ``CoverBook`` (``COVER_BOOK_KEYS`` + a ``CoverAuthorSerializer`` author).
+    Rides on an article card as its ``lead_book``, so the fields are kept to
+    exactly what ``BookCover`` reads: an index of ~130 articles carries one each.
+    Like its parent, the queryset must carry ``BOOK_CARD_ANNOTATIONS``."""
+
+    author = CoverAuthorSerializer(read_only=True)
+
+    class Meta(BookListSerializer.Meta):
+        fields = [
+            "slug",
+            "language",
+            "title",
+            "subtitle",
+            "cover_title",
+            "author",
+            "source_type",
+            "cover_color",
+            "cover_url",
+            "series_position",
+            "chapter_count",
+            "word_count",
+        ]
+
+
+def lead_book_cards(related_by_article: dict[str, object], language: str) -> dict[str, dict]:
+    """``article_slug -> cover card`` of each article's primary book, for the
+    ``lead_book`` an article card shows (its cover, and the "Leads to" line).
+
+    ``related_by_article`` maps each article slug to its raw ``related`` JSON.
+    The primary book resolves like ``resolve_related`` does: a published row in
+    the ARTICLE's language (no English fallback), else the article simply has no
+    lead book. One book query for the whole set, not one per article.
+    """
+    firsts = {slug: first_book_slug(rel) for slug, rel in related_by_article.items()}
+    wanted = {b for b in firsts.values() if b}
+    if not wanted:
+        return {}
+    books = (
+        Book.objects.filter(slug__in=wanted, language=language, is_published=True)
+        .select_related("author")
+        .annotate(**BOOK_CARD_ANNOTATIONS)
+    )
+    cards = {b.slug: CoverBookSerializer(b).data for b in books}
+    return {a: cards[b] for a, b in firsts.items() if b in cards}
+
+
+def article_lead_book_map(language: str) -> dict[str, dict]:
+    """``article_slug -> lead book card`` for every published article in
+    ``language`` — the index's covers, built once per shelf (two queries,
+    whatever the shelf's size), mirroring ``article_topic_map``."""
+    rows = Article.objects.filter(is_published=True, language=language).values_list(
+        "slug", "related"
+    )
+    return lead_book_cards(dict(rows), language)
+
+
 def guides_for_book(book_slug: str, language: str) -> list[dict]:
     """The published articles that are a reader's guide *to* this book — so a
     book page can surface the guide that explains it, the reverse of the
@@ -757,25 +852,14 @@ def guides_for_book(book_slug: str, language: str) -> list[dict]:
     """
     rows = (
         Article.objects.filter(
-            is_published=True, language=language, slug__endswith="-guide"
+            is_published=True, language=language, slug__endswith=GUIDE_SLUG_SUFFIX
         )
         .order_by("sort_order", "h1")
         .values("slug", "h1", "description", "related")
     )
     out = []
     for row in rows:
-        related = row["related"]
-        if not isinstance(related, list):
-            continue
-        first_book = next(
-            (
-                item.get("slug")
-                for item in related
-                if isinstance(item, dict) and item.get("type") == "book"
-            ),
-            None,
-        )
-        if first_book == book_slug:
+        if first_book_slug(row["related"]) == book_slug:
             out.append(
                 {
                     "slug": row["slug"],
@@ -853,6 +937,29 @@ class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """
 
     topics = serializers.SerializerMethodField()
+    lead_book = serializers.SerializerMethodField()
+    kind = serializers.SerializerMethodField()
+
+    def get_kind(self, obj):
+        """``"guide"`` for a reader's guide to one book, else ``"article"`` — the
+        index's Questions / Book guides switch. See ``GUIDE_SLUG_SUFFIX``."""
+        return "guide" if is_guide_slug(obj.slug) else "article"
+
+    def get_lead_book(self, obj):
+        """The cover card of the article's primary book (the first book it sends
+        the reader to), or ``None`` — so the index can show the classic behind
+        each article, not a wall of text. Like ``topics``: a view may pass the
+        whole shelf's map as ``article_lead_books`` context; otherwise it's built
+        on first use per language and cached on the (shared, ``many=True``)
+        serializer, so a topic page's article list costs two queries, not N."""
+        supplied = self.context.get("article_lead_books")
+        if supplied is not None:
+            return supplied.get(obj.slug)
+        cached_for, cached = getattr(self, "_lead_map", (None, None))
+        if cached_for != obj.language:
+            cached = article_lead_book_map(obj.language)
+            self._lead_map = (obj.language, cached)
+        return cached.get(obj.slug)
 
     def get_topics(self, obj):
         """The (published, localized) topics this card belongs to, so the index
@@ -895,6 +1002,10 @@ class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
             # Topic chips — the index filter tabs and the detail page's
             # back-links. Batched by the list view; per-object on detail.
             "topics",
+            # The primary book's cover card (or null) and guide/article — the
+            # index's covers, "Leads to" line and Questions / Book guides switch.
+            "lead_book",
+            "kind",
         ]
 
 
@@ -935,6 +1046,10 @@ class ArticleDetailSerializer(ArticleListSerializer):
 
     def get_related(self, obj):
         return resolve_related(obj.related, obj.language)
+
+    def get_lead_book(self, obj):
+        # One article: resolve just its own primary book, not the shelf's map.
+        return lead_book_cards({obj.slug: obj.related}, obj.language).get(obj.slug)
 
     def get_available_languages(self, obj):
         return _available_languages(Article, obj.slug)

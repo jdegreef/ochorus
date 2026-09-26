@@ -327,3 +327,96 @@ class ArticleTopicLinkageTests(TestCase):
             self.client.get(reverse("article-list"), {"language": "en"})
 
         self.assertEqual(len(small), len(large))
+
+
+class ArticleLeadBookTests(TestCase):
+    """Each index card carries its primary book's cover (``lead_book``) and
+    whether it is a reader's guide (``kind``) — the /articles covers, "Leads to"
+    line and Questions / Book guides switch."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.author = Author.objects.create(
+            slug="andrew-murray", name="Andrew Murray", birth_year=1828
+        )
+        cls.book = Book.objects.create(
+            author=cls.author, slug="humility", language="en", title="Humility",
+            cover_url="/covers/humility.png", cover_color="#334455", is_published=True,
+        )
+        Book.objects.create(
+            author=cls.author, slug="draft-book", language="en", title="Draft",
+            is_published=False,
+        )
+        Article.objects.create(
+            slug="humility-guide", language="en", h1="Humility: A Guide",
+            body_html=BODY, is_published=True,
+            related=[
+                {"type": "author", "slug": "andrew-murray"},
+                {"type": "book", "slug": "humility"},
+            ],
+        )
+        # Its only book is unpublished → no lead book, not a dead cover.
+        Article.objects.create(
+            slug="how-to-walk-in-humility", language="en", h1="How to Walk in Humility",
+            body_html=BODY, is_published=True,
+            related=[{"type": "book", "slug": "draft-book"}],
+        )
+        # Malformed related must not 500 the shelf.
+        Article.objects.create(
+            slug="malformed", language="en", h1="Malformed", body_html=BODY,
+            is_published=True, related="humility",
+        )
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _cards(self):
+        res = self.client.get(reverse("article-list"), {"language": "en"})
+        self.assertEqual(res.status_code, 200)
+        return {a["slug"]: a for a in res.data}
+
+    def test_lead_book_is_the_first_published_book_as_a_cover_card(self):
+        lead = self._cards()["humility-guide"]["lead_book"]
+        self.assertEqual(lead["slug"], "humility")
+        self.assertEqual(lead["title"], "Humility")
+        self.assertEqual(lead["cover_url"], "/covers/humility.png")
+        # Exactly what a cover draws: the author is cut to CoverBook.author.
+        self.assertEqual(
+            lead["author"], {"slug": "andrew-murray", "name": "Andrew Murray", "birth_year": 1828}
+        )
+        self.assertNotIn("topics", lead)
+
+    def test_unresolvable_or_malformed_related_gives_no_lead_book(self):
+        cards = self._cards()
+        self.assertIsNone(cards["how-to-walk-in-humility"]["lead_book"])
+        self.assertIsNone(cards["malformed"]["lead_book"])
+
+    def test_kind_follows_the_guide_slug_convention(self):
+        cards = self._cards()
+        self.assertEqual(cards["humility-guide"]["kind"], "guide")
+        self.assertEqual(cards["how-to-walk-in-humility"]["kind"], "article")
+
+    def test_detail_carries_its_own_lead_book(self):
+        res = self.client.get(
+            reverse("article-detail", args=["humility-guide"]), {"language": "en"}
+        )
+        self.assertEqual(res.data["lead_book"]["slug"], "humility")
+
+    def test_lead_book_queries_do_not_grow_with_the_shelf(self):
+        from django.db import connection
+        from django.test.utils import CaptureQueriesContext
+
+        with CaptureQueriesContext(connection) as small:
+            self.client.get(reverse("article-list"), {"language": "en"})
+        for i in range(10):
+            Book.objects.create(
+                author=self.author, slug=f"book-{i}", language="en", title=f"B{i}",
+                is_published=True,
+            )
+            Article.objects.create(
+                slug=f"extra-{i}", language="en", h1=f"Extra {i}", body_html=BODY,
+                is_published=True, related=[{"type": "book", "slug": f"book-{i}"}],
+            )
+        with CaptureQueriesContext(connection) as large:
+            self.client.get(reverse("article-list"), {"language": "en"})
+        self.assertEqual(len(small), len(large))

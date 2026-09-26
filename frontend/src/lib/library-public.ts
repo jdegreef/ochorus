@@ -847,6 +847,15 @@ export interface ArticleSummary {
 	/** Topics this article belongs to (localized chips) — the index builds its
 	 *  filter tabs from these. Empty for an untagged article. */
 	topics: TopicChip[];
+	/** The cover card of the article's primary book — the first book its Read
+	 *  next sends the reader to — or null when it names none that is published
+	 *  in this language. Drawn as the card's cover and its "Leads to" line.
+	 *  Optional (like `updated_at`): an API running behind this build omits it. */
+	lead_book?: CoverBook | null;
+	/** `guide` for a reader's guide to one book, else `article` — the index's
+	 *  Questions / Book guides switch. Optional for the same reason; read it
+	 *  through `isGuide()` in `$lib/articleIndex`, which falls back to the slug. */
+	kind?: 'guide' | 'article';
 }
 
 /** A resolved "Read next" link the article funnels the reader to. */

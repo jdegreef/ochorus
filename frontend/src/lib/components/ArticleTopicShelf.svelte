@@ -8,6 +8,9 @@
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { articleTopicSeo, articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
 	import { i18n } from '$lib/i18n.svelte';
+	import { ARTICLE_KINDS } from '$lib/articleIndex';
+	import { urlFilters } from '$lib/urlFilters.svelte';
+	import { page } from '$app/stores';
 
 	const t = i18n.t;
 
@@ -29,6 +32,13 @@
 		/** The full article shelf — the chips and the filtered list derive from it. */
 		articles: ArticleSummary[];
 	} = $props();
+
+	// The shelf's text query and kind live in the URL, as on the index.
+	const filters = urlFilters({
+		defaults: { q: '', kind: '' },
+		allowed: { kind: ARTICLE_KINDS },
+		url: () => $page.url
+	});
 
 	const seo = $derived(articleTopicSeo(slug, title));
 	const shown = $derived(articles.filter((a) => articleHasTopic(a, slug)));
@@ -76,7 +86,7 @@
 			>Explore books, sermons and scripture on this topic →</a
 		>
 	</header>
-	<ArticleShelf {articles} activeTopic={slug} />
+	<ArticleShelf {articles} activeTopic={slug} {filters} />
 
 	<AccountCta />
 </div>
