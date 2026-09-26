@@ -2,6 +2,8 @@ import type { BookSummary } from './library-public';
 import type { FavoriteEntry } from './favorites.svelte';
 import type { ProgressRecord, WorkKind } from './reading-schema';
 import { bookProgressPercent } from './reading';
+import { authorPath } from './originals';
+import { unslug } from './strings';
 
 /**
  * The Bookshelf's three shelves — what the reader is reading, what they mean to
@@ -126,6 +128,65 @@ export function buildShelves(
 	shelves.toRead.sort(newestFirst);
 	shelves.finished.sort(newestFirst);
 	return shelves;
+}
+
+/** The kinds the home Bookshelf ledger lists, in filter-pill order. */
+export const LEDGER_KINDS = ['book', 'author', 'plan', 'sermon'] as const;
+export type LedgerKind = (typeof LEDGER_KINDS)[number];
+
+export type LedgerRow = {
+	kind: LedgerKind;
+	slug: string;
+	href: string;
+	title: string;
+	/** The byline — a book's or sermon's author; empty for authors and plans. */
+	by: string;
+	/** Recency: a shelf book's own sort key, else when it was hearted. */
+	at: number;
+	/** Set for a book that resolved in this language. */
+	shelf?: ShelfBook;
+};
+
+const LEDGER_HREF: Record<LedgerKind, (slug: string) => string> = {
+	book: (s) => `/books/${s}`,
+	author: authorPath,
+	plan: (s) => `/plans/${s}`,
+	sermon: (s) => `/sermons/${s}`
+};
+
+/**
+ * The home Bookshelf as one list, most recent first: every book on the
+ * reader's shelves (so a book started without a heart is here too), then the
+ * authors, plans and sermons they've hearted. `names` resolves a slug to its
+ * title and byline in the current language; a work it can't resolve — no row
+ * in this language — keeps a slug-derived label rather than vanishing, like a
+ * hearted book `buildShelves` couldn't place.
+ */
+export function buildLedger(
+	shelves: Shelves,
+	favs: FavoriteEntry[],
+	names: (kind: Exclude<LedgerKind, 'book'>, slug: string) => { title: string; by?: string } | undefined
+): LedgerRow[] {
+	const rows: LedgerRow[] = [];
+	for (const shelf of [...shelves.reading, ...shelves.paused, ...shelves.finished, ...shelves.toRead]) {
+		const { slug, title, author } = shelf.book;
+		rows.push({ kind: 'book', slug, href: shelfHref(shelf), title, by: author.name, at: shelf.at, shelf });
+	}
+	const unresolved = new Set(shelves.unresolved);
+	for (const f of favs) {
+		if (f.kind === 'book' ? !unresolved.has(f.slug) : !LEDGER_HREF[f.kind as LedgerKind]) continue;
+		const kind = f.kind as LedgerKind;
+		const named = kind === 'book' ? undefined : names(kind, f.slug);
+		rows.push({
+			kind,
+			slug: f.slug,
+			href: LEDGER_HREF[kind](f.slug),
+			title: named?.title ?? unslug(f.slug),
+			by: named?.by ?? '',
+			at: f.at
+		});
+	}
+	return rows.sort((a, b) => b.at - a.at);
 }
 
 /**
