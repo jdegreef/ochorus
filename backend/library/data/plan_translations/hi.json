@@ -85,5 +85,19 @@
    "Single-book LAUNCH plan backed by growing-in-wisdom.hi (job #2823), which makes it creatable in hi. The title takes the book's own hi title, «बुद्धि में बढ़ना»; «पवित्रशास्त्र», «मनन» and «प्रार्थना» are the book's settled words for Scripture, reflection and prayer.",
    "«जेम्स डीग्रीफ़» is a fresh transliteration — the hi corpus had not spelled the author's name before. AI-drafted; awaiting native review."
   ]
+ },
+ "rooted-book-1-30-days": {
+  "title": "जड़ें जमाए: परमेश्वर के साथ 30 दिन — पुस्तक 1",
+  "description": "गहरी जड़ें जमाने के लिये तीस दिन, 9 से 12 वर्ष के पाठकों के लिये: परमेश्वर कौन है, यीशु का शुभ समाचार, मसीह में तुम कौन हो, प्रार्थना कैसे करें, और कैसे बढ़ें। हर दिन एक छोटा पठन होता है — एक बाइबल वचन, सोचने के लिये एक प्रश्न, करने के लिये एक बात, और एक प्रार्थना।",
+  "note": [
+   "Single-book plan backed by the hi edition of rooted-1 (book title “जड़ें जमाए — युवाओं के लिये परमेश्वर के साथ 30 दिन — पुस्तक 1”); card wording follows the shipped book's settled terms and the hi 'rooted' series row (जड़ें जमाए). Added by the book:rooted-1 -> hi job (#3590), which makes this LAUNCH plan creatable in hi — without this entry seed_plans would publish an English-titled card in Hindi."
+  ]
+ },
+ "rooted-book-2-30-days": {
+  "title": "जड़ें जमाए: परमेश्वर के साथ 30 दिन — पुस्तक 2",
+  "description": "यीशु के साथ चलते हुए तीस दिन, 9 से 12 वर्ष के पाठकों के लिये: बैतलहम की चरनी से लेकर उसके चमत्कारों और दृष्टान्तों में से होते हुए क्रूस और खाली कब्र तक। हर दिन एक छोटा पठन होता है — सुसमाचार का एक अंश, सोचने के लिये एक प्रश्न, करने के लिये एक बात, और एक प्रार्थना।",
+  "note": [
+   "Single-book plan backed by the hi edition of rooted-2 (book title “जड़ें जमाए — युवाओं के लिये परमेश्वर के साथ 30 दिन — पुस्तक 2”); card wording follows the shipped book's settled terms and the hi 'rooted' series row (जड़ें जमाए). Added by the book:rooted-2 -> hi job (#3604), which makes this LAUNCH plan creatable in hi."
+  ]
  }
 }
