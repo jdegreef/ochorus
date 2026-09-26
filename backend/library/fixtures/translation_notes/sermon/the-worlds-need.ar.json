@@ -1,0 +1,63 @@
+{
+  "kind": "sermon",
+  "slug": "the-worlds-need",
+  "language": "ar",
+  "job_issue": 3806,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Acts 8:30",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 2
+    },
+    {
+      "reference": "Jeremiah 2:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 7
+    },
+    {
+      "reference": "Jeremiah 2:3",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 7
+    },
+    {
+      "reference": "John 2:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 10
+    },
+    {
+      "reference": "Ephesians 6:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 17
+    },
+    {
+      "reference": "Jude 1:20",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 17
+    },
+    {
+      "reference": "Colossians 1:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 18
+    },
+    {
+      "reference": "John 10:34",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 20
+    },
+    {
+      "reference": "John 10:35",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 20
+    }
+  ]
+}

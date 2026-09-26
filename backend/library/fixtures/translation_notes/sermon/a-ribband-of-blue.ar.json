@@ -1,0 +1,89 @@
+{
+  "kind": "sermon",
+  "slug": "a-ribband-of-blue",
+  "language": "ar",
+  "job_issue": 3804,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Luke 22:42",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 1
+    },
+    {
+      "reference": "Numbers 15:31",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 5
+    },
+    {
+      "reference": "1 John 1:9",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 6
+    },
+    {
+      "reference": "1 John 1:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 6
+    },
+    {
+      "reference": "Ephesians 4:30",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "Acts 7:51",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "1 Thessalonians 5:19",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "Numbers 15:38",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Ephesians 5:1",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 13
+    },
+    {
+      "reference": "Ephesians 5:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 13
+    },
+    {
+      "reference": "Matthew 5:48",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 13
+    },
+    {
+      "reference": "Matthew 5:48",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 14
+    },
+    {
+      "reference": "Numbers 15:38",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 17
+    },
+    {
+      "reference": "Numbers 15:39",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 17
+    }
+  ]
+}

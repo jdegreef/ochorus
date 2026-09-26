@@ -1,0 +1,204 @@
+{
+  "kind": "sermon",
+  "slug": "the-ravens-cry",
+  "language": "ar",
+  "job_issue": 3802,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Psalms 147:9",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 0
+    },
+    {
+      "reference": "Luke 12:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 5
+    },
+    {
+      "reference": "Psalms 77:9a",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 8
+    },
+    {
+      "reference": "Esther 4:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 9
+    },
+    {
+      "reference": "Genesis 32:26",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 9
+    },
+    {
+      "reference": "Genesis 1:26",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 13
+    },
+    {
+      "reference": "Luke 18:13",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 25
+    },
+    {
+      "reference": "Luke 18:13",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 38
+    },
+    {
+      "reference": "Luke 18:13",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 46
+    },
+    {
+      "reference": "Matthew 11:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 29
+    },
+    {
+      "reference": "Micah 7:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 33
+    },
+    {
+      "reference": "Luke 15:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 33
+    },
+    {
+      "reference": "Romans 10:13",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 36
+    },
+    {
+      "reference": "Psalms 50:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 36
+    },
+    {
+      "reference": "Mark 16:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 36
+    },
+    {
+      "reference": "Mark 16:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 36
+    },
+    {
+      "reference": "Acts 16:31",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 36
+    },
+    {
+      "reference": "Acts 2:38",
+      "status": "self_rendered",
+      "block_index": 36
+    },
+    {
+      "reference": "John 3:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 40
+    },
+    {
+      "reference": "Psalms 118:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 42
+    },
+    {
+      "reference": "Proverbs 15:8a",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 43
+    },
+    {
+      "reference": "Luke 23:34",
+      "status": "self_rendered",
+      "block_index": 46
+    },
+    {
+      "reference": "Hosea 14:2",
+      "status": "self_rendered",
+      "block_index": 37
+    },
+    {
+      "reference": "Hosea 14:4",
+      "status": "self_rendered",
+      "block_index": 37
+    },
+    {
+      "reference": "1 Kings 18:43",
+      "status": "self_rendered",
+      "block_index": 51
+    },
+    {
+      "reference": "Psalms 27:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 55
+    },
+    {
+      "reference": "Exodus 14:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 55
+    },
+    {
+      "reference": "Isaiah 49:8",
+      "status": "self_rendered",
+      "block_index": 55
+    },
+    {
+      "reference": "Isaiah 44:22",
+      "status": "self_rendered",
+      "block_index": 55
+    },
+    {
+      "reference": "Isaiah 43:1",
+      "status": "self_rendered",
+      "block_index": 55
+    },
+    {
+      "reference": "John 3:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 64
+    },
+    {
+      "reference": "John 3:18",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 65
+    },
+    {
+      "reference": "John 6:47",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 64
+    },
+    {
+      "reference": "1 John 5:10",
+      "status": "self_rendered",
+      "block_index": 67
+    }
+  ]
+}

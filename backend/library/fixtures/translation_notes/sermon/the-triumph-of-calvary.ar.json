@@ -1,0 +1,142 @@
+{
+  "kind": "sermon",
+  "slug": "the-triumph-of-calvary",
+  "language": "ar",
+  "job_issue": 3807,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Isaiah 63:1-6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 0
+    },
+    {
+      "reference": "Hebrews 2:10",
+      "status": "self_rendered",
+      "block_index": 1
+    },
+    {
+      "reference": "Matthew 2:23",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 5
+    },
+    {
+      "reference": "Isaiah 63:3",
+      "status": "self_rendered",
+      "block_index": 6
+    },
+    {
+      "reference": "Isaiah 63:6",
+      "status": "self_rendered",
+      "block_index": 6
+    },
+    {
+      "reference": "Isaiah 26:19",
+      "status": "self_rendered",
+      "block_index": 8
+    },
+    {
+      "reference": "1 Peter 1:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 9
+    },
+    {
+      "reference": "Hebrews 7:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 9
+    },
+    {
+      "reference": "Isaiah 63:3b",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Isaiah 63:3b",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Isaiah 63:3b",
+      "status": "self_rendered",
+      "block_index": 18
+    },
+    {
+      "reference": "Isaiah 63:1b",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 10
+    },
+    {
+      "reference": "Isaiah 63:1b",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 18
+    },
+    {
+      "reference": "Isaiah 63:5",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Hebrews 10:7",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Psalms 16:10",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Acts 2:31",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Genesis 3:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 13
+    },
+    {
+      "reference": "Isaiah 42:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 14
+    },
+    {
+      "reference": "Revelation 22:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 14
+    },
+    {
+      "reference": "Malachi 4:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 14
+    },
+    {
+      "reference": "John 20:19",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 18
+    },
+    {
+      "reference": "Isaiah 63:1",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 18
+    },
+    {
+      "reference": "Isaiah 63:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text",
+      "block_index": 18
+    }
+  ]
+}
