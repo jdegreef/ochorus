@@ -1,0 +1,156 @@
+{
+ "kind": "sermon",
+ "slug": "songs-in-the-night",
+ "language": "sw",
+ "job_issue": 3948,
+ "references": [
+  {
+   "reference": "Job 35:10",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 91:6a",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Psalm 91:5a",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Psalm 103:1",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Habakkuk 3:17a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Habakkuk 3:18",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Exodus 15:1b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 102:9",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Job 19:25a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Psalm 77:10",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Kings 20:31",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 Kings 20:32",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 Kings 20:32b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "Lamentations 3:22",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Psalm 103:10",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Revelation 11:15",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 19:6",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 22:12",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Job 13:15a",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Psalm 23:4a",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Acts 13:10",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "John 8:11b",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Mark 16:16a",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Hebrews 7:25a",
+   "status": "mined",
+   "block_index": 50,
+   "source_file": "way-into-holiest.sw.json"
+  }
+ ]
+}

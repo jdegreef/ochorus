@@ -1,0 +1,89 @@
+{
+ "kind": "sermon",
+ "slug": "how-to-contemplate-christs-holy-sufferings",
+ "language": "sw",
+ "job_issue": 3945,
+ "references": [
+  {
+   "reference": "Isaiah 53:8b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "Acts 2:36b",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Acts 2:37b",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 23:28b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 23:31",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 2:37b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Isaiah 53:6b",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "salvation-by-faith.sw.json"
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "on-loving-god.sw.json"
+  },
+  {
+   "reference": "Galatians 5:24",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:3",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Peter 4:1a",
+   "status": "self_rendered",
+   "block_index": 18
+  }
+ ]
+}

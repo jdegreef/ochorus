@@ -1,0 +1,151 @@
+{
+ "kind": "sermon",
+ "slug": "justification-by-grace",
+ "language": "sw",
+ "job_issue": 3946,
+ "references": [
+  {
+   "reference": "Romans 3:24",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "salvation-by-faith.sw.json"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 8:33",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 44:22",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 63:3a",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "the-triumph-of-calvary.sw.json"
+  },
+  {
+   "reference": "Matthew 26:39a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 22:42b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 26:39b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 26:38b",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:8",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "John 17:4",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Micah 7:19",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "John 15:9a",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "true-vine.sw.json"
+  },
+  {
+   "reference": "Romans 5:2b",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "the-circumcision-of-the-heart.sw.json"
+  },
+  {
+   "reference": "Romans 5:1",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Numbers 23:21",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "the-gospel-of-healing.sw.json"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Mark 16:16a",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Mark 16:16b",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  }
+ ]
+}
