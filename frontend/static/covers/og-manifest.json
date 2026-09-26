@@ -1674,6 +1674,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/growing-in-wisdom": {
+			"ground": "29d3460135d6e9fa1de115e5ab4a69bc8757b06f32385baa7772a47391b95a68",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/he-holds-my-tomorrows": {
 			"ground": "160b323fc6adfdda69594deec7352f6c75eda1345cb029e564aa874fcd3b7b21",
 			"style": "lettered",

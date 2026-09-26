@@ -1,0 +1,344 @@
+{
+ "kind": "book",
+ "slug": "growing-in-wisdom",
+ "language": "hi",
+ "job_issue": 2823,
+ "references": [
+  {
+   "reference": "यिर्मयाह 29:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 तीमुथियुस 4:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यिर्मयाह 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 50:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 25:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 16:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 शमूएल 17:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "हबक्कूक 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 23:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 21:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 3:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 12:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 6:6-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "दानिय्येल 1:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 90:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 9:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 राजा 3:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "याकूब 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "दानिय्येल 1:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 19:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 22:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 14:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 10:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "सभोपदेशक 11:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 12:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 12:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 6:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 11:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 शमूएल 16:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 39:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 20:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 15:1-2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 13:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 27:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 15:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 15:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 18:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 1:1-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 पतरस 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 16:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 22:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 4:6-7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 26:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 5:22-23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 119:105",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 थिस्सलुनीकियों 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहोशू 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 119:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 6:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 8:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 16:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "व्यवस्थाविवरण 8:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 25:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 24:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 145:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 34:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 3:13-14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 13:14-15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 2:3-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 24:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "सभोपदेशक 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 21:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 पतरस 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 119:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 थिस्सलुनीकियों 4:3-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 6:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 19:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 5:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 10:43-45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 थिस्सलुनीकियों 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 5:14-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 3:5-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 37:4",
+   "status": "self_rendered"
+  }
+ ]
+}
