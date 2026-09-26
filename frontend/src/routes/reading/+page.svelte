@@ -103,7 +103,7 @@
 	     as two stacked single-item rows. `complete` is WorkCard's finished variant
 	     (drops the meter for a completion line). -->
 	{#snippet cards(works: ResumeItem[], plansList: PlanRow[], complete: boolean)}
-		<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 			{#each works as item (item.key)}
 				<WorkCard {item} {complete} />
 			{/each}
