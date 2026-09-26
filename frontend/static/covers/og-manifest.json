@@ -124,6 +124,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"am/divine-healing": {
+			"ground": "5c117325c62ea13f955c4db4507bb804fc5f6d06dc4821d6954edf4eda772658",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "wash/sage",
+			"bar": 0.05
+		},
 		"am/gleanings-among-the-sheaves": {
 			"ground": "cfafa5fc46542ce19b864735e56443c918ecf220c3cb57b9286416e5bb66132d",
 			"style": "revival",
