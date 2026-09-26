@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PAUSE_AFTER_DAYS, buildShelves, packRows, shelfHref, spineSize, customShelfItems, sortShelf } from './bookshelf';
+import { PAUSE_AFTER_DAYS, buildLedger, buildShelves, packRows, shelfHref, spineSize, customShelfItems, sortShelf } from './bookshelf';
 import type { BookSummary } from './library-public';
 
 const book = (slug: string, chapter_count = 10) =>
@@ -172,5 +172,44 @@ describe('the Paused shelf', () => {
 	it('marks a quiet book as paused on a custom shelf too', () => {
 		const items = customShelfItems(new Map([['a', 1]]), [book('a')], [], [rec('a', 2, NOW - 90 * DAY)], NOW);
 		expect(items[0].paused).toBe(true);
+	});
+});
+
+describe('buildLedger', () => {
+	const catalog = [book('a'), book('b')];
+	const names = (kind: string, slug: string) =>
+		slug === 'known' ? { title: `Known ${kind}`, by: kind === 'sermon' ? 'Preacher' : undefined } : undefined;
+
+	it('merges shelf books and hearted works, most recent first', () => {
+		const favs = [
+			fav('b', 50),
+			{ kind: 'author' as const, slug: 'known', at: 300 },
+			{ kind: 'sermon' as const, slug: 'known', at: 100 }
+		];
+		const rows = buildLedger(buildShelves(catalog, favs, [rec('a', 3, 200)]), favs, names);
+		expect(rows.map((r) => `${r.kind}:${r.slug}`)).toEqual([
+			'author:known',
+			'book:a',
+			'sermon:known',
+			'book:b'
+		]);
+		expect(rows[1]).toMatchObject({ href: '/books/a/3', by: 'A', shelf: { status: 'reading' } });
+		expect(rows[2]).toMatchObject({ title: 'Known sermon', by: 'Preacher', href: '/sermons/known' });
+	});
+
+	it('keeps an unresolved work under a slug-derived label, never drops it', () => {
+		const favs = [fav('gone-book', 20), { kind: 'plan' as const, slug: 'lost-plan', at: 10 }];
+		const rows = buildLedger(buildShelves(catalog, favs, []), favs, names);
+		expect(rows).toEqual([
+			expect.objectContaining({ kind: 'book', title: 'Gone Book', href: '/books/gone-book' }),
+			expect.objectContaining({ kind: 'plan', title: 'Lost Plan', href: '/plans/lost-plan' })
+		]);
+		expect(rows[0].shelf).toBeUndefined();
+	});
+
+	it('lists a resolved hearted book once, and leaves out kinds it does not show', () => {
+		const favs = [fav('a', 5), { kind: 'quote' as const, slug: 'q', at: 9 }];
+		const rows = buildLedger(buildShelves(catalog, favs as never, []), favs as never, names);
+		expect(rows.map((r) => r.slug)).toEqual(['a']);
 	});
 });
