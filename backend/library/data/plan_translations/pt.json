@@ -2,7 +2,7 @@
  "christ-our-healer": {
   "description": "Seis semanas sobre Cristo como Salvador, Santificador, Curador e Rei que há de vir. A. B. Simpson expõe o evangelho quádruplo e o seu ministério de cura, e Andrew Murray encerra com um mês de meditações sobre o Senhor que ainda cura o corpo como penhor da vida vindoura.",
   "note": [
-   "Prosa apenas (job #3294). Dos três livros-fonte, apenas divine-healing existe em pt; the-fourfold-gospel e the-gospel-of-healing ainda não, portanto seed_plans só criará a linha do plano em pt quando todos os três existirem."
+   "Os três livros-fonte agora existem em pt (divine-healing, the-fourfold-gospel, the-gospel-of-healing), portanto seed_plans cria a linha do plano christ-our-healer em pt, servida por esta prosa. Originada como prosa antecipada no job #3294."
   ],
   "title": "Cristo, o Nosso Curador"
  },
