@@ -1,0 +1,24 @@
+{
+ "kind": "bio",
+ "slug": "clement-of-rome",
+ "language": "ar",
+ "job_issue": 3498,
+ "pull_request": null,
+ "note": [
+  "Scripture authority for Arabic is Smith–Van Dyck (1865), the language's Bible in language_seed.py. The whole text (vowelled, 31,104 verses) was taken from the ebible mirror (gracious-tech/fetch_collection, bibles/arb_vdv, ebible id arb-vd — public domain) and every quotation marked verbatim was pasted from it by script.",
+  "A `mined` row means the finished text contains at least 20 characters of that verse's Van Dyck wording byte-for-byte (measured, not claimed). Quotations the author adapts or re-personalises are self_rendered and written without vowel marks, so a reader can tell them from pasted Van Dyck."
+ ],
+ "references": [
+  {
+   "reference": "1 Peter 4:8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Philippians 4:3",
+   "status": "self_rendered",
+   "block_index": 1
+  }
+ ]
+}

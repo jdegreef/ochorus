@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "bernard-of-clairvaux",
+ "language": "ar",
+ "job_issue": 3497,
+ "pull_request": null,
+ "note": [
+  "Scripture authority for Arabic is Smith–Van Dyck (1865), the language's Bible in language_seed.py. The whole text (vowelled, 31,104 verses) was taken from the ebible mirror (gracious-tech/fetch_collection, bibles/arb_vdv, ebible id arb-vd — public domain) and every quotation marked verbatim was pasted from it by script.",
+  "A `mined` row means the finished text contains at least 20 characters of that verse's Van Dyck wording byte-for-byte (measured, not claimed). Quotations the author adapts or re-personalises are self_rendered and written without vowel marks, so a reader can tell them from pasted Van Dyck."
+ ],
+ "references": [
+  {
+   "reference": "Romans 1:14",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalms 31:12",
+   "status": "self_rendered",
+   "block_index": 8
+  }
+ ]
+}
