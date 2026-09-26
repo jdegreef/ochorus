@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import GoalPips from '$lib/components/GoalPips.svelte';
 	import { authorPath } from '$lib/originals';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
+	import { loginHref } from '$lib/loginHref';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { theme } from '$lib/theme.svelte';
@@ -346,7 +348,14 @@
 					</div>
 					<button class="btn btn-ghost mt-5" onclick={() => auth.signOut()}>{t('account.signOut')}</button>
 				{:else if auth.enabled}
-					<p class="text-body text-muted">{t('account.signedOutNote')}</p>
+					<!-- A real button, not "Sign in (top right)": on a phone the top
+					     bar's sign-in button gives way to the tab bar's More sheet. -->
+					<p class="text-body text-muted">{t('login.syncNote')}</p>
+					<a
+						class="btn btn-primary mt-4"
+						href={localizeHref(loginHref($page.url.pathname, $page.url.search))}
+						>{t('account.signIn')}</a
+					>
 				{:else}
 					<p class="text-body text-muted">{t('account.localNote')}</p>
 				{/if}
@@ -652,11 +661,7 @@
 								</label>
 							</div>
 							<!-- One pip per goal day, filled up to this week's read-day count. -->
-							<div class="mt-3 flex gap-1.5">
-								{#each Array(goal) as _, i (i)}
-									<span class="h-2 flex-1 rounded-full {i < weekCount ? 'bg-gold' : 'bg-border'}"></span>
-								{/each}
-							</div>
+							<div class="mt-3"><GoalPips {goal} {weekCount} stretch /></div>
 						</div>
 
 						<!-- Reading calendar (contribution-style heatmap) -->

@@ -268,6 +268,11 @@ lists content types, **in the same order** everywhere:
 - [ ] `CatalogLanguageNudge`'s `kind` union
 - [ ] a `/og/<section>.png` card for pages without their own image
 - [ ] the guard lists in `lib/pageShell.test.ts` (`BROWSE_PAGES` / `LEAF_PAGES`)
+- [ ] phone chrome: `LIBRARY` in `lib/components/TabBar.svelte` (so the Library
+      tab lights up on the new route — it derives from PRIMARY_NAV/ENGLISH_HUBS,
+      so only a route outside those needs adding), and `MoreSheet.svelte` if the
+      destination isn't in PRIMARY_NAV/ENGLISH_HUBS (that sheet is the phone's
+      whole site map — the top nav's links are hidden under 640px)
 
 Articles, Scripture and Quotes each failed several of these: footer-only,
 absent from the palette and from search.

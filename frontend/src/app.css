@@ -1196,7 +1196,9 @@ nav.appnav .navtoggle:hover {
 		flex-wrap: wrap;
 	}
 }
-/* Phones: collapse links + controls behind a hamburger drawer. One below
+/* Phones and small tablets: collapse the links behind a hamburger drawer —
+   below 640px only where the phone tab bar is absent (reading surfaces, focus,
+   Listen); see the tab-bar block after this one. One below
    Tailwind's `md` (768px). The grid reverts to a wrapping flex row here so the
    drawer's 100%-basis line break and the visual `order` swaps below take
    effect (grid ignores both). */
@@ -1250,6 +1252,18 @@ nav.appnav .navtoggle:hover {
 	   their dropdowns still open from the bar's end and need no re-anchoring. */
 	nav.appnav .navtoggle {
 		margin-inline-start: 0.25rem;
+	}
+}
+/* Phones with the tab bar (TabBar.svelte, which is what defines --tabbar-h):
+   its "More" sheet holds the links, quick settings and sign-in, so the top
+   bar is brand + search (+ a signed-in reader's avatar, whose menu keeps the
+   admin and feedback entries). */
+@media (max-width: 639.98px) {
+	:root:has(.tabbar) nav.appnav .navtoggle,
+	:root:has(.tabbar) nav.appnav .navmenu,
+	:root:has(.tabbar) nav.appnav .prefs,
+	:root:has(.tabbar) nav.appnav .account-signin {
+		display: none;
 	}
 }
 
@@ -2420,6 +2434,15 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	   every page sideways. */
 	margin-inline-start: 50%;
 	transform: translateX(-50%);
+}
+/* Every page-col carries its own px-5, so on a phone the column takes the full
+   viewport width and px-5 alone is the gutter — 20px, not 20 + 20. Viewport,
+   not 100%, to keep the break-out above (centred on the viewport even inside a
+   narrower parent); phone scrollbars overlay, so 100vw adds no overflow. */
+@media (max-width: 639.98px) {
+	.page-col {
+		width: 100vw;
+	}
 }
 
 /* The three static prose pages (About / Contact / Legal) are a page of text,
