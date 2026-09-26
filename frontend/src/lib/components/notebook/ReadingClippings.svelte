@@ -404,6 +404,9 @@
 		<a {href} class="clip" style="--clip-hue: var(--hl-{hl.color})">
 			{#if hl.text}
 				<span class="clip-quote block text-body text-text">“{hl.text}”</span>
+				{#if hl.detached}
+					<span class="mt-1 block text-micro text-muted">{t('marks.detached')}</span>
+				{/if}
 			{/if}
 			{#if hl.note}
 				<span class="margin-note mt-2 block text-small">{hl.note}</span>

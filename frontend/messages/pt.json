@@ -216,6 +216,7 @@
   "account_signed_out_note": "Entre (canto superior direito) para sincronizar sua leitura entre dispositivos.",
   "account_local_note": "Seu progresso de leitura é salvo neste dispositivo.",
   "account_sign_out": "Sair",
+  "marks_detached": "O texto mudou desde que você o destacou.",
   "signout_unsynced_title": "Algumas alterações ainda não foram sincronizadas",
   "signout_unsynced_body": "Estão salvas neste dispositivo, mas ainda não chegaram à sua conta — geralmente porque você está offline. Se sair agora, elas serão removidas deste dispositivo.",
   "signout_stay": "Continuar conectado",

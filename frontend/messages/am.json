@@ -216,6 +216,7 @@
   "account_signed_out_note": "ንባብዎን በሁሉም መሣሪያዎች ላይ ለማሰመር ይግቡ (ከላይ በቀኝ)።",
   "account_local_note": "የንባብ ሂደትዎ በዚህ መሣሪያ ላይ ተቀምጧል።",
   "account_sign_out": "ይውጡ",
+  "marks_detached": "ካደመቁት በኋላ ጽሑፉ ተቀይሯል።",
   "signout_unsynced_title": "አንዳንድ ለውጦች ገና አልተመሳሰሉም",
   "signout_unsynced_body": "በዚህ መሣሪያ ላይ ተቀምጠዋል፣ ግን ገና ወደ መለያዎ አልደረሱም — ብዙውን ጊዜ ከመስመር ውጭ ስለሆኑ ነው። አሁን ከወጡ ከዚህ መሣሪያ ይሰረዛሉ።",
   "signout_stay": "እንደገቡ ይቆዩ",

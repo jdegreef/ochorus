@@ -26,7 +26,7 @@
  * "a long chapter is 76+ blocks and this fires on every paragraph". The longest
  * prose in the app was running the slow version.
  */
-import { onMount } from 'svelte';
+import { onMount, untrack } from 'svelte';
 import { marks, type Segment } from '$lib/marks.svelte';
 import { removeMarkUndoable, clearNoteUndoable } from '$lib/undoable';
 import { renderMarks } from '$lib/rangeMarks';
@@ -39,7 +39,7 @@ import { spokenText, blankFootnoteMarkers } from '$lib/listenText';
 import { shouldFollow } from '$lib/listenFollow';
 import { saveScrollAnchor } from '$lib/progress';
 import { HEADER_OFFSET, prefersReducedMotion } from '$lib/reading';
-import { DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
+import { DEFAULT_HIGHLIGHT, workKey, type WorkKind } from '$lib/reading-schema';
 
 /** How long read-along leaves the page alone after a hand-scroll. */
 const FOLLOW_YIELD_MS = 3000;
@@ -175,15 +175,22 @@ export class ReaderText {
 	// --- Selection bar ---------------------------------------------------------
 
 	/** Highlight, recolour, or un-highlight the selection, in that order. */
+	/** The chapter's block text, for placing marks that moved with a repair. */
+	#paras(): string[] | undefined {
+		const body = this.#o.body();
+		return body ? Array.from(body.children).map((el) => el.textContent ?? '') : undefined;
+	}
+
 	onHighlight = (segments: Segment[], color: string): void => {
-		const existing = marks.groupCovering(segments);
-		if (!existing) marks.add(segments, undefined, color);
+		const paras = this.#paras();
+		const existing = marks.groupCovering(segments, paras);
+		if (!existing) marks.add(segments, undefined, color, paras);
 		else if (marks.getColor(existing) === color) removeMarkUndoable(existing);
 		else marks.setColor(existing, color);
 	};
 
 	highlightColor = (segments: Segment[]): string | null => {
-		const id = marks.groupCovering(segments);
+		const id = marks.groupCovering(segments, this.#paras());
 		return id ? marks.getColor(id) : null;
 	};
 
@@ -198,7 +205,7 @@ export class ReaderText {
 
 	/** Note on a fresh selection: highlight it first, then attach the note. */
 	openNoteForSelection = (segments: Segment[]): void => {
-		const existing = marks.groupCovering(segments);
+		const existing = marks.groupCovering(segments, this.#paras());
 		this.id = existing;
 		this.pending = existing ? [] : segments;
 		this.draft = existing ? marks.getNote(existing) : '';
@@ -213,7 +220,7 @@ export class ReaderText {
 			else marks.setNote(this.id, this.draft);
 			marks.setColor(this.id, this.color);
 		} else if (this.pending.length && this.draft.trim()) {
-			marks.add(this.pending, this.draft, this.color);
+			marks.add(this.pending, this.draft, this.color, this.#paras());
 		}
 		this.open = false;
 	};
@@ -336,7 +343,18 @@ export class ReaderText {
 						query
 					)
 				: [];
-			renderMarks(body, list, this.#editMark, hits);
+			const paras = Array.from(body.children).map((el) => el.textContent ?? '');
+			// Marks made before anchors existed get one from the words they cover
+			// now (see marks.anchorLegacy); the list change re-runs this effect,
+			// which then paints them once.
+			if (
+				list.some((m) => !m.q) &&
+				untrack(() =>
+					marks.anchorLegacy(workKey(o.kind(), o.slug(), o.order()), o.language(), paras)
+				)
+			)
+				return;
+			renderMarks(body, list, this.#editMark, hits, paras);
 
 			// Once per arrival: bring the first match into view. Guarded, or every
 			// highlight edit would yank the reader back up the page.

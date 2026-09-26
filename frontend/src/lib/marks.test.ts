@@ -261,3 +261,43 @@ describe('allByEdition — every edition, each exactly once (#1120)', () => {
 		expect(g).toMatchObject({ kind: 'sermon', slug: 'faith', order: SERMON_CHAPTER_ORDER, edition: 'es' });
 	});
 });
+
+describe('marks.anchorLegacy', () => {
+	beforeEach(() => localStorage.clear());
+
+	it('gives an unanchored mark the words it covers now', () => {
+		marks.load('humility', 1, 'en', 'book');
+		marks.add([{ p: 0, s: 0, e: 5 }]);
+		marks.anchorLegacy('humility:1', 'en', ['Grace upon grace.']);
+		expect(marks.list[0].q).toBe('Grace');
+	});
+
+	it('leaves an untagged (pre-edition) mark alone — its edition is unknown', () => {
+		localStorage.setItem('ochorus:marks', JSON.stringify({ 'humility:1': { m: [{ id: 'old', p: 0, s: 0, e: 5 }] } }));
+		marks.load('humility', 1, 'es', 'book');
+		marks.anchorLegacy('humility:1', 'es', ['Gracia sobre gracia.']);
+		expect(marks.list[0].q).toBeUndefined();
+	});
+
+	it("ignores text from a chapter or edition it hasn't loaded", () => {
+		marks.load('humility', 1, 'en', 'book');
+		marks.add([{ p: 0, s: 0, e: 5 }]);
+		marks.anchorLegacy('humility:2', 'en', ['Other chapter.']);
+		marks.anchorLegacy('humility:1', 'en-modern', ['Other edition.']);
+		expect(marks.list[0].q).toBeUndefined();
+	});
+});
+
+describe('marks after a repair shifted the text', () => {
+	beforeEach(() => localStorage.clear());
+
+	it('finds a moved highlight where the reader sees it, instead of adding a duplicate', () => {
+		marks.load('humility', 1, 'en', 'book');
+		const id = marks.add([{ p: 0, s: 0, e: 5, q: 'Grace' }]);
+		const repaired = ['Truly, Grace upon grace.'];
+		const seen = [{ p: 0, s: 7, e: 12 }];
+		expect(marks.groupCovering(seen, repaired)).toBe(id);
+		marks.add(seen, undefined, undefined, repaired);
+		expect(marks.list).toHaveLength(1);
+	});
+});
