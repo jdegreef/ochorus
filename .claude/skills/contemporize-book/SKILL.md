@@ -86,8 +86,10 @@ How the reader surfaces it (PR, 2026-07-17):
   toggle, and the chapter meta line tags the modern edition.
 - Reading progress / marks stay keyed to the UI locale (not the edition), so a
   reader's place carries across a mid-book edition switch (chapter orders match
-  1:1). Caveat: a character-offset highlight made on one edition may drift on
-  the other's modernized wording — acceptable for v1; revisit if it bites.
+  1:1). Highlights are tagged with the edition they were made on (`lang`), so
+  one made on the original never paints over the modern text, and each carries
+  its words (`q`) so a later wording fix re-finds them or shows them as
+  "text changed" instead of drifting (lib/markAnchor.ts).
 
 ## Extending the light map
 
