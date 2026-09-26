@@ -138,7 +138,7 @@
 	     than announce a heading with nothing beneath it. -->
 	<section class="page-col px-5 pt-14" aria-busy={busy}>
 		<SectionHeader title={t('continue.title')} />
-		<div class="grid gap-4 sm:grid-cols-2" class:lg:grid-cols-4={limit >= 4}>
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2" class:lg:grid-cols-4={limit >= 4}>
 			{#each slots as slot (slot.key)}
 				{#if 'item' in slot}
 					<WorkCard item={slot.item} />
