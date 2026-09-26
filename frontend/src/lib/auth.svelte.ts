@@ -74,6 +74,12 @@ class Auth {
 	// "Admin" entry link (a scoped grantee isn't a super admin, so `isAdmin`
 	// alone would hide the whole area from them).
 	hasAdminAccess = $derived(hasAnyAdminAccess(this.scopes));
+	// Sign-out was asked for while changes on this device hadn't reached the
+	// account (offline, a failed push). The layout shows UnsyncedSignOutDialog.
+	signOutBlocked = $state(false);
+	// Set around an explicit signOut(), so the auth listener that fires during
+	// it wipes rather than stashing what the reader chose to discard.
+	#signingOut = false;
 	// A "Language Admin": has admin access but isn't a super admin. Drives the
 	// role-specific relabelling ("Language Admin" vs "Admin"), the trimmed
 	// dashboard, and the language-admin manual link. UX only — the API enforces
@@ -127,14 +133,17 @@ class Auth {
 		this.initialized = true; // session resolved and token attached (if any)
 		if (data.session) {
 			await this.#pullProfile();
+			readingSync.restoreStash(data.session.user.email ?? '');
 			await readingSync.mergeOnSignIn();
 		}
 
 		sb.auth.onAuthStateChange((_event, session) => {
 			const wasSignedIn = !!this.user;
+			const endingEmail = this.user?.email ?? '';
 			this.#applySession(session);
 			if (session && !wasSignedIn) {
 				this.#pullProfile();
+				readingSync.restoreStash(session.user.email ?? '');
 				readingSync.mergeOnSignIn();
 			} else if (!session && wasSignedIn) {
 				// The session ended for ANY reason — token expiry/revocation, a
@@ -149,7 +158,10 @@ class Auth {
 				this.displayName = '';
 				this.isAdmin = false;
 				this.scopes = [];
-				readingSync.clearOnSignOut();
+				// Not chosen by the reader (expiry, revocation, another tab): what
+				// the account doesn't have yet is set aside for it, not lost.
+				if (this.#signingOut) readingSync.clearOnSignOut();
+				else readingSync.endSession(endingEmail);
 			}
 		});
 	}
@@ -255,18 +267,37 @@ class Auth {
 		return error ? error.code || 'unexpected_failure' : null;
 	}
 
-	async signOut() {
-		// Cancel a pending prefs push — it would fire after the token is gone.
-		clearTimeout(this.#pushTimer);
-		await (await supabase())?.auth.signOut();
-		this.user = null;
-		this.#token = null;
-		this.isAdmin = false;
-		this.scopes = [];
-		this.displayName = '';
-		// Wipe this user's reading data from the device: on a shared browser it
-		// would otherwise be merged into the next account that signs in.
-		readingSync.clearOnSignOut();
+	/**
+	 * Sign out — after getting this device's changes to the account. If some
+	 * can't get there (offline), nothing happens yet: `signOutBlocked` asks the
+	 * reader (UnsyncedSignOutDialog), who can retry or sign out with `force`,
+	 * discarding them. Resolves true once signed out.
+	 */
+	async signOut({ force = false }: { force?: boolean } = {}): Promise<boolean> {
+		if (!force && !(await readingSync.settle())) {
+			this.signOutBlocked = true;
+			return false;
+		}
+		this.signOutBlocked = false;
+		// Held until the wipe below is done: the auth listener can fire late,
+		// and must not stash what the reader just chose to discard.
+		this.#signingOut = true;
+		try {
+			// Cancel a pending prefs push — it would fire after the token is gone.
+			clearTimeout(this.#pushTimer);
+			await (await supabase())?.auth.signOut();
+			this.user = null;
+			this.#token = null;
+			this.isAdmin = false;
+			this.scopes = [];
+			this.displayName = '';
+			// Wipe this user's reading data from the device: on a shared browser it
+			// would otherwise be merged into the next account that signs in.
+			readingSync.clearOnSignOut();
+		} finally {
+			queueMicrotask(() => (this.#signingOut = false));
+		}
+		return true;
 	}
 
 	/** Pull the saved profile and apply reading preferences locally. */

@@ -28,6 +28,9 @@ vi.mock('./readingSync', () => ({
 		setSignedIn() {},
 		mergeOnSignIn: async () => {},
 		clearOnSignOut() {},
+		endSession() {},
+		restoreStash() {},
+		settle: async () => true,
 		pushProgress() {},
 		pushActivity() {},
 		setFinished() {}

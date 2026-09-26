@@ -28,6 +28,7 @@
 	import { isReaderRoute } from '$lib/readerRoutes';
 	import CommandPalette from '$lib/components/CommandPalette.svelte';
 	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
+	import UnsyncedSignOutDialog from '$lib/components/UnsyncedSignOutDialog.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
@@ -573,6 +574,11 @@
      is only ever set from the signed-in branch above. -->
 {#if feedbackOpen}
 	<FeedbackDialog onClose={() => (feedbackOpen = false)} />
+{/if}
+<!-- Sign-out asked for with changes still on this device only (both the
+     account dropdown and settings route through auth.signOut). -->
+{#if auth.signOutBlocked}
+	<UnsyncedSignOutDialog />
 {/if}
 
 <style>

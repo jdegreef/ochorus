@@ -33,6 +33,8 @@ import {
 	LAST_SYNC_KEY,
 	READING_DATA_KEYS,
 	SIGN_OUT_DATA_KEYS,
+	SYNC_OWED_KEY,
+	SYNC_STASH_KEY,
 	migrateLegacySermonState,
 	workKey,
 	workSlugKey,
@@ -143,12 +145,58 @@ export const JOURNAL_PENDING_EVENT = 'ochorus:journal-pending';
 class ReadingSync {
 	signedIn = false;
 	#timers = new Map<string, ReturnType<typeof setTimeout>>();
+	/** The push each pending timer will run, so a sign-out can run it now. */
+	#queued = new Map<string, () => unknown>();
 	#flushing = false;
 
 	constructor() {
 		// Back online: deliver what was written while the connection was down,
-		// instead of waiting for the next sign-in merge to carry it.
-		if (browser) window.addEventListener('online', () => void this.flushJournal());
+		// instead of waiting for the next sign-in merge to carry it. A failed
+		// push of anything else is recovered by a merge, which uploads the whole
+		// cache (the account unions it).
+		if (browser)
+			window.addEventListener('online', () => {
+				if (this.signedIn && this.#owed()) void this.mergeOnSignIn();
+				else void this.flushJournal();
+			});
+	}
+
+	/** A push failed: the device now holds changes the account doesn't. */
+	#owe() {
+		try {
+			localStorage.setItem(SYNC_OWED_KEY, String(Date.now()));
+		} catch {
+			/* storage full — the next merge still uploads everything */
+		}
+	}
+
+	#owed(): boolean {
+		return browser && !!localStorage.getItem(SYNC_OWED_KEY);
+	}
+
+	/** Changes on this device the account doesn't have yet: a push still
+	 *  waiting on its debounce, one that failed, or journal entries owed. */
+	hasUnsynced(): boolean {
+		if (!browser) return false;
+		return this.#timers.size > 0 || this.#owed() || Object.keys(this.#pendingJournal()).length > 0;
+	}
+
+	/**
+	 * Get everything on this device to the account before the session ends:
+	 * run the pending pushes now instead of on their timers, and if anything is
+	 * still owed, merge (which uploads the whole cache). Resolves true when the
+	 * account has it all — false means signing out now would lose changes.
+	 */
+	async settle(): Promise<boolean> {
+		if (!browser) return true;
+		if (!this.signedIn) return !this.hasUnsynced();
+		const queued = [...this.#queued.values()];
+		for (const timer of this.#timers.values()) clearTimeout(timer);
+		this.#timers.clear();
+		this.#queued.clear();
+		await Promise.all(queued.map((fn) => fn()));
+		if (this.hasUnsynced()) await this.mergeOnSignIn();
+		return !this.hasUnsynced();
 	}
 
 	setSignedIn(v: boolean) {
@@ -185,12 +233,14 @@ class ReadingSync {
 	}
 
 	/** Debounce a push, coalescing rapid updates to the same resource. */
-	#debounce(key: string, fn: () => void, ms = 800) {
+	#debounce(key: string, fn: () => unknown, ms = 800) {
 		clearTimeout(this.#timers.get(key));
+		this.#queued.set(key, fn);
 		this.#timers.set(
 			key,
 			setTimeout(() => {
 				this.#timers.delete(key);
+				this.#queued.delete(key);
 				fn();
 			}, ms)
 		);
@@ -221,7 +271,7 @@ class ReadingSync {
 			})
 		})
 			.then(() => this.#markSynced())
-			.catch(() => {});
+			.catch(() => this.#owe());
 	}
 
 	pushProgress(kind: WorkKind, slug: string, rec: ProgressRecord) {
@@ -230,7 +280,7 @@ class ReadingSync {
 			// Re-assert a finished stamp the record carries so the server keeps it
 			// (it unions — the earliest wins, an omitted value never clears). A plain
 			// position save of an unfinished work sends nothing extra.
-			this.#putProgress(kind, slug, rec, rec.finished_at ? { finished_at: rec.finished_at } : {});
+			return this.#putProgress(kind, slug, rec, rec.finished_at ? { finished_at: rec.finished_at } : {});
 		});
 	}
 
@@ -248,6 +298,7 @@ class ReadingSync {
 		const key = `p:${workSlugKey(kind, slug)}`;
 		clearTimeout(this.#timers.get(key));
 		this.#timers.delete(key);
+		this.#queued.delete(key);
 		// Finishing sends the stamp (server unions it); un-finishing sends the
 		// explicit clear signal instead — the one thing that clears it.
 		this.#putProgress(kind, slug, rec, finished ? { finished_at: rec.finished_at } : { unfinish: true });
@@ -294,7 +345,7 @@ class ReadingSync {
 	) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`m:${workKey(kind, slug, order)}`, () => {
-			apiFetch(`/api/reading/marks/${slug}/${order}/${this.#kindQuery(kind)}`, {
+			return apiFetch(`/api/reading/marks/${slug}/${order}/${this.#kindQuery(kind)}`, {
 				method: 'PUT',
 				// `deleted` is always present (even when empty): it is the signal that
 				// this client speaks the tombstone protocol, so the server unions
@@ -302,7 +353,7 @@ class ReadingSync {
 				body: JSON.stringify({ kind, language, marks, deleted })
 			})
 				.then(() => this.#markSynced())
-				.catch(() => {});
+				.catch(() => this.#owe());
 		});
 	}
 
@@ -310,9 +361,9 @@ class ReadingSync {
 	pushActivity(day: string) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`a:${day}`, () => {
-			apiFetch(`/api/reading/activity/${day}/`, { method: 'PUT' })
+			return apiFetch(`/api/reading/activity/${day}/`, { method: 'PUT' })
 				.then(() => this.#markSynced())
-				.catch(() => {});
+				.catch(() => this.#owe());
 		});
 	}
 
@@ -322,12 +373,12 @@ class ReadingSync {
 	pushSessions(sessions: SessionSync[]) {
 		if (!this.signedIn || !browser || !sessions.length) return;
 		this.#debounce(`s:${sessions[0].client_id}`, () => {
-			apiFetch('/api/reading/sessions/', {
+			return apiFetch('/api/reading/sessions/', {
 				method: 'PUT',
 				body: JSON.stringify({ sessions })
 			})
 				.then(() => this.#markSynced())
-				.catch(() => {});
+				.catch(() => this.#owe());
 		});
 	}
 
@@ -343,7 +394,7 @@ class ReadingSync {
 			keepalive: true
 		})
 			.then(() => this.#markSynced())
-			.catch(() => {});
+			.catch(() => this.#owe());
 	}
 
 	/** Mirror a heart toggle (kind: author | book | plan | sermon). */
@@ -355,14 +406,14 @@ class ReadingSync {
 			// carries it instead, so an offline un-heart isn't lost.
 			const at = active ? null : pendingAt('favorite', kind, slug);
 			const query = at ? `?at=${at}` : '';
-			apiFetch(`/api/reading/favorites/${kind}/${slug}/${query}`, {
+			return apiFetch(`/api/reading/favorites/${kind}/${slug}/${query}`, {
 				method: active ? 'PUT' : 'DELETE'
 			})
 				.then(() => {
 					if (at) clearPending('favorite', kind, slug, at);
 					this.#markSynced();
 				})
-				.catch(() => {});
+				.catch(() => this.#owe());
 		});
 	}
 
@@ -379,24 +430,25 @@ class ReadingSync {
 		const key = `p:${workSlugKey(kind, slug)}`;
 		clearTimeout(this.#timers.get(key));
 		this.#timers.delete(key);
+		this.#queued.delete(key);
 		apiFetch(`/api/reading/progress/${slug}/?kind=${kind}&at=${at}`, { method: 'DELETE' })
 			.then(() => {
 				clearPending('progress', kind, slug, at);
 				this.#markSynced();
 			})
-			.catch(() => {});
+			.catch(() => this.#owe());
 	}
 
 	/** Mirror a saved bookmark to the account (a paragraph the reader saved). */
 	pushBookmark(kind: WorkKind, slug: string, bm: Bookmark) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`bm:${workSlugKey(kind, slug)}:${bm.order}:${bm.p}`, () => {
-			apiFetch(`/api/reading/bookmarks/${kind}/${slug}/${bm.order}/${bm.p}/`, {
+			return apiFetch(`/api/reading/bookmarks/${kind}/${slug}/${bm.order}/${bm.p}/`, {
 				method: 'PUT',
 				body: JSON.stringify({ bm_id: bm.id, snippet: bm.snippet, title: bm.title })
 			})
 				.then(() => this.#markSynced())
-				.catch(() => {});
+				.catch(() => this.#owe());
 		});
 	}
 
@@ -409,14 +461,14 @@ class ReadingSync {
 			const target = bookmarkTarget(slug, order, p);
 			const at = pendingAt('bookmark', kind, target);
 			const query = at ? `?at=${at}` : '';
-			apiFetch(`/api/reading/bookmarks/${kind}/${slug}/${order}/${p}/${query}`, {
+			return apiFetch(`/api/reading/bookmarks/${kind}/${slug}/${order}/${p}/${query}`, {
 				method: 'DELETE'
 			})
 				.then(() => {
 					if (at) clearPending('bookmark', kind, target, at);
 					this.#markSynced();
 				})
-				.catch(() => {});
+				.catch(() => this.#owe());
 		});
 	}
 
@@ -459,7 +511,7 @@ class ReadingSync {
 		this.#setPending({ ...this.#pendingJournal(), [e.id]: e.updatedAt });
 		if (!this.signedIn) return;
 		this.#debounce(`j:${e.id}`, () => {
-			apiFetch(`/api/reading/journal/${e.id}/`, {
+			return apiFetch(`/api/reading/journal/${e.id}/`, {
 				method: 'PUT',
 				body: JSON.stringify(toServer(e))
 			})
@@ -467,7 +519,7 @@ class ReadingSync {
 					this.#confirmJournal([e]);
 					this.#markSynced();
 				})
-				.catch(() => {});
+				.catch(() => this.#owe());
 		});
 	}
 
@@ -521,12 +573,12 @@ class ReadingSync {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`sh:${shelf.id}`, () => {
 			const latest = readJson<ShelvesStore>(SHELVES_KEY, {})[shelf.id] ?? shelf;
-			apiFetch(`/api/reading/shelves/${latest.id}/`, {
+			return apiFetch(`/api/reading/shelves/${latest.id}/`, {
 				method: 'PUT',
 				body: JSON.stringify(shelfToServer(latest))
 			})
 				.then(() => this.#markSynced())
-				.catch(() => {});
+				.catch(() => this.#owe());
 		});
 	}
 
@@ -534,12 +586,12 @@ class ReadingSync {
 	pushPlan(slug: string, state: PlanState) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`plan:${slug}`, () => {
-			apiFetch(`/api/reading/plan/${slug}/`, {
+			return apiFetch(`/api/reading/plan/${slug}/`, {
 				method: 'PUT',
 				body: JSON.stringify({ started_at: state.startedAt, done: state.done })
 			})
 				.then(() => this.#markSynced())
-				.catch(() => {});
+				.catch(() => this.#owe());
 		});
 	}
 
@@ -680,7 +732,9 @@ class ReadingSync {
 			const serverKnowsKinds = serverRows.some((r) => 'kind' in r);
 			if (sentSermonRows && serverRows.length > 0 && !serverKnowsKinds) return;
 			if (state.journal) this.#confirmJournal(journalSent);
-			this.#writeState(state);
+			this.#writeState(state, localMarks);
+			// The account now holds everything this device sent.
+			localStorage.removeItem(SYNC_OWED_KEY);
 			this.#markSynced();
 			// Whatever didn't fit the merge's share goes now, one entry at a time.
 			if (state.journal) void this.flushJournal();
@@ -712,6 +766,51 @@ class ReadingSync {
 	 */
 	clearDeviceData() {
 		this.#wipe(READING_DATA_KEYS);
+		if (browser) localStorage.removeItem(SYNC_STASH_KEY);
+	}
+
+	/**
+	 * A session ended WITHOUT the reader choosing to — token expiry or
+	 * revocation, a sign-out in another tab. Nobody can be asked, so anything
+	 * the account doesn't have yet is set aside for that same account before the
+	 * usual wipe (restoreStash puts it back at its next sign-in). It is never
+	 * merged into anyone else's: a different account signing in discards it.
+	 */
+	endSession(email: string) {
+		if (browser && email && this.hasUnsynced()) {
+			const data: Record<string, string> = {};
+			for (const key of SIGN_OUT_DATA_KEYS) {
+				const v = localStorage.getItem(key);
+				if (v !== null) data[key] = v;
+			}
+			this.clearOnSignOut();
+			try {
+				localStorage.setItem(SYNC_STASH_KEY, JSON.stringify({ email, at: Date.now(), data }));
+			} catch {
+				/* storage full — the data is lost, as it was before the stash */
+			}
+			return;
+		}
+		this.clearOnSignOut();
+	}
+
+	/**
+	 * At sign-in, before the merge: give a stash back to the account it was
+	 * set aside for (onto an empty cache only — never over this session's own
+	 * data), and drop it for anyone else or once it is a month old.
+	 */
+	restoreStash(email: string) {
+		if (!browser) return;
+		const stash = readJson<{ email?: string; at?: number; data?: Record<string, string> }>(
+			SYNC_STASH_KEY,
+			{}
+		);
+		localStorage.removeItem(SYNC_STASH_KEY);
+		const fresh = Date.now() - (stash.at ?? 0) < 30 * 24 * 60 * 60 * 1000;
+		if (!email || stash.email !== email || !fresh || !stash.data) return;
+		for (const [key, value] of Object.entries(stash.data)) {
+			if (localStorage.getItem(key) === null) localStorage.setItem(key, value);
+		}
 	}
 
 	/** Cancel in-flight debounced pushes (they'd 401 after sign-out), remove the
@@ -722,14 +821,18 @@ class ReadingSync {
 		if (!browser) return;
 		for (const timer of this.#timers.values()) clearTimeout(timer);
 		this.#timers.clear();
+		this.#queued.clear();
 		for (const key of keys) localStorage.removeItem(key);
 		// Let open views (reader marks, continue-reading cards, plan pages) know
 		// the cache was emptied underneath them.
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));
 	}
 
-	/** Overwrite the local cache with server state (used after a merge/pull). */
-	#writeState(state: ServerState) {
+	/** Overwrite the local cache with server state (used after a merge/pull).
+	 *  `sentMarks` is the marks cache as it was sent: a chapter whose marks
+	 *  changed since (a highlight made while the merge was in flight) keeps its
+	 *  local version, which its own queued push carries to the account. */
+	#writeState(state: ServerState, sentMarks: MarksStore = {}) {
 		if (!browser) return;
 		const progress: ProgressMap = {};
 		for (const p of state.progress) {
@@ -747,6 +850,9 @@ class ReadingSync {
 		const marks: MarksStore = {};
 		for (const m of state.marks) {
 			marks[workKey(m.kind ?? 'book', m.book_slug, m.chapter_order)] = { m: m.marks ?? [] };
+		}
+		for (const [key, entry] of Object.entries(readJson<MarksStore>(MARKS_KEY, {}))) {
+			if (JSON.stringify(entry) !== JSON.stringify(sentMarks[key])) marks[key] = entry;
 		}
 		localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
 		localStorage.setItem(MARKS_KEY, JSON.stringify(marks));
