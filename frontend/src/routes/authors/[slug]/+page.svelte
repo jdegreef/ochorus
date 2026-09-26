@@ -18,6 +18,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
+	import { tabStrip } from '$lib/actions/tabStrip';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
@@ -531,7 +532,10 @@
 			style="top: var(--appnav-h, 0px)"
 			aria-label={t('a11y.pageSections')}
 		>
-			<ul class="flex justify-center gap-1 overflow-x-auto">
+			<!-- Centred when the tabs fit, start-aligned when they don't: plain
+			     `justify-center` on a scroller pushed the first tabs past the
+			     start edge, out of scroll reach. -->
+			<ul class="tab-strip flex justify-center-safe gap-1" use:tabStrip={spy.active}>
 				{#each navItems as item (item.id)}
 					<li>
 						<a

@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import {
 	bookProgressPercent,
 	chapterLabel,
+	chapterName,
+	chapterNameIn,
 	contentLang,
 	minutesLeft,
 	readingMinutes,
@@ -146,5 +148,22 @@ describe('chapterLabel', () => {
 	it('treats null and undefined as untitled', () => {
 		expect(chapterLabel(2, null)).toBe(chapterLabel(2, ''));
 		expect(chapterLabel(2, undefined)).toBe(chapterLabel(2, ''));
+	});
+});
+
+describe('chapterNameIn', () => {
+	it('says which chapter when its title just repeats the book title', () => {
+		// A single-work volume: "Absolute Surrender" under "Absolute Surrender".
+		expect(chapterNameIn(1, 'Absolute Surrender', 'Absolute Surrender')).toBe(chapterName(1, ''));
+	});
+
+	it('keeps a chapter title that differs from the book', () => {
+		expect(chapterNameIn(2, 'The Fruit of the Spirit is Love', 'Absolute Surrender')).toBe(
+			'The Fruit of the Spirit is Love'
+		);
+	});
+
+	it('names an untitled chapter as chapterName does', () => {
+		expect(chapterNameIn(3, null, 'Purpose in Prayer')).toBe(chapterName(3, null));
 	});
 });
