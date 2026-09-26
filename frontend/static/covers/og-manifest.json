@@ -174,6 +174,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/prayer-the-pulse-of-life": {
+			"ground": "2a1409b1f11373ce3d3418f8d47947f72edc2532a5411043298aa0e57ca55abe",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/school-of-prayer": {
 			"ground": "ead7a3d913963925a5cd99f179f14f5127de20711406c28d34c67404b264cb48",
 			"style": "devotional",
