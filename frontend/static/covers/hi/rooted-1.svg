@@ -1,0 +1,24 @@
+<svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" role="presentation">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#3f6b3a"/>
+      <stop offset="1" stop-color="#223a1f"/>
+    </linearGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.42" r="0.78">
+      <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.34"/>
+    </radialGradient>
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="1.5" height="4" fill="black" opacity="0.11"/></pattern>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#grain) none"/>
+  <rect width="600" height="800" fill="url(#vig)"/>
+  <g transform="translate(240 520) scale(2.50000)">
+		<circle cx="24" cy="19" r="15" fill="#a7c9e8" fill-opacity=".35"/>
+		<path d="M33 5l1.9 4.6 4.9.5-3.7 3.3 1.1 4.8L33 15.9l-4.3 2.3 1.1-4.8-3.7-3.3 4.9-.5z" fill="#d9a441"/>
+		<path d="M23 6.5l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9z" fill="#d9a441" fill-opacity=".85"/>
+		<path d="M6 41h36v3H6z" fill="#3d7434"/>
+		<path d="M6 41c6-9 14-9 19-3 4 4.8 9 5 11 2v4H6z" fill="#5a9e4d"/>
+		<path d="M20 43c1-6 8-8 6-15-1.5-5 3-7 5-10" stroke="#e0c69a" stroke-width="3" fill="none" stroke-linecap="round"/>
+		<path d="M20 43c1-6 8-8 6-15-1.5-5 3-7 5-10" stroke="#fdfaf3" stroke-width="1.1" fill="none" stroke-linecap="round"/></g>
+</svg>

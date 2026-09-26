@@ -1884,6 +1884,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/brave-for-god-2": {
+			"ground": "59c90637afee331749b06af5b2cf9c6d1f28c7ad99eaf56220146662ecd95320",
+			"style": "young",
+			"volume": "2",
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/cheque-book": {
 			"ground": "c32dd75a9953a303a120e10e57510fb3eb940ee183120aeb4dd1352bec890cb0",
 			"style": "revival",
@@ -2084,6 +2094,26 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/rooted-1": {
+			"ground": "c055b863f3683399738c92836f7f89327ed42da2acccfb35e1a097e0381f13dd",
+			"style": "young",
+			"volume": "1",
+			"script": "devanagari",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/rooted-2": {
+			"ground": "ffe071348772a44144af132c25cbdf70c450631f3dfa48bf7f1d843df5edacb2",
+			"style": "young",
+			"volume": "2",
+			"script": "devanagari",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/school-of-prayer": {
 			"ground": "46d7b90b72f8801959f1089efa97498866a92426cf59694027135d787ab853dc",
 			"style": "devotional",
@@ -2211,6 +2241,16 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.6,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
+		"hi/thoughts-for-the-quiet-hour": {
+			"ground": "53c418d14dc6d55f003296e6af05dedf13f4cd9ba08e1148d8ab6d2636e05f4e",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.65,
 			"layout": "wash/ochre",
 			"bar": 0
 		},
