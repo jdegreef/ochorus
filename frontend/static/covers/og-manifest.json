@@ -1914,6 +1914,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/confessions": {
+			"ground": "d258c1861131c3a0ecf0891d61969b65a6279fd3905569ab7ce016c718a3d179",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0
+		},
 		"hi/divine-healing": {
 			"ground": "b4a55c076d68456f5a23110c93c75a2c872c5445b0e0a8228910f6594ce7dd62",
 			"style": "devotional",
