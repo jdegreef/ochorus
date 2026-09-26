@@ -36,19 +36,25 @@
 <article
 	id={author.slug}
 	style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
-	class="card-tint group relative rounded-card border border-border p-5"
+	class="bio-card card-tint group relative rounded-card border border-border p-5"
 >
-	<!-- Portrait beside the text from sm up. In the old two-up grid each row was
+	<!-- Phone (below sm): a compact row — a small portrait beside the name, dates
+	     and works line, the summary clamped to two lines across the full width
+	     beneath, no cover rail or second read-more (the whole card already opens
+	     the biography). About three writers a screen instead of one and a half;
+	     the grid in <style> places it. Tablet and desktop keep the full card.
+
+	     Portrait beside the text from sm up. In the old two-up grid each row was
 	     as tall as its TALLER card, so a 171-character bio next to a 640-character
 	     one left a hole; one writer per row makes every row independent and the
 	     hole cannot form. On a phone the side-by-side left the bio in a ~219px
 	     column that wrapped every 2–3 words, so below sm the portrait sits ABOVE
 	     the text and the bio gets the full card width. -->
-	<div class="flex flex-col gap-4 sm:flex-row sm:gap-5">
+	<div class="bio-row flex flex-col gap-4 sm:flex-row sm:gap-5">
 		<a
 			href={localizeHref(`/authors/${author.slug}`)}
 			data-sveltekit-preload-data="hover"
-			class="shrink-0 hover:no-underline"
+			class="bio-pic shrink-0 hover:no-underline"
 		>
 			{#if author.photo_url}
 				{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
@@ -61,18 +67,18 @@
 					loading="lazy"
 					width="112"
 					height="112"
-					class="h-24 w-24 rounded-full border border-border object-cover grayscale transition-[filter] duration-[var(--duration-base)] group-hover:grayscale-0 sm:h-28 sm:w-28"
+					class="h-14 w-14 rounded-full border border-border object-cover grayscale transition-[filter] duration-[var(--duration-base)] group-hover:grayscale-0 sm:h-28 sm:w-28"
 					style="object-position: {portraitPosition(author.slug)}"
 				/>
 			{:else}
 				<span
-					class="font-display text-h1 flex h-24 w-24 items-center justify-center rounded-full bg-accent-soft font-semibold text-accent sm:h-28 sm:w-28"
+					class="font-display text-h3 sm:text-h1 flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft font-semibold text-accent sm:h-28 sm:w-28"
 				>
 					{initials(author.name)}
 				</span>
 			{/if}
 		</a>
-		<div class="min-w-0 flex-1">
+		<div class="bio-text min-w-0 flex-1">
 			<h2 class="text-h2">
 				<!-- Stretched link: the ::after covers the whole card, so the dead
 				     space between the name and the CTA is clickable too. Links that
@@ -139,7 +145,7 @@
 			     the clamp stays only as a safety net that also holds every row to
 			     the same height. The full text is one click away on the author
 			     page, which the CTA below already points at. -->
-			<p class="mt-3 line-clamp-5 text-body leading-relaxed text-muted sm:line-clamp-4">{author.bio}</p>
+			<p class="bio-sum mt-3 line-clamp-2 text-body leading-relaxed text-muted sm:line-clamp-4">{author.bio}</p>
 	{/if}
 	<!-- The "View biography →" CTA above already serves book-less authors;
 	     add the read-more only where the CTA is a book count AND there is
@@ -147,7 +153,7 @@
 	{#if author.book_count > 0 && author.bio}
 		<a
 			href={localizeHref(`/authors/${author.slug}`)}
-			class="mt-1.5 inline-block text-small font-semibold text-accent"
+			class="mt-1.5 hidden text-small font-semibold text-accent sm:inline-block"
 		>
 			{t('bios.readMore')} →
 		</a>
@@ -170,7 +176,7 @@
 	     a hard clip. -->
 	{#if shelf.length}
 			<div
-			class="cover-rail mt-4 flex gap-3 pb-1"
+			class="cover-rail mt-4 hidden gap-3 pb-1 sm:flex"
 			aria-label={t('nav.books')}
 		>
 				{#each shelf.slice(0, SHELF_MAX) as book (book.slug)}
@@ -197,3 +203,40 @@
 		</div>
 	</div>
 </article>
+
+<style>
+	/* Phone: portrait (col 1, spanning the name + works rows) beside the text;
+	   `display: contents` lets the text column's children join the grid so the
+	   summary can run the full width under both. A divided list rather than
+	   stacked cards, so each writer costs a quarter of a screen, not two thirds. */
+	@media (max-width: 639.98px) {
+		.bio-card {
+			padding: 0.85rem 0.15rem;
+			border-width: 0 0 1px;
+			border-radius: 0;
+			background: transparent;
+		}
+		.bio-row {
+			display: grid;
+			grid-template-columns: 3.5rem minmax(0, 1fr);
+			column-gap: 0.85rem;
+			row-gap: 0.1rem;
+			align-items: center;
+		}
+		.bio-pic {
+			grid-row: span 2;
+			align-self: start;
+		}
+		.bio-text {
+			display: contents;
+		}
+		.bio-text > h2 {
+			font-size: var(--fs-h3);
+		}
+		.bio-sum {
+			grid-column: 1 / -1;
+			margin-top: 0.35rem;
+			font-size: var(--fs-small);
+		}
+	}
+</style>

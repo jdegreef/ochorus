@@ -390,7 +390,12 @@
 
 	<!-- A–Z rail: jump to the first writer under each initial (name sort only). -->
 	{#if filters.values.sort === 'name' && sorted.length > 1}
-		<nav class="mt-1.5 hidden flex-wrap gap-x-1 gap-y-0.5 text-small sm:flex" aria-label={t('bios.jumpAz')}>
+		<!-- On a phone a single row that swipes sideways (it used to hide there
+		     entirely); from sm up it wraps as before. -->
+		<nav
+			class="az-rail mt-1.5 flex gap-x-1 gap-y-0.5 overflow-x-auto text-small [scrollbar-width:none] sm:flex-wrap sm:overflow-visible"
+			aria-label={t('bios.jumpAz')}
+		>
 			{#each AZ as letter (letter)}
 				{#if firstByLetter.has(letter)}
 					<!-- A BUTTON, not an anchor. Paging paints 24 rows, so a writer under
@@ -399,11 +404,11 @@
 					     Reveal first, then scroll; and with no href there is no dangling
 					     fragment in the static output. -->
 					<button
-						class="rounded-sm px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
+						class="shrink-0 rounded-sm px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
 						onclick={() => jumpTo(firstByLetter.get(letter)!)}>{letter}</button
 					>
 				{:else}
-					<span class="px-1.5 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
+					<span class="shrink-0 px-1.5 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
 				{/if}
 			{/each}
 		</nav>
