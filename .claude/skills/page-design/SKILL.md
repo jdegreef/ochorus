@@ -268,6 +268,13 @@ lists content types, **in the same order** everywhere:
 - [ ] `CatalogLanguageNudge`'s `kind` union
 - [ ] a `/og/<section>.png` card for pages without their own image
 - [ ] the guard lists in `lib/pageShell.test.ts` (`BROWSE_PAGES` / `LEAF_PAGES`)
+- [ ] for a **per-language** work (one row per language, loaded through
+      `localized()`, which retries a 404 in English): build the head with
+      `editionSeo(path, available_languages, languageFallback(getLang(), x.language))`
+      and render `<LanguageFallbackNotice>` under the breadcrumb — else the
+      localized URL shows English with no word about it and a canonical claiming
+      it is the translation. Books, chapters, sermons, plans and articles do this
+      (#4038).
 
 Articles, Scripture and Quotes each failed several of these: footer-only,
 absent from the palette and from search.
@@ -405,9 +412,11 @@ and expect a blank screenshot right after a JS scroll; read the footer with
   JSON-LD blocks. Map an `{#if x.length}{@html xLd}{/if}` gate to
   `structuredData={x.length ? [xLd] : []}`. A page that destructured
   `const { alternates, xDefault } = hreflangAll(...)` for the loop passes the
-  whole object instead: `const hreflang = hreflangAll(...)`. There is **no**
-  shared canonical helper — `${SITE_URL}${localizeHref(path)}` is the repo-wide
-  idiom (16 files); `absUrl()` is wrong here (it omits the locale prefix).
+  whole object instead: `const hreflang = hreflangAll(...)`. For a
+  per-language work use `editionSeo()` (`lib/languageFallback.ts`), which
+  builds hreflang and a canonical that follows the edition actually shown;
+  elsewhere `${SITE_URL}${localizeHref(path)}` is the repo-wide idiom.
+  `absUrl()` is wrong here (it omits the locale prefix).
 - **`<header>` → `<PageHeader>`** carries the eyebrow/title/tagline; keep a
   page hand-rolled only when its `<h1>` is genuinely composite (the era page's
   name + date-range badge), and then match PageHeader's metrics exactly
