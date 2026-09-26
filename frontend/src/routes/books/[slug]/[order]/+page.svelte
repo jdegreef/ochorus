@@ -77,10 +77,12 @@
 	// only the locales this book actually exists in (chapter counts match across
 	// a book's translations, so the same order URL resolves in each).
 	const seoPath = $derived(`/books/${slug}/${chapter.order}/`);
-	// A missing edition renders the English one (see languageFallback) — except
-	// under ?edition=modern, where English is what the reader asked for.
-	const fallback = $derived(edition ? null : languageFallback(getLang(), language));
-	const seo = $derived(editionSeo(seoPath, chapter.available_languages, fallback));
+	// A missing edition renders the English one (see languageFallback). The
+	// canonical follows it always; the notice not under ?edition=modern, where
+	// English is what the reader asked for.
+	const shownElsewhere = $derived(languageFallback(getLang(), language));
+	const fallback = $derived(edition ? null : shownElsewhere);
+	const seo = $derived(editionSeo(seoPath, chapter.available_languages, shownElsewhere));
 	const hreflang = $derived(seo.hreflang);
 	const canonical = $derived(seo.canonical);
 

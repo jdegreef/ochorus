@@ -28,6 +28,12 @@
 
 	const t = i18n.t;
 	let dismissed = $state(false);
+	// A client-side nav to another work reuses this instance (prev/next sermon,
+	// a related article): a new fallback is a new notice.
+	$effect(() => {
+		void fallback;
+		dismissed = false;
+	});
 </script>
 
 {#if fallback && !dismissed}
@@ -37,9 +43,10 @@
 		role="status"
 		aria-labelledby="fallback-title"
 	>
-		<h2 id="fallback-title" class="text-small font-semibold text-text">
+		<!-- Not a heading: it sits above the page's <h1>. -->
+		<p id="fallback-title" class="text-small font-semibold text-text">
 			{t('fallback.title').replace('%lang%', want)}
-		</h2>
+		</p>
 		<p class="mt-1 text-small text-muted">
 			{t('fallback.body').replace('%lang%', localeName(fallback.shown))}
 		</p>
