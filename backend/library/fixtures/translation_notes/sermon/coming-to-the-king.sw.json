@@ -1,0 +1,75 @@
+{
+ "kind": "sermon",
+ "slug": "coming-to-the-king",
+ "language": "sw",
+ "job_issue": 3941,
+ "pull_request": 3953,
+ "references": [
+  {
+   "reference": "1 Kings 10:13",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Song of Solomon 1:6",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "1 Kings 10:2a",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "1 Kings 10:3",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Kings 10:2b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Kings 10:5b",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "1 Kings 10:6-9",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Isaiah 24:23b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 33:17a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Kings 10:8",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Hebrews 13:5b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Isaiah 6:8a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "holy-in-christ.sw.json"
+  }
+ ]
+}
