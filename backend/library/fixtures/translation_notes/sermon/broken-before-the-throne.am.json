@@ -1,0 +1,266 @@
+{
+ "kind": "sermon",
+ "slug": "broken-before-the-throne",
+ "language": "am",
+ "job_issue": 3668,
+ "pull_request": null,
+ "note": [
+  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
+  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
+  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "2 Chronicles 7:13",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Chronicles 7:14",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 1:18",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 1:28",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 10
+  },
+  {
+   "reference": "Acts 1:14",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:11",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:12",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:15",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 12
+  },
+  {
+   "reference": "John 17:21",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 17:23",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Ephesians 1:15",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 1:17",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 64:1",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 42:1",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Exodus 32:15",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Exodus 32:21",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Exodus 32:25",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Exodus 32:30",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Exodus 32:27",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Exodus 32:34",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Exodus 32:32",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Exodus 33:1",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Exodus 23:21",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Exodus 33:3",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Exodus 33:4",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Exodus 33:7",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "John 14:9",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 78
+  },
+  {
+   "reference": "Exodus 33:12",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 18:5",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 90
+  },
+  {
+   "reference": "Exodus 33:20",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Exodus 33:21",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Exodus 17:6",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Numbers 20:8",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Numbers 20:12",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Exodus 34:2",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "Exodus 33:22",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Psalm 24:4",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 112
+  },
+  {
+   "reference": "Isaiah 64:1",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 116
+  },
+  {
+   "reference": "Luke 12:48",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 119
+  },
+  {
+   "reference": "Titus 1:2",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Lamentations 5:21",
+   "status": "self_rendered",
+   "block_index": 121
+  }
+ ]
+}
