@@ -1115,11 +1115,11 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # kept it, with the small caps flattened as everywhere else in the body.
         #
         # One pair PER EDITION, each anchored on that language's next paragraph
-        # so it can only bite its own row: the fr and sw translations were made
-        # from the damaged English and carry the same truncation at the same
-        # block. All three move together or `tests_translation_markup`'s tag
-        # parity breaks. The fr follows its title ("Un cordon bleu"); the sw
-        # follows its title ("Uzi wa Rangi ya Samawi", Union Version wording).
+        # so it can only bite its own row: the fr, sw and pt translations carry
+        # the same truncation at the same block. All four move together or
+        # `tests_translation_markup`'s tag parity breaks. The fr follows its
+        # title ("Un cordon bleu"); the sw follows its title ("Uzi wa Rangi ya
+        # Samawi", Union Version wording); the pt follows its title ("Fita azul").
         # The sw translation notes' `block_index` values after the new block
         # shifted by one in the same commit; the one quote anchored in this
         # sermon (`quote_seed`, paragraph 6) sits above it.
@@ -1130,6 +1130,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
              "<p>« CORDON BLEU ».</p>"),
             ("<p>MUNGU alitaka watu wake wote wavae alama.",
              '<p>"UZI WA RANGI YA SAMAWI."</p>'),
+            # pt
+            ("<p>Deus queria que todo o seu povo usasse u", '<p>"FITA AZUL."</p>'),
         ],
     },
     # --- The rest of Gutenberg #23438, "A Ribband of Blue" --------------------
@@ -1249,6 +1251,20 @@ BODY_CORRECTIONS: dict[str, dict] = {
              "<h3>المقابلة.</h3>"),
             ("<p>لا حاجة إلى الإطالة في الكلام ",
              "<p><em>«لَيْسَ كَذَلِكَ ٱلْأَشْرَارُ».</em></p>"),
+            # pt
+            ("<p>Há uma prosperidade que nã", "<p>Meditações sobre o Primeiro Salmo.</p>"),
+            ("<p>Há uma prosperidade que nã", "<h3>INTRODUÇÃO.</h3>"),
+            ("<p>Mais literalmente: Oh, as ", "<h3>AS CONDIÇÕES NEGATIVAS DA BÊNÇÃO</h3>"),
+            ("<p>Mais literalmente: Oh, as ",
+             '<p><em>"Bem-aventurado o homem que não anda segundo o conselho dos ímpios."</em></p>'),
+            ("<p>Cada qual procura os seus ",
+             "<p><em>Nem se detém no caminho dos pecadores.</em></p>"),
+            ("<p>A roda dos escarnecedores ",
+             '<p><em>"Nem se assenta na roda dos escarnecedores."</em></p>'),
+            ("<p>Consideramos as coisas que", "<h3>AS CONDIÇÕES POSITIVAS DA BÊNÇÃO.</h3>"),
+            ("<p>Passamos em seguida a obse", "<h3>O RESULTADO EM BÊNÇÃO.</h3>"),
+            ("<p>Não é necessário deter-nos", "<h3>O CONTRASTE.</h3>"),
+            ("<p>Não é necessário deter-nos", '<p><em>"Não são assim os ímpios."</em></p>'),
         ],
     },
     "a-full-reward": {
@@ -1268,6 +1284,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ar
             ("<p>في هذه القصة الشائقة مثال آخر على الط",
              "<blockquote><em>«إِنَّنِي قَدْ أُخْبِرْتُ بِكُلِّ مَا فَعَلْتِ ... حَتَّى تَرَكْتِ أَبَاكِ وَأُمَّكِ وَأَرْضَ مَوْلِدِكِ وَسِرْتِ إِلَى شَعْبٍ لَمْ تَعْرِفِيهِ مِنْ قَبْلُ. لِيُكَافِئِ ٱلرَّبُّ عَمَلَكِ، وَلْيَكُنْ أَجْرُكِ كَامِلًا مِنْ عِنْدِ ٱلرَّبِّ إِلَهِ إِسْرَائِيلَ ٱلَّذِي جِئْتِ لِكَيْ تَحْتَمِيَ تَحْتَ جَنَاحَيْهِ» (راعوث 2:11-12).</em></blockquote>"),
+            # pt
+            ("<p>Nesta interessante narrati",
+             '<blockquote><em>"Bem se me contou tudo quanto tens feito ... e como deixaste teu pai e tua mãe, e a terra onde nasceste, e vieste para um povo que dantes não conhecias. O Senhor galardoe o teu feito, e seja cheio o teu galardão da parte do Senhor Deus de Israel, sob cujas asas te vieste abrigar" (Rute ii. 11, 12).</em></blockquote>'),
         ],
     },
     "self-denial-versus-self-assertion": {

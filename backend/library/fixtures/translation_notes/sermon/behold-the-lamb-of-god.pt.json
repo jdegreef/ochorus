@@ -1,0 +1,118 @@
+{
+ "kind": "sermon",
+ "slug": "behold-the-lamb-of-god",
+ "language": "pt",
+ "job_issue": 3008,
+ "references": [
+  {
+   "reference": "João 1:29",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "João 1:29",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Gênesis 1:3",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Salmos 40:7",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "João 1:29",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Gálatas 4:4-5",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 João 2:2",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Efésios 2:3",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Romanos 8:29",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Samuel 12:22",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Timóteo 1:15",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Lucas 19:10",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Isaías 55:8-9",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "João 19:30",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Salmos 130:7",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Romanos 10:12",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Isaías 45:22",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Atos 17:30",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Gálatas 6:7",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Lucas 18:22",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Romanos 9:19",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Mateus 5:18",
+   "status": "self_rendered",
+   "block_index": 26
+  }
+ ]
+}

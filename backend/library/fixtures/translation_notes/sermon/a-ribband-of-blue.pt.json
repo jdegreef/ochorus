@@ -1,0 +1,58 @@
+{
+ "kind": "sermon",
+ "slug": "a-ribband-of-blue",
+ "language": "pt",
+ "job_issue": 2704,
+ "references": [
+  {
+   "reference": "Números 15:38-39",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Números 15:31",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 João 1:9",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "1 João 1:7",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Efésios 5:1",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Efésios 5:2",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Mateus 5:48",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Mateus 5:48",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Números 15:39",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "of Numbers 15:38-40",
+   "status": "self_rendered",
+   "block_index": 2
+  }
+ ]
+}

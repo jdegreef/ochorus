@@ -1,0 +1,1524 @@
+{
+ "kind": "book",
+ "slug": "thoughts-for-the-quiet-hour",
+ "language": "hi",
+ "job_issue": 2814,
+ "references": [
+  {
+   "reference": "निर्गमन 34:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 22:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 3:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 34:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 118:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "निर्गमन 14:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहोशू 23:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 16:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 4:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "याकूब 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 20:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 34:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 15:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 145:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 40:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "निर्गमन 24:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 राजा 6:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 8:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "निर्गमन 28:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 5:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 25:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "श्रेष्ठगीत 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 24:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 49:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 11:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 26:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "दानिय्येल 6:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 6:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 127:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 2:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 2:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 145:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 134:1,3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "होशे 6:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 25:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 30:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 7:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 3:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहोशू 4:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 पतरस 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 6:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गिनती 9:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 1:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 27:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 41:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 13:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 21:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 11:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 शमूएल 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 10:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 1:45,46",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 3:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 शमूएल 22:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 32:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 14:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 3:13,14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 57:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 6:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "व्यवस्थाविवरण 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहोशू 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 15:57",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 1:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 8:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 थिस्सलुनीकियों 5:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 13:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 10:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहूदा 21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 15:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 6:57",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "श्रेष्ठगीत 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 24:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 24:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 23:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "निर्गमन 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 5:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "निर्गमन 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 6:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 17:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 7:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 4:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मीका 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 1:50",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "श्रेष्ठगीत 2:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 5:45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहेजकेल 12:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 13:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 21:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "श्रेष्ठगीत 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गिनती 13:27, 28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "न्यायियों 8:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 23:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 राजा 25:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 2:12, 13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 27:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 62:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 राजा 19:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 26:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 4:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 28:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 10:19, 22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 27:23, 24, 25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 55:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 10:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 4:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 41:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 शमूएल 12:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 25:24-26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 पतरस 3:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 49:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 15:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहेजकेल 48:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 63:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 15:58",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 7:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 5:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 57:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 24:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 2:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 13:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 12:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "श्रेष्ठगीत 3:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 4:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 14:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 17:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 16:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 शमूएल 1:27, 28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 6:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 34:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 146:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गिनती 11:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 7:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 39:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 9:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 10:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 राजा 17:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 103:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 तीमुथियुस 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 4:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "अय्यूब 31:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 34:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 19:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 119:101",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 27:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 20:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 103:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 20:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "जकर्याह 13:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "श्रेष्ठगीत 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "श्रेष्ठगीत 7:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 शमूएल 5:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 32:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 14:8,9,10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 11:21,22,23,24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 3:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 25:21,26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 14:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 तीमुथियुस 2:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 6:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 28:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 13:47",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 तीमुथियुस 1:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 2:1,4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 तीमुथियुस 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 14:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 17:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 13:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "व्यवस्थाविवरण 33:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 8:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 13:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "जकर्याह 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 13:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 5:48",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 14:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 13:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 थिस्सलुनीकियों 5:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 1:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 4:6, 8, 39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 14:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 25:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 12:4, 6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 10:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 3:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 28:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 पतरस 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "श्रेष्ठगीत 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 19:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 1:36, 37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "याकूब 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 32:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 119:117",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 8:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 तीमुथियुस 1:15, 17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 56:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 19:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 राजा 10:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 7:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 6:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 2:3, 4, 5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 10:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 5:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 23:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "न्यायियों 6:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "सभोपदेशक 9:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 12:1, 2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 13:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "व्यवस्थाविवरण 18:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 14:14, 23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 पतरस 2:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "निर्गमन 20:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 11:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 20:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 15:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 11:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 7:48",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मलाकी 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहेजकेल 34:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 पतरस 1:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 3:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 7:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहेजकेल 36:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 6:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "निर्गमन 33:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "दानिय्येल 9:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 13:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 20:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 15:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 21:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 2:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 78:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 20:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 इतिहास 4:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 20:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 10:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 16:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 राजा 8:12, 13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 48:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 41:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 1:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 100:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 पतरस 1:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 18:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 90:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 5:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 91:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 10:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 5:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 11:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "अय्यूब 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मीका 7:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "दानिय्येल 10:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 21:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 21:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहेजकेल 37:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 28:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "व्यवस्थाविवरण 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 थिस्सलुनीकियों 5:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 40:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यिर्मयाह 22:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 91:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 50:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 राजा 2:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 28:16, 18, 19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 16:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 13:4, 5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 3:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 22:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 1:17, 18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 8:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 16:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 पतरस 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 33:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 7:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "निर्गमन 14:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 65:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 राजा 17:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 42:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यिर्मयाह 18:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहोशू 24:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 90:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 10:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 1:21, 22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 16:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 1:10, 11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 थिस्सलुनीकियों 5:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 63:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 91:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 20:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 32:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 10:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 6:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 पतरस 1:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 14:50",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "दानिय्येल 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "नीतिवचन 11:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 103:2, 4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 43:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मलाकी 3:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "याकूब 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मरकुस 6:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रेरितों के काम 11:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 13:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 20:25, 27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 13:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "याकूब 1:23, 25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "याकूब 4:14 (b)",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "योना 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 14:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 2:13, 14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "अय्यूब 38:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 5:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 6:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 7:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "याकूब 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 शमूएल 1:10, 13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 6:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 6:19",
+   "status": "self_rendered"
+  }
+ ]
+}

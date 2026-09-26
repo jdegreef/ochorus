@@ -1,0 +1,1161 @@
+{
+ "kind": "book",
+ "slug": "days-of-heaven-upon-earth",
+ "language": "pt",
+ "job_issue": null,
+ "note": "Daily devotional; every quoted verse rendered conservatively in the João Ferreira de Almeida register (no mined claims). References catalogued from the shipped body_html.",
+ "references": [
+  {
+   "reference": "1 Co 10:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Co 13:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Co 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Co 15:46",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Co 4:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Co 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Co 6:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Coríntios 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Cr 12:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Cr 26:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Cr 4:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Crônicas 11:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Jo 2:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Jo 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Jo 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Jo 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 João 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pe 12:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pe 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pe 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pe 5:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pe 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 5:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Sm 15:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Sm 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Tm 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Ts 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Ts 5:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1Co 12:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1Co 12:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1Co 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1Co 1:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1Co 7:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1Jo 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1Pe 5:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1Rs 18:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1Ts 5:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Co 10:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Co 10:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Co 1:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Co 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Co 4:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Co 4:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Co 5:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Co 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Co 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 7:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Cr 20:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Rs 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Tm 1:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Ts 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2Co 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2Co 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2Co 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2Co 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2Co 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2Co 8:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2Tm 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ap 19:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ap 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ap 2:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ap 2:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ap 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 10:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 10:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 12:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 17:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 20:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 20:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 20:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 5:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "At 6:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cantares 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cl 1:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cl 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cl 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cl 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossenses 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ct 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ct 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ct 2:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ct 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ct 8:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cânticos 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cânticos 6:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cânticos 7:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Dn 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ef 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ef 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ef 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ef 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ef 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ef 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ef 5:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ef 6:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ez 36:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 1:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 4:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Fp 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gl 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gl 4:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gl 5:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gl 6:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gn 13:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gn 18:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gn 8:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gálatas 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Gênesis 13:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 11:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 11:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 12:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 12:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 13:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hb 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hc 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hc 3:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 10:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 28:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 41:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 41:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 49:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 50:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 51:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 53:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 55:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 58:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 60:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Is 9:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jl 2:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 12:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 12:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 13:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 14:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 14:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 14:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 15:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 15:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 15:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 15:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 15:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 16:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 16:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 16:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 17:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 17:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 17:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 21:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 6:57",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 6:58",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jo 8:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jr 10:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jr 45:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jr 48:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jr 8:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Js 13:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Js 21:45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Juízes 7:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jz 8:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jó 38:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jó 42:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lc 11:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lc 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lc 19:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lc 24:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lc 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lc 5:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lc 9:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lc 9:55",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 22:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lv 14:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lv 16:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Marcos 11:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 14:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mc 11:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mc 11:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mc 6:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mc 6:50",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 10:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 16:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 17:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 18:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 25:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 26:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 28:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 6:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 6:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 6:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 6:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 6:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 7:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mt 9:36",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ne 6:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ne 8:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Nm 10:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Nm 11:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Nm 16:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Os 14:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Pv 16:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Pv 16:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Pv 17:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Pv 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "R. V., Efésios 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 11:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 12:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 13:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 14:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 15:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 15:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 15:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 1:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 4:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 6:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 6:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 8:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 8:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 8:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 8:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 8:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 8:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 8:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 8:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rm 9:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 12:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 14:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 15:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 16:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 7:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 42:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 45:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 55:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 103:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 105:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 105:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 107:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 110:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 139:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 18:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 1:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 25:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 29:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 37:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 37:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 37:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 56:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 57:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 61:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 62:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 71:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 84:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 91:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 91:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sl 97:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tg 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tg 4:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tg 4:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tg 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zc 3:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zc 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êx 15:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êx 3:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êx 4:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 15:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Êxodo 40:35",
+   "status": "self_rendered"
+  }
+ ]
+}

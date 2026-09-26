@@ -1,0 +1,88 @@
+{
+ "kind": "sermon",
+ "slug": "caleb-a-different-spirit",
+ "language": "pt",
+ "job_issue": 2963,
+ "references": [
+  {
+   "reference": "João 1:29",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Filipenses 2:5",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Êxodo 14:13",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Números 14:24",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Josué 14:6-14",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Timóteo 4:12",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "João 4:23",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Efésios 5:19",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Mateus 5:8",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "João 1:27",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "João 1:29",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Salmos 103:5",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Isaías 40:31",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Hebreus 4:7",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Mateus 16:18",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "Gênesis 2:2",
+   "status": "self_rendered",
+   "block_index": 76
+  }
+ ]
+}

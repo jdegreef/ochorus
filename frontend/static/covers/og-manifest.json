@@ -1884,6 +1884,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/brave-for-god-2": {
+			"ground": "59c90637afee331749b06af5b2cf9c6d1f28c7ad99eaf56220146662ecd95320",
+			"style": "young",
+			"volume": "2",
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/cheque-book": {
 			"ground": "c32dd75a9953a303a120e10e57510fb3eb940ee183120aeb4dd1352bec890cb0",
 			"style": "revival",
@@ -1902,6 +1912,16 @@
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
+			"bar": 0
+		},
+		"hi/confessions": {
+			"ground": "d258c1861131c3a0ecf0891d61969b65a6279fd3905569ab7ce016c718a3d179",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
 			"bar": 0
 		},
 		"hi/divine-healing": {
@@ -1931,6 +1951,16 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/growing-in-wisdom": {
+			"ground": "29d3460135d6e9fa1de115e5ab4a69bc8757b06f32385baa7772a47391b95a68",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2014,6 +2044,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"hi/pilgrims-progress": {
+			"ground": "259bde2c330daffad57056e6d50bb86d54898414a3a4bdf86f7266a8ce2b2a75",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"hi/power-through-prayer": {
 			"ground": "54263128fd280791463794320ec4f8598ae2b31dfc4813792080dab41df7aec2",
 			"style": "devotional",
@@ -2051,6 +2091,46 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/rise-up-men-of-god-2": {
+			"ground": "eaf5c07b9d4d5091dd33bd0936f1635a1113cfe0002c51f513959ddafab33728",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/rooted-1": {
+			"ground": "c055b863f3683399738c92836f7f89327ed42da2acccfb35e1a097e0381f13dd",
+			"style": "young",
+			"volume": "1",
+			"script": "devanagari",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/rooted-2": {
+			"ground": "ffe071348772a44144af132c25cbdf70c450631f3dfa48bf7f1d843df5edacb2",
+			"style": "young",
+			"volume": "2",
+			"script": "devanagari",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"hi/school-of-prayer": {
+			"ground": "46d7b90b72f8801959f1089efa97498866a92426cf59694027135d787ab853dc",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": false,
+			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2094,6 +2174,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"hi/the-fourfold-gospel": {
+			"ground": "888a8e7124236aa4159b9a7e7cde429eaf84a796378ff3f856c5ea3b2d774388",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "box/teal",
+			"bar": 0
+		},
 		"hi/the-god-of-all-comfort": {
 			"ground": "62853c4d1c1bb49a274203abde9a9e12f269287f82b0ec2f2d3dd3521b7527cb",
 			"style": "devotional",
@@ -2124,6 +2214,26 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/the-masters-indwelling": {
+			"ground": "816c7f25929f98aa0a7a3c8c0ee6b3823ea55cea58cf5aed7f04375ccf6e4e9b",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "wash/sage",
+			"bar": 0
+		},
+		"hi/the-secret-of-guidance": {
+			"ground": "5962fc9d7b582cc0a99075a8626fc7cc1150417a5b2f701a3bce2c8c6252cce5",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/the-unselfishness-of-god": {
 			"ground": "b0529c180177ae3ea8c546392028bff3b2890e4d2d1b5fc15e85d6cf4793953f",
 			"style": "devotional",
@@ -2141,6 +2251,16 @@
 			"script": "devanagari",
 			"art": true,
 			"scrim": 0.6,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
+		"hi/thoughts-for-the-quiet-hour": {
+			"ground": "53c418d14dc6d55f003296e6af05dedf13f4cd9ba08e1148d8ab6d2636e05f4e",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.65,
 			"layout": "wash/ochre",
 			"bar": 0
 		},
@@ -2874,6 +2994,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"pt/days-of-heaven-upon-earth": {
+			"ground": "95d7464227be056bd368c48c94511d8aa30b9f30465bfd728feb33da0c176b3b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "box/teal",
+			"bar": 0
+		},
 		"pt/divine-healing": {
 			"ground": "698dfb5eaa879941c66e889fe2e09d02e1b96cc0c47ce6d444e4aeb88abe0ab5",
 			"style": "devotional",
@@ -2911,6 +3041,16 @@
 			"script": "latin",
 			"art": false,
 			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"pt/growing-in-wisdom": {
+			"ground": "ce911ea714bec2b07ac2a98c440fafbf6cda93788ea28a111a9ff27aa63062db",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -3064,6 +3204,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"pt/susanna-wesley-clarke": {
+			"ground": "9da72a6585ef49c782f5e152c88c35d0d08b5233fa06cfa0429d3a38b5a4dfae",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/talks-to-the-farmer": {
 			"ground": "ea913d3930b8d1d665f27cac6fd9fe3260015a46eb0b77f78ea522a4e8990685",
 			"style": "revival",
@@ -3161,6 +3311,16 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.6,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
+		"pt/thoughts-for-the-quiet-hour": {
+			"ground": "3e0fd296495b83c76d9c42f85a07a6567bc5acfd76549ac1e0faeb23ea2eeb74",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
 			"layout": "wash/ochre",
 			"bar": 0
 		},
