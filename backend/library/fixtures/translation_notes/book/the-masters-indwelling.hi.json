@@ -1,0 +1,472 @@
+{
+ "kind": "book",
+ "slug": "the-masters-indwelling",
+ "language": "hi",
+ "job_issue": 2925,
+ "references": [
+  {
+   "reference": "1 कुरिन्थियों 3:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 1:2-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 3:2-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 5:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 1:4-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 6:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 5:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 8:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "अय्यूब 42:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 5:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 16:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 16:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 16:17-18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 16:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 16:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 5:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 12:43-45",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 22:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 62:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यिर्मयाह 30:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 7:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 42:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "निर्गमन 19:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 27:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 4:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 4:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "व्यवस्थाविवरण 6:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 8:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 51:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 8:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 7:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 6:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 16:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 17:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 14:20-21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 3:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 5:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 6:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 5:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 3:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 2:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 4:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "कुलुस्सियों 1:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 2:5-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 20:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 2:8-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इफिसियों 4:1-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 पतरस 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 23:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 20:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 14:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 16:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 11:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 39:1-3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 39:3-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 39:4-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 39:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 13:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 14:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 10:29-30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 26:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "गलातियों 6:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 26:39",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "प्रकाशितवाक्य 5:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 6:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 6:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 16:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 11:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 11:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 22:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 23:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 23:43",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 14:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 पतरस 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 यूहन्ना 3:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 4:46-48",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 4:48",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 4:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 4:50",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 4:51-52",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 4:53",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 8:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 14:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 28:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 8:26-27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 11:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 20:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 2:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 8:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "उत्पत्ति 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 27:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 64:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 15:24-28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 15:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 कुरिन्थियों 15:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "फिलिप्पियों 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "इब्रानियों 13:20-21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 12:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 कुरिन्थियों 12:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "रोमियों 8:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 27:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन संहिता 25:15",
+   "status": "self_rendered"
+  }
+ ]
+}

@@ -2124,6 +2124,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"hi/the-masters-indwelling": {
+			"ground": "816c7f25929f98aa0a7a3c8c0ee6b3823ea55cea58cf5aed7f04375ccf6e4e9b",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"hi/the-secret-of-guidance": {
 			"ground": "5962fc9d7b582cc0a99075a8626fc7cc1150417a5b2f701a3bce2c8c6252cce5",
 			"style": "devotional",
