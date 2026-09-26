@@ -104,6 +104,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.085
 		},
+		"am/clothed-with-strength-and-dignity": {
+			"ground": "ba57bc4214b38431a6d0642260be42978131896da79dc47ac35a9f09d59d8e47",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/gleanings-among-the-sheaves": {
 			"ground": "cfafa5fc46542ce19b864735e56443c918ecf220c3cb57b9286416e5bb66132d",
 			"style": "revival",
