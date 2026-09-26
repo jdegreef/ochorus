@@ -1,0 +1,109 @@
+{
+ "kind": "book",
+ "slug": "susanna-wesley-clarke",
+ "language": "pt",
+ "job_issue": null,
+ "note": "Biography of Susanna Wesley (Eliza Clarke). Quotes little formal scripture — most quotations are the Wesleys' own letters and reported speech, translated as prose. The scripture that is quoted (mostly woven into the subjects' letters) is rendered conservatively in the João Ferreira de Almeida register; no mined claims.",
+ "references": [
+  {
+   "reference": "1 Samuel 3:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Atos 10:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Cânticos 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronômio 29:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Esdras 10:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 1:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Habacuque 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 11:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 11:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebreus 6:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 16:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 19:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 19:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 27:52-53",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 5:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mateus 6:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Provérbios 18:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Provérbios 27:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Provérbios 31:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 12:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Rute 1:16-17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Salmos 122:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Tiago 1:17",
+   "status": "self_rendered"
+  }
+ ]
+}

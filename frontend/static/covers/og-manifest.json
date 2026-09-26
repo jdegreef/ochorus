@@ -3134,6 +3134,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"pt/susanna-wesley-clarke": {
+			"ground": "9da72a6585ef49c782f5e152c88c35d0d08b5233fa06cfa0429d3a38b5a4dfae",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/talks-to-the-farmer": {
 			"ground": "ea913d3930b8d1d665f27cac6fd9fe3260015a46eb0b77f78ea522a4e8990685",
 			"style": "revival",
