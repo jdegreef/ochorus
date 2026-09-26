@@ -364,6 +364,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"ar/men-of-prayer-2": {
+			"ground": "fb98ca8f0a2340d5814a06119303a14428240b0df811c76c36a29ac1c616843a",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ar/men-who-tended-the-flock-2": {
 			"ground": "72895d05f4c94b5f689bf986a21e3b831e1c8cadb627b7645a0ef0bbd2a550de",
 			"style": "originals",
