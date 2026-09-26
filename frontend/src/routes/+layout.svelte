@@ -62,7 +62,15 @@
 	});
 
 	// Leaving a chapter is the safe moment to take a waiting app update.
-	afterNavigate(() => pwa.navigated());
+	afterNavigate(({ from, to }) => {
+		pwa.navigated();
+		// Focus mode hides this layout's nav and footer, and only the reading
+		// surfaces carry a way out of it (FocusExit, Escape). It was never reset,
+		// so any link out of the text — breadcrumb, scripture chip, colophon, the
+		// plan-day redirect — landed on a page with no nav and no exit. Keep it
+		// across chapter-to-chapter turns (same route), drop it on anything else.
+		if (from?.route.id !== to?.route.id) readerUi.exitFocus();
+	});
 
 	// Reflect the URL locale on <html> for accessibility + correct hyphenation.
 	$effect(() => {
