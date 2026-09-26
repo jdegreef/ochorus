@@ -1,0 +1,43 @@
+{
+ "kind": "sermon",
+ "slug": "abiding-in-christ",
+ "language": "pt",
+ "job_issue": 2701,
+ "references": [
+  {
+   "reference": "João 15:1-11",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "João 20:22",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "only had 20:21",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Salmo 80:8-19",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Gálatas 5:22-23",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Salmo 1:3",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Mateus 5:16",
+   "status": "self_rendered",
+   "block_index": 61
+  }
+ ]
+}

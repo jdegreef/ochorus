@@ -1,0 +1,68 @@
+{
+ "kind": "sermon",
+ "slug": "comfort-for-the-desponding",
+ "language": "pt",
+ "job_issue": 2702,
+ "references": [
+  {
+   "reference": "Jó 29:2",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Jó 19:25",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "2 Timóteo 1:12",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Mateus 16:23",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "2 Pedro 3:1",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Lamentações 3:15",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Jonas 2:2",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Joel 2:31",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Mateus 25:29",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "1 Timóteo 1:15",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "João 6:37",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Apocalipse 22:17",
+   "status": "self_rendered",
+   "block_index": 59
+  }
+ ]
+}

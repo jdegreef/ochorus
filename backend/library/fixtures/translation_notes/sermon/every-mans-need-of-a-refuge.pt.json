@@ -1,0 +1,38 @@
+{
+ "kind": "sermon",
+ "slug": "every-mans-need-of-a-refuge",
+ "language": "pt",
+ "job_issue": 3000,
+ "references": [
+  {
+   "reference": "delicate Isaiah 53:6",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaías 32:2",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Pedro 5:8",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Efésios 6:11-12",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Atos 17:31",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Isaías 53:6",
+   "status": "self_rendered",
+   "block_index": 36
+  }
+ ]
+}
