@@ -101,6 +101,19 @@ export function bookTimeLeft(minutes: number): string {
 }
 
 /**
+ * Localized "time left in a reading plan", e.g. "4 hr 11 min left" — the plan
+ * card's figure, so it reads in hours once a plan runs past the hour rather
+ * than as "251 min left". Whole minutes in, like `bookTimeLeft`.
+ */
+export function planTimeLeft(minutes: number): string {
+	return durationLabel(minutes, {
+		min: 'plans.minLeft',
+		hr: 'plans.hrLeft',
+		hrMin: 'plans.hrMinLeft'
+	});
+}
+
+/**
  * Localized listen-time label, e.g. "12 min listen" — the audio counterpart of
  * `readingTime`, at the reader's chosen `rate`. Same %n%/%h%/%m% templating so
  * word order stays correct per language.

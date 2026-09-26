@@ -1,0 +1,49 @@
+{
+ "kind": "bio",
+ "slug": "lemuel-haynes",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Romans 5:1",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Acts 17:26",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Chronicles 17:16",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Psalm 137:2",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Genesis 3:4",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Revelation 7:15",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Luke 4:16",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "library/fixtures/content/books/necessity-of-prayer.es.json"
+  }
+ ]
+}

@@ -1,0 +1,137 @@
+{
+ "kind": "sermon",
+ "slug": "himself",
+ "language": "am",
+ "job_issue": 3567,
+ "pull_request": null,
+ "note": [
+  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
+  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
+  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 8:17",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 13:43",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 1
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 22:42",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Colossians 1:26",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 7
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 7
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 8
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 9
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 2:16",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 10:5",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 11
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 12
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalm 84:7",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalm 113:2",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 6:19",
+   "status": "self_rendered",
+   "block_index": 32
+  }
+ ]
+}

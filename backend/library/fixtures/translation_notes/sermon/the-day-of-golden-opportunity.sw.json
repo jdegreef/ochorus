@@ -1,0 +1,75 @@
+{
+ "kind": "sermon",
+ "slug": "the-day-of-golden-opportunity",
+ "language": "sw",
+ "job_issue": 3632,
+ "pull_request": 3642,
+ "references": [
+  {
+   "reference": "Hebrews 3:7a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Exodus 8:8",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Exodus 8:9",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Exodus 8:10a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 3:23a",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Philippians 4:7a",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 8:34",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "the-way-of-salvation-made-plain.sw.json"
+  },
+  {
+   "reference": "John 8:36",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "the-way-of-salvation-made-plain.sw.json"
+  },
+  {
+   "reference": "Matthew 12:30a",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Hebrews 12:17b",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Hebrews 3:8a",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "all-of-grace.sw.json"
+  }
+ ]
+}

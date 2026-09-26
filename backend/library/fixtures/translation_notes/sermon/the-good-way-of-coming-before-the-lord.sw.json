@@ -1,0 +1,250 @@
+{
+ "kind": "sermon",
+ "slug": "the-good-way-of-coming-before-the-lord",
+ "language": "sw",
+ "job_issue": 3459,
+ "pull_request": 3470,
+ "references": [
+  {
+   "reference": "Micah 6:6-7",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Micah 6:8",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Micah 6:6a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Micah 6:8a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Micah 6:8",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Exodus 5:2",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Job 21:14",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Psalm 16:11",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 18:10",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Psalm 42:1",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Genesis 6:5",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Isaiah 6:1-3",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 6:5a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Job 42:5-6",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Luke 10:42a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Amos 6:1a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Amos 4:12b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Peter 4:18",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Isaiah 64:6",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Zechariah 3:4a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Zechariah 3:4b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Jeremiah 6:16",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Jeremiah 6:16b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 5:19",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Romans 4:16",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "John 8:11",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "christs-boundless-compassion.sw.json"
+  },
+  {
+   "reference": "Genesis 18:25",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Psalm 92:15",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "Proverbs 20:14",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Luke 6:36",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Ephesians 5:25-26",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Galatians 2:21",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "2 Timothy 2:1",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "2 Timothy 2:1",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  }
+ ]
+}

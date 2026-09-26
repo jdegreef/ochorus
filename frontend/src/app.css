@@ -97,6 +97,14 @@
    base block, so every ordinary letter — Б, і, ї, є — fell through it. Only ґ
    did not. PT Sans rather than another neutral because `--font-display` already
    sets Cyrillic in PT Serif, and the two are one superfamily. */
+/* Ethiopic, for Amharic (added with the first Amharic book, 2026-09-25). Same
+   unicode-range gating: a page with no Ge'ez glyph downloads none of these.
+   Noto rather than Abyssinica SIL because it ships the 700 the display stack's
+   headings reach and a sans twin for --font-sans; one superfamily, as with the
+   Arabic and Devanagari pairs above. */
+@import '@fontsource/noto-serif-ethiopic/400.css';
+@import '@fontsource/noto-serif-ethiopic/700.css';
+@import '@fontsource/noto-sans-ethiopic/400.css';
 @import '@fontsource/noto-sans-arabic/400.css';
 @import '@fontsource/noto-sans-arabic/700.css';
 @import '@fontsource/noto-sans-devanagari/400.css';
@@ -189,9 +197,9 @@
    style (site-fonts.css) — only the ones that say var(--font-display) would.
    Plain, the utilities emit `var(--font-display)` and follow the token. */
 @theme {
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', Georgia,
 		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari',
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic',
 		'PT Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
@@ -251,7 +259,7 @@
 	   script declares only the cover tokens and --font-display: a var() the
 	   card never declares invalidates the whole stack, and the title lands in
 	   Times with nothing to say so. */
-	--cover-face-young: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'PT Sans', ui-sans-serif, system-ui, sans-serif;
+	--cover-face-young: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'PT Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Runtime theme variables. Default = "lamplight" (dark); [data-theme='light']
@@ -315,9 +323,9 @@
 	   PT Serif above. Hanken was not even a partial answer for Cyrillic — it
 	   ships `cyrillic-ext` (U+0460-052F) and not the base block, so Б, і, ї and є
 	   all fell through it and only ґ did not. Latin still never leaves Hanken. */
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', Georgia,
 		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari',
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic',
 		'PT Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
 	--reading-scale: 1;
 	/* Motion, per STYLE_GUIDE §7 (quiet and quick, 120-240ms). Eight distinct
@@ -673,6 +681,42 @@
 	.btn-icon {
 		padding: 0.4rem;
 		line-height: 1;
+	}
+	/* The read card (book and plan pages): what you'll read next, how far
+	   through you are, and the one read verb. A tinted surface, not a bordered
+	   box, so it reads as the head of the hero rather than a separate widget.
+	   Stacks on a phone with a full-width CTA. */
+	.read-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding: 0.85rem 1rem;
+		border-radius: var(--radius-card);
+		background: var(--surface-2);
+	}
+	.read-card-title {
+		margin-top: 0.15rem;
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1.25;
+	}
+	.read-card-cta {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.4rem;
+		text-align: center;
+	}
+	@media (min-width: 640px) {
+		.read-card {
+			flex-direction: row;
+			align-items: center;
+			gap: 1.25rem;
+		}
+		.read-card-cta {
+			align-items: center;
+			flex-shrink: 0;
+		}
 	}
 	/* A row of secondary actions (the book page). Sized by the room it actually
 	   has, not the viewport: its host column is a container, and below 560px —

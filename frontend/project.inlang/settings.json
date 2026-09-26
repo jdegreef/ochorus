@@ -10,7 +10,8 @@
     "ar",
     "hi",
     "uk",
-    "fr"
+    "fr",
+    "am"
   ],
   "modules": [
     "./local-plugins/plugin-message-format.js"

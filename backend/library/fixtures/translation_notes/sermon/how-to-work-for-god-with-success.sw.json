@@ -1,0 +1,235 @@
+{
+ "kind": "sermon",
+ "slug": "how-to-work-for-god-with-success",
+ "language": "sw",
+ "job_issue": 3531,
+ "pull_request": 3539,
+ "references": [
+  {
+   "reference": "Luke 14:23b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Luke 14:23a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "aggressive-christianity.sw.json"
+  },
+  {
+   "reference": "Mark 9:29",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "power-through-prayer.sw.json"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 5:11",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:14b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "men-and-women-who-gave-everything-2.sw.json"
+  },
+  {
+   "reference": "Acts 20:31",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 5:26",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 2:17",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Revelation 3:15b",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Revelation 3:16",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "1 Kings 18:17",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "1 Kings 18:18",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Jeremiah 48:10b",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "Matthew 3:7b",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Matthew 21:13b",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Isaiah 5:20",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Psalm 50:21",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Jeremiah 15:19",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Romans 8:17",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Timothy 2:12a",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 8:17b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Timothy 6:10a",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "2 Timothy 2:17",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "1 Corinthians 4:21",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Luke 6:38",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Psalm 41:1",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Psalm 41:3b",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Jeremiah 12:5",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "2 Peter 1:11",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Galatians 4:27",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Psalm 127:3",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Job 1:8",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Hebrews 2:13b",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Philemon 1:10",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "1 Samuel 30:6",
+   "status": "self_rendered",
+   "block_index": 38
+  }
+ ]
+}
