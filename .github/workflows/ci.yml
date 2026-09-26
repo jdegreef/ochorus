@@ -125,9 +125,12 @@ jobs:
     # Backend code OR content (fixture integrity tests). Skips a frontend-only PR.
     if: ${{ github.event_name != 'pull_request' || needs.changes.outputs.ci == 'true' || needs.changes.outputs.backend == 'true' || needs.changes.outputs.content == 'true' }}
     runs-on: ubuntu-latest
-    # Observed legitimate maximum for the backend suite is well under this; the
-    # ceiling exists only to reap a hang, not to cut a slow-but-real run.
-    timeout-minutes: 25
+    # The ceiling exists only to reap a hang, not to cut a slow-but-real run.
+    # The suite grows with the library: by 2026-09-26 it ran 2,012 tests in
+    # ~24.5 min (1,456-1,465 s) on its own, so the old 25-minute ceiling was
+    # cancelling runs seconds after the last test finished (#3966, #3989,
+    # #4012, #4013). 40 leaves room to grow and still reaps a real hang.
+    timeout-minutes: 40
     env:
       DJANGO_DEBUG: 'true'
     # The suite runs ONCE, on Postgres — the production database. Postgres is a
