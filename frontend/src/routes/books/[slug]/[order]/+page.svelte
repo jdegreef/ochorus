@@ -373,7 +373,7 @@
 	/** Bookmark (or un-bookmark) the paragraph at the top of the viewport. */
 	function toggleBookmark() {
 		if (!body) return;
-		const p = topVisibleIndex();
+		const p = currentIndex();
 		const el = body.children[p] as HTMLElement | undefined;
 		const snippet = (el?.innerText ?? '').trim().replace(/\s+/g, ' ').slice(0, 90);
 		bookmarks.toggle(chapter.order, p, snippet, chapter.title);
@@ -431,6 +431,8 @@
 	let pager = $state<HTMLElement>();
 	let chromeEl = $state<HTMLElement>();
 	let footEl = $state<HTMLElement>();
+	let planStripEl = $state<HTMLElement>();
+	let chapterEndEl = $state<HTMLElement>();
 	let pageIndex = $state(0);
 	let pageTotal = $state(1);
 	let pageW = $state(0);
@@ -533,25 +535,51 @@
 	function pageOf(el: HTMLElement): number {
 		return pageOfOffset(el.offsetLeft, flowOrigin, pageW);
 	}
-	/** Index of the first paragraph laid out on a given page (top-left of it). */
+	/**
+	 * Index of the paragraph a reader on page p is reading: the first one, in
+	 * flow order, that starts on it — or, when one long paragraph fills the whole
+	 * page, the one carried onto it from an earlier page (not 0, the top of the
+	 * chapter). Flow order, not the smallest offsetTop: on a two-column spread
+	 * the top of the right column is higher than a paragraph starting midway
+	 * down the left one, but comes after it.
+	 */
 	function firstIndexOnPage(p: number): number {
 		if (!body) return 0;
 		const kids = body.children;
-		let best = -1;
-		let bestTop = Infinity;
+		let carried = 0;
 		for (let i = 0; i < kids.length; i++) {
-			const el = kids[i] as HTMLElement;
-			if (pageOf(el) === p && el.offsetTop < bestTop) {
-				bestTop = el.offsetTop;
-				best = i;
-			}
+			const at = pageOf(kids[i] as HTMLElement);
+			if (at === p) return i;
+			if (at > p) break;
+			carried = i;
 		}
-		return best < 0 ? 0 : best;
+		return carried;
 	}
 
-	/** Re-measure the page width and count from the current layout. */
-	function measurePages() {
+	/** The paragraph the reader is on, in either layout. topVisibleIndex asks a
+	 *  vertical question with no meaning in page mode, where every column shares
+	 *  one top — it answered 0 on every page. */
+	function currentIndex(): number {
+		return paged ? firstIndexOnPage(pageIndex) : topVisibleIndex();
+	}
+
+	/**
+	 * Re-measure the page width and count from the current layout, keeping the
+	 * reader's place — on the paragraph they were reading, in the chapter's
+	 * ending, or on the last page — rather than the same page NUMBER with other
+	 * text on it after a re-flow (text settings, resize, a late font, the plan
+	 * strip or reflection box arriving). `keep` is false only for the
+	 * chapter-open placement, which positions the reader itself.
+	 */
+	function measurePages(keep = true) {
 		if (!paged || !articleEl || !pager) return;
+		const before = pageTotal;
+		const measured = keep && !!body && (before > 1 || stickToLast);
+		const wasLast = measured && (stickToLast || pageIndex >= before - 1);
+		const endStart = chapterEndEl?.firstElementChild;
+		const endWas = measured && endStart ? pageOfNode(endStart) : -1;
+		const inEnd = endWas >= 0 && pageIndex >= endWas;
+		const at = measured ? firstIndexOnPage(pageIndex) : -1;
 		applyInsets();
 		const w = articleEl.clientWidth;
 		pageW = w;
@@ -579,6 +607,16 @@
 		// needed for a two-column spread whose last page may hold a single column.
 		pageTotal = w > 0 ? Math.max(1, Math.ceil(pager.scrollWidth / w - 0.02)) : 1;
 		if (pageIndex > pageTotal - 1) pageIndex = pageTotal - 1;
+		if (!measured) return;
+		const el = body!.children[at] as HTMLElement | undefined;
+		const target = wasLast
+			? pageTotal - 1
+			: inEnd && endStart
+				? pageOfNode(endStart) + (pageIndex - endWas)
+				: el
+					? pageOf(el)
+					: pageIndex;
+		if (target !== pageIndex) goToPage(target, false);
 	}
 
 	/** Screenfuls of prose in scroll mode — the same unit paged mode counts. */
@@ -588,8 +626,13 @@
 		scrollPages = usable > 0 ? Math.max(1, Math.ceil(body.scrollHeight / usable)) : 1;
 	}
 
+	// Opened with ?pg=last (a backward turn from the next chapter): stay on the
+	// last page while late content grows the count, until the reader turns.
+	let stickToLast = false;
+
 	/** Turn to page p, persisting the paragraph now at the top of the page. */
 	function goToPage(p: number, save = true) {
+		if (save) stickToLast = false;
 		pageIndex = Math.min(pageTotal - 1, Math.max(0, p));
 		chapterFrac = pageTotal > 1 ? pageIndex / (pageTotal - 1) : 1;
 		if (save) {
@@ -603,6 +646,30 @@
 			// initial restore, so opening mid-chapter at the last page doesn't fire.
 			if (pageIndex >= pageTotal - 1) markChapterComplete();
 		}
+	}
+
+	/** Which page any element in the pager sits on. From rects, not offsetLeft:
+	 *  it can be any descendant, and it shares the pager's transform with the
+	 *  title. The 1px nudge absorbs sub-pixel rects that land just short of a
+	 *  page boundary. */
+	function pageOfNode(el: Element): number {
+		if (!titleEl) return 0;
+		const r = el.getBoundingClientRect();
+		const o = titleEl.getBoundingClientRect();
+		return contentRtl
+			? pageOfOffset(r.right - 1, o.right, pageW)
+			: pageOfOffset(r.left + 1, o.left, pageW);
+	}
+	/** Keyboard focus landing on another page (Tab onto the plan strip, a
+	 *  scripture link, the chapter's ending) turns to that page. The paged
+	 *  article is `overflow: clip`, so the browser has no scroller to reveal
+	 *  the element with and cannot shift the columns under the translate. */
+	function onArticleFocusIn(e: FocusEvent) {
+		if (!paged || !(pageW > 0)) return;
+		const p = pageOfNode(e.target as Element);
+		// Not saved: passing through links on the way elsewhere is not reading
+		// there, and must not move the resume point or finish the chapter.
+		if (p !== pageIndex) goToPage(p, false);
 	}
 
 	/** A faint fade played on each discrete page turn — the incoming page eases up
@@ -633,7 +700,8 @@
 
 	// Elements a tap or swipe must leave alone — the reader's own interactive
 	// affordances. One list, shared by the touch-start guard and the click guard.
-	const INTERACTIVE = 'a, button, mark, input, textarea, select, .selbar, .define-pop, .scripture-pop';
+	const INTERACTIVE =
+		'a, button, summary, [role="button"], mark, input, textarea, select, .selbar, .define-pop, .scripture-pop';
 
 	// Pointer type is stable for a session — query it once, not per click.
 	const coarsePointer = browser ? window.matchMedia('(pointer: coarse)') : null;
@@ -831,8 +899,9 @@
 		(async () => {
 			await tick();
 			if (paged) {
-				measurePages();
+				measurePages(false);
 				let target = 0;
+				stickToLast = wantLast;
 				if (wantLast) target = pageTotal - 1;
 				else if (Number.isFinite(jumpP) && body?.children[jumpP]) {
 					target = pageOf(body.children[jumpP] as HTMLElement);
@@ -906,13 +975,61 @@
 		});
 	});
 
+	// One re-measure per frame, however many triggers fire in it.
+	let measureQueued = false;
+	function scheduleMeasure() {
+		if (measureQueued) return;
+		measureQueued = true;
+		requestAnimationFrame(() => {
+			measureQueued = false;
+			untrack(() => measurePages());
+		});
+	}
+
+	// The plan strip (its plan is fetched after the chapter renders) and the
+	// chapter's ending (its reflection box is imported on demand) change size
+	// after the pages were first counted — `?pg=last` then landed a page short.
+	// The ending's own box is fragmented across columns and does not report its
+	// contents growing, so watch its blocks (each kept whole by break-inside).
+	// Only a HEIGHT change can move the page count past the other triggers; the
+	// first report of each block and width-only reports are ignored.
+	$effect(() => {
+		if (!paged || typeof ResizeObserver === 'undefined' || !chapterEndEl) return;
+		const end = chapterEndEl;
+		const strip = planStripEl;
+		const heights = new WeakMap<Element, number>();
+		const ro = new ResizeObserver((entries) => {
+			let grew = false;
+			for (const e of entries) {
+				const h = e.contentRect.height;
+				const was = heights.get(e.target);
+				heights.set(e.target, h);
+				if (was !== undefined && Math.abs(was - h) > 0.5) grew = true;
+			}
+			if (grew) scheduleMeasure();
+		});
+		if (strip) ro.observe(strip);
+		for (const el of end.children) ro.observe(el);
+		// A block appearing or leaving (the plan's reflection) re-flows too.
+		const mo = new MutationObserver((records) => {
+			for (const r of records) for (const n of r.addedNodes) if (n instanceof Element) ro.observe(n);
+			scheduleMeasure();
+		});
+		mo.observe(end, { childList: true });
+		return () => {
+			ro.disconnect();
+			mo.disconnect();
+		};
+	});
+
 	// Keep the count correct — and the one/two-column choice current — across
 	// viewport resizes / orientation changes.
 	$effect(() => {
 		if (!browser) return;
 		const onResize = () => {
 			viewportW = window.innerWidth;
-			untrack(() => (paged ? measurePages() : measureScrollPages()));
+			if (paged) scheduleMeasure();
+			else untrack(measureScrollPages);
 		};
 		window.addEventListener('resize', onResize);
 		return () => window.removeEventListener('resize', onResize);
@@ -1006,6 +1123,10 @@
 			else if (paged) turnPage(contentRtl ? 1 : -1);
 			else gotoChapter(chapter.prev);
 		} else if (e.key === ' ') {
+			// Space on a focused control IN THE TEXT presses it — "Mark day done",
+			// Next chapter and the reflection's Save live inside the pages. A
+			// toolbar button keeps focus after a click, and Space there still pages.
+			if (el?.closest?.('.pager') && el.closest(INTERACTIVE)) return;
 			e.preventDefault();
 			if (paged) turnPage(e.shiftKey ? -1 : 1);
 			else pageScroll(e.shiftKey ? -1 : 1);
@@ -1258,7 +1379,8 @@
 		// ?edition=modern on a book that has no modern edition.
 		language: () => language,
 		body: () => body,
-		topIndex: topVisibleIndex,
+		topIndex: currentIndex,
+		reveal: (el) => (paged ? goToPage(pageOfNode(el), false) : el.scrollIntoView({ block: 'center', behavior: 'smooth' })),
 		listenTitle: () => chapterName(chapter.order, chapter.title),
 		listenArtist: () => `${chapter.author_name} · ${chapter.book_title}`,
 		cite: () => cite,
@@ -1470,6 +1592,16 @@
 	<div class="paged-backdrop" aria-hidden="true"></div>
 {/if}
 
+<!-- On the plan strip at the top and under the reflection at the end: in page
+     mode those are pages apart, and the end is where a day is finished. -->
+{#snippet markDayDone(planSlug: string, day: number)}
+	{#if planProgress.isDone(planSlug, day)}
+		<span class="text-small font-semibold text-accent">✓ {t('plans.dayDone')}</span>
+	{:else}
+		<button class="btn btn-sm btn-primary" onclick={completePlanDay}>{t('plans.markDone')}</button>
+	{/if}
+{/snippet}
+
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
 <article
 	bind:this={articleEl}
@@ -1479,6 +1611,7 @@
 	class:twocol={cols === 2}
 	style="{readerPrefs.styleFor(paged)}; --article-max: {articleMax}"
 	onclick={onArticleClick}
+	onfocusin={onArticleFocusIn}
 	ontouchstart={onTouchStart}
 	ontouchend={onTouchEnd}
 	ontouchcancel={onTouchCancel}
@@ -1486,32 +1619,30 @@
 >
 	<Breadcrumb items={crumbs} />
 
-	{#if plan && planDay}
-		<div
-			class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-2 px-4 py-3"
-		>
-			<div class="min-w-0">
-				<a href={localizeHref(`/plans/${plan.slug}`)} class="block truncate text-small font-semibold text-text hover:text-accent">
-					{plan.title}
-				</a>
-				<span class="text-small text-muted">
-					{t('plans.day')} {planDay} {t('plans.of')} {plan.day_count}
-				</span>
-			</div>
-			{#if planProgress.isDone(plan.slug, planDay)}
-				<span class="text-small font-semibold text-accent">✓ {t('plans.dayDone')}</span>
-			{:else}
-				<button class="btn btn-sm btn-primary" onclick={completePlanDay}>
-					{t('plans.markDone')}
-				</button>
+	<!-- The pager wraps everything the reader acts on: the plan strip, the
+	     chapter, and its ending. In scroll mode it is display:contents (no
+	     effect); in page mode it becomes the translated CSS-column content and
+	     anything outside it — only the breadcrumb — is hidden. Keep it that way:
+	     readerPagedEnding.test.ts. -->
+	<div class="pager" class:dragging bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
+		<div bind:this={planStripEl}>
+			{#if plan && planDay}
+				<div
+					class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-2 px-4 py-3"
+				>
+					<div class="min-w-0">
+						<a href={localizeHref(`/plans/${plan.slug}`)} class="block truncate text-small font-semibold text-text hover:text-accent">
+							{plan.title}
+						</a>
+						<span class="text-small text-muted">
+							{t('plans.day')} {planDay} {t('plans.of')} {plan.day_count}
+						</span>
+					</div>
+					{@render markDayDone(plan.slug, planDay)}
+				</div>
 			{/if}
 		</div>
-	{/if}
 
-	<!-- The pager wraps the chapter's own content (label, title, body). In scroll
-	     mode it is display:contents (no effect); in page mode it becomes the
-	     translated CSS-column content and the surrounding chrome is hidden. -->
-	<div class="pager" class:dragging bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
 		<p class="eyebrow chapter-kicker mb-1 text-muted">
 			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
 			{#if listen.supported}
@@ -1526,139 +1657,144 @@
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<div class="reading" bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
-	</div>
 
-	<!-- A plan day's reflection: what the reader takes from today's reading,
-	     written straight into their Notebook — filed in a collection named for
-	     the plan, so a whole plan's reflections gather in one place. Loaded on
-	     demand: it brings the journal store, which a plain chapter never needs. -->
-	{#if plan && planDay}
-		<section class="plan-reflect mt-12 border-t border-border pt-6" aria-labelledby="reflect-heading">
-			<h2 id="reflect-heading" class="section-heading">{t('notebook.reflectHeading')}</h2>
-			{#await import('$lib/components/notebook/ReflectBox.svelte') then { default: ReflectBox }}
-				<ReflectBox
-					prompt={t(`notebook.reflectPrompt${reflectPrompt(planDay)}`)}
-					title={`${t('plans.day')} ${planDay}: ${chapterName(chapter.order, chapter.title)}`}
-					collection={plan.title}
-					source={{
-						kind: 'book',
-						slug,
-						order: chapter.order,
-						p: 0,
-						edition: language,
-						title: `${chapter.book_title} · ${chapterName(chapter.order, chapter.title)}`,
-						quote: ''
-					}}
-				>
-					{#if !planProgress.isDone(plan.slug, planDay)}
-						<button class="btn btn-sm btn-primary" onclick={completePlanDay}>{t('plans.markDone')}</button>
+		<!-- The chapter's ending. In page mode it starts on a fresh column, so the
+		     last page of every chapter is where to go next (see .chapter-end). -->
+		<div class="chapter-end" bind:this={chapterEndEl}>
+			<!-- A plan day's reflection: what the reader takes from today's reading,
+			     written straight into their Notebook — filed in a collection named for
+			     the plan, so a whole plan's reflections gather in one place. Loaded on
+			     demand: it brings the journal store, which a plain chapter never needs. -->
+			{#if plan && planDay}
+				<section class="plan-reflect mt-12 border-t border-border pt-6" aria-labelledby="reflect-heading">
+					<h2 id="reflect-heading" class="section-heading">{t('notebook.reflectHeading')}</h2>
+					{#await import('$lib/components/notebook/ReflectBox.svelte') then { default: ReflectBox }}
+						<ReflectBox
+							prompt={t(`notebook.reflectPrompt${reflectPrompt(planDay)}`)}
+							title={`${t('plans.day')} ${planDay}: ${chapterName(chapter.order, chapter.title)}`}
+							collection={plan.title}
+							source={{
+								kind: 'book',
+								slug,
+								order: chapter.order,
+								p: 0,
+								edition: language,
+								title: `${chapter.book_title} · ${chapterName(chapter.order, chapter.title)}`,
+								quote: ''
+							}}
+						/>
+					{/await}
+					<div class="mt-4">{@render markDayDone(plan.slug, planDay)}</div>
+				</section>
+			{/if}
+
+			<!-- Scripture index: the passages this chapter treats. Placed here — after
+			     the text, before the next-chapter nav — to match the sermon page, which
+			     has carried the same row since citations were indexed. The reading comes
+			     first and the apparatus sits under it, so a reader in flow scrolls past
+			     it to the next chapter and never has to read around it.
+
+			     This is also what makes the scripture graph reciprocal: those pages are
+			     linked from /scripture and the sitemap, and now from the 904 English
+			     chapters that actually cite something.
+
+			     A chip links to its scripture page when one exists, and to a search for
+			     the reference when the citation floor withheld one — never to a page
+			     that was not built. English chapters only; `scripture_refs` is empty
+			     elsewhere, because the citations behind it are English. -->
+			{#if chapter.scripture_refs?.length}
+				<div class="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-5">
+					<span class="eyebrow text-muted">{t('reader.scripture')}</span>
+					{#each chapter.scripture_refs as entry (entry.ref)}
+						<a
+							href={entry.page
+								? `/scripture/${entry.page.book}/${entry.page.chapter}/` +
+									(entry.page.verse ? `${entry.page.verse}/` : '')
+								: localizeHref(`/search?q=${encodeURIComponent(entry.ref)}`)}
+							class="tag"
+						>
+							{entry.ref}
+						</a>
+					{/each}
+				</div>
+			{/if}
+
+			<!-- One block, so in page mode the way on never splits from its links:
+			     the last page always holds Previous/Next. -->
+			<div class="end-nav">
+				<nav class="mt-14 flex items-stretch justify-between gap-3 border-t border-border pt-6">
+					{#if chapter.prev}
+						<a
+							href={chapterHref(chapter.prev.order)}
+							class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start"
+						>
+							<span class="eyebrow text-muted">{t('reader.previous')}</span>
+							<span class="text-small">{chapterName(chapter.prev.order, chapter.prev.title)}</span>
+						</a>
+					{:else}
+						<span class="flex-1"></span>
 					{/if}
-				</ReflectBox>
-			{/await}
-		</section>
-	{/if}
-
-	<!-- Scripture index: the passages this chapter treats. Placed here — after
-	     the text, before the next-chapter nav — to match the sermon page, which
-	     has carried the same row since citations were indexed. The reading comes
-	     first and the apparatus sits under it, so a reader in flow scrolls past
-	     it to the next chapter and never has to read around it.
-
-	     This is also what makes the scripture graph reciprocal: those pages are
-	     linked from /scripture and the sitemap, and now from the 904 English
-	     chapters that actually cite something.
-
-	     A chip links to its scripture page when one exists, and to a search for
-	     the reference when the citation floor withheld one — never to a page
-	     that was not built. English chapters only; `scripture_refs` is empty
-	     elsewhere, because the citations behind it are English. -->
-	{#if chapter.scripture_refs?.length}
-		<div class="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-5">
-			<span class="eyebrow text-muted">{t('reader.scripture')}</span>
-			{#each chapter.scripture_refs as entry (entry.ref)}
-				<a
-					href={entry.page
-						? `/scripture/${entry.page.book}/${entry.page.chapter}/` +
-							(entry.page.verse ? `${entry.page.verse}/` : '')
-						: localizeHref(`/search?q=${encodeURIComponent(entry.ref)}`)}
-					class="tag"
-				>
-					{entry.ref}
-				</a>
-			{/each}
+					{#if chapter.next}
+						{@const nextWords = bookForProgress?.chapters.find((c) => c.order === chapter.next?.order)?.word_count}
+						<a
+							href={chapterHref(chapter.next.order)}
+							class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
+							class:celebrate
+							aria-label="{t('reader.next')}: {chapterName(chapter.next.order, chapter.next.title)}"
+						>
+							<span class="eyebrow opacity-75">{t('reader.next')}</span>
+							<span class="text-small">{chapterName(chapter.next.order, chapter.next.title)}</span>
+							<!-- The moment of highest intent: say how long it is, and let its
+							     opening line do the inviting. Both are optional — the time needs
+							     the book fetched, the line needs the prefetch to have landed — so
+							     the line's height is reserved: the button must not grow under a
+							     thumb that is already aiming at it. -->
+							<span class="up-next-meta mt-0.5 block text-micro opacity-75" dir="auto">
+								{#if nextWords}{readingTime(nextWords)}{/if}{#if nextWords && nextPreview}
+									·
+								{/if}{#if nextPreview}<span class="italic">{nextPreview}…</span>{/if}
+							</span>
+						</a>
+					{:else if nextInSeries}
+						<!-- The end of a volume is where a series loses its reader: point at the
+						     next one (in this language — the API skips a volume not translated
+						     yet) instead of back at the contents of a book just finished. To its
+						     page, not its first chapter: a devotional opens with an introduction
+						     and a reader deciding to go on wants to see what they are starting. -->
+						<a
+							href={localizeHref(`/books/${nextInSeries.slug}`)}
+							class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
+							class:celebrate
+							aria-label="{t('book.seriesNext')}: {nextInSeries.title}"
+						>
+							<span class="eyebrow opacity-75">{t('book.seriesNext')}</span>
+							<span class="text-small" dir="auto">{nextInSeries.title}</span>
+						</a>
+					{:else}
+						<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center" class:celebrate>{t('reader.backToContents')}</a>
+					{/if}
+				</nav>
+				<!-- A way to the contents whenever the button above points somewhere else:
+				     mid-book, and at the end of a volume that has a next one. -->
+				{#if chapter.next || nextInSeries}
+					<p class="mt-3 text-center">
+						<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">{t('reader.contents')}</a>
+					</p>
+				{/if}
+				<!-- Colophon: a crawlable link out to the book and its author from every
+				     chapter — the site's largest page type, which otherwise linked only to
+				     its own contents and the next chapter (a dead end for the author graph).
+				     A middot, not a localized "by", so no message-catalogue key is needed. -->
+				<p class="mt-8 text-center text-small text-muted">
+					<a href={localizeHref(`/books/${slug}`)} class="hover:text-text">{chapter.book_title}</a>
+					<span aria-hidden="true"> · </span>
+					<a href={localizeHref(authorPath(chapter.author_slug))} class="hover:text-text"
+						>{chapter.author_name}</a
+					>
+				</p>
+			</div>
 		</div>
-	{/if}
-
-	<nav class="mt-14 flex items-stretch justify-between gap-3 border-t border-border pt-6">
-		{#if chapter.prev}
-			<a
-				href={chapterHref(chapter.prev.order)}
-				class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start"
-			>
-				<span class="eyebrow text-muted">{t('reader.previous')}</span>
-				<span class="text-small">{chapterName(chapter.prev.order, chapter.prev.title)}</span>
-			</a>
-		{:else}
-			<span class="flex-1"></span>
-		{/if}
-		{#if chapter.next}
-			{@const nextWords = bookForProgress?.chapters.find((c) => c.order === chapter.next?.order)?.word_count}
-			<a
-				href={chapterHref(chapter.next.order)}
-				class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
-				class:celebrate
-				aria-label="{t('reader.next')}: {chapterName(chapter.next.order, chapter.next.title)}"
-			>
-				<span class="eyebrow opacity-75">{t('reader.next')}</span>
-				<span class="text-small">{chapterName(chapter.next.order, chapter.next.title)}</span>
-				<!-- The moment of highest intent: say how long it is, and let its
-				     opening line do the inviting. Both are optional — the time needs
-				     the book fetched, the line needs the prefetch to have landed — so
-				     the line's height is reserved: the button must not grow under a
-				     thumb that is already aiming at it. -->
-				<span class="up-next-meta mt-0.5 block text-micro opacity-75" dir="auto">
-					{#if nextWords}{readingTime(nextWords)}{/if}{#if nextWords && nextPreview}
-						·
-					{/if}{#if nextPreview}<span class="italic">{nextPreview}…</span>{/if}
-				</span>
-			</a>
-		{:else if nextInSeries}
-			<!-- The end of a volume is where a series loses its reader: point at the
-			     next one (in this language — the API skips a volume not translated
-			     yet) instead of back at the contents of a book just finished. To its
-			     page, not its first chapter: a devotional opens with an introduction
-			     and a reader deciding to go on wants to see what they are starting. -->
-			<a
-				href={localizeHref(`/books/${nextInSeries.slug}`)}
-				class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
-				class:celebrate
-				aria-label="{t('book.seriesNext')}: {nextInSeries.title}"
-			>
-				<span class="eyebrow opacity-75">{t('book.seriesNext')}</span>
-				<span class="text-small" dir="auto">{nextInSeries.title}</span>
-			</a>
-		{:else}
-			<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center" class:celebrate>{t('reader.backToContents')}</a>
-		{/if}
-	</nav>
-	<!-- A way to the contents whenever the button above points somewhere else:
-	     mid-book, and at the end of a volume that has a next one. -->
-	{#if chapter.next || nextInSeries}
-		<p class="mt-3 text-center">
-			<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">{t('reader.contents')}</a>
-		</p>
-	{/if}
-	<!-- Colophon: a crawlable link out to the book and its author from every
-	     chapter — the site's largest page type, which otherwise linked only to
-	     its own contents and the next chapter (a dead end for the author graph).
-	     A middot, not a localized "by", so no message-catalogue key is needed. -->
-	<p class="mt-8 text-center text-small text-muted">
-		<a href={localizeHref(`/books/${slug}`)} class="hover:text-text">{chapter.book_title}</a>
-		<span aria-hidden="true"> · </span>
-		<a href={localizeHref(authorPath(chapter.author_slug))} class="hover:text-text"
-			>{chapter.author_name}</a
-		>
-	</p>
+	</div>
 </article>
 
 <!-- Kindle-style edge page-turn arrows (page mode only). The outer screen edge
@@ -1812,7 +1948,11 @@
 		z-index: 5;
 		margin-inline: auto;
 		padding: 0 !important;
+		/* clip, not hidden: a hidden box is still a scroll container, and the
+		   browser scrolled it to reveal a focused link on another page — shifting
+		   the columns under the translate. */
 		overflow: hidden;
+		overflow: clip;
 		background: var(--bg);
 	}
 	article.paged.focus {
@@ -1866,14 +2006,45 @@
 		z-index: 4;
 		background: var(--bg);
 	}
-	/* Hide the surrounding chrome (breadcrumb, plan strip, chapter nav) in page
-	   mode — only the pager's content is paginated. Screen only: on paper the
+	/* Hide what sits outside the pager — today only the breadcrumb — in page
+	   mode: only the pager's content is paginated. Screen only: on paper the
 	   title and breadcrumb are the first thing you want, not the first thing to
-	   blank. */
+	   blank.
+
+	   :global because the breadcrumb is a child component, and a scoped
+	   `:not(.pager)` only matches elements carrying THIS component's class. It
+	   never hid the breadcrumb, which then pushed the full-height pager down by
+	   its own height and ate the line of slack reserved at the foot of every
+	   page (see the padding note below). */
 	@media screen {
-		article.paged > :not(.pager) {
+		article.paged > :global(:not(.pager)) {
 			display: none;
 		}
+	}
+	/* The chapter's ending opens a fresh column, so in a single-column layout
+	   it is a page of its own and in a two-column spread it takes the facing
+	   column when there is one. Each block keeps whole: a Next-chapter button
+	   split across a page turn is two half-buttons. */
+	.paged .chapter-end {
+		break-before: column;
+	}
+	.paged .chapter-end > :global(*) {
+		break-inside: avoid;
+	}
+	/* Scroll mode spaces these blocks to set the ending apart from the prose
+	   above it; a page of its own needs no such gap, and at that spacing the
+	   last two lines (contents link, colophon) spilled onto a page of their
+	   own. The first block needs no rule either — it opens the page. */
+	.paged .chapter-end > :global(* + *) {
+		margin-top: 1.5rem;
+	}
+	.paged .end-nav > :first-child {
+		margin-top: 0;
+	}
+	.paged .chapter-end > :global(:first-child) {
+		margin-top: 0;
+		border-top: 0;
+		padding-top: 0;
 	}
 	.paged .pager {
 		--pgpad: 1.25rem;
