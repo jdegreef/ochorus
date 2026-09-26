@@ -1,0 +1,101 @@
+{
+ "kind": "sermon",
+ "slug": "three-fires",
+ "language": "sw",
+ "job_issue": 3637,
+ "pull_request": 3642,
+ "references": [
+  {
+   "reference": "Matthew 3:11",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Matthew 3:11b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 3:13a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 3:13",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 3:15",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 3:15b",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "Mark 14:50",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Acts 4:9-10",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "the-new-birth.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 2:4",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "2 Thessalonians 1:7b-9",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  },
+  {
+   "reference": "2 Thessalonians 1:8",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "2 Thessalonians 1:8a",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  },
+  {
+   "reference": "2 Thessalonians 1:8b",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  },
+  {
+   "reference": "2 Thessalonians 1:9",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  },
+  {
+   "reference": "2 Thessalonians 1:8",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  }
+ ]
+}
