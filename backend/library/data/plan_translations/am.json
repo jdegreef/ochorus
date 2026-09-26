@@ -6,5 +6,12 @@
    "Amharic's FIRST plan prose, shipping with the-inner-chamber.am (queue job #3556), the sole source book of this launch plan; without it seed_plans would create the am plan row with no prose, which PlanTranslationCoverageTests fails on. No am job was filed for this plan, so it rides with its book.",
    "The title opens with the shipped edition's own title verbatim (የውስጥ እልፍኝ), so the plan card and the book on the shelf agree. The reader is addressed in the singular (ገንባ), the am house style."
   ]
+ },
+ "school-of-prayer-31-days": {
+  "title": "31 ቀናት በጸሎት ትምህርት ቤት",
+  "description": "ከአንድሪው መሪ ጋር በብቸኛው መምህር እግር ሥር የምታሳልፈው አንድ ወር። እያንዳንዱ ቀን ኢየሱስ ራሱ ስለ ጸሎት ከተናገራቸው ቃላት አንዱን ይከፍታል፤ ከ«ጌታ ሆይ፥ እንጸልይ ዘንድ አስተምረን» አንሥቶ እስከ መጨረሻው ሌሊት ተስፋዎች ድረስ፣ እያንዳንዱም በራሱ ጸሎት ይደመደማል። በቀን አንድ ትምህርት፣ ወደ አሥር ደቂቃ ያህል፤ ወደ ምልጃና ወደ ጸሎት ሕይወት የሚያሳድግ ጉዞ።",
+  "note": [
+   "Single-book plan backed by the am edition of school-of-prayer (queue job #3562; book title «ከክርስቶስ ጋር በጸሎት ትምህርት ቤት»). Ships with the book, which makes this LAUNCH plan creatable in am; this also delivers queue job #3574. The card phrase «በጸሎት ትምህርት ቤት» matches the book title, and «ጌታ ሆይ፥ እንጸልይ ዘንድ አስተምረን» is the 1962 Luke 11:1 wording the book's refrain uses."
+  ]
  }
 }
