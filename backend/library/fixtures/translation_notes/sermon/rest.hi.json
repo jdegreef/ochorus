@@ -1,0 +1,60 @@
+{
+ "kind": "sermon",
+ "slug": "rest",
+ "language": "hi",
+ "job_issue": 2127,
+ "references": [
+  {
+   "reference": "मत्ती 11:28-30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन 66:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "भजन 84:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यहोशू 23:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "मत्ती 11:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "लूका 12:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "सभोपदेशक 12:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "सभोपदेशक 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 57:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 पतरस 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यशायाह 53:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 5:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "यूहन्ना 6:37",
+   "status": "self_rendered"
+  }
+ ]
+}
