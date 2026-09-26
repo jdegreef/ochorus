@@ -1,0 +1,56 @@
+{
+ "kind": "sermon",
+ "slug": "every-mans-need-of-a-refuge",
+ "language": "es",
+ "job_issue": 2996,
+ "references": [
+  {
+   "reference": "Isaiah 32:2",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 32:2",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "library/fixtures/content/books/the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Ephesians 6:11-12",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "Matthew 3:7",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Acts 17:31",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 2:5",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "library/fixtures/content/books/a-call-to-the-unconverted.es.json"
+  },
+  {
+   "reference": "Isaiah 32:2",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}

@@ -1,3 +1,8 @@
+// prerender refresh 2026-09-26: Spanish sermons — behold-the-lamb-of-god (#3004), every-mans-need-of-a-refuge (#2996),
+// filled-with-the-spirit (#2988), witnessing-for-christ (#2982), blessed-prosperity (#2975), a-full-reward (#2967),
+// caleb-a-different-spirit (#2959), god-glorified-in-mans-dependence (#2542), walking-with-god (#2541),
+// the-resurrection-of-jesus (#2540), the-worlds-need (#2539), catholic-spirit (#2538), against-eutropius (#2537),
+// a-ribband-of-blue (#2536), abiding-in-christ (#2535). Rebuilds /es/sermons.
 // prerender refresh 2026-09-24: Arabic sermons — caleb-a-different-spirit (#2958), a-full-reward (#2966),
 // blessed-prosperity (#2974), witnessing-for-christ (#2981), filled-with-the-spirit (#2987),
 // every-mans-need-of-a-refuge (#2995), behold-the-lamb-of-god (#3003). Rebuilds /ar/sermons.

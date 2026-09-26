@@ -1,0 +1,146 @@
+{
+ "kind": "sermon",
+ "slug": "blessed-prosperity",
+ "language": "es",
+ "job_issue": 2975,
+ "references": [
+  {
+   "reference": "Psalm 37:7",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 73:11",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 1:1",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "Psalm 1:1",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "library/fixtures/content/books/godliness.es.json"
+  },
+  {
+   "reference": "Psalm 1:1",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "John 12:32",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "library/fixtures/content/books/cheque-book.es.json"
+  },
+  {
+   "reference": "Hebrews 7:26",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "library/fixtures/content/books/necessity-of-prayer.es.json"
+  },
+  {
+   "reference": "2 Corinthians 6:14-15",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "library/fixtures/content/books/union-and-communion.es.json"
+  },
+  {
+   "reference": "2 Corinthians 6:16",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Corinthians 6:17-18",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Psalm 1:1",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "library/fixtures/content/books/the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Matthew 12:34",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "library/fixtures/content/sermons/fall-and-recovery-of-man.es.json"
+  },
+  {
+   "reference": "Psalm 119:165",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "library/fixtures/content/books/cheque-book.es.json"
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "library/fixtures/content/books/the-inner-chamber.es.json"
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Matthew 11:26",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Psalm 1:4",
+   "status": "self_rendered",
+   "block_index": 51
+  }
+ ]
+}
