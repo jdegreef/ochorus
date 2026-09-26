@@ -51,7 +51,7 @@
 	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, hreflangFor, truncateMeta } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, truncateMeta } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
@@ -60,6 +60,8 @@
 	import TocDrawer from '$lib/components/TocDrawer.svelte';
 	import SearchDrawer from '$lib/components/SearchDrawer.svelte';
 	import NotesDrawer from '$lib/components/NotesDrawer.svelte';
+	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
+	import { editionSeo, languageFallback } from '$lib/languageFallback';
 
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
@@ -75,8 +77,14 @@
 	// only the locales this book actually exists in (chapter counts match across
 	// a book's translations, so the same order URL resolves in each).
 	const seoPath = $derived(`/books/${slug}/${chapter.order}/`);
-	const canonical = $derived(`${SITE_URL}${localizeHref(seoPath)}`);
-	const hreflang = $derived(hreflangFor(seoPath, chapter.available_languages));
+	// A missing edition renders the English one (see languageFallback). The
+	// canonical follows it always; the notice not under ?edition=modern, where
+	// English is what the reader asked for.
+	const shownElsewhere = $derived(languageFallback(getLang(), language));
+	const fallback = $derived(edition ? null : shownElsewhere);
+	const seo = $derived(editionSeo(seoPath, chapter.available_languages, shownElsewhere));
+	const hreflang = $derived(seo.hreflang);
+	const canonical = $derived(seo.canonical);
 
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (the reader
 	// had a hand-rolled nav Books › Author › Book and no BreadcrumbList at all).
@@ -125,7 +133,7 @@
 			},
 			url: canonical,
 			isAccessibleForFree: true,
-			inLanguage: getLang(),
+			inLanguage: contentLang(language),
 			// The chapter's own measure and its author as an entity (not just a name
 			// buried in isPartOf), plus the publisher — so the chapter node stands on
 			// its own in the graph rather than being an unsized fragment of the book.
@@ -442,7 +450,7 @@
 	let pager = $state<HTMLElement>();
 	let chromeEl = $state<HTMLElement>();
 	let footEl = $state<HTMLElement>();
-	let planStripEl = $state<HTMLElement>();
+	let leadEl = $state<HTMLElement>();
 	let chapterEndEl = $state<HTMLElement>();
 	// The footer's UNFOLDED height, published as --foot-h for the article's
 	// bottom clearance and the return pill (hand-kept per-breakpoint constants
@@ -1046,7 +1054,8 @@
 		});
 	}
 
-	// The plan strip (its plan is fetched after the chapter renders) and the
+	// The blocks above the chapter (the plan strip, fetched after the chapter
+	// renders; the language notice, which can be dismissed) and the
 	// chapter's ending (its reflection box is imported on demand) change size
 	// after the pages were first counted — `?pg=last` then landed a page short.
 	// The ending's own box is fragmented across columns and does not report its
@@ -1056,7 +1065,7 @@
 	$effect(() => {
 		if (!paged || typeof ResizeObserver === 'undefined' || !chapterEndEl) return;
 		const end = chapterEndEl;
-		const strip = planStripEl;
+		const lead = leadEl;
 		const heights = new WeakMap<Element, number>();
 		const ro = new ResizeObserver((entries) => {
 			let grew = false;
@@ -1068,7 +1077,7 @@
 			}
 			if (grew) scheduleMeasure();
 		});
-		if (strip) ro.observe(strip);
+		if (lead) ro.observe(lead);
 		for (const el of end.children) ro.observe(el);
 		// A block appearing or leaving (the plan's reflection) re-flows too.
 		const mo = new MutationObserver((records) => {
@@ -1765,7 +1774,8 @@
 	     anything outside it — only the breadcrumb — is hidden. Keep it that way:
 	     readerPagedEnding.test.ts. -->
 	<div class="pager" class:dragging bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
-		<div bind:this={planStripEl}>
+		<div bind:this={leadEl}>
+			<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" class="mb-6" />
 			{#if plan && planDay}
 				<div
 					class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-2 px-4 py-3"

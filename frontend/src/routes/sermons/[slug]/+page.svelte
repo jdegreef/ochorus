@@ -2,10 +2,11 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { onMount, type Component } from 'svelte';
 	import { type Sermon, type SermonSummary, listSermons } from '$lib/library-public';
-	import { SITE_URL } from '$lib/config';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import FocusExit from '$lib/components/FocusExit.svelte';
+	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
+	import { editionSeo, languageFallback } from '$lib/languageFallback';
 	import { i18n } from '$lib/i18n.svelte';
 	import {
 		contentLang,
@@ -28,7 +29,6 @@
 		absUrl,
 		jsonLd,
 		breadcrumbLd,
-		hreflangFor,
 		truncateMeta,
 		stripHtml,
 		faqPage,
@@ -188,8 +188,11 @@
 	// deindex the translated sermon pages. Sermons are per-language rows with no
 	// English fallback, so hreflang lists only the locales this sermon exists in.
 	const path = $derived(`/sermons/${sermon.slug}/`);
-	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	const hreflang = $derived(hreflangFor(path, sermon.available_languages));
+	// A missing edition renders the English one (see languageFallback).
+	const fallback = $derived(languageFallback(getLang(), sermon.language));
+	const seo = $derived(editionSeo(path, sermon.available_languages, fallback));
+	const hreflang = $derived(seo.hreflang);
+	const canonical = $derived(seo.canonical);
 	const year = $derived(preachedYear(sermon.preached_on));
 
 	// --- SEO -------------------------------------------------------------------
@@ -449,6 +452,8 @@
 	style="--pinned-offset: {HEADER_OFFSET}px; {readerPrefs.style}; max-width: var(--reading-measure)"
 >
 	<Breadcrumb items={crumbs} />
+
+	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/sermons" />
 
 	<!-- The head sits in its plate (see SermonPlate), except in focus mode,
 	     which strips the page to the prose. -->
