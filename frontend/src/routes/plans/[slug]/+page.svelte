@@ -7,6 +7,9 @@
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
+	import { getLang } from '$lib/lang.svelte';
+	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
+	import { languageFallback } from '$lib/languageFallback';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
@@ -23,8 +26,15 @@
 	// once its source books are all translated, so hreflang lists only the
 	// locales this plan actually exists in.
 	const path = $derived(`/plans/${plan.slug}/`);
-	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const hreflang = $derived(hreflangFor(path, plan.available_languages));
+	// Showing another language's edition than the URL names (the loader fell
+	// back to English): say so, point the canonical at the edition shown, and
+	// keep this URL out of the index.
+	const fallback = $derived(languageFallback(getLang(), plan.language));
+	const canonical = $derived(
+		(fallback && hreflang.alternates.find((a) => a.loc === fallback.shown)?.href) ||
+			`${SITE_URL}${localizeHref(path)}`
+	);
 	// The distinct books the plan reads through, in first-appearance order, with
 	// the span of days each occupies. Powers both the ItemList JSON-LD and the
 	// "In this plan" preview — a reader sees the shape of the journey (which
@@ -105,12 +115,19 @@
 	description={plan.description}
 	{canonical}
 	{hreflang}
+	noindex={!!fallback}
 	ogImage={absUrl('/og/plans.png')}
 	structuredData={[planLd, crumbsLd]}
 />
 
 <div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
+
+	{#if fallback}
+		<div class="mt-5">
+			<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/plans" />
+		</div>
+	{/if}
 
 	<div class="flex items-start justify-between gap-4">
 		<div class="min-w-0 flex-1">

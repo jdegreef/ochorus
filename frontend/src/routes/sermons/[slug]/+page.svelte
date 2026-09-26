@@ -6,6 +6,8 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import FocusExit from '$lib/components/FocusExit.svelte';
+	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
+	import { languageFallback } from '$lib/languageFallback';
 	import { i18n } from '$lib/i18n.svelte';
 	import {
 		contentLang,
@@ -188,8 +190,15 @@
 	// deindex the translated sermon pages. Sermons are per-language rows with no
 	// English fallback, so hreflang lists only the locales this sermon exists in.
 	const path = $derived(`/sermons/${sermon.slug}/`);
-	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const hreflang = $derived(hreflangFor(path, sermon.available_languages));
+	// Showing another language's edition than the URL names (the loader fell
+	// back to English): say so, point the canonical at the edition shown, and
+	// keep this URL out of the index.
+	const fallback = $derived(languageFallback(getLang(), sermon.language));
+	const canonical = $derived(
+		(fallback && hreflang.alternates.find((a) => a.loc === fallback.shown)?.href) ||
+			`${SITE_URL}${localizeHref(path)}`
+	);
 	const year = $derived(preachedYear(sermon.preached_on));
 
 	// --- SEO -------------------------------------------------------------------
@@ -313,6 +322,7 @@
 	description={metaDescription}
 	{canonical}
 	{hreflang}
+	noindex={!!fallback}
 	ogType="article"
 	ogTitle={shareTitle}
 	{ogImage}
@@ -449,6 +459,12 @@
 	style="--pinned-offset: {HEADER_OFFSET}px; {readerPrefs.style}; max-width: var(--reading-measure)"
 >
 	<Breadcrumb items={crumbs} />
+
+	{#if fallback}
+		<div class="mt-5">
+			<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/sermons" />
+		</div>
+	{/if}
 
 	<!-- The head sits in its plate (see SermonPlate), except in focus mode,
 	     which strips the page to the prose. -->

@@ -22,6 +22,8 @@
 		topicThings
 	} from '$lib/seo';
 	import QandA from '$lib/components/QandA.svelte';
+	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
+	import { languageFallback } from '$lib/languageFallback';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { getLang, localeName } from '$lib/lang.svelte';
@@ -131,8 +133,15 @@
 	// rows with no English fallback, so hreflang lists only the locales this book
 	// actually exists in — see hreflangFor.
 	const path = $derived(`/books/${book.slug}/`);
-	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const hreflang = $derived(hreflangFor(path, book.available_languages));
+	// Showing another language's edition than the URL names (the loader fell
+	// back to English): say so, point the canonical at the edition shown, and
+	// keep this URL out of the index.
+	const fallback = $derived(languageFallback(getLang(), book.language));
+	const canonical = $derived(
+		(fallback && hreflang.alternates.find((a) => a.loc === fallback.shown)?.href) ||
+			`${SITE_URL}${localizeHref(path)}`
+	);
 	// Localized fallback, not an English literal: this page prerenders per locale,
 	// so a work without a description was shipping an English <meta description>
 	// and og:description at its /sw, /ar, … URL. Mirrors author.metaFallback.
@@ -357,6 +366,7 @@
 	{description}
 	{canonical}
 	{hreflang}
+	noindex={!!fallback}
 	ogType="book"
 	ogTitle="{book.title} — {book.author.name}"
 	{ogImage}
@@ -368,6 +378,12 @@
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
 	<Breadcrumb items={crumbs} />
+
+	{#if fallback}
+		<div class="mt-5">
+			<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
+		</div>
+	{/if}
 
 	<header class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-start">
 		<!-- One component decides what a cover is. This page used to branch on
