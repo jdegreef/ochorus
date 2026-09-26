@@ -43,6 +43,10 @@
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { onMount } from 'svelte';
+	import BookCover from '$lib/components/BookCover.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import { allProgress, isFinished } from '$lib/progress';
+	import type { BookSummary } from '$lib/library-public';
 
 	const t = i18n.t;
 
@@ -276,6 +280,20 @@
 			author.sermons.reduce((n, s) => n + (s.word_count ?? 0), 0)
 	);
 
+	// The read card: a reader partway through one of this author's books picks
+	// it up here ("Continue reading" — the book page's card); anyone else gets
+	// the "New to X? Start with …" suggestion in the same card. Progress is
+	// client-only, so the prerendered page and a first visit show the latter.
+	let resumeBook = $state<{ book: BookSummary; order: number } | null>(null);
+	$effect(() => {
+		const bySlug = new Map(author.books.map((b) => [b.slug, b]));
+		const rec = allProgress().find(
+			(r) => r.kind === 'book' && bySlug.has(r.slug) && !isFinished(r.slug)
+		);
+		resumeBook = rec ? { book: bySlug.get(rec.slug)!, order: rec.order } : null;
+	});
+	const cardBook = $derived(resumeBook?.book ?? startWork);
+
 	// A featured pull-quote for the header: the first <blockquote> in the bio.
 	// Regex, not the DOM, so it works during prerender too. Absent / too-short
 	// quotes just don't show. The bio's own <cite> is kept as the attribution
@@ -389,7 +407,7 @@
 	     so the eye jumped margins and a wide empty gutter opened beside the prose;
 	     one centred column removes both. The action row wraps and stays centred on
 	     a phone. -->
-	<header class="mx-auto max-w-[40rem] text-center">
+	<header class="mx-auto flex max-w-[40rem] items-center gap-4 sm:gap-5">
 		{#if author.photo_url}
 			{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
 			<img
@@ -400,30 +418,83 @@
 				width="112"
 				height="112"
 				alt="{t('a11y.portraitOf')} {author.name}"
-				class="mx-auto h-28 w-28 rounded-full border border-border object-cover shadow-sm"
+				class="h-20 w-20 shrink-0 rounded-full border border-border object-cover shadow-sm sm:h-28 sm:w-28"
 				style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"
 			/>
 		{:else}
 			<span
-				class="font-display mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent"
+				class="font-display flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent sm:h-28 sm:w-28"
 			>
 				{initials(author.name)}
 			</span>
 		{/if}
-		<h1 class="text-h1 mt-4" dir="auto">{heading}</h1>
+		<div class="min-w-0">
+		<h1 class="text-h1" dir="auto">{heading}</h1>
 		{#if summaryBits.length}
 			<p class="mt-1.5 text-body text-muted">
-				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50"> · </span>{/if}{bit}{/each}
+				<!-- The separator as an expression: literal spaces at an {#if} boundary are
+				     compiler-trimmed ("1828–1917·12 books"). -->
+				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50">{' · '}</span>{/if}{bit}{/each}
 			</p>
 		{/if}
-		<div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-			<!-- Search this author's works. A reader who has read one Murray book
-			     and half-remembers a phrase from another is on this page, and
-			     until now their only option was the whole library. -->
-			<a
-				href={localizeHref(scopedSearchHref('author', author.slug))}
-				class="btn btn-sm btn-ghost shrink-0">{t('search.inAuthor')}</a
-			>
+		</div>
+	</header>
+
+	<!-- The read card (shared .read-card, as on the book and plan pages): pick up
+	     one of this author's books where you left off, or — first visit, and the
+	     prerender — where to start, with the total reading time. -->
+	{#if cardBook}
+		<div class="read-card mx-auto mt-6 max-w-[40rem]">
+			<div class="flex min-w-0 flex-1 items-center gap-3">
+				<div class="w-12 shrink-0"><BookCover book={cardBook} rounded="rounded-[3px]" /></div>
+				<div class="min-w-0 flex-1">
+					{#if resumeBook}
+						<p class="text-small text-muted">
+							{t('continue.title')} · {t('book.onChapter')
+								.replace('%n%', String(resumeBook.order))
+								.replace('%t%', String(cardBook.chapter_count))}
+						</p>
+						<p class="read-card-title" dir="auto">{cardBook.title}</p>
+						<div class="mt-2">
+							<ProgressBar
+								percent={cardBook.chapter_count
+									? ((resumeBook.order - 1) / cardBook.chapter_count) * 100
+									: 0}
+								label="{cardBook.title}: {t('book.onChapter')
+									.replace('%n%', String(resumeBook.order))
+									.replace('%t%', String(cardBook.chapter_count))}"
+							/>
+						</div>
+					{:else}
+						<p class="text-small">
+							<span class="font-medium text-accent"
+								>{t('author.newToAuthor').replace('%name%', author.name)}</span
+							>
+							<span class="text-muted">{t('author.startWith')}</span>
+						</p>
+						<p class="read-card-title" dir="auto">{cardBook.title}</p>
+						{#if totalWords}
+							<p class="text-small text-muted">{t('author.allWorks')} · {readingTime(totalWords)}</p>
+						{/if}
+					{/if}
+				</div>
+			</div>
+			<div class="read-card-cta">
+				<a
+					href={localizeHref(`/books/${cardBook.slug}/${resumeBook ? resumeBook.order : 1}`)}
+					class="btn btn-primary">{resumeBook ? t('book.continue') : t('book.beginReading')}</a
+				>
+			</div>
+		</div>
+	{/if}
+
+	<!-- The page's own actions — keep, share, the writer's quotations, search
+	     their works — as the book page's action row (an icon strip when narrow).
+	     The biography's reading tools live with the biography below. -->
+	<div class="action-host mx-auto mt-3 max-w-[40rem]">
+		<div class="action-strip">
+			<FavoriteButton kind="author" slug={author.slug} showLabel />
+			<ShareButton url={canonical} title={author.name} showLabel />
 			<!-- Shown only when a person has approved quotations for this writer,
 			     and only to English readers: the page is English (the quotations
 			     are lifted from the English works and each citation names an
@@ -432,38 +503,19 @@
 			     same reason. This link is also what keeps the quote page off the
 			     list of pages reachable only from the sitemap. -->
 			{#if author.quote_count && getLang() === 'en'}
-				<a href={`/quotes/${author.slug}/`} class="btn btn-sm btn-ghost shrink-0">Quotes</a>
+				<a href={`/quotes/${author.slug}/`} class="btn btn-sm btn-ghost"
+					><Icon name="quote" size={16} /><span>Quotes</span></a
+				>
 			{/if}
-			<FavoriteButton kind="author" slug={author.slug} showLabel />
-			<ShareButton url={canonical} title={author.name} showLabel />
-			<!-- Reading tools as ONE segmented control — Listen, text settings and
-			     focus mode read as a single cluster of icons rather than three
-			     separate ghost pills (matches the masthead mockup). Shown only when
-			     there is a long-form biography to read; Listen drops its label here
-			     since the icon carries it inside the group (the title/aria-label
-			     keep it named). -->
-			{#if author.bio_html}
-				<div class="reader-tools shrink-0">
-					{#if listen.supported}
-						<button
-							class="btn btn-icon btn-ghost"
-							class:text-accent={listen.status !== 'idle'}
-							onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
-							aria-label={t('reader.listen')}
-							title={t('reader.listen')}><Icon name="headphones" size={16} /></button
-						>
-					{/if}
-					<ReaderControls />
-					<button
-						class="btn btn-icon btn-ghost"
-						onclick={() => readerUi.toggleFocus()}
-						aria-label={t('reader.focus')}
-						title={t('reader.focus')}><Icon name="maximize" size={18} /></button
-					>
-				</div>
-			{/if}
+			<!-- Search this author's works — the real search, scoped to them. -->
+			<a
+				href={localizeHref(scopedSearchHref('author', author.slug))}
+				class="btn btn-sm btn-ghost"
+				aria-label={t('search.inAuthor')}
+				title={t('search.inAuthor')}><Icon name="search" size={16} /><span>{t('nav.search')}</span></a
+			>
 		</div>
-	</header>
+	</div>
 
 	<!-- On-page jump navigation. Sits directly under the masthead's action row —
 	     a full-width section rule the reader meets before the timeline — then pins
@@ -493,6 +545,35 @@
 		</nav>
 	{/if}
 
+	<!-- The biography's heading carries its own reading tools — Listen, text
+	     settings, focus mode apply to the life story, not to the page, so they
+	     sit with it rather than among the page actions above. -->
+	{#if author.bio_html || author.bio}
+		<div id="bio" class="jump-anchor bio-head mx-auto mt-8 flex max-w-[40rem] items-center gap-3">
+			<h2 class="font-display text-h2 font-semibold">{t('articles.kindBiography')}</h2>
+			{#if author.bio_html}
+				<div class="reader-tools ms-auto shrink-0">
+					{#if listen.supported}
+						<button
+							class="btn btn-icon btn-ghost"
+							class:text-accent={listen.status !== 'idle'}
+							onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
+							aria-label={t('reader.listen')}
+							title={t('reader.listen')}><Icon name="headphones" size={16} /></button
+						>
+					{/if}
+					<ReaderControls />
+					<button
+						class="btn btn-icon btn-ghost"
+						onclick={() => readerUi.toggleFocus()}
+						aria-label={t('reader.focus')}
+						title={t('reader.focus')}><Icon name="maximize" size={18} /></button
+					>
+				</div>
+			{/if}
+		</div>
+	{/if}
+
 	<!-- Lifespan timeline: their own milestones when curated, else the bare
 	     lifespan bar (see LifeTimeline). -->
 	<LifeTimeline
@@ -513,28 +594,6 @@
 		</figure>
 	{/if}
 
-	<!-- Where to start + total reading time. -->
-	{#if startWork || totalWords}
-		<div
-			class="mx-auto mt-6 flex max-w-[40rem] flex-wrap items-center gap-x-5 gap-y-1.5 rounded-card border border-border bg-surface px-4 py-3 text-small"
-		>
-			{#if startWork}
-				<span class="text-muted">
-					<span class="eyebrow me-1.5 text-muted"
-						>{t('author.newToAuthor').replace('%name%', author.name)}</span
-					>
-					{t('author.startWith')}
-					<a
-						href={localizeHref(`/books/${startWork.slug}`)}
-						class="font-semibold text-accent hover:underline">{startWork.title}</a
-					>
-				</span>
-			{/if}
-			{#if totalWords}
-				<span class="text-muted sm:ms-auto">{t('author.allWorks')} · {readingTime(totalWords)}</span>
-			{/if}
-		</div>
-	{/if}
 	{/if}
 
 	<!-- Biography. The band — not the page — carries the reader's CSS variables,
@@ -544,8 +603,7 @@
 	     prayer-callout ::before labels reach the injected HTML. -->
 	{#if author.bio_html}
 		<div
-			id="bio"
-			class="jump-anchor mx-auto mt-8"
+			class="mx-auto mt-8"
 			style="{readerPrefs.style}; {bioLabels}; max-width: var(--reading-measure)"
 		>
 			<Reader
@@ -565,7 +623,7 @@
 			/>
 		</div>
 	{:else if author.bio}
-		<p id="bio" class="jump-anchor mt-6 text-body leading-relaxed text-muted">{author.bio}</p>
+		<p class="mt-6 text-body leading-relaxed text-muted">{author.bio}</p>
 	{/if}
 
 	{#if !readerUi.focus}
@@ -787,6 +845,12 @@
 	   clipped by it — so the group rounds its own outer corners on the end tools
 	   instead. The inner buttons (and ReaderControls' own trigger, reached with
 	   :global) drop their border and radius; the group carries them. */
+	/* The Biography heading row: a section rule, like .section-heading, with the
+	   reading tools at its end. */
+	.bio-head {
+		padding-bottom: 0.4rem;
+		border-bottom: 1px solid var(--border);
+	}
 	.reader-tools {
 		display: inline-flex;
 		align-items: stretch;
