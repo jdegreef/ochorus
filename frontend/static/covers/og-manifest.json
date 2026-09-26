@@ -154,6 +154,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"am/jesus-himself-2": {
+			"ground": "f3c1a25a86585df6478e3633785dc9a883f4fa0a5fd5c89b21d45273e5487356",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"am/school-of-prayer": {
 			"ground": "3000639f6bf3e5771aa35ecb382b9f35d2b62b7c8d468849d913c6200e381fa1",
 			"style": "devotional",
