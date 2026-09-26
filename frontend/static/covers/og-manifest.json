@@ -214,6 +214,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/waiting-on-god": {
+			"ground": "fc2b11f3486f4fc708781c4e223efea60f11c68d461817c130d84cb859b8d4d6",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"amanda-smith-autobiography": {
 			"ground": "aa4cc11c5427d667a4a86ff334ec4bc11d306a55e8dd70f6631e589785737d50",
 			"style": "revival",
