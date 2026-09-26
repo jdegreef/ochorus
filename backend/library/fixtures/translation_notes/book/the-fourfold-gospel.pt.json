@@ -1,0 +1,72 @@
+{
+ "kind": "book",
+ "slug": "the-fourfold-gospel",
+ "language": "pt",
+ "job_issue": null,
+ "pull_request": null,
+ "note": [
+  "AI translation (keyless pipeline path: engine glossary + João Ferreira de Almeida / Bíblia Livre para o Mundo register). Simpson quotes Scripture woven into his prose; the verses were rendered by the model in the traditional Almeida wording (self_rendered) and every one should be checked by a native reviewer. Take Root was egress-blocked this session, so no wording was mined from a shipped corpus file. This list enumerates the explicit Book C:V citations present in the pt text; uncited woven allusions are not individually enumerated."
+ ],
+ "references": [
+  {
+   "reference": "1 João 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 2:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 4:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 5:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 6:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 13:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 15:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Lucas 24:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 5:19,30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "João 6:57",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Pedro 2:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Filipenses 2:5-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romanos 15:1,3,7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Efésios 5:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Coríntios 2:15",
+   "status": "self_rendered"
+  }
+ ]
+}
