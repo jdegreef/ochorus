@@ -1,5 +1,5 @@
 import { readingSync } from './readingSync';
-import { quoteOf } from './markAnchor';
+import { placeMarks, quoteOf } from './markAnchor';
 import { readJSON, writeJSON } from './persisted';
 import { undo } from './undo.svelte';
 import {
@@ -163,11 +163,11 @@ class Marks {
 	}
 
 	/** Add a group of range segments (one selection) as a single mark unit. */
-	add(segments: Segment[], note?: string, color?: string): string {
+	add(segments: Segment[], note?: string, color?: string, paras?: string[]): string {
 		const first = segments[0];
 		if (!first) return '';
 		const id = `${Date.now().toString(36)}:${first.p}:${first.s}`;
-		const existing = new Set(this.list.map(rangeKey));
+		const existing = new Set(this.#placed(paras).map(rangeKey));
 		// The default colour is stored as absence so pre-colour marks and
 		// default-colour marks are indistinguishable (both render gold).
 		const tint = color && color !== DEFAULT_HIGHLIGHT ? { color } : {};
@@ -196,8 +196,8 @@ class Marks {
 	 * chapter and edition — `key`/`language` are the page's, checked against
 	 * what is loaded, so text from one chapter never anchors another's marks.
 	 */
-	anchorLegacy(key: string, language: string, paras: string[]) {
-		if (key !== this.key || language !== this.#language) return;
+	anchorLegacy(key: string, language: string, paras: string[]): boolean {
+		if (key !== this.key || language !== this.#language) return false;
 		let changed = false;
 		const next = this.list.map((m) => {
 			if (m.q) return m;
@@ -206,9 +206,10 @@ class Marks {
 			changed = true;
 			return { ...m, q };
 		});
-		if (!changed) return;
+		if (!changed) return false;
 		this.list = next;
 		this.#persist();
+		return true;
 	}
 
 	/** Remove every segment of a mark group. */
@@ -238,10 +239,16 @@ class Marks {
 		this.#persist();
 	}
 
+	/** The marks where they sit in `paras` (the chapter's block text) — so a
+	 *  highlight that moved with a repair is still found where it is seen. */
+	#placed(paras?: string[]): Mark[] {
+		return paras ? placeMarks(paras, this.list) : this.list;
+	}
+
 	/** The group id whose segments already cover this exact selection, if any. */
-	groupCovering(segments: Segment[]): string | null {
+	groupCovering(segments: Segment[], paras?: string[]): string | null {
 		if (!segments.length) return null;
-		const byKey = new Map(this.list.map((m) => [rangeKey(m), m]));
+		const byKey = new Map(this.#placed(paras).map((m) => [rangeKey(m), m]));
 		if (!segments.every((s) => byKey.has(rangeKey(s)))) return null;
 		return byKey.get(rangeKey(segments[0]))?.id ?? null;
 	}

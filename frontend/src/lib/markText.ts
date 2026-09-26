@@ -1,5 +1,5 @@
 import { DEFAULT_HIGHLIGHT, type Mark } from './reading-schema';
-import { resolveMark } from './markAnchor';
+import { resolveMark, textRange } from './markAnchor';
 
 /**
  * Resolving stored marks back to the text they highlight.
@@ -35,8 +35,7 @@ export function paragraphs(bodyHtml: string): string[] {
 
 /** The text one mark segment covers (`e === -1` = to the end of the block). */
 export function segText(paras: string[], m: Mark): string {
-	const tx = paras[m.p] ?? '';
-	return tx.slice(m.s, m.e === -1 ? undefined : m.e).trim();
+	return textRange(paras[m.p] ?? '', m.s, m.e).trim();
 }
 
 /**
@@ -64,7 +63,10 @@ export function groupMarks(paras: string[], ms: Mark[], edition: string): Highli
 			text: stored
 				.map((m, i) => {
 					const at = placed[i];
-					return at ? segText(paras, at) : (m.q ?? '').trim();
+					if (at) return segText(paras, at);
+					// Only the anchor's head is stored: say when the words ran on.
+					const cut = m.q && (m.e === -1 || m.e - m.s > m.q.length) ? '…' : '';
+					return (m.q ?? '').trim() + cut;
 				})
 				.filter(Boolean)
 				.join(' … '),

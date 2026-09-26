@@ -1,5 +1,5 @@
 import type { Mark, Segment } from './marks.svelte';
-import { quoteOf, resolveMark } from './markAnchor';
+import { placeMarks, quoteOf } from './markAnchor';
 
 /**
  * DOM plumbing for text-range marks.
@@ -98,7 +98,9 @@ export function renderMarks(
 	 * decorated block from `dataset.pristine` first, so a second pass would be
 	 * wiped the next time a highlight changed.
 	 */
-	hits: Segment[] = []
+	hits: Segment[] = [],
+	/** Each block's text, when the caller already has it. */
+	paras: string[] = Array.from(container.children).map((b) => b.textContent ?? '')
 ) {
 	const blocks = Array.from(container.children) as HTMLElement[];
 	// Restore pristine state everywhere we previously decorated.
@@ -109,8 +111,7 @@ export function renderMarks(
 	}
 	// Each highlight where its words are NOW (see markAnchor): moved with them
 	// if a repair shifted the text, left off entirely if they are gone.
-	const paras = blocks.map((b) => b.textContent ?? '');
-	const placed = list.map((m) => resolveMark(paras, m)).filter((m): m is Mark => m !== null);
+	const placed = placeMarks(paras, list);
 	const byParagraph = new Map<number, (Mark | Segment)[]>();
 	for (const m of [...placed, ...hits]) {
 		if (m.p >= 0 && m.p < blocks.length) {
@@ -122,7 +123,7 @@ export function renderMarks(
 		if (block.dataset.pristine === undefined) {
 			block.dataset.pristine = block.innerHTML;
 		}
-		const textLen = (block.textContent ?? '').length;
+		const textLen = paras[p].length;
 		// Apply back-to-front so earlier offsets stay valid as nodes split.
 		const ordered = [...ms].sort((a, b) => b.s - a.s);
 		for (const m of ordered) {

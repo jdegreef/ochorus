@@ -280,3 +280,17 @@ describe('marks.anchorLegacy', () => {
 		expect(marks.list[0].q).toBeUndefined();
 	});
 });
+
+describe('marks after a repair shifted the text', () => {
+	beforeEach(() => localStorage.clear());
+
+	it('finds a moved highlight where the reader sees it, instead of adding a duplicate', () => {
+		marks.load('humility', 1, 'en', 'book');
+		const id = marks.add([{ p: 0, s: 0, e: 5, q: 'Grace' }]);
+		const repaired = ['Truly, Grace upon grace.'];
+		const seen = [{ p: 0, s: 7, e: 12 }];
+		expect(marks.groupCovering(seen, repaired)).toBe(id);
+		marks.add(seen, undefined, undefined, repaired);
+		expect(marks.list).toHaveLength(1);
+	});
+});
