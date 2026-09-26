@@ -1,0 +1,260 @@
+{
+ "kind": "sermon",
+ "slug": "intercession-every-christians-duty",
+ "language": "sw",
+ "job_issue": 3475,
+ "pull_request": 3487,
+ "references": [
+  {
+   "reference": "1 Corinthians 13:3",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 9:11b",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "pauls-first-prayer.sw.json"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 22:39b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 John 3:16b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Timothy 2:4",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Isaiah 11:9b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 67:2",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Timothy 2:2b",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "James 1:27b",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Acts 20:28a",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Ephesians 6:19",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Romans 15:30",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Corinthians 3:6",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Numbers 12:13",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Mark 5:23",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Luke 23:34a",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Romans 12:15",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "Psalm 106:30",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Daniel 10:12",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Exodus 32:10a",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Romans 8:21",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Hebrews 12:23b",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "John 17:23",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 22:44",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "2 Corinthians 2:16a",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 2:16b",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:10a",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 4:3",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Philippians 2:1",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Philippians 4:9",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Philippians 2:12b",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Philippians 1:27a",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Hebrews 13:17a",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Acts 20:32",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Ephesians 2:1b",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:13b",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalm 16:11b",
+   "status": "self_rendered",
+   "block_index": 42
+  }
+ ]
+}

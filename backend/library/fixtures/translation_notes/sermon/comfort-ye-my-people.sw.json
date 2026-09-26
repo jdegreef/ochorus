@@ -1,0 +1,207 @@
+{
+ "kind": "sermon",
+ "slug": "comfort-ye-my-people",
+ "language": "sw",
+ "job_issue": 3478,
+ "pull_request": 3487,
+ "references": [
+  {
+   "reference": "Isaiah 40:1",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "Isaiah 40:2",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 2:2",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 85:10a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Lamentations 4:1",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Malachi 3:13",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:21",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Hebrews 8:6",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Proverbs 16:1",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Isaiah 2:11a",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Hebrews 10:4",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Romans 3:25",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 8:56",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Malachi 4:2",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Romans 6:23a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "2 Thessalonians 1:9",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  },
+  {
+   "reference": "Psalm 103:10",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 32:1",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 32:2a",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "2 Corinthians 7:4",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Micah 7:18",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "come-unto-him.sw.json"
+  },
+  {
+   "reference": "Psalm 136:23",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Ephesians 2:5",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "salvation-by-faith.sw.json"
+  },
+  {
+   "reference": "Psalm 3:8a",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Ezekiel 24:16",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Psalm 126:5",
+   "status": "self_rendered",
+   "block_index": 30
+  }
+ ]
+}

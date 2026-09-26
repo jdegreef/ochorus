@@ -1,0 +1,82 @@
+{
+ "the-inner-chamber-month": {
+  "title": "የውስጥ እልፍኝ፦ የአንድ ወር ጉዞ",
+  "description": "የጸሎትንና የቃሉን የዕለት ልማድ ገንባ፦ ከአንድሪው መሪ ጋር ሠላሳ ስድስት ማለዳዎች፣ በየቀኑ አንድ ምዕራፍ።",
+  "note": [
+   "Amharic's FIRST plan prose, shipping with the-inner-chamber.am (queue job #3556), the sole source book of this launch plan; without it seed_plans would create the am plan row with no prose, which PlanTranslationCoverageTests fails on. No am job was filed for this plan, so it rides with its book.",
+   "The title opens with the shipped edition's own title verbatim (የውስጥ እልፍኝ), so the plan card and the book on the shelf agree. The reader is addressed in the singular (ገንባ), the am house style."
+  ]
+ },
+ "school-of-prayer-31-days": {
+  "title": "31 ቀናት በጸሎት ትምህርት ቤት",
+  "description": "ከአንድሪው መሪ ጋር በብቸኛው መምህር እግር ሥር የምታሳልፈው አንድ ወር። እያንዳንዱ ቀን ኢየሱስ ራሱ ስለ ጸሎት ከተናገራቸው ቃላት አንዱን ይከፍታል፤ ከ«ጌታ ሆይ፥ እንጸልይ ዘንድ አስተምረን» አንሥቶ እስከ መጨረሻው ሌሊት ተስፋዎች ድረስ፣ እያንዳንዱም በራሱ ጸሎት ይደመደማል። በቀን አንድ ትምህርት፣ ወደ አሥር ደቂቃ ያህል፤ ወደ ምልጃና ወደ ጸሎት ሕይወት የሚያሳድግ ጉዞ።",
+  "note": [
+   "Single-book plan backed by the am edition of school-of-prayer (queue job #3562; book title «ከክርስቶስ ጋር በጸሎት ትምህርት ቤት»). Ships with the book, which makes this LAUNCH plan creatable in am; this also delivers queue job #3574. The card phrase «በጸሎት ትምህርት ቤት» matches the book title, and «ጌታ ሆይ፥ እንጸልይ ዘንድ አስተምረን» is the 1962 Luke 11:1 wording the book's refrain uses."
+  ]
+ },
+ "school-of-prayer": {
+  "title": "የጸሎት ትምህርት ቤት",
+  "description": "ከሦስት መሪዎች ጋር በጸሎት ትምህርት ቤት የምታሳልፈው አራት ሳምንት፦ አንድሪው መሪ ጌታ ራሱ እንዴት እንድንጸልይ እንደሚያስተምረን፣ ዲ. ኤል. ሙዲ ስለሚያሸንፍ ጸሎት፣ ሃና ቡዪንዛ ደግሞ ጸሎት የክርስቲያን ሕይወት የዕለት ትርታ መሆኑን ያስተምራሉ።",
+  "note": [
+   "Queue job #3575. AI-drafted; awaiting native review. None of the three source books (lord-teach-us-to-pray-2, prevailing-prayer, prayer-the-pulse-of-life) has an am edition yet, so seed_plans creates no am row until they all do; whoever ships them should make the card quote their titles.",
+   "«የጸሎት ትምህርት ቤት» echoes the am school-of-prayer book title «ከክርስቶስ ጋር በጸሎት ትምህርት ቤት». Names follow the shipped am bios (አንድሪው መሪ, ዲ. ኤል. ሙዲ); «የሚያሸንፍ ጸሎት» is the am rendering of «prevailing prayer» already used in the am school-of-prayer edition."
+  ]
+ },
+ "brave-for-god-24-true-stories": {
+  "title": "ለእግዚአብሔር ደፋር፦ 24 እውነተኛ ታሪኮች",
+  "description": "ለወጣት አንባቢዎች በየቀኑ አንድ እውነተኛ ታሪክ የሚቀርብበት ሦስት ሳምንት ተኩል፦ አራቱም የ«ለእግዚአብሔር ደፋር» መጻሕፍት፣ በእግዚአብሔር ታምነው ደፋሮች የሆኑ ከዓለም ሁሉ ማዕዘን የመጡ ሃያ አራት ተራ ሰዎች።",
+  "note": [
+   "Queue job #3576. AI-drafted; awaiting native review. The four brave-for-god books have no am edition yet, so no am row is created until they do; when they ship, make their series name agree with «ለእግዚአብሔር ደፋር» (or change this card to theirs)."
+  ]
+ },
+ "christ-our-healer": {
+  "title": "ክርስቶስ ፈዋሻችን",
+  "description": "ክርስቶስ አዳኝ፣ ቀዳሽ፣ ፈዋሽና የሚመጣ ንጉሥ መሆኑን የምታሰላስልበት ስድስት ሳምንት። ኤ. ቢ. ሲምፕሰን ባለ አራት ገጽ ወንጌልንና የፈውስ አገልግሎቱን ይዘረጋል፤ አንድሪው መሪ ደግሞ ለሚመጣው ሕይወት መያዣ ይሆን ዘንድ ዛሬም ሥጋን በሚፈውሰው ጌታ ላይ በአንድ ወር ማሰላሰል ይደመድማል።",
+  "note": [
+   "Queue job #3577. AI-drafted; awaiting native review. The three source books (the-fourfold-gospel, the-gospel-of-healing, divine-healing) have no am edition yet, so no am row is created until they do.",
+   "«ባለ አራት ገጽ ወንጌል» (fourfold gospel) and the name ኤ. ቢ. ሲምፕሰን are verbatim from the shipped am Simpson bio. The reader is addressed in the singular (የምታሰላስልበት), the am house style."
+  ]
+ },
+ "daughters-of-the-king-book-1-30-days": {
+  "title": "የንጉሡ ሴት ልጆች፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 1",
+  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ልጃገረዶች፣ የንጉሡ ሴት ልጅ እንደ መሆንሽ ማንነትሽ ላይ የሚያተኩሩ ሠላሳ ቀናት፦ ከእግዚአብሔር የሚመጣ ክብር፣ ራስን ከሌሎች ከማወዳደር ወጥመድ መውጣት፣ ያለ ጭቅጭቅ የሚኖር ጓደኝነት፣ እና የመጽሐፍ ቅዱስ ደፋር ልጃገረዶች። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስቢበት ጥያቄ፣ የምትሞክሪው ነገርና ጸሎት አለው።",
+  "note": [
+   "Queue job #3578. AI-drafted; awaiting native review. daughters-of-the-king-1 has no am edition yet, so no am row is created until it does; make its title agree with «የንጉሡ ሴት ልጆች» when it ships. The girl reader is addressed in the feminine singular (አንቺ forms), as the English addresses her directly."
+  ]
+ },
+ "daughters-of-the-king-book-2-30-days": {
+  "title": "የንጉሡ ሴት ልጆች፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 2",
+  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ልጃገረዶች የድፍረት ሠላሳ ቀናት፦ ጭንቀትን ከእግዚአብሔር ጋር መጋፈጥ፣ ድምፅሽን መጠቀም፣ ማገልገልና መምራት፣ እንደ ወንጌሎቹ ደፋር ሴቶችም ኢየሱስን መከተል። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስቢበት ጥያቄ፣ የምትሞክሪው ነገርና ጸሎት አለው።",
+  "note": [
+   "Queue job #3579. AI-drafted; awaiting native review. daughters-of-the-king-2 has no am edition yet, so no am row is created until it does. Series wording and the closing sentence match Book 1's am card."
+  ]
+ },
+ "daughters-of-the-king-book-3-30-days": {
+  "title": "የንጉሡ ሴት ልጆች፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 3",
+  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ልጃገረዶች ስለ ማደግ የሚያወሩ ሠላሳ ቀናት፦ ትልልቅ ስሜቶች፣ የጉርምስና ለውጦች የእግዚአብሔር መልካም ንድፍ መሆናቸው፣ ጥበበኛ ምርጫዎች፣ ጥሪሽን ማግኘት፣ እና እግዚአብሔርን ከሚወዱ ታላላቅ ሴቶች መማር። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስቢበት ጥያቄ፣ የምትሞክሪው ነገርና ጸሎት አለው።",
+  "note": [
+   "Queue job #3580. AI-drafted; awaiting native review. daughters-of-the-king-3 has no am edition yet, so no am row is created until it does. Series wording and the closing sentence match Books 1–2's am cards."
+  ]
+ },
+ "humility-12-days": {
+  "title": "ትሕትና በ12 ቀናት",
+  "description": "የአንድሪው መሪ የታወቀ መጽሐፍ ስለ በጎነት ሁሉ ሥር፦ ለአሥራ ሁለት ቀናት በቀን አንድ አጭር ምዕራፍ።",
+  "note": [
+   "Queue job #3581. AI-drafted; awaiting native review. humility-2 has no am edition yet, so no am row is created until it does; when it ships, make «የበጎነት ሁሉ ሥር» here agree with the book's own phrase for «the root of every virtue». The author name follows the shipped am Murray bio."
+  ]
+ },
+ "praying-men": {
+  "title": "የሚጸልዩ ሰዎች፦ ከኢ. ኤም. ባውንድስ ጋር የጸሎት ትምህርት ቤት",
+  "description": "ከታላቁ የጸሎት ሐዋርያ ጋር በምልጃ እቶን ውስጥ የምታሳልፈው ሰባት ሳምንት። ኢ. ኤም. ባውንድስ በሰባኪው የራሱ የኃይል ፍላጎት ይጀምራል፤ ከዚያም ጸሎትን የሚያሸንፍ የሚያደርገውን ዓላማ፣ ቀጥሎም ጸሎትን የክርስቲያን ሕይወት ሙሉ ሥራ የሚያደርገውን አስፈላጊነት ይገልጣል።",
+  "note": [
+   "Queue job #3582. AI-drafted; awaiting native review. The three Bounds books (power-through-prayer, purpose-in-prayer, necessity-of-prayer) have no am edition yet, so no am row is created until they do. «የጸሎት ትምህርት ቤት» matches the am «A School of Prayer» card; «የሚያሸንፍ» follows the am rendering of «prevailing» prayer. ኢ. ኤም. ባውንድስ is a first spelling (no am Bounds bio yet)."
+  ]
+ },
+ "rooted-book-1-30-days": {
+  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 1",
+  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች ጥልቅ ሥር የምትሰድበት ሠላሳ ቀናት፦ እግዚአብሔር ማን እንደ ሆነ፣ የኢየሱስ የምሥራች፣ በክርስቶስ ማን እንደ ሆንክ፣ እንዴት እንደምትጸልይ፣ እና እንዴት እንደምታድግ። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
+  "note": [
+   "Queue job #3583. AI-drafted; awaiting native review. rooted-1 has no am edition yet, so no am row is created until it does; make its series title agree with «ሥር የሰደደ» when it ships. The reader is addressed in the generic singular (አንተ forms), the am house style; the closing sentence mirrors the Daughters of the King cards in the masculine."
+  ]
+ }
+}

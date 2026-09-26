@@ -1,0 +1,271 @@
+{
+ "kind": "sermon",
+ "slug": "if-god-be-for-us",
+ "language": "sw",
+ "job_issue": 3461,
+ "pull_request": 3470,
+ "references": [
+  {
+   "reference": "Romans 8:31a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "are-you-born-again.sw.json"
+  },
+  {
+   "reference": "Romans 8:31b",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "marks-of-a-true-conversion.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:54b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "salvation-by-faith.sw.json"
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "2 Corinthians 5:19a",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "the-unselfishness-of-god.sw.json"
+  },
+  {
+   "reference": "Isaiah 65:1",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 John 4:19",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Amos 3:3",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "1 Peter 2:6",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Acts 11:18",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Titus 2:14b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Titus 2:11",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Titus 2:14a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 2:12",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Thessalonians 4:3",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Philippians 1:11",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Philippians 2:15",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "pauls-first-prayer.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 1:31",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "Jonah 2:9",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Revelation 1:8",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalm 148:13",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Psalm 115:1a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "on-loving-god.sw.json"
+  },
+  {
+   "reference": "John 15:19a",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "John 15:19b",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 John 3:13",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 Peter 2:15",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "2 Timothy 3:12",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 John 5:4",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Corinthians 4:4",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "prayer-the-pulse-of-life.sw.json"
+  },
+  {
+   "reference": "2 Timothy 2:13",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Luke 12:4",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Jeremiah 44:16",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Jeremiah 44:17a",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Romans 6:1",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "salvation-by-faith.sw.json"
+  },
+  {
+   "reference": "Hebrews 6:18",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "the-way-to-god.sw.json"
+  }
+ ]
+}

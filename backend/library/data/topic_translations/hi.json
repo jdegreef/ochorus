@@ -3,7 +3,8 @@
   "Hindi shelf prose. Scripture is the Indian Revised Version (irvhin), the edition language_seed.py names for hi, parsed verbatim from the USX on disk — never recalled. Where an excerpt is shorter than the whole verse it is a CONTIGUOUS span, asserted as a substring of the full IRV verse at build time.",
   "Six shelves carry a verse, matching the six lg and uk carry and the same references; ar/es/pt/sw carry none, so a verse is optional and its absence is not a gap.",
   "Names follow the shipped hi content where one exists: स्पर्जन (21), ऑगस्टीन (8), बन्यन (1), बैक्सटर (1), मरे (116). Whitefield and Wesley appear nowhere in shipped Hindi yet, so व्हाइटफ़ील्ड and वेस्ली are the standard forms and the first Hindi content to name them — a later bio should match these, not diverge.",
-  "Shelf wording echoes the hi book titles it stands over: «भीतरी कोठरी» is the title the-inner-chamber.hi ships under."
+  "Shelf wording echoes the hi book titles it stands over: «भीतरी कोठरी» is the title the-inner-chamber.hi ships under.",
+  "The nineteen shelves added for queue jobs #2276–#2294 carry NO verse: the Take Root API was unreachable this session, so a scripture object could not be sourced verbatim (never recalled). A shelf with no verse is complete (ar/es/pt/sw carry none). A later session with Bible access may add one per shelf."
  ],
  "christ-and-the-cross": {
   "title": "मसीह और क्रूस",
@@ -124,6 +125,188 @@
   "meta_description": "प्रचार किया गया वचन पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "स्पर्जन and बैक्सटर follow the shipped hi bios. व्हाइटफ़ील्ड and वेस्ली have NO shipped Hindi precedent — this is the first Hindi content to name them, so a later Whitefield or Wesley bio should match these forms rather than diverge."
+  ]
+ },
+ "the-puritans": {
+  "title": "प्यूरिटन जन",
+  "description": "प्यूरिटन जनों की सरल, हृदय को टटोलने वाली धर्मविद्या — बन्यन का यात्री, भीतरी पाप पर ओवेन, वाटसन की ऊष्मा और एडवर्ड्स की आग — सिद्धान्त जो हृदय पर दबाकर बैठाया गया।",
+  "seo_title": "प्यूरिटन जन पर किताबें — Ochorus",
+  "meta_description": "प्यूरिटन जनों पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "ओवेन, वाटसन, एडवर्ड्स follow shipped hi bios (Owen 2, Watson 21, Edwards 28).",
+   "बन्यन follows the shipped hi topic glossary; the shipped hi bio corpus uses बनियन (31) instead — kept बन्यन to match the topic-shelf file this stands beside.",
+   "प्यूरिटन (Puritans) has no shipped Hindi precedent — standard Devanagari transliteration, first-use here."
+  ]
+ },
+ "abiding-in-christ": {
+  "title": "मसीह में बने रहना",
+  "description": "दाखलता में डाली — प्रभु यीशु के साथ संयोग और सहभागिता, और वह जीवन जो उसके निकट बने रहने के सिवा और किसी स्रोत से नहीं बहता।",
+  "seo_title": "मसीह में बने रहना पर किताबें — Ochorus",
+  "meta_description": "मसीह में बने रहने पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "«दाखलता» echoes the shipped hi title of true-vine («सच्ची दाखलता»), which sits on this shelf."
+  ]
+ },
+ "women-of-faith": {
+  "title": "विश्वास की स्त्रियाँ",
+  "description": "माताएँ, मिशनरी और रहस्यवादी — उन स्त्रियों का विश्वास जिन्होंने प्रार्थना की, दुख सहा और साहस किया, गयों की कोठरी से लेकर दासत्व से छुड़ाई गई स्त्री के प्रचार-मंच तक।",
+  "seo_title": "विश्वास की स्त्रियाँ पर किताबें — Ochorus",
+  "meta_description": "विश्वास की स्त्रियों पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "गयों (Guyon) has no shipped Hindi precedent — standard Devanagari transliteration, first-use here.",
+   "«स्त्रियाँ» matches the shipped hi title of women-who-moved-heaven (स्वर्ग को हिला देने वाली महिलाएँ) in sense."
+  ]
+ },
+ "voices-of-the-early-church": {
+  "title": "आदिकालीन कलीसिया के स्वर",
+  "description": "पहली शताब्दियों का विश्वास उसके अपने शब्दों में — ऑगस्टीन का खुला हुआ हृदय, वचन के देहधारण पर अथनासियुस, और शहीदों तथा चरवाहों की पत्रियाँ।",
+  "seo_title": "आदिकालीन कलीसिया के स्वर पर किताबें — Ochorus",
+  "meta_description": "आदिकालीन कलीसिया पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "ऑगस्टीन (21) and अथनासियुस (13) follow shipped hi bios. «कलीसिया» is the corpus word for church."
+  ]
+ },
+ "day-by-day": {
+  "title": "दिन-प्रतिदिन",
+  "description": "भोर और साँझ के लिये एक पाठ — प्राण को पोषित रखने वाली प्रतिदिन की रोटी, स्पर्जन की प्रिय क्लासिक से लेकर शान्त घड़ी की पुस्तकों तक।",
+  "seo_title": "दिन-प्रतिदिन पर किताबें — Ochorus",
+  "meta_description": "प्रतिदिन के भक्ति-पाठ की स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "स्पर्जन follows shipped hi (21). «प्रतिदिन की रोटी» echoes the shipped faith-and-guidance shelf's own wording."
+  ]
+ },
+ "the-east-african-revival": {
+  "title": "पूर्वी अफ़्रीकी जागृति",
+  "description": "Tukutendereza Yesu — वह जागृति जो कम्पाला की एक पहाड़ी से आरम्भ होकर छह देशों और लगभग पूरी एक शताब्दी तक फैल गई, और वह ज्योति में चलना जो उसने सिखाया।",
+  "seo_title": "पूर्वी अफ़्रीकी जागृति पर किताबें — Ochorus",
+  "meta_description": "पूर्वी अफ़्रीकी जागृति पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "«जागृति» is the corpus word for revival/awakening (60 uses vs 3 for पुनरुत्थान).",
+   "\"Tukutendereza Yesu\" kept as-is in Latin script per instruction (Luganda praise cry). कम्पाला (Kampala) first-use place name, standard Devanagari."
+  ]
+ },
+ "contemporary-voices": {
+  "title": "समकालीन स्वर",
+  "description": "पुराने मार्ग पर जीवित अगुवे हैं — आज के शिक्षक जो पूर्वी अफ़्रीका और उससे परे के लिये लिखते हैं, और चेले से वहीं मिलते हैं जहाँ आज उसके प्रश्न हैं।",
+  "seo_title": "समकालीन स्वर पर किताबें — Ochorus",
+  "meta_description": "समकालीन ईसाई शिक्षकों की पुस्तकें, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "«पुराने मार्ग» echoes Jer 6:16, as used in the shipped enduring-classics shelf."
+  ]
+ },
+ "the-inner-life": {
+  "title": "भीतरी जीवन",
+  "description": "वह मार्ग जो भीतर की ओर मुड़ता है — ए केम्पिस, लॉ और गयों, परमेश्वर का प्रेम और गुप्त स्थान का बन्द किवाड़, प्राण उसके साथ अकेला।",
+  "seo_title": "भीतरी जीवन पर किताबें — Ochorus",
+  "meta_description": "भीतरी जीवन पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "ए केम्पिस matches the shipped enduring-classics shelf form (थॉमस ए केम्पिस); no bio precedent.",
+   "विलियम लॉ (Law) and गयों (Guyon) have no shipped Hindi precedent — standard Devanagari, first-use here.",
+   "«भीतरी» / «गुप्त स्थान का बन्द किवाड़» echoes the shipped the-inner-chamber title (भीतरी कोठरी) and Matt 6:6."
+  ]
+ },
+ "the-great-awakening": {
+  "title": "महान जागृति",
+  "description": "वह प्रचार जिसने दो महाद्वीपों को हिला दिया — खुले मैदान में व्हाइटफ़ील्ड और वेस्ली, अपने लोगों के बीच एडवर्ड्स, जागृति पर फ़िन्नी — और उस ज्वाला के नीचे का सिद्धान्त।",
+  "seo_title": "महान जागृति पर किताबें — Ochorus",
+  "meta_description": "महान जागृति पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "व्हाइटफ़ील्ड (25), वेस्ली (41), एडवर्ड्स (28), फ़िन्नी (21) follow shipped hi bios.",
+   "«व्हाइटफ़ील्ड और वेस्ली» matches the shipped the-preached-word shelf's pairing."
+  ]
+ },
+ "the-body-of-christ": {
+  "title": "मसीह की देह",
+  "description": "कलीसिया एक जीवित समग्रता के रूप में — एक दूसरे के अंग, सिर से जुड़े हुए, और उससे बहने वाली सेवा और चरवाही।",
+  "seo_title": "मसीह की देह पर किताबें — Ochorus",
+  "meta_description": "मसीह की देह और कलीसिया पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "«कलीसिया» is the corpus word for the church (158 uses)."
+  ]
+ },
+ "for-those-who-lead": {
+  "title": "उनके लिये जो अगुवाई करते हैं",
+  "description": "चरवाहों और प्राण जीतनेवालों के लिये एक आदेश — पासबान की देखभाल, प्रचारक की प्रार्थना में सामर्थ्य, और मनुष्यों को मसीह के पास लाने की रीति।",
+  "seo_title": "अगुवाई करनेवालों के लिये किताबें — Ochorus",
+  "meta_description": "मसीही अगुवाई और चरवाही पर स्थायी क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "«प्रार्थना में सामर्थ्य» echoes the shipped hi book titles on this shelf (प्रार्थना के द्वारा सामर्थ्य / प्रार्थना में महान सामर्थ्य)."
+  ]
+ },
+ "the-wesleys-and-early-methodism": {
+  "title": "वेस्ली परिवार और आरम्भिक मेथोडिज़्म",
+  "description": "वह जागृति जो एक आन्दोलन बन गई — जॉन वेस्ली के उपदेश और उनका सरल विवरण, वह माता जिसने उन्हें गढ़ा, और जो उत्साह उसके पीछे चला।",
+  "seo_title": "वेस्ली परिवार और मेथोडिज़्म पर किताबें — Ochorus",
+  "meta_description": "वेस्ली परिवार और आरम्भिक मेथोडिज़्म पर स्थायी क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "जॉन वेस्ली / वेस्ली (41) follow shipped hi bios; the mother Susanna is सुसन्ना in the shipped Wesley bio.",
+   "मेथोडिज़्म (Methodism) has no shipped Hindi precedent — standard Devanagari, first-use here."
+  ]
+ },
+ "foundations-of-the-faith": {
+  "title": "विश्वास की नींव",
+  "description": "पुराने सिद्धान्त, सरलता से थामे गए — देहधारण, परमेश्वर का अनुग्रह और इच्छा, आज्ञाएँ और वे मूल बातें जो एक ही बार सदा के लिये पवित्र लोगों को सौंप दी गईं।",
+  "seo_title": "विश्वास की नींव पर किताबें — Ochorus",
+  "meta_description": "विश्वास की नींव और मूल सिद्धान्तों पर स्थायी क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "«अनुग्रह» is the glossary word for grace. «एक ही बार सदा के लिये... सौंप दी गईं» echoes Jude 1:3."
+  ]
+ },
+ "saints-of-the-african-diaspora": {
+  "title": "अफ़्रीकी प्रवासी के सन्त",
+  "description": "अश्वेत स्वरों में लाया गया सुसमाचार — रिचर्ड एलन और स्वतन्त्र जन्मे प्रचारक, वे पवित्रता की स्त्रियाँ जो चुप न रहीं, और नाइजर पर क्राउथर।",
+  "seo_title": "अफ़्रीकी प्रवासी के सन्त पर किताबें — Ochorus",
+  "meta_description": "अफ़्रीकी प्रवासी के मसीही सन्तों पर स्थायी क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "रिचर्ड एलन (Richard Allen) and क्राउथर (Crowther) have no shipped Hindi precedent — standard Devanagari, first-use here.",
+   "नाइजर (Niger) first-use place name, standard Devanagari. «पवित्रता» is the glossary word for holiness."
+  ]
+ },
+ "the-grace-of-god": {
+  "title": "परमेश्वर का अनुग्रह",
+  "description": "आदि से अन्त तक अनुग्रह — मुफ़्त, सर्वोच्च और पर्याप्त, पापियों में सबसे बड़े पर बहुतायत से बहता और सबसे निर्बल सन्त को थामे रखता।",
+  "seo_title": "परमेश्वर के अनुग्रह पर किताबें — Ochorus",
+  "meta_description": "परमेश्वर के अनुग्रह पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "«अनुग्रह» is the glossary word for grace and echoes the shipped all-of-grace title (सब कुछ अनुग्रह से).",
+   "«पापियों में सबसे बड़े» echoes 1 Tim 1:15, as used in the shipped the-gospel-call shelf."
+  ]
+ },
+ "victory-over-sin": {
+  "title": "पाप पर विजय",
+  "description": "पवित्रता के लिये भीतरी संघर्ष — पाप को मारना, हृदय की शुद्धता, अनुरागों को क्रम में रखना, और परमपवित्र स्थान में जाने का मार्ग।",
+  "seo_title": "पाप पर विजय पर किताबें — Ochorus",
+  "meta_description": "पाप पर विजय और पवित्रता पर स्थायी क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "«पवित्रता» / «अनुराग» echo the shipped the-way-of-holiness shelf (हृदय के अनुराग). «परमपवित्र स्थान» echoes Heb 10:19."
+  ]
+ },
+ "to-the-ends-of-the-earth": {
+  "title": "पृथ्वी की छोर तक",
+  "description": "मिशनरियों की डायरियाँ — वनों में ब्रेनर्ड, चीन में टेलर, भारत में कारमाइकल, नाइजर पर क्राउथर — हर मूल्य पर पहुँचाया गया सुसमाचार।",
+  "seo_title": "पृथ्वी की छोर तक पर किताबें — Ochorus",
+  "meta_description": "मिशन और मिशनरियों पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "ब्रेनर्ड (डेविड ब्रेनर्ड, shipped form), टेलर (हडसन टेलर, 17), कारमाइकल (एमी कारमाइकल, 6) follow shipped hi bios.",
+   "क्राउथर (Crowther) has no shipped Hindi precedent — standard Devanagari, first-use (also used on saints-of-the-african-diaspora)."
+  ]
+ },
+ "faith-for-the-impossible": {
+  "title": "असम्भव के लिये विश्वास",
+  "description": "परमेश्वर को उसके वचन पर लेना — म्यूलर के अनाथ केवल प्रार्थना से पोषित, उस पर बाट जोहने का अनुग्रह, और विश्वास का वह बैंक जो कभी नहीं टूटता।",
+  "seo_title": "असम्भव के लिये विश्वास पर किताबें — Ochorus",
+  "meta_description": "प्रार्थना और विश्वास पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "म्यूलर (जॉर्ज म्यूलर, 17) follows shipped hi bio. «बाट जोहने» echoes the shipped waiting-on-god title (परमेश्वर की बाट जोहना)."
+  ]
+ },
+ "men-of-valour": {
+  "title": "वीर पुरुष",
+  "description": "पुरुषों को एक बुलाहट — प्रार्थना करने, अगुवाई करने, सब कुछ देने और झुंड की चरवाही करने के लिये — परमेश्वर के पुत्रों के लिये साहस के जीवन।",
+  "seo_title": "वीर पुरुष पर किताबें — Ochorus",
+  "meta_description": "साहस और मसीही पुरुषत्व पर स्थायी क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
+  "note": [
+   "«झुंड की चरवाही» echoes 1 Pet 5:2. «परमेश्वर के पुत्रों» renders sons of God."
   ]
  }
 }

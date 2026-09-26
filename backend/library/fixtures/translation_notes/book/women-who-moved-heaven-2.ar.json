@@ -1,0 +1,279 @@
+{
+  "kind": "book",
+  "slug": "women-who-moved-heaven-2",
+  "language": "ar",
+  "job_issue": 1782,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Joel 2:28-29",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Acts 1:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Acts 16:13",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 16:23-24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Colossians 4:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 18:1",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Psalm 56:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "1 Timothy 2:1-4",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Lamentations 2:19",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Psalm 126:5-6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 6:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Psalm 46:10",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "2 Corinthians 12:9",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 15:5",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Proverbs 22:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Psalm 119:147",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Jeremiah 29:11",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 18:20",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Joshua 24:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Philippians 4:11-12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 15:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Isaiah 43:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Philippians 4:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "2 Corinthians 3:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Galatians 2:20",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 10:2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Isaiah 41:10",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 9:23",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Romans 8:28",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Philippians 4:6-7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Psalm 23:4",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "1 Peter 5:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Romans 8:38-39",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Isaiah 40:31",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 9:37-38",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "John 12:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Romans 1:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Romans 10:14-15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "2 Corinthians 5:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Joshua 1:9",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Isaiah 6:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Zechariah 4:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 4:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Hebrews 11:33-34",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Psalm 121:1-2",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Mark 9:23",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Proverbs 3:5-6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "2 Corinthians 5:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "James 5:16",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 18:19-20",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "1 John 5:14-15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Acts 2:42",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Jeremiah 29:13",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 7:7-8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    }
+  ]
+}
