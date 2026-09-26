@@ -49,6 +49,13 @@
   "description": "Um mês sobre as boas-novas mais antigas que existem. O terno chamado de Richard Baxter aos não convertidos, D. L. Moody sobre o caminho para Deus, e o Tudo pela Graça de Charles Spurgeon — os mais simples dos guias sobre como um pecador é salvo, e como sabê-lo.",
   "title": "O Caminho para Deus: Graça para Todo Pecador"
  },
+ "growing-in-wisdom-18-days": {
+  "description": "O guia de James DeGreef para estudantes — uma breve leitura por dia durante dezoito dias. Da descoberta do seu propósito à construção de uma visão para o futuro, cada dia combina conselhos práticos com uma passagem das Escrituras, uma reflexão e uma oração.",
+  "note": [
+   "growing-in-wisdom has a Portuguese edition (shipped in this PR), so seed_plans creates a Portuguese row for this single-book plan; this prose keeps it from publishing English-titled."
+  ],
+  "title": "Crescendo em Sabedoria em 18 Dias"
+ },
  "humility-12-days": {
   "description": "O clássico de Andrew Murray sobre a raiz de toda virtude — um capítulo curto por dia durante doze dias.",
   "title": "Humildade em 12 Dias"
