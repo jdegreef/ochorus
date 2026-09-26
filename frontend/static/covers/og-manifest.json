@@ -2214,6 +2214,16 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"hi/thoughts-for-the-quiet-hour": {
+			"ground": "53c418d14dc6d55f003296e6af05dedf13f4cd9ba08e1148d8ab6d2636e05f4e",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
 		"hi/true-vine": {
 			"ground": "b9a35e392b1c945f7e5b2b59cf0ab102d80a04d95a952449fbebdf90fdeefa52",
 			"style": "devotional",
