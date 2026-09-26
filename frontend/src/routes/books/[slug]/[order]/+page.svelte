@@ -536,29 +536,24 @@
 		return pageOfOffset(el.offsetLeft, flowOrigin, pageW);
 	}
 	/**
-	 * Index of the paragraph a reader on page p is reading: the first one that
-	 * starts on it, or — when one long paragraph fills the whole page — the one
-	 * carried onto it from an earlier page (not 0, the top of the chapter).
-	 * Pages only grow along the flow, so the scan stops at the first paragraph
-	 * past p.
+	 * Index of the paragraph a reader on page p is reading: the first one, in
+	 * flow order, that starts on it — or, when one long paragraph fills the whole
+	 * page, the one carried onto it from an earlier page (not 0, the top of the
+	 * chapter). Flow order, not the smallest offsetTop: on a two-column spread
+	 * the top of the right column is higher than a paragraph starting midway
+	 * down the left one, but comes after it.
 	 */
 	function firstIndexOnPage(p: number): number {
 		if (!body) return 0;
 		const kids = body.children;
-		let best = -1;
-		let bestTop = Infinity;
 		let carried = 0;
 		for (let i = 0; i < kids.length; i++) {
-			const el = kids[i] as HTMLElement;
-			const at = pageOf(el);
+			const at = pageOf(kids[i] as HTMLElement);
+			if (at === p) return i;
 			if (at > p) break;
-			if (at < p) carried = i;
-			else if (el.offsetTop < bestTop) {
-				bestTop = el.offsetTop;
-				best = i;
-			}
+			carried = i;
 		}
-		return best < 0 ? carried : best;
+		return carried;
 	}
 
 	/** The paragraph the reader is on, in either layout. topVisibleIndex asks a
@@ -579,10 +574,11 @@
 	function measurePages(keep = true) {
 		if (!paged || !articleEl || !pager) return;
 		const before = pageTotal;
-		const measured = keep && before > 1 && !!body;
-		const wasLast = measured && pageIndex >= before - 1;
+		const measured = keep && !!body && (before > 1 || stickToLast);
+		const wasLast = measured && (stickToLast || pageIndex >= before - 1);
 		const endStart = chapterEndEl?.firstElementChild;
-		const inEnd = measured && !!endStart && pageIndex >= pageOfNode(endStart);
+		const endWas = measured && endStart ? pageOfNode(endStart) : -1;
+		const inEnd = endWas >= 0 && pageIndex >= endWas;
 		const at = measured ? firstIndexOnPage(pageIndex) : -1;
 		applyInsets();
 		const w = articleEl.clientWidth;
@@ -611,9 +607,15 @@
 		// needed for a two-column spread whose last page may hold a single column.
 		pageTotal = w > 0 ? Math.max(1, Math.ceil(pager.scrollWidth / w - 0.02)) : 1;
 		if (pageIndex > pageTotal - 1) pageIndex = pageTotal - 1;
-		if (!measured || (inEnd && !wasLast)) return;
+		if (!measured) return;
 		const el = body!.children[at] as HTMLElement | undefined;
-		const target = wasLast ? pageTotal - 1 : el ? pageOf(el) : pageIndex;
+		const target = wasLast
+			? pageTotal - 1
+			: inEnd && endStart
+				? pageOfNode(endStart) + (pageIndex - endWas)
+				: el
+					? pageOf(el)
+					: pageIndex;
 		if (target !== pageIndex) goToPage(target, false);
 	}
 
@@ -624,8 +626,13 @@
 		scrollPages = usable > 0 ? Math.max(1, Math.ceil(body.scrollHeight / usable)) : 1;
 	}
 
+	// Opened with ?pg=last (a backward turn from the next chapter): stay on the
+	// last page while late content grows the count, until the reader turns.
+	let stickToLast = false;
+
 	/** Turn to page p, persisting the paragraph now at the top of the page. */
 	function goToPage(p: number, save = true) {
+		if (save) stickToLast = false;
 		pageIndex = Math.min(pageTotal - 1, Math.max(0, p));
 		chapterFrac = pageTotal > 1 ? pageIndex / (pageTotal - 1) : 1;
 		if (save) {
@@ -658,9 +665,11 @@
 	 *  article is `overflow: clip`, so the browser has no scroller to reveal
 	 *  the element with and cannot shift the columns under the translate. */
 	function onArticleFocusIn(e: FocusEvent) {
-		if (!paged) return;
+		if (!paged || !(pageW > 0)) return;
 		const p = pageOfNode(e.target as Element);
-		if (p !== pageIndex) goToPage(p);
+		// Not saved: passing through links on the way elsewhere is not reading
+		// there, and must not move the resume point or finish the chapter.
+		if (p !== pageIndex) goToPage(p, false);
 	}
 
 	/** A faint fade played on each discrete page turn — the incoming page eases up
@@ -892,6 +901,7 @@
 			if (paged) {
 				measurePages(false);
 				let target = 0;
+				stickToLast = wantLast;
 				if (wantLast) target = pageTotal - 1;
 				else if (Number.isFinite(jumpP) && body?.children[jumpP]) {
 					target = pageOf(body.children[jumpP] as HTMLElement);
@@ -1113,9 +1123,10 @@
 			else if (paged) turnPage(contentRtl ? 1 : -1);
 			else gotoChapter(chapter.prev);
 		} else if (e.key === ' ') {
-			// Space on a focused control presses it — "Mark day done", Next chapter
-			// and the reflection's Save all live inside the pages.
-			if (el?.closest?.(INTERACTIVE)) return;
+			// Space on a focused control IN THE TEXT presses it — "Mark day done",
+			// Next chapter and the reflection's Save live inside the pages. A
+			// toolbar button keeps focus after a click, and Space there still pages.
+			if (el?.closest?.('.pager') && el.closest(INTERACTIVE)) return;
 			e.preventDefault();
 			if (paged) turnPage(e.shiftKey ? -1 : 1);
 			else pageScroll(e.shiftKey ? -1 : 1);
@@ -1369,6 +1380,7 @@
 		language: () => language,
 		body: () => body,
 		topIndex: currentIndex,
+		reveal: (el) => (paged ? goToPage(pageOfNode(el), false) : el.scrollIntoView({ block: 'center', behavior: 'smooth' })),
 		listenTitle: () => chapterName(chapter.order, chapter.title),
 		listenArtist: () => `${chapter.author_name} · ${chapter.book_title}`,
 		cite: () => cite,

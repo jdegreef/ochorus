@@ -85,6 +85,12 @@ export interface ReaderTextOptions {
 	 */
 	searchQuery?: () => string;
 	/**
+	 * Brings an element into view. A paged surface supplies it — its article is
+	 * `overflow: clip`, so `scrollIntoView` cannot reach a later page and the
+	 * surface must turn to it instead. Defaults to `scrollIntoView`.
+	 */
+	reveal?: (el: Element) => void;
+	/**
 	 * Called when read-aloud finishes the last paragraph on its own (not on a
 	 * user stop). The chapter reader supplies it to roll into the next chapter;
 	 * single-document surfaces (sermon, bio) leave it unset.
@@ -336,14 +342,12 @@ export class ReaderText {
 			// highlight edit would yank the reader back up the page.
 			if (hits.length && !scrolledToHit) {
 				scrolledToHit = true;
-				requestAnimationFrame(() =>
-					body
-						.querySelector('mark.search-hit')
-						// Both axes: the chapter reader lays pages out in columns and
-						// scrolls horizontally, so `block` alone would never reach a hit on
-						// a later page.
-						?.scrollIntoView({ block: 'center', inline: 'center', behavior: 'smooth' })
-				);
+				requestAnimationFrame(() => {
+					const hit = body.querySelector('mark.search-hit');
+					if (!hit) return;
+					if (this.#o.reveal) this.#o.reveal(hit);
+					else hit.scrollIntoView({ block: 'center', behavior: 'smooth' });
+				});
 			}
 		});
 
