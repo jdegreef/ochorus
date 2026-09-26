@@ -1,0 +1,11 @@
+{
+ "kind": "book",
+ "slug": "till-he-come",
+ "language": "pt",
+ "job_issue": null,
+ "pull_request": null,
+ "note": [
+  "AI translation (keyless pipeline path: engine glossary + João Ferreira de Almeida / Bíblia Livre para o Mundo register). These communion meditations quote Scripture densely — especially the Song of Songs — in the source's abbreviated Roman-numeral citation style (e.g. 'Cânticos ii. 16', 'Isaías xlix. 2'). Every quotation was rendered by the model in the traditional Almeida wording (self_rendered) and should be checked by a native reviewer; Take Root was egress-blocked this session, so no wording was mined from a shipped corpus file (no `mined` claims). The woven, source-abbreviated citations are not individually enumerated — treat the whole translation's Scripture as self_rendered pending native review."
+ ],
+ "references": []
+}
