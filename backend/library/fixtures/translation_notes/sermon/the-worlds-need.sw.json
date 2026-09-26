@@ -1,0 +1,109 @@
+{
+ "kind": "sermon",
+ "slug": "the-worlds-need",
+ "language": "sw",
+ "job_issue": 3473,
+ "pull_request": 3487,
+ "references": [
+  {
+   "reference": "Acts 8:30b",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "2 Timothy 4:2a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Jeremiah 2:2b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Jeremiah 2:3a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Revelation 2:5a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 12:26a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 69:9a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Ephesians 6:18b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Jude 1:20b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Colossians 1:24b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Peter 2:21b",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 8:20b",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Isaiah 53:3a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Isaiah 53:3b",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Matthew 20:28a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Philippians 2:7a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "John 10:34b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 10:35b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 John 2:2b",
+   "status": "self_rendered",
+   "block_index": 21
+  }
+ ]
+}

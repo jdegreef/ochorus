@@ -1,0 +1,98 @@
+{
+ "kind": "sermon",
+ "slug": "what-it-costs-not-to-be-a-christian",
+ "language": "sw",
+ "job_issue": 3530,
+ "pull_request": 3539,
+ "references": [
+  {
+   "reference": "Psalms 119:59",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 5:1",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Isaiah 57:21",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Titus 1:2a",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 8:17",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 3:36",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  },
+  {
+   "reference": "Matthew 10:32",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 10:33",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 10:32",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "the-way-of-salvation-made-plain.sw.json"
+  },
+  {
+   "reference": "Mark 8:38",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "John 3:14-15",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "John 3:36b",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  }
+ ]
+}

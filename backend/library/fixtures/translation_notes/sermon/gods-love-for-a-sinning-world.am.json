@@ -1,0 +1,136 @@
+{
+ "kind": "sermon",
+ "slug": "gods-love-for-a-sinning-world",
+ "language": "am",
+ "job_issue": 3571,
+ "pull_request": null,
+ "note": [
+  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
+  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
+  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Isaiah 50:6",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Jude 1:6",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 9
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 John 4:14",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 29
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Mark 12:7",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 35
+  },
+  {
+   "reference": "John 19:15",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 36
+  },
+  {
+   "reference": "Job 21:14",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 37
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Revelation 3:8",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Hebrews 1:14",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 47
+  },
+  {
+   "reference": "Job 20:12",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Jeremiah 44:4",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Galatians 6:17",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 62
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "self_rendered",
+   "block_index": 62
+  }
+ ]
+}

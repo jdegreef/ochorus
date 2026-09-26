@@ -1,0 +1,188 @@
+{
+ "kind": "sermon",
+ "slug": "one-word-gospel",
+ "language": "sw",
+ "job_issue": 3634,
+ "pull_request": 3642,
+ "references": [
+  {
+   "reference": "Luke 2:15",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Luke 2:10-11a",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "christ-all-in-all.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:1b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 5:20b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 15:1a",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:3b",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "John 11:25a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 14:3b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Luke 21:28b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Acts 13:39b",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Corinthians 15:55a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "Philippians 1:21b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "2 Corinthians 5:8b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Corinthians 15:55b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "John 14:19b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Isaiah 38:17b",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 John 1:7b",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "the-right-kind-of-faith.sw.json"
+  },
+  {
+   "reference": "Matthew 25:41a",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "on-loving-god.sw.json"
+  },
+  {
+   "reference": "Matthew 25:21b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "John 5:24",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 6:23b",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Genesis 19:17",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Luke 2:14a",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "James 2:10",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Isaiah 1:18a",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Isaiah 55:8a",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 15:18a",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "the-drama-of-life-in-three-acts.sw.json"
+  }
+ ]
+}

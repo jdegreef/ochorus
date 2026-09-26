@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "smith-wigglesworth",
+ "language": "es",
+ "job_issue": null,
+ "references": [
+  {
+   "reference": "Mark 5:36",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "library/fixtures/content/books/godliness.es.json"
+  }
+ ]
+}

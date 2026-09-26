@@ -3,7 +3,12 @@
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
 
-	let { article }: { article: ArticleSummary } = $props();
+	// `heading`: the card title's level. h2 where the cards ARE the page's
+	// sections (the Articles index); h3 where they sit under a section heading
+	// of their own (a topic's "Articles"), so the outline doesn't read as
+	// seventeen top-level sections.
+	let { article, heading = 'h2' }: { article: ArticleSummary; heading?: 'h2' | 'h3' } =
+		$props();
 </script>
 
 <!-- A row card (border-tint hover, no lift — see page-design D3). The whole card
@@ -13,7 +18,7 @@
 	class="article-card card-tint border border-border bg-surface"
 	href={localizeHref(`/articles/${article.slug}/`)}
 >
-	<h2 class="text-h3">{article.h1}</h2>
+	<svelte:element this={heading} class="card-title text-h3">{article.h1}</svelte:element>
 	{#if article.description}
 		<p class="mt-1 text-body text-muted">{article.description}</p>
 	{/if}
@@ -33,7 +38,7 @@
 		text-decoration: none;
 		color: inherit;
 	}
-	.article-card h2 {
+	.article-card :global(.card-title) {
 		color: var(--color-text);
 	}
 	.read-time {

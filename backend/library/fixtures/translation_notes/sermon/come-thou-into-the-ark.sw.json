@@ -1,0 +1,52 @@
+{
+ "kind": "sermon",
+ "slug": "come-thou-into-the-ark",
+ "language": "sw",
+ "job_issue": 3529,
+ "pull_request": 3539,
+ "references": [
+  {
+   "reference": "Genesis 7:1",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 17:26-27",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Genesis 6:5-6",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Genesis 6:11-12",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Genesis 6:11b",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Matthew 23:37",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "christs-boundless-compassion.sw.json"
+  },
+  {
+   "reference": "2 Samuel 18:33b",
+   "status": "mined",
+   "block_index": 66,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Mark 10:14b",
+   "status": "mined",
+   "block_index": 80,
+   "source_file": "pilgrims-progress.sw.json"
+  }
+ ]
+}
