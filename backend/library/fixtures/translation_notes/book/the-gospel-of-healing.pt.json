@@ -1,0 +1,11 @@
+{
+ "kind": "book",
+ "slug": "the-gospel-of-healing",
+ "language": "pt",
+ "job_issue": null,
+ "pull_request": null,
+ "note": [
+  "AI translation (keyless pipeline path: engine glossary + João Ferreira de Almeida / Bíblia Livre para o Mundo register). Simpson quotes and expounds Scripture densely throughout — especially ch. 5 (Testemunhos das Escrituras) — using the source's abbreviated Roman-numeral citation style (e.g. 'Tiago v. 14', 'Êxodo xv. 26'). Every quotation was rendered by the model in the traditional Almeida wording (self_rendered) and should be checked by a native reviewer; Take Root was egress-blocked this session, so no wording was mined from a shipped corpus file (no `mined` claims). The woven, source-abbreviated citations are not individually enumerated here — treat the whole translation's Scripture as self_rendered pending native review."
+ ],
+ "references": []
+}
