@@ -1,0 +1,113 @@
+{
+ "kind": "sermon",
+ "slug": "prevailing-prayer",
+ "language": "pt",
+ "job_issue": 2710,
+ "references": [
+  {
+   "reference": "Tiago 5:16",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Marcos 11:24",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romanos 8:26",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Romanos 8:27",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Efésios 5:18",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "2 Samuel 12:22",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "2 Samuel 12:23",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Gênesis 32:26",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Deuteronômio 9:14",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Êxodo 32:12",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Gênesis 32:26",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Apocalipse 12:2",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Salmos 119:53",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Salmos 119:136",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Jeremias 4:19",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Ester 4:1",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Isaías 66:8",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Pedro 1:8",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Gálatas 4:19",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "from Col 1:27",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Ezequiel 36:37",
+   "status": "self_rendered",
+   "block_index": 66
+  }
+ ]
+}
