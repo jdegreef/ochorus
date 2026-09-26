@@ -1184,6 +1184,27 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>We next proceed to notice", "<h3>THE OUTCOME IN BLESSING.</h3>"),
             ("<p>It is not necessary to", "<h3>THE CONTRAST.</h3>"),
             ("<p>It is not necessary to", '<p><em>"The ungodly are not so."</em></p>'),
+            # es
+            ("<p>Hay una prosperidad que no",
+             "<p>Meditaciones sobre el primer Salmo.</p>"),
+            ("<p>Hay una prosperidad que no",
+             "<h3>INTRODUCCIÓN.</h3>"),
+            ("<p>Más literalmente: ¡Oh las",
+             "<h3>LAS CONDICIONES NEGATIVAS DE LA BENDICIÓN</h3>"),
+            ("<p>Más literalmente: ¡Oh las",
+             '<p><em>"Bienaventurado el varón que no anduvo en consejo de malos."</em></p>'),
+            ("<p>Dios los cría y ellos se",
+             "<p><em>Ni estuvo en camino de pecadores.</em></p>"),
+            ("<p>La silla de los",
+             '<p><em>"Ni en silla de escarnecedores se ha sentado."</em></p>'),
+            ("<p>Hemos considerado las cosas",
+             "<h3>LAS CONDICIONES POSITIVAS DE LA BENDICIÓN.</h3>"),
+            ("<p>Pasamos ahora a notar las",
+             "<h3>EL FRUTO EN BENDICIÓN.</h3>"),
+            ("<p>No es necesario detenernos",
+             "<h3>EL CONTRASTE.</h3>"),
+            ("<p>No es necesario detenernos",
+             '<p><em>"No así los malos."</em></p>'),
             # fr
             ("<p>Il existe une prospérité",
              "<p>Méditations sur le premier Psaume.</p>"),
@@ -1272,6 +1293,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # en
             ("<p>In this interesting narrative",
              '<blockquote><em>"It hath fully been shewed me, all that thou hast done ... and how thou hast left they father and thy mother, and the land of thy nativity, and art come unto a people which thou knewest not heretofore. The LORD recompense thy work, and a full reward be given thee of the LORD GOD of Israel, under whose wings thou art come to trust" (Ruth ii. 11, 12).</em></blockquote>'),
+            # es
+            ("<p>En esta interesante",
+             '<blockquote><em>"He sabido todo lo que has hecho ... y que dejando a tu padre y a tu madre y la tierra donde naciste, has venido a un pueblo que no conociste antes. Recompense el Señor tu obra, y sea cumplida tu remuneración de parte del Señor Dios de Israel, bajo cuyas alas has venido a refugiarte" (Rut 2:11, 12).</em></blockquote>'),
             # fr
             ("<p>Dans ce récit plein d’intérêt,",
              "<blockquote><em>« On m’a rapporté tout ce que tu as fait ... et comment tu as quitté ton père et ta mère et le pays de ta naissance, pour aller vers un peuple que tu ne connaissais point auparavant. Que l’Éternel te rende ce que tu as fait, et que ta récompense soit entière de la part de l’Éternel, le Dieu d’Israël, sous les ailes duquel tu es venue te réfugier » (Ruth 2:11, 12).</em></blockquote>"),
