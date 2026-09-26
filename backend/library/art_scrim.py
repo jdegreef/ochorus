@@ -64,6 +64,7 @@ ART_SCRIM: dict[str, float] = {
     "life-of-antony": 0.85,
     "lord-teach-us-to-pray-2": 0.60,
     "men-and-women-who-gave-everything-2": 0.30,
+    "men-of-prayer-2": 0.30,
     "men-who-tended-the-flock-2": 0.30,
     "ministry-of-intercession": 0.75,
     "morning-by-morning": 0.75,

@@ -362,6 +362,15 @@ DERIVED_GROUND: dict[str, Ground] = {
         erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="40ae45aab2c1e92e509dc5b655d7ca07c53f42988a3a0907581f2e4591807bca",
     ),
+    # Two men praying over an open Bible, from just under the subtitle (~0.485)
+    # to the frame's foot (~0.94), the subtitle's hairline rule (~0.53) erased; the 0.09 inset crops inside the
+    # hairline frame (x ~0.08 / ~0.92). The Ochorus mark sits on their hands
+    # and the page, painted out.
+    "men-of-prayer-2": Ground(0.49, 0.93, 0.09, 1.12, sky=0.12,
+        erase=(Erase(0.15, 0.515, 0.85, 0.55, "light"),
+               Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False)),
+        source="3be5d85a8b6ab71b7b8d0d7d88a43e10d1d39dddbe52382c57eea5fa25db4ac1",
+    ),
     "purity-of-heart": Ground(0.54, 0.93, 0.09, 2.00,
         erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="f3659ad885cb95c3bf8f0d954d45c078c709674407fd560fcc4cf96d1bd60554",
