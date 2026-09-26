@@ -1,0 +1,11 @@
+{
+ "kind": "book",
+ "slug": "around-the-wicket-gate",
+ "language": "pt",
+ "job_issue": null,
+ "pull_request": null,
+ "note": [
+  "AI translation (keyless pipeline path: engine glossary + João Ferreira de Almeida / Bíblia Livre para o Mundo register). Spurgeon quotes and alludes to Scripture woven into his appeal, almost always without explicit Book C:V citations. Every quotation was rendered by the model in the traditional Almeida wording (self_rendered) and should be checked by a native reviewer; Take Root was egress-blocked this session, so no wording was mined from a shipped corpus file (no `mined` claims). The woven, uncited allusions are not individually enumerated — treat the whole translation's Scripture as self_rendered pending native review."
+ ],
+ "references": []
+}

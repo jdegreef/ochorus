@@ -2964,6 +2964,16 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"pt/around-the-wicket-gate": {
+			"ground": "4360b4473c07cd14c6ff580afe6e8666ad8f8f62111566eba61329083139e456",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"pt/baptism-with-the-holy-spirit": {
 			"ground": "dd1ca172911e6482077dfdb3e5f2e02dfe726ad7d977f86d0f5d5e900cb05f52",
 			"style": "revival",
