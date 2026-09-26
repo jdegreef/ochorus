@@ -280,7 +280,7 @@
 			author.sermons.reduce((n, s) => n + (s.word_count ?? 0), 0)
 	);
 
-	// The read card: a reader partway through one of this author's books picks
+	// The read card: a reader partway through (past chapter 1 of) one of this author's books picks
 	// it up here ("Continue reading" — the book page's card); anyone else gets
 	// the "New to X? Start with …" suggestion in the same card. Progress is
 	// client-only, so the prerendered page and a first visit show the latter.
@@ -288,7 +288,9 @@
 	$effect(() => {
 		const bySlug = new Map(author.books.map((b) => [b.slug, b]));
 		const rec = allProgress().find(
-			(r) => r.kind === 'book' && bySlug.has(r.slug) && !isFinished(r.slug)
+			// Past chapter 1, as the book page's "Continue" rule: a glance at the
+			// opening chapter shouldn't replace the "Start with" suggestion.
+			(r) => r.kind === 'book' && r.order > 1 && bySlug.has(r.slug) && !isFinished(r.slug)
 		);
 		resumeBook = rec ? { book: bySlug.get(rec.slug)!, order: rec.order } : null;
 	});

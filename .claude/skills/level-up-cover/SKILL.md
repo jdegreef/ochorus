@@ -153,6 +153,11 @@ prerendered pages reference it.
   artist_title,date_display,image_id,is_public_domain,classification_title`; IIIF image
   at `www.artic.edu/iiif/2/<image_id>/full/1686,/0/default.jpg` with a `Referer:
   https://www.artic.edu/` header).
+- **`wash` fades the UPPER half of the ground into paper** (95% paper to ~30%, 78% at
+  55%). A pale or misty painting goes near-blank (Murray's `divine-healing`,
+  `waiting-on-god`), and a subject in the upper half is lost (the snow peaks on
+  `holy-in-christ`'s Courbet; its chalet carries the cover). For a wash author, pick
+  strongly coloured paintings whose subject sits in the LOWER half; else suggest `fade`.
 - **`band` shows only the vertical MIDDLE ~44% of the ground** (a strip at y≈28–72% of
   the 3:4 crop). A subject at the top or foot is cropped out — `cheque-book`'s rainbow
   is. For a band author, preview `ground.crop((0, 223, 600, 577))` before picking.
@@ -238,6 +243,8 @@ them in order and union-resolve the `curated_art`/scrim/manifest overlap on reba
 
 ## Done so far
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
+Murray (2026-09-26; `school-of-prayer` plate → Français olives, 9 langs; `holy-in-christ`
+Van Gogh → Courbet so his two 1889 cypress Van Goghs no longer pair; wash/sage kept),
 Spurgeon (2026-09-26; `spurgeon-on-prayer` de-duplicated → Turner, AIC; Morning/Evening
 plates → an Inness pair, AIC; band/oxblood kept),
 Moody (2026-09-25; Kensett ×2 — `prevailing-prayer` re-picked from a Rubens,

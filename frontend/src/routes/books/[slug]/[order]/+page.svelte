@@ -54,6 +54,7 @@
 	import { jsonLd, breadcrumbLd, hreflangFor, truncateMeta } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import { dismissable } from '$lib/actions/dismissable';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import TocDrawer from '$lib/components/TocDrawer.svelte';
@@ -381,6 +382,16 @@
 	}
 
 	const minsLeft = $derived(minutesLeftOf(chapter.word_count, chapterFrac));
+	const editionLabel = $derived(
+		edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')
+	);
+	// The phone bar's second line. A single-work volume names its only chapter
+	// after the book ("Absolute Surrender" / "Absolute Surrender"), so say which
+	// chapter instead of repeating the title.
+	const phoneChapterLine = $derived.by(() => {
+		const chap = chapterName(chapter.order, chapter.title);
+		return chap === chapter.book_title ? `${t('settings.chapterN')} ${chapter.order}` : chap;
+	});
 	// One clamped read-fraction for the whole-book figures below, so "% through"
 	// and "time left in book" always agree on how far into the open chapter the
 	// reader is (chapterFrac is already [0,1] at every writer, but sharing the
@@ -433,6 +444,55 @@
 	let footEl = $state<HTMLElement>();
 	let planStripEl = $state<HTMLElement>();
 	let chapterEndEl = $state<HTMLElement>();
+	// The footer's UNFOLDED height, published as --foot-h for the article's
+	// bottom clearance and the return pill (hand-kept per-breakpoint constants
+	// had drifted three times). It varies with the touch scrubber and the phone
+	// action row — but deliberately NOT with that row folding: folding changes
+	// no layout, because shrinking the article's padding at the end of a
+	// chapter clamped scrollY upward, which read as a scroll-up and unfolded it
+	// again — a flicker loop. measureScrollPages reads the same number so the
+	// page total doesn't shift with the fold. Removed while no footer is shown.
+	let footH = 0;
+	$effect(() => {
+		const el = footEl;
+		if (!el) return;
+		const root = document.documentElement;
+		const ro = new ResizeObserver(() => {
+			if (el.querySelector('.foot-actions.folded')) return;
+			footH = el.offsetHeight;
+			root.style.setProperty('--foot-h', `${footH}px`);
+		});
+		ro.observe(el);
+		return () => {
+			ro.disconnect();
+			footH = 0;
+			root.style.removeProperty('--foot-h');
+		};
+	});
+
+	// --- Phone chrome (below `sm`) ---------------------------------------------
+	// The bar layouts switch in CSS (`sm:hidden` / `hidden sm:flex`), so the
+	// prerendered page paints right. This only picks WHICH text-settings panel
+	// to mount: popover and sheet share `readerUi.panelOpen`, and a hidden
+	// popover's click-away handler would shut the sheet on every tap inside it.
+	// A $state flipped in an effect, NOT svelte/reactivity's MediaQuery: that
+	// reads matchMedia during hydration, so on a phone both `{#if}`s below
+	// would disagree with the prerendered (desktop) markup.
+	let isPhone = $state(false);
+	$effect(() => {
+		const mq = window.matchMedia('(max-width: 639.98px)');
+		const sync = () => (isPhone = mq.matches);
+		sync();
+		mq.addEventListener('change', sync);
+		return () => mq.removeEventListener('change', sync);
+	});
+	// The phone bar's "⋯" group (bookmark, search, notebook, edition, focus).
+	let moreOpen = $state(false);
+	/** Close the "⋯" group, then run the chosen action. */
+	const fromMore = (action: () => void) => () => {
+		moreOpen = false;
+		action();
+	};
 	let pageIndex = $state(0);
 	let pageTotal = $state(1);
 	let pageW = $state(0);
@@ -622,7 +682,7 @@
 	/** Screenfuls of prose in scroll mode — the same unit paged mode counts. */
 	function measureScrollPages() {
 		if (!body) return;
-		const usable = window.innerHeight - (chromeEl?.offsetHeight ?? 0) - (footEl?.offsetHeight ?? 0);
+		const usable = window.innerHeight - (chromeEl?.offsetHeight ?? 0) - (footH || (footEl?.offsetHeight ?? 0));
 		scrollPages = usable > 0 ? Math.max(1, Math.ceil(body.scrollHeight / usable)) : 1;
 	}
 
@@ -1396,6 +1456,13 @@
 		}
 	});
 
+	// Shared by both <ReaderControls> mounts (popover, phone sheet). `layout`
+	// and `margins` stay literal on each tag — readerSurfaces.test.ts reads them.
+	const rcProps = $derived({
+		align: readerPrefs.effectiveAlign(paged),
+		sample: metaDescription.slice(0, 90)
+	});
+
 	// --- Auto-hide the top bar on scroll-down (scroll mode) --------------------
 	// More reading area without a mode to discover: the top bar slides away as you
 	// read on and returns the moment you scroll back up (or reach the top). The
@@ -1411,7 +1478,13 @@
 		lastScrollY = y;
 	}
 	const hideChrome = $derived(
-		barHidden && !paged && !readerUi.focus && !readerUi.panelOpen && !reader.open && !showPeek
+		barHidden &&
+			!paged &&
+			!readerUi.focus &&
+			!readerUi.panelOpen &&
+			!moreOpen &&
+			!reader.open &&
+			!showPeek
 	);
 	// A fresh chapter — or leaving focus mode — opens with the bar visible; the
 	// reader's own scrolling re-hides it.
@@ -1468,9 +1541,80 @@
 		class:autohidden={hideChrome}
 	>
 		<div
-			class="mx-auto flex items-center justify-between gap-3 py-2.5"
+			class="mx-auto flex items-center justify-between gap-3 py-1.5 sm:py-2.5"
 			style="max-width: {chromeMax}; padding-inline: {chromeGutter}"
 		>
+			<!-- Phone bar: Back · where you are · Contents · "⋯". Chapter turning,
+			     Listen and Text settings move to the bottom bar, in thumb reach;
+			     the rest folds into "⋯". Eight icons in one row overflowed a 320px
+			     phone and left no room to say where you are. -->
+			<div class="flex min-w-0 flex-1 items-center gap-0.5 sm:hidden">
+				<a
+					href={localizeHref(`/books/${slug}`)}
+					class="btn btn-icon btn-ghost min-w-11 shrink-0"
+					aria-label={t('reader.backToContents')}
+					title={t('reader.backToContents')}
+					><Icon name="chevron-left" size={20} class="dir-flip" /></a
+				>
+				<div class="min-w-0 flex-1 text-center">
+					<div class="truncate text-small font-semibold text-text">{chapter.book_title}</div>
+					<div class="truncate text-small text-muted">{phoneChapterLine}</div>
+				</div>
+				<button
+					class="btn btn-icon btn-ghost min-w-11 shrink-0"
+					onclick={() => (tocOpen = true)}
+					aria-label={t('reader.contents')}
+					title={t('reader.contents')}><Icon name="list" size={20} /></button
+				>
+				<div
+					class="relative shrink-0"
+					use:dismissable={{ open: moreOpen, onDismiss: () => (moreOpen = false) }}
+				>
+					<button
+						class="btn btn-icon btn-ghost min-w-11"
+						onclick={() => (moreOpen = !moreOpen)}
+						aria-expanded={moreOpen}
+						aria-controls={moreOpen ? 'reader-more' : undefined}
+						aria-label={t('reader.moreTools')}
+						title={t('reader.moreTools')}><Icon name="more" size={20} /></button
+					>
+					{#if moreOpen}
+						<!-- A labelled group, not role="menu" (no arrow-key roving) — the
+						     same treatment as AccountMenu. -->
+						<div id="reader-more" class="account-menu more-group" role="group" aria-label={t('reader.moreTools')}>
+							<button
+								class="account-item more-item"
+								class:text-accent={currentBookmarked}
+								onclick={fromMore(toggleBookmark)}
+								aria-pressed={currentBookmarked}
+								><Icon name="bookmark" size={20} />{currentBookmarked
+									? t('reader.removeBookmark')
+									: t('reader.bookmark')}</button
+							>
+							<button class="account-item more-item" onclick={fromMore(() => (searchOpen = true))}
+								><Icon name="search" size={20} />{t('reader.search')}</button
+							>
+							<button class="account-item more-item" onclick={fromMore(() => (notesOpen = true))}
+								><Icon name="book" size={20} />{t('notebook.title')}</button
+							>
+							{#if chapter.has_modern_edition}
+								<a
+									class="account-item more-item"
+									href={editionToggleHref()}
+									data-sveltekit-noscroll
+									onclick={() => (moreOpen = false)}
+									><Icon name="layers" size={20} />{editionLabel}</a
+								>
+							{/if}
+							<button class="account-item more-item" onclick={fromMore(() => readerUi.toggleFocus())}
+								><Icon name="maximize" size={20} />{readerUi.focus
+									? t('reader.exitFocus')
+									: t('reader.focus')}</button
+							>
+						</div>
+					{/if}
+				</div>
+			</div>
 			<!--
 				Hidden below `sm`. The controls alone need ~303px of a 360px phone, so
 				with this block in the row the bar wrapped to THREE rows — 141px of an
@@ -1489,7 +1633,7 @@
 					<div class="truncate text-small text-text">{@render locationLabel()}</div>
 				{/if}
 			</div>
-			<div class="flex shrink-0 items-center gap-0.5">
+			<div class="hidden shrink-0 items-center gap-0.5 sm:flex">
 				{#if chapter.prev}
 					<a
 						href={chapterHref(chapter.prev.order)}
@@ -1513,8 +1657,8 @@
 						data-sveltekit-noscroll
 						class="btn btn-sm btn-ghost px-2"
 						class:text-accent={edition === 'modern'}
-						title={edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')}
-						aria-label={edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')}
+						title={editionLabel}
+						aria-label={editionLabel}
 					>
 						{edition === 'modern' ? t('reader.original') : t('reader.modern')}
 					</a>
@@ -1561,7 +1705,10 @@
 				<!-- `sample`: the chapter's opening line, so the panel's live preview
 				     restyles the reader's own prose. metaDescription is already the
 				     body's plain text. -->
-				<ReaderControls layout margins align={readerPrefs.effectiveAlign(paged)} sample={metaDescription.slice(0, 90)} />
+				<!-- Not mounted on phones, where the bottom sheet takes over. -->
+				{#if !isPhone}
+					<ReaderControls layout margins {...rcProps} />
+				{/if}
 				<button
 					class="btn btn-icon btn-ghost"
 					onclick={() => readerUi.toggleFocus()}
@@ -1569,13 +1716,6 @@
 					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
 				>
 			</div>
-		</div>
-		<!-- Phones below `sm` have no room for the inline label in the controls row
-		     above, so give them a compact location line of their own: the article's
-		     own breadcrumb scrolls away, and is hidden entirely in page mode, so
-		     without this the smallest phones lose all sense of where they are. -->
-		<div class="mx-auto pb-1.5 sm:hidden" style="max-width: {chromeMax}; padding-inline: {chromeGutter}">
-			<div class="truncate text-micro text-text">{@render locationLabel()}</div>
 		</div>
 	</div>
 {/if}
@@ -1913,7 +2053,47 @@
 				>
 			{/if}
 		</div>
+		<!-- Phone action row, in thumb reach. Folds away with the top bar while
+		     reading on (hideChrome: scroll mode only) and returns with it. -->
+		<div class="foot-actions" class:folded={hideChrome}>
+			{#if chapter.prev}
+				<a href={chapterHref(chapter.prev.order)} class="foot-btn"
+					><Icon name="chevron-left" size={22} class="dir-flip" /><span>{t('reader.previous')}</span></a
+				>
+			{:else}
+				<span class="foot-btn" aria-hidden="true"></span>
+			{/if}
+			{#if listen.supported}
+				<button
+					class="foot-btn"
+					onclick={() => reader.startListening()}
+					title="{t('reader.listen')} · {listenTime(chapter.word_count, listen.rate)}"
+					><Icon name="headphones" size={22} /><span>{t('reader.listen')}</span></button
+				>
+			{/if}
+			<button
+				class="foot-btn"
+				onclick={() => (readerUi.panelOpen = true)}
+				aria-haspopup="dialog"
+				aria-expanded={readerUi.panelOpen}
+				aria-label={t('reader.textSettings')}
+				title={t('reader.textSettings')}><span class="foot-aa" aria-hidden="true">Aa</span></button
+			>
+			{#if chapter.next}
+				<a href={chapterHref(chapter.next.order)} class="foot-btn foot-next"
+					><Icon name="chevron-right" size={22} class="dir-flip" /><span>{t('reader.next')}</span></a
+				>
+			{:else}
+				<span class="foot-btn" aria-hidden="true"></span>
+			{/if}
+		</div>
 	</div>
+{/if}
+
+<!-- The phone text-settings sheet. Out here, not in the top bar: the bar's
+     backdrop-filter would make it the containing block for this fixed sheet. -->
+{#if isPhone}
+	<ReaderControls sheet layout margins {...rcProps} />
 {/if}
 
 <!-- Outside the <article>: in page-turn mode it carries a translateX, and a
@@ -2211,7 +2391,14 @@
 		   --reading-margin on this element); page mode zeroes padding and keeps
 		   its own --pgpad, so this is scroll mode only. */
 		padding-inline: var(--reading-margin, 1.25rem);
-		padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+		/* Clear the fixed progress footer by its measured height (--foot-h, set
+		   from a ResizeObserver) — it changes with the touch scrubber, the phone
+		   action row. In Listen mode there is no footer, so clear the ListenBar
+		   (--listenbar-h); the last fallback is the desktop footer before the
+		   first measurement. */
+		padding-bottom: calc(
+			var(--foot-h, var(--listenbar-h, calc(3.1rem + env(safe-area-inset-bottom)))) + 1.4rem
+		);
 	}
 	/* Scroll mode only: give the chapter title cluster room to breathe under the
 	   breadcrumb, so it reads as the start of the chapter rather than a fourth
@@ -2266,14 +2453,58 @@
 		.scrubber {
 			height: 2.75rem;
 		}
-		/* The footer is auto-height, so the taller scrubber makes it ~1.65rem
-		   deeper; scroll mode's bottom clearance is a constant (page mode
-		   measures the footer), so it grows by the same amount here. */
-		.reading-article {
-			padding-bottom: calc(6.2rem + env(safe-area-inset-bottom));
-		}
 	}
 
+	/* --- Phone chrome (below `sm`) -------------------------------------------- */
+	/* The "⋯" group: `.account-menu` chrome, with icon rows at thumb size. */
+	.more-group {
+		top: calc(100% + 0.25rem);
+	}
+	.more-item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		min-height: 2.75rem;
+		font-size: var(--fs-body);
+	}
+	.more-item.text-accent {
+		color: var(--accent);
+	}
+	/* Previous · Listen · Aa · Next. Phones only — via the media query, not a
+	   `sm:hidden` utility, which a scoped `display` here would out-rank. */
+	.foot-actions {
+		display: none;
+		margin-top: 0.15rem;
+	}
+	@media (max-width: 639.98px) {
+		.foot-actions {
+			display: flex;
+		}
+		.foot-actions.folded {
+			display: none;
+		}
+	}
+	.foot-btn {
+		flex: 1 1 0;
+		min-height: 2.9rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.1rem;
+		border-radius: var(--radius-sm);
+		font-size: var(--fs-small);
+		font-weight: 600;
+		color: var(--text);
+	}
+	.foot-next {
+		color: var(--accent);
+	}
+	.foot-aa {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1;
+	}
 	/* Reserve the "Next" card's meta line before its content arrives. */
 	.up-next-meta {
 		min-height: 1.4em;
@@ -2284,7 +2515,7 @@
 	.return-pill {
 		position: fixed;
 		inset-inline: 0;
-		bottom: calc(3.6rem + env(safe-area-inset-bottom));
+		bottom: calc(var(--foot-h, calc(3.1rem + env(safe-area-inset-bottom))) + 0.5rem);
 		z-index: 31;
 		margin-inline: auto;
 		width: max-content;
@@ -2336,12 +2567,6 @@
 	/* "Back" points the other way in Arabic. */
 	:global([dir='rtl']) .return-pill :global(svg) {
 		transform: scaleX(-1);
-	}
-	@media (pointer: coarse) {
-		.return-pill {
-			/* Above the footer that the taller touch scrubber deepened (see above). */
-			bottom: calc(5.3rem + env(safe-area-inset-bottom));
-		}
 	}
 	@keyframes return-in {
 		from {

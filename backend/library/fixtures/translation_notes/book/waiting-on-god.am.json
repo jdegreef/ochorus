@@ -1,0 +1,2127 @@
+{
+ "kind": "book",
+ "slug": "waiting-on-god",
+ "language": "am",
+ "job_issue": 3654,
+ "pull_request": null,
+ "note": [
+  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
+  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
+  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Isaiah 64:4",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 62:1",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Isaiah 64:3",
+   "status": "self_rendered",
+   "block_index": 44,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 62:1",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 62:1",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Genesis 49:18",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 49:18",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 62:1",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 49:18",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 104:27",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 104:28",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 104:27",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 104:27",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalms 145:14",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 145:14",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 145:15",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 145:15",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 104:27",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 145:15",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 145:15",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 25:4",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 25:4",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 1:2",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Proverbs 4:18",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 25:9",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 25:3",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 25:3",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 25:3",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 17:26",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 25:3",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 104:27",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 145:15",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 31:24",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 25:3",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 25:21",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 49:23",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 26:1",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 26:11",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 36:10",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 25:21",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 25:21",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 25:21",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 25:21",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 27:13",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Joshua 1:6",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Luke 18:27",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 31:24",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalms 31:24",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalms 31:24",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalms 31:24",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalms 33:18",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:18",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:19",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:19",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:20",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:20",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:21",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:21",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:22",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:22",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:18",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 John 4:18",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Revelation 15:4",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Revelation 19:5",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 13,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Deuteronomy 28:58",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Corinthians 1:29",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:18",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:18",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:19",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:20",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:22",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 33:20",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 25:9",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 37:7",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Psalms 37:9",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Luke 21:19",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 3,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Hebrews 10:36",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 13
+  },
+  {
+   "reference": "James 1:4",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Romans 9:16",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 4,
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 1:13",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 4,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Psalms 37:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 60:22",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Psalms 37:7",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Psalms 37:9",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Psalms 37:34",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:34",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Isaiah 64:5",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:34",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:34",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:1",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:3",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:8",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:27",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:28",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:29",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:31",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:34",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Hebrews 13:21",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:34",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 39:7",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 39:8",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 39:7",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 78:19",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 78:20",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 39:7",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 39:8",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 39:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 40:1",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 40:3",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 62:1",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 62:2",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Colossians 1:11",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 40:1",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 40:2",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 40:3",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 37:7",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 16
+  },
+  {
+   "reference": "2 Thessalonians 3:5",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 6,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 106:13",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Psalms 106:13",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Ephesians 1:11",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 4,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Acts 10:44",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 6,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Acts 10:33",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 6,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Psalms 106:13",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Psalms 130:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 130:5",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 130:6",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 130:6",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 130:6",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 130:6",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 18
+  },
+  {
+   "reference": "1 John 1:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 18
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 7,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Isaiah 60:20",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 130:6",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 18
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 11,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Isaiah 8:17",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Isaiah 8:17",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 4,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Isaiah 8:17",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Isaiah 8:17",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Isaiah 62:7",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Psalms 37:7",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Psalms 130:5",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Psalms 130:6",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Isaiah 25:9",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Isaiah 25:9",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Isaiah 25:9",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Acts 10:33",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 6,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Isaiah 25:9",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Isaiah 26:8",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Isaiah 26:9",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Isaiah 26:8",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Malachi 3:2",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Isaiah 64:1",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Isaiah 64:2",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Numbers 10:35",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Isaiah 1:27",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 22
+  },
+  {
+   "reference": "James 5:7",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 4,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Luke 18:8",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Isaiah 40:27",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Isaiah 40:30",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Proverbs 20:29",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Deuteronomy 32:11",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Deuteronomy 32:12",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Isaiah 40:9",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Isaiah 49:23",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Isaiah 49:23",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Psalm 25:3",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Psalm 33:20",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Isaiah 49:23",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 24
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 6,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Isaiah 64:4",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Isaiah 64:4",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Isaiah 63:15",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Isaiah 63:17",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Isaiah 64:1",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Isaiah 64:2",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Isaiah 64:3",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Isaiah 64:4",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 25
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 3,
+   "chapter_order": 25
+  },
+  {
+   "reference": "1 Corinthians 2:10",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 3,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Isaiah 64:2",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Isaiah 64:1",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Mark 10:18",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 2,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Psalms 36:5",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Psalms 31:19",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Psalms 34:8",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Lamentations 3:26",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Lamentations 3:26",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Isaiah 7:4",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Isaiah 30:15",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Isaiah 7:4",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Isaiah 30:15",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Lamentations 3:26",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Habakkuk 2:20",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Zephaniah 1:7",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Zechariah 2:13",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Isaiah 2:11",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Isaiah 7:4",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Lamentations 3:26",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Lamentations 3:26",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Micah 7:7",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Micah 7:7",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Micah 7:7",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Colossians 2:12",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 4,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Micah 7:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Psalms 46:10",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Psalms 46:10",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Luke 2:25",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Luke 2:36",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Luke 2:38",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 1,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Luke 2:25",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 29
+  },
+  {
+   "reference": "John 14:20",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 29
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 4,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 4,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Ephesians 2:18",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 29
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Luke 12:36",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 1,
+   "chapter_order": 30
+  },
+  {
+   "reference": "1 Timothy 6:14",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 2,
+   "chapter_order": 30
+  },
+  {
+   "reference": "1 Timothy 6:15",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 2,
+   "chapter_order": 30
+  },
+  {
+   "reference": "1 Thessalonians 1:9",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 30
+  },
+  {
+   "reference": "1 Thessalonians 1:10",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Matthew 19:6",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 30
+  },
+  {
+   "reference": "John 4:24",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Titus 2:13",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 30
+  },
+  {
+   "reference": "2 Thessalonians 1:10",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 30
+  },
+  {
+   "reference": "John 5:30",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Acts 1:4",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 1,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Acts 10:33",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 5,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Acts 13:2",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 5,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Hosea 12:6",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Hosea 12:6",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Isaiah 27:3",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:6",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:6",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Mark 10:18",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 5,
+   "chapter_order": 34
+  },
+  {
+   "reference": "1 Samuel 2:2",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 43:4",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:6",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:1",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 34
+  }
+ ]
+}

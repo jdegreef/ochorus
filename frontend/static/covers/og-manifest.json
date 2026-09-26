@@ -175,14 +175,14 @@
 			"bar": 0
 		},
 		"am/school-of-prayer": {
-			"ground": "3000639f6bf3e5771aa35ecb382b9f35d2b62b7c8d468849d913c6200e381fa1",
+			"ground": "ead7a3d913963925a5cd99f179f14f5127de20711406c28d34c67404b264cb48",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
-			"bar": 0
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0.04
 		},
 		"am/the-inner-chamber": {
 			"ground": "df4f1775ddb1ebf270d95fdcfa8f01bf2c23f7f241f47c2e095085533218008b",
@@ -211,6 +211,16 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 0.85,
+			"layout": "wash/sage",
+			"bar": 0
+		},
+		"am/waiting-on-god": {
+			"ground": "fc2b11f3486f4fc708781c4e223efea60f11c68d461817c130d84cb859b8d4d6",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
 			"layout": "wash/sage",
 			"bar": 0
 		},
@@ -455,14 +465,14 @@
 			"bar": 0
 		},
 		"ar/school-of-prayer": {
-			"ground": "8534d3537a0cc5b7eb9bf140e856cbcaf35d82f85a04f7fe05ddfc10deabcdab",
+			"ground": "da28cb92804636a18cded44b959582c28cd78b9ba68093ccfad715ca8747de58",
 			"style": "devotional",
 			"volume": null,
 			"script": "arabic",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
-			"bar": 0
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0.04
 		},
 		"ar/stepping-stones-2": {
 			"ground": "0f4d1d9dafbc823a70beff8be4112fbbcb26574bbc4c545843bd670e30897b1d",
@@ -955,14 +965,14 @@
 			"bar": 0
 		},
 		"es/holy-in-christ": {
-			"ground": "880e110e550cae6889d381d66ea533aee70f5bea76c2da83e84019dca5efb7ab",
+			"ground": "dbb951810048bdbd298f9c99fbbb9d80bf4ecf8fcb53056539608bd21296cbd2",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1,
+			"scrim": 0.85,
 			"layout": "wash/sage",
-			"bar": 0.045
+			"bar": 0
 		},
 		"es/how-to-succeed-in-the-christian-life": {
 			"ground": "ce12a3dec2a82f99c8561a1a213e498d3d7a7a7d9ca86b1a319565b2f819dd1d",
@@ -1125,14 +1135,14 @@
 			"bar": 0
 		},
 		"es/school-of-prayer": {
-			"ground": "196f3e17c03c0a1e6dbcc611eb8f180deae35c459c8df41c8a4ed1e0f342eaea",
+			"ground": "97470a6480e1b9ab220bb0111f42bb19bbe075a48c1470c335f385ecc6997764",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
-			"bar": 0
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0.04
 		},
 		"es/separation-and-service": {
 			"ground": "a51bafe3114633c0a1f6c78949aad266e93b04a2f61478572e2c58ed3bab6adb",
@@ -1535,14 +1545,14 @@
 			"bar": 0
 		},
 		"fr/holy-in-christ": {
-			"ground": "9eca7c6b221e948d38c3ac011e4dae27b19bc9bb1f7e4bc97b1e3346d8218a5f",
+			"ground": "eca2b5bc9589a3a53246e5c83168240229c501ed52f5b0a3581fe73fb0ab5d3a",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1,
+			"scrim": 0.85,
 			"layout": "wash/sage",
-			"bar": 0.045
+			"bar": 0
 		},
 		"fr/humility-2": {
 			"ground": "b7ebe70a06a8600d5d850fffd7c551de82f033f08f76304260f30eefb4ecf8d7",
@@ -1645,14 +1655,14 @@
 			"bar": 0
 		},
 		"fr/school-of-prayer": {
-			"ground": "17ad06529ae87b3aa4518147a5748b1b49e6f7b8fa199ce44784f6b375b2a6b5",
+			"ground": "df105369ea44218dd90439c320440a5a6dc5530cde1dd2d431cd0906b877af53",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
-			"bar": 0
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0.04
 		},
 		"fr/soar-like-the-eagle-3": {
 			"ground": "435c30f8b3718898f75827d153543c59923e778221872f61a6f615d7dd32a004",
@@ -2005,14 +2015,14 @@
 			"bar": 0
 		},
 		"hi/holy-in-christ": {
-			"ground": "c26687c7756e66f5ca776166793172d7bcdf2e7bf350f42df5dcd5c0a83bcc0e",
+			"ground": "d0c0c753db3e878d6d45812ba68e73d8dedf12f52e7bbece60aae85c6233287e",
 			"style": "devotional",
 			"volume": null,
 			"script": "devanagari",
 			"art": true,
-			"scrim": 1,
+			"scrim": 0.85,
 			"layout": "wash/sage",
-			"bar": 0.045
+			"bar": 0
 		},
 		"hi/humility-2": {
 			"ground": "929c516319eb3d18570bfabb3230d1de3bac5cdc736d7710508a71ccd9866a98",
@@ -2155,14 +2165,14 @@
 			"bar": 0
 		},
 		"hi/school-of-prayer": {
-			"ground": "46d7b90b72f8801959f1089efa97498866a92426cf59694027135d787ab853dc",
+			"ground": "afd3eb09cff74bebab9bf307233b2255fdf3a4d50a394f2fd809efa0e888b793",
 			"style": "devotional",
 			"volume": null,
 			"script": "devanagari",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
-			"bar": 0
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0.04
 		},
 		"hi/soar-like-the-eagle-3": {
 			"ground": "ea18250d59624162e182138f2718d43acb60c213efd182de6486b907f524fd7e",
@@ -2335,14 +2345,14 @@
 			"bar": 0
 		},
 		"holy-in-christ": {
-			"ground": "25e3f970266c7bccd9a7035ca1d534d54c4abeba99b7b6d57c028277bd7904d4",
+			"ground": "2f82e0cf564ba4d2deb2d538766e4d5013200e6d88ac62e831b48b8fa35a783f",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1,
+			"scrim": 0.85,
 			"layout": "wash/sage",
-			"bar": 0.045
+			"bar": 0
 		},
 		"how-to-bring-men-to-christ": {
 			"ground": "90e959b8dbd59b93bef2f3766b1a9e33981a4f9fdb0357c6eba650a723470ae3",
@@ -3105,14 +3115,14 @@
 			"bar": 0
 		},
 		"pt/holy-in-christ": {
-			"ground": "21eece141c473e4dfdafc27eaccff0123de8db692633ada21f606b9483ccb49f",
+			"ground": "0a9d8e5d0fed57aa37214f941a94e0e4398202dece78c15c60ba0a04f7d43f55",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1,
+			"scrim": 0.85,
 			"layout": "wash/sage",
-			"bar": 0.045
+			"bar": 0
 		},
 		"pt/humility-2": {
 			"ground": "e8a405fd835e0b2f3f38ca51a89653fda4f51abea0b4f9f7820c63e2e5ea256b",
@@ -3205,14 +3215,14 @@
 			"bar": 0
 		},
 		"pt/school-of-prayer": {
-			"ground": "9c3b96dce4b493bb2df6ef2ecafcf2ac685a7384cd45c433fc998a08cf32489e",
+			"ground": "f338063ad6f7c108b18ec198afb321202e8984d47b1e76f6f197814933e88f4a",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
-			"bar": 0
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0.04
 		},
 		"pt/soar-like-the-eagle-3": {
 			"ground": "8a3110c6fd5be22387fdc80125b06ffd6d4c53c9683dc27fcb540b6ccce17949",
@@ -3545,14 +3555,14 @@
 			"bar": 0
 		},
 		"school-of-prayer": {
-			"ground": "1b3e2b92d5a65c604f1dda314acccb1c374a410c54fb5a15a3f735e1e019da5d",
+			"ground": "e9955f64f362dc3296da1cb3b3229f6aeab7813174b351455a9d29a00f569eb2",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
-			"bar": 0
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0.04
 		},
 		"selected-sermons-edwards": {
 			"ground": "78121e68911d16aba053efc9f3ab6c3a15667b430381e017a9803f1f6a2c4e49",
@@ -3855,14 +3865,14 @@
 			"bar": 0
 		},
 		"sw/holy-in-christ": {
-			"ground": "b3ae10d7ea2dfc9d691d676c3cadcbaa9c68430e6fc29d0e4af93e1780257e4f",
+			"ground": "fa0a2d8df59c8476bc15406fc27e3c5880c6c50c6b0c81ccd6fafeb441d5f78b",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1,
+			"scrim": 0.85,
 			"layout": "wash/sage",
-			"bar": 0.045
+			"bar": 0
 		},
 		"sw/humility-2": {
 			"ground": "44c2426eaac73697f27e36b55f5fa883cbc4a3b5259d4abfd44c13aa6bca69e1",
@@ -4025,14 +4035,14 @@
 			"bar": 0
 		},
 		"sw/school-of-prayer": {
-			"ground": "ae25f57f0e6b20b646e7db804e8565913fe333f2784b03f15b8e0b7f9b1e125a",
+			"ground": "ba1d7796dd35ae8f92d3e873d37ff74d0adde6857d725cb75a7261a02f665ac1",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
-			"bar": 0
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0.04
 		},
 		"sw/soar-like-the-eagle-3": {
 			"ground": "d41e103913bb9fd8438d06ef577164ec7977017017bd69a9226f0cf9822a3285",
@@ -4655,14 +4665,14 @@
 			"bar": 0
 		},
 		"uk/school-of-prayer": {
-			"ground": "ac43acd2d8f0f3482428b7f0081fadf3501ca6ccc2e3c582406e6e5dd4f879a1",
+			"ground": "437514ce439c4090485b004f961906c5212a7d084f523c7214ef9b91767faff4",
 			"style": "devotional",
 			"volume": null,
 			"script": "cyrillic",
-			"art": false,
-			"scrim": 1,
-			"layout": "framed",
-			"bar": 0
+			"art": true,
+			"scrim": 0.65,
+			"layout": "wash/sage",
+			"bar": 0.04
 		},
 		"uk/spurgeon-on-prayer": {
 			"ground": "0ef593b96a92e9f254924a55f2a53d6d74d6dd9b178722f179e5d11a988e0325",

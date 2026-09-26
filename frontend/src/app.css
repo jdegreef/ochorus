@@ -2125,6 +2125,10 @@ input[type='search'].field {
 	background-size: 1rem;
 	padding-inline-start: 2.1rem;
 }
+/* Mirror a directional icon (back/previous/next chevrons) under RTL. */
+[dir='rtl'] .dir-flip {
+	transform: scaleX(-1);
+}
 /* Arabic is a routed locale: keep the magnifier on the inline-start edge, which
    is the right in RTL (padding-inline-start already reserves the space there). */
 [dir='rtl'] input[type='search'].filter-field,
