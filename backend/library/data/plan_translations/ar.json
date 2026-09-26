@@ -44,6 +44,20 @@
     "title": "قوّة من الأعالي: الروح القدس",
     "description": "أربعة أسابيع مع ر. أ. توري في الحياة المملوءة بالروح: أوّلًا المعمودية بالروح القدس والقوّة التي تمنحها للخدمة، ثمّ الدرس الأوفى في أقنوم الروح الساكن في كلّ مؤمنٍ وعمله."
   },
+  "rooted-book-1-30-days": {
+    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 1",
+    "description": "ثلاثون يومًا لتمدّ جذورك عميقًا، للقرّاء من سنّ التاسعة إلى الثانية عشرة: مَن هو الله، والخبر السار عن يسوع، ومَن أنت في المسيح، وكيف تصلّي، وكيف تنمو. كل يوم قراءة قصيرة واحدة: آية من الكتاب المقدس، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
+    "note": [
+      "Single-book plan backed by the ar edition of rooted-1 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 1»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-1 -> ar job (#3587), which makes this LAUNCH plan creatable in ar."
+    ]
+  },
+  "rooted-book-2-30-days": {
+    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 2",
+    "description": "ثلاثون يومًا تسير فيها مع يسوع، للقرّاء من سنّ التاسعة إلى الثانية عشرة: من المذود في بيت لحم، مرورًا بمعجزاته وأمثاله، إلى الصليب والقبر الفارغ. كل يوم قراءة قصيرة واحدة: مقطع من الأناجيل، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
+    "note": [
+      "Single-book plan backed by the ar edition of rooted-2 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 2»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-2 -> ar job (#3601), which makes this LAUNCH plan creatable in ar."
+    ]
+  },
   "school-of-prayer": {
     "title": "مدرسة الصلاة",
     "description": "أربعة أسابيع في مدرسة الصلاة مع ثلاثة معلّمين: أندرو موراي في كيف يعلّمنا الربّ نفسه أن نصلّي، ود. ل. مودي في الصلاة الغالبة، وحنّة بوينزا في الصلاة بوصفها نبض الحياة المسيحيّة اليوميّ.",
