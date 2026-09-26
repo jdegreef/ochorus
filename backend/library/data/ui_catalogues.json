@@ -5,10 +5,7 @@
 		"am": {
 			"missing": [],
 			"pending": [
-				"about_scripture1",
-				"about_scripture2",
-				"about_scripture3",
-				"settings_font_sample"
+				"about_scripture1"
 			]
 		},
 		"ar": {

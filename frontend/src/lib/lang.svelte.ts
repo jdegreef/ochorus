@@ -45,7 +45,8 @@ export const LOCALE_NAMES: Record<string, string> = {
 	ar: 'العربية',
 	hi: 'हिन्दी',
 	uk: 'Українська',
-	fr: 'Français'
+	fr: 'Français',
+	am: 'አማርኛ'
 };
 
 /** The registry's autonym if it has one, else the map above, else the code. */
