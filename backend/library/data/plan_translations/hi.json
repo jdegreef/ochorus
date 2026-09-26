@@ -77,5 +77,13 @@
    "डेविड ब्रेनर्ड is the settled Hindi form of the name (34 occurrences in the shipped Hindi corpus). समर्पण is the corpus word for surrender/consecration, सुसमाचार for the gospel.",
    "The title is the plan's own name, not a book title, so nothing is quoted: «उंडेला हुआ जीवन» renders 'a life poured out' with the drink-offering image of 2 Tim 4:6 (उंडेला जाना). Whoever translates men-and-women-who-gave-everything-2 into Hindi should either harmonise its title with this card or adjust this entry in the same PR."
   ]
+ },
+ "growing-in-wisdom-18-days": {
+  "title": "18 दिनों में बुद्धि में बढ़ना",
+  "description": "विद्यार्थियों के लिये जेम्स डीग्रीफ़ की मार्गदर्शिका — अठारह दिनों तक हर दिन एक छोटा पाठ। अपने उद्देश्य को खोजने से लेकर भविष्य का दर्शन गढ़ने तक, हर दिन व्यावहारिक सलाह के साथ पवित्रशास्त्र का एक वचन, एक मनन और एक प्रार्थना देता है।",
+  "note": [
+   "Single-book LAUNCH plan backed by growing-in-wisdom.hi (job #2823), which makes it creatable in hi. The title takes the book's own hi title, «बुद्धि में बढ़ना»; «पवित्रशास्त्र», «मनन» and «प्रार्थना» are the book's settled words for Scripture, reflection and prayer.",
+   "«जेम्स डीग्रीफ़» is a fresh transliteration — the hi corpus had not spelled the author's name before. AI-drafted; awaiting native review."
+  ]
  }
 }
