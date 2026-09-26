@@ -1,0 +1,71 @@
+{
+  "_note": [
+    "Amharic topic-shelf prose (ai_unreviewed). Titles echo the shipped am book titles where a shelf is named for a theme a book carries (the-inner-chamber → የውስጥ እልፍኝ; intercession → ምልጃ per the am glossary). Author names follow the shipped am bios (ዋይትፊልድ, ዌስሊ, ባንየን, ስፐርጀን, ባክስተር). No scripture is shipped: the only verbatim Amharic source on hand is the 1962 NT, and a shelf is complete without a verse."
+  ],
+  "christ-and-the-cross": {
+    "title": "ክርስቶስና መስቀሉ",
+    "description": "የአዳኙ ማንነትና ሥራ — የታረደው በግ፣ የመስቀሉ ነውርና ድል፣ የክርስቶስ ታላቅነት፣ ባዶውም መቃብር።",
+    "seo_title": "ስለ ክርስቶስና መስቀሉ የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ ክርስቶስና መስቀሉ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "deeper-life": {
+    "title": "ጥልቅ ሕይወት",
+    "description": "ቅድስና፣ ራስን መስጠትና ከክርስቶስ ጋር የተሰወረው የተትረፈረፈ ሕይወት — ወደ ጥልቁ ለመግባት የሚያግዙ መጻሕፍት።",
+    "seo_title": "ስለ ጥልቅ ሕይወት የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ ጥልቅ ሕይወት የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "enduring-classics": {
+    "title": "ዘመን የማይሽራቸው መጻሕፍት",
+    "description": "ለዘመናት ከተጓዦች ጋር የተጓዙ መጻሕፍት — የአውግስጢኖስ ኑዛዜ፣ የባንየን ሕልም፣ የቶማስ አ ኬምፒስ ምክር — አሁንም መልካም የሆኑ የቀድሞ መንገዶች።",
+    "seo_title": "ስለ ዘመን የማይሽራቸው መጻሕፍት የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ ዘመን የማይሽራቸው መጻሕፍት የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "faith-and-guidance": {
+    "title": "እምነትና መመሪያ",
+    "description": "ለዕለት እንጀራ፣ ለአቅጣጫና ለእያንዳንዱ የተስፋ ቃል እግዚአብሔርን መታመን — በማየት ሳይሆን በእምነት መመላለስ።",
+    "seo_title": "ስለ እምነትና መመሪያ የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ እምነትና መመሪያ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "grace-and-comfort": {
+    "title": "ጸጋና መጽናናት",
+    "description": "የማይጐድለው የእግዚአብሔር ጸጋና በእያንዳንዱ መከራ ውስጥ የሚሰጠው መጽናናቱ — ለደከሙ የምሥራች።",
+    "seo_title": "ስለ ጸጋና መጽናናት የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ ጸጋና መጽናናት የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "holy-spirit": {
+    "title": "መንፈስ ቅዱስ",
+    "description": "የመንፈስ ጥምቀት፣ ማደሩና ሥራው — ለክርስቲያን ሕይወት ተስፋ የተሰጠበት ኃይል።",
+    "seo_title": "ስለ መንፈስ ቅዱስ የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ መንፈስ ቅዱስ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "prayer": {
+    "title": "ስለ ጸሎት",
+    "description": "መጸለይን መማር — በጸሎትም መጽናት። ስለ ውስጣዊው የጸሎት ሕይወት የተጻፉ ዘመን የማይሽራቸው መጻሕፍት፣ ከውስጥ እልፍኝ እስከ የሚያሸንፍ ምልጃ ድረስ።",
+    "seo_title": "ስለ ጸሎት የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ ጸሎት የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "revival-and-missions": {
+    "title": "መነቃቃትና ተልእኮ",
+    "description": "ለወንጌል የፈሰሱ ሕይወቶችና የመነቃቃት ወቅቶች — ለሚነድድ ልብ ማገዶ።",
+    "seo_title": "ስለ መነቃቃትና ተልእኮ የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ መነቃቃትና ተልእኮ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "the-gospel-call": {
+    "title": "የወንጌል ጥሪ",
+    "description": "ከሁሉ የቀደመው ግብዣ — ኑ፣ ንስሐ ግቡ፣ እመኑ። ላልዳኑት የሚማልዱ ሰባኪዎች፣ ከኃጢአተኞችም ዋና የሆነው ያገኘው የጸጋ ምስክርነት።",
+    "seo_title": "ስለ የወንጌል ጥሪ የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የወንጌል ጥሪ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "the-preached-word": {
+    "title": "የተሰበከው ቃል",
+    "description": "በገጽ ላይ የሰፈረ ታላቅ ስብከት — ዋይትፊልድና ዌስሊ በሙሉ ድምፃቸው፣ ስፐርጀን በገበሬዎቹ መካከል — የባክስተርም ማሳሰቢያ ለእያንዳንዱ የነፍሳት እረኛ።",
+    "seo_title": "ስለ የተሰበከው ቃል የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የተሰበከው ቃል የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "the-way-of-holiness": {
+    "title": "የቅድስና መንገድ",
+    "description": "ለእግዚአብሔር መለየት — ትእዛዛቱ የተመረመሩበት፣ ፍጽምና በቅንነት የተፈለገበት፣ የልብ ስሜቶችም ተፈትነው እውነተኛ ሆነው የተገኙበት።",
+    "seo_title": "ስለ የቅድስና መንገድ የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የቅድስና መንገድ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  }
+}
