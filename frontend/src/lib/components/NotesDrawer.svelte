@@ -111,6 +111,9 @@
 									{#if hl.text}
 										<span class="block text-small italic text-text">“{hl.text}”</span>
 									{/if}
+									{#if hl.detached}
+										<span class="mt-1 block text-micro text-muted">{t('marks.detached')}</span>
+									{/if}
 									{#if hl.note}
 										<span class="mt-1 block text-micro text-muted">📝 {hl.note}</span>
 									{/if}

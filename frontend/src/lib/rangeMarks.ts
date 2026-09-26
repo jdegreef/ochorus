@@ -1,4 +1,5 @@
 import type { Mark, Segment } from './marks.svelte';
+import { quoteOf, resolveMark } from './markAnchor';
 
 /**
  * DOM plumbing for text-range marks.
@@ -31,14 +32,18 @@ export function segmentsFromSelection(container: HTMLElement, sel: Selection): S
 	for (let p = 0; p < blocks.length; p++) {
 		const block = blocks[p];
 		if (!range.intersectsNode(block)) continue;
-		const textLen = (block.textContent ?? '').length;
+		const text = block.textContent ?? '';
+		const textLen = text.length;
 		const s = block.contains(range.startContainer)
 			? textOffset(block, range.startContainer, range.startOffset)
 			: 0;
 		const e = block.contains(range.endContainer)
 			? textOffset(block, range.endContainer, range.endOffset)
 			: textLen;
-		if (e - s >= 1 && s < textLen) out.push({ p, s, e: Math.min(e, textLen) });
+		if (e - s >= 1 && s < textLen) {
+			const end = Math.min(e, textLen);
+			out.push({ p, s, e: end, q: quoteOf(text, s, end) });
+		}
 	}
 	return out;
 }
@@ -102,8 +107,12 @@ export function renderMarks(
 			block.innerHTML = block.dataset.pristine;
 		}
 	}
+	// Each highlight where its words are NOW (see markAnchor): moved with them
+	// if a repair shifted the text, left off entirely if they are gone.
+	const paras = blocks.map((b) => b.textContent ?? '');
+	const placed = list.map((m) => resolveMark(paras, m)).filter((m): m is Mark => m !== null);
 	const byParagraph = new Map<number, (Mark | Segment)[]>();
-	for (const m of [...list, ...hits]) {
+	for (const m of [...placed, ...hits]) {
 		if (m.p >= 0 && m.p < blocks.length) {
 			(byParagraph.get(m.p) ?? byParagraph.set(m.p, []).get(m.p))!.push(m);
 		}

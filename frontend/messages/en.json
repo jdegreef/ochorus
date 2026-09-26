@@ -216,6 +216,7 @@
   "account_signed_out_note": "Sign in (top right) to sync your reading across devices.",
   "account_local_note": "Your reading progress is saved on this device.",
   "account_sign_out": "Sign out",
+  "marks_detached": "The text here has changed since you highlighted it.",
   "signout_unsynced_title": "Some changes haven’t synced yet",
   "signout_unsynced_body": "They’re saved on this device but haven’t reached your account — usually because you’re offline. Signing out now would remove them from this device.",
   "signout_stay": "Stay signed in",

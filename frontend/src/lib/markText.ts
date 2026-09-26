@@ -1,4 +1,5 @@
 import { DEFAULT_HIGHLIGHT, type Mark } from './reading-schema';
+import { resolveMark } from './markAnchor';
 
 /**
  * Resolving stored marks back to the text they highlight.
@@ -19,6 +20,9 @@ export type Highlight = {
 	note?: string;
 	color: string;
 	edition: string;
+	/** The words it was made on are no longer in the chapter (a repair
+	 *  rewrote them): `text` is what it covered, from its stored anchor. */
+	detached?: boolean;
 };
 
 /** Split a chapter's cleaned HTML into its top-level blocks' text — the same
@@ -47,17 +51,26 @@ export function groupMarks(paras: string[], ms: Mark[], edition: string): Highli
 		arr.push(m);
 		byId.set(m.id, arr);
 	}
-	return [...byId.values()].map((segs) => {
-		segs.sort((a, b) => a.p - b.p || a.s - b.s);
+	return [...byId.values()].map((stored) => {
+		stored.sort((a, b) => a.p - b.p || a.s - b.s);
+		// Each segment where its words are now (see markAnchor); a segment whose
+		// words are gone quotes what it covered instead of today's text there.
+		const placed = stored.map((m) => resolveMark(paras, m));
+		const detached = placed.every((m) => m === null);
+		const first = placed.find((m): m is Mark => m !== null) ?? stored[0];
 		return {
-			id: segs[0].id,
-			p: segs[0].p,
-			text: segs
-				.map((s) => segText(paras, s))
+			id: stored[0].id,
+			p: first.p,
+			text: stored
+				.map((m, i) => {
+					const at = placed[i];
+					return at ? segText(paras, at) : (m.q ?? '').trim();
+				})
 				.filter(Boolean)
 				.join(' … '),
-			note: segs.find((s) => s.note)?.note,
-			color: segs.find((s) => s.color)?.color ?? DEFAULT_HIGHLIGHT,
+			...(detached ? { detached: true } : {}),
+			note: stored.find((s) => s.note)?.note,
+			color: stored.find((s) => s.color)?.color ?? DEFAULT_HIGHLIGHT,
 			edition
 		};
 	});

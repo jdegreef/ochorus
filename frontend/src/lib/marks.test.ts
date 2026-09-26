@@ -261,3 +261,22 @@ describe('allByEdition — every edition, each exactly once (#1120)', () => {
 		expect(g).toMatchObject({ kind: 'sermon', slug: 'faith', order: SERMON_CHAPTER_ORDER, edition: 'es' });
 	});
 });
+
+describe('marks.anchorLegacy', () => {
+	beforeEach(() => localStorage.clear());
+
+	it('gives an unanchored mark the words it covers now', () => {
+		marks.load('humility', 1, 'en', 'book');
+		marks.add([{ p: 0, s: 0, e: 5 }]);
+		marks.anchorLegacy('humility:1', 'en', ['Grace upon grace.']);
+		expect(marks.list[0].q).toBe('Grace');
+	});
+
+	it("ignores text from a chapter or edition it hasn't loaded", () => {
+		marks.load('humility', 1, 'en', 'book');
+		marks.add([{ p: 0, s: 0, e: 5 }]);
+		marks.anchorLegacy('humility:2', 'en', ['Other chapter.']);
+		marks.anchorLegacy('humility:1', 'en-modern', ['Other edition.']);
+		expect(marks.list[0].q).toBeUndefined();
+	});
+});

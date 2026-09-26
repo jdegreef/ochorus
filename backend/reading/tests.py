@@ -598,6 +598,24 @@ class MarkHelpersTests(TestCase):
         self.assertEqual(cleaned[0]["lang"], "en-modern")
         # Absent on an untagged (pre-editions) mark rather than invented.
         self.assertNotIn("lang", clean_mark_list([{"id": "b", "p": 0, "s": 0, "e": 5}])[0])
+
+    def test_clean_keeps_and_caps_the_anchor_text(self):
+        # `q` is how the reader finds a highlight again after a repair shifts
+        # the chapter's text; the whitelist must not strip it.
+        from .marks import MAX_QUOTE_LEN
+
+        cleaned = clean_mark_list([{"id": "a", "p": 0, "s": 0, "e": 4, "q": "Word"}])
+        self.assertEqual(cleaned[0]["q"], "Word")
+        long = clean_mark_list([{"id": "b", "p": 0, "s": 0, "e": 4, "q": "w" * 900}])
+        self.assertEqual(len(long[0]["q"]), MAX_QUOTE_LEN)
+        self.assertNotIn("q", clean_mark_list([{"id": "c", "p": 0, "s": 0, "e": 4}])[0])
+
+    def test_merge_adopts_an_anchor_but_never_replaces_one(self):
+        server = [mark(0, 0, 4)]
+        merged = merge_mark_lists(server, [{**mark(0, 0, 4), "q": "Word"}])
+        self.assertEqual(merged[0]["q"], "Word")
+        again = merge_mark_lists(merged, [{**mark(0, 0, 4), "q": "Other"}])
+        self.assertEqual(again[0]["q"], "Word")
         # Junk and over-long values don't reach storage.
         self.assertNotIn("lang", clean_mark_list([{"id": "c", "p": 0, "s": 0, "e": 5, "lang": 7}])[0])
         long = clean_mark_list([{"id": "d", "p": 0, "s": 0, "e": 5, "lang": "x" * 40}])

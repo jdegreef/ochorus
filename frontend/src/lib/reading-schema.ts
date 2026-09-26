@@ -222,6 +222,12 @@ export interface Mark {
 	 * anything written before editions were tagged; see `markInEdition`.
 	 */
 	lang?: string;
+	/**
+	 * The text this segment covered when it was made (first QUOTE_MAX chars) —
+	 * how it is found again after a repair shifts the chapter's text. Absent on
+	 * marks made before this was stored. See `$lib/markAnchor`.
+	 */
+	q?: string;
 }
 
 /**

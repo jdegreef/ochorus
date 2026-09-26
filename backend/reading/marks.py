@@ -33,6 +33,10 @@ MAX_NOTE_LEN = 5000
 MAX_ID_LEN = 64
 # A mark's edition tag ("en", "es", "en-modern"). Matches ChapterMarks.language.
 MAX_LANG_LEN = 10
+# A mark's anchor text ("q"): what it covered when it was made, so the reader
+# can find it again after a repair shifts the chapter's text. The client keeps
+# 200 characters; the slack allows for a longer UTF-16 count on the way in.
+MAX_QUOTE_LEN = 300
 
 # Deletions are recorded as tombstones — {group_id: deleted_at_ms} — so a mark
 # removed on one device stays removed everywhere: a stale device that still holds
@@ -91,6 +95,9 @@ def clean_mark_list(raw) -> list[dict]:
         color = m.get("color")
         if isinstance(color, str) and color in _HL_COLORS:
             mark["color"] = color
+        quote = m.get("q")
+        if isinstance(quote, str) and quote:
+            mark["q"] = quote[:MAX_QUOTE_LEN]
         out.append(mark)
     out.sort(key=lambda m: (m["p"], m["s"]))
     return out
@@ -132,6 +139,10 @@ def merge_mark_lists(server: list[dict], incoming: list[dict]) -> list[dict]:
         note_new = m.get("note", "")
         if len(note_new) > len(existing.get("note", "")):
             existing["note"] = note_new
+        # A mark made before anchors existed gains one when a device that has
+        # anchored it pushes; an anchor once set is never replaced.
+        if m.get("q") and not existing.get("q"):
+            existing["q"] = m["q"]
     merged = sorted(by_range.values(), key=lambda m: (m["p"], m["s"]))
     # The union of two already-capped lists can reach 2× the cap. Hold the line at
     # the per-chapter bound: the union is lossless for any realistic chapter (no

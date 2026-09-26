@@ -1,4 +1,5 @@
 import { readingSync } from './readingSync';
+import { quoteOf } from './markAnchor';
 import { readJSON, writeJSON } from './persisted';
 import { undo } from './undo.svelte';
 import {
@@ -86,6 +87,8 @@ export interface Segment {
 	p: number;
 	s: number;
 	e: number;
+	/** The segment's text, kept on the mark as its anchor (see markAnchor). */
+	q?: string;
 }
 
 const rangeKey = (m: Segment) => `${m.p}:${m.s}:${m.e}`;
@@ -184,6 +187,28 @@ class Marks {
 		this.list = [...this.list, ...fresh].sort((a, b) => a.p - b.p || a.s - b.s);
 		this.#persist();
 		return id;
+	}
+
+	/**
+	 * Give marks made before anchors were stored their `q` from the text they
+	 * cover now, so a later repair of this chapter can't move them onto other
+	 * words (see markAnchor). Only when the caller's text is this store's
+	 * chapter and edition — `key`/`language` are the page's, checked against
+	 * what is loaded, so text from one chapter never anchors another's marks.
+	 */
+	anchorLegacy(key: string, language: string, paras: string[]) {
+		if (key !== this.key || language !== this.#language) return;
+		let changed = false;
+		const next = this.list.map((m) => {
+			if (m.q) return m;
+			const q = quoteOf(paras[m.p] ?? '', m.s, m.e);
+			if (!q.trim()) return m;
+			changed = true;
+			return { ...m, q };
+		});
+		if (!changed) return;
+		this.list = next;
+		this.#persist();
 	}
 
 	/** Remove every segment of a mark group. */

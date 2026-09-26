@@ -26,7 +26,7 @@
  * "a long chapter is 76+ blocks and this fires on every paragraph". The longest
  * prose in the app was running the slow version.
  */
-import { onMount } from 'svelte';
+import { onMount, untrack } from 'svelte';
 import { marks, type Segment } from '$lib/marks.svelte';
 import { removeMarkUndoable, clearNoteUndoable } from '$lib/undoable';
 import { renderMarks } from '$lib/rangeMarks';
@@ -39,7 +39,7 @@ import { spokenText, blankFootnoteMarkers } from '$lib/listenText';
 import { shouldFollow } from '$lib/listenFollow';
 import { saveScrollAnchor } from '$lib/progress';
 import { HEADER_OFFSET, prefersReducedMotion } from '$lib/reading';
-import { DEFAULT_HIGHLIGHT, type WorkKind } from '$lib/reading-schema';
+import { DEFAULT_HIGHLIGHT, workKey, type WorkKind } from '$lib/reading-schema';
 
 /** How long read-along leaves the page alone after a hand-scroll. */
 const FOLLOW_YIELD_MS = 3000;
@@ -337,6 +337,16 @@ export class ReaderText {
 					)
 				: [];
 			renderMarks(body, list, this.#editMark, hits);
+			// Anchor marks made before anchors existed to the words they cover now.
+			// Keyed to the page's chapter and edition: the store ignores it unless
+			// those are what it has loaded, so a chapter turn can't cross them.
+			untrack(() =>
+				marks.anchorLegacy(
+					workKey(o.kind(), o.slug(), o.order()),
+					o.language(),
+					Array.from(body.children).map((el) => el.textContent ?? '')
+				)
+			);
 
 			// Once per arrival: bring the first match into view. Guarded, or every
 			// highlight edit would yank the reader back up the page.

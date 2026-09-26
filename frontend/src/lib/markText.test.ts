@@ -42,3 +42,20 @@ describe('groupMarks', () => {
 		expect(hl.color).toBe('gold');
 	});
 });
+
+describe('groupMarks after the text changed', () => {
+	it('quotes a highlight at its words’ new place, and flags one whose words are gone', () => {
+		const paras = ['Truly in the beginning was the Word.', 'Nothing of the old text.'];
+		const [moved, gone] = groupMarks(
+			paras,
+			[
+				{ id: 'a', p: 0, s: 25, e: 29, q: 'Word' },
+				{ id: 'b', p: 1, s: 8, e: 12, q: 'with God' }
+			],
+			'en'
+		).sort((x, y) => x.id.localeCompare(y.id));
+		expect(moved).toMatchObject({ text: 'Word', p: 0 });
+		expect(moved.detached).toBeUndefined();
+		expect(gone).toMatchObject({ text: 'with God', detached: true });
+	});
+});
