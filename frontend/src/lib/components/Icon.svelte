@@ -36,7 +36,8 @@
 		| 'check'
 		| 'more'
 		| 'download'
-		| 'layers';
+		| 'layers'
+		| 'quote';
 
 	let {
 		name,
@@ -160,6 +161,11 @@
 		<circle cx="18.5" cy="12" r="1.2" />
 	{:else if name === 'download'}
 		<path d="M12 4v11m-5-5 5 5 5-5M5 20h14" />
+	{:else if name === 'quote'}
+		<!-- A pair of opening quotation marks: the author's Quotes page. -->
+		<path d="M5 17V11a4 4 0 0 1 4-4M14 17V11a4 4 0 0 1 4-4" />
+		<rect x="5" y="13" width="4" height="4" rx="0.5" />
+		<rect x="14" y="13" width="4" height="4" rx="0.5" />
 	{:else if name === 'layers'}
 		<!-- Book spines side by side: the Bookshelf's spine view. -->
 		<path d="M5 4v16M9.5 4v16M14 6l4 14M3 20h18" />
