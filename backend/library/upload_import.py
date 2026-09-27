@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import io
 import re
+import zipfile
 from html import escape
 
 import mammoth
@@ -37,6 +38,13 @@ from .management.commands.import_ochorus import chapterize, pdf_blocks
 from .models import Author, Book, Chapter, Sermon
 
 MAX_UPLOAD_BYTES = 25 * 1024 * 1024  # 25 MB
+#: A .docx is a zip; MAX_UPLOAD_BYTES bounds only the COMPRESSED size, and mammoth
+#: inflates and parses the whole thing in memory. A crafted 25 MB "zip bomb" can
+#: expand to gigabytes and OOM-kill the worker, so the declared uncompressed size
+#: and per-member ratio are checked before mammoth opens it. Real books are a few
+#: MB unpacked and compress ~3-10x.
+MAX_DOCX_UNCOMPRESSED_BYTES = 200 * 1024 * 1024
+MAX_DOCX_RATIO = 100
 
 # A section is (title, body_html); an empty title means "untitled".
 Section = tuple[str, str]
@@ -49,7 +57,24 @@ class ParseError(Exception):
 # --- format extraction --------------------------------------------------------
 
 
+def _check_docx_expansion(data: bytes) -> None:
+    """Refuse a .docx whose members would inflate past sane bounds (see
+    ``MAX_DOCX_UNCOMPRESSED_BYTES``). Reads only the zip directory."""
+    try:
+        members = zipfile.ZipFile(io.BytesIO(data)).infolist()
+    except zipfile.BadZipFile as exc:
+        raise ParseError("Couldn't read this Word document: it isn't a valid .docx.") from exc
+    total = sum(m.file_size for m in members)
+    bomb = any(
+        m.file_size > MAX_DOCX_RATIO * max(m.compress_size, 1) and m.file_size > 1024 * 1024
+        for m in members
+    )
+    if total > MAX_DOCX_UNCOMPRESSED_BYTES or bomb:
+        raise ParseError("This Word document expands too large to import.")
+
+
 def _docx_html(data: bytes) -> str:
+    _check_docx_expansion(data)
     try:
         return mammoth.convert_to_html(io.BytesIO(data)).value or ""
     except Exception as exc:  # mammoth raises on non-docx / corrupt files

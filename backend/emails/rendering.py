@@ -36,7 +36,10 @@ def _display_name(profile) -> str:
 def _render(text: dict, profile, subscription, lang: str) -> RenderedEmail:
     greeting = ""
     if text.get("greeting"):
-        greeting = str(text["greeting"]).format(name=_display_name(profile))
+        # A literal substitution, NOT str.format: broadcast greetings are
+        # admin-written, and one stray "{" (or a "{name.__class__}") made
+        # .format raise mid-send — or evaluate an attribute lookup.
+        greeting = str(text["greeting"]).replace("{name}", _display_name(profile))
     context = {
         "copy": text,
         "subject": text["subject"],

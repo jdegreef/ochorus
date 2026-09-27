@@ -113,6 +113,17 @@ class ParseTests(TestCase):
         self.assertEqual(len(res["chapters"]), 1)
         self.assertIn("body text", res["chapters"][0]["html"])
 
+    def test_docx_zip_bomb_rejected_before_parsing(self):
+        # 25 MB bounds the compressed upload; a member that inflates ~1000x must
+        # be refused from the zip directory, before mammoth inflates it in memory.
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+            z.writestr("word/document.xml", b"\0" * (8 * 1024 * 1024))
+        with mock.patch.object(ui.mammoth, "convert_to_html") as convert:
+            with self.assertRaises(ui.ParseError):
+                ui.parse_upload(buf.getvalue(), "bomb.docx", "book")
+            convert.assert_not_called()
+
     def test_scanned_pdf_rejected(self):
         blank = fitz.open()
         blank.new_page()
