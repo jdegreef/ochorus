@@ -42,17 +42,24 @@ export function localDayNumber(d: Date): number {
 /**
  * The day's `count` articles, or [] when the shelf has fewer than `count` —
  * the section's heading promises that many, so a short shelf shows nothing.
+ *
+ * With a `cap`, at most `cap.max` matching articles make the day; the rest of
+ * the slots go to the next-best non-matching ones. A shelf without enough of
+ * those tops up from the capped kind, so the heading's count still holds.
  */
 export function pickDailyArticles<T extends { slug: string }>(
 	articles: readonly T[],
 	date: Date,
-	count = 8
+	count = 8,
+	cap?: { match: (a: T) => boolean; max: number }
 ): T[] {
 	if (articles.length < count) return [];
 	const day = localDayNumber(date);
-	return articles
+	const ranked = articles
 		.map((a) => ({ a, score: hash(`${a.slug}:${day}`) }))
 		.sort((x, y) => x.score - y.score || x.a.slug.localeCompare(y.a.slug))
-		.slice(0, count)
 		.map((x) => x.a);
+	// Every match past the first `max` drops to the back of the ranking.
+	const over = new Set(cap ? ranked.filter(cap.match).slice(cap.max) : []);
+	return [...ranked.filter((a) => !over.has(a)), ...over].slice(0, count);
 }

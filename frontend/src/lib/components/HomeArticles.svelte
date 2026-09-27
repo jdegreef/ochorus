@@ -7,6 +7,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
+	import { isGuide } from '$lib/articleIndex';
 
 	const t = i18n.t;
 
@@ -21,6 +22,9 @@
 	 * language with fewer renders nothing (pickDailyArticles returns []).
 	 */
 	const COUNT = 8;
+	// Book guides are nearly half the shelf, so an uncapped draw often leans on
+	// them; hold them to two so the list leads with questions and teaching articles.
+	const GUIDE_CAP = { match: isGuide, max: 2 };
 
 	let shelf: ArticleSummary[] = [];
 	let picks = $state<ArticleSummary[]>([]);
@@ -33,7 +37,7 @@
 		const now = new Date();
 		if (localDayNumber(now) === pickedDay) return;
 		pickedDay = localDayNumber(now);
-		picks = pickDailyArticles(shelf, now, COUNT);
+		picks = pickDailyArticles(shelf, now, COUNT, GUIDE_CAP);
 		dateLabel = now.toLocaleDateString(getLang(), { weekday: 'long', day: 'numeric', month: 'long' });
 	}
 
