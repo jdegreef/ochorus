@@ -39,20 +39,40 @@ export function localDayNumber(d: Date): number {
 	return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86_400_000);
 }
 
+/** Caps how many of one kind the day may show, e.g. at most two book guides. */
+export interface PickCap<T> {
+	match: (a: T) => boolean;
+	max: number;
+}
+
 /**
  * The day's `count` articles, or [] when the shelf has fewer than `count` —
  * the section's heading promises that many, so a short shelf shows nothing.
+ *
+ * With a `cap`, at most `cap.max` matching articles make the day; the rest of
+ * the slots go to the next-best non-matching ones. A shelf without enough of
+ * those tops up from the capped kind, so the heading's count still holds.
  */
 export function pickDailyArticles<T extends { slug: string }>(
 	articles: readonly T[],
 	date: Date,
-	count = 8
+	count = 8,
+	cap?: PickCap<T>
 ): T[] {
 	if (articles.length < count) return [];
 	const day = localDayNumber(date);
-	return articles
+	const ranked = articles
 		.map((a) => ({ a, score: hash(`${a.slug}:${day}`) }))
 		.sort((x, y) => x.score - y.score || x.a.slug.localeCompare(y.a.slug))
-		.slice(0, count)
 		.map((x) => x.a);
+	if (!cap) return ranked.slice(0, count);
+	const picks: T[] = [];
+	const held: T[] = [];
+	let capped = 0;
+	for (const a of ranked) {
+		if (picks.length === count) break;
+		if (cap.match(a) && capped++ >= cap.max) held.push(a);
+		else picks.push(a);
+	}
+	return [...picks, ...held].slice(0, count);
 }
