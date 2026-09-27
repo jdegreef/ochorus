@@ -69,7 +69,7 @@ BOOK_FIELDS = (
     "is_published",
 )
 # Every Series field the fixture owns (all of them — see the module docstring).
-SERIES_FIELDS = ("title", "description", "sort_order")
+SERIES_FIELDS = ("title", "description", "sort_order", "audience", "min_age", "max_age")
 SERIES_TRANSLATION_FIELDS = ("title", "description")
 # No `word_count`: `Chapter.save()` derives it from body_html, so passing the
 # fixture's copy here would be discarded. See seed_sermons.SERMON_FIELDS, where

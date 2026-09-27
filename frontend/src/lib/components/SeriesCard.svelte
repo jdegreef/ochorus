@@ -9,6 +9,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { seriesMeta } from '$lib/emblemNames';
+	import { seriesAges } from '$lib/series';
 	import ShelfCard from './ShelfCard.svelte';
 
 	/**
@@ -19,7 +20,17 @@
 	 * the rail sits under its own "Book Series" <h2>; the index's cards sit
 	 * directly under the page <h1>.
 	 */
-	let { series, compact = false }: { series: SeriesSummary; compact?: boolean } = $props();
+	let {
+		series,
+		compact = false,
+		headingLevel = compact ? 3 : 2
+	}: {
+		series: SeriesSummary;
+		compact?: boolean;
+		/** Overrides the level `compact` implies — the index's full cards sit
+		 *  under an audience <h2>, so they title themselves <h3>. */
+		headingLevel?: 2 | 3;
+	} = $props();
 	const t = i18n.t;
 	const meta = $derived(seriesMeta(series.slug));
 
@@ -34,6 +45,7 @@
 	const progressLabel = $derived(
 		progress ? seriesProgressLabel(progress.done, progress.total, contentLang(getLang())) : ''
 	);
+	const ages = $derived(seriesAges(series));
 </script>
 
 <ShelfCard
@@ -42,12 +54,15 @@
 	emblem={meta.emblem}
 	covers={series.covers}
 	title={series.title}
-	headingLevel={compact ? 3 : 2}
+	{headingLevel}
 >
 	{#snippet aside()}
 		{series.book_count}
 		{series.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
 	{/snippet}
+	{#if ages}
+		<p class="mt-0.5 text-small font-medium text-accent">{ages}</p>
+	{/if}
 	{#if !compact && series.description}
 		<p class="shelf-card-desc mt-1.5 text-small text-muted" dir="auto">{series.description}</p>
 	{/if}

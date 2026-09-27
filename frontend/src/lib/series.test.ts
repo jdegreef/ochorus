@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { groupBySeries, nextInSeries, seriesAmong, seriesFromBooks, seriesProgress, seriesLabel } from './series';
+import {
+	groupBySeries,
+	nextInSeries,
+	seriesAmong,
+	seriesFromBooks,
+	seriesProgress,
+	seriesLabel,
+	groupByAudience,
+	seriesAges
+} from './series';
 import type { BookSeries, BookSummary } from './library-public';
 
 const rooted: BookSeries = {
@@ -135,5 +144,31 @@ describe('seriesFromBooks', () => {
 		expect(cards).toHaveLength(1);
 		expect(cards[0]).toMatchObject({ slug: 'rooted', title: 'ROOTED', book_count: 2, books: ['r-1', 'r-2'] });
 		expect(cards[0].covers.map((c) => c.slug)).toEqual(['r-1', 'r-2']);
+	});
+});
+
+describe('groupByAudience', () => {
+	it('groups in reading-age order, untagged last, keeping the list order', () => {
+		const list = [
+			{ slug: 'kt', audience: 'adults' as const },
+			{ slug: 'bfg', audience: 'young_readers' as const },
+			{ slug: 'new', audience: '' as const },
+			{ slug: 'rooted', audience: 'young_readers' as const },
+			{ slug: 'old-api' }
+		];
+		expect(groupByAudience(list).map((g) => [g.audience, g.series.map((s) => s.slug)])).toEqual([
+			['young_readers', ['bfg', 'rooted']],
+			['adults', ['kt']],
+			[null, ['new', 'old-api']]
+		]);
+	});
+});
+
+describe('seriesAges', () => {
+	it('prints a range, an open range, or nothing', () => {
+		expect(seriesAges({ min_age: 9, max_age: 12 })).toBe('Ages 9–12');
+		expect(seriesAges({ min_age: 13, max_age: null })).toBe('Ages 13+');
+		expect(seriesAges({ min_age: null, max_age: null })).toBe('');
+		expect(seriesAges({})).toBe('');
 	});
 });

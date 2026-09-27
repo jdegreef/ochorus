@@ -171,6 +171,8 @@ class SeriesViewTests(TestCase):
         kt_row, bfg = rows
         self.assertEqual((bfg["description"], bfg["book_count"]), ("True stories.", 5))
         self.assertEqual(bfg["books"], ["bfg-1", "bfg-2", "bfg-3", "bfg-4", "bfg-5"])
+        # Untagged: no group, no age line.
+        self.assertEqual((bfg["audience"], bfg["min_age"], bfg["max_age"]), ("", None, None))
         # The fan: the first four published volumes, in reading order.
         self.assertEqual([c["slug"] for c in bfg["covers"]], ["bfg-1", "bfg-2", "bfg-3", "bfg-4"])
         self.assertEqual(set(bfg["covers"][0]), {"kind", "slug", "cover_url", "cover_color", "title"})
@@ -245,3 +247,29 @@ class BookCardSeriesTests(TestCase):
             "/api/library/series/brave-for-god/?language=en", HTTP_HOST="localhost"
         ).json()
         self.assertIsNone(body["books"][0]["series"])
+
+
+class SeriesAudienceTests(TestCase):
+    """The index groups by audience and prints an age range — both from the
+    series row, the same in every language."""
+
+    def test_audience_and_ages_reach_the_list_and_the_page(self):
+        author = Author.objects.create(slug="ochorus-originals", name="Ochorus")
+        rooted = Series.objects.create(
+            slug="rooted", title="Rooted", audience=Series.Audience.YOUNG_READERS,
+            min_age=9, max_age=12,
+        )
+        Book.objects.create(
+            author=author, slug="rooted-1", language="en", title="Rooted 1",
+            series=rooted, series_position=1, is_published=True,
+        )
+
+        def get(path):
+            return self.client.get(
+                f"/api/library/{path}?language=en", HTTP_HOST="localhost"
+            ).json()
+
+        row = get("series/")[0]
+        self.assertEqual((row["audience"], row["min_age"], row["max_age"]), ("young_readers", 9, 12))
+        page = get("series/rooted/")
+        self.assertEqual((page["audience"], page["min_age"], page["max_age"]), ("young_readers", 9, 12))
