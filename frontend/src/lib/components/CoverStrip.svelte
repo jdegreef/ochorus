@@ -14,11 +14,17 @@
 	 * can appear. Taking `BookTile[]` makes that a compiler error rather than a
 	 * silently blank rectangle.
 	 */
-	let { covers, max = 4 }: { covers: BookTile[]; max?: number } = $props();
+	// `size`: `sm` is the plan page's peek; `lg` is a series page's hero, where
+	// the covers ARE the page's picture.
+	let {
+		covers,
+		max = 4,
+		size = 'sm'
+	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' } = $props();
 </script>
 
 {#if covers.length}
-	<div class="covers" aria-hidden="true">
+	<div class="covers" class:lg={size === 'lg'} aria-hidden="true">
 		{#each covers.slice(0, max) as cover (cover.slug ?? cover.title)}
 			<div class="cover">
 				{#if cover.cover_url}
@@ -51,6 +57,10 @@
 		margin-inline-start: -0.7rem;
 		background: var(--surface);
 		transform: rotate(-3deg);
+	}
+	.lg .cover {
+		width: 4.75rem;
+		margin-inline-start: -1.4rem;
 	}
 	.cover:first-child {
 		margin-inline-start: 0;

@@ -3,14 +3,23 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
+	import { cardSeriesLine } from '$lib/series';
 	import BookCover from './BookCover.svelte';
 
 	// `anchor`: when set, this row is the first of its author's run and carries
 	// the `#author-<slug>` target the by-author quick-nav jumps to.
-	let { book, showAuthor = true, anchor }: { book: BookSummary; showAuthor?: boolean; anchor?: string } =
-		$props();
+	// `showSeries`: the series line, off where the page already names the series.
+	let {
+		book,
+		showAuthor = true,
+		anchor,
+		showSeries = true
+	}: { book: BookSummary; showAuthor?: boolean; anchor?: string; showSeries?: boolean } = $props();
 	const t = i18n.t;
 
+	const seriesLine = $derived(
+		showSeries ? cardSeriesLine(book) : ''
+	);
 	const chapters = $derived(
 		`${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
 	);
@@ -31,6 +40,9 @@
 		</div>
 		{#if showAuthor}
 			<div class="text-small text-muted">{book.author.name}</div>
+		{/if}
+		{#if seriesLine}
+			<div class="text-small font-medium text-accent">{seriesLine}</div>
 		{/if}
 		{#if book.subtitle}
 			<div class="text-small italic text-muted">{book.subtitle}</div>

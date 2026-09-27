@@ -190,3 +190,57 @@ class SeriesViewTests(TestCase):
         # translations — and the cache mixin's content-revision read.
         with self.assertNumQueries(5):
             self._get("series/")
+
+
+class BookCardSeriesTests(TestCase):
+    """The card's series line (`BookListSerializer.series`) agrees with
+    `series_block`: the same totals, the same no-English-fallback rule."""
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="ochorus-originals", name="Ochorus")
+        self.series = Series.objects.create(slug="brave-for-god", title="Brave for God")
+
+    def _book(self, slug, position, *, language="en", series=None):
+        return Book.objects.create(
+            author=self.author, slug=slug, language=language, title=f"{slug} [{language}]",
+            series=series or self.series, series_position=position, is_published=True,
+        )
+
+    def _cards(self, language="en"):
+        body = self.client.get(
+            f"/api/library/books/?language={language}", HTTP_HOST="localhost"
+        ).json()
+        return {b["slug"]: b["series"] for b in body}
+
+    def test_an_ordered_volume_counts_the_series_numbers_in_every_language(self):
+        self._book("bfg-1", 1)
+        self._book("bfg-3", 3)
+        self._book("bfg-2", 2, language="sw")  # volume 2 exists, just not in English
+        cards = self._cards()
+        self.assertEqual(
+            cards["bfg-3"], {"slug": "brave-for-god", "title": "Brave for God", "position": 3, "total": 3}
+        )
+        block = series_block(Book.objects.get(slug="bfg-3", language="en"))
+        self.assertEqual(cards["bfg-3"]["total"], block["total"])
+
+    def test_a_collection_counts_this_languages_books(self):
+        kt = Series.objects.create(slug="key-teachings", title="The Key Teachings")
+        self._book("kt-nee", None, series=kt)
+        self._book("kt-baxter", None, series=kt)
+        self._book("kt-nee", None, series=kt, language="sw")
+        self.assertEqual(self._cards()["kt-nee"]["total"], 2)
+
+    def test_no_series_and_an_unnamed_series_both_carry_none(self):
+        Book.objects.create(author=self.author, slug="plain", language="en", title="Plain", is_published=True)
+        self._book("bfg-1", 1, language="sw")
+        self.assertIsNone(self._cards()["plain"])
+        self.assertIsNone(self._cards("sw")["bfg-1"])  # no Swahili name
+        SeriesTranslation.objects.create(series=self.series, language="sw", title="Jasiri")
+        self.assertEqual(self._cards("sw")["bfg-1"]["title"], "Jasiri")
+
+    def test_the_series_page_cards_skip_the_line_it_would_repeat(self):
+        self._book("bfg-1", 1)
+        body = self.client.get(
+            "/api/library/series/brave-for-god/?language=en", HTTP_HOST="localhost"
+        ).json()
+        self.assertIsNone(body["books"][0]["series"])

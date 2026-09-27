@@ -14,6 +14,7 @@
 	import { localizeHref } from '$lib/href';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
+	import SeriesCard from '$lib/components/SeriesCard.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -103,7 +104,7 @@
 	<div class="flex items-start justify-between gap-4">
 		<div class="min-w-0 flex-1">
 			<p class="eyebrow mb-1 text-muted">
-				{t('series.kind')} · {volumeNumeral(count, lang) ?? count}
+				{t('nav.series')} · {volumeNumeral(count, lang) ?? count}
 				{count === 1 ? t('common.bookOne') : t('common.bookMany')}
 			</p>
 			<h1 class="text-h1 mb-2" dir="auto">{series.title}</h1>
@@ -121,6 +122,7 @@
 					cover_color: b.cover_color
 				}))}
 				max={5}
+				size="lg"
 			/>
 		</div>
 	</div>
@@ -152,8 +154,26 @@
 		     numeral; the author rides the card because a collection spans authors. -->
 		<div class="book-grid">
 			{#each series.books as book (book.slug)}
-				<BookCard {book} showAuthor={!series.ordered} />
+				<BookCard {book} showAuthor={!series.ordered} showSeries={false} />
 			{/each}
 		</div>
 	</section>
+
+	{#if data.others.length}
+		<!-- The way on to the next series, and up to the index: the leaf page's
+		     capped "More …" block, in the index's own (compact) card. -->
+		<section class="mt-12">
+			<div class="mb-4 flex items-baseline justify-between gap-3">
+				<h2 class="section-label">{t('series.more')}</h2>
+				<a href={localizeHref('/series/')} class="shrink-0 text-small font-medium">
+					{t('series.seeAll')}
+				</a>
+			</div>
+			<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+				{#each data.others as s (s.slug)}
+					<SeriesCard series={s} compact />
+				{/each}
+			</div>
+		</section>
+	{/if}
 </div>

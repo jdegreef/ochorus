@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { nextInSeries, seriesLabel } from './series';
+import { groupBySeries, nextInSeries, seriesLabel } from './series';
 import type { BookSeries, BookSummary } from './library-public';
 
 const rooted: BookSeries = {
@@ -50,5 +50,41 @@ describe('nextInSeries', () => {
 	it('has nothing left once every book is finished', () => {
 		const all = books.map((b) => b.slug);
 		expect(nextInSeries(books, progress(all, all))).toBeNull();
+	});
+});
+
+describe('groupBySeries', () => {
+	const line = (slug: string, position: number | null) => ({
+		slug,
+		title: slug.toUpperCase(),
+		position,
+		total: 3
+	});
+	const book = (id: string, series: ReturnType<typeof line> | null) => ({ id, series });
+
+	it('groups in the index order, volumes in reading order, loose books last in given order', () => {
+		const books = [
+			book('plain-b', null),
+			book('rooted-3', line('rooted', 3)),
+			book('kt-nee', line('key-teachings', null)),
+			book('rooted-1', line('rooted', 1)),
+			book('plain-a', null),
+			book('kt-baxter', line('key-teachings', null))
+		];
+		const { named, standalone } = groupBySeries(books, ['key-teachings', 'rooted']);
+		expect(named.map((g) => [g.slug, g.title, g.books.map((b) => b.id)])).toEqual([
+			// A collection keeps the order it was given.
+			['key-teachings', 'KEY-TEACHINGS', ['kt-nee', 'kt-baxter']],
+			['rooted', 'ROOTED', ['rooted-1', 'rooted-3']]
+		]);
+		expect(standalone.map((b) => b.id)).toEqual(['plain-b', 'plain-a']);
+	});
+
+	it('puts a series the index does not list after the ones it does', () => {
+		const { named } = groupBySeries(
+			[book('x-1', line('unlisted', 1)), book('r-1', line('rooted', 1))],
+			['rooted']
+		);
+		expect(named.map((g) => g.slug)).toEqual(['rooted', 'unlisted']);
 	});
 });

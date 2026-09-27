@@ -5,6 +5,7 @@
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
 	import { splitEdition } from '$lib/edition';
+	import { cardSeriesLine } from '$lib/series';
 	import BookCover from './BookCover.svelte';
 
 	let {
@@ -21,8 +22,19 @@
 		 * When set, this card is the first of its author's run in the by-author
 		 * shelf and carries the `#author-<slug>` target the quick-nav jumps to.
 		 */
-		anchor
-	}: { book: CoverBook; showAuthor?: boolean; priority?: boolean; anchor?: string } = $props();
+		anchor,
+		/**
+		 * The series line ("Book 2 of 6 in Rooted"). Off where the page already
+		 * says which series every card is in — the series page, a by-series group.
+		 */
+		showSeries = true
+	}: {
+		book: CoverBook;
+		showAuthor?: boolean;
+		priority?: boolean;
+		anchor?: string;
+		showSeries?: boolean;
+	} = $props();
 	const t = i18n.t;
 
 	const chapters = $derived(
@@ -32,6 +44,9 @@
 	// the title on a narrow card; pull it onto its own line so the two editions
 	// don't look identical. Null for ordinary books.
 	const edition = $derived(splitEdition(book.slug, book.title));
+	const seriesLine = $derived(
+		showSeries ? cardSeriesLine(book) : ''
+	);
 </script>
 
 <a
@@ -59,6 +74,11 @@
 		{/if}
 		{#if showAuthor}
 			<div class="truncate text-small text-muted" title={book.author.name}>{book.author.name}</div>
+		{/if}
+		{#if seriesLine}
+			<!-- Text, not a link: the whole card is already one. The series page is
+			     a tap away on the book page's own series line. -->
+			<div class="truncate text-eyebrow font-medium text-accent" title={seriesLine}>{seriesLine}</div>
 		{/if}
 		<!-- mt-auto pins the meta to the card's bottom, so a one-line title and a
 		     two-line title still bottom out level across a grid row. -->

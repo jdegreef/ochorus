@@ -764,8 +764,14 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
                 "books": BookListSerializer(
                     books,
                     many=True,
-                    # No topic chips on these cards: skip building the map.
-                    context={"request": request, "language": language, "book_topics": {}},
+                    # No topic chips and no series line on these cards (the page
+                    # IS the series): skip building either map.
+                    context={
+                        "request": request,
+                        "language": language,
+                        "book_topics": {},
+                        "book_series": {},
+                    },
                 ).data,
                 "available_languages": _series_languages(
                     series, _held_languages([series.pk]).get(series.pk, set())

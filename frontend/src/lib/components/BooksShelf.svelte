@@ -16,11 +16,13 @@
 	import BookCover from './BookCover.svelte';
 	import SeriesCard from './SeriesCard.svelte';
 	import PageHeader from './PageHeader.svelte';
+	import GroupHeading from './GroupHeading.svelte';
 	import EmptyState from './EmptyState.svelte';
 	import FilterSummary from './FilterSummary.svelte';
 	import TopicFilterRow from './TopicFilterRow.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
+	import { groupBySeries } from '$lib/series';
 
 	let {
 		books,
@@ -37,7 +39,7 @@
 	// --- View preferences (persisted per device) -------------------------------
 	type View = 'grid' | 'list';
 	type Sort = BookSort;
-	type Group = 'author' | 'all';
+	type Group = 'author' | 'series' | 'all';
 	type Source = 'all' | 'public_domain' | 'translated';
 	const PREFS_KEY = 'ochorus:books-view2';
 
@@ -147,8 +149,14 @@
 
 	const sorted = $derived(sortBooks(filtered, sort)); // shelf order preserves the API's sort_order
 
+	// "By series" is offered only when some book on the shelf is in a named
+	// series (never in a language with none, nor behind an API without the
+	// field); a stored preference for it then falls back to the flat view.
+	const hasSeries = $derived(books.some((b) => b.series));
+	const activeGroup = $derived<Group>(group === 'series' && !hasSeries ? 'all' : group);
+
 	const groups = $derived.by(() => {
-		if (group === 'all') return null;
+		if (activeGroup !== 'author') return null;
 		const map = new Map<string, { slug: string; name: string; books: BookSummary[] }>();
 		for (const b of sorted) {
 			const g = map.get(b.author.slug) ?? { slug: b.author.slug, name: b.author.name, books: [] };
@@ -164,6 +172,13 @@
 	// heading over an otherwise empty one. `authorAnchor` maps each author's
 	// first book to the `#author-<slug>` id the quick-nav jumps to.
 	const authorFlat = $derived(groups ? groups.flatMap((g) => g.books) : []);
+
+	// By series: a section per series (see groupBySeries). Unlike authors, a
+	// series is several books by definition, so a section each never leaves a
+	// heading over a lone card.
+	const seriesGroups = $derived(
+		activeGroup === 'series' ? groupBySeries(sorted, series.map((s) => s.slug)) : null
+	);
 	const authorAnchor = $derived(new Map((groups ?? []).map((g) => [g.books[0].slug, g.slug])));
 
 	// --- SEO: ItemList structured data ------------------------------------------
@@ -202,6 +217,25 @@
      has something in it. -->
 {#snippet readEnglish()}
 	<a href="/books" class="btn btn-primary inline-block">{t('books.readEnglish')}</a>
+{/snippet}
+
+<!-- A run of books in the chosen view — the flat shelf, or one by-series
+     group. `eager` marks a run whose first covers are above the fold;
+     `showSeries` is off under a series heading, which already names it. -->
+{#snippet shelfBooks(list: BookSummary[], eager: boolean, showSeries: boolean)}
+	{#if view === 'grid'}
+		<div class="book-grid">
+			{#each list as book, i (book.slug)}
+				<BookCard {book} showAuthor {showSeries} priority={eager && i < 6} />
+			{/each}
+		</div>
+	{:else}
+		<div class="flex flex-col gap-1">
+			{#each list as book (book.slug)}
+				<BookListRow {book} {showSeries} />
+			{/each}
+		</div>
+	{/if}
 {/snippet}
 
 <!-- Filtered the shelf down to nothing: clear the filters (Biographies' model). -->
@@ -360,14 +394,21 @@
 
 			<div class="seg">
 				<button
-					class:active={group === 'author'}
+					class:active={activeGroup === 'author'}
 					onclick={() => setGroup('author')}
-					aria-pressed={group === 'author'}>{t('books.groupAuthor')}</button
+					aria-pressed={activeGroup === 'author'}>{t('books.groupAuthor')}</button
 				>
+				{#if hasSeries}
+					<button
+						class:active={activeGroup === 'series'}
+						onclick={() => setGroup('series')}
+						aria-pressed={activeGroup === 'series'}>{t('books.groupSeries')}</button
+					>
+				{/if}
 				<button
-					class:active={group === 'all'}
+					class:active={activeGroup === 'all'}
 					onclick={() => setGroup('all')}
-					aria-pressed={group === 'all'}>{t('books.groupAll')}</button
+					aria-pressed={activeGroup === 'all'}>{t('books.groupAll')}</button
 				>
 			</div>
 
@@ -426,6 +467,26 @@
 			     filtered-to-nothing state, so offer to clear (not the bare <p> that
 			     made Books the odd shelf out; C2). -->
 			<EmptyState message={t('books.noResults')} action={clearFiltersAction} />
+		{:else if seriesGroups}
+			<!-- By series: one section per series (group-heading recipe, the name
+			     linking to the series page), then the books in no series. The
+			     cards drop their series line — the heading already says it. -->
+			{#each seriesGroups.named as g, gi (g.slug)}
+				<section class="mb-10">
+					<GroupHeading
+						name={g.title}
+						href={localizeHref(`/series/${g.slug}/`)}
+						count={g.books.length}
+					/>
+					{@render shelfBooks(g.books, gi === 0, false)}
+				</section>
+			{/each}
+			{#if seriesGroups.standalone.length}
+				<section>
+					<GroupHeading name={t('books.standalone')} count={seriesGroups.standalone.length} />
+					{@render shelfBooks(seriesGroups.standalone, !seriesGroups.named.length, false)}
+				</section>
+			{/if}
 		{:else if groups}
 			<!-- By author: one flat shelf, books ordered so each author's works sit
 			     together and the author rides every card. A <section> per author
@@ -445,18 +506,8 @@
 					{/each}
 				</div>
 			{/if}
-		{:else if view === 'grid'}
-			<div class="book-grid">
-				{#each sorted as book, i (book.slug)}
-					<BookCard {book} showAuthor priority={i < 6} />
-				{/each}
-			</div>
 		{:else}
-			<div class="flex flex-col gap-1">
-				{#each sorted as book (book.slug)}
-					<BookListRow {book} />
-				{/each}
-			</div>
+			{@render shelfBooks(sorted, true, true)}
 		{/if}
 	{/if}
 </div>
