@@ -8,6 +8,7 @@
 		getAdminCoverage,
 		getAdminTranslationJobs,
 		createAdminTranslationJob,
+		markTranslationCurrent,
 		type AdminCoverageRow,
 		type AdminCoverageLanguage,
 		type AdminTranslationJob,
@@ -101,9 +102,39 @@
 	// that language's to-do list. Queued ones stay listed (their ◷ shows it) — the
 	// job list loads after coverage, so hiding them would make rows flicker away.
 	let gapLang = $state('');
-	// Translations made from English that has since changed (bios only today).
+	// Translations made from English that has since changed.
 	let staleOnly = $state(false);
 	const isStale = (r: AdminCoverageRow, code: string) => !!r.stale?.includes(code);
+	// "Still current": a reviewer checked a stale translation against the new
+	// English and it holds (the change was a typo fix, say). Books, sermons and
+	// articles only — a stale bio clears through its own review/re-translation.
+	const STALE_KIND: Partial<Record<Tab, 'book' | 'sermon' | 'article'>> = {
+		books: 'book',
+		sermons: 'sermon',
+		articles: 'article'
+	};
+	let markingCurrent = $state<string | null>(null);
+	async function markCurrent(r: AdminCoverageRow, l: AdminCoverageLanguage) {
+		const kind = STALE_KIND[tab];
+		if (!kind) return;
+		if (
+			!confirm(
+				`Mark the ${l.name} “${r.title}” as still matching its English? Do this only after checking the English change doesn't affect the translation.`
+			)
+		)
+			return;
+		markingCurrent = `${r.slug}:${l.code}`;
+		queueError = null;
+		try {
+			await markTranslationCurrent({ kind, slug: r.slug, language: l.code });
+			// Rows are the resource's $state, so this clears the ↻ in place.
+			r.stale = r.stale?.filter((c) => c !== l.code);
+		} catch (e) {
+			queueError = e instanceof ApiError ? e.message : "Couldn't mark it current — try again.";
+		} finally {
+			markingCurrent = null;
+		}
+	}
 	const tabHasStale = $derived(rows.some((r) => r.stale?.length));
 
 	// --- View: density and grouping. Compact is a per-viewer preference, so it
@@ -614,11 +645,22 @@
 						<span class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small {m.cls}">{m.label}</span>
 					{/if}
 					{#if isStale(r, l.code)}
-						<span
-							class="ml-0.5 align-super text-micro text-warning"
-							title={`The English changed after this ${l.name} translation was made — re-translate or re-review`}
-							aria-label="English changed since translated">↻</span
-						>
+						{#if STALE_KIND[tab] && auth.can('review', 'act', l.code)}
+							<button
+								type="button"
+								class="ml-0.5 align-super text-micro text-warning hover:text-accent disabled:opacity-50"
+								disabled={markingCurrent !== null}
+								title={`The English changed after this ${l.name} translation was made — re-translate it, or click once you've checked it still matches`}
+								aria-label={`${l.name} translation of ${r.title} predates an English change — mark it still current`}
+								onclick={() => markCurrent(r, l)}>↻</button
+							>
+						{:else}
+							<span
+								class="ml-0.5 align-super text-micro text-warning"
+								title={`The English changed after this ${l.name} translation was made — re-translate or re-review`}
+								aria-label="English changed since translated">↻</span
+							>
+						{/if}
 					{/if}
 				{:else if job}
 					<a

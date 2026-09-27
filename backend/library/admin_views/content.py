@@ -16,8 +16,11 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
+from .. import translation_staleness
+from ..audit import AdminAudited
 from ..languages import known_codes
 from ..models import (
+    AdminAction,
     Article,
     Author,
     AuthorTranslation,
@@ -577,6 +580,16 @@ def _review_state_or_present(record: dict) -> str:
     return st if st in _AI_STATES else "present"
 
 
+def _with_stale(rows: list[dict], kind: str) -> list[dict]:
+    """Stamp ``stale`` — the languages whose translation predates the current
+    English (library/translation_staleness) — on the rows that have any."""
+    stale = translation_staleness.stale_languages(kind)
+    for row in rows:
+        if langs := stale.get(row["slug"]):
+            row["stale"] = sorted(langs)
+    return rows
+
+
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminCoverageView(APIView):
     """Translation-coverage matrices: every canonical work (row) × language
@@ -614,12 +627,15 @@ class AdminCoverageView(APIView):
                     }
                     for c in codes
                 ],
-                "books": self._with_readers(self._book_rows(), "book"),
-                "sermons": self._with_readers(self._sermon_rows(), "sermon"),
+                "books": _with_stale(self._with_readers(self._book_rows(), "book"), "book"),
+                "sermons": _with_stale(
+                    self._with_readers(self._sermon_rows(), "sermon"), "sermon"
+                ),
                 "plans": self._with_readers(self._plan_rows(), "plan"),
+                # Bios carry `stale` from AuthorTranslation.source_stale (_bio_rows).
                 "bios": self._with_readers(self._bio_rows(), "bio"),
                 # Articles have no reading-layer rows, so no reader counts.
-                "articles": self._article_rows(),
+                "articles": _with_stale(self._article_rows(), "article"),
                 # The series the Books matrix can be narrowed to (each book row
                 # carries its `series`), so a whole series' gaps in one language
                 # queue as that column's "queue all".
@@ -791,4 +807,31 @@ class AdminCoverageView(APIView):
                 row.setdefault("stale", []).append(t["language"])
         return sorted(rows.values(), key=lambda r: r["title"].lower())
 
+
+@requires(AdminCapability.REVIEW, verb=AdminVerb.ACT, language_arg="language")
+class AdminTranslationMarkCurrentView(AdminAudited, APIView):
+    """POST {kind, slug, language}: someone checked a stale translation against
+    the current English and it still holds — the English change was a typo fix,
+    say — so re-baseline it and clear its ↻ in the coverage matrix. A review
+    act in that language, like a review decision."""
+
+    audit_action = AdminAction.Action.TRANSLATION_MARK_CURRENT
+
+    def audit_entry(self, request, response):
+        d = request.data
+        return f"{d.get('kind')}:{d.get('slug')}:{d.get('language')}", {}
+
+    def post(self, request):
+        data = request.data or {}
+        kind = data.get("kind")
+        slug = (data.get("slug") or "").strip()
+        language = (data.get("language") or "").strip()
+        if kind not in translation_staleness.KINDS or not slug or not language:
+            return Response(
+                {"detail": f"kind (one of {list(translation_staleness.KINDS)}), slug and language are required."},
+                status=400,
+            )
+        if not translation_staleness.mark_current(kind, slug, language):
+            return Response({"detail": "No such translation of an English edition."}, status=404)
+        return Response({"ok": True})
 

@@ -1,0 +1,128 @@
+"""Translation staleness: the per-deploy fingerprint refresh, the coverage
+matrix's `stale` languages, and the "still current" re-baseline."""
+
+from __future__ import annotations
+
+import io
+
+from django.core.management import call_command
+from django.test import TestCase, override_settings
+from rest_framework.test import APIClient
+
+from . import translation_staleness as ts
+from .models import AdminAction, Article, Author, Book, Chapter, Sermon
+
+
+class TranslationStalenessTests(TestCase):
+    def setUp(self):
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        self.en = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
+        self.sw = Book.objects.create(
+            author=author, slug="humility", language="sw", title="Unyenyekevu",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        for book, body in ((self.en, "<p>Pride</p>"), (self.sw, "<p>Kiburi</p>")):
+            Chapter.objects.create(book=book, order=1, title="One", body_html=body)
+
+    def _edit(self, book, body):
+        Chapter.objects.filter(book=book, order=1).update(body_html=body)
+
+    def test_first_refresh_baselines_every_translation(self):
+        counts = ts.refresh("book")
+        self.en.refresh_from_db()
+        self.sw.refresh_from_db()
+        self.assertTrue(self.en.content_digest)
+        self.assertEqual(self.sw.english_digest, self.en.content_digest)
+        self.assertEqual(self.en.english_digest, "", "the English row has no baseline")
+        self.assertEqual(counts["rebaselined"], 1)
+        self.assertEqual(ts.stale_languages("book"), {})
+
+    def test_refresh_is_idempotent(self):
+        ts.refresh("book")
+        self.assertEqual(ts.refresh("book"), {"updated": 0, "rebaselined": 0, "stale": 0})
+
+    def test_an_english_change_makes_the_translation_stale(self):
+        ts.refresh("book")
+        self._edit(self.en, "<p>Pride, corrected</p>")
+        self.assertEqual(ts.refresh("book")["stale"], 1)
+        self.assertEqual(ts.stale_languages("book"), {"humility": ["sw"]})
+        # And it stays stale deploy after deploy until something happens to it.
+        ts.refresh("book")
+        self.assertEqual(ts.stale_languages("book"), {"humility": ["sw"]})
+
+    def test_a_new_chapter_in_english_is_a_change(self):
+        ts.refresh("book")
+        Chapter.objects.create(book=self.en, order=2, title="Two", body_html="<p>More</p>")
+        ts.refresh("book")
+        self.assertEqual(ts.stale_languages("book"), {"humility": ["sw"]})
+
+    def test_retranslating_rebaselines(self):
+        """The translation's own text changed (re-translated, or chapters topped
+        up) → it was made from the English as it now stands."""
+        ts.refresh("book")
+        self._edit(self.en, "<p>Pride, corrected</p>")
+        ts.refresh("book")
+        self._edit(self.sw, "<p>Kiburi, tena</p>")
+        ts.refresh("book")
+        self.assertEqual(ts.stale_languages("book"), {})
+
+    def test_english_and_translation_fixed_in_one_deploy_is_not_stale(self):
+        ts.refresh("book")
+        self._edit(self.en, "<p>Pride, corrected</p>")
+        self._edit(self.sw, "<p>Kiburi, kimesahihishwa</p>")
+        ts.refresh("book")
+        self.assertEqual(ts.stale_languages("book"), {})
+
+    def test_mark_current_clears_it_and_survives_the_next_deploy(self):
+        ts.refresh("book")
+        self._edit(self.en, "<p>Pride (typo fixed)</p>")
+        ts.refresh("book")
+        self.assertTrue(ts.mark_current("book", "humility", "sw"))
+        self.assertEqual(ts.stale_languages("book"), {})
+        ts.refresh("book")
+        self.assertEqual(ts.stale_languages("book"), {})
+
+    def test_mark_current_refuses_english_and_unknown(self):
+        ts.refresh("book")
+        self.assertFalse(ts.mark_current("book", "humility", "en"))
+        self.assertFalse(ts.mark_current("book", "nope", "sw"))
+        self.assertFalse(ts.mark_current("book", "humility", "fr"))
+
+    def test_sermons_and_articles(self):
+        author = Author.objects.get(slug="am")
+        for lang, body in (("en", "<p>Grace</p>"), ("es", "<p>Gracia</p>")):
+            Sermon.objects.create(author=author, slug="grace", language=lang, title="G", body_html=body)
+            Article.objects.create(slug="prayer", language=lang, h1="P", body_html=body)
+        call_command("refresh_translation_digests", stdout=io.StringIO())
+        Sermon.objects.filter(slug="grace", language="en").update(title="Grace abounding")
+        Article.objects.filter(slug="prayer", language="en").update(body_html="<p>More</p>")
+        call_command("refresh_translation_digests", stdout=io.StringIO())
+        self.assertEqual(ts.stale_languages("sermon"), {"grace": ["es"]})
+        self.assertEqual(ts.stale_languages("article"), {"prayer": ["es"]})
+        self.assertEqual(ts.stale_languages("book"), {})
+
+    @override_settings(DEBUG=True)
+    def test_coverage_lists_stale_and_mark_current_endpoint_clears_it(self):
+        client = APIClient()
+        ts.refresh("book")
+        self._edit(self.en, "<p>Pride, corrected</p>")
+        ts.refresh("book")
+
+        books = {b["slug"]: b for b in client.get("/api/admin/coverage/").data["books"]}
+        self.assertEqual(books["humility"]["stale"], ["sw"])
+
+        url = "/api/admin/coverage/mark-current/"
+        self.assertEqual(client.post(url, {"kind": "book"}, format="json").status_code, 400)
+        self.assertEqual(
+            client.post(url, {"kind": "book", "slug": "nope", "language": "sw"}, format="json").status_code,
+            404,
+        )
+        res = client.post(url, {"kind": "book", "slug": "humility", "language": "sw"}, format="json")
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(
+            AdminAction.objects.filter(
+                action=AdminAction.Action.TRANSLATION_MARK_CURRENT, target="book:humility:sw"
+            ).exists()
+        )
+        books = {b["slug"]: b for b in client.get("/api/admin/coverage/").data["books"]}
+        self.assertNotIn("stale", books["humility"])

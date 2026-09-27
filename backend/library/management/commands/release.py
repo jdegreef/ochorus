@@ -50,6 +50,11 @@ class Command(BaseCommand):
         # chapters, no derived columns; a plain per-language content row).
         self.stdout.write("→ seed_articles")
         call_command("seed_articles")
+        # Fingerprint the text just settled, and flag translations whose English
+        # has moved on since they were made (admin coverage matrix ↻). After
+        # every content seed, so it sees what the site now serves.
+        self.stdout.write("→ refresh_translation_digests")
+        call_command("refresh_translation_digests")
         # Upsert unreviewed translated author bios from the in-repo data files
         # (AuthorTranslation has no fixture; reviewed rows are approver-owned).
         self.stdout.write("→ seed_author_translations")
