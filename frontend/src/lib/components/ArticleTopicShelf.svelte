@@ -4,12 +4,10 @@
 	import { breadcrumbLd, hreflangFor } from '$lib/seo';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import ArticleShelf from '$lib/components/ArticleShelf.svelte';
+	import ArticleShelf, { articleFilters } from '$lib/components/ArticleShelf.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { articleTopicSeo, articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
 	import { i18n } from '$lib/i18n.svelte';
-	import { ARTICLE_KINDS } from '$lib/articleIndex';
-	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
 
 	const t = i18n.t;
@@ -34,11 +32,7 @@
 	} = $props();
 
 	// The shelf's text query and kind live in the URL, as on the index.
-	const filters = urlFilters({
-		defaults: { q: '', kind: '' },
-		allowed: { kind: ARTICLE_KINDS },
-		url: () => $page.url
-	});
+	const filters = articleFilters(() => $page.url);
 
 	const seo = $derived(articleTopicSeo(slug, title));
 	const shown = $derived(articles.filter((a) => articleHasTopic(a, slug)));

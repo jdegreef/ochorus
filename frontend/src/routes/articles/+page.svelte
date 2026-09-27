@@ -5,12 +5,11 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
-	import ArticleShelf from '$lib/components/ArticleShelf.svelte';
+	import ArticleShelf, { articleFilters } from '$lib/components/ArticleShelf.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
-	import { ARTICLE_KINDS, featuredArticles, isGuide, topicGroups } from '$lib/articleIndex';
-	import { urlFilters } from '$lib/urlFilters.svelte';
+	import { featuredArticles, isGuide, topicGroups } from '$lib/articleIndex';
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { page } from '$app/stores';
@@ -41,17 +40,15 @@
 	// URL (the same helper Books, Sermons and Biographies use). Owned here rather
 	// than in <ArticleShelf> so the page can step its secondary sections aside
 	// while the reader is filtering (page-design, browse-shelf step 4).
-	const filters = urlFilters({
-		defaults: { q: '', kind: '' },
-		allowed: { kind: ARTICLE_KINDS },
-		url: () => $page.url
-	});
+	const filters = articleFilters(() => $page.url);
 
 	const guides = $derived(articles.filter(isGuide));
 	const featured = $derived(featuredArticles(articles));
 	const groups = $derived(topicGroups(articles));
 	/** The guides rail: the first few, in curated order, that have a cover. */
-	const guideRail = $derived(guides.filter((g) => g.lead_book).slice(0, 10));
+	const guideRail = $derived(
+		guides.flatMap((g) => (g.lead_book ? [{ slug: g.slug, book: g.lead_book }] : [])).slice(0, 10)
+	);
 
 	const path = '/articles/';
 	const canonical = `${SITE_URL}${path}`;
@@ -115,7 +112,7 @@
 						{#each featured as a (a.slug)}
 							<a
 								href="/articles/{a.slug}/"
-								class="featured card-lift flex gap-4 border border-border bg-surface p-5"
+								class="card-lift flex gap-4 rounded-card border border-border bg-surface p-5 text-inherit hover:no-underline"
 							>
 								{#if a.lead_book}
 									<div class="w-16 shrink-0" aria-hidden="true">
@@ -144,7 +141,7 @@
 					<h2 id="by-topic" class="section-label">{t('home.browseTopic')}</h2>
 					<div class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
 						{#each groups as g (g.slug)}
-							<div class="topic-card flex flex-col gap-2 border border-border bg-surface p-4 sm:p-5">
+							<div class="flex flex-col gap-2 rounded-card border border-border bg-surface p-4 sm:p-5">
 								<h3 class="flex flex-col gap-1 text-h3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
 									<a href="/articles/{g.slug}/" class="text-text hover:text-accent">{g.title}</a>
 									<span class="count text-small font-normal">{g.count}</span>
@@ -177,15 +174,13 @@
 					</div>
 					<div class="cover-rail flex gap-4 pb-1">
 						{#each guideRail as g (g.slug)}
-							{#if g.lead_book}
-								<a href="/articles/{g.slug}/" class="w-20 shrink-0 hover:no-underline sm:w-24">
-									<BookCover book={g.lead_book} />
-									<div class="mt-1.5 line-clamp-2 text-eyebrow font-medium text-text">
-										{g.lead_book.title}
-									</div>
-									<div class="truncate text-eyebrow text-muted">{g.lead_book.author.name}</div>
-								</a>
-							{/if}
+							<a href="/articles/{g.slug}/" class="w-20 shrink-0 hover:no-underline sm:w-24">
+								<BookCover book={g.book} />
+								<div class="mt-1.5 line-clamp-2 text-eyebrow font-medium text-text">
+									{g.book.title}
+								</div>
+								<div class="truncate text-eyebrow text-muted">{g.book.author.name}</div>
+							</a>
 						{/each}
 					</div>
 				</section>
@@ -201,17 +196,6 @@
 </div>
 
 <style>
-	/* The "Start here" and topic cards share the row cards' radius; the start
-	   cards lift (banded), the topic cards stay put — they hold links of their
-	   own, so the card itself is not one (page-design D3). */
-	.featured,
-	.topic-card {
-		border-radius: var(--radius-card);
-		color: inherit;
-	}
-	.featured:hover {
-		text-decoration: none;
-	}
 	#all-articles {
 		scroll-margin-top: calc(var(--appnav-h, 0px) + 1rem);
 	}

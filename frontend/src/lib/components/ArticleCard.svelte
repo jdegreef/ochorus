@@ -18,7 +18,7 @@
 	// The classic the article sends you on to — its cover leads the row, so the
 	// shelf shows the books behind the writing rather than a wall of text. A
 	// guide is ABOUT that book, so it says "Reader's guide" instead of "Leads to".
-	const lead = $derived(article.lead_book ?? null);
+	const lead = $derived(article.lead_book);
 	const guide = $derived(isGuide(article));
 </script>
 
@@ -26,13 +26,13 @@
      is one link; the taxonomy lives in the index's topic-filter tabs, so the
      card carries only the cover, title, standfirst and a meta line. -->
 <a
-	class="article-card card-tint border border-border bg-surface"
+	class="article-card card-tint rounded-card border border-border bg-surface"
 	class:has-cover={lead}
 	href={localizeHref(`/articles/${article.slug}/`)}
 >
 	{#if lead}
 		<!-- Decorative: the meta line names the book in words. -->
-		<div class="cover" aria-hidden="true"><BookCover book={lead} /></div>
+		<div aria-hidden="true"><BookCover book={lead} /></div>
 	{/if}
 	<div class="min-w-0">
 		<svelte:element this={heading} class="card-title text-h3">{article.h1}</svelte:element>
@@ -58,7 +58,6 @@
 	.article-card {
 		display: block;
 		padding: 1.1rem 1.25rem;
-		border-radius: var(--radius-card);
 		text-decoration: none;
 		color: inherit;
 	}

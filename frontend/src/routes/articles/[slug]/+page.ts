@@ -56,5 +56,11 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	const articles = await listArticles('en', fetch);
 	const tab = articles.flatMap((a) => a.topics ?? []).find((tc) => tc.slug === params.slug);
 	if (!tab) throw error(404, 'Not found');
-	return { kind: 'topic' as const, topicSlug: tab.slug, topicTitle: tab.title, articles };
+	// The shelf needs every article (its topic chips count the whole index), but
+	// only this topic's cards draw a cover — so the page's inlined data carries
+	// lead books for those alone, not the whole index's (~40 KB).
+	const trimmed = articles.map((a) =>
+		(a.topics ?? []).some((tc) => tc.slug === tab.slug) ? a : { ...a, lead_book: null }
+	);
+	return { kind: 'topic' as const, topicSlug: tab.slug, topicTitle: tab.title, articles: trimmed };
 };

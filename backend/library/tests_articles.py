@@ -396,11 +396,25 @@ class ArticleLeadBookTests(TestCase):
         self.assertEqual(cards["humility-guide"]["kind"], "guide")
         self.assertEqual(cards["how-to-walk-in-humility"]["kind"], "article")
 
-    def test_detail_carries_its_own_lead_book(self):
+    def test_detail_does_not_carry_the_index_cover(self):
+        # The page renders the same book from `related`; no second lookup.
         res = self.client.get(
             reverse("article-detail", args=["humility-guide"]), {"language": "en"}
         )
-        self.assertEqual(res.data["lead_book"]["slug"], "humility")
+        self.assertNotIn("lead_book", res.data)
+        self.assertEqual(res.data["related"][1]["slug"], "humility")
+
+    def test_topic_page_article_cards_carry_their_lead_book(self):
+        # The topic endpoint resolves lead books from its own articles only.
+        from .models import Topic, TopicArticle
+
+        topic = Topic.objects.create(slug="humility", title="Humility", is_published=True)
+        TopicArticle.objects.create(topic=topic, article_slug="humility-guide")
+        res = self.client.get(reverse("topic-detail", args=["humility"]), {"language": "en"})
+        self.assertEqual(res.status_code, 200)
+        [card] = res.data["articles"]
+        self.assertEqual(card["lead_book"]["slug"], "humility")
+        self.assertEqual(card["kind"], "guide")
 
     def test_lead_book_queries_do_not_grow_with_the_shelf(self):
         from django.db import connection

@@ -77,11 +77,30 @@ export function featuredArticles(articles: ArticleSummary[], count = 3): Article
 	return picks.slice(0, count);
 }
 
-export interface TopicGroup {
+export interface TopicCount {
 	slug: string;
 	title: string;
-	/** Articles under the topic, in shelf order. */
+	/** Articles under the topic. */
 	count: number;
+}
+
+/** Each topic on the shelf with how many articles it holds, in first-seen
+ *  order. The one counting pass behind both the topic-filter chips and the
+ *  "Browse by topic" grid, so their numbers can't disagree. `?? []` guards a
+ *  lagging API that predates the `topics` field (version skew). */
+export function topicCounts(articles: ArticleSummary[]): TopicCount[] {
+	const bySlug = new Map<string, TopicCount>();
+	for (const a of articles) {
+		for (const tc of a.topics ?? []) {
+			const seen = bySlug.get(tc.slug);
+			if (seen) seen.count += 1;
+			else bySlug.set(tc.slug, { slug: tc.slug, title: tc.title, count: 1 });
+		}
+	}
+	return [...bySlug.values()];
+}
+
+export interface TopicGroup extends TopicCount {
 	/** The first few, for the group's card. */
 	items: ArticleSummary[];
 }
@@ -93,16 +112,13 @@ export interface TopicGroup {
  * says little about the topic) but counted, since the topic shelf lists them.
  */
 export function topicGroups(articles: ArticleSummary[], limit = 6, per = 3): TopicGroup[] {
-	const groups = new Map<string, TopicGroup>();
-	for (const a of articles) {
-		for (const tc of a.topics ?? []) {
-			let g = groups.get(tc.slug);
-			if (!g) groups.set(tc.slug, (g = { slug: tc.slug, title: tc.title, count: 0, items: [] }));
-			g.count += 1;
-			if (g.items.length < per && !isGuide(a)) g.items.push(a);
-		}
-	}
-	return [...groups.values()]
+	return topicCounts(articles)
+		.map((c) => ({
+			...c,
+			items: articles
+				.filter((a) => !isGuide(a) && (a.topics ?? []).some((tc) => tc.slug === c.slug))
+				.slice(0, per)
+		}))
 		.filter((g) => g.items.length > 0)
 		.sort((x, y) => y.count - x.count || x.title.localeCompare(y.title))
 		.slice(0, limit);
