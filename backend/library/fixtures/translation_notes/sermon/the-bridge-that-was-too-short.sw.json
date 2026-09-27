@@ -1,0 +1,147 @@
+{
+ "kind": "sermon",
+ "slug": "the-bridge-that-was-too-short",
+ "language": "sw",
+ "job_issue": 4121,
+ "references": [
+  {
+   "reference": "Acts 26:1",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 26:2",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 26:3",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 26:4",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 26:5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 26:6",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 26:7",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 26:8",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "Acts 26:9",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 26:10",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 26:11",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 26:17b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Acts 26:19",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Acts 26:20",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Acts 26:21",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Acts 26:22",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Acts 26:23",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Acts 26:24",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Acts 26:25",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Acts 26:26",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 26:27",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 26:28",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 26:29",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 27:4a",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "John 8:11b",
+   "status": "mined",
+   "block_index": 92,
+   "source_file": "christs-boundless-compassion.sw.json"
+  },
+  {
+   "reference": "Isaiah 1:18b",
+   "status": "mined",
+   "block_index": 163,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  }
+ ]
+}

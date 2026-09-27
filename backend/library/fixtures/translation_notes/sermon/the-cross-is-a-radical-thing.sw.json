@@ -1,0 +1,25 @@
+{
+ "kind": "sermon",
+ "slug": "the-cross-is-a-radical-thing",
+ "language": "sw",
+ "job_issue": 4122,
+ "references": [
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "women-who-moved-heaven-2.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 7:16",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-inner-chamber.sw.json"
+  }
+ ]
+}

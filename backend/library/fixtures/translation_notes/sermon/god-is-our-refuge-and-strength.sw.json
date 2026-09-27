@@ -1,0 +1,233 @@
+{
+ "kind": "sermon",
+ "slug": "god-is-our-refuge-and-strength",
+ "language": "sw",
+ "job_issue": 4118,
+ "references": [
+  {
+   "reference": "Luke 21:26a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "prayer-the-pulse-of-life.sw.json"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 13:1b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Deuteronomy 6:4b",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Deuteronomy 6:4a",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Deuteronomy 6:5a",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Psalm 23:2a",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 20:28",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "the-way-of-salvation-made-plain.sw.json"
+  },
+  {
+   "reference": "Psalm 56:3a",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Proverbs 18:10",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Matthew 25:31-32",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Jeremiah 31:35-37",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Psalm 46:1",
+   "status": "mined",
+   "block_index": 72,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Revelation 7:9-10",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "Revelation 7:14b",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Psalm 115:16b",
+   "status": "mined",
+   "block_index": 72,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Genesis 2:7b",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "block_index": 78,
+   "source_file": "men-and-women-who-gave-everything-2.sw.json"
+  },
+  {
+   "reference": "Acts 9:6",
+   "status": "mined",
+   "block_index": 88,
+   "source_file": "christs-boundless-compassion.sw.json"
+  },
+  {
+   "reference": "Matthew 4:10b",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Matthew 16:18b",
+   "status": "mined",
+   "block_index": 94,
+   "source_file": "feasting-at-the-table.sw.json"
+  },
+  {
+   "reference": "Acts 14:17a",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "block_index": 97,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "2 Peter 3:10",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Matthew 24:22",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Psalm 46:2-3",
+   "status": "mined",
+   "block_index": 112,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Psalm 46:4-5",
+   "status": "mined",
+   "block_index": 112,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Psalm 46:6",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Psalm 46:7",
+   "status": "mined",
+   "block_index": 113,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalm 46:8a",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Psalm 46:8b",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Psalm 46:9",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Psalm 46:10a",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "Psalm 46:10b",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Revelation 5:13a",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Revelation 5:12a",
+   "status": "mined",
+   "block_index": 116,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "Revelation 5:9b",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Psalm 127:2b",
+   "status": "mined",
+   "block_index": 117,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "Psalm 4:8a",
+   "status": "self_rendered",
+   "block_index": 118
+  },
+  {
+   "reference": "Psalm 3:5b",
+   "status": "self_rendered",
+   "block_index": 118
+  }
+ ]
+}

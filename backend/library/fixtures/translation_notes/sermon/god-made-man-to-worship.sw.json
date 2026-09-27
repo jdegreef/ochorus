@@ -1,0 +1,94 @@
+{
+ "kind": "sermon",
+ "slug": "god-made-man-to-worship",
+ "language": "sw",
+ "job_issue": 4119,
+ "references": [
+  {
+   "reference": "Psalm 45:11",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalm 45:11a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-new-birth.sw.json"
+  },
+  {
+   "reference": "Genesis 3:9",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 4:10",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Thessalonians 1:10a",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 10:20",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "1 Corinthians 10:21",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 6:9b",
+   "status": "mined",
+   "block_index": 100,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "Romans 1:28",
+   "status": "self_rendered",
+   "block_index": 111
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "self_rendered",
+   "block_index": 118
+  },
+  {
+   "reference": "John 8:24b",
+   "status": "mined",
+   "block_index": 130,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Luke 13:3",
+   "status": "self_rendered",
+   "block_index": 131
+  },
+  {
+   "reference": "Isaiah 28:10",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Psalm 96:9a",
+   "status": "mined",
+   "block_index": 140,
+   "source_file": "holy-in-christ.sw.json"
+  }
+ ]
+}
