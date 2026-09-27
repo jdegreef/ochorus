@@ -688,6 +688,8 @@ export interface ReviewQueueParams {
 	outcome?: string;
 	sort?: string;
 	page?: number;
+	/** One work (the coverage matrix's deep link) — shown whatever its outcome. */
+	slug?: string;
 }
 
 export const getReviewQueue = (p: ReviewQueueParams = {}) => {
@@ -697,6 +699,7 @@ export const getReviewQueue = (p: ReviewQueueParams = {}) => {
 	if (p.flagged) q.set('flagged', '1');
 	if (p.outcome) q.set('outcome', p.outcome);
 	if (p.sort) q.set('sort', p.sort);
+	if (p.slug) q.set('slug', p.slug);
 	if (p.page && p.page > 1) q.set('page', String(p.page));
 	const qs = q.toString();
 	return apiFetch<ReviewQueue>(`/api/admin/review-queue/${qs ? `?${qs}` : ''}`);

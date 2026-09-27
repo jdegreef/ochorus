@@ -130,6 +130,22 @@ class ReviewQueueTests(TestCase):
         self.assertEqual(only["results"][0]["kind"], "sermon")
         self.assertEqual(only["total"], 3, "total stays the unfiltered backlog")
 
+    def test_slug_narrows_to_one_work_even_when_sent_back(self):
+        """The coverage matrix deep-links an AI· cell here by slug. A translation
+        marked needs-work has left the default (undecided) list, but the cell
+        still reads AI· — so a slug view shows it rather than landing empty."""
+        ReviewOutcome.objects.create(
+            kind="book", slug="waiting", language="sw", outcome="needs_work", reviewer="r"
+        )
+        data = self._get(slug="waiting")
+        self.assertEqual(
+            [(r["kind"], r["language"]) for r in data["results"]], [("book", "sw")]
+        )
+        self.assertEqual(data["results"][0]["outcome"]["outcome"], "needs_work")
+        # Kind and language still narrow within it.
+        self.assertEqual(self._get(slug="waiting", kind="sermon")["filtered"], 0)
+        self.assertEqual(self._get(slug="waiting", language="sw")["filtered"], 1)
+
     def test_language_names_come_from_the_registry(self):
         """The queue labels its own languages, so the frontend holds no map."""
         self.assertEqual(self._get()["language_names"]["sw"], "Swahili")

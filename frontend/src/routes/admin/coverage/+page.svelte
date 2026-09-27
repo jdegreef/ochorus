@@ -10,7 +10,8 @@
 		type AdminCoverageRow,
 		type AdminCoverageLanguage,
 		type AdminTranslationJob,
-		type TranslationJobType
+		type TranslationJobType,
+		type ReviewKind
 	} from '$lib/library-admin';
 
 	// Load the open translation queue right after coverage — via onLoad, so it
@@ -62,6 +63,21 @@
 		articles: '/articles'
 	};
 	const rowHref = (slug: string) => `${ROW_HREF_BASE[tab]}/${slug}`;
+	// An unreviewed cell opens that translation in the review queue, panel open.
+	// A link rather than an approve button here: approving means reading the
+	// text beside its English and settling its flagged verses, which lives there.
+	// Articles aren't in the review queue, so their cells stay plain.
+	const REVIEW_KIND: Partial<Record<Tab, ReviewKind>> = {
+		books: 'book',
+		sermons: 'sermon',
+		bios: 'bio'
+	};
+	const reviewHref = (slug: string, lang: string) => {
+		const kind = REVIEW_KIND[tab];
+		return kind
+			? `/admin/review?${new URLSearchParams({ kind, language: lang, slug })}`
+			: null;
+	};
 
 	// --- Planner controls: narrow and order the matrix to what you're working on.
 	// All of them act on the same derived row list, so totals, the "+N" column
@@ -327,9 +343,12 @@
 				{#if tab === 'books'}
 					<span><span class="text-text">PD</span> public domain</span>
 				{/if}
-				{#if tab === 'books' || tab === 'bios' || tab === 'articles'}
+				{#if tab !== 'plans'}
 					<span><span class="text-accent">AI✓</span> reviewed</span>
-					<span><span class="text-warning">AI·</span> unreviewed</span>
+					<span>
+						<span class="text-warning">AI·</span> unreviewed{#if tab !== 'articles'}
+							— click to review{/if}
+					</span>
 				{/if}
 				{#if tab !== 'books'}
 					<span><span class="text-accent">●</span> present</span>
@@ -440,7 +459,17 @@
 									<td class="group px-3 py-2.5 text-center">
 										{#if v}
 											{@const m = cellMeta(v)}
-											<span class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small {m.cls}">{m.label}</span>
+											{@const review = v === 'ai_unreviewed' ? reviewHref(r.slug, l.code) : null}
+											{#if review}
+												<a
+													href={review}
+													class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small transition-colors hover:bg-warning/10 hover:no-underline {m.cls}"
+													title={`Review ${r.title} → ${l.name}`}
+													aria-label={`Review the ${l.name} translation of ${r.title}`}
+												>{m.label}</a>
+											{:else}
+												<span class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small {m.cls}">{m.label}</span>
+											{/if}
 										{:else if job}
 											<a
 												href={job.url}

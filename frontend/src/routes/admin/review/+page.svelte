@@ -30,6 +30,10 @@
 	let fOutcome = $state(initialParams.get('outcome') ?? '');
 	let fSort = $state(initialParams.get('sort') ?? 'oldest');
 	let page = $state(Math.max(1, Number(initialParams.get('p')) || 1));
+	// One work, from a coverage-matrix cell (`?slug=…&kind=…&language=…`). The
+	// first load opens its review panel, so the cell lands on the text itself.
+	let fSlug = $state(initialParams.get('slug') ?? '');
+	let autoOpen = initialParams.has('slug');
 
 	// Mirror the current filters into the URL without a navigation. Defaults are
 	// omitted so the querystring stays as short as what the reviewer actually set.
@@ -41,6 +45,7 @@
 		if (fFlagged) p.set('flagged', '1');
 		if (fOutcome) p.set('outcome', fOutcome);
 		if (fSort !== 'oldest') p.set('sort', fSort);
+		if (fSlug) p.set('slug', fSlug);
 		if (page > 1) p.set('p', String(page));
 		const qs = p.toString();
 		replaceState(`${location.pathname}${qs ? `?${qs}` : ''}`, {});
@@ -138,9 +143,18 @@
 				flagged: fFlagged,
 				outcome: fOutcome,
 				sort: fSort,
+				slug: fSlug,
 				page
 			}),
-		'Something went wrong loading the queue.'
+		'Something went wrong loading the queue.',
+		undefined,
+		(q) => {
+			// Deep link: open the one matching item once. Several (another kind or
+			// language of the same slug) → leave the choice to the reviewer.
+			if (!autoOpen) return;
+			autoOpen = false;
+			if (q.results.length === 1) void openDetail(q.results[0]);
+		}
 	);
 	const queue = $derived(reviewQueue.data);
 	const load = reviewQueue.load;
@@ -385,6 +399,20 @@
 				<p class="text-small ml-auto pb-1.5 text-muted">
 					Showing {q.filtered} of {q.total} awaiting review
 				</p>
+				{#if fSlug}
+					<p class="text-small flex w-full items-center gap-2 border-t border-border pt-3 text-muted">
+						Showing one work: <span class="font-semibold text-text">{q.results[0]?.title ?? fSlug}</span>
+						<button
+							class="btn btn-sm btn-ghost ml-auto"
+							onclick={() => {
+								fSlug = '';
+								fKind = '';
+								fLanguage = '';
+								applyFilters();
+							}}>Show the whole queue</button
+						>
+					</p>
+				{/if}
 			</div>
 
 			{#if selectedItems.length}
