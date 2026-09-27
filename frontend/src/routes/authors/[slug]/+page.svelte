@@ -3,7 +3,13 @@
 	import FloatingBookmark from '$lib/components/FloatingBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import Icon from '$lib/components/Icon.svelte';
-	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library-public';
+	import {
+		type AuthorDetail,
+		type AuthorBio,
+		listAuthors,
+		formatLifespan,
+		hasOwnContent
+	} from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { cssString } from '$lib/cssString';
 	import {
@@ -173,7 +179,12 @@
 	// alternates, unlike books/sermons which list only the locales they exist in.
 	// (The bio itself no longer falls back to English: an untranslated bio is
 	// absent, and the page renders the works without it.)
+	// LATER: a locale with nothing of the writer's own is now noindexed (`thin`)
+	// and the sitemap lists only the rest; narrowing this set to match needs the
+	// author's languages from the API, which the detail endpoint doesn't carry.
 	const hreflang = $derived(hreflangAll(path));
+	// Nothing of the writer's own in THIS language: kept out of the index.
+	const thin = $derived(!hasOwnContent(author));
 	// Localized, because the bio may legitimately be missing in this language and
 	// a hardcoded English sentence would then become the page's meta description.
 	// A bare `.slice(0, 300)` cut the bio mid-word with no ellipsis (a SERP saw
@@ -385,6 +396,10 @@
 			: ''}
 	structuredData={[personLd, worksLd, crumbsLd, faqLd].filter((x): x is string => x != null)}
 />
+
+<svelte:head>
+	{#if thin}<meta name="robots" content="noindex" />{/if}
+</svelte:head>
 
 <!-- --pinned-offset: how far down the first pixel unobstructed by BOTH the app
      nav and this page's own sticky jump-bar is; anchored sections read it for
