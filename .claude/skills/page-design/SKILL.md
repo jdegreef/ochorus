@@ -336,6 +336,12 @@ green in CI but never went live because two of its three books were unpublished
 
 ## Copy conventions
 
+- **A "more →" / "← back" arrow in markup is `<Arrow />` / `<Arrow back />`
+  (`$lib/components/Arrow.svelte`), never the literal glyph.** Arrows aren't
+  bidi-mirrored, so a literal "→" points backwards in Arabic; `arrows.test.ts`
+  fails on one. Chevron `<Icon>`s mirror on their own; `‹ ›` are bidi-mirrored
+  and must NOT be flipped. An arrow inside a catalogue string is the
+  translator's (Arabic already writes "←").
 - **Dotted meta lines (`KIND · N UNITS · TIME`, `Name · 1828–1917`) break
   between items, never inside one.** Wrap each item in `whitespace-nowrap`
   and keep the separating SPACE outside the span (`{' '}` expression — a
