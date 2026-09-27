@@ -78,5 +78,12 @@
   "note": [
    "Queue job #3583. AI-drafted; awaiting native review. rooted-1 has no am edition yet, so no am row is created until it does; make its series title agree with «ሥር የሰደደ» when it ships. The reader is addressed in the generic singular (አንተ forms), the am house style; the closing sentence mirrors the Daughters of the King cards in the masculine."
   ]
+ },
+ "rooted-book-2-30-days": {
+  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 2",
+  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች ከኢየሱስ ጋር የምትመላለስባቸው ሠላሳ ቀናት፦ በቤተ ልሔም ካለው በረት ጀምሮ በተአምራቱና በምሳሌዎቹ በኩል እስከ መስቀሉና ባዶው መቃብር ድረስ። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ ከወንጌል የተወሰደ ክፍል፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
+  "note": [
+   "Queue job #4096. AI-drafted; awaiting native review. Mirrors rooted-book-1-30-days (series title «ሥር የሰደደ», generic-singular አንተ address, same closing sentence with «ከወንጌል የተወሰደ ክፍል» for 'a Gospel passage'). rooted-2 has no am edition yet, so no am row is created until it ships."
+  ]
  }
 }
