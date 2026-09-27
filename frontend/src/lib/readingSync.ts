@@ -789,6 +789,16 @@ class ReadingSync {
 			const serverRows = [...state.progress, ...state.marks];
 			const serverKnowsKinds = serverRows.some((r) => 'kind' in r);
 			if (sentSermonRows && serverRows.length > 0 && !serverKnowsKinds) return;
+			// The same overlap, one kind later: an API that knows kinds but not the
+			// newest one (the static site can go live before the API's migration —
+			// articles were such a kind) rejects those rows and echoes none, and
+			// writing its state back would erase that kind's local highlights,
+			// bookmarks and place. Progress is the signal: the server echoes every
+			// progress row it holds (it keeps the furthest), so a kind we sent that
+			// comes back absent is a kind it cannot store yet.
+			const kindsOf = (rows: { kind?: WorkKind }[]) => new Set(rows.map((r) => r.kind ?? 'book'));
+			const echoedKinds = kindsOf(state.progress);
+			if ([...kindsOf(payload.progress)].some((k) => !echoedKinds.has(k))) return;
 			if (state.journal) this.#confirmJournal(journalSent);
 			this.#writeState(state, {
 				[PROGRESS_KEY]: localProgress,

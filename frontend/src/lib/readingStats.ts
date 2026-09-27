@@ -8,7 +8,7 @@ import {
 	type BookmarksStore,
 	type WorkKind
 } from './reading-schema';
-import { listArticles, listBooks, listSermons, listAuthors } from './library-public';
+import { listArticlesWithFallback, listBooks, listSermons, listAuthors } from './library-public';
 
 /**
  * "Your reading" — device-local reading stats and recent history, derived from
@@ -95,7 +95,7 @@ export async function collectReadingActivity(
 		listBooks(language).catch(() => []),
 		listSermons(language).catch(() => []),
 		listAuthors(language).catch(() => []),
-		listArticles(language).catch(() => [])
+		listArticlesWithFallback(language)
 	]);
 	const bookMeta = new Map(
 		books.map((b) => [b.slug, { title: b.title, author: b.author?.name ?? '' }])

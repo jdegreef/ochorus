@@ -82,13 +82,16 @@
 			? `/sermons/${w.slug}`
 			: w.kind === 'bio'
 				? `/authors/${w.slug}`
-				: `/books/${w.slug}`;
+				: w.kind === 'article'
+					? `/articles/${w.slug}/`
+					: `/books/${w.slug}`;
 
 	// Top content — one tab per readable kind, each carrying its own top works.
 	const topTabs: { key: EngagementKind; label: string }[] = [
 		{ key: 'book', label: 'Books' },
 		{ key: 'sermon', label: 'Sermons' },
-		{ key: 'bio', label: 'Authors' }
+		{ key: 'bio', label: 'Authors' },
+		{ key: 'article', label: 'Articles' }
 	];
 	let topTab = $state<EngagementKind>('book');
 	const topRows = $derived<EngagementTopRow[]>(data?.top_content[topTab] ?? []);

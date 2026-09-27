@@ -512,6 +512,16 @@
 	   (this closes page-design A10 for articles). Only what an article carries
 	   that a chapter doesn't is set here, on the global class (the element
 	   belongs to <Reader>, which this component's scoped styles can't reach). */
+	/* No opening initial: that is a book chapter's flourish, and an article
+	   opens on an answer to a question, not a chapter. Selectors match the
+	   global rule's (app.css) plus this page's class, so this one wins. */
+	:global(article.article-col:not(.paged) .reading.article-body > p:first-of-type:not(:lang(ar)):not(:lang(hi)))::first-letter {
+		float: none;
+		font: inherit;
+		margin: 0;
+		padding: 0;
+		color: inherit;
+	}
 	:global(.article-body h2) {
 		/* Keep a contents jump from tucking the heading under the sticky nav. */
 		scroll-margin-top: 5rem;

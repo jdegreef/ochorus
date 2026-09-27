@@ -27,7 +27,7 @@ from rest_framework.test import APIClient
 from accounts.models import UserProfile
 from reading.models import ChapterMarks, ReadingProgress, WorkKind
 
-from .models import Author, Book, Chapter, Sermon
+from .models import Article, Author, Book, Chapter, Sermon
 
 User = get_user_model()
 
@@ -71,6 +71,14 @@ class EngagementKindTests(TestCase):
         # One reader of a BIO, whose slug names the author.
         ReadingProgress.objects.create(
             profile=reader(4), kind=WorkKind.BIO, book_slug="am", chapter_order=1
+        )
+        # And one of an ARTICLE, sharing the slug again — its own row and title.
+        Article.objects.create(
+            slug="humility", language="en", h1="How to Walk in Humility",
+            body_html="<p>x</p>", is_published=True,
+        )
+        ReadingProgress.objects.create(
+            profile=reader(5), kind=WorkKind.ARTICLE, book_slug="humility", chapter_order=1
         )
 
     def _rows(self):
@@ -151,3 +159,11 @@ class EngagementKindTests(TestCase):
         rows = self._rows()
         self.assertEqual(rows[("sermon", "humility")]["highlighters"], 1)
         self.assertEqual(rows[("book", "humility")]["highlighters"], 0)
+
+    def test_an_article_is_its_own_row_with_its_headline(self):
+        res = APIClient().get("/api/admin/engagement/")
+        [row] = res.data["top_content"]["article"]
+        self.assertEqual(
+            (row["kind"], row["slug"], row["title"], row["readers"]),
+            ("article", "humility", "How to Walk in Humility", 1),
+        )

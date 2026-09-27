@@ -77,11 +77,12 @@ def _work_titles(pairs):
     ``_work_meta`` scans the whole table for the aggregate dashboard, while this
     filters ``slug__in`` to one reader's works.
     """
-    from ..models import Author, Book, Sermon
+    from ..models import Article, Author, Book, Sermon
 
     book_slugs = [s for k, s in pairs if k == "book"]
     sermon_slugs = [s for k, s in pairs if k == "sermon"]
     bio_slugs = [s for k, s in pairs if k == "bio"]
+    article_slugs = [s for k, s in pairs if k == "article"]
 
     def title_author(r):
         return (r["title"], r.get("author__name") or "")
@@ -102,6 +103,17 @@ def _work_titles(pairs):
     if bio_slugs:
         for a in Author.objects.filter(slug__in=bio_slugs).values("slug", "name"):
             meta[("bio", a["slug"])] = (a["name"], "")
+    if article_slugs:
+        # An article's byline is the house, so it names no author.
+        rows = Article.objects.filter(slug__in=article_slugs).values(
+            "slug", "language", "h1"
+        )
+        meta.update(
+            {
+                ("article", s): v
+                for s, v in _prefer_en(rows, lambda r: (r["h1"], "")).items()
+            }
+        )
     return meta
 
 
@@ -392,6 +404,7 @@ class AdminUserDetailView(APIView):
                     "books": sum(1 for p in progress if p.kind == "book"),
                     "sermons": sum(1 for p in progress if p.kind == "sermon"),
                     "bios": sum(1 for p in progress if p.kind == "bio"),
+                    "articles": sum(1 for p in progress if p.kind == "article"),
                     "favorites": len(favorites),
                     "highlights": total_marks,
                     "bookmarks": len(bookmarks),

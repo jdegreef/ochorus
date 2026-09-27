@@ -13,7 +13,7 @@ import {
 	type WorkKind
 } from './reading-schema';
 import { cleanStore, visibleEntries, type JournalEntry } from './journal';
-import { listArticles, listBooks, listSermons, listAuthors, listPlans } from './library-public';
+import { listArticlesWithFallback, listBooks, listSermons, listAuthors, listPlans } from './library-public';
 
 /**
  * "Export my data" — turns the reader's device-local reading record (positions,
@@ -97,7 +97,7 @@ async function loadTitles(language: string): Promise<TitleMaps> {
 		listBooks(language).catch(() => []),
 		listSermons(language).catch(() => []),
 		listAuthors(language).catch(() => []),
-		listArticles(language).catch(() => []),
+		listArticlesWithFallback(language),
 		listPlans(language).catch(() => [])
 	]);
 	const maps: TitleMaps = {
@@ -189,9 +189,13 @@ export async function collectExport(
 		}
 	}
 
-	// Bookmarks (books only) — these carry their own snippet + chapter title.
-	for (const [slug, list] of Object.entries(bookmarksStore)) {
-		const w = workFor('book', slug);
+	// Bookmarks — these carry their own snippet + chapter title. Keyed like
+	// progress (`slug`, `sermon:slug`, `article:slug`…), so parsed the same way:
+	// read as a bare book slug, every non-book bookmark exported as a phantom
+	// book named after its storage key.
+	for (const [key, list] of Object.entries(bookmarksStore)) {
+		const { kind, slug } = parseWorkSlugKey(key);
+		const w = workFor(kind, slug);
 		for (const b of list ?? []) w.bookmarks.push({ chapter_title: b.title, snippet: b.snippet });
 	}
 

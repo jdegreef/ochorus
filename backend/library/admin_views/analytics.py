@@ -12,7 +12,7 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
-from ..models import Author, Book, SearchClickLog, Sermon
+from ..models import Article, Author, Book, SearchClickLog, Sermon
 from ..views import _language_entry
 
 
@@ -160,6 +160,11 @@ class AdminEngagementView(APIView):
         # A biography's slug names the AUTHOR, so the person is the title.
         for a in Author.objects.values("slug", "name"):
             meta[("bio", a["slug"])] = (a["name"], "")
+        # An article's byline is the house, so it names no author.
+        for ar in Article.objects.values("slug", "language", "h1"):
+            key = ("article", ar["slug"])
+            if ar["language"] == "en" or key not in meta:
+                meta[key] = (ar["h1"], "")
         return meta
 
     def _row(self, meta, kind, slug, **extra) -> dict:
@@ -231,6 +236,7 @@ class AdminEngagementView(APIView):
             "book": self._leaderboard(WorkKind.BOOK, FavoriteKind.BOOK),
             "sermon": self._leaderboard(WorkKind.SERMON, FavoriteKind.SERMON),
             "bio": self._leaderboard(WorkKind.BIO, FavoriteKind.AUTHOR),
+            "article": self._leaderboard(WorkKind.ARTICLE, FavoriteKind.ARTICLE),
         }
 
     def _hearts_by_kind(self) -> list[dict]:

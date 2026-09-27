@@ -107,7 +107,7 @@
 	const stats = $derived<Stat[]>(
 		u
 			? [
-					{ label: 'Works started', value: u.stats.works_started, sub: `${u.stats.books}b · ${u.stats.sermons}s · ${u.stats.bios} bio` },
+					{ label: 'Works started', value: u.stats.works_started, sub: `${u.stats.books}b · ${u.stats.sermons}s · ${u.stats.bios} bio · ${u.stats.articles ?? 0} art` },
 					{ label: 'Finished', value: u.stats.works_finished },
 					{
 						label: 'Time reading',

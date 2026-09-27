@@ -320,41 +320,54 @@
 				.filter((m) => m.kind === kind && m.slug === slug)
 				.sort((a, b) => a.edition.localeCompare(b.edition));
 
-		// Sermon marks and bookmarks (device-local, keyed by sermon slug — no chapters).
+		// Sermons and articles: single documents with a title (an article's author
+		// is the house, so it names none). Marks and bookmarks keyed by slug — no
+		// chapters.
 		//
 		// One fetch per EDITION highlighted, so each passage is sliced from the
 		// text it was measured on. A work read in one edition — nearly all of
 		// them — is one fetch, exactly as before; the metadata is taken from the
 		// page's own edition when that is among them, else from whichever
 		// response arrived, so a title is still shown.
-		const loadSermon = async (slug: string): Promise<SermonBlock> => {
-			const editions = editionsFor('sermon', slug);
-			const wanted = editions.length ? editions : [{ edition: lang, marks: [] as Mark[] }];
-			const parts = await Promise.all(
-				wanted.map(async ({ edition, marks: ms }) => {
-					try {
-						const sermon = await gate(() => getSermon(slug, edition));
-						return {
-							edition,
-							title: sermon.title,
-							author: sermon.author_name,
-							highlights: groupMarks(paragraphs(sermon.body_html), ms, edition)
-						};
-					} catch {
-						/* offline — the saved place still links through, just without its text */
-						return { edition, title: '', author: '', highlights: groupMarks([], ms, edition) };
-					}
-				})
-			);
-			const named = parts.find((p) => p.edition === lang && p.title) ?? parts.find((p) => p.title);
-			return {
-				slug,
-				title: named?.title || slug,
-				author: named?.author || '',
-				bookmarks: bookmarksFor(sermonBms, slug, () => named?.title),
-				highlights: parts.flatMap((p) => p.highlights)
+		type Doc = { title: string; author: string; body_html: string };
+		const loadDoc =
+			(kind: WorkKind, bms: (Bookmark & { slug: string })[], fetchDoc: (slug: string, edition: string) => Promise<Doc>) =>
+			async (slug: string): Promise<SermonBlock> => {
+				const editions = editionsFor(kind, slug);
+				const wanted = editions.length ? editions : [{ edition: lang, marks: [] as Mark[] }];
+				const parts = await Promise.all(
+					wanted.map(async ({ edition, marks: ms }) => {
+						try {
+							const doc = await gate(() => fetchDoc(slug, edition));
+							return {
+								edition,
+								title: doc.title,
+								author: doc.author,
+								highlights: groupMarks(paragraphs(doc.body_html), ms, edition)
+							};
+						} catch {
+							/* offline — the saved place still links through, just without its text */
+							return { edition, title: '', author: '', highlights: groupMarks([], ms, edition) };
+						}
+					})
+				);
+				const named = parts.find((p) => p.edition === lang && p.title) ?? parts.find((p) => p.title);
+				return {
+					slug,
+					title: named?.title || slug,
+					author: named?.author || '',
+					bookmarks: bookmarksFor(bms, slug, () => named?.title),
+					highlights: parts.flatMap((p) => p.highlights)
+				};
 			};
-		};
+		const loadSermon = loadDoc('sermon', sermonBms, async (slug, edition) => {
+			const s = await getSermon(slug, edition);
+			return { title: s.title, author: s.author_name, body_html: s.body_html };
+		});
+		const loadArticle = loadDoc('article', articleBms, async (slug, edition) => {
+			const a = await getArticle(slug, edition);
+			return { title: a.h1, author: '', body_html: a.body_html };
+		});
 
 		// Biographies (kind 'bio'; the slug names the author). Per edition, for
 		// the same reason as sermons above.
@@ -377,32 +390,6 @@
 				slug,
 				name: named?.name || slug,
 				bookmarks: bookmarksFor(bioBms, slug, () => named?.name),
-				highlights: parts.flatMap((p) => p.highlights)
-			};
-		};
-
-		// Articles (kind 'article'). Per edition, like sermons; the byline is the
-		// house, so there is no author to name.
-		const loadArticle = async (slug: string): Promise<SermonBlock> => {
-			const editions = editionsFor('article', slug);
-			const wanted = editions.length ? editions : [{ edition: lang, marks: [] as Mark[] }];
-			const parts = await Promise.all(
-				wanted.map(async ({ edition, marks: ms }) => {
-					try {
-						const a = await gate(() => getArticle(slug, edition));
-						return { edition, title: a.h1, highlights: groupMarks(paragraphs(a.body_html), ms, edition) };
-					} catch {
-						/* offline — the saved place still links through, just without its text */
-						return { edition, title: '', highlights: groupMarks([], ms, edition) };
-					}
-				})
-			);
-			const named = parts.find((p) => p.edition === lang && p.title) ?? parts.find((p) => p.title);
-			return {
-				slug,
-				title: named?.title || slug,
-				author: '',
-				bookmarks: bookmarksFor(articleBms, slug, () => named?.title),
 				highlights: parts.flatMap((p) => p.highlights)
 			};
 		};
