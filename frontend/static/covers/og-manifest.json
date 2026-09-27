@@ -174,6 +174,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"am/daughters-of-the-king-2": {
+			"ground": "6c8191588765d0c3ceb161476279826115da80e12d971e41634a28f95e7d0756",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/divine-healing": {
 			"ground": "5c117325c62ea13f955c4db4507bb804fc5f6d06dc4821d6954edf4eda772658",
 			"style": "devotional",
