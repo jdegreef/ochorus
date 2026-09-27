@@ -880,8 +880,10 @@
      visible. Latin can do this because its letters stand alone; these scripts
      cannot.
    - `:first-of-type`, so a chapter opening with a heading still caps its first
-     real paragraph, and no later paragraph gets one. */
-article:not(.paged) .reading > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
+     real paragraph, and no later paragraph gets one.
+   - `.no-initial` opts a text out: an article opens on an answer to a
+     question, not a chapter, so it has no initial. */
+article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
 	float: inline-start;
 	/* The house serif, not --font-display: that follows the site style
 	   (site-fonts.css), and an initial is part of the page, not the chrome. */

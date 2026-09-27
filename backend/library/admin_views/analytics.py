@@ -12,8 +12,20 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
-from ..models import Author, Book, SearchClickLog, Sermon
+from ..models import Article, Author, Book, SearchClickLog, Sermon
 from ..views import _language_entry
+
+
+def _prefer_en(rows, value_of):
+    """``slug`` → value, keeping the English row where a slug has several
+    language editions (else first-seen). The one place the "prefer en" rule
+    lives, shared by every title/label resolver below.
+    """
+    out: dict[str, object] = {}
+    for r in rows:
+        if r["language"] == "en" or r["slug"] not in out:
+            out[r["slug"]] = value_of(r)
+    return out
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
@@ -149,14 +161,17 @@ class AdminEngagementView(APIView):
         labelled with the BOOK's title and author.
         """
         meta: dict[tuple[str, str], tuple[str, str]] = {}
-        for b in Book.objects.values("slug", "language", "title", "author__name"):
-            key = ("book", b["slug"])
-            if b["language"] == "en" or key not in meta:
-                meta[key] = (b["title"], b["author__name"])
-        for sm in Sermon.objects.values("slug", "language", "title", "author__name"):
-            key = ("sermon", sm["slug"])
-            if sm["language"] == "en" or key not in meta:
-                meta[key] = (sm["title"], sm["author__name"])
+
+        def by_author(r):
+            return (r["title"], r["author__name"])
+
+        for kind, rows, value_of in (
+            ("book", Book.objects.values("slug", "language", "title", "author__name"), by_author),
+            ("sermon", Sermon.objects.values("slug", "language", "title", "author__name"), by_author),
+            # An article's byline is the house, so it names no author.
+            ("article", Article.objects.values("slug", "language", "h1"), lambda r: (r["h1"], "")),
+        ):
+            meta.update({(kind, slug): v for slug, v in _prefer_en(rows, value_of).items()})
         # A biography's slug names the AUTHOR, so the person is the title.
         for a in Author.objects.values("slug", "name"):
             meta[("bio", a["slug"])] = (a["name"], "")
@@ -231,6 +246,7 @@ class AdminEngagementView(APIView):
             "book": self._leaderboard(WorkKind.BOOK, FavoriteKind.BOOK),
             "sermon": self._leaderboard(WorkKind.SERMON, FavoriteKind.SERMON),
             "bio": self._leaderboard(WorkKind.BIO, FavoriteKind.AUTHOR),
+            "article": self._leaderboard(WorkKind.ARTICLE, FavoriteKind.ARTICLE),
         }
 
     def _hearts_by_kind(self) -> list[dict]:

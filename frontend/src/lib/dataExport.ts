@@ -13,7 +13,8 @@ import {
 	type WorkKind
 } from './reading-schema';
 import { cleanStore, visibleEntries, type JournalEntry } from './journal';
-import { listBooks, listSermons, listAuthors, listPlans } from './library-public';
+import { listPlans } from './library-public';
+import { loadWorkTitles, unslug, type WorkMeta, type WorkTitles } from './workTitles';
 
 /**
  * "Export my data" — turns the reader's device-local reading record (positions,
@@ -79,32 +80,15 @@ export interface ExportBundle {
 	journal: ExportJournalEntry[];
 }
 
-type TitleMaps = {
-	book: Map<string, { title: string; author: string }>;
-	sermon: Map<string, { title: string; author: string }>;
-	bio: Map<string, { title: string; author: string }>;
-	plan: Map<string, { title: string; author: string }>;
-};
-
-/** Turn a slug into a passable label when the catalog lookup misses. */
-function unslug(slug: string): string {
-	return slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-}
+/** The work catalogue plus plans, which can be favorited but not read. */
+type TitleMaps = WorkTitles & { plan: Map<string, WorkMeta> };
 
 async function loadTitles(language: string): Promise<TitleMaps> {
-	const [books, sermons, authors, plans] = await Promise.all([
-		listBooks(language).catch(() => []),
-		listSermons(language).catch(() => []),
-		listAuthors(language).catch(() => []),
+	const [works, plans] = await Promise.all([
+		loadWorkTitles(language),
 		listPlans(language).catch(() => [])
 	]);
-	const maps: TitleMaps = { book: new Map(), sermon: new Map(), bio: new Map(), plan: new Map() };
-	for (const b of books) maps.book.set(b.slug, { title: b.title, author: b.author?.name ?? '' });
-	for (const s of sermons) maps.sermon.set(s.slug, { title: s.title, author: s.author?.name ?? '' });
-	// A "bio" work is keyed by the author's slug; its title is the author's name.
-	for (const a of authors) maps.bio.set(a.slug, { title: a.name, author: a.name });
-	for (const p of plans) maps.plan.set(p.slug, { title: p.title, author: '' });
-	return maps;
+	return { ...works, plan: new Map(plans.map((p) => [p.slug, { title: p.title, author: '' }])) };
 }
 
 /**
@@ -179,9 +163,13 @@ export async function collectExport(
 		}
 	}
 
-	// Bookmarks (books only) — these carry their own snippet + chapter title.
-	for (const [slug, list] of Object.entries(bookmarksStore)) {
-		const w = workFor('book', slug);
+	// Bookmarks — these carry their own snippet + chapter title. Keyed like
+	// progress (`slug`, `sermon:slug`, `article:slug`…), so parsed the same way:
+	// read as a bare book slug, every non-book bookmark exported as a phantom
+	// book named after its storage key.
+	for (const [key, list] of Object.entries(bookmarksStore)) {
+		const { kind, slug } = parseWorkSlugKey(key);
+		const w = workFor(kind, slug);
 		for (const b of list ?? []) w.bookmarks.push({ chapter_title: b.title, snippet: b.snippet });
 	}
 

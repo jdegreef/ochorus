@@ -8,28 +8,17 @@
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
 	import { shareCard, shareImage } from '$lib/coverArt';
-	import { splitBeforeSection } from '$lib/articleBody';
 	import { editionHref } from '$lib/editionHref';
 	import { scrollSpy } from '$lib/scrollSpy.svelte';
 	import { listen } from '$lib/listen.svelte';
-	import { spokenText } from '$lib/listenText';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
-	import { scripture } from '$lib/scripture.svelte';
-	import {
-		contentLang,
-		HEADER_OFFSET,
-		prefersReducedMotion,
-		readingTime,
-		seenFraction
-	} from '$lib/reading';
-	import { shouldFollow } from '$lib/listenFollow';
+	import { contentLang, readingTime } from '$lib/reading';
+	import Reader from '$lib/components/Reader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
-	import ListenBar from '$lib/components/ListenBar.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
@@ -47,7 +36,7 @@
 	const inArticleLang = (path: string) => editionHref(path, article.language);
 
 	// The classic this article is written to send you to — the hero cover, the
-	// mid-article "read it in full" card, and the link preview's image.
+	// "read it in full" card, and the link preview's image.
 	const lead = $derived(article.lead_book);
 
 	// --- Contents --------------------------------------------------------------
@@ -59,119 +48,20 @@
 	const showToc = $derived((article.toc?.length ?? 0) >= 3);
 	const spy = scrollSpy(() => (showToc ? article.toc.map((h) => h.id) : []));
 
-	// --- Body ------------------------------------------------------------------
-	// A "read it in full" card between the first and second sections, where a
-	// reader who is still going has shown they care — most never reach the end,
-	// so the funnel can't live only there. Needs a book and two sections.
-	const parts = $derived(lead ? splitBeforeSection(article.body_html, 2) : null);
-
-	let articleEl = $state<HTMLElement>();
-	/** The body's top-level blocks across both halves, in reading order. */
-	const blocks = (): Element[] => [...(articleEl?.querySelectorAll('.article-body > *') ?? [])];
-
-	// Tap a server-wrapped Bible reference in the body → open the scripture
-	// popover, the same treatment the chapter/sermon readers give. The body's
-	// refs are wrapped as <a class="scripture-ref" data-ref="…"> by the API
-	// (see get_body_html); this is the lightweight equivalent of the reader's
-	// onScriptureClick, since an article page is a plain document, not the Reader.
-	function onBodyClick(e: MouseEvent) {
-		const a = (e.target as HTMLElement).closest?.('a.scripture-ref') as HTMLElement | null;
-		if (!a?.dataset.ref) return;
-		e.preventDefault();
-		const r = a.getBoundingClientRect();
-		scripture.show(a.dataset.ref, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
-	}
-
-	// --- Listen ----------------------------------------------------------------
-	// The same device-voice engine and follow rule as the reader, one utterance
-	// per block, starting from the block you are on. The engine is shared
-	// site-wide, so this page only follows (highlights, scrolls, stops) a
-	// reading it started itself.
-	let mine = $state(false);
-	const listening = $derived(mine && listen.status !== 'idle');
-	function toggleListen() {
-		if (listen.status !== 'idle') {
-			listen.stop();
-			return;
-		}
-		const all = blocks();
-		const from = all.findIndex((el) => el.getBoundingClientRect().bottom > HEADER_OFFSET);
-		mine = true;
-		listen.start(
-			all.map((el) => spokenText(el)),
-			Math.max(0, from),
-			{ lang: article.language, media: { title: article.h1, artist: 'Ochorus' } }
-		);
-	}
-	// Keep the spoken block in view — unless the reader scrolled by hand just
-	// now (shouldFollow: the reader's own rule, so the two never fight a reader
-	// differently).
-	let lastUserScroll = -Infinity;
-	let ignoreScrollUntil = 0;
-	$effect(() => {
-		const onScroll = () => {
-			if (Date.now() >= ignoreScrollUntil) lastUserScroll = Date.now();
-		};
-		window.addEventListener('scroll', onScroll, { passive: true });
-		return () => window.removeEventListener('scroll', onScroll);
-	});
-	$effect(() => {
-		if (!listening) return;
-		const el = blocks()[listen.current];
-		if (!el) return;
-		el.classList.add('tts-current');
-		const follow = shouldFollow({
-			top: el.getBoundingClientRect().top,
-			viewportHeight: window.innerHeight,
-			headerOffset: HEADER_OFFSET,
-			msSinceUserScroll: Date.now() - lastUserScroll,
-			yieldMs: 3000
-		});
-		if (follow) {
-			ignoreScrollUntil = Date.now() + 1000;
-			el.scrollIntoView({ block: 'center', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
-		}
-		return () => el.classList.remove('tts-current');
-	});
-	// Stop on leaving — including for another article: the route reuses this
-	// component, so its destroy alone would leave the old one speaking.
-	$effect(() => {
-		void article.slug;
-		return () => {
-			if (mine) listen.stop();
-			mine = false;
-		};
-	});
-
-	// --- Reading progress ------------------------------------------------------
-	// The reader's formula (seenFraction), read at most once a frame.
-	let progress = $state(0);
-	$effect(() => {
-		const el = articleEl;
-		if (!el) return;
-		// A text-size or measure change moves the prose without a scroll.
-		void readerPrefs.style;
-		let frame = 0;
-		// The prose only (both halves around the teaser), not the header or the
-		// funnel below it — the span the sermon's bar measures.
-		const update = () => {
-			frame = 0;
-			const bodies = el.querySelectorAll('.article-body');
-			if (!bodies.length) return;
-			const top = bodies[0].getBoundingClientRect().top;
-			const bottom = bodies[bodies.length - 1].getBoundingClientRect().bottom;
-			progress = seenFraction({ top, height: bottom - top }, window.innerHeight);
-		};
-		const schedule = () => (frame ||= requestAnimationFrame(update));
-		update();
-		window.addEventListener('scroll', schedule, { passive: true });
-		window.addEventListener('resize', schedule);
-		return () => {
-			cancelAnimationFrame(frame);
-			window.removeEventListener('scroll', schedule);
-			window.removeEventListener('resize', schedule);
-		};
-	});
+	// --- Body: the shared Reader ------------------------------------------------
+	// The prose renders through the same <Reader> as the sermon and the
+	// biography (kind "article"), so an article gets everything the reader has:
+	// highlights and margin notes (synced, and in the Notebook),
+	// Listen with follow-along, the verse popover, define, copy/share a quote,
+	// and a resume point. No Bookmark button: the sermon's lives in a sticky
+	// bar, but this header scrolls away, so it could only ever mark the top of
+	// the article. `frac` drives the progress hairline; the reader's own
+	// reaching-the-end finishes the article onto the reading history. The
+	// header offset stays the reader default: this route keeps the sticky app
+	// nav, so a resumed or linked paragraph has to park below it, not under it.
+	let reader = $state<Reader | undefined>();
+	let frac = $state(0);
+	const listening = $derived(listen.status !== 'idle');
 
 	// --- SEO -------------------------------------------------------------------
 	// Self-referential canonical + hreflang — an English canonical on a future
@@ -183,6 +73,9 @@
 	const seo = $derived(editionSeo(path, article.available_languages, fallback));
 	const hreflang = $derived(seo.hreflang);
 	const canonical = $derived(seo.canonical);
+	// Attribution for a quote copied or shared from the selection bar: the
+	// house byline, the article, and this edition's canonical page.
+	const cite = $derived({ author: 'Ochorus', book: article.h1, chapter: '', url: canonical });
 
 	/** The article's other editions, for "Also in …" — only when it has any. */
 	const otherEditions = $derived(
@@ -281,7 +174,7 @@
 
 <!-- How far through the article you are: the shared scroll hairline the
      sermon page and the reader's focus mode use (app.css .read-progress). -->
-<div class="read-progress" style="transform: scaleX({progress})" aria-hidden="true"></div>
+<div class="read-progress" style="transform: scaleX({frac})" aria-hidden="true"></div>
 
 {#snippet contents(sticky: boolean)}
 	<nav class="toc" class:toc-side={sticky} aria-labelledby={sticky ? 'toc-side-heading' : 'toc-heading'}>
@@ -316,7 +209,7 @@
 			<div class="toc-rail">{@render contents(true)}</div>
 		{/if}
 
-		<article bind:this={articleEl} class="article-col">
+		<article class="article-col">
 			<header class="mb-6 flex items-start gap-6">
 				<div class="min-w-0 flex-1">
 					<!-- Kind eyebrow (page-design A8): KIND · BYLINE · TIME · UPDATED.
@@ -341,7 +234,7 @@
 								class="btn btn-sm"
 								class:btn-ghost={!listening}
 								class:btn-primary={listening}
-								onclick={toggleListen}
+								onclick={() => (listening ? listen.stop() : reader?.startListening())}
 								aria-pressed={listening}
 							>
 								<Icon name="headphones" size={16} />
@@ -388,32 +281,42 @@
 
 			<!-- Server-sanitized HTML (backend rich/bio profile — pull-quotes,
 			     internal links, server-wrapped scripture refs, and the <h2 id>
-			     anchors the TOC links to); never user input. Split in two around
-			     the "read it in full" card when there is one — cut at a section's
-			     opening tag, so both halves stay whole (see splitBeforeSection).
-			     The click delegate opens the scripture popover on a tapped
-			     reference (same as the reader; see onBodyClick). frontend/CLAUDE.md. -->
-			{#each parts ?? [article.body_html] as html, i (i)}
-				<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				<div class="article-body" lang={article.language} onclick={onBodyClick}>{@html html}</div>
+			     anchors the TOC links to); never user input — rendered by the
+			     shared Reader, which owns the scripture popover, selection bar,
+			     marks, Listen and resume for it (frontend/CLAUDE.md). -->
+			<Reader
+				bind:this={reader}
+				kind="article"
+				slug={article.slug}
+				language={article.language}
+				html={article.body_html}
+				{cite}
+				listenTitle={article.h1}
+				listenArtist="Ochorus"
+				class="article-body no-initial"
+				bind:frac
+				finishOnEnd
+			/>
 
-				{#if i === 0 && parts && lead}
-					<aside class="book-teaser" aria-label={t('articles.readInFull')}>
-						<a href={inArticleLang(`/books/${lead.slug}`)} class="w-14 shrink-0" tabindex="-1" aria-hidden="true">
-							<BookCover book={lead} />
-						</a>
-						<div class="min-w-0 flex-1">
-							<p class="eyebrow text-accent">{t('articles.readInFull')}</p>
-							<a href={inArticleLang(`/books/${lead.slug}`)} class="teaser-title">{lead.title}</a>
-							<p class="text-small text-muted">{lead.author.name}</p>
-						</div>
-						<a href={inArticleLang(`/books/${lead.slug}/1`)} class="btn btn-primary btn-sm shrink-0">
-							{t('book.beginReading')}
-						</a>
-					</aside>
-				{/if}
-			{/each}
+			<!-- "Read it in full": the classic the article was written to send you
+			     to, at the moment you have finished reading about it. (It sat
+			     mid-article once; inside the Reader's prose any extra block would
+			     shift the paragraph index every highlight keys on.) -->
+			{#if lead}
+				<aside class="book-teaser" aria-label={t('articles.readInFull')}>
+					<a href={inArticleLang(`/books/${lead.slug}`)} class="w-14 shrink-0" tabindex="-1" aria-hidden="true">
+						<BookCover book={lead} />
+					</a>
+					<div class="min-w-0 flex-1">
+						<p class="eyebrow text-accent">{t('articles.readInFull')}</p>
+						<a href={inArticleLang(`/books/${lead.slug}`)} class="teaser-title">{lead.title}</a>
+						<p class="text-small text-muted">{lead.author.name}</p>
+					</div>
+					<a href={inArticleLang(`/books/${lead.slug}/1`)} class="btn btn-primary btn-sm shrink-0">
+						{t('book.beginReading')}
+					</a>
+				</aside>
+			{/if}
 
 			<!-- The passages the article cites — the same chip row, and the same
 			     links, as the sermon page's scripture index: its /scripture page
@@ -516,10 +419,6 @@
 	</div>
 </div>
 
-<!-- The tapped-reference verse popover (self-contained; reads the scripture store). -->
-<ScripturePopover />
-<!-- Listen's transport bar; shows itself only while something is being read. -->
-<ListenBar />
 
 <style>
 	/* The prose column at the reader's measure; on a wide screen, a contents
@@ -569,74 +468,46 @@
 		text-decoration: none;
 	}
 
-	/* Prose. The body is authored HTML (p / h2 / blockquote / cite / a). It
-	   consumes the reader's custom properties (set by readerPrefs.style on the
-	   layout) but keeps its own recipe rather than wearing `.reading`: that
-	   class sizes from 1.18rem and adds a drop cap, both wrong for an SEO
-	   article. Folding this into one shared prose class is page-design A10. */
-	.article-body {
-		font-family: var(--reading-font, var(--font-display));
-		font-size: calc(var(--fs-body) * var(--reading-scale, 1));
-		line-height: var(--reading-leading, 1.7);
-		text-align: var(--reading-align, start);
-		hyphens: var(--reading-hyphens, manual);
-		color: var(--color-text);
-	}
-	.article-body :global(p) {
-		margin: 0 0 1.05rem;
-	}
-	.article-body :global(h2) {
-		font-family: var(--font-display);
-		font-weight: 600;
-		font-size: var(--fs-h2);
-		line-height: 1.25;
-		margin: 2rem 0 0.75rem;
-		color: var(--color-text);
-		/* Keep a TOC jump from tucking the heading under the sticky top nav. */
+	/* Prose. The body renders as the Reader's `.reading.article-body`, so size,
+	   leading, typeface, measure and colour come from the reader's variables and
+	   the text-settings control moves them — like the sermon and the biography
+	   (this closes page-design A10 for articles). Only what an article carries
+	   that a chapter doesn't is set here, on the global class (the element
+	   belongs to <Reader>, which this component's scoped styles can't reach). */
+	:global(.article-body h2) {
+		/* Keep a contents jump from tucking the heading under the sticky nav. */
 		scroll-margin-top: 5rem;
 	}
-	.article-body :global(h3) {
-		font-weight: 600;
-		font-size: var(--fs-h3);
-		margin: 1.5rem 0 0.6rem;
-	}
-	.article-body :global(ul),
-	.article-body :global(ol) {
-		margin: 0 0 1.05rem;
+	:global(.article-body ul),
+	:global(.article-body ol) {
+		margin: 0 0 1.15em;
 		padding-inline-start: 1.4rem;
 	}
-	.article-body :global(li) {
-		margin: 0 0 0.4rem;
+	:global(.article-body ul) {
+		list-style: disc;
 	}
-	.article-body :global(a) {
+	:global(.article-body ol) {
+		list-style: decimal;
+	}
+	:global(.article-body li) {
+		margin: 0 0 0.4em;
+	}
+	:global(.article-body a:not(.scripture-ref)) {
 		color: var(--color-accent);
 		text-underline-offset: 2px;
 	}
-	/* Server-wrapped Bible references: a tappable dotted underline in the text
-	   colour, not a loud accent link — matches the reader's .scripture-ref. */
-	.article-body :global(a.scripture-ref) {
-		color: inherit;
-		text-decoration: underline dotted var(--color-accent);
-		text-underline-offset: 0.18em;
-		cursor: pointer;
-	}
-	.article-body :global(a.scripture-ref:hover) {
-		color: var(--color-accent);
-		text-decoration-style: solid;
-	}
 	/* The pull-quote: the voice of the classic the article leans on, set as a
-	   display quote on the gold rule the style guide gives quotations (K1). */
-	.article-body :global(blockquote) {
-		margin: 1.75rem 0;
-		padding-inline-start: 1.25rem;
+	   display quote on the gold rule the style guide gives quotations (K1) —
+	   in `em`, so it scales with the reader's text size. */
+	:global(.article-body blockquote) {
+		margin: 1.6em 0;
+		padding-inline-start: 1.1em;
 		border-inline-start: 3px solid var(--color-gold);
-		font-family: var(--reading-font, var(--font-display));
-		font-size: calc(var(--fs-h3) * var(--reading-scale, 1));
-		line-height: 1.45;
-		font-style: italic;
+		font-size: 1.12em;
+		line-height: 1.5;
 		color: var(--color-text);
 	}
-	.article-body :global(blockquote cite) {
+	:global(.article-body blockquote cite) {
 		display: block;
 		margin-top: 0.5rem;
 		font-family: var(--font-sans);
@@ -644,15 +515,8 @@
 		font-size: var(--fs-small);
 		color: var(--color-muted);
 	}
-	/* The block being read aloud (Listen) — the reader's highlight. */
-	.article-body :global(.tts-current) {
-		background: color-mix(in srgb, var(--color-accent) 10%, transparent);
-		border-radius: var(--radius-sm);
-		box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-accent) 10%, transparent);
-		transition: background var(--duration-base) ease;
-	}
 
-	/* "Read it in full": the lead book, mid-article. */
+	/* "Read it in full": the lead book, after the article. */
 	.book-teaser {
 		display: flex;
 		align-items: center;

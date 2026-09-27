@@ -47,7 +47,11 @@
 		if (!auth.enabled || !auth.initialized || auth.user || decided || deciding) return;
 		deciding = true;
 		const progress = allProgress();
-		const hasProgress = progress.some((p) => p.finished_at == null);
+		// An article doesn't count: articles are how search visitors arrive, and
+		// opening one records a resume point — so counting it would move every
+		// first-time visitor out of the first-visit arms into 'progress' (and a
+		// "save your place" pitch with no book to name).
+		const hasProgress = progress.some((p) => p.finished_at == null && p.kind !== 'article');
 		variant = chooseVariant(hasProgress);
 		// The caption names the reader's book, and it is drawn ONCE: from the
 		// cached summaries of their in-progress books when those have it, else

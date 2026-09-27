@@ -15,11 +15,11 @@ const resume = vi.hoisted(() => ({
 	unfinishedBookSlugs: vi.fn()
 }));
 vi.mock('$lib/resumeBooks', () => resume);
-vi.mock('$lib/progress', () => ({
-	allProgress: () => [
-		{ slug: 'all-of-grace', kind: 'book', order: 3, paragraph_index: 0, language: 'en', at: 1 }
-	]
-}));
+const BOOK_PROGRESS = [
+	{ slug: 'all-of-grace', kind: 'book', order: 3, paragraph_index: 0, language: 'en', at: 1 }
+];
+const progressRows = vi.hoisted(() => ({ rows: [] as unknown[] }));
+vi.mock('$lib/progress', () => ({ allProgress: () => progressRows.rows }));
 
 const { default: SignupBand } = await import('./SignupBand.svelte');
 
@@ -39,6 +39,7 @@ const render = () => {
 
 describe('SignupBand progress caption', () => {
 	beforeEach(() => {
+		progressRows.rows = BOOK_PROGRESS;
 		target = document.body.appendChild(document.createElement('div'));
 		resume.unfinishedBookSlugs.mockReturnValue(['all-of-grace']);
 		resume.libraryBooks.mockReset();
@@ -75,5 +76,17 @@ describe('SignupBand progress caption', () => {
 		flushSync();
 		expect(target.querySelector('section')).not.toBeNull();
 		expect(target.textContent).not.toContain('All of Grace');
+	});
+
+	it('an article read is not "reading": a search visitor still gets a first-visit arm', async () => {
+		localStorage.clear();
+		progressRows.rows = [
+			{ slug: 'how-to-pray', kind: 'article', order: 1, paragraph_index: 0, language: 'en', at: 1 }
+		];
+		resume.unfinishedBookSlugs.mockReturnValue([]);
+		resume.cachedResumeBooks.mockReturnValue([]);
+		render();
+		const { shownVariant } = await import('$lib/signupBand');
+		expect(shownVariant()).not.toBe('progress');
 	});
 });

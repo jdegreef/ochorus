@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import Icon from '$lib/components/Icon.svelte';
 	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library-public';
@@ -31,7 +32,6 @@
 	import { readerUi } from '$lib/readerUi.svelte';
 	import FocusExit from '$lib/components/FocusExit.svelte';
 	import { BIO_CHAPTER_ORDER } from '$lib/reading-schema';
-	import { bookmarks } from '$lib/bookmarks.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import ArticleLinkCard from '$lib/components/ArticleLinkCard.svelte';
@@ -67,33 +67,17 @@
 
 	onMount(() => readerPrefs.init());
 
-	// --- Bookmarks --------------------------------------------------------------
-	// A biography is a single document like a sermon, so `order` is
-	// BIO_CHAPTER_ORDER and the paragraph index locates the spot. `headerOffset`
-	// is 0 on this page — there is no sticky bar over the prose — and Reader's
-	// `topVisibleIndex` honours that, so the answer here matches what the resume
-	// point records rather than being a second, differently-calibrated guess.
-	let topIndex = $state(0);
-	$effect(() => {
-		void frac;
-		void author.slug;
-		topIndex = reader?.topVisibleIndex() ?? 0;
+	// --- Bookmarks ------------------------------------------------------------
+	// The paragraph at the top of the screen — the single-document Reader's
+	// bookmark, shared with the sermon, biography and article pages.
+	const bookmark = readerBookmark({
+		kind: 'bio',
+		slug: () => author.slug,
+		title: () => author.name,
+		reader: () => reader,
+		body: () => bioEl,
+		frac: () => frac
 	});
-	const currentBookmarked = $derived(bookmarks.has(BIO_CHAPTER_ORDER, topIndex));
-
-	$effect(() => {
-		bookmarks.load('bio', author.slug);
-	});
-
-	/** Bookmark (or un-bookmark) the paragraph at the top of the viewport. */
-	function toggleBookmark() {
-		if (!bioEl) return;
-		const p = reader?.topVisibleIndex() ?? 0;
-		const el = bioEl.children[p] as HTMLElement | undefined;
-		const snippet = (el?.innerText ?? '').trim().replace(/\s+/g, ' ').slice(0, 90);
-		bookmarks.toggle(BIO_CHAPTER_ORDER, p, snippet, author.name);
-		topIndex = p;
-	}
 
 	// The bio as plain text, computed once: the word count below and the FAQ's
 	// "Who was …" answer both need it, and it is a few-KB string stripped at
@@ -806,11 +790,11 @@
 {#if author.bio_html && frac > 0.01 && frac < 0.99}
 	<button
 		class="bio-bookmark"
-		class:is-set={currentBookmarked}
-		onclick={toggleBookmark}
+		class:is-set={bookmark.current}
+		onclick={bookmark.toggle}
 		aria-label={t('reader.bookmark')}
 		title={t('reader.bookmark')}
-		aria-pressed={currentBookmarked}><Icon name="bookmark" size={18} /></button
+		aria-pressed={bookmark.current}><Icon name="bookmark" size={18} /></button
 	>
 {/if}
 

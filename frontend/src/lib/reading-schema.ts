@@ -109,15 +109,17 @@ export const SIGN_OUT_DATA_KEYS = READING_DATA_KEYS;
 
 // --- Work kind ----------------------------------------------------------------
 /**
- * What a slug names: a chaptered book, a sermon, or an author biography (the
- * latter two are single documents whose one "chapter" is order 1; a bio's slug
- * names the author). Books keep their historical bare storage keys
- * (`slug` / `slug:order`) so nobody's existing cache is invalidated; sermons
- * and bios are namespaced with a `sermon:` / `bio:` prefix — slugs never
- * contain ':', so the prefixes are unambiguous. The server stores the same
+ * What a slug names: a chaptered book, a sermon, an author biography, or an
+ * article (the last three are single documents whose one "chapter" is order 1;
+ * a bio's slug names the author). Books keep their historical bare storage
+ * keys (`slug` / `slug:order`) so nobody's existing cache is invalidated;
+ * the others are namespaced with a `sermon:` / `bio:` / `article:` prefix —
+ * slugs never contain ':', so the prefixes are unambiguous. The server stores the same
  * distinction as a `kind` column; `readingSync` maps between prefix and column.
  */
-export type WorkKind = 'book' | 'sermon' | 'bio';
+export type WorkKind = 'book' | 'sermon' | 'bio' | 'article';
+/** Every kind, for guards over data read back from storage or the server. */
+export const WORK_KINDS: readonly WorkKind[] = ['book', 'sermon', 'bio', 'article'];
 
 export const SERMON_CHAPTER_ORDER = 1;
 /** A biography is a single document too — its one "chapter" is order 1. */
@@ -125,14 +127,24 @@ export const BIO_CHAPTER_ORDER = 1;
 
 const SERMON_PREFIX = 'sermon:';
 const BIO_PREFIX = 'bio:';
+const ARTICLE_PREFIX = 'article:';
+
+/** Storage prefix per namespaced kind — books stay bare (cache compatibility).
+ *  One table, so a new kind can't fall through to another kind's prefix. */
+const PREFIX: Record<Exclude<WorkKind, 'book'>, string> = {
+	sermon: SERMON_PREFIX,
+	bio: BIO_PREFIX,
+	article: ARTICLE_PREFIX
+};
 
 /** Progress-map key for a work (books stay bare — cache compatibility). */
 export const workSlugKey = (kind: WorkKind, slug: string) =>
-	kind === 'book' ? slug : (kind === 'sermon' ? SERMON_PREFIX : BIO_PREFIX) + slug;
+	kind === 'book' ? slug : PREFIX[kind] + slug;
 
 export function parseWorkSlugKey(key: string): { kind: WorkKind; slug: string } {
-	if (key.startsWith(SERMON_PREFIX)) return { kind: 'sermon', slug: key.slice(SERMON_PREFIX.length) };
-	if (key.startsWith(BIO_PREFIX)) return { kind: 'bio', slug: key.slice(BIO_PREFIX.length) };
+	for (const [kind, prefix] of Object.entries(PREFIX) as [WorkKind, string][]) {
+		if (key.startsWith(prefix)) return { kind, slug: key.slice(prefix.length) };
+	}
 	return { kind: 'book', slug: key };
 }
 
