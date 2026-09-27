@@ -489,10 +489,15 @@ class SeedFieldCoverageTests(SimpleTestCase):
     the models, so a new model field fails CI until the seed learns it.
     """
 
+    # Owned by refresh_translation_digests, never the fixture: a seed that wrote
+    # them would reset every translation's baseline on each deploy and nothing
+    # would ever read as stale (library/translation_staleness).
+    DIGESTS = frozenset({"content_digest", "english_digest"})
+
     def _content_fields(self, model, exclude):
         return {
             f.name for f in model._meta.concrete_fields
-            if f.name not in exclude and not f.auto_created
+            if f.name not in exclude and f.name not in self.DIGESTS and not f.auto_created
         }
 
     def test_book_fields_cover_model(self):
