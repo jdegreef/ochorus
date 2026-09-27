@@ -72,7 +72,7 @@
 
 	// --- Bookmarks ------------------------------------------------------------
 	// The paragraph at the top of the screen — the single-document Reader's
-	// bookmark, shared with the biography page.
+	// bookmark, shared with the biography and article pages.
 	const bookmark = readerBookmark({
 		kind: 'sermon',
 		slug: () => sermon.slug,

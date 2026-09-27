@@ -121,3 +121,18 @@ describe('a Reader under the sticky app nav clears it', () => {
 		expect(read(LAYOUT)).toMatch(/readerUi\.navHeight = navH/);
 	});
 });
+
+describe('a floating reader control clears the bottom bars', () => {
+	it('the floating bookmark sits above the phone tab bar and the Listen bar', () => {
+		// It sat at `bottom: 1rem` under the z-40 tab bar, which took the tap.
+		const src = read('lib/components/FloatingBookmark.svelte');
+		expect(src).toMatch(/var\(--tabbar-h, 0px\)/);
+		expect(src).toMatch(/var\(--listenbar-h, 0px\)/);
+	});
+
+	it('every page whose header scrolls away bookmarks from the floating control', () => {
+		for (const file of ['lib/components/ArticleDetail.svelte', 'routes/authors/[slug]/+page.svelte']) {
+			expect(read(file), file).toMatch(/<FloatingBookmark\b/);
+		}
+	});
+});
