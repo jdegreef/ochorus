@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Article, ArticleRelated } from '$lib/library-public';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -16,7 +15,14 @@
 	import { spokenText } from '$lib/listenText';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
 	import { scripture } from '$lib/scripture.svelte';
-	import { contentLang, readingTime, seenFraction } from '$lib/reading';
+	import {
+		contentLang,
+		HEADER_OFFSET,
+		prefersReducedMotion,
+		readingTime,
+		seenFraction
+	} from '$lib/reading';
+	import { shouldFollow } from '$lib/listenFollow';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
@@ -77,9 +83,10 @@
 	}
 
 	// --- Listen ----------------------------------------------------------------
-	// The same device-voice engine as the reader, one utterance per block. The
-	// engine is shared site-wide, so this page only follows (highlights, stops
-	// on leaving) a reading it started itself.
+	// The same device-voice engine and follow rule as the reader, one utterance
+	// per block, starting from the block you are on. The engine is shared
+	// site-wide, so this page only follows (highlights, scrolls, stops) a
+	// reading it started itself.
 	let mine = $state(false);
 	const listening = $derived(mine && listen.status !== 'idle');
 	function toggleListen() {
@@ -87,21 +94,53 @@
 			listen.stop();
 			return;
 		}
+		const all = blocks();
+		const from = all.findIndex((el) => el.getBoundingClientRect().bottom > HEADER_OFFSET);
 		mine = true;
 		listen.start(
-			blocks().map((el) => spokenText(el)),
-			0,
+			all.map((el) => spokenText(el)),
+			Math.max(0, from),
 			{ lang: article.language, media: { title: article.h1, artist: 'Ochorus' } }
 		);
 	}
+	// Keep the spoken block in view — unless the reader scrolled by hand just
+	// now (shouldFollow: the reader's own rule, so the two never fight a reader
+	// differently).
+	let lastUserScroll = -Infinity;
+	let ignoreScrollUntil = 0;
+	$effect(() => {
+		const onScroll = () => {
+			if (Date.now() >= ignoreScrollUntil) lastUserScroll = Date.now();
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => window.removeEventListener('scroll', onScroll);
+	});
 	$effect(() => {
 		if (!listening) return;
 		const el = blocks()[listen.current];
-		el?.classList.add('tts-current');
-		return () => el?.classList.remove('tts-current');
+		if (!el) return;
+		el.classList.add('tts-current');
+		const follow = shouldFollow({
+			top: el.getBoundingClientRect().top,
+			viewportHeight: window.innerHeight,
+			headerOffset: HEADER_OFFSET,
+			msSinceUserScroll: Date.now() - lastUserScroll,
+			yieldMs: 3000
+		});
+		if (follow) {
+			ignoreScrollUntil = Date.now() + 1000;
+			el.scrollIntoView({ block: 'center', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+		}
+		return () => el.classList.remove('tts-current');
 	});
-	onDestroy(() => {
-		if (mine) listen.stop();
+	// Stop on leaving — including for another article: the route reuses this
+	// component, so its destroy alone would leave the old one speaking.
+	$effect(() => {
+		void article.slug;
+		return () => {
+			if (mine) listen.stop();
+			mine = false;
+		};
 	});
 
 	// --- Reading progress ------------------------------------------------------
@@ -110,10 +149,18 @@
 	$effect(() => {
 		const el = articleEl;
 		if (!el) return;
+		// A text-size or measure change moves the prose without a scroll.
+		void readerPrefs.style;
 		let frame = 0;
+		// The prose only (both halves around the teaser), not the header or the
+		// funnel below it — the span the sermon's bar measures.
 		const update = () => {
 			frame = 0;
-			progress = seenFraction(el.getBoundingClientRect(), window.innerHeight);
+			const bodies = el.querySelectorAll('.article-body');
+			if (!bodies.length) return;
+			const top = bodies[0].getBoundingClientRect().top;
+			const bottom = bodies[bodies.length - 1].getBoundingClientRect().bottom;
+			progress = seenFraction({ top, height: bottom - top }, window.innerHeight);
 		};
 		const schedule = () => (frame ||= requestAnimationFrame(update));
 		update();
@@ -139,7 +186,8 @@
 
 	/** The article's other editions, for "Also in …" — only when it has any. */
 	const otherEditions = $derived(
-		(article.available_languages?.length ?? 0) > 1
+		// On a fallback page the notice above already lists the editions.
+		!fallback && (article.available_languages?.length ?? 0) > 1
 			? hreflang.alternates.filter((a) => a.loc !== article.language)
 			: []
 	);
@@ -163,8 +211,12 @@
 	const cover = $derived(lead ? shareImage(lead) : null);
 
 	const updated = $derived.by(() => {
+		// Only a real revision: `updated_at` is stamped on creation too, so an
+		// article never touched since would otherwise claim an update.
 		const d = article.updated_at ? new Date(article.updated_at) : null;
+		const made = article.created_at ? new Date(article.created_at).getTime() : NaN;
 		if (!d || Number.isNaN(d.getTime())) return '';
+		if (!Number.isNaN(made) && d.getTime() - made < 24 * 60 * 60 * 1000) return '';
 		return new Intl.DateTimeFormat(getLang(), { day: 'numeric', month: 'short', year: 'numeric' }).format(d);
 	});
 
@@ -431,9 +483,7 @@
 			{#if more.length}
 				<section class="mt-10" aria-labelledby="more-heading">
 					<h2 id="more-heading" class="section-label">
-						{article.topics?.[0]
-							? t('articles.moreOn').replace('%topic%', article.topics[0].title)
-							: t('home.allArticles')}
+						{t('articles.moreLikeThis')}
 					</h2>
 					<div class="flex flex-col gap-3">
 						{#each more as a (a.slug)}
@@ -580,8 +630,8 @@
 		margin: 1.75rem 0;
 		padding-inline-start: 1.25rem;
 		border-inline-start: 3px solid var(--color-gold);
-		font-family: var(--font-display);
-		font-size: var(--fs-h3);
+		font-family: var(--reading-font, var(--font-display));
+		font-size: calc(var(--fs-h3) * var(--reading-scale, 1));
 		line-height: 1.45;
 		font-style: italic;
 		color: var(--color-text);
@@ -733,7 +783,8 @@
 	.toc-side a {
 		display: block;
 		margin-inline-start: -2px;
-		padding: 0.35rem 0 0.35rem 0.9rem;
+		padding-block: 0.35rem;
+		padding-inline: 0.9rem 0;
 		border-inline-start: 2px solid transparent;
 		color: var(--color-muted);
 	}
