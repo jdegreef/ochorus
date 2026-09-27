@@ -1,0 +1,167 @@
+{
+ "kind": "sermon",
+ "slug": "the-lord-our-righteousness",
+ "language": "sw",
+ "job_issue": 4215,
+ "references": [
+  {
+   "reference": "Jeremiah 23:6b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Romans 10:3",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Genesis 15:6",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Jeremiah 23:5",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Jeremiah 17:5",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 9:5b",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Genesis 2:17b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Philippians 2:6-7",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 5:21b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Jeremiah 33:16b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 5:17",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Mark 10:17",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Mark 10:18",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Mark 10:19",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Mark 10:20b",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Galatians 3:10b",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Mark 10:21a",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Luke 19:42a",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 25:34",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 25:35-36",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 25:37-39",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Romans 8:37b",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Acts 17:18",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "1 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "John 20:28b",
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "the-right-kind-of-faith.sw.json"
+  },
+  {
+   "reference": "Isaiah 64:6",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Song of Solomon 2:16a",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 3:22-23",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Matthew 25:41",
+   "status": "self_rendered",
+   "block_index": 50
+  }
+ ]
+}

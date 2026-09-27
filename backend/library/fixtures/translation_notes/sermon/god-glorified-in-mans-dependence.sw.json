@@ -1,0 +1,237 @@
+{
+ "kind": "sermon",
+ "slug": "god-glorified-in-mans-dependence",
+ "language": "sw",
+ "job_issue": 4212,
+ "references": [
+  {
+   "reference": "1 Corinthians 1:29",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 1:31",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 1:22b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 1:27-28",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "stepping-stones-2.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 9:18a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "2 Corinthians 5:17a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Ephesians 2:10a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Colossians 2:12",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Luke 11:21-22",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Hebrews 7:27b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Hebrews 9:26b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Jeremiah 23:6b",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:21b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Revelation 22:1",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Revelation 2:7b",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Hebrews 12:10",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 7:38",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "John 7:39a",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Psalm 36:8b",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 3:34b",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "2 Corinthians 1:22",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "2 Corinthians 5:5",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Ephesians 1:13-14",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 7:11b",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Luke 11:13b",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Galatians 3:13-14",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Luke 24:49a",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Ephesians 1:13",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 11:36a",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Revelation 22:13",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Mark 10:15",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Psalm 115:1a",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered",
+   "block_index": 41
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "kind": "sermon",
+ "slug": "comfort-for-the-desponding",
+ "language": "sw",
+ "job_issue": 4218,
+ "references": [
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 23:2",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalm 107:4-6",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Proverbs 3:17",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalm 66:12",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalm 13:3b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "2 Peter 3:1b",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "Job 19:25a",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Psalm 57:1b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Acts 27:20",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 9:22b",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Deuteronomy 32:15",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Proverbs 14:4a",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Habakkuk 2:11",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Psalm 46:4",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Lamentations 3:15b",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Jonah 2:2",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Matthew 23:27",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Matthew 23:25",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "1 Corinthians 3:12",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Joel 2:31b",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "the-gospel-of-healing.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "3 John 2",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Matthew 25:29a",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered",
+   "block_index": 58
+  }
+ ]
+}
