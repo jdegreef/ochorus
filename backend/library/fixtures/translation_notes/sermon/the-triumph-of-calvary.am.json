@@ -1,0 +1,247 @@
+{
+ "kind": "sermon",
+ "slug": "the-triumph-of-calvary",
+ "language": "am",
+ "job_issue": 4083,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Isaiah 63:1-6",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Exodus 3:2",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 2:23",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 63:1",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Revelation 12:11",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 26:19",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 7:16",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Colossians 2:15",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "1 Peter 1:11",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 15:26",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 15:55-56",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Revelation 6:2",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 55:11",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 11:21-22",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 49:25",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Samuel 3:1",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Revelation 11:15",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 47:5",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 42:13",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 42:17",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 42:7",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 52:10",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Revelation 22:16",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Malachi 4:2",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 60:2",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Ecclesiastes 8:8",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 15:54",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 15:49",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 20:11-17",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "John 20:19",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 2:14",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Isaiah 63:1-6",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Revelation 1:15",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Colossians 2:15",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Ezekiel 34:16",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 3:7",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Luke 14:17",
+   "status": "self_rendered",
+   "block_index": 19
+  }
+ ]
+}
