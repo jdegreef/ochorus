@@ -2,9 +2,9 @@
 	import { onMount } from 'svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import type { SeriesDetail } from '$lib/library-public';
-	import { getProgress, isFinished } from '$lib/progress';
+	import { bookProgressReader } from '$lib/progress';
 	import { contentLang } from '$lib/reading';
-	import { nextInSeries } from '$lib/series';
+	import { nextInSeries, seriesProgress, seriesProgressLabel } from '$lib/series';
 	import { volumeNumeral } from '$lib/coverStyles';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -39,15 +39,14 @@
 	});
 	const next = $derived(
 		progressed
-			? nextInSeries(series.books, (slug) => ({
-					started: getProgress(slug) != null,
-					finished: isFinished(slug)
-				}))
+			? nextInSeries(series.books, bookProgressReader())
 			: series.books.length
 				? { book: series.books[0], resume: false }
 				: null
 	);
-	const readCount = $derived(progressed ? series.books.filter((b) => isFinished(b.slug)).length : 0);
+	const readCount = $derived(
+		progressed ? seriesProgress(series.books.map((b) => b.slug), bookProgressReader()).done : 0
+	);
 
 	const path = $derived(`/series/${series.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
@@ -140,10 +139,7 @@
 		<ShareButton url={canonical} title={series.title} showLabel />
 		{#if readCount && next}
 			<span class="text-small text-muted">
-				{m.series_progress({
-					done: volumeNumeral(readCount, lang) ?? String(readCount),
-					total: volumeNumeral(count, lang) ?? String(count)
-				})}
+				{seriesProgressLabel(readCount, count, lang)}
 			</span>
 		{/if}
 	</div>

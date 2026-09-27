@@ -170,6 +170,7 @@ class SeriesViewTests(TestCase):
         self.assertEqual([r["slug"] for r in rows], ["key-teachings", "brave-for-god"])
         kt_row, bfg = rows
         self.assertEqual((bfg["description"], bfg["book_count"]), ("True stories.", 5))
+        self.assertEqual(bfg["books"], ["bfg-1", "bfg-2", "bfg-3", "bfg-4", "bfg-5"])
         # The fan: the first four published volumes, in reading order.
         self.assertEqual([c["slug"] for c in bfg["covers"]], ["bfg-1", "bfg-2", "bfg-3", "bfg-4"])
         self.assertEqual(set(bfg["covers"][0]), {"kind", "slug", "cover_url", "cover_color", "title"})

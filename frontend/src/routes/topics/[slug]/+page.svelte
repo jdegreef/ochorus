@@ -11,6 +11,8 @@
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import SeriesCard from '$lib/components/SeriesCard.svelte';
+	import { seriesFromBooks } from '$lib/series';
 	import BookListRow from '$lib/components/BookListRow.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
@@ -27,7 +29,7 @@
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { portraitPosition } from '$lib/portraits';
 	import { groupBooksByAuthor } from '$lib/topicBookGroups';
-	import { topicSectionOrder } from '$lib/topicSections';
+	import { topicSectionOrder, topicLeadsWithSeries } from '$lib/topicSections';
 	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
 
 	let { data } = $props();
@@ -59,6 +61,7 @@
 	// When non-null the shelf offers a By-author / All-books toggle; when null
 	// there is nothing to group, so the toggle is hidden and it stays flat.
 	const bookGroups = $derived(groupBooksByAuthor(topic.books));
+	const topicSeries = $derived(topicLeadsWithSeries(topic.books) ? seriesFromBooks(topic.books) : []);
 
 	// The Books section's controls. Defaults render one flat cover grid in shelf
 	// order — the same dense grid the /books shelf shows — so a topic reads
@@ -277,6 +280,22 @@
 		<button class="btn btn-ghost" onclick={clearQuery}>{t('common.clearFilters')}</button>
 	{/snippet}
 
+	<!-- The series this topic's books belong to, ahead of the books themselves,
+	     when the topic is mostly series volumes (For Young Readers) — otherwise
+	     it reads as a wall of near-identical covers. -->
+	{#snippet seriesSection()}
+		{#if topicSeries.length}
+			<section class="mb-10">
+				<h2 class="section-heading">{t('nav.series')}</h2>
+				<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+					{#each topicSeries as s (s.slug)}
+						<SeriesCard series={s} compact />
+					{/each}
+				</div>
+			</section>
+		{/if}
+	{/snippet}
+
 	{#snippet booksSection()}
 		<section class="mb-10">
 			<h2 class="section-heading">{t('topics.books')}</h2>
@@ -433,7 +452,7 @@
 	     type the topic is mostly made of, articles always come last, empty types
 	     dropped. See topicSectionOrder. -->
 	{#each sectionOrder as kind (kind)}
-		{#if kind === 'books'}{@render booksSection()}
+		{#if kind === 'books'}{@render seriesSection()}{@render booksSection()}
 		{:else if kind === 'sermons'}{@render sermonsSection()}
 		{:else}{@render articlesSection()}{/if}
 	{/each}
