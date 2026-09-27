@@ -670,6 +670,23 @@ CURATED: dict[str, Artwork] = {
         "Sohlberg sets one lit house among dark pines at nightfall — a home "
         "kept, by no visible means, with its light on.",
     ),
+    # ── Batch 18 · the healing evangelists ─────────────────────────────────
+    # Bosworth and Wigglesworth, one plate book each, both English-only when
+    # levelled. Two new painters, one source each: water out of the rock for
+    # the book on healing, and a mountain for the faith that moves one.
+    "christ-the-healer": Artwork(
+        "aic", 146701, "Albert Bierstadt", "Mountain Brook", "1863",
+        "Bosworth preached that healing is in the atonement, as sure as the "
+        "water from the struck rock. Bierstadt's spring breaks out of stone "
+        "into a dark wood — living water, flowing where no one dug for it.",
+    ),
+    "ever-increasing-faith": Artwork(
+        "cma", 154962, "Richard Wilson", "Cader Idris, with the Mawddach River",
+        "c. 1774",
+        "Wigglesworth's whole message was Mark 11:23 — faith that says to the "
+        "mountain, be removed. Wilson sets one great British mountain over a "
+        "wide valley, the thing faith is told to speak to.",
+    ),
 }
 
 
