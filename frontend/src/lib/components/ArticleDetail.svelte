@@ -4,19 +4,19 @@
 	import type { Article, ArticleRelated } from '$lib/library-public';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { localizeHref } from '$lib/href';
-	import { locales } from '$lib/paraglide/runtime';
 	import { portraitSrcset } from '$lib/portraits';
 	import { absUrl, jsonLd, breadcrumbLd } from '$lib/seo';
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
 	import { shareCard, shareImage } from '$lib/coverArt';
-	import { scriptureRefs, splitBeforeSection } from '$lib/articleBody';
+	import { splitBeforeSection } from '$lib/articleBody';
+	import { editionHref } from '$lib/editionHref';
 	import { scrollSpy } from '$lib/scrollSpy.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { spokenText } from '$lib/listenText';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
 	import { scripture } from '$lib/scripture.svelte';
-	import { contentLang, readingTime } from '$lib/reading';
+	import { contentLang, readingTime, seenFraction } from '$lib/reading';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
@@ -38,12 +38,11 @@
 
 	/** Links into the ARTICLE's language, not the UI locale: an article falls
 	 *  back to English, and the works it names have no English fallback. */
-	const inArticleLang = (path: string) =>
-		localizeHref(path, { locale: article.language as (typeof locales)[number] });
+	const inArticleLang = (path: string) => editionHref(path, article.language);
 
 	// The classic this article is written to send you to — the hero cover, the
 	// mid-article "read it in full" card, and the link preview's image.
-	const lead = $derived(article.lead_book ?? null);
+	const lead = $derived(article.lead_book);
 
 	// --- Contents --------------------------------------------------------------
 	// Resolved server-side (article.toc); the body already carries the matching
@@ -58,15 +57,11 @@
 	// A "read it in full" card between the first and second sections, where a
 	// reader who is still going has shown they care — most never reach the end,
 	// so the funnel can't live only there. Needs a book and two sections.
-	const parts = $derived(
-		lead && (article.toc?.length ?? 0) >= 2 ? splitBeforeSection(article.body_html, 2) : null
-	);
-	const refs = $derived(scriptureRefs(article.body_html));
+	const parts = $derived(lead ? splitBeforeSection(article.body_html, 2) : null);
 
-	let bodyA = $state<HTMLElement>();
-	let bodyB = $state<HTMLElement>();
+	let articleEl = $state<HTMLElement>();
 	/** The body's top-level blocks across both halves, in reading order. */
-	const blocks = (): Element[] => [...(bodyA?.children ?? []), ...(bodyB?.children ?? [])];
+	const blocks = (): Element[] => [...(articleEl?.querySelectorAll('.article-body > *') ?? [])];
 
 	// Tap a server-wrapped Bible reference in the body → open the scripture
 	// popover, the same treatment the chapter/sermon readers give. The body's
@@ -77,11 +72,8 @@
 		const a = (e.target as HTMLElement).closest?.('a.scripture-ref') as HTMLElement | null;
 		if (!a?.dataset.ref) return;
 		e.preventDefault();
-		showVerse(a, a.dataset.ref);
-	}
-	function showVerse(el: HTMLElement, ref: string) {
-		const r = el.getBoundingClientRect();
-		scripture.show(ref, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
+		const r = a.getBoundingClientRect();
+		scripture.show(a.dataset.ref, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
 	}
 
 	// --- Listen ----------------------------------------------------------------
@@ -89,6 +81,7 @@
 	// engine is shared site-wide, so this page only follows (highlights, stops
 	// on leaving) a reading it started itself.
 	let mine = $state(false);
+	const listening = $derived(mine && listen.status !== 'idle');
 	function toggleListen() {
 		if (listen.status !== 'idle') {
 			listen.stop();
@@ -102,9 +95,8 @@
 		);
 	}
 	$effect(() => {
-		if (!mine) return;
-		const i = listen.status === 'idle' ? -1 : listen.current;
-		const el = blocks()[i];
+		if (!listening) return;
+		const el = blocks()[listen.current];
 		el?.classList.add('tts-current');
 		return () => el?.classList.remove('tts-current');
 	});
@@ -113,22 +105,24 @@
 	});
 
 	// --- Reading progress ------------------------------------------------------
-	let articleEl = $state<HTMLElement>();
+	// The reader's formula (seenFraction), read at most once a frame.
 	let progress = $state(0);
 	$effect(() => {
 		const el = articleEl;
 		if (!el) return;
+		let frame = 0;
 		const update = () => {
-			const r = el.getBoundingClientRect();
-			const span = r.height - window.innerHeight;
-			progress = span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 1;
+			frame = 0;
+			progress = seenFraction(el.getBoundingClientRect(), window.innerHeight);
 		};
+		const schedule = () => (frame ||= requestAnimationFrame(update));
 		update();
-		window.addEventListener('scroll', update, { passive: true });
-		window.addEventListener('resize', update);
+		window.addEventListener('scroll', schedule, { passive: true });
+		window.addEventListener('resize', schedule);
 		return () => {
-			window.removeEventListener('scroll', update);
-			window.removeEventListener('resize', update);
+			cancelAnimationFrame(frame);
+			window.removeEventListener('scroll', schedule);
+			window.removeEventListener('resize', schedule);
 		};
 	});
 
@@ -293,10 +287,10 @@
 						{#if listen.supported}
 							<button
 								class="btn btn-sm"
-								class:btn-ghost={!(mine && listen.status !== 'idle')}
-								class:btn-primary={mine && listen.status !== 'idle'}
+								class:btn-ghost={!listening}
+								class:btn-primary={listening}
 								onclick={toggleListen}
-								aria-pressed={mine && listen.status !== 'idle'}
+								aria-pressed={listening}
 							>
 								<Icon name="headphones" size={16} />
 								{t('reader.listen')}
@@ -311,10 +305,13 @@
 					{#if otherEditions.length}
 						<p class="mt-3 text-small text-muted">
 							{t('articles.alsoIn')}
+							<!-- A full load, as LanguageFallbackNotice does: the locale is
+							     set per document, so a client-side hop would keep this one. -->
 							{#each otherEditions as e, i (e.loc)}{#if i}{' · '}{/if}<a
-									href={localizeHref(path, { locale: e.loc as (typeof locales)[number] })}
+									href={e.href}
 									hreflang={e.loc}
-									lang={e.loc}>{localeName(e.loc)}</a
+									lang={e.loc}
+									data-sveltekit-reload>{localeName(e.loc)}</a
 								>{/each}
 						</p>
 					{/if}
@@ -344,36 +341,42 @@
 			     opening tag, so both halves stay whole (see splitBeforeSection).
 			     The click delegate opens the scripture popover on a tapped
 			     reference (same as the reader; see onBodyClick). frontend/CLAUDE.md. -->
-			<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="article-body" bind:this={bodyA} lang={article.language} onclick={onBodyClick}>{@html parts ? parts[0] : article.body_html}</div>
-
-			{#if parts && lead}
-				<aside class="book-teaser" aria-label={t('articles.readInFull')}>
-					<a href={inArticleLang(`/books/${lead.slug}`)} class="w-14 shrink-0" tabindex="-1" aria-hidden="true">
-						<BookCover book={lead} />
-					</a>
-					<div class="min-w-0 flex-1">
-						<p class="eyebrow text-accent">{t('articles.readInFull')}</p>
-						<a href={inArticleLang(`/books/${lead.slug}`)} class="teaser-title">{lead.title}</a>
-						<p class="text-small text-muted">{lead.author.name}</p>
-					</div>
-					<a href={inArticleLang(`/books/${lead.slug}/1`)} class="btn btn-primary btn-sm shrink-0">
-						{t('book.beginReading')}
-					</a>
-				</aside>
-
+			{#each parts ?? [article.body_html] as html, i (i)}
 				<!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				<div class="article-body" bind:this={bodyB} lang={article.language} onclick={onBodyClick}>{@html parts[1]}</div>
-			{/if}
+				<div class="article-body" lang={article.language} onclick={onBodyClick}>{@html html}</div>
 
-			{#if refs.length >= 2}
+				{#if i === 0 && parts && lead}
+					<aside class="book-teaser" aria-label={t('articles.readInFull')}>
+						<a href={inArticleLang(`/books/${lead.slug}`)} class="w-14 shrink-0" tabindex="-1" aria-hidden="true">
+							<BookCover book={lead} />
+						</a>
+						<div class="min-w-0 flex-1">
+							<p class="eyebrow text-accent">{t('articles.readInFull')}</p>
+							<a href={inArticleLang(`/books/${lead.slug}`)} class="teaser-title">{lead.title}</a>
+							<p class="text-small text-muted">{lead.author.name}</p>
+						</div>
+						<a href={inArticleLang(`/books/${lead.slug}/1`)} class="btn btn-primary btn-sm shrink-0">
+							{t('book.beginReading')}
+						</a>
+					</aside>
+				{/if}
+			{/each}
+
+			<!-- The passages the article cites — the same chip row, and the same
+			     links, as the sermon page's scripture index: its /scripture page
+			     where one exists (English-only pages, so not localized), else a
+			     localized search. -->
+			{#if (article.scripture_refs?.length ?? 0) >= 2}
 				<section class="mt-8" aria-labelledby="scriptures-heading">
 					<h2 id="scriptures-heading" class="section-label">{t('articles.scriptures')}</h2>
 					<div class="flex flex-wrap gap-2">
-						{#each refs as ref (ref)}
-							<button class="tag" onclick={(e) => showVerse(e.currentTarget, ref)}>{ref}</button>
+						{#each article.scripture_refs ?? [] as ref (ref)}
+							<a
+								href={article.scripture_links?.[ref] ??
+									localizeHref(`/search?q=${encodeURIComponent(ref)}`)}
+								class="tag">{ref}</a
+							>
 						{/each}
 					</div>
 				</section>
@@ -471,9 +474,6 @@
 <style>
 	/* The prose column at the reader's measure; on a wide screen, a contents
 	   column beside it (the column the grid centres the prose between). */
-	.article-layout {
-		display: block;
-	}
 	.article-col {
 		margin-inline: auto;
 		max-width: var(--reading-measure);

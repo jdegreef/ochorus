@@ -1,7 +1,7 @@
 /**
- * Pure helpers over an article's server-rendered `body_html` — the sanitized
- * HTML the API sends (see backend `ArticleDetailSerializer`). They read the
- * string; they never build HTML, so nothing here needs escaping.
+ * A pure helper over an article's server-rendered `body_html` — the sanitized
+ * HTML the API sends (see backend `ArticleDetailSerializer`). It reads the
+ * string; it never builds HTML, so nothing here needs escaping.
  */
 
 /**
@@ -18,16 +18,4 @@ export function splitBeforeSection(html: string, n: number): [string, string] | 
 		if (at === -1) return null;
 	}
 	return at > 0 ? [html.slice(0, at), html.slice(at)] : null;
-}
-
-const REF = /<a\b[^>]*\bclass="scripture-ref"[^>]*\bdata-ref="([^"]+)"/g;
-
-/** The Bible references the body cites, in order of first mention, once each —
- *  the server-wrapped `<a class="scripture-ref" data-ref="…">` spans. */
-export function scriptureRefs(html: string): string[] {
-	const seen = new Set<string>();
-	for (const [, raw] of html.matchAll(REF)) {
-		seen.add(raw.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"'));
-	}
-	return [...seen];
 }

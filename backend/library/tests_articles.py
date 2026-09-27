@@ -497,3 +497,18 @@ class ArticleMoreArticlesTests(TestCase):
             slug="lonely", language="en", h1="Lonely", body_html=BODY, is_published=True
         )
         self.assertEqual(self._more("lonely"), [])
+
+
+class ArticleScriptureRefsTests(TestCase):
+    """The "Scriptures in this article" row reads the same fields as the
+    sermon page's: the cited passages, first mention first, once each."""
+
+    def test_detail_lists_cited_passages_once_in_order(self):
+        Article.objects.create(
+            slug="refs", language="en", h1="Refs", is_published=True,
+            body_html="<p>See John 3:16 and Romans 8:28, and again Jn 3:16.</p>",
+        )
+        res = APIClient().get(reverse("article-detail", args=["refs"]), {"language": "en"})
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["scripture_refs"], ["John 3:16", "Romans 8:28"])
+        self.assertIsInstance(res.data["scripture_links"], dict)

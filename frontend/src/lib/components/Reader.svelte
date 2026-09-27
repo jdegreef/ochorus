@@ -36,7 +36,7 @@
 	 */
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';
-	import { contentLang, HEADER_OFFSET, placeAfterLayout } from '$lib/reading';
+	import { contentLang, HEADER_OFFSET, placeAfterLayout, seenFraction } from '$lib/reading';
 	import {
 		getScrollAnchor,
 		saveScrollAnchor,
@@ -153,8 +153,7 @@
 		if (!body) return;
 		const rect = body.getBoundingClientRect();
 		if (rect.height <= 0) return;
-		const seen = Math.min(Math.max(window.innerHeight - rect.top, 0), rect.height);
-		frac = Math.min(1, Math.max(0, seen / rect.height));
+		frac = seenFraction(rect, window.innerHeight);
 	}
 
 	function handleScroll() {

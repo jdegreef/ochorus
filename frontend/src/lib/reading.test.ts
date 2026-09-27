@@ -6,6 +6,7 @@ import {
 	chapterNameIn,
 	contentLang,
 	minutesLeft,
+	seenFraction,
 	readingMinutes,
 	readingTime,
 	listenMinutes,
@@ -165,5 +166,14 @@ describe('chapterNameIn', () => {
 
 	it('names an untitled chapter as chapterName does', () => {
 		expect(chapterNameIn(3, null, 'Purpose in Prayer')).toBe(chapterName(3, null));
+	});
+});
+
+describe('seenFraction', () => {
+	it('is the share of the block above the viewport bottom, clamped to 0–1', () => {
+		expect(seenFraction({ top: 900, height: 1000 }, 900)).toBe(0);
+		expect(seenFraction({ top: 400, height: 1000 }, 900)).toBe(0.5);
+		expect(seenFraction({ top: -500, height: 1000 }, 900)).toBe(1);
+		expect(seenFraction({ top: 0, height: 0 }, 900)).toBe(0);
 	});
 });
