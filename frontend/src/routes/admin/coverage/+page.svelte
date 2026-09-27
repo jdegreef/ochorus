@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { replaceState } from '$app/navigation';
+	import { dismissable } from '$lib/actions/dismissable';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { ApiError } from '$lib/api';
@@ -64,7 +65,44 @@
 	// `?? []` guards the deploy window where the SPA carries a new tab before the
 	// API's payload does: a missing `cov[tab]` must render empty, not throw.
 	const rows = $derived<AdminCoverageRow[]>(cov?.[tab] ?? []);
-	const langs = $derived(cov?.languages ?? []);
+	// Hidden languages (a per-viewer preference, like Compact) drop out of the
+	// whole matrix — columns, totals, "+N", Priority, selection and CSV — so the
+	// view is about the languages this person actually works on.
+	const HIDDEN_KEY = 'ochorus:admin-coverage-hidden-langs';
+	let hiddenLangs = $state<string[]>([]);
+	try {
+		const raw = browser ? localStorage.getItem(HIDDEN_KEY) : null;
+		const parsed: unknown = raw ? JSON.parse(raw) : [];
+		if (Array.isArray(parsed)) hiddenLangs = parsed.filter((c) => typeof c === 'string');
+	} catch {
+		// storage blocked or garbled — show every language
+	}
+	function setHidden(next: string[]) {
+		hiddenLangs = next;
+		// A hidden "Gaps in" language would keep filtering invisibly.
+		if (gapLang && next.includes(gapLang)) gapLang = '';
+		try {
+			localStorage.setItem(HIDDEN_KEY, JSON.stringify(next));
+		} catch {
+			// storage blocked — the choice holds for this visit
+		}
+	}
+	const allLangs = $derived(cov?.languages ?? []);
+	const langs = $derived(allLangs.filter((l) => !hiddenLangs.includes(l.code)));
+	// Only codes that are actually columns count as hidden (a remembered code
+	// for a language that has since gone isn't worth mentioning).
+	const hiddenCount = $derived(allLangs.length - langs.length);
+
+	// Crosshair: the row highlights on hover already; this tints the hovered
+	// (or keyboard-focused) cell's language column too, header to footer. One
+	// delegated handler on the table reads the cell's data-lang.
+	let hoverCol = $state<string | null>(null);
+	function trackCol(e: Event) {
+		const cell = (e.target as HTMLElement | null)?.closest<HTMLElement>('[data-lang]');
+		hoverCol = cell?.dataset.lang ?? null;
+	}
+	let langMenuOpen = $state(false);
+	const colTint = (code: string) => (hoverCol === code ? 'bg-surface-2' : '');
 	// Books link to their admin detail page; sermons/plans/bios/articles (no admin
 	// detail yet) link to their live pages — a biography row is an author.
 	const ROW_HREF_BASE: Record<Tab, string> = {
@@ -597,7 +635,41 @@
 						Only out of date
 					</label>
 				{/if}
-				<label class="ml-auto flex items-center gap-1.5 text-small text-muted">
+				<details
+					class="relative ml-auto"
+					bind:open={langMenuOpen}
+					use:dismissable={{ open: langMenuOpen, onDismiss: () => (langMenuOpen = false) }}
+				>
+					<summary class="btn btn-sm btn-ghost cursor-pointer list-none">
+						Languages{hiddenCount ? ` (${hiddenCount} hidden)` : ''}
+					</summary>
+					<div
+						class="absolute right-0 z-40 mt-1 w-56 rounded-card border border-border bg-surface p-2 text-small shadow-lg"
+					>
+						{#each allLangs as l (l.code)}
+							<label class="flex items-center gap-2 rounded px-2 py-1 hover:bg-surface-2">
+								<input
+									type="checkbox"
+									checked={!hiddenLangs.includes(l.code)}
+									onchange={(e) =>
+										setHidden(
+											(e.currentTarget as HTMLInputElement).checked
+												? hiddenLangs.filter((c) => c !== l.code)
+												: [...hiddenLangs, l.code]
+										)}
+								/>
+								<span class="text-text">{l.name}</span>
+								<span class="ml-auto text-muted">{l.code}</span>
+							</label>
+						{/each}
+						{#if hiddenLangs.length}
+							<button type="button" class="btn btn-sm btn-ghost mt-1 w-full" onclick={() => setHidden([])}>
+								Show all
+							</button>
+						{/if}
+					</div>
+				</details>
+				<label class="flex items-center gap-1.5 text-small text-muted">
 					<input
 						type="checkbox"
 						checked={compact}
@@ -683,13 +755,24 @@
 			     overflow-x container leaves `sticky top-0` nothing to stick within.
 			     The Work column was already frozen (sticky left-0). -->
 			<div class="max-h-[75vh] overflow-auto rounded-card border border-border bg-surface">
-				<table class="w-full border-collapse text-body">
+				<table
+					class="w-full border-collapse text-body"
+					onmouseover={trackCol}
+					onfocusin={trackCol}
+					onmouseleave={() => (hoverCol = null)}
+				>
 					<thead>
 						<tr class="border-b border-border text-small text-muted">
 							<th class="sticky left-0 top-0 z-30 bg-surface px-4 py-3 text-left font-semibold">Work</th>
 							{#each langs as l, i (l.code)}
 								{@const c = completion[i]}
-								<th class="sticky top-0 z-20 bg-surface px-3 py-3 text-center font-semibold align-top" title={l.name}>
+								<th
+									data-lang={l.code}
+									class="sticky top-0 z-20 px-3 py-3 text-center font-semibold align-top {hoverCol === l.code
+										? 'bg-surface-2'
+										: 'bg-surface'}"
+									title={l.name}
+								>
 									<a href="/admin/languages/{l.code}" class="text-muted hover:text-accent">{l.code}</a>
 									<span
 										class="mt-0.5 block text-micro font-normal tabular-nums {c.pct === 100 ? 'text-accent' : 'text-muted'}"
@@ -747,6 +830,7 @@
 									{#each langs as l (l.code)}
 										{@const have = g.rows.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0)}
 										<td
+											data-lang={l.code}
 											class="px-3 text-center text-micro tabular-nums {compact ? 'py-1' : 'py-2'} {have === 0
 												? 'text-warning'
 												: have === g.rows.length
@@ -767,7 +851,10 @@
 						<tr class="border-t border-border text-small text-muted">
 							<td class="sticky left-0 z-10 bg-surface px-4 py-2.5 font-semibold">Total ({visibleRows.length}{visibleRows.length !== rows.length ? ` of ${rows.length}` : ''})</td>
 							{#each totals as n, i (langs[i].code)}
-								<td class="px-3 py-2.5 text-center tabular-nums font-semibold text-text">
+								<td
+									data-lang={langs[i].code}
+									class="px-3 py-2.5 text-center tabular-nums font-semibold text-text {colTint(langs[i].code)}"
+								>
 									{n}<span class="font-normal text-muted">/{completion[i].of}</span>
 								</td>
 							{/each}
@@ -822,7 +909,7 @@
 		{#each langs as l (l.code)}
 			{@const v = r.cells[l.code]}
 			{@const job = v ? undefined : jobFor(r.slug, l.code)}
-			<td class="group px-3 text-center {compact ? 'py-1' : 'py-2.5'}">
+			<td data-lang={l.code} class="group px-3 text-center {compact ? 'py-1' : 'py-2.5'} {colTint(l.code)}">
 				{#if v}
 					{@const m = cellMeta(v)}
 					{@const review = v === 'ai_unreviewed' && !r.blocked ? reviewHref(r.slug, l.code) : null}
