@@ -603,10 +603,11 @@ class AdminCoverageView(APIView):
                     }
                     for c in codes
                 ],
-                "books": self._book_rows(),
-                "sermons": self._sermon_rows(),
-                "plans": self._plan_rows(),
-                "bios": self._bio_rows(),
+                "books": self._with_readers(self._book_rows(), "book"),
+                "sermons": self._with_readers(self._sermon_rows(), "sermon"),
+                "plans": self._with_readers(self._plan_rows(), "plan"),
+                "bios": self._with_readers(self._bio_rows(), "bio"),
+                # Articles have no reading-layer rows, so no reader counts.
                 "articles": self._article_rows(),
                 # The series the Books matrix can be narrowed to (each book row
                 # carries its `series`), so a whole series' gaps in one language
@@ -614,6 +615,25 @@ class AdminCoverageView(APIView):
                 "series": list(Series.objects.values("slug", "title")),
             }
         )
+
+    def _with_readers(self, rows: list[dict], kind: str) -> list[dict]:
+        """Stamp each row with ``readers`` — distinct signed-in readers of the work
+        in ANY language — so the matrix's priority order can put the works people
+        actually read first. One grouped aggregate per tab. Books, sermons and
+        bios count ReadingProgress (bios' slug is the author's); plans count
+        PlanProgress. A work nobody has opened gets 0, not a missing key."""
+        from reading.models import PlanProgress, ReadingProgress
+
+        if kind == "plan":
+            qs = PlanProgress.objects.values(slug=F("plan_slug"))
+        else:
+            qs = ReadingProgress.objects.filter(kind=kind).values(slug=F("book_slug"))
+        counts = {
+            r["slug"]: r["n"] for r in qs.annotate(n=Count("profile", distinct=True))
+        }
+        for row in rows:
+            row["readers"] = counts.get(row["slug"], 0)
+        return rows
 
     def _unmet_by_language(self) -> dict[str, int]:
         """Zero-result searches per language over the last 30 days — the demand a
