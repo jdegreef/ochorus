@@ -124,8 +124,6 @@ export const WORK_KINDS: readonly WorkKind[] = ['book', 'sermon', 'bio', 'articl
 export const SERMON_CHAPTER_ORDER = 1;
 /** A biography is a single document too — its one "chapter" is order 1. */
 export const BIO_CHAPTER_ORDER = 1;
-/** And an article. */
-export const ARTICLE_CHAPTER_ORDER = 1;
 
 const SERMON_PREFIX = 'sermon:';
 const BIO_PREFIX = 'bio:';

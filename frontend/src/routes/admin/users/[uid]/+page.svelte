@@ -2,6 +2,7 @@
 	import { ApiError } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import { workPath } from '$lib/editionHref';
 	import ReadingHeatmap from '$lib/components/ReadingHeatmap.svelte';
 	import type { FavoriteKind } from '$lib/favorites.svelte';
 	import { formatDuration, getAdminUser, maskEmail, type UserTimelineEvent } from '$lib/library-admin';
@@ -52,12 +53,6 @@
 
 	// Deep-links into the reader. A work row carries a chapter; a favorite/plan/
 	// topic/article points at the item's landing page. Quotes have no page.
-	const workHref = (kind: string, slug: string, chapter?: number) => {
-		if (kind === 'sermon') return `/sermons/${slug}`;
-		if (kind === 'bio') return `/authors/${slug}`;
-		if (kind === 'article') return `/articles/${slug}/`;
-		return chapter ? `/books/${slug}/${chapter}` : `/books/${slug}`;
-	};
 	const favHref = (kind: FavoriteKind, slug: string): string | null => {
 		switch (kind) {
 			case 'author':
@@ -76,6 +71,15 @@
 				return null; // quote — no dedicated page
 		}
 	};
+
+	// A timeline event's `kind` is a FavoriteKind on a favorite (an author, a
+	// quote…) and a WorkKind everywhere else.
+	const eventHref = (e: UserTimelineEvent): string | null =>
+		e.type === 'plan_started'
+			? `/plans/${e.slug}`
+			: e.type === 'favorite'
+				? favHref(e.kind as FavoriteKind, e.slug)
+				: workPath(e.kind as WorkKind, e.slug, e.chapter_order);
 
 	const WORK_KIND_LABEL: Record<WorkKind, string> = {
 		book: 'Book',
@@ -201,7 +205,7 @@
 						{#each d.reading.in_progress as p (p.kind + p.slug)}
 							<li class="flex items-baseline justify-between gap-3 rounded-card border border-border bg-surface px-4 py-3">
 								<div class="min-w-0">
-									<a href={workHref(p.kind, p.slug, p.chapter_order)} class="truncate font-semibold text-text hover:text-accent hover:underline">{p.title}</a>
+									<a href={workPath(p.kind, p.slug, p.chapter_order)} class="truncate font-semibold text-text hover:text-accent hover:underline">{p.title}</a>
 									<div class="text-small text-muted">
 										{WORK_KIND_LABEL[p.kind]}{#if p.author} · {p.author}{/if}
 										{#if p.kind === 'book'} · chapter {p.chapter_order}{/if}
@@ -225,7 +229,7 @@
 						<ul class="divide-y divide-border">
 							{#each d.reading.finished as p (p.kind + p.slug)}
 								<li class="flex items-baseline justify-between gap-3 py-2">
-									<a href={workHref(p.kind, p.slug, p.chapter_order)} class="min-w-0 truncate text-body text-text hover:text-accent">{p.title}</a>
+									<a href={workPath(p.kind, p.slug, p.chapter_order)} class="min-w-0 truncate text-body text-text hover:text-accent">{p.title}</a>
 									<span class="shrink-0 whitespace-nowrap text-small text-muted tabular-nums">{dayFmt(p.finished_at)}</span>
 								</li>
 							{/each}
@@ -314,7 +318,7 @@
 						{#each d.highlights as h (h.kind + h.slug + h.chapter_order)}
 							<li class="border-s-2 border-border ps-3">
 								<div class="flex items-baseline justify-between gap-3">
-									<a href={workHref(h.kind, h.slug, h.chapter_order)} class="truncate text-small font-semibold text-text hover:text-accent">
+									<a href={workPath(h.kind, h.slug, h.chapter_order)} class="truncate text-small font-semibold text-text hover:text-accent">
 										{h.title}{#if h.kind === 'book'} · ch {h.chapter_order}{/if}
 									</a>
 									<span class="shrink-0 text-micro text-muted">{fmt(h.count)} mark{h.count === 1 ? '' : 's'}</span>
@@ -338,7 +342,7 @@
 					<ul class="divide-y divide-border">
 						{#each d.bookmarks as b (b.kind + b.slug + b.chapter_order + b.paragraph_index)}
 							<li class="py-2">
-								<a href={workHref(b.kind, b.slug, b.chapter_order)} class="text-small font-semibold text-text hover:text-accent">
+								<a href={workPath(b.kind, b.slug, b.chapter_order)} class="text-small font-semibold text-text hover:text-accent">
 									{b.title}{#if b.kind === 'book'} · ch {b.chapter_order}{/if}
 								</a>
 								{#if b.snippet}<p class="truncate text-small text-muted">{b.snippet}</p>{/if}
@@ -357,10 +361,10 @@
 							<li class="flex items-baseline justify-between gap-3">
 								<span class="min-w-0 truncate text-body text-text">
 									<span class="text-muted">{TIMELINE_VERB[e.type]}</span>
-									{#if e.type === 'plan_started'}
-										<a href="/plans/{e.slug}" class="hover:text-accent hover:underline">{e.title}</a>
+									{#if eventHref(e)}
+										<a href={eventHref(e)} class="hover:text-accent hover:underline">{e.title}</a>
 									{:else}
-										<a href={workHref(e.kind, e.slug, e.chapter_order)} class="hover:text-accent hover:underline">{e.title}</a>
+										{e.title}
 									{/if}
 									{#if e.type === 'read' && e.chapter_order}<span class="text-small text-muted"> · ch {e.chapter_order}</span>{/if}
 								</span>

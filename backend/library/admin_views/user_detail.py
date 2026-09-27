@@ -21,7 +21,7 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
 from ..views import _language_entry
-from .analytics import THEME_LABELS, _provider_label, mask_email
+from .analytics import THEME_LABELS, _prefer_en, _provider_label, mask_email
 
 # How many rows each capped list returns; the timeline merges several of these.
 LIST_LIMIT = 50
@@ -51,18 +51,6 @@ def _reader_today(tz_name):
         except (ZoneInfoNotFoundError, ValueError):
             pass
     return now.date()
-
-
-def _prefer_en(rows, value_of):
-    """``slug`` → value, keeping the English row where a slug has several
-    language editions (else first-seen). The one place the "prefer en" rule
-    lives, shared by every title/label resolver below.
-    """
-    out: dict[str, object] = {}
-    for r in rows:
-        if r["language"] == "en" or r["slug"] not in out:
-            out[r["slug"]] = value_of(r)
-    return out
 
 
 def _work_titles(pairs):

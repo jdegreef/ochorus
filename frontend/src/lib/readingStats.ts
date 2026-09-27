@@ -8,7 +8,7 @@ import {
 	type BookmarksStore,
 	type WorkKind
 } from './reading-schema';
-import { listArticlesWithFallback, listBooks, listSermons, listAuthors } from './library-public';
+import { loadWorkTitles, unslug } from './workTitles';
 
 /**
  * "Your reading" — device-local reading stats and recent history, derived from
@@ -77,10 +77,6 @@ export function readingCounts(): ReadingStats {
 	};
 }
 
-function unslug(slug: string): string {
-	return slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
 /**
  * Counts + the resolved reading history, newest-read first. "Finished" is the
  * stored `finished_at` stamp (see `readingCounts`), so it needs no catalog — but
@@ -91,29 +87,10 @@ function unslug(slug: string): string {
 export async function collectReadingActivity(
 	language: string
 ): Promise<{ stats: ReadingStats; history: HistoryItem[] }> {
-	const [books, sermons, authors, articles] = await Promise.all([
-		listBooks(language).catch(() => []),
-		listSermons(language).catch(() => []),
-		listAuthors(language).catch(() => []),
-		listArticlesWithFallback(language)
-	]);
-	const bookMeta = new Map(
-		books.map((b) => [b.slug, { title: b.title, author: b.author?.name ?? '' }])
-	);
-	const sermonMeta = new Map(sermons.map((s) => [s.slug, { title: s.title, author: s.author?.name ?? '' }]));
-	const bioMeta = new Map(authors.map((a) => [a.slug, { title: a.name, author: a.name }]));
-	// Ochorus is every article's byline, so there is no author to show.
-	const articleMeta = new Map(articles.map((a) => [a.slug, { title: a.h1, author: '' }]));
-	const META: Record<WorkKind, Map<string, { title: string; author: string }>> = {
-		book: bookMeta,
-		sermon: sermonMeta,
-		bio: bioMeta,
-		article: articleMeta
-	};
-	const metaFor = (kind: WorkKind) => META[kind];
+	const titles = await loadWorkTitles(language);
 
 	const history: HistoryItem[] = allProgress().map((p) => {
-		const m = metaFor(p.kind).get(p.slug);
+		const m = titles[p.kind].get(p.slug);
 		return {
 			kind: p.kind,
 			slug: p.slug,

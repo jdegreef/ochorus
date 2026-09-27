@@ -11,8 +11,6 @@
 	import { editionHref } from '$lib/editionHref';
 	import { scrollSpy } from '$lib/scrollSpy.svelte';
 	import { listen } from '$lib/listen.svelte';
-	import { bookmarks } from '$lib/bookmarks.svelte';
-	import { ARTICLE_CHAPTER_ORDER } from '$lib/reading-schema';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
 	import { contentLang, readingTime } from '$lib/reading';
 	import Reader from '$lib/components/Reader.svelte';
@@ -53,40 +51,17 @@
 	// --- Body: the shared Reader ------------------------------------------------
 	// The prose renders through the same <Reader> as the sermon and the
 	// biography (kind "article"), so an article gets everything the reader has:
-	// highlights and margin notes (synced, and in the Notebook), bookmarks,
+	// highlights and margin notes (synced, and in the Notebook),
 	// Listen with follow-along, the verse popover, define, copy/share a quote,
-	// and a resume point. `frac` drives the progress hairline; the reader's own
+	// and a resume point. No Bookmark button: the sermon's lives in a sticky
+	// bar, but this header scrolls away, so it could only ever mark the top of
+	// the article. `frac` drives the progress hairline; the reader's own
 	// reaching-the-end finishes the article onto the reading history. The
 	// header offset stays the reader default: this route keeps the sticky app
 	// nav, so a resumed or linked paragraph has to park below it, not under it.
 	let reader = $state<Reader | undefined>();
-	let body = $state<HTMLElement | undefined>();
 	let frac = $state(0);
 	const listening = $derived(listen.status !== 'idle');
-
-	// --- Bookmarks ---------------------------------------------------------------
-	// One document, so a bookmark is a paragraph and its order is always 1 —
-	// the sermon page's model. `topIndex` is a DOM measurement, re-read when the
-	// reader has moved (`frac` changes on Reader's throttled scroll pass).
-	let topIndex = $state(0);
-	$effect(() => {
-		void frac;
-		void article.slug;
-		topIndex = reader?.topVisibleIndex() ?? 0;
-	});
-	const currentBookmarked = $derived(bookmarks.has(ARTICLE_CHAPTER_ORDER, topIndex));
-	$effect(() => {
-		bookmarks.load('article', article.slug);
-	});
-	/** Bookmark (or un-bookmark) the paragraph at the top of the viewport. */
-	function toggleBookmark() {
-		if (!body) return;
-		const p = reader?.topVisibleIndex() ?? 0;
-		const el = body.children[p] as HTMLElement | undefined;
-		const snippet = (el?.innerText ?? '').trim().replace(/\s+/g, ' ').slice(0, 90);
-		bookmarks.toggle(ARTICLE_CHAPTER_ORDER, p, snippet, article.h1);
-		topIndex = p;
-	}
 
 	// --- SEO -------------------------------------------------------------------
 	// Self-referential canonical + hreflang — an English canonical on a future
@@ -266,18 +241,6 @@
 								{t('reader.listen')}
 							</button>
 						{/if}
-						<!-- Bookmark the paragraph at the top of the screen — the place to
-						     come back to (the Notebook lists it; the sermon's control). -->
-						<button
-							class="btn btn-sm"
-							class:btn-ghost={!currentBookmarked}
-							class:btn-primary={currentBookmarked}
-							onclick={toggleBookmark}
-							aria-pressed={currentBookmarked}
-						>
-							<Icon name="bookmark" size={16} />
-							{t('reader.bookmark')}
-						</button>
 						<!-- Save this article to "My Library". -->
 						<FavoriteButton kind="article" slug={article.slug} showLabel />
 						<ShareButton url={canonical} title="{article.h1} — Ochorus" showLabel />
@@ -330,8 +293,7 @@
 				{cite}
 				listenTitle={article.h1}
 				listenArtist="Ochorus"
-				class="article-body"
-				bind:body
+				class="article-body no-initial"
 				bind:frac
 				finishOnEnd
 			/>
@@ -339,7 +301,7 @@
 			<!-- "Read it in full": the classic the article was written to send you
 			     to, at the moment you have finished reading about it. (It sat
 			     mid-article once; inside the Reader's prose any extra block would
-			     shift the paragraph index every highlight and bookmark keys on.) -->
+			     shift the paragraph index every highlight keys on.) -->
 			{#if lead}
 				<aside class="book-teaser" aria-label={t('articles.readInFull')}>
 					<a href={inArticleLang(`/books/${lead.slug}`)} class="w-14 shrink-0" tabindex="-1" aria-hidden="true">
@@ -512,16 +474,6 @@
 	   (this closes page-design A10 for articles). Only what an article carries
 	   that a chapter doesn't is set here, on the global class (the element
 	   belongs to <Reader>, which this component's scoped styles can't reach). */
-	/* No opening initial: that is a book chapter's flourish, and an article
-	   opens on an answer to a question, not a chapter. Selectors match the
-	   global rule's (app.css) plus this page's class, so this one wins. */
-	:global(article.article-col:not(.paged) .reading.article-body > p:first-of-type:not(:lang(ar)):not(:lang(hi)))::first-letter {
-		float: none;
-		font: inherit;
-		margin: 0;
-		padding: 0;
-		color: inherit;
-	}
 	:global(.article-body h2) {
 		/* Keep a contents jump from tucking the heading under the sticky nav. */
 		scroll-margin-top: 5rem;
@@ -564,7 +516,7 @@
 		color: var(--color-muted);
 	}
 
-	/* "Read it in full": the lead book, mid-article. */
+	/* "Read it in full": the lead book, after the article. */
 	.book-teaser {
 		display: flex;
 		align-items: center;

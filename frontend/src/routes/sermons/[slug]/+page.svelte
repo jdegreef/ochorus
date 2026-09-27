@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { onMount, type Component } from 'svelte';
 	import { type Sermon, type SermonSummary, listSermons } from '$lib/library-public';
@@ -17,8 +18,6 @@
 	} from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { hasLocalizedSermonCard } from '$lib/sermonOgLocales';
-	import { bookmarks } from '$lib/bookmarks.svelte';
-	import { SERMON_CHAPTER_ORDER } from '$lib/reading-schema';
 	import { listen } from '$lib/listen.svelte';
 	import { type ScriptureResult } from '$lib/scripture.svelte';
 	import { apiFetch } from '$lib/api';
@@ -71,36 +70,17 @@
 	let frac = $state(0);
 	const minsLeft = $derived(minutesLeftOf(sermon.word_count, frac));
 
-	// --- Bookmarks --------------------------------------------------------------
-	// A sermon is one document, so its bookmark is a paragraph and its `order` is
-	// always SERMON_CHAPTER_ORDER. The chapter reader has had this since the
-	// beginning; the sermon reader was copied from it before bookmarks existed
-	// and never caught up (see the drift note in Reader.svelte).
-	//
-	// `topIndex` is a DOM measurement, so it is recomputed when the reader has
-	// moved rather than derived: `frac` is set on Reader's throttled scroll pass,
-	// which is exactly when the answer can have changed.
-	let topIndex = $state(0);
-	$effect(() => {
-		void frac;
-		void sermon.slug;
-		topIndex = reader?.topVisibleIndex() ?? 0;
+	// --- Bookmarks ------------------------------------------------------------
+	// The paragraph at the top of the screen — the single-document Reader's
+	// bookmark, shared with the sermon, biography and article pages.
+	const bookmark = readerBookmark({
+		kind: 'sermon',
+		slug: () => sermon.slug,
+		title: () => sermon.title,
+		reader: () => reader,
+		body: () => body,
+		frac: () => frac
 	});
-	const currentBookmarked = $derived(bookmarks.has(SERMON_CHAPTER_ORDER, topIndex));
-
-	$effect(() => {
-		bookmarks.load('sermon', sermon.slug);
-	});
-
-	/** Bookmark (or un-bookmark) the paragraph at the top of the viewport. */
-	function toggleBookmark() {
-		if (!body) return;
-		const p = reader?.topVisibleIndex() ?? 0;
-		const el = body.children[p] as HTMLElement | undefined;
-		const snippet = (el?.innerText ?? '').trim().replace(/\s+/g, ' ').slice(0, 90);
-		bookmarks.toggle(SERMON_CHAPTER_ORDER, p, snippet, sermon.title);
-		topIndex = p;
-	}
 
 	// Other sermons on the same Bible book, fetched client-side (page is
 	// prerendered; the list is small and cached by the browser).
@@ -372,11 +352,11 @@
 				<ShareButton url={canonical} title="{sermon.title} — {sermon.author_name}" />
 				<button
 					class="btn btn-icon btn-ghost"
-					class:text-accent={currentBookmarked}
-					onclick={toggleBookmark}
+					class:text-accent={bookmark.current}
+					onclick={bookmark.toggle}
 					aria-label={t('reader.bookmark')}
 					title={t('reader.bookmark')}
-					aria-pressed={currentBookmarked}><Icon name="bookmark" size={18} /></button
+					aria-pressed={bookmark.current}><Icon name="bookmark" size={18} /></button
 				>
 				<ReaderControls />
 				<button

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { sourceHref } from './editionHref';
+import { sourceHref, workPath } from './editionHref';
 import type { EntrySource } from './journal';
 
 const src = (kind: EntrySource['kind'], slug: string, order = 1): EntrySource => ({
@@ -21,5 +21,15 @@ describe('sourceHref', () => {
 		expect(sourceHref(src('sermon', 'himself'))).toMatch(/\/sermons\/himself\/?\?p=3$/);
 		expect(sourceHref(src('bio', 'andrew-murray'))).toMatch(/\/authors\/andrew-murray\/?\?p=3$/);
 		expect(sourceHref(src('article', 'how-to-pray'))).toMatch(/\/articles\/how-to-pray\/?\?p=3$/);
+	});
+});
+
+describe('workPath', () => {
+	it('names each kind\'s page; only a book takes a chapter', () => {
+		expect(workPath('book', 'humility')).toBe('/books/humility');
+		expect(workPath('book', 'humility', 4)).toBe('/books/humility/4');
+		expect(workPath('sermon', 'himself', 1)).toBe('/sermons/himself');
+		expect(workPath('bio', 'andrew-murray')).toBe('/authors/andrew-murray');
+		expect(workPath('article', 'how-to-pray')).toBe('/articles/how-to-pray/');
 	});
 });

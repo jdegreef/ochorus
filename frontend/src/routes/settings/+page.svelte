@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import GoalPips from '$lib/components/GoalPips.svelte';
-	import { authorPath } from '$lib/originals';
+	import { workPath } from '$lib/editionHref';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
@@ -170,14 +170,7 @@
 	const offlineList = $derived(offlineBooks.list());
 
 	// Resume link for a history row (books deep-link to the chapter).
-	const historyHref = (h: HistoryItem) =>
-		h.kind === 'sermon'
-			? localizeHref(`/sermons/${h.slug}`)
-			: h.kind === 'bio'
-				? localizeHref(authorPath(h.slug))
-				: h.kind === 'article'
-					? localizeHref(`/articles/${h.slug}/`)
-					: localizeHref(`/books/${h.slug}/${h.order}`);
+	const historyHref = (h: HistoryItem) => localizeHref(workPath(h.kind, h.slug, h.order));
 
 	// Daily reminder — a time the reader picks, emitted as a repeating .ics event
 	// they add to their own calendar (no server, works on every device).

@@ -1,14 +1,14 @@
 <script lang="ts">
 	/**
 	 * "From my reading" — the Notebook's clippings: every highlight, margin note
-	 * and bookmark the reader made in a book, sermon or biography, quoted from
+	 * and bookmark the reader made in a book, sermon, article or biography, quoted from
 	 * the text it was made on. Lifted out of the Notebook page when the page
 	 * grew its own writing (the journal); the loading and filtering are unchanged.
 	 */
 	import { onMount } from 'svelte';
 	import { getArticle, getBook, getChapter, getSermon, getAuthor, type BookDetail } from '$lib/library-public';
 	import { getLang, localeName } from '$lib/lang.svelte';
-	import { editionHref } from '$lib/editionHref';
+	import { editionHref, workPath } from '$lib/editionHref';
 	import { bookmarks, byPosition } from '$lib/bookmarks.svelte';
 	import { marks } from '$lib/marks.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -49,7 +49,7 @@
 
 	/** A single-document work — a sermon, or an article (whose author is the
 	 *  house, so `author` stays empty). */
-	type SermonBlock = {
+	type DocBlock = {
 		slug: string;
 		title: string;
 		author: string;
@@ -73,9 +73,9 @@
 
 	let loading = $state(true);
 	let books = $state<BookBlock[]>([]);
-	let sermons = $state<SermonBlock[]>([]);
+	let sermons = $state<DocBlock[]>([]);
 	let bios = $state<BioBlock[]>([]);
-	let articles = $state<SermonBlock[]>([]);
+	let articles = $state<DocBlock[]>([]);
 
 	const q = $derived(query.trim().toLowerCase());
 	const active = $derived(q.length > 0 || colorFilter !== '' || view !== 'all');
@@ -146,7 +146,7 @@
 			: [];
 
 	/** The sermon and article lanes: single documents with a title and author. */
-	const filterDocs = (list: SermonBlock[]): SermonBlock[] => {
+	const filterDocs = (list: DocBlock[]): DocBlock[] => {
 		if (!active) return list;
 		const hit = (s: string) => s.toLowerCase().includes(q);
 		return list
@@ -332,7 +332,7 @@
 		type Doc = { title: string; author: string; body_html: string };
 		const loadDoc =
 			(kind: WorkKind, bms: (Bookmark & { slug: string })[], fetchDoc: (slug: string, edition: string) => Promise<Doc>) =>
-			async (slug: string): Promise<SermonBlock> => {
+			async (slug: string): Promise<DocBlock> => {
 				const editions = editionsFor(kind, slug);
 				const wanted = editions.length ? editions : [{ edition: lang, marks: [] as Mark[] }];
 				const parts = await Promise.all(
@@ -443,6 +443,30 @@
 	</li>
 {/snippet}
 
+{#snippet docSection(doc: DocBlock, kind: WorkKind, eyebrow: string)}
+	<!-- A single-document work: a sermon, an article, a biography. Every link is
+	     ?p= — they all render through the Reader, which jumps to the paragraph
+	     on arrival. -->
+	{@const path = workPath(kind, doc.slug)}
+	<section class="work">
+		<p class="eyebrow text-muted">{eyebrow}</p>
+		<h3 class="text-h3">
+			<a href={localizeHref(path)} class="text-text hover:text-accent">{doc.title}</a>
+		</h3>
+		{#if doc.author}<p class="text-small text-muted">{doc.author}</p>{/if}
+		{#if doc.bookmarks.length}
+			{@render bookmarkList(doc.bookmarks, (bm) => localizeHref(`${path}?p=${bm.p}`))}
+		{/if}
+		<ul class="clips">
+			<!-- Keyed with the edition, and labelled: two editions' highlights
+			     share this one list. -->
+			{#each doc.highlights as hl (`${hl.edition}:${hl.id}`)}
+				{@render highlightItem(hl, editionHref(`${path}?p=${hl.p}`, hl.edition), editionLabel(hl.edition))}
+			{/each}
+		</ul>
+	</section>
+{/snippet}
+
 {#if loading}
 	<p class="text-small text-muted" role="status">{t('notebook.loading')}</p>
 {:else if !hasContent}
@@ -457,7 +481,7 @@
 		<section class="work">
 			<p class="eyebrow text-muted">{t('search.typeBook')}</p>
 			<h3 class="text-h3">
-				<a href={localizeHref(`/books/${bk.slug}`)} class="text-text hover:text-accent">{bk.title}</a>
+				<a href={localizeHref(workPath('book', bk.slug))} class="text-text hover:text-accent">{bk.title}</a>
 			</h3>
 			{#if bk.author}<p class="text-small text-muted">{bk.author}</p>{/if}
 
@@ -484,58 +508,13 @@
 	{/each}
 
 	{#each filteredSermons as sm (sm.slug)}
-		<section class="work">
-			<p class="eyebrow text-muted">{t('search.typeSermon')}</p>
-			<h3 class="text-h3">
-				<a href={localizeHref(`/sermons/${sm.slug}`)} class="text-text hover:text-accent">{sm.title}</a>
-			</h3>
-			{#if sm.author}<p class="text-small text-muted">{sm.author}</p>{/if}
-			{#if sm.bookmarks.length}
-				{@render bookmarkList(sm.bookmarks, (bm) => localizeHref(`/sermons/${sm.slug}?p=${bm.p}`))}
-			{/if}
-			<ul class="clips">
-				<!-- Keyed with the edition, and labelled: two editions' highlights
-				     share this one list. -->
-				{#each sm.highlights as hl (`${hl.edition}:${hl.id}`)}
-					{@render highlightItem(hl, editionHref(`/sermons/${sm.slug}?p=${hl.p}`, hl.edition), editionLabel(hl.edition))}
-				{/each}
-			</ul>
-		</section>
+		{@render docSection(sm, 'sermon', t('search.typeSermon'))}
 	{/each}
-
 	{#each filteredArticles as ar (ar.slug)}
-		<section class="work">
-			<p class="eyebrow text-muted">{t('search.typeArticle')}</p>
-			<h3 class="text-h3">
-				<a href={localizeHref(`/articles/${ar.slug}/`)} class="text-text hover:text-accent">{ar.title}</a>
-			</h3>
-			{#if ar.bookmarks.length}
-				{@render bookmarkList(ar.bookmarks, (bm) => localizeHref(`/articles/${ar.slug}/?p=${bm.p}`))}
-			{/if}
-			<ul class="clips">
-				{#each ar.highlights as hl (`${hl.edition}:${hl.id}`)}
-					{@render highlightItem(hl, editionHref(`/articles/${ar.slug}/?p=${hl.p}`, hl.edition), editionLabel(hl.edition))}
-				{/each}
-			</ul>
-		</section>
+		{@render docSection(ar, 'article', t('search.typeArticle'))}
 	{/each}
 	{#each filteredBios as b (b.slug)}
-		<section class="work">
-			<p class="eyebrow text-muted">{t('bios.eyebrow')}</p>
-			<h3 class="text-h3">
-				<a href={localizeHref(`/authors/${b.slug}`)} class="text-text hover:text-accent">{b.name}</a>
-			</h3>
-			{#if b.bookmarks.length}
-				{@render bookmarkList(b.bookmarks, (bm) => localizeHref(`/authors/${b.slug}?p=${bm.p}`))}
-			{/if}
-			<ul class="clips">
-				<!-- ?p= like the book and sermon highlights: the biography renders
-				     through the same Reader, which jumps to the paragraph on arrival. -->
-				{#each b.highlights as hl (`${hl.edition}:${hl.id}`)}
-					{@render highlightItem(hl, editionHref(`/authors/${b.slug}?p=${hl.p}`, hl.edition), editionLabel(hl.edition))}
-				{/each}
-			</ul>
-		</section>
+		{@render docSection({ ...b, title: b.name, author: '' }, 'bio', t('bios.eyebrow'))}
 	{/each}
 {/if}
 

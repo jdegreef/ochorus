@@ -13,7 +13,8 @@ import {
 	type WorkKind
 } from './reading-schema';
 import { cleanStore, visibleEntries, type JournalEntry } from './journal';
-import { listArticlesWithFallback, listBooks, listSermons, listAuthors, listPlans } from './library-public';
+import { listPlans } from './library-public';
+import { loadWorkTitles, unslug, type WorkMeta, type WorkTitles } from './workTitles';
 
 /**
  * "Export my data" — turns the reader's device-local reading record (positions,
@@ -79,42 +80,15 @@ export interface ExportBundle {
 	journal: ExportJournalEntry[];
 }
 
-type TitleMaps = {
-	book: Map<string, { title: string; author: string }>;
-	sermon: Map<string, { title: string; author: string }>;
-	bio: Map<string, { title: string; author: string }>;
-	article: Map<string, { title: string; author: string }>;
-	plan: Map<string, { title: string; author: string }>;
-};
-
-/** Turn a slug into a passable label when the catalog lookup misses. */
-function unslug(slug: string): string {
-	return slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-}
+/** The work catalogue plus plans, which can be favorited but not read. */
+type TitleMaps = WorkTitles & { plan: Map<string, WorkMeta> };
 
 async function loadTitles(language: string): Promise<TitleMaps> {
-	const [books, sermons, authors, articles, plans] = await Promise.all([
-		listBooks(language).catch(() => []),
-		listSermons(language).catch(() => []),
-		listAuthors(language).catch(() => []),
-		listArticlesWithFallback(language),
+	const [works, plans] = await Promise.all([
+		loadWorkTitles(language),
 		listPlans(language).catch(() => [])
 	]);
-	const maps: TitleMaps = {
-		book: new Map(),
-		sermon: new Map(),
-		bio: new Map(),
-		article: new Map(),
-		plan: new Map()
-	};
-	for (const b of books) maps.book.set(b.slug, { title: b.title, author: b.author?.name ?? '' });
-	for (const s of sermons) maps.sermon.set(s.slug, { title: s.title, author: s.author?.name ?? '' });
-	// A "bio" work is keyed by the author's slug; its title is the author's name.
-	for (const a of authors) maps.bio.set(a.slug, { title: a.name, author: a.name });
-	// An article's byline is the house, so it names no author.
-	for (const a of articles) maps.article.set(a.slug, { title: a.h1, author: '' });
-	for (const p of plans) maps.plan.set(p.slug, { title: p.title, author: '' });
-	return maps;
+	return { ...works, plan: new Map(plans.map((p) => [p.slug, { title: p.title, author: '' }])) };
 }
 
 /**
