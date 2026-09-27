@@ -144,9 +144,9 @@ prerendered pages reference it.
   keep the manifest (its new `fonts` value, so the NEXT run doesn't repeat it) + your
   slugs' twins, `git checkout origin/main --` the rest. Confirm with a second plain
   `og:covers`: "wrote 0". (Moody, 2026-09-25.)
-- **Swapping an ALREADY-curated painting also needs `npm run covers:bars`** —
+- **A NEW painting, or swapping an ALREADY-curated one, also needs `npm run covers:bars`** —
   `paint_covers` doesn't run it, and `groundBars.test.ts` fails ("groundBars.ts is
-  stale"). Run it BEFORE `og:covers`: a laid-out cover crops past the measured scan
+  stale"; Sohlberg's letterboxed scan hit it on #4209). Run it BEFORE `og:covers`: a laid-out cover crops past the measured scan
   bar, so twins drawn with the old ground's bar are mis-cropped. Order slipped? `rm`
   those slugs' twin PNGs and re-run `og:covers`.
 - **One painting, one work — now a gate.** `test_no_painting_is_given_to_two_works`
