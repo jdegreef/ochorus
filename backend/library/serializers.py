@@ -1006,6 +1006,10 @@ class ArticleDetailSerializer(ArticleListSerializer):
     toc = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
+    more_articles = serializers.SerializerMethodField()
+
+    # How many "More on this topic" cards the page shows.
+    MORE_ARTICLES = 3
 
     def get_topics(self, obj):
         """Published topics this article belongs to (localized) — the chips that
@@ -1037,6 +1041,56 @@ class ArticleDetailSerializer(ArticleListSerializer):
     def get_related(self, obj):
         return resolve_related(obj.related, obj.language)
 
+    def get_lead_book(self, obj):
+        # The page's hero cover and share image: just this article's own book.
+        return lead_book_cards({obj.slug: obj.related}, obj.language).get(obj.slug)
+
+    def get_more_articles(self, obj):
+        """Up to ``MORE_ARTICLES`` other published articles in this language that
+        share a topic with this one — the "More on …" row, so a reader who
+        finished has somewhere to go that isn't back to the index.
+
+        Ranked by how many topics they share (the closest first), then, for a
+        question article, questions ahead of reader's guides (a guide is about
+        one book, a poor next step from "How to pray"), then curated order.
+        Index cards, lead-book covers included (one batched lookup).
+        """
+        from collections import Counter
+
+        from .models import TopicArticle
+
+        topic_ids = TopicArticle.objects.filter(
+            article_slug=obj.slug, topic__is_published=True
+        ).values_list("topic_id", flat=True)
+        shared = Counter(
+            TopicArticle.objects.filter(topic_id__in=topic_ids)
+            .exclude(article_slug=obj.slug)
+            .values_list("article_slug", flat=True)
+        )
+        if not shared:
+            return []
+        rows = list(
+            Article.objects.filter(
+                slug__in=shared, language=obj.language, is_published=True
+            )
+            .defer("body_html")
+            .order_by("sort_order", "h1")
+        )
+        prefer_questions = not is_guide_slug(obj.slug)
+        rows.sort(
+            key=lambda a: (
+                -shared[a.slug],
+                prefer_questions and is_guide_slug(a.slug),
+            )
+        )  # stable: ties keep the curated order
+        picks = rows[: self.MORE_ARTICLES]
+        lead_books = lead_book_cards({a.slug: a.related for a in picks}, obj.language)
+        return ArticleListSerializer(
+            picks,
+            many=True,
+            context={**self.context, "language": obj.language, "article_lead_books": lead_books},
+        ).data
+
     def get_available_languages(self, obj):
         return _available_languages(Article, obj.slug)
 
@@ -1044,14 +1098,14 @@ class ArticleDetailSerializer(ArticleListSerializer):
         # topics + word_count already ride on the list serializer's fields;
         # detail just overrides get_topics with a direct query and adds the body,
         # its table of contents, the Read-next links and source/languages.
-        # `lead_book` is the index card's cover — the page itself renders the
-        # same book from `related`, so detail doesn't pay a second lookup for it.
-        fields = [f for f in ArticleListSerializer.Meta.fields if f != "lead_book"] + [
+        fields = ArticleListSerializer.Meta.fields + [
             "body_html",
             "toc",
             "related",
             "source_url",
             "available_languages",
+            # The "More on …" cards (index-card shape, with covers).
+            "more_articles",
         ]
 
 
