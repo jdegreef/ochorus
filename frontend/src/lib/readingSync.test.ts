@@ -246,6 +246,40 @@ describe('readingSync.clearOnSignOut', () => {
 		}
 	});
 
+	it('keeps a kind the server cannot store yet instead of erasing it (deploy overlap)', async () => {
+		// The static site can go live before the API's migration: an API that
+		// knows kinds but not `article` echoes no article rows. Writing that back
+		// would erase the article's local place and highlights.
+		const local = {
+			humility: { order: 2, paragraph_index: 0, language: 'en', at: 5 },
+			'article:how-to-pray': { order: 1, paragraph_index: 4, language: 'en', at: 6 }
+		};
+		localStorage.setItem(PROGRESS_KEY, JSON.stringify(local));
+		localStorage.setItem(
+			MARKS_KEY,
+			JSON.stringify({ 'article:how-to-pray:1': [{ id: 'm', p: 0, s: 0, e: 4, color: 'gold' }] })
+		);
+		const bookRow = {
+			kind: 'book', book_slug: 'humility', language: 'en', chapter_order: 2,
+			paragraph_index: 0, updated_at: new Date(5).toISOString()
+		};
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+			new Response(JSON.stringify({ progress: [bookRow], marks: [] }), {
+				status: 200,
+				headers: { 'content-type': 'application/json' }
+			})
+		);
+		try {
+			readingSync.setSignedIn(true);
+			await readingSync.mergeOnSignIn();
+			expect(Object.keys(JSON.parse(localStorage.getItem(PROGRESS_KEY)!))).toContain('article:how-to-pray');
+			expect(Object.keys(JSON.parse(localStorage.getItem(MARKS_KEY)!))).toContain('article:how-to-pray:1');
+		} finally {
+			fetchSpy.mockRestore();
+			readingSync.setSignedIn(false);
+		}
+	});
+
 	it('the merge sends every shelf and merges the reply into the device copy', async () => {
 		const local = {
 			's-a': { id: 's-a', name: 'Lent', books: [{ slug: 'x', at: 5, removed: false }], deleted: false, created: 1, updated: 1 }

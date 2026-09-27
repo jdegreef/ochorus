@@ -1,7 +1,9 @@
 import { lang } from './lang.svelte';
 import { localizeHref } from './href';
 import { MODERN_EDITION, baseEdition } from './reading-schema';
+import { authorPath } from './originals';
 import type { EntrySource } from './journal';
+import type { WorkKind } from './reading-schema';
 
 /** The locale union `localizeHref` accepts; `lang.isAvailable` is its runtime check. */
 type UiLocale = NonNullable<Parameters<typeof localizeHref>[1]>['locale'];
@@ -27,13 +29,23 @@ export function editionHref(path: string, edition: string): string {
 		: localizeHref(withEdition);
 }
 
+/**
+ * The page a work of any kind lives on (unlocalized). `order` is a book's
+ * chapter; the single-document kinds ignore it. A Record, not a ternary
+ * chain: a new kind is a compile error here rather than a link that quietly
+ * falls through to another kind's route.
+ */
+export function workPath(kind: WorkKind, slug: string, order?: number): string {
+	const path: Record<WorkKind, string> = {
+		book: order ? `/books/${slug}/${order}` : `/books/${slug}`,
+		sermon: `/sermons/${slug}`,
+		bio: authorPath(slug),
+		article: `/articles/${slug}/`
+	};
+	return path[kind];
+}
+
 /** Where a Notebook entry's source passage lives — built from its parts only. */
 export function sourceHref(s: EntrySource): string {
-	const path =
-		s.kind === 'book'
-			? `/books/${s.slug}/${s.order}?p=${s.p}`
-			: s.kind === 'sermon'
-				? `/sermons/${s.slug}?p=${s.p}`
-				: `/authors/${s.slug}?p=${s.p}`;
-	return editionHref(path, s.edition);
+	return editionHref(`${workPath(s.kind, s.slug, s.order)}?p=${s.p}`, s.edition);
 }

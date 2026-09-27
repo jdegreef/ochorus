@@ -921,6 +921,23 @@ export interface Article extends ArticleSummary {
 export const listArticles = (language = 'en', f?: Fetch) =>
 	apiFetch<ArticleSummary[]>(`/api/library/articles/?language=${language}`, {}, f);
 
+/**
+ * Every article a reader in `language` can have read, for naming them (reading
+ * history, the export): that language's rows, then the English originals it
+ * falls back to (`getArticle` serves English where a translation is missing),
+ * one entry per slug with the reader's own language winning. Best-effort —
+ * a failed fetch is an empty list, as the other catalogues there are.
+ */
+export async function listArticlesWithFallback(language: string): Promise<ArticleSummary[]> {
+	const [own, en] = await Promise.all([
+		listArticles(language).catch(() => [] as ArticleSummary[]),
+		language === 'en' ? Promise.resolve([] as ArticleSummary[]) : listArticles('en').catch(() => [] as ArticleSummary[])
+	]);
+	const bySlug = new Map(en.map((a) => [a.slug, a]));
+	for (const a of own) bySlug.set(a.slug, a);
+	return [...bySlug.values()];
+}
+
 // Falls back to English on a 404, like getSermon: an article detail filters by
 // (slug, language), so a language switch or a shared /lg link to an
 // untranslated article degrades to the English original rather than a 404.

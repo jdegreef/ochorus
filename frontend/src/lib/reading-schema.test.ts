@@ -4,6 +4,7 @@ import {
 	parseChapterKey,
 	workSlugKey,
 	parseWorkSlugKey,
+	WORK_KINDS,
 	workKey,
 	parseWorkKey
 } from './reading-schema';
@@ -50,10 +51,11 @@ describe('work keys across kinds', () => {
 		expect(workSlugKey('book', 'humility')).toBe('humility');
 		expect(workSlugKey('sermon', 'himself')).toBe('sermon:himself');
 		expect(workSlugKey('bio', 'andrew-murray')).toBe('bio:andrew-murray');
+		expect(workSlugKey('article', 'how-to-pray')).toBe('article:how-to-pray');
 	});
 
 	it('round-trips every kind through parseWorkSlugKey', () => {
-		for (const kind of ['book', 'sermon', 'bio'] as const) {
+		for (const kind of WORK_KINDS) {
 			expect(parseWorkSlugKey(workSlugKey(kind, 'a-b-simpson'))).toEqual({
 				kind,
 				slug: 'a-b-simpson'

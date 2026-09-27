@@ -34,11 +34,10 @@ import { findQueryHits } from '$lib/searchHits';
 import { listen } from '$lib/listen.svelte';
 import { define } from '$lib/define.svelte';
 import { scripture } from '$lib/scripture.svelte';
-import { getLang } from '$lib/lang.svelte';
 import { spokenText, blankFootnoteMarkers } from '$lib/listenText';
 import { shouldFollow } from '$lib/listenFollow';
 import { saveScrollAnchor } from '$lib/progress';
-import { HEADER_OFFSET, prefersReducedMotion } from '$lib/reading';
+import { contentLang, HEADER_OFFSET, prefersReducedMotion } from '$lib/reading';
 import { DEFAULT_HIGHLIGHT, workKey, type WorkKind } from '$lib/reading-schema';
 
 /** How long read-along leaves the page alone after a hand-scroll. */
@@ -142,7 +141,9 @@ export class ReaderText {
 		// bits removed so the engine doesn't voice "…grace four".
 		const paragraphs = [...body.children].map((el) => spokenText(el));
 		listen.start(paragraphs, from ?? this.#o.topIndex(), {
-			lang: getLang(),
+			// The TEXT's language, not the interface's: a work shown in its English
+			// fallback to a French reader must be voiced in English.
+			lang: contentLang(this.#o.language()),
 			media: { title: this.#o.listenTitle(), artist: this.#o.listenArtist() },
 			onFinish: this.#o.onListenFinish,
 			// The spoken paragraph IS the resume point while listening — save it (this

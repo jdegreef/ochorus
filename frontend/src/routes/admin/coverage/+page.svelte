@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { ApiError } from '$lib/api';
@@ -100,6 +101,66 @@
 	// that language's to-do list. Queued ones stay listed (their ◷ shows it) — the
 	// job list loads after coverage, so hiding them would make rows flicker away.
 	let gapLang = $state('');
+	// Translations made from English that has since changed (bios only today).
+	let staleOnly = $state(false);
+	const isStale = (r: AdminCoverageRow, code: string) => !!r.stale?.includes(code);
+	const tabHasStale = $derived(rows.some((r) => r.stale?.length));
+
+	// --- View: density and grouping. Compact is a per-viewer preference, so it
+	// persists in this browser; grouping is a question you ask, so it doesn't.
+	const COMPACT_KEY = 'ochorus:admin-coverage-compact';
+	let compact = $state(false);
+	try {
+		compact = browser && localStorage.getItem(COMPACT_KEY) === '1';
+	} catch {
+		// storage blocked — default density
+	}
+	function setCompact(on: boolean) {
+		compact = on;
+		try {
+			localStorage.setItem(COMPACT_KEY, on ? '1' : '0');
+		} catch {
+			// storage blocked — the toggle still works for this visit
+		}
+	}
+
+	// Group by author (books, sermons) or series (books). A tab without the
+	// chosen axis simply shows ungrouped, so switching tabs never strands a view.
+	let groupBy = $state<'none' | 'author' | 'series'>('none');
+	const groupAxis = $derived(
+		groupBy === 'author' && (tab === 'books' || tab === 'sermons')
+			? 'author'
+			: groupBy === 'series' && tab === 'books'
+				? 'series'
+				: 'none'
+	);
+	const seriesTitle = $derived(new Map(seriesOptions.map((s) => [s.slug, s.title])));
+	const NO_SERIES = '\u0000none'; // sorts nowhere in particular; placed last below
+	// Groups keep the matrix's current order — each appears where its first work
+	// would, so Priority ranks groups by their most pressing work. "Not in a
+	// series" goes last: it's the remainder, not a group.
+	const groups = $derived.by(() => {
+		if (groupAxis === 'none') return [{ key: '', label: '', rows: visibleRows }];
+		const byKey = new Map<string, { key: string; label: string; rows: AdminCoverageRow[] }>();
+		for (const r of visibleRows) {
+			const key = groupAxis === 'author' ? (r.author ?? '—') : (r.series ?? NO_SERIES);
+			const label =
+				groupAxis === 'author'
+					? key
+					: key === NO_SERIES
+						? 'Not in a series'
+						: (seriesTitle.get(key) ?? key);
+			let g = byKey.get(key);
+			if (!g) byKey.set(key, (g = { key, label, rows: [] }));
+			g.rows.push(r);
+		}
+		const out = [...byKey.values()];
+		const rest = out.findIndex((g) => g.key === NO_SERIES);
+		if (rest >= 0) out.push(...out.splice(rest, 1));
+		return out;
+	});
+	let collapsed = $state<Record<string, boolean>>({});
+	const toggleGroup = (key: string) => (collapsed = { ...collapsed, [key]: !collapsed[key] });
 
 	// Priority = reader demand × open gaps. A work's weight is 1 + its distinct
 	// readers (so an unread work still ranks by its gaps); each open gap counts
@@ -122,6 +183,7 @@
 			);
 		if (unreviewedOnly) out = out.filter(hasUnreviewed);
 		if (gapLang) out = out.filter((r) => !r.cells[gapLang]);
+		if (staleOnly) out = out.filter((r) => r.stale?.length);
 		if (tab === 'books' && seriesFilter) {
 			out = out
 				.filter((r) => r.series === seriesFilter)
@@ -336,6 +398,27 @@
 						{/each}
 					</select>
 				{/if}
+				{#if tab === 'books' || tab === 'sermons'}
+					<select bind:value={groupBy} aria-label="Group works" class="field text-small">
+						<option value="none">Group: none</option>
+						<option value="author">Group: author</option>
+						{#if tab === 'books'}<option value="series">Group: series</option>{/if}
+					</select>
+				{/if}
+				{#if tabHasStale}
+					<label class="flex items-center gap-1.5 text-small text-muted">
+						<input type="checkbox" bind:checked={staleOnly} />
+						Only out of date
+					</label>
+				{/if}
+				<label class="ml-auto flex items-center gap-1.5 text-small text-muted">
+					<input
+						type="checkbox"
+						checked={compact}
+						onchange={(e) => setCompact((e.currentTarget as HTMLInputElement).checked)}
+					/>
+					Compact
+				</label>
 			</div>
 
 			<!-- Legend -->
@@ -354,6 +437,9 @@
 					<span><span class="text-accent">●</span> present</span>
 				{/if}
 				<span><span class="text-muted">·</span> missing</span>
+				{#if tabHasStale}
+					<span><span class="text-warning">↻</span> English changed since translated</span>
+				{/if}
 				<span><span class="text-warning">⌕N</span> unmet searches · 30d</span>
 				{#if jobsConfigured !== false}
 					<span><span class="text-accent">◷</span> queued</span>
@@ -426,92 +512,41 @@
 								</td>
 							</tr>
 						{/if}
-						{#each visibleRows as r (r.slug)}
-							{@const rowGaps = langs.reduce((n, l) => n + (isGap(l, r) ? 1 : 0), 0)}
-							<tr class="group/row border-b border-border last:border-0 hover:bg-surface-2">
-								<!-- Titles wrap to two lines (articles run long — "A Retrospect by Hudson
-								     Taylor: …"); the full title + author ride on the tooltip. -->
-								<td class="sticky left-0 z-10 w-[22rem] min-w-[16rem] max-w-[22rem] bg-surface px-4 py-2.5">
-									<a
-										href={rowHref(r.slug)}
-										class="line-clamp-2 font-medium leading-snug text-text hover:text-accent"
-										title={r.author ? `${r.title} — ${r.author}` : r.title}
-									>{r.title}</a>
-									{#if r.author || r.readers}
-										<span class="block truncate text-small text-muted" title={r.author}>
-											{r.author ?? ''}{#if r.readers}{r.author ? ' · ' : ''}<span class="tabular-nums">{r.readers}</span> reader{r.readers === 1 ? '' : 's'}{/if}
-										</span>
-									{/if}
-									{#if canQueue && jobsConfigured !== false && rowGaps > 0}
+						{#each groups as g (g.key)}
+							{#if g.key}
+								{@const open = !collapsed[g.key]}
+								<tr class="border-b border-border bg-surface-2">
+									<td class="sticky left-0 z-10 bg-surface-2 px-4 {compact ? 'py-1' : 'py-2'}">
 										<button
 											type="button"
-											class="mt-1 text-micro font-semibold text-muted opacity-0 transition group-hover/row:opacity-100 hover:text-accent focus:opacity-100 disabled:opacity-40"
-											disabled={busy}
-											title={`Queue all ${rowGaps} missing translations of ${r.title}`}
-											aria-label={`Queue all ${rowGaps} missing translations of ${r.title}`}
-											onclick={() => bulkRow(r)}
-										>Queue all {rowGaps}</button>
-									{/if}
-								</td>
-								{#each langs as l (l.code)}
-									{@const v = r.cells[l.code]}
-									{@const job = v ? undefined : jobFor(r.slug, l.code)}
-									<td class="group px-3 py-2.5 text-center">
-										{#if v}
-											{@const m = cellMeta(v)}
-											{@const review = v === 'ai_unreviewed' ? reviewHref(r.slug, l.code) : null}
-											{#if review}
-												<a
-													href={review}
-													class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small transition-colors hover:bg-warning/10 hover:no-underline {m.cls}"
-													title={`Review ${r.title} → ${l.name}`}
-													aria-label={`Review the ${l.name} translation of ${r.title}`}
-												>{m.label}</a>
-											{:else}
-												<span class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small {m.cls}">{m.label}</span>
-											{/if}
-										{:else if job}
-											<a
-												href={job.url}
-												target="_blank"
-												rel="noopener"
-												class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small hover:no-underline {job.state === 'in_progress' ? 'text-warning' : 'text-accent'}"
-												title={job.state === 'in_progress'
-													? `Translating ${r.title} → ${l.name}… (open issue)`
-													: `Queued: ${r.title} → ${l.name} (open issue)`}
-											>
-												{job.state === 'in_progress' ? '◐' : '◷'}
-											</a>
-										{:else if jobsConfigured === false || !l.queueable || !canQueue}
-											<span
-												class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted"
-												title={jobsConfigured === false
-													? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
-													: !canQueue
-														? `Missing: ${r.title} → ${l.name}`
-														: `${l.name} isn't a translation target — nothing to queue`}
-											>·</span>
-										{:else}
-											{@const spot = queueing === jobKey(r.slug, l.code)}
-											<button
-												type="button"
-												class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted transition-colors hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-muted"
-												disabled={busy}
-												title={`Queue a ${l.name} translation of ${r.title}`}
-												aria-label={`Queue a ${l.name} translation of ${r.title}`}
-												onclick={() => queue(r.slug, l.code)}
-											>
-												{#if spot}
-													<span>…</span>
-												{:else}
-													<span class="group-hover:hidden">·</span>
-													<span class="hidden group-hover:inline">+</span>
-												{/if}
-											</button>
-										{/if}
+											class="flex w-full items-center gap-2 text-left text-small font-semibold text-text hover:text-accent"
+											aria-expanded={open}
+											onclick={() => toggleGroup(g.key)}
+										>
+											<span class="text-muted">{open ? '▾' : '▸'}</span>
+											<span class="truncate">{g.label}</span>
+											<span class="shrink-0 font-normal text-muted">{g.rows.length}</span>
+										</button>
 									</td>
-								{/each}
-							</tr>
+									<!-- How much of the group each language has: "0/12" is the gap
+									     this view exists to show ("all of Murray is missing in sw"). -->
+									{#each langs as l (l.code)}
+										{@const have = g.rows.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0)}
+										<td
+											class="px-3 text-center text-micro tabular-nums {compact ? 'py-1' : 'py-2'} {have === 0
+												? 'text-warning'
+												: have === g.rows.length
+													? 'text-accent'
+													: 'text-muted'}"
+										>{have}/{g.rows.length}</td>
+									{/each}
+								</tr>
+								{#if open}
+									{#each g.rows as r (r.slug)}{@render workRow(r)}{/each}
+								{/if}
+							{:else}
+								{#each g.rows as r (r.slug)}{@render workRow(r)}{/each}
+							{/if}
 						{/each}
 					</tbody>
 					<tfoot>
@@ -527,3 +562,104 @@
 		{/snippet}
 	</AdminGate>
 </div>
+
+{#snippet workRow(r: AdminCoverageRow)}
+	{@const rowGaps = langs.reduce((n, l) => n + (isGap(l, r) ? 1 : 0), 0)}
+	<tr class="group/row border-b border-border last:border-0 hover:bg-surface-2">
+		<!-- Titles wrap to two lines (one in Compact) — articles run long ("A Retrospect by Hudson
+		     Taylor: …"); the full title + author ride on the tooltip. -->
+		<td
+			class="sticky left-0 z-10 w-[22rem] min-w-[16rem] max-w-[22rem] bg-surface px-4 {compact
+				? 'py-1'
+				: 'py-2.5'}"
+		>
+			<a
+				href={rowHref(r.slug)}
+				class="{compact ? 'line-clamp-1 pr-16' : 'line-clamp-2'} font-medium leading-snug text-text hover:text-accent"
+				title={r.author ? `${r.title} — ${r.author}` : r.title}
+			>{r.title}</a>
+			{#if !compact && (r.author || r.readers)}
+				<span class="block truncate text-small text-muted" title={r.author}>
+					{r.author ?? ''}{#if r.readers}{r.author ? ' · ' : ''}<span class="tabular-nums">{r.readers}</span> reader{r.readers === 1 ? '' : 's'}{/if}
+				</span>
+			{/if}
+			{#if canQueue && jobsConfigured !== false && rowGaps > 0}
+				<button
+					type="button"
+					class="text-micro font-semibold text-muted opacity-0 transition group-hover/row:opacity-100 hover:text-accent focus:opacity-100 disabled:opacity-40 {compact
+						? 'absolute top-1/2 right-3 -translate-y-1/2 bg-surface-2 px-1'
+						: 'mt-1'}"
+					disabled={busy}
+					title={`Queue all ${rowGaps} missing translations of ${r.title}`}
+					aria-label={`Queue all ${rowGaps} missing translations of ${r.title}`}
+					onclick={() => bulkRow(r)}
+				>Queue all {rowGaps}</button>
+			{/if}
+		</td>
+		{#each langs as l (l.code)}
+			{@const v = r.cells[l.code]}
+			{@const job = v ? undefined : jobFor(r.slug, l.code)}
+			<td class="group px-3 text-center {compact ? 'py-1' : 'py-2.5'}">
+				{#if v}
+					{@const m = cellMeta(v)}
+					{@const review = v === 'ai_unreviewed' ? reviewHref(r.slug, l.code) : null}
+					{#if review}
+						<a
+							href={review}
+							class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small transition-colors hover:bg-warning/10 hover:no-underline {m.cls}"
+							title={`Review ${r.title} → ${l.name}`}
+							aria-label={`Review the ${l.name} translation of ${r.title}`}
+						>{m.label}</a>
+					{:else}
+						<span class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small {m.cls}">{m.label}</span>
+					{/if}
+					{#if isStale(r, l.code)}
+						<span
+							class="ml-0.5 align-super text-micro text-warning"
+							title={`The English changed after this ${l.name} translation was made — re-translate or re-review`}
+							aria-label="English changed since translated">↻</span
+						>
+					{/if}
+				{:else if job}
+					<a
+						href={job.url}
+						target="_blank"
+						rel="noopener"
+						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small hover:no-underline {job.state === 'in_progress' ? 'text-warning' : 'text-accent'}"
+						title={job.state === 'in_progress'
+							? `Translating ${r.title} → ${l.name}… (open issue)`
+							: `Queued: ${r.title} → ${l.name} (open issue)`}
+					>
+						{job.state === 'in_progress' ? '◐' : '◷'}
+					</a>
+				{:else if jobsConfigured === false || !l.queueable || !canQueue}
+					<span
+						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted"
+						title={jobsConfigured === false
+							? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
+							: !canQueue
+								? `Missing: ${r.title} → ${l.name}`
+								: `${l.name} isn't a translation target — nothing to queue`}
+					>·</span>
+				{:else}
+					{@const spot = queueing === jobKey(r.slug, l.code)}
+					<button
+						type="button"
+						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted transition-colors hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-muted"
+						disabled={busy}
+						title={`Queue a ${l.name} translation of ${r.title}`}
+						aria-label={`Queue a ${l.name} translation of ${r.title}`}
+						onclick={() => queue(r.slug, l.code)}
+					>
+						{#if spot}
+							<span>…</span>
+						{:else}
+							<span class="group-hover:hidden">·</span>
+							<span class="hidden group-hover:inline">+</span>
+						{/if}
+					</button>
+				{/if}
+			</td>
+		{/each}
+	</tr>
+{/snippet}

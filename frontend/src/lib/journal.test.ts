@@ -156,6 +156,11 @@ describe('journal entries', () => {
 		expect(cleanSource({ ...src, href: 'javascript:alert(1)' })).toEqual(src);
 		expect(cleanSource({ ...src, slug: '../x' })).toBeNull();
 		expect(cleanSource({ ...src, order: 0 })).toBeNull();
+		// Every work kind the Reader writes from, articles included; nothing else.
+		for (const kind of ['sermon', 'bio', 'article']) {
+			expect(cleanSource({ ...src, kind, order: 1 })).toEqual({ ...src, kind, order: 1 });
+		}
+		expect(cleanSource({ ...src, kind: 'plan' })).toBeNull();
 	});
 
 	it('gathers open prayers under who they are for', () => {

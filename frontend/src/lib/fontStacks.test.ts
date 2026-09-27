@@ -339,7 +339,7 @@ describe('font stacks', () => {
 		// face to render in: a "letter" there is an akshara hung from the
 		// shirorekha, so `::first-letter` split `मैरी` into `मै` | `री` and broke the
 		// word's top bar across the float.
-		const rule = /\.reading > p:first-of-type([^{]*)::first-letter/.exec(APP_CSS);
+		const rule = /\.reading(?::not\(\.no-initial\))? > p:first-of-type([^{]*)::first-letter/.exec(APP_CSS);
 		expect(rule, 'the drop-cap rule is gone').not.toBeNull();
 		for (const lang of ['ar', 'hi']) {
 			expect(rule![1], `${lang} is not excluded from the floated initial`).toContain(

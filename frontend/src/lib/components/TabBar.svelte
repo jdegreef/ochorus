@@ -3,13 +3,23 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import MoreSheet from '$lib/components/MoreSheet.svelte';
+	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
+	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
 
-	/** The phone app bar, in thumb reach; the layout decides where it shows. */
+	/**
+	 * The phone app bar, in thumb reach; the layout decides where it shows.
+	 *
+	 * Home · Library · (+) · Bookshelf · More. The centre "+" is the feedback
+	 * button for a signed-in reader — it replaces the floating FeedbackFab on
+	 * phones, which used to sit on top of the "More" tab. Search is not a tab:
+	 * the top bar's search pill is always one tap away.
+	 */
 	const t = i18n.t;
 	let moreOpen = $state(false);
+	let feedbackOpen = $state(false);
 
 	/** Every browse destination counts as "Library" — the tab is the shelf. */
 	const LIBRARY = [...PRIMARY_NAV, ...ENGLISH_HUBS, ORIGINALS_DEST]
@@ -18,10 +28,12 @@
 	const routeId = $derived($page.route.id ?? '');
 	const under = (prefixes: string[]) => prefixes.some((p) => routeId === p || routeId.startsWith(`${p}/`));
 
-	const TABS = $derived<{ href: string; label: string; icon: IconName; active: boolean }[]>([
+	type Tab = { href: string; label: string; icon: IconName; active: boolean };
+	const LEFT = $derived<Tab[]>([
 		{ href: '/', label: t('nav.home'), icon: 'grid', active: routeId === '/' },
-		{ href: '/books', label: t('common.library'), icon: 'book', active: under(LIBRARY) },
-		{ href: '/search', label: t('nav.search'), icon: 'search', active: under(['/search']) },
+		{ href: '/books', label: t('common.library'), icon: 'book', active: under(LIBRARY) }
+	]);
+	const RIGHT = $derived<Tab[]>([
 		{
 			href: '/favorites',
 			label: t('fav.yourFavorites'),
@@ -29,19 +41,41 @@
 			active: under(['/favorites', '/notebook'])
 		}
 	]);
+	const showFeedback = $derived(auth.enabled && !!auth.user);
 </script>
 
+{#snippet tabLink(tab: Tab)}
+	<a
+		href={localizeHref(tab.href)}
+		class="tab"
+		class:active={tab.active}
+		aria-current={tab.active ? 'page' : undefined}
+	>
+		<span class="tab-icon"><Icon name={tab.icon} size={22} /></span>
+		<span class="tab-label">{tab.label}</span>
+	</a>
+{/snippet}
+
 <nav class="tabbar" aria-label={t('nav.tabBar')}>
-	{#each TABS as tab (tab.href)}
-		<a
-			href={localizeHref(tab.href)}
-			class="tab"
-			class:active={tab.active}
-			aria-current={tab.active ? 'page' : undefined}
-		>
-			<span class="tab-icon"><Icon name={tab.icon} size={22} /></span>
-			<span class="tab-label">{tab.label}</span>
-		</a>
+	{#each LEFT as tab (tab.href)}
+		{@render tabLink(tab)}
+	{/each}
+	{#if showFeedback}
+		<span class="tab tab-centre">
+			<button
+				class="add"
+				aria-label={t('feedback.send')}
+				title={t('feedback.send')}
+				aria-haspopup="dialog"
+				onclick={() => (feedbackOpen = true)}
+			>
+				<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"
+					stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+			</button>
+		</span>
+	{/if}
+	{#each RIGHT as tab (tab.href)}
+		{@render tabLink(tab)}
 	{/each}
 	<button
 		class="tab"
@@ -56,6 +90,9 @@
 </nav>
 
 <MoreSheet bind:open={moreOpen} />
+{#if feedbackOpen}
+	<FeedbackDialog source="fab" onClose={() => (feedbackOpen = false)} />
+{/if}
 
 <style>
 	/* Phones only. The scoped `display` lives in the media query — a `sm:hidden`
@@ -118,5 +155,44 @@
 	}
 	.tab.active .tab-icon {
 		background: var(--accent-soft);
+	}
+
+	/* The centre "+" — the same round accent button the floating FeedbackFab
+	   was, lifted a little proud of the bar so it reads as the primary action. */
+	.add {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.25rem;
+		height: 3.25rem;
+		margin-top: -1.1rem;
+		border-radius: 999px;
+		border: 1px solid var(--accent-soft-border);
+		background: var(--accent);
+		color: var(--accent-contrast);
+		box-shadow: var(--shadow-popover);
+		cursor: pointer;
+		transition:
+			transform 0.15s ease,
+			filter 0.15s ease;
+	}
+	.add:hover {
+		filter: brightness(1.06);
+	}
+	.add:active {
+		transform: scale(0.96);
+	}
+	.add:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
+	}
+	.add svg {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.add {
+			transition: none;
+		}
 	}
 </style>

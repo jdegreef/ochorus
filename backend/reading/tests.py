@@ -779,6 +779,31 @@ class WorkKindTests(TestCase):
         kinds = {(m.kind, m.book_slug) for m in ChapterMarks.objects.all()}
         self.assertEqual(kinds, {("bio", "andrew-murray"), ("bio", "c-h-spurgeon")})
 
+    def test_article_marks_and_progress_are_a_valid_kind(self):
+        # Articles read through the shared Reader too: kind="article", a single
+        # document (chapter_order 1), slug names the article.
+        res = self.client.put(
+            "/api/reading/marks/how-to-pray/1/?kind=article",
+            {"marks": [mark(0, 0, 12, note="ask God alone")]},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        row = ChapterMarks.objects.get()
+        self.assertEqual((row.kind, row.book_slug, row.chapter_order), ("article", "how-to-pray", 1))
+        res = self.client.put(
+            "/api/reading/bookmarks/article/how-to-pray/1/3/", {"snippet": "s"}, format="json"
+        )
+        self.assertEqual((res.status_code, res.data["kind"]), (200, "article"))
+        res = self.client.post(
+            "/api/reading/merge/",
+            {"progress": [{"book_slug": "how-to-pray", "kind": "article", "paragraph_index": 4}]},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(
+            ReadingProgress.objects.filter(kind="article", book_slug="how-to-pray").exists()
+        )
+
     def test_merge_carries_kind_and_skips_unknown(self):
         res = self.client.post(
             "/api/reading/merge/",

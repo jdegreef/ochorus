@@ -568,6 +568,10 @@ export interface AdminCoverageRow {
 	 * sort's demand signal. Absent on articles (no reading-layer rows) and
 	 * across the deploy window. */
 	readers?: number;
+	/** Languages whose translation was made from English that has since been
+	 * replaced — the wording may describe text that no longer exists. Bios only
+	 * today (AuthorTranslation.source_stale); absent when none. */
+	stale?: string[];
 }
 
 // A matrix column. `queueable` is true only for languages the translation-jobs
@@ -918,7 +922,7 @@ export interface EngagementOverview {
 }
 
 /** What a reading row's slug names — see WorkKind on the server. */
-export type EngagementKind = 'book' | 'sermon' | 'bio';
+export type EngagementKind = 'book' | 'sermon' | 'bio' | 'article';
 
 /** One row of the reach-vs-depth "Top content" leaderboard: a work with the
  *  four figures that read across a book, sermon or biography at once — how many
@@ -941,6 +945,8 @@ export interface EngagementTopContent {
 	book: EngagementTopRow[];
 	sermon: EngagementTopRow[];
 	bio: EngagementTopRow[];
+	/** Optional: an API from before articles joined the reading layer omits it. */
+	article?: EngagementTopRow[];
 }
 
 export interface EngagementLang extends Language {
@@ -1414,6 +1420,8 @@ export interface AdminUserDetail {
 		books: number;
 		sermons: number;
 		bios: number;
+		/** Optional: an API from before articles joined the reading layer omits it. */
+		articles?: number;
 		favorites: number;
 		highlights: number;
 		bookmarks: number;

@@ -21,9 +21,13 @@
 	 * needs from here: `bind:frac` for a progress bar, `bind:body` for an outline,
 	 * `startListening()` for a Listen button.
 	 *
-	 * `kind` namespaces every stored key — that plumbing already understands
-	 * 'book' | 'sermon' | 'bio' end to end (localStorage prefix, API, and the
-	 * Django column), so a new surface needs no migration.
+	 * `kind` namespaces every stored key — `WorkKind` ('book' | 'sermon' | 'bio'
+	 * | 'article') end to end: localStorage prefix, API, and the Django column.
+	 * A new surface of an EXISTING kind needs nothing more. A new KIND does: the
+	 * Django `WorkKind` choices (a migration), and every table keyed by kind —
+	 * the storage prefix, the Notebook's source link and clippings lane, the
+	 * reading history's titles, the data export. Articles were the last to
+	 * join; their PR is the checklist.
 	 *
 	 * WHAT LIVES WHERE. This component is scroll-position plus a place to put the
 	 * prose. Everything attached to the TEXT — marks, notes, the selection bar,
@@ -54,7 +58,7 @@
 		kind: WorkKind;
 		/** Identifies the work within its kind. For a bio, the author's slug. */
 		slug: string;
-		/** Chapters pass their order; single-document kinds (sermon, bio) get 1. */
+		/** Chapters pass their order; single-document kinds (sermon, bio, article) get 1. */
 		order?: number;
 		language: string;
 		/** Server-cleaned body HTML. Scripture refs arrive pre-wrapped. */

@@ -13,6 +13,7 @@
  */
 
 import { currentStreak, localToday } from './streak';
+import { WORK_KINDS, type WorkKind } from './reading-schema';
 
 /** A note; a prayer (a request that can be answered); or the day's guided
  *  prayer — the reader's own words for the day, carrying no prayer-list fields. */
@@ -35,7 +36,7 @@ export interface PrayerUpdate {
  * (see `sourceHref`), so nothing stored or synced can become an arbitrary href.
  */
 export interface EntrySource {
-	kind: 'book' | 'sermon' | 'bio';
+	kind: WorkKind;
 	slug: string;
 	order: number;
 	p: number;
@@ -114,13 +115,13 @@ function cleanUpdates(v: unknown): PrayerUpdate[] {
 export function cleanSource(v: unknown): EntrySource | null {
 	if (!v || typeof v !== 'object') return null;
 	const o = v as Record<string, unknown>;
-	if (o.kind !== 'book' && o.kind !== 'sermon' && o.kind !== 'bio') return null;
+	if (!WORK_KINDS.includes(o.kind as WorkKind)) return null;
 	if (typeof o.slug !== 'string' || !SLUG_RE.test(o.slug)) return null;
 	if (!Number.isInteger(o.order) || (o.order as number) < 1) return null;
 	if (!Number.isInteger(o.p) || (o.p as number) < 0) return null;
 	if (typeof o.edition !== 'string' || !o.edition || o.edition.length > 16) return null;
 	return {
-		kind: o.kind,
+		kind: o.kind as WorkKind,
 		slug: o.slug,
 		order: o.order as number,
 		p: o.p as number,

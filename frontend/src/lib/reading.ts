@@ -44,7 +44,7 @@ export function minutesLeft(words: number, frac: number): number {
 /**
  * How much of a block of prose the reader has reached, 0–1: the share of its
  * height above the viewport's bottom edge. One formula for every progress
- * hairline (Reader's `frac` behind the sermon/bio bars, the article page), so
+ * hairline (Reader's `frac` behind the sermon, bio and article bars), so
  * the same `.read-progress` fills at the same rate wherever it appears.
  */
 export function seenFraction(rect: { top: number; height: number }, viewportHeight: number): number {

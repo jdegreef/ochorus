@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { FAVORITES_KEY } from './reading-schema';
+import { BOOKMARKS_KEY, FAVORITES_KEY } from './reading-schema';
 
 /**
  * A favorited author must export under their real NAME.
@@ -17,6 +17,7 @@ vi.mock('./library-public', () => ({
 	listBooks: async () => [],
 	listSermons: async () => [],
 	listPlans: async () => [],
+	listArticlesWithFallback: async () => [{ slug: 'how-to-pray', h1: 'How to Pray So That God Answers' }],
 	listAuthors: async () => [
 		{ slug: 'j-c-ryle', name: 'J. C. Ryle' },
 		{ slug: 'andrew-murray', name: 'Andrew Murray' }
@@ -40,6 +41,16 @@ describe('favorited authors in the export', () => {
 		expect(bundle.favorites[0].kind).toBe('author');
 	});
 
+	it('titles a favorited article by its headline, as it does a read one', async () => {
+		localStorage.setItem(
+			FAVORITES_KEY,
+			JSON.stringify({ 'article:how-to-pray': Date.parse('2026-01-01T00:00:00Z') })
+		);
+
+		const bundle = await collectExport('en', '2026-08-27T00:00:00.000Z');
+		expect(bundle.favorites[0]).toMatchObject({ kind: 'article', title: 'How to Pray So That God Answers' });
+	});
+
 	it('still falls back to the slug for an author the catalog does not know', async () => {
 		localStorage.setItem(
 			FAVORITES_KEY,
@@ -48,5 +59,24 @@ describe('favorited authors in the export', () => {
 
 		const bundle = await collectExport('en', '2026-08-27T00:00:00.000Z');
 		expect(bundle.favorites[0].title).toBe('Someone Unlisted');
+	});
+});
+
+describe('bookmarks in the export', () => {
+	it('files a bookmark under its own kind, not as a book named after its key', async () => {
+		localStorage.setItem(
+			BOOKMARKS_KEY,
+			JSON.stringify({
+				'article:how-to-pray': [{ id: 'b', order: 1, p: 3, snippet: 'Most of us', title: 't', at: 1 }]
+			})
+		);
+		const bundle = await collectExport('en', '2026-08-27T00:00:00.000Z');
+		expect(bundle.works).toHaveLength(1);
+		expect(bundle.works[0]).toMatchObject({
+			kind: 'article',
+			slug: 'how-to-pray',
+			title: 'How to Pray So That God Answers'
+		});
+		expect(bundle.works[0].bookmarks).toHaveLength(1);
 	});
 });

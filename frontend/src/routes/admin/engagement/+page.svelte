@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import { workPath } from '$lib/editionHref';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import { formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 
@@ -73,22 +74,16 @@
 			: []
 	);
 
-	// Books, sermons and biographies share the slug column and link to different
-	// namespaces, so the row's kind decides the path (a bare /books/<slug> 404s
-	// for a sermon or bio). Takes just kind+slug so most-read and most-loved rows
-	// can both use it.
-	const workHref = (w: { kind: EngagementKind; slug: string }) =>
-		w.kind === 'sermon'
-			? `/sermons/${w.slug}`
-			: w.kind === 'bio'
-				? `/authors/${w.slug}`
-				: `/books/${w.slug}`;
+	// Every kind shares the slug column but not the namespace, so the row's
+	// kind decides the path (a bare /books/<slug> 404s for anything else).
+	const workHref = (w: { kind: EngagementKind; slug: string }) => workPath(w.kind, w.slug);
 
 	// Top content — one tab per readable kind, each carrying its own top works.
 	const topTabs: { key: EngagementKind; label: string }[] = [
 		{ key: 'book', label: 'Books' },
 		{ key: 'sermon', label: 'Sermons' },
-		{ key: 'bio', label: 'Authors' }
+		{ key: 'bio', label: 'Authors' },
+		{ key: 'article', label: 'Articles' }
 	];
 	let topTab = $state<EngagementKind>('book');
 	const topRows = $derived<EngagementTopRow[]>(data?.top_content[topTab] ?? []);
