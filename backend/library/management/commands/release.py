@@ -81,6 +81,11 @@ class Command(BaseCommand):
         # rather than stored unsourced when that work is not installed yet.
         self.stdout.write("→ seed_quotes")
         call_command("seed_quotes")
+        # Readers' saved highlights and bookmarks re-found by their words, after
+        # every step that can change a text (migrations, corrections, seeds).
+        # Writes only where something moved; a bad row is logged, never fatal.
+        self.stdout.write("→ remap_marks")
+        call_command("remap_marks")
         # Fixture loads bypass save(), so fill any NULL search vectors last —
         # after body_text exists and all seed steps have created their rows.
         # Citation index feeds scripture search; incremental after body edits.

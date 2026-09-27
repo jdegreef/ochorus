@@ -7,8 +7,11 @@ import type { Mark } from './reading-schema';
  * the text it covered when made. Where `q` still sits at the offsets the mark
  * is used as is; where it doesn't, it is looked for in the same block and its
  * neighbours, nearest first; where it is nowhere, the mark is detached rather
- * than painted over other words. Stored offsets are never rewritten — they are
- * the mark's identity in the server's merge — so this runs per render.
+ * than painted over other words. This runs per render and never rewrites the
+ * stored offsets: the server does that, once, in the deploy that repaired the
+ * text (backend/reading/anchor.py — same rules, keep the two in step), and its
+ * merge matches a mark by (id, lang, q) as well as offsets, so a device still
+ * holding the old ones doesn't duplicate it.
  */
 
 /** How much of a highlight's text is kept to find it again — the whole of a

@@ -125,25 +125,52 @@ def _range_key(m: dict) -> tuple:
     return (m["p"], m["s"], m["e"], m.get("lang"))
 
 
+def _anchor_key(m: dict) -> tuple | None:
+    """A mark's identity once it carries anchor text: its group, edition and
+    words. Offsets alone stop identifying it when the text is repaired — the
+    release step moves the stored copy (see ``reading.anchor``) while a device
+    that hasn't synced since still pushes the old offsets for the same mark."""
+    q = m.get("q")
+    return (m.get("id"), m.get("lang"), q) if q else None
+
+
 def merge_mark_lists(server: list[dict], incoming: list[dict]) -> list[dict]:
-    """Union two mark lists by (p, s, e, lang); on a note collision the longer
-    wins. Untagged marks (written before editions were tagged) keep merging with
-    each other, so nothing already on the server is duplicated by this change."""
-    by_range: dict[tuple, dict] = {_range_key(m): dict(m) for m in server}
-    for m in incoming:
-        key = _range_key(m)
-        existing = by_range.get(key)
+    """Union two mark lists; a mark present on both sides — same (p, s, e,
+    lang), or same (id, lang, q) — is kept once, at the SERVER's offsets (a
+    remapped mark must not be dragged back by a stale device), and on a note
+    collision the longer note wins. Untagged marks (written before editions
+    were tagged) keep merging with each other, so nothing already on the
+    server is duplicated by this change."""
+    merged: list[dict] = []
+    # One index for both identities: a range key is a 4-tuple and an anchor
+    # key a 3-tuple, so they never collide. Server marks go in first, so a
+    # mark on both sides keeps the server's offsets.
+    index: dict[tuple, dict] = {}
+    for m in [*server, *incoming]:
+        anchor = _anchor_key(m)
+        # The anchor first: after a remap a stale mark's OLD offsets can equal a
+        # different mark's NEW ones. A range match whose words differ is two
+        # marks, not one.
+        existing = anchor and index.get(anchor)
         if not existing:
-            by_range[key] = dict(m)
-            continue
-        note_new = m.get("note", "")
-        if len(note_new) > len(existing.get("note", "")):
-            existing["note"] = note_new
-        # A mark made before anchors existed gains one when a device that has
-        # anchored it pushes; an anchor once set is never replaced.
-        if m.get("q") and not existing.get("q"):
-            existing["q"] = m["q"]
-    merged = sorted(by_range.values(), key=lambda m: (m["p"], m["s"]))
+            existing = index.get(_range_key(m))
+            if existing and anchor and existing.get("q") not in (None, anchor[2]):
+                existing = None
+        if not existing:
+            existing = dict(m)
+            merged.append(existing)
+            index.setdefault(_range_key(existing), existing)
+        else:
+            note_new = m.get("note", "")
+            if len(note_new) > len(existing.get("note", "")):
+                existing["note"] = note_new
+            # A mark made before anchors existed gains one when a device that
+            # has anchored it pushes; an anchor once set is never replaced.
+            if m.get("q") and not existing.get("q"):
+                existing["q"] = m["q"]
+        if _anchor_key(existing):
+            index.setdefault(_anchor_key(existing), existing)
+    merged.sort(key=lambda m: (m["p"], m["s"]))
     # The union of two already-capped lists can reach 2× the cap. Hold the line at
     # the per-chapter bound: the union is lossless for any realistic chapter (no
     # reader makes 500 distinct highlights in one chapter), and only in
