@@ -293,7 +293,7 @@
 				<div class="cover-rail flex gap-4 pt-1 pb-2">
 					{#each series as s (s.slug)}
 						<div class="grid w-64 shrink-0">
-							<SeriesCard series={s} showDescription={false} />
+							<SeriesCard series={s} compact />
 						</div>
 					{/each}
 				</div>

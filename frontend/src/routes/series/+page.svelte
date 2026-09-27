@@ -36,9 +36,17 @@
 			{ name: t('nav.series'), href: '/series/' }
 		])
 	);
-	// Only the languages with a series: a locale with none renders an empty
-	// shelf that must not be advertised (the sitemap lists the same set).
-	const hreflang = $derived(hreflangFor('/series/', [...new Set(series.flatMap((s) => s.languages))]));
+	// Only the languages with a series (the sitemap lists the same set). A locale
+	// with none still bakes this page — the footer links it everywhere — but as
+	// an unindexed empty shelf that claims no alternates: hreflangFor would
+	// otherwise fall back to advertising every locale. `?? []` covers a list from
+	// an API that predates the field (the web build can run before the API's).
+	const languages = $derived([...new Set(series.flatMap((s) => s.languages ?? []))]);
+	const hreflang = $derived(
+		languages.length
+			? hreflangFor('/series/', languages)
+			: { alternates: [], xDefault: `${SITE_URL}${localizeHref('/series/', { locale: 'en' })}` }
+	);
 	const canonical = `${SITE_URL}${localizeHref('/series/')}`;
 </script>
 
@@ -50,6 +58,12 @@
 	ogImage={`${SITE_URL}/og/books.png`}
 	structuredData={series.length ? [seriesLd, crumbsLd] : [crumbsLd]}
 />
+
+<svelte:head>
+	{#if !series.length}
+		<meta name="robots" content="noindex" />
+	{/if}
+</svelte:head>
 
 <div class="page-col px-5 py-10">
 	<PageHeader

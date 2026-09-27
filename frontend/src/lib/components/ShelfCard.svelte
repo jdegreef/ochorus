@@ -32,6 +32,7 @@
 		portrait = '',
 		covers = [],
 		title,
+		headingLevel = 2,
 		aside,
 		children
 	}: {
@@ -45,6 +46,9 @@
 		
 		covers?: TopicCover[];
 		title: string;
+		/** 2 when the card sits directly under the page's <h1> (Topics, Plans); 3
+		 *  when it sits in a section under its own <h2> (the Books page's rail). */
+		headingLevel?: 2 | 3;
 		/** Right-aligned meta beside the title (counts, day totals). */
 		aside?: Snippet;
 		/** Body content under the title. */
@@ -97,7 +101,7 @@
 	</div>
 	<div class="shelf-card-body">
 		<div class="flex items-baseline justify-between gap-3">
-			<h2 class="shelf-card-title">{title}</h2>
+			<svelte:element this={`h${headingLevel}`} class="shelf-card-title">{title}</svelte:element>
 			{#if aside}
 				<span class="shrink-0 text-small text-muted">{@render aside()}</span>
 			{/if}
