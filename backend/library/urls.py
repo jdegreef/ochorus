@@ -8,6 +8,7 @@ from .views import (
     BookDetailView,
     BookEpubView,
     BookListView,
+    ChapterBatchView,
     ChapterDetailView,
     LanguageListView,
     OriginalsView,
@@ -90,6 +91,11 @@ urlpatterns = [
         name="book-epub",
     ),
     path("sermons/<slug:slug>/", SermonDetailView.as_view(), name="sermon-detail"),
+    path(
+        "books/<slug:slug>/chapters/",
+        ChapterBatchView.as_view(),
+        name="chapter-batch",
+    ),
     path(
         "books/<slug:slug>/chapters/<int:order>/",
         ChapterDetailView.as_view(),

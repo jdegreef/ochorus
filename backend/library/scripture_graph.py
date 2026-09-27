@@ -317,15 +317,16 @@ def scripture_links(candidates: list[str]) -> dict[str, str]:
     ``/scripture/<book>/<chapter>/`` with a trailing ``<verse>/`` for a verse
     page.
     """
-    out: dict[str, str] = {}
-    for ref, page in pages_for(candidates).items():
-        if not page:
-            continue
-        url = f"/scripture/{page['book']}/{page['chapter']}/"
-        if page.get("verse"):
-            url += f"{page['verse']}/"
-        out[ref] = url
-    return out
+    return {ref: page_url(page) for ref, page in pages_for(candidates).items() if page}
+
+
+def page_url(page: dict) -> str:
+    """A scripture page's URL: ``/scripture/<book>/<chapter>/`` with a trailing
+    ``<verse>/`` for a verse page."""
+    url = f"/scripture/{page['book']}/{page['chapter']}/"
+    if page.get("verse"):
+        url += f"{page['verse']}/"
+    return url
 
 
 #: How many of a BOOK's own chapters must treat a passage before the book page

@@ -29,7 +29,7 @@ from .scripture import book_of
 from .scripture_graph import treated_passages
 
 
-def _link_scripture(body_html: str) -> str:
+def _link_scripture(body_html: str, links: dict[str, str] | None = None) -> str:
     """Annotate a body's Bible references AND link the ones that have a page.
 
     One place so chapters, sermons and articles treat citations alike: every
@@ -42,9 +42,9 @@ def _link_scripture(body_html: str) -> str:
     from .scripture import annotate_references, reference_candidates
     from .scripture_graph import scripture_links
 
-    return annotate_references(
-        body_html, links=scripture_links(reference_candidates(body_html))
-    )
+    if links is None:
+        links = scripture_links(reference_candidates(body_html))
+    return annotate_references(body_html, links=links)
 
 #: The annotations every book card needs. ``BookListSerializer`` reads
 #: ``num_chapters`` and ``total_words`` off the instance; a queryset missing
@@ -1793,32 +1793,19 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
         chapter would offer a reader two or three stray references and call it
         an index.
         """
-        from .scripture import cited_references
-        from .scripture_graph import pages_for
-
-        if obj.book.language != "en":
-            return []
-        refs = cited_references(obj.body_html)
-        if not refs:
-            return []
-        pages = pages_for(refs)
-        return [{"ref": r, "page": pages.get(r)} for r in refs]
+        return self._batch(obj).scripture_refs(obj)
 
     def get_available_languages(self, obj):
-        return _available_languages(Book, obj.book.slug)
+        return self._batch(obj).available_languages
 
     def get_body_html(self, obj):
-        return _link_scripture(obj.body_html)
+        return _link_scripture(obj.body_html, links=self._batch(obj).scripture_links)
 
     def get_is_modern_edition(self, obj):
         return obj.book.language == MODERN_LANGUAGE
 
     def get_has_modern_edition(self, obj):
-        if obj.book.language == MODERN_LANGUAGE:
-            return True
-        if obj.book.language != "en":
-            return False
-        return _modern_edition_available(obj.book.slug)
+        return self._batch(obj).has_modern_edition
 
     class Meta:
         model = Chapter
@@ -1832,19 +1819,73 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "scripture_refs",
         ]
 
-    def _sibling(self, obj, delta):
-        sib = (
-            Chapter.objects.filter(book=obj.book, order=obj.order + delta)
-            .values("order", "title")
-            .first()
-        )
-        return sib
+    def _batch(self, obj):
+        """The run's shared lookups: ChapterBatchView supplies one for the whole
+        run; a single chapter is a run of one."""
+        batch = self.context.get("chapter_batch")
+        if batch is None or not batch.holds(obj):
+            batch = self.context["chapter_batch"] = ChapterBatch(obj.book, [obj])
+        return batch
 
     def get_prev(self, obj):
-        return self._sibling(obj, -1)
+        return self._batch(obj).siblings.get(obj.order - 1)
 
     def get_next(self, obj):
-        return self._sibling(obj, +1)
+        return self._batch(obj).siblings.get(obj.order + 1)
+
+
+class ChapterBatch:
+    """What a run of one book edition's chapters shares, looked up once.
+
+    ChapterDetailSerializer reads every per-book field from here, so the single
+    and batch endpoints (ChapterBatchView) are one code path. The scripture
+    lookup covers the union of the run's references in ONE ``pages_for`` call.
+    A superset is safe: each chapter only reads its own references, and
+    ``pages_for`` answers a reference the same whatever else is asked alongside
+    it (a citation row is fetched when it overlaps the reference's Bible
+    chapter, whichever other chapters are in the query).
+    """
+
+    def __init__(self, book, chapters):
+        from .scripture import cited_references, reference_candidates
+        from .scripture_graph import page_url, pages_for
+
+        self.available_languages = _available_languages(Book, book.slug)
+        if book.language == MODERN_LANGUAGE:
+            self.has_modern_edition = True
+        else:
+            self.has_modern_edition = book.language == "en" and _modern_edition_available(
+                book.slug
+            )
+        orders = [c.order for c in chapters]
+        self.siblings = (
+            {
+                row["order"]: row
+                for row in Chapter.objects.filter(
+                    book=book, order__gte=min(orders) - 1, order__lte=max(orders) + 1
+                ).values("order", "title")
+            }
+            if orders
+            else {}
+        )
+        # English only — see ChapterDetailSerializer.get_scripture_refs.
+        self._cited = {
+            c.pk: cited_references(c.body_html) if book.language == "en" else []
+            for c in chapters
+        }
+        candidates = [ref for c in chapters for ref in reference_candidates(c.body_html)]
+        refs = [ref for cited in self._cited.values() for ref in cited]
+        pages = pages_for(list(dict.fromkeys(candidates + refs)))
+        self.scripture_links = {
+            ref: page_url(pages[ref]) for ref in candidates if pages.get(ref)
+        }
+        self._pages = pages
+
+    def holds(self, chapter) -> bool:
+        return chapter.pk in self._cited
+
+    def scripture_refs(self, chapter):
+        return [{"ref": r, "page": self._pages.get(r)} for r in self._cited[chapter.pk]]
 
 
 class PlanListSerializer(serializers.ModelSerializer):

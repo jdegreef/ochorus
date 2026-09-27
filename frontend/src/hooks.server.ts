@@ -1,4 +1,6 @@
 import type { Handle, HandleFetch } from '@sveltejs/kit';
+import { building } from '$app/environment';
+import { createChapterBatcher } from '$lib/chapterBatch';
 import { API_BASE_URL } from '$lib/config';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { getTextDirection } from '$lib/paraglide/runtime';
@@ -35,8 +37,12 @@ export const handle: Handle = ({ event, resolve }) =>
 // stamping it grants no browser anything: browsers do real CORS against the API.
 const apiOrigin = API_BASE_URL ? new URL(API_BASE_URL).origin : null;
 
+// At build time, chapter pages are answered from batched API responses — one
+// request per 25 chapters instead of one per chapter (see $lib/chapterBatch).
+const chapterFromBatch = building && apiOrigin ? createChapterBatcher(apiOrigin) : null;
+
 export const handleFetch: HandleFetch = async ({ event, request, fetch }) => {
-	const response = await fetch(request);
+	const response = (await chapterFromBatch?.(request, fetch)) ?? (await fetch(request));
 	if (!apiOrigin || new URL(request.url).origin !== apiOrigin) return response;
 	const headers = new Headers(response.headers);
 	headers.set('access-control-allow-origin', event.url.origin);
