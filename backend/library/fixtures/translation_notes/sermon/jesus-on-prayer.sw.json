@@ -1,0 +1,129 @@
+{
+ "kind": "sermon",
+ "slug": "jesus-on-prayer",
+ "language": "sw",
+ "job_issue": 4132,
+ "references": [
+  {
+   "reference": "Matthew 6:1",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 6:5a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Matthew 6:5b",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Matthew 6:7",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 6:6a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 6:6-8",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Matthew 6:6a",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Matthew 6:6a",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Psalm 86:11b-12a",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "1 John 1:5",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "the-joy-of-the-lord.sw.json"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Matthew 6:8b",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "block_index": 50,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "filled-with-the-spirit.sw.json"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Matthew 6:7b",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Matthew 6:6b",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 55
+  }
+ ]
+}

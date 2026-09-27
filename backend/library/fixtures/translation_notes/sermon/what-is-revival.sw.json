@@ -1,0 +1,41 @@
+{
+ "kind": "sermon",
+ "slug": "what-is-revival",
+ "language": "sw",
+ "job_issue": 4138,
+ "references": [
+  {
+   "reference": "Isaiah 6:5a",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Deuteronomy 11:21b",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "faith-and-assurance.sw.json"
+  },
+  {
+   "reference": "Joshua 4:24a",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Acts 2:2",
+   "status": "self_rendered",
+   "block_index": 32
+  }
+ ]
+}

@@ -1,0 +1,143 @@
+{
+ "kind": "sermon",
+ "slug": "the-wrath-of-god",
+ "language": "sw",
+ "job_issue": 4137,
+ "references": [
+  {
+   "reference": "Ephesians 2:3b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 3:7b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 2:38a",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Matthew 3:7b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "how-to-work-for-god-with-success.sw.json"
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "what-it-costs-not-to-be-a-christian.sw.json"
+  },
+  {
+   "reference": "John 3:16b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "what-it-costs-not-to-be-a-christian.sw.json"
+  },
+  {
+   "reference": "John 3:36",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "what-it-costs-not-to-be-a-christian.sw.json"
+  },
+  {
+   "reference": "Acts 17:31a",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 1:18",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Ephesians 5:6",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Thessalonians 1:10b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Revelation 6:16b",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Corinthians 2:14a",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Romans 5:12",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 5:13",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 5:14a",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 5:15",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 5:16",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 5:18a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 5:19a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "the-unselfishness-of-god.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "behold-the-lamb-of-god.sw.json"
+  },
+  {
+   "reference": "Titus 3:3",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Ephesians 2:4-5",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "watchman-nee-a-life.sw.json"
+  }
+ ]
+}

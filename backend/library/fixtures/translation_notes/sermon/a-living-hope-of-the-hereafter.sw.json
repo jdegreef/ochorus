@@ -1,0 +1,258 @@
+{
+ "kind": "sermon",
+ "slug": "a-living-hope-of-the-hereafter",
+ "language": "sw",
+ "job_issue": 4129,
+ "references": [
+  {
+   "reference": "Ephesians 1:3",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:3",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Peter 1:3a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Peter 1:3b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Peter 1:6",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "John 21:3",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 17:18",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter 2:21b-23",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "1 Peter 5:10",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Romans 8:36b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Romans 5:3",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Galatians 4:4b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Hebrews 4:15b",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Hebrews 9:22b",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Romans 6:9-10",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Matthew 3:15",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Peter 1:23",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Ephesians 2:12c",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Romans 6:1-5",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 6:9",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Ephesians 2:4a",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Ephesians 2:5a",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Acts 13:36",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Hebrews 2:9",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "1 Peter 1:4",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Peter 1:4-5",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 19:28b",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Revelation 19:16",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Philippians 3:20-21",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Hebrews 2:8c",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Hebrews 2:9",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Revelation 5:10",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "1 Corinthians 6:2",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "1 Corinthians 6:3",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:3-4",
+   "status": "self_rendered",
+   "block_index": 6
+  }
+ ]
+}
