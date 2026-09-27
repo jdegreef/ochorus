@@ -321,7 +321,7 @@
 			style="max-width: min(max(var(--reading-measure), 32rem), 100%)"
 		>
 			<a href={localizeHref('/sermons')} class="text-small text-muted hover:text-text"
-				><span class="dir-flip" aria-hidden="true">←</span> {t('nav.sermons')}</a
+				><Arrow back /> {t('nav.sermons')}</a
 			>
 			<div class="flex shrink-0 items-center gap-1">
 				{#if outline.length >= 2}
@@ -607,7 +607,7 @@
 					href={localizeHref(`/sermons/${sermon.prev.slug}`)}
 					class="group flex-1 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
 				>
-					<div class="eyebrow text-muted"><span class="dir-flip" aria-hidden="true">←</span> {t('reader.previous')}</div>
+					<div class="eyebrow text-muted"><Arrow back /> {t('reader.previous')}</div>
 					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
 						<bdi>{sermon.prev.title}</bdi>
 					</div>
@@ -618,7 +618,7 @@
 					href={localizeHref(`/sermons/${sermon.next.slug}`)}
 					class="group flex-1 rounded-card border border-border p-3 text-end hover:border-accent hover:no-underline"
 				>
-					<div class="eyebrow text-muted">{t('reader.next')} <span class="dir-flip" aria-hidden="true">→</span></div>
+					<div class="eyebrow text-muted">{t('reader.next')} <Arrow /></div>
 					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
 						<bdi>{sermon.next.title}</bdi>
 					</div>
@@ -660,7 +660,7 @@
 
 	<nav class="mt-8 flex flex-wrap gap-3">
 		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="btn btn-ghost"
-			><span class="dir-flip" aria-hidden="true">←</span> {t('sermon.moreFrom')} <bdi>{sermon.author_name}</bdi></a
+			><Arrow back /> {t('sermon.moreFrom')} <bdi>{sermon.author_name}</bdi></a
 		>
 		<!-- The author's memorable lines: a bridge from the sermon to their quote
 		     page. English only, as the quote pages are — mirrors the book detail's

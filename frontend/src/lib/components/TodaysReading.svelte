@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
 	import { listPlans, getPlan, type PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
@@ -87,7 +88,7 @@
 				<a href={localizeHref(today.href)} class="btn btn-primary">
 					{today.isStarted ? t('plans.continue') : t('plans.start')}
 				</a>
-				<a href={localizeHref('/plans')} class="text-small font-semibold text-accent">{t('plans.all')} <span class="dir-flip" aria-hidden="true">→</span></a>
+				<a href={localizeHref('/plans')} class="text-small font-semibold text-accent">{t('plans.all')} <Arrow /></a>
 			</div>
 		</div>
 	</section>

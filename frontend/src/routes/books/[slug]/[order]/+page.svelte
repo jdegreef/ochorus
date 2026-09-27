@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { browser } from '$app/environment';
@@ -1632,7 +1633,7 @@
 			<div class="hidden min-w-0 flex-1 sm:block">
 				{#if titleSpy.visible}
 					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
-						<span class="dir-flip" aria-hidden="true">←</span> <bdi>{chapter.book_title}</bdi>
+						<Arrow back /> <bdi>{chapter.book_title}</bdi>
 					</a>
 				{:else}
 					<!-- Once the heading scrolls away, show where you are. -->
