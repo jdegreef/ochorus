@@ -91,26 +91,21 @@
 	{:else if series.length === 0}
 		<EmptyState message={t('series.none')} />
 	{:else}
-		{#if grouped}
-			{#each groups as g (g.audience ?? 'more')}
-				<section class="mb-12">
+		{#each groups as g (g.audience ?? 'more')}
+			{@const blurb = audienceBlurb(g.audience)}
+			<section class="mb-12">
+				{#if grouped}
 					<GroupHeading name={audienceName(g.audience)} count={g.series.length} />
-					{#if g.audience}
-						<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{audienceBlurb(g.audience)}</p>
+					{#if blurb}
+						<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{blurb}</p>
 					{/if}
-					<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-						{#each g.series as s (s.slug)}
-							<SeriesCard series={s} headingLevel={3} />
-						{/each}
-					</div>
-				</section>
-			{/each}
-		{:else}
-			<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-				{#each series as s (s.slug)}
-					<SeriesCard series={s} />
-				{/each}
-			</div>
-		{/if}
+				{/if}
+				<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+					{#each g.series as s (s.slug)}
+						<SeriesCard series={s} headingLevel={grouped ? 3 : 2} />
+					{/each}
+				</div>
+			</section>
+		{/each}
 	{/if}
 </div>

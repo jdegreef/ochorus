@@ -699,6 +699,12 @@ def _series_languages(series, held: set[str]) -> list[str]:
     return sorted(named & held)
 
 
+def _series_for(series) -> dict:
+    """Who a series is for — the index's group — and its age range: "" / null
+    where it hasn't been given one. Shared by the list and the page."""
+    return {"audience": series.audience, "min_age": series.min_age, "max_age": series.max_age}
+
+
 class SeriesListView(PublicContentCacheMixin, APIView):
     """Every series with a page in the requested language — the /series index,
     the Books page's Book Series shelf, the prerender's entries and the sitemap.
@@ -734,11 +740,7 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                         "title": title,
                         "description": series.description_for(language),
                         "book_count": len(books),
-                        # Who it's for — the index's group — and an age range,
-                        # both "" / null where the series hasn't been given one.
-                        "audience": series.audience,
-                        "min_age": series.min_age,
-                        "max_age": series.max_age,
+                        **_series_for(series),
                         "covers": [_book_cover(b) for b in books[: self.COVERS]],
                         # Every book, in reading order — the reader's progress
                         # through the series is read against these on the card.
@@ -769,9 +771,7 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
                 "title": title,
                 "description": series.description_for(language),
                 "ordered": ordered,
-                "audience": series.audience,
-                "min_age": series.min_age,
-                "max_age": series.max_age,
+                **_series_for(series),
                 "books": BookListSerializer(
                     books,
                     many=True,

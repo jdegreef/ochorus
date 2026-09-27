@@ -134,6 +134,9 @@ export function seriesAmong<S extends Pick<SeriesSummary, 'slug'>>(
 	return series.filter((s) => present.has(s.slug));
 }
 
+/** Covers in a series card's fan — the API's `SeriesListView.COVERS`. */
+const SERIES_FAN = 4;
+
 /**
  * Series cards built from a shelf's own books — a topic page's "Book Series"
  * row, with no call for the series list (the prerender renders every topic in
@@ -142,9 +145,6 @@ export function seriesAmong<S extends Pick<SeriesSummary, 'slug'>>(
  * series, in reading order; there is no description, which the compact card
  * doesn't show.
  */
-/** Covers in a series card's fan — the API's `SeriesListView.COVERS`. */
-const SERIES_FAN = 4;
-
 export function seriesFromBooks(
 	books: Pick<BookSummary, 'slug' | 'title' | 'cover_url' | 'cover_color' | 'series'>[]
 ): SeriesSummary[] {
@@ -165,7 +165,8 @@ export function seriesFromBooks(
 	}));
 }
 
-/** The index's audience groups, in reading-age order. */
+/** The index's audience groups, in reading-age order — the API's
+ *  `Series.Audience` choices (models.py); keep the two lists in step. */
 export const SERIES_AUDIENCES: readonly SeriesAudience[] = ['young_readers', 'teens', 'adults'];
 
 /**
@@ -193,20 +194,21 @@ export function seriesAges(s: Pick<SeriesFor, 'min_age' | 'max_age'>): string {
 		: m.series_ages({ min: s.min_age, max: s.max_age });
 }
 
-const AUDIENCE_NAME: Record<SeriesAudience, () => string> = {
-	young_readers: m.series_audience_young_readers,
-	teens: m.series_audience_teens,
-	adults: m.series_audience_adults
-};
-const AUDIENCE_BLURB: Record<SeriesAudience, () => string> = {
-	young_readers: m.series_audience_young_readers_desc,
-	teens: m.series_audience_teens_desc,
-	adults: m.series_audience_adults_desc
+// Static `m.*` references, not a built key: Paraglide type-checks and
+// tree-shakes these.
+const AUDIENCE_COPY: Record<SeriesAudience, { name: () => string; blurb: () => string }> = {
+	young_readers: {
+		name: m.series_audience_young_readers,
+		blurb: m.series_audience_young_readers_desc
+	},
+	teens: { name: m.series_audience_teens, blurb: m.series_audience_teens_desc },
+	adults: { name: m.series_audience_adults, blurb: m.series_audience_adults_desc }
 };
 
 /** An index group's heading: the audience, or "More book series" for the rest. */
 export const audienceName = (a: SeriesAudience | null): string =>
-	a ? AUDIENCE_NAME[a]() : m.series_more();
+	a ? AUDIENCE_COPY[a].name() : m.series_more();
 
-/** The line under an audience heading; none for the untagged group. */
-export const audienceBlurb = (a: SeriesAudience | null): string => (a ? AUDIENCE_BLURB[a]() : '');
+/** The line under an audience heading; "" for the untagged group. */
+export const audienceBlurb = (a: SeriesAudience | null): string =>
+	a ? AUDIENCE_COPY[a].blurb() : '';
