@@ -154,3 +154,14 @@ a fix.
   any language.
 - **Repo weight.** Each PDF is ~1–2 MB committed; 38 of Gareth's added ~64 MB.
 - **Life dates** print `1847–1929`; a living author prints `1938–`.
+- **Exporting from a Linux cloud container** (no macOS fonts, runs as root).
+  Chrome refuses to start as root without `--no-sandbox`, and it can't fetch
+  the Google Fonts `<link>` through the agent proxy, so the PDF silently falls
+  back to Liberation Serif (and FreeSans/FreeMono for Devanagari, with broken
+  matras). Point `CHROME_PATH` at a wrapper that adds `--no-sandbox` and sets
+  `FONTCONFIG_FILE` to a conf listing only `~/.fonts` + dejavu + liberation,
+  with STATIC instances of EB Garamond (400, 600, 400 italic) and Noto Sans
+  Devanagari in `~/.fonts` (instance the google/fonts variable TTFs with
+  `fontTools.varLib.instancer` — raw variable fonts embed as Type 3). Then
+  check the embedded fonts: every Latin PDF should list only
+  `EBGaramond-*`, and Hindi should add `NotoSansDevanagari-*`.
