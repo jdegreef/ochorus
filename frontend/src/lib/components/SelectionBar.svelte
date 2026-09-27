@@ -73,10 +73,11 @@
 	 * selection handles sit exactly where a floating bar went, and it covered
 	 * the words being selected.
 	 */
-	const coarse = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
-	/** A single word the bar can offer a definition for (touch only; see update). */
+	/** Decided by the gesture that made the selection (a hybrid device can be
+	 *  either); a keyboard selection falls back to the primary pointer. */
+	let touch = $state(typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches);
+	/** A single word the docked bar offers a definition for (see update). */
 	let defineWord = $state('');
-	let defineAt = { top: 0, left: 0 };
 
 	/**
 	 * A pointer-driven selection in progress. Its intermediate states are not
@@ -114,25 +115,20 @@
 			container.contains(sel.anchorNode) &&
 			container.contains(sel.focusNode);
 
-		// A single selected word (double-click / mobile long-press) opens the
-		// definition popover instead of the action bar — but only where a
-		// definition can actually exist. The glossary and the dictionary behind
-		// it are English, so this stays Latin-script on purpose; \p{Script=Latin}
-		// rather than [A-Za-z] so accented Spanish and Swahili words qualify.
+		// A single selected word (double-click) opens the definition popover
+		// instead of the action bar — only where a definition can exist: the
+		// dictionary is English, so ReaderOverlays passes `onDefine` for English
+		// editions alone, and this is Latin-script (accents and all) on top.
 		//
 		// Anything else — an Arabic word, say — deliberately FALLS THROUGH to the
 		// action bar below, which is the part that must work in every language.
 		// Routing it here instead would strip it to nothing and show neither.
-		const oneWord = inContainer && !!onDefine && /^[\p{Script=Latin}\p{M}’'-]{2,}$/u.test(text);
-		defineWord = '';
+		const define = inContainer && /^[\p{Script=Latin}\p{M}’'-]{2,}$/u.test(text) ? onDefine : undefined;
 		// On a phone a long-press selects one word by default, so opening the
 		// dictionary for it made a single word impossible to highlight or copy.
 		// There the bar opens as usual and offers the definition as a button.
-		if (oneWord && coarse) {
-			const r = sel!.getRangeAt(0).getBoundingClientRect();
-			defineWord = text;
-			defineAt = { top: r.bottom + window.scrollY, left: r.left + window.scrollX + r.width / 2 };
-		} else if (oneWord) {
+		defineWord = define && touch ? text : '';
+		if (define && sel && !touch) {
 			visible = false;
 			// DEFERRED, never immediate. `selectionchange` fires on every
 			// intermediate state of a drag, so starting a drag mid-word — inside
@@ -145,8 +141,8 @@
 			const word = text;
 			const top = rect.bottom + window.scrollY;
 			const left = rect.left + window.scrollX + rect.width / 2;
-			if (immediate) onDefine!(word, top, left);
-			else defineTimer = setTimeout(() => onDefine!(word, top, left), DEFINE_SETTLE_MS);
+			if (immediate) define(word, top, left);
+			else defineTimer = setTimeout(() => define(word, top, left), DEFINE_SETTLE_MS);
 			return;
 		}
 
@@ -167,13 +163,15 @@
 		}
 		selectedText = text;
 		segments = segmentsFromSelection(container, sel);
-		const rect = sel.getRangeAt(0).getBoundingClientRect();
-
-		place(rect);
 		copied = false;
 		visible = true;
-		// Now that it is drawn with this selection's buttons, place it by its real size.
-		tick().then(() => place(rect));
+		// Docked, CSS places it; floating, it goes by the selection — and again
+		// once it is drawn with this selection's buttons, by its real size.
+		if (!touch) {
+			const rect = sel.getRangeAt(0).getBoundingClientRect();
+			place(rect);
+			tick().then(() => place(rect));
+		}
 	}
 
 	/**
@@ -183,7 +181,6 @@
 	 * selection near either margin ran half off-screen.
 	 */
 	function place(rect: DOMRect) {
-		if (coarse) return; // docked: CSS places it
 		const width = bar?.offsetWidth || FIRST_WIDTH;
 		const height = bar?.offsetHeight || FIRST_HEIGHT;
 		below = rect.top < HEADER_OFFSET + height + 8;
@@ -275,7 +272,10 @@
 
 <svelte:document
 	onselectionchange={() => update()}
-	onpointerdown={() => (dragging = true)}
+	onpointerdown={(e) => {
+		dragging = true;
+		touch = e.pointerType !== 'mouse';
+	}}
 	onpointerup={settle}
 	onpointercancel={settle}
 />
@@ -294,8 +294,8 @@
 		bind:this={bar}
 		class="selbar"
 		class:below
-		class:docked={coarse}
-		style={coarse ? undefined : `top: ${top}px; left: ${left}px`}
+		class:docked={touch}
+		style={touch ? undefined : `top: ${top}px; left: ${left}px`}
 		role="toolbar"
 		aria-label={t('a11y.selectionActions')}
 		tabindex="-1"
@@ -306,7 +306,9 @@
 				<button
 					class="selbar-btn"
 					onclick={() => {
-						onDefine?.(defineWord, defineAt.top, defineAt.left);
+						const sel = window.getSelection();
+						const r = sel?.rangeCount ? sel.getRangeAt(0).getBoundingClientRect() : null;
+						if (r) onDefine?.(defineWord, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
 						visible = false;
 					}}>{t('reader.definition')}</button
 				>
@@ -371,20 +373,6 @@
 {/if}
 
 <style>
-	/* Docked above the reader's footer on touch screens (see `coarse`). Fixed,
-	   not absolute: it stays put while the reader adjusts the selection. */
-	.selbar.docked {
-		position: fixed;
-		top: auto;
-		inset-inline: 0.75rem;
-		bottom: calc(var(--foot-h, calc(3.5rem + env(safe-area-inset-bottom))) + 0.5rem);
-		/* Between the insets, not max-content: the floating bar sizes to its
-		   rows, but docked it spans the column and its buttons wrap inside it. */
-		width: auto;
-		max-width: none;
-		white-space: normal;
-		transform: none;
-	}
 	.selbar {
 		position: absolute;
 		z-index: 40;
@@ -423,6 +411,19 @@
 	/* Flipped under the selection — see `below` in update(). */
 	.selbar.below {
 		transform: translate(-50%, 0);
+	}
+	/* Docked above the reader's footer on touch screens (see `touch`). Fixed,
+	   not absolute: it stays put while the reader adjusts the selection. */
+	.selbar.docked {
+		position: fixed;
+		inset-inline: 0.75rem;
+		bottom: calc(var(--foot-h, calc(3.1rem + env(safe-area-inset-bottom))) + 0.5rem);
+		/* Between the insets, not max-content: the floating bar sizes to its
+		   rows, but docked it spans the column and its buttons wrap inside it. */
+		width: auto;
+		max-width: none;
+		white-space: normal;
+		transform: none;
 	}
 	.selbar-btn {
 		padding: 0.35rem 0.6rem;

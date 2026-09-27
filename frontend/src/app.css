@@ -2183,7 +2183,12 @@ input[type='search'].field {
 	background-size: 1rem;
 	padding-inline-start: 2.1rem;
 }
-/* Mirror a directional icon (back/previous/next chevrons) under RTL. */
+/* Mirror a directional icon or arrow glyph (back/previous/next) under RTL.
+   Chevron Icons get the class themselves (Icon's `mirror`); a text arrow in a
+   span needs a box to transform, hence inline-block. */
+.dir-flip {
+	display: inline-block;
+}
 [dir='rtl'] .dir-flip {
 	transform: scaleX(-1);
 }

@@ -87,7 +87,7 @@
 				<a href={localizeHref(today.href)} class="btn btn-primary">
 					{today.isStarted ? t('plans.continue') : t('plans.start')}
 				</a>
-				<a href={localizeHref('/plans')} class="text-small font-semibold text-accent">{t('plans.all')} <span class="inline-block dir-flip" aria-hidden="true">→</span></a>
+				<a href={localizeHref('/plans')} class="text-small font-semibold text-accent">{t('plans.all')} <span class="dir-flip" aria-hidden="true">→</span></a>
 			</div>
 		</div>
 	</section>

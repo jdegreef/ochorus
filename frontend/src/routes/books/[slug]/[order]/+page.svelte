@@ -1560,7 +1560,7 @@
 					class="btn btn-icon btn-ghost min-w-11 shrink-0"
 					aria-label={t('reader.backToContents')}
 					title={t('reader.backToContents')}
-					><Icon name="chevron-left" size={20} class="dir-flip" /></a
+					><Icon name="chevron-left" size={20} /></a
 				>
 				<div class="min-w-0 flex-1 text-center">
 					<div class="truncate text-small font-semibold text-text">{chapter.book_title}</div>
@@ -1632,7 +1632,7 @@
 			<div class="hidden min-w-0 flex-1 sm:block">
 				{#if titleSpy.visible}
 					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
-						<span class="inline-block dir-flip" aria-hidden="true">←</span> <bdi>{chapter.book_title}</bdi>
+						<span class="dir-flip" aria-hidden="true">←</span> <bdi>{chapter.book_title}</bdi>
 					</a>
 				{:else}
 					<!-- Once the heading scrolls away, show where you are. -->
@@ -1645,7 +1645,7 @@
 						href={chapterHref(chapter.prev.order)}
 						class="btn btn-icon btn-ghost"
 						aria-label={t('reader.previous')}
-						title={t('reader.previous')}><Icon name="chevron-left" size={18} class="dir-flip" /></a
+						title={t('reader.previous')}><Icon name="chevron-left" size={18} /></a
 					>
 				{/if}
 				{#if chapter.next}
@@ -1653,7 +1653,7 @@
 						href={chapterHref(chapter.next.order)}
 						class="btn btn-icon btn-ghost"
 						aria-label={t('reader.next')}
-						title={t('reader.next')}><Icon name="chevron-right" size={18} class="dir-flip" /></a
+						title={t('reader.next')}><Icon name="chevron-right" size={18} /></a
 					>
 				{/if}
 				{#if chapter.has_modern_edition}
@@ -2065,7 +2065,7 @@
 		<div class="foot-actions" class:folded={hideChrome}>
 			{#if chapter.prev}
 				<a href={chapterHref(chapter.prev.order)} class="foot-btn"
-					><Icon name="chevron-left" size={22} class="dir-flip" /><span>{t('reader.previous')}</span></a
+					><Icon name="chevron-left" size={22} /><span>{t('reader.previous')}</span></a
 				>
 			{:else}
 				<span class="foot-btn" aria-hidden="true"></span>
@@ -2088,7 +2088,7 @@
 			>
 			{#if chapter.next}
 				<a href={chapterHref(chapter.next.order)} class="foot-btn foot-next"
-					><Icon name="chevron-right" size={22} class="dir-flip" /><span>{t('reader.next')}</span></a
+					><Icon name="chevron-right" size={22} /><span>{t('reader.next')}</span></a
 				>
 			{:else}
 				<span class="foot-btn" aria-hidden="true"></span>

@@ -45,18 +45,24 @@
 		size = 18,
 		label,
 		strokeWidth = 1.8,
-		class: klass = ''
+		class: klass = '',
+		mirror = true
 	}: {
 		name: IconName;
 		size?: number;
 		label?: string;
 		strokeWidth?: number;
 		class?: string;
+		/** A back/forward chevron points the other way in a right-to-left
+		 *  locale — by default. Pass false for one that only rotates (a
+		 *  disclosure), which a flip would fight. */
+		mirror?: boolean;
 	} = $props();
+	const directional = $derived(mirror && (name === 'chevron-left' || name === 'chevron-right'));
 </script>
 
 <svg
-	class={klass}
+	class="{klass}{directional ? ' dir-flip' : ''}"
 	width={size}
 	height={size}
 	viewBox="0 0 24 24"
