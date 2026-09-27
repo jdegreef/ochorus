@@ -1,0 +1,182 @@
+{
+ "kind": "sermon",
+ "slug": "the-greatest-of-these-is-love",
+ "language": "sw",
+ "job_issue": 4148,
+ "references": [
+  {
+   "reference": "Matthew 5:14a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "John 14:2a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Micah 7:19b",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Galatians 5:22a",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Matthew 5:44a",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "1 Corinthians 13:13b",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Romans 5:5b",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "1 Corinthians 13:2a",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "1 Corinthians 13:2b",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Corinthians 13:3",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Corinthians 13:4a",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 13:6",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "1 Corinthians 13:8a",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Psalm 103:11",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "John 12:46",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Hebrews 1:14",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "2 Kings 6:16b",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Jeremiah 1:12b",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "2 Corinthians 1:20a",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Matthew 6:15",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Ephesians 5:18b",
+   "status": "mined",
+   "block_index": 150,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Psalm 139:23a",
+   "status": "mined",
+   "block_index": 154,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "John 8:11b",
+   "status": "self_rendered",
+   "block_index": 160
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "self_rendered",
+   "block_index": 174
+  },
+  {
+   "reference": "Revelation 21:4a",
+   "status": "self_rendered",
+   "block_index": 174
+  },
+  {
+   "reference": "Habakkuk 2:14",
+   "status": "self_rendered",
+   "block_index": 174
+  },
+  {
+   "reference": "Deuteronomy 33:27a",
+   "status": "self_rendered",
+   "block_index": 175
+  },
+  {
+   "reference": "Matthew 11:28a",
+   "status": "self_rendered",
+   "block_index": 186
+  },
+  {
+   "reference": "2 Timothy 1:7",
+   "status": "self_rendered",
+   "block_index": 190
+  }
+ ]
+}

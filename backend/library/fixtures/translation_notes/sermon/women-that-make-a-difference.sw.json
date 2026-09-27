@@ -1,0 +1,101 @@
+{
+ "kind": "sermon",
+ "slug": "women-that-make-a-difference",
+ "language": "sw",
+ "job_issue": 4157,
+ "references": [
+  {
+   "reference": "Mark 10:44",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 16:13",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Luke 1:38a",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 2:16b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Mark 16:15b",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 50,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Isaiah 43:3a",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Philippians 3:4b",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Philippians 3:7",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Philippians 3:9",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Philippians 3:10a",
+   "status": "self_rendered",
+   "block_index": 58
+  }
+ ]
+}

@@ -1,0 +1,55 @@
+{
+ "kind": "sermon",
+ "slug": "power-in-prayer",
+ "language": "sw",
+ "job_issue": 4147,
+ "references": [
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "prayer-the-pulse-of-life.sw.json"
+  },
+  {
+   "reference": "1 Timothy 2:2",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 12:2a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 17:20",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 12:46",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Jeremiah 1:12",
+   "status": "self_rendered",
+   "block_index": 65
+  }
+ ]
+}

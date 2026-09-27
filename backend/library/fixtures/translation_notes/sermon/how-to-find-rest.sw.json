@@ -1,0 +1,164 @@
+{
+ "kind": "sermon",
+ "slug": "how-to-find-rest",
+ "language": "sw",
+ "job_issue": 4154,
+ "references": [
+  {
+   "reference": "John 14:27a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 14:27a",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 9:28b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 4:15a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Psalm 103:14",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Corinthians 12:29",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 13:4",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 11:28a",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Matthew 11:28b",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Matthew 11:29a",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "John 4:34",
+   "status": "mined",
+   "block_index": 76,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "John 4:32",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "John 14:10",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "John 5:19",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Hebrews 10:7",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Psalm 16:5",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Matthew 11:29b",
+   "status": "mined",
+   "block_index": 95,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Matthew 11:29b",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Matthew 11:29b",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "Luke 12:15",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Psalm 107:9",
+   "status": "mined",
+   "block_index": 106,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 108
+  }
+ ]
+}
