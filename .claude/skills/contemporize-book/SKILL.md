@@ -89,7 +89,9 @@ How the reader surfaces it (PR, 2026-07-17):
   1:1). Highlights are tagged with the edition they were made on (`lang`), so
   one made on the original never paints over the modern text, and each carries
   its words (`q`) so a later wording fix re-finds them or shows them as
-  "text changed" instead of drifting (lib/markAnchor.ts).
+  "text changed" instead of drifting (lib/markAnchor.ts). The deploy then
+  moves the stored highlights and bookmarks to match (`remap_marks` release
+  step, reading/anchor.py), so a wording fix needs no reader-data migration.
 
 ## Extending the light map
 
