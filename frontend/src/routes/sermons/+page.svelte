@@ -158,6 +158,8 @@
 	// The query and topic stay out: both are visible outside the sheet.
 	const sheetCount = $derived([filters.values.book, filters.values.len].filter(Boolean).length);
 	let sheetOpen = $state(false);
+	// The sheet's own clear: what the badge counts, not the query or topic.
+	const clearSheet = () => ((filters.values.book = ''), (filters.values.len = ''));
 
 	// Clears what narrows the shelf, not how it is arranged — the grouping and
 	// sort are the reader's own preference (localStorage) and survive.
@@ -183,9 +185,15 @@
 	// Hydrated after mount, not during load: the page is prerendered, so reading
 	// localStorage while rendering would desync the static HTML from the client.
 	onMount(() => {
+		// The sheet is the phone layout's; rotating past md shows the row again,
+		// so close it rather than leave it over controls it duplicates.
+		const wide = matchMedia('(min-width: 768px)');
+		const onWide = () => wide.matches && (sheetOpen = false);
+		wide.addEventListener('change', onWide);
 		const p = readJSON<{ group?: Group; sort?: Sort }>(PREFS_KEY, {});
 		if (p.group) group = p.group;
 		if (p.sort) sort = p.sort;
+		return () => wide.removeEventListener('change', onWide);
 	});
 	const save = () => writeJSON(PREFS_KEY, { group, sort });
 	const setGroup = (g: Group) => ((group = g), save());
@@ -300,8 +308,8 @@
 
 		<!-- Phone only: the rest of the controls live in a bottom sheet, so the
 		     row is one line. The badge counts what the sheet is narrowing by, so
-		     a closed sheet can't hide that the list is filtered (Biographies'
-		     rule). "Filters" is the Biographies key — the same word, translated. -->
+		     a closed sheet can't hide that the list is filtered. It counts
+		     only the sheet's filters — the query and topic show outside it. "Filters" is the Biographies key — the same word, translated. -->
 		<button
 			class="chip flex shrink-0 items-center gap-1.5 md:hidden"
 			onclick={() => (sheetOpen = true)}
@@ -332,7 +340,12 @@
 				{/each}
 			</select>
 
-			<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+			<select
+				value={sort}
+				onchange={(e) => setSort(e.currentTarget.value as Sort)}
+				class="filter-field"
+				aria-label={t('common.sort')}
+			>
 				{#each SORTS as [value, key] (value)}
 					<option {value}>{t(key)}</option>
 				{/each}
@@ -440,9 +453,9 @@
 	</div>
 {/snippet}
 
-<!-- Outside .page-col: on phones that column carries a transform, which
-     would make it the containing block of the sheet's position:fixed and push
-     the sheet below the fold.
+<!-- Outside .page-col: that column is centred with a transform, which makes
+     it the containing block of the sheet's position:fixed and pushes the sheet
+     below the fold.
 
      The phone filter sheet (mobile mockup 6): the row's controls, stacked
      and thumb-sized — length and sort as chips (every option one tap, no
@@ -450,7 +463,7 @@
      It edits the live filters directly, so the count on the Show button is
      the list the reader returns to. -->
 <DrawerShell bind:open={sheetOpen} title={t('bios.filters')} placement="bottom">
-	<div class="sheet-body">
+	<div class="sheet-scroll filter-sheet">
 		<select
 			bind:value={filters.values.book}
 			aria-label={t('sermons.allBooks')}
@@ -485,9 +498,9 @@
 		{@render groupSeg()}
 
 		<div class="mt-2 flex gap-2">
-			<button class="btn btn-ghost" onclick={clearFilters} disabled={!filtering}
-				>{t('common.clearFilters')}</button
-			>
+			<!-- Never disabled: disabling the focused button on click would drop
+			     focus out of the sheet's focus trap. -->
+			<button class="btn btn-ghost" onclick={clearSheet}>{t('common.clearFilters')}</button>
 			<button class="btn btn-primary grow" onclick={() => (sheetOpen = false)}
 				>{(filtered.length === 1 ? t('sermons.showOne') : t('sermons.showMany')).replace(
 					'%n%',
@@ -506,23 +519,14 @@
 	.sermon-shell {
 		--pinned-offset: var(--appnav-h, 0px);
 	}
-	/* The phone filter sheet's body: stacked groups, room above the home bar.
-	   Chips and buttons get the 44px thumb height the popover sizes skip. */
-	.sheet-body {
+	/* The phone filter sheet: stacked groups (the scroll + home-bar room is
+	   the shared .sheet-scroll; the 44px touch height is app.css's coarse rule). */
+	.filter-sheet {
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
-		overflow-y: auto;
-		overscroll-behavior: contain;
-		padding: 1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
 	}
-	.sheet-body .chip,
-	.sheet-body .btn,
-	.sheet-body .seg button,
-	.sheet-body select {
-		min-height: 2.75rem;
-	}
-	.sheet-body .seg button {
+	.filter-sheet .seg button {
 		flex: 1 1 0;
 	}
 	@media (min-width: 768px) {

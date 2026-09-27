@@ -331,7 +331,7 @@
 
 {#if sheet}
 	<DrawerShell bind:open={readerUi.panelOpen} title={t('reader.textSettings')} placement="bottom">
-		<div class="rc-sheet">{@render panelBody()}</div>
+		<div class="rc-sheet sheet-scroll">{@render panelBody()}</div>
 	</DrawerShell>
 {:else}
 	<div
@@ -378,11 +378,6 @@
 	}
 
 	/* --- Phone bottom sheet (`sheet`): the body inside DrawerShell. ------- */
-	.rc-sheet {
-		overflow-y: auto;
-		overscroll-behavior: contain;
-		padding: 1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
-	}
 	/* Thumb-sized choices: the popover's compact rows are ~30px, under the
 	   44px a finger needs. */
 	.rc-sheet .rc-opt,

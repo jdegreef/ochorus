@@ -30,7 +30,7 @@
 
 <DrawerShell bind:open title={t('nav.more')} placement="bottom">
 	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-	<div class="more-body" onclick={closeOnLink}>
+	<div class="sheet-scroll" onclick={closeOnLink}>
 		{#if auth.enabled && !auth.user}
 			<!-- The site's account-band copy (see AccountCta), plus sign-in: the
 			     top bar's Sign in button is hidden where this sheet exists. -->
@@ -86,11 +86,6 @@
 </DrawerShell>
 
 <style>
-	.more-body {
-		overflow-y: auto;
-		overscroll-behavior: contain;
-		padding: 1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
-	}
 	.more-card {
 		margin-bottom: 0.5rem;
 		padding: 1rem;

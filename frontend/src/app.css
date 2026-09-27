@@ -2253,6 +2253,14 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	}
 }
 
+/* The scrolling body of a DrawerShell bottom sheet: scrolls inside the
+   85vh-capped panel without dragging the page, and clears the home bar. */
+.sheet-scroll {
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	padding: 1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
+}
+
 /* Filter chip — the pill rows (topics on Books, length on Plans). */
 .chip {
 	border: 1px solid var(--border-strong);
