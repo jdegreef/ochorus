@@ -1,6 +1,6 @@
 import re
 
-from django.db.models import Count, Sum
+from django.db.models import Count, QuerySet, Sum
 from django.urls import reverse
 from django.utils.text import slugify
 from rest_framework import serializers
@@ -452,10 +452,13 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
         cached_for, cached = getattr(self, "_series_map", (None, None))
         if cached_for != obj.language:
             # The shelf's books when this is a `many=True` card (a ListSerializer
-            # parent holds the whole list); else just this book's series.
+            # parent holds the whole list); else just this book's series. Only a
+            # re-iterable instance: walking a one-shot iterator here would eat
+            # the cards the parent is still serializing.
             shelf = (
                 self.parent.instance
                 if isinstance(self.parent, serializers.ListSerializer)
+                and isinstance(self.parent.instance, (list, tuple, QuerySet))
                 else None
             )
             ids = {b.series_id for b in shelf if b.series_id} if shelf is not None else {obj.series_id}

@@ -237,3 +237,10 @@ class BookCardSeriesTests(TestCase):
         self.assertIsNone(self._cards("sw")["bfg-1"])  # no Swahili name
         SeriesTranslation.objects.create(series=self.series, language="sw", title="Jasiri")
         self.assertEqual(self._cards("sw")["bfg-1"]["title"], "Jasiri")
+
+    def test_the_series_page_cards_skip_the_line_it_would_repeat(self):
+        self._book("bfg-1", 1)
+        body = self.client.get(
+            "/api/library/series/brave-for-god/?language=en", HTTP_HOST="localhost"
+        ).json()
+        self.assertIsNone(body["books"][0]["series"])
