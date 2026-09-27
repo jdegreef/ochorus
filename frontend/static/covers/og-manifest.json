@@ -935,12 +935,12 @@
 			"bar": 0
 		},
 		"christ-the-healer": {
-			"ground": "3665cd4c0242c1b979140b0a7b44edab0c188531f31c9c8789533fe477c2e61d",
+			"ground": "f5df876fa65a27ae7b09910fe32a716991ac8bf5aa6bafdb323ba554f2498083",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -1635,12 +1635,12 @@
 			"bar": 0
 		},
 		"ever-increasing-faith": {
-			"ground": "93e56f9ada3df1cd429e853672e85efac93753cfa55227b875b8caa006a59fc6",
+			"ground": "4d4410b07575de10f9389f570bce0df1e74df33f73b50b1e5350a1de60b78d64",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0
 		},
