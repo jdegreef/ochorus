@@ -55,7 +55,8 @@
 		plan: 'fav.groupPlans',
 		sermon: 'fav.groupSermons'
 	};
-	const ICON = { book: 'book', author: 'book', plan: 'calendar', sermon: 'mic' } as const;
+	// Rows with no cover or portrait: a plan, a sermon, a book not in this language.
+	const ICON = { book: 'book', plan: 'calendar', sermon: 'mic' } as const;
 
 	let books = $state<BookSummary[]>([]);
 	let authors = $state<Record<string, AuthorBio>>({});
@@ -115,11 +116,15 @@
 			...kinds.map((k) => ({ value: k, label: t(FILTER_LABEL[k]), count: counts.get(k)! }))
 		];
 	});
-	const shown = $derived(
-		(filter === 'all' ? rows : rows.filter((r) => r.kind === filter)).slice(0, LIMIT)
-	);
+	// A kind can empty while picked (un-hearted here, or by a sync) — its pill
+	// goes with it, so fall back to All rather than strand an empty list.
+	const active = $derived(pills.some((p) => p.value === filter) ? filter : 'all');
+	const matching = $derived(active === 'all' ? rows : rows.filter((r) => r.kind === active));
+	const shown = $derived(matching.slice(0, LIMIT));
 
-	const when = (ts: number) => relativeTime(ts, getLang(), t('settings.syncJustNow'));
+	// Clamped: a synced time from a device whose clock runs ahead is not "in 3 minutes".
+	const when = (ts: number) =>
+		relativeTime(Math.min(ts, Date.now()), getLang(), t('settings.syncJustNow'));
 
 	/** The status column: where the reader stands with a book. */
 	function status(r: LedgerRow): string {
@@ -127,6 +132,8 @@
 		if (!s) return '';
 		if (s.status === 'finished') return t('fav.shelfFinished');
 		if (s.status === 'toRead') return t('fav.shelfToRead');
+		// Resting on /favorites' Paused shelf — say so here too.
+		if (s.paused) return t('fav.shelfPaused');
 		return `${s.pct}%`;
 	}
 
@@ -154,8 +161,8 @@
 					<button
 						type="button"
 						class="chip"
-						class:active={filter === p.value}
-						aria-pressed={filter === p.value}
+						class:active={active === p.value}
+						aria-pressed={active === p.value}
 						onclick={() => (filter = p.value)}
 					>
 						{p.label}
@@ -172,7 +179,7 @@
 						href={localizeHref(r.href)}
 						class="ledger-row group grid items-center gap-x-4 px-1 py-3 text-text hover:no-underline sm:gap-x-5 sm:px-2"
 					>
-						<span class="font-display text-small text-border-strong tabular-nums" aria-hidden="true"
+						<span class="font-display text-small text-muted tabular-nums" aria-hidden="true"
 							>{String(i + 1).padStart(2, '0')}</span
 						>
 
@@ -222,7 +229,7 @@
 						</span>
 
 						<span class="flex items-center justify-end gap-2.5 sm:justify-start">
-							{#if r.shelf?.status === 'reading'}
+							{#if r.shelf?.status === 'reading' && !r.shelf.paused}
 								<span class="hidden w-28 sm:block">
 									<ProgressBar percent={r.shelf.pct} label="{r.title}: {r.shelf.pct}%" />
 								</span>
@@ -239,6 +246,13 @@
 				</li>
 			{/each}
 		</ol>
+		{#if matching.length > LIMIT}
+			<a
+				href={localizeHref('/favorites')}
+				class="mt-3 inline-block text-small font-semibold text-accent"
+				>{t('search.showAll')} · {matching.length} →</a
+			>
+		{/if}
 	</section>
 {/if}
 
