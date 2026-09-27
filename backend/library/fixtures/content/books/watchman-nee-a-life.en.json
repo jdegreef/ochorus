@@ -7,8 +7,9 @@
   ],
   "slug": "watchman-nee-a-life",
   "language": "en",
-  "title": "Watchman Nee",
+  "title": "Portraits of Courage \u2013 Watchman Nee",
   "subtitle": "The Life, Suffering, and Spiritual Vision of a Chinese Servant of Christ",
+  "cover_title": "Watchman Nee",
   "description": "A Christian biography of Watchman Nee (1903–1972), the Chinese church leader and devotional teacher behind The Normal Christian Life and Sit, Walk, Stand. It places his teaching inside his life — conversion, the little flock, the breaking of the outer man, and twenty years in a Communist prison — weighing his insight and his controversies under Scripture. Written with gratitude but not hagiography; all Scripture from the public-domain ASV (1901).",
   "about_html": "",
   "qa": [
@@ -52,6 +53,10 @@
   "cover_url": "/covers/art/watchman-nee-a-life.jpg",
   "pdf_url": "",
   "cover_color": "",
+  "series": [
+   "portraits-of-courage"
+  ],
+  "series_position": 1,
   "sort_order": 61,
   "is_published": true,
   "created_at": "2026-09-03T04:08:07.371Z",
