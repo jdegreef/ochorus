@@ -2,8 +2,8 @@
 	import { type BookSummary } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { contentLang, readingTime } from '$lib/reading';
-	import { seriesLabel } from '$lib/series';
+	import { readingTime } from '$lib/reading';
+	import { cardSeriesLine } from '$lib/series';
 	import BookCover from './BookCover.svelte';
 
 	// `anchor`: when set, this row is the first of its author's run and carries
@@ -18,7 +18,7 @@
 	const t = i18n.t;
 
 	const seriesLine = $derived(
-		showSeries && book.series ? seriesLabel(book.series, contentLang(book.language)) : ''
+		showSeries ? cardSeriesLine(book) : ''
 	);
 	const chapters = $derived(
 		`${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`

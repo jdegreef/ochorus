@@ -2,9 +2,9 @@
 	import { type CoverBook } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { contentLang, readingTime } from '$lib/reading';
+	import { readingTime } from '$lib/reading';
 	import { splitEdition } from '$lib/edition';
-	import { seriesLabel } from '$lib/series';
+	import { cardSeriesLine } from '$lib/series';
 	import BookCover from './BookCover.svelte';
 
 	let {
@@ -44,7 +44,7 @@
 	// don't look identical. Null for ordinary books.
 	const edition = $derived(splitEdition(book.slug, book.title));
 	const seriesLine = $derived(
-		showSeries && book.series ? seriesLabel(book.series, contentLang(book.language)) : ''
+		showSeries ? cardSeriesLine(book) : ''
 	);
 </script>
 

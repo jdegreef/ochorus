@@ -1,6 +1,7 @@
 import * as m from '$lib/paraglide/messages.js';
 import { volumeNumeral } from '$lib/coverStyles';
-import type { BookSeriesLine, BookSummary } from '$lib/library-public';
+import type { BookSeriesLine, BookSummary, CoverBook } from '$lib/library-public';
+import { contentLang } from '$lib/reading';
 
 /**
  * The book page's one-line series label: "Book 2 of 6 in Rooted" for an
@@ -18,6 +19,12 @@ export function seriesLabel(series: BookSeriesLine, language: string): string {
 		total: volumeNumeral(series.total, language) ?? String(series.total),
 		series: series.title
 	});
+}
+
+/** A card's series line — `seriesLabel` in the book's own language — or "" for
+ *  a book in no (named) series. BookCard and BookListRow both draw it. */
+export function cardSeriesLine(book: Pick<CoverBook, 'series' | 'language'>): string {
+	return book.series ? seriesLabel(book.series, contentLang(book.language)) : '';
 }
 
 /** What a reader already has of a book, as `$lib/progress` records it. */

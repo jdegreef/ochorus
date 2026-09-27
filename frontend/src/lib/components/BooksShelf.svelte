@@ -15,6 +15,7 @@
 	import BookCover from './BookCover.svelte';
 	import SeriesCard from './SeriesCard.svelte';
 	import PageHeader from './PageHeader.svelte';
+	import GroupHeading from './GroupHeading.svelte';
 	import EmptyState from './EmptyState.svelte';
 	import FilterSummary from './FilterSummary.svelte';
 	import TopicFilterRow from './TopicFilterRow.svelte';
@@ -217,19 +218,20 @@
 	<a href="/books" class="btn btn-primary inline-block">{t('books.readEnglish')}</a>
 {/snippet}
 
-<!-- One by-series group's books, in the chosen view. `eager` marks the first
-     group, whose first covers are above the fold. -->
-{#snippet shelfBooks(list: BookSummary[], eager: boolean)}
+<!-- A run of books in the chosen view — the flat shelf, or one by-series
+     group. `eager` marks a run whose first covers are above the fold;
+     `showSeries` is off under a series heading, which already names it. -->
+{#snippet shelfBooks(list: BookSummary[], eager: boolean, showSeries: boolean)}
 	{#if view === 'grid'}
 		<div class="book-grid">
 			{#each list as book, i (book.slug)}
-				<BookCard {book} showAuthor showSeries={false} priority={eager && i < 6} />
+				<BookCard {book} showAuthor {showSeries} priority={eager && i < 6} />
 			{/each}
 		</div>
 	{:else}
 		<div class="flex flex-col gap-1">
 			{#each list as book (book.slug)}
-				<BookListRow {book} showSeries={false} />
+				<BookListRow {book} {showSeries} />
 			{/each}
 		</div>
 	{/if}
@@ -470,20 +472,18 @@
 			     cards drop their series line — the heading already says it. -->
 			{#each seriesGroups.named as g, gi (g.slug)}
 				<section class="mb-10">
-					<h2 class="mb-4 flex items-center gap-2.5 text-h3 text-muted">
-						<a href={localizeHref(`/series/${g.slug}/`)} class="text-text" dir="auto">{g.title}</a>
-						<span class="tabular-nums opacity-70">{g.books.length}</span>
-					</h2>
-					{@render shelfBooks(g.books, gi === 0)}
+					<GroupHeading
+						name={g.title}
+						href={localizeHref(`/series/${g.slug}/`)}
+						count={g.books.length}
+					/>
+					{@render shelfBooks(g.books, gi === 0, false)}
 				</section>
 			{/each}
 			{#if seriesGroups.standalone.length}
 				<section>
-					<h2 class="mb-4 flex items-center gap-2.5 text-h3 text-muted">
-						{t('books.standalone')}
-						<span class="tabular-nums opacity-70">{seriesGroups.standalone.length}</span>
-					</h2>
-					{@render shelfBooks(seriesGroups.standalone, !seriesGroups.named.length)}
+					<GroupHeading name={t('books.standalone')} count={seriesGroups.standalone.length} />
+					{@render shelfBooks(seriesGroups.standalone, !seriesGroups.named.length, false)}
 				</section>
 			{/if}
 		{:else if groups}
@@ -505,18 +505,8 @@
 					{/each}
 				</div>
 			{/if}
-		{:else if view === 'grid'}
-			<div class="book-grid">
-				{#each sorted as book, i (book.slug)}
-					<BookCard {book} showAuthor priority={i < 6} />
-				{/each}
-			</div>
 		{:else}
-			<div class="flex flex-col gap-1">
-				{#each sorted as book (book.slug)}
-					<BookListRow {book} />
-				{/each}
-			</div>
+			{@render shelfBooks(sorted, true, true)}
 		{/if}
 	{/if}
 </div>

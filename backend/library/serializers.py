@@ -117,6 +117,17 @@ def sibling_editions(book):
     return sorted(rows, key=lambda b: rank[b.slug])
 
 
+def _series_total(numbers: set, position: int | None, here: int) -> int:
+    """"Of N" for a series line — ONE rule for the book page and the cards.
+
+    An ordered volume counts the series' published volume NUMBERS in every
+    language (plus its own), so "Book 4 of 4" stays true on a page that lacks
+    volume 3; a collection counts this language's published books (``here``,
+    the book itself included).
+    """
+    return len(numbers | {position}) if position is not None else here
+
+
 def series_block(book) -> dict | None:
     """Where ``book`` sits in its series, for the book page's series line and
     the last chapter's "next in series" — or None.
@@ -148,12 +159,13 @@ def series_block(book) -> dict | None:
     )
     here = [r for r in rows if r[2] == book.language and r[0] != book.slug]
     position = book.series_position
+    total = _series_total({r[3] for r in rows if r[3] is not None}, position, len(here) + 1)
     if position is None:
         return {
             "slug": series.slug,
             "title": title,
             "position": None,
-            "total": len(here) + 1,
+            "total": total,
             "previous": None,
             "next": None,
         }
@@ -167,28 +179,28 @@ def series_block(book) -> dict | None:
         "slug": series.slug,
         "title": title,
         "position": position,
-        "total": len({r[3] for r in rows if r[3] is not None} | {position}),
+        "total": total,
         "previous": volume([r for r in numbered if r[3] < position], max),
         "next": volume([r for r in numbered if r[3] > position], min),
     }
 
 
-def book_series_map(language: str) -> dict[int, dict]:
+def book_series_map(language: str, series_ids) -> dict[int, dict]:
     """``series_id -> what a card needs`` for every series named in ``language``.
 
-    The shelf-wide twin of :func:`series_block`, built whole so a shelf of
-    series books costs three queries however many are on it: the series and
-    their names, then every published series row. ``numbers`` are the published
+    The shelf-wide twin of :func:`series_block`, for the series in
+    ``series_ids`` (the shelf's), so a shelf of series books costs three
+    queries however many are on it: the series and their names, then their
+    published rows. ``numbers`` are the published
     volume numbers in EVERY language (``series_block``'s ``total`` for an
     ordered series); ``here`` counts this language's published books (its
     total for a collection). A series unnamed in ``language`` is left out, so
     its books carry no series line — no English fallback.
     """
-    named = {
-        s.pk: {"slug": s.slug, "title": s.title_for(language), "numbers": set(), "here": 0}
-        for s in Series.objects.prefetch_related("translations")
-    }
-    named = {pk: v for pk, v in named.items() if v["title"]}
+    named = {}
+    for s in Series.objects.filter(pk__in=series_ids).prefetch_related("translations"):
+        if title := s.title_for(language):
+            named[s.pk] = {"slug": s.slug, "title": title, "numbers": set(), "here": 0}
     for series_id, lang, position in Book.objects.filter(
         series_id__in=named, is_published=True
     ).values_list("series_id", "language", "series_position"):
@@ -430,12 +442,24 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
     def get_series(self, obj):
         """The card's series line, or None — read from a map built on the first
         series book and cached on the serializer (one shared instance for
-        ``many=True``), so a shelf with no series books pays no query at all."""
-        if obj.series_id is None:
+        ``many=True``), so a shelf with no series books pays no query at all.
+        The map covers only the series on this shelf. A view whose cards never
+        draw the line (the series page) passes ``book_series={}`` to skip it,
+        as ``book_topics`` is skipped."""
+        supplied = self.context.get("book_series")
+        if obj.series_id is None or supplied == {}:
             return None
         cached_for, cached = getattr(self, "_series_map", (None, None))
         if cached_for != obj.language:
-            cached = book_series_map(obj.language)
+            # The shelf's books when this is a `many=True` card (a ListSerializer
+            # parent holds the whole list); else just this book's series.
+            shelf = (
+                self.parent.instance
+                if isinstance(self.parent, serializers.ListSerializer)
+                else None
+            )
+            ids = {b.series_id for b in shelf if b.series_id} if shelf is not None else {obj.series_id}
+            cached = book_series_map(obj.language, ids)
             self._series_map = (obj.language, cached)
         entry = cached.get(obj.series_id)
         if entry is None:
@@ -445,7 +469,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "slug": entry["slug"],
             "title": entry["title"],
             "position": position,
-            "total": len(entry["numbers"] | {position}) if position is not None else entry["here"],
+            "total": _series_total(entry["numbers"], position, entry["here"]),
         }
 
 
