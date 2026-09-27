@@ -924,6 +924,7 @@
   "book_pdf_hint": "Kwa kuchapisha",
   "shelves_short": "Rafu",
   "book_on_chapter": "Uko sura ya %n% kati ya %t%",
+  "book_chapter_of": "Sura ya %n% kati ya %t%",
   "book_continue": "Endelea",
   "book_explore": "Gundua",
   "book_read_in_language": "Soma kwa lugha yako",

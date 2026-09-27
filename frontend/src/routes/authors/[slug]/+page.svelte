@@ -437,7 +437,7 @@
 				<div class="min-w-0 flex-1">
 					{#if resumeBook}
 						<p class="text-small text-muted">
-							{t('continue.title')} · {t('book.onChapter')
+							{t('continue.title')} · {t('book.chapterOf')
 								.replace('%n%', String(resumeBook.order))
 								.replace('%t%', String(cardBook.chapter_count))}
 						</p>
