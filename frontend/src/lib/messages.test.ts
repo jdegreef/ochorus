@@ -44,12 +44,10 @@ const PENDING_TRANSLATION: Record<string, readonly string[]> = {
 	// placeholders were translated (2026-09-23); uk's four Scripture strings
 	// lived here once too, until the Kulish text could be sourced.
 	//
-	// Amharic quotes the 1962 UBS Bible (NT revised 2003). Its New Testament is
-	// on the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh), so
-	// Matthew 25:36, Colossians 3:16 and John 1:5 are verbatim; the mirror
-	// carries no Old Testament, so Isaiah 55:11 waits for a 1962 OT source.
-	// Do not paraphrase it.
-	am: ['about_scripture1']
+	// Amharic's Isaiah 55:11 waited here for an Old Testament source (the ebible
+	// mirror of the 1962 UBS text is NT-only); it is now verbatim from the
+	// language's own Bible, the Amharic ULB (Take Root `am-ulb`), which the
+	// footer credits (bibleCredit.ts).
 };
 
 const toSnake = (key: string) =>
