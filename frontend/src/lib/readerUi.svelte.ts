@@ -15,6 +15,14 @@ class ReaderUi {
 	 */
 	panelOpen = $state(false);
 
+	/**
+	 * The app nav's rendered height in px, as the root layout measures it (the
+	 * same figure it publishes as `--appnav-h`, for script). A page whose text
+	 * scrolls under the sticky nav reads it to park a jumped-to paragraph
+	 * below it. Stale while focus mode hides the nav — check `focus` first.
+	 */
+	navHeight = $state(0);
+
 	toggleFocus() {
 		this.focus = !this.focus;
 	}
