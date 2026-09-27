@@ -773,7 +773,7 @@ class AdminCoverageView(APIView):
         for a in Author.objects.exclude(bio_html="").values("slug", "name"):
             rows[a["slug"]] = {"slug": a["slug"], "title": a["name"], "cells": {"en": "present"}}
         translations = AuthorTranslation.objects.exclude(bio_html="").values(
-            "author__slug", "author__name", "language", "reviewed"
+            "author__slug", "author__name", "language", "reviewed", "source_stale"
         )
         for t in translations:
             slug = t["author__slug"]
@@ -783,6 +783,12 @@ class AdminCoverageView(APIView):
                 # show it rather than silently drop the work.
                 row = rows[slug] = {"slug": slug, "title": t["author__name"], "cells": {}}
             row["cells"][t["language"]] = "ai_reviewed" if t["reviewed"] else "ai_unreviewed"
+            # The English was replaced after this was translated (author_sync
+            # sets it; a re-translation or approval clears it) — the wording may
+            # describe text that no longer exists. Only languages that ARE stale
+            # are listed, and only bios track this today.
+            if t["source_stale"]:
+                row.setdefault("stale", []).append(t["language"])
         return sorted(rows.values(), key=lambda r: r["title"].lower())
 
 

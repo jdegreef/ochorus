@@ -396,6 +396,20 @@ class AdminCoverageTests(TestCase):
         self.assertEqual(by_slug["abide"]["cells"], {"en": "present", "es": "ai_reviewed"})
 
     @override_settings(DEBUG=True)
+    def test_bio_rows_list_stale_languages(self):
+        """A bio translated from English that has since been replaced is listed
+        under `stale`; a current one isn't, and a row with none has no key."""
+        author = Author.objects.create(slug="spurgeon", name="C. H. Spurgeon", bio_html="<p>b</p>")
+        AuthorTranslation.objects.create(
+            author=author, language="es", bio_html="<p>b</p>", reviewed=True, source_stale=True
+        )
+        AuthorTranslation.objects.create(author=author, language="sw", bio_html="<p>b</p>")
+        res = self.client.get("/api/admin/coverage/")
+        bios = {b["slug"]: b for b in res.data["bios"]}
+        self.assertEqual(bios["spurgeon"]["stale"], ["es"])
+        self.assertEqual(bios["spurgeon"]["cells"]["es"], "ai_reviewed")
+
+    @override_settings(DEBUG=True)
     def test_sermon_cells_carry_review_state(self):
         """A translated sermon shows ai_unreviewed like a book, so the matrix can
         link it to the review queue; the original stays "present"."""

@@ -568,6 +568,10 @@ export interface AdminCoverageRow {
 	 * sort's demand signal. Absent on articles (no reading-layer rows) and
 	 * across the deploy window. */
 	readers?: number;
+	/** Languages whose translation was made from English that has since been
+	 * replaced — the wording may describe text that no longer exists. Bios only
+	 * today (AuthorTranslation.source_stale); absent when none. */
+	stale?: string[];
 }
 
 // A matrix column. `queueable` is true only for languages the translation-jobs
