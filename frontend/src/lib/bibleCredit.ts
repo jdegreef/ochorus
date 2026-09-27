@@ -2,10 +2,12 @@
  * Credit lines for Bible texts whose licence asks for one.
  *
  * Ochorus is a public-domain library and most of its Bibles are public domain
- * too — KJV, Van Dyck, Kulish, Almeida. Two are not. The Indian Revised Version
+ * too — KJV, Van Dyck, Kulish, Almeida. Three are not. The Indian Revised Version
  * is the only Hindi text on Take Root that is not somebody's proprietary
  * edition, and it is CC BY-SA 4.0; the Open Luganda Contemporary Bible is the
- * only Luganda text mirrored at all, and it is CC BY-SA 4.0 as well.
+ * only Luganda text mirrored at all, and it is CC BY-SA 4.0 as well; and the
+ * Amharic Unlocked Literal Bible (Take Root `am-ulb`) is CC BY-SA 4.0 to the
+ * Door43 World Missions Community.
  *
  * Luganda arrived here the hard way, and the lesson is worth keeping: its seed
  * entry set no `bible_licence` and labelled the text "(open)", so the readiness
@@ -21,8 +23,9 @@
  * ordinary sermon and biography prose, not in a Bible widget we could hang a
  * notice on. So the credit goes in the footer, which is on every page.
  *
- * The strings are duplicated from `Language.bible_attribution` in the backend
- * seed, deliberately and with a test holding them equal
+ * The strings are duplicated from `Language.bible_attribution` — in the backend
+ * seed for hi/lg, and in the admin's language settings for Amharic, which was
+ * added from the admin and is owned by the database — deliberately and with a test holding them equal
  * (`library.tests_bible_credit`). They cannot simply be fetched: the reader is
  * a prerendered static site, and a licence notice that depends on a runtime API
  * call is a licence notice that is missing whenever the call fails.
@@ -34,6 +37,10 @@ export const BIBLE_CREDIT: Readonly<Record<string, string>> = {
 	hi:
 		'Scripture quotations are from the Indian Revised Version (IRV), ' +
 		'© 2017–2019 Bridge Connectivity Solutions, licensed under ' +
+		'CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).',
+	am:
+		'Scripture quotations are from the Amharic Unlocked Literal Bible, ' +
+		'© 2020 Door43 World Missions Community, licensed under ' +
 		'CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).',
 	lg:
 		'Scripture quotations are from the Open Luganda Contemporary Bible, ' +
