@@ -888,3 +888,4 @@ export const load: PageLoad = async ({ fetch }) => {
 // prerender refresh 2026-09-25: Arabic school-of-prayer (#3150). Rebuilds /ar/books.
 // prerender refresh 2026-09-25: Arabic pilgrims-progress (#3173). Rebuilds /ar/books.
 // prerender refresh 2026-09-26: Arabic confessions (#2798). Rebuilds /ar/books.
+// prerender refresh 2026-09-26: new series portraits-of-courage; watchman-nee-a-life (en) retitled "Portraits of Courage – Watchman Nee", volume 1. Rebuilds /books.
