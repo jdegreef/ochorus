@@ -53,7 +53,9 @@
 	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, truncateMeta } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, truncateMeta, absUrl } from '$lib/seo';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, landscapeUrl } from '$lib/coverArt';
+	import { baseEdition } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
@@ -126,6 +128,13 @@
 			.replace('%title%', chapter.book_title)
 			.replace('%name%', chapter.author_name)
 	);
+	// The chapter shares its BOOK's card — the cover on its own landscape ground,
+	// which `build-share-cards.mjs` composes for every card a prerendered page
+	// names (a book with no cover gets the house card there). The chapter itself
+	// is named by og:title (`titleTag`), which previews print under the image.
+	// `language` is the edition actually shown, so a chapter that fell back to
+	// English wears the English cover rather than a card with the wrong title.
+	const ogImage = $derived(absUrl(landscapeUrl(slug, baseEdition(language))));
 	const chapterLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -1540,6 +1549,10 @@
 	{canonical}
 	{hreflang}
 	ogType="article"
+	{ogImage}
+	ogImageWidth={LANDSCAPE_WIDTH}
+	ogImageHeight={LANDSCAPE_HEIGHT}
+	ogImageAlt="{t('a11y.coverOf')} {chapter.book_title}"
 	structuredData={[chapterLd, crumbsLd]}
 />
 <svelte:window
