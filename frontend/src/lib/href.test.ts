@@ -38,6 +38,12 @@ describe('withTrailingSlash', () => {
 		expect(withTrailingSlash('/')).toBe('/');
 	});
 
+	it('slashes the single-segment pages that prerender to <page>/index.html', () => {
+		expect(withTrailingSlash('/originals')).toBe('/originals/');
+		expect(withTrailingSlash('/series')).toBe('/series/');
+		expect(withTrailingSlash('/es/series')).toBe('/es/series/');
+	});
+
 	it('leaves non-detail and client-only routes alone', () => {
 		expect(withTrailingSlash('/admin/books/humility')).toBe('/admin/books/humility');
 		expect(withTrailingSlash('/settings')).toBe('/settings');

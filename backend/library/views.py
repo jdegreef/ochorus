@@ -74,6 +74,7 @@ from .serializers import (
     SermonListSerializer,
     TopicDetailSerializer,
     TopicListSerializer,
+    _book_cover,
     article_lead_book_map,
     article_topic_map,
     book_topic_map,
@@ -689,21 +690,56 @@ def _series_languages(series) -> list[str]:
 
 
 class SeriesListView(PublicContentCacheMixin, APIView):
-    """Every series with a page in the requested language — for the prerender's
-    entries and the sitemap. A series needs a name here and at least one
-    published book here; one that has neither in a language doesn't exist in it
-    (the no-English-fallback rule, as for topics)."""
+    """Every series with a page in the requested language — the /series index,
+    the Books page's Book Series shelf, the prerender's entries and the sitemap.
+    A series needs a name here and at least one published book here; one that
+    has neither in a language doesn't exist in it (the no-English-fallback rule,
+    as for topics).
+
+    Each row carries its first four covers in reading order, for the card's fan,
+    and the languages it has a page in (``_series_languages``) — the index's
+    hreflang is their union. Both are read in bulk for the whole list rather
+    than per series.
+    """
+
+    COVERS = 4
 
     def get(self, request):
         language = _language(request)
-        here = Q(books__language=language, books__is_published=True)
-        rows = []
-        for series in Series.objects.prefetch_related("translations").annotate(
-            book_count=Count("books", filter=here)
+        members: dict[int, list] = {}
+        for book in Book.objects.filter(
+            language=language, is_published=True, series__isnull=False
+        ).only("slug", "title", "cover_url", "cover_color", "series", "series_position").order_by(
+            F("series_position").asc(nulls_last=True), "sort_order", "title"
         ):
+            members.setdefault(book.series_id, []).append(book)
+        held: dict[int, set[str]] = {}
+        for series_id, lang in (
+            Book.objects.filter(is_published=True, series__isnull=False)
+            .exclude(language=MODERN_LANGUAGE)
+            .values_list("series_id", "language")
+            .distinct()
+        ):
+            held.setdefault(series_id, set()).add(lang)
+        rows = []
+        for series in Series.objects.prefetch_related("translations"):
+            books = members.get(series.pk)
             title = series.title_for(language)
-            if title and series.book_count:
-                rows.append({"slug": series.slug, "title": title, "book_count": series.book_count})
+            if title and books:
+                rows.append(
+                    {
+                        "slug": series.slug,
+                        "title": title,
+                        "description": series.description_for(language),
+                        "book_count": len(books),
+                        "ordered": any(b.series_position is not None for b in books),
+                        "covers": [_book_cover(b) for b in books[: self.COVERS]],
+                        "languages": sorted(
+                            held.get(series.pk, set())
+                            & ({"en"} | {t.language for t in series.translations.all()})
+                        ),
+                    }
+                )
         return Response(rows)
 
 

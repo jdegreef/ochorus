@@ -52,6 +52,13 @@ export const ENGLISH_HUBS: HubDest[] = [
 	{ href: '/quotes', labelKey: 'nav.quotes' }
 ];
 
+/** Book Series — every series in this language, hanging off Books. Not a top-nav
+ *  slot (the Books page's rail and count link are its way in there), but every
+ *  locale's footer Explore group and the palette offer it right after the
+ *  primary five: a series is translated content, so each locale has its own
+ *  index. The trailing slash is added by `localizeHref` (href.ts SLASHED_PAGES). */
+export const SERIES_DEST: HubDest = { href: '/series', labelKey: 'nav.series' };
+
 /** Ochorus Originals — the house imprint's shelf. Not an English-only hub: its
  *  books are translated, so the footer and the palette offer it in every
  *  locale (the page lists only that language's books). Sits after the hubs, so

@@ -153,7 +153,42 @@ class SeriesViewTests(TestCase):
         self._book("bfg-1", 1)
         Series.objects.create(slug="empty", title="Empty")
         self.assertEqual(
-            self._get("series/").json(),
-            [{"slug": "brave-for-god", "title": "Brave for God", "book_count": 1}],
+            [(r["slug"], r["title"], r["book_count"]) for r in self._get("series/").json()],
+            [("brave-for-god", "Brave for God", 1)],
         )
         self.assertEqual(self._get("series/", "sw").json(), [])
+
+    def test_the_list_carries_what_a_series_card_draws(self):
+        for n in (5, 3, 1, 2, 4):
+            self._book(f"bfg-{n}", n)
+        self._book("bfg-6", 6, published=False)
+        Series.objects.filter(pk=self.series.pk).update(sort_order=20)
+        kt = Series.objects.create(slug="key-teachings", title="The Key Teachings", sort_order=10)
+        self._book("kt-nee", None, series=kt)
+        rows = self._get("series/").json()
+        # Series order, not book order: the collection sorts first.
+        self.assertEqual([r["slug"] for r in rows], ["key-teachings", "brave-for-god"])
+        kt_row, bfg = rows
+        self.assertEqual(
+            (bfg["description"], bfg["book_count"], bfg["ordered"]), ("True stories.", 5, True)
+        )
+        # The fan: the first four published volumes, in reading order.
+        self.assertEqual([c["slug"] for c in bfg["covers"]], ["bfg-1", "bfg-2", "bfg-3", "bfg-4"])
+        self.assertEqual(set(bfg["covers"][0]), {"kind", "slug", "cover_url", "cover_color", "title"})
+        self.assertFalse(kt_row["ordered"])
+        # Languages with a page: a name AND a published book there.
+        self._book("bfg-1", 1, language="sw")
+        self._book("bfg-2", 2, language="lg")
+        SeriesTranslation.objects.create(series=self.series, language="sw", title="Jasiri")
+        bfg = self._get("series/").json()[1]
+        self.assertEqual(bfg["languages"], ["en", "sw"])
+
+    def test_the_list_costs_the_same_however_many_series(self):
+        self._book("bfg-1", 1)
+        for i in range(3):
+            s = Series.objects.create(slug=f"s{i}", title=f"S{i}")
+            self._book(f"s{i}-1", 1, series=s)
+        # The books, the languages they are held in, the series, their
+        # translations — and the cache mixin's content-revision read.
+        with self.assertNumQueries(5):
+            self._get("series/")

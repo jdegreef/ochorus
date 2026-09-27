@@ -43,4 +43,4 @@
 	structuredData={books.length ? [booksLd] : []}
 />
 
-<BooksShelf books={data.books} loadError={data.loadError} />
+<BooksShelf books={data.books} series={data.series} loadError={data.loadError} />

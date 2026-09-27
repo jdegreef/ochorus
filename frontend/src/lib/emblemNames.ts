@@ -112,6 +112,15 @@ export const SERMON_EMBLEMS: Record<string, EmblemName> = {
 	'unfailing-springs': 'desert-spring' // springs in the desert
 };
 
+/** Per-series visual identity for the series' ShelfCard (same shape again). */
+export const SERIES_META: Record<string, { accent: string; emblem: EmblemName }> = {
+	'key-teachings': { accent: '#2f7f86', emblem: 'golden-key' }, // the key to a teacher's heart
+	'brave-for-god': { accent: '#a5552f', emblem: 'shield-of-faith' }, // made brave
+	rooted: { accent: '#5a9e4d', emblem: 'rooted-sapling' }, // rooted and built up in him
+	'daughters-of-the-king': { accent: '#b0578a', emblem: 'alabaster-jar' }, // she hath done what she could
+	'sons-of-the-king': { accent: '#3f52a8', emblem: 'sword-and-shield' } // strength under control
+};
+
 // ── Fallbacks ───────────────────────────────────────────────────────────────
 // New content lands before anyone curates art for it; a stable hash-pick from
 // a small generic pool keeps it looking finished until someone does.
@@ -170,6 +179,14 @@ const PLAN_ACCENTS = Object.values(PLAN_META).map((m) => m.accent);
 
 export const planMeta = (slug: string): { accent: string; emblem: EmblemName } =>
 	PLAN_META[slug] ?? {
+		accent: PLAN_ACCENTS[fnv(slug) % PLAN_ACCENTS.length],
+		emblem: fallbackEmblem(slug)
+	};
+
+/** A series ships before anyone curates its art: borrow the plan accents, as a
+ *  new plan does. */
+export const seriesMeta = (slug: string): { accent: string; emblem: EmblemName } =>
+	SERIES_META[slug] ?? {
 		accent: PLAN_ACCENTS[fnv(slug) % PLAN_ACCENTS.length],
 		emblem: fallbackEmblem(slug)
 	};

@@ -304,6 +304,13 @@ async function build(): Promise<SitemapData> {
 		.map((x) => [x.locale, `${ORIGINALS_PATH}/`] as [string, string]);
 	if (originalsIn.length) pages.push({ byLocale: new Map(originalsIn) });
 
+	// The Book Series index, in each advertised locale that has a series — the
+	// same set the page's own hreflang names (no English fallback).
+	const seriesIn = advertisedSlices
+		.filter((x) => x.series.length)
+		.map((x) => [x.locale, '/series/'] as [string, string]);
+	if (seriesIn.length) pages.push({ byLocale: new Map(seriesIn) });
+
 	// Articles: original English writing, no translations yet — the hub, each
 	// article, and each topic-filtered shelf. Its OWN sitemap child (see
 	// `articleEntries` below and the `articles` section), not folded into `pages`,
