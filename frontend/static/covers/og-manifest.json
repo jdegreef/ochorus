@@ -1274,6 +1274,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"es/men-of-prayer-2": {
+			"ground": "f2a0bf461d9f16a42d1ca7befff763fb27417dd5906476eb2f33337f23b042c5",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/ministry-of-intercession": {
 			"ground": "d8b8c9d1f61b6b25ba9ac9e640e54155b7579b2eab4e7f376d3afb491ab3272c",
 			"style": "devotional",
