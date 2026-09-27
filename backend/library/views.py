@@ -1497,9 +1497,9 @@ class ScripturePagesView(APIView):
     """
 
     def get(self, request):
-        from .scripture_graph import qualifying_pages
+        from .scripture_graph import current_pages
 
-        return Response(qualifying_pages())
+        return Response(current_pages())
 
 
 class ScriptureGraphView(APIView):
@@ -1629,6 +1629,12 @@ class ScriptureGraphView(APIView):
             data["verses"] = sorted(
                 cited, key=lambda v: (-v["citing_count"], v["number"])
             )[:VERSE_SPAN_CAP]
+            # Prev/next among the chapter pages, so a reader (and a crawler) can
+            # walk the reverse index. Here rather than in the page: the page used
+            # to fetch the whole ~155 KB page list for two neighbours.
+            from .scripture_graph import chapter_neighbours
+
+            data["prev"], data["next"] = chapter_neighbours(book, chapter)
         return Response(data)
 
 

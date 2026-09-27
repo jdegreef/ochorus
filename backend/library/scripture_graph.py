@@ -253,6 +253,45 @@ def qualifying_pages() -> list[dict]:
     return pages
 
 
+def current_pages() -> list[dict]:
+    """``qualifying_pages()``, computed once per content revision.
+
+    The list is a full-corpus tally, and every scripture chapter page needs it
+    for prev/next. The citation index only changes on a deploy, and published
+    state only through the admin, which bumps the revision — so the revision is
+    the whole key. The default cache is a dummy under test (see settings).
+    """
+    from django.core.cache import cache
+
+    from .models import ContentRevision
+
+    # One key holding (revision, pages): a new revision overwrites the old list
+    # rather than leaving it resident beside the new one.
+    revision = ContentRevision.current()
+    cached = cache.get("scripture-pages")
+    if cached is not None and cached[0] == revision:
+        return cached[1]
+    pages = qualifying_pages()
+    cache.set("scripture-pages", (revision, pages), timeout=None)
+    return pages
+
+
+def chapter_neighbours(book: str, chapter: int) -> tuple[dict | None, dict | None]:
+    """The chapter pages before and after this one, in canonical Bible order —
+    adjacent QUALIFYING pages, not chapter ± 1, which may never have been built."""
+    chapters = [p for p in current_pages() if p["verse"] is None]
+    i = next(
+        (n for n, p in enumerate(chapters) if p["book"] == book and p["chapter"] == chapter),
+        None,
+    )
+    if i is None:
+        return None, None
+    brief = lambda p: {"book": p["book"], "book_title": p["book_title"], "chapter": p["chapter"]}  # noqa: E731
+    prev = brief(chapters[i - 1]) if i > 0 else None
+    nxt = brief(chapters[i + 1]) if i + 1 < len(chapters) else None
+    return prev, nxt
+
+
 def pages_for(refs: list[str]) -> dict[str, dict | None]:
     """Which of ``refs`` have a scripture page, as ``{ref: page or None}``.
 

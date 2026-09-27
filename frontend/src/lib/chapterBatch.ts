@@ -10,7 +10,7 @@
  * chapter missing from its run — falls through to the real request.
  */
 
-import type { Fetch } from './api';
+import { isAnonymousApiGet, type Fetch } from './api';
 import { getChapterRun } from './library-public';
 
 /** Must not exceed the API's CHAPTER_BATCH_MAX (library/views.py). */
@@ -54,9 +54,8 @@ export function createChapterBatcher(apiOrigin: string) {
 	 * caller should make the real request.
 	 */
 	return async function chapterFromBatch(request: Request, fetch: Fetch): Promise<Response | null> {
-		if (request.method !== 'GET') return null;
+		if (!isAnonymousApiGet(request, apiOrigin)) return null;
 		const url = new URL(request.url);
-		if (url.origin !== apiOrigin) return null;
 		const match = CHAPTER_PATH.exec(url.pathname);
 		if (!match) return null;
 		// Only the query the chapter page sends. Anything else is a request this
