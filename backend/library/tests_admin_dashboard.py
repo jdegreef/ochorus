@@ -410,6 +410,16 @@ class AdminCoverageTests(TestCase):
         self.assertEqual(bios["spurgeon"]["cells"]["es"], "ai_reviewed")
 
     @override_settings(DEBUG=True)
+    def test_copyright_blocked_books_are_flagged(self):
+        """A copyright-blocked work's missing languages aren't gaps to queue."""
+        author = Author.objects.get(slug="am")
+        Book.objects.create(author=author, slug="if", language="en", title="If", is_published=False)
+        res = self.client.get("/api/admin/coverage/")
+        books = {b["slug"]: b for b in res.data["books"]}
+        self.assertTrue(books["if"]["blocked"])
+        self.assertNotIn("blocked", books["humility"])
+
+    @override_settings(DEBUG=True)
     def test_sermon_cells_carry_review_state(self):
         """A translated sermon shows ai_unreviewed like a book, so the matrix can
         link it to the review queue; the original stays "present"."""

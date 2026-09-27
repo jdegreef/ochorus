@@ -573,6 +573,10 @@ export interface AdminCoverageRow {
 	 * articles compare deploy-time fingerprints (library/translation_staleness);
 	 * bios use AuthorTranslation.source_stale. Absent when none. */
 	stale?: string[];
+	/** Books only: under copyright (corrections.COPYRIGHT_BLOCKED_SLUGS) — every
+	 * edition stays unpublished and no translation may be filed, so its missing
+	 * cells are locked, not gaps. Absent otherwise. */
+	blocked?: boolean;
 }
 
 // A matrix column. `queueable` is true only for languages the translation-jobs
