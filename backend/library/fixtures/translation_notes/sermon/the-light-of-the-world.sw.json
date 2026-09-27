@@ -1,0 +1,102 @@
+{
+ "kind": "sermon",
+ "slug": "the-light-of-the-world",
+ "language": "sw",
+ "job_issue": 4134,
+ "pull_request": 4145,
+ "references": [
+  {
+   "reference": "Matthew 5:14a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Matthew 5:13a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 1:21",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 8:12a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 8:12b",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "the-secret-of-guidance.sw.json"
+  },
+  {
+   "reference": "Ephesians 5:8a",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "1 John 1:5b",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "James 1:17",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "answers-to-prayer.sw.json"
+  },
+  {
+   "reference": "Ephesians 5:13b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 4:16a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Corinthians 4:5",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Thessalonians 5:7b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Thessalonians 5:5a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 3:19",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 3:7b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Luke 19:10b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "all-of-grace.sw.json"
+  }
+ ]
+}

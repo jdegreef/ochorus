@@ -1,0 +1,61 @@
+{
+ "kind": "sermon",
+ "slug": "the-parable-of-the-prodigal-son",
+ "language": "sw",
+ "job_issue": 4135,
+ "pull_request": 4145,
+ "references": [
+  {
+   "reference": "Luke 15:1-2",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 15:1b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 15:17a",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Luke 15:16b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "the-drama-of-life-in-three-acts.sw.json"
+  },
+  {
+   "reference": "Luke 15:16b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 15:12a",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 15:19b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Luke 15:27a",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Luke 15:30a",
+   "status": "self_rendered",
+   "block_index": 56
+  }
+ ]
+}
