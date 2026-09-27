@@ -199,7 +199,10 @@ prerendered pages reference it.
   `db.sqlite3` predates a migration on `main`. `manage.py migrate` first (memory
   `local-backend-dev-state-2026-09`). A fresh worktree also needs the seeded
   `db.sqlite3` + `.env` copied in and `manage.py seed_books` so the books exist
-  (the local dev DB is a subset).
+  (the local dev DB is a subset). `paint_covers` step 1 only runs `seed_if_empty`,
+  which SKIPS a copied (non-empty) DB — symptom: `<slug>: no Book rows, skipping`,
+  then step 4 dies "wears a shared ground but has none" AFTER step 3 already deleted
+  the plates. Run `seed_books` first; the re-run is safe (#4244, 2026-09-27).
 - **C · translation-race** — a parallel translation session adds a NEW per-language
   plate edition of a book you're CURATED-ing between your branch and merge; CI (which
   tests the merge) fails `test_curated_editions_share_one_painting`
