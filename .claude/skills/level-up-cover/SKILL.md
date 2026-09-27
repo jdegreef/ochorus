@@ -92,7 +92,13 @@ its entry; change the entry's artwork or `focus` and the next run redraws it
 painting whose entry moved without one). `--recrop` redraws regardless. It refuses a slug not in
 `CURATED`. If it reports twins redrawn **outside** your works, their inputs
 really changed — look before committing. Needs `frontend/node_modules` and Node
-22 on PATH.
+22 on PATH. **Run `npm ci` in the worktree — don't symlink the shared checkout's
+`node_modules`**: it lags `main`'s deps and `og:covers` dies `ENOENT … @fontsource/…`
+(Batch 17, 2026-09-27).
+
+**Read THIS file from `origin/main`** (`git show origin/main:.claude/skills/level-up-cover/SKILL.md`)
+if you loaded it from the shared checkout — that copy is a stale detached HEAD and
+still describes the old hand-run pipeline, not `paint_covers.py`.
 
 `cover_url` is **NOT create-only** in `seed_books` (`CREATE_ONLY_FIELDS =
 {source_type, is_published}`), so the fixture edit reaches prod on deploy — **no
@@ -254,12 +260,15 @@ Wesley #2414 (2 — Constable/Inness), Hudson Taylor #2416 (2 — Chen Hongshou 
 Simpson #2419 (2 — Church/Daubigny, +lg/sw). Batch 16 #2891 (2 — both AIC):
 Carmichael `things-as-they-are` (Church, *View of Cotopaxi* — the tropical source
 the deferred note wanted; `focus=0.6` puts the dark valley in the title band, not
-the sun) + Susanna Wesley `susanna-wesley-clarke` (Hobbema watermill). IN FLIGHT:
+the sun) + Susanna Wesley `susanna-wesley-clarke` (Hobbema watermill). Batch 17 #4209
+(2026-09-27, AIC — the "New to the Library" classics): Fox's (Ruisdael, Egmond
+ruins), Finney memoirs (Gifford, Catskills sunset), Müller of Bristol (Sohlberg,
+*Fisherman's Cottage* — a lit house in dark pines). IN FLIGHT:
 Church Fathers (5 — Rosa/Corot/Lane/H.Robert/Panini), African-American
 autobiographies (4 — Heade/Chase/Inness/Duncanson).
 Remaining: Crowther (`journal-of-an-expedition-up-the-niger` — DEFERRED, wants an
 AIC tropical/Church once AIC un-throttles) + the Puritan/English devotional group
-(Owen, Sibbes, Law, Edwards, Meyer, Müller, Guyon, Bounds straggler). Carmichael's
+(Owen, Sibbes, Law, Edwards, Meyer, Guyon, Bounds straggler). Carmichael's
 `if` and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian was
 on `feature/cyprian-treatises` — check first.
 
