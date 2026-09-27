@@ -27,6 +27,10 @@
  * anyone can create a free `<ref>.supabase.co`, so a wildcard would let an
  * injected script exfiltrate the token to an attacker's project. Update the ref
  * if PUBLIC_SUPABASE_URL changes, or login breaks with a CSP violation.
+ * ⚠️ Sentry is NOT listed here: its ingest host is added at build time from
+ * PUBLIC_SENTRY_DSN (svelte.config.js). A `*.ingest.sentry.io` wildcard had the
+ * same hole as `*.supabase.co` — anyone can open a free Sentry org and get an
+ * ingest host of their own to receive the token. No DSN → no Sentry host.
  * ⚠️ Plausible is in both script-src (loads /js/script.js) and connect-src (the
  * script POSTs to /api/event); it stays even when analytics is unset (the script
  * simply never loads). Self-hosting = swap the host in both.
@@ -71,8 +75,6 @@ export const cspDirectives = {
 		'https://api.ochorus.com',
 		'https://eywunobxqijvwymdzlwy.supabase.co',
 		'https://api.dictionaryapi.dev',
-		'https://*.ingest.sentry.io',
-		'https://*.ingest.us.sentry.io',
 		'https://plausible.io'
 	],
 	'manifest-src': ['self'],

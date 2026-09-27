@@ -1455,6 +1455,34 @@ class AdminBookPublishTests(TestCase):
         )
         self.assertEqual(res.status_code, 400)
 
+    @override_settings(DEBUG=True)
+    def test_copyright_blocked_work_cannot_be_published_but_can_be_unpublished(self):
+        # The 2026-09-24 leak: a translation of a copyright-blocked work went
+        # live. A publish grant must not be able to repeat it — not even a
+        # super admin's mis-click. Taking one down stays open.
+        blocked = Book.objects.create(
+            author=self.author, slug="grace-for-grace-2", language="es",
+            title="Gracia sobre gracia", is_published=False,
+        )
+        res = self.client.post(
+            "/api/admin/books/grace-for-grace-2/publish/",
+            {"language": "es", "published": True},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 409)
+        blocked.refresh_from_db()
+        self.assertFalse(blocked.is_published)
+
+        Book.objects.filter(pk=blocked.pk).update(is_published=True)
+        res = self.client.post(
+            "/api/admin/books/grace-for-grace-2/publish/",
+            {"language": "es", "published": False},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        blocked.refresh_from_db()
+        self.assertFalse(blocked.is_published)
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
         res = self.client.post(

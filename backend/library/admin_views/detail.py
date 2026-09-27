@@ -11,6 +11,7 @@ from accounts.permissions import requires
 
 from .. import invalidation
 from ..audit import AdminAudited
+from ..corrections import COPYRIGHT_BLOCKED_SLUGS
 from ..models import AdminAction, Author, Book, Plan, Sermon
 from ..qa import chapter_flags
 from ..views import _language_entry
@@ -108,6 +109,10 @@ class _EditionPublishView(AdminAudited, APIView):
 
     model = None
     target_kind = ""
+    #: Slugs that may never be published in any language, whoever asks — a
+    #: publish grant is not a rights clearance (see
+    #: ``corrections.COPYRIGHT_BLOCKED_SLUGS``). Unpublishing stays open.
+    blocked_slugs: frozenset[str] = frozenset()
 
     def audit_action_for(self, request):
         return (
@@ -137,6 +142,11 @@ class _EditionPublishView(AdminAudited, APIView):
         language, published = self._parse(request.data)
         if not language:
             return Response({"detail": "A language is required."}, status=400)
+        if published and slug in self.blocked_slugs:
+            return Response(
+                {"detail": f"“{slug}” is under copyright and cannot be published."},
+                status=409,
+            )
         obj = self.model.objects.filter(slug=slug, language=language).first()
         if obj is None:
             return Response(
@@ -158,6 +168,7 @@ class AdminBookPublishView(_EditionPublishView):
 
     model = Book
     target_kind = "book"
+    blocked_slugs = COPYRIGHT_BLOCKED_SLUGS
 
 
 class AdminSermonPublishView(_EditionPublishView):

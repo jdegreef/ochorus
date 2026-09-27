@@ -179,7 +179,11 @@ class RequireCapability(permissions.BasePermission):
         if match and arg in (match.kwargs or {}):
             return (str(match.kwargs[arg]).strip().lower() or None)
         val = None
-        if request.method not in ("GET", "HEAD", "OPTIONS") and hasattr(request, "data"):
+        # DELETE carries its target in the query string (every admin DELETE
+        # reads it there), so it is checked there ONLY: reading a body first let
+        # `{"language": "es"}` pass the gate while the handler acted on
+        # `?language=fr`. The language checked must be the language acted on.
+        if request.method not in ("GET", "HEAD", "OPTIONS", "DELETE") and hasattr(request, "data"):
             val = request.data.get(arg)
         if val is None and hasattr(request, "query_params"):
             val = request.query_params.get(arg)

@@ -208,6 +208,9 @@ describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
 		const connect = csp['connect-src'];
 		expect(connect).toBeTruthy();
 		expect(connect).not.toContain('*');
+		// No host wildcards either: `*.supabase.co` / `*.ingest.sentry.io` are
+		// free to register, so any wildcard is a receiver an attacker can own.
+		expect(connect.filter((s) => s.includes('*'))).toEqual([]);
 		expect(connect.some((s) => s.startsWith('http://'))).toBe(false);
 		expect(connect).toContain('self');
 	});

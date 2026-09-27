@@ -112,20 +112,27 @@ class ResendWebhookView(APIView):
 
 @method_decorator(csrf_exempt, name="dispatch")
 class UnsubscribeView(View):
-    """One-click unsubscribe by token — no login, GET or POST.
+    """Unsubscribe by token — no login. Only a POST opts out.
 
-    POST is the RFC 8058 one-click target that inbox providers call; GET is what
-    a person clicking the footer link lands on. Both opt the reader out of
-    everything and are idempotent. An unknown token returns a neutral page
-    rather than confirming or denying that it existed.
+    POST is the RFC 8058 one-click target that inbox providers call (JSON back),
+    and also what the confirm button on the GET page submits (a page back). GET
+    is what a person clicking the footer link lands on: it asks, and changes
+    nothing. It used to opt out on GET, but corporate mail scanners (Safe Links,
+    Mimecast, Proofpoint) and link previewers fetch every URL in a message, so
+    readers were silently unsubscribed by their own inbox. RFC 8058 providers
+    POST, so the inbox's native button is unaffected. CSRF-exempt because the
+    256-bit token in the URL is the credential. An unknown token gets a neutral
+    page rather than confirming or denying that it existed.
     """
 
-    def post(self, request, token: str):
-        self._opt_out(token)
-        return JsonResponse({"ok": True})
+    #: The confirm form's field — tells a button press (render a page) from an
+    #: inbox provider's one-click POST (``List-Unsubscribe=One-Click``, JSON).
+    CONFIRM_FIELD = "confirm"
 
-    def get(self, request, token: str):
+    def post(self, request, token: str):
         found = self._opt_out(token)
+        if self.CONFIRM_FIELD not in request.POST:
+            return JsonResponse({"ok": True})
         if found:
             body = (
                 "<p>You've been unsubscribed. You will no longer receive emails "
@@ -133,6 +140,18 @@ class UnsubscribeView(View):
             )
         else:
             body = "<p>This unsubscribe link is no longer valid.</p>"
+        return HttpResponse(_page(body), content_type="text/html; charset=utf-8")
+
+    def get(self, request, token: str):
+        # The form posts back to this same URL; the token never leaves it.
+        body = (
+            "<p>Unsubscribe from all Ochorus emails?</p>"
+            "<form method='post'>"
+            f"<button type='submit' name='{self.CONFIRM_FIELD}' value='1' "
+            "style=\"font:inherit; padding:.6rem 1.2rem; border:1px solid #6b5b3e; "
+            "background:#6b5b3e; color:#fff; border-radius:6px; cursor:pointer;\">"
+            "Unsubscribe</button></form>"
+        )
         return HttpResponse(_page(body), content_type="text/html; charset=utf-8")
 
     @staticmethod

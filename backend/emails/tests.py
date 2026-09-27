@@ -175,21 +175,37 @@ class UnsubscribeViewTests(TestCase):
         self.profile = _make_profile()
         self.sub = EmailSubscription.objects.create(profile=self.profile)
 
-    def test_get_opts_out_and_renders_confirmation(self):
+    def test_get_asks_and_changes_nothing(self):
+        # Mail scanners and link previewers GET every URL in a message; a GET
+        # must never opt the reader out on their behalf.
         res = self.client.get(f"/api/emails/unsubscribe/{self.sub.unsubscribe_token}/")
+        self.assertEqual(res.status_code, 200)
+        self.assertIn(b"<form method='post'>", res.content)
+        self.sub.refresh_from_db()
+        self.assertFalse(self.sub.unsubscribed_all)
+
+    def test_confirm_button_opts_out_and_renders_confirmation(self):
+        res = self.client.post(
+            f"/api/emails/unsubscribe/{self.sub.unsubscribe_token}/", {"confirm": "1"}
+        )
         self.assertEqual(res.status_code, 200)
         self.assertIn(b"unsubscribed", res.content.lower())
         self.sub.refresh_from_db()
         self.assertTrue(self.sub.unsubscribed_all)
 
     def test_post_one_click_opts_out(self):
-        res = self.client.post(f"/api/emails/unsubscribe/{self.sub.unsubscribe_token}/")
+        # RFC 8058: the inbox provider POSTs `List-Unsubscribe=One-Click`.
+        res = self.client.post(
+            f"/api/emails/unsubscribe/{self.sub.unsubscribe_token}/",
+            {"List-Unsubscribe": "One-Click"},
+        )
         self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.json(), {"ok": True})
         self.sub.refresh_from_db()
         self.assertTrue(self.sub.unsubscribed_all)
 
     def test_unknown_token_is_neutral(self):
-        res = self.client.get("/api/emails/unsubscribe/not-a-real-token/")
+        res = self.client.post("/api/emails/unsubscribe/not-a-real-token/", {"confirm": "1"})
         self.assertEqual(res.status_code, 200)
         self.assertIn(b"no longer valid", res.content.lower())
 

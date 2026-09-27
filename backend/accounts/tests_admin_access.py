@@ -182,6 +182,21 @@ class ScopeEnforcementTests(TestCase):
         res = self.client.post("/api/admin/import/publish/", {"kind": "book", "title": "X"}, format="json")
         self.assertEqual(res.status_code, 403)
 
+    def test_delete_is_gated_on_the_query_language_it_acts_on(self):
+        # The handler reads its target from the query string; a body naming an
+        # in-scope language must not smuggle a DELETE on another language past
+        # the gate.
+        res = self.client.delete(
+            "/api/admin/review-queue/verse/?language=pt&kind=book&slug=humility&reference=John+3:16",
+            {"language": "es"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 403)
+        res = self.client.delete(
+            "/api/admin/review-queue/verse/?language=es&kind=book&slug=humility&reference=John+3:16",
+        )
+        self.assertNotEqual(res.status_code, 403)
+
 
 class AdminGrantsCommandTests(TestCase):
     def _run(self, *args):

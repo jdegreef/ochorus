@@ -16,7 +16,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminGrant, UserProfile
-from accounts.permissions import is_admin_user
+from accounts.permissions import _verified_email, is_admin_user
 from common.throttling import ScopedCacheThrottle
 
 from .models import Feedback, FeedbackCategory, FeedbackSource
@@ -54,6 +54,11 @@ def submitter_role(request, email: str) -> str:
     """
     if is_admin_user(request.user, request):
         return "super_admin"
+    # Only a VERIFIED address earns a grant's badge — the bar every grant check
+    # holds (``_verified_email``); an unverified claim of a granted address is
+    # just a reader.
+    if _verified_email(request.user, request) != (email or "").strip().lower():
+        return ""
     grants = list(AdminGrant.objects.filter(email=email))
     labels = {g.role_label for g in grants if g.role_label}
     if "language_admin" in labels:

@@ -12,19 +12,32 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import requires
+from accounts.permissions import is_admin_user, requires
 
 from ..models import AdminAction
+from .analytics import mask_email
+
+#: Team-grant rows target the grantee as ``user:<email>`` (see ``team.py``).
+USER_TARGET = "user:"
 
 
-def _serialize(row: AdminAction) -> dict:
+def _serialize(row: AdminAction, *, reveal: bool) -> dict:
+    """One log row. ``reveal`` is whether the caller is a super admin; for anyone
+    else the actor and any ``user:<email>`` target are masked — every role holds
+    ``reporting:view``, and an unmasked log would hand the lowest of them the
+    email and role of every admin on the team (the ``mask_email`` bar)."""
+    actor, target = row.actor, row.target
+    if not reveal:
+        actor = mask_email(actor) if actor else actor
+        if target.startswith(USER_TARGET):
+            target = USER_TARGET + mask_email(target[len(USER_TARGET):])
     return {
         "action": row.action,
         # The human phrasing lives with the choices, so the label a reader sees
         # and the value stored cannot drift.
         "label": AdminAction.Action(row.action).label,
-        "actor": row.actor,
-        "target": row.target,
+        "actor": actor,
+        "target": target,
         "detail": row.detail,
         "at": row.at.isoformat(),
     }
@@ -74,8 +87,13 @@ class AdminActivityView(APIView):
         target = (request.query_params.get("target") or "").strip()
         before = _parse_cursor(request.query_params.get("before"))
 
+        reveal = is_admin_user(request.user, request)
         base = AdminAction.objects.all()
         if target:
+            # A person's history is keyed by their email; letting a non-super
+            # caller filter on it would confirm addresses the rows mask.
+            if not reveal and target.startswith(USER_TARGET):
+                base = base.none()
             base = base.filter(target=target)
 
         page = base.filter(id__lt=before) if before is not None else base
@@ -97,6 +115,6 @@ class AdminActivityView(APIView):
                 "total": None if before is not None else base.count(),
                 "limit": self.LIMIT,
                 "next_cursor": rows[-1].id if has_more else None,
-                "actions": [_serialize(r) for r in rows],
+                "actions": [_serialize(r, reveal=reveal) for r in rows],
             }
         )
