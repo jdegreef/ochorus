@@ -383,9 +383,15 @@
 						{#each visibleRows as r (r.slug)}
 							{@const rowGaps = langs.reduce((n, l) => n + (isGap(l, r) ? 1 : 0), 0)}
 							<tr class="group/row border-b border-border last:border-0 hover:bg-surface-2">
-								<td class="sticky left-0 z-10 bg-surface px-4 py-2.5">
-									<a href={rowHref(r.slug)} class="block max-w-[16rem] truncate font-medium text-text hover:text-accent">{r.title}</a>
-									{#if r.author}<span class="block max-w-[16rem] truncate text-small text-muted">{r.author}</span>{/if}
+								<!-- Titles wrap to two lines (articles run long — "A Retrospect by Hudson
+								     Taylor: …"); the full title + author ride on the tooltip. -->
+								<td class="sticky left-0 z-10 w-[22rem] min-w-[16rem] max-w-[22rem] bg-surface px-4 py-2.5">
+									<a
+										href={rowHref(r.slug)}
+										class="line-clamp-2 font-medium leading-snug text-text hover:text-accent"
+										title={r.author ? `${r.title} — ${r.author}` : r.title}
+									>{r.title}</a>
+									{#if r.author}<span class="block truncate text-small text-muted" title={r.author}>{r.author}</span>{/if}
 									{#if canQueue && jobsConfigured !== false && rowGaps > 0}
 										<button
 											type="button"
