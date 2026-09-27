@@ -84,9 +84,12 @@
 	);
 
 	// The Questions / Book guides switch only earns its place when the view
-	// holds both kinds.
+	// holds both kinds — or when a kind is already set (a shared link), so the
+	// reader can always see, and undo, what is narrowing the shelf.
 	const guideCount = $derived(base.filter(isGuide).length);
-	const showKinds = $derived(guideCount > 0 && guideCount < base.length);
+	const showKinds = $derived(
+		(guideCount > 0 && guideCount < base.length) || filters.values.kind !== ''
+	);
 
 	const KIND_LABEL: Record<ArticleKind, string> = {
 		questions: 'articles.kindQuestions',
@@ -221,6 +224,10 @@
 			<a href="/articles/{a.slug}/" class="book-card card-lift group">
 				{#if a.lead_book}
 					<BookCover book={a.lead_book} />
+				{:else}
+					<!-- No published book to show: hold the cover's 3:4 box so the
+					     grid row stays aligned. -->
+					<div class="rounded-card border border-dashed border-border" style="aspect-ratio: 3 / 4"></div>
 				{/if}
 				<div class="mt-2 flex flex-1 flex-col px-0.5">
 					<svelte:element

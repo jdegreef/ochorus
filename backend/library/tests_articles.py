@@ -366,6 +366,11 @@ class ArticleLeadBookTests(TestCase):
             slug="malformed", language="en", h1="Malformed", body_html=BODY,
             is_published=True, related="humility",
         )
+        # Nor may an unhashable slug inside a well-formed-looking entry.
+        Article.objects.create(
+            slug="list-slug", language="en", h1="List slug", body_html=BODY,
+            is_published=True, related=[{"type": "book", "slug": ["humility"]}],
+        )
 
     def setUp(self):
         self.client = APIClient()
@@ -390,6 +395,7 @@ class ArticleLeadBookTests(TestCase):
         cards = self._cards()
         self.assertIsNone(cards["how-to-walk-in-humility"]["lead_book"])
         self.assertIsNone(cards["malformed"]["lead_book"])
+        self.assertIsNone(cards["list-slug"]["lead_book"])
 
     def test_kind_follows_the_guide_slug_convention(self):
         cards = self._cards()

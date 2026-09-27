@@ -14,6 +14,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+	import { tick } from 'svelte';
 
 	// English literals, as on /quotes and /scripture: this index is not localized
 	// because what it lists is not (articles are English-only for now). Chrome
@@ -69,8 +70,11 @@
 	// crawler rather than a handful of unrelated URLs.
 	const listLd = $derived(articleCollectionLd('Articles', description, canonical, articles));
 
-	function showGuides() {
+	async function showGuides() {
 		filters.values.kind = 'guides';
+		// Filtering removes the sections above the list; scroll once they're gone,
+		// or the target is measured against the old layout.
+		await tick();
 		document.getElementById('all-articles')?.scrollIntoView({ block: 'start' });
 	}
 </script>

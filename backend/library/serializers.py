@@ -664,7 +664,9 @@ def related_entries(related) -> list[tuple[str, str]]:
         if not isinstance(item, dict):
             continue
         slug, kind = item.get("slug"), item.get("type")
-        if slug and kind in ("book", "sermon", "author"):
+        # A non-string slug (a list, a number) is malformed too — and would
+        # break the set/dict lookups every caller does with it.
+        if isinstance(slug, str) and slug and kind in ("book", "sermon", "author"):
             entries.append((kind, slug))
     return entries
 
@@ -943,18 +945,11 @@ class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
     def get_lead_book(self, obj):
         """The cover card of the article's primary book (the first book it sends
         the reader to), or ``None`` — so the index can show the classic behind
-        each article, not a wall of text. Like ``topics``: a view may pass the
-        whole shelf's map as ``article_lead_books`` context; otherwise it's built
-        on first use per language and cached on the (shared, ``many=True``)
-        serializer, so a topic page's article list costs two queries, not N."""
-        supplied = self.context.get("article_lead_books")
-        if supplied is not None:
-            return supplied.get(obj.slug)
-        cached_for, cached = getattr(self, "_lead_map", (None, None))
-        if cached_for != obj.language:
-            cached = article_lead_book_map(obj.language)
-            self._lead_map = (obj.language, cached)
-        return cached.get(obj.slug)
+        each article, not a wall of text. Every caller passes the batch as
+        ``article_lead_books`` context — the list view the whole shelf's map,
+        the topic page just its own articles' (``lead_book_cards``) — so a card
+        never resolves a book on its own; without that context it is ``None``."""
+        return (self.context.get("article_lead_books") or {}).get(obj.slug)
 
     def get_topics(self, obj):
         """The (published, localized) topics this card belongs to, so the index
@@ -1041,7 +1036,6 @@ class ArticleDetailSerializer(ArticleListSerializer):
 
     def get_related(self, obj):
         return resolve_related(obj.related, obj.language)
-
 
     def get_available_languages(self, obj):
         return _available_languages(Article, obj.slug)
