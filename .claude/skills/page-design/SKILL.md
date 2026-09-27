@@ -168,6 +168,11 @@ Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
   paged is handled by the padding above). Spacing above the chapter title cluster
   is scroll-only too — scope with `article:not(.paged)`, since page mode zeroes
   the article padding and paginates from the top.
+- **A bottom sheet (`DrawerShell placement="bottom"`) mounts outside
+  `.page-col`.** The column's `transform: translateX(-50%)` makes it the
+  containing block for `position: fixed` AND a stacking context, so a sheet
+  inside it was pinned to the column (running off-screen) under the z-40 tab
+  bar. Put the sheet after the page-col `</div>` (sermons Filters sheet).
 - **Phone reader chrome (below `sm`) is its own layout.** Top: Back · book/
   chapter · Contents · "⋯"; footer `.foot-actions`: Previous · Listen · Aa ·
   Next (folds with `hideChrome`). Three traps: (1) nothing `position: fixed`
@@ -539,6 +544,11 @@ relevant group.
 - [ ] **B6** Only Biographies pins its filter bar and collapses it on mobile;
   Books has more controls and neither. Books/Sermons hard-code `scroll-mt-20`
   where Biographies/Search measure the bar. → a `FilterBar` component.
+  _2026-09-27: Sermons now pins a one-line phone bar (search + Filters) and
+  opens its controls in a bottom sheet (`DrawerShell placement="bottom"`),
+  while Biographies still reveals them inline. The eventual `FilterBar`
+  should pick one of the two for all three shelves, and give "Filters" a
+  `common.*` key (Sermons borrows `bios.filters`)._
 - [x] **B7** _(shipped #1519 — count badge)_ Count badges beside labels are styled six ways (`opacity-60`,
   `tabular-nums opacity-70`, `text-small font-normal text-muted`, an
   accent-soft pill, `text-muted/70`, `text-eyebrow`). → one `.count` recipe.

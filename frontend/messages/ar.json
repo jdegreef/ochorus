@@ -438,6 +438,7 @@
   "bios_showing": "عرض %shown% من %total% كاتبًا",
   "books_showing": "عرض %shown% من %total% كتابًا",
   "sermons_showing": "عرض %shown% من %total% عظةً",
+  "sermons_show_results": "عرض العظات (%n%)",
   "common_clear_filters": "مسح عوامل التصفية",
   "common_remove_filter": "إزالة عامل التصفية",
   "common_topics": "المواضيع",

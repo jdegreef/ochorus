@@ -108,7 +108,13 @@
 				{@render headerExtra()}
 			{/if}
 		</header>
-		{@render children()}
+		{#if placement === 'bottom'}
+			<!-- The sheet's body scrolls within the 85vh cap and clears the
+			     home-indicator strip — once here, not in every sheet. -->
+			<div class="sheet-body">{@render children()}</div>
+		{:else}
+			{@render children()}
+		{/if}
 	</div>
 {/if}
 
@@ -148,6 +154,11 @@
 		border-radius: 1.25rem 1.25rem 0 0;
 		box-shadow: 0 -12px 40px rgb(0 0 0 / 0.25);
 		animation-name: sheet-in;
+	}
+	.sheet-body {
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		padding: 1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
 	}
 	.drawer-handle {
 		width: 2.4rem;

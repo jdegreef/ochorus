@@ -86,11 +86,6 @@
 </DrawerShell>
 
 <style>
-	.more-body {
-		overflow-y: auto;
-		overscroll-behavior: contain;
-		padding: 1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
-	}
 	.more-card {
 		margin-bottom: 0.5rem;
 		padding: 1rem;
