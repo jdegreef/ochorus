@@ -114,6 +114,46 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.085
 		},
+		"am/brave-for-god": {
+			"ground": "20c0f370ee4b51e829146b3e7d038864a963a1a9d0b7990412c955ef04585e19",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0
+		},
+		"am/brave-for-god-2": {
+			"ground": "b6d1b353806e7db62dd69f06af2e8bf1573231202fd83098b12acdb4133a833f",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0
+		},
+		"am/brave-for-god-3": {
+			"ground": "5a0f46b4041a38267864bb8743839c7493c08de08410952a9e47cefd038aec4b",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0
+		},
+		"am/brave-for-god-4": {
+			"ground": "ab4037ad279b56c380c348607a1c5066c04f29c98ba3c56cbf805d180a0e5cbe",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/clothed-with-strength-and-dignity": {
 			"ground": "ba57bc4214b38431a6d0642260be42978131896da79dc47ac35a9f09d59d8e47",
 			"style": "originals",
