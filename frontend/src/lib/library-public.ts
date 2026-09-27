@@ -1209,6 +1209,15 @@ export interface ScripturePage {
 	 * server can answer it.
 	 */
 	verses?: { number: number; text: string; citing_count: number; has_page: boolean }[];
+	/** Chapter pages only: the adjacent chapter pages in Bible order, if any. */
+	prev?: ScriptureNeighbour | null;
+	next?: ScriptureNeighbour | null;
+}
+
+export interface ScriptureNeighbour {
+	book: string;
+	book_title: string;
+	chapter: number;
 }
 
 export const listScripturePages = (f?: Fetch) =>

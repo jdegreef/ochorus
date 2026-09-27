@@ -8,7 +8,7 @@ counts a page publishes about itself.
 
 from __future__ import annotations
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
 from .models import Author, Book, Chapter
@@ -17,6 +17,7 @@ from .scripture_graph import (
     VERSE_FLOOR,
     book_from_slug,
     book_slug,
+    current_pages,
     qualifying_pages,
 )
 
@@ -355,3 +356,81 @@ class GraphViewTests(TestCase):
                 path += f"{page['verse']}/"
             with self.subTest(path=path):
                 self.assertEqual(self.client.get(path).status_code, 200)
+
+
+class ChapterNeighbourTests(TestCase):
+    """A chapter page names its neighbours among the chapter pages that exist."""
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="a", name="A Writer")
+        book = Book.objects.create(author=author, slug="w", language="en", title="A Work")
+        # Three chapter pages in Bible order (Genesis 1, Romans 8, Revelation 21)
+        # with Romans 9 cited once — under the floor, so it is no neighbour.
+        order = 0
+        for ref in ("Genesis 1:1", "Romans 8:28", "Revelation 21:4"):
+            for _ in range(CHAPTER_FLOOR):
+                order += 1
+                cite(book, order, ref)
+        cite(book, order + 1, "Romans 9:1")
+        from django.core.management import call_command
+
+        call_command("index_citations", "--all", verbosity=0)
+
+    def _nav(self, path):
+        data = self.client.get(f"/api/library/scripture/{path}").data
+        return data["prev"], data["next"]
+
+    def test_neighbours_are_the_adjacent_qualifying_chapters(self):
+        prev, nxt = self._nav("romans/8/")
+        self.assertEqual(prev, {"book": "genesis", "book_title": "Genesis", "chapter": 1})
+        self.assertEqual(nxt["book"], "revelation")
+        self.assertEqual(nxt["chapter"], 21)
+
+    def test_the_ends_have_no_neighbour(self):
+        self.assertIsNone(self._nav("genesis/1/")[0])
+        self.assertIsNone(self._nav("revelation/21/")[1])
+
+    def test_a_verse_page_carries_no_chapter_nav(self):
+        for i in range(VERSE_FLOOR):
+            cite(Book.objects.get(slug="w"), 100 + i, "Romans 8:28")
+        from django.core.management import call_command
+
+        call_command("index_citations", "--all", verbosity=0)
+        data = self.client.get("/api/library/scripture/romans/8/28/").data
+        self.assertNotIn("prev", data)
+
+
+@override_settings(
+    CACHES={"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}}
+)
+class CurrentPagesCacheTests(TestCase):
+    """The page list is computed once per content revision, and again after one."""
+
+    def setUp(self):
+        from django.core.cache import cache
+
+        cache.clear()
+        author = Author.objects.create(slug="a", name="A Writer")
+        self.book = Book.objects.create(author=author, slug="w", language="en", title="A Work")
+        for i in range(CHAPTER_FLOOR):
+            cite(self.book, i + 1, "Romans 8:28")
+        from django.core.management import call_command
+
+        call_command("index_citations", "--all", verbosity=0)
+
+    def test_reused_within_a_revision_and_recomputed_after_a_bump(self):
+        from unittest import mock
+
+        from . import scripture_graph
+        from .models import ContentRevision
+
+        with mock.patch.object(
+            scripture_graph, "qualifying_pages", wraps=scripture_graph.qualifying_pages
+        ) as computed:
+            first = current_pages()
+            self.assertEqual(current_pages(), first)
+            self.assertEqual(computed.call_count, 1)
+            ContentRevision.bump()
+            current_pages()
+            self.assertEqual(computed.call_count, 2)

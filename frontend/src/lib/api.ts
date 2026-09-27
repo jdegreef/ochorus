@@ -53,6 +53,16 @@ async function errorBody(res: Response): Promise<unknown> {
  */
 export type Fetch = typeof fetch;
 
+/** A GET to the API origin carrying no credentials — the only requests the web
+ * build may answer from anything but the API itself ($lib/buildFetch). */
+export function isAnonymousApiGet(request: Request, apiOrigin: string): boolean {
+	return (
+		request.method === 'GET' &&
+		new URL(request.url).origin === apiOrigin &&
+		!request.headers.has('authorization')
+	);
+}
+
 /**
  * Supplies the current Supabase access token, if any. The auth store registers
  * this (via `setAuthTokenProvider`) so we avoid an import cycle: api ↔ auth.
