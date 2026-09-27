@@ -3,6 +3,8 @@
 	import { jsonLd, hreflangAll } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
+	import { lang } from '$lib/lang.svelte';
+	import { homeShareCardUrl } from '$lib/homeShareCard';
 	import { auth } from '$lib/auth.svelte';
 	import HomeMarketing from '$lib/components/HomeMarketing.svelte';
 	import HomeDashboard from '$lib/components/HomeDashboard.svelte';
@@ -45,6 +47,10 @@
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/');
 
+	// One card per interface locale — homeShareCard.test holds every locale to
+	// having its file.
+	const shareCard = $derived(`${SITE_URL}${homeShareCardUrl(lang.current)}`);
+
 	// Signed-in readers get a personal dashboard; everyone else — and every
 	// crawler — gets the marketing home. The gate matters for SEO: this page is
 	// prerendered, and during the build `auth.initialized` is false (auth only
@@ -74,14 +80,16 @@
 	<meta property="og:title" content="Ochorus — {t('home.heroTitle')}" />
 	<meta property="og:description" content={t('home.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/')}" />
-	<!-- The site's most-linked page had a bare text card. The 1200×630 house
-	     default gives it (and every share of the bare domain) a real image.
-	     This page hand-rolls its head rather than using Seo.svelte, so the
-	     default set there does not reach it. -->
-	<meta property="og:image" content="{SITE_URL}/og/default.png" />
+	<!-- The site's most-linked page shows the library itself: this language's
+	     own covers on a shelf, under copy in this language — drawn per locale
+	     by scripts/generate-home-og.mjs. This page hand-rolls its head rather
+	     than using Seo.svelte, so the default set there does not reach it. -->
+	<meta property="og:image" content={shareCard} />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
-	<meta name="twitter:image" content="{SITE_URL}/og/default.png" />
+	<meta property="og:image:alt" content={t('home.shareImageAlt')} />
+	<meta name="twitter:image" content={shareCard} />
+	<meta name="twitter:image:alt" content={t('home.shareImageAlt')} />
 	<meta name="twitter:card" content="summary_large_image" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html siteLd}
