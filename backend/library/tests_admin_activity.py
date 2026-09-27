@@ -128,3 +128,41 @@ class AdminActivityTests(TestCase):
     def test_forbidden_without_admin_email(self):
         res = self.client.get("/api/admin/activity/")
         self.assertIn(res.status_code, (401, 403))
+
+
+@override_settings(DEBUG=False, ADMIN_EMAILS={"super@ochorus.com"})
+class AdminActivityMaskingTests(TestCase):
+    """Every role holds reporting:view, so the log must not hand the lowest of
+    them the email and role of every admin on the team."""
+
+    def setUp(self):
+        from django.contrib.auth import get_user_model
+
+        from accounts.admin_roles import apply_grant
+
+        User = get_user_model()
+        self.client = APIClient()
+        AdminAction.objects.create(
+            action=A.CONTENT_PUBLISH, actor="super@ochorus.com", target="user:hannah@example.com",
+        )
+        apply_grant("contrib@ochorus.com", role="contributor")
+        self.contrib = User.objects.create(username="uid-contrib", email="contrib@ochorus.com")
+        self.super = User.objects.create(username="uid-super", email="super@ochorus.com")
+
+    def test_non_super_sees_actor_and_user_targets_masked(self):
+        self.client.force_authenticate(user=self.contrib, token={"email_verified": True})
+        row = self.client.get("/api/admin/activity/").data["actions"][0]
+        self.assertNotIn("super@", row["actor"])
+        self.assertTrue(row["target"].startswith("user:"))
+        self.assertNotIn("hannah", row["target"])
+
+    def test_non_super_cannot_probe_a_user_target(self):
+        self.client.force_authenticate(user=self.contrib, token={"email_verified": True})
+        res = self.client.get("/api/admin/activity/?target=user:hannah@example.com")
+        self.assertEqual(res.data["total"], 0)
+
+    def test_super_admin_sees_the_log_in_the_clear(self):
+        self.client.force_authenticate(user=self.super, token={"email_verified": True})
+        row = self.client.get("/api/admin/activity/?target=user:hannah@example.com").data["actions"][0]
+        self.assertEqual(row["actor"], "super@ochorus.com")
+        self.assertEqual(row["target"], "user:hannah@example.com")

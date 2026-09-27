@@ -160,6 +160,18 @@ class SubmitTests(TestCase):
         self.assertEqual(resp.status_code, 201)
         self.assertEqual(Feedback.objects.get().submitter_role, "language_admin")
 
+    def test_unverified_email_does_not_earn_a_grant_badge(self):
+        # The badge is a trust signal on the queue: an account that merely CLAIMS
+        # a granted address (unverified) must not wear it.
+        AdminGrant.objects.create(
+            email="la@ochorus.com", capability=C.REVIEW, verb=V.APPROVE,
+            languages="en", role_label="language_admin",
+        )
+        self.client.force_authenticate(user=_reader("la@ochorus.com"), token={"email_verified": False})
+        resp = self.client.post("/api/feedback/", {"body": "Pretending to be trusted."}, format="json")
+        self.assertEqual(resp.status_code, 201)
+        self.assertEqual(Feedback.objects.get().submitter_role, "")
+
     def test_super_admin_submitter_is_badged(self):
         self.client.force_authenticate(user=_reader("super@ochorus.com"), token=VERIFIED)
         resp = self.client.post("/api/feedback/", {"body": "Founder feedback here."}, format="json")
@@ -269,6 +281,27 @@ class AdminQueueTests(TestCase):
         self.client.force_authenticate(user=self.super, token=VERIFIED)
         langs = {i["content_language"] for i in self.client.get("/api/admin/feedback/").data["items"]}
         self.assertEqual(langs, {"lg", "en", ""})
+
+    def test_language_admin_sees_reader_emails_masked(self):
+        # Reader emails are PII: only super admins see them in the clear, the
+        # same bar as the user directory. A language admin triages by content.
+        item = Feedback.objects.create(
+            submitter=_profile("reader.lg@example.com"), submitter_email="reader.lg@example.com",
+            content_language="lg", category="language", body="a note",
+            assignee_email="la@ochorus.com",
+        )
+        self._lang_admin(languages="lg")
+        row = next(i for i in self.client.get("/api/admin/feedback/").data["items"] if i["id"] == item.id)
+        self.assertNotIn("reader.lg", row["submitter_email"])
+        self.assertTrue(row["submitter_email"].endswith("@example.com"))
+        self.assertNotEqual(row["assignee_email"], "la@ochorus.com")
+        resp = self.client.post(f"/api/admin/feedback/{item.pk}/", {"status": "planned"}, format="json")
+        self.assertNotIn("reader.lg", resp.data["submitter_email"])
+
+    def test_super_admin_sees_reader_emails_in_the_clear(self):
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        row = self.client.get("/api/admin/feedback/").data["items"][0]
+        self.assertEqual(row["submitter_email"], "r@example.com")
 
     def test_source_filter(self):
         Feedback.objects.create(

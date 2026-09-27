@@ -16,7 +16,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminGrant, UserProfile
-from accounts.permissions import is_admin_user
+from accounts.permissions import _verified_email, is_admin_user
 from common.throttling import ScopedCacheThrottle
 
 from .models import Feedback, FeedbackCategory, FeedbackSource
@@ -45,7 +45,7 @@ def _profile(request) -> UserProfile:
     return profile
 
 
-def submitter_role(request, email: str) -> str:
+def submitter_role(request) -> str:
     """A snapshot label of the submitter's standing, for the queue's trust badge.
 
     Super admin wins; otherwise the strongest role they hold (``language_admin``
@@ -54,7 +54,13 @@ def submitter_role(request, email: str) -> str:
     """
     if is_admin_user(request.user, request):
         return "super_admin"
-    grants = list(AdminGrant.objects.filter(email=email))
+    # Only a VERIFIED address earns a grant's badge — the bar every grant check
+    # holds (``_verified_email``); an unverified claim of a granted address is
+    # just a reader.
+    verified = _verified_email(request.user, request)
+    if not verified:
+        return ""
+    grants = list(AdminGrant.objects.filter(email=verified))
     labels = {g.role_label for g in grants if g.role_label}
     if "language_admin" in labels:
         return "language_admin"
@@ -115,7 +121,7 @@ class FeedbackView(APIView):
         feedback = Feedback.objects.create(
             submitter=profile,
             submitter_email=email,
-            submitter_role=submitter_role(request, email),
+            submitter_role=submitter_role(request),
             category=category,
             body=body,
             source=source,

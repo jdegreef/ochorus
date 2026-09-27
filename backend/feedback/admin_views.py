@@ -22,7 +22,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import allowed_languages, requires
+from accounts.permissions import allowed_languages, is_admin_user, requires
+from library.admin_views.analytics import mask_email
 from library.audit import AdminAudited
 from library.models import AdminAction
 
@@ -39,14 +40,21 @@ from .models import (
 PAGE_SIZE = 200
 
 
-def _serialize(item: Feedback) -> dict:
+def _serialize(item: Feedback, *, reveal: bool) -> dict:
+    """One queue row. ``reveal`` is whether the caller is a super admin: reader
+    emails are PII, so a language admin triaging their languages sees them
+    masked, the same bar the user directory holds (``analytics.mask_email``)."""
+
+    def email(value: str) -> str:
+        return value if reveal or not value else mask_email(value)
+
     return {
         "id": item.id,
         "category": item.category,
         "body": item.body,
         "source": item.source,
         "status": item.status,
-        "submitter_email": item.submitter_email,
+        "submitter_email": email(item.submitter_email),
         "submitter_role": item.submitter_role,
         "page_url": item.page_url,
         "content_kind": item.content_kind,
@@ -57,7 +65,7 @@ def _serialize(item: Feedback) -> dict:
         "selected_text": item.selected_text,
         "suggested_text": item.suggested_text,
         "anchor_block": item.anchor_block,
-        "assignee_email": item.assignee_email,
+        "assignee_email": email(item.assignee_email),
         "admin_note": item.admin_note,
         "duplicate_of": item.duplicate_of_id,
         "created_at": item.created_at.isoformat(),
@@ -92,7 +100,8 @@ class AdminFeedbackListView(APIView):
         if source in FeedbackSource.values:
             qs = qs.filter(source=source)
 
-        items = [_serialize(f) for f in qs[:PAGE_SIZE]]
+        reveal = is_admin_user(request.user, request)
+        items = [_serialize(f, reveal=reveal) for f in qs[:PAGE_SIZE]]
         # A dedup nudge: how many other shown items flag the same passage, so ten
         # reports of one broken paragraph read as a cluster rather than ten rows.
         clusters = Counter(
@@ -165,4 +174,4 @@ class AdminFeedbackDetailView(AdminAudited, APIView):
                 return Response({"detail": "Invalid duplicate_of."}, status=400)
 
         item.save()
-        return Response(_serialize(item))
+        return Response(_serialize(item, reveal=is_admin_user(request.user, request)))

@@ -4,8 +4,17 @@ import { readFileSync } from 'node:fs';
 
 import { cspDirectives } from './csp.config.js';
 
+/** The origin of a URL-shaped build env var, or '' when unset/unparseable. */
+function originOf(value) {
+	try {
+		return value ? new URL(value).origin : '';
+	} catch {
+		return '';
+	}
+}
+
 /**
- * connect-src, plus the API origin THIS build actually talks to.
+ * connect-src, plus the origins THIS build actually talks to.
  *
  * The CSP now ships baked into the built pages (a <meta>), so it is enforced
  * wherever the build runs — including the CI browser-smoke job, which drives the
@@ -16,18 +25,20 @@ import { cspDirectives } from './csp.config.js';
  * production it is https://api.ochorus.com (already listed → deduped); in CI/local
  * it is the localhost backend. Adding it here (not in csp.config.js) keeps the
  * shipped-prod assertions clean while letting the app reach its own API anywhere.
+ *
+ * PUBLIC_SENTRY_DSN's origin (e.g. https://o123.ingest.us.sentry.io — the key in
+ * the DSN's userinfo is not part of an origin) is added the same way: pinning the
+ * exact ingest host rather than a `*.ingest.sentry.io` wildcard any Sentry
+ * account could receive on. No DSN → Sentry never loads and no host is added.
  */
 function directivesForThisBuild() {
-	const base = process.env.PUBLIC_API_BASE_URL;
-	let origin;
-	try {
-		origin = base ? new URL(base).origin : '';
-	} catch {
-		origin = '';
-	}
 	const connect = cspDirectives['connect-src'];
-	if (!origin || connect.includes(origin)) return cspDirectives;
-	return { ...cspDirectives, 'connect-src': [...connect, origin] };
+	const extra = [
+		originOf(process.env.PUBLIC_API_BASE_URL),
+		originOf(process.env.PUBLIC_SENTRY_DSN)
+	].filter((origin, i, all) => origin && !connect.includes(origin) && all.indexOf(origin) === i);
+	if (!extra.length) return cspDirectives;
+	return { ...cspDirectives, 'connect-src': [...connect, ...extra] };
 }
 
 /** Non-English UI locales, read from the inlang project (the source of truth). */
