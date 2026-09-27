@@ -1,0 +1,164 @@
+{
+ "kind": "sermon",
+ "slug": "the-love-of-christ",
+ "language": "sw",
+ "job_issue": 4149,
+ "pull_request": 4160,
+ "references": [
+  {
+   "reference": "1 Corinthians 13:13b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Micah 7:19b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Galatians 5:22a",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "1 Corinthians 13:2",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "1 Corinthians 13:3",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "1 Corinthians 13:4a",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "1 Corinthians 13:5b",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "1 Corinthians 13:6",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "1 Corinthians 13:8a",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Psalm 103:11",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "John 12:46",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Hebrews 1:14",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "2 Kings 6:16",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Jeremiah 1:12",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 111
+  },
+  {
+   "reference": "Matthew 6:15",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "block_index": 147,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalm 139:23a",
+   "status": "mined",
+   "block_index": 150,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "John 8:11b",
+   "status": "mined",
+   "block_index": 157,
+   "source_file": "christs-boundless-compassion.sw.json"
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "self_rendered",
+   "block_index": 170
+  },
+  {
+   "reference": "Revelation 21:4a",
+   "status": "self_rendered",
+   "block_index": 170
+  },
+  {
+   "reference": "Habakkuk 2:14",
+   "status": "self_rendered",
+   "block_index": 171
+  },
+  {
+   "reference": "Deuteronomy 33:27b",
+   "status": "self_rendered",
+   "block_index": 172
+  },
+  {
+   "reference": "Matthew 11:28a",
+   "status": "mined",
+   "block_index": 183,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:7",
+   "status": "self_rendered",
+   "block_index": 188
+  }
+ ]
+}

@@ -1,0 +1,259 @@
+{
+ "kind": "sermon",
+ "slug": "the-meaning-of-the-cross",
+ "language": "sw",
+ "job_issue": 4156,
+ "pull_request": 4160,
+ "references": [
+  {
+   "reference": "Luke 22:42b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "a-ribband-of-blue.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "feasting-at-the-table.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20b",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "feasting-at-the-table.sw.json"
+  },
+  {
+   "reference": "Philippians 3:13-14",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Philippians 3:10a",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Corinthians 6:19b-20",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Luke 18:31-32a",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Luke 18:32b-33",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Luke 18:34",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Matthew 16:21",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Matthew 16:22",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Matthew 16:18a",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "Matthew 16:18b-19a",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 16:23a",
+   "status": "mined",
+   "block_index": 59,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "Matthew 16:23b",
+   "status": "mined",
+   "block_index": 60,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "mined",
+   "block_index": 66,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Matthew 16:25a",
+   "status": "mined",
+   "block_index": 66,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Matthew 16:25b",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "1 Peter 3:6",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "block_index": 98,
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "Matthew 25:45",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "1 Peter 3:4",
+   "status": "mined",
+   "block_index": 111,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Ephesians 5:23a",
+   "status": "mined",
+   "block_index": 112,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Psalm 27:14a",
+   "status": "mined",
+   "block_index": 117,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 7:9",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "self_rendered",
+   "block_index": 124
+  },
+  {
+   "reference": "Matthew 1:19",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "John 5:19",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Matthew 13:58",
+   "status": "self_rendered",
+   "block_index": 140
+  },
+  {
+   "reference": "Genesis 1:16b",
+   "status": "self_rendered",
+   "block_index": 140
+  },
+  {
+   "reference": "Matthew 4:3",
+   "status": "self_rendered",
+   "block_index": 146
+  },
+  {
+   "reference": "Psalm 90:10",
+   "status": "self_rendered",
+   "block_index": 151
+  },
+  {
+   "reference": "Psalm 16:5",
+   "status": "self_rendered",
+   "block_index": 153
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "block_index": 163,
+   "source_file": "lord-teach-us-to-pray-2.sw.json"
+  },
+  {
+   "reference": "Titus 2:4-5",
+   "status": "self_rendered",
+   "block_index": 166
+  },
+  {
+   "reference": "Luke 12:49",
+   "status": "self_rendered",
+   "block_index": 166
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "block_index": 167,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "self_rendered",
+   "block_index": 171
+  },
+  {
+   "reference": "Romans 5:3-5",
+   "status": "self_rendered",
+   "block_index": 171
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 176,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Isaiah 43:3a",
+   "status": "self_rendered",
+   "block_index": 176
+  },
+  {
+   "reference": "Proverbs 13:24",
+   "status": "self_rendered",
+   "block_index": 177
+  },
+  {
+   "reference": "2 Timothy 2:12a",
+   "status": "self_rendered",
+   "block_index": 177
+  },
+  {
+   "reference": "2 Corinthians 4:12",
+   "status": "mined",
+   "block_index": 178,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  }
+ ]
+}

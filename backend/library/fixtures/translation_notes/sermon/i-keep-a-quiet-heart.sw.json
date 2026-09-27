@@ -1,0 +1,121 @@
+{
+ "kind": "sermon",
+ "slug": "i-keep-a-quiet-heart",
+ "language": "sw",
+ "job_issue": 4155,
+ "pull_request": 4160,
+ "references": [
+  {
+   "reference": "Psalm 19:14",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 4:35b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Mark 4:36",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Mark 4:37",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Mark 4:38a",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Mark 4:38b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Mark 4:39a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Mark 4:39b",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Mark 4:40",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Mark 4:41",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Mark 4:38b",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "1 Kings 19:12b",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Philippians 4:6a",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Matthew 6:25a",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Hebrews 13:8b",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "answers-to-prayer.sw.json"
+  },
+  {
+   "reference": "Jeremiah 31:3b",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Deuteronomy 33:27b",
+   "status": "mined",
+   "block_index": 69,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Genesis 50:20a",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "growing-in-wisdom.sw.json"
+  },
+  {
+   "reference": "Daniel 3:18",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Luke 11:2",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Psalm 16:5",
+   "status": "self_rendered",
+   "block_index": 102
+  }
+ ]
+}

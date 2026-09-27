@@ -1,0 +1,92 @@
+{
+ "kind": "sermon",
+ "slug": "hearts-set-on-pilgrimage",
+ "language": "sw",
+ "job_issue": 4153,
+ "pull_request": 4160,
+ "references": [
+  {
+   "reference": "Psalm 84:5b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 8:28b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 10:8",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Job 10:9a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Job 10:9b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 77:8",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 77:9",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "the-secret-of-guidance.sw.json"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Psalm 84:6a",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "mined",
+   "block_index": 77,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "Psalm 22:6a",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Psalm 126:5",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Jeremiah 31:3b",
+   "status": "self_rendered",
+   "block_index": 98
+  }
+ ]
+}
