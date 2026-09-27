@@ -69,7 +69,7 @@
 
 	// --- Bookmarks ------------------------------------------------------------
 	// The paragraph at the top of the screen — the single-document Reader's
-	// bookmark, shared with the sermon, biography and article pages.
+	// bookmark, shared with the sermon page.
 	const bookmark = readerBookmark({
 		kind: 'bio',
 		slug: () => author.slug,
@@ -341,6 +341,15 @@
 	// the app nav and this bar. Mirrors +layout's navH measurement.
 	let subnavH = $state(0);
 
+	// Where the Reader parks a resumed or `?p=` paragraph, and the line its
+	// "which paragraph is at the top" reads against: below everything pinned —
+	// the app nav (this route keeps it sticky) and the jump-bar when it shows —
+	// plus the same half-rem the section anchors keep. It was 0, which parked a
+	// Notebook link's paragraph under the nav. Nothing is pinned in focus mode.
+	const pinnedOffset = $derived(
+		readerUi.focus ? 0 : readerUi.navHeight + (showSubnav ? subnavH : 0) + 8
+	);
+
 	// Scroll-spy: light the link for whatever section sits in the band just under
 	// the pinned bars. The shared helper re-observes when the target set changes
 	// (empty while the sub-nav is hidden). No-JS / prerender shows the bar with
@@ -609,7 +618,7 @@
 				listenArtist={t('bios.eyebrow')}
 				bind:body={bioEl}
 				bind:frac
-				headerOffset={0}
+				headerOffset={pinnedOffset}
 			/>
 		</div>
 	{:else if author.bio}

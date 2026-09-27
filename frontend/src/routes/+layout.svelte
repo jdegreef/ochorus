@@ -148,6 +148,10 @@
 		ro.observe(navEl);
 		return () => ro.disconnect();
 	});
+	// …and hand it to script (readerUi.navHeight) for pages that must clear it.
+	$effect(() => {
+		readerUi.navHeight = navH;
+	});
 
 	const copyrightYear = new Date().getFullYear();
 

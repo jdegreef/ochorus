@@ -109,3 +109,15 @@ describe('the paged reader clears the nav', () => {
 		expect(src).toMatch(/article\.paged\.focus\s*\{\s*top:\s*0;/);
 	});
 });
+
+describe('a Reader under the sticky app nav clears it', () => {
+	it('the biography parks a jumped-to paragraph below the nav and its jump-bar', () => {
+		// The author route keeps the app nav sticky, but its Reader passed
+		// `headerOffset={0}`: a Notebook `?p=` link parked the paragraph under the
+		// nav, and "the paragraph at the top" was read against the wrong line.
+		const src = read('routes/authors/[slug]/+page.svelte');
+		expect(src).not.toMatch(/headerOffset=\{0\}/);
+		expect(src).toMatch(/readerUi\.navHeight/);
+		expect(read(LAYOUT)).toMatch(/readerUi\.navHeight = navH/);
+	});
+});
