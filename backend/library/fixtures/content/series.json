@@ -21,8 +21,8 @@
   "description": "True stories of faith for young readers: ordinary people from every part of the world who trusted God and were made brave.",
   "sort_order": 20,
   "audience": "young_readers",
-  "min_age": null,
-  "max_age": null,
+  "min_age": 8,
+  "max_age": 12,
   "created_at": "2026-09-23T00:00:00Z",
   "updated_at": "2026-09-23T00:00:00Z"
  }
