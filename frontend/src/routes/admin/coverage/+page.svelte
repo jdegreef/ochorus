@@ -324,6 +324,17 @@
 	const totals = $derived(
 		langs.map((l) => visibleRows.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0))
 	);
+	// Completion per language over the visible works that CAN exist there — a
+	// copyright-blocked work never will, so it's out of the denominator (and of
+	// the numerator: its unpublished editions don't count as progress).
+	const reachable = $derived(visibleRows.filter((r) => !r.blocked));
+	const completion = $derived(
+		langs.map((l) => {
+			const have = reachable.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0);
+			const of = reachable.length;
+			return { have, of, pct: of ? Math.round((have / of) * 100) : 0 };
+		})
+	);
 
 	function cellMeta(v: string | undefined) {
 		switch (v) {
@@ -677,8 +688,16 @@
 						<tr class="border-b border-border text-small text-muted">
 							<th class="sticky left-0 top-0 z-30 bg-surface px-4 py-3 text-left font-semibold">Work</th>
 							{#each langs as l, i (l.code)}
+								{@const c = completion[i]}
 								<th class="sticky top-0 z-20 bg-surface px-3 py-3 text-center font-semibold align-top" title={l.name}>
 									<a href="/admin/languages/{l.code}" class="text-muted hover:text-accent">{l.code}</a>
+									<span
+										class="mt-0.5 block text-micro font-normal tabular-nums {c.pct === 100 ? 'text-accent' : 'text-muted'}"
+										title={`${l.name}: ${c.have} of ${c.of} works on screen (${c.pct}%)`}
+									>{c.pct}%</span>
+									<span class="mx-auto mt-0.5 block h-1 w-8 overflow-hidden rounded-full bg-border" aria-hidden="true">
+										<span class="block h-full rounded-full bg-accent" style:width="{c.pct}%"></span>
+									</span>
 									{#if l.unmet_searches}
 										<span
 											class="mt-0.5 block text-micro font-normal text-warning"
@@ -748,7 +767,9 @@
 						<tr class="border-t border-border text-small text-muted">
 							<td class="sticky left-0 z-10 bg-surface px-4 py-2.5 font-semibold">Total ({visibleRows.length}{visibleRows.length !== rows.length ? ` of ${rows.length}` : ''})</td>
 							{#each totals as n, i (langs[i].code)}
-								<td class="px-3 py-2.5 text-center tabular-nums font-semibold text-text">{n}</td>
+								<td class="px-3 py-2.5 text-center tabular-nums font-semibold text-text">
+									{n}<span class="font-normal text-muted">/{completion[i].of}</span>
+								</td>
 							{/each}
 						</tr>
 					</tfoot>
