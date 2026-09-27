@@ -42,6 +42,17 @@ export function minutesLeft(words: number, frac: number): number {
 }
 
 /**
+ * How much of a block of prose the reader has reached, 0–1: the share of its
+ * height above the viewport's bottom edge. One formula for every progress
+ * hairline (Reader's `frac` behind the sermon/bio bars, the article page), so
+ * the same `.read-progress` fills at the same rate wherever it appears.
+ */
+export function seenFraction(rect: { top: number; height: number }, viewportHeight: number): number {
+	if (rect.height <= 0) return 0;
+	return Math.min(Math.max(viewportHeight - rect.top, 0), rect.height) / rect.height;
+}
+
+/**
  * Book-progress percent for the "Continue reading" card, from the chapter
  * currently open (`order`, 1-based) and the book's chapter count.
  *

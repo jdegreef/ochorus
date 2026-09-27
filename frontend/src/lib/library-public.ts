@@ -889,6 +889,13 @@ export interface Article extends ArticleSummary {
 	/** Content locales this article is published in — the only locales an
 	 *  hreflang alternate should point at (per-language rows, no fallback). */
 	available_languages: string[];
+	/** Up to three other articles sharing a topic with this one, closest first
+	 *  — the "More on …" row. Optional: an API running behind this build omits it. */
+	more_articles?: ArticleSummary[];
+	/** The passages the body cites (first mention first, capped) and their
+	 *  `/scripture/…` pages where one exists — the same pair a sermon carries. */
+	scripture_refs?: string[];
+	scripture_links?: Record<string, string>;
 }
 
 export const listArticles = (language = 'en', f?: Fetch) =>

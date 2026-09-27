@@ -402,13 +402,11 @@ class ArticleLeadBookTests(TestCase):
         self.assertEqual(cards["humility-guide"]["kind"], "guide")
         self.assertEqual(cards["how-to-walk-in-humility"]["kind"], "article")
 
-    def test_detail_does_not_carry_the_index_cover(self):
-        # The page renders the same book from `related`; no second lookup.
+    def test_detail_carries_its_lead_book_for_the_hero(self):
         res = self.client.get(
             reverse("article-detail", args=["humility-guide"]), {"language": "en"}
         )
-        self.assertNotIn("lead_book", res.data)
-        self.assertEqual(res.data["related"][1]["slug"], "humility")
+        self.assertEqual(res.data["lead_book"]["slug"], "humility")
 
     def test_topic_page_article_cards_carry_their_lead_book(self):
         # The topic endpoint resolves lead books from its own articles only.
@@ -440,3 +438,77 @@ class ArticleLeadBookTests(TestCase):
         with CaptureQueriesContext(connection) as large:
             self.client.get(reverse("article-list"), {"language": "en"})
         self.assertEqual(len(small), len(large))
+
+
+class ArticleMoreArticlesTests(TestCase):
+    """The detail page's "More on …" row: other articles sharing a topic."""
+
+    @classmethod
+    def setUpTestData(cls):
+        from .models import Topic, TopicArticle
+
+        prayer = Topic.objects.create(slug="prayer", title="Prayer", is_published=True)
+        faith = Topic.objects.create(slug="faith", title="Faith", is_published=True)
+        hidden = Topic.objects.create(slug="hidden", title="Hidden", is_published=False)
+
+        def art(slug, order, topics, **kw):
+            Article.objects.create(
+                slug=slug, language="en", h1=slug, body_html=BODY,
+                sort_order=order, is_published=kw.pop("is_published", True), **kw,
+            )
+            for t in topics:
+                TopicArticle.objects.create(topic=t, article_slug=slug)
+
+        art("how-to-pray", 0, [prayer, faith])
+        art("persistent-prayer", 5, [prayer, faith])  # shares two topics
+        art("prayer-guide", 1, [prayer, faith])       # shares two, but a guide
+        art("waiting-on-god", 2, [prayer])            # shares one
+        art("morning-watch", 3, [prayer])             # shares one
+        art("draft", 0, [prayer], is_published=False)
+        art("unrelated", 0, [hidden])
+        Article.objects.create(
+            slug="persistent-prayer", language="fr", h1="fr", body_html=BODY,
+            is_published=True,
+        )
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _more(self, slug):
+        res = self.client.get(reverse("article-detail", args=[slug]), {"language": "en"})
+        self.assertEqual(res.status_code, 200)
+        return [a["slug"] for a in res.data["more_articles"]]
+
+    def test_ranked_by_shared_topics_then_questions_first_then_curated_order(self):
+        self.assertEqual(
+            self._more("how-to-pray"),
+            ["persistent-prayer", "prayer-guide", "waiting-on-god"],
+        )
+
+    def test_excludes_itself_unpublished_other_languages_and_hidden_topics(self):
+        more = self._more("waiting-on-god")
+        self.assertNotIn("waiting-on-god", more)
+        self.assertNotIn("draft", more)
+        self.assertNotIn("unrelated", more)
+        self.assertEqual(len(more), 3)
+
+    def test_an_untagged_article_has_none(self):
+        Article.objects.create(
+            slug="lonely", language="en", h1="Lonely", body_html=BODY, is_published=True
+        )
+        self.assertEqual(self._more("lonely"), [])
+
+
+class ArticleScriptureRefsTests(TestCase):
+    """The "Scriptures in this article" row reads the same fields as the
+    sermon page's: the cited passages, first mention first, once each."""
+
+    def test_detail_lists_cited_passages_once_in_order(self):
+        Article.objects.create(
+            slug="refs", language="en", h1="Refs", is_published=True,
+            body_html="<p>See John 3:16 and Romans 8:28, and again Jn 3:16.</p>",
+        )
+        res = APIClient().get(reverse("article-detail", args=["refs"]), {"language": "en"})
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["scripture_refs"], ["John 3:16", "Romans 8:28"])
+        self.assertIsInstance(res.data["scripture_links"], dict)
