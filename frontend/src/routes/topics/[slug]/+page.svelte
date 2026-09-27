@@ -29,7 +29,7 @@
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { portraitPosition } from '$lib/portraits';
 	import { groupBooksByAuthor } from '$lib/topicBookGroups';
-	import { topicSectionOrder } from '$lib/topicSections';
+	import { topicSectionOrder, topicLeadsWithSeries } from '$lib/topicSections';
 	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
 
 	let { data } = $props();
@@ -61,13 +61,7 @@
 	// When non-null the shelf offers a By-author / All-books toggle; when null
 	// there is nothing to group, so the toggle is hidden and it stays flat.
 	const bookGroups = $derived(groupBooksByAuthor(topic.books));
-	// Lead with the series only when the topic is mostly series volumes (For
-	// Young Readers: 16 of 19). Two Key Teachings books among eight on Deeper
-	// Life are better met as books than as a half-empty series card.
-	const topicSeries = $derived.by(() => {
-		const inSeries = topic.books.filter((b) => b.series).length;
-		return inSeries * 2 >= topic.books.length && inSeries ? seriesFromBooks(topic.books) : [];
-	});
+	const topicSeries = $derived(topicLeadsWithSeries(topic.books) ? seriesFromBooks(topic.books) : []);
 
 	// The Books section's controls. Defaults render one flat cover grid in shelf
 	// order — the same dense grid the /books shelf shows — so a topic reads

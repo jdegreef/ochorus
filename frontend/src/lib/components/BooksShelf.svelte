@@ -176,12 +176,10 @@
 	// By series: a section per series (see groupBySeries). Unlike authors, a
 	// series is several books by definition, so a section each never leaves a
 	// heading over a lone card.
-	// The Book Series rail: every series on the open shelf; under a topic
-	// filter, the series among the filtered books (so For Young Readers leads
-	// with its four series); hidden under a query or source filter alone.
-	const railSeries = $derived(
-		filters.values.topic ? seriesAmong(series, filtered) : searching ? [] : series
-	);
+	// The Book Series rail: every series on the open shelf; under any filter,
+	// the series among the books it leaves — so For Young Readers leads with its
+	// four series, and a search for "rooted" with Rooted.
+	const railSeries = $derived(searching ? seriesAmong(series, filtered) : series);
 
 	const seriesGroups = $derived(
 		activeGroup === 'series' ? groupBySeries(sorted, series.map((s) => s.slug)) : null

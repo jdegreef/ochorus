@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
 	saveProgress,
+	bookProgressReader,
 	saveScrollAnchor,
 	getProgressRecord,
 	markFinished,
@@ -158,5 +159,17 @@ describe('removing a work from the shelf', () => {
 	it('is a no-op for a work with no position', () => {
 		expect(removeWork('never-opened')).toBeNull();
 		expect(pendingAt('progress', 'book', 'never-opened')).toBeNull();
+	});
+});
+
+describe('bookProgressReader', () => {
+	it('answers started / finished for many books from one read', () => {
+		saveProgress('a', 3);
+		saveProgress('b', 1);
+		markFinished('b');
+		const of = bookProgressReader();
+		expect(of('a')).toEqual({ started: true, finished: false });
+		expect(of('b')).toEqual({ started: true, finished: true });
+		expect(of('c')).toEqual({ started: false, finished: false });
 	});
 });

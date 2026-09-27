@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import * as m from '$lib/paraglide/messages.js';
 	import type { SeriesSummary } from '$lib/library-public';
-	import { getProgress, isFinished } from '$lib/progress';
-	import { seriesProgress } from '$lib/series';
-	import { volumeNumeral } from '$lib/coverStyles';
+	import { bookProgressReader } from '$lib/progress';
+	import { seriesProgress, seriesProgressLabel } from '$lib/series';
 	import { contentLang } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import ProgressBar from './ProgressBar.svelte';
@@ -31,21 +29,11 @@
 	let mounted = $state(false);
 	onMount(() => (mounted = true));
 	const progress = $derived(
-		mounted && series.books
-			? seriesProgress(series.books, (slug) => ({
-					started: getProgress(slug) != null,
-					finished: isFinished(slug)
-				}))
-			: null
+		mounted && series.books ? seriesProgress(series.books, bookProgressReader()) : null
 	);
-	const progressLabel = $derived.by(() => {
-		if (!progress) return '';
-		const lang = contentLang(getLang());
-		return m.series_progress({
-			done: volumeNumeral(progress.done, lang) ?? String(progress.done),
-			total: volumeNumeral(progress.total, lang) ?? String(progress.total)
-		});
-	});
+	const progressLabel = $derived(
+		progress ? seriesProgressLabel(progress.done, progress.total, contentLang(getLang())) : ''
+	);
 </script>
 
 <ShelfCard

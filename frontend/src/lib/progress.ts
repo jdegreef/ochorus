@@ -109,6 +109,19 @@ export function saveProgress(
 }
 
 /** Has the reader finished this work? */
+/**
+ * A book's started / finished state, read from ONE parse of the progress map —
+ * for a page that asks about many books at once (a series card, a series page)
+ * rather than paying a localStorage read + JSON.parse per question.
+ */
+export function bookProgressReader(): (slug: string) => { started: boolean; finished: boolean } {
+	const map = read();
+	return (slug) => {
+		const r = map[workSlugKey('book', slug)];
+		return { started: r != null, finished: r?.finished_at != null };
+	};
+}
+
 export function isFinished(slug: string, kind: WorkKind = 'book'): boolean {
 	return getProgressRecord(slug, kind)?.finished_at != null;
 }

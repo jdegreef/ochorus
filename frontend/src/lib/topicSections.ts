@@ -28,3 +28,14 @@ export function topicSectionOrder(counts: Record<TopicSectionKind, number>): Top
 		.sort((a, b) => counts[b] - counts[a] || CANON.indexOf(a) - CANON.indexOf(b));
 	return counts.articles > 0 ? [...shelves, 'articles'] : [...shelves];
 }
+
+/**
+ * Whether a topic page leads with a "Book Series" row: when at least half its
+ * books are series volumes. For Young Readers (16 of 19) does; Deeper Life,
+ * with two Key Teachings books among eight, is better met as books than as a
+ * half-empty series card.
+ */
+export function topicLeadsWithSeries(books: { series?: unknown }[]): boolean {
+	const inSeries = books.filter((b) => b.series).length;
+	return inSeries > 0 && inSeries * 2 >= books.length;
+}

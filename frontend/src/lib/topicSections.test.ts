@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { topicSectionOrder } from './topicSections';
+import { topicSectionOrder, topicLeadsWithSeries } from './topicSections';
 
 describe('topicSectionOrder', () => {
 	it('leads with sermons when they dominate (The Gospel Call: 4 books, 25 sermons)', () => {
@@ -41,5 +41,21 @@ describe('topicSectionOrder', () => {
 
 	it('is empty when the topic has no content', () => {
 		expect(topicSectionOrder({ books: 0, sermons: 0, articles: 0 })).toEqual([]);
+	});
+});
+
+describe('topicLeadsWithSeries', () => {
+	const vol = { series: { slug: 'rooted' } };
+	const plain = { series: null };
+
+	it('leads when at least half the books are series volumes', () => {
+		expect(topicLeadsWithSeries([vol, vol, plain])).toBe(true);
+		expect(topicLeadsWithSeries([vol, plain])).toBe(true);
+	});
+
+	it('does not lead with a minority of volumes, or with none', () => {
+		expect(topicLeadsWithSeries([vol, plain, plain])).toBe(false);
+		expect(topicLeadsWithSeries([plain])).toBe(false);
+		expect(topicLeadsWithSeries([])).toBe(false);
 	});
 });

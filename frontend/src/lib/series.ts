@@ -21,6 +21,14 @@ export function seriesLabel(series: BookSeriesLine, language: string): string {
 	});
 }
 
+/** "2 of 6 read", its numbers in the page language's digits (as `seriesLabel`). */
+export function seriesProgressLabel(done: number, total: number, language: string): string {
+	return m.series_progress({
+		done: volumeNumeral(done, language) ?? String(done),
+		total: volumeNumeral(total, language) ?? String(total)
+	});
+}
+
 /** A card's series line — `seriesLabel` in the book's own language — or "" for
  *  a book in no (named) series. BookCard and BookListRow both draw it. */
 export function cardSeriesLine(book: Pick<CoverBook, 'series' | 'language'>): string {
@@ -127,6 +135,9 @@ export function seriesAmong<S extends Pick<SeriesSummary, 'slug'>>(
  * series, in reading order; there is no description, which the compact card
  * doesn't show.
  */
+/** Covers in a series card's fan — the API's `SeriesListView.COVERS`. */
+const SERIES_FAN = 4;
+
 export function seriesFromBooks(
 	books: Pick<BookSummary, 'slug' | 'title' | 'cover_url' | 'cover_color' | 'series'>[]
 ): SeriesSummary[] {
@@ -135,7 +146,7 @@ export function seriesFromBooks(
 		title: g.title,
 		description: '',
 		book_count: g.books.length,
-		covers: g.books.slice(0, 4).map((b) => ({
+		covers: g.books.slice(0, SERIES_FAN).map((b) => ({
 			kind: 'book' as const,
 			slug: b.slug,
 			title: b.title,
