@@ -1,0 +1,70 @@
+{
+ "kind": "sermon",
+ "slug": "refuges-of-lies",
+ "language": "sw",
+ "job_issue": 4178,
+ "pull_request": 4222,
+ "references": [
+  {
+   "reference": "Isaiah 28:17",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "1 John 3:20",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Romans 3:20",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Galatians 3:10",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Romans 14:12",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Matthew 7:22",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 7:23",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Isaiah 28:16",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "1 Corinthians 3:11",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "self_rendered",
+   "block_index": 42
+  }
+ ]
+}

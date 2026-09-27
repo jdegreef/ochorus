@@ -1,0 +1,286 @@
+{
+ "kind": "sermon",
+ "slug": "walking-with-god",
+ "language": "sw",
+ "job_issue": 4216,
+ "pull_request": 4222,
+ "references": [
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 5:24a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "Genesis 5:24b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 25:24",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Jude 1:14-15",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 11:5b",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Genesis 3:12",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 7:21",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Amos 3:3",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "the-secret-of-guidance.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:14",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 14:17",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 84:7a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Timothy 4:15b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "2 Peter 3:18a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 5:39",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "1 Timothy 4:13",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Joshua 1:8a",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "1 Samuel 21:9",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Peter 1:18",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Peter 1:19",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 6:18a",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 39:3",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 10:29",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 1:6",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 122:1",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 16:3",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Esther 5:11b-12",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Esther 6:6",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Esther 6:8-9",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 25:14a",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "John 15:15",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 84:10b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Proverbs 3:17",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "John 3:9",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 5:11",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 5:12a",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Isaiah 66:2b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Revelation 3:16",
+   "status": "self_rendered",
+   "block_index": 26
+  }
+ ]
+}

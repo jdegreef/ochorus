@@ -1,0 +1,194 @@
+{
+ "kind": "sermon",
+ "slug": "christ-the-believers-wisdom",
+ "language": "sw",
+ "job_issue": 4214,
+ "pull_request": 4222,
+ "references": [
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "1 Corinthians 1:30b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalm 89:3",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 53:10",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 17:24a",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "eight-i-wills-of-christ.sw.json"
+  },
+  {
+   "reference": "John 17:24b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 25:34",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 20:23",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 1:31",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 12:15",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 49:10",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 10:4",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Romans 8:33-34",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Luke 2:11",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Romans 8:35b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Romans 8:38-39",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 5:17b",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 3:19b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Chronicles 6:18a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 7:7b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 John 3:14a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Genesis 1:3a",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Luke 24:39b",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Corinthians 15:20-22",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 17:2",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "Revelation 4:1",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Galatians 5:17a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 Kings 10:7",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Corinthians 6:9-10",
+   "status": "self_rendered",
+   "block_index": 27
+  }
+ ]
+}

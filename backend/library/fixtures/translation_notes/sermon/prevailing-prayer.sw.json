@@ -1,0 +1,157 @@
+{
+ "kind": "sermon",
+ "slug": "prevailing-prayer",
+ "language": "sw",
+ "job_issue": 4180,
+ "pull_request": 4222,
+ "references": [
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Romans 8:26a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Romans 8:27a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Ephesians 5:18b",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Samuel 12:22b",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Samuel 12:23b",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Genesis 32:26b",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Genesis 32:26a",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Deuteronomy 9:14",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Exodus 32:12a",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Luke 22:44b",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Revelation 12:2",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Psalm 119:53",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Psalm 119:136",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Jeremiah 4:19",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Esther 4:1",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Isaiah 66:8",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Galatians 4:19a",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Galatians 4:19b",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Colossians 1:27b",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Hebrews 2:13b",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Ezekiel 36:37a",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "revival-lectures.sw.json"
+  }
+ ]
+}
