@@ -244,6 +244,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"am/rooted-1": {
+			"ground": "f1ca3c62c8e997b6a1c758f08e7946fdd5de147fd042ff50cc3fbb53a97b2adc",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/school-of-prayer": {
 			"ground": "ead7a3d913963925a5cd99f179f14f5127de20711406c28d34c67404b264cb48",
 			"style": "devotional",
