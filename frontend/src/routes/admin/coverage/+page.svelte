@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { replaceState } from '$app/navigation';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { ApiError } from '$lib/api';
@@ -32,7 +33,16 @@
 	const canQueue = $derived(auth.isAdmin);
 
 	type Tab = 'books' | 'sermons' | 'plans' | 'bios' | 'articles';
-	let tab = $state<Tab>('books');
+	// The view lives in the querystring (tab, filters, order, grouping), so a
+	// reload restores it and a link opens exactly this view for a colleague.
+	// Seeded here, one-of-a-set values validated; written back by syncUrl().
+	const init = browser ? new URLSearchParams(location.search) : new URLSearchParams();
+	const pick = <T extends string>(key: string, allowed: readonly T[], fallback: T): T => {
+		const v = init.get(key) as T | null;
+		return v && allowed.includes(v) ? v : fallback;
+	};
+	const TAB_KEYS = ['books', 'sermons', 'plans', 'bios', 'articles'] as const;
+	let tab = $state<Tab>(pick('tab', TAB_KEYS, 'books'));
 
 	const TABS: { key: Tab; label: string }[] = [
 		{ key: 'books', label: 'Books' },
@@ -84,13 +94,14 @@
 	// --- Planner controls: narrow and order the matrix to what you're working on.
 	// All of them act on the same derived row list, so totals, the "+N" column
 	// counts and the column "queue all" all follow what's actually on screen.
-	let q = $state('');
-	let sortMode = $state<'default' | 'priority' | 'least' | 'most'>('default');
-	let unreviewedOnly = $state(false);
+	let q = $state(init.get('q') ?? '');
+	const SORTS = ['default', 'priority', 'least', 'most'] as const;
+	let sortMode = $state<(typeof SORTS)[number]>(pick('sort', SORTS, 'default'));
+	let unreviewedOnly = $state(init.get('unreviewed') === '1');
 	// Books only: narrow the matrix to one series, in volume order. With a series
 	// chosen, a column's "queue all" files every missing volume of it in that
 	// language — "translate the whole series into Swahili" is one press.
-	let seriesFilter = $state('');
+	let seriesFilter = $state(init.get('series') ?? '');
 	const seriesOptions = $derived(cov?.series ?? []);
 	// How many languages a work is present in — the completeness sort key.
 	const completeness = (r: AdminCoverageRow) =>
@@ -101,9 +112,9 @@
 	// "Gaps in <language>": only the works missing there, so the matrix reads as
 	// that language's to-do list. Queued ones stay listed (their ◷ shows it) — the
 	// job list loads after coverage, so hiding them would make rows flicker away.
-	let gapLang = $state('');
+	let gapLang = $state(init.get('gaps') ?? '');
 	// Translations made from English that has since changed.
-	let staleOnly = $state(false);
+	let staleOnly = $state(init.get('stale') === '1');
 	const isStale = (r: AdminCoverageRow, code: string) => !!r.stale?.includes(code);
 	// "Still current": a reviewer checked a stale translation against the new
 	// English and it holds (the change was a typo fix, say). Books, sermons and
@@ -157,7 +168,8 @@
 
 	// Group by author (books, sermons) or series (books). A tab without the
 	// chosen axis simply shows ungrouped, so switching tabs never strands a view.
-	let groupBy = $state<'none' | 'author' | 'series'>('none');
+	const GROUPS = ['none', 'author', 'series'] as const;
+	let groupBy = $state<(typeof GROUPS)[number]>(pick('group', GROUPS, 'none'));
 	const groupAxis = $derived(
 		groupBy === 'author' && (tab === 'books' || tab === 'sermons')
 			? 'author'
@@ -191,6 +203,80 @@
 		return out;
 	});
 	let collapsed = $state<Record<string, boolean>>({});
+
+	// Mirror the view into the URL without a navigation; defaults are omitted so
+	// the link stays as short as what was actually set.
+	$effect(() => {
+		const p = new URLSearchParams();
+		if (tab !== 'books') p.set('tab', tab);
+		if (q.trim()) p.set('q', q.trim());
+		if (sortMode !== 'default') p.set('sort', sortMode);
+		if (gapLang) p.set('gaps', gapLang);
+		if (unreviewedOnly) p.set('unreviewed', '1');
+		if (staleOnly) p.set('stale', '1');
+		if (seriesFilter) p.set('series', seriesFilter);
+		if (groupBy !== 'none') p.set('group', groupBy);
+		const qs = p.toString();
+		const next = `${location.pathname}${qs ? `?${qs}` : ''}`;
+		if (next === `${location.pathname}${location.search}`) return;
+		try {
+			replaceState(next, {});
+		} catch {
+			// Router not ready yet (a link carrying an invalid value, rewritten on
+			// mount) — the next change writes it.
+		}
+	});
+
+	let copied = $state(false);
+	async function copyLink() {
+		try {
+			await navigator.clipboard.writeText(location.href);
+			copied = true;
+			setTimeout(() => (copied = false), 1500);
+		} catch {
+			// clipboard blocked — the address bar holds the same link
+		}
+	}
+
+	// The rows as drawn, top to bottom — a collapsed group's rows are hidden,
+	// so a shift-click range never selects cells you can't see.
+	const shownRows = $derived(groups.flatMap((g) => (g.key && collapsed[g.key] ? [] : g.rows)));
+
+	// --- CSV of the current view: every filtered work (collapsed groups too),
+	// one column per language, each cell the state the matrix shows.
+	function csvCell(r: AdminCoverageRow, l: AdminCoverageLanguage): string {
+		const v = r.cells[l.code];
+		const job = v ? undefined : jobFor(r.slug, l.code);
+		const base = v
+			? ({ public_domain: 'PD', ai_reviewed: 'AI reviewed', ai_unreviewed: 'AI unreviewed' } as Record<string, string>)[v] ??
+				'present'
+			: job
+				? job.state === 'in_progress'
+					? 'translating'
+					: 'queued'
+				: '';
+		return isStale(r, l.code) ? `${base} (out of date)` : base;
+	}
+	function downloadCsv() {
+		const esc = (x: string | number) => {
+			const t = String(x);
+			return /[",\n]/.test(t) ? `"${t.replaceAll('"', '""')}"` : t;
+		};
+		const header = ['Work', 'Slug', 'Author', 'Readers', ...langs.map((l) => l.code)];
+		const lines = [header, ...visibleRows.map((r) => [
+			r.title,
+			r.slug,
+			r.author ?? '',
+			r.readers ?? '',
+			...langs.map((l) => csvCell(r, l))
+		])].map((row) => row.map(esc).join(','));
+		const blob = new Blob([lines.join('\n') + '\n'], { type: 'text/csv;charset=utf-8' });
+		const a = document.createElement('a');
+		a.href = URL.createObjectURL(blob);
+		a.download = `ochorus-coverage-${tab}-${new Date().toISOString().slice(0, 10)}.csv`;
+		a.click();
+		setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+	}
 	const toggleGroup = (key: string) => (collapsed = { ...collapsed, [key]: !collapsed[key] });
 
 	// Priority = reader demand × open gaps. A work's weight is 1 + its distinct
@@ -340,6 +426,61 @@
 		if (targets.length)
 			pendingBulk = { label: `“${r.title}” into every missing language`, type: jobType, targets };
 	}
+	// --- Selecting gaps: ⇧-click a gap to start, ⇧-click another to take every
+	// gap in the rectangle between them; ⌘/Ctrl-click toggles one. A plain click
+	// still queues one straight away. Queueing a selection goes through the same
+	// count confirmation as a row / column.
+	const cellKey = (slug: string, lang: string) => `${slug}:${lang}`;
+	let selected = $state<Record<string, true>>({});
+	let anchor = $state<{ slug: string; lang: string } | null>(null);
+	// Only cells still gaps count — one queued meanwhile drops out by itself.
+	const selectedTargets = $derived(
+		shownRows.flatMap((r) =>
+			langs.filter((l) => selected[cellKey(r.slug, l.code)] && isGap(l, r)).map((l) => ({ slug: r.slug, lang: l.code }))
+		)
+	);
+	const selectedByLang = $derived(
+		Object.entries(
+			selectedTargets.reduce<Record<string, number>>((m, t) => ((m[t.lang] = (m[t.lang] ?? 0) + 1), m), {})
+		)
+	);
+	function clearSelection() {
+		selected = {};
+		anchor = null;
+	}
+	// A different tab is a different job type — never carry a selection across.
+	$effect(() => {
+		void tab;
+		clearSelection();
+	});
+	function selectCell(e: MouseEvent, r: AdminCoverageRow, l: AdminCoverageLanguage) {
+		const k = cellKey(r.slug, l.code);
+		if (e.shiftKey && anchor) {
+			const ri = [shownRows.findIndex((x) => x.slug === anchor!.slug), shownRows.indexOf(r)].sort((a, b) => a - b);
+			const li = [langs.findIndex((x) => x.code === anchor!.lang), langs.indexOf(l)].sort((a, b) => a - b);
+			if (ri[0] >= 0 && li[0] >= 0) {
+				const next = { ...selected };
+				for (const row of shownRows.slice(ri[0], ri[1] + 1))
+					for (const col of langs.slice(li[0], li[1] + 1))
+						if (isGap(col, row)) next[cellKey(row.slug, col.code)] = true;
+				selected = next;
+				return;
+			}
+		}
+		const { [k]: was, ...rest } = selected;
+		selected = was ? rest : { ...rest, [k]: true };
+		anchor = { slug: r.slug, lang: l.code };
+	}
+	function queueSelection() {
+		if (!selectedTargets.length) return;
+		pendingBulk = {
+			label: `the ${selectedTargets.length} selected gap${selectedTargets.length === 1 ? '' : 's'}`,
+			type: jobType,
+			targets: selectedTargets
+		};
+		clearSelection();
+	}
+
 	function bulkCol(l: AdminCoverageLanguage) {
 		const targets = visibleRows.filter((r) => isGap(l, r)).map((r) => ({ slug: r.slug, lang: l.code }));
 		if (targets.length)
@@ -450,6 +591,12 @@
 					/>
 					Compact
 				</label>
+				<button type="button" class="btn btn-sm btn-ghost" onclick={copyLink} title="Copy a link to exactly this view">
+					{copied ? 'Copied' : 'Copy link'}
+				</button>
+				<button type="button" class="btn btn-sm btn-ghost" onclick={downloadCsv} title="Download the works on screen (all filtered rows) as CSV">
+					CSV
+				</button>
 			</div>
 
 			<!-- Legend -->
@@ -476,10 +623,21 @@
 					<span><span class="text-accent">◷</span> queued</span>
 					<span><span class="text-warning">◐</span> translating</span>
 					{#if canQueue}
-						<span class="text-muted">— click a gap, or a row / column “+N”, to queue</span>
+						<span class="text-muted">— click a gap, or a row / column “+N”, to queue; ⇧-click gaps to select a range</span>
 					{/if}
 				{/if}
 			</div>
+
+			{#if selectedTargets.length && !pendingBulk}
+				<div class="mb-3 flex flex-wrap items-center gap-3 rounded-card border border-accent-soft-border bg-accent-soft px-4 py-2.5 text-small text-accent" role="status">
+					<span class="font-semibold">{selectedTargets.length} gap{selectedTargets.length === 1 ? '' : 's'} selected</span>
+					<span class="text-muted">{selectedByLang.map(([c, n]) => `${c} ${n}`).join(' · ')}</span>
+					<span class="ml-auto flex gap-2">
+						<button class="btn btn-sm btn-primary" disabled={busy} onclick={queueSelection}>Queue {selectedTargets.length}</button>
+						<button class="btn btn-sm btn-ghost" onclick={clearSelection}>Clear</button>
+					</span>
+				</div>
+			{/if}
 
 			{#if pendingBulk}
 				<div class="mb-3 flex flex-wrap items-center gap-3 rounded-card border border-accent-soft-border bg-accent-soft px-4 py-2.5 text-small text-accent" role="alertdialog">
@@ -685,19 +843,24 @@
 					>·</span>
 				{:else}
 					{@const spot = queueing === jobKey(r.slug, l.code)}
+					{@const picked = !!selected[cellKey(r.slug, l.code)]}
 					<button
 						type="button"
-						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted transition-colors hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-muted"
+						aria-pressed={picked}
+						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small transition-colors hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-muted {picked
+							? 'bg-accent-soft text-accent ring-1 ring-accent-soft-border'
+							: 'text-muted'}"
 						disabled={busy}
 						title={`Queue a ${l.name} translation of ${r.title}`}
 						aria-label={`Queue a ${l.name} translation of ${r.title}`}
-						onclick={() => queue(r.slug, l.code)}
+						onclick={(e) =>
+							e.shiftKey || e.metaKey || e.ctrlKey ? selectCell(e, r, l) : queue(r.slug, l.code)}
 					>
 						{#if spot}
 							<span>…</span>
 						{:else}
-							<span class="group-hover:hidden">·</span>
-							<span class="hidden group-hover:inline">+</span>
+							<span class={picked ? 'hidden' : 'group-hover:hidden'}>·</span>
+							<span class={picked ? 'inline' : 'hidden group-hover:inline'}>{picked ? '✓' : '+'}</span>
 						{/if}
 					</button>
 				{/if}
