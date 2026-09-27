@@ -1145,7 +1145,12 @@ class CoverAssetTests(SimpleTestCase):
 
     def test_translated_editions_set_their_own_cover_title(self):
         """A translated edition never sets another language's words on its
-        cover — which an edition written by copying the English file would."""
+        cover — which an edition written by copying the English file would.
+
+        A cover title the edition's OWN title contains is its own words, even
+        when they match the English: a name that does not translate ("Watchman
+        Nee" in "Retratos de coraje – Watchman Nee"). A copied English one
+        ("Rooted" on "متأصّلون – …") appears in no translated title."""
         english = {
             f["slug"]: f.get("cover_title") for f in self.books if f["language"] == "en"
         }
@@ -1155,6 +1160,7 @@ class CoverAssetTests(SimpleTestCase):
             if f["language"] not in ("en", MODERN_LANGUAGE)
             and f.get("cover_title")
             and f["cover_title"] == english.get(f["slug"])
+            and f["cover_title"] not in f["title"]
         )
         self.assertEqual(
             copied, [], "translated edition sets the English cover title — translate it or blank it"
