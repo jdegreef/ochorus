@@ -58,6 +58,12 @@ export interface BookSummary {
 	 * stored before the field existed: absent reads as "no numeral".
 	 */
 	series_position?: number | null;
+	/**
+	 * The card's series line ("Book 2 of 6 in Rooted"): `BookSeries` without
+	 * the neighbours. Null outside a series and where the series has no name in
+	 * this language. Optional for the same reasons as `series_position`.
+	 */
+	series?: BookSeriesLine | null;
 	chapter_count: number;
 	word_count: number | null;
 	/** Published topics this book belongs to (for the shelf's topic filter). */
@@ -93,6 +99,7 @@ export const COVER_BOOK_KEYS = [
 	'cover_color',
 	'cover_url',
 	'series_position',
+	'series',
 	'chapter_count',
 	'word_count'
 ] as const;
@@ -163,6 +170,9 @@ export interface SeriesVolume {
 	slug: string;
 	title: string;
 }
+
+/** What a card's series line needs — `BookListSerializer.series` in the API. */
+export type BookSeriesLine = Pick<BookSeries, 'slug' | 'title' | 'position' | 'total'>;
 
 /** `BookDetail.series` — see `series_block` in the API's serializers. */
 export interface BookSeries {

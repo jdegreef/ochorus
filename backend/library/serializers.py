@@ -173,6 +173,33 @@ def series_block(book) -> dict | None:
     }
 
 
+def book_series_map(language: str) -> dict[int, dict]:
+    """``series_id -> what a card needs`` for every series named in ``language``.
+
+    The shelf-wide twin of :func:`series_block`, built whole so a shelf of
+    series books costs three queries however many are on it: the series and
+    their names, then every published series row. ``numbers`` are the published
+    volume numbers in EVERY language (``series_block``'s ``total`` for an
+    ordered series); ``here`` counts this language's published books (its
+    total for a collection). A series unnamed in ``language`` is left out, so
+    its books carry no series line — no English fallback.
+    """
+    named = {
+        s.pk: {"slug": s.slug, "title": s.title_for(language), "numbers": set(), "here": 0}
+        for s in Series.objects.prefetch_related("translations")
+    }
+    named = {pk: v for pk, v in named.items() if v["title"]}
+    for series_id, lang, position in Book.objects.filter(
+        series_id__in=named, is_published=True
+    ).values_list("series_id", "language", "series_position"):
+        entry = named[series_id]
+        if position is not None:
+            entry["numbers"].add(position)
+        if lang == language:
+            entry["here"] += 1
+    return named
+
+
 def _available_languages(model, slug: str) -> list[str]:
     """Sorted content locales this work is published in — for hreflang.
 
@@ -346,6 +373,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
     chapter_count = serializers.IntegerField(source="num_chapters", read_only=True)
     word_count = serializers.IntegerField(source="total_words", read_only=True)
     topics = serializers.SerializerMethodField()
+    series = serializers.SerializerMethodField()
 
     class Meta:
         model = Book
@@ -362,6 +390,9 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             # The volume numeral a cover sets over its title; null outside an
             # ordered series. A column, so it costs the shelf no query.
             "series_position",
+            # The card's series line ("Book 2 of 6 in Rooted"): slug, title,
+            # position, total — `series_block` without the neighbours.
+            "series",
             "chapter_count",
             "word_count",
             "topics",
@@ -395,6 +426,27 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             cached = book_topic_map(language)
             self._topic_map = (language, cached)
         return cached.get(obj.slug, [])
+
+    def get_series(self, obj):
+        """The card's series line, or None — read from a map built on the first
+        series book and cached on the serializer (one shared instance for
+        ``many=True``), so a shelf with no series books pays no query at all."""
+        if obj.series_id is None:
+            return None
+        cached_for, cached = getattr(self, "_series_map", (None, None))
+        if cached_for != obj.language:
+            cached = book_series_map(obj.language)
+            self._series_map = (obj.language, cached)
+        entry = cached.get(obj.series_id)
+        if entry is None:
+            return None
+        position = obj.series_position
+        return {
+            "slug": entry["slug"],
+            "title": entry["title"],
+            "position": position,
+            "total": len(entry["numbers"] | {position}) if position is not None else entry["here"],
+        }
 
 
 class SermonListSerializer(LocalizedMixin, serializers.ModelSerializer):

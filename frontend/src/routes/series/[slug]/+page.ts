@@ -1,4 +1,4 @@
-import { getSeries, listSeries } from '$lib/library-public';
+import { getSeries, listSeries, type SeriesSummary } from '$lib/library-public';
 import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';
 import type { EntryGenerator, PageLoad } from './$types';
@@ -17,8 +17,15 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
+	const lang = getLang();
 	// A series with no name or no book in this language 404s in the API (no
-	// English fallback), and orNotFound turns that into the not-found page.
-	return { series: await orNotFound(() => getSeries(params.slug, getLang())) };
+	// English fallback), and orNotFound turns that into the not-found page. The
+	// "More book series" row is decoration: its own silent catch, so a failed
+	// list costs the row and never the page.
+	const [series, all] = await Promise.all([
+		orNotFound(() => getSeries(params.slug, lang)),
+		listSeries(lang, fetch).catch((): SeriesSummary[] => [])
+	]);
+	return { series, others: all.filter((s) => s.slug !== params.slug).slice(0, 4) };
 };
