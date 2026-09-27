@@ -23,6 +23,7 @@
 		"og:pages": "node scripts/generate-og.mjs",
 		"og:sermons": "node scripts/generate-sermon-og.mjs",
 		"og:topics": "node scripts/generate-topic-og.mjs",
+		"og:home": "node scripts/generate-home-og.mjs",
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"test:e2e": "playwright test",
