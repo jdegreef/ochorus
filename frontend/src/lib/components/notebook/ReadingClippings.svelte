@@ -6,7 +6,7 @@
 	 * grew its own writing (the journal); the loading and filtering are unchanged.
 	 */
 	import { onMount } from 'svelte';
-	import { getBook, getChapter, getSermon, getAuthor, type BookDetail } from '$lib/library-public';
+	import { getArticle, getBook, getChapter, getSermon, getAuthor, type BookDetail } from '$lib/library-public';
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { editionHref } from '$lib/editionHref';
 	import { bookmarks, byPosition } from '$lib/bookmarks.svelte';
@@ -47,6 +47,8 @@
 		chapters: ChapterBlock[];
 	};
 
+	/** A single-document work — a sermon, or an article (whose author is the
+	 *  house, so `author` stays empty). */
 	type SermonBlock = {
 		slug: string;
 		title: string;
@@ -73,6 +75,7 @@
 	let books = $state<BookBlock[]>([]);
 	let sermons = $state<SermonBlock[]>([]);
 	let bios = $state<BioBlock[]>([]);
+	let articles = $state<SermonBlock[]>([]);
 
 	const q = $derived(query.trim().toLowerCase());
 	const active = $derived(q.length > 0 || colorFilter !== '' || view !== 'all');
@@ -142,10 +145,11 @@
 				)
 			: [];
 
-	const filteredSermons = $derived.by(() => {
-		if (!active) return sermons;
+	/** The sermon and article lanes: single documents with a title and author. */
+	const filterDocs = (list: SermonBlock[]): SermonBlock[] => {
+		if (!active) return list;
 		const hit = (s: string) => s.toLowerCase().includes(q);
-		return sermons
+		return list
 			.map((sm) => {
 				const sermonHit = !q || hit(sm.title) || hit(sm.author);
 				return {
@@ -155,7 +159,9 @@
 				};
 			})
 			.filter((sm) => sm.bookmarks.length || sm.highlights.length);
-	});
+	};
+	const filteredSermons = $derived(filterDocs(sermons));
+	const filteredArticles = $derived(filterDocs(articles));
 	const filteredBios = $derived.by(() => {
 		if (!active) return bios;
 		const hit = (s: string) => s.toLowerCase().includes(q);
@@ -170,14 +176,17 @@
 			})
 			.filter((b) => b.bookmarks.length || b.highlights.length);
 	});
-	const hasContent = $derived(books.length > 0 || sermons.length > 0 || bios.length > 0);
+	const hasContent = $derived(
+		books.length > 0 || sermons.length > 0 || bios.length > 0 || articles.length > 0
+	);
 	const noMatches = $derived(
 		!loading &&
 			hasContent &&
 			active &&
 			filtered.length === 0 &&
 			filteredSermons.length === 0 &&
-			filteredBios.length === 0
+			filteredBios.length === 0 &&
+			filteredArticles.length === 0
 	);
 
 	// paragraphs() / groupMarks() (and the HL type) are shared with the in-reader
@@ -222,6 +231,7 @@
 		const bookBms = bmOf('book');
 		const sermonBms = bmOf('sermon');
 		const bioBms = bmOf('bio');
+		const articleBms = bmOf('article');
 		const slugs = [...new Set([...bookBms.map((b) => b.slug), ...mks.map((m) => m.slug)])];
 
 		// The whole page used to load one request at a time, nested two deep:
@@ -371,15 +381,43 @@
 			};
 		};
 
-		const [bookBlocks, sermonBlocks, bioBlocks] = await Promise.all([
+		// Articles (kind 'article'). Per edition, like sermons; the byline is the
+		// house, so there is no author to name.
+		const loadArticle = async (slug: string): Promise<SermonBlock> => {
+			const editions = editionsFor('article', slug);
+			const wanted = editions.length ? editions : [{ edition: lang, marks: [] as Mark[] }];
+			const parts = await Promise.all(
+				wanted.map(async ({ edition, marks: ms }) => {
+					try {
+						const a = await gate(() => getArticle(slug, edition));
+						return { edition, title: a.h1, highlights: groupMarks(paragraphs(a.body_html), ms, edition) };
+					} catch {
+						/* offline — the saved place still links through, just without its text */
+						return { edition, title: '', highlights: groupMarks([], ms, edition) };
+					}
+				})
+			);
+			const named = parts.find((p) => p.edition === lang && p.title) ?? parts.find((p) => p.title);
+			return {
+				slug,
+				title: named?.title || slug,
+				author: '',
+				bookmarks: bookmarksFor(articleBms, slug, () => named?.title),
+				highlights: parts.flatMap((p) => p.highlights)
+			};
+		};
+
+		const [bookBlocks, sermonBlocks, bioBlocks, articleBlocks] = await Promise.all([
 			Promise.all(slugs.map(loadBook)),
 			Promise.all(slugsOf('sermon', sermonBms).map(loadSermon)),
-			Promise.all(slugsOf('bio', bioBms).map(loadBio))
+			Promise.all(slugsOf('bio', bioBms).map(loadBio)),
+			Promise.all(slugsOf('article', articleBms).map(loadArticle))
 		]);
 
 		books = bookBlocks.sort((a, b) => a.title.localeCompare(b.title));
 		sermons = sermonBlocks.sort((a, b) => a.title.localeCompare(b.title));
 		bios = bioBlocks.sort((a, b) => a.name.localeCompare(b.name));
+		articles = articleBlocks.sort((a, b) => a.title.localeCompare(b.title));
 
 		loading = false;
 	});
@@ -478,6 +516,22 @@
 		</section>
 	{/each}
 
+	{#each filteredArticles as ar (ar.slug)}
+		<section class="work">
+			<p class="eyebrow text-muted">{t('search.typeArticle')}</p>
+			<h3 class="text-h3">
+				<a href={localizeHref(`/articles/${ar.slug}/`)} class="text-text hover:text-accent">{ar.title}</a>
+			</h3>
+			{#if ar.bookmarks.length}
+				{@render bookmarkList(ar.bookmarks, (bm) => localizeHref(`/articles/${ar.slug}/?p=${bm.p}`))}
+			{/if}
+			<ul class="clips">
+				{#each ar.highlights as hl (`${hl.edition}:${hl.id}`)}
+					{@render highlightItem(hl, editionHref(`/articles/${ar.slug}/?p=${hl.p}`, hl.edition), editionLabel(hl.edition))}
+				{/each}
+			</ul>
+		</section>
+	{/each}
 	{#each filteredBios as b (b.slug)}
 		<section class="work">
 			<p class="eyebrow text-muted">{t('bios.eyebrow')}</p>

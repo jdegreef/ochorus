@@ -55,6 +55,7 @@
 	const workHref = (kind: string, slug: string, chapter?: number) => {
 		if (kind === 'sermon') return `/sermons/${slug}`;
 		if (kind === 'bio') return `/authors/${slug}`;
+		if (kind === 'article') return `/articles/${slug}/`;
 		return chapter ? `/books/${slug}/${chapter}` : `/books/${slug}`;
 	};
 	const favHref = (kind: FavoriteKind, slug: string): string | null => {
@@ -79,7 +80,8 @@
 	const WORK_KIND_LABEL: Record<WorkKind, string> = {
 		book: 'Book',
 		sermon: 'Sermon',
-		bio: 'Biography'
+		bio: 'Biography',
+		article: 'Article'
 	};
 	const FAV_KIND_LABEL: Record<FavoriteKind, string> = {
 		author: 'Author',

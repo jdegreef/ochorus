@@ -20,14 +20,16 @@ class WorkKind(models.TextChoices):
     Sermons joined the reading layer in 2026-07 (roadmap #10): a sermon is a
     single document, so its rows pin ``chapter_order`` to 1. Author biographies
     followed (roadmap #12) with the same single-document shape — the slug names
-    the author. The slug column keeps its historical ``book_slug`` name to
-    spare a rename across the API, merge payloads, and every reader's
-    localStorage cache.
+    the author. Articles joined next (2026-09), the same shape again — the
+    slug names the article. The slug column keeps its historical
+    ``book_slug`` name to spare a rename across the API, merge payloads, and
+    every reader's localStorage cache.
     """
 
     BOOK = "book", "Book"
     SERMON = "sermon", "Sermon"
     BIO = "bio", "Biography"
+    ARTICLE = "article", "Article"
 
 
 class ReadingProgress(models.Model):

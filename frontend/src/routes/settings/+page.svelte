@@ -175,7 +175,9 @@
 			? localizeHref(`/sermons/${h.slug}`)
 			: h.kind === 'bio'
 				? localizeHref(authorPath(h.slug))
-				: localizeHref(`/books/${h.slug}/${h.order}`);
+				: h.kind === 'article'
+					? localizeHref(`/articles/${h.slug}/`)
+					: localizeHref(`/books/${h.slug}/${h.order}`);
 
 	// Daily reminder — a time the reader picks, emitted as a repeating .ics event
 	// they add to their own calendar (no server, works on every device).

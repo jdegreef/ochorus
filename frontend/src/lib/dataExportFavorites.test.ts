@@ -17,6 +17,7 @@ vi.mock('./library-public', () => ({
 	listBooks: async () => [],
 	listSermons: async () => [],
 	listPlans: async () => [],
+	listArticles: async () => [{ slug: 'how-to-pray', h1: 'How to Pray So That God Answers' }],
 	listAuthors: async () => [
 		{ slug: 'j-c-ryle', name: 'J. C. Ryle' },
 		{ slug: 'andrew-murray', name: 'Andrew Murray' }
@@ -38,6 +39,16 @@ describe('favorited authors in the export', () => {
 		expect(bundle.favorites).toHaveLength(1);
 		expect(bundle.favorites[0].title).toBe('J. C. Ryle');
 		expect(bundle.favorites[0].kind).toBe('author');
+	});
+
+	it('titles a favorited article by its headline, as it does a read one', async () => {
+		localStorage.setItem(
+			FAVORITES_KEY,
+			JSON.stringify({ 'article:how-to-pray': Date.parse('2026-01-01T00:00:00Z') })
+		);
+
+		const bundle = await collectExport('en', '2026-08-27T00:00:00.000Z');
+		expect(bundle.favorites[0]).toMatchObject({ kind: 'article', title: 'How to Pray So That God Answers' });
 	});
 
 	it('still falls back to the slug for an author the catalog does not know', async () => {

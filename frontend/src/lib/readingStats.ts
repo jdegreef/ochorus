@@ -8,7 +8,7 @@ import {
 	type BookmarksStore,
 	type WorkKind
 } from './reading-schema';
-import { listBooks, listSermons, listAuthors } from './library-public';
+import { listArticles, listBooks, listSermons, listAuthors } from './library-public';
 
 /**
  * "Your reading" — device-local reading stats and recent history, derived from
@@ -91,18 +91,26 @@ function unslug(slug: string): string {
 export async function collectReadingActivity(
 	language: string
 ): Promise<{ stats: ReadingStats; history: HistoryItem[] }> {
-	const [books, sermons, authors] = await Promise.all([
+	const [books, sermons, authors, articles] = await Promise.all([
 		listBooks(language).catch(() => []),
 		listSermons(language).catch(() => []),
-		listAuthors(language).catch(() => [])
+		listAuthors(language).catch(() => []),
+		listArticles(language).catch(() => [])
 	]);
 	const bookMeta = new Map(
 		books.map((b) => [b.slug, { title: b.title, author: b.author?.name ?? '' }])
 	);
 	const sermonMeta = new Map(sermons.map((s) => [s.slug, { title: s.title, author: s.author?.name ?? '' }]));
 	const bioMeta = new Map(authors.map((a) => [a.slug, { title: a.name, author: a.name }]));
-	const metaFor = (kind: WorkKind) =>
-		kind === 'book' ? bookMeta : kind === 'sermon' ? sermonMeta : bioMeta;
+	// Ochorus is every article's byline, so there is no author to show.
+	const articleMeta = new Map(articles.map((a) => [a.slug, { title: a.h1, author: '' }]));
+	const META: Record<WorkKind, Map<string, { title: string; author: string }>> = {
+		book: bookMeta,
+		sermon: sermonMeta,
+		bio: bioMeta,
+		article: articleMeta
+	};
+	const metaFor = (kind: WorkKind) => META[kind];
 
 	const history: HistoryItem[] = allProgress().map((p) => {
 		const m = metaFor(p.kind).get(p.slug);

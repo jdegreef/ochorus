@@ -13,7 +13,7 @@ import {
 	type WorkKind
 } from './reading-schema';
 import { cleanStore, visibleEntries, type JournalEntry } from './journal';
-import { listBooks, listSermons, listAuthors, listPlans } from './library-public';
+import { listArticles, listBooks, listSermons, listAuthors, listPlans } from './library-public';
 
 /**
  * "Export my data" — turns the reader's device-local reading record (positions,
@@ -83,6 +83,7 @@ type TitleMaps = {
 	book: Map<string, { title: string; author: string }>;
 	sermon: Map<string, { title: string; author: string }>;
 	bio: Map<string, { title: string; author: string }>;
+	article: Map<string, { title: string; author: string }>;
 	plan: Map<string, { title: string; author: string }>;
 };
 
@@ -92,17 +93,26 @@ function unslug(slug: string): string {
 }
 
 async function loadTitles(language: string): Promise<TitleMaps> {
-	const [books, sermons, authors, plans] = await Promise.all([
+	const [books, sermons, authors, articles, plans] = await Promise.all([
 		listBooks(language).catch(() => []),
 		listSermons(language).catch(() => []),
 		listAuthors(language).catch(() => []),
+		listArticles(language).catch(() => []),
 		listPlans(language).catch(() => [])
 	]);
-	const maps: TitleMaps = { book: new Map(), sermon: new Map(), bio: new Map(), plan: new Map() };
+	const maps: TitleMaps = {
+		book: new Map(),
+		sermon: new Map(),
+		bio: new Map(),
+		article: new Map(),
+		plan: new Map()
+	};
 	for (const b of books) maps.book.set(b.slug, { title: b.title, author: b.author?.name ?? '' });
 	for (const s of sermons) maps.sermon.set(s.slug, { title: s.title, author: s.author?.name ?? '' });
 	// A "bio" work is keyed by the author's slug; its title is the author's name.
 	for (const a of authors) maps.bio.set(a.slug, { title: a.name, author: a.name });
+	// An article's byline is the house, so it names no author.
+	for (const a of articles) maps.article.set(a.slug, { title: a.h1, author: '' });
 	for (const p of plans) maps.plan.set(p.slug, { title: p.title, author: '' });
 	return maps;
 }

@@ -29,11 +29,13 @@ export function editionHref(path: string, edition: string): string {
 
 /** Where a Notebook entry's source passage lives — built from its parts only. */
 export function sourceHref(s: EntrySource): string {
-	const path =
-		s.kind === 'book'
-			? `/books/${s.slug}/${s.order}?p=${s.p}`
-			: s.kind === 'sermon'
-				? `/sermons/${s.slug}?p=${s.p}`
-				: `/authors/${s.slug}?p=${s.p}`;
-	return editionHref(path, s.edition);
+	// A Record, not a ternary chain: a new kind is a compile error here rather
+	// than a link that quietly falls through to another kind's route.
+	const path: Record<EntrySource['kind'], string> = {
+		book: `/books/${s.slug}/${s.order}?p=${s.p}`,
+		sermon: `/sermons/${s.slug}?p=${s.p}`,
+		bio: `/authors/${s.slug}?p=${s.p}`,
+		article: `/articles/${s.slug}/?p=${s.p}`
+	};
+	return editionHref(path[s.kind], s.edition);
 }
