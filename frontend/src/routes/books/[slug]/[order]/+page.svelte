@@ -1520,7 +1520,7 @@
      the inline label (≥sm) and the phone location line below the controls.
      When the chapter's name is just the book's title (a single-work volume like
      "Absolute Surrender"), drop the redundant "Book · " prefix. -->
-{#snippet locationLabel()}{@const chap = chapterName(chapter.order, chapter.title)}{#if chapter.book_title !== chap}<span class="text-muted">{chapter.book_title} · </span>{/if}{chap}{/snippet}
+{#snippet locationLabel()}{@const chap = chapterName(chapter.order, chapter.title)}{#if chapter.book_title !== chap}<span class="text-muted"><bdi>{chapter.book_title}</bdi> · </span>{/if}<bdi>{chap}</bdi>{/snippet}
 
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode,
      except a transient peek summoned by a swipe-down from the top (see above). -->
@@ -1632,7 +1632,7 @@
 			<div class="hidden min-w-0 flex-1 sm:block">
 				{#if titleSpy.visible}
 					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
-						← {chapter.book_title}
+						<span class="inline-block dir-flip" aria-hidden="true">←</span> <bdi>{chapter.book_title}</bdi>
 					</a>
 				{:else}
 					<!-- Once the heading scrolls away, show where you are. -->
@@ -1645,7 +1645,7 @@
 						href={chapterHref(chapter.prev.order)}
 						class="btn btn-icon btn-ghost"
 						aria-label={t('reader.previous')}
-						title={t('reader.previous')}><Icon name="chevron-left" size={18} /></a
+						title={t('reader.previous')}><Icon name="chevron-left" size={18} class="dir-flip" /></a
 					>
 				{/if}
 				{#if chapter.next}
@@ -1653,7 +1653,7 @@
 						href={chapterHref(chapter.next.order)}
 						class="btn btn-icon btn-ghost"
 						aria-label={t('reader.next')}
-						title={t('reader.next')}><Icon name="chevron-right" size={18} /></a
+						title={t('reader.next')}><Icon name="chevron-right" size={18} class="dir-flip" /></a
 					>
 				{/if}
 				{#if chapter.has_modern_edition}

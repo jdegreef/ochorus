@@ -19,6 +19,7 @@
 	import NoteDialog from '$lib/components/NoteDialog.svelte';
 	import ScripturePopover from '$lib/components/ScripturePopover.svelte';
 	import SelectionBar from '$lib/components/SelectionBar.svelte';
+	import { baseEdition } from '$lib/reading-schema';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { listen } from '$lib/listen.svelte';
@@ -114,7 +115,7 @@
 	onHighlight={reader.onHighlight}
 	onNote={reader.openNoteForSelection}
 	highlightColor={reader.highlightColor}
-	onDefine={reader.onDefine}
+	onDefine={baseEdition(language) === 'en' ? reader.onDefine : undefined}
 	onDefineClose={reader.onDefineClose}
 	onJournal={startJournal}
 	onSuggestEdit={auth.user ? startSuggestEdit : undefined}
