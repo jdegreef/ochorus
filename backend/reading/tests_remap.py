@@ -11,7 +11,13 @@ from rest_framework.test import APIClient
 from accounts.models import UserProfile
 from library.models import Author, Book, Chapter, Sermon
 
-from .anchor import block_texts, refind_bookmark, remap_mark_list, resolve_mark
+from .anchor import (
+    block_texts,
+    refind_bookmark,
+    remap_mark_list,
+    resolve_group,
+    resolve_mark,
+)
 from .marks import merge_mark_lists
 from .models import Bookmark, ChapterMarks, Removal
 
@@ -71,6 +77,65 @@ class ResolveMarkTests(SimpleTestCase):
         got = resolve_mark(["𝔊 " + GRACE], seg(0, 0, 31, GRACE))
         self.assertEqual(got["s"], 3)
         self.assertIs(resolve_mark(["𝔊 " + GRACE], got), got)
+
+
+class ResolveGroupTests(SimpleTestCase):
+    """The same cases as markAnchor.test.ts's resolveGroup — the two must agree."""
+
+    PARAS = [
+        "Title.",
+        "He spoke of grace that is free to all who ask.",
+        "Grace is the free favour of God to the undeserving.",
+        "And so we rest.",
+    ]
+    SEGS = [
+        seg(1, 12, 46, "grace that is free to all who ask."),
+        seg(2, 0, 51, PARAS[2]),
+        seg(3, 0, 6, "And so"),
+    ]
+
+    def test_in_place_is_untouched(self):
+        self.assertEqual(resolve_group(self.PARAS, self.SEGS), self.SEGS)
+
+    def test_short_tail_moves_with_the_run(self):
+        shifted = ["Title.", "A new line.", *self.PARAS[1:]]
+        self.assertEqual([m["p"] for m in resolve_group(shifted, self.SEGS)], [2, 3, 4])
+        self.assertIsNone(resolve_mark(shifted, self.SEGS[2]))
+
+    def test_short_tail_skips_other_words_in_its_old_block(self):
+        shifted = ["Title.", "x", self.PARAS[1], self.PARAS[2] + " And so on.", self.PARAS[3]]
+        self.assertEqual(resolve_mark(shifted, self.SEGS[2])["p"], 3)
+        tail = resolve_group(shifted, self.SEGS)[2]
+        self.assertEqual((tail["p"], tail["s"]), (4, 0))
+
+    def test_lost_middle_guesses_no_further(self):
+        split = ["Title.", self.PARAS[1], "Grace is the free favour of God", "to the undeserving.", self.PARAS[3]]
+        out = resolve_group(split, self.SEGS)
+        self.assertEqual((out[0]["p"], out[0]["s"]), (1, 12))
+        self.assertIsNone(out[1])
+        self.assertIsNone(out[2])
+
+    def test_follows_a_split_in_the_first_block(self):
+        split = ["Title.", "He spoke of", "grace that is free to all who ask.", *self.PARAS[2:]]
+        out = resolve_group(split, self.SEGS)
+        self.assertEqual([(m["p"], m["s"], m["e"]) for m in out], [(2, 0, 34), (3, 0, 51), (4, 0, 6)])
+
+    def test_never_before_the_segment_ahead(self):
+        repeated = ["Title.", "And so. " + self.PARAS[1], self.PARAS[2], "Then. And so we rest."]
+        tail = resolve_group(repeated, self.SEGS)[2]
+        self.assertEqual((tail["p"], tail["s"]), (3, 6))
+
+    def test_short_first_segment_with_a_block_before_the_lead(self):
+        two = [seg(1, 10, 19, "He spoke,", id="h"), seg(2, 0, 51, self.PARAS[2], id="h")]
+        inserted = ["Title.", "And then, He spoke,", "A heading.", self.PARAS[2]]
+        out = resolve_group(inserted, two)
+        self.assertEqual([(m["p"], m["s"]) for m in out], [(1, 10), (3, 0)])
+
+    def test_remap_moves_a_group_together(self):
+        shifted = ["Title.", "A new line.", *self.PARAS[1:]]
+        out, moved = remap_mark_list(self.SEGS, {"en": shifted}.get)
+        self.assertEqual(moved, 3)
+        self.assertEqual([m["p"] for m in out], [2, 3, 4])
 
 
 class RemapListTests(SimpleTestCase):

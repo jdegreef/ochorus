@@ -1,5 +1,5 @@
 import { DEFAULT_HIGHLIGHT, type Mark } from './reading-schema';
-import { resolveMark, textRange } from './markAnchor';
+import { resolveGroup, textRange } from './markAnchor';
 
 /**
  * Resolving stored marks back to the text they highlight.
@@ -52,9 +52,10 @@ export function groupMarks(paras: string[], ms: Mark[], edition: string): Highli
 	}
 	return [...byId.values()].map((stored) => {
 		stored.sort((a, b) => a.p - b.p || a.s - b.s);
-		// Each segment where its words are now (see markAnchor); a segment whose
-		// words are gone quotes what it covered instead of today's text there.
-		const placed = stored.map((m) => resolveMark(paras, m));
+		// The segments where their words are now, as one unit (see markAnchor);
+		// a segment whose words are gone quotes what it covered instead of
+		// today's text there.
+		const placed = resolveGroup(paras, stored);
 		const detached = placed.every((m) => m === null);
 		const first = placed.find((m): m is Mark => m !== null) ?? stored[0];
 		return {
