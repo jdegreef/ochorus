@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { onDestroy, tick } from 'svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -115,7 +116,7 @@
 
 <div class="page-col px-5 py-10">
 	<div class="daily">
-		<a class="back text-small" href={localizeHref('/notebook')}>← {t('notebook.title')}</a>
+		<a class="back text-small" href={localizeHref('/notebook')}><Arrow back /> {t('notebook.title')}</a>
 
 		{#if finished}
 			<div class="amen">
@@ -189,7 +190,7 @@
 						<button class="btn btn-primary btn-sm" onclick={finish}>{t('notebook.dailyFinish')}</button>
 					{:else}
 						<button class="btn btn-primary btn-sm" onclick={() => go(index + 1)}>
-							{m.notebook_daily_next({ step: names[DAILY_STEPS[index + 1]] })} →
+							{m.notebook_daily_next({ step: names[DAILY_STEPS[index + 1]] })} <Arrow />
 						</button>
 					{/if}
 				</div>

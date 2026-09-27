@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	/**
 	 * Add a language to the registry — the admin's starting point for a new one.
 	 *
@@ -205,7 +206,7 @@
 						class="text-body font-semibold text-accent hover:underline"
 						href="/admin/languages/{created.language.code}"
 					>
-						Open {created.language.name} →
+						Open {created.language.name} <Arrow />
 					</a>
 					<button class="text-body text-muted hover:text-text" onclick={addAnother}>
 						Add another

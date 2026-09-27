@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import DrawerShell from '$lib/components/DrawerShell.svelte';
 	import { getBook, getChapter } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
@@ -197,7 +198,7 @@
 				class="block px-5 py-4 text-small font-semibold text-accent hover:underline"
 				onclick={close}
 			>
-				{t('search.wider')} →
+				{t('search.wider')} <Arrow />
 			</a>
 		{/if}
 	</div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import type { ArticleLink } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
 
@@ -23,5 +24,5 @@
 	{#if article.description}
 		<span class="mt-1 block text-body text-muted">{article.description}</span>
 	{/if}
-	<span class="mt-2 block text-body text-accent">{cta} →</span>
+	<span class="mt-2 block text-body text-accent">{cta} <Arrow /></span>
 </a>

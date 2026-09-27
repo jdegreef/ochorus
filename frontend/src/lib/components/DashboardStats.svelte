@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
 	import GoalPips from '$lib/components/GoalPips.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -118,7 +119,7 @@
 					href={localizeHref('/notebook')}
 					class="inline-flex items-center gap-1.5 text-small font-semibold text-accent hover:underline"
 				>
-					{t('notebook.title')} →
+					{t('notebook.title')} <Arrow />
 				</a>
 			{/if}
 		</div>

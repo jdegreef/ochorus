@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
 	import { authorPath } from '$lib/originals';
 	import { afterNavigate } from '$app/navigation';
@@ -238,7 +239,7 @@
 						<a
 							href={localizeHref(scopedSearchHref('topic', topic.slug))}
 							class="inline-block text-small font-semibold text-accent hover:underline"
-							>{t('search.inTopic')} →</a
+							>{t('search.inTopic')} <Arrow /></a
 						>
 					{/if}
 					<span class="text-small text-muted">

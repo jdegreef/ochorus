@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { onMount, type Component } from 'svelte';
@@ -666,7 +667,7 @@
 		     link (feat/book-author-quotes-link), gate and all. -->
 		{#if sermon.author_quote_count && getLang() === 'en'}
 			<a href={`/quotes/${sermon.author_slug}/`} class="btn btn-ghost"
-				>Quotes from {sermon.author_name} →</a
+				>Quotes from {sermon.author_name} <Arrow /></a
 			>
 		{/if}
 	</nav>

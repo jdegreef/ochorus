@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { fullLifeDiscriminates, type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
@@ -121,7 +122,7 @@
 	<div class="mt-12 border-t border-border pt-6">
 		<a
 			href={localizeHref('/biographies')}
-			class="text-small font-semibold text-accent hover:underline">← {t('bios.eyebrow')}</a
+			class="text-small font-semibold text-accent hover:underline"><Arrow back /> {t('bios.eyebrow')}</a
 		>
 	</div>
 </div>

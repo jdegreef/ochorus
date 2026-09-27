@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import { localizeHref } from '$lib/href';
@@ -58,7 +59,7 @@
 </script>
 
 <div class="head">
-	<button class="chip" onclick={onclose}>← {t('notebook.allEntries')}</button>
+	<button class="chip" onclick={onclose}><Arrow back /> {t('notebook.allEntries')}</button>
 	{#if renaming}
 		<form
 			class="flex grow flex-wrap items-center gap-2"

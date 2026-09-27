@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { QuoteAuthorSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
@@ -136,7 +137,7 @@
 							>
 						{/if}
 					</span>
-					<span class="text-muted" aria-hidden="true">→</span>
+					<span class="text-muted"><Arrow /></span>
 				</a>
 			</li>
 		{/each}

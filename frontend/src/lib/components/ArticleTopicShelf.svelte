@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import type { ArticleSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, hreflangFor } from '$lib/seo';
@@ -77,7 +78,7 @@
 			href={`/topics/${slug}/`}
 			data-sveltekit-preload-data="hover"
 			class="mt-3 inline-block text-small font-semibold text-accent hover:underline"
-			>Explore books, sermons and scripture on this topic →</a
+			>Explore books, sermons and scripture on this topic <Arrow /></a
 		>
 	</header>
 	<ArticleShelf {articles} activeTopic={slug} {filters} />

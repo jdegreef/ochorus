@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
 	import {
 		listAuthors,
@@ -250,7 +251,7 @@
 			<a
 				href={localizeHref('/favorites')}
 				class="mt-3 inline-block text-small font-semibold text-accent"
-				>{t('search.showAll')} · {matching.length} →</a
+				>{t('search.showAll')} · {matching.length} <Arrow /></a
 			>
 		{/if}
 	</section>

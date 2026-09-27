@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { page } from '$app/stores';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -71,7 +72,7 @@
 <div class="page-col px-5 py-10">
 	<!-- On screen only: what to print. -->
 	<div class="controls">
-		<a class="back text-small" href={localizeHref('/notebook')}>← {t('notebook.title')}</a>
+		<a class="back text-small" href={localizeHref('/notebook')}><Arrow back /> {t('notebook.title')}</a>
 		<h1 class="text-h1 mt-2">{bookTitle}</h1>
 		<p class="mt-1 text-body text-muted">{t('notebook.printIntro')}</p>
 

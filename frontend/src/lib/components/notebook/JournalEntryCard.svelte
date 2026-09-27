@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import {
@@ -145,7 +146,7 @@
 			<!-- The passage this was written from, linked back into its own edition. -->
 			<a class="source" href={sourceHref(entry.source)}>
 				{#if entry.source.quote}<span class="source-quote">“{entry.source.quote}”</span>{/if}
-				<span class="source-title text-micro">{entry.source.title} →</span>
+				<span class="source-title text-micro">{entry.source.title} <Arrow /></span>
 			</a>
 		{/if}
 

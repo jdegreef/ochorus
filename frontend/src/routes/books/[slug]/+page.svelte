@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { shareCard, shareImage } from '$lib/coverArt';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
@@ -440,7 +441,7 @@
 					>{#if book.series.next}<span class="px-1.5 opacity-50">·</span><a
 							href={localizeHref(`/books/${book.series.next.slug}`)}
 							class="text-accent hover:underline"
-							>{t('book.seriesNext')}: {book.series.next.title} →</a
+							>{t('book.seriesNext')}: {book.series.next.title} <Arrow /></a
 						>{/if}
 				</p>
 			{/if}
@@ -460,7 +461,7 @@
 			{#if book.author_quote_count && getLang() === 'en'}
 				<p class="mt-1 text-small">
 					<a href={`/quotes/${book.author.slug}/`} class="text-accent hover:underline"
-						>Quotes from {book.author.name} →</a
+						>Quotes from {book.author.name} <Arrow /></a
 					>
 				</p>
 			{/if}

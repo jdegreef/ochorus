@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	/**
 	 * "From my reading" — the Notebook's clippings: every highlight, margin note
 	 * and bookmark the reader made in a book, sermon, article or biography, quoted from
@@ -472,7 +473,7 @@
 {:else if !hasContent}
 	<p class="text-body text-muted">
 		{t('notebook.empty')}
-		<a href={localizeHref('/books')} class="ms-1 font-semibold">{t('notebook.browse')} →</a>
+		<a href={localizeHref('/books')} class="ms-1 font-semibold">{t('notebook.browse')} <Arrow /></a>
 	</p>
 {:else if noMatches}
 	<p class="text-body text-muted">{t('notebook.no_matches')}</p>

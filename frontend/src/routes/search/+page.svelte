@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import Icon from '$lib/components/Icon.svelte';
 	import { coverSrcset } from '$lib/coverArt';
@@ -1187,7 +1188,7 @@
 										onclick={() => selectType(g.type)}
 									>
 										{t('search.showAll')}
-										{total}{isCapped(g.type) ? '+' : ''} →
+										{total}{isCapped(g.type) ? '+' : ''} <Arrow />
 									</button>
 								{:else}
 									<!-- Same affordance as the Biographies shelf's Show more: a
