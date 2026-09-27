@@ -7,8 +7,9 @@
   ],
   "slug": "watchman-nee-a-life",
   "language": "pt",
-  "title": "Watchman Nee",
+  "title": "Retratos de Coragem – Watchman Nee",
   "subtitle": "A Vida, o Sofrimento e a Visão Espiritual de um Servo Chinês de Cristo",
+  "cover_title": "Watchman Nee",
   "description": "Uma biografia cristã de Watchman Nee (1903–1972), o líder da igreja chinesa e mestre devocional por trás de A Vida Cristã Normal e Senta, Anda, Permanece. Situa o seu ensino dentro da sua vida — a conversão, o pequeno rebanho, o quebrantamento do homem exterior e vinte anos numa prisão comunista — pesando o seu discernimento e as suas controvérsias à luz das Escrituras. Escrita com gratidão, mas sem hagiografia; toda a Escritura na tradução Almeida.",
   "qa": [
    {
@@ -51,6 +52,10 @@
   "cover_url": "/covers/art/watchman-nee-a-life.jpg",
   "pdf_url": "",
   "cover_color": "",
+  "series": [
+   "portraits-of-courage"
+  ],
+  "series_position": 1,
   "sort_order": 61,
   "is_published": true,
   "created_at": "2026-09-10T00:00:00Z",
