@@ -755,6 +755,14 @@ export const getAuthor = (slug: string, language = 'en') =>
 	localized<AuthorDetail>((l) => `/api/library/authors/${slug}/?language=${l}`, language);
 
 /** An author plus the language their biography is actually in — see getChapterWithLang. */
+/** Whether an author page has anything of the writer's OWN in its language —
+ * a bio (it no longer falls back to English), a book or a sermon. Without one
+ * the page is a name and dates, and is kept out of the index; the sitemap's
+ * author entries apply the same rule from the per-locale lists. */
+export const hasOwnContent = (
+	a: Pick<AuthorDetail, 'bio' | 'bio_html' | 'books' | 'sermons'>
+): boolean => !!(a.bio_html || a.bio) || a.books.length > 0 || a.sermons.length > 0;
+
 export const getAuthorWithLang = (slug: string, language = 'en', f?: Fetch) =>
 	localizedWithLang<AuthorDetail>(
 		(l) => `/api/library/authors/${slug}/?language=${l}`,

@@ -16,7 +16,8 @@ import {
 	sections,
 	sitemapData,
 	urlXml,
-	urlsetXml
+	urlsetXml,
+	SCRIPTURE_SITEMAP_FLOOR
 } from './sitemap';
 import type { Entry, SitemapData } from './sitemap';
 
@@ -24,12 +25,24 @@ import type { Entry, SitemapData } from './sitemap';
 // only rows it sees are the scripture ones this suite cares about. Hoisted by
 // vitest, so it governs `sitemapData()` everywhere in this file — harmless to
 // the pure-function tests above, which never call it.
+// Pinned, so the author test doesn't turn vacuous when the registry changes.
+vi.mock('$lib/advertised-locales', () => ({
+	ADVERTISED_LOCALES: ['en', 'es', 'sw'],
+	UNADVERTISED_LOCALES: []
+}));
+
 vi.mock('$lib/library-public', () => {
 	const empty = async () => [];
+	const author = (slug: string) => ({ slug, name: slug, photo_url: '', birth_year: null });
 	return {
 		listArticles: empty,
-		listAuthors: empty,
-		listBooks: empty,
+		// A writer on the English shelf only, and one whose sole Swahili presence
+		// is a book (no bio there) — enough to tell "every locale" from "where
+		// they have something".
+		listAuthors: async (l = 'en') =>
+			l === 'en' ? [author('andrew-murray'), author('e-m-bounds')] : [],
+		listBooks: async (l = 'en') =>
+			l === 'sw' ? [{ slug: 'humility', author: author('andrew-murray') }] : [],
 		listPlans: empty,
 		listQuoteAuthors: empty,
 		listQuoteTopics: empty,
@@ -38,9 +51,10 @@ vi.mock('$lib/library-public', () => {
 		listSermons: empty,
 		listTopics: empty,
 		listScripturePages: async () => [
-			{ book: 'romans', chapter: 8, verse: null },
-			{ book: 'romans', chapter: 8, verse: 28 },
-			{ book: 'genesis', chapter: 1, verse: 26 }
+			{ book: 'romans', chapter: 8, verse: null, citing_count: 40 },
+			{ book: 'jude', chapter: 1, verse: null, citing_count: 3 },
+			{ book: 'romans', chapter: 8, verse: 28, citing_count: 12 },
+			{ book: 'genesis', chapter: 1, verse: 26, citing_count: 5 }
 		]
 	};
 });
@@ -222,5 +236,28 @@ describe('build() scripture entries', () => {
 		// generator + the chapter page's verse links) — just not advertised here.
 		expect(urls).not.toContain('/scripture/romans/8/28/');
 		expect(urls).not.toContain('/scripture/genesis/1/26/');
+	});
+
+	it('does not advertise a chapter page below the sitemap floor', async () => {
+		const { scripture } = await sitemapData();
+		const urls = scripture.map((e) => e.byLocale.get('en'));
+		expect(SCRIPTURE_SITEMAP_FLOOR).toBeGreaterThan(3);
+		// Three citing passages clears the API's build floor, so the page
+		// exists — it is just not promised.
+		expect(urls).not.toContain('/scripture/jude/1/');
+	});
+});
+
+describe('build() author entries', () => {
+	beforeEach(() => resetSitemapData());
+
+	const find = async (slug: string) =>
+		(await sitemapData()).authors.find((e) =>
+			[...e.byLocale.values()].includes(`/authors/${slug}/`)
+		);
+
+	it('advertises an author only in the locales where they have a bio or a work', async () => {
+		expect([...(await find('andrew-murray'))!.byLocale.keys()]).toEqual(['en', 'sw']);
+		expect([...(await find('e-m-bounds'))!.byLocale.keys()]).toEqual(['en']);
 	});
 });

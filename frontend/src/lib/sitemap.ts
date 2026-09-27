@@ -168,6 +168,14 @@ export const sections = (): string[] => [
 	'pages'
 ];
 
+/**
+ * How many citing passages a chapter-level scripture page needs before the
+ * sitemap advertises it. Deliberately ABOVE the API's build floor
+ * (`scripture_graph.CHAPTER_FLOOR`, 3): that one decides whether a page is
+ * worth a URL at all, this one whether it is worth a crawl we ask for.
+ */
+export const SCRIPTURE_SITEMAP_FLOOR = 6;
+
 /** The `<loc>` of a child sitemap. Root-level, deliberately — see sitemap.xml. */
 export const sectionUrl = (section: string) => `${SITE_URL}/sitemap-${section}.xml`;
 
@@ -207,10 +215,21 @@ async function build(): Promise<SitemapData> {
 			sermons: await listSermons(l).catch(() => []),
 			topics: await listTopics(l).catch(() => []),
 			plans: await listPlans(l).catch(() => []),
-			series: await listSeries(l).catch(() => [])
+			series: await listSeries(l).catch(() => []),
+			// The Biographies shelf for this locale (a bio or a work here). Only
+			// the advertised locales read it — see the author entries below.
+			authors: (ADVERTISED_LOCALES as readonly string[]).includes(l)
+				? await listAuthors(l).catch(() => {
+						// Degrades like the rest, but loudly: an empty list here drops
+						// every bio-only writer from this locale's author entries.
+						console.warn(`sitemap: author list for "${l}" failed — bio-only authors omitted`);
+						return [];
+					})
+				: []
 		}))
 	);
-	const authors = await listAuthors().catch(() => []);
+	// English is always advertised, so its shelf is already fetched above.
+	const authors = perLocale.find((x) => x.locale === 'en')?.authors ?? [];
 	// Articles: original English writing, no translations yet (like the quotes
 	// hub). The same list the /articles route entry generator reads.
 	const articles = await listArticles('en').catch(() => []);
@@ -335,19 +354,31 @@ async function build(): Promise<SitemapData> {
 		articleEntries.push({ byLocale: new Map([['en', `/articles/${slug}/`]]) });
 	}
 
-	// Author pages prerender for every locale (the bio falls back to English).
-	const authorSlugs = new Set<string>(authors.map((a) => a.slug));
-	for (const { books } of perLocale) for (const b of books) authorSlugs.add(b.author.slug);
+	// Author pages prerender for every locale but are advertised only where the
+	// writer has a bio, a book or a sermon in that language — `hasOwnContent`,
+	// which the page uses to noindex the rest. Keep the two in step. The alternates are then only the real ones, as for books.
+	const authorsIn = new Map(
+		advertisedSlices.map((x) => [
+			x.locale,
+			new Set([
+				...x.authors.map((a) => a.slug),
+				...x.books.map((b) => b.author.slug),
+				...x.sermons.map((s) => s.author.slug)
+			])
+		])
+	);
+	const authorSlugs = new Set([...authorsIn.values()].flatMap((slugs) => [...slugs]));
 	// The imprint is not a person and has no author page — /originals above.
 	authorSlugs.delete(ORIGINALS_SLUG);
 	// The portrait is the same image in every locale — an author is one row.
 	const portraits = new Map(authors.filter((a) => a.photo_url).map((a) => [a.slug, a.photo_url]));
 	const authorEntries: Entry[] = [...authorSlugs].map((slug) => {
+		const here = ADVERTISED_LOCALES.filter((l) => authorsIn.get(l)?.has(slug));
 		const photo = portraits.get(slug);
 		const img = photo ? absUrl(photo) : null;
 		return {
-			byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, `/authors/${slug}/`])),
-			images: img ? new Map(ADVERTISED_LOCALES.map((l) => [l, img])) : undefined
+			byLocale: new Map(here.map((l) => [l, `/authors/${slug}/`])),
+			images: img ? new Map(here.map((l) => [l, img])) : undefined
 		};
 	});
 
@@ -441,10 +472,15 @@ async function build(): Promise<SitemapData> {
 	//
 	// The prerender-coverage guard enforces sitemap ⊆ prerendered, so shrinking
 	// the advertised set (never growing it past what is built) keeps it green.
+	//
+	// The same move again for the thinnest CHAPTER-level pages: one below
+	// SCRIPTURE_SITEMAP_FLOOR citing passages is the ASV chapter (text found on
+	// every Bible site) plus a handful of excerpts. They keep
+	// their URL, their links and their indexability; they are just not promised.
 	const scripture: Entry[] = [
 		{ byLocale: new Map([['en', '/scripture/']]) },
 		...scripturePages
-			.filter((p) => p.verse === null)
+			.filter((p) => p.verse === null && p.citing_count >= SCRIPTURE_SITEMAP_FLOOR)
 			.map((p) => ({
 				byLocale: new Map([
 					['en', `/scripture/${p.book}/${p.chapter}/`] as [string, string]

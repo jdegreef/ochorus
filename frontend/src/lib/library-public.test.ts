@@ -1,5 +1,12 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { getSermon, getPlan, getBook, fullLifeDiscriminates, type AuthorBio } from './library-public';
+import {
+	getSermon,
+	getPlan,
+	getBook,
+	fullLifeDiscriminates,
+	hasOwnContent,
+	type AuthorBio
+} from './library-public';
 
 /**
  * The localized() English-fallback contract: a detail fetch for a language the
@@ -108,5 +115,18 @@ describe('fullLifeDiscriminates', () => {
 
 	it('hides for an empty roster rather than dividing by zero', () => {
 		expect(fullLifeDiscriminates([])).toBe(false);
+	});
+});
+
+describe('hasOwnContent', () => {
+	const none = { bio: '', bio_html: '', books: [], sermons: [] };
+	it('is false for a name and dates alone, so the page is noindexed', () => {
+		expect(hasOwnContent(none)).toBe(false);
+	});
+	it('counts a short bio, a long bio, a book or a sermon in this language', () => {
+		expect(hasOwnContent({ ...none, bio: 'A life.' })).toBe(true);
+		expect(hasOwnContent({ ...none, bio_html: '<p>A life.</p>' })).toBe(true);
+		expect(hasOwnContent({ ...none, books: [{}] as never })).toBe(true);
+		expect(hasOwnContent({ ...none, sermons: [{}] as never })).toBe(true);
 	});
 });

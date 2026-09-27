@@ -265,6 +265,12 @@ lists content types, **in the same order** everywhere:
       `entries()` and the sitemap section must advertise the **same** set, or
       `prerenderCoverage.test.ts` fails on the URL that was advertised but never
       built
+      — and advertise each URL only in the locales where the page has content
+      of its OWN there (no English fallback). A per-locale page that is only
+      chrome in some language gets `noindex` there, and the sitemap drops it
+      by the SAME rule (the model is author pages: `hasOwnContent` + the
+      `authorsIn` entries in `sitemap.ts`, #4247). Advertising every locale by
+      default is what put ~330 thin author URLs in the sitemap.
 - [ ] ~~`CatalogLanguageNudge`'s `kind` union~~ (component removed)
 - [ ] a `/og/<section>.png` card for pages without their own image
 - [ ] the guard lists in `lib/pageShell.test.ts` (`BROWSE_PAGES` / `LEAF_PAGES`)
