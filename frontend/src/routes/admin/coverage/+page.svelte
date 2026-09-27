@@ -67,7 +67,7 @@
 	// All three act on the same derived row list, so totals, the "+N" column
 	// counts and the column "queue all" all follow what's actually on screen.
 	let q = $state('');
-	let sortMode = $state<'default' | 'least' | 'most'>('default');
+	let sortMode = $state<'default' | 'priority' | 'least' | 'most'>('default');
 	let unreviewedOnly = $state(false);
 	// Books only: narrow the matrix to one series, in volume order. With a series
 	// chosen, a column's "queue all" files every missing volume of it in that
@@ -80,6 +80,24 @@
 	// A work with at least one AI translation still awaiting review — the backlog.
 	const hasUnreviewed = (r: AdminCoverageRow) =>
 		langs.some((l) => r.cells[l.code] === 'ai_unreviewed');
+	// "Gaps in <language>": only the works still to do there — no row in that
+	// language and no open job — so the matrix reads as that language's to-do list.
+	let gapLang = $state('');
+
+	// Priority = reader demand × open gaps. A work's weight is 1 + its distinct
+	// readers (so an unread work still ranks by its gaps); each open gap counts
+	// 1–2× by how much that language's readers search in vain (⌕, scaled to the
+	// busiest column). With "Gaps in" set only that language's gap counts, so the
+	// order is simply most-read first.
+	const maxUnmet = $derived(Math.max(1, ...langs.map((l) => l.unmet_searches ?? 0)));
+	const gapWeight = (l: AdminCoverageLanguage) => 1 + (l.unmet_searches ?? 0) / maxUnmet;
+	const priority = (r: AdminCoverageRow) =>
+		(1 + (r.readers ?? 0)) *
+		langs.reduce(
+			(n, l) => n + ((!gapLang || l.code === gapLang) && isGap(l, r) ? gapWeight(l) : 0),
+			0
+		);
+
 	const visibleRows = $derived.by(() => {
 		let out = rows;
 		const term = q.trim().toLowerCase();
@@ -89,12 +107,16 @@
 					r.title.toLowerCase().includes(term) || (r.author ?? '').toLowerCase().includes(term)
 			);
 		if (unreviewedOnly) out = out.filter(hasUnreviewed);
+		if (gapLang) out = out.filter((r) => !r.cells[gapLang] && !jobFor(r.slug, gapLang));
 		if (tab === 'books' && seriesFilter) {
 			out = out
 				.filter((r) => r.series === seriesFilter)
 				.sort((a, b) => (a.series_position ?? 0) - (b.series_position ?? 0));
 		}
-		if (sortMode !== 'default')
+		if (sortMode === 'priority') {
+			const score = new Map(out.map((r) => [r.slug, priority(r)]));
+			out = [...out].sort((a, b) => score.get(b.slug)! - score.get(a.slug)!);
+		} else if (sortMode !== 'default')
 			out = [...out].sort((a, b) =>
 				sortMode === 'least'
 					? completeness(a) - completeness(b)
@@ -278,8 +300,15 @@
 				/>
 				<select bind:value={sortMode} aria-label="Sort works" class="field text-small">
 					<option value="default">Order: as listed</option>
+					<option value="priority">Priority: most-read, most gaps</option>
 					<option value="least">Least complete first</option>
 					<option value="most">Most complete first</option>
+				</select>
+				<select bind:value={gapLang} aria-label="Show only works missing in a language" class="field text-small">
+					<option value="">Gaps in: any language</option>
+					{#each langs.filter((l) => l.code !== 'en') as l (l.code)}
+						<option value={l.code}>Gaps in: {l.name}</option>
+					{/each}
 				</select>
 				<label class="flex items-center gap-1.5 text-small text-muted">
 					<input type="checkbox" bind:checked={unreviewedOnly} />
@@ -391,7 +420,11 @@
 										class="line-clamp-2 font-medium leading-snug text-text hover:text-accent"
 										title={r.author ? `${r.title} — ${r.author}` : r.title}
 									>{r.title}</a>
-									{#if r.author}<span class="block truncate text-small text-muted" title={r.author}>{r.author}</span>{/if}
+									{#if r.author || r.readers}
+										<span class="block truncate text-small text-muted" title={r.author}>
+											{r.author ?? ''}{#if r.readers}{r.author ? ' · ' : ''}<span class="tabular-nums">{r.readers}</span> reader{r.readers === 1 ? '' : 's'}{/if}
+										</span>
+									{/if}
 									{#if canQueue && jobsConfigured !== false && rowGaps > 0}
 										<button
 											type="button"

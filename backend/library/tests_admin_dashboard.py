@@ -395,6 +395,39 @@ class AdminCoverageTests(TestCase):
         self.assertEqual(by_slug["trust"]["cells"], {"en": "present", "fr": "ai_unreviewed"})
         self.assertEqual(by_slug["abide"]["cells"], {"en": "present", "es": "ai_reviewed"})
 
+    @override_settings(DEBUG=True)
+    def test_rows_carry_distinct_readers(self):
+        """Each row counts distinct readers of the work in any language — the
+        priority sort's demand signal. Plans count PlanProgress; articles have no
+        reading-layer rows, so they carry no count."""
+        import uuid
+
+        from django.contrib.auth import get_user_model
+
+        from accounts.models import UserProfile
+        from reading.models import PlanProgress, ReadingProgress
+
+        User = get_user_model()
+        p1, p2 = (
+            UserProfile.objects.create(
+                user=User.objects.create(username=str(uuid.uuid4())), supabase_uid=uuid.uuid4()
+            )
+            for _ in range(2)
+        )
+        # Two readers of humility, in different languages — both count.
+        ReadingProgress.objects.create(profile=p1, book_slug="humility", language="en")
+        ReadingProgress.objects.create(profile=p2, book_slug="humility", language="sw")
+        ReadingProgress.objects.create(profile=p2, book_slug="grace", kind="sermon")
+        PlanProgress.objects.create(profile=p1, plan_slug="p1", started_at=timezone.now())
+
+        res = self.client.get("/api/admin/coverage/")
+        books = {b["slug"]: b for b in res.data["books"]}
+        self.assertEqual(books["humility"]["readers"], 2)
+        self.assertEqual(books["abide"]["readers"], 0)
+        # A sermon read doesn't leak into the book of the same slug, or vice versa.
+        self.assertEqual(res.data["sermons"][0]["readers"], 1)
+        self.assertEqual(res.data["plans"][0]["readers"], 1)
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
         res = self.client.get("/api/admin/coverage/")

@@ -564,6 +564,10 @@ export interface AdminCoverageRow {
 	series?: string;
 	series_position?: number | null;
 	cells: Record<string, SourceType | 'present'>;
+	/** Distinct signed-in readers of the work in any language — the priority
+	 * sort's demand signal. Absent on articles (no reading-layer rows) and
+	 * across the deploy window. */
+	readers?: number;
 }
 
 // A matrix column. `queueable` is true only for languages the translation-jobs
