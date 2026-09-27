@@ -1,0 +1,86 @@
+{
+ "kind": "sermon",
+ "slug": "the-infinite-god",
+ "language": "sw",
+ "job_issue": 4123,
+ "pull_request": 4128,
+ "references": [
+  {
+   "reference": "Psalm 147:5",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 40:25a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "John 17:3a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 2:10a",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 2:10b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Jeremiah 31:3b",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Jeremiah 23:24",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "1 Kings 8:27",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "mined",
+   "block_index": 105,
+   "source_file": "fall-and-recovery-of-man.sw.json"
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 123,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 6:9b",
+   "status": "mined",
+   "block_index": 124,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  }
+ ]
+}

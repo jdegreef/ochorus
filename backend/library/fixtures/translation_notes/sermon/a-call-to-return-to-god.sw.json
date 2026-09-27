@@ -1,0 +1,97 @@
+{
+ "kind": "sermon",
+ "slug": "a-call-to-return-to-god",
+ "language": "sw",
+ "job_issue": 4114,
+ "pull_request": 4128,
+ "references": [
+  {
+   "reference": "Philippians 3:16a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Hebrews 10:35",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 8:10b",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "1 Samuel 15:23a",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Isaiah 30:8",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Isaiah 30:10",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "2 Timothy 3:10a",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Romans 11:5",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Isaiah 30:19b",
+   "status": "mined",
+   "block_index": 87,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Isaiah 30:20b",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Isaiah 30:21",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "John 10:4a",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Isaiah 30:25",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Malachi 3:16a",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Isaiah 30:26",
+   "status": "self_rendered",
+   "block_index": 111
+  }
+ ]
+}
