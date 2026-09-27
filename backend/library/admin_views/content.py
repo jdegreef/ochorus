@@ -18,6 +18,7 @@ from accounts.permissions import requires
 
 from .. import translation_staleness
 from ..audit import AdminAudited
+from ..corrections import COPYRIGHT_BLOCKED_SLUGS
 from ..languages import known_codes
 from ..models import (
     AdminAction,
@@ -744,6 +745,11 @@ class AdminCoverageView(APIView):
         for row in rows:
             if found := membership.get(row["slug"]):
                 row["series"], row["series_position"] = found
+            # Under copyright: every edition stays unpublished and the job filer
+            # refuses a translation (451), so its missing cells aren't gaps —
+            # the matrix shows them locked instead of offering a queue button.
+            if row["slug"] in COPYRIGHT_BLOCKED_SLUGS:
+                row["blocked"] = True
         return rows
 
     def _sermon_rows(self) -> list[dict]:

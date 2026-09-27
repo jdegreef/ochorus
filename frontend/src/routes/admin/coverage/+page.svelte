@@ -254,7 +254,9 @@
 				? job.state === 'in_progress'
 					? 'translating'
 					: 'queued'
-				: '';
+				: r.blocked
+					? 'blocked (copyright)'
+					: '';
 		return isStale(r, l.code) ? `${base} (out of date)` : base;
 	}
 	function downloadCsv() {
@@ -299,7 +301,7 @@
 					r.title.toLowerCase().includes(term) || (r.author ?? '').toLowerCase().includes(term)
 			);
 		if (unreviewedOnly) out = out.filter(hasUnreviewed);
-		if (gapLang) out = out.filter((r) => !r.cells[gapLang]);
+		if (gapLang) out = out.filter((r) => !r.cells[gapLang] && !r.blocked);
 		if (staleOnly) out = out.filter((r) => r.stale?.length);
 		if (tab === 'books' && seriesFilter) {
 			out = out
@@ -390,8 +392,9 @@
 	// has no row in it, and no job is already open. Shared by the buttons, the bulk
 	// counts, and the bulk target lists — so a non-queueable column (a stray content
 	// language) never offers a button that the POST would only reject.
+	// A copyright-blocked work has no gaps: nothing of it may be translated.
 	const isGap = (l: AdminCoverageLanguage, r: AdminCoverageRow) =>
-		l.queueable && !r.cells[l.code] && !jobFor(r.slug, l.code);
+		!r.blocked && l.queueable && !r.cells[l.code] && !jobFor(r.slug, l.code);
 	// Missing-and-unqueued count per language column, for the header's "queue all".
 	// Over the visible rows, so a filtered view queues only what it shows.
 	const colGaps = $derived(
@@ -618,6 +621,9 @@
 				{#if tabHasStale}
 					<span><span class="text-warning">↻</span> English changed since translated</span>
 				{/if}
+				{#if rows.some((r) => r.blocked)}
+					<span><span class="text-muted">⊘</span> under copyright — not translatable</span>
+				{/if}
 				<span><span class="text-warning">⌕N</span> unmet searches · 30d</span>
 				{#if jobsConfigured !== false}
 					<span><span class="text-accent">◷</span> queued</span>
@@ -767,6 +773,13 @@
 				class="{compact ? 'line-clamp-1 pr-16' : 'line-clamp-2'} font-medium leading-snug text-text hover:text-accent"
 				title={r.author ? `${r.title} — ${r.author}` : r.title}
 			>{r.title}</a>
+			{#if r.blocked}
+				<span
+					class="mt-0.5 inline-block rounded-full border border-border px-1.5 text-micro text-muted"
+					title="Under copyright: every edition stays unpublished and no translation may be filed (corrections.COPYRIGHT_BLOCKED_SLUGS)"
+					>© under copyright</span
+				>
+			{/if}
 			{#if !compact && (r.author || r.readers)}
 				<span class="block truncate text-small text-muted" title={r.author}>
 					{r.author ?? ''}{#if r.readers}{r.author ? ' · ' : ''}<span class="tabular-nums">{r.readers}</span> reader{r.readers === 1 ? '' : 's'}{/if}
@@ -791,7 +804,7 @@
 			<td class="group px-3 text-center {compact ? 'py-1' : 'py-2.5'}">
 				{#if v}
 					{@const m = cellMeta(v)}
-					{@const review = v === 'ai_unreviewed' ? reviewHref(r.slug, l.code) : null}
+					{@const review = v === 'ai_unreviewed' && !r.blocked ? reviewHref(r.slug, l.code) : null}
 					{#if review}
 						<a
 							href={review}
@@ -832,6 +845,12 @@
 					>
 						{job.state === 'in_progress' ? '◐' : '◷'}
 					</a>
+				{:else if r.blocked}
+					<span
+						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted opacity-60"
+						title={`${r.title} is under copyright — no ${l.name} edition may be made`}
+						aria-label="Under copyright — not translatable">⊘</span
+					>
 				{:else if jobsConfigured === false || !l.queueable || !canQueue}
 					<span
 						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted"
