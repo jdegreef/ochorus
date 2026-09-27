@@ -348,7 +348,7 @@
 						</div>
 						<a href={localizeHref(signupHref)} class="btn footer-invite-cta">
 							<span>{t('login.createAccountLink')}</span>
-							<Icon name="chevron-right" size={16} class="footer-invite-arrow" />
+							<Icon name="chevron-right" size={16} class="footer-invite-arrow" mirror={false} />
 						</a>
 					</div>
 				</div>

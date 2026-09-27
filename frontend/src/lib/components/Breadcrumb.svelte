@@ -21,10 +21,11 @@
 >
 	{#each items as item, i (item.href)}
 		{#if i < items.length - 1}
-			<a href={localizeHref(item.href)} class="hover:text-text">{item.name}</a>
+			<a href={localizeHref(item.href)} class="hover:text-text"><bdi>{item.name}</bdi></a>
+			<!-- No flip: › is a bidi-mirrored character, drawn as ‹ in RTL already. -->
 			<span aria-hidden="true">›</span>
 		{:else}
-			<span class="truncate text-text" aria-current="page">{item.name}</span>
+			<span class="truncate text-text" aria-current="page"><bdi>{item.name}</bdi></span>
 		{/if}
 	{/each}
 </nav>

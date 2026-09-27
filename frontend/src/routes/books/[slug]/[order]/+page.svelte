@@ -1520,7 +1520,7 @@
      the inline label (≥sm) and the phone location line below the controls.
      When the chapter's name is just the book's title (a single-work volume like
      "Absolute Surrender"), drop the redundant "Book · " prefix. -->
-{#snippet locationLabel()}{@const chap = chapterName(chapter.order, chapter.title)}{#if chapter.book_title !== chap}<span class="text-muted">{chapter.book_title} · </span>{/if}{chap}{/snippet}
+{#snippet locationLabel()}{@const chap = chapterName(chapter.order, chapter.title)}{#if chapter.book_title !== chap}<span class="text-muted"><bdi>{chapter.book_title}</bdi> · </span>{/if}<bdi>{chap}</bdi>{/snippet}
 
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode,
      except a transient peek summoned by a swipe-down from the top (see above). -->
@@ -1560,7 +1560,7 @@
 					class="btn btn-icon btn-ghost min-w-11 shrink-0"
 					aria-label={t('reader.backToContents')}
 					title={t('reader.backToContents')}
-					><Icon name="chevron-left" size={20} class="dir-flip" /></a
+					><Icon name="chevron-left" size={20} /></a
 				>
 				<div class="min-w-0 flex-1 text-center">
 					<div class="truncate text-small font-semibold text-text">{chapter.book_title}</div>
@@ -1632,7 +1632,7 @@
 			<div class="hidden min-w-0 flex-1 sm:block">
 				{#if titleSpy.visible}
 					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
-						← {chapter.book_title}
+						<span class="dir-flip" aria-hidden="true">←</span> <bdi>{chapter.book_title}</bdi>
 					</a>
 				{:else}
 					<!-- Once the heading scrolls away, show where you are. -->
@@ -2065,7 +2065,7 @@
 		<div class="foot-actions" class:folded={hideChrome}>
 			{#if chapter.prev}
 				<a href={chapterHref(chapter.prev.order)} class="foot-btn"
-					><Icon name="chevron-left" size={22} class="dir-flip" /><span>{t('reader.previous')}</span></a
+					><Icon name="chevron-left" size={22} /><span>{t('reader.previous')}</span></a
 				>
 			{:else}
 				<span class="foot-btn" aria-hidden="true"></span>
@@ -2088,7 +2088,7 @@
 			>
 			{#if chapter.next}
 				<a href={chapterHref(chapter.next.order)} class="foot-btn foot-next"
-					><Icon name="chevron-right" size={22} class="dir-flip" /><span>{t('reader.next')}</span></a
+					><Icon name="chevron-right" size={22} /><span>{t('reader.next')}</span></a
 				>
 			{:else}
 				<span class="foot-btn" aria-hidden="true"></span>

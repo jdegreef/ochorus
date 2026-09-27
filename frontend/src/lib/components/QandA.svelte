@@ -36,7 +36,7 @@
 				<details id="q-{i + 1}" class="qa-item" open={i === 0}>
 					<summary class="qa-q">
 						<span class="flex-1" dir="auto">{item.q}</span>
-						<Icon name="chevron-right" size={18} class="qa-chevron shrink-0" />
+						<Icon name="chevron-right" size={18} class="qa-chevron shrink-0" mirror={false} />
 					</summary>
 					<p class="qa-a" dir="auto">{item.a}</p>
 				</details>
