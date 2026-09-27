@@ -1146,11 +1146,18 @@ export const listTopics = (language = 'en', f?: Fetch) =>
 export const getTopic = (slug: string, language = 'en', f?: Fetch) =>
 	apiFetch<TopicDetail>(`/api/library/topics/${slug}/?language=${language}`, {}, f);
 
-/** A series with a page in the requested language — the prerender and sitemap list. */
+/** A series with a page in the requested language — the /series index, the
+ *  Books page's Book Series shelf, the prerender entries and the sitemap. */
 export interface SeriesSummary {
 	slug: string;
 	title: string;
+	/** In the requested language; "" where the series has no description there. */
+	description: string;
 	book_count: number;
+	/** Its first few books in reading order — the card's fan. */
+	covers: BookTile[];
+	/** Languages the series has a page in; the index's hreflang is their union. */
+	languages: string[];
 }
 
 /** One series page: see `SeriesDetailView` in the API. */
@@ -1167,8 +1174,8 @@ export interface SeriesDetail {
 	available_languages: string[];
 }
 
-export const listSeries = (language = 'en') =>
-	apiFetch<SeriesSummary[]>(`/api/library/series/?language=${language}`);
+export const listSeries = (language = 'en', f?: Fetch) =>
+	apiFetch<SeriesSummary[]>(`/api/library/series/?language=${language}`, {}, f);
 
 /** No English fallback, like `getTopic`: a series with no page here 404s. */
 export const getSeries = (slug: string, language = 'en') =>

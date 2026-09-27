@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import { onMount } from 'svelte';
-	import { isTranslated, type BookSummary } from '$lib/library-public';
+	import { isTranslated, type BookSummary, type SeriesSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { getLang } from '$lib/lang.svelte';
 	import { localizeHref } from '$lib/href';
@@ -13,6 +13,7 @@
 	import BookCard from './BookCard.svelte';
 	import BookListRow from './BookListRow.svelte';
 	import BookCover from './BookCover.svelte';
+	import SeriesCard from './SeriesCard.svelte';
 	import PageHeader from './PageHeader.svelte';
 	import EmptyState from './EmptyState.svelte';
 	import FilterSummary from './FilterSummary.svelte';
@@ -20,7 +21,16 @@
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
 
-	let { books, loadError = false }: { books: BookSummary[]; loadError?: boolean } = $props();
+	let {
+		books,
+		series = [],
+		loadError = false
+	}: {
+		books: BookSummary[];
+		/** This language's book series — the Book Series rail and the count link. */
+		series?: SeriesSummary[];
+		loadError?: boolean;
+	} = $props();
 	const t = i18n.t;
 
 	// --- View preferences (persisted per device) -------------------------------
@@ -205,6 +215,13 @@
 		{books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
 		<span class="opacity-50">·</span>
 		{authorCount} {t('books.authorsWord')}
+		{#if series.length}
+			<span class="opacity-50">·</span>
+			<a href={localizeHref('/series/')}>
+				{series.length}
+				{series.length === 1 ? t('common.seriesOne') : t('common.seriesMany')}
+			</a>
+		{/if}
 	{/snippet}
 
 	{#if loadError}
@@ -257,6 +274,29 @@
 						{/each}
 					</div>
 				{/if}
+			</section>
+		{/if}
+
+		<!-- Book Series — books written to be read together. A rail of the index's
+		     own cards (without their descriptions), so the reader meets on /series
+		     the card they tapped here. -->
+		{#if series.length && !searching}
+			<section class="mb-8">
+				<div class="flex items-baseline justify-between gap-3">
+					<h2 class="section-label">{t('nav.series')}</h2>
+					<a href={localizeHref('/series/')} class="shrink-0 text-small font-medium">
+						{t('series.seeAll')}
+					</a>
+				</div>
+				<!-- pt/pb leave room for the cards' hover lift and shadow, which the
+				     rail's overflow would otherwise clip. -->
+				<div class="cover-rail flex gap-4 pt-1 pb-2">
+					{#each series as s (s.slug)}
+						<div class="grid w-64 shrink-0">
+							<SeriesCard series={s} compact />
+						</div>
+					{/each}
+				</div>
 			</section>
 		{/if}
 

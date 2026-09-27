@@ -23,6 +23,7 @@ const SRC = join(import.meta.dirname, '..');
 const BROWSE_PAGES: { label: string; file: string }[] = [
 	{ label: 'books', file: 'lib/components/BooksShelf.svelte' },
 	{ label: 'topics', file: 'routes/topics/+page.svelte' },
+	{ label: 'series', file: 'routes/series/+page.svelte' },
 	{ label: 'plans', file: 'routes/plans/+page.svelte' },
 	{ label: 'sermons', file: 'routes/sermons/+page.svelte' },
 	{ label: 'biographies', file: 'routes/biographies/+page.svelte' },

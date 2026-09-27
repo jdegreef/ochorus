@@ -549,7 +549,7 @@
 // prerender refresh 2026-09-25 (queue job #2116): Hindi book — absolute-surrender, Andrew Murray's nine
 // addresses ("पूर्ण समर्पण"), 9 chapters. Book pages are prerendered per locale, so /hi/books and the
 // shelf rebuild with the translated title.
-import { listBooks } from '$lib/library-public';
+import { listBooks, listSeries, type SeriesSummary } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
@@ -872,8 +872,14 @@ import type { PageLoad } from './$types';
  * plans go live the moment these books do.
  */
 export const load: PageLoad = async ({ fetch }) => {
-	const { items, loadError } = await loadShelf(listBooks(getLang(), fetch));
-	return { books: items, loadError };
+	const lang = getLang();
+	// The Book Series rail is decoration: it keeps its own silent catch so a
+	// failed series list costs the rail, never the shelf (page-design, Data).
+	const [{ items, loadError }, series] = await Promise.all([
+		loadShelf(listBooks(lang, fetch)),
+		listSeries(lang, fetch).catch((): SeriesSummary[] => [])
+	]);
+	return { books: items, series, loadError };
 };
 // prerender refresh 2026-09-25: Arabic books — brave-for-god (#3189), growing-in-wisdom (#2820),
 // women-who-moved-heaven-2 (#1782), men-and-women-who-gave-everything-2 (#2782). Rebuilds /ar/books.

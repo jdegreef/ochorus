@@ -34,7 +34,7 @@
 	import { ACCOUNT_NAV, accountHref } from '$lib/accountNav';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
-	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
+	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
 	// The slash-correct builder: /originals prerenders to originals/index.html.
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
@@ -104,8 +104,13 @@
 
 	// The reroute hook strips the locale prefix before routing, so page.route.id
 	// is the canonical path ("/books", "/books/[slug]") — compare against that.
-	const isActive = (href: string) =>
-		href === '/' ? $page.route.id === '/' : ($page.route.id?.startsWith(href) ?? false);
+	// Book Series hangs off Books (its breadcrumb and the Books page's rail) and
+	// has no nav slot of its own, so its pages keep Books lit.
+	const isActive = (href: string) => {
+		const route = $page.route.id ?? '';
+		if (href === '/') return route === '/';
+		return route.startsWith(href) || (href === '/books' && route.startsWith(SERIES_DEST.href));
+	};
 
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
@@ -382,6 +387,7 @@
 						{#each PRIMARY_NAV as d (d.href)}
 							<li><a href={localizeHref(d.href)}>{t(d.labelKey)}</a></li>
 						{/each}
+						<li><a href={pageHref(SERIES_DEST.href)}>{t(SERIES_DEST.labelKey)}</a></li>
 						<!-- Non-English readers have no Discover column, so the two links that
 						     serve every language — Originals (its books are translated) and
 						     RSS — ride in Explore for them. -->

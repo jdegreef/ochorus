@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { PRIMARY_NAV, ENGLISH_HUBS } from './contentNav';
+import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS } from './contentNav';
 
 /**
  * The nav, the footer Explore group and the command palette all `.map` these
@@ -37,7 +37,7 @@ describe('contentNav', () => {
 	});
 
 	it('uses canonical, trailing-slash-free hrefs (each surface adds its own)', () => {
-		for (const d of [...PRIMARY_NAV, ...ENGLISH_HUBS]) {
+		for (const d of [...PRIMARY_NAV, SERIES_DEST, ...ENGLISH_HUBS]) {
 			expect(d.href.startsWith('/')).toBe(true);
 			expect(d.href.endsWith('/')).toBe(false);
 		}

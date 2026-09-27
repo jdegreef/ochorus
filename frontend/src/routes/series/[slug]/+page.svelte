@@ -61,6 +61,7 @@
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },
 		{ name: t('nav.books'), href: '/books' },
+		{ name: t('nav.series'), href: '/series/' },
 		{ name: series.title, href: path }
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
