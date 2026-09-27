@@ -418,13 +418,14 @@ class AdminCoverageTests(TestCase):
         ReadingProgress.objects.create(profile=p1, book_slug="humility", language="en")
         ReadingProgress.objects.create(profile=p2, book_slug="humility", language="sw")
         ReadingProgress.objects.create(profile=p2, book_slug="grace", kind="sermon")
+        # A sermon read under a book's slug stays on the sermon side.
+        ReadingProgress.objects.create(profile=p2, book_slug="abide", kind="sermon")
         PlanProgress.objects.create(profile=p1, plan_slug="p1", started_at=timezone.now())
 
         res = self.client.get("/api/admin/coverage/")
         books = {b["slug"]: b for b in res.data["books"]}
         self.assertEqual(books["humility"]["readers"], 2)
         self.assertEqual(books["abide"]["readers"], 0)
-        # A sermon read doesn't leak into the book of the same slug, or vice versa.
         self.assertEqual(res.data["sermons"][0]["readers"], 1)
         self.assertEqual(res.data["plans"][0]["readers"], 1)
 

@@ -64,7 +64,7 @@
 	const rowHref = (slug: string) => `${ROW_HREF_BASE[tab]}/${slug}`;
 
 	// --- Planner controls: narrow and order the matrix to what you're working on.
-	// All three act on the same derived row list, so totals, the "+N" column
+	// All of them act on the same derived row list, so totals, the "+N" column
 	// counts and the column "queue all" all follow what's actually on screen.
 	let q = $state('');
 	let sortMode = $state<'default' | 'priority' | 'least' | 'most'>('default');
@@ -80,23 +80,21 @@
 	// A work with at least one AI translation still awaiting review — the backlog.
 	const hasUnreviewed = (r: AdminCoverageRow) =>
 		langs.some((l) => r.cells[l.code] === 'ai_unreviewed');
-	// "Gaps in <language>": only the works still to do there — no row in that
-	// language and no open job — so the matrix reads as that language's to-do list.
+	// "Gaps in <language>": only the works missing there, so the matrix reads as
+	// that language's to-do list. Queued ones stay listed (their ◷ shows it) — the
+	// job list loads after coverage, so hiding them would make rows flicker away.
 	let gapLang = $state('');
 
 	// Priority = reader demand × open gaps. A work's weight is 1 + its distinct
 	// readers (so an unread work still ranks by its gaps); each open gap counts
 	// 1–2× by how much that language's readers search in vain (⌕, scaled to the
-	// busiest column). With "Gaps in" set only that language's gap counts, so the
-	// order is simply most-read first.
+	// busiest column). With "Gaps in" set every row is a gap there, so the order
+	// is simply most-read first.
 	const maxUnmet = $derived(Math.max(1, ...langs.map((l) => l.unmet_searches ?? 0)));
 	const gapWeight = (l: AdminCoverageLanguage) => 1 + (l.unmet_searches ?? 0) / maxUnmet;
 	const priority = (r: AdminCoverageRow) =>
 		(1 + (r.readers ?? 0)) *
-		langs.reduce(
-			(n, l) => n + ((!gapLang || l.code === gapLang) && isGap(l, r) ? gapWeight(l) : 0),
-			0
-		);
+		(gapLang ? 1 : langs.reduce((n, l) => n + (isGap(l, r) ? gapWeight(l) : 0), 0));
 
 	const visibleRows = $derived.by(() => {
 		let out = rows;
@@ -107,7 +105,7 @@
 					r.title.toLowerCase().includes(term) || (r.author ?? '').toLowerCase().includes(term)
 			);
 		if (unreviewedOnly) out = out.filter(hasUnreviewed);
-		if (gapLang) out = out.filter((r) => !r.cells[gapLang] && !jobFor(r.slug, gapLang));
+		if (gapLang) out = out.filter((r) => !r.cells[gapLang]);
 		if (tab === 'books' && seriesFilter) {
 			out = out
 				.filter((r) => r.series === seriesFilter)
@@ -306,7 +304,7 @@
 				</select>
 				<select bind:value={gapLang} aria-label="Show only works missing in a language" class="field text-small">
 					<option value="">Gaps in: any language</option>
-					{#each langs.filter((l) => l.code !== 'en') as l (l.code)}
+					{#each langs as l (l.code)}
 						<option value={l.code}>Gaps in: {l.name}</option>
 					{/each}
 				</select>
