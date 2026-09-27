@@ -177,16 +177,15 @@ export const topicEmblems = (): Record<string, EmblemName> =>
  */
 const PLAN_ACCENTS = Object.values(PLAN_META).map((m) => m.accent);
 
+const uncuratedMeta = (slug: string): { accent: string; emblem: EmblemName } => ({
+	accent: PLAN_ACCENTS[fnv(slug) % PLAN_ACCENTS.length],
+	emblem: fallbackEmblem(slug)
+});
+
 export const planMeta = (slug: string): { accent: string; emblem: EmblemName } =>
-	PLAN_META[slug] ?? {
-		accent: PLAN_ACCENTS[fnv(slug) % PLAN_ACCENTS.length],
-		emblem: fallbackEmblem(slug)
-	};
+	PLAN_META[slug] ?? uncuratedMeta(slug);
 
 /** A series ships before anyone curates its art: borrow the plan accents, as a
  *  new plan does. */
 export const seriesMeta = (slug: string): { accent: string; emblem: EmblemName } =>
-	SERIES_META[slug] ?? {
-		accent: PLAN_ACCENTS[fnv(slug) % PLAN_ACCENTS.length],
-		emblem: fallbackEmblem(slug)
-	};
+	SERIES_META[slug] ?? uncuratedMeta(slug);

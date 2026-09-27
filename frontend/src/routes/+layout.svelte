@@ -106,11 +106,11 @@
 	// is the canonical path ("/books", "/books/[slug]") — compare against that.
 	// Book Series hangs off Books (its breadcrumb and the Books page's rail) and
 	// has no nav slot of its own, so its pages keep Books lit.
-	const isActive = (href: string) =>
-		href === '/'
-			? $page.route.id === '/'
-			: ($page.route.id?.startsWith(href) ?? false) ||
-				(href === '/books' && ($page.route.id?.startsWith(SERIES_DEST.href) ?? false));
+	const isActive = (href: string) => {
+		const route = $page.route.id ?? '';
+		if (href === '/') return route === '/';
+		return route.startsWith(href) || (href === '/books' && route.startsWith(SERIES_DEST.href));
+	};
 
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);

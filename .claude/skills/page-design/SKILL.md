@@ -40,7 +40,7 @@ In this order, and nothing else at the top level:
    `N books · M authors`. `eyebrow` is only for a page whose h1 is *not* the nav
    word (Sermons: eyebrow `Sermons`, title `The Preached Word`). Pick one
    register per page and keep `<title>` = the nav word either way.
-3. **`<CatalogLanguageNudge kind=…>`** — when the current language has fewer
+3. **`<CatalogLanguageNudge kind=…>`** — _(gone from `main` by 2026-09-26: the component no longer exists; a new shelf's empty-language state is just `<EmptyState message>` — the Topics model)_ when the current language has fewer
    rows than English. Extend its `kind` union rather than skipping it.
 4. **Secondary section** (optional) — `h2.section-label` above it (`Continue
    reading`, `Sermon of the week`), hidden while the reader is filtering.
@@ -265,7 +265,7 @@ lists content types, **in the same order** everywhere:
       `entries()` and the sitemap section must advertise the **same** set, or
       `prerenderCoverage.test.ts` fails on the URL that was advertised but never
       built
-- [ ] `CatalogLanguageNudge`'s `kind` union
+- [ ] ~~`CatalogLanguageNudge`'s `kind` union~~ (component removed)
 - [ ] a `/og/<section>.png` card for pages without their own image
 - [ ] the guard lists in `lib/pageShell.test.ts` (`BROWSE_PAGES` / `LEAF_PAGES`)
 - [ ] phone chrome: `LIBRARY` in `lib/components/TabBar.svelte` (so the Library
@@ -345,6 +345,8 @@ green in CI but never went live because two of its three books were unpublished
   cover are ~180px, where "2 HR 55 MIN / READ" orphans were routine.
 - `<title>`: `{Page} — Ochorus` — em dash with spaces, everywhere. Leaf pages
   `{Title} — {Author} — Ochorus`. Not `· Ochorus`.
+  - **There are TEN catalogues now** (am ar en es fr hi lg pt sw uk — am/fr
+    joined after the counts below were written); "all eight/nine" below means all ten.
   - **A copy fix to a string that lives in a catalogue must touch all eight
     `messages/*.json`, not just `en.json`.** The title suffix rides inside
     translatable keys (`book_title_tag`), so fixing English alone leaves the
@@ -886,3 +888,18 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 2. Everything else is lower-visibility cleanup — pull from it opportunistically,
    not as a push. K3 (`.sep`) and K4 (secondary text) touch the most files and
    are best folded into whatever leaf-page work comes next.
+
+## Verifying a worktree locally (Book Series index, 2026-09-26)
+
+- `preview_start` REFUSES an absolute `cwd` ("must be a relative path within the
+  project root"), so a worktree outside the main checkout can't be named
+  directly. Add a temporary `.claude/launch.json` entry with `"cwd": "."`,
+  `"runtimeExecutable": "sh"` and `"runtimeArgs": ["-c", "cd <worktree>/frontend && PUBLIC_API_BASE_URL=http://localhost:8010 exec npm run dev -- --port 5181 --strictPort"]`
+  (same shape for the backend on 8010), then `git checkout .claude/launch.json` when done.
+- A non-default frontend port needs the backend started with
+  `CORS_ALLOWED_ORIGINS=http://localhost:<port>`: prerender/SSR loads work
+  without it, so list pages look fine while every CLIENT-side navigation
+  (e.g. a series leaf) 500s on a CORS-blocked fetch.
+- A fresh worktree DB: `cp` the main `backend/.env`, then
+  `manage.py migrate && seed_books && seed_topics` (~1 min on SQLite) gives
+  books, series and topics.

@@ -1154,8 +1154,6 @@ export interface SeriesSummary {
 	/** In the requested language; "" where the series has no description there. */
 	description: string;
 	book_count: number;
-	/** False for a collection (no volume numbers, no reading order). */
-	ordered: boolean;
 	/** Its first few books in reading order — the card's fan. */
 	covers: BookTile[];
 	/** Languages the series has a page in; the index's hreflang is their union. */

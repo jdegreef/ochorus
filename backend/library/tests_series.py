@@ -169,13 +169,11 @@ class SeriesViewTests(TestCase):
         # Series order, not book order: the collection sorts first.
         self.assertEqual([r["slug"] for r in rows], ["key-teachings", "brave-for-god"])
         kt_row, bfg = rows
-        self.assertEqual(
-            (bfg["description"], bfg["book_count"], bfg["ordered"]), ("True stories.", 5, True)
-        )
+        self.assertEqual((bfg["description"], bfg["book_count"]), ("True stories.", 5))
         # The fan: the first four published volumes, in reading order.
         self.assertEqual([c["slug"] for c in bfg["covers"]], ["bfg-1", "bfg-2", "bfg-3", "bfg-4"])
         self.assertEqual(set(bfg["covers"][0]), {"kind", "slug", "cover_url", "cover_color", "title"})
-        self.assertFalse(kt_row["ordered"])
+        self.assertEqual(kt_row["book_count"], 1)
         # Languages with a page: a name AND a published book there.
         self._book("bfg-1", 1, language="sw")
         self._book("bfg-2", 2, language="lg")
