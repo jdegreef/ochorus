@@ -76,8 +76,11 @@
 	/** Decided by the gesture that made the selection (a hybrid device can be
 	 *  either); a keyboard selection falls back to the primary pointer. */
 	let touch = $state(typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches);
-	/** A single word the docked bar offers a definition for (see update). */
+	/** A single word the docked bar offers a definition for (see update), and
+	 *  where to open it — kept, because a tap on the button can clear the
+	 *  selection before its click lands. */
 	let defineWord = $state('');
+	let defineAt = { top: 0, left: 0 };
 
 	/**
 	 * A pointer-driven selection in progress. Its intermediate states are not
@@ -128,6 +131,10 @@
 		// dictionary for it made a single word impossible to highlight or copy.
 		// There the bar opens as usual and offers the definition as a button.
 		defineWord = define && touch ? text : '';
+		if (defineWord && sel) {
+			const r = sel.getRangeAt(0).getBoundingClientRect();
+			defineAt = { top: r.bottom + window.scrollY, left: r.left + window.scrollX + r.width / 2 };
+		}
 		if (define && sel && !touch) {
 			visible = false;
 			// DEFERRED, never immediate. `selectionchange` fires on every
@@ -167,10 +174,19 @@
 		visible = true;
 		// Docked, CSS places it; floating, it goes by the selection — and again
 		// once it is drawn with this selection's buttons, by its real size.
+		const rect = sel.getRangeAt(0).getBoundingClientRect();
 		if (!touch) {
-			const rect = sel.getRangeAt(0).getBoundingClientRect();
 			place(rect);
 			tick().then(() => place(rect));
+		} else {
+			// Docked over the last lines on screen: lift a selection made there
+			// above the bar, or it hides the handles the reader needs to adjust.
+			tick().then(() => {
+				const barTop = bar?.getBoundingClientRect().top;
+				if (barTop !== undefined && rect.bottom > barTop - 8) {
+					window.scrollBy({ top: rect.bottom - barTop + 16 });
+				}
+			});
 		}
 	}
 
@@ -306,9 +322,7 @@
 				<button
 					class="selbar-btn"
 					onclick={() => {
-						const sel = window.getSelection();
-						const r = sel?.rangeCount ? sel.getRangeAt(0).getBoundingClientRect() : null;
-						if (r) onDefine?.(defineWord, r.bottom + window.scrollY, r.left + window.scrollX + r.width / 2);
+						onDefine?.(defineWord, defineAt.top, defineAt.left);
 						visible = false;
 					}}>{t('reader.definition')}</button
 				>
@@ -417,11 +431,22 @@
 	.selbar.docked {
 		position: fixed;
 		inset-inline: 0.75rem;
-		bottom: calc(var(--foot-h, calc(3.1rem + env(safe-area-inset-bottom))) + 0.5rem);
+		/* Clear whichever bottom bar is tallest here — the chapter footer,
+		   Listen's bar, the phone tab bar — as the PWA toasts do. */
+		bottom: calc(
+			max(
+				var(--foot-h, 0px),
+				var(--listenbar-h, 0px) + env(safe-area-inset-bottom),
+				var(--tabbar-h, 0px),
+				env(safe-area-inset-bottom)
+			) + 0.5rem
+		);
 		/* Between the insets, not max-content: the floating bar sizes to its
 		   rows, but docked it spans the column and its buttons wrap inside it. */
 		width: auto;
-		max-width: none;
+		/* A tablet or touch laptop is also "touch": don't span its screen. */
+		max-width: 32rem;
+		margin-inline: auto;
 		white-space: normal;
 		transform: none;
 	}
