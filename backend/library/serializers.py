@@ -650,6 +650,27 @@ def inject_heading_ids(body_html: str) -> tuple[str, list[dict]]:
     return _ARTICLE_H2.sub(add_id, body_html), toc
 
 
+def related_entries(related) -> list[tuple[str, str]]:
+    """An article's ``related`` as validated ``(kind, slug)`` pairs, in order.
+
+    ``related`` is a hand-authored JSON field with no schema, so a malformed
+    entry (a bare slug string, a non-dict, a non-list, an unknown type, a blank
+    slug) is skipped rather than raising. The one parser of the field: the
+    Read-next cards, the lead book and the author page's articles all read it
+    through here, so they agree on what counts as an entry.
+    """
+    entries: list[tuple[str, str]] = []
+    for item in related if isinstance(related, list) else []:
+        if not isinstance(item, dict):
+            continue
+        slug, kind = item.get("slug"), item.get("type")
+        # A non-string slug (a list, a number) is malformed too — and would
+        # break the set/dict lookups every caller does with it.
+        if isinstance(slug, str) and slug and kind in ("book", "sermon", "author"):
+            entries.append((kind, slug))
+    return entries
+
+
 def resolve_related(related, language: str) -> list[dict]:
     """Turn an article's stored ``related`` soft-references into ready-to-render
     "Read next" cards: ``[{type, slug, title, url, <thumbnail fields>}, ...]``.
@@ -668,18 +689,11 @@ def resolve_related(related, language: str) -> list[dict]:
     language-agnostic row, so it is looked up by slug alone. One query per type
     present, not one per reference.
 
-    ``related`` is a hand-authored JSON field with no schema, so a malformed
-    entry (a bare slug string, a non-list) is skipped rather than 500-ing the
-    page. Validated entries are collected once, in order, and reused for both
-    the batched lookup and the final card list.
+    Malformed entries are skipped (``related_entries``); the validated ones
+    are collected once, in order, and reused for both the batched lookup and
+    the final card list.
     """
-    entries: list[tuple[str, str]] = []  # (kind, slug), in order, validated
-    for item in related if isinstance(related, list) else []:
-        if not isinstance(item, dict):
-            continue
-        slug, kind = item.get("slug"), item.get("type")
-        if slug and kind in ("book", "sermon", "author"):
-            entries.append((kind, slug))
+    entries = related_entries(related)
 
     by_type: dict[str, list[str]] = {}
     for kind, slug in entries:
@@ -742,18 +756,9 @@ def is_guide_slug(slug: str) -> bool:
 def first_book_slug(related) -> str | None:
     """The article's PRIMARY book: the first ``book`` entry in its Read-next
     ``related`` (see ``guides_for_book`` for why the first one is the subject).
-    ``related`` is schema-less hand-authored JSON, so anything malformed is
-    skipped rather than raising, and an article with no book gets ``None``."""
-    if not isinstance(related, list):
-        return None
-    return next(
-        (
-            item.get("slug")
-            for item in related
-            if isinstance(item, dict) and item.get("type") == "book" and item.get("slug")
-        ),
-        None,
-    )
+    Malformed entries are skipped (``related_entries``); an article with no
+    book gets ``None``."""
+    return next((slug for kind, slug in related_entries(related) if kind == "book"), None)
 
 
 class CoverAuthorSerializer(serializers.ModelSerializer):
@@ -909,15 +914,7 @@ def articles_for_author(author_slug: str, language: str) -> list[dict]:
     )
     out = []
     for row in rows:
-        related = row["related"]
-        if not isinstance(related, list):
-            continue
-        if any(
-            isinstance(item, dict)
-            and item.get("type") == "author"
-            and item.get("slug") == author_slug
-            for item in related
-        ):
+        if ("author", author_slug) in related_entries(row["related"]):
             out.append(
                 {
                     "slug": row["slug"],
@@ -948,18 +945,11 @@ class ArticleListSerializer(LocalizedMixin, serializers.ModelSerializer):
     def get_lead_book(self, obj):
         """The cover card of the article's primary book (the first book it sends
         the reader to), or ``None`` — so the index can show the classic behind
-        each article, not a wall of text. Like ``topics``: a view may pass the
-        whole shelf's map as ``article_lead_books`` context; otherwise it's built
-        on first use per language and cached on the (shared, ``many=True``)
-        serializer, so a topic page's article list costs two queries, not N."""
-        supplied = self.context.get("article_lead_books")
-        if supplied is not None:
-            return supplied.get(obj.slug)
-        cached_for, cached = getattr(self, "_lead_map", (None, None))
-        if cached_for != obj.language:
-            cached = article_lead_book_map(obj.language)
-            self._lead_map = (obj.language, cached)
-        return cached.get(obj.slug)
+        each article, not a wall of text. Every caller passes the batch as
+        ``article_lead_books`` context — the list view the whole shelf's map,
+        the topic page just its own articles' (``lead_book_cards``) — so a card
+        never resolves a book on its own; without that context it is ``None``."""
+        return (self.context.get("article_lead_books") or {}).get(obj.slug)
 
     def get_topics(self, obj):
         """The (published, localized) topics this card belongs to, so the index
@@ -1047,10 +1037,6 @@ class ArticleDetailSerializer(ArticleListSerializer):
     def get_related(self, obj):
         return resolve_related(obj.related, obj.language)
 
-    def get_lead_book(self, obj):
-        # One article: resolve just its own primary book, not the shelf's map.
-        return lead_book_cards({obj.slug: obj.related}, obj.language).get(obj.slug)
-
     def get_available_languages(self, obj):
         return _available_languages(Article, obj.slug)
 
@@ -1058,7 +1044,9 @@ class ArticleDetailSerializer(ArticleListSerializer):
         # topics + word_count already ride on the list serializer's fields;
         # detail just overrides get_topics with a direct query and adds the body,
         # its table of contents, the Read-next links and source/languages.
-        fields = ArticleListSerializer.Meta.fields + [
+        # `lead_book` is the index card's cover — the page itself renders the
+        # same book from `related`, so detail doesn't pay a second lookup for it.
+        fields = [f for f in ArticleListSerializer.Meta.fields if f != "lead_book"] + [
             "body_html",
             "toc",
             "related",
@@ -2137,8 +2125,12 @@ class TopicDetailSerializer(TopicListSerializer):
         return SermonListSerializer(self._sermons(obj), many=True, context=self.context).data
 
     def get_articles(self, obj):
+        # The cards' lead books from THIS topic's articles only — the shelf-wide
+        # fallback would resolve every article in the language for a handful.
+        articles = self._articles(obj)
+        lead_books = lead_book_cards({a.slug: a.related for a in articles}, self._language())
         return ArticleListSerializer(
-            self._articles(obj), many=True, context=self.context
+            articles, many=True, context={**self.context, "article_lead_books": lead_books}
         ).data
 
     def get_authors(self, obj):

@@ -1,3 +1,20 @@
+<script lang="ts" module>
+	import { ARTICLE_KINDS } from '$lib/articleIndex';
+	import { urlFilters } from '$lib/urlFilters.svelte';
+
+	/**
+	 * The article shelf's URL-backed filters — the text query and the kind. One
+	 * setup for the index and the topic shelves, called in the PAGE (not here)
+	 * so the page can step its secondary sections aside while the reader
+	 * filters. Like `urlFilters`, call it during component setup; `url` is read
+	 * lazily (`() => $page.url`) for the reason `urlFilters` gives.
+	 */
+	export function articleFilters(url: () => URL) {
+		return urlFilters({ defaults: { q: '', kind: '' }, allowed: { kind: ARTICLE_KINDS }, url });
+	}
+	export type ArticleFilters = ReturnType<typeof articleFilters>;
+</script>
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { ArticleSummary } from '$lib/library-public';
@@ -11,6 +28,7 @@
 		matchesQuery,
 		ofKind,
 		sortArticles,
+		topicCounts,
 		type ArticleKind,
 		type ArticleSort
 	} from '$lib/articleIndex';
@@ -34,8 +52,8 @@
 	 * English-only, so the hrefs are plain (no locale prefix).
 	 *
 	 * The text query and the kind DO live in the query string, through the
-	 * page's `urlFilters()` (passed in, so the page can hide its secondary
-	 * sections while the reader filters). Sort is the reader's own preference
+	 * page's `articleFilters()` (above; passed in, so the page can hide its
+	 * secondary sections while the reader filters). Sort is the reader's own preference
 	 * and lives in localStorage, like the Books and Sermons shelves.
 	 */
 	let {
@@ -48,31 +66,17 @@
 		articles: ArticleSummary[];
 		/** The topic slug this view is filtered to; '' is the unfiltered index. */
 		activeTopic?: string;
-		/** The page's `urlFilters({ defaults: { q: '', kind: '' } })`. */
-		filters: {
-			values: { q: string; kind: string };
-			active: boolean;
-			reset: () => void;
-		};
+		/** The page's `articleFilters()`. */
+		filters: ArticleFilters;
 		/** Card title level: h3 when the page heads the list with its own h2. */
 		heading?: 'h2' | 'h3';
 	} = $props();
 
 	// Distinct topics present on the shelf, alphabetical, each with a count for
-	// its chip badge. `?? []` guards a lagging API that predates the `topics`
-	// field (version skew).
-	type TopicTab = { slug: string; title: string; count: number };
-	const topicTabs = $derived.by<TopicTab[]>(() => {
-		const bySlug = new Map<string, TopicTab>();
-		for (const a of articles) {
-			for (const tc of a.topics ?? []) {
-				const seen = bySlug.get(tc.slug);
-				if (seen) seen.count += 1;
-				else bySlug.set(tc.slug, { slug: tc.slug, title: tc.title, count: 1 });
-			}
-		}
-		return [...bySlug.values()].sort((x, y) => x.title.localeCompare(y.title));
-	});
+	// its chip badge.
+	const topicTabs = $derived(
+		topicCounts(articles).sort((x, y) => x.title.localeCompare(y.title))
+	);
 
 	/** The shelf this view starts from: the whole index, or one topic's set. */
 	const base = $derived(
@@ -80,14 +84,23 @@
 	);
 
 	// The Questions / Book guides switch only earns its place when the view
-	// holds both kinds.
+	// holds both kinds — or when a kind is already set (a shared link), so the
+	// reader can always see, and undo, what is narrowing the shelf.
 	const guideCount = $derived(base.filter(isGuide).length);
-	const showKinds = $derived(guideCount > 0 && guideCount < base.length);
+	const showKinds = $derived(
+		(guideCount > 0 && guideCount < base.length) || filters.values.kind !== ''
+	);
 
 	const KIND_LABEL: Record<ArticleKind, string> = {
 		questions: 'articles.kindQuestions',
 		guides: 'articles.kindGuides'
 	};
+	/** The switch's segments: value, label key, count. '' is All. */
+	const kindTabs = $derived<[string, string, number][]>([
+		['', 'search.filterAll', base.length],
+		['questions', KIND_LABEL.questions, base.length - guideCount],
+		['guides', KIND_LABEL.guides, guideCount]
+	]);
 	const SORT_LABEL: Record<ArticleSort, string> = {
 		featured: 'common.sortShelf',
 		newest: 'search.sortNewest',
@@ -155,24 +168,14 @@
 	</select>
 	{#if showKinds}
 		<div class="seg">
-			<button
-				class:active={filters.values.kind === ''}
-				aria-pressed={filters.values.kind === ''}
-				onclick={() => (filters.values.kind = '')}
-				>{t('search.filterAll')} <span class="count">{base.length}</span></button
-			>
-			<button
-				class:active={filters.values.kind === 'questions'}
-				aria-pressed={filters.values.kind === 'questions'}
-				onclick={() => (filters.values.kind = 'questions')}
-				>{t('articles.kindQuestions')} <span class="count">{base.length - guideCount}</span></button
-			>
-			<button
-				class:active={filters.values.kind === 'guides'}
-				aria-pressed={filters.values.kind === 'guides'}
-				onclick={() => (filters.values.kind = 'guides')}
-				>{t('articles.kindGuides')} <span class="count">{guideCount}</span></button
-			>
+			{#each kindTabs as [k, label, n] (k)}
+				<button
+					class:active={filters.values.kind === k}
+					aria-pressed={filters.values.kind === k}
+					onclick={() => (filters.values.kind = k)}
+					>{t(label)} <span class="count">{n}</span></button
+				>
+			{/each}
 		</div>
 	{/if}
 </div>
@@ -221,6 +224,10 @@
 			<a href="/articles/{a.slug}/" class="book-card card-lift group">
 				{#if a.lead_book}
 					<BookCover book={a.lead_book} />
+				{:else}
+					<!-- No published book to show: hold the cover's 3:4 box so the
+					     grid row stays aligned. -->
+					<div class="rounded-card border border-dashed border-border" style="aspect-ratio: 3 / 4"></div>
 				{/if}
 				<div class="mt-2 flex flex-1 flex-col px-0.5">
 					<svelte:element
