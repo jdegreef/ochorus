@@ -8,6 +8,8 @@ never doubles it; a test send uses a throwaway key so it can be repeated.
 
 from __future__ import annotations
 
+import logging
+
 from django.utils import timezone
 
 from .audience import resolve
@@ -21,6 +23,8 @@ from .models import (
 from .recipient import verified_email
 from .rendering import render_broadcast
 from .sending import deliver
+
+logger = logging.getLogger(__name__)
 
 
 def broadcast_key(broadcast, profile) -> str:
@@ -70,7 +74,15 @@ def send_broadcast(broadcast, *, limit=None) -> dict:
     # invalidated on Postgres. Audiences are small; batch by id range if that changes.
     for profile in audience:
         subscription, _ = EmailSubscription.objects.get_or_create(profile=profile)
-        tally[_send_one(broadcast, profile, subscription)] += 1
+        try:
+            bucket = _send_one(broadcast, profile, subscription)
+        except Exception:
+            # One recipient's failure (a render error, a provider hiccup) is a
+            # "failed" tally, not an abort that strands the broadcast in
+            # SENDING with the rest of the audience unsent.
+            logger.exception("broadcast %s: send to profile %s failed", broadcast.pk, profile.pk)
+            bucket = "failed"
+        tally[bucket] += 1
 
     broadcast.status = BroadcastStatus.SENT
     broadcast.save(update_fields=["status", "updated_at"])

@@ -609,6 +609,30 @@ class BroadcastSendTests(TestCase):
         self.assertEqual(rendered.subject, "Hello from Ochorus")
         self.assertIn("This month", rendered.html)
 
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_one_recipient_failing_does_not_strand_the_broadcast(self, send):
+        _make_profile(email="a@example.com")
+        _make_profile(email="b@example.com")
+        broadcast = _broadcast()
+        # The first recipient's render raises; the second renders nothing.
+        with mock.patch(
+            "emails.broadcasts.render_broadcast", side_effect=[ValueError("boom"), None]
+        ), self.assertLogs("emails.broadcasts", "ERROR"):
+            tally = send_broadcast(broadcast)
+        self.assertEqual(tally, {"sent": 0, "skipped": 1, "failed": 1})
+        broadcast.refresh_from_db()
+        self.assertEqual(broadcast.status, "sent")
+
+    def test_greeting_braces_are_literal_not_format_fields(self):
+        from emails.rendering import _render
+
+        profile = _make_profile()
+        sub = EmailSubscription.objects.create(profile=profile)
+        text = {"subject": "s", "greeting": "Hi {name} {0} {name.__class__} }{", "paragraphs": []}
+        rendered = _render(text, profile, sub, "en")
+        self.assertIn("{0}", rendered.html)
+        self.assertNotIn("<class", rendered.html)
+
     def test_render_none_when_no_content(self):
         profile = _make_profile()
         sub = EmailSubscription.objects.create(profile=profile)
