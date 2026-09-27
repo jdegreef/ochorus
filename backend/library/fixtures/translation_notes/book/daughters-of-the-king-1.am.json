@@ -1,0 +1,576 @@
+{
+ "kind": "book",
+ "slug": "daughters-of-the-king-1",
+ "language": "am",
+ "job_issue": 3800,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 2
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "he-holds-my-tomorrows.am.json"
+  },
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 4
+  },
+  {
+   "reference": "1 Samuel 16:11",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 4
+  },
+  {
+   "reference": "1 Samuel 16:12",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 4
+  },
+  {
+   "reference": "1 Peter 3:3-4",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Zephaniah 3:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Galatians 6:4-5",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 29:31",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 29:35",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 29:17",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 29:31",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 29:32",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 29:35",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 29:35",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Proverbs 14:30",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Proverbs 14:30",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Proverbs 14:30",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 16:5-6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 16:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 16:6",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 16:5",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Luke 1:41-42",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 1:42",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 1:45",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 1:42",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ruth 1:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Ruth 1:16",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "James 2:1-4",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 15,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 2:1",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Proverbs 26:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Proverbs 26:20",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Proverbs 16:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Ephesians 4:26-27",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 19,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Judges 4:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Judges 4:8",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 21
+  },
+  {
+   "reference": "1 Samuel 25:32-33",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 22
+  },
+  {
+   "reference": "1 Samuel 25:3",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Joshua 2:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 23,
+   "source_file": "he-holds-my-tomorrows.am.json"
+  },
+  {
+   "reference": "2 Kings 5:2-3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 24
+  },
+  {
+   "reference": "2 Kings 5:15",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Luke 1:38",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 25,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 1:28",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 25,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 1:31-33",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Luke 1:34",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Luke 1:37",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 25,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 1:38",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 25,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 1:38",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 25,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Samuel 1:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Samuel 1:15",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Samuel 1:18",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Luke 10:41-42",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 27,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 10:40",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 27,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 10:41-42",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 27,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Mark 14:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 28,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Mark 14:4-5",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 28,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Mark 14:6",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 28,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Mark 14:9",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 28,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:14",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 29,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:14",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 29,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:15",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 29,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:15",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Acts 16:40",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Proverbs 31:25",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 30,
+   "source_file": "clothed-with-strength-and-dignity.am.json"
+  },
+  {
+   "reference": "Proverbs 31:25",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Proverbs 31:25",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Proverbs 31:25",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Proverbs 31:25",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Proverbs 31:30",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Proverbs 31:30",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Proverbs 31:30",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Zephaniah 3:17",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 31
+  },
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 31
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 32
+  },
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Psalm 34:5",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 32
+  }
+ ]
+}
