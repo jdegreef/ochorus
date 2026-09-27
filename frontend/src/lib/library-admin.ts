@@ -568,9 +568,10 @@ export interface AdminCoverageRow {
 	 * sort's demand signal. Absent on articles (no reading-layer rows) and
 	 * across the deploy window. */
 	readers?: number;
-	/** Languages whose translation was made from English that has since been
-	 * replaced — the wording may describe text that no longer exists. Bios only
-	 * today (AuthorTranslation.source_stale); absent when none. */
+	/** Languages whose translation was made from English that has since changed
+	 * — the wording may describe text that no longer exists. Books, sermons and
+	 * articles compare deploy-time fingerprints (library/translation_staleness);
+	 * bios use AuthorTranslation.source_stale. Absent when none. */
 	stale?: string[];
 }
 
@@ -602,6 +603,18 @@ export interface AdminCoverage {
 }
 
 export const getAdminCoverage = () => apiFetch<AdminCoverage>('/api/admin/coverage/');
+
+/** A stale translation still matches its (changed) English — e.g. the English
+ * fix was a typo — so re-baseline it and clear its ↻. Review act in that language. */
+export const markTranslationCurrent = (body: {
+	kind: 'book' | 'sermon' | 'article';
+	slug: string;
+	language: string;
+}) =>
+	apiFetch<{ ok: boolean }>('/api/admin/coverage/mark-current/', {
+		method: 'POST',
+		body: JSON.stringify(body)
+	});
 
 // AI-translation review queue: books, sermons and author bios awaiting a
 // native-speaker check — filtered, faceted and paged, with mechanical checks

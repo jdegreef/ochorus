@@ -228,6 +228,16 @@ rule. Two more traps this book hit, both worth internalising:
    `tests_english_audit.py` fails if the baseline is stale in either direction.
 8. **Report back** in the format below.
 
+**Every English fix marks that work's translations out of date.** Each deploy
+fingerprints the English text (`library/translation_staleness.py`, run by
+`refresh_translation_digests` in `release`), and any translation still carrying
+the OLD English's fingerprint shows a ↻ in the admin coverage matrix. A
+translation re-baselines only when its OWN text changes in the same deploy, so
+fixing the translations alongside (step 4) keeps them current. A fix that
+doesn't touch the meaning (a typo, a hyphen rejoin) still marks them. A reviewer
+clears that by clicking the ↻ ("still current"). Say in the report which
+translations you left behind on purpose.
+
 ## Report format
 
 Keep it short. The point is that someone can see what changed without reading

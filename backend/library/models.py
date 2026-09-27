@@ -499,6 +499,14 @@ class Book(models.Model):
     is_published = models.BooleanField(default=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
+    # Translation staleness (library/translation_staleness.py, refreshed every
+    # deploy). ``content_digest`` fingerprints this row's own text as of the last
+    # deploy; ``english_digest`` — on a translation only — is the English
+    # edition's content_digest when this translation was last (re)made. They
+    # differ once the English changes and the translation doesn't. DB-only: not
+    # in the fixture, so the seeds never touch them.
+    content_digest = models.CharField(max_length=64, blank=True, default="")
+    english_digest = models.CharField(max_length=64, blank=True, default="")
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = BookManager()
@@ -757,6 +765,14 @@ class Sermon(models.Model):
     is_published = models.BooleanField(default=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
+    # Translation staleness (library/translation_staleness.py, refreshed every
+    # deploy). ``content_digest`` fingerprints this row's own text as of the last
+    # deploy; ``english_digest`` — on a translation only — is the English
+    # edition's content_digest when this translation was last (re)made. They
+    # differ once the English changes and the translation doesn't. DB-only: not
+    # in the fixture, so the seeds never touch them.
+    content_digest = models.CharField(max_length=64, blank=True, default="")
+    english_digest = models.CharField(max_length=64, blank=True, default="")
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = SermonManager()
@@ -880,6 +896,14 @@ class Article(models.Model):
     is_published = models.BooleanField(default=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
+    # Translation staleness (library/translation_staleness.py, refreshed every
+    # deploy). ``content_digest`` fingerprints this row's own text as of the last
+    # deploy; ``english_digest`` — on a translation only — is the English
+    # edition's content_digest when this translation was last (re)made. They
+    # differ once the English changes and the translation doesn't. DB-only: not
+    # in the fixture, so the seeds never touch them.
+    content_digest = models.CharField(max_length=64, blank=True, default="")
+    english_digest = models.CharField(max_length=64, blank=True, default="")
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = ArticleManager()
@@ -1822,6 +1846,10 @@ class AdminAction(models.Model):
         CONTENT_UNPUBLISH = "content.unpublish", "Document unpublished"
         REVIEW_DECIDE = "review.decide", "Review decision recorded"
         REVIEW_UNDO = "review.undo", "Review decision undone"
+        TRANSLATION_MARK_CURRENT = (
+            "translation.mark_current",
+            "Translation confirmed current with its English",
+        )
         AUDIT_DISMISS = "audit.dismiss", "Audit finding accepted as known"
         AUDIT_RESTORE = "audit.restore", "Audit finding acceptance undone"
         ROLE_GRANT = "role.grant", "Admin access granted"

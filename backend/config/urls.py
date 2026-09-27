@@ -51,6 +51,7 @@ from library.admin_views import (
     AdminStatsView,
     AdminTeamView,
     AdminTranslationJobsView,
+    AdminTranslationMarkCurrentView,
     AdminUnpublishedView,
     AdminUserDetailView,
     AdminUserDirectoryView,
@@ -91,6 +92,11 @@ urlpatterns = [
     path("api/admin/search-stats/", AdminSearchView.as_view(), name="admin-search-stats"),
     path("api/admin/search-gap/", AdminSearchGapView.as_view(), name="admin-search-gap"),
     path("api/admin/coverage/", AdminCoverageView.as_view(), name="admin-coverage"),
+    path(
+        "api/admin/coverage/mark-current/",
+        AdminTranslationMarkCurrentView.as_view(),
+        name="admin-translation-mark-current",
+    ),
     path(
         "api/admin/language-health/",
         AdminLanguageHealthView.as_view(),
