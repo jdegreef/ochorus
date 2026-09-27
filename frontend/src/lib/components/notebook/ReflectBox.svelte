@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import type { Snippet } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -56,7 +57,7 @@
 		<div class="answer">
 			<p class="label text-micro">✓ {t('notebook.reflectSaved')}</p>
 			<div class="text"><RichText text={written.body} /></div>
-			<a class="text-small font-semibold" href={notebookHref}>{t('notebook.reflectOpen')} →</a>
+			<a class="text-small font-semibold" href={notebookHref}>{t('notebook.reflectOpen')} <Arrow /></a>
 		</div>
 		{#if children}<div class="mt-3">{@render children()}</div>{/if}
 	{:else if compact && !asked}

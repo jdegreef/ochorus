@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import type { BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
@@ -145,7 +146,7 @@
 									</span>
 									{#if s.book.word_count}
 										<span class="block text-small text-accent">
-											{readingTime(s.book.word_count)} →
+											{readingTime(s.book.word_count)} <Arrow />
 										</span>
 									{/if}
 								</span>
@@ -181,7 +182,7 @@
 									{t('originals.startSeries').replace(
 										'%n%',
 										volumeNumeral(s.books[0].series_position, lang.current) ?? '1'
-									)} →
+									)} <Arrow />
 								</a>
 							</div>
 							<ol class="series-covers">

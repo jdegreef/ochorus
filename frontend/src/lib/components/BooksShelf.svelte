@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import { onMount } from 'svelte';
 	import { isTranslated, type BookSummary, type SeriesSummary } from '$lib/library-public';
@@ -254,7 +255,7 @@
 							<div class="text-small text-muted">{c.book.author.name}</div>
 							<div class="mt-1 text-small font-semibold text-accent">
 								{t('continue.chapter')}
-								{c.order} →
+								{c.order} <Arrow />
 							</div>
 						</div>
 					</a>

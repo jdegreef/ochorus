@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import type { PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { readingMinutes } from '$lib/reading';
@@ -137,7 +138,7 @@
 								{t('plans.day')}
 								{planProgress.nextDay(plan.slug, plan.day_count)}
 								{t('plans.of')}
-								{plan.day_count} →
+								{plan.day_count} <Arrow />
 							</span>
 						</div>
 						<div class="mt-2">

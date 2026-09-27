@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { getLang } from '$lib/lang.svelte';
@@ -323,7 +324,7 @@
 						<div class="mt-6 flex flex-wrap items-center gap-3">
 							{#if personFilter !== null}
 								<button class="chip" onclick={() => (personFilter = null)}>
-									← {t('notebook.allPeople')}
+									<Arrow back /> {t('notebook.allPeople')}
 								</button>
 								<span class="text-small font-semibold text-text">{personFilter || t('notebook.forAnyone')}</span>
 							{:else}
@@ -369,7 +370,7 @@
 						<FaithfulnessTimeline months={record.months} {locale} />
 					{:else if byGroup && lists.length}
 						{#if listFilter !== null}
-							<button class="chip mt-4" onclick={() => (listFilter = null)}>← {t('notebook.allLists')}</button>
+							<button class="chip mt-4" onclick={() => (listFilter = null)}><Arrow back /> {t('notebook.allLists')}</button>
 						{/if}
 						<PrayerGroups {lists} {locale} onopen={(p) => (personFilter = p)} onpray={prayFor} />
 					{:else if byPerson && personCards.length}

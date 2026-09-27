@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { auth } from '$lib/auth.svelte';
@@ -214,7 +215,7 @@
 			</div>
 		</div>
 		<p class="mt-4 text-center text-small">
-			<a href={localizeHref('/login')} onclick={() => (sent = null)} class="text-accent">← {t('login.backToSignIn')}</a>
+			<a href={localizeHref('/login')} onclick={() => (sent = null)} class="text-accent"><Arrow back /> {t('login.backToSignIn')}</a>
 		</p>
 	{:else}
 		{#if pitch}<div class="pitch-intro"><LoginPitch kind={pitch} part="intro" /></div>{/if}
@@ -346,7 +347,7 @@
 					{t('login.haveAccount')}
 					<button type="button" class="text-accent" onclick={() => switchMode('signin')}>{t('account.signIn')}</button>
 				{:else}
-					<button type="button" class="text-accent" onclick={() => switchMode('signin')}>← {t('login.backToSignIn')}</button>
+					<button type="button" class="text-accent" onclick={() => switchMode('signin')}><Arrow back /> {t('login.backToSignIn')}</button>
 				{/if}
 			</p>
 

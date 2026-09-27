@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	/**
 	 * A section title with an optional "see all" link beside it.
 	 *
@@ -40,6 +41,6 @@
 		<h2 class="text-h2">{title}</h2>
 	{/if}
 	{#if href && linkText}
-		<a {href} class="whitespace-nowrap text-small font-semibold text-accent">{linkText} →</a>
+		<a {href} class="whitespace-nowrap text-small font-semibold text-accent">{linkText} <Arrow /></a>
 	{/if}
 </div>

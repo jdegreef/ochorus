@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
 	import GoalPips from '$lib/components/GoalPips.svelte';
 	import { i18n } from '$lib/i18n.svelte';
@@ -79,7 +80,7 @@
 					href="{localizeHref('/settings')}?section=activity"
 					class="shrink-0 text-small font-semibold text-accent hover:underline"
 				>
-					{t('home.nudgeViewActivity')} →
+					{t('home.nudgeViewActivity')} <Arrow />
 				</a>
 			{:else}
 				<a href={localizeHref('/books')} class="btn btn-primary shrink-0">

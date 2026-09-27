@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
 	import { authorPath } from '$lib/originals';
 	import {
@@ -336,7 +337,7 @@
 						{current.order} / {b.chapter_count} · {current.pct}%
 					</div>
 				</div>
-				<div class="mt-3 text-small font-semibold text-accent">{t('reader.resume')} →</div>
+				<div class="mt-3 text-small font-semibold text-accent">{t('reader.resume')} <Arrow /></div>
 			</div>
 		</a>
 	{/if}

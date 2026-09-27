@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
@@ -122,16 +123,16 @@
 						· {author.sermon_count}
 						{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')}
 					{/if}
-					→
+					<Arrow />
 				{:else if author.sermon_count > 0}
 					{author.sermon_count}
-					{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')} →
+					{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')} <Arrow />
 				{:else}
 					<!-- Same wording as the read-more below: both links go to the same
 					     author page, so they say the same thing. Adjacent cards used to
 					     read "Read full biography →" and "View biography →" for one
 					     action. -->
-					{t('bios.readMore')} →
+					{t('bios.readMore')} <Arrow />
 				{/if}
 			</a>
 	<!-- A short mini-bio (2–4 sentences) in the reader's language. Rendered in
@@ -155,7 +156,7 @@
 			href={localizeHref(`/authors/${author.slug}`)}
 			class="mt-1.5 hidden text-small font-semibold text-accent sm:inline-block"
 		>
-			{t('bios.readMore')} →
+			{t('bios.readMore')} <Arrow />
 		</a>
 	{/if}
 
