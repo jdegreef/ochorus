@@ -1645,12 +1645,12 @@
 			"bar": 0
 		},
 		"finney-memoirs": {
-			"ground": "0d0b8d2c55d10b6c8fe90e5fc67c89601a6faa13d21817842442bb80fdc0fddd",
+			"ground": "7e00273a41f573d20d8202b37b0c6d82affbd4512032520c4db8d486e297af71",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.6,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -1665,12 +1665,12 @@
 			"bar": 0
 		},
 		"foxes-book-of-martyrs": {
-			"ground": "ba45e6224419b841da45cf049959fd4b1917187e358fbaa24c72ec848b4c3cff",
+			"ground": "81f2241d738b9deea1f9eb739167d3f3a224e5d9cccc4f486cdf38dd49e1ce5d",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2105,12 +2105,12 @@
 			"bar": 0
 		},
 		"george-muller-of-bristol": {
-			"ground": "37e9e681f682ec1d67dc8457aec8e73fed30e3c9bdf3ef2a38f4997c1ee7c5f7",
+			"ground": "583c4abb5631dde6f80d29f6a5f6649c94f2c866d4ade91304511324b80b4afc",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},

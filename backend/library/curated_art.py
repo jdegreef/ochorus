@@ -645,6 +645,31 @@ CURATED: dict[str, Artwork] = {
         "hot mission field Carmichael gave her life to, seen at first morning.",
         focus=0.6,
     ),
+    # ── Batch 17 · the new-shelf classics ──────────────────────────────────
+    # Three famous works that joined the library on plates and sat on "New to
+    # the Library" looking unfinished. All single-plate authors, English-only
+    # when levelled (so no per-language plates to repoint). Art Institute CC0,
+    # three painters, each a place rather than a face — two are biographies.
+    "foxes-book-of-martyrs": Artwork(
+        "aic", 60755, "Jacob van Ruisdael",
+        "Landscape with the Ruins of the Castle of Egmond", "1650–55",
+        "A record of the church burned and scattered and never put out. "
+        "Ruisdael's shattered tower still stands under a storm sky — what "
+        "persecution breaks and cannot bring down.",
+    ),
+    "finney-memoirs": Artwork(
+        "aic", 71971, "Sanford Robinson Gifford",
+        "Mist Rising at Sunset in the Catskills", "c. 1861",
+        "Finney's revivals swept upstate New York in his own decades. Gifford "
+        "paints that country with the sky set alight over a darkened lake — "
+        "fire falling on a sleeping land.",
+    ),
+    "george-muller-of-bristol": Artwork(
+        "aic", 152437, "Harald Oscar Sohlberg", "Fisherman's Cottage", "1906",
+        "Müller kept thousands of orphans without once asking anyone but God. "
+        "Sohlberg sets one lit house among dark pines at nightfall — a home "
+        "kept, by no visible means, with its light on.",
+    ),
 }
 
 
