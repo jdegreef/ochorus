@@ -334,6 +334,22 @@ class Series(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     sort_order = models.PositiveIntegerField(default=0)
+
+    class Audience(models.TextChoices):
+        """Who a series is written for — the /series index's groups, in this
+        order. The labels are the frontend's (translated) chrome, not these."""
+
+        YOUNG_READERS = "young_readers", "For young readers"
+        TEENS = "teens", "For teens"
+        ADULTS = "adults", "For adult readers"
+
+    # Language-agnostic, like the rest of the row: an audience and an age
+    # range don't change with the language a series is read in. Blank audience
+    # lands a series in the index's "More book series" group; null ages draw no
+    # age line (never guessed).
+    audience = models.CharField(max_length=20, choices=Audience.choices, blank=True, default="")
+    min_age = models.PositiveSmallIntegerField(null=True, blank=True)
+    max_age = models.PositiveSmallIntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

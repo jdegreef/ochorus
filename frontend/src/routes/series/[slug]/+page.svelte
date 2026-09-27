@@ -4,7 +4,7 @@
 	import type { SeriesDetail } from '$lib/library-public';
 	import { bookProgressReader } from '$lib/progress';
 	import { contentLang } from '$lib/reading';
-	import { nextInSeries, seriesProgress, seriesProgressLabel } from '$lib/series';
+	import { nextInSeries, seriesAges, seriesProgress, seriesProgressLabel } from '$lib/series';
 	import { volumeNumeral } from '$lib/coverStyles';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -84,6 +84,7 @@
 		})
 	);
 	const count = $derived(series.books.length);
+	const ages = $derived(seriesAges(series));
 </script>
 
 <Seo
@@ -105,6 +106,7 @@
 			<p class="eyebrow mb-1 text-muted">
 				{t('nav.series')} · {volumeNumeral(count, lang) ?? count}
 				{count === 1 ? t('common.bookOne') : t('common.bookMany')}
+				{#if ages}· {ages}{/if}
 			</p>
 			<h1 class="text-h1 mb-2" dir="auto">{series.title}</h1>
 			{#if series.description}

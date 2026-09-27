@@ -8,6 +8,8 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import SeriesCard from '$lib/components/SeriesCard.svelte';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
+	import { audienceBlurb, audienceName, groupByAudience } from '$lib/series';
 
 	/**
 	 * Every book series in this language — the Topics shelf's anatomy and card,
@@ -20,6 +22,11 @@
 	const t = i18n.t;
 
 	const bookTotal = $derived(series.reduce((n, s) => n + s.book_count, 0));
+	// Grouped by who each series is for. A list with no audience tagged at all
+	// (an API behind this build) stays one flat grid rather than a lone
+	// "More book series" heading over everything.
+	const groups = $derived(groupByAudience(series));
+	const grouped = $derived(groups.some((g) => g.audience));
 
 	// schema.org ItemList of the series: each entry is the series page, whose own
 	// BookSeries LD names its parts.
@@ -84,10 +91,26 @@
 	{:else if series.length === 0}
 		<EmptyState message={t('series.none')} />
 	{:else}
-		<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-			{#each series as s (s.slug)}
-				<SeriesCard series={s} />
+		{#if grouped}
+			{#each groups as g (g.audience ?? 'more')}
+				<section class="mb-12">
+					<GroupHeading name={audienceName(g.audience)} count={g.series.length} />
+					{#if g.audience}
+						<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{audienceBlurb(g.audience)}</p>
+					{/if}
+					<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+						{#each g.series as s (s.slug)}
+							<SeriesCard series={s} headingLevel={3} />
+						{/each}
+					</div>
+				</section>
 			{/each}
-		</div>
+		{:else}
+			<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+				{#each series as s (s.slug)}
+					<SeriesCard series={s} />
+				{/each}
+			</div>
+		{/if}
 	{/if}
 </div>

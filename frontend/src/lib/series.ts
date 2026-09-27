@@ -1,6 +1,13 @@
 import * as m from '$lib/paraglide/messages.js';
 import { volumeNumeral } from '$lib/coverStyles';
-import type { BookSeriesLine, BookSummary, CoverBook, SeriesSummary } from '$lib/library-public';
+import type {
+	BookSeriesLine,
+	BookSummary,
+	CoverBook,
+	SeriesAudience,
+	SeriesFor,
+	SeriesSummary
+} from '$lib/library-public';
 import { contentLang } from '$lib/reading';
 
 /**
@@ -157,3 +164,49 @@ export function seriesFromBooks(
 		languages: []
 	}));
 }
+
+/** The index's audience groups, in reading-age order. */
+export const SERIES_AUDIENCES: readonly SeriesAudience[] = ['young_readers', 'teens', 'adults'];
+
+/**
+ * The /series index's groups: one per audience that has a series, in
+ * `SERIES_AUDIENCES` order, then a group (`audience: null`) for the series no
+ * one has tagged — the index's "More book series". Each group keeps the
+ * list's own series order.
+ */
+export function groupByAudience<S extends Pick<SeriesFor, 'audience'>>(
+	series: S[]
+): { audience: SeriesAudience | null; series: S[] }[] {
+	const known = new Set<string>(SERIES_AUDIENCES);
+	const groups: { audience: SeriesAudience | null; series: S[] }[] = SERIES_AUDIENCES.map(
+		(audience) => ({ audience, series: series.filter((s) => s.audience === audience) })
+	);
+	groups.push({ audience: null, series: series.filter((s) => !known.has(s.audience ?? '')) });
+	return groups.filter((g) => g.series.length);
+}
+
+/** "Ages 9–12" / "Ages 9+", or "" for a series with no age range. */
+export function seriesAges(s: Pick<SeriesFor, 'min_age' | 'max_age'>): string {
+	if (s.min_age == null) return '';
+	return s.max_age == null
+		? m.series_ages_from({ min: s.min_age })
+		: m.series_ages({ min: s.min_age, max: s.max_age });
+}
+
+const AUDIENCE_NAME: Record<SeriesAudience, () => string> = {
+	young_readers: m.series_audience_young_readers,
+	teens: m.series_audience_teens,
+	adults: m.series_audience_adults
+};
+const AUDIENCE_BLURB: Record<SeriesAudience, () => string> = {
+	young_readers: m.series_audience_young_readers_desc,
+	teens: m.series_audience_teens_desc,
+	adults: m.series_audience_adults_desc
+};
+
+/** An index group's heading: the audience, or "More book series" for the rest. */
+export const audienceName = (a: SeriesAudience | null): string =>
+	a ? AUDIENCE_NAME[a]() : m.series_more();
+
+/** The line under an audience heading; none for the untagged group. */
+export const audienceBlurb = (a: SeriesAudience | null): string => (a ? AUDIENCE_BLURB[a]() : '');

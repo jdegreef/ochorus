@@ -1156,9 +1156,21 @@ export const listTopics = (language = 'en', f?: Fetch) =>
 export const getTopic = (slug: string, language = 'en', f?: Fetch) =>
 	apiFetch<TopicDetail>(`/api/library/topics/${slug}/?language=${language}`, {}, f);
 
+/** Who a series is written for — `Series.Audience` in the API; "" when untagged. */
+export type SeriesAudience = 'young_readers' | 'teens' | 'adults';
+
+/** The audience and age range a series row carries (the API's list and page). */
+export interface SeriesFor {
+	/** Optional: an API behind this build omits it, and the index is ungrouped. */
+	audience?: SeriesAudience | '';
+	/** The age range, when the series has one; null draws no age line. */
+	min_age?: number | null;
+	max_age?: number | null;
+}
+
 /** A series with a page in the requested language — the /series index, the
  *  Books page's Book Series shelf, the prerender entries and the sitemap. */
-export interface SeriesSummary {
+export interface SeriesSummary extends SeriesFor {
 	slug: string;
 	title: string;
 	/** In the requested language; "" where the series has no description there. */
@@ -1174,7 +1186,7 @@ export interface SeriesSummary {
 }
 
 /** One series page: see `SeriesDetailView` in the API. */
-export interface SeriesDetail {
+export interface SeriesDetail extends SeriesFor {
 	slug: string;
 	/** Name and description in the requested language (no English fallback). */
 	title: string;

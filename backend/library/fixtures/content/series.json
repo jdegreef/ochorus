@@ -6,6 +6,9 @@
   "title": "The Key Teachings",
   "description": "Short, faithful guides by Ochorus to the heart of one classic author's teaching — each chapter ending in questions and a prayer, and pointing the reader on to the author's own books.",
   "sort_order": 10,
+  "audience": "adults",
+  "min_age": null,
+  "max_age": null,
   "created_at": "2026-09-23T00:00:00Z",
   "updated_at": "2026-09-23T00:00:00Z"
  }
@@ -17,6 +20,9 @@
   "title": "Brave for God",
   "description": "True stories of faith for young readers: ordinary people from every part of the world who trusted God and were made brave.",
   "sort_order": 20,
+  "audience": "young_readers",
+  "min_age": null,
+  "max_age": null,
   "created_at": "2026-09-23T00:00:00Z",
   "updated_at": "2026-09-23T00:00:00Z"
  }
@@ -28,6 +34,9 @@
   "title": "Rooted – 30 Days with God for Youth",
   "description": "Thirty-day devotionals for readers aged 9 to 12, one book at a time: a verse, what it means, a question to think about, something to try, and a prayer.",
   "sort_order": 30,
+  "audience": "young_readers",
+  "min_age": 9,
+  "max_age": 12,
   "created_at": "2026-09-23T00:00:00Z",
   "updated_at": "2026-09-23T00:00:00Z"
  }
@@ -39,6 +48,9 @@
   "title": "Daughters of the King – 30 Days with God for Girls",
   "description": "Thirty-day devotionals for girls aged 9 to 12: who you are as a daughter of the King, and the brave women of the Bible and of history who trusted Him.",
   "sort_order": 40,
+  "audience": "young_readers",
+  "min_age": 9,
+  "max_age": 12,
   "created_at": "2026-09-23T00:00:00Z",
   "updated_at": "2026-09-23T00:00:00Z"
  }
@@ -50,6 +62,9 @@
   "title": "Sons of the King – 30 Days with God for Guys",
   "description": "Thirty-day devotionals for boys aged 9 to 12: who you are as a son of the King, strength under control, and the brave men of the Bible and of history who trusted Him.",
   "sort_order": 50,
+  "audience": "young_readers",
+  "min_age": 9,
+  "max_age": 12,
   "created_at": "2026-09-23T00:00:00Z",
   "updated_at": "2026-09-23T00:00:00Z"
  }
@@ -61,6 +76,9 @@
   "title": "Portraits of Courage",
   "description": "Full-length Christian biographies of men and women who counted the cost and followed Christ anyway — each life told alongside its teaching, weighed under Scripture, and written with gratitude but not hagiography.",
   "sort_order": 60,
+  "audience": "adults",
+  "min_age": null,
+  "max_age": null,
   "created_at": "2026-09-26T00:00:00Z",
   "updated_at": "2026-09-26T00:00:00Z"
  }
