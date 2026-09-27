@@ -136,6 +136,19 @@ class AdminImportPublishTests(TestCase):
         self.assertEqual(book.author, self.author)
         self.assertEqual(book.chapters.count(), 2)
 
+    def test_an_import_minting_a_copyright_blocked_slug_is_created_hidden(self):
+        # "If" slugifies to `if` — a copyright-blocked work. Import must not be
+        # a side door around the publish toggle's guard.
+        res = self._publish(
+            kind="book",
+            title="If",
+            author_slug="am",
+            chapters=[{"title": "One", "html": "<p>Consider the grace of humility, and the Lord who taught it.</p>"}],
+        )
+        self.assertEqual(res.status_code, 201)
+        self.assertEqual(res.data["slug"], "if")
+        self.assertFalse(Book.objects.get(slug="if").is_published)
+
     def test_publishing_a_sermon_creates_it(self):
         res = self._publish(
             kind="sermon",

@@ -23,6 +23,7 @@ from django.db import transaction
 from django.utils.text import slugify
 
 from . import qa
+from .corrections import COPYRIGHT_BLOCKED_SLUGS
 from .covers import ink_safe
 from .ingest import (
     chapter_title,
@@ -287,7 +288,10 @@ def create_book(
         publication_year=_clean_year(publication_year),
         attribution=str(attribution or "").strip(),
         sort_order=last + 1,
-        is_published=True,
+        # A title can mint a copyright-blocked slug (e.g. "Grace for Grace" →
+        # grace-for-grace-2 once grace-for-grace exists); such a row is created
+        # hidden, the same rule the publish toggle enforces.
+        is_published=slug not in COPYRIGHT_BLOCKED_SLUGS,
     )
     order = 0
     for ch in chapters:

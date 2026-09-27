@@ -45,7 +45,7 @@ def _profile(request) -> UserProfile:
     return profile
 
 
-def submitter_role(request, email: str) -> str:
+def submitter_role(request) -> str:
     """A snapshot label of the submitter's standing, for the queue's trust badge.
 
     Super admin wins; otherwise the strongest role they hold (``language_admin``
@@ -57,9 +57,10 @@ def submitter_role(request, email: str) -> str:
     # Only a VERIFIED address earns a grant's badge — the bar every grant check
     # holds (``_verified_email``); an unverified claim of a granted address is
     # just a reader.
-    if _verified_email(request.user, request) != (email or "").strip().lower():
+    verified = _verified_email(request.user, request)
+    if not verified:
         return ""
-    grants = list(AdminGrant.objects.filter(email=email))
+    grants = list(AdminGrant.objects.filter(email=verified))
     labels = {g.role_label for g in grants if g.role_label}
     if "language_admin" in labels:
         return "language_admin"
@@ -120,7 +121,7 @@ class FeedbackView(APIView):
         feedback = Feedback.objects.create(
             submitter=profile,
             submitter_email=email,
-            submitter_role=submitter_role(request, email),
+            submitter_role=submitter_role(request),
             category=category,
             body=body,
             source=source,
