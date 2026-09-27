@@ -1,0 +1,133 @@
+{
+ "kind": "sermon",
+ "slug": "burdens-and-gifts",
+ "language": "am",
+ "job_issue": 4076,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Isaiah 40:28-31",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "waiting-on-god.am.json"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 15:4-5",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 11:29-30",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Kings 4:1-7",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Kings 4:2",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Galatians 6:5",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "1 Samuel 4:9",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "1 Samuel 4:21",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "John 4:20",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Samuel 10:23",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Numbers 4:15",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "John 17:5-6",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "John 17:15",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 17:20",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "John 17:21-23",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "self_rendered",
+   "block_index": 62
+  }
+ ]
+}
