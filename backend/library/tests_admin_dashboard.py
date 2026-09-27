@@ -396,6 +396,18 @@ class AdminCoverageTests(TestCase):
         self.assertEqual(by_slug["abide"]["cells"], {"en": "present", "es": "ai_reviewed"})
 
     @override_settings(DEBUG=True)
+    def test_sermon_cells_carry_review_state(self):
+        """A translated sermon shows ai_unreviewed like a book, so the matrix can
+        link it to the review queue; the original stays "present"."""
+        author = Author.objects.get(slug="am")
+        Sermon.objects.create(
+            author=author, slug="grace", language="sw", title="Neema", body_html="<p>n</p>",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        res = self.client.get("/api/admin/coverage/")
+        self.assertEqual(res.data["sermons"][0]["cells"], {"en": "present", "sw": "ai_unreviewed"})
+
+    @override_settings(DEBUG=True)
     def test_rows_carry_distinct_readers(self):
         """Each row counts distinct readers of the work in any language — the
         priority sort's demand signal. Plans count PlanProgress; articles have no

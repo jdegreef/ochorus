@@ -566,6 +566,17 @@ class AdminLanguageDetailView(APIView):
         }
 
 
+_AI_STATES = {Book.SourceType.AI_REVIEWED, Book.SourceType.AI_UNREVIEWED}
+
+
+def _review_state_or_present(record: dict) -> str:
+    """A coverage cell for a type whose original isn't a public-domain edition
+    (sermons, articles): an AI translation shows its review state, anything
+    else is simply "present"."""
+    st = record["source_type"]
+    return st if st in _AI_STATES else "present"
+
+
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminCoverageView(APIView):
     """Translation-coverage matrices: every canonical work (row) × language
@@ -576,8 +587,8 @@ class AdminCoverageView(APIView):
     book cell carries its ``source_type``; an article's translated cells do too, its
     English original shown as "present" (see ``_article_rows``); a biography's translated cells carry
     ai_reviewed / ai_unreviewed (from ``AuthorTranslation.reviewed``) with the
-    English original shown as "present"; sermon/plan cells are simply "present"
-    (those models have no source_type). A missing language is absent from the
+    English original shown as "present"; a sermon's translated cells carry its
+    review state the same way; plan cells are simply "present" (no source_type). A missing language is absent from the
     row's ``cells``.
     """
 
@@ -720,10 +731,14 @@ class AdminCoverageView(APIView):
         return rows
 
     def _sermon_rows(self) -> list[dict]:
+        """A translated sermon carries its review state (ai_reviewed /
+        ai_unreviewed) like an article, so an unreviewed one is visible — and
+        linkable to the review queue — from the matrix; anything else (the
+        original, whatever its provenance) reads "present"."""
         records = Sermon.objects.select_related("author").values(
-            "slug", "language", "title", "author__name", "sort_order"
+            "slug", "language", "source_type", "title", "author__name", "sort_order"
         )
-        return self._rows(records, lambda r: "present", with_author=True)
+        return self._rows(records, _review_state_or_present, with_author=True)
 
     def _plan_rows(self) -> list[dict]:
         records = Plan.objects.values("slug", "language", "title", "sort_order")
@@ -741,11 +756,7 @@ class AdminCoverageView(APIView):
         records = Article.objects.annotate(title=F("h1")).values(
             "slug", "language", "source_type", "title", "sort_order"
         )
-        return self._rows(
-            records,
-            lambda r: "present" if r["source_type"] == Book.SourceType.PUBLIC_DOMAIN else r["source_type"],
-            with_author=False,
-        )
+        return self._rows(records, _review_state_or_present, with_author=False)
 
     def _bio_rows(self) -> list[dict]:
         """Author long-form biographies (row = author) × language.

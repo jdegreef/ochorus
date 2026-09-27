@@ -109,6 +109,11 @@ class AdminReviewQueueView(AdminAudited, APIView):
         kind = q.get("kind") or ""
         language = q.get("language") or ""
         outcome = q.get("outcome") or ""
+        # One work, from a coverage-matrix cell's deep link. It shows the work's
+        # pending translations whatever their state — awaiting review, a
+        # provisional approval, or sent back as needs work — so the cell that
+        # linked here always lands on its item instead of an empty filter.
+        slug = q.get("slug") or ""
         flagged_only = q.get("flagged") in ("1", "true", "yes")
         sort = q.get("sort") or "oldest"
 
@@ -169,7 +174,9 @@ class AdminReviewQueueView(AdminAudited, APIView):
             code: language_entry(code)["name"] for code in {r["language"] for r in rows}
         }
 
-        if outcome == "needs_work":
+        if slug:
+            sel = [r for r in rows if r["slug"] == slug]
+        elif outcome == "needs_work":
             sel = [r for r in rows if r["outcome"] and r["outcome"]["outcome"] == "needs_work"]
         else:
             sel = undecided
