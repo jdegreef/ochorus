@@ -6,7 +6,8 @@
 	 * Shown only to a signed-in reader, and hidden where it would be in the way:
 	 * in the reader's immersive focus mode, and over the admin console (admins have
 	 * the feedback queue). Mounted once in the root layout; it captures the current
-	 * page's context through the dialog and records `source: 'fab'`.
+	 * page's context through the dialog and records `source: 'fab'`. On phones
+	 * with the tab bar it steps aside: the bar's centre "+" does the same job.
 	 */
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
@@ -80,6 +81,13 @@
 	.fb-fab svg {
 		width: 1.5rem;
 		height: 1.5rem;
+	}
+	/* Phones with the tab bar carry the "+" in its centre slot (TabBar.svelte),
+	   so the floating one would only duplicate it — and it used to cover "More". */
+	@media (max-width: 639.98px) {
+		:global(:root:has(.tabbar)) .fb-fab {
+			display: none;
+		}
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.fb-fab {
