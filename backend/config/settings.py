@@ -204,6 +204,9 @@ REST_FRAMEWORK = {
         "feedback": "20/hour",
         # Whole-book downloads (BookEpubView): each builds an entire book.
         "book-download": "30/min",
+        # Chapter batches (ChapterBatchView): up to 25 serialized chapters each,
+        # fetched by the web build's prerender crawl. See the view.
+        "chapter-batch": "600/min",
     },
     # Exactly one proxy (Render's) sits in front of the app, so the client
     # address is the LAST entry in X-Forwarded-For. Without this, DRF keys

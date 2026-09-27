@@ -20,6 +20,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import UserProfile
+from common.params import clamp_int
 from common.throttling import ScopedCacheThrottle
 
 from .marks import (
@@ -125,14 +126,6 @@ def _parse_day(value) -> date | None:
         return date.fromisoformat(value)
     except ValueError:
         return None
-
-
-def _clamp_int(value, default=0, low=0, high=None) -> int:
-    try:
-        n = max(low, int(value))
-    except (TypeError, ValueError):
-        return default
-    return min(high, n) if high is not None else n
 
 
 def _lang(value) -> str:
@@ -572,8 +565,8 @@ class ProgressView(APIView):
             kind,
             slug,
             language=_lang(data.get("language")),
-            chapter_order=_clamp_int(data.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
-            paragraph_index=_clamp_int(data.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
+            chapter_order=clamp_int(data.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
+            paragraph_index=clamp_int(data.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
             client_dt=_ms_to_dt(data.get("updated_at")),
             # An active write: an old client without a timestamp must still save.
             keep_server_when_unknown=False,
@@ -1261,7 +1254,7 @@ class SessionsView(APIView):
                     continue
                 if seen < start:
                     seen = start
-                secs = _clamp_int(r.get("seconds"), 0, 0, MAX_SESSION_SECONDS)
+                secs = clamp_int(r.get("seconds"), 0, 0, MAX_SESSION_SECONDS)
                 slug = r.get("book_slug")
                 book_slug = slug if _valid_slug(slug) else ""
                 obj, created = ReadingSession.objects.get_or_create(
@@ -1530,8 +1523,8 @@ class MergeView(APIView):
                 kind,
                 slug,
                 language=_lang(row.get("language")),
-                chapter_order=_clamp_int(row.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
-                paragraph_index=_clamp_int(row.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
+                chapter_order=clamp_int(row.get("chapter_order"), default=1, low=1, high=MAX_CHAPTER_ORDER),
+                paragraph_index=clamp_int(row.get("paragraph_index"), default=0, high=MAX_CHAPTER_ORDER),
                 client_dt=_ms_to_dt(row.get("updated_at")),
                 # Stale local state must not overwrite a newer server position it
                 # can't out-date; an untimestamped row keeps the server's.

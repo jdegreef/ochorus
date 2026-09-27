@@ -759,13 +759,33 @@ export const getBook = async (slug: string, language = 'en', f?: Fetch) =>
 		BOOK_FIELDS
 	);
 
+/** A chapter's API path. The build's chapter batcher ($lib/chapterBatch) must
+ * recognise exactly this shape, so its test builds requests with it. */
+export const chapterApiPath = (slug: string, order: number, language: string) =>
+	`/api/library/books/${slug}/chapters/${order}/?language=${language}`;
+
+/**
+ * A run of one book edition's chapters, each exactly as the single-chapter
+ * endpoint serves it: chapters `from`..`from + limit - 1`. For the web build's
+ * chapter batcher ($lib/chapterBatch); the API caps `limit` (CHAPTER_BATCH_MAX).
+ */
+export const getChapterRun = (
+	slug: string,
+	language: string,
+	from: number,
+	limit: number,
+	f?: Fetch
+) =>
+	apiFetch<Chapter[]>(
+		`/api/library/books/${slug}/chapters/?language=${encodeURIComponent(language)}&from=${from}&limit=${limit}`,
+		{},
+		f
+	);
+
 export const getChapter = async (slug: string, order: number, language = 'en') =>
 	requireFields<Chapter>(
 		`chapter ${slug}/${order}`,
-		await localized<Chapter>(
-			(l) => `/api/library/books/${slug}/chapters/${order}/?language=${l}`,
-			language
-		),
+		await localized<Chapter>((l) => chapterApiPath(slug, order, l), language),
 		CHAPTER_FIELDS
 	);
 
@@ -784,7 +804,7 @@ export const getChapterWithLang = async (
 	// has to be: `getChapter` above is the notebook's and the search drawer's
 	// path, and guarding only that would leave the reader itself unchecked.
 	const res = await localizedWithLang<Chapter>(
-		(l) => `/api/library/books/${slug}/chapters/${order}/?language=${l}`,
+		(l) => chapterApiPath(slug, order, l),
 		language,
 		f
 	);

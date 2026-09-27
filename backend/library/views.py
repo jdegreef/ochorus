@@ -17,6 +17,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from common.params import clamp_int
 from common.throttling import ScopedCacheThrottle
 
 from . import book_export
@@ -65,6 +66,7 @@ from .serializers import (
     AuthorListSerializer,
     BookDetailSerializer,
     BookListSerializer,
+    ChapterBatch,
     ChapterDetailSerializer,
     PlanDetailSerializer,
     PlanListSerializer,
@@ -307,6 +309,12 @@ class BookDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         )
 
 
+#: Chapter columns the chapter payload never reads. body_text and search_vector
+#: are each about the size of the body, so loading them tripled what a chapter
+#: request held in memory.
+_CHAPTER_UNSERVED = ("body_text", "search_vector", "citations_indexed_at")
+
+
 class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = ChapterDetailSerializer
 
@@ -318,10 +326,65 @@ class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             is_published=True,
         )
         return get_object_or_404(
-            Chapter.objects.select_related("book__author"),
+            Chapter.objects.select_related("book__author").defer(*_CHAPTER_UNSERVED),
             book=book,
             order=self.kwargs["order"],
         )
+
+
+#: The most chapters one batch request returns. The longest book is 142
+#: chapters and 3.7 MB of HTML; a run of 25 keeps a response near 1 MB, so a
+#: batch never costs a worker more memory than a few ordinary requests.
+CHAPTER_BATCH_MAX = 25
+
+
+class _ChapterBatchThrottle(ScopedCacheThrottle):
+    """A batch serializes up to 25 chapters, so it gets a ceiling. Far above the
+    web build's sequential crawl (a few batches a second at most, and a 429 only
+    sends it back to per-chapter requests) and far below a scraper."""
+
+    scope = "chapter-batch"
+
+
+class ChapterBatchView(PublicContentCacheMixin, APIView):
+    """A run of one book edition's chapters, each exactly as ChapterDetailView
+    serves it: ``?language=xx&from=N&limit=M`` returns chapters N..N+M-1.
+
+    For the web build, which prerenders every chapter page and now fetches them
+    a run at a time (frontend ``$lib/chapterBatch.ts``). Same 404 as the single
+    endpoint when the edition isn't published, so the build's English fallback
+    still keys on it.
+    """
+
+    throttle_classes = [_ChapterBatchThrottle]
+
+    def get(self, request, slug):
+        book = get_object_or_404(
+            Book.objects.select_related("author"),
+            slug=slug,
+            language=_language(request),
+            is_published=True,
+        )
+        params = request.query_params
+        # No book comes near 10,000 chapters; the bound keeps a huge ?from= from
+        # reaching Postgres as an out-of-range integer.
+        start = clamp_int(params.get("from"), default=1, low=1, high=10_000)
+        limit = clamp_int(
+            params.get("limit"), default=CHAPTER_BATCH_MAX, low=1, high=CHAPTER_BATCH_MAX
+        )
+        chapters = list(
+            Chapter.objects.filter(book=book, order__gte=start, order__lt=start + limit)
+            .defer(*_CHAPTER_UNSERVED)
+            .order_by("order")
+        )
+        for chapter in chapters:
+            chapter.book = book  # one book row for the run, not a join per chapter
+        serializer = ChapterDetailSerializer(
+            chapters,
+            many=True,
+            context={"request": request, "chapter_batch": ChapterBatch(book, chapters)},
+        )
+        return Response(serializer.data)
 
 
 class _BookDownloadThrottle(ScopedCacheThrottle):
