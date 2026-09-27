@@ -1,12 +1,31 @@
 {
   "_note": [
-    "Amharic topic-shelf prose (ai_unreviewed). Titles echo the shipped am book titles where a shelf is named for a theme a book carries (the-inner-chamber → የውስጥ እልፍኝ; intercession → ምልጃ per the am glossary). Author names follow the shipped am bios (ዋይትፊልድ, ዌስሊ, ባንየን, ስፐርጀን, ባክስተር). No scripture is shipped: the only verbatim Amharic source on hand is the 1962 NT, and a shelf is complete without a verse."
+    "Amharic topic-shelf prose (ai_unreviewed). Titles echo the shipped am book titles where a shelf is named for a theme a book carries (the-inner-chamber → የውስጥ እልፍኝ; intercession → ምልጃ per the am glossary). Author names follow the shipped am bios (ዋይትፊልድ, ዌስሊ, ባንየን, ስፐርጀን, ባክስተር). No scripture is shipped: the only verbatim Amharic source on hand is the 1962 NT, and a shelf is complete without a verse.",
+    "2026-09-27: the 22 TRANSLATION_PENDING shelves added in one pass (jobs #4062-#4068 plus the 15 with no job filed), completing am coverage. Names as above plus ጊዮን, ሎው, ሙለር, ፊኒ, ብሬነርድ, ቴይለር, ካርማይክል (from shipped am text); ክራውዘር (Crowther) and ሪቻርድ አለን are new transliterations. Audience shelves (for-teens, for-young-readers, for-those-who-lead, men-of-valour, day-by-day, contemporary-voices, to-the-ends-of-the-earth) get tailored SEO lines instead of the ስለ … የሚያወሱ pattern, which reads wrong for an audience. No scripture shipped, as before."
   ],
+  "abiding-in-christ": {
+    "title": "በክርስቶስ መኖር",
+    "description": "ቅርንጫፍ በወይን ግንዱ — ከጌታ ኢየሱስ ጋር ያለ አንድነትና ኅብረት፣ ከእርሱም አጠገብ ከመኖር በቀር ከሌላ ምንጭ የማይፈስስ ሕይወት።",
+    "seo_title": "ስለ በክርስቶስ መኖር የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ በክርስቶስ መኖር የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
   "christ-and-the-cross": {
     "title": "ክርስቶስና መስቀሉ",
     "description": "የአዳኙ ማንነትና ሥራ — የታረደው በግ፣ የመስቀሉ ነውርና ድል፣ የክርስቶስ ታላቅነት፣ ባዶውም መቃብር።",
     "seo_title": "ስለ ክርስቶስና መስቀሉ የሚያወሱ መጻሕፍት — Ochorus",
     "meta_description": "ስለ ክርስቶስና መስቀሉ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "contemporary-voices": {
+    "title": "የዘመናችን ድምፆች",
+    "description": "የቀድሞው መንገድ ሕያዋን መሪዎች አሉት — ለምሥራቅ አፍሪካና ከዚያም ባሻገር የሚጽፉ የዛሬ መምህራን፣ ደቀ መዝሙሩን የዛሬ ጥያቄዎቹ ባሉበት ስፍራ የሚያገኙት።",
+    "seo_title": "የዘመናችን ክርስቲያን ጸሐፍት መጻሕፍት — Ochorus",
+    "meta_description": "የዘመናችን ክርስቲያን መምህራን የጻፏቸው መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "day-by-day": {
+    "title": "ዕለት ዕለት",
+    "description": "ለጠዋትና ለማታ የሚሆን ንባብ — ነፍስን የሚመግብ የዕለት እንጀራ፣ ከስፐርጀን ተወዳጅ መጻሕፍት እስከ የጸጥታ ሰዓት መጻሕፍት ድረስ።",
+    "seo_title": "የዕለት ዕለት ንባብ መጻሕፍት — Ochorus",
+    "meta_description": "ለጠዋትና ለማታ ንባብ የሚሆኑ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
   },
   "deeper-life": {
     "title": "ጥልቅ ሕይወት",
@@ -26,6 +45,36 @@
     "seo_title": "ስለ እምነትና መመሪያ የሚያወሱ መጻሕፍት — Ochorus",
     "meta_description": "ስለ እምነትና መመሪያ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
   },
+  "faith-for-the-impossible": {
+    "title": "የማይቻለውን ማመን",
+    "description": "እግዚአብሔርን በቃሉ መያዝ — በጸሎት ብቻ የተመገቡት የሙለር ወላጅ አልባ ልጆች፣ እርሱን የመጠበቅ ጸጋ፣ ፈጽሞ የማይከስረው የእምነት ባንክ።",
+    "seo_title": "ስለ የማይቻለውን ስለሚያምን እምነት የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የማይቻለውን ስለሚያምን እምነት የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "for-teens": {
+    "title": "ለታዳጊ ወጣቶች",
+    "description": "ለጉርምስና ዓመታት የሚሆን እምነት — ወደ ክርስቶስ መምጣት፣ የሕዝቡ አካል መሆንና እርሱን ለመከተል ድፍረት። አጫጭር፣ ግልጽና ቅን መጻሕፍት፣ ለእርሱም ስለ ተሰጡ ሕይወቶች የሚተርኩ እውነተኛ ታሪኮች — ለወጣት አንባቢዎች የተጻፉ ወይም በቀላሉ የሚረዷቸው።",
+    "seo_title": "ለታዳጊ ወጣቶች የክርስትና መጻሕፍት — Ochorus",
+    "meta_description": "ለታዳጊ ወጣቶች የሚሆኑ የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "for-those-who-lead": {
+    "title": "ለመሪዎች",
+    "description": "ለእረኞችና ለወንጌል ሠራተኞች የተሰጠ አደራ — የመጋቢው እንክብካቤ፣ የሰባኪው የጸሎት ኃይል፣ ሰዎችንም ወደ ክርስቶስ እንዴት ማምጣት እንደሚቻል።",
+    "seo_title": "ለመጋቢዎችና ለመሪዎች የክርስትና መጻሕፍት — Ochorus",
+    "meta_description": "ለመጋቢዎች፣ ለሰባኪዎችና ለመሪዎች የተጻፉ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "for-young-readers": {
+    "title": "ለልጆች",
+    "description": "በቀላሉ የተነገረ እምነት፣ ለልጆችና አብረዋቸው ለሚያነቡ — ወደ ቤት የሚደረገውን ታላቅ ጉዞ የሚተርክ ታሪክ፣ ልጅ ሊከተለው በሚችል ቋንቋ። ለታናናሾች ተጨማሪ በተተረከና በተጻፈ ቁጥር የሚያድግ መደርደሪያ።",
+    "seo_title": "ለልጆች የክርስትና መጻሕፍት — Ochorus",
+    "meta_description": "ለልጆችና አብረዋቸው ለሚያነቡ የሚሆኑ የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "foundations-of-the-faith": {
+    "title": "የእምነት መሠረቶች",
+    "description": "በግልጽ የተያዙ የቀድሞ ትምህርቶች — ቃል ሥጋ መሆኑ፣ የእግዚአብሔር ጸጋና ፈቃድ፣ ትእዛዛቱ፣ አንድ ጊዜ ፈጽሞ ለቅዱሳን የተሰጡት መሠረታዊ እውነቶችም።",
+    "seo_title": "ስለ የእምነት መሠረቶች የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የእምነት መሠረቶች የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
   "grace-and-comfort": {
     "title": "ጸጋና መጽናናት",
     "description": "የማይጐድለው የእግዚአብሔር ጸጋና በእያንዳንዱ መከራ ውስጥ የሚሰጠው መጽናናቱ — ለደከሙ የምሥራች።",
@@ -37,6 +86,12 @@
     "description": "የመንፈስ ጥምቀት፣ ማደሩና ሥራው — ለክርስቲያን ሕይወት ተስፋ የተሰጠበት ኃይል።",
     "seo_title": "ስለ መንፈስ ቅዱስ የሚያወሱ መጻሕፍት — Ochorus",
     "meta_description": "ስለ መንፈስ ቅዱስ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "men-of-valour": {
+    "title": "ጽኑዓን ወንዶች",
+    "description": "ለወንዶች የቀረበ ጥሪ — እንዲጸልዩ፣ እንዲመሩ፣ ሁሉን እንዲሰጡና መንጋውን እንዲጠብቁ — ለእግዚአብሔር ልጆች የድፍረት ሕይወቶች።",
+    "seo_title": "ለክርስቲያን ወንዶች የሚሆኑ መጻሕፍት — Ochorus",
+    "meta_description": "ለክርስቲያን ወንዶች የሚሆኑ ዘመን የማይሽራቸው መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
   },
   "prayer": {
     "title": "ስለ ጸሎት",
@@ -50,11 +105,56 @@
     "seo_title": "ስለ መነቃቃትና ተልእኮ የሚያወሱ መጻሕፍት — Ochorus",
     "meta_description": "ስለ መነቃቃትና ተልእኮ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
   },
+  "saints-of-the-african-diaspora": {
+    "title": "የአፍሪካ ዳያስፖራ ቅዱሳን",
+    "description": "በጥቁር ድምፆች የተሸከመ ወንጌል — ሪቻርድ አለንና ነጻ ሆነው የተወለዱ ሰባኪዎች፣ ዝም ለማለት እንቢ ያሉ የቅድስና እንቅስቃሴ ሴቶች፣ ክራውዘርም በኒጀር ወንዝ ዳር።",
+    "seo_title": "ስለ የአፍሪካ ዳያስፖራ ቅዱሳን የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የአፍሪካ ዳያስፖራ ቅዱሳን የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "soar-like-the-eagle": {
+    "title": "እንደ ንስር ከፍ ማለት",
+    "description": "እግዚአብሔርን የሚጠባበቁ ኃይላቸውን ያድሳሉ — የራስ ኃይል ሲያልቅ ከእግዚአብሔር ኃይልን ስለ መቀበል የሚናገሩ ዘመን የማይሽራቸው መጻሕፍት። ለደከሙ የተጻፉ መጻሕፍት፦ ለመጠበቅ፣ ለማረፍና እንደገና በንስር ክንፍ ለመውጣት።",
+    "seo_title": "ስለ ኃይልን ከእግዚአብሔር ስለ መቀበል የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ ኃይልን ከእግዚአብሔር ስለ መቀበል የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።",
+    "note": [
+      "The opening clause echoes Isaiah 40:31 but is shelf prose, not a quotation: no verbatim 1962 Old Testament text is on hand, so it carries no quote marks and no scripture block."
+    ]
+  },
+  "the-body-of-christ": {
+    "title": "የክርስቶስ አካል",
+    "description": "ቤተ ክርስቲያን እንደ አንድ ሕያው አካል — አባላቱ እርስ በርሳቸው ብልቶች ሆነው ከራስ ከክርስቶስ ጋር የተጋጠሙበት፣ ከዚያም የሚፈስሱት አገልግሎትና እረኝነት።",
+    "seo_title": "ስለ የክርስቶስ አካል የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የክርስቶስ አካል የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "the-east-african-revival": {
+    "title": "የምሥራቅ አፍሪካ መነቃቃት",
+    "description": "«ቱኩተንደሬዛ የሱ» — ከካምፓላ ኮረብታ ተነሥቶ በስድስት አገሮች ለአንድ ክፍለ ዘመን ያህል የዘለቀው መነቃቃትና ያስተማረው በብርሃን የመመላለስ ሕይወት።",
+    "seo_title": "ስለ የምሥራቅ አፍሪካ መነቃቃት የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የምሥራቅ አፍሪካ መነቃቃት የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
   "the-gospel-call": {
     "title": "የወንጌል ጥሪ",
     "description": "ከሁሉ የቀደመው ግብዣ — ኑ፣ ንስሐ ግቡ፣ እመኑ። ላልዳኑት የሚማልዱ ሰባኪዎች፣ ከኃጢአተኞችም ዋና የሆነው ያገኘው የጸጋ ምስክርነት።",
     "seo_title": "ስለ የወንጌል ጥሪ የሚያወሱ መጻሕፍት — Ochorus",
     "meta_description": "ስለ የወንጌል ጥሪ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "the-grace-of-god": {
+    "title": "የእግዚአብሔር ጸጋ",
+    "description": "ከመጀመሪያ እስከ መጨረሻ ጸጋ — ነጻ፣ ሉዓላዊና በቂ፣ ከኃጢአተኞች ዋና ለሆነው እንኳ የበዛ፣ ደካማውንም ቅዱስ ደግፎ የሚይዝ።",
+    "seo_title": "ስለ የእግዚአብሔር ጸጋ የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የእግዚአብሔር ጸጋ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "the-great-awakening": {
+    "title": "ታላቁ መነቃቃት",
+    "description": "ሁለት አህጉራትን ያናወጠ ስብከት — ዋይትፊልድና ዌስሊ በአደባባይ፣ ኤድዋርድስ በሕዝቡ መካከል፣ ፊኒ ስለ መነቃቃት — ከነበልባሉም በታች ያለው ትምህርት።",
+    "seo_title": "ስለ ታላቁ መነቃቃት የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ ታላቁ መነቃቃት የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "the-inner-life": {
+    "title": "የውስጥ ሕይወት",
+    "description": "ወደ ውስጥ የሚመለስ መንገድ — ቶማስ አ ኬምፒስ፣ ሎውና ጊዮን፣ የእግዚአብሔር ፍቅርና የተዘጋው የእልፍኝ መዝጊያ፣ ነፍስም ከእርሱ ጋር ብቻዋን።",
+    "seo_title": "ስለ የውስጥ ሕይወት የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የውስጥ ሕይወት የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
   },
   "the-preached-word": {
     "title": "የተሰበከው ቃል",
@@ -62,10 +162,46 @@
     "seo_title": "ስለ የተሰበከው ቃል የሚያወሱ መጻሕፍት — Ochorus",
     "meta_description": "ስለ የተሰበከው ቃል የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
   },
+  "the-puritans": {
+    "title": "ፒዩሪታኖች",
+    "description": "የፒዩሪታኖች ግልጽና ልብን የሚመረምር ሥነ መለኮት — የባንየን መንገደኛ፣ ኦወን በውስጥ ስላደረው ኃጢአት፣ የዋትሰን ርኅራኄና የኤድዋርድስ እሳት — ወደ ልብ ዘልቆ የሚገባ ትምህርት።",
+    "seo_title": "ስለ ፒዩሪታኖች የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ ፒዩሪታኖች የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
   "the-way-of-holiness": {
     "title": "የቅድስና መንገድ",
     "description": "ለእግዚአብሔር መለየት — ትእዛዛቱ የተመረመሩበት፣ ፍጽምና በቅንነት የተፈለገበት፣ የልብ ስሜቶችም ተፈትነው እውነተኛ ሆነው የተገኙበት።",
     "seo_title": "ስለ የቅድስና መንገድ የሚያወሱ መጻሕፍት — Ochorus",
     "meta_description": "ስለ የቅድስና መንገድ የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "the-wesleys-and-early-methodism": {
+    "title": "ዌስሊዎችና የቀደመው ሜቶዲዝም",
+    "description": "እንቅስቃሴ የሆነ መነቃቃት — የጆን ዌስሊ ስብከቶችና ስለ ክርስቲያናዊ ፍጽምና የሰጠው ግልጽ ማብራሪያ፣ እርሱን የቀረጸችው እናቱ፣ የተከተለውም ቅንዓት።",
+    "seo_title": "ስለ ዌስሊዎችና የቀደመው ሜቶዲዝም የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ ዌስሊዎችና የቀደመው ሜቶዲዝም የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "to-the-ends-of-the-earth": {
+    "title": "እስከ ምድር ዳርቻ",
+    "description": "የሚስዮናውያን ማስታወሻዎች — ብሬነርድ በጫካዎች፣ ቴይለር በቻይና፣ ካርማይክል በሕንድ፣ ክራውዘር በኒጀር — በማንኛውም ዋጋ የተሸከመ ወንጌል።",
+    "seo_title": "የሚስዮናውያን ማስታወሻዎችና ታሪኮች — Ochorus",
+    "meta_description": "ወንጌልን እስከ ምድር ዳርቻ ስለ ተሸከሙ ሚስዮናውያን የሚያወሱ ዘመን የማይሽራቸው መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "victory-over-sin": {
+    "title": "በኃጢአት ላይ ድል",
+    "description": "ስለ ቅድስና የሚደረገው ውስጣዊ ተጋድሎ — ኃጢአትን መግደል፣ የልብ ንጽሕና፣ በሥርዓት የተቃኑ የልብ ስሜቶች፣ ወደ ቅድስተ ቅዱሳንም የሚወስደው መንገድ።",
+    "seo_title": "ስለ በኃጢአት ላይ ድል የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ በኃጢአት ላይ ድል የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "voices-of-the-early-church": {
+    "title": "የጥንቲቱ ቤተ ክርስቲያን ድምፆች",
+    "description": "የመጀመሪያዎቹ ክፍለ ዘመናት እምነት በራሱ ቃል — የአውግስጢኖስ የተገለጠ ልብ፣ አትናቴዎስ ሥጋ ስለ ሆነው ቃል፣ የሰማዕታትና የእረኞች መልእክቶችም።",
+    "seo_title": "ስለ የጥንቲቱ ቤተ ክርስቲያን ድምፆች የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የጥንቲቱ ቤተ ክርስቲያን ድምፆች የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
+  },
+  "women-of-faith": {
+    "title": "የእምነት ሴቶች",
+    "description": "እናቶች፣ ሚስዮናውያንና የውስጥ ሕይወት ሰዎች — የጸለዩ፣ መከራ የተቀበሉና የደፈሩ ሴቶች እምነት፣ ከጊዮን የእስር ክፍል እስከ ነጻ የወጣችው ባሪያ የስብከት መድረክ ድረስ።",
+    "seo_title": "ስለ የእምነት ሴቶች የሚያወሱ መጻሕፍት — Ochorus",
+    "meta_description": "ስለ የእምነት ሴቶች የሚያወሱ ዘመን የማይሽራቸው የክርስትና መጻሕፍት፣ በ Ochorus ላይ በነጻ ያንብቡ።"
   }
 }
