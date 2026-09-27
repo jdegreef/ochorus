@@ -438,6 +438,8 @@
   "bios_showing": "Mostrando %shown% de %total% autores",
   "books_showing": "Mostrando %shown% de %total% livros",
   "sermons_showing": "Mostrando %shown% de %total% sermões",
+  "sermons_show_one": "Ver 1 sermão",
+  "sermons_show_many": "Ver %n% sermões",
   "common_clear_filters": "Limpar filtros",
   "common_remove_filter": "Remover filtro",
   "common_topics": "Temas",

@@ -438,6 +438,8 @@
   "bios_showing": "Tulaga %shown% ku %total% abawandiisi",
   "books_showing": "Tulaga %shown% ku %total% ebitabo",
   "sermons_showing": "Tulaga %shown% ku %total% okubuulira",
+  "sermons_show_one": "Laga okubuulira 1",
+  "sermons_show_many": "Laga okubuulira %n%",
   "common_clear_filters": "Ggyawo ebisengejja",
   "common_remove_filter": "Ggyawo ekisengejja",
   "common_topics": "Emitwe",

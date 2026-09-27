@@ -438,6 +438,8 @@
   "bios_showing": "Inaonyesha %shown% kati ya %total% waandishi",
   "books_showing": "Inaonyesha %shown% kati ya %total% vitabu",
   "sermons_showing": "Inaonyesha %shown% kati ya %total% mahubiri",
+  "sermons_show_one": "Onyesha hubiri 1",
+  "sermons_show_many": "Onyesha mahubiri %n%",
   "common_clear_filters": "Futa vichujio",
   "common_remove_filter": "Ondoa kichujio",
   "common_topics": "Mada",

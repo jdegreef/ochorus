@@ -38,6 +38,7 @@
 		| 'more'
 		| 'download'
 		| 'layers'
+		| 'sliders'
 		| 'quote';
 
 	let {
@@ -179,5 +180,8 @@
 	{:else if name === 'layers'}
 		<!-- Book spines side by side: the Bookshelf's spine view. -->
 		<path d="M5 4v16M9.5 4v16M14 6l4 14M3 20h18" />
+	{:else if name === 'sliders'}
+		<!-- Three faders: "filters". -->
+		<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6" />
 	{/if}
 </svg>

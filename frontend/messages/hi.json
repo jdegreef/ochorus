@@ -438,6 +438,8 @@
   "bios_showing": "%total% में से %shown% लेखक दिखाए जा रहे हैं",
   "books_showing": "%total% में से %shown% पुस्तकें दिखाई जा रही हैं",
   "sermons_showing": "%total% में से %shown% उपदेश दिखाए जा रहे हैं",
+  "sermons_show_one": "1 उपदेश दिखाएँ",
+  "sermons_show_many": "%n% उपदेश दिखाएँ",
   "common_clear_filters": "फ़िल्टर हटाएँ",
   "common_remove_filter": "यह फ़िल्टर हटाएँ",
   "common_topics": "विषय",

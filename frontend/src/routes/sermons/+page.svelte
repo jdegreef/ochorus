@@ -14,6 +14,8 @@
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import TopicFilterRow from '$lib/components/TopicFilterRow.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
+	import DrawerShell from '$lib/components/DrawerShell.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
@@ -78,6 +80,9 @@
 		for (const s of sermons) c[lengthOf(s)]++;
 		return c;
 	});
+
+	/** The buckets with anything in them — an empty one isn't offered. */
+	const lengthsOnShelf = $derived(LENGTH_BUCKETS.filter((b) => lengthFacets[b]));
 
 	/** Option labels per bucket — the boundaries the buckets actually use. */
 	const LENGTH_LABEL: Record<LengthBucket, string> = {
@@ -148,6 +153,12 @@
 		return c;
 	});
 
+	// How many of the sheet's narrowing filters are on — the badge on the phone
+	// "Filters" button, so a closed sheet can't hide that the list is narrowed.
+	// The query and topic stay out: both are visible outside the sheet.
+	const sheetCount = $derived([filters.values.book, filters.values.len].filter(Boolean).length);
+	let sheetOpen = $state(false);
+
 	// Clears what narrows the shelf, not how it is arranged — the grouping and
 	// sort are the reader's own preference (localStorage) and survive.
 	function clearFilters() {
@@ -178,6 +189,15 @@
 	});
 	const save = () => writeJSON(PREFS_KEY, { group, sort });
 	const setGroup = (g: Group) => ((group = g), save());
+	const setSort = (s: Sort) => ((sort = s), save());
+
+	// The sort options, shared by the row's <select> and the phone sheet.
+	const SORTS: [Sort, string][] = [
+		['shelf', 'common.sortShelf'],
+		['scripture', 'sermons.sortScripture'],
+		['title', 'common.sortTitle'],
+		['shortest', 'common.sortShortest']
+	];
 
 	const sorted = $derived.by(() => {
 		// Shelf order is the API's own (author, then their sequence) — return the
@@ -260,8 +280,8 @@
 	     dozens of screens. Its height is measured, not assumed: the row wraps on
 	     narrow screens, and the preacher sections below pin under whatever it
 	     currently is. Same recipe as Biographies (page-design B6/L3), EXCEPT
-	     below md: there the wrapped row would pin ~40% of the phone viewport, so
-	     it scrolls away like the Books filters instead. The sticky rule and the
+	     below md: there the controls fold into the Filters sheet (below) and
+	     the one-line row scrolls away like the Books filters. The sticky rule and the
 	     matching --pinned-offset (which drops --controls-h when the bar isn't
 	     pinned) live in the <style> block below. (Biographies still pins.) -->
 	<div
@@ -277,45 +297,49 @@
 			aria-label={t('sermons.filterPlaceholder')}
 			class="filter-field grow"
 		/>
-		<select bind:value={filters.values.book} aria-label={t('sermons.allBooks')} class="filter-field">
-			<option value="">{t('sermons.allBooks')}</option>
-			{#each bookFacets as b (b.name)}
-				<option value={b.name}>{b.name} ({b.count})</option>
-			{/each}
-		</select>
 
-		<!-- How long it runs, in reading-time buckets (<10 / 10–30 / 30+ min) — a
-		     length you can shop for, not just sort by. A bucket with nothing in it
-		     is dropped, like the book scope above. -->
-		<select bind:value={filters.values.len} aria-label={t('sermons.allLengths')} class="filter-field">
-			<option value="">{t('sermons.allLengths')}</option>
-			{#each LENGTH_BUCKETS as b (b)}
-				{#if lengthFacets[b]}
+		<!-- Phone only: the rest of the controls live in a bottom sheet, so the
+		     row is one line. The badge counts what the sheet is narrowing by, so
+		     a closed sheet can't hide that the list is filtered (Biographies'
+		     rule). "Filters" is the Biographies key — the same word, translated. -->
+		<button
+			class="chip flex shrink-0 items-center gap-1.5 md:hidden"
+			onclick={() => (sheetOpen = true)}
+			aria-haspopup="dialog"
+			aria-expanded={sheetOpen}
+		>
+			<Icon name="sliders" size={16} />
+			{t('bios.filters')}
+			{#if sheetCount}
+				<span class="rounded-full bg-accent-soft px-1.5 text-eyebrow font-semibold text-accent"
+					>{sheetCount}</span
+				>
+			{/if}
+		</button>
+
+		<div class="hidden md:contents">
+			<select bind:value={filters.values.book} aria-label={t('sermons.allBooks')} class="filter-field">
+				{@render bookOptions()}
+			</select>
+
+			<!-- How long it runs, in reading-time buckets (<10 / 10–30 / 30+ min) — a
+			     length you can shop for, not just sort by. A bucket with nothing in it
+			     is dropped, like the book scope above. -->
+			<select bind:value={filters.values.len} aria-label={t('sermons.allLengths')} class="filter-field">
+				<option value="">{t('sermons.allLengths')}</option>
+				{#each lengthsOnShelf as b (b)}
 					<option value={b}>{t(LENGTH_LABEL[b])} ({lengthFacets[b]})</option>
-				{/if}
-			{/each}
-		</select>
+				{/each}
+			</select>
 
-		<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
-			<option value="shelf">{t('common.sortShelf')}</option>
-			<option value="scripture">{t('sermons.sortScripture')}</option>
-			<option value="title">{t('common.sortTitle')}</option>
-			<option value="shortest">{t('common.sortShortest')}</option>
-		</select>
+			<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+				{#each SORTS as [value, key] (value)}
+					<option {value}>{t(key)}</option>
+				{/each}
+			</select>
 
-		<div class="seg">
-			<button
-				class:active={group === 'preacher'}
-				onclick={() => setGroup('preacher')}
-				aria-pressed={group === 'preacher'}>{t('sermons.groupPreacher')}</button
-			>
-			<button
-				class:active={group === 'all'}
-				onclick={() => setGroup('all')}
-				aria-pressed={group === 'all'}>{t('sermons.groupAll')}</button
-			>
+			{@render groupSeg()}
 		</div>
-
 	</div>
 	</div>
 
@@ -394,6 +418,86 @@
 	{/if}
 </div>
 
+{#snippet bookOptions()}
+	<option value="">{t('sermons.allBooks')}</option>
+	{#each bookFacets as b (b.name)}
+		<option value={b.name}>{b.name} ({b.count})</option>
+	{/each}
+{/snippet}
+
+{#snippet groupSeg()}
+	<div class="seg">
+		<button
+			class:active={group === 'preacher'}
+			onclick={() => setGroup('preacher')}
+			aria-pressed={group === 'preacher'}>{t('sermons.groupPreacher')}</button
+		>
+		<button
+			class:active={group === 'all'}
+			onclick={() => setGroup('all')}
+			aria-pressed={group === 'all'}>{t('sermons.groupAll')}</button
+		>
+	</div>
+{/snippet}
+
+<!-- Outside .page-col: on phones that column carries a transform, which
+     would make it the containing block of the sheet's position:fixed and push
+     the sheet below the fold.
+
+     The phone filter sheet (mobile mockup 6): the row's controls, stacked
+     and thumb-sized — length and sort as chips (every option one tap, no
+     picker), book as a native select (up to 66 books is a picker's job).
+     It edits the live filters directly, so the count on the Show button is
+     the list the reader returns to. -->
+<DrawerShell bind:open={sheetOpen} title={t('bios.filters')} placement="bottom">
+	<div class="sheet-body">
+		<select
+			bind:value={filters.values.book}
+			aria-label={t('sermons.allBooks')}
+			class="filter-field w-full"
+		>
+			{@render bookOptions()}
+		</select>
+
+		<div class="flex flex-wrap gap-2" role="group" aria-label={t('sermons.allLengths')}>
+			{#each ['', ...lengthsOnShelf] as b (b)}
+				<button
+					class="chip"
+					class:active={filters.values.len === b}
+					aria-pressed={filters.values.len === b}
+					onclick={() => (filters.values.len = b)}
+					>{b ? t(LENGTH_LABEL[b as LengthBucket]) : t('sermons.allLengths')}</button
+				>
+			{/each}
+		</div>
+
+		<div class="flex flex-wrap gap-2" role="group" aria-label={t('common.sort')}>
+			{#each SORTS as [value, key] (value)}
+				<button
+					class="chip"
+					class:active={sort === value}
+					aria-pressed={sort === value}
+					onclick={() => setSort(value)}>{t(key)}</button
+				>
+			{/each}
+		</div>
+
+		{@render groupSeg()}
+
+		<div class="mt-2 flex gap-2">
+			<button class="btn btn-ghost" onclick={clearFilters} disabled={!filtering}
+				>{t('common.clearFilters')}</button
+			>
+			<button class="btn btn-primary grow" onclick={() => (sheetOpen = false)}
+				>{(filtered.length === 1 ? t('sermons.showOne') : t('sermons.showMany')).replace(
+					'%n%',
+					String(filtered.length)
+				)}</button
+			>
+		</div>
+	</div>
+</DrawerShell>
+
 <style>
 	/* Below md the filter row scrolls away with the page (see the comment on the
 	   .sermon-filter element): a phone can't afford a pinned block that wraps to
@@ -401,6 +505,25 @@
 	   way. So the preacher anchors only need to clear the sticky app nav. */
 	.sermon-shell {
 		--pinned-offset: var(--appnav-h, 0px);
+	}
+	/* The phone filter sheet's body: stacked groups, room above the home bar.
+	   Chips and buttons get the 44px thumb height the popover sizes skip. */
+	.sheet-body {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		padding: 1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
+	}
+	.sheet-body .chip,
+	.sheet-body .btn,
+	.sheet-body .seg button,
+	.sheet-body select {
+		min-height: 2.75rem;
+	}
+	.sheet-body .seg button {
+		flex: 1 1 0;
 	}
 	@media (min-width: 768px) {
 		/* Tablet/desktop: the row fits on a line or two, so it pins under the nav

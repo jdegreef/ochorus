@@ -438,6 +438,8 @@
   "bios_showing": "ከ%total% ጸሐፊዎች %shown% በመታየት ላይ",
   "books_showing": "ከ%total% መጻሕፍት %shown% በመታየት ላይ",
   "sermons_showing": "ከ%total% ስብከቶች %shown% በመታየት ላይ",
+  "sermons_show_one": "1 ስብከት አሳይ",
+  "sermons_show_many": "%n% ስብከቶች አሳይ",
   "common_clear_filters": "ማጣሪያዎችን ያጽዱ",
   "common_remove_filter": "ማጣሪያውን ያስወግዱ",
   "common_topics": "ርዕሶች",
