@@ -85,5 +85,12 @@
   "note": [
    "Queue job #4096. AI-drafted; awaiting native review. Mirrors rooted-book-1-30-days (series title «ሥር የሰደደ», generic-singular አንተ address, same closing sentence with «ከወንጌል የተወሰደ ክፍል» for 'a Gospel passage'). rooted-2 has no am edition yet, so no am row is created until it ships."
   ]
+ },
+ "rooted-book-3-30-days": {
+  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 3",
+  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች ፍሬ የምታፈራባቸው ሠላሳ ቀናት፦ ፍቅር፣ ደስታ፣ ሰላም፣ ትዕግሥት፣ ቸርነትና የቀሩት የመንፈስ ፍሬዎች፣ የምንናገራቸው ቃላት፣ እንዲሁም የልብ ልማዶች። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
+  "note": [
+   "AI-drafted; awaiting native review. Ships with rooted-3.am (job #3796), whose am edition is what creates this plan row. Mirrors rooted-book-1/2-30-days (series title «ሥር የሰደደ», generic-singular አንተ address, same closing sentence); fruit names follow the book («ትዕግሥት», «ቸርነት»)."
+  ]
  }
 }
