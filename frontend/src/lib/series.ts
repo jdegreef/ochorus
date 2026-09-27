@@ -1,6 +1,6 @@
 import * as m from '$lib/paraglide/messages.js';
 import { volumeNumeral } from '$lib/coverStyles';
-import type { BookSeriesLine, BookSummary, CoverBook } from '$lib/library-public';
+import type { BookSeriesLine, BookSummary, CoverBook, SeriesSummary } from '$lib/library-public';
 import { contentLang } from '$lib/reading';
 
 /**
@@ -87,4 +87,62 @@ export function groupBySeries<B extends Pick<BookSummary, 'series'>>(
 	);
 	for (const g of named) g.books.sort((a, b) => (a.series?.position ?? 0) - (b.series?.position ?? 0));
 	return { named, standalone };
+}
+
+/**
+ * A reader's progress through a series, from its books' slugs: how many are
+ * finished, and whether any is begun at all — the card draws nothing for a
+ * series the reader has never opened.
+ */
+export function seriesProgress(
+	slugs: string[],
+	progressOf: (slug: string) => BookProgress
+): { done: number; total: number; started: boolean } {
+	const each = slugs.map(progressOf);
+	return {
+		done: each.filter((p) => p.finished).length,
+		total: slugs.length,
+		started: each.some((p) => p.started || p.finished)
+	};
+}
+
+/**
+ * The series that have a book among `books`, in `series`' own order — a topic's
+ * series (on its page, or the Books shelf filtered to it), so a topic made of
+ * series volumes leads with the series rather than a wall of volume covers.
+ */
+export function seriesAmong<S extends Pick<SeriesSummary, 'slug'>>(
+	series: S[],
+	books: Pick<BookSummary, 'series'>[]
+): S[] {
+	const present = new Set(books.map((b) => b.series?.slug).filter(Boolean));
+	return series.filter((s) => present.has(s.slug));
+}
+
+/**
+ * Series cards built from a shelf's own books — a topic page's "Book Series"
+ * row, with no call for the series list (the prerender renders every topic in
+ * every locale, and that crawl's API load is what once took the service down).
+ * Each card's fan, count and progress come from the shelf's volumes of that
+ * series, in reading order; there is no description, which the compact card
+ * doesn't show.
+ */
+export function seriesFromBooks(
+	books: Pick<BookSummary, 'slug' | 'title' | 'cover_url' | 'cover_color' | 'series'>[]
+): SeriesSummary[] {
+	return groupBySeries(books, []).named.map((g) => ({
+		slug: g.slug,
+		title: g.title,
+		description: '',
+		book_count: g.books.length,
+		covers: g.books.slice(0, 4).map((b) => ({
+			kind: 'book' as const,
+			slug: b.slug,
+			title: b.title,
+			cover_url: b.cover_url,
+			cover_color: b.cover_color
+		})),
+		books: g.books.map((b) => b.slug),
+		languages: []
+	}));
 }

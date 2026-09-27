@@ -1166,6 +1166,9 @@ export interface SeriesSummary {
 	book_count: number;
 	/** Its first few books in reading order — the card's fan. */
 	covers: BookTile[];
+	/** Every book's slug in reading order — the reader's progress on the card.
+	 *  Optional: an API behind this build omits it, and no progress is drawn. */
+	books?: string[];
 	/** Languages the series has a page in; the index's hreflang is their union. */
 	languages: string[];
 }

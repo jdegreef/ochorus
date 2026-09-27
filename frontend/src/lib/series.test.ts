@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { groupBySeries, nextInSeries, seriesLabel } from './series';
+import { groupBySeries, nextInSeries, seriesAmong, seriesFromBooks, seriesProgress, seriesLabel } from './series';
 import type { BookSeries, BookSummary } from './library-public';
 
 const rooted: BookSeries = {
@@ -86,5 +86,54 @@ describe('groupBySeries', () => {
 			['rooted']
 		);
 		expect(named.map((g) => g.slug)).toEqual(['rooted', 'unlisted']);
+	});
+});
+
+describe('seriesProgress', () => {
+	const state: Record<string, { started: boolean; finished: boolean }> = {
+		a: { started: true, finished: true },
+		b: { started: true, finished: false }
+	};
+	const of = (slug: string) => state[slug] ?? { started: false, finished: false };
+
+	it('counts finished books and notices any begun one', () => {
+		expect(seriesProgress(['a', 'b', 'c'], of)).toEqual({ done: 1, total: 3, started: true });
+	});
+
+	it('is not started when no book is opened', () => {
+		expect(seriesProgress(['c', 'd'], of)).toEqual({ done: 0, total: 2, started: false });
+	});
+});
+
+describe('seriesAmong', () => {
+	it('keeps the series with a book present, in the series order', () => {
+		const series = [{ slug: 'kt' }, { slug: 'bfg' }, { slug: 'rooted' }];
+		const books = [
+			{ series: { slug: 'rooted', title: 'R', position: 1, total: 6 } },
+			{ series: null },
+			{ series: { slug: 'kt', title: 'K', position: null, total: 4 } }
+		];
+		expect(seriesAmong(series, books).map((s) => s.slug)).toEqual(['kt', 'rooted']);
+	});
+});
+
+describe('seriesFromBooks', () => {
+	const vol = (slug: string, series: string, position: number) => ({
+		slug,
+		title: slug,
+		cover_url: `/covers/${slug}.png`,
+		cover_color: '#000',
+		series: { slug: series, title: series.toUpperCase(), position, total: 6 }
+	});
+
+	it("builds a card per series from the shelf's volumes, in reading order", () => {
+		const cards = seriesFromBooks([
+			vol('r-2', 'rooted', 2),
+			{ slug: 'plain', title: 'Plain', cover_url: '', cover_color: '', series: null },
+			vol('r-1', 'rooted', 1)
+		]);
+		expect(cards).toHaveLength(1);
+		expect(cards[0]).toMatchObject({ slug: 'rooted', title: 'ROOTED', book_count: 2, books: ['r-1', 'r-2'] });
+		expect(cards[0].covers.map((c) => c.slug)).toEqual(['r-1', 'r-2']);
 	});
 });

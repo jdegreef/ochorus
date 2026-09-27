@@ -22,7 +22,7 @@
 	import TopicFilterRow from './TopicFilterRow.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
-	import { groupBySeries } from '$lib/series';
+	import { groupBySeries, seriesAmong } from '$lib/series';
 
 	let {
 		books,
@@ -176,6 +176,13 @@
 	// By series: a section per series (see groupBySeries). Unlike authors, a
 	// series is several books by definition, so a section each never leaves a
 	// heading over a lone card.
+	// The Book Series rail: every series on the open shelf; under a topic
+	// filter, the series among the filtered books (so For Young Readers leads
+	// with its four series); hidden under a query or source filter alone.
+	const railSeries = $derived(
+		filters.values.topic ? seriesAmong(series, filtered) : searching ? [] : series
+	);
+
 	const seriesGroups = $derived(
 		activeGroup === 'series' ? groupBySeries(sorted, series.map((s) => s.slug)) : null
 	);
@@ -315,7 +322,7 @@
 		<!-- Book Series — books written to be read together. A rail of the index's
 		     own cards (without their descriptions), so the reader meets on /series
 		     the card they tapped here. -->
-		{#if series.length && !searching}
+		{#if railSeries.length}
 			<section class="mb-8">
 				<div class="flex items-baseline justify-between gap-3">
 					<h2 class="section-label">{t('nav.series')}</h2>
@@ -326,7 +333,7 @@
 				<!-- pt/pb leave room for the cards' hover lift and shadow, which the
 				     rail's overflow would otherwise clip. -->
 				<div class="cover-rail flex gap-4 pt-1 pb-2">
-					{#each series as s (s.slug)}
+					{#each railSeries as s (s.slug)}
 						<div class="grid w-64 shrink-0">
 							<SeriesCard series={s} compact />
 						</div>

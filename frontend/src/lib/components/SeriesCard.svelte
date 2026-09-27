@@ -1,5 +1,13 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import * as m from '$lib/paraglide/messages.js';
 	import type { SeriesSummary } from '$lib/library-public';
+	import { getProgress, isFinished } from '$lib/progress';
+	import { seriesProgress } from '$lib/series';
+	import { volumeNumeral } from '$lib/coverStyles';
+	import { contentLang } from '$lib/reading';
+	import { getLang } from '$lib/lang.svelte';
+	import ProgressBar from './ProgressBar.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { seriesMeta } from '$lib/emblemNames';
@@ -16,6 +24,28 @@
 	let { series, compact = false }: { series: SeriesSummary; compact?: boolean } = $props();
 	const t = i18n.t;
 	const meta = $derived(seriesMeta(series.slug));
+
+	// The reader's progress through the series, read after mount: it lives in
+	// localStorage, and the prerendered card must not bake one visitor's place
+	// into every page. Drawn only once a book of the series is begun.
+	let mounted = $state(false);
+	onMount(() => (mounted = true));
+	const progress = $derived(
+		mounted && series.books
+			? seriesProgress(series.books, (slug) => ({
+					started: getProgress(slug) != null,
+					finished: isFinished(slug)
+				}))
+			: null
+	);
+	const progressLabel = $derived.by(() => {
+		if (!progress) return '';
+		const lang = contentLang(getLang());
+		return m.series_progress({
+			done: volumeNumeral(progress.done, lang) ?? String(progress.done),
+			total: volumeNumeral(progress.total, lang) ?? String(progress.total)
+		});
+	});
 </script>
 
 <ShelfCard
@@ -32,5 +62,13 @@
 	{/snippet}
 	{#if !compact && series.description}
 		<p class="shelf-card-desc mt-1.5 text-small text-muted" dir="auto">{series.description}</p>
+	{/if}
+	{#if progress?.started}
+		<!-- mt-auto: with the body's flex:1 this sits on the card's floor, so a
+		     row of cards keeps its meters level. -->
+		<div class="mt-auto flex flex-col gap-1.5 pt-3">
+			<ProgressBar percent={(progress.done / progress.total) * 100} label={progressLabel} />
+			<span class="text-small text-muted">{progressLabel}</span>
+		</div>
 	{/if}
 </ShelfCard>
