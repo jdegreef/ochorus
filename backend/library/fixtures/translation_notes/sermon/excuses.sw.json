@@ -1,0 +1,115 @@
+{
+ "kind": "sermon",
+ "slug": "excuses",
+ "language": "sw",
+ "job_issue": 4176,
+ "references": [
+  {
+   "reference": "Luke 14:18a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 14:18b",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 14:19a",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Luke 14:20",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 84:11",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Philippians 3:7",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Matthew 7:22",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 7:23",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 14:12",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 22:38",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 3:3b",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Jude 24",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Hebrews 6:4-6",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Hebrews 10:26",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}

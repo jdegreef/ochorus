@@ -1,0 +1,84 @@
+{
+ "kind": "sermon",
+ "slug": "heroes-and-cowards",
+ "language": "sw",
+ "job_issue": 4177,
+ "references": [
+  {
+   "reference": "Proverbs 29:25",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "John 12:42",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "John 12:43",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "2 Corinthians 12:10a",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 10:32",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "what-it-costs-not-to-be-a-christian.sw.json"
+  },
+  {
+   "reference": "Matthew 10:33",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "what-it-costs-not-to-be-a-christian.sw.json"
+  },
+  {
+   "reference": "Romans 10:9",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-way-of-salvation-made-plain.sw.json"
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-way-of-salvation-made-plain.sw.json"
+  },
+  {
+   "reference": "Romans 10:10b",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 10:11",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Mark 8:38",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Philippians 2:6-8",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Isaiah 53:5a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-way-to-god.sw.json"
+  }
+ ]
+}

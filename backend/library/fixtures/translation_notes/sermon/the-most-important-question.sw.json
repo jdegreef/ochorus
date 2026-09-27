@@ -1,0 +1,140 @@
+{
+ "kind": "sermon",
+ "slug": "the-most-important-question",
+ "language": "sw",
+ "job_issue": 4179,
+ "references": [
+  {
+   "reference": "Matthew 27:22a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 3:18",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 3:19",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Galatians 3:10b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Romans 5:1",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "what-it-costs-not-to-be-a-christian.sw.json"
+  },
+  {
+   "reference": "Romans 1:17b",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "what-it-costs-not-to-be-a-christian.sw.json"
+  },
+  {
+   "reference": "1 John 5:11b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 John 5:12",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 18:31a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "John 19:7b",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 10:32",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "what-it-costs-not-to-be-a-christian.sw.json"
+  },
+  {
+   "reference": "Matthew 10:33",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "what-it-costs-not-to-be-a-christian.sw.json"
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "Matthew 12:30a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Acts 2:36b",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Matthew 3:17b",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "if-god-be-for-us.sw.json"
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Isaiah 53:5a",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "self_rendered",
+   "block_index": 42
+  }
+ ]
+}

@@ -1320,6 +1320,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # en
             ("<p>We might naturally have",
              '<blockquote><em>"If any man will come after Me, let him deny himself, and take up his cross daily, and follow Me.</em>--LUKE ix. 23.</blockquote>'),
+            # sw
+            ('<p>Kwa kawaida tungeweza kudhani',
+             '<blockquote><em>"Mtu ye yote akitaka kunifuata, na ajikane mwenyewe, ajitwike msalaba wake kila siku, anifuate.</em>--LUKA 9:23.</blockquote>'),
         ],
     },
     "all-sufficiency": {
@@ -1327,12 +1330,18 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # en
             ("<p>How pleasant to the heart",
              '<blockquote><em>"The LORD GOD is a Sun and Shield:<br/> the LORD will give grace and glory:<br/> "No good thing will He withhold from them<br/> that walk uprightly."<br/></em>--PSALM LXXXIV. 11.</blockquote>'),
+            # sw
+            ('<p>Jinsi inavyopendeza moyo wa',
+             '<blockquote><em>"BWANA MUNGU ni Jua na Ngao:<br/> BWANA atatoa neema na utukufu:<br/> "Hatawanyima kitu chema<br/> hao waendao kwa unyofu."<br/></em>--ZABURI 84:11.</blockquote>'),
         ],
     },
     "under-the-shepherds-care": {
         "restored_blocks": [
             # en
             ('<blockquote>"For ye were as', "<h3>A NEW YEAR'S ADDRESS.</h3>"),
+            # sw
+            ('<blockquote>"Kwa maana mlikuwa kama',
+             '<h3>HOTUBA YA MWAKA MPYA.</h3>'),
         ],
     },
     # --- Gutenberg #65066, "The Life and Diary of David Brainerd" ------------
