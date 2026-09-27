@@ -24,6 +24,8 @@
   "reader_previous": "Назад",
   "reader_next": "Далі",
   "reader_back_to_contents": "Повернутися до змісту",
+  "reader_chapter_done": "Розділ %n% завершено",
+  "reader_end_progress": "%done% з %total% розділів · %p%% книги",
   "reader_return_prior": "Повернутися туди, де ви були",
   "reader_synced_ahead": "На іншому пристрої ви просунулися далі",
   "reader_continue_there": "Продовжити там",

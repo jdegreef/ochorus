@@ -24,6 +24,8 @@
   "reader_previous": "Anterior",
   "reader_next": "Siguiente",
   "reader_back_to_contents": "Volver al índice",
+  "reader_chapter_done": "Capítulo %n% completado",
+  "reader_end_progress": "%done% de %total% capítulos · %p%% del libro",
   "reader_return_prior": "Volver a donde estabas",
   "reader_synced_ahead": "Vas más adelante en otro dispositivo",
   "reader_continue_there": "Continuar allí",

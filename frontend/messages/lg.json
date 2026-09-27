@@ -24,6 +24,8 @@
   "reader_previous": "Ekyasooka",
   "reader_next": "Ekiddako",
   "reader_back_to_contents": "Ddayo eri ebirimu",
+  "reader_chapter_done": "Essuula %n% ewedde",
+  "reader_end_progress": "Essuula %done% ku %total% · %p%% y'ekitabo",
   "reader_return_prior": "Ddayo gy’obadde",
   "reader_synced_ahead": "Oli mu maaso ku kyuma ekirala",
   "reader_continue_there": "Weeyongereyo eyo",
