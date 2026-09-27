@@ -14,6 +14,8 @@
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
 	import { contentLang, readingTime } from '$lib/reading';
 	import Reader from '$lib/components/Reader.svelte';
+	import FloatingBookmark from '$lib/components/FloatingBookmark.svelte';
+	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
@@ -53,15 +55,24 @@
 	// biography (kind "article"), so an article gets everything the reader has:
 	// highlights and margin notes (synced, and in the Notebook),
 	// Listen with follow-along, the verse popover, define, copy/share a quote,
-	// and a resume point. No Bookmark button: the sermon's lives in a sticky
-	// bar, but this header scrolls away, so it could only ever mark the top of
-	// the article. `frac` drives the progress hairline; the reader's own
+	// and a resume point, and a bookmark (a floating one: this header scrolls
+	// away, so a button up there could only ever mark the top). `frac` drives the progress hairline; the reader's own
 	// reaching-the-end finishes the article onto the reading history. The
 	// header offset stays the reader default: this route keeps the sticky app
 	// nav, so a resumed or linked paragraph has to park below it, not under it.
 	let reader = $state<Reader | undefined>();
+	let body = $state<HTMLElement | undefined>();
 	let frac = $state(0);
 	const listening = $derived(listen.status !== 'idle');
+
+	const bookmark = readerBookmark({
+		kind: 'article',
+		slug: () => article.slug,
+		title: () => article.h1,
+		reader: () => reader,
+		body: () => body,
+		frac: () => frac
+	});
 
 	// --- SEO -------------------------------------------------------------------
 	// Self-referential canonical + hreflang — an English canonical on a future
@@ -294,6 +305,7 @@
 				listenTitle={article.h1}
 				listenArtist="Ochorus"
 				class="article-body no-initial"
+				bind:body
 				bind:frac
 				finishOnEnd
 			/>
@@ -301,7 +313,7 @@
 			<!-- "Read it in full": the classic the article was written to send you
 			     to, at the moment you have finished reading about it. (It sat
 			     mid-article once; inside the Reader's prose any extra block would
-			     shift the paragraph index every highlight keys on.) -->
+			     shift the paragraph index every highlight and bookmark keys on.) -->
 			{#if lead}
 				<aside class="book-teaser" aria-label={t('articles.readInFull')}>
 					<a href={inArticleLang(`/books/${lead.slug}`)} class="w-14 shrink-0" tabindex="-1" aria-hidden="true">
@@ -419,6 +431,8 @@
 	</div>
 </div>
 
+<!-- Bookmark the spot: floats, because this page's header scrolls away. -->
+<FloatingBookmark {bookmark} {frac} />
 
 <style>
 	/* The prose column at the reader's measure; on a wide screen, a contents

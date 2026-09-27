@@ -2,11 +2,11 @@ import { bookmarks } from '$lib/bookmarks.svelte';
 import type { WorkKind } from '$lib/reading-schema';
 
 /**
- * The Bookmark control of a single-document Reader surface — a sermon or a
- * biography. Each is one "chapter" (order 1), so a bookmark is a paragraph:
- * the one at the top of the screen — so the control belongs in a bar that
- * stays on screen while reading. Written once; it was copied line for line
- * into each page.
+ * The Bookmark control of a single-document Reader surface — a sermon, a
+ * biography, an article. Each is one "chapter" (order 1), so a bookmark is a
+ * paragraph: the one at the top of the screen — so the control must stay on
+ * screen while reading (the sermon's sticky bar; FloatingBookmark elsewhere).
+ * Written once; it was copied line for line into each page.
  *
  * `topIndex` is a DOM measurement, so it is re-read when the reader has moved
  * — `frac` changes on Reader's throttled scroll pass, which is exactly when

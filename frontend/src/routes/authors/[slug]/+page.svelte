@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
+	import FloatingBookmark from '$lib/components/FloatingBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import Icon from '$lib/components/Icon.svelte';
 	import { type AuthorDetail, type AuthorBio, listAuthors, formatLifespan } from '$lib/library-public';
@@ -69,7 +70,7 @@
 
 	// --- Bookmarks ------------------------------------------------------------
 	// The paragraph at the top of the screen — the single-document Reader's
-	// bookmark, shared with the sermon page.
+	// bookmark, shared with the sermon and article pages.
 	const bookmark = readerBookmark({
 		kind: 'bio',
 		slug: () => author.slug,
@@ -786,58 +787,10 @@
 	<div class="min-left" aria-hidden="true">{minutesLeft} {t('sermon.minLeft')}</div>
 {/if}
 
-<!-- Bookmark the spot. It FLOATS rather than sitting with the other reader
-     affordances in the header, and that is the whole point: this page's header
-     scrolls away (unlike the sermon reader's sticky bar), so a control up there
-     can only be reached by scrolling back to the top — at which point "the
-     paragraph at the top of the viewport" is paragraph one, every time. The
-     button would have looked right and saved the wrong place on every click.
-
-     Gated on `frac` exactly like the pill above, for the same reason: this page
-     continues into a book grid and contemporaries, and a bookmark control has
-     nothing to point at once the prose is behind you. -->
-{#if author.bio_html && frac > 0.01 && frac < 0.99}
-	<button
-		class="bio-bookmark"
-		class:is-set={bookmark.current}
-		onclick={bookmark.toggle}
-		aria-label={t('reader.bookmark')}
-		title={t('reader.bookmark')}
-		aria-pressed={bookmark.current}><Icon name="bookmark" size={18} /></button
-	>
-{/if}
+<!-- Bookmark the spot: floats, because this page's header scrolls away. -->
+{#if author.bio_html}<FloatingBookmark {bookmark} {frac} />{/if}
 
 <style>
-	/* Floating bookmark control for the biography. Deliberately mirrors
-	   `.min-left` (app.css) — same corner treatment, same z-index, same
-	   translucency — so the two pills that appear while reading a bio read as
-	   one family. It sits at the inline end rather than centred, because
-	   `.min-left` already owns the centre and this one is tappable. Logical
-	   properties throughout: Arabic is a routed locale. */
-	.bio-bookmark {
-		position: fixed;
-		bottom: 1rem;
-		inset-inline-end: 1rem;
-		z-index: 30;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 2.5rem;
-		height: 2.5rem;
-		border-radius: 9999px;
-		border: 1px solid var(--border);
-		background: color-mix(in srgb, var(--bg) 85%, transparent);
-		backdrop-filter: blur(6px);
-		color: var(--muted);
-	}
-	.bio-bookmark:hover {
-		color: var(--text);
-	}
-	.bio-bookmark.is-set {
-		color: var(--accent);
-		border-color: var(--accent);
-	}
-
 	/* Reading tools as a segmented control: one bordered cluster with hairline
 	   dividers, instead of three separate ghost-button pills. No `overflow:hidden`
 	   — ReaderControls' text-settings popover is position:absolute and would be

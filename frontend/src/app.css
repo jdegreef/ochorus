@@ -984,7 +984,7 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 	.outline-panel,
 	.outline-rail,
 	.min-left,
-	.bio-bookmark,
+	.float-bookmark,
 	.pwa-stack,
 	.reader-chrome,
 	.read-progress,
@@ -2542,7 +2542,10 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    than in one route's <style> — the readers are meant to feel like one reader. */
 .min-left {
 	position: fixed;
-	bottom: 1rem;
+	/* Clear whichever bottom bar is up (the phone tab bar sat on top of it). */
+	bottom: calc(
+		1rem + max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px))
+	);
 	left: 50%;
 	transform: translateX(-50%);
 	z-index: 30;
