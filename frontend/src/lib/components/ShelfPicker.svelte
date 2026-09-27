@@ -31,10 +31,7 @@
 			type="button"
 			class="account-item shelf-toggle"
 			aria-pressed={on}
-			onclick={(e) => {
-				e.stopPropagation();
-				customShelves.setBook(s.id, slug, !on);
-			}}
+			onclick={() => customShelves.setBook(s.id, slug, !on)}
 		>
 			<span class="check" aria-hidden="true">{on ? '✓' : ''}</span>
 			<span class="truncate">{s.name}</span>
@@ -47,7 +44,6 @@
 			placeholder={t('shelves.new')}
 			aria-label={t('shelves.namePlaceholder')}
 			bind:value={newName}
-			onclick={(e) => e.stopPropagation()}
 		/>
 		<button class="btn btn-sm" type="submit" disabled={!newName.trim()}
 			>{t('shelves.create')}</button

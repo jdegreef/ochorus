@@ -157,10 +157,7 @@
 	<button
 		class="account-item"
 		aria-expanded={moveOpen}
-		onclick={(e) => {
-			e.stopPropagation();
-			moveOpen = !moveOpen;
-		}}
+		onclick={() => (moveOpen = !moveOpen)}
 	>
 		{@render row('chevron-right', t('shelves.moveTo'))}
 	</button>
@@ -195,10 +192,7 @@
 <button
 	class="account-item"
 	aria-expanded={shelvesOpen}
-	onclick={(e) => {
-		e.stopPropagation();
-		shelvesOpen = !shelvesOpen;
-	}}
+	onclick={() => (shelvesOpen = !shelvesOpen)}
 >
 	{@render row('layers', t('shelves.addTo'))}
 </button>
