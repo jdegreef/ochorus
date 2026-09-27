@@ -24,6 +24,8 @@
   "reader_previous": "Iliyotangulia",
   "reader_next": "Inayofuata",
   "reader_back_to_contents": "Rudi kwenye yaliyomo",
+  "reader_chapter_done": "Sura ya %n% imekamilika",
+  "reader_end_progress": "Sura %done% kati ya %total% · %p%% ya kitabu",
   "reader_return_prior": "Rudi ulipokuwa",
   "reader_synced_ahead": "Umefika mbele zaidi kwenye kifaa kingine",
   "reader_continue_there": "Endelea hapo",

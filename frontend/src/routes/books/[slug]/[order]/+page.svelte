@@ -59,6 +59,11 @@
 	import { dismissable } from '$lib/actions/dismissable';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import GoalPips from '$lib/components/GoalPips.svelte';
+	import { readingActivity } from '$lib/readingActivity.svelte';
+	import { currentStreak, localToday } from '$lib/streak';
 	import TocDrawer from '$lib/components/TocDrawer.svelte';
 	import SearchDrawer from '$lib/components/SearchDrawer.svelte';
 	import NotesDrawer from '$lib/components/NotesDrawer.svelte';
@@ -395,6 +400,33 @@
 	const editionLabel = $derived(
 		edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')
 	);
+	// --- The chapter's ending: where the reader stands in the book ------------
+	// One pip per chapter, filled through this one — up to END_PIPS chapters; a
+	// longer book gets a plain bar (forty slivers read as texture, not count).
+	// Needs the book fetch (bookForProgress), so it appears once that lands.
+	const END_PIPS = 24;
+	// bookWords is null exactly when the book isn't loaded; the percent is
+	// bookPercent's with this chapter read to its end.
+	const endProgress = $derived.by(() => {
+		const w = bookWords;
+		const b = bookForProgress;
+		if (!w || !b) return null;
+		const done = b.chapters.filter((c) => c.order <= chapter.order).length;
+		const total = b.chapters.length;
+		const percent = w.total
+			? Math.min(100, Math.round(((w.before + chapter.word_count) / w.total) * 100))
+			: Math.round((done / total) * 100);
+		return { done, total, percent, pips: total <= END_PIPS };
+	});
+	// Same streak as the dashboard. Only after mount: the page is prerendered
+	// without it, and reading the log during hydration would disagree with that
+	// HTML for every reader who has a streak.
+	let endMounted = $state(false);
+	$effect(() => {
+		endMounted = true;
+	});
+	const endStreak = $derived(endMounted ? currentStreak(readingActivity.days(), localToday()) : 0);
+
 	// The phone bar's second line — the chapter, in words that don't repeat the
 	// book title above it.
 	const phoneChapterLine = $derived(chapterNameIn(chapter.order, chapter.title, chapter.book_title));
@@ -1867,40 +1899,78 @@
 				</div>
 			{/if}
 
-			<!-- One block, so in page mode the way on never splits from its links:
-			     the last page always holds Previous/Next. -->
-			<div class="end-nav">
-				<nav class="mt-14 flex items-stretch justify-between gap-3 border-t border-border pt-6">
-					{#if chapter.prev}
-						<a
-							href={chapterHref(chapter.prev.order)}
-							class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start"
-						>
-							<span class="eyebrow text-muted">{t('reader.previous')}</span>
-							<span class="text-small">{chapterName(chapter.prev.order, chapter.prev.title)}</span>
-						</a>
+			<!-- Finishing a chapter is an arrival: say which one, and where it
+			     leaves the reader in the book, before offering the next. -->
+			<!-- data-nosnippet: every chapter's HTML carries this, and it is not what
+			     a search result should quote. -->
+			<section
+				class="end-done mt-14 border-t border-border pt-8"
+				aria-labelledby="end-done-heading"
+				data-nosnippet
+			>
+				<span class="end-check" class:check-pop={celebrate} aria-hidden="true"
+					><Icon name="check" size={26} /></span
+				>
+				<!-- The heading is the new fact; the title under it repeats the h1, so
+				     it is a paragraph, not a second heading of the same name. -->
+				<h2 id="end-done-heading" class="mt-3 font-sans text-small font-normal text-muted">
+					{t('reader.chapterDone').replace('%n%', String(chapter.order))}
+				</h2>
+				<p class="font-display mt-0.5 text-h2" dir="auto" lang={contentLang(language)}>
+					{chapterName(chapter.order, chapter.title)}
+				</p>
+				<!-- Nothing to count in a one-chapter work ("1 of 1 chapters"). -->
+				{#if endProgress && endProgress.total > 1}
+					{#if endProgress.pips}
+						<div class="mt-4" aria-hidden="true">
+							<GoalPips goal={endProgress.total} weekCount={endProgress.done} stretch tone="accent" />
+						</div>
 					{:else}
-						<span class="flex-1"></span>
+						<div class="mt-4"><ProgressBar percent={endProgress.percent} label={chapter.book_title} /></div>
 					{/if}
+					<p class="mt-2 text-small text-balance text-muted">
+						{t('reader.endProgress')
+							.replace('%done%', String(endProgress.done))
+							.replace('%total%', String(endProgress.total))
+							.replace('%p%', String(endProgress.percent))}
+					</p>
+				{/if}
+				{#if endStreak > 0}
+					<p class="mt-3 inline-flex items-center gap-1.5 text-small">
+						<Icon name="flame" size={18} class="text-gold" /><span
+							><span class="font-semibold">{endStreak}</span> {t('settings.streakLabel')}</span
+						>
+					</p>
+				{/if}
+			</section>
+
+			<!-- One block, so in page mode the way on never splits from its links:
+			     the last page always holds Previous/Next. (The completion mark above
+			     is its own block: together they outgrew a short screen's column, and
+			     an unbreakable block taller than the column splits anyway.) -->
+			<div class="end-nav">
+				<!-- The way on first and full-width on a phone — it is what the thumb
+				     is looking for here; Previous sits under it. From sm the classic
+				     pair: Previous at the start, Next at the end. Tab order stays Next-first
+				     at every width — one DOM order can't match both; Next is the primary. -->
+				<nav class="end-links mt-8 flex flex-col items-stretch gap-3 sm:flex-row-reverse">
 					{#if chapter.next}
 						{@const nextWords = bookForProgress?.chapters.find((c) => c.order === chapter.next?.order)?.word_count}
 						<a
 							href={chapterHref(chapter.next.order)}
-							class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
+							class="end-next btn btn-primary flex-1 flex-col items-start gap-0.5 text-start sm:items-end sm:text-end"
 							class:celebrate
 							aria-label="{t('reader.next')}: {chapterName(chapter.next.order, chapter.next.title)}"
 						>
 							<span class="eyebrow opacity-75">{t('reader.next')}</span>
-							<span class="text-small">{chapterName(chapter.next.order, chapter.next.title)}</span>
+							<span class="end-next-title" dir="auto">{chapterName(chapter.next.order, chapter.next.title)}</span>
 							<!-- The moment of highest intent: say how long it is, and let its
 							     opening line do the inviting. Both are optional — the time needs
 							     the book fetched, the line needs the prefetch to have landed — so
 							     the line's height is reserved: the button must not grow under a
 							     thumb that is already aiming at it. -->
-							<span class="up-next-meta mt-0.5 block text-micro opacity-75" dir="auto">
-								{#if nextWords}{readingTime(nextWords)}{/if}{#if nextWords && nextPreview}
-									·
-								{/if}{#if nextPreview}<span class="italic">{nextPreview}…</span>{/if}
+							<span class="up-next-meta mt-0.5 block text-small opacity-80" dir="auto">
+								{#if nextWords}{readingTime(nextWords)}{/if}{#if nextWords && nextPreview}{' · '}{/if}{#if nextPreview}<span class="italic">{nextPreview}…</span>{/if}
 							</span>
 						</a>
 					{:else if nextInSeries}
@@ -1911,24 +1981,44 @@
 						     and a reader deciding to go on wants to see what they are starting. -->
 						<a
 							href={localizeHref(`/books/${nextInSeries.slug}`)}
-							class="btn btn-primary flex-1 flex-col items-end gap-0.5 text-end"
+							class="end-next btn btn-primary flex-1 flex-col items-start gap-0.5 text-start sm:items-end sm:text-end"
 							class:celebrate
 							aria-label="{t('book.seriesNext')}: {nextInSeries.title}"
 						>
 							<span class="eyebrow opacity-75">{t('book.seriesNext')}</span>
-							<span class="text-small" dir="auto">{nextInSeries.title}</span>
+							<span class="end-next-title" dir="auto">{nextInSeries.title}</span>
 						</a>
 					{:else}
 						<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center" class:celebrate>{t('reader.backToContents')}</a>
 					{/if}
+					{#if chapter.prev}
+						<a
+							href={chapterHref(chapter.prev.order)}
+							class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start"
+						>
+							<span class="eyebrow text-muted">{t('reader.previous')}</span>
+							<span class="text-small" dir="auto">{chapterName(chapter.prev.order, chapter.prev.title)}</span>
+						</a>
+					{:else}
+						<!-- Holds Next to its half of the row from sm; nothing on a phone. -->
+						<span class="hidden flex-1 sm:block"></span>
+					{/if}
 				</nav>
-				<!-- A way to the contents whenever the button above points somewhere else:
-				     mid-book, and at the end of a volume that has a next one. -->
-				{#if chapter.next || nextInSeries}
-					<p class="mt-3 text-center">
-						<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">{t('reader.contents')}</a>
-					</p>
-				{/if}
+				<!-- Contents whenever the button above points somewhere else (mid-book,
+				     and at the end of a volume that has a next one), and Share always:
+				     the end of a chapter is when a reader passes one on. -->
+				<div class="mt-3 flex justify-center gap-2">
+					{#if chapter.next || nextInSeries}
+						<a href={localizeHref(`/books/${slug}`)} class="btn btn-sm btn-ghost"
+							><Icon name="list" size={16} />{t('reader.contents')}</a
+						>
+					{/if}
+					<ShareButton
+						url={canonical}
+						title="{chapterName(chapter.order, chapter.title)} — {chapter.book_title}"
+						showLabel
+					/>
+				</div>
 				<!-- Colophon: a crawlable link out to the book and its author from every
 				     chapter — the site's largest page type, which otherwise linked only to
 				     its own contents and the next chapter (a dead end for the author graph).
@@ -2369,6 +2459,41 @@
 		.pageturn {
 			display: none;
 		}
+	}
+
+	/* The chapter's ending (see .end-nav). */
+	.end-done {
+		text-align: center;
+	}
+	.end-check {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.25rem;
+		height: 3.25rem;
+		border: 2px solid var(--gold);
+		border-radius: 50%;
+		color: var(--gold);
+	}
+	/* The check's own pop when the chapter is finished (the Next button has its
+	   .celebrate pulse). Only set outside prefers-reduced-motion. */
+	.check-pop {
+		animation: check-pop 0.6s ease;
+	}
+	@keyframes check-pop {
+		40% {
+			transform: scale(1.15);
+		}
+	}
+	/* The Next button: its title in the display face. */
+	.end-next {
+		padding-block: 0.9rem;
+	}
+	.end-next-title {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		font-weight: 600;
+		line-height: 1.2;
 	}
 
 	/* Finishing a chapter: one gentle pulse of the onward button so the arrival

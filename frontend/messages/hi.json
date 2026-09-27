@@ -24,6 +24,8 @@
   "reader_previous": "पिछला",
   "reader_next": "अगला",
   "reader_back_to_contents": "विषय-सूची पर लौटें",
+  "reader_chapter_done": "अध्याय %n% पूरा हुआ",
+  "reader_end_progress": "%total% में से %done% अध्याय · किताब का %p%%",
   "reader_return_prior": "वापस वहीं जाएँ जहाँ आप थे",
   "reader_synced_ahead": "आप दूसरे डिवाइस पर आगे हैं",
   "reader_continue_there": "वहीं से जारी रखें",
