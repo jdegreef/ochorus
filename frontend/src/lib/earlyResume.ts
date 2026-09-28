@@ -9,7 +9,8 @@
  *
  * This runs INLINE, straight after the chapter body is parsed: it reads the
  * same saved spot the reader does — this device's anchor for the chapter, else
- * the book's synced record when it names this chapter — and scrolls there.
+ * the book's synced record when it names this chapter, each only in the page's
+ * language — and scrolls there.
  * The hydrated restore still runs and corrects for font reflow; it lands where
  * this already is, so there is nothing to see.
  *
@@ -37,8 +38,12 @@ export const EARLY_RESUME_JS =
 	"var g=function(k){return JSON.parse(localStorage.getItem(k)||'{}')};" +
 	// Page mode: stored, or the wide-screen default a reader who never chose gets.
 	`var pm=g('${READER_PREFS_KEY}').paged;if(pm===true||(pm!==false&&innerWidth>=${WIDE_SCREEN_MIN}))return;` +
-	`var a=g('${ANCHOR_KEY}')[m[1]+':'+m[2]];` +
-	`if(a==null){var r=g('${PROGRESS_KEY}')[m[1]];if(r&&r.order==m[2])a=r.paragraph_index}` +
+	// In THIS language only (progress.ts): an anchor is `{p, lang}` (a bare
+	// number is a legacy one that restores anywhere), and the synced record
+	// must be in the page's language. `<html lang>` is the locale getLang() reads.
+	'var L=document.documentElement.lang;' +
+	`var v=g('${ANCHOR_KEY}')[m[1]+':'+m[2]];var a=v&&typeof v=='object'?(v.lang===L?v.p:null):v;` +
+	`if(a==null){var r=g('${PROGRESS_KEY}')[m[1]];if(r&&r.order==m[2]&&r.language===L)a=r.paragraph_index}` +
 	'var el=a>0&&b.children[a];if(!el)return;' +
 	// Mid-parse the document ends at the body, so a paragraph in the chapter's
 	// last screenful can't reach the top yet; a clamped scroll would paint short
