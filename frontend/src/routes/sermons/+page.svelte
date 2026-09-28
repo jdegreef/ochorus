@@ -440,56 +440,56 @@
 	{:else}
 		{@render sermonList(sorted)}
 	{/if}
-</div>
 
-<!-- The phone Filters sheet: the same controls as one-tap choices. The list
-     updates behind it as they change; "Show sermons (N)" closes it. -->
-<DrawerShell bind:open={filtersOpen} title={t('bios.filters')} placement="bottom">
-	{@render bookSelect('w-full')}
+	<!-- The phone Filters sheet: the same controls as one-tap choices. The list
+	     updates behind it as they change; "Show sermons (N)" closes it. -->
+	<DrawerShell bind:open={filtersOpen} title={t('bios.filters')} placement="bottom">
+		{@render bookSelect('w-full')}
 
-	<div class="sheet-choices" role="group" aria-label={t('sermons.allLengths')}>
-		<button
-			class="chip"
-			class:active={!filters.values.len}
-			aria-pressed={!filters.values.len}
-			onclick={() => (filters.values.len = '')}>{t('sermons.allLengths')}</button
-		>
-		{#each LENGTH_BUCKETS as b (b)}
-			{#if lengthFacets[b]}
-				<button
-					class="chip"
-					class:active={filters.values.len === b}
-					aria-pressed={filters.values.len === b}
-					onclick={() => (filters.values.len = b)}
-					>{t(LENGTH_LABEL[b])} <span class="count">{lengthFacets[b]}</span></button
-				>
-			{/if}
-		{/each}
-	</div>
-
-	<p class="sheet-label">{t('common.sort')}</p>
-	<div class="sheet-choices" role="group" aria-label={t('common.sort')}>
-		{#each SORTS as o (o.v)}
+		<div class="sheet-choices" role="group" aria-label={t('sermons.allLengths')}>
 			<button
 				class="chip"
-				class:active={sort === o.v}
-				aria-pressed={sort === o.v}
-				onclick={() => ((sort = o.v), save())}>{t(o.k)}</button
+				class:active={!filters.values.len}
+				aria-pressed={!filters.values.len}
+				onclick={() => (filters.values.len = '')}>{t('sermons.allLengths')}</button
 			>
-		{/each}
-	</div>
+			{#each LENGTH_BUCKETS as b (b)}
+				{#if lengthFacets[b]}
+					<button
+						class="chip"
+						class:active={filters.values.len === b}
+						aria-pressed={filters.values.len === b}
+						onclick={() => (filters.values.len = b)}
+						>{t(LENGTH_LABEL[b])} <span class="count">{lengthFacets[b]}</span></button
+					>
+				{/if}
+			{/each}
+		</div>
 
-	{@render groupSeg('mt-5 w-full', 'flex-1')}
+		<p class="sheet-label">{t('common.sort')}</p>
+		<div class="sheet-choices" role="group" aria-label={t('common.sort')}>
+			{#each SORTS as o (o.v)}
+				<button
+					class="chip"
+					class:active={sort === o.v}
+					aria-pressed={sort === o.v}
+					onclick={() => ((sort = o.v), save())}>{t(o.k)}</button
+				>
+			{/each}
+		</div>
 
-	<div class="mt-6 flex items-center gap-2">
-		{#if filtering}
-			<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
-		{/if}
-		<button class="btn btn-primary flex-1" onclick={() => (filtersOpen = false)}
-			>{t('sermons.showResults').replace('%n%', String(filtered.length))}</button
-		>
-	</div>
-</DrawerShell>
+		{@render groupSeg('mt-5 w-full', 'flex-1')}
+
+		<div class="mt-6 flex items-center gap-2">
+			{#if filtering}
+				<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
+			{/if}
+			<button class="btn btn-primary flex-1" onclick={() => (filtersOpen = false)}
+				>{t('sermons.showResults').replace('%n%', String(filtered.length))}</button
+			>
+		</div>
+	</DrawerShell>
+</div>
 
 <style>
 	/* The phone Filters sheet: choices wrap as chips, so a length or sort
