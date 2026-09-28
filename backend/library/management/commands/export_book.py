@@ -156,10 +156,17 @@ class Command(BaseCommand):
         edition missing from the database is an error: CI seeds the fixture, so
         it means the list names a book that isn't there."""
         folder.mkdir(parents=True, exist_ok=True)
-        for slug, language in sorted(EXPORT_EDITIONS):
-            book = Book.objects.select_related("author").filter(slug=slug, language=language).first()
-            if book is None or not is_exportable(book):
-                raise CommandError(f"{slug} ({language}) is listed but not published.")
-            path = folder / f"{slug}.{language}.epub"
+        books = {
+            (b.slug, b.language): b
+            for b in Book.objects.select_related("author").filter(
+                slug__in={slug for slug, _ in EXPORT_EDITIONS}, is_published=True
+            )
+        }
+        missing = sorted(EXPORT_EDITIONS - books.keys())
+        if missing:
+            raise CommandError(f"Listed but not published: {missing}")
+        for key in sorted(EXPORT_EDITIONS):
+            book = books[key]
+            path = folder / book_export.export_filename(book, "epub")
             path.write_bytes(book_export.render_epub(book_export.build_edition(book)))
         self.stdout.write(self.style.SUCCESS(f"Wrote {len(EXPORT_EDITIONS)} EPUBs to {folder}"))

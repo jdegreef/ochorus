@@ -67,15 +67,6 @@ EXPORT_PILOT = frozenset({
 #: "(For Children)" retellings, Key Teachings, Portraits of Courage) is not
 #: here — its rights line needs its own wording first. Listed by hand rather
 #: than derived, so a new import is not downloadable before it has been read.
-#:
-#: HELD: works whose Scripture reads as a modern version (ESV wording) where
-#: the author quoted the KJV — a download is a copy we can't correct later,
-#: and the ESV is not ours to give away. Add one back after a genuine
-#: re-import: baptism-with-the-holy-spirit, godliness, humility-2,
-#: jesus-himself-2, lord-teach-us-to-pray-2, prayer-the-pulse-of-life,
-#: purity-of-heart, spurgeon-on-prayer, talks-to-the-farmer,
-#: the-christians-secret-of-a-happy-life-4, the-god-of-all-comfort,
-#: the-inner-chamber, the-person-and-work-of-the-holy-spirit.
 ENGLISH_CLASSICS = frozenset({
     "a-brand-plucked-from-the-fire",
     "a-call-to-the-unconverted",
@@ -93,6 +84,7 @@ ENGLISH_CLASSICS = frozenset({
     "confessions",
     "days-of-heaven-upon-earth",
     "divine-healing",
+    "divine-songs-for-children",
     "enchiridion",
     "epistles-of-ignatius",
     "essentials-of-prayer",
@@ -159,6 +151,26 @@ ENGLISH_CLASSICS = frozenset({
     "union-and-communion",
     "waiting-on-god",
     "way-into-holiest",
+})
+
+#: Held out of ENGLISH_CLASSICS: their Scripture reads as a modern version (ESV
+#: wording) where the author quoted the KJV. A download is a copy we can't
+#: correct later, and the ESV is not ours to give away. Move one back after a
+#: genuine re-import (``PilotTests`` keeps the two sets apart).
+HELD_ESV = frozenset({
+    "baptism-with-the-holy-spirit",
+    "godliness",
+    "humility-2",
+    "jesus-himself-2",
+    "lord-teach-us-to-pray-2",
+    "prayer-the-pulse-of-life",
+    "purity-of-heart",
+    "spurgeon-on-prayer",
+    "talks-to-the-farmer",
+    "the-christians-secret-of-a-happy-life-4",
+    "the-god-of-all-comfort",
+    "the-inner-chamber",
+    "the-person-and-work-of-the-holy-spirit",
 })
 
 #: Every exportable (slug, language) edition.
