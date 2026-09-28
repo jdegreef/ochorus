@@ -62,7 +62,13 @@ mock the actual cover (3:4 crop + scrim + white title) so you judge the COVER,
 not the painting. Exclude religious/portrait subjects, prefer landscape /
 architecture / sky / water / path. **One facet/subject per book, a different
 painter each**, so an author's shelf reads as one without N identical scenes.
-Verify every finalist's PD flag before building. Record it in
+Verify every finalist's PD flag before building. **Reject a scan with its
+frame baked in** (a gilt strip along an edge — Met Frère *Jerusalem*, 2026-09-28):
+nothing crops it and `covers:bars` only measures DARK bars, so it ships on the cover.
+**Copy the artist and year strings verbatim from the collection** —
+`build_curated_covers` refuses a mismatch ("the manifest's year is not the
+collection's": `c. 1643–45` ≠ `c. 1643–c. 1645`; `Joos de Momper II` ≠ `…, II`).
+Record it in
 `backend/library/curated_art.py` `CURATED` with a one-line rationale + per-work
 `focus` (0–1 crop bias along the overflowing axis; tall hanging scrolls → ~0.3).
 
@@ -266,11 +272,14 @@ the deferred note wanted; `focus=0.6` puts the dark valley in the title band, no
 the sun) + Susanna Wesley `susanna-wesley-clarke` (Hobbema watermill). Batch 17 #4209
 (2026-09-27, AIC — the "New to the Library" classics): Fox's (Ruisdael, Egmond
 ruins), Finney memoirs (Gifford, Catskills sunset), Müller of Bristol (Sohlberg,
-*Fisherman's Cottage* — a lit house in dark pines). IN FLIGHT:
+*Fisherman's Cottage* — a lit house in dark pines). Batch 18 #4244 (Bosworth — Bierstadt;
+Wigglesworth — R. Wilson). Batch 19 (2026-09-28): Hurlbut (Vernet *Morning*), Cyprian
+(Linton *Carthage*), Crowther (Fromentin *On the Nile* — the deferral lifted), Watts
+*Divine Songs* (Cuyp, +lg/sw), Pilgrim's Progress one-syllable (Momper, +lg/sw), Meyer
+*Our Daily Walk* (Dupré *On the Road*). That clears every non-Original plate. IN FLIGHT:
 Church Fathers (5 — Rosa/Corot/Lane/H.Robert/Panini), African-American
 autobiographies (4 — Heade/Chase/Inness/Duncanson).
-Remaining: Crowther (`journal-of-an-expedition-up-the-niger` — DEFERRED, wants an
-AIC tropical/Church once AIC un-throttles) + the Puritan/English devotional group
+Remaining (pre-Batch-19 note): the Puritan/English devotional group
 (Owen, Sibbes, Law, Edwards, Meyer, Guyon, Bounds straggler). Carmichael's
 `if` and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian was
 on `feature/cyprian-treatises` — check first.

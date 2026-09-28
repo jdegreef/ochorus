@@ -332,6 +332,36 @@ class CuratedArtFetchTests(SimpleTestCase):
             )
 
 
+class AicImageWidthTests(SimpleTestCase):
+    """The IIIF server 403s a width it would have to upscale to, so
+    `_aic_image_url` asks for min(1686, the original's width) — Doré's
+    Alpine Scene (1504 wide) could not be fetched at a fixed 1686."""
+
+    def _url(self, thumbnail):
+        from library.curated_art import Artwork
+        from library.management.commands import build_curated_covers as cmd
+
+        record = {"data": {"is_public_domain": True, "image_id": "abc", "thumbnail": thumbnail}}
+        art = Artwork("aic", 1, "A", "T", "1900", "why")
+        with mock.patch.object(cmd, "_json", return_value=record), mock.patch.object(cmd, "_verify"):
+            return cmd._aic_image_url(art)
+
+    def test_a_wide_original_is_asked_for_at_1686(self):
+        self.assertIn("/full/1686,/", self._url({"width": 4000}))
+
+    def test_a_narrower_original_is_asked_for_at_its_own_width(self):
+        self.assertIn("/full/1504,/", self._url({"width": 1504}))
+
+    def test_an_unknown_width_falls_back_to_1686(self):
+        self.assertIn("/full/1686,/", self._url(None))
+
+    def test_an_original_narrower_than_the_cover_is_refused(self):
+        from django.core.management.base import CommandError
+
+        with self.assertRaises(CommandError):
+            self._url({"width": 480})
+
+
 class CuratedArtTests(TestCase):
     """Guards on the curated-artwork manifest (library/curated_art.py)."""
 
