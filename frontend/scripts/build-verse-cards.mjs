@@ -34,7 +34,7 @@
 import satori from 'satori';
 import sharp from 'sharp';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { LANDSCAPE_HEIGHT as H, LANDSCAPE_WIDTH as W } from '../src/lib/coverArt.ts';
@@ -101,6 +101,11 @@ function versePages(build) {
 
 // ── Drawing ─────────────────────────────────────────────────────────────────
 
+/** The translation's short name, from the version the page itself shows —
+ *  never assumed, so a card cannot credit one Bible with another's words. */
+const SHORT = { 'American Standard Version': 'ASV' };
+const versionLabel = (version) => SHORT[version] ?? version ?? '';
+
 const h = (type, style, children, extra = {}) => ({ type, props: { style, children, ...extra } });
 
 function layout(page, fanned) {
@@ -158,7 +163,7 @@ function layout(page, fanned) {
 							{ fontFamily: 'Fraunces', fontStyle: 'italic', fontSize: 34, color: GOLD },
 							page.reference
 						),
-						h('div', { fontSize: 18, color: MUTED, marginLeft: 16 }, 'ASV')
+						h('div', { fontSize: 18, color: MUTED, marginLeft: 16 }, versionLabel(page.version))
 					])
 				]
 			),
@@ -301,21 +306,32 @@ async function main() {
 	const failed = [];
 	const pages = versePages(build);
 	async function one(file) {
-		const page = verseData(readFileSync(file, 'utf8'));
-		const [verse, chapter, book] = dirname(file).split('/').reverse();
+		const [book, chapter, verse] = relative(join(build, 'scripture'), dirname(file)).split(sep);
 		const dest = join(build, verseCardUrl(book, Number(chapter), Number(verse)));
-		mkdirSync(dirname(dest), { recursive: true });
 		try {
+			mkdirSync(dirname(dest), { recursive: true });
+			const page = verseData(readFileSync(file, 'utf8'));
 			if (!page) throw new Error('no scripture data inlined in the page');
 			writeFileSync(dest, await draw(page, coverFiles));
 		} catch (err) {
 			failed.push(`  ${book} ${chapter}:${verse} — ${err.message}`);
-			await sharp(join(build, FALLBACK)).resize(W, H).jpeg({ quality: 82 }).toFile(dest);
+			// The house card, best effort: if even that cannot be written the page
+			// names a missing image, which is still better than a failed deploy.
+			await sharp(join(build, FALLBACK))
+				.resize(W, H)
+				.jpeg({ quality: 82 })
+				.toFile(dest)
+				.catch(() => {});
 		}
 	}
-	// Eight at a time: satori is synchronous JS, but the rasterising and the
-	// JPEG encode run on libvips' own threads, so overlapping cards keeps them busy.
-	for (let i = 0; i < pages.length; i += 8) await Promise.all(pages.slice(i, i + 8).map(one));
+	// A pool of eight: satori is synchronous JS, but rasterising and the JPEG
+	// encode run on libvips' own threads, so keeping eight cards in flight keeps
+	// them busy — and a slow card holds up only its own worker, not a batch.
+	let next = 0;
+	const worker = async () => {
+		while (next < pages.length) await one(pages[next++]);
+	};
+	await Promise.all(Array.from({ length: 8 }, worker));
 	if (failed.length) {
 		console.warn(
 			`build-verse-cards: ${failed.length} page(s) got the default card:\n${failed.join('\n')}`
@@ -328,5 +344,7 @@ async function main() {
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
-	await main();
+	// A share image is never worth a failed deploy: anything this misses, the
+	// pages still render; they only name a card that is not there.
+	await main().catch((err) => console.warn(`build-verse-cards: skipped — ${err.stack ?? err}`));
 }

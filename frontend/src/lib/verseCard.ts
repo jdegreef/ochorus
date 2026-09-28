@@ -40,7 +40,7 @@ export function verseType(text: string): { text: string; size: number } {
 		[60, 58],
 		[110, 48],
 		[170, 42],
-		[260, 34],
+		[230, 34],
 		[360, 28]
 	];
 	const step = steps.find(([max]) => text.length <= max);
