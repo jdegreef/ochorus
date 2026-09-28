@@ -423,10 +423,52 @@ jobs:
         if: always()
         run: pkill -f "manage.py runserver" 2>/dev/null || true
 
+  # --- EPUB validity -------------------------------------------------------
+  # Every downloadable EPUB (library/export_policy.py), built from the seeded
+  # fixture exactly as the API serves it, through the W3C's epubcheck — the
+  # validator Apple Books and most stores apply. A book that fails here fails
+  # silently on a reader's device, where we'd never hear of it. Its own job so
+  # it runs beside the integration long pole, not after it.
+  epub-check:
+    name: EPUB downloads — epubcheck
+    needs: [changes]
+    if: ${{ github.event_name != 'pull_request' || needs.changes.outputs.ci == 'true' || needs.changes.outputs.backend == 'true' || needs.changes.outputs.content == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DJANGO_DEBUG: 'true'
+      EPUBCHECK_VERSION: '5.4.0'
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Build every exportable EPUB
+        working-directory: backend
+        run: |
+          uv sync --frozen
+          uv run python manage.py migrate --noinput
+          uv run python manage.py seed_if_empty
+          uv run python manage.py export_book --all --out "$RUNNER_TEMP/epubs"
+
+      # ubuntu-latest ships a JDK (epubcheck 5 needs 11+). One JVM per book,
+      # run a core apiece; -q prints only what's wrong.
+      - name: epubcheck
+        run: |
+          curl -sfL -o "$RUNNER_TEMP/epubcheck.zip" \
+            "https://github.com/w3c/epubcheck/releases/download/v$EPUBCHECK_VERSION/epubcheck-$EPUBCHECK_VERSION.zip"
+          unzip -q "$RUNNER_TEMP/epubcheck.zip" -d "$RUNNER_TEMP"
+          export JAR="$RUNNER_TEMP/epubcheck-$EPUBCHECK_VERSION/epubcheck.jar"
+          find "$RUNNER_TEMP/epubs" -name '*.epub' -print0 \
+            | xargs -0 -n1 -P"$(nproc)" sh -c 'java -jar "$JAR" -q "$0" || { echo "::error::epubcheck failed: $(basename "$0")"; exit 255; }'
+
   # --- Stable required-check name -----------------------------------------
   # Branch protection requires the context "test-and-build". Splitting the old
   # monolith renamed that job away, so this aggregator RE-EMITS the name and
-  # goes green only when all four real jobs pass. This keeps the required check
+  # goes green only when all the real jobs pass. This keeps the required check
   # stable WITHOUT a branch-protection edit — which matters because every other
   # session's open PR still runs the old single-job ci.yml, and switching the
   # required contexts to the four new names would block all of them behind
@@ -448,7 +490,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: always()
-    needs: [changes, backend-tests, backend-image, frontend-checks, integration]
+    needs: [changes, backend-tests, backend-image, frontend-checks, integration, epub-check]
     steps:
       - name: Every gate passed or was skipped
         run: |
@@ -457,6 +499,7 @@ jobs:
           echo "backend-image:   ${{ needs.backend-image.result }}"
           echo "frontend-checks: ${{ needs.frontend-checks.result }}"
           echo "integration:     ${{ needs.integration.result }}"
+          echo "epub-check:      ${{ needs.epub-check.result }}"
           # The filter itself must have run; a broken filter must not merge blind.
           if [ "${{ needs.changes.result }}" != "success" ]; then
             echo "::error::the changes filter did not succeed"; exit 1
@@ -466,7 +509,8 @@ jobs:
             "backend-tests:${{ needs.backend-tests.result }}" \
             "backend-image:${{ needs.backend-image.result }}" \
             "frontend-checks:${{ needs.frontend-checks.result }}" \
-            "integration:${{ needs.integration.result }}"; do
+            "integration:${{ needs.integration.result }}" \
+            "epub-check:${{ needs.epub-check.result }}"; do
             name="${entry%%:*}"; result="${entry##*:}"
             case "$result" in
               success|skipped) : ;;  # skipped == path filter said this change can't break it

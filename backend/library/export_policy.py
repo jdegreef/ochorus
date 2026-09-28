@@ -6,9 +6,12 @@ from this gate at serialize time, so this module is a prerender content root
 must rebuild the reader. Keeping the gate tiny keeps the renderers and their
 CSS out of the build filter.
 
-PILOT: only these editions are exportable while the format is proven on real
-e-readers. Adding one needs its language's back matter in
-``book_export.STRINGS`` (``tests_book_export.PilotTests`` holds that).
+Two lists. ``EXPORT_PILOT`` is the first editions, each with a generated PDF
+beside its EPUB. ``ENGLISH_CLASSICS`` is the English public-domain library,
+EPUB only — a PDF is a snapshot that goes stale on the next text fix, so those
+wait for a pipeline that rebuilds them. Adding an edition needs its language's
+back matter in ``book_export.STRINGS`` (``tests_book_export.PilotTests`` holds
+that) and a bundled cover (``export_book`` writes it; ``CoverTests`` holds it).
 """
 
 from __future__ import annotations
@@ -59,5 +62,120 @@ EXPORT_PILOT = frozenset({
 })
 
 
+#: English public-domain works whose EPUB says so: the back matter calls the
+#: text public domain, so a work Ochorus wrote (Originals, the "(For Teens)" /
+#: "(For Children)" retellings, Key Teachings, Portraits of Courage) is not
+#: here — its rights line needs its own wording first. Listed by hand rather
+#: than derived, so a new import is not downloadable before it has been read.
+ENGLISH_CLASSICS = frozenset({
+    "a-brand-plucked-from-the-fire",
+    "a-call-to-the-unconverted",
+    "a-retrospect",
+    "a-serious-call",
+    "a-short-and-easy-method-of-prayer",
+    "absolute-surrender",
+    "all-of-grace",
+    "all-things-for-good",
+    "amanda-smith-autobiography",
+    "answers-to-prayer",
+    "around-the-wicket-gate",
+    "cheque-book",
+    "christ-the-healer",
+    "confessions",
+    "days-of-heaven-upon-earth",
+    "divine-healing",
+    "divine-songs-for-children",
+    "enchiridion",
+    "epistles-of-ignatius",
+    "essentials-of-prayer",
+    "evangelization-of-the-world",
+    "evening-by-evening",
+    "ever-increasing-faith",
+    "finney-memoirs",
+    "first-epistle-of-clement",
+    "foxes-book-of-martyrs",
+    "freedom-of-the-will",
+    "george-muller-of-bristol",
+    "gleanings-among-the-sheaves",
+    "grace-abounding",
+    "holy-in-christ",
+    "how-to-bring-men-to-christ",
+    "how-to-succeed-in-the-christian-life",
+    "hurlbuts-life-of-christ",
+    "journal-of-an-expedition-up-the-niger",
+    "life-and-diary-of-david-brainerd",
+    "life-experience-gospel-labours",
+    "life-of-antony",
+    "ministry-of-intercession",
+    "morning-by-morning",
+    "mortification-of-sin",
+    "necessity-of-prayer",
+    "on-loving-god",
+    "on-the-incarnation",
+    "on-the-priesthood",
+    "our-daily-walk",
+    "pilgrims-progress-words-of-one-syllable",
+    "pilgrims-progress",
+    "plain-account-christian-perfection",
+    "possibilities-of-prayer",
+    "power-through-prayer",
+    "prayer-and-praying-men",
+    "prevailing-prayer",
+    "purpose-in-prayer",
+    "reality-of-prayer",
+    "religious-affections",
+    "religious-experience-and-journal",
+    "revival-lectures",
+    "school-of-prayer",
+    "selected-sermons-edwards",
+    "selected-sermons-whitefield",
+    "separation-and-service",
+    "sermons-on-several-occasions",
+    "susanna-wesley-clarke",
+    "ten-commandments",
+    "the-bruised-reed",
+    "the-fourfold-gospel",
+    "the-fundamental-doctrines-of-the-christian-faith",
+    "the-gospel-of-healing",
+    "the-imitation-of-christ",
+    "the-life-of-trust",
+    "the-masters-indwelling",
+    "the-reformed-pastor",
+    "the-unselfishness-of-god",
+    "the-way-to-god",
+    "things-as-they-are",
+    "thoughts-for-the-quiet-hour",
+    "till-he-come",
+    "treatises-of-cyprian",
+    "true-vine",
+    "union-and-communion",
+    "waiting-on-god",
+    "way-into-holiest",
+})
+
+#: Held out of ENGLISH_CLASSICS: their Scripture reads as a modern version (ESV
+#: wording) where the author quoted the KJV. A download is a copy we can't
+#: correct later, and the ESV is not ours to give away. Move one back after a
+#: genuine re-import (``PilotTests`` keeps the two sets apart).
+HELD_ESV = frozenset({
+    "baptism-with-the-holy-spirit",
+    "godliness",
+    "humility-2",
+    "jesus-himself-2",
+    "lord-teach-us-to-pray-2",
+    "prayer-the-pulse-of-life",
+    "purity-of-heart",
+    "spurgeon-on-prayer",
+    "talks-to-the-farmer",
+    "the-christians-secret-of-a-happy-life-4",
+    "the-god-of-all-comfort",
+    "the-inner-chamber",
+    "the-person-and-work-of-the-holy-spirit",
+})
+
+#: Every exportable (slug, language) edition.
+EXPORT_EDITIONS = EXPORT_PILOT | {(slug, "en") for slug in ENGLISH_CLASSICS}
+
+
 def is_exportable(book) -> bool:
-    return book.is_published and (book.slug, book.language) in EXPORT_PILOT
+    return book.is_published and (book.slug, book.language) in EXPORT_EDITIONS

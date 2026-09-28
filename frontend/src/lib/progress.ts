@@ -11,6 +11,7 @@ import {
 	workKey,
 	workSlugKey,
 	baseEdition,
+	furthestOf,
 	parseWorkSlugKey,
 	type WorkKind,
 	type ProgressRecord,
@@ -96,6 +97,11 @@ export function saveProgress(
 		readingActivity.recordToday();
 		return;
 	}
+	// Opening the NEXT chapter (or any before it) is reading on and moves the
+	// furthest; jumping further ahead is a peek, which only reading that chapter
+	// to its end (`markReached`) turns into progress.
+	const before = prev ? furthestOf(prev) : order;
+	const furthest = order <= before + 1 ? Math.max(before, order) : before;
 	// Carry a finished stamp forward: reopening a finished work and reading on
 	// does not un-finish it (only an explicit un-finish clears it).
 	const rec: ProgressRecord = {
@@ -103,13 +109,28 @@ export function saveProgress(
 		paragraph_index,
 		language,
 		at: Date.now(),
-		finished_at: prev?.finished_at ?? null
+		finished_at: prev?.finished_at ?? null,
+		furthest
 	};
 	map[key] = rec;
 	write(map);
 	readingSync.pushProgress(kind, slug, rec);
 	// Opening/advancing a chapter is the "read today" signal for the streak.
 	readingActivity.recordToday();
+}
+
+/**
+ * The reader got to the end of chapter `order`: it now counts as reached, even
+ * if they arrived by jumping ahead. A no-op unless that moves the furthest.
+ */
+export function markReached(slug: string, order: number, kind: WorkKind = 'book'): void {
+	if (!browser) return;
+	const map = read();
+	const rec = map[workSlugKey(kind, slug)];
+	if (!rec || furthestOf(rec) >= order) return;
+	rec.furthest = order;
+	write(map);
+	readingSync.pushProgress(kind, slug, rec);
 }
 
 /** Has the reader finished this work? */
@@ -199,7 +220,8 @@ export function offerFinishUnopened(
 		paragraph_index: 0,
 		language,
 		at: now,
-		finished_at: now
+		finished_at: now,
+		furthest: Math.max(1, lastOrder)
 	};
 	map[key] = rec;
 	write(map);
@@ -287,8 +309,8 @@ export function fetchSyncedProgress(slug: string, kind: WorkKind = 'book'): Prom
 /**
  * Store the reader's by-words "% through the book" on the work's record, for
  * the surfaces that can't compute it (see ProgressRecord.pct). Only while the
- * record names this chapter, and never a push or a new `at`: it describes the
- * place, it doesn't move it.
+ * record names this chapter, and never a new `at`: it describes the place, it
+ * doesn't move it.
  */
 export function saveProgressPercent(
 	slug: string,
@@ -300,9 +322,14 @@ export function saveProgressPercent(
 	const map = read();
 	const rec = map[workSlugKey(kind, slug)];
 	const rounded = Math.round(pct);
-	if (!rec || rec.order !== order || rec.pct === rounded) return;
+	// Not while peeking past the furthest chapter: the figure would describe a
+	// place Continue doesn't go back to.
+	if (!rec || rec.order !== order || rec.order > furthestOf(rec) || rec.pct === rounded) return;
 	rec.pct = rounded;
 	write(map);
+	// Debounced like any position push, so it rides the next one; the account
+	// takes it for the same position (see _upsert_progress).
+	readingSync.pushProgress(kind, slug, rec);
 }
 
 /**

@@ -362,6 +362,29 @@ export interface ProgressRecord {
 	 * it is read here. See `workPercent`.
 	 */
 	pct?: number;
+	/**
+	 * The furthest chapter the reader has REACHED, where `order` is only the
+	 * one last opened: opening the next chapter or reading one to its end
+	 * advances it, a peek ahead from the contents or a search doesn't — so
+	 * Continue can come back from a peek. Absent on records from before it
+	 * existed: read as `order` (see `furthestOf`). Synced; the account keeps
+	 * the highest any device reports.
+	 */
+	furthest?: number;
+}
+
+/** The furthest chapter reached; a record from before it was kept, its `order`. */
+export function furthestOf(rec: Pick<ProgressRecord, 'order' | 'furthest'>): number {
+	return rec.furthest ?? rec.order;
+}
+
+/**
+ * The chapter "Continue" opens: the one last opened, unless that was a peek
+ * past the furthest chapter reached — then back to the furthest. (The reader
+ * restores the paragraph there from its own anchor.)
+ */
+export function resumeOrderOf(rec: Pick<ProgressRecord, 'order' | 'furthest'>): number {
+	return Math.min(rec.order, furthestOf(rec));
 }
 
 /** `workSlugKey(kind, slug)` -> ProgressRecord. */

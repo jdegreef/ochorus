@@ -11,8 +11,10 @@ import {
 	removeWork,
 	restoreWork,
 	getScrollAnchor,
-	saveProgressPercent
+	saveProgressPercent,
+	markReached
 } from './progress';
+import { resumeOrderOf } from './reading-schema';
 import { pendingAt } from './removals';
 import { undo } from './undo.svelte';
 
@@ -213,6 +215,55 @@ describe('the stored book percent (review bug #15)', () => {
 		saveProgress('humility', 3, 'en');
 		saveProgressPercent('humility', 3, 42);
 		saveProgress('humility', 4, 'en');
+		expect(getProgressRecord('humility')?.pct).toBeUndefined();
+	});
+});
+
+describe('the furthest chapter reached (review bug #14)', () => {
+	it('moves on when the reader opens the next chapter', () => {
+		saveProgress('humility', 1, 'en');
+		saveProgress('humility', 2, 'en');
+		saveProgress('humility', 3, 'en');
+		expect(getProgressRecord('humility')).toMatchObject({ order: 3, furthest: 3 });
+	});
+
+	it('does not count a peek ahead, and Continue comes back from it', () => {
+		saveProgress('humility', 3, 'en');
+		saveProgress('humility', 20, 'en'); // from the contents, or a search hit
+		const rec = getProgressRecord('humility')!;
+		expect(rec).toMatchObject({ order: 20, furthest: 3 });
+		expect(resumeOrderOf(rec)).toBe(3);
+	});
+
+	it('counts a jumped-to chapter once it is read to its end', () => {
+		saveProgress('humility', 3, 'en');
+		saveProgress('humility', 20, 'en');
+		markReached('humility', 20);
+		const rec = getProgressRecord('humility')!;
+		expect(rec.furthest).toBe(20);
+		expect(resumeOrderOf(rec)).toBe(20);
+	});
+
+	it('going back to reread keeps the furthest', () => {
+		saveProgress('humility', 5, 'en');
+		saveProgress('humility', 2, 'en');
+		expect(getProgressRecord('humility')).toMatchObject({ order: 2, furthest: 5 });
+		expect(resumeOrderOf(getProgressRecord('humility')!)).toBe(2);
+	});
+
+	it('reads a record from before the field as reached where it stands', () => {
+		localStorage.setItem(
+			'ochorus:progress',
+			JSON.stringify({ humility: { order: 7, paragraph_index: 0, language: 'en', at: 1 } })
+		);
+		saveProgress('humility', 8, 'en'); // the next chapter: reading on
+		expect(getProgressRecord('humility')?.furthest).toBe(8);
+	});
+
+	it('stores no percent while peeking past the furthest', () => {
+		saveProgress('humility', 3, 'en');
+		saveProgress('humility', 20, 'en');
+		saveProgressPercent('humility', 20, 90);
 		expect(getProgressRecord('humility')?.pct).toBeUndefined();
 	});
 });

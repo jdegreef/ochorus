@@ -449,6 +449,8 @@
   "bios_show_more": "Show %n% more",
   "bios_read_more": "Read full biography",
   "book_start_over": "Start over",
+  "book_last_opened": "Last opened: chapter %n%",
+  "book_back_to_furthest": "Back to chapter %n%, the furthest you’ve read",
   "book_begin_reading": "Begin reading",
   "book_continue_ch": "Continue · ch.",
   "book_download_pdf": "Download PDF",

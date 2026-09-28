@@ -7,7 +7,8 @@
 	 * in the reader's immersive focus mode, and over the admin console (admins have
 	 * the feedback queue). Mounted once in the root layout; it captures the current
 	 * page's context through the dialog and records `source: 'fab'`. On phones
-	 * with the tab bar it steps aside: the bar's centre "+" does the same job.
+	 * with the tab bar, or in the chapter reader, it steps aside: the bar's
+	 * centre "+" does the same job.
 	 */
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
@@ -49,7 +50,18 @@
 		/* Logical, so it sits at the reading end — bottom-right in English,
 		   bottom-left in Arabic. */
 		inset-inline-end: 1rem;
-		bottom: max(1rem, env(safe-area-inset-bottom));
+		/* Clear whichever bottom bar is up — the chapter reader's progress footer
+		   (--foot-h, which already includes the home-indicator strip) or the
+		   Listen bar — as the floating bookmark does. It sat on top of the phone
+		   reader's "Next" button. */
+		bottom: calc(
+			1rem +
+				max(
+					env(safe-area-inset-bottom),
+					var(--foot-h, 0px),
+					var(--listenbar-h, 0px) + env(safe-area-inset-bottom)
+				)
+		);
 		z-index: 40; /* above content, below the dialog overlay (z-50) */
 		display: flex;
 		align-items: center;
@@ -83,9 +95,11 @@
 		height: 1.5rem;
 	}
 	/* Phones with the tab bar carry the "+" in its centre slot (TabBar.svelte),
-	   so the floating one would only duplicate it — and it used to cover "More". */
+	   and the phone chapter reader in its footer's centre slot — so the floating
+	   one would only duplicate it (and it covered "More", then the text). */
 	@media (max-width: 639.98px) {
-		:global(:root:has(.tabbar)) .fb-fab {
+		:global(:root:has(.tabbar)) .fb-fab,
+		:global(:root:has(.foot-actions)) .fb-fab {
 			display: none;
 		}
 	}

@@ -1238,3 +1238,71 @@ class MarksConcurrentMergeTests(TransactionTestCase):
         self.assertEqual(ChapterMarks.objects.count(), 1)
         ids = {m["id"] for m in ChapterMarks.objects.get().marks}
         self.assertEqual(ids, {"A", "B"}, "a highlight made on one device was lost to the other's merge")
+
+
+class FurthestAndPercentTests(TestCase):
+    """The furthest chapter reached only grows; the percent rides the position."""
+
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-0000000000e1")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="far@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+
+    def put(self, order, at, **extra):
+        return self.client.put(
+            "/api/reading/progress/humility/",
+            {"language": "en", "chapter_order": order, "paragraph_index": 0, "updated_at": at, **extra},
+            format="json",
+        )
+
+    def row(self):
+        return ReadingProgress.objects.get(profile=self.profile, book_slug="humility")
+
+    def test_furthest_only_grows(self):
+        self.put(5, 1000, furthest_order=5)
+        # A peek back to chapter 2 (newer position) doesn't lower the furthest.
+        self.put(2, 2000, furthest_order=5)
+        self.assertEqual((self.row().chapter_order, self.row().furthest_order), (2, 5))
+        # A device reporting a lower furthest can't lower it either.
+        self.put(3, 3000, furthest_order=3)
+        self.assertEqual(self.row().furthest_order, 5)
+
+    def test_a_stale_position_still_lands_its_furthest(self):
+        self.put(4, 5000, furthest_order=4)
+        # An older push (by the client clock) from a device that had read further.
+        self.put(7, 1000, furthest_order=7)
+        self.assertEqual((self.row().chapter_order, self.row().furthest_order), (4, 7))
+
+    def test_an_older_client_leaves_the_furthest_alone(self):
+        self.put(6, 1000, furthest_order=6)
+        self.put(9, 2000)  # no furthest_order: an older bundle's peek, not a reach
+        self.assertEqual((self.row().chapter_order, self.row().furthest_order), (9, 6))
+
+    def test_percent_travels_with_the_position(self):
+        self.put(3, 1000, pct=30)
+        self.assertEqual(self.row().pct, 30)
+        self.put(2, 500, pct=12)  # stale: the stored position and its percent stay
+        self.assertEqual(self.row().pct, 30)
+        self.put(4, 2000)  # a newer position that didn't measure one
+        self.assertIsNone(self.row().pct)
+        self.put(5, 3000, pct=250)  # clamped
+        self.assertEqual(self.row().pct, 100)
+        # The same position (same clock), measured again: taken.
+        self.put(5, 3000, pct=64)
+        self.assertEqual(self.row().pct, 64)
+
+    def test_state_and_merge_carry_both(self):
+        res = self.client.post(
+            "/api/reading/merge/",
+            {"progress": [{"kind": "book", "book_slug": "humility", "language": "en",
+                           "chapter_order": 8, "paragraph_index": 3, "updated_at": 1000,
+                           "furthest_order": 6, "pct": 71}]},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 200)
+        state = self.client.get("/api/reading/state/").data
+        self.assertEqual(state["progress"][0]["furthest_order"], 6)
+        self.assertEqual(state["progress"][0]["pct"], 71)

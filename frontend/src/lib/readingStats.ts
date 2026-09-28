@@ -4,6 +4,7 @@ import {
 	MARKS_KEY,
 	FAVORITES_KEY,
 	BOOKMARKS_KEY,
+	resumeOrderOf,
 	type MarksStore,
 	type BookmarksStore,
 	type WorkKind
@@ -96,7 +97,7 @@ export async function collectReadingActivity(
 			slug: p.slug,
 			title: m?.title ?? unslug(p.slug),
 			author: m?.author ?? '',
-			order: p.order,
+			order: resumeOrderOf(p),
 			at: p.at,
 			finished: p.finished_at != null,
 			finishedAt: p.finished_at ?? null

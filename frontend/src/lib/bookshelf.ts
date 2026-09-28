@@ -1,7 +1,7 @@
 import type { BookSummary } from './library-public';
 import { chapterPath } from './editionHref';
 import type { FavoriteEntry } from './favorites.svelte';
-import type { ProgressRecord, WorkKind } from './reading-schema';
+import { resumeOrderOf, type ProgressRecord, type WorkKind } from './reading-schema';
 import { workPercent } from './reading';
 import { authorPath } from './originals';
 import { unslug } from './strings';
@@ -96,8 +96,7 @@ export function buildShelves(
 			book,
 			status: finished ? 'finished' : 'reading',
 			saved: savedAt.has(p.slug),
-			order: p.order,
-			paragraph: p.paragraph_index,
+			...resumePlace(p),
 			pct: workPercent(p, book.chapter_count),
 			at: (finished ? p.finished_at : p.at) ?? p.at,
 			paused,
@@ -219,8 +218,7 @@ export function customShelfItems(
 			book,
 			status,
 			saved: saved.has(slug),
-			order: p ? p.order : null,
-			paragraph: p ? p.paragraph_index : 0,
+			...(p ? resumePlace(p) : { order: null, paragraph: 0 }),
 			pct: p ? workPercent(p, book.chapter_count) : 0,
 			at,
 			paused: status === 'reading' && !!p && isPaused(p.at, now),
@@ -253,6 +251,13 @@ export function sortShelf(items: ShelfBook[], mode: ShelfSort, locale = 'en'): S
 	else if (mode === 'shortest') sorted.sort((a, b) => lengthOf(a.book) - lengthOf(b.book) || byTitle(a, b));
 	else sorted.sort((a, b) => lengthOf(b.book) - lengthOf(a.book) || byTitle(a, b));
 	return sorted;
+}
+
+/** Continue's chapter (a peek ahead returns to the furthest reached) and the
+ *  paragraph to land on — the record's own only when it names that chapter. */
+function resumePlace(p: ProgressRecord): { order: number; paragraph: number } {
+	const order = resumeOrderOf(p);
+	return { order, paragraph: order === p.order ? p.paragraph_index : 0 };
 }
 
 /** Where a shelf book's link goes: the exact resume point for a book being

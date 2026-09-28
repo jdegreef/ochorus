@@ -2,6 +2,7 @@
 
     uv run python manage.py export_book the-secret-of-guidance --format pdf
     uv run python manage.py export_book the-secret-of-guidance --format epub --out /tmp/b.epub
+    uv run python manage.py export_book --all --out /tmp/epubs   # every exportable EPUB (CI's epubcheck)
 
 PDF is printed by headless Chrome from the print HTML (see
 ``library/book_export.py`` for why it is built off-server). The default PDF
@@ -20,7 +21,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
 from library import book_export
-from library.export_policy import is_exportable
+from library.export_policy import EXPORT_EDITIONS, is_exportable
 from library.models import Book
 
 _CHROME_CANDIDATES = [
@@ -113,12 +114,21 @@ class Command(BaseCommand):
     help = "Export a book edition as EPUB, print HTML, or PDF."
 
     def add_arguments(self, parser):
-        parser.add_argument("slug")
+        parser.add_argument("slug", nargs="?")
+        parser.add_argument(
+            "--all", action="store_true",
+            help="Write the EPUB of every exportable edition into the --out folder.",
+        )
         parser.add_argument("--language", default="en")
         parser.add_argument("--format", choices=["epub", "html", "pdf"], default="pdf")
         parser.add_argument("--out", help="Output path (default depends on format).")
 
     def handle(self, slug, language, format, out, **options):
+        if options["all"]:
+            self._all_epubs(Path(out or "epubs"))
+            return
+        if not slug:
+            raise CommandError("Give a slug, or --all.")
         try:
             book = Book.objects.select_related("author").get(slug=slug, language=language)
         except Book.DoesNotExist as e:
@@ -140,3 +150,23 @@ class Command(BaseCommand):
             path = Path(out) if out else _STATIC_PDFS / book_export.export_filename(book, "pdf")
             _print_pdf(edition, path)
         self.stdout.write(self.style.SUCCESS(f"Wrote {path}"))
+
+    def _all_epubs(self, folder: Path) -> None:
+        """Every exportable edition's EPUB, as the API would serve it. A listed
+        edition missing from the database is an error: CI seeds the fixture, so
+        it means the list names a book that isn't there."""
+        folder.mkdir(parents=True, exist_ok=True)
+        books = {
+            (b.slug, b.language): b
+            for b in Book.objects.select_related("author").filter(
+                slug__in={slug for slug, _ in EXPORT_EDITIONS}, is_published=True
+            )
+        }
+        missing = sorted(EXPORT_EDITIONS - books.keys())
+        if missing:
+            raise CommandError(f"Listed but not published: {missing}")
+        for key in sorted(EXPORT_EDITIONS):
+            book = books[key]
+            path = folder / book_export.export_filename(book, "epub")
+            path.write_bytes(book_export.render_epub(book_export.build_edition(book)))
+        self.stdout.write(self.style.SUCCESS(f"Wrote {len(EXPORT_EDITIONS)} EPUBs to {folder}"))
