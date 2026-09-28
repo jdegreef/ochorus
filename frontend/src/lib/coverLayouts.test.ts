@@ -1,5 +1,3 @@
-import { readFileSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { channels, contrastRatio as contrast, isArtCover } from './coverArt';
@@ -13,6 +11,7 @@ import {
 	layoutKey
 } from './coverLayouts';
 import { BOOK_STYLE } from './coverStyles';
+import { allBookRows } from '../test/bookRows';
 import { COVER_CSS_CODE, blocksFor, lastDecl } from '../test/coverCss';
 
 /**
@@ -51,26 +50,7 @@ function number(selector: string, pattern: RegExp): number {
 	return Number(v);
 }
 
-type BookRow = {
-	slug: string;
-	title: string;
-	language: string;
-	author: string[];
-	cover_url?: string;
-	series?: string[] | null;
-};
-
-const BOOKS = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
-
-/** Every edition's book row in the shipped fixture. */
-const allBooks = (): BookRow[] =>
-	readdirSync(BOOKS)
-		.filter((f) => f.endsWith('.json'))
-		.flatMap((f) => JSON.parse(readFileSync(join(BOOKS, f), 'utf8')))
-		.filter((r: { model: string }) => r.model === 'library.book')
-		.map((r: { fields: BookRow }) => r.fields);
-
-const englishBooks = () => allBooks().filter((b) => b.language === 'en');
+const englishBooks = () => allBookRows().filter((b) => b.language === 'en');
 
 describe('the layout table and the stylesheet name the same things', () => {
 	it('draws every layout it names, and names every layout it draws', () => {
@@ -129,7 +109,7 @@ describe('the Key Teachings wear one series look', () => {
 	// came out in three layouts and three faces.
 	const volumes = [
 		...new Set(
-			allBooks()
+			allBookRows()
 				.filter((b) => b.series?.[0] === 'key-teachings')
 				.map((b) => b.slug)
 		)
@@ -212,7 +192,7 @@ describe('the rail', () => {
 		// The rail sets its title sideways in a 23cqw column, which holds two
 		// lines of it. A longer title wraps into a third that spills over the
 		// band onto the painting, so an author with one wants another layout.
-		const long = allBooks()
+		const long = allBookRows()
 			.filter((b) => AUTHOR_LAYOUT[b.author[0]]?.layout === 'rail' && isArtCover(b.cover_url))
 			.map((b) => b.title)
 			.filter((title) => title.length > 28);
