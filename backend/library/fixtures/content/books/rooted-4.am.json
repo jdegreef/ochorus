@@ -44,6 +44,10 @@
   "cover_url": "/covers/am/rooted-4.svg",
   "pdf_url": "",
   "cover_color": "#34495e",
+  "series": [
+   "rooted"
+  ],
+  "series_position": 4,
   "sort_order": 78,
   "is_published": true,
   "created_at": "2026-09-27T00:00:00Z",

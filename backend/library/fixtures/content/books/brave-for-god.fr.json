@@ -12,6 +12,10 @@
   ],
   "cover_url": "/covers/art/brave-for-god.jpg",
   "cover_color": "#8a3f4a",
+  "series": [
+   "brave-for-god"
+  ],
+  "series_position": 1,
   "publication_year": null,
   "source_url": "",
   "sort_order": 71,

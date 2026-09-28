@@ -252,5 +252,83 @@
   "created_at": "2026-09-27T00:00:00Z",
   "updated_at": "2026-09-27T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "am",
+  "title": "ለእግዚአብሔር ደፋር",
+  "description": "",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "es",
+  "title": "Valientes por Dios",
+  "description": "Historias verdaderas de fe para lectores jóvenes: gente común de todas partes del mundo que confió en Dios y fue hecha valiente.",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "fr",
+  "title": "Courageux pour Dieu",
+  "description": "Des histoires vraies de foi pour les jeunes lecteurs : des gens ordinaires, venus de tous les coins du monde, qui se confièrent en Dieu et furent rendus courageux.",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "pt",
+  "title": "Corajosos por Deus",
+  "description": "Histórias verdadeiras de fé para leitores jovens: gente comum de todas as partes do mundo que confiou em Deus e foi feita corajosa.",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "am",
+  "title": "ሥር የሰደደ – ከእግዚአብሔር ጋር 30 ቀናት ለወጣቶች",
+  "description": "",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "am",
+  "title": "የንጉሡ ሴት ልጆች – ከእግዚአብሔር ጋር 30 ቀናት ለልጃገረዶች",
+  "description": "",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
 }
 ]
