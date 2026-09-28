@@ -1812,6 +1812,16 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # Here as well as in the fixture because `seed_books` deliberately never
     # touches an existing book's chapters (see its `chapter_drift` note) — a
     # fixture edit alone reaches a fresh database and never a deployed one.
+    "days-of-heaven-upon-earth": {
+        # Two epigraph citations mis-read by the scan (found while translating
+        # the book to French): the July 24 words are Romans 8:4 ("viii" lost
+        # an "i"), and the September 13 "fiery trial" is 1 Peter 4:12 — there
+        # is no 1 Peter 12.
+        "replacements": [
+            ("fulfilled in us\u201d (Rom. vii. 4)", "fulfilled in us\u201d (Rom. viii. 4)"),
+            ("(I. Peter xii. 16)", "(I. Peter iv. 12)"),
+        ],
+    },
     "confessions": {
         "replacements": [
             ("his socalled constellations", "his so-called constellations"),
