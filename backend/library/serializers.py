@@ -7,6 +7,7 @@ from rest_framework import serializers
 
 from .alternate_titles import alternate_titles
 from .contemporize import MODERN_LANGUAGE
+from .cover_face import COVER_AUTHOR_FIELDS, cover_face
 from .curated_art import credit
 from .export_policy import is_exportable
 from .localization import language_from_request
@@ -846,7 +847,7 @@ class CoverAuthorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Author
-        fields = ["slug", "name", "birth_year"]
+        fields = list(COVER_AUTHOR_FIELDS)
 
 
 class CoverBookSerializer(BookListSerializer):
@@ -2075,16 +2076,11 @@ def _plan_day_one(plan, chapters):
 
 
 def _book_cover(book):
-    """A book as a strip tile. Shared by the plan strip and the topic fan so the
-    two payloads cannot drift — `kind`/`slug` were once on the topic side only,
-    which is what forced the frontend type to make them optional."""
-    return {
-        "kind": "book",
-        "slug": book.slug,
-        "cover_url": book.cover_url,
-        "cover_color": book.cover_color,
-        "title": book.title,
-    }
+    """A book as a strip tile. Shared by the plan strip, the topic fan and the
+    series fan so the payloads cannot drift — `kind`/`slug` were once on the
+    topic side only, which is what forced the frontend type to make them
+    optional. The rest is ``cover_face``: what the thumbnail's type needs."""
+    return {"kind": "book", **cover_face(book)}
 
 
 def _plan_covers(plan, books, limit=5):

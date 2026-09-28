@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import * as m from '$lib/paraglide/messages.js';
-	import type { SeriesDetail } from '$lib/library-public';
+	import { toBookTile, type SeriesDetail } from '$lib/library-public';
 	import { bookProgressReader } from '$lib/progress';
 	import { contentLang } from '$lib/reading';
 	import { nextInSeries, seriesAges, seriesProgress, seriesProgressLabel } from '$lib/series';
@@ -115,13 +115,7 @@
 		</div>
 		<div class="hidden shrink-0 pt-1 sm:block">
 			<CoverStrip
-				covers={series.books.map((b) => ({
-					kind: 'book' as const,
-					slug: b.slug,
-					title: b.title,
-					cover_url: b.cover_url,
-					cover_color: b.cover_color
-				}))}
+				covers={series.books.map(toBookTile)}
 				max={5}
 				size="lg"
 			/>

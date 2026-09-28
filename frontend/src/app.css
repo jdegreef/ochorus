@@ -1844,7 +1844,9 @@ nav.appnav .navsearch:hover {
 .cover-fan .cover:nth-child(4) {
 	transform: rotate(7deg);
 }
-.cover-fan .cover img,
+/* The bare-ground fallback only (`> img`): a drawn BookCover inside `.cover`
+   sizes its own images, and this rule would crop its mat. */
+.cover-fan .cover > img,
 .cover-fan .cover-fallback {
 	width: 100%;
 	height: 100%;

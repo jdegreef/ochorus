@@ -12,7 +12,7 @@
 	// script (see its header). Global rather than scoped, like app.css's other
 	// component classes, and namespaced under `.cover-*` so it cannot collide.
 	import './cover-type.css';
-	import type { CoverBook } from '$lib/library-public';
+	import type { CoverFace } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { hydrateSrc, type ImgSource } from '$lib/hydrateSrc';
 	import BrandMark from './BrandMark.svelte';
@@ -73,7 +73,8 @@
 		rounded = 'rounded-card',
 		priority = false
 	}: {
-		book: CoverBook;
+		/** Any `CoverBook` fits; a tile or search hit carries just these fields. */
+		book: CoverFace;
 		rounded?: string;
 		/** The page's main image (a book's own page): load it eagerly, declare its
 		 * intrinsic size so space is reserved before app.css lands, and skip the

@@ -26,6 +26,7 @@ from django.db.models.functions import Coalesce
 
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
+from .cover_face import cover_face
 from .fts import config_for
 from .models import (
     Article,
@@ -786,6 +787,8 @@ def _book_hit(b, ctx):
         # if it never does. Reserving the space is what stops the list reflowing
         # under the reader's cursor.
         "cover_color": b.cover_color,
+        # What the thumbnail's type needs: a plate is a wordless ground.
+        "cover": cover_face(b),
         "snippet": fallback_snippet(b.description, ctx.q),
         "date": _date(b.created_at),
     }
@@ -836,6 +839,7 @@ def _chapter_hit(c, snippet):
         "chapter_title": c.title,
         "cover_url": c.book.cover_url,
         "cover_color": c.book.cover_color,
+        "cover": cover_face(c.book),
         "snippet": snippet,
         "date": _date(c.book.created_at),
     }

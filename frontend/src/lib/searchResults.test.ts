@@ -241,3 +241,30 @@ describe('navList', () => {
 		expect(nav.types.get('humility:2')).toBe('chapter');
 	});
 });
+
+describe('cover faces', () => {
+	const face = {
+		slug: 'rooted-1',
+		language: 'en',
+		title: 'Rooted',
+		subtitle: '',
+		cover_title: '',
+		cover_url: '/covers/rooted-1.svg',
+		cover_color: '#2f5d3a',
+		series_position: 1,
+		author: { slug: 'ochorus', name: 'Ochorus', birth_year: null }
+	};
+
+	it('carries a book or chapter hit’s cover so the thumbnail can draw it', () => {
+		const withFace = (h: SearchHit) => ({ ...h, cover: face }) as SearchHit;
+		expect(toRow(withFace(book('rooted-1')), ctx).face).toEqual(face);
+		expect(toRow(withFace(chapter('rooted-1', 2)), ctx).face).toEqual(face);
+		expect(passageBooks([withFace(chapter('rooted-1', 2))])[0].face).toEqual(face);
+	});
+
+	it('leaves it out from an API behind this build, so the bare image still shows', () => {
+		const row = toRow(book(), ctx);
+		expect(row.face).toBeUndefined();
+		expect(row.image).toBe('/c/humility.webp');
+	});
+});

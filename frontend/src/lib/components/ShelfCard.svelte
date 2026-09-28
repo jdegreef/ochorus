@@ -2,7 +2,8 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import type { Snippet } from 'svelte';
-	import { isSermonTile, type TopicCover } from '$lib/library-public';
+	import { isSermonTile, tileFace, type TopicCover } from '$lib/library-public';
+	import BookCover from '$lib/components/BookCover.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
 	import { sermonArt } from '$lib/sermonArt';
 	import type { EmblemName } from '$lib/emblems';
@@ -77,8 +78,13 @@
 							<Emblem name={art.emblem} />
 						</span>
 					{:else}
+						{@const face = tileFace(cover)}
 						<div class="cover">
-							{#if cover.cover_url}
+							{#if face}
+								<!-- Drawn, not a bare image: a plate ground has no words, so
+								     it read as a blank block (mobile review #3). -->
+								<BookCover book={face} rounded="" />
+							{:else if cover.cover_url}
 								{@const source = { src: cover.cover_url, srcset: coverSrcset(cover.cover_url) || undefined }}
 								<img
 									src={source.src}

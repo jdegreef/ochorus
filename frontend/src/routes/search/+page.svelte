@@ -3,6 +3,7 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import Icon from '$lib/components/Icon.svelte';
 	import { coverSrcset } from '$lib/coverArt';
+	import BookCover from '$lib/components/BookCover.svelte';
 	import { onMount } from 'svelte';
 	import {
 		search,
@@ -10,6 +11,7 @@
 		listTopics,
 		getPopularSearches,
 		recordSearchClick,
+		type CoverFace,
 		type SearchHit,
 		type SearchScope,
 		type SearchSort,
@@ -683,11 +685,21 @@
 {#snippet thumb(row: {
 	image: string;
 	color: string;
+	face?: CoverFace;
 	round: boolean;
 	small?: boolean;
 	focus?: string;
 })}
-	{#if row.image}
+	{#if row.face}
+		<!-- A book's cover DRAWN, as everywhere else it appears: a plate is a
+		     wordless ground, so the bare image read as a blank block. -->
+		<!-- aria-hidden: the row's own title already names the book, and the
+		     cover's "Cover of …" label would read it twice (the old thumb was
+		     alt=""). -->
+		<div class="flex-none {row.small ? 'w-6' : 'w-12'}" aria-hidden="true">
+			<BookCover book={row.face} rounded="rounded-sm" />
+		</div>
+	{:else if row.image}
 		{@const source = { src: row.image, srcset: coverSrcset(row.image) || undefined }}
 		{@const boxStyle = [
 			row.color ? `background-color:${row.color}` : '',
@@ -1099,6 +1111,7 @@
 											{@render thumb({
 												image: pb.cover,
 												color: pb.color,
+												face: pb.face,
 												round: false,
 												small: true
 											})}

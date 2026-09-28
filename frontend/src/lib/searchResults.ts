@@ -16,7 +16,7 @@
 import { portraitPosition } from '$lib/portraits';
 import { authorPath } from './originals';
 import { scripturePageHref } from '$lib/library-public';
-import type { ChapterHit, SearchHit, SearchType } from '$lib/library-public';
+import type { ChapterHit, CoverFace, SearchHit, SearchType } from '$lib/library-public';
 import { chapterName } from './reading';
 
 /** One flat shape for every hit type, so the list renders uniformly. */
@@ -35,6 +35,9 @@ export interface Row {
 	image: string;
 	/** Backing colour for the reserved box, so the list never reflows. */
 	color: string;
+	/** A book's cover to DRAW (title over its ground) rather than show as a bare
+	 *  image — a plate ground carries no words. Absent on non-book rows. */
+	face?: CoverFace;
 	/** Portraits are round and small; covers keep a book's proportions. */
 	round: boolean;
 	/** Where the face sits in a portrait; unset for covers, which crop nothing. */
@@ -84,6 +87,7 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				date: hit.date,
 				image: hit.cover_url,
 				color: hit.cover_color,
+				face: hit.cover,
 				round: false
 			};
 		case 'topic':
@@ -164,6 +168,7 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				date: hit.date,
 				image: hit.cover_url,
 				color: hit.cover_color,
+				face: hit.cover,
 				round: false
 			};
 	}
@@ -216,6 +221,7 @@ export interface PassageBook {
 	date: string;
 	cover: string;
 	color: string;
+	face?: CoverFace;
 	chapters: { key: string; order: number; title: string; snippet: string }[];
 }
 
@@ -240,6 +246,7 @@ export function passageBooks(hits: SearchHit[]): PassageBook[] {
 				date: c.date,
 				cover: c.cover_url,
 				color: c.cover_color,
+				face: c.cover,
 				chapters: []
 			};
 			by.set(c.book_slug, g);

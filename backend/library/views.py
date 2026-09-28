@@ -724,7 +724,13 @@ class SeriesListView(PublicContentCacheMixin, APIView):
         members: dict[int, list] = {}
         for book in (
             Book.objects.filter(language=language, is_published=True, series__isnull=False)
-            .only("slug", "title", "cover_url", "cover_color", "series", "series_position")
+            .select_related("author")
+            # The tile's cover_face fields (and the author it names), no more.
+            .only(
+                "slug", "language", "title", "subtitle", "cover_title", "cover_url",
+                "cover_color", "series", "series_position",
+                "author__slug", "author__name", "author__birth_year",
+            )
             .order_by(*SERIES_READING_ORDER)
         ):
             members.setdefault(book.series_id, []).append(book)
