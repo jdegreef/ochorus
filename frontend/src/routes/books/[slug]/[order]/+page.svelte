@@ -417,7 +417,7 @@
 	// Paragraph at the top of the viewport — tracked on the throttled scroll pass
 	// so the bookmark toggle can reflect whether the current spot is bookmarked.
 	let topIndex = $state(0);
-	const currentBookmarked = $derived(bookmarks.has(chapter.order, topIndex));
+	const currentBookmarked = $derived(bookmarks.near(chapter.order, topIndex) !== undefined);
 
 	function updateFraction() {
 		if (!body) return;
@@ -433,9 +433,7 @@
 	function toggleBookmark() {
 		if (!body) return;
 		const p = currentIndex();
-		const el = body.children[p] as HTMLElement | undefined;
-		const snippet = (el?.innerText ?? '').trim().replace(/\s+/g, ' ').slice(0, 90);
-		bookmarks.toggle(chapter.order, p, snippet, chapter.title);
+		bookmarks.toggleNear(chapter.order, p, body.children[p] as HTMLElement | undefined, chapter.title);
 		topIndex = p;
 	}
 
@@ -846,8 +844,9 @@
 
 	// Elements a tap or swipe must leave alone — the reader's own interactive
 	// affordances. One list, shared by the touch-start guard and the click guard.
-	const INTERACTIVE =
-		'a, button, summary, [role="button"], mark, input, textarea, select, .selbar, .define-pop, .scripture-pop';
+	const INTERACTIVE_NOT_MARK =
+		'a, button, summary, [role="button"], input, textarea, select, .selbar, .define-pop, .scripture-pop';
+	const INTERACTIVE = `${INTERACTIVE_NOT_MARK}, mark`;
 
 	// Pointer type is stable for a session — query it once, not per click.
 	const coarsePointer = browser ? window.matchMedia('(pointer: coarse)') : null;
@@ -1286,6 +1285,14 @@
 		}
 	}
 
+	/** Which page a tap in PAGED mode turns, from where it lands (see below). */
+	function pagedTurn(e: MouseEvent) {
+		if (!paged) return 'none';
+		const coarse = coarsePointer?.matches ?? false;
+		// Touch: thirds (deadZone 0.34). Fine pointer: the outer 15% (0.7).
+		return tapTurn(e.clientX, window.innerWidth, contentRtl, coarse ? 0.34 : 0.7);
+	}
+
 	/**
 	 * Tapping the page. In PAGED mode this is how you turn: on TOUCH the screen is
 	 * split into thirds (Kindle's model) — the right third goes forward, the left
@@ -1309,15 +1316,15 @@
 		if (performance.now() - lastSwipeEnd < 400) return;
 		if (reader.onScriptureClick(e)) return;
 		const el = e.target as HTMLElement;
-		if (el.closest(INTERACTIVE)) return;
+		if (el.closest(INTERACTIVE_NOT_MARK)) return;
+		// A highlight is text like any other to a page turn: tapped in a turn
+		// zone it turns the page (the note opens from the centre, or the notes
+		// drawer).
+		if (el.closest('mark') && pagedTurn(e) === 'none') return;
 		if (window.getSelection()?.toString()) return;
 		const coarse = coarsePointer?.matches ?? false;
 		if (paged) {
-			// Touch: Kindle-style thirds — outer thirds turn, the centre third
-			// toggles the chrome (deadZone 0.34). Fine pointer keeps the outer-15%
-			// live zone (deadZone 0.7) and does NOTHING in the centre, so a click in
-			// the body is still for selecting text, not summoning toolbars.
-			const turn = tapTurn(e.clientX, window.innerWidth, contentRtl, coarse ? 0.34 : 0.7);
+			const turn = pagedTurn(e);
 			if (turn === 'next') turnPage(1);
 			else if (turn === 'prev') turnPage(-1);
 			else if (coarse) readerUi.toggleFocus();
@@ -1563,6 +1570,7 @@
 		// ?edition=modern on a book that has no modern edition.
 		language: () => language,
 		placeLanguage: getLang,
+		markTapTurnsPage: (ev) => pagedTurn(ev) !== 'none',
 		body: () => body,
 		topIndex: currentIndex,
 		reveal: (el) => (paged ? goToPage(pageOfNode(el), false) : el.scrollIntoView({ block: 'center', behavior: 'smooth' })),

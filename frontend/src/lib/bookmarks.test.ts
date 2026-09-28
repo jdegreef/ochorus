@@ -149,3 +149,16 @@ describe('un-bookmarking is remembered until the account confirms it', () => {
 		expect(pendingAt('bookmark', 'book', bookmarkTarget('inner', 2, 4))).toBeNull();
 	});
 });
+
+describe('the bookmark for "this spot" (review bug #53)', () => {
+	it('is the nearest within a couple of paragraphs, not only an exact match', () => {
+		bookmarks.toggle(2, 10, 's', 'Two');
+		expect(bookmarks.near(2, 10)?.p).toBe(10);
+		expect(bookmarks.near(2, 12)?.p).toBe(10); // scrolled a line or two on
+		expect(bookmarks.near(2, 13)).toBeUndefined();
+		expect(bookmarks.near(3, 10)).toBeUndefined(); // another chapter
+		bookmarks.toggle(2, 13, 's', 'Two');
+		expect(bookmarks.near(2, 12)?.p).toBe(13); // the nearer one wins
+	});
+});
+

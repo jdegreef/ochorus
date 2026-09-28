@@ -24,10 +24,13 @@
 	} = $props();
 
 	const t = i18n.t;
+	// Escape anywhere in the dialog asks the composer, which keeps a typed entry
+	// until the reader chooses to discard it.
+	let composer = $state<EntryComposer>();
 </script>
 
 <ModalShell
-	onClose={onclose}
+	onClose={() => composer?.requestCancel()}
 	ariaLabel={kind === 'prayer' ? t('reader.prayThis') : t('reader.writeAbout')}
 	width="34rem"
 >
@@ -35,7 +38,7 @@
 		<p>“{source.quote}”</p>
 		<footer class="text-micro text-muted">{source.title}</footer>
 	</blockquote>
-	<EntryComposer editing {kind} {onsave} oncancel={onclose} />
+	<EntryComposer bind:this={composer} editing {kind} {onsave} oncancel={onclose} />
 </ModalShell>
 
 <style>

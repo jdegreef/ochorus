@@ -1,4 +1,5 @@
 <script lang="ts">
+	import DiscardConfirm from '$lib/components/DiscardConfirm.svelte';
 	import { tick } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { applyFormat } from '$lib/richText';
@@ -101,6 +102,25 @@
 
 	const canSave = $derived(body.trim().length > 0 || title.trim().length > 0);
 
+	// Cancel / Escape throw the draft away; when the reader has typed something
+	// since it opened, ask first.
+	const dirty = $derived(
+		(title !== seed.draft.title || body !== seed.draft.body) && canSave
+	);
+	let confirming = $state(false);
+	function discard() {
+		confirming = false;
+		if (oncancel) oncancel();
+		else reset();
+	}
+	/** Cancel, unless that would lose typed words — then ask (see DiscardConfirm). */
+	export function requestCancel() {
+		// Asked again while the question is showing (Escape): keep editing.
+		if (confirming) confirming = false;
+		else if (dirty) confirming = true;
+		else discard();
+	}
+
 	function save() {
 		if (!canSave) return;
 		onsave({ kind, title, body, ref, person, group, collection });
@@ -133,7 +153,9 @@
 			e.preventDefault();
 			save();
 		} else if (e.key === 'Escape' && oncancel) {
-			oncancel();
+			// Handled here; the dialog around this (if any) must not also close.
+			e.stopPropagation();
+			requestCancel();
 		}
 	}
 
@@ -260,10 +282,7 @@
 			<button
 				type="button"
 				class="btn btn-ghost btn-sm"
-				onclick={() => {
-					if (oncancel) oncancel();
-					else reset();
-				}}
+				onclick={requestCancel}
 			>
 				{t('common.cancel')}
 			</button>
@@ -271,6 +290,9 @@
 				{kind === 'prayer' ? t('notebook.savePrayer') : t('notebook.saveNote')}
 			</button>
 		</div>
+		{#if confirming}
+			<DiscardConfirm onKeep={() => (confirming = false)} onDiscard={discard} />
+		{/if}
 	{/if}
 </form>
 

@@ -52,13 +52,18 @@ describe('ReaderText note editor', () => {
 		expect(marks.getNote(marks.list[0].id)).toBe('a thought');
 	});
 
-	// An empty note on a fresh selection is a cancel, not a blank highlight.
-	it('does not create a mark when a fresh note is saved empty', () => {
+	// Save is not Cancel: a fresh selection saved with no words keeps the
+	// highlight, in the colour picked. (It used to save nothing at all — the
+	// colour chosen, and the highlight, were silently dropped.)
+	it('keeps the highlight when a fresh note is saved empty', () => {
 		const r = build();
 		r.openNoteForSelection(SEG);
 		r.draft = '   ';
+		r.color = 'blue';
 		r.saveNote();
-		expect(marks.list).toHaveLength(0);
+		expect(marks.list).toHaveLength(1);
+		expect(marks.getNote(marks.list[0].id)).toBe('');
+		expect(marks.getColor(marks.list[0].id)).toBe('blue');
 	});
 
 	it('edits the existing mark when the selection is already highlighted', () => {

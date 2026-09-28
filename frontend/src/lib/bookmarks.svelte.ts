@@ -35,6 +35,11 @@ const writeAll = (store: BookmarksStore) => writeJSON(BOOKMARKS_KEY, store);
 /** Reading order within a work. Exported: the notebook sorts its own copies. */
 export const byPosition = (a: Bookmark, b: Bookmark) => a.order - b.order || a.p - b.p;
 
+/** A bookmark's display snippet: the opening of its paragraph's visible text. */
+export function snippetOf(el: HTMLElement | undefined): string {
+	return (el?.innerText ?? '').trim().replace(/\s+/g, ' ').slice(0, 90);
+}
+
 class Bookmarks {
 	/** Reactive bookmarks of the currently open work, in reading order. */
 	list = $state<Bookmark[]>([]);
@@ -87,6 +92,36 @@ class Bookmarks {
 
 	has(order: number, p: number): boolean {
 		return this.find(order, p) !== undefined;
+	}
+
+	/**
+	 * The bookmark for "this spot" when the reader is at paragraph `p`: one on
+	 * it, else the nearest within `reach` paragraphs. The top-of-screen paragraph
+	 * moves as the reader nudges the page, so an exact match lit the toggle only
+	 * on the very paragraph saved — a line's scroll later it read as unset, and a
+	 * tap added a second bookmark beside the first instead of removing it.
+	 */
+	near(order: number, p: number, reach = 2): Bookmark | undefined {
+		let best: Bookmark | undefined;
+		for (const b of this.list) {
+			if (b.order !== order || Math.abs(b.p - p) > reach) continue;
+			if (!best || Math.abs(b.p - p) < Math.abs(best.p - p)) best = b;
+		}
+		return best;
+	}
+
+	/**
+	 * The reader's Bookmark button: remove the bookmark for "this spot" (see
+	 * `near`) if there is one, else save paragraph `p`. `el` is that paragraph,
+	 * for the snippet. Returns true if a bookmark now exists here.
+	 */
+	toggleNear(order: number, p: number, el: HTMLElement | undefined, title: string): boolean {
+		const nearby = this.near(order, p);
+		if (nearby) {
+			this.remove(nearby.id);
+			return false;
+		}
+		return this.toggle(order, p, snippetOf(el), title);
 	}
 
 	/** Add or remove a bookmark at (order, p). Returns true if it now exists. */

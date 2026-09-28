@@ -39,18 +39,17 @@ export function readerBookmark(o: {
 	});
 
 	return {
-		/** Whether the paragraph at the top of the screen is bookmarked. */
+		/** Whether the spot at the top of the screen is bookmarked (see
+		 *  bookmarks.near: a paragraph or two either side counts). */
 		get current(): boolean {
-			return bookmarks.has(ORDER, topIndex);
+			return bookmarks.near(ORDER, topIndex) !== undefined;
 		},
 		/** Bookmark (or un-bookmark) the paragraph at the top of the screen. */
 		toggle() {
 			const body = o.body();
 			if (!body) return;
 			const p = o.reader()?.topVisibleIndex() ?? 0;
-			const el = body.children[p] as HTMLElement | undefined;
-			const snippet = (el?.innerText ?? '').trim().replace(/\s+/g, ' ').slice(0, 90);
-			bookmarks.toggle(ORDER, p, snippet, o.title());
+			bookmarks.toggleNear(ORDER, p, body.children[p] as HTMLElement | undefined, o.title());
 			topIndex = p;
 		}
 	};
