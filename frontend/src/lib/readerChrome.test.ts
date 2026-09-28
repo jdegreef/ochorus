@@ -137,6 +137,14 @@ describe('a floating reader control clears the bottom bars', () => {
 		expect(src).toMatch(/var\(--listenbar-h, 0px\)/);
 	});
 
+	it('the phone chapter reader carries the feedback "+" in its footer, not floating', () => {
+		// Lifted above the footer, the floating "+" sat over the text being read.
+		expect(read(READER)).toMatch(/class="foot-add"/);
+		expect(read('lib/components/FeedbackFab.svelte')).toMatch(
+			/:root:has\(\.foot-actions\)\) \.fb-fab/
+		);
+	});
+
 	it('every page whose header scrolls away bookmarks from the floating control', () => {
 		for (const file of ['lib/components/ArticleDetail.svelte', 'routes/authors/[slug]/+page.svelte']) {
 			expect(read(file), file).toMatch(/<FloatingBookmark\b/);
