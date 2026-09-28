@@ -68,8 +68,9 @@ _STATIC_PDFS = Path(settings.BASE_DIR).parent / "frontend" / "static" / "pdfs"
 
 
 def _write_print_html(edition, folder: Path, pages=None) -> Path:
-    """The print page (and its cover) in ``folder``; returns the page path."""
+    """The print page (its cover and fonts) in ``folder``; returns the page path."""
     folder.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(book_export.PRINT_FONTS, folder / "fonts", dirs_exist_ok=True)
     cover_src = None
     if edition.cover:
         cover_src = f"cover{edition.cover.ext}"
@@ -91,6 +92,21 @@ def _print_pdf(edition, path: Path) -> None:
         _print(_write_print_html(edition, Path(tmp), pages), path)
     if _anchor_pages(path) != pages:
         raise CommandError("Contents page numbers moved between passes.")
+    _repack(path)
+
+
+def _repack(pdf: Path) -> None:
+    """Losslessly rewrite Chrome's PDF with objects packed into compressed
+    object streams — about a fifth smaller, nothing on the page changes."""
+    import pikepdf  # dev-only dependency; this command runs off-server
+
+    with pikepdf.open(pdf, allow_overwriting_input=True) as doc:
+        doc.save(
+            pdf,
+            compress_streams=True,
+            recompress_flate=True,
+            object_stream_mode=pikepdf.ObjectStreamMode.generate,
+        )
 
 
 def _bundle_cover(book, stdout) -> None:
