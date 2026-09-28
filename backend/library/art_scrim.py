@@ -42,6 +42,7 @@ ART_SCRIM: dict[str, float] = {
     "enchiridion": 0.45,
     "epistles-of-ignatius": 0.70,
     "essentials-of-prayer": 0.80,
+    "evangelization-of-the-world": 0.85,
     "evening-by-evening": 0.30,
     "ever-increasing-faith": 0.75,
     "feasting-at-the-table": 0.65,

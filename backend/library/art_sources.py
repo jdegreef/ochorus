@@ -28,6 +28,7 @@ ART_SOURCES: dict[str, str] = {
     "enchiridion": "cma-135483@0.50",
     "epistles-of-ignatius": "cma-148862@0.50",
     "essentials-of-prayer": "met-435979@0.50",
+    "evangelization-of-the-world": "cma-153388@0.72",
     "evening-by-evening": "aic-64740@0.45",
     "ever-increasing-faith": "cma-154962@0.50",
     "finney-memoirs": "aic-71971@0.50",
