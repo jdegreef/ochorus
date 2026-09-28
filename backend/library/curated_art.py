@@ -734,6 +734,15 @@ CURATED: dict[str, Artwork] = {
         "Dupré's cart keeps to a country road under a great sheltering tree — "
         "an everyday journey, made in company.",
     ),
+    # ── Batch 20 · Pascal ──────────────────────────────────────────────────
+    "pensees": Artwork(
+        "aic", 56905, "James McNeill Whistler",
+        "Nocturne: Blue and Gold—Southampton Water", "1872",
+        "'The eternal silence of these infinite spaces frightens me.' Whistler's "
+        "night water fades into a night sky with no line between them, one low "
+        "light hung in it — the vastness Pascal set his thinking reed against.",
+        focus=0.2,  # bring the low moon in from the left edge
+    ),
 }
 
 

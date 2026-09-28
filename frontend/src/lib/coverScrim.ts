@@ -77,6 +77,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'on-the-incarnation': 0.85,
 	'on-the-priesthood': 0.65,
 	'our-daily-walk': 1.00,
+	'pensees': 0.35,
 	'pilgrims-progress': 0.65,
 	'pilgrims-progress-words-of-one-syllable': 0.80,
 	'plain-account-christian-perfection': 0.85,
