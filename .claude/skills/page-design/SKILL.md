@@ -738,8 +738,10 @@ relevant group.
   English by decision — see the chrome-only split. Non-English strings are a
   first pass pending native review, like the rest of the catalogues._
 - [ ] **F4** Meta: Plan and Topic can ship an empty description; slice lengths
-  are 155/250/300; the reader, articles and scripture pages emit no `og:image`;
-  the reader emits no BreadcrumbList. → localized fallback, one length, section
+  are 155/250/300; scripture pages, the authors index and search emit no
+  `og:image` (reader chapters wear their book's landscape card since #4243,
+  articles their lead book's; home has per-locale shelf cards, #4208 —
+  `npm run og:home`); the reader emits no BreadcrumbList. → localized fallback, one length, section
   OG cards (Book).
 
 ### G. Guide and guards
