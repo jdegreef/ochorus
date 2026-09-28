@@ -153,6 +153,7 @@ TOPICS = [
             "the-imitation-of-christ",
             "freedom-of-the-will",
             "a-serious-call",
+            "pensees",
         ],
     ),
     (
