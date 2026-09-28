@@ -759,13 +759,14 @@ relevant group.
   English by decision — see the chrome-only split. Non-English strings are a
   first pass pending native review, like the rest of the catalogues._
 - [ ] **F4** Meta: Plan and Topic can ship an empty description; slice lengths
-  are 155/250/300; the scripture index + chapter pages, the authors index and
-  search emit no `og:image` (reader chapters wear their book's landscape card
+  are 155/250/300; the scripture index + chapter pages, the authors and articles
+  indexes, and search emit no `og:image` (reader chapters wear their book's landscape card
   since #4243, articles their lead book's; home has per-locale shelf cards,
   #4208 — `npm run og:home`; verse pages draw their own at postbuild, #4255 —
   `build-verse-cards.mjs`; author pages per locale, #4262 —
   `build-author-cards.mjs`; quote author/theme/topic pages, #4294 —
-  `build-quote-cards.mjs`); the reader emits no BreadcrumbList.
+  `build-quote-cards.mjs`; plan pages per locale, #4456 —
+  `build-plan-cards.mjs`); the reader emits no BreadcrumbList.
   _Drawing a new card family: satori needs static TTFs (instance the variable
   woff2 with fontTools `varLib.instancer`; Fraunces/Hanken already vendored in
   `scripts/fonts`), rasterise satori's SVG with `sharp(svg)` (librsvg ~7 ms vs
@@ -778,7 +779,9 @@ relevant group.
   (without the latter macOS uses CoreText and silently sets Helvetica). Fonts
   come from `scripts/fonts/cut-pango-fonts.py`. A new Pango card family should
   build on `scripts/card-kit.mjs` (font setup, text, portraits, `inlined`,
-  `bookCovers`, `drawAll`) and take `sharp` from it._ → localized fallback, one length, section
+  `bookCovers`, `drawAll`) and take `sharp` from it. sharp crops each text
+  block to its ink — stack blocks with real gaps, never negative overlap — and
+  never letter-space Arabic or Devanagari (it breaks the joins)._ → localized fallback, one length, section
   OG cards (Book).
 
 ### G. Guide and guards
