@@ -320,8 +320,11 @@ class Series(models.Model):
     fallback here either.
 
     Not an edition family. The full / teens / children / Modern English forms of
-    ONE work are tied by the slug convention (``serializers.sibling_editions``)
-    and never join a series; a series is DIFFERENT works. Nor an author's shelf:
+    ONE work are tied by the slug convention (``serializers.sibling_editions``);
+    a series is DIFFERENT works. So an edition never joins its full text's
+    series, nor any series of full works — but a series made wholly of editions
+    of different works (*Straight Talk*, the teen retellings) is still a series
+    of different works. ``tests_fixture`` holds the line. Nor an author's shelf:
     *Key Teachings* spans authors, so a series belongs to no one.
 
     Whether it is ORDERED is its members' fact, not a flag: a series whose books

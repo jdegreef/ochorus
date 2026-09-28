@@ -84,6 +84,20 @@
  }
 },
 {
+ "model": "library.series",
+ "fields": {
+  "slug": "straight-talk",
+  "title": "Straight Talk",
+  "description": "Five Christian classics retold for teenage readers, honest and in plain words: three true lives staked on God, Bunyan's pilgrim on the road to the Celestial City, and Spurgeon's straight talk from the farm.",
+  "sort_order": 70,
+  "audience": "teens",
+  "min_age": null,
+  "max_age": null,
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
  "model": "library.seriestranslation",
  "fields": {
   "series": [

@@ -453,14 +453,15 @@ class SeriesMembershipTests(SimpleTestCase):
         mixed = sorted(slug for slug, k in kinds.items() if len(k) > 1)
         self.assertEqual(mixed, [], "series with some volumes numbered and some not")
 
-    def test_young_reader_editions_stay_out_of_series(self):
+    def test_young_reader_editions_keep_to_series_of_editions(self):
         # An edition is the same work in another form; it joins its full text's
-        # family through the slug (see CLAUDE.md), never a series of its own.
-        editions = sorted(
-            f["slug"] for f in self.members
-            if f["slug"].endswith(("-children", "-teens"))
-        )
-        self.assertEqual(editions, [])
+        # family through the slug (see CLAUDE.md), never that work's series or
+        # any series of full works. It may sit only in a series made wholly of
+        # editions of DIFFERENT works (Straight Talk), and never beside another
+        # form of its own work.
+        by_series = _members_by_series(self.members)
+        self.assertEqual(_series_mixing_editions(by_series), [], "editions beside full works")
+        self.assertEqual(_series_with_two_forms(by_series), [], "two forms of one work")
 
     def test_every_language_holding_a_volume_can_name_its_series(self):
         # The series line on a book page shows only where the series has a name
@@ -3646,3 +3647,59 @@ class NoBiographyArticlesTests(SimpleTestCase):
             "retired biography-article fixtures must not be re-added: "
             f"{present}",
         )
+
+
+# ── Editions and series ─────────────────────────────────────────────────────
+# The rule `test_young_reader_editions_keep_to_series_of_editions` holds the
+# fixture to, as functions so the cases it allows and refuses are pinned below.
+
+_EDITION_SUFFIXES = ("-children", "-teens")
+
+
+def _is_edition(slug: str) -> bool:
+    return slug.endswith(_EDITION_SUFFIXES)
+
+
+def _base_work(slug: str) -> str:
+    """The work an edition retells (`a-retrospect-teens` -> `a-retrospect`)."""
+    return slug.rsplit("-", 1)[0] if _is_edition(slug) else slug
+
+
+def _members_by_series(members) -> dict[str, set[str]]:
+    """series slug -> its member book slugs (across languages, so a set)."""
+    out: dict[str, set[str]] = {}
+    for f in members:
+        out.setdefault(f["series"][0], set()).add(f["slug"])
+    return out
+
+
+def _series_mixing_editions(by_series: dict[str, set[str]]) -> list[str]:
+    """Series holding an edition beside a full work — its own or another's."""
+    return sorted(
+        s for s, slugs in by_series.items()
+        if any(map(_is_edition, slugs)) and not all(map(_is_edition, slugs))
+    )
+
+
+def _series_with_two_forms(by_series: dict[str, set[str]]) -> list[str]:
+    """Series holding two forms of one work (its teens AND children editions)."""
+    return sorted(
+        s for s, slugs in by_series.items()
+        if len({_base_work(x) for x in slugs}) < len(slugs)
+    )
+
+
+class EditionSeriesRuleTests(SimpleTestCase):
+    def test_a_series_of_editions_of_different_works_is_allowed(self):
+        ok = {"straight-talk": {"a-retrospect-teens", "pilgrims-progress-teens"}}
+        self.assertEqual(_series_mixing_editions(ok), [])
+        self.assertEqual(_series_with_two_forms(ok), [])
+
+    def test_an_edition_beside_full_works_is_refused(self):
+        # Its own full text's series, or any series of full works.
+        bad = {"rooted": {"rooted-1", "rooted-1-teens"}, "kt": {"kt-nee", "the-life-of-trust-teens"}}
+        self.assertEqual(_series_mixing_editions(bad), ["kt", "rooted"])
+
+    def test_two_forms_of_one_work_are_refused(self):
+        bad = {"young": {"a-retrospect-teens", "a-retrospect-children"}}
+        self.assertEqual(_series_with_two_forms(bad), ["young"])
