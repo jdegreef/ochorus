@@ -1,3 +1,12 @@
+Fraunces-Regular.ttf, Fraunces-Italic.ttf, HankenGrotesk-Medium.ttf:
+	Copyright 2020 The Fraunces Project Authors (github.com/undercasetype/Fraunces)
+	Copyright 2021 The Hanken Grotesk Project Authors (github.com/marcologous/hanken-grotesk)
+	Static latin instances of the app's own variable faces (@fontsource-variable),
+	cut for satori, which cannot read variable woff2 — Fraunces at wght 400 /
+	opsz 72 (italic WONK 1), Hanken at wght 500 — with fontTools'
+	varLib.instancer. SIL Open Font License 1.1, as below.
+
+LiberationSerif-Bold.ttf, LiberationSans-Regular.ttf:
 Digitized data copyright (c) 2010 Google Corporation
 	with Reserved Font Arimo, Tinos and Cousine.
 Copyright (c) 2012 Red Hat, Inc.
