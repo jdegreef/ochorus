@@ -27,6 +27,8 @@
   "reader_chapter_done": "Essuula %n% ewedde",
   "reader_end_progress": "Essuula %done% ku %total% · %p%% y'ekitabo",
   "reader_return_prior": "Ddayo gy’obadde",
+  "reader_resumed_here": "Oddiddwa w'okomye",
+  "reader_start_from_top": "Tandika okuva ku ntandikwa",
   "reader_synced_ahead": "Oli mu maaso ku kyuma ekirala",
   "reader_continue_there": "Weeyongereyo eyo",
   "reader_text_settings": "Entegeka y’ebiwandiiko",

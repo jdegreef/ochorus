@@ -44,6 +44,7 @@
 		placeAfterLayout
 	} from '$lib/reading';
 	import { pageOfOffset } from '$lib/pageMath';
+	import { EARLY_RESUME_TAG } from '$lib/earlyResume';
 	import { tapTurn, swipeTurn, dampDrag } from '$lib/pageGestures';
 	import { fetchSyncedProgress } from '$lib/progress';
 	import { auth } from '$lib/auth.svelte';
@@ -253,6 +254,28 @@
 		if (to) jumpTo(to);
 	}
 
+	// "Back where you left off": a plain open that landed mid-chapter says so,
+	// with a way to the top — a silent jump (or a text that opens partway down
+	// before the scripts have run) otherwise reads as the reader being moved.
+	// Mobile review #6/#10. Shorter-lived than the return pill: it is news, not
+	// an offer the reader is likely to want later.
+	let resumed = $state(false);
+	let resumedTimer: ReturnType<typeof setTimeout> | undefined;
+	function noteResumed() {
+		resumed = true;
+		clearTimeout(resumedTimer);
+		resumedTimer = setTimeout(() => (resumed = false), 6000);
+	}
+	function dismissResumed() {
+		resumed = false;
+		clearTimeout(resumedTimer);
+	}
+	function startFromTop() {
+		dismissResumed();
+		if (paged) goToPage(0);
+		else window.scrollTo(0, 0);
+	}
+
 	// "Continue where you left off on your other device": the account's synced
 	// position when it is newer than, and meaningfully ahead of, where this
 	// device is opening (see $lib/resumeSync). One ask per book per page-life:
@@ -291,6 +314,8 @@
 			const chapters = bookForProgress?.chapters;
 			if (chapters && !chapters.some((c) => c.order === offer.order)) return;
 			syncOffer = { ...offer, p: remote?.language === ask.language ? offer.p : 0 };
+			// It says more than the resume note; don't let that come back after it.
+			dismissResumed();
 			clearTimeout(syncTimer);
 			syncTimer = setTimeout(dismissSyncOffer, 15000);
 		});
@@ -982,6 +1007,8 @@
 		// and offer a way back (only when it really is somewhere else).
 		clearTimeout(returnTimer);
 		returnTo = null;
+		clearTimeout(resumedTimer);
+		resumed = false;
 		// (A bare `?p=` is Number('') === 0 — finite, but not a jump.)
 		const deliberateJump = Number.isFinite(jumpP) && pParam !== '';
 		const ownJump = deliberateJump && ownJumpTarget === `${order}:${jumpP}`;
@@ -1030,11 +1057,12 @@
 				else if (Number.isFinite(jumpP) && body?.children[jumpP]) {
 					target = pageOf(body.children[jumpP] as HTMLElement);
 				} else {
-					const rec = getProgressRecord(s);
-					const idx =
-						getScrollAnchor(s, order, 'book', getLang()) ??
-						(rec && rec.order === order && rec.language === getLang() ? rec.paragraph_index : null);
-					if (idx && body?.children[idx]) target = pageOf(body.children[idx] as HTMLElement);
+					const idx = savedParagraph(s, order);
+					if (idx !== null) target = pageOf(body!.children[idx] as HTMLElement);
+					// Only a page past the first is news — and only then can "Start
+					// from the top" not be a turn onto the LAST page (a one-page
+					// chapter), which would mark the chapter read.
+					if (target > 0 && !rollInto) noteResumed();
 				}
 				goToPage(target, false);
 			} else if (Number.isFinite(jumpP) && body?.children[jumpP]) {
@@ -1045,7 +1073,10 @@
 					window.scrollBy(0, -HEADER_OFFSET);
 				});
 			} else {
-				restoreScroll(s, order);
+				const idx = savedParagraph(s, order);
+				restoreScroll(idx);
+				// Not when read-aloud rolled in: it plays from the top regardless.
+				if (idx !== null && !rollInto) noteResumed();
 			}
 			if (!paged) updateFraction();
 			// Rolled over from the previous chapter's read-aloud: pick playback up
@@ -1396,23 +1427,33 @@
 		return 0;
 	}
 
-	function restoreScroll(s: string, order: number) {
-		// Prefer the device-local anchor; fall back to the synced resume point so
-		// "continue reading" lands on the right paragraph on a fresh device too.
+	/**
+	 * The paragraph this chapter reopens at, or null for the top: this device's
+	 * anchor, else the synced resume point when it names this chapter (so
+	 * "continue reading" lands right on a fresh device too). Only a paragraph
+	 * past the first that exists — the same rule `$lib/earlyResume` applies
+	 * before paint, so the two always agree on what counts as a resume.
+	 */
+	function savedParagraph(s: string, order: number): number | null {
 		const rec = getProgressRecord(s);
 		const idx =
 			getScrollAnchor(s, order, 'book', getLang()) ??
 			(rec && rec.order === order && rec.language === getLang() ? rec.paragraph_index : null);
-		if (idx && body && body.children[idx]) {
-			placeAfterLayout(() => {
-				const el = body?.children[idx];
-				if (!el) return;
-				el.scrollIntoView({ block: 'start' });
-				window.scrollBy(0, -HEADER_OFFSET);
-			});
-		} else {
+		return idx && idx > 0 && body?.children[idx] ? idx : null;
+	}
+
+	/** Scroll to paragraph `idx`, or the top for null. */
+	function restoreScroll(idx: number | null) {
+		if (idx === null) {
 			window.scrollTo(0, 0);
+			return;
 		}
+		placeAfterLayout(() => {
+			const el = body?.children[idx];
+			if (!el) return;
+			el.scrollIntoView({ block: 'start' });
+			window.scrollBy(0, -HEADER_OFFSET);
+		});
 	}
 
 	// The reader's pace, fed from the same samples the resume point already
@@ -1889,6 +1930,12 @@
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<div class="reading" bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
+		<!-- Parsed straight after the body, so it can put a returning reader at
+		     their paragraph before first paint (see $lib/earlyResume). Runs from
+		     the prerendered HTML only: on hydration and client navigation an
+		     @html script does not execute, and the effect's restore takes over. -->
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		{@html EARLY_RESUME_TAG}
 
 		<!-- The chapter's ending. In page mode it starts on a fresh column, so the
 		     last page of every chapter is where to go next (see .chapter-end). -->
@@ -2139,20 +2186,31 @@
 	<!-- The account is further along than this device (another device read on).
 	     Same slot as the return pill; the two never coincide — a deliberate jump
 	     skips the sync ask — but the pill wins if they somehow did. -->
+	{@render offerPill(
+		t('reader.syncedAhead'),
+		syncOffer.order !== chapter.order
+			? `${t('book.continueCh')} ${syncOffer.order}`
+			: t('reader.continueThere'),
+		takeSyncOffer,
+		dismissSyncOffer
+	)}
+{:else if resumed}
+	<!-- A plain open that landed mid-chapter. The same slot, lowest priority:
+	     a jump's way back or another device's position says more. -->
+	{@render offerPill(t('reader.resumedHere'), t('reader.startFromTop'), startFromTop, dismissResumed)}
+{/if}
+
+<!-- A status line with one action and a dismiss — the sync offer and the
+     resume note share it. -->
+{#snippet offerPill(message: string, cta: string, onCta: () => void, onDismiss: () => void)}
 	<div class="return-pill sync-pill" role="status">
-		<span>{t('reader.syncedAhead')}</span>
-		<button class="sync-cta" onclick={takeSyncOffer}>
-			{#if syncOffer.order !== chapter.order}
-				{t('book.continueCh')} {syncOffer.order}
-			{:else}
-				{t('reader.continueThere')}
-			{/if}
-		</button>
-		<button class="sync-dismiss" onclick={dismissSyncOffer} aria-label={t('pwa.dismiss')}>
+		<span>{message}</span>
+		<button class="sync-cta" onclick={onCta}>{cta}</button>
+		<button class="sync-dismiss" onclick={onDismiss} aria-label={t('pwa.dismiss')}>
 			<Icon name="close" size={14} />
 		</button>
 	</div>
-{/if}
+{/snippet}
 
 <!-- Reading-progress footer: a draggable scrubber + location, fixed, hidden in
      focus/Listen modes. -->

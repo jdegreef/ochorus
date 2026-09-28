@@ -27,6 +27,8 @@
   "reader_chapter_done": "اكتمل الفصل %n%",
   "reader_end_progress": "%done% من %total% فصول · %p%% من الكتاب",
   "reader_return_prior": "العودة إلى حيث كنت",
+  "reader_resumed_here": "عدتَ إلى حيث توقّفت",
+  "reader_start_from_top": "ابدأ من البداية",
   "reader_synced_ahead": "أنت متقدم أكثر على جهاز آخر",
   "reader_continue_there": "المتابعة من هناك",
   "reader_text_settings": "إعدادات النص",

@@ -27,6 +27,8 @@
   "reader_chapter_done": "Sura ya %n% imekamilika",
   "reader_end_progress": "Sura %done% kati ya %total% · %p%% ya kitabu",
   "reader_return_prior": "Rudi ulipokuwa",
+  "reader_resumed_here": "Umerudi ulipoachia",
+  "reader_start_from_top": "Anza mwanzo",
   "reader_synced_ahead": "Umefika mbele zaidi kwenye kifaa kingine",
   "reader_continue_there": "Endelea hapo",
   "reader_text_settings": "Mipangilio ya maandishi",

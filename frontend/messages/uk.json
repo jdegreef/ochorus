@@ -27,6 +27,8 @@
   "reader_chapter_done": "Розділ %n% завершено",
   "reader_end_progress": "%done% з %total% розділів · %p%% книги",
   "reader_return_prior": "Повернутися туди, де ви були",
+  "reader_resumed_here": "Ви там, де зупинилися",
+  "reader_start_from_top": "Почати з початку",
   "reader_synced_ahead": "На іншому пристрої ви просунулися далі",
   "reader_continue_there": "Продовжити там",
   "reader_text_settings": "Налаштування тексту",
