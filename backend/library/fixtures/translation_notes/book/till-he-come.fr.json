@@ -1,0 +1,5013 @@
+{
+ "kind": "book",
+ "slug": "till-he-come",
+ "language": "fr",
+ "job_issue": 2914,
+ "pull_request": 4455,
+ "references": [
+  {
+   "reference": "Luke 22:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalm 17:3",
+   "status": "self_rendered",
+   "block_index": 4,
+   "why": "Segond reads « si tu le visites la nuit » (conditional, the heart visited); the whole address is built on the KJV's completed personal visit « Thou hast visited me in the night », so it is rendered directly."
+  },
+  {
+   "reference": "Psalm 8:5",
+   "status": "self_rendered",
+   "block_index": 6,
+   "why": "KJV Ps 8:4 = Segond 8:5. First half is Segond verbatim; Segond's second half « pour que tu prennes garde à lui » loses KJV « visitest », the theme of the address."
+  },
+  {
+   "reference": "Job 42:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 8
+  },
+  {
+   "reference": "Job 42:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 7:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 8
+  },
+  {
+   "reference": "Daniel 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 8
+  },
+  {
+   "reference": "Daniel 10:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 8
+  },
+  {
+   "reference": "Psalm 144:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 9:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 9
+  },
+  {
+   "reference": "Acts 9:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 9
+  },
+  {
+   "reference": "Job 35:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 5:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 10
+  },
+  {
+   "reference": "Mark 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 10
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "block_index": 15,
+   "why": "Spurgeon blends Zech 12:10 (Segond « vers moi, celui qu’ils ont percé ») with John 19:37, re-personing to « Him »; Segond's words kept where they fit."
+  },
+  {
+   "reference": "Revelation 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 16
+  },
+  {
+   "reference": "Revelation 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 16
+  },
+  {
+   "reference": "Psalm 127:2",
+   "status": "self_rendered",
+   "block_index": 20,
+   "why": "Segond « Il en donne autant à ses bien-aimés pendant leur sommeil » has a different sense; Spurgeon's point (He gives them something better than sleep) depends on the KJV « He giveth his beloved sleep »."
+  },
+  {
+   "reference": "Psalm 34:9",
+   "status": "self_rendered",
+   "block_index": 38,
+   "why": "KJV Ps 34:8 = Segond 34:9. Segond « Sentez et voyez » now reads as 'smell'; the honey/tasting argument needs « goûter »."
+  },
+  {
+   "reference": "Song of Songs 2:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 21
+  },
+  {
+   "reference": "Song of Songs 2:9b",
+   "status": "self_rendered",
+   "block_index": 21,
+   "why": "Segond « Il regarde par le treillis » loses KJV « showing himself », which is the point (the Lord's manifestations)."
+  },
+  {
+   "reference": "2 Corinthians 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 41
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 43,
+   "why": "Re-personed paraphrase (our heart, present tense) of Segond « la paix de Dieu ... gardera vos cœurs et vos pensées en Jésus-Christ »."
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 49
+  },
+  {
+   "reference": "Revelation 14:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 49
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 63
+  },
+  {
+   "reference": "Isaiah 8:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 64
+  },
+  {
+   "reference": "Psalm 91:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 66
+  },
+  {
+   "reference": "Psalm 27:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 69
+  },
+  {
+   "reference": "Psalm 91:1b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 66
+  },
+  {
+   "reference": "Isaiah 32:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 70
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 72
+  },
+  {
+   "reference": "Psalm 121:6",
+   "status": "self_rendered",
+   "block_index": 73,
+   "why": "Spurgeon blends Ps 121:6 with Rev 7:16 (\"nor any heat\") and re-persons it to \"us\"; rendered on Segond's vocabulary (frapper, ni aucune chaleur)."
+  },
+  {
+   "reference": "Song of Songs 2:3a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 79
+  },
+  {
+   "reference": "Song of Songs 2:3b",
+   "status": "self_rendered",
+   "block_index": 79,
+   "why": "Segond reads « J’ai désiré m’asseoir à son ombre », losing KJV \"I sat down ... with great delight\" on which the whole second head (\"a place of sitting down\", \"delight\") is built; kept Segond's second line."
+  },
+  {
+   "reference": "Song of Songs 2:3b",
+   "status": "self_rendered",
+   "block_index": 79,
+   "why": "Repeated KJV \"I sat down under His shadow\" (and in the hymn); Segond's « J’ai désiré m’asseoir » would break the argument."
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 80
+  },
+  {
+   "reference": "Jeremiah 6:16",
+   "status": "self_rendered",
+   "block_index": 80,
+   "why": "Allusion to \"the good old way ... rest unto your souls\", re-personed to \"our souls\"."
+  },
+  {
+   "reference": "Hebrews 7:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 80
+  },
+  {
+   "reference": "Psalm 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 82
+  },
+  {
+   "reference": "Psalm 57:8",
+   "status": "self_rendered",
+   "block_index": 82,
+   "why": "Re-personed (\"our heart\") inside a composed prayer; Segond has « Mon cœur est affermi »."
+  },
+  {
+   "reference": "Psalm 90:1",
+   "status": "self_rendered",
+   "block_index": 82,
+   "why": "KJV \"thou hast been our dwelling place\"; Segond has « refuge », and the address turns on dwelling; re-tensed inside a composed prayer."
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "block_index": 82,
+   "why": "Allusion \"come boldly unto Him\"; Segond word « avec assurance » applied to Christ."
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 87
+  },
+  {
+   "reference": "Nehemiah 8:10",
+   "status": "self_rendered",
+   "block_index": 93,
+   "why": "Re-personed and re-tensed from Segond « la joie de l’Éternel sera votre force »."
+  },
+  {
+   "reference": "Psalm 63:8",
+   "status": "self_rendered",
+   "block_index": 95,
+   "why": "KJV 63:7 = Segond 63:8. Segond « tu es mon secours » is present tense, but Spurgeon's point (\"he sings rather of memories\"; \"Thou hast been my help\" as the highest note) depends on the KJV past tense."
+  },
+  {
+   "reference": "Psalm 63:8",
+   "status": "self_rendered",
+   "block_index": 95,
+   "why": "Same past-tense KJV wording the argument rests on."
+  },
+  {
+   "reference": "Psalm 63:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 96
+  },
+  {
+   "reference": "Psalm 63:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 96
+  },
+  {
+   "reference": "Isaiah 49:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "Isaiah 49:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "Isaiah 49:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "Isaiah 49:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "Isaiah 49:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "1 John 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "Isaiah 51:16a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "Isaiah 49:2",
+   "status": "self_rendered",
+   "block_index": 97,
+   "why": "Segond « Il m’a couvert de l’ombre de sa main » adapted to describe workers (plural participle)."
+  },
+  {
+   "reference": "Isaiah 49:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "2 Corinthians 12:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "Isaiah 51:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "self_rendered",
+   "block_index": 99,
+   "why": "Segond 2:3a « J’ai désiré m’asseoir à son ombre » loses the KJV « I sat down under His shadow with great delight » on which the whole address is built (sitting down, great delight); first clause rendered from the KJV, second clause is Segond verbatim."
+  },
+  {
+   "reference": "Song of Songs 2:3b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 99
+  },
+  {
+   "reference": "Song of Songs 2:3a",
+   "status": "self_rendered",
+   "block_index": 99,
+   "why": "KJV image (sat down, with great delight) kept; Segond reads « J’ai désiré m’asseoir à son ombre »."
+  },
+  {
+   "reference": "Song of Songs 2:3a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 100
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "Song of Songs 2:3a",
+   "status": "self_rendered",
+   "block_index": 104,
+   "why": "Spurgeon's own resolution-form paraphrase of the KJV « I sat down under his shadow »."
+  },
+  {
+   "reference": "Jonah 1:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 105
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 106
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 106
+  },
+  {
+   "reference": "James 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 106
+  },
+  {
+   "reference": "Psalm 90:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 106
+  },
+  {
+   "reference": "Luke 6:22",
+   "status": "self_rendered",
+   "block_index": 109,
+   "why": "Allusion re-personed to the first person (Segond: « qu’on rejettera votre nom comme infâme »)."
+  },
+  {
+   "reference": "Song of Songs 2:3b",
+   "status": "self_rendered",
+   "block_index": 99,
+   "why": "KJV 'I sat down under his shadow'; Segond 'J’ai désiré m’asseoir à son ombre' loses the act of sitting down on which the whole address turns (and 'she did not climb, she sat')."
+  },
+  {
+   "reference": "Song of Songs 2:3b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 99
+  },
+  {
+   "reference": "2 Corinthians 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 113
+  },
+  {
+   "reference": "2 Corinthians 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 113
+  },
+  {
+   "reference": "2 Peter 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 113
+  },
+  {
+   "reference": "1 Corinthians 3:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 116
+  },
+  {
+   "reference": "Isaiah 55:2",
+   "status": "self_rendered",
+   "block_index": 117,
+   "why": "Re-personed into 'we' and recast as a statement (Segond's wording kept for the phrases)."
+  },
+  {
+   "reference": "Isaiah 55:2",
+   "status": "self_rendered",
+   "block_index": 117,
+   "why": "Re-personed into 'we'; Segond's wording kept otherwise."
+  },
+  {
+   "reference": "Song of Songs 1:12",
+   "status": "self_rendered",
+   "block_index": 118,
+   "why": "KJV 'the king sitteth at his table'; Segond 'le roi est dans son entourage' loses the table the argument (the King sits and eats, so do we) depends on."
+  },
+  {
+   "reference": "John 15:11",
+   "status": "self_rendered",
+   "block_index": 118,
+   "why": "Re-personed allusion."
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 118,
+   "why": "Re-personed allusion."
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "self_rendered",
+   "block_index": 120,
+   "why": "Spurgeon quotes KJV in the singular ('O friend') and his point is 'drink abundantly' (you cannot have too much); Segond 'Mangez, amis, buvez, enivrez-vous d’amour!' differs in number and image."
+  },
+  {
+   "reference": "Song of Songs 2:4a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 121
+  },
+  {
+   "reference": "Song of Songs 2:4b",
+   "status": "self_rendered",
+   "block_index": 121,
+   "why": "Paraphrase ('the motto of that banneret was love')."
+  },
+  {
+   "reference": "Song of Songs 2:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 122
+  },
+  {
+   "reference": "Revelation 6:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 122
+  },
+  {
+   "reference": "Revelation 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 122
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 122
+  },
+  {
+   "reference": "Luke 15:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 122
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 131
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 131
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "self_rendered",
+   "block_index": 131,
+   "why": "Segond's « Avant que le jour se rafraîchisse » loses the daybreak image the address turns on (« until the day break » = no day till Christ appears), and « qui nous séparent » loses the proper name Bether, which Spurgeon keeps (« ces montagnes de Béther »)."
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "self_rendered",
+   "block_index": 131,
+   "why": "Segond: « Reviens!… sois semblable, mon bien-aimé »; the vocative is re-ordered to follow KJV « Turn, my Beloved »."
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 131
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "self_rendered",
+   "block_index": 147,
+   "why": "Spurgeon's own rendering « mountains of division » (the margin reading of Bether); the closing words follow Segond, the rest is re-joined to his KJV wording."
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 147
+  },
+  {
+   "reference": "Isaiah 6:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 132
+  },
+  {
+   "reference": "1 Peter 1:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 132
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 132
+  },
+  {
+   "reference": "Hebrews 10:35",
+   "status": "self_rendered",
+   "block_index": 134,
+   "why": "Segond « N’abandonnez donc pas votre assurance »; « donc » dropped since the sentence already carries it."
+  },
+  {
+   "reference": "Isaiah 59:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 135
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 136
+  },
+  {
+   "reference": "Song of Songs 2:6",
+   "status": "self_rendered",
+   "block_index": 144,
+   "why": "Segond renders the verse as a wish (« Que sa main gauche soit… »); Spurgeon quotes it (KJV) as a present reality she had just sung."
+  },
+  {
+   "reference": "Psalm 51:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 145
+  },
+  {
+   "reference": "Isaiah 63:19b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 146
+  },
+  {
+   "reference": "Isaiah 64:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 146
+  },
+  {
+   "reference": "Isaiah 64:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 146
+  },
+  {
+   "reference": "Psalm 18:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 146
+  },
+  {
+   "reference": "Psalm 18:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 146
+  },
+  {
+   "reference": "Psalm 18:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 147
+  },
+  {
+   "reference": "Psalm 22:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 147
+  },
+  {
+   "reference": "Song of Songs 2:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 147
+  },
+  {
+   "reference": "Song of Songs 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 147
+  },
+  {
+   "reference": "Ephesians 2:4-5",
+   "status": "self_rendered",
+   "block_index": 148,
+   "why": "Blend of Ephesians 2:4, 2:5 and 2:1 as Spurgeon quotes it; « grand amour dont il nous a aimés » and « morts par nos offenses » are Segond."
+  },
+  {
+   "reference": "Ezekiel 16:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 132
+  },
+  {
+   "reference": "Isaiah 65:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 153
+  },
+  {
+   "reference": "Micah 5:6",
+   "status": "self_rendered",
+   "block_index": 153,
+   "why": "Segond « Elles ne comptent pas sur l’homme, Elles ne dépendent pas des enfants des hommes », put in the singular to fit Spurgeon's « the dew »."
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 154
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 154
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 155
+  },
+  {
+   "reference": "Acts 3:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 155
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 155
+  },
+  {
+   "reference": "Luke 18:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 156
+  },
+  {
+   "reference": "Psalm 22:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 156
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 156,
+   "why": "Re-personed (« pour vous ») as Spurgeon applies it to the hearer."
+  },
+  {
+   "reference": "Isaiah 43:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 156
+  },
+  {
+   "reference": "Isaiah 43:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 156
+  },
+  {
+   "reference": "1 Corinthians 15:52",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 157
+  },
+  {
+   "reference": "1 Corinthians 15:52",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 157
+  },
+  {
+   "reference": "Matthew 21:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 157
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 157
+  },
+  {
+   "reference": "John 21:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 157
+  },
+  {
+   "reference": "John 21:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 157
+  },
+  {
+   "reference": "Song of Songs 2:9b",
+   "status": "self_rendered",
+   "block_index": 157,
+   "why": "Segond « Il regarde par la fenêtre »; Spurgeon applies it to « these windows » (the bread and wine)."
+  },
+  {
+   "reference": "Song of Songs 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 157
+  },
+  {
+   "reference": "Song of Songs 6:12",
+   "status": "self_rendered",
+   "block_index": 157,
+   "why": "Segond renders the verse « Je ne sais, mais mon désir m’a rendue semblable Aux chars de mon noble peuple », losing the KJV proper name Amminadib and « or ever I was aware »; rendered from Spurgeon's KJV."
+  },
+  {
+   "reference": "Song of Songs 2:4",
+   "status": "self_rendered",
+   "block_index": 157,
+   "why": "Re-personed (« nous ») and blended with « the King » of Song 1:4; « banqueting-house » kept as « maison du festin » (Segond: « maison du vin »)."
+  },
+  {
+   "reference": "Matthew 17:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 157
+  },
+  {
+   "reference": "John 14:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 158
+  },
+  {
+   "reference": "Luke 24:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 158
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 167
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 167
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 167
+  },
+  {
+   "reference": "Proverbs 8:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 177
+  },
+  {
+   "reference": "Revelation 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 182
+  },
+  {
+   "reference": "Revelation 3:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 184
+  },
+  {
+   "reference": "Genesis 2:23",
+   "status": "self_rendered",
+   "block_index": 185,
+   "why": "Re-personed: Segond reads « os de mes os et chair de ma chair »; Spurgeon applies it in the third person to the Church."
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "block_index": 185,
+   "why": "Segond reads « qu’il nous a accordée en son bien-aimé », losing KJV « accepted in the Beloved », the word Spurgeon’s point (a positive righteousness conferred) turns on."
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 186
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "self_rendered",
+   "block_index": 186,
+   "why": "Segond renders « Que tu es belle, mon amie, que tu es belle! », dropping the KJV « Behold » that Spurgeon’s argument explicitly builds on (« He puts a “behold” before it »)."
+  },
+  {
+   "reference": "Matthew 25:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 186
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "self_rendered",
+   "block_index": 186,
+   "why": "Same as above: KJV « Behold » kept because the argument depends on it."
+  },
+  {
+   "reference": "Song of Songs 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 197
+  },
+  {
+   "reference": "Song of Songs 6:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 197
+  },
+  {
+   "reference": "Song of Songs 6:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 197
+  },
+  {
+   "reference": "Song of Songs 6:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 197
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 197
+  },
+  {
+   "reference": "Song of Songs 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 198
+  },
+  {
+   "reference": "Song of Songs 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 198
+  },
+  {
+   "reference": "Song of Songs 4:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 198
+  },
+  {
+   "reference": "Song of Songs 7:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 198
+  },
+  {
+   "reference": "Nehemiah 9:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 202
+  },
+  {
+   "reference": "Nehemiah 9:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 202
+  },
+  {
+   "reference": "Numbers 23:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 202
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "self_rendered",
+   "block_index": 203,
+   "why": "Re-personed (« we ») from Segond « C’est le soleil qui m’a brûlée »."
+  },
+  {
+   "reference": "Colossians 1:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 205
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 214
+  },
+  {
+   "reference": "Song of Songs 6:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 186
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "John 13:1",
+   "status": "self_rendered",
+   "block_index": 231,
+   "why": "Paraphrase, not a quotation: KJV « he loved them unto the end », Segond « mit le comble à son amour »."
+  },
+  {
+   "reference": "Psalm 40:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "Psalm 40:9",
+   "status": "self_rendered",
+   "block_index": 231,
+   "why": "Segond reads « Je veux faire ta volonté », losing KJV « I delight to do thy will », which Spurgeon quotes to prove « how Christ did delight » in redemption."
+  },
+  {
+   "reference": "Luke 12:50",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "Luke 12:50",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "Proverbs 8:31",
+   "status": "self_rendered",
+   "block_index": 233,
+   "why": "Wisdom's first-person line re-personed to the third person as Spurgeon quotes it; Segond wording otherwise kept (« trouvant mon bonheur parmi les fils de l’homme »)."
+  },
+  {
+   "reference": "Psalm 139:16",
+   "status": "self_rendered",
+   "block_index": 233,
+   "why": "Segond reads « les jours qui m’étaient destinés »; Spurgeon's point (Christ's members, the elect, written in his book) rests on the KJV word « members »."
+  },
+  {
+   "reference": "Deuteronomy 32:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 233
+  },
+  {
+   "reference": "Deuteronomy 32:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 233
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "self_rendered",
+   "block_index": 233,
+   "why": "Allusion following the KJV (« He shall see of the travail of his soul, and shall be satisfied »), set in the past tense by Spurgeon; Segond's « il rassasiera ses regards » does not carry the same sense."
+  },
+  {
+   "reference": "Song of Songs 3:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 236
+  },
+  {
+   "reference": "Malachi 4:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Isaiah 27:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 167
+  },
+  {
+   "reference": "Acts 3:20",
+   "status": "self_rendered",
+   "block_index": 247,
+   "why": "Allusion to KJV Acts 3:19 (Segond 3:20); Segond says « de la part du Seigneur », kept KJV « from the presence of the Lord »; « des temps de rafraîchissement » is Segond's wording."
+  },
+  {
+   "reference": "Matthew 26:22",
+   "status": "self_rendered",
+   "block_index": 247,
+   "why": "Blended paraphrase (Matthew 26:22 « Est-ce moi, Seigneur? » with the betrayal of John 13), not a single verse."
+  },
+  {
+   "reference": "Song of Songs 8:3",
+   "status": "self_rendered",
+   "block_index": 247,
+   "why": "Segond renders the line as a wish (« Que sa main gauche soit sous ma tête, Et que sa droite m’embrasse! »); Spurgeon sings it as a present, possessed assurance (KJV indicative)."
+  },
+  {
+   "reference": "Job 6:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 247
+  },
+  {
+   "reference": "Exodus 33:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 247
+  },
+  {
+   "reference": "Psalm 23:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 248
+  },
+  {
+   "reference": "Psalm 23:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 248
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 250
+  },
+  {
+   "reference": "Psalm 35:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 250
+  },
+  {
+   "reference": "Genesis 15:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 251
+  },
+  {
+   "reference": "Daniel 10:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 251
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "self_rendered",
+   "block_index": 281,
+   "why": "Segond ('toute sa personne est pleine de charme') loses 'altogether' and 'lovely' = worthy of love, on which the whole address turns (Part I contrasts 'not beautiful, nor admirable, but lovely'); rendered 'tout aimable' consistently throughout (heading and body)."
+  },
+  {
+   "reference": "John 14:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 284
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 285
+  },
+  {
+   "reference": "Psalm 146:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 285
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 286
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 288
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 288
+  },
+  {
+   "reference": "John 6:54",
+   "status": "self_rendered",
+   "block_index": 288,
+   "why": "Unquoted allusion, re-cast as a participle clause."
+  },
+  {
+   "reference": "Song of Songs 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 288
+  },
+  {
+   "reference": "Song of Songs 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 288
+  },
+  {
+   "reference": "Song of Songs 5:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 288
+  },
+  {
+   "reference": "Song of Songs 5:14",
+   "status": "self_rendered",
+   "block_index": 288,
+   "why": "Unquoted paraphrase of the verse's imagery; Segond vocabulary kept (chrysolithes for KJV beryl) but recast in Spurgeon's sentence."
+  },
+  {
+   "reference": "Song of Songs 5:15",
+   "status": "self_rendered",
+   "block_index": 288,
+   "why": "Unquoted paraphrase; Segond vocabulary, 'blanc' dropped as Spurgeon has only 'marble'."
+  },
+  {
+   "reference": "1 Timothy 6:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 292
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 293
+  },
+  {
+   "reference": "Isaiah 52:14",
+   "status": "self_rendered",
+   "block_index": 304,
+   "why": "KJV comparative 'marred more than any man' is Spurgeon's point; Segond phrases it differently ('Tant son visage était défiguré')."
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 308
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "KJV 'accepted in the Beloved' carries the argument (made lovely to the Father); Segond reads 'sa grâce qu’il nous a accordée en son bien-aimé'."
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "Unquoted allusion, re-personed from Segond's 'en qui j’ai mis toute mon affection'."
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 308
+  },
+  {
+   "reference": "Matthew 25:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 309
+  },
+  {
+   "reference": "Revelation 20:11",
+   "status": "self_rendered",
+   "block_index": 309,
+   "why": "Segond wording put into the future tense to fit Spurgeon's sentence."
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "self_rendered",
+   "block_index": 309,
+   "why": "Blend of 1 John 3:2 with Psalm 17:15 ('satisfied'), unquoted."
+  },
+  {
+   "reference": "Revelation 1:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 311
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "self_rendered",
+   "block_index": 281,
+   "why": "Segond's « toute sa personne est pleine de charme » loses 'altogether lovely', on which the address turns"
+  },
+  {
+   "reference": "Exodus 30:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 313
+  },
+  {
+   "reference": "Genesis 6:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 316
+  },
+  {
+   "reference": "Psalm 7:12",
+   "status": "self_rendered",
+   "block_index": 316,
+   "why": "Unquoted allusion to KJV Ps 7:11 (Segond 7:12) 'God is angry with the wicked every day'; Segond reads 'Dieu s’irrite en tout temps' without 'the wicked', so Spurgeon's wording is rendered."
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 316
+  },
+  {
+   "reference": "Job 35:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 319
+  },
+  {
+   "reference": "Isaiah 33:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 319
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 319
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "self_rendered",
+   "block_index": 319,
+   "why": "Unquoted allusion, re-personed into Spurgeon's sentence."
+  },
+  {
+   "reference": "Song of Songs 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 288
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 286
+  },
+  {
+   "reference": "1 Corinthians 2:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 321
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 323
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 324
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 324,
+   "why": "Imperative 'walk in the light'; Segond 1 John 1:7 has 'si nous marchons dans la lumière' (first person plural)."
+  },
+  {
+   "reference": "Song of Songs 6:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 325
+  },
+  {
+   "reference": "John 17:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 325
+  },
+  {
+   "reference": "1 Corinthians 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 325
+  },
+  {
+   "reference": "1 Corinthians 12:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 325
+  },
+  {
+   "reference": "Song of Songs 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 288
+  },
+  {
+   "reference": "Song of Songs 8:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 338
+  },
+  {
+   "reference": "John 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 338
+  },
+  {
+   "reference": "Proverbs 8:31",
+   "status": "self_rendered",
+   "block_index": 340,
+   "why": "Allusion re-personed to the third person (Segond: « trouvant mes délices parmi les fils de l’homme »)."
+  },
+  {
+   "reference": "Romans 15:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 342
+  },
+  {
+   "reference": "Hebrews 13:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 342
+  },
+  {
+   "reference": "2 Corinthians 9:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 342
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 344
+  },
+  {
+   "reference": "Ezekiel 16:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Ezekiel 16:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Ezekiel 16:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Ezekiel 16:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Ezekiel 16:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Ezekiel 16:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Ezekiel 16:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Ezekiel 16:15a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Zechariah 12:8",
+   "status": "self_rendered",
+   "block_index": 351,
+   "why": "Loose allusion: Spurgeon says « the servant of the Lord » where Zechariah has « as the angel of the LORD » (Segond: « comme l’ange de l’Éternel »); translated as Spurgeon wrote it."
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 354
+  },
+  {
+   "reference": "Proverbs 30:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 362
+  },
+  {
+   "reference": "Song of Songs 2:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 365
+  },
+  {
+   "reference": "Song of Songs 2:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 366
+  },
+  {
+   "reference": "Song of Songs 2:5",
+   "status": "self_rendered",
+   "block_index": 368,
+   "why": "Hymn paraphrase (Irons) built on KJV « Stay me with flagons »; Segond has « gâteaux de raisins », which loses the wine image the stanza depends on."
+  },
+  {
+   "reference": "Song of Songs 2:5",
+   "status": "self_rendered",
+   "block_index": 375,
+   "why": "Hymn paraphrase (Irons) of « comfort me with apples », re-personed."
+  },
+  {
+   "reference": "2 Corinthians 6:12",
+   "status": "self_rendered",
+   "block_index": 380,
+   "why": "Spurgeon turns the verse into an exhortation; Segond: « vos entrailles se sont rétrécies »."
+  },
+  {
+   "reference": "Psalm 32:11",
+   "status": "self_rendered",
+   "block_index": 381,
+   "why": "Spurgeon’s blended echo of Ps 32:11 (‘be glad in the Lord’) addressed to his own soul; re-personed, Segond’s wording (‘Justes, réjouissez-vous en l’Éternel’) does not fit."
+  },
+  {
+   "reference": "Psalm 139:17a",
+   "status": "self_rendered",
+   "block_index": 381,
+   "why": "KJV ‘thy thoughts unto me are precious’; Segond reads ‘me semblent impénétrables’, losing the word ‘precious’ the prayer turns on."
+  },
+  {
+   "reference": "Psalm 139:17b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 381
+  },
+  {
+   "reference": "Malachi 4:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 383
+  },
+  {
+   "reference": "Psalm 30:8",
+   "status": "self_rendered",
+   "block_index": 384,
+   "why": "Paraphrase of KJV Ps 30:7 (Segond 30:8), re-personed from first to second person."
+  },
+  {
+   "reference": "Matthew 15:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 386
+  },
+  {
+   "reference": "Zechariah 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 387
+  },
+  {
+   "reference": "1 Kings 4:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Isaiah 40:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 388
+  },
+  {
+   "reference": "Micah 6:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 388
+  },
+  {
+   "reference": "Isaiah 28:15",
+   "status": "self_rendered",
+   "block_index": 389,
+   "why": "KJV ‘refuge of lies’ (Isa 28:15, 17); Segond’s ‘le mensonge pour abri’ / ‘le refuge de la fausseté’ does not fit the plural phrase."
+  },
+  {
+   "reference": "Revelation 20:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 390
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 390
+  },
+  {
+   "reference": "John 16:14",
+   "status": "self_rendered",
+   "block_index": 390,
+   "why": "Paraphrase of John 16:14 recast in the third person (‘the things of Christ’) with ‘reveal’."
+  },
+  {
+   "reference": "John 6:54",
+   "status": "self_rendered",
+   "block_index": 395,
+   "why": "Re-personed allusion (ma chair → sa chair) in an infinitive construction."
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "self_rendered",
+   "block_index": 396,
+   "why": "Re-personed from ‘je souperai avec lui, et lui avec moi’."
+  },
+  {
+   "reference": "Psalm 113:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 396
+  },
+  {
+   "reference": "Isaiah 5:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 398
+  },
+  {
+   "reference": "Isaiah 5:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 398
+  },
+  {
+   "reference": "Isaiah 5:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 398
+  },
+  {
+   "reference": "Isaiah 5:1",
+   "status": "self_rendered",
+   "block_index": 407,
+   "why": "Spurgeon re-persons the verse (\"Our Well-beloved hath a vineyard\"); rendered in the present with « Notre »."
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "self_rendered",
+   "block_index": 401,
+   "why": "Allusion re-personed (\"He bought us with a price\"); Segond's « rachetés à un grand prix » kept inside."
+  },
+  {
+   "reference": "Psalm 16:6",
+   "status": "self_rendered",
+   "block_index": 404,
+   "why": "Re-personed KJV wording (\"the lines have fallen unto us in pleasant places; yea, we have a goodly heritage\"); Segond drops the 'lines/pleasant places' image, so rendered from the KJV with Segond's vocabulary."
+  },
+  {
+   "reference": "Psalm 100:2",
+   "status": "self_rendered",
+   "block_index": 406,
+   "why": "Allusion re-personed in the past tense (\"you served the Lord with gladness\")."
+  },
+  {
+   "reference": "Isaiah 35:1",
+   "status": "self_rendered",
+   "block_index": 408,
+   "why": "Allusion; Spurgeon's image is the KJV 'rose', Segond has « narcisse »."
+  },
+  {
+   "reference": "Proverbs 30:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 408
+  },
+  {
+   "reference": "2 Thessalonians 2:16",
+   "status": "self_rendered",
+   "block_index": 413,
+   "why": "KJV phrase 'good hope through grace'; Segond reads « une bonne espérance » given « par sa grâce »."
+  },
+  {
+   "reference": "Isaiah 54:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 417
+  },
+  {
+   "reference": "Isaiah 54:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 417
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "self_rendered",
+   "block_index": 433,
+   "why": "Segond has the present « je te rachète »; the whole address turns on the KJV perfect 'I have redeemed thee' (a redemption already accomplished: 'Redemption is a fact accomplished… This is done'), so the perfect is kept. Used as the heading text and as the refrain throughout."
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 435
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "self_rendered",
+   "block_index": 454,
+   "why": "Isaiah 43:1 re-cast in the perfect ('I have redeemed thee. I have called thee'); Segond has « je te rachète, Je t’appelle »."
+  },
+  {
+   "reference": "Psalm 100:3",
+   "status": "self_rendered",
+   "block_index": 435,
+   "why": "Unquoted allusion resting on the KJV reading 'and not we ourselves'; Segond reads « et nous lui appartenons », which loses the point."
+  },
+  {
+   "reference": "Isaiah 43:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 440
+  },
+  {
+   "reference": "Hebrews 11:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 440
+  },
+  {
+   "reference": "Revelation 15:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 440
+  },
+  {
+   "reference": "Revelation 1:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 441
+  },
+  {
+   "reference": "Luke 24:46",
+   "status": "self_rendered",
+   "block_index": 442,
+   "why": "KJV 'it behoved Christ to suffer'; Segond 24:46 reads « il est écrit que le Christ souffrirait », so the 'it behoved' sense is rendered (wording modelled on Segond Luke 24:26)."
+  },
+  {
+   "reference": "Isaiah 42:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "Isaiah 42:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "Psalm 68:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "Psalm 68:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "Job 19:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "Psalm 107:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "Psalm 48:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 443
+  },
+  {
+   "reference": "Psalm 40:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 444
+  },
+  {
+   "reference": "Psalm 40:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 444
+  },
+  {
+   "reference": "Isaiah 43:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 445
+  },
+  {
+   "reference": "Isaiah 43:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 445
+  },
+  {
+   "reference": "Isaiah 43:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 445
+  },
+  {
+   "reference": "Isaiah 43:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 445
+  },
+  {
+   "reference": "Psalm 8:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 445
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "self_rendered",
+   "block_index": 450,
+   "why": "Re-personed ('our head'); Segond « votre tête »."
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "block_index": 450,
+   "why": "Re-personed ('He careth for us'); Segond « lui-même prend soin de vous »."
+  },
+  {
+   "reference": "Isaiah 40:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Isaiah 40:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Isaiah 40:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "self_rendered",
+   "block_index": 450,
+   "why": "Unquoted paraphrase ('He carrieth the lambs in His bosom'); Segond « Il prendra les agneaux dans ses bras, Et les portera dans son sein »."
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Romans 8:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Psalm 105:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Psalm 105:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Judges 5:20",
+   "status": "self_rendered",
+   "block_index": 454,
+   "why": "Unquoted allusion in the present tense ('The stars in their courses fight'); Segond « De leurs sentiers les étoiles combattirent »."
+  },
+  {
+   "reference": "2 Kings 6:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Hebrews 13:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 454
+  },
+  {
+   "reference": "Zechariah 9:11",
+   "status": "self_rendered",
+   "block_index": 454,
+   "why": "Unquoted paraphrase in the third person; Segond « à cause de ton alliance scellée par le sang, Je retirerai tes captifs »."
+  },
+  {
+   "reference": "Judges 5:21",
+   "status": "self_rendered",
+   "block_index": 454,
+   "why": "KJV 'O my soul, thou hast trodden down strength' (a triumph accomplished); Segond reads « Mon âme, foule aux pieds les héros! » (imperative, different object), which loses the sense Spurgeon uses."
+  },
+  {
+   "reference": "Isaiah 52:13",
+   "status": "self_rendered",
+   "block_index": 455,
+   "why": "Segond reads « mon serviteur prospérera; Il montera, il s’élèvera »; Spurgeon expounds the KJV 'deal prudently' and the distinction between 'exalted' (his state) and 'extolled' (the praise rendered him), which Segond's wording does not carry. Only the final clause « il s’élèvera bien haut » is Segond's."
+  },
+  {
+   "reference": "Isaiah 52:14",
+   "status": "self_rendered",
+   "block_index": 455,
+   "why": "Segond has « un sujet d’effroi » and « Tant son aspect différait de celui des fils de l’homme »; the whole address is built on KJV 'astonied' (astonishment, the chapter title) and on 'marred more than any man … more than the sons of men'."
+  },
+  {
+   "reference": "Isaiah 52:15a",
+   "status": "self_rendered",
+   "block_index": 455,
+   "why": "Segond reads « il sera pour beaucoup de peuples un sujet de joie »; Spurgeon expounds the KJV 'sprinkle' at length (sprinkling of blood, Heb 9-10) and mentions Segond's reading only as an alternative ('exult with joy, for so some read')."
+  },
+  {
+   "reference": "Isaiah 52:15b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 455
+  },
+  {
+   "reference": "Isaiah 9:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 457
+  },
+  {
+   "reference": "Isaiah 8:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 457
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "Re-personed into a prayer addressed to Christ."
+  },
+  {
+   "reference": "John 8:57",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 460
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 460
+  },
+  {
+   "reference": "Isaiah 53:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 460
+  },
+  {
+   "reference": "Luke 1:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 461
+  },
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 461
+  },
+  {
+   "reference": "Proverbs 23:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 470
+  },
+  {
+   "reference": "Matthew 9:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 472
+  },
+  {
+   "reference": "Matthew 9:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 472
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 473
+  },
+  {
+   "reference": "Mark 3:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 474
+  },
+  {
+   "reference": "Mark 6:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 474
+  },
+  {
+   "reference": "Mark 8:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 474
+  },
+  {
+   "reference": "John 11:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 474
+  },
+  {
+   "reference": "John 13:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 475
+  },
+  {
+   "reference": "Matthew 26:56",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 475
+  },
+  {
+   "reference": "Luke 22:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 475
+  },
+  {
+   "reference": "Mark 15:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 479
+  },
+  {
+   "reference": "Revelation 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 496
+  },
+  {
+   "reference": "Revelation 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 497
+  },
+  {
+   "reference": "Philippians 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 497
+  },
+  {
+   "reference": "Philippians 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 497
+  },
+  {
+   "reference": "Philippians 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 497
+  },
+  {
+   "reference": "Revelation 5:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 498
+  },
+  {
+   "reference": "Hebrews 10:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 498
+  },
+  {
+   "reference": "Hebrews 9:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 498
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "self_rendered",
+   "block_index": 498,
+   "why": "Spurgeon paraphrases in the first person plural and present tense ('doth … purge our conscience'); Segond's « purifiera-t-il votre conscience … afin que vous serviez » re-personed."
+  },
+  {
+   "reference": "Hebrews 9:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 499
+  },
+  {
+   "reference": "Hebrews 9:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 499
+  },
+  {
+   "reference": "Matthew 26:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 499
+  },
+  {
+   "reference": "Isaiah 42:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 499
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 499
+  },
+  {
+   "reference": "Matthew 11:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 503
+  },
+  {
+   "reference": "1 Thessalonians 4:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 503
+  },
+  {
+   "reference": "Psalm 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 504
+  },
+  {
+   "reference": "Revelation 11:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 504
+  },
+  {
+   "reference": "Isaiah 9:6",
+   "status": "self_rendered",
+   "block_index": 504,
+   "why": "KJV Isaiah 9:7 = Segond 9:6; Segond's wording (« Donner à l’empire de l’accroissement, Et une paix sans fin ») is an infinitive clause continuing 9:5 and cannot stand alone as the quoted sentence."
+  },
+  {
+   "reference": "Revelation 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 504
+  },
+  {
+   "reference": "2 Thessalonians 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 504
+  },
+  {
+   "reference": "Hosea 11:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 509
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "block_index": 518,
+   "why": "Segond reads « qu’il nous a accordée en son bien-aimé »; Spurgeon’s point rests on the KJV word “accepted”, applied to the Church (re-personed)."
+  },
+  {
+   "reference": "Romans 8:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Acts 17:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Leviticus 19:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Job 22:6",
+   "status": "self_rendered",
+   "block_index": 527,
+   "why": "Cited in Spurgeon’s list for “thy brother”, but Segond reads « tes frères »; the list citation is loose, not wrong."
+  },
+  {
+   "reference": "Matthew 5:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Luke 17:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Romans 14:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Exodus 20:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Leviticus 19:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Matthew 5:43",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Romans 13:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "James 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Hebrews 7:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Hebrews 7:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Hebrews 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 527
+  },
+  {
+   "reference": "Hebrews 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 528
+  },
+  {
+   "reference": "Hebrews 2:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 528
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 528
+  },
+  {
+   "reference": "Hebrews 2:11b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 528
+  },
+  {
+   "reference": "Hebrews 2:11a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 528
+  },
+  {
+   "reference": "Ruth 2:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 528
+  },
+  {
+   "reference": "Ruth 2:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 528
+  },
+  {
+   "reference": "Ruth 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 528
+  },
+  {
+   "reference": "Genesis 2:23",
+   "status": "self_rendered",
+   "block_index": 528,
+   "why": "Re-personed from Segond « os de mes os et chair de ma chair »."
+  },
+  {
+   "reference": "Daniel 2:32",
+   "status": "self_rendered",
+   "block_index": 530,
+   "why": "Paraphrase of the statue description, not a quotation."
+  },
+  {
+   "reference": "Daniel 2:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 530
+  },
+  {
+   "reference": "John 14:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 530
+  },
+  {
+   "reference": "1 Corinthians 15:48",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 530
+  },
+  {
+   "reference": "1 Corinthians 15:49",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 530
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 530
+  },
+  {
+   "reference": "Job 17:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 531
+  },
+  {
+   "reference": "Job 17:14",
+   "status": "self_rendered",
+   "block_index": 531,
+   "why": "Segond addresses the worms in the plural (« Vous êtes ma mère et ma sœur »); Spurgeon’s singular “the worm … Thou art my sister” kept."
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 531
+  },
+  {
+   "reference": "Malachi 2:16",
+   "status": "self_rendered",
+   "block_index": 538,
+   "why": "Re-personed from Segond « je hais la répudiation » (KJV “He hateth putting away”)."
+  },
+  {
+   "reference": "Ezekiel 16:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 510
+  },
+  {
+   "reference": "Revelation 3:8",
+   "status": "self_rendered",
+   "block_index": 539,
+   "why": "Allusion re-personed from Segond « j’ai mis devant toi une porte ouverte »."
+  },
+  {
+   "reference": "Revelation 21:21",
+   "status": "self_rendered",
+   "block_index": 539,
+   "why": "Allusion in present tense; Segond « chaque porte était d’une seule perle »."
+  },
+  {
+   "reference": "1 Samuel 18:1",
+   "status": "self_rendered",
+   "block_index": 511,
+   "why": "Allusion blended; Segond « l’âme de Jonathan fut attachée à l’âme de David, et Jonathan l’aima comme son âme »."
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 550
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 557
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 557,
+   "why": "Spurgeon's condensed form of the verse (omits 'all ye that labour and are heavy laden'); both halves are Segond's words."
+  },
+  {
+   "reference": "Revelation 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 552
+  },
+  {
+   "reference": "Isaiah 57:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 558
+  },
+  {
+   "reference": "Isaiah 57:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 558
+  },
+  {
+   "reference": "Isaiah 57:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 558
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 558
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 558
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "self_rendered",
+   "block_index": 559,
+   "why": "Re-personed allusion ('come and learn of Jesus, and thou shalt find rest') addressed to the soul in the singular, built on Segond's 'recevez mes instructions … vous trouverez du repos'."
+  },
+  {
+   "reference": "Genesis 8:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 559
+  },
+  {
+   "reference": "Ephesians 6:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 560
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 561
+  },
+  {
+   "reference": "Psalm 119:165",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 561
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 561
+  },
+  {
+   "reference": "Revelation 7:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 561
+  },
+  {
+   "reference": "Psalm 37:7",
+   "status": "self_rendered",
+   "block_index": 564,
+   "why": "KJV 'Rest in the LORD'; Segond's 'Garde le silence devant l’Éternel' loses the word 'rest' the whole address turns on. Second half is Segond's."
+  },
+  {
+   "reference": "Psalm 57:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 564
+  },
+  {
+   "reference": "Isaiah 28:12",
+   "status": "self_rendered",
+   "block_index": 569,
+   "why": "KJV 'and this is the refreshing'; Segond has 'Voici le lieu du repos', losing the word 'refreshing' that Spurgeon's point (rest refreshes) rests on. First half follows Segond."
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 578
+  },
+  {
+   "reference": "John 6:47",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 579
+  },
+  {
+   "reference": "John 3:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 579
+  },
+  {
+   "reference": "2 Corinthians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 579
+  },
+  {
+   "reference": "1 John 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 579
+  },
+  {
+   "reference": "1 John 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 579
+  },
+  {
+   "reference": "1 John 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 579
+  },
+  {
+   "reference": "Isaiah 30:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 580
+  },
+  {
+   "reference": "Luke 10:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 580
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 580
+  },
+  {
+   "reference": "Luke 14:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 581
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 581
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 581
+  },
+  {
+   "reference": "1 Peter 2:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 583
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 584
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 584
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 585
+  },
+  {
+   "reference": "Matthew 26:30",
+   "status": "self_rendered",
+   "block_index": 586,
+   "why": "Segond’s « les cantiques » loses the singular ‘an hymn’ the address turns on"
+  },
+  {
+   "reference": "Matthew 26:30",
+   "status": "self_rendered",
+   "block_index": 586,
+   "why": "Segond’s « les cantiques » loses the singular ‘an hymn’ the address turns on"
+  },
+  {
+   "reference": "2 Samuel 23:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 588
+  },
+  {
+   "reference": "Psalm 113:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 589
+  },
+  {
+   "reference": "Psalm 118:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 589
+  },
+  {
+   "reference": "Psalm 118:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 589
+  },
+  {
+   "reference": "Psalm 118:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 589
+  },
+  {
+   "reference": "Matthew 3:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 590
+  },
+  {
+   "reference": "Psalm 118:27b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 589
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 591
+  },
+  {
+   "reference": "Matthew 26:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 592
+  },
+  {
+   "reference": "Job 39:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 592
+  },
+  {
+   "reference": "Luke 12:50",
+   "status": "self_rendered",
+   "block_index": 592,
+   "why": "Paraphrased into the third person (Christ's own words re-personed)."
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 601
+  },
+  {
+   "reference": "Acts 21:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 603
+  },
+  {
+   "reference": "Psalm 78:43",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 604
+  },
+  {
+   "reference": "Psalm 77:21",
+   "status": "self_rendered",
+   "block_index": 604,
+   "why": "Woven into narrative in the third person; Segond (and the psalm) address God as « tu »."
+  },
+  {
+   "reference": "Revelation 15:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 604
+  },
+  {
+   "reference": "Exodus 15:5",
+   "status": "self_rendered",
+   "block_index": 604,
+   "why": "Past-historic narrative form of Segond's « Les flots les ont couverts », woven into Spurgeon's sentence."
+  },
+  {
+   "reference": "Exodus 14:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 604
+  },
+  {
+   "reference": "Isaiah 51:9",
+   "status": "self_rendered",
+   "block_index": 604,
+   "why": "KJV image (Rahab cut, the dragon wounded); Segond renders Rahab as « l’Égypte » and the dragon as « le monstre », losing the names Spurgeon sings of."
+  },
+  {
+   "reference": "Deuteronomy 26:8",
+   "status": "self_rendered",
+   "block_index": 605,
+   "why": "Spurgeon blends Exodus 14:8 (« la main levée ») with Deuteronomy 26:8 (« à bras étendu »)."
+  },
+  {
+   "reference": "Exodus 15:5",
+   "status": "self_rendered",
+   "block_index": 605,
+   "why": "Blend of Exodus 15:5 (« Les flots les ont couverts ») and Exodus 14:28 (« il n’en échappa pas un seul »), in Spurgeon's present-perfect form."
+  },
+  {
+   "reference": "Revelation 5:9",
+   "status": "self_rendered",
+   "block_index": 605,
+   "why": "Re-personed from Segond's « tu as été immolé, et tu as racheté pour Dieu par ton sang »."
+  },
+  {
+   "reference": "Matthew 26:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 607
+  },
+  {
+   "reference": "1 Samuel 18:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 609
+  },
+  {
+   "reference": "Psalm 150:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 609
+  },
+  {
+   "reference": "Exodus 15:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 609
+  },
+  {
+   "reference": "Exodus 15:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 609
+  },
+  {
+   "reference": "Isaiah 63:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 609
+  },
+  {
+   "reference": "Ephesians 4:8",
+   "status": "self_rendered",
+   "block_index": 609,
+   "why": "Recast as a present participle clause (« leading captivity captive, ascending up on high »); Segond: « Étant monté en haut, il a emmené des captifs »."
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 611
+  },
+  {
+   "reference": "Psalm 23:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 611
+  },
+  {
+   "reference": "John 10:11",
+   "status": "self_rendered",
+   "block_index": 611,
+   "why": "Recast in the past tense with « troupeau » (Spurgeon's « flock »); Segond: « Le bon berger donne sa vie pour ses brebis »."
+  },
+  {
+   "reference": "John 6:50",
+   "status": "self_rendered",
+   "block_index": 612,
+   "why": "Spurgeon blends John 6:50-51 (bread come down from heaven, whoever eats) with John 6:35 (shall never hunger); rendered as one phrase, Segond wording used where it carries the same words."
+  },
+  {
+   "reference": "Isaiah 5:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 617
+  },
+  {
+   "reference": "Psalm 45:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 617
+  },
+  {
+   "reference": "Psalm 45:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 621
+  },
+  {
+   "reference": "Psalm 45:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 625
+  },
+  {
+   "reference": "Psalm 120:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 618
+  },
+  {
+   "reference": "Song of Songs 5:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 620
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "self_rendered",
+   "block_index": 625,
+   "why": "Allusion adapted to Christ's love (past tense, 'his love'); Segond's 'Les grandes eaux ne peuvent éteindre l’amour' reshaped to fit the sentence."
+  },
+  {
+   "reference": "1 Corinthians 11:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 642
+  },
+  {
+   "reference": "Matthew 26:30",
+   "status": "self_rendered",
+   "block_index": 586,
+   "why": "KJV 'sung an hymn' (singular) is the address's theme; Segond has the plural 'Après avoir chanté les cantiques'."
+  },
+  {
+   "reference": "Matthew 26:38",
+   "status": "self_rendered",
+   "block_index": 643,
+   "why": "Re-personed and put in the past from Segond 'Mon âme est triste jusqu’à la mort'."
+  },
+  {
+   "reference": "Luke 1:47",
+   "status": "self_rendered",
+   "block_index": 643,
+   "why": "Re-personed (our/has rejoiced) from Segond 'mon esprit se réjouit en Dieu, mon Sauveur'."
+  },
+  {
+   "reference": "2 Corinthians 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 643
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "Re-personed (their) from Segond 'par vos offenses et par vos péchés'."
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 645
+  },
+  {
+   "reference": "Revelation 19:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 646
+  },
+  {
+   "reference": "Psalm 150:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 646
+  },
+  {
+   "reference": "Psalm 150:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 609
+  },
+  {
+   "reference": "Psalm 92:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 646
+  },
+  {
+   "reference": "Isaiah 35:6",
+   "status": "self_rendered",
+   "block_index": 656,
+   "why": "Spurgeon's argument is that even the dumb shall SING; Segond's 'la langue du muet éclatera de joie' loses the verb 'sing' (KJV 'the tongue of the dumb sing')."
+  },
+  {
+   "reference": "Psalm 27:6",
+   "status": "self_rendered",
+   "block_index": 662,
+   "why": "Spurgeon counts David's repeated 'I will sing'; Segond's 'Je chanterai, je célébrerai l’Éternel' drops the repetition his point rests on."
+  },
+  {
+   "reference": "Acts 8:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 663
+  },
+  {
+   "reference": "Isaiah 28:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 663
+  },
+  {
+   "reference": "Isaiah 28:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 663
+  },
+  {
+   "reference": "Micah 7:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 663
+  },
+  {
+   "reference": "1 Peter 3:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 664
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 664,
+   "why": "Re-personed (you) from Segond 'qui m’a aimé et qui s’est livré lui-même pour moi'."
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 665
+  },
+  {
+   "reference": "Mark 4:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "Mark 4:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 682
+  },
+  {
+   "reference": "Matthew 4:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 682
+  },
+  {
+   "reference": "Psalm 55:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 683
+  },
+  {
+   "reference": "John 21:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 684
+  },
+  {
+   "reference": "Luke 22:28",
+   "status": "self_rendered",
+   "block_index": 684,
+   "why": "Unmarked allusion (KJV 'continued with me in my temptations'), re-personed into Spurgeon's narration."
+  },
+  {
+   "reference": "Mark 4:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 685
+  },
+  {
+   "reference": "Psalm 127:2",
+   "status": "self_rendered",
+   "block_index": 686,
+   "why": "Allusion to KJV 'he giveth his beloved sleep'; Segond's wording ('Il en donne autant à ses bien-aimés pendant leur sommeil') does not carry the image Spurgeon uses."
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "Psalm 107:27",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "Re-personed allusion applied to the sailors ('reels to and fro, and staggers like a drunken man, and is at his wits' end')."
+  },
+  {
+   "reference": "Mark 4:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "Mark 4:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 692
+  },
+  {
+   "reference": "Psalm 124:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 693
+  },
+  {
+   "reference": "Mark 4:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 694
+  },
+  {
+   "reference": "Matthew 9:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 694
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 692
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 696
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 696
+  },
+  {
+   "reference": "Genesis 15:1",
+   "status": "self_rendered",
+   "block_index": 696,
+   "why": "Re-personed from God's word to Abram ('I am thy shield, and thy exceeding great reward')."
+  },
+  {
+   "reference": "Psalm 46:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 696
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "self_rendered",
+   "block_index": 695,
+   "why": "Spurgeon's phrase 'perfect peace' (KJV) carries his point; Segond renders the Hebrew doubling as 'la paix, la paix'."
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 696
+  },
+  {
+   "reference": "Revelation 21:1",
+   "status": "self_rendered",
+   "block_index": 696,
+   "why": "Allusion re-tensed (\"where there is no more sea\"); Segond has the past tense."
+  },
+  {
+   "reference": "John 14:12",
+   "status": "self_rendered",
+   "block_index": 697,
+   "why": "Re-personed allusion ('the works which Jesus did shall we do also')."
+  },
+  {
+   "reference": "Psalm 127:2",
+   "status": "self_rendered",
+   "block_index": 697,
+   "why": "Allusion to KJV 'he giveth his beloved sleep'; Segond's wording loses the image."
+  },
+  {
+   "reference": "Luke 8:46",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 698
+  },
+  {
+   "reference": "Jeremiah 23:28",
+   "status": "self_rendered",
+   "block_index": 699,
+   "why": "KJV 'What is the chaff to the wheat?' is a contrast of worth that Spurgeon applies to the crowd; Segond ('Pourquoi mêler la paille au froment?') asks about mixing, which loses the point."
+  },
+  {
+   "reference": "Matthew 22:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 699
+  },
+  {
+   "reference": "Matthew 9:21",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "Re-personed paraphrase (first person, past tense) of the woman's words, blended with Matthew 9:20 'le bord de son vêtement'."
+  },
+  {
+   "reference": "Luke 8:46",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 698
+  },
+  {
+   "reference": "Luke 8:46b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 698
+  },
+  {
+   "reference": "Luke 8:45",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 703
+  },
+  {
+   "reference": "Genesis 18:25",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "Allusive title woven into Spurgeon's sentence; Segond's 'Celui qui juge toute la terre' does not fit the noun phrase."
+  },
+  {
+   "reference": "Romans 6:4",
+   "status": "self_rendered",
+   "block_index": 704,
+   "why": "Allusion blending Romans 6:4 and Colossians 2:12, re-personed and negated; follows Segond's vocabulary (ensevelis ... par le baptême, nouveauté de vie)."
+  },
+  {
+   "reference": "Job 14:15",
+   "status": "self_rendered",
+   "block_index": 707,
+   "why": "Re-personed into Christ's mouth (KJV 'thou wilt have a desire to the work of thine hands'); Segond's 'Tu languirais après l’ouvrage de tes mains' cannot be carried into first person verbatim."
+  },
+  {
+   "reference": "John 1:48",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 708
+  },
+  {
+   "reference": "1 Corinthians 11:29",
+   "status": "self_rendered",
+   "block_index": 711,
+   "why": "Spurgeon's argument turns on the KJV words 'unworthily' (adverb) and 'damnation'; Segond 11:29 has neither ('sans discerner le corps du Seigneur ... un jugement'), so the KJV wording is rendered."
+  },
+  {
+   "reference": "1 Corinthians 11:29",
+   "status": "self_rendered",
+   "block_index": 711,
+   "why": "Repetition of the KJV wording his adjective/adverb argument depends on; not in Segond 11:29."
+  },
+  {
+   "reference": "Isaiah 40:17b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 712
+  },
+  {
+   "reference": "Luke 8:35",
+   "status": "self_rendered",
+   "block_index": 718,
+   "why": "Segond's wording re-personed to the hearer (« son bon sens » → « votre bon sens »)."
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered",
+   "block_index": 718,
+   "why": "Allusion applied to one sinner (singular « blanc »; Segond has « blancs »); the scarlet-dye image is Spurgeon's own development."
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 718
+  },
+  {
+   "reference": "Matthew 26:41b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 719
+  },
+  {
+   "reference": "1 Samuel 2:8",
+   "status": "self_rendered",
+   "block_index": 719,
+   "why": "Paraphrase (also Psalm 113:7) reordered into Spurgeon's sentence; Segond: « Du fumier il relève l’indigent »."
+  },
+  {
+   "reference": "1 Samuel 2:8",
+   "status": "self_rendered",
+   "block_index": 719,
+   "why": "Segond's « Pour les faire asseoir avec les grands » re-personed to « nous »."
+  },
+  {
+   "reference": "Song of Songs 6:12",
+   "status": "self_rendered",
+   "block_index": 719,
+   "why": "Spurgeon's point rests on the KJV proper name Ammi-nadib; Segond renders it « mon noble peuple », losing the image. Re-personed to the hearer."
+  },
+  {
+   "reference": "Mark 5:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 720
+  },
+  {
+   "reference": "Zechariah 13:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 721
+  },
+  {
+   "reference": "Zechariah 13:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 721
+  },
+  {
+   "reference": "2 Timothy 2:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 733
+  },
+  {
+   "reference": "Luke 8:46",
+   "status": "self_rendered",
+   "block_index": 734,
+   "why": "Spurgeon's third-person adaptation of « Quelqu’un m’a touché »."
+  },
+  {
+   "reference": "Psalm 66:16",
+   "status": "self_rendered",
+   "block_index": 734,
+   "why": "Segond « Ce qu’il a fait à mon âme » re-personed to the hearer, with « le Seigneur » as in Spurgeon."
+  },
+  {
+   "reference": "Luke 22:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 737
+  },
+  {
+   "reference": "Matthew 5:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 738
+  },
+  {
+   "reference": "Ecclesiastes 8:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 738
+  },
+  {
+   "reference": "John 2:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 738
+  },
+  {
+   "reference": "Matthew 4:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 742
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 744,
+   "why": "Re-personed from 'my yoke' to 'his yoke'; otherwise Segond's wording."
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 745
+  },
+  {
+   "reference": "Proverbs 18:24",
+   "status": "self_rendered",
+   "block_index": 745,
+   "why": "Spurgeon's point turns on the KJV reading ('must show himself friendly'); Segond renders the verse quite differently ('les a pour son malheur')."
+  },
+  {
+   "reference": "Proverbs 17:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 745
+  },
+  {
+   "reference": "1 John 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 746
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "self_rendered",
+   "block_index": 746,
+   "why": "Re-personed allusion ('I will sup with him, and he with me')."
+  },
+  {
+   "reference": "Luke 14:15",
+   "status": "self_rendered",
+   "block_index": 746,
+   "why": "Allusion to 'eat bread in the kingdom of God', re-personed; Segond has 'prendra son repas'."
+  },
+  {
+   "reference": "John 13:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 749
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "self_rendered",
+   "block_index": 749,
+   "why": "Paraphrase, re-personed ('that which I have committed unto him' -> 'we')."
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 749
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "self_rendered",
+   "block_index": 749,
+   "why": "Allusion inside Spurgeon's imagined speech of Christ, adapted."
+  },
+  {
+   "reference": "Psalm 16:8",
+   "status": "self_rendered",
+   "block_index": 749,
+   "why": "Allusion re-personed inside Spurgeon's imagined speech of Christ."
+  },
+  {
+   "reference": "Romans 12:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 751
+  },
+  {
+   "reference": "1 Peter 1:22",
+   "status": "self_rendered",
+   "block_index": 751,
+   "why": "Paraphrased exhortation ('see that ye love each other with a pure heart fervently'), blended with KJV's 'pure heart'."
+  },
+  {
+   "reference": "Matthew 26:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 752
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "block_index": 752,
+   "why": "Paraphrased allusion, re-personed."
+  },
+  {
+   "reference": "Hebrews 12:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 752
+  },
+  {
+   "reference": "Romans 6:4",
+   "status": "self_rendered",
+   "block_index": 738,
+   "why": "Allusion to 'newness of life'; Segond has 'nouveauté de vie'."
+  },
+  {
+   "reference": "John 13:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 753
+  },
+  {
+   "reference": "Matthew 23:8",
+   "status": "self_rendered",
+   "block_index": 753,
+   "why": "Spurgeon quotes the KJV 'One is your Master, even Christ'; Segond 23:8 has no 'le Christ' (textual variant), so Segond's wording is kept with 'le Christ' added from the KJV."
+  },
+  {
+   "reference": "John 13:34",
+   "status": "self_rendered",
+   "block_index": 754,
+   "why": "Indirect paraphrase in Spurgeon's own sentence, not a quotation."
+  },
+  {
+   "reference": "John 13:35a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 754
+  },
+  {
+   "reference": "John 13:35b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 754
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 755
+  },
+  {
+   "reference": "John 4:34",
+   "status": "self_rendered",
+   "block_index": 755,
+   "why": "Allusion re-worded by Spurgeon ('his meat and his drink … the will of the heavenly Father'), not a quotation."
+  },
+  {
+   "reference": "John 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 756
+  },
+  {
+   "reference": "John 20:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 756
+  },
+  {
+   "reference": "1 Thessalonians 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 756
+  },
+  {
+   "reference": "1 Corinthians 11:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 756
+  },
+  {
+   "reference": "1 Corinthians 11:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 756
+  },
+  {
+   "reference": "Isaiah 59:1",
+   "status": "self_rendered",
+   "block_index": 759,
+   "why": "Loose allusion (KJV-style 'the Lord's arm is not shortened'); Segond says 'la main de l’Éternel n’est pas trop courte', so Spurgeon's image is rendered directly."
+  },
+  {
+   "reference": "Hebrews 11:33",
+   "status": "self_rendered",
+   "block_index": 759,
+   "why": "Allusion re-personed into the first person future ('we shall subdue kingdoms yet'); Segond: 'vainquirent des royaumes'."
+  },
+  {
+   "reference": "Mark 5:36",
+   "status": "self_rendered",
+   "block_index": 759,
+   "why": "Re-personed to the hearers (vous); Segond: 'crois seulement'."
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 759
+  },
+  {
+   "reference": "2 Corinthians 10:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 760
+  },
+  {
+   "reference": "Luke 14:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 761
+  },
+  {
+   "reference": "Matthew 8:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 761
+  },
+  {
+   "reference": "Luke 13:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 746
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 761
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 767
+  },
+  {
+   "reference": "John 13:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 769
+  },
+  {
+   "reference": "John 13:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 769
+  },
+  {
+   "reference": "John 13:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 788
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 772
+  },
+  {
+   "reference": "Colossians 1:28",
+   "status": "self_rendered",
+   "block_index": 772,
+   "why": "Segond's « parfait en Christ » put in the plural to agree with « vous »; KJV 'perfect in Christ Jesus'."
+  },
+  {
+   "reference": "Psalm 51:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 772
+  },
+  {
+   "reference": "Acts 8:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 772
+  },
+  {
+   "reference": "Exodus 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 772
+  },
+  {
+   "reference": "Hebrews 12:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 773
+  },
+  {
+   "reference": "Psalm 32:1",
+   "status": "self_rendered",
+   "block_index": 773,
+   "why": "Re-personed allusion; keeps KJV 'covered' image (Segond: « pardonné »)."
+  },
+  {
+   "reference": "Numbers 23:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 773
+  },
+  {
+   "reference": "Acts 13:39",
+   "status": "self_rendered",
+   "block_index": 779,
+   "why": "Spurgeon's abridged form of the verse; Segond's full wording adds « par lui … dont vous ne pouviez être justifiés par la loi »."
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 788
+  },
+  {
+   "reference": "Luke 1:43",
+   "status": "self_rendered",
+   "block_index": 789,
+   "why": "KJV 'Whence is this to me?' used as the believer's own cry; adapted from Segond « Comment m’est-il accordé »."
+  },
+  {
+   "reference": "Isaiah 44:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 789
+  },
+  {
+   "reference": "Revelation 19:8",
+   "status": "self_rendered",
+   "block_index": 799,
+   "why": "Spurgeon's argument is imputed righteousness (KJV 'righteousness of saints'); Segond's « œuvres justes des saints » would shift the doctrine."
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 804
+  },
+  {
+   "reference": "John 14:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 810
+  },
+  {
+   "reference": "John 19:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 815
+  },
+  {
+   "reference": "Matthew 28:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 815
+  },
+  {
+   "reference": "Acts 2:24",
+   "status": "self_rendered",
+   "block_index": 815,
+   "why": "Allusion blending Segond's 'liens de la mort' and 'il n’était pas possible qu’il fût retenu par elle' into one clause."
+  },
+  {
+   "reference": "Luke 24:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 818
+  },
+  {
+   "reference": "Matthew 9:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 819
+  },
+  {
+   "reference": "Proverbs 18:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 821
+  },
+  {
+   "reference": "Isaiah 9:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 821
+  },
+  {
+   "reference": "Isaiah 66:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 821
+  },
+  {
+   "reference": "John 11:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 822
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 824,
+   "why": "KJV 'waits to be gracious'; Segond has 'désire vous faire grâce', which loses the waiting image Spurgeon uses."
+  },
+  {
+   "reference": "Psalm 40:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 824
+  },
+  {
+   "reference": "Psalm 40:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 824
+  },
+  {
+   "reference": "2 Corinthians 12:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 824
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered",
+   "block_index": 824,
+   "why": "Re-personed blend of 12:8 ('de l’éloigner de moi') and 12:7 ('écharde dans la chair') as the hearer's own words."
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 824
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "self_rendered",
+   "block_index": 824,
+   "why": "Re-personed allusion (Segond: 'L’Éternel est mon berger')."
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "self_rendered",
+   "block_index": 824,
+   "why": "Allusion to KJV 'valley of the shadow of death' in Spurgeon's phrasing."
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "self_rendered",
+   "block_index": 824,
+   "why": "Re-personed paraphrase (Segond: 'Je ne te délaisserai point, et je ne t’abandonnerai point')."
+  },
+  {
+   "reference": "2 Corinthians 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 825
+  },
+  {
+   "reference": "John 16:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 826
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 826
+  },
+  {
+   "reference": "Galatians 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 826
+  },
+  {
+   "reference": "2 Timothy 3:15",
+   "status": "self_rendered",
+   "block_index": 826,
+   "why": "Plural of Segond's 'sage à salut' to fit the sentence."
+  },
+  {
+   "reference": "1 John 2:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 827
+  },
+  {
+   "reference": "Psalm 14:4",
+   "status": "self_rendered",
+   "block_index": 827,
+   "why": "Allusion to KJV 'eat up my people as they eat bread'; Segond's wording ('le prennent pour nourriture') does not fit the image."
+  },
+  {
+   "reference": "John 14:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 810
+  },
+  {
+   "reference": "John 14:18b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 810
+  },
+  {
+   "reference": "John 14:18",
+   "status": "self_rendered",
+   "block_index": 830,
+   "why": "Spurgeon's interpretive expansion of the verse."
+  },
+  {
+   "reference": "John 14:18b",
+   "status": "self_rendered",
+   "block_index": 838,
+   "why": "Re-personed to the singular in the hearer's prayer."
+  },
+  {
+   "reference": "John 14:18a",
+   "status": "self_rendered",
+   "block_index": 850,
+   "why": "Spurgeon's expansion with 'now'."
+  },
+  {
+   "reference": "John 14:19b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 831
+  },
+  {
+   "reference": "Psalm 51:13b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 831
+  },
+  {
+   "reference": "Psalm 42:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 832
+  },
+  {
+   "reference": "John 14:22",
+   "status": "self_rendered",
+   "block_index": 835,
+   "why": "Allusion re-cast as a past statement about Jesus (Segond wording kept where possible)."
+  },
+  {
+   "reference": "John 20:25",
+   "status": "self_rendered",
+   "block_index": 835,
+   "why": "Blend of John 20:25 and 20:27, re-personed to 'we'."
+  },
+  {
+   "reference": "Revelation 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 838
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 838
+  },
+  {
+   "reference": "Matthew 8:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 838
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 843
+  },
+  {
+   "reference": "Colossians 1:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 845
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 845
+  },
+  {
+   "reference": "Psalm 19:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 850
+  },
+  {
+   "reference": "Psalm 45:9",
+   "status": "self_rendered",
+   "block_index": 850,
+   "why": "Allusion re-cast around Christ as bridegroom (Segond: 'La myrrhe, l’aloès et la casse parfument tous tes vêtements')."
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 850
+  },
+  {
+   "reference": "Psalm 40:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 850
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "self_rendered",
+   "block_index": 850,
+   "why": "Segond's wording (which keeps the 'mountains of separation' image) with its verse-line capitals and comma adjusted, blended into Spurgeon's prayer."
+  },
+  {
+   "reference": "Psalm 119:49",
+   "status": "self_rendered",
+   "block_index": 849,
+   "why": "KJV 'the word upon which thou hast caused me to hope'; Segond has 'ta promesse … Puisque tu m’as donné l’espérance' — recast."
+  },
+  {
+   "reference": "1 Corinthians 10:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 868
+  },
+  {
+   "reference": "1 Corinthians 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 868
+  },
+  {
+   "reference": "1 Corinthians 10:16",
+   "status": "self_rendered",
+   "block_index": 870,
+   "why": "Spurgeon quotes the Revised Version ('a communion') and comments on 'a' vs 'the'; Segond's 'la communion' would erase his point."
+  },
+  {
+   "reference": "1 Corinthians 10:16",
+   "status": "self_rendered",
+   "block_index": 870,
+   "why": "Revised Version margin reading 'the loaf'; his argument rests on 'loaf' (unity), rendered « miche » since Segond's « pain » cannot carry the contrast."
+  },
+  {
+   "reference": "1 Corinthians 10:17",
+   "status": "self_rendered",
+   "block_index": 870,
+   "why": "Revised Version wording ('one loaf, one body'), which Spurgeon expounds; Segond's structure differs."
+  },
+  {
+   "reference": "John 14:22",
+   "status": "self_rendered",
+   "block_index": 876,
+   "why": "Allusive paraphrase of the KJV ('manifest thyself unto us, and not unto the world'), recast as a statement."
+  },
+  {
+   "reference": "1 John 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 877
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 878
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 880
+  },
+  {
+   "reference": "John 11:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 881
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 881
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 882
+  },
+  {
+   "reference": "Isaiah 54:12",
+   "status": "self_rendered",
+   "block_index": 883,
+   "why": "Allusion to KJV 'windows of agates, gates of carbuncles'; Segond reads 'créneaux de rubis', losing the windows/gates image Spurgeon uses."
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 884
+  },
+  {
+   "reference": "John 6:57",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 884
+  },
+  {
+   "reference": "John 1:12",
+   "status": "self_rendered",
+   "block_index": 884,
+   "why": "Spurgeon's adaptation ('given this communion'); Segond's feminine pronouns (the light/Word) also re-personed to Christ."
+  },
+  {
+   "reference": "Malachi 3:16",
+   "status": "self_rendered",
+   "block_index": 886,
+   "why": "KJV 'spake often'; the word 'often' (absent in Segond) carries his contrast 'more often speak one against another'."
+  },
+  {
+   "reference": "1 Corinthians 3:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 889
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 889
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "self_rendered",
+   "block_index": 895,
+   "why": "Re-personed from the imperative to 'we', following Segond's wording."
+  },
+  {
+   "reference": "Romans 12:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 897
+  },
+  {
+   "reference": "1 Corinthians 11:29",
+   "status": "self_rendered",
+   "block_index": 899,
+   "why": "Re-personed to 'you' (plural), following Segond's wording."
+  },
+  {
+   "reference": "Romans 10:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 900
+  },
+  {
+   "reference": "John 1:12",
+   "status": "self_rendered",
+   "block_index": 900,
+   "why": "Segond's pronouns are feminine (referring to the light/Word); re-personed to Christ ('l’ont reçu', 'il a donné') as Spurgeon applies it."
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 901
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "1 Peter 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "1 Peter 2:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 905
+  },
+  {
+   "reference": "1 Peter 2:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 905
+  },
+  {
+   "reference": "1 Peter 2:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 905
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 905
+  },
+  {
+   "reference": "1 Peter 2:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 905
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 905
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "1 Peter 2:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 905
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 905
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 915
+  },
+  {
+   "reference": "Isaiah 53:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 915
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 915
+  },
+  {
+   "reference": "Isaiah 53:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 915
+  },
+  {
+   "reference": "Isaiah 53:12b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 915
+  },
+  {
+   "reference": "Hebrews 9:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 916
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 916
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 916
+  },
+  {
+   "reference": "Ephesians 5:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 916
+  },
+  {
+   "reference": "Hebrews 9:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 916
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "Isaiah 53:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 915
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 919
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "self_rendered",
+   "block_index": 921,
+   "why": "Spurgeon quotes the KJV marginal reading (“to the tree”) to make his point; Segond reads « sur le bois », so « jusque sur le bois » is rendered from his wording."
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 921
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 921
+  },
+  {
+   "reference": "Revelation 13:8",
+   "status": "self_rendered",
+   "block_index": 921,
+   "why": "KJV joins “slain” to “from the foundation of the world”; Segond attaches that phrase to the names written in the book of life, so Spurgeon’s phrase is rendered from the KJV."
+  },
+  {
+   "reference": "Romans 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 922
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 922
+  },
+  {
+   "reference": "Jeremiah 50:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 922
+  },
+  {
+   "reference": "Daniel 9:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 922
+  },
+  {
+   "reference": "Psalm 103:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 923
+  },
+  {
+   "reference": "Micah 7:19",
+   "status": "self_rendered",
+   "block_index": 923,
+   "why": "Unquoted allusion, re-personed (“He hath cast all our iniquities”) and blended with Isaiah 38:17; Segond’s « Tu jetteras au fond de la mer tous leurs péchés » differs in person and tense."
+  },
+  {
+   "reference": "Isaiah 38:17",
+   "status": "self_rendered",
+   "block_index": 923,
+   "why": "Unquoted allusion, re-personed from Hezekiah’s « tu as jeté derrière toi tous mes péchés »."
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 916
+  },
+  {
+   "reference": "1 Peter 1:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 924
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "Psalm 103:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 926
+  },
+  {
+   "reference": "Romans 7:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 927
+  },
+  {
+   "reference": "John 1:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 928
+  },
+  {
+   "reference": "Romans 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 929
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "1 Peter 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "1 Peter 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "Job 11:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 932
+  },
+  {
+   "reference": "Amos 4:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 932
+  },
+  {
+   "reference": "Amos 4:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 932
+  },
+  {
+   "reference": "Psalm 73:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 932
+  },
+  {
+   "reference": "1 John 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 932
+  },
+  {
+   "reference": "1 Peter 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "Revelation 14:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 933
+  },
+  {
+   "reference": "Psalm 63:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 933
+  },
+  {
+   "reference": "Psalm 116:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 933
+  },
+  {
+   "reference": "1 Peter 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "Genesis 8:9",
+   "status": "self_rendered",
+   "block_index": 938,
+   "why": "Unquoted allusion to the dove, re-personed (« son pied » → « notre pied »)."
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 938
+  },
+  {
+   "reference": "John 10:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 939
+  },
+  {
+   "reference": "John 10:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 939
+  },
+  {
+   "reference": "John 10:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 940
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "1 Corinthians 1:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 941
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 903
+  },
+  {
+   "reference": "Revelation 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 942
+  },
+  {
+   "reference": "Revelation 1:18a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 942
+  },
+  {
+   "reference": "Revelation 1:18b",
+   "status": "self_rendered",
+   "block_index": 942,
+   "why": "Segond has no 'Amen' and reads 'les clefs de la mort et du séjour des morts' (reversed order, 'séjour des morts'); Spurgeon expounds 'the keys of hell' (the devil's house, the lion caged) and then 'and of death' as two successive clauses, so the KJV order and 'hell' are kept."
+  },
+  {
+   "reference": "Revelation 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 942
+  },
+  {
+   "reference": "Revelation 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 942
+  },
+  {
+   "reference": "Revelation 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 942
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 942
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 942
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 942
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 942
+  },
+  {
+   "reference": "Revelation 1:18b",
+   "status": "self_rendered",
+   "block_index": 942,
+   "why": "Spurgeon's exposition turns on KJV 'hell' (the devil's own house whose keys hang at Christ's girdle); Segond's 'séjour des morts' would lose it."
+  },
+  {
+   "reference": "Revelation 1:18b",
+   "status": "self_rendered",
+   "block_index": 942,
+   "why": "Final clause of the KJV order 'the keys of hell and of death'; Segond reverses the order."
+  },
+  {
+   "reference": "Luke 22:19",
+   "status": "self_rendered",
+   "block_index": 944,
+   "why": "Spurgeon's summary of 'this do in remembrance of me' as a command, not Segond's wording."
+  },
+  {
+   "reference": "John 21:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 947
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 947
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 950
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 950
+  },
+  {
+   "reference": "Colossians 1:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 953
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "self_rendered",
+   "block_index": 953,
+   "why": "Re-personed (applied to the vain man) from Segond's 'nous soyons par nous-mêmes capables de concevoir quelque chose comme venant de nous-mêmes'."
+  },
+  {
+   "reference": "Micah 7:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 956
+  },
+  {
+   "reference": "Isaiah 63:9",
+   "status": "self_rendered",
+   "block_index": 956,
+   "why": "KJV 'in all their affliction he was afflicted'; Segond follows the other Hebrew reading ('ils n'ont pas été sans secours'), which loses the point of Christ's sympathy."
+  },
+  {
+   "reference": "Proverbs 17:17",
+   "status": "self_rendered",
+   "block_index": 956,
+   "why": "KJV image 'a brother is born for adversity'; Segond ('dans le malheur il se montre un frère') does not fit the sentence as a title of Christ."
+  },
+  {
+   "reference": "Genesis 2:23",
+   "status": "self_rendered",
+   "block_index": 956,
+   "why": "Re-personed (first person plural) from Segond's 'os de mes os et chair de ma chair'."
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 956
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 957
+  },
+  {
+   "reference": "Micah 5:6",
+   "status": "self_rendered",
+   "block_index": 959,
+   "why": "KJV Micah 5:7 (Segond 5:6) re-personed into Christ's first-person speech."
+  },
+  {
+   "reference": "Psalm 138:8",
+   "status": "self_rendered",
+   "block_index": 959,
+   "why": "KJV 'The LORD will perfect that which concerneth me'; Segond ('agira en ma faveur') lacks the 'perfecting' Spurgeon uses; also re-personed."
+  },
+  {
+   "reference": "Revelation 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 959
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "self_rendered",
+   "block_index": 959,
+   "why": "Echo of KJV 'until the day break'; Segond reads 'Avant que le jour se rafraîchisse'."
+  },
+  {
+   "reference": "James 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 959
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 955
+  },
+  {
+   "reference": "John 14:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 960
+  },
+  {
+   "reference": "Romans 6:9",
+   "status": "self_rendered",
+   "block_index": 960,
+   "why": "Re-personed into Christ's first-person speech from Segond's 'la mort n’a plus de pouvoir sur lui'."
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 960
+  },
+  {
+   "reference": "John 14:18",
+   "status": "self_rendered",
+   "block_index": 962,
+   "why": "Re-personed into the third person from Segond's 'Je ne vous laisserai pas orphelins, je viendrai à vous'."
+  },
+  {
+   "reference": "Revelation 12:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 963
+  },
+  {
+   "reference": "Zechariah 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 963
+  },
+  {
+   "reference": "Zechariah 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 963
+  },
+  {
+   "reference": "Zechariah 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 963
+  },
+  {
+   "reference": "1 Corinthians 15:47",
+   "status": "self_rendered",
+   "block_index": 964,
+   "why": "KJV 'the Lord from heaven'; Segond ('le second homme est du ciel') lacks 'the Lord', which Spurgeon quotes."
+  },
+  {
+   "reference": "Song of Songs 1:12",
+   "status": "self_rendered",
+   "block_index": 964,
+   "why": "KJV 'While the king sitteth at his table, my spikenard sendeth forth the smell' — the table image carries the communion close; Segond has 'dans son entourage'. Also turned into an exhortation."
+  }
+ ]
+}

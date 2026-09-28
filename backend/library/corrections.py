@@ -1579,7 +1579,13 @@ BODY_CORRECTIONS: dict[str, dict] = {
     "till-he-come": {
         # A doubled marker with no note behind it — the digits "11" render at
         # the end of the quotation and point at nothing.
-        "replacements": [("<sup>1</sup><sup>1</sup></p>", "</p>")],
+        "replacements": [
+            ("<sup>1</sup><sup>1</sup></p>", "</p>"),
+            # "The iniquity of Israel shall be sought for, and there shall be
+            # none" is Jeremiah 50:20; the scan dropped the "l" of "l. 20"
+            # (found while translating the book to French).
+            ("shall not be found\u201d (Jeremiah i. 20)", "shall not be found\u201d (Jeremiah l. 20)"),
+        ],
     },
     "revival-lectures": {
         # Here the notes sit at the END of their paragraph rather than inside a

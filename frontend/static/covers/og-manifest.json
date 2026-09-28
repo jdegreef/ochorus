@@ -2084,6 +2084,16 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"fr/till-he-come": {
+			"ground": "316ad47e4dc9ebc62dc96e5f49f26d9f53c15c6c3a1f3ec96d3e13c85341a09c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "band/oxblood",
+			"bar": 0.04
+		},
 		"fr/true-vine": {
 			"ground": "2ae642dca179a7ded689f75d540d4c5d1a3efb7566068a1a8d2bf878f6aa5185",
 			"style": "devotional",
