@@ -243,6 +243,110 @@ prerendered pages reference it.
   than rebase it. (PR #2482, curated-art-batch-3, closed superseded 2026-09-18: 14/21
   already live, 5 `is_published:false`, the last 2 deferred.)
 
+## Original illustrated grounds (Ochorus Originals — kids/teens) — SHIPPED tier
+
+PD-painting sourcing (steps 1–2 above) does NOT apply to **Ochorus Originals**
+(Brave for God series, Growing in Wisdom, teen/CYT flagships): there is no museum
+painting, so `build_curated_covers` (Met/AIC fetch + `isPublicDomain` re-verify) is
+the wrong intake. The ground is an **original wordless illustration** we draw.
+
+**The tier: `ORIGINAL_GROUND`** (shipped PR #2877, 2026-09-18 — the FOURTH
+shared-ground tier). An original ground is un-redrawable (no museum to re-fetch, no
+designed cover to crop), so it is **frozen by SHA-256 like a designed cover** — but
+NOT in `designed_covers.DESIGNED` (that registry is for *worded* rasters a row wears,
+and `covers/art/` is exempt from its digest gate). It lives in
+`curated_art.ORIGINAL_GROUND: dict[str, Original]` where `Original(sha256, why)`. Do
+NOT put it in `CURATED` — that would make the museum-provenance table lie
+(`credit()` returns None for originals). Wiring, once:
+- `covers.shares_a_ground` → add `or slug in ORIGINAL_GROUND` (the ONE predicate;
+  `generate_covers`/`build_cover_assets`/`localize_covers` all route through it).
+  `keeps_english_designed` stays FALSE (English wears the art too, like `CURATED`).
+- `localize_covers` tier-label ladder → add the `"original"` case.
+- Gates in `tests_fixture.py`: `test_original_grounds_are_frozen` (digest freeze);
+  `test_every_art_file_belongs_to_a_tier` (orphan gate — uses `shares_a_ground`, so
+  it auto-covers new tiers); extend `test_curated_editions_share_one_painting` to
+  `set(CURATED) | set(ORIGINAL_GROUND)`; add the 3 `ORIGINAL_GROUND` pairs to the
+  disjointness gate. `tests_fixture`+`tests_covers` = 121 pass.
+
+**Ship steps** (per slug, after the ground jpg is drawn): register it in
+`ORIGINAL_GROUND` with its `shasum -a 256` → delete plate svgs
+(`find covers -regex '.*/<slug>\.svg' -delete`, incl `lg/ sw/`) → `build_cover_assets.py`
+(repoints EVERY lang row + webp) → `npm run og:covers` → `tune_art_scrim.py`. Same
+tail as steps 2–3. `growing-in-wisdom` + teen flagships are next, same tier, no new
+machinery.
+
+**DESIGN GOTCHA — white type needs a DARK ground where the type falls.** `BookCover`
+draws the title/byline/mark in WHITE over a measured scrim, ALWAYS (there is no
+dark-ink variant). The ink bands on the 600×800 ground are byline y102–130, **title
+y284–463 (the vertical MIDDLE)**, subtitle y519–543, mark y664–747 — so a bright sky
+or a big centred sun in the title band kills legibility. Draw a **deep/twilight sky
+with the sun-or-moon glow LOW at the horizon (~y470)**; keep the mark zone over dark
+foreground. `tune_art_scrim` measures the WORST pixel per band, floors at 0.30× and
+caps at 2.0× (a too-pale ground fails as "unusable" — recrop/darken). Brave landed
+0.65–0.80×. Verify by reading the composed og twin `covers/<slug>.png` (the real
+render), or composite `covers.scrimmed(ground, strength, subtitle=True)` + white text
+at the ink bands for a faithful preview before shipping.
+
+**COMPOSITION RULES the ink bands impose (both bit growing-in-wisdom twice):**
+(a) A foreground SUBJECT (hero, figure, tree) must sit ENTIRELY BELOW the title band —
+keep its top at ≥ ~y470 (title bottom is 463), or the title text collides with it. So a
+subject can only occupy the lower third; the drama in the upper 2/3 must come from the
+SKY (deep gradient, dawn, mountains, stars), not a tall element.
+(b) For a book WITH a subtitle, a horizon glow (the Editorial look) spills into the
+subtitle band (y519–543) and fails its 4.5:1 bar. Raise the dark foreground ridge so
+its TOP EDGE stays ABOVE y519 across the full width (glow only above it), which also
+crops a ridge-cresting figure to head+shoulders against the light — the intended
+"lone figure on the ridge" read. Measure all four bands (byline 4.5 / title 3.0 /
+subtitle 4.5 / mark 3.0) on the rendered jpg before compositing the preview.
+
+Two **audience design systems** for the Originals shelf (founder-approved 2026-09-18):
+**Young Readers "Storybook"** (single-scene, one child hero lower-third, deep sky for
+the white title, per-book palette+backdrop swap across a series with one shared frame —
+shipped for Brave for God #2877) and **For Teens "Editorial"** (dark night→dawn,
+starfield, distant mountains, a lone figure cresting a ridge toward a single dawn light
+— shipped for growing-in-wisdom #2905). Both grounds stay wordless — `BookCover`
+sets the type per language, so one ground translates. The vector route below is the
+shipped production path.
+
+**The two systems differ ONLY in artwork — the TYPE is identical.** `BookCover` draws
+the same white house serif at the same fixed positions for EVERY art cover (kids or
+teen); there is no per-book/per-audience type engine, so the locked Editorial prompt's
+"bold bottom-anchored title" is NOT achievable — the title always sits mid-cover
+(y284–463). The audience read comes from the ground alone (warm storybook scene vs dark
+cinematic one). Don't promise a different type treatment.
+
+**Reproducible vector-render recipe** (no image model needed; perfect series
+consistency): author the scene as an inline-SVG HTML at 600×800, render with headless
+Chrome, downscale with Pillow:
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+  --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
+  --window-size=600,800 --screenshot=out@2x.png "file://$PWD/ground.html"
+python3 -c "from PIL import Image; Image.open('out@2x.png').convert('RGB').resize((600,800),Image.LANCZOS).save('ground.jpg',quality=90)"
+```
+No cairosvg/rsvg/inkscape on this machine; Pillow + Chrome are present. Chrome CLI
+`--screenshot` is fine on a STATIC local file (the memory-noted hang is Vite-HMR-only).
+For a numbered series, hold hero/trail/frame/type CONSTANT and drive each book from a
+`palette` dict + ONE horizon-backdrop SVG string (Brave for God: dawn hills → sea+boat
+→ dusk mountains → forest) — that structure IS the series-consistency guarantee. Then
+render every cover into a Pillow grid montage and LOOK before shipping (same discipline
+as the Met "montage+mock+LOOK" gate): a set that doesn't read as one on the shelf is the
+failure to catch here, not any single cover.
+
+**Measure the ROWS THE WORDS REALLY FALL IN, not only the tuner's bands.** A
+series layout (`young`, `originals`) sets type from the top with a volume ring,
+so the subtitle can sit at y448–564 rather than 519–543. Rooted and the East
+African pair (2026-09-28) passed the tuner but needed checking where the words
+actually landed: A Hidden Fire's sparks cleared the fixed subtitle band while
+failing the real subtitle row (2.9:1) until the fire was scaled 1.8× rather
+than 2×. Render the composed og twin and measure its text rows.
+**Check every edition's `cover_title`.** An edition with none sets its FULL
+title on the cover. The Amharic Rooted rows had none, so "ሥር የሰደደ – … – መጽሐፍ 4"
+ran up into the tree. The fix is the title's own first segment, as ar/hi do.
+Shipped so far on this tier: Brave for God 1–4 (#2877), growing-in-wisdom
+(#2905), Rooted 1–6 + A Hidden Fire + Tukutendereza (2026-09-28, "fires on the
+hills"). Sons/Daughters of the King are mocked up and wait on a figure redraw.
+
 ## Running the singles as a batched sweep
 Too many single-plate authors to do per-book A/B/C. The method that works:
 group them into **coherent sub-batches** (Church Fathers; African-American
