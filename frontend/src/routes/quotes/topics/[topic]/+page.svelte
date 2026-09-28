@@ -4,6 +4,8 @@
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
 	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
+	import { quoteCardUrl } from '$lib/quoteShareCard';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
@@ -77,7 +79,19 @@
 	);
 </script>
 
-<Seo {title} {description} {canonical} {hreflang} ogImage={absUrl('/og/quotes.png')} structuredData={[crumbsLd, listLd]} />
+<!-- The topic's own card — its verse, its writers, one featured quote — drawn
+     into the build by scripts/build-quote-cards.mjs. -->
+<Seo
+	{title}
+	{description}
+	{canonical}
+	{hreflang}
+	ogImage={absUrl(quoteCardUrl({ topic: page.topic.slug }))}
+	ogImageWidth={LANDSCAPE_WIDTH}
+	ogImageHeight={LANDSCAPE_HEIGHT}
+	ogImageAlt="Quotes on {page.topic.title}"
+	structuredData={[crumbsLd, listLd]}
+/>
 
 <div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />

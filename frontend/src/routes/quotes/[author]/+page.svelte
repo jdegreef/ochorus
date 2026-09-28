@@ -5,6 +5,8 @@
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
 	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
+	import { quoteCardUrl } from '$lib/quoteShareCard';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
@@ -49,13 +51,9 @@
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
-	// Share card: the author's own portrait when we have one, so a shared quote
-	// page wears the face it is about; otherwise the branded /quotes section card
-	// (the sixteen image-less pages the topic/plan detail pages already fall back
-	// on). Both go through absUrl so the og:image is an absolute URL.
-	const ogImage = $derived(
-		page.author.photo_url ? absUrl(page.author.photo_url) : absUrl('/og/quotes.png')
-	);
+	// Share card: one of the author's quotes, signed and sourced, beside the
+	// book it comes from — drawn into the build by scripts/build-quote-cards.mjs.
+	const ogImage = $derived(absUrl(quoteCardUrl({ author: page.author.slug })));
 
 	// A CollectionPage → ItemList of Quotations, shared with the author-theme
 	// page. The `creator` @id matches the /authors Person node, fusing the quotes
@@ -74,7 +72,16 @@
 	);
 </script>
 
-<Seo {title} {description} {canonical} {hreflang} {ogImage} structuredData={[crumbsLd, quotesLd]} />
+<Seo
+	{title}
+	{description}
+	{canonical}
+	{hreflang}
+	{ogImage}
+	ogImageWidth={LANDSCAPE_WIDTH}
+	ogImageHeight={LANDSCAPE_HEIGHT}
+	ogImageAlt="Quotes from {page.author.name}"
+	structuredData={[crumbsLd, quotesLd]} />
 
 <!-- max-w-2xl is 42rem — the measure STYLE_GUIDE §2 calls normal, and the
      reason is on this page: at 48rem a quotation ran about 95 characters to

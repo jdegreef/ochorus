@@ -761,7 +761,8 @@ relevant group.
   since #4243, articles their lead book's; home has per-locale shelf cards,
   #4208 — `npm run og:home`; verse pages draw their own at postbuild, #4255 —
   `build-verse-cards.mjs`; author pages per locale, #4262 —
-  `build-author-cards.mjs`); the reader emits no BreadcrumbList.
+  `build-author-cards.mjs`; quote author/theme/topic pages, #QUOTES —
+  `build-quote-cards.mjs`); the reader emits no BreadcrumbList.
   _Drawing a new card family: satori needs static TTFs (instance the variable
   woff2 with fontTools `varLib.instancer`; Fraunces/Hanken already vendored in
   `scripts/fonts`), rasterise satori's SVG with `sharp(svg)` (librsvg ~7 ms vs
@@ -772,7 +773,9 @@ relevant group.
   `build-author-cards.mjs` does: set `FONTCONFIG_FILE` to a conf naming
   `scripts/fonts/pango` AND `PANGOCAIRO_BACKEND=fc` before importing sharp
   (without the latter macOS uses CoreText and silently sets Helvetica). Fonts
-  come from `scripts/fonts/cut-pango-fonts.py`._ → localized fallback, one length, section
+  come from `scripts/fonts/cut-pango-fonts.py`. A new Pango card family should
+  build on `scripts/card-kit.mjs` (font setup, text, portraits, `inlined`,
+  `bookCovers`, `drawAll`) and take `sharp` from it._ → localized fallback, one length, section
   OG cards (Book).
 
 ### G. Guide and guards
