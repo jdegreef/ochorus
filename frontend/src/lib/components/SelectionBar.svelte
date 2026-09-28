@@ -7,6 +7,7 @@
 	import { shareQuoteCard } from '$lib/quoteCard';
 	import { clampPopoverLeft, HEADER_OFFSET } from '$lib/reading';
 	import type { Segment } from '$lib/marks.svelte';
+	import { portal } from '$lib/actions/portal';
 
 	/**
 	 * The bar's size before it has ever been drawn — its max-width and two rows.
@@ -309,6 +310,7 @@
 	<div
 		bind:this={bar}
 		class="selbar"
+		use:portal
 		class:below
 		class:docked={touch}
 		style={touch ? undefined : `top: ${top}px; left: ${left}px`}

@@ -7,6 +7,7 @@
 	 */
 	import { i18n } from '$lib/i18n.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
+	import { portal } from '$lib/actions/portal';
 	import type { EntrySource, JournalKind } from '$lib/journal';
 	import type { EntryDraft } from '$lib/journal.svelte';
 	import EntryComposer from './EntryComposer.svelte';
@@ -28,6 +29,7 @@
 
 <div
 	class="jd-overlay"
+	use:portal
 	role="dialog"
 	aria-modal="true"
 	aria-label={kind === 'prayer' ? t('reader.prayThis') : t('reader.writeAbout')}

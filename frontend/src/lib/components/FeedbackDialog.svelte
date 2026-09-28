@@ -10,6 +10,7 @@
 	 */
 	import { i18n } from '$lib/i18n.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
+	import { portal } from '$lib/actions/portal';
 	import { getLang } from '$lib/lang.svelte';
 	import { feedbackContext } from '$lib/feedbackContext';
 	import { submitFeedback, type FeedbackCategory, type FeedbackSource } from '$lib/library-public';
@@ -98,6 +99,7 @@
 
 <div
 	class="fb-overlay"
+	use:portal
 	role="dialog"
 	aria-modal="true"
 	aria-label={t('feedback.title')}

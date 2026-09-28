@@ -2,6 +2,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
+	import { portal } from '$lib/actions/portal';
 
 	/**
 	 * Sign-out was asked for, but changes on this device haven't reached the
@@ -22,6 +23,7 @@
 
 <div
 	class="uso-overlay"
+	use:portal
 	role="alertdialog"
 	aria-modal="true"
 	aria-labelledby="uso-title"
