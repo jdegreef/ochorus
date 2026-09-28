@@ -118,7 +118,8 @@ export const SERIES_META: Record<string, { accent: string; emblem: EmblemName }>
 	'brave-for-god': { accent: '#a5552f', emblem: 'shield-of-faith' }, // made brave
 	rooted: { accent: '#5a9e4d', emblem: 'rooted-sapling' }, // rooted and built up in him
 	'daughters-of-the-king': { accent: '#b0578a', emblem: 'alabaster-jar' }, // she hath done what she could
-	'sons-of-the-king': { accent: '#3f52a8', emblem: 'sword-and-shield' } // strength under control
+	'sons-of-the-king': { accent: '#3f52a8', emblem: 'sword-and-shield' }, // strength under control
+	'straight-talk': { accent: '#c8702a', emblem: 'pilgrim-road' } // the pilgrim's road, told plainly
 };
 
 // ── Fallbacks ───────────────────────────────────────────────────────────────
