@@ -375,6 +375,11 @@ Reported, not fixed
   means. Anchor each on its `<p>` so it cannot touch `body_text`, and add the
   key to `test_no_replacement_pair_is_dead` or nothing will notice when the
   paragraph it titles is edited out from under it.
+  A block that ENDED its chapter (a preface's signature) has no following
+  block to anchor on: use `restored_after`, which puts it behind the close of
+  the block before it (`…religion.”</p>`), with the same guard. Brainerd's
+  `<h3>JONATHAN EDWARDS.</h3>` is the case. Check the anchor occurs in no other
+  chapter, since every entry runs over every chapter of the book.
 - **A display line UNWRAPPED to loose text is `wrapped_blocks`, not
   `restored_blocks`.** The Gutenberg importer once handed centred `<div>` lines
   (headings, datelines, drop-cap opening paragraphs) to the sanitizer, which

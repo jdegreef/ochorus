@@ -657,6 +657,9 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 #     `replacements` pair either, and for a different reason than the seams
 #     above: `restore_dropped_blocks` says why. Spell the block with the tag the
 #     SOURCE used, so the guard recognises a body that already has it.
+#   restored_after: [(anchor, block)] — the same, for a block that ENDED its
+#     chapter: it goes back BEHIND the block whose close `anchor` spells
+#     (`…religion.”</p>`), since nothing followed it to go in front of.
 #
 # Applied on every import AND backfillable over stored rows (management command
 # `apply_body_corrections`, plus a data migration for prod).
@@ -1365,9 +1368,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # same paragraph; `restore_dropped_blocks` inserts each directly before
     # the anchor, so list order is reading order.
     #
-    # NOT restored: the preface's signature `<h3>JONATHAN EDWARDS.</h3>`. It
-    # is the last block of ch1, so there is no following block to anchor on,
-    # and this mechanism only inserts in front of one. Nor the front and back
+    # The preface's signature `<h3>JONATHAN EDWARDS.</h3>` ends ch1, so
+    # nothing follows it to anchor on; it goes back through `restored_after`
+    # below, behind the preface's last paragraph. NOT restored: the front and back
     # matter the importer now also emits (the "LIFE / OF / REV. DAVID
     # BRAINERD." half-title, the donors' imprint, the transcriber's note).
     #
@@ -4637,6 +4640,18 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
     ("dini ya kweli! <i>Amina.</i></p>",
      "<p>Manukuu ya mara kwa mara yenye tarehe kutoka shajara za Brainerd"),
 ]
+# Edwards signs the preface `<div class="c012">JONATHAN EDWARDS.</div>`, the
+# last block of ch1: the half-title after it is front matter. The old walk
+# dropped the div (see the `restored_blocks` entry above); the importer emits
+# `<h3>JONATHAN EDWARDS.</h3>` now, and that is the block, byte for byte
+# (`tests_import.BrainerdRestoredBlocksMatchImporterTests`). Each edition's
+# anchor is the close of its own last paragraph, which occurs nowhere else in
+# the book. The sw keeps the name as printed, and adding it at the end of ch1
+# shifts no block index (nor does any quote or translation note use one here).
+BODY_CORRECTIONS["life-and-diary-of-david-brainerd"]["restored_after"] = [
+    ("the interest of religion.”</p>", "<h3>JONATHAN EDWARDS.</h3>"),
+    ("maslahi ya dini zaidi.”</p>", "<h3>JONATHAN EDWARDS.</h3>"),
+]
 # Gutenberg #51931 follows Torrey's last paragraph with a page break and the
 # Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
 # Stalker and Kempis blurbs survived), and then a sub-300-word "Transcriber's
@@ -5151,7 +5166,9 @@ def restore_paragraph_breaks(body_html: str, seams: Sequence[tuple[str, str]]) -
     return body_html
 
 
-def restore_dropped_blocks(body_html: str, blocks: Sequence[tuple[str, str]]) -> str:
+def restore_dropped_blocks(
+    body_html: str, blocks: Sequence[tuple[str, str]], *, after: bool = False
+) -> str:
     """Put back a block the sanitizer deleted, before the block that followed it.
 
     Named for the shape, not the first case: it restores a `<h4>` note heading in
@@ -5185,11 +5202,17 @@ def restore_dropped_blocks(body_html: str, blocks: Sequence[tuple[str, str]]) ->
     the derived, tagless `body_text` — which is what keeps block tags out of a
     field that must never hold any. `Chapter.save()` re-derives that field from
     the HTML this has already fixed.
+
+    `after=True` is the other side, for a block that ENDED its chapter (a
+    preface's signature): there is no following block to go in front of, so the
+    anchor is the close of the block BEFORE it (`…religion.”</p>`) and the
+    block goes in behind that. The `restored_after` key. The guard is the same.
     """
     for anchor, block in blocks:
         if block in body_html or anchor not in body_html:
             continue
-        body_html = body_html.replace(anchor, f"{block} {anchor}", 1)
+        seam = f"{anchor} {block}" if after else f"{block} {anchor}"
+        body_html = body_html.replace(anchor, seam, 1)
     return body_html
 
 
@@ -5324,6 +5347,7 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
             body_html = body_html.replace(old, new)
         body_html = restore_paragraph_breaks(body_html, entry.get("paragraph_breaks", ()))
         body_html = restore_dropped_blocks(body_html, entry.get("restored_blocks", ()))
+        body_html = restore_dropped_blocks(body_html, entry.get("restored_after", ()), after=True)
         body_html = strip_back_matter(body_html, entry.get("back_matter", ()))
         body_html = wrap_loose_blocks(body_html, entry.get("wrapped_blocks", ()))
         if entry.get("strip_transcription_footnotes"):
