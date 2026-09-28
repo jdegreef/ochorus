@@ -502,3 +502,19 @@
 		{/if}
 	{/if}
 </div>
+
+<style>
+	/* On a touch phone the A–Z letters (21×25) take a full-height target; the
+	   strip scrolls sideways there, so width stays letter-sized. Not on a touch
+	   tablet: from sm the strip wraps, and 44px rows would swell the pinned
+	   header. */
+	@media (pointer: coarse) and (max-width: 639.98px) {
+		.az-rail button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 2.25rem;
+			min-height: 2.75rem;
+		}
+	}
+</style>

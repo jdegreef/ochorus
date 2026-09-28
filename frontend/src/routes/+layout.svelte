@@ -554,7 +554,7 @@
 				<div
 					class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-4 text-small"
 				>
-					<nav class="flex flex-wrap gap-x-5 gap-y-1" aria-label={t('footer.aboutHeading')}>
+					<nav class="footer-legal flex flex-wrap gap-x-5 gap-y-1" aria-label={t('footer.aboutHeading')}>
 						<a class="text-muted hover:text-text" href={localizeHref('/about')}>{t('nav.about')}</a>
 						<a class="text-muted hover:text-text" href={localizeHref('/contact')}>{t('nav.contact')}</a>
 						<a class="text-muted hover:text-text" href="{localizeHref('/legal')}#privacy"

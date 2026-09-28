@@ -125,7 +125,9 @@
 		padding: 0;
 	}
 	.chapters a {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		min-width: 2rem;
 		padding: 0.15rem 0.45rem;
 		text-align: center;
@@ -135,6 +137,14 @@
 		background: var(--color-surface-2);
 		color: var(--color-text);
 		text-decoration: none;
+	}
+	/* On touch, each chapter number is a 44px square: 708 of them were 26px
+	   tall, a grid you had to aim at. */
+	@media (pointer: coarse) {
+		.chapters a {
+			min-width: 2.75rem;
+			min-height: 2.75rem;
+		}
 	}
 	.chapters a:hover {
 		background: color-mix(in srgb, var(--color-accent) 18%, var(--color-surface-2));
