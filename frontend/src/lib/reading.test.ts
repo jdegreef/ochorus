@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
 	bookProgressPercent,
+	workPercent,
 	chapterLabel,
 	chapterName,
 	chapterNameIn,
@@ -177,3 +178,18 @@ describe('seenFraction', () => {
 		expect(seenFraction({ top: 0, height: 0 }, 900)).toBe(0);
 	});
 });
+
+describe('workPercent — the one "% read" (review bug #15)', () => {
+	it("uses the reader's stored by-words figure when there is one", () => {
+		expect(workPercent({ order: 2, pct: 33 }, 10)).toBe(33);
+	});
+	it('falls back to the chapter estimate without one', () => {
+		expect(workPercent({ order: 2 }, 10)).toBe(bookProgressPercent(2, 10));
+	});
+	it('is 100 once finished, and never claims completion before', () => {
+		expect(workPercent({ order: 10, pct: 100, finished_at: 1 }, 10)).toBe(100);
+		expect(workPercent({ order: 10, pct: 100 }, 10)).toBe(99);
+		expect(workPercent({ order: 1, pct: 0 }, 10)).toBe(1);
+	});
+});
+

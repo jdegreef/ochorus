@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { onPageHidden } from '$lib/pageHidden';
+	import { readingSync } from '$lib/readingSync';
+	import { chapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -12,6 +15,7 @@
 		saveProgress,
 		getScrollAnchor,
 		saveScrollAnchor,
+		saveProgressPercent,
 		getProgressRecord,
 		offerFinish
 	} from '$lib/progress';
@@ -466,6 +470,11 @@
 		if (!w || !w.total) return null;
 		return Math.min(100, Math.round(((w.before + chapter.word_count * readFrac) / w.total) * 100));
 	});
+	// Stored on the progress record, so the home strip, /reading and the book
+	// page show this same figure rather than each estimating its own.
+	$effect(() => {
+		if (bookPercent !== null) saveProgressPercent(slug, chapter.order, bookPercent);
+	});
 	// Whole minutes of reading left in the book: the tail of the open chapter plus
 	// every chapter after it, at the reader's pace. Kept as an integer so the
 	// localized label below reformats only when the minute count changes — not on
@@ -747,7 +756,7 @@
 			// Not gated on listen.status like the scroll handlers: paged mode is
 			// force-disabled while listening (`paged` derives on listen.status ===
 			// 'idle'), so a page turn can't happen mid-listen to clobber the resume.
-			saveScrollAnchor(slug, chapter.order, topIndex);
+			saveScrollAnchor(slug, chapter.order, topIndex, 'book', getLang());
 			samplePace(topIndex);
 			// Paging to the last page = reached the end. `save` is false on the
 			// initial restore, so opening mid-chapter at the last page doesn't fire.
@@ -978,7 +987,7 @@
 				offerReturn({ order: prior.order, p: prior.paragraph_index });
 			}
 		}
-		if (Number.isFinite(jumpP) && jumpP > 0) saveScrollAnchor(s, order, jumpP);
+		if (Number.isFinite(jumpP) && jumpP > 0) saveScrollAnchor(s, order, jumpP, 'book', language);
 
 		// Ask the account where it last was (answered by its own effect, once
 		// the session has settled). This device's record is read HERE, before
@@ -1015,8 +1024,8 @@
 				} else {
 					const rec = getProgressRecord(s);
 					const idx =
-						getScrollAnchor(s, order) ??
-						(rec && rec.order === order ? rec.paragraph_index : null);
+						getScrollAnchor(s, order, 'book', getLang()) ??
+						(rec && rec.order === order && rec.language === getLang() ? rec.paragraph_index : null);
 					if (idx && body?.children[idx]) target = pageOf(body.children[idx] as HTMLElement);
 				}
 				goToPage(target, false);
@@ -1352,7 +1361,14 @@
 		if (nextEntry) {
 			goto(
 				localizeHref(
-					`/books/${nextEntry.book_slug}/${nextEntry.chapter_order}?plan=${plan.slug}&day=${nextEntry.day}`
+					chapterPath(
+						nextEntry.book_slug,
+						nextEntry.chapter_order,
+						nextEntry.has_modern_edition,
+						`plan=${plan.slug}&day=${nextEntry.day}`,
+						// A plan followed in Modern English carries on in it.
+						edition === 'modern'
+					)
 				)
 			);
 		} else {
@@ -1374,8 +1390,8 @@
 		// "continue reading" lands on the right paragraph on a fresh device too.
 		const rec = getProgressRecord(s);
 		const idx =
-			getScrollAnchor(s, order) ??
-			(rec && rec.order === order ? rec.paragraph_index : null);
+			getScrollAnchor(s, order, 'book', getLang()) ??
+			(rec && rec.order === order && rec.language === getLang() ? rec.paragraph_index : null);
 		if (idx && body && body.children[idx]) {
 			placeAfterLayout(() => {
 				const el = body?.children[idx];
@@ -1445,22 +1461,33 @@
 	function onScroll() {
 		trackChrome();
 		clearTimeout(saveTimer);
-		saveTimer = setTimeout(() => {
-			if (!body) return;
-			updateFraction();
-			// While actively playing, listen.start's onAdvance owns the resume point
-			// (the spoken paragraph); don't overwrite it with the viewport-top one.
-			// While PAUSED we do save — the reader may be scrolling ahead to read.
-			if (listen.status !== 'playing') {
-				const top = topVisibleIndex();
-				saveScrollAnchor(slug, chapter.order, top);
-				samplePace(top);
-			}
-			// Scrolled to the bottom of the chapter. markChapterComplete ignores the
-			// post-open settle window, so the restore-scroll landing at a saved
-			// end-of-chapter position doesn't count as finishing.
-			if (chapterFrac >= 0.999) markChapterComplete();
-		}, 250);
+		saveTimer = setTimeout(saveScrollNow, 250);
+	}
+	// Hidden before the settle delay ran (the phone locked mid-scroll): save the
+	// place now and send it, so another device resumes where the reader got to.
+	$effect(() =>
+		onPageHidden(() => {
+			if (saveTimer !== undefined) saveScrollNow();
+			readingSync.flushQueued();
+		})
+	);
+	function saveScrollNow() {
+		clearTimeout(saveTimer);
+		saveTimer = undefined;
+		if (!body) return;
+		updateFraction();
+		// While actively playing, listen.start's onAdvance owns the resume point
+		// (the spoken paragraph); don't overwrite it with the viewport-top one.
+		// While PAUSED we do save — the reader may be scrolling ahead to read.
+		if (listen.status !== 'playing') {
+			const top = topVisibleIndex();
+			saveScrollAnchor(slug, chapter.order, top, 'book', getLang());
+			samplePace(top);
+		}
+		// Scrolled to the bottom of the chapter. markChapterComplete ignores the
+		// post-open settle window, so the restore-scroll landing at a saved
+		// end-of-chapter position doesn't count as finishing.
+		if (chapterFrac >= 0.999) markChapterComplete();
 	}
 
 	const cite = $derived({
@@ -1486,6 +1513,7 @@
 		// mispaint them the day an Arabic translation ships. Same for
 		// ?edition=modern on a book that has no modern edition.
 		language: () => language,
+		placeLanguage: getLang,
 		body: () => body,
 		topIndex: currentIndex,
 		reveal: (el) => (paged ? goToPage(pageOfNode(el), false) : el.scrollIntoView({ block: 'center', behavior: 'smooth' })),

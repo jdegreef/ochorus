@@ -61,6 +61,9 @@ export interface ReaderTextOptions {
 	slug: () => string;
 	order: () => number;
 	language: () => string;
+	/** The language the page records the reader's place under (what it passes
+	 *  to saveProgress), when that is not the text's own — see progress.ts. */
+	placeLanguage?: () => string;
 	/** The rendered prose element, once the surface has bound it. */
 	body: () => HTMLElement | undefined;
 	/**
@@ -147,7 +150,13 @@ export class ReaderText {
 			// back up, here or on another device, lands where the audio reached. The
 			// scroll handlers step aside while playing so they don't overwrite it.
 			onAdvance: (index) =>
-				saveScrollAnchor(this.#o.slug(), this.#o.order(), index, this.#o.kind())
+				saveScrollAnchor(
+					this.#o.slug(),
+					this.#o.order(),
+					index,
+					this.#o.kind(),
+					(this.#o.placeLanguage ?? this.#o.language)()
+				)
 		});
 	};
 

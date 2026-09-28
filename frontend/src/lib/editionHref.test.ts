@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { sourceHref, workPath } from './editionHref';
+import { chapterPath, sourceHref, workPath } from './editionHref';
+import { readerPrefs } from './readerPrefs.svelte';
 import type { EntrySource } from './journal';
 
 const src = (kind: EntrySource['kind'], slug: string, order = 1): EntrySource => ({
@@ -33,3 +34,20 @@ describe('workPath', () => {
 		expect(workPath('article', 'how-to-pray')).toBe('/articles/how-to-pray/');
 	});
 });
+
+describe('chapterPath (review bug #17)', () => {
+	it('opens the Modern English edition only when preferred AND published', () => {
+		readerPrefs.preferModern = false;
+		expect(chapterPath('humility', 2, true)).toBe('/books/humility/2');
+		readerPrefs.preferModern = true;
+		expect(chapterPath('humility', 2, true)).toBe('/books/humility/2?edition=modern');
+		// No modern edition (or not known): the original, never a Modern label on it.
+		expect(chapterPath('humility', 2, false)).toBe('/books/humility/2');
+		expect(chapterPath('humility', 2, undefined)).toBe('/books/humility/2');
+		expect(chapterPath('humility', 2, true, 'plan=p&day=3')).toBe(
+			'/books/humility/2?plan=p&day=3&edition=modern'
+		);
+		readerPrefs.preferModern = false;
+	});
+});
+

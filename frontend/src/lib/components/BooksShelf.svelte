@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { chapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import { onMount } from 'svelte';
@@ -285,7 +286,7 @@
 					     it becomes a proper resume card instead. -->
 					{@const c = continueBooks[0]}
 					<a
-						href={localizeHref(`/books/${c.book.slug}/${c.order}`)}
+						href={localizeHref(chapterPath(c.book.slug, c.order, c.book.has_modern_edition))}
 						class="book-card book-card--row card-lift group !p-4 sm:max-w-md"
 					>
 						<div class="w-16 shrink-0 sm:w-20"><BookCover book={c.book} /></div>
@@ -302,7 +303,7 @@
 					<div class="cover-rail flex gap-4 pb-1">
 						{#each continueBooks as c (c.book.slug)}
 							<a
-								href={localizeHref(`/books/${c.book.slug}/${c.order}`)}
+								href={localizeHref(chapterPath(c.book.slug, c.order, c.book.has_modern_edition))}
 								class="w-20 shrink-0 hover:no-underline sm:w-24"
 							>
 								<BookCover book={c.book} />

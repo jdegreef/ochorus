@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { chapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { shareCard, shareImage } from '$lib/coverArt';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
-	import { getProgress } from '$lib/progress';
+	import { getProgressRecord } from '$lib/progress';
+	import type { ProgressRecord } from '$lib/reading-schema';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import {
 		bookTimeLeft,
@@ -11,7 +13,8 @@
 		chapterNameIn,
 		contentLang,
 		readingMinutes,
-		readingTime
+		readingTime,
+		workPercent
 	} from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
 	import {
@@ -50,10 +53,14 @@
 	const t = i18n.t;
 	const book = $derived<BookDetail>(data.book);
 
-	let resumeOrder = $state<number | null>(null);
+	let record = $state<ProgressRecord | null>(null);
 	$effect(() => {
-		resumeOrder = getProgress(book.slug);
+		record = getProgressRecord(book.slug);
 	});
+	const resumeOrder = $derived(record?.order ?? null);
+	// Finished (the end reached, or marked done): the card says so and offers
+	// the book again from the start, not "Continue · chapter N of N".
+	const finishedAt = $derived(record?.finished_at ?? null);
 
 	// The saved place clamped to THIS edition. Progress is keyed by the bare slug
 	// (workSlugKey), so it is shared across language editions — which can have
@@ -71,14 +78,22 @@
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
 
-	// A saved place past chapter 1: the read verb is Continue, not Begin.
-	const resuming = $derived(resumeHere != null && resumeHere > 1);
+	// A saved place past chapter 1 in a book not yet finished: the read verb is
+	// Continue, not Begin (a finished book is read again from the start).
+	const resuming = $derived(finishedAt == null && resumeHere != null && resumeHere > 1);
 	const firstOrder = $derived(book.chapters[0]?.order ?? 1);
 	const readOrder = $derived(resuming && resumeHere != null ? resumeHere : firstOrder);
+	const readLabel = $derived(
+		finishedAt != null
+			? t('fav.readAgain')
+			: resuming
+				? t('book.continue')
+				: t('book.beginReading')
+	);
 
 	// The read card: the chapter the reader is in, how far through the book
-	// that is (by words, so a long chapter counts for more), and the time left
-	// from the start of it at the reader's pace.
+	// that is (workPercent — the same figure every other surface shows), and the
+	// time left from the start of it at the reader's pace.
 	const resumeChapter = $derived(book.chapters.find((c) => c.order === resumeHere));
 	const wordsLeft = $derived(
 		resumeHere == null
@@ -91,7 +106,8 @@
 			.replace('%n%', String(readOrder))
 			.replace('%t%', String(book.chapter_count))
 	);
-	const percentRead = $derived(totalWords ? ((totalWords - wordsLeft) / totalWords) * 100 : 0);
+	// The same figure the home strip and /reading show (see workPercent).
+	const percentRead = $derived(record ? workPercent(record, book.chapter_count) : 0);
 
 	// A long table of contents collapses to the first and last chapters and the
 	// reader's place (see contentsWindow). Hidden rows stay in the HTML — the
@@ -127,7 +143,7 @@
 	// works within a session.
 	const useModern = $derived(readerPrefs.preferModern && book.has_modern_edition);
 	const readHref = (order: number) =>
-		localizeHref(`/books/${book.slug}/${order}${useModern ? '?edition=modern' : ''}`);
+		localizeHref(chapterPath(book.slug, order, book.has_modern_edition));
 
 	// Self-referential canonical + hreflang: this page is prerendered per locale,
 	// so each localized copy points at ITSELF (not the English URL, which would
@@ -515,7 +531,19 @@
 			     second main action. -->
 			<div class="read-card mt-4" bind:this={readCard}>
 				<div class="min-w-0 flex-1">
-					{#if resuming}
+					{#if finishedAt != null}
+						<p class="text-small text-muted">
+							{t('fav.shelfFinished')} · {new Date(finishedAt).toLocaleDateString(getLang(), {
+								day: 'numeric',
+								month: 'long',
+								year: 'numeric'
+							})}
+						</p>
+						<p class="read-card-title" dir="auto">{book.title}</p>
+						<div class="mt-2">
+							<ProgressBar percent={100} label="{book.title}: {t('fav.shelfFinished')}" />
+						</div>
+					{:else if resuming}
 						<p class="text-small text-muted">
 							{onChapter}{#if minutesLeft}{` · ${bookTimeLeft(minutesLeft)}`}{/if}
 						</p>
@@ -537,9 +565,7 @@
 					{/if}
 				</div>
 				<div class="read-card-cta">
-					<a href={readHref(readOrder)} class="btn btn-primary"
-						>{resuming ? t('book.continue') : t('book.beginReading')}</a
-					>
+					<a href={readHref(readOrder)} class="btn btn-primary">{readLabel}</a>
 					{#if resuming}
 						<a href={readHref(firstOrder)} class="text-small text-muted underline hover:text-text"
 							>{t('book.startOver')}</a
@@ -615,7 +641,7 @@
 			     only once the card has scrolled away. -->
 			{#if !cardSeen.visible}
 				<a href={readHref(readOrder)} class="btn btn-primary subnav-cta shrink-0"
-					>{resuming ? `${t('book.continueCh')} ${readOrder}` : t('book.beginReading')}</a
+					>{resuming ? `${t('book.continueCh')} ${readOrder}` : readLabel}</a
 				>
 			{/if}
 		</nav>
@@ -771,8 +797,8 @@
 		</h2>
 		<ol id="contents-list" class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}
-				{@const read = resumeHere != null && ch.order < resumeHere}
-				{@const current = ch.order === resumeHere}
+				{@const read = finishedAt != null || (resumeHere != null && ch.order < resumeHere)}
+				{@const current = finishedAt == null && ch.order === resumeHere}
 				{@const numCls = current ? 'text-accent' : 'text-muted'}
 				{@const titleCls = current ? 'text-accent font-medium' : 'text-text'}
 				{@const gap = gapBefore.get(ch.order)}
@@ -791,7 +817,7 @@
 				{/if}
 				<li class:hidden={visibleOrders != null && !visibleOrders.has(ch.order)}>
 					<a
-						href={localizeHref(`/books/${book.slug}/${ch.order}`)}
+						href={readHref(ch.order)}
 						class="flex items-baseline gap-3 py-2.5 hover:no-underline"
 						aria-current={current ? 'step' : undefined}
 					>

@@ -353,6 +353,15 @@ export interface ProgressRecord {
 	 * (earliest wins), like the streak; see readingSync / reading views.
 	 */
 	finished_at?: number | null;
+	/**
+	 * How far through the whole book this place is, 0–100, by words (the
+	 * reader's own "N% through" figure, stored when it saves the place). The
+	 * lists that show progress have only the book's chapter count, so without
+	 * it each surface estimated its own number. Device-local: the account keeps
+	 * no percent, so a record synced from another device goes without one until
+	 * it is read here. See `workPercent`.
+	 */
+	pct?: number;
 }
 
 /** `workSlugKey(kind, slug)` -> ProgressRecord. */

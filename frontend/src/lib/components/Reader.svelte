@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onPageHidden } from '$lib/pageHidden';
+	import { readingSync } from '$lib/readingSync';
 	/**
 	 * The reading machinery every long-form work shares — the prose itself, and
 	 * everything that has to know about it.
@@ -159,16 +161,29 @@
 
 	function handleScroll() {
 		clearTimeout(saveTimer);
-		saveTimer = setTimeout(() => {
-			updateFraction();
-			// While actively playing, listen.start's onAdvance owns the resume point
-			// (the spoken paragraph); don't overwrite it with the viewport-top one.
-			// While PAUSED we do save — the reader may be scrolling ahead to read.
-			if (listen.status !== 'playing') saveScrollAnchor(slug, order, topVisibleIndex(), kind);
-			// Reaching the end of a single-document work finishes it (no-op for books).
-			maybeFinish();
-		}, 250);
+		saveTimer = setTimeout(saveScrollNow, 250);
 	}
+
+	function saveScrollNow() {
+		clearTimeout(saveTimer);
+		saveTimer = undefined;
+		updateFraction();
+		// While actively playing, listen.start's onAdvance owns the resume point
+		// (the spoken paragraph); don't overwrite it with the viewport-top one.
+		// While PAUSED we do save — the reader may be scrolling ahead to read.
+		if (listen.status !== 'playing') saveScrollAnchor(slug, order, topVisibleIndex(), kind, language);
+		// Reaching the end of a single-document work finishes it (no-op for books).
+		maybeFinish();
+	}
+
+	// Hidden before the settle delay ran (the phone locked mid-scroll): save the
+	// place now and send it, so another device resumes where the reader got to.
+	$effect(() =>
+		onPageHidden(() => {
+			if (saveTimer !== undefined) saveScrollNow();
+			readingSync.flushQueued();
+		})
+	);
 
 	// Record the visit (so the work lands in "Continue reading") and restore the
 	// saved spot — a `?p=` deep link (notebook highlights) wins over the device
@@ -189,7 +204,7 @@
 		// paragraph.
 		const fromUrl = Number($page.url.searchParams.get('p'));
 		if (Number.isFinite(fromUrl) && fromUrl > 0) {
-			saveScrollAnchor(slug, order, fromUrl, kind);
+			saveScrollAnchor(slug, order, fromUrl, kind, language);
 		}
 		saveProgress(slug, order, language, kind);
 		(async () => {
@@ -198,7 +213,7 @@
 			const idx =
 				Number.isFinite(fromUrl) && fromUrl > 0
 					? fromUrl
-					: (getScrollAnchor(slug, order, kind) ??
+					: (getScrollAnchor(slug, order, kind, language) ??
 						getProgressRecord(slug, kind)?.paragraph_index ??
 						0);
 			if (idx > 0 && body?.children[idx]) {
