@@ -1,0 +1,124 @@
+name: Book PDFs
+
+# Builds the PDF of every edition in export_policy.STORED_PDF_EDITIONS and
+# uploads it to the public Supabase Storage bucket `book-pdfs`, overwriting in
+# place — so a book's pdf_url never changes, and git never holds the files.
+#
+#   * push to main: rebuilds only the editions whose fixture changed; a change
+#     to the print pipeline, the back matter, the covers or an author bio
+#     rebuilds them all.
+#   * Run workflow (Actions tab): rebuilds them all.
+#
+# The text comes from the seeded FIXTURE, like CI's API. A fix that reached
+# production only by data migration isn't in a PDF until the fixture has it.
+#
+# Credentials are Supabase Storage S3 keys (Project Settings → Storage → S3
+# access keys), which reach Storage only — never the service-role key, which
+# can do anything to the database:
+#   secrets.SUPABASE_S3_ACCESS_KEY_ID, secrets.SUPABASE_S3_SECRET_ACCESS_KEY
+#   vars.SUPABASE_S3_REGION   (the region shown on that same settings page)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/library/fixtures/content/books/*.en.json'
+      - 'backend/library/fixtures/content/authors.json'
+      - 'backend/library/book_export.py'
+      - 'backend/library/export_policy.py'
+      - 'backend/library/export_strings.json'
+      - 'backend/library/export_covers/**'
+      - 'backend/library/print_fonts/**'
+      - 'backend/library/management/commands/export_book.py'
+      - '.github/workflows/book-pdfs.yml'
+  workflow_dispatch:
+
+# One upload at a time, and never cancel one halfway: a later run rebuilds
+# what it needs on its own.
+concurrency:
+  group: book-pdfs
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pull-requests: read # paths-filter lists the push's files through the API
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DJANGO_DEBUG: 'true' # local SQLite, seeded from the fixture
+      PUBLIC_SITE_URL: https://ochorus.com # colophon links
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: dorny/paths-filter@v4
+        id: changed
+        if: github.event_name == 'push'
+        with:
+          list-files: shell
+          filters: |
+            pipeline:
+              - 'backend/library/fixtures/content/authors.json'
+              - 'backend/library/book_export.py'
+              - 'backend/library/export_policy.py'
+              - 'backend/library/export_strings.json'
+              - 'backend/library/export_covers/**'
+              - 'backend/library/print_fonts/**'
+              - 'backend/library/management/commands/export_book.py'
+              - '.github/workflows/book-pdfs.yml'
+            books:
+              - 'backend/library/fixtures/content/books/*.en.json'
+
+      # "" = every stored edition; otherwise slug:en for each changed fixture.
+      # export_book skips any that aren't in STORED_PDF_EDITIONS.
+      - name: Which editions
+        id: which
+        run: |
+          if [ "${{ github.event_name }}" != "push" ] || [ "${{ steps.changed.outputs.pipeline }}" = "true" ]; then
+            echo "editions=" >> "$GITHUB_OUTPUT"
+          else
+            list=""
+            for f in ${{ steps.changed.outputs.books_files }}; do
+              b=$(basename "$f" .json)          # <slug>.en
+              list="$list${list:+,}${b%.*}:${b##*.}"
+            done
+            echo "editions=$list" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Build PDFs
+        working-directory: backend
+        run: |
+          uv sync --frozen
+          uv run python manage.py migrate --noinput
+          uv run python manage.py seed_if_empty
+          uv run python manage.py export_book --all --format pdf \
+            --editions "${{ steps.which.outputs.editions }}" --out "$RUNNER_TEMP/pdfs"
+
+      # ubuntu-latest ships the AWS CLI. Newer versions send checksums some
+      # S3-compatible stores reject, so only send them when required.
+      - name: Upload to Supabase Storage
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.SUPABASE_S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SUPABASE_S3_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ vars.SUPABASE_S3_REGION }}
+          AWS_REQUEST_CHECKSUM_CALCULATION: WHEN_REQUIRED
+          AWS_RESPONSE_CHECKSUM_VALIDATION: WHEN_REQUIRED
+        run: |
+          if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_DEFAULT_REGION" ]; then
+            echo "::error::Supabase S3 credentials are not configured — see the header of this workflow."
+            exit 1
+          fi
+          n=$(find "$RUNNER_TEMP/pdfs" -name '*.pdf' | wc -l)
+          if [ "$n" -eq 0 ]; then echo "Nothing to upload."; exit 0; fi
+          aws s3 cp "$RUNNER_TEMP/pdfs/" "s3://book-pdfs/" --recursive \
+            --endpoint-url "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/s3" \
+            --content-type application/pdf \
+            --cache-control "public, max-age=3600"
+          echo "Uploaded $n PDFs."
