@@ -191,8 +191,10 @@ Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
     component's only root.
   Add it to `overlayPortal.test.ts` either way.
 - **Phone reader chrome (below `sm`) is its own layout.** Top: Back · book/
-  chapter · Contents · "⋯"; footer `.foot-actions`: Previous · Listen · Aa ·
-  Next (folds with `hideChrome`). Traps: (1) the text-settings **sheet**
+  chapter · Contents · "⋯"; footer `.foot-actions`: Previous · Listen · + ·
+  Aa · Next (folds with `hideChrome`). The sermon has the same row minus
+  Previous/Next. The centre "+" is `<FootFeedback />` (feedback), and the
+  floating FeedbackFab hides wherever a `.foot-actions` row is up. Traps: (1) the text-settings **sheet**
   (`<ReaderControls sheet>`) mounts at page root, not in `.reader-chrome` —
   its opener is the footer Aa and the top bar unmounts in focus mode (and a
   hand-rolled fixed overlay in the bar would hit its `backdrop-blur`

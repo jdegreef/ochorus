@@ -137,9 +137,11 @@ describe('a floating reader control clears the bottom bars', () => {
 		expect(src).toMatch(/var\(--listenbar-h, 0px\)/);
 	});
 
-	it('the phone chapter reader carries the feedback "+" in its footer, not floating', () => {
+	it('the phone reading surfaces carry the feedback "+" in their footer, not floating', () => {
 		// Lifted above the footer, the floating "+" sat over the text being read.
-		expect(read(READER)).toMatch(/class="foot-add"/);
+		for (const file of [READER, 'routes/sermons/[slug]/+page.svelte']) {
+			expect(read(file), file).toMatch(/<div class="foot-actions"[\s\S]*?<FootFeedback \/>/);
+		}
 		expect(read('lib/components/FeedbackFab.svelte')).toMatch(
 			/:root:has\(\.foot-actions\)\) \.fb-fab/
 		);

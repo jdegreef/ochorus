@@ -45,6 +45,7 @@
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
+	import FootFeedback from '$lib/components/FootFeedback.svelte';
 
 	let { data } = $props();
 	const sermon = $derived(data.sermon as Sermon);
@@ -93,6 +94,20 @@
 	// to navigate.
 	let outline = $state<OutlineEntry[]>([]);
 	let outlineOpen = $state(false);
+
+	// Phones get the chapter reader's footer row (Listen · + · Aa) instead of
+	// Listen and Aa in the top bar. A $state+$effect flag, not svelte's
+	// MediaQuery: that reads matchMedia during hydration and would disagree with
+	// the prerendered (desktop) markup. Only one <ReaderControls> mounts — the
+	// popover and the phone sheet share readerUi.panelOpen.
+	let isPhone = $state(false);
+	$effect(() => {
+		const mq = window.matchMedia('(max-width: 639.98px)');
+		const sync = () => (isPhone = mq.matches);
+		sync();
+		mq.addEventListener('change', sync);
+		return () => mq.removeEventListener('change', sync);
+	});
 	$effect(() => {
 		void sermon.slug; // rebuild when navigating between sermons
 		outline = body ? buildOutline(body) : [];
@@ -334,7 +349,7 @@
 						aria-expanded={outlineOpen}><Icon name="list" size={18} /></button
 					>
 				{/if}
-				{#if listen.supported}
+				{#if listen.supported && !isPhone}
 					<button
 						class="btn btn-icon btn-ghost"
 						class:text-accent={listen.status !== 'idle'}
@@ -359,7 +374,9 @@
 					title={t('reader.bookmark')}
 					aria-pressed={bookmark.current}><Icon name="bookmark" size={18} /></button
 				>
-				<ReaderControls />
+				{#if !isPhone}
+					<ReaderControls />
+				{/if}
 				<button
 					class="btn btn-icon btn-ghost"
 					onclick={() => readerUi.toggleFocus()}
@@ -673,12 +690,99 @@
 	</nav>
 </article>
 
-<!-- Time-remaining pill; hidden in focus and while listening. -->
-{#if !readerUi.focus && listen.status === 'idle' && frac < 0.99}
+<!-- Time-remaining pill; hidden in focus and while listening. On phones the
+     footer row carries the same line instead. -->
+{#if !isPhone && !readerUi.focus && listen.status === 'idle' && frac < 0.99}
 	<div class="min-left" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</div>
 {/if}
 
+<!-- Phone footer, in thumb reach: Listen · + · Aa — the chapter reader's row
+     (its Previous/Next have no sermon equivalent). Hidden in focus and while
+     listening, when the Listen bar owns the bottom edge. -->
+{#if isPhone && !readerUi.focus && listen.status === 'idle'}
+	<div class="sermon-foot-spacer" aria-hidden="true"></div>
+	<div class="sermon-foot">
+		{#if frac < 0.99}
+			<p class="sermon-foot-meta" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</p>
+		{/if}
+		<div class="foot-actions">
+			{#if listen.supported}
+				<button class="foot-btn" onclick={() => reader?.startListening()}
+					><Icon name="headphones" size={22} /><span>{t('reader.listen')}</span></button
+				>
+			{/if}
+			<FootFeedback />
+			<button
+				class="foot-btn"
+				onclick={() => (readerUi.panelOpen = true)}
+				aria-haspopup="dialog"
+				aria-expanded={readerUi.panelOpen}
+				aria-label={t('reader.textSettings')}
+				title={t('reader.textSettings')}><span class="foot-aa" aria-hidden="true">Aa</span></button
+			>
+		</div>
+	</div>
+{/if}
+
+<!-- The phone text-settings sheet, opened by the footer's Aa. At page root, not
+     in the top bar, which unmounts in focus mode. -->
+{#if isPhone}
+	<ReaderControls sheet />
+{/if}
+
 <style>
+	/* --- Phone footer (below `sm`) — mirrors the chapter's .progress-foot ---- */
+	.sermon-foot,
+	.sermon-foot-spacer {
+		display: none;
+	}
+	@media (max-width: 639.98px) {
+		.sermon-foot {
+			display: block;
+			position: fixed;
+			inset-inline: 0;
+			bottom: 0;
+			z-index: 30;
+			padding: 0.25rem 1rem calc(0.4rem + env(safe-area-inset-bottom));
+			text-align: center;
+			font-size: var(--fs-micro);
+			color: var(--muted);
+			background: color-mix(in srgb, var(--bg) 82%, transparent);
+			backdrop-filter: blur(6px);
+		}
+		/* In-flow clearance, so the page's last lines scroll clear of the row. */
+		.sermon-foot-spacer {
+			display: block;
+			height: calc(4.5rem + env(safe-area-inset-bottom));
+		}
+		/* For fixed bottom UI that clears the reader footer (the selection bar). */
+		:global(:root:has(.sermon-foot)) {
+			--foot-h: calc(4.5rem + env(safe-area-inset-bottom));
+		}
+	}
+	.foot-actions {
+		display: flex;
+		margin-top: 0.15rem;
+	}
+	.foot-btn {
+		flex: 1 1 0;
+		min-height: 2.9rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.1rem;
+		border-radius: var(--radius-sm);
+		font-size: var(--fs-small);
+		font-weight: 600;
+		color: var(--text);
+	}
+	.foot-aa {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1;
+	}
+
 	/* Scroll-progress bar: a thin accent line scaled by reading fraction. */
 	/* `.min-left` lives in app.css — the biography page shows the same pill, and
 	   a second copy here is how the two would drift apart. */
