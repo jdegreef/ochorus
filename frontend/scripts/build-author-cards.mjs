@@ -143,7 +143,7 @@ async function portrait(file, slug, name) {
 		const sh = Math.round(height * scale);
 		const [px, py] = portraitPosition(slug)
 			.split(' ')
-			.map((p) => parseFloat(p) / 100);
+			.map((p) => (Number.isFinite(parseFloat(p)) ? parseFloat(p) / 100 : 0.5));
 		face = await sharp(file)
 			.resize(sw, sh)
 			.extract({
@@ -251,7 +251,7 @@ const lineSize = (locale, quoting) => (quoting ? 29 : locale === 'ar' ? 40 : 34)
 
 const count = (n, one, many) => (n ? `${n} ${n === 1 ? one : many}` : '');
 
-async function draw(locale, author, msg, quote, portraitFile) {
+async function draw(locale, author, own, msg, quote, portraitFile) {
 	const { base, ax, col, rtl } = await ground(locale, msg.author_share_footer);
 	const upright = UPRIGHT.has(locale);
 	// A quote is set in italic; a "Read …" line upright, with only its title in
@@ -282,7 +282,7 @@ async function draw(locale, author, msg, quote, portraitFile) {
 	let line = null;
 	if (quote) {
 		line = `“${esc(quote)}”`;
-	} else if (author.books?.[0]?.title || author.sermons?.[0]?.title) {
+	} else if (own && (author.books?.[0]?.title || author.sermons?.[0]?.title)) {
 		// Their first book in this language, else their first sermon — the
 		// page's own first item either way.
 		const title = esc(author.books?.[0]?.title || author.sermons[0].title);
@@ -391,7 +391,10 @@ async function main() {
 			mkdirSync(dirname(dest), { recursive: true });
 			const data = authorData(readFileSync(file, 'utf8'));
 			if (!data) throw new Error('no author data inlined in the page');
+			// A page whose language has no row falls back to the English one; its
+			// titles are then English, and must not reach a card in another language.
 			const { author } = data;
+			const own = data.language === locale;
 			const photo = author.photo_url && join(build, author.photo_url);
 			const quote = locale === 'en' && author.quote_count ? quoteFor(build, slug) : null;
 			writeFileSync(
@@ -399,6 +402,7 @@ async function main() {
 				await draw(
 					locale,
 					author,
+					own,
 					messages[locale],
 					quote,
 					photo && existsSync(photo) ? photo : null
