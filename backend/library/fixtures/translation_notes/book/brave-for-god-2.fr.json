@@ -1,0 +1,21 @@
+{
+ "kind": "book",
+ "slug": "brave-for-god-2",
+ "language": "fr",
+ "job_issue": 3597,
+ "pull_request": 4478,
+ "references": [
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "self_rendered",
+   "block_index": 30,
+   "why": "Reported speech (the note handed to Liddell), third person; Segond: « j’honorerai celui qui m’honore »."
+  }
+ ]
+}
