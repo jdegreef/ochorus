@@ -687,6 +687,14 @@ CURATED: dict[str, Artwork] = {
         "mountain, be removed. Wilson sets one great British mountain over a "
         "wide valley, the thing faith is told to speak to.",
     ),
+    "evangelization-of-the-world": Artwork(
+        "cma", 153388, "Eugène Boudin", "View of Bordeaux, from the Quai des Chartrons",
+        "1874",
+        "Mott's watchword sent a generation of student volunteers to sea for "
+        "every nation. Boudin paints a harbour of tall ships rigged and ready "
+        "at the quay — the moment before sailing.",
+        focus=0.72,  # the fully rigged ship at right, not the empty quay
+    ),
 }
 
 
