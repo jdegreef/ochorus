@@ -57,6 +57,7 @@
 	import { createReaderText } from '$lib/readerText.svelte';
 	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
+	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, truncateMeta, absUrl } from '$lib/seo';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, landscapeUrl } from '$lib/coverArt';
@@ -199,6 +200,9 @@
 	let tocOpen = $state(false);
 	let searchOpen = $state(false);
 	let notesOpen = $state(false);
+	// The phone footer's centre "+" (feedback) — it stands in for the floating
+	// FeedbackFab, which sat over the text (FeedbackFab.svelte steps aside).
+	let feedbackOpen = $state(false);
 
 	// The next chapter's opening line, for the "up next" card at the chapter's
 	// end. Captured from the idle prefetch below (which already fetches that
@@ -2217,6 +2221,20 @@
 					><Icon name="headphones" size={22} /><span>{t('reader.listen')}</span></button
 				>
 			{/if}
+			{#if auth.enabled && auth.user}
+				<span class="foot-btn">
+					<button
+						class="foot-add"
+						aria-label={t('feedback.send')}
+						title={t('feedback.send')}
+						aria-haspopup="dialog"
+						onclick={() => (feedbackOpen = true)}
+						><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
+							stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg
+						></button
+					>
+				</span>
+			{/if}
 			<button
 				class="foot-btn"
 				onclick={() => (readerUi.panelOpen = true)}
@@ -2243,6 +2261,10 @@
 {/if}
 
 <ReaderOverlays {reader} container={body} {language} />
+
+{#if feedbackOpen}
+	<FeedbackDialog source="fab" onClose={() => (feedbackOpen = false)} />
+{/if}
 
 <TocDrawer {slug} currentOrder={chapter.order} {edition} bind:open={tocOpen} />
 
@@ -2677,6 +2699,32 @@
 	}
 	.foot-next {
 		color: var(--accent);
+	}
+	/* The centre "+" — the tab bar's round accent button (TabBar.svelte `.add`),
+	   sized to sit inside the row rather than proud of it: this bar floats over
+	   the text, so a raised button would cover the line above. */
+	.foot-add {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.6rem;
+		height: 2.6rem;
+		border-radius: 999px;
+		border: 1px solid var(--accent-soft-border);
+		background: var(--accent);
+		color: var(--accent-contrast);
+		cursor: pointer;
+	}
+	.foot-add:active {
+		transform: scale(0.96);
+	}
+	.foot-add:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
+	}
+	.foot-add svg {
+		width: 1.35rem;
+		height: 1.35rem;
 	}
 	.foot-aa {
 		font-family: var(--font-display);
