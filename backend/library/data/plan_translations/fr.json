@@ -82,5 +82,12 @@
   "note": [
    "Job #3146. Source book school-of-prayer now has a French edition, so seed_plans creates a French row for this single-book plan; prose here keeps it from publishing English-titled. Title/description mirror the French book À l’école de la prière avec Christ."
   ]
+ },
+ "rooted-book-1-30-days": {
+  "title": "Enracinés: 30 jours avec Dieu — Livre 1",
+  "description": "Trente jours pour faire pousser de profondes racines, pour les lecteurs de 9 à 12 ans: qui est Dieu, la bonne nouvelle de Jésus, qui tu es en Christ, comment prier et comment grandir. Chaque jour, une courte lecture: un verset de la Bible, une question pour réfléchir, une chose à faire et une prière.",
+  "note": [
+   "Single-book plan backed by the fr edition of rooted-1 (book title «Enracinés – 30 jours avec Dieu pour les jeunes – Livre 1»); card wording follows the shipped book and the fr 'rooted' series row (Enracinés). Added by the book:rooted-1 -> fr job (#3589), which makes this LAUNCH plan creatable in fr."
+  ]
  }
 }
