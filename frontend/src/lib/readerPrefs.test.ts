@@ -1,6 +1,5 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
-	readerPrefs,
 	LEADING,
 	MEASURE,
 	MARGIN,
@@ -12,7 +11,19 @@ import {
 const KEY = 'ochorus:reader-prefs';
 const stored = () => JSON.parse(localStorage.getItem(KEY) || '{}');
 
-beforeEach(() => localStorage.clear());
+// The store is a module singleton: each test gets a fresh instance, as a fresh
+// page load would, so no preference set by one test leaks into the next.
+let readerPrefs: typeof import('./readerPrefs.svelte').readerPrefs;
+const innerWidth = window.innerWidth;
+beforeEach(async () => {
+	localStorage.clear();
+	vi.resetModules();
+	({ readerPrefs } = await import('./readerPrefs.svelte'));
+});
+// The device-default tests narrow the window; reset() reads it too.
+afterEach(() => {
+	Object.defineProperty(window, 'innerWidth', { value: innerWidth, configurable: true, writable: true });
+});
 
 describe('readerPrefs store', () => {
 	it('keeps a stored face this build offers and drops one it does not', () => {
