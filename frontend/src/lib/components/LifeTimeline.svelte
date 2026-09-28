@@ -79,7 +79,7 @@
 		     short axis can carry the tighter clusters a real life throws up (a
 		     conversion two years before an ordination) without the words colliding.
 		     A hairline stem ties each label back to its dot. -->
-		<svg class="ev-svg" viewBox="0 0 {W} 82" role="img" aria-hidden="true">
+		<svg class="ev-svg hidden sm:block" viewBox="0 0 {W} 82" role="img" aria-hidden="true">
 			<line class="ev-axis" x1={PAD} y1="41" x2={W - PAD} y2="41"></line>
 			<line class="ev-life" x1={ex(span.lo)} y1="41" x2={ex(span.hi)} y2="41"></line>
 			{#each events as m, i (m.year + m.label)}
@@ -96,6 +96,18 @@
 				</g>
 			{/each}
 		</svg>
+		<!-- Phones: the same events as a vertical rail. The SVG scales its 640-wide
+		     viewBox to the column, so on a ~300px phone its 12px type drew at ~5px;
+		     here every year and label keeps the real text size. Real text, so it
+		     stays readable to screen readers too. -->
+		<ol class="ev-list sm:hidden">
+			{#each events as m (m.year + m.label)}
+				<li class="text-small" class:key={m.key}>
+					<span class="ev-list-yr">{m.year}</span>
+					{#if labels}<span class="ev-list-lb">{m.label}</span>{/if}
+				</li>
+			{/each}
+		</ol>
 	</figure>
 {:else if domain && birthYear != null && deathYear != null}
 	<div class="life-timeline mx-auto mt-6 max-w-[40rem]" aria-hidden="true">
@@ -120,10 +132,11 @@
 	.life-events {
 		margin-block-start: 1.5rem;
 	}
+	/* Shown from sm (the .ev-list rail below it) — the display comes from the
+	   Tailwind classes, so none is set here. */
 	.ev-svg {
 		width: 100%;
 		height: auto;
-		display: block;
 		overflow: visible;
 	}
 	.ev-axis {
@@ -148,12 +161,15 @@
 	.ev.key circle {
 		fill: var(--accent);
 	}
-	.ev-yr {
+	.ev-yr,
+	.ev-list-yr {
 		font-family: var(--font-sans);
 		font-weight: 600;
+		font-variant-numeric: tabular-nums;
+	}
+	.ev-yr {
 		font-size: var(--fs-eyebrow);
 		fill: var(--text);
-		font-variant-numeric: tabular-nums;
 	}
 	.ev-lb {
 		font-family: var(--font-sans);
@@ -162,6 +178,51 @@
 	}
 	.ev.key .ev-lb {
 		fill: var(--accent);
+	}
+
+	/* Phone rail: the line is the list's inline-start border (as in
+	   FaithfulnessTimeline), a dot per event centred on it. */
+	.ev-list {
+		--pad: 1.1rem;
+		--line: 2px;
+		--dot: 12px;
+		margin-inline-start: calc(var(--dot) / 2); /* the dots' overhang stays in the column */
+		padding-inline-start: var(--pad);
+		border-inline-start: var(--line) solid var(--accent);
+	}
+	.ev-list li {
+		position: relative;
+		display: flex;
+		gap: 0.75rem;
+		align-items: baseline;
+		padding-block: 0.3rem;
+	}
+	.ev-list li::before {
+		content: '';
+		position: absolute;
+		/* centred on the line, and on the row's first line of text */
+		inset-inline-start: calc(-1 * var(--pad) - var(--line) / 2 - var(--dot) / 2);
+		top: calc(0.3rem + 0.5lh - var(--dot) / 2);
+		width: var(--dot);
+		height: var(--dot);
+		box-sizing: border-box;
+		border-radius: 50%;
+		border: 2.5px solid var(--accent);
+		background: var(--bg);
+	}
+	.ev-list .key::before {
+		background: var(--accent);
+	}
+	.ev-list-yr {
+		flex: none;
+		min-width: 2.75rem;
+		color: var(--text);
+	}
+	.ev-list-lb {
+		color: var(--muted);
+	}
+	.key .ev-list-lb {
+		color: var(--accent);
 	}
 
 	/* ── Bare-lifespan fallback (unchanged) ─────────────────────────────────── */
