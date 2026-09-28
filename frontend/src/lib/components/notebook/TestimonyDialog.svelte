@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import ModalShell from '$lib/components/ModalShell.svelte';
 	import * as m from '$lib/paraglide/messages.js';
-	import { focusTrap } from '$lib/actions/focusTrap';
-	import { portal } from '$lib/actions/portal';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { JournalEntry } from '$lib/journal';
 	import {
@@ -80,63 +79,33 @@
 	}
 </script>
 
-<div
-	class="td-overlay"
-	use:portal
-	role="dialog"
-	aria-modal="true"
-	aria-label={t('notebook.testimonyTitle')}
-	use:focusTrap={{ onEscape: onclose }}
->
-	<div class="td-card">
-		<h2 class="text-h3">{t('notebook.testimonyTitle')}</h2>
-		<div class="preview">
-			{#if preview}
-				<img src={preview} use:hydrateSrc={{ src: preview }} alt={[text.heading, text.request, text.answer, text.meta]
-						.filter(Boolean)
-						.map((s) => s!.replace(/[.!?…]+$/, ''))
-						.join('. ')} />
-			{/if}
-		</div>
-		<fieldset class="mt-3 grid gap-1.5 text-small">
-			<label><input type="checkbox" bind:checked={includeRequest} /> {t('notebook.testimonyIncludeRequest')}</label>
-			{#if entry.person}
-				<label
-					><input type="checkbox" bind:checked={includePerson} />
-					{m.notebook_testimony_include_person({ person: entry.person })}</label
-				>
-			{/if}
-		</fieldset>
-		<p class="mt-2 text-micro text-muted">{t('notebook.testimonyHint')}</p>
-		<div class="mt-4 flex justify-end gap-2">
-			<button class="btn btn-ghost" onclick={onclose}>{t('common.cancel')}</button>
-			<button class="btn btn-primary" onclick={share} disabled={!preview || busy}>{t('reader.share')}</button>
-		</div>
+<ModalShell onClose={onclose} ariaLabel={t('notebook.testimonyTitle')} width="28rem">
+	<h2 class="text-h3">{t('notebook.testimonyTitle')}</h2>
+	<div class="preview">
+		{#if preview}
+			<img src={preview} use:hydrateSrc={{ src: preview }} alt={[text.heading, text.request, text.answer, text.meta]
+					.filter(Boolean)
+					.map((s) => s!.replace(/[.!?…]+$/, ''))
+					.join('. ')} />
+		{/if}
 	</div>
-</div>
+	<fieldset class="mt-3 grid gap-1.5 text-small">
+		<label><input type="checkbox" bind:checked={includeRequest} /> {t('notebook.testimonyIncludeRequest')}</label>
+		{#if entry.person}
+			<label
+				><input type="checkbox" bind:checked={includePerson} />
+				{m.notebook_testimony_include_person({ person: entry.person })}</label
+			>
+		{/if}
+	</fieldset>
+	<p class="mt-2 text-micro text-muted">{t('notebook.testimonyHint')}</p>
+	<div class="mt-4 flex justify-end gap-2">
+		<button class="btn btn-ghost" onclick={onclose}>{t('common.cancel')}</button>
+		<button class="btn btn-primary" onclick={share} disabled={!preview || busy}>{t('reader.share')}</button>
+	</div>
+</ModalShell>
 
 <style>
-	.td-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 50;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
-		background: rgb(0 0 0 / 0.4);
-	}
-	.td-card {
-		width: 100%;
-		max-width: 28rem;
-		max-height: calc(100dvh - 2rem);
-		overflow-y: auto;
-		border-radius: var(--radius-card);
-		border: 1px solid var(--border);
-		background: var(--surface);
-		padding: 1.25rem;
-		box-shadow: var(--shadow-popover);
-	}
 	.preview {
 		margin-top: 0.75rem;
 		aspect-ratio: 1;

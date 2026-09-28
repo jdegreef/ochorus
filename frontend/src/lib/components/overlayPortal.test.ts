@@ -1,4 +1,4 @@
-import { flushSync, mount, unmount, type Component } from 'svelte';
+import { createRawSnippet, flushSync, mount, unmount, type Component } from 'svelte';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -8,6 +8,7 @@ import CommandPalette from './CommandPalette.svelte';
 import DefinePopover from './DefinePopover.svelte';
 import FeedbackDialog from './FeedbackDialog.svelte';
 import ListenBar from './ListenBar.svelte';
+import ModalShell from './ModalShell.svelte';
 import NoteDialog from './NoteDialog.svelte';
 import ScripturePopover from './ScripturePopover.svelte';
 import UnsyncedSignOutDialog from './UnsyncedSignOutDialog.svelte';
@@ -27,8 +28,8 @@ import { scripture } from '$lib/scripture.svelte';
  * block or the whole host is torn down while it is open — without taking a
  * sibling with it.
  *
- * Two kinds: a DIALOG is open while its parent renders it (its root is the
- * component's only root), and a POPOVER is always mounted and opens from a
+ * Two kinds: a DIALOG is open while its parent renders it (its root is
+ * ModalShell's only root), and a POPOVER is always mounted and opens from a
  * store (its root is the only root of its own {#if}).
  */
 type Host = { setMounted(v: boolean): void; setShown(v: boolean): void };
@@ -48,10 +49,20 @@ const noop = () => {};
 
 const CASES: Case[] = [
 	{
+		name: 'ModalShell',
+		overlay: ModalShell,
+		props: {
+			onClose: noop,
+			ariaLabel: 'Dialog',
+			children: createRawSnippet(() => ({ render: () => '<p>body</p>' }))
+		},
+		root: '.modal-overlay'
+	},
+	{
 		name: 'NoteDialog',
 		overlay: NoteDialog,
 		props: { text: '', color: 'yellow', onSave: noop, onRemove: noop, onClose: noop },
-		root: '.note-overlay'
+		root: '.modal-overlay'
 	},
 	{
 		name: 'JournalDialog',
@@ -62,15 +73,15 @@ const CASES: Case[] = [
 			onsave: noop,
 			onclose: noop
 		},
-		root: '.jd-overlay'
+		root: '.modal-overlay'
 	},
 	{
 		name: 'FeedbackDialog',
 		overlay: FeedbackDialog,
 		props: { source: 'fab', onClose: noop },
-		root: '.fb-overlay'
+		root: '.modal-overlay'
 	},
-	{ name: 'UnsyncedSignOutDialog', overlay: UnsyncedSignOutDialog, root: '.uso-overlay' },
+	{ name: 'UnsyncedSignOutDialog', overlay: UnsyncedSignOutDialog, root: '.modal-overlay' },
 	{
 		name: 'ScripturePopover',
 		overlay: ScripturePopover,
@@ -96,6 +107,8 @@ const CASES: Case[] = [
 		store: (open) => (paletteUi.open = open)
 	}
 ];
+
+const read = (file: string) => readFileSync(join(import.meta.dirname, file), 'utf8');
 
 let target: HTMLElement;
 let host: Host | null = null;
@@ -197,17 +210,57 @@ describe.each(CASES)('$name portal', (c) => {
 /**
  * The overlays jsdom can't open — the selection bar needs a laid-out Range,
  * the testimony dialog a canvas, ReaderOverlays' notices a TTS voice lookup —
- * are held to the same shape in source: `use:portal` on the root.
+ * are held to the same shape in source: `use:portal` on the root, or the
+ * testimony dialog rendered through ModalShell.
  */
 describe('overlays that jsdom cannot open', () => {
-	const read = (file: string) => readFileSync(join(import.meta.dirname, file), 'utf8');
-
 	it.each([
 		['SelectionBar.svelte', 'class="selbar"'],
-		['notebook/TestimonyDialog.svelte', 'class="td-overlay"'],
 		['ReaderOverlays.svelte', 'class="reader-dock listen-notice"'],
-		['ReaderOverlays.svelte', 'class="saved-notice"']
+		['ReaderOverlays.svelte', 'class="saved-notice"'],
+		['notebook/TestimonyDialog.svelte', '<ModalShell']
 	])('%s: the %s root portals', (file, root) => {
-		expect(read(file)).toMatch(new RegExp(`${root}[^<]*?use:portal`));
+		expect(read(file)).toMatch(
+			root === '<ModalShell' ? /<\/script>\s*<ModalShell[\s\S]*<\/ModalShell>\s*(<style|$)/ : new RegExp(`${root}[^<]*?use:portal`)
+		);
+	});
+});
+
+/**
+ * The centred dialogs get their overlay — portal, scrim, focus trap — from
+ * ModalShell; the dialog cases above mount four of them through it. This holds
+ * what the shell itself wires up.
+ */
+describe('ModalShell', () => {
+	it('names the dialog and closes on Escape from inside', () => {
+		const onClose = vi.fn();
+		const target = document.createElement('div');
+		document.body.appendChild(target);
+		const shell = mount(ModalShell, {
+			target,
+			props: {
+				onClose,
+				role: 'alertdialog',
+				ariaLabelledby: 'shell-title',
+				ariaDescribedby: 'shell-body',
+				width: '26rem',
+				children: createRawSnippet(() => ({ render: () => '<button id="inside">ok</button>' }))
+			}
+		});
+		flushSync();
+		const overlay = document.body.querySelector(':scope > .modal-overlay')!;
+		expect(overlay.getAttribute('role')).toBe('alertdialog');
+		expect(overlay.getAttribute('aria-modal')).toBe('true');
+		expect(overlay.getAttribute('aria-labelledby')).toBe('shell-title');
+		expect(overlay.getAttribute('aria-describedby')).toBe('shell-body');
+		expect(overlay.hasAttribute('aria-label')).toBe(false);
+		expect((overlay.querySelector('.modal-card') as HTMLElement).style.maxWidth).toBe('26rem');
+
+		document.getElementById('inside')!.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+		expect(onClose).toHaveBeenCalledOnce();
+
+		unmount(shell);
+		target.remove();
+		expect(document.body.querySelector(':scope > .modal-overlay')).toBeNull();
 	});
 });
