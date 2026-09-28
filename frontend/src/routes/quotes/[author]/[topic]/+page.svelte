@@ -5,6 +5,8 @@
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
 	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
+	import { quoteCardUrl } from '$lib/quoteShareCard';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
@@ -48,8 +50,9 @@
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
+	// The author page's card, with this theme's quote (scripts/build-quote-cards.mjs).
 	const ogImage = $derived(
-		page.author.photo_url ? absUrl(page.author.photo_url) : absUrl('/og/quotes.png')
+		absUrl(quoteCardUrl({ author: page.author.slug, topic: page.topic.slug }))
 	);
 
 	// The same CollectionPage → ItemList the author page carries, scoped to the
@@ -68,7 +71,16 @@
 	);
 </script>
 
-<Seo {title} {description} {canonical} {hreflang} {ogImage} structuredData={[crumbsLd, quotesLd]} />
+<Seo
+	{title}
+	{description}
+	{canonical}
+	{hreflang}
+	{ogImage}
+	ogImageWidth={LANDSCAPE_WIDTH}
+	ogImageHeight={LANDSCAPE_HEIGHT}
+	ogImageAlt="Quotes from {page.author.name}"
+	structuredData={[crumbsLd, quotesLd]} />
 
 <div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
