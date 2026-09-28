@@ -142,6 +142,13 @@ describe('a floating reader control clears the bottom bars', () => {
 		for (const file of [READER, 'routes/sermons/[slug]/+page.svelte']) {
 			expect(read(file), file).toMatch(/<div class="foot-actions"[\s\S]*?<FootFeedback \/>/);
 		}
+	});
+
+	it('the sermon footer matches the chapter footer: scrubber, and Previous/Next in the row', () => {
+		const src = read('routes/sermons/[slug]/+page.svelte');
+		const row = src.slice(src.indexOf('<div class="foot-actions"'));
+		expect(src).toMatch(/class="scrubber"/);
+		expect(row).toMatch(/sermon\.prev\.slug[\s\S]*<FootFeedback \/>[\s\S]*sermon\.next\.slug/);
 		expect(read('lib/components/FeedbackFab.svelte')).toMatch(
 			/:root:has\(\.foot-actions\)\) \.fb-fab/
 		);
