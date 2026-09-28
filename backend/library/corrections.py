@@ -4686,6 +4686,7 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
 BODY_CORRECTIONS["things-as-they-are"]["back_matter"] = [
     ("you will pray more.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
     ("mtaomba zaidi.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+    ("vous prierez davantage.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
 ]
 # Gutenberg #65066 follows "…revival of true religion! Amen." with the ATS
 # donors' line and the transcriber's `tnotes` endnote. The note's heading was
