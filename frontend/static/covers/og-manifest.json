@@ -117,7 +117,7 @@
 		"am/brave-for-god": {
 			"ground": "20c0f370ee4b51e829146b3e7d038864a963a1a9d0b7990412c955ef04585e19",
 			"style": "young",
-			"volume": null,
+			"volume": "1",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
@@ -127,7 +127,7 @@
 		"am/brave-for-god-2": {
 			"ground": "b6d1b353806e7db62dd69f06af2e8bf1573231202fd83098b12acdb4133a833f",
 			"style": "young",
-			"volume": null,
+			"volume": "2",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.75,
@@ -137,7 +137,7 @@
 		"am/brave-for-god-3": {
 			"ground": "5a0f46b4041a38267864bb8743839c7493c08de08410952a9e47cefd038aec4b",
 			"style": "young",
-			"volume": null,
+			"volume": "3",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.7,
@@ -147,7 +147,7 @@
 		"am/brave-for-god-4": {
 			"ground": "ab4037ad279b56c380c348607a1c5066c04f29c98ba3c56cbf805d180a0e5cbe",
 			"style": "young",
-			"volume": null,
+			"volume": "4",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.8,
@@ -167,7 +167,7 @@
 		"am/daughters-of-the-king-1": {
 			"ground": "6ce2b52ef07a72bb60977ff158ef4b1217550786678389d97b3d435ed59df2bf",
 			"style": "young",
-			"volume": null,
+			"volume": "1",
 			"script": "latin",
 			"art": false,
 			"scrim": 1,
@@ -177,7 +177,7 @@
 		"am/daughters-of-the-king-2": {
 			"ground": "6c8191588765d0c3ceb161476279826115da80e12d971e41634a28f95e7d0756",
 			"style": "young",
-			"volume": null,
+			"volume": "2",
 			"script": "latin",
 			"art": false,
 			"scrim": 1,
@@ -187,7 +187,7 @@
 		"am/daughters-of-the-king-3": {
 			"ground": "e1ef8260f3ca2a5b5ee49998160ae8e8a55b1943e1c37c3545a064c708628f01",
 			"style": "young",
-			"volume": null,
+			"volume": "3",
 			"script": "latin",
 			"art": false,
 			"scrim": 1,
@@ -277,7 +277,7 @@
 		"am/rooted-1": {
 			"ground": "3ee29ca356f5b8b391bf944b197900e559ca7c6dba93f170cc1689fddf126349",
 			"style": "young",
-			"volume": null,
+			"volume": "1",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
@@ -287,7 +287,7 @@
 		"am/rooted-2": {
 			"ground": "17aec3be5f5cd3e866e7185f0aff2d95ffb9f9cf64dee3f86900fd9c0168c53a",
 			"style": "young",
-			"volume": null,
+			"volume": "2",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
@@ -297,7 +297,7 @@
 		"am/rooted-3": {
 			"ground": "02fa46610920699caf10875451afd9b071896ccbe9bbbf6dcd235cdc70292bd7",
 			"style": "young",
-			"volume": null,
+			"volume": "3",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
@@ -307,7 +307,7 @@
 		"am/rooted-4": {
 			"ground": "60cc873955ce986a209f9f601162c88fa258762641b38236af3323722c6dcb86",
 			"style": "young",
-			"volume": null,
+			"volume": "4",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
@@ -317,7 +317,7 @@
 		"am/rooted-5": {
 			"ground": "51d75417cff5b64c63adc5df9e54114bed5c61651474250489711f82c086289c",
 			"style": "young",
-			"volume": null,
+			"volume": "5",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
@@ -327,7 +327,7 @@
 		"am/rooted-6": {
 			"ground": "34920c9595d78d2e9fa8087561b4a38d47a7d2ea6f7a184aa7478c03e1f5bf33",
 			"style": "young",
-			"volume": null,
+			"volume": "6",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.3,
@@ -1127,7 +1127,7 @@
 		"es/brave-for-god": {
 			"ground": "fb65fec7f99367ab71782342cda8ca28a8b3c56b4fb438a6400d93ba634a8df2",
 			"style": "young",
-			"volume": null,
+			"volume": "1",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
@@ -1717,7 +1717,7 @@
 		"fr/brave-for-god": {
 			"ground": "90bc7cf058e4c088bcf84f6c2da4c5abf66e9e13d5506326454b2f5fb007b3da",
 			"style": "young",
-			"volume": null,
+			"volume": "1",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,
@@ -3297,7 +3297,7 @@
 		"pt/brave-for-god": {
 			"ground": "df8d14e628626548ad8fa57182d50f00e4a61af6b04b736afce6da159adbcb2c",
 			"style": "young",
-			"volume": null,
+			"volume": "1",
 			"script": "latin",
 			"art": true,
 			"scrim": 0.65,

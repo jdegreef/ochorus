@@ -44,6 +44,10 @@
   "cover_url": "/covers/am/daughters-of-the-king-3.svg",
   "pdf_url": "",
   "cover_color": "#2f6b5e",
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "series_position": 3,
   "sort_order": 85,
   "is_published": true,
   "created_at": "2026-09-27T00:00:00Z",
