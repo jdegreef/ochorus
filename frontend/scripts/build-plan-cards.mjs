@@ -35,6 +35,7 @@ import {
 	W,
 	drawAll,
 	esc,
+	paper,
 	runAsScript,
 	sharp,
 	svg,
@@ -166,12 +167,6 @@ const ledge = await sharp(
 	.png()
 	.toBuffer();
 
-const paperOnly = svg(
-	W,
-	H,
-	`<defs><linearGradient id="p" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#faf6ef"/><stop offset="1" stop-color="#f1e8d8"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#p)"/>`
-);
-
 // ── One card ────────────────────────────────────────────────────────────────
 
 async function draw(locale, plan, msg, build) {
@@ -220,7 +215,8 @@ async function draw(locale, plan, msg, build) {
 	);
 	parts.push({ input: foot.data, left: rtl ? W - 72 - foot.width : 72, top: 582 });
 
-	return sharp(paperOnly).composite(parts).jpeg(JPEG).toBuffer();
+	// The kit's paper; its footer rule sits under the ledge.
+	return sharp(paper()).composite(parts).jpeg(JPEG).toBuffer();
 }
 
 // ── Reading the build ───────────────────────────────────────────────────────
