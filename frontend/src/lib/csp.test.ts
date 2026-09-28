@@ -27,6 +27,7 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { cspDirectives as CSP_DIRECTIVES } from '../../csp.config.js';
+import { EARLY_RESUME_JS } from './earlyResume';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 const RENDER_YAML = path.join(REPO_ROOT, 'render.yaml');
@@ -199,6 +200,18 @@ describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
 			`script-src is missing the app.html theme-boot hash. app.html changed — ` +
 				`update the hash in svelte.config.js to ${bootScriptHash()}`
 		).toContain(bootScriptHash());
+	});
+
+	it("pins the chapter reader's early-resume hash to the actual script", () => {
+		// Same shape as the boot script: an inline script the policy admits only
+		// by its hash. Edit EARLY_RESUME_JS without re-pinning and the reader would
+		// silently stop restoring before paint — fail here instead.
+		const hash = `sha256-${crypto.createHash('sha256').update(EARLY_RESUME_JS).digest('base64')}`;
+		expect(
+			csp['script-src'],
+			`script-src is missing the early-resume hash. src/lib/earlyResume.ts changed — ` +
+				`update the hash in csp.config.js to ${hash}`
+		).toContain(hash);
 	});
 
 	it('never allows a wildcard or plain-http connect-src', () => {

@@ -27,6 +27,8 @@
   "reader_chapter_done": "Chapitre %n% terminé",
   "reader_end_progress": "%done% chapitres sur %total% · %p%% du livre",
   "reader_return_prior": "Revenir où vous étiez",
+  "reader_resumed_here": "Retour là où vous vous étiez arrêté",
+  "reader_start_from_top": "Reprendre au début",
   "reader_synced_ahead": "Vous êtes plus avancé sur un autre appareil",
   "reader_continue_there": "Continuer là-bas",
   "reader_text_settings": "Réglages du texte",

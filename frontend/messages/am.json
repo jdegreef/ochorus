@@ -27,6 +27,8 @@
   "reader_chapter_done": "ምዕራፍ %n% ተጠናቋል",
   "reader_end_progress": "ከ%total% ምዕራፎች %done% · የመጽሐፉ %p%%",
   "reader_return_prior": "ወደነበሩበት ይመለሱ",
+  "reader_resumed_here": "ካቆሙበት ተመልሰዋል",
+  "reader_start_from_top": "ከመጀመሪያው ጀምር",
   "reader_synced_ahead": "በሌላ መሣሪያ ላይ ከዚህ በላይ አንብበዋል",
   "reader_continue_there": "ከዚያ ይቀጥሉ",
   "reader_text_settings": "የጽሑፍ ቅንብሮች",
