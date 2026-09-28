@@ -77,6 +77,14 @@ In this order, and nothing else at the top level:
    whole-page error panel when only a strip failed or leave a `loadError` no one
    reads. Filter values that describe *what is shown* live in the URL via
    `urlFilters()`; view preferences (grid/list, sort) live in localStorage.
+   **Mind the prerender's API load** (the crawl's load once took the API
+   down): a decoration fetch on a LEAF route runs once per page per locale, so
+   prefer deriving it from the payload already fetched (the topic page builds
+   its Book Series cards from its own books, `seriesFromBooks`, rather than
+   calling the series list ~40 topics × every locale). Don't "fix" that with a
+   module-level memo during `building`: a response fetched for one page is not
+   inlined into the next page's HTML, so every visitor re-fetches it on
+   hydration — build load traded for runtime load.
 10. **`<Seo>`** — not a hand-written `<svelte:head>`. Title `Books — Ochorus`
     (em dash). Description falls back to a localized string, never empty.
 
@@ -925,3 +933,19 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 - A fresh worktree DB: `cp` the main `backend/.env`, then
   `manage.py migrate && seed_books && seed_topics` (~1 min on SQLite) gives
   books, series and topics.
+- **Reusing** another worktree's seeded `db.sqlite3` is quicker, but run
+  `manage.py migrate` on it first: once `main` gains a migration, nearly every
+  endpoint 500s and the pages look broken for reasons that aren't your diff.
+- The local dev SSR does NOT localize from the URL prefix (`/es/…` renders
+  English even with `seed_languages` and cleared storage), so a
+  locale-dependent branch — e.g. the empty-locale `noindex` on an index — can't
+  be seen at `/es/`. Reproduce it in English instead (temporarily unpublish the
+  rows, check with `curl`, then restore them by the ids you recorded).
+- Run vitest from `frontend/` (`cd frontend && npx vitest run`). Launching it
+  from the repo root with `--root frontend` resolves config differently and
+  fails ~65 unrelated tests.
+- The backend suite with `manage.py test --parallel N` can hang on macOS/SQLite
+  (parent at 0% CPU, no output); run the app serially instead
+  (`manage.py test library`, ~12 min) and capture the `Ran …`/`OK` lines —
+  piping through `tail` hides them and reports `tail`'s exit code, not the
+  tests'.
