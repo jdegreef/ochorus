@@ -899,6 +899,51 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "pursuit of wisdom. Deep night-blue with one warm light; the drama is in "
         "the sky so the figure stays clear of the title.",
     ),
+    # Rooted 1–6 (ages 9–12). One frame for the series: a cutaway of a tree on
+    # the soil line, its roots reaching down through layered earth toward a
+    # stream (Psalm 1:3). Across the six the tree grows from sprout to laden
+    # tree and the roots go deeper until, in book 6, they reach the water; each
+    # volume changes only the sky and the soil's tint. White type sits on soil.
+    "rooted-1": Original(
+        "619a84894ad1fd0da0a52b9772a30155050e7c2adab5ae277402afe4bb0083f9",
+        "Planted: a sprout at dawn, its first short roots in the dark soil.",
+    ),
+    "rooted-2": Original(
+        "a810313bb79d34b2abdf11ac7d5ecc372f3501946d0f03d80e8e4239ffb03c73",
+        "Following Jesus: a seedling under a single star, roots going down.",
+    ),
+    "rooted-3": Original(
+        "35f741e81b61d4d7d129ffa4964581cac24ce17dd85b634e0dac05f40e74fac5",
+        "Growing Fruit: a young tree at dusk bearing its first fruit.",
+    ),
+    "rooted-4": Original(
+        "c5c9e39ae9957f4311824c6f08acf75eda7bcd45020c172bd1120e3496673a81",
+        "Strong in the Storm: lightning and rain above; below, the deepest roots "
+        "of the set holding fast.",
+    ),
+    "rooted-5": Original(
+        "719b744b5ddf144954d72495210dbb614741dbbe4b4941e084e11bee90f186ac",
+        "Branching Out: a wide crown with birds in it — a life reaching others.",
+    ),
+    "rooted-6": Original(
+        "c25bcc190f1693b39260b7f8209c60ac5171217ea39563830d9d07e293b55440",
+        "Bearing Fruit: a laden tree in gold light, its roots at last in the "
+        "stream.",
+    ),
+    # The two East African Revival Originals share one frame: the hills of
+    # Buganda at night under a faint Milky Way, lit by fire. One fire becomes
+    # many — the revival spreading hill to hill, and the fellowship meetings
+    # gathered around the fire.
+    "a-hidden-fire": Original(
+        "2da88d638edf683963f7b67daa79e986094164d379ab1476f8ee2cdea8bcbdc8",
+        "A single fire on a dark hillside, one figure seated beside it, sparks "
+        "rising: the hidden fire before it spread.",
+    ),
+    "tukutendereza": Original(
+        "7adbe65452786313e86f48c6fd676d8b3ef232882d9ffa9c56070bd97671f6f1",
+        "Fires on hill after hill into the distance, a circle gathered at the "
+        "nearest, the first dawn on the rim — the revival's fellowship spreading.",
+    ),
 }
 
 
