@@ -487,14 +487,22 @@ class SeedBooksUpsertTests(TestCase):
 
         sw = SeriesTranslation.objects.get(series__slug="brave-for-god", language="sw")
         SeriesTranslation.objects.filter(pk=sw.pk).update(title="stale")
+        # Any language the fixture gives `rooted` no name in — it gains names as
+        # editions ship, so don't hard-code one.
+        named = set(
+            SeriesTranslation.objects.filter(series__slug="rooted").values_list(
+                "language", flat=True
+            )
+        )
+        gone = next(lang for lang in ("fr", "es", "pt", "uk", "de", "it") if lang not in named)
         SeriesTranslation.objects.create(
-            series=Series.objects.get(slug="rooted"), language="fr", title="withdrawn"
+            series=Series.objects.get(slug="rooted"), language=gone, title="withdrawn"
         )
         call_command("seed_books", verbosity=0)  # the next deploy
         sw.refresh_from_db()
         self.assertEqual(sw.title, "Jasiri kwa ajili ya Mungu")
         self.assertFalse(
-            SeriesTranslation.objects.filter(series__slug="rooted", language="fr").exists()
+            SeriesTranslation.objects.filter(series__slug="rooted", language=gone).exists()
         )
 
     def test_a_book_the_fixture_takes_out_of_a_series_leaves_it(self):
