@@ -757,12 +757,19 @@ relevant group.
   search emit no `og:image` (reader chapters wear their book's landscape card
   since #4243, articles their lead book's; home has per-locale shelf cards,
   #4208 — `npm run og:home`; verse pages draw their own at postbuild, #4255 —
-  `build-verse-cards.mjs`); the reader emits no BreadcrumbList.
+  `build-verse-cards.mjs`; author pages per locale, #4262 —
+  `build-author-cards.mjs`); the reader emits no BreadcrumbList.
   _Drawing a new card family: satori needs static TTFs (instance the variable
   woff2 with fontTools `varLib.instancer`; Fraunces/Hanken already vendored in
   `scripts/fonts`), rasterise satori's SVG with `sharp(svg)` (librsvg ~7 ms vs
   resvg ~77 ms — text is already paths), and in sharp `rotate()` runs BEFORE
-  `composite()` in one pipeline — composite, then rotate in a second._ → localized fallback, one length, section
+  `composite()` in one pipeline — composite, then rotate in a second.
+  **Localized text (Arabic, Devanagari):** satori cannot shape them — use
+  sharp's Pango (`sharp({ text: { text: markup, width, rtl } })`) as
+  `build-author-cards.mjs` does: set `FONTCONFIG_FILE` to a conf naming
+  `scripts/fonts/pango` AND `PANGOCAIRO_BACKEND=fc` before importing sharp
+  (without the latter macOS uses CoreText and silently sets Helvetica). Fonts
+  come from `scripts/fonts/cut-pango-fonts.py`._ → localized fallback, one length, section
   OG cards (Book).
 
 ### G. Guide and guards
