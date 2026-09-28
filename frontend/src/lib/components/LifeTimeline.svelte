@@ -79,7 +79,10 @@
 		     short axis can carry the tighter clusters a real life throws up (a
 		     conversion two years before an ordination) without the words colliding.
 		     A hairline stem ties each label back to its dot. -->
-		<svg class="ev-svg" viewBox="0 0 {W} 82" role="img" aria-hidden="true">
+		<!-- md and up only, where the column is at least its 640 units wide: the
+		     viewBox scales to the column, so on a phone
+		     (~295px) its 12px labels drew at ~5px (mobile review #4). -->
+		<svg class="ev-svg hidden md:block" viewBox="0 0 {W} 82" role="img" aria-hidden="true">
 			<line class="ev-axis" x1={PAD} y1="41" x2={W - PAD} y2="41"></line>
 			<line class="ev-life" x1={ex(span.lo)} y1="41" x2={ex(span.hi)} y2="41"></line>
 			{#each events as m, i (m.year + m.label)}
@@ -96,6 +99,17 @@
 				</g>
 			{/each}
 		</svg>
+		<!-- Phones: the same events read DOWN the page, in CSS pixels, so nothing
+		     scales below the text scale. Same facts, same a11y stance as the SVG. -->
+		<ol class="ev-list md:hidden" aria-hidden="true">
+			{#each events as m (m.year + m.label)}
+				<li class:key={m.key}>
+					<span class="ev-list-yr">{m.year}</span>
+					<span class="ev-list-dot"></span>
+					{#if labels}<span class="ev-list-lb">{m.label}</span>{/if}
+				</li>
+			{/each}
+		</ol>
 	</figure>
 {:else if domain && birthYear != null && deathYear != null}
 	<div class="life-timeline mx-auto mt-6 max-w-[40rem]" aria-hidden="true">
@@ -120,10 +134,11 @@
 	.life-events {
 		margin-block-start: 1.5rem;
 	}
+	/* No `display` here: `hidden md:block` on the element sets it, and an
+	   unlayered scoped rule would beat those utilities. */
 	.ev-svg {
 		width: 100%;
 		height: auto;
-		display: block;
 		overflow: visible;
 	}
 	.ev-axis {
@@ -162,6 +177,65 @@
 	}
 	.ev.key .ev-lb {
 		fill: var(--accent);
+	}
+
+	/* The phone list: year · dot on the life line · label. The line runs through
+	   the dot column from the first dot to the last, the vertical twin of
+	   `.ev-life`. */
+	.ev-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.ev-list li {
+		position: relative;
+		display: grid;
+		grid-template-columns: 3rem 0.75rem 1fr;
+		align-items: center;
+		column-gap: 0.75rem;
+		padding-block: 0.4rem;
+	}
+	.ev-list li::before {
+		content: '';
+		position: absolute;
+		inset-block: 0;
+		inset-inline-start: calc(3rem + 0.75rem + 0.375rem - 1.5px);
+		width: 3px;
+		background: var(--accent);
+	}
+	.ev-list li:first-child::before {
+		inset-block-start: 50%;
+	}
+	.ev-list li:last-child::before {
+		inset-block-end: 50%;
+	}
+	.ev-list-yr {
+		font-family: var(--font-sans);
+		font-weight: 600;
+		font-size: var(--fs-small);
+		color: var(--text);
+		font-variant-numeric: tabular-nums;
+		text-align: end;
+	}
+	.ev-list-dot {
+		position: relative; /* above the line */
+		width: 0.75rem;
+		height: 0.75rem;
+		border-radius: 999px;
+		background: var(--bg);
+		border: 2.5px solid var(--accent);
+	}
+	.ev-list .key .ev-list-dot {
+		background: var(--accent);
+	}
+	.ev-list-lb {
+		font-family: var(--font-sans);
+		font-size: var(--fs-small);
+		line-height: 1.35;
+		color: var(--muted);
+	}
+	.ev-list .key .ev-list-lb {
+		color: var(--accent);
 	}
 
 	/* ── Bare-lifespan fallback (unchanged) ─────────────────────────────────── */
