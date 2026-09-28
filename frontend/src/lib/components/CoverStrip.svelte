@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
-	import type { BookTile } from '$lib/library-public';
+	import { tileFace, type BookTile } from '$lib/library-public';
+	import BookCover from './BookCover.svelte';
 
 	/**
 	 * A small fanned "shelf peek" of book covers — the plan page's strip.
@@ -26,8 +27,12 @@
 {#if covers.length}
 	<div class="covers" class:lg={size === 'lg'} aria-hidden="true">
 		{#each covers.slice(0, max) as cover (cover.slug ?? cover.title)}
+			{@const face = tileFace(cover)}
 			<div class="cover">
-				{#if cover.cover_url}
+				{#if face}
+					<!-- Drawn, not a bare image: a plate ground has no words. -->
+					<BookCover book={face} rounded="" />
+				{:else if cover.cover_url}
 					{@const source = { src: cover.cover_url, srcset: coverSrcset(cover.cover_url) || undefined }}
 					<img
 						src={source.src}

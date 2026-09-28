@@ -175,7 +175,15 @@ class SeriesViewTests(TestCase):
         self.assertEqual((bfg["audience"], bfg["min_age"], bfg["max_age"]), ("", None, None))
         # The fan: the first four published volumes, in reading order.
         self.assertEqual([c["slug"] for c in bfg["covers"]], ["bfg-1", "bfg-2", "bfg-3", "bfg-4"])
-        self.assertEqual(set(bfg["covers"][0]), {"kind", "slug", "cover_url", "cover_color", "title"})
+        # A tile carries what its thumbnail's type needs (cover_face), not the card.
+        self.assertEqual(
+            set(bfg["covers"][0]),
+            {
+                "kind", "slug", "language", "title", "subtitle", "cover_title",
+                "cover_url", "cover_color", "series_position", "author",
+            },
+        )
+        self.assertEqual(set(bfg["covers"][0]["author"]), {"slug", "name", "birth_year"})
         self.assertEqual(kt_row["book_count"], 1)
         # Languages with a page: a name AND a published book there.
         self._book("bfg-1", 1, language="sw")

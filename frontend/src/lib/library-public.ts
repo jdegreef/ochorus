@@ -121,6 +121,17 @@ type Unclassified = Exclude<keyof BookSummary, Classified>;
 type AssertEveryFieldClassified<T extends never> = T;
 export type EveryBookFieldClassified = AssertEveryFieldClassified<Unclassified>;
 
+/**
+ * What `BookCover` DRAWS from — the fields it reads and nothing about the card.
+ * A `CoverBook` fits it; so does a strip tile or a search hit, which carry
+ * exactly these (the backend's `library/cover_face.py`) so their thumbnails can
+ * set a title over a wordless plate instead of showing a bare ground.
+ */
+export type CoverFace = Pick<
+	CoverBook,
+	'slug' | 'language' | 'title' | 'subtitle' | 'cover_title' | 'cover_color' | 'cover_url' | 'series_position'
+> & { author: Pick<CoverBook['author'], 'slug' | 'name' | 'birth_year'> };
+
 /** `obj` with only `keys` — the runtime half of a narrow type built from them. */
 export function pick<T extends object, K extends keyof T>(obj: T, keys: readonly K[]): Pick<T, K> {
 	return Object.fromEntries(keys.map((k) => [k, obj[k]])) as Pick<T, K>;
@@ -366,6 +377,8 @@ export interface ChapterHit {
 	/** The book's cover, so a passage carries the same visual anchor as its book. */
 	cover_url: string;
 	cover_color: string;
+	/** What the thumbnail's type needs; absent from an API behind this build. */
+	cover?: CoverFace;
 	snippet: string;
 	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
 	date: string;
@@ -401,6 +414,8 @@ export interface BookHit {
 	cover_url: string;
 	/** Dominant cover colour, filling the reserved box before/instead of the image. */
 	cover_color: string;
+	/** What the thumbnail's type needs; absent from an API behind this build. */
+	cover?: CoverFace;
 	snippet: string;
 	/** Publish date (YYYY-MM-DD) for the "newest" sort; "" if unknown. */
 	date: string;
@@ -1072,13 +1087,21 @@ export const getPlan = (slug: string, language = 'en', f?: Fetch) =>
  * either way — a tile arriving without `kind` still falls to the book branch,
  * because `isSermonTile` asks for `'sermon'` rather than assuming.
  */
-export interface BookTile {
+export interface BookTile extends Partial<Omit<CoverFace, 'slug' | 'title' | 'cover_url' | 'cover_color'>> {
 	kind: 'book';
 	slug: string;
 	cover_url: string;
 	cover_color: string;
 	title: string;
 }
+
+/**
+ * A tile as the cover it can draw, or null from an API running behind this
+ * build (no `author`/`language` yet) — the caller then shows the bare ground,
+ * as every tile did before.
+ */
+export const tileFace = (t: BookTile): CoverFace | null =>
+	t.author && t.language ? (t as CoverFace) : null;
 
 /**
  * A sermon in a topic's strip. It carries no cover fields because it is not

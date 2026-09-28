@@ -166,6 +166,11 @@ class SearchTests(TestCase):
         self.assertEqual(len(hits), 1)
         self.assertEqual(hits[0]["book_slug"], "humility")
         self.assertEqual(hits[0]["author_name"], "Andrew Murray")
+        # The thumbnail's type: a plate ground carries no words, so the row
+        # needs what BookCover sets over it (library/cover_face.py).
+        cover = hits[0]["cover"]
+        self.assertEqual((cover["slug"], cover["language"]), ("humility", "en"))
+        self.assertEqual(cover["author"]["name"], "Andrew Murray")
 
     def test_author_entity_hit(self):
         hits = [r for r in self.search("Murray") if r["type"] == "author"]
