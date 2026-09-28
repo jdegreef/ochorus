@@ -147,7 +147,9 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		font-size: var(--fs-eyebrow);
+		/* micro, which the phone scale sets at 12px: a tab bar's labels are
+		   read at a glance, and a quarter of the width can't take 13px. */
+		font-size: var(--fs-micro);
 		font-weight: 600;
 	}
 	.tab.active {

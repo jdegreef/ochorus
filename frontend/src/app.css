@@ -179,7 +179,8 @@
 	--text-h1--line-height: 1.15;
 }
 
-/* Type scale — modular ratio 1.25, anchored at 1rem body. (Shared with Take Root.) */
+/* Type scale — modular ratio 1.25, anchored at 1rem body. (Shared with Take Root;
+   the phone override of the two smallest steps just below is Ochorus's own.) */
 :root {
 	--fs-micro: 0.6875rem;
 	--fs-eyebrow: 0.75rem;
@@ -189,6 +190,16 @@
 	--fs-h2: 1.563rem;
 	--fs-h1: 1.953rem;
 	--fs-display: clamp(2rem, 5vw, 2.75rem);
+}
+/* A phone is held further from the eye than its pixel density suggests, and
+   the two smallest steps (11px micro, 12px eyebrow) carry real reading — card
+   bylines, sermon references, form hints. One step up there, so every use
+   follows without a per-page hunt. */
+@media (max-width: 639.98px) {
+	:root {
+		--fs-micro: 0.75rem;
+		--fs-eyebrow: 0.8125rem;
+	}
 }
 
 /* The two font tokens, in a PLAIN @theme rather than the `inline` one above.
@@ -2323,7 +2334,9 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    text colour (text / muted) and whether it carried a surface fill
    (page-design J1). One recipe now. */
 .tag {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3em;
 	border: 1px solid var(--border);
 	border-radius: 999px;
 	background: var(--surface);
@@ -2394,7 +2407,8 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.google-btn,
 		.focus-exit,
 		.sync-cta,
-		.bm-remove {
+		.bm-remove,
+		.tag {
 			min-height: 2.75rem;
 		}
 		/* Buttons whose label would otherwise sit at the top of the taller box.
@@ -2425,7 +2439,8 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.navtoggle,
 		.navsearch,
 		.day-toggle,
-		.sync-dismiss {
+		.sync-dismiss,
+		.sermon-row-toggle {
 			position: relative;
 		}
 		/* The finish toggle on a Continue-reading card is a 28px disc, already
@@ -2437,7 +2452,8 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.navsearch::after,
 		.finish-btn::after,
 		.day-toggle::after,
-		.sync-dismiss::after {
+		.sync-dismiss::after,
+		.sermon-row-toggle::after {
 			content: '';
 			position: absolute;
 			top: 50%;
@@ -2470,6 +2486,13 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	   change, as .footer-links a does) — a mis-tap here doesn't scroll, it
 	   switches the whole site's language. */
 	.footer-lang {
+		padding-block: 0.7rem;
+	}
+	/* The footer's page links too (0.3rem gave 31px rows, the bottom About /
+	   Contact / Privacy row 21px), for the same reason. */
+	.footer-links a,
+	.footer-links button,
+	.footer-legal a {
 		padding-block: 0.7rem;
 	}
 }
