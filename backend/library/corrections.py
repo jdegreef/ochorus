@@ -1813,7 +1813,23 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # touches an existing book's chapters (see its `chapter_drift` note) — a
     # fixture edit alone reaches a fresh database and never a deployed one.
     "confessions": {
-        "replacements": [("his socalled constellations", "his so-called constellations")],
+        "replacements": [
+            ("his socalled constellations", "his so-called constellations"),
+            # The scan read Pusey's "ten" as "often" six times (found while
+            # translating the book to French): the Decalogue psaltery, the
+            # ten Predicaments (Categories) of Aristotle, "some ten persons"
+            # in the planned community, Augustine's "ten years" of seeking,
+            # and "ten days since" in the Book XI example of a short past.
+            ("psaltery of often strings", "psaltery of ten strings"),
+            ("the often Predicaments", "the ten Predicaments"),
+            ("those often Predicaments", "those ten Predicaments"),
+            ("some often persons", "some ten persons"),
+            ("for often years", "for ten years"),
+            ("(suppose) often days since", "(suppose) ten days since"),
+            # Two chapter numerals lost their final capital.
+            ("<h3>Chapter XXi</h3>", "<h3>Chapter XXI</h3>"),
+            ("<h3>Chapter Xi</h3>", "<h3>Chapter XI</h3>"),
+        ],
     },
     "grace-for-grace-2": {
         "replacements": [("this hard-todeal-with", "this hard-to-deal-with")],
