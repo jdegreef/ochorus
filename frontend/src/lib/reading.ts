@@ -1,6 +1,6 @@
 import { i18n } from './i18n.svelte';
 import { getLang } from './lang.svelte';
-import { MODERN_EDITION, baseEdition } from './reading-schema';
+import { MODERN_EDITION, baseEdition, furthestOf, resumeOrderOf } from './reading-schema';
 import { readingPace } from './readingPace.svelte';
 
 /**
@@ -78,11 +78,14 @@ export function bookProgressPercent(order: number, chapterCount: number): number
  * the bar is always visibly started and never claims completion.
  */
 export function workPercent(
-	rec: { order: number; pct?: number; finished_at?: number | null },
+	rec: { order: number; pct?: number; finished_at?: number | null; furthest?: number },
 	chapterCount: number
 ): number {
 	if (rec.finished_at != null) return 100;
-	if (rec.pct == null) return bookProgressPercent(rec.order, chapterCount);
+	// A peek past the furthest chapter reached isn't progress: measure from
+	// where Continue will take the reader.
+	if (rec.pct == null || rec.order > furthestOf(rec))
+		return bookProgressPercent(resumeOrderOf(rec), chapterCount);
 	return Math.min(99, Math.max(1, Math.round(rec.pct)));
 }
 

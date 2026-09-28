@@ -449,6 +449,8 @@
   "bios_show_more": "عرض %n% إضافية",
   "bios_read_more": "اقرأ السيرة كاملة",
   "book_start_over": "ابدأ من جديد",
+  "book_last_opened": "آخر ما فتحته: الفصل %n%",
+  "book_back_to_furthest": "العودة إلى الفصل %n%، أبعد ما قرأت",
   "book_begin_reading": "ابدأ القراءة",
   "book_continue_ch": "متابعة · فصل",
   "book_download_pdf": "تنزيل PDF",

@@ -193,3 +193,9 @@ describe('workPercent — the one "% read" (review bug #15)', () => {
 	});
 });
 
+describe('workPercent during a peek (review bug #14)', () => {
+	it('measures from the furthest chapter, not the peeked one', () => {
+		expect(workPercent({ order: 20, furthest: 3, pct: 90 }, 20)).toBe(bookProgressPercent(3, 20));
+	});
+});
+

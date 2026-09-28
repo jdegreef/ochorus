@@ -80,6 +80,22 @@ class ReadingProgress(models.Model):
     # is a live-only signal the sign-in merge deliberately does not carry.
     finished_at = models.DateTimeField(null=True, blank=True)
 
+    # The furthest chapter the reader has REACHED, as opposed to the one they
+    # last opened (`chapter_order`): opening the next chapter or reading one to
+    # its end advances it; peeking ahead from the contents or a search does not.
+    # So "Continue" can return from a peek, and the contents can tick what was
+    # actually read. Like `finished_at` it only grows — the highest any device
+    # reports wins, whatever the recency of its position (see _upsert_progress).
+    # 0 = unknown (rows and clients from before the field): read as the
+    # current chapter.
+    furthest_order = models.PositiveIntegerField(default=0)
+
+    # How far through the whole work this position is, 0-100, by words — the
+    # reader's own figure, so every device's lists show the same number. It
+    # describes the position, so it travels with it: kept or replaced exactly
+    # when the position is. Null when no device has measured it.
+    pct = models.PositiveSmallIntegerField(null=True, blank=True)
+
     class Meta:
         ordering = ["-updated_at"]
         constraints = [

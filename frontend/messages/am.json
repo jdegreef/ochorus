@@ -449,6 +449,8 @@
   "bios_show_more": "ተጨማሪ %n% ያሳዩ",
   "bios_read_more": "ሙሉውን የሕይወት ታሪክ ያንብቡ",
   "book_start_over": "እንደገና ይጀምሩ",
+  "book_last_opened": "መጨረሻ የከፈቱት፦ ምዕራፍ %n%",
+  "book_back_to_furthest": "ወደ ምዕራፍ %n% ይመለሱ፣ እስከዚያ አንብበዋል",
   "book_begin_reading": "ማንበብ ይጀምሩ",
   "book_continue_ch": "ይቀጥሉ · ምዕ.",
   "book_download_pdf": "PDF ያውርዱ",

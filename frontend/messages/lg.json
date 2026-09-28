@@ -449,6 +449,8 @@
   "bios_show_more": "Laga %n% abalala",
   "bios_read_more": "Soma ebyafaayo byonna",
   "book_start_over": "Tandika buggya",
+  "book_last_opened": "Gy’osembyeyo okuggulawo: essuula %n%",
+  "book_back_to_furthest": "Ddayo ku ssuula %n%, w’otuuse okusoma",
   "book_begin_reading": "Tandika okusoma",
   "book_continue_ch": "Weyongere · ess.",
   "book_download_pdf": "Tikka PDF",
