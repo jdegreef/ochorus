@@ -23,7 +23,7 @@ PILOT = frozenset({("pilot-book", "en")})
 
 
 @override_settings(PUBLIC_SITE_URL="https://ochorus.test")
-@mock.patch.object(export_policy, "EXPORT_PILOT", PILOT)
+@mock.patch.object(export_policy, "EXPORT_EDITIONS", PILOT)
 @mock.patch.object(book_export, "load_cover", lambda url: None)
 class EpubTests(TestCase):
     def setUp(self):
@@ -196,7 +196,7 @@ class EpubTests(TestCase):
 class PilotTests(TestCase):
     def test_every_pilot_language_has_back_matter(self):
         keys = set(book_export.STRINGS["en"])
-        for _slug, lang in export_policy.EXPORT_PILOT:
+        for _slug, lang in export_policy.EXPORT_EDITIONS:
             self.assertIn(lang, book_export.STRINGS)
             self.assertEqual(set(book_export.STRINGS[lang]), keys, f"{lang} back matter is incomplete")
 
@@ -213,6 +213,26 @@ class PilotTests(TestCase):
             pdf = fields.get("pdf_url", "")
             self.assertTrue(pdf, f"{slug} ({lang}) is exportable but has no pdf_url")
             self.assertTrue((static / pdf.lstrip("/")).is_file(), f"{pdf} is missing — run export_book")
+
+    def test_english_classics_are_public_domain_texts(self):
+        # Their back matter says "in the public domain", so each must be a
+        # published, public-domain English row that Ochorus didn't write.
+        import json
+
+        from .content_fixtures import book_fixture_path
+        from .corrections import COPYRIGHT_BLOCKED_SLUGS
+
+        for slug in sorted(export_policy.ENGLISH_CLASSICS):
+            path = book_fixture_path(slug, "en")
+            self.assertTrue(path.is_file(), f"{slug} has no English fixture")
+            fields = json.loads(path.read_text(encoding="utf-8"))[0]["fields"]
+            book = mock.Mock(attribution=fields.get("attribution", ""))
+            self.assertTrue(fields["is_published"], f"{slug} is not published")
+            self.assertEqual(fields["source_type"], Book.SourceType.PUBLIC_DOMAIN, slug)
+            self.assertFalse(book_export.is_in_copyright(book), f"{slug} is in copyright")
+            self.assertNotIn(slug, COPYRIGHT_BLOCKED_SLUGS)
+            self.assertNotEqual(fields["author"], ["ochorus-originals"], f"{slug} is an Ochorus Original")
+            self.assertFalse(slug.endswith(("-teens", "-children")), f"{slug} is an Ochorus retelling")
 
 
 class CoverTests(TestCase):
@@ -257,7 +277,7 @@ class CoverTests(TestCase):
         # The API image has no frontend/static, and fetching the cover from the
         # site failed in production — so each exportable edition carries a
         # committed copy, and it must be the file the site serves today.
-        for slug, lang in sorted(export_policy.EXPORT_PILOT):
+        for slug, lang in sorted(export_policy.EXPORT_EDITIONS):
             book = mock.Mock(slug=slug, language=lang, cover_url=_fixture_cover_url(slug, lang))
             bundled = book_export.bundled_cover_path(book)
             self.assertIsNotNone(bundled, f"{slug} ({lang}) has no raster cover to bundle")
