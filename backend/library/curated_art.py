@@ -944,6 +944,36 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "Fires on hill after hill into the distance, a circle gathered at the "
         "nearest, the first dawn on the rim — the revival's fellowship spreading.",
     ),
+    # Sons of the King 1–3 and Daughters of the King 1–3: sibling series. One
+    # frame for both, a starry night sky over a low band of dawn with one young
+    # figure drawn in motion against the light (the founder chose this over six
+    # other concepts, 2026-09-28). Sons wear cool colours and Daughters warm, so
+    # each set keeps one colour family on the shelf; the figure stays below the
+    # subtitle so the type sits on sky.
+    "sons-of-the-king-1": Original(
+        "885f979175992dd0f66f2c1f6114781625f2c23e5b2a29abb325ba96f536809e",
+        "Strong: a boy climbing a boulder ridge toward the mountains at dawn.",
+    ),
+    "sons-of-the-king-2": Original(
+        "d46023762dc1a562a2851407124af95e4c452f635e4fac0de2b1486ca968d17f",
+        "Faithful: a boy at the summit, a boot on the rock, over a pine valley.",
+    ),
+    "sons-of-the-king-3": Original(
+        "f377d9ded5c6333004b36321304b325a68495c972fc7525f54b26326ab1a9879",
+        "Growing Up: a boy walking the road out toward the light.",
+    ),
+    "daughters-of-the-king-1": Original(
+        "5806ca1044ce32dadeafac1037bb48d5126c2c6ab2dd1ee817631e37b7aec354",
+        "Beloved: a girl on a sea cliff by a lighthouse at first light.",
+    ),
+    "daughters-of-the-king-2": Original(
+        "eb63da9b0f4ef86b05950f5230e6b983da285f61458e2b730d9066b1323bacf2",
+        "Brave: a girl running up a hill toward the dawn.",
+    ),
+    "daughters-of-the-king-3": Original(
+        "1d0cc9e028c5bcfa40077a9c11e5a29fbe91ef882c5b053a68457c25d0c1e43a",
+        "Growing Up: a girl walking the river path toward the light.",
+    ),
 }
 
 

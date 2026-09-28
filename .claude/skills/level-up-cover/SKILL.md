@@ -354,7 +354,8 @@ title on the cover. The Amharic Rooted rows had none, so "ሥር የሰደደ �
 ran up into the tree. The fix is the title's own first segment, as ar/hi do.
 Shipped so far on this tier: Brave for God 1–4 (#2877), growing-in-wisdom
 (#2905), Rooted 1–6 + A Hidden Fire + Tukutendereza (2026-09-28, "fires on the
-hills"). Sons/Daughters of the King are mocked up and wait on a figure redraw.
+hills"), Sons/Daughters of the King 1–3 (2026-09-28, "silhouettes done right",
+chosen from 7 concepts). With these, no published book wears a plate.
 
 ## Running the singles as a batched sweep
 Too many single-plate authors to do per-book A/B/C. The method that works:
