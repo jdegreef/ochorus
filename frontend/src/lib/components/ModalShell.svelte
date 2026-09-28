@@ -32,6 +32,7 @@
 		ariaLabelledby,
 		ariaDescribedby,
 		width = '32rem',
+		initialFocus,
 		children
 	}: {
 		/** Escape, from anywhere inside the dialog. */
@@ -44,6 +45,8 @@
 		ariaDescribedby?: string;
 		/** The card's max width. */
 		width?: string;
+		/** Selector for what takes focus on open (default: the first focusable). */
+		initialFocus?: string;
 		children: Snippet;
 	} = $props();
 </script>
@@ -56,7 +59,7 @@
 	aria-label={ariaLabel}
 	aria-labelledby={ariaLabelledby}
 	aria-describedby={ariaDescribedby}
-	use:focusTrap={{ onEscape: onClose }}
+	use:focusTrap={{ onEscape: onClose, initialFocus }}
 >
 	<div class="modal-card" style:max-width={width}>
 		{@render children()}

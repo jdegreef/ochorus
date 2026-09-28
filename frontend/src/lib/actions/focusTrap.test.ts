@@ -35,6 +35,14 @@ describe('focusTrap action', () => {
 		expect(document.activeElement).toBe(a);
 	});
 
+	it('focuses the initialFocus target when given one', async () => {
+		const { panel, b } = setup();
+		b.classList.add('here');
+		focusTrap(panel, { initialFocus: '.here' });
+		await Promise.resolve();
+		expect(document.activeElement).toBe(b);
+	});
+
 	it('calls onEscape when Escape is pressed inside the panel', () => {
 		const { panel, a } = setup();
 		const onEscape = vi.fn();

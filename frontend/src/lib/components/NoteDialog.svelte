@@ -11,6 +11,8 @@
 	 */
 	import { i18n } from '$lib/i18n.svelte';
 	import ModalShell from '$lib/components/ModalShell.svelte';
+	import DiscardConfirm from '$lib/components/DiscardConfirm.svelte';
+	import { untrack } from 'svelte';
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 
 	interface Props {
@@ -35,9 +37,30 @@
 	}: Props = $props();
 
 	const t = i18n.t;
+
+	// Escape and Cancel close without saving. When that would throw away words
+	// the reader typed, ask first (an unchanged or empty note just closes).
+	const opened = untrack(() => text);
+	let confirming = $state(false);
+	function requestClose() {
+		if (text.trim() && text !== opened) confirming = true;
+		else onClose();
+	}
+	// Escape while the question is showing answers it: keep editing.
+	const onEscape = () => (confirming ? (confirming = false) : requestClose());
+
+	// Opened focused on the text: continue an existing note from its end, not
+	// its first character (once — later clicks place the caret themselves).
+	let caretPlaced = false;
+	function toEnd(e: FocusEvent) {
+		if (caretPlaced) return;
+		caretPlaced = true;
+		const el = e.currentTarget as HTMLTextAreaElement;
+		el.setSelectionRange(el.value.length, el.value.length);
+	}
 </script>
 
-<ModalShell {onClose} ariaLabel={t('reader.note')}>
+<ModalShell onClose={onEscape} ariaLabel={t('reader.note')} initialFocus="textarea">
 	<h2 class="mb-2 text-h3">{t('reader.note')}</h2>
 	<div class="mb-3 flex items-center gap-2.5" role="group" aria-label={t('reader.highlight')}>
 		{#each HIGHLIGHT_COLORS as c (c)}
@@ -59,6 +82,7 @@
 		class="field w-full"
 		aria-label={t('reader.note')}
 		placeholder="…"
+		onfocus={toEnd}
 	></textarea>
 	<div class="mt-3 flex items-center gap-2">
 		{#if canRemove}
@@ -66,7 +90,10 @@
 				{t('reader.removeHighlight')}
 			</button>
 		{/if}
-		<button class="btn btn-ghost ms-auto" onclick={onClose}>{t('common.cancel')}</button>
+		<button class="btn btn-ghost ms-auto" onclick={requestClose}>{t('common.cancel')}</button>
 		<button class="btn btn-primary" onclick={onSave}>{t('common.save')}</button>
 	</div>
+	{#if confirming}
+		<DiscardConfirm onKeep={() => (confirming = false)} onDiscard={onClose} />
+	{/if}
 </ModalShell>

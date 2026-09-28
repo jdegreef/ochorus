@@ -19,6 +19,9 @@ export interface FocusTrapOptions {
 	onEscape?: () => void;
 	/** Skip the auto-focus-in (e.g. the overlay focuses a specific field itself). */
 	autoFocus?: boolean;
+	/** Where focus goes on open (a selector inside the overlay) when the first
+	 *  focusable isn't it — a note editor opens on its text, not a swatch. */
+	initialFocus?: string;
 }
 
 export function focusTrap(node: HTMLElement, options: FocusTrapOptions = {}) {
@@ -31,7 +34,12 @@ export function focusTrap(node: HTMLElement, options: FocusTrapOptions = {}) {
 		);
 
 	if (opts.autoFocus !== false) {
-		queueMicrotask(() => (focusables()[0] ?? node).focus());
+		queueMicrotask(() => {
+			const wanted = opts.initialFocus
+				? node.querySelector<HTMLElement>(opts.initialFocus)
+				: null;
+			(wanted ?? focusables()[0] ?? node).focus();
+		});
 	}
 
 	function onKeydown(e: KeyboardEvent) {

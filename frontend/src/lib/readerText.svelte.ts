@@ -64,6 +64,9 @@ export interface ReaderTextOptions {
 	/** The language the page records the reader's place under (what it passes
 	 *  to saveProgress), when that is not the text's own — see progress.ts. */
 	placeLanguage?: () => string;
+	/** Whether a tap on a highlight is really a page turn (and so must not open
+	 *  the note editor) — the paged reader's turn zones. */
+	markTapTurnsPage?: (ev: MouseEvent) => boolean;
 	/** The rendered prose element, once the surface has bound it. */
 	body: () => HTMLElement | undefined;
 	/**
@@ -225,8 +228,10 @@ export class ReaderText {
 			if (!this.draft.trim()) clearNoteUndoable(this.id);
 			else marks.setNote(this.id, this.draft);
 			marks.setColor(this.id, this.color);
-		} else if (this.pending.length && this.draft.trim()) {
-			marks.add(this.pending, this.draft, this.color, this.#paras());
+		} else if (this.pending.length) {
+			// Saved with no words is still a highlight in the colour picked — the
+			// reader pressed Save, so something is kept.
+			marks.add(this.pending, this.draft.trim() || undefined, this.color, this.#paras());
 		}
 		this.open = false;
 	};
@@ -240,8 +245,10 @@ export class ReaderText {
 		this.open = false;
 	};
 
-	/** Open the editor for an existing mark — what clicking a `<mark>` does. */
-	#editMark = (id: string): void => {
+	/** Open the editor for an existing mark — what clicking a `<mark>` does,
+	 *  unless the page says that tap turns a page instead (page mode's edges). */
+	#editMark = (id: string, ev?: MouseEvent): void => {
+		if (ev && this.#o.markTapTurnsPage?.(ev)) return;
 		this.id = id;
 		this.pending = [];
 		this.draft = marks.getNote(id);
