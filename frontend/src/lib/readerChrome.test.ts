@@ -130,6 +130,13 @@ describe('a floating reader control clears the bottom bars', () => {
 		expect(src).toMatch(/var\(--listenbar-h, 0px\)/);
 	});
 
+	it('the feedback "+" sits above the chapter footer and the Listen bar', () => {
+		// It sat at `bottom: 1rem` over the phone reader's Listen · Aa · Next row.
+		const src = read('lib/components/FeedbackFab.svelte');
+		expect(src).toMatch(/var\(--foot-h, 0px\)/);
+		expect(src).toMatch(/var\(--listenbar-h, 0px\)/);
+	});
+
 	it('every page whose header scrolls away bookmarks from the floating control', () => {
 		for (const file of ['lib/components/ArticleDetail.svelte', 'routes/authors/[slug]/+page.svelte']) {
 			expect(read(file), file).toMatch(/<FloatingBookmark\b/);
