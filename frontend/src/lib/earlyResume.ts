@@ -19,22 +19,25 @@
  * can't read. Doing nothing is always safe — the hydrated restore follows.
  *
  * FIXED TEXT, hashed into the CSP: `script-src` has no 'unsafe-inline', so the
- * policy admits this script by its SHA-256 (csp.config.js), and csp.test.ts
- * fails the build if the text below changes without the pin. The storage keys
- * are literals for the same reason (they must match `reading-schema.ts` and
- * `readerPrefs`; earlyResume.test.ts checks that they do). 64 is
- * `HEADER_OFFSET`.
+ * policy admits this script by its SHA-256 (csp.config.js). It is built from
+ * the reader's own storage keys and header offset, so renaming one changes the
+ * text — and csp.test.ts then fails until the pin is updated, rather than the
+ * script silently reading a key nobody writes. The anchor key is
+ * `chapterKey(slug, order)`'s `slug:order` (earlyResume.test.ts checks it).
  */
-export const EARLY_RESUME_JS =
-	"(function(){try{var b=document.currentScript&&document.currentScript.previousElementSibling;" +
-	"if(!b||/[?&](p|pg)=/.test(location.search)||location.hash)return;" +
-	"var m=location.pathname.match(/\\/books\\/([^/]+)\\/(\\d+)\\/?$/);if(!m)return;" +
-	"var g=function(k){return JSON.parse(localStorage.getItem(k)||'{}')};" +
-	"if(g('ochorus:reader-prefs').paged)return;" +
-	"var a=g('ochorus:anchors')[m[1]+':'+m[2]];" +
-	"if(a==null){var r=g('ochorus:progress')[m[1]];if(r&&r.order==m[2])a=r.paragraph_index}" +
-	"var el=a>0&&b.children[a];if(!el)return;" +
-	"el.scrollIntoView({block:'start'});scrollBy(0,-64)}catch(e){}})();";
+import { ANCHOR_KEY, PROGRESS_KEY } from './reading-schema';
+import { HEADER_OFFSET } from './reading';
+import { READER_PREFS_KEY } from './readerPrefs.svelte';
 
-/** The tag the chapter route renders right after its `.reading` body. */
+export const EARLY_RESUME_JS =
+	'(function(){try{var b=document.currentScript&&document.currentScript.previousElementSibling;' +
+	'if(!b||/[?&](p|pg)=/.test(location.search)||location.hash)return;' +
+	'var m=location.pathname.match(/\\/books\\/([^/]+)\\/(\\d+)\\/?$/);if(!m)return;' +
+	"var g=function(k){return JSON.parse(localStorage.getItem(k)||'{}')};" +
+	`if(g('${READER_PREFS_KEY}').paged)return;` +
+	`var a=g('${ANCHOR_KEY}')[m[1]+':'+m[2]];` +
+	`if(a==null){var r=g('${PROGRESS_KEY}')[m[1]];if(r&&r.order==m[2])a=r.paragraph_index}` +
+	'var el=a>0&&b.children[a];if(!el)return;' +
+	`el.scrollIntoView({block:'start'});scrollBy(0,-${HEADER_OFFSET})}catch(e){}})();`;
+
 export const EARLY_RESUME_TAG = `<script>${EARLY_RESUME_JS}</script>`;

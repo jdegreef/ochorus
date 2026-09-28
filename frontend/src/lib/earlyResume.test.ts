@@ -1,67 +1,78 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { EARLY_RESUME_JS } from './earlyResume';
 import { ANCHOR_KEY, PROGRESS_KEY, chapterKey } from './reading-schema';
 import { HEADER_OFFSET } from './reading';
+import { READER_PREFS_KEY } from './readerPrefs.svelte';
 
-/** Run the script against a chapter body of `n` paragraphs at `url`. */
-function run(url: string, store: Record<string, unknown>, n = 20) {
+// jsdom has no scrollIntoView; a no-op to spy on (it lays nothing out anyway).
+Element.prototype.scrollIntoView ??= () => {};
+
+afterEach(() => {
+	vi.restoreAllMocks();
+	delete (document as { currentScript?: unknown }).currentScript;
 	localStorage.clear();
-	for (const [k, v] of Object.entries(store)) localStorage.setItem(k, JSON.stringify(v));
+});
+
+/**
+ * Run the script as the parser would — as the tag straight after a chapter
+ * body of `n` paragraphs, at `url`, over `store` (values as raw strings, so
+ * unreadable storage goes through the same path). Returns the paragraph it
+ * scrolled to (-1 for none) and the header correction it applied.
+ */
+function run(url: string, store: Record<string, string>, n = 20) {
+	for (const [k, v] of Object.entries(store)) localStorage.setItem(k, v);
 	history.replaceState(null, '', url);
 	document.body.innerHTML = `<div class="reading">${'<p>x</p>'.repeat(n)}</div>`;
 	const body = document.querySelector('.reading')!;
 	const script = document.createElement('script');
 	body.after(script);
-	const scrolled: number[] = [];
-	const into: Element[] = [];
-	window.scrollBy = ((_x: number, y: number) => {
-		scrolled.push(y);
-	}) as unknown as typeof window.scrollBy;
-	Element.prototype.scrollIntoView = function (this: Element) {
-		into.push(this);
-	};
-	// Evaluate as the parser would: with `document.currentScript` = the tag.
 	Object.defineProperty(document, 'currentScript', { value: script, configurable: true });
+	const into = vi.spyOn(Element.prototype, 'scrollIntoView').mockImplementation(() => {});
+	const by = vi.spyOn(window, 'scrollBy').mockImplementation(() => {});
 	new Function(EARLY_RESUME_JS)();
-	return { into: into.map((el) => [...body.children].indexOf(el)), scrolled };
+	return {
+		at: into.mock.contexts.length ? [...body.children].indexOf(into.mock.contexts[0] as Element) : -1,
+		by: by.mock.calls.map((c) => c[1])
+	};
 }
 
+const anchor = (slug: string, order: number, p: number) => ({
+	[ANCHOR_KEY]: JSON.stringify({ [chapterKey(slug, order)]: p })
+});
+
 describe('EARLY_RESUME_JS', () => {
-	const anchors = (slug: string, order: number, p: number) => ({ [ANCHOR_KEY]: { [chapterKey(slug, order)]: p } });
-
-	it('uses the storage keys and header offset the reader uses', () => {
-		expect(EARLY_RESUME_JS).toContain(`'${ANCHOR_KEY}'`);
-		expect(EARLY_RESUME_JS).toContain(`'${PROGRESS_KEY}'`);
-		expect(EARLY_RESUME_JS).toContain('ochorus:reader-prefs');
-		expect(EARLY_RESUME_JS).toContain(`scrollBy(0,-${HEADER_OFFSET})`);
-	});
-
 	it("scrolls to this device's anchor for the chapter, under the header", () => {
-		expect(run('/books/humility/3/', anchors('humility', 3, 7))).toEqual({ into: [7], scrolled: [-HEADER_OFFSET] });
-		// Under a locale prefix too.
-		expect(run('/ar/books/humility/3/', anchors('humility', 3, 7)).into).toEqual([7]);
+		expect(run('/books/humility/3/', anchor('humility', 3, 7))).toEqual({ at: 7, by: [-HEADER_OFFSET] });
 	});
 
-	it('falls back to the synced record when it names this chapter', () => {
-		const rec = (order: number) => ({ [PROGRESS_KEY]: { humility: { order, paragraph_index: 5 } } });
-		expect(run('/books/humility/3/', rec(3)).into).toEqual([5]);
-		expect(run('/books/humility/3/', rec(4)).into).toEqual([]);
+	it('works under a locale prefix', () => {
+		expect(run('/ar/books/humility/3/', anchor('humility', 3, 7)).at).toBe(7);
 	});
 
-	it('stands aside wherever the app decides the landing', () => {
-		const a = anchors('humility', 3, 7);
-		expect(run('/books/humility/3/?p=2', a).into).toEqual([]);
-		expect(run('/books/humility/3/?pg=last', a).into).toEqual([]);
-		expect(run('/books/humility/3/#q', a).into).toEqual([]);
-		expect(run('/books/humility/3/', { ...a, 'ochorus:reader-prefs': { paged: true } }).into).toEqual([]);
-		expect(run('/books/humility/', a).into).toEqual([]);
-		// Paragraph 0 is the top already; a spot past the end is nowhere.
-		expect(run('/books/humility/3/', anchors('humility', 3, 0)).into).toEqual([]);
-		expect(run('/books/humility/3/', anchors('humility', 3, 99)).into).toEqual([]);
+	it('falls back to the synced record only when it names this chapter', () => {
+		const rec = (order: number) => ({
+			[PROGRESS_KEY]: JSON.stringify({ humility: { order, paragraph_index: 5 } })
+		});
+		expect(run('/books/humility/3/', rec(3)).at).toBe(5);
+		expect(run('/books/humility/3/', rec(4)).at).toBe(-1);
+	});
+
+	it.each([
+		['a ?p= jump', '/books/humility/3/?p=2', {}],
+		['a ?pg= turn', '/books/humility/3/?pg=last', {}],
+		['a #fragment', '/books/humility/3/#q', {}],
+		['page mode', '/books/humility/3/', { [READER_PREFS_KEY]: JSON.stringify({ paged: true }) }],
+		['a page that is not a chapter', '/books/humility/', {}]
+	])('stands aside for %s', (_, url, extra) => {
+		expect(run(url, { ...anchor('humility', 3, 7), ...extra }).at).toBe(-1);
+	});
+
+	it('leaves the top alone, and a spot past the end', () => {
+		expect(run('/books/humility/3/', anchor('humility', 3, 0)).at).toBe(-1);
+		expect(run('/books/humility/3/', anchor('humility', 3, 99)).at).toBe(-1);
 	});
 
 	it('never throws on storage it cannot read', () => {
-		localStorage.setItem(ANCHOR_KEY, '{not json');
-		expect(() => new Function(EARLY_RESUME_JS)()).not.toThrow();
+		expect(() => run('/books/humility/3/', { [ANCHOR_KEY]: '{not json' })).not.toThrow();
 	});
 });

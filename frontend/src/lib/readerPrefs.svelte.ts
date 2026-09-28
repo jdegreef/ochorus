@@ -155,7 +155,8 @@ const SCALE_MAX = 1.6;
 // reader's own two-column threshold.
 const WIDE_SCREEN_MIN = 1024;
 
-const KEY = 'ochorus:reader-prefs';
+export const READER_PREFS_KEY = 'ochorus:reader-prefs';
+const KEY = READER_PREFS_KEY;
 
 interface Stored {
 	scale: number;
