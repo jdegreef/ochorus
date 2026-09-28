@@ -243,6 +243,15 @@ prerendered pages reference it.
   than rebase it. (PR #2482, curated-art-batch-3, closed superseded 2026-09-18: 14/21
   already live, 5 `is_published:false`, the last 2 deferred.)
 
+- **EPUB-bundled covers must follow a repaint** (since #4261, 2026-09-28).
+  `backend/library/export_covers/<slug>.<lang>.png` is a byte-exact copy of the
+  og twin `covers/<slug>.png` for every EXPORTABLE edition (83 English classics),
+  and `tests_book_export.CoverTests` fails when one is stale. After `og:covers`,
+  check `ls backend/library/export_covers | grep <slug>`. For each hit, copy the
+  new twin over it (or run `manage.py export_book <slug>`, whose `_bundle_cover`
+  does exactly that). A cover PR racing an export PR hits the same test: whichever
+  lands second refreshes the copies.
+
 ## Original illustrated grounds (Ochorus Originals — kids/teens) — SHIPPED tier
 
 PD-painting sourcing (steps 1–2 above) does NOT apply to **Ochorus Originals**
