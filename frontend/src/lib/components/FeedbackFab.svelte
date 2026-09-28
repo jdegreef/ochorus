@@ -7,8 +7,8 @@
 	 * in the reader's immersive focus mode, and over the admin console (admins have
 	 * the feedback queue). Mounted once in the root layout; it captures the current
 	 * page's context through the dialog and records `source: 'fab'`. On phones
-	 * with the tab bar, or in the chapter reader, it steps aside: the bar's
-	 * centre "+" does the same job.
+	 * with the tab bar, or on a reading surface with its footer row (chapter,
+	 * sermon), it steps aside: the bar's centre "+" does the same job.
 	 */
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
@@ -95,7 +95,7 @@
 		height: 1.5rem;
 	}
 	/* Phones with the tab bar carry the "+" in its centre slot (TabBar.svelte),
-	   and the phone chapter reader in its footer's centre slot — so the floating
+	   and the reading surfaces in their footer's (FootFeedback.svelte) — so the floating
 	   one would only duplicate it (and it covered "More", then the text). */
 	@media (max-width: 639.98px) {
 		:global(:root:has(.tabbar)) .fb-fab,
