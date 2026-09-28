@@ -71,6 +71,23 @@ describe('DrawerShell portal', () => {
 		expect(portals()).toHaveLength(0);
 	});
 
+	it('closes on Escape from inside the moved panel and returns focus to the opener', async () => {
+		const opener = document.createElement('button');
+		document.body.appendChild(opener);
+		opener.focus();
+		set(() => host!.setOpen(true));
+		await Promise.resolve(); // let focusTrap's own focus-in microtask run first
+		// jsdom has no layout, so focusTrap's auto-focus can't pick a target here.
+		const body = document.getElementById('drawer-body')!;
+		body.focus();
+
+		set(() => body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })));
+		expect(host!.isOpen()).toBe(false);
+		expect(portals()).toHaveLength(0);
+		expect(document.activeElement).toBe(opener);
+		opener.remove();
+	});
+
 	it('is removed when an ancestor block is torn down while it is open', () => {
 		set(() => host!.setOpen(true));
 		set(() => host!.setShown(false));
