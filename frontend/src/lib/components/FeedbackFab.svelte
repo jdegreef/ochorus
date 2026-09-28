@@ -49,7 +49,18 @@
 		/* Logical, so it sits at the reading end — bottom-right in English,
 		   bottom-left in Arabic. */
 		inset-inline-end: 1rem;
-		bottom: max(1rem, env(safe-area-inset-bottom));
+		/* Clear whichever bottom bar is up — the chapter reader's progress footer
+		   (--foot-h, which already includes the home-indicator strip) or the
+		   Listen bar — as the floating bookmark does. It sat on top of the phone
+		   reader's "Next" button. */
+		bottom: calc(
+			1rem +
+				max(
+					env(safe-area-inset-bottom),
+					var(--foot-h, 0px),
+					var(--listenbar-h, 0px) + env(safe-area-inset-bottom)
+				)
+		);
 		z-index: 40; /* above content, below the dialog overlay (z-50) */
 		display: flex;
 		align-items: center;
