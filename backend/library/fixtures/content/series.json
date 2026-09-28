@@ -330,5 +330,18 @@
   "created_at": "2026-09-28T00:00:00Z",
   "updated_at": "2026-09-28T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "fr",
+  "title": "Enracinés – 30 jours avec Dieu pour les jeunes",
+  "description": "Des méditations sur trente jours pour les lecteurs de 9 à 12 ans, un livre à la fois: un verset, ce qu’il veut dire, une question pour réfléchir, une chose à faire et une prière.",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
 }
 ]
