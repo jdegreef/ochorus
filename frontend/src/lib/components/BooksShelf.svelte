@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resumeOrderOf } from '$lib/reading-schema';
 	import { chapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -86,7 +87,7 @@
 			.filter((r) => r.kind === 'book')
 			.map((r) => {
 				const book = bySlug.get(r.slug);
-				return book ? { book, order: r.order } : null;
+				return book ? { book, order: resumeOrderOf(r) } : null;
 			})
 			.filter((x): x is { book: BookSummary; order: number } => x !== null)
 			.slice(0, 6);

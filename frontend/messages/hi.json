@@ -449,6 +449,8 @@
   "bios_show_more": "%n% और दिखाएँ",
   "bios_read_more": "पूरी जीवनी पढ़ें",
   "book_start_over": "फिर से शुरू करें",
+  "book_last_opened": "पिछली बार खोला: अध्याय %n%",
+  "book_back_to_furthest": "अध्याय %n% पर लौटें, जहाँ तक आपने पढ़ा",
   "book_begin_reading": "पढ़ना शुरू करें",
   "book_continue_ch": "जारी रखें · अध्याय",
   "book_download_pdf": "PDF डाउनलोड करें",

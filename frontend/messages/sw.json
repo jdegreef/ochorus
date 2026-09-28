@@ -449,6 +449,8 @@
   "bios_show_more": "Onyesha %n% zaidi",
   "bios_read_more": "Soma wasifu kamili",
   "book_start_over": "Anza upya",
+  "book_last_opened": "Ulifungua mwisho: sura ya %n%",
+  "book_back_to_furthest": "Rudi sura ya %n%, ulipofikia kusoma",
   "book_begin_reading": "Anza kusoma",
   "book_continue_ch": "Endelea · sura",
   "book_download_pdf": "Pakua PDF",

@@ -585,7 +585,44 @@ describe('a hidden page sends its queued place (review bug #13)', () => {
 		const [url, init] = fetchSpy.mock.calls[0] as unknown as [string, RequestInit];
 		expect(url).toContain('/api/reading/progress/humility/');
 		expect(init.keepalive).toBe(true);
-		expect(JSON.parse(String(init.body))).toMatchObject({ chapter_order: 3, paragraph_index: 12 });
+		expect(JSON.parse(String(init.body))).toMatchObject({
+			chapter_order: 3,
+			paragraph_index: 12,
+			// A record from before `furthest` reports where it stands.
+			furthest_order: 3
+		});
 		await readingSync.settle();
 	});
 });
+
+describe('a merge brings back the furthest chapter and the percent (review bug #14)', () => {
+	it('applies the account\'s furthest and percent; 0 means unknown', async () => {
+		const reply = new Response(
+			JSON.stringify({
+				progress: [
+					{ kind: 'book', book_slug: 'humility', language: 'en', chapter_order: 9, paragraph_index: 2,
+					  updated_at: '2026-01-01T00:00:00Z', client_updated_at: '2026-01-01T00:00:00Z',
+					  furthest_order: 4, pct: 38 },
+					{ kind: 'book', book_slug: 'absolute-surrender', language: 'en', chapter_order: 3, paragraph_index: 0,
+					  updated_at: '2026-01-01T00:00:00Z', furthest_order: 0, pct: null }
+				],
+				marks: [],
+				favorites: []
+			}),
+			{ status: 200, headers: { 'content-type': 'application/json' } }
+		);
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(reply);
+		try {
+			readingSync.setSignedIn(true);
+			await readingSync.mergeOnSignIn();
+			const map = JSON.parse(localStorage.getItem('ochorus:progress') ?? '{}');
+			expect(map.humility).toMatchObject({ order: 9, furthest: 4, pct: 38 });
+			expect(map['absolute-surrender'].furthest).toBeUndefined();
+			expect(map['absolute-surrender'].pct).toBeUndefined();
+		} finally {
+			fetchSpy.mockRestore();
+			readingSync.setSignedIn(false);
+		}
+	});
+});
+

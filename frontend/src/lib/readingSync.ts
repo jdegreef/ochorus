@@ -40,6 +40,7 @@ import {
 	migrateLegacySermonState,
 	workKey,
 	workSlugKey,
+	furthestOf,
 	parseWorkKey,
 	parseWorkSlugKey,
 	type WorkKind,
@@ -74,6 +75,10 @@ interface ServerProgress {
 	client_updated_at?: string | null;
 	/** When the reader finished this work; null while in progress. */
 	finished_at?: string | null;
+	/** Furthest chapter reached (0 = unknown); absent from an older API. */
+	furthest_order?: number;
+	/** Percent through the work, by words; null when no device measured it. */
+	pct?: number | null;
 }
 interface ServerMarks {
 	kind: WorkKind;
@@ -337,6 +342,8 @@ class ReadingSync {
 				language: rec.language,
 				chapter_order: rec.order,
 				paragraph_index: rec.paragraph_index,
+				furthest_order: furthestOf(rec),
+				...(rec.pct != null ? { pct: rec.pct } : {}),
 				// The record's client-clock time, so the server keeps a newer position
 				// when a stale tab flushes a late push (recency is judged against the
 				// client's own clock — see reading/views _upsert_progress).
@@ -730,6 +737,8 @@ class ReadingSync {
 					chapter_order: r.order,
 					paragraph_index: r.paragraph_index || 0,
 					updated_at: r.at,
+					furthest_order: furthestOf(r),
+					...(r.pct != null ? { pct: r.pct } : {}),
 					// Carry a local finish up to the account (the merge unions it).
 					...(r.finished_at ? { finished_at: r.finished_at } : {})
 				};
@@ -945,12 +954,16 @@ class ReadingSync {
 		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
 		for (const p of state.progress) {
 			const key = workSlugKey(p.kind ?? 'book', p.book_slug);
-			// The by-words percent is device-local (the account keeps none): keep
-			// it while the server's place is still the chapter it describes.
+			// The by-words percent: the account's, measured by whichever device
+			// wrote this position — else this device's own while it still names
+			// the same chapter (an API from before the account kept it).
 			const pct =
-				localProgress[key]?.order === p.chapter_order ? localProgress[key].pct : undefined;
+				p.pct ??
+				(localProgress[key]?.order === p.chapter_order ? localProgress[key].pct : undefined);
 			progress[key] = {
 				...(pct != null ? { pct } : {}),
+				// 0 / absent = the account doesn't know it: leave it to `order`.
+				...(p.furthest_order ? { furthest: p.furthest_order } : {}),
 				order: p.chapter_order,
 				paragraph_index: p.paragraph_index,
 				language: p.language,

@@ -5,7 +5,7 @@
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgressRecord } from '$lib/progress';
-	import type { ProgressRecord } from '$lib/reading-schema';
+	import { furthestOf, resumeOrderOf, type ProgressRecord } from '$lib/reading-schema';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import {
 		bookTimeLeft,
@@ -57,7 +57,19 @@
 	$effect(() => {
 		record = getProgressRecord(book.slug);
 	});
-	const resumeOrder = $derived(record?.order ?? null);
+	const inEdition = (order: number) => book.chapters.some((c) => c.order === order);
+	const furthest = $derived(record ? furthestOf(record) : null);
+	// The other chapter worth a link beside Continue: the one last opened, when
+	// Continue took the reader back from a peek; the furthest reached, when
+	// they went back to reread.
+	const otherPlace = $derived.by(() => {
+		if (!record || furthest == null || record.finished_at != null) return null;
+		if (record.order > furthest && inEdition(record.order))
+			return { order: record.order, label: t('book.lastOpened') };
+		if (record.order < furthest && inEdition(furthest))
+			return { order: furthest, label: t('book.backToFurthest') };
+		return null;
+	});
 	// Finished (the end reached, or marked done): the card says so and offers
 	// the book again from the start, not "Continue · chapter N of N".
 	const finishedAt = $derived(record?.finished_at ?? null);
@@ -68,9 +80,13 @@
 	// would otherwise sit past the end here and mark every chapter "read"; keeping
 	// it only when it names a chapter that actually exists in this edition leaves
 	// a mismatched place showing no progress rather than a false "finished".
-	const resumeHere = $derived(
-		resumeOrder != null && book.chapters.some((c) => c.order === resumeOrder) ? resumeOrder : null
-	);
+	// Where Continue goes: the chapter last opened, or — when that was a peek
+	// past the furthest chapter reached — back to the furthest (resumeOrderOf).
+	const resumeHere = $derived(record && inEdition(resumeOrderOf(record)) ? resumeOrderOf(record) : null);
+	// Chapters before the furthest reached carry a check (the furthest itself
+	// was reached, not necessarily finished) — clamped the same way, so a
+	// longer edition's furthest doesn't tick every chapter here.
+	const furthestHere = $derived(furthest != null && inEdition(furthest) ? furthest : resumeHere);
 
 	const years = $derived(
 		formatLifespan(book.author.birth_year, book.author.death_year, t('common.bornPrefix'))
@@ -80,7 +96,10 @@
 
 	// A saved place past chapter 1 in a book not yet finished: the read verb is
 	// Continue, not Begin (a finished book is read again from the start).
-	const resuming = $derived(finishedAt == null && resumeHere != null && resumeHere > 1);
+	// (Or at chapter 1 with a peek further on: that reader has a place.)
+	const resuming = $derived(
+		finishedAt == null && resumeHere != null && (resumeHere > 1 || otherPlace != null)
+	);
 	const firstOrder = $derived(book.chapters[0]?.order ?? 1);
 	const readOrder = $derived(resuming && resumeHere != null ? resumeHere : firstOrder);
 	const readLabel = $derived(
@@ -566,6 +585,11 @@
 				</div>
 				<div class="read-card-cta">
 					<a href={readHref(readOrder)} class="btn btn-primary">{readLabel}</a>
+					{#if otherPlace}
+						<a href={readHref(otherPlace.order)} class="text-small text-accent hover:underline"
+							>{otherPlace.label.replace('%n%', String(otherPlace.order))}</a
+						>
+					{/if}
 					{#if resuming}
 						<a href={readHref(firstOrder)} class="text-small text-muted underline hover:text-text"
 							>{t('book.startOver')}</a
@@ -776,15 +800,14 @@
 	{/if}
 
 	<!-- Contents. When the reader has a saved place, each chapter shows where they
-	     are in it: the chapter they're in reads in the accent colour (aria-current),
-	     and every chapter before it carries a trailing check. The saved place
-	     (resumeHere) is client-only (null at prerender and for a first-time reader),
-	     so the baked HTML and a new reader's view are exactly as before — the markers
-	     are pure progressive enhancement that appears after hydration for a returning
-	     reader. The signal is the furthest chapter opened (the same value behind
-	     "Continue Ch. N"); there is no per-chapter completion record — ProgressRecord
-	     is a single resume point — so a check means "before where you are", not a
-	     claim the chapter was finished end to end. -->
+	     are in it: Continue's chapter (resumeHere) reads in the accent colour
+	     (aria-current), and every chapter before the furthest one REACHED
+	     (furthestHere — opened in sequence or read to its end, never a peek) carries
+	     a trailing check. Both are client-only (null at prerender and for a
+	     first-time reader), so the baked HTML and a new reader's view are exactly as
+	     before — the markers are progressive enhancement that appears after
+	     hydration. There is still no per-chapter completion record, so a check means
+	     "before the furthest you got", not a claim the chapter was read end to end. -->
 	<section id="contents" class="jump-anchor mt-8">
 		<h2 class="section-heading">
 			{t('reader.contents')}
@@ -797,7 +820,7 @@
 		</h2>
 		<ol id="contents-list" class="divide-y divide-border">
 			{#each book.chapters as ch (ch.order)}
-				{@const read = finishedAt != null || (resumeHere != null && ch.order < resumeHere)}
+				{@const read = finishedAt != null || (furthestHere != null && ch.order < furthestHere)}
 				{@const current = finishedAt == null && ch.order === resumeHere}
 				{@const numCls = current ? 'text-accent' : 'text-muted'}
 				{@const titleCls = current ? 'text-accent font-medium' : 'text-text'}

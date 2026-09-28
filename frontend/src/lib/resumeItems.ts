@@ -1,6 +1,6 @@
 import { allProgress } from './progress';
 import { chapterPath } from './editionHref';
-import { workSlugKey } from './reading-schema';
+import { resumeOrderOf, workSlugKey } from './reading-schema';
 import { workPercent } from './reading';
 import type { CoverBook, SermonSummary } from './library-public';
 
@@ -88,12 +88,12 @@ export function buildResumeItems(
 				kind: 'book',
 				slug: p.slug,
 				key: workSlugKey(p.kind, p.slug),
-				href: chapterPath(book.slug, p.order, book.has_modern_edition),
+				href: chapterPath(book.slug, resumeOrderOf(p), book.has_modern_edition),
 				title: book.title,
 				author: book.author.name,
 				book,
 				pct: workPercent(p, book.chapter_count),
-				order: p.order,
+				order: resumeOrderOf(p),
 				chapterCount: book.chapter_count,
 				finished: p.finished_at != null
 			};

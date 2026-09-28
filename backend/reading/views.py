@@ -360,6 +360,20 @@ def _removed_at(value) -> datetime:
     return _ms_to_dt(value) or datetime.now(UTC)
 
 
+def _progress_extras(data: dict) -> dict:
+    """The optional progress fields a newer client sends — `furthest_order`
+    and `pct` — validated; absent (an older client) stays None, which the
+    upsert reads as "not reported"."""
+    out = {}
+    if data.get("furthest_order") is not None:
+        out["furthest_order"] = clamp_int(
+            data.get("furthest_order"), default=0, low=0, high=MAX_CHAPTER_ORDER
+        )
+    if data.get("pct") is not None:
+        out["pct"] = clamp_int(data.get("pct"), default=0, low=0, high=100)
+    return out
+
+
 def _upsert_progress(
     profile,
     kind,
@@ -372,6 +386,8 @@ def _upsert_progress(
     keep_server_when_unknown,
     finished_at=None,
     clear_finished=False,
+    furthest_order=None,
+    pct=None,
 ):
     """Upsert one reading-position row, keeping the server's when it is newer.
 
@@ -404,6 +420,14 @@ def _upsert_progress(
     one thing that clears it; like un-favoriting it is a live-only signal the
     merge never carries.
 
+    ``furthest_order`` (the furthest chapter reached) is resolved apart from
+    the position too, and only GROWS: the highest any device reports wins, and
+    a write that omits it (an older client) leaves it alone. A peek ahead is
+    not "reaching", so a stale device still holding a later ``chapter_order``
+    can't advance it — only what the device itself calls furthest can. ``pct``
+    (percent through the work) describes the position, so it is kept or
+    replaced with it.
+
     A position the reader REMOVED from their shelf (a ``Removal`` tombstone) is
     only re-created by a write newer than the removal — they read it again.
     Anything older is a stale device re-uploading what it still holds: it is
@@ -428,6 +452,10 @@ def _upsert_progress(
     else:
         resolved_finished = server_finished or finished_at
 
+    # The furthest chapter reached: the higher of the two, never lowered.
+    server_furthest = existing.furthest_order if existing else 0
+    resolved_furthest = max(server_furthest, furthest_order or 0)
+
     # Is the incoming POSITION stale (the stored one is at least as new)? Either
     # the stored client-clock is at or ahead of the incoming one, or the incoming
     # carries no clock and the caller keeps the server's in that case (the merge).
@@ -443,9 +471,21 @@ def _upsert_progress(
         # finishing/un-finishing is resolved apart from the position for exactly
         # this case (a stale position must not rewind, yet the finish must land).
         # `position_stale` is only ever set inside `if existing:`, so it's here.
+        # The furthest chapter unions the same way.
+        changed = []
         if resolved_finished != server_finished:
             existing.finished_at = resolved_finished
-            existing.save(update_fields=["finished_at"])
+            changed.append("finished_at")
+        if resolved_furthest != server_furthest:
+            existing.furthest_order = resolved_furthest
+            changed.append("furthest_order")
+        # The SAME position (same client clock), now measured: its percent is
+        # news, not staleness.
+        if pct is not None and client_dt is not None and existing.client_updated_at == client_dt and pct != existing.pct:
+            existing.pct = pct
+            changed.append("pct")
+        if changed:
+            existing.save(update_fields=changed)
         return existing
 
     obj, _ = ReadingProgress.objects.update_or_create(
@@ -458,6 +498,8 @@ def _upsert_progress(
             "paragraph_index": paragraph_index,
             "client_updated_at": client_dt,
             "finished_at": resolved_finished,
+            "furthest_order": resolved_furthest,
+            "pct": pct,
         },
     )
     return obj
@@ -574,6 +616,7 @@ class ProgressView(APIView):
             # it. A plain position save carries neither and leaves it untouched.
             finished_at=_ms_to_dt(data.get("finished_at")),
             clear_finished=bool(data.get("unfinish")),
+            **_progress_extras(data),
         )
         if obj is None:
             # Removed from the shelf after this position was taken: a stale
@@ -1533,6 +1576,7 @@ class MergeView(APIView):
                 # CLEARS — un-finish is a live-only signal, like un-favoriting.
                 finished_at=_ms_to_dt(row.get("finished_at")),
                 clear_finished=False,
+                **_progress_extras(row),
             )
 
     def _merge_bookmarks(self, profile, incoming):

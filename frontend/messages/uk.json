@@ -449,6 +449,8 @@
   "bios_show_more": "Показати ще %n%",
   "bios_read_more": "Читати повний життєпис",
   "book_start_over": "Почати спочатку",
+  "book_last_opened": "Востаннє відкрито: розділ %n%",
+  "book_back_to_furthest": "Повернутися до розділу %n%, куди ви дочитали",
   "book_begin_reading": "Почати читати",
   "book_continue_ch": "Продовжити · розд.",
   "book_download_pdf": "Завантажити PDF",

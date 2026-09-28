@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resumeOrderOf } from '$lib/reading-schema';
 	import { chapterPath } from '$lib/editionHref';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import FloatingBookmark from '$lib/components/FloatingBookmark.svelte';
@@ -288,9 +289,9 @@
 		const rec = allProgress().find(
 			// Past chapter 1, as the book page's "Continue" rule: a glance at the
 			// opening chapter shouldn't replace the "Start with" suggestion.
-			(r) => r.kind === 'book' && r.order > 1 && bySlug.has(r.slug) && !isFinished(r.slug)
+			(r) => r.kind === 'book' && resumeOrderOf(r) > 1 && bySlug.has(r.slug) && !isFinished(r.slug)
 		);
-		resumeBook = rec ? { book: bySlug.get(rec.slug)!, order: rec.order } : null;
+		resumeBook = rec ? { book: bySlug.get(rec.slug)!, order: resumeOrderOf(rec) } : null;
 	});
 	const cardBook = $derived(resumeBook?.book ?? startWork);
 

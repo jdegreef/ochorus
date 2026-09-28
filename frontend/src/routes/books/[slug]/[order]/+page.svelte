@@ -16,6 +16,7 @@
 		getScrollAnchor,
 		saveScrollAnchor,
 		saveProgressPercent,
+		markReached,
 		getProgressRecord,
 		offerFinish
 	} from '$lib/progress';
@@ -350,6 +351,9 @@
 		// you; genuine reading reaches the end well after it.
 		if (performance.now() - chapterOpenedAt < 1500) return;
 		chapterCelebrated = true;
+		// Read to its end, the chapter counts as reached — even one the reader
+		// jumped ahead to (see ProgressRecord.furthest).
+		markReached(slug, chapter.order);
 		// Reaching the end of the LAST chapter finishes the book — it drops out of
 		// "Continue reading" and onto the finished shelf, with a quiet Undo (auto-
 		// detection can misfire on a reader who skimmed to the end). `!chapter.next`
@@ -1356,6 +1360,9 @@
 	function completePlanDay() {
 		if (!plan || !planDay) return;
 		planProgress.markDone(plan.slug, planDay);
+		// A plan reads its chapters out of order, so opening a day's chapter is a
+		// jump ahead; finishing the day is what says the chapter was read.
+		markReached(slug, chapter.order);
 		const next = planProgress.nextDay(plan.slug, plan.day_count);
 		const nextEntry = next && plan.days.find((d) => d.day === next);
 		if (nextEntry) {
