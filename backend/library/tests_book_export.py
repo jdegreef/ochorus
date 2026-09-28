@@ -193,6 +193,19 @@ class EpubTests(TestCase):
         self.assertIn('<span class="pg"></span>', book_export.render_print_html(ed))
 
 
+class PrintFontTests(TestCase):
+    def test_the_print_page_embeds_static_fonts_that_exist(self):
+        # A variable web font makes Chrome draw every glyph as a Type 3
+        # picture — twice the PDF. The page must use the bundled static files.
+        import re
+
+        css = book_export._print_fonts_css()
+        files = re.findall(r"url\(fonts/([^)]+)\)", css)
+        self.assertTrue(files)
+        for name in files:
+            self.assertTrue((book_export.PRINT_FONTS / name).is_file(), f"{name} is missing")
+
+
 class PilotTests(TestCase):
     def test_every_pilot_language_has_back_matter(self):
         keys = set(book_export.STRINGS["en"])

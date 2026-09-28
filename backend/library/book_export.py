@@ -617,7 +617,7 @@ body { margin: 0; }
 .contents ol { list-style: none; padding: 0; margin: 0; }
 .contents li { margin: 0 0 2.2mm; }
 .contents a { color: inherit; text-decoration: none; display: flex; align-items: baseline; gap: 2mm; }
-.contents .leader { flex: 1; border-bottom: 0.5pt dotted #999; transform: translateY(-1mm); }
+.contents .leader { flex: 1; border-bottom: 0.4pt solid #bbb; transform: translateY(-1mm); }
 .contents .pg { font-variant-numeric: tabular-nums; min-width: 7mm; text-align: end; }
 section.part { break-before: page; }
 h1.part-title { font-size: 17pt; font-weight: 600; text-align: center; margin: 22mm 0 10mm; line-height: 1.2; }
@@ -632,10 +632,17 @@ blockquote p { text-indent: 0; }
 .notice { font-weight: 600; }
 """.strip()
 
-_FONT_LINK = (
-    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
-    'family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap"/>'
-)
+#: EB Garamond as STATIC files (OFL; @fontsource/eb-garamond 5.3.0), one per
+#: style and script subset. Google Fonts serves a variable font, which Chrome
+#: can't embed as a font: it drew every glyph as a Type 3 picture, and that
+#: made a PDF twice the size. The caller copies this folder next to the page
+#: as ``fonts/`` (``export_book._write_print_html``).
+PRINT_FONTS = Path(__file__).resolve().parent / "print_fonts"
+
+
+@lru_cache(maxsize=1)
+def _print_fonts_css() -> str:
+    return (PRINT_FONTS / "fonts.css").read_text(encoding="utf-8")
 
 
 def render_print_html(
@@ -680,6 +687,6 @@ def render_print_html(
     dir_attr = ' dir="rtl"' if ed.rtl else ""
     return (
         f'<!doctype html><html lang="{ed.lang}"{dir_attr}><head><meta charset="utf-8"/>'
-        f"<title>{_e(b.title)} — {_e(ed.author)}</title>{_FONT_LINK}"
-        f"<style>{PRINT_CSS}</style></head><body>{''.join(parts)}</body></html>"
+        f"<title>{_e(b.title)} — {_e(ed.author)}</title>"
+        f"<style>{_print_fonts_css()}{PRINT_CSS}</style></head><body>{''.join(parts)}</body></html>"
     )
