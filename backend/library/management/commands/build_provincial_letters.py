@@ -27,13 +27,14 @@ GENERATES that fixture reproducibly; it is idempotent.
 
 from __future__ import annotations
 
+import json
 import re
+from pathlib import Path
 
 import requests
-from bs4 import BeautifulSoup, NavigableString, Tag
+from bs4 import BeautifulSoup, Tag
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
-from django.db.models import Max
 
 from library import covers, english_audit
 from library.corrections import settled_chapter_body
@@ -159,18 +160,28 @@ def _inline(node: Tag) -> str:
 
 def _blocks(fragment: str, where: str) -> list[str]:
     soup = BeautifulSoup(fragment, "html.parser")
+    for span in soup.select("span.pageno"):  # also set BETWEEN blocks
+        span.decompose()
     out: list[str] = []
-    for el in soup.find_all(["p", "div"]):
-        if not isinstance(el, Tag) or el.find_parent(["p"]):
+    # Every element whose text is accounted for — emitted or dropped on purpose.
+    # Any other text fails the build, so a re-flowed source cannot lose prose
+    # silently.
+    handled: set[int] = set()
+    for el in soup.find_all(["p", "div", "hr"]):
+        if el.find_parent(["p"]):
             continue
         classes = set(el.get("class") or [])
-        if el.name == "p":
-            if classes & ARGUMENT_CLASSES:
-                continue
-            out.append(f"<p>{_inline(el)}</p>")
+        if el.name == "hr":  # the rule before a postscript
+            out.append("<hr>")
+        elif el.name == "p":
+            handled.add(id(el))
+            if not classes & ARGUMENT_CLASSES:
+                out.append(f"<p>{_inline(el)}</p>")
         elif "c015" in classes:  # dateline
+            handled.add(id(el))
             out.append(f"<p>{_inline(el)}</p>")
         elif "nf-center" in classes:
+            handled.add(id(el))
             text = _norm(re.sub(r"\[\d+\]", "", el.get_text(" ")))
             if not text or classes & ARGUMENT_CLASSES:
                 continue
@@ -181,11 +192,12 @@ def _blocks(fragment: str, where: str) -> list[str]:
             else:
                 raise CommandError(f"{where}: unexpected centred block {text!r}.")
         elif "lg-container-b" in classes:  # Le Moine's verses, one line per row
+            handled.add(id(el))
             lines = [_inline(line) for line in el.select("div.line")]
             out.append("<blockquote><p>" + "<br>".join(lines) + "</p></blockquote>")
-    for leftover in soup.find_all(string=True):
-        if isinstance(leftover, NavigableString) and leftover.parent is soup and leftover.strip():
-            raise CommandError(f"{where}: loose text {leftover.strip()[:40]!r}.")
+    for text in soup.find_all(string=True):
+        if text.strip() and not any(id(up) in handled for up in text.parents):
+            raise CommandError(f"{where}: unhandled text {text.strip()[:40]!r}.")
     if not out:
         raise CommandError(f"{where}: no text.")
     return out
@@ -211,6 +223,21 @@ def _chapters() -> list[tuple[str, str]]:
     return [(title, "".join(body)) for title, body in zip(TITLES, letters, strict=True)]
 
 
+def _next_sort_order() -> int:
+    """One past the highest ``sort_order`` among the OTHER committed books.
+
+    Read from the fixtures, not the dev DB: a fresh worktree's DB may hold
+    nothing but this book, and max+1 over it ships ``sort_order`` 1.
+    """
+    books = Path(__file__).resolve().parents[2] / "fixtures" / "content" / "books"
+    orders = [
+        json.loads(f.read_text())[0]["fields"].get("sort_order") or 0
+        for f in books.glob("*.json")
+        if not f.name.startswith(f"{SLUG}.")
+    ]
+    return max(orders, default=0) + 1
+
+
 class Command(BaseCommand):
     help = "Build Pascal's Provincial Letters (M'Crie) in the dev DB; then serialize the fixture."
 
@@ -232,7 +259,7 @@ class Command(BaseCommand):
             "cover_color": COVER_COLOR,
             "source_url": f"https://www.gutenberg.org/ebooks/{GUTENBERG_ID}",
         }
-        next_order = (Book.objects.aggregate(m=Max("sort_order"))["m"] or 0) + 1
+        next_order = _next_sort_order()
         book, created = Book.objects.update_or_create(
             slug=SLUG,
             language="en",
