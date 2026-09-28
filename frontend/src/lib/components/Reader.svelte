@@ -33,10 +33,7 @@
 	 * prose. Everything attached to the TEXT — marks, notes, the selection bar,
 	 * listen follow-along, search hits — lives in `$lib/readerText.svelte.ts`, and
 	 * the floating chrome in `ReaderOverlays.svelte`. That split is what lets the
-	 * chapter reader share this machinery at all: its page-turn mode transforms
-	 * the element the prose sits in, and a `position: fixed` overlay inside a
-	 * transformed ancestor is laid out against that ancestor, so the overlays have
-	 * to be rendered somewhere the prose is not.
+	 * chapter reader share this machinery, with its own layout around the prose.
 	 */
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';

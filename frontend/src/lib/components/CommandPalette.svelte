@@ -6,6 +6,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { focusTrap } from '$lib/actions/focusTrap';
+	import { portal } from '$lib/actions/portal';
 	import { goto } from '$app/navigation';
 	import { paletteUi } from '$lib/paletteUi.svelte';
 
@@ -214,7 +215,8 @@
 	<!-- Backdrop. Click closes; keyboard dismissal is the global Escape handler. -->
 	<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
 	<div
-		class="fixed inset-0 z-50 flex items-start justify-center bg-black/40 px-4 pt-[12vh]"
+		class="palette-overlay fixed inset-0 z-50 flex items-start justify-center bg-black/40 px-4 pt-[12vh]"
+		use:portal
 		role="presentation"
 		onclick={close}
 	>

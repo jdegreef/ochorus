@@ -3,6 +3,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import { listen, RATES } from '$lib/listen.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { portal } from '$lib/actions/portal';
 
 	let barEl = $state<HTMLElement>();
 
@@ -41,7 +42,7 @@
 </script>
 
 {#if listen.status !== 'idle'}
-	<div class="reader-dock listen-bar" role="region" aria-label={t('reader.listen')} bind:this={barEl}>
+	<div class="reader-dock listen-bar" role="region" aria-label={t('reader.listen')} bind:this={barEl} use:portal>
 		<div class="mx-auto flex max-w-3xl items-center gap-2 px-4 py-2.5">
 			<button
 				class="btn btn-sm btn-primary rounded-full"

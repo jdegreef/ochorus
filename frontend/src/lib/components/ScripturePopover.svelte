@@ -2,6 +2,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
+	import { portal } from '$lib/actions/portal';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -21,6 +22,7 @@
 	<div
 		bind:this={card}
 		class="scripture-pop"
+		use:portal
 		style="top: {scripture.top}px; left: {scripture.left}px"
 		role="dialog"
 		aria-label="{t('reader.scripture')}: {scripture.result?.reference ?? scripture.ref}"

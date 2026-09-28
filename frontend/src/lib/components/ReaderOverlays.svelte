@@ -3,13 +3,9 @@
 	and dictionary popovers, the listen bar, the note editor, and the Notebook
 	dialog a passage can be written about or prayed from.
 
-	They are a component of their own — rather than markup inside `Reader` —
-	because they must be rendered OUTSIDE the element holding the prose. The
-	chapter reader's page-turn mode puts a `translateX` on the container the prose
-	sits in, and a `position: fixed` overlay inside a transformed ancestor is laid
-	out against that ancestor rather than the viewport: every one of these would
-	slide sideways with the page turn. Keeping them separate lets a surface place
-	the prose where its layout needs it and these where the viewport is.
+	Each one portals itself to <body> (`$lib/actions/portal`), so a surface may
+	render this anywhere — even inside the page-turn pager's `translateX` — and
+	none of them is laid out against a transformed ancestor.
 -->
 <script lang="ts">
 	import DefinePopover from '$lib/components/DefinePopover.svelte';
@@ -22,6 +18,7 @@
 	import { baseEdition } from '$lib/reading-schema';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { portal } from '$lib/actions/portal';
 	import { listen } from '$lib/listen.svelte';
 	import { localizeHref } from '$lib/href';
 	import type { EntrySource, JournalKind } from '$lib/journal';
@@ -129,7 +126,7 @@
 	<!-- The listener tapped Listen but no voice the reader would speak with
 	     resolves for this edition, so playback would be silent — say so instead
 	     of failing quietly. -->
-	<div class="reader-dock listen-notice" role="status">
+	<div class="reader-dock listen-notice" role="status" use:portal>
 		<span class="min-w-0 text-small">{t('reader.listenNoVoice')}</span>
 		<button
 			class="btn btn-icon btn-ghost shrink-0"
@@ -153,7 +150,7 @@
 {#if saved}
 	<!-- At the top, not in the bottom dock: the listen bar and its notices live
 	     there, and this must not cover them. -->
-	<div class="saved-notice" role="status">
+	<div class="saved-notice" role="status" use:portal>
 		<span class="min-w-0 text-small">✓ {t('reader.savedToNotebook')}</span>
 		<a class="btn btn-sm btn-ghost shrink-0" href={localizeHref('/notebook')}>{t('reader.openNotebook')}</a>
 	</div>

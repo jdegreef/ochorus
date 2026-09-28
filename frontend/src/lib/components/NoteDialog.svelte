@@ -10,6 +10,7 @@
 	 */
 	import { i18n } from '$lib/i18n.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
+	import { portal } from '$lib/actions/portal';
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 
 	interface Props {
@@ -38,6 +39,7 @@
 
 <div
 	class="note-overlay"
+	use:portal
 	role="dialog"
 	aria-modal="true"
 	aria-label={t('reader.note')}

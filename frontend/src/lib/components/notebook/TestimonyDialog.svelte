@@ -3,6 +3,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import { focusTrap } from '$lib/actions/focusTrap';
+	import { portal } from '$lib/actions/portal';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { JournalEntry } from '$lib/journal';
 	import {
@@ -81,6 +82,7 @@
 
 <div
 	class="td-overlay"
+	use:portal
 	role="dialog"
 	aria-modal="true"
 	aria-label={t('notebook.testimonyTitle')}

@@ -2,6 +2,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import { define } from '$lib/define.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
+	import { portal } from '$lib/actions/portal';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -21,6 +22,7 @@
 	<div
 		bind:this={card}
 		class="define-pop"
+		use:portal
 		style="top: {define.top}px; left: {define.left}px"
 		role="dialog"
 		aria-label="{t('reader.definition')}: {define.word}"

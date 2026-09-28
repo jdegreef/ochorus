@@ -176,14 +176,17 @@ Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
   paged is handled by the padding above). Spacing above the chapter title cluster
   is scroll-only too — scope with `article:not(.paged)`, since page mode zeroes
   the article padding and paginates from the top.
-- **`DrawerShell` (drawers and bottom sheets) can mount anywhere.** It
-  portals its scrim + panel to `<body>`, because `.page-col`'s
+- **Fixed overlays portal to `<body>`, so they can mount anywhere.**
+  `DrawerShell` (drawers, bottom sheets), `ReaderOverlays`' children (selection
+  bar, scripture/define popovers, listen bar, note/journal/feedback dialogs),
+  `CommandPalette`, `TestimonyDialog` and `UnsyncedSignOutDialog` all portal,
+  because `.page-col`'s
   `transform: translateX(-50%)` and the reader bars' `backdrop-filter` each
   become the containing block for `position: fixed` AND a stacking context —
   a sheet inside one was pinned to the column (running off-screen) under the
-  z-40 tab bar. Any OTHER hand-rolled fixed overlay still has that trap: keep
-  it out of such ancestors, or wrap it in ONE element with
-  `use:portal` (`$lib/actions/portal` — it must be the block's sole root).
+  z-40 tab bar. A NEW hand-rolled fixed overlay has that trap too: put
+  `use:portal` (`$lib/actions/portal`) on ONE element that is its block's sole
+  root (or a component's only root), and add it to `overlayPortal.test.ts`.
 - **Phone reader chrome (below `sm`) is its own layout.** Top: Back · book/
   chapter · Contents · "⋯"; footer `.foot-actions`: Previous · Listen · Aa ·
   Next (folds with `hideChrome`). Traps: (1) the text-settings **sheet**

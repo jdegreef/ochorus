@@ -1,15 +1,11 @@
 /**
  * Everything attached to a body of read prose, minus where you are in it.
  *
- * `Reader.svelte` already owns this for sermons and biographies. The chapter
- * reader could not use it, for a reason that is structural rather than
- * historical: in page-turn mode the prose lives inside `.pager`, which carries a
- * `translateX`, and a `position: fixed` overlay inside a transformed ancestor is
- * positioned against that ancestor instead of the viewport. Dropping `Reader`
- * into the pager would have slid the selection bar, the popovers and the listen
- * bar sideways with every page turn. So the machinery moves here, where a
- * surface can hold it while rendering the prose in one place and the overlays in
- * another.
+ * `Reader.svelte` already owns this for sermons and biographies; the chapter
+ * reader shares it without `Reader`, because in page-turn mode its prose lives
+ * inside `.pager` under a layout of its own. So the machinery lives here, and
+ * a surface renders the prose where its layout needs it and `ReaderOverlays`
+ * beside it (each overlay portals itself to <body>, so where doesn't matter).
  *
  * What it deliberately does NOT own is POSITION — the resume anchor, the
  * fraction read, the scroll restore. Those are meaningful only against a layout,
