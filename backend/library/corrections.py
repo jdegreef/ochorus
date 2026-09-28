@@ -3691,6 +3691,16 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("Lord G OD", "Lord GOD"),
             # Lost-space word fusion (english_audit `word-fusion`).
             ("in our socalled temporal life", "in our so-called temporal life"),
+            # Citation slips in the modernised edition, found while translating
+            # the book to French: the words quoted are Habakkuk 3:18, Mark 9:23
+            # and James 1:5-6; the chariot "translation" is Elijah's, not
+            # Elisha's (2 Kings 2:11).
+            ("salvation.\u201d(Habakkuk 3:10)", "salvation.\u201d(Habakkuk 3:18)"),
+            ("All things are possible to God. Mark 11:23", "All things are possible to God. Mark 9:23"),
+            ("Also, James 1:56:", "Also, James 1:5-6:"),
+            ("conformity to the world, and we have (Romans 12:20)", "conformity to the world, and we have (Romans 12:2)"),
+            ("happened to Elisha. We shall have a translation. Not into the heavens above us, as Elisha did,",
+             "happened to Elijah. We shall have a translation. Not into the heavens above us, as Elijah did,"),
         ],
     },
     "men-of-prayer-2": {
