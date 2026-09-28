@@ -764,7 +764,7 @@ relevant group.
   #4208 — `npm run og:home`; verse pages draw their own at postbuild, #4255 —
   `build-verse-cards.mjs`; author pages per locale, #4262 —
   `build-author-cards.mjs`; quote author/theme/topic pages, #4294 —
-  `build-quote-cards.mjs`; plan pages per locale, #PLANS —
+  `build-quote-cards.mjs`; plan pages per locale, #4456 —
   `build-plan-cards.mjs`); the reader emits no BreadcrumbList.
   _Drawing a new card family: satori needs static TTFs (instance the variable
   woff2 with fontTools `varLib.instancer`; Fraunces/Hanken already vendored in
