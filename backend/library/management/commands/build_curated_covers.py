@@ -257,7 +257,8 @@ def _aic_image_url(art: Artwork) -> str:
     A source narrower than 1686 is asked for at its own width instead: the
     server refuses a width it would have to upscale to (403), and ``full/full``
     is blocked outright. Doré's *Alpine Scene* (1504 wide) is the case that
-    found it. The catalogue's ``thumbnail.width`` is the original's width.
+    found it. The catalogue's ``thumbnail.width`` is the original's width. One
+    narrower than the cover itself is refused rather than silently upscaled.
     """
     obj = _json(
         f"https://api.artic.edu/api/v1/artworks/{art.object_id}"
@@ -273,6 +274,11 @@ def _aic_image_url(art: Artwork) -> str:
     if not image_id:
         raise CommandError(f"AIC object {art.object_id} has no image.")
     width = min(1686, (obj.get("thumbnail") or {}).get("width") or 1686)
+    if width < W:
+        raise CommandError(
+            f"AIC object {art.object_id} is only {width}px wide — too small for a "
+            f"{W}px cover; pick another painting."
+        )
     return f"https://www.artic.edu/iiif/2/{image_id}/full/{width},/0/default.jpg"
 
 
