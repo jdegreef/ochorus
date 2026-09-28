@@ -153,7 +153,7 @@ const SCALE_MAX = 1.6;
 // Viewport width (px) at/above which the page-turn layout is the first-run
 // default — wide enough for a comfortable two-column spread. Matches the
 // reader's own two-column threshold.
-const WIDE_SCREEN_MIN = 1024;
+export const WIDE_SCREEN_MIN = 1024;
 
 export const READER_PREFS_KEY = 'ochorus:reader-prefs';
 const KEY = READER_PREFS_KEY;

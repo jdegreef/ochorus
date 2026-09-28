@@ -314,6 +314,8 @@
 			const chapters = bookForProgress?.chapters;
 			if (chapters && !chapters.some((c) => c.order === offer.order)) return;
 			syncOffer = { ...offer, p: remote?.language === ask.language ? offer.p : 0 };
+			// It says more than the resume note; don't let that come back after it.
+			dismissResumed();
 			clearTimeout(syncTimer);
 			syncTimer = setTimeout(dismissSyncOffer, 15000);
 		});
@@ -1056,10 +1058,11 @@
 					target = pageOf(body.children[jumpP] as HTMLElement);
 				} else {
 					const idx = savedParagraph(s, order);
-					if (idx !== null) {
-						target = pageOf(body!.children[idx] as HTMLElement);
-						noteResumed();
-					}
+					if (idx !== null) target = pageOf(body!.children[idx] as HTMLElement);
+					// Only a page past the first is news — and only then can "Start
+					// from the top" not be a turn onto the LAST page (a one-page
+					// chapter), which would mark the chapter read.
+					if (target > 0 && !rollInto) noteResumed();
 				}
 				goToPage(target, false);
 			} else if (Number.isFinite(jumpP) && body?.children[jumpP]) {
@@ -1072,7 +1075,8 @@
 			} else {
 				const idx = savedParagraph(s, order);
 				restoreScroll(idx);
-				if (idx !== null) noteResumed();
+				// Not when read-aloud rolled in: it plays from the top regardless.
+				if (idx !== null && !rollInto) noteResumed();
 			}
 			if (!paged) updateFraction();
 			// Rolled over from the previous chapter's read-aloud: pick playback up

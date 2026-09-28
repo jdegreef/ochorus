@@ -50,7 +50,7 @@ export const cspDirectives = {
 		// The chapter reader's early-resume script (src/lib/earlyResume.ts): puts
 		// a returning reader at their paragraph before first paint. Fixed text,
 		// pinned the same way and guarded by csp.test.ts.
-		'sha256-yYsrLHPqbZY4ggNtj0eT+wgPnZyjFpCfYQKO9xc0QCE=',
+		'sha256-zFQZ4uNLe3THd5EA+9J0B3zRXXrDAV2mYjHJ8HJ53Is=',
 		// SvelteKit injects onload/onerror="this.__e=event" inline event handlers
 		// to replay pre-hydration load/error events. CSP hashes don't cover
 		// event-handler ATTRIBUTES — 'unsafe-hashes' does — and this admits exactly
