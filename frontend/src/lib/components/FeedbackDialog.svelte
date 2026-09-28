@@ -9,8 +9,7 @@
 	 * chapter" without asking. Signed-in only — the parent gates on `auth.user`.
 	 */
 	import { i18n } from '$lib/i18n.svelte';
-	import { focusTrap } from '$lib/actions/focusTrap';
-	import { portal } from '$lib/actions/portal';
+	import ModalShell from '$lib/components/ModalShell.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { feedbackContext } from '$lib/feedbackContext';
 	import { submitFeedback, type FeedbackCategory, type FeedbackSource } from '$lib/library-public';
@@ -97,106 +96,78 @@
 	}
 </script>
 
-<div
-	class="fb-overlay"
-	use:portal
-	role="dialog"
-	aria-modal="true"
-	aria-label={t('feedback.title')}
-	use:focusTrap={{ onEscape: onClose }}
->
-	<div class="fb-card">
-		{#if sent}
-			<h2 class="mb-2 text-h3">{t('feedback.thanksTitle')}</h2>
-			<p class="mb-4 text-body text-muted">{t('feedback.thanksBody')}</p>
-			<div class="flex">
-				<button class="btn btn-primary ms-auto" onclick={onClose}>{t('a11y.close')}</button>
-			</div>
-		{:else}
-			<form onsubmit={submit}>
-				<h2 class="mb-1 text-h3">{selection ? t('feedback.editTitle') : t('feedback.title')}</h2>
-				<p class="mb-4 text-small text-muted">
-					{selection ? t('feedback.editIntro') : t('feedback.intro')}
-				</p>
+<ModalShell {onClose} ariaLabel={selection ? t('feedback.editTitle') : t('feedback.title')}>
+	{#if sent}
+		<h2 class="mb-2 text-h3">{t('feedback.thanksTitle')}</h2>
+		<p class="mb-4 text-body text-muted">{t('feedback.thanksBody')}</p>
+		<div class="flex">
+			<button class="btn btn-primary ms-auto" onclick={onClose}>{t('a11y.close')}</button>
+		</div>
+	{:else}
+		<form onsubmit={submit}>
+			<h2 class="mb-1 text-h3">{selection ? t('feedback.editTitle') : t('feedback.title')}</h2>
+			<p class="mb-4 text-small text-muted">
+				{selection ? t('feedback.editIntro') : t('feedback.intro')}
+			</p>
 
-				{#if selection}
-					<blockquote class="fb-quote">{selection.text}</blockquote>
-				{/if}
+			{#if selection}
+				<blockquote class="fb-quote">{selection.text}</blockquote>
+			{/if}
 
-				<label class="mb-3 block">
-					<span class="mb-1 block text-small text-muted">{t('feedback.type')}</span>
-					<select class="field w-full" bind:value={category}>
-						{#each CATEGORIES as c (c.value)}
-							<option value={c.value}>{t(c.label)}</option>
-						{/each}
-					</select>
+			<label class="mb-3 block">
+				<span class="mb-1 block text-small text-muted">{t('feedback.type')}</span>
+				<select class="field w-full" bind:value={category}>
+					{#each CATEGORIES as c (c.value)}
+						<option value={c.value}>{t(c.label)}</option>
+					{/each}
+				</select>
+			</label>
+
+			<textarea
+				bind:value={body}
+				rows={selection ? 3 : 5}
+				class="field w-full"
+				aria-label={t('feedback.title')}
+				placeholder={t('feedback.placeholder')}
+			></textarea>
+
+			{#if selection}
+				<label class="mt-3 block">
+					<span class="mb-1 block text-small text-muted">{t('feedback.suggestedLabel')}</span>
+					<textarea
+						bind:value={suggested}
+						rows="2"
+						class="field w-full"
+						placeholder={t('feedback.suggestedPlaceholder')}
+					></textarea>
 				</label>
+			{/if}
 
-				<textarea
-					bind:value={body}
-					rows={selection ? 3 : 5}
-					class="field w-full"
-					aria-label={t('feedback.title')}
-					placeholder={t('feedback.placeholder')}
-				></textarea>
+			{#if context.content_slug}
+				<p class="mt-2 text-small text-muted">
+					{t('feedback.about')}: {context.content_slug}{context.chapter_ref
+						? ` · ${context.chapter_ref}`
+						: ''}
+				</p>
+			{/if}
 
-				{#if selection}
-					<label class="mt-3 block">
-						<span class="mb-1 block text-small text-muted">{t('feedback.suggestedLabel')}</span>
-						<textarea
-							bind:value={suggested}
-							rows="2"
-							class="field w-full"
-							placeholder={t('feedback.suggestedPlaceholder')}
-						></textarea>
-					</label>
-				{/if}
+			{#if error}
+				<p class="mt-2 text-small text-danger">{error}</p>
+			{/if}
 
-				{#if context.content_slug}
-					<p class="mt-2 text-small text-muted">
-						{t('feedback.about')}: {context.content_slug}{context.chapter_ref
-							? ` · ${context.chapter_ref}`
-							: ''}
-					</p>
-				{/if}
-
-				{#if error}
-					<p class="mt-2 text-small text-danger">{error}</p>
-				{/if}
-
-				<div class="mt-4 flex items-center gap-2">
-					<button type="button" class="btn btn-ghost ms-auto" onclick={onClose}
-						>{t('common.cancel')}</button
-					>
-					<button type="submit" class="btn btn-primary" disabled={!canSubmit}>
-						{saving ? t('feedback.sending') : t('feedback.submit')}
-					</button>
-				</div>
-			</form>
-		{/if}
-	</div>
-</div>
+			<div class="mt-4 flex items-center gap-2">
+				<button type="button" class="btn btn-ghost ms-auto" onclick={onClose}
+					>{t('common.cancel')}</button
+				>
+				<button type="submit" class="btn btn-primary" disabled={!canSubmit}>
+					{saving ? t('feedback.sending') : t('feedback.submit')}
+				</button>
+			</div>
+		</form>
+	{/if}
+</ModalShell>
 
 <style>
-	.fb-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 50;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
-		background: rgb(0 0 0 / 0.4);
-	}
-	.fb-card {
-		width: 100%;
-		max-width: 32rem;
-		border-radius: var(--radius-card);
-		border: 1px solid var(--border);
-		background: var(--surface);
-		padding: 1.25rem;
-		box-shadow: var(--shadow-popover);
-	}
 	.fb-quote {
 		margin: 0 0 0.75rem;
 		max-height: 8rem;

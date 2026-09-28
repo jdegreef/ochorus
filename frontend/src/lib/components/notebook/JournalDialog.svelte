@@ -6,8 +6,7 @@
 	 * so the Notebook can quote it and link straight back to the paragraph.
 	 */
 	import { i18n } from '$lib/i18n.svelte';
-	import { focusTrap } from '$lib/actions/focusTrap';
-	import { portal } from '$lib/actions/portal';
+	import ModalShell from '$lib/components/ModalShell.svelte';
 	import type { EntrySource, JournalKind } from '$lib/journal';
 	import type { EntryDraft } from '$lib/journal.svelte';
 	import EntryComposer from './EntryComposer.svelte';
@@ -27,45 +26,19 @@
 	const t = i18n.t;
 </script>
 
-<div
-	class="jd-overlay"
-	use:portal
-	role="dialog"
-	aria-modal="true"
-	aria-label={kind === 'prayer' ? t('reader.prayThis') : t('reader.writeAbout')}
-	use:focusTrap={{ onEscape: onclose }}
+<ModalShell
+	onClose={onclose}
+	ariaLabel={kind === 'prayer' ? t('reader.prayThis') : t('reader.writeAbout')}
+	width="34rem"
 >
-	<div class="jd-card">
-		<blockquote class="jd-quote">
-			<p>“{source.quote}”</p>
-			<footer class="text-micro text-muted">{source.title}</footer>
-		</blockquote>
-		<EntryComposer editing {kind} {onsave} oncancel={onclose} />
-	</div>
-</div>
+	<blockquote class="jd-quote">
+		<p>“{source.quote}”</p>
+		<footer class="text-micro text-muted">{source.title}</footer>
+	</blockquote>
+	<EntryComposer editing {kind} {onsave} oncancel={onclose} />
+</ModalShell>
 
 <style>
-	.jd-overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 50;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
-		background: rgb(0 0 0 / 0.4);
-	}
-	.jd-card {
-		width: 100%;
-		max-width: 34rem;
-		max-height: calc(100dvh - 2rem);
-		overflow-y: auto;
-		border-radius: var(--radius-card);
-		border: 1px solid var(--border);
-		background: var(--surface);
-		padding: 1.25rem;
-		box-shadow: var(--shadow-popover);
-	}
 	.jd-quote {
 		margin-bottom: 1rem;
 		padding-inline-start: 0.9rem;
