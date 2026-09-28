@@ -1833,6 +1833,14 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("reneweth all things.4 And", "reneweth all things. And"),
             ("in need of my gooodness.5 ", "in need of my goodness. "),
             ("found it to be substance, but", "found it to be no substance, but"),
+            # Book XIII ch. XVIII: an eye-skip pasted the next clause's
+            # "lesser light: to another faith; to another the gift" into the
+            # word-of-wisdom clause. Pusey: "as it were the greater light, for
+            # those who delight in the light of perspicuous truth".
+            ("the word of wisdom, as it were the lesser light: to another faith; "
+             "to another the gift with the light of perspicuous truth",
+             "the word of wisdom, as it were the greater light, for those who "
+             "delight in the light of perspicuous truth"),
             # Two chapter numerals lost their final capital.
             ("<h3>Chapter XXi</h3>", "<h3>Chapter XXI</h3>"),
             ("<h3>Chapter Xi</h3>", "<h3>Chapter XI</h3>"),
