@@ -127,10 +127,19 @@ export type EveryBookFieldClassified = AssertEveryFieldClassified<Unclassified>;
  * exactly these (the backend's `library/cover_face.py`) so their thumbnails can
  * set a title over a wordless plate instead of showing a bare ground.
  */
-export type CoverFace = Pick<
-	CoverBook,
-	'slug' | 'language' | 'title' | 'subtitle' | 'cover_title' | 'cover_color' | 'cover_url' | 'series_position'
-> & { author: Pick<CoverBook['author'], 'slug' | 'name' | 'birth_year'> };
+export const COVER_FACE_KEYS = [
+	'slug',
+	'language',
+	'title',
+	'subtitle',
+	'cover_title',
+	'cover_color',
+	'cover_url',
+	'series_position'
+] as const;
+export type CoverFace = Pick<CoverBook, (typeof COVER_FACE_KEYS)[number]> & {
+	author: CoverBook['author'];
+};
 
 /** `obj` with only `keys` — the runtime half of a narrow type built from them. */
 export function pick<T extends object, K extends keyof T>(obj: T, keys: readonly K[]): Pick<T, K> {
@@ -1102,6 +1111,14 @@ export interface BookTile extends Partial<Omit<CoverFace, 'slug' | 'title' | 'co
  */
 export const tileFace = (t: BookTile): CoverFace | null =>
 	t.author && t.language ? (t as CoverFace) : null;
+
+/** A book as a strip tile, for the fans built in the browser from books the
+ *  page already has — the same shape the API's `_book_cover` sends. */
+export const toBookTile = (b: CoverFace): BookTile => ({
+	kind: 'book',
+	...pick(b, COVER_FACE_KEYS),
+	author: pick(b.author, COVER_AUTHOR_KEYS)
+});
 
 /**
  * A sermon in a topic's strip. It carries no cover fields because it is not

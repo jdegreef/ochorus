@@ -9,7 +9,7 @@ import {
 	groupByAudience,
 	seriesAges
 } from './series';
-import type { BookSeries, BookSummary } from './library-public';
+import { tileFace, type BookSeries, type BookSummary } from './library-public';
 
 const rooted: BookSeries = {
 	slug: 'rooted',
@@ -127,23 +127,34 @@ describe('seriesAmong', () => {
 });
 
 describe('seriesFromBooks', () => {
-	const vol = (slug: string, series: string, position: number) => ({
+	const face = (slug: string) => ({
 		slug,
+		language: 'en',
 		title: slug,
-		cover_url: `/covers/${slug}.png`,
+		subtitle: '',
+		cover_title: '',
+		cover_url: `/covers/${slug}.svg`,
 		cover_color: '#000',
+		author: { slug: 'ochorus', name: 'Ochorus', birth_year: null }
+	});
+	const vol = (slug: string, series: string, position: number) => ({
+		...face(slug),
+		series_position: position,
 		series: { slug: series, title: series.toUpperCase(), position, total: 6 }
 	});
 
 	it("builds a card per series from the shelf's volumes, in reading order", () => {
 		const cards = seriesFromBooks([
 			vol('r-2', 'rooted', 2),
-			{ slug: 'plain', title: 'Plain', cover_url: '', cover_color: '', series: null },
+			{ ...face('plain'), series: null },
 			vol('r-1', 'rooted', 1)
 		]);
 		expect(cards).toHaveLength(1);
 		expect(cards[0]).toMatchObject({ slug: 'rooted', title: 'ROOTED', book_count: 2, books: ['r-1', 'r-2'] });
 		expect(cards[0].covers.map((c) => c.slug)).toEqual(['r-1', 'r-2']);
+		// Each tile carries its face, so the fan draws the title over a plate.
+		const tile = cards[0].covers[0];
+		expect(tile.kind === 'book' && tileFace(tile)?.author.name).toBe('Ochorus');
 	});
 });
 

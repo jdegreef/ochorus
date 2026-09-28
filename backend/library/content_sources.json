@@ -34,6 +34,7 @@
     "library/opening.py",
     "library/readability.py",
     "library/serializers.py",
+    "library/cover_face.py",
     "library/export_policy.py"
   ],
   "_reader_exempt_note": [

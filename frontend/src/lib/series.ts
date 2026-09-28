@@ -4,10 +4,12 @@ import type {
 	BookSeriesLine,
 	BookSummary,
 	CoverBook,
+	CoverFace,
 	SeriesAudience,
 	SeriesFor,
 	SeriesSummary
 } from '$lib/library-public';
+import { toBookTile } from '$lib/library-public';
 import { contentLang } from '$lib/reading';
 
 /**
@@ -146,20 +148,14 @@ const SERIES_FAN = 4;
  * doesn't show.
  */
 export function seriesFromBooks(
-	books: Pick<BookSummary, 'slug' | 'title' | 'cover_url' | 'cover_color' | 'series'>[]
+	books: (CoverFace & Pick<BookSummary, 'series'>)[]
 ): SeriesSummary[] {
 	return groupBySeries(books, []).named.map((g) => ({
 		slug: g.slug,
 		title: g.title,
 		description: '',
 		book_count: g.books.length,
-		covers: g.books.slice(0, SERIES_FAN).map((b) => ({
-			kind: 'book' as const,
-			slug: b.slug,
-			title: b.title,
-			cover_url: b.cover_url,
-			cover_color: b.cover_color
-		})),
+		covers: g.books.slice(0, SERIES_FAN).map(toBookTile),
 		books: g.books.map((b) => b.slug),
 		languages: []
 	}));

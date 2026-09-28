@@ -693,7 +693,10 @@
 	{#if row.face}
 		<!-- A book's cover DRAWN, as everywhere else it appears: a plate is a
 		     wordless ground, so the bare image read as a blank block. -->
-		<div class="flex-none {row.small ? 'w-6' : 'w-12'}">
+		<!-- aria-hidden: the row's own title already names the book, and the
+		     cover's "Cover of …" label would read it twice (the old thumb was
+		     alt=""). -->
+		<div class="flex-none {row.small ? 'w-6' : 'w-12'}" aria-hidden="true">
 			<BookCover book={row.face} rounded="rounded-sm" />
 		</div>
 	{:else if row.image}

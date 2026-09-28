@@ -261,12 +261,11 @@ export function coverSrcset(url: string | null | undefined): string {
 /**
  * The cover gradient: the book's colour, falling to a darker tone of itself.
  *
- * This is the WHOLE treatment for the small decorative fans — `CoverStrip`,
- * `ShelfCard`, `ContinueReading`. They render at 2.5rem, where the plate's type
- * would be sub-pixel, and they hold a `TopicCover` (title, url, colour) rather
- * than a book, so routing them through `BookCover` would mean widening that
- * type at every call site to draw something nobody can read. Deliberate, not an
- * oversight.
+ * Now only the FALLBACK for the small fans (`CoverStrip`, `ShelfCard`): a tile
+ * carries its `CoverFace` and is drawn by `BookCover`, because with every cover
+ * a wordless ground a bare 2.5rem image read as a blank block (mobile review
+ * #3). The gradient remains for a tile with no cover file, and for one from an
+ * API that predates the face fields.
  * `0.55` is the same factor `generate_covers` bakes into the real artwork, so a
  * generated cover and this fallback sit at the same value.
  */

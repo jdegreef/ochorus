@@ -7,7 +7,7 @@ from rest_framework import serializers
 
 from .alternate_titles import alternate_titles
 from .contemporize import MODERN_LANGUAGE
-from .cover_face import cover_face
+from .cover_face import COVER_AUTHOR_FIELDS, cover_face
 from .curated_art import credit
 from .export_policy import is_exportable
 from .localization import language_from_request
@@ -847,7 +847,7 @@ class CoverAuthorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Author
-        fields = ["slug", "name", "birth_year"]
+        fields = list(COVER_AUTHOR_FIELDS)
 
 
 class CoverBookSerializer(BookListSerializer):

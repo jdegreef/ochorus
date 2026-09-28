@@ -212,6 +212,10 @@ services:
         # and it touches no frontend path, so without this entry a book would
         # keep answering to one name until an unrelated commit rebuilt it.
         - backend/library/alternate_titles.py
+        # The fields every strip tile and search thumbnail carries so its cover
+        # can set the title over a wordless ground (plan/topic/series fans are
+        # prerendered): change what it emits and the reader must rebuild.
+        - backend/library/cover_face.py
         # Computed at SERIALIZE time, not stored — so editing any of these
         # rewrites pages that are already on disk, with nothing else changing.
         # `annotate_references` wraps the Bible refs in every chapter and sermon

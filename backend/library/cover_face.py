@@ -12,19 +12,18 @@ caller's queryset already joins it.
 """
 
 
+# The author fields a cover draws; ``CoverAuthorSerializer`` uses the same list.
+COVER_AUTHOR_FIELDS = ("slug", "name", "birth_year")
+
+# Everything else a cover reads (the frontend's ``COVER_FACE_KEYS``).
+COVER_FACE_FIELDS = (
+    "slug", "language", "title", "subtitle", "cover_title",
+    "cover_url", "cover_color", "series_position",
+)
+
+
 def cover_face(book) -> dict:
     return {
-        "slug": book.slug,
-        "language": book.language,
-        "title": book.title,
-        "subtitle": book.subtitle,
-        "cover_title": book.cover_title,
-        "cover_url": book.cover_url,
-        "cover_color": book.cover_color,
-        "series_position": book.series_position,
-        "author": {
-            "slug": book.author.slug,
-            "name": book.author.name,
-            "birth_year": book.author.birth_year,
-        },
+        **{f: getattr(book, f) for f in COVER_FACE_FIELDS},
+        "author": {f: getattr(book.author, f) for f in COVER_AUTHOR_FIELDS},
     }
