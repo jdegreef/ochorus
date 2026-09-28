@@ -38,6 +38,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'bill-bright': '50% 5%', // 1980 bust photo; face at ~34% of a 0.75 plate
 	'billy-graham': '50% 0%', // 1966 press photo; face high at ~23% of a 0.80 plate
 	'billy-sunday': '50% 0%', // 1921 LoC studio bust; face at ~33% of a 0.70 plate — 0% is the highest the crop goes
+	'blaise-pascal': '50% 10%', // c. 1690 Versailles oil, cropped to a bust; face at ~35% of a 0.84 plate
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
 	'charles-finney': '50% 0%',
