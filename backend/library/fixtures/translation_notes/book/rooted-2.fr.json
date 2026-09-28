@@ -1,0 +1,1329 @@
+{
+ "kind": "book",
+ "slug": "rooted-2",
+ "language": "fr",
+ "job_issue": 3603,
+ "pull_request": 4475,
+ "references": [
+  {
+   "reference": "John 20:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 4
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 29
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 31
+  },
+  {
+   "reference": "John 1:1a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 29
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 34
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 31
+  },
+  {
+   "reference": "John 1:1b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 29
+  },
+  {
+   "reference": "John 1:1c",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 29
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 31
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 31
+  },
+  {
+   "reference": "John 1:14b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 31
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 2:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 44
+  },
+  {
+   "reference": "Luke 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 44
+  },
+  {
+   "reference": "Luke 2:7b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 44
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 52
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 57
+  },
+  {
+   "reference": "Luke 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 57
+  },
+  {
+   "reference": "Luke 2:10b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 57
+  },
+  {
+   "reference": "Luke 2:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 61
+  },
+  {
+   "reference": "Luke 2:10b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 57
+  },
+  {
+   "reference": "Matthew 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 2:2b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 77
+  },
+  {
+   "reference": "Matthew 2:10b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 74
+  },
+  {
+   "reference": "Luke 2:46",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 2:47",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 2:49",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 2:48b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 95
+  },
+  {
+   "reference": "Luke 2:49b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 102
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 102
+  },
+  {
+   "reference": "Matthew 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 3:14b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 120
+  },
+  {
+   "reference": "Matthew 3:17b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 3:17b",
+   "status": "self_rendered",
+   "block_index": 123,
+   "why": "The English re-persons the Father's words as a direct address (\"I love You. I'm pleased with You.\"); rendered as a paraphrase echoing Segond's « toute mon affection »."
+  },
+  {
+   "reference": "Matthew 4:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 130
+  },
+  {
+   "reference": "Matthew 4:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 130
+  },
+  {
+   "reference": "Matthew 4:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 130
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 130
+  },
+  {
+   "reference": "Matthew 4:3b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 130
+  },
+  {
+   "reference": "Matthew 4:4a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 130
+  },
+  {
+   "reference": "Hebrews 4:15b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 140
+  },
+  {
+   "reference": "Mark 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 145
+  },
+  {
+   "reference": "Mark 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 145
+  },
+  {
+   "reference": "Mark 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 145
+  },
+  {
+   "reference": "Mark 1:17b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 145
+  },
+  {
+   "reference": "Mark 1:17b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 145
+  },
+  {
+   "reference": "Mark 1:17b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 145
+  },
+  {
+   "reference": "John 2:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 158
+  },
+  {
+   "reference": "John 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 160
+  },
+  {
+   "reference": "John 2:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 158
+  },
+  {
+   "reference": "John 2:7a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 165
+  },
+  {
+   "reference": "John 2:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 165
+  },
+  {
+   "reference": "John 2:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 165
+  },
+  {
+   "reference": "John 2:11a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 160
+  },
+  {
+   "reference": "John 2:11b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 160
+  },
+  {
+   "reference": "John 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 173
+  },
+  {
+   "reference": "John 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 173
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 173
+  },
+  {
+   "reference": "John 3:2b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 173
+  },
+  {
+   "reference": "John 3:3b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 173
+  },
+  {
+   "reference": "John 3:4a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 178
+  },
+  {
+   "reference": "John 3:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 180
+  },
+  {
+   "reference": "John 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 186
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 186
+  },
+  {
+   "reference": "John 4:7b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 189
+  },
+  {
+   "reference": "John 4:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 190
+  },
+  {
+   "reference": "John 4:10b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 191
+  },
+  {
+   "reference": "John 4:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 186
+  },
+  {
+   "reference": "John 4:29a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 194
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 199
+  },
+  {
+   "reference": "Mark 4:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 199
+  },
+  {
+   "reference": "Mark 4:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 199
+  },
+  {
+   "reference": "Mark 4:35b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 201
+  },
+  {
+   "reference": "Mark 4:38b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 204
+  },
+  {
+   "reference": "Mark 4:39a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 199
+  },
+  {
+   "reference": "Mark 4:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 199
+  },
+  {
+   "reference": "Mark 4:41b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 199
+  },
+  {
+   "reference": "Mark 4:41b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 199
+  },
+  {
+   "reference": "John 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 214
+  },
+  {
+   "reference": "John 6:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 214
+  },
+  {
+   "reference": "John 6:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 214
+  },
+  {
+   "reference": "John 6:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 217
+  },
+  {
+   "reference": "John 6:9b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 214
+  },
+  {
+   "reference": "John 6:11b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 214
+  },
+  {
+   "reference": "Matthew 14:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 14:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 14:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 14:26b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 229
+  },
+  {
+   "reference": "Matthew 14:27b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 230
+  },
+  {
+   "reference": "Matthew 14:28b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "Matthew 14:29a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 14:30b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 14:30b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "Mark 10:51",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:52",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:52",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:47",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 246
+  },
+  {
+   "reference": "Mark 10:48a",
+   "status": "self_rendered",
+   "block_index": 247,
+   "why": "Segond narrates the rebuke indirectly (« pour le faire taire »); the crowd's words are rendered as direct speech, as in the English."
+  },
+  {
+   "reference": "Mark 10:48b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 247
+  },
+  {
+   "reference": "Mark 10:49",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 248
+  },
+  {
+   "reference": "Mark 10:51",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:51",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:52",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 259
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 259
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 259
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 259
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "John 11:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "John 11:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 275
+  },
+  {
+   "reference": "John 11:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 277
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "John 11:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 279
+  },
+  {
+   "reference": "John 11:43",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 280
+  },
+  {
+   "reference": "John 11:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:3a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:4a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:5a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:6a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:7a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 5:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 5:13a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 307
+  },
+  {
+   "reference": "Matthew 5:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 5:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 5:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 317
+  },
+  {
+   "reference": "Matthew 6:26a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 317
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 317
+  },
+  {
+   "reference": "Matthew 6:26b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 317
+  },
+  {
+   "reference": "Matthew 6:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 324
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 325
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "self_rendered",
+   "block_index": 329,
+   "why": "Re-personed first-person reminder built from Matthew 6:26, as in the English."
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 15:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 15:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 15:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 15:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 333
+  },
+  {
+   "reference": "Luke 15:2b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 333
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 15:6b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 15:7a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 340
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 346
+  },
+  {
+   "reference": "Luke 15:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 349
+  },
+  {
+   "reference": "Luke 15:13b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Luke 15:17a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 352
+  },
+  {
+   "reference": "Luke 15:17-19",
+   "status": "self_rendered",
+   "block_index": 352,
+   "why": "The English gives the son's thoughts as a loose paraphrase, not a quotation; Segond's « mercenaires » would also be opaque to 9–12 readers and the closing question hangs on « serviteur »."
+  },
+  {
+   "reference": "Luke 15:20b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 346
+  },
+  {
+   "reference": "Luke 15:24a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 355
+  },
+  {
+   "reference": "Luke 10:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 360
+  },
+  {
+   "reference": "Luke 10:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 360
+  },
+  {
+   "reference": "Leviticus 19:18b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 362
+  },
+  {
+   "reference": "Luke 10:29b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 362
+  },
+  {
+   "reference": "Luke 10:33b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 367
+  },
+  {
+   "reference": "Luke 10:35b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 367
+  },
+  {
+   "reference": "Luke 10:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 360
+  },
+  {
+   "reference": "Luke 10:37a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 360
+  },
+  {
+   "reference": "Luke 10:37b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 360
+  },
+  {
+   "reference": "Luke 19:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 374
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 376
+  },
+  {
+   "reference": "Luke 19:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 374
+  },
+  {
+   "reference": "Luke 19:7b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 383
+  },
+  {
+   "reference": "Luke 19:8b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 384
+  },
+  {
+   "reference": "Luke 19:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 385
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 376
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 376
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 391
+  },
+  {
+   "reference": "Matthew 21:9b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 391
+  },
+  {
+   "reference": "Matthew 21:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 398
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 405
+  },
+  {
+   "reference": "John 13:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 405
+  },
+  {
+   "reference": "John 13:6b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 412
+  },
+  {
+   "reference": "John 13:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 412
+  },
+  {
+   "reference": "John 13:8b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 412
+  },
+  {
+   "reference": "John 13:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 413
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 405
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 419
+  },
+  {
+   "reference": "Luke 23:34a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 424
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 419
+  },
+  {
+   "reference": "Matthew 28:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 433
+  },
+  {
+   "reference": "Matthew 28:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 433
+  },
+  {
+   "reference": "Matthew 28:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 433
+  },
+  {
+   "reference": "Matthew 28:6a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 433
+  },
+  {
+   "reference": "Matthew 28:6b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 433
+  },
+  {
+   "reference": "Matthew 28:6a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 433
+  },
+  {
+   "reference": "Matthew 28:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 448
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 448
+  },
+  {
+   "reference": "Matthew 28:18b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 451
+  },
+  {
+   "reference": "Matthew 28:19a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 448
+  },
+  {
+   "reference": "Matthew 28:19a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 448
+  },
+  {
+   "reference": "Matthew 4:19b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 453
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 448
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 448
+  },
+  {
+   "reference": "Matthew 4:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 457
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "The author's own paraphrase/summary of the Great Commission addressed to the reader (singular 'tu'), not a verse wording."
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 462
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 464
+  },
+  {
+   "reference": "Matthew 16:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 465
+  },
+  {
+   "reference": "Matthew 16:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 466
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 473
+  },
+  {
+   "reference": "John 20:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 475
+  }
+ ]
+}
