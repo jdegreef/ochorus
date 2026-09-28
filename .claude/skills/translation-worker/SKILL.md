@@ -429,6 +429,17 @@ a single body. The simplest fixture type — like a sermon, but with no author, 
   to `ai_reviewed` and persists into the fixture — `source_type` is create-only
   in the seed). The state is **admin-only**: readers see no badge (repo
   `CLAUDE.md`; an earlier version of this line said otherwise and was wrong).
+- **A `<book>-guide` article whose book already has a `<book>.<lang>.json`
+  edition must AGREE with that edition** (#3987, #4360–#4370). That means three
+  things:
+  - The book title is exact.
+  - Every chapter title the guide names is the edition's own.
+  - Every `<blockquote>` or inline quote of the author is pasted verbatim from
+    the edition's matching chapter, never re-translated.
+
+  Other books the guide names take their shipped titles (collect slug → EN → lang
+  titles from `content/books|sermons/*.<lang>.json`). Brief the translator with
+  the edition's EN/lang chapter texts side by side.
 - **No notes file for articles — yet.** `TranslationNote` kinds are
   book/sermon/bio only (`ReviewOutcome.Kind`), so `seed_translation_notes` would
   skip an `articles/` file and the coverage gate does not ask for one. Put the
