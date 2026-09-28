@@ -96,5 +96,33 @@
   "note": [
    "Single-book plan backed by the fr edition of rooted-2 (book title «Enracinés – 30 jours avec Dieu pour les jeunes – Livre 2»); card wording follows the shipped book and the fr 'rooted' series row (Enracinés). Added by the book:rooted-2 -> fr job (#3603), which makes this LAUNCH plan creatable in fr."
   ]
+ },
+ "praying-men": {
+  "title": "Des hommes de prière : à l’école de la prière avec E. M. Bounds",
+  "description": "Sept semaines dans la fournaise de l’intercession avec le grand apôtre de la prière. E. M. Bounds commence par le besoin qu’a le prédicateur lui-même de puissance, puis il dévoile le but qui rend la prière victorieuse, et la nécessité qui en fait toute l’affaire de la vie chrétienne.",
+  "note": [
+   "Job #3017. Prose-ahead: source books (power-through-prayer, purpose-in-prayer, necessity-of-prayer) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+  ]
+ },
+ "voices-of-the-early-church": {
+  "title": "Les voix de l’Église primitive",
+  "description": "Les premiers siècles chrétiens racontés par leurs propres mots. Clément de Rome écrit au nom de l’Église de Rome alors que vivait encore la génération des apôtres, Ignace d’Antioche envoie ses lettres sur la route du martyre, et Athanase d’Alexandrie expose le cœur de la foi — pourquoi Dieu lui-même s’est fait homme — dans Sur l’incarnation du Verbe. De courtes lectures quotidiennes pendant environ quatre mois.",
+  "note": [
+   "Job #3020. Prose-ahead: source books (first-epistle-of-clement, epistles-of-ignatius, on-the-incarnation) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+  ]
+ },
+ "the-puritan-heart": {
+  "title": "Le cœur puritain",
+  "description": "Huit semaines avec trois maîtres de la vie intérieure. Richard Sibbes panse le roseau froissé, John Owen livre combat au péché qui habite encore en nous, et Thomas Watson fait reposer toute la lutte sur la promesse que toutes choses concourent au bien.",
+  "note": [
+   "Job #3022. Prose-ahead: source books (the-bruised-reed, mortification-of-sin, all-things-for-good) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+  ]
+ },
+ "pursuit-of-holiness": {
+  "title": "À la poursuite de la sainteté",
+  "description": "Neuf semaines pour appartenir entièrement au Seigneur. Andrew Murray fait remonter notre sainteté à notre union avec le Saint, William Law nous appelle à une vie consacrée à Dieu à chaque heure ordinaire, et John Wesley expose simplement ce qu’est la perfection chrétienne — et ce qu’elle n’est pas.",
+  "note": [
+   "Job #3023. Prose-ahead: of the source books only holy-in-christ (Saint en Christ) has a French edition; a-serious-call and plain-account-christian-perfection do not, so seed_plans creates no fr row until they are translated."
+  ]
  }
 }
