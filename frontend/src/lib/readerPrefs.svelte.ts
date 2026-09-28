@@ -288,6 +288,14 @@ class ReaderPrefs {
 		writeJSON(KEY, s);
 	}
 
+	/** Room to make the text smaller / larger (the A− / A+ buttons). */
+	get canShrink(): boolean {
+		return this.scale > SCALE_MIN;
+	}
+	get canGrow(): boolean {
+		return this.scale < SCALE_MAX;
+	}
+
 	setScale(next: number) {
 		this.scale = Math.min(SCALE_MAX, Math.max(SCALE_MIN, Math.round(next * 20) / 20));
 		this.#save();

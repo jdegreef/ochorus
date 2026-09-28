@@ -238,6 +238,7 @@
 		{#each plan.days as d (d.day)}
 			{@const done = doneSet.has(d.day)}
 			{@const isNext = d.day === next}
+			{@const markLabel = t('plans.markDayDoneNum').replace('%n%', String(d.day))}
 			<li
 				class="flex items-center gap-4 py-4 transition-opacity hover:opacity-100"
 				class:opacity-55={done && !isNext}
@@ -246,9 +247,9 @@
 					type="button"
 					onclick={() => planProgress.toggleDone(plan.slug, d.day)}
 					aria-pressed={done}
-					aria-label={done ? t('plans.dayDone') : t('plans.markDone')}
-					title={done ? t('plans.dayDone') : t('plans.markDone')}
-					class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-small font-semibold transition-colors hover:border-accent"
+					aria-label={markLabel}
+					title={done ? t('plans.dayDoneNum').replace('%n%', String(d.day)) : markLabel}
+					class="day-toggle flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-small font-semibold transition-colors hover:border-accent"
 					class:border-accent={isNext}
 					class:text-accent={isNext && !done}
 					class:border-border={!isNext}

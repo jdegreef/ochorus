@@ -120,7 +120,10 @@
 
 	<!-- Walk the reverse index in canonical order (adjacent qualifying pages). -->
 	{#if prev || next}
-		<nav class="mt-12 flex items-stretch justify-between gap-3 border-t border-border pt-6">
+		<nav
+			class="mt-12 flex items-stretch justify-between gap-3 border-t border-border pt-6"
+			aria-label={t('reader.chapterNav')}
+		>
 			{#if prev}
 				<a href={prev.href} class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start">
 					<span class="eyebrow text-muted">{t('reader.previous')}</span>

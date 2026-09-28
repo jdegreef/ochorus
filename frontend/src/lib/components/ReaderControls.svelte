@@ -150,6 +150,7 @@
 			<button
 				class="btn btn-sm btn-ghost"
 				onclick={() => readerPrefs.bumpScale(-0.1)}
+				disabled={!readerPrefs.canShrink}
 				aria-label={t('a11y.smallerText')}>A−</button
 			>
 			<span class="w-10 text-center text-small text-muted"
@@ -158,6 +159,7 @@
 			<button
 				class="btn btn-sm btn-ghost text-body"
 				onclick={() => readerPrefs.bumpScale(0.1)}
+				disabled={!readerPrefs.canGrow}
 				aria-label={t('a11y.largerText')}>A+</button
 			>
 		</div>

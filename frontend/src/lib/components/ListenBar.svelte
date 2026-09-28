@@ -52,10 +52,10 @@
 				<Icon name={listen.status === 'playing' ? 'pause' : 'play'} size={16} />
 			</button>
 
-			<button class="btn btn-icon btn-ghost" onclick={() => listen.skip(-1)} aria-label={t('reader.previous')}>
+			<button class="btn btn-icon btn-ghost" onclick={() => listen.skip(-1)} aria-label={t('reader.prevParagraph')}>
 				<Icon name="skip-back" size={18} />
 			</button>
-			<button class="btn btn-icon btn-ghost" onclick={() => listen.skip(1)} aria-label={t('reader.next')}>
+			<button class="btn btn-icon btn-ghost" onclick={() => listen.skip(1)} aria-label={t('reader.nextParagraph')}>
 				<Icon name="skip-forward" size={18} />
 			</button>
 
