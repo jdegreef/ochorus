@@ -3175,12 +3175,12 @@
 			"bar": 0
 		},
 		"pensees": {
-			"ground": "188440ec70041ee673ca1f87bf1c71a13a3f45c2bbf05786cafefec469d2a5f8",
+			"ground": "f1ca61540b0b59478d9834f26314d78e103c39844490a2d60e9b111ffcbfb830",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.35,
 			"layout": "framed",
 			"bar": 0
 		},
