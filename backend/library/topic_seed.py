@@ -154,6 +154,7 @@ TOPICS = [
             "freedom-of-the-will",
             "a-serious-call",
             "pensees",
+            "provincial-letters",
         ],
     ),
     (

@@ -64,6 +64,7 @@ ART_SOURCES: dict[str, str] = {
     "prayer-and-praying-men": "met-436831@0.50",
     "prayer-the-pulse-of-life": "met-11113@0.50",
     "prevailing-prayer": "met-11328@0.50",
+    "provincial-letters": "aic-81568@0.70",
     "purpose-in-prayer": "met-437586@0.50",
     "reality-of-prayer": "met-438624@0.50",
     "religious-affections": "met-435907@0.50",

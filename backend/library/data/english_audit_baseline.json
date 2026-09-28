@@ -184,6 +184,9 @@
    "hyphen-space": 1,
    "space-before-punct": 4
   },
+  "provincial-letters": {
+   "word-fusion": 1
+  },
   "purity-of-heart": {
    "orphan-close-quote": 1,
    "run-together": 1
