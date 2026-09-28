@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { define } from '$lib/define.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
@@ -20,7 +21,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { hasLocalizedSermonCard } from '$lib/sermonOgLocales';
 	import { listen } from '$lib/listen.svelte';
-	import { type ScriptureResult } from '$lib/scripture.svelte';
+	import { scripture, type ScriptureResult } from '$lib/scripture.svelte';
 	import { apiFetch } from '$lib/api';
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
@@ -59,7 +60,9 @@
 	 */
 	function onKeydown(e: KeyboardEvent) {
 		if (e.key !== 'Escape' || e.metaKey || e.ctrlKey || e.altKey) return;
-		if (outlineOpen || !readerUi.focus) return;
+		// An open popover closes on its own Escape; leaving focus mode on the
+		// same press lost both at once.
+		if (outlineOpen || define.open || scripture.open || !readerUi.focus) return;
 		e.preventDefault();
 		readerUi.exitFocus();
 	}
@@ -355,6 +358,7 @@
 						class:text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
+						aria-pressed={listen.status !== 'idle'}
 						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
 					>
 				{/if}

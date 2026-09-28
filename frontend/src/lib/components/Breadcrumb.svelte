@@ -15,17 +15,22 @@
 	const t = i18n.t;
 </script>
 
-<nav
-	class="mb-5 flex flex-wrap items-center gap-1.5 text-small text-muted"
-	aria-label={t('a11y.breadcrumb')}
->
-	{#each items as item, i (item.href)}
-		{#if i < items.length - 1}
-			<a href={localizeHref(item.href)} class="hover:text-text"><bdi>{item.name}</bdi></a>
-			<!-- No flip: › is a bidi-mirrored character, drawn as ‹ in RTL already. -->
-			<span aria-hidden="true">›</span>
-		{:else}
-			<span class="truncate text-text" aria-current="page"><bdi>{item.name}</bdi></span>
-		{/if}
-	{/each}
+<!-- A list, so a screen reader announces "list, N items" and each crumb's
+     place in the trail. -->
+<nav class="mb-5 text-small text-muted" aria-label={t('a11y.breadcrumb')}>
+	<ol class="flex flex-wrap items-center gap-1.5">
+		{#each items as item, i (item.href)}
+			{#if i < items.length - 1}
+				<li class="flex items-center gap-1.5">
+					<a href={localizeHref(item.href)} class="hover:text-text"><bdi>{item.name}</bdi></a>
+					<!-- No flip: › is a bidi-mirrored character, drawn as ‹ in RTL already. -->
+					<span aria-hidden="true">›</span>
+				</li>
+			{:else}
+				<li class="flex min-w-0">
+					<span class="truncate text-text" aria-current="page"><bdi>{item.name}</bdi></span>
+				</li>
+			{/if}
+		{/each}
+	</ol>
 </nav>

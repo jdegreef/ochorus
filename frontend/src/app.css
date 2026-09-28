@@ -2391,7 +2391,10 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.account-item,
 		.rc-opt,
 		.selbar-btn,
-		.google-btn {
+		.google-btn,
+		.focus-exit,
+		.sync-cta,
+		.bm-remove {
 			min-height: 2.75rem;
 		}
 		/* Buttons whose label would otherwise sit at the top of the taller box.
@@ -2402,7 +2405,9 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		   `.google-btn`) is handled here rather than duplicated in that file. */
 		.chip,
 		.seg button,
-		.selbar-btn {
+		.selbar-btn,
+		.sync-cta,
+		.bm-remove {
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
@@ -2418,7 +2423,9 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.account-btn,
 		.prefs-btn,
 		.navtoggle,
-		.navsearch {
+		.navsearch,
+		.day-toggle,
+		.sync-dismiss {
 			position: relative;
 		}
 		/* The finish toggle on a Continue-reading card is a 28px disc, already
@@ -2428,7 +2435,9 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.prefs-btn::after,
 		.navtoggle::after,
 		.navsearch::after,
-		.finish-btn::after {
+		.finish-btn::after,
+		.day-toggle::after,
+		.sync-dismiss::after {
 			content: '';
 			position: absolute;
 			top: 50%;

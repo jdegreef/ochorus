@@ -830,6 +830,15 @@
 	}
 
 	/** Turn forward/back a page, rolling over to the adjacent chapter at the ends. */
+	// What a turn does from here: a page, or — from the first / last page —
+	// the neighbouring chapter (see turnPage), named as such for a screen reader.
+	const prevTurnLabel = $derived(
+		pageIndex <= 0 && chapter.prev ? t('reader.prevChapter') : t('reader.prevPage')
+	);
+	const nextTurnLabel = $derived(
+		pageIndex >= pageTotal - 1 && chapter.next ? t('reader.nextChapter') : t('reader.nextPage')
+	);
+
 	function turnPage(dir: 1 | -1) {
 		const next = pageIndex + dir;
 		if (next < 0) {
@@ -1252,10 +1261,21 @@
 			searchOpen ||
 			notesOpen
 		) {
-			// Escape still has to work from inside a panel — it is how you leave.
-			if (e.key === 'Escape' && readerUi.focus && !reader.open) readerUi.exitFocus();
+			// Escape here belongs to the panel, which closes itself; leaving focus
+			// mode on the same key press lost both at once. The next Escape, with
+			// the panel gone, exits focus mode below.
 			return;
 		}
+		// A focused control keeps its own keys. Reached by KEYBOARD, any control:
+		// Space presses it, and the arrows don't swap the chapter out from under
+		// it. A control IN THE TEXT keeps Space even after a mouse click ("Mark
+		// day done", Next chapter, the reflection's Save live inside the pages);
+		// a toolbar button clicked with the mouse keeps focus too, but there
+		// Space still pages, as readers expect.
+		const control = el?.closest?.(INTERACTIVE);
+		const byKeyboard = control && el.matches?.(':focus-visible');
+		if (byKeyboard && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) return;
+		if (e.key === ' ' && control && (byKeyboard || el.closest('.pager'))) return;
 		// Focus mode had no keyboard exit at all: exitFocus() existed and nothing
 		// called it, so the only way out was finding the floating pill.
 		if (e.key === 'Escape' && readerUi.focus) {
@@ -1275,10 +1295,6 @@
 			else if (paged) turnPage(contentRtl ? 1 : -1);
 			else gotoChapter(chapter.prev);
 		} else if (e.key === ' ') {
-			// Space on a focused control IN THE TEXT presses it — "Mark day done",
-			// Next chapter and the reflection's Save live inside the pages. A
-			// toolbar button keeps focus after a click, and Space there still pages.
-			if (el?.closest?.('.pager') && el.closest(INTERACTIVE)) return;
 			e.preventDefault();
 			if (paged) turnPage(e.shiftKey ? -1 : 1);
 			else pageScroll(e.shiftKey ? -1 : 1);
@@ -1775,16 +1791,16 @@
 					<a
 						href={chapterHref(chapter.prev.order)}
 						class="btn btn-icon btn-ghost"
-						aria-label={t('reader.previous')}
-						title={t('reader.previous')}><Icon name="chevron-left" size={18} /></a
+						aria-label={t('reader.prevChapter')}
+						title={t('reader.prevChapter')}><Icon name="chevron-left" size={18} /></a
 					>
 				{/if}
 				{#if chapter.next}
 					<a
 						href={chapterHref(chapter.next.order)}
 						class="btn btn-icon btn-ghost"
-						aria-label={t('reader.next')}
-						title={t('reader.next')}><Icon name="chevron-right" size={18} /></a
+						aria-label={t('reader.nextChapter')}
+						title={t('reader.nextChapter')}><Icon name="chevron-right" size={18} /></a
 					>
 				{/if}
 				{#if chapter.has_modern_edition}
@@ -1833,6 +1849,7 @@
 						class:text-accent={listen.status !== 'idle'}
 						onclick={() => (listen.status === 'idle' ? reader.startListening() : listen.stop())}
 						aria-label={t('reader.listen')}
+						aria-pressed={listen.status !== 'idle'}
 						title="{t('reader.listen')} · {listenTime(chapter.word_count, listen.rate)}"
 						><Icon name="headphones" size={18} /></button
 					>
@@ -2057,7 +2074,10 @@
 				     is looking for here; Previous sits under it. From sm the classic
 				     pair: Previous at the start, Next at the end. Tab order stays Next-first
 				     at every width — one DOM order can't match both; Next is the primary. -->
-				<nav class="end-links mt-8 flex flex-col items-stretch gap-3 sm:flex-row-reverse">
+				<nav
+					class="end-links mt-8 flex flex-col items-stretch gap-3 sm:flex-row-reverse"
+					aria-label={t('reader.chapterNav')}
+				>
 					{#if chapter.next}
 						{@const nextWords = bookForProgress?.chapters.find((c) => c.order === chapter.next?.order)?.word_count}
 						<a
@@ -2146,16 +2166,16 @@
 	<button
 		class="pageturn left"
 		onclick={() => turnPage(contentRtl ? 1 : -1)}
-		aria-label={contentRtl ? t('reader.next') : t('reader.previous')}
-		title={contentRtl ? t('reader.next') : t('reader.previous')}
+		aria-label={contentRtl ? nextTurnLabel : prevTurnLabel}
+		title={contentRtl ? nextTurnLabel : prevTurnLabel}
 	>
 		<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
 	</button>
 	<button
 		class="pageturn right"
 		onclick={() => turnPage(contentRtl ? -1 : 1)}
-		aria-label={contentRtl ? t('reader.previous') : t('reader.next')}
-		title={contentRtl ? t('reader.previous') : t('reader.next')}
+		aria-label={contentRtl ? prevTurnLabel : nextTurnLabel}
+		title={contentRtl ? prevTurnLabel : nextTurnLabel}
 	>
 		<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
 	</button>
@@ -2270,7 +2290,10 @@
 		     reading on (hideChrome: scroll mode only) and returns with it. -->
 		<div class="foot-actions" class:folded={hideChrome}>
 			{#if chapter.prev}
-				<a href={chapterHref(chapter.prev.order)} class="foot-btn"
+				<a
+					href={chapterHref(chapter.prev.order)}
+					class="foot-btn"
+					aria-label={t('reader.prevChapter')}
 					><Icon name="chevron-left" size={22} /><span>{t('reader.previous')}</span></a
 				>
 			{:else}
@@ -2294,7 +2317,10 @@
 				title={t('reader.textSettings')}><span class="foot-aa" aria-hidden="true">Aa</span></button
 			>
 			{#if chapter.next}
-				<a href={chapterHref(chapter.next.order)} class="foot-btn foot-next"
+				<a
+					href={chapterHref(chapter.next.order)}
+					class="foot-btn foot-next"
+					aria-label={t('reader.nextChapter')}
 					><Icon name="chevron-right" size={22} /><span>{t('reader.next')}</span></a
 				>
 			{:else}
@@ -2382,6 +2408,13 @@
 	}
 	.reader-chrome.autohidden {
 		transform: translateY(-100%);
+	}
+	/* Tabbing into the hidden bar brings it back: its buttons stay reachable
+	   from the keyboard, and focus is never on a control the reader can't see.
+	   :focus-visible, not :focus-within — a button clicked with the mouse keeps
+	   focus, and the bar must still fold away as the reader scrolls on. */
+	.reader-chrome.autohidden:has(:focus-visible) {
+		transform: none;
 	}
 	/* Touch: give the chrome's icon buttons a full-height tap target (≥44px on
 	   the axis that fits — nine controls can't also be 44px WIDE on a 360px

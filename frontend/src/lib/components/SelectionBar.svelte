@@ -289,6 +289,14 @@
 
 <svelte:document
 	onselectionchange={() => update()}
+	onkeydown={(e) => {
+		// Escape puts the selection down, like any popup. Stopped here, so the
+		// same press doesn't also leave focus mode in the reader underneath.
+		if (e.key !== 'Escape' || !visible) return;
+		e.stopPropagation();
+		window.getSelection()?.removeAllRanges();
+		visible = false;
+	}}
 	onpointerdown={(e) => {
 		dragging = true;
 		touch = e.pointerType !== 'mouse';
