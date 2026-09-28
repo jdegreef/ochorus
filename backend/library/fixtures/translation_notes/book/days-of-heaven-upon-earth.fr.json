@@ -1,0 +1,5283 @@
+{
+ "kind": "book",
+ "slug": "days-of-heaven-upon-earth",
+ "language": "fr",
+ "job_issue": 2912,
+ "pull_request": 4300,
+ "references": [
+  {
+   "reference": "Ephesians 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1
+  },
+  {
+   "reference": "Ephesians 5:16",
+   "status": "self_rendered",
+   "block_index": 2,
+   "why": "Simpson quotes and comments on the Revised Version margin ('buying up for yourselves the opportunity', ton kairon); Segond reads 'rachetez le temps'."
+  },
+  {
+   "reference": "Ephesians 5:17",
+   "status": "self_rendered",
+   "block_index": 4,
+   "why": "Unmarked paraphrase; Segond wording except Simpson says 'will of God' where Segond has 'du Seigneur'."
+  },
+  {
+   "reference": "Ephesians 5:15-16",
+   "status": "self_rendered",
+   "block_index": 4,
+   "why": "Blend of KJV 5:15 re-cast as an imperative with the RV rendering of 5:16 that the meditation depends on."
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 20
+  },
+  {
+   "reference": "Psalm 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 23
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 24
+  },
+  {
+   "reference": "Genesis 18:19",
+   "status": "self_rendered",
+   "block_index": 28,
+   "why": "Simpson's compressed KJV ('I know him, that he will … do justice'); his meditation turns on God knowing/depending on Abraham, while Segond reads 'je l’ai choisi'."
+  },
+  {
+   "reference": "Genesis 18:19",
+   "status": "self_rendered",
+   "block_index": 29,
+   "why": "Opening 'I know him' kept for Simpson's point (Segond: 'je l’ai choisi'); the rest is Segond verbatim."
+  },
+  {
+   "reference": "1 Corinthians 12:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 31
+  },
+  {
+   "reference": "Jude 1:24",
+   "status": "self_rendered",
+   "block_index": 37,
+   "why": "Simpson cites the Revised Version 'from stumbling' and contrasts it with 'falling'; Segond has 'de toute chute', which would erase his point."
+  },
+  {
+   "reference": "Romans 4:20",
+   "status": "self_rendered",
+   "block_index": 39,
+   "why": "Unmarked allusion to KJV 'staggered not at the promise'; the image of staggering carries into the next sentence, Segond reads 'Il ne douta point'."
+  },
+  {
+   "reference": "Song of Songs 2:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 40
+  },
+  {
+   "reference": "Ecclesiastes 10:1",
+   "status": "self_rendered",
+   "block_index": 40,
+   "why": "Loose unmarked allusion in Simpson's own words."
+  },
+  {
+   "reference": "Mark 6:50",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 42
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 46
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 47
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 50
+  },
+  {
+   "reference": "John 17:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 50
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 52
+  },
+  {
+   "reference": "1 Corinthians 13:4b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 54
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 54
+  },
+  {
+   "reference": "Revelation 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 56
+  },
+  {
+   "reference": "2 John 1:8",
+   "status": "self_rendered",
+   "block_index": 57,
+   "why": "Re-personed ('we') from the RV; Segond: 'que vous ne perdiez pas le fruit de votre travail, mais que vous receviez une pleine récompense'."
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 61
+  },
+  {
+   "reference": "John 16:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 64
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 64
+  },
+  {
+   "reference": "Exodus 4:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 66
+  },
+  {
+   "reference": "James 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 68
+  },
+  {
+   "reference": "Romans 10:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 69
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 72
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 74
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 76
+  },
+  {
+   "reference": "Hebrews 6:1",
+   "status": "self_rendered",
+   "block_index": 78,
+   "why": "Simpson re-casts the verse as 'let us not be ever laying again…' and blends it with Philippians 3:16; Segond vocabulary kept, syntax re-cast."
+  },
+  {
+   "reference": "Philippians 3:16",
+   "status": "self_rendered",
+   "block_index": 78,
+   "why": "First half is Segond verbatim; 'let us mind the same thing' is in the KJV (Textus Receptus) but absent from Segond 3:16, so rendered."
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 81
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 87
+  },
+  {
+   "reference": "Matthew 17:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 91
+  },
+  {
+   "reference": "Matthew 17:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 92
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "self_rendered",
+   "block_index": 93,
+   "why": "Simpson turns the verse positive ('He is able to be touched…'); Segond's words 'compatir à nos faiblesses' kept, but Segond's frame is 'qui ne puisse compatir'"
+  },
+  {
+   "reference": "Malachi 3:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 95
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "block_index": 98,
+   "why": "unmarked allusion woven into the sentence as an infinitive; Segond wording 'plus que vainqueurs par celui qui nous a aimés' kept"
+  },
+  {
+   "reference": "Luke 9:55",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 100
+  },
+  {
+   "reference": "1 Corinthians 13:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 103
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 105
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "self_rendered",
+   "block_index": 107,
+   "why": "Simpson re-persons the verse ('let our requests be made known'); Segond has 'faites connaître vos besoins'"
+  },
+  {
+   "reference": "Revelation 19:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 109
+  },
+  {
+   "reference": "2 Corinthians 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 114
+  },
+  {
+   "reference": "Matthew 10:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 118
+  },
+  {
+   "reference": "1 Thessalonians 5:21b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 125
+  },
+  {
+   "reference": "1 Thessalonians 5:21a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 130
+  },
+  {
+   "reference": "Philippians 3:16",
+   "status": "self_rendered",
+   "block_index": 78,
+   "why": "Segond's text lacks the KJV clause 'let us mind the same thing', which Simpson quotes; Segond wording kept for the rest and the clause rendered"
+  },
+  {
+   "reference": "Isaiah 51:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 132
+  },
+  {
+   "reference": "Jeremiah 17:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 134
+  },
+  {
+   "reference": "Jeremiah 17:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 134
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 136
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 143
+  },
+  {
+   "reference": "John 16:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 143
+  },
+  {
+   "reference": "Nehemiah 8:10a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 148
+  },
+  {
+   "reference": "Nehemiah 8:10b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 148
+  },
+  {
+   "reference": "2 Corinthians 4:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 153
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 159
+  },
+  {
+   "reference": "Matthew 12:45",
+   "status": "self_rendered",
+   "block_index": 161,
+   "why": "unmarked allusion re-personed to 'their'; Segond has 'la dernière condition de cet homme est pire que la première'"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 164
+  },
+  {
+   "reference": "Matthew 20:26b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 168
+  },
+  {
+   "reference": "Matthew 20:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 168
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 175
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 179
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 180
+  },
+  {
+   "reference": "Psalm 37:7",
+   "status": "self_rendered",
+   "block_index": 182,
+   "why": "Citation gives the psalm without a verse (Ps. xxxvii.); the words are KJV 37:7 'Rest in the LORD', which Segond renders 'Garde le silence devant l’Éternel' — the meditation turns on 'rest', so rendered directly."
+  },
+  {
+   "reference": "Hebrews 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 185
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 185
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 187
+  },
+  {
+   "reference": "Galatians 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 189
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 191
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 194
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "self_rendered",
+   "block_index": 198,
+   "why": "KJV clause 'none of these things move me' is absent from Segond's text of the verse (critical text), so rendered directly."
+  },
+  {
+   "reference": "2 Samuel 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 200
+  },
+  {
+   "reference": "Philippians 1:28",
+   "status": "self_rendered",
+   "block_index": 201,
+   "why": "Segond splits the phrase ('une preuve de perdition, mais pour vous de salut'); Simpson's 'a token of salvation' has no contiguous Segond equivalent."
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 203,
+   "why": "Segond continues 'et si je vis, ce n’est plus moi qui vis…', which cannot stand alone as the short epigraph Simpson quotes ('nevertheless I live'); first clause is Segond verbatim."
+  },
+  {
+   "reference": "Colossians 1:11",
+   "status": "self_rendered",
+   "block_index": 207,
+   "why": "Epigraph quotes 'strengthened with all might unto all patience', skipping the middle of the verse; Segond's wording of those two pieces is not contiguous. The body uses Segond verbatim (next two entries)."
+  },
+  {
+   "reference": "Colossians 1:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 208
+  },
+  {
+   "reference": "Colossians 1:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 208
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 208
+  },
+  {
+   "reference": "Jeremiah 17:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 209
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 211
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 212
+  },
+  {
+   "reference": "1 Corinthians 3:23",
+   "status": "self_rendered",
+   "block_index": 213,
+   "why": "Re-personed by Simpson ('we are Christ's'; Segond 'vous êtes à Christ')."
+  },
+  {
+   "reference": "1 Corinthians 3:21",
+   "status": "self_rendered",
+   "block_index": 213,
+   "why": "Re-personed by Simpson ('all things are ours'; Segond 'tout est à vous')."
+  },
+  {
+   "reference": "Acts 10:4",
+   "status": "self_rendered",
+   "block_index": 216,
+   "why": "Simpson omits 'and thine alms', and his meditation turns on 'memorial', which Segond renders 'et il s’en est souvenu'."
+  },
+  {
+   "reference": "Acts 10:4",
+   "status": "self_rendered",
+   "block_index": 217,
+   "why": "Same shortened quotation in the body; see previous entry."
+  },
+  {
+   "reference": "Isaiah 62:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 217
+  },
+  {
+   "reference": "Matthew 3:11",
+   "status": "self_rendered",
+   "block_index": 220,
+   "why": "Simpson quotes only 'with fire'; Segond's clause is 'il vous baptisera du Saint-Esprit et de feu'."
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "2 Timothy 2:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 228
+  },
+  {
+   "reference": "Psalm 97:11b",
+   "status": "self_rendered",
+   "block_index": 230,
+   "why": "Simpson quotes the second half only; its verb 'sown' is carried over from the first half, which Segond's half-line ('Et la joie pour ceux dont le cœur est droit') lacks."
+  },
+  {
+   "reference": "John 15:11",
+   "status": "self_rendered",
+   "block_index": 230,
+   "why": "Paraphrase in the third person, not a quotation of the verse."
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "Philippians 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 232
+  },
+  {
+   "reference": "James 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 232
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 233
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 233
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 235
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 240
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Romans 1:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 248
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 249
+  },
+  {
+   "reference": "Isaiah 41:10a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 251
+  },
+  {
+   "reference": "Job 3:25a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 252
+  },
+  {
+   "reference": "Psalm 23:6a",
+   "status": "self_rendered",
+   "block_index": 254,
+   "why": "re-personed to the reader (Segond: 'm’accompagneront Tous les jours de ma vie'), quoted without quotation marks"
+  },
+  {
+   "reference": "Psalm 56:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 254
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 256
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 257
+  },
+  {
+   "reference": "Isaiah 41:13",
+   "status": "self_rendered",
+   "block_index": 257,
+   "why": "Segond has 'Qui fortifie ta droite'; Simpson's next sentence ('He keeps holding our right hand') depends on the KJV 'will hold thy right hand'"
+  },
+  {
+   "reference": "John 6:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 258
+  },
+  {
+   "reference": "Psalm 46:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 258
+  },
+  {
+   "reference": "Hebrews 4:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 260
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 261
+  },
+  {
+   "reference": "Matthew 11:29a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 261
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 263
+  },
+  {
+   "reference": "3 John 1:2",
+   "status": "self_rendered",
+   "block_index": 264,
+   "why": "re-personed by Simpson ('we ... our soul'); Segond: 'que tu prospères à tous égards et sois en bonne santé, comme prospère l’état de ton âme'"
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 265
+  },
+  {
+   "reference": "Philippians 1:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 266
+  },
+  {
+   "reference": "Philippians 1:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 267
+  },
+  {
+   "reference": "Acts 20:24a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 267
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 269
+  },
+  {
+   "reference": "Hebrews 7:19",
+   "status": "self_rendered",
+   "block_index": 270,
+   "why": "Simpson's point rests on the KJV contrast 'but the bringing in of a better hope did'; Segond reads 'et introduction d’une meilleure espérance' with no 'did'"
+  },
+  {
+   "reference": "Galatians 3:10b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 270
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 274
+  },
+  {
+   "reference": "Acts 17:28a",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "re-personed to 'I' by Simpson; Segond: 'en lui nous avons la vie, le mouvement, et l’être'"
+  },
+  {
+   "reference": "Hebrews 13:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 279
+  },
+  {
+   "reference": "Hebrews 13:21a",
+   "status": "self_rendered",
+   "block_index": 279,
+   "why": "Simpson glosses KJV 'make you perfect' as literally 'adjust you'; Segond's 'vous rende capables' would blur that contrast (also used for the epigraph)"
+  },
+  {
+   "reference": "1 Peter 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 281
+  },
+  {
+   "reference": "1 Peter 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 284
+  },
+  {
+   "reference": "James 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 232
+  },
+  {
+   "reference": "Psalm 108:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 288
+  },
+  {
+   "reference": "Habakkuk 3:17-18",
+   "status": "self_rendered",
+   "block_index": 289,
+   "why": "Simpson paraphrases and re-persons (fig-tree 'may wither', 'we will rejoice'); rendered close to Segond's wording"
+  },
+  {
+   "reference": "Psalm 27:14",
+   "status": "self_rendered",
+   "block_index": 292,
+   "why": "Segond 'Espère en l’Éternel' drops the idea of waiting, which the whole meditation and hymn turn on (KJV 'Wait on the Lord'); rendered as 'attends-toi'"
+  },
+  {
+   "reference": "Psalm 27:14",
+   "status": "self_rendered",
+   "block_index": 294,
+   "why": "KJV 'Wait, I say, on the Lord'; kept the waiting sense (Segond: 'Espère en l’Éternel!')"
+  },
+  {
+   "reference": "2 Timothy 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 296
+  },
+  {
+   "reference": "2 Timothy 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 297
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 300
+  },
+  {
+   "reference": "Acts 2:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 306
+  },
+  {
+   "reference": "John 16:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 310
+  },
+  {
+   "reference": "John 16:33",
+   "status": "self_rendered",
+   "block_index": 311,
+   "why": "Simpson's re-personed form of 'I have overcome the world' ('I have overcome for thee'), in the body and the hymn"
+  },
+  {
+   "reference": "Revelation 12:11",
+   "status": "self_rendered",
+   "block_index": 311,
+   "why": "re-personed from 'they overcame him' to 'overcome him ... our testimony'; Segond wording otherwise kept"
+  },
+  {
+   "reference": "Proverbs 3:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 314
+  },
+  {
+   "reference": "Genesis 3:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 315
+  },
+  {
+   "reference": "Genesis 3:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 315
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 316
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 316
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 319
+  },
+  {
+   "reference": "Mark 8:35",
+   "status": "self_rendered",
+   "block_index": 320,
+   "why": "blend of Mark 8:35 and John 12:25 ('shall keep it unto life eternal'); Segond wording of both joined"
+  },
+  {
+   "reference": "Luke 10:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 322
+  },
+  {
+   "reference": "Luke 10:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 323
+  },
+  {
+   "reference": "1 Samuel 21:8",
+   "status": "self_rendered",
+   "block_index": 324,
+   "why": "Segond 'l’ordre du roi était pressant'; tense changed and 'King' applied to Christ"
+  },
+  {
+   "reference": "Revelation 8:1",
+   "status": "self_rendered",
+   "block_index": 325,
+   "why": "Segond 'il y eut dans le ciel un silence'; Simpson puts it in the future"
+  },
+  {
+   "reference": "1 Thessalonians 4:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 327
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 330
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 331,
+   "why": "Simpson's shortened form ('The peace that passes all understanding'), omitting 'of God'"
+  },
+  {
+   "reference": "Psalm 119:165",
+   "status": "self_rendered",
+   "block_index": 331,
+   "why": "KJV 'nothing shall offend them', re-personed to 'us'; Segond reads 'il ne leur arrive aucun malheur', which loses the sense Simpson uses"
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 334
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 334
+  },
+  {
+   "reference": "Psalm 107:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 338
+  },
+  {
+   "reference": "Psalm 107:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 338
+  },
+  {
+   "reference": "Jude 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 343
+  },
+  {
+   "reference": "John 15:10",
+   "status": "self_rendered",
+   "block_index": 346,
+   "why": "Simpson paraphrases with 'live' for 'abide' (his point on 'living in His love'); Segond has 'demeurerez ... demeure'"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 348
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 349
+  },
+  {
+   "reference": "Hosea 2:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 351
+  },
+  {
+   "reference": "Hosea 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 351
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 353
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 355
+  },
+  {
+   "reference": "John 15:9",
+   "status": "self_rendered",
+   "block_index": 355,
+   "why": "Simpson's gloss on the Greek ('In the original it is, Live in My love')"
+  },
+  {
+   "reference": "Psalm 84:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 357
+  },
+  {
+   "reference": "John 17:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 358
+  },
+  {
+   "reference": "Psalm 57:9",
+   "status": "self_rendered",
+   "block_index": 358,
+   "why": "KJV Ps 57:8 'Awake up, my glory'; Segond has 'mon âme', but Simpson's point is the word 'glory'"
+  },
+  {
+   "reference": "Psalm 105:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 360
+  },
+  {
+   "reference": "Luke 1:74-75",
+   "status": "self_rendered",
+   "block_index": 361,
+   "why": "Simpson blends Luke 1:71 ('from the hand of all that hate us') into 1:74-75 and recasts it as a clause; Segond wording kept for 'délivrés de la main de nos ennemis', 'sans crainte', 'en marchant devant lui dans la sainteté et dans la justice tous les jours de notre vie'."
+  },
+  {
+   "reference": "Hebrews 10:23b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 361
+  },
+  {
+   "reference": "Psalm 91:10b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 363
+  },
+  {
+   "reference": "1 John 5:18b",
+   "status": "self_rendered",
+   "block_index": 364,
+   "why": "Simpson quotes the RV reading ('He that was begotten of God keepeth him' = Christ keeps the believer) re-personed to 'us'; Segond reads 'se garde lui-même', which would lose his point that Christ keeps us."
+  },
+  {
+   "reference": "Luke 5:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 367
+  },
+  {
+   "reference": "Romans 5:17b",
+   "status": "self_rendered",
+   "block_index": 371,
+   "why": "Segond words, but its inverted 'régneront-ils' depends on the omitted 'à plus forte raison'; inversion dropped so the excerpt stands alone."
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 372
+  },
+  {
+   "reference": "1 Peter 5:7a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 374
+  },
+  {
+   "reference": "Hebrews 3:6b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 377
+  },
+  {
+   "reference": "1 Kings 18:41b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 378
+  },
+  {
+   "reference": "Hebrews 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 379
+  },
+  {
+   "reference": "2 Corinthians 5:17a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 381
+  },
+  {
+   "reference": "Philippians 4:4b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 385
+  },
+  {
+   "reference": "Psalm 29:2b",
+   "status": "self_rendered",
+   "block_index": 389,
+   "why": "KJV 'the beauty of holiness'; Segond reads 'avec des ornements sacrés', and the whole meditation turns on the beauty of holiness."
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "self_rendered",
+   "block_index": 391,
+   "why": "Segond wording, but Simpson skips 'pure' between 'just' and 'lovely', so the excerpt is not contiguous in Segond."
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 394
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 395
+  },
+  {
+   "reference": "Psalm 56:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 397
+  },
+  {
+   "reference": "Mark 5:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 398
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "Citation says Gal 5:22; the words ('the fruit of the Spirit is in all goodness') are KJV Eph 5:9, whose Segond reads 'le fruit de la lumière'. Kept Simpson's reference; built on Segond Eph 5:9 phrasing."
+  },
+  {
+   "reference": "Romans 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 401
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 391
+  },
+  {
+   "reference": "1 Samuel 2:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 403
+  },
+  {
+   "reference": "Jude 1:24-25",
+   "status": "self_rendered",
+   "block_index": 405,
+   "why": "Re-personed from 'you' to 'us' and abridged (as Simpson quotes it); otherwise Segond wording."
+  },
+  {
+   "reference": "3 John 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Proverbs 12:28a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 408
+  },
+  {
+   "reference": "1 Peter 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 408
+  },
+  {
+   "reference": "1 Timothy 1:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 408
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered",
+   "block_index": 409,
+   "why": "Simpson abridges the verse (omits 'do that which is right in his sight', merges statutes and commandments); Segond wording used for every surviving phrase."
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 411
+  },
+  {
+   "reference": "Revelation 16:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 413
+  },
+  {
+   "reference": "Romans 9:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 416
+  },
+  {
+   "reference": "Isaiah 33:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 420
+  },
+  {
+   "reference": "Psalm 62:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 424
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 427
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 428
+  },
+  {
+   "reference": "Ephesians 6:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 428
+  },
+  {
+   "reference": "Ephesians 6:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 428
+  },
+  {
+   "reference": "Daniel 12:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 430
+  },
+  {
+   "reference": "Revelation 16:15",
+   "status": "self_rendered",
+   "block_index": 432,
+   "why": "Simpson omits 'watcheth'; Segond wording with 'qui veille, et' dropped to match his quotation"
+  },
+  {
+   "reference": "Romans 12:4a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 434
+  },
+  {
+   "reference": "Romans 12:5a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 434
+  },
+  {
+   "reference": "1 Corinthians 12:26a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 435
+  },
+  {
+   "reference": "Acts 17:28a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 437
+  },
+  {
+   "reference": "Proverbs 17:22a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "Isaiah 66:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 443
+  },
+  {
+   "reference": "Philippians 4:4a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 443
+  },
+  {
+   "reference": "John 8:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 445
+  },
+  {
+   "reference": "Romans 14:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 446
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 447
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 447
+  },
+  {
+   "reference": "Hebrews 3:6",
+   "status": "self_rendered",
+   "block_index": 449,
+   "why": "Segond's 'pourvu que nous retenions ... la ferme confiance' re-personed as the imperative Simpson quotes"
+  },
+  {
+   "reference": "Hebrews 3:6",
+   "status": "self_rendered",
+   "block_index": 452,
+   "why": "Simpson re-persons Heb 3:6 as an exhortation ('Beloved, hold fast your confidence...'); Segond wording adapted to 'vous'"
+  },
+  {
+   "reference": "Psalm 37:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 457
+  },
+  {
+   "reference": "Numbers 11:1",
+   "status": "self_rendered",
+   "block_index": 459,
+   "why": "Simpson quotes the KJV margin 'were as it were complainers'; his meditation hinges on 'as it were', absent from Segond ('Le peuple murmura')"
+  },
+  {
+   "reference": "Numbers 11:1",
+   "status": "self_rendered",
+   "block_index": 460,
+   "why": "KJV marginal reading 'as it were' that the meditation depends on; not in Segond"
+  },
+  {
+   "reference": "Numbers 11:1",
+   "status": "self_rendered",
+   "block_index": 466,
+   "why": "KJV marginal reading 'as it were'; Segond 'cela déplut aux oreilles de l’Éternel' shortened to match Simpson's 'it displeased the Lord'"
+  },
+  {
+   "reference": "Job 1:22",
+   "status": "self_rendered",
+   "block_index": 461,
+   "why": "'charge God foolishly' woven into Simpson's sentence; adapted from Segond 'n’attribua rien d’injuste à Dieu'"
+  },
+  {
+   "reference": "1 Corinthians 10:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 462
+  },
+  {
+   "reference": "1 Thessalonians 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 464
+  },
+  {
+   "reference": "Philippians 4:4b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 465
+  },
+  {
+   "reference": "John 12:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 471
+  },
+  {
+   "reference": "Ephesians 3:17b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 476
+  },
+  {
+   "reference": "1 Corinthians 16:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 479
+  },
+  {
+   "reference": "Proverbs 16:32b",
+   "status": "self_rendered",
+   "block_index": 483,
+   "why": "Simpson quotes only 32b; Segond's 32b elides 'vaut mieux' (carried from 32a), so the clause is completed to stand alone"
+  },
+  {
+   "reference": "Psalm 123:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 484
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 486
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 487
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 487
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "self_rendered",
+   "block_index": 488,
+   "why": "re-personed by Simpson ('let us rejoice ... again we say, rejoice')"
+  },
+  {
+   "reference": "Hebrews 1:9",
+   "status": "self_rendered",
+   "block_index": 488,
+   "why": "re-personed (third person) allusion; Segond wording otherwise kept"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "self_rendered",
+   "block_index": 488,
+   "why": "Simpson joins the verse's opening and closing, omitting the middle clause; Segond wording used for both parts"
+  },
+  {
+   "reference": "Psalm 37:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 490
+  },
+  {
+   "reference": "Mark 6:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 491
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 491
+  },
+  {
+   "reference": "Psalm 119:165",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 491
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "self_rendered",
+   "block_index": 491,
+   "why": "Simpson expounds the KJV word 'stayed' (= to stop); Segond reads 'ferme dans ses sentiments', which cannot carry his point"
+  },
+  {
+   "reference": "1 Chronicles 4:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 493
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 496
+  },
+  {
+   "reference": "Ephesians 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 497
+  },
+  {
+   "reference": "Ephesians 5:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 499
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "self_rendered",
+   "block_index": 503,
+   "why": "Segond frames the verse negatively ('pas un souverain sacrificateur qui ne puisse compatir'); the KJV-style positive fragment is rendered with Segond's vocabulary"
+  },
+  {
+   "reference": "Psalm 37:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 506
+  },
+  {
+   "reference": "Psalm 37:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 507
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 509
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 514
+  },
+  {
+   "reference": "Proverbs 16:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 518
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 491
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 524
+  },
+  {
+   "reference": "Isaiah 35:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 525
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "self_rendered",
+   "block_index": 527,
+   "why": "re-personed by Simpson ('cause us to walk in His statutes'); Segond vocabulary kept"
+  },
+  {
+   "reference": "1 Corinthians 13:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 529
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "self_rendered",
+   "block_index": 533,
+   "why": "Segond's verse has the pronoun 'elle croit tout'; subject 'La charité' supplied so the fragment stands alone (used twice: epigraph and closing line)"
+  },
+  {
+   "reference": "Isaiah 63:8",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "Simpson's comment ('They did lie') depends on the KJV 'children that will not lie'; Segond has 'qui ne seront pas infidèles'"
+  },
+  {
+   "reference": "Numbers 23:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 534
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 537,
+   "why": "KJV 'gentleness' corresponds to Segond's 'bénignité'/'bonté'; Simpson's meditation is on gentleness (douceur), so the list is abridged to 'la douceur' (which Segond also has in 5:22)"
+  },
+  {
+   "reference": "Matthew 12:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 538
+  },
+  {
+   "reference": "2 Corinthians 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 542
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 545
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 548
+  },
+  {
+   "reference": "Isaiah 57:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 549
+  },
+  {
+   "reference": "1 John 4:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 552
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 555
+  },
+  {
+   "reference": "Matthew 28:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 557
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 558
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 558
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered",
+   "block_index": 561,
+   "why": "Simpson abridges the verse, omitting 'dead unto sin'; Segond's line is not contiguous for this portion"
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "self_rendered",
+   "block_index": 564,
+   "why": "re-personed to the third person ('He liveth ... He is alive'); wording follows Segond otherwise"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 566
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 567
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 569
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 571
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 577
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 578
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "self_rendered",
+   "block_index": 578,
+   "why": "Simpson's own condensation ('dead and alive forevermore') applied to the believer's life"
+  },
+  {
+   "reference": "Luke 9:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 580
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered",
+   "block_index": 583,
+   "why": "re-personed to 'let us reckon ourselves'; the words after the verb follow Segond"
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "self_rendered",
+   "block_index": 585,
+   "why": "Simpson's abridged epigraph skips the middle of the verse; Segond's wording is not contiguous for it"
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 586
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 589
+  },
+  {
+   "reference": "Luke 12:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 544
+  },
+  {
+   "reference": "Exodus 33:16",
+   "status": "self_rendered",
+   "block_index": 598,
+   "why": "Simpson paraphrases Moses' question freely ('except it be in this that Thou goest before us'); not Segond's wording"
+  },
+  {
+   "reference": "2 Corinthians 10:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 599
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 601
+  },
+  {
+   "reference": "Leviticus 14:29",
+   "status": "self_rendered",
+   "block_index": 603,
+   "why": "Simpson's phrase 'the rest of the oil' (KJV Lev 14:29; cf. 14:17-18); Segond reads 'ce qui lui reste d’huile', which does not fit his sentence"
+  },
+  {
+   "reference": "Jeremiah 10:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 606
+  },
+  {
+   "reference": "Revelation 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 609
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 610
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 610
+  },
+  {
+   "reference": "1 Corinthians 15:57a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 611
+  },
+  {
+   "reference": "Colossians 3:3a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 558
+  },
+  {
+   "reference": "John 15:2b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 616
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 583
+  },
+  {
+   "reference": "Romans 12:21b",
+   "status": "self_rendered",
+   "block_index": 562,
+   "why": "verb conjugated into Simpson's sentence (Segond: surmonte le mal par le bien)"
+  },
+  {
+   "reference": "1 Corinthians 6:19b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 619
+  },
+  {
+   "reference": "1 Corinthians 6:19b",
+   "status": "self_rendered",
+   "block_index": 620,
+   "why": "Simpson re-persons the verse as 'Not my own'"
+  },
+  {
+   "reference": "John 14:23b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 622
+  },
+  {
+   "reference": "Colossians 1:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 623
+  },
+  {
+   "reference": "Colossians 1:27b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 623
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 623,
+   "why": "Simpson's compressed slogan 'Not I, but Christ'; Segond: ce n’est plus moi qui vis, c’est Christ qui vit en moi"
+  },
+  {
+   "reference": "1 Timothy 6:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 625
+  },
+  {
+   "reference": "2 Corinthians 2:16b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 626
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "self_rendered",
+   "block_index": 626,
+   "why": "re-personed inside a prayer (me / has given)"
+  },
+  {
+   "reference": "Romans 15:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 628
+  },
+  {
+   "reference": "Job 38:19a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 631
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered",
+   "block_index": 632,
+   "why": "re-personed paraphrase (we/us), unquoted in source"
+  },
+  {
+   "reference": "Philippians 3:10a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 634
+  },
+  {
+   "reference": "Genesis 32:29a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 635
+  },
+  {
+   "reference": "2 Corinthians 4:6b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 635
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 637
+  },
+  {
+   "reference": "1 Peter 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 638
+  },
+  {
+   "reference": "1 Peter 5:7a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 638
+  },
+  {
+   "reference": "Isaiah 9:5",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "tense changed as Simpson has it ('The government is on His shoulder'); Segond: reposera"
+  },
+  {
+   "reference": "Matthew 11:29a",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "re-personed (His yoke) as Simpson has it"
+  },
+  {
+   "reference": "Isaiah 9:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 640
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 641
+  },
+  {
+   "reference": "Philippians 2:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 643
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 644
+  },
+  {
+   "reference": "Isaiah 42:1",
+   "status": "self_rendered",
+   "block_index": 644,
+   "why": "Simpson's compressed quotation drops 'whom I uphold, mine elect'; not a Segond substring"
+  },
+  {
+   "reference": "Mark 10:45",
+   "status": "self_rendered",
+   "block_index": 644,
+   "why": "Simpson compresses to 'The Son of Man came to minister'"
+  },
+  {
+   "reference": "Luke 22:27b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 644
+  },
+  {
+   "reference": "John 5:30a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 644
+  },
+  {
+   "reference": "Luke 22:42b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 644
+  },
+  {
+   "reference": "Philippians 2:8b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 645
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 647,
+   "why": "Segond has 'Il est pour le Seigneur' (subject carried from the previous clause); Simpson's slogan needs 'le corps' as subject"
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 649
+  },
+  {
+   "reference": "1 Corinthians 6:19b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 649
+  },
+  {
+   "reference": "1 Corinthians 6:20a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 649
+  },
+  {
+   "reference": "1 Corinthians 6:20b",
+   "status": "self_rendered",
+   "block_index": 649,
+   "why": "Simpson quotes the Revised Version, which omits 'and in your spirit' (Segond: et dans votre esprit)"
+  },
+  {
+   "reference": "Ezekiel 36:27a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 651
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 652
+  },
+  {
+   "reference": "Jeremiah 32:40",
+   "status": "self_rendered",
+   "block_index": 652,
+   "why": "uncited; Simpson re-persons to 'your hearts / ye shall not turn away' (Segond: dans leur cœur, Afin qu’ils ne s’éloignent pas de moi)"
+  },
+  {
+   "reference": "Acts 1:8a",
+   "status": "self_rendered",
+   "block_index": 652,
+   "why": "Simpson contrasts the KJV wording with his 'true version'; rendered from the KJV so the contrast survives"
+  },
+  {
+   "reference": "Acts 1:8a",
+   "status": "self_rendered",
+   "block_index": 652,
+   "why": "Simpson's preferred 'true version' rendering, contrasted with KJV; Segond's wording sits between the two"
+  },
+  {
+   "reference": "Matthew 18:4a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 654
+  },
+  {
+   "reference": "John 4:7b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 655
+  },
+  {
+   "reference": "Romans 8:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 657
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 658
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 660
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 661
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 661
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 661
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 663
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 666
+  },
+  {
+   "reference": "Psalm 57:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 669
+  },
+  {
+   "reference": "Psalm 57:8",
+   "status": "self_rendered",
+   "block_index": 670,
+   "why": "Simpson re-addresses the verse to 'Lord' and condenses it ('I will sing and give praises'); Segond: 'Mon cœur est affermi, ô Dieu! ... Je chanterai, je ferai retentir mes instruments.'"
+  },
+  {
+   "reference": "Habakkuk 3:17-18",
+   "status": "self_rendered",
+   "block_index": 671,
+   "why": "Unquoted paraphrase re-personed to 'we'; echoes Segond wording where it can."
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "self_rendered",
+   "block_index": 673,
+   "why": "Citation says Phil 2:8 (R.V.); the words 'He emptied Himself' are in 2:7 (Segond 2:7: 's’est dépouillé lui-même'). Reference kept as Simpson gives it."
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 674
+  },
+  {
+   "reference": "Matthew 5:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 674
+  },
+  {
+   "reference": "Acts 9:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 674
+  },
+  {
+   "reference": "Exodus 3:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 676
+  },
+  {
+   "reference": "2 Corinthians 3:5a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "2 Corinthians 3:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "Isaiah 28:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 680
+  },
+  {
+   "reference": "Psalm 103:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 681
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 681,
+   "why": "Unquoted paraphrase re-personed to 'He ... us'; second half follows Segond with 'nous' for 'vous'."
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 683
+  },
+  {
+   "reference": "Matthew 6:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 686
+  },
+  {
+   "reference": "Psalm 110:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 689
+  },
+  {
+   "reference": "John 12:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 692
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 693
+  },
+  {
+   "reference": "Isaiah 33:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 693
+  },
+  {
+   "reference": "Proverbs 16:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 695
+  },
+  {
+   "reference": "James 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 696
+  },
+  {
+   "reference": "James 3:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 696
+  },
+  {
+   "reference": "Psalm 25:14",
+   "status": "self_rendered",
+   "block_index": 698,
+   "why": "The meditation turns on KJV 'secret' ('secrets of Providence', 'God's secret'); Segond has 'L’amitié de l’Éternel'. Kept 'secret', rest follows Segond."
+  },
+  {
+   "reference": "Ephesians 4:15",
+   "status": "self_rendered",
+   "block_index": 701,
+   "why": "Segond's subordinate 'que ... nous croissions à tous égards en celui qui est le chef' turned into the exhortation the epigraph needs."
+  },
+  {
+   "reference": "Matthew 6:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 704
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 705
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 705
+  },
+  {
+   "reference": "Psalm 91:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 705
+  },
+  {
+   "reference": "Isaiah 58:8",
+   "status": "self_rendered",
+   "block_index": 707,
+   "why": "KJV 'rereward' (rear guard), read by Simpson as 'reward'; Segond has 'la gloire de l’Éternel t’accompagnera', which loses the reward sense his meditation depends on"
+  },
+  {
+   "reference": "Nehemiah 6:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 710
+  },
+  {
+   "reference": "Romans 11:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 714
+  },
+  {
+   "reference": "1 Corinthians 7:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 717
+  },
+  {
+   "reference": "1 Corinthians 7:24",
+   "status": "self_rendered",
+   "block_index": 718,
+   "why": "Simpson blends 7:20 and 7:24 into one sentence; rendered as a blend in Segond's vocabulary"
+  },
+  {
+   "reference": "1 Corinthians 12:28a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 720
+  },
+  {
+   "reference": "1 Corinthians 12:28b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 720
+  },
+  {
+   "reference": "John 4:36",
+   "status": "self_rendered",
+   "block_index": 721,
+   "why": "recast as a future question by Simpson; Segond wording 'celui qui sème et celui qui moissonne se réjouissent ensemble' kept except the verb"
+  },
+  {
+   "reference": "John 6:58",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 723
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 724
+  },
+  {
+   "reference": "2 Corinthians 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 724
+  },
+  {
+   "reference": "Ephesians 5:30",
+   "status": "self_rendered",
+   "block_index": 724,
+   "why": "KJV adds 'of his flesh, and of his bones', absent from Segond's text; Simpson's point about the physical body depends on it"
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 724,
+   "why": "Simpson reverses the verse's order; Segond reads 'Il est pour le Seigneur, et le Seigneur pour le corps'"
+  },
+  {
+   "reference": "Psalm 27:1b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 724
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 724
+  },
+  {
+   "reference": "1 John 3:2a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 726
+  },
+  {
+   "reference": "Hebrews 2:11b",
+   "status": "self_rendered",
+   "block_index": 727,
+   "why": "re-personed: Segond 'de les appeler frères', Simpson 'to call us brethren' (quoted twice)"
+  },
+  {
+   "reference": "Zechariah 3:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 730
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 731
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 731
+  },
+  {
+   "reference": "Colossians 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 731
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 731
+  },
+  {
+   "reference": "Philippians 3:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 731
+  },
+  {
+   "reference": "2 Corinthians 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 734
+  },
+  {
+   "reference": "Galatians 5:16",
+   "status": "self_rendered",
+   "block_index": 735,
+   "why": "Simpson blends Gal 5:18 ('conduits par l’Esprit') and 5:16 ('vous n’accomplirez pas les désirs de la chair'), re-personed to 'we'"
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 735
+  },
+  {
+   "reference": "Matthew 9:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 738
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 739
+  },
+  {
+   "reference": "Isaiah 63:9a",
+   "status": "self_rendered",
+   "block_index": 739,
+   "why": "KJV 'In all their affliction he was afflicted', re-personed; Segond reads the verse differently ('Dans toutes leurs détresses ils n’ont pas été sans secours') and would lose Simpson's point"
+  },
+  {
+   "reference": "Hebrews 4:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 740
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 740
+  },
+  {
+   "reference": "Ephesians 5:18b",
+   "status": "self_rendered",
+   "block_index": 742,
+   "why": "Segond 'Soyez, au contraire, remplis de l’Esprit'; the contrastive 'au contraire' (tied to the omitted first half) is dropped"
+  },
+  {
+   "reference": "1 Corinthians 2:16b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 747
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 751
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 752
+  },
+  {
+   "reference": "Song of Songs 1:7a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 752
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 754
+  },
+  {
+   "reference": "Ephesians 2:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 756
+  },
+  {
+   "reference": "Deuteronomy 30:19",
+   "status": "self_rendered",
+   "block_index": 758,
+   "why": "KJV 'therefore choose'; Segond has 'Choisis la vie' with no 'therefore', and Simpson quotes only the two words"
+  },
+  {
+   "reference": "2 Chronicles 1:11-12",
+   "status": "self_rendered",
+   "block_index": 760,
+   "why": "Simpson's free paraphrase of 2 Chr 1:11-12 (cf. 1 Kings 3:13); opens with Segond's 'Puisque c’est là ce qui est dans ton cœur'"
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 760
+  },
+  {
+   "reference": "Matthew 6:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 760
+  },
+  {
+   "reference": "1 Peter 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 762
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 763,
+   "why": "Simpson blends the fruit-of-the-Spirit list (his own order, KJV 'faith') with his own words inside one quotation"
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 763
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 764
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 764
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 767
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 768
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "block_index": 768,
+   "why": "Simpson's rephrasing 'Seated with Him'; Segond has 'nous a fait asseoir ensemble'"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 768
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 770
+  },
+  {
+   "reference": "1 John 3:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 774
+  },
+  {
+   "reference": "Song of Songs 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 778
+  },
+  {
+   "reference": "Song of Songs 7:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 782
+  },
+  {
+   "reference": "Zechariah 2:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 784
+  },
+  {
+   "reference": "Exodus 40:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 787
+  },
+  {
+   "reference": "Isaiah 60:20",
+   "status": "self_rendered",
+   "block_index": 788,
+   "why": "re-personed to the reader and clauses reversed, following Simpson's allusion"
+  },
+  {
+   "reference": "Galatians 3:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 791
+  },
+  {
+   "reference": "Acts 10:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 792
+  },
+  {
+   "reference": "Psalm 55:23",
+   "status": "self_rendered",
+   "block_index": 794,
+   "why": "Segond reads 'ton sort'; the whole meditation turns on the KJV 'burden'"
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 797
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 797
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 801
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 802
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 803
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 803
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 803
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "self_rendered",
+   "block_index": 803,
+   "why": "abridged: Segond 'la vie de Jésus soit aussi manifestée dans notre chair mortelle'"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 803,
+   "why": "re-personed: Simpson writes 'who loved us' (Segond 'qui m’a aimé')"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 805
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "block_index": 807,
+   "why": "re-personed as the believer's first-person confession"
+  },
+  {
+   "reference": "Romans 15:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 809
+  },
+  {
+   "reference": "Luke 22:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 810
+  },
+  {
+   "reference": "Hosea 3:3",
+   "status": "self_rendered",
+   "block_index": 810,
+   "why": "abridged from Segond ('Reste longtemps pour moi, ne te livre pas…, et je serai de même envers toi')"
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "self_rendered",
+   "block_index": 810,
+   "why": "Simpson quotes only the words 'to give' / 'to receive' inside his own sentence"
+  },
+  {
+   "reference": "Galatians 6:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 810
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 812
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "block_index": 813,
+   "why": "re-personed: Segond 'Que tu ne connais pas'"
+  },
+  {
+   "reference": "Isaiah 60:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 814
+  },
+  {
+   "reference": "1 Thessalonians 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 814
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 814
+  },
+  {
+   "reference": "Psalm 106:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 814
+  },
+  {
+   "reference": "Song of Songs 6:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 817
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 818,
+   "why": "allusion re-personed: Segond 'Ma grâce te suffit'"
+  },
+  {
+   "reference": "John 17:19",
+   "status": "self_rendered",
+   "block_index": 818,
+   "why": "Segond reads 'sanctifie'; Simpson's point is consecration ('two persons in the consecration')"
+  },
+  {
+   "reference": "John 17:19",
+   "status": "self_rendered",
+   "block_index": 818,
+   "why": "Segond reads 'sanctifiés'; kept 'consacrés' for Simpson's argument"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 820
+  },
+  {
+   "reference": "Hosea 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 821
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 821
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 821
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 823
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "self_rendered",
+   "block_index": 825,
+   "why": "hymn line; Simpson repeats 'arise' (KJV 2:10/2:13 'Arise, my love, my fair one, and come away'); Segond wording kept plus the repeated 'lève-toi'"
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 826
+  },
+  {
+   "reference": "John 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 827
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 827
+  },
+  {
+   "reference": "1 Chronicles 11:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 831
+  },
+  {
+   "reference": "Numbers 10:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 834
+  },
+  {
+   "reference": "Psalm 45:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 835
+  },
+  {
+   "reference": "Exodus 32:29",
+   "status": "self_rendered",
+   "block_index": 836,
+   "why": "re-personed paraphrase ('consecrated every one upon our son and upon our brother'); Segond is an imperative 'Consacrez-vous ... votre fils et votre frère'"
+  },
+  {
+   "reference": "Psalm 45:11b",
+   "status": "self_rendered",
+   "block_index": 836,
+   "why": "re-personed and infinitive ('forget our kindred and our father's house'); Segond: 'Oublie ton peuple et la maison de ton père'"
+  },
+  {
+   "reference": "Mark 1:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 836
+  },
+  {
+   "reference": "Genesis 13:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 838
+  },
+  {
+   "reference": "Romans 12:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 842
+  },
+  {
+   "reference": "Matthew 14:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 846
+  },
+  {
+   "reference": "Leviticus 14:29",
+   "status": "self_rendered",
+   "block_index": 847,
+   "why": "phrase 'the rest of the oil' (KJV Lev 14:29, uncited by Simpson); Segond's 'ce qui lui reste d’huile' does not fit the sentence"
+  },
+  {
+   "reference": "Romans 8:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 850
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 851,
+   "why": "Simpson reorders the verse into a participial clause; Segond phrases rearranged"
+  },
+  {
+   "reference": "Romans 14:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 855
+  },
+  {
+   "reference": "Luke 22:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 856
+  },
+  {
+   "reference": "1 Peter 1:7",
+   "status": "self_rendered",
+   "block_index": 856,
+   "why": "re-personed ('our faith') and recast as a statement; Segond: 'l’épreuve de votre foi, plus précieuse que l’or périssable'"
+  },
+  {
+   "reference": "Hebrews 10:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 857
+  },
+  {
+   "reference": "Hebrews 3:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 857
+  },
+  {
+   "reference": "2 Corinthians 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 858
+  },
+  {
+   "reference": "Job 42:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 860
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "self_rendered",
+   "block_index": 865,
+   "why": "citation says Ephesians 4:13 (R.V.); the words are Ephesians 4:12 (Segond 4:12 wording used, Simpson's reference kept)"
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 869
+  },
+  {
+   "reference": "1 Kings 8:56",
+   "status": "self_rendered",
+   "block_index": 870,
+   "why": "uncited blend of 1 Kings 8:56 / Joshua 23:14 ('Not one word hath failed of all that the Lord hath spoken'); built from Segond phrasing"
+  },
+  {
+   "reference": "Romans 16:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 874
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered",
+   "block_index": 879,
+   "why": "Simpson elides the middle clauses; the two Segond clauses are joined without them"
+  },
+  {
+   "reference": "2 Corinthians 7:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 884
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 886
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 892
+  },
+  {
+   "reference": "Psalm 115:1a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 893
+  },
+  {
+   "reference": "Psalm 18:36",
+   "status": "self_rendered",
+   "block_index": 896,
+   "why": "KJV 18:35 = Segond 18:36, but Segond reads 'je deviens grand par ta bonté'; the whole meditation turns on 'gentleness' (douceur), so rendered from the KJV. Epigraph citation given in Segond numbering (18:36)."
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "self_rendered",
+   "block_index": 899,
+   "why": "Simpson excerpts two items from the list (KJV gentleness, meekness); Segond's list order/wording (bonté ... douceur) cannot be cut to these words."
+  },
+  {
+   "reference": "1 Peter 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 902
+  },
+  {
+   "reference": "2 Corinthians 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 906
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 908
+  },
+  {
+   "reference": "Romans 8:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 908
+  },
+  {
+   "reference": "Revelation 3:20b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 912
+  },
+  {
+   "reference": "Psalm 21:4a",
+   "status": "self_rendered",
+   "block_index": 913,
+   "why": "Re-personed from Segond 'tu l’as prévenu par les bénédictions de ta grâce' (KJV 21:3 = Segond 21:4); Simpson applies it to the reader and the Holy Spirit."
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 917
+  },
+  {
+   "reference": "Isaiah 30:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 918
+  },
+  {
+   "reference": "Romans 6:6a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 920
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 922
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 924
+  },
+  {
+   "reference": "Jeremiah 48:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 926
+  },
+  {
+   "reference": "Matthew 10:16b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 927
+  },
+  {
+   "reference": "Exodus 30:32a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 927
+  },
+  {
+   "reference": "Leviticus 16:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 931
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "self_rendered",
+   "block_index": 937,
+   "why": "Segond reads 'il n’y a point en toi de défaut'; the meditation builds on 'spot' (tache) linked to Ephesians 5:27 'sans tache, ni ride', so rendered from the KJV."
+  },
+  {
+   "reference": "James 4:5",
+   "status": "self_rendered",
+   "block_index": 938,
+   "why": "Simpson explicitly offers an alternative ('true') translation; Segond ('C’est avec jalousie que Dieu chérit l’esprit qu’il a fait habiter en nous') has a different sense."
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 940
+  },
+  {
+   "reference": "Genesis 13:15a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 943
+  },
+  {
+   "reference": "Genesis 13:15a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 946
+  },
+  {
+   "reference": "John 14:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 946
+  },
+  {
+   "reference": "2 Corinthians 4:5",
+   "status": "self_rendered",
+   "block_index": 949,
+   "why": "Simpson's elliptical fragment drops the verb 'preach'; Segond's sentence ('Nous ne nous prêchons pas nous-mêmes; c’est Jésus-Christ le Seigneur que nous prêchons') cannot be cut to these words."
+  },
+  {
+   "reference": "Psalm 97:2a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 955
+  },
+  {
+   "reference": "Psalm 97:2",
+   "status": "self_rendered",
+   "block_index": 957,
+   "why": "Simpson blends Psalm 97:2 ('round about His throne') with Psalm 89:15 (KJV 89:14) 'mercy and truth'; wording built from Segond pieces but not a substring."
+  },
+  {
+   "reference": "Psalm 89:15b",
+   "status": "self_rendered",
+   "block_index": 957,
+   "why": "Re-personed (ta face → sa face) and KJV 'shall go before' kept; Segond: 'La bonté et la fidélité sont devant ta face'."
+  },
+  {
+   "reference": "Psalm 105:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 961
+  },
+  {
+   "reference": "John 16:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 967
+  },
+  {
+   "reference": "John 16:13",
+   "status": "self_rendered",
+   "block_index": 968,
+   "why": "Re-personed ('guide us') in the meditation body; Segond 'il vous conduira dans toute la vérité'."
+  },
+  {
+   "reference": "Ephesians 1:18-19",
+   "status": "self_rendered",
+   "block_index": 968,
+   "why": "Re-personed (votre → notre, vous → nous) and verb put in the infinitive; otherwise Segond wording across 1:18-19."
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 970
+  },
+  {
+   "reference": "Numbers 20:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 974
+  },
+  {
+   "reference": "Judges 7:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 979
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 981
+  },
+  {
+   "reference": "1 Corinthians 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 981
+  },
+  {
+   "reference": "2 Corinthians 10:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 982
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 984
+  },
+  {
+   "reference": "Matthew 21:21-22",
+   "status": "self_rendered",
+   "block_index": 985,
+   "why": "paraphrase re-personed to 'we', blending Matt 21:21-22 / Mark 11:23-24"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 986
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "self_rendered",
+   "block_index": 986,
+   "why": "Simpson uses the marginal/literal reading 'faith of God'; Segond has 'foi en Dieu'"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 987,
+   "why": "re-personed from 'me' to 'us'; otherwise Segond wording"
+  },
+  {
+   "reference": "John 13:34",
+   "status": "self_rendered",
+   "block_index": 987,
+   "why": "Simpson inserts 'not as yourselves' into the verse"
+  },
+  {
+   "reference": "1 John 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 988
+  },
+  {
+   "reference": "1 John 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 988
+  },
+  {
+   "reference": "John 15:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 990
+  },
+  {
+   "reference": "Titus 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 994
+  },
+  {
+   "reference": "2 Chronicles 20:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 996
+  },
+  {
+   "reference": "2 Chronicles 20:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 997
+  },
+  {
+   "reference": "2 Chronicles 20:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 997
+  },
+  {
+   "reference": "2 Corinthians 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1000
+  },
+  {
+   "reference": "Isaiah 41:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1002
+  },
+  {
+   "reference": "2 Peter 2:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1003
+  },
+  {
+   "reference": "1 John 3:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1007
+  },
+  {
+   "reference": "Matthew 5:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1009
+  },
+  {
+   "reference": "1 John 3:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1009
+  },
+  {
+   "reference": "Philippians 4:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1012
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1017
+  },
+  {
+   "reference": "Ezekiel 36:31",
+   "status": "self_rendered",
+   "block_index": 1020,
+   "why": "re-personed paraphrase ('we shall loathe ourselves in our own eyes'); KJV 'in your own sight' not in Segond"
+  },
+  {
+   "reference": "2 Kings 4:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1024
+  },
+  {
+   "reference": "2 Kings 4:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1025
+  },
+  {
+   "reference": "2 Kings 4:2",
+   "status": "self_rendered",
+   "block_index": 1025,
+   "why": "Simpson's shortened paraphrase of the widow's answer"
+  },
+  {
+   "reference": "Matthew 6:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1032
+  },
+  {
+   "reference": "Hebrews 13:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1035
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1037
+  },
+  {
+   "reference": "3 John 1:2",
+   "status": "self_rendered",
+   "block_index": 1038,
+   "why": "re-personed from 'thou' to 'we'"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "self_rendered",
+   "block_index": 1038,
+   "why": "paraphrase ('all things are added unto us')"
+  },
+  {
+   "reference": "Mark 7:24",
+   "status": "self_rendered",
+   "block_index": 1039,
+   "why": "Segond 'il ne put rester caché' with subject named"
+  },
+  {
+   "reference": "Habakkuk 3:4",
+   "status": "self_rendered",
+   "block_index": 1040,
+   "why": "KJV 'the hiding of his power', re-personed to 'thy'; Segond 'Là réside sa force' lacks the hiding Simpson prays for"
+  },
+  {
+   "reference": "1 Samuel 15:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1042
+  },
+  {
+   "reference": "John 13:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1047
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "self_rendered",
+   "block_index": 1048,
+   "why": "adapted to singular subject ('the meek and lowly heart')"
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1048
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1048
+  },
+  {
+   "reference": "Psalm 139:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1051
+  },
+  {
+   "reference": "Hebrews 10:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1053
+  },
+  {
+   "reference": "Hebrews 3:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1054
+  },
+  {
+   "reference": "1 Corinthians 15:46",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1056
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1060
+  },
+  {
+   "reference": "Zechariah 4:10",
+   "status": "self_rendered",
+   "block_index": 1062,
+   "why": "KJV reads a question ('Who hath despised...'); Segond has 'ceux qui méprisaient le jour des faibles commencements'. Kept Segond's noun phrase, recast as Simpson's question."
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 1064,
+   "why": "Simpson reverses the verse's order (Lord for the body first); Segond reads 'Il est pour le Seigneur, et le Seigneur pour le corps'."
+  },
+  {
+   "reference": "Ephesians 5:30",
+   "status": "self_rendered",
+   "block_index": 1064,
+   "why": "KJV includes 'of his flesh, and of his bones', which Segond omits ('parce que nous sommes membres de son corps'); Simpson's point uses the full KJV wording."
+  },
+  {
+   "reference": "Numbers 16:9",
+   "status": "self_rendered",
+   "block_index": 1067,
+   "why": "Segond reads 'que le Dieu d’Israël vous ait choisis'; the meditation is entirely about separation, so KJV 'separated' is kept."
+  },
+  {
+   "reference": "Mark 6:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1071
+  },
+  {
+   "reference": "John 20:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1076
+  },
+  {
+   "reference": "Philippians 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1081
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 1083,
+   "why": "Simpson quotes 'it is acceptable to God' without citation; nearest verses are Rom 12:1 / 1 Pet 2:5 / Heb 13:16. Wording happens to match Segond Rom 12:1, but the attribution is a guess."
+  },
+  {
+   "reference": "Ephesians 5:2",
+   "status": "self_rendered",
+   "block_index": 1083,
+   "why": "Uncited; KJV 'sweet-smelling savour' blended with a hymn-like phrase 'to your Lord and King' that is not Scripture."
+  },
+  {
+   "reference": "Hebrews 13:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1083
+  },
+  {
+   "reference": "1 Thessalonians 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1083
+  },
+  {
+   "reference": "Habakkuk 3:18b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1085
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1086
+  },
+  {
+   "reference": "Philippians 1:18b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1086
+  },
+  {
+   "reference": "James 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1086
+  },
+  {
+   "reference": "Habakkuk 3:18a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1087
+  },
+  {
+   "reference": "James 1:2",
+   "status": "self_rendered",
+   "block_index": 1087,
+   "why": "Re-personed: Simpson makes it first person ('I will count it all joy'); Segond's imperative 'regardez' becomes the infinitive."
+  },
+  {
+   "reference": "John 6:57",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1089
+  },
+  {
+   "reference": "1 Corinthians 10:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1094
+  },
+  {
+   "reference": "Romans 15:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1099
+  },
+  {
+   "reference": "Colossians 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1100
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1105
+  },
+  {
+   "reference": "John 21:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1106
+  },
+  {
+   "reference": "Proverbs 17:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1108
+  },
+  {
+   "reference": "Philippians 1:28",
+   "status": "self_rendered",
+   "block_index": 1111,
+   "why": "Simpson skips 'to them ... perdition' and ends with 'and that of God', which Segond places in 1:29; built from Segond's wording around the omission."
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1113
+  },
+  {
+   "reference": "Isaiah 50:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1117
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1118
+  },
+  {
+   "reference": "Hebrews 10:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1118
+  },
+  {
+   "reference": "Habakkuk 2:3",
+   "status": "self_rendered",
+   "block_index": 1123,
+   "why": "Segond lacks KJV 'it will not tarry' ('elle s’accomplira, elle s’accomplira certainement'); the meditation echoes 'will not tarry'."
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1127
+  },
+  {
+   "reference": "Isaiah 63:9",
+   "status": "self_rendered",
+   "block_index": 1128,
+   "why": "Simpson quotes the KJV 'In all their affliction he was afflicted'; Segond reads 'ils n’ont pas été sans secours', so the KJV sense is rendered"
+  },
+  {
+   "reference": "Psalm 110:3",
+   "status": "self_rendered",
+   "block_index": 1130,
+   "why": "meditation turns on KJV 'freewill offering' (voluntary consecration); Segond reads 'Ton peuple est plein d’ardeur, quand tu rassembles ton armée'"
+  },
+  {
+   "reference": "Song of Songs 7:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1131
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1133
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1139
+  },
+  {
+   "reference": "Psalm 31:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1139
+  },
+  {
+   "reference": "Isaiah 49:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1142
+  },
+  {
+   "reference": "Psalm 46:11",
+   "status": "self_rendered",
+   "block_index": 1144,
+   "why": "re-personed into a prayer addressed to God (Segond: 'Arrêtez, et sachez que je suis Dieu')"
+  },
+  {
+   "reference": "Judges 8:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1146
+  },
+  {
+   "reference": "2 Corinthians 10:4",
+   "status": "self_rendered",
+   "block_index": 1148,
+   "why": "Segond's 'puissantes, par la vertu de Dieu' qualifies the weapons; applied here to persons"
+  },
+  {
+   "reference": "Hebrews 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1151
+  },
+  {
+   "reference": "Hebrews 2:9",
+   "status": "self_rendered",
+   "block_index": 1151,
+   "why": "condensed; Segond: 'Mais celui qui a été abaissé ... Jésus, nous le voyons'"
+  },
+  {
+   "reference": "Genesis 13:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1152
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1154
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1157
+  },
+  {
+   "reference": "John 15:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1158
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1158
+  },
+  {
+   "reference": "2 Corinthians 10:4",
+   "status": "self_rendered",
+   "block_index": 1158,
+   "why": "Segond's 'puissantes' qualifies the weapons; adjusted to persons as Simpson applies it"
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1159
+  },
+  {
+   "reference": "Isaiah 40:31a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1159
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 1161,
+   "why": "meditation turns on KJV 'the faith OF the Son of God' (Christ's own faith in us); Segond reads 'la foi au Fils de Dieu'"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 1162,
+   "why": "KJV 'faith of the Son of God' kept for the meditation's point; Segond 'si je vis maintenant dans la chair, je vis dans la foi au Fils de Dieu'; tail follows Segond"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1162
+  },
+  {
+   "reference": "Hebrews 2:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1163
+  },
+  {
+   "reference": "Psalm 91:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1166
+  },
+  {
+   "reference": "Romans 8:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1169
+  },
+  {
+   "reference": "1 Peter 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1172
+  },
+  {
+   "reference": "Acts 10:15",
+   "status": "self_rendered",
+   "block_index": 1175,
+   "why": "meditation turns on 'common' (ordinary things); Segond reads 'ne le regarde pas comme souillé'"
+  },
+  {
+   "reference": "Romans 14:14",
+   "status": "self_rendered",
+   "block_index": 1176,
+   "why": "meditation turns on 'common' (ordinary things); Segond reads 'rien n’est impur en soi'"
+  },
+  {
+   "reference": "Romans 12:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1178
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1178
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "self_rendered",
+   "block_index": 1181,
+   "why": "meditation turns on KJV 'secret places of the stairs'; Segond reads 'Qui te caches dans les parois escarpées'"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1182
+  },
+  {
+   "reference": "Ephesians 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1184
+  },
+  {
+   "reference": "Ephesians 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1185
+  },
+  {
+   "reference": "Ephesians 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1185
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1185
+  },
+  {
+   "reference": "Ephesians 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1186
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1187
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1188
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1188
+  },
+  {
+   "reference": "Joshua 13:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1190
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1195
+  },
+  {
+   "reference": "Song of Songs 2:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1198
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1195
+  },
+  {
+   "reference": "Isaiah 55:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1202
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1205
+  },
+  {
+   "reference": "Exodus 15:1",
+   "status": "self_rendered",
+   "block_index": 1208,
+   "why": "Simpson's day hangs on KJV 'triumphed gloriously' (victory, conquerors); Segond reads 'il a fait éclater sa gloire', which loses the triumph the meditation needs"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1209
+  },
+  {
+   "reference": "Joshua 1:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1210
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1210
+  },
+  {
+   "reference": "Hosea 7:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1212
+  },
+  {
+   "reference": "Isaiah 53:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1218
+  },
+  {
+   "reference": "2 Samuel 16:11-12",
+   "status": "self_rendered",
+   "block_index": 1219,
+   "why": "Simpson blends 16:11b ('let him curse') with 16:12, dropping the words between; Segond wording kept for each part"
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1221
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1221
+  },
+  {
+   "reference": "Hebrews 12:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1222
+  },
+  {
+   "reference": "Joshua 21:45",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1224
+  },
+  {
+   "reference": "Revelation 7:10",
+   "status": "self_rendered",
+   "block_index": 1225,
+   "why": "Simpson's form drops 'our God' ('Salvation unto Him who sitteth upon the throne'); Segond 'Le salut est à notre Dieu qui est assis…' adapted accordingly"
+  },
+  {
+   "reference": "Joshua 21:45",
+   "status": "self_rendered",
+   "block_index": 1226,
+   "why": "re-personed ('He hath spoken') and put in the present perfect as the saints' chorus; based on Segond"
+  },
+  {
+   "reference": "John 20:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1228
+  },
+  {
+   "reference": "John 20:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1228
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1233
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1238
+  },
+  {
+   "reference": "1 John 2:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1239
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1240
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1240
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1243
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1249
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "self_rendered",
+   "block_index": 1250,
+   "why": "Segond's subordinate clause ('parce qu’elle ne se soumet pas… et qu’elle ne le peut même pas') made a standalone sentence, as Simpson quotes it"
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1251
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1254
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "self_rendered",
+   "block_index": 1258,
+   "why": "Simpson quotes only the second clause; Segond's 'de celles qu’on ne voit pas' needs the first clause's antecedent, so 'des choses' supplied"
+  },
+  {
+   "reference": "Psalm 37:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1262
+  },
+  {
+   "reference": "Isaiah 60:15",
+   "status": "self_rendered",
+   "block_index": 1265,
+   "why": "Simpson elides the middle of the verse ('whereas thou hast been forsaken and hated … I will make thee a joy'); Segond words joined"
+  },
+  {
+   "reference": "Romans 5:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1269
+  },
+  {
+   "reference": "Romans 4:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1271
+  },
+  {
+   "reference": "Hebrews 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1277
+  },
+  {
+   "reference": "Titus 2:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1282
+  },
+  {
+   "reference": "Romans 13:14b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1283
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1287
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1292
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1293
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 1295,
+   "why": "re-personed allusion (\"He has loved us with an everlasting love\"); Segond: Je t’aime d’un amour éternel"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "self_rendered",
+   "block_index": 1295,
+   "why": "re-personed allusion (\"He will never leave us nor forsake us\")"
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1297
+  },
+  {
+   "reference": "1 Kings 18:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1302
+  },
+  {
+   "reference": "2 Corinthians 8:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1305
+  },
+  {
+   "reference": "2 Timothy 1:7",
+   "status": "self_rendered",
+   "block_index": 1309,
+   "why": "allusion to KJV 'the spirit of a sound mind'; Segond has 'un esprit de force, d’amour et de sagesse', only the last member kept"
+  },
+  {
+   "reference": "Romans 13:11b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1311
+  },
+  {
+   "reference": "Romans 13:12b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1311
+  },
+  {
+   "reference": "Romans 13:12b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1311
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1314
+  },
+  {
+   "reference": "1 Thessalonians 5:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1314
+  },
+  {
+   "reference": "Ephesians 6:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1314
+  },
+  {
+   "reference": "Romans 13:14a",
+   "status": "self_rendered",
+   "block_index": 1315,
+   "why": "re-personed exhortation ('Let us put on'); Segond: revêtez-vous du Seigneur Jésus-Christ"
+  },
+  {
+   "reference": "Luke 14:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1317
+  },
+  {
+   "reference": "Jeremiah 32:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1322
+  },
+  {
+   "reference": "Jeremiah 32:27",
+   "status": "self_rendered",
+   "block_index": 1324,
+   "why": "Simpson turns Jer 32:27 into a prayer and blends Gen 18:14 ('too hard for the Lord'); second half = Segond Genesis 18:14"
+  },
+  {
+   "reference": "Jeremiah 32:27",
+   "status": "self_rendered",
+   "block_index": 1324,
+   "why": "abridged echo of the verse (drops 'Voici' and 'l’Éternel')"
+  },
+  {
+   "reference": "Luke 19:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1326
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1328
+  },
+  {
+   "reference": "John 16:23b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1331
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "self_rendered",
+   "block_index": 1333,
+   "why": "re-personed allusion; Segond: en qui j’ai mis toute mon affection"
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "block_index": 1333,
+   "why": "Simpson's point needs KJV 'accepted in the Beloved'; Segond reads 'sa grâce qu’il nous a accordée en son bien-aimé'"
+  },
+  {
+   "reference": "Jeremiah 49:8",
+   "status": "self_rendered",
+   "block_index": 1335,
+   "why": "meditation depends on KJV 'Dwell deep' (read as abiding deeply); Segond has 'retirez-vous dans les cavernes'"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1339
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1341
+  },
+  {
+   "reference": "John 14:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1343
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1346
+  },
+  {
+   "reference": "2 Corinthians 10:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1348
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1352
+  },
+  {
+   "reference": "Luke 11:5",
+   "status": "self_rendered",
+   "block_index": 1353,
+   "why": "Simpson condenses Luke 11:5 into a question ('Which of you shall have a friend at night?'); Segond's conditional sentence does not carry that shape"
+  },
+  {
+   "reference": "1 Samuel 15:22",
+   "status": "self_rendered",
+   "block_index": 1357,
+   "why": "Segond wording with 'et les sacrifices' dropped, as Simpson omits 'and sacrifices'"
+  },
+  {
+   "reference": "John 17:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1363
+  },
+  {
+   "reference": "Job 7:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1367
+  },
+  {
+   "reference": "Psalm 103:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1369
+  },
+  {
+   "reference": "Psalm 103:2-5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1370
+  },
+  {
+   "reference": "Psalm 103:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1371
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1373
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1374
+  },
+  {
+   "reference": "Isaiah 40:29a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1374
+  },
+  {
+   "reference": "Isaiah 40:29b",
+   "status": "self_rendered",
+   "block_index": 1374,
+   "why": "KJV 'to them that have no might'; Segond 'celui qui tombe en défaillance' lacks the 'no might at all' Simpson's point rests on"
+  },
+  {
+   "reference": "Isaiah 40:29b",
+   "status": "self_rendered",
+   "block_index": 1374,
+   "why": "KJV 'he increaseth strength'; Segond 'il augmente la vigueur' adjusted to pair with the self-rendered 'n’ont point de vigueur'"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1374
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1374
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1374
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1376
+  },
+  {
+   "reference": "John 14:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1379
+  },
+  {
+   "reference": "John 16:14",
+   "status": "self_rendered",
+   "block_index": 1380,
+   "why": "re-personed paraphrase ('take of the things of Christ and show them unto us')"
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1380
+  },
+  {
+   "reference": "Acts 12:5",
+   "status": "self_rendered",
+   "block_index": 1382,
+   "why": "Segond opens with 'et'; Simpson's meditation turns on KJV 'But prayer was made' ('But God! But prayer!'), so 'Mais' is kept"
+  },
+  {
+   "reference": "Acts 12:5",
+   "status": "self_rendered",
+   "block_index": 1383,
+   "why": "Simpson's reordered, shortened repetition with 'But'; Segond wording otherwise"
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered",
+   "block_index": 1387,
+   "why": "KJV 'dead indeed', which Simpson emphasizes; Segond has only 'comme morts'"
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1388
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1388
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1388
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1388
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1389
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1390
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1390
+  },
+  {
+   "reference": "2 Corinthians 1:22",
+   "status": "self_rendered",
+   "block_index": 1393,
+   "why": "Segond words ('dans nos cœurs les arrhes de l’Esprit') reordered to stand alone as the epigraph, following KJV order"
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1396
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1398
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1400
+  },
+  {
+   "reference": "Romans 4:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1402
+  },
+  {
+   "reference": "Daniel 10:11",
+   "status": "self_rendered",
+   "block_index": 1406,
+   "why": "KJV margin reading 'man of desires', on which the meditation rests; Segond reads 'homme bien-aimé'"
+  },
+  {
+   "reference": "Daniel 10:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1407
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "block_index": 1407,
+   "why": "KJV 'What things soever ye desire'; Segond has 'demanderez', but Simpson quotes it for the word 'desire'"
+  },
+  {
+   "reference": "Matthew 25:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1411
+  },
+  {
+   "reference": "Numbers 10:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1414
+  },
+  {
+   "reference": "Jeremiah 32:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1416
+  },
+  {
+   "reference": "Acts 16:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1419
+  },
+  {
+   "reference": "Revelation 21:5-6",
+   "status": "self_rendered",
+   "block_index": 1421,
+   "why": "Simpson blends 21:5a ('he that sat upon the throne said') with 21:6 ('It is done'); built from the two Segond lines but joined, so not a substring of either"
+  },
+  {
+   "reference": "John 12:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1424
+  },
+  {
+   "reference": "John 21:20",
+   "status": "self_rendered",
+   "block_index": 1427,
+   "why": "condensed: Segond 'le disciple que Jésus aimait, celui qui, pendant le souper, s’était penché sur la poitrine de Jésus'; Simpson drops the middle clause and has 'His breast'"
+  },
+  {
+   "reference": "Matthew 6:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1430
+  },
+  {
+   "reference": "Matthew 7:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1436
+  },
+  {
+   "reference": "Romans 13:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1439
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1440
+  },
+  {
+   "reference": "1 Thessalonians 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1441
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "self_rendered",
+   "block_index": 1441,
+   "why": "Simpson blends Col 4:2 ('continue in prayer, and watch in the same') with Eph 6:18 ('with all perseverance') as a participial clause"
+  },
+  {
+   "reference": "Isaiah 27:5",
+   "status": "self_rendered",
+   "block_index": 1441,
+   "why": "allusion to KJV 'take hold of my strength' (with Isa 64:7 'stirreth up himself'); Segond 27:5 reads 'qu’on ne me prenne pour refuge', which loses the image"
+  },
+  {
+   "reference": "Hebrews 6:12",
+   "status": "self_rendered",
+   "block_index": 1441,
+   "why": "re-personed ('not slothful, but followers...') and Simpson omits 'faith'; Segond: 'que vous ne vous relâchiez point, et que vous imitiez ceux qui, par la foi et la persévérance, héritent des promesses'"
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "self_rendered",
+   "block_index": 1441,
+   "why": "paraphrase of KJV 'perfect peace, whose mind is stayed on thee'; Segond wording differs ('Tu assures la paix, la paix')"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 1443,
+   "why": "KJV names Christ ('through Christ'); Segond has 'par celui qui me fortifie'; Simpson quotes only 'through Christ'"
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "self_rendered",
+   "block_index": 1444,
+   "why": "re-personed to 'us/we'; otherwise Segond wording"
+  },
+  {
+   "reference": "1 Corinthians 4:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1447
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1451
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered",
+   "block_index": 1452,
+   "why": "re-personed exhortation ('reckon ourselves'); KJV adds 'our Lord'; Segond: 'regardez-vous comme morts au péché, et comme vivants pour Dieu en Jésus-Christ'"
+  },
+  {
+   "reference": "Leviticus 14:18",
+   "status": "self_rendered",
+   "block_index": 1454,
+   "why": "Simpson's elided quotation; the two pieces are Segond ('ce qui lui reste d’huile' ... 'sur la tête') joined by his ellipsis"
+  },
+  {
+   "reference": "Leviticus 14:18a",
+   "status": "self_rendered",
+   "block_index": 1456,
+   "why": "Simpson's argument turns on 'the rest of the oil' as a noun phrase; Segond has 'ce qui lui reste d’huile'"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1461
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 1464,
+   "why": "KJV 'through Christ which strengtheneth me' names Christ; Segond has 'par celui qui me fortifie'"
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "self_rendered",
+   "block_index": 1464,
+   "why": "indirect paraphrase; Segond wording adapted to a 'nous ne sommes pas' clause"
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1465
+  },
+  {
+   "reference": "Matthew 26:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1467
+  },
+  {
+   "reference": "Mark 13:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1411
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1470
+  },
+  {
+   "reference": "1 Corinthians 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1471
+  },
+  {
+   "reference": "Philippians 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1474
+  },
+  {
+   "reference": "1 John 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1476
+  },
+  {
+   "reference": "Hebrews 12:15",
+   "status": "self_rendered",
+   "block_index": 1480,
+   "why": "KJV 'lest any man fail (of the grace of God)'; Simpson's meditation is about 'coming short', which Segond's 'que nul ne se prive de la grâce de Dieu' does not carry; opening 'Veillez à ce que nul ne' kept from Segond"
+  },
+  {
+   "reference": "Psalm 92:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1483
+  },
+  {
+   "reference": "Hosea 14:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1489
+  },
+  {
+   "reference": "1 Chronicles 12:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1492
+  },
+  {
+   "reference": "1 Chronicles 12:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1493
+  },
+  {
+   "reference": "1 Peter 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1495
+  },
+  {
+   "reference": "Luke 24:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1501
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1502
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1502
+  },
+  {
+   "reference": "John 14:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1503
+  },
+  {
+   "reference": "John 17:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1503
+  },
+  {
+   "reference": "Jeremiah 8:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1505
+  },
+  {
+   "reference": "Ephesians 5:30",
+   "status": "self_rendered",
+   "block_index": 1506,
+   "why": "KJV/TR adds 'of his flesh, and of his bones', which Segond omits; unquoted allusion, Segond's 'membres de son corps' kept"
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "self_rendered",
+   "block_index": 1507,
+   "why": "Simpson reverses the order of the verse's two clauses ('le corps... pour le Seigneur, et le Seigneur pour le corps')"
+  },
+  {
+   "reference": "Luke 5:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1509
+  },
+  {
+   "reference": "Mark 10:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1510
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1510
+  },
+  {
+   "reference": "2 Corinthians 10:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1513
+  },
+  {
+   "reference": "Matthew 9:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1514
+  },
+  {
+   "reference": "Matthew 7:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1514
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "self_rendered",
+   "block_index": 1515,
+   "why": "Simpson builds on the marginal reading 'Have the faith of God' ('a Divine measure'); Segond has 'Ayez foi en Dieu'"
+  },
+  {
+   "reference": "John 17:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1517
+  },
+  {
+   "reference": "Hebrews 4:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1518
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1518
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1518
+  },
+  {
+   "reference": "Philippians 1:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1520
+  },
+  {
+   "reference": "Philippians 1:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1520
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1526
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1502
+  },
+  {
+   "reference": "Isaiah 55:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1530
+  },
+  {
+   "reference": "James 1:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1531
+  },
+  {
+   "reference": "Isaiah 55:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1531
+  },
+  {
+   "reference": "Psalm 61:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1533
+  },
+  {
+   "reference": "2 Chronicles 20:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1534
+  },
+  {
+   "reference": "2 Chronicles 20:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1534
+  },
+  {
+   "reference": "Isaiah 38:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1534
+  },
+  {
+   "reference": "Psalm 107:27",
+   "status": "self_rendered",
+   "block_index": 1535,
+   "why": "KJV idiom 'at their wit's end', re-personed by Simpson ('at our wit's end'); Segond has 'toute leur habileté était anéantie'"
+  },
+  {
+   "reference": "Joel 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1537
+  },
+  {
+   "reference": "Galatians 6:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1538
+  },
+  {
+   "reference": "Joel 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1537
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1541
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1542
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1543
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1544
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 1545,
+   "why": "Segond has 'la foi au Fils de Dieu'; Simpson's whole meditation is on the faith OF the Son (Christ's own faith imparted), so the KJV genitive is kept"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 1547,
+   "why": "Segond 'je vis dans la foi au Fils de Dieu'; genitive kept for Simpson's point (faith OF the Son)"
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "self_rendered",
+   "block_index": 1515,
+   "why": "Segond 'Ayez foi en Dieu'; Simpson uses the KJV-margin literal 'Have the faith of God', which his argument depends on"
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 1550,
+   "why": "Segond 'Dieu résiste aux orgueilleux, Mais il fait grâce aux humbles'; Simpson quotes only the second half with God as subject"
+  },
+  {
+   "reference": "John 13:3-5",
+   "status": "self_rendered",
+   "block_index": 1552,
+   "why": "Simpson condenses three verses; built from Segond fragments joined with ellipses"
+  },
+  {
+   "reference": "Romans 15:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1555
+  },
+  {
+   "reference": "Luke 11:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1560
+  },
+  {
+   "reference": "Deuteronomy 33:25b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1562
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "block_index": 1562,
+   "why": "Simpson explicitly gives a 'literal translation' ('all the days ... unto the end of the age'); Segond has 'jusqu’à la fin du monde'"
+  },
+  {
+   "reference": "Psalm 71:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1565
+  },
+  {
+   "reference": "1 Chronicles 26:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1569
+  },
+  {
+   "reference": "Philippians 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1571
+  },
+  {
+   "reference": "Jeremiah 45:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1574
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1580
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1581
+  },
+  {
+   "reference": "James 4:5",
+   "status": "self_rendered",
+   "block_index": 1587,
+   "why": "Simpson quotes the English rendering 'lusteth to envy' in order to criticise it; Segond already reads the verse his preferred way ('C’est avec jalousie que Dieu chérit l’esprit...'), so it cannot carry the rejected wording"
+  },
+  {
+   "reference": "James 4:5",
+   "status": "self_rendered",
+   "block_index": 1588,
+   "why": "Simpson's own proposed rendering ('loveth us to jealousy'), set against the one he rejects"
+  },
+  {
+   "reference": "James 4:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1590
+  },
+  {
+   "reference": "Genesis 8:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1594
+  },
+  {
+   "reference": "Acts 5:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1599
+  },
+  {
+   "reference": "Acts 20:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1605
+  },
+  {
+   "reference": "Acts 20:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1606
+  },
+  {
+   "reference": "Luke 21:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1608
+  },
+  {
+   "reference": "2 Thessalonians 1:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1610
+  },
+  {
+   "reference": "Genesis 18:19",
+   "status": "self_rendered",
+   "block_index": 1614,
+   "why": "Simpson's point rests on KJV 'I know him' (God's approval of a tested man); Segond reads 'je l’ai choisi'. Second half follows Segond's wording"
+  },
+  {
+   "reference": "John 17:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1617
+  }
+ ]
+}
