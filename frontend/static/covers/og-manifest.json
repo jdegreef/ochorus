@@ -2084,6 +2084,16 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"fr/things-as-they-are": {
+			"ground": "9604d7927dca66d7381115789f4e49b8d6b8a0912ff4df0a3df48237493a3a0c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/thoughts-for-the-quiet-hour": {
 			"ground": "cab43362e89f700fe2b0c9509b850b6f9736bd062c77e46923aef120ec7a0add",
 			"style": "revival",
