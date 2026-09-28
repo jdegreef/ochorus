@@ -192,8 +192,9 @@ Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
   Add it to `overlayPortal.test.ts` either way.
 - **Phone reader chrome (below `sm`) is its own layout.** Top: Back · book/
   chapter · Contents · "⋯"; footer `.foot-actions`: Previous · Listen · + ·
-  Aa · Next (folds with `hideChrome`). The sermon has the same row minus
-  Previous/Next. The centre "+" is `<FootFeedback />` (feedback), and the
+  Aa · Next (folds with `hideChrome`). The sermon has the same footer — scrubber,
+  minutes left, and the row, its Previous/Next stepping through the author's
+  sermons (`sermon.prev/next`). The centre "+" is `<FootFeedback />` (feedback), and the
   floating FeedbackFab hides wherever a `.foot-actions` row is up. Traps: (1) the text-settings **sheet**
   (`<ReaderControls sheet>`) mounts at page root, not in `.reader-chrome` —
   its opener is the footer Aa and the top bar unmounts in focus mode (and a

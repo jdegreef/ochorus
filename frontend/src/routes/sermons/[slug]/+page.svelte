@@ -6,6 +6,7 @@
 	import { type Sermon, type SermonSummary, listSermons } from '$lib/library-public';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
+	import { nextBarHidden } from '$lib/readerAutohide';
 	import FocusExit from '$lib/components/FocusExit.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
@@ -108,6 +109,52 @@
 		mq.addEventListener('change', sync);
 		return () => mq.removeEventListener('change', sync);
 	});
+
+	// The footer's action row folds away while reading on and returns on the
+	// first scroll up, as the chapter's does (nextBarHidden). Folding changes no
+	// LAYOUT: the spacer and --foot-h keep the unfolded height, or shrinking them
+	// at the sermon's end would clamp scrollY upward, read as a scroll-up, and
+	// unfold it again — the chapter's flicker loop (page-design skill).
+	let footFolded = $state(false);
+	$effect(() => {
+		if (!isPhone) return;
+		let last = window.scrollY;
+		const onScroll = () => {
+			const y = window.scrollY;
+			footFolded = nextBarHidden(footFolded, y, last, window.innerHeight);
+			last = y;
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => window.removeEventListener('scroll', onScroll);
+	});
+	// Never folded while something the row opened (the Aa sheet) owns the screen.
+	const foldActions = $derived(footFolded && !readerUi.panelOpen);
+
+	// The footer's unfolded height, published as --foot-h for the spacer below
+	// and for fixed UI that clears it (the selection bar). Removed with the footer.
+	let footEl = $state<HTMLElement>();
+	$effect(() => {
+		const el = footEl;
+		if (!el) return;
+		const root = document.documentElement;
+		const ro = new ResizeObserver(() => {
+			if (el.querySelector('.foot-actions.folded')) return;
+			root.style.setProperty('--foot-h', `${el.offsetHeight}px`);
+		});
+		ro.observe(el);
+		return () => {
+			ro.disconnect();
+			root.style.removeProperty('--foot-h');
+		};
+	});
+
+	/** Scroll to a fraction of the sermon — drives the footer's scrubber. */
+	function scrubTo(to: number) {
+		if (!body) return;
+		const rect = body.getBoundingClientRect();
+		const top = window.scrollY + rect.top;
+		window.scrollTo({ top: Math.max(0, top - window.innerHeight + to * rect.height) });
+	}
 	$effect(() => {
 		void sermon.slug; // rebuild when navigating between sermons
 		outline = body ? buildOutline(body) : [];
@@ -696,16 +743,34 @@
 	<div class="min-left" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</div>
 {/if}
 
-<!-- Phone footer, in thumb reach: Listen · + · Aa — the chapter reader's row
-     (its Previous/Next have no sermon equivalent). Hidden in focus and while
-     listening, when the Listen bar owns the bottom edge. -->
+<!-- Phone footer, in thumb reach — the chapter reader's: a scrubber, the
+     minutes left, and Previous · Listen · + · Aa · Next (Previous/Next step
+     through this author's sermons, as the nav at the foot of the page does).
+     Hidden in focus and while listening, when the Listen bar owns the bottom. -->
 {#if isPhone && !readerUi.focus && listen.status === 'idle'}
 	<div class="sermon-foot-spacer" aria-hidden="true"></div>
-	<div class="sermon-foot">
-		{#if frac < 0.99}
-			<p class="sermon-foot-meta" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</p>
-		{/if}
-		<div class="foot-actions">
+	<div bind:this={footEl} class="sermon-foot">
+		<div class="foot-fade" aria-hidden="true"></div>
+		<input
+			class="scrubber"
+			type="range"
+			min="0"
+			max="1"
+			step="0.005"
+			value={frac}
+			oninput={(e) => scrubTo(Number(e.currentTarget.value))}
+			aria-label={t('progress.scrub')}
+			aria-valuetext="{minsLeft} {t('sermon.minLeft')}"
+		/>
+		<p class="sermon-foot-meta" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</p>
+		<div class="foot-actions" class:folded={foldActions}>
+			{#if sermon.prev}
+				<a href={localizeHref(`/sermons/${sermon.prev.slug}`)} class="foot-btn"
+					><Icon name="chevron-left" size={22} /><span>{t('reader.previous')}</span></a
+				>
+			{:else}
+				<span class="foot-btn" aria-hidden="true"></span>
+			{/if}
 			{#if listen.supported}
 				<button class="foot-btn" onclick={() => reader?.startListening()}
 					><Icon name="headphones" size={22} /><span>{t('reader.listen')}</span></button
@@ -720,6 +785,13 @@
 				aria-label={t('reader.textSettings')}
 				title={t('reader.textSettings')}><span class="foot-aa" aria-hidden="true">Aa</span></button
 			>
+			{#if sermon.next}
+				<a href={localizeHref(`/sermons/${sermon.next.slug}`)} class="foot-btn foot-next"
+					><Icon name="chevron-right" size={22} /><span>{t('reader.next')}</span></a
+				>
+			{:else}
+				<span class="foot-btn" aria-hidden="true"></span>
+			{/if}
 		</div>
 	</div>
 {/if}
@@ -750,19 +822,48 @@
 			background: color-mix(in srgb, var(--bg) 82%, transparent);
 			backdrop-filter: blur(6px);
 		}
-		/* In-flow clearance, so the page's last lines scroll clear of the row. */
+		/* In-flow clearance, so the page's last lines scroll clear of the footer.
+		   The measured unfolded height; the fallback covers the first frame. */
 		.sermon-foot-spacer {
 			display: block;
-			height: calc(4.5rem + env(safe-area-inset-bottom));
+			height: var(--foot-h, calc(8rem + env(safe-area-inset-bottom)));
 		}
-		/* For fixed bottom UI that clears the reader footer (the selection bar). */
-		:global(:root:has(.sermon-foot)) {
-			--foot-h: calc(4.5rem + env(safe-area-inset-bottom));
+		.foot-actions {
+			display: flex;
+			margin-top: 0.15rem;
+		}
+		.foot-actions.folded {
+			display: none;
 		}
 	}
-	.foot-actions {
-		display: flex;
-		margin-top: 0.15rem;
+	/* A short fade above the footer, so a line scrolling under it dissolves
+	   instead of being sliced at the bar's top edge. */
+	.foot-fade {
+		position: absolute;
+		inset-inline: 0;
+		bottom: 100%;
+		height: 2.25rem;
+		background: linear-gradient(to top, var(--bg), transparent);
+		pointer-events: none;
+	}
+	.sermon-foot-meta {
+		margin-top: 0.1rem;
+	}
+	.scrubber {
+		display: block;
+		width: 100%;
+		margin: 0 auto;
+		height: 1.1rem;
+		cursor: pointer;
+		accent-color: var(--accent);
+		background: transparent;
+	}
+	/* Touch: a range input's whole height is its hit area — a ≥44px target
+	   without restyling the native thumb. */
+	@media (pointer: coarse) {
+		.scrubber {
+			height: 2.75rem;
+		}
 	}
 	.foot-btn {
 		flex: 1 1 0;
@@ -776,6 +877,9 @@
 		font-size: var(--fs-small);
 		font-weight: 600;
 		color: var(--text);
+	}
+	.foot-next {
+		color: var(--accent);
 	}
 	.foot-aa {
 		font-family: var(--font-display);
