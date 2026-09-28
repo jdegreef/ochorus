@@ -2201,8 +2201,8 @@
 	</div>
 {/if}
 
-<!-- The phone text-settings sheet. Out here, not in the top bar: the bar's
-     backdrop-filter would make it the containing block for this fixed sheet. -->
+<!-- The phone text-settings sheet. Out here, not in the top bar: its opener is
+     the footer's Aa, and the top bar unmounts in focus mode. -->
 {#if isPhone}
 	<ReaderControls sheet layout margins {...rcProps} />
 {/if}

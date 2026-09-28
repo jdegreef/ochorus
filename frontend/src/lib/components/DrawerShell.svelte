@@ -2,6 +2,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import type { Snippet } from 'svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
+	import { portal } from '$lib/actions/portal';
 	import { i18n } from '$lib/i18n.svelte';
 
 	/**
@@ -16,6 +17,12 @@
 	 * bordered (border-inline-start) and slid logically, and everything follows
 	 * the inline axis on its own. Box-shadow offsets and translateX have no
 	 * logical form, so those two alone are flipped explicitly under RTL below.
+	 *
+	 * Scrim and panel are portalled to <body>, so a caller may render the drawer
+	 * anywhere — inside `.page-col` (centred with a transform) or a bar with a
+	 * backdrop-filter — and it still covers the viewport. Both sit inside ONE
+	 * wrapper, which is the node that moves: see `$lib/actions/portal` for why
+	 * it has to be one.
 	 */
 	let {
 		open = $bindable(false),
@@ -76,49 +83,54 @@
 <svelte:window onkeydown={onKeydown} />
 
 {#if open}
-	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-	<div class="drawer-scrim" onclick={close}></div>
-	<!-- focusTrap keeps Tab inside the panel, moves focus in on open (unless the
-	     drawer focuses its own field, autoFocus=false), returns it to the opener
-	     on close, and handles Escape while focus is inside. -->
-	<div
-		class="drawer-panel"
-		class:bottom={placement === 'bottom'}
-		role="dialog"
-		aria-modal="true"
-		aria-label={ariaLabel}
-		style={width ? `--drawer-width: ${width}` : undefined}
-		use:focusTrap={{ onEscape: close, autoFocus }}
-	>
-		{#if placement === 'bottom'}
-			<div class="drawer-handle" aria-hidden="true"></div>
-		{/if}
-		<header class="border-b border-border px-5 py-4">
-			<div class="flex items-center justify-between gap-3">
-				{#if titleArea}
-					{@render titleArea()}
-				{:else}
-					<h2 class="text-h3 text-text">{title}</h2>
-				{/if}
-				<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}
-					><Icon name="close" /></button
-				>
-			</div>
-			{#if headerExtra}
-				{@render headerExtra()}
+	<div class="drawer-portal" use:portal>
+		<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+		<div class="drawer-scrim" onclick={close}></div>
+		<!-- focusTrap keeps Tab inside the panel, moves focus in on open (unless the
+		     drawer focuses its own field, autoFocus=false), returns it to the opener
+		     on close, and handles Escape while focus is inside. -->
+		<div
+			class="drawer-panel"
+			class:bottom={placement === 'bottom'}
+			role="dialog"
+			aria-modal="true"
+			aria-label={ariaLabel}
+			style={width ? `--drawer-width: ${width}` : undefined}
+			use:focusTrap={{ onEscape: close, autoFocus }}
+		>
+			{#if placement === 'bottom'}
+				<div class="drawer-handle" aria-hidden="true"></div>
 			{/if}
-		</header>
-		{#if placement === 'bottom'}
-			<!-- The sheet's body scrolls within the 85vh cap and clears the
-			     home-indicator strip — once here, not in every sheet. -->
-			<div class="sheet-body">{@render children()}</div>
-		{:else}
-			{@render children()}
-		{/if}
+			<header class="border-b border-border px-5 py-4">
+				<div class="flex items-center justify-between gap-3">
+					{#if titleArea}
+						{@render titleArea()}
+					{:else}
+						<h2 class="text-h3 text-text">{title}</h2>
+					{/if}
+					<button class="btn btn-icon btn-ghost" onclick={close} aria-label={t('a11y.close')}
+						><Icon name="close" /></button
+					>
+				</div>
+				{#if headerExtra}
+					{@render headerExtra()}
+				{/if}
+			</header>
+			{#if placement === 'bottom'}
+				<!-- The sheet's body scrolls within the 85vh cap and clears the
+				     home-indicator strip — once here, not in every sheet. -->
+				<div class="sheet-body">{@render children()}</div>
+			{:else}
+				{@render children()}
+			{/if}
+		</div>
 	</div>
 {/if}
 
 <style>
+	.drawer-portal {
+		display: contents;
+	}
 	.drawer-scrim {
 		position: fixed;
 		inset: 0;
