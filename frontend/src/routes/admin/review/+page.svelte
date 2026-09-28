@@ -233,11 +233,24 @@
 			}
 			if (queue) queue.total -= res.decided.length;
 		} catch (e) {
-			const msg =
-				e instanceof ApiError && e.body && typeof e.body === 'object' && 'detail' in e.body
-					? String((e.body as { detail: unknown }).detail)
-					: 'Could not record that decision.';
-			keys.forEach((k) => (rowError = { ...rowError, [k]: msg }));
+			// A batch where EVERY item was held back is a 400 carrying the same
+			// per-item reasons as a 207 — show them, not a generic failure (that
+			// is how a founder's approvals failed twice with no reason given).
+			// Anything else names its status, so a proxy or throttle refusal is
+			// told apart from the API's own answer.
+			const body = e instanceof ApiError && e.body && typeof e.body === 'object' ? e.body : null;
+			const held = body && 'skipped' in body && Array.isArray(body.skipped) ? body.skipped : null;
+			if (held?.length) {
+				for (const s of held as (ReviewTarget & { reason: string })[]) {
+					rowError = { ...rowError, [key(s.kind, s.slug, s.language)]: s.reason };
+				}
+			} else {
+				const msg =
+					body && 'detail' in body
+						? String(body.detail)
+						: `Could not record that decision${e instanceof ApiError ? ` (HTTP ${e.status})` : ''}.`;
+				keys.forEach((k) => (rowError = { ...rowError, [k]: msg }));
+			}
 		} finally {
 			keys.forEach((k) => (busy = { ...busy, [k]: false }));
 		}
