@@ -6,6 +6,7 @@
 // no longer matches the files: run `npm run covers:bars`.
 
 export const GROUND_BARS: Record<string, number> = {
+	'a-hidden-fire': 0.110,
 	'answers-to-prayer': 0.105,
 	'baptism-with-the-holy-spirit': 0.085,
 	'brave-for-god': 0.080,
@@ -24,10 +25,17 @@ export const GROUND_BARS: Record<string, number> = {
 	'religious-affections': 0.035,
 	'revival-lectures': 0.090,
 	'rise-up-men-of-god-2': 0.110,
+	'rooted-1': 0.110,
+	'rooted-2': 0.110,
+	'rooted-3': 0.110,
+	'rooted-4': 0.110,
+	'rooted-5': 0.110,
+	'rooted-6': 0.110,
 	'school-of-prayer': 0.040,
 	'the-reformed-pastor': 0.040,
 	'the-unselfishness-of-god': 0.110,
 	'till-he-come': 0.040,
+	'tukutendereza': 0.110,
 	'watchman-nee-a-life': 0.040
 };
 
