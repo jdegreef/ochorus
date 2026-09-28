@@ -1826,6 +1826,13 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("some often persons", "some ten persons"),
             ("for often years", "for ten years"),
             ("(suppose) often days since", "(suppose) ten days since"),
+            # Book VII: three stray footnote markers (no notes exist), a
+            # tripled letter, and a dropped "no" that inverts the sense
+            # (Augustine: iniquity is "non esse substantiam").
+            ("remains immutably.2 It is", "remains immutably. It is"),
+            ("reneweth all things.4 And", "reneweth all things. And"),
+            ("in need of my gooodness.5 ", "in need of my goodness. "),
+            ("found it to be substance, but", "found it to be no substance, but"),
             # Two chapter numerals lost their final capital.
             ("<h3>Chapter XXi</h3>", "<h3>Chapter XXI</h3>"),
             ("<h3>Chapter Xi</h3>", "<h3>Chapter XI</h3>"),
