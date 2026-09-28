@@ -167,7 +167,12 @@ test('a resume point records the paragraph the reader is actually on', async ({ 
 		.poll(
 			() =>
 				page.evaluate(
-					(book) => JSON.parse(localStorage.getItem('ochorus:anchors') ?? '{}')[`${book}:1`],
+					(book) => {
+						// An anchor is `{p, lang}` (the text it was measured in), or a bare
+						// number when saved before anchors were tagged.
+						const a = JSON.parse(localStorage.getItem('ochorus:anchors') ?? '{}')[`${book}:1`];
+						return typeof a === 'number' ? a : a?.p;
+					},
 					BOOK
 				),
 			{ timeout: 15_000 }
@@ -201,7 +206,12 @@ test('a deep link lands on its paragraph even when the fonts arrive late', async
 		.poll(
 			() =>
 				page.evaluate(
-					(book) => JSON.parse(localStorage.getItem('ochorus:anchors') ?? '{}')[`${book}:1`],
+					(book) => {
+						// An anchor is `{p, lang}` (the text it was measured in), or a bare
+						// number when saved before anchors were tagged.
+						const a = JSON.parse(localStorage.getItem('ochorus:anchors') ?? '{}')[`${book}:1`];
+						return typeof a === 'number' ? a : a?.p;
+					},
 					BOOK
 				),
 			{ timeout: 20_000 }
