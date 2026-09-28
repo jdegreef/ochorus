@@ -501,6 +501,8 @@
   "author_heading_books_sermons": "Vitabu na mahubiri ya %name%",
   "author_heading_books": "Vitabu vya %name%",
   "author_heading_sermons": "Mahubiri ya %name%",
+  "author_share_read": "Soma %title%",
+  "author_share_footer": "Maisha, vitabu na maneno — bure kusoma",
   "book_meta_fallback": "%title% na %name% — soma bure kwenye Ochorus.",
   "book_title_tag": "%title% na %name% — soma bure mtandaoni — Ochorus",
   "chapter_title_tag": "%chapter% — %title% na %name% — Ochorus",

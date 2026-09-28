@@ -501,6 +501,8 @@
   "author_heading_books_sermons": "%name% की पुस्तकें और उपदेश",
   "author_heading_books": "%name% की पुस्तकें",
   "author_heading_sermons": "%name% के उपदेश",
+  "author_share_read": "“%title%” पढ़ें",
+  "author_share_footer": "जीवन, पुस्तकें और वचन — मुफ़्त पढ़ें",
   "book_meta_fallback": "%title% — %name% द्वारा, Ochorus पर निःशुल्क पढ़ें।",
   "book_title_tag": "%title% — %name% द्वारा, ऑनलाइन निःशुल्क पढ़ें — Ochorus",
   "chapter_title_tag": "%chapter% — %title%, %name% द्वारा — Ochorus",

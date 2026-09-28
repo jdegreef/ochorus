@@ -501,6 +501,8 @@
   "author_heading_books_sermons": "የ%name% መጻሕፍትና ስብከቶች",
   "author_heading_books": "የ%name% መጻሕፍት",
   "author_heading_sermons": "የ%name% ስብከቶች",
+  "author_share_read": "«%title%»ን ያንብቡ",
+  "author_share_footer": "ሕይወት፣ መጻሕፍት እና ቃላት — በነጻ ያንብቡ",
   "book_meta_fallback": "%title% በ%name% — በOchorus ላይ በነጻ ያንብቡ።",
   "book_title_tag": "%title% በ%name% — በመስመር ላይ በነጻ ያንብቡ — Ochorus",
   "chapter_title_tag": "%chapter% — %title% በ%name% — Ochorus",

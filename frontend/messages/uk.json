@@ -501,6 +501,8 @@
   "author_heading_books_sermons": "%name% — книги та проповіді",
   "author_heading_books": "%name% — книги",
   "author_heading_sermons": "%name% — проповіді",
+  "author_share_read": "Читайте «%title%»",
+  "author_share_footer": "Життя, книги і слова — читайте безкоштовно",
   "book_meta_fallback": "%title% — %name%. Читайте безкоштовно на Ochorus.",
   "book_title_tag": "%title% — %name%. Читайте безкоштовно онлайн — Ochorus",
   "chapter_title_tag": "%chapter% — %title% — %name% — Ochorus",

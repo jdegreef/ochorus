@@ -501,6 +501,8 @@
   "author_heading_books_sermons": "Ebitabo n'okubuulira kwa %name%",
   "author_heading_books": "Ebitabo bya %name%",
   "author_heading_sermons": "Okubuulira kwa %name%",
+  "author_share_read": "Soma %title%",
+  "author_share_footer": "Obulamu, ebitabo n’ebigambo — okusoma tewali kusasula",
   "book_meta_fallback": "%title% ya %name% — soma bwereere ku Ochorus.",
   "book_title_tag": "%title% ya %name% — soma bwereere ku mutimbagano — Ochorus",
   "chapter_title_tag": "%chapter% — %title% ya %name% — Ochorus",

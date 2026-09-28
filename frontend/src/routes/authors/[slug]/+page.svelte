@@ -30,7 +30,8 @@
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
-	import { shareCard } from '$lib/coverArt';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
+	import { authorCardUrl } from '$lib/authorCard';
 	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -202,13 +203,12 @@
 		const base = t('author.metaFallback').replace('%name%', author.name);
 		return truncateMeta(summaryBits.length ? `${base} ${summaryBits.join(' · ')}.` : base);
 	});
-	// A portrait, else the first book's landscape share card — never its raw
-	// `cover_url`, which for a plate is an `.svg` scrapers refuse and for a
-	// painting is a picture with no title on it (see `shareCard`).
-	const bookCard = $derived(author.books[0] ? shareCard(author.books[0]) : null);
-	const ogImage = $derived(
-		author.photo_url ? absUrl(author.photo_url) : bookCard ? absUrl(bookCard.url) : ''
-	);
+	// The author's own card — the portrait in an arch (a monogram without one),
+	// the name, dates and a line in this page's language — drawn into the build
+	// for every author page, in every locale, by scripts/build-author-cards.mjs.
+	// It replaced the raw portrait, which previews cropped to a strip through
+	// the face.
+	const ogImage = $derived(absUrl(authorCardUrl(author.slug, getLang())));
 
 	const personLd = $derived(
 		jsonLd({
@@ -387,13 +387,9 @@
 	{hreflang}
 	ogType="profile"
 	{ogImage}
-	ogImageWidth={author.photo_url ? undefined : bookCard?.width}
-	ogImageHeight={author.photo_url ? undefined : bookCard?.height}
-	ogImageAlt={author.photo_url
-		? `${t('a11y.portraitOf')} ${author.name}`
-		: bookCard
-			? `${t('a11y.coverOf')} ${author.books[0].title}`
-			: ''}
+	ogImageWidth={LANDSCAPE_WIDTH}
+	ogImageHeight={LANDSCAPE_HEIGHT}
+	ogImageAlt={author.photo_url ? `${t('a11y.portraitOf')} ${author.name}` : author.name}
 	structuredData={[personLd, worksLd, crumbsLd, faqLd].filter((x): x is string => x != null)}
 />
 

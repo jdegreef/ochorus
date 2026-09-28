@@ -501,6 +501,8 @@
   "author_heading_books_sermons": "%name% — الكتب والعظات",
   "author_heading_books": "%name% — الكتب",
   "author_heading_sermons": "%name% — العظات",
+  "author_share_read": "اقرأ «%title%»",
+  "author_share_footer": "السيرة والكتب والأقوال — للقراءة مجانًا",
   "book_meta_fallback": "%title% لـ%name% — للقراءة مجانًا على Ochorus.",
   "book_title_tag": "%title% لـ%name% — للقراءة مجانًا عبر الإنترنت — Ochorus",
   "chapter_title_tag": "%chapter% — %title% لـ%name% — Ochorus",
