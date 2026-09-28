@@ -3314,6 +3314,16 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"provincial-letters": {
+			"ground": "e954e344f5e53eb45677c6482c0d21ef2d632a8bf519cb2a286acfe5a99389d6",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/a-call-to-the-unconverted": {
 			"ground": "dad4dd6b6f8244224cedc3b9e5864c187b55d8e59211d6181448237f31297b25",
 			"style": "press",

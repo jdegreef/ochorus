@@ -743,6 +743,13 @@ CURATED: dict[str, Artwork] = {
         "light hung in it — the vastness Pascal set his thinking reed against.",
         focus=0.2,  # bring the low moon in from the left edge
     ),
+    "provincial-letters": Artwork(
+        "aic", 81568, "Jean-François Rafaëlli", "Notre Dame de Paris", "c. 1890",
+        "The letters were printed in secret and passed from hand to hand through "
+        "Paris. Rafaëlli's autumn quai under Notre-Dame, with two nuns walking "
+        "by the Seine, recalls the nuns of Port-Royal whom Pascal defended.",
+        focus=0.7,
+    ),
 }
 
 
