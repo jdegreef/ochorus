@@ -1,0 +1,8007 @@
+{
+ "kind": "book",
+ "slug": "confessions",
+ "language": "fr",
+ "job_issue": 2800,
+ "pull_request": 4291,
+ "references": [
+  {
+   "reference": "Psalm 145:3",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 147:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "re-personed into address to God, Vulgate wording"
+  },
+  {
+   "reference": "2 Corinthians 4:10",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "re-personed into address to God (also 1 Peter 5:5)"
+  },
+  {
+   "reference": "Romans 10:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 10:14b",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "condensed paraphrase of the verse's second half"
+  },
+  {
+   "reference": "Psalm 22:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "paraphrase blended with Psalm 22:27"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 3,
+   "why": "allusion, recast as relative clause"
+  },
+  {
+   "reference": "Psalm 139:8b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 3
+  },
+  {
+   "reference": "Romans 11:36",
+   "status": "self_rendered",
+   "block_index": 3,
+   "why": "re-personed and follows Pusey's 'in whom'"
+  },
+  {
+   "reference": "Jeremiah 23:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 3
+  },
+  {
+   "reference": "Psalm 18:32",
+   "status": "self_rendered",
+   "block_index": 7,
+   "why": "adapted wording following Vulgate/Pusey"
+  },
+  {
+   "reference": "Job 9:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "why": "Vulgate reading, differs from Segond"
+  },
+  {
+   "reference": "Matthew 25:27",
+   "status": "self_rendered",
+   "block_index": 7,
+   "why": "allusion"
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 7,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 35:3b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 27:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 9
+  },
+  {
+   "reference": "Exodus 33:20",
+   "status": "self_rendered",
+   "block_index": 9,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 19:13",
+   "status": "self_rendered",
+   "block_index": 10,
+   "why": "Vulgate wording differs from Segond"
+  },
+  {
+   "reference": "Psalm 19:14",
+   "status": "self_rendered",
+   "block_index": 10,
+   "why": "Vulgate wording ('ab alienis') differs from Segond"
+  },
+  {
+   "reference": "2 Corinthians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 32:5",
+   "status": "self_rendered",
+   "block_index": 10,
+   "why": "re-personed into address to God, Vulgate wording"
+  },
+  {
+   "reference": "Job 9:3",
+   "status": "self_rendered",
+   "block_index": 10,
+   "why": "allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 27:12",
+   "status": "self_rendered",
+   "block_index": 10,
+   "why": "Vulgate reading (Ps 26:12), absent from Segond"
+  },
+  {
+   "reference": "Psalm 130:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 10
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 12
+  },
+  {
+   "reference": "Jeremiah 12:15",
+   "status": "self_rendered",
+   "block_index": 12,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "James 1:17",
+   "status": "self_rendered",
+   "block_index": 12,
+   "why": "allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 3:9",
+   "status": "self_rendered",
+   "block_index": 12,
+   "why": "paraphrase (Vulgate 'salus')"
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 15,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 102:28b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 102:28a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 15
+  },
+  {
+   "reference": "Exodus 16:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 15
+  },
+  {
+   "reference": "Job 14:4",
+   "status": "self_rendered",
+   "block_index": 17,
+   "why": "LXX/Vulgate reading (Job 14:4-5), differs from Segond"
+  },
+  {
+   "reference": "Psalm 92:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 51:7",
+   "status": "self_rendered",
+   "block_index": 18,
+   "why": "Segond wording recast as a conditional"
+  },
+  {
+   "reference": "John 12:43",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 13:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 22
+  },
+  {
+   "reference": "Genesis 3:17",
+   "status": "self_rendered",
+   "block_index": 22,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 22:3",
+   "status": "self_rendered",
+   "block_index": 22,
+   "why": "Vulgate reading (Ps 21:3), differs from Segond"
+  },
+  {
+   "reference": "Psalm 59:17",
+   "status": "self_rendered",
+   "block_index": 22,
+   "why": "allusion, re-personed"
+  },
+  {
+   "reference": "2 Timothy 4:3",
+   "status": "self_rendered",
+   "block_index": 25,
+   "why": "allusion (with 2 Timothy 4:4)"
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "self_rendered",
+   "block_index": 27,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 121:5",
+   "status": "self_rendered",
+   "block_index": 27,
+   "why": "allusion, re-personed"
+  },
+  {
+   "reference": "Galatians 4:26",
+   "status": "self_rendered",
+   "block_index": 27,
+   "why": "allusion"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 27,
+   "why": "allusion"
+  },
+  {
+   "reference": "Acts 2:38",
+   "status": "self_rendered",
+   "block_index": 27,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Peter 3:1",
+   "status": "self_rendered",
+   "block_index": 27,
+   "why": "allusion to the command that wives submit to husbands"
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "self_rendered",
+   "block_index": 30,
+   "why": "re-personed (votre → notre), within address to God"
+  },
+  {
+   "reference": "Psalm 78:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 32
+  },
+  {
+   "reference": "Psalm 73:27",
+   "status": "self_rendered",
+   "block_index": 33,
+   "why": "allusion to Vulgate 'fornicantur abs te', re-personed into first person"
+  },
+  {
+   "reference": "James 4:4",
+   "status": "self_rendered",
+   "block_index": 33,
+   "why": "paraphrase blended with Psalm 73:27"
+  },
+  {
+   "reference": "Psalm 35:21",
+   "status": "self_rendered",
+   "block_index": 33,
+   "why": "partial allusion to Vulgate 'euge, euge' (Segond 'Ah! Ah!'), rendered as applause"
+  },
+  {
+   "reference": "Genesis 3:19",
+   "status": "self_rendered",
+   "block_index": 33,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 102:2",
+   "status": "self_rendered",
+   "block_index": 38,
+   "why": "re-worded opening prayer (Vulgate Ps 60:2 / 101:2), borrowing Segond vocabulary"
+  },
+  {
+   "reference": "Hebrews 12:5",
+   "status": "self_rendered",
+   "block_index": 38,
+   "why": "allusion (cf. Proverbs 3:11), re-personed into prayer"
+  },
+  {
+   "reference": "Psalm 5:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 38
+  },
+  {
+   "reference": "Matthew 13:4",
+   "status": "self_rendered",
+   "block_index": 54,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Corinthians 10:20",
+   "status": "self_rendered",
+   "block_index": 54,
+   "why": "allusion (Segond: démons)"
+  },
+  {
+   "reference": "Psalm 86:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 56
+  },
+  {
+   "reference": "Isaiah 42:14",
+   "status": "self_rendered",
+   "block_index": 56,
+   "why": "re-personed into a question addressed to God"
+  },
+  {
+   "reference": "Psalm 63:2",
+   "status": "self_rendered",
+   "block_index": 56,
+   "why": "paraphrase, re-personed"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "status": "self_rendered",
+   "block_index": 56,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 27:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 56
+  },
+  {
+   "reference": "Luke 15:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 56
+  },
+  {
+   "reference": "Luke 15:13",
+   "status": "self_rendered",
+   "block_index": 56,
+   "why": "paraphrase of the parable addressed to God"
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "self_rendered",
+   "block_index": 57,
+   "why": "negative form of the golden rule (Tobit 4:15), paraphrase"
+  },
+  {
+   "reference": "Romans 11:33",
+   "status": "self_rendered",
+   "block_index": 57,
+   "why": "allusion, re-personed (cf. Psalm 92:6)"
+  },
+  {
+   "reference": "Isaiah 33:5",
+   "status": "self_rendered",
+   "block_index": 57,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Psalm 31:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 58
+  },
+  {
+   "reference": "Matthew 19:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 58
+  },
+  {
+   "reference": "Psalm 100:3",
+   "status": "self_rendered",
+   "block_index": 59,
+   "why": "re-personed (nous → me)"
+  },
+  {
+   "reference": "Psalm 3:4",
+   "status": "self_rendered",
+   "block_index": 59,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Daniel 10:8",
+   "status": "self_rendered",
+   "block_index": 61,
+   "why": "partial allusion (Vulgate: 'my comeliness was turned into corruption')"
+  },
+  {
+   "reference": "Psalm 50:21",
+   "status": "self_rendered",
+   "block_index": 63,
+   "why": "re-personed into address to God; partial allusion"
+  },
+  {
+   "reference": "Acts 17:27",
+   "status": "self_rendered",
+   "block_index": 64,
+   "why": "paraphrase, re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 7:28b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 64
+  },
+  {
+   "reference": "1 Corinthians 7:1b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 64
+  },
+  {
+   "reference": "1 Corinthians 7:32b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 64
+  },
+  {
+   "reference": "1 Corinthians 7:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 64
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 65
+  },
+  {
+   "reference": "Isaiah 57:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 65
+  },
+  {
+   "reference": "Deuteronomy 32:39",
+   "status": "self_rendered",
+   "block_index": 65,
+   "why": "re-personed into address to God; paraphrase"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "status": "self_rendered",
+   "block_index": 65,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 130:1",
+   "status": "self_rendered",
+   "block_index": 67,
+   "why": "paraphrase, re-personed into address to God"
+  },
+  {
+   "reference": "Romans 1:17",
+   "status": "self_rendered",
+   "block_index": 67,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Corinthians 3:9",
+   "status": "self_rendered",
+   "block_index": 67,
+   "why": "partial allusion, re-personed into address to God"
+  },
+  {
+   "reference": "Romans 1:25",
+   "status": "self_rendered",
+   "block_index": 68,
+   "why": "paraphrase, re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 3:16",
+   "status": "self_rendered",
+   "block_index": 68,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Philippians 2:12",
+   "status": "self_rendered",
+   "block_index": 68,
+   "why": "partial allusion, adapted"
+  },
+  {
+   "reference": "Jeremiah 2:27",
+   "status": "self_rendered",
+   "block_index": 68,
+   "why": "re-personed into address to God; paraphrase"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 69
+  },
+  {
+   "reference": "Jeremiah 51:6",
+   "status": "self_rendered",
+   "block_index": 70,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 73:7",
+   "status": "self_rendered",
+   "block_index": 70,
+   "why": "paraphrase following the Vulgate reading (ex adipe)"
+  },
+  {
+   "reference": "Romans 2:15",
+   "status": "self_rendered",
+   "block_index": 72,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 64:11",
+   "status": "self_rendered",
+   "block_index": 74,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 13:12",
+   "status": "self_rendered",
+   "block_index": 77,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 97:9",
+   "status": "self_rendered",
+   "block_index": 78,
+   "why": "re-personed into address to God; paraphrase"
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "self_rendered",
+   "block_index": 78,
+   "why": "paraphrase, re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 73:27a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 79
+  },
+  {
+   "reference": "Job 7:2",
+   "status": "self_rendered",
+   "block_index": 79,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 116:12",
+   "status": "self_rendered",
+   "block_index": 81,
+   "why": "paraphrase (Segond: « Comment rendrai-je à l’Éternel »)"
+  },
+  {
+   "reference": "Psalm 54:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 81
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "self_rendered",
+   "block_index": 81,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Romans 6:21",
+   "status": "self_rendered",
+   "block_index": 83,
+   "why": "re-personed into first person; paraphrase"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 83
+  },
+  {
+   "reference": "Psalm 18:29",
+   "status": "self_rendered",
+   "block_index": 83,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 19:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 85
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "self_rendered",
+   "block_index": 87,
+   "why": "re-personed into third person; adapted"
+  },
+  {
+   "reference": "Psalm 59:18",
+   "status": "self_rendered",
+   "block_index": 89,
+   "why": "Vulgate Ps 58:18 'Deus meus, misericordia mea'; Segond reads 'mon Dieu tout bon'"
+  },
+  {
+   "reference": "Proverbs 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 92
+  },
+  {
+   "reference": "2 Corinthians 2:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 92
+  },
+  {
+   "reference": "Psalm 119:176",
+   "status": "self_rendered",
+   "block_index": 93,
+   "why": "partial allusion to the straying sheep"
+  },
+  {
+   "reference": "Romans 7:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 95
+  },
+  {
+   "reference": "Psalm 59:17",
+   "status": "self_rendered",
+   "block_index": 95,
+   "why": "partial allusion, re-personed into address to God"
+  },
+  {
+   "reference": "Luke 15:18",
+   "status": "self_rendered",
+   "block_index": 98,
+   "why": "allusion to the prodigal's return, re-personed into address to God"
+  },
+  {
+   "reference": "Job 12:13",
+   "status": "self_rendered",
+   "block_index": 99,
+   "why": "re-personed into address to God; partial"
+  },
+  {
+   "reference": "Colossians 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 99
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 99
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered",
+   "block_index": 101,
+   "why": "paraphrase / allusion"
+  },
+  {
+   "reference": "1 Timothy 3:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 103
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "self_rendered",
+   "block_index": 103,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "James 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 103
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "self_rendered",
+   "block_index": 103,
+   "why": "allusion (weakness becoming strength), re-personed"
+  },
+  {
+   "reference": "John 5:26",
+   "status": "self_rendered",
+   "block_index": 103,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Luke 15:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "Proverbs 9:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "Proverbs 9:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "Proverbs 9:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "Proverbs 9:17b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "Proverbs 9:17a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 106
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 106
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "self_rendered",
+   "block_index": 110,
+   "why": "re-personed into third person / infinitive"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "self_rendered",
+   "block_index": 110,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "1 John 2:16a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 111
+  },
+  {
+   "reference": "Psalm 144:9b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 111
+  },
+  {
+   "reference": "Psalm 27:12",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "Vulgate 'mentita est iniquitas sibi'; Segond wording differs"
+  },
+  {
+   "reference": "Romans 1:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 111
+  },
+  {
+   "reference": "Acts 26:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 111
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "partial allusion: forsaking the fountain, addressed to God"
+  },
+  {
+   "reference": "Psalm 36:10a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 111
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "paraphrase in address to God"
+  },
+  {
+   "reference": "Psalm 102:21a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 111
+  },
+  {
+   "reference": "Psalm 75:6a",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "Vulgate 'horns'; re-personed allusion"
+  },
+  {
+   "reference": "Mark 4:28",
+   "status": "self_rendered",
+   "block_index": 113,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 119:2",
+   "status": "self_rendered",
+   "block_index": 113,
+   "why": "loose allusion, addressed to God"
+  },
+  {
+   "reference": "Psalm 2:4",
+   "status": "self_rendered",
+   "block_index": 115,
+   "why": "allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 144:7a",
+   "status": "self_rendered",
+   "block_index": 117,
+   "why": "re-personed from imperative into narration addressed to God"
+  },
+  {
+   "reference": "Psalm 86:13",
+   "status": "self_rendered",
+   "block_index": 117,
+   "why": "paraphrase / blended allusion"
+  },
+  {
+   "reference": "Psalm 10:17",
+   "status": "self_rendered",
+   "block_index": 117,
+   "why": "Vulgate Ps 9:38 wording; paraphrase"
+  },
+  {
+   "reference": "Psalm 69:3",
+   "status": "self_rendered",
+   "block_index": 118,
+   "why": "paraphrase blending Ps 69:3 and 40:3"
+  },
+  {
+   "reference": "Psalm 40:3",
+   "status": "self_rendered",
+   "block_index": 118,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Timothy 5:5",
+   "status": "self_rendered",
+   "block_index": 118,
+   "why": "partial allusion to the true widow persevering in prayer"
+  },
+  {
+   "reference": "Psalm 88:3a",
+   "status": "self_rendered",
+   "block_index": 118,
+   "why": "re-personed from wish into narration"
+  },
+  {
+   "reference": "2 Timothy 3:13",
+   "status": "self_rendered",
+   "block_index": 122,
+   "why": "partial allusion, re-personed to first person plural"
+  },
+  {
+   "reference": "Psalm 116:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 122
+  },
+  {
+   "reference": "John 6:27",
+   "status": "self_rendered",
+   "block_index": 122,
+   "why": "paraphrase (Segond: la nourriture qui périt, negated)"
+  },
+  {
+   "reference": "Psalm 74:21",
+   "status": "self_rendered",
+   "block_index": 122,
+   "why": "re-personed into first person plural address to God"
+  },
+  {
+   "reference": "Psalm 4:3",
+   "status": "self_rendered",
+   "block_index": 124,
+   "why": "paraphrase, verbs shifted to past narrative"
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "self_rendered",
+   "block_index": 125,
+   "why": "partial allusion (Vulgate Deus cordis mei)"
+  },
+  {
+   "reference": "Psalm 73:27",
+   "status": "self_rendered",
+   "block_index": 125,
+   "why": "Vulgate wording (fornicantur abs te); Segond reads 'infidèles'"
+  },
+  {
+   "reference": "Hosea 12:2",
+   "status": "self_rendered",
+   "block_index": 125,
+   "why": "turned into a rhetorical question about the soul"
+  },
+  {
+   "reference": "1 Corinthians 10:20",
+   "status": "self_rendered",
+   "block_index": 125,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 92:2",
+   "status": "self_rendered",
+   "block_index": 127,
+   "why": "Vulgate wording, re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 41:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 127
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 127
+  },
+  {
+   "reference": "Romans 2:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 127
+  },
+  {
+   "reference": "Psalm 51:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 127
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 128,
+   "why": "re-personed into address to God (also 1 Peter 5:5)"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 131
+  },
+  {
+   "reference": "Psalm 94:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 131
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "status": "self_rendered",
+   "block_index": 131,
+   "why": "partial allusion (Segond: Père des miséricordes)"
+  },
+  {
+   "reference": "Psalm 106:2",
+   "status": "self_rendered",
+   "block_index": 132,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 11:33",
+   "status": "self_rendered",
+   "block_index": 132,
+   "why": "re-personed into address to God, blended with Psalm 36:7"
+  },
+  {
+   "reference": "Psalm 42:6",
+   "status": "self_rendered",
+   "block_index": 133,
+   "why": "paraphrase in indirect speech (Vulgate wording)"
+  },
+  {
+   "reference": "Psalm 42:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 133
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 135,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 71:5",
+   "status": "self_rendered",
+   "block_index": 137,
+   "why": "partial allusion, vocative"
+  },
+  {
+   "reference": "Psalm 25:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 137
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "self_rendered",
+   "block_index": 139,
+   "why": "adapted allusion (fleeing from self rather than from God)"
+  },
+  {
+   "reference": "2 Timothy 4:3",
+   "status": "self_rendered",
+   "block_index": 141,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 146:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 143
+  },
+  {
+   "reference": "Jeremiah 23:24",
+   "status": "self_rendered",
+   "block_index": 143,
+   "why": "partial allusion, third person"
+  },
+  {
+   "reference": "Psalm 119:142",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 143
+  },
+  {
+   "reference": "Psalm 80:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 145
+  },
+  {
+   "reference": "Job 38:11",
+   "status": "self_rendered",
+   "block_index": 145,
+   "why": "partial allusion (Vulgate hinc et huc usque)"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 148,
+   "why": "paraphrase, passive voice"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "status": "self_rendered",
+   "block_index": 148,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Corinthians 13:9",
+   "status": "self_rendered",
+   "block_index": 149,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Acts 17:27",
+   "status": "self_rendered",
+   "block_index": 151,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Isaiah 46:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 151
+  },
+  {
+   "reference": "Psalm 19:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 152
+  },
+  {
+   "reference": "John 1:10",
+   "status": "self_rendered",
+   "block_index": 152,
+   "why": "pronoun adjusted (par elle → par lui) to refer to Christ"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 152
+  },
+  {
+   "reference": "Psalm 41:5",
+   "status": "self_rendered",
+   "block_index": 152,
+   "why": "re-personed from prayer into third person about the soul"
+  },
+  {
+   "reference": "Psalm 4:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 152
+  },
+  {
+   "reference": "Luke 24:25",
+   "status": "self_rendered",
+   "block_index": 152,
+   "why": "partial allusion blended with Ps 4:3 (Vulgate 'gravi corde')"
+  },
+  {
+   "reference": "Psalm 73:9",
+   "status": "self_rendered",
+   "block_index": 152,
+   "why": "re-personed into second-person address"
+  },
+  {
+   "reference": "Psalm 84:7",
+   "status": "self_rendered",
+   "block_index": 152,
+   "why": "Vulgate reading 'valle lacrimarum'; Segond has 'vallée de Baca'"
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "self_rendered",
+   "block_index": 157,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 10:29",
+   "status": "self_rendered",
+   "block_index": 157,
+   "why": "re-personed into address to God; applied to the hairs"
+  },
+  {
+   "reference": "Ephesians 4:14",
+   "status": "self_rendered",
+   "block_index": 158,
+   "why": "first-person singular paraphrase"
+  },
+  {
+   "reference": "Psalm 72:18",
+   "status": "self_rendered",
+   "block_index": 160,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 160
+  },
+  {
+   "reference": "Psalm 18:29a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 161
+  },
+  {
+   "reference": "Psalm 18:29b",
+   "status": "self_rendered",
+   "block_index": 161,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 161,
+   "why": "re-personed (sa → ta) into address to God"
+  },
+  {
+   "reference": "John 1:9",
+   "status": "self_rendered",
+   "block_index": 161,
+   "why": "re-personed into address to God; paraphrase"
+  },
+  {
+   "reference": "James 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 161
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 162,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 78:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 162
+  },
+  {
+   "reference": "John 3:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 163
+  },
+  {
+   "reference": "Psalm 88:7",
+   "status": "self_rendered",
+   "block_index": 163,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 51:10",
+   "status": "self_rendered",
+   "block_index": 163,
+   "why": "negated, re-personed, Vulgate reading ('ossa humiliata')"
+  },
+  {
+   "reference": "Genesis 3:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 166
+  },
+  {
+   "reference": "Genesis 3:19",
+   "status": "self_rendered",
+   "block_index": 166,
+   "why": "re-personed into first person; paraphrase"
+  },
+  {
+   "reference": "Luke 15:12",
+   "status": "self_rendered",
+   "block_index": 167,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 59:10",
+   "status": "self_rendered",
+   "block_index": 167,
+   "why": "Vulgate reading ('fortitudinem meam ad te custodiam'); Segond differs"
+  },
+  {
+   "reference": "Luke 15:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 167
+  },
+  {
+   "reference": "Luke 15:30",
+   "status": "self_rendered",
+   "block_index": 167,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 36:8",
+   "status": "self_rendered",
+   "block_index": 168,
+   "why": "Segond's wording with the capital A of the verse-initial 'A l’ombre' lowered to 'à' mid-sentence"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "self_rendered",
+   "block_index": 168,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 119:108",
+   "status": "self_rendered",
+   "block_index": 170,
+   "why": "partial allusion (Vulgate 'voluntaria oris mei'), re-personed into Augustine's prayer"
+  },
+  {
+   "reference": "Psalm 35:10",
+   "status": "self_rendered",
+   "block_index": 170,
+   "why": "blend with Ps 6:3 (heal my bones); follows the Vulgate wording"
+  },
+  {
+   "reference": "Psalm 19:7",
+   "status": "self_rendered",
+   "block_index": 170,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:4",
+   "status": "self_rendered",
+   "block_index": 172,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "self_rendered",
+   "block_index": 172,
+   "why": "paraphrase, recast about the godless"
+  },
+  {
+   "reference": "Psalm 73:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 172
+  },
+  {
+   "reference": "Revelation 21:4",
+   "status": "self_rendered",
+   "block_index": 172,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Matthew 16:17",
+   "status": "self_rendered",
+   "block_index": 172,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "2 Timothy 2:26",
+   "status": "self_rendered",
+   "block_index": 174,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 138:6",
+   "status": "self_rendered",
+   "block_index": 174,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 48:2",
+   "status": "self_rendered",
+   "block_index": 174,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Psalm 34:19",
+   "status": "self_rendered",
+   "block_index": 174,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 147:4",
+   "status": "self_rendered",
+   "block_index": 174,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 8:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 175
+  },
+  {
+   "reference": "Psalm 8:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 175
+  },
+  {
+   "reference": "Psalm 8:9",
+   "status": "self_rendered",
+   "block_index": 175,
+   "why": "paraphrase of 'tout ce qui parcourt les sentiers des mers'"
+  },
+  {
+   "reference": "Psalm 8:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 175
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 175
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "allusion"
+  },
+  {
+   "reference": "John 1:3",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Psalm 147:5",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "re-personed; follows the Vulgate 'sapientiae eius non est numerus'"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 176
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Matthew 22:21",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "allusion (cf. Matt 17:27)"
+  },
+  {
+   "reference": "Isaiah 14:13",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "allusion (cf. Isa 14:12)"
+  },
+  {
+   "reference": "Romans 1:21b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 176
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 176
+  },
+  {
+   "reference": "Romans 1:22a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 176
+  },
+  {
+   "reference": "Romans 1:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 176
+  },
+  {
+   "reference": "Romans 1:25",
+   "status": "self_rendered",
+   "block_index": 176,
+   "why": "re-personed ('ta vérité') and recast as participles"
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "self_rendered",
+   "block_index": 179,
+   "why": "re-personed and turned positive"
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "self_rendered",
+   "block_index": 179,
+   "why": "recast in the singular"
+  },
+  {
+   "reference": "Job 28:28",
+   "status": "self_rendered",
+   "block_index": 181,
+   "why": "follows the LXX/Vulgate reading 'piety' for 'la crainte du Seigneur'"
+  },
+  {
+   "reference": "John 14:16",
+   "status": "self_rendered",
+   "block_index": 181,
+   "why": "title allusion"
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 182
+  },
+  {
+   "reference": "Ephesians 4:14",
+   "status": "self_rendered",
+   "block_index": 182,
+   "why": "recast in the singular"
+  },
+  {
+   "reference": "Psalm 50:21",
+   "status": "self_rendered",
+   "block_index": 185,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Acts 8:21",
+   "status": "self_rendered",
+   "block_index": 187,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Proverbs 13:14",
+   "status": "self_rendered",
+   "block_index": 188,
+   "why": "partial allusion (cf. Ps 18:6)"
+  },
+  {
+   "reference": "Psalm 42:4",
+   "status": "self_rendered",
+   "block_index": 188,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 37:23a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 188
+  },
+  {
+   "reference": "Psalm 37:23b",
+   "status": "self_rendered",
+   "block_index": 188,
+   "why": "Vulgate reading differs from Segond ('il prend plaisir à sa voie')"
+  },
+  {
+   "reference": "Psalm 142:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 190
+  },
+  {
+   "reference": "Psalm 142:6",
+   "status": "self_rendered",
+   "block_index": 190,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 3:16",
+   "status": "self_rendered",
+   "block_index": 191,
+   "why": "allusion to 'tu enfanteras avec douleur'"
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 193
+  },
+  {
+   "reference": "Ephesians 2:16",
+   "status": "self_rendered",
+   "block_index": 193,
+   "why": "paraphrase applied to Augustine's own sins"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 193
+  },
+  {
+   "reference": "Psalm 51:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 194
+  },
+  {
+   "reference": "Acts 9:36",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Timothy 5:5",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "partial allusion to the true widow who prays night and day"
+  },
+  {
+   "reference": "1 Timothy 5:13",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Timothy 4:7",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "paraphrase (Pusey 'old wives’ fables')"
+  },
+  {
+   "reference": "Luke 2:19",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "allusion to God's handwriting (chirographum)"
+  },
+  {
+   "reference": "Psalm 136:1",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "self_rendered",
+   "block_index": 194,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 196
+  },
+  {
+   "reference": "2 Timothy 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 196
+  },
+  {
+   "reference": "Psalm 41:5",
+   "status": "self_rendered",
+   "block_index": 196,
+   "why": "re-cast into narrative"
+  },
+  {
+   "reference": "Matthew 12:25",
+   "status": "self_rendered",
+   "block_index": 196,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 141:3",
+   "status": "self_rendered",
+   "block_index": 196,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 141:4a",
+   "status": "self_rendered",
+   "block_index": 196,
+   "why": "Vulgate wording, differs from Segond"
+  },
+  {
+   "reference": "Psalm 141:4b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 196
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 197
+  },
+  {
+   "reference": "Colossians 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 197
+  },
+  {
+   "reference": "Psalm 107:8",
+   "status": "self_rendered",
+   "block_index": 198,
+   "why": "Vulgate-based allusion, re-personed"
+  },
+  {
+   "reference": "1 Corinthians 2:15",
+   "status": "self_rendered",
+   "block_index": 198,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 139:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 202
+  },
+  {
+   "reference": "Psalm 73:27",
+   "status": "self_rendered",
+   "block_index": 202,
+   "why": "Vulgate wording, re-personed"
+  },
+  {
+   "reference": "1 Timothy 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 202
+  },
+  {
+   "reference": "Psalm 147:14",
+   "status": "self_rendered",
+   "block_index": 204,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 45:8",
+   "status": "self_rendered",
+   "block_index": 204,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 104:15",
+   "status": "self_rendered",
+   "block_index": 204,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 119:155a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 204
+  },
+  {
+   "reference": "2 Corinthians 3:6",
+   "status": "self_rendered",
+   "block_index": 206,
+   "why": "allusion ('the letter kills')"
+  },
+  {
+   "reference": "Acts 4:12",
+   "status": "self_rendered",
+   "block_index": 207,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 71:5",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "re-personed into address to God; blends 'mon espérance' and 'dès ma jeunesse'"
+  },
+  {
+   "reference": "Job 35:11",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "paraphrase / allusion"
+  },
+  {
+   "reference": "Isaiah 50:10",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 35:6",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "Vulgate wording 'Deus cordis mei'; Segond reads 'rocher de mon cœur'"
+  },
+  {
+   "reference": "Psalm 68:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 209
+  },
+  {
+   "reference": "2 Corinthians 11:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 209
+  },
+  {
+   "reference": "Luke 7:12",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "allusion to the narrative"
+  },
+  {
+   "reference": "Luke 7:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 209
+  },
+  {
+   "reference": "Luke 7:15",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "status": "self_rendered",
+   "block_index": 209,
+   "why": "partial allusion ('Père des miséricordes')"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 209
+  },
+  {
+   "reference": "Galatians 4:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 209
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "self_rendered",
+   "block_index": 211,
+   "why": "adjusted to feminine singular"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 216,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 214
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "self_rendered",
+   "block_index": 214,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "self_rendered",
+   "block_index": 214,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "2 Corinthians 3:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 217
+  },
+  {
+   "reference": "Psalm 117:2",
+   "status": "self_rendered",
+   "block_index": 217,
+   "why": "re-personed allusion (Vulgate 'veritas Domini manet in aeternum')"
+  },
+  {
+   "reference": "Matthew 7:13",
+   "status": "self_rendered",
+   "block_index": 220,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 2:4",
+   "status": "self_rendered",
+   "block_index": 222,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Psalm 63:9",
+   "status": "self_rendered",
+   "block_index": 222,
+   "why": "turned into a wish"
+  },
+  {
+   "reference": "Matthew 13:15",
+   "status": "self_rendered",
+   "block_index": 222,
+   "why": "paraphrase (cf. Isaiah 6:10)"
+  },
+  {
+   "reference": "Galatians 1:10",
+   "status": "self_rendered",
+   "block_index": 222,
+   "why": "adjusted to first person past"
+  },
+  {
+   "reference": "Psalm 51:10",
+   "status": "self_rendered",
+   "block_index": 222,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Hebrews 12:6",
+   "status": "self_rendered",
+   "block_index": 222,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Proverbs 9:8b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "Psalm 120:4",
+   "status": "self_rendered",
+   "block_index": 226,
+   "why": "allusion (Vulgate Ps 119:4)"
+  },
+  {
+   "reference": "Psalm 107:8",
+   "status": "self_rendered",
+   "block_index": 226,
+   "why": "Vulgate 'confiteantur Domino misericordiae eius', re-personed"
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "status": "self_rendered",
+   "block_index": 228,
+   "why": "re-personed into address to God / allusion"
+  },
+  {
+   "reference": "Luke 16:10a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 233
+  },
+  {
+   "reference": "Luke 16:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 233
+  },
+  {
+   "reference": "Luke 16:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 233
+  },
+  {
+   "reference": "Psalm 145:15b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 234
+  },
+  {
+   "reference": "Matthew 7:7b",
+   "status": "self_rendered",
+   "block_index": 236,
+   "why": "partial allusion, recast into the speaker's question"
+  },
+  {
+   "reference": "Psalm 55:23a",
+   "status": "self_rendered",
+   "block_index": 238,
+   "why": "re-personed into address to God (Vulgate Ps 54:23 'iacta curam'); vocabulary of 1 Peter 5:7"
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "self_rendered",
+   "block_index": 238,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Genesis 3:1",
+   "status": "self_rendered",
+   "block_index": 240,
+   "why": "allusion"
+  },
+  {
+   "reference": "Isaiah 28:15a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 241
+  },
+  {
+   "reference": "Psalm 103:14b",
+   "status": "self_rendered",
+   "block_index": 241,
+   "why": "allusion"
+  },
+  {
+   "reference": "Matthew 7:13",
+   "status": "self_rendered",
+   "block_index": 245,
+   "why": "allusion"
+  },
+  {
+   "reference": "Proverbs 19:21a",
+   "status": "self_rendered",
+   "block_index": 245,
+   "why": "re-personed (first person plural) paraphrase"
+  },
+  {
+   "reference": "Psalm 33:11a",
+   "status": "self_rendered",
+   "block_index": 245,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 145:15-16",
+   "status": "self_rendered",
+   "block_index": 245,
+   "why": "blend of verses, re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 69:15a",
+   "status": "self_rendered",
+   "block_index": 249,
+   "why": "allusion, recast"
+  },
+  {
+   "reference": "Psalm 51:4a",
+   "status": "self_rendered",
+   "block_index": 249,
+   "why": "allusion, recast"
+  },
+  {
+   "reference": "Acts 24:25",
+   "status": "self_rendered",
+   "block_index": 249,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Romans 7:22b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 249
+  },
+  {
+   "reference": "Psalm 119:151a",
+   "status": "self_rendered",
+   "block_index": 250,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "self_rendered",
+   "block_index": 250,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 15:52",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 252
+  },
+  {
+   "reference": "Psalm 18:29b",
+   "status": "self_rendered",
+   "block_index": 253,
+   "why": "re-personed into address to God, past tense"
+  },
+  {
+   "reference": "2 Timothy 3:13",
+   "status": "self_rendered",
+   "block_index": 255,
+   "why": "partial allusion (deceived deceivers)"
+  },
+  {
+   "reference": "Revelation 3:16",
+   "status": "self_rendered",
+   "block_index": 255,
+   "why": "allusion"
+  },
+  {
+   "reference": "Hebrews 12:15",
+   "status": "self_rendered",
+   "block_index": 258,
+   "why": "allusion (root/plant of bitterness)"
+  },
+  {
+   "reference": "Psalm 6:6",
+   "status": "self_rendered",
+   "block_index": 258,
+   "why": "paraphrase following the Vulgate (Ps 6:6 'in inferno autem quis confitebitur tibi')"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 262,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 107:8",
+   "status": "self_rendered",
+   "block_index": 264,
+   "why": "Vulgate wording (confiteantur Domino misericordiae eius), re-personed into address to God"
+  },
+  {
+   "reference": "Romans 11:33",
+   "status": "self_rendered",
+   "block_index": 266,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 34:16b",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "allusion, re-personed"
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 268
+  },
+  {
+   "reference": "Psalm 38:9b",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "Segond wording adapted to past tense and sentence grammar"
+  },
+  {
+   "reference": "Psalm 38:10a",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "Segond wording in past tense"
+  },
+  {
+   "reference": "Psalm 38:11b",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "Segond wording in past tense"
+  },
+  {
+   "reference": "Job 15:26",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "re-personed to first person (Vulgate 'cucurrit adversus eum erecto collo')"
+  },
+  {
+   "reference": "Psalm 89:11a",
+   "status": "self_rendered",
+   "block_index": 268,
+   "why": "Vulgate wording (humiliasti sicut vulneratum superbum) differs from Segond"
+  },
+  {
+   "reference": "Psalm 102:13a",
+   "status": "self_rendered",
+   "block_index": 270,
+   "why": "Vulgate wording (permanes), Segond vocabulary"
+  },
+  {
+   "reference": "Psalm 85:6a",
+   "status": "self_rendered",
+   "block_index": 270,
+   "why": "question turned into statement, re-personed"
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 270
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 272,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "self_rendered",
+   "block_index": 272,
+   "why": "re-personed; paraphrase"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:4b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:8",
+   "status": "self_rendered",
+   "block_index": 272,
+   "why": "paraphrase applied to the soul"
+  },
+  {
+   "reference": "John 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "John 1:13",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "Pusey's order and wording differ from Segond"
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:9a",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "Augustine's Latin reading differs from Segond"
+  },
+  {
+   "reference": "Philippians 2:9b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Philippians 2:11",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "Augustine's Latin reading differs from Segond"
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "abridged; adapted grammar"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Psalm 25:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Psalm 25:9b",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "Vulgate wording (mites, vias)"
+  },
+  {
+   "reference": "Psalm 25:18",
+   "status": "self_rendered",
+   "block_index": 273,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Romans 1:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Romans 1:23",
+   "status": "self_rendered",
+   "block_index": 274,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 25:34",
+   "status": "self_rendered",
+   "block_index": 274,
+   "why": "allusion"
+  },
+  {
+   "reference": "Acts 7:39",
+   "status": "self_rendered",
+   "block_index": 274,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 106:20",
+   "status": "self_rendered",
+   "block_index": 274,
+   "why": "Vulgate 'vituli'; Segond has 'bœuf'"
+  },
+  {
+   "reference": "Romans 9:12",
+   "status": "self_rendered",
+   "block_index": 274,
+   "why": "adapted grammar"
+  },
+  {
+   "reference": "Exodus 3:22",
+   "status": "self_rendered",
+   "block_index": 274,
+   "why": "allusion"
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "self_rendered",
+   "block_index": 274,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 1:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 274
+  },
+  {
+   "reference": "Psalm 30:11",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "allusion (Vulgate Ps 29:11), re-personed"
+  },
+  {
+   "reference": "Psalm 118:28a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 276
+  },
+  {
+   "reference": "Psalm 39:12",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "Vulgate Ps 38:12 wording (araneam); Segond has 'teigne'"
+  },
+  {
+   "reference": "Exodus 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 276
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "paraphrase applied to Truth"
+  },
+  {
+   "reference": "Psalm 73:28",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "Vulgate Ps 72:28 wording"
+  },
+  {
+   "reference": "Wisdom 7:27",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "deuterocanonical, not in Segond; paraphrase"
+  },
+  {
+   "reference": "Psalm 16:2",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "Vulgate Ps 15:2 wording"
+  },
+  {
+   "reference": "Psalm 73:28",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "repeated in Chapter XI; Vulgate wording"
+  },
+  {
+   "reference": "Wisdom 7:27",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "repeated in Chapter XI; deuterocanonical, not in Segond"
+  },
+  {
+   "reference": "Psalm 16:2",
+   "status": "self_rendered",
+   "block_index": 276,
+   "why": "repeated in Chapter XI; Vulgate wording"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 280,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 148:7",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "Psalm 148 woven into address to God; articles added"
+  },
+  {
+   "reference": "Psalm 148:8",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "re-personed; Pusey's 'ice' kept"
+  },
+  {
+   "reference": "Psalm 148:9",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "articles added"
+  },
+  {
+   "reference": "Psalm 148:10",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "articles added"
+  },
+  {
+   "reference": "Psalm 148:11",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "articles added"
+  },
+  {
+   "reference": "Psalm 148:12",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "articles added"
+  },
+  {
+   "reference": "Psalm 148:13",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 148:1",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 148:2",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "re-personed"
+  },
+  {
+   "reference": "Psalm 148:3",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 148:4",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "grammar adapted"
+  },
+  {
+   "reference": "Psalm 148:5",
+   "status": "self_rendered",
+   "block_index": 282,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 119:37",
+   "status": "self_rendered",
+   "block_index": 284,
+   "why": "narrative paraphrase"
+  },
+  {
+   "reference": "Sirach 10:9",
+   "status": "self_rendered",
+   "block_index": 288,
+   "why": "deuterocanonical, not in Segond; allusion"
+  },
+  {
+   "reference": "Wisdom 9:15",
+   "status": "self_rendered",
+   "block_index": 290,
+   "why": "deuterocanonical, not in Segond"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 290,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 290,
+   "why": "re-personed; paraphrase"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 292
+  },
+  {
+   "reference": "Romans 9:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 292
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 292
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "1 Corinthians 3:2",
+   "status": "self_rendered",
+   "block_index": 292,
+   "why": "allusion"
+  },
+  {
+   "reference": "Genesis 3:21",
+   "status": "self_rendered",
+   "block_index": 292,
+   "why": "allusion"
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 272
+  },
+  {
+   "reference": "Luke 10:21",
+   "status": "self_rendered",
+   "block_index": 294,
+   "why": "allusion"
+  },
+  {
+   "reference": "1 Corinthians 11:19",
+   "status": "self_rendered",
+   "block_index": 294,
+   "why": "Augustine's reading ('hérésies', 'among the weak')"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 290,
+   "why": "re-personed; paraphrase (Chapter XX)"
+  },
+  {
+   "reference": "Psalm 102:28",
+   "status": "self_rendered",
+   "block_index": 296,
+   "why": "re-personed paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 8:1",
+   "status": "self_rendered",
+   "block_index": 296,
+   "why": "allusion"
+  },
+  {
+   "reference": "1 Corinthians 3:11",
+   "status": "self_rendered",
+   "block_index": 296,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 2:11",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "first person"
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 298
+  },
+  {
+   "reference": "Romans 7:23",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Psalm 119:137",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "adapted"
+  },
+  {
+   "reference": "Daniel 9:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 298
+  },
+  {
+   "reference": "Psalm 32:4",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "John 8:44",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Romans 7:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 298
+  },
+  {
+   "reference": "Proverbs 8:22",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "Vulgate wording, re-personed"
+  },
+  {
+   "reference": "John 14:30",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 51:19a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 298
+  },
+  {
+   "reference": "Psalm 51:19b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 298
+  },
+  {
+   "reference": "2 Corinthians 1:22",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 116:13",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 62:2a",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "Vulgate Ps 61:2 wording"
+  },
+  {
+   "reference": "Psalm 62:2b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 298
+  },
+  {
+   "reference": "Psalm 62:3",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "Vulgate Ps 61:3 wording"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 298
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 273
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 298
+  },
+  {
+   "reference": "Psalm 91:13",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "allusion"
+  },
+  {
+   "reference": "1 Corinthians 15:9",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Habakkuk 3:2",
+   "status": "self_rendered",
+   "block_index": 298,
+   "why": "Vulgate/LXX wording"
+  },
+  {
+   "reference": "Psalm 35:10",
+   "status": "self_rendered",
+   "block_index": 300,
+   "why": "paraphrase; Segond reads « Qui peut, comme toi »"
+  },
+  {
+   "reference": "Psalm 116:16b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 300
+  },
+  {
+   "reference": "Psalm 116:17a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 300
+  },
+  {
+   "reference": "Psalm 8:2",
+   "status": "self_rendered",
+   "block_index": 300,
+   "why": "blended doxology (Ps 8:2; 72:19), not a single verse"
+  },
+  {
+   "reference": "Psalm 139:5",
+   "status": "self_rendered",
+   "block_index": 300,
+   "why": "partial allusion, past tense"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 300
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 300,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 300,
+   "why": "allusion"
+  },
+  {
+   "reference": "Matthew 7:14",
+   "status": "self_rendered",
+   "block_index": 300,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 26:8",
+   "status": "self_rendered",
+   "block_index": 301,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 7:7",
+   "status": "self_rendered",
+   "block_index": 301,
+   "why": "re-personed into third person (Paul)"
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 301
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 301
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 301
+  },
+  {
+   "reference": "Psalm 18:36",
+   "status": "self_rendered",
+   "block_index": 301,
+   "why": "past tense of « Ta droite me soutient » (also Ps 63:9)"
+  },
+  {
+   "reference": "Job 28:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 301
+  },
+  {
+   "reference": "Proverbs 3:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 301
+  },
+  {
+   "reference": "Romans 1:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 301
+  },
+  {
+   "reference": "Matthew 13:46",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 301
+  },
+  {
+   "reference": "Colossians 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 303
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered",
+   "block_index": 303,
+   "why": "paraphrase applied to the humility of Christ"
+  },
+  {
+   "reference": "Psalm 144:5",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 29:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 308
+  },
+  {
+   "reference": "Luke 12:9",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "paraphrase blending Luke 12:8-9"
+  },
+  {
+   "reference": "Psalm 112:10",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "pluralized and put in past tense"
+  },
+  {
+   "reference": "Psalm 40:5",
+   "status": "self_rendered",
+   "block_index": 308,
+   "why": "paraphrase following the Vulgate"
+  },
+  {
+   "reference": "Luke 15:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 311
+  },
+  {
+   "reference": "Luke 15:5",
+   "status": "self_rendered",
+   "block_index": 311,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Luke 15:9",
+   "status": "self_rendered",
+   "block_index": 311,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 311
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 311
+  },
+  {
+   "reference": "Psalm 102:28a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 311
+  },
+  {
+   "reference": "Ecclesiastes 3:11",
+   "status": "self_rendered",
+   "block_index": 313,
+   "why": "blended allusion (Eccl 3:11; Gen 1)"
+  },
+  {
+   "reference": "Psalm 120:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 313
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "John 1:12",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "James 2:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 315
+  },
+  {
+   "reference": "1 Corinthians 1:27b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 315
+  },
+  {
+   "reference": "1 Corinthians 1:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 315
+  },
+  {
+   "reference": "1 Corinthians 15:9",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Acts 13:9",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "allusion to Acts 13:7-12"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Matthew 12:29",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "self_rendered",
+   "block_index": 315,
+   "why": "pluralized paraphrase"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 318
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 318
+  },
+  {
+   "reference": "Ephesians 5:14b",
+   "status": "self_rendered",
+   "block_index": 318,
+   "why": "Segond's verse-line capitals lowered in running prose"
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "self_rendered",
+   "block_index": 318,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 7:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 318
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 318
+  },
+  {
+   "reference": "Romans 7:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 318
+  },
+  {
+   "reference": "Psalm 116:16",
+   "status": "self_rendered",
+   "block_index": 320,
+   "why": "partial allusion re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 19:15",
+   "status": "self_rendered",
+   "block_index": 320,
+   "why": "Vulgate wording (adiutor et redemptor), differs from Segond"
+  },
+  {
+   "reference": "2 Corinthians 2:15",
+   "status": "self_rendered",
+   "block_index": 322,
+   "why": "allusion re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "self_rendered",
+   "block_index": 322,
+   "why": "paraphrase woven into narrative"
+  },
+  {
+   "reference": "Luke 14:28",
+   "status": "self_rendered",
+   "block_index": 322,
+   "why": "allusion"
+  },
+  {
+   "reference": "Luke 14:33",
+   "status": "self_rendered",
+   "block_index": 322,
+   "why": "paraphrase, re-personed"
+  },
+  {
+   "reference": "Luke 24:29",
+   "status": "self_rendered",
+   "block_index": 322,
+   "why": "tense adjusted to narrative"
+  },
+  {
+   "reference": "Psalm 50:21",
+   "status": "self_rendered",
+   "block_index": 324,
+   "why": "Vulgate wording re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 36:3",
+   "status": "self_rendered",
+   "block_index": 324,
+   "why": "Vulgate wording, differs from Segond; first person"
+  },
+  {
+   "reference": "Psalm 55:7",
+   "status": "self_rendered",
+   "block_index": 326,
+   "why": "allusion"
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "self_rendered",
+   "block_index": 328,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 35:10",
+   "status": "self_rendered",
+   "block_index": 328,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 68:3",
+   "status": "self_rendered",
+   "block_index": 333,
+   "why": "Vulgate wording re-personed into address to God"
+  },
+  {
+   "reference": "Titus 1:10",
+   "status": "self_rendered",
+   "block_index": 333,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Ephesians 5:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 333
+  },
+  {
+   "reference": "John 1:9",
+   "status": "self_rendered",
+   "block_index": 333,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 34:6",
+   "status": "self_rendered",
+   "block_index": 333,
+   "why": "Vulgate wording, differs from Segond"
+  },
+  {
+   "reference": "Romans 7:17",
+   "status": "self_rendered",
+   "block_index": 333,
+   "why": "tense adjusted to narrative"
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "self_rendered",
+   "block_index": 338,
+   "why": "plural, partial allusion"
+  },
+  {
+   "reference": "Psalm 113:9",
+   "status": "self_rendered",
+   "block_index": 339,
+   "why": "allusion"
+  },
+  {
+   "reference": "Colossians 3:5",
+   "status": "self_rendered",
+   "block_index": 339,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 119:85",
+   "status": "self_rendered",
+   "block_index": 339,
+   "why": "Vulgate wording (Ps 118:85), differs from Segond"
+  },
+  {
+   "reference": "Psalm 51:19",
+   "status": "self_rendered",
+   "block_index": 341,
+   "why": "allusion re-personed"
+  },
+  {
+   "reference": "Psalm 6:4b",
+   "status": "self_rendered",
+   "block_index": 341,
+   "why": "Seigneur for Éternel, address to God"
+  },
+  {
+   "reference": "Psalm 79:5a",
+   "status": "self_rendered",
+   "block_index": 341,
+   "why": "Seigneur for Éternel, address to God"
+  },
+  {
+   "reference": "Psalm 79:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 341
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 342
+  },
+  {
+   "reference": "Romans 13:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 342
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 342
+  },
+  {
+   "reference": "Romans 14:1a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 343
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 343,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 30:12",
+   "status": "self_rendered",
+   "block_index": 343,
+   "why": "re-personed (third person), paraphrase"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "status": "self_rendered",
+   "block_index": 345,
+   "why": "re-personed into address to God (vocative), Segond wording kept"
+  },
+  {
+   "reference": "Psalm 116:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 345
+  },
+  {
+   "reference": "Psalm 35:10",
+   "status": "self_rendered",
+   "block_index": 345,
+   "why": "partial quotation, Vulgate/Pusey wording"
+  },
+  {
+   "reference": "Psalm 35:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 345
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 345,
+   "why": "re-personed into address to Christ; Segond vocabulary"
+  },
+  {
+   "reference": "Psalm 19:15",
+   "status": "self_rendered",
+   "block_index": 345,
+   "why": "Vulgate 'adjutor meus et redemptor meus'; partial allusion"
+  },
+  {
+   "reference": "Psalm 84:7",
+   "status": "self_rendered",
+   "block_index": 347,
+   "why": "Vulgate 'vallis lacrimarum' (Segond: vallée de Baca); allusion"
+  },
+  {
+   "reference": "Psalm 120:4",
+   "status": "self_rendered",
+   "block_index": 347,
+   "why": "partial allusion, Vulgate wording"
+  },
+  {
+   "reference": "Psalm 120:2",
+   "status": "self_rendered",
+   "block_index": 347,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Corinthians 7:23",
+   "status": "self_rendered",
+   "block_index": 347,
+   "why": "allusion, re-personed"
+  },
+  {
+   "reference": "Romans 14:16",
+   "status": "self_rendered",
+   "block_index": 348,
+   "why": "paraphrase woven into narrative"
+  },
+  {
+   "reference": "Psalm 46:11",
+   "status": "self_rendered",
+   "block_index": 349,
+   "why": "Vulgate 'vacate et videte'; re-personed allusion"
+  },
+  {
+   "reference": "Luke 14:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 351
+  },
+  {
+   "reference": "Psalm 68:16",
+   "status": "self_rendered",
+   "block_index": 351,
+   "why": "Vulgate 'mons incaseatus, mons uber'; allusion"
+  },
+  {
+   "reference": "Luke 16:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 352
+  },
+  {
+   "reference": "Psalm 27:8",
+   "status": "self_rendered",
+   "block_index": 352,
+   "why": "Vulgate/Pusey wording differs from Segond"
+  },
+  {
+   "reference": "Luke 3:5",
+   "status": "self_rendered",
+   "block_index": 354,
+   "why": "applied to self; paraphrase with Segond vocabulary"
+  },
+  {
+   "reference": "Psalm 29:5",
+   "status": "self_rendered",
+   "block_index": 354,
+   "why": "allusion, applied figuratively"
+  },
+  {
+   "reference": "Psalm 19:7",
+   "status": "self_rendered",
+   "block_index": 355,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 4:2a",
+   "status": "self_rendered",
+   "block_index": 355,
+   "why": "Vulgate wording (past tense, 'dilatasti mihi') differs from Segond"
+  },
+  {
+   "reference": "Psalm 4:2b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 355
+  },
+  {
+   "reference": "Psalm 143:10",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 4:3",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "Vulgate 'usquequo gravi corde' differs from Segond; Segond vocabulary"
+  },
+  {
+   "reference": "Ephesians 1:20",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "allusion"
+  },
+  {
+   "reference": "John 14:16",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 356
+  },
+  {
+   "reference": "John 7:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 356
+  },
+  {
+   "reference": "Psalm 4:4a",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "Vulgate 'mirificavit sanctum suum' differs from Segond"
+  },
+  {
+   "reference": "Psalm 4:4b",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "re-personed paraphrase"
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 356,
+   "why": "paraphrase, re-personed"
+  },
+  {
+   "reference": "Psalm 4:5",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "Vulgate 'irascimini' (Segond: Tremblez); wording borrowed from Ephesians 4:26"
+  },
+  {
+   "reference": "Romans 2:5",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "re-personed ('ton juste jugement'), adapted to third person"
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 4:7a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 357
+  },
+  {
+   "reference": "Psalm 4:7b",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "Vulgate 'signatum est super nos' differs from Segond"
+  },
+  {
+   "reference": "John 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 357
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "paraphrase, re-personed"
+  },
+  {
+   "reference": "Ephesians 4:22",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 4:8a",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "re-personed, Vulgate wording"
+  },
+  {
+   "reference": "Psalm 4:8b",
+   "status": "self_rendered",
+   "block_index": 357,
+   "why": "Vulgate 'frumenti, vini et olei'; allusion"
+  },
+  {
+   "reference": "Psalm 4:9a",
+   "status": "self_rendered",
+   "block_index": 358,
+   "why": "Vulgate 'in pace in idipsum'; fragmentary"
+  },
+  {
+   "reference": "Psalm 4:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 358
+  },
+  {
+   "reference": "1 Corinthians 15:54",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 358
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 358,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 4:9b",
+   "status": "self_rendered",
+   "block_index": 358,
+   "why": "Vulgate 'singulariter in spe constituisti me' differs from Segond"
+  },
+  {
+   "reference": "Psalm 119:139",
+   "status": "self_rendered",
+   "block_index": 358,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "self_rendered",
+   "block_index": 366,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Song of Songs 1:3",
+   "status": "self_rendered",
+   "block_index": 366,
+   "why": "re-personed, narrative"
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "self_rendered",
+   "block_index": 366,
+   "why": "negated allusion"
+  },
+  {
+   "reference": "Isaiah 40:6",
+   "status": "self_rendered",
+   "block_index": 366,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 68:7",
+   "status": "self_rendered",
+   "block_index": 368,
+   "why": "Vulgate Ps 67:7 reading, re-personed into address to God; Segond wording differs"
+  },
+  {
+   "reference": "Sirach 19:1",
+   "status": "self_rendered",
+   "block_index": 369,
+   "why": "deuterocanonical verse, not in the Segond file"
+  },
+  {
+   "reference": "1 Peter 3:1",
+   "status": "self_rendered",
+   "block_index": 371,
+   "why": "allusion, re-personed"
+  },
+  {
+   "reference": "1 Timothy 5:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 374
+  },
+  {
+   "reference": "1 Timothy 5:4",
+   "status": "self_rendered",
+   "block_index": 374,
+   "why": "adapted to third person singular"
+  },
+  {
+   "reference": "1 Timothy 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 374
+  },
+  {
+   "reference": "1 Timothy 5:10",
+   "status": "self_rendered",
+   "block_index": 374,
+   "why": "adapted tense/person"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 374,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 376
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "self_rendered",
+   "block_index": 376,
+   "why": "re-personed to first person plural"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 376,
+   "why": "partial allusion, re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 376
+  },
+  {
+   "reference": "Psalm 36:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 376
+  },
+  {
+   "reference": "Psalm 81:17",
+   "status": "self_rendered",
+   "block_index": 377,
+   "why": "loose allusion (Vulgate Ps 80:17)"
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 377
+  },
+  {
+   "reference": "Revelation 21:5",
+   "status": "self_rendered",
+   "block_index": 377,
+   "why": "paraphrase (also Wisdom 7:27)"
+  },
+  {
+   "reference": "Psalm 100:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 378
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "block_index": 378,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 378
+  },
+  {
+   "reference": "1 Corinthians 15:51",
+   "status": "self_rendered",
+   "block_index": 378,
+   "why": "Vulgate reading, opposite of Segond's text"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 384
+  },
+  {
+   "reference": "Psalm 101:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 386
+  },
+  {
+   "reference": "Psalm 101:1",
+   "status": "self_rendered",
+   "block_index": 386,
+   "why": "Seigneur for Éternel, adjusted punctuation"
+  },
+  {
+   "reference": "Psalm 68:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 387
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "status": "self_rendered",
+   "block_index": 398,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Matthew 5:22",
+   "status": "self_rendered",
+   "block_index": 398,
+   "why": "adapted: Segond's clause names Raca before Insensé"
+  },
+  {
+   "reference": "Matthew 5:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 398
+  },
+  {
+   "reference": "Psalm 130:3",
+   "status": "self_rendered",
+   "block_index": 398,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "2 Corinthians 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 398
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 18:35",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "paraphrase blended with Matthew 6:12"
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "paraphrase of the Lord's Prayer petition"
+  },
+  {
+   "reference": "Psalm 143:2",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "adapted: 'avec elle' for 'avec ton serviteur'"
+  },
+  {
+   "reference": "James 2:13",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "paraphrase, re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 5:7",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 9:15",
+   "status": "self_rendered",
+   "block_index": 399,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 119:108",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "Vulgate wording; Segond differs"
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Colossians 2:15",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "John 14:30",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 91:13",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Revelation 12:10",
+   "status": "self_rendered",
+   "block_index": 400,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Luke 8:15",
+   "status": "self_rendered",
+   "block_index": 401,
+   "why": "paraphrase, adapted"
+  },
+  {
+   "reference": "Galatians 4:26",
+   "status": "self_rendered",
+   "block_index": 401,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 403
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 403
+  },
+  {
+   "reference": "2 Corinthians 4:13",
+   "status": "self_rendered",
+   "block_index": 403,
+   "why": "partial allusion (Ps 116:10 LXX via Paul), 'hope' for 'believed', present tense"
+  },
+  {
+   "reference": "Psalm 51:8",
+   "status": "self_rendered",
+   "block_index": 403,
+   "why": "Vulgate wording (veritatem dilexisti), differs from Segond"
+  },
+  {
+   "reference": "John 3:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 403
+  },
+  {
+   "reference": "1 Timothy 6:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 403
+  },
+  {
+   "reference": "Hebrews 4:13",
+   "status": "self_rendered",
+   "block_index": 405,
+   "why": "partial allusion, re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 5:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 405
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 405,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 407,
+   "why": "re-personed, first person"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Psalm 32:1",
+   "status": "self_rendered",
+   "block_index": 408,
+   "why": "allusion to Vulgate 'tecta sunt peccata', re-personed"
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "self_rendered",
+   "block_index": 408,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "self_rendered",
+   "block_index": 410,
+   "why": "paraphrase addressed to God"
+  },
+  {
+   "reference": "Psalm 144:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 410
+  },
+  {
+   "reference": "Psalm 144:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 410
+  },
+  {
+   "reference": "Psalm 144:8b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 410
+  },
+  {
+   "reference": "Psalm 51:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 410
+  },
+  {
+   "reference": "Psalm 79:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 410
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "self_rendered",
+   "block_index": 410,
+   "why": "paraphrase addressed to God (with Ps 138:8)"
+  },
+  {
+   "reference": "Psalm 138:8",
+   "status": "self_rendered",
+   "block_index": 410,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 2:11",
+   "status": "self_rendered",
+   "block_index": 411,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 17:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 411
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 411
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 411,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Corinthians 4:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 411
+  },
+  {
+   "reference": "1 Corinthians 4:4",
+   "status": "self_rendered",
+   "block_index": 413,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 413
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 413
+  },
+  {
+   "reference": "2 Corinthians 5:6",
+   "status": "self_rendered",
+   "block_index": 413,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 413,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Isaiah 58:10",
+   "status": "self_rendered",
+   "block_index": 413,
+   "why": "partial allusion, first person"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 415,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Romans 9:15",
+   "status": "self_rendered",
+   "block_index": 415,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 69:35",
+   "status": "self_rendered",
+   "block_index": 415,
+   "why": "allusion, addressed to God"
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 415
+  },
+  {
+   "reference": "Psalm 100:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 416
+  },
+  {
+   "reference": "Psalm 104:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 417
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 417,
+   "why": "abridged: Segond words with the middle clause omitted"
+  },
+  {
+   "reference": "Psalm 32:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 419
+  },
+  {
+   "reference": "Genesis 3:19",
+   "status": "self_rendered",
+   "block_index": 442,
+   "why": "partial allusion to the curse on the ground and the sweat of the brow"
+  },
+  {
+   "reference": "Job 35:11",
+   "status": "self_rendered",
+   "block_index": 444,
+   "why": "paraphrase in the third person, borrowing Segond vocabulary"
+  },
+  {
+   "reference": "Luke 15:8",
+   "status": "self_rendered",
+   "block_index": 446,
+   "why": "narrative paraphrase of the parable"
+  },
+  {
+   "reference": "Psalm 69:33b",
+   "status": "self_rendered",
+   "block_index": 450,
+   "why": "re-personed into address to God (seeking God that the soul may live)"
+  },
+  {
+   "reference": "Proverbs 30:15b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Romans 8:24a",
+   "status": "self_rendered",
+   "block_index": 450,
+   "why": "partial allusion (saved/blessed in hope)"
+  },
+  {
+   "reference": "1 Corinthians 15:22a",
+   "status": "self_rendered",
+   "block_index": 450,
+   "why": "paraphrase blending Romans 5:12 and 1 Corinthians 15:22"
+  },
+  {
+   "reference": "Romans 5:12",
+   "status": "self_rendered",
+   "block_index": 450,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Isaiah 48:22",
+   "status": "self_rendered",
+   "block_index": 455,
+   "why": "allusion following the Latin text (joy rather than peace for the wicked)"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 457
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "re-personed paraphrase of the verse's close"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 27:1",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 42:12",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "Vulgate wording (salutare vultus mei), differs from Segond"
+  },
+  {
+   "reference": "John 12:35",
+   "status": "self_rendered",
+   "block_index": 457,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Galatians 4:16",
+   "status": "self_rendered",
+   "block_index": 458,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "John 3:20",
+   "status": "self_rendered",
+   "block_index": 458,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "status": "self_rendered",
+   "block_index": 462,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Job 7:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 468
+  },
+  {
+   "reference": "Isaiah 6:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 468
+  },
+  {
+   "reference": "Psalm 6:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 410
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "self_rendered",
+   "block_index": 468,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Job 7:1",
+   "status": "self_rendered",
+   "block_index": 468,
+   "why": "Vulgate reading (tentatio), differs from Segond"
+  },
+  {
+   "reference": "Job 7:1",
+   "status": "self_rendered",
+   "block_index": 481,
+   "why": "allusion"
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 472
+  },
+  {
+   "reference": "1 Corinthians 7:38",
+   "status": "self_rendered",
+   "block_index": 472,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 473,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 473
+  },
+  {
+   "reference": "Psalm 2:11",
+   "status": "self_rendered",
+   "block_index": 473,
+   "why": "re-personed"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "block_index": 473,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Corinthians 15:54",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 473
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "self_rendered",
+   "block_index": 475,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "self_rendered",
+   "block_index": 475,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "self_rendered",
+   "block_index": 475,
+   "why": "re-personed paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "self_rendered",
+   "block_index": 475,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Luke 21:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 477
+  },
+  {
+   "reference": "1 Corinthians 8:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 477
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 477,
+   "why": "allusion"
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 477
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 477
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "self_rendered",
+   "block_index": 477,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 477,
+   "why": "Pusey adds 'Christ'"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 477
+  },
+  {
+   "reference": "Psalm 103:14",
+   "status": "self_rendered",
+   "block_index": 477,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 2:7",
+   "status": "self_rendered",
+   "block_index": 477,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 477
+  },
+  {
+   "reference": "2 Corinthians 10:17",
+   "status": "self_rendered",
+   "block_index": 477,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Titus 1:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 478
+  },
+  {
+   "reference": "Romans 14:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 478
+  },
+  {
+   "reference": "1 Timothy 4:4",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Timothy 4:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 478
+  },
+  {
+   "reference": "1 Corinthians 8:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 478
+  },
+  {
+   "reference": "Colossians 2:16",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 14:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 478
+  },
+  {
+   "reference": "Genesis 9:3",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "allusion"
+  },
+  {
+   "reference": "1 Kings 17:6",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "allusion"
+  },
+  {
+   "reference": "Matthew 3:4",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "allusion"
+  },
+  {
+   "reference": "Genesis 25:34",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "allusion"
+  },
+  {
+   "reference": "2 Samuel 23:15",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "allusion (23:15-17)"
+  },
+  {
+   "reference": "Matthew 4:3",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "allusion"
+  },
+  {
+   "reference": "Numbers 11:1",
+   "status": "self_rendered",
+   "block_index": 478,
+   "why": "allusion (Num 11:1-4)"
+  },
+  {
+   "reference": "Psalm 34:4",
+   "status": "self_rendered",
+   "block_index": 479,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Luke 5:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 479
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 479,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "John 16:33",
+   "status": "self_rendered",
+   "block_index": 479,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Psalm 139:16",
+   "status": "self_rendered",
+   "block_index": 479,
+   "why": "Vulgate reading, paraphrase"
+  },
+  {
+   "reference": "Romans 12:15",
+   "status": "self_rendered",
+   "block_index": 484,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 80:15",
+   "status": "self_rendered",
+   "block_index": 484,
+   "why": "partial"
+  },
+  {
+   "reference": "Psalm 6:3",
+   "status": "self_rendered",
+   "block_index": 484,
+   "why": "blended with Ps 80:15"
+  },
+  {
+   "reference": "Psalm 77:11",
+   "status": "self_rendered",
+   "block_index": 484,
+   "why": "allusion (Vulgate 'infirmitas mea')"
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 472
+  },
+  {
+   "reference": "2 Corinthians 5:2",
+   "status": "self_rendered",
+   "block_index": 486,
+   "why": "re-personed into first person singular; paraphrase"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 486,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Genesis 27:1",
+   "status": "self_rendered",
+   "block_index": 487,
+   "why": "narrative allusion to Isaac's blindness"
+  },
+  {
+   "reference": "Genesis 48:14",
+   "status": "self_rendered",
+   "block_index": 487,
+   "why": "narrative allusion"
+  },
+  {
+   "reference": "Psalm 25:15",
+   "status": "self_rendered",
+   "block_index": 487,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 121:4",
+   "status": "self_rendered",
+   "block_index": 487,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 3:4",
+   "status": "self_rendered",
+   "block_index": 488,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 59:10",
+   "status": "self_rendered",
+   "block_index": 488,
+   "why": "allusion following the Vulgate reading (fortitudinem meam ad te custodiam), which Segond does not share"
+  },
+  {
+   "reference": "Psalm 26:3a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 488
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 472
+  },
+  {
+   "reference": "Matthew 12:39",
+   "status": "self_rendered",
+   "block_index": 491,
+   "why": "allusion / paraphrase"
+  },
+  {
+   "reference": "Psalm 88:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 492
+  },
+  {
+   "reference": "Galatians 4:26",
+   "status": "self_rendered",
+   "block_index": 492,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 495,
+   "why": "re-personed into first person and address to God"
+  },
+  {
+   "reference": "Psalm 103:4",
+   "status": "self_rendered",
+   "block_index": 495,
+   "why": "re-personed; Vulgate 'corruption' where Segond has 'fosse'"
+  },
+  {
+   "reference": "Psalm 103:5a",
+   "status": "self_rendered",
+   "block_index": 495,
+   "why": "re-personed; Vulgate reading 'desire'"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 495,
+   "why": "paraphrase of the light yoke"
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 18:8",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "tense changed to present"
+  },
+  {
+   "reference": "Isaiah 14:13",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Luke 12:32",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 17:8",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 10:3",
+   "status": "self_rendered",
+   "block_index": 496,
+   "why": "follows the Vulgate/LXX reading, which differs from Segond"
+  },
+  {
+   "reference": "Proverbs 27:21",
+   "status": "self_rendered",
+   "block_index": 498,
+   "why": "allusion following the Vulgate reading"
+  },
+  {
+   "reference": "Psalm 38:10b",
+   "status": "self_rendered",
+   "block_index": 498,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 119:136",
+   "status": "self_rendered",
+   "block_index": 498,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 19:13",
+   "status": "self_rendered",
+   "block_index": 498,
+   "why": "follows the Vulgate reading (ab occultis meis)"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "self_rendered",
+   "block_index": 499,
+   "why": "allusion"
+  },
+  {
+   "reference": "1 John 1:6",
+   "status": "self_rendered",
+   "block_index": 500,
+   "why": "adapted to first person singular"
+  },
+  {
+   "reference": "Psalm 141:5",
+   "status": "self_rendered",
+   "block_index": 500,
+   "why": "follows the Vulgate reading, which differs from Segond"
+  },
+  {
+   "reference": "Psalm 40:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 500
+  },
+  {
+   "reference": "Psalm 139:6",
+   "status": "self_rendered",
+   "block_index": 508,
+   "why": "allusion"
+  },
+  {
+   "reference": "Psalm 31:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 508
+  },
+  {
+   "reference": "1 Corinthians 8:1",
+   "status": "self_rendered",
+   "block_index": 510,
+   "why": "allusion"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered",
+   "block_index": 510,
+   "why": "allusion to the publican striking his breast"
+  },
+  {
+   "reference": "Ephesians 2:2",
+   "status": "self_rendered",
+   "block_index": 510,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "2 Corinthians 11:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 510
+  },
+  {
+   "reference": "Romans 6:23a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 510
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 512
+  },
+  {
+   "reference": "Romans 8:6",
+   "status": "self_rendered",
+   "block_index": 512,
+   "why": "blended with Romans 6:23; paraphrase"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "self_rendered",
+   "block_index": 512,
+   "why": "allusion"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 513
+  },
+  {
+   "reference": "Psalm 88:6",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "follows the Vulgate reading (inter mortuos liber)"
+  },
+  {
+   "reference": "John 10:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 513
+  },
+  {
+   "reference": "Galatians 4:7",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "allusion"
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 513,
+   "why": "grammar adapted to conditional clause"
+  },
+  {
+   "reference": "Psalm 55:8",
+   "status": "self_rendered",
+   "block_index": 514,
+   "why": "allusion"
+  },
+  {
+   "reference": "2 Corinthians 5:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 514
+  },
+  {
+   "reference": "Psalm 55:23",
+   "status": "self_rendered",
+   "block_index": 514,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 119:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 514
+  },
+  {
+   "reference": "Colossians 2:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 514
+  },
+  {
+   "reference": "Revelation 5:9",
+   "status": "self_rendered",
+   "block_index": 514,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 119:122",
+   "status": "self_rendered",
+   "block_index": 514,
+   "why": "follows the Vulgate reading (calumnientur)"
+  },
+  {
+   "reference": "Psalm 22:27a",
+   "status": "self_rendered",
+   "block_index": 514,
+   "why": "adapted grammar"
+  },
+  {
+   "reference": "Psalm 22:27b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 514
+  },
+  {
+   "reference": "Psalm 145:3a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 516
+  },
+  {
+   "reference": "Matthew 6:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 516
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "self_rendered",
+   "block_index": 516,
+   "why": "beatitudes gathered into a list of qualities to which God calls us"
+  },
+  {
+   "reference": "Matthew 5:4",
+   "status": "self_rendered",
+   "block_index": 516,
+   "why": "beatitudes gathered into a list"
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "self_rendered",
+   "block_index": 516,
+   "why": "beatitudes gathered into a list"
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "self_rendered",
+   "block_index": 516,
+   "why": "beatitudes gathered into a list"
+  },
+  {
+   "reference": "Matthew 5:7",
+   "status": "self_rendered",
+   "block_index": 516,
+   "why": "beatitudes gathered into a list"
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "self_rendered",
+   "block_index": 516,
+   "why": "beatitudes gathered into a list"
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "self_rendered",
+   "block_index": 516,
+   "why": "beatitudes gathered into a list"
+  },
+  {
+   "reference": "Psalm 118:1",
+   "status": "self_rendered",
+   "block_index": 516,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 1:2b",
+   "status": "self_rendered",
+   "block_index": 518,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "1 Corinthians 15:54b",
+   "status": "self_rendered",
+   "block_index": 518,
+   "why": "partial allusion (death swallowed up in victory)"
+  },
+  {
+   "reference": "Psalm 86:6a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 519
+  },
+  {
+   "reference": "Psalm 40:18a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 519
+  },
+  {
+   "reference": "Romans 10:12b",
+   "status": "self_rendered",
+   "block_index": 519,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Peter 5:7b",
+   "status": "self_rendered",
+   "block_index": 519,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 130:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 519
+  },
+  {
+   "reference": "Psalm 74:16a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 519
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 519,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 29:9",
+   "status": "self_rendered",
+   "block_index": 519,
+   "why": "allegorical allusion (Vulgate: the voice of the Lord prepares the harts and reveals the forests)"
+  },
+  {
+   "reference": "Psalm 26:7",
+   "status": "self_rendered",
+   "block_index": 519,
+   "why": "follows the Vulgate wording, which differs from Segond"
+  },
+  {
+   "reference": "Psalm 119:18b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 519
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 519,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 86:3a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 520
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "paraphrase, re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 119:85",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "follows the Vulgate wording, which differs entirely from Segond"
+  },
+  {
+   "reference": "Psalm 80:18a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 520
+  },
+  {
+   "reference": "Psalm 80:18b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 520
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "John 1:3",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "paraphrase in address to God"
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Colossians 2:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 520
+  },
+  {
+   "reference": "John 5:46",
+   "status": "self_rendered",
+   "block_index": 520,
+   "why": "paraphrase in the third person"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 522,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 33:9",
+   "status": "self_rendered",
+   "block_index": 526,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 17:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 528
+  },
+  {
+   "reference": "Isaiah 40:8b",
+   "status": "self_rendered",
+   "block_index": 528,
+   "why": "adapted into the soul's own words"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "self_rendered",
+   "block_index": 530,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 8:25",
+   "status": "self_rendered",
+   "block_index": 532,
+   "why": "follows the Vulgate reading (Principium, qui et loquor vobis), which differs from Segond"
+  },
+  {
+   "reference": "Matthew 23:8",
+   "status": "self_rendered",
+   "block_index": 532,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "John 3:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 532
+  },
+  {
+   "reference": "Psalm 31:11",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "follows the Vulgate wording (in paupertate)"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 103:4",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 103:5",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 8:24a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 534
+  },
+  {
+   "reference": "Romans 8:25",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 104:24a",
+   "status": "self_rendered",
+   "block_index": 534,
+   "why": "follows the Vulgate wording (magnificata sunt)"
+  },
+  {
+   "reference": "Psalm 104:24b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 534
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 536,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 102:28a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 543
+  },
+  {
+   "reference": "Psalm 102:28b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 543
+  },
+  {
+   "reference": "2 Peter 3:8",
+   "status": "self_rendered",
+   "block_index": 543,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 2:7b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 543
+  },
+  {
+   "reference": "Psalm 71:5",
+   "status": "self_rendered",
+   "block_index": 555,
+   "why": "partial allusion, re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 119:116b",
+   "status": "self_rendered",
+   "block_index": 555,
+   "why": "paraphrase (Vulgate non confundas me ab exspectatione mea)"
+  },
+  {
+   "reference": "Psalm 139:6b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 558
+  },
+  {
+   "reference": "Psalm 38:11b",
+   "status": "self_rendered",
+   "block_index": 558,
+   "why": "partial allusion re-applied to God"
+  },
+  {
+   "reference": "Matthew 7:11",
+   "status": "self_rendered",
+   "block_index": 564,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 73:16b",
+   "status": "self_rendered",
+   "block_index": 564,
+   "why": "adapted tense and extended (Vulgate labor est ante me)"
+  },
+  {
+   "reference": "Galatians 6:17a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 564
+  },
+  {
+   "reference": "2 Corinthians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 564
+  },
+  {
+   "reference": "Psalm 27:4",
+   "status": "self_rendered",
+   "block_index": 564,
+   "why": "follows Vulgate voluptatem Domini; Segond has magnificence"
+  },
+  {
+   "reference": "Psalm 39:6a",
+   "status": "self_rendered",
+   "block_index": 564,
+   "why": "follows Vulgate (veteres posuisti dies meos), differs from Segond"
+  },
+  {
+   "reference": "Genesis 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 566
+  },
+  {
+   "reference": "Joshua 10:13a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 567
+  },
+  {
+   "reference": "Psalm 43:3",
+   "status": "self_rendered",
+   "block_index": 567,
+   "why": "partial allusion, God addressed as Light and Truth"
+  },
+  {
+   "reference": "Galatians 1:20",
+   "status": "self_rendered",
+   "block_index": 571,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 18:29a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 571
+  },
+  {
+   "reference": "Psalm 18:29b",
+   "status": "self_rendered",
+   "block_index": 571,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 62:9b",
+   "status": "self_rendered",
+   "block_index": 575,
+   "why": "follows the Latin 'adjutor' (helper) rather than Segond's 'refuge'"
+  },
+  {
+   "reference": "Psalm 100:3",
+   "status": "self_rendered",
+   "block_index": 575,
+   "why": "follows the Vulgate reading ('and not we ourselves'), which differs from Segond"
+  },
+  {
+   "reference": "Psalm 63:4a",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "Segond wording adapted to the Latin plural 'super vitas'"
+  },
+  {
+   "reference": "Psalm 63:9b",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "Segond wording put into the past tense, as in Pusey"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "re-personed into address to God and expanded"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "paraphrase borrowing Segond vocabulary"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 582
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 582
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 582
+  },
+  {
+   "reference": "Psalm 26:7",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "follows the Vulgate ('ut audiam vocem laudis'), which differs from Segond"
+  },
+  {
+   "reference": "Psalm 27:4",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "partial allusion following the Latin ('videam voluptatem Domini'), re-personed"
+  },
+  {
+   "reference": "Psalm 31:11",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "paraphrase close to Segond's 'mes années dans les soupirs'"
+  },
+  {
+   "reference": "Psalm 94:19",
+   "status": "self_rendered",
+   "block_index": 582,
+   "why": "partial allusion, re-personed into address to God"
+  },
+  {
+   "reference": "Isaiah 9:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 582
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "self_rendered",
+   "block_index": 584,
+   "why": "paraphrase applied to the questioners in the third person"
+  },
+  {
+   "reference": "Romans 11:33",
+   "status": "self_rendered",
+   "block_index": 586,
+   "why": "partial allusion, re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 522,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 138:6",
+   "status": "self_rendered",
+   "block_index": 586,
+   "why": "re-personed into address to God, blended with Isaiah 57:15"
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "self_rendered",
+   "block_index": 586,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 146:8",
+   "status": "self_rendered",
+   "block_index": 586,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 8:31b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 588
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 588
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 588
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 588,
+   "why": "partial allusion (God as the Truth)"
+  },
+  {
+   "reference": "Psalm 115:16a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 590
+  },
+  {
+   "reference": "Psalm 115:16b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 590
+  },
+  {
+   "reference": "Genesis 1:2a",
+   "status": "self_rendered",
+   "block_index": 592,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Genesis 1:2b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 592
+  },
+  {
+   "reference": "Romans 11:36a",
+   "status": "self_rendered",
+   "block_index": 600,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Revelation 4:8",
+   "status": "self_rendered",
+   "block_index": 600,
+   "why": "re-personed into vocative address to God"
+  },
+  {
+   "reference": "1 Corinthians 1:24",
+   "status": "self_rendered",
+   "block_index": 600,
+   "why": "partial allusion (Christ the Wisdom of God)"
+  },
+  {
+   "reference": "Genesis 1:6",
+   "status": "self_rendered",
+   "block_index": 602,
+   "why": "paraphrase following Augustine's Latin (firmament), re-personed to God"
+  },
+  {
+   "reference": "Genesis 1:2b",
+   "status": "self_rendered",
+   "block_index": 602,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Genesis 1:8a",
+   "status": "self_rendered",
+   "block_index": 602,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 602,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 615
+  },
+  {
+   "reference": "Isaiah 30:21a",
+   "status": "self_rendered",
+   "block_index": 606,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 119:176a",
+   "status": "self_rendered",
+   "block_index": 606,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Timothy 6:16a",
+   "status": "self_rendered",
+   "block_index": 608,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 17:8b",
+   "status": "self_rendered",
+   "block_index": 608,
+   "why": "allusion (refuge under God's wings), blended with Romans 12:3 'sobriety'"
+  },
+  {
+   "reference": "Psalm 26:8",
+   "status": "self_rendered",
+   "block_index": 609,
+   "why": "allusion (the house of God), blended with Psalm 36:9 'tes délices'"
+  },
+  {
+   "reference": "Ephesians 2:19",
+   "status": "self_rendered",
+   "block_index": 609,
+   "why": "partial allusion, blended with Ephesians 1:3 'lieux célestes'"
+  },
+  {
+   "reference": "Psalm 120:5",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "allusion following the Vulgate 'incolatus meus prolongatus est'"
+  },
+  {
+   "reference": "Psalm 42:3a",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "re-personed paraphrase"
+  },
+  {
+   "reference": "Psalm 42:4a",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "re-personed into the third person"
+  },
+  {
+   "reference": "Psalm 42:4b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 610
+  },
+  {
+   "reference": "Psalm 27:4",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "re-personed into address to God, third person for the soul"
+  },
+  {
+   "reference": "Psalm 102:28b",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "grammar adjusted to the surrounding sentence"
+  },
+  {
+   "reference": "Psalm 102:28a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 610
+  },
+  {
+   "reference": "Luke 15:13",
+   "status": "self_rendered",
+   "block_index": 610,
+   "why": "partial allusion to the prodigal son"
+  },
+  {
+   "reference": "Matthew 7:7b",
+   "status": "self_rendered",
+   "block_index": 613,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 613,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 613,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "block_index": 615,
+   "why": "paraphrase in negated form, borrowing Segond vocabulary"
+  },
+  {
+   "reference": "Psalm 139:22a",
+   "status": "self_rendered",
+   "block_index": 617,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 617,
+   "why": "partial allusion (the two-edged sword of the Word)"
+  },
+  {
+   "reference": "2 Corinthians 5:15",
+   "status": "self_rendered",
+   "block_index": 617,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Psalm 148:6",
+   "status": "self_rendered",
+   "block_index": 619,
+   "why": "re-personed into address to God and applied to the house of God"
+  },
+  {
+   "reference": "Proverbs 8:22",
+   "status": "self_rendered",
+   "block_index": 620,
+   "why": "partial allusion (Augustine quotes Sirach 1:4, absent from Segond; nearest canonical parallel)"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "status": "self_rendered",
+   "block_index": 621,
+   "why": "partial allusion to the divine 'Idipsum' (Vulgate 'tu autem idem ipse es')"
+  },
+  {
+   "reference": "2 Corinthians 5:21b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 620
+  },
+  {
+   "reference": "Galatians 4:26",
+   "status": "self_rendered",
+   "block_index": 620,
+   "why": "paraphrase woven into the description of the heavenly city"
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "self_rendered",
+   "block_index": 620,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 148:4",
+   "status": "self_rendered",
+   "block_index": 620,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 115:16a",
+   "status": "self_rendered",
+   "block_index": 620,
+   "why": "follows the Vulgate wording ('caelum caeli Domino'), not Segond's"
+  },
+  {
+   "reference": "Matthew 18:10",
+   "status": "self_rendered",
+   "block_index": 621,
+   "why": "allusion to the angels who always behold the Father's face, re-personed"
+  },
+  {
+   "reference": "Psalm 26:8",
+   "status": "self_rendered",
+   "block_index": 621,
+   "why": "follows the Vulgate ('decorem domus tuae') and is addressed to the house, not to God"
+  },
+  {
+   "reference": "Hebrews 11:10",
+   "status": "self_rendered",
+   "block_index": 621,
+   "why": "partial allusion to God as builder of the city"
+  },
+  {
+   "reference": "Psalm 119:176a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 621
+  },
+  {
+   "reference": "Luke 15:5",
+   "status": "self_rendered",
+   "block_index": 621,
+   "why": "partial allusion to the shepherd carrying the lost sheep"
+  },
+  {
+   "reference": "Psalm 28:1",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "phrase from Segond borrowed into a new sentence (Vulgate 'ne sileas a me')"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "re-personed into the first person"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "partial allusion, applied to Augustine himself"
+  },
+  {
+   "reference": "Psalm 137:6",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Galatians 4:26b",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "partial allusion, re-personed"
+  },
+  {
+   "reference": "Psalm 59:18",
+   "status": "self_rendered",
+   "block_index": 624,
+   "why": "follows the Vulgate ('Deus meus, misericordia mea'; Vulg. Ps 58:18), not Segond's wording"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 615
+  },
+  {
+   "reference": "Genesis 1:2a",
+   "status": "self_rendered",
+   "block_index": 636,
+   "why": "Augustine's Old Latin text (invisibilis et incomposita), on which his argument depends"
+  },
+  {
+   "reference": "2 Timothy 2:14",
+   "status": "self_rendered",
+   "block_index": 630,
+   "why": "re-personed; the final clause is Segond's wording"
+  },
+  {
+   "reference": "1 Timothy 1:8",
+   "status": "self_rendered",
+   "block_index": 630,
+   "why": "Segond's wording with Augustine's 'to edify' added"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "status": "self_rendered",
+   "block_index": 630,
+   "why": "'the commandment' replaced by a pronoun; remainder is Segond's wording"
+  },
+  {
+   "reference": "Matthew 22:40",
+   "status": "self_rendered",
+   "block_index": 630,
+   "why": "paraphrase in narrative form"
+  },
+  {
+   "reference": "Psalm 38:11",
+   "status": "self_rendered",
+   "block_index": 630,
+   "why": "phrase borrowed and applied to God in address"
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "status": "self_rendered",
+   "block_index": 632,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "partial allusion blended with 1 Corinthians 8:6"
+  },
+  {
+   "reference": "Colossians 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 638
+  },
+  {
+   "reference": "Genesis 1:2b",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "Segond's wording recast as a relative clause"
+  },
+  {
+   "reference": "Genesis 1:8",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "narrative paraphrase of Genesis 1:6-8"
+  },
+  {
+   "reference": "Genesis 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 638
+  },
+  {
+   "reference": "Genesis 1:7",
+   "status": "self_rendered",
+   "block_index": 638,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "self_rendered",
+   "block_index": 640,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 116:17",
+   "status": "self_rendered",
+   "block_index": 642,
+   "why": "follows the Vulgate 'sacrificium laudis/confessionis', re-personed"
+  },
+  {
+   "reference": "Psalm 116:18",
+   "status": "self_rendered",
+   "block_index": 642,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 8:44",
+   "status": "self_rendered",
+   "block_index": 644,
+   "why": "generalized from 'il' (the devil) to 'on' (whoever speaks a lie); Segond wording otherwise kept"
+  },
+  {
+   "reference": "1 Timothy 1:8",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "re-personed into address to God (ta loi), grammar adjusted"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Corinthians 4:6",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "Segond phrases reordered and turned into first-person plural exhortation"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "turned from 'tu aimeras' into first-person plural exhortation"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "first-person plural exhortation"
+  },
+  {
+   "reference": "1 John 1:10",
+   "status": "self_rendered",
+   "block_index": 645,
+   "why": "partial allusion; Segond 'nous le faisons menteur' adapted"
+  },
+  {
+   "reference": "Psalm 25:18b",
+   "status": "self_rendered",
+   "block_index": 647,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Matthew 22:39b",
+   "status": "self_rendered",
+   "block_index": 647,
+   "why": "commandment restated in first person"
+  },
+  {
+   "reference": "Romans 9:21",
+   "status": "self_rendered",
+   "block_index": 647,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 8:5a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 647
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "self_rendered",
+   "block_index": 649,
+   "why": "generalized paraphrase of the creation formula"
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "status": "self_rendered",
+   "block_index": 649,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 651,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 615
+  },
+  {
+   "reference": "John 8:25",
+   "status": "self_rendered",
+   "block_index": 652,
+   "why": "follows the Vulgate reading (Principium qui et loquor vobis), which Segond does not share"
+  },
+  {
+   "reference": "Psalm 104:24",
+   "status": "self_rendered",
+   "block_index": 652,
+   "why": "allusion blended with Genesis 1:1, addressed to God"
+  },
+  {
+   "reference": "1 Timothy 1:8",
+   "status": "self_rendered",
+   "block_index": 656,
+   "why": "grammar adapted into first-person plural"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "status": "self_rendered",
+   "block_index": 656,
+   "why": "compressed paraphrase"
+  },
+  {
+   "reference": "1 John 4:7",
+   "status": "self_rendered",
+   "block_index": 656,
+   "why": "Segond's 'aimons nous' given with the modern hyphen"
+  },
+  {
+   "reference": "Matthew 16:17",
+   "status": "self_rendered",
+   "block_index": 660,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 143:10b",
+   "status": "self_rendered",
+   "block_index": 660,
+   "why": "optative turned into future relative clause"
+  },
+  {
+   "reference": "Psalm 138:8b",
+   "status": "self_rendered",
+   "block_index": 662,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 664,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 104:24",
+   "status": "self_rendered",
+   "block_index": 664,
+   "why": "re-personed allusion"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 664,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 665,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Ephesians 5:8a",
+   "status": "self_rendered",
+   "block_index": 665,
+   "why": "re-personed into first person"
+  },
+  {
+   "reference": "2 Corinthians 5:21b",
+   "status": "self_rendered",
+   "block_index": 665,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 36:7a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 665
+  },
+  {
+   "reference": "Psalm 36:7a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 665
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 667
+  },
+  {
+   "reference": "Genesis 1:2b",
+   "status": "self_rendered",
+   "block_index": 669,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Psalm 143:10b",
+   "status": "self_rendered",
+   "block_index": 669,
+   "why": "allusion, capitalised"
+  },
+  {
+   "reference": "Isaiah 11:2a",
+   "status": "self_rendered",
+   "block_index": 669,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 36:10a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 669
+  },
+  {
+   "reference": "Psalm 36:10b",
+   "status": "self_rendered",
+   "block_index": 669,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "1 Corinthians 13:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 671
+  },
+  {
+   "reference": "Psalm 111:10a",
+   "status": "self_rendered",
+   "block_index": 671,
+   "why": "allusion, applied to the Son"
+  },
+  {
+   "reference": "Psalm 148:4a",
+   "status": "self_rendered",
+   "block_index": 671,
+   "why": "Vulgate 'caelum caeli'; Segond 'cieux des cieux'"
+  },
+  {
+   "reference": "Genesis 1:6",
+   "status": "self_rendered",
+   "block_index": 671,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Genesis 1:2b",
+   "status": "self_rendered",
+   "block_index": 671,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Psalm 25:1",
+   "status": "self_rendered",
+   "block_index": 673,
+   "why": "Vulgate 'ad te levavi animam meam'; adapted"
+  },
+  {
+   "reference": "Genesis 1:2a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 673
+  },
+  {
+   "reference": "Romans 5:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 675
+  },
+  {
+   "reference": "1 Corinthians 12:31b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 675
+  },
+  {
+   "reference": "Ephesians 3:14",
+   "status": "self_rendered",
+   "block_index": 675,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Ephesians 3:19a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 675
+  },
+  {
+   "reference": "Psalm 124:5",
+   "status": "self_rendered",
+   "block_index": 675,
+   "why": "Vulgate 'aquam sine substantia'; Segond wording differs"
+  },
+  {
+   "reference": "Ephesians 5:8b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "Psalm 18:29b",
+   "status": "self_rendered",
+   "block_index": 677,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 104:2a",
+   "status": "self_rendered",
+   "block_index": 677,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Isaiah 58:10b",
+   "status": "self_rendered",
+   "block_index": 677,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Psalm 31:21a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 677
+  },
+  {
+   "reference": "Acts 2:38b",
+   "status": "self_rendered",
+   "block_index": 679,
+   "why": "allusion: the Spirit as God's gift"
+  },
+  {
+   "reference": "Psalm 143:10b",
+   "status": "self_rendered",
+   "block_index": 679,
+   "why": "allusion, capitalised"
+  },
+  {
+   "reference": "Psalm 9:14b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 679
+  },
+  {
+   "reference": "Luke 2:14b",
+   "status": "self_rendered",
+   "block_index": 679,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 84:6b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 679
+  },
+  {
+   "reference": "Psalm 120:1a",
+   "status": "self_rendered",
+   "block_index": 679,
+   "why": "psalm title; lowercased"
+  },
+  {
+   "reference": "Psalm 122:6a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 679
+  },
+  {
+   "reference": "Psalm 122:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 679
+  },
+  {
+   "reference": "Psalm 23:6b",
+   "status": "self_rendered",
+   "block_index": 679,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 667
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "self_rendered",
+   "block_index": 681,
+   "why": "re-personed into first person"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "self_rendered",
+   "block_index": 681,
+   "why": "allusion, re-personed"
+  },
+  {
+   "reference": "John 1:9",
+   "status": "self_rendered",
+   "block_index": 681,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "self_rendered",
+   "block_index": 683,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 42:6",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 685
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 6:17",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "Vulgate 'formam doctrinae'; Segond 'règle de doctrine'"
+  },
+  {
+   "reference": "Psalm 39:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 685
+  },
+  {
+   "reference": "Psalm 36:7a",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "adapted tense and person"
+  },
+  {
+   "reference": "Matthew 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 685
+  },
+  {
+   "reference": "Psalm 42:7",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Ephesians 5:8a",
+   "status": "self_rendered",
+   "block_index": 685,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "Romans 8:24a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "Romans 8:24b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "Psalm 42:8a",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "quotation interrupted by Augustine's comment"
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "2 Corinthians 5:4",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Psalm 42:3a",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Psalm 42:2a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "Psalm 42:3b",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "partial quotation"
+  },
+  {
+   "reference": "2 Corinthians 5:2",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "Romans 12:2a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "1 Corinthians 14:20",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "last clause follows the Latin 'ut sensibus perfecti sitis'"
+  },
+  {
+   "reference": "Galatians 3:1a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "Ephesians 4:8",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Malachi 3:10",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 46:5a",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "adapted from 'dont les courants réjouissent la cité de Dieu'"
+  },
+  {
+   "reference": "John 3:29",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "re-personed into third person"
+  },
+  {
+   "reference": "2 Corinthians 11:2",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "allusion"
+  },
+  {
+   "reference": "2 Corinthians 11:3",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "re-personed; 'pureté' for Latin 'castitate'"
+  },
+  {
+   "reference": "1 John 3:2b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "Psalm 42:4",
+   "status": "self_rendered",
+   "block_index": 687,
+   "why": "adapted syntax; final clause verbatim"
+  },
+  {
+   "reference": "Psalm 42:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 689
+  },
+  {
+   "reference": "Psalm 42:6a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 689
+  },
+  {
+   "reference": "Psalm 42:6b",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "Latin 'in Domino'; Segond 'Espère en Dieu'"
+  },
+  {
+   "reference": "Psalm 119:105a",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "re-personed"
+  },
+  {
+   "reference": "Ephesians 2:3",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Isaiah 26:20b",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "expanded 'du Seigneur'"
+  },
+  {
+   "reference": "Romans 8:10",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "re-personed"
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "Vulgate 'donec aspiret dies'"
+  },
+  {
+   "reference": "Psalm 5:4",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "Vulgate 'mane astabo tibi et videbo'; Segond wording differs"
+  },
+  {
+   "reference": "Psalm 42:12b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 689
+  },
+  {
+   "reference": "Romans 8:11b",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "2 Corinthians 5:5",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "allusion"
+  },
+  {
+   "reference": "1 Thessalonians 5:5",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 7:10",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "allusion"
+  },
+  {
+   "reference": "Genesis 1:5a",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 4:7a",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Romans 9:21",
+   "status": "self_rendered",
+   "block_index": 689,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Isaiah 34:4",
+   "status": "self_rendered",
+   "block_index": 691,
+   "why": "paraphrase following Augustine's Latin (plicabitur)"
+  },
+  {
+   "reference": "Psalm 104:2b",
+   "status": "self_rendered",
+   "block_index": 691,
+   "why": "Augustine's Old Latin text, on which his argument depends (pellem; Segond 'pavillon')"
+  },
+  {
+   "reference": "Genesis 3:21",
+   "status": "self_rendered",
+   "block_index": 691,
+   "why": "re-personed into address to God, paraphrase"
+  },
+  {
+   "reference": "Psalm 8:4",
+   "status": "self_rendered",
+   "block_index": 692,
+   "why": "Augustine's 'fingers' (Segond 'mains'); exhortation"
+  },
+  {
+   "reference": "Psalm 19:8b",
+   "status": "self_rendered",
+   "block_index": 692,
+   "why": "re-personed into address to God; 'little ones' per Augustine"
+  },
+  {
+   "reference": "Psalm 8:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 692
+  },
+  {
+   "reference": "Matthew 21:16",
+   "status": "self_rendered",
+   "block_index": 692,
+   "why": "partial allusion (perfected praise), turned into petition"
+  },
+  {
+   "reference": "Psalm 8:3",
+   "status": "self_rendered",
+   "block_index": 692,
+   "why": "Augustine's Latin 'defensorem' (Segond 'vindicatif')"
+  },
+  {
+   "reference": "Psalm 12:7",
+   "status": "self_rendered",
+   "block_index": 692,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 148:4",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Psalm 148:5",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 148:2",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "paraphrase, re-personed"
+  },
+  {
+   "reference": "Matthew 18:10",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 36:6a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 693
+  },
+  {
+   "reference": "Psalm 36:6b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 693
+  },
+  {
+   "reference": "Matthew 24:35a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 693
+  },
+  {
+   "reference": "Matthew 24:35b",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Isaiah 34:4",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Isaiah 40:8",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "paraphrase, re-personed into address to God (cf. 1 Peter 1:24-25)"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 John 3:2a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 693
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 693
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "self_rendered",
+   "block_index": 693,
+   "why": "blend of Song 1:3-4 per Augustine's Latin"
+  },
+  {
+   "reference": "1 John 3:2b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 693
+  },
+  {
+   "reference": "Psalm 143:6",
+   "status": "self_rendered",
+   "block_index": 695,
+   "why": "Augustine's Latin 'sicut terra sine aqua' (Segond 'desséchée')"
+  },
+  {
+   "reference": "Psalm 36:10a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 695
+  },
+  {
+   "reference": "Psalm 36:10b",
+   "status": "self_rendered",
+   "block_index": 695,
+   "why": "future tense per Augustine (Segond 'voyons')"
+  },
+  {
+   "reference": "Genesis 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 697
+  },
+  {
+   "reference": "Psalm 95:5",
+   "status": "self_rendered",
+   "block_index": 697,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:10",
+   "status": "self_rendered",
+   "block_index": 697,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Job 38:11",
+   "status": "self_rendered",
+   "block_index": 697,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 42:3",
+   "status": "self_rendered",
+   "block_index": 698,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Psalm 67:7",
+   "status": "self_rendered",
+   "block_index": 698,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Genesis 1:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 698
+  },
+  {
+   "reference": "Genesis 1:11",
+   "status": "self_rendered",
+   "block_index": 698,
+   "why": "singular per Augustine (Segond 'arbres fruitiers donnant du fruit')"
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "self_rendered",
+   "block_index": 698,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 85:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Psalm 85:12b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Genesis 1:14a",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Isaiah 58:7",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "re-personed into first person plural"
+  },
+  {
+   "reference": "Genesis 1:10b",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "turned into address to God"
+  },
+  {
+   "reference": "Isaiah 58:8a",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "re-personed, partial allusion"
+  },
+  {
+   "reference": "Philippians 2:15",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "re-personed into first person"
+  },
+  {
+   "reference": "Philippians 2:16a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Genesis 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Genesis 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Genesis 1:15",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Genesis 1:14",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "2 Corinthians 5:17b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Romans 13:11b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Romans 13:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Psalm 65:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "paraphrase, re-personed"
+  },
+  {
+   "reference": "John 4:38",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Matthew 13:39",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 102:28a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Psalm 102:28b",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "adapted to Augustine's syntax"
+  },
+  {
+   "reference": "1 Corinthians 12:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Genesis 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Genesis 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 12:8b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Genesis 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 12:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "Genesis 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "1 Corinthians 2:6",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "third-person paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 3:1-2",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "blend and paraphrase (cf. Hebrews 5:14)"
+  },
+  {
+   "reference": "1 Corinthians 2:15",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Genesis 1:14b",
+   "status": "self_rendered",
+   "block_index": 700,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Isaiah 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 702
+  },
+  {
+   "reference": "Isaiah 1:16",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "Augustine's variant ('from your souls')"
+  },
+  {
+   "reference": "Genesis 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 697
+  },
+  {
+   "reference": "Isaiah 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 702
+  },
+  {
+   "reference": "Isaiah 1:17",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "Segond wording, capitalisation of verse-line breaks normalized"
+  },
+  {
+   "reference": "Genesis 1:11",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Isaiah 1:18a",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "Segond wording with 'le Seigneur' for 'l’Éternel'"
+  },
+  {
+   "reference": "Genesis 1:14-15",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Matthew 19:16",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "indirect-speech paraphrase"
+  },
+  {
+   "reference": "Mark 10:18",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Matthew 19:17",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "indirect-speech paraphrase"
+  },
+  {
+   "reference": "Ephesians 4:31",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Matthew 19:18",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "indirect-speech paraphrase"
+  },
+  {
+   "reference": "Matthew 19:19",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Matthew 19:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 702
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 702
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 702
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 702
+  },
+  {
+   "reference": "Matthew 6:21",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Mark 10:22",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "allegorical allusion"
+  },
+  {
+   "reference": "Matthew 13:7",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "blend of Matthew 13:7 and 13:22"
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 703
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "re-addressed in second person"
+  },
+  {
+   "reference": "Matthew 19:27",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 10:15",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "partial allusion (cf. Isaiah 52:7)"
+  },
+  {
+   "reference": "Psalm 19:2",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "adapted ('sa gloire' for 'la gloire de Dieu')"
+  },
+  {
+   "reference": "Psalm 19:3",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "allegorical expansion"
+  },
+  {
+   "reference": "Genesis 1:14a",
+   "status": "self_rendered",
+   "block_index": 702,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Acts 2:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 703
+  },
+  {
+   "reference": "Acts 2:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 703
+  },
+  {
+   "reference": "Acts 2:3",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "Segond wording, adapted to the sentence"
+  },
+  {
+   "reference": "Philippians 2:16a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 703
+  },
+  {
+   "reference": "Matthew 5:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 703
+  },
+  {
+   "reference": "Matthew 5:15",
+   "status": "self_rendered",
+   "block_index": 703,
+   "why": "re-personed"
+  },
+  {
+   "reference": "Genesis 1:20",
+   "status": "self_rendered",
+   "block_index": 705,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Jeremiah 15:19",
+   "status": "self_rendered",
+   "block_index": 705,
+   "why": "paraphrase, re-addressed"
+  },
+  {
+   "reference": "Genesis 1:20",
+   "status": "self_rendered",
+   "block_index": 705,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "Genesis 1:21",
+   "status": "self_rendered",
+   "block_index": 705,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Psalm 19:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 705
+  },
+  {
+   "reference": "Psalm 19:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 705
+  },
+  {
+   "reference": "Psalm 19:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 705
+  },
+  {
+   "reference": "Genesis 1:22",
+   "status": "self_rendered",
+   "block_index": 705,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 707,
+   "why": "re-personed into address to God, paraphrase"
+  },
+  {
+   "reference": "Genesis 1:24",
+   "status": "self_rendered",
+   "block_index": 705,
+   "why": "Augustine's Old Latin text, on which his argument depends"
+  },
+  {
+   "reference": "John 3:5",
+   "status": "self_rendered",
+   "block_index": 709,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "John 4:48",
+   "status": "self_rendered",
+   "block_index": 709,
+   "why": "re-personed paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 14:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 709
+  },
+  {
+   "reference": "Psalm 136:6",
+   "status": "self_rendered",
+   "block_index": 709,
+   "why": "re-personed allusion (cf. Psalm 24:2)"
+  },
+  {
+   "reference": "Psalm 23:5",
+   "status": "self_rendered",
+   "block_index": 709,
+   "why": "allegorical adaptation"
+  },
+  {
+   "reference": "Genesis 1:22",
+   "status": "self_rendered",
+   "block_index": 709,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Timothy 5:6",
+   "status": "self_rendered",
+   "block_index": 709,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Genesis 3:8",
+   "status": "self_rendered",
+   "block_index": 710,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Thessalonians 1:7",
+   "status": "self_rendered",
+   "block_index": 710,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "James 1:22",
+   "status": "self_rendered",
+   "block_index": 710,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 69:33",
+   "status": "self_rendered",
+   "block_index": 710,
+   "why": "Augustine's Latin variant (Segond 'que votre cœur vive')"
+  },
+  {
+   "reference": "Romans 12:2a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "1 Timothy 6:20-21",
+   "status": "self_rendered",
+   "block_index": 710,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered",
+   "block_index": 710,
+   "why": "allusive triad"
+  },
+  {
+   "reference": "Psalm 36:10a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 669
+  },
+  {
+   "reference": "Galatians 4:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 711
+  },
+  {
+   "reference": "Galatians 4:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 711
+  },
+  {
+   "reference": "Sirach 3:17",
+   "status": "self_rendered",
+   "block_index": 711,
+   "why": "deuterocanonical, not in Segond"
+  },
+  {
+   "reference": "1 Corinthians 8:8",
+   "status": "self_rendered",
+   "block_index": 711,
+   "why": "adapted to third person"
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered",
+   "block_index": 711,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 711,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Romans 12:2b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 687
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 713
+  },
+  {
+   "reference": "Romans 12:2c",
+   "status": "self_rendered",
+   "block_index": 713,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 4:15",
+   "status": "self_rendered",
+   "block_index": 713,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 3:2",
+   "status": "self_rendered",
+   "block_index": 713,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "1 Thessalonians 2:7",
+   "status": "self_rendered",
+   "block_index": 713,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Romans 12:2c",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 713
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 713
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 713
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 713
+  },
+  {
+   "reference": "1 Corinthians 2:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 713
+  },
+  {
+   "reference": "1 Corinthians 2:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 713
+  },
+  {
+   "reference": "1 Corinthians 2:15a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 713
+  },
+  {
+   "reference": "Genesis 1:26b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 715
+  },
+  {
+   "reference": "1 Corinthians 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 715
+  },
+  {
+   "reference": "Psalm 49:21",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "Augustine's Old Latin (LXX) wording 'comparatus est iumentis insensatis et similis factus est illis', on which his argument depends; first half follows Segond"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 715
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "partial quotation, compressed"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 713
+  },
+  {
+   "reference": "James 4:11",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "paraphrase applied to the spiritual man"
+  },
+  {
+   "reference": "Matthew 7:16",
+   "status": "self_rendered",
+   "block_index": 715,
+   "why": "grammar adapted into a purpose clause"
+  },
+  {
+   "reference": "1 Corinthians 5:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 715
+  },
+  {
+   "reference": "Genesis 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 716
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 715
+  },
+  {
+   "reference": "1 Corinthians 14:16",
+   "status": "self_rendered",
+   "block_index": 716,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Genesis 1:22b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 716
+  },
+  {
+   "reference": "Genesis 1:28a",
+   "status": "self_rendered",
+   "block_index": 718,
+   "why": "re-personed into address to God; Augustine's Old Latin 'Crescite et multiplicamini', on which his argument depends"
+  },
+  {
+   "reference": "Genesis 1:22",
+   "status": "self_rendered",
+   "block_index": 718,
+   "why": "reported speech; Augustine's Old Latin 'Crescite et multiplicamini', on which his argument depends"
+  },
+  {
+   "reference": "Genesis 1:28a",
+   "status": "self_rendered",
+   "block_index": 718,
+   "why": "Augustine's Old Latin text, on which his argument depends (recurs four times in chapter XXIV)"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 719
+  },
+  {
+   "reference": "Genesis 1:11-12",
+   "status": "self_rendered",
+   "block_index": 720,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "partial allusion, grammar adapted"
+  },
+  {
+   "reference": "John 8:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 722
+  },
+  {
+   "reference": "Genesis 1:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 722
+  },
+  {
+   "reference": "Genesis 1:30",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "2 Timothy 1:16",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "re-personed into address to God, Paul in the third person"
+  },
+  {
+   "reference": "2 Corinthians 11:9",
+   "status": "self_rendered",
+   "block_index": 722,
+   "why": "Paul's words re-told in the third person"
+  },
+  {
+   "reference": "2 Timothy 4:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 722
+  },
+  {
+   "reference": "Romans 10:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 722
+  },
+  {
+   "reference": "Philippians 3:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 724
+  },
+  {
+   "reference": "Philippians 4:18",
+   "status": "self_rendered",
+   "block_index": 724,
+   "why": "narrative paraphrase"
+  },
+  {
+   "reference": "Philippians 4:10",
+   "status": "self_rendered",
+   "block_index": 724,
+   "why": "Augustine's Old Latin text ('refloruistis', 'taedium habuistis'), on which his argument depends; opening follows Segond"
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 724
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 724
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 724
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "self_rendered",
+   "block_index": 725,
+   "why": "re-personed into apostrophe to Paul"
+  },
+  {
+   "reference": "1 Corinthians 14:2",
+   "status": "self_rendered",
+   "block_index": 725,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Philippians 4:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 725
+  },
+  {
+   "reference": "Psalm 4:2",
+   "status": "self_rendered",
+   "block_index": 725,
+   "why": "Augustine's Old Latin (LXX) text 'in tribulatione dilatasti me'; Segond reads differently"
+  },
+  {
+   "reference": "Philippians 4:12-13",
+   "status": "self_rendered",
+   "block_index": 725,
+   "why": "re-personed: Paul in the third person, God addressed"
+  },
+  {
+   "reference": "Philippians 4:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 725
+  },
+  {
+   "reference": "Philippians 4:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 725
+  },
+  {
+   "reference": "Philippians 4:16",
+   "status": "self_rendered",
+   "block_index": 726,
+   "why": "partial re-quotation, tense adapted"
+  },
+  {
+   "reference": "Philippians 4:17a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 726
+  },
+  {
+   "reference": "Matthew 10:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 726
+  },
+  {
+   "reference": "Matthew 10:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 726
+  },
+  {
+   "reference": "Matthew 10:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 726
+  },
+  {
+   "reference": "Matthew 10:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 726
+  },
+  {
+   "reference": "Matthew 10:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 726
+  },
+  {
+   "reference": "Matthew 10:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 726
+  },
+  {
+   "reference": "1 Kings 17:9",
+   "status": "self_rendered",
+   "block_index": 726,
+   "why": "narrative allusion"
+  },
+  {
+   "reference": "1 Kings 17:6",
+   "status": "self_rendered",
+   "block_index": 726,
+   "why": "narrative allusion"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 730,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 736
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 736
+  },
+  {
+   "reference": "Matthew 10:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 736
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 736
+  },
+  {
+   "reference": "Exodus 3:14",
+   "status": "self_rendered",
+   "block_index": 736,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "self_rendered",
+   "block_index": 738,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 1:16",
+   "status": "self_rendered",
+   "block_index": 738,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "Psalm 145:10",
+   "status": "self_rendered",
+   "block_index": 740,
+   "why": "adapted into a wish addressed to God"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 742,
+   "why": "Augustine's Old Latin text ('superferebatur'), on which his argument depends; blended with Psalm 143:10"
+  },
+  {
+   "reference": "Psalm 143:10",
+   "status": "self_rendered",
+   "block_index": 669,
+   "why": "partial allusion"
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 742,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Philippians 2:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 703
+  },
+  {
+   "reference": "Genesis 2:2",
+   "status": "self_rendered",
+   "block_index": 746,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "Genesis 2:3",
+   "status": "self_rendered",
+   "block_index": 746,
+   "why": "re-personed into address to God"
+  },
+  {
+   "reference": "John 5:17",
+   "status": "self_rendered",
+   "block_index": 748,
+   "why": "partial allusion addressed to God"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 750,
+   "why": "paraphrase addressed to God"
+  }
+ ]
+}

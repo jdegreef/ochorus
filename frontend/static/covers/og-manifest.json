@@ -1744,6 +1744,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"fr/confessions": {
+			"ground": "1bccbc2bc5dba50d4dc89477b3624958bf4265d82e9c865722dddbb2220fc36f",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"fr/divine-healing": {
 			"ground": "fbd4f17761a2b74121dffa7efd286af3d76f8a379f07a743ddb56624fd0673e7",
 			"style": "devotional",
