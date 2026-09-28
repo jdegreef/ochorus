@@ -1,9 +1,16 @@
-import { beforeEach, describe, it, expect } from 'vitest';
-import { readingGoal, DEFAULT_GOAL, GOAL_MIN, GOAL_MAX } from './readingGoal.svelte';
+import { beforeEach, describe, it, expect, vi } from 'vitest';
+import { DEFAULT_GOAL, GOAL_MIN, GOAL_MAX } from './readingGoal.svelte';
 
 const KEY = 'ochorus:reading-goal';
 
-beforeEach(() => localStorage.clear());
+// The store is a module singleton: each test gets a fresh instance, as a fresh
+// page load would, so a goal set by one test never leaks into the next.
+let readingGoal: typeof import('./readingGoal.svelte').readingGoal;
+beforeEach(async () => {
+	localStorage.clear();
+	vi.resetModules();
+	({ readingGoal } = await import('./readingGoal.svelte'));
+});
 
 describe('readingGoal', () => {
 	it('defaults to DEFAULT_GOAL', () => {
@@ -36,6 +43,5 @@ describe('yearly books goal', () => {
 		expect(JSON.parse(localStorage.getItem('ochorus:reading-goal-books')!)).toEqual({ '2026': 12, '2025': 365 });
 		readingGoal.setBooks(2026, null);
 		expect(readingGoal.booksFor(2026)).toBeNull();
-		readingGoal.setBooks(2025, null);
 	});
 });

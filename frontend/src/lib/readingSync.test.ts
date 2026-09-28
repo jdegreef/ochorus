@@ -16,7 +16,19 @@ import {
 } from './reading-schema';
 import { addPending, bookmarkTarget, pendingAt } from './removals';
 
-beforeEach(() => localStorage.clear());
+// readingSync is a module singleton (its constructor adds window listeners, so
+// it is reset rather than re-imported): every test starts signed out, with real
+// timers and no fetch mock, whatever the test before it left behind.
+beforeEach(() => {
+	localStorage.clear();
+	readingSync.setSignedIn(false);
+});
+afterEach(() => {
+	vi.useRealTimers();
+	vi.restoreAllMocks();
+	vi.unstubAllGlobals();
+	readingSync.setSignedIn(false);
+});
 
 describe('readingSync last-synced', () => {
 	it('parses the stored timestamp, and returns null when absent or garbage', () => {
