@@ -62,7 +62,11 @@ mock the actual cover (3:4 crop + scrim + white title) so you judge the COVER,
 not the painting. Exclude religious/portrait subjects, prefer landscape /
 architecture / sky / water / path. **One facet/subject per book, a different
 painter each**, so an author's shelf reads as one without N identical scenes.
-Verify every finalist's PD flag before building. **Reject a scan with its
+Verify every finalist's PD flag before building. **Grep the object id before building**
+(`grep -n '<object_id>' backend/library/curated_art.py`): 128+ paintings are
+taken, and `test_no_painting_is_given_to_two_works` only fires at the END of
+`paint_covers`, after the plate is deleted and the twins redrawn (Heade's *Point
+Judith* for Pensées was already Amanda Smith's, 2026-09-28). **Reject a scan with its
 frame baked in** (a gilt strip along an edge — Met Frère *Jerusalem*, 2026-09-28):
 nothing crops it and `covers:bars` only measures DARK bars, so it ships on the cover.
 **Copy the artist and year strings verbatim from the collection** —
