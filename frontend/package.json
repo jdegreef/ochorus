@@ -31,7 +31,7 @@
 		"await-api": "node scripts/await-api-release.mjs",
 		"sync:catalogues": "node scripts/sync-ui-catalogues.mjs",
 		"prebuild": "npm run await-api && npm run locales",
-		"postbuild": "node scripts/build-share-cards.mjs"
+		"postbuild": "node scripts/build-share-cards.mjs && node scripts/build-verse-cards.mjs"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.39.5",

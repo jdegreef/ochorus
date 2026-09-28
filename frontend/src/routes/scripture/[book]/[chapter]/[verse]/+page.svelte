@@ -6,6 +6,8 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import CitingPassages from '$lib/components/CitingPassages.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
+	import { verseCardUrl } from '$lib/verseCard';
 
 	const t = i18n.t;
 
@@ -24,6 +26,10 @@
 		`${page.citing_count} passage${page.citing_count === 1 ? '' : 's'} from the ` +
 			`Christian classics on ${page.reference}, each quoted and linked to its source.`
 	);
+
+	// The verse itself, set large beside the classics that cite it — drawn into
+	// the build for every verse page by scripts/build-verse-cards.mjs.
+	const ogImage = $derived(`${SITE_URL}${verseCardUrl(page.book.slug, page.chapter, page.verse ?? 0)}`);
 
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },
@@ -54,6 +60,10 @@
 	{description}
 	{canonical}
 	{hreflang}
+	{ogImage}
+	ogImageWidth={LANDSCAPE_WIDTH}
+	ogImageHeight={LANDSCAPE_HEIGHT}
+	ogImageAlt="{page.reference}: {page.text ?? ''}"
 	structuredData={[crumbsLd, quotesLd]}
 />
 
