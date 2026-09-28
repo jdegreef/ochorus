@@ -1184,7 +1184,7 @@ into the catalog. Instead:
   `create_defaults` only. Wrap `handle()` in `@transaction.atomic` and raise
   `CommandError` (not `return`) on a short body, so an abort can't leave a
   partial book — and inside an `except` clause chain it `... from None`, or ruff
-  B904 fails CI. `sort_order` isn't derivable from `BOOKS` — hardcode `max+1`.
+  B904 fails CI. `sort_order` isn't derivable from `BOOKS` — take one past the max over the COMMITTED `fixtures/content/books/*.json` (excluding your own slug), NOT `Max("sort_order")+1` over the dev DB: a fresh worktree's DB may hold only your book, so that ships `sort_order` 1 (it did, for `pensees` and at first `provincial-letters`). `build_provincial_letters._next_sort_order` is the model.
 - **Then run the standard new-book finish:** serialize the row to the fixture
   (Django serializer, `indent=1`, natural keys — NOT `json.dump(indent=1)`,
   which indents the top-level list and every sibling fixture does not);
