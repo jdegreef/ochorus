@@ -1299,16 +1299,18 @@ class BrainerdRestoredBlocksMatchImporterTests(SimpleTestCase):
     the same paragraph — or the body carries both. EDITION is every chapter
     heading and every restored display line of the edition, verbatim (its
     page numbers and `htmlonly`/`epubonly` correction spans included), with
-    each following paragraph cut to its opening. FILLER stands for the rest of
-    that paragraph: `extract_chapters` folds a section under 300 words into
-    the one before it, so a cut-down chapter has to be long enough to count.
+    each following paragraph cut to its opening — except the preface's last,
+    cut to its CLOSE, which is what the signature is restored behind. FILLER
+    stands for the rest of that paragraph: `extract_chapters` folds a section
+    under 300 words into the one before it, so a cut-down chapter has to be
+    long enough to count.
     """
 
     EDITION = """<html><body>
 <div class="chapter">
 <h2 class="c010">FROM <br> <span class="large">PRESIDENT EDWARDS’ PREFACE.</span></h2>
 </div>
-<p class="c001">the interest of religion.” FILLER</p>
+<p class="c001">FILLER the interest of religion.”</p>
 <div class="c012">JONATHAN EDWARDS.</div>
 <div class="chapter">
 <h2 class="c014">CHAPTER I.</h2>
@@ -1574,11 +1576,18 @@ in his last sickness—death.</i></p>
                 self.assertEqual(self.chapters[order].count(block), 1)
                 self.assertIn("".join(run) + anchor, self.chapters[order])
 
-    def test_the_signature_ends_its_chapter(self):
-        """Why `<h3>JONATHAN EDWARDS.</h3>` is not restored: it is the last
-        block of the preface, and `restore_dropped_blocks` only inserts in
-        front of a following block."""
-        self.assertTrue(self.chapters[0].endswith("<h3>JONATHAN EDWARDS.</h3>"))
+    def test_the_signature_is_emitted_behind_its_anchor(self):
+        """`<h3>JONATHAN EDWARDS.</h3>` is the last block of the preface, so
+        it goes back through `restored_after`, behind the preface's last
+        paragraph. The importer must emit that block, there, byte for byte (it
+        runs the two together, with no seam), and end the chapter on it."""
+        from library.corrections import BODY_CORRECTIONS
+
+        english, _ = self._english_pairs()
+        (anchor, block), *_ = BODY_CORRECTIONS[self.SLUG]["restored_after"]
+        self.assertIn(anchor, english[0])
+        self.assertEqual(self.chapters[0].count(block), 1)
+        self.assertTrue(self.chapters[0].endswith(anchor + block))
 
 
 class GutenbergRestoredBlocksMatchImporterTests(SimpleTestCase):

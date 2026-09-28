@@ -778,6 +778,8 @@ class CorrectionsHygieneTests(SimpleTestCase):
                 # Dead means BOTH are gone: the paragraph this titles was
                 # edited or renumbered out from under the entry.
                 *entry.get("restored_blocks", ()),
+                # The same two states for a block restored BEHIND its anchor.
+                *entry.get("restored_after", ()),
                 # A wrapped display line keeps its text, so its head is present
                 # either way; dead means the run it names was edited away.
                 *((head, f"<{tag}>{head}") for head, tag, *_ in entry.get("wrapped_blocks", ())),
@@ -891,11 +893,11 @@ class EnglishAuditContractTests(SimpleTestCase):
         self.assertEqual(emitted - known, set(), "unclassified finding class(es)")
 
 
-def _book_bodies(slug: str) -> dict[int, str]:
-    """A shipped English book's chapter bodies, by order."""
+def _book_bodies(slug: str, language: str = "en") -> dict[int, str]:
+    """A shipped book edition's chapter bodies, by order (English by default)."""
     from library.content_fixtures import book_fixture_path
 
-    path = book_fixture_path(slug, "en")
+    path = book_fixture_path(slug, language)
     return {r["fields"]["order"]: r["fields"]["body_html"]
             for r in json.loads(path.read_text(encoding="utf-8"))
             if (r.get("fields") or {}).get("body_html")}
@@ -1436,6 +1438,59 @@ class DroppedBlockRestorationTests(SimpleTestCase):
         repair must not scatter copies through the chapter."""
         doubled = "<p>Just this day I met her.</p> <p>Just this day I met her.</p>"
         self.assertEqual(self._restore(doubled).count("<h4>"), 1)
+
+
+class TrailingBlockRestorationTests(SimpleTestCase):
+    """`restore_dropped_blocks(after=True)`, the `restored_after` key: a block
+    that ENDED its chapter, so there is nothing after it to go in front of.
+
+    The case is Brainerd's preface signature. The anchor spells the close of
+    the block before it, and the block goes in behind that.
+    """
+
+    SIGNATURE = (("religion.”</p>", "<h3>JONATHAN EDWARDS.</h3>"),)
+
+    def _restore(self, html):
+        return corrections.restore_dropped_blocks(html, self.SIGNATURE, after=True)
+
+    def test_inserts_the_block_behind_its_anchor(self):
+        self.assertEqual(
+            self._restore("<p>For religion.”</p>"),
+            "<p>For religion.”</p> <h3>JONATHAN EDWARDS.</h3>",
+        )
+
+    def test_is_idempotent(self):
+        once = self._restore("<p>For religion.”</p>")
+        self.assertEqual(self._restore(once), once)
+
+    def test_disarms_itself_on_a_reimported_body(self):
+        """The importer emits the block with no seam; the guard still sees it."""
+        reimported = "<p>For religion.”</p><h3>JONATHAN EDWARDS.</h3>"
+        self.assertEqual(self._restore(reimported), reimported)
+
+    def test_no_op_when_the_anchor_is_absent(self):
+        other = "<p>A different chapter entirely.</p>"
+        self.assertEqual(self._restore(other), other)
+
+    def test_no_op_on_a_stripped_body(self):
+        text = "For religion.”"
+        self.assertEqual(self._restore(text), text)
+
+    def test_brainerd_ships_the_signature_and_the_correction_restores_it(self):
+        """Per edition: the signature ends ch1 and appears nowhere else, and
+        stripping it back out, the correction puts back the shipped body. (The
+        fixture alone passes with the entry deleted, while live rows stay
+        unsigned.)"""
+        slug = "life-and-diary-of-david-brainerd"
+        entries = corrections.BODY_CORRECTIONS[slug]["restored_after"]
+        for lang in ("en", "sw"):
+            bodies = _book_bodies(slug, lang)
+            with self.subTest(language=lang):
+                ((anchor, block),) = [e for e in entries if e[0] in bodies[1]]
+                self.assertEqual([o for o, b in bodies.items() if block in b], [1])
+                self.assertTrue(bodies[1].endswith(f"{anchor} {block}"))
+                stripped = bodies[1].removesuffix(f" {block}")
+                self.assertEqual(corrections.settled_chapter_body(slug, 1, stripped), bodies[1])
 
 
 class LooseBlockWrapTests(SimpleTestCase):
