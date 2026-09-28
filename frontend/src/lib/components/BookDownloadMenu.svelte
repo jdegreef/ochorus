@@ -15,7 +15,7 @@
 	 *
 	 * Offline state is per EDITION: `book.language` is the language the API
 	 * served, so it is what was cached and what must be asked for. EPUB is built
-	 * per request by the API (`epub_url` is "" outside the pilot); the PDF is a
+	 * per request by the API (`epub_url` is "" for an edition export_policy does not list); the PDF is a
 	 * static file under /pdfs/ — no rel="external", so a pdf_url whose file is
 	 * missing fails the prerender crawl instead of shipping a dead link.
 	 */

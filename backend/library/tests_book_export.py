@@ -23,7 +23,7 @@ PILOT = frozenset({("pilot-book", "en")})
 
 
 @override_settings(PUBLIC_SITE_URL="https://ochorus.test")
-@mock.patch.object(export_policy, "EXPORT_PILOT", PILOT)
+@mock.patch.object(export_policy, "EXPORT_EDITIONS", PILOT)
 @mock.patch.object(book_export, "load_cover", lambda url: None)
 class EpubTests(TestCase):
     def setUp(self):
@@ -196,23 +196,47 @@ class EpubTests(TestCase):
 class PilotTests(TestCase):
     def test_every_pilot_language_has_back_matter(self):
         keys = set(book_export.STRINGS["en"])
-        for _slug, lang in export_policy.EXPORT_PILOT:
+        for _slug, lang in export_policy.EXPORT_EDITIONS:
             self.assertIn(lang, book_export.STRINGS)
             self.assertEqual(set(book_export.STRINGS[lang]), keys, f"{lang} back matter is incomplete")
 
     def test_every_pilot_edition_has_its_pdf(self):
         # The book page links pdf_url, and the prerender fails on a missing file
         # — but that's the web build; this catches it in CI first.
-        import json
-
-        from .content_fixtures import book_fixture_path
-
         static = book_export.Path(book_export.settings.BASE_DIR).parent / "frontend" / "static"
         for slug, lang in sorted(export_policy.EXPORT_PILOT):
-            fields = json.loads(book_fixture_path(slug, lang).read_text(encoding="utf-8"))[0]["fields"]
-            pdf = fields.get("pdf_url", "")
+            pdf = _fixture_fields(slug, lang).get("pdf_url", "")
             self.assertTrue(pdf, f"{slug} ({lang}) is exportable but has no pdf_url")
             self.assertTrue((static / pdf.lstrip("/")).is_file(), f"{pdf} is missing — run export_book")
+
+    def test_english_classics_are_public_domain_texts(self):
+        # Their back matter says "in the public domain", so each must be a
+        # published, public-domain English row that Ochorus didn't write.
+        from .content_fixtures import authors_by_slug, book_editions
+        from .corrections import COPYRIGHT_BLOCKED_SLUGS
+        from .serializers import _edition_base_slug
+
+        editions = {(slug, lang): fields for _path, slug, lang, fields in book_editions()}
+        imprints = {slug for slug, a in authors_by_slug().items() if a.get("is_imprint")}
+        for slug in sorted(export_policy.ENGLISH_CLASSICS):
+            fields = editions.get((slug, "en"))
+            self.assertIsNotNone(fields, f"{slug} has no English fixture")
+            self.assertTrue(fields["is_published"], f"{slug} is not published")
+            self.assertEqual(fields["source_type"], Book.SourceType.PUBLIC_DOMAIN, slug)
+            self.assertFalse(
+                book_export.is_in_copyright(mock.Mock(attribution=fields.get("attribution", ""))),
+                f"{slug} is in copyright",
+            )
+            self.assertNotIn(slug, COPYRIGHT_BLOCKED_SLUGS)
+            self.assertNotIn(fields["author"][0], imprints, f"{slug} is by an Ochorus imprint")
+            self.assertNotIn(fields.get("series"), (["key-teachings"], ["portraits-of-courage"]), slug)
+            # A retelling is a suffixed slug whose full work exists; a real
+            # title like divine-songs-for-children has no such sibling.
+            base = _edition_base_slug(slug)
+            self.assertFalse(base != slug and (base, "en") in editions, f"{slug} is an Ochorus retelling")
+
+    def test_held_works_stay_out(self):
+        self.assertFalse(export_policy.HELD_ESV & export_policy.ENGLISH_CLASSICS)
 
 
 class CoverTests(TestCase):
@@ -257,7 +281,7 @@ class CoverTests(TestCase):
         # The API image has no frontend/static, and fetching the cover from the
         # site failed in production — so each exportable edition carries a
         # committed copy, and it must be the file the site serves today.
-        for slug, lang in sorted(export_policy.EXPORT_PILOT):
+        for slug, lang in sorted(export_policy.EXPORT_EDITIONS):
             book = mock.Mock(slug=slug, language=lang, cover_url=_fixture_cover_url(slug, lang))
             bundled = book_export.bundled_cover_path(book)
             self.assertIsNotNone(bundled, f"{slug} ({lang}) has no raster cover to bundle")
@@ -270,10 +294,14 @@ class CoverTests(TestCase):
             )
 
 
-def _fixture_cover_url(slug: str, language: str) -> str:
+def _fixture_fields(slug: str, language: str) -> dict:
     import json
 
     from .content_fixtures import book_fixture_path
 
     rows = json.loads(book_fixture_path(slug, language).read_text(encoding="utf-8"))
-    return rows[0]["fields"]["cover_url"]
+    return next(r["fields"] for r in rows if r["model"] == "library.book")
+
+
+def _fixture_cover_url(slug: str, language: str) -> str:
+    return _fixture_fields(slug, language)["cover_url"]
