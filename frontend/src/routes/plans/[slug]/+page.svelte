@@ -7,6 +7,8 @@
 	import { authorPath } from '$lib/originals';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd } from '$lib/seo';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
+	import { planCardUrl } from '$lib/planCard';
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
@@ -111,12 +113,17 @@
 	};
 </script>
 
+<!-- The plan's own card, in the language of the plan shown (a page that fell
+     back names that language's card) — drawn by scripts/build-plan-cards.mjs. -->
 <Seo
 	title="{plan.title} — Ochorus"
 	description={plan.description}
 	{canonical}
 	{hreflang}
-	ogImage={absUrl('/og/plans.png')}
+	ogImage={absUrl(planCardUrl(plan.slug, plan.language))}
+	ogImageWidth={LANDSCAPE_WIDTH}
+	ogImageHeight={LANDSCAPE_HEIGHT}
+	ogImageAlt={plan.title}
 	structuredData={[planLd, crumbsLd]}
 />
 
