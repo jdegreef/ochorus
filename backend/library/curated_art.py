@@ -695,6 +695,45 @@ CURATED: dict[str, Artwork] = {
         "at the quay — the moment before sailing.",
         focus=0.72,  # the fully rigged ship at right, not the empty quay
     ),
+    # ── Batch 19 · the last painted plates ─────────────────────────────────
+    # Every remaining classic and children's book that wore a plate. Two are
+    # already in lg and sw, so their per-language plates are retired here too.
+    # Six painters, four collections' worth of landscape — places, not faces.
+    "hurlbuts-life-of-christ": Artwork(
+        "aic", 16439, "Claude Joseph Vernet", "Morning", "1760",
+        "A life of Christ for young and old. Vernet's fishermen haul their nets "
+        "at first light on a still shore — where the story began with nets left "
+        "behind, and where the risen Christ met them again at dawn.",
+    ),
+    "treatises-of-cyprian": Artwork(
+        "cma", 95268, "William Linton", "Carthage", "c. 1830",
+        "Cyprian was bishop of Carthage and died for it in 258. Linton paints "
+        "the city itself, its harbour lit gold at the day's end.",
+    ),
+    "journal-of-an-expedition-up-the-niger": Artwork(
+        "aic", 57191, "Eugène Fromentin", "On the Nile", "1871",
+        "Crowther's journal of a missionary voyage up a great African river. "
+        "Fromentin's moored boats and wide water give that voyage its river — "
+        "the continent's own, not a Dutch one standing in for it.",
+    ),
+    "divine-songs-for-children": Artwork(
+        "aic", 181702, "Aelbert Cuyp",
+        "A View of Vianen with a Herdsman and Cattle by a River", "c. 1643–c. 1645",
+        "Watts wrote the first hymnbook for children. Cuyp's river pasture in "
+        "warm evening light is the gentle, ordered world those songs sing of.",
+    ),
+    "pilgrims-progress-words-of-one-syllable": Artwork(
+        "aic", 16340, "Joos de Momper, II", "Mountain Road with Travelers", "c. 1615",
+        "Bunyan's journey retold for children. Momper's travellers climb a road "
+        "under great trees toward the far hills — the way, and the long view "
+        "of where it goes.",
+    ),
+    "our-daily-walk": Artwork(
+        "aic", 890, "Jules Dupré", "On the Road", "1856",
+        "Meyer's readings are for walking with God one ordinary day at a time. "
+        "Dupré's cart keeps to a country road under a great sheltering tree — "
+        "an everyday journey, made in company.",
+    ),
 }
 
 

@@ -254,15 +254,14 @@ def _aic_image_url(art: Artwork) -> str:
     ample for a 600x800 crop; the fetch of those pixels needs a Referer (see
     ``REFERERS``), which the object id, being on the catalogue host, does not.
 
-    That 1686 assumes the source is at least that wide — true of every museum
-    scan, but a smaller original would 403 here (the server refuses a width it
-    would have to upscale to, and ``full/full`` is blocked outright), which is a
-    loud build-time failure to reland with a narrower size, not a silent wrong
-    cover.
+    A source narrower than 1686 is asked for at its own width instead: the
+    server refuses a width it would have to upscale to (403), and ``full/full``
+    is blocked outright. Doré's *Alpine Scene* (1504 wide) is the case that
+    found it. The catalogue's ``thumbnail.width`` is the original's width.
     """
     obj = _json(
         f"https://api.artic.edu/api/v1/artworks/{art.object_id}"
-        "?fields=is_public_domain,image_id,artist_title,title,date_display,subject_titles"
+        "?fields=is_public_domain,image_id,artist_title,title,date_display,subject_titles,thumbnail"
     )["data"]
     if not obj.get("is_public_domain"):
         raise CommandError(f"AIC object {art.object_id} is NOT flagged public domain — refusing.")
@@ -273,7 +272,8 @@ def _aic_image_url(art: Artwork) -> str:
     image_id = obj.get("image_id")
     if not image_id:
         raise CommandError(f"AIC object {art.object_id} has no image.")
-    return f"https://www.artic.edu/iiif/2/{image_id}/full/1686,/0/default.jpg"
+    width = min(1686, (obj.get("thumbnail") or {}).get("width") or 1686)
+    return f"https://www.artic.edu/iiif/2/{image_id}/full/{width},/0/default.jpg"
 
 
 #: Manifest ``source`` → the function that licence-checks it and returns a URL.
