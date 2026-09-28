@@ -443,9 +443,7 @@
 </div>
 
 <!-- The phone Filters sheet: the same controls as one-tap choices. The list
-     updates behind it as they change; "Show sermons (N)" closes it. Outside the
-     page column (.page-col), whose transform would make it the containing
-     block for this fixed sheet and trap its z-index under the tab bar. -->
+     updates behind it as they change; "Show sermons (N)" closes it. -->
 <DrawerShell bind:open={filtersOpen} title={t('bios.filters')} placement="bottom">
 	{@render bookSelect('w-full')}
 

@@ -168,17 +168,21 @@ Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
   paged is handled by the padding above). Spacing above the chapter title cluster
   is scroll-only too — scope with `article:not(.paged)`, since page mode zeroes
   the article padding and paginates from the top.
-- **A bottom sheet (`DrawerShell placement="bottom"`) mounts outside
-  `.page-col`.** The column's `transform: translateX(-50%)` makes it the
-  containing block for `position: fixed` AND a stacking context, so a sheet
-  inside it was pinned to the column (running off-screen) under the z-40 tab
-  bar. Put the sheet after the page-col `</div>` (sermons Filters sheet).
+- **`DrawerShell` (drawers and bottom sheets) can mount anywhere.** It
+  portals its scrim + panel to `<body>`, because `.page-col`'s
+  `transform: translateX(-50%)` and the reader bars' `backdrop-filter` each
+  become the containing block for `position: fixed` AND a stacking context —
+  a sheet inside one was pinned to the column (running off-screen) under the
+  z-40 tab bar. Any OTHER hand-rolled fixed overlay still has that trap: keep
+  it out of such ancestors, or wrap it in ONE element with
+  `use:portal` (`$lib/actions/portal` — it must be the block's sole root).
 - **Phone reader chrome (below `sm`) is its own layout.** Top: Back · book/
   chapter · Contents · "⋯"; footer `.foot-actions`: Previous · Listen · Aa ·
-  Next (folds with `hideChrome`). Three traps: (1) nothing `position: fixed`
-  can live inside `.reader-chrome` — its `backdrop-blur` makes it the
-  containing block, so the text-settings **sheet** (`<ReaderControls sheet>`)
-  mounts at page root; (2) the popover and the sheet share
+  Next (folds with `hideChrome`). Traps: (1) the text-settings **sheet**
+  (`<ReaderControls sheet>`) mounts at page root, not in `.reader-chrome` —
+  its opener is the footer Aa and the top bar unmounts in focus mode (and a
+  hand-rolled fixed overlay in the bar would hit its `backdrop-blur`
+  containing block); (2) the popover and the sheet share
   `readerUi.panelOpen`, so mount only ONE (`isPhone` matchMedia) — a hidden
   popover's `dismissable` closes the visible sheet on every tap; (3) a scoped
   `display:` in `<style>` out-ranks a Tailwind `sm:hidden` and leaks onto

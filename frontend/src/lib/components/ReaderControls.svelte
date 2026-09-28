@@ -60,8 +60,8 @@
 		align = undefined,
 		/**
 		 * A phone bottom sheet instead of the "Aa" popover. It has no trigger:
-		 * the opener sets `readerUi.panelOpen`. Mount it outside the reader's
-		 * top bar (page-design skill: "Phone reader chrome").
+		 * the opener sets `readerUi.panelOpen`. Mount only one of the two
+		 * (page-design skill: "Phone reader chrome").
 		 */
 		sheet = false
 	}: {
