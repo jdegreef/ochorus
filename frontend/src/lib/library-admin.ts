@@ -740,7 +740,10 @@ export const decideReview = (body: {
 }) =>
 	apiFetch<{
 		ok: boolean;
-		decided: ReviewTarget[];
+		// `status`: 'confirmed' (the field flipped — live on the next rebuild),
+		// 'provisional' (recorded, NOT applied: the actor lacks review:approve and
+		// an approver must confirm it), or the outcome ('needs_work').
+		decided: (ReviewTarget & { status?: 'confirmed' | 'provisional' | 'needs_work' })[];
 		skipped: (ReviewTarget & { reason: string })[];
 	}>('/api/admin/review-queue/', { method: 'POST', body: JSON.stringify(body) });
 

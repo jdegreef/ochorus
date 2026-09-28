@@ -225,13 +225,18 @@
 			for (const d of res.decided) {
 				const k = key(d.kind, d.slug, d.language);
 				const item = items.find((i) => key(i.kind, i.slug, i.language) === k);
-				settled = { ...settled, [k]: { outcome, title: item?.title ?? d.slug } };
+				// A provisional approval changed nothing live — say so. Reporting it as
+				// "Approved" is how a reviewer approved the same translations twice
+				// and none of them ever reached readers.
+				const shown = d.status === 'provisional' ? 'provisional' : outcome;
+				settled = { ...settled, [k]: { outcome: shown, title: item?.title ?? d.slug } };
 				selected = { ...selected, [k]: false };
 			}
 			for (const s of res.skipped) {
 				rowError = { ...rowError, [key(s.kind, s.slug, s.language)]: s.reason };
 			}
-			if (queue) queue.total -= res.decided.length;
+			// A provisional approval stays in the queue awaiting its approver.
+			if (queue) queue.total -= res.decided.filter((d) => d.status !== 'provisional').length;
 		} catch (e) {
 			const msg =
 				e instanceof ApiError && e.body && typeof e.body === 'object' && 'detail' in e.body
@@ -468,8 +473,17 @@
 							<li class="rounded-card border border-border bg-surface">
 								{#if settled[k]}
 									<div class="flex items-center gap-3 p-4">
-										<span class="text-small font-semibold">
-											{settled[k].outcome === 'approved' ? 'Approved' : 'Marked needs work'}
+										<span
+											class="text-small font-semibold {settled[k].outcome === 'provisional' ? 'text-warning' : ''}"
+											title={settled[k].outcome === 'provisional'
+												? 'Recorded but NOT applied: your role can propose approvals, and an approver must confirm this one before readers see it as reviewed.'
+												: undefined}
+										>
+											{settled[k].outcome === 'approved'
+												? 'Approved'
+												: settled[k].outcome === 'provisional'
+													? 'Submitted for approval — not live until an approver confirms'
+													: 'Marked needs work'}
 										</span>
 										<span class="text-small truncate text-muted">{settled[k].title}</span>
 										<button
